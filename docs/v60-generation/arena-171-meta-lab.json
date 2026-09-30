@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "arenaId": "arena-171-meta-lab",
+  "proposalId": "new-meta-lab",
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "sources": [
+    {
+      "url": "https://www.dc.com/talent/various",
+      "supports": "Source éditeur consultée ; aucune description de ce laboratoire attestée."
+    }
+  ],
+  "loreLimits": [
+    "Laboratoire, consoles et mécanique sont des créations originales proposées, pas une reproduction attestée de JLA Versus Predator.",
+    "Aucun effet de pouvoir attribué aux Meta-Predators.",
+    "ST034_BG_03 demandé : héros en transmission avant intervention. Adaptation produite : technicien anonyme. Ce point narratif reste partiel tant qu'une référence du héros et une condition d'intervention ne sont pas confirmées."
+  ],
+  "events": [
+    {
+      "id": "ST034_BG_01",
+      "asset": "life-01.png",
+      "description": "Signatures biologiques avec mécanisme de prélèvement."
+    },
+    {
+      "id": "ST034_BG_02",
+      "asset": "life-02.png",
+      "description": "Bras de contention vides."
+    },
+    {
+      "id": "ST034_BG_03",
+      "asset": "life-03.png",
+      "description": "Communication avec un technicien adulte anonyme.",
+      "workbookDeviation": "Le héros demandé n'est pas représenté ; transmission anonyme sans identité ou pouvoir canonique inventé."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-7356e839-3277-4175-a6f0-c828f5a50828.png",
+      "prompt": "Edit this laboratory image into a DEPTH-ONLY background layer. Preserve painted style, cool lighting, upper observation windows, rear technical wall, vacant display sockets and empty center test alcove. CRITICAL CHANGE: remove ALL of the shiny floor which currently occupies bottom third. Extend the rear wall vertically down to the bottom image edge with lower pipes, base panels and recessed dark service duct wall. The camera should face the wall squarely like an architectural front elevation, not looking down at a floor. There must be ZERO visible horizontal floor surface, no near foreground, no characters or animated machinery. The final image is a vertical rear environment to sit BEHIND a separately supplied playable floor. 1536x1024 opaque native PNG. Keep upper clear openings and distant wall depth, no extra apparatus in the empty life zones.",
+      "status": "visually-accepted",
+      "visualNotes": "Version corrigée par OpenAI : mur technique vertical jusqu'en bas, aucun sol de combat intégré ; alvéoles libres pour trois props. Perspective stable et centre sombre.",
+      "rejectedSourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-63519f3f-ddae-4d00-94bd-136f16d63ca6.png",
+      "repair": "Édition native OpenAI ; aucune retouche des pixels par code.",
+      "path": "work-local/v60/generated/arena-171-meta-lab/p0-depth.png",
+      "sha256": "2c655d8b8307d132598f1ff6224a6ce4190c84cb7a479dcbc8a962b3eba997c6",
+      "bytes": 2306592,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-148219ea-e2d2-4d24-b8b8-0b01b15d986d.png",
+      "prompt": "Native transparent PNG sprite sheet 1536x1024 EXACT3columns2rows six512squarecells. Hand-painted sci-fi background prop for a 2D fighting game laboratory, cold steel and muted turquoise. Each cell shows SAME complete small metal biological-signature console with a rotating physical sample-carousel and three tiny monitors. Six genuinely different mechanically drawn poses:1 carousel closed;2 left hinged sample cover opens20degrees;3 cover opens50degrees with carousel rotating one position;4 robotic reader rotates its joint to scan a different vial;5 reader folds back and cover begins closing;6 cover shuts while waveform returns to resting. NO powers, no living captive, no weapons, no readable text, no named hero. Monitors show quiet low-intensity abstract physiology traces only, no flashes. Six distinct articulated redraws, same base centered [256,435], same scale and camera, ALL content inside each cell x60..452 y70..445, generous empty padding, no line crossing borders. Exact coherent machinery components and connected joints in every drawing. Transparent alpha background, no shadow outside object, no floor, no scenic backdrop, no fakecheckerboard, no labels. Original proposed prop, not claim of exact comic technology.",
+      "status": "visually-accepted",
+      "visualNotes": "Six états réellement dessinés : couvercle articulé, carrousel et sonde manipulant les échantillons. Le personnage est absent. Moniteurs de signatures lisibles sans texte.",
+      "path": "work-local/v60/generated/arena-171-meta-lab/life-01.png",
+      "sha256": "fa771c0839343a4ee4608285c9661938ed3530e7cf4d6ffd280a58769527b4a8",
+      "bytes": 2466126,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 734476,
+        "transparentRatio": 0.46696726481119794,
+        "partialPixels": 838388
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            44,
+            75,
+            482,
+            439
+          ],
+          "pivot": [
+            256,
+            439
+          ],
+          "nonzeroAlpha24": 125064
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            53,
+            75,
+            495,
+            439
+          ],
+          "pivot": [
+            256,
+            439
+          ],
+          "nonzeroAlpha24": 127492
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            54,
+            75,
+            476,
+            439
+          ],
+          "pivot": [
+            256,
+            439
+          ],
+          "nonzeroAlpha24": 123989
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            32,
+            67,
+            480,
+            432
+          ],
+          "pivot": [
+            256,
+            432
+          ],
+          "nonzeroAlpha24": 131153
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            53,
+            67,
+            504,
+            429
+          ],
+          "pivot": [
+            256,
+            429
+          ],
+          "nonzeroAlpha24": 129589
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            50,
+            67,
+            492,
+            431
+          ],
+          "pivot": [
+            256,
+            431
+          ],
+          "nonzeroAlpha24": 125946
+        }
+      ],
+      "placement": {
+        "x": 185,
+        "bottom": 318,
+        "height": 92,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      }
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-9b5d5999-924d-4a8e-8452-ad2a943f1001.png",
+      "prompt": "Correct this six-frame transparent spritesheet. Retain EXACTLY the same six meaningful articulated poses, original mechanism appearance, joints, scale consistency, six empty clamps poses. Critical correction: EACH of the six mechanisms must be visibly SMALLER WITHIN ITS OWN cell, about70percent its present size. The current widest arms cross the cell edges. Repaint the complete six mechanisms, uniformly smaller per cell, keep each centered. Final canvas1536x1024, exact3columns2rows of512squarecells. Every visible pixel of a mechanism must stay inside its cell localx80..432 and localy80..432, so 80px clear padding at all four sides. In particular top middle left clamp and top right left clamp MUST NOT cross the vertical division. Do not draw division lines. Native alpha transparency background, no floor, no castshadow, no text. Six independent complete isolated drawings, all components of each mechanism visible.",
+      "status": "visually-accepted",
+      "visualNotes": "Version corrigée par OpenAI : les six mécanismes complets restent chacun dans sa cellule ; aucun bras traversant les limites. Articulation cohérente, toutes les pinces vides.",
+      "rejectedSourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-3df1f7fa-2cc6-4218-9993-105f3657f792.png",
+      "repair": "Édition native OpenAI ; aucune retouche des pixels par code.",
+      "path": "work-local/v60/generated/arena-171-meta-lab/life-02.png",
+      "sha256": "b2b50f83cdd4b6aa994081d980815fb78562e26975e1d765792254a839a0824c",
+      "bytes": 1761500,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1217818,
+        "transparentRatio": 0.774267832438151,
+        "partialPixels": 355046
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            154,
+            96,
+            370,
+            445
+          ],
+          "pivot": [
+            256,
+            445
+          ],
+          "nonzeroAlpha24": 47925
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            46,
+            96,
+            366,
+            446
+          ],
+          "pivot": [
+            256,
+            446
+          ],
+          "nonzeroAlpha24": 47453
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            28,
+            100,
+            474,
+            446
+          ],
+          "pivot": [
+            256,
+            446
+          ],
+          "nonzeroAlpha24": 48052
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            102,
+            81,
+            421,
+            423
+          ],
+          "pivot": [
+            256,
+            423
+          ],
+          "nonzeroAlpha24": 47543
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            106,
+            81,
+            407,
+            424
+          ],
+          "pivot": [
+            256,
+            424
+          ],
+          "nonzeroAlpha24": 45581
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            143,
+            65,
+            362,
+            424
+          ],
+          "pivot": [
+            256,
+            424
+          ],
+          "nonzeroAlpha24": 50832
+        }
+      ],
+      "placement": {
+        "x": 480,
+        "bottom": 420,
+        "height": 160,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      }
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-92e7ebba-1f3a-4e70-bd77-1535387e401f.png",
+      "prompt": "Create native transparent PNG 1536x1024 sprite sheet EXACT3columns2rows with6equal512cells. Hand-painted detailed 2D sciencefiction background prop: a SMALL square metal communication screen with two hinged antenna fins, quiet dim blue phosphor image of one ANONYMOUS adult human technician seen from chestup, neutral jumpsuit, no logo, no powers, no famous hero, no invented team insignia. This is a distant communication only, never a person physically in the arena. Six distinct drawn animation frames:1 technician neutral with armslow;2 turnshead left, raisesforearm to chin;3 gesturesopenhand nearshoulder;4 lowershand andturnshead right;5 leansforward tolisten;6 returntoneutral. Antenna fins subtly articulate2jointpositions acrossframes. SAME adult and screen throughout. Native genuine alpha outside console; screen interior opaque. Entire console fits each cell local80..432 in bothaxes, generous80px transparentmargins. Strict consistent frontview; six actual anatomical redraws, notshiftedduplicatesormirrors. Cool lablight, restrained saturation, no flashes, no typography, no scenery, no floor, no extra heads/hands. This is an original proxy communication asset pending a licensed hero reference, not certified canonical imagery.",
+      "status": "visually-accepted",
+      "visualNotes": "Six gestes de communication distincts, tête et main cohérentes, antennes articulées. Technicien adulte anonyme, jamais présenté comme héros de JLA. Écart assumé du héros demandé faute de référence primaire.",
+      "path": "work-local/v60/generated/arena-171-meta-lab/life-03.png",
+      "sha256": "e894f427b51f6e5a599b4bf7b0a185c85eef6ef44c6b4b876f9bd08b9edca7c6",
+      "bytes": 2301333,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 753403,
+        "transparentRatio": 0.479000727335612,
+        "partialPixels": 819461
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            77,
+            17,
+            450,
+            488
+          ],
+          "pivot": [
+            256,
+            488
+          ],
+          "nonzeroAlpha24": 128678
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            40,
+            63,
+            473,
+            489
+          ],
+          "pivot": [
+            256,
+            489
+          ],
+          "nonzeroAlpha24": 128303
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            62,
+            16,
+            436,
+            489
+          ],
+          "pivot": [
+            256,
+            489
+          ],
+          "nonzeroAlpha24": 128777
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            47,
+            60,
+            480,
+            482
+          ],
+          "pivot": [
+            256,
+            482
+          ],
+          "nonzeroAlpha24": 127889
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            70,
+            13,
+            443,
+            482
+          ],
+          "pivot": [
+            256,
+            482
+          ],
+          "nonzeroAlpha24": 128523
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            32,
+            60,
+            465,
+            482
+          ],
+          "pivot": [
+            256,
+            482
+          ],
+          "nonzeroAlpha24": 127992
+        }
+      ],
+      "placement": {
+        "x": 851,
+        "bottom": 223,
+        "height": 90,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      }
+    }
+  ],
+  "placementNote": "Placement proposé depuis les zones visibles du P0, base960x540, à confirmer au harnais avec transformation exacte du P0 et pivots mesurés."
+}

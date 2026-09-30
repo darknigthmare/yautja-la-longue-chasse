@@ -1,0 +1,859 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-164-alpha-revolt",
+  "proposalId": "new-alpha-revolt",
+  "name": "Carrière des premiers chasseurs",
+  "workbookStage": "09_STAGES!A28:N28",
+  "workbookLife": "10_VIE_DES_STAGES!A74:N76",
+  "sourceUrls": [
+    "https://necaonline.com/2020/06/the-alpha-is-coming-to-predator-hunting-grounds/"
+  ],
+  "loreLimits": [
+    "Original quarry homage to the Alpha figure; neither architecture nor labour system is certified canon.",
+    "Unverified workers/sentinel species replaced by quarry mechanisms and monitoring apparatus, explicitly original environmental adaptation. No invented Amengi biology."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "True transparent PNG sprite sheet for original alien quarry background, exactly6drawings in3columns2rows,1536x1024 with512x512cells. Each entire sprite fits comfortably inside localx100..412,y70..462. One compact primitive quarry hoist: fixed squat dark bronze and weathered stone base, large vertical toothed wheel on right and horizontal winding drum carrying thick coarse rope, small ore basket suspended close beside base. Original industrial design, not a named canonical alien machine. Six sequential hand-painted animationframes of same hoist:1basketlow drumrest,2wheel turns one tooth basketliftedslightly,3wheelturns basketmid,4basket highest butbelowwheelcenter,5basketlowers,6basketreturns low. Coherent rope connected atalltimes and visiblydifferent wheelangle eachframe; SAME shape/scale/light and fixedbasebaseline y460. No people, no animal, no chains leavingcell, no large crane boom. Warm ochre dust on agedbronze with mutedorange highlights, cinematic paintedgameart viewedside-on. Background and all holes truly alpha transparent, no floor patch, no castshadow, no fog, no checkerboard, no text or labels. Huge margins, no overlap across cells.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-30f69c91-7fd8-4bcf-8a58-87c94fa77808.png",
+      "workspacePath": "work-local/v60/generated/arena-164-alpha-revolt/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "1047b5f38616ef37f3cf4d388acb0674a65c2291b533bd4ab52a5b0f95487308",
+      "bytes": 2366922,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5230236053466797,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            18,
+            430,
+            440
+          ],
+          "pivot": [
+            276,
+            458
+          ],
+          "bodyCenterPivot": [
+            275.5,
+            458
+          ],
+          "opaquePixelCount": 114441,
+          "contentSha256": "84a08de8a565ce08dd30c43df2e847cb4680f3532c0ca3e366ea42cc0f7a1cfa",
+          "margins": [
+            61,
+            18,
+            21,
+            54
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            17,
+            427,
+            440
+          ],
+          "pivot": [
+            274,
+            457
+          ],
+          "bodyCenterPivot": [
+            274,
+            457
+          ],
+          "opaquePixelCount": 116284,
+          "contentSha256": "4165e9bffb33c7c089409f44ba8629fb99cae844b225768a06c7991d9061683f",
+          "margins": [
+            61,
+            17,
+            24,
+            55
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            17,
+            428,
+            441
+          ],
+          "pivot": [
+            274.5,
+            458
+          ],
+          "bodyCenterPivot": [
+            273.5,
+            458
+          ],
+          "opaquePixelCount": 115649,
+          "contentSha256": "dcf62cf8f41a0f25333636b021c41e4fabacc470264cfb1e2c6d6ffe151d2fc6",
+          "margins": [
+            60,
+            17,
+            24,
+            54
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            59,
+            18,
+            434,
+            439
+          ],
+          "pivot": [
+            277,
+            457
+          ],
+          "bodyCenterPivot": [
+            275.5,
+            457
+          ],
+          "opaquePixelCount": 115123,
+          "contentSha256": "73dce71fb62409efcea230882910dec35ef2f23b0120bd058494306ddbf05171",
+          "margins": [
+            59,
+            18,
+            19,
+            55
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            18,
+            428,
+            438
+          ],
+          "pivot": [
+            274,
+            456
+          ],
+          "bodyCenterPivot": [
+            273.5,
+            456
+          ],
+          "opaquePixelCount": 115786,
+          "contentSha256": "ca106674d3f8624f1c7c106a8e50b8571134acaa3125dc8e3c6be6f54ae71aed",
+          "margins": [
+            60,
+            18,
+            24,
+            56
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            19,
+            428,
+            438
+          ],
+          "pivot": [
+            275.5,
+            457
+          ],
+          "bodyCenterPivot": [
+            274.5,
+            457
+          ],
+          "opaquePixelCount": 114243,
+          "contentSha256": "69b3a379333198f514b3db77fcb4bb2891ef7794673ce7d24af60efedd0d3761",
+          "margins": [
+            61,
+            19,
+            23,
+            55
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG sprite sheet, landscape1536x1024, exactly3columns2rows of six small separate sprites, each cell512x512. Each sprite is SMALL, occupies only central50percent of its cell with at least100px transparent border ALL sides. Subject a VERY SHORT dangling quarry chain, only FOUR heavy dark bronze oval links, suspended from a small rectangular ochre stone mounting bracket. Entire bracket and entire short chain fullyvisible in everyframe, NOT connected to edge of canvas. Six different poses: chain vertically hanging, slightly left, further left, center, slightly right, further right. Keep same top bracket fixed within each cell at localcenterx256,y160; chain ends beforelocaly380. No extra chain above bracket. Sideon detailed hand-painted gritty alien quarry gameart, warmbronze ochre palette. This is an original practical hanging mechanism, no shackled people, no creatures. Genuinely alpha-transparent gaps, no background, no gridlines, no text, no labels, no shadows, no fog. DO NOT enlarge sprites to fill cells. Very large transparent gutters. Six complete miniature chains with clearly changed linkangles.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-ff3a27fd-86bd-4f24-96a8-d6e3d995222b.png",
+      "workspacePath": "work-local/v60/generated/arena-164-alpha-revolt/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected native six miniature chain states: bracket and links fully included with wide margins, no cross-cell overlap.",
+      "anchorKind": "hanging-top",
+      "sha256": "d87a8173b0b02fc1ea51c44136ec40069acacf2007eecc996a43ad85918ad267",
+      "bytes": 1383444,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8963400522867838,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            210,
+            102,
+            155,
+            325
+          ],
+          "pivot": [
+            287,
+            102
+          ],
+          "bodyCenterPivot": [
+            287,
+            427
+          ],
+          "opaquePixelCount": 23574,
+          "contentSha256": "8e6e00a0e8ec82f5ecd29fa9dca5bcfff59934167619201d665277b96f864eb6",
+          "margins": [
+            210,
+            102,
+            147,
+            85
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            100,
+            163,
+            327
+          ],
+          "pivot": [
+            256,
+            100
+          ],
+          "bodyCenterPivot": [
+            252,
+            427
+          ],
+          "opaquePixelCount": 23779,
+          "contentSha256": "d25f3bcb942a926eb4b3e6a3e14966ba1d592ae58c898445c75c7f920d20143e",
+          "margins": [
+            171,
+            100,
+            178,
+            85
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            108,
+            101,
+            195,
+            323
+          ],
+          "pivot": [
+            228.5,
+            101
+          ],
+          "bodyCenterPivot": [
+            205,
+            424
+          ],
+          "opaquePixelCount": 24153,
+          "contentSha256": "4f321d85dc52ec996b28794c5d7a3263dc158bd437598823017e61300b1b5dcb",
+          "margins": [
+            108,
+            101,
+            209,
+            88
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            211,
+            83,
+            154,
+            324
+          ],
+          "pivot": [
+            287,
+            83
+          ],
+          "bodyCenterPivot": [
+            287.5,
+            407
+          ],
+          "opaquePixelCount": 23808,
+          "contentSha256": "b32f8d32b2f29e39deae322eff465d0165285c188a2015e93ef9124316ab9418",
+          "margins": [
+            211,
+            83,
+            147,
+            105
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            179,
+            82,
+            163,
+            322
+          ],
+          "pivot": [
+            255,
+            82
+          ],
+          "bodyCenterPivot": [
+            260,
+            404
+          ],
+          "opaquePixelCount": 23997,
+          "contentSha256": "4bf48fda4648b0aba541f56a55381ae46befe65ace25adf5f1b2b176b7cec30a",
+          "margins": [
+            179,
+            82,
+            170,
+            108
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            152,
+            82,
+            200,
+            319
+          ],
+          "pivot": [
+            228,
+            82
+          ],
+          "bodyCenterPivot": [
+            251.5,
+            401
+          ],
+          "opaquePixelCount": 24716,
+          "contentSha256": "7c267dc2fe97107c634fa2b4b27542b32bf05e39647cfa8f4ab06a3730e7470a",
+          "margins": [
+            152,
+            82,
+            160,
+            111
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Create a transparent PNG game sprite sheet,1536x1024, exactly3columns2rows. Six drawings of the SAME NARROW TALL quarry shutter control marker. Each sprite maximum WIDTH220pixels HEIGHT350pixels, centered localx256, baseline localy450 inside each512x512cell. Large empty margins are essential. Primitive dark ribbed stone obelisk with3small bronze shutters stacked VERTICALLY (notsidebyside), and a TINY short lever integratedinside its side silhouette, never projecting farout. Original alien quarry mechanism, weathered bronze and blackstone inwarmamberlight. Six distinct native states:1all3slotsclosed,2upperopens,3middleopens too,4all3open,5upper2closing,6allnearlyclosed; leverangles subtlychange. Samehousing,scale,cameraandbase ALLsix, fullspriteeverycell. Hand-painted detailed cinematic videogame side-view prop, no letters/numbers/runes or magic. True alpha transparency outside and throughopenings; no backgroundshadow, no floor, no checkerboard, no text. NOwidehorizontalbase. NOobjectcrossingcellborders. Generous64pixelminimumclearspace aroundcomplete silhouette.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-241465f6-c264-487b-93c1-1809b31dd10c.png",
+      "workspacePath": "work-local/v60/generated/arena-164-alpha-revolt/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected six separate native poses with coherent geometry, no overlap. Subject stays consistent. Alpha/anchors measured; no pixel edits.",
+      "anchorKind": "ground-bottom",
+      "sha256": "acefdebb5fae4a48ec00778418ea7e632a2d575dac3500854fdf02a9189918a2",
+      "bytes": 1839272,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7455863952636719,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            202,
+            11,
+            171,
+            491
+          ],
+          "pivot": [
+            286,
+            502
+          ],
+          "bodyCenterPivot": [
+            287,
+            502
+          ],
+          "opaquePixelCount": 64677,
+          "contentSha256": "e6a753763a0703472570b2f49cc32bc0b96d5d17a45eb11e108cc6d4e134a441",
+          "margins": [
+            202,
+            11,
+            139,
+            10
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            170,
+            10,
+            181,
+            492
+          ],
+          "pivot": [
+            255,
+            502
+          ],
+          "bodyCenterPivot": [
+            260,
+            502
+          ],
+          "opaquePixelCount": 63877,
+          "contentSha256": "209ac73e7aea8dc48af02cf2240d41303fb3792516c3a89d454e61427aab7e3c",
+          "margins": [
+            170,
+            10,
+            161,
+            10
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            10,
+            184,
+            492
+          ],
+          "pivot": [
+            223,
+            502
+          ],
+          "bodyCenterPivot": [
+            229.5,
+            502
+          ],
+          "opaquePixelCount": 62593,
+          "contentSha256": "6f90a7088e0f81db3bc69391cdf575c1c2c69f5ba4e09b4aa7b7c49bf9baadd6",
+          "margins": [
+            138,
+            10,
+            190,
+            10
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            202,
+            10,
+            186,
+            491
+          ],
+          "pivot": [
+            286.5,
+            501
+          ],
+          "bodyCenterPivot": [
+            294.5,
+            501
+          ],
+          "opaquePixelCount": 61770,
+          "contentSha256": "a75c722bba7d76ab87359a65a185970bb3faee38faccc5b1f4d558917389da73",
+          "margins": [
+            202,
+            10,
+            124,
+            11
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            170,
+            10,
+            178,
+            491
+          ],
+          "pivot": [
+            255,
+            501
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            501
+          ],
+          "opaquePixelCount": 62938,
+          "contentSha256": "99e612b603b3cdfbeda913cc0db20e8621a1e4484ddb4f164dce80e34c61dd3a",
+          "margins": [
+            170,
+            10,
+            164,
+            11
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            10,
+            172,
+            491
+          ],
+          "pivot": [
+            222.5,
+            501
+          ],
+          "bodyCenterPivot": [
+            222.5,
+            501
+          ],
+          "opaquePixelCount": 64923,
+          "contentSha256": "ec4909966368a9064f8445785563ce1bd5c7c2e04da65b526fad658fd3cd9b25",
+          "margins": [
+            137,
+            10,
+            203,
+            11
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Opaque painted wide background depth for a 2D side-view Predator fighting-game stage: Carrière des premiers chasseurs, ORIGINAL quarry homage inspired by NECA Alpha Predator, not a canonical photographed location. Primitive monumental alien quarry carved into warm ochre sandstone and dark basalt, cut vertical walls in far background, bone-like skeletal buttresses and empty coarse-stone work recesses, hazy burnt-orange sky above. Static stone ramps are distant and run horizontally. Keep an open long ledge across lower80percent and a subdued dark lower20percent backing; separate playable floor will be composited later. Empty side-view scene with coherent theatrical shallow depth, no giant perspective road, no close diagonal ledge. Reserve small left rock alcove and right stone shelf for separate animated quarry props. Detailed hand-painted gritty cinematic game art, earthy rust, charcoal, ivoryweathering; sombre atmosphere of an abandoned quarry after revolt. NO bodies, NO slaves, NO sentinels, NO Amengi anatomy, NO creatures, NO actors, NO hangingchains or machinery embedded, NO modern human flags, NO magic runes, NO text/logos/HUD. Original environment explicitly, not an asserted official Alpha homeland. Landscape1536x1024.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-d58110d5-6cf1-459b-9dbc-44309f185914.png",
+      "workspacePath": "work-local/v60/generated/arena-164-alpha-revolt/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected full background: coherent lateral architecture, no characters or moving actors baked in; original composition, requires independent foreground gameplay floor.",
+      "sha256": "92f6725c9ed9af26b045dd249deb92c59e5865c0d91ebb00a4b4cc1e18321876",
+      "bytes": 2505999,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa",
+  "rejected": [
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Transparent game sprite sheet1536x1024, exactly3columns2rows of six512x512cells. A small original quarry control shutter made of dark ribbed stone and dullbronze: fixed trapezoidal plinth, three verticalslots with bronze slidingcovers and a side hand-sized toothed lever. NO runes, words, displays, beams, or magic. Designed as original environmental alternative to an unverified alien sentinel, no person or species implied. Six distinct mechanical states of the SAME prop:1slotsclosed leverlow,2leftslot halfopen leverrising,3two slotsopen levermiddle,4three slotsopen leverhigh,5two slotsclosed leverlowering,6allnearlyclosed. Fixed base localy452, wholecompactobject localx120..392,y140..452 and consistent scale in everycell. Hand-painted detailed cinematic videogame prop, weathered stone dust, restrainedwarmochre edge light, sideonthreequarter shallowview. Truealpha transparent outside the prop and insideempty slots, no scene/floor/shadow, no checkerboard, no text, no labels, no weapons. Six real redraws with changing shutter/levergeometry, large blank margins, no overlap.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-f5b47dea-6bba-4482-b034-ed3dc75ef2b3.png",
+      "reason": "Wide control base reaches cell border. Replaced by narrow vertical shutter device."
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. True transparent PNG sprite sheet for distant original alien quarry stage, exactly six native drawings in3columns2rows equal512x512cells, canvas1536x1024. Subject: two short heavy blackened bronze CHAIN lengths hanging from one small fixed curved stone bracket. Complete bracket and entire hanging chains visible, no attachment outsidecanvas. Same bracket remains centered localx256,toplocaly65 inALL cells; chainbottom atmost450, totalwidthatmost260. Six physical pendulum poses after gateopened:1chainsalmostvertical,2curve slightlyright,3furthergentleright,4vertical,5curveslightlyleft,6nearlyrest. Chains are closed ovalmetal links with consistent thickness, connected and eachfollowing gravity, no shapeless ribbons. Detailed hand-painted weathered rust and darkbronze catching mutedamber light, sideview, original Alpha-quarry homage. NO creatures, NO bodies, NO shackledpeople, NO blood, NO weapons. Truealpha emptyspace and betweenlinks, no ground, no smoke, no backdrop, no castshadow, no text/gridlines. Each drawing fully contained with large transparentmargins and native linkgeometry changes ratherthan rotating identicalimage.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-1f586edd-9729-470b-bc62-d784ba36c53f.png",
+      "workspacePath": "work-local/v60/generated/arena-164-alpha-revolt/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "superseded-native",
+      "visualNotes": "Follow-up alpha measurement found art touching cell border. Not integration accepted until a native imagegen correction is inspected.",
+      "anchorKind": "hanging-top",
+      "sha256": "a1ba42331b67d129d4d031834115a9b4b6943bd372c327e4e109d470d4809bec",
+      "bytes": 1596494,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8393026987711588,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            177,
+            6,
+            153,
+            453
+          ],
+          "pivot": [
+            237,
+            6
+          ],
+          "bodyCenterPivot": [
+            253,
+            459
+          ],
+          "opaquePixelCount": 36456,
+          "contentSha256": "9c40a15bf6dcd8ac6e80c0b582dcba51e1cb9d3f39c3398b04837a066830a2c1",
+          "margins": [
+            177,
+            6,
+            182,
+            53
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            0,
+            233,
+            451
+          ],
+          "pivot": [
+            225,
+            0
+          ],
+          "bodyCenterPivot": [
+            289,
+            451
+          ],
+          "opaquePixelCount": 36205,
+          "contentSha256": "472c8aee779404fc7930e5dcaedea13fae406b426c1ee748c476d01d64372a6a",
+          "margins": [
+            173,
+            0,
+            106,
+            61
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            158,
+            11,
+            302,
+            418
+          ],
+          "pivot": [
+            218,
+            11
+          ],
+          "bodyCenterPivot": [
+            308.5,
+            429
+          ],
+          "opaquePixelCount": 36262,
+          "contentSha256": "7d27a1b9a6754769bb0593e68426f79691327f5f585d50389c3bbdfbfbb754ff",
+          "margins": [
+            158,
+            11,
+            52,
+            83
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            186,
+            18,
+            154,
+            452
+          ],
+          "pivot": [
+            248.5,
+            18
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            470
+          ],
+          "opaquePixelCount": 37554,
+          "contentSha256": "8a441c65063ae89112efeb22e20946fc7319921ad2a821ec2b2978987c7159b3",
+          "margins": [
+            186,
+            18,
+            172,
+            42
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            18,
+            207,
+            444
+          ],
+          "pivot": [
+            232,
+            18
+          ],
+          "bodyCenterPivot": [
+            220,
+            462
+          ],
+          "opaquePixelCount": 36748,
+          "contentSha256": "3296dad317a8a3b18e2664253eec29b1ef30caf9c710b858e99d3b16412db616",
+          "margins": [
+            117,
+            18,
+            188,
+            50
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            165,
+            11,
+            160,
+            451
+          ],
+          "pivot": [
+            227.5,
+            11
+          ],
+          "bodyCenterPivot": [
+            244.5,
+            462
+          ],
+          "opaquePixelCount": 37845,
+          "contentSha256": "093b1a7296d4ba77bf58ee507b2c209f45cf1956e6940a03f5ecfce832a93724",
+          "margins": [
+            165,
+            11,
+            187,
+            50
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "rejectionReason": "Native correction: improved cell margins."
+    }
+  ]
+}

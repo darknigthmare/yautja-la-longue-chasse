@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "placementNote": "Base960x540, placements proposés dans les zones observées du P0 ; confirmer au harnais avec transformation exacte et pivots.",
+  "arenaId": "arena-174-phg-sands",
+  "proposalId": "new-phg-sands",
+  "sources": [
+    {
+      "url": "https://blog.playstation.com/?p=352735",
+      "supports": "Présentation IllFonic de Cleopatra, sans preuve de cette halte ni époque désertique."
+    }
+  ],
+  "loreLimits": [
+    "Halte terrestre originale pour une variante d'arène ; aucune divinité réelle ni époque égyptienne certifiée.",
+    "Caravane adulte activable uniquement sur cette variante explicitement terrestre ; aucun lieu alien.",
+    "Sonde originale non armée : silhouette et fonctionnement visuel ne prétendent pas reproduire une technologie Yautja attestée."
+  ],
+  "events": [
+    {
+      "id": "ST039_BG_01",
+      "asset": "life-01.png",
+      "description": "Caravane adulte très lointaine.",
+      "stageVariant": "terrestrial-original"
+    },
+    {
+      "id": "ST039_BG_02",
+      "asset": "life-02.png",
+      "description": "Toile d'auvent et sable soulevé discrètement."
+    },
+    {
+      "id": "ST039_BG_03",
+      "asset": "life-03.png",
+      "description": "Sonde d'observation non armée, conception originale."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-6038f19f-59ae-4134-99dd-029ca2371ce6.png",
+      "prompt": "Native1536x1024 opaque painted2Dgame P0 rear depth backdrop only, arena174 Halte des sables. ORIGINAL desert outpost/ruin adaptation loosely associated with Cleopatra and Anubis Predator Hunting Grounds skins; doNOTclaim realgods, historicalEgypt location/date, or exactcanon ruin. Dustymauve desertdusk, distant dunes and eroded sandstone escarpments, weatheredplainstone archrearwall, empty modest awning SUPPORTposts atleft WITHOUT cloth, distantpath visible throughwidecentralarch forlatercaravan, clearairgapright forlaterunarmedprobe. Nopeople, creatures, vehicles, clothawnings, flags, airborne sandplumes, weapons, magical hieroglyphs, giantgodstatues, oranimatedobjects bakedintobackdrop. Stonebackwallanddistantdesertlayersfillbottomedge, no playablesandfloor inforeground, nolargeforegroundprops, stablefrontal/lateralcamera withhorizon57%, no tiltedperspective. Mutedearthcolors, warmstoneedges and coolshadows, texturehandpaintedbutquietcenter. No text/logo/frame.",
+      "status": "visually-accepted",
+      "visualNotes": "Ruines sans divinité ni texte, auvent absent dans P0 et passage de caravane libre. Perspective latérale, bas en mur de fond sans sol de duel.",
+      "path": "work-local/v60/generated/arena-174-phg-sands/p0-depth.png",
+      "sha256": "7d6e5d4e8e6b218647bcaca3fa67c853cecacf33bdabe960cad96767bef97bec",
+      "bytes": 2324104,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-216d83dd-3bed-449c-83f7-87c1de5c82b9.png",
+      "prompt": "Create native1536x1024 transparent PNG sixframe spritesheet EXACT3cols2rows512cells. Very distant terrestrial desertcaravan: ONE plain packcamel and ONE anonymous ADULT human guide in modest unmarked deserttravelclothes, carrying no weapons. Notanethniccaricature, no identifiedculture, no famousperson. Wholecamel sideview facingright, guidewalkingbesidehead holdingloosereins, coherentfourcamellegs andtwohumanlegs. Frame1 leftforelegforward;2 forelegplant rightrearstep;3 passinglegsunderbody guideoppositearm;4 oppositeforelegforward camelneckslightlydown;5 hindlegplant headlevel;6 stridefinishes earsflick. SIX real anatomicallydrawnwalkingposes, notsamepicturetranslated. Smallcompletecaravan centeredineachcell, entiregroup x60..452 y110..415 withlargepadding. Fixedhoof baseline410 samebodyscale, naturalcalmtravel, panniersconsistent. Lowcontrast rustbrown/coolpurple dusk handpainted2Dgame, no groundshadow/no sand/no background/no sun/no text/grid. Realalpha. Onlyused in originalterrestrialdesertvariant, notalienplanet.",
+      "status": "visually-accepted",
+      "visualNotes": "Marche de dromadaire et guide adulte en six dessins, sabots et jambes changent réellement d'appui ; pas de peuple ou personnage identifié.",
+      "placement": {
+        "x": 500,
+        "bottom": 406,
+        "height": 65,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-174-phg-sands/life-01.png",
+      "sha256": "8d0a3aa0b98d86dcc42483d22b1fc290e6b0e817538d025c801fffefa6925d59",
+      "bytes": 1763997,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1197903,
+        "transparentRatio": 0.7616062164306641,
+        "partialPixels": 374961
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            50,
+            161,
+            478,
+            414
+          ],
+          "pivot": [
+            256,
+            414
+          ],
+          "nonzeroAlpha24": 47733
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            48,
+            157,
+            472,
+            414
+          ],
+          "pivot": [
+            256,
+            414
+          ],
+          "nonzeroAlpha24": 47086
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            28,
+            162,
+            458,
+            413
+          ],
+          "pivot": [
+            256,
+            413
+          ],
+          "nonzeroAlpha24": 47300
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            52,
+            146,
+            494,
+            395
+          ],
+          "pivot": [
+            256,
+            395
+          ],
+          "nonzeroAlpha24": 46436
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            49,
+            146,
+            469,
+            395
+          ],
+          "pivot": [
+            256,
+            395
+          ],
+          "nonzeroAlpha24": 47786
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            33,
+            137,
+            470,
+            396
+          ],
+          "pivot": [
+            256,
+            396
+          ],
+          "nonzeroAlpha24": 49628
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-0837b171-6aed-4fb8-9a58-b8e2196b83ae.png",
+      "prompt": "Native alpha-transparent PNG1536x1024 spritesheet EXACT3columns2rows512cells. One small weathered beige canvas awning mounted on a short horizontal woodenbar, fabric only plusbareminimaltwohangingropes, no longposts orscenery. Modestfrayedcloth, no symbols/runes/text. Belowcloth a faint SHORT soft ochredustwisp containedinsideobjectbounds, no flash. Six real painted2D animationframes:1 saggingclothrest;2 leftedgecurlsgust;3 wavecrossesmiddle billowingup;4 rightedgefoldsandlooseropetilts;5 wavecollapses foldsreverse;6 clothsagsback dustsettles. Samebaranchorineachcell, coherentfabricseams, distinctchangedcontours andfolds, nottranslation/mirror/recolor. SMALL entireawningwithin localx75..437 y90..425 everycell with75pxclearalphamargin, samecamera/scale. Painteddesertdusklightwarmandcool, no backgroundgradient, no floor, no castshadow, no people, no flags ormagic. Spritepropforbackgrounddeserthalte.",
+      "status": "visually-accepted",
+      "visualNotes": "Six ondulations de toile avec plis différents et poussière ténue, barre fixe. Aucun symbole ajouté.",
+      "placement": {
+        "x": 145,
+        "bottom": 338,
+        "height": 130,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-174-phg-sands/life-02.png",
+      "sha256": "a6c82685a899ccbf690d2c6bb82540bf8e458953e1393ce8b8ba535bd8409333",
+      "bytes": 1839748,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1089296,
+        "transparentRatio": 0.6925557454427084,
+        "partialPixels": 483568
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            51,
+            151,
+            478,
+            378
+          ],
+          "pivot": [
+            256,
+            378
+          ],
+          "nonzeroAlpha24": 61210
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            42,
+            150,
+            467,
+            372
+          ],
+          "pivot": [
+            256,
+            372
+          ],
+          "nonzeroAlpha24": 62662
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            32,
+            151,
+            464,
+            386
+          ],
+          "pivot": [
+            256,
+            386
+          ],
+          "nonzeroAlpha24": 60194
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            53,
+            130,
+            497,
+            355
+          ],
+          "pivot": [
+            256,
+            355
+          ],
+          "nonzeroAlpha24": 57382
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            40,
+            129,
+            475,
+            347
+          ],
+          "pivot": [
+            256,
+            347
+          ],
+          "nonzeroAlpha24": 57236
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            32,
+            130,
+            458,
+            359
+          ],
+          "pivot": [
+            256,
+            359
+          ],
+          "nonzeroAlpha24": 61630
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-17fe6f36-b097-4c38-99c5-07a14702cf2c.png",
+      "prompt": "Repair grid framing ofthis sixpose drone sprite sheet. SAMEsix articulatedposes andsameweatheredunarmedprobe. Each drone mustbeONLY60% its current size WITHIN its own512cell, so its finsnever crosscellboundaries. Currenttoprightleftfinandbottommiddle rightfincross! Repaintsmallcompleteprobeineachcell centeredlocal256,256, entirelyinside local90..422 bothaxes. Canvas1536x1024 exact3by2equalcells, no lines. Sixisolatedsmallcompleteobjects, identicalscale andbodycenter. Keep realjointandbodyangle differences, nomirroring. Transparentalpha outside everydrone, no effects/glow/trails/shadow/background. No pixelsfromadjacentcell. This is an originalnonweapon sensor, no addedbarrels.",
+      "status": "visually-accepted",
+      "visualNotes": "Capteur original non armé aux articulations et orientations redessinées. Réduction native corrigée : les stabilisateurs ne franchissent plus les cases. Ne pas annoncer un dispositif canonique exact.",
+      "placement": {
+        "x": 776,
+        "bottom": 266,
+        "height": 58,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "rejectedSourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-45c219e9-c85d-4898-a10c-d41e3bb8d7ae.png",
+      "repair": "Redimensionnement natif des objets par nouvelle édition OpenAI pour séparer les cellules.",
+      "path": "work-local/v60/generated/arena-174-phg-sands/life-03.png",
+      "sha256": "80f2ec37b415b26b5465a7d77c7e2da72088b2cf1af5f6385ad693256278a24a",
+      "bytes": 1680703,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1285209,
+        "transparentRatio": 0.8171138763427734,
+        "partialPixels": 287655
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            126,
+            162,
+            408,
+            358
+          ],
+          "pivot": [
+            256,
+            358
+          ],
+          "nonzeroAlpha24": 41692
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            105,
+            158,
+            386,
+            365
+          ],
+          "pivot": [
+            256,
+            365
+          ],
+          "nonzeroAlpha24": 41243
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            88,
+            164,
+            427,
+            391
+          ],
+          "pivot": [
+            256,
+            391
+          ],
+          "nonzeroAlpha24": 39167
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            101,
+            124,
+            432,
+            340
+          ],
+          "pivot": [
+            256,
+            340
+          ],
+          "nonzeroAlpha24": 48350
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            111,
+            126,
+            452,
+            357
+          ],
+          "pivot": [
+            256,
+            357
+          ],
+          "nonzeroAlpha24": 45796
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            107,
+            126,
+            404,
+            327
+          ],
+          "pivot": [
+            256,
+            327
+          ],
+          "nonzeroAlpha24": 45361
+        }
+      ]
+    }
+  ]
+}

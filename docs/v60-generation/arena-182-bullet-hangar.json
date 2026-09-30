@@ -1,0 +1,749 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-182-bullet-hangar",
+  "proposalId": "new-bullet-hangar",
+  "workbookStage": "A55:N55",
+  "sourceUrls": [
+    "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+    "https://lumiere-a.akamaihd.net/v1/images/g_20cs_predator_killerofkillers_still_1_dc63c607.jpeg?region=0%2C0%2C1300%2C730"
+  ],
+  "loreLimits": [
+    "Aéronef dessiné à partir de la silhouette visible dans une image officielle, sans certification de fidélité absolue1:1.",
+    "Hangar, mécanicien anonyme et balises sont des adaptations originales. Aucun système d’arme ou intérieur du véhicule n’est inventé comme fait canonique."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "EDIT this native game animation sprite sheet. Preserve exact reference-based alien aircraft design and subtle6phasehover, but correct twoerrors: all6aircraft must face SAME orientation, as top-leftcraft, so replace bottommiddle mirror/reversedview with a mildbank ofthat orientation. Second makeeach COMPLETE craft smallerenoughtofitincentral360x280area ofits512x512cell, min70pixeltruealphaaroundallfourborders. No tipcrossesborder. Precise3cols2rows1536x1024. Sixnativedrawingswith2-4degreesbankdifferenceONLY, not180degreeturn. Samecentralhullandtwoforkstrut/wingtipmodules, no addedengines,guns or details. No shadows,background,grid orlabels.",
+      "referencedImagePaths": [
+        "work-local/v60/references/killerofkillers-official-aircraft.jpg"
+      ],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-1953e924-7d1e-43c3-864d-1310151ef78c.png",
+      "workspacePath": "work-local/v60/generated/arena-182-bullet-hangar/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six reference-based aircraft hover poses now keep the same orientation. Full craft silhouettes remain isolated; source rectangles follow actual transparent gutters, no pixels edited.",
+      "sha256": "08b7dbe616178ba1ffd82f73eaac97f66ccf1c7ed467a689b6a9b214525cd924",
+      "bytes": 1436629,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8611570994059244,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            545,
+            512
+          ],
+          "alphaBounds": [
+            69,
+            160,
+            448,
+            222
+          ],
+          "pivot": [
+            293,
+            271
+          ],
+          "margins": [
+            69,
+            160,
+            28,
+            130
+          ],
+          "opaquePixelCount": 36181,
+          "contentSha256": "5aad38880af53c0a3c7882eb5335988678bcc2278716e7ea15c85e78785d2219"
+        },
+        {
+          "rect": [
+            545,
+            0,
+            490,
+            512
+          ],
+          "alphaBounds": [
+            25,
+            165,
+            442,
+            217
+          ],
+          "pivot": [
+            246,
+            273.5
+          ],
+          "margins": [
+            25,
+            165,
+            23,
+            130
+          ],
+          "opaquePixelCount": 35574,
+          "contentSha256": "9ba73daac20a6f56073850971651e70c1558676a2a81ed6e2654cb446dad0bed"
+        },
+        {
+          "rect": [
+            1035,
+            0,
+            501,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            160,
+            438,
+            222
+          ],
+          "pivot": [
+            255,
+            271
+          ],
+          "margins": [
+            36,
+            160,
+            27,
+            130
+          ],
+          "opaquePixelCount": 35655,
+          "contentSha256": "9758da577304cdc0b19151fdc02390fcb0ec3290fb3b8da40f457db02f770f6f"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            545,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            119,
+            453,
+            225
+          ],
+          "pivot": [
+            292.5,
+            231.5
+          ],
+          "margins": [
+            66,
+            119,
+            26,
+            168
+          ],
+          "opaquePixelCount": 37126,
+          "contentSha256": "74780628f48e9def87ab6cb3826c3bdfb691d7a2edded05108e50264bab92a08"
+        },
+        {
+          "rect": [
+            545,
+            512,
+            490,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            128,
+            453,
+            217
+          ],
+          "pivot": [
+            240.5,
+            236.5
+          ],
+          "margins": [
+            14,
+            128,
+            23,
+            167
+          ],
+          "opaquePixelCount": 36996,
+          "contentSha256": "5264c444427764887f1a1c1d4460883712ff42f91490edb974f098703bf5fbf5"
+        },
+        {
+          "rect": [
+            1035,
+            512,
+            501,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            128,
+            442,
+            216
+          ],
+          "pivot": [
+            252,
+            236
+          ],
+          "margins": [
+            31,
+            128,
+            28,
+            168
+          ],
+          "opaquePixelCount": 36849,
+          "contentSha256": "4a698061b4da8709ab52b681a48f4afd72784dea6abf22d3ea75067e6f861d2f"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous ADULT alien Yautja mechanic ORIGINALPROJECTCHARACTER explicitlynotcanonicalperson, standinginslim brownutilityapronoverdarksegmentedforearmprotection, shortblacktendrils, plainclosedblackbiomask. Holdsonebluntshortdiagnostictool andsmallmetalenginecoupling atwaist, no bladedweapon. Fullbodyprofilefacingleft. Sixposes: inspectpart, tiltpartslightly, adjustwithtool, leanheadcloser, lowerhandtool, nearstart. Twoarms twohands twolegs, stablefeet, consistenttools andcostume. Coldskylightandmutedcopperhangarlight.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-6ab3b708-8484-480d-a78f-08cb3049984a.png",
+      "workspacePath": "work-local/v60/generated/arena-182-bullet-hangar/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six whole mechanic poses with consistent apron, mask, coupling and short tool; coherent hands and feet. Original anonymous alien mechanic, not a canonical named person.",
+      "sha256": "91bf5233f37b3cb1a4d7c44c72ee86d949f658f7102af26a0dffa584f7389fb4",
+      "bytes": 1818380,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7867520650227865,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            160,
+            15,
+            209,
+            488
+          ],
+          "pivot": [
+            314,
+            503
+          ],
+          "margins": [
+            160,
+            15,
+            143,
+            9
+          ],
+          "opaquePixelCount": 55852,
+          "contentSha256": "b22aa5e61b59cff65e47cdf74dfa58086e21d72657fc4410ab71c4944521284c"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            146,
+            16,
+            203,
+            487
+          ],
+          "pivot": [
+            290,
+            503
+          ],
+          "margins": [
+            146,
+            16,
+            163,
+            9
+          ],
+          "opaquePixelCount": 54391,
+          "contentSha256": "e345b89982dcd81b525760cde11326ec1e33dc4218cb3775d6f9fe7f120826da"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            148,
+            15,
+            206,
+            488
+          ],
+          "pivot": [
+            296,
+            503
+          ],
+          "margins": [
+            148,
+            15,
+            158,
+            9
+          ],
+          "opaquePixelCount": 56121,
+          "contentSha256": "99f3ae0cab40407f383189ce70e09babbb76b48acaf6d586106358195957d265"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            31,
+            210,
+            467
+          ],
+          "pivot": [
+            324.5,
+            498
+          ],
+          "margins": [
+            173,
+            31,
+            129,
+            14
+          ],
+          "opaquePixelCount": 57900,
+          "contentSha256": "324b11efb86513d5e6e51e36021ddbe38dc5583395ff3a4f6f1642cd3fd1f40e"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            154,
+            10,
+            197,
+            487
+          ],
+          "pivot": [
+            290,
+            497
+          ],
+          "margins": [
+            154,
+            10,
+            161,
+            15
+          ],
+          "opaquePixelCount": 54784,
+          "contentSha256": "3be318d99784cf6e1c099400257554cadbff183d000eb2d16d6f6e8f6202713b"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            10,
+            208,
+            487
+          ],
+          "pivot": [
+            288.5,
+            497
+          ],
+          "margins": [
+            138,
+            10,
+            166,
+            15
+          ],
+          "opaquePixelCount": 56362,
+          "contentSha256": "c156edd46a67d46c828515bff0f0795a58356f835547a5d13f14875652443129"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One short horizontal stripofTHREElowprofilealienlandinglamps onbronzeplates, 320pxwide total, threehousings connectedbyashortblackarmouredcable. Sixnativeframesofslowmechanicalshuttersopening in sequencelefttocenter toright thenclosing gently; restraineddimamberlight, constantoverallbrightness, NOFLASHES. Detailedpaintedwornmetal, housinggeometrystaysidentical; actualslatanglesdiffer, not onlycolor. No people,aircraft, smoke,floor or reflectionsoutsidefixture.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-2446ea14-bef3-46b9-abe9-b77fdb26f2ca.png",
+      "workspacePath": "work-local/v60/generated/arena-182-bullet-hangar/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six sequential mechanical shutter states on three landing lamps, complete housings and cable; restrained amber light, no white flash.",
+      "sha256": "65955686497ad660a95c676cd3b453f4d6e1dae411764cee323c2bda944c889d",
+      "bytes": 1611746,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7882410685221354,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            194,
+            484,
+            148
+          ],
+          "pivot": [
+            259.5,
+            342
+          ],
+          "margins": [
+            18,
+            194,
+            10,
+            170
+          ],
+          "opaquePixelCount": 54952,
+          "contentSha256": "419fdf1ee6cfb58517cacdcc989a36b7a1831e878a2f67e927b7d28fbf11bd92"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            12,
+            193,
+            485,
+            149
+          ],
+          "pivot": [
+            255,
+            342
+          ],
+          "margins": [
+            12,
+            193,
+            15,
+            170
+          ],
+          "opaquePixelCount": 55499,
+          "contentSha256": "860639acddf200558a9ef5f9e4a668c2bf35731b272768f0b486a493bea43f89"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            9,
+            194,
+            486,
+            148
+          ],
+          "pivot": [
+            252.5,
+            342
+          ],
+          "margins": [
+            9,
+            194,
+            17,
+            170
+          ],
+          "opaquePixelCount": 55577,
+          "contentSha256": "76a746cf107d0a524de3c0174484d6ba418f9877aef82bbfe7a6b0c6336afd77"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            187,
+            484,
+            148
+          ],
+          "pivot": [
+            260.5,
+            335
+          ],
+          "margins": [
+            18,
+            187,
+            10,
+            177
+          ],
+          "opaquePixelCount": 55446,
+          "contentSha256": "f28c4d2bbd3fe64799b2c74d167976d2109deee90f770aae060f5fbe0ce0c281"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            13,
+            187,
+            484,
+            148
+          ],
+          "pivot": [
+            256.5,
+            335
+          ],
+          "margins": [
+            13,
+            187,
+            15,
+            177
+          ],
+          "opaquePixelCount": 55756,
+          "contentSha256": "70a477ed15bca09634c6b83147d963d3722221fd13ec639142722677205ca946"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            10,
+            187,
+            484,
+            148
+          ],
+          "pivot": [
+            252,
+            335
+          ],
+          "margins": [
+            10,
+            187,
+            18,
+            177
+          ],
+          "opaquePixelCount": 55838,
+          "contentSha256": "4bbf9e9c2b003edde464a7740ab733ec544a2d378eecb29177cfccf2515a4c79"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Opaque1536x1024 P0 depth backdrop only for a cinematic painterly 2D sideview fighting game. The foreground gameplayfloor willbeaseparatecomponent; lower20percent isdarkquietocclusionband, avoidlargeemptynearbyfloor. Horizontalrearwalkways and convincing eyelevel lateralperspective, notisometric orcentralvanishingcorridor. Layered deep environment, richwornmaterials subduedcontrast incenterforfighters. No text,Hud,logos,actors,flashes oractiveprops bakedintoimage. Setting: ORIGINAL alien aircraft maintenance platform inspiredbythepilotYautja from PredatorKillerofKillers; the hangar layoutisagameadaptation notassertedfilmcanonical. Wideopenhighaltitudehangar: enormousdarkbronzealienribsandblackironstructuralframes flank an openrearviewof mutedstormclouds, highleftskywindowreservedforseparateaircraftanimation, lowerleftrearserviceledgeforanonymousmechanic, rightrearbarrierforlandinglightstrip. Denseengineeringgeometryanddepth,butclearhorizontalplatforms notperspectiverunway. No aircraft,characters,landinglights,smoke,flashesorweaponsinbackdrop. Muteddarksteel/copper/coldsky palette, originalcoherentalienmateriallanguage.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-066baa71-c6a3-4cdd-ae54-66b66bfcbb99.png",
+      "workspacePath": "work-local/v60/generated/arena-182-bullet-hangar/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Original alien pilot hangar with clear sky opening and maintenance ledges. Architectural adaptation; only the later aircraft uses a film-still reference.",
+      "sha256": "f548a849988b25ac10e9e9979fdeaf907f3ef47bc49cb53e0c71cc839e35290b",
+      "bytes": 2243867,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-01",
+      "prompt": "Usecase:reference-faithfulgameasset. From provided officialfilmstill, use ONLY the distant alienaircraft at upperright asreference; do notcopyhumanpropellerplane orclouds. Create transparentnativePNGatlas exactlySIX separatehandpainteddrawingsofTHISalienaircraftin3columns2rowsequal512x512cells on1536x1024canvas. Preserve its broadflattenedangularcentralbody, two lateralopenforkstrutsextendingtoheavycurvedwingtipmodules, darkundersidesilhouette, originalproportions; NOT asaucer orstarfighterwithembellishedguns. Entirecraftwithin360x250centeredboxeachcell withmin70pxalphagutter. Sameviewasreference so no unseenmechanisms invented.6phasegentlehoverbank: level,2degreesleft,4degreesleft,level,2degreesright,returntowardslevel. Sixnativedrawingsconsistentdesign, visibleminorcontourandanglechanges, not identicalcopies, noprojectilesorbeamengines. Backgrounddistantpaintedgameart withsubduedgreybronzehighlights notablackplaceholder. Truealphaoutsideeachcraft, no shadows,scene,grid,text orlabel.",
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-f738beb1-af0b-4e09-a0a2-13f1ddad270d.png",
+      "workspacePath": "work-local/v60/generated/arena-182-bullet-hangar/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "rejected",
+      "visualNotes": "Needs native edit: fifth frame reverses aircraft orientation abruptly and several tips approach cell boundary.",
+      "sha256": "80505945dfeec2a95cf10aa543fa2e36fb2a06a72c9473e7a4dcc901d54274b7",
+      "bytes": 1358414,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8568147023518881,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            147,
+            457,
+            222
+          ],
+          "pivot": [
+            466,
+            369
+          ],
+          "margins": [
+            55,
+            147,
+            0,
+            143
+          ],
+          "opaquePixelCount": 37751,
+          "contentSha256": "ad4e598c50faac895004f2b3658aadf123c3abdda5dbb9083f96a8e0568732ee"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            144,
+            512,
+            236
+          ],
+          "pivot": [
+            460.5,
+            380
+          ],
+          "margins": [
+            0,
+            144,
+            0,
+            132
+          ],
+          "opaquePixelCount": 39055,
+          "contentSha256": "7dae20321101772de16c2bd3e172a43adb60eaa2fac7538a5c49a8c53a2078e4"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            138,
+            451,
+            250
+          ],
+          "pivot": [
+            433.5,
+            388
+          ],
+          "margins": [
+            35,
+            138,
+            26,
+            124
+          ],
+          "opaquePixelCount": 38535,
+          "contentSha256": "2493d4f3466f840431b25685fea04578d4b2b748bc3473e40e0323681fc97c4c"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            145,
+            457,
+            205
+          ],
+          "pivot": [
+            464.5,
+            350
+          ],
+          "margins": [
+            55,
+            145,
+            0,
+            162
+          ],
+          "opaquePixelCount": 36766,
+          "contentSha256": "8a0cda4240c66b93902bcaa9263618f3fa4b04cc1a4af053f26affe88b176fbd"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            138,
+            477,
+            212
+          ],
+          "pivot": [
+            76.5,
+            350
+          ],
+          "margins": [
+            0,
+            138,
+            35,
+            162
+          ],
+          "opaquePixelCount": 36438,
+          "contentSha256": "0d4a87e9a0741173aae7df7d4a85f4c0fa137c7dd1694f4fd7bfba3def6bc903"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            153,
+            449,
+            189
+          ],
+          "pivot": [
+            379,
+            342
+          ],
+          "margins": [
+            42,
+            153,
+            21,
+            170
+          ],
+          "opaquePixelCount": 36666,
+          "contentSha256": "d1dfdc65a445a9f2543fd58f2697dd2530446c9873edc0c2c515a3e9d7974018"
+        }
+      ],
+      "rejection": "Replaced by native OpenAI edit to prevent cell-boundary clipping."
+    }
+  ],
+  "sourceEvidence": "Official film page and still visually inspected. Aircraft follows the alien craft visible at upper right in that final-film still, not the human propeller plane or development concept art. Six restrained same-view hover drawings avoid inventing unseen sides.",
+  "sourceReviewDate": "2026-09-30"
+}

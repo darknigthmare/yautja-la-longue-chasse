@@ -1,0 +1,564 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-186-snow-hunt",
+  "proposalId": "new-snow-hunt",
+  "workbookStage": "A59:N59",
+  "sourceUrls": [
+    "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+  ],
+  "loreLimits": [
+    "Piste de chasse glacée originale du projet ; aucune planète ou créature canonique identifiée sans source.",
+    "Quadrupède à fourrure original, vapeur naturelle et guetteur anonyme. Aucune arme spécifique n’est ajoutée au personnage."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One ORIGINAL small alien snow quadruped, fourlegs, short broad earless head with two small vertical antlerlike bony knobs, compact muscular body covered in coarse palegrey fur, one short triangular tail, darker charcoal feet. Not a known canonical animal and not a white recolor of a forest lizard: distinctly squat mammalianbodyplan. Fullprofile facingright, width330pxheight220px. Sixposes: headalert, headlowers, sniff snow, turnheadslightlyleft, shouldersflexbutfeetstationary, nearidle. Fourcoherentlegs ineachcell, no wings or extralimbs. Cold diffuseblue light.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-493373f3-7a7c-464f-bf1f-a75f16fd0533.png",
+      "workspacePath": "work-local/v60/generated/arena-186-snow-hunt/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six coherent furry quadruped poses with four legs, distinct from the forest reptile. Entire horns, tail and paws visible. Original species.",
+      "sha256": "c64a45146145a70542102d2d948791575314ef3fa6099066dd36d51ce25f99cf",
+      "bytes": 2054833,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6877536773681641,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            96,
+            433,
+            352
+          ],
+          "pivot": [
+            229,
+            448
+          ],
+          "margins": [
+            46,
+            96,
+            33,
+            64
+          ],
+          "opaquePixelCount": 84470,
+          "contentSha256": "accfd70391f4b3fe3939b13e764896d0d4b31ad090831036df0c9cf8b6de15e9"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            180,
+            424,
+            268
+          ],
+          "pivot": [
+            226,
+            448
+          ],
+          "margins": [
+            42,
+            180,
+            46,
+            64
+          ],
+          "opaquePixelCount": 80181,
+          "contentSha256": "71ba77d64a8d0441a45a17cca5ee1a6475d70722731069fbffffd640cf0d3709"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            192,
+            427,
+            255
+          ],
+          "pivot": [
+            254,
+            447
+          ],
+          "margins": [
+            40,
+            192,
+            45,
+            65
+          ],
+          "opaquePixelCount": 74908,
+          "contentSha256": "4475246d0968927da554d6aec6e4329dd8cd2a9df94dd4017309bcb0355a7049"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            57,
+            397,
+            368
+          ],
+          "pivot": [
+            235.5,
+            425
+          ],
+          "margins": [
+            53,
+            57,
+            62,
+            87
+          ],
+          "opaquePixelCount": 85713,
+          "contentSha256": "678fc7f176c62d1a73c57d7f6454b03b580290e5ef5ba7e7fd3e31e054b95acf"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            146,
+            444,
+            280
+          ],
+          "pivot": [
+            226,
+            426
+          ],
+          "margins": [
+            41,
+            146,
+            27,
+            86
+          ],
+          "opaquePixelCount": 80639,
+          "contentSha256": "bc3b485680566696f5b64319f3e19b866ce2a4c481796294eb4cf396cc3a38ad"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            72,
+            426,
+            354
+          ],
+          "pivot": [
+            223,
+            426
+          ],
+          "margins": [
+            42,
+            72,
+            44,
+            86
+          ],
+          "opaquePixelCount": 85210,
+          "contentSha256": "b53dd132b70c8087b2c4ea2451cf911f6f4ca16d2774821cb793ac45265c20d2"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One small natural frozenrock geothermalvent with two short clearicicles on its darkbasaltlip and a restrained palevapourplume, originalaliencoldbiome. NOT an explosion. Eachcellcontains samecompactrockandicicles, with SIX DIFFERENT fluidvapourdrawings risinggentlyandcurlingtotherightbeforefading. Basefixed, particlescontainedwithincentral360pxbox. Vapour semitransparent againsttruealpha, no bluehaze rectangle, no shadow, no floor. Cold bluewhite palette andsoftpainterlytexture.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-ba5a0cf1-b291-4c21-9b9d-7a41cdc37f22.png",
+      "workspacePath": "work-local/v60/generated/arena-186-snow-hunt/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six restrained vapour shapes above an identical frozen vent. Raw alpha measurement confirms all plume pixels remain inside cells with minimum top margin29px; no clipped plume.",
+      "sha256": "19cfb08e9f32b943089ff89d5b5bbb4895dcb7795e671b627e7d80b4ee044508",
+      "bytes": 1962692,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7089869181315104,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            167,
+            346,
+            328
+          ],
+          "pivot": [
+            252,
+            495
+          ],
+          "margins": [
+            83,
+            167,
+            83,
+            17
+          ],
+          "opaquePixelCount": 59470,
+          "contentSha256": "9dd7a1bdfc7a1cf23a30e1b90ca446db9c8cce56f90fe35fbdb30268dc61db06"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            90,
+            346,
+            406
+          ],
+          "pivot": [
+            251.5,
+            496
+          ],
+          "margins": [
+            83,
+            90,
+            83,
+            16
+          ],
+          "opaquePixelCount": 73385,
+          "contentSha256": "713d53e21a8ed34b2225d93665f7fac8c4f650c53cdb9243096cec3259605e04"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            29,
+            376,
+            467
+          ],
+          "pivot": [
+            253,
+            496
+          ],
+          "margins": [
+            83,
+            29,
+            53,
+            16
+          ],
+          "opaquePixelCount": 98228,
+          "contentSha256": "ec535926234c4cde9496379cea827f36b55130e5eb1375d2336635c3b825ea7d"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            61,
+            356,
+            435
+          ],
+          "pivot": [
+            251.5,
+            496
+          ],
+          "margins": [
+            83,
+            61,
+            73,
+            16
+          ],
+          "opaquePixelCount": 83357,
+          "contentSha256": "bbdef352f712d56abb7669c40c77a842b9314df9d6ab5d4e4c48d82831995a27"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            84,
+            79,
+            356,
+            416
+          ],
+          "pivot": [
+            251,
+            495
+          ],
+          "margins": [
+            84,
+            79,
+            72,
+            17
+          ],
+          "opaquePixelCount": 75711,
+          "contentSha256": "ac750b300124dda5ccf88624de2faf757dfaccb66dfd4f5331987f1d8ee93bcd"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            78,
+            383,
+            418
+          ],
+          "pivot": [
+            251.5,
+            496
+          ],
+          "margins": [
+            83,
+            78,
+            46,
+            16
+          ],
+          "opaquePixelCount": 67573,
+          "contentSha256": "281628f72f14ad936ec5fad2a7492c4ccecd0cc88d497f4dcbb888cdbf92fbd6"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous adult Yautja lookout, crouched compactly, wearing dark grey segmented armor with simpleclosedangularsilverbiomask, small rough offwhite shoulderwrap andblackheadtendrils. No namedcharacter, no visibleweapons. Full crouchedfigure visible withbothfeet, sideviewfacingleft; actualhidingrockseparate so DONOTdrawrock. Sixposes: squatrest, turnheadleft, handtouchesmaskside, leanheadforward slightly, handlowers, settles. Anatomicallycoherenttwoarmstwolegs, noextrafingers, nosuperherosuit. Cold subtleblue rimlight.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-e272f363-7ee3-45dd-9201-212bba4aed99.png",
+      "workspacePath": "work-local/v60/generated/arena-186-snow-hunt/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six crouching lookout poses with complete feet, stable grey armor and coherent hand-to-mask action. Anonymous original sentinel.",
+      "sha256": "040657613715cfb3577723fc9baafaf6f4563ca4bc5c4f0cce35c9c85d19181e",
+      "bytes": 2194888,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6804116566975912,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            115,
+            66,
+            304,
+            416
+          ],
+          "pivot": [
+            279.5,
+            482
+          ],
+          "margins": [
+            115,
+            66,
+            93,
+            30
+          ],
+          "opaquePixelCount": 84170,
+          "contentSha256": "c367e13aff266ca62c28fcc92063a040ce5705e0f6e5b97ed6dee5f635aba823"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            65,
+            302,
+            417
+          ],
+          "pivot": [
+            278,
+            482
+          ],
+          "margins": [
+            113,
+            65,
+            97,
+            30
+          ],
+          "opaquePixelCount": 83845,
+          "contentSha256": "b99fb33f0a4042002c84eb0a0576d681c3aa8fb48766fee8dd4791f6085f21af"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            120,
+            67,
+            301,
+            415
+          ],
+          "pivot": [
+            283,
+            482
+          ],
+          "margins": [
+            120,
+            67,
+            91,
+            30
+          ],
+          "opaquePixelCount": 82903,
+          "contentSha256": "a543dab3b9288920bfd396802e61d497ebbbb9649bfac9b7507b6e2fc00351da"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            128,
+            65,
+            304,
+            398
+          ],
+          "pivot": [
+            290.5,
+            463
+          ],
+          "margins": [
+            128,
+            65,
+            80,
+            49
+          ],
+          "opaquePixelCount": 84883,
+          "contentSha256": "b46dc82d362fd23c282af70d7f9e7ba48743d11fb4f4dbf4ee96770d5fc55b27"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            111,
+            65,
+            319,
+            398
+          ],
+          "pivot": [
+            292.5,
+            463
+          ],
+          "margins": [
+            111,
+            65,
+            82,
+            49
+          ],
+          "opaquePixelCount": 84311,
+          "contentSha256": "2186173fc54f56f8fc814cddb46b22fdc563d69e76950d10b6cf41050741e06f"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            114,
+            56,
+            305,
+            407
+          ],
+          "pivot": [
+            279.5,
+            463
+          ],
+          "margins": [
+            114,
+            56,
+            93,
+            49
+          ],
+          "opaquePixelCount": 82557,
+          "contentSha256": "f0f74f1508b92a72c3c012f9cabc917bea6834f4f19e879b2a3cb3f7f7b2ca9e"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Native opaque1536x1024 painted P0 distant-background layer for a professional2D sideview fighting game. Horizontal level platforms, eyelevel lateral perspective, detailedcinematic painterlyart, coherentarchitectureanddepth. Original lateral recomposition of the stated setting; do notclaimexactcanonicalgeometry. The gameplayfloor is suppliedseparately: bottom20% is subdued darkbackground, NOlargeemptyforegroundfloor, no centralaisle in perspective. No HUD/text/logos or labels, no actors or animated objects baked in. Leavequietclearareasfordistantanimatedsprites at20%,50%,80%width. Setting: ORIGINAL project snowhuntingtrail on an alien mountain, not assertedcanonicalhabitat of whitearmorhunters. Immensebluegreyglacierwalls, jaggeddarkbasalt, finewindsculptedsnow,sparsepurplegreycrystallinerockoutcrops. Cold paleovercastlight, cliffterraceswithdepth andasymmetricnaturalpassages. Calmemptyrearsnowledgeatleft forquadrupe, upperrightemptyrockwatchposition, centeredventledgeforseparatevapour sprite. Noanimals, characters,vapourplume,fallingice or blowingparticles, no futuristic buildings. A few staticdistanticicles arefine butnone foreground.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-92f09309-eadd-4ba0-be80-8167d9017cf3.png",
+      "workspacePath": "work-local/v60/generated/arena-186-snow-hunt/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Layered cold cliffs with empty snowy shelves for life motifs. Distinct original biome and no assumed canonical hunter habitat.",
+      "sha256": "4f609e1a0d735adc432bde47ca8301e67935b86efcf8d03c16edba54d7f2c306",
+      "bytes": 2845732,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "sourceReviewDate": "2026-09-30"
+}

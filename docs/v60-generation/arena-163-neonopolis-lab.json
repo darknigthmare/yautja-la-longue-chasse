@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-163-neonopolis-lab",
+  "proposalId": "new-neonopolis-lab",
+  "workbookStage": "09_STAGES!A26:N26",
+  "workbookLife": "10_VIE_DES_STAGES!A68:N70",
+  "sourceUrls": [
+    "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator"
+  ],
+  "sourceClaims": "NECA attests Stone Heart was captured and augmented by Borgia Industries in Concrete Jungle. Original lateral laboratory layout and anonymous technician do not claim exact level reconstruction.",
+  "loreLimits": [
+    "No named spectator or cyborg body repeated beside an active fighter.",
+    "Technician is an original anonymous adult; costume and room geometry are not frame-perfect canon."
+  ],
+  "assets": [
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Production game asset, a WIDE 1536x1024 opaque painted BACKGROUND DEPTH layer for a 2D side-view fighting-game stage named Neonopolis cyborg laboratory, inspired by Predator: Concrete Jungle. This is an original lateral adaptation, not an exact game screenshot. Borgia Industries industrial research hall where captured alien technology is studied. Dark navy and desaturated steel grey, restrained cyan light with faint amber emergency accents. A long rear wall facing the camera straight on, empty reinforced observation windows on the upper left, empty maintenance bay recess centered, empty sealed restraint pods far behind, conduits and gantries. Reserve upper right wall area for separate small indicator prop. The architectural ground horizon lies low around 80 percent image height. Lower 20 percent subdued dark background foundation; a separate gameplay floor will be composited over it. Strong coherent horizontal perspective, shallow theatrical depth, no vanishing corridor into center, no diagonal foreground platform, no curved fisheye. High-detail hand-painted cinematic game illustration, readable masses, not a photo or plastic toy. EMPTY scene: NO people, NO aliens, NO cyborg bodies, NO robotic maintenance arms, NO animated indicator clusters, NO text, NO logos, NO HUD, NO foreground props. Those moving elements will be separate sprites. Clear low-contrast middle band for duel silhouettes. No title.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-f6ac9818-79a8-4eb0-8fb3-9af2cce68e28.png",
+      "workspacePath": "work-local/v60/generated/arena-163-neonopolis-lab/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected full background: coherent lateral architecture, no characters or moving actors baked in; original composition, requires independent foreground gameplay floor.",
+      "sha256": "b152b086afa414a356fb0b9063d64b49620b5f39845018ff024db6d8635cfbe7",
+      "bytes": 2219234,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    },
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Transparent PNG GAME SPRITE SHEET, exactly SIX distinct native animation drawings arranged in an exact 3 columns by 2 rows equal-cell grid, whole canvas 1536x1024. Each cell 512x512, identical camera and scale. True alpha transparency everywhere outside the subject, no checkerboard, no floor or scene, no labels or grid lines. Subject: one anonymous ADULT HUMAN laboratory technician in restrained dark teal industrial coveralls and a clear simple face visor, for the distant reinforced observation window of an original Neonopolis cyborg laboratory inspired by Predator Concrete Jungle. No named character, no armor copied from a Yautja, no weapon. Full body, head and both feet completely visible within each cell, centered x256, fixed foot baseline y470 and same silhouette height about400 pixels. Maintain exact identity, outfit, body proportions and size in all SIX drawings. Painted detailed cinematic side-view fighting-game background sprite, three-quarter profile looking toward right. Animation reading left-to-right top-to-bottom: 1 calm holding small slate by chest, 2 lower head to slate, 3 right hand adjusts controls on slate, 4 turn head slightly toward laboratory, 5 raise left hand briefly to visor, 6 return toward calm slate posture. Six genuinely different controlled poses, two arms two hands with coherent fingers and two legs; feet planted on identical baseline with no walking or displacement, no duplicate bodies. Keep each complete figure comfortably inside its own cell with 35px minimum clear margins. NO glass window in sprite (added by stage architecture), no cast floor shadow, no glow cloud, no background.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-efe2dfdb-7c46-4b1e-9c8c-479a72d82a41.png",
+      "workspacePath": "work-local/v60/generated/arena-163-neonopolis-lab/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "51a24c36f5f40ccfa7bfe43e2aae870e8445199c429103baf2e347fa61317ce1",
+      "bytes": 1607576,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7891483306884766,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            208,
+            14,
+            172,
+            488
+          ],
+          "pivot": [
+            293.5,
+            502
+          ],
+          "bodyCenterPivot": [
+            293.5,
+            502
+          ],
+          "opaquePixelCount": 50172,
+          "contentSha256": "0b4901c7f48f5b08571a35bac41c004271bb3fd81a3b9c66afc02b6135b2a2b1",
+          "margins": [
+            208,
+            14,
+            132,
+            10
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            169,
+            24,
+            173,
+            478
+          ],
+          "pivot": [
+            255.5,
+            502
+          ],
+          "bodyCenterPivot": [
+            255,
+            502
+          ],
+          "opaquePixelCount": 49072,
+          "contentSha256": "1974d4d2338b61ad67a096705518b293dea5060b3ff6ab0eedc76f2fb4ee99aa",
+          "margins": [
+            169,
+            24,
+            170,
+            10
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            147,
+            26,
+            186,
+            476
+          ],
+          "pivot": [
+            232,
+            502
+          ],
+          "bodyCenterPivot": [
+            239.5,
+            502
+          ],
+          "opaquePixelCount": 49274,
+          "contentSha256": "b6433299b9a4e41777a60a42d8adedd623106aa94f51e17c8939b6435a7f6e5c",
+          "margins": [
+            147,
+            26,
+            179,
+            10
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            207,
+            12,
+            172,
+            487
+          ],
+          "pivot": [
+            293.5,
+            499
+          ],
+          "bodyCenterPivot": [
+            292.5,
+            499
+          ],
+          "opaquePixelCount": 50826,
+          "contentSha256": "ebe8d86375c9b6983f898c907ef01245511e151d6a7b0acc518b4e41988b559b",
+          "margins": [
+            207,
+            12,
+            133,
+            13
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            169,
+            13,
+            178,
+            486
+          ],
+          "pivot": [
+            254.5,
+            499
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            499
+          ],
+          "opaquePixelCount": 53381,
+          "contentSha256": "e6b21ede0699bbf7272a2d4d33280ef8c65a1a4cd893a65ae779497dde84446a",
+          "margins": [
+            169,
+            13,
+            165,
+            13
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            146,
+            11,
+            172,
+            486
+          ],
+          "pivot": [
+            231.5,
+            497
+          ],
+          "bodyCenterPivot": [
+            231.5,
+            497
+          ],
+          "opaquePixelCount": 50497,
+          "contentSha256": "7ab5a8d73264bce6fff6d9a69a6fd8eea071417653489e346a66d60ddd6fba8d",
+          "margins": [
+            146,
+            11,
+            194,
+            15
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Create a TRANSPARENT game animation sprite sheet,1536x1024pixels, exactly3columns and2rows. Six isolated COMPACT pedestal robotic maintenance arms, ONE full drawing centered in each512x512cell. All robots must be SMALL: total height340pixels and total width260pixels maximum, leaving large empty alpha space around each drawing. Fixed pedestal bottom atlocaly440, pedestalcenterlocalx256. Do NOT stretch the arm sideways. ALL elbow positions must stay near the pedestal, all grippers withinlocalx130..382. Grey steel Borgia-style laboratory manipulator with copper hydraulic pivots and a small two-finger precision gripper. Exactly SAME two-segment mechanism and base across six poses. Side view profile lookingright. Six frame sequence:1elbow raised folded inward,2elbow tilts20degrees forward with tool pointing down,3elbow lowers slightly tool stilldown,4wrist rotates inward nearbase (NEVER extends horizontally),5elbow lifts back with tool nearlyvertical,6folded rest with toolopen. Each full drawing anatomically correct mechanical joints, no floating parts. Detailed hand-painted realistic videogame art, darkbluegrey metal, subtle cyanedge lighting. No body being serviced, no weapon, no background, no floor, no castshadow, no text, no gridlines, no checkerboard. True alpha transparency. Keep ALL six robots completely separate with massive empty margins. These are six stages of ONEanimation, not differentrobots.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0df742b1-93cd-4e5b-a2b9-4fb1cb6738a8.png",
+      "workspacePath": "work-local/v60/generated/arena-163-neonopolis-lab/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback. Frame2 (zero-based) pivot manually located at fixed pedestal centre193,467; gripper at baseline is excluded from the foot anchor.",
+      "sha256": "869f520cd260277846f800d86c8e667e7450d7fc3a8a08cf163f1dd121c0aa47",
+      "bytes": 1797679,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7828973134358724,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            79,
+            228,
+            388
+          ],
+          "pivot": [
+            260.5,
+            467
+          ],
+          "bodyCenterPivot": [
+            285.5,
+            467
+          ],
+          "opaquePixelCount": 51065,
+          "contentSha256": "cb50c2f8fbf79570d1cce6c571847ce2ce5a0cd3addf2437ba5dbf7848cd57dd",
+          "margins": [
+            172,
+            79,
+            112,
+            45
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            146,
+            101,
+            285,
+            366
+          ],
+          "pivot": [
+            231.5,
+            467
+          ],
+          "bodyCenterPivot": [
+            288,
+            467
+          ],
+          "opaquePixelCount": 52788,
+          "contentSha256": "429887213dd15cd0ac882a26d400d3e0a54bf573087c527b8330fe5e02ede502",
+          "margins": [
+            146,
+            101,
+            81,
+            45
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            106,
+            164,
+            296,
+            303
+          ],
+          "pivot": [
+            193,
+            467
+          ],
+          "bodyCenterPivot": [
+            253.5,
+            467
+          ],
+          "opaquePixelCount": 49381,
+          "contentSha256": "12d797070171ce5a5d72734a8cf351f6cd9319969a9171d42848d59cddf266bc",
+          "margins": [
+            106,
+            164,
+            110,
+            45
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            112,
+            206,
+            335
+          ],
+          "pivot": [
+            259.5,
+            447
+          ],
+          "bodyCenterPivot": [
+            274.5,
+            447
+          ],
+          "opaquePixelCount": 47885,
+          "contentSha256": "01372ff73d6597649c87070f82e3ce1cf1c881fb6a67bdc4150115223d0e3a42",
+          "margins": [
+            172,
+            112,
+            134,
+            65
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            65,
+            268,
+            382
+          ],
+          "pivot": [
+            224,
+            447
+          ],
+          "bodyCenterPivot": [
+            270.5,
+            447
+          ],
+          "opaquePixelCount": 53535,
+          "contentSha256": "989c5973c97ff49a2bd28d087e04da39af345fddb3d3b856ec20b21eedfa6e1b",
+          "margins": [
+            137,
+            65,
+            107,
+            65
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            139,
+            68,
+            228,
+            379
+          ],
+          "pivot": [
+            225.5,
+            447
+          ],
+          "bodyCenterPivot": [
+            252.5,
+            447
+          ],
+          "opaquePixelCount": 50704,
+          "contentSha256": "ca9cfd2048c06be1380badace89c0e8739535eec67c35ade02db22055d6b0e23",
+          "margins": [
+            139,
+            68,
+            145,
+            65
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Real transparent PNG game sprite sheet 1536x1024; exactly six equal512x512cells in3columns2rows. Six hand-painted native drawings of the SAME compact original industrial laboratory emergency indicator and mechanical pressure gauge unit inspired by the Borgia cyborg research laboratory of Predator Concrete Jungle. A rectangular grey steel wall-mounted instrument plate seen exactly straight on, four small status lamps on left and a round analogue dial with a metal needle on right, short enclosed conduit beneath. NO text, numbers, letters, runes, logos, display paragraphs, and NO scenery. Six distinct animation phases of a progressive pressure fault: 1 low needle and3muted cyan lamps,2 needle rises a little with upper cyan lamp on,3 needle half with small amber lamp warming,4 needle high with2amber lamps and3cyan dim,5 needle lowers with amber fading,6 needle almost rest with cyan restored. Not flashing alarm: low bounded brightness, each phase must have actual needle position geometry change plus lamp state. Fixed plate centered in everycell occupying x75..437,y115..400, same size and geometry throughout, no cell touching, fully within safe margins. Painted dark steel with aged bevels, amber/cyan highlights matching dim laboratory. True alpha transparent canvas outside instrument, no vignette or dark rectangular background outside plate, no checkerboard, no shadows. Do not draw6differentdevices: draw same device in6distinct states.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-901a7e18-dee6-44de-ad4c-22965aae095d.png",
+      "workspacePath": "work-local/v60/generated/arena-163-neonopolis-lab/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "b96e671fe89e97c2c01a04b803fa6f9d341e25355a4a0a7e0e13fc538031defc",
+      "bytes": 2456767,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.4665648142496745,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            71,
+            59,
+            407,
+            410
+          ],
+          "pivot": [
+            257.5,
+            469
+          ],
+          "bodyCenterPivot": [
+            274,
+            469
+          ],
+          "opaquePixelCount": 136744,
+          "contentSha256": "dc3abef78308fd38c7a8a396b13fce868015a87c05266a1e47be08f114135bd7",
+          "margins": [
+            71,
+            59,
+            34,
+            43
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            60,
+            406,
+            409
+          ],
+          "pivot": [
+            240.5,
+            469
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            469
+          ],
+          "opaquePixelCount": 135875,
+          "contentSha256": "c65b64ee69d8337142f7385b645da856082d0b66285f28338a454a614252d810",
+          "margins": [
+            56,
+            60,
+            50,
+            43
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            60,
+            405,
+            409
+          ],
+          "pivot": [
+            226.5,
+            469
+          ],
+          "bodyCenterPivot": [
+            243,
+            469
+          ],
+          "opaquePixelCount": 136438,
+          "contentSha256": "4951ca4b5e9bbbf2922b3433bacc498b6b5430d65ac943b89651eeda5e3b8f46",
+          "margins": [
+            41,
+            60,
+            66,
+            43
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            30,
+            410,
+            409
+          ],
+          "pivot": [
+            257.5,
+            439
+          ],
+          "bodyCenterPivot": [
+            272.5,
+            439
+          ],
+          "opaquePixelCount": 136575,
+          "contentSha256": "d800d26a01623dfd6ef9fe367efd77c7ebcfc78c4fd13f03e47aa4fe9a5b06de",
+          "margins": [
+            68,
+            30,
+            34,
+            73
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            30,
+            405,
+            409
+          ],
+          "pivot": [
+            241.5,
+            439
+          ],
+          "bodyCenterPivot": [
+            259,
+            439
+          ],
+          "opaquePixelCount": 136317,
+          "contentSha256": "4f1e09791db30cf3a258580f73a5a15607833d4f86996c4cc4187eb48d9f0cb1",
+          "margins": [
+            57,
+            30,
+            50,
+            73
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            30,
+            405,
+            409
+          ],
+          "pivot": [
+            226.5,
+            439
+          ],
+          "bodyCenterPivot": [
+            243,
+            439
+          ],
+          "opaquePixelCount": 136512,
+          "contentSha256": "0cd694fdd632557e0bf5c3eb216f8e2db72ad2c2af4e5695430de2f40631563b",
+          "margins": [
+            41,
+            30,
+            66,
+            73
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    }
+  ],
+  "rejected": [
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Create a real transparent PNG sprite sheet for a detailed hand-painted 2D fighting game: 1536x1024, exactly3columns by2rows of six equal512x512cells. Exactly six different drawings of the SAME laboratory maintenance manipulator, no text no grid. Subject: a compact grey steel pedestal robotic arm with two articulated joints, black hydraulic hoses and a small three-prong precision tool, original Borgia Industries style cyborg laboratory adaptation inspired by Predator Concrete Jungle. It is servicing an EMPTY bay, no body or creature, no gun or weapon, no sparks that look like projectile attacks. Full pedestal remains fixed centered x256 with bottom y466 in each cell, camera straight side-on looking right; arm stays within x50..462 and y55..466. Frame1 arm folded at rest,2 shoulder tilts forward,3 elbow extends downward with gripper open,4 wrist rotates tool horizontally at inspection height,5 elbow retracts,6 arm folded nearly rest. Each pose has different believable joint configuration but SAME lengths and bolted pedestal and exactly one tool. Six native drawings, not mirrored copies. Dark blue steel/copper details, restrained cyan edge light, coherent mechanical joints. ALL background true alpha transparent, all gaps and outside shape transparent, NO scenery, NO surface shadow, NO floor, NO glow fog, NO checkerboard, NO words.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-f7119b00-6ff2-4f56-8aac-b6fdd0fab48a.png",
+      "reason": "Lower-left extended gripper reaches beyond x512 cell boundary. Not integrated."
+    },
+    {
+      "id": "life-02-v2",
+      "prompt": "Correct only sprite-sheet cell containment and scale in this supplied transparent robot-arm sheet. Preserve exact grey steel pedestal robot identity, three-prong tool, six mechanical animation poses, detailed painted material style and true alpha background. Canvas remains1536x1024 with exact3columns2rows, eachcell512x512. The lower-left pose currently reaches across the vertical boundary x512 into nextcell; FIX this. Make every complete arm INCLUDING its base, hose and tool fit inside its respective 512x512cell with at least48px clear margins left and right and32px above/below. To accomplish this draw all six robots at a consistent smaller size, each maximum width400px and height416px. Fixed center of base at localx256, localbottomy465 in ALL cells. No limb or hose may cross anycell. Do not crop tools or add duplicates. Six distinct true drawings, not6same pose. Transparent surroundings, no scenery, no checkerboard, no text, no grid.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-ccc6dc5a-b765-4e9b-9260-94eb2e36bbac.png",
+      "reason": "Correction still extended lower-left gripper across boundary; rejected. Third native generation accepted."
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

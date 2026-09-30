@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-162-ahab-engineer",
+  "proposalId": "new-ahab-engineer",
+  "name": "Vestiges de la chasse à l’Ingénieur",
+  "workbookStage": "09_STAGES!A25:N25",
+  "workbookLife": "10_VIE_DES_STAGES!A65:N67",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure"
+  ],
+  "loreLimits": [
+    "Original lateral ruins; no exact comic-panel geometry certified.",
+    "E65 unverified species replaced by wind-driven vegetation; E67 pre-boss Engineer silhouette replaced by ruin mechanism/dust. The literal conditional actors remain unfulfilled.",
+    "No species, named character, or chronological presence invented."
+  ],
+  "assets": [
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Opaque wide painted background-depth layer for a 2D side-view fighting game. Stage: Vestiges de la chasse à l'Ingénieur, an explicitly ORIGINAL lateral interpretation of LV-223 expedition ruins for Ahab / Predator Fire and Stone, not a certified exact comic panel. Cold olive grey overcast alien sky above ancient massive dark ribbed biomechanical stone remnants, broken low terraces and distant barren mountain silhouettes, sparse dull alien vegetation. A recessed empty ruin doorway on the far right, empty archaeological recess on left, clear central view across a shallow ravine. Main visible distant ground baseline LOW around80percent imageheight. Lower20percent subdued dark geological backing where a separate gameplay floor will be composited. Side-on horizontal theater composition, restrained depth; no long one-point perspective corridor, no oblique foreground walkway. Painted detailed cinematic high-quality game art consistent with industrial/alien stages; coherent small-scale weathering, strong readable silhouettes, pale green-grey atmosphere. NO characters, NO Engineer, NO Ahab, NO creatures, NO moving dust cloud or animated prop, NO tents, NO identifiable corpses, NO close props embedded. Those will be separate actors. NO text, logos, HUD, labels, toy photography. Wide landscape1536x1024.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-8f376c30-0b58-44ec-baee-9c3bed65c4f6.png",
+      "workspacePath": "work-local/v60/generated/arena-162-ahab-engineer/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "visualReview": "Accepted empty ruins background. Geometry original, low horizon and separate foreground floor required.",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected full background: coherent lateral architecture, no characters or moving actors baked in; original composition, requires independent foreground gameplay floor.",
+      "sha256": "a7ad2cc7d7c85b63bc74404301d22740b52266669e57315e2be719cd9ae60c66",
+      "bytes": 2544848,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    },
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Transparent PNG animation sheet for a distant environmental sprite in an original LV-223 ruins fighting stage inspired by Fire and Stone. Exactly SIX native drawings in a strict3columns2rows grid,1536x1024, each512x512 cell. One low patch of weathered charcoal stone with five sparse olive-grey fern fronds and thin dry reed stems rooted in a tiny crevice, original nonspecific alien vegetation with no named species claim. Same base and stems in every frame, full object centered and safely contained betweenx90..422,y135..455 in eachcell. Six wind phases reading lefttoright topthenbottom:1still,2fronds bend slightlyright,3bendrightdeepest,4returnupright,5bendslightlyleft,6settle. Draw real changing leaves and stemcurves with coherent roots, NOT a whole-sprite tilt or duplicate. Foreground for the sprite is only the tiny rootstone, no surrounding landscape. Detailed hand-painted cinematic gameart, muted olive and slate, overcast palegreen light. True alpha transparency in all emptyspace including between leaves, no glowhaze, no cast shadow, no text, no gridlines, no insects, birds, humans or creatures. Generous margins, six consistent equal-scale drawings.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-5c4d6ed0-f647-4caf-9b7a-726f07e11a75.png",
+      "workspacePath": "work-local/v60/generated/arena-162-ahab-engineer/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "3e8da646152a22911b37aa00cfce01c96c95f7e183d32a8c6b2566bc2984cbc9",
+      "bytes": 2201367,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5863787333170573,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            24,
+            373,
+            464
+          ],
+          "pivot": [
+            262.5,
+            488
+          ],
+          "bodyCenterPivot": [
+            283,
+            488
+          ],
+          "opaquePixelCount": 89812,
+          "contentSha256": "f38be81bde4c46c91e37848a55e62ac02b061d6102a1feb73d59bb77d0037e71",
+          "margins": [
+            97,
+            24,
+            42,
+            24
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            79,
+            65,
+            420,
+            423
+          ],
+          "pivot": [
+            255.5,
+            488
+          ],
+          "bodyCenterPivot": [
+            288.5,
+            488
+          ],
+          "opaquePixelCount": 92203,
+          "contentSha256": "e7f72211c33e3a4207e20fca8ebf3dd31bf8eb897f0c1d937660244b6aed8c18",
+          "margins": [
+            79,
+            65,
+            13,
+            24
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            89,
+            116,
+            411,
+            372
+          ],
+          "pivot": [
+            248,
+            488
+          ],
+          "bodyCenterPivot": [
+            294,
+            488
+          ],
+          "opaquePixelCount": 83980,
+          "contentSha256": "0241862b4b798ca4315a6705b7c4dc807bf56926fec45d5b32c0069bedac6f85",
+          "margins": [
+            89,
+            116,
+            12,
+            24
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            100,
+            23,
+            370,
+            464
+          ],
+          "pivot": [
+            261,
+            487
+          ],
+          "bodyCenterPivot": [
+            284.5,
+            487
+          ],
+          "opaquePixelCount": 91008,
+          "contentSha256": "37372898a4f5bd51ccc15e22df3eb2aaa87a4a8cca3c024b79352f0957384fd0",
+          "margins": [
+            100,
+            23,
+            42,
+            25
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            49,
+            50,
+            350,
+            437
+          ],
+          "pivot": [
+            255,
+            487
+          ],
+          "bodyCenterPivot": [
+            223.5,
+            487
+          ],
+          "opaquePixelCount": 84007,
+          "contentSha256": "5d96aef3f6f08c8f8bd421a676ee18fe0e64cc211ff915a3e80c9cdb039a972d",
+          "margins": [
+            49,
+            50,
+            113,
+            25
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            27,
+            369,
+            460
+          ],
+          "pivot": [
+            249.5,
+            487
+          ],
+          "bodyCenterPivot": [
+            267,
+            487
+          ],
+          "opaquePixelCount": 87736,
+          "contentSha256": "6bfd6eeff6c2bb18868d4252aaf7f949ed89fe81b9bcfb6f487d0cebbc3d16b7",
+          "margins": [
+            83,
+            27,
+            60,
+            25
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Usecase stylized-concept. TRANSPARENT sprite sheet,1536x1024, exact3columns2rows equal512x512cells,6native distinct animation drawings. Subject: a small abandoned human expedition survey instrument and a little windblown DUST over its base for a distant LV-223 ruin inspired by Predator Fire and Stone. Original scene detail; no claim this is an exactcomicprop. A squat tripod holding a simple rugged instrumentbox with broken lens, folded cableloop, sand-coloured dust catching at its feet. Same object and camera in allsix frames, centered x256 and fixed threefoot baseline y445, maximumwidth340 height310 so generousclear margins. Six subtle phases:1settled dust and hanging loose strap,2strap lifts left,3small dustwisp passes belowlens with strapright,4dust dispersed in lowarc with strapdown,5dustwisp fading with strapleft,6calm return with a few settlinggrains. Geometry ofstrap and dust must genuinelychange eachframe. Fullobject no crop, no backdrop or groundpatch, no alienorganism, no namedperson, no weapon or beam. Cinematic hand-painted game style, weathered olivegrey metal and desaturateddust, softlylit consistent overcastsky. Truealpha outside objectand sparse dust, no vignette, no checkerboard, no text or logo.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-ad87dd42-02a8-4753-ab58-3942380390e5.png",
+      "workspacePath": "work-local/v60/generated/arena-162-ahab-engineer/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "333f421e51fe557867c81d221b7e95f624cdfdb1b13c0e06e16af952dc9b9c43",
+      "bytes": 2253553,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5522314707438151,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            81,
+            17,
+            360,
+            464
+          ],
+          "pivot": [
+            261,
+            481
+          ],
+          "bodyCenterPivot": [
+            260.5,
+            481
+          ],
+          "opaquePixelCount": 82500,
+          "contentSha256": "4268dae78161959bd897576d28f68cfbd093d237c3fbb80fdb2c1ed65ee430ba",
+          "margins": [
+            81,
+            17,
+            71,
+            31
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            12,
+            17,
+            441,
+            464
+          ],
+          "pivot": [
+            264,
+            481
+          ],
+          "bodyCenterPivot": [
+            232,
+            481
+          ],
+          "opaquePixelCount": 97397,
+          "contentSha256": "bc28fd67d7d271b055f5861bf0c9d6a77246bcd92258fcd1f9156efdac36ab98",
+          "margins": [
+            12,
+            17,
+            59,
+            31
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            18,
+            445,
+            465
+          ],
+          "pivot": [
+            263.5,
+            483
+          ],
+          "bodyCenterPivot": [
+            255,
+            483
+          ],
+          "opaquePixelCount": 98759,
+          "contentSha256": "f24bd5c33f57e58e2a11bf8901409b453ff614168548f29492bc74f3ea4036bc",
+          "margins": [
+            33,
+            18,
+            34,
+            29
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            10,
+            490,
+            459
+          ],
+          "pivot": [
+            260.5,
+            469
+          ],
+          "bodyCenterPivot": [
+            263.5,
+            469
+          ],
+          "opaquePixelCount": 116278,
+          "contentSha256": "585449ef9f6006965510beffa342d82f26580c025ec86e891b78327e7ec2352c",
+          "margins": [
+            19,
+            10,
+            3,
+            43
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            10,
+            464,
+            464
+          ],
+          "pivot": [
+            269.5,
+            474
+          ],
+          "bodyCenterPivot": [
+            245.5,
+            474
+          ],
+          "opaquePixelCount": 101366,
+          "contentSha256": "40c4154a9762415beb4df6c807ea66416cebcd6db48099c590e07394290a02d5",
+          "margins": [
+            14,
+            10,
+            34,
+            38
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            85,
+            11,
+            359,
+            465
+          ],
+          "pivot": [
+            267,
+            476
+          ],
+          "bodyCenterPivot": [
+            264,
+            476
+          ],
+          "opaquePixelCount": 80433,
+          "contentSha256": "46372ccd497719898fc000adcb6eb6df97b43c6ea4b905958bcf0eadd2811bb3",
+          "margins": [
+            85,
+            11,
+            68,
+            36
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. True-alpha transparent game sprite sheet,1536x1024 with exactly3columns2rows of six512x512cells. Subject: a small weathered ribbed alien STONE VENT RELIEF mechanism, an original architectural detail for distant LV-223 ruins inspired by Predator Fire and Stone, NOT an Engineer character or exact comic artifact. A squat upright oval darkstone housing with five interlocking vertical stone louvers inside; a tiny amount of pale grey dust emerges when louvers shift. Six distinct states:1slats shut atrest,2center slat turns slightly,3three slats turnhalfopen,4slatsopenwith subtle dust grains,5slatsreturnhalfshut,6allslatsnearlyshut with dustsettling. Same housing remains fixed and same angle/scale in ALL cells. Whole object occupies localx115..397,y110..455, fixed basey455. Handpainted highly detailed graphite stone, eroded fossilrib textures, mutedgreen reflectedlight. Keep effect dim and notmagic; no beam, no energyportal, no runes or writing. No person, no Engineer silhouette, no alienfauna. Complete object in everycell,largeclear margins, truly transparent surroundings including openings; no background rectangles, no floor, no checkerboard, no labels.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-864f07ca-482e-47bb-a855-54370213abdb.png",
+      "workspacePath": "work-local/v60/generated/arena-162-ahab-engineer/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected all six drawings: native pose/shape changes, coherent anatomy or mechanical joints, complete separate cells without neighbour overlap; native pivots required for grounded playback.",
+      "sha256": "c949b7e72e7c90fd670d7df2fc4d51527b4c2ed20bb3615aeba0aeb9f93b2e04",
+      "bytes": 2823772,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.467196782430013,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            96,
+            14,
+            351,
+            480
+          ],
+          "pivot": [
+            269,
+            494
+          ],
+          "bodyCenterPivot": [
+            271,
+            494
+          ],
+          "opaquePixelCount": 129743,
+          "contentSha256": "4bfcf8c8130d5fbdd3308e0433165508cfc69b4b396abc36fbd64e7c5ab1bcee",
+          "margins": [
+            96,
+            14,
+            65,
+            18
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            86,
+            15,
+            352,
+            479
+          ],
+          "pivot": [
+            259,
+            494
+          ],
+          "bodyCenterPivot": [
+            261.5,
+            494
+          ],
+          "opaquePixelCount": 129831,
+          "contentSha256": "6d8d774b7c1eaaf9d55599b32882d2c4783c3a0f60a105e8f96bd41b3ebd548c",
+          "margins": [
+            86,
+            15,
+            74,
+            18
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            74,
+            12,
+            356,
+            482
+          ],
+          "pivot": [
+            249,
+            494
+          ],
+          "bodyCenterPivot": [
+            251.5,
+            494
+          ],
+          "opaquePixelCount": 133851,
+          "contentSha256": "0ac8b860ae3cee32b8b3f15e7f644128f4a2d5296206fe665b922a3e8ec66e87",
+          "margins": [
+            74,
+            12,
+            82,
+            18
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            88,
+            5,
+            392,
+            487
+          ],
+          "pivot": [
+            265.5,
+            492
+          ],
+          "bodyCenterPivot": [
+            283.5,
+            492
+          ],
+          "opaquePixelCount": 139199,
+          "contentSha256": "cd0d79774e5ac2baaf97a8d3809719837857733bd80ea9e5e733a1aeb1c9f4be",
+          "margins": [
+            88,
+            5,
+            32,
+            20
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            82,
+            3,
+            374,
+            489
+          ],
+          "pivot": [
+            257.5,
+            492
+          ],
+          "bodyCenterPivot": [
+            268.5,
+            492
+          ],
+          "opaquePixelCount": 136597,
+          "contentSha256": "dcf4197427075083dd2468bf7df751faa9542334e31fb1752b92fc7232cd86f1",
+          "margins": [
+            82,
+            3,
+            56,
+            20
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            72,
+            6,
+            362,
+            487
+          ],
+          "pivot": [
+            247.5,
+            493
+          ],
+          "bodyCenterPivot": [
+            252.5,
+            493
+          ],
+          "opaquePixelCount": 135675,
+          "contentSha256": "c31e5d36b00dde53765ad27da71fadf21bf9e5eddf3cd43cbe6a73d295e29c68",
+          "margins": [
+            72,
+            6,
+            78,
+            19
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

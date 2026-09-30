@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "arenaId": "arena-172-phg-north",
+  "proposalId": "new-phg-north",
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "sources": [
+    {
+      "url": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+      "supports": "Biographie publiée par IllFonic reliant Valkyrie aux guerriers nordiques."
+    }
+  ],
+  "loreLimits": [
+    "Village, montagne et fjord originaux, pas de lieu ou date canonique affirmés.",
+    "Adultes anonymes, pas d'identité de roster. Aucun pouvoir, dieu, rune magique ou casque à cornes."
+  ],
+  "placementNote": "Base960x540, placements proposés dans les ouvertures observées du P0 ; confirmer au harnais.",
+  "events": [
+    {
+      "id": "ST037_BG_01",
+      "asset": "life-01.png",
+      "description": "Adultes surveillant la palissade."
+    },
+    {
+      "id": "ST037_BG_02",
+      "asset": "life-02.png",
+      "description": "Bannière de laine sans runes magiques."
+    },
+    {
+      "id": "ST037_BG_03",
+      "asset": "life-03.png",
+      "description": "Corbeau lointain et neige discrète."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-f31fdb7b-fb8e-4f4b-b5d5-83bc35bafbda.png",
+      "prompt": "Paint original depth-only P0 rear background for 2D fightinggame arena-172-phg-north, inspired by Norse hunting settings mentioned in official Predator Hunting Grounds biographies, NOT a claimed exact Viking village. Native1536x1024 opaque. Strict lateral architectural front elevation with distant layers: cold firforest, misty fjord and gray mountain skyline, snow-heavy log longhouse rear facades, wooden palisade with gaps at midheight. Horizon around58%. Dark blue-gray winter twilight and faint warm windows. Main rear structures fill lowerthird as wall/palisade surfaces: NO visible playable floor, no foreground earth plane, no nearprops. Reserve left palisade gap for watching adult warriors, tall empty pole area right for a later banner, open uppercenter sky for distant birds and snowfall. DO NOT draw any people, birds, flags, magicrunes, supernaturalglows, weapons, falling snow, moving smoke or flames. Keep muted background contrast and clear middle, realistic timber construction in a detailed handpainted2D style. No text, logos, border, toy or photo. This is an original geographically unspecified northern edge, no named village or date.",
+      "status": "visually-accepted",
+      "visualNotes": "Lisière peinte avec fjord, maisons et palissade, sans acteurs ni animaux intégrés ; construction de fond latérale, plancher de combat absent.",
+      "path": "work-local/v60/generated/arena-172-phg-north/p0-depth.png",
+      "sha256": "9b8086fe7ca026b02ed979010ba7a54006fe4277360ec6f2354f2e053dd38911",
+      "bytes": 2529340,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-99495a3a-6eec-4137-9707-41ae817cec22.png",
+      "prompt": "Native transparent PNG spritesheet1536x1024, exact3columns2rows six512squarecells. Six distinct hand-drawn animation poses of TWO anonymous ADULT northern warriors watching calmly from behind an unseen palisade. Historical grounded wooltunics, plain furmantles, simple leatherbelts and boots, one ordinary roundwooden shield held low. NO hornedhelmets, no magicrunes, no glowingweapons, no famoushero. Mature man and mature woman, fullyclothed, sameindividuals eachframe. Entirebodiesvisible as isolated sprites, no actualpalisade. Frame1 bothidle;2 manturnshead left womanraiseshand toshadeeyes;3 womanpoints brieflyright manleansforward;4 bothlooktoward eachother shieldtiltsnaturally;5 womanlowersarm manadjustscloak;6 backtoneutral withcloaksettling. Coherentlimbs/hands, real articulation nottranslations/mirrors. Samefrontlateralcamera, mutedwinternightblue painted2Dgame withwarmrimlight. Keep eachpair SMALL andcentered within eachcell localx70..442 y70..442, generouspadding, feetpivot local256,440. Truealpha emptybackground, no gradienthalo, no floorshadow, no text/gridlines.",
+      "status": "visually-accepted",
+      "visualNotes": "Deux adultes anonymes aux gestes et regards distincts dans six dessins. Anatomie cohérente et manteaux discrets ; aucun attribut surnaturel.",
+      "placement": {
+        "x": 196,
+        "bottom": 398,
+        "height": 90,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-172-phg-north/life-01.png",
+      "sha256": "964e0ff66f03e7ef431a78eee6640cb6fc1b85dfd24a18e7b87ee43a77c0d529",
+      "bytes": 2258748,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 926381,
+        "transparentRatio": 0.5889771779378256,
+        "partialPixels": 646483
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            93,
+            53,
+            457,
+            460
+          ],
+          "pivot": [
+            256,
+            460
+          ],
+          "nonzeroAlpha24": 93052
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            68,
+            55,
+            417,
+            460
+          ],
+          "pivot": [
+            256,
+            460
+          ],
+          "nonzeroAlpha24": 96216
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            26,
+            85,
+            450,
+            460
+          ],
+          "pivot": [
+            256,
+            460
+          ],
+          "nonzeroAlpha24": 94083
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            85,
+            27,
+            456,
+            440
+          ],
+          "pivot": [
+            256,
+            440
+          ],
+          "nonzeroAlpha24": 97227
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            56,
+            32,
+            449,
+            439
+          ],
+          "pivot": [
+            256,
+            439
+          ],
+          "nonzeroAlpha24": 98739
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            57,
+            29,
+            429,
+            436
+          ],
+          "pivot": [
+            256,
+            436
+          ],
+          "nonzeroAlpha24": 95833
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-acf8183c-1227-4348-9d56-8692f891ea6d.png",
+      "prompt": "Create native truealpha PNG1536x1024 sprite sheet, exactly3columns2rows ofequal512squarecells, six distinct handpainted frames. Prop: ONE small weathered darkred wool banner hanging from a SHORT horizontal wooden crossbar with rope loops, no long pole; no symbols, no runes, no text, no magic. Northern winter2Dgame mutedblue light. Banner animation at FIXED top attachment:1 heavycloth hangs withtwofolds;2 gust lifts lowerleftcorner;3 broad deepSfold billowsright;4 clothrolls curlingloweredge towardviewer;5 oppositefold settlesleft;6 heavydrapealmostrest. Eachframe redrawsactualfold geometry and contour, not shifted/recoloredcopy. Same scale andcrossbar pivot, eachobject SMALL and entirely inside cellx90..422 y70..442, paddingclear, noedgecrossing. Transparentemptybackground, no floor, no shadowhalo, no scenebackdrop or grid. Detailed believablewoven cloth withconsistent twofrayedcorners. Usable distantbackground flag, not foreground obstruction.",
+      "status": "visually-accepted",
+      "visualNotes": "Six plis et silhouettes distincts, traversée réelle de la vague dans l'étoffe. Barre de suspension fixe, aucun signe ni rune magique.",
+      "placement": {
+        "x": 905,
+        "bottom": 215,
+        "height": 118,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-172-phg-north/life-02.png",
+      "sha256": "19e39bbdde270a026bc330e824f8e65ca33b35bfd88c582a93b7e41c5dfb4e74",
+      "bytes": 1779984,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1200854,
+        "transparentRatio": 0.763482411702474,
+        "partialPixels": 372010
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            144,
+            108,
+            390,
+            448
+          ],
+          "pivot": [
+            256,
+            448
+          ],
+          "nonzeroAlpha24": 54991
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            77,
+            108,
+            382,
+            449
+          ],
+          "pivot": [
+            256,
+            449
+          ],
+          "nonzeroAlpha24": 52887
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            103,
+            107,
+            481,
+            420
+          ],
+          "pivot": [
+            256,
+            420
+          ],
+          "nonzeroAlpha24": 53769
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            144,
+            83,
+            413,
+            396
+          ],
+          "pivot": [
+            256,
+            396
+          ],
+          "nonzeroAlpha24": 47394
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            42,
+            83,
+            383,
+            426
+          ],
+          "pivot": [
+            256,
+            426
+          ],
+          "nonzeroAlpha24": 57426
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            119,
+            83,
+            395,
+            429
+          ],
+          "pivot": [
+            256,
+            429
+          ],
+          "nonzeroAlpha24": 57716
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-fe43a6fb-b0ca-4938-9326-df0bff6983a3.png",
+      "prompt": "Native alpha-transparent PNG sheet1536x1024, exactly3cols2rows equal512cells, six actualdrawn animation frames. One small distant black raven in flight with a sparse little cluster of drifting snowflakes well inside eachcell. Handpainted2Dgame winterlowcontrast, anatomically correct raven TWO wings, onehead/tail. Flightposecycle rowmajor:1 wingsup;2 wingelbowsunfold forward;3 wingshorizontal showingprimaryfeathers;4 downstroke wingtipscurved;5 wingsfoldin partly;6 wingsliftbend beforeupstroke. Same bird facingright at same bodycenter[256,240], identicalbodysize, truly articulated wings nottranslationormirror. Snowflakes redraw scattered smallquiet shapes, notblizzard. Keep wholebirdandsnow inx80..432 y80..432 with80px transparentpadding. Noperch/no ground/no scenery, noglow, no text, no gridlines. Entire object isolation realalpha; minimal distantanimal motif for a Nordicdepthlayer, no magical bird.",
+      "status": "visually-accepted",
+      "visualNotes": "Six phases anatomiques de battement d'ailes différentes. Les quelques flocons sont stylisés et assez grands ; les réduire avec le motif au plan lointain pour éviter un effet magique.",
+      "placement": {
+        "x": 440,
+        "bottom": 235,
+        "height": 75,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-172-phg-north/life-03.png",
+      "sha256": "f76211d7ee9623e024499ba95f13b988e2b192dd9c775777c41a496d71154697",
+      "bytes": 1494283,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1148068,
+        "transparentRatio": 0.7299219767252604,
+        "partialPixels": 424796
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            129,
+            128,
+            402,
+            432
+          ],
+          "pivot": [
+            256,
+            432
+          ],
+          "nonzeroAlpha24": 30436
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            111,
+            158,
+            401,
+            455
+          ],
+          "pivot": [
+            256,
+            455
+          ],
+          "nonzeroAlpha24": 23284
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            82,
+            184,
+            435,
+            430
+          ],
+          "pivot": [
+            256,
+            430
+          ],
+          "nonzeroAlpha24": 19957
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            124,
+            114,
+            419,
+            401
+          ],
+          "pivot": [
+            256,
+            401
+          ],
+          "nonzeroAlpha24": 23653
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            128,
+            128,
+            372,
+            374
+          ],
+          "pivot": [
+            256,
+            374
+          ],
+          "nonzeroAlpha24": 16410
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            131,
+            90,
+            380,
+            382
+          ],
+          "pivot": [
+            256,
+            382
+          ],
+          "nonzeroAlpha24": 27040
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-181-avp2",
+  "proposalId": "new-avp2",
+  "workbookStage": "A53:N53",
+  "sourceUrls": [
+    "https://oldgamesdownload.com/wp-content/uploads/manuals/aliens-versus-predator-2_strategy-guide_en_u4s.pdf"
+  ],
+  "loreLimits": [
+    "Matériaux et langage industriel inspirés de captures du guide Prima ; plan latéral original et non reproduction exacte de niveau.",
+    "Garde adulte anonyme sans arme inventée. Xénomorphe au conduit et terminal hors service demeurent des événements d’ambiance sans effet sur le combat."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Transparent native PNG sprite atlas for a painted cinematic2D fighting-game background, exactly SIX distinct drawings on1536x1024canvas inthreecolumnsbytworows equal512pxcells. Each completesubject centered insidea360x360interior with70pxtransparentgutterallaround. Truealpha outside subject, nopaintedbackgroundorcastfloor shadows. Stable camera, scaleandmaterials. No labels,grid,text,logos,flashes. One anonymous ADULT human laboratorysecuritywatchman in restrainedgrey-greenhardchestarmor overdarkbluecoveralls, plainutilityhelmet withsmallvisor, boots, emptyhands (NOinventedrifle). BackgroundpatrolattendantforAVP2humancomplex, notHarrisonorRykov, originalanonymousattendant. Fullbodysideviewleft,twoarmstwolegs. Sixposes: atrest, liftlefthandtoradioearpiece, turnheadleft, handlowers, lookbackbriefly, settled. Maintainidentityandarmorpattern, feetfixedbaseline430, no extraweapons, nocharacterforeground. Coldbluishlablight.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-a8f18c4f-8cb7-48f2-8e10-08bbf48a7e6c.png",
+      "workspacePath": "work-local/v60/generated/arena-181-avp2/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six whole anonymous security-attendant poses with consistent armor and radio gesture, no invented firearm or named character duplication.",
+      "sha256": "7bbd2fa182ba32c89ed615eacfb26f8f7b61fa4d5fe2b2323947a9fe7ed89077",
+      "bytes": 1602143,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8233362833658854,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            233,
+            0,
+            126,
+            512
+          ],
+          "pivot": [
+            303,
+            512
+          ],
+          "margins": [
+            233,
+            0,
+            153,
+            0
+          ],
+          "opaquePixelCount": 45387,
+          "contentSha256": "ca403d506fb588456ede9651a64044d276f1c5d62722d929584b8279bb85f31a"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            200,
+            0,
+            125,
+            507
+          ],
+          "pivot": [
+            258,
+            507
+          ],
+          "margins": [
+            200,
+            0,
+            187,
+            5
+          ],
+          "opaquePixelCount": 44618,
+          "contentSha256": "a4e1b36a6ebebbda536376fefb4038e80b9cf837dcdbad28fdf10c5038ca229b"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            148,
+            0,
+            166,
+            507
+          ],
+          "pivot": [
+            227.5,
+            507
+          ],
+          "margins": [
+            148,
+            0,
+            198,
+            5
+          ],
+          "opaquePixelCount": 52573,
+          "contentSha256": "005a4214ee5ca78e584605c46979c56e3f4d972a7b42299a4d7c073b4d47a348"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            232,
+            0,
+            127,
+            512
+          ],
+          "pivot": [
+            300.5,
+            512
+          ],
+          "margins": [
+            232,
+            0,
+            153,
+            0
+          ],
+          "opaquePixelCount": 45439,
+          "contentSha256": "14e962eb56f22c6b1c7f9ab8efeee42ab8fbb305b7e6d204e7c84454774e3fef"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            196,
+            5,
+            126,
+            501
+          ],
+          "pivot": [
+            257,
+            506
+          ],
+          "margins": [
+            196,
+            5,
+            190,
+            6
+          ],
+          "opaquePixelCount": 44645,
+          "contentSha256": "3d097112a9d3b1b96a190d45c222d00a97d93981efbca899f34fc28c5012a8c9"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            3,
+            128,
+            503
+          ],
+          "pivot": [
+            228.5,
+            506
+          ],
+          "margins": [
+            168,
+            3,
+            216,
+            6
+          ],
+          "opaquePixelCount": 45206,
+          "contentSha256": "a64f0ebf0a42638475722955fb4718b7e3d5a014effd40a15fceea968b963616"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Transparent native PNG sprite atlas for a painted cinematic2D fighting-game background, exactly SIX distinct drawings on1536x1024canvas inthreecolumnsbytworows equal512pxcells. Each completesubject centered insidea360x360interior with70pxtransparentgutterallaround. Truealpha outside subject, nopaintedbackgroundorcastfloor shadows. Stable camera, scaleandmaterials. No labels,grid,text,logos,flashes. One classic black biomechanical XENOMORPH DRONE partly concealed behind a short greyindustrialvent conduit. Retain iconic longsmooth eyeless elongateddome extending backward, ribbedneckandchest, slenderclawedhands; no horns,crown,humanoidface orhumaneyes. Only head,neck, twohands andupperribbedtorso visible, lowerbodyoccludedinsidevent, tailnotvisible. Compactventframe/staticpipewithdarkopeningispartofeachsprite andremainssamegeometry. Sixnativesuspenseposes: headhalfhidden, headpeeksoutsidelittle, tiltheadtowardleft, pausehigher, slowlydrawback, nearhidden. No attack,saliva,teethgoreorprojectiles. Coldmutedsilverhighlights, darksilhouette. Completecombinedventandcreature fitcentral360pxbox.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-b39eab98-49dc-48f2-ad5d-523f0863e82b.png",
+      "workspacePath": "work-local/v60/generated/arena-181-avp2/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six emerging Xenomorph poses with eyeless elongated dome, ribbed torso and two clawed hands; stable conduit module, no crown or extra limbs.",
+      "sha256": "2cf15f6bce5ab328d2712131ea165841cc0518e6729987b359816891923d805e",
+      "bytes": 2164778,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5824731190999349,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            80,
+            446,
+            333
+          ],
+          "pivot": [
+            236.5,
+            413
+          ],
+          "margins": [
+            16,
+            80,
+            50,
+            99
+          ],
+          "opaquePixelCount": 103673,
+          "contentSha256": "1ab2f885429a537215562a0d45f9285cfad92c3f1ab4c00980da4d1f955e1d04"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            79,
+            447,
+            335
+          ],
+          "pivot": [
+            235.5,
+            414
+          ],
+          "margins": [
+            15,
+            79,
+            50,
+            98
+          ],
+          "opaquePixelCount": 105429,
+          "contentSha256": "af1b94b826cbce1da716cbfd7ff088b3861172f5b83e81f4b3b12db75ee3478e"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            80,
+            447,
+            334
+          ],
+          "pivot": [
+            236,
+            414
+          ],
+          "margins": [
+            15,
+            80,
+            50,
+            98
+          ],
+          "opaquePixelCount": 110054,
+          "contentSha256": "d72385df1ddd850b6dea22d6c8cefea4500910995deda4c74967898ca39c9007"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            47,
+            446,
+            365
+          ],
+          "pivot": [
+            236.5,
+            412
+          ],
+          "margins": [
+            16,
+            47,
+            50,
+            100
+          ],
+          "opaquePixelCount": 129803,
+          "contentSha256": "f77579d426e0574c06113cbf917c571325951c61e0b19b815dbba06327d28edc"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            80,
+            447,
+            334
+          ],
+          "pivot": [
+            235.5,
+            414
+          ],
+          "margins": [
+            15,
+            80,
+            50,
+            98
+          ],
+          "opaquePixelCount": 103878,
+          "contentSha256": "3ee75259274086d1b2df2bc4f8058b7cfe848b7764c29cd4330180fdfa547ae3"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            80,
+            447,
+            333
+          ],
+          "pivot": [
+            235.5,
+            413
+          ],
+          "margins": [
+            15,
+            80,
+            50,
+            99
+          ],
+          "opaquePixelCount": 103876,
+          "contentSha256": "d766ba7deccffbde52b0e3bcacae32040e45d21e4b6d4a7fc2497f5e55a82d9f"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Transparent native PNG sprite atlas for a painted cinematic2D fighting-game background, exactly SIX distinct drawings on1536x1024canvas inthreecolumnsbytworows equal512pxcells. Each completesubject centered insidea360x360interior with70pxtransparentgutterallaround. Truealpha outside subject, nopaintedbackgroundorcastfloor shadows. Stable camera, scaleandmaterials. No labels,grid,text,logos,flashes. One OFFLINE human research machineforAVP2colony laboratory, originalsetdressing matched greyindustrial aesthetic: lowgreyrectangularsteelconsolebodywithdarkscreen, threeUNLIT indicatorbulbs, a shortdisconnectedpowercable hangingfromside, one smallblankinspectiontag onaloosemetalring. Sixnativedrawings show ONLY theloosecableandtagbeingstirredgentlyby ventilation: neutral, swayleft, farleft, center, swayright, nearneutral. Casingfixed, allscreensremainblackandalllightsremainOFFeveryframe. No poweredarm,fans,glow,sparks,characters, captionsorlegibletext. Completecompactmachinewithin360pxbox, coldgreylighting.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-8e7551d4-6ec8-4a8f-8d38-e550bfc5fb08.png",
+      "workspacePath": "work-local/v60/generated/arena-181-avp2/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six offline console drawings: only unplugged cable and inspection tag sway, screens and lamps remain off. Stable casing and contained subject.",
+      "sha256": "549678c930a2442839cae7a2ec1b378c86fa4185d6a79a0efbf89acf1cfc1adb",
+      "bytes": 2039562,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.48637644449869794,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            58,
+            37,
+            372,
+            422
+          ],
+          "pivot": [
+            303,
+            459
+          ],
+          "margins": [
+            58,
+            37,
+            82,
+            53
+          ],
+          "opaquePixelCount": 132675,
+          "contentSha256": "012812b317ef9c89783de6a07f07e57874ef9388788003d1478836fabd9dc4cc"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            59,
+            37,
+            428,
+            422
+          ],
+          "pivot": [
+            305,
+            459
+          ],
+          "margins": [
+            59,
+            37,
+            25,
+            53
+          ],
+          "opaquePixelCount": 136115,
+          "contentSha256": "a450d2e7107f5bbb04383967320b18a15fe2b7a47ff30743a509d423e76bf318"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            37,
+            440,
+            422
+          ],
+          "pivot": [
+            306,
+            459
+          ],
+          "margins": [
+            60,
+            37,
+            12,
+            53
+          ],
+          "opaquePixelCount": 135632,
+          "contentSha256": "e5e5417a1d8233c8545a9059854b89925c72bb991b323f3f91a7def3f0ac86a3"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            58,
+            36,
+            370,
+            423
+          ],
+          "pivot": [
+            303.5,
+            459
+          ],
+          "margins": [
+            58,
+            36,
+            84,
+            53
+          ],
+          "opaquePixelCount": 132993,
+          "contentSha256": "f016eb2f021e6ca9c7894be80146b048c02fdb73e2efbd03441613c530d81be0"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            59,
+            36,
+            442,
+            423
+          ],
+          "pivot": [
+            304,
+            459
+          ],
+          "margins": [
+            59,
+            36,
+            11,
+            53
+          ],
+          "opaquePixelCount": 136643,
+          "contentSha256": "ba9f212bcaae663b6290083100a4b306ca4e170399c04979479f5f3481677de3"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            37,
+            388,
+            422
+          ],
+          "pivot": [
+            305.5,
+            459
+          ],
+          "margins": [
+            60,
+            37,
+            64,
+            53
+          ],
+          "opaquePixelCount": 133802,
+          "contentSha256": "1cb6e4f04a0ea694616aabae5711e68a1111faf8b311e602ae21c4c29e60409f"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Create a native opaque1536x1024 P0 DEPTHBACKDROP for professional2Dsideviewfightinggame, inspiredfaithfully by AliensversusPredator2(2001) human research/implantation area, usingprovidedofficialPrima guide screenshots for MATERIALS andconstruction details ONLY. Do notdrawbookpage, text, HUD or firstpersonhands. Retainthickpalegreyroundedindustrial wallpanels, recessed darkobservationwindow, metallicconduits, insetrectangularcomputersockets andannulardoors/irisventshapes visibleintheref. ComposeoriginalwideLATERALview: stackedresearchalcovesandlongrearglasswindow onleft, largeverticalductcenterright, idleemptylaboratorymachinebay right. Cleanquietpocketsforseparateguardleft,separateXenomorphconcealedventcenter,separateinertmachine right; DONOTdrawtheseactorsorprops. Cold bluegreylighting,palegreywallswithdullamberlamps. Clearhorizontalreargallery, perspectivedepthsidecorridors butnocentralvanishingpointaisle. No largeforegroundfloor; bottom20%darkocclusionband fortheindependentduelfloor. Detailedpaintedgameart, notscreenshotreproduction. No activealiens,humanbodies,eggs,fluids,smoke,lasers orlabels.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-ab3339c1-4fb4-4a9c-854a-c15f05714b98.png",
+      "workspacePath": "work-local/v60/generated/arena-181-avp2/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Rounded grey panel construction, observation glazing, an iris hatch and large conduit retain the visible guide vocabulary. Original lateral lab layout, empty of actors.",
+      "sha256": "8751091718554992cb59eea732b4992b3a97b28db84e56cdeb439d74aaeb997c",
+      "bytes": 2181514,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true,
+      "referencedImagePaths": [
+        "work-local/v60/references/avp2-page-120.png"
+      ]
+    }
+  ],
+  "sourceEvidence": "Primary Prima strategy guide for Aliens versus Predator 2, mirrored PDF, visually inspected printed pages62 and106 (PDF pages76 and120). Research/implantation laboratory panels, vents, observation windows and industrial palette informed the original lateral layout.",
+  "sourceReviewDate": "2026-09-30"
+}

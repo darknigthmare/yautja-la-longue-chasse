@@ -1,0 +1,1422 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-175-phg-islands",
+  "compositionDigest": "353f53e41fec1cad414395a2c0401f9fcf618b01c8c50dafcc8b16850a7c0f13",
+  "checkedAt": "2026-09-30T15:36:19.039Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-175-phg-islands/p0-depth.png",
+      "sha256": "66467d4f1531c45edec36c8cd475c829d7b5bdf99f216facbc33724097b65860",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+      "sha256": "c696ef4a3964364e2d8e4752fe85edf9f29748fc212733dcf32988e4626d5fdc",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+      "width": 1881,
+      "height": 836,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "sha256": "787ea90595d21fadee070e050b88d01f371923211a2801926c7da4f8db720bfd",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+      "sha256": "a7fe46afee07dcc120a19b5759723772749b6f8210515bc353936b6bc89a34ba",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+      "sha256": "32896b1fd8a8976a49dcae9cc94f2fedb2d0fa7c9c35ace4328ecf2f30f04197",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+      "sha256": "2e112a613857af91d0712b1cd2d4a16e3bd85b84f8ad1ce352cc4ceea2e51bd8",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            355,
+            235
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            700,
+            205
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            118,
+            131
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            355,
+            235
+          ],
+          "pivot": [
+            355,
+            235
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            700,
+            205
+          ],
+          "pivot": [
+            700,
+            205
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            118,
+            131
+          ],
+          "pivot": [
+            118,
+            131
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            351.5625,
+            233.78062499999996
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            706.05,
+            202.95562499999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            108.04499999999996,
+            126.92062499999997
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            351.5625,
+            233.78062499999996
+          ],
+          "pivot": [
+            351.5625,
+            233.78062499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            706.05,
+            202.95562499999997
+          ],
+          "pivot": [
+            706.05,
+            202.95562499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            108.04499999999996,
+            126.92062499999997
+          ],
+          "pivot": [
+            108.04499999999996,
+            126.92062499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            362.4125,
+            234.2125
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            715.175,
+            203.5375
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            120.08000000000001,
+            127.8725
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            362.4125,
+            234.2125
+          ],
+          "pivot": [
+            362.4125,
+            234.2125
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            715.175,
+            203.5375
+          ],
+          "pivot": [
+            715.175,
+            203.5375
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            120.08000000000001,
+            127.8725
+          ],
+          "pivot": [
+            120.08000000000001,
+            127.8725
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            341.96250000000003,
+            234.2125
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            694.725,
+            203.5375
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            99.63000000000002,
+            127.8725
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            341.96250000000003,
+            234.2125
+          ],
+          "pivot": [
+            341.96250000000003,
+            234.2125
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            694.725,
+            203.5375
+          ],
+          "pivot": [
+            694.725,
+            203.5375
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            99.63000000000002,
+            127.8725
+          ],
+          "pivot": [
+            99.63000000000002,
+            127.8725
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            356.25,
+            235.35
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            697.8,
+            205.64999999999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            121.62,
+            132.39
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            356.25,
+            235.35
+          ],
+          "pivot": [
+            356.25,
+            235.35
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            697.8,
+            205.64999999999998
+          ],
+          "pivot": [
+            697.8,
+            205.64999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            121.62,
+            132.39
+          ],
+          "pivot": [
+            121.62,
+            132.39
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            367.5,
+            238.5
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            678,
+            211.5
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            154.2,
+            144.9
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            367.5,
+            238.5
+          ],
+          "pivot": [
+            367.5,
+            238.5
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            678,
+            211.5
+          ],
+          "pivot": [
+            678,
+            211.5
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            154.2,
+            144.9
+          ],
+          "pivot": [
+            154.2,
+            144.9
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            355,
+            235
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            700,
+            205
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            118,
+            131
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            355,
+            235
+          ],
+          "pivot": [
+            355,
+            235
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            700,
+            205
+          ],
+          "pivot": [
+            700,
+            205
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            118,
+            131
+          ],
+          "pivot": [
+            118,
+            131
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            355,
+            235
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            700,
+            205
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            118,
+            131
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            355,
+            235
+          ],
+          "pivot": [
+            355,
+            235
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            700,
+            205
+          ],
+          "pivot": [
+            700,
+            205
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            118,
+            131
+          ],
+          "pivot": [
+            118,
+            131
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1443,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1463,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1483,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1503,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1523,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1543,
+      "attachment": [
+        355,
+        235
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 2496,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 2516,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 2536,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 2556,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 2576,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 2596,
+      "attachment": [
+        700,
+        205
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 3553,
+      "attachment": [
+        118,
+        131
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 3573,
+      "attachment": [
+        118,
+        131
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 3593,
+      "attachment": [
+        118,
+        131
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 3613,
+      "attachment": [
+        118,
+        131
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 3633,
+      "attachment": [
+        118,
+        131
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 3653,
+      "attachment": [
+        118,
+        131
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-175-phg-islands\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "197c5bf63bfc36c77c01d7c8327ba7bc88a2c078a102810f4e5cca7c77c30a3c",
+    "left-corner.png": "8330d3dbd622a51d001305cc14cf2b5b584827fc0494d0b510b6d8c1c3380f56",
+    "right-corner.png": "3bd8e59f506e0e7dc08699b7844789a3ee51ab017a37041709596e07c1f0f3fc",
+    "wide.png": "8a6608999ba06c8d9a7dbddb09c2aeea80a9b48a19bea832d3d81959372f17df",
+    "life-01-active.png": "d521c470064df5acb328907e99021d8305f324587c26452a6734308cad3fde77",
+    "life-02-active.png": "a5bdae3a042463e292a4100a4cd1d2f4a3e71ca4ae35380412e56af7926a5325",
+    "life-03-active.png": "65156c0af65939182e8381e3e0d4e5cc8ecaa3c4c1c0b1eb82db8f3ec080d803",
+    "mobile.png": "c3c226af0bc078565733786bd81cc9d09d33cc97956fbc87e90c472c3a3706d9"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

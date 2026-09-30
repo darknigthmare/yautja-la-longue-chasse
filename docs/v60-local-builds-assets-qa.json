@@ -1,0 +1,775 @@
+{
+  "checkedAt": "2026-09-30T16:11:50.9267402Z",
+  "schemaVersion": 1,
+  "eslint": {
+    "preexistingWarnings": 3,
+    "errors": 0
+  },
+  "builds": {
+    "vinext": "PASS",
+    "nextWebpack": "PASS"
+  },
+  "servedAssets": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:4177",
+    "checkedAt": "2026-09-30T15:56:52.017Z",
+    "expectedPaths": 104,
+    "uniqueNativePngs": 104,
+    "checks": [
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-162-ahab-engineer/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2544848,
+        "sha256": "a7ad2cc7d7c85b63bc74404301d22740b52266669e57315e2be719cd9ae60c66"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-163-neonopolis-lab/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2219234,
+        "sha256": "b152b086afa414a356fb0b9063d64b49620b5f39845018ff024db6d8635cfbe7"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-164-alpha-revolt/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2505999,
+        "sha256": "92f6725c9ed9af26b045dd249deb92c59e5865c0d91ebb00a4b4cc1e18321876"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2432780,
+        "sha256": "c06e3ad91b84a51e072716a8846165dbe99f021ff19dcbe605a3b92e1faba34e"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2856691,
+        "sha256": "ca356e984bb1978288fcfb0202d46927ff37e218dab2cdc9ecdc623cbf06a224"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-166-forge-cyborg/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2304193,
+        "sha256": "f1d6bd4c4fce67ba2f460e284c2a70a85329a33f5dc58e431a01cf4b15dfbeda"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-167-lava-ridge/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2588488,
+        "sha256": "6aa0c502bca3ff6f6bab28935cffb89a11dfb78bae0a89396567b12e917c7134"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-168-hive-front/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2553882,
+        "sha256": "df9260b14a1e75d7e91ec1ac9545e705463eee4103d8b36c1b039a6bcec05946"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-169-extinction-front/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2770127,
+        "sha256": "81e30ecaebbc6bf3833a25ffa632ca914321aba1a463626e0b5cb2251a005731"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-170-gotham-bloodties/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2840619,
+        "sha256": "cd6f635b3e3a285a758a4b46b2668e5ee420ecfaae267ebebeabc3bb89d3548c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-171-meta-lab/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2306592,
+        "sha256": "2c655d8b8307d132598f1ff6224a6ce4190c84cb7a479dcbc8a962b3eba997c6"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-172-phg-north/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2529340,
+        "sha256": "9b8086fe7ca026b02ed979010ba7a54006fe4277360ec6f2354f2e053dd38911"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-173-phg-japan/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 3032980,
+        "sha256": "9d042883bf93292e24c990ff12f48a3d0195119dc197c12f762b9738fa93cdea"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-174-phg-sands/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2324104,
+        "sha256": "7d6e5d4e8e6b218647bcaca3fa67c853cecacf33bdabe960cad96767bef97bec"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-175-phg-islands/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2354595,
+        "sha256": "66467d4f1531c45edec36c8cd475c829d7b5bdf99f216facbc33724097b65860"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2667716,
+        "sha256": "f0bc1ec723450545a5464ad1b0e604d86e0cd8359c00c489bc98ab71fd131977"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p2-maritime-post.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1781526,
+        "sha256": "17247b134af125aad68bf3aebd0a74ee8c579ddab5874f307970a76e36b725ed"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p3-maritime-crate.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2115009,
+        "sha256": "5637a6b50e39807e4a03168b4360f4d23654f4cc3d4d0d8f8aa6580c5a7a0010"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p4-weathered-deck.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2394987,
+        "sha256": "5b0d5e7164d050832fae2c3340a9b5983f64002d7bd6ab62d67778c2dade6be9"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-177-phg-amazon/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 3242072,
+        "sha256": "2fb74eb080d36b43418b353a9e59e5fde33f1092956e3737c0c1c0a32dd86089"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-178-bloodshed-ring/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2226021,
+        "sha256": "ba8453fe1e819fc512e5c839a962588cc1dd2255d999c7004ff4af2c4fd161c5"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-179-last-hunt-preserve/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2807441,
+        "sha256": "995e42d69511521cd387173c66a689b005371165cfb3b0dacbd6da3e7806bddc"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-180-sandpiper/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1747309,
+        "sha256": "cc04b75cdf09d8b124b1219d98de620bf33ade656594274c6d159b1862d9489b"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-181-avp2/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2181514,
+        "sha256": "8751091718554992cb59eea732b4992b3a97b28db84e56cdeb439d74aaeb997c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-182-bullet-hangar/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2243867,
+        "sha256": "f548a849988b25ac10e9e9979fdeaf907f3ef47bc49cb53e0c71cc839e35290b"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-183-homeworld-wilds/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2501731,
+        "sha256": "ec0000a487c141a397ad91d4a949b682c33522a36dcc864aa6ba1b54de3db848"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-184-warp-threshold/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2339569,
+        "sha256": "3115e96be321a261bd6e5942afcc9b3744b39b91ab1901c869d7558dd8d92869"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-185-training/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2434792,
+        "sha256": "f7c61c76533f1c5fbf8fb5482b6478af079ccb3182ad6a2f64d3e2094c3c7812"
+      },
+      {
+        "src": "/game/sprites/v60/pit-arenas/arena-186-snow-hunt/p0-depth.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2845732,
+        "sha256": "4f609e1a0d735adc432bde47ca8301e67935b86efcf8d03c16edba54d7f2c306"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2201367,
+        "sha256": "3e8da646152a22911b37aa00cfce01c96c95f7e183d32a8c6b2566bc2984cbc9"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2253553,
+        "sha256": "333f421e51fe557867c81d221b7e95f624cdfdb1b13c0e06e16af952dc9b9c43"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2823772,
+        "sha256": "c949b7e72e7c90fd670d7df2fc4d51527b4c2ed20bb3615aeba0aeb9f93b2e04"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1607576,
+        "sha256": "51a24c36f5f40ccfa7bfe43e2aae870e8445199c429103baf2e347fa61317ce1"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1797679,
+        "sha256": "869f520cd260277846f800d86c8e667e7450d7fc3a8a08cf163f1dd121c0aa47"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2456767,
+        "sha256": "b96e671fe89e97c2c01a04b803fa6f9d341e25355a4a0a7e0e13fc538031defc"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2366922,
+        "sha256": "1047b5f38616ef37f3cf4d388acb0674a65c2291b533bd4ab52a5b0f95487308"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1383444,
+        "sha256": "d87a8173b0b02fc1ea51c44136ec40069acacf2007eecc996a43ad85918ad267"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1839272,
+        "sha256": "acefdebb5fae4a48ec00778418ea7e632a2d575dac3500854fdf02a9189918a2"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-165-kenner-throne/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1662029,
+        "sha256": "322fc5cc352738020aa741f09f4f93a1f1844af2e461f640c3a4f62f88822f04"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-165-kenner-throne/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2000440,
+        "sha256": "0e08187c7bfb5fb5588ea79542ce3d8655e86416c98d8a0144bedd6549ada174"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-165-kenner-throne/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2044904,
+        "sha256": "8d17ec1e9f1f248ad751ca88c2e3a5449f1522f3fb7d90398fc15f184eef4edc"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2314177,
+        "sha256": "b37f6b9d27b50be3fdb2e98a485d9af79ef59f36c9b87b2c6cf536fbe9c6a1d3"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1679930,
+        "sha256": "c8fd76d69fd5814c5cbb5f5643b0545d7d07f29ae0b0a8b6b545211055c8fc6c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2192283,
+        "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-167-lava-ridge/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1585366,
+        "sha256": "32989ef1d1533116f969d50c260e21c63b788205b0f91a88b704f7af8336c9e7"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-167-lava-ridge/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1713873,
+        "sha256": "3072881125544d6e5adcbf7e4859d346a92e81611c8d16c2f4efdce8715b6a20"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-167-lava-ridge/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2209962,
+        "sha256": "a7afc2bb6d406f5e5da1154f905337267e01acad8a6a1d83d3996ca8b137e3df"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-168-hive-front/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2563741,
+        "sha256": "268636c2a77ad6b0022eadf6eeecc1819a03334b09a0e4e3ad8c047ad074f51f"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-168-hive-front/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2224203,
+        "sha256": "a1b777e424894f174fba192d27e5a14f89d8ef0db11ce50912a498e21238918d"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-168-hive-front/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2568919,
+        "sha256": "7c62d418fea06ea2ce1f5c1a8fe841cf1b2f3fd9e1016e97197702b258ed8bcd"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2104382,
+        "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1953911,
+        "sha256": "e718703fd439caeb9b19c6e9952b8625889e5e733c79876d7e47bb2e98b9b54e"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1869293,
+        "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2104289,
+        "sha256": "7cad0b6fc4a19d843a145bcf0316bd152451da58288809d94dd50ebd5f0e0ae5"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1881989,
+        "sha256": "2ccc3ea9ecd20e07465a9462309dfa877a9d89d02ab6164ea31c11c6128355e2"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1447100,
+        "sha256": "d29f194539cd942be5297cb2d48ab1c16f5a7a03665ffe7ce0742dc5f652e0b7"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2466126,
+        "sha256": "fa771c0839343a4ee4608285c9661938ed3530e7cf4d6ffd280a58769527b4a8"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1761500,
+        "sha256": "b2b50f83cdd4b6aa994081d980815fb78562e26975e1d765792254a839a0824c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2301333,
+        "sha256": "e894f427b51f6e5a599b4bf7b0a185c85eef6ef44c6b4b876f9bd08b9edca7c6"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-172-phg-north/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2258748,
+        "sha256": "964e0ff66f03e7ef431a78eee6640cb6fc1b85dfd24a18e7b87ee43a77c0d529"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-172-phg-north/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1779984,
+        "sha256": "19e39bbdde270a026bc330e824f8e65ca33b35bfd88c582a93b7e41c5dfb4e74"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-172-phg-north/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1494283,
+        "sha256": "f76211d7ee9623e024499ba95f13b988e2b192dd9c775777c41a496d71154697"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2253057,
+        "sha256": "e2756de56ecb84713d0eb398c506cd4eac7ba9f7745b8d5033f09f743dc14d06"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1851858,
+        "sha256": "6505d70a2f8555f4149bd199f79b2a79d32c9ef77348e75ef1945fa2c5555bcd"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1525206,
+        "sha256": "06e15f6ab586c6db257cda82245aa0d18967d9844aa6ea2e4c403aa9863d7587"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-174-phg-sands/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1763997,
+        "sha256": "8d0a3aa0b98d86dcc42483d22b1fc290e6b0e817538d025c801fffefa6925d59"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-174-phg-sands/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1839748,
+        "sha256": "a6c82685a899ccbf690d2c6bb82540bf8e458953e1393ce8b8ba535bd8409333"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-174-phg-sands/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1680703,
+        "sha256": "80f2ec37b415b26b5465a7d77c7e2da72088b2cf1af5f6385ad693256278a24a"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1871635,
+        "sha256": "a7fe46afee07dcc120a19b5759723772749b6f8210515bc353936b6bc89a34ba"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1550827,
+        "sha256": "32896b1fd8a8976a49dcae9cc94f2fedb2d0fa7c9c35ace4328ecf2f30f04197"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-175-phg-islands/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1959302,
+        "sha256": "2e112a613857af91d0712b1cd2d4a16e3bd85b84f8ad1ce352cc4ceea2e51bd8"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2124576,
+        "sha256": "cb90e3430ded0f3a3a74d52b3efe0a9d303b4206adcc58d563244b71ff63ff32"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2155250,
+        "sha256": "582a2ac307666b012ddc35100c1659666d4220c243b84a3270ba70d8fba5e0d7"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1743495,
+        "sha256": "8bb4451f7222417d8a48f2d3c1e6a224ba1b9ff4cf332d895ae0f951a8c63cc5"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2087432,
+        "sha256": "3a8fc8c697b92c0581198ef54fcbe79007ed857f63524902f7d167a998284884"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1524883,
+        "sha256": "7fc6ad7aeb9a9bac12f352abe1f69173da0537b2b54bf41cef12ec57f642d873"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2470750,
+        "sha256": "42a55b867a5b9354ce6ee198b90a4836789ebfb7d1a20b683704d428edf809cb"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-178-bloodshed-ring/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2190742,
+        "sha256": "e72c6a3062712e76c4551e21e091ec76601bc540f8b565e31fdecdf5fe6d662b"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-178-bloodshed-ring/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2313150,
+        "sha256": "d45b3798a4d385dc36362e5014a4dfb6ccaec04ce35b7d0fdb9cfd6c2c8f315c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-178-bloodshed-ring/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1685317,
+        "sha256": "0926b4c735dbf0ce21498a205c2ca19e75fa6ff0fee15535658134bfc8c800a2"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-179-last-hunt-preserve/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1778700,
+        "sha256": "8307ee95585af1322062a9329f4aae32d1ba86ac7f573eff4cba38e9e111c598"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-179-last-hunt-preserve/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1733787,
+        "sha256": "a0b695020a13e1b8274d887fc0045c64a7fcdf30985982ff8fc1d9f8ea11badd"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-179-last-hunt-preserve/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2018154,
+        "sha256": "d89c1cb01bbdece003eb266bea397f9b3e584446e69de6c6408e1c4112a641f5"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-180-sandpiper/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2045517,
+        "sha256": "33a067c44ac096031f20d18ce2462252696e4e2a2a186c538a532297a24bef06"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-180-sandpiper/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1778252,
+        "sha256": "d604a471a7e8267ad928dcc01cac792ea3c4e90a8f98781a0e8d15473026b3bc"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-180-sandpiper/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2152030,
+        "sha256": "6142e041393debe62742aa7543d22d9bed000aaaae9245c8d434ff6b1edff67a"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-181-avp2/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1602143,
+        "sha256": "7bbd2fa182ba32c89ed615eacfb26f8f7b61fa4d5fe2b2323947a9fe7ed89077"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-181-avp2/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2164778,
+        "sha256": "2cf15f6bce5ab328d2712131ea165841cc0518e6729987b359816891923d805e"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-181-avp2/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2039562,
+        "sha256": "549678c930a2442839cae7a2ec1b378c86fa4185d6a79a0efbf89acf1cfc1adb"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1436629,
+        "sha256": "08b7dbe616178ba1ffd82f73eaac97f66ccf1c7ed467a689b6a9b214525cd924"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1818380,
+        "sha256": "91bf5233f37b3cb1a4d7c44c72ee86d949f658f7102af26a0dffa584f7389fb4"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1611746,
+        "sha256": "65955686497ad660a95c676cd3b453f4d6e1dae411764cee323c2bda944c889d"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1748776,
+        "sha256": "ad6a925ef9a737d641fb75cdf80f79bbf630f94176ab687831a0e8e9fba8d1c1"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1760773,
+        "sha256": "21d7e321a9da629f5ec5f9ff3a5c24176bd49148413071be81b636033f37f9db"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2142444,
+        "sha256": "7314f950bc9fc77213018123aa83002a6ee499012a7b2541425b8de2046de430"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1942410,
+        "sha256": "14839bd74013b3b74c5a81f988432a4cb1de7c768018ebc55d88c1500e8431fd"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2118359,
+        "sha256": "9c6998f137b540101d9f78ecb2ff35426402551d8270430f456399fb7d439b1c"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2373531,
+        "sha256": "86a22c38a794d5af03e828a4d268e12b264e73a45241e8b5ffd1fefd3edc3a26"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2024951,
+        "sha256": "c277ea9bdf08660e50d2dc375d8a609293e46dca9f4d38e6fe7db760f944b978"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1903244,
+        "sha256": "faca049c5300c4ea49324e406fafe8688d78033630f186f0b5b77037d48cdce3"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1808852,
+        "sha256": "199598916ffba1e3ec8335d007d357b2f6c74e0a556ef38ca175d427a4d42601"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-186-snow-hunt/life-01.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2054833,
+        "sha256": "c64a45146145a70542102d2d948791575314ef3fa6099066dd36d51ce25f99cf"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-186-snow-hunt/life-02.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1962692,
+        "sha256": "19cfb08e9f32b943089ff89d5b5bbb4895dcb7795e671b627e7d80b4ee044508"
+      },
+      {
+        "src": "/game/sprites/v60/pit-life/arena-186-snow-hunt/life-03.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2194888,
+        "sha256": "040657613715cfb3577723fc9baafaf6f4563ca4bc5c4f0cce35c9c85d19181e"
+      }
+    ],
+    "failures": []
+  },
+  "limitations": [
+    "Local validation before publication; no production claim.",
+    "Next uses a local M: cache and dependency junction; those are not deployment sources.",
+    "Initial failed Next build logs and development pilot failure remain preserved in work-local/v60/qa."
+  ],
+  "release": "V60",
+  "logs": [
+    {
+      "path": "work-local/v60/qa/build-vinext.log",
+      "sha256": "8b2ef854a8f9ca8776621766f10176505eb367d3e5f81be5dfcee8761156247e"
+    },
+    {
+      "path": "work-local/v60/qa/build-next-final-cache.log",
+      "sha256": "4cbe1e20b669ea230fa88f06e43db9265e0a4ee7935d6d251ea9fb88aa224cc1"
+    },
+    {
+      "path": "work-local/v60/qa/lint-final.log",
+      "sha256": "e97dc51011f469469f3ba16aafe38087a723000ac7fdc36acc826fd219c3db3c"
+    },
+    {
+      "path": "work-local/v60/qa/typecheck-final.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    }
+  ],
+  "typecheck": "PASS"
+}

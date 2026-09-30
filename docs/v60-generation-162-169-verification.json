@@ -1,0 +1,3169 @@
+{
+  "checkedAt": "2026-09-30T15:23:31.533Z",
+  "result": "PASS",
+  "stageCount": 8,
+  "nativePngCount": 32,
+  "alphaSheetCount": 24,
+  "nativeDrawingCount": 144,
+  "uniqueNativePngCount": 32,
+  "uniqueNativeDrawingCount": 144,
+  "pixelEditingPerformed": false,
+  "runtimeIntegrationCertified": false,
+  "stages": [
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "sourceRange": "09_STAGES!A25:N25",
+      "lifeRange": "10_VIE_DES_STAGES!A65:N67",
+      "loreLimits": [
+        "Original lateral ruins; no exact comic-panel geometry certified.",
+        "E65 unverified species replaced by wind-driven vegetation; E67 pre-boss Engineer silhouette replaced by ruin mechanism/dust. The literal conditional actors remain unfulfilled.",
+        "No species, named character, or chronological presence invented."
+      ],
+      "assets": [
+        {
+          "id": "p0-depth",
+          "sha256": "a7ad2cc7d7c85b63bc74404301d22740b52266669e57315e2be719cd9ae60c66",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        },
+        {
+          "id": "life-01",
+          "sha256": "3e8da646152a22911b37aa00cfce01c96c95f7e183d32a8c6b2566bc2984cbc9",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3426055908203125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                99,
+                26,
+                43,
+                26
+              ],
+              "cellHash": "9134f26917b3bcc3d15bd9485c1ee873786dcbeb1fe9a24355d5de978b453bea"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3517265319824219,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                80,
+                68,
+                13,
+                26
+              ],
+              "cellHash": "05eb4cde6e0a21d17cc1dea743c5011933a5219a50014b2d7d89ede7ee4efe1d"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3203582763671875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                91,
+                121,
+                14,
+                26
+              ],
+              "cellHash": "ad84aa7470e3ddc3b916f8b829de4709c21b6bd28f1fb64dd0cfb8f18df79ef1"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.34716796875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                100,
+                25,
+                43,
+                27
+              ],
+              "cellHash": "763740db4c7ff63d1f41aa4f52d82bc41739ec432a2d40aad903f3bd5e8c0a67"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3204612731933594,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                49,
+                54,
+                115,
+                27
+              ],
+              "cellHash": "bcefc27de18ac07248e350f517ebfd911ca9bf6bc414cf59c12162924dd5c915"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.334686279296875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                85,
+                29,
+                60,
+                27
+              ],
+              "cellHash": "da8572c54523628f1c412c92c24b19a1a4ae7b7ab956f803bec03e75b720f1a9"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "333f421e51fe557867c81d221b7e95f624cdfdb1b13c0e06e16af952dc9b9c43",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3147125244140625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                86,
+                18,
+                78,
+                33
+              ],
+              "cellHash": "8046ea217c6d90fba246635c9150376ce74519842fd77bfd35641340666f7d3b"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3715400695800781,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                14,
+                18,
+                64,
+                33
+              ],
+              "cellHash": "ace4ea97837e61e6bbc55fcc41df0e76e744f1745c7b1cb477e621992d825583"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3767356872558594,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                50,
+                18,
+                36,
+                32
+              ],
+              "cellHash": "14eb97c3b0f43005e88c9489e7deb062759e826ed2885248ff46cd3bf33aef0b"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.44356536865234375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                39,
+                12,
+                27,
+                45
+              ],
+              "cellHash": "3ae37be521ceaeb2944e5b131c82945cec15f7c7bb9880c94151bbd18e0105dd"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.38668060302734375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                17,
+                12,
+                46,
+                43
+              ],
+              "cellHash": "3f8d383eaf4594a7e62fcb452d871c1d285f5b33934fa21ef3bae2beecd9a3fd"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3068275451660156,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                89,
+                13,
+                74,
+                42
+              ],
+              "cellHash": "7b5cbe1c72504d209461e82ed9ae41780e7856c087d7fe8f46847d059308b5df"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "c949b7e72e7c90fd670d7df2fc4d51527b4c2ed20bb3615aeba0aeb9f93b2e04",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4949302673339844,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                97,
+                16,
+                67,
+                21
+              ],
+              "cellHash": "12782d9903034576ad2b02364eb87b487f9c312f0b9ee8787d5028c3a5f41f64"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4952659606933594,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                88,
+                16,
+                75,
+                21
+              ],
+              "cellHash": "6dcd41ad237db7a43ab56f601a4656e1351f6516e5e6781769adbb79324f5fe6"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5106010437011719,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                76,
+                14,
+                85,
+                20
+              ],
+              "cellHash": "59f4f8f114f5b8305598ab3df24795a2b34b3116ed4c5269d35e6c7fc0224e31"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5310020446777344,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                89,
+                7,
+                55,
+                23
+              ],
+              "cellHash": "cb4c3ce13fb924800690aee3642566e991d68c8dc3e2a159a222f1e71a206ff1"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5210762023925781,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                84,
+                6,
+                72,
+                24
+              ],
+              "cellHash": "477e801a2f473d57975bc6107e8963eee8cae6277d271d6ad32a3b04cd936a4b"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5175590515136719,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                74,
+                8,
+                81,
+                23
+              ],
+              "cellHash": "60974bfff5239f19253cdae160fd49e62655fb4be037019bdc29b0c4c8b0009f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-163-neonopolis-lab",
+      "sourceRange": "09_STAGES!A26:N26",
+      "lifeRange": "10_VIE_DES_STAGES!A68:N70",
+      "loreLimits": [
+        "No named spectator or cyborg body repeated beside an active fighter.",
+        "Technician is an original anonymous adult; costume and room geometry are not frame-perfect canon."
+      ],
+      "assets": [
+        {
+          "id": "p0-depth",
+          "sha256": "b152b086afa414a356fb0b9063d64b49620b5f39845018ff024db6d8635cfbe7",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        },
+        {
+          "id": "life-01",
+          "sha256": "51a24c36f5f40ccfa7bfe43e2aae870e8445199c429103baf2e347fa61317ce1",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.1913909912109375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                210,
+                16,
+                134,
+                12
+              ],
+              "cellHash": "fed2f388d3f07a84a1632fbfd25072b22335ccc4d9a11711fb5c677147ff6499"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.18719482421875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                171,
+                26,
+                172,
+                12
+              ],
+              "cellHash": "f0d0288a79b3e58afefb0ef6abc7bcf952bc9e17c3936edda8b8bdb221908cb4"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.18796539306640625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                149,
+                26,
+                180,
+                12
+              ],
+              "cellHash": "03c28b6bc7cb797caad5afcddcad7c0461ae752a82c89302617a91943bcff937"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.19388580322265625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                209,
+                14,
+                135,
+                15
+              ],
+              "cellHash": "32a41d370ecaaae198368bab9a64b53cfaa72df7af65377a305ffa132972d58f"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.20363235473632812,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                171,
+                15,
+                167,
+                15
+              ],
+              "cellHash": "717ab5ba6cf2974998584d3eb3cb8d359d2e209cecb39794187c95f4448276bb"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.19263076782226562,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                147,
+                13,
+                196,
+                15
+              ],
+              "cellHash": "199bac89c4a59bc9e6cd9b9de84f21a146c2480066ec13731070e1435dd0906b"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "869f520cd260277846f800d86c8e667e7450d7fc3a8a08cf163f1dd121c0aa47",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.19479751586914062,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                174,
+                81,
+                114,
+                47
+              ],
+              "cellHash": "bc6cc19990120c06273ab64b788e52b7d3beabda69def20c6f476741fa9724af"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2013702392578125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                148,
+                105,
+                82,
+                47
+              ],
+              "cellHash": "1b657d5d39e5e075e59c3a5ce0c0d72d8e2932f83d808eae216f46b9597f3768"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.18837356567382812,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                108,
+                167,
+                110,
+                47
+              ],
+              "cellHash": "f19d81ace70e9cccadc3eb6f018fe9246cd1c5a95fe0d9b40454b21a6722d6b5"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.18266677856445312,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                174,
+                114,
+                138,
+                66
+              ],
+              "cellHash": "a0a8c43f64bb5b9f18cb7c91c7ce2cc5486dfb7c9ea6c4ee335181c39cee5bed"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.20421981811523438,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                140,
+                66,
+                109,
+                66
+              ],
+              "cellHash": "a5f02dbf16fd98659d354455260cd0760b3ed4f71802aff6ace7a899e62f2a60"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.19342041015625,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                141,
+                70,
+                145,
+                67
+              ],
+              "cellHash": "c396db2e86cb417749678377a5febf51fe48355860948ec2e700aac48ac5219b"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "b96e671fe89e97c2c01a04b803fa6f9d341e25355a4a0a7e0e13fc538031defc",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.521636962890625,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                73,
+                61,
+                39,
+                45
+              ],
+              "cellHash": "d6a06fd9060d4ef590cfb3d855a6d6184707f099e5e60b3d5d2f9b65d297f9c5"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5183219909667969,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                58,
+                62,
+                53,
+                45
+              ],
+              "cellHash": "4f292aeccbab2394058ec2842f13dc0f27b8add18ecd67adbf00a8f58c1d4029"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5204696655273438,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                43,
+                62,
+                68,
+                45
+              ],
+              "cellHash": "e759d8d2ec9cfcc6d953e9492e8ce0c2b88823714ebc59d6fa90a4fe30186a33"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5209922790527344,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                73,
+                32,
+                38,
+                75
+              ],
+              "cellHash": "7c546e7591727e946881d02820e3e6c751f9ff52d01b979994fc7fe20f49ad2b"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.5200080871582031,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                58,
+                32,
+                53,
+                75
+              ],
+              "cellHash": "00f476a0b32c1c10b9ea5b8d015b0981f2c159098eb9da0ba5a0230bc82e36d7"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.520751953125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                43,
+                32,
+                68,
+                75
+              ],
+              "cellHash": "aa5d1e57ab1a50a0683ce2f05fd393350a1b86cc31006688979e2bbb07915e9b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-164-alpha-revolt",
+      "sourceRange": "09_STAGES!A28:N28",
+      "lifeRange": "10_VIE_DES_STAGES!A74:N76",
+      "loreLimits": [
+        "Original quarry homage to the Alpha figure; neither architecture nor labour system is certified canon.",
+        "Unverified workers/sentinel species replaced by quarry mechanisms and monitoring apparatus, explicitly original environmental adaptation. No invented Amengi biology."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "1047b5f38616ef37f3cf4d388acb0674a65c2291b533bd4ab52a5b0f95487308",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4365577697753906,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                63,
+                19,
+                24,
+                58
+              ],
+              "cellHash": "b4074e7daeab91a3dd0e09943ee0e1cd61f6d1dc9e79b377d901c03c5395a56c"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4435882568359375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                63,
+                19,
+                26,
+                58
+              ],
+              "cellHash": "b4302934ad93c57e52365369ec84dd547c891179ed5e5f7fdbb71c0d8d1137d2"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4411659240722656,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                62,
+                19,
+                26,
+                58
+              ],
+              "cellHash": "5756e498fb5d9d6a0ede575461b7e61db8fe727f18b0a3c3caa6be5c55f116fd"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4391593933105469,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                61,
+                21,
+                24,
+                59
+              ],
+              "cellHash": "ef210054e0fb4c0434a6d8993eb34d155293b7405e038260992c736935142f5c"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.44168853759765625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                62,
+                21,
+                26,
+                59
+              ],
+              "cellHash": "1c555609dd4e99760b214a80a7a34f206389b0c2cbe22b98e412e1749bc9eb72"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4358024597167969,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                63,
+                21,
+                25,
+                59
+              ],
+              "cellHash": "74fdef5469b8b417abb584643fe50ebe2543e392ceac04d2714f69d76fe6fec4"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "d87a8173b0b02fc1ea51c44136ec40069acacf2007eecc996a43ad85918ad267",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.08992767333984375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                215,
+                104,
+                151,
+                87
+              ],
+              "cellHash": "f6aefcdb8f4ac9db70da8679808b9f4837665226065272c7d5a176d6722f2a68"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.09070968627929688,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                173,
+                104,
+                183,
+                88
+              ],
+              "cellHash": "1aad0d443fa9837a7378a27574a0cb2207f9763ca397bed90683f27ce42e741c"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.09213638305664062,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                110,
+                104,
+                210,
+                90
+              ],
+              "cellHash": "8957d688811c794df305c7cd4689683e075011431216891e0a07062664ef78fc"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.0908203125,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                215,
+                87,
+                152,
+                107
+              ],
+              "cellHash": "ce8247a868ead2c40dd144980c00d17d6d446329f0ac79d040cca897f2524ca5"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.09154129028320312,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                183,
+                87,
+                172,
+                110
+              ],
+              "cellHash": "23492ca7ad5bc822911f7690460f2b4ee96c043e04e1d59ff1394eeeaed4ead3"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.0942840576171875,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                156,
+                87,
+                161,
+                112
+              ],
+              "cellHash": "e7bb1f9ba650e8d2895dda32a32b98a5418924448bde465900e303e798c5fc66"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "acefdebb5fae4a48ec00778418ea7e632a2d575dac3500854fdf02a9189918a2",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24672317504882812,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                204,
+                13,
+                141,
+                12
+              ],
+              "cellHash": "60caa6aded5ad5979a0869940e1ee79e9d5c4292d4c9470f7495aa65e4ddd743"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24367141723632812,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                172,
+                12,
+                163,
+                12
+              ],
+              "cellHash": "82fa3f831479f2e0fb9b722dfa32ca5bfeae89d6478d86b57ef743f8eb3663e0"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.23877334594726562,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                140,
+                12,
+                191,
+                12
+              ],
+              "cellHash": "2158bd323cb53f70d30f9908fb38e5d480c2fa883f235c243b5357777c8132ff"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.23563385009765625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                204,
+                12,
+                124,
+                13
+              ],
+              "cellHash": "83b0c5cde3af30ed90fd8519faa525959cd4f0ec79040c5a29973d7ff8b43d97"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24008941650390625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                171,
+                11,
+                166,
+                13
+              ],
+              "cellHash": "5c34a92d256603dc938999a902cce79852eb71584d842dbdaf48d5ef49755d90"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24766159057617188,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                139,
+                12,
+                205,
+                13
+              ],
+              "cellHash": "0aedd0465ecd001727635ba5f0bbd9e6b7843a06e13f07b185972a8b0f8b8a50"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "92f6725c9ed9af26b045dd249deb92c59e5865c0d91ebb00a4b4cc1e18321876",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "sourceRange": "09_STAGES!A29:N29",
+      "lifeRange": "10_VIE_DES_STAGES!A77:N79",
+      "loreLimits": [
+        "Original ceremonial chamber inspired by NECA Bone Throne; no claim of Kalakta or Marvel King/Prince personal throne.",
+        "E79 forbids throne tentacles, therefore replaced by an original slowly moving ceremonial banner.",
+        "Anonymous adult guard/attendant not the selected named hunter."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "322fc5cc352738020aa741f09f4f93a1f1844af2e461f640c3a4f62f88822f04",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15248870849609375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                191,
+                97,
+                167,
+                16
+              ],
+              "cellHash": "8d092e9b11db3520ae1599e7c1e2f6c7c95cc2e0f3de4e8aa7cff70c777661e5"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15091323852539062,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                172,
+                97,
+                188,
+                16
+              ],
+              "cellHash": "23f3a32720b92574f3b60c42d644899dd3793f4a545c086057ad04c37a5412af"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.1534576416015625,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                160,
+                96,
+                198,
+                16
+              ],
+              "cellHash": "1f050b420c59df7aef6a4e087bb2a60e4b00fb3e454526bd2f37f36e913431b4"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.14900588989257812,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                186,
+                64,
+                167,
+                50
+              ],
+              "cellHash": "3fbc94eb934e396943893045dc20d3974584479dbdf3e6cced201ba4b536e332"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15500259399414062,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                170,
+                64,
+                187,
+                50
+              ],
+              "cellHash": "87504929967fe127141ca3b9ccc14852bcbb1ccf7641363b77f183f8f408cafa"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15765380859375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                167,
+                62,
+                187,
+                51
+              ],
+              "cellHash": "54eefdc9f5f9a2d36d5749ed7d77aaa0c788c1eb1e91b4200bdd11e02e7e68ee"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "0e08187c7bfb5fb5588ea79542ce3d8655e86416c98d8a0144bedd6549ada174",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2567901611328125,
+              "edgeMaxAlpha": 8,
+              "opaqueSilhouetteMargins": [
+                208,
+                6,
+                101,
+                6
+              ],
+              "cellHash": "2f0b3ee73b1c9f251fbfe0fe79bff230ade5ddb073321cbf697c5e90277126b7"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2579078674316406,
+              "edgeMaxAlpha": 13,
+              "opaqueSilhouetteMargins": [
+                161,
+                5,
+                143,
+                7
+              ],
+              "cellHash": "9c41241d89328cd82cb11c1970febd0ecfe32b7a4e3983e28effdcac49fa5a7b"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2689056396484375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                107,
+                8,
+                176,
+                8
+              ],
+              "cellHash": "df3e558083792be32a51880b95c47da1b056b3617fb4ce4df3cb4ff2fe80db8a"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2613410949707031,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                186,
+                7,
+                88,
+                10
+              ],
+              "cellHash": "02053cae082f21b6c3bb955a8ea7e47c1cda5fcb3d4156adc471030107ace511"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.261444091796875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                155,
+                4,
+                146,
+                11
+              ],
+              "cellHash": "ad48856544f8fc62fba2898ad91c8092cdd09482b9ffe4a753ed0dfb3605b0a0"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2561454772949219,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                136,
+                4,
+                165,
+                10
+              ],
+              "cellHash": "69ac2fa4fafd2e1f2c122c20bc6b7f3cb6c2ca690997820020e698e48d7a634b"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "8d17ec1e9f1f248ad751ca88c2e3a5449f1522f3fb7d90398fc15f184eef4edc",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.270599365234375,
+              "edgeMaxAlpha": 7,
+              "opaqueSilhouetteMargins": [
+                134,
+                3,
+                93,
+                32
+              ],
+              "cellHash": "072a3bcaed4abed420f88b81548de0cf4073c4325fdd74a72c7814de27d830ed"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2760124206542969,
+              "edgeMaxAlpha": 5,
+              "opaqueSilhouetteMargins": [
+                125,
+                4,
+                40,
+                43
+              ],
+              "cellHash": "323e60f1da2f839165c020b4498e7e9e0f40412e5c46df675e59b3e76f934b43"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2773017883300781,
+              "edgeMaxAlpha": 7,
+              "opaqueSilhouetteMargins": [
+                93,
+                3,
+                70,
+                36
+              ],
+              "cellHash": "2b35803e820577b509c41a69d9aa0ca3f9be39ae95a8b9032c7e172d3737dd43"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2739143371582031,
+              "edgeMaxAlpha": 2,
+              "opaqueSilhouetteMargins": [
+                136,
+                2,
+                91,
+                38
+              ],
+              "cellHash": "36d5ca0b6e4d7bf5c2d468f12259369fbb71644037694a322aa75ed66caacc6f"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2793083190917969,
+              "edgeMaxAlpha": 3,
+              "opaqueSilhouetteMargins": [
+                85,
+                2,
+                103,
+                48
+              ],
+              "cellHash": "934ce004119f64c32fa415ba1cc202f5fa96a64bce90310ffdb3cc89ec143fa9"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.27249908447265625,
+              "edgeMaxAlpha": 3,
+              "opaqueSilhouetteMargins": [
+                98,
+                2,
+                129,
+                38
+              ],
+              "cellHash": "7d0073845138c9f1b7560f9e31a8b73294078f6ed55d38eb89a1265f89590b8a"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "c06e3ad91b84a51e072716a8846165dbe99f021ff19dcbe605a3b92e1faba34e",
+          "width": 1983,
+          "height": 793,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    },
+    {
+      "stageId": "arena-166-forge-cyborg",
+      "sourceRange": "09_STAGES!A30:N30",
+      "lifeRange": "10_VIE_DES_STAGES!A80:N82",
+      "loreLimits": [
+        "Original extraterrestrial prosthetics workshop, not an official home location of all cyborg variants.",
+        "Prostheses disabled, technician anonymous adult, no active fighter double."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "b37f6b9d27b50be3fdb2e98a485d9af79ef59f36c9b87b2c6cf536fbe9c6a1d3",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.37442779541015625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                58,
+                28,
+                36,
+                78
+              ],
+              "cellHash": "9db6a0aaa7aca66e815dbad716c2b4e12ea5c4ca598babaaa8264d7b64ce570e"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3718681335449219,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                43,
+                89,
+                51,
+                78
+              ],
+              "cellHash": "608603297a35b799c403f2ad049a3f1cc099711e2f3f54cdd2366c213ce0374f"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.38059234619140625,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                30,
+                81,
+                66,
+                77
+              ],
+              "cellHash": "026e092ddb64bb4f7b8e8d53e42bda86ad8f86a2f41c62dc2eb8611fcf4f48f9"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3791542053222656,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                59,
+                82,
+                36,
+                77
+              ],
+              "cellHash": "3c3e4740b65751c959ac4b5b2418de9dab9bd9a1ce90f98c2f1b2738e597cc97"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.38680267333984375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                43,
+                25,
+                52,
+                77
+              ],
+              "cellHash": "92574c41ff4a8c6e8c04e96f3bf282d1a4a0dd8303ad5df2af3c1d793b738dad"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3802452087402344,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                28,
+                20,
+                66,
+                77
+              ],
+              "cellHash": "c7183bbb3721a8c67510271bd83db4e876b1e19260e6941002c5d79b40b0c69c"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "c8fd76d69fd5814c5cbb5f5643b0545d7d07f29ae0b0a8b6b545211055c8fc6c",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16645431518554688,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                225,
+                63,
+                114,
+                29
+              ],
+              "cellHash": "712ec907f321fb68a83af7f250524f9d62024eef923ac0730171986770446e90"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16603851318359375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                181,
+                63,
+                161,
+                29
+              ],
+              "cellHash": "360b0ce0c68e2f04e052287872ca14b38584413989cbee80aead16ce172a089f"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16636276245117188,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                137,
+                70,
+                203,
+                27
+              ],
+              "cellHash": "a9a14d87971cf0cdd35ff6fc127df7d65b817e882f4ee05f8be061cfcd5c2e38"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16852188110351562,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                227,
+                42,
+                108,
+                50
+              ],
+              "cellHash": "91c6723a4cd1efa3a1c93b08c095222d60c8e1b3854d10f4f12bee4d5a85f2b5"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.1635284423828125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                181,
+                45,
+                162,
+                50
+              ],
+              "cellHash": "cf01f4e9562889978aabc9d1d7612a12cad7b5ceab6a260fd8b0748f6438efad"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16659927368164062,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                141,
+                43,
+                202,
+                46
+              ],
+              "cellHash": "32fe4c64ee7b38034c9d0e0be777f60e5012503ac691a5f47961e4f3bfe237ba"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3104362487792969,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                86,
+                140,
+                65,
+                35
+              ],
+              "cellHash": "adc2f54c2788647ca748b26952c6667a07a06c8ae2654e42dc20bf7c2c292481"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3285789489746094,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                89,
+                97,
+                63,
+                33
+              ],
+              "cellHash": "095638578b4f9a7ed0b6188f1f53182ac791bd17817af3ff196cd6db0d242baa"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.39949798583984375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                77,
+                41,
+                75,
+                32
+              ],
+              "cellHash": "ee40a5396974449f4dced7289794bcafceb4c1eb76f8c0fd0b7fd18d3897390d"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.357574462890625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                86,
+                63,
+                65,
+                63
+              ],
+              "cellHash": "c9486376eb702b9dcaa2c6a17b0bdb2449372046fafa997cf40f8e1fdc141e7c"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3275299072265625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                92,
+                84,
+                62,
+                63
+              ],
+              "cellHash": "0fee0db000e3230ab1257c7bb03469ca8555454f187514be27f54bde002a862f"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3250923156738281,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                78,
+                75,
+                73,
+                59
+              ],
+              "cellHash": "f080b3771b38faa5ae1f15caf7ec2c2d166c38fa2e8f3ff384101755a99b5241"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "f1d6bd4c4fce67ba2f460e284c2a70a85329a33f5dc58e431a01cf4b15dfbeda",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    },
+    {
+      "stageId": "arena-167-lava-ridge",
+      "sourceRange": "09_STAGES!A31:N31",
+      "lifeRange": "10_VIE_DES_STAGES!A83:N85",
+      "loreLimits": [
+        "Original volcanic biome inspired by Lava Planet toy theme; no asserted planet name or fire immunity.",
+        "Fauna deliberately original, not a named canonical creature."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "32989ef1d1533116f969d50c260e21c63b788205b0f91a88b704f7af8336c9e7",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                552,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.14944590692934784,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                55,
+                298,
+                30,
+                66
+              ],
+              "cellHash": "34076bc7e4b9f28d6a195f2afba67f385d004ab47e55859c39517748a53b0e85"
+            },
+            {
+              "rect": [
+                552,
+                0,
+                488,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.1765256787909836,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                52,
+                215,
+                35,
+                61
+              ],
+              "cellHash": "0a9abedaafb49de9dea84f2d79ca8715625049362aa94d057a30b19e819baca9"
+            },
+            {
+              "rect": [
+                1040,
+                0,
+                496,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.17260348412298387,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                61,
+                243,
+                53,
+                58
+              ],
+              "cellHash": "f524ffb8e81bbc07c6299c4609aa607c4ef02f527b0d0c6c464fa077c9687e7c"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                552,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15305140398550723,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                61,
+                170,
+                35,
+                183
+              ],
+              "cellHash": "d7d5b48ce2c2a36fdaf74877f43e00709d43df9476fcac950d2f2e275380db9c"
+            },
+            {
+              "rect": [
+                552,
+                512,
+                488,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.16929751536885246,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                29,
+                172,
+                29,
+                188
+              ],
+              "cellHash": "22d2c399d7a9cefee1150cdb1feb9fb571da414367205460b8bde9c0a3c23a9a"
+            },
+            {
+              "rect": [
+                1040,
+                512,
+                496,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.15674221900201613,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                38,
+                174,
+                48,
+                185
+              ],
+              "cellHash": "9f72955df899d5d822ac9fd22bc0069630a7906b50e6b6f7ebed0e7037461c21"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "3072881125544d6e5adcbf7e4859d346a92e81611c8d16c2f4efdce8715b6a20",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2640419006347656,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                35,
+                231,
+                33,
+                83
+              ],
+              "cellHash": "aa964d6324b2860f2c4851a76babde7e2f2f80135485dc64ce4e25130fb7fc22"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2641410827636719,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                41,
+                231,
+                27,
+                83
+              ],
+              "cellHash": "60a63156bf016582987d2b0d23a3fd6d7f5bbb32f8dc3c40c0d8d3782af1f37a"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2645759582519531,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                32,
+                231,
+                36,
+                83
+              ],
+              "cellHash": "46eee341bc1a6504774a7df6a20742557dab7f39c77e56e09d97bdf409603ea5"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2643318176269531,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                35,
+                158,
+                34,
+                156
+              ],
+              "cellHash": "f93770dee5dee91964e9b7c8bc960791cfac088a9fb883e6657b0370172a1acf"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2631568908691406,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                38,
+                157,
+                31,
+                158
+              ],
+              "cellHash": "f5f6035c81e16ed01dc8cbba9ddac717c1d94581f99f319c29bda441d2fa2226"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2641563415527344,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                33,
+                159,
+                35,
+                156
+              ],
+              "cellHash": "fb4f2e65f2183df1ec3cb344b1de1b8fdf2221388a168f7bb54c49280ca7eac8"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "a7afc2bb6d406f5e5da1154f905337267e01acad8a6a1d83d3996ca8b137e3df",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3545417785644531,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                92,
+                87,
+                57,
+                59
+              ],
+              "cellHash": "f2d2ed8125af99e0d957f7f4eebb0024022b6c43b7baa8dbf29e6568b829ce7e"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.35372161865234375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                83,
+                87,
+                67,
+                58
+              ],
+              "cellHash": "a1e9eb33a89ad3e6cde09da786239a9243ead1e297db99c180c5f47c2fa0ce47"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.35018157958984375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                78,
+                87,
+                71,
+                59
+              ],
+              "cellHash": "05f08d996bf207ebc2bd90a07250febbf913b83fc77b8660de3ba00184d58938"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.35170745849609375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                92,
+                74,
+                58,
+                75
+              ],
+              "cellHash": "b22e0ccdf1c79e5435c14241a3415ec38ddcc12ca35b51dd79f5134dd86f02ca"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.34743499755859375,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                84,
+                74,
+                65,
+                75
+              ],
+              "cellHash": "d45477144f758fa45ae87436ac8010b7d10dc3fb13e8fcdf98794242904cf123"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.352325439453125,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                78,
+                74,
+                71,
+                75
+              ],
+              "cellHash": "bf13f89525202b2e6aa5a57fac57e2c0c7e9654ab961ee5e88d6bf562a3382cf"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "6aa0c502bca3ff6f6bab28935cffb89a11dfb78bae0a89396567b12e917c7134",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    },
+    {
+      "stageId": "arena-168-hive-front",
+      "sourceRange": "09_STAGES!A32:N32",
+      "lifeRange": "10_VIE_DES_STAGES!A86:N88",
+      "loreLimits": [
+        "Original AVP hive-front exhibition; no invented planet name or common personal place for Big Mama/Hashori.",
+        "Drone and anonymous adult guard remain distant, separated from combat and do not fire projectiles.",
+        "E87 is represented by one anonymous gate worker; a literal multi-person team is not contained in this sheet. E86 uses generic smooth-dome drone interpretation inspired by the primary classic anatomy reference."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "268636c2a77ad6b0022eadf6eeecc1819a03334b09a0e4e3ad8c047ad074f51f",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3948974609375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                34,
+                53,
+                26,
+                52
+              ],
+              "cellHash": "0c835a22f1c892aff948c50e448f60ef0352bc38dab9b8be486200c75d5c5646"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4197425842285156,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                30,
+                49,
+                16,
+                50
+              ],
+              "cellHash": "c57b8a16c370c5b9908a215a09fd3f5960971dc2ecb561359a9b50e81e109085"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3878021240234375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                62,
+                53,
+                22,
+                46
+              ],
+              "cellHash": "e373d3d59ce2fd3cc169e144d73d20ae6d1be6861efc69e82d86c8c1a6d03392"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3517265319824219,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                52,
+                28,
+                48,
+                122
+              ],
+              "cellHash": "0e6ba812d6e7010cf356df24a168e1091ed158bdebbd396974a1d6d931d72638"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4073524475097656,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                33,
+                24,
+                26,
+                69
+              ],
+              "cellHash": "53ed5a5b8f26098a9dd9135f2713df7102af91cd9768c038d9f8f3da29141f55"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.39705657958984375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                18,
+                25,
+                45,
+                77
+              ],
+              "cellHash": "47552c921966b1aa0f627bee2c0b53d7a19ccbeeb7b340f726da40439f0eed65"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "a1b777e424894f174fba192d27e5a14f89d8ef0db11ce50912a498e21238918d",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3360481262207031,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                142,
+                10,
+                106,
+                29
+              ],
+              "cellHash": "0d25f1a326340239ae8a3446c2250b36c5e665f21d57314439fe4d285d7e549c"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3348846435546875,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                131,
+                37,
+                101,
+                29
+              ],
+              "cellHash": "32b12ab7ba1eab411e43b3bbc0022bd6ee580e934453c0f2344cfa6508817925"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3273811340332031,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                64,
+                66,
+                75,
+                31
+              ],
+              "cellHash": "03c1c8dc817c2c26b99506dc95d0aff0e10041fb1fde6b63b63aa944bfb26483"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3419609069824219,
+              "edgeMaxAlpha": 2,
+              "opaqueSilhouetteMargins": [
+                139,
+                4,
+                96,
+                29
+              ],
+              "cellHash": "d9d1dd8f3be8c0c59eed0a57c0e6f0efacaf20096c86196206829349c90ca3a2"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3331413269042969,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                96,
+                32,
+                93,
+                32
+              ],
+              "cellHash": "bb448f7c25e80e6fe18ac72861fa4e334dbbb8008c76a9cae9ce41aaebad64f2"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.332672119140625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                133,
+                8,
+                105,
+                32
+              ],
+              "cellHash": "baea3bdd1d0c16bbdc33613fa689c9f7d933374d96c9339f11f379234e8ba6a4"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "7c62d418fea06ea2ce1f5c1a8fe841cf1b2f3fd9e1016e97197702b258ed8bcd",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4663810729980469,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                56,
+                17,
+                54,
+                30
+              ],
+              "cellHash": "e85922dd55e5efdf39998f8e987070c04c6367ee279a00ee56b275a731d75351"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4658927917480469,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                57,
+                16,
+                55,
+                30
+              ],
+              "cellHash": "62816a16c95c3598519890e9fb121d3b635b0e421ae56135a5f6a2e99beea755"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4715538024902344,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                70,
+                15,
+                41,
+                31
+              ],
+              "cellHash": "9b6d4394d8ed219cc8c48c51c33758280f390e94bad330d3067fece44eef83b0"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4676246643066406,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                56,
+                16,
+                54,
+                31
+              ],
+              "cellHash": "996623ea4a6f07d8f26a1a5e3a7a3afe471dba21d7d29be69f4c3df4274b4018"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.4650688171386719,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                57,
+                16,
+                54,
+                30
+              ],
+              "cellHash": "fd1a741a7c662dfde354de236187f7815642776f0a77f25891d5f4f4977482da"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.465972900390625,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                70,
+                15,
+                40,
+                30
+              ],
+              "cellHash": "1ff3bc4c1d6ef3858202446c356f42d6985810fe9ddafce06cdd2f537b6b7edd"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "df9260b14a1e75d7e91ec1ac9545e705463eee4103d8b36c1b039a6bcec05946",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "sourceRange": "09_STAGES!A33:N33",
+      "lifeRange": "10_VIE_DES_STAGES!A89:N91",
+      "loreLimits": [
+        "Original lateral outpost inspired by EA Extinction; current exact RTS facility plan not certified.",
+        "Unverified Hydra-specific geometry replaced by an original shielded servicing machine. Literal Hydra background asset remains outstanding."
+      ],
+      "assets": [
+        {
+          "id": "life-01",
+          "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                538,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.33003456087360594,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                53,
+                142,
+                25,
+                78
+              ],
+              "cellHash": "4bc5f97389438afc0fe3c413942544355d204f33a6b4d0fac1270b0fba8528c6"
+            },
+            {
+              "rect": [
+                538,
+                0,
+                502,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.35309154008964144,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                21,
+                142,
+                24,
+                78
+              ],
+              "cellHash": "85f4b45f23407dc44645b8262ea3286e07c55b1ae6fbedb29585baee364b007a"
+            },
+            {
+              "rect": [
+                1040,
+                0,
+                496,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3563941217237903,
+              "edgeMaxAlpha": 0,
+              "opaqueSilhouetteMargins": [
+                16,
+                142,
+                25,
+                78
+              ],
+              "cellHash": "ead93917cf86bfa1d7a85d5b1c994d1872f1df5589bfb5d290c282ef8c19a794"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                538,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3291705390334573,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                53,
+                104,
+                25,
+                116
+              ],
+              "cellHash": "323aec05c1c26f534ddb5887c35509ca5daec76a46b4eabb5f647b35eea92156"
+            },
+            {
+              "rect": [
+                538,
+                512,
+                502,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3536284549302789,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                19,
+                104,
+                24,
+                116
+              ],
+              "cellHash": "78bb5a266eb22c93523318daf25c4ee0a53ee64a3ccef3126159f56a364021ef"
+            },
+            {
+              "rect": [
+                1040,
+                512,
+                496,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3568312121975806,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                16,
+                104,
+                24,
+                116
+              ],
+              "cellHash": "9850438d4d87a1525772127d1dbc8f32f7a543bcef9aead36d6b793afa505e89"
+            }
+          ]
+        },
+        {
+          "id": "life-02",
+          "sha256": "e718703fd439caeb9b19c6e9952b8625889e5e733c79876d7e47bb2e98b9b54e",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3031578063964844,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                58,
+                150,
+                81,
+                90
+              ],
+              "cellHash": "bffa8b36484afd8c6bf87701204596477a0e4417860d4fd9a8a1a1f7514b4d9d"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.31048583984375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                48,
+                150,
+                74,
+                91
+              ],
+              "cellHash": "077f94d0daaccc4ae12c7c3ef59740cd50325f4cf7201919ac5851e5dffb04a3"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3274955749511719,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                15,
+                150,
+                45,
+                91
+              ],
+              "cellHash": "889fcb38f38bb520cd5546b88a990878a2ef2f0fad6db342ed559a3392f59687"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3135986328125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                50,
+                132,
+                47,
+                108
+              ],
+              "cellHash": "c12c62544d75a4f7f7d14ff8891269a1b2c5bc36c0aa7f7a2a0cf3e1c27111bb"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.3089637756347656,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                43,
+                132,
+                86,
+                108
+              ],
+              "cellHash": "175203b3526b9022522ab8bb639856c69fb07b3e228e1e6b3e89e2b1bcaa847c"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.301300048828125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                35,
+                132,
+                107,
+                109
+              ],
+              "cellHash": "7e1dd73af481504f3186a5cd99b51e637c3974d41ef2134bcc1a1d73059211a5"
+            }
+          ]
+        },
+        {
+          "id": "life-03",
+          "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.23606109619140625,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                112,
+                58,
+                88,
+                60
+              ],
+              "cellHash": "d62fc5984121e36a5ca7ef46f273cc923c29c8894ab56daa4d84fa98069590f2"
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2543830871582031,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                101,
+                58,
+                99,
+                60
+              ],
+              "cellHash": "81497e28ac5418cea48f95e23d90a413595c8c535431393b4dab4027facf57ce"
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24488067626953125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                81,
+                58,
+                115,
+                60
+              ],
+              "cellHash": "2201951a6ab778883ceb484e2a50500f007ee4bd35e2919924a1ff85b7449f19"
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24414825439453125,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                112,
+                42,
+                88,
+                76
+              ],
+              "cellHash": "93b349b6a4c5381023945fc354e9968f985fc3273105d231b01f71321d369e77"
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.24268722534179688,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                101,
+                42,
+                99,
+                76
+              ],
+              "cellHash": "33c11740568b70529aa2dd6ed7c6baa7bfc37dd8f29d3c82731eda7e205ec9c0"
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alphaBoundsExact": true,
+              "visibleFraction": 0.2399749755859375,
+              "edgeMaxAlpha": 1,
+              "opaqueSilhouetteMargins": [
+                82,
+                42,
+                115,
+                76
+              ],
+              "cellHash": "da29d548262e94e421040e23f6d7b99c0b7e2f7aed006a9d5f2cba387a63cf56"
+            }
+          ]
+        },
+        {
+          "id": "p0-depth",
+          "sha256": "81e30ecaebbc6bf3833a25ffa632ca914321aba1a463626e0b5cb2251a005731",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "checks": {
+            "byteIdentical": true,
+            "hashMatches": true,
+            "dimensionsMatch": true,
+            "visuallyAccepted": true
+          },
+          "frames": []
+        }
+      ]
+    }
+  ]
+}

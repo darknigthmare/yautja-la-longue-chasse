@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-166-forge-cyborg",
+  "proposalId": "new-forge-cyborg",
+  "name": "Atelier des prothèses",
+  "workbookStage": "09_STAGES!A30:N30",
+  "workbookLife": "10_VIE_DES_STAGES!A80:N82",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-lasershot-predator-8-cloth-new-nightmare-freddy-and-restocks-of-the-life-size-groot-flasher-gremlins-and-e-t-stunt-puppets-1"
+  ],
+  "loreLimits": [
+    "Original extraterrestrial prosthetics workshop, not an official home location of all cyborg variants.",
+    "Prostheses disabled, technician anonymous adult, no active fighter double."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case stylized-concept. Transparent native PNG animation sprite sheet1536x1024, six tiny separate props in exactly3columns2rows of512squarecells. Subject compact alien prosthetic maintenance stand, one disabled silver mechanical forearm clamped horizontally onto a squat bronze workbench, a small articulated tool head moves over its wrist. Original nonfunctional workshop mechanism, not a live weapon. Six sequential states: toolrest, toollowers, fine clampcloses, toolrotatesslightly, clampopens, toolretracts. Same solid benchbase allsix, no handanatomy required because forearmends in capped connector. Detailed hand-painted metal textures, sideon, tealreflects and warmcopper edges. Entire SMALL prop fits central60percent of eachcell with at least70px transparent margins, no parts beyondcells. Keep machine height under300px. Allgaps and background truealpha, no floorpatch, no shadow, no fire, no particles, no letters, no labels or grid. Six visiblydifferent toolangles, calm safe machinery loop.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-908a4e76-519d-4ad3-b709-ae77ad515b33.png",
+      "workspacePath": "work-local/v60/generated/arena-166-forge-cyborg/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six full compact maintenance props: tool head articulates above inert capped prosthesis; base remains stable, geometry separated per cell. Tool assembly is an original rotating maintenance fitting, not a claimed canonical weapon.",
+      "anchorKind": "ground-bottom",
+      "sha256": "b37f6b9d27b50be3fdb2e98a485d9af79ef59f36c9b87b2c6cf536fbe9c6a1d3",
+      "bytes": 2314177,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5865796407063802,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            27,
+            422,
+            409
+          ],
+          "pivot": [
+            274.5,
+            436
+          ],
+          "bodyCenterPivot": [
+            266.5,
+            436
+          ],
+          "opaquePixelCount": 98154,
+          "contentSha256": "8975a911466955dd7aa8ddc04d8aa9d7f81138c8d68b9eb1d31d5d4b6653e48c",
+          "margins": [
+            56,
+            27,
+            34,
+            76
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            87,
+            421,
+            349
+          ],
+          "pivot": [
+            259.5,
+            436
+          ],
+          "bodyCenterPivot": [
+            251,
+            436
+          ],
+          "opaquePixelCount": 97483,
+          "contentSha256": "a3fd3192d3642d0f61beafb8f6abc1a2f60b67bc06d0f4a9b569cb9cd76d44c2",
+          "margins": [
+            41,
+            87,
+            50,
+            76
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            80,
+            419,
+            357
+          ],
+          "pivot": [
+            244.5,
+            437
+          ],
+          "bodyCenterPivot": [
+            237,
+            437
+          ],
+          "opaquePixelCount": 99770,
+          "contentSha256": "13681b86bf730fbf716bcb0e6b7277e97e6a959a15a4d4e7cbf3938bc2ec92ac",
+          "margins": [
+            28,
+            80,
+            65,
+            75
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            80,
+            421,
+            357
+          ],
+          "pivot": [
+            275.5,
+            437
+          ],
+          "bodyCenterPivot": [
+            267,
+            437
+          ],
+          "opaquePixelCount": 99393,
+          "contentSha256": "384f74f4e9fc65b85dd18e481dfc784df0fc106a0574f9fb21e3597e4a1ec2ec",
+          "margins": [
+            57,
+            80,
+            34,
+            75
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            24,
+            421,
+            413
+          ],
+          "pivot": [
+            258.5,
+            437
+          ],
+          "bodyCenterPivot": [
+            251,
+            437
+          ],
+          "opaquePixelCount": 101398,
+          "contentSha256": "fbe87374f44f7c85833d284d87fabf41a22b41a18aa888739aa8d1ffcea60ba0",
+          "margins": [
+            41,
+            24,
+            50,
+            75
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            26,
+            18,
+            421,
+            419
+          ],
+          "pivot": [
+            244,
+            437
+          ],
+          "bodyCenterPivot": [
+            236,
+            437
+          ],
+          "opaquePixelCount": 99679,
+          "contentSha256": "d59a4791085be53732b80d0a309b1cd7c7e811c01c2234bc0478a59f23a3af7b",
+          "margins": [
+            26,
+            18,
+            65,
+            75
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Native transparent sprite sheet, detailed paintedgameart,1536x1024, exactly six tiny adult anonymous Yautja workshop technician poses in3columns2rows. Every miniaturefigure completely inside512x512cell with90px blankalpha margin allaround, nofloor/nobackground. Character silver practical biomask, blackdreadlocks, wornbrown leather utilityapron over darkbronze bodyarmour, mutedteal small forearmdisplay. Carries a SMALL rectangular diagnostictool in BOTH hands atbellyheight, no gun/spear/cannon, no protrudingweapons. Six frames sequential slow maintenance idle:1reads tool,2leftthumbpresses button,3tiltshead,4turnstoolslightlytowardself,5rightthumbpresses,6relaxes arms while stillholdingtool. Sameheadsize anatomyoutfit and tool allsix; twoarms twohands twolegs, realistic adult muscular Yautja proportions. Threequarter sideviewfacingright, bothfeetgroundedlocaly415, fixedcharacterscale. No extras, nolettering, noHUD, no watermark, nogridlines, noparticles, nocastshadow. SMALL figures maximum320pxheight, enormous emptytransparentgutters.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-5c1cd25c-3c49-42ba-8fec-36abdca0276c.png",
+      "workspacePath": "work-local/v60/generated/arena-166-forge-cyborg/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six anonymous adult technician poses: consistent biomask and apron, two arms, two legs, both hands hold or operate compact diagnostic tool; no named character duplicate.",
+      "anchorKind": "ground-bottom",
+      "sha256": "c8fd76d69fd5814c5cbb5f5643b0545d7d07f29ae0b0a8b6b545211055c8fc6c",
+      "bytes": 1679930,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8182881673177084,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            224,
+            63,
+            174,
+            422
+          ],
+          "pivot": [
+            299.5,
+            485
+          ],
+          "bodyCenterPivot": [
+            310.5,
+            485
+          ],
+          "opaquePixelCount": 43635,
+          "contentSha256": "d840b343f71d72820f7de0139af7c2c8c863af032af69f96cd996dd766c6f6b1",
+          "margins": [
+            224,
+            63,
+            114,
+            27
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            179,
+            63,
+            174,
+            422
+          ],
+          "pivot": [
+            255,
+            485
+          ],
+          "bodyCenterPivot": [
+            265.5,
+            485
+          ],
+          "opaquePixelCount": 43526,
+          "contentSha256": "0f556375cf1e7785d2a9053594534e06cbd5292583842666baba29669959ae0e",
+          "margins": [
+            179,
+            63,
+            159,
+            27
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            135,
+            68,
+            174,
+            419
+          ],
+          "pivot": [
+            210,
+            487
+          ],
+          "bodyCenterPivot": [
+            221.5,
+            487
+          ],
+          "opaquePixelCount": 43611,
+          "contentSha256": "b08d92d89d84083435af5226a8df0ba87ad31506e25c7234ad5c73c25fa29a72",
+          "margins": [
+            135,
+            68,
+            203,
+            25
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            225,
+            40,
+            180,
+            423
+          ],
+          "pivot": [
+            301.5,
+            463
+          ],
+          "bodyCenterPivot": [
+            314.5,
+            463
+          ],
+          "opaquePixelCount": 44177,
+          "contentSha256": "762ec9bcd81fe358d1e21e9f71f1f60214ba8f8af4dd8610fcd5d973a60b3bf4",
+          "margins": [
+            225,
+            40,
+            107,
+            49
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            179,
+            45,
+            173,
+            419
+          ],
+          "pivot": [
+            255,
+            464
+          ],
+          "bodyCenterPivot": [
+            265,
+            464
+          ],
+          "opaquePixelCount": 42868,
+          "contentSha256": "57707d1ba3dd0fe989984428db969da715dd187812435847349145bab4dc6969",
+          "margins": [
+            179,
+            45,
+            160,
+            48
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            140,
+            42,
+            170,
+            426
+          ],
+          "pivot": [
+            218.5,
+            468
+          ],
+          "bodyCenterPivot": [
+            224.5,
+            468
+          ],
+          "opaquePixelCount": 43673,
+          "contentSha256": "6b341dd3ec6371045b508f4fa06b2d3fbfd4d476981397042cbf01bbe8216ad9",
+          "margins": [
+            140,
+            42,
+            202,
+            44
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Native transparent PNG animation sheet1536x1024, six complete tinyalien workshop coolingvalve sprites inexact3columns2rows. Each512x512cell hasminimum80px transparent margins allaround. A squatcoppercoolingunit withtwovertical ventpipes, darksteel pressurevessel andshortconnectedhose, bronze three-spoke valvewheel atfront. Sixdistinct calm sequentialstates:1valveclosednosteam,2wheelturnedfewdegrees tinywhitecondensationpuff,3wheelmoreturned moderatepuff,4wheeleasesback withpuffcurlingright,5smallerdissipatingpuff,6closedwithlastwisp. No flame, noexplosion, nogameplayprojectile. Samecompactmachinery dimensions andfixedbase, detailed paintedcinematicmetal, sideview originalYautja prostheticsworkshop prop. Steamconfinedto smallregiondirectlyabovevents, absolutelynone beyondcell. Machinery maximum280pxtall and320pxwide, allgaps transparent. Genuinealpha background, nocheckerboard, nofloorpatch, notext orlabels, no grid, nopeople. Sixdrawings withsubstantiallydifferent valveorientation andcondensationstates.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-4361244c-4997-4c8d-97d7-4fc2185a4560.png",
+      "workspacePath": "work-local/v60/generated/arena-166-forge-cyborg/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six cooling states: changing valve angle and separate condensation shape, pipe/base coherent, no flame or projectile.",
+      "anchorKind": "ground-bottom",
+      "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0",
+      "bytes": 2192283,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6257705688476562,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            84,
+            138,
+            364,
+            341
+          ],
+          "pivot": [
+            265.5,
+            479
+          ],
+          "bodyCenterPivot": [
+            265.5,
+            479
+          ],
+          "opaquePixelCount": 81379,
+          "contentSha256": "97f09230eecbc6c7b1b16f484f60ae3a503f3df00ca8c9487f9d20626add9027",
+          "margins": [
+            84,
+            138,
+            64,
+            33
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            88,
+            87,
+            361,
+            392
+          ],
+          "pivot": [
+            268,
+            479
+          ],
+          "bodyCenterPivot": [
+            268,
+            479
+          ],
+          "opaquePixelCount": 86135,
+          "contentSha256": "456c9ffd8fd4a6e213e5b994e7b60f25be0e39d87f022044f91fc40a33222d1e",
+          "margins": [
+            88,
+            87,
+            63,
+            33
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            75,
+            23,
+            364,
+            459
+          ],
+          "pivot": [
+            256.5,
+            482
+          ],
+          "bodyCenterPivot": [
+            256.5,
+            482
+          ],
+          "opaquePixelCount": 104726,
+          "contentSha256": "6d6b9c38b06ea2e7f690cc9e7697e7e0aa9d151e796b91dd220ca765d4b0df4b",
+          "margins": [
+            75,
+            23,
+            73,
+            30
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            84,
+            55,
+            363,
+            396
+          ],
+          "pivot": [
+            265,
+            451
+          ],
+          "bodyCenterPivot": [
+            265,
+            451
+          ],
+          "opaquePixelCount": 93736,
+          "contentSha256": "1d5cb54ebe08cc1df4ed4cc3dfbbafdea8d1a50d786907b10644fa05b6b5e038",
+          "margins": [
+            84,
+            55,
+            65,
+            61
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            90,
+            74,
+            361,
+            377
+          ],
+          "pivot": [
+            269,
+            451
+          ],
+          "bodyCenterPivot": [
+            270,
+            451
+          ],
+          "opaquePixelCount": 85860,
+          "contentSha256": "824b88d7a5592b18e9a29582ef6092b8e3b4fd2cb1b2cbe1cd3dd27eb0986427",
+          "margins": [
+            90,
+            74,
+            61,
+            61
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            66,
+            364,
+            389
+          ],
+          "pivot": [
+            258.5,
+            455
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            455
+          ],
+          "opaquePixelCount": 85221,
+          "contentSha256": "fc7646abc76a244ee61d87dcfed85f6452029a0b5fbf77d4135d337a066e6146",
+          "margins": [
+            77,
+            66,
+            71,
+            57
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case stylized-concept. Empty depth background plate for a cinematic hand-painted 2D side-view Predator fighting game stage, original extraterrestrial prosthetics workshop inspired by mechanical Yautja equipment, NOT a claimed canonical location. Wide1536x1024. A dark bronze and black steel alien repair hall: far wall with tall ribbed recesses, closed supply cabinets, small cyan status strips, curved structural supports, dim amber roof lighting, weathered workbenches in the mid-distance. Horizontal composition, shallow theatrical depth, subdued bottom20percent backing, separate independent playable floor will be added later. Reserve low shelf atleft and repair alcove at right for separate animated props. Detailed material painting, credible scale, no deep-perspective runway. EMPTY: no technicians, no fighters, no bodies, no mechanical arms, no glowing active weapons, no atmosphere smoke baked in, no steam plumes, no signage/text, no logo or HUD. Somber teal and warm copper industrial palette, clear stage silhouette.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-4ce79457-962d-4e12-b445-d6b0afb9de64.png",
+      "workspacePath": "work-local/v60/generated/arena-166-forge-cyborg/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected empty workshop: no characters, moving actors, smoke or activated weapons baked into hall; original side-view metal architecture and subdued foreground backing.",
+      "anchorKind": "ground-bottom",
+      "sha256": "f1d6bd4c4fce67ba2f460e284c2a70a85329a33f5dc58e431a01cf4b15dfbeda",
+      "bytes": 2304193,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

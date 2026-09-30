@@ -1,0 +1,683 @@
+{
+  "schemaVersion": 1,
+  "release": "V60",
+  "status": "PASS",
+  "surface": "full-application-public-roster-stage-duel-flow",
+  "checkedAt": "2026-09-30T16:09:24.073Z",
+  "url": "http://127.0.0.1:4177",
+  "complete25StageGate": true,
+  "stageIds": [
+    "arena-162-ahab-engineer",
+    "arena-163-neonopolis-lab",
+    "arena-164-alpha-revolt",
+    "arena-165-kenner-throne",
+    "arena-166-forge-cyborg",
+    "arena-167-lava-ridge",
+    "arena-168-hive-front",
+    "arena-169-extinction-front",
+    "arena-170-gotham-bloodties",
+    "arena-171-meta-lab",
+    "arena-172-phg-north",
+    "arena-173-phg-japan",
+    "arena-174-phg-sands",
+    "arena-175-phg-islands",
+    "arena-176-phg-pirate",
+    "arena-177-phg-amazon",
+    "arena-178-bloodshed-ring",
+    "arena-179-last-hunt-preserve",
+    "arena-180-sandpiper",
+    "arena-181-avp2",
+    "arena-182-bullet-hangar",
+    "arena-183-homeworld-wilds",
+    "arena-184-warp-threshold",
+    "arena-185-training",
+    "arena-186-snow-hunt"
+  ],
+  "counts": {
+    "stages": 25,
+    "distinctNativeEvents": 75,
+    "nativeCellsObserved": 450,
+    "checks": 36,
+    "captures": 136,
+    "visuallyReviewedStages": 25,
+    "visuallyReviewedCaptures": 36
+  },
+  "cases": [
+    "desktop",
+    "mobile",
+    "reduced",
+    "retry"
+  ],
+  "passedChecks": [
+    "public-movement-reveals-background",
+    "arena-162-ahab-engineer-pause",
+    "arena-162-ahab-engineer-application",
+    "arena-163-neonopolis-lab-application",
+    "arena-164-alpha-revolt-application",
+    "arena-165-kenner-throne-application",
+    "arena-166-forge-cyborg-application",
+    "arena-167-lava-ridge-application",
+    "arena-168-hive-front-application",
+    "arena-169-extinction-front-application",
+    "arena-170-gotham-bloodties-application",
+    "arena-171-meta-lab-application",
+    "arena-172-phg-north-application",
+    "arena-173-phg-japan-application",
+    "arena-174-phg-sands-application",
+    "reduced-pause",
+    "reduced-motion",
+    "mobile-landscape",
+    "mobile-portrait",
+    "mobile-pause",
+    "mobile-native-events",
+    "native-png-retry-503",
+    "public-movement-reveals-background",
+    "arena-175-phg-islands-pause",
+    "arena-175-phg-islands-application",
+    "arena-176-phg-pirate-application",
+    "arena-177-phg-amazon-application",
+    "arena-178-bloodshed-ring-application",
+    "arena-179-last-hunt-preserve-application",
+    "arena-180-sandpiper-application",
+    "arena-181-avp2-application",
+    "arena-182-bullet-hangar-application",
+    "arena-183-homeworld-wilds-application",
+    "arena-184-warp-threshold-application",
+    "arena-185-training-application",
+    "arena-186-snow-hunt-application"
+  ],
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "6f84b78b48faacbcbfaafb749f7547571a4dbb857b5b5afd722bb96896274600",
+    "app/game/PitCanvas.tsx": "d3d7773f8edef0e07a44eae28a7281608d973bce72e270faf8c15ae390006601",
+    "scripts/verify-pit-stage-life-v60.mjs": "5ff5c7b4e58ebe1be0e69c7b86d43dbdf7d8e7acfa74bd20a024458cc95a7cda"
+  },
+  "detailedReports": [
+    {
+      "file": "work-local/v60/qa/application-next-complete/report.json",
+      "sha256": "8be0a4717da316a544831396c33f013c38403b1ccddef400d743c03e7f6014c2"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/report.json",
+      "sha256": "934eebffeaaa427467a880f0df98ad4045508da1add33e0e70f90029e3212f64"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/report.json",
+      "sha256": "89beb353647b11943c13c2fc7560d4441a26316bc2478ba3869b0d1262cee041"
+    }
+  ],
+  "visualReview": {
+    "file": "docs/v60-next-native-stages-visual-review.json",
+    "sha256": "902d7e7c8d2517c3e7ce3ac25ce5408d39f5c3672dcd55ad81cc104717e14709"
+  },
+  "captures": [
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-selection.png",
+      "sha256": "f8daf478fc2cc4011be1c4b66537ee610821c736c7cb9560689e1e19eedbf9d0"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-rest.png",
+      "sha256": "1c1cf00cc7eacd45eb70551f029eb3773ea332d4ff27a935187c1e5d68bca51d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-fighters-apart.png",
+      "sha256": "980963d370082440230b0f7b3a2ed5144a91d8f35f6478a190848a7b20b43de9"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-paused.png",
+      "sha256": "b477d8a362af7e489b2ed29bdc086712f06eb11b704ba217fcdc9b8247abeaf6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-event-0.png",
+      "sha256": "4666d65ac9c6bf59fec6cc0cdb14aed875d951dde8c861d4c7907236e68833ee"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-event-1.png",
+      "sha256": "4228bd7943b8cc2fc73aecf1ef99264e99ee37b5e85467fabd44678ac7b3b40d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-event-2.png",
+      "sha256": "5fb538d71f0c25e35e27e565397b8f3e54f61ee656304d891c9246c0eedef3c8"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-selection.png",
+      "sha256": "51a14c619ef32824a36afeac50d92b2a26cade5ac92f9bca105e7cc2aaf4df71"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-rest.png",
+      "sha256": "a306d1a16fbd5f2925d1e4459b7f66af6f558cbb9fb33024e36943c1d5b65b56"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-event-0.png",
+      "sha256": "099bf798bc554c611f5197079e4fb0d182986dede2bfcf0974f89640e766776e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-event-1.png",
+      "sha256": "4cf896b86bda6b5160f539e9810ea2423681f59ebfdb3f7a881e08d91bc7596e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-event-2.png",
+      "sha256": "cb099fec27fb7f820b2899c686f53e84148ca1e254c101595033b8887c7d7843"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-selection.png",
+      "sha256": "472372383e1f76c712be4146afd0b80a23ea8aa8b3887f4e3fddbcb76c238bfc"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-rest.png",
+      "sha256": "373436ba6a5d041f836344fe57bc3a3e86016221459aed5172af83ea3c409145"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-event-0.png",
+      "sha256": "24cbf1fd8dad702487e148bb8985a69138b031f12da710b66978cb473f5cf56c"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-event-1.png",
+      "sha256": "6d35c38a34578fe5c0b82877a1fe03d1813c7038689d6fe1833d8cf1ac3fca34"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-event-2.png",
+      "sha256": "5b3ed946a7e5fd58dff51b2dd6b184dc7af23d00d6643a907d890e8d3158ae3f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-selection.png",
+      "sha256": "35f9241a49a589526541808f36a086b1b0484867619657731e5febfa69ab2b85"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-rest.png",
+      "sha256": "4f0521869970d0d532cb8096a4687fb5d930daae44c838712f0d94ac730bb806"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-event-0.png",
+      "sha256": "f63c2be3ce053e89599ce89ecd630668331b9d5fd92c06ca13a3226976a66358"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-event-1.png",
+      "sha256": "2ac0dd57738d3d3b19722b669863c39e5ffb4219364ecf1b732fb55b4bf13ef1"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-event-2.png",
+      "sha256": "08107a098ef56fe66067d6df22223736ca3207159310cc8bee72d123d7be95a9"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-selection.png",
+      "sha256": "7693e47b5f55158af4f91add0903ecc52e9c9cd758ffd695b9506abfb54d4a3a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-rest.png",
+      "sha256": "f124d6cced0e6a87ad88ff0d187631f63056dc883fcbfccbf703a0016c8435ab"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-event-0.png",
+      "sha256": "e90db1b7149f7f1b30593a12542e593ef7e5ea0cb168ef02cb3da9e45e72733f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-event-1.png",
+      "sha256": "5c6f55fb97684292eadd850cf34e88a1e02f7d4455ec506909386964d189577a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-event-2.png",
+      "sha256": "438c2d96f8995a332dc8b43720fb7c9f1318062a128bf2d9367d672a0cf72f69"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-selection.png",
+      "sha256": "73f8bda52d59787ac514472c8f403e790bc01a7bbc941e177ab5a7086b343859"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-rest.png",
+      "sha256": "df46193bb2a39e3e891969f6e89191293070dfbed0ddbe1f386e078abb786982"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-event-0.png",
+      "sha256": "119f4b9f94ead621405260a1d422375575e1684bce28d578a1eeda03cfa906c2"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-event-1.png",
+      "sha256": "01bdd10f13528e69399c140e8dab17cd5a4cf8f417f9bb35c345e0acd463de13"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-event-2.png",
+      "sha256": "af922c5f6921c57be284f3688711943350967ff4b38eff25e3fc8245ec90b8fe"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-selection.png",
+      "sha256": "e0a5f3d8499a05906b7b057bd8b4b3d82d2cad97b7aa4d767136e14c836ee8d6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-rest.png",
+      "sha256": "82152f2a64aeced58065184f415b0e78f8efd35bc774f04e1043dc778780e3e1"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-event-0.png",
+      "sha256": "f0c459ec66327e9f61a6a111d138cb0d53b0f6dab70829676baadc36f1517e37"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-event-1.png",
+      "sha256": "5dc25867383cc86f862079e23265913832e643c009249018dccabb922853d7b8"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-event-2.png",
+      "sha256": "9d7a5977a4d0e136cc39a7e24f068c76f56d25051f6038a95825738aa32a0315"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-selection.png",
+      "sha256": "6a7f1a90e6c48cb2a0df8246ade7b08ca789fd485b82c0eb12ab8a00eb4dc982"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-rest.png",
+      "sha256": "d951250f7150311d16208c7ac900f0c54045d99c9c5a4401c903c8cb3425d803"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-event-0.png",
+      "sha256": "2a1ee17146c8844651891547964bf53e406d97ea307dbbec368c48d415a46bf7"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-event-1.png",
+      "sha256": "c122cf4f567f3a06232a780b00368fb80f72de44adf9bc9f1e5d039dfbaf6271"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-event-2.png",
+      "sha256": "56c6c969fcd969c6510daa056196947af3ceda8110c4dec199020539c3c7e24d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-selection.png",
+      "sha256": "58939fa03543a3e7f48e64420d001dc5755a4ab68e52bcb9cdb8c4cc561aeaba"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-rest.png",
+      "sha256": "3fb1feaabe9a00b84d9eff2e5675af40a98cb4257ba5875c39508227719cadff"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-event-0.png",
+      "sha256": "d3cccb6cca79e547a12ce4ca559719da6655fa6645c7ab73a97c8a9ec8fdfb4f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-event-1.png",
+      "sha256": "38676e0b7a170e535cbbcb5466f2827d27d618728347f3cd8cdbda0f0f019a7d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-event-2.png",
+      "sha256": "c7d537e64130fc768c85e84d19229a747ec643ba93ff80370b1e239c778f724e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-selection.png",
+      "sha256": "e1f265c4e63ba882e9dd6b352c981b4dde63a50012fbf5fcfff8f578ceff5d6e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-rest.png",
+      "sha256": "5f7305baf88f5fd3fb832cc068328b9b244908dd432c1f776d56c4b6ea222667"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-event-0.png",
+      "sha256": "9402357a1302d34a3955649b8a081c6adf1c3fcf543ab07dd4497ebb5123cf8a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-event-1.png",
+      "sha256": "b08f9ca54d2bda2f32bec24f5be59dc2e049f7c5969ba9cf4ee72e87f7473273"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-event-2.png",
+      "sha256": "94db692406844d0ed7f46464fdf265128c2eb216b9d74ec42ecfd4634e683c8a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-selection.png",
+      "sha256": "2abbd79fd35b48442188f2084542fdb296db1aed89042dca49156d16a8bdd800"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-rest.png",
+      "sha256": "cabe00e1728f798c055757a7a276ee00067ba872499450c69a37d5c1e0e3295f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-event-0.png",
+      "sha256": "7d98ecfcd26d78bb9ce660eb943634cedeecfbc622bdd5fcd904fa4c08c4cd2e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-event-1.png",
+      "sha256": "a505f5613b7740f8a34bccd47e77ee46a2e87ab00c84986b9cac44931c559c4d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-event-2.png",
+      "sha256": "42269b6622d7c9f24c927a1d9b43693ed2bc7a79fab74792c349495275b9a673"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-selection.png",
+      "sha256": "8ad3a0bd4d6cd9247de254184b02c6182c8f592b9494993ab647d48015ef80f3"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-rest.png",
+      "sha256": "f9424c610eab96af01cfcf1d52213f541982419b006a7206ad31a2962c042b1e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-event-0.png",
+      "sha256": "d5ee4bd3f65c29f95e0837928b81c26f55a02f99758eac33d287ac22807c3c26"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-event-1.png",
+      "sha256": "b3006e5b0e2405193c1d5741538d619a4aefa0acfcea38f41e03bf70804ee6fc"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-event-2.png",
+      "sha256": "56a1dd7011b2be3a001df869d0f27e6718a5ba74745f865509218152ccf5abc6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-selection.png",
+      "sha256": "9bad1edc990e122f42f46ec9028259c9bb8f07d34ac1509beb7f1903a7d0facc"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-rest.png",
+      "sha256": "ef6f09c58570965de2ffdd2bb564918b0eb13be8ee9c6c66fd491be3f81d1d68"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-event-0.png",
+      "sha256": "17bb5fcd6e8df13c3f93c9f6cc2b7474e7821b42f2f90ccaacd30d66cdd1d48d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-event-1.png",
+      "sha256": "6d6643205291457fd5b15931ba0d9723c4962b145b13527d84a3ce9a2b139b63"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-event-2.png",
+      "sha256": "7631a58a5a020f6b12e9fdd07d617a191c785c8a47fda66cb815ec35467882d6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/reduced-paused.png",
+      "sha256": "6081bac34b0ff88f6bef9fa127d7e360da4ec4b90047396146edd43293ef7b95"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/reduced-motion.png",
+      "sha256": "2ab601dc42453fb9262036526e9368407381ea25286760da9e3590038e1538ce"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/mobile-landscape.png",
+      "sha256": "4181182eb70ba75fecebfd6d5dc9de7343fc7656ad7eff401bc970bac4f47c14"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/mobile-portrait.png",
+      "sha256": "20a66960f178e41f66c10eb607bca4503eab9eee288ae761d4c09ba6bb9b9e36"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/mobile-paused.png",
+      "sha256": "7ce46a6302ee46387c1af4c8e5ccdbc361d5ae85241c43b976387368cb71cc94"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/native-png-503-blocked.png",
+      "sha256": "bd0a00b0da6891a09dde5a7d73d4954dd4817c7a096e02b9b7cc60a42e7a2fa8"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-162-174/native-png-retry-restored.png",
+      "sha256": "382ff69c666f82c2920dc7d2d6ff969b74349ae25f7e8a5bea93b5175719bbc2"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-selection.png",
+      "sha256": "a786feb7fb5172861f84188994478086f688e4c67e7ccf789c51ad65b3a41995"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-rest.png",
+      "sha256": "1dae751faab839b16fb8cc325ffeb8ad81bc3eee6322836b7cb81600f15d663a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-fighters-apart.png",
+      "sha256": "0f8aaf6ca334c538b3bc944b4a652323800faad1707b2b9b761aed3f8702936f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-paused.png",
+      "sha256": "83094a9c9264bc524b5ff51fb164e3d42b9aa8de06489c5f9aef316169993b34"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-event-0.png",
+      "sha256": "e1602e890cfd24afbbe5acab30edeb7f569ba4be73493d5244b8d53c2934bed7"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-event-1.png",
+      "sha256": "25e215b2605e797d529f4822ebb036c1fad8fd25f46e36f6ce8f0b0ffe7804b4"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-event-2.png",
+      "sha256": "3a29e6ca74a670ac765258a26b6ea40fcf8174b31584add6c6530629dcd40795"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-selection.png",
+      "sha256": "5cf56974a9ae0c1fa2f9e6226c43580cb00314c80bda048ca9e72033b142ff44"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-rest.png",
+      "sha256": "806b78bc23789208f89823e6d5943acc463bec557c94e954f244f38a8da384ff"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-event-0.png",
+      "sha256": "8585fe1f3153121a2e9563ae7298765071551c9d1f7724d3383371e7639d5b6b"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-event-1.png",
+      "sha256": "7cc44cefa7f1722505bb32d9a8b8fc88d1da992e9efc9a99ae693cfd6b5de569"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-event-2.png",
+      "sha256": "5d5443fddbd3e20ebf7d1d87bc5173103fb467f9c3446bc29a31ecdd4e783c78"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-selection.png",
+      "sha256": "839629b2a75b5be8a168e75de40c59c9520a99d5e357437e3a765fcbee0bf7ec"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-rest.png",
+      "sha256": "4b174919306965c43a2fd01682e2081e05182b28d0d5795a3d5938a7b0c8736e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-event-0.png",
+      "sha256": "44f9fe1fd7e3368b877b5da1fcc5be042f6a49f8d0a4319c7b9cda60775bc38b"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-event-1.png",
+      "sha256": "a2555d095dd5ee17c2c9c98fe0f3bb240ea73045abd657fefcb3e6377f6e440c"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-event-2.png",
+      "sha256": "57c9cde15c977de8483f99d5b681ea69009c5eb3d4424a542723de8d7fc755cf"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-selection.png",
+      "sha256": "5324506ad2e924114d2e517339942eaf8d83b6b0f3e3793a162a3c3856bd8882"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-rest.png",
+      "sha256": "c80f369879ee3da3160ef076b35db2885edc66cf60ba5f420393e9ee2c745d86"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-event-0.png",
+      "sha256": "c44ad597d72a4c5c9f2ba8cc4ff84bcc82bba742e2a82177573b587f40a2e9b2"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-event-1.png",
+      "sha256": "ccfd98f9576f90c5b0eaeb04cd37db5dd6d44b283252249ca11fb81d95a8fa98"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-event-2.png",
+      "sha256": "3b22bfd74e5b1dd7031202d575ac0e68aaa75c7c7c71051e7faadd5f124cc8ab"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-selection.png",
+      "sha256": "2f48c8bd23d7469c81df36633497754a0d83f05f204c523db6d316f8cfc2af29"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-rest.png",
+      "sha256": "30f337f52dbd6aad36476c3132b6a6bf5667fbc68b844975fda58b78ec277249"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-event-0.png",
+      "sha256": "c3b5ede105c4da37b01e2dbf7051cfee21924095ca1147fb9620f64afd4df04e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-event-1.png",
+      "sha256": "d5cb3364f5a1d552d580a29351f172a3c3c17ef7c4cd5a213b46ce8f59a67be6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-event-2.png",
+      "sha256": "b46607b925987a367db89715bc38d2a8eea3b817e149d506dcf9d1e63e36b988"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-selection.png",
+      "sha256": "dc0207860e87b56d4c189823d98c28f3db5d0f9cb3230198ca73718111d86fbc"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-rest.png",
+      "sha256": "2c7b3f137e4541966faf669d45512ede8692f32bd3627ed94ad9b61aba6e601f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-event-0.png",
+      "sha256": "9d0a71bc678c0420aedf30837314a2449f76926e327b7176240121e7e07344fd"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-event-1.png",
+      "sha256": "87a51f08f52eb7e9bf39f3643d4a39b25a03c71885d4126cf5b4c11b0359475f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-event-2.png",
+      "sha256": "e5f78f445b5ccd85c9b259ce3294f7f788623a8d66b7f30588a9ee33566bb42b"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-selection.png",
+      "sha256": "b6cb2f57be81b15dfe27472d751f4aace76fde61782322ca68649bd3a4035b05"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-rest.png",
+      "sha256": "257f270b596877d35004018e76eb6792f5ce184d153455e4121f13bd87ffa85b"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-event-0.png",
+      "sha256": "057d20e252970c7bfb0481066884d206d6c9f07bb937aaa64199a561602d822f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-event-1.png",
+      "sha256": "24c1bb3564a7324445d57d0a7ec1532a0157cf90e482ef19ffc35c75f0c4aa94"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-event-2.png",
+      "sha256": "1a858360591ac4559c531e9d0ed0eecf8ad8dbbfbe008febfaeb0e62e306f9e6"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-selection.png",
+      "sha256": "7adf9f07db064e781fb7ab4a0469ab618a569dfa042ea0da4d9c11c92aeae6eb"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-rest.png",
+      "sha256": "b04bd6679bf2d871c22e7d59acfe40e126a16e751ad5d17422cdc291a1ec473e"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-event-0.png",
+      "sha256": "3793b8c8f9beeee17e05cfd4ee1c869f49b97bf4c502594bfd0057c2e421b974"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-event-1.png",
+      "sha256": "88100c80eff566215a6e4746d247a6600459d84b9766f87a4b5d296d7539eb6f"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-event-2.png",
+      "sha256": "c050655e981461a6667144d07f37961521a193f8da35b8421e5d6d8209ce216d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-selection.png",
+      "sha256": "7d397b054dbd66f62a571c4fdab4f25d8bd5a6895ad9267da40f48f1b36bb1af"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-rest.png",
+      "sha256": "dd56dde2decee894fec972976e2e85164be51a70f811dee07ac58ee266444099"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-event-0.png",
+      "sha256": "cc1881fa00bd5b6755859bdc4815799a5a61d0ba1e1ff13277c845b866e51b9a"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-event-1.png",
+      "sha256": "efa85c6617dd10b1aad3f94791c97a62ff42c7869fa7934f8a95534f0b09cf84"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-event-2.png",
+      "sha256": "309ed1e90874afc96f31e2fe97c29beb40358a6356f3d321c8ccb5f2ffdaaf74"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-selection.png",
+      "sha256": "e8c4f6cadfff1fa13b0cd95391e19b73d568301dac4ec4388d010a4974f0a81b"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-rest.png",
+      "sha256": "ba383df659e02228416f6c53761fb7c05cd679b3b27574958ada6b154b23c834"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-event-0.png",
+      "sha256": "8d39467cc52dc85b80918b7f7860a84eead54143d9355a8192b15c03a4973012"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-event-1.png",
+      "sha256": "b06aa89fcfe29a2ba9acb90eb176e50ce28f4f02c595256cac7344f8563a56c9"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-event-2.png",
+      "sha256": "68de0c59376beb8573185acf8ee9f9bf2cafe3a9b90ac2701329cffed85997e2"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-selection.png",
+      "sha256": "44f54c29021a213b0dc9fee8b3b40c41597fc04bef77c4f2cf107ba891d546dd"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-rest.png",
+      "sha256": "e0f9fc35e00c175f2e43da0c0c9c2ac4e2a05392aa1319f14a9fe1c0e0a79f93"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-event-0.png",
+      "sha256": "0dc74ec771acbcfa4683a04d1685426768735c3ccb37f032d642b8e9aad80395"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-event-1.png",
+      "sha256": "a4682cab6e3696158730f426d7222be78d3cf44107a686d46018533c797f6cc3"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-event-2.png",
+      "sha256": "ada4901a75d054dedce2e538879c4aac40df0aaace90844f9516fcc4a2d58a4d"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-selection.png",
+      "sha256": "901b5722c86f873306a2653f8ce74db7fc219e70689ddf3b06803b29e8fdd3ca"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-rest.png",
+      "sha256": "c92102c7af2780eb66b4c8406777c38345bb0efd79a1a08e4ce6b6930056b433"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-event-0.png",
+      "sha256": "b409e0153d0f0913f34a3815a84eac091cd00cc207382927ae98476355e06acf"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-event-1.png",
+      "sha256": "fb2eade52b74e958670e3cbe7f154cd92a61e3a806dd7d33a52c532fd9cf13aa"
+    },
+    {
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-event-2.png",
+      "sha256": "5e24e3d38efa5e4e91a258c5fb709e9fc5fc965b8101a9c059de0df49c746c7b"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "guarantees": [
+    "Real roster -> stage preview -> local versus flow for every stage.",
+    "Three native events per stage; all six source cells actually observed in drawImage, with isotropic unmirrored rendering.",
+    "Real three-event bags, bounded gaps, no immediate repeat at bag boundary on representatives; public movement and pause/resume verified.",
+    "Reduced motion holds rest frames while combat simulation advances; mobile controls fit both tested orientations.",
+    "A deliberate503 on a native PNG blocks launch; the public retry action restores all three motifs.",
+    "LocalStorage bytes stay unchanged after exhibition in isolated campaign fixtures.",
+    "Both partitions use identical frozen source hashes; no browser console error or client-reported server-render error was observed on compiled Next."
+  ],
+  "limitations": [
+    "Browser timer control advances the normal simulation; no combat state or schedule was injected.",
+    "The compositor/alpha/native-pixel gates remain separate.",
+    "Screenshots require explicit independent visual review.",
+    "Mobile checks emulate Chromium, not physical devices.",
+    "Only the listed captures received this application-level visual inspection; native art and renderer reviews remain separate.",
+    "Background actors may be temporarily occluded by foreground fighters or the HUD. They are not claimed visible at every instant.",
+    "Portrait preserves a16:9 combat area with large black bars. Controls fit; the portrait UI is not claimed optimized.",
+    "Mobile uses Chromium emulation, not a physical device. Original scene adaptations are not certified1:1 reconstructions of licensed works."
+  ]
+}

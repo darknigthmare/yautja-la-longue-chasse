@@ -1,0 +1,1526 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-166-forge-cyborg",
+  "compositionDigest": "3ea0ad49095cb3d97c9d1e788f6c73a98ff448dea721117630ec6f5f7d5a482e",
+  "checkedAt": "2026-09-30T15:15:57.985Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-166-forge-cyborg/p0-depth.png",
+      "sha256": "f1d6bd4c4fce67ba2f460e284c2a70a85329a33f5dc58e431a01cf4b15dfbeda",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-a-support-left.png",
+      "sha256": "6bd5a73cb853204c9d8565ba6b741cf652f1b2cfe6c8fcb2f1bd925314bcea7f",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-b-support-right.png",
+      "sha256": "6c7dcca562f32db70f4310c7c9825dad7c0b6ada21c87d7785f0466ad8b1dc90",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-a-prop-left.png",
+      "sha256": "592933853ef2164a59a69201fde0518dabaa57ab468cdbab03fae53c6c1cc33c",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-b-prop-right.png",
+      "sha256": "7c9025649ded869f4c4dfb962dbdab69a1b05e7af9b2a174b81e4a469f0ee808",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "sha256": "09c6eab1fdd6ed2d1666edc29621e37d365f476803cd254f7f681984a2886bc2",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+      "sha256": "8274595f8e27b3381d3d70087c2da30adbd11025c6efbb0aa0a32c1663f3de53",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+      "sha256": "60e9baccc6e5e1c2dfa49d14d4269da0dc07b57d18ffe2f24e1a97469c858c15",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+      "sha256": "b37f6b9d27b50be3fdb2e98a485d9af79ef59f36c9b87b2c6cf536fbe9c6a1d3",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+      "sha256": "c8fd76d69fd5814c5cbb5f5643b0545d7d07f29ae0b0a8b6b545211055c8fc6c",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+      "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            343,
+            272
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            688,
+            350
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            870,
+            285
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            343,
+            272
+          ],
+          "pivot": [
+            343,
+            272
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            688,
+            350
+          ],
+          "pivot": [
+            688,
+            350
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            870,
+            285
+          ],
+          "pivot": [
+            870,
+            285
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            339.23249999999996,
+            271.79812499999997
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            693.72,
+            351.94312499999995
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            880.725,
+            285.155625
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            339.23249999999996,
+            271.79812499999997
+          ],
+          "pivot": [
+            339.23249999999996,
+            271.79812499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            693.72,
+            351.94312499999995
+          ],
+          "pivot": [
+            693.72,
+            351.94312499999995
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            880.725,
+            285.155625
+          ],
+          "pivot": [
+            880.725,
+            285.155625
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            350.1425,
+            272.045
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            702.905,
+            351.8
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            889,
+            285.3375
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            350.1425,
+            272.045
+          ],
+          "pivot": [
+            350.1425,
+            272.045
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            702.905,
+            351.8
+          ],
+          "pivot": [
+            702.905,
+            351.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            889,
+            285.3375
+          ],
+          "pivot": [
+            889,
+            285.3375
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            329.6925,
+            272.045
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            682.455,
+            351.8
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            868.55,
+            285.3375
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            329.6925,
+            272.045
+          ],
+          "pivot": [
+            329.6925,
+            272.045
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            682.455,
+            351.8
+          ],
+          "pivot": [
+            682.455,
+            351.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            868.55,
+            285.3375
+          ],
+          "pivot": [
+            868.55,
+            285.3375
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            344.37,
+            271.97999999999996
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            685.9200000000001,
+            349.2
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            866.0999999999999,
+            284.84999999999997
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            344.37,
+            271.97999999999996
+          ],
+          "pivot": [
+            344.37,
+            271.97999999999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            685.9200000000001,
+            349.2
+          ],
+          "pivot": [
+            685.9200000000001,
+            349.2
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            866.0999999999999,
+            284.84999999999997
+          ],
+          "pivot": [
+            866.0999999999999,
+            284.84999999999997
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            356.7,
+            271.8
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            667.2,
+            342
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            831,
+            283.5
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            356.7,
+            271.8
+          ],
+          "pivot": [
+            356.7,
+            271.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            667.2,
+            342
+          ],
+          "pivot": [
+            667.2,
+            342
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            831,
+            283.5
+          ],
+          "pivot": [
+            831,
+            283.5
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            343,
+            272
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            688,
+            350
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            870,
+            285
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            343,
+            272
+          ],
+          "pivot": [
+            343,
+            272
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            688,
+            350
+          ],
+          "pivot": [
+            688,
+            350
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            870,
+            285
+          ],
+          "pivot": [
+            870,
+            285
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            343,
+            272
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            688,
+            350
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            870,
+            285
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            343,
+            272
+          ],
+          "pivot": [
+            343,
+            272
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            688,
+            350
+          ],
+          "pivot": [
+            688,
+            350
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            870,
+            285
+          ],
+          "pivot": [
+            870,
+            285
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 753,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 773,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 793,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 813,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 833,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 853,
+      "attachment": [
+        870,
+        285
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2004,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2024,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2044,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2064,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2084,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2104,
+      "attachment": [
+        343,
+        272
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3181,
+      "attachment": [
+        688,
+        350
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3201,
+      "attachment": [
+        688,
+        350
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3221,
+      "attachment": [
+        688,
+        350
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3241,
+      "attachment": [
+        688,
+        350
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3261,
+      "attachment": [
+        688,
+        350
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3281,
+      "attachment": [
+        688,
+        350
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-166-forge-cyborg\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "83c03fb17a46a96367bc2b019df10ada7bd2789cad781ad9e51a3ba55b59b8ab",
+    "left-corner.png": "8af0f629d60bca2bc326e8064cd2a4c8b95adea526978d7efa560ce2b236b7c1",
+    "right-corner.png": "bd760c04a4ba27ed669dc709b902d397a522af5df7f04395369e0b7b8dc234ec",
+    "wide.png": "b86a6db74f892628b9be00620d4c51f0394905873e6808f79405f45753100061",
+    "life-03-active.png": "c17cc1b32cbd643087260db9b634d658321119f4e25fe1ea8e9ac5f4ee65c674",
+    "life-01-active.png": "2717e65d561ec09f761fc8efb414a44bc7bb59b0bb3f5c7b64281afcf5b8f153",
+    "life-02-active.png": "dac7d219e4a0b3a9827bdf738801d54c36d3680d462cda220d1bb8f0decdf9b7",
+    "mobile.png": "9cc4080e173f46b3898b5e0d8e977e957d32db822e85481d9a95bad8a447df0c"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-179-last-hunt-preserve",
+  "proposalId": "new-last-hunt-preserve",
+  "workbookStage": "A48:N48",
+  "sourceUrls": [
+    "https://www.marvel.com/comics/collection/110461/"
+  ],
+  "loreLimits": [
+    "Réserve latérale originale ; aucun plan exact de comic attesté.",
+    "Adulte en fuite et sentinelle anonymes, pas de double de Theta ou d’un combattant sélectionné.",
+    "La balise joue un cycle diagnostique neutre. Son arrêt après accomplissement d’un objectif, demandé au classeur, reste une condition narrative distincte non implémentée ici."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous ADULT human survivor in worn charcoalblue coveralls andscuffedboots, no weapons, no recognizablecomiccharacter. Fullbodysideview facingleft; compactguardedpostureofescapingcaptive. Sixposes: lookleft withkneesbent, shiftweightleft, one cautious shortstepinplace, glanceoverrightshoulder, crouchslightlybehindimaginarycover, returntowardsstart. Sideviewcoherentanatomy twoarmstwolegs, no duplicatedhead, clothingconsistent. Backgroundsmallfigure, restrained tension no violence. Coololive-grey light. Not child.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-95120c62-5553-4f09-953b-e11b05cf4a4e.png",
+      "workspacePath": "work-local/v60/generated/arena-179-last-hunt-preserve/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six cautious adult survivor poses, whole limbs and consistent outfit; not a named comic character. Original escape motif.",
+      "sha256": "8307ee95585af1322062a9329f4aae32d1ba86ac7f573eff4cba38e9e111c598",
+      "bytes": 1778700,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7892233530680338,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            17,
+            252,
+            462
+          ],
+          "pivot": [
+            267,
+            479
+          ],
+          "margins": [
+            130,
+            17,
+            130,
+            33
+          ],
+          "opaquePixelCount": 58287,
+          "contentSha256": "37ec3c78c18872c55f928668ef24f920eaa0bb89bedf14869706c0ff771c6f2d"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            107,
+            17,
+            309,
+            459
+          ],
+          "pivot": [
+            272,
+            476
+          ],
+          "margins": [
+            107,
+            17,
+            96,
+            36
+          ],
+          "opaquePixelCount": 56695,
+          "contentSha256": "f647ecc6d2059eb7f43c4cbd455e5f6777c97cf64f5393649f594b514c33fd4e"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            114,
+            17,
+            284,
+            462
+          ],
+          "pivot": [
+            261,
+            479
+          ],
+          "margins": [
+            114,
+            17,
+            114,
+            33
+          ],
+          "opaquePixelCount": 53529,
+          "contentSha256": "d5792d2c54b72497bbf659a37c529f4472a393b08d23152761c7cddf66d6ae14"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            132,
+            7,
+            237,
+            469
+          ],
+          "pivot": [
+            260.5,
+            476
+          ],
+          "margins": [
+            132,
+            7,
+            143,
+            36
+          ],
+          "opaquePixelCount": 56793,
+          "contentSha256": "2f5edd27e14c28962a5dd10497a5e377af340f5f7b46ee240cdfc8add19ea7a9"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            156,
+            103,
+            233,
+            357
+          ],
+          "pivot": [
+            262.5,
+            460
+          ],
+          "margins": [
+            156,
+            103,
+            123,
+            52
+          ],
+          "opaquePixelCount": 48115,
+          "contentSha256": "83de3d664e6bb796808e27e86f6aa78ab11f3682beebd888c37bc8a1ceeccdf3"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            13,
+            252,
+            465
+          ],
+          "pivot": [
+            271.5,
+            478
+          ],
+          "margins": [
+            130,
+            13,
+            130,
+            34
+          ],
+          "opaquePixelCount": 58104,
+          "contentSha256": "c8e1e586501b63ec883bc2b584c79974afeddec5a0d81885f63cddf4e12c350a"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous ADULT Yautja sentry on a distant reserve walkway, original background attendant not a namedplayablehunter. Muted dark rustarmor, plainclosedblackbiomask,blacktendrils, emptyhands, no plasmacaster orinventedweapon. Fullbodysideviewlookingright. Sixposes: relaxedguard, headturnsright, handtoforeheadtopeer, slightforwardlean, armreturns, idle. Samefeetpositions,botharmsandlegs anatomicallyconsistent. Deepolive-greyambientlight withdullcopperedge.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-77001374-b3fa-43e5-a67e-9beabfc78116.png",
+      "workspacePath": "work-local/v60/generated/arena-179-last-hunt-preserve/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six coherent guard lookout gestures with plain closed mask, no duplicate named fighter or invented weapon.",
+      "sha256": "a0b695020a13e1b8274d887fc0045c64a7fcdf30985982ff8fc1d9f8ea11badd",
+      "bytes": 1733787,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7992986043294271,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            218,
+            7,
+            170,
+            494
+          ],
+          "pivot": [
+            302.5,
+            501
+          ],
+          "margins": [
+            218,
+            7,
+            124,
+            11
+          ],
+          "opaquePixelCount": 51638,
+          "contentSha256": "39153febeb8328d417af5493c4ac18feed07fd4918b2aa4080c12d8a2eca0371"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            176,
+            12,
+            171,
+            490
+          ],
+          "pivot": [
+            261.5,
+            502
+          ],
+          "margins": [
+            176,
+            12,
+            165,
+            10
+          ],
+          "opaquePixelCount": 52409,
+          "contentSha256": "d467c9e71729af7692628d4625901cca14394b13fbb2ad6375b5dba0a02c1e0c"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            11,
+            206,
+            490
+          ],
+          "pivot": [
+            223.5,
+            501
+          ],
+          "margins": [
+            138,
+            11,
+            168,
+            11
+          ],
+          "opaquePixelCount": 54781,
+          "contentSha256": "ac5c943d8b2fbaef61dc0e6d77c54abcb79e8d5d011f3326b07bebb136196ffd"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            216,
+            15,
+            245,
+            482
+          ],
+          "pivot": [
+            301.5,
+            497
+          ],
+          "margins": [
+            216,
+            15,
+            51,
+            15
+          ],
+          "opaquePixelCount": 55169,
+          "contentSha256": "837769b2a329c02ff3df1e02b50a87c7c7aea150e4298e026b7a598cae90cb26"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            176,
+            9,
+            174,
+            488
+          ],
+          "pivot": [
+            263,
+            497
+          ],
+          "margins": [
+            176,
+            9,
+            162,
+            15
+          ],
+          "opaquePixelCount": 50886,
+          "contentSha256": "90ac0e7a1191afbe5322783dfb4fad49b5303b8449e991e34db47e73fcff5bde"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            141,
+            10,
+            169,
+            487
+          ],
+          "pivot": [
+            224.5,
+            497
+          ],
+          "margins": [
+            141,
+            10,
+            202,
+            15
+          ],
+          "opaquePixelCount": 50793,
+          "contentSha256": "e465073a18dd62487624ec638a96e0337615a7aba0764444713124e39e2e7b0e"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. A single wall-mounted alien security beacon fixture: compact triangular oxidisedbronze casing with three restrained amber lenses andone small hingedprotective fin. No pole or floor. Sixdrawings of a diagnosticcycle: lenslow, centerlensslightlybrighter, sidefinsrotates5degrees, then10, returns5, returnsstart. Clearlydifferentmechanicaldrawings, notonlycolorchanges. No flashing white lights, no laserbeams, no permanent shutdown narrative. Original game adaptation of surveillanceequipment for MarvelPredatorpreserve; noglyphtext. Stablecasingbody position ineachcell.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-98322ac0-2868-4655-8e9d-6029a6eb03a9.png",
+      "workspacePath": "work-local/v60/generated/arena-179-last-hunt-preserve/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six mechanical beacon-shutter phases with low amber lights, no flash or false objective-complete transition.",
+      "sha256": "d89c1cb01bbdece003eb266bea397f9b3e584446e69de6c6408e1c4112a641f5",
+      "bytes": 2018154,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6831811269124349,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            73,
+            37,
+            382,
+            431
+          ],
+          "pivot": [
+            263.5,
+            468
+          ],
+          "margins": [
+            73,
+            37,
+            57,
+            44
+          ],
+          "opaquePixelCount": 81519,
+          "contentSha256": "1cd92f31ca64cf286b414185f15646449bead601133243f68968614fcbe29177"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            38,
+            420,
+            430
+          ],
+          "pivot": [
+            258,
+            468
+          ],
+          "margins": [
+            47,
+            38,
+            45,
+            44
+          ],
+          "opaquePixelCount": 84325,
+          "contentSha256": "663444d4f91a253737cd7d80cb6c20c2e8b4579ee918ab50a90adc6d5a938389"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            39,
+            437,
+            429
+          ],
+          "pivot": [
+            250.5,
+            468
+          ],
+          "margins": [
+            30,
+            39,
+            45,
+            44
+          ],
+          "opaquePixelCount": 84922,
+          "contentSha256": "a60c6ff4de05c472b78d7a22db5078e02288c5cbb31b032450494b7064cfe361"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            38,
+            426,
+            430
+          ],
+          "pivot": [
+            262.5,
+            468
+          ],
+          "margins": [
+            51,
+            38,
+            35,
+            44
+          ],
+          "opaquePixelCount": 84779,
+          "contentSha256": "9406da3db4ee7b1b8e7f33b7e4c180385d2322c9b931392c3149c2c68d2fc8b3"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            38,
+            383,
+            430
+          ],
+          "pivot": [
+            258.5,
+            468
+          ],
+          "margins": [
+            66,
+            38,
+            63,
+            44
+          ],
+          "opaquePixelCount": 81985,
+          "contentSha256": "8a0fbac4a41d858b536680e563292bb7be14bd902f74715971af94b8ec24ae22"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            63,
+            39,
+            376,
+            429
+          ],
+          "pivot": [
+            250.5,
+            468
+          ],
+          "margins": [
+            63,
+            39,
+            73,
+            44
+          ],
+          "opaquePixelCount": 80783,
+          "contentSha256": "d7c9dd139de78942dafb1ed6bfda62747e12d20323af00590b8a5bea27c1af64"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Opaque1536x1024 P0 depth backdrop only for a cinematic painterly 2D sideview fighting game. The foreground gameplayfloor willbeaseparatecomponent; lower20percent isdarkquietocclusionband, avoidlargeemptynearbyfloor. Horizontalrearwalkways and convincing eyelevel lateralperspective, notisometric orcentralvanishingcorridor. Layered deep environment, richwornmaterials subduedcontrast incenterforfighters. No text,Hud,logos,actors,flashes oractiveprops bakedintoimage. Setting: an original lateral adaptation of the adult captive escape area in Marvel Predator The Last Hunt, not an exact comic panel and NOT the 2010movie clearing. Alien game-preserve enclosure among towering violet-grey vertical rockwalls, enclosedrearpassageleftwithaquietexit, angularrustedmetal barriersandobservationcatwalkupperright, narrowcagecorridorsstepintothedistance. Darkolivegrowthrestrained, overcastgreen-grey sky, dimambersecurityhousingsUNLIT. No human bodies, Predatorfigures,beaconsorcreatures. Leave threecleansmallbackgroundpockets:leftnearrearpassageforadultsurvivor, raisedrightcatwalkforsentry, centerwallforseparatebeacon. Strongdistinctsettingwithinterlockingprisonthresholdsandnaturalrock.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-0b7f498c-d1d5-4c5e-bad5-613ece08e468.png",
+      "workspacePath": "work-local/v60/generated/arena-179-last-hunt-preserve/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Layered captive enclosures with a rear escape threshold and raised guard catwalk. Original lateral adaptation, no frame-perfect claim.",
+      "sha256": "995e42d69511521cd387173c66a689b005371165cfb3b0dacbd6da3e7806bddc",
+      "bytes": 2807441,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "sourceEvidence": "Official Marvel collection synopsis supports the game-preserve rescue premise and captives. Geometry, anonymous sentry equipment and beacon design are original.",
+  "sourceReviewDate": "2026-09-30"
+}

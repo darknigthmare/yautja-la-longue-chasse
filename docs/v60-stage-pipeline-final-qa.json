@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "checkedAt": "2026-09-30T15:54:46.714Z",
+  "runtimePlayable": 186,
+  "readyRuntimeKits": 186,
+  "concepts": 0,
+  "uniqueVerifiedImagePaths": 501,
+  "nativeV60Stages": 25,
+  "nativeV60Events": 75,
+  "nativeV60Drawings": 450,
+  "nativeV60Files": 104,
+  "nativeV60Bytes": 219414234,
+  "historical161IdenticalToHEAD": true,
+  "historical161Digest": "ddc3cbc6add891341f45ddfed5431589caff68ba2f3e383a5a0e96a8566d079f",
+  "assembly": "docs/v60-assembly-report.json",
+  "visualReview": "docs/v60-stage-composition-visual-review.json",
+  "actualThreeCameraReviews": 25,
+  "reviewedCaptureHashes": 75,
+  "fullProductionAudit": "work-local/v60/production-audit-final.log",
+  "fullProductionAuditSha256": "34656efcb0e5d32aff74be07f4b86560d4cbbc48b157d250b75f3aca0809e4d7",
+  "sourceHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/pitArenaProductionData.generated.json": "53936214b5f084212c1ed22d578e8da2e488f45424243ad3da4b1d3cfd58e712",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a",
+    "app/game/systems/pitLoreStagesV60.generated.json": "c8a9a86a60a90750136a018327c95f72669a1f8346fdd6f305fbc91d1a650afe",
+    "docs/v60-stage-layout.json": "bca7fb51d76da00445583a8cc2301367395c15e9034d5e020b22a0162fef198f",
+    "docs/v60-stage-composition-visual-review.json": "7a714ce61e7e8635545b376940d2b28e40a60a848981c1c601b6e68a3857fc03"
+  },
+  "checks": {
+    "pipelineTests": 9,
+    "runtimeTests": 11,
+    "targetedLintErrors": 0,
+    "targetedLintWarnings": 0
+  },
+  "applicationFlowVerified": false,
+  "publicationPerformed": false
+}

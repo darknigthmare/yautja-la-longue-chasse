@@ -8,6 +8,7 @@ import { openPitSelectionOptions } from './pit-selection-browser-helpers.mjs';
 
 const url = process.env.V59_FERAL_REPLAY_QA_URL || 'http://127.0.0.1:4177';
 const output = process.env.V59_FERAL_REPLAY_QA_OUTPUT || 'work-local/v59/qa/replay-vinext-final';
+const version = process.env.V59_FERAL_REPLAY_QA_VERSION || 'V59';
 const fixturePath = 'tests/fixtures/pit-replay-v58-feral-v9.json';
 const fixtureBytes = await fs.readFile(fixturePath, 'utf8');
 const replay = JSON.parse(fixtureBytes);
@@ -76,7 +77,7 @@ const read = () => page.evaluate(() => ({
 const shot = async name => { await page.screenshot({ path: path.join(output, name + '.png') }); captures.push(name + '.png'); };
 try {
   await enterCampaignDeck(page, { url });
-  assert.equal(await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version'), 'V59');
+  assert.equal(await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version'), version);
   await page.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
   await page.locator('[data-pit-selection-step]').waitFor();
   const before = await readStorage();
@@ -108,7 +109,7 @@ try {
   assert.deepEqual(await readStorage(), before, 'reading the saved replay preserves all settings/progression/archive bytes');
   assert.equal(await fs.readFile(fixturePath, 'utf8'), fixtureBytes);
   assert.deepEqual(errors, []); assert.deepEqual(httpFailures, []);
-  await fs.writeFile(path.join(output, 'report.json'), JSON.stringify({ status: 'PASS', version: 'V59', url,
+  await fs.writeFile(path.join(output, 'report.json'), JSON.stringify({ status: 'PASS', version, url,
     setup: 'A fresh isolated browser context starts with an explicitly seeded pre-existing campaign and V9 replay sidecar. Playback is launched by the actual REVOIR LE DERNIER DUEL UI button; this is not file-import QA and no runtime combat state is injected.',
     fixture: fixturePath, engineVersion: replay.engineVersion, checksum: replay.metadata.checksum,
     expectedHealth: expected.fighters.map(fighter => fighter.health), final, nativeLauncherDrawCount: evidence.nativeLauncherDraws.length,

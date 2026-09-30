@@ -1,0 +1,1422 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-164-alpha-revolt",
+  "compositionDigest": "4b51e7d5b9c32c870ff7f59d7e5a67a0d00cef910e108b4da5010eb8c893e4b9",
+  "checkedAt": "2026-09-30T15:21:07.134Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-164-alpha-revolt/p0-depth.png",
+      "sha256": "92f6725c9ed9af26b045dd249deb92c59e5865c0d91ebb00a4b4cc1e18321876",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+      "sha256": "c696ef4a3964364e2d8e4752fe85edf9f29748fc212733dcf32988e4626d5fdc",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+      "width": 1881,
+      "height": 836,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+      "sha256": "ca356e984bb1978288fcfb0202d46927ff37e218dab2cdc9ecdc623cbf06a224",
+      "width": 2170,
+      "height": 725,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+      "sha256": "1047b5f38616ef37f3cf4d388acb0674a65c2291b533bd4ab52a5b0f95487308",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+      "sha256": "d87a8173b0b02fc1ea51c44136ec40069acacf2007eecc996a43ad85918ad267",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+      "sha256": "acefdebb5fae4a48ec00778418ea7e632a2d575dac3500854fdf02a9189918a2",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            160
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            560,
+            352
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            778,
+            321
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            160
+          ],
+          "pivot": [
+            165,
+            160
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            560,
+            352
+          ],
+          "pivot": [
+            560,
+            352
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            778,
+            321
+          ],
+          "pivot": [
+            778,
+            321
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            156.33749999999998,
+            156.71812499999996
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            562.2,
+            353.99812499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            786.195,
+            322.145625
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            156.33749999999998,
+            156.71812499999996
+          ],
+          "pivot": [
+            156.33749999999998,
+            156.71812499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            562.2,
+            353.99812499999996
+          ],
+          "pivot": [
+            562.2,
+            353.99812499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            786.195,
+            322.145625
+          ],
+          "pivot": [
+            786.195,
+            322.145625
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            168.13750000000002,
+            157.525
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            572.0250000000001,
+            353.84499999999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            794.9300000000001,
+            322.1475
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            168.13750000000002,
+            157.525
+          ],
+          "pivot": [
+            168.13750000000002,
+            157.525
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            572.0250000000001,
+            353.84499999999997
+          ],
+          "pivot": [
+            572.0250000000001,
+            353.84499999999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            794.9300000000001,
+            322.1475
+          ],
+          "pivot": [
+            794.9300000000001,
+            322.1475
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            147.68750000000003,
+            157.525
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            551.575,
+            353.84499999999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            774.48,
+            322.1475
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            147.68750000000003,
+            157.525
+          ],
+          "pivot": [
+            147.68750000000003,
+            157.525
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            551.575,
+            353.84499999999997
+          ],
+          "pivot": [
+            551.575,
+            353.84499999999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            774.48,
+            322.1475
+          ],
+          "pivot": [
+            774.48,
+            322.1475
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            168.15,
+            161.1
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            559.2,
+            351.18
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            775.02,
+            320.49
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            168.15,
+            161.1
+          ],
+          "pivot": [
+            168.15,
+            161.1
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            559.2,
+            351.18
+          ],
+          "pivot": [
+            559.2,
+            351.18
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            775.02,
+            320.49
+          ],
+          "pivot": [
+            775.02,
+            320.49
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            196.5,
+            171
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            552,
+            343.8
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            748.2,
+            315.90000000000003
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            196.5,
+            171
+          ],
+          "pivot": [
+            196.5,
+            171
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            552,
+            343.8
+          ],
+          "pivot": [
+            552,
+            343.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            748.2,
+            315.90000000000003
+          ],
+          "pivot": [
+            748.2,
+            315.90000000000003
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            160
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            560,
+            352
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            778,
+            321
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            160
+          ],
+          "pivot": [
+            165,
+            160
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            560,
+            352
+          ],
+          "pivot": [
+            560,
+            352
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            778,
+            321
+          ],
+          "pivot": [
+            778,
+            321
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            160
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            560,
+            352
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-164-alpha-revolt/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            778,
+            321
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            160
+          ],
+          "pivot": [
+            165,
+            160
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            560,
+            352
+          ],
+          "pivot": [
+            560,
+            352
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            778,
+            321
+          ],
+          "pivot": [
+            778,
+            321
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1026,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1046,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1066,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1086,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1106,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1126,
+      "attachment": [
+        560,
+        352
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 2160,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 2180,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 2200,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 2220,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 2240,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 2260,
+      "attachment": [
+        778,
+        321
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3210,
+      "attachment": [
+        165,
+        160
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3230,
+      "attachment": [
+        165,
+        160
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3250,
+      "attachment": [
+        165,
+        160
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3270,
+      "attachment": [
+        165,
+        160
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3290,
+      "attachment": [
+        165,
+        160
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3310,
+      "attachment": [
+        165,
+        160
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+      "crop": {
+        "x": 0,
+        "y": 32,
+        "width": 2170,
+        "height": 693
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-164-alpha-revolt\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "dae711b3db6bd7b3947f43ef22d41f9998bd1ec5e386e169592a233f7589d897",
+    "left-corner.png": "5e54373d71105e4e358737be722fdcb97ecf41b3a81fbede573707c243df9e3d",
+    "right-corner.png": "a50c50d47bac6b3a15bc604af6c2a94e515600f1135d1d2d0c653117ef6495dd",
+    "wide.png": "3a7419dc596c09bab66faef60bbf014fef732174e99a2499cf272a23f37fcbca",
+    "life-01-active.png": "727ace1af6eb6e2603ea2d7266789d1bd3aff7779d3ad410c40128bdea13616e",
+    "life-03-active.png": "5c1aafa081a0234fcb1a08223192177bdbac2e0ad7cc5140c26fb49455f59c52",
+    "life-02-active.png": "c39a0402f0e24a119ed5aa6d8810fcac6ff56cb83d88930cf36b913ad3865c8e",
+    "mobile.png": "dae50429e66d2a98726cd554ea997083a75fa23a1db68883bc3313383b23d73e"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

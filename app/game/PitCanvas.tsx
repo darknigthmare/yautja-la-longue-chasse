@@ -641,6 +641,10 @@ function drawArena(
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
   canvas.dataset.pitArenaLifeActors = String(backdropReport.life?.actorsDrawn ?? 0);
   canvas.dataset.pitArenaLifeFrames = JSON.stringify(backdropReport.life?.nativeFrames ?? []);
+  canvas.dataset.pitStageLifeV60Stage = backdropReport.stageLifeV60?.stageId ?? "";
+  canvas.dataset.pitStageLifeV60Actors = String(backdropReport.stageLifeV60?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV60Events = JSON.stringify(backdropReport.stageLifeV60?.events ?? []);
+  canvas.dataset.pitStageLifeV60Missing = JSON.stringify(backdropReport.stageLifeV60?.missingPaths ?? []);
   canvas.dataset.pitArenaArtSource = arenaArt?.unavailable ? "unavailable" : arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
   canvas.dataset.pitSceneArenaId = pitStageSceneArena(state);
   canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";

@@ -7,6 +7,8 @@ import { build } from "esbuild";
 import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
 import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
 import { arenaCompositionDigest } from "./lib/pit-arena-composition-v42.mjs";
+import { V60_COMPOSITION, V60_LIFE, v60CompositionDigest, verifyV60StageBytes } from "./lib/pit-stage-plan-v60.mjs";
+const v60Life=JSON.parse(await fs.readFile(V60_LIFE, "utf8"));
 
 const root = process.cwd();
 const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { PIT_SCREEN_ARENA_DEFINITIONS } from "./app/game/systems/pitScreenArenas"; export { PIT_ALL_LORE_STAGE_DEFINITIONS } from "./app/game/systems/pitLoreStages"; export { getPitArenaLifePaths } from "./app/game/pitArenaLife"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
@@ -29,6 +31,9 @@ for (const stage of manifest.stages) {
   assert.equal(stage.number, catalogue.number);
   assert.equal(stage.name, catalogue.name);
   assert.equal(stage.setting, catalogue.setting);
+  const nativeLife=v60Life.stages.find(entry=>entry.stageId===stage.catalogueId);
+  const nativeLifePaths=nativeLife?.events.map(event=>event.src)??[];
+  if(stage.compositionContract===V60_COMPOSITION){assert(nativeLife);await verifyV60StageBytes(stage,nativeLife,root);}
   const runtimeId = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId ?? null;
   assert.equal(runtimeId, catalogue.runtimeArenaId);
   if (stage.runtimeExtension) {
@@ -39,25 +44,25 @@ for (const stage of manifest.stages) {
     assert.equal(catalogue.runtimeStatus, "playable");
     const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
     assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
-    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions'].includes(stage.compositionContract)) {
-      const digest = arenaCompositionDigest(stage);
+    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions',V60_COMPOSITION].includes(stage.compositionContract)) {
+      const digest = stage.compositionContract===V60_COMPOSITION?v60CompositionDigest(stage,nativeLife):arenaCompositionDigest(stage);
       assert.equal(qa.compositionDigest, digest, 'Renderer proof is stale: ' + stage.catalogueId);
       assert.equal(stage.compositionVisualReview?.digest, digest, 'Visual approval is stale: ' + stage.catalogueId);
       const visual = JSON.parse(await fs.readFile(stage.compositionVisualReview.evidence, 'utf8'));
       assert(visual.compositions.some(entry => entry.arenaId === stage.catalogueId && entry.accepted === true && entry.compositionDigest === digest), 'Missing actual composition review');
     }
-    assert.equal(qa.loaded.images, new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))), ...(stage.number >= 137 ? api.getPitArenaLifePaths(stage.catalogueId) : [])]).size); assert.equal(qa.mobileNoOverflow, true);
+    assert.equal(qa.loaded.images, new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))), ...(nativeLife?nativeLifePaths:stage.number >= 137 ? api.getPitArenaLifePaths(stage.catalogueId) : [])]).size); assert.equal(qa.mobileNoOverflow, true);
     assert.deepEqual(qa.errors, []); assert.deepEqual(qa.failedRequests, []);
     assert(qa.scenarios.length >= 8 && qa.scenarios.every(s => s.planes.length === 6 && s.missing.length === 0 && s.unchangedCamera && s.unchangedState));
     if (stage.runtimeExtension.applicationEvidence) {
       const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
       assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
-      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions'].includes(stage.compositionContract)) {
-        const digest = arenaCompositionDigest(stage);
+      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions',V60_COMPOSITION].includes(stage.compositionContract)) {
+        const digest = stage.compositionContract===V60_COMPOSITION?v60CompositionDigest(stage,nativeLife):arenaCompositionDigest(stage);
         assert(appQa.checks.some(check => check.arena === runtimeId && check.compositionDigest === digest), 'Application proof is stale: ' + stage.catalogueId);
       }
       assert.deepEqual(appQa.errors, []); assert.deepEqual(appQa.failedRequests, []);
-      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === new Set(stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path)))).size && check.subplans === stage.planes.reduce((n, p) => n + p.assets.length, 0) && check.missing === 0));
+      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))),...nativeLifePaths]).size && check.subplans === stage.planes.reduce((n, p) => n + p.assets.length, 0) && check.missing === 0));
     }
   } else assert.equal(stage.legacyRuntimeStatus, catalogue.runtimeStatus);
   assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
@@ -79,7 +84,7 @@ for (const stage of manifest.stages) {
       }
       assert(api.isPitArenaAssetPathAuthorized(stage, asset, manifest), "Unauthorized foreign module: " + asset.id);
       for (const frame of asset.frames) {
-        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43|54|55)\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43|54|55|60)\/pit-arenas\/[a-z0-9/-]+\.png$/);
         assert(asset.libraryRef || frame.path.startsWith(stage.assetDirectory + "/"));
         // An authorised alias may be listed before its later-numbered owner.
         // Only a second ownership claim is invalid; alias authorisation is checked above.
@@ -109,7 +114,7 @@ for (const stage of manifest.stages) {
         const diskPath = path.resolve(root, "public", "." + frame.path);
         const bytes = await fs.readFile(diskPath);
         const metadata = await sharp(bytes).metadata();
-        const measured = await inspectPitArenaImage(diskPath, {alphaThreshold: frame.path.startsWith('/game/sprites/v43/') ? 1 : 16});
+        const measured = await inspectPitArenaImage(diskPath, {alphaThreshold: frame.path.startsWith('/game/sprites/v43/') ? 1 : frame.path.startsWith('/game/sprites/v60/') ? 3 : 16});
         assert.deepEqual(frame.generation.contentBounds, measured.contentBounds, "Stale measured alpha bounds: " + frame.path);
         const crop = asset.sourceCrop ?? frame.generation.contentBounds;
         assert([crop.x, crop.y, crop.width, crop.height].every(Number.isInteger));

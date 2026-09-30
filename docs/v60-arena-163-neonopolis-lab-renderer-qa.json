@@ -1,0 +1,1502 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-163-neonopolis-lab",
+  "compositionDigest": "982d07d554123dca24d3a933a2a7e38b35e5e27fb2f15cbdd927677b1218e205",
+  "checkedAt": "2026-09-30T15:00:30.081Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-163-neonopolis-lab/p0-depth.png",
+      "sha256": "b152b086afa414a356fb0b9063d64b49620b5f39845018ff024db6d8635cfbe7",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+      "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+      "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "sha256": "09c6eab1fdd6ed2d1666edc29621e37d365f476803cd254f7f681984a2886bc2",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+      "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+      "sha256": "51a24c36f5f40ccfa7bfe43e2aae870e8445199c429103baf2e347fa61317ce1",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+      "sha256": "869f520cd260277846f800d86c8e667e7450d7fc3a8a08cf163f1dd121c0aa47",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+      "sha256": "b96e671fe89e97c2c01a04b803fa6f9d341e25355a4a0a7e0e13fc538031defc",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            119
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            839,
+            95
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500,
+            389
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            119
+          ],
+          "pivot": [
+            155,
+            119
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            839,
+            95
+          ],
+          "pivot": [
+            839,
+            95
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            500,
+            389
+          ],
+          "pivot": [
+            500,
+            389
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 510.24999999999994,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 510.24999999999994,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            146.06249999999997,
+            114.59062499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            848.8725000000001,
+            89.93062499999996
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500.54999999999995,
+            392.015625
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            146.06249999999997,
+            114.59062499999996
+          ],
+          "pivot": [
+            146.06249999999997,
+            114.59062499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            848.8725000000001,
+            89.93062499999996
+          ],
+          "pivot": [
+            848.8725000000001,
+            89.93062499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            500.54999999999995,
+            392.015625
+          ],
+          "pivot": [
+            500.54999999999995,
+            392.015625
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            157.9125,
+            115.6025
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            857.3025,
+            91.06250000000001
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            510.675,
+            391.6775
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            157.9125,
+            115.6025
+          ],
+          "pivot": [
+            157.9125,
+            115.6025
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            857.3025,
+            91.06250000000001
+          ],
+          "pivot": [
+            857.3025,
+            91.06250000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            510.675,
+            391.6775
+          ],
+          "pivot": [
+            510.675,
+            391.6775
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            137.4625,
+            115.6025
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            836.8525,
+            91.06250000000001
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            490.225,
+            391.6775
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            137.4625,
+            115.6025
+          ],
+          "pivot": [
+            137.4625,
+            115.6025
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            836.8525,
+            91.06250000000001
+          ],
+          "pivot": [
+            836.8525,
+            91.06250000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            490.225,
+            391.6775
+          ],
+          "pivot": [
+            490.225,
+            391.6775
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 397.99999999999994,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 397.99999999999994,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            158.25,
+            120.50999999999999
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            835.4100000000001,
+            96.74999999999999
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            499.8,
+            387.81
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            158.25,
+            120.50999999999999
+          ],
+          "pivot": [
+            158.25,
+            120.50999999999999
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            835.4100000000001,
+            96.74999999999999
+          ],
+          "pivot": [
+            835.4100000000001,
+            96.74999999999999
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            499.8,
+            387.81
+          ],
+          "pivot": [
+            499.8,
+            387.81
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            187.5,
+            134.10000000000002
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            803.1,
+            112.5
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            498,
+            377.1
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            187.5,
+            134.10000000000002
+          ],
+          "pivot": [
+            187.5,
+            134.10000000000002
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            803.1,
+            112.5
+          ],
+          "pivot": [
+            803.1,
+            112.5
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            498,
+            377.1
+          ],
+          "pivot": [
+            498,
+            377.1
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            119
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            839,
+            95
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500,
+            389
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            119
+          ],
+          "pivot": [
+            155,
+            119
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            839,
+            95
+          ],
+          "pivot": [
+            839,
+            95
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            500,
+            389
+          ],
+          "pivot": [
+            500,
+            389
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            119
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            839,
+            95
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-163-neonopolis-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500,
+            389
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            119
+          ],
+          "pivot": [
+            155,
+            119
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            839,
+            95
+          ],
+          "pivot": [
+            839,
+            95
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            500,
+            389
+          ],
+          "pivot": [
+            500,
+            389
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1300,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1320,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1340,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1360,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1380,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1400,
+      "attachment": [
+        839,
+        95
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 2566,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 2586,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 2606,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 2626,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 2646,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 2666,
+      "attachment": [
+        500,
+        389
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 3690,
+      "attachment": [
+        155,
+        119
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 3710,
+      "attachment": [
+        155,
+        119
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 3730,
+      "attachment": [
+        155,
+        119
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 3750,
+      "attachment": [
+        155,
+        119
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 3770,
+      "attachment": [
+        155,
+        119
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 3790,
+      "attachment": [
+        155,
+        119
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-163-neonopolis-lab\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "06796fab0884859d9611bdb1e5d4c59cad1f5ef9700ac43017d15a277d60bff4",
+    "left-corner.png": "251a657e5fd001ddd3e7fae9f8a279bd3111a4b9b013a4e7f022cbba612ad00a",
+    "right-corner.png": "1dcfc22d47ba40db5e1ce2f009c8585561d8b2d7edef70c483068307283fd269",
+    "wide.png": "2a4e1ff885b996c2c22ce5f8a17773149768fffa037a7ad6510548c002d8ab3a",
+    "life-03-active.png": "1299f5f348ee7c7bb47ba8803a0dfdaa31af5f9d26e8d143c2a856889b4cb7a0",
+    "life-02-active.png": "b3a75e572c7368f51bb8655fe5568fc62f9f97891830b08e09aabe262aa284c3",
+    "life-01-active.png": "b2f81487b2249a90285372b26870d94ce09164d7d989f64f0aa777b888dd984e",
+    "mobile.png": "f0d886bc49a9f0da19aaacaf5ddeef2d2f3a1205ea72d411b6cf4a327c004360"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

@@ -1,4 +1,5 @@
 import additional from "./pitLoreStagesV55.generated.json";
+import workbookStagesV60 from "./pitLoreStagesV60.generated.json";
 
 export type PitStageSourceClassification = "character-setting" | "work-setting" | "original-exhibition";
 export type PitStageSourceStatus = "resolved" | "primary-limited" | "original-selected";
@@ -46,7 +47,8 @@ export const PIT_LORE_STAGE_DEFINITIONS = [
 // Keep the historical batch stable; authored definitions alone never activate a stage.
 export const PIT_ADDITIONAL_LORE_STAGES = additional.stages as readonly PitAdditionalLoreStage[];
 export const PIT_EXPLICIT_STAGE_ASSOCIATIONS = additional.associations as readonly PitExplicitStageAssociation[];
-export const PIT_ALL_LORE_STAGE_DEFINITIONS = [...PIT_LORE_STAGE_DEFINITIONS, ...PIT_ADDITIONAL_LORE_STAGES];
+export const PIT_WORKBOOK_LORE_STAGES_V60 = workbookStagesV60.stages as readonly PitAdditionalLoreStage[];
+export const PIT_ALL_LORE_STAGE_DEFINITIONS = [...PIT_LORE_STAGE_DEFINITIONS, ...PIT_ADDITIONAL_LORE_STAGES, ...PIT_WORKBOOK_LORE_STAGES_V60];
 export const PIT_LORE_STAGE_WORKS = Array.from(new Map(PIT_ALL_LORE_STAGE_DEFINITIONS
   .filter(stage => stage.kind !== "original")
   .map(stage => [stage.workId, { id: stage.workId, title: stage.workTitle, kind: stage.kind as "film" | "game" | "comic" | "novel" }])).values());

@@ -1,0 +1,42 @@
+{
+  "createdAt": "2026-09-30T16:09:29.319Z",
+  "status": "PASS",
+  "output": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+  "outputSha256": "e7568dc0caa17e15eac15e52187f5080a2bfe464baaa35da75adedce3c8c76b2",
+  "sourceSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+  "sourceUnchanged": true,
+  "sheets": 2,
+  "stageRows": 25,
+  "animationRows": 75,
+  "separatePngs": 75,
+  "drawings": 450,
+  "publication": "EN ATTENTE",
+  "reopenedValuesExactlyMatch": true,
+  "formulaTotalsVerified": true,
+  "filterTables": 2,
+  "authoring": "@oai/artifact-tool bundled runtime",
+  "previewFiles": [
+    "stages-overview.png",
+    "stages-limits.png",
+    "animations-overview.png",
+    "animations-detail.png"
+  ],
+  "visualReview": {
+    "reviewed": true,
+    "notes": "Les deux onglets, leurs totaux et les plages de détails ont été ouverts et inspectés. Titres, chiffres, limites, cellules source, PNG et placement lisibles ; lignes adaptées aux textes longs. Aucun écart de contenu après réouverture."
+  },
+  "nativeXlsxChecks": {
+    "zipCrcValid": true,
+    "sheetNames": [
+      "Stages",
+      "Animations"
+    ],
+    "freezePanes": {
+      "xSplit": 2,
+      "ySplit": 9,
+      "topLeftCell": "C10"
+    },
+    "tableFilters": 2
+  },
+  "runtimeLimit": "Le moteur Windows de rendu termine par un défaut natif de finalisation (0xC0000409) après export, réouverture et écriture du reçu. Les assertions de tous les contenus et totaux sont passées avant cette fermeture ; le ZIP XLSX a été validé séparément. Pas de validation dans Microsoft Excel desktop."
+}

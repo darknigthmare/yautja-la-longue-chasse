@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "release": "V60",
+  "status": "accepted-with-stated-limitations",
+  "checkedAt": "2026-09-30T16:11:35.977Z",
+  "url": "http://127.0.0.1:4177",
+  "reviewedStageCount": 25,
+  "reviewedCaptureCount": 36,
+  "reviews": [
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "status": "visually-accepted",
+      "notes": "Vue dans le jeu après éloignement réel des combattants : ruines et fond cohérents, sol horizontal, végétation, relief organique et mécanisme séparés. HUD lisible, combattants posés au sol ; pas de trou opaque autour des motifs.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-162-ahab-engineer-fighters-apart.png",
+      "sha256": "980963d370082440230b0f7b3a2ed5144a91d8f35f6478a190848a7b20b43de9"
+    },
+    {
+      "stageId": "arena-175-phg-islands",
+      "status": "visually-accepted",
+      "notes": "Les trois motifs apparaissent dans le jeu : vague à gauche, rameur dans la baie, filet et brasero sur le promontoire. Aucun feu sous les cordages, axe maritime horizontal, sprites sans rectangle opaque et combattants sur la ligne de sol.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-fighters-apart.png",
+      "sha256": "0f8aaf6ca334c538b3bc944b4a652323800faad1707b2b9b761aed3f8702936f"
+    },
+    {
+      "stageId": "arena-163-neonopolis-lab",
+      "status": "visually-accepted",
+      "notes": "Laboratoire profond à passerelles ; bras mécanique articulé visible entre combattants, opérateur sur la galerie supérieure. Sol et corps bien alignés, alpha propre ; le HUD occulte une partie du haut du décor comme attendu.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-163-neonopolis-lab-event-1.png",
+      "sha256": "4cf896b86bda6b5160f539e9810ea2423681f59ebfdb3f7a881e08d91bc7596e"
+    },
+    {
+      "stageId": "arena-176-phg-pirate",
+      "status": "visually-accepted",
+      "notes": "Pont maritime complet dans l’application : planches, coque et gréement cohérents ; aucun pilier de décor japonais. Voile et goéland lisibles, marin partiellement masqué par le combattant comme un acteur du fond ; ligne de contact au sol correcte.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-176-phg-pirate-event-1.png",
+      "sha256": "7cc44cefa7f1722505bb32d9a8b8fc88d1da992e9efc9a99ae693cfd6b5de569"
+    },
+    {
+      "stageId": "arena-164-alpha-revolt",
+      "status": "visually-accepted",
+      "notes": "Carrière à profondeurs étagées, mécanisme distinct derrière la ligne du duel ; roche et terrain respectent la même perspective latérale. Combattants ancrés au sol et HUD lisible, sans bord opaque de motif.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-164-alpha-revolt-event-1.png",
+      "sha256": "6d35c38a34578fe5c0b82877a1fe03d1813c7038689d6fe1833d8cf1ac3fca34"
+    },
+    {
+      "stageId": "arena-177-phg-amazon",
+      "status": "visually-accepted",
+      "notes": "Jungle et rive lisibles : oiseaux perchés, végétation, petite embarcation réellement sur l’eau derrière le terrain. Les oiseaux sont plus saturés mais ne masquent pas le combat ; le bateau moderne reste une variante originale explicitement documentée.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-177-phg-amazon-event-1.png",
+      "sha256": "a2555d095dd5ee17c2c9c98fe0f3bb240ea73045abd657fefcb3e6377f6e440c"
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "status": "visually-accepted",
+      "notes": "Trône au fond avec escalier continu, gardes réellement sur les paliers et bannière séparée. Échelle des gardes inférieure à celle des combattants, perspective et contact au sol cohérents. L’appellation hommage Kenner est visible.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-165-kenner-throne-event-1.png",
+      "sha256": "2ac0dd57738d3d3b19722b669863c39e5ffb4219364ecf1b732fb55b4bf13ef1"
+    },
+    {
+      "stageId": "arena-178-bloodshed-ring",
+      "status": "visually-accepted",
+      "notes": "Structure industrielle et passerelles continues ; adulte assis soutenu par son siège, observateur sur la galerie gauche et panneau technique au fond. Les personnes ne flottent pas et restent derrière le duel ; HUD libre.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-event-1.png",
+      "sha256": "ccfd98f9576f90c5b0eaeb04cd37db5dd6d44b283252249ca11fb81d95a8fa98"
+    },
+    {
+      "stageId": "arena-166-forge-cyborg",
+      "status": "visually-accepted",
+      "notes": "Atelier profond et établis cohérents ; bras de fabrication sur support, opérateur et foyer derrière le combattant droit. Teintes bronze/froid homogènes, aucun motif découpé en rectangle opaque ni flottement du duel.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-166-forge-cyborg-event-1.png",
+      "sha256": "5c6f55fb97684292eadd850cf34e88a1e02f7d4455ec506909386964d189577a"
+    },
+    {
+      "stageId": "arena-179-last-hunt-preserve",
+      "status": "visually-accepted",
+      "notes": "Réserve avec clôtures et passerelles ancrées dans le relief. Motif volant lisible au-dessus du grillage, silhouette arrière partiellement occultée par le joueur ; sol de duel continu et profondeur distincte.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-179-last-hunt-preserve-event-1.png",
+      "sha256": "d5cb3364f5a1d552d580a29351f172a3c3c17ef7c4cd5a213b46ce8f59a67be6"
+    },
+    {
+      "stageId": "arena-167-lava-ridge",
+      "status": "visually-accepted",
+      "notes": "Corniche distincte de la lave située en arrière-plan ; horizon et lignes de roche stables. Le terrain sombre garde le duel lisible. Les petits motifs proches des combattants sont partiellement occultés sans passer artificiellement devant eux.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-167-lava-ridge-event-1.png",
+      "sha256": "01bdd10f13528e69399c140e8dab17cd5a4cf8f417f9bb35c345e0acd463de13"
+    },
+    {
+      "stageId": "arena-180-sandpiper",
+      "status": "visually-accepted",
+      "notes": "Soute cohérente avec porte coulissante intégrée à gauche, opératrice adulte sur la passerelle et écran fixé au mur. Perspective frontale conservée, sol continu et silhouettes sans rectangle d’alpha.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-event-1.png",
+      "sha256": "87a51f08f52eb7e9bf39f3643d4a39b25a03c71885d4126cf5b4c11b0359475f"
+    },
+    {
+      "stageId": "arena-175-phg-islands",
+      "notes": "Revue indépendante root : sélection lisible, canoë sur l’eau et brasero posé sur la corniche.",
+      "reviewer": "root",
+      "status": "visually-accepted",
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-selection.png",
+      "sha256": "a786feb7fb5172861f84188994478086f688e4c67e7ccf789c51ad65b3a41995"
+    },
+    {
+      "stageId": "arena-175-phg-islands",
+      "notes": "Revue indépendante root : HUD lisible, canoë sur l’eau et brasero sur la corniche, figurants au fond.",
+      "reviewer": "root",
+      "status": "visually-accepted",
+      "file": "work-local/v60/qa/application-next-175-186/arena-175-phg-islands-event-2.png",
+      "sha256": "3a29e6ca74a670ac765258a26b6ea40fcf8174b31584add6c6530629dcd40795"
+    },
+    {
+      "stageId": "arena-178-bloodshed-ring",
+      "notes": "Revue indépendante root : HUD et appuis corrects ; animation sans accessoire parasite, figurants sur leurs supports au fond.",
+      "reviewer": "root",
+      "status": "visually-accepted",
+      "file": "work-local/v60/qa/application-next-175-186/arena-178-bloodshed-ring-event-0.png",
+      "sha256": "c44ad597d72a4c5c9f2ba8cc4ff84bcc82bba742e2a82177573b587f40a2e9b2"
+    },
+    {
+      "stageId": "arena-180-sandpiper",
+      "notes": "Revue indépendante root : appuis corrects, HUD lisible et figurants maintenus sur les supports de l’arrière-plan.",
+      "reviewer": "root",
+      "status": "visually-accepted",
+      "file": "work-local/v60/qa/application-next-175-186/arena-180-sandpiper-event-1.png",
+      "sha256": "87a51f08f52eb7e9bf39f3643d4a39b25a03c71885d4126cf5b4c11b0359475f"
+    },
+    {
+      "stageId": "arena-168-hive-front",
+      "status": "visually-accepted",
+      "notes": "Front de ruche : résine et structures en continuité, créature au plafond, dispositif sur sol arrière et gardien près de la grille. Alpha propre ; aucun motif devant les combattants malgré la profondeur sombre.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-168-hive-front-event-1.png",
+      "sha256": "5dc25867383cc86f862079e23265913832e643c009249018dccabb922853d7b8"
+    },
+    {
+      "stageId": "arena-181-avp2",
+      "status": "visually-accepted",
+      "notes": "Complexe industriel clair et lisible, personnel sur passerelle supérieure et motif technique fixé au mur. Les volumes restent cohérents avec la vue latérale, sol et combattants correctement alignés.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-181-avp2-event-1.png",
+      "sha256": "24c1bb3564a7324445d57d0a7ec1532a0157cf90e482ef19ffc35c75f0c4aa94"
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "status": "visually-accepted",
+      "notes": "Avant-poste enneigé et couloirs extérieurs cohérents. Dispositif devant le hangar sur son sol arrière, parallèles des plates-formes lisibles. Le duel reste sur la plate-forme métallique proche, sans glissement visible.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-169-extinction-front-event-1.png",
+      "sha256": "c122cf4f567f3a06232a780b00368fb80f72de44adf9bc9f1e5d039dfbaf6271"
+    },
+    {
+      "stageId": "arena-170-gotham-bloodties",
+      "status": "visually-accepted",
+      "notes": "Sélection complète de la compilation finale : 186 arènes annoncées, boutons et aperçu lisibles. La fiche du chasseur est maintenant explicitement distinguée de l’arène sélectionnée, correction de l’ambiguïté observée au pilote.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-selection.png",
+      "sha256": "58939fa03543a3e7f48e64420d001dc5755a4ab68e52bcb9cdb8c4cc561aeaba"
+    },
+    {
+      "stageId": "arena-170-gotham-bloodties",
+      "status": "visually-accepted",
+      "notes": "Entrepôt Gotham conforme à la composition revue : mouvement articulé du palan et charge suspendue visibles, ligne de quai et sol du duel continues. Les silhouettes de fond restent derrière les joueurs plutôt que de les recouvrir.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-170-gotham-bloodties-event-1.png",
+      "sha256": "38676e0b7a170e535cbbcb5466f2827d27d618728347f3cd8cdbda0f0f019a7d"
+    },
+    {
+      "stageId": "arena-182-bullet-hangar",
+      "status": "visually-accepted",
+      "notes": "Hangar ouvert sur ciel montagneux, personnel sur passerelle et appareil en vol dans la baie. Objets de service devant le fond mais derrière le duel ; motifs et supports cohérents, HUD lisible.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-event-1.png",
+      "sha256": "88100c80eff566215a6e4746d247a6600459d84b9766f87a4b5d296d7539eb6f"
+    },
+    {
+      "stageId": "arena-171-meta-lab",
+      "status": "visually-accepted",
+      "notes": "Centre d’essai aux plans distincts : installation biologique sur galerie, appareil central sur base et écran mural à droite. L’écran montre un technicien anonyme de substitution, pas un héros canonique revendiqué. Combattants et supports cohérents.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-171-meta-lab-event-1.png",
+      "sha256": "b08f9ca54d2bda2f32bec24f5be59dc2e049f7c5969ba9cf4ee72e87f7473273"
+    },
+    {
+      "stageId": "arena-183-homeworld-wilds",
+      "status": "visually-accepted",
+      "notes": "Lisière du monde natal avec hauteurs et vallées lisibles ; créature sur corniche et observateur sur pont naturel. Les acteurs restent dans leur profondeur, palette orange/verte cohérente et ligne du duel stable.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-183-homeworld-wilds-event-1.png",
+      "sha256": "efa85c6617dd10b1aad3f94791c97a62ff42c7869fa7934f8a95534f0b09cf84"
+    },
+    {
+      "stageId": "arena-184-warp-threshold",
+      "status": "visually-accepted",
+      "notes": "Salle du seuil : spirale native contenue dans son anneau, escalier aligné et appareils sur leurs supports. Pas de sprite passant devant le HUD ou flottant hors de son plan ; extension originale à distinguer du canon.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-event-1.png",
+      "sha256": "b06aa89fcfe29a2ba9acb90eb176e50ce28f4f02c595256cac7344f8563a56c9"
+    },
+    {
+      "stageId": "arena-172-phg-north",
+      "status": "visually-accepted",
+      "notes": "Fjord enneigé avec village à bonne profondeur ; adultes derrière le duel, corbeau en vol et bannière suspendue à droite. La neige ne recouvre pas les pieds des combattants et les motifs respectent leurs plans.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-172-phg-north-event-1.png",
+      "sha256": "a505f5613b7740f8a34bccd47e77ee46a2e87ab00c84986b9cac44931c559c4d"
+    },
+    {
+      "stageId": "arena-185-training",
+      "status": "visually-accepted",
+      "notes": "Salle d’entraînement : mécanismes d’exercice sur supports et observateur sur galerie ; vue frontale cohérente. Les accessoires en arrière-plan sont naturellement cachés par les joueurs sans déborder du terrain ni du HUD.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-185-training-event-1.png",
+      "sha256": "a4682cab6e3696158730f426d7222be78d3cf44107a686d46018533c797f6cc3"
+    },
+    {
+      "stageId": "arena-173-phg-japan",
+      "status": "visually-accepted",
+      "notes": "Cour japonaise : sentinelles sur le chemin arrière, feuilles au vent et lanterne suspendue au bon portique. La lanterne passive remplace bien le gong de début de combat dans les événements aléatoires. Alpha et supports cohérents.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-173-phg-japan-event-1.png",
+      "sha256": "b3006e5b0e2405193c1d5741538d619a4aefa0acfcea38f41e03bf70804ee6fc"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "status": "visually-accepted",
+      "notes": "Ruines et relief désertiques cohérents : caravane visible dans l’arche derrière la terrasse, auvent à gauche, sonde originale dans le ciel. Le sol masque naturellement le bas du chemin arrière ; personnages du duel au bon niveau.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/arena-174-phg-sands-event-1.png",
+      "sha256": "6d6643205291457fd5b15931ba0d9723c4962b145b13527d84a3ce9a2b139b63"
+    },
+    {
+      "stageId": "arena-186-snow-hunt",
+      "status": "visually-accepted",
+      "notes": "Trois motifs distincts avec supports lisibles : proie blanche sur promontoire gauche, vapeur au centre, chasseur sur corniche droite. Aucun motif sur la piste du duel ; neige et falaise restent sur des plans différents.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-175-186/arena-186-snow-hunt-event-1.png",
+      "sha256": "fb2eade52b74e958670e3cbe7f154cd92a61e3a806dd7d33a52c532fd9cf13aa"
+    },
+    {
+      "stageId": "arena-184-warp-threshold",
+      "status": "visually-accepted",
+      "reviewer": "root",
+      "notes": "Revue indépendante root : portes et sols cohérents, figurants derrière les joueurs ; leur visibilité peut être momentanément réduite par l’occlusion normale.",
+      "file": "work-local/v60/qa/application-next-175-186/arena-184-warp-threshold-event-0.png",
+      "sha256": "8d39467cc52dc85b80918b7f7860a84eead54143d9355a8192b15c03a4973012"
+    },
+    {
+      "stageId": "arena-182-bullet-hangar",
+      "status": "visually-accepted",
+      "reviewer": "root",
+      "notes": "Revue indépendante root : sols et structures cohérents ; figurants derrière les joueurs et supports corrects, sans prétendre que tous restent visibles à chaque instant.",
+      "file": "work-local/v60/qa/application-next-175-186/arena-182-bullet-hangar-event-1.png",
+      "sha256": "88100c80eff566215a6e4746d247a6600459d84b9766f87a4b5d296d7539eb6f"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "status": "visually-accepted",
+      "notes": "Chrome mobile émulé844×390 : HUD et commandes tactiles visibles, terrain cadré sans débordement. Les motifs restent derrière les combattants.",
+      "reviewer": "v59_feral_muzzle and root",
+      "file": "work-local/v60/qa/application-next-162-174/mobile-landscape.png",
+      "sha256": "4181182eb70ba75fecebfd6d5dc9de7343fc7656ad7eff401bc970bac4f47c14"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "status": "visually-accepted-with-limitation",
+      "notes": "Chrome mobile émulé390×844 : aucune commande hors écran. Le combat reste en16:9 avec de larges bandes noires ; ceci ne constitue pas une optimisation de l’interface portrait.",
+      "reviewer": "v59_feral_muzzle and root",
+      "file": "work-local/v60/qa/application-next-162-174/mobile-portrait.png",
+      "sha256": "20a66960f178e41f66c10eb607bca4503eab9eee288ae761d4c09ba6bb9b9e36"
+    },
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "status": "visually-accepted",
+      "notes": "L’échec503 d’un PNG natif affiche un message d’aperçu indisponible et bloque le départ. Aucun duel de substitution n’est lancé ; boutons de nouvelle tentative visibles.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/native-png-503-blocked.png",
+      "sha256": "bd0a00b0da6891a09dde5a7d73d4954dd4817c7a096e02b9b7cc60a42e7a2fa8"
+    },
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "status": "visually-accepted",
+      "notes": "Après nouvelle tentative publique, le décor réel, ses trois motifs et le duel reviennent ; HUD et écran immersif complets.",
+      "reviewer": "v59_feral_muzzle",
+      "file": "work-local/v60/qa/application-next-162-174/native-png-retry-restored.png",
+      "sha256": "382ff69c666f82c2920dc7d2d6ff969b74349ae25f7e8a5bea93b5175719bbc2"
+    }
+  ],
+  "limitations": [
+    "Only the listed captures received this application-level visual inspection; native art and renderer reviews remain separate.",
+    "Background actors may be temporarily occluded by foreground fighters or the HUD. They are not claimed visible at every instant.",
+    "Portrait preserves a16:9 combat area with large black bars. Controls fit; the portrait UI is not claimed optimized.",
+    "Mobile uses Chromium emulation, not a physical device. Original scene adaptations are not certified1:1 reconstructions of licensed works."
+  ]
+}

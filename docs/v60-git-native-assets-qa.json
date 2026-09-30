@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "checkedAt": "2026-09-30T16:07:49.744Z",
+  "scope": "Pre-publication Git index snapshot only; this is not a committed or publicly served asset audit.",
+  "headAtAudit": "56cc895f389c4a615180eba4e301054a86886eac",
+  "stagedPaths": 129,
+  "newFiles": 119,
+  "regularPNGBlobs": 104,
+  "fileMode": "100644",
+  "unmergedStages": 0,
+  "totalPNGBytes": 219414234,
+  "allIndexedHashesMatchIndexedNativeManifest": true,
+  "allIndexedHashesMatchWorkspace": true,
+  "onlyExpectedV60PNGs": true,
+  "forbiddenSelectedPaths": [],
+  "unexpectedSelectedBinaries": [],
+  "verifiedSetSha256": "89b4c5cdb1052d435c8379ada1d29fd6b1b89ccf884551bc7bf3a3f0071e3057",
+  "verifiedSetDigestDefinition": "SHA256 of sorted lines <path> <Git blob OID> <PNG SHA256>, joined with LF.",
+  "checks": [
+    "Read all104 indexed objects using git cat-file blob and verified PNG signature.",
+    "Compared every indexed blob SHA256 with the indexed stage/life manifest and the workspace PNG.",
+    "Required mode100644 and stage0 for every selected V60 PNG.",
+    "Selected PNG path set exactly matches the104 native runtime resources.",
+    "No newly selected private-dlc, references, generated_images, work-local, build cache, environment files, rejected/gong-extra image, archive, reference PDF or JPG."
+  ],
+  "indexModified": false,
+  "sourceFilesModified": false,
+  "commitPerformed": false,
+  "pushPerformed": false,
+  "publicDeploymentVerified": false,
+  "limitations": [
+    "Documentation and final workbook are to be staged separately after final QA.",
+    "Later changes to the Git index require a fresh audit.",
+    "Public asset delivery is a separate gate."
+  ]
+}

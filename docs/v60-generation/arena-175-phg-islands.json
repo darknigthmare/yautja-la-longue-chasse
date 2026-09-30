@@ -1,0 +1,519 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "placementNote": "Base960x540, placements proposés dans les zones observées du P0 ; confirmer au harnais avec transformation exacte et pivots.",
+  "arenaId": "arena-175-phg-islands",
+  "proposalId": "new-phg-islands",
+  "sources": [
+    {
+      "url": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+      "supports": "IllFonic évoque la chasse de l'Exilé dans des archipels du Pacifique ; aucune île ou ethnie précise."
+    }
+  ],
+  "loreLimits": [
+    "Île, récif, pirogue et abri originaux ; aucune société réelle ou tribu fictive attribuée.",
+    "Adulte anonyme, embarcation non interactive, animaux absents du décor fixe."
+  ],
+  "events": [
+    {
+      "id": "ST040_BG_01",
+      "asset": "life-01.png",
+      "description": "Vague lointaine sur récif."
+    },
+    {
+      "id": "ST040_BG_02",
+      "asset": "life-02.png",
+      "description": "Pirogue et rameur adulte lointains."
+    },
+    {
+      "id": "ST040_BG_03",
+      "asset": "life-03.png",
+      "description": "Filet de pêche et foyer sous abri."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-9d2115b1-36e5-4c25-9485-39461a46a100.png",
+      "prompt": "Create native1536x1024 opaque handpainted2Dgame P0 DEPTHbackdroponly for arena175 Récif de l'exilé. OriginalPacificislandcoast inspiredofficialExiledPredator biography, not a namedisland/ethnicity. Stablelateralcamera, clearhorizontal sea horizonnear55%. Layers: distantvolcanicgreenislets, stillturquoise lagoon, hazyblueheadlands, weatheredcoastalwoodenshelter farleft withEMPTY openframe underneath (no nets/fire), rockyreef rearfacesslantingDOWNtobottomedge. Midrightopenwater reserved forlaterdistantoutriggercanoe, centerwatergap forlaterwaveanimation. No characters, canoes, birds, waves/foamcrests, fishingnets, fire/smoke ormovingprops inP0. Watercalmflatdistanceonly; NO playablebeach/floor/foregroundrocks infront, loweredgeis verticalreefbackgroundfaceorwaterdepth. No culture-specificsymbols, masks, carvedgods, weapons, text. MutedPacificdusk, coolteal andwarmoldwood, detailedpaintedtexture, clearcenterreadability.",
+      "status": "visually-accepted",
+      "visualNotes": "Récif vertical et mer profonde, abri vide et eau libre. Pas de plage jouable intégrée ; horizon basculé plus haut que demandé mais reste horizontal et stable.",
+      "path": "work-local/v60/generated/arena-175-phg-islands/p0-depth.png",
+      "sha256": "66467d4f1531c45edec36c8cd475c829d7b5bdf99f216facbc33724097b65860",
+      "bytes": 2354595,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-7e6a5ccf-0c33-4912-ac7f-5d539bba8037.png",
+      "prompt": "Native transparent PNG1536x1024 exact3columns2rows six512cells. Six separatelypainted frames of ONE SMALL oceanwave crest breakinggently overanunseenPacificreef, fullwaveisolated withrealtransparentedges, not rectangularwaterpatch. Rowmajorcycle1lowripple;2ridgegrowswithcurvedtransparentturquoisetop;3lipcurlsfoamtip;4 crestbreaksintoseveralsmallwhitewaterlobes;5 foamspreadsandsubsides;6 lowsettlingripplenearrest. Genuinelydifferentfluidshapes andfoamdrawings, nottranslatedsamewave. Same localbaseline400 andcenter256, wholemotifx70..442 y150..420, plentytransparentpadding. Cinematicpainted2Dgame subduedPacifictwilight, tealwaterwithsoftwhitefoam no glow, no violence. No horizon/land/sun/canoe/people, no groundshadow, no backgroundgradient, no frame/text/grid. Foregroundnotintended: this tiny calmwavewill sitfarbehindfighters.",
+      "status": "visually-accepted",
+      "visualNotes": "Six phases réellement différentes de vague, de la ride à la crête et aux remous. Écume détachée sans rectangle opaque. Recadrage natif rects pose4 largeur520, pose5 x520 largeur504 : frontière520 alpha maximal1, aucune géométrie découpée ni pixel changé.",
+      "placement": {
+        "x": 470,
+        "bottom": 245,
+        "height": 110,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-175-phg-islands/life-01.png",
+      "sha256": "a7fe46afee07dcc120a19b5759723772749b6f8210515bc353936b6bc89a34ba",
+      "bytes": 1871635,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1100895,
+        "transparentRatio": 0.6999301910400391,
+        "partialPixels": 471969
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "irregularNativeRects": true
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            24,
+            322,
+            508,
+            448
+          ],
+          "pivot": [
+            256,
+            448
+          ],
+          "nonzeroAlpha24": 39067
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            19,
+            242,
+            505,
+            454
+          ],
+          "pivot": [
+            256,
+            454
+          ],
+          "nonzeroAlpha24": 56917
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            14,
+            197,
+            489,
+            468
+          ],
+          "pivot": [
+            256,
+            468
+          ],
+          "nonzeroAlpha24": 63762
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            520,
+            512
+          ],
+          "boundsAlpha24": [
+            19,
+            106,
+            512,
+            364
+          ],
+          "pivot": [
+            256,
+            364
+          ],
+          "nonzeroAlpha24": 73241
+        },
+        {
+          "index": 4,
+          "rect": [
+            520,
+            512,
+            504,
+            512
+          ],
+          "boundsAlpha24": [
+            10,
+            148,
+            497,
+            356
+          ],
+          "pivot": [
+            248,
+            356
+          ],
+          "nonzeroAlpha24": 59619
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            14,
+            209,
+            494,
+            360
+          ],
+          "pivot": [
+            256,
+            360
+          ],
+          "nonzeroAlpha24": 50861
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-87a17171-94c1-44ff-bad0-aed870ee7239.png",
+      "prompt": "Native alpha1536x1024 PNG spritesheet exact3columns2rows512cells. Sixrealarticulatedpaintedposes of ONE modest wooden outriggercanoe with ONE anonymous ADULT rower in plainlighttravelclothing, no namedethnicity/culture, nosymbols/weapon/headgear. Sideview facingright; intacthulloneoutrigger andpaddle. Sixrowingphases:1 paddleforwardabove water;2 paddlebladeentersunseenwater aselbowsbend;3 strongpull withtorsoleaningforward;4 paddlebesidehip torsostraightens;5 paddlelift andwriststurn;6 returnforward recovery. Realarm/shoulder/torso/paddleanimation; hullremains sameposition andscale, nottranslatedduplicate. Entireboatrowerandpaddle SMALL within eachcell x60..452 y100..415, samehullbaseline405, generouspadding. No waterrectangle, waves, shoreorfloorshadow. Truealphaoutsideallobjects, mutedPacificteal/wood dusk handpainted2Dgame, correctanatomy, no labels/gridlines. Noninteractive verydistantbackgroundcanoe.",
+      "status": "visually-accepted",
+      "visualNotes": "Six phases de pagayage avec torsion, coudes et poignets cohérents. Coque complète et adulte anonyme ; aucun costume culturel prétendu canonique.",
+      "placement": {
+        "x": 718,
+        "bottom": 214,
+        "height": 100,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-175-phg-islands/life-02.png",
+      "sha256": "32896b1fd8a8976a49dcae9cc94f2fedb2d0fa7c9c35ace4328ecf2f30f04197",
+      "bytes": 1550827,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1266345,
+        "transparentRatio": 0.8051204681396484,
+        "partialPixels": 306519
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            30,
+            200,
+            505,
+            412
+          ],
+          "pivot": [
+            256,
+            412
+          ],
+          "nonzeroAlpha24": 42811
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            25,
+            208,
+            496,
+            413
+          ],
+          "pivot": [
+            256,
+            413
+          ],
+          "nonzeroAlpha24": 42353
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            11,
+            214,
+            481,
+            413
+          ],
+          "pivot": [
+            256,
+            413
+          ],
+          "nonzeroAlpha24": 40006
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            29,
+            115,
+            504,
+            347
+          ],
+          "pivot": [
+            256,
+            347
+          ],
+          "nonzeroAlpha24": 40295
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            25,
+            115,
+            496,
+            347
+          ],
+          "pivot": [
+            256,
+            347
+          ],
+          "nonzeroAlpha24": 42078
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            11,
+            133,
+            480,
+            347
+          ],
+          "pivot": [
+            256,
+            347
+          ],
+          "nonzeroAlpha24": 42751
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-cbe710ff-11bd-4e06-8e0a-395035b3041d.png",
+      "prompt": "Correctthis transparent6frame net-and-brazier spritesheet. Safety/coherencecorrection: firemustNOT be directlyunder or touchinghangingropes/net. Repaint eachsamecell with a SMALL hangingnet+shortbar entirely on LEFT(localx70..270) andSMALL containedbrazier entirelyonRIGHT(localx340..430), atLEAST70px emptyhorizontalspacebetweenanyrope/netandfire. Reduceflames tolow8-15pxlicks, no largeflare. Allsixcells keepsame6differentnetmeshes andgenuinelydistinctsmallflamecontours, no translationduplicates. Canvas1536x1024 exact3by2cells512, entireclusterinside x65..447 y70..442 eachcell. Cooltealpainted2Dmaritimeprop, no scenery/shelter/floor/text/grid, realalphaoutsideobjects. Fixednettop andbrazierfeetanchors. Mustshow clearairgap andlogicaldistance so theropenetnevercatchesfire.",
+      "status": "visually-accepted",
+      "visualNotes": "Version corrigée par OpenAI : foyer déplacé à côté du filet avec espace libre, aucun feu contre les cordes. Six formes de filet et flamme différentes.",
+      "placement": {
+        "x": 129,
+        "bottom": 152,
+        "height": 92,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "rejectedSourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-42a02479-01ef-4adf-9c73-6cc1eb9f7236.png",
+      "repair": "Édition native OpenAI du filet/foyer pour cohérence physique.",
+      "path": "work-local/v60/generated/arena-175-phg-islands/life-03.png",
+      "sha256": "2e112a613857af91d0712b1cd2d4a16e3bd85b84f8ad1ce352cc4ceea2e51bd8",
+      "bytes": 1959302,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1029974,
+        "transparentRatio": 0.654839833577474,
+        "partialPixels": 542890
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            34,
+            142,
+            479,
+            425
+          ],
+          "pivot": [
+            256,
+            425
+          ],
+          "nonzeroAlpha24": 47120
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            12,
+            133,
+            456,
+            425
+          ],
+          "pivot": [
+            256,
+            425
+          ],
+          "nonzeroAlpha24": 44846
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            11,
+            142,
+            454,
+            425
+          ],
+          "pivot": [
+            256,
+            425
+          ],
+          "nonzeroAlpha24": 44955
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            26,
+            130,
+            478,
+            428
+          ],
+          "pivot": [
+            256,
+            428
+          ],
+          "nonzeroAlpha24": 46938
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            13,
+            128,
+            467,
+            429
+          ],
+          "pivot": [
+            256,
+            429
+          ],
+          "nonzeroAlpha24": 46594
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            4,
+            130,
+            462,
+            430
+          ],
+          "pivot": [
+            256,
+            430
+          ],
+          "nonzeroAlpha24": 46356
+        }
+      ]
+    }
+  ]
+}

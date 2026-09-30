@@ -1,6 +1,8 @@
 import { getPitArenaAmbientOffset } from "./pitArenaAmbience";
 import { getPitArenaLifePaths, isPitArenaLifeSheetSize } from "./pitArenaLife";
 import { drawPitArenaLife, type PitArenaLifeReport } from "./pitArenaLifeRendering";
+import { getPitStageLifeV60Paths, getPitStageLifeV60Stage, isPitStageLifeV60ImageSize, type PitStageLifeManifestV60, type PitStageLifeStageV60 } from "./pitStageLifeV60";
+import { drawPitStageLifeV60, type PitStageLifeReportV60 } from "./pitStageLifeRenderingV60";
 import { PIT_ARENAS, PIT_FIGHTERS, PIT_ROUND_FRAMES, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
@@ -32,6 +34,8 @@ export interface PitArenaArtBank {
   /** No complete independent kit and no historical art for this extension. */
   readonly unavailable?: boolean;
   readonly productionKit?: PitArenaProductionKit;
+  /** The selected stage's three native events, validated separately from the historical V54 cast. */
+  readonly stageLifeV60?: PitStageLifeStageV60;
 }
 export interface PitArenaRenderOptions {
   readonly reducedMotion?: boolean;
@@ -41,7 +45,12 @@ export interface PitArenaRenderOptions {
   readonly lifeResultElapsedMs?: number;
 }
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
-export interface PitArenaDrawReport { readonly drawnPlanes: readonly PitArenaPlaneId[]; readonly missingPaths: readonly string[]; readonly life?: PitArenaLifeReport }
+export interface PitArenaDrawReport {
+  readonly drawnPlanes: readonly PitArenaPlaneId[];
+  readonly missingPaths: readonly string[];
+  readonly life?: PitArenaLifeReport;
+  readonly stageLifeV60?: PitStageLifeReportV60;
+}
 
 /** A preview succeeding does not make a separate failed combat bank ready. */
 export function isPitArenaArtBankReady(bank: PitArenaArtBank | null | undefined, arenaId?: PitArenaId): boolean {
@@ -170,7 +179,9 @@ function getLegacyPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
 }
 
 export function getPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
-  return [...new Set([...(resolvePitArenaProductionKit(arenaId)?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...getPitArenaLifePaths(arenaId)])];
+  const productionKit = resolvePitArenaProductionKit(arenaId);
+  const catalogueId = productionKit?.catalogueId ?? arenaId;
+  return [...new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...getPitArenaLifePaths(catalogueId), ...getPitStageLifeV60Paths(catalogueId)])];
 }
 
 /** A grounded floor must follow the exact gameplay camera, despite the concept P4 factor. */
@@ -218,10 +229,14 @@ export function getPitArenaForegroundOpacity(
 }
 
 /** Load only the selected stage and abandon the whole bank on cancellation. */
-export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: AbortSignal; timeoutMs?: number; productionManifest?: PitArenaProductionManifest } = {}): Promise<PitArenaArtBank> {
+export async function loadPitArenaArt(arenaId: PitArenaId, options: {
+  signal?: AbortSignal; timeoutMs?: number; productionManifest?: PitArenaProductionManifest; stageLifeManifestV60?: PitStageLifeManifestV60;
+} = {}): Promise<PitArenaArtBank> {
   let productionKit = resolvePitArenaProductionKit(arenaId, options.productionManifest) ?? undefined;
   const lifePaths = new Set(getPitArenaLifePaths(productionKit?.catalogueId ?? arenaId));
-  const requestedPaths = new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...lifePaths]);
+  const stageLifeV60 = getPitStageLifeV60Stage(productionKit?.catalogueId ?? arenaId, options.stageLifeManifestV60) ?? undefined;
+  const nativeEvents = new Map(stageLifeV60?.events.map(event => [event.src, event]) ?? []);
+  const requestedPaths = new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...lifePaths, ...nativeEvents.keys()]);
   const expectedFrames = new Map(productionKit?.planes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => [frame.path, frame] as const))) ?? []);
   const images = new Map<string, HTMLImageElement>();
   const failedPaths = new Set<string>();
@@ -248,8 +263,10 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
     const timer = setTimeout(() => finish(false), timeoutMs);
     image.onload = () => {
       const expected = expectedFrames.get(src)?.generation;
+      const nativeEvent = nativeEvents.get(src);
       finish(image.naturalWidth > 0 && image.naturalHeight > 0
         && (!lifePaths.has(src) || isPitArenaLifeSheetSize(image.naturalWidth, image.naturalHeight))
+        && (!nativeEvent || isPitStageLifeV60ImageSize(nativeEvent, image.naturalWidth, image.naturalHeight))
         && (!expected || (image.naturalWidth === expected.width && image.naturalHeight === expected.height)));
     };
     image.onerror = () => finish(false);
@@ -266,7 +283,8 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
     await loadPaths(fallback.filter(src => !images.has(src)));
   }
   if (signal?.aborted) { images.clear(); requestedPaths.forEach(src => failedPaths.add(src)); }
-  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit, unavailable: !productionKit && !PIT_ARENA_ART_DEFINITIONS[arenaId] };
+  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit, stageLifeV60,
+    unavailable: !productionKit && !PIT_ARENA_ART_DEFINITIONS[arenaId] };
 }
 
 function drawProps(context: CanvasRenderingContext2D, plane: "P1" | "P2" | "P3" | "P5", state: PitCombatState,
@@ -367,6 +385,7 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
   const arena = PIT_ARENAS[state.arenaId];
   const drawnPlanes: PitArenaPlaneId[] = [];
   let life: PitArenaLifeReport | undefined;
+  const nativeLifePasses: PitStageLifeReportV60[] = [];
   const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
   const floorY = arena.groundY * ground.scale + ground.translateY;
   context.save();
@@ -392,12 +411,27 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
             : state.lastRoundResult?.round === state.round ? state.frame - state.lastRoundResult.frame : undefined,
         },
       });
+      if (bank.stageLifeV60 && (plane.id === "P1" || plane.id === "P2" || plane.id === "P3")) {
+        nativeLifePasses.push(drawPitStageLifeV60(context, {
+          stage: bank.stageLifeV60, pass: plane.id, groundY: arena.groundY, images: bank.images,
+          transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
+          reducedMotion: options.reducedMotion, highContrast: options.highContrast,
+          eventContext: { round: state.round, phase: state.phase,
+            roundFrame: state.rules.mode === "training" ? state.frame : PIT_ROUND_FRAMES - state.roundFramesRemaining },
+        }));
+      }
     }
     context.globalAlpha = options.highContrast ? .9 : .36;
     context.fillStyle = options.highContrast ? "#c4ffed" : arena.palette.accent;
     context.fillRect(0, floorY, arena.width, options.highContrast ? 2 : 1);
   } finally { context.restore(); }
-  return { drawnPlanes, missingPaths: [...bank.requestedPaths].filter(src => !bank.images.has(src)), life };
+  const stageLifeV60 = bank.stageLifeV60 ? {
+    stageId: bank.stageLifeV60.stageId, actorsDrawn: nativeLifePasses.reduce((sum, pass) => sum + pass.actorsDrawn, 0),
+    events: nativeLifePasses.flatMap(pass => pass.events), missingPaths: [...new Set(nativeLifePasses.flatMap(pass => pass.missingPaths))],
+  } : undefined;
+  return { drawnPlanes, missingPaths: [...new Set([
+    ...[...bank.requestedPaths].filter(src => !bank.images.has(src)), ...(stageLifeV60?.missingPaths ?? []),
+  ])], life, stageLifeV60 };
 }
 
 /** Called on an untransformed canvas, before the combat world transform. */

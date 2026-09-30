@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "arenaId": "arena-170-gotham-bloodties",
+  "proposalId": "new-gotham-bloodties",
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "sources": [
+    {
+      "url": "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator",
+      "supports": "Collection officielle des trois crossovers ; ne confirme pas cette architecture."
+    }
+  ],
+  "loreLimits": [
+    "Architecture originale inspirée du quai proposé au classeur ; pas une reproduction certifiée de planche.",
+    "Policiers adultes anonymes. Guetteur Yautja adulte anonyme sans identité ou équipement attribuable au roster ; ce n'est ni le père ni le fils du comic. Le partenaire narratif conditionnel du classeur reste non reproduit.",
+    "Aucun pouvoir, biographie, arme ou affiliation supplémentaire attribué."
+  ],
+  "events": [
+    {
+      "id": "ST031_BG_01",
+      "asset": "life-01.png",
+      "description": "Policiers évacuant le quai en fond."
+    },
+    {
+      "id": "ST031_BG_02",
+      "asset": "life-02.png",
+      "description": "Grue articulée et conteneur en déplacement lent."
+    },
+    {
+      "id": "ST031_BG_03",
+      "asset": "life-03.png",
+      "description": "Guetteur Yautja adulte anonyme de fond, sans identité commune au roster.",
+      "workbookDeviation": "La silhouette représente un guetteur anonyme, pas le partenaire nommé du classeur ; la condition narrative de ce partenaire ne doit pas être prétendue implémentée."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-6066e863-6450-4741-a288-dfa496d197b3.png",
+      "prompt": "Create a finished raster asset for a serious 2D painted fighting game, 1536x1024 landscape. Asset arena-170-gotham-bloodties P0 DEPTH ONLY. Original adaptation of a Gotham port warehouse setting inspired by Batman versus Predator III, NOT a claimed exact comic panel. No logos or lettering. Camera strict lateral/front elevation, level horizon about 57% image height; no tilted/isometric floor, no lens distortion. Depth-only rear environment: huge weathered brick shipping warehouse interior opening onto a cold blue-gray nocturnal harbor, distant Gothic industrial silhouettes through high windows, massive steel roof trusses, amber utility lamps, layered muted cool fog. The low third is distant dark warehouse rear walls and harbor depth, NOT a playable foreground floor or foreground props. Leave three clear isolated background life areas: far left dockside passage for later police sprites; upper middle wide open gantry bay for a later moving crane/container sprite; right wall lit pale enough to read a separately composited hunter shadow. Do NOT draw police, humans, hunters, shadows of people, moving cranes or suspended containers, animated smoke, rain, birds or flames. Fixed architecture only. Cinematic hand-painted detailed textures with strong structural perspective, low visual contrast at center for fighter readability, clean empty layering zones. Not a photograph, no toy, no vignette, no borders, no interface. Entire opaque image.",
+      "status": "visually-accepted",
+      "visualNotes": "Entrepôt/quai gothique nocturne cohérent, plans distants séparés, centre libre et aucune présence animée intégrée. Les quais latéraux sont des structures de fond ; l'eau ne constitue pas le sol de combat.",
+      "path": "work-local/v60/generated/arena-170-gotham-bloodties/p0-depth.png",
+      "sha256": "cd6f635b3e3a285a758a4b46b2668e5ee420ecfaae267ebebeabc3bb89d3548c",
+      "bytes": 2840619,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-0fdc7197-26eb-44c2-a594-1cb5c248ca20.png",
+      "prompt": "Create one native PNG sprite sheet for a serious hand-painted 2D fighting game. Canvas 1536x1024, EXACTLY 3 equal columns by 2 equal rows, six 512x512 cells, no lines/numbers/text. Real transparent alpha background, no checkerboard painted, no scenery, no floor, no cast floor shadow. Within EACH cell, 45px clear margin on ALL sides, full object visible, same camera, lighting and scale, bottom pivot around cell y450, centered x256. SIX genuinely distinct hand-drawn articulated animation poses, not translated copies, no recoloring or mirroring. Muted cold blue gray with amber rim light, night Gotham harbor. Strict lateral 2D sprite perspective, readable anatomy and complete silhouettes. Subject: two anonymous ADULT police officers in dark navy coats and caps, no weapons aimed and no identifiable real person. Same two officers every cell. One guides an evacuation with open hand while the other turns and walks behind. Poses reading order:1 alert idle with arms low;2 leader raises right forearm pointing left, partner turns head;3 leader extends that arm and steps left while partner bends left knee;4 leader lowers gesture, partner passes with opposite leg forward;5 leader turns shoulders to check behind, partner raises open stopping hand;6 both settle back alert. Exactly four arms and four legs total in each cell, hands coherent, no duplicated heads. Designed as distant background figures, not playable fighters.",
+      "status": "visually-accepted",
+      "visualNotes": "Six dessins lisibles : gestes de bras, alternance des jambes et vérification arrière de deux policiers adultes. Anatomie visuelle cohérente, aucun personnage identifiable. Bord libre présent.",
+      "path": "work-local/v60/generated/arena-170-gotham-bloodties/life-01.png",
+      "sha256": "7cad0b6fc4a19d843a145bcf0316bd152451da58288809d94dd50ebd5f0e0ae5",
+      "bytes": 2104289,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 933944,
+        "transparentRatio": 0.5937856038411459,
+        "partialPixels": 638920
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            87,
+            42,
+            458,
+            480
+          ],
+          "pivot": [
+            256,
+            480
+          ],
+          "nonzeroAlpha24": 94699
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            29,
+            49,
+            452,
+            479
+          ],
+          "pivot": [
+            256,
+            479
+          ],
+          "nonzeroAlpha24": 89996
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            10,
+            50,
+            478,
+            474
+          ],
+          "pivot": [
+            256,
+            474
+          ],
+          "nonzeroAlpha24": 85265
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            36,
+            23,
+            506,
+            457
+          ],
+          "pivot": [
+            256,
+            457
+          ],
+          "nonzeroAlpha24": 91371
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            56,
+            27,
+            489,
+            459
+          ],
+          "pivot": [
+            256,
+            459
+          ],
+          "nonzeroAlpha24": 95154
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            60,
+            22,
+            463,
+            456
+          ],
+          "pivot": [
+            256,
+            456
+          ],
+          "nonzeroAlpha24": 95977
+        }
+      ],
+      "placement": {
+        "x": 105,
+        "bottom": 392,
+        "height": 80,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      }
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-af82fee3-bf36-493f-a802-14b745f87000.png",
+      "prompt": "Create one native PNG sprite sheet for a serious hand-painted 2D fighting game. Canvas 1536x1024, EXACTLY 3 equal columns by 2 equal rows, six 512x512 cells, no lines/numbers/text. Real transparent alpha background, no checkerboard painted, no scenery, no floor, no cast floor shadow. Within EACH cell, 45px clear margin on ALL sides, full object visible, same camera, lighting and scale, bottom pivot around cell y450, centered x256. SIX genuinely distinct hand-drawn articulated animation poses, not translated copies, no recoloring or mirroring. Muted cold blue gray with amber rim light, night Gotham harbor. Strict lateral 2D sprite perspective, readable anatomy and complete silhouettes. Subject: one isolated compact overhead industrial crane trolley with steel pivoted boom, cable pulley and a suspended small dark rust shipping container, no crane tower, no people. Whole assembly fits every cell. A six-frame mechanical motion cycle with real articulation:1 boom at slight left angle cable taut;2 boom pivots to center as hook pulley rotates;3 boom slight right with container yaw exposing right face;4 articulated hook shifts, container tilts gently opposite;5 boom recenters and cable angle relaxes;6 boom back slight left and container rests. Same joints and container corners in every frame, cable connected without floating parts. Rotation and changing visible faces, not a series of identical pictures moved across cells.",
+      "status": "visually-accepted",
+      "visualNotes": "Six positions articulées du bras, de la poulie et du conteneur ; câble connecté et faces du conteneur redessinées. Aucune simple translation. Marge supérieure plus courte que demandée mais aucun contenu coupé.",
+      "path": "work-local/v60/generated/arena-170-gotham-bloodties/life-02.png",
+      "sha256": "2ccc3ea9ecd20e07465a9462309dfa877a9d89d02ab6164ea31c11c6128355e2",
+      "bytes": 1881989,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1136797,
+        "transparentRatio": 0.7227560679117838,
+        "partialPixels": 436067
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            52,
+            16,
+            443,
+            468
+          ],
+          "pivot": [
+            256,
+            468
+          ],
+          "nonzeroAlpha24": 58267
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            86,
+            16,
+            432,
+            467
+          ],
+          "pivot": [
+            256,
+            467
+          ],
+          "nonzeroAlpha24": 50221
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            78,
+            16,
+            477,
+            464
+          ],
+          "pivot": [
+            256,
+            464
+          ],
+          "nonzeroAlpha24": 60077
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            97,
+            11,
+            465,
+            463
+          ],
+          "pivot": [
+            256,
+            463
+          ],
+          "nonzeroAlpha24": 63403
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            87,
+            11,
+            432,
+            457
+          ],
+          "pivot": [
+            256,
+            457
+          ],
+          "nonzeroAlpha24": 57879
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            43,
+            11,
+            408,
+            456
+          ],
+          "pivot": [
+            256,
+            456
+          ],
+          "nonzeroAlpha24": 59735
+        }
+      ],
+      "placement": {
+        "x": 480,
+        "bottom": 330,
+        "height": 180,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      }
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-a6e2b318-b75e-49e2-a295-96f886b6120d.png",
+      "prompt": "Native transparent PNG sprite sheet 1536x1024, exactly 3 columns x 2 rows of equal 512x512 cells. SIX separately drawn articulated frames of the same shadow silhouette of one anonymous adult Yautja hunter, projected on an unseen wall. This is a distant watcher shadow, not a playable protagonist, not a named father/son likeness. Black-gray slightly translucent shadow only: muscular humanoid, recognizable backward hanging dreadlocks, smooth biomask profile and ordinary shoulder outline, no weapons, no laser or magic. Entirely transparent background with no wall and no decorative haze. Restrained side view animation:1 crouched watcher forearms on knee;2 head tilts toward harbor and right forearm starts lifting;3 rises to half crouch one hand near chin;4 turns shoulders and head to check behind;5 crouches again lowering hand;6 returns to first stance with slightly settling dreadlocks. Anatomically coherent two arms, two legs, one head in each cell. Same scale and bottom-center pivot [256,445], 55px clear margin, no duplicated or overlapping silhouettes, six distinct poses not translation/mirror/recolor. High-quality painted sprite silhouette crisp enough for small background projection, soft slight shadow edge. No floor shadow or scenery, no labels.",
+      "status": "visually-accepted",
+      "visualNotes": "Six attitudes différentes du guetteur : flexion, main levée, redressement et dos tourné. Silhouette peinte sombre avec volume plutôt qu'ombre entièrement plate ; utiliser comme présence conditionnelle de fond, jamais comme héros identifié.",
+      "path": "work-local/v60/generated/arena-170-gotham-bloodties/life-03.png",
+      "sha256": "d29f194539cd942be5297cb2d48ab1c16f5a7a03665ffe7ce0742dc5f652e0b7",
+      "bytes": 1447100,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1113925,
+        "transparentRatio": 0.7082144419352213,
+        "partialPixels": 458939
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            133,
+            87,
+            406,
+            482
+          ],
+          "pivot": [
+            256,
+            482
+          ],
+          "nonzeroAlpha24": 66946
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            124,
+            83,
+            428,
+            485
+          ],
+          "pivot": [
+            256,
+            485
+          ],
+          "nonzeroAlpha24": 69810
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            118,
+            29,
+            385,
+            485
+          ],
+          "pivot": [
+            256,
+            485
+          ],
+          "nonzeroAlpha24": 72442
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            87,
+            39,
+            396,
+            475
+          ],
+          "pivot": [
+            256,
+            475
+          ],
+          "nonzeroAlpha24": 72999
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            118,
+            92,
+            398,
+            477
+          ],
+          "pivot": [
+            256,
+            477
+          ],
+          "nonzeroAlpha24": 64769
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            113,
+            95,
+            388,
+            479
+          ],
+          "pivot": [
+            256,
+            479
+          ],
+          "nonzeroAlpha24": 65409
+        }
+      ],
+      "placement": {
+        "x": 865,
+        "bottom": 371,
+        "height": 105,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      }
+    }
+  ],
+  "placementNote": "Placement proposé depuis les zones visibles du P0, base960x540, à confirmer au harnais avec transformation exacte du P0 et pivots mesurés."
+}

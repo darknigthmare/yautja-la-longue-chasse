@@ -1,0 +1,1502 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-173-phg-japan",
+  "compositionDigest": "46f226cd8bf278d8525e043706774e099cdd6ac0f47c383f87cc1a86b6d15b4d",
+  "checkedAt": "2026-09-30T15:32:02.303Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-173-phg-japan/p0-depth.png",
+      "sha256": "9d042883bf93292e24c990ff12f48a3d0195119dc197c12f762b9738fa93cdea",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p2-wooden-post.png",
+      "sha256": "dfe674548e931adbc655e5736a5e40ab28de0ecd3a2cde84143704735ffb33d4",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+      "width": 1881,
+      "height": 836,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+      "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+      "sha256": "94551d84d199342e14ca7a43e5deda253879e250f8d30c8548948f570fa6b426",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+      "sha256": "e2756de56ecb84713d0eb398c506cd4eac7ba9f7745b8d5033f09f743dc14d06",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+      "sha256": "6505d70a2f8555f4149bd199f79b2a79d32c9ef77348e75ef1945fa2c5555bcd",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+      "sha256": "06e15f6ab586c6db257cda82245aa0d18967d9844aa6ea2e4c403aa9863d7587",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ],
+          "pivot": [
+            438.9,
+            177.26812499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ],
+          "pivot": [
+            829.3499999999999,
+            133.08562499999996
+          ],
+          "exactCell": true,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "pivot": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            449.325,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            837.875,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.095,
+            313.9675
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            449.325,
+            177.975
+          ],
+          "pivot": [
+            449.325,
+            177.975
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            837.875,
+            134.0075
+          ],
+          "pivot": [
+            837.875,
+            134.0075
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            257.095,
+            313.9675
+          ],
+          "pivot": [
+            257.095,
+            313.9675
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            428.875,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            817.425,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            428.875,
+            177.975
+          ],
+          "pivot": [
+            428.875,
+            177.975
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            817.425,
+            134.0075
+          ],
+          "pivot": [
+            817.425,
+            134.0075
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ],
+          "pivot": [
+            236.64500000000004,
+            313.9675
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            254.28,
+            312.57
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "pivot": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "pivot": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            254.28,
+            312.57
+          ],
+          "pivot": [
+            254.27999999999997,
+            312.57
+          ],
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            444,
+            189
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            786,
+            150.3
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            274.8,
+            308.7
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            444,
+            189
+          ],
+          "pivot": [
+            444,
+            189
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            786,
+            150.3
+          ],
+          "pivot": [
+            786,
+            150.3
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            274.8,
+            308.7
+          ],
+          "pivot": [
+            274.8,
+            308.7
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-wooden-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1216,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1236,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1256,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1276,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1296,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1316,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2402,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2422,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2442,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2462,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2482,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2502,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3674,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3694,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3714,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3734,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3754,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3774,
+      "attachment": [
+        440,
+        180
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-173-phg-japan\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "ac70a3025cd6751d4316fcb632839e4c1ff3439447151c3368c32b84219a6850",
+    "left-corner.png": "c0d4fae74c0438a86f1ab57e5a3bdebc8b7e820791440fbf0f77942bbbf4d134",
+    "right-corner.png": "a988f5662b319cc33d1e7eb1929f1ab8544312c433164ae46642ee679ce00a91",
+    "wide.png": "96db80caa33f57f8e6891b29eec35f017788047c18e2355ca8b6a3f936f729bd",
+    "life-03-active.png": "6e7ee218075c3d09e098ffd8b713eaffdddf90e0dd3ceb1145bf96b15e77b56d",
+    "life-01-active.png": "84a147e594f52f8ac828fc41a6db943be86f04d33512cee787f08a41c4eb8f94",
+    "life-02-active.png": "0b5fa99999d4b168e62aae7b4b1cc30653a2aa7109b824bdbe7808e7a64c1922",
+    "mobile.png": "64730f27133f54f6277eec057a41c48be1f86093b013e51b828bb0d3234babe3"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

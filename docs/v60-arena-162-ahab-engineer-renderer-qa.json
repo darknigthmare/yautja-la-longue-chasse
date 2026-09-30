@@ -1,0 +1,1422 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-162-ahab-engineer",
+  "compositionDigest": "cb3eae4d853cecac881373750e0f9b14964c9ad91b0f844139d6cd205bce8bb7",
+  "checkedAt": "2026-09-30T15:00:23.588Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-162-ahab-engineer/p0-depth.png",
+      "sha256": "a7ad2cc7d7c85b63bc74404301d22740b52266669e57315e2be719cd9ae60c66",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+      "sha256": "c696ef4a3964364e2d8e4752fe85edf9f29748fc212733dcf32988e4626d5fdc",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+      "width": 1881,
+      "height": 836,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "sha256": "787ea90595d21fadee070e050b88d01f371923211a2801926c7da4f8db720bfd",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+      "sha256": "3e8da646152a22911b37aa00cfce01c96c95f7e183d32a8c6b2566bc2984cbc9",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+      "sha256": "333f421e51fe557867c81d221b7e95f624cdfdb1b13c0e06e16af952dc9b9c43",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+      "sha256": "c949b7e72e7c90fd670d7df2fc4d51527b4c2ed20bb3615aeba0aeb9f93b2e04",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            220,
+            354
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            725,
+            390
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            851,
+            300
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            220,
+            354
+          ],
+          "pivot": [
+            220,
+            354
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            725,
+            390
+          ],
+          "pivot": [
+            725,
+            390
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            851,
+            300
+          ],
+          "pivot": [
+            851,
+            300
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-module",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            212.84999999999997,
+            356.05312499999997
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            731.7375000000001,
+            393.043125
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            861.2025,
+            300.56812499999995
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            212.84999999999997,
+            356.05312499999997
+          ],
+          "pivot": [
+            212.84999999999997,
+            356.05312499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            731.7375000000001,
+            393.043125
+          ],
+          "pivot": [
+            731.7375000000001,
+            393.043125
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            861.2025,
+            300.56812499999995
+          ],
+          "pivot": [
+            861.2025,
+            300.56812499999995
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            224.375,
+            355.89
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740.7375,
+            392.7
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            869.5725,
+            300.675
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            224.375,
+            355.89
+          ],
+          "pivot": [
+            224.375,
+            355.89
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            740.7375,
+            392.7
+          ],
+          "pivot": [
+            740.7375,
+            392.7
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            869.5725,
+            300.675
+          ],
+          "pivot": [
+            869.5725,
+            300.675
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            203.925,
+            355.89
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            720.2875,
+            392.7
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            849.1225,
+            300.675
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            203.925,
+            355.89
+          ],
+          "pivot": [
+            203.925,
+            355.89
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            720.2875,
+            392.7
+          ],
+          "pivot": [
+            720.2875,
+            392.7
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            849.1225,
+            300.675
+          ],
+          "pivot": [
+            849.1225,
+            300.675
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            222.60000000000002,
+            353.15999999999997
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            722.55,
+            388.8
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            847.29,
+            299.7
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            222.60000000000002,
+            353.15999999999997
+          ],
+          "pivot": [
+            222.60000000000002,
+            353.15999999999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            722.55,
+            388.8
+          ],
+          "pivot": [
+            722.55,
+            388.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            847.29,
+            299.7
+          ],
+          "pivot": [
+            847.29,
+            299.7
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            246,
+            345.6
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            700.5,
+            378
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            813.9,
+            297
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            246,
+            345.6
+          ],
+          "pivot": [
+            246,
+            345.6
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            700.5,
+            378
+          ],
+          "pivot": [
+            700.5,
+            378
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            813.9,
+            297
+          ],
+          "pivot": [
+            813.9,
+            297
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            220,
+            354
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            725,
+            390
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            851,
+            300
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            220,
+            354
+          ],
+          "pivot": [
+            220,
+            354
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            725,
+            390
+          ],
+          "pivot": [
+            725,
+            390
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            851,
+            300
+          ],
+          "pivot": [
+            851,
+            300
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-module",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            220,
+            354
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            725,
+            390
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-162-ahab-engineer/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            851,
+            300
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            220,
+            354
+          ],
+          "pivot": [
+            220,
+            354
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            725,
+            390
+          ],
+          "pivot": [
+            725,
+            390
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            851,
+            300
+          ],
+          "pivot": [
+            851,
+            300
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1068,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1088,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1108,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1128,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1148,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1168,
+      "attachment": [
+        851,
+        300
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2151,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2171,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2191,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2211,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2231,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2251,
+      "attachment": [
+        220,
+        354
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3284,
+      "attachment": [
+        725,
+        390
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3304,
+      "attachment": [
+        725,
+        390
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3324,
+      "attachment": [
+        725,
+        390
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3344,
+      "attachment": [
+        725,
+        390
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3364,
+      "attachment": [
+        725,
+        390
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3384,
+      "attachment": [
+        725,
+        390
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-162-ahab-engineer\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "c3bbefba3e8df7a1ec2c263221a040499fb6c8f2b1bf997b586139f52d16b29a",
+    "left-corner.png": "1d78e5a30fbc0dc1a24b0bef734b0cfc0562e2ea29ad526e19ef826f1f7d169b",
+    "right-corner.png": "101abc9be17f7efd26ed72a7e2e30846c057e3d0b2ccc47402b7da92d0623644",
+    "wide.png": "8f102cfea2ea5141c6120186a2cdd4753b6cb8cbab92127ba8c86e135464c09c",
+    "life-03-active.png": "17d8b5139a7ca8dd345286bd5542c22ee61eea44f6cf65afe5fe20714f75ad23",
+    "life-01-active.png": "0263342ed6058c9ebf5bd948f458a10db2909770738be94eb8c78f085690483c",
+    "life-02-active.png": "f97bc998b0df490f9a58f404ad9762f8bc79d62d19bb1becb1bd9e50100fda1c",
+    "mobile.png": "6b7698e071dbe07856d5a45b5b4f297d5ecc7b79f929fa9dd8432a8f98cee48a"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}
