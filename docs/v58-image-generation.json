@@ -1,0 +1,29 @@
+{
+  "mode": "OpenAI built-in image_gen",
+  "date": "2026-09-30",
+  "assets": [
+    {
+      "output": "public/game/sprites/v58/pit/falconer/drone-flight-right.png",
+      "prompt": "Create a production-ready transparent PNG game prop sprite: the Falconer Predator's mechanical reconnaissance falcon from Predators (2010), using the attached NECA official collectible photos ONLY as shape/material references. Extract/interpret ONLY the small mechanical scout attached to his extended RIGHT forearm in photos 04 and 06, not the hunter, his wrist blade, hand or armor. Show the entire SINGLE drone alone in flight, facing SCREEN RIGHT in a readable three-quarter side view with front pointing right and compact central fuselage visible. Faithfully retain the referenced distinctive dark gunmetal organic ribbed central body, small red front sensor cluster, two long rigid swept razor-like wing arms/tips, and round recessed mechanical apertures at the thicker wing roots; no feathers, no living bird, no beak-shaped animal head, no quadcopter rotors, no turret, no missiles, no huge sci-fi lights. Match the photographed object's mechanical silhouette and worn dark metal as closely as the views permit. The wings are rigid, slightly spread flight position, NOT beating like a bird. Neutral upper-left lighting, subtly hand-painted realistic 2D fighting game sprite, fine readable highlights on worn metal; no glow trail, no speed lines, no ground shadow, no support or peg, no scene, no text or logo. Single held flight pose, NOT a sprite sheet and NOT multiple objects. Center all visible pixels with generous transparent margins on all four sides, wide horizontal subject filling approximately 75 percent of width and no clipping. Output real transparent alpha, all non-object pixels fully transparent. This is one RIGHT-facing asset; do not add a second mirrored object."
+    },
+    {
+      "output": "public/game/sprites/v58/pit/falconer/drone-flight-left.png",
+      "prompt": "Create the matching opposite native game sprite of the Falconer Predator mechanical reconnaissance drone. Reference image 1 is the approved RIGHT-facing game asset; references 2 and 3 are official NECA photographs of this scout on Falconer's right forearm. Preserve the exact same equipment identity, proportions, worn dark gunmetal material, small cluster of red front optical sensors, ribbed fuselage, circular recessed wing-root apertures, and exactly two rigid long curved razor-shaped wing tips. Show the SAME SINGLE scout flying toward SCREEN LEFT, native opposite three-quarter side view: its red sensor nose clearly left of the body, and the rear fuselage trailing right. This is a newly drawn opposite-side view, not a simple reflected copy; lighting still comes from upper left. Match first image's apparent scale, hand-painted realistic 2D fighting game rendering, and rigid spread wing attitude. Body level as near horizontal as possible, same compact drone silhouette. No added fins, feathers, animal beak, rotors, weapons, lasers, projectiles or trail; no hunter, hand, mounting support, ground shadow or background. Only ONE isolated full drone, one held flight pose. True transparent alpha, ample fully transparent margins on all sides, no clipping, no text, no grid, no second drone."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-camo-cloaked-falconer-predator-action-figure",
+      "scope": "Official collectible visual references Falconer_04 and Falconer_06, only mechanical scout, photos not shipped"
+    },
+    {
+      "url": "https://www.hottoys.jp/item/view/100001625",
+      "scope": "Official description confirms reconnaissance craft and single right wrist blade; not used to invent drone armament"
+    }
+  ],
+  "limitations": [
+    "Two held native poses, not an animation cycle",
+    "Interpretation of official collectible views, not certified 1:1 film prop geometry",
+    "Reference photographs remain ignored and are not published"
+  ]
+}

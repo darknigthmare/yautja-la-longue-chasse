@@ -7,6 +7,7 @@
  */
 
 import { PIT_FALCONER_RECON_DRONE } from './pitFalconerDrone';
+import { PIT_FERAL_GUIDED_BOLTS } from './pitFeralBoltsV58';
 
 export const PIT_FIRST_EDITION_CONTENT_VERSION = 1 as const;
 
@@ -73,6 +74,7 @@ export type PitTechniqueDevice =
   | "shoulder"
   | "whip"
   | "bolt-trap"
+  | "bolt"
   | "shockwave"
   | "drone"
   | "hound"
@@ -488,13 +490,10 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     walkSpeed: 5.1, airSpeed: 3.55, jumpSpeed: 13, power: 1, bodyWidth: 53,
     bodyHeight: 119, crouchHeight: 82,
     palette: { primary: "#74634c", secondary: "#332a21", accent: "#d2b56a" },
-    attacks: moves(["Lacération férale", "Ruée à la lance scindée", "Charge au bouclier", "Piège à carreaux"], BALANCE.rushdown),
-    technique: technique("feral-bolt-trap", "bolt-trap", {
-      motion: "stationary", lifetimeFrames: 180, armFrames: 7, speed: 0,
-      width: 70, height: 24, verticalOffset: 0, damageScale: 0.8,
-      status: "pinned", statusFrames: 90, movementScale: 0.48,
-      jumpLocked: true,
+    attacks: moves(["Lacération férale", "Ruée à la lance scindée", "Charge au bouclier", "Salve de carreaux"], {
+      ...BALANCE.rushdown, techniqueLevel: 'mid',
     }),
+    technique: PIT_FERAL_GUIDED_BOLTS,
     arcadeIntro: "Feral refuse les usages figés et chasse chaque adversaire comme un territoire inconnu.",
     arcadeEnding: "Sa voie brutale survit au Jugement et force les anciens à reconnaître un rite plus ancien encore.",
   }),

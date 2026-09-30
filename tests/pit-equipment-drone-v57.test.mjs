@@ -42,10 +42,10 @@ test('final-duel melee remains usable, and forged plasma state/effect is refused
   assert.throws(()=>p.deserializePitCombat(JSON.stringify(armed)));
 });
 
-test('explicit equipment survives round, rematch, reset and V8 input replay without a campaign grant',()=>{
+test('explicit equipment survives round, rematch, reset and current input replay without a campaign grant',()=>{
   const options={fighters:['jungle-hunter','berserker'],rules:{mode:'training'},variants:[p.PIT_JUNGLE_FINAL_DUEL_VARIANT,null]};
   const inputs=Array.from({length:100},(_,i)=>[{attack:i%35===0?'technique':undefined},{}]);
-  const replay=p.recordPitReplay(inputs,options);assert.equal(replay.engineVersion,8);
+  const replay=p.recordPitReplay(inputs,options);assert.equal(replay.engineVersion,p.PIT_STATE_VERSION);
   const final=p.playPitReplay(replay);assert.equal(final.techniqueEffects.length,0);
   for(const reset of [p.rematchPitCombat,p.resetPitTrainingPositions])assert.equal(reset(final).fighters[0].variantId,p.PIT_JUNGLE_FINAL_DUEL_VARIANT);
   assert.equal(p.normalizePitReplay({...replay,engineVersion:7}),null);
@@ -109,10 +109,10 @@ test('published V7 Falconer archive retains its pre-change checksum and source b
   const file='tests/fixtures/pit-replay-v56-falconer-v7.json',bytes=fs.readFileSync(file,'utf8'),fixture=JSON.parse(bytes);
   assert.equal(fixture.metadata.checksum,'823e993e');assert.equal(fixture.engineVersion,7);
   const replay=p.normalizePitReplay(fixture);assert(replay);assert.equal(replay.metadata.checksum,'823e993e');
-  assert.equal(p.playPitReplay(replay).version,8);assert.equal(fs.readFileSync(file,'utf8'),bytes);
+  assert.equal(p.playPitReplay(replay).version,p.PIT_STATE_VERSION);assert.equal(fs.readFileSync(file,'utf8'),bytes);
 });
 
-test('V8 sensor replay is deterministic across outbound, scan, recall and disappearance',()=>{
+test('current sensor replay is deterministic across outbound, scan, recall and disappearance',()=>{
   const inputs=Array.from({length:260},(_,i)=>[{attack:i%35===0?'technique':undefined},{}]);
   const options={fighters:['falconer','jungle-hunter'],rules:{mode:'training'},seed:77};
   const replay=p.recordPitReplay(inputs,options);

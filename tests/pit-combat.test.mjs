@@ -123,8 +123,9 @@ test("declared startup, active and recovery frames gate a light hit", async () =
   assert.equal(state.fighters[0].phase, "recovery");
 });
 
-test("high and low guard obey hit levels and produce blockstun", async () => {
-  const pit = await pitPromise;
+test("legacy V8 high and low guard obey trap hit levels and produce blockstun", async () => {
+  const current = await pitPromise;
+  const pit = {...current, stepPitCombat: current.stepPitCombatV8Compatibility};
   const base = pit.createPitCombatState("feral-hunter", "berserker");
   const maxHealth = base.fighters[1].health;
   const lowTrapContact = (defenderInput) => {
@@ -737,7 +738,8 @@ test("all twelve selectable hunters spawn their authored technique recipe in the
     state.fighters[1].x = 840;
     state = pit.stepPitCombat(state, [{ attack: "technique" }, {}]);
     state = advance(pit, state, pit.PIT_FIGHTERS[fighterId].attacks.technique.startup);
-    assert.equal(state.techniqueEffects.length, 1, fighterId + " must create one world effect");
+    assert.equal(state.techniqueEffects.length, fighterId === 'feral-hunter' ? 3 : 1,
+      fighterId + " must create its authored world effects");
     const [effect] = state.techniqueEffects;
     assert.equal(effect.ownerSlot, 0);
     assert.equal(effect.techniqueId, pit.PIT_FIGHTERS[fighterId].technique.id);
@@ -826,8 +828,9 @@ test("Scar plasma and Berserker contact pierce guard while Jungle Hunter plasma 
   }
 });
 
-test("the Feral bolt trap arms before contact and Witch bow-snare pins on arrival", async () => {
-  const pit = await pitPromise;
+test("legacy V8 Feral trap arms before contact and Witch bow-snare pins on arrival", async () => {
+  const current = await pitPromise;
+  const pit = {...current, stepPitCombat: current.stepPitCombatV8Compatibility};
   let trap = placeInRange(
     pit.createPitCombatState("feral-hunter", "berserker"),
     100,
@@ -836,7 +839,7 @@ test("the Feral bolt trap arms before contact and Witch bow-snare pins on arriva
   trap = advance(pit, trap, pit.PIT_FIGHTERS["feral-hunter"].attacks.technique.startup);
   assert.equal(trap.techniqueEffects[0].phase, "arming");
   assert.equal(trap.fighters[1].techniqueStatus, null);
-  const armFrames = pit.PIT_FIGHTERS["feral-hunter"].technique.armFrames;
+  const armFrames = pit.getPitTechniqueDefinitionForEffect(trap, trap.techniqueEffects[0]).armFrames;
   trap = advance(pit, trap, armFrames - trap.techniqueEffects[0].age - 1);
   assert.equal(trap.fighters[1].techniqueStatus, null);
   trap = pit.stepPitCombat(trap, [{}, {}]);
@@ -1033,8 +1036,9 @@ test("technique state stays PIT-only, bounded, migratable and rejects forged ent
   );
 });
 
-test("four stacked bolt traps resolve as a sequential, scaled and restorable combo", async () => {
-  const pit = await pitPromise;
+test("legacy V8 four stacked traps resolve as a sequential, scaled and restorable combo", async () => {
+  const current = await pitPromise;
+  const pit = {...current, stepPitCombat: current.stepPitCombatV8Compatibility};
   const move = pit.PIT_FIGHTERS["feral-hunter"].attacks.technique;
   const deployTrap = (current) => {
     let next = pit.stepPitCombat(current, [{ attack: "technique" }, {}]);
@@ -1062,8 +1066,9 @@ test("four stacked bolt traps resolve as a sequential, scaled and restorable com
   assert.deepEqual(pit.deserializePitCombat(pit.serializePitCombat(state)), state);
 });
 
-test("stacked persistent effects stop emitting hits after the first knockout", async () => {
-  const pit = await pitPromise;
+test("legacy V8 stacked persistent effects stop emitting hits after the first knockout", async () => {
+  const current = await pitPromise;
+  const pit = {...current, stepPitCombat: current.stepPitCombatV8Compatibility};
   const move = pit.PIT_FIGHTERS["feral-hunter"].attacks.technique;
   const deployTrap = (current) => {
     let next = pit.stepPitCombat(current, [{ attack: "technique" }, {}]);

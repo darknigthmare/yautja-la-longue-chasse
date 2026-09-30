@@ -7,6 +7,7 @@ import PitStagePreview, { type PitStagePreviewStatus } from './PitStagePreview';
 import { PIT_ARENAS, PIT_FIGHTERS, type PitArenaId } from './systems/pitCombat';
 import { getPitRosterIcon } from './pitRosterIcons';
 import { PIT_NARRATIVE_TRIALS_V57, resolvePitNarrativeOutcome, type PitNarrativeOutcome, type PitNarrativeResultInput } from './systems/pitNarrativeTrialsV57';
+import { pitNarrativeOutcomeDescription, resolvePitNarrativePresentation } from './systems/pitNarrativePresentationV58';
 import { useMenuGamepad } from './useMenuGamepad';
 import styles from './PitNarrativeTrials.module.css';
 
@@ -27,6 +28,7 @@ export default function PitNarrativeTrials({ controlBindings, highContrast, redu
   const [previewRetry, setPreviewRetry] = useState(0);
   const [notice, setNotice] = useState('');
   const trial = PIT_NARRATIVE_TRIALS_V57.find(item => item.id === selectedId)!;
+  const presentation = resolvePitNarrativePresentation(trial, reducedGore);
   const rootRef = useRef<HTMLElement>(null);
   const resultRef = useRef<Exclude<PitNarrativeOutcome, 'abandoned'> | null>(null);
   const ready = preview?.id === trial.arenaId && preview.status === 'ready';
@@ -50,7 +52,7 @@ export default function PitNarrativeTrials({ controlBindings, highContrast, redu
   const leaveDuel = useCallback(() => { setOutcome(resultRef.current ?? 'abandoned'); setPhase('result'); }, []);
 
   if (phase === 'duel') return <PitCanvas key={`${trial.id}:${attempt}`} narrativeEncounter={trial}
-    controlBindings={controlBindings} highContrast={highContrast} reducedGore={reducedGore} screenShake={screenShake}
+    controlBindings={controlBindings} highContrast={highContrast} reducedGore={presentation.reducedGore} screenShake={screenShake}
     onNarrativeComplete={finishMatch} onExit={leaveDuel} exitLabel="Retour au récit" />;
 
   return <section ref={rootRef} className={styles.root} data-screen-focus data-pit-narrative-trials data-narrative-phase={phase}
@@ -77,9 +79,12 @@ export default function PitNarrativeTrials({ controlBindings, highContrast, redu
           <p className={styles.versus}>{PIT_FIGHTERS[trial.leftId].name} <span>contre</span> {PIT_FIGHTERS[trial.rightId].name}</p>
           <p className={styles.venue}>{PIT_ARENAS[trial.arenaId].name}</p>
           <p className={styles.continuity}>{trial.continuity}</p>
+          {presentation.nonLethalTrial ? <p className={styles.limit} data-narrative-combat-policy="non-lethal-clan-trial">
+            Épreuve non létale : un KO ou une décision au chronomètre tranche la manche, sans mort dans ce récit. Les impacts sont représentés par des anneaux dorés. Votre réglage de violence reste inchangé pour les autres combats.
+          </p> : null}
           {phase === 'result' ? <div className={styles.result} role="status">
             <h4>{outcome === 'victory' ? 'Épreuve remportée' : outcome === 'defeat' ? 'Le rival l’emporte' : outcome === 'draw' ? 'Duel indécis' : 'Épreuve interrompue'}</h4>
-            <p>{outcome === 'victory' ? trial.victory : outcome === 'defeat' ? 'La défaite ne vous renvoie pas au début d’une campagne. Vous pouvez reprendre ce face-à-face, avec les mêmes combattants et le même terrain.' : outcome === 'draw' ? 'Aucun vainqueur n’est désigné. Reprenez le duel pour résoudre cette rencontre.' : 'Vous avez quitté avant de résoudre la rencontre. Aucun succès ni récompense ne sont attribués.'}</p>
+            <p>{pitNarrativeOutcomeDescription(trial, outcome)}</p>
             {outcome === 'victory' ? <strong>{trial.conclusion}</strong> : null}
           </div> : <p className={styles.brief}>{trial.briefing}</p>}
           {notice ? <p role="alert">{notice}</p> : null}
@@ -91,6 +96,7 @@ export default function PitNarrativeTrials({ controlBindings, highContrast, redu
           <details className={styles.sources}><summary>Source et éléments encore manquants</summary><p>{trial.limitation}</p>
             <p>Les étapes 1–6 et 8, le stage spécial à objectifs et les séquences de récit du classeur ne sont pas déclarés accomplis.</p>
             <p>THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx · {trial.source.sheet}!{trial.source.encounterCell} · contexte {trial.source.contextCells}. Règles 16_REGLES!C29:D29 et C36:D37.</p>
+            {trial.combatPolicy ? <p>Épreuve de clan adaptée : {trial.combatPolicy.sources.join(' · ')}. Cette présentation conserve les règles de combat ; elle n’ajoute ni animation de clémence ni remise d’objet.</p> : null}
             {trial.source.stageMapping ? <p>{trial.source.stageMapping}</p> : null}</details>
         </div>
       </article>

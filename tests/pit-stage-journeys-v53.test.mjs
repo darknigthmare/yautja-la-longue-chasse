@@ -102,7 +102,7 @@ for (const route of routes) {
 
   test(route.id + ': restore at every tick, including capture and transfer, matches the replay exactly', () => {
     const replay = p.recordPitReplay(inputs, { fighters: legacy.fighters, arenaId: route.entry, rules: { mode: 'training', stageJourney: route.id } });
-    assert.equal(replay.engineVersion, 8); assert.equal(replay.version, 3);
+    assert.equal(replay.engineVersion, 9); assert.equal(replay.version, 3);
     let state = p.createPitCombatState(...replay.fighters, { arenaId: replay.arenaId, ...replay.rules }), captures = 0, transfers = 0;
     for (const input of inputs) {
       const bytes = p.serializePitCombat(state);

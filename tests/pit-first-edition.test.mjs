@@ -322,7 +322,7 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   const techniques = FIGHTER_IDS.map((id) => edition.PIT_FIRST_EDITION_FIGHTERS[id].technique);
   assert.equal(new Set(techniques.map((definition) => definition.id)).size, 12);
   assert.deepEqual(techniques.map((definition) => definition.device), [
-    "plasma", "net", "plasma", "shoulder", "whip", "bolt-trap",
+    "plasma", "net", "plasma", "shoulder", "whip", "bolt",
     "shoulder", "drone", "counter-blade", "hammer", "bow-snare", "code-parry",
   ]);
   for (const definition of techniques) {
@@ -352,7 +352,7 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["jungle-hunter"].technique.motion, "linear");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["city-hunter"].technique.status, "netted");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.scar.technique.guardBreak, true);
-  assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["feral-hunter"].technique.motion, "stationary");
+  assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["feral-hunter"].technique.motion, "linear");
   const falconer = edition.PIT_FIRST_EDITION_FIGHTERS.falconer;
   assert.equal(falconer.technique.motion, "returning");
   assert.equal(falconer.technique.id, "falconer-reconnaissance-v57");

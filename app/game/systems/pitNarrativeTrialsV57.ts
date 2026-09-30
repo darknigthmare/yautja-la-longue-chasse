@@ -13,6 +13,11 @@ export interface PitNarrativeTrial {
   readonly victory: string;
   readonly conclusion: string;
   readonly limitation: string;
+  /** Narrative presentation only: never changes health, hitboxes, weapons or the saved violence setting. */
+  readonly combatPolicy?: {
+    readonly kind: 'non-lethal-clan-trial';
+    readonly sources: readonly string[];
+  };
   readonly source: { readonly sheet: '08_CAMPAGNES'; readonly encounterCell: string; readonly contextCells: string; readonly stageMapping?: string };
 }
 
@@ -41,6 +46,7 @@ export const PIT_NARRATIVE_TRIALS_V57: readonly PitNarrativeTrial[] = [
     briefing: 'Greyback éprouve le jugement de City Hunter dans le vaisseau des trophées. Il s’agit d’une épreuve non létale proposée pour The Pit, pas d’une scène ajoutée au film ni d’un épisode de Golden Angel.',
     victory: 'L’ancien remporte l’épreuve et reconnaît la valeur du face-à-face. Les chasseurs se retirent sans mise à mort. Le trophée évoqué dans le classeur reste un élément narratif, pas un objet attribué à la campagne.',
     conclusion: 'Épreuve non létale · aucun trophée anatomique.',
+    combatPolicy: { kind: 'non-lethal-clan-trial', sources: ['08_CAMPAGNES!F18', '08_CAMPAGNES!H18', '08_CAMPAGNES!J18', '07_PRESENTATIONS!J18'] },
     limitation: 'Greyback garde son incarnation démasquée de Predator 2. Son silex et son canon restent inactifs dans ce profil ; aucun geste de lance ou remise de trophée non dessiné n’est annoncé.',
     source: { sheet: '08_CAMPAGNES', encounterCell: 'J18', contextCells: 'D18:K18' },
   },
