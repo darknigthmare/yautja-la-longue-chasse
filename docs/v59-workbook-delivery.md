@@ -60,4 +60,19 @@ Le build Next final vérifie séparément **quatre cas d'atterrissage par vraies
 
 Le replay V9 archivé a aussi été lu jusqu'au tick 360 dans les builds Vinext et Next finaux : vies `[960,438]`, 121 frames où les carreaux sont visibles, aucune substitution par le long lanceur V59, sauvegardes et fixture inchangées (`qa/replay-vinext-landing-final/report.json`, `qa/replay-next-landing-final/report.json`). Ces parcours emploient une archive préexistante dans un profil isolé, puis le bouton réel de lecture ; ils ne prétendent pas valider un import de fichier absent de l'interface.
 
-Les quatre PNG servis par Next final répondent HTTP 200 en `image/png` et sont identiques, octet par octet, aux ressources contrôlées (`qa/assets-next-landing-final.json`). Tous les chemins de rapports locaux de cette section sont sous `work-local/v59/`. La publication reste une étape séparée et n'est pas encore confirmée à la rédaction de ce bilan local.
+Les quatre PNG servis par Next final répondent HTTP 200 en `image/png` et sont identiques, octet par octet, aux ressources contrôlées (`qa/assets-next-landing-final.json`). Tous les chemins de rapports locaux de cette section sont sous `work-local/v59/`. La publication a ensuite été vérifiée séparément, ci-dessous.
+
+## Publication et vérification publique — 30 septembre 2026
+
+Le commit de jeu **`d997eaffb7d924a3942ce6f7244e6c14e9dbdedd`** a été poussé sur `main`, sans forçage. Le déploiement de production **`dpl_AnV5qXn1czHoKFP8ZNHMauutPVjc`** est passé `READY` à **14:11:13 UTC** avec ce même SHA et l'alias [yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app). Le contrôle ne s'arrête pas à ce statut : les recettes ont ensuite été exécutées sur cet alias public, qui affiche V59.
+
+| Vérification publique | Résultat | Rapport local |
+| --- | --- | --- |
+| Images, combat, mouvement réduit, pause, costumes, pannes et reprise | 28 groupes PASS, 66 captures ; deux pannes 503 volontaires récupérées | `work-local/v59/qa/feral-public-final/report.json` |
+| Tir avant/après atterrissage, deux places | 4 cas PASS, 8 captures ; pose historique conservée pour les tirs aériens, bouche native pour les tirs au sol | `work-local/v59/qa/feral-landing-public-final/report.json` |
+| Replay V9 archivé | 360 ticks, PV `[960,438]`, checksum `b3244626`, 121 frames de carreaux, zéro substitution par le lanceur V59 | `work-local/v59/qa/replay-public-final/report.json` |
+| Octets des quatre PNG publics | HTTP 200, `image/png`, quatre SHA256 identiques aux images validées | `work-local/v59/qa/assets-public-final.json` |
+
+Les parcours publics ne relèvent aucune erreur JavaScript/console ni réponse HTTP inattendue ; les contextes isolés conservent intégralement leurs sauvegardes et archives. L'écart maximal de bouche reconstruit est d'environ 1,14×10⁻¹² unité. Les captures des boucliers, du lanceur, des atterrissages et du replay ont été inspectées dans les deux sens : pas de courbe de lame parasite sur les actions natives et appuis au sol conservés. Cette inspection ciblée ne certifie pas l'ensemble du jeu ni toutes les images du catalogue.
+
+Les serveurs de test locaux et les navigateurs automatisés ont été fermés. Le complément de bilan est enregistré sur la branche de travail sans relancer inutilement un nouveau déploiement de production. Les limites artistiques, de transitions et d'équilibrage énumérées plus haut restent ouvertes.
