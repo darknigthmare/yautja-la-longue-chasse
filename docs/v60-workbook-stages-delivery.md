@@ -63,6 +63,8 @@ Certaines lignes du classeur sont des événements conditionnels, interdictions 
 - The Last Hunt : diagnostic neutre de la balise, sans simuler un objectif accompli. Sandpiper : équipage anonyme, sans inventer la présence d’un captif d’un chapitre précis.
 - Entraînement : ancien observateur ; aucune déclaration aléatoire de vainqueur pendant une manche.
 
+Ce lot ne fournit pas un nouvel installateur Windows et ne clôt pas les autres chantiers de personnages, campagne ou DLC.
+
 ## État de validation
 
 La génération des 104 PNG et les 25 compositions sont terminées. L’audit final compte 186 kits jouables et vérifie 501 chemins uniques ; les 161 anciennes entrées sont strictement identiques au commit de départ. Les 75 captures de composition acceptées sont liées à leurs empreintes exactes dans `v60-stage-pipeline-final-qa.json`.
@@ -79,4 +81,18 @@ Les **104 PNG** servis par Next final répondent HTTP 200 en `image/png`, avec d
 
 Dans l’application Next compilée, les deux partitions du parcours roster → stage → duel couvrent exactement les **25 scènes**, leurs **75 animations** et leurs **450 cellules natives** réellement dessinées. L’agrégat passe **36 groupes de contrôles**, avec **136 captures**, sans erreur JavaScript/console ni réponse HTTP inattendue. La pause, le mouvement réduit, les deux orientations mobiles, le chargement sélectif et une panne 503 volontaire suivie d’une reprise passent aussi. Les sources sont identiques avant/après les parcours et les sauvegardes restent intactes (`work-local/v60/qa/application-next-complete/report.json`). Le portrait mobile conserve une scène 16:9 avec des bandes noires ; il n’est pas présenté comme une refonte optimisée pour le portrait.
 
-Le classeur de suivi séparé `THE_PIT_STAGES_V60_SUIVI.xlsx` récapitule les 25 scènes, les 75 animations, leurs placements et les limites restantes. Le classeur source n’est pas modifié. La publication est encore en attente à ce stade ; elle fait l’objet des contrôles publics ci-dessous une fois confirmée.
+Le classeur de suivi séparé `THE_PIT_STAGES_V60_SUIVI.xlsx` récapitule les 25 scènes, les 75 animations, leurs placements et les limites restantes. Le classeur source n’est pas modifié. Les preuves locales sont conservées dans `v60-next-native-stages-qa.json` ; 36 avis portent sur 34 captures distinctes couvrant les 25 scènes dans `v60-next-native-stages-visual-review.json`.
+
+## Publication et contrôles publics — 30 septembre 2026
+
+Le commit **`56dc65cdc59ee371a9aa37773bde686132b95946`** a été poussé sur `main`, sans forçage. Le déploiement de production **`dpl_8UyKkvaHNna7cSveG2JiSNA66Xeo`** est `READY` à **16:19:43.258 UTC** pour ce même SHA et l’alias [yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app). La preuve de déploiement est séparée dans `v60-production-deployment.json`.
+
+Les **104 PNG publics** répondent HTTP 200 en `image/png` et présentent tous le SHA256 des fichiers natifs validés, sans substitution ni fichier manquant (`v60-public-assets-qa.json`).
+
+Le replay V9 archivé passe également sur l’alias public affichant V60 : tick 360, vies `[960,438]`, checksum `b3244626`, 121 frames de carreaux et aucune substitution par le lanceur V59. Les deux captures sont inspectées ; aucun défaut navigateur/HTTP ni changement de sauvegarde ou de fixture n’est relevé (`v60-feral-replay-v9-public-qa.json`).
+
+Le parcours public couvre les scènes **162, 165, 170, 174, 176, 178, 182 et 186**, soit **8 arènes, 24 animations et 144 cellules natives** observées. Les deux partitions passent **19 groupes de contrôles** et produisent **51 captures**, sans erreur JavaScript/console ni réponse HTTP inattendue. La pause, le mouvement réduit, les orientations mobiles, les commandes tactiles, le chargement sélectif et la panne 503 volontaire suivie d’une reprise sont validés. Les huit scènes sont aussi inspectées visuellement dans l’application publique. Les sauvegardes et sources restent intactes (`v60-public-native-stages-qa.json`, avec rapports détaillés sous `work-local/v60/qa/application-public-a/` et `application-public-b/`). Ce contrôle public est un échantillon de huit scènes, distinct du parcours local exhaustif des 25.
+
+Le classeur séparé est actualisé avec la révision publiée et l’URL publique ; il conserve explicitement les 25 validations comme QA locale. Son contenu, ses totaux et l’intégrité ZIP ont été vérifiés après réouverture (`v60-followup-workbook-verification.json`). Le moteur de rendu du classeur a un défaut Windows de finalisation après ces vérifications ; le reçu le conserve et ne revendique pas une validation dans Microsoft Excel desktop.
+
+Les serveurs locaux et les navigateurs automatisés de cette livraison sont fermés. Les preuves postpublication et le classeur actualisé sont enregistrés séparément sur la branche de travail, sans modifier le commit de jeu testé en production. Les limites de lore, événements conditionnels et autres chantiers indiqués plus haut restent ouverts.
