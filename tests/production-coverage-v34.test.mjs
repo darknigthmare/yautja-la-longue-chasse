@@ -38,16 +38,16 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
   const coverage = productionCoverage([], []);
   // V50 adds three identities (Falconer, Scarface, Enforcer). Ahab, Wolf and
   // Celtic already existed; this report counts identities, not appearances.
-  assert.equal(coverage.hunters.runtimeFighters, 15);
+  assert.equal(coverage.hunters.runtimeFighters, 16);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4,
-    'Global coverage adds six V51 and twelve V52 ceremonies plus four V53 shuffles, without changing V50 combat coverage');
+  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10,
+    'V57 adds six hammer phases and four explicitly held poses; none is a complete moveset');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
   const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
   const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
-  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53')).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 315,
+  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 315,
     'The historical and V50 combat coverage remains exactly unchanged');
   const movement = registry.filter(entry => entry.atlas.id.endsWith('-v50'));
   assert.deepEqual(movement.map(entry => entry.fighterId).sort(),
@@ -77,9 +77,9 @@ test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hun
     ['intro', 'victory', 'defeat'].flatMap(kind => ['right', 'left'].map(facing =>
       ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
   const coverage = productionCoverage([], []);
-  assert.equal(coverage.hunters.runtimeFighters, 15);
-  assert.equal(coverage.hunters.validatedClips, 337,
-    'The exact six V51 clips above remain unchanged while V52 adds twelve independent ceremony clips');
+  assert.equal(coverage.hunters.runtimeFighters, 16);
+  assert.equal(coverage.hunters.validatedClips, 347,
+    'The exact six V51 clips above remain unchanged; V57 adds six technique phases and four held poses');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
 });

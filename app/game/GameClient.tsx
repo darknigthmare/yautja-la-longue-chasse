@@ -239,6 +239,7 @@ const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen")
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitCanvas"));
+const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
@@ -269,6 +270,7 @@ type Screen =
   | "medbay"
   | "training"
   | "pit"
+  | "pit-narrative"
   | "map"
   | "armory"
   | "customization"
@@ -1146,7 +1148,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "mausoleum" || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1347,7 +1349,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : screen === "mission" ? huntMusicContext
       : screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
       : screen === "map" ? "galaxy"
-      : screen === "pit" ? "combat"
+      : screen === "pit" || screen === "pit-narrative" ? "combat"
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
       : "ship";
     const apply = () => { void audioRef.current?.setMusicContext(document.hidden ? null : context, { fadeSeconds: 0.5 }); };
@@ -2014,7 +2016,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const go = useCallback(
     (next: Screen) => {
       const chronicle = saveRef.current.prologue?.chronicle;
-      if (chronicle && ["deck", "ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit"].includes(next) &&
+      if (chronicle && ["deck", "ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit", "pit-narrative"].includes(next) &&
           !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(chronicle) ?? "")) {
         setToast("Le vaisseau personnel et les chasses autonomes attendent le rite Blooded. Ton apprentissage se poursuit sur le Homeworld."); return;
       }
@@ -3024,7 +3026,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "mission", "deck", "ship", "map", "training", "pit", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "youth-training", "mission", "deck", "ship", "map", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
 
   const primaryWeapon =
@@ -3066,7 +3068,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" ? (
+    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
         onShip={() => go(save.prologue ? "homeworld" : "deck")}
@@ -3238,7 +3240,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen" hidden={screen === "mausoleum" || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
+          <section className="screen panel-screen" hidden={screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <div className="physical-deck-toolbar">
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
@@ -4598,6 +4600,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       {screen === "pit" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <PitCanvas
+            onOpenNarrativeTrials={() => go("pit-narrative")}
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}
@@ -4611,6 +4614,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             exitLabel={pitReturnScreen === "homeworld" ? "Retour à la cité" : "Retour au vaisseau"}
             onExit={() => go(pitReturnScreen)}
           />
+        </Suspense>
+      )}
+
+      {screen === "pit-narrative" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <PitNarrativeTrials controlBindings={save.settings.controlBindings}
+            highContrast={save.settings.highContrastVision} reducedGore={save.settings.reducedGore}
+            screenShake={save.settings.screenShake} onExit={() => go("pit")} />
         </Suspense>
       )}
 

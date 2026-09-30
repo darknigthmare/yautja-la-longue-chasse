@@ -1,4 +1,5 @@
 import { getPitArenaLifeCast, getPitArenaLifeFrame, isPitArenaLifeSheetSize, PIT_ARENA_LIFE_SHEETS, type PitArenaLifeSheet } from "./pitArenaLife";
+import { getPitArenaLifeEventPose, type PitArenaLifeEventContext } from "./pitArenaLifeEvents";
 
 export interface PitArenaLifeReport {
   readonly actorsDrawn: number;
@@ -16,6 +17,7 @@ export function drawPitArenaLife(context: CanvasRenderingContext2D, input: {
   readonly reducedMotion?: boolean;
   readonly highContrast?: boolean;
   readonly sheets?: readonly PitArenaLifeSheet[];
+  readonly eventContext?: PitArenaLifeEventContext;
 }): PitArenaLifeReport {
   const nativeFrames: number[] = [], missingPaths = new Set<string>();
   let actorsDrawn = 0;
@@ -24,7 +26,8 @@ export function drawPitArenaLife(context: CanvasRenderingContext2D, input: {
     if (!sheet?.reviewed) continue;
     const image = input.images.get(sheet.src);
     if (!image || !isPitArenaLifeSheetSize(image.naturalWidth, image.naturalHeight)) { missingPaths.add(sheet.src); continue; }
-    const index = getPitArenaLifeFrame(input.frame, actor.phaseOffset, input.reducedMotion);
+    const directed = getPitArenaLifeEventPose(input.arenaId, actor.id, input.eventContext, input.reducedMotion);
+    const index = directed?.nativeFrame ?? getPitArenaLifeFrame(input.frame, actor.phaseOffset, input.reducedMotion);
     const cell = image.naturalWidth / sheet.columns;
     const transform = input.transform(actor.parallax), ground = input.transform(1);
     if (![transform.scale, transform.translateX, transform.translateY, ground.scale, ground.translateY].every(Number.isFinite)

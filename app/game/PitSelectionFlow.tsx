@@ -252,7 +252,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
             </select></label>
             <button type="button" data-pit-variant-next aria-label="Présentation suivante" aria-keyshortcuts="E" disabled={locked || variantChoices.length < 2} onClick={() => cycleVariant(1)}>›</button>
           </div>
-          <p className={styles.variantNote}>Masque et tenue changent l’apparence, pas les règles du combattant.</p>
+          <p className={styles.variantNote}>Les variantes conservent le profil du combattant. Un équipement explicitement retiré peut rendre sa technique indisponible.</p>
         </section>
       </>}
         </section>

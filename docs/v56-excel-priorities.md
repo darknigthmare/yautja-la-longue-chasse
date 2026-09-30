@@ -99,3 +99,9 @@ Compatibilité : la fixture V2 conserve son checksum historique `bf4337d5` et sa
 Le classeur reste en lecture seule. Aucun nouvel art bitmap, certification 1:1, test navigateur ou déploiement n’est revendiqué par ces correctifs.
 
 Limites encore ouvertes : animations natives de marteau/plasma et séparation arme/corps non produites dans cette passe ; retrait du canon selon variante démasquée de Jungle Hunter non implémenté ; le kit reste à quatre attaques moteur, pas aux 18 actions du classeur.
+
+## Suivi V57 — après ce snapshot V56
+
+Le retrait du canon est désormais implémenté pour une nouvelle variante **explicite du duel final 1987**, avec deux poses natives droite/gauche sans canon ni harnais. Les autres variantes démasquées existantes restent équipées ; retirer un masque ne retire pas arbitrairement toutes les armes. Falconer dispose désormais de l'appel, du marquage unique et du rappel du **même capteur mécanique**, sans dégâts ni Traque gagnée par la reconnaissance. Les replays V7 sont relus avec leurs règles historiques, alors que les nouvelles parties utilisent le moteur V8.
+
+Voir `v57-equipment-drone.md` et `v57-jungle-final-art-provenance.json` pour cellules sources, périmètre précis, 158 tests ciblés réussis et statut de la recette navigateur. Les nouveaux dessins Jungle sont deux poses fixes, pas des animations complètes. Le marteau natif Valkyrie appartient au lot V57 parallèle, décrit dans sa propre provenance ; le kit intégral de 18 actions et le retrait scénarisé du drone contre Hanzo restent distincts et ne sont pas annoncés comme livrés ici.

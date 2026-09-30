@@ -5,11 +5,23 @@ import { auditPitSpriteSheetProduction } from "./helpers/pit-sprite-sheet-produc
 test("real registered PNGs prepare as distinct transparent cells and every registered facing/phase resolves in the combat renderer", async () => {
   const report = await auditPitSpriteSheetProduction();
   assert.equal(report.status, "PASS");
-  assert.deepEqual(new Set(report.historicalFighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback", "theta", "machiko-noguchi"]));
+  assert.deepEqual(new Set(report.historicalFighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback", "theta", "machiko-noguchi", "valkyrie"]));
   assert.ok(report.pageCount >= 11);
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
   const historicalClips = report.clips.filter(clip => clip.variantId === null);
+  const hammer = report.clips.filter(clip => clip.atlasId === 'valkyrie-hammer-v57');
+  for (const facing of ['right', 'left']) {
+    const phases = hammer.filter(clip => clip.facing === facing && clip.clipId.includes('technique.'));
+    assert.deepEqual(phases.map(clip => clip.runtimePhase), ['startup', 'active', 'recovery']);
+    assert.deepEqual(phases.map(clip => clip.runtimePhaseTicks), [28, 7, 36]);
+    assert.deepEqual(phases.map(clip => clip.drawnCells), [2, 1, 2]);
+    assert.equal(hammer.find(clip => clip.facing === facing && clip.clipId === 'idle').status, 'held-native-stance');
+  }
+  const finalDuel = report.clips.filter(clip => clip.variantId === 'jungle-hunter-final-duel-v57');
+  assert.equal(finalDuel.length, 2);
+  assert(finalDuel.every(clip => clip.status === 'held-native-stance' && clip.drawnCells === 1));
+  assert.deepEqual(new Set(finalDuel.map(clip => clip.facing)), new Set(['left', 'right']));
   const v50Clips = report.clips.filter(clip => clip.atlasId.endsWith("-v50"));
   const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab" && !clip.atlasId.endsWith("-v50"));
   const ahabExpected = ["idle", "high-guard", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"];
@@ -80,13 +92,13 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 337, "V53 adds four native forward fighting shuffles, never new attacks");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 319);
-  assert.equal(report.pageCount, 120);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 100);
-  assert.equal(report.distinctDrawings, 677);
-  assert.equal(report.appearances.length, 20);
-  assert.equal(report.fighters.length, 15);
+  assert.equal(report.readyPhaseClips, 347, "V57 adds six hammer phases and four explicitly held native stances");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 329);
+  assert.equal(report.pageCount, 124);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 104);
+  assert.equal(report.distinctDrawings, 687);
+  assert.equal(report.appearances.length, 22);
+  assert.equal(report.fighters.length, 16);
   const v53Clips = report.clips.filter(clip => clip.atlasId.endsWith('-v53'));
   assert.deepEqual(v53Clips.map(clip => [clip.fighterId, clip.variantId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(':')).sort(),
     v52Appearances.flatMap(([fighterId, variantId]) => ['right', 'left'].map(facing => [fighterId, variantId, 'walk', facing, 2, true].join(':'))).sort(),
@@ -144,7 +156,7 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   for (const facing of ["right", "left"]) for (const clipId of ["crouch", "high-guard", "walk-backward", "pit.stand.medium.startup", "pit.stand.medium.active", "pit.stand.medium.recovery", "pit.stand.heavy.startup", "pit.stand.heavy.active", "pit.stand.heavy.recovery"]) {
     assert.ok(berserker.some(clip => clip.facing === facing && clip.clipId === clipId && clip.ready));
   }
-  for (const fighterId of report.historicalFighters) for (const facing of ["right", "left"]) {
+  for (const fighterId of report.historicalFighters.filter(id => id !== "valkyrie")) for (const facing of ["right", "left"]) {
     for (const clipId of ["idle", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"]) {
       assert.ok(historicalClips.some(clip => clip.fighterId === fighterId && clip.facing === facing && clip.clipId === clipId && clip.ready));
     }

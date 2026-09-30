@@ -1,0 +1,99 @@
+{
+  "fighterId": "jungle-hunter",
+  "variantId": "jungle-hunter-final-duel-v57",
+  "bodyHeightPx": 1447,
+  "pageBodyHeightPx": {
+    "jungle-final-right": 1447,
+    "jungle-final-left": 1456
+  },
+  "heldPoseClips": [
+    {
+      "id": "idle",
+      "facing": "right"
+    },
+    {
+      "id": "idle",
+      "facing": "left"
+    }
+  ],
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "jungle-final-duel-v57-held-poses",
+    "characterId": "jungle-hunter",
+    "variantId": "jungle-hunter-final-duel-v57",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "jungle-final-right",
+        "src": "/game/sprites/v57/pit/jungle-hunter/final-duel-right.png",
+        "width": 1024,
+        "height": 1536,
+        "status": "validated",
+        "transparency": {
+          "mode": "alpha",
+          "noiseFloor": 1
+        }
+      },
+      {
+        "id": "jungle-final-left",
+        "src": "/game/sprites/v57/pit/jungle-hunter/final-duel-left.png",
+        "width": 1024,
+        "height": 1536,
+        "status": "validated",
+        "transparency": {
+          "mode": "alpha",
+          "noiseFloor": 1
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "idle",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-final-right",
+            "rect": [
+              0,
+              0,
+              1024,
+              1536
+            ],
+            "pivot": [
+              512,
+              1479
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "idle",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-final-left",
+            "rect": [
+              0,
+              0,
+              1024,
+              1536
+            ],
+            "pivot": [
+              512,
+              1490
+            ],
+            "durationTicks": 1
+          }
+        ]
+      }
+    ]
+  }
+}

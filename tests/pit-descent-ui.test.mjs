@@ -105,7 +105,9 @@ test("selection remains locked while a route transition is pending or failed", (
   assert.match(lock, /runTransitionPersistence\.status === "failed"/);
 
   const modeChange = section(canvas, "const changePitMode", "const resetLiveInputs");
-  assert.match(modeChange, /if \(runTransitionSelectionLocked\) return/);
+  assert.match(modeChange, /if \(narrativeEncounter \|\| runTransitionSelectionLocked\) return/);
+  assert.ok(modeChange.indexOf('if (narrativeEncounter || runTransitionSelectionLocked) return;') < modeChange.indexOf('setMode(nextMode)'),
+    'both imposed narratives and unsettled route transitions block mode changes before mutation');
   assert.match(canvas, /disabled=\{runTransitionSelectionLocked\}/);
   assert.match(canvas, /locked=\{runTransitionSelectionLocked\}/);
   assert.match(selection, /disabled=\{isFighterUnavailable\(id\)\}/);

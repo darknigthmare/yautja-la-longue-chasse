@@ -29,7 +29,7 @@ export interface PitSpriteSheetAnimationDefinition {
   /** Optional measured reference per page, still uniform in both axes. */
   readonly pageBodyHeightPx?: Readonly<Record<string, number>>;
   /** Explicitly reviewed single-drawing stances, held without inventing movement. */
-  readonly heldPoseClips?: readonly { readonly id: "crouch"; readonly facing: "left" | "right" }[];
+  readonly heldPoseClips?: readonly { readonly id: "crouch" | "idle"; readonly facing: "left" | "right" }[];
   /** Alpha-reviewed source bounds for camera framing only; draw rect/pivot stay untouched. */
   readonly visibleFrameBounds?: readonly {
     readonly pageId: string;
@@ -97,7 +97,7 @@ function hasValidHeldPoses(definition: PitSpriteSheetAnimationDefinition): boole
   if (!Array.isArray(definition.heldPoseClips)) return false;
   const keys = new Set<string>();
   return definition.heldPoseClips.every(pose => {
-    if (!pose || pose.id !== "crouch" || (pose.facing !== "left" && pose.facing !== "right")) return false;
+    if (!pose || (pose.id !== "crouch" && pose.id !== "idle") || (pose.facing !== "left" && pose.facing !== "right")) return false;
     const key = clipKey(pose.id, pose.facing);
     if (keys.has(key)) return false;
     keys.add(key);
@@ -292,7 +292,8 @@ export function resolvePitSpriteSheetPresentation(
     if (!frame) continue;
     const source = animation.pages.get(frame.page.id);
     if (source && source.width === frame.page.width && source.height === frame.page.height) {
-      return { definition: animation.definition, frame, source, status: choice.status, cue };
+      const held = animation.definition.heldPoseClips?.some(pose => pose.id === choice.id && pose.facing === facing);
+      return { definition: animation.definition, frame, source, status: held ? 'staged-held-pose' : choice.status, cue };
     }
   }
   return null;
@@ -347,6 +348,9 @@ export function resolvePitSpriteSheetAnimation(
   for (const animation of proof.animations) {
     if (!ownsAppearance(animation.definition, fighter) ||
       !animation.readyClips.has(clipKey(motion.clipId, motion.facing))) continue;
+    // Native single-view stances are resolved by the hold path, not counted as animation.
+    if (motion.clipId === 'idle' && animation.definition.heldPoseClips?.some(pose =>
+      pose.id === 'idle' && pose.facing === motion.facing)) continue;
     const resolved = resolvePitHunterSpriteFrame(animation.definition.atlas, motion);
     if (!resolved) continue;
     const source = animation.pages.get(resolved.frame.page.id);
@@ -454,7 +458,9 @@ export function resolvePitSpriteSheetHold(
     fighter.cloakPhase === "inactive") {
     heldClips.push({ id: "pit.presentation.intro", finalDrawing: true });
   }
-  if (fighter.variantId === undefined) heldClips.push({ id: "idle", finalDrawing: false });
+  const hasNativeStance = proof.animations.some(animation => ownsAppearance(animation.definition, fighter) &&
+    animation.definition.heldPoseClips?.some(pose => pose.id === 'idle' && pose.facing === motion.facing));
+  if (fighter.variantId === undefined || hasNativeStance) heldClips.push({ id: "idle", finalDrawing: false });
   for (const held of heldClips) for (const animation of proof.animations) {
     if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey(held.id, motion.facing))) continue;
     const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, held.id, motion.facing, 0);

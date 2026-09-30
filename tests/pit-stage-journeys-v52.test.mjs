@@ -46,7 +46,7 @@ for(const route of routes){
    assert.equal(p.pitStageSceneArena(committed),route.destination);assert.equal(committed.arenaId,route.entry);assert.deepEqual(p.deserializePitCombat(p.serializePitCombat(committed)),committed);
   }
   const replay=p.recordPitReplay(inputs,{fighters:legacy.fighters,arenaId:route.entry,rules:{mode:'training',stageJourney:route.id}});
-  assert.equal(replay.engineVersion,7);assert.equal(replay.version,3);assert.equal(p.playPitReplay(replay).stageJourney.sector,'court');assert.equal(p.pitStageSceneArena(p.playPitReplay(replay)),route.destination);
+  assert.equal(replay.engineVersion,8);assert.equal(replay.version,3);assert.equal(p.playPitReplay(replay).stageJourney.sector,'court');assert.equal(p.pitStageSceneArena(p.playPitReplay(replay)),route.destination);
   assert.deepEqual(p.deserializePitReplay(p.serializePitReplay(replay)),replay);
  });
  test(route.id+' forbids tech, KO and forged endpoints; resets retain route ownership',()=>{

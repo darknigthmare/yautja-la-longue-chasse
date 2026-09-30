@@ -91,6 +91,21 @@ export async function auditPitSpriteSheetProduction() {
       const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf",
         { variants: [entry.variantId ?? null, null] });
       const fighter = combat.fighters[0]; fighter.facing = clip.facing === "right" ? 1 : -1;
+      if (clip.id === 'idle' && entry.heldPoseClips?.some(pose => pose.id === 'idle' && pose.facing === clip.facing)) {
+        const before = JSON.stringify(combat), options = { simulationFrame: 0, combat };
+        assert.equal(api.resolvePitSpriteSheetAnimation(bank, fighter, options), null, 'One native stance must never be counted as animation');
+        const held = api.resolvePitSpriteSheetHold(bank, fighter, options);
+        assert.ok(held); assert.equal(held.definition.atlas.id, entry.atlas.id);
+        assert.equal(held.frame.clip.facing, clip.facing); assert.equal(held.frame.clip.frames.length, 1);
+        const calls = [], context = { globalAlpha: 1, save() {}, restore() {}, drawImage(...args) { calls.push(args); } };
+        assert.equal(api.drawPitSpriteSheetHold(context, bank, fighter, 440, options), true);
+        assert.deepEqual(calls[0].slice(1, 5), clip.frames[0].rect);
+        assert.equal(JSON.stringify(combat), before);
+        clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, atlasId: entry.atlas.id,
+          clipId: clip.id, facing: clip.facing, drawnCells: 1, authoredTicks: 1,
+          runtimePosture: 'stand', runtimePhase: 'hold', runtimePhaseTicks: null, status: 'held-native-stance', ready: true });
+        continue;
+      }
       const presentationKind = /^pit\.presentation\.(intro|victory|defeat)$/.exec(clip.id)?.[1];
       if (presentationKind) {
         const before = JSON.stringify(combat);
@@ -141,9 +156,11 @@ export async function auditPitSpriteSheetProduction() {
           velocityY: jumpPhase === "rise" ? 6 : jumpPhase === "fall" ? -6 : 0 });
       }
       else if (clip.id !== "idle") {
-        const match = /^pit\.stand\.(light|medium|heavy)\.(startup|active|recovery)$/.exec(clip.id);
+        const match = /^pit\.stand\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
         assert.ok(match, "Production audit needs a real engine-state fixture for " + clip.id);
-        const [, attack, phase] = match, timing = api.PIT_FIGHTERS[entry.fighterId].attacks[attack];
+        const [, action, phase] = match, attack = action.startsWith('technique.') ? 'technique' : action;
+        if (attack === 'technique') assert.equal(action, 'technique.' + api.PIT_FIGHTERS[entry.fighterId].technique.id);
+        const timing = api.PIT_FIGHTERS[entry.fighterId].attacks[attack];
         const frame = phase === "startup" ? 0 : phase === "active" ? timing.startup : timing.startup + timing.active;
         Object.assign(fighter, { phase, action: { kind: "attack", attack, frame, connected: false } });
       }

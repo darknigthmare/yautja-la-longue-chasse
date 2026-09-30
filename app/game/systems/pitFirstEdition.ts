@@ -6,6 +6,8 @@
  * replay codec and presentation can adopt the roster in separate migrations.
  */
 
+import { PIT_FALCONER_RECON_DRONE } from './pitFalconerDrone';
+
 export const PIT_FIRST_EDITION_CONTENT_VERSION = 1 as const;
 
 export const PIT_FIRST_EDITION_FIGHTER_IDS = [
@@ -531,14 +533,7 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
         "mid",
       ),
     },
-    technique: technique("falconer-drone-intercept", "drone", {
-      contactEffect: "mark",
-      motion: "homing", lifetimeFrames: 72, armFrames: 8, speed: 7,
-      width: 46, height: 34, verticalOffset: 66, damageScale: 0,
-      chipScale: 0, hitstunBonus: 0, blockstunBonus: 0, pushbackScale: 0,
-      knockdown: false, status: "tracked", statusFrames: 150,
-      movementScale: 0.9, cloakLocked: true,
-    }),
+    technique: PIT_FALCONER_RECON_DRONE,
     arcadeIntro: "Falconer cartographie les arènes avant le premier gong et referme chaque échappatoire.",
     arcadeEnding: "Vu d’en haut, le Circuit achevé dessine la marque exacte de sa victoire.",
   }),

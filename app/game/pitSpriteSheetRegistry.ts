@@ -15674,7 +15674,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 511
               ],
               "pivot": [
-                230.0,
+                230,
                 509
               ],
               "durationTicks": 24
@@ -15697,7 +15697,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 724
               ],
               "pivot": [
-                507.0,
+                507,
                 708
               ],
               "durationTicks": 40
@@ -15711,7 +15711,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 724
               ],
               "pivot": [
-                380.0,
+                380,
                 707
               ],
               "durationTicks": 40
@@ -15776,7 +15776,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 525
               ],
               "pivot": [
-                259.0,
+                259,
                 503
               ],
               "durationTicks": 44
@@ -15799,7 +15799,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 516
               ],
               "pivot": [
-                256.0,
+                256,
                 492
               ],
               "durationTicks": 24
@@ -15813,7 +15813,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 499
               ],
               "pivot": [
-                237.0,
+                237,
                 477
               ],
               "durationTicks": 24
@@ -15864,7 +15864,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 724
               ],
               "pivot": [
-                370.0,
+                370,
                 706
               ],
               "durationTicks": 40
@@ -15878,7 +15878,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 724
               ],
               "pivot": [
-                279.0,
+                279,
                 707
               ],
               "durationTicks": 40
@@ -15901,7 +15901,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 516
               ],
               "pivot": [
-                256.0,
+                256,
                 492
               ],
               "durationTicks": 26
@@ -16364,7 +16364,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 515
               ],
               "pivot": [
-                243.0,
+                243,
                 512
               ],
               "durationTicks": 40
@@ -16401,7 +16401,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                263.0,
+                263,
                 508
               ],
               "durationTicks": 40
@@ -16438,7 +16438,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                294.0,
+                294,
                 482
               ],
               "durationTicks": 24
@@ -16466,7 +16466,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                230.0,
+                230,
                 485
               ],
               "durationTicks": 24
@@ -16489,7 +16489,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                294.0,
+                294,
                 482
               ],
               "durationTicks": 40
@@ -16517,7 +16517,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 509
               ],
               "pivot": [
-                216.0,
+                216,
                 500
               ],
               "durationTicks": 40
@@ -16540,7 +16540,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                294.0,
+                294,
                 482
               ],
               "durationTicks": 40
@@ -16554,7 +16554,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                236.0,
+                236,
                 475
               ],
               "durationTicks": 40
@@ -16568,7 +16568,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 499
               ],
               "pivot": [
-                291.0,
+                291,
                 469
               ],
               "durationTicks": 40
@@ -16894,7 +16894,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 514
               ],
               "pivot": [
-                282.0,
+                282,
                 511
               ],
               "durationTicks": 24
@@ -16922,7 +16922,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 518
               ],
               "pivot": [
-                253.0,
+                253,
                 511
               ],
               "durationTicks": 24
@@ -16945,7 +16945,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 518
               ],
               "pivot": [
-                253.0,
+                253,
                 511
               ],
               "durationTicks": 40
@@ -16959,7 +16959,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 514
               ],
               "pivot": [
-                282.0,
+                282,
                 511
               ],
               "durationTicks": 40
@@ -16973,7 +16973,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 514
               ],
               "pivot": [
-                254.0,
+                254,
                 512
               ],
               "durationTicks": 40
@@ -16996,7 +16996,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 518
               ],
               "pivot": [
-                253.0,
+                253,
                 511
               ],
               "durationTicks": 40
@@ -17010,7 +17010,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 512
               ],
               "pivot": [
-                259.0,
+                259,
                 502
               ],
               "durationTicks": 40
@@ -17075,7 +17075,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 506
               ],
               "pivot": [
-                270.0,
+                270,
                 485
               ],
               "durationTicks": 24
@@ -17098,7 +17098,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 506
               ],
               "pivot": [
-                270.0,
+                270,
                 485
               ],
               "durationTicks": 40
@@ -17149,7 +17149,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 506
               ],
               "pivot": [
-                270.0,
+                270,
                 485
               ],
               "durationTicks": 40
@@ -17726,5 +17726,396 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         ]
       }
     ]
+  },
+  {
+    "fighterId": "valkyrie",
+    "bodyHeightPx": 535,
+    "pageBodyHeightPx": {
+      "valkyrie-hammer-right": 535,
+      "valkyrie-hammer-left": 515
+    },
+    "heldPoseClips": [
+      {
+        "id": "idle",
+        "facing": "right"
+      },
+      {
+        "id": "idle",
+        "facing": "left"
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "valkyrie-hammer-v57",
+      "characterId": "valkyrie",
+      "variantId": "default-v31-hammer",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "valkyrie-hammer-right",
+          "src": "/game/sprites/v57/pit/valkyrie/hammer-right.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "valkyrie-hammer-left",
+          "src": "/game/sprites/v57/pit/valkyrie/hammer-left.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                0,
+                0,
+                630,
+                645
+              ],
+              "pivot": [
+                347,
+                637
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                630,
+                0,
+                624,
+                645
+              ],
+              "pivot": [
+                363,
+                637
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                0,
+                645,
+                715,
+                609
+              ],
+              "pivot": [
+                300,
+                576
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                0,
+                645,
+                715,
+                609
+              ],
+              "pivot": [
+                300,
+                576
+              ],
+              "durationTicks": 16
+            },
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                715,
+                645,
+                539,
+                609
+              ],
+              "pivot": [
+                281,
+                580
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-right",
+              "rect": [
+                715,
+                645,
+                539,
+                609
+              ],
+              "pivot": [
+                281,
+                580
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                0,
+                0,
+                650,
+                665
+              ],
+              "pivot": [
+                366,
+                649
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                650,
+                0,
+                604,
+                665
+              ],
+              "pivot": [
+                278,
+                650
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                0,
+                665,
+                700,
+                589
+              ],
+              "pivot": [
+                470,
+                541
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.valkyrie-norse-hammer.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                0,
+                665,
+                700,
+                589
+              ],
+              "pivot": [
+                470,
+                541
+              ],
+              "durationTicks": 16
+            },
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                700,
+                665,
+                554,
+                589
+              ],
+              "pivot": [
+                302,
+                541
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "valkyrie-hammer-left",
+              "rect": [
+                700,
+                665,
+                554,
+                589
+              ],
+              "pivot": [
+                302,
+                541
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "jungle-hunter",
+    "variantId": "jungle-hunter-final-duel-v57",
+    "bodyHeightPx": 1447,
+    "pageBodyHeightPx": {
+      "jungle-final-right": 1447,
+      "jungle-final-left": 1456
+    },
+    "heldPoseClips": [
+      {
+        "id": "idle",
+        "facing": "right"
+      },
+      {
+        "id": "idle",
+        "facing": "left"
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-final-duel-v57-held-poses",
+      "characterId": "jungle-hunter",
+      "variantId": "jungle-hunter-final-duel-v57",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-final-right",
+          "src": "/game/sprites/v57/pit/jungle-hunter/final-duel-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 1
+          }
+        },
+        {
+          "id": "jungle-final-left",
+          "src": "/game/sprites/v57/pit/jungle-hunter/final-duel-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 1
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-final-right",
+              "rect": [
+                0,
+                0,
+                1024,
+                1536
+              ],
+              "pivot": [
+                512,
+                1479
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-final-left",
+              "rect": [
+                0,
+                0,
+                1024,
+                1536
+              ],
+              "pivot": [
+                512,
+                1490
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

@@ -136,6 +136,10 @@ import { PIT_HOUND_VARIANTS, isPitHoundVariantId, type PitHoundVariantId } from 
 import { PIT_TRAINING_BRIEFING_TIMEOUT_MS, preparePitTrainingBriefing, beginPitTrainingBriefing, advancePitTrainingSessionClock, getPitTrainingBriefingReadiness, getPitTrainingBriefingControls, type PitTrainingAssetState } from "./systems/pitTrainingBriefing";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import { getPitUserVariant, normalizePitUserVariant } from "./systems/pitUserRoster";
+import { PIT_JUNGLE_FINAL_DUEL_VARIANT, pitTechniqueUnavailableReason } from './systems/pitEquipmentV57';
+import { PIT_FALCONER_RECON_DRONE } from './systems/pitFalconerDrone';
+import type { PitNarrativeResultInput } from './systems/pitNarrativeTrialsV57';
+import jungleFinalArt from './data/pitJungleFinalArtV57.json';
 import PitSelectionFlow, { type PitSelectionFlowHandle } from "./PitSelectionFlow";
 import { usePitCombatViewport } from "./usePitCombatViewport";
 import styles from "./PitCanvas.module.css";
@@ -241,6 +245,10 @@ interface PendingPitRunTransition {
 }
 
 interface PitCanvasProps {
+  /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
+  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId };
+  onNarrativeComplete?: (result: PitNarrativeResultInput) => void | Promise<void>;
+  onOpenNarrativeTrials?: () => void;
   controlBindings: ControlBindings;
   highContrast: boolean;
   reducedGore: boolean;
@@ -623,7 +631,8 @@ function drawArena(
   canvas.dataset.pitArenaBackScale = getPitArenaLayerTransform(state.arenaId, "P0", camera, reducedMotion).scale.toFixed(4);
   canvas.dataset.pitArenaFloorScale = getPitArenaLayerTransform(state.arenaId, "P4", camera, reducedMotion).scale.toFixed(4);
 
-  const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state) });
+  const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state),
+    lifeResultElapsedMs: presentation.phase === 'round-result' || presentation.phase === 'match-result' ? presentation.elapsedMs : undefined });
   canvas.dataset.pitArenaId = state.arenaId;
   canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== pitStageSceneArena(state) ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
@@ -648,6 +657,12 @@ function drawArena(
   // A frozen KO tick must not pin attacks, status cages or sparks over ceremonies.
   const combatEffectsVisible = presentation.phase === "fight" && state.phase === "round";
   canvas.dataset.pitCombatEffects = String(combatEffectsVisible);
+  // Read-only observations for browser QA; never an input channel into the engine.
+  canvas.dataset.pitPlasmaCount = String(state.techniqueEffects.filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'plasma').length);
+  canvas.dataset.pitTechniqueEntities = JSON.stringify(state.techniqueEffects.map(effect => ({
+    id: effect.id, ownerSlot: effect.ownerSlot, techniqueId: effect.techniqueId,
+    phase: effect.phase, age: effect.age, hitCount: effect.hitCount, x: effect.x, y: effect.y,
+  })));
   const hounds = combatEffectsVisible ? state.techniqueEffects.filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'hound') : [];
   canvas.dataset.pitHoundCount = String(hounds.length);
   canvas.dataset.pitHoundPhases = hounds.map(effect => effect.phase).join(',');
@@ -889,7 +904,11 @@ export function FighterCard({
   const authoredPortrait = isPitExpansionFighterId(fighterId) && !userVariant;
   const keyArt = userVariant ? null : getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
   const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId, variantId);
-  const selectedArt = keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
+  const finalDuelArt = fighterId === 'jungle-hunter' && variantId === PIT_JUNGLE_FINAL_DUEL_VARIANT
+    ? jungleFinalArt.pages.find(page => page.facing === (side === 'DROITE' ? 'left' : 'right')) : null;
+  const selectedArt = finalDuelArt ? { ...finalDuelArt, nativeFacing: finalDuelArt.facing, kind: 'static-bitmap' as const, alt: 'Jungle Hunter · duel final sans canon · pose fixe native' }
+    : keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
+  const unavailableTechnique = pitTechniqueUnavailableReason(fighterId, variantId);
   const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
   const [loadedArtSrc, setLoadedArtSrc] = useState<string | null>(null);
   const visibleArt = selectedArt && failedArtSrc !== selectedArt.src ? selectedArt : null;
@@ -927,9 +946,11 @@ export function FighterCard({
       </div>
       {!authoredPortrait && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? <><span>Image indisponible</span> <button type="button" onClick={() => setFailedArtSrc(null)}>Réessayer le portrait</button></> : "Image à produire"}</small> : null}
       <h3>{fighter.name}</h3>
-      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · image fournie · pose fixe</small>}
+      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : 'image fournie · pose fixe'}</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
-      <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
+      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : fighter.attacks.technique.label}</small>
+      {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
+      {fighterId === 'falconer' && <small className={styles.fighterArtNotice}>Un drone mécanique · reconnaissance sans dégâts · une seconde commande rappelle le même appareil.</small>}
       <dl>
         <div><dt>VIE</dt><dd>{fighter.maxHealth}</dd></div>
         <div><dt>PUISSANCE</dt><dd>{Math.round(fighter.power * 100)}</dd></div>
@@ -939,11 +960,11 @@ export function FighterCard({
         <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du chasseur</summary>
         <p className={styles.fighterSource}>{profile.sourceWork}</p>
         <p>{profile.arcadeIntro}</p>
-        <p>
+        {!unavailableTechnique && <p>
           <strong>{fighter.attacks.technique.label}</strong>
           {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
           {fighter.attacks.technique.startup}{" images"}
-        </p>
+        </p>}
         {visibleArt ? (
           <small>
             {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
@@ -972,6 +993,9 @@ function roundPresentationAnnouncement(presentation: PitRoundPresentationView, c
 }
 
 export default function PitCanvas({
+  narrativeEncounter,
+  onNarrativeComplete,
+  onOpenNarrativeTrials,
   controlBindings,
   highContrast,
   reducedGore,
@@ -997,11 +1021,11 @@ export default function PitCanvas({
   const presentationMotion = resolvePitPresentationMotion({ prefersReducedMotion, screenShake, fixedCamera });
   const reducedCameraMotion = presentationMotion.reducedMotion;
   const [mode, setMode] = useState<PitMode>("cpu");
-  const [leftId, setLeftId] = useState<PitVersusFighterId>("jungle-hunter");
-  const [rightId, setRightId] = useState<PitVersusFighterId>("berserker");
+  const [leftId, setLeftId] = useState<PitVersusFighterId>(narrativeEncounter?.leftId ?? "jungle-hunter");
+  const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? "berserker");
   const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
   const [rightVariantId, setRightVariantId] = useState<string | null>(null);
-  const [arenaId, setArenaId] = useState<PitArenaId>("the-pit");
+  const [arenaId, setArenaId] = useState<PitArenaId>(narrativeEncounter?.arenaId ?? "the-pit");
   const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
   const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
   const [descentRun, setDescentRun] = useState<PitDescentRun | null>(null);
@@ -1208,7 +1232,7 @@ export default function PitCanvas({
   }, []);
 
   const changePitMode = useCallback((nextMode: PitMode) => {
-    if (runTransitionSelectionLocked) return;
+    if (narrativeEncounter || runTransitionSelectionLocked) return;
     if (!canPitFighterEnterMode(leftId, nextMode)) { setReplayNotice("Chronique de ce chasseur non produite : choisissez Duel CPU, Versus local ou Entraînement."); return; }
     setMode(nextMode);
     if (
@@ -1218,7 +1242,7 @@ export default function PitCanvas({
     ) {
       setDescentDraftSeed(createPitDescentSeed());
     }
-  }, [leftId, runTransitionSelectionLocked, savedDescentRuns]);
+  }, [leftId, narrativeEncounter, runTransitionSelectionLocked, savedDescentRuns]);
 
   const resetLiveInputs = useCallback(() => {
     pressedKeysRef.current.clear();
@@ -1871,15 +1895,17 @@ export default function PitCanvas({
   }, [leftId, runTransitionSelectionLocked]);
 
   const swapSides = useCallback(() => {
+    if (narrativeEncounter) return;
     selectionFlowRef.current?.reset(rightId);
     if (!canPitFighterEnterMode(rightId, mode)) setMode("cpu");
     setLeftId(rightId);
     setRightId(leftId);
     setLeftVariantId(rightVariantId);
     setRightVariantId(leftVariantId);
-  }, [leftId, rightId, leftVariantId, rightVariantId, mode]);
+  }, [leftId, rightId, leftVariantId, rightVariantId, mode, narrativeEncounter]);
 
   const returnToSelection = useCallback(() => {
+    if (narrativeEncounter) { onExit(); return; }
     resume();
     recorderRef.current = null;
     replayReaderRef.current = null;
@@ -1910,7 +1936,7 @@ export default function PitCanvas({
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
-  }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs, resume]);
+  }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs, resume, narrativeEncounter, onExit]);
 
   const submitArcadeSettlement = useCallback((settlement: PendingPitArcadeSettlement) => {
     pendingArcadeSettlementRef.current = settlement;
@@ -2158,6 +2184,7 @@ export default function PitCanvas({
   }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs, mode]);
 
   const startRematch = useCallback(() => {
+    if (narrativeEncounter) { onExit(); return; }
     const current = combatRef.current;
     if (!current) return;
     const next = rematchPitCombat(current);
@@ -2176,7 +2203,7 @@ export default function PitCanvas({
     setAnnouncement(next.rules.mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
     setAriaAnnouncement(next.rules.mode === "training" ? "Entraînement libre recommencé." : "Revanche. Manche 1. Combat.");
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs]);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, narrativeEncounter, onExit]);
 
   const setTouchToken = useCallback((slot: 0 | 1, token: string, pressed: boolean) => {
     const entries = touchInputsRef.current[slot];
@@ -2322,7 +2349,9 @@ export default function PitCanvas({
       } else {
         const previous = state.previous;
         if (viewPhase === "selection") {
-          if (selectionOptionsRef.current?.open) {
+          if (narrativeEncounter) {
+            if (current[5] && !previous[5]) onExit();
+          } else if (selectionOptionsRef.current?.open) {
             if ((current[5] && !previous[5]) || (current[12] && !previous[12])) closeSelectionOptions();
             else {
               const items = Array.from(selectionOptionsRef.current.querySelectorAll<HTMLElement>("button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], summary"))
@@ -2369,7 +2398,7 @@ export default function PitCanvas({
             else startRematch();
           }
           if (current[5] && !previous[5]) onExit();
-          if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
+          if (!narrativeEncounter && current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
         }
       }
       state.previous = current;
@@ -2377,7 +2406,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
+  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase, narrativeEncounter]);
 
   const wantsHoundArt = (renderedLeftId === 'tracker' || renderedRightId === 'tracker') && (!playbackReplay || playbackReplay.engineVersion >= 7);
   const renderedHoundVariantId = combat ? combat.houndVariantId ?? 'tracker-hound' : houndVariantId;
@@ -2671,6 +2700,24 @@ export default function PitCanvas({
         : "Parcours de scène terminé. Replay indisponible ; aucun classement, distinction ou gain de progression.");
       return;
     }
+    if (narrativeEncounter) {
+      // These imposed CPU extracts report only to their in-memory narrative
+      // wrapper. Extension fighters must resolve their story outcome without
+      // opening the historical statistics or Arcade persistence gate below.
+      if (mode !== "cpu") { setReplayNotice("Une épreuve narrative doit rester un duel CPU imposé."); return; }
+      const narrativeResult: PitNarrativeResultInput = {
+        resultId: matchResultIdRef.current,
+        mode,
+        winnerId: combat.matchWinnerId,
+        leftId: playerId,
+        rightId: combat.fighters[1].definitionId,
+        arenaId: combat.arenaId,
+      };
+      if (onNarrativeComplete) void Promise.resolve(onNarrativeComplete(narrativeResult)).catch(() => {
+        setReplayNotice("L’issue de cette épreuve n’a pas pu être transmise au récit. Aucun succès n’est attribué.");
+      });
+      return;
+    }
     if (!isPitFirstEditionFighterId(playerId)) {
       setReplayNotice("Duel de l’extension terminé. Replay consultable et exportable ; statistiques et chroniques de progression non enregistrées pour ce lot.");
       return;
@@ -2836,7 +2883,7 @@ export default function PitCanvas({
         setReplayNotice("Le résultat THE PIT n’a pas pu être enregistré.");
       });
     }
-  }, [setAnnouncement, combat, mode, onMatchComplete, playbackReplay, submitArcadeSettlement, submitCircuitSettlement, submitRunTransition]);
+  }, [setAnnouncement, combat, mode, narrativeEncounter, onNarrativeComplete, onMatchComplete, playbackReplay, submitArcadeSettlement, submitCircuitSettlement, submitRunTransition]);
 
   const shortcuts = useMemo(() => ({
     p1: {
@@ -2869,6 +2916,19 @@ export default function PitCanvas({
     },
     pause: firstBinding(controlBindings, "pit.pause"),
   }), [controlBindings]);
+
+  // The narrative wrapper has already reviewed and confirmed these exact fighters
+  // and this venue. Wait for real scene assets, then use the normal intro/round flow.
+  useEffect(() => {
+    if (narrativeEncounter && !combat && !combatRef.current && journeyAssetsReady) startMatch();
+  }, [narrativeEncounter, combat, journeyAssetsReady, startMatch]);
+
+  if (!combat && narrativeEncounter) return <section ref={rootRef} className={["screen", styles.root, styles.selectionRoot].join(" ")} data-pit-narrative-loading={narrativeEncounter.id} tabIndex={-1}
+    onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); onExit(); } }}>
+    <header className={styles.selectionHeader}><div><span className={styles.eyebrow}>ÉPREUVE NARRATIVE · EXTRAIT</span><h2>THE PIT</h2></div><button type="button" onClick={onExit}>{exitLabel}</button></header>
+    <p className={styles.selectionNotice} role="status">{PIT_FIGHTERS[leftId].name} contre {PIT_FIGHTERS[rightId].name} · {PIT_ARENAS[arenaId].name}. {sceneAssetsFailed ? 'Un décor manque : départ bloqué.' : 'Préparation du décor et des combattants…'}</p>
+    {sceneAssetsFailed ? <button type="button" className={styles.startButton} onClick={retrySceneArt}>Réessayer le décor</button> : null}
+  </section>;
 
   if (!combat) {
     const progressionId = isPitFirstEditionFighterId(leftId) ? leftId : null;
@@ -2927,6 +2987,7 @@ export default function PitCanvas({
           <div><span className={styles.eyebrow}>RITUELS DE COMBAT</span><h2 id="pit-title">THE PIT</h2></div>
           <p className={styles.selectionPopulation}>{PIT_VERSUS_FIGHTER_IDS.length} chasseurs <span>· {PIT_ARENA_IDS.length} arènes</span></p>
           <div className={styles.selectionHeaderActions}>
+            {onOpenNarrativeTrials ? <button type="button" className={styles.utilityButton} data-pit-narrative-open onClick={onOpenNarrativeTrials}>Épreuves narratives</button> : null}
             <button ref={selectionOptionsTriggerRef} type="button" className={styles.utilityButton} data-pit-options-open aria-haspopup="dialog" aria-expanded={selectionOptionsOpen} onClick={openSelectionOptions}>Options & parcours</button>
             <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
           </div>
@@ -3429,6 +3490,8 @@ export default function PitCanvas({
             <span>{left.traque}</span>
           </div>
           <div className={styles.fighterStatuses} aria-label={`États de ${leftDefinition.name}`}>
+            {pitTechniqueUnavailableReason(left.definitionId, left.variantId) && <span data-pit-plasma-unavailable="left">CANON RETIRÉ · TECHNIQUE INACTIVE</span>}
+            {left.definitionId === 'falconer' && <span data-pit-drone-phase="left">{combat.techniqueEffects.find(effect => effect.ownerSlot === 0 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id)?.phase === 'returning' ? 'DRONE · RETOUR' : combat.techniqueEffects.some(effect => effect.ownerSlot === 0 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id) ? 'DRONE · RAPPEL DISPONIBLE' : 'DRONE · PRÊT'}</span>}
             {left.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(left.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
             {left.cloakPhase !== "inactive" ? <span>CAMO · {left.cloakPhase.toUpperCase()}</span> : left.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(left.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
             {left.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
@@ -3446,6 +3509,8 @@ export default function PitCanvas({
             <span>{right.traque}</span>
           </div>
           <div className={styles.fighterStatuses} aria-label={`États de ${rightDefinition.name}`}>
+            {pitTechniqueUnavailableReason(right.definitionId, right.variantId) && <span data-pit-plasma-unavailable="right">CANON RETIRÉ · TECHNIQUE INACTIVE</span>}
+            {right.definitionId === 'falconer' && <span data-pit-drone-phase="right">{combat.techniqueEffects.find(effect => effect.ownerSlot === 1 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id)?.phase === 'returning' ? 'DRONE · RETOUR' : combat.techniqueEffects.some(effect => effect.ownerSlot === 1 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id) ? 'DRONE · RAPPEL DISPONIBLE' : 'DRONE · PRÊT'}</span>}
             {right.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(right.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
             {right.cloakPhase !== "inactive" ? <span>CAMO · {right.cloakPhase.toUpperCase()}</span> : right.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(right.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
             {right.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
@@ -3641,7 +3706,7 @@ export default function PitCanvas({
                             : terminalDescentRun?.phase === "failed"
                               ? "La santé de run est épuisée. Recommencez explicitement pour générer une nouvelle route."
                               : "Étage enregistré avec " + (terminalDescentRun?.health ?? 0) + "/" + PIT_DESCENT_MAX_HEALTH + " santé. Choisissez ensuite la prochaine branche."
-                      : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}
+                      : narrativeEncounter ? "A ou B pour lire l’issue de cette rencontre. Aucun résultat de campagne ou d’Arcade n’est attribué." : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}
             </p>
             <div className={styles.overlayActions}>
               {playbackReplay && availableReplay ? (
@@ -3724,9 +3789,9 @@ export default function PitCanvas({
                         : "Recommencer la Descente"}
                 </button>
               ) : (
-                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
+                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>{narrativeEncounter ? 'Lire l’issue de l’épreuve' : 'Revanche'}</button>
               )}
-              {!playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
+              {!narrativeEncounter && !playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
                 <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id)) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
               ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
@@ -3926,7 +3991,7 @@ export default function PitCanvas({
             {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
           </button>
         ) : null}
-        <button type="button" className={styles.utilityButton} onClick={returnToSelection}>Retour à la sélection</button>
+        <button type="button" className={styles.utilityButton} onClick={returnToSelection}>{narrativeEncounter ? 'Quitter l’épreuve' : 'Retour à la sélection'}</button>
       </header>
 
       {combat.stageJourney && <p className={styles.journeyStatus} data-pit-journey-sector={combat.stageJourney.sector}>{combat.stageJourney.sector === "sas" ? `${activeJourneyDefinition?.entryLabel ?? "SECTEUR 1"} · Réussis une projection près de la limite gauche ou droite pour rejoindre ${activeJourneyDefinition?.destinationLabel ?? "le second secteur"} avec ton adversaire.` : `${activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"} · Les deux combattants ont traversé. Prochaine manche : retour au secteur de départ.`} Parcours d’exposition, sans statistiques de progression.</p>}

@@ -20,6 +20,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.doesNotMatch(source, /import ShipHub from "\.\/ShipHub"/);
   for (const componentName of [
     "PitCanvas",
+    "PitNarrativeTrials",
     "GalaxyMapPanel",
     "PhysicalShipDeck",
     "TrophyWorkshop",
@@ -51,9 +52,10 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.equal(source.match(/<ShipHub/g)?.length, 2);
   assert.equal(source.match(/<HuntCanvas/g)?.length, 1);
   assert.equal(source.match(/<PitCanvas/g)?.length, 1);
+  assert.equal(source.match(/<PitNarrativeTrials/g)?.length, 1);
   assert.equal(
     source.match(/<Suspense fallback=\{<DeferredGameScreen \/>\}>/g)?.length,
-    16,
+    17,
   );
   assert.match(
     source,

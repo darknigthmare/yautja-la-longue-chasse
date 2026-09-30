@@ -89,7 +89,7 @@ test('the same public inputs reproduce the route, checksum and scene; old V5 sta
   assert.equal(p.playPitReplay(restored).stageJourney,undefined);
   const reader=p.createPitReplayReader(restored),inputs=[];while(!reader.done)inputs.push(reader.next().value.inputs);
   const replay=p.recordPitReplay(inputs,{fighters:legacy.fighters,arenaId:p.PIT_RESERVE_GATE,rules:{mode:'training',stageJourney:p.PIT_RESERVE_JOURNEY}});
-  assert.equal(replay.engineVersion,7);assert.equal(replay.version,3,'input encoding has not changed');
+  assert.equal(replay.engineVersion,8);assert.equal(replay.version,3,'input encoding has not changed');
   const final=p.playPitReplay(replay);assert.equal(final.stageJourney.sector,'court');
   let direct=p.createPitCombatState(...replay.fighters,{...replay.rules,arenaId:replay.arenaId});
   for(const input of inputs)direct=p.stepPitCombat(direct,input);

@@ -1,7 +1,7 @@
 import { getPitArenaAmbientOffset } from "./pitArenaAmbience";
 import { getPitArenaLifePaths, isPitArenaLifeSheetSize } from "./pitArenaLife";
 import { drawPitArenaLife, type PitArenaLifeReport } from "./pitArenaLifeRendering";
-import { PIT_ARENAS, PIT_FIGHTERS, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
+import { PIT_ARENAS, PIT_FIGHTERS, PIT_ROUND_FRAMES, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
 
@@ -33,7 +33,13 @@ export interface PitArenaArtBank {
   readonly unavailable?: boolean;
   readonly productionKit?: PitArenaProductionKit;
 }
-export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean; readonly sceneArenaId?: PitArenaId }
+export interface PitArenaRenderOptions {
+  readonly reducedMotion?: boolean;
+  readonly highContrast?: boolean;
+  readonly sceneArenaId?: PitArenaId;
+  /** Only the terminal result needs presentation time: the finished simulation no longer ticks. */
+  readonly lifeResultElapsedMs?: number;
+}
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
 export interface PitArenaDrawReport { readonly drawnPlanes: readonly PitArenaPlaneId[]; readonly missingPaths: readonly string[]; readonly life?: PitArenaLifeReport }
 
@@ -378,6 +384,13 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
         arenaId: bank.productionKit!.catalogueId, frame: state.frame, groundY: arena.groundY, images: bank.images,
         transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
         reducedMotion: options.reducedMotion, highContrast: options.highContrast,
+        eventContext: {
+          round: state.round, phase: state.phase,
+          roundFrame: state.rules.mode === "training" ? state.frame : PIT_ROUND_FRAMES - state.roundFramesRemaining,
+          resultElapsedFrames: state.phase === "match-over" && options.lifeResultElapsedMs !== undefined
+            ? options.lifeResultElapsedMs * .06
+            : state.lastRoundResult?.round === state.round ? state.frame - state.lastRoundResult.frame : undefined,
+        },
       });
     }
     context.globalAlpha = options.highContrast ? .9 : .36;

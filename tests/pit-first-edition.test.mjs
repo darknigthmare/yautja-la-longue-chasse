@@ -354,7 +354,10 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.scar.technique.guardBreak, true);
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["feral-hunter"].technique.motion, "stationary");
   const falconer = edition.PIT_FIRST_EDITION_FIGHTERS.falconer;
-  assert.equal(falconer.technique.motion, "homing");
+  assert.equal(falconer.technique.motion, "returning");
+  assert.equal(falconer.technique.id, "falconer-reconnaissance-v57");
+  assert.equal(falconer.technique.returnFrame, 72);
+  assert.equal(falconer.technique.maxHits, 1);
   assert.equal(falconer.technique.contactEffect, "mark");
   assert.equal(falconer.technique.damageScale, 0);
   assert.equal(falconer.technique.chipScale, 0);
