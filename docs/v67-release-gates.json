@@ -1,0 +1,200 @@
+{
+  "release": "V67",
+  "status": "LOCAL_VERIFIED_PUBLICATION_PENDING",
+  "checkedAt": "2026-10-01T04:52:05.164Z",
+  "scope": {
+    "soloChaptersAdded": 1,
+    "soloChapter": "La Piste sans guide",
+    "soloOrderedReceipts": 9,
+    "characterPromotionsAdded": 0,
+    "playableLongPassagesAdded": 2,
+    "passageNodesPerDirection": 10,
+    "bridgeModulesPerPassage": 6,
+    "glyphToFrenchEffect": true,
+    "newCanonicalAlphabet": false
+  },
+  "art": {
+    "newNativePngs": 3,
+    "newSoloSprites": 0,
+    "sourcePixelsUnchanged": true,
+    "originalLocationsNotCertifiedCanonOneToOne": true,
+    "historicalAssetsDeleted": 0,
+    "audit": {
+      "path": "docs/v67-homeworld-art-native-qa.json",
+      "sha256": "edc82315d5f352af51aad83888b96fd2140feeb044915040366edf60107807f9"
+    }
+  },
+  "runtimeFiles": {
+    "app/game/FirstHuntSoloV67.module.css": "bcb22ecad2287f97b1c9f8474469a95b82175e87431a43fd0f0f311aa9a523cc",
+    "app/game/FirstHuntSoloV67.tsx": "48351ebe53b0c2e5a6305d48a0aee2c864ffe28ffdf26b1857cff6ee749195f4",
+    "app/game/GameClient.tsx": "e663407f5b7f28a51665281baf7983fff5faa966119466ee2fe705cc2a03acd6",
+    "app/game/GlassDesertExpedition.tsx": "0ec1e1232728868eb406ab8df1622533410ce960ebbd915928a0233e2f1bf098",
+    "app/game/HomeworldExpedition.tsx": "11d1e76b95c8a94250a62ae9394da44473657cce860b6ef8961576efe2840df9",
+    "app/game/HomeworldHub.tsx": "7ee5a43e18bff97b0b1c362d2734687c84f8eeff9d36376b2796ca47ca33da7f",
+    "app/game/HomeworldNpcMissionsV66.tsx": "2dd20e67280bac032413898f7e6b6752b45d977048c1f49dee8db53beafae291",
+    "app/game/HomeworldPassageV67.module.css": "ea7d814543d45d6386e4a25efb5f3f6cf2e9a2707d53b04bca5cdbd33638a514",
+    "app/game/HomeworldPassageV67.tsx": "d9cccc67f587c64ff22b5a11c865ac9a47a3a8c564386d990a765cbfd62656d1",
+    "app/game/HomeworldSideStoryV66.tsx": "a01ab4345525c1cbbf9898ac7f3cb4b711bc51d1e38ff0f1a7d72acac652e74b",
+    "app/game/YautjaTranslationV67.module.css": "200bf3b27ab52038f31fb33501eb2fef7e9d91d94cd047943412a5a005dd5325",
+    "app/game/YautjaTranslationV67.tsx": "134907f004b2123350edb60974eabbd2733442a278eb7e4fc5d1f43132f2af74",
+    "app/game/YouthTrainingScreen.tsx": "d133aa78e760f131a7ffd3940cc4e2af399a4e1df9ed42f2871687e393f2c156",
+    "app/game/buildInfo.ts": "336705d2196712da441829d394c1aeb13cbc098c73efab31103afebdc5b61db9",
+    "app/game/firstHuntSoloV67Rendering.ts": "38bdc112a1ed2f03c832e615bab736cdbaccea6f53f48a75c4efdca31c4c4c06",
+    "app/game/save.ts": "80c48758e48107ae9d41f9da06fc549e9bc37f9cbf398af76fcc56a4102a7f76",
+    "app/game/systems/campaignSlots.ts": "919d717910e5329838d1dcc0c53af039580770464e9a8dda997c32a85028812b",
+    "app/game/systems/campaignSoloV67.ts": "19ff79371d62e12e415c61e223bf96cf9a58335920340674eeefb8a3f52a4b86",
+    "app/game/systems/firstHuntSoloV67.ts": "89d6ff7bc20da877be489a970b7a719b26507165a929ffe00b7657bc0251655e",
+    "app/game/systems/homeworldArrivalV67.ts": "1b5c36c63b1c9df395edc156be5adeb24a6368c0a64ae7bd68a6a5b5d01597de",
+    "app/game/systems/homeworldPassageV67.ts": "bedd50b9b65d5cc350c74141f8a781ede9c1022c6c460d0fe47b9f935041ea18",
+    "app/game/systems/yautjaTranslationV67.ts": "d6137613c6a55e710329f930279bb8013ab4e5982947ab3c829ec85480eccc5f",
+    "app/game/systems/youthCampaign.ts": "3dd36e98c7407dcf1483d29076f9ec6dd8286d99f068dfd10bcecde1b1543ed4",
+    "app/game/types.ts": "d3dff390d6c07493e2b2f33e0fe6a38152e2bb04cd914a8b50893f3722e72d19",
+    "public/game/homeworld/v67/ash-causeway-vista.png": "8178a67f6f2b4b26bb08f5e330db99e5b5f75b3c6e893c4b991eab81a7af5c78",
+    "public/game/homeworld/v67/glass-processional-vista.png": "95a9f2a9e8b7f9ec0897ef60cbe7fea720a914e935ab4a34ebe6c5d1f0fda787",
+    "public/game/homeworld/v67/processional-bridge.png": "d455aa0b4766460fbebf3b38d5e22c900c770977b3102fe617c9615853195ef9"
+  },
+  "formattingOnlyAfterBuild": [
+    {
+      "file": "app/game/FirstHuntSoloV67.tsx",
+      "beforeSha256": "404799bf1ef923b508adbff18e5d079b2e2732b7c83a4335060dd58695fe0098",
+      "afterSha256": "48351ebe53b0c2e5a6305d48a0aee2c864ffe28ffdf26b1857cff6ee749195f4",
+      "onlyTrailingEmptyLineRemoved": true
+    },
+    {
+      "file": "scripts/verify-first-hunt-solo-v67.mjs",
+      "beforeSha256": "d51c6ce67795f524e30a46ef6e7641fe6c0425c6c58e9a0bffdf1d295b5f459d",
+      "afterSha256": "6032912ce37b35341620e5e1185c3614bd5247206909dff74a67fbe0772715ea",
+      "onlyTrailingEmptyLineRemoved": true
+    },
+    {
+      "file": "tests/solo-save-v67.test.mjs",
+      "beforeSha256": "c91b139fd99d6646c0082fb73400afaecae0d201383750e67a4af146e0d57320",
+      "afterSha256": "c967496bdaba7aa4e54f501cb6ddbdcec2327ffd41bd6a6462308b52cb909c77",
+      "onlyTrailingEmptyLineRemoved": true
+    }
+  ],
+  "tests": {
+    "status": "PASS",
+    "tests": 2131,
+    "pass": 2131,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "log": {
+      "path": "work-local/v67/full-tests-final-ui.log",
+      "sha256": "3acfb8e4f3768e6db6a4429ace7f4bfe5a6c27918263e24b1f6b0f8a300a6209"
+    },
+    "finalAffectedRerun": {
+      "path": "work-local/v67/targeted-public-candidate.log",
+      "sha256": "bf221e01199cf93fb28add20fc0d36a3ae194fa563536d3cba2dc46a031cb8b2"
+    },
+    "validationBoundary": "The complete suite includes the final mobile caption test. The last codex scrolling and SVG mask adjustments were qualified separately by the affected tests and final compiled passage browser recipe.",
+    "priorFailure": {
+      "tests": 2130,
+      "pass": 2129,
+      "fail": 1,
+      "cause": "Transient Windows EPERM while renaming a private test fixture; the unchanged security test passed in isolation and on the next full run.",
+      "log": {
+        "path": "work-local/v67/full-tests-final.log",
+        "sha256": "f5d09a877b6867b1550d735137c8a34e0cfa8991c2cd5ef774e2b32059cc5a50"
+      },
+      "isolatedRerun": {
+        "path": "work-local/v67/capture-retest.log",
+        "sha256": "34e9de25412065f182c24b0390b1aef79278edcb9755e415d7bd1a5afc7e1b6d"
+      }
+    }
+  },
+  "builds": {
+    "vinext": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v67/vinext-build-public-candidate.log",
+        "sha256": "93a19016ba58b340479d3cbd756ffecc0c9ff0e31ccdbe50472b0c6ccd8c6b6f"
+      }
+    },
+    "nextWebpack": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v67/next-build-public-candidate.log",
+        "sha256": "c6f1bab07d5cc0c78c88bdc783b5b34fcd60e47f6d55c9dff2cf5b2bc9f83340"
+      }
+    },
+    "typescript": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v67/typecheck-release.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "compiledHudCss": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v67/css-release.log",
+        "sha256": "ca0ba53711cc12410fe147b7d5fb0bfadd5b6d82718653c8f0e94aa8b2644942"
+      }
+    },
+    "toolingNote": "Next and vinext were rebuilt sequentially because both generate .next/types/routes.d.ts; a concurrent attempt is preserved in work-local/v67/next-build-release.log."
+  },
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "warnings": 3,
+    "note": "Three pre-existing no-img-element warnings.",
+    "log": {
+      "path": "work-local/v67/lint-release.log",
+      "sha256": "a5af87d20465c745fb938b6c81a357ddb7148c6034bfcbf43902fb39feda8aa9"
+    }
+  },
+  "localBrowser": {
+    "url": "http://127.0.0.1:4186",
+    "reports": [
+      {
+        "path": "docs/v67-solo-local-browser-qa.json",
+        "sha256": "c402c1208937f320e004b06ada6bd87fbc35d7620a1a37a69ef89597cfb7c9aa"
+      },
+      {
+        "path": "docs/v67-homeworld-passages-local-qa.json",
+        "sha256": "ff3088e3efffe9c8cd7b467df3abd88a2ca32160a4eb7d9294356df070484a7b"
+      },
+      {
+        "path": "docs/v67-homeworld-departure-local-qa.json",
+        "sha256": "12ab17b28caacdb81c7d97fe3a4249f028ca75b8f89dd2e72ef40cbac5fc3e63"
+      },
+      {
+        "path": "docs/v67-translation-application-qa.json",
+        "sha256": "cfbee9f48538033effe593ac8438ee93aa635cf72074dc32407f691335f2d789"
+      },
+      {
+        "path": "docs/v67-campaign-menu-local-qa.json",
+        "sha256": "9862d5304ad909cdd088e96b41cc03bf9b683d55f76daae1b5bc26f89cf379c3"
+      }
+    ],
+    "scope": "Full nine-receipt Solo path, actual glyph interactions, both passage round trips with saves/reload/refusal and campaign menus. Regional investigation play-throughs are not claimed by passage QA."
+  },
+  "fixedDuringQA": [
+    "Passage held controls no longer reset on each periodic save.",
+    "Native passage portrait remains visible despite inherited global image max-width.",
+    "Road bends have basalt substructure; native bridge deck bounds govern collisions.",
+    "Passage return places the actor at a walkable threshold outside the city beacon collider.",
+    "A refused return write after a saved expedition report releases the busy state and permits retry.",
+    "Settings render above the passage and suspend its controls.",
+    "Passage panels contain keyboard focus, make the scene inert, and Escape closes the codex while preserving pause.",
+    "Keyboard focus scrolls the codex panel to keep each mobile button visible.",
+    "Explicit SVG mask bounds preserve the entire 300-unit road stroke at bends so it meets the projected facade.",
+    "Solo floating charge and recovery captions remain within narrow and wide camera bounds."
+  ],
+  "publication": {
+    "status": "PENDING",
+    "url": "https://yautja-la-longue-chasse.vercel.app"
+  },
+  "limitations": [
+    "Main campaign is not finished; Young Blood recognition and Blooded rites remain separate undelivered chapters.",
+    "Two long routes connect the two existing investigations; the eight other planet regions are not delivered.",
+    "Landscapes and glyph designs are original adaptations, not a certified canonical map or alphabet.",
+    "Solo reuses existing native art; passage characters use existing portraits or modular bodies, not new complete animation sheets.",
+    "The basalt road facades reuse an existing pavement texture and are not new generated facade images.",
+    "Browser mobile emulation is not physical-device certification.",
+    "Other historical work remains, including 149 stages without three dedicated native background animations."
+  ]
+}

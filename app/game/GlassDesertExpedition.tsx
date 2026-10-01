@@ -14,7 +14,7 @@ export interface GlassDesertExpeditionProps {
   suspended?: boolean;
   onComplete(proof: GlassDesertProof): Promise<{persisted:boolean;message?:string}> | {persisted:boolean;message?:string};
   /** Called only on explicit abandonment or after a durable completion acknowledgment. */
-  onExit():void;
+  onExit():boolean | void;
 }
 const Scenery=memo(function Scenery({bridge}:{bridge:boolean}){
   return <><div className={styles.backdrop}/>
@@ -61,7 +61,10 @@ export default function GlassDesertExpedition({save,suspended=false,onComplete,o
     try{
       const result=await onComplete(proof);
       if(!mounted.current)return;
-      if(result.persisted){onExit();return;}
+      if(result.persisted){
+        if(onExit() === false) setDelivery({status:"failed",message:"Le rapport est sauvegardé, mais le départ du retour n’est pas confirmé. Réessaie ici : le rapport ne sera pas dupliqué."});
+        return;
+      }
       setDelivery({status:"failed",message:result.message??"Sauvegarde non confirmée. Le rapport reste disponible ici ; réessayez."});
     }catch{if(mounted.current)setDelivery({status:"failed",message:"Écriture interrompue. Aucun succès annoncé ; réessayez sans quitter cette sortie."});}
     finally{deliveryBusy.current=false;}

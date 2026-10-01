@@ -36,7 +36,12 @@ try{
    const original=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(window.__v66RefuseSave&&k===key)throw new DOMException('Isolated QA refusal','QuotaExceededError');return original.call(this,k,v);};
   },fixture);
   await enterCampaignDeck(page,{url});assert.equal(await page.locator('main[data-game-content-version]').getAttribute('data-game-content-version'),'V66');await page.getByRole('button',{name:'Yautja Prime · monde natal',exact:true}).click();
-  await page.locator('[data-homeworld-actor]').waitFor({state:'attached'});await page.clock.install();await page.clock.pauseAt(new Date(Date.now()+1000));
+  await page.locator('[data-homeworld-actor]').waitFor({state:'attached'});
+  // Public assets can finish after the actor anchor mounts. Do not freeze the
+  // clock until the image decode handlers and the live frame loop have settled.
+  await page.locator('[data-homeworld-hub] img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  await page.clock.install();await page.clock.pauseAt(new Date(Date.now()+1000));
   const nav=homeworldNavigatorV66(page,api);await nav.focus();const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),fixture.key);
   const panel=()=>page.locator('[data-npc-missions-v66]');
   const capture=async(suffix)=>{const target=path.join(output,scenario.id+'-'+suffix+'.jpg');await page.screenshot({path:target,type:'jpeg',quality:86});captures.push(target);};

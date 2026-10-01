@@ -4,6 +4,8 @@ import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
+import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
+import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
 import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
 import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
@@ -288,6 +290,8 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     prologue: null,
     youthTraining: null,
     soloV66: null,
+    soloV67: null,
+    homeworldPassageV67: null,
     gameReserveV66: null,
     createdAt: now,
     updatedAt: now,
@@ -1253,6 +1257,8 @@ export function normalizeSave(value: unknown): SaveGame {
     prologue: normalizeNurseryCampaign(source.prologue),
     youthTraining: normalizeYouthCampaign(source.youthTraining),
     soloV66: normalizeSoloV66Campaign(source.soloV66),
+    soloV67: normalizeSoloV67Campaign(source.soloV67),
+    homeworldPassageV67: normalizeHomeworldPassageV67(source.homeworldPassageV67),
     gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
   };
 }
@@ -1413,7 +1419,18 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       (isRecord(value.soloV66.checkpoint) && Number(value.soloV66.checkpoint.version) > 1))) {
     return { save: null, failure: "future-version" };
   }
-  if (!youthCampaignMatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.soloV67) && (Number(value.soloV67.version) > 1 ||
+      (isRecord(value.soloV67.checkpoint) && Number(value.soloV67.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.homeworldPassageV67) && Number(value.homeworldPassageV67.version) > 1) return { save: null, failure: "future-version" };
+  if (value.homeworldPassageV67 !== undefined && value.homeworldPassageV67 !== null) {
+    const passage = normalizeHomeworldPassageV67(value.homeworldPassageV67);
+    if (!passage || !isRecord(value.homeworld) || !canEnterHomeworldPassageV67({
+      prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
+    }, passage.regionId).allowed) return { save: null, failure: "invalid-save" };
+  }
   if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 1) return { save: null, failure: "future-version" };
   if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
   if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (

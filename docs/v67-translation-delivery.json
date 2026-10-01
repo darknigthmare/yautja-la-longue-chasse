@@ -1,0 +1,93 @@
+{
+  "release": "V67",
+  "status": "LOCAL_COMPILED_GAME_QA_PASS_PUBLIC_V67_PENDING",
+  "loreStatus": "Original decorative strokes, not a canonical Yautja alphabet or translation table",
+  "newBitmapAssets": 0,
+  "newVoices": 0,
+  "componentContract": {
+    "props": [
+      "text",
+      "paused",
+      "reducedMotion",
+      "className",
+      "showSkip"
+    ],
+    "maxActiveMilliseconds": 1600,
+    "maxAnimatedSymbols": 360,
+    "screenReaderText": "complete French immediately",
+    "focus": "never automatically moved",
+    "gameplayGate": false
+  },
+  "validation": {
+    "targetedTests": 48,
+    "newTests": 4,
+    "regressions": 44,
+    "lint": "PASS",
+    "isolatedChromeGroups": 8,
+    "capturesReviewed": 4,
+    "fullGameIntegrationBrowser": {
+      "status": "PASS",
+      "groups": 4,
+      "capturesReviewed": 6,
+      "url": "http://127.0.0.1:4186",
+      "scope": "Actual compiled V67 app. Adult baseline fixture and model-played youth checkpoint imported only before gameplay. Physical city walking/doors and actual live-engine transition from the last ambush checkpoint to assessment; not full youth campaign replay."
+    },
+    "publicV67": false
+  },
+  "proofs": [
+    {
+      "path": "docs/v67-translation-targeted-tests.json",
+      "sha256": "43b21b854e4ffc0975e65e2c33ad4d0de2619400ff24f04d1790cf83e39a413c"
+    },
+    {
+      "path": "docs/v67-translation-component-qa.json",
+      "sha256": "a3ef2c8c2dc9857c3fd6a869b07f1ae68526625fdcf03b09b168b2229cb5be7b"
+    },
+    {
+      "path": "docs/v67-translation-application-qa.json",
+      "sha256": "cfbee9f48538033effe593ac8438ee93aa635cf72074dc32407f691335f2d789"
+    }
+  ],
+  "files": [
+    {
+      "path": "app/game/YautjaTranslationV67.tsx",
+      "sha256": "134907f004b2123350edb60974eabbd2733442a278eb7e4fc5d1f43132f2af74"
+    },
+    {
+      "path": "app/game/YautjaTranslationV67.module.css",
+      "sha256": "200bf3b27ab52038f31fb33501eb2fef7e9d91d94cd047943412a5a005dd5325"
+    },
+    {
+      "path": "app/game/systems/yautjaTranslationV67.ts",
+      "sha256": "d6137613c6a55e710329f930279bb8013ab4e5982947ab3c829ec85480eccc5f"
+    },
+    {
+      "path": "app/game/HomeworldSideStoryV66.tsx",
+      "sha256": "a01ab4345525c1cbbf9898ac7f3cb4b711bc51d1e38ff0f1a7d72acac652e74b"
+    },
+    {
+      "path": "app/game/HomeworldNpcMissionsV66.tsx",
+      "sha256": "2dd20e67280bac032413898f7e6b6752b45d977048c1f49dee8db53beafae291"
+    },
+    {
+      "path": "app/game/YouthTrainingScreen.tsx",
+      "sha256": "d133aa78e760f131a7ffd3940cc4e2af399a4e1df9ed42f2871687e393f2c156"
+    },
+    {
+      "path": "tests/yautja-translation-v67.test.mjs",
+      "sha256": "226bc2b955cb4cee7c35a58fa26dbbad9ad5ce920ea45074ad9827322275c746"
+    },
+    {
+      "path": "tests/homeworld-npc-missions-v66.test.mjs",
+      "sha256": "fde58cc728d79e2c286696f002192d2b734004716b39b0e20809ebef9e431ff8"
+    },
+    {
+      "path": "scripts/verify-yautja-translation-v67.mjs",
+      "sha256": "ed3df1ec938c4550939937ef5dce5761e58591294f5d48aa441400ec3390edcb"
+    },
+    {
+      "path": "scripts/verify-yautja-translation-application-v67.mjs",
+      "sha256": "180facbc945d7be0174ed8b6538327f346c362fd09858ca6d71cc2aec91529a6"
+    }
+  ]
+}

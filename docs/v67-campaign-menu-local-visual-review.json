@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T04:30:02.6153379Z",
+  "url": "http://127.0.0.1:4186",
+  "phase": "v67-local",
+  "functionalCases": 12,
+  "rawReport": "docs/v67-campaign-menu-local-qa.json",
+  "rawReportSha256": "9862d5304ad909cdd088e96b41cc03bf9b683d55f76daae1b5bc26f89cf379c3",
+  "personallyInspected": [
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/empty.png",
+      "sha256": "787d29c67e9c922be53c06bbf0108af535f9d361b48a11ab87c082a879f2c10a"
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/replacement-mobile.png",
+      "sha256": "c398d975c30beb5e1615c6a992333420bf0800e4587ee701e6bab6c215bb32bc"
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/new-recovery-confirmation.png",
+      "sha256": "f2e57e3319bb77a46db6f90cdf3863353d505dafac9918765ea69efb55633ca7"
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/manual-checkpoint-confirmation.png",
+      "sha256": "8ff4d36fef66c7643a6024a6d28ae33e1dc6c442395936d269e839fe09ad31fe"
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/future.png",
+      "sha256": "e15676057a7197f39a8268ec3389dec3a95be75bcf76e1dbb0030402a3197b4f"
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/menu-local/hungLock.png",
+      "sha256": "aeb2a377931bede435a4be1986b7d6a1f0d694ffcc3735206da1a01e24fae9fe"
+    }
+  ],
+  "findings": [
+    "Menu empty state keeps Nouvelle partie enabled and clearly identifies the nursery start.",
+    "Occupied campaign replacement warning fits390x844; names affected campaign, states the ten manual/two automatic saves and rescue archive.",
+    "Recovery warning preserves corrupt bytes and excludes future-version overwrite.",
+    "Manual checkpoint replacement confirmation explains preservation of the eleven other checkpoints.",
+    "Future-version archive remains protected while other readable slots are still available.",
+    "Nonresponding lock displays a recovery message and leaves safe navigation available."
+  ],
+  "limits": "Fresh synthetic contexts only, no personal saves. Nursery entrance verified, not the complete prologue. Solo renderer caption correction is outside these menu checks."
+}

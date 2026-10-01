@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T03:46:36.7946778Z",
+  "deployment": {
+    "id": "dpl_4trWpDgrxHjVDRmEPAeggMVc3Zqk",
+    "commit": "d89792643d17c528282ca83ebba3582216585447",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "identitySource": "Parent agent verified READY, exact commit and official alias before dispatch"
+  },
+  "rawReport": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/report.json",
+  "rawReportSha256": "4b8408bff3ecf2e290c7b97a706656b71c08fcef37d1a2b6ce2a0998df623a3c",
+  "checks": [
+    {
+      "name": "physically-entered-dojo-explicit-start",
+      "routeDistance": 5821.9011259125045,
+      "earlierYouthProofs": 20
+    },
+    {
+      "name": "refused-checkpoint-freezes-and-retries",
+      "tick": 33,
+      "receiptsRetained": 1
+    },
+    {
+      "name": "stalk-pause-cold-resume-mobile",
+      "exactStoredTick": 683,
+      "receipts": 4,
+      "bounds": [
+        {
+          "text": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "width": 62.171875,
+          "height": 44
+        },
+        {
+          "text": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "width": 65.78125,
+          "height": 44
+        },
+        {
+          "text": "←",
+          "x": 49.109375,
+          "y": 763.3125,
+          "right": 93.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "→",
+          "x": 97.109375,
+          "y": 763.3125,
+          "right": 141.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Saut",
+          "x": 145.109375,
+          "y": 763.3125,
+          "right": 190.875,
+          "bottom": 807.3125,
+          "width": 45.765625,
+          "height": 44
+        },
+        {
+          "text": "Pas feutré",
+          "x": 194.875,
+          "y": 763.3125,
+          "right": 272.546875,
+          "bottom": 807.3125,
+          "width": 77.671875,
+          "height": 44
+        },
+        {
+          "text": "Interagir",
+          "x": 276.546875,
+          "y": 763.3125,
+          "right": 343.890625,
+          "bottom": 807.3125,
+          "width": 67.34375,
+          "height": 44
+        }
+      ],
+      "touchMovement": {
+        "before": 1808.0000000000161,
+        "after": 1757.0000000000148
+      }
+    },
+    {
+      "name": "all-seven-proofs-and-return-survive-reload",
+      "noAdultRewardsOrRanks": true
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "hmrEvents": [],
+  "captures": [
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/mentor-explicit-departure.jpg",
+      "sha256": "38e93c2d7cfc5cb8467e6bfca0ad28b303fe6563fb39e5c00e7ee737a5dd9e95",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/quota-retains-scene.jpg",
+      "sha256": "bbc585a063a10ae8e9dd585a481cd817bd9306cfd97f0fc860697dbc04019aad",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/mobile-stalk.jpg",
+      "sha256": "d124158792dda7ab41020195ab1c9785719dc1b85c62398b1b23b9c70e8431b9",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/phase-return.jpg",
+      "sha256": "9ee71190747c7504b4c63786ef85bda4d5962c10956354991d0c1c43388e58b6",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/complete.jpg",
+      "sha256": "8a9a9a0c040b0efd61be72f643f115aebed4677289c5c8cd91c67ccd0af718c3",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/solo-final/durable-return.jpg",
+      "sha256": "3dad3d6821ebe3904a5ee644dc2dc6bf30b6fba75519dee0c8c3ebed08e37b22",
+      "visuallyReviewed": true
+    }
+  ],
+  "visualReview": [
+    "Physical mentor departure and clear quota/retry dialog.",
+    "Portrait actor and controls are readable without the former horizontal strip; native ground contact and panorama seam correction remain visible.",
+    "Final proof panel and durable city return are readable; no adult reward or rank is granted."
+  ],
+  "scopeSeparation": {
+    "browser": "Real keyboard travel, chapter interaction, storage refusal/retry, cold reload, browser touch movement and durable city return.",
+    "pendingVisitGuard": "Verified separately through actual extracted callback tests in docs/v66-solo-departure-recovery-qa.json; no claim that this fault path was reproduced in this public browser run."
+  },
+  "limits": [
+    "Fresh isolated browser only; no real user saves.",
+    "Viewport393x852 and browser CDP touch, not hardware handset/gamepad QA.",
+    "Earlier interrupted public attempt produced no final report and is not counted."
+  ],
+  "browserClosed": true
+}

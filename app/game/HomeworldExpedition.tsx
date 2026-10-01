@@ -16,7 +16,7 @@ export interface HomeworldExpeditionProps {
   suspended?: boolean;
   onComplete(proof: HomeworldExpeditionProof): Promise<{persisted:boolean;message?:string}> | {persisted:boolean;message?:string};
   /** Called only on explicit abandonment or after a durable completion acknowledgment. */
-  onExit():void;
+  onExit():boolean | void;
 }
 const Scenery=memo(function Scenery({shortcut}:{shortcut:boolean}){
   return <>
@@ -62,7 +62,10 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
     setDelivery({status:"saving",message:"Enregistrement du rapport avant retour au port…"});
     try{
       const result=await onComplete(proof);
-      if(result.persisted){onExit();return;}
+      if(result.persisted){
+        if(onExit() === false) setDelivery({status:"failed",message:"Le rapport est sauvegardé, mais le départ du retour n’est pas confirmé. Réessaie ici : le rapport ne sera pas dupliqué."});
+        return;
+      }
       setDelivery({status:"failed",message:result.message??"Sauvegarde non confirmée. Le rapport reste disponible ici ; réessayez."});
     }catch{setDelivery({status:"failed",message:"Écriture interrompue. Aucun succès annoncé ; réessayez sans quitter cette sortie."});}
     finally{deliveryBusy.current=false;}

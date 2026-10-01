@@ -1,4 +1,5 @@
 import { soloV66MatchesSave } from "./campaignSoloV66";
+import { soloV67MatchesSave } from "./campaignSoloV67";
 import { isYouthCagePhase } from "./youthCage";
 import type { SaveGame } from "../types";
 import { isYouthPatrolPhase } from "./youthPatrol";
@@ -54,7 +55,7 @@ export function youthCampaignMatchesSave(value: unknown): boolean {
     if (!record(value.prologue) || !record(value.prologue.chronicle)) return false;
     const raw = value.prologue.chronicle;
     if (!Array.isArray(raw.evidence) || !Array.isArray(raw.rites) || raw.evidence.length !== prologue.chronicle.evidence.length || raw.rites.length !== prologue.chronicle.rites.length) return false;
-    if (prologue.chronicle.evidence.some(item => !["intro-begun", "intro-completed", "training-completed", ...(soloV66MatchesSave(value) ? ["first-tracks"] : [])].includes(item.id)) || prologue.chronicle.rites.some(item => item.id !== "nursery-recognition")) return false;
+    if (prologue.chronicle.evidence.some(item => !["intro-begun", "intro-completed", "training-completed", ...(soloV66MatchesSave(value) ? ["first-tracks"] : []), ...(soloV67MatchesSave(value) ? ["unguided-hunt"] : [])].includes(item.id)) || prologue.chronicle.rites.some(item => item.id !== "nursery-recognition")) return false;
     if (raw.evidence.some(item => !record(item) || !prologue.chronicle.evidence.some(expected => expected.id === item.id && expected.sourceId === item.sourceId)) ||
         raw.rites.some(item => !record(item) || !prologue.chronicle.rites.some(expected => expected.id === item.id && expected.sourceId === item.sourceId))) return false;
   }

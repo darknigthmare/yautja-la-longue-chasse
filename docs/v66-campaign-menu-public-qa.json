@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T03:46:36.8687225Z",
+  "deployment": {
+    "id": "dpl_4trWpDgrxHjVDRmEPAeggMVc3Zqk",
+    "commit": "d89792643d17c528282ca83ebba3582216585447",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "identitySource": "Parent agent verified READY, exact commit and official alias before dispatch"
+  },
+  "rawReport": "docs/v63-menu-v66-public-qa.json",
+  "rawReportSha256": "e619f925303fc912a52e00b75bf0cae4431e4130ff2616fa974f1558a99c015c",
+  "scenarios": 12,
+  "results": [
+    {
+      "scenario": "empty",
+      "action": {
+        "status": "PASS",
+        "case": "New game starts nursery"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "normal",
+      "action": {
+        "status": "PASS",
+        "case": "Continue enters existing campaign"
+      },
+      "manualCheckpoint": {
+        "status": "PASS",
+        "case": "Manual checkpoint first save, cancel replacement without writes, then confirmed replacement; other checkpoints unchanged"
+      },
+      "errors": []
+    },
+    {
+      "scenario": "filled",
+      "action": {
+        "status": "PASS",
+        "case": "Cancel then confirmed replacement starts nursery; old slot rescue and four other slots preserved"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "corrupt",
+      "action": {
+        "status": "PASS",
+        "case": "Explicit recovery from readable slot starts campaign and preserves corrupt raw bytes"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "future",
+      "action": {
+        "status": "PASS",
+        "case": "All readable slots visible; future workspace cannot be overwritten"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "corruptNoSlots",
+      "action": {
+        "status": "PASS",
+        "case": "No readable slot: cancel writes nothing; explicit raw-preserving new start reaches nursery in an empty slot"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "corruptSlot",
+      "action": {
+        "status": "PASS",
+        "case": "Protected slot cannot be replaced; explicit backup recovery preserves damaged bytes"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "futureSlot",
+      "action": {
+        "status": "PASS",
+        "case": "Future slot stays protected and cannot be downgraded from backup"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "readDenied",
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "writeDenied",
+      "action": {
+        "status": "PASS",
+        "case": "Creation refuses denied storage with visible message",
+        "message": "Stockage plein. Les sauvegardes précédentes restent intactes."
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "heldLock",
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    },
+    {
+      "scenario": "hungLock",
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      },
+      "manualCheckpoint": null,
+      "errors": []
+    }
+  ],
+  "captures": [
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/empty.png",
+      "sha256": "787d29c67e9c922be53c06bbf0108af535f9d361b48a11ab87c082a879f2c10a",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/replacement-mobile.png",
+      "sha256": "c398d975c30beb5e1615c6a992333420bf0800e4587ee701e6bab6c215bb32bc",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/new-recovery-confirmation.png",
+      "sha256": "f2e57e3319bb77a46db6f90cdf3863353d505dafac9918765ea69efb55633ca7",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/manual-checkpoint-confirmation.png",
+      "sha256": "8ff4d36fef66c7643a6024a6d28ae33e1dc6c442395936d269e839fe09ad31fe",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/future.png",
+      "sha256": "eb4072fb4f6c60d17a7bb6c45d31a869fe94a8e9bad2b9a803599830ba566ee6",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/hungLock.png",
+      "sha256": "aeb2a377931bede435a4be1986b7d6a1f0d694ffcc3735206da1a01e24fae9fe",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/readDenied.png",
+      "sha256": "a07f1826ad5e1f60d0525969b2c24bea8f68c52f18d4797a0db71cbf96c6cdda",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/public-v66/menu/filled-nursery.png",
+      "sha256": "79b57fcc8b73564bd05026f519b841f2040048c383d91e9466cf4976c17018b9",
+      "visuallyReviewed": true
+    }
+  ],
+  "visualReview": [
+    "Desktop menu hierarchy and keyboard focus visible.",
+    "Campaign replacement confirmation fits390x844 with cancellation and confirmation fully reachable.",
+    "Raw recovery and manual overwrite confirmations describe retained data and unchanged slots.",
+    "Storage refusal and stuck lock remain visible without freezing the menu."
+  ],
+  "limits": [
+    "Twelve fresh isolated contexts; no real user saves.",
+    "New-game checks reach the nursery entry prompt, not the full prologue."
+  ],
+  "browserClosed": true
+}

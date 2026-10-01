@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "chapter": "La Piste sans guide",
+  "source": {
+    "file": "work/v36/progression-art-specs/progression-thread.json",
+    "threadId": "6aa9f019-c838-83eb-9cb1-e58acfb2027e",
+    "title": "Progression des rangs Predator",
+    "recoveredDesign": "Préparer et mener une chasse locale avec une réelle autonomie. Le mentor évalue le résultat au retour.",
+    "authority": "Conversation locale de conception, traitée comme source de projet. La hiérarchie précise et les épreuves constituent une adaptation pour le clan du joueur, pas une règle universelle canonique."
+  },
+  "implemented": [
+    "Départ explicite auprès du mentor après la nurserie, les vingt preuves de formation et les sept preuves des Premières Pistes.",
+    "Choix physique entre crêtes et ravin. Deux configurations d’obstacles conservées pour toute la sortie, pas deux cartes simultanées.",
+    "Deux lectures de piste à l’arrêt, identification puis rencontre : charges annoncées, sauts d’évitement, touches à main nue pendant la récupération.",
+    "Trois touches et deux charges évitées. Le brouteur se retire vivant ; aucun cadavre ni trophée de mise à mort.",
+    "Relevé de terrain après le retrait, retour physique et rapport séparé au mentor.",
+    "Neuf reçus ordonnés. La preuve unguided-hunt est attribuée uniquement après le rapport final durable.",
+    "Pause, visibilité, chargement des images, reprise froide, refus de stockage et propriétaire concurrent protégés.",
+    "Paroles et lecture narrative avec effet glyphes vers texte ; consignes et commandes restent immédiatement lisibles."
+  ],
+  "art": {
+    "nativeExistingSources": [
+      "/game/youth/v48",
+      "/game/youth/v49",
+      "/game/youth/v52",
+      "/game/youth/v53/fosse-insignia.png"
+    ],
+    "newGeneratedImages": 0,
+    "limits": "Réutilisation explicite des décors et poses natifs existants. L’animal utilise deux poses de charge par orientation ; la récupération tient sa pose de veille. Ce lot ne prétend pas livrer une nouvelle animation complète."
+  },
+  "notDeliveredByThisChapter": [
+    "Rite de reconnaissance Young Blood : étape distincte encore à produire.",
+    "Rite Blooded, Temple des Trois Ombres, vaisseau personnel et suite complète de campagne.",
+    "Nouveaux rangs, arsenal adulte, statistiques de mise à mort ou récompense de chasse."
+  ],
+  "validation": {
+    "targetedTests": "tests/first-hunt-solo-v67.test.mjs, tests/campaign-solo-v67.test.mjs, tests/solo-save-v67.test.mjs",
+    "browserRecipe": "scripts/verify-first-hunt-solo-v67.mjs",
+    "browserStatus": "PASS_LOCAL_FINAL_UI_6_CHECKS",
+    "releaseStatus": "NOT_PUBLISHED_V67",
+    "browserProof": "docs/v67-solo-local-browser-qa.json",
+    "browserProofSha256": "c402c1208937f320e004b06ada6bd87fbc35d7620a1a37a69ef89597cfb7c9aa",
+    "finalCaptionRecheck": "PASS_BOTH_DIRECTIONS_AND_RECOVERY_INSPECTED"
+  }
+}

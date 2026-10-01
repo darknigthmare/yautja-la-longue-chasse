@@ -1,0 +1,10 @@
+{
+  "release": "V66",
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "sourceCommit": "d89792643d17c528282ca83ebba3582216585447",
+  "evidenceDirectory": "I:/CodexTemp/yautja-v66-20261001/stage-life-public",
+  "inspected": ["arena-012-balcon-du-roi-de-la-chasse-event-0.png", "arena-036-temple-de-la-double-lune-event-1.png", "arena-069-salle-du-porte-cendres-event-2.png", "mobile-landscape.png", "mobile-portrait.png", "native-png-retry-restored.png", "reduced-motion.png"],
+  "findings": ["The three representative native event mechanisms are grounded behind the fighters and match the stage palette.", "HUD and combatants remain readable; no opaque rectangular image background is visible.", "Mobile controls stay in the viewport; portrait deliberately letterboxes the combat scene.", "The retry restores the actual native source, and reduced motion preserves a readable held pose."],
+  "limits": ["Seven public captures inspected, not every public animation cell. All nine sources and local event captures were reviewed in the separate local proof.", "149 other stages still lack dedicated sets. Portrait has substantial letterboxing."]
+}

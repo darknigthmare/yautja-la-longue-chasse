@@ -1,0 +1,1072 @@
+{
+  "schemaVersion": 1,
+  "release": "V67",
+  "status": "LOCAL_BROWSER_QA_PASS_WITH_DECLARED_ART_LIMITATIONS",
+  "reviewedAt": "2026-10-01T04:51:21.423Z",
+  "url": "http://127.0.0.1:4186",
+  "publicationRuntimeVerified": false,
+  "releaseIdentity": {
+    "kind": "Compiled local release candidate",
+    "publication": "Not established by this local report."
+  },
+  "scope": {
+    "regions": [
+      "ash-marches",
+      "glass-desert"
+    ],
+    "physicalRouteNodes": 36,
+    "completeRoundTrips": 2,
+    "browserCheckGroups": 6,
+    "reviewedCaptures": 22,
+    "fixture": "Two isolated adult entrance checkpoint saves at tick0. Glass declares a prior durable Ash report. No player coordinates or progression are injected after scene entry.",
+    "biomes": "Both existing biome screens entered, then explicitly abandoned without reporting an investigation completion.",
+    "controller": "Real browser keyboard events and pointer controls at mobile viewport sizes. Hardware gamepad not tested."
+  },
+  "checks": [
+    {
+      "regionId": "ash-marches",
+      "check": "codex-focus-audit",
+      "focusStates": [
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Réglages",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Réglages",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        }
+      ],
+      "focusContained": true,
+      "reverseTabContained": true,
+      "backgroundInert": true,
+      "escapeClosesOnlyCodex": true,
+      "pauseRetained": true,
+      "initialPortraitFocus": {
+        "focus": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "ROUTE ORIGINALE DU JEU · 506 MÈTRESGéogr"
+      },
+      "portraitTabFocus": {
+        "focus": {
+          "x": 28,
+          "y": 726.546875,
+          "width": 176.296875,
+          "height": 44.390625,
+          "top": 726.546875,
+          "right": 204.296875,
+          "bottom": 770.9375,
+          "left": 28
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "Reprendre la marche"
+      },
+      "portraitReverseFocus": {
+        "focus": {
+          "x": 28,
+          "y": 779.9375,
+          "width": 141.59375,
+          "height": 44.390625,
+          "top": 779.9375,
+          "right": 169.59375,
+          "bottom": 824.328125,
+          "left": 28
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "Fermer le codex"
+      },
+      "masks": [
+        {
+          "units": "userSpaceOnUse",
+          "width": 22000,
+          "height": 2150.7293090531384
+        },
+        {
+          "units": "userSpaceOnUse",
+          "width": 22000,
+          "height": 3000
+        }
+      ]
+    },
+    {
+      "regionId": "ash-marches",
+      "check": "quota-retry-pause-touch-reload",
+      "layout": {
+        "width": 844,
+        "height": 390,
+        "viewport": {
+          "x": 0,
+          "y": 60.5,
+          "width": 844,
+          "height": 276.5,
+          "top": 60.5,
+          "right": 844,
+          "bottom": 337,
+          "left": 0
+        },
+        "buttons": [
+          {
+            "x": 277.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 321.640625,
+            "bottom": 386,
+            "left": 277.640625
+          },
+          {
+            "x": 328.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 372.640625,
+            "bottom": 386,
+            "left": 328.640625
+          },
+          {
+            "x": 379.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 423.640625,
+            "bottom": 386,
+            "left": 379.640625
+          },
+          {
+            "x": 430.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 474.640625,
+            "bottom": 386,
+            "left": 430.640625
+          }
+        ]
+      },
+      "savedTick": 1246,
+      "reloadedTick": 1274
+    },
+    {
+      "regionId": "ash-marches",
+      "check": "physical-roundtrip",
+      "outboundAndReturnNodes": 18,
+      "arrival": {
+        "x": 970,
+        "y": 2784
+      },
+      "noAwards": true,
+      "biomeVisit": "Entered then explicitly abandoned without claiming completion"
+    },
+    {
+      "regionId": "glass-desert",
+      "check": "codex-focus-audit",
+      "focusStates": [
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Réglages",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Réglages",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Fermer le codex",
+          "inside": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reprendre la marche",
+          "inside": true
+        }
+      ],
+      "focusContained": true,
+      "reverseTabContained": true,
+      "backgroundInert": true,
+      "escapeClosesOnlyCodex": true,
+      "pauseRetained": true,
+      "initialPortraitFocus": {
+        "focus": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "ROUTE ORIGINALE DU JEU · 521 MÈTRESGéogr"
+      },
+      "portraitTabFocus": {
+        "focus": {
+          "x": 28,
+          "y": 726.546875,
+          "width": 176.296875,
+          "height": 44.390625,
+          "top": 726.546875,
+          "right": 204.296875,
+          "bottom": 770.9375,
+          "left": 28
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "Reprendre la marche"
+      },
+      "portraitReverseFocus": {
+        "focus": {
+          "x": 28,
+          "y": 779.9375,
+          "width": 141.59375,
+          "height": 44.390625,
+          "top": 779.9375,
+          "right": 169.59375,
+          "bottom": 824.328125,
+          "left": 28
+        },
+        "panel": {
+          "x": 10,
+          "y": 10,
+          "width": 373,
+          "height": 832,
+          "top": 10,
+          "right": 383,
+          "bottom": 842,
+          "left": 10
+        },
+        "text": "Fermer le codex"
+      },
+      "masks": [
+        {
+          "units": "userSpaceOnUse",
+          "width": 22800,
+          "height": 2150.7293090531384
+        },
+        {
+          "units": "userSpaceOnUse",
+          "width": 22800,
+          "height": 3000
+        }
+      ]
+    },
+    {
+      "regionId": "glass-desert",
+      "check": "quota-retry-pause-touch-reload",
+      "layout": {
+        "width": 844,
+        "height": 390,
+        "viewport": {
+          "x": 0,
+          "y": 60.5,
+          "width": 844,
+          "height": 276.5,
+          "top": 60.5,
+          "right": 844,
+          "bottom": 337,
+          "left": 0
+        },
+        "buttons": [
+          {
+            "x": 277.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 321.640625,
+            "bottom": 386,
+            "left": 277.640625
+          },
+          {
+            "x": 328.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 372.640625,
+            "bottom": 386,
+            "left": 328.640625
+          },
+          {
+            "x": 379.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 423.640625,
+            "bottom": 386,
+            "left": 379.640625
+          },
+          {
+            "x": 430.640625,
+            "y": 342,
+            "width": 44,
+            "height": 44,
+            "top": 342,
+            "right": 474.640625,
+            "bottom": 386,
+            "left": 430.640625
+          }
+        ]
+      },
+      "savedTick": 1296,
+      "reloadedTick": 1324
+    },
+    {
+      "regionId": "glass-desert",
+      "check": "physical-roundtrip",
+      "outboundAndReturnNodes": 18,
+      "arrival": {
+        "x": 2250,
+        "y": 2691
+      },
+      "noAwards": true,
+      "biomeVisit": "Entered then explicitly abandoned without claiming completion"
+    }
+  ],
+  "routes": [
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 1,
+      "position": {
+        "x": 2795,
+        "y": 1800,
+        "tick": 480,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 2,
+      "position": {
+        "x": 4493,
+        "y": 1242,
+        "tick": 844,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 3,
+      "position": {
+        "x": 8096,
+        "y": 1245,
+        "tick": 1628,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 4,
+      "position": {
+        "x": 8796,
+        "y": 2048,
+        "tick": 1868,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 5,
+      "position": {
+        "x": 11799,
+        "y": 2048,
+        "tick": 2416,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 6,
+      "position": {
+        "x": 13798,
+        "y": 1196,
+        "tick": 2862,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 7,
+      "position": {
+        "x": 17401,
+        "y": 1196,
+        "tick": 3520,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 8,
+      "position": {
+        "x": 18691,
+        "y": 1650,
+        "tick": 3800,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "outbound",
+      "node": 9,
+      "position": {
+        "x": 21595,
+        "y": 1650,
+        "tick": 4330,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 8,
+      "position": {
+        "x": 18696,
+        "y": 1650,
+        "tick": 534,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 7,
+      "position": {
+        "x": 17401,
+        "y": 1206,
+        "tick": 814,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 6,
+      "position": {
+        "x": 13809,
+        "y": 1206,
+        "tick": 1470,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 5,
+      "position": {
+        "x": 11808,
+        "y": 2045,
+        "tick": 1916,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 4,
+      "position": {
+        "x": 8805,
+        "y": 2045,
+        "tick": 2464,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 3,
+      "position": {
+        "x": 8109,
+        "y": 1258,
+        "tick": 2700,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 2,
+      "position": {
+        "x": 4509,
+        "y": 1243,
+        "tick": 3358,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 1,
+      "position": {
+        "x": 2802,
+        "y": 1804,
+        "tick": 3722,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "ash-marches",
+      "direction": "return",
+      "node": 0,
+      "position": {
+        "x": 316,
+        "y": 1804,
+        "tick": 4176,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 1,
+      "position": {
+        "x": 3098,
+        "y": 1350,
+        "tick": 534,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 2,
+      "position": {
+        "x": 5094,
+        "y": 2052,
+        "tick": 966,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 3,
+      "position": {
+        "x": 8691,
+        "y": 2052,
+        "tick": 1676,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 4,
+      "position": {
+        "x": 9995,
+        "y": 1206,
+        "tick": 1996,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 5,
+      "position": {
+        "x": 12899,
+        "y": 1206,
+        "tick": 2524,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 6,
+      "position": {
+        "x": 15000,
+        "y": 1843,
+        "tick": 2970,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 7,
+      "position": {
+        "x": 18603,
+        "y": 1843,
+        "tick": 3626,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 8,
+      "position": {
+        "x": 19498,
+        "y": 1454,
+        "tick": 3828,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "outbound",
+      "node": 9,
+      "position": {
+        "x": 22397,
+        "y": 1454,
+        "tick": 4358,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 8,
+      "position": {
+        "x": 19507,
+        "y": 1450,
+        "tick": 534,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 7,
+      "position": {
+        "x": 18605,
+        "y": 1848,
+        "tick": 738,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 6,
+      "position": {
+        "x": 15008,
+        "y": 1848,
+        "tick": 1394,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 5,
+      "position": {
+        "x": 12906,
+        "y": 1202,
+        "tick": 1838,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 4,
+      "position": {
+        "x": 10008,
+        "y": 1202,
+        "tick": 2366,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 3,
+      "position": {
+        "x": 8707,
+        "y": 2044,
+        "tick": 2686,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 2,
+      "position": {
+        "x": 5099,
+        "y": 2044,
+        "tick": 3344,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 1,
+      "position": {
+        "x": 3096,
+        "y": 1346,
+        "tick": 3776,
+        "paused": "false",
+        "status": "travelling"
+      }
+    },
+    {
+      "regionId": "glass-desert",
+      "direction": "return",
+      "node": 0,
+      "position": {
+        "x": 319,
+        "y": 1346,
+        "tick": 4284,
+        "paused": "false",
+        "status": "travelling"
+      }
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "captures": [
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-briefing.jpg",
+      "sha256": "dc1db16b7bb43a736ba8cb032b3d05b773a792f43827a9fef1970ecb2bb163d7",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Briefing waits for explicit start and offers safe return only at the nearby city threshold."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-codex.jpg",
+      "sha256": "659c18607ba4e7da4f48eead306038c2f797fb0ccf633e3fbad4cae433c9b7e5",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Desktop codex readable, scope explicitly limited to original game geography and two delivered routes."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-codex-portrait.jpg",
+      "sha256": "0bc27c41104d5f9c71a7ecb3743e9267e25253b11f9de72546f8cd63e2533462",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Portrait codex scrolls to a visible focused control; all controls remain inside the panel."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-quota-refusal.jpg",
+      "sha256": "4c3447f311b8b6b37b3a5eda5f19c6eaae1e64c83eaaf27d55d2bf47a0bb68f9",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Write refusal is shown, local retry remains available, simulation stops without overwriting durable progress."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-bridge.jpg",
+      "sha256": "8ad35c4cf1a54379c98a7cf8d8b7d6345fbc9df8ca3bbe9cc57da0d64fbdb878",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Native bridge and single panorama visible; actor, deck and supports align."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-landscape.jpg",
+      "sha256": "afaf5d71473ddc884a7e07c5db33384570db65dc565bcfff73a6eaa494893849",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "844x390 layout fills width, viewport is 276.5px high and movement controls are at least44px."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-portrait-pause.jpg",
+      "sha256": "3e4a61cf8efd09d13815064b088532dd8826cdd81f5f05d9c10afbf9cbdcafb9",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Portrait pause panel and actions fit the viewport."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-road-turn.jpg",
+      "sha256": "ceb010447d8276e08740ba0e3624429dc002ccc238ffedf01588a598a1c0c345",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Road edge and native-textured vertical facade meet; the former SVG mask clipping gap is absent."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-bridge-junction.jpg",
+      "sha256": "03c94fc73a658d93dc2861d5e0016b46fef06ba6c5d17eb615649280114d4fdd",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Native bridge deck meets the road, actor feet remain on the deck; supports extend below the walkable plane."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-biome-reached.jpg",
+      "sha256": "498f32d2ee3000d42aafad3e0214d2243c26ceef617500134978eef0f626cbf5",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Correct existing biome is entered after physical traversal; capture includes its entry fade. This is not a visual certification or completion of the biome investigation."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/ash-marches-city-return.jpg",
+      "sha256": "8269f6de10a1f9bb7c0b9d7e81656bc7a08620b75061e6991d4da9ad43a872c0",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Correct city region threshold reached after physical return, checkpoint cleared. Existing city occlusion system is visible; a complete city art audit is outside this test."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-briefing.jpg",
+      "sha256": "6ad55805ccb21aa899a1fe11948c96ca6282e0d16cfd165ae822cc394351cb70",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Briefing waits for explicit start and offers safe return only at the nearby city threshold."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-codex.jpg",
+      "sha256": "adfd2fb99e17d0543736fb6bb71da673809071b376f4cd147bbb416a0fb7e61d",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Desktop codex readable, scope explicitly limited to original game geography and two delivered routes."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-codex-portrait.jpg",
+      "sha256": "cf13da52ab1f34fac3ed675393a795e4277c6ec8792265bba211e4f6b108c6a9",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Portrait codex scrolls to a visible focused control; all controls remain inside the panel."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-quota-refusal.jpg",
+      "sha256": "a40345b55ab23d7477a37be0359c587f84da244c3a39c522b06b34f881f4aae2",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Write refusal is shown, local retry remains available, simulation stops without overwriting durable progress."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-bridge.jpg",
+      "sha256": "2792060953a1ab3170a58d0dbd87681860eb2c5c98250642273ce243c4b8fda6",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Native bridge and single panorama visible; actor, deck and supports align."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-landscape.jpg",
+      "sha256": "193c0471f7865822039810d4650792fda6991f51f606899b3d64a3ddf923f86d",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "844x390 layout fills width, viewport is 276.5px high and movement controls are at least44px."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-portrait-pause.jpg",
+      "sha256": "fe5230152a71159c6af921696049f00c0fd21d387458ab2606205ff7caf57290",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Portrait pause panel and actions fit the viewport."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-road-turn.jpg",
+      "sha256": "ac4c025bfd22c9c6251cfd4206eee462bac3bdf447edc8593d6d0ea4c6661f4e",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Road edge and native-textured vertical facade meet; the former SVG mask clipping gap is absent."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-bridge-junction.jpg",
+      "sha256": "f9a63c9367319f74ac44d3f3ac62e0dd3bfe64cdd4e28a6c4dc2317586e1011b",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Native bridge deck meets the road, actor feet remain on the deck; supports extend below the walkable plane."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-biome-reached.jpg",
+      "sha256": "e0b73ec136df2f8fbb1609d071e98b91d45baa9c89f9635ec29b078d5a5cd9f9",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Correct existing biome is entered after physical traversal; capture includes its entry fade. This is not a visual certification or completion of the biome investigation."
+    },
+    {
+      "path": "work-local/v67/qa/passages-candidate-final/glass-desert-city-return.jpg",
+      "sha256": "a2e4c5e2e4e9ed581bfa92e7c431326f16f5ae0074cb3005b0421e88914a2387",
+      "review": "PASS_WITH_DECLARED_SCOPE",
+      "note": "Correct city region threshold reached after physical return, checkpoint cleared. Existing city occlusion system is visible; a complete city art audit is outside this test."
+    }
+  ],
+  "runtime": [
+    {
+      "path": "app/game/HomeworldPassageV67.tsx",
+      "sha256": "d9cccc67f587c64ff22b5a11c865ac9a47a3a8c564386d990a765cbfd62656d1"
+    },
+    {
+      "path": "app/game/HomeworldPassageV67.module.css",
+      "sha256": "ea7d814543d45d6386e4a25efb5f3f6cf2e9a2707d53b04bca5cdbd33638a514"
+    },
+    {
+      "path": "app/game/systems/homeworldPassageV67.ts",
+      "sha256": "bedd50b9b65d5cc350c74141f8a781ede9c1022c6c460d0fe47b9f935041ea18"
+    },
+    {
+      "path": "scripts/verify-homeworld-passage-v67.mjs",
+      "sha256": "1dee0250c708c1a764c3f1916ac6dce2d1a4b3a2e003dd5db1899a3c2467171c"
+    }
+  ],
+  "nativeArt": [
+    {
+      "path": "public/game/homeworld/v67/ash-causeway-vista.png",
+      "sha256": "8178a67f6f2b4b26bb08f5e330db99e5b5f75b3c6e893c4b991eab81a7af5c78",
+      "sourcePixels": "Unmodified native PNG"
+    },
+    {
+      "path": "public/game/homeworld/v67/glass-processional-vista.png",
+      "sha256": "95a9f2a9e8b7f9ec0897ef60cbe7fea720a914e935ab4a34ebe6c5d1f0fda787",
+      "sourcePixels": "Unmodified native PNG"
+    },
+    {
+      "path": "public/game/homeworld/v67/processional-bridge.png",
+      "sha256": "d455aa0b4766460fbebf3b38d5e22c900c770977b3102fe617c9615853195ef9",
+      "sourcePixels": "Unmodified native PNG"
+    }
+  ],
+  "correctionsVerified": [
+    "Held keys survive periodic checkpoint saves.",
+    "Portrait actor is not collapsed by inherited max-width.",
+    "Native-textured vertical substructures support the non-bridge road.",
+    "Explicit user-space mask bounds preserve the complete road stroke and close the visible facade gap.",
+    "Dialog background is inert, Tab/Shift+Tab remain contained, codex opens with visible panel focus, portrait buttons scroll into view.",
+    "Escape closes only the codex and leaves pause active; Resume returns focus to the terrain.",
+    "Settings stay above the passage, pause freezes simulation, quota refusal preserves durable bytes, retry and real reload restore the route."
+  ],
+  "limitations": [
+    "These two connectors are original game geography, not a canonical 1:1 map of Yautja Prime. Eight other planned regions remain undelivered.",
+    "Hunter uses existing native portrait or modular composition. No newly authored full-body walking animation is claimed.",
+    "Road facades are geometric surfaces reusing the existing native pavement material; they are not newly generated unique facade bitmaps.",
+    "The six repeated bridge modules per route are intentional modular reuse; the panorama itself is drawn only once.",
+    "This receipt does not certify completion of the regional investigations, the entire city, all game modes, or physical gamepad hardware."
+  ],
+  "historicalEvidence": {
+    "firstFailure": "work-local/v67/qa/passages/report.json",
+    "focusAndDriverFailure": "work-local/v67/qa/passages-final-codexfix/report.json",
+    "preFinalPhysicsPass": "work-local/v67/qa/passages-final-modal/report.json",
+    "finalBrowserReport": "work-local/v67/qa/passages-candidate-final/report.json"
+  },
+  "tests": {
+    "focusedModelAndPersistence": {
+      "passed": 11,
+      "failed": 0,
+      "command": "node --experimental-strip-types --test tests/homeworld-passage-v67.test.mjs tests/homeworld-passage-persistence-v67.test.mjs"
+    },
+    "buildAndGlobalSuite": "Reported separately by the parent release agent; not inferred from browser PASS."
+  }
+}

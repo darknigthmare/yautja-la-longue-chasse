@@ -1,0 +1,208 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4186",
+  "checks": [
+    "Actual city keyboard route and regional dialog call Hub→GameClient; new UUID and tick 0 acknowledged in storage before movement, no rewards.",
+    "Actual outward steps and keyboard retreat to the departure threshold, explicit E return, connector cleared durably, first city step remains outside beacon collider; rewards unchanged."
+  ],
+  "captures": [
+    "work-local/v67/qa/homeworld-departure/01-regional-dialog.jpg",
+    "work-local/v67/qa/homeworld-departure/02-new-passage-briefing.jpg",
+    "work-local/v67/qa/homeworld-departure/03-return-first-step.jpg"
+  ],
+  "errors": [],
+  "fixture": {
+    "kind": "adult legacy baseline",
+    "declaredPrerequisite": "suspect-trophy evidence supplied before gameplay; not claimed earned",
+    "passageBefore": null
+  },
+  "route": {
+    "start": {
+      "x": 1280,
+      "y": 4480
+    },
+    "reached": {
+      "x": 973,
+      "y": 2786
+    },
+    "target": {
+      "x": 970,
+      "y": 2783.5,
+      "vx": 0,
+      "vy": 0,
+      "grounded": true,
+      "facing": 1
+    },
+    "points": [
+      {
+        "x": 1280,
+        "y": 4480
+      },
+      {
+        "x": 1344,
+        "y": 4448
+      },
+      {
+        "x": 1376,
+        "y": 4416
+      },
+      {
+        "x": 1440,
+        "y": 3840
+      },
+      {
+        "x": 3008,
+        "y": 3712
+      },
+      {
+        "x": 3008,
+        "y": 3520
+      },
+      {
+        "x": 2944,
+        "y": 3456
+      },
+      {
+        "x": 2592,
+        "y": 3168
+      },
+      {
+        "x": 1664,
+        "y": 3200
+      },
+      {
+        "x": 1312,
+        "y": 2976
+      },
+      {
+        "x": 970,
+        "y": 2783.5
+      }
+    ],
+    "distance": 4745.119245450246
+  },
+  "departure": {
+    "version": 1,
+    "regionId": "ash-marches",
+    "direction": "outbound",
+    "journeyId": "21e38adf-8d7a-446d-a7ae-af8cb0c0729a",
+    "tick": 0,
+    "actor": {
+      "x": 320,
+      "y": 1800,
+      "vx": 0,
+      "vy": 0,
+      "grounded": true,
+      "facing": 1
+    },
+    "visited": [
+      0
+    ],
+    "walked": 0,
+    "status": "travelling"
+  },
+  "returned": {
+    "x": 970,
+    "y": 2784
+  },
+  "firstStep": {
+    "x": 970,
+    "y": 2800
+  },
+  "scope": "Real UI departure and short explicit retreat only; no full passage or expedition completion claimed.",
+  "visualReview": {
+    "status": "PASS",
+    "reviewer": "agent",
+    "captures": [
+      {
+        "path": "work-local/v67/qa/homeworld-departure/01-regional-dialog.jpg",
+        "sha256": "f138e8c505664c0b2bfaa36ccc8146695d4ba6a257f7ffaf9beec94024b1d2b7"
+      },
+      {
+        "path": "work-local/v67/qa/homeworld-departure/02-new-passage-briefing.jpg",
+        "sha256": "048efb6dcc21068dcaf8a6431f72b28e187687ee28d5fdd206a187a9f8dd23fb"
+      },
+      {
+        "path": "work-local/v67/qa/homeworld-departure/03-return-first-step.jpg",
+        "sha256": "00e31b03c302ec95f901a8dfc7620d6d27bdc8f797b2fb8ba368fb1f7f1d6351"
+      }
+    ],
+    "observations": [
+      "The actual regional dialog presents the enabled departure action after the actor reaches its beacon.",
+      "The fresh passage screen shows its own title and explicit Begin walking action before any movement.",
+      "The returning actor and Ash beacon remain together in the city after the first ordinary step; no port-spawn recovery is observed. Existing transparent building cutaways remain visible in this city view; this check does not re-certify the entire city artwork."
+    ]
+  },
+  "checkedAt": "2026-10-01T04:43:09.932Z",
+  "reportEvidence": {
+    "path": "work-local/v67/qa/homeworld-departure/report.json",
+    "sha256": "2927074766373932abd0b26acaec19763fcc6a4382383fd406c43a1cd3635e4c"
+  },
+  "recipe": {
+    "path": "scripts/verify-homeworld-departure-v67.mjs",
+    "sha256": "f6b0f543481d99ed8ebc0eb007b60d0c31c7d686fc09891ab2c85f1769ec9a6c"
+  },
+  "runtime": [
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "7ee5a43e18bff97b0b1c362d2734687c84f8eeff9d36376b2796ca47ca33da7f"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "e663407f5b7f28a51665281baf7983fff5faa966119466ee2fe705cc2a03acd6"
+    },
+    {
+      "path": "app/game/systems/homeworldArrivalV67.ts",
+      "sha256": "1b5c36c63b1c9df395edc156be5adeb24a6368c0a64ae7bd68a6a5b5d01597de"
+    },
+    {
+      "path": "app/game/systems/homeworldPassageV67.ts",
+      "sha256": "bedd50b9b65d5cc350c74141f8a781ede9c1022c6c460d0fe47b9f935041ea18"
+    },
+    {
+      "path": "app/game/systems/homeworldCity.ts",
+      "sha256": "38f63d88d79050c9d23c24719bc47b57ad984455acd00bb1043f36ba0e5c5e00"
+    },
+    {
+      "path": "app/game/save.ts",
+      "sha256": "80c48758e48107ae9d41f9da06fc549e9bc37f9cbf398af76fcc56a4102a7f76"
+    }
+  ],
+  "harnessNotes": {
+    "runtimeChanged": false,
+    "preservedFailures": [
+      {
+        "path": "work-local/v67/qa/homeworld-departure/harness-zero-size-anchor-failure.json",
+        "sha256": "b010af1d3db30b0512f04d7703e8b5719b1cbe4b831d8fe7407960cbb10dcc7f"
+      },
+      {
+        "path": "work-local/v67/qa/homeworld-departure/harness-short-key-pulse-failure.json",
+        "sha256": "0fc344d2e7a0ad48e99c624e72ae05abcdd17612950367278efb1a29bc6d2691"
+      }
+    ],
+    "corrections": [
+      "Wait for the zero-size actor anchor to attach, rather than for its own box to become visible; the sprite and city are separately captured.",
+      "800ms real-key input under the controlled clock is used to leave the threshold radius; the original 500ms pulse was too short for the asserted distance."
+    ]
+  },
+  "rewardFieldsChecked": [
+    "profile",
+    "inventory",
+    "trophies",
+    "missionProgress",
+    "prologue",
+    "youthTraining",
+    "soloV66",
+    "soloV67",
+    "statistics",
+    "storyCompleted"
+  ],
+  "public": false,
+  "laterRendererSourceSnapshot": [
+    {
+      "path": "app/game/HomeworldPassageV67.tsx",
+      "sha256": "d9cccc67f587c64ff22b5a11c865ac9a47a3a8c564386d990a765cbfd62656d1"
+    }
+  ],
+  "sourceScope": "Departure callbacks, save and geometry remain frozen. Passage-renderer source received separate portrait-focus and ground-mask corrections while the tested server retained its earlier compiled snapshot. The later renderer hash is informational, not a claim that its final UI was exercised by this departure recipe."
+}

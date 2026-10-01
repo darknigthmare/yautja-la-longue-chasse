@@ -10,7 +10,7 @@ const bundle = await build({ stdin: { contents: `
   export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64} from './app/game/systems/homeworldInteriorsV64';
   export {default as Panel,HomeworldNpcMissionsJournalV66 as Journal} from './app/game/HomeworldNpcMissionsV66';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'cjs', platform: 'node',
-external: ['react', 'react/jsx-runtime'], logLevel: 'silent' });
+external: ['react', 'react/jsx-runtime'], outfile: 'npc-missions-test.cjs', logLevel: 'silent' });
 const evaluated = { exports: {} };
 new Function('require', 'module', 'exports', bundle.outputFiles[0].text)(createRequire(import.meta.url), evaluated, evaluated.exports);
 const api = evaluated.exports;

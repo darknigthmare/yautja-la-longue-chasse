@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Complete French accessible immediately; glyph layer hidden from accessibility, initial pause has no progress",
+    "Pause and unrelated host updates preserve decoding position without restarting or advancing",
+    "Natural completion is bounded, exact text and layout retained",
+    "New text starts fresh; keyboard skip completes during pause and retains focus until normal Tab departure",
+    "Natural completion does not remove a focused skip button",
+    "Game and system reduced motion reveal immediately and never re-encrypt on preference removal",
+    "Visibility-event simulation suspends then resumes without counting hidden time",
+    "Long unbroken strings and graphemes do not overflow the mobile document"
+  ],
+  "captures": [
+    "work-local\\v67\\qa\\translation\\01-paused-glyphs.png",
+    "work-local\\v67\\qa\\translation\\02-partial-paused.png",
+    "work-local\\v67\\qa\\translation\\03-complete.png",
+    "work-local\\v67\\qa\\translation\\04-mobile-reduced.png"
+  ],
+  "errors": [],
+  "scope": "Actual reusable React component and CSS in isolated Chrome harness, not the full game integration",
+  "visualReview": {
+    "status": "PASS",
+    "reviewer": "agent",
+    "captures": [
+      {
+        "path": "work-local/v67/qa/translation/01-paused-glyphs.png",
+        "sha256": "286c7390ac85a333c533310d78b957e1225df2f4e059ca620cd85687356426d3"
+      },
+      {
+        "path": "work-local/v67/qa/translation/02-partial-paused.png",
+        "sha256": "a180a6c3bc9bcda9782687e0e5b684e0e595134111f34f1c889a5adfec707199"
+      },
+      {
+        "path": "work-local/v67/qa/translation/03-complete.png",
+        "sha256": "c15ae2e4c8b4252bee57857f6910fc0fdce8573be81997c9871ce967c2073ba8"
+      },
+      {
+        "path": "work-local/v67/qa/translation/04-mobile-reduced.png",
+        "sha256": "cd87e70ba82f751a6060e80b0e70f5fbbe38f2793f5a6cab767beb7bf3221cba"
+      }
+    ],
+    "observations": [
+      "Stable amber angular strokes reveal into the readable French sentence.",
+      "Partial decoding has no random flashing and retains line geometry.",
+      "Completed control reserves its old space so the following gameplay control does not move.",
+      "System reduced-motion view is immediately readable at 393×852."
+    ]
+  },
+  "rawReportEvidence": {
+    "path": "work-local/v67/qa/translation/report.json",
+    "sha256": "324a0b8231b1fc61c045a67d6e4b11bb7e9ff8a3c316f15208369abbf3094574"
+  },
+  "checkedAt": "2026-10-01T04:32:02.244Z"
+}

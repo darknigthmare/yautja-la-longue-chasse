@@ -4,12 +4,14 @@ import { useId, useState } from "react";
 import { HOMEWORLD_SIDE_STORY_V66, SIDE_STORY_CLUES_V66, SIDE_STORY_RECORDS_V66, homeworldSideStoryV66Journal,
   type HomeworldSideStoryV66Action, type HomeworldSideStoryV66Progress } from "./systems/homeworldSideStoryV66";
 import styles from "./HomeworldSideStoryV66.module.css";
+import YautjaTranslationV67 from "./YautjaTranslationV67";
 
 export interface HomeworldSideStoryV66Props {
   progress: HomeworldSideStoryV66Progress;
   pointId: string | null;
   eligible: boolean;
   disabled?: boolean;
+  reducedMotion?: boolean;
   /** Caller checks the currently reached point, save owner and durable acknowledgement. No optimistic checkpoint. */
   onAction(action: HomeworldSideStoryV66Action): { ok: boolean; message: string };
 }
@@ -49,7 +51,7 @@ function Correction({ disabled, submit }: { disabled: boolean; submit(action: Ho
   </div>;
 }
 
-export default function HomeworldSideStoryV66({ progress, pointId, eligible, disabled = false, onAction }: HomeworldSideStoryV66Props) {
+export default function HomeworldSideStoryV66({ progress, pointId, eligible, disabled = false, reducedMotion = false, onAction }: HomeworldSideStoryV66Props) {
   const [feedback, setFeedback] = useState<{ ok: boolean; message: string; pointId: string } | null>(null);
   const [notesOpen, setNotesOpen] = useState(false);
   const notesId = useId();
@@ -61,19 +63,19 @@ export default function HomeworldSideStoryV66({ progress, pointId, eligible, dis
   return <section className={styles.story} aria-label="Histoire annexe : La marque empruntée" data-side-story-v66={journal.step} data-side-story-checkpoints={journal.completed}>
     <header><span>HISTOIRE ANNEXE · {journal.completed}/{journal.total}</span><h4>{HOMEWORLD_SIDE_STORY_V66.title}</h4></header>
     <p className={styles.scope}>Récit original de cette cité. Ce dossier est distinct de l’enquête du convoi.</p>
-    {journal.step === "complete" ? <><p>{journal.objective}</p><p>Ta collection, ton rang et le jugement concernant le convoi restent inchangés. Les interlocuteurs conservent cette conclusion lors de tes revisites.</p></>
+    {journal.step === "complete" ? <><p><YautjaTranslationV67 text={journal.objective} paused={disabled} reducedMotion={reducedMotion} /></p><p>Ta collection, ton rang et le jugement concernant le convoi restent inchangés. Les interlocuteurs conservent cette conclusion lors de tes revisites.</p></>
       : !here ? <p><strong>{journal.label}</strong> · {journal.objective}</p>
         : <div className={styles.scene} key={`${pointId}:${journal.step}`}>
-          {journal.step === "invitation" && <><p>L’instructeur a retenu une déclaration de chasse : un novice présente une pièce gravée, mais refuse d’en montrer le revers. Il te demande d’examiner les faits avant que la cité ne prenne sa crainte du déshonneur pour une preuve.</p><p>La pièce est déjà confiée à la forge. Tu enquêteras auprès de ses gardiens ; elle ne te sera jamais donnée comme trophée.</p>{action("Accepter d’examiner la déclaration", { kind: "accept" })}</>}
+          {journal.step === "invitation" && <><p><YautjaTranslationV67 text="L’instructeur a retenu une déclaration de chasse : un novice présente une pièce gravée, mais refuse d’en montrer le revers. Il te demande d’examiner les faits avant que la cité ne prenne sa crainte du déshonneur pour une preuve." paused={disabled} reducedMotion={reducedMotion} /></p><p>La pièce est déjà confiée à la forge. Tu enquêteras auprès de ses gardiens ; elle ne te sera jamais donnée comme trophée.</p>{action("Accepter d’examiner la déclaration", { kind: "accept" })}</>}
           {journal.step === "inspection" && <><p>La maîtresse pose le moulage sous la lumière de son établi. Inspecte ses trois zones. Aucun indice isolé ne suffit à désigner un responsable.</p><div className={styles.clues}>{SIDE_STORY_CLUES_V66.map(clue => <article key={clue.id} data-side-story-clue={clue.id}><h5>{clue.label.replace("Examiner ", "")}</h5>{progress.clues.includes(clue.id) ? <p>✓ {clue.detail}</p> : action(clue.label, { kind: "inspect", clueId: clue.id })}</article>)}</div></>}
-          {journal.step === "archive" && <><p>La conservatrice retrouve le numéro de lot. Elle peut ouvrir les relevés de retour déclaré, de remise du moulage et de demande de gravure. Une inscription administrative n’est pas un certificat de chasse.</p>{action("Consulter les trois relevés", { kind: "read-archive" })}</>}
+          {journal.step === "archive" && <><p><YautjaTranslationV67 text="La conservatrice retrouve le numéro de lot. Elle peut ouvrir les relevés de retour déclaré, de remise du moulage et de demande de gravure. Une inscription administrative n’est pas un certificat de chasse." paused={disabled} reducedMotion={reducedMotion} /></p>{action("Consulter les trois relevés", { kind: "read-archive" })}</>}
           {journal.step === "chronology" && <Chronology disabled={disabled} submit={submit} />}
           {journal.step === "deduction" && <><p>Le novice situe son retour avant que cette pièce lui soit remise comme matériel d’exercice. La gravure est postérieure au moulage. Quelle conclusion défendrais-tu ?</p><div className={styles.choices}>
             {action("La maîtresse des parures est forcément complice.", { kind: "deduce", conclusion: "artisan-guilty" })}
             {action("Cette pièce n’authentifie pas la chasse déclarée.", { kind: "deduce", conclusion: "unverified-claim" })}
             {action("Le novice doit automatiquement devenir Bad Blood.", { kind: "deduce", conclusion: "automatic-bad-blood" })}
           </div></>}
-          {journal.step === "testimony" && <><p>L’instructeur a demandé une réponse au novice pendant ton enquête. Il en conserve le message : « Je suis revenu sans prise. J’ai présenté la pièce d’exercice parce que je craignais de revenir les mains vides. »</p><p>Ce message constitue un aveu limité à cette déclaration ; il ne réécrit pas les autres chasses.</p>{action("Consigner la réponse transmise par l’instructeur", { kind: "listen" })}</>}
+          {journal.step === "testimony" && <><p><YautjaTranslationV67 text="L’instructeur a demandé une réponse au novice pendant ton enquête. Il en conserve le message : « Je suis revenu sans prise. J’ai présenté la pièce d’exercice parce que je craignais de revenir les mains vides. »" paused={disabled} reducedMotion={reducedMotion} /></p><p>Ce message constitue un aveu limité à cette déclaration ; il ne réécrit pas les autres chasses.</p>{action("Consigner la réponse transmise par l’instructeur", { kind: "listen" })}</>}
           {journal.step === "decision" && <><p>La contradiction et l’aveu sont établis. Tu peux proposer deux suites à cette cité. Le choix est durable ; aucun rang, point d’honneur ou trophée ne sera accordé ni retiré.</p><div className={styles.branches}>
             <article><h5>Rectification encadrée</h5><p>Rejoindre la gardienne des rites, corriger l’origine et le statut de la déclaration, puis confirmer au mentor. Le dossier d’apprentissage garde la correction ; aucun dossier d’examen supplémentaire n’est déposé aux Enforcers.</p>{action("Choisir la rectification encadrée", { kind: "choose", resolution: "supervised-correction" })}</article>
             <article><h5>Examen institutionnel</h5><p>Rejoindre le capitaine avec les relevés et l’aveu, limiter la conclusion aux faits, puis confirmer au mentor. Le dossier d’examen est conservé ; cela ne simule ni condamnation ni poursuite.</p>{action("Choisir l’examen institutionnel", { kind: "choose", resolution: "recorded-review" })}</article>

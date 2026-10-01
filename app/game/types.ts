@@ -9,6 +9,8 @@
 import type { ControlBindings } from "./systems/controlBindings";
 import type { HomeworldProgress } from "./systems/homeworld";
 import type { SoloV66Campaign } from "./systems/campaignSoloV66";
+import type { SoloV67Campaign } from "./systems/campaignSoloV67";
+import type { HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import type { GameReserveV66State } from "./systems/gameReserveV66";
 import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
@@ -628,6 +630,10 @@ export interface SaveGame {
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
   youthTraining: YouthCampaignProgress | null;
   soloV66?: SoloV66Campaign | null;
+  /** The unaccompanied trial is independent of the earlier supervised tracks. */
+  soloV67?: SoloV67Campaign | null;
+  /** Physical city/biome connector; separate from expedition evidence. */
+  homeworldPassageV67?: HomeworldPassageStateV67 | null;
   gameReserveV66?: GameReserveV66State | null;
   version: number;
   createdAt: string;

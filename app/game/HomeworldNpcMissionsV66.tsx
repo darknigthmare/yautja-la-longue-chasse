@@ -1,14 +1,16 @@
 'use client';
 
 import { npcMissionsDialogueV66, npcMissionsJournalV66, type NpcMissionActionV66 } from './systems/homeworldNpcMissionsV66';
+import YautjaTranslationV67 from './YautjaTranslationV67';
 
 /** Presentation only: no storage and no local optimistic completion. The Hub
  * revalidates the actual V64 room/proximity before persisting every action. */
-export default function HomeworldNpcMissionsV66({ value, npcId, autonomousHunter, disabled, onAction }: {
+export default function HomeworldNpcMissionsV66({ value, npcId, autonomousHunter, disabled, reducedMotion = false, onAction }: {
   value: unknown;
   npcId: string | null | undefined;
   autonomousHunter: boolean;
   disabled: boolean;
+  reducedMotion?: boolean;
   onAction(action: NpcMissionActionV66): void;
 }) {
   const dialogue = npcMissionsDialogueV66(value, npcId, autonomousHunter);
@@ -16,7 +18,7 @@ export default function HomeworldNpcMissionsV66({ value, npcId, autonomousHunter
   const journal = npcMissionsJournalV66(value);
   return <section aria-label="Missions de la soigneuse" data-npc-missions-v66 data-npc-mission-phase={journal.phase}>
     <h4>{dialogue.title} · {journal.completed}/{journal.total}</h4>
-    <p>{dialogue.text}</p>
+    <p><YautjaTranslationV67 text={dialogue.text} paused={disabled} reducedMotion={reducedMotion || !autonomousHunter} /></p>
     <p><strong>Objectif :</strong> {dialogue.objective}</p>
     {dialogue.options.map(option => <button type="button" key={JSON.stringify(option.action)}
       disabled={disabled} data-npc-mission-action={option.action.kind} data-npc-mission-id={option.action.missionId}

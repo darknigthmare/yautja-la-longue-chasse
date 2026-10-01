@@ -12,6 +12,7 @@ import { createYouthTraining, normalizeYouthTraining, stepYouthTraining, getYout
 import styles from "./YouthTrainingScreen.module.css";
 import { isYouthCagePhase, youthCageCountdown, YOUTH_CAGE_REWARD } from "./systems/youthCage";
 import { isYouthPatrolPhase, YOUTH_PATROL_HOLD_TICKS, youthPatrolAssessment } from "./systems/youthPatrol";
+import YautjaTranslationV67 from "./YautjaTranslationV67";
 
 export interface YouthTrainingScreenProps {
   checkpoint?: unknown; bindings: ControlBindings; reducedMotion?: boolean; soundEnabled?: boolean;
@@ -197,14 +198,14 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       {state.phase === "desert-tracks" && <aside className={styles.fieldNotes} aria-label="Carnet de terrain" data-youth-field-notes>
         <strong>Observation : {state.desert?.clues ?? 0} / 3</strong>
         <progress max={YOUTH_DESERT_SCAN_TICKS} value={state.desert?.scanTicks ?? 0} aria-label="Examen de l’indice proche" />
-        {(state.desert?.clues ?? 0) > 0 && <p>{YOUTH_DESERT_CLUES[(state.desert?.clues ?? 1) - 1].reading}</p>}
+        {(state.desert?.clues ?? 0) > 0 && <p><YautjaTranslationV67 text={YOUTH_DESERT_CLUES[(state.desert?.clues ?? 1) - 1].reading} paused={effectivePaused} reducedMotion={reducedMotion} /></p>}
       </aside>}
       {state.phase === "patrol-route" && <aside className={styles.fieldNotes} aria-label="Halte de la patrouille" data-youth-patrol-halt>
         <strong>Haltes accompagnées : {state.patrol?.halts ?? 0} / 2</strong>
         <progress max={YOUTH_PATROL_HOLD_TICKS} value={state.patrol?.holdTicks ?? 0} aria-label="Vérification du repère avec le maître" />
         <p>Le maître doit être à proximité. Attends-le au repère, puis maintiens Interaction.</p>
       </aside>}
-      {state.phase === "patrol-assessment" && state.patrol && <aside className={styles.fieldNotes} aria-label="Évaluation de la patrouille" data-youth-patrol-assessment><strong>Bilan du maître</strong><p>{youthPatrolAssessment(state.patrol)}</p></aside>}
+      {state.phase === "patrol-assessment" && state.patrol && <aside className={styles.fieldNotes} aria-label="Évaluation de la patrouille" data-youth-patrol-assessment><strong>Bilan du maître</strong><p><YautjaTranslationV67 text={youthPatrolAssessment(state.patrol)} paused={effectivePaused} reducedMotion={reducedMotion} /></p></aside>}
       {["cage-intro", "cage-countdown", "cage-victory"].includes(state.phase) && <div className={styles.cageSignal} role="status" data-youth-cage-signal><strong>{state.phase === "cage-countdown" ? youthCageCountdown(state.phaseTick) : state.phase === "cage-victory" ? "VICTOIRE" : "UNBLOODED · LA FOSSE"}</strong><span>{state.phase === "cage-intro" ? "Duel de novices · non létal" : state.phase === "cage-countdown" ? "Attends le signal" : "Premier combat gagné"}</span></div>}
       {state.phase === "rest" && <div className={styles.rest} role="status"><p>Le camp s’apaise. La nuit passe.</p></div>}
       {paused && !props.externallyPaused && <div className={styles.backdrop}><div ref={panelRef} className={styles.pause} role="dialog" aria-modal="true" aria-label="Formation en pause" onKeyDown={event => {

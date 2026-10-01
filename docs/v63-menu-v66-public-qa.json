@@ -1,0 +1,433 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "phase": "v66-public",
+  "scope": "Isolated QA browser contexts only. No real user saves inspected. Entry reaches the nursery prompt; this is not a complete prologue playthrough.",
+  "results": [
+    {
+      "scenario": "empty",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "New game starts nursery"
+      }
+    },
+    {
+      "scenario": "normal",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur sans nom\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Sauvegarde confirmée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Continue enters existing campaign"
+      },
+      "manualCheckpoint": {
+        "status": "PASS",
+        "case": "Manual checkpoint first save, cancel replacement without writes, then confirmed replacement; other checkpoints unchanged"
+      }
+    },
+    {
+      "scenario": "filled",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur QA 1\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Cancel then confirmed replacement starts nursery; old slot rescue and four other slots preserved"
+      }
+    },
+    {
+      "scenario": "corrupt",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 5 · Chasseur QA 5\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Archives protégées (protected-save). Aucune donnée remplacée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Explicit recovery from readable slot starts campaign and preserves corrupt raw bytes"
+      }
+    },
+    {
+      "scenario": "future",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 5 · Chasseur QA 5\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Archives protégées (future-version). Aucune donnée remplacée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "All readable slots visible; future workspace cannot be overwritten"
+      }
+    },
+    {
+      "scenario": "corruptNoSlots",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Archives protégées (protected-save). Aucune donnée remplacée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "No readable slot: cancel writes nothing; explicit raw-preserving new start reaches nursery in an empty slot"
+      }
+    },
+    {
+      "scenario": "corruptSlot",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur QA 1\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Protected slot cannot be replaced; explicit backup recovery preserves damaged bytes"
+      }
+    },
+    {
+      "scenario": "futureSlot",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur QA 1\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Future slot stays protected and cannot be downgraded from backup"
+      }
+    },
+    {
+      "scenario": "readDenied",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "QA storage denied"
+      ],
+      "errors": [],
+      "originalBytesPreserved": null,
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      }
+    },
+    {
+      "scenario": "writeDenied",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Creation refuses denied storage with visible message",
+        "message": "Stockage plein. Les sauvegardes précédentes restent intactes."
+      }
+    },
+    {
+      "scenario": "heldLock",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Une autre session protège les archives, ou la demande a expiré. Réessayez."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      }
+    },
+    {
+      "scenario": "hungLock",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Le verrou des archives ne répond pas. Aucune écriture tardive ne sera exécutée ; réessayez ou rechargez l’interface."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true,
+      "action": {
+        "status": "PASS",
+        "case": "Refused storage/lock does not freeze menu and keeps refresh and DLC accessible"
+      }
+    }
+  ]
+}
