@@ -1,6 +1,6 @@
 {
   "release": "V67",
-  "status": "LOCAL_VERIFIED_PUBLICATION_PENDING",
+  "status": "RELEASED_AND_PUBLICLY_VERIFIED",
   "checkedAt": "2026-10-01T04:52:05.164Z",
   "scope": {
     "soloChaptersAdded": 1,
@@ -89,7 +89,7 @@
       "path": "work-local/v67/targeted-public-candidate.log",
       "sha256": "bf221e01199cf93fb28add20fc0d36a3ae194fa563536d3cba2dc46a031cb8b2"
     },
-    "validationBoundary": "The complete suite includes the final mobile caption test. The last codex scrolling and SVG mask adjustments were qualified separately by the affected tests and final compiled passage browser recipe.",
+    "validationBoundary": "The entire suite was rerun on the exact published source commit, including final codex scrolling, mask bounds and trailing newline normalization. Public browser reports exercise the deployment separately.",
     "priorFailure": {
       "tests": 2130,
       "pass": 2129,
@@ -102,6 +102,19 @@
       "isolatedRerun": {
         "path": "work-local/v67/capture-retest.log",
         "sha256": "34e9de25412065f182c24b0390b1aef79278edcb9755e415d7bd1a5afc7e1b6d"
+      }
+    },
+    "committedSourceRun": {
+      "status": "PASS",
+      "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+      "tests": 2131,
+      "pass": 2131,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": {
+        "path": "work-local/v67/full-tests-published-source.log",
+        "sha256": "524c787ffcedf5f4139285fc58ae34b8718b0e304539706bae2780deea69d58c"
       }
     }
   },
@@ -185,8 +198,34 @@
     "Solo floating charge and recovery captions remain within narrow and wide camera bounds."
   ],
   "publication": {
-    "status": "PENDING",
-    "url": "https://yautja-la-longue-chasse.vercel.app"
+    "status": "PASS",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+    "deploymentId": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+    "state": "READY",
+    "checkedAt": "2026-10-01T05:06:47.183Z",
+    "reports": [
+      {
+        "path": "docs/v67-solo-public-qa.json",
+        "sha256": "f5c867b9967d30ea913cd358b1c2500003a5a8cd80105c294707f632bb5e8acf"
+      },
+      {
+        "path": "docs/v67-translation-public-qa.json",
+        "sha256": "9457e3a58f386514bad664927e8b789e588207d5c5cd929f73566ef4ed68dba1"
+      },
+      {
+        "path": "docs/v67-homeworld-passages-public-qa.json",
+        "sha256": "0620fa2d3c0a19f44580cdf8cadec90c20631edaec890bf14d9ed72d689367cd"
+      },
+      {
+        "path": "docs/v67-public-native-assets.json",
+        "sha256": "eddbce88349552841be4acaa6d0383fa487e4bf18e865692a99f42bb9c1a4368"
+      },
+      {
+        "path": "docs/v67-homeworld-departure-public-qa.json",
+        "sha256": "64c6dd73b99d64fc99ccd361440214069884b02b43ddeaa3025677792fa846e2"
+      }
+    ]
   },
   "limitations": [
     "Main campaign is not finished; Young Blood recognition and Blooded rites remain separate undelivered chapters.",

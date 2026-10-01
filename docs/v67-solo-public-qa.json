@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T05:02:55.5025307Z",
+  "deployment": {
+    "id": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+    "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "identitySource": "Parent agent confirmed Vercel READY, exact commit and official alias before dispatch. Workspace HEAD independently matched that commit."
+  },
+  "rawReport": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/report.json",
+  "rawReportSha256": "637a13f82483b9f678dad663223026a633372585b8e2f5a85d7165d206e6fc90",
+  "checks": [
+    {
+      "name": "physically-entered-dojo-explicit-start",
+      "routeDistance": 5821.9011259125045,
+      "earlierYouthProofs": 20
+    },
+    {
+      "name": "refused-checkpoint-freezes-and-retries",
+      "tick": 120,
+      "receiptsRetained": 2
+    },
+    {
+      "name": "encounter-pause-cold-resume-mobile",
+      "exactStoredTick": 875,
+      "receipts": 5,
+      "bounds": [
+        {
+          "text": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "width": 62.171875,
+          "height": 44
+        },
+        {
+          "text": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "width": 65.78125,
+          "height": 44
+        },
+        {
+          "text": "←",
+          "x": 54.875,
+          "y": 763.3125,
+          "right": 98.875,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "→",
+          "x": 102.875,
+          "y": 763.3125,
+          "right": 146.875,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Saut",
+          "x": 150.875,
+          "y": 763.3125,
+          "right": 196.640625,
+          "bottom": 807.3125,
+          "width": 45.765625,
+          "height": 44
+        },
+        {
+          "text": "Toucher",
+          "x": 200.640625,
+          "y": 763.3125,
+          "right": 266.765625,
+          "bottom": 807.3125,
+          "width": 66.125,
+          "height": 44
+        },
+        {
+          "text": "Interagir",
+          "x": 270.765625,
+          "y": 763.3125,
+          "right": 338.109375,
+          "bottom": 807.3125,
+          "width": 67.34375,
+          "height": 44
+        }
+      ],
+      "touchMovement": {
+        "before": 2382.5,
+        "after": 2326.5
+      }
+    },
+    {
+      "name": "portrait-warning-visible",
+      "facing": -1,
+      "projectedX": 329.5,
+      "logicalWidth": 370
+    },
+    {
+      "name": "portrait-warning-visible",
+      "facing": 1,
+      "projectedX": 58,
+      "logicalWidth": 370
+    },
+    {
+      "name": "all-nine-proofs-and-return-survive-reload",
+      "noAdultRewardsOrRanks": true
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "visualReview": {
+    "status": "PASS",
+    "personallyInspected": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/mobile-warning-left.jpg",
+        "sha256": "42037fbd1768a4265f6b0913d5de0263cba62d9778a97fdf0aaee84b8a75cf7f"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/mobile-warning-right.jpg",
+        "sha256": "fe187bb422bc16d72c1c178f566e6456c23b0fd6cad44d0a0a16e9c5ec09ed3a"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/mobile-recovery.jpg",
+        "sha256": "72da3145b3947a2feab417672ece0b22eb09c3d083a229f85e473cb6823573e7"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/quota-retains-scene.jpg",
+        "sha256": "5aa4eedb7cae41ab931e3d9a1a378f29391060950a53d358fea4b178d2484a47"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/phase-debrief.jpg",
+        "sha256": "761138aebd851a1bab23a8d8fb862bfe32cfd50bdbfbd72406b71d1dedd65dda"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/complete.jpg",
+        "sha256": "44c487366c5fc17681320d85b23ea972f7e3afc0a7ef9f98320fdeb059d78ee4"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-public/durable-return.jpg",
+        "sha256": "3dad3d6821ebe3904a5ee644dc2dc6bf30b6fba75519dee0c8c3ebed08e37b22"
+      }
+    ],
+    "findings": [
+      "Both native grazer orientations show the head before the charge in393x852 portrait. CHARGE IMMINENTE is fully within the canvas on both sides.",
+      "FENETRE DE TOUCHE and the recovery instruction are fully visible; all seven mobile buttons fit and are at least44px tall.",
+      "A real touch input moves the actor; a paused checkpoint survives a cold reload with exactlyfive prior receipts.",
+      "Isolated quota refusal visibly freezes the scene, retains the result and offers retry. Recovery completes without losing earlier progress.",
+      "The physical mentor debrief displays decorative glyphs with immediate-reading control; movement instructions remain clear.",
+      "All nine receipts, the single unguided-hunt evidence and the return to Homeworld survive reload; no automatic rite, rank, gear, ship or kill statistics are granted."
+    ]
+  },
+  "scope": "Public production runtime in a fresh isolated browser. Initial synthetic campaign actually played through nursery, training and Premières Pistes. Ridge route played publicly with two charge orientations on mobile; ravine additionally covered by local input-only tests. No personal saves read or modified.",
+  "limits": "This is the next playable chapter, not the complete solo campaign. Young Blood recognition rite and later Blooded/ship progression are still separate future work. Existing native V48/V49/V52 art is reused; no new animation assets claimed.",
+  "sourceHashes": [
+    {
+      "path": "app/game/FirstHuntSoloV67.tsx",
+      "sha256": "48351ebe53b0c2e5a6305d48a0aee2c864ffe28ffdf26b1857cff6ee749195f4"
+    },
+    {
+      "path": "app/game/FirstHuntSoloV67.module.css",
+      "sha256": "bcb22ecad2287f97b1c9f8474469a95b82175e87431a43fd0f0f311aa9a523cc"
+    },
+    {
+      "path": "app/game/firstHuntSoloV67Rendering.ts",
+      "sha256": "38bdc112a1ed2f03c832e615bab736cdbaccea6f53f48a75c4efdca31c4c4c06"
+    },
+    {
+      "path": "app/game/systems/firstHuntSoloV67.ts",
+      "sha256": "89d6ff7bc20da877be489a970b7a719b26507165a929ffe00b7657bc0251655e"
+    },
+    {
+      "path": "app/game/systems/campaignSoloV67.ts",
+      "sha256": "19ff79371d62e12e415c61e223bf96cf9a58335920340674eeefb8a3f52a4b86"
+    },
+    {
+      "path": "scripts/verify-first-hunt-solo-v67.mjs",
+      "sha256": "6032912ce37b35341620e5e1185c3614bd5247206909dff74a67fbe0772715ea"
+    }
+  ],
+  "localEvidencePreserved": [
+    "docs/v67-solo-local-browser-qa.json",
+    "docs/v67-solo-local-browser-pre-caption-qa.json",
+    "docs/v67-solo-targeted-tests.json"
+  ],
+  "sourceBuildNote": "Parent reported only trailing blank-line removal in component/QA source after the local build, with trimEnd equivalence recorded in release gates. No executable content change; this public run independently exercises the released version."
+}

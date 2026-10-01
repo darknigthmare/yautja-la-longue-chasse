@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    "story: physical doorway/NPC, actual Hub greeting and dialogue, accessible French, enabled action before completion, keyboard skip/focus and mobile reading",
+    "npc: physical doorway/NPC, actual Hub greeting and dialogue, accessible French, enabled action before completion, keyboard skip/focus and mobile reading",
+    "Actual youth assessment entered by the live engine from its last played ambush checkpoint; reading skip does not pause the canvas; simulation ticks continue",
+    "Existing youth pause menu still freezes progression and restores the canvas after reading"
+  ],
+  "captures": [
+    "work-local\\v67\\qa\\translation-public\\story-decoding.jpg",
+    "work-local\\v67\\qa\\translation-public\\story-mobile-readable.jpg",
+    "work-local\\v67\\qa\\translation-public\\npc-decoding.jpg",
+    "work-local\\v67\\qa\\translation-public\\npc-mobile-readable.jpg",
+    "work-local\\v67\\qa\\translation-public\\youth-assessment-decoding.jpg",
+    "work-local\\v67\\qa\\translation-public\\youth-pause-menu.jpg"
+  ],
+  "routes": [
+    {
+      "kind": "city-and-door",
+      "pointId": "training-service",
+      "buildingId": "training-hall",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 2230,
+        "y": 1868
+      },
+      "distance": 5821.9011259125045
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "training-service",
+      "buildingId": "training-hall",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "training-hall",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 2230,
+        "y": 1868
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 2230,
+        "y": 1868
+      },
+      "approach": {
+        "x": 3430,
+        "y": 1976.5
+      },
+      "distance": 2087.455450292026
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Actual compiled V67 app. Adult baseline fixture and model-played youth checkpoint imported only before gameplay. Physical city walking/doors and actual live-engine transition from the last ambush checkpoint to assessment; not full youth campaign replay.",
+  "visualReview": {
+    "status": "PASS",
+    "reviewer": "agent",
+    "captures": [
+      {
+        "path": "work-local/v67/qa/translation-public/story-decoding.jpg",
+        "sha256": "5d741daca11b643165a4182e2bb6a8f3b8284ce5dad3212192626cfefc0724be"
+      },
+      {
+        "path": "work-local/v67/qa/translation-public/story-mobile-readable.jpg",
+        "sha256": "89eebe39de17876603bdb6c6d7588f2ee19d43c49efd298d3fb0712b020352f1"
+      },
+      {
+        "path": "work-local/v67/qa/translation-public/npc-decoding.jpg",
+        "sha256": "78123da76d56807bfeab3073f9c1b2969fd7a3aaa92e479bbde64d36c112ecc7"
+      },
+      {
+        "path": "work-local/v67/qa/translation-public/npc-mobile-readable.jpg",
+        "sha256": "88b3fe4f5a334bf9e3636d403b2cf2e29baf7d40ea2dce6abbef83a2e50fea12"
+      },
+      {
+        "path": "work-local/v67/qa/translation-public/youth-assessment-decoding.jpg",
+        "sha256": "4a526eec8c93aa86a88c369d5c42fe75021a3f704707f660262133f1efad9e08"
+      },
+      {
+        "path": "work-local/v67/qa/translation-public/youth-pause-menu.jpg",
+        "sha256": "133bb5305479f8b7739a732ed19007e3315fc38086828c62e79485f45d6334a0"
+      }
+    ],
+    "observations": [
+      "Actual Hub greetings and both mission introductions display angular amber strokes while objectives and action buttons remain in plain French.",
+      "Completed mobile text wraps within the dialog at 393x852; the longer story dialog needs vertical scrolling for its last control, and is not claimed to fit in a single viewport.",
+      "Keyboard skip focus is visibly preserved in both adult dialogs. Youth skip is separately checked for no unintended pause and continued simulation ticks; its post-click focus was not independently asserted in this application recipe.",
+      "The youth assessment is legible in its bottom-right narrative panel; the manual pause overlay clearly displays its instructions and resume action."
+    ]
+  },
+  "public": true,
+  "checkedAt": "2026-10-01T05:03:57.111Z",
+  "deployment": {
+    "id": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+    "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "state": "READY",
+    "identityEvidence": {
+      "path": "work-local/v67/deployment-ready.json",
+      "sha256": "235617b385121d61fb1759713bcb7a59260563bbc1395ec92bbd79e29e19271c"
+    },
+    "identityVerification": "Matched deployment ID, READY state, commit and official alias from the saved Vercel response; browser separately asserted visible content version V67. Current runtime sources match the same local commit."
+  },
+  "reportEvidence": {
+    "path": "work-local/v67/qa/translation-public/report.json",
+    "sha256": "5cadea2c29424f849573b371d1b548f32a8254b3a3ebe04aab6f64076d350dac"
+  },
+  "recipe": {
+    "path": "scripts/verify-yautja-translation-application-v67.mjs",
+    "sha256": "180facbc945d7be0174ed8b6538327f346c362fd09858ca6d71cc2aec91529a6"
+  },
+  "runtime": [
+    {
+      "path": "app/game/YautjaTranslationV67.tsx",
+      "sha256": "134907f004b2123350edb60974eabbd2733442a278eb7e4fc5d1f43132f2af74"
+    },
+    {
+      "path": "app/game/YautjaTranslationV67.module.css",
+      "sha256": "200bf3b27ab52038f31fb33501eb2fef7e9d91d94cd047943412a5a005dd5325"
+    },
+    {
+      "path": "app/game/systems/yautjaTranslationV67.ts",
+      "sha256": "d6137613c6a55e710329f930279bb8013ab4e5982947ab3c829ec85480eccc5f"
+    },
+    {
+      "path": "app/game/HomeworldSideStoryV66.tsx",
+      "sha256": "a01ab4345525c1cbbf9898ac7f3cb4b711bc51d1e38ff0f1a7d72acac652e74b"
+    },
+    {
+      "path": "app/game/HomeworldNpcMissionsV66.tsx",
+      "sha256": "2dd20e67280bac032413898f7e6b6752b45d977048c1f49dee8db53beafae291"
+    },
+    {
+      "path": "app/game/YouthTrainingScreen.tsx",
+      "sha256": "d133aa78e760f131a7ffd3940cc4e2af399a4e1df9ed42f2871687e393f2c156"
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "7ee5a43e18bff97b0b1c362d2734687c84f8eeff9d36376b2796ca47ca33da7f"
+    }
+  ],
+  "limits": [
+    "No full youth campaign browser replay: a normal engine-played checkpoint is imported before gameplay, then the live game advances from the final ambush frame.",
+    "No canonical Yautja alphabet, language transcription or voice generation."
+  ]
+}

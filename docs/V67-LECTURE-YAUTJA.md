@@ -25,7 +25,7 @@ La recette réelle de la compilation V67 sur `http://127.0.0.1:4186` passe aussi
 
 Les horloges contrôlées du harnais avancent durant le chargement différé et le décodage des images ; leur arrêt complet empêchait la scène de se monter. Ces corrections concernent la recette, pas le jeu. Les deux échecs de harnais sont conservés et expliqués dans `docs/v67-translation-application-qa.json`, séparé des preuves du composant.
 
-La recette publique V67 attend le signal de publication READY. Les preuves publiques V66 demeurent dans leurs fichiers séparés et ne sont pas renommées V67. Les corrections ultérieures du codex des passages ou du texte du Solo ne sont pas couvertes par cette preuve locale limitée aux fichiers de traduction répertoriés avec leur SHA.
+La recette publique V67 a passé ses quatre groupes et ses six captures ont été inspectées le 1er octobre 2026 sur le déploiement `dpl_CitLGkEgsR22vPyVz7tXip8rfHMG`, commit `2485dacc369f5887d0ec5c7c60585a31f35ccce5`. Les preuves publiques V66 demeurent dans leurs fichiers séparés et ne sont pas renommées V67. Les corrections ultérieures du codex des passages ou du texte du Solo ne sont pas couvertes par cette preuve locale limitée aux fichiers de traduction répertoriés avec leur SHA.
 
 Commande de répétition publique, à lancer uniquement après READY :
 
@@ -38,4 +38,4 @@ $env:V67_TRANSLATION_APPLICATION_OUTPUT='work-local/v67/qa/translation-public'
 node scripts/verify-yautja-translation-application-v67.mjs
 ```
 
-Le futur rapport public sera `docs/v67-translation-public-qa.json`, sans écraser la recette locale.
+Le rapport public est `docs/v67-translation-public-qa.json`, sans écraser la recette locale. Le contrôle public distinct de départ réel depuis la borne Ash, de création d’un trajet à tick zéro et de retraite explicite passe également : deux groupes, trois captures inspectées, aucune récompense modifiée (`docs/v67-homeworld-departure-public-qa.json`).

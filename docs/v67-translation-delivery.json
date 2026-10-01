@@ -1,6 +1,6 @@
 {
   "release": "V67",
-  "status": "LOCAL_COMPILED_GAME_QA_PASS_PUBLIC_V67_PENDING",
+  "status": "PUBLIC_V67_TRANSLATION_QA_PASS",
   "loreStatus": "Original decorative strokes, not a canonical Yautja alphabet or translation table",
   "newBitmapAssets": 0,
   "newVoices": 0,
@@ -32,7 +32,14 @@
       "url": "http://127.0.0.1:4186",
       "scope": "Actual compiled V67 app. Adult baseline fixture and model-played youth checkpoint imported only before gameplay. Physical city walking/doors and actual live-engine transition from the last ambush checkpoint to assessment; not full youth campaign replay."
     },
-    "publicV67": false
+    "publicV67": {
+      "status": "PASS",
+      "groups": 4,
+      "capturesReviewed": 6,
+      "deployment": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+      "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+      "url": "https://yautja-la-longue-chasse.vercel.app"
+    }
   },
   "proofs": [
     {
@@ -46,6 +53,10 @@
     {
       "path": "docs/v67-translation-application-qa.json",
       "sha256": "cfbee9f48538033effe593ac8438ee93aa635cf72074dc32407f691335f2d789"
+    },
+    {
+      "path": "docs/v67-translation-public-qa.json",
+      "sha256": "9457e3a58f386514bad664927e8b789e588207d5c5cd929f73566ef4ed68dba1"
     }
   ],
   "files": [
@@ -89,5 +100,35 @@
       "path": "scripts/verify-yautja-translation-application-v67.mjs",
       "sha256": "180facbc945d7be0174ed8b6538327f346c362fd09858ca6d71cc2aec91529a6"
     }
-  ]
+  ],
+  "publication": {
+    "status": "PASS",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+    "deploymentId": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+    "state": "READY",
+    "checkedAt": "2026-10-01T05:06:47.183Z",
+    "reports": [
+      {
+        "path": "docs/v67-solo-public-qa.json",
+        "sha256": "f5c867b9967d30ea913cd358b1c2500003a5a8cd80105c294707f632bb5e8acf"
+      },
+      {
+        "path": "docs/v67-translation-public-qa.json",
+        "sha256": "9457e3a58f386514bad664927e8b789e588207d5c5cd929f73566ef4ed68dba1"
+      },
+      {
+        "path": "docs/v67-homeworld-passages-public-qa.json",
+        "sha256": "0620fa2d3c0a19f44580cdf8cadec90c20631edaec890bf14d9ed72d689367cd"
+      },
+      {
+        "path": "docs/v67-public-native-assets.json",
+        "sha256": "eddbce88349552841be4acaa6d0383fa487e4bf18e865692a99f42bb9c1a4368"
+      },
+      {
+        "path": "docs/v67-homeworld-departure-public-qa.json",
+        "sha256": "64c6dd73b99d64fc99ccd361440214069884b02b43ddeaa3025677792fa846e2"
+      }
+    ]
+  }
 }

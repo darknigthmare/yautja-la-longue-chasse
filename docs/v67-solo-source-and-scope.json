@@ -37,9 +37,10 @@
     "targetedTests": "tests/first-hunt-solo-v67.test.mjs, tests/campaign-solo-v67.test.mjs, tests/solo-save-v67.test.mjs",
     "browserRecipe": "scripts/verify-first-hunt-solo-v67.mjs",
     "browserStatus": "PASS_LOCAL_FINAL_UI_6_CHECKS",
-    "releaseStatus": "NOT_PUBLISHED_V67",
+    "releaseStatus": "PUBLISHED_AND_PUBLIC_BROWSER_VERIFIED",
     "browserProof": "docs/v67-solo-local-browser-qa.json",
     "browserProofSha256": "c402c1208937f320e004b06ada6bd87fbc35d7620a1a37a69ef89597cfb7c9aa",
-    "finalCaptionRecheck": "PASS_BOTH_DIRECTIONS_AND_RECOVERY_INSPECTED"
+    "finalCaptionRecheck": "PASS_BOTH_DIRECTIONS_AND_RECOVERY_INSPECTED",
+    "publicBrowserReport": "docs/v67-solo-public-qa.json"
   }
 }
