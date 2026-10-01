@@ -1,0 +1,35 @@
+# V69 — Seuils, communautés et commanditaires
+
+Ce lot poursuit la campagne et les villages du clan sans déclarer achevés le jeu entier ou les demandes antérieures. Il conserve les ressources natives et les anciennes sauvegardes. Les communautés et les nouveaux récits sont des créations originales du jeu, pas des lieux canoniques certifiés 1:1.
+
+## Contenu intégré
+
+- **Les Seuils du Premier Sang**, après la Cohorte des Aspirants : observation d'un vétéran en mouvement, trois postes de progression discrète, trois sas temporisés, reconnaissance et escorte d'un novice, retour physique, rapport et attestation. Treize phases et douze reçus ordonnés. Ce chapitre prépare le rite ; il conserve Young Blood et ne donne ni plasma, vaisseau personnel, trophée ni chasse qualifiante.
+- **Cité du clan** : quarante-deux habitants supplémentaires, soit quatre-vingt-dix-huit au total, répartis dans les quatorze quartiers. Routines locales, trois états d'activité et dialogues adaptés. Les nouveaux trajets restent hors de l'emprise peinte des toits ; les autres habitants gardent une occultation correcte lorsque la façade s'efface pour le héros. Trois braseros reposent sur le sol sans fermer les trajets des portes ou les sorties.
+- **Dix villages** : cent quatre-vingts habitants supplémentaires, soit trente par village et trois cents au total ; quarante activités de communauté et cent quatre-vingts équipements supplémentaires de socle/façade. Les stations, portes, checkpoints et témoins des objectifs V68 restent conservés. Ces équipements n'ajoutent pas cent quatre-vingts nouveaux obstacles de rue.
+- **Huit missions annexes**, organisées en deux circuits de quatre chapitres, avec dix-huit actions de terrain ordonnées. Chaque région est liée après le rapport réel à son guide ; chaque chapitre suivant exige la remise au commanditaire précédent. Vingt-quatre contrats antérieurs conservés, trente-deux au total. Les récompenses restent des marques de clan, pas des promotions de rang.
+- **Accès des jeunes** : les villages ordinaires et leurs relevés deviennent accessibles après la formation et les Premières Pistes effectivement accomplies. Le rang du profil seul ne suffit pas. Le vaisseau personnel, les chasses hors planète et la Réserve gardent leurs conditions propres.
+- **Continuité du héros** : la même plaque Unblooded native et la même stature de 82 unités sont utilisées en cité, sur les corniches et dans les villages/intérieurs. Le jeune ne devient plus un Classic adulte masqué au changement de scène. Le preset enregistré, les collisions et les droits restent inchangés.
+
+## Ressources et sauvegardes
+
+Un nouvel accessoire OpenAI bitmap, `public/game/homeworld/v69/clan-brazier.png`, est intégré sans retoucher ses pixels. Dimensions natives : 1254×1254 RGBA ; SHA-256 `c41a36b9fb94489f21fd2157800666809a0342787781fce982ac622cc0b9f0bb`. Il figure un artisanat original du clan. Les corps, dessins de marche, bâtiments, planchers et cellules de mobilier existants sont réemployés ; aucune nouvelle planche complète de marche, d'accroupissement ou de travail à la forge n'est annoncée.
+
+La sauvegarde globale passe de 9 à 10 et le registre des nouveaux contrats de 1 à 2 à leur première acceptation. Les migrations conservent les anciens progrès ; les anciens clients protègent le contenu futur. Les douze reçus du chapitre, la sauvegarde manuelle, les refus de quota, les écritures incertaines et les conflits de propriétaire sont couverts. Une écriture immédiate aux postes, sas et signaux d'escorte empêche un déplacement de dépasser leur frontière avant confirmation durable.
+
+Le codex `docs/homeworld-placement-codex-v69.json` énumère 741 éléments de cité, 98 habitants et les dix communautés. Les mesures villageoises sont détaillées dans `docs/v69-homeworld-village-life-codex.json`.
+
+## Vérification et publication
+
+- Suite globale : **2 248/2 248 réussis**, sans exclusion. Après la dernière correction du sélecteur visuel du jeune héros, **264/264 tests des modules affectés** repassent, y compris les trois nouveaux contrôles de stature et de continuité. Ces ensembles se recoupent et ne sont pas additionnés.
+- Compilations portable/vinext et Next/webpack refaites après ce correctif : réussies. TypeScript sans erreur et CSS compilé The Pit validé. Le lint global conserve trois avertissements préexistants sur les images, aucune erreur ; les fichiers du dernier correctif passent leur contrôle ciblé.
+- Chapitre V69 complet : **7 contrôles et 19 captures inspectées**, avec quota, tactile, pause, sas expiré, reprise froide, douze reçus et retour durable. Il s'agit de la préparation, pas de Blooded.
+- Cité : **4 contrôles et 6 captures** sur la dernière reconstruction, avec routes clavier, braseros natifs, routines, accès du jeune au tableau et HUD mobile. Menus et archives : **12 scénarios et 18 captures**, avec nouvelle partie, confirmations, récupération protégée et sauvegardes futures.
+- Villages : **10/10 communautés et 60 captures** ; après le correctif du héros, trois implantations adultes représentatives sont rejouées avec **18 captures**, sans changer l'adulte. Le trajet jeune joue réellement cité, contrat, corniche et guide, puis intérieur et reprise : **2 contrôles, 5 vérifications de source/stature, 6 captures**, preset conservé. Les prérequis de jeunesse sont des fixtures parcourues dans les modèles, pas des chapitres annoncés comme rejoués dans ce navigateur.
+- Contrats : premier chapitre à deux biomes, deux retours guides et remise réelle, **4 contrôles et 10 captures inspectées**, paiement unique de 44 marques puis chapitre suivant accepté sans preuve héritée. Les huit nouvelles missions restent couvertes par le modèle ; elles ne sont pas toutes annoncées comme jouées de bout en bout en navigateur.
+
+Les rapports précisent leurs fixtures, trajets et limites. Les premières captures de socles villageois restent des références de placement, sans attester toutes les couleurs ou tous les angles. La compilation, les tests locaux, le commit/push, Vercel READY, HTTP et les parcours publics sont des preuves distinctes. La publication publique sera consignée dans `docs/v69-publication.json` après sa validation ; les rapports locaux seuls ne la prouvent pas.
+
+## Restant dans la campagne globale
+
+Le Temple des Trois Ombres, la vraie chasse qualifiante au xénomorphe et le rite Blooded, les expéditions autonomes et les développements ultérieurs de la campagne restent à produire. Le lot ne certifie pas tous les anciens objectifs de sprites The Pit, d'arènes, de DLC ou d'animations comme achevés. Les huit nouveaux chapitres des deux circuits sont parcourus dans les modèles ; la recette navigateur dédiée joue le premier chapitre à deux biomes et la remise ouvrant le suivant, sans revendiquer les huit missions entièrement jouées par un humain.

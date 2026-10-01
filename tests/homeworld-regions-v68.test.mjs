@@ -32,7 +32,7 @@ function getSurvey(id) {
   for (const trace of api.HOMEWORLD_REGION_TRACES_V68) state = action(walk(state, trace));
   assert.equal(state.traces.length, 3); return state;
 }
-test('civilian routes preserve Blooded autonomy and reserve investigation restriction', () => {
+test('civilian routes preserve independent campaigns, require real youth training and retain the reserve investigation restriction', () => {
   for (const id of api.HOMEWORLD_REGION_IDS_V68) assert.equal(api.canEnterHomeworldRegionV68(alive, id).allowed, id !== 'forbidden-reserve');
   assert.equal(api.canEnterHomeworldRegionV68({ ...alive, prologue: { chronicle: null } }, 'pillar-jungle').allowed, false);
   assert.equal(api.canEnterHomeworldRegionV68({ homeworld: { expeditions: { 'glass-desert': {} } } }, 'forbidden-reserve').allowed, true);

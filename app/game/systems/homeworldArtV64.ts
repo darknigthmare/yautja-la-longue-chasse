@@ -1,4 +1,5 @@
 import type { HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
+import brazierV69 from '../data/homeworldBrazierV69.json';
 
 /** Original V64 architecture. Native PNGs remain unchanged; all sockets use source pixels.
  * These are game adaptations, not canonical 1:1 descriptions of Yautja dwellings. */
@@ -172,6 +173,7 @@ export const HOMEWORLD_BUILDING_ART_V64 = {
 
 /** heightWorld means PAINTED height including projected depth; cell pivots are LOCAL pixels. */
 export const HOMEWORLD_PROP_ART_V64 = {
+  'brazier-v69': { ...brazierV69, physicalHeightWorldEstimate: 70 },
   "bench": {
     "src": "/game/homeworld/v64/props-atlas.png",
     "sourceWidth": 1254,

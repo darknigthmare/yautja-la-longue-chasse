@@ -23,7 +23,7 @@ export interface HomeworldElementRecordV64 {
   constraints: string[]; asset: string | null;
 }
 const rectangle = (point: Point, width: number, depth: number) => ({ left: point.x - width / 2, right: point.x + width / 2, top: point.y - depth / 2, bottom: point.y + depth / 2 });
-const propNames = { bench: 'Banc', chest: 'Caisse', locker: 'Casier', console: 'Console', workshop: 'Poste de travail', cot: 'Couchette', table: 'Table', 'rock-plant': 'Roche végétalisée', beacon: 'Borne' };
+const propNames = { bench: 'Banc', chest: 'Caisse', locker: 'Casier', console: 'Console', workshop: 'Poste de travail', cot: 'Couchette', table: 'Table', 'rock-plant': 'Roche végétalisée', beacon: 'Borne', 'brazier-v69': 'Brasero du clan' };
 const architectureSources = [
   { label: 'AVPR · entretien des réalisateurs', url: 'https://gizmodo.com/aliens-vs-predator-2-requiem-directors-tell-io9-about-335290', note: 'Référence de direction artistique : volumes courbes, influence aztèque et sophistication industrielle. Aucun plan ni dimension de cette ville n’en est déduit.' },
   { label: 'Alex Nice · concepts Homestead de Badlands', url: 'https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm', note: 'Concepts publiés par leur auteur : vocabulaire architectural seulement. Ces cinq bâtiments et leurs fonctions restent des créations originales.' },

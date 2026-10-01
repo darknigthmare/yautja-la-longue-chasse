@@ -11,6 +11,7 @@ import type { HomeworldProgress } from "./systems/homeworld";
 import type { SoloV66Campaign } from "./systems/campaignSoloV66";
 import type { SoloV67Campaign } from "./systems/campaignSoloV67";
 import type { SoloV68Campaign } from "./systems/campaignSoloV68";
+import type { SoloV69Campaign } from "./systems/campaignSoloV69";
 import type { HomeworldRegionStateV68 } from "./systems/homeworldRegionsV68";
 import type { HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import type { GameReserveV66State } from "./systems/gameReserveV66";
@@ -635,6 +636,7 @@ export interface SaveGame {
   /** The unaccompanied trial is independent of the earlier supervised tracks. */
   soloV67?: SoloV67Campaign | null;
   soloV68?: SoloV68Campaign | null;
+  soloV69?: SoloV69Campaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;

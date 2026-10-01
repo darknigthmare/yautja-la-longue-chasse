@@ -13,6 +13,7 @@ import { SHIP_LEVEL_ART_V22 } from "../shipInteriorV22";
 import { HOMEWORLD_CITY_ART_V54 } from "./homeworldCityArtV54";
 import residencesV64 from "../data/homeworldResidencesV64.json";
 import lifeV68 from "../data/homeworldLifeV68.json";
+import lifeV69 from "../data/homeworldLifeV69.json";
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from "./homeworldArtV64";
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
@@ -79,7 +80,7 @@ export interface HomeworldDecorProp {
   readonly asset: string;
   readonly plane: "rear" | "ground" | "front";
   readonly fadeRadius?: number;
-  readonly artId?: "bench" | "chest" | "locker" | "console" | "workshop" | "cot" | "table" | "rock-plant" | "beacon";
+  readonly artId?: "bench" | "chest" | "locker" | "console" | "workshop" | "cot" | "table" | "rock-plant" | "beacon" | "brazier-v69";
   readonly footprint?: { readonly halfWidth: number; readonly halfDepth: number };
 }
 
@@ -344,6 +345,7 @@ function nativePropV64(id: string, districtId: string, artId: keyof typeof HOMEW
 }
 /** Ground-front pivots, not decorative screen rectangles. All legacy props remain archived above. */
 export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
+  ...(lifeV69.decorations ?? []) as HomeworldDecorProp[],
   ...lifeV68.decorations as HomeworldDecorProp[],
   ...HOMEWORLD_BUILDINGS.filter(building => building.entranceKind === "civic").map(building =>
     nativePropV64(`beacon-v64-${building.id}`, building.districtId, "beacon", building.x + (building.id === "trophy-mausoleum" ? -155 : 155), building.y + 110)),

@@ -10,6 +10,8 @@ export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldInteriorsV64';
 export * from './app/game/systems/homeworldContractsV68';
 export * from './app/game/systems/homeworldRegionsV68';
+export * from './app/game/systems/homeworldAccessV69';
+export {createNurseryCampaign} from './app/game/systems/nurseryCampaign';
 export * from './app/game/save';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' });
 const api = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
@@ -35,12 +37,12 @@ function callback(name, environment) {
   }).outputText;
   return runInNewContext(`(()=>{${javascript};return handler;})()`, environment);
 }
-function fixture() {
+function fixture(initialOverrides = {}) {
   const values = new Map(), writes = [], notices = []; let reject = false, rejectReadback = false, failNextRead = false, dialog = null, screens = [];
   const key = 'contracts-v68';
   const storage = { getItem(name) { if (name === key && failNextRead) { failNextRead = false; throw new Error('QA readback failure after committed primary'); } return values.get(name) ?? null; }, removeItem: name => values.delete(name),
     setItem(name, value) { if (reject && name === key) throw new DOMException('QA refusal', 'QuotaExceededError'); values.set(name, value); if (rejectReadback && name === key) { rejectReadback = false; failNextRead = true; } } };
-  const initial = api.writeSaveWithStatus(api.defaultSave('2026-10-01T00:00:00.000Z'), storage, key).save;
+  const initial = api.writeSaveWithStatus({ ...api.defaultSave('2026-10-01T00:00:00.000Z'), ...initialOverrides }, storage, key).save;
   const environment = { ...api, structuredClone, crypto: { randomUUID: () => 'v68-new-run' },
     save: initial, saveRef: { current: initial }, entry: { ownerCreatedAt: initial.createdAt }, progressRef: { current: initial.homeworld },
     sessionAliveRef: { current: true }, pendingTerminalRunRef: { current: null }, pendingSocialWriteRef: { current: null }, activeHuntSessionRef: { current: null },
@@ -97,7 +99,33 @@ function fixture() {
     assert(environment.persistSocialProgress({ homeworldRegionV68: null })); select('market-service');
     assert(api.homeworldContractsJournalV68(environment.saveRef.current.homeworld.contractsV68).active[0].ready);
   };
-  return { environment, storage, values, writes, notices, screens, select, installTrackCheckpoint, prepareDelivery, setRejected(value) { reject = value; }, rejectNextReadback() { rejectReadback = true; },
+  const prepareCircuitDelivery = () => {
+    select('market-service'); environment.submitContractV68({ kind: 'accept', contractId: 'v69-return-1' });
+    for (const regionId of ['ash-marches', 'thermal-caves']) {
+      assert(environment.openHomeworldRegionV68(regionId));
+      const runId = environment.saveRef.current.homeworldRegionV68.runId;
+      // Declared valid mid-route callback fixture; the separate V69 browser
+      // recipe walks both connectors and the traces without injected positions.
+      let pending;
+      if (regionId === 'ash-marches') pending = installTrackCheckpoint();
+      else {
+        const state = api.createHomeworldRegionV68(regionId, runId, true), trace = api.HOMEWORLD_REGION_TRACES_V68[2];
+        state.tick = 12000; state.walked = 24000; state.actor = { ...state.actor, x: trace.x, y: trace.y };
+        state.greeted = ['guide']; state.traces = ['trail-1', 'trail-2'];
+        assert(api.normalizeHomeworldRegionV68(state)); assert(environment.persistSocialProgress({ homeworldRegionV68: state }));
+        pending = api.stepHomeworldRegionV68(state, { interact: true });
+      }
+      assert.equal(pending.pendingFieldEvent?.action, regionId === 'ash-marches' ? 'track' : 'survey'); assert(environment.fieldHomeworldRegionV68(pending.pendingFieldEvent, pending));
+      const guide = api.HOMEWORLD_REGIONS_V68[regionId].residents[0], returned = structuredClone(environment.saveRef.current.homeworldRegionV68);
+      returned.tick += 6000; returned.walked += 8500; returned.actor = { ...returned.actor, x: guide.x, y: guide.y + 95, vx: 0, vy: 0 };
+      assert(api.normalizeHomeworldRegionV68(returned)); assert(environment.persistSocialProgress({ homeworldRegionV68: returned }));
+      const report = api.stepHomeworldRegionV68(returned, { interact: true });
+      assert.equal(report.pendingFieldEvent?.action, 'report'); assert(environment.fieldHomeworldRegionV68(report.pendingFieldEvent, report));
+      assert(environment.persistSocialProgress({ homeworldRegionV68: null }));
+    }
+    select('market-service'); assert(api.homeworldContractsJournalV68(environment.saveRef.current.homeworld.contractsV68).active[0].ready);
+  };
+  return { environment, storage, values, writes, notices, screens, select, installTrackCheckpoint, prepareDelivery, prepareCircuitDelivery, setRejected(value) { reject = value; }, rejectNextReadback() { rejectReadback = true; },
     get current() { return environment.saveRef.current; }, get dialog() { return dialog; } };
 }
 const action = (kind = 'accept') => ({ kind, contractId: 'ash-marches-track' });
@@ -208,7 +236,7 @@ test('a committed reward with failed readback is reconciled together with its ex
 test('future records stay protected; malformed contracts and villages recover a valid backup without importing the invalid primary', () => {
   for (const field of ['contracts', 'region']) for (const future of [true, false]) {
     const save = api.defaultSave('2026-10-01T00:00:00.000Z');
-    if (field === 'contracts') save.homeworld.contractsV68 = future ? { version: 2, keep: ['exact', 'bytes'] } : { version: 1, serial: 1, entries: [{ id: 'fake', status: 'completed' }] };
+    if (field === 'contracts') save.homeworld.contractsV68 = future ? { version: api.HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69 + 1, keep: ['exact', 'bytes'] } : { version: 1, serial: 1, entries: [{ id: 'fake', status: 'completed' }] };
     else save.homeworldRegionV68 = { ...api.createHomeworldRegionV68('ash-marches', 'future-run'), version: future ? 2 : 1, actor: { x: -999, y: 1 } };
     const primary = JSON.stringify(save), backup = JSON.stringify(api.defaultSave(save.createdAt));
     const values = new Map([['protected', primary], ['protected.backup', backup]]), writes = [];
@@ -221,4 +249,57 @@ test('future records stay protected; malformed contracts and villages recover a 
     assert.equal(api.importSaveWithStatus(primary, storage, 'protected').persisted, false);
     assert.deepEqual([...values], before); assert.deepEqual(writes, []);
   }
+});
+
+test('a V69 chain upgrades the durable ledger only on acceptance, requires actual delivery, and unlocks the next physical giver after quota-safe payment', () => {
+  const f = fixture(), acceptFirst = { kind: 'accept', contractId: 'v69-return-1' }, acceptSecond = { kind: 'accept', contractId: 'v69-return-2' };
+  f.select('market-service'); const bytes = f.values.get('contracts-v68');
+  f.setRejected(true); f.environment.submitContractV68(acceptFirst);
+  assert.equal(f.values.get('contracts-v68'), bytes); assert.equal(f.current.homeworld.contractsV68.version, 1);
+  f.setRejected(false); f.environment.submitContractV68(acceptFirst); assert.equal(f.current.homeworld.contractsV68.version, 2);
+  f.select('medbay-service'); const count = f.writes.length; f.environment.submitContractV68(acceptSecond);
+  assert.equal(f.writes.length, count); assert.match(f.dialog.message, /Remets d’abord/);
+  f.prepareCircuitDelivery(); f.select('medbay-service'); f.environment.submitContractV68(acceptSecond);
+  assert.equal(f.current.homeworld.contractsV68.entries.length, 1, 'Even two actual field+guide receipts do not replace giver delivery');
+  f.select('market-service'); const before = structuredClone(f.current); f.setRejected(true);
+  f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' }); assert.deepEqual(f.current, before);
+  f.setRejected(false); f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' });
+  assert.equal(f.current.profile.clanMarks, before.profile.clanMarks + 44);
+  const completed = structuredClone(f.current.homeworld.contractsV68.entries[0]); f.select('medbay-service'); f.setRejected(true);
+  f.environment.submitContractV68(acceptSecond); assert.equal(f.current.homeworld.contractsV68.entries.length, 1);
+  f.setRejected(false); f.environment.submitContractV68(acceptSecond); assert.equal(f.current.homeworld.contractsV68.entries.length, 2);
+  assert.deepEqual(f.current.homeworld.contractsV68.entries[0], completed); assert.equal(f.current.profile.clanMarks, 44);
+  const writes = f.writes.length; f.environment.submitContractV68(acceptSecond); assert.equal(f.writes.length, writes);
+  assert.deepEqual(api.loadSave(f.storage, 'contracts-v68').homeworld.contractsV68, f.current.homeworld.contractsV68);
+  for (const key of ['rankId', 'honor']) assert.equal(f.current.profile[key], before.profile[key]);
+  for (const key of ['inventory', 'trophies', 'justice', 'prologue', 'youthTraining', 'soloV66', 'soloV67', 'soloV68', 'soloV69']) assert.deepEqual(f.current[key], before[key]);
+});
+
+test('a V69 reward with failed readback reconciles the exact version 2 ledger and wallet only once', () => {
+  const f = fixture(); f.prepareCircuitDelivery(); const before = structuredClone(f.current);
+  f.rejectNextReadback(); f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' }); assert.deepEqual(f.current, before);
+  const bytes = f.values.get('contracts-v68'), committed = JSON.parse(bytes), writes = f.writes.length;
+  assert.equal(committed.profile.clanMarks, 44); assert.equal(committed.homeworld.contractsV68.version, 2); assert.equal(committed.homeworld.contractsV68.entries[0].status, 'completed');
+  f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' }); assert.equal(f.current.profile.clanMarks, 44); assert.equal(f.writes.length, writes);
+  f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' }); assert.equal(f.current.profile.clanMarks, 44); assert.equal(f.values.get('contracts-v68'), bytes);
+});
+
+test('the real Hub gate reads the current youth training history and refuses a forged honor rank or chronicle rank field', () => {
+  const f = fixture({ prologue: api.createNurseryCampaign() }); f.select('market-service');
+  f.environment.saveRef.current = { ...f.current, profile: { ...f.current.profile, honor: 999999, rankId: 'elder' },
+    prologue: { ...f.current.prologue, chronicle: { ...f.current.prologue.chronicle, rankId: 'ancient', trainingCompleted: true } } };
+  const bytes = f.values.get('contracts-v68'), writes = f.writes.length;
+  f.environment.submitContractV68({ kind: 'accept', contractId: 'v69-return-1' });
+  assert.equal(f.values.get('contracts-v68'), bytes); assert.equal(f.writes.length, writes); assert.deepEqual(f.current.homeworld.contractsV68.entries, []);
+});
+
+test('a V9 save preserves the exact V68 ledger during migration, while a future chain schema remains protected on import', () => {
+  const f = fixture(); f.prepareDelivery(); f.environment.submitContractV68(action('deliver'));
+  const old = structuredClone(f.current); old.version = 9; delete old.soloV69;
+  const migrated = api.parseSaveImport(JSON.stringify(old)); assert.equal(migrated.failure, null); assert.equal(migrated.save.version, api.SAVE_VERSION);
+  assert.deepEqual(migrated.save.homeworld.contractsV68, old.homeworld.contractsV68); assert.equal(migrated.save.homeworld.contractsV68.version, 1); assert.equal(migrated.save.profile.clanMarks, old.profile.clanMarks);
+  const chain = fixture(); chain.prepareCircuitDelivery(); const future = structuredClone(chain.current); future.homeworld.contractsV68.version = 3;
+  assert.equal(api.parseSaveImport(JSON.stringify(future)).failure, 'future-version');
+  const spoofed = structuredClone(chain.current); spoofed.homeworld.contractsV68.version = 1;
+  assert.equal(api.parseSaveImport(JSON.stringify(spoofed)).failure, 'invalid-save');
 });

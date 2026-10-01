@@ -1,5 +1,5 @@
 import type { SaveGame, HunterBodyMorphId, DreadStyleId } from '../types';
-import { getChronicleRank } from './clanChronicle';
+import { canVisitHomeworldVillagesV69, type HomeworldAccessSaveV69 } from './homeworldAccessV69';
 import { HOMEWORLD_ACTOR, pointInHomeworldPolygon, stepHomeworldActorOnFloor, type HomeworldActor, type HomeworldVec2 } from './homeworldCity';
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64 } from './homeworldArtV64';
 import { homeworldBuildingFootprintV64, homeworldBuildingDoorwayV64, HOMEWORLD_GEOMETRY_V64 } from './homeworldGeometryV64';
@@ -161,9 +161,9 @@ export const REGION_FAUNA_ART_V68: Partial<Record<HomeworldRegionIdV68, { src: s
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
 export const isHomeworldRegionIdV68 = (id: unknown): id is HomeworldRegionIdV68 => typeof id === 'string' && (HOMEWORLD_REGION_IDS_V68 as readonly string[]).includes(id);
-export function canEnterHomeworldRegionV68(save: Pick<SaveGame, 'prologue' | 'homeworld'>, id: unknown) {
+export function canEnterHomeworldRegionV68(save: HomeworldAccessSaveV69 & Pick<SaveGame, 'homeworld'>, id: unknown) {
   if (!isHomeworldRegionIdV68(id)) return { allowed: false, reason: 'Ce territoire ne fait pas partie des routes du clan.' };
-  if (save.prologue && !['blooded', 'elite', 'elder', 'ancient'].includes(getChronicleRank(save.prologue.chronicle) ?? '')) return { allowed: false, reason: 'Ta formation continue avec ton maître. Les départs autonomes attendent la reconnaissance Blooded.' };
+  if (!canVisitHomeworldVillagesV69(save)) return { allowed: false, reason: 'Termine ta formation et rapporte les Premières Pistes avant de rejoindre les villages du monde natal.' };
   if (id === 'forbidden-reserve' && !save.homeworld.expeditions['glass-desert']) return { allowed: false, reason: 'Le rapport du Désert de Verre est requis pour approcher le poste de confinement.' };
   return { allowed: true, reason: '' };
 }

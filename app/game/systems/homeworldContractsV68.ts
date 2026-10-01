@@ -1,5 +1,6 @@
 import { homeworldInteriorForBuildingV64, isHomeworldInteriorWalkableV64, nearestHomeworldInteriorTargetV64 } from './homeworldInteriorsV64';
 import { normalizeRegionFieldEventV68 } from './homeworldRegionsV68';
+import { HOMEWORLD_CHAIN_CONTRACTS_V69, type ContractChainV69 } from './homeworldContractChainsV69';
 
 /** Local clan commissions. This board, its marks and its regional fauna are
  * authored for this game, not a canonical bounty economy or a film prop copy. */
@@ -13,6 +14,9 @@ export interface ContractDefinitionV68 {
   id: string; title: string; category: ContractCategoryV68; giverNpcId: string; giverName: string;
   pointId: string; buildingId: string; brief: string; restriction: string; rewardMarks: number;
   objectives: readonly ContractObjectiveV68[];
+  /** V69 additions only. Existing V68 commissions retain their exact data and
+   * parallel objectives; new circuits require ordered guide-confirmed stages. */
+  chain?: ContractChainV69; prerequisites?: readonly string[]; sequential?: boolean; completionText?: string;
 }
 export const CONTRACT_BOARD_LOCATION_V68 = { npcId: 'market-artisan', npcName: 'Artisane du marché',
   pointId: 'market-service', buildingId: 'market-armory' } as const;
@@ -75,7 +79,9 @@ export const HOMEWORLD_NPC_CONTRACTS_V68: readonly ContractDefinitionV68[] = [
     objectives: [{ regionId: 'ash-marches', action: 'track', text: 'Observer le cuirassé des Cendres.' }, { regionId: 'glass-desert', action: 'track', text: 'Observer le fouisseur du Verre.' }] },
 ];
 export const HOMEWORLD_CONTRACTS_V68 = [...HOMEWORLD_BOARD_CONTRACTS_V68, ...HOMEWORLD_NPC_CONTRACTS_V68] as const;
-const contractFor = (id: unknown) => typeof id === 'string' ? HOMEWORLD_CONTRACTS_V68.find(item => item.id === id) ?? null : null;
+export { HOMEWORLD_CHAIN_CONTRACTS_V69 };
+export const HOMEWORLD_ALL_CONTRACTS_V69: readonly ContractDefinitionV68[] = [...HOMEWORLD_CONTRACTS_V68, ...HOMEWORLD_CHAIN_CONTRACTS_V69];
+const contractFor = (id: unknown) => typeof id === 'string' ? HOMEWORLD_ALL_CONTRACTS_V69.find(item => item.id === id) ?? null : null;
 const record = (raw: unknown): raw is Record<string, unknown> => !!raw && typeof raw === 'object' && !Array.isArray(raw);
 const integer = (raw: unknown, minimum = 0, maximum = 5_184_000): raw is number => typeof raw === 'number' && Number.isSafeInteger(raw) && raw >= minimum && raw <= maximum;
 const runIdValid = (raw: unknown): raw is string => typeof raw === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9:_-]{0,99}$/.test(raw);
@@ -86,7 +92,8 @@ export interface ContractFieldEventV68 {
 }
 export interface ContractStageV68 { regionId: ContractRegionIdV68; runId: string | null; proof: ContractFieldEventV68 | null; reportTick: number | null }
 export interface ContractEntryV68 { id: string; status: 'active' | 'abandoned' | 'completed'; acceptanceSerial: number; stages: ContractStageV68[] }
-export interface HomeworldContractsV68 { version: 1; serial: number; entries: ContractEntryV68[] }
+export const HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69 = 2 as const;
+export interface HomeworldContractsV68 { version: 1 | 2; serial: number; entries: ContractEntryV68[] }
 export interface ContractMeetContextV68 { eligible: boolean; interiorId: string | null; pointId: string | null;
   npcId: string | null; actor: { x: number; y: number }; suspended?: boolean }
 export interface ContractLiveContextV68 { regionId: string; runId: string; suspended?: boolean }
@@ -132,21 +139,25 @@ function normalizeEntry(raw: unknown, serial: number): ContractEntryV68 | null {
     if (stage.reportTick !== null && (!proof || !integer(stage.reportTick, proof.tick + 1))) return null;
     stages.push({ regionId: objective.regionId, runId: stage.runId as string | null, proof, reportTick: stage.reportTick as number | null });
   }
+  if (definition.sequential && stages.some((stage, index) => index > 0 && stage.runId !== null && stages[index - 1].reportTick === null)) return null;
   if (raw.status === 'completed' && !stages.every(stage => stage.proof && stage.reportTick !== null)) return null;
   return { id: definition.id, status: raw.status as ContractEntryV68['status'], acceptanceSerial: raw.acceptanceSerial, stages };
 }
 export function isHomeworldContractsV68(raw: unknown): raw is HomeworldContractsV68 {
-  if (!record(raw) || raw.version !== 1 || !integer(raw.serial, 0, 1_000_000) || !Array.isArray(raw.entries)
-    || raw.entries.length > HOMEWORLD_CONTRACTS_V68.length) return false;
+  if (!record(raw) || ![1, HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69].includes(raw.version as number) || !integer(raw.serial, 0, 1_000_000) || !Array.isArray(raw.entries)
+    || raw.entries.length > HOMEWORLD_ALL_CONTRACTS_V69.length) return false;
   const entries = raw.entries.map(entry => normalizeEntry(entry, raw.serial as number));
-  return entries.every(Boolean) && new Set(entries.map(entry => entry!.id)).size === entries.length
-    && new Set(entries.map(entry => entry!.acceptanceSerial)).size === entries.length;
+  return entries.every(Boolean) && (raw.version !== 1 || entries.every(entry => !contractFor(entry!.id)!.chain))
+    && new Set(entries.map(entry => entry!.id)).size === entries.length
+    && new Set(entries.map(entry => entry!.acceptanceSerial)).size === entries.length
+    && entries.every(entry => (contractFor(entry!.id)!.prerequisites ?? []).every(id => entries.some(prior =>
+      prior?.id === id && prior.status === 'completed' && prior.acceptanceSerial < entry!.acceptanceSerial)));
 }
 /** Invalid/future saves are not writable through this model. Host import/load
  * guards must refuse unsupported versions before storing a normalized value. */
 export function normalizeHomeworldContractsV68(raw: unknown): HomeworldContractsV68 {
   if (!isHomeworldContractsV68(raw)) return defaultHomeworldContractsV68();
-  return { version: 1, serial: raw.serial, entries: raw.entries.map(entry => normalizeEntry(entry, raw.serial)!) };
+  return { version: raw.version, serial: raw.serial, entries: raw.entries.map(entry => normalizeEntry(entry, raw.serial)!) };
 }
 export function contractMarksV68(raw: unknown): number {
   return normalizeHomeworldContractsV68(raw).entries.reduce((sum, entry) => sum + (entry.status === 'completed' ? contractFor(entry.id)!.rewardMarks : 0), 0);
@@ -161,6 +172,16 @@ export function canMeetContractGiverV68(definition: ContractDefinitionV68, conte
 }
 const writable = (raw: unknown) => raw === undefined || isHomeworldContractsV68(raw);
 const result = (state: HomeworldContractsV68, ok: boolean, changed: boolean, message: string, rewardMarks = 0): ContractResultV68 => ({ state, ok, changed, message, rewardMarks });
+/** Derived from validated durable completions. A briefing, inventory item,
+ * profile rank, external flag or unsubmitted field report never unlocks a chain. */
+export function contractRequirementsV69(raw: unknown, id: string) {
+  const state = normalizeHomeworldContractsV68(raw), definition = contractFor(id);
+  const missing = (definition?.prerequisites ?? []).filter(priorId => !state.entries.some(entry => entry.id === priorId && entry.status === 'completed'))
+    .map(priorId => contractFor(priorId)!);
+  return { met: !!definition && writable(raw) && missing.length === 0, missing,
+    message: missing.length ? `Remets d’abord « ${missing[0].title} » auprès de ${missing[0].giverName}. Un rapport au guide seul ne débloque pas la suite.`
+      : definition?.chain ? `Chapitre ${definition.chain.chapter}/${definition.chain.total} · ${definition.chain.title}` : '' };
+}
 export function applyHomeworldContractV68(raw: unknown, action: ContractActionV68, context: ContractMeetContextV68): ContractResultV68 {
   const state = normalizeHomeworldContractsV68(raw), definition = contractFor(action?.contractId);
   if (!writable(raw)) return result(state, false, false, 'Le registre ne peut pas être modifié depuis cette sauvegarde.');
@@ -171,7 +192,12 @@ export function applyHomeworldContractV68(raw: unknown, action: ContractActionV6
   if (action.kind === 'accept' || action.kind === 'resume') {
     if (existing?.status === 'active') return result(state, true, false, 'Cette demande est déjà suivie. Ses observations restent conservées.');
     if (action.kind === 'resume' && !existing) return result(state, false, false, 'Aucune demande abandonnée à reprendre.');
+    const requirements = contractRequirementsV69(state, definition.id);
+    if (!requirements.met) return result(state, false, false, requirements.message);
     if (state.serial >= 1_000_000) return result(state, false, false, 'Le registre de demandes a atteint sa limite.');
+    // Old V68 ledgers stay version 1 until a new circuit is actually accepted.
+    // An older client then treats the version 2 ledger as future, not corrupt.
+    if (definition.chain) state.version = HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69;
     state.serial++;
     const accepted: ContractEntryV68 = { id: definition.id, status: 'active', acceptanceSerial: state.serial,
       stages: definition.objectives.map(objective => ({ regionId: objective.regionId, runId: null, proof: null, reportTick: null })) };
@@ -182,7 +208,7 @@ export function applyHomeworldContractV68(raw: unknown, action: ContractActionV6
   if (action.kind === 'abandon') { existing.status = 'abandoned'; return result(state, true, true, 'Demande mise de côté. Une reprise demandera une nouvelle sortie.'); }
   if (!existing.stages.every(stage => stage.proof && stage.reportTick !== null)) return result(state, false, false, 'Il manque une observation et son retour au guide de village.');
   existing.status = 'completed';
-  return result(state, true, true, `Rapport reçu · ${definition.rewardMarks} marques de clan gagnées.`, definition.rewardMarks);
+  return result(state, true, true, `${definition.completionText ? definition.completionText + ' ' : ''}Rapport reçu · ${definition.rewardMarks} marques de clan gagnées.`, definition.rewardMarks);
 }
 /** Persist with the newly created village run before mounting that scene. A
  * reload uses the saved run without rebinding. Completed stage receipts survive. */
@@ -190,7 +216,9 @@ export function bindContractsVillageRunV68(raw: unknown, regionId: string, runId
   const state = normalizeHomeworldContractsV68(raw);
   if (!writable(raw) || !CONTRACT_REGIONS_V68.includes(regionId as ContractRegionIdV68) || !runIdValid(runId)) return result(state, false, false, 'Départ non reconnu par le carnet.');
   let changed = false;
-  for (const entry of state.entries) if (entry.status === 'active') for (const stage of entry.stages) {
+  for (const entry of state.entries) if (entry.status === 'active') for (const [index, stage] of entry.stages.entries()) {
+    const definition = contractFor(entry.id)!;
+    if (definition.sequential && index > 0 && entry.stages[index - 1].reportTick === null) continue;
     if (stage.regionId !== regionId || stage.reportTick !== null || stage.runId === runId) continue;
     stage.runId = runId; stage.proof = null; stage.reportTick = null; changed = true;
   }
@@ -207,6 +235,7 @@ export function recordContractsFieldEventV68(raw: unknown, eventRaw: unknown, co
     const definition = contractFor(entry.id)!;
     for (const [index, objective] of definition.objectives.entries()) {
       const stage = entry.stages[index];
+      if (definition.sequential && index > 0 && entry.stages[index - 1].reportTick === null) continue;
       if (stage.regionId !== event.regionId || stage.runId !== event.runId || stage.reportTick !== null) continue;
       if (event.action === 'report' && stage.proof && event.tick > stage.proof.tick) { stage.reportTick = event.tick; changed = true; }
       else if (event.action === objective.action && stage.proof === null) { stage.proof = event; changed = true; }
@@ -220,10 +249,25 @@ export function homeworldContractsJournalV68(raw: unknown) {
     active: state.entries.filter(entry => entry.status === 'active').map(entry => {
       const definition = contractFor(entry.id)!;
       const stageIndex = entry.stages.findIndex(stage => stage.reportTick === null), stage = entry.stages[stageIndex];
+      const regionName = stage ? REGION_NAMES_V68[stage.regionId] : null;
       return { id: entry.id, title: definition.title, giverName: definition.giverName, pointId: stage ? `region-${stage.regionId}` : definition.pointId,
         ready: stageIndex === -1, completedStages: entry.stages.filter(item => item.reportTick !== null).length, totalStages: entry.stages.length,
+        chain: definition.chain ?? null, relation: definition.chain?.relation ?? `Une demande confiée par ${definition.giverName}.`,
+        destination: { kind: stage ? stage.proof ? 'guide' : 'region' : 'giver', label: stage ? stage.proof ? `Guide du village · ${regionName}` : regionName! : definition.giverName,
+          pointId: stage ? stage.proof ? `${stage.regionId}-guide` : `region-${stage.regionId}` : definition.pointId,
+          cityPointId: stage ? `region-${stage.regionId}` : definition.pointId },
+        nextAction: stage ? stage.proof ? 'Faire confirmer le retour' : stage.runId ? 'Effectuer l’action de terrain' : 'Partir vers le village' : 'Remettre les rapports au commanditaire',
+        route: definition.objectives.map((objective, index) => ({ regionId: objective.regionId, regionName: REGION_NAMES_V68[objective.regionId], action: objective.action,
+          status: entry.stages[index].reportTick !== null ? 'confirmed' : entry.stages[index].proof ? 'report' : definition.sequential && index > stageIndex ? 'later' : 'field' })),
         objective: stage ? stage.proof ? `Reviens au guide de ${REGION_NAMES_V68[stage.regionId]} pour faire confirmer ce retour.` : definition.objectives[stageIndex].text
           : `Retourne auprès de ${definition.giverName} pour remettre les rapports.` };
+    }),
+    chains: ['return-line', 'hunter-measure'].map(chainId => {
+      const definitions = HOMEWORLD_CHAIN_CONTRACTS_V69.filter(item => item.chain!.id === chainId);
+      const completed = definitions.filter(item => state.entries.some(entry => entry.id === item.id && entry.status === 'completed')).length;
+      const next = definitions.find(item => !state.entries.some(entry => entry.id === item.id && entry.status !== 'abandoned') && contractRequirementsV69(state, item.id).met);
+      return { id: chainId, title: definitions[0].chain!.title, completed, total: definitions.length,
+        next: next ? { id: next.id, title: next.title, giverName: next.giverName, pointId: next.pointId, relation: next.chain!.relation } : null };
     }) };
 }
 export const contractRegionNameV68 = (id: ContractRegionIdV68) => REGION_NAMES_V68[id];

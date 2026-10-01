@@ -7,6 +7,7 @@ import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_AR
 import { homeworldInteriorShellV64 } from './systems/homeworldInteriorShellV64';
 import { HOMEWORLD_PASSAGE_BRIDGE_V67 } from './systems/homeworldPassageV67';
 import { homeworldHeroPlate } from './systems/homeworldCity';
+import { usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from './systems/homeworldAccessV69';
 import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { createHomeworldGamepadState, stepHomeworldGamepad } from './systems/homeworldInput';
 import { matchesControlAction } from './systems/controlBindings';
@@ -14,6 +15,8 @@ import { controlActionShortcut } from './controlBindingLabels';
 import { HOMEWORLD_REGIONS_V68, HOMEWORLD_REGION_TRAIL_V68, HOMEWORLD_REGION_TRACES_V68, HOMEWORLD_REGION_HAZARD_V68, HOMEWORLD_REGION_INTERIOR_V68, HOMEWORLD_VILLAGE_WORLD_V68, HOMEWORLD_VILLAGE_PERIMETER_V68, HOMEWORLD_REGION_FIELD_PERIMETER_V68, REGION_FAUNA_ART_V68, REGION_WARD_IDS_V68, REGION_WARD_POSTS_V68, canEnterHomeworldRegionV68, createHomeworldRegionV68, normalizeHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, stepHomeworldRegionV68, homeworldRegionInteractionV68, regionInteractionDialogueV68, regionObjectiveV68, regionResidentPositionV68, regionBridgesV68, regionHazardPhaseV68, homeworldRegionRouteMetresV68, homeworldRegionInteriorPropsV68, type HomeworldRegionIdV68, type HomeworldRegionStateV68, type RegionFieldEventV68 } from './systems/homeworldRegionsV68';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldModularHunter from './HomeworldModularHunter';
+import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
+import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
 import YautjaTranslationV67 from './YautjaTranslationV67';
 import styles from './HomeworldRegionV68.module.css';
 
@@ -32,6 +35,7 @@ const project = homeworldProjectGroundV64;
 
 export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const { regionId, save, suspended = false } = props, definition = HOMEWORLD_REGIONS_V68[regionId];
+  const youthWelcome = usesHomeworldYouthAppearanceV69(save), hero = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const [state, setState] = useState(() => props.checkpoint == null ? createHomeworldRegionV68(regionId, `${regionId}-${Date.now()}`, props.startAtVillage) : normalizeHomeworldRegionV68(props.checkpoint));
   const current = useRef(state), latest = useRef(props), held = useRef(new Set<string>()), touch = useRef(new Set<Move>()), interact = useRef(false), gamepad = useRef(createHomeworldGamepadState());
   const [paused, setPaused] = useState(true), pauseRef = useRef(true), [ready, setReady] = useState(false), readyRef = useRef(false);
@@ -80,10 +84,10 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, []);
   useEffect(() => {
     let cancelled = false; readyRef.current = false;
-    const urls = [...new Set([definition.panorama, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
+    const urls = [...new Set([definition.panorama, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.src : undefined, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
     Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const img = new Image(); img.onload = () => img.naturalWidth ? resolve() : reject(new Error(src)); img.onerror = () => reject(new Error(src)); img.src = src; }))).then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } }).catch(() => { if (!cancelled) { setArtError('Un décor ne s’est pas chargé. La traversée reste en pause.'); setReady(false); } });
     return () => { cancelled = true; };
-  }, [definition.panorama, regionId, artAttempt]);
+  }, [definition.panorama, youthWelcome, regionId, artAttempt]);
   useEffect(() => {
     const blur = () => pause(), hidden = () => { if (document.hidden) pause(); };
     window.addEventListener('blur', blur); window.addEventListener('gamepaddisconnected', blur); document.addEventListener('visibilitychange', hidden);
@@ -128,13 +132,14 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
           const before = current.current, interaction = interact.current || sample.actions.confirm ? homeworldRegionInteractionV68(before) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: interact.current || sample.actions.confirm });
+          const villageResident = !interaction && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !villageResident && (interact.current || sample.actions.confirm) });
           interact.current = false; current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
           if (next.status === 'at-city') { setState(next); leave(next); break; }
           if (next.zone !== before.zone) { setState(next); if (!persist(next)) break; }
-          const text = interaction ? regionInteractionDialogueV68(current.current ?? next, interaction) : '';
+          const text = interaction ? regionInteractionDialogueV68(current.current ?? next, interaction) : villageResident?.greeting ?? '';
           if (text && interaction?.kind !== 'fauna') { noticeRef.current = text; setNotice(text); freeze(); if (!current.current?.pendingFieldEvent && current.current) persist(current.current); break; }
           if (next.tick % 180 === 0 && !persist(current.current ?? next)) break;
         }
@@ -148,8 +153,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const d = HOMEWORLD_GEOMETRY_V64.depthScale, position = project(state.actor), zoom = Math.min(.98, Math.max(.6, size.height / 720));
   const world = state.zone === 'passage' ? { width: 18700, depth: 3300 } : state.zone === 'interior' ? HOMEWORLD_REGION_INTERIOR_V68 : HOMEWORLD_VILLAGE_WORLD_V68;
   const camera = { x: world.width * zoom < size.width ? -(size.width - world.width * zoom) / 2 : Math.max(0, Math.min(world.width * zoom - size.width, position.x * zoom - size.width / 2)), y: state.zone === 'interior' && world.depth * d * zoom < size.height - 240 ? -(size.height - world.depth * d * zoom) / 2 : Math.max(-180, Math.min(world.depth * d * zoom - size.height + 190, position.y * zoom - size.height * .66)) };
-  const interaction = homeworldRegionInteractionV68(state), hero = homeworldHeroPlate(save.appearance.presetId), appearance = save.appearance;
-  const playerPlacement = hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
+  const interaction = homeworldRegionInteractionV68(state), villageResident = !interaction && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
+  const playerPlacement = youthWelcome || hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
   const hazard = regionHazardPhaseV68(state.tick), fauna = REGION_FAUNA_ART_V68[regionId], f = state.fauna;
   const interiorShell = state.zone === 'interior' ? homeworldInteriorShellV64({ buildingId: `v68-${regionId}-${state.buildingId}`, width: 710, depth: 650 }) : null;
   const bridge = HOMEWORLD_PASSAGE_BRIDGE_V67, bridgeScale = bridge.width / (bridge.deck.right - bridge.deck.left);
@@ -182,6 +187,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: state.actor.y < b.y && Math.abs(state.actor.x - b.x) < b.width / 2 + 70 ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
           {definition.props.map(p => { const ground = project(p); return <HomeworldNativePropV64 key={p.id} id={`${regionId}-${p.id}`} artId={p.artId} art={HOMEWORLD_PROP_ART_V64[p.artId]} x={ground.x} y={ground.y} depth={p.y} />; })}
           {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1); })}
+          <HomeworldVillageLifeV69 regionId={regionId} tick={state.tick} actor={state.actor} rect={{ left: camera.x / zoom, top: camera.y / zoom, right: (camera.x + size.width) / zoom, bottom: (camera.y + size.height) / zoom }} />
           {HOMEWORLD_REGION_TRACES_V68.map((p, n) => { const v = project(p); return <span key={p.id} className={`${styles.trace} ${state.traces.includes(p.id) ? styles.collected : ''}`} data-region-trace={p.id} style={{ left: v.x, top: v.y }}><i /><b>{p.label}</b><small>{definition.traceNotes[n]}</small></span>; })}
           {REGION_WARD_IDS_V68.includes(regionId) && REGION_WARD_POSTS_V68.map(p => { const v = project(p); return <span key={p.id} data-region-ward={p.id}><HomeworldNativePropV64 id={`${regionId}-${p.id}`} artId="beacon" art={HOMEWORLD_PROP_ART_V64.beacon} x={v.x} y={v.y} depth={p.y} /><b className={styles.waypoint} style={{ left: v.x, top: v.y + 8 }}>{state.protectedPosts.includes(p.id) ? 'Fixée' : 'À fixer'}</b></span>; })}
           <span className={styles.hazard} data-region-hazard={hazard} style={{ left: HOMEWORLD_REGION_HAZARD_V68.x - 340, top: (HOMEWORLD_REGION_HAZARD_V68.y - 340) * d, width: 680, height: 680 * d, opacity: hazard === 'calm' ? .14 : hazard === 'warning' ? .55 : .85 }}><span>{definition.hazard} · {hazard === 'warning' ? 'Écarte-toi' : hazard === 'active' ? 'Danger' : 'Accalmie'}</span></span>
@@ -194,11 +200,11 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {homeworldRegionInteriorPropsV68(state.buildingId).map(prop => { const p = project(prop); return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]} x={p.x} y={p.y} depth={prop.y} />; })}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
         </>}
-        <span className={styles.actor} data-region-player data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{hero.exactPreset && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
+        <span className={styles.actor} data-region-player data-youth-appearance={youthWelcome} data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{(youthWelcome || hero.exactPreset) && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
       </div>
     </div>
-    <aside className={styles.objective} inert={modal}><b>{regionObjectiveV68(state)}</b><span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 habitants rencontrés` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : definition.buildings.find(b => b.id === state.buildingId)?.label}</span></aside>
-    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!interaction} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{interaction?.label ?? 'Approche un lieu ou un habitant'} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
+    <aside className={styles.objective} inert={modal}><b>{regionObjectiveV68(state)}</b><span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : definition.buildings.find(b => b.id === state.buildingId)?.label}</span></aside>
+    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!interaction && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{interaction?.label ?? (villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}><span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>{notice ? <YautjaTranslationV67 text={notice} /> : <p>{error || artError || (!gate.allowed ? gate.reason : !ready ? 'Les abords du territoire se dévoilent…' : state.zone === 'passage' ? `Suis les bornes jusqu’au village. La corniche mesure environ ${Math.round(homeworldRegionRouteMetresV68(regionId))} mètres ; tu peux revenir sur tes pas.` : definition.introduction)}</p>}{!ready && artError && <button onClick={() => setArtAttempt(n => n + 1)}>Recharger le décor</button>}{gate.allowed && ready && state.status === 'walking' && <button data-region-resume onClick={resume}>{error ? 'Réessayer la sauvegarde' : notice ? 'Poursuivre' : 'Reprendre la marche'}</button>}{state.status === 'at-city' && <button onClick={() => leave(state)}>Entrer dans la cité</button>}{props.onOpenSettings && <button onClick={props.onOpenSettings}>Réglages</button>}{!gate.allowed && <button onClick={() => props.onReachCity()}>Retour à la cité</button>}</div></div>}
   </section>;
 }

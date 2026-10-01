@@ -81,7 +81,7 @@ function store(save = start()) {
 test("V8 adult and completed nursery migrate without inventing youth exercise proof", () => {
   const adult = p.defaultSave(owner); adult.version = 8; delete adult.youthTraining;
   const restored = p.parseSaveImport(JSON.stringify(adult));
-  assert.equal(restored.failure, null); assert.equal(restored.save.version, 9); assert.equal(restored.save.prologue, null); assert.equal(restored.save.youthTraining, null);
+  assert.equal(restored.failure, null); assert.equal(restored.save.version, p.SAVE_VERSION); assert.equal(restored.save.prologue, null); assert.equal(restored.save.youthTraining, null);
   const oldYouth = welcome(); oldYouth.version = 8; delete oldYouth.youthTraining;
   const migrated = p.parseSaveImport(JSON.stringify(oldYouth));
   assert.equal(migrated.failure, null); assert.equal(migrated.save.prologue.status, "completed"); assert.equal(migrated.save.youthTraining, null);

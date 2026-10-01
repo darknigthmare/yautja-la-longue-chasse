@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "name": "physical-native-brazier",
+      "district": "memory",
+      "box": {
+        "x": 665.8350219726562,
+        "y": 384.87640380859375,
+        "width": 111.82501220703125,
+        "height": 111.82501220703125
+      },
+      "routeDistance": 6736.446989981421
+    },
+    {
+      "name": "physical-native-brazier",
+      "district": "temple",
+      "box": {
+        "x": 563.993896484375,
+        "y": 406.70953369140625,
+        "width": 111.824951171875,
+        "height": 111.82501220703125
+      },
+      "routeDistance": 2646.009075532836
+    },
+    {
+      "name": "native-inhabitants-culling-and-routines",
+      "visibleResidents": 14
+    },
+    {
+      "name": "native-art-bytes-and-mobile-hud",
+      "sha256": "c41a36b9fb94489f21fd2157800666809a0342787781fce982ac622cc0b9f0bb"
+    }
+  ],
+  "captures": [
+    "work-local/v69/qa/city-appearance-final/city-inhabited-port.jpg",
+    "work-local/v69/qa/city-appearance-final/memory-native-brazier.jpg",
+    "work-local/v69/qa/city-appearance-final/temple-native-brazier.jpg",
+    "work-local/v69/qa/city-appearance-final/city-new-residents.jpg",
+    "work-local/v69/qa/city-appearance-final/younger-market-board.jpg",
+    "work-local/v69/qa/city-appearance-final/portrait-city.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Earlier nursery/youth/First Tracks are declared model-played prerequisites, not browser-played here. All current city routes use actual keyboard input. Body images and procedural dread motion are reused; no new full walking atlas or canon city map is claimed.",
+  "visualReview": "Final reconstruction after youth continuity correction; native braziers and city inhabitants verified on street ground, mobile HUD and younger objective checked. Four representative images inspected, not every camera angle."
+}

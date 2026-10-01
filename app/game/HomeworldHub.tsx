@@ -31,8 +31,10 @@ import HomeworldPopulationV68 from "./HomeworldPopulationV68";
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
 import { canStartSoloV68 } from "./systems/campaignSoloV68";
+import { canStartSoloV69 } from "./systems/campaignSoloV69";
+import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
-import { HOMEWORLD_RESIDENTS_V68, nearestHomeworldResidentV68, homeworldResidentDialogueV68 } from "./systems/homeworldLifeV68";
+import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldResidentV69 as nearestHomeworldResidentV68, homeworldResidentDialogueV69 as homeworldResidentDialogueV68 } from "./systems/homeworldLifeV69";
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
@@ -57,6 +59,7 @@ export interface HomeworldHubProps {
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
   onSoloV68?(): boolean;
+  onSoloV69?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
   /** A completed connector returns at its actual city threshold, including after reload. */
   arrivalV67?: { pointId: string; requestId: string } | null;
@@ -72,7 +75,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
   const [interiorId, setInteriorId] = useState<string | null>(null);
@@ -120,7 +123,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const cameraY = interior ? (sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - 128 - viewportSize.height / zoom) / 2
     : Math.max(-160, Math.min(sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - viewportSize.height / zoom, projectedActor.y - viewportSize.height / zoom * .62));
   const progress = save.homeworld;
-  const youthWelcome = Boolean(save.prologue) && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(save.prologue?.chronicle) ?? "");
+  const youthWelcome = usesHomeworldYouthAppearanceV69(save);
+  const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
   const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen;
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
@@ -450,7 +454,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     const point = dialogStateRef.current?.point, nearby = pointInCurrentSpace(actorRef.current, interiorRef.current);
     if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || !point?.npcId || nearby?.id !== point.id) return;
     clearInputs();
-    const result = applyHomeworldContractV68(progressRef.current.contractsV68, action, { eligible: !youthWelcome,
+    const result = applyHomeworldContractV68(progressRef.current.contractsV68, action, { eligible: canVisitHomeworldVillagesV69(saveRef.current),
       interiorId: interiorRef.current?.buildingId ?? null, pointId: point.id, npcId: point.npcId, actor: actorRef.current });
     let message = result.message;
     if (result.changed) {
@@ -471,9 +475,17 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
-    : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Consulte les récits du sanctuaire et prépare la prochaine chasse avec ton maître ; le rite Blooded reste distinct."
+    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Tu restes Young Blood : visite les villages et prends les relevés des commanditaires ; le rite d’initiation attend sa propre expédition."
+    : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
+    : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
     : youthCampaignObjective(save.youthTraining);
+  const youthProgressTitle = save.soloV69?.status === "completed" ? "Young Blood · Seuils maîtrisés"
+    : save.soloV68?.status === "completed" ? "Young Blood · Cohorte reconnue"
+    : save.soloV67?.status === "completed" ? "Unblooded · Piste rapportée"
+    : save.soloV66?.status === "completed" ? "Unblooded · Premières Pistes accomplies"
+    : save.youthTraining?.status === "completed" ? "Formation accomplie · Premier réveil"
+    : "Apprentissage Unblooded · Auprès du clan";
   const youthGreeting: Record<string, string> = {
     "hunt-king": `${save.profile.hunterName}, ton arrivée a été annoncée. La force seule ne suffit pas à servir le clan. Observe, écoute, puis rends-toi auprès de l’instructeur des terrasses. Ton apprentissage commence.`,
     "terrace-instructor": save.soloV68?.status === "completed" ? "Tu as rapporté la piste et ramené tes compagnons. Cette reconnaissance Young Blood appartient à ton parcours. Elle ne remplace pas la chasse de Premier Sang ; garde ta maîtrise et écoute les récits de la gardienne." : save.youthTraining?.status === "completed" ? "Les gestes, le parcours et le duel sont accomplis. Garde la maîtrise que tu as apprise. Nous pouvons reprendre les sorties du clan. Observe le terrain, franchis les roches et reviens avec le groupe." : youthChiefMet ? "Le chef t’a accueilli. Avant de chasser, tu apprendras à te placer, à retenir un coup et à reconnaître une proie digne. Entre dans le dojo et exécute mes démonstrations. Ta première lame se mérite par les gestes ; l’armurerie et les épreuves du camp suivront." : "Présente-toi d’abord au chef du clan, dans la Citadelle au nord-est. Reviens me voir après cet accueil : nous parlerons de ta formation.",
@@ -489,17 +501,14 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
   const title = dialog?.navigation ? "Navigation de la cité" : selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
-  const heroPlate = youthWelcome ? {
-    src: "/game/prologue/v47/unblooded-player.png", exactPreset: false, plateId: "unblooded-player-v47",
-    status: "authored-unblooded-still", provenanceStatus: "noncanonical-project-interpretation",
-  } : homeworldHeroPlate(save.appearance.presetId);
+  const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const heroBob = actorSpeed > 5 ? Math.sin(phase * 11) * 1.5 : 0;
   const activeDoorId = nearestDoor?.id ?? null;
   const interactionLabel = indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : null);
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
-    : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? 82 : 100);
+    : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
   const fadedFrontPropIds = HOMEWORLD_PROPS
     .filter((prop) => shouldFadeHomeworldForeground(prop, actor))
     .map((prop) => prop.id)
@@ -512,7 +521,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       <div className={styles.hudActionsV64}><button type="button" onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
       <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button></div>
     </header>
-    <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"}
+    <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
       {!interior && <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
         open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
@@ -522,7 +531,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       <div className={styles.world} aria-hidden="true" style={{ width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
           : <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />}
-        {!interior && <HomeworldPopulationV68 seconds={phase} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} activeId={nearbyResidentV68?.id} />}
+        {!interior && <HomeworldPopulationV68 seconds={phase} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} activeId={nearbyResidentV68?.id} actorPosition={actor} />}
         <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
           <span className={styles.heroVisual}>
           {!youthWelcome && heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
@@ -558,7 +567,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     {youthWelcome && <section className={styles.youthHudV64} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : save.youthTraining?.checkpoint.phase === "cage-complete" ? "cage-returned" : save.youthTraining?.checkpoint.phase.startsWith("cage-") ? "cage-active" : save.youthTraining?.checkpoint.phase === "patrol-complete" ? "patrol-returned" : save.youthTraining?.checkpoint.phase.startsWith("patrol-") ? "patrol-active" : save.youthTraining?.checkpoint.phase === "desert-complete" ? "desert-returned" : save.youthTraining?.status === "completed" ? "desert-ready" : "training"}>
       <strong>{save.soloV68?.status === "completed" ? "Young Blood" : "Accueil du clan"}</strong><p>{youthObjective}</p>
     </section>}
-    <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? save.soloV68?.status === "completed" ? "Young Blood · Cohorte reconnue" : save.youthTraining?.status === "completed" ? "Formation accomplie · Premier réveil" : "Apprentissage Unblooded · Auprès du clan" : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres · {save.profile.clanMarks} marques{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
+    <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? youthProgressTitle : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres · {save.profile.clanMarks} marques{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" onClick={() => { clearInputs(); setDialog({ point: null }); }}>{youthWelcome ? "Journal de l’accueil" : "Journal de la cité"}</button>
     </footer>
     {!youthWelcome && inquiryJournal.step !== "locked" && <div className={styles.help} data-homeworld-inquiry-step={inquiryJournal.step}><strong>{inquiryJournal.label}</strong> · {inquiryJournal.objective}</div>}
@@ -614,10 +623,17 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             if (!onSoloV68()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
           }}>{save.soloV68 ? "Reprendre La Cohorte des Aspirants" : "Rejoindre La Cohorte des Aspirants"}</button>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV68?.status === "completed" && <p data-solo-v68-complete>La cohorte est rentrée avec ses deux compagnons. Le clan a reconnu ton parcours Young Blood. Le rite Blooded demeure une chasse distincte.</p>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV69 && canStartSoloV69(save) && save.soloV69?.status !== "completed" && <button type="button" data-solo-v69-enter disabled={suspended || paused || inactive} onClick={() => {
+            if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current)?.id !== "training-service") return;
+            clearInputs();
+            if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre les seuils." } : current); return; }
+            if (!onSoloV69()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
+          }}>{save.soloV69 ? "Reprendre Les Seuils du Premier Sang" : "Préparer Les Seuils du Premier Sang"}</button>}
+          {selectedNpc?.id === "terrace-instructor" && save.soloV69?.status === "completed" && <p data-solo-v69-complete>Les douze étapes de préparation sont attestées. Le jeune a rejoint le refuge et tu es revenu au maître. Ton rang reste Young Blood ; le Premier Sang attend sa propre expédition.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.evidenceId ? <YautjaTranslationV67 text={selectedPoint.description} paused={suspended || paused || inactive} /> : selectedPoint.description}</p>
           {selectedPoint.kind === "ship" && <p>{youthWelcome ? "La navette de desserte relie les quais aux appareils du clan. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} reste en amarrage orbital. Cette console donne accès au transfert par la navette de desserte. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}
-          {selectedRegion && <><p>{selectedRegion.description}</p>{youthWelcome && <p>Les sorties restent fermées pendant cet accueil. La formation, le premier biomask et le repos aux baraquements précèdent la première sortie de jeunesse ; le maître ouvre ensuite une reconnaissance guidée du désert depuis son dialogue.</p>}<div className={styles.notice}>
+          {selectedRegion && <><p>{selectedRegion.description}</p>{youthWelcome && <p>{villagesOpenV69 ? "Ta formation et les Premières Pistes sont attestées. Tu peux rejoindre les villages ordinaires à pied et réaliser leurs relevés. Les enquêtes sensibles et la Réserve conservent leurs conditions ; aucun départ orbital personnel n’est ouvert." : "La formation, le premier biomask et le repos aux baraquements précèdent les sorties de jeunesse. Après la formation et les Premières Pistes, les villages ordinaires ouvrent leurs routes."}</p>}<div className={styles.notice}>
             {selectedRegion.status === "playable-introduction"
               ? selectedRegion.id === "glass-desert"
                 ? "Les plaques vitrifiées transmettent les vibrations. Rejoins le village des Citernes ou poursuis le dossier du convoi jusqu’au site abandonné et à sa balise de rabattage."
@@ -630,7 +646,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           {!youthWelcome && selectedPoint.evidenceId === "undercity-testimony" && canChoose && <><div className={styles.notice}>Les trois preuves sont réunies. Ta première position sur le témoin sera définitive pour cette introduction.</div>{HOMEWORLD_WITNESS_CHOICES.map(choice => <div key={choice.id}><p>{choice.description}</p><button type="button" onClick={() => chooseWitness(choice.id)}>{choice.label}</button></div>)}</>}
           <HomeworldSideStoryV66 progress={progress.sideStoryV66} pointId={selectedPoint.id} eligible={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => submitNarrativeV66("side", action)} />
           <HomeworldNpcMissionsV66 value={progress.npcMissionsV66} npcId={selectedPoint.npcId} autonomousHunter={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => { submitNarrativeV66("npc", action); }} />
-          <HomeworldContractsV68 value={progress.contractsV68} npcId={selectedPoint.npcId} eligible={!youthWelcome} disabled={suspended || paused || inactive} onAction={submitContractV68} />
+          <HomeworldContractsV68 value={progress.contractsV68} npcId={selectedPoint.npcId} eligible={villagesOpenV69} disabled={suspended || paused || inactive} onAction={submitContractV68} />
           {!youthWelcome && inquiryDialogue && <section className={styles.notice} aria-label="Contre-enquête du convoi" data-homeworld-inquiry-dialog={inquiryJournal.step}>
             <h4>{inquiryDialogue.title}</h4><p><YautjaTranslationV67 text={inquiryDialogue.text} paused={suspended || paused || inactive} /></p>
             {inquiryDialogue.options.map((option, index) => <div key={index}>
@@ -638,10 +654,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
               <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
             </div>)}
           </section>}
-        </> : selectedResidentV68 ? <p><YautjaTranslationV67 text={homeworldResidentDialogueV68(selectedResidentV68)} paused={suspended || paused || inactive} /></p> : youthWelcome ? <>
+        </> : selectedResidentV68 ? <p><YautjaTranslationV67 text={homeworldResidentDialogueV68(selectedResidentV68, phase)} paused={suspended || paused || inactive} /></p> : youthWelcome ? <>
           <h4>Parcours Unblooded</h4><p>{youthObjective}</p><p>{youthEquipmentSummary(save.youthTraining)}</p>
           <ul><li>{youthChiefMet ? "✓" : "○"} Rencontre du chef à la Citadelle.</li><li>{youthMentorMet ? "✓" : "○"} Rencontre de l’instructeur après l’accueil du chef.</li></ul>
           <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le journal montre uniquement les étapes réellement jouées : aucune formation ni remise d’équipement n’est validée par sa lecture.</p>
+          {villagesOpenV69 && <><HomeworldContractsJournalV68 value={progress.contractsV68} /><p data-homeworld-wallet-v69>Solde disponible : <strong>{save.profile.clanMarks} marques de clan</strong>. Rejoins physiquement le commanditaire indiqué pour accepter une demande ou lui remettre ses rapports.</p></>}
         </> : <>
           <p>Un trophée contesté est arrivé dans la cité. Examine sa provenance, consulte le registre des mémoires puis écoute le témoignage des Bas-Fonds.</p>
           {progress.expeditions["ash-marches"] && <p>✓ Rapport de terrain : vraie piste identifiée, fausse piste écartée, convoi retrouvé et passage rouvert.{progress.expeditions["ash-marches"].secretFound ? " Balise des Navigateurs découverte." : ""}</p>}

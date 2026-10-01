@@ -164,7 +164,7 @@ test('four personal missions require both different regions and a return to thei
 test('future versions, duplicate ledger entries and invented completion cannot authorize new saves or marks', () => {
   const complete = apply(ready('ash-marches-track'), 'ash-marches-track', 'deliver').state;
   const unfinished = accepted('ash-marches-track');
-  const corrupted = [null, [], { version: 2, serial: 1, entries: [] }, { ...complete, entries: [...complete.entries, complete.entries[0]] },
+  const corrupted = [null, [], { version: api.HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69 + 1, serial: 1, entries: [] }, { ...complete, entries: [...complete.entries, complete.entries[0]] },
     { ...complete, serial: Infinity }, { ...unfinished, entries: [{ ...unfinished.entries[0], status: 'completed' }] },
     { ...complete, entries: [{ ...complete.entries[0], stages: [{ ...complete.entries[0].stages[0], reportTick: 1 }] }] }];
   for (const state of corrupted) {
@@ -191,12 +191,13 @@ test('a mid-run save round trip preserves proofs, and restarting an unfinished r
 test('the board and mission journal expose native art, actionable objectives and no instant completion button', () => {
   const markup = renderToStaticMarkup(React.createElement(api.Panel, { value: undefined, npcId: 'market-artisan', eligible: true, disabled: false, reducedMotion: true, onAction() {} }));
   assert.match(markup, /\/game\/homeworld\/v68\/hunt-board\.png/);
-  assert.equal((markup.match(/data-contract-id=/g) ?? []).length, 20);
-  assert.equal((markup.match(/data-contract-action="accept"/g) ?? []).length, 20);
+  assert.equal((markup.match(/data-contract-id=/g) ?? []).length, 22, 'Twenty original offers and two new circuit starters');
+  assert.equal((markup.match(/data-contract-action="accept"/g) ?? []).length, 22);
+  for (const definition of api.HOMEWORLD_BOARD_CONTRACTS_V68) assert(markup.includes(`data-contract-id="${definition.id}"`), 'Every original offer remains visible');
   assert.doesNotMatch(markup, /data-contract-action="deliver"/);
   const blocked = renderToStaticMarkup(React.createElement(api.Panel, { value: undefined, npcId: 'market-artisan', eligible: false, disabled: false, reducedMotion: true, onAction() {} }));
   assert.equal((blocked.match(/data-contract-action="accept" disabled=/g) ?? []).length, 0);
-  assert.equal((blocked.match(/disabled="" data-contract-action="accept"/g) ?? []).length, 20);
+  assert.equal((blocked.match(/disabled="" data-contract-action="accept"/g) ?? []).length, 22);
   const journal = renderToStaticMarkup(React.createElement(api.Journal, { value: ready('npc-dock-return-line') }));
   assert.match(journal, /Officier des quais/); assert.match(journal, /2\/2/);
 });

@@ -32,7 +32,9 @@ try {
     };
   }, fixture);
   await enterCampaignDeck(page, { url });
-  assert.equal(await page.locator('main[data-game-content-version]').getAttribute('data-game-content-version'), 'V68');
+  const contentVersion = await page.locator('main[data-game-content-version]').getAttribute('data-game-content-version');
+  assert(['V68', 'V69'].includes(contentVersion));
+  const offeredCount = contentVersion === 'V68' ? 20 : 22;
   await page.getByRole('button', { name: 'Yautja Prime · monde natal', exact: true }).click();
   await page.locator('[data-homeworld-actor]').waitFor({ state: 'attached' });
   await page.locator('[data-homeworld-hub] img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
@@ -41,7 +43,7 @@ try {
   const city = homeworldNavigatorV66(page, api);
   await city.focus(); await city.openPoint('market-service');
   const board = page.locator('[data-contracts-v68]');
-  assert.equal(await board.locator('[data-contract-id]').count(), 20);
+  assert.equal(await board.locator('[data-contract-id]').count(), offeredCount);
   assert.equal(await board.locator('img[src="/game/homeworld/v68/hunt-board.png"]').evaluate(image => image.complete && image.naturalWidth > 0), true);
   await capture('01-tableau-native');
   const before = await saved();
@@ -120,7 +122,7 @@ try {
   await board.getByRole('button', { name: 'Mes demandes', exact: true }).click();
   assert.equal(await board.locator('[data-contract-id]').count(), 2);
   await board.getByRole('button', { name: 'Voir toutes les demandes', exact: true }).click();
-  assert.equal(await board.locator('[data-contract-id]').count(), 20);
+  assert.equal(await board.locator('[data-contract-id]').count(), offeredCount);
   assert.deepEqual((await saved()).homeworld.contractsV68, finished.homeworld.contractsV68);
   await showBoardHeader();
   await capture('08-tableau-mobile');

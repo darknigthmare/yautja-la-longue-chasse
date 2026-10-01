@@ -6,6 +6,7 @@ const city=await load('app/game/systems/homeworldCity.ts'), codex=await load('ap
 const geo=await load('app/game/systems/homeworldGeometryV64.ts'), rooms=await load('app/game/systems/homeworldInteriorsV64.ts');
 const hw=await load('app/game/systems/homeworld.ts'), art=await load('app/game/systems/homeworldArtV64.ts');
 const newDecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v68-')).map(p=>p.id);
+const v69DecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v69-')).map(p=>p.id);
 const close=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
 
 test('one35-degree camera preserves vertical adult/door scale, including inverse ground coordinates',()=>{
@@ -32,8 +33,9 @@ test('43 solid envelopes never overlap, every door accepts only its accessible s
 test('painted forward prop pivots and station volumes share the exact native width and depth',()=>{
   assert.equal(newDecorIds.length,15,'V68 adds fifteen independent native furniture modules');
   assert.equal(new Set(newDecorIds).size,15,'new furnishings remain distinct physical objects');
-  assert.equal(city.HOMEWORLD_PROPS.filter(p=>!newDecorIds.includes(p.id)).length,26,'all twenty-six original V64 props are retained');
-  assert.equal(city.HOMEWORLD_PROPS.length,41);
+  assert.equal(city.HOMEWORLD_PROPS.filter(p=>!newDecorIds.includes(p.id)&&!v69DecorIds.includes(p.id)).length,26,'all twenty-six original V64 props are retained');
+  assert.equal(v69DecorIds.length,3,'V69 adds three supported native braziers');
+  assert.equal(city.HOMEWORLD_PROPS.length,44);
   assert.equal(city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length,11);
   for(const prop of city.HOMEWORLD_PROPS){
     const source=art.HOMEWORLD_PROP_ART_V64[prop.artId],p=city.homeworldPropArtPlacement(prop);
@@ -70,7 +72,7 @@ test('the element codex enumerates actual spaces, source assets and measurements
   assert.equal(records.filter(r=>r.category==='floor').length,43);
   assert.equal(records.filter(r=>r.category==='panel').length,286);
   assert.equal(records.filter(r=>r.category==='prop'&&newDecorIds.some(id=>r.id===`prop:${id}`)).length,15,'the codex includes every additional native physical prop once');
-  assert.equal(records.length,738);
+  assert.equal(records.length,741);
   assert.equal(records.filter(r=>r.category==='prop').length,city.HOMEWORLD_PROPS.length+11+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0));
   for(const r of records){
     assert(Object.values(r.position).every(Number.isFinite),r.id);assert(Object.values(r.dimensions).every(v=>Number.isFinite(v)&&v>=0),r.id);
@@ -78,6 +80,7 @@ test('the element codex enumerates actual spaces, source assets and measurements
     if(r.category==='prop') {
       if(r.id.startsWith('trophy-slot:')){assert.equal(r.asset,null);assert.equal(r.footprint,null);assert.match(r.constraints.join(' '),/déterminée uniquement par une prise déjà possédée/);}
       else if(r.id==='interior-station:suspect-trophy-point')assert.equal(r.asset,'/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp');
+      else if(v69DecorIds.some(id=>r.id===`prop:${id}`)) assert.equal(r.asset,'/game/homeworld/v69/clan-brazier.png',r.id);
       else assert.match(r.asset,/\/game\/homeworld\/v64\//,r.id);
     }
   }
