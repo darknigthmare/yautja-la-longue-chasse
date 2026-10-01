@@ -4,10 +4,15 @@ import { canVisitHomeworldVillagesV69 } from './homeworldAccessV69';
 export function campaignWelcomeV69(save: SaveGame) {
   if(!save.prologue) return {title:'Chasseur indépendant — La cité du clan',intro:'Ton parcours antérieur reste conservé.',next:'Les villages, les commanditaires et les archives publiques gardent leurs propres conditions de progression.'};
   const villages=canVisitHomeworldVillagesV69(save);
+  if(save.soloV70?.status==='completed') return {
+    title:'Young Blood — Temple des Trois Ombres, acte I',
+    intro:'Le premier acte du temple, les salles supérieures et le confinement local sont rapportés au maître.',
+    next:'Les profondeurs du temple, la reine et le vrai Premier Sang restent distincts. Les villages du clan et les demandes des commanditaires sont accessibles ; aucun vaisseau personnel ni rang Blooded ne vient de cette ouverture.',
+  };
   if(save.soloV69?.status==='completed') return {
     title:'Young Blood — Les seuils maîtrisés',
     intro:'La préparation au Premier Sang est attestée : observation, progression discrète, sas et retour du jeune au refuge.',
-    next:'Les villages et leurs guides attendent tes relevés. Consulte le Tableau des chasses à l’armurerie du marché et les demandes des commanditaires. Le vrai rite d’initiation contre un xénomorphe reste une expédition distincte ; tu es encore Young Blood.',
+    next:'Le maître prépare le premier acte du Temple des Trois Ombres. Rejoins-le à la Maison des Terrasses. Les villages et leurs guides attendent aussi tes relevés. Consulte le Tableau des chasses à l’armurerie du marché et les demandes des commanditaires. Le vrai rite d’initiation contre un xénomorphe reste une expédition distincte ; tu es encore Young Blood.',
   };
   if(save.soloV68?.status==='completed') return {
     title:'Young Blood — La cohorte reconnue',

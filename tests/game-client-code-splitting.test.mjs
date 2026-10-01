@@ -36,7 +36,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "FirstTracksSoloV66",
     "FirstHuntSoloV67",
     "FirstHuntSoloV68",
-    "FirstHuntSoloV69",
+    "FirstHuntSoloV69", "FirstHuntSoloV70",
     "HomeworldPassageV67",
     "HomeworldRegionV68",
     "GameReserveV66",
@@ -62,7 +62,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.equal(source.match(/<PitNarrativeTrials/g)?.length, 1);
   assert.equal(
     source.match(/<Suspense fallback=\{<DeferredGameScreen \/>\}>/g)?.length,
-    24,
+    25,
   );
   assert.match(
     source,

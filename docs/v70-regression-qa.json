@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "contentVersion": "V70",
+  "tests": 2312,
+  "passed": 2312,
+  "failed": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "durationMs": 754191.6508,
+  "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+  "startedAt": "2026-10-01T20:37:23.1947751Z",
+  "completedAt": "2026-10-01T20:49:57.576554Z",
+  "exitCode": 0,
+  "scope": "Final frozen runtime after native guard, village occlusion, owned hydration and export clarification corrections. No tests excluded; NTFS temporary directory.",
+  "log": "work-local/v70/regression-final-complete.log",
+  "sourceCommit": null
+}

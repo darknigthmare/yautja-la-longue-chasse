@@ -1,0 +1,46 @@
+{
+  "status": "PARTIAL",
+  "url": "http://127.0.0.1:4187",
+  "tests": {
+    "targeted": 46,
+    "status": "PASS"
+  },
+  "circuits": [
+    {
+      "id": "return-line",
+      "status": "PASS",
+      "chaptersPlayed": 4,
+      "actionsPlayed": 9,
+      "walletDelta": 228,
+      "report": "work-local/v70/qa/contracts-local/return-line/report.json",
+      "visualReview": {
+        "status": "PASS_WITH_LIMITS",
+        "capturesInspected": 30,
+        "notes": [
+          "Terrain actions, guide returns and next destinations were reviewed.",
+          "Desktop and mobile contract layout was inspected; the runtime test checks no horizontal overflow.",
+          "Initial captures show the intentional translation effect and sometimes a temporary delivery toast. They do not prove that every voice was fully translated before the capture."
+        ]
+      },
+      "durableReload": true,
+      "quotaRefusalsAndRetry": true,
+      "noUnrelatedGrants": true
+    },
+    {
+      "id": "hunter-measure",
+      "status": "INTERRUPTED",
+      "initialDiagnostic": "work-local/v70/qa/contracts-local/hunter-measure/report.json",
+      "initialFailureCapture": "work-local/v70/qa/contracts-local/hunter-measure/failure.jpg",
+      "reason": "The Reserve intentionally requires the separate complete Glass investigation, not a village guide receipt. Its prerequisite was missing from the initial isolated campaign.",
+      "correction": "Clarified narrative and access notice; gates and parser unchanged. Replay performs the real Ash and Glass expeditions using the public keyboard gameplay.",
+      "replayOutput": "work-local/v70/qa/contracts-hunter-retry/hunter-measure",
+      "expectedWalletDelta": 246,
+      "interruptNote": "The background browser process did not survive session closure. No completed four-chapter hunter-measure report exists; diagnostics and storage checkpoints are preserved."
+    }
+  ],
+  "limits": [
+    "Eight chapters and eighteen actions are not yet all browser-confirmed by this document.",
+    "Campaigns are isolated legacy QA campaigns. No full new-player campaign or single-wallet sum is claimed.",
+    "The return circuit was completed on the first V70 local compilation. The final hunter replay includes clarified sensitive-access copy; contract definitions, gates, receipts and rewards remain unchanged."
+  ]
+}

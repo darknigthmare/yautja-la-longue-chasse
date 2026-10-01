@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "tests": 38,
+  "command": "node --experimental-strip-types --test tests/homeworld-village-activities-v70.test.mjs tests/homeworld-village-life-v69.test.mjs tests/homeworld-village-occlusion-v70.test.mjs",
+  "typecheck": "PASS after the final painted-depth occlusion correction",
+  "lint": "PASS on owned V70 TSX, models, browser recipe and test",
+  "coverage": {
+    "villages": 10,
+    "physicallyReachedStations": 40,
+    "physicallyReachedAtlasApproaches": 180,
+    "unchangedUsableDoors": 120,
+    "nativeTabletopCoffrets": 30,
+    "legacyAdditionalResidentRoutines": 180
+  },
+  "invariants": [
+    "V70 atlas paths are followed by the real V68 movement reducer; every sampled segment supports the whole actor.",
+    "Local services do not steal an old V68 interaction, mutate a checkpoint, claim a witness, or emit a contract event.",
+    "Remote, wrong-run, pending-proof and unavailable actions do not advance the local session.",
+    "All twelve old doors in each biome remain reachable and usable with the same coordinates.",
+    "New coffrets use measured table altitude, native source scale and front sockets; no new collider replaces an old saved floor position.",
+    "Constant V68 tick freezes derived scene signals; a live tick changes their phase.",
+    "Youth continues using the shared Unblooded plateau at physical height 82; local services do not rewrite appearance.",
+    "Actual Region and VillageLife JSX hides only rear NPCs/props inside an effaced facade's native painted bounds; front, side and hero bodies remain rendered."
+  ],
+  "limits": "Model, source and actual JSX render invariants only. Browser service, quota, reload and visual results are separate gates. Native body routines and existing art are reused; no new complete tool/hand animation atlas was authored."
+}

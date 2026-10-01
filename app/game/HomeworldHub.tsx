@@ -32,6 +32,7 @@ import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./Homeworld
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
 import { canStartSoloV68 } from "./systems/campaignSoloV68";
 import { canStartSoloV69 } from "./systems/campaignSoloV69";
+import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldResidentV69 as nearestHomeworldResidentV68, homeworldResidentDialogueV69 as homeworldResidentDialogueV68 } from "./systems/homeworldLifeV69";
@@ -60,6 +61,7 @@ export interface HomeworldHubProps {
   onSoloV67?(): boolean;
   onSoloV68?(): boolean;
   onSoloV69?(): boolean;
+  onSoloV70?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
   /** A completed connector returns at its actual city threshold, including after reload. */
   arrivalV67?: { pointId: string; requestId: string } | null;
@@ -75,7 +77,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
   const [interiorId, setInteriorId] = useState<string | null>(null);
@@ -475,12 +477,14 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
-    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Tu restes Young Blood : visite les villages et prends les relevés des commanditaires ; le rite d’initiation attend sa propre expédition."
+    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Les salles supérieures sont explorées et le confinement est attesté ; les profondeurs et le rite Blooded restent à accomplir."
+    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
     : youthCampaignObjective(save.youthTraining);
-  const youthProgressTitle = save.soloV69?.status === "completed" ? "Young Blood · Seuils maîtrisés"
+  const youthProgressTitle = save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
+    : save.soloV69?.status === "completed" ? "Young Blood · Seuils maîtrisés"
     : save.soloV68?.status === "completed" ? "Young Blood · Cohorte reconnue"
     : save.soloV67?.status === "completed" ? "Unblooded · Piste rapportée"
     : save.soloV66?.status === "completed" ? "Unblooded · Premières Pistes accomplies"
@@ -524,7 +528,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
       {!interior && <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
-        open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
+        save={save} open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />}
       {!interior && <div className={styles.sky} aria-hidden="true" />}
@@ -629,6 +633,13 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre les seuils." } : current); return; }
             if (!onSoloV69()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
           }}>{save.soloV69 ? "Reprendre Les Seuils du Premier Sang" : "Préparer Les Seuils du Premier Sang"}</button>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV70 && canStartSoloV70(save) && save.soloV70?.status !== "completed" && <button type="button" data-solo-v70-enter disabled={suspended || paused || inactive} onClick={() => {
+            if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current)?.id !== "training-service") return;
+            clearInputs();
+            if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre le temple." } : current); return; }
+            if (!onSoloV70()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
+          }}>{save.soloV70 ? "Reprendre Le Temple des Trois Ombres · acte I" : "Le Temple des Trois Ombres · acte I"}</button>}
+          {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV69?.status === "completed" && <p data-solo-v69-complete>Les douze étapes de préparation sont attestées. Le jeune a rejoint le refuge et tu es revenu au maître. Ton rang reste Young Blood ; le Premier Sang attend sa propre expédition.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.evidenceId ? <YautjaTranslationV67 text={selectedPoint.description} paused={suspended || paused || inactive} /> : selectedPoint.description}</p>

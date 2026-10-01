@@ -1,3 +1,5 @@
 .resident{position:absolute;width:0;height:0;pointer-events:none}.resident img{max-width:none}.shadow{position:absolute;left:-23px;top:-7px;width:46px;height:14px;border-radius:50%;background:#04050566;filter:blur(3px)}
 .scene{position:absolute;z-index:1;pointer-events:none;transform:translateX(-50%);max-width:230px;text-align:center;padding:4px 8px;color:#e9debd;background:#10201dcc;border-bottom:1px solid var(--region-accent);font-size:11px;opacity:.84}
+.scene small{display:block;font-size:10px;margin-top:3px;opacity:.8}.approach{position:absolute;width:86px;height:40px;margin:-20px 0 0 -43px;z-index:1;pointer-events:none;display:grid;place-items:center;color:#e3c394;font-size:15px}.approach i{position:absolute;inset:0;border:2px dashed var(--region-accent);border-radius:50%}.approach b{font-weight:normal;text-shadow:0 1px 4px #000}
+.controlLight{position:absolute;pointer-events:none;width:20px;height:23px;background:radial-gradient(ellipse,#efb35199,transparent 72%);filter:blur(3px)}.surfaceReading{position:absolute;z-index:1;pointer-events:none}
 @media(max-width:650px){.scene{font-size:10px;max-width:160px}}

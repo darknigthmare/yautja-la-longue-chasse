@@ -15,7 +15,7 @@ async function capture(name){const path=output+'/'+name+'.jpg';await page.screen
 try {
   await page.addInitScript(({key,save})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));},{key:p.SAVE_STORAGE_KEY,save});
   await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await page.locator('[data-homeworld-hub]').waitFor();
-  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),'V69');
+  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),process.env.GAME_QA_CONTENT_VERSION??'V69');
   await page.locator('[data-homeworld-hub] img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
   await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));
   const nav=homeworldNavigatorV66(page,api);await nav.focus();await capture('city-inhabited-port');

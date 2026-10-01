@@ -7,6 +7,7 @@ import { HOMEWORLD_ALL_CONTRACTS_V69, CONTRACT_REGIONS_V68, contractRegionNameV6
   isHomeworldContractsV68, normalizeHomeworldContractsV68, type ContractActionV68, type ContractCategoryV68,
   type ContractRegionIdV68 } from './systems/homeworldContractsV68';
 import styles from './HomeworldContractsV68.module.css';
+import { contractChapterNarrativeV70, contractBriefDisplayV70 } from './systems/homeworldContractNarrativeV70';
 
 type CategoryFilterV69 = ContractCategoryV68 | 'all' | 'chain';
 const CATEGORIES: readonly { id: CategoryFilterV69; label: string }[] = [
@@ -62,17 +63,27 @@ export default function HomeworldContractsV68({ value, npcId, eligible, disabled
         const requirements = contractRequirementsV69(state, definition.id);
         const phase = !entry ? requirements.met ? 'offer' : 'locked' : entry.status === 'completed' ? 'completed' : entry.status === 'abandoned' ? 'abandoned' : active?.ready ? 'return' : 'field';
         const status = phase === 'offer' ? 'Disponible' : phase === 'locked' ? 'Remise préalable requise' : phase === 'completed' ? 'Rapport remis' : phase === 'abandoned' ? 'Mise de côté' : phase === 'return' ? 'À remettre' : 'Suivie';
+        const narrative = contractChapterNarrativeV70(value, definition.id);
         return <article className={styles.card} key={definition.id} data-contract-id={definition.id} data-contract-phase={phase}>
           <div className={styles.cardTop}><span>{definition.chain ? 'Circuit du clan' : CATEGORY_NAMES[definition.category]}</span><strong>{definition.rewardMarks} marques de clan</strong></div>
           {definition.chain && <p className={styles.chainLabel} data-contract-chain-v69={definition.chain.id}>{definition.chain.title} · chapitre {definition.chain.chapter}/{definition.chain.total}</p>}
           <h5>{definition.title}</h5><p className={styles.region}>{definition.objectives.map(objective => contractRegionNameV68(objective.regionId)).join(' → ')}</p>
-          <p><YautjaTranslationV67 text={definition.brief} paused={disabled} reducedMotion={reducedMotion} /></p>
+          {narrative ? <section className={styles.narrative} aria-label={`Parole de ${narrative.speaker}`} data-contract-narrative-v70={narrative.phase}>
+            <span>{narrative.phaseLabel}</span><blockquote><YautjaTranslationV67 text={narrative.reply} paused={disabled} reducedMotion={reducedMotion} /></blockquote>
+            <details><summary>Motif et preuves du dossier</summary><p>{narrative.motive}</p>
+              <strong>{narrative.stageIndex === null ? 'Lecture du dossier' : `Étape ${narrative.stageIndex + 1} · preuves exigées`}</strong>
+              <ul>{narrative.requiredEvidence.map(line => <li key={line}>{line}</li>)}</ul>
+            </details>
+            {!!narrative.confirmedReports.length && <details data-contract-reports-v70><summary>Rapports confirmés · {narrative.confirmedReports.length}</summary>
+              <ul>{narrative.confirmedReports.map(line => <li key={line}>{line}</li>)}</ul></details>}
+          </section> : <p><YautjaTranslationV67 text={contractBriefDisplayV70(definition.id, definition.brief)} paused={disabled} reducedMotion={reducedMotion} /></p>}
           {definition.chain && <><p className={styles.relation}>{definition.chain.relation}</p>
             <ol className={styles.itinerary} aria-label="Itinéraire dans l’ordre">
               {definition.objectives.map((objective, index) => <li key={objective.regionId} data-contract-route-state={active?.route[index].status ?? (phase === 'completed' ? 'confirmed' : index === 0 ? 'field' : 'later')}>
                 <strong>{index + 1}. {contractRegionNameV68(objective.regionId)}</strong><span>{objective.text}</span>
               </li>)}
             </ol></>}
+          {narrative?.accessNotice && <p className={styles.requirement} data-contract-access-notice-v70>{narrative.accessNotice}</p>}
           {phase === 'locked' && <p className={styles.requirement} data-contract-prerequisite-v69>{requirements.message}</p>}
           <p className={styles.restriction}>{definition.restriction}</p>
           <div className={styles.status}><span>{status}</span>{active && <span>{active.completedStages}/{active.totalStages} retours confirmés</span>}</div>
@@ -108,6 +119,8 @@ export function HomeworldContractsJournalV68({ value }: { value: unknown }) {
         <strong>{item.title}</strong><span>{item.completedStages}/{item.totalStages} retours confirmés</span>
         <p data-contract-destination-v69><strong>Destination :</strong> {item.destination.label}<br /><strong>{item.nextAction} :</strong> {item.objective}</p>
         {item.chain && <p className={styles.relation}>{item.chain.title} · {item.chain.chapter}/{item.chain.total}<br />{item.relation}</p>}
+        {item.chain && <p data-contract-narrative-journal-v70>{contractChapterNarrativeV70(value, item.id)?.reply}</p>}
+        {item.id === 'v69-measure-3' && <p data-contract-access-notice-v70>{contractChapterNarrativeV70(value, item.id)?.accessNotice}</p>}
       </li>)}</ul>}
   </section>;
 }

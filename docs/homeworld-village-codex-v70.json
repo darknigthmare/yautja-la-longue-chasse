@@ -1,0 +1,4858 @@
+{
+  "version": 1,
+  "release": "V70",
+  "units": "V68 ground-world coordinates; art altitude is physical world height; screen ground y uses sin(35 degrees).",
+  "projection": {
+    "yawDegrees": 0,
+    "pitchDegrees": 35,
+    "depthScale": 0.573576436351046,
+    "zoom": 0.96,
+    "adultHeight": 100,
+    "adultMetres": 2.3,
+    "minimumDoorWidth": 80,
+    "minimumDoorHeight": 128,
+    "doorApproachDistance": 70,
+    "planDepthExpansion": 1.55,
+    "minimumPrimaryStreetWidth": 160
+  },
+  "savePolicy": "No new checkpoint fields, moved colliders or targets. Actor remains manually controlled. Session practice is discarded on cold reload.",
+  "clockPolicy": "Existing V68 tick only. Pause, atlas, local service, dialogue, suspension and storage refusal stop derived life signals.",
+  "counts": {
+    "villages": 10,
+    "civilianStations": 40,
+    "atlasApproaches": 180,
+    "nativeCoffrets": 30
+  },
+  "villages": [
+    {
+      "regionId": "ash-marches",
+      "name": "Halte des Porte-Cendres",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1900,
+          "y": 1250,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1290,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2450,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3120,
+          "y": 2530,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 650,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1200,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2500,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3600,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:ash-marches-scene-1",
+          "name": "Tri des charges cendrées",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "charges cendrées"
+        },
+        {
+          "id": "activity:ash-marches-scene-2",
+          "name": "Réglage des balises",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "balises de corniche"
+        },
+        {
+          "id": "activity:ash-marches-scene-3",
+          "name": "Mémoire des convois",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "dépôts de cendre"
+        },
+        {
+          "id": "activity:ash-marches-scene-4",
+          "name": "Entretien des réserves",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserves du convoi"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "ash-marches-scene-1",
+          "regionId": "ash-marches",
+          "name": "Tri des charges cendrées",
+          "description": "Les porteurs protègent les charges du souffle de cendres. Les coffrets sont fermés avant chaque départ.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "charges cendrées",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "ash-marches-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "ash-marches-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "ash-marches-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "ash-marches-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "ash-marches-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "ash-marches-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "ash-marches-scene-2",
+          "regionId": "ash-marches",
+          "name": "Réglage des balises",
+          "description": "Les porteurs protègent les charges du souffle de cendres. Les coffrets sont fermés avant chaque départ.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "balises de corniche",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "ash-marches-scene-3",
+          "regionId": "ash-marches",
+          "name": "Mémoire des convois",
+          "description": "Les porteurs protègent les charges du souffle de cendres. Les coffrets sont fermés avant chaque départ.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "dépôts de cendre",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "ash-marches-scene-4",
+          "regionId": "ash-marches",
+          "name": "Entretien des réserves",
+          "description": "Les porteurs protègent les charges du souffle de cendres. Les coffrets sont fermés avant chaque départ.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserves du convoi",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "glass-desert",
+      "name": "Village des Citernes",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1900,
+          "y": 1350,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1390,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2550,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3120,
+          "y": 2630,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 650,
+          "y": 800,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1200,
+          "y": 800,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2500,
+          "y": 800,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3600,
+          "y": 800,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:glass-desert-scene-1",
+          "name": "Tour des citernes",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "coffrets des citernes"
+        },
+        {
+          "id": "activity:glass-desert-scene-2",
+          "name": "Inspection des conduits",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "conduits de débit"
+        },
+        {
+          "id": "activity:glass-desert-scene-3",
+          "name": "Transmission des routes",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "poussière abritée"
+        },
+        {
+          "id": "activity:glass-desert-scene-4",
+          "name": "Réserve du soir",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserve d’eau scellée"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "glass-desert-scene-1",
+          "regionId": "glass-desert",
+          "name": "Tour des citernes",
+          "description": "Le Peuple des Citernes répartit les réserves avant les traversées. Le relevé des conduits distingue une fuite du passage du fouisseur.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "coffrets des citernes",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "glass-desert-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "glass-desert-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "glass-desert-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "glass-desert-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "glass-desert-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "glass-desert-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "glass-desert-scene-2",
+          "regionId": "glass-desert",
+          "name": "Inspection des conduits",
+          "description": "Le Peuple des Citernes répartit les réserves avant les traversées. Le relevé des conduits distingue une fuite du passage du fouisseur.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "conduits de débit",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "glass-desert-scene-3",
+          "regionId": "glass-desert",
+          "name": "Transmission des routes",
+          "description": "Le Peuple des Citernes répartit les réserves avant les traversées. Le relevé des conduits distingue une fuite du passage du fouisseur.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "poussière abritée",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "glass-desert-scene-4",
+          "regionId": "glass-desert",
+          "name": "Réserve du soir",
+          "description": "Le Peuple des Citernes répartit les réserves avant les traversées. Le relevé des conduits distingue une fuite du passage du fouisseur.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserve d’eau scellée",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "pillar-jungle",
+      "name": "Terrasses des Hautes Branches",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1850,
+          "y": 1030,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1640,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2380,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3060,
+          "y": 2900,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 570,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1250,
+          "y": 730,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2580,
+          "y": 670,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3650,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:pillar-jungle-scene-1",
+          "name": "Ancrages des treuils",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "charges des treuils"
+        },
+        {
+          "id": "activity:pillar-jungle-scene-2",
+          "name": "Inspection des charges",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "ancrages des passerelles"
+        },
+        {
+          "id": "activity:pillar-jungle-scene-3",
+          "name": "Lecture des écorces",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "écorces des piliers"
+        },
+        {
+          "id": "activity:pillar-jungle-scene-4",
+          "name": "Relève des hauteurs",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "relève des hauteurs"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "pillar-jungle-scene-1",
+          "regionId": "pillar-jungle",
+          "name": "Ancrages des treuils",
+          "description": "Les charges montent par les treuils. Un ancrage entretenu ne devient pas un trophée ; les aspirants restent avec leurs maîtres.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "charges des treuils",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "pillar-jungle-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "pillar-jungle-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "pillar-jungle-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "pillar-jungle-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "pillar-jungle-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "pillar-jungle-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle-scene-2",
+          "regionId": "pillar-jungle",
+          "name": "Inspection des charges",
+          "description": "Les charges montent par les treuils. Un ancrage entretenu ne devient pas un trophée ; les aspirants restent avec leurs maîtres.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "ancrages des passerelles",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle-scene-3",
+          "regionId": "pillar-jungle",
+          "name": "Lecture des écorces",
+          "description": "Les charges montent par les treuils. Un ancrage entretenu ne devient pas un trophée ; les aspirants restent avec leurs maîtres.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "écorces des piliers",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle-scene-4",
+          "regionId": "pillar-jungle",
+          "name": "Relève des hauteurs",
+          "description": "Les charges montent par les treuils. Un ancrage entretenu ne devient pas un trophée ; les aspirants restent avec leurs maîtres.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "relève des hauteurs",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "luminous-marshes",
+      "name": "Veillée des Racines",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1850,
+          "y": 1030,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1640,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2380,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3060,
+          "y": 2900,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 570,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1250,
+          "y": 730,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2580,
+          "y": 670,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3650,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:luminous-marshes-scene-1",
+          "name": "Relevé des crues",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "charges des socles"
+        },
+        {
+          "id": "activity:luminous-marshes-scene-2",
+          "name": "Entretien des socles",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "résonateurs des crues"
+        },
+        {
+          "id": "activity:luminous-marshes-scene-3",
+          "name": "Observation des racines",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "racines hors d’eau"
+        },
+        {
+          "id": "activity:luminous-marshes-scene-4",
+          "name": "Réserve hors des eaux",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserves du poste aval"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "luminous-marshes-scene-1",
+          "regionId": "luminous-marshes",
+          "name": "Relevé des crues",
+          "description": "Les familles gardent les réserves sur les socles secs. Les veilleuses comparent la hauteur des eaux aux marques conservées.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "charges des socles",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "luminous-marshes-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "luminous-marshes-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "luminous-marshes-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "luminous-marshes-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "luminous-marshes-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "luminous-marshes-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "luminous-marshes-scene-2",
+          "regionId": "luminous-marshes",
+          "name": "Entretien des socles",
+          "description": "Les familles gardent les réserves sur les socles secs. Les veilleuses comparent la hauteur des eaux aux marques conservées.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "résonateurs des crues",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "luminous-marshes-scene-3",
+          "regionId": "luminous-marshes",
+          "name": "Observation des racines",
+          "description": "Les familles gardent les réserves sur les socles secs. Les veilleuses comparent la hauteur des eaux aux marques conservées.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "racines hors d’eau",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "luminous-marshes-scene-4",
+          "regionId": "luminous-marshes",
+          "name": "Réserve hors des eaux",
+          "description": "Les familles gardent les réserves sur les socles secs. Les veilleuses comparent la hauteur des eaux aux marques conservées.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserves du poste aval",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "storm-chain",
+      "name": "Refuge des Trois Vents",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1100,
+          "y": 1200,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 2760,
+          "y": 1170,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 1100,
+          "y": 2530,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 2760,
+          "y": 2560,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 450,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1750,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2400,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3750,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 450,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1750,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2400,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3750,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:storm-chain-scene-1",
+          "name": "Réglage des lests",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "lests des cordées"
+        },
+        {
+          "id": "activity:storm-chain-scene-2",
+          "name": "Inspection des harnais",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "harnais de crête"
+        },
+        {
+          "id": "activity:storm-chain-scene-3",
+          "name": "Récit des traversées",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "dépôts sous le vent"
+        },
+        {
+          "id": "activity:storm-chain-scene-4",
+          "name": "Relève des guetteurs",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "relève des guetteurs"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "storm-chain-scene-1",
+          "regionId": "storm-chain",
+          "name": "Réglage des lests",
+          "description": "Une traversée attend une accalmie. Les harnais et les lests passent entre plusieurs mains avant qu’un convoi quitte le refuge.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "lests des cordées",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "storm-chain-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "storm-chain-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "storm-chain-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "storm-chain-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "storm-chain-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "storm-chain-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "storm-chain-scene-2",
+          "regionId": "storm-chain",
+          "name": "Inspection des harnais",
+          "description": "Une traversée attend une accalmie. Les harnais et les lests passent entre plusieurs mains avant qu’un convoi quitte le refuge.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "harnais de crête",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "storm-chain-scene-3",
+          "regionId": "storm-chain",
+          "name": "Récit des traversées",
+          "description": "Une traversée attend une accalmie. Les harnais et les lests passent entre plusieurs mains avant qu’un convoi quitte le refuge.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "dépôts sous le vent",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "storm-chain-scene-4",
+          "regionId": "storm-chain",
+          "name": "Relève des guetteurs",
+          "description": "Une traversée attend une accalmie. Les harnais et les lests passent entre plusieurs mains avant qu’un convoi quitte le refuge.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "relève des guetteurs",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "leviathan-coast",
+      "name": "Port des Marées Longues",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1100,
+          "y": 1200,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 2760,
+          "y": 1170,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 1100,
+          "y": 2530,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 2760,
+          "y": 2560,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 450,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1750,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2400,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3750,
+          "y": 610,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 450,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1750,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2400,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3750,
+          "y": 3550,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:leviathan-coast-scene-1",
+          "name": "Table des marées",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "charges des amarres"
+        },
+        {
+          "id": "activity:leviathan-coast-scene-2",
+          "name": "Inspection des amarres",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "repères de marée"
+        },
+        {
+          "id": "activity:leviathan-coast-scene-3",
+          "name": "Lecture des algues",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "algues échouées"
+        },
+        {
+          "id": "activity:leviathan-coast-scene-4",
+          "name": "Réserve de la corniche",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserves de corniche"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "leviathan-coast-scene-1",
+          "regionId": "leviathan-coast",
+          "name": "Table des marées",
+          "description": "Les départs suivent les marques de marée. Les demeures restent au-dessus du ressac ; les charges descendent vers les quais séparés.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "charges des amarres",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "leviathan-coast-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "leviathan-coast-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "leviathan-coast-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "leviathan-coast-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "leviathan-coast-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "leviathan-coast-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "leviathan-coast-scene-2",
+          "regionId": "leviathan-coast",
+          "name": "Inspection des amarres",
+          "description": "Les départs suivent les marques de marée. Les demeures restent au-dessus du ressac ; les charges descendent vers les quais séparés.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "repères de marée",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "leviathan-coast-scene-3",
+          "regionId": "leviathan-coast",
+          "name": "Lecture des algues",
+          "description": "Les départs suivent les marques de marée. Les demeures restent au-dessus du ressac ; les charges descendent vers les quais séparés.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "algues échouées",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "leviathan-coast-scene-4",
+          "regionId": "leviathan-coast",
+          "name": "Réserve de la corniche",
+          "description": "Les départs suivent les marques de marée. Les demeures restent au-dessus du ressac ; les charges descendent vers les quais séparés.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserves de corniche",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "thermal-caves",
+      "name": "Enclave des Forges Basses",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 2000,
+          "y": 1140,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3020,
+          "y": 1490,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 1100,
+          "y": 2370,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3020,
+          "y": 2660,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 750,
+          "y": 790,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1430,
+          "y": 720,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2740,
+          "y": 720,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3620,
+          "y": 920,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 480,
+          "y": 1910,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1550,
+          "y": 3450,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2580,
+          "y": 3450,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3750,
+          "y": 3120,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:thermal-caves-scene-1",
+          "name": "Relevé des conduites",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "matériaux de forge"
+        },
+        {
+          "id": "activity:thermal-caves-scene-2",
+          "name": "Réglage des outils",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "outils de conduite"
+        },
+        {
+          "id": "activity:thermal-caves-scene-3",
+          "name": "Tri des matériaux",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "dépôts de vapeur"
+        },
+        {
+          "id": "activity:thermal-caves-scene-4",
+          "name": "Relève de la galerie froide",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserve de la galerie fraîche"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "thermal-caves-scene-1",
+          "regionId": "thermal-caves",
+          "name": "Relevé des conduites",
+          "description": "Les instruments rejoignent les poches fraîches après les relevés. Personne ne range une réserve familiale dans la galerie d’un foyer.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "matériaux de forge",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "thermal-caves-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "thermal-caves-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "thermal-caves-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "thermal-caves-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "thermal-caves-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "thermal-caves-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "thermal-caves-scene-2",
+          "regionId": "thermal-caves",
+          "name": "Réglage des outils",
+          "description": "Les instruments rejoignent les poches fraîches après les relevés. Personne ne range une réserve familiale dans la galerie d’un foyer.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "outils de conduite",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "thermal-caves-scene-3",
+          "regionId": "thermal-caves",
+          "name": "Tri des matériaux",
+          "description": "Les instruments rejoignent les poches fraîches après les relevés. Personne ne range une réserve familiale dans la galerie d’un foyer.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "dépôts de vapeur",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "thermal-caves-scene-4",
+          "regionId": "thermal-caves",
+          "name": "Relève de la galerie froide",
+          "description": "Les instruments rejoignent les poches fraîches après les relevés. Personne ne range une réserve familiale dans la galerie d’un foyer.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserve de la galerie fraîche",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "cold-crown",
+      "name": "Halte des Hautes Neiges",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 2000,
+          "y": 1140,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3020,
+          "y": 1490,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 1100,
+          "y": 2370,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3020,
+          "y": 2660,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 750,
+          "y": 790,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1430,
+          "y": 720,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2740,
+          "y": 720,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3620,
+          "y": 920,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 480,
+          "y": 1910,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1550,
+          "y": 3450,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2580,
+          "y": 3450,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3750,
+          "y": 3120,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:cold-crown-scene-1",
+          "name": "Préparation des réserves",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "charges sous abri"
+        },
+        {
+          "id": "activity:cold-crown-scene-2",
+          "name": "Inspection des joints",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "joints des vestibules"
+        },
+        {
+          "id": "activity:cold-crown-scene-3",
+          "name": "Lecture des routes enneigées",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "dépôts de givre"
+        },
+        {
+          "id": "activity:cold-crown-scene-4",
+          "name": "Relève des abris",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "réserves du refuge"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "cold-crown-scene-1",
+          "regionId": "cold-crown",
+          "name": "Préparation des réserves",
+          "description": "Les joints sont vérifiés avant les départs. Les réserves restent sous abri et les cordes sont séchées avant une nouvelle traversée.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "charges sous abri",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "cold-crown-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "cold-crown-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "cold-crown-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "cold-crown-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "cold-crown-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "cold-crown-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "cold-crown-scene-2",
+          "regionId": "cold-crown",
+          "name": "Inspection des joints",
+          "description": "Les joints sont vérifiés avant les départs. Les réserves restent sous abri et les cordes sont séchées avant une nouvelle traversée.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "joints des vestibules",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "cold-crown-scene-3",
+          "regionId": "cold-crown",
+          "name": "Lecture des routes enneigées",
+          "description": "Les joints sont vérifiés avant les départs. Les réserves restent sous abri et les cordes sont séchées avant une nouvelle traversée.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "dépôts de givre",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "cold-crown-scene-4",
+          "regionId": "cold-crown",
+          "name": "Relève des abris",
+          "description": "Les joints sont vérifiés avant les départs. Les réserves restent sous abri et les cordes sont séchées avant une nouvelle traversée.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "réserves du refuge",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "first-city-ruins",
+      "name": "Camp des Archives Scellées",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1900,
+          "y": 1250,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1290,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2450,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3120,
+          "y": 2530,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 650,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1200,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2500,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3600,
+          "y": 700,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3490,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:first-city-ruins-scene-1",
+          "name": "Inventaire des fragments",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "fragments hors monument"
+        },
+        {
+          "id": "activity:first-city-ruins-scene-2",
+          "name": "Inspection des socles",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "socles de conservation"
+        },
+        {
+          "id": "activity:first-city-ruins-scene-3",
+          "name": "Transmission des récits",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "marques de surface"
+        },
+        {
+          "id": "activity:first-city-ruins-scene-4",
+          "name": "Veille des archives",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "archives du camp"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "first-city-ruins-scene-1",
+          "regionId": "first-city-ruins",
+          "name": "Inventaire des fragments",
+          "description": "Le camp consigne les fragments sans déplacer les sépultures. Une copie accompagne le relevé ; l’original reste attribué à son lieu.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "fragments hors monument",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "first-city-ruins-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "first-city-ruins-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "first-city-ruins-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "first-city-ruins-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "first-city-ruins-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "first-city-ruins-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "first-city-ruins-scene-2",
+          "regionId": "first-city-ruins",
+          "name": "Inspection des socles",
+          "description": "Le camp consigne les fragments sans déplacer les sépultures. Une copie accompagne le relevé ; l’original reste attribué à son lieu.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "socles de conservation",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "first-city-ruins-scene-3",
+          "regionId": "first-city-ruins",
+          "name": "Transmission des récits",
+          "description": "Le camp consigne les fragments sans déplacer les sépultures. Une copie accompagne le relevé ; l’original reste attribué à son lieu.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "marques de surface",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "first-city-ruins-scene-4",
+          "regionId": "first-city-ruins",
+          "name": "Veille des archives",
+          "description": "Le camp consigne les fragments sans déplacer les sépultures. Une copie accompagne le relevé ; l’original reste attribué à son lieu.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "archives du camp",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "forbidden-reserve",
+      "name": "Poste des Gardiens de Réserve",
+      "provenance": "Original civilian settlement for this game; not a canonical map or a documented canonical ritual.",
+      "destinations": [
+        {
+          "id": "door:hall",
+          "name": "Maison commune",
+          "x": 1850,
+          "y": 1030,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:forge",
+          "name": "Atelier des balises",
+          "x": 3150,
+          "y": 1640,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:clinic",
+          "name": "Maison des soins",
+          "x": 950,
+          "y": 2380,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:archive",
+          "name": "Galerie des récits",
+          "x": 3060,
+          "y": 2900,
+          "kind": "door",
+          "detail": "Service du village · entrée au sud"
+        },
+        {
+          "id": "door:house-n-0",
+          "name": "Demeure 1",
+          "x": 570,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-1",
+          "name": "Demeure 2",
+          "x": 1250,
+          "y": 730,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-2",
+          "name": "Demeure 3",
+          "x": 2580,
+          "y": 670,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-n-3",
+          "name": "Demeure 4",
+          "x": 3650,
+          "y": 770,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-0",
+          "name": "Demeure 5",
+          "x": 650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-1",
+          "name": "Demeure 6",
+          "x": 1600,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-2",
+          "name": "Demeure 7",
+          "x": 2500,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "door:house-s-3",
+          "name": "Demeure 8",
+          "x": 3650,
+          "y": 3590,
+          "kind": "door",
+          "detail": "Demeure du clan · entrée au sud"
+        },
+        {
+          "id": "activity:forbidden-reserve-scene-1",
+          "name": "Inventaire des caisses scellées",
+          "x": 1940,
+          "y": 2170,
+          "kind": "activity",
+          "detail": "caisses du poste extérieur"
+        },
+        {
+          "id": "activity:forbidden-reserve-scene-2",
+          "name": "Réglage des signaux",
+          "x": 3530,
+          "y": 1780,
+          "kind": "activity",
+          "detail": "signaux de confinement"
+        },
+        {
+          "id": "activity:forbidden-reserve-scene-3",
+          "name": "Relève des observateurs",
+          "x": 2870,
+          "y": 3150,
+          "kind": "activity",
+          "detail": "lisière extérieure"
+        },
+        {
+          "id": "activity:forbidden-reserve-scene-4",
+          "name": "Réserve du poste extérieur",
+          "x": 3650,
+          "y": 2530,
+          "kind": "activity",
+          "detail": "relève hors enclos"
+        },
+        {
+          "id": "field",
+          "name": "Poste extérieur",
+          "x": 3900,
+          "y": 2300,
+          "kind": "field",
+          "detail": "Chemin vers les trois relevés et la faune ; aucun déplacement automatique"
+        },
+        {
+          "id": "city",
+          "name": "Retour à la cité",
+          "x": 520,
+          "y": 2800,
+          "kind": "city",
+          "detail": "Corniche du retour · trajet à pied"
+        }
+      ],
+      "activities": [
+        {
+          "id": "forbidden-reserve-scene-1",
+          "regionId": "forbidden-reserve",
+          "name": "Inventaire des caisses scellées",
+          "description": "Les routines restent à l’extérieur des enclos. Les caisses sont inventoriées sans ouvrir un sas ni faire sortir une créature importée.",
+          "kind": "sort",
+          "stationId": "place-table",
+          "station": {
+            "x": 1940,
+            "y": 2060
+          },
+          "approach": {
+            "x": 1940,
+            "y": 2170
+          },
+          "material": "caisses du poste extérieur",
+          "instruction": "Mettre la charge fragile à part.",
+          "choices": [
+            "Charge intacte",
+            "Charge fragile",
+            "Coffret scellé"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Mettre la charge fragile à part.",
+            "Placer la charge intacte sur le plateau libre.",
+            "Conserver le coffret scellé avec ses marques."
+          ],
+          "destinationId": "door:hall",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [
+            {
+              "id": "forbidden-reserve-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "forbidden-reserve-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "forbidden-reserve-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2042,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "nativeLoadsAfter": [
+            {
+              "id": "forbidden-reserve-scene-1-load-0",
+              "artId": "chest",
+              "x": 1890,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "forbidden-reserve-scene-1-load-1",
+              "artId": "chest",
+              "x": 1940,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            },
+            {
+              "id": "forbidden-reserve-scene-1-load-2",
+              "artId": "chest",
+              "x": 1990,
+              "y": 2033,
+              "altitude": 27.296,
+              "heightWorld": 12,
+              "depth": 2061,
+              "footprint": {
+                "width": 19.73604073436574,
+                "depth": 10.854822403901156
+              },
+              "supportId": "place-table"
+            }
+          ],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Plateau fragile",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Plateau intact",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Coffrets scellés",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "forbidden-reserve-scene-2",
+          "regionId": "forbidden-reserve",
+          "name": "Réglage des signaux",
+          "description": "Les routines restent à l’extérieur des enclos. Les caisses sont inventoriées sans ouvrir un sas ni faire sortir une créature importée.",
+          "kind": "calibrate",
+          "stationId": "workshop",
+          "station": {
+            "x": 3530,
+            "y": 1670
+          },
+          "approach": {
+            "x": 3530,
+            "y": 1780
+          },
+          "material": "signaux de confinement",
+          "instruction": "Isoler le circuit avant de toucher au réglage.",
+          "choices": [
+            "Isoler",
+            "Comparer",
+            "Stabiliser"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Isoler le circuit avant de toucher au réglage.",
+            "Comparer le repère de contrôle avec la lecture stable.",
+            "Stabiliser la lecture, sans changer la consigne du poste."
+          ],
+          "destinationId": "door:forge",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Lecture au repos",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Contrôle du repère",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Lecture stable",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "forbidden-reserve-scene-3",
+          "regionId": "forbidden-reserve",
+          "name": "Relève des observateurs",
+          "description": "Les routines restent à l’extérieur des enclos. Les caisses sont inventoriées sans ouvrir un sas ni faire sortir une créature importée.",
+          "kind": "observe",
+          "stationId": "garden-b",
+          "station": {
+            "x": 2870,
+            "y": 3040
+          },
+          "approach": {
+            "x": 2870,
+            "y": 3150
+          },
+          "material": "lisière extérieure",
+          "instruction": "Observer d’abord le bord exposé.",
+          "choices": [
+            "Surface abritée",
+            "Bord exposé",
+            "Limite du dépôt"
+          ],
+          "sequence": [
+            1,
+            0,
+            2
+          ],
+          "steps": [
+            "Observer d’abord le bord exposé.",
+            "Comparer ensuite la surface abritée.",
+            "Distinguer la limite du dépôt sans arracher ni prélever."
+          ],
+          "destinationId": "door:clinic",
+          "completion": "Les deux surfaces ont été comparées ici. Ce repère local ne constitue pas un relevé de chasse.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Bord exposé",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "Surface abritée",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Limite du dépôt",
+              "brightness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "forbidden-reserve-scene-4",
+          "regionId": "forbidden-reserve",
+          "name": "Réserve du poste extérieur",
+          "description": "Les routines restent à l’extérieur des enclos. Les caisses sont inventoriées sans ouvrir un sas ni faire sortir une créature importée.",
+          "kind": "prepare",
+          "stationId": "storage",
+          "station": {
+            "x": 3650,
+            "y": 2420
+          },
+          "approach": {
+            "x": 3650,
+            "y": 2530
+          },
+          "material": "relève hors enclos",
+          "instruction": "Examiner le coffret, sans prendre son contenu.",
+          "choices": [
+            "Examiner le coffret",
+            "Vérifier le joint",
+            "Fermer le coffret"
+          ],
+          "sequence": [
+            0,
+            1,
+            2
+          ],
+          "steps": [
+            "Examiner le coffret, sans prendre son contenu.",
+            "Vérifier le joint et les marques du propriétaire.",
+            "Refermer le coffret ; il reste au village."
+          ],
+          "destinationId": "field",
+          "completion": "La préparation locale est terminée. Le matériel reste à son propriétaire ; aucune prise n’est attribuée.",
+          "actionPolicy": "Physical front approach, session-only guided gestures, no field event or reward.",
+          "nativeLoadsBefore": [],
+          "nativeLoadsAfter": [],
+          "signalSamples": [
+            {
+              "tick": 0,
+              "phase": 0,
+              "progress": 0,
+              "signal": "Marques du coffret",
+              "brightness": 0.35
+            },
+            {
+              "tick": 150,
+              "phase": 1,
+              "progress": 0,
+              "signal": "État du joint",
+              "brightness": 0.55
+            },
+            {
+              "tick": 300,
+              "phase": 2,
+              "progress": 0,
+              "signal": "Fermeture du coffret",
+              "brightness": 0.75
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

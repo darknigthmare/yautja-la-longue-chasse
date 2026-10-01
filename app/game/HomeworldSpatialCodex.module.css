@@ -15,4 +15,5 @@
 .tabs{flex-wrap:wrap}.dialog input:focus-visible,.dialog select:focus-visible{outline:2px solid #ffde93;outline-offset:3px}
 
 /* Keep the catalogue independent of district navigation and the map. */
+.regionVista{min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;margin-top:12px;padding:16px;background-size:cover;background-position:center;border:1px solid #a8bb9f55;border-radius:6px}.regionVista strong{color:#e7d7a5;font-size:17px}.regionVista span{color:#c0d0c5;font-size:11px}.routeAccess{padding:9px 12px;border-left:2px solid #b7aa76;background:#8ba98f12;font-size:12px;line-height:1.5}
 .elementBody{display:flex;min-height:0}.elementBody>.detail{width:100%;min-height:0}.tabs{margin:0;padding:8px 18px;flex:none;border-bottom:1px solid #7c8b7640}.dialog>header,.dialog>.notice{flex:none}.dialog{overflow:hidden}.detail{min-height:0}.dialog input,.dialog select{pointer-events:auto}@media(max-width:700px){.tabs{padding:6px;gap:4px}.tabs button{padding:7px 8px;font-size:10px}.elementBody>.detail{padding:0 10px 14px}}

@@ -1,0 +1,334 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "name": "unblooded-real-city-contract-and-village-journey",
+      "status": "PASS",
+      "rank": "unblooded",
+      "shipAcquisitionAllowed": false,
+      "interiorVisited": true,
+      "cityRoutes": [
+        {
+          "kind": "city-and-door",
+          "pointId": "market-service",
+          "buildingId": "market-armory",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 1610,
+            "y": 2875.5
+          },
+          "distance": 4274.017171690271
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "market-service",
+          "buildingId": "market-armory",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "market-armory",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 1610,
+            "y": 2876
+          }
+        }
+      ],
+      "regionRoutes": [
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 360,
+            "y": 1500
+          },
+          "to": {
+            "x": 3110,
+            "y": 1500
+          },
+          "points": [
+            {
+              "x": 360,
+              "y": 1500
+            },
+            {
+              "x": 3100,
+              "y": 1500,
+              "name": "Corniche du clan"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 3110,
+            "y": 1500
+          },
+          "to": {
+            "x": 4603.255753112904,
+            "y": 982.1621339110427
+          },
+          "points": [
+            {
+              "x": 3110,
+              "y": 1500
+            },
+            {
+              "x": 4600,
+              "y": 980,
+              "name": "Premier ouvrage"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 4603.255753112904,
+            "y": 982.1621339110427
+          },
+          "to": {
+            "x": 8799.755753112904,
+            "y": 982.1621339110427
+          },
+          "points": [
+            {
+              "x": 4603.255753112904,
+              "y": 982.1621339110427
+            },
+            {
+              "x": 8800,
+              "y": 980,
+              "name": "Balcon du territoire"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 8799.755753112904,
+            "y": 982.1621339110427
+          },
+          "to": {
+            "x": 11808.752973988756,
+            "y": 1797.2205503587516
+          },
+          "points": [
+            {
+              "x": 8799.755753112904,
+              "y": 982.1621339110427
+            },
+            {
+              "x": 11800,
+              "y": 1800,
+              "name": "Second ouvrage"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 11808.752973988756,
+            "y": 1797.2205503587516
+          },
+          "to": {
+            "x": 16203.252973988756,
+            "y": 1797.2205503587516
+          },
+          "points": [
+            {
+              "x": 11808.752973988756,
+              "y": 1797.2205503587516
+            },
+            {
+              "x": 16200,
+              "y": 1800,
+              "name": "Lisière du village"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "passage",
+          "from": {
+            "x": 16203.252973988756,
+            "y": 1797.2205503587516
+          },
+          "to": {
+            "x": 18202.994441751915,
+            "y": 1500
+          },
+          "points": [
+            {
+              "x": 16203.252973988756,
+              "y": 1797.2205503587516
+            },
+            {
+              "x": 18200,
+              "y": 1500,
+              "name": "Lisière du village"
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1898.557141399484,
+            "y": 1549.1974037458335
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1215,
+              "y": 2430
+            },
+            {
+              "x": 1530,
+              "y": 1935
+            },
+            {
+              "x": 1900,
+              "y": 1545
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 1898.557141399484,
+            "y": 1549.1974037458335
+          },
+          "to": {
+            "x": 1902.44622869601,
+            "y": 1245.4659103470096
+          },
+          "points": [
+            {
+              "x": 1898.557141399484,
+              "y": 1549.1974037458335
+            },
+            {
+              "x": 1845,
+              "y": 1485
+            },
+            {
+              "x": 1845,
+              "y": 1350
+            },
+            {
+              "x": 1900,
+              "y": 1250
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 620
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 620
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "quota-refusal-retry-and-cold-reload",
+      "status": "PASS",
+      "sameRunId": true,
+      "sameWalkedDistance": true,
+      "noBlankPage": true,
+      "unchangedRank": true
+    }
+  ],
+  "appearanceChecks": [
+    {
+      "space": "city",
+      "source": "/game/prologue/v47/unblooded-player.png",
+      "paintedStature": 82,
+      "nativePlacement": true,
+      "savedPresetUnchanged": true
+    },
+    {
+      "space": "connector",
+      "source": "/game/prologue/v47/unblooded-player.png",
+      "paintedStature": 82,
+      "nativePlacement": true,
+      "savedPresetUnchanged": true
+    },
+    {
+      "space": "village",
+      "source": "/game/prologue/v47/unblooded-player.png",
+      "paintedStature": 82,
+      "nativePlacement": true,
+      "savedPresetUnchanged": true
+    },
+    {
+      "space": "interior",
+      "source": "/game/prologue/v47/unblooded-player.png",
+      "paintedStature": 82,
+      "nativePlacement": true,
+      "savedPresetUnchanged": true
+    },
+    {
+      "space": "cold-reload",
+      "source": "/game/prologue/v47/unblooded-player.png",
+      "paintedStature": 82,
+      "nativePlacement": true,
+      "savedPresetUnchanged": true
+    }
+  ],
+  "captures": [
+    "work-local/v70/qa/youth-final-local/01-unblooded-city.jpg",
+    "work-local/v70/qa/youth-final-local/02-unblooded-contract.jpg",
+    "work-local/v70/qa/youth-final-local/03-unblooded-village-guide.jpg",
+    "work-local/v70/qa/youth-final-local/03b-unblooded-interior.jpg",
+    "work-local/v70/qa/youth-final-local/04-protected-storage-refusal.jpg",
+    "work-local/v70/qa/youth-final-local/05-unblooded-cold-reload.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "fixture": "Nursery, youth formation, patrol, cage and first tracks prerequisites come from firstTracksCompleted() through the real model integrators. They were not played in this browser run. Only city walking, contract acceptance, connector traversal, village guide, interior entry/exit, storage refusal/retry and reload were played here.",
+  "compilation": "Final V70 Next production build after presentation and painted-facade occlusion corrections",
+  "visualReview": "Actual city, village guide, common-house interior and cold-reload screenshots inspected; Unblooded bitmap remains82 in all five asserted spaces with saved appearance unchanged."
+}

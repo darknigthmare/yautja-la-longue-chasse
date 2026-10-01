@@ -3,6 +3,7 @@ import { soloV66NeedsScene } from "./campaignSoloV66";
 import { soloV67NeedsScene } from "./campaignSoloV67";
 import { soloV68NeedsScene } from "./campaignSoloV68";
 import { soloV69NeedsScene } from "./campaignSoloV69";
+import { soloV70NeedsScene } from "./campaignSoloV70";
 import { createNurseryCampaign } from "./nurseryCampaign";
 import { GAME_CONTENT_VERSION } from "../buildInfo";
 import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION } from "../save";
@@ -228,7 +229,7 @@ function snapshotWorking(storage: ArchiveStorage): { archive: CompleteArchive; r
 function checkpoint(archive: CompleteArchive, kind: "manual" | "auto", index: number, location: CampaignResumeLocation): Checkpoint {
   const hasActiveHunt = !!archive.attachments.activeHunt;
   const resumeLocation = archive.campaign.prologue?.status === "active" ? "prologue"
-    : soloV69NeedsScene(archive.campaign.soloV69) || soloV68NeedsScene(archive.campaign.soloV68) || soloV67NeedsScene(archive.campaign.soloV67) || soloV66NeedsScene(archive.campaign.soloV66) || youthCampaignNeedsScene(archive.campaign.youthTraining) ? "youth-training"
+    : soloV70NeedsScene(archive.campaign.soloV70) || soloV69NeedsScene(archive.campaign.soloV69) || soloV68NeedsScene(archive.campaign.soloV68) || soloV67NeedsScene(archive.campaign.soloV67) || soloV66NeedsScene(archive.campaign.soloV66) || youthCampaignNeedsScene(archive.campaign.youthTraining) ? "youth-training"
     : archive.campaign.prologue?.status === "completed" && location === "youth-training" ? "homeworld"
     : archive.campaign.prologue?.status === "completed" && (location === "prologue" || location === "new-game") ? "homeworld"
     : hasActiveHunt ? "mission"

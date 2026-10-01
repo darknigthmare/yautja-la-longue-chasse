@@ -24,14 +24,14 @@ test('profile rank or loose chronicle evidence cannot open a youth village witho
   assert.equal(api.canVisitHomeworldVillagesV69(p.defaultSave()),true,'independent old campaign remains available');
 });
 test('new save schema protects future content and preserves original bytes',()=>{
-  assert.equal(p.SAVE_VERSION,10);
-  for(const edit of [s=>s.version=11,s=>s.soloV69={version:2},s=>s.homeworld.contractsV68={version:3}]) {
+  assert.equal(p.SAVE_VERSION,11);
+  for(const edit of [s=>s.version=p.SAVE_VERSION+1,s=>s.soloV69={version:2},s=>s.homeworld.contractsV68={version:3}]) {
     const save=structuredClone(passed);edit(save);const raw=JSON.stringify(save),values=new Map([[p.SAVE_STORAGE_KEY,raw]]);
     const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};
     assert.equal(p.parseSaveImport(raw).failure,'future-version');
     p.loadSaveWithStatus(storage);assert.equal(storage.getItem(p.SAVE_STORAGE_KEY),raw);
   }
   const old={...passed,version:9};delete old.soloV69;
-  const migrated=p.parseSaveImport(JSON.stringify(old));assert.equal(migrated.failure,null);assert.equal(migrated.save.version,10);
+  const migrated=p.parseSaveImport(JSON.stringify(old));assert.equal(migrated.failure,null);assert.equal(migrated.save.version,p.SAVE_VERSION);
   assert.equal(migrated.save.soloV69,null);assert.deepEqual(migrated.save.soloV66.receipts,passed.soloV66.receipts);
 });
