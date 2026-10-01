@@ -111,9 +111,12 @@ try {
   await capture('07-remises-uniques');
   await page.setViewportSize({ width: 393, height: 852 }); await city.tick(100);
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
-  await board.getByLabel('Type de demande', { exact: true }).selectOption('protection');
+  // The first native combobox is the category filter. A wrapped label also
+  // contains its option text, so an exact getByLabel match is unsuitable here.
+  const categoryFilter = board.getByRole('combobox').first();
+  await categoryFilter.selectOption('protection');
   assert.equal(await board.locator('[data-contract-id]').count(), 3);
-  await board.getByLabel('Type de demande', { exact: true }).selectOption('all');
+  await categoryFilter.selectOption('all');
   await board.getByRole('button', { name: 'Mes demandes', exact: true }).click();
   assert.equal(await board.locator('[data-contract-id]').count(), 2);
   await board.getByRole('button', { name: 'Voir toutes les demandes', exact: true }).click();

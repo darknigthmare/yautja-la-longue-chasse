@@ -1,0 +1,714 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "selectedRegions": [
+    "ash-marches",
+    "glass-desert",
+    "pillar-jungle",
+    "luminous-marshes",
+    "storm-chain",
+    "leviathan-coast",
+    "thermal-caves",
+    "cold-crown",
+    "first-city-ruins",
+    "forbidden-reserve"
+  ],
+  "checks": [
+    {
+      "name": "city-native-population-and-physical-hunt-board",
+      "visibleResidents": 3,
+      "routes": [
+        {
+          "kind": "city-and-door",
+          "pointId": "market-service",
+          "buildingId": "market-armory",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 1610,
+            "y": 2875.5
+          },
+          "distance": 4274.017171690271
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "market-service",
+          "buildingId": "market-armory",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "ash-marches",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1898.557141399484,
+            "y": 1245.8640704125046
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1215,
+              "y": 2430
+            },
+            {
+              "x": 1530,
+              "y": 1935
+            },
+            {
+              "x": 1900,
+              "y": 1250
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "glass-desert",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "glass-desert",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1900.3299589863343,
+            "y": 1352.8006383743784
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1170,
+              "y": 2565
+            },
+            {
+              "x": 1485,
+              "y": 2160
+            },
+            {
+              "x": 1485,
+              "y": 1980
+            },
+            {
+              "x": 1900,
+              "y": 1350
+            }
+          ]
+        },
+        {
+          "id": "glass-desert",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 312.3333333333333
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "pillar-jungle",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1848.7807524751659,
+            "y": 1025.0818313831578
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 540,
+              "y": 2115
+            },
+            {
+              "x": 1850,
+              "y": 1030
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "luminous-marshes",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "luminous-marshes",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1853.0607127369517,
+            "y": 1030.376408146597
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 540,
+              "y": 2115
+            },
+            {
+              "x": 1850,
+              "y": 1030
+            }
+          ]
+        },
+        {
+          "id": "luminous-marshes",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "storm-chain",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "storm-chain",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1095.584919885846,
+            "y": 1198.175517665678
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 810,
+              "y": 2070
+            },
+            {
+              "x": 1100,
+              "y": 1200
+            }
+          ]
+        },
+        {
+          "id": "storm-chain",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 303.6666666666667
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "leviathan-coast",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "leviathan-coast",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1095.584919885846,
+            "y": 1202.5088509990112
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 810,
+              "y": 2070
+            },
+            {
+              "x": 1100,
+              "y": 1200
+            }
+          ]
+        },
+        {
+          "id": "leviathan-coast",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 303.6666666666667
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "thermal-caves",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "thermal-caves",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 2001.3988078535754,
+            "y": 1138.8373029032014
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 810,
+              "y": 2070
+            },
+            {
+              "x": 855,
+              "y": 2025
+            },
+            {
+              "x": 2000,
+              "y": 1140
+            }
+          ]
+        },
+        {
+          "id": "thermal-caves",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "cold-crown",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1996.2896808188352,
+            "y": 1144.131879666641
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 810,
+              "y": 2070
+            },
+            {
+              "x": 855,
+              "y": 2025
+            },
+            {
+              "x": 2000,
+              "y": 1140
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "first-city-ruins",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "first-city-ruins",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1902.1698397716918,
+            "y": 1243.017701998038
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1215,
+              "y": 2430
+            },
+            {
+              "x": 1530,
+              "y": 1935
+            },
+            {
+              "x": 1900,
+              "y": 1250
+            }
+          ]
+        },
+        {
+          "id": "first-city-ruins",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 303.6666666666667
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "village-door-interior-and-clan-dialogue",
+      "id": "forbidden-reserve",
+      "buildings": 12,
+      "residents": 12,
+      "loaded": true,
+      "routes": [
+        {
+          "id": "forbidden-reserve",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1853.3371016612698,
+            "y": 1025.8253138425907
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 540,
+              "y": 2115
+            },
+            {
+              "x": 1850,
+              "y": 1030
+            }
+          ]
+        },
+        {
+          "id": "forbidden-reserve",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 312.3333333333333
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": [
+    "work-local/v68/qa/public-visuals/city-inhabited-port.jpg",
+    "work-local/v68/qa/public-visuals/clan-hunt-board.jpg",
+    "work-local/v68/qa/public-visuals/terminal-in-armory.jpg",
+    "work-local/v68/qa/public-visuals/ash-marches-village.jpg",
+    "work-local/v68/qa/public-visuals/ash-marches-door.jpg",
+    "work-local/v68/qa/public-visuals/ash-marches-interior.jpg",
+    "work-local/v68/qa/public-visuals/ash-marches-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/glass-desert-village.jpg",
+    "work-local/v68/qa/public-visuals/glass-desert-door.jpg",
+    "work-local/v68/qa/public-visuals/glass-desert-interior.jpg",
+    "work-local/v68/qa/public-visuals/glass-desert-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/pillar-jungle-village.jpg",
+    "work-local/v68/qa/public-visuals/pillar-jungle-door.jpg",
+    "work-local/v68/qa/public-visuals/pillar-jungle-interior.jpg",
+    "work-local/v68/qa/public-visuals/pillar-jungle-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/luminous-marshes-village.jpg",
+    "work-local/v68/qa/public-visuals/luminous-marshes-door.jpg",
+    "work-local/v68/qa/public-visuals/luminous-marshes-interior.jpg",
+    "work-local/v68/qa/public-visuals/luminous-marshes-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/storm-chain-village.jpg",
+    "work-local/v68/qa/public-visuals/storm-chain-door.jpg",
+    "work-local/v68/qa/public-visuals/storm-chain-interior.jpg",
+    "work-local/v68/qa/public-visuals/storm-chain-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/leviathan-coast-village.jpg",
+    "work-local/v68/qa/public-visuals/leviathan-coast-door.jpg",
+    "work-local/v68/qa/public-visuals/leviathan-coast-interior.jpg",
+    "work-local/v68/qa/public-visuals/leviathan-coast-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/thermal-caves-village.jpg",
+    "work-local/v68/qa/public-visuals/thermal-caves-door.jpg",
+    "work-local/v68/qa/public-visuals/thermal-caves-interior.jpg",
+    "work-local/v68/qa/public-visuals/thermal-caves-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/cold-crown-village.jpg",
+    "work-local/v68/qa/public-visuals/cold-crown-door.jpg",
+    "work-local/v68/qa/public-visuals/cold-crown-interior.jpg",
+    "work-local/v68/qa/public-visuals/cold-crown-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/first-city-ruins-village.jpg",
+    "work-local/v68/qa/public-visuals/first-city-ruins-door.jpg",
+    "work-local/v68/qa/public-visuals/first-city-ruins-interior.jpg",
+    "work-local/v68/qa/public-visuals/first-city-ruins-clan-dialogue.jpg",
+    "work-local/v68/qa/public-visuals/forbidden-reserve-village.jpg",
+    "work-local/v68/qa/public-visuals/forbidden-reserve-door.jpg",
+    "work-local/v68/qa/public-visuals/forbidden-reserve-interior.jpg",
+    "work-local/v68/qa/public-visuals/forbidden-reserve-clan-dialogue.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Fresh isolated contexts. Selected visual fixtures begin at the village threshold using the real constructor, no completion proofs. All subsequent door/interior/dialogue paths use keyboard movement. Full connector and hunting-contract traversal are verified separately. No new full-body walking atlas claimed.",
+  "visualReview": {
+    "status": "INSPECTED",
+    "captures": [
+      "terminal-in-armory.jpg",
+      "leviathan-coast-village.jpg",
+      "thermal-caves-interior.jpg",
+      "cold-crown-door.jpg",
+      "forbidden-reserve-village.jpg"
+    ],
+    "findings": [
+      "Native terminal clear of the artisan and label, support aligned to wall-floor seam.",
+      "Door art, threshold and real walking approach align.",
+      "Centered cutaway interiors use unmodified wall modules and separate native furniture.",
+      "Modular residents and player maintain foot anchors; biome palettes and layouts are distinguishable."
+    ],
+    "limits": [
+      "Existing V64 architecture is reused; ten new bespoke architecture sets are not claimed.",
+      "Village decoration remains less dense than the final city target.",
+      "Physical connector traversal is covered by the contract recipe; these visual fixtures start at village thresholds."
+    ]
+  }
+}

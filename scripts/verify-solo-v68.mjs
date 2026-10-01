@@ -26,6 +26,21 @@ const errors = [], failures = [], checks = [], captures = [], keys = new Set();
 page.on('pageerror', e => errors.push(e.message)); page.on('response', r => { if (r.status() >= 400) failures.push({ url: r.url(), status: r.status() }); });
 const saved = () => page.evaluate(k => JSON.parse(localStorage.getItem(k)), key);
 const capture = async name => { const path = output + '/' + name + '.jpg'; await page.screenshot({ path, type: 'jpeg', quality: 85 }); captures.push(path); };
+async function checkRecognizedCity(stage) {
+  const hub = page.locator('[data-homeworld-hub]');
+  const footer = (await hub.locator('footer strong').innerText()).trim();
+  assert.equal(footer, 'Young Blood · Cohorte reconnue', 'City footer reflects the earned rank');
+  assert.doesNotMatch(footer, /Unblooded/, 'Completed cohort does not retain the old footer rank');
+  await hub.getByRole('button', { name: 'Navigation', exact: true }).click();
+  const welcome = hub.locator('[data-unblooded-welcome] h2'); await welcome.waitFor();
+  const title = (await welcome.innerText()).trim();
+  assert.equal(title, 'Young Blood — La cohorte reconnue', 'Navigation welcome reflects the earned rank');
+  assert.doesNotMatch(title, /Unblooded/, 'Completed cohort does not retain the old welcome title');
+  await capture('young-blood-welcome-' + stage);
+  await hub.getByRole('button', { name: 'Fermer la navigation', exact: true }).click();
+  await hub.getByRole('dialog').waitFor({ state: 'hidden' });
+  return { stage, footer, title };
+}
 async function apply(desired) { for (const key of keys) if (!desired.has(key)) { await page.keyboard.up(key); keys.delete(key); } for (const key of desired) if (!keys.has(key)) { await page.keyboard.down(key); keys.add(key); } }
 const canvas = page.locator('[data-solo-v68] canvas');
 let previousPreyX = null, preyFacing = -1;
@@ -95,7 +110,10 @@ try {
   for (const field of ['inventory', 'statistics', 'loadout', 'youthTraining', 'soloV66', 'soloV67']) assert.deepEqual(complete[field], original[field]);
   assert(p.parseSaveImport(JSON.stringify(complete)).save, 'the completed real campaign passes the import parser');
   await capture('complete-Young-Blood-recognition'); await page.locator('[data-solo-return]').click(); await page.clock.runFor(200); await page.locator('[data-homeworld-hub]').waitFor();
+  const recognizedCity = [await checkRecognizedCity('after-recognition')];
   await page.clock.resume(); await page.reload({ waitUntil: 'networkidle' }); await page.getByRole('button', { name: /^Continuer/ }).click(); await page.locator('[data-homeworld-hub]').waitFor(); assert.equal((await saved()).soloV68.receipts.length, 13); await page.waitForTimeout(700); await capture('durable-city-return');
+  recognizedCity.push(await checkRecognizedCity('after-reload'));
+  checks.push({ name: 'earned-young-blood-city-footer-and-welcome-survive-reload', snapshots: recognizedCity });
   checks.push({ name: '13-proofs-triad-rescue-physical-return-final-rite-survive-reload', noBloodedOrShipOrKillRewards: true });
   assert(quotaChecked && resumed && settingsChecked && touchChecked); assert.equal(warnings.size, 2); assert.deepEqual(errors, []); assert.deepEqual(failures, []);
   const report = { status: 'PASS', url, checks, captures, errors, failures, limits: 'Fresh isolated browser. Initial fixture plays nursery, youth, V66, V67 models. After entry only normal keyboard/touch controls and declared quota failure are used. No runtime actor coordinates, progress or receipts injected. Native trainee/grazer assets reused; no new animations, Temple or Blooded rite claimed.' };

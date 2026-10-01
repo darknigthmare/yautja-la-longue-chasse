@@ -27,4 +27,12 @@ La livraison ne termine pas toute la campagne : le rite Blooded, les cinq grands
 - Dernières compositions vérifiées après recompilation : jungle et neige, portes, murs natifs, pièces centrées et consultation du service ; trois contrôles et onze captures. Terminal mural déplacé hors du corps de l'artisane et inspecté à son échelle finale. Aucun échec JavaScript ou HTTP.
 - Compilations finales Next/webpack et vinext réussies ; TypeScript, lint ciblé et contrôle du CSS compilé de The Pit réussis. Le rendu portable et les transactions finales ont passé seize vérifications supplémentaires.
 
-Les rapports de publication ci-dessous seront ajoutés après confirmation du commit, du déploiement et des parcours publics. La réussite des tests locaux ne vaut pas encore publication.
+## Publication vérifiée
+
+Le commit source `b19b6530f32dc976a71b8a6abe3ea7772b2f773b` est publié sur `main`. Le déploiement `dpl_D2hfFmco6wge1hkbkP6BfJ8HRzk1` est **READY**, et l'alias [Yautja : La Longue Chasse](https://yautja-la-longue-chasse.vercel.app) sert cette version. Le document et le terminal PNG répondent HTTP 200 ; le PNG public possède le SHA-256 exact de l'image native conservée.
+
+Quatre recettes indépendantes ont ensuite réussi sur cet alias, dans des contextes isolés : cohorte complète (sept contrôles, vingt-deux captures), cité et dix villages (onze contrôles, quarante-trois captures), menus/archives (douze scénarios, dix-huit captures), et deux commandes des Cendres menées de bout en bout avec paiement unique de 48 marques. Aucun échec JavaScript ou HTTP n'est remonté. Des captures ont été inspectées réellement pour les pieds, portes, meubles, murs, titre Young Blood, reçus et disposition mobile.
+
+Les quatre donneurs personnels ont aussi été parcourus dans le navigateur local, avec acceptation, rechargement et revisite. Leurs objectifs dans deux régions n'ont pas tous été joués jusqu'à la remise dans le navigateur ; ils restent couverts par le modèle et les callbacks réels. Le contrôle des villages démarre avec des fixtures explicites au seuil et ne prétend pas parcourir leurs dix corniches ; la recette des Cendres vérifie physiquement son aller et son retour. Les conditions de formation et de Réserve restent actives.
+
+Les détails et périmètres exacts sont conservés dans `docs/v68-publication.json` et les six rapports qu'il référence. Les architectures V64 sont réutilisées et la densité décorative des villages peut encore progresser. Les paragraphes d'accueil conservent une partie du tutoriel initial ; le titre, le rang et le prochain objectif affichent bien Young Blood après reconnaissance et rechargement.

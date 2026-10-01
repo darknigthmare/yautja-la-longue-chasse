@@ -1,0 +1,62 @@
+{
+  "status": "PUBLIC_VERIFIED",
+  "sourceCommit": "b19b6530f32dc976a71b8a6abe3ea7772b2f773b",
+  "deployment": {
+    "id": "dpl_D2hfFmco6wge1hkbkP6BfJ8HRzk1",
+    "state": "READY",
+    "production": "https://yautja-la-longue-chasse.vercel.app"
+  },
+  "gates": {
+    "nextWebpack": "PASS",
+    "vinext": "PASS",
+    "typescript": "PASS",
+    "targetedLint": "PASS",
+    "compiledPitCss": "PASS",
+    "regressionTests": {
+      "passed": 2196,
+      "failed": 0,
+      "skipped": 0
+    },
+    "finalRegionTests": {
+      "passed": 25,
+      "doors": 120,
+      "solidFurnitureChecks": 360
+    },
+    "finalTransactionsAndSsr": {
+      "passed": 16
+    }
+  },
+  "reports": [
+    {
+      "path": "docs/v68-production-http.json",
+      "scope": "Public root HTTP 200 and native PNG HTTP 200 with exact source SHA256."
+    },
+    {
+      "path": "docs/v68-solo-public-qa.json",
+      "scope": "Full newest chapter, physical mentor entry, 13 receipts, recognition, quota/retry, cold resume, mobile, settings, durable city return."
+    },
+    {
+      "path": "docs/v68-homeworld-public-qa.json",
+      "scope": "City plus all 10 villages, 11 checks, 43 captures, native images, real door/interior/dialogue paths; village-threshold fixtures do not claim full connector traversal."
+    },
+    {
+      "path": "docs/v68-menu-public-qa.json",
+      "scope": "12 menu/archive scenarios, 18 captures, creation reaches nursery entry; not a full prologue playthrough."
+    },
+    {
+      "path": "docs/v68-contracts-public-qa.json",
+      "scope": "Two completed Ash contracts, complete outbound/return connector, guide, real traces, observation, nonlethal challenge, atomic +48 wallet, reload and mobile filters."
+    },
+    {
+      "path": "docs/v68-npc-offers-local-qa.json",
+      "scope": "Local physical offers/acceptances and reload/revisits at 4 personal givers; their two-region objectives have not all been played to delivery in the browser."
+    }
+  ],
+  "limits": [
+    "Blooded rite and five major political acts remain separate unfinished chapters.",
+    "25 ordinary subzones and 15 Elite zones/bosses remain unbuilt.",
+    "Existing V64 architecture and V8 fauna atlases are reused; no ten bespoke architecture sets or new complete walking sheets claimed.",
+    "Town/village layouts and bounty economy are original adaptations, not certified canonical geography or 1:1 Badlands props.",
+    "Regional journeys retain the campaign formation and reserve-access gates."
+  ]
+}

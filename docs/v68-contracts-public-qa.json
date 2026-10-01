@@ -1,0 +1,840 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "check": "physical-board-acceptance",
+      "status": "PASS",
+      "refusesStorageFailure": true,
+      "noHistoricalProof": true
+    },
+    {
+      "check": "played-field-route",
+      "status": "PASS",
+      "provenance": "Real keyboard movement through the connector, guide, three ordered traces, timed observation, two avoided charges, three recovery touches, guide return and the entire reverse connector.",
+      "field": {
+        "tick": 10336,
+        "walked": 36441.338639333066,
+        "observedTicks": 186,
+        "chargesAvoided": 3,
+        "touches": 3
+      }
+    },
+    {
+      "check": "physical-delivery-and-reload",
+      "status": "PASS",
+      "marks": 48,
+      "storageFailureAndRetry": true,
+      "noRepeatedReward": true,
+      "unrelatedProgressPreserved": true,
+      "mobileOverflow": false,
+      "mobileFiltersAndJournal": true
+    }
+  ],
+  "captures": [
+    "work-local\\v68\\qa\\public-contracts\\01-tableau-native.jpg",
+    "work-local\\v68\\qa\\public-contracts\\02-demandes-acceptees.jpg",
+    "work-local\\v68\\qa\\public-contracts\\03-village-et-population.jpg",
+    "work-local\\v68\\qa\\public-contracts\\04-piste-observee.jpg",
+    "work-local\\v68\\qa\\public-contracts\\05-defi-retrait-vivant.jpg",
+    "work-local\\v68\\qa\\public-contracts\\06-rapport-guide.jpg",
+    "work-local\\v68\\qa\\public-contracts\\07-remises-uniques.jpg",
+    "work-local\\v68\\qa\\public-contracts\\08-tableau-mobile.jpg"
+  ],
+  "cityRoutes": [
+    {
+      "kind": "city-and-door",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 1610,
+        "y": 2875.5
+      },
+      "distance": 4274.017171690271
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 1610,
+        "y": 2876
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 970,
+        "y": 2784
+      },
+      "approach": {
+        "x": 1610,
+        "y": 2875.5
+      },
+      "distance": 647.2029617273108
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    }
+  ],
+  "regionRoutes": [
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 360,
+        "y": 1500
+      },
+      "to": {
+        "x": 3110,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 360,
+          "y": 1500
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 3110,
+        "y": 1500
+      },
+      "to": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 3110,
+          "y": 1500
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 4603.255753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 8799.755753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 11808.752973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 18202.994441751915,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 16203.252973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 18200,
+          "y": 1500,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 520,
+        "y": 2800
+      },
+      "to": {
+        "x": 1898.557141399484,
+        "y": 1549.1974037458335
+      },
+      "points": [
+        {
+          "x": 520,
+          "y": 2800
+        },
+        {
+          "x": 1215,
+          "y": 2430
+        },
+        {
+          "x": 1530,
+          "y": 1935
+        },
+        {
+          "x": 1900,
+          "y": 1545
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 1898.557141399484,
+        "y": 1549.1974037458335
+      },
+      "to": {
+        "x": 3896.383529048402,
+        "y": 2299.909103105567
+      },
+      "points": [
+        {
+          "x": 1898.557141399484,
+          "y": 1549.1974037458335
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 3896.383529048402,
+        "y": 2299.909103105567
+      },
+      "to": {
+        "x": 4794.304758382117,
+        "y": 1800.4560133274585
+      },
+      "points": [
+        {
+          "x": 3896.383529048402,
+          "y": 2299.909103105567
+        },
+        {
+          "x": 4800,
+          "y": 1800,
+          "id": "trail-1",
+          "label": "Relevé 1"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 4794.304758382117,
+        "y": 1800.4560133274585
+      },
+      "to": {
+        "x": 5698.460312803887,
+        "y": 2846.48766226589
+      },
+      "points": [
+        {
+          "x": 4794.304758382117,
+          "y": 1800.4560133274585
+        },
+        {
+          "x": 5700,
+          "y": 2850,
+          "id": "trail-2",
+          "label": "Relevé 2"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 5698.460312803887,
+        "y": 2846.48766226589
+      },
+      "to": {
+        "x": 6600.061303708286,
+        "y": 1798.1353664017504
+      },
+      "points": [
+        {
+          "x": 5698.460312803887,
+          "y": 2846.48766226589
+        },
+        {
+          "x": 6600,
+          "y": 1800,
+          "id": "trail-3",
+          "label": "Relevé 3"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6600.061303708286,
+        "y": 1798.1353664017504
+      },
+      "to": {
+        "x": 7098.855549319924,
+        "y": 2052.458105368517
+      },
+      "points": [
+        {
+          "x": 6600.061303708286,
+          "y": 1798.1353664017504
+        },
+        {
+          "x": 7100,
+          "y": 2050
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 7098.855549319924,
+        "y": 2052.458105368517
+      },
+      "to": {
+        "x": 7098.855549319924,
+        "y": 2451.1247720351976
+      },
+      "points": [
+        {
+          "x": 7098.855549319924,
+          "y": 2052.458105368517
+        },
+        {
+          "x": 7100,
+          "y": 2450
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 7098.855549319924,
+        "y": 2451.1247720351976
+      },
+      "to": {
+        "x": 6888.844835307533,
+        "y": 2164.3284519042045
+      },
+      "points": [
+        {
+          "x": 7098.855549319924,
+          "y": 2451.1247720351976
+        },
+        {
+          "x": 6890,
+          "y": 2162.458105368517
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6888.844835307533,
+        "y": 2164.3284519042045
+      },
+      "to": {
+        "x": 7098.1882874303465,
+        "y": 2454.9323838797727
+      },
+      "points": [
+        {
+          "x": 6888.844835307533,
+          "y": 2164.3284519042045
+        },
+        {
+          "x": 7100,
+          "y": 2450
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 7098.1882874303465,
+        "y": 2454.9323838797727
+      },
+      "to": {
+        "x": 6885.346620976265,
+        "y": 2278.57228303715
+      },
+      "points": [
+        {
+          "x": 7098.1882874303465,
+          "y": 2454.9323838797727
+        },
+        {
+          "x": 6890,
+          "y": 2274.3284519042045
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6885.346620976265,
+        "y": 2278.57228303715
+      },
+      "to": {
+        "x": 7102.46824769213,
+        "y": 2449.637807116331
+      },
+      "points": [
+        {
+          "x": 6885.346620976265,
+          "y": 2278.57228303715
+        },
+        {
+          "x": 7100,
+          "y": 2450
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 7102.46824769213,
+        "y": 2449.637807116331
+      },
+      "to": {
+        "x": 6889.464676354666,
+        "y": 2394.483478183779
+      },
+      "points": [
+        {
+          "x": 7102.46824769213,
+          "y": 2449.637807116331
+        },
+        {
+          "x": 6890,
+          "y": 2388.57228303715
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6889.464676354666,
+        "y": 2394.483478183779
+      },
+      "to": {
+        "x": 6603.006740190915,
+        "y": 1800.4560133274626
+      },
+      "points": [
+        {
+          "x": 6889.464676354666,
+          "y": 2394.483478183779
+        },
+        {
+          "x": 6840,
+          "y": 2025
+        },
+        {
+          "x": 6600,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6603.006740190915,
+        "y": 1800.4560133274626
+      },
+      "to": {
+        "x": 5700.738487396939,
+        "y": 2849.3340306803607
+      },
+      "points": [
+        {
+          "x": 6603.006740190915,
+          "y": 1800.4560133274626
+        },
+        {
+          "x": 5700,
+          "y": 2850
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 5700.738487396939,
+        "y": 2849.3340306803607
+      },
+      "to": {
+        "x": 4795.248409196014,
+        "y": 1797.9176054310797
+      },
+      "points": [
+        {
+          "x": 5700.738487396939,
+          "y": 2849.3340306803607
+        },
+        {
+          "x": 4800,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 4795.248409196014,
+        "y": 1797.9176054310797
+      },
+      "to": {
+        "x": 3897.994441751876,
+        "y": 2296.844973720429
+      },
+      "points": [
+        {
+          "x": 4795.248409196014,
+          "y": 1797.9176054310797
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 3897.994441751876,
+        "y": 2296.844973720429
+      },
+      "to": {
+        "x": 1894.6680541029575,
+        "y": 1546.1332743606959
+      },
+      "points": [
+        {
+          "x": 3897.994441751876,
+          "y": 2296.844973720429
+        },
+        {
+          "x": 1900,
+          "y": 1545
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 1894.6680541029575,
+        "y": 1546.1332743606959
+      },
+      "to": {
+        "x": 512.8890872965255,
+        "y": 2799.4742785112476
+      },
+      "points": [
+        {
+          "x": 1894.6680541029575,
+          "y": 1546.1332743606959
+        },
+        {
+          "x": 1215,
+          "y": 2250
+        },
+        {
+          "x": 1215,
+          "y": 2430
+        },
+        {
+          "x": 900,
+          "y": 2610
+        },
+        {
+          "x": 520,
+          "y": 2800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 18200,
+        "y": 1500
+      },
+      "to": {
+        "x": 16205.75853223684,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 18200,
+          "y": 1500
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 16205.75853223684,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 11800.25853223684,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 16205.75853223684,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 11800.25853223684,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 8792.872224064462,
+        "y": 979.098004525901
+      },
+      "points": [
+        {
+          "x": 11800.25853223684,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 8792.872224064462,
+        "y": 979.098004525901
+      },
+      "to": {
+        "x": 4596.372224064462,
+        "y": 979.098004525901
+      },
+      "points": [
+        {
+          "x": 8792.872224064462,
+          "y": 979.098004525901
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 4596.372224064462,
+        "y": 979.098004525901
+      },
+      "to": {
+        "x": 3103.1164709515565,
+        "y": 1496.9358706148582
+      },
+      "points": [
+        {
+          "x": 4596.372224064462,
+          "y": 979.098004525901
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 3103.1164709515565,
+        "y": 1496.9358706148582
+      },
+      "to": {
+        "x": 364.1164709515565,
+        "y": 1496.9358706148582
+      },
+      "points": [
+        {
+          "x": 3103.1164709515565,
+          "y": 1496.9358706148582
+        },
+        {
+          "x": 360,
+          "y": 1500,
+          "name": "Parvis extérieur"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "fixture": "Isolated declared legacy adult save with no contracts or field reports. Nothing is injected after entry; all movement and proof actions use the public game controls.",
+  "visualReview": {
+    "status": "PASS",
+    "inspected": [
+      "01-tableau-native.jpg",
+      "02-demandes-acceptees.jpg",
+      "03-village-et-population.jpg",
+      "04-piste-observee.jpg",
+      "05-defi-retrait-vivant.jpg",
+      "06-rapport-guide.jpg",
+      "07-remises-uniques.jpg",
+      "08-tableau-mobile.jpg"
+    ],
+    "notes": "All eight public captures inspected. Native board art, full header and offer/active/completed cards are legible. The grounded actor, village entrance, live fauna before the challenge and its absence after living withdrawal are coherent. The later guide return and two completed receipts are visible. The desktop and 393x852 mobile headers fit; the cumulative 48 clan marks and native filters remain readable without horizontal overflow. The long dialog and card list intentionally scroll vertically.",
+    "scope": "Two ash board contracts end-to-end on the published V68 game, public keyboard controls, durable quota retries, wallet, reload and mobile filters. Not a claim that all twenty terrain requests or all eight personal-region stages were browser-played."
+  },
+  "harnessProvenance": {
+    "executed": "work-local/v68/qa/public-contracts/verify-public-contracts.mjs",
+    "reason": "After freeze, a work-local copy corrected only the exact wrapped-label selector and relative imports. All gameplay and durability assertions remained identical. The successful native-combobox selector is now reproduced in the maintained script with parent authorization.",
+    "maintainedScript": "scripts/verify-homeworld-contracts-v68.mjs",
+    "preflightFailure": "work-local/v68/qa/public-contracts/harness-preflight-failure.json"
+  }
+}
