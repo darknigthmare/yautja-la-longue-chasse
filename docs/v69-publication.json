@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-01T13:48:23.111210+00:00",
+  "contentVersion": "V69",
+  "sourceCommit": "d81f8b466ec2d5d0a78216e0d054aed94d24693a",
+  "production": {
+    "deploymentId": "dpl_CFGZkLhCSiBs5oUQirbMYRK5RWoD",
+    "state": "READY",
+    "target": "production",
+    "projectId": "prj_BIXQYu9PfyNrwR53zzG1938KUgpP",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "sourceRef": "main",
+    "sourceCommit": "d81f8b466ec2d5d0a78216e0d054aed94d24693a"
+  },
+  "gates": {
+    "portableBuild": "PASS",
+    "nextWebpackBuild": "PASS",
+    "typecheck": "PASS",
+    "compiledPitCss": "PASS",
+    "globalLint": {
+      "errors": 0,
+      "warnings": 3,
+      "scope": "Three pre-existing next/no-img-element warnings; latest touched selectors pass targeted lint"
+    },
+    "committedRegression": {
+      "tests": 2251,
+      "passed": 2251,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 577031.2416
+    },
+    "affectedAfterAppearanceFix": {
+      "tests": 264,
+      "passed": 264,
+      "note": "Subset overlaps committed regression, not added to total."
+    }
+  },
+  "http": [
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/",
+      "status": 200,
+      "bytes": 11118,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "2aa83da57d9fbe111ab913521adbdcd14794aa0534971345e0ecdf790680a03f"
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/homeworld/v69/clan-brazier.png",
+      "status": 200,
+      "bytes": 1914630,
+      "contentType": "image/png",
+      "sha256": "c41a36b9fb94489f21fd2157800666809a0342787781fce982ac622cc0b9f0bb"
+    }
+  ],
+  "publicBrowserProofs": [
+    {
+      "report": "docs/v69-solo-public-qa.json",
+      "status": "PASS",
+      "checks": 7,
+      "captures": 19
+    },
+    {
+      "report": "docs/v69-city-public-qa.json",
+      "status": "PASS",
+      "checks": 4,
+      "captures": 6
+    },
+    {
+      "report": "docs/v69-menu-public-qa.json",
+      "status": "PASS",
+      "checks": 12,
+      "captures": 18
+    },
+    {
+      "report": "docs/v69-villages-public-qa.json",
+      "status": "PASS",
+      "checks": 10,
+      "captures": 60
+    },
+    {
+      "report": "docs/v69-youth-villages-public-qa.json",
+      "status": "PASS",
+      "checks": 2,
+      "captures": 6
+    },
+    {
+      "report": "docs/v69-contracts-public-qa.json",
+      "status": "PASS",
+      "checks": 4,
+      "captures": 10
+    }
+  ],
+  "publicCaptureCount": 119,
+  "content": {
+    "cityResidents": 98,
+    "addedCityResidents": 42,
+    "villageResidents": 300,
+    "villages": 10,
+    "newVillageResidents": 180,
+    "newVillageActivities": 40,
+    "newVillageFacadeProps": 180,
+    "newContractChapters": 8,
+    "orderedContractFieldObjectives": 18,
+    "totalContracts": 32,
+    "soloPhases": 13,
+    "soloReceipts": 12,
+    "nativeBrazierSha256": "c41a36b9fb94489f21fd2157800666809a0342787781fce982ac622cc0b9f0bb"
+  },
+  "scopeLimits": [
+    "The V69 chapter is preparation; it does not award Blooded, a qualifying xenomorph hunt, plasma or personal ship.",
+    "Browser fixtures declare prior played models or isolated legacy campaigns; prior chapters are not all replayed in these browsers.",
+    "All ten villages are inspected from declared village starts; their ten complete connectors are not all claimed played. Youth Ash and contract Ash/Thermal routes are played physically.",
+    "The first new two-biome contract chapter is completed publicly and the next accepted. All eight chapters are model-tested, not all browser-played end to end.",
+    "Existing art and body motion are reused; no new full walking, crouching or work animation atlas is claimed.",
+    "Clan city, villages, new stories and brazier are original project interpretations, not certified canonical maps/props at1:1.",
+    "All previous global demands for The Pit assets, DLC and campaign are not declared finished."
+  ]
+}

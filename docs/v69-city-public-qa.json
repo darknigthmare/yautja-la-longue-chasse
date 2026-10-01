@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "name": "physical-native-brazier",
+      "district": "memory",
+      "box": {
+        "x": 665.8350219726562,
+        "y": 384.87640380859375,
+        "width": 111.82501220703125,
+        "height": 111.82501220703125
+      },
+      "routeDistance": 6736.446989981421
+    },
+    {
+      "name": "physical-native-brazier",
+      "district": "temple",
+      "box": {
+        "x": 563.993896484375,
+        "y": 406.70953369140625,
+        "width": 111.824951171875,
+        "height": 111.82501220703125
+      },
+      "routeDistance": 2646.009075532836
+    },
+    {
+      "name": "native-inhabitants-culling-and-routines",
+      "visibleResidents": 14
+    },
+    {
+      "name": "native-art-bytes-and-mobile-hud",
+      "sha256": "c41a36b9fb94489f21fd2157800666809a0342787781fce982ac622cc0b9f0bb"
+    }
+  ],
+  "captures": [
+    "work-local/v69/qa/city-public/city-inhabited-port.jpg",
+    "work-local/v69/qa/city-public/memory-native-brazier.jpg",
+    "work-local/v69/qa/city-public/temple-native-brazier.jpg",
+    "work-local/v69/qa/city-public/city-new-residents.jpg",
+    "work-local/v69/qa/city-public/younger-market-board.jpg",
+    "work-local/v69/qa/city-public/portrait-city.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Earlier nursery/youth/First Tracks are declared model-played prerequisites, not browser-played here. All current city routes use actual keyboard input. Body images and procedural dread motion are reused; no new full walking atlas or canon city map is claimed.",
+  "sourceCommit": "d81f8b466ec2d5d0a78216e0d054aed94d24693a",
+  "deploymentId": "dpl_CFGZkLhCSiBs5oUQirbMYRK5RWoD",
+  "visualReview": "Public memory brazier, city residents and portrait market interior inspected: native foot anchors, preserved facade occlusion, young appearance and contained mobile controls. Three representative images do not certify every camera angle."
+}

@@ -44,7 +44,13 @@ La recette rejoint la Soigneuse par sa porte pour constater le chapitre verrouil
 
 Les captures montrent le tableau natif, les cartes et itinéraires, la proie vivante des Cendres, le troisième relevé des Grottes, les deux guides aux positions réellement rejointes, la remise et le chapitre suivant. En 393 × 852, le prérequis verrouillé et la prochaine destination sont visibles après défilement vertical, sans débordement horizontal. Les longs dialogues et cartes restent défilables ; le HUD de région affiche l’activité régionale générale, tandis que la carte et le carnet portent l’objectif du contrat.
 
-Ce résultat porte sur le premier chapitre de deux biomes et l’acceptation réelle du second. Les huit chapitres et dix-huit actions sont validés par le modèle, mais ne sont pas tous parcourus de bout en bout dans ce navigateur. La fixture est une campagne ancienne isolée, pas un parcours complet de jeunesse. Le rapport local ne prouve pas une publication ; la recette doit encore être répétée sur la version publique après sa disponibilité.
+Ce résultat porte sur le premier chapitre de deux biomes et l’acceptation réelle du second. Les huit chapitres et dix-huit actions sont validés par le modèle, mais ne sont pas tous parcourus de bout en bout dans ce navigateur. La fixture est une campagne ancienne isolée, pas un parcours complet de jeunesse. Le rapport local et la validation publique ci-dessous restent deux preuves distinctes.
+
+## Validation publique
+
+La même recette complète a réussi sur [la V69 publique](https://yautja-la-longue-chasse.vercel.app), après la disponibilité du déploiement `dpl_CFGZkLhCSiBs5oUQirbMYRK5RWoD` issu de `d81f8b466ec2d5d0a78216e0d054aed94d24693a`. L’intégrateur fournit cette identité de publication ; la recette vérifie indépendamment le runtime public V69 et le parcours joué. Rapport : `docs/v69-contracts-public-qa.json` ; dix captures publiques dans `work-local/v69/qa/contracts-public/`.
+
+Les quatre contrôles et les dix captures inspectées passent : offre verrouillée et prérequis lisible sur mobile, acceptation réelle au marché, observation des Cendres, relevé des Grottes, deux retours physiques aux guides, retour par les corniches, remise unique de 44 marques, puis acceptation de la suite chez la Soigneuse. Le refus de quota, sa reprise, la destination mobile, le rechargement et la conservation des autres progrès passent également. Aucun échec JavaScript ni HTTP n’est remonté ; Chrome est fermé proprement à la fin. Ce parcours public couvre toujours le premier chapitre remis et le second accepté, sans présenter les huit chapitres du modèle comme huit parcours navigateur terminés.
 
 ## Limites de fidélité
 
