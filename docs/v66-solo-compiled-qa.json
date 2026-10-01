@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T02:58:50.2958392Z",
+  "environment": "Next compiled local V66; parent-reported webpack/CSS PASS",
+  "url": "http://127.0.0.1:4184",
+  "rawReport": {
+    "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/report.json",
+    "sha256": "b49be524c3def61df4ca818abcfc003bd1e456debda0246c48df2221188dd54c"
+  },
+  "checks": [
+    {
+      "name": "physically-entered-dojo-explicit-start",
+      "routeDistance": 5821.9011259125045,
+      "earlierYouthProofs": 20
+    },
+    {
+      "name": "refused-checkpoint-freezes-and-retries",
+      "tick": 33,
+      "receiptsRetained": 1
+    },
+    {
+      "name": "stalk-pause-cold-resume-mobile",
+      "exactStoredTick": 686,
+      "receipts": 4,
+      "bounds": [
+        {
+          "text": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "width": 62.171875,
+          "height": 44
+        },
+        {
+          "text": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "width": 65.78125,
+          "height": 44
+        },
+        {
+          "text": "←",
+          "x": 49.109375,
+          "y": 763.3125,
+          "right": 93.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "→",
+          "x": 97.109375,
+          "y": 763.3125,
+          "right": 141.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Saut",
+          "x": 145.109375,
+          "y": 763.3125,
+          "right": 190.875,
+          "bottom": 807.3125,
+          "width": 45.765625,
+          "height": 44
+        },
+        {
+          "text": "Pas feutré",
+          "x": 194.875,
+          "y": 763.3125,
+          "right": 272.546875,
+          "bottom": 807.3125,
+          "width": 77.671875,
+          "height": 44
+        },
+        {
+          "text": "Interagir",
+          "x": 276.546875,
+          "y": 763.3125,
+          "right": 343.890625,
+          "bottom": 807.3125,
+          "width": 67.34375,
+          "height": 44
+        }
+      ],
+      "touchMovement": {
+        "before": 1804.600000000016,
+        "after": 1753.6000000000147
+      }
+    },
+    {
+      "name": "all-seven-proofs-and-return-survive-reload",
+      "noAdultRewardsOrRanks": true
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "hmrEvents": [],
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "width": 393,
+      "height": 852
+    }
+  ],
+  "visualReview": {
+    "status": "PASS",
+    "captures": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/mentor-explicit-departure.jpg",
+        "sha256": "38e93c2d7cfc5cb8467e6bfca0ad28b303fe6563fb39e5c00e7ee737a5dd9e95",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/phase-briefing.jpg",
+        "sha256": "072f791213ec78993255c89df69c0147a92d9ca4a84c1ea988a37d4ac338d4a6",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/quota-retains-scene.jpg",
+        "sha256": "8476b849e3794a3ab5e06726117cfce21226462e6d44e88daef52c205982aa7e",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/mobile-stalk.jpg",
+        "sha256": "25f3e4dc3df05a1c08ae1a0d2c4ada325c57647d5dbd00747d36b5a0ed2e049f",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/phase-return.jpg",
+        "sha256": "aaa8bf96b2388f36b7d89e1b33f8a624f5fa86d038dd60c009b6b4d790586f37",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/complete.jpg",
+        "sha256": "3ac49637dd436880f1e1b9b635a01e82c593ec547e0c46c6b17f326fbb903c21",
+        "visuallyInspected": true
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled-final/durable-return.jpg",
+        "sha256": "3dad3d6821ebe3904a5ee644dc2dc6bf30b6fba75519dee0c8c3ebed08e37b22",
+        "visuallyInspected": true
+      }
+    ],
+    "observations": [
+      "Physical mentor action is visible within the dojo; the adult side-story remains gated after Blooded.",
+      "Native player and mentor stand on the ground baseline; the authored panorama no longer repeats with a bright vertical seam.",
+      "Portrait framing retains a readable actor and terrain instead of the previous short letterboxed strip. Seven visible controls fit the viewport with at least44px height.",
+      "The saved stalk phase resumes after a cold reload; a real Chrome CDP touch gesture on the rendered left control changes actor position.",
+      "Quota refusal leaves the physical scene stopped and the current result retained; retry allows play to resume.",
+      "The seven receipts complete only after the physical return and separate mentor report. Existing inventory, statistics, loadout, youth progression and rites remain unchanged.",
+      "Homeworld return was reviewed after waiting for the actual420ms screen entrance animation; the first compiled capture taken during that fade is retained separately, not used as final visibility evidence."
+    ],
+    "firstCompiledRun": "I:/CodexTemp/yautja-v66-20261001/solo-browser-compiled/report.json"
+  },
+  "tests": {
+    "dedicatedSolo": 16,
+    "combinedYouthAndSolo": 50,
+    "combinedCampaignSlotsSoloReserve": 52,
+    "overlappingSuitesNotAdditive": true,
+    "lint": "PASS"
+  },
+  "sourceHashes": [
+    {
+      "path": "app/game/FirstTracksSoloV66.tsx",
+      "sha256": "3d376cb9bdccd2f85418ec6d52167d362ccf793aa4cebe149337e5ef5c270a72"
+    },
+    {
+      "path": "app/game/FirstTracksSoloV66.module.css",
+      "sha256": "e209584986a82de9c7109b99c012d3635a6d41469fda9bd6ce3c983e9ace28d6"
+    },
+    {
+      "path": "app/game/firstTracksSoloV66Rendering.ts",
+      "sha256": "3fc6b5d12f3917b650100fb2e4ce45fcb0ca8accf9b0101f33b3761efaa34958"
+    },
+    {
+      "path": "app/game/systems/firstTracksSoloV66.ts",
+      "sha256": "12c0468b62dc9aac7edec31c9bbafd2d4a546aca4907d1ce76a4708db97d5cd2"
+    },
+    {
+      "path": "app/game/systems/campaignSoloV66.ts",
+      "sha256": "ff9826a17bea944f1623a5ca3e5cd6b1cb068abd373d3e750a9fbf24a2f6dae1"
+    },
+    {
+      "path": "app/game/systems/campaignSlots.ts",
+      "sha256": "acbef999c966fad52cb9495f0a17079f7db1e5eceb25a1af086eae5b571bdd50"
+    },
+    {
+      "path": "scripts/verify-first-tracks-solo-v66.mjs",
+      "sha256": "c87e1f49d453e7c99ad49db3e4105ff4cd929e0d286fa78b079735deb2eee165"
+    }
+  ],
+  "limits": [
+    "Local compiled verification, not public deployment evidence.",
+    "One isolated desktop Chrome context resized to393x852 with synthetic real browser touch events; no physical handset or hardware gamepad trial.",
+    "Existing native V48/V49/V52/V53 art and cycles reused, no new generated images or animation sheet claimed.",
+    "Original short project chapter; no canon rite, rank, trophy or adult ship. The unguided hunt and later rites remain to implement."
+  ],
+  "runtimeChangesDuringCompiledQa": false,
+  "browserClosed": true
+}

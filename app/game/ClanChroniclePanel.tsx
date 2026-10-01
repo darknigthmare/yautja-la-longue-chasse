@@ -13,6 +13,7 @@ import styles from "./ClanChroniclePanel.module.css";
 import TribeArtGallery from "./TribeArtGallery";
 import tribeArt from "./tribeArtV37.json";
 import CompanionCataloguePanel from "./CompanionCataloguePanel";
+import GameReserveEntryV66 from "./GameReserveEntryV66";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -44,7 +45,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 }
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; onClose: () => void }) {
+export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean) => boolean }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
@@ -57,7 +58,7 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
       <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V37</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
       <button type="button" onClick={onClose}>Retour</button>
     </header>
-    <p className={styles.notice}><strong>{save.prologue ? "Nurserie, dojo, camp et premier réveil jouables ; première sortie de jeunesse à construire." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
+    <p className={styles.notice}><strong>{save.prologue ? "Nurserie, formation, sorties accompagnées, petite Fosse et Premières Pistes jouables ; les rites de chasse autonome restent à construire." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les règles, fiches et images récupérées. La rubrique Mondes et réserves permet aussi de lancer ou reprendre la première expédition adulte de Vharuun après sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"], ["companions", "Compagnons · registre"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
@@ -93,13 +94,14 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
     </div>}
 
     {section === "worlds" && <div>
+      <GameReserveEntryV66 save={save} onOpen={onGameReserveV66} />
       <h3 className={styles.subheading}>Homeworld · cinq familles confirmées</h3>
       <p>Chaque famille prévoit une zone de chasse, un mini-hub tribal habité et un territoire Élite séparé. Tous les territoires Élite demandent le rang Élite.</p>
       <div className={styles.cards}>{regions.map(([name, rank, description]) => <article key={name} tabIndex={0}><HomeworldRegionArt name={name} /><span className={styles.badge}>{rank} · normal et tribal</span><h4>{name}</h4><p>{description}</p></article>)}</div>
       <TribeArtGallery />
-      <h3 className={styles.subheading}>Dix réserves proposées · quatre-vingts secteurs à construire</h3>
+      <h3 className={styles.subheading}>Dix réserves proposées · première expédition de Vharuun accessible</h3>
       <p>Les noms et géographies ci-dessous sont des créations proposées pour le jeu. Chaque réserve prévoit huit secteurs reliés et deux voies d’évasion à préparer. Ce ne sont pas les arènes de THE PIT ni un Battle Royale à 100 joueurs.</p>
-      <div className={styles.cards}>{preserves.map(([name, biome, layout]) => <article key={name} tabIndex={0}><span className={styles.badge}>Non jouable</span><h4>{name} · {biome}</h4><p>{layout}.</p></article>)}</div>
+      <div className={styles.cards}>{preserves.map(([name, biome, layout]) => <article key={name} tabIndex={0}><span className={styles.badge}>{name === "Vharuun" ? "3 secteurs jouables · expédition V66" : "Non jouable"}</span><h4>{name} · {biome}</h4><p>{layout}.</p></article>)}</div>
       <div className={styles.opening}><h3>Xeno Prime · Le Berceau enfoui</h3><p>Interprétation originale, pas une déclaration de planète natale canonique des xénomorphes. Le secteur proposé relie douze tableaux et des raccourcis persistants jusqu’à la tête gigantesque de la Matriarche couchée au sol. Sa défaite ouvre des passages sans effacer toute l’infestation.</p></div>
     </div>}
 

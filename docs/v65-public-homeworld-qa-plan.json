@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_EXECUTED",
+  "status": "EXECUTED_PASS",
   "releaseGate": "Wait for root to confirm V65 deployment READY and expected commit. Do not run against the current V63 deployment.",
   "url": "https://yautja-la-longue-chasse.vercel.app",
   "temporaryDirectory": "I:/CodexTemp/yautja-v64-20261001/browser-temp",
@@ -41,5 +41,11 @@
   ],
   "execution": "Set TEMP and TMP to temporaryDirectory, then set each recipe's environment in its own PowerShell process and run node followed by its script. Adult and youth may run concurrently; legacy menu follows. No current user browser profile is used.",
   "visualReview": "Inspect fresh public captures of port, domestic mobile, civic rooms and final youth conversation; distinguish report PASS from visual review and public deployment metadata.",
-  "runtimeChanges": false
+  "runtimeChanges": false,
+  "executedAt": "2026-10-01T02:02:56.906Z",
+  "executionEvidence": [
+    "docs/v65-homeworld-adult-public-qa.json",
+    "docs/v65-homeworld-youth-public-qa.json",
+    "docs/v65-legacy-menu-public-qa.json"
+  ]
 }

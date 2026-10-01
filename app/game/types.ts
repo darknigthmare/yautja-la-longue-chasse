@@ -8,6 +8,8 @@
 
 import type { ControlBindings } from "./systems/controlBindings";
 import type { HomeworldProgress } from "./systems/homeworld";
+import type { SoloV66Campaign } from "./systems/campaignSoloV66";
+import type { GameReserveV66State } from "./systems/gameReserveV66";
 import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
 import type { JusticeProgress } from "./systems/justice";
@@ -625,6 +627,8 @@ export interface SaveGame {
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
   youthTraining: YouthCampaignProgress | null;
+  soloV66?: SoloV66Campaign | null;
+  gameReserveV66?: GameReserveV66State | null;
   version: number;
   createdAt: string;
   updatedAt: string;

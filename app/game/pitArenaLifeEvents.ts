@@ -7,6 +7,7 @@ export const PIT_DIRECTED_LIFE_ARENAS = [
 ] as const;
 
 export interface PitArenaLifeEventContext {
+  readonly launchSeed?: number;
   readonly round: number;
   /** Ticks since this round began; independent of render frequency and local wall time. */
   readonly roundFrame: number;

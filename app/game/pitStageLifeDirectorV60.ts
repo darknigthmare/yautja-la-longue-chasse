@@ -1,5 +1,6 @@
 import type { PitArenaLifeEventContext } from "./pitArenaLifeEvents";
 import type { PitStageLifeStageV60 } from "./pitStageLifeV60";
+import { pitStageLifeKeyV66 } from "./pitStageLifeLaunchV66";
 
 export interface PitStageLifePoseV60 {
   readonly eventId: string;
@@ -21,20 +22,22 @@ function rawBag(stageId: string, round: number, cycle: number): number[] {
 }
 
 /** Each bag contains all three native events. The last member stays untouched so seeking needs no history. */
-export function getPitStageLifeBagV60(stageId: string, round: number, cycle: number): readonly number[] {
+export function getPitStageLifeBagV60(stageId: string, round: number, cycle: number, launchSeed?: number): readonly number[] {
+  stageId = pitStageLifeKeyV66(stageId, launchSeed);
   const bag = rawBag(stageId, round, cycle);
   if (cycle > 0 && bag[0] === rawBag(stageId, round, cycle - 1)[2]) [bag[0], bag[1]] = [bag[1], bag[0]];
   return bag;
 }
 
 /** Three gaps are bounded to12.5–24.5seconds, and sum to a constant55.5second block. */
-export function getPitStageLifeScheduleV60(stageId: string, round: number, cycle: number) {
+export function getPitStageLifeScheduleV60(stageId: string, round: number, cycle: number, launchSeed?: number) {
+  stageId = pitStageLifeKeyV66(stageId, launchSeed);
   const seed = hash(`${stageId}:${round}:${cycle}:timing`);
   const a = seed % 361 - 180;
   const b = (seed >>> 12) % 361 - 180;
   const starts = [0, 1110 + a, 2220 + a + b] as const;
   return {
-    firstDelay: 720 + hash(`${stageId}:${round}:first`) % 781,
+    firstDelay: launchSeed ? 180 + hash(`${stageId}:${round}:first`) % 181 : 720 + hash(`${stageId}:${round}:first`) % 781,
     starts,
     gaps: [starts[1], starts[2] - starts[1], PIT_STAGE_LIFE_CYCLE_V60 - starts[2]] as const,
     bag: getPitStageLifeBagV60(stageId, round, cycle),
@@ -48,12 +51,12 @@ export function getPitStageLifePosesV60(stage: PitStageLifeStageV60, context?: P
     active: false, cycle: -1, occurrence: -1 }));
   if (reducedMotion || !context || context.phase !== "round" || !Number.isInteger(context.round) || context.round < 1
     || !Number.isSafeInteger(context.roundFrame) || context.roundFrame < 0) return rest();
-  const firstDelay = getPitStageLifeScheduleV60(stage.stageId, context.round, 0).firstDelay;
+  const firstDelay = getPitStageLifeScheduleV60(stage.stageId, context.round, 0, context.launchSeed).firstDelay;
   const elapsed = context.roundFrame - firstDelay;
   if (elapsed < 0) return rest();
   const cycle = Math.floor(elapsed / PIT_STAGE_LIFE_CYCLE_V60);
   const clock = elapsed % PIT_STAGE_LIFE_CYCLE_V60;
-  const schedule = getPitStageLifeScheduleV60(stage.stageId, context.round, cycle);
+  const schedule = getPitStageLifeScheduleV60(stage.stageId, context.round, cycle, context.launchSeed);
   const occurrence = clock >= schedule.starts[2] ? 2 : clock >= schedule.starts[1] ? 1 : 0;
   const selected = schedule.bag[occurrence];
   const event = stage.events[selected];

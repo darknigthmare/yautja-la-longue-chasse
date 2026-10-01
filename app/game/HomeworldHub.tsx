@@ -9,6 +9,11 @@ import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
 import type { SaveGame } from "./types";
+import HomeworldSideStoryV66 from "./HomeworldSideStoryV66";
+import HomeworldNpcMissionsV66, { HomeworldNpcMissionsJournalV66 } from "./HomeworldNpcMissionsV66";
+import { applyHomeworldSideStoryV66, homeworldSideStoryV66Journal, type HomeworldSideStoryV66Action } from "./systems/homeworldSideStoryV66";
+import { applyNpcMissionsV66, type NpcMissionActionV66 } from "./systems/homeworldNpcMissionsV66";
+import { canStartSoloV66 } from "./systems/campaignSoloV66";
 import {
   HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, HOMEWORLD_BUILDINGS, HOMEWORLD_POINTS, homeworldHeroPlate,
   HOMEWORLD_NPCS, HOMEWORLD_EVIDENCE, HOMEWORLD_REGIONS, HOMEWORLD_WITNESS_CHOICES,
@@ -40,6 +45,7 @@ export interface HomeworldHubProps {
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
+  onSoloV66?(): boolean;
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
@@ -52,7 +58,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66 }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
   const [interiorId, setInteriorId] = useState<string | null>(null);
@@ -379,6 +385,32 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   }, [clearInputs, persistAction, save.createdAt]);
 
   const inquiryJournal = homeworldInquiryJournal(progress);
+  // Revalidate the actual room and save owner at submission, then acknowledge the
+  // durable write before displaying any narrative consequence.
+  const submitNarrativeV66 = (kind: "side" | "npc", action: HomeworldSideStoryV66Action | NpcMissionActionV66) => {
+    const point = dialogStateRef.current?.point;
+    const nearby = pointInCurrentSpace(actorRef.current, interiorRef.current);
+    if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || !point || nearby?.id !== point.id) {
+      return { ok: false, message: "Rejoins ton interlocuteur avant de poursuivre cet échange." };
+    }
+    const current = saveRef.current;
+    const eligible = !current.prologue || ["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(current.prologue.chronicle) ?? "");
+    const result = kind === "side"
+      ? applyHomeworldSideStoryV66(progressRef.current.sideStoryV66, action as HomeworldSideStoryV66Action, { pointId: point.id, eligible })
+      : applyNpcMissionsV66(progressRef.current.npcMissionsV66, action as NpcMissionActionV66, {
+        autonomousHunter: eligible, interiorId: interiorRef.current?.buildingId ?? null, pointId: point.id, npcId: point.npcId ?? null, actor: actorRef.current,
+      });
+    let response = { ok: result.ok, message: result.message };
+    if (result.ok && result.changed) {
+      const next = { ...progressRef.current, [kind === "side" ? "sideStoryV66" : "npcMissionsV66"]: result.state } as HomeworldProgress;
+      if (onProgress(next)) progressRef.current = next;
+      else response = { ok: false, message: "Écriture non confirmée. Aucun échange n’a été validé ; réessaie ici." };
+    }
+    clearInputs(); setAnnouncement(response.message); onNotify(response.message);
+    setDialog(current => current ? { ...current, message: response.message } : current);
+    return response;
+  };
+  const sideStoryJournalV66 = homeworldSideStoryV66Journal(progress.sideStoryV66, !youthWelcome);
   const selectedPoint = dialog?.point;
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
   const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
@@ -499,6 +531,19 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           {selectedNpc && <p>« {youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »</p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Accueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.</p></div>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV66 && canStartSoloV66(save) && save.soloV66?.status !== "completed" && <button type="button" data-solo-v66-enter disabled={suspended || paused || inactive} onClick={() => {
+            if (suspendedRef.current || pausedRef.current || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current)?.id !== "training-service") return;
+            clearInputs();
+            // Like the dojo departure, Solo unmounts the city: retain refused visits here until the player explicitly retries them.
+            if (pendingVisitsRef.current.size > 0) {
+              const message = "Des visites de quartiers restent non enregistrées. Réessaie leur enregistrement ici avant de rejoindre le maître ; ta progression reste conservée dans la cité.";
+              setAnnouncement(message); onNotify(message);
+              setDialog(current => current ? { ...current, message } : current);
+              return;
+            }
+            if (!onSoloV66()) setDialog(current => current ? { ...current, message: "Départ non sauvegardé. Réessaie auprès du maître." } : current);
+          }}>{save.soloV66 ? "Reprendre Les Premières Pistes" : "Préparer Les Premières Pistes avec le maître"}</button>}
+          {save.soloV66?.status === "completed" && selectedNpc?.id === "terrace-instructor" && <p data-solo-v66-complete>Les Premières Pistes sont rapportées : ta lecture des traces et ton observation sont reconnues. Tu restes Unblooded ; la chasse sans guide reste à accomplir.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.description}</p>
           {selectedPoint.kind === "ship" && <p>{youthWelcome ? "La navette de desserte relie les quais aux appareils du clan. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} reste en amarrage orbital. Cette console donne accès au transfert par la navette de desserte. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}
@@ -513,6 +558,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           </div></>}
           {!youthWelcome && selectedPoint.kind === "audience" && <p>Présente les trois preuves et prends position sur le sort du témoin avant l’audience. Cette première décision est conservée dans ta sauvegarde ; elle ne termine pas toute la campagne.</p>}
           {!youthWelcome && selectedPoint.evidenceId === "undercity-testimony" && canChoose && <><div className={styles.notice}>Les trois preuves sont réunies. Ta première position sur le témoin sera définitive pour cette introduction.</div>{HOMEWORLD_WITNESS_CHOICES.map(choice => <div key={choice.id}><p>{choice.description}</p><button type="button" onClick={() => chooseWitness(choice.id)}>{choice.label}</button></div>)}</>}
+          <HomeworldSideStoryV66 progress={progress.sideStoryV66} pointId={selectedPoint.id} eligible={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => submitNarrativeV66("side", action)} />
+          <HomeworldNpcMissionsV66 value={progress.npcMissionsV66} npcId={selectedPoint.npcId} autonomousHunter={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => { submitNarrativeV66("npc", action); }} />
           {!youthWelcome && inquiryDialogue && <section className={styles.notice} aria-label="Contre-enquête du convoi" data-homeworld-inquiry-dialog={inquiryJournal.step}>
             <h4>{inquiryDialogue.title}</h4><p>{inquiryDialogue.text}</p>
             {inquiryDialogue.options.map((option, index) => <div key={index}>
@@ -531,6 +578,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           <ul>{HOMEWORLD_EVIDENCE.map(evidence => <li key={evidence.id}>{progress.evidenceIds.includes(evidence.id) ? "✓ " : "○ "}{evidence.label}</li>)}</ul>
           <p>{progress.audienceOutcome ? "Ton audience a été enregistrée. Tu peux encore explorer la cité et rencontrer ses habitants." : progress.witnessChoice ? "Ta position sur le témoin est enregistrée. Rejoins la Citadelle pour la première audience." : canChoose ? "Retourne auprès du témoin des Bas-Fonds pour choisir ta position, puis rejoins la Citadelle." : "Les cours, passages et rampes obliques forment un seul réseau au sol. Approche les portes éclairées pour repérer leurs seuils."}</p>
           <section className={styles.notice} aria-label="Contre-enquête du convoi"><h4>Contre-enquête du convoi · {inquiryJournal.completed}/5</h4><p><strong>{inquiryJournal.label}</strong></p><p>{inquiryJournal.objective}</p><p>Suite originale adaptée du projet Homeworld : confrontations aux quais et aux archives, priorité chez les Enforcers, vérification puis audience complémentaire. Aucun acte complet, nouveau rang ou trophée n’est attribué.</p></section>
+          <section className={styles.notice} aria-label="Journal de La marque empruntée" data-side-story-v66-journal><h4>La marque empruntée · {sideStoryJournalV66.completed}/{sideStoryJournalV66.total}</h4><p><strong>{sideStoryJournalV66.label}</strong></p><p>{sideStoryJournalV66.objective}</p></section>
+          <HomeworldNpcMissionsJournalV66 value={progress.npcMissionsV66} autonomousHunter={!youthWelcome} />
           <div className={styles.notice}>Livré : cité parcourable, rencontres, dossier introductif, contre-enquête du convoi et deux enquêtes régionales (Marches de Cendre, Désert de Verre). À produire : huit autres régions et campagne complète La Couronne de Cendres. Les noms de cité, habitants et organisations sont des créations originales pour le jeu, pas des faits de canon.</div>
         </>}
         {dialog.message && <div className={styles.notice} role="status">{dialog.message}</div>}

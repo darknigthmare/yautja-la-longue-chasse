@@ -1,0 +1,104 @@
+{
+  "version": 66,
+  "id": "borrowed-mark-v1",
+  "title": "La marque empruntée",
+  "loreStatus": "Original project adaptation; not a canonical case or law",
+  "source": {
+    "path": "tmp/chatgpt-audit-2026-09-08/share-1.conversation.md",
+    "sha256": "85b309208707c937ca5b9807d46d1eeae7f2bfce43c3c09cb6686fe305c4e0de",
+    "section": "Les histoires secondaires",
+    "scope": "Recovered design proposal about a novice fabricating proof out of fear of dishonor; new dialogue authored for this game"
+  },
+  "delivered": {
+    "stories": 1,
+    "branches": 2,
+    "persistentCheckpoints": 11,
+    "physicalMeetingsPerBranch": 6,
+    "newNpcModels": 0,
+    "newImages": 0,
+    "newAnimations": 0,
+    "rankAwards": 0,
+    "trophyAwards": 0,
+    "materialRewards": 0
+  },
+  "implementation": "Integrated with existing physical NPC dialogs and actual common Homeworld/save callbacks; durable acknowledgement precedes progress.",
+  "validation": {
+    "modelAndIntegration": "PASS",
+    "tests": 33,
+    "breakdown": {
+      "sideModel": 8,
+      "npcModelAndPresentation": 12,
+      "liveHubAndStorage": 7,
+      "liveGameClientAndFieldEngines": 6
+    },
+    "testProofs": [
+      {
+        "path": "docs/v66-side-story-targeted-test-proof.json",
+        "sha256": "a0390a6145d66f34dcc6f9e5b4869cee2fb93df7e80b1c4ac6e3931f98d90b45"
+      },
+      {
+        "path": "docs/v66-npc-field-integration-proof.json",
+        "sha256": "cbac1a99e23b6bd585af4b5b53000b1554033170c9ad866f294dd867b9fe36a7"
+      }
+    ],
+    "browser": "PASS on first stable local V66 compilation",
+    "applicationEvidence": {
+      "path": "docs/v66-side-story-application-qa.json",
+      "sha256": "cf039e591c7d34fcc45fcf3ed4685e251a7768f7618f864757ee58dddde3e89c"
+    },
+    "groups": 8,
+    "captures": 18,
+    "capturesReviewed": 10,
+    "publicDeploymentVerified": false
+  },
+  "limitations": [
+    "No full main-campaign completion",
+    "Novice reply is relayed by the instructor, not a newly rendered NPC",
+    "Institutional review persists a dossier, not a future punishment simulation",
+    "NPC debrief tests use explicit valid report fixtures; browser expeditions are a separate gate",
+    "Local browser proof predates final independent runtime corrections; final/public repetition is a separate gate."
+  ],
+  "files": [
+    {
+      "path": "app/game/systems/homeworldSideStoryV66.ts",
+      "sha256": "be52c12d75d6255a1f533c417369a5778a0aff296757f648ec5365e8a0d8eaa4"
+    },
+    {
+      "path": "app/game/HomeworldSideStoryV66.tsx",
+      "sha256": "3bbec460617cb9829addc549fb059e4bfbe727ac25cc39c0b9f4909b0d1243eb"
+    },
+    {
+      "path": "app/game/HomeworldSideStoryV66.module.css",
+      "sha256": "13887bce31a0b619d14dc8ba72848bc5cc2bbcaee647147095b91b96b6213c40"
+    },
+    {
+      "path": "tests/homeworld-side-story-v66.test.mjs",
+      "sha256": "d3f96224473f1cd676f40e2535de761edcb6c7716ce9d6a266e9cd10ad09e231"
+    },
+    {
+      "path": "tests/homeworld-side-story-v66-integration.test.mjs",
+      "sha256": "ac52a5576ec3d04c84f70b344c9dff20631a281ed8ec59fe2682d9ae3e0df1c0"
+    },
+    {
+      "path": "scripts/homeworld-navigation-browser-v66.mjs",
+      "sha256": "aa98e81001fdc5d2f1de51e4e287dbb74f7d97f567380161538bbe067496770f"
+    },
+    {
+      "path": "scripts/verify-homeworld-side-story-v66.mjs",
+      "sha256": "41e04017a5e549d488441832d66ca5925c14c7fc0d003333eae380b56775314f"
+    },
+    {
+      "path": "scripts/verify-homeworld-npc-missions-v66.mjs",
+      "sha256": "5191ec058070b7d6254a86b2642371e0ddd190e1aaa35db0d9b3b9b09bf34728"
+    },
+    {
+      "path": "tests/homeworld-npc-field-integration-v66.test.mjs",
+      "sha256": "fc8a66232fc7b8a2f391fd92013e0773a6f4c725073956e0236bb5f1a37217db"
+    },
+    {
+      "path": "docs/V66-HISTOIRE-ANNEXE.md",
+      "sha256": "1bf574b9740e089071a6fdd8edb8bc0001ebae595829de0dfe63afcb9a6b4de3"
+    }
+  ],
+  "checkedAt": "2026-10-01T03:12:49.980Z"
+}

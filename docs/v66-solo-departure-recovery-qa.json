@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "status": "PASS_TARGETED_REGRESSION",
+  "date": "2026-10-01T03:07:42.7748346Z",
+  "finding": {
+    "file": "app/game/HomeworldHub.tsx",
+    "area": "data-solo-v66-enter onClick",
+    "problem": "A failed district visit remained in the mounted city retry queue, but Solo could start after storage recovered and unmount that queue before its explicit retry."
+  },
+  "fix": "The Solo departure now checks pendingVisitOwnerRef and pendingVisitsRef, retains its physical mentor/paused/suspended/owner guards, and uses the existing dojo refusal message. No other handler was changed.",
+  "regression": {
+    "file": "tests/homeworld-visit-recovery.test.mjs",
+    "newTests": 3,
+    "beforeFix": {
+      "passed": 13,
+      "failed": 2
+    },
+    "afterFix": {
+      "passed": 15,
+      "failed": 0
+    },
+    "combinedWithSoloSaveAndNarrativeCallbacks": {
+      "passed": 26,
+      "failed": 0
+    },
+    "lint": "PASS",
+    "method": "TypeScript AST extracts and executes the actual JSX onClick callback with the real Homeworld polling, room geometry, visit mutation and retry callbacks. A refused onProgress callback retains the queue; partial retry still blocks; successful retry permits the chapter callback, whose own false result remains visible."
+  },
+  "readOnlyReview": {
+    "files": [
+      "app/game/GameClient.tsx",
+      "app/game/save.ts",
+      "app/game/HomeworldHub.tsx"
+    ],
+    "reserveFinding": "No analogous Reserve departure queue found: its entry is rendered from the title/deck dossier, not the mounted Homeworld visit queue, and its scene exits only after checkpoint acknowledgement.",
+    "otherFindings": []
+  },
+  "buildAndBrowser": "The prior compiled Solo scene proof remains in docs/v66-solo-compiled-qa.json. This later Hub-only guard is unit/integration-verified and requires the parent final rebuild; no further browser was launched for this patch.",
+  "hashes": [
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "129a685799863058a74e2965c73087b3eca2156b243964c3e92aaddcec78dc4b"
+    },
+    {
+      "path": "tests/homeworld-visit-recovery.test.mjs",
+      "sha256": "9aa511f65e14501c22d6ab0e31693870939d0a9a98ad305e066f1d36f8ebe0b9"
+    }
+  ],
+  "runtimeFrozen": true
+}

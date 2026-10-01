@@ -3,6 +3,10 @@ import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
+import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
+import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
+import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -283,6 +287,8 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     version: SAVE_VERSION,
     prologue: null,
     youthTraining: null,
+    soloV66: null,
+    gameReserveV66: null,
     createdAt: now,
     updatedAt: now,
     profile: {
@@ -1246,6 +1252,8 @@ export function normalizeSave(value: unknown): SaveGame {
     justice: normalizeJusticeProgress(source.justice),
     prologue: normalizeNurseryCampaign(source.prologue),
     youthTraining: normalizeYouthCampaign(source.youthTraining),
+    soloV66: normalizeSoloV66Campaign(source.soloV66),
+    gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
   };
 }
 
@@ -1381,7 +1389,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // schema must retain its original bytes, not normalize into an empty dossier.
   if (isRecord(value.homeworld) && (Number(value.homeworld.version) > 1 ||
       (isRecord(value.homeworld.mausoleum) && Number(value.homeworld.mausoleum.version) > 1) ||
-      (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1))) {
+      (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1) ||
+      (isRecord(value.homeworld.sideStoryV66) && Number(value.homeworld.sideStoryV66.version) > 1) ||
+      (isRecord(value.homeworld.npcMissionsV66) && Number(value.homeworld.npcMissionsV66.version) > 1))) {
     return { save: null, failure: "future-version" };
   }
   if (isRecord(value.prologue) && (Number(value.prologue.version) > 1 ||
@@ -1399,7 +1409,18 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.youthTraining !== undefined && value.youthTraining !== null && !normalizeYouthCampaign(value.youthTraining)) {
     return { save: null, failure: "invalid-save" };
   }
+  if (isRecord(value.soloV66) && (Number(value.soloV66.version) > 1 ||
+      (isRecord(value.soloV66.checkpoint) && Number(value.soloV66.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
   if (!youthCampaignMatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 1) return { save: null, failure: "future-version" };
+  if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
+  if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
+      value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||
+      value.homeworld.npcMissionsV66 !== undefined && !isNpcMissionsV66(value.homeworld.npcMissionsV66))) {
+    return { save: null, failure: "invalid-save" };
+  }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.
   if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {

@@ -1,0 +1,686 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184",
+  "checks": [
+    {
+      "branch": "supervised-correction",
+      "check": "Storage refusal preserves unaccepted story; same physical interaction retries successfully",
+      "status": "PASS"
+    },
+    {
+      "branch": "supervised-correction",
+      "check": "Three independent material observations, ordered register puzzle and bounded inference; wrong answers persist nothing",
+      "status": "PASS"
+    },
+    {
+      "branch": "supervised-correction",
+      "check": "Six physical meetings, eleven acknowledged checkpoints, branch consequence retained without rewards",
+      "status": "PASS",
+      "checkpoints": 11,
+      "meetings": 6
+    },
+    {
+      "branch": "supervised-correction",
+      "check": "Actual page reload and walked revisit retain the final consequence; no replayable reward action",
+      "status": "PASS"
+    },
+    {
+      "branch": "recorded-review",
+      "check": "Storage refusal preserves unaccepted story; same physical interaction retries successfully",
+      "status": "PASS"
+    },
+    {
+      "branch": "recorded-review",
+      "check": "Three independent material observations, ordered register puzzle and bounded inference; wrong answers persist nothing",
+      "status": "PASS"
+    },
+    {
+      "branch": "recorded-review",
+      "check": "Six physical meetings, eleven acknowledged checkpoints, branch consequence retained without rewards",
+      "status": "PASS",
+      "checkpoints": 11,
+      "meetings": 6
+    },
+    {
+      "branch": "recorded-review",
+      "check": "Actual page reload and walked revisit retain the final consequence; no replayable reward action",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-01-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-02-write-refusal.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-03-three-observations.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-04-chronology-error.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-05-chronology-mobile.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-06-decision.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-07-correction-error.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-08-complete.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\supervised-correction-09-revisited-after-reload.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-01-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-02-write-refusal.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-03-three-observations.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-04-chronology-error.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-05-chronology-mobile.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-06-decision.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-07-deposition-error.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-08-complete.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\side-story-compiled-verified\\recorded-review-09-revisited-after-reload.jpg"
+  ],
+  "routes": [
+    {
+      "branch": "supervised-correction",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 2230,
+            "y": 1868
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 2230,
+            "y": 1868
+          },
+          "approach": {
+            "x": 3080,
+            "y": 2968.5
+          },
+          "distance": 3105.7278295966566
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 3080,
+            "y": 2969
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 3080,
+            "y": 2969
+          },
+          "approach": {
+            "x": 1160,
+            "y": 1108.5
+          },
+          "distance": 4076.9293570915374
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 195,
+            "y": 128
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 195,
+            "y": 128
+          },
+          "to": {
+            "x": 1160,
+            "y": 1109
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1160,
+            "y": 1109
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 1973.3074825822955
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 2230,
+            "y": 1868
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "temple-point",
+          "buildingId": "rite-sanctum",
+          "from": {
+            "x": 2230,
+            "y": 1868
+          },
+          "approach": {
+            "x": 3400,
+            "y": 1031
+          },
+          "distance": 2641.820800716357
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "temple-point",
+          "buildingId": "rite-sanctum",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "rite-sanctum",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 3400,
+            "y": 1031
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 3400,
+            "y": 1031
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 2643.486822902873
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "branch": "supervised-correction-reload",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "branch": "recorded-review",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 2230,
+            "y": 1868
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 2230,
+            "y": 1868
+          },
+          "approach": {
+            "x": 3080,
+            "y": 2968.5
+          },
+          "distance": 3105.7278295966566
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 3080,
+            "y": 2969
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 3080,
+            "y": 2969
+          },
+          "approach": {
+            "x": 1160,
+            "y": 1108.5
+          },
+          "distance": 4076.9293570915374
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 195,
+            "y": 128
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 195,
+            "y": 128
+          },
+          "to": {
+            "x": 1160,
+            "y": 1109
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1160,
+            "y": 1109
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 1973.3074825822955
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 2230,
+            "y": 1868
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "enforcer-point",
+          "buildingId": "enforcer-bastion",
+          "from": {
+            "x": 2230,
+            "y": 1868
+          },
+          "approach": {
+            "x": 4520,
+            "y": 2038.5
+          },
+          "distance": 3170.5726483782037
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "enforcer-point",
+          "buildingId": "enforcer-bastion",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        },
+        {
+          "kind": "exit",
+          "buildingId": "enforcer-bastion",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 4520,
+            "y": 2039
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 4520,
+            "y": 2039
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 3174.8743109336874
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "branch": "recorded-review-reload",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "events": [],
+  "scope": "Real keyboard navigation, physical doors/interlocutors and UI actions. Isolated legacy adult fixture begins with empty V66 story. No expedition or main-campaign completion claimed.",
+  "visualReview": {
+    "status": "PASS_WITH_DOCUMENTED_MINOR_LIMITATION",
+    "reviewer": "agent",
+    "reviewedCaptures": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-01-offer.jpg",
+        "sha256": "76c06ad5c5997586079d250020fe8178d83b7133e5bdd2585c1c58cab5325aa6"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-02-write-refusal.jpg",
+        "sha256": "ae3832d78e3c38186f26994cfed4e715163c3c825ba9a5be91d4db08e76a3e3f"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-04-chronology-error.jpg",
+        "sha256": "b34b115d5a2094ca8337125c5b1743c9c87ac12de4e0c281e3ed0738675fbb3a"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-06-decision.jpg",
+        "sha256": "9a304b76318fef10eac6d549e0660964a063de513666cab04f5ef4cc567b5f3a"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-07-correction-error.jpg",
+        "sha256": "c954032d75b74674c4434c4b82b97b1bfe39a6a72e6dd98d52a66781f8fe0bf1"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/supervised-correction-09-revisited-after-reload.jpg",
+        "sha256": "f7155e4e88c6b872fe188bf79d2b1eb80983f3030cea57b9d00698913af445d7"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/recorded-review-05-chronology-mobile.jpg",
+        "sha256": "6242327f2f93722ec6822e6eeacbc114f5299b27ce32c4ef5fcf89fc699c1405"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/recorded-review-07-deposition-error.jpg",
+        "sha256": "b3f6c1e41dfe85b8bece13b1c21aea4212d9c3bf674b55ed8d00535b520ade4f"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/recorded-review-08-complete.jpg",
+        "sha256": "5c31921c6a6c42e4188e66acd9e57f499ced643098e32523bf6f1e875eb91539"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/recorded-review-09-revisited-after-reload.jpg",
+        "sha256": "09e0d6d5c05d22ecce46e1e56f222d83f185dc28e48594f14daba6933a43918d"
+      }
+    ],
+    "totalCaptures": 18,
+    "reviewedCount": 10,
+    "observations": [
+      "Both original-story branches display distinct persistent conclusions after real reload and physical revisit.",
+      "Evidence cards, rejection feedback, 11-step progression and original-adaptation label are legible.",
+      "Mobile chronology controls were actually used; no horizontal overflow detected.",
+      "Recorded review preserves a dossier and explicitly does not award a sanction, rank, item or trophy."
+    ],
+    "limitations": [
+      "Mobile dialog uses vertical scrolling; not every control is simultaneously visible.",
+      "Some rejection/success feedback is repeated in the story panel, host dialog and global toast. Cosmetic redundancy observed; exercised actions remain usable."
+    ]
+  },
+  "schemaVersion": 1,
+  "release": "V66",
+  "checkedAt": "2026-10-01T03:12:49.980Z",
+  "environment": "First stable local compiled Next V66. Predates the final independent defaultSave, Solo departure and Reserve presentation corrections; no final build or public release claim.",
+  "reviewer": "agent",
+  "publicDeploymentVerified": false,
+  "reportEvidence": {
+    "path": "I:/CodexTemp/yautja-v66-20261001/side-story-compiled-verified/report.json",
+    "sha256": "cb1861db9bf0e1c8c48f6f6371bd57596ca1012a909141f55b1b54cc0259eba4"
+  },
+  "runScope": {
+    "freshAdultFixture": true,
+    "storyInitiallyEmpty": true,
+    "branchesPlayed": 2,
+    "physicalMeetingsPerBranch": 6,
+    "persistentCheckpointsPerBranch": 11,
+    "actualReloads": 2,
+    "walkedPostReloadRevisits": 2,
+    "actorTeleportation": false,
+    "expeditionsPlayedInBrowser": false
+  },
+  "authoredFixture": {
+    "path": "work-local/v66/campaign-fixture.json",
+    "sha256": "00fe4b6566096da6f32be209281d36e9fde540a5a6ec789c6252ff6dbc4d9caf"
+  },
+  "testProofs": [
+    {
+      "path": "docs/v66-side-story-targeted-test-proof.json",
+      "sha256": "a0390a6145d66f34dcc6f9e5b4869cee2fb93df7e80b1c4ac6e3931f98d90b45"
+    },
+    {
+      "path": "docs/v66-npc-field-integration-proof.json",
+      "sha256": "cbac1a99e23b6bd585af4b5b53000b1554033170c9ad866f294dd867b9fe36a7"
+    }
+  ]
+}

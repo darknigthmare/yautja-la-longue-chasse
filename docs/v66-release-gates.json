@@ -1,0 +1,147 @@
+{
+  "release": "V66",
+  "status": "LOCAL_QUALIFIED_PUBLIC_PENDING",
+  "checkedAt": "2026-10-01T03:25:03.594Z",
+  "scope": {
+    "soloChaptersAdded": 1,
+    "soloOrderedReceipts": 7,
+    "sideStoriesAdded": 1,
+    "sideStoryBranches": 2,
+    "npcMissionsAdded": 2,
+    "reservesPlayable": 1,
+    "reserveSectorsPlayable": 3,
+    "reserveArmedHumans": 8,
+    "materialCampaignRewardsAdded": 0
+  },
+  "art": {
+    "newNativePngs": 9,
+    "newNativeDrawings": 54,
+    "newlyAnimatedStages": 3,
+    "newStages": 0,
+    "stagesWithDedicatedSets": 38,
+    "catalogueStages": 187,
+    "stagesStillMissingDedicatedSets": 149,
+    "canonicalOneToOneFidelityCertified": false,
+    "historicalAssetsDeleted": 0
+  },
+  "tests": {
+    "initialRun": {
+      "tests": 2086,
+      "pass": 2079,
+      "fail": 7,
+      "log": {
+        "path": "work-local/v66/full-tests.log",
+        "sha256": "9203b6a52f681973704542018a4ea29b4263d991bac0bf8f50db4fa2d5381e44"
+      }
+    },
+    "diagnosis": [
+      "Five failures exposed missing null defaults for additive save fields; fixed in defaultSave.",
+      "Two existing source checks were updated for the two new lazy screens and the seeded presentation branch.",
+      "A new Solo test was updated to distinguish explicit null defaults from legacy missing fields; both remain dormant until explicit start.",
+      "Three regression checks protect unsaved city visits before Solo departure; six integrations execute actual field callbacks with input-played engine proofs."
+    ],
+    "finalRun": {
+      "status": "PASS",
+      "tests": 2095,
+      "pass": 2095,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "temporaryVolume": "C: NTFS",
+      "log": {
+        "path": "work-local/v66/full-tests-release.log",
+        "sha256": "ddcd29a0db052c5a37f74802c1f9b1c1e8c59cb3a25eb8e8eafa136a7de54ac1"
+      }
+    }
+  },
+  "builds": {
+    "vinext": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v66/vinext-build-release.log",
+        "sha256": "3704880eda0cd7b852409ff3af3d767b3a61009cb31b373094eb78b5e2979d22"
+      }
+    },
+    "nextWebpack": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v66/next-build-release.log",
+        "sha256": "cf63d8a5fa7b056f07f221460e1da3896e48a557a11928f2cb98bbbeb0990dc6"
+      }
+    },
+    "typescript": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v66/typecheck-release.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "compiledHudCss": {
+      "status": "PASS",
+      "log": {
+        "path": "work-local/v66/css-release.log",
+        "sha256": "85e96a85b18f1e09fdff0879854d1777c1403cb2c98a63da5fd4fe2a0f1028b4"
+      }
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "warnings": 3,
+    "note": "Three existing no-img-element warnings.",
+    "log": {
+      "path": "work-local/v66/lint-final.log",
+      "sha256": "a5af87d20465c745fb938b6c81a357ddb7148c6034bfcbf43902fb39feda8aa9"
+    }
+  },
+  "localBrowser": {
+    "url": "http://127.0.0.1:4184",
+    "reports": [
+      {
+        "path": "docs/v66-solo-compiled-qa.json",
+        "sha256": "9b0b174c85ca0f910ef956233de838c8bc96f6b205d98d1caacde7640d1266e7"
+      },
+      {
+        "path": "docs/v66-solo-departure-recovery-qa.json",
+        "sha256": "d3361973d68874f4570f384fbbf78e6cfa495bd8dde392b74f4953631500c39c"
+      },
+      {
+        "path": "docs/v66-side-story-application-qa.json",
+        "sha256": "cf039e591c7d34fcc45fcf3ed4685e251a7768f7618f864757ee58dddde3e89c"
+      },
+      {
+        "path": "docs/v66-npc-missions-application-qa.json",
+        "sha256": "e4a0eeee06e9064cedda8ed5c08cb8b61964c88efde512092f94f31d69113122"
+      },
+      {
+        "path": "docs/v66-npc-field-integration-proof.json",
+        "sha256": "cbac1a99e23b6bd585af4b5b53000b1554033170c9ad866f294dd867b9fe36a7"
+      },
+      {
+        "path": "docs/v66-game-reserve-browser-qa.json",
+        "sha256": "05e00aa8409c9e7bcdd8f87971b3711d5912074329836b7cfe64286eea6e4d33"
+      },
+      {
+        "path": "docs/v66-stage-life-local-qa.json",
+        "sha256": "e5e5dced5135009a3749098e49e307c1d7d54a53fa533bcbe45f76b0e01aa76d"
+      },
+      {
+        "path": "docs/v66-stage-life-visual-review.json",
+        "sha256": "8e2ac7fe7547e8d70f4421bc4e6baf269d50759432b20bfeaa47ee81b46a3a1e"
+      }
+    ],
+    "scope": "Solo, two side-story branches, city NPC dialogs, Reserve launch/traversal/storage/return and three stage-animation sets. NPC expedition proofs are engine/callback integrations; full browser expeditions are not claimed. The final city departure guard is callback-tested separately."
+  },
+  "publication": {
+    "status": "PENDING",
+    "url": "https://yautja-la-longue-chasse.vercel.app"
+  },
+  "limitations": [
+    "149 stages still lack three dedicated native animations.",
+    "Main campaign, remaining side stories and NPC missions are not finished.",
+    "Game Reserve provides 3 of the planned 80 sectors, with 8 humans sharing 3 native atlases; the 100 profiles and 200 PNGs have not been retrieved.",
+    "Reserve hunter still uses a held drawing and industrial scenery needs final art; multiplayer, rivals and persistent trophies are not delivered.",
+    "Original stories and locations are adaptations, not certified canon 1:1.",
+    "Mobile browser emulation is not a physical-device certification."
+  ]
+}

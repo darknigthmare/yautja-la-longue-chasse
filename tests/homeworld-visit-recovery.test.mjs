@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function walkableDistrictPosition(id) {
@@ -22,6 +22,11 @@ function walkableDistrictPosition(id) {
 function liveCallback(name, environment) {
   let implementation;
   function visit(node) {
+    if (ts.isFunctionDeclaration(node) && node.name?.text === name) implementation = node;
+    if (name === "soloEntry" && ts.isJsxOpeningElement(node) && node.attributes.properties.some(attribute => ts.isJsxAttribute(attribute) && attribute.name.getText(tree) === "data-solo-v66-enter")) {
+      const click = node.attributes.properties.find(attribute => ts.isJsxAttribute(attribute) && attribute.name.getText(tree) === "onClick");
+      implementation = click?.initializer?.expression;
+    }
     if (name === "poll" && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes("stepHomeworldGamepad")) implementation = node.arguments[0];
     if (name === "sync" && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
@@ -60,13 +65,14 @@ function fixture() {
     setPendingVisitCount(value) { env.pendingVisitCount = value; }, setAnnouncement() {}, onNotify(message) { messages.push(message); },
     setDialog(update) { env.dialogStateRef.current = typeof update === "function" ? update(env.dialogStateRef.current) : update; },
     onYouthTraining: () => true,
+    onSoloV66: () => true,
     persist: () => false,
     onProgress(progress) { attempts.push(structuredClone(progress)); return env.persist(progress); },
   };
   env.save = { ...env.saveRef.current, homeworld: initial };
   env.viewportRef = { current: { focus() { env.document.activeElement = env.viewportRef.current; } } };
   env.dialogRef = { current: { focus() { env.document.activeElement = env.dialogRef.current; }, querySelectorAll: () => [] } };
-  for (const name of ["persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining"]) env[name] = liveCallback(name, env);
+  for (const name of ["pointInCurrentSpace", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry"]) env[name] = liveCallback(name, env);
   const effect = liveCallback("poll", env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = (count = 1) => { for (let i = 0; i < count; i++) { time += 1000 / 60; frame(time); } };
@@ -231,4 +237,58 @@ test("with no pending visits youth entry preserves the existing save-refusal fee
   assert.equal(entries, 1);
   assert.match(f.env.dialogStateRef.current.message, /n’a pas pu être sauvegardée/);
   assert.equal(f.attempts.length, 0, "entry neither grants a visit nor fakes a storage acknowledgement");
+});
+
+function meetSoloMentor(f) {
+  const room = world.homeworldInteriorForBuildingV64("training-hall");
+  const point = room.points.find(point => point.pointId === "training-service");
+  const candidates = Array.from({ length: 8 }, (_, i) => ({ x: point.x, y: point.y + 36 + i * 3 }));
+  const position = candidates.find(p => world.isHomeworldInteriorWalkableV64(room, p) && world.nearestHomeworldInteriorTargetV64(room, p)?.pointId === point.pointId);
+  assert(position, "fixture reaches a real walkable mentor interaction point");
+  f.env.interiorRef.current = room;
+  f.env.actorRef.current = { ...f.env.actorRef.current, ...position };
+  f.env.dialogStateRef.current = { point: world.HOMEWORLD_POINTS.find(p => p.id === point.pointId) };
+}
+
+test("Solo physical departure retains refused visits, then retries and handles a refused chapter save", () => {
+  const f = fixture(); f.tick(); meetSoloMentor(f);
+  let entries = 0;
+  f.env.onSoloV66 = () => { entries++; return false; };
+  f.env.persist = () => true;
+  f.env.soloEntry();
+  assert.equal(entries, 0, "restored storage cannot bypass the pending visit queue");
+  assert.equal(f.attempts.length, 1, "departure does not silently retry visit writes");
+  assert.deepEqual([...f.env.pendingVisitsRef.current], ["port"]);
+  assert.match(f.env.dialogStateRef.current.message, /visites de quartiers restent non enregistrées/i);
+  f.env.retryPendingVisits();
+  assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port"]);
+  assert.equal(f.env.pendingVisitCount, 0);
+  f.env.soloEntry();
+  assert.equal(entries, 1); assert.match(f.env.dialogStateRef.current.message, /Départ non sauvegardé/);
+  f.env.onSoloV66 = () => { entries++; return true; };
+  f.env.soloEntry();
+  assert.equal(entries, 2); assert.equal(f.attempts.length, 2);
+  assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port"]);
+});
+
+test("Solo entry stays blocked while one of several refused visits remains pending", () => {
+  const f = fixture(); f.tick();
+  f.env.actorRef.current = { ...f.env.actorRef.current, ...walkableDistrictPosition("market") }; f.tick(); meetSoloMentor(f);
+  let entries = 0, writes = 0;
+  f.env.onSoloV66 = () => { entries++; return true; }; f.env.persist = () => ++writes === 1;
+  f.env.retryPendingVisits(); f.env.soloEntry();
+  assert.equal(entries, 0); assert.deepEqual([...f.env.pendingVisitsRef.current], ["market"]);
+  f.env.persist = () => true; f.env.retryPendingVisits(); f.env.soloEntry();
+  assert.equal(entries, 1); assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port", "market"]);
+});
+
+test("Solo departure keeps its physical, suspension and owner guards even after visit recovery", () => {
+  const f = fixture(); meetSoloMentor(f); let entries = 0;
+  f.env.onSoloV66 = () => { entries++; return true; };
+  f.env.suspendedRef.current = true; f.env.soloEntry(); f.env.suspendedRef.current = false;
+  f.env.pausedRef.current = true; f.env.soloEntry(); f.env.pausedRef.current = false;
+  f.env.actorRef.current.x += 200; f.env.soloEntry(); meetSoloMentor(f);
+  f.env.save = { ...f.env.save, createdAt: "2026-10-01T03:30:00.000Z" }; f.env.soloEntry();
+  assert.equal(entries, 0);
+  liveCallback("sync", f.env)(); f.env.soloEntry(); assert.equal(entries, 1);
 });

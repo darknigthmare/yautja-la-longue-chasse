@@ -1,6 +1,6 @@
 {
   "release": "V64",
-  "status": "LOCAL_VALIDATED_INCLUDED_IN_V65",
+  "status": "RELEASED_AND_PUBLICLY_VERIFIED_AS_PART_OF_V65",
   "scope": "Homeworld: unified 2.5D projection, complete connected city layout, enterable buildings and placement codex",
   "city": {
     "districts": 14,
@@ -40,14 +40,22 @@
     "finalCodexAndNavigation": "PASS_THREE_VIEWPORTS_EACH",
     "finalGlobalTestRun": "PASS_2026",
     "productionBuild": "PASS_NEXT_WEBPACK",
-    "publicDeployment": "NOT_YET_PUBLISHED"
+    "publicDeployment": "READY_AND_PUBLIC_QA_PASS"
   },
   "blockers": [],
-  "publicState": "V64 city is included in the locally validated V65 release; deployment and public QA remain separate.",
+  "publicState": "Published and publicly verified in V65, commit 73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9.",
   "limits": [
     "The city plan, houses and institutions are original game adaptations. Canonical architecture or global 1:1 fidelity is not certified.",
     "Five native facade families are reused across 43 visitable buildings; these are not 43 distinct facade images.",
     "Earlier Pit fighter, stage-animation and campaign backlogs are not all completed by this Homeworld release."
   ],
-  "checkedAt": "2026-10-01T01:45:13.476Z"
+  "checkedAt": "2026-10-01T02:02:56.906Z",
+  "deployment": {
+    "status": "READY",
+    "id": "dpl_AEiaWTqBjGRZ9iZjjPYp2snPEKfH",
+    "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "gitPush": "HEAD:main confirmed",
+    "evidence": "docs/v65-public-deployment.json"
+  }
 }

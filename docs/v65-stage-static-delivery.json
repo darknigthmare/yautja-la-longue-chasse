@@ -297,6 +297,12 @@
         "sha256": "d84b36b725cbf2649e8347f33d862d6c3cc89cafd33ee39f68e2217029ae594b"
       },
       "note": "Historical six-PNG assumption replaced by six complete rendering passes, distinct valid source regions and world-locked floor checks. Transfer consequences, replay checksums and both fighters remain tested; no runtime change."
+    },
+    "publicApplication": {
+      "status": "PASS",
+      "report": "docs/v65-stage-static-public-qa.json",
+      "visualReview": "docs/v65-stage-static-public-visual-review.json",
+      "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9"
     }
   },
   "limits": [

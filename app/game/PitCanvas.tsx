@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 
+import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
 import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRoundPresentation, observePitRoundPresentation, type PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
@@ -622,6 +623,7 @@ function drawArena(
   falconerArt: PitFalconerDroneArtBank | null,
   engineVersion: number = PIT_STATE_VERSION,
   narrativeCuesV61?: PitStageNarrativeCuesV61,
+  stageLifeSeed = 0,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -639,8 +641,13 @@ function drawArena(
   canvas.dataset.pitArenaFloorScale = getPitArenaLayerTransform(state.arenaId, "P4", camera, reducedMotion).scale.toFixed(4);
 
   const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state),
-    roundPresentation: presentation, narrativeCuesV61,
+    roundPresentation: presentation, narrativeCuesV61, stageLifeSeed,
     lifeResultElapsedMs: presentation.phase === 'round-result' || presentation.phase === 'match-result' ? presentation.elapsedMs : undefined });
+  canvas.dataset.pitStageLifeSeed = String(stageLifeSeed);
+  canvas.dataset.pitStageLifeV66Stage = backdropReport.stageLifeV66?.stageId ?? "";
+  canvas.dataset.pitStageLifeV66Actors = String(backdropReport.stageLifeV66?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV66Events = JSON.stringify(backdropReport.stageLifeV66?.events ?? []);
+  canvas.dataset.pitStageLifeV66Missing = JSON.stringify(backdropReport.stageLifeV66?.missingPaths ?? []);
   canvas.dataset.pitArenaId = state.arenaId;
   canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== pitStageSceneArena(state) ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
@@ -1185,6 +1192,7 @@ export default function PitCanvas({
   const matchResultIdRef = useRef("");
   const recorderRef = useRef<PitReplayRecorder | null>(null);
   const replayReaderRef = useRef<PitReplayReader | null>(null);
+  const stageLifeSeedRef = useRef(0);
   const arcadeRunRef = useRef<PitArcadeRun | null>(null);
   const circuitRunRef = useRef<PitCircuitRun | null>(null);
   const descentRunRef = useRef<PitDescentRun | null>(null);
@@ -1565,6 +1573,7 @@ export default function PitCanvas({
   }, [beginPreparedTrainingLesson, readAssignedGamepads, resetTraining, trainingLesson?.status]);
 
   const beginRecording = useCallback((next: PitCombatState) => {
+    stageLifeSeedRef.current = createPitStageLifeSeedV66(stageLifeSeedRef.current);
     try {
       recorderRef.current = createPitReplayRecorder({
         fighters: [next.fighters[0].definitionId, next.fighters[1].definitionId],
@@ -1572,6 +1581,7 @@ export default function PitCanvas({
         rules: next.rules,
         arenaId: next.arenaId,
         houndVariantId: next.houndVariantId,
+        seed: stageLifeSeedRef.current,
       });
       setReplayNotice("");
     } catch {
@@ -1639,7 +1649,7 @@ export default function PitCanvas({
     setArenaId(nextArenaId);
     cameraRef.current = null;
     resetLiveInputs();
-    if (nextMode === "training" || nextMode === "descent") recorderRef.current = null;
+    if (nextMode === "training" || nextMode === "descent") { recorderRef.current = null; stageLifeSeedRef.current = createPitStageLifeSeedV66(stageLifeSeedRef.current); }
     else beginRecording(next);
     const message = nextMode === "training"
       ? "ENTRAÎNEMENT LIBRE"
@@ -2192,6 +2202,7 @@ export default function PitCanvas({
       });
       recorderRef.current = null;
       replayReaderRef.current = reader;
+      stageLifeSeedRef.current = replay.seed;
       clearTrainingActivity();
       reportedMatchFrameRef.current = null;
       if (isPitVersusFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
@@ -2735,6 +2746,7 @@ export default function PitCanvas({
       falconerArt,
       playbackReplay?.engineVersion ?? PIT_STATE_VERSION,
       !playbackReplay && narrativeEncounter?.id === narrativeStageCues?.encounterId ? narrativeStageCues : undefined,
+      stageLifeSeedRef.current,
     );
   }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues]);
 

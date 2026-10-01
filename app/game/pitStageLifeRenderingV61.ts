@@ -16,7 +16,7 @@ interface LayerTransform { readonly scale: number; readonly translateX: number; 
 export function getPitStageLifeTravelXV61(stageId: string, event: PitStageLifeEventV61, pose: PitStageLifePoseV60,
   context?: PitArenaLifeEventContext): number | null {
   if (!event.travelX || !pose.active || !context) return null;
-  const schedule = getPitStageLifeScheduleV60(stageId, context.round, pose.cycle);
+  const schedule = getPitStageLifeScheduleV60(stageId, context.round, pose.cycle, context.launchSeed);
   const elapsed = context.roundFrame - schedule.firstDelay - pose.cycle * PIT_STAGE_LIFE_CYCLE_V60 - schedule.starts[pose.occurrence];
   const duration = event.frames.length * 60 / event.fps;
   const progress = Math.max(0, Math.min(1, elapsed / Math.max(1, duration - 1)));

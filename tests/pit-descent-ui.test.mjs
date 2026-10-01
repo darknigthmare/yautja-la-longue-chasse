@@ -64,7 +64,8 @@ test("Descente uses one decisive round and maps surviving health back to the run
   assert.match(launch, /setDescentCombatPresentation\(prepared\.presentation\)/);
   assert.match(launch, /next\.fighters\[0\] = \{ \.\.\.next\.fighters\[0\], roundsWon: 1 \}/);
   assert.match(launch, /next\.fighters\[1\] = \{ \.\.\.next\.fighters\[1\], roundsWon: 1 \}/);
-  assert.match(launch, /nextMode === "training" \|\| nextMode === "descent"\) recorderRef\.current = null/);
+  assert.match(launch, /nextMode === "training" \|\| nextMode === "descent"\)\s*\{\s*recorderRef\.current = null;/);
+  assert.match(launch, /stageLifeSeedRef\.current = createPitStageLifeSeedV66\(stageLifeSeedRef\.current\);\s*\}\s*else beginRecording\(next\)/);
 
   const result = section(canvas, 'if (mode === "descent") {', "let playedArcadeIndex");
   assert.match(result, /combat\.fighters\[0\]\.health \/ fighterMaximum/);

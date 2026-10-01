@@ -1,7 +1,7 @@
 {
   "release": "V65",
-  "status": "LOCAL_VALIDATED_AWAITING_PUBLICATION",
-  "checkedAt": "2026-10-01T01:45:13.476Z",
+  "status": "RELEASED_AND_PUBLICLY_VERIFIED",
+  "checkedAt": "2026-10-01T02:02:56.906Z",
   "scope": "Homeworld V64 delivered with six V65 static revisions of existing original Pit stages",
   "city": {
     "districts": 14,
@@ -121,11 +121,61 @@
     "unchanged": true
   },
   "deployment": {
-    "status": "NOT_YET_PUBLISHED",
-    "url": "https://yautja-la-longue-chasse.vercel.app"
+    "status": "READY",
+    "id": "dpl_AEiaWTqBjGRZ9iZjjPYp2snPEKfH",
+    "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "gitPush": "HEAD:main confirmed",
+    "evidence": "docs/v65-public-deployment.json"
   },
   "publicBrowser": {
-    "status": "NOT_RUN"
+    "status": "PASS",
+    "adultVisits": 6,
+    "youthMeetings": 4,
+    "legacyArchiveChecks": 3,
+    "menuScenarios": 12,
+    "codexViewports": 3,
+    "navigationViewports": 3,
+    "stageApplicationChecks": 11,
+    "stageCount": 6,
+    "nativeAssetHttpAndShaChecks": 22,
+    "reports": [
+      {
+        "path": "docs/v65-homeworld-adult-public-qa.json",
+        "sha256": "39b69206f57bc7fec5b427f42dee7b605b99eeca17631bead91da432e9c51ea1"
+      },
+      {
+        "path": "docs/v65-homeworld-youth-public-qa.json",
+        "sha256": "8de4a4a5c77f58dc9e4145657af0ac928c0dc488996f25111b0fe2e393d043da"
+      },
+      {
+        "path": "docs/v65-legacy-menu-public-qa.json",
+        "sha256": "2f48550108a06a01859bdb3826300551674c90b647dfe453027b3308f5a4f47b"
+      },
+      {
+        "path": "docs/v63-menu-v65-public-qa.json",
+        "sha256": "4a353ad9d447f2b6a4062dcfd6360dea716bb1e5fbbdb3353ebd13e3be1a1d1d"
+      },
+      {
+        "path": "docs/v65-homeworld-codex-public-qa.json",
+        "sha256": "027c2d60db3b9e41ba498815c38d3c148a9dbf069d5b854881d43b515a002be9"
+      },
+      {
+        "path": "docs/v65-homeworld-navigation-public-qa.json",
+        "sha256": "3b1e3dfd2740ead866cd09ebd409e2bcb7d8a6ff340b707c61cf39da7c0384e0"
+      },
+      {
+        "path": "docs/v65-stage-static-public-qa.json",
+        "sha256": "29b9d0e66f5ff087e329dc2e941240ff0961900aa8ba3d81897c806db2a07e7b"
+      },
+      {
+        "path": "docs/v65-public-native-assets.json",
+        "sha256": "1978a98a857ae907a5a350e5f85f59de87b2b579f6b84d77b1560eb95d653b22"
+      }
+    ],
+    "scope": "Actual public deployment, isolated QA contexts only. New game reaches nursery, manual replacement/cancel/recovery checked, old archive resumes, real Homeworld input and Pit duels. User saves are untouched.",
+    "visualReview": "Agents inspected fresh public city, interior, dialogue, menu and Pit captures. Root additionally inspected mobile city navigation and the Atrium combat. Portrait fighting retains a reduced 16:9 field with letterboxing.",
+    "initialEnvironmentFailure": "Initial root public requests were refused by the sandbox network policy before game execution. Explicit read network permission was then granted; the complete public recipes above passed. Initial logs are preserved locally."
   },
   "limits": [
     "The city and six stages are original game adaptations using documented franchise visual references, not canonical 1:1 locations.",
