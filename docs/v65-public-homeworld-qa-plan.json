@@ -1,0 +1,45 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "releaseGate": "Wait for root to confirm V65 deployment READY and expected commit. Do not run against the current V63 deployment.",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "temporaryDirectory": "I:/CodexTemp/yautja-v64-20261001/browser-temp",
+  "recipes": [
+    {
+      "id": "adult-six-doors",
+      "script": "scripts/verify-homeworld-interiors-v64.mjs",
+      "environment": {
+        "V64_QA_URL": "https://yautja-la-longue-chasse.vercel.app",
+        "V64_INTERIOR_QA_PHASE": "adult",
+        "CAMPAIGN_QA_FIXTURE_FILE": "work-local/v63/qa/menu/public-campaign-fixture.json",
+        "V64_INTERIOR_QA_OUTPUT": "I:/CodexTemp/yautja-v64-20261001/public-v65/homeworld-adult"
+      }
+    },
+    {
+      "id": "youth-four-meetings-and-reload",
+      "script": "scripts/verify-homeworld-interiors-v64.mjs",
+      "environment": {
+        "V64_QA_URL": "https://yautja-la-longue-chasse.vercel.app",
+        "V64_INTERIOR_QA_PHASE": "youth",
+        "V64_INTERIOR_QA_OUTPUT": "I:/CodexTemp/yautja-v64-20261001/public-v65/homeworld-youth"
+      }
+    },
+    {
+      "id": "old-archive-menu-regression",
+      "script": "scripts/verify-legacy-campaign-menu-v65.mjs",
+      "syntaxCheck": "node --check passed; browser execution still pending",
+      "environment": {
+        "V65_QA_URL": "https://yautja-la-longue-chasse.vercel.app",
+        "V65_LEGACY_MENU_QA_OUTPUT": "I:/CodexTemp/yautja-v64-20261001/public-v65/legacy-menu"
+      },
+      "assertions": [
+        "Full actually played V47 archive with missing optional headStyleId does not lock the main menu.",
+        "Continue, New game and Load remain usable; old checkpoint is readable.",
+        "Cancelling checkpoint load and leaving New game preserve every stored byte.",
+        "Continue preserves campaign ownership and nursery result, with the default reference head and no invented greetings."
+      ]
+    }
+  ],
+  "execution": "Set TEMP and TMP to temporaryDirectory, then set each recipe's environment in its own PowerShell process and run node followed by its script. Adult and youth may run concurrently; legacy menu follows. No current user browser profile is used.",
+  "visualReview": "Inspect fresh public captures of port, domestic mobile, civic rooms and final youth conversation; distinguish report PASS from visual review and public deployment metadata.",
+  "runtimeChanges": false
+}

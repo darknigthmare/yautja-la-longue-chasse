@@ -1,0 +1,53 @@
+{
+  "release": "V64",
+  "status": "LOCAL_VALIDATED_INCLUDED_IN_V65",
+  "scope": "Homeworld: unified 2.5D projection, complete connected city layout, enterable buildings and placement codex",
+  "city": {
+    "districts": 14,
+    "buildingsAndInteriors": 43,
+    "publicBuildings": 19,
+    "residences": 24,
+    "verifiedExteriorRoutes": 54,
+    "movementTicks": 52070,
+    "codexRecords": 723,
+    "individualInteriorFloors": 43,
+    "individualInteriorPanels": 286
+  },
+  "art": {
+    "acceptedNativePngs": 10,
+    "staticDrawings": 20,
+    "buildingFamilies": 5,
+    "newAnimationFrames": 0,
+    "nativeChecksPassed": 17,
+    "previousAssetsPreserved": true
+  },
+  "evidence": [
+    "docs/v64-homeworld-model-delivery.json",
+    "docs/v64-homeworld-geometry-qa.json",
+    "docs/v64-homeworld-native-art-qa.json",
+    "docs/v64-homeworld-art-application-review.json",
+    "docs/HOMEWORLD-CODEX-V64.md",
+    "docs/v64-homeworld-final-browser-qa.json",
+    "docs/v65-homeworld-codex-local-qa.json",
+    "docs/v65-homeworld-navigation-local-qa.json",
+    "docs/v65-release-gates.json"
+  ],
+  "validation": {
+    "geometry": "PASS",
+    "nativeArt": "PASS",
+    "adultPhysicalVisits": "PASS_6",
+    "youthPhysicalMeetings": "PASS_4",
+    "finalCodexAndNavigation": "PASS_THREE_VIEWPORTS_EACH",
+    "finalGlobalTestRun": "PASS_2026",
+    "productionBuild": "PASS_NEXT_WEBPACK",
+    "publicDeployment": "NOT_YET_PUBLISHED"
+  },
+  "blockers": [],
+  "publicState": "V64 city is included in the locally validated V65 release; deployment and public QA remain separate.",
+  "limits": [
+    "The city plan, houses and institutions are original game adaptations. Canonical architecture or global 1:1 fidelity is not certified.",
+    "Five native facade families are reused across 43 visitable buildings; these are not 43 distinct facade images.",
+    "Earlier Pit fighter, stage-animation and campaign backlogs are not all completed by this Homeworld release."
+  ],
+  "checkedAt": "2026-10-01T01:45:13.476Z"
+}

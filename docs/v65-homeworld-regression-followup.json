@@ -1,0 +1,40 @@
+{
+  "version": "V65",
+  "status": "PASS_TEST_HARNESS_CORRECTION_ONLY",
+  "at": "2026-10-01T01:38:58.731Z",
+  "originalFailures": 3,
+  "cause": "Legacy unit fixtures positioned actors at former outdoor coordinates of points that V64 moved into actual building interiors. Both inquiry callbacks failed while setting up this stale fixture, before their runtime guards were invoked. The mausoleum test likewise queried the outdoor nearest-point function for its now-indoor service.",
+  "changedFiles": [
+    "tests/homeworld-inquiry.test.mjs",
+    "tests/mausoleum.test.mjs"
+  ],
+  "correction": "Execute the actual pointInCurrentSpace source function in the VM, supply real interiorRef and authored point positions, assert walkability and point identity. Validate the mausoleum console indoors and reject access through its historical outdoor socket.",
+  "preservedAssertions": [
+    "quota failure does not advance or rewrite durable progress",
+    "successful retry commits all five inquiry steps and survives reload",
+    "owner mismatch, suspended or paused city, wrong NPC, remote position and forged options cannot progress",
+    "archive and trophy services retain distinct physical sockets"
+  ],
+  "newRegression": "A stale inquiry dialog cannot authorize an action from its former outdoor coordinates or another room.",
+  "targeted": {
+    "tests": 21,
+    "passed": 21,
+    "failed": 0
+  },
+  "completeHomeworld": {
+    "tests": 144,
+    "passed": 144,
+    "failed": 0,
+    "log": "I:/CodexTemp/yautja-v65-20261001/homeworld-regression-final.tap",
+    "command": "node --test <all tests/homeworld*.test.mjs and .test.ts> tests/mausoleum.test.mjs"
+  },
+  "runtimeModified": false,
+  "runtimeHashesMatchFinalV64BrowserEvidence": true,
+  "hashes": {
+    "app/game/HomeworldHub.tsx": "227009dcfbfcb1d5613c564680baefa657a7d9647c3e7dfb3d062fb69c6bb600",
+    "app/game/systems/homeworldInteriorsV64.ts": "abec534b6d3f4a7758909bf9f7614c3088ee832022395e2282dee1ab82cd4caf",
+    "tests/homeworld-inquiry.test.mjs": "b308accb975979cf6d585ed2d7f49f68c242e71401890ac61ae7c89b7da72e4d",
+    "tests/mausoleum.test.mjs": "4893c5fc496800928aa6b71d45f0444006dc921077b4bd09930ddb26c034ac55"
+  },
+  "releaseScope": "No runtime, build, deployment, saves or guards changed. Global suite and public release remain parent-agent gates."
+}

@@ -1,0 +1,218 @@
+{
+  "version": "V64",
+  "status": "MODEL_AND_GEOMETRY_PASS_APPLICATION_QA_SEPARATE",
+  "records": 723,
+  "categories": {
+    "district": 14,
+    "street": 18,
+    "building": 43,
+    "door": 86,
+    "prop": 150,
+    "service": 26,
+    "npc": 12,
+    "interior": 43,
+    "ship": 2,
+    "floor": 43,
+    "panel": 286
+  },
+  "buildingCount": 43,
+  "residential": 24,
+  "rooms": 43,
+  "exteriorProps": 26,
+  "outdoorStations": 11,
+  "indoorProps": 102,
+  "indoorStaticStations": 3,
+  "dynamicTrophySockets": 8,
+  "paths": 54,
+  "movementTicks": 52070,
+  "geometryReport": {
+    "path": "docs/v64-homeworld-geometry-qa.json",
+    "sha256": "d0a070df34c4f5ce258492fd9bab99564126fc0857cb56317dca167e65dc28ac",
+    "sourceStable": true
+  },
+  "tests": {
+    "passed": 43,
+    "failed": 0,
+    "files": [
+      "tests/homeworld-geometry-v64.test.mjs",
+      "tests/homeworld.test.mjs",
+      "tests/homeworld-spatial-v54.test.mjs",
+      "tests/homeworldPropPlacement.test.ts",
+      "tests/homeworld-interior-shell-v64.test.mjs"
+    ]
+  },
+  "lint": "PASS0warnings/errors on five owned runtime modules",
+  "nativeBuildings": [
+    {
+      "artId": "civic-hall",
+      "sha256": "b6421a0a01379ce6fcb869dc0ff4530a1282b9a076f88b8bd19e26cca5bbb29e",
+      "door": {
+        "threshold": {
+          "x": 650,
+          "y": 2945
+        },
+        "approach": {
+          "x": 650,
+          "y": 3015
+        },
+        "clearWidth": 92.96475466482377,
+        "clearHeight": 131.9626814098134,
+        "paintedSocket": {
+          "x": 650,
+          "y": 650,
+          "width": 236,
+          "height": 335,
+          "threshold": {
+            "x": 768,
+            "y": 985
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 8.24131035386891
+      },
+      "visualReview": "independently-inspected-original-PNG-pass",
+      "scope": "Front-door inscribed rectangle; scale uniform; not3D or canonical certification"
+    },
+    {
+      "artId": "civic-forge",
+      "sha256": "2120df8219447ea111dc7ea6fe4a738d8bc299210105f7f352057a483a043778",
+      "door": {
+        "threshold": {
+          "x": 3080,
+          "y": 2898.5
+        },
+        "approach": {
+          "x": 3080,
+          "y": 2968.5
+        },
+        "clearWidth": 103.72131147540983,
+        "clearHeight": 138.7622950819672,
+        "paintedSocket": {
+          "x": 515,
+          "y": 828,
+          "width": 222,
+          "height": 297,
+          "threshold": {
+            "x": 627,
+            "y": 1125
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 48.059111259620934
+      },
+      "visualReview": "independently-inspected-original-PNG-pass",
+      "scope": "Front-door inscribed rectangle; scale uniform; not3D or canonical certification"
+    },
+    {
+      "artId": "house-a",
+      "sha256": "04d5cc33ec9b42548de1b3d352cc56d4182b921e694faf6fd9946e13ee407e84",
+      "door": {
+        "threshold": {
+          "x": 510,
+          "y": 3300
+        },
+        "approach": {
+          "x": 510,
+          "y": 3370
+        },
+        "clearWidth": 86.84210526315789,
+        "clearHeight": 129.1578947368421,
+        "paintedSocket": {
+          "x": 444,
+          "y": 839,
+          "width": 275,
+          "height": 409,
+          "threshold": {
+            "x": 584,
+            "y": 1250
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 5.5056214598560995
+      },
+      "visualReview": "independently-inspected-original-PNG-pass",
+      "scope": "Front-door inscribed rectangle; scale uniform; not3D or canonical certification"
+    },
+    {
+      "artId": "house-b",
+      "sha256": "a5354df52b86c6994d4c0ade9db91822a9501b352af6b9b9b5d8c41c4645d746",
+      "door": {
+        "threshold": {
+          "x": 1070,
+          "y": 3340
+        },
+        "approach": {
+          "x": 1070,
+          "y": 3410
+        },
+        "clearWidth": 80.53571428571428,
+        "clearHeight": 142.60714285714286,
+        "paintedSocket": {
+          "x": 480,
+          "y": 850,
+          "width": 205,
+          "height": 363,
+          "threshold": {
+            "x": 580,
+            "y": 1213
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 32.19149976200385
+      },
+      "visualReview": "independently-inspected-original-PNG-pass",
+      "scope": "Front-door inscribed rectangle; scale uniform; not3D or canonical certification"
+    },
+    {
+      "artId": "house-c",
+      "sha256": "d25853dc12b4bb598e33ef1fb3736cce1ea23b0eec2559aa076a941c94c65996",
+      "door": {
+        "threshold": {
+          "x": 1830,
+          "y": 3140
+        },
+        "approach": {
+          "x": 1830,
+          "y": 3210
+        },
+        "clearWidth": 85.52036199095024,
+        "clearHeight": 152.71493212669685,
+        "paintedSocket": {
+          "x": 384,
+          "y": 884,
+          "width": 252,
+          "height": 450,
+          "threshold": {
+            "x": 512,
+            "y": 1350
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 11.833349291545916
+      },
+      "visualReview": "independently-inspected-original-PNG-pass",
+      "scope": "Front-door inscribed rectangle; scale uniform; not3D or canonical certification"
+    }
+  ],
+  "limits": [
+    "Full browser/application verification belongs to separate integration reports.",
+    "No new region/act completion; all city architecture is original adaptation.",
+    "Five shared native building families, not43unique architectural images.",
+    "Dynamic trophy sockets grant nothing and resolve images from the player-owned collection."
+  ],
+  "shell": {
+    "floors": 43,
+    "panels": 286,
+    "sharedHelper": "app/game/systems/homeworldInteriorShellV64.ts",
+    "consumers": [
+      "app/game/HomeworldInteriorSurface.tsx",
+      "app/game/systems/homeworldElementCodexV64.ts"
+    ],
+    "layout": "Existing screen clipping windows and native pivots preserved; last modules clipped without stretching.",
+    "readOnlyVisualAudit": {
+      "directory": "I:/CodexTemp/yautja-v64-20261001/interiors-v64",
+      "imagesInspected": 8,
+      "result": "Proportions and native ground contact coherent; south exit label clipping and mobile control visibility reported to UI owner. This is not a browser PASS: the inspected failure.json still recorded a market-armory dialogue timeout."
+    }
+  }
+}

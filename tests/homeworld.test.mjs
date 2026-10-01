@@ -5,6 +5,8 @@ import { build } from "esbuild";
 const compiled = await build({ entryPoints: ["app/game/systems/homeworld.ts"], bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent" });
 const hw = await import("data:text/javascript;base64," + Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const { HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_STREETS, HOMEWORLD_BUILDINGS, HOMEWORLD_PROPS, HOMEWORLD_POINT_POSITIONS, HOMEWORLD_POINT_PROP_COLLIDERS, HOMEWORLD_NPC_COLLIDERS, HOMEWORLD_NPC_PLATES, HOMEWORLD_GENERIC_HUNTER_PLATES, HOMEWORLD_TROPHY_SLOTS, HOMEWORLD_POINTS, HOMEWORLD_REGIONS, HOMEWORLD_NPCS, HOMEWORLD_ORGANIZATIONS, HOMEWORLD_EVIDENCE, HOMEWORLD_WITNESS_CHOICES, defaultHomeworldProgress, normalizeHomeworldProgress, applyHomeworldAction, createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, districtAtHomeworldActor, isHomeworldTerrainWalkable, isHomeworldWalkable, homeworldBuildingCollision, homeworldBuildingDoorPosition, homeworldCollisionAt, homeworldHeroPlate, homeworldNpcPlate, homeworldTrophyDisplays, nearestHomeworldDoor, shouldFadeHomeworldForeground } = hw;
+const interiorBundle = await build({entryPoints:['app/game/systems/homeworldInteriorsV64.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const rooms = await import('data:text/javascript;base64,'+Buffer.from(interiorBundle.outputFiles[0].text).toString('base64'));
 const context = { rankId: "young-blood", ownedTrophyCount: 0 };
 const act = (progress, action, settings = context) => applyHomeworldAction(progress, action, settings);
 const chain = () => HOMEWORLD_EVIDENCE.reduce((p, e) => act(p, { type: "inspect", evidenceId: e.id }).progress, defaultHomeworldProgress());
@@ -20,7 +22,7 @@ test("the 2.5D city preserves twelve service districts and adds two connected or
   assert(HOMEWORLD_PROPS.length >= 10);
   assert(HOMEWORLD_DISTRICTS.every(d => d.polygon.length >= 5));
   assert.equal(new Set(HOMEWORLD_BUILDINGS.map(b => b.id)).size, HOMEWORLD_BUILDINGS.length);
-  assert.deepEqual(new Set(HOMEWORLD_PROPS.map(p => p.plane)), new Set(["rear", "ground", "front"]));
+  assert.deepEqual(new Set(HOMEWORLD_PROPS.map(p => p.plane)), new Set(["ground"]));
   for (const district of HOMEWORLD_DISTRICTS) {
     if (!["convoy-works", "rampart-walk"].includes(district.id)) assert(HOMEWORLD_POINTS.some(p => p.districtId === district.id), district.id);
     assert(HOMEWORLD_BUILDINGS.some(b => b.districtId === district.id), district.id + " needs its own building module");
@@ -28,7 +30,9 @@ test("the 2.5D city preserves twelve service districts and adds two connected or
   assert.equal(Object.keys(HOMEWORLD_POINT_POSITIONS).length, HOMEWORLD_POINTS.length);
   for (const point of HOMEWORLD_POINTS) {
     assert.equal(districtAtHomeworldActor(point)?.id, point.districtId, point.id);
-    assert.equal(nearestHomeworldPoint(point)?.id, point.id, point.id + " cannot be shadowed");
+    const room = rooms.homeworldInteriorForPointV64(point.id);
+    if (room) { assert.notEqual(nearestHomeworldPoint(point)?.id, point.id, 'no duplicate outdoor service'); assert(room.points.some(p=>p.pointId===point.id)); }
+    else assert.equal(nearestHomeworldPoint(point)?.id, point.id, point.id + ' cannot be shadowed');
     assert(isHomeworldTerrainWalkable(point, { halfWidth: 0, halfDepth: 0 }), point.id + " must be on the public street network");
     if (point.npcId) assert(HOMEWORLD_NPCS.some(n => n.id === point.npcId));
   }
@@ -83,17 +87,18 @@ test("city originals and unrepresented presets never borrow another known hunter
 });
 
 test("solid scenery has actor volume while every authored doorway keeps a reachable threshold", () => {
-  assert.equal(HOMEWORLD_NPC_COLLIDERS.length, HOMEWORLD_POINTS.filter(point => point.npcId).length);
+  assert.equal(HOMEWORLD_NPC_COLLIDERS.length, 0, 'all twelve NPCs moved indoors');
+  assert.equal(HOMEWORLD_POINTS.filter(p=>p.npcId && rooms.homeworldInteriorForPointV64(p.id)).length, 12);
   for (const npc of HOMEWORLD_NPC_COLLIDERS) {
     assert.deepEqual(homeworldCollisionAt(npc, { halfWidth: 0, halfDepth: 0 }), { kind: "npc", id: npc.id });
     assert.equal(isHomeworldWalkable(npc), false);
   }
   for (const prop of HOMEWORLD_PROPS.filter(prop => prop.plane === "ground")) {
-    const collision = homeworldCollisionAt(prop, { halfWidth: 0, halfDepth: 0 });
+    const collision = homeworldCollisionAt({x:prop.x,y:prop.y-prop.footprint.halfDepth}, { halfWidth: 0, halfDepth: 0 });
     assert.equal(collision?.kind, "prop", prop.id);
     assert.equal(collision?.id, prop.id, prop.id);
   }
-  assert(HOMEWORLD_POINT_PROP_COLLIDERS.length >= 20);
+  assert.equal(HOMEWORLD_POINT_PROP_COLLIDERS.length, 11, "ten regional portals and orbital terminal stay outside");
   for (const prop of HOMEWORLD_POINT_PROP_COLLIDERS) {
     assert.equal(isHomeworldWalkable(prop), false, prop.id + " station or portal has no volume");
   }
@@ -125,7 +130,8 @@ test("owned trophies receive independent display slots and honest unknown-defini
 });
 
 test("foreground occluders fade only inside their authored radius", () => {
-  const front = HOMEWORLD_PROPS.find(prop => prop.plane === "front");
+  const front = {id:'fixture',x:100,y:100,width:100,height:100,plane:'front',fadeRadius:150};
+  assert(HOMEWORLD_PROPS.every(p=>p.plane==='ground'), 'no retired foreground prop is invisibly collidable');
   const ground = HOMEWORLD_PROPS.find(prop => prop.plane === "ground");
   assert(front && ground);
   assert.equal(shouldFadeHomeworldForeground(front, front), true);
@@ -137,21 +143,28 @@ test("the scene keeps stations, NPCs, doors, trophies and occlusion as separate 
   const scene = readFileSync("app/game/HomeworldCityScene.tsx", "utf8");
   const hub = readFileSync("app/game/HomeworldHub.tsx", "utf8");
   const css = readFileSync("app/game/HomeworldCity.module.css", "utf8");
-  assert.match(scene, /data-station-art="true"/);
-  assert.match(scene, /HomeworldModularHunter className=\{styles\.wholeNpc\}/);
+  const pointVisual = readFileSync("app/game/HomeworldPointVisualV64.tsx", "utf8");
+  const interior = readFileSync("app/game/HomeworldInteriorSurface.tsx", "utf8");
+  assert.match(pointVisual, /data-point-id=\{point\.id\}/);
+  assert.match(pointVisual, /HomeworldModularHunter/);
+  assert.match(scene, /HOMEWORLD_INTERIOR_POINT_IDS_V64\.has\(point\.id\)/);
+  assert.match(interior, /room\.points\.map/);
   const modularHunter = readFileSync("app/game/HomeworldModularHunter.tsx", "utf8");
   for (const layer of ["body", "clothing", "loincloth", "dread"]) assert(modularHunter.includes(`data-homeworld-layer="${layer}"`), "city character is missing its " + layer + " bitmap");
-  assert.match(scene, /trophyDisplays\.map/);
-  assert.match(scene, /data-faded=\{faded\}/);
-  assert.match(scene, /data-active=\{active\}/);
-  assert.match(hub, /activeDoorId=\{activeDoorId\} fadedFrontPropIds=\{fadedFrontPropIds\} trophies=\{save\.trophies\}/);
+  assert.match(interior, /homeworldTrophyDisplays\(trophies\)/);
+  assert.match(interior, /data-trophy-claim-id=\{trophy\.claimId\}/);
+  assert.match(scene, /data-occluded=/);
+  assert.match(scene, /data-painted-door-id=\{building\.id\}/);
+  assert.match(scene, /homeworldBuildingDoorwayV64\(building\)\.threshold/);
+  assert.match(hub, /HomeworldCityScene[^\n]*fadedFrontPropIds=\{fadedFrontPropIds\} trophies=\{save\.trophies\}/);
   assert.match(hub, /data-asset-status=\{heroPlate\.status\}/);
   assert.match(hub, /data-provenance-status=\{heroPlate\.provenanceStatus\}/);
   assert.match(hub, /data-facing=\{actor\.facing\}/);
-  assert.match(css, /\.hero\[data-facing='-1'\] \.heroPlate\s*\{[^}]*transform:\s*scaleX\(-1\)/s);
+  assert.match(css, /\.hero\[data-facing='-1'\] \.heroVisual\s*\{[^}]*transform:\s*scaleX\(-1\)/s);
+  assert.match(hub, /className=\{styles\.heroVisual\}/);
   assert.doesNotMatch(hub, /Plaque exacte à produire|heroPlatePending/);
   assert.match(hub, /rampes obliques forment un seul réseau au sol/);
-  assert.match(css, /buildingDoorLeaf/);
+  assert.match(css, /doorMarkerV64/);
   assert.doesNotMatch(css, /heroPlatePending/);
   assert.match(css, /data-faded='true'/);
   assert.equal(existsSync("app/game/HomeworldHub.module.css"), false);
@@ -243,7 +256,7 @@ test("the authored street mask connects spawn to every point without platforming
     }
   }
   assert(queue.length > 8_000, "the reachable mask must describe a city, not a narrow lane");
-  for (const point of HOMEWORLD_POINTS) {
+  for (const point of HOMEWORLD_POINTS.filter(p=>!rooms.HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id))) {
     const reachable = queue.some(([x,y]) => Math.hypot(x*cell-point.x,y*cell-point.y) <= 90);
     assert(reachable, "not connected to spawn: " + point.id);
   }

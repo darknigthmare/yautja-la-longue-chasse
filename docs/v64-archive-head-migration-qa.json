@@ -1,0 +1,20 @@
+{
+  "release": "V64/V65",
+  "status": "PASS",
+  "defect": "Old, otherwise valid ship sidecars and complete campaign slots were rejected because stored loadout appearances predated the optional headStyleId field introduced in V63.",
+  "repair": "validateCanonicalShipProgression inserts reference only when that exact property is absent from a preset appearance, then performs the full strict canonical comparison. Explicit invalid values, other missing fields, foreign owners and future versions remain rejected.",
+  "tests": {
+    "files": ["tests/complete-archive.test.mjs", "tests/complete-archive-adversarial.test.mjs", "tests/campaign-slots.test.mjs"],
+    "tests": 65,
+    "pass": 65,
+    "fail": 0,
+    "log": "I:/CodexTemp/yautja-v64-20261001/archive-migration-tests.log"
+  },
+  "browser": {
+    "fixture": "Complete storage from the previously played V47 nursery QA campaign, including its old campaign slot and ship sidecar.",
+    "report": "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/report.json",
+    "checks": 4,
+    "result": "PASS, including greetings retained after reload; no ship/equipment/training completion fabricated."
+  },
+  "preservation": "Source archive is unchanged. All browser runs use isolated QA contexts; no real player storage is altered."
+}

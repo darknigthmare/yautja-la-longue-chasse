@@ -1,0 +1,1328 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "scope": "Real city keyboard input, CSS scalp attachments, damped braking, facing reversal and exact pause in two isolated fixtures. No user save changed.",
+  "limits": "Constrained 2D angular springs on seven bitmap strands with head/neck/torso envelopes; not a 3D rope or mesh model, no strand-to-strand collision.",
+  "focusDiagnosis": "The initial actor-not-moving failure did not reproduce before changes. The harness now requires a non-inert screen and stable actual keyboard focus; no runtime focus change was necessary.",
+  "checks": [
+    {
+      "headStyleId": "reference",
+      "initialFocus": [
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        }
+      ],
+      "resumedFocus": [
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        }
+      ],
+      "maxRootError": 0.00014302186951282062,
+      "brakingDistance": 0.23592969152482696,
+      "settledDistance": 0.000001479864858699918,
+      "states": {
+        "rest": {
+          "x": 430,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.1rad) scale(0.82)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99987040998478,
+                "y": 46.99997893470596
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.07rad) scale(0.9)",
+              "angle": 0.07,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999468343131,
+                "y": 42.99998115090576
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.04rad) scale(0.98)",
+              "angle": 0.04,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99993198955237,
+                "y": 39.99999528894049
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.02rad) scale(1.02)",
+              "angle": 0.02,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987763033057,
+                "y": 37.99999834409991
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.06rad) scale(0.96)",
+              "angle": 0.06,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00002906527887,
+                "y": 39.99999027229815
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.1rad) scale(0.76)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004723416617,
+                "y": 44.99997381337912
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.15rad) scale(0.64)",
+              "angle": 0.15,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.0000487418819,
+                "y": 48.99995041873326
+              }
+            }
+          ]
+        },
+        "moving": {
+          "x": 634,
+          "moving": "true",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.297rad) scale(0.82)",
+              "angle": 0.297,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.9998684736526,
+                "y": 46.99994387799415
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.275777rad) scale(0.9)",
+              "angle": 0.275777,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999143530421,
+                "y": 42.9999410356761
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.253735rad) scale(0.98)",
+              "angle": 0.253735,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99992713738438,
+                "y": 39.999950035933665
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.240795rad) scale(1.02)",
+              "angle": 0.240795,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987161415916,
+                "y": 37.99994978666147
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.286875rad) scale(0.96)",
+              "angle": 0.286875,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00002527280178,
+                "y": 39.99994311136
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.331887rad) scale(0.76)",
+              "angle": 0.331887,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004579007143,
+                "y": 44.99993556057756
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.385736rad) scale(0.64)",
+              "angle": 0.385736,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.00004920691566,
+                "y": 48.99991765369756
+              }
+            }
+          ]
+        },
+        "paused": {
+          "x": 925,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.297352rad) scale(0.82)",
+              "angle": 0.297352,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99986847622058,
+                "y": 46.999943815032196
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.280692rad) scale(0.9)",
+              "angle": 0.280692,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999145898607,
+                "y": 42.99994007305366
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.264073rad) scale(0.98)",
+              "angle": 0.264073,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.9999271489365,
+                "y": 39.99994783030634
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.257463rad) scale(1.02)",
+              "angle": 0.257463,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987159739298,
+                "y": 37.99994608561952
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.31081rad) scale(0.96)",
+              "angle": 0.31081,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00002549849744,
+                "y": 39.99993811435707
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.364047rad) scale(0.76)",
+              "angle": 0.364047,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004629107443,
+                "y": 44.99993026348488
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.427078rad) scale(0.64)",
+              "angle": 0.427078,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.00005008330797,
+                "y": 48.999911961077075
+              }
+            }
+          ]
+        },
+        "braking": {
+          "x": 925,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.156735rad) scale(0.82)",
+              "angle": 0.156735,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99986914411271,
+                "y": 46.99996888760195
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.135358rad) scale(0.9)",
+              "angle": 0.135358,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999275734301,
+                "y": 42.99996849326049
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.11476rad) scale(0.98)",
+              "angle": 0.11476,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99992919264723,
+                "y": 39.99997959018147
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.104964rad) scale(1.02)",
+              "angle": 0.104964,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987404598214,
+                "y": 37.99997982689561
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.155989rad) scale(0.96)",
+              "angle": 0.155989,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00002615393201,
+                "y": 39.999970431586334
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.207839rad) scale(0.76)",
+              "angle": 0.207839,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004545799477,
+                "y": 44.99995606858147
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.270504rad) scale(0.64)",
+              "angle": 0.270504,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.00004801340984,
+                "y": 48.99993365522731
+              }
+            }
+          ]
+        },
+        "settled": {
+          "x": 925,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.0999999rad) scale(0.82)",
+              "angle": 0.0999999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99987040999024,
+                "y": 46.999978934727025
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.0700002rad) scale(0.9)",
+              "angle": 0.0700002,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999468342037,
+                "y": 42.99998115086362
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.0400005rad) scale(0.98)",
+              "angle": 0.0400005,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99993198951957,
+                "y": 39.99999528881405
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.0200005rad) scale(1.02)",
+              "angle": 0.0200005,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987763029777,
+                "y": 37.99999834397346
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.06rad) scale(0.96)",
+              "angle": 0.06,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.0000290652734,
+                "y": 39.999990272277074
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.0999992rad) scale(0.76)",
+              "angle": 0.0999992,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004723419896,
+                "y": 44.99997381350556
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.149999rad) scale(0.64)",
+              "angle": 0.149999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.000048741693,
+                "y": 48.999950418872196
+              }
+            }
+          ]
+        },
+        "restingAgain": {
+          "x": 925,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.0999999rad) scale(0.82)",
+              "angle": 0.0999999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99987040998478,
+                "y": 46.99997893470596
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.07rad) scale(0.9)",
+              "angle": 0.07,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999468343677,
+                "y": 42.99998115092683
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.04rad) scale(0.98)",
+              "angle": 0.04,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.9999319895469,
+                "y": 39.999995288919415
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.0200001rad) scale(1.02)",
+              "angle": 0.0200001,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.9998776303251,
+                "y": 37.99999834407883
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.0600001rad) scale(0.96)",
+              "angle": 0.0600001,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.0000290652734,
+                "y": 39.999990272277074
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.1rad) scale(0.76)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004723416617,
+                "y": 44.99997381337912
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.15rad) scale(0.64)",
+              "angle": 0.15,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.00004874188737,
+                "y": 48.99995041875434
+              }
+            }
+          ]
+        },
+        "left": {
+          "x": 788,
+          "moving": "true",
+          "facing": -1,
+          "head": "/game/sprites/v62/heads/classic-head.png",
+          "hair": [
+            {
+              "transform": "translate(-16.0156%, 1.04167%) rotate(0.258386rad) scale(0.82)",
+              "angle": 0.258386,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 101.99986830798892,
+                "y": 46.99995076857756
+              }
+            },
+            {
+              "transform": "translate(-15.2344%, 0%) rotate(0.233608rad) scale(0.9)",
+              "angle": 0.233608,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 103.99999142693675,
+                "y": 42.999949297155126
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, -0.78125%) rotate(0.208038rad) scale(0.98)",
+              "angle": 0.208038,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99992735953636,
+                "y": 39.99995978156488
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -1.30208%) rotate(0.19164rad) scale(1.02)",
+              "angle": 0.19164,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99987202235491,
+                "y": 37.99996069310439
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -0.78125%) rotate(0.234374rad) scale(0.96)",
+              "angle": 0.234374,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00002519653437,
+                "y": 39.999954081998055
+              }
+            },
+            {
+              "transform": "translate(-12.5%, 0.520833%) rotate(0.276202rad) scale(0.76)",
+              "angle": 0.276202,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.00004532607421,
+                "y": 44.99994476081951
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, 1.5625%) rotate(0.327083rad) scale(0.64)",
+              "angle": 0.327083,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.00004836896537,
+                "y": 48.999925781198044
+              }
+            }
+          ]
+        }
+      },
+      "focusHistory": [
+        {
+          "type": "focusin",
+          "time": 1991.5,
+          "target": "<button type=\"button\" class=\"CampaignMainMenu_featured__1hoaX\"><span class=\"CampaignMainMenu_actionTitle__xS_z1\">Continuer</span><small>Partie 1 · Chasseur sans nom</small><span class=\"CampaignMainMenu_actionArrow__P_ZKS\" aria-hidden=\"true\">›</span></button>"
+        },
+        {
+          "type": "focusin",
+          "time": 3454.699999988079,
+          "target": "<section class=\"physical-ship-deck ship-level-deck\" data-screen-focus=\"true\" tabindex=\"0\" data-suspended=\"false\" data-player-x=\"3500\" data-player-y=\"1360\" data-ship-room=\"launch-airlock\" role=\"region\" aria-label=\"Intérieur du vaisseau Yautja, huit salles reliées sur deux ponts\" aria-describedby=\"physical-deck-help\" style=\"display: grid; gap: 0.75rem; width: 100%; max-width: 100rem; margin: 0px aut"
+        },
+        {
+          "type": "focusin",
+          "time": 4472.899999976158,
+          "target": "<button type=\"button\" class=\"ghost-button\">Yautja Prime · monde natal</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 5742.899999976158,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keydown",
+          "key": "ArrowRight",
+          "time": 6024.699999988079,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keyup",
+          "key": "ArrowRight",
+          "time": 7515.199999988079,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "focusin",
+          "time": 7583.800000011921,
+          "target": "<button type=\"button\">Pause</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 8547.5,
+          "target": "<button type=\"button\">Reprendre l’exploration</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 8547.899999976158,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\" disabled=\"\">Atlas de la cité <span>1/14</span></button"
+        },
+        {
+          "type": "keydown",
+          "key": "ArrowLeft",
+          "time": 12423,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keyup",
+          "key": "ArrowLeft",
+          "time": 12862.699999988079,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        }
+      ]
+    },
+    {
+      "headStyleId": "legacy-clan",
+      "initialFocus": [
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        }
+      ],
+      "resumedFocus": [
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        },
+        {
+          "owned": true,
+          "windowFocused": true,
+          "inert": false
+        }
+      ],
+      "maxRootError": 0.0001348000753814712,
+      "brakingDistance": 0.2867464136846353,
+      "settledDistance": 0.000001894729532153221,
+      "states": {
+        "rest": {
+          "x": 430,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.1rad) scale(0.82)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00001090875543,
+                "y": 47.999971129827905
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.07rad) scale(0.9)",
+              "angle": 0.07,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994785050775,
+                "y": 43.999980838710634
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.04rad) scale(0.98)",
+              "angle": 0.04,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988515662882,
+                "y": 40.999987484062444
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.02rad) scale(1.02)",
+              "angle": 0.02,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.0000181291012,
+                "y": 38.999990539221855
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.06rad) scale(0.96)",
+              "angle": 0.06,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99998223235531,
+                "y": 40.9999824674201
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.1rad) scale(0.76)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 113.00000040124263,
+                "y": 45.999966008501076
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.15rad) scale(0.64)",
+              "angle": 0.15,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000190895835,
+                "y": 49.99996134556254
+              }
+            }
+          ]
+        },
+        "moving": {
+          "x": 628,
+          "moving": "true",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.29496rad) scale(0.82)",
+              "angle": 0.29496,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00000895699957,
+                "y": 47.999936436948296
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.273456rad) scale(0.9)",
+              "angle": 0.273456,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994459297507,
+                "y": 43.99994117818537
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.251124rad) scale(0.98)",
+              "angle": 0.251124,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988030513211,
+                "y": 40.999942787949266
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.23789rad) scale(1.02)",
+              "angle": 0.23789,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001212228857,
+                "y": 38.99994262683317
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.283673rad) scale(0.96)",
+              "angle": 0.283673,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99997841855364,
+                "y": 40.99993597545365
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.32839rad) scale(0.76)",
+              "angle": 0.32839,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.99999891284394,
+                "y": 45.99992833257366
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.381951rad) scale(0.64)",
+              "angle": 0.381951,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000230556141,
+                "y": 49.999929103383415
+              }
+            }
+          ]
+        },
+        "paused": {
+          "x": 832,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.30733rad) scale(0.82)",
+              "angle": 0.30733,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00000906164775,
+                "y": 47.999934231250734
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.290723rad) scale(0.9)",
+              "angle": 0.290723,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994468908402,
+                "y": 43.99993779624586
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.273966rad) scale(0.98)",
+              "angle": 0.273966,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988034840572,
+                "y": 40.99993791492683
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.266983rad) scale(1.02)",
+              "angle": 0.266983,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001211416306,
+                "y": 38.99993616677464
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.319681rad) scale(0.96)",
+              "angle": 0.319681,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99997877980721,
+                "y": 40.99992845910634
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.371945rad) scale(0.76)",
+              "angle": 0.371945,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.99999960718105,
+                "y": 45.99992116055415
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.433633rad) scale(0.64)",
+              "angle": 0.433633,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000341085743,
+                "y": 49.99992198877658
+              }
+            }
+          ]
+        },
+        "braking": {
+          "x": 832,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.173941rad) scale(0.82)",
+              "angle": 0.173941,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00000937204855,
+                "y": 47.99995802305561
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.153539rad) scale(0.9)",
+              "angle": 0.153539,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994553623696,
+                "y": 43.99996464017952
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.133815rad) scale(0.98)",
+              "angle": 0.133815,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988183515592,
+                "y": 40.99996775396683
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.124758rad) scale(1.02)",
+              "angle": 0.124758,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001393786052,
+                "y": 38.999967668831225
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.176343rad) scale(0.96)",
+              "angle": 0.176343,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99997894926432,
+                "y": 40.99995838933073
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.228525rad) scale(0.76)",
+              "angle": 0.228525,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.99999850365688,
+                "y": 45.99994484347317
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.291236rad) scale(0.64)",
+              "angle": 0.291236,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000125908754,
+                "y": 49.99994169470439
+              }
+            }
+          ]
+        },
+        "settled": {
+          "x": 832,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.1rad) scale(0.82)",
+              "angle": 0.1,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00001090875543,
+                "y": 47.999971129827905
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.0700004rad) scale(0.9)",
+              "angle": 0.0700004,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994785049135,
+                "y": 43.99998083864742
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.0400007rad) scale(0.98)",
+              "angle": 0.0400007,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988515658511,
+                "y": 40.99998748389386
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.0200007rad) scale(1.02)",
+              "angle": 0.0200007,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001812906297,
+                "y": 38.999990539074346
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.0599999rad) scale(0.96)",
+              "angle": 0.0599999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99998223214455,
+                "y": 40.99998246747474
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.0999988rad) scale(0.76)",
+              "angle": 0.0999988,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 113.00000040129181,
+                "y": 45.999966008690734
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.149999rad) scale(0.64)",
+              "angle": 0.149999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000190877492,
+                "y": 49.99996134572254
+              }
+            }
+          ]
+        },
+        "restingAgain": {
+          "x": 832,
+          "moving": "false",
+          "facing": 1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.0999999rad) scale(0.82)",
+              "angle": 0.0999999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.00001090876088,
+                "y": 47.99997112984898
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.07rad) scale(0.9)",
+              "angle": 0.07,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994785051321,
+                "y": 43.99998083873171
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.04rad) scale(0.98)",
+              "angle": 0.04,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.99988515662336,
+                "y": 40.99998748404137
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.0200001rad) scale(1.02)",
+              "angle": 0.0200001,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001812909028,
+                "y": 38.99999053917971
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.0600001rad) scale(0.96)",
+              "angle": 0.0600001,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99998223234984,
+                "y": 40.99998246739902
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.0999999rad) scale(0.76)",
+              "angle": 0.0999999,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 113.0000004012481,
+                "y": 45.999966008522144
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.15rad) scale(0.64)",
+              "angle": 0.15,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000190896382,
+                "y": 49.999961345583614
+              }
+            }
+          ]
+        },
+        "left": {
+          "x": 689,
+          "moving": "true",
+          "facing": -1,
+          "head": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+          "hair": [
+            {
+              "transform": "translate(-15.2344%, 1.30208%) rotate(0.262827rad) scale(0.82)",
+              "angle": 0.262827,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 104.0000088122234,
+                "y": 47.99994217109854
+              }
+            },
+            {
+              "transform": "translate(-14.4531%, 0.260417%) rotate(0.238344rad) scale(0.9)",
+              "angle": 0.238344,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 105.99994457770752,
+                "y": 43.999948057217566
+              }
+            },
+            {
+              "transform": "translate(-13.6719%, -0.520833%) rotate(0.213056rad) scale(0.98)",
+              "angle": 0.213056,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 107.9998804805058,
+                "y": 40.999950907114155
+              }
+            },
+            {
+              "transform": "translate(-12.8906%, -1.04167%) rotate(0.196923rad) scale(1.02)",
+              "angle": 0.196923,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 110.00001245143035,
+                "y": 38.999951717268296
+              }
+            },
+            {
+              "transform": "translate(-12.1094%, -0.520833%) rotate(0.239902rad) scale(0.96)",
+              "angle": 0.239902,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 111.99997834437809,
+                "y": 40.99994512209171
+              }
+            },
+            {
+              "transform": "translate(-11.7188%, 0.78125%) rotate(0.28195rad) scale(0.76)",
+              "angle": 0.28195,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 112.99999851746477,
+                "y": 45.99993600529952
+              }
+            },
+            {
+              "transform": "translate(-11.3281%, 1.82292%) rotate(0.333023rad) scale(0.64)",
+              "angle": 0.333023,
+              "contacts": 0,
+              "loaded": true,
+              "root": {
+                "x": 114.00000159920384,
+                "y": 49.99993588292683
+              }
+            }
+          ]
+        }
+      },
+      "focusHistory": [
+        {
+          "type": "focusin",
+          "time": 682.8999999761581,
+          "target": "<button type=\"button\" class=\"CampaignMainMenu_featured__1hoaX\"><span class=\"CampaignMainMenu_actionTitle__xS_z1\">Continuer</span><small>Partie 1 · Chasseur sans nom</small><span class=\"CampaignMainMenu_actionArrow__P_ZKS\" aria-hidden=\"true\">›</span></button>"
+        },
+        {
+          "type": "focusin",
+          "time": 1811.6000000238419,
+          "target": "<section class=\"physical-ship-deck ship-level-deck\" data-screen-focus=\"true\" tabindex=\"0\" data-suspended=\"false\" data-player-x=\"3500\" data-player-y=\"1360\" data-ship-room=\"launch-airlock\" role=\"region\" aria-label=\"Intérieur du vaisseau Yautja, huit salles reliées sur deux ponts\" aria-describedby=\"physical-deck-help\" style=\"display: grid; gap: 0.75rem; width: 100%; max-width: 100rem; margin: 0px aut"
+        },
+        {
+          "type": "focusin",
+          "time": 2380.100000023842,
+          "target": "<button type=\"button\" class=\"ghost-button\">Yautja Prime · monde natal</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 3112.399999976158,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keydown",
+          "key": "ArrowRight",
+          "time": 3243.600000023842,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keyup",
+          "key": "ArrowRight",
+          "time": 4468.699999988079,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "focusin",
+          "time": 4517,
+          "target": "<button type=\"button\">Pause</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 5332.399999976158,
+          "target": "<button type=\"button\">Reprendre l’exploration</button>"
+        },
+        {
+          "type": "focusin",
+          "time": 5333.100000023842,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\" disabled=\"\">Atlas de la cité <span>1/14</span></button"
+        },
+        {
+          "type": "keydown",
+          "key": "ArrowLeft",
+          "time": 9204.300000011921,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        },
+        {
+          "type": "keyup",
+          "key": "ArrowLeft",
+          "time": 9653.899999976158,
+          "target": "<div class=\"HomeworldCity_viewport__njFYj\" tabindex=\"0\" role=\"group\" aria-label=\"Cité jouable en perspective 2.5D\" aria-describedby=\"homeworld-controls\"><div class=\"HomeworldSpatialCodex_root__InqRr\" data-homeworld-spatial-codex=\"v54\"><button type=\"button\" class=\"HomeworldSpatialCodex_toggle__1PDda\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Atlas de la cité <span>1/14</span></button></div><div "
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

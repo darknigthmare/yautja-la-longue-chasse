@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "scope": "Real forge selection and campaign reload in isolated browser; no user save changed.",
+  "checks": [
+    {
+      "style": "legacy-clan",
+      "heads": [
+        "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+        "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp"
+      ],
+      "persisted": true
+    },
+    {
+      "style": "reference",
+      "heads": [
+        "/game/sprites/v62/heads/classic-head.png",
+        "/game/sprites/v62/heads/classic-head.png"
+      ],
+      "persisted": true
+    },
+    {
+      "style": "legacy-clan",
+      "heads": [
+        "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+        "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp"
+      ],
+      "persisted": true
+    }
+  ],
+  "reloadPersists": true,
+  "preset": "custom",
+  "errors": [],
+  "failed": []
+}

@@ -18,10 +18,10 @@ export const HOMEWORLD_SPATIAL_SITES = HOMEWORLD_DISTRICTS.map(district => {
     approach: homeworldBuildingDoorPosition(building), buildingId: building.id,
     lore: "original-adaptation" as const,
     sourceId: district.id === "esplanade" ? "predator2-trophy-wall" : null,
-    access: "La promenade est accessible. Les services, le vaisseau personnel et les expéditions gardent leurs conditions de progression. Aucun intérieur supplémentaire ne s’ouvre par cette carte.",
+    access: "La promenade et les portes de la cité sont visitables. Le codex ne téléporte pas le chasseur. Les services intérieurs, le vaisseau orbital et les expéditions gardent leurs conditions de progression.",
     connectors: district.id === "convoy-works" ? "Deux accès : quai secondaire à l’ouest ; retour des forges au nord-est."
       : district.id === "rampart-walk" ? "Trois accès : citadelle au nord-ouest, bastion à l’ouest, galerie basse au sud-ouest."
-      : "Suivre les rues obliques et l’approche de porte. Les volumes des façades et des objets restent solides.",
+      : "Suivre les rues et l’approche de porte. Le sol est projeté à35° ; façades et objets gardent leurs volumes solides.",
   };
 });
 
@@ -32,13 +32,13 @@ export function homeworldPlacementRecords(districtId: string) {
     actorFootprint: { halfWidth: HOMEWORLD_ACTOR.halfWidth, halfDepth: HOMEWORLD_ACTOR.halfDepth },
     buildings: HOMEWORLD_BUILDINGS.filter(b => b.districtId === districtId).map(building => ({
       id: building.id, label: building.label, anchor: { x: building.x, y: building.y },
-      width: building.width, height: building.height, door: homeworldBuildingDoorPosition(building),
+      width: building.footprint.width, height: building.wallHeight, door: homeworldBuildingDoorPosition(building),
       collision: homeworldBuildingCollision(building), depth: Math.round(building.y),
     })),
     props: HOMEWORLD_PROPS.filter(p => p.districtId === districtId).map(prop => ({
       id: prop.id, anchor: { x: prop.x, y: prop.y }, plane: prop.plane, asset: prop.asset,
       paintedBox: { width: prop.width, height: prop.height }, image: homeworldPropArtPlacement(prop),
-      depth: Math.round(prop.y) - (prop.plane === "rear" ? 180 : 0),
+      depth: Math.round(prop.y),
       fadeRadius: prop.plane === "front" ? prop.fadeRadius ?? 0 : 0,
     })),
   };

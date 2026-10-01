@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-020-trone-fracture",
+  "kind": "atlas",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+  "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+  "width": 1254,
+  "height": 1254,
+  "hasAlpha": true,
+  "contentBounds": {
+    "x": 39,
+    "y": 46,
+    "width": 1181,
+    "height": 1146
+  },
+  "receipt": "docs/v65-generation/arena-020-trone-fracture-atlas.json",
+  "coverage": {
+    "threshold": 8,
+    "visiblePixels": 574138,
+    "assignedPixels": 574138,
+    "nativeDrawings": 4,
+    "animationFrames": 0
+  },
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-a6c6ce22-7862-4389-85be-b84044094991.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. Native transparent STATIC sprite atlas of four independent original Yautja damaged clan-lodge modules for a side-view 2D fighting game. Reference1 is a MATERIAL/STYLE reference, not a scene to copy. Use its broken basalt and ribbed dark-bronze engineered shell. Square1536x1536, strict2x2 grid,40px transparent margins around EACH object and a wide clear cross-shaped gap. Each complete object stays in its cell. No floor or connected diorama. Frontal side-stage camera with shallow top surfaces visible; horizontal bases, no isometric rotation. Exactly FOUR drawings, not animation frames.\nTOP LEFT P1: a small distant damaged archive alcove, a squat horizontal basalt and metal recess with layered canopy, three closed rectangular ribbed data housings recessed into its rear wall, dim amber slots, complete self-supporting stone footing. No writing, human coffins or skulls.\nTOP RIGHT P2: one tall fractured supporting rib with a heavy cracked stone core and curved dark alloy brace; an exposed bundled cable is bolted to it and sags naturally. It remains structurally plausible and firmly rooted on its broad foot.\nBOTTOM LEFT P3: one empty damaged Yautja clan leader's seat, a heavy utilitarian alien machine seat with broad low base, inward-curving arm supports, asymmetrically cracked back of interlocking dark alloy plates and dull inset amber circuitry. No crown, deity, face, human royal upholstery or spikes. Clearly a physical chair fit for a broad alien hunter, not a magical throne. Whole chair including feet.\nBOTTOM RIGHT P5: one low pile of fallen basalt and a bent bronze structural rib, complete silhouette and shallow contact shadow. No separate scattered tiny flecks far from pile.\nDetailed realistic hand-painted game art, muted dark bronze and charcoal, pale upperleft light and subdued amber recesses, clean native alpha. No people, gods, statues, giant masks, torches, flames, gothic arches, heraldry, floating objects, text, labels, gridlines, UI. Preserve four distinct alpha-separated objects.\n",
+  "prompts": [
+    {
+      "file": "020-atlas.txt",
+      "prompt": "Use case: stylized-concept. Native transparent STATIC sprite atlas of four independent original Yautja damaged clan-lodge modules for a side-view 2D fighting game. Reference1 is a MATERIAL/STYLE reference, not a scene to copy. Use its broken basalt and ribbed dark-bronze engineered shell. Square1536x1536, strict2x2 grid,40px transparent margins around EACH object and a wide clear cross-shaped gap. Each complete object stays in its cell. No floor or connected diorama. Frontal side-stage camera with shallow top surfaces visible; horizontal bases, no isometric rotation. Exactly FOUR drawings, not animation frames.\nTOP LEFT P1: a small distant damaged archive alcove, a squat horizontal basalt and metal recess with layered canopy, three closed rectangular ribbed data housings recessed into its rear wall, dim amber slots, complete self-supporting stone footing. No writing, human coffins or skulls.\nTOP RIGHT P2: one tall fractured supporting rib with a heavy cracked stone core and curved dark alloy brace; an exposed bundled cable is bolted to it and sags naturally. It remains structurally plausible and firmly rooted on its broad foot.\nBOTTOM LEFT P3: one empty damaged Yautja clan leader's seat, a heavy utilitarian alien machine seat with broad low base, inward-curving arm supports, asymmetrically cracked back of interlocking dark alloy plates and dull inset amber circuitry. No crown, deity, face, human royal upholstery or spikes. Clearly a physical chair fit for a broad alien hunter, not a magical throne. Whole chair including feet.\nBOTTOM RIGHT P5: one low pile of fallen basalt and a bent bronze structural rib, complete silhouette and shallow contact shadow. No separate scattered tiny flecks far from pile.\nDetailed realistic hand-painted game art, muted dark bronze and charcoal, pale upperleft light and subdued amber recesses, clean native alpha. No people, gods, statues, giant masks, torches, flames, gothic arches, heraldry, floating objects, text, labels, gridlines, UI. Preserve four distinct alpha-separated objects.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 4,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Nouveau fond de loge basse fracturée, ouverture de canyon sans sol jouable.",
+    "Les quatre pièces sont distinctes, le siège a une assise/base physique lisible.",
+    "Aucun statut de salle canonique attribué."
+  ]
+}

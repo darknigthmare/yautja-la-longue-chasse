@@ -1,218 +1,75 @@
 "use client";
-
-/* eslint-disable @next/next/no-img-element -- local transparent game plates and props */
-
-import { memo, type CSSProperties } from "react";
-import { shipProfileAssetPath, type ShipId } from "./shipCatalogue";
-import type { TrophyRecord } from "./types";
-import {
-  HOMEWORLD_BUILDINGS,
-  HOMEWORLD_DISTRICTS,
-  HOMEWORLD_NPCS,
-  HOMEWORLD_POINTS,
-  HOMEWORLD_PROPS,
-  HOMEWORLD_STREETS,
-  homeworldTrophyDisplays,
-  polygonCss,
-  type HomeworldPoint,
-} from "./systems/homeworld";
-import { homeworldPropArtPlacement, homeworldBuildingArtPlacement, shouldFadeHomeworldBuilding, shouldFadeHomeworldShip, HOMEWORLD_PLACEMENT_RULES, HOMEWORLD_WAYMARKS, type HomeworldVec2 } from "./systems/homeworldCity";
-import styles from "./HomeworldCity.module.css";
-import HomeworldModularHunter from "./HomeworldModularHunter";
-import { homeworldNpcModules } from "./systems/homeworldCity";
-
-const WORLD_ART = "/game/ship-interior/";
-
-function pointArt(point: HomeworldPoint): string {
-  if (point.kind === "region") return WORLD_ART + "v21/door-frame.webp";
-  if (point.kind === "evidence") {
-    return point.evidenceId === "suspect-trophy"
-      ? "/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp"
-      : WORLD_ART + "v22/archive-terminal.webp";
-  }
-  const service = String(point.service ?? "");
-  if (/forge|workshop|craft|customization/.test(service)) return WORLD_ART + "v22/forge-station.webp";
-  if (/med|heal/.test(service)) return WORLD_ART + "v22/medbay-bed.webp";
-  if (/armor|market|trade/.test(service)) return WORLD_ART + "v22/armory-rack.webp";
-  if (/training|pit/.test(service)) return WORLD_ART + "v22/gantry.webp";
-  if (/troph|codex|justice/.test(service)) return WORLD_ART + "v22/archive-terminal.webp";
-  return WORLD_ART + "v21/console-navigation.webp";
-}
-
-function polygonBounds(points: readonly { x: number; y: number }[]) {
-  const xs = points.map(({ x }) => x);
-  const ys = points.map(({ y }) => y);
-  const x = Math.min(...xs);
-  const y = Math.min(...ys);
-  const width = Math.max(...xs) - x;
-  const height = Math.max(...ys) - y;
-  return { x, y, width, height };
-}
-
-const BUILDING_WALLS = {
-  hall: "/game/ship-interior/v21/wall-sanctum.webp",
-  stall: "/game/ship-interior/v20/corridor-wall.webp",
-  forge: "/game/ship-interior/v21/wall-machinery.webp",
-  archive: "/game/ship-interior/v21/wall-observatory.webp",
-  gate: "/game/ship-interior/v21/wall-machinery.webp",
-  tower: "/game/ship-interior/v21/wall-observatory.webp",
-} as const;
+/* eslint-disable @next/next/no-img-element -- preserved native architecture and atlas bitmaps */
+import { memo, type CSSProperties } from 'react';
+import type { ShipId } from './shipCatalogue';
+import type { TrophyRecord } from './types';
+import { HOMEWORLD_BUILDINGS, HOMEWORLD_DISTRICTS, HOMEWORLD_POINTS, HOMEWORLD_PROPS, HOMEWORLD_STREETS, HOMEWORLD_WORLD, polygonCss } from './systems/homeworld';
+import { shouldFadeHomeworldBuilding, HOMEWORLD_WAYMARKS, HOMEWORLD_SPACEPORT_V64, type HomeworldVec2 } from './systems/homeworldCity';
+import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64 } from './systems/homeworldGeometryV64';
+import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from './systems/homeworldInteriorsV64';
+import { HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from './systems/homeworldArtV64';
+import HomeworldNativePropV64 from './HomeworldNativePropV64';
+import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
+import styles from './HomeworldCity.module.css';
 
 interface HomeworldCitySceneProps {
-  actorPosition?: HomeworldVec2;
-  selectedShipId: ShipId;
-  youthWelcome?: boolean;
-  activeDoorId: string | null;
-  fadedFrontPropIds: string;
-  trophies: readonly TrophyRecord[];
+  actorPosition?: HomeworldVec2; selectedShipId: ShipId; youthWelcome?: boolean;
+  activeDoorId: string | null; activePointId?: string | null;
+  fadedFrontPropIds: string; trophies: readonly TrophyRecord[];
+}
+function bounds(points: readonly HomeworldVec2[]) {
+  const x = Math.min(...points.map(p => p.x)), y = Math.min(...points.map(p => p.y));
+  return { x, y, width: Math.max(...points.map(p => p.x)) - x, height: Math.max(...points.map(p => p.y)) - y };
 }
 
-/** Authored modules remain independent so doors, stations, NPCs and trophies can overlap by depth. */
-const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, activeDoorId, fadedFrontPropIds, trophies, youthWelcome = false, actorPosition }: HomeworldCitySceneProps) {
-  const trophyDisplays = homeworldTrophyDisplays(trophies);
-  const fadedPropIds = new Set(fadedFrontPropIds.split("|").filter(Boolean));
+/** Ground gets the camera projection once; upright native art remains undistorted.
+ * All solid modules use the same ground-y depth as actors, regardless of plane tags. */
+const HomeworldCityScene = memo(function HomeworldCityScene({ activeDoorId, activePointId, fadedFrontPropIds, youthWelcome = false, actorPosition }: HomeworldCitySceneProps) {
+  const faded = new Set(fadedFrontPropIds.split('|').filter(Boolean));
+  const pad = HOMEWORLD_TRANSPORT_ART_V64['landing-pad'];
+  const shuttle = homeworldProjectGroundV64(HOMEWORLD_SPACEPORT_V64.shuttle);
   return <>
-    {HOMEWORLD_STREETS.map((street) => {
-      const bounds = polygonBounds(street.polygon);
-      return <div
-        key={street.id}
-        className={styles.street}
-        data-kind={street.kind}
-        title={street.label}
-        style={{
-          left: bounds.x,
-          top: bounds.y,
-          width: bounds.width,
-          height: bounds.height,
-          clipPath: polygonCss(street.polygon, bounds),
-          "--street-accent": street.accent,
-        } as CSSProperties}
-      />;
-    })}
-    {HOMEWORLD_DISTRICTS.map((district, index) => <div
-      key={district.id}
-      className={styles.district}
-      data-texture={district.texture}
-      style={{
-        left: district.x,
-        top: district.y,
-        width: district.width,
-        height: district.height,
-        clipPath: polygonCss(district.polygon, district),
-        "--district-accent": district.accent,
-      } as CSSProperties}
-    >
-      <div className={styles.districtTexture} />
-      <div className={styles.districtName}>
-        <span className={styles.districtNumber}>QUARTIER {String(index + 1).padStart(2, "0")}</span>
-        {district.name}
-      </div>
-    </div>)}
-    {HOMEWORLD_WAYMARKS.map(mark => <div key={mark.id} className={styles.waymark} data-homeworld-waymark={mark.id} style={{ left: mark.x, top: mark.y }}>
-      <i style={{ transform: `rotate(${mark.angle}deg)` }}>››</i><span>{mark.label}</span>
-    </div>)}
-    {HOMEWORLD_BUILDINGS.map((building) => {
-      const active = activeDoorId === building.id;
-      const faded = !!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition);
-      return <div
-        key={building.id}
-        className={styles.building}
-        data-variant={building.variant}
-        data-door-active={active}
-        data-building-id={building.id}
-        data-native-building={!!building.art}
-        data-occluded={faded}
-        style={{
-          left: building.x - building.width / 2,
-          top: building.y - building.height,
-          width: building.width,
-          height: building.height,
-          zIndex: Math.round(building.y),
-          "--building-wall": `url('${BUILDING_WALLS[building.variant]}')`,
-          "--building-fade": HOMEWORLD_PLACEMENT_RULES.buildingFadeOpacity,
-        } as CSSProperties}
-      >
-        {building.art ? <>
-          <img className={styles.nativeBuildingArt} src={building.art.src} alt="" draggable={false} style={homeworldBuildingArtPlacement(building) ?? undefined} />
-          {active && <i className={styles.nativeDoorLight} />}
-        </> : <><div className={styles.buildingRoof} />
-        <div className={styles.buildingFacade} />
-        <div className={styles.buildingDoor} data-side={building.doorSide} data-active={active}>
-          <i className={styles.buildingDoorLeaf} />
-          <img className={styles.buildingDoorFrame} src={WORLD_ART + "v21/door-frame.webp"} alt="" draggable={false} />
-          <i className={styles.buildingDoorGlow} />
-        </div></>}
-        <span>{building.label}</span>
+    <div className={styles.groundPlaneV64} style={{ transform: `scaleY(${HOMEWORLD_GEOMETRY_V64.depthScale})`, '--homeworld-pavement': `url('${HOMEWORLD_GROUND_ART_V64.src}')` } as CSSProperties}>
+      <div className={styles.groundBaseV64} style={{ width: HOMEWORLD_WORLD.width, height: HOMEWORLD_WORLD.height }} />
+      {HOMEWORLD_STREETS.map(street => {
+        const b = bounds(street.polygon);
+        return <div key={street.id} className={styles.streetV64} data-kind={street.kind}
+          style={{ left: b.x, top: b.y, width: b.width, height: b.height, clipPath: polygonCss(street.polygon, b) }} />;
+      })}
+      {HOMEWORLD_DISTRICTS.map(district => <div key={district.id} className={styles.districtV64} data-texture={district.texture}
+        style={{ left: district.x, top: district.y, width: district.width, height: district.height, clipPath: polygonCss(district.polygon, district) }} />)}
+      {HOMEWORLD_WAYMARKS.map(mark => <div key={mark.id} className={styles.waymarkV64} data-homeworld-waymark={mark.id} style={{ left: mark.x, top: mark.y }}>
+        <i style={{ transform: `rotate(${mark.angle}deg)` }}>››</i><span>{mark.label}</span>
+      </div>)}
+      <div className={styles.landingPadV64} data-homeworld-spaceport="pad" style={{
+        left: HOMEWORLD_SPACEPORT_V64.pad.x - pad.pivot.x * pad.scaleWorldPerPixel,
+        top: HOMEWORLD_SPACEPORT_V64.pad.y - HOMEWORLD_SPACEPORT_V64.pad.depth / 2 - pad.pivot.y * pad.scaleWorldPerPixel,
+        width: pad.renderWidthWorld, height: pad.renderDepthWorld,
+        backgroundImage: `url('${pad.src}')`,
+      }} />
+    </div>
+    <HomeworldNativePropV64 id="clan-local-shuttle" artId="clan-shuttle" art={HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle']}
+      x={shuttle.x} y={shuttle.y} depth={HOMEWORLD_SPACEPORT_V64.shuttle.y} />
+    {HOMEWORLD_BUILDINGS.map(building => {
+      const position = homeworldBuildingSpritePlacementV64(building), active = activeDoorId === building.id;
+      const socket = homeworldProjectGroundV64(homeworldBuildingDoorwayV64(building).threshold);
+      return <div key={building.id} className={styles.buildingV64} data-building-id={building.id}
+        data-building-art={building.artId} data-entrance-kind={building.entranceKind}
+        data-occluded={!!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition)}
+        style={{ ...position, zIndex: Math.round(building.y) }}>
+        <img src={building.art.src} alt="" draggable={false} />
+        {active && <span className={styles.doorMarkerV64} data-painted-door-id={building.id}
+          style={{ left: socket.x - position.left, top: socket.y - position.top }}><i /><b>{building.label}</b></span>}
       </div>;
     })}
-    {HOMEWORLD_PROPS.filter(({ plane }) => plane !== "front").map((prop) => <img
-      key={prop.id}
-      className={styles.decorProp}
-      data-plane={prop.plane}
-      data-prop-id={prop.id}
-      src={prop.asset}
-      alt=""
-      draggable={false}
-      style={{
-        ...homeworldPropArtPlacement(prop),
-        zIndex: Math.round(prop.y) - (prop.plane === "rear" ? 180 : 0),
-      }}
-    />)}
-    {trophyDisplays.map((trophy) => <img
-      key={trophy.claimId}
-      className={styles.trophyDisplay}
-      data-trophy-claim-id={trophy.claimId}
-      data-plane={trophy.plane}
-      src={trophy.asset}
-      title={trophy.label}
-      alt=""
-      draggable={false}
-      style={{
-        left: trophy.x,
-        top: trophy.y,
-        width: trophy.width,
-        height: trophy.height,
-        zIndex: Math.round(trophy.y) - (trophy.plane === "rear" ? 90 : 0),
-      }}
-    />)}
-    {HOMEWORLD_POINTS.map((point) => {
-      const npc = HOMEWORLD_NPCS.find((entry) => entry.id === point.npcId);
-      const hasStation = point.kind !== "ship" && point.kind !== "npc" && point.kind !== "audience";
-      return <div
-        key={point.id}
-        className={styles.point}
-        data-kind={point.kind}
-        data-point-id={point.id}
-        data-has-npc={!!npc}
-        data-has-station={hasStation}
-        style={{ left: point.x, top: point.y, zIndex: Math.round(point.y) }}
-      >
-        {point.kind === "ship" && <img className={styles.prop} data-ship-occluded={!!actorPosition && shouldFadeHomeworldShip(point, actorPosition)} src={shipProfileAssetPath(selectedShipId)} alt="" draggable={false} />}
-        {hasStation && <img className={`${styles.prop} ${styles.stationProp}`} src={pointArt(point)} alt="" draggable={false} data-station-art="true" />}
-        {npc && <HomeworldModularHunter className={styles.wholeNpc} {...homeworldNpcModules(npc.id)} />}
-        <span className={styles.pointTag}>{point.kind === "evidence" ? "◇ " : point.kind === "region" ? "↗ " : ""}{youthWelcome && point.kind === "ship" ? "Transports du clan" : point.label}</span>
-        <i className={styles.pointBeacon} />
-      </div>;
+    {HOMEWORLD_PROPS.map(prop => {
+      if (!prop.artId) return null; // Legacy sources are preserved outside this new projection.
+      const p = homeworldProjectGroundV64(prop);
+      return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]}
+        x={p.x} y={p.y} depth={prop.y} heightWorld={prop.height} style={{ opacity: faded.has(prop.id) ? .2 : 1 }} />;
     })}
-    {HOMEWORLD_PROPS.filter(({ plane }) => plane === "front").map((prop) => {
-      const faded = fadedPropIds.has(prop.id);
-      return <img
-        key={prop.id}
-        className={styles.decorProp}
-        data-plane="front"
-        data-prop-id={prop.id}
-        data-fade-radius={prop.fadeRadius}
-        data-faded={faded}
-        src={prop.asset}
-        alt=""
-        draggable={false}
-        style={{
-          ...homeworldPropArtPlacement(prop),
-          zIndex: Math.round(prop.y),
-        }}
-      />;
-    })}
+    {HOMEWORLD_POINTS.filter(point => !HOMEWORLD_INTERIOR_POINT_IDS_V64.has(point.id)).map(point =>
+      <HomeworldPointVisualV64 key={point.id} point={point} active={point.id === activePointId} youthWelcome={youthWelcome} />)}
   </>;
 });
-
 export default HomeworldCityScene;

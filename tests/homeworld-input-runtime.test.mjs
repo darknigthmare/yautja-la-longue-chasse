@@ -43,6 +43,7 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
+    interiorRef: { current: null }, stepHomeworldActorOnFloor: city.stepHomeworldActorOnFloor,
     dreadMotionRef: { current: { angles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: city.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     stepHunterDreadsV63: city.stepHunterDreadsV63,
     dreadAngles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0),
@@ -139,6 +140,17 @@ test("dialog up starts at the last enabled choice, wraps and never repeats on re
   f.release(); f.pad.buttons[0].pressed = true; f.tick(4);
   assert.deepEqual(f.events, [["focus", 2], ["focus", 0], ["choose", 0]]);
   assert.equal(nextHomeworldDialogChoice(-1, 0, -1), -1);
+});
+
+test("navigation dialog remains controller-accessible above an already paused city", () => {
+  const f = fixture(); f.env.pausedRef.current = true;
+  f.env.dialogStateRef.current = { point: null, navigation: true }; f.env.document.activeElement = f.dialog;
+  const before = { ...f.env.actorRef.current }; f.tick();
+  f.pad.buttons[13].pressed = true; f.tick();
+  assert.equal(f.env.document.activeElement, f.choices[0]);
+  f.release(); f.pad.buttons[0].pressed = true; f.tick(2);
+  assert.deepEqual(f.events, [["focus", 0], ["choose", 0]]);
+  assert.deepEqual(f.env.actorRef.current, before, "menu input cannot advance the paused actor");
 });
 
 test("the live city clock freezes strand position and velocity in pause, then settles after release", () => {

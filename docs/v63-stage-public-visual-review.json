@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "reviewedAt": "2026-09-30T23:37:00Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "version": "V63",
+  "deploymentCommit": "2dfa913",
+  "applicationReport": "I:/CodexTemp/yautja-v64-20261001/public-v63/stages/report.json",
+  "automatedChecks": 13,
+  "captures": 25,
+  "personallyReviewedCaptures": [
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-3.png",
+      "observation": "Toit sans évacuants/civils parasites, matériels et lumières cohérents avec le plan, combattants au contact du sol."
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-fighters-apart.png",
+      "observation": "Caméra élargie conserve parapet/façade continus et silhouettes lisibles."
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-2.png",
+      "observation": "Jet de vapeur localisé au tuyau, plans du puits et passerelle continus ; pas de vide transparent."
+    },
+    {
+      "file": "mobile-landscape.png",
+      "observation": "Scène complète et boutons accessibles en paysage, plans conservés."
+    },
+    {
+      "file": "mobile-portrait.png",
+      "observation": "Letterbox volontaire en portrait ; scène non étirée et commandes séparées lisibles."
+    },
+    {
+      "file": "reduced-motion.png",
+      "observation": "Composition stable en animations réduites, sol et HUD visibles."
+    },
+    {
+      "file": "native-png-retry-restored.png",
+      "observation": "Après défaut503 simulé, stage complet et début de combat restaurés."
+    }
+  ],
+  "limits": [
+    "Recette publique ciblée sur126/130 et cas du harnais ; ce n'est pas une revue des187arènes.",
+    "Aucun changement runtime V63 pendant cette recette.",
+    "Le premier essai surC a échoué surENOSPC ; seul le rapport complet surI est PASS.",
+    "V64 n'est pas publié par cette preuve."
+  ]
+}

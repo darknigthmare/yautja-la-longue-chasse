@@ -2982,7 +2982,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       data-campaign-location={campaignLocation}
       data-campaign-owner={entry.ownerCreatedAt}
     >
-      <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
+      <div hidden={screen === "homeworld"} inert={shipStationOpen || settingsOpen}>{topBar}</div>
 
       {screen === "youth-training" && hydrated && save.youthTraining && <section inert={settingsOpen} data-youth-campaign>
           <Suspense fallback={<DeferredGameScreen />}>
@@ -3105,22 +3105,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen" hidden={screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
+          <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
-              <div className="physical-deck-toolbar">
+              <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId}
+                navigation={<>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
-              </div>
-              {save.prologue?.status === "completed" && <section className="save-transfer" aria-label="Accueil Unblooded" data-unblooded-welcome>
+                </>}
+                welcome={save.prologue?.status === "completed" && <section className="save-transfer" aria-label="Accueil Unblooded" data-unblooded-welcome>
                 <h2>Quelques années plus tard — Unblooded</h2>
                 <p>{save.profile.hunterName}, ton apprentissage se déroule auprès du clan : accueil du chef, dojo du maître, armurerie, camp et baraquements. Chaque étape conserve les exercices réellement réussis.</p>
                 <p>Rejoins le chef à la Citadelle, au nord-est, puis l’instructeur des terrasses, au centre de la cité. Approche-les et utilise la commande Interaction pour leur parler. Une fois accueilli, entre dans le dojo depuis le dialogue de l’instructeur. Les exercices réussis donnent accès à la première lame et au biomask, sans accorder de rite de chasse. Le vaisseau personnel attend le rite Blooded.</p>
               </section>}
-              <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
                 onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+  "kind": "atlas",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+  "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+  "width": 1254,
+  "height": 1254,
+  "hasAlpha": true,
+  "contentBounds": {
+    "x": 19,
+    "y": 43,
+    "width": 1221,
+    "height": 1172
+  },
+  "receipt": "docs/v65-generation/arena-012-balcon-du-roi-de-la-chasse-atlas.json",
+  "coverage": {
+    "threshold": 8,
+    "visiblePixels": 603373,
+    "assignedPixels": 603373,
+    "nativeDrawings": 4,
+    "animationFrames": 0
+  },
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-1b2ff4b5-eab6-4484-ab7c-ecc7bae6400e.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. Production STATIC modular scenery sprite atlas for a side-view 2D fighting game. ORIGINAL Yautja clan overlook architecture, use the reference ONLY for rough basalt, layered rock shelter, dark ribbed metal and restrained amber light style. Output native transparent alpha, no background or terrain. Exactly FOUR separate objects on a strict 2x2 grid in a square1536x1536 canvas; each object wholly contained within its quadrant with at least40px clear margin and no overlap. No gridlines, no labels, no text. All objects face camera frontally, neutral side-stage viewpoint, straight horizontal edges, slight top surfaces visible, never an isometric rotated corner. Do not draw a complete scene.\nTOP LEFT quadrant: one SMALL distant cliffside clan shelter, low rounded dark alloy roof partly protected by a broad layered basalt canopy, several close ribs and a tiny amber aperture, complete silhouette including its rock footing; no tall spires. Intended P1 far landmark.\nTOP RIGHT: one freestanding curved load-bearing rib assembly: two substantial blackened metal bands bolted into a chunky natural basalt foot, practical grooves/cable channel, no gothic arch or ceremonial ornament; complete tall support ending below quadrant boundary. Intended P2.\nBOTTOM LEFT: one waist-high heavy alien navigation/observation pedestal, dark bronze sloped console with tiny restrained amber glass display recessed INSIDE its solid housing and solid broad base. No letters, no hologram, no levitation. Intended P3 low prop.\nBOTTOM RIGHT: one low asymmetrical broken basalt balcony edge fragment with riveted ribbed alloy rim, close shallow contact shadow and a short inset cable. Self-contained rock/metal module, no ground plane. Intended P5 corner framing.\nStyle: detailed hand-painted realistic videogame bitmap, warm copper rimlight from upper left, charcoal stone/alloy, clean silhouette and true native transparency. No people, animals, statues, gods, faces, giant masks, weapons, torches, magic, flags, medieval architecture. Only these four static independent objects, no animation poses. Preserve generous alpha gaps between the four cells.\n",
+  "prompts": [
+    {
+      "file": "012-atlas.txt",
+      "prompt": "Use case: stylized-concept. Production STATIC modular scenery sprite atlas for a side-view 2D fighting game. ORIGINAL Yautja clan overlook architecture, use the reference ONLY for rough basalt, layered rock shelter, dark ribbed metal and restrained amber light style. Output native transparent alpha, no background or terrain. Exactly FOUR separate objects on a strict 2x2 grid in a square1536x1536 canvas; each object wholly contained within its quadrant with at least40px clear margin and no overlap. No gridlines, no labels, no text. All objects face camera frontally, neutral side-stage viewpoint, straight horizontal edges, slight top surfaces visible, never an isometric rotated corner. Do not draw a complete scene.\nTOP LEFT quadrant: one SMALL distant cliffside clan shelter, low rounded dark alloy roof partly protected by a broad layered basalt canopy, several close ribs and a tiny amber aperture, complete silhouette including its rock footing; no tall spires. Intended P1 far landmark.\nTOP RIGHT: one freestanding curved load-bearing rib assembly: two substantial blackened metal bands bolted into a chunky natural basalt foot, practical grooves/cable channel, no gothic arch or ceremonial ornament; complete tall support ending below quadrant boundary. Intended P2.\nBOTTOM LEFT: one waist-high heavy alien navigation/observation pedestal, dark bronze sloped console with tiny restrained amber glass display recessed INSIDE its solid housing and solid broad base. No letters, no hologram, no levitation. Intended P3 low prop.\nBOTTOM RIGHT: one low asymmetrical broken basalt balcony edge fragment with riveted ribbed alloy rim, close shallow contact shadow and a short inset cable. Self-contained rock/metal module, no ground plane. Intended P5 corner framing.\nStyle: detailed hand-painted realistic videogame bitmap, warm copper rimlight from upper left, charcoal stone/alloy, clean silhouette and true native transparency. No people, animals, statues, gods, faces, giant masks, weapons, torches, magic, flags, medieval architecture. Only these four static independent objects, no animation poses. Preserve generous alpha gaps between the four cells.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 4,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Fond sans plan de combat peint, abris lourds bas et canyon aride.",
+    "Quatre objets alpha distincts, aucun personnage ni masque/statue.",
+    "Référence de vocabulaire architectural ; lieu et objets originaux."
+  ]
+}

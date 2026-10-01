@@ -71,7 +71,27 @@ for (const route of routes) {
       assert(kit && kit.requiredPaths.length > 0);
       assert.deepEqual(kit.planes.map(plane => plane.id), ['P0', 'P1', 'P2', 'P3', 'P4', 'P5']);
       const paths = p.getPitArenaArtPaths(id);
-      assert(paths.length >= 6);
+      // V65 stores four independent alpha modules in one native atlas. Six rendering
+      // planes must remain complete, but no longer imply six different PNG files.
+      assert(kit.requiredPaths.every(src => paths.includes(src)));
+      const regions = new Set();
+      for (const plane of kit.planes) {
+        assert(plane.assets.length > 0, `${id}/${plane.id}: missing render pass`);
+        for (const asset of plane.assets) {
+          assert(asset.frames.length > 0 && asset.placements.length > 0);
+          for (const frame of asset.frames) {
+            assert(paths.includes(frame.path), `${id}/${plane.id}: unrequested source`);
+            const crop = asset.sourceCrop ?? frame.generation.contentBounds;
+            assert(crop.width > 0 && crop.height > 0 && crop.x >= 0 && crop.y >= 0);
+            assert(crop.x + crop.width <= frame.generation.width && crop.y + crop.height <= frame.generation.height);
+            regions.add(`${frame.path}:${crop.x},${crop.y},${crop.width},${crop.height}`);
+          }
+        }
+      }
+      assert(regions.size >= 6, 'Six genuine source regions, never six empty passes sharing one picture');
+      const floor = kit.planes.find(plane => plane.id === 'P4');
+      const contact = floor.assets.find(asset => asset.mode === 'repeat-x');
+      assert(contact && contact.parallax === 1 && contact.placements.every(rect => rect.y === arena.groundY));
       for (const src of paths) {
         const metadata = await sharp('public' + src).metadata();
         assert(metadata.width > 0 && metadata.height > 0, src);

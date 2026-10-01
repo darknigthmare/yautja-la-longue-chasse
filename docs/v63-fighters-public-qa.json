@@ -1,0 +1,597 @@
+{
+  "result": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "version": "V63",
+  "checkedAt": "2026-09-30T23:25:22.050Z",
+  "sourceHashes": {
+    "app/game/systems/pitUserRoster.ts": "fab3b8b084fb94dbd77dd9bd2e6cfbdef1e14ae4e64626a2f2bbf2d91b968f27",
+    "app/game/data/pitUserVariantsV63.json": "9cbef2a8938f7d766b6dc90bd99f0d89c86d305c080d9d3afe3dd1ee0844f3be",
+    "app/game/data/pitUserAnimationsV63.json": "77f8511a1147df28e1305bb8151088498d77754503e692a3edaeead4c26218e7",
+    "app/game/pitSpriteSheetRegistry.ts": "bacc9d37b046565b80059aaeaa324933ab8e1612eecdf3a4093e2ce494ec488a",
+    "scripts/verify-pit-variants-v63.mjs": "c154393f0a0ec999c93a6b8b86b8550857e8c5ad7c629799f929fcb485f1519c"
+  },
+  "checks": [
+    {
+      "fighterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "facing": "right",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            512,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            231.92925170068028,
+            293.06079931972795,
+            136.14149659863943,
+            143.58673469387753
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            231.50113378684807,
+            292.1995464852608,
+            136.99773242630386,
+            144.48979591836735
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            0,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            231.50113378684807,
+            308.25396825396825,
+            136.99773242630386,
+            129.50566893424036
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            512,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            231.50113378684807,
+            308.25396825396825,
+            136.99773242630386,
+            129.50566893424036
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            1024,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            231.50113378684807,
+            308.25396825396825,
+            136.99773242630386,
+            129.50566893424036
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "rect": [
+            0,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            231.50113378684807,
+            292.1995464852608,
+            136.99773242630386,
+            144.48979591836735
+          ],
+          "matrix": [
+            1.538648247718811,
+            1.538648247718811
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "facing": "left",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            0,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            588.7547169811321,
+            290.5707547169811,
+            142.49056603773585,
+            150.2830188679245
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            512,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            590.0196213206281,
+            292.2261294749865,
+            139.96075735874385,
+            147.61486127680016
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            588.7547169811321,
+            290.0141509433962,
+            142.49056603773585,
+            150.2830188679245
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            0,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            588.7547169811321,
+            306.99056603773585,
+            142.49056603773585,
+            134.69811320754718
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            512,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            588.7547169811321,
+            306.433962264151,
+            142.49056603773585,
+            134.69811320754718
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "rect": [
+            1024,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            588.7547169811321,
+            306.99056603773585,
+            142.49056603773585,
+            134.69811320754718
+          ],
+          "matrix": [
+            1.5319050550460815,
+            1.5319050550460815
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "mobile": true,
+      "viewport": [
+        844,
+        390
+      ],
+      "reducedMotionRequested": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "facing": "right",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            512,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            235.04,
+            303.37874999999997,
+            129.92000000000002,
+            137.025
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            233.71428571428572,
+            300.79464285714283,
+            132.57142857142858,
+            139.82142857142858
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            0,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            233.71428571428572,
+            308.5625,
+            132.57142857142858,
+            125.32142857142858
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            512,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            233.71428571428572,
+            308.5625,
+            132.57142857142858,
+            125.32142857142858
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            1024,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            233.71428571428572,
+            308.30357142857144,
+            132.57142857142858,
+            125.32142857142858
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "rect": [
+            0,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            233.71428571428572,
+            300.79464285714283,
+            132.57142857142858,
+            139.82142857142858
+          ],
+          "matrix": [
+            1.5441254377365112,
+            1.5441254377365112
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "facing": "left",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            0,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            594.0088888888889,
+            296.21333333333337,
+            131.98222222222222,
+            139.2
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            512,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            595.1844472941838,
+            298.5965943190679,
+            129.6311054116325,
+            136.72030648883114
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            540
+          ],
+          "dest": [
+            594.0088888888889,
+            296.21333333333337,
+            131.98222222222222,
+            139.2
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            0,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            594.0088888888889,
+            309.1022222222222,
+            131.98222222222222,
+            124.76444444444444
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            512,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            594.0088888888889,
+            309.1022222222222,
+            131.98222222222222,
+            124.76444444444444
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        },
+        {
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "rect": [
+            1024,
+            540,
+            512,
+            484
+          ],
+          "dest": [
+            594.0088888888889,
+            308.84444444444443,
+            131.98222222222222,
+            124.76444444444444
+          ],
+          "matrix": [
+            1.5448575019836426,
+            1.5448575019836426
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "mobile": true,
+      "viewport": [
+        844,
+        390
+      ],
+      "reducedMotionRequested": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "greyback-roster.png",
+      "sha256": "84afc9a2c0eb721a3740d62c4c9c6ec420062f4b1c4b1a8c65c3309a1ba42bc4",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "greyback-duel-right.png",
+      "sha256": "223a73e86c08dcf785d6213880979f86260e0261c680df0ae9118267267956d1",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "greyback-duel-left.png",
+      "sha256": "a6f0a02ceccb67e957f9ba43782c70d72e7da8acbc63997df3eb2ff78fd12af9",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "greyback-mobile-left-reduced.png",
+      "sha256": "3659fd69a442b86f1dd0d49b62f1b8f5ed578eeb7854f87f4ef3fb7a0ed37a5f",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "user-classic-2010-roster.png",
+      "sha256": "9dd6e052e147347dc63dd4f30714f073b584a89a043766be6bfcdaf8a3369f5f",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "user-classic-2010-duel-right.png",
+      "sha256": "31df77df247d9ef5b3561c771704a687eaa93dc53deaa6e058cfc0913247bfcf",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "user-classic-2010-duel-left.png",
+      "sha256": "681cca4e021c26f1d1fde1115f70219c623b75d0f6798713aa148e85c22a7ca6",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "user-classic-2010-mobile-left-reduced.png",
+      "sha256": "ef1151d52e16345059e2809a0b9cb0a40fb14271fc381fa2e68a10e5e3755146",
+      "visualReview": "inspected-pass"
+    }
+  ],
+  "errors": [],
+  "badHttp": [],
+  "limits": [
+    "Mobile Chromium landscape emulation, not a physical device.",
+    "Only idle cycles are authored; movement/attacks retain a declared native stance.",
+    "No complete eighteen-action kit or canonical1:1 certification."
+  ],
+  "visualReview": {
+    "result": "PASS",
+    "inspectedCaptures": 8,
+    "scope": "Portraits chargés, gardes natives droite/gauche, ancrage au sol et HUD desktop/mobile.",
+    "limits": [
+      "Les deux seules apparences ajoutées sont contrôlées, pas l’intégralité du roster.",
+      "La case unique du filtre conserve une hauteur étirée, défaut de présentation préexistant sans effet sur le portrait ni le combat.",
+      "Aucun kit de combat complet ni fidélité canonique 1:1 certifié."
+    ]
+  },
+  "deploymentCommit": "2dfa913"
+}

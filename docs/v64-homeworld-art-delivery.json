@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "release": "V64",
+  "scope": "homeworld-native-art",
+  "status": "ART_INTEGRATED_NATIVE_QA_PASS_GAME_QA_PENDING",
+  "checkedAt": "2026-09-30T23:59:16.654Z",
+  "runtimeRegistry": "app/game/systems/homeworldArtV64.ts",
+  "preparedRegistry": "G:/CodexTemp/yautja-v64-20261001/stage-art-final/homeworldArtV64.ts",
+  "publicAssetRoot": "/game/homeworld/v64/",
+  "counts": {
+    "acceptedNativePngs": 10,
+    "staticDrawings": 20,
+    "newAnimationFrames": 0,
+    "buildingFamilies": 5,
+    "individualPropCells": 9,
+    "interiorPanelCells": 3,
+    "groundMaterials": 1,
+    "transportModules": 2,
+    "nativeGenerationCalls": 16,
+    "preservedSupersededSourceOutputs": 6
+  },
+  "nativeChecks": 17,
+  "nativeProof": "v64-homeworld-native-art-qa.json",
+  "visualReview": "v64-homeworld-art-visual-review.json",
+  "generationReceipts": "generation/",
+  "independentDoorReview": "A,B,C,civic-hall,civic-forge reviewed by roster agent; conservative C rectangle384,884,252,450 applied without modifying native PNG",
+  "sourcePreservation": "All accepted runtime PNG bytes are SHA-identical to native OpenAI outputs. Original intermediate files retained. Old hall remains at work-local/v64/generated/homeworld/public-hall-v2.png and its native generated source.",
+  "references": "Primary artist/director links and inspected images recorded in native QA. Architecture, houses, interior plans, props and shuttle are original game adaptations, not canonical1:1.",
+  "limits": [
+    "Full city rendering,43visits, collision routes, gameplay services and publication are separate gates, still owned by root/masks/roster.",
+    "Only five reusable facades exist, not43unique houses/buildings.",
+    "The pad is a top-down material mathematically projected by the ground camera; the shuttle and upright assets must never receive that second projection.",
+    "The native pavement repeats visibly as a paving pattern; its repeat was reviewed in browser but mathematical pixel-perfect seamlessness is not claimed.",
+    "No new animation was generated for this Homeworld art kit."
+  ],
+  "followupValidation": {
+    "checkedAt": "2026-10-01T01:45:13.476Z",
+    "status": "LOCAL_COMPILED_APPLICATION_QA_PASS",
+    "evidence": "docs/v65-release-gates.json",
+    "publication": "Pending public gates; original native receipt above is preserved."
+  }
+}

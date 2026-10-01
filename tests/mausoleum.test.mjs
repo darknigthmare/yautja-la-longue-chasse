@@ -7,6 +7,7 @@ const load = async path => {
   return import("data:text/javascript;base64," + Buffer.from(output.outputFiles[0].text).toString("base64"));
 };
 const museum = await load("app/game/systems/mausoleum.ts"), hw = await load("app/game/systems/homeworld.ts");
+const interiors = await load("app/game/systems/homeworldInteriorsV64.ts");
 const access = (rank = "blooded", adjutant = false, preview = false) => ({ rank, adjutant, preview });
 const ticket = { ownerCreatedAt: "2026-09-30T09:00:00.000Z", chronicleId: "predator", galleryId: "first", actorX: 450, source: "homeworld" };
 
@@ -74,10 +75,18 @@ test("mausoleum is a separate real Homeworld point, leaving trophies and investi
   const point = hw.HOMEWORLD_POINTS.find(item => item.id === "mausoleum-service");
   assert.equal(point.service, "mausoleum");
   assert.equal(point.districtId, "esplanade");
-  assert.equal(hw.nearestHomeworldPoint(point)?.id, point.id);
+  const room = interiors.homeworldInteriorForPointV64(point.id);
+  assert.equal(room?.buildingId, "trophy-mausoleum");
+  const socket = room.points.find(item => item.pointId === point.id);
+  const approach = { x: socket.x, y: socket.y + 45 };
+  assert.equal(interiors.isHomeworldInteriorWalkableV64(room, approach), true);
+  assert.equal(interiors.nearestHomeworldInteriorTargetV64(room, approach)?.pointId, point.id);
+  assert.notEqual(hw.nearestHomeworldPoint(point)?.id, point.id, "the service must not also remain remotely usable outdoors");
   assert.equal(hw.HOMEWORLD_POINTS.find(item => item.id === "trophy-service").service, "trophies");
   assert.equal(hw.HOMEWORLD_POINTS.find(item => item.id === "memory-register-point").evidenceId, "memory-register");
-  assert.equal(hw.isHomeworldWalkable(point), true);
+  const trophySocket = room.points.find(item => item.pointId === "trophy-service");
+  assert.ok(trophySocket);
+  assert.notDeepEqual({ x: socket.x, y: socket.y }, { x: trophySocket.x, y: trophySocket.y }, "archives and trophy service keep distinct physical sockets");
 });
 
 test("unavailable DLC and invalid access cannot even save a launch ticket", async () => {

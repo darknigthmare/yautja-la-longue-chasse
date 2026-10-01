@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "interior-panels",
+  "tool": "OpenAI builtin image_gen",
+  "path": "/game/homeworld/v64/interior-panels.png",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-c0186bfd-17e4-4a7a-8b32-72f727a708dd.png",
+  "sourcePreserved": true,
+  "nativeBytesUnchanged": true,
+  "sha256": "cfa204f776d84849b38ea25bcd19d879aa469406bf0ab4c384baabd179de4a21",
+  "width": 1536,
+  "height": 1024,
+  "drawings": 3,
+  "animationFrames": 0,
+  "alphaOutside": true,
+  "prompts": [
+    {
+      "file": "interior-panels-prompt.txt",
+      "prompt": "Use case: stylized-concept. A production HD2D native transparent sprite atlas with exactly THREE separate modular interior architectural panels, arranged LEFT / MIDDLE / RIGHT in three columns. Original Yautja-compatible basalt and aged bronze interior, warm neutral upper-left light, matching massive alien city dwellings. No furnishings, characters, symbols, text, complete room or floor patch.\nAll panels use one ORTHOGRAPHIC camera at yaw ZERO looking north from 35 degrees above ground, X horizontal, depth receding straight UP the image, verticals straight. No isometric corner view or perspective convergence.\nLEFT: a NORTH BACK WALL bay seen directly front-on. Physical width 180 units, cutaway wall height 150 units, wall thickness 16 units. Flat dark basalt panels, restrained bronze tie beams, narrow edge posts. Bottom is a clean horizontal contact line. Top ledge visible from 35 degrees. Reusable in adjacent horizontal bays with matching straight side edges and equal top and bottom height. No arch or doorway.\nMIDDLE: WEST SIDE low cutaway wall run. Physical ground length 180 units north-south, thickness 16 units east-west, cutaway height 40 units. Viewed edge-on from south at yaw zero: a narrow stone TOP strip recedes STRAIGHT UP, with a rectangular FRONT end face at the bottom, 40 units tall. A vertical strip in the picture, NOT a diagonal diamond. No floor or perpendicular extra wall.\nRIGHT: matching EAST SIDE low cutaway wall run, identical dimensions/camera, mirrored edge details only. Top strip runs straight UP and the small front cross-section is at bottom. No diagonal turn.\nCanvas 1536 by 1024, three 512-wide columns. Complete panels inside separate cells with generous transparent gutters, no cropping. Side walls are deliberately cut at 40 units to reveal the player; north wall is cut at 150. These are architectural cutaways, not full exterior wall heights. True alpha silhouettes, no background/checkerboard."
+    }
+  ],
+  "loreStatus": "original-game-adaptation-not-canonical-1-to-1"
+}

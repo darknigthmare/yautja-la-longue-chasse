@@ -22,9 +22,9 @@ function close(actual: number, expected: number, label: string): void {
 }
 
 test("all twenty-seven city props anchor their actual painted alpha center and bottom, without stretching or cropping", async () => {
-  assert.equal(city.HOMEWORLD_PROPS.length, 27);
+  assert.equal(city.HOMEWORLD_LEGACY_PROPS_V54.length, 27);
   const measured = new Map<string, { x: number; y: number; width: number; height: number; sourceWidth: number; sourceHeight: number }>();
-  for (const prop of city.HOMEWORLD_PROPS) {
+  for (const prop of city.HOMEWORLD_LEGACY_PROPS_V54) {
     const art = artwork.find(candidate => candidate.src === prop.asset);
     assert.ok(art, `${prop.id} requires registered transparent bounds`);
     let pixels = measured.get(prop.asset);
@@ -63,7 +63,7 @@ test("all twenty-seven city props anchor their actual painted alpha center and b
 });
 
 test("the gantry regression removes the prior seventy-pixel gap at its unchanged ground anchor", () => {
-  const prop = city.HOMEWORLD_PROPS.find(candidate => candidate.id === "training-gantry")!;
+  const prop = city.HOMEWORLD_LEGACY_PROPS_V54.find(candidate => candidate.id === "training-gantry")!;
   const art = v22.SHIP_LEVEL_ART_V22.gantry;
   const oldScale = Math.min(prop.width / art.sourceWidth, prop.height / art.sourceHeight);
   const oldCenteredTop = prop.y - prop.height + (prop.height - art.sourceHeight * oldScale) / 2;
@@ -79,12 +79,13 @@ test("render placement never changes authored colliders, depth planes or foregro
   const before = JSON.stringify(city.HOMEWORLD_PROPS);
   for (const prop of city.HOMEWORLD_PROPS) {
     const frozen = Object.freeze({ ...prop });
-    const collision = city.homeworldCollisionAt(frozen, { halfWidth: 0, halfDepth: 0 });
+    const center={x:prop.x,y:prop.y-prop.footprint!.halfDepth};
+    const collision = city.homeworldCollisionAt(center, { halfWidth: 0, halfDepth: 0 });
     const faded = city.shouldFadeHomeworldForeground(frozen, frozen);
     const first = city.homeworldPropArtPlacement(frozen);
     const again = city.homeworldPropArtPlacement(frozen);
     assert.deepEqual(first, again);
-    assert.deepEqual(city.homeworldCollisionAt(frozen, { halfWidth: 0, halfDepth: 0 }), collision);
+    assert.deepEqual(city.homeworldCollisionAt(center, { halfWidth: 0, halfDepth: 0 }), collision);
     assert.equal(city.shouldFadeHomeworldForeground(frozen, frozen), faded);
     if (prop.plane === "ground") assert.deepEqual(collision, { kind: "prop", id: prop.id });
     if (prop.plane === "front") assert.equal(faded, true);

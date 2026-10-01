@@ -1,3 +1,4 @@
+import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
 import { defaultMausoleumProgress, normalizeMausoleumProgress, type MausoleumProgress } from "./mausoleum";
 import type { RankId } from "../types";
@@ -39,6 +40,8 @@ export {
   polygonCss,
   shouldFadeHomeworldForeground,
   stepHomeworldActor,
+  stepHomeworldActorOnFloor,
+  HOMEWORLD_SPACEPORT_V64,
   type HomeworldActor,
   type HomeworldCollision,
   type HomeworldDistrict,
@@ -116,7 +119,7 @@ const regionDoors = [
   { districtId: "enforcers", x: 4660, y: 1000 },
 ];
 const HOMEWORLD_POINT_BLUEPRINTS: readonly HomeworldPoint[] = [
-  { id: "personal-ship", label: "Sas de ton vaisseau", kind: "ship", districtId: "port", x: 240, y: 1_500, description: "Rentrer à bord sans quitter ta campagne ni perdre ton dossier." },
+  { id: "personal-ship", label: "Sas de transfert orbital", kind: "ship", districtId: "port", x: 240, y: 1_500, description: "Navette locale vers ton vaisseau en orbite. Le grand vaisseau n’est pas miniaturisé sur le pad ; ta campagne et ton dossier sont conservés." },
   { id: "dock-officer-point", label: "Officier des quais", kind: "npc", districtId: "port", x: 440, y: 1_500, npcId: "dock-officer", description: "Écouter les nouvelles du convoi." },
   { id: "suspect-trophy-point", label: "Trophée du convoi", kind: "evidence", districtId: "port", x: 960, y: 1_500, evidenceId: "suspect-trophy", description: "Inspecter la marque sans prendre possession du trophée." },
   servicePoint("market-service", "Échoppe d'équipement", "market", 1_700, 1_500, "armory", "market-artisan"),
@@ -235,7 +238,8 @@ export function nearestHomeworldPoint(actor: Pick<HomeworldActor, "x" | "y">): H
   let nearest: HomeworldPoint | null = null;
   let distance = 145;
   for (const point of HOMEWORLD_POINTS) {
-    const candidate = Math.hypot(actor.x - point.x, (actor.y - point.y) * 0.82);
+    if (HOMEWORLD_INTERIOR_POINT_IDS_V64.has(point.id)) continue;
+    const candidate = Math.hypot(actor.x - point.x, actor.y - point.y);
     if (candidate < distance) { distance = candidate; nearest = point; }
   }
   return nearest;

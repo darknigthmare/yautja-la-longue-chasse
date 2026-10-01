@@ -1,0 +1,2656 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "stages": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-a-depth",
+          "hashes": [
+            "f11b1c7da54264e10da21572968626586003321ee4be2a9e7511a267bda3b74b"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-a-distant-left",
+          "hashes": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-b-distant-right",
+          "hashes": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-a-support-left",
+          "hashes": [
+            "8dddbb5cc24b6d8fa007a2c3a931869f5630d4005fb17fbb9836ec1b11d8b271"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-b-support-right",
+          "hashes": [
+            "d6a9ddcac419f0116684157406f211054dfb2453aa9dcb7e93422a8a9930882c"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-c-central-structure",
+          "hashes": [
+            "ed01eccd0fcc04435638d885b194e901ac543019592725f64c0b9f3e447f5f2f"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-a-prop-left",
+          "hashes": [
+            "f33c65a40db2ec669af224db5f58ecd5ff9201f64afe305e52458b5b8b2127b9"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-b-prop-right",
+          "hashes": [
+            "6fd7528c9b5769aa11ab3a9d67c380befaa4aa7d83e7b8c101fb443fed49647a"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-c-light-left",
+          "hashes": [
+            "f91f573d31017f238a2991e38569313a7997946ce9a9f560b694a162d57de355"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-d-light-right",
+          "hashes": [
+            "6f6e470e0997b04392f483e97fd5a5cf2b74f83894efa43e697b640a8c33c1e4"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-a-contact-floor",
+          "hashes": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-b-front-fascia",
+          "hashes": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-a-foreground-left",
+          "hashes": [
+            "22ab699329a1eff3e39c80521b6ff1b0defcd1889202f9aa436b209f60dabdb2"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-b-foreground-right",
+          "hashes": [
+            "6e4e6dfcc7def5d2c633ff31bc2c789d5da3465503c0d554aa84f2de1f3eaae4"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "c4fc617ec87c5d9ab21da1a0bdb4101b294cfa30ce0f572ef481bc74c1293524",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Abri de clan lointain sous dalle rocheuse",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 16,
+                "y": 187,
+                "width": 654,
+                "height": 428
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -180,
+                  "y": 110,
+                  "width": 400,
+                  "height": 320
+                },
+                {
+                  "x": 750,
+                  "y": 145,
+                  "width": 390,
+                  "height": 285
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 19,
+                      "y": 43,
+                      "width": 1221,
+                      "height": 1172
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Nervure de support boulonnée au socle",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 694,
+                "y": 40,
+                "width": 530,
+                "height": 615
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 19,
+                      "y": 43,
+                      "width": 1221,
+                      "height": 1172
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Console d’observation basse à écran encastré",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 41,
+                "y": 833,
+                "width": 562,
+                "height": 339
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 135,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                },
+                {
+                  "x": 665,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 19,
+                      "y": 43,
+                      "width": 1221,
+                      "height": 1172
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Bord rocheux renforcé de métal",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 665,
+                "y": 785,
+                "width": 578,
+                "height": 433
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 19,
+                      "y": 43,
+                      "width": 1221,
+                      "height": 1172
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 323,
+            "width": 1972,
+            "height": 137
+          },
+          "height": 35
+        },
+        {
+          "assetId": "p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 371,
+            "width": 1972,
+            "height": 208
+          },
+          "height": 240
+        }
+      ]
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-a-depth",
+          "hashes": [
+            "b67ad96acd18b8741e1024052a174cb5de9397aca4fbdec89c4f865d9892f4ca"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-a-distant-left",
+          "hashes": [
+            "2d53305c89e6b4f070c730bcb6f019c96f5d1cbfb7008fbaee49dea031458cea"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-b-distant-right",
+          "hashes": [
+            "43b5468b395437efc9c51317851ffe7570f917d9a46f788acd1d2f17e44896fd"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-a-support-left",
+          "hashes": [
+            "2b5b1ae795e2f92a5d1444947921adb7ac7d65e647cdbe12366ddffe4c2104b7"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-b-support-right",
+          "hashes": [
+            "5b4e3aa0f9269332766070cb0faac44f893d0f8b89f255f44535c5d2588be6c7"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-c-central-structure",
+          "hashes": [
+            "025f466dc35653076807cf62b776737bd91726f740095c2429c85575c8ac3c1d"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-a-prop-left",
+          "hashes": [
+            "a3f254aa96f9696edbae2efd6570d18bb5144112048b45aa41d4284b6bf0a989"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-b-prop-right",
+          "hashes": [
+            "fa06756223b581cdb18fdbfb0cf648a9882b23eb36800be9c8d92ab016703f89"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-c-light-left",
+          "hashes": [
+            "89496b6619974cd5f1b5f61d396bf14079965900e5573912718547d7d1766be9"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-d-light-right",
+          "hashes": [
+            "df78ed7c44216434286ac04a0437cd5c07ce568de71556b0ac23ca0227b46dbd"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-a-contact-floor",
+          "hashes": [
+            "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-b-front-fascia",
+          "hashes": [
+            "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-a-foreground-left",
+          "hashes": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-b-foreground-right",
+          "hashes": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "f63b0a5648dd67fde6d2a30d408e1361194f26547ab08ae72e70535e43eb7ea6",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1774,
+                      "height": 887
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Alcôve d’archive distante et boîtiers fermés",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 36,
+                "y": 226,
+                "width": 638,
+                "height": 422
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -180,
+                  "y": 110,
+                  "width": 400,
+                  "height": 320
+                },
+                {
+                  "x": 750,
+                  "y": 145,
+                  "width": 390,
+                  "height": 285
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 46,
+                      "width": 1181,
+                      "height": 1146
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Nervure fracturée aux câbles physiquement ancrés",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 786,
+                "y": 43,
+                "width": 428,
+                "height": 636
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 46,
+                      "width": 1181,
+                      "height": 1146
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Siège de clan endommagé sans symboles royaux humains",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 51,
+                "y": 719,
+                "width": 554,
+                "height": 452
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 360,
+                  "y": 242,
+                  "width": 240,
+                  "height": 198
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 46,
+                      "width": 1181,
+                      "height": 1146
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Débris bas de roche et de structure métallique",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 636,
+                "y": 907,
+                "width": 587,
+                "height": 288
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 46,
+                      "width": 1181,
+                      "height": 1146
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 278,
+            "width": 1972,
+            "height": 98
+          },
+          "height": 35
+        },
+        {
+          "assetId": "p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 299,
+            "width": 1972,
+            "height": 186
+          },
+          "height": 240
+        }
+      ]
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-depth",
+          "hashes": [
+            "40041d0d205436ab4c72016e37cf1c6b95ba93f43352b73e1cfc5043221deb3e"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-a-distant-left",
+          "hashes": [
+            "fba369e2c02bba45a074cf0aaac56f27ea2fa5584d123326c98925f8c20e2fdf"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-b-distant-right",
+          "hashes": [
+            "cb568daf9e914d3736b56d0c952a7ef7a373fa965e2791f21d1cdcc7c7480ade"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-a-support-left",
+          "hashes": [
+            "4e53095a133bdce5a760821fa9b34a620b21f1112ea8e21da590421eb45aeb1c"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-b-support-right",
+          "hashes": [
+            "ec9e7dddc7536b19e56877c24fcc707ad2f997d622fe9cd0639f2d39296a269e"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-a-prop-left",
+          "hashes": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-b-prop-right",
+          "hashes": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-a-contact-floor",
+          "hashes": [
+            "789d1488cfb30adcc13b95468b03b1b50f1608fe1141542a5185975593be0675"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-b-front-fascia",
+          "hashes": [
+            "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-a-foreground-left",
+          "hashes": [
+            "c86254351b9a37568a10db242f00d561d6695bf8efcbf3ca90a3b243f4ee1bc6"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-b-foreground-right",
+          "hashes": [
+            "08a25d11d7463cf6bd6438580c5f11b6918ed6617c42d4e84d1030a01154281b"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 640
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "09d8494a9b881043a40a2b4071c8499e4afef000917a7075421aac1a74198a76",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Capteur astronomique mécanique lointain",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 45,
+                "y": 29,
+                "width": 570,
+                "height": 677
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 95,
+                  "width": 385,
+                  "height": 335
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 32,
+                      "width": 1202,
+                      "height": 1154
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Support rocheux renforcé de métal",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 706,
+                "y": 54,
+                "width": 506,
+                "height": 664
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 32,
+                      "width": 1202,
+                      "height": 1154
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Console astronomique basse à écran encastré",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 23,
+                "y": 849,
+                "width": 621,
+                "height": 332
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 135,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                },
+                {
+                  "x": 665,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 32,
+                      "width": 1202,
+                      "height": 1154
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Bordure basse de roche et conduites",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 654,
+                "y": 810,
+                "width": 577,
+                "height": 379
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 32,
+                      "width": 1202,
+                      "height": 1154
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 278,
+            "width": 1972,
+            "height": 98
+          },
+          "height": 35,
+          "librarySource": {
+            "stageId": "arena-020-trone-fracture",
+            "assetId": "p4-a-contact-floor",
+            "sha256": "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f"
+          }
+        },
+        {
+          "assetId": "p4-p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 299,
+            "width": 1972,
+            "height": 186
+          },
+          "height": 240,
+          "librarySource": {
+            "stageId": "arena-020-trone-fracture",
+            "assetId": "p4-b-front-fascia",
+            "sha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519"
+          }
+        }
+      ]
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-depth",
+          "hashes": [
+            "316260c572d36e5ad3d876cc3324a6ca8ad77d0dcaf89333974d5ca2dbce515e"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-a-distant-left",
+          "hashes": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-b-distant-right",
+          "hashes": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-a-support-left",
+          "hashes": [
+            "2b5b1ae795e2f92a5d1444947921adb7ac7d65e647cdbe12366ddffe4c2104b7"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-b-support-right",
+          "hashes": [
+            "5b4e3aa0f9269332766070cb0faac44f893d0f8b89f255f44535c5d2588be6c7"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-a-prop-left",
+          "hashes": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-b-prop-right",
+          "hashes": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-a-contact-floor",
+          "hashes": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-b-front-fascia",
+          "hashes": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-a-foreground-left",
+          "hashes": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-b-foreground-right",
+          "hashes": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "2b72786f88673420d0f89d83bda9201749972ff54380185c1d730c7d9fe3219c",
+                    "width": 1672,
+                    "height": 941,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1672,
+                      "height": 941
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Sas d’accès lointain dans sa coque rocheuse",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 95,
+                "y": 301,
+                "width": 570,
+                "height": 271
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -180,
+                  "y": 110,
+                  "width": 400,
+                  "height": 320
+                },
+                {
+                  "x": 750,
+                  "y": 145,
+                  "width": 390,
+                  "height": 285
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 98,
+                      "y": 157,
+                      "width": 1059,
+                      "height": 946
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Montant structurel à capteurs et câbles",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 858,
+                "y": 154,
+                "width": 235,
+                "height": 428
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 98,
+                      "y": 157,
+                      "width": 1059,
+                      "height": 946
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Terminal d’accès bas à écran encastré",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 118,
+                "y": 884,
+                "width": 454,
+                "height": 214
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 135,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                },
+                {
+                  "x": 665,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 98,
+                      "y": 157,
+                      "width": 1059,
+                      "height": 946
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Bordure de roche renforcée de conduites",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 725,
+                "y": 917,
+                "width": 435,
+                "height": 189
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 98,
+                      "y": 157,
+                      "width": 1059,
+                      "height": 946
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 323,
+            "width": 1972,
+            "height": 137
+          },
+          "height": 35
+        },
+        {
+          "assetId": "p4-p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 371,
+            "width": 1972,
+            "height": 208
+          },
+          "height": 240
+        }
+      ]
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-depth",
+          "hashes": [
+            "53b3cb31b5d7599d1c80580b21094dbb925ff23d2fd9c19e1cf251f2bf0bd97a"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-a-distant-left",
+          "hashes": [
+            "2d53305c89e6b4f070c730bcb6f019c96f5d1cbfb7008fbaee49dea031458cea"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-b-distant-right",
+          "hashes": [
+            "43b5468b395437efc9c51317851ffe7570f917d9a46f788acd1d2f17e44896fd"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-a-support-left",
+          "hashes": [
+            "8dddbb5cc24b6d8fa007a2c3a931869f5630d4005fb17fbb9836ec1b11d8b271"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-b-support-right",
+          "hashes": [
+            "d6a9ddcac419f0116684157406f211054dfb2453aa9dcb7e93422a8a9930882c"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-a-prop-left",
+          "hashes": [
+            "592933853ef2164a59a69201fde0518dabaa57ab468cdbab03fae53c6c1cc33c"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-b-prop-right",
+          "hashes": [
+            "7c9025649ded869f4c4dfb962dbdab69a1b05e7af9b2a174b81e4a469f0ee808"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-a-contact-floor",
+          "hashes": [
+            "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-b-front-fascia",
+          "hashes": [
+            "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-a-foreground-left",
+          "hashes": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-b-foreground-right",
+          "hashes": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "14e77e5869a43513a0e098e643a00da974061d2d546ded266d8f42fbf0e0a199",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1774,
+                      "height": 887
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Échangeur géothermique fermé et conduites",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 29,
+                "y": 315,
+                "width": 789,
+                "height": 449
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -130,
+                  "y": 150,
+                  "width": 420,
+                  "height": 280
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 32,
+                      "y": 70,
+                      "width": 1201,
+                      "height": 1122
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Support à conduites avec capuchon supérieur fini",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 849,
+                "y": 67,
+                "width": 350,
+                "height": 698
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 32,
+                      "y": 70,
+                      "width": 1201,
+                      "height": 1122
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Coffre d’équipement scellé bas sur berceau",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 30,
+                "y": 859,
+                "width": 673,
+                "height": 336
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 135,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                },
+                {
+                  "x": 665,
+                  "y": 333,
+                  "width": 160,
+                  "height": 95
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 32,
+                      "y": 70,
+                      "width": 1201,
+                      "height": 1122
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Bordure rocheuse avec conduite thermique protégée",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 715,
+                "y": 850,
+                "width": 521,
+                "height": 339
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 32,
+                      "y": 70,
+                      "width": 1201,
+                      "height": 1122
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 278,
+            "width": 1972,
+            "height": 98
+          },
+          "height": 35
+        },
+        {
+          "assetId": "p4-p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 299,
+            "width": 1972,
+            "height": 186
+          },
+          "height": 240
+        }
+      ]
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "sourceAssets": [
+        {
+          "planeId": "P0",
+          "assetId": "p0-depth",
+          "hashes": [
+            "382a80e469b8c90fb0423ecb9a35206ddbbe8529810bf9072b39eb77c8e28adc"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-a-distant-left",
+          "hashes": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "planeId": "P1",
+          "assetId": "p1-p1-b-distant-right",
+          "hashes": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-a-support-left",
+          "hashes": [
+            "a27a6dabca2dbae390e69971894aa4a51e4bfab065f3d37756b848e24b60d26d"
+          ]
+        },
+        {
+          "planeId": "P2",
+          "assetId": "p2-p2-b-support-right",
+          "hashes": [
+            "73e00657c48766717931e61e6ba9adc678b7df22d0b2d2b80dd04f3b08fc1031"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-a-prop-left",
+          "hashes": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "planeId": "P3",
+          "assetId": "p3-p3-b-prop-right",
+          "hashes": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-a-contact-floor",
+          "hashes": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "planeId": "P4",
+          "assetId": "p4-p4-b-front-fascia",
+          "hashes": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-a-foreground-left",
+          "hashes": [
+            "8ef63ca28a572ae6c2cc99d2bc65cb1649f2f89d776baa72d0321c089d965fda"
+          ]
+        },
+        {
+          "planeId": "P5",
+          "assetId": "p5-p5-b-foreground-right",
+          "hashes": [
+            "570df832fdc03bba0fe4f7c91ee97bc5fbbb1c985edc388dab6d3b5b637e4e8a"
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p0",
+              "role": "Profondeur originale V65",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "3cf47eab56b3acd574d216281f8c7e5cc5bcf3a2cc65871ce0742a131e579506",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p1",
+              "role": "Alcôve de médiation basse sous canopée",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 25,
+                "y": 239,
+                "width": 780,
+                "height": 372
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -140,
+                  "y": 155,
+                  "width": 400,
+                  "height": 275
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 21,
+                      "y": 104,
+                      "width": 1214,
+                      "height": 968
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p2",
+              "role": "Support nervuré de canopée sur pied solide",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 849,
+                "y": 101,
+                "width": 389,
+                "height": 506
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                },
+                {
+                  "x": 825,
+                  "y": 100,
+                  "width": 250,
+                  "height": 330
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 21,
+                      "y": 104,
+                      "width": 1214,
+                      "height": 968
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p3",
+              "role": "Banc de médiation bas et large",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 18,
+                "y": 872,
+                "width": 634,
+                "height": 199
+              },
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 80,
+                  "y": 358,
+                  "width": 250,
+                  "height": 70
+                },
+                {
+                  "x": 630,
+                  "y": 358,
+                  "width": 250,
+                  "height": 70
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 21,
+                      "y": 104,
+                      "width": 1214,
+                      "height": 968
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "v65-p5",
+              "role": "Bordure rocheuse renforcée de métal",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 665,
+                "y": 922,
+                "width": 573,
+                "height": 153
+              },
+              "placements": [
+                {
+                  "x": -200,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                },
+                {
+                  "x": 880,
+                  "y": 430,
+                  "width": 280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "sourceRecorded": true,
+                    "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+                    "width": 1254,
+                    "height": 1254,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 21,
+                      "y": 104,
+                      "width": 1214,
+                      "height": 968
+                    }
+                  },
+                  "review": {
+                    "evidenceRecorded": true,
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidenceRecorded": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "floorCorrections": [
+        {
+          "assetId": "p4-p4-a-contact-floor",
+          "sourceCrop": {
+            "x": 100,
+            "y": 323,
+            "width": 1972,
+            "height": 137
+          },
+          "height": 35
+        },
+        {
+          "assetId": "p4-p4-b-front-fascia",
+          "sourceCrop": {
+            "x": 100,
+            "y": 371,
+            "width": 1972,
+            "height": 208
+          },
+          "height": 240
+        }
+      ]
+    }
+  ]
+}

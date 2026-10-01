@@ -1,0 +1,286 @@
+{
+  "version": "V64",
+  "status": "LOCAL_COMPILED_BROWSER_RECIPES_PASS",
+  "updatedAt": "2026-10-01T01:13:52.010Z",
+  "unitTests": {
+    "passed": 73,
+    "failed": 0,
+    "log": "I:/CodexTemp/yautja-v64-20261001/homeworld-interaction-tests-final.tap",
+    "scope": "43 room paths and collisions; actual input, pause, controller, pending-visit persistence and shared shell contracts."
+  },
+  "youth": {
+    "status": "PASS",
+    "report": "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth-production/report.json",
+    "rooms": [
+      "training-hall",
+      "market-armory",
+      "throne-audience",
+      "training-hall"
+    ],
+    "errors": [],
+    "sourceArchive": "work/v47/nursery-scene-browser-qa/played-campaign-storage.json",
+    "archiveSha256": "9010ddb54735c9def13d4e8fc35ec28269584df7b4ed6b75c7b84e3f1dffec4f",
+    "scope": "Actually played nursery QA archive; physical mentor before chief refusal, locked armory, chief then mentor, no fake training/equipment/proof; reload retains greetings. No real user saves.",
+    "postRecipeChange": null,
+    "portableReport": "docs/v64-homeworld-youth-browser-qa.json",
+    "url": "http://127.0.0.1:4184",
+    "compiledVisualRecheck": "Mentor screenshot reviewed: adult ship-training notice is absent, youth training entry appears only after chief and mentor meetings; restricted service remains disabled."
+  },
+  "adult": {
+    "status": "PASS",
+    "report": "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/report.json",
+    "portableReport": "docs/v64-homeworld-adult-browser-qa.json",
+    "url": "http://127.0.0.1:4184",
+    "passedRooms": 6,
+    "rooms": [
+      {
+        "id": "residence-port-2",
+        "input": "keyboard",
+        "variant": "meal",
+        "physicalExitReturnedToSameApproach": true
+      },
+      {
+        "id": "residence-port-1",
+        "input": "gamepad",
+        "variant": "rest",
+        "physicalExitReturnedToSameApproach": true
+      },
+      {
+        "id": "residence-market-1",
+        "input": "keyboard",
+        "variant": "storage",
+        "physicalExitReturnedToSameApproach": true
+      },
+      {
+        "id": "dock-control",
+        "input": "keyboard",
+        "variant": "civic",
+        "physicalExitReturnedToSameApproach": true
+      },
+      {
+        "id": "market-armory",
+        "input": "keyboard",
+        "variant": "civic",
+        "physicalExitReturnedToSameApproach": true
+      },
+      {
+        "id": "trophy-mausoleum",
+        "input": "keyboard",
+        "variant": "civic",
+        "physicalExitReturnedToSameApproach": true
+      }
+    ],
+    "errors": [],
+    "scope": "Six actual keyboard/gamepad door crossings and physical exits; three domestic plans, three civic rooms and existing dialogues, pause and one mobile domestic view. No teleportation or real user saves. Geometry coverage is separately43 rooms.",
+    "devRunHistory": "Earlier incomplete development-server attempts remain preserved; they are not counted as full PASS."
+  },
+  "visualReview": {
+    "reviewed": [
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/spaceport.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/domestic-mobile.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/residence-port-1-interior.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/residence-market-1-interior.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/domestic-mobile.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/1-training-hall-dialog.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/2-market-armory-dialog.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/3-throne-audience-interior.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/4-training-hall-dialog.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/codex-release/393x852.png",
+      "I:/CodexTemp/yautja-v64-20261001/codex-release/844x390.png",
+      "I:/CodexTemp/yautja-v64-20261001/navigation-release/393x852.png",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/spaceport.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/domestic-mobile.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/dock-control-interior.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/trophy-mausoleum-interior.jpg",
+      "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth-production/4-training-hall-dialog.jpg"
+    ],
+    "findingsResolved": [
+      "Global header no longer covers Homeworld Navigation/Pause; root fix.",
+      "Mobile controls remain inside viewport.",
+      "South interior exit text is visible.",
+      "Continuous ground base replaces old panorama through street gaps.",
+      "No projected orbital ship text over landing pad; console describes orbital transfer.",
+      "Old headStyleId-less ship preset compatibility rejection found and fixed by root; complete V47 archive now resumed.",
+      "Codex mobile portrait filters no longer overlap; close control is visible in both mobile orientations, without proximity toast over the panel.",
+      "Compiled mentor conversation no longer implies the unblooded owns a ship."
+    ],
+    "limitations": [
+      "Three domestic layouts and five facade families are shared, not 43 unique facade paintings.",
+      "No new animation frames in this Homeworld lot.",
+      "These are 2.5D native layers and ground collision, not a 3D simulation.",
+      "Landscape 844x390 codex has little vertical space: inner scrolling is required; visible close controls and functional checks passed, not a claim that all records fit simultaneously."
+    ]
+  },
+  "developmentServer": {
+    "observed": "Fast Refresh and same-URL frame navigation occurred during long recipes. Some interrupted adult runs returned to main menu. Correlation is recorded, not exclusive causality; compiled recipe will remove this source of uncertainty.",
+    "compiledComparison": "Both complete recipes on fixed Next production4184 pass with zero JavaScript errors and zero Fast Refresh/HMR events; navigations are initial loads and the explicitly tested youth reload."
+  },
+  "sourceHashes": {
+    "app/game/HomeworldHub.tsx": "227009dcfbfcb1d5613c564680baefa657a7d9647c3e7dfb3d062fb69c6bb600",
+    "app/game/HomeworldCityScene.tsx": "58976825722dbc2e3f4f9d5d5d845e41f3a8ad20fda03f4a1e860fb5cb66b5b0",
+    "app/game/HomeworldCity.module.css": "816886cb9cfaf5f8f4b28ca2c46be4d4b13b9bb69c1ded0d6c1b2f92d002932f",
+    "app/game/HomeworldInteriorSurface.tsx": "a18cba8daf7fd64ddba49cded2f50a9938ec8ab124d20d90be618bfd9fcc0886",
+    "app/game/HomeworldPointVisualV64.tsx": "292cc26ab7be910c69e21586fa3dcc75c4579c37cc13d67e0705ec69f9d3364f",
+    "app/game/HomeworldNativePropV64.tsx": "11b446ffcfd8760ae35a5324e0497c53f139395436db853f4e40e0ccd7219b4d",
+    "app/game/systems/homeworldInteriorsV64.ts": "abec534b6d3f4a7758909bf9f7614c3088ee832022395e2282dee1ab82cd4caf",
+    "app/game/systems/homeworldCharacterPlacementV64.ts": "eb23358af96d6f4f2efad9df0d79bbc5f38960dad53799129bf8ead5b7372c9e",
+    "scripts/verify-homeworld-interiors-v64.mjs": "951ab59e1daa75cc251305d05cc67d5c1e8fffac29f1bbf7b8b5c28213c23852"
+  },
+  "publication": "Local compiled checks only. Commit, deployment and public browser checks are separate root release gates.",
+  "navigation": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:4182",
+    "checks": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "settings": true,
+        "justice": true,
+        "map": true,
+        "returnShip": true,
+        "positionPreserved": true,
+        "bounds": {
+          "top": 0,
+          "bottom": 1000,
+          "left": 0,
+          "right": 1440,
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      {
+        "viewport": {
+          "width": 393,
+          "height": 852
+        },
+        "settings": true,
+        "justice": true,
+        "map": true,
+        "returnShip": true,
+        "positionPreserved": true,
+        "bounds": {
+          "top": 0,
+          "bottom": 852,
+          "left": 0,
+          "right": 393,
+          "height": 852,
+          "width": 393
+        }
+      },
+      {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "settings": true,
+        "justice": true,
+        "map": true,
+        "returnShip": true,
+        "positionPreserved": true,
+        "bounds": {
+          "top": 0,
+          "bottom": 390,
+          "left": 0,
+          "right": 844,
+          "height": 390,
+          "width": 844
+        }
+      }
+    ],
+    "errors": [],
+    "scope": "Real UI clicks, isolated legacy campaign fixture, three viewport sizes; no player storage touched.",
+    "evidence": "I:/CodexTemp/yautja-v64-20261001/navigation-release/report.json"
+  },
+  "codex": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:4182",
+    "checks": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "count": 723,
+        "exteriorThresholds": 43,
+        "interiorExits": 43,
+        "buildings": 43,
+        "interiors": 43,
+        "target": "door:dock-control",
+        "geometry": {
+          "dialogWidth": 1100,
+          "dialogTop": 92,
+          "dialogBottom": 872,
+          "viewportWidth": 1440,
+          "viewportHeight": 1000,
+          "scrollWidth": 1440
+        },
+        "actorPainted": true,
+        "paintedRect": {
+          "x": 487.78997802734375,
+          "y": 321.354736328125,
+          "width": 55.02001953125,
+          "height": 107.489990234375
+        }
+      },
+      {
+        "viewport": {
+          "width": 393,
+          "height": 852
+        },
+        "count": 723,
+        "exteriorThresholds": 43,
+        "interiorExits": 43,
+        "buildings": 43,
+        "interiors": 43,
+        "target": "door:dock-control",
+        "geometry": {
+          "dialogWidth": 383,
+          "dialogTop": 59,
+          "dialogBottom": 757,
+          "viewportWidth": 393,
+          "viewportHeight": 852,
+          "scrollWidth": 393
+        },
+        "actorPainted": true,
+        "paintedRect": {
+          "x": 184.2899169921875,
+          "y": 391.2147216796875,
+          "width": 55.02001953125,
+          "height": 107.489990234375
+        }
+      },
+      {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "count": 723,
+        "exteriorThresholds": 43,
+        "interiorExits": 43,
+        "buildings": 43,
+        "interiors": 43,
+        "target": "door:dock-control",
+        "geometry": {
+          "dialogWidth": 820,
+          "dialogTop": 55,
+          "dialogBottom": 293.5,
+          "viewportWidth": 844,
+          "viewportHeight": 390,
+          "scrollWidth": 844
+        },
+        "actorPainted": true,
+        "paintedRect": {
+          "x": 487.78997802734375,
+          "y": 300.854736328125,
+          "width": 55.02001953125,
+          "height": 107.489990234375
+        }
+      }
+    ],
+    "errors": [],
+    "scope": "Actual in-game read-only element codex, filtering, geometry details, keyboard isolation and responsive layouts. Does not certify every artwork pixel or every route.",
+    "evidence": "I:/CodexTemp/yautja-v64-20261001/codex-release/report.json"
+  }
+}

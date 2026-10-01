@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_ASSET_CONTRACT_PASS_RENDERER_QA_PENDING",
+  "checkedAt": "2026-09-30T23:55:10.857Z",
+  "counts": {
+    "acceptedNativePngs": 10,
+    "staticDrawings": 20,
+    "animationFrames": 0,
+    "nativeCalls": 16,
+    "preservedSupersededNativeOutputs": 6,
+    "buildingFamilies": 5,
+    "propCells": 9,
+    "interiorPanels": 3
+  },
+  "assets": [
+    {
+      "id": "house-a-basalt",
+      "path": "/game/homeworld/v64/house-a-basalt.png",
+      "sha256": "04d5cc33ec9b42548de1b3d352cc56d4182b921e694faf6fd9946e13ee407e84",
+      "width": 1164,
+      "height": 1351,
+      "drawings": 1
+    },
+    {
+      "id": "house-b-basalt",
+      "path": "/game/homeworld/v64/house-b-basalt.png",
+      "sha256": "a5354df52b86c6994d4c0ade9db91822a9501b352af6b9b9b5d8c41c4645d746",
+      "width": 1161,
+      "height": 1355,
+      "drawings": 1
+    },
+    {
+      "id": "house-c-ribbed",
+      "path": "/game/homeworld/v64/house-c-ribbed.png",
+      "sha256": "d25853dc12b4bb598e33ef1fb3736cce1ea23b0eec2559aa076a941c94c65996",
+      "width": 1024,
+      "height": 1536,
+      "drawings": 1
+    },
+    {
+      "id": "civic-hall",
+      "path": "/game/homeworld/v64/civic-hall.png",
+      "sha256": "b6421a0a01379ce6fcb869dc0ff4530a1282b9a076f88b8bd19e26cca5bbb29e",
+      "width": 1536,
+      "height": 1024,
+      "drawings": 1
+    },
+    {
+      "id": "civic-forge",
+      "path": "/game/homeworld/v64/civic-forge.png",
+      "sha256": "2120df8219447ea111dc7ea6fe4a738d8bc299210105f7f352057a483a043778",
+      "width": 1254,
+      "height": 1254,
+      "drawings": 1
+    },
+    {
+      "id": "props-atlas",
+      "path": "/game/homeworld/v64/props-atlas.png",
+      "sha256": "65cab4e4edb9b0e393751b20d4b8a8790f46e9206b53f2a52a58e175b03974c4",
+      "width": 1254,
+      "height": 1254,
+      "drawings": 9
+    },
+    {
+      "id": "pavement",
+      "path": "/game/homeworld/v64/pavement.png",
+      "sha256": "414a369373962988a17e292fba5f0b970efd7d2be606d1a76c9eccc2e43f9674",
+      "width": 1254,
+      "height": 1254,
+      "drawings": 1
+    },
+    {
+      "id": "interior-panels",
+      "path": "/game/homeworld/v64/interior-panels.png",
+      "sha256": "cfa204f776d84849b38ea25bcd19d879aa469406bf0ab4c384baabd179de4a21",
+      "width": 1536,
+      "height": 1024,
+      "drawings": 3
+    },
+    {
+      "id": "clan-shuttle",
+      "path": "/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "width": 1536,
+      "height": 1024,
+      "drawings": 1
+    },
+    {
+      "id": "landing-pad",
+      "path": "/game/homeworld/v64/landing-pad.png",
+      "sha256": "19c7e9b1775c847800716b364ce92e217d9ffb009c99e014ca831de9316336f2",
+      "width": 1415,
+      "height": 1111,
+      "drawings": 1
+    }
+  ],
+  "checks": [
+    {
+      "name": "house-a-basalt-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.24852279462075946,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "house-b-basalt-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.26509530211581184,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "house-c-ribbed-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.40031687418619794,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "civic-hall-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.19388262430826822,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "civic-forge-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.23985447524858253,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "props-atlas-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.6013872036914092,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "pavement-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0,
+      "visibleBorderPixels": 5012
+    },
+    {
+      "name": "interior-panels-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.5760472615559896,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "clan-shuttle-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.6209176381429037,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "landing-pad-native-and-alpha",
+      "passed": true,
+      "transparentRatio": 0.23031363206992078,
+      "visibleBorderPixels": 0
+    },
+    {
+      "name": "props-all-visible-native-pixels-covered-once",
+      "passed": true,
+      "uncovered": 0,
+      "overlap": 0
+    },
+    {
+      "name": "interior-all-visible-native-pixels-covered-once",
+      "passed": true,
+      "uncovered": 0,
+      "overlap": 0
+    },
+    {
+      "name": "house-a-inscribed-door-clearance",
+      "passed": true,
+      "width": 86.84210526315789,
+      "height": 129.1578947368421
+    },
+    {
+      "name": "house-b-inscribed-door-clearance",
+      "passed": true,
+      "width": 80.53571428571428,
+      "height": 142.60714285714286
+    },
+    {
+      "name": "house-c-inscribed-door-clearance",
+      "passed": true,
+      "width": 85.52036199095024,
+      "height": 152.71493212669685
+    },
+    {
+      "name": "civic-hall-inscribed-door-clearance",
+      "passed": true,
+      "width": 92.96475466482377,
+      "height": 131.9626814098134
+    },
+    {
+      "name": "civic-forge-inscribed-door-clearance",
+      "passed": true,
+      "width": 103.72131147540983,
+      "height": 138.7622950819672
+    }
+  ],
+  "referenceSources": [
+    {
+      "url": "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+      "type": "primary-production-artist",
+      "visualEvidence": "work-local/v64/references/alex-nice-linkedin-1.png and -2.png"
+    },
+    {
+      "url": "https://gizmodo.com/aliens-vs-predator-2-requiem-directors-tell-io9-about-335290",
+      "type": "primary-director-interview"
+    }
+  ],
+  "limits": [
+    "Native art is accepted, but full city integration and43visits require separate renderer/browser QA.",
+    "All new architecture, domestic props, spacecraft and city functions are original adaptations.",
+    "Pad visible footprint1000x719.697 is centered within a1000x760 reservation without arbitrary image stretching.",
+    "Sidewalls are deliberately cutaways:49world high rather than full exterior wall height.",
+    "Only existing source assets are preserved; no historical art is deleted."
+  ],
+  "followupValidation": {
+    "checkedAt": "2026-10-01T01:45:13.476Z",
+    "status": "LOCAL_COMPILED_APPLICATION_QA_PASS",
+    "evidence": "docs/v65-release-gates.json",
+    "publication": "Pending public gates; original native receipt above is preserved."
+  }
+}

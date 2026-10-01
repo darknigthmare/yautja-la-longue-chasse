@@ -1,0 +1,138 @@
+{
+  "release": "V65",
+  "status": "LOCAL_VALIDATED_AWAITING_PUBLICATION",
+  "checkedAt": "2026-10-01T01:45:13.476Z",
+  "scope": "Homeworld V64 delivered with six V65 static revisions of existing original Pit stages",
+  "city": {
+    "districts": 14,
+    "visitableBuildings": 43,
+    "publicBuildings": 19,
+    "residences": 24,
+    "codexRecords": 723,
+    "verifiedExteriorRoutes": 54,
+    "movementTicks": 52070
+  },
+  "art": {
+    "homeworldNativePngs": 10,
+    "homeworldStaticDrawings": 20,
+    "stageNativePngs": 12,
+    "stageStaticDrawings": 30,
+    "totalNativePngs": 22,
+    "totalStaticDrawings": 50,
+    "existingStagesRevised": 6,
+    "newStages": 0,
+    "newAnimationFrames": 0,
+    "historicalAssetsDeleted": 0
+  },
+  "tests": {
+    "initialRun": {
+      "tests": 2025,
+      "pass": 2014,
+      "fail": 11,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/tests-full-final.log",
+        "sha256": "73471dcbe6e5732df430a308f9603015ddeaa959857ddb4f09a8558e36349048"
+      }
+    },
+    "diagnosis": [
+      "Six filesystem tests require NTFS hard links/junctions; I: was exFAT. No filesystem protection or test was weakened.",
+      "Three old Homeworld fixtures were updated to actual interiors; a stale-dialogue regression was added. Runtime stayed unchanged.",
+      "Two journey tests now verify six actual planes, crops and contact geometry instead of requiring six distinct image files. Runtime stayed unchanged."
+    ],
+    "finalRun": {
+      "status": "PASS",
+      "tests": 2026,
+      "pass": 2026,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "temporaryVolume": "C: NTFS",
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/tests-full-ntfs-final.log",
+        "sha256": "a076fff8b4e4a84d65af3c851bd4ccfd0de65036ed6acd2c8ca0a0e4fa31baeb"
+      }
+    }
+  },
+  "builds": {
+    "vinext": {
+      "status": "PASS",
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/vinext-build-final.log",
+        "sha256": "281df361c00f946d2ff24d292608e84fe06ab31c45faf8d2cd5882bdbe9cedfa"
+      }
+    },
+    "nextWebpack": {
+      "status": "PASS",
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/next-build-final.log",
+        "sha256": "da6e9c1f6a3edac43e8d2c37c51a018fe2f451716f0e3ed9c7622a48eca8421b"
+      }
+    },
+    "typescript": {
+      "status": "PASS",
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/typecheck-final.log",
+        "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+      }
+    },
+    "compiledHudCss": {
+      "status": "PASS",
+      "checks": 4,
+      "log": {
+        "path": "I:/CodexTemp/yautja-v65-20261001/css-final.log",
+        "sha256": "4aa2a7f05f37377beee433e73481b25f08d6ca70f9dc46b98c77b17109ddb51e"
+      }
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "warnings": 3,
+    "note": "Three existing no-img-element warnings, no new errors.",
+    "log": {
+      "path": "I:/CodexTemp/yautja-v65-20261001/lint-release-verified.log",
+      "sha256": "e97dc51011f469469f3ba16aafe38087a723000ac7fdc36acc826fd219c3db3c"
+    }
+  },
+  "localBrowser": {
+    "status": "PASS",
+    "compiledUrl": "http://127.0.0.1:4184",
+    "adultVisits": 6,
+    "youthMeetings": 4,
+    "codexViewports": 3,
+    "navigationViewports": 3,
+    "staticStageCameraChecks": 60,
+    "applicationChecks": 11,
+    "stageCount": 6,
+    "reports": [
+      "docs/v64-homeworld-final-browser-qa.json",
+      "docs/v65-homeworld-codex-local-qa.json",
+      "docs/v65-homeworld-navigation-local-qa.json",
+      "docs/v65-stage-static-renderer-qa.json",
+      "docs/v65-stage-static-application-qa.json"
+    ],
+    "visualReview": "Six stage combat views and representative city/interior/codex/mobile views inspected by agents. This is not certification of every pixel or every possible owned trophy composition."
+  },
+  "sourceWorkbook": {
+    "path": "C:/Users/chuck/Downloads/THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "deployment": {
+    "status": "NOT_YET_PUBLISHED",
+    "url": "https://yautja-la-longue-chasse.vercel.app"
+  },
+  "publicBrowser": {
+    "status": "NOT_RUN"
+  },
+  "limits": [
+    "The city and six stages are original game adaptations using documented franchise visual references, not canonical 1:1 locations.",
+    "Five facade families and shared domestic plans are reused across43 buildings.",
+    "174 workbook dossiers resolve to170 runtime targets, but their full art/animation/narrative completion is not certified.",
+    "No stage animation, additional fighter, external region or campaign act is claimed in this release.",
+    "Mobile QA uses emulated Chromium, not physical device testing.",
+    "A desktop executable was not packaged or signed by this release."
+  ]
+}

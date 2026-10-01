@@ -1055,9 +1055,10 @@ function hasSameCanonicalValue(left: unknown, right: unknown): boolean {
 }
 
 /**
- * Accept a current sidecar only when every nested field is already canonical
- * for its campaign. Archive import must reject malformed values instead of
- * using the permissive runtime normalizer to repair them silently.
+ * Accept canonical sidecars, with one explicit historical migration: presets
+ * saved before the head selector omitted headStyleId. Only that absent field
+ * receives its original default. Other missing, malformed or future fields
+ * must still fail instead of being silently repaired by the runtime normalizer.
  */
 export function validateCanonicalShipProgression(
   value: unknown,
@@ -1072,8 +1073,16 @@ export function validateCanonicalShipProgression(
   ) {
     return null;
   }
-  const normalized = normalizeShipProgression(value, save, value.updatedAt);
-  return hasSameCanonicalValue(value, normalized) ? normalized : null;
+  const candidate = Array.isArray(value.loadoutPresets) ? {
+    ...value,
+    loadoutPresets: value.loadoutPresets.map(preset =>
+      isRecord(preset) && isRecord(preset.appearance) &&
+      !Object.prototype.hasOwnProperty.call(preset.appearance, "headStyleId")
+        ? { ...preset, appearance: { ...preset.appearance, headStyleId: "reference" } }
+        : preset),
+  } : value;
+  const normalized = normalizeShipProgression(candidate, save, value.updatedAt);
+  return hasSameCanonicalValue(candidate, normalized) ? normalized : null;
 }
 
 export function synchronizeShipProgression(

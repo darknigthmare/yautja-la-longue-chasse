@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-036-temple-de-la-double-lune",
+  "kind": "backdrop",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+  "sha256": "09d8494a9b881043a40a2b4071c8499e4afef000917a7075421aac1a74198a76",
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": false,
+  "contentBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1536,
+    "height": 1024
+  },
+  "receipt": "docs/v65-generation/arena-036-temple-de-la-double-lune-backdrop.json",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-ca586bb7-ea83-442c-81b9-7cf476593d52.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. Production opaque distant environment plate for an original Yautja 2D fighting-game stage 'Temple de la Double Lune'. It is an invented hunting-clan ceremonial outpost, NOT a literal canonical location and NOT a human religious temple. Reference1 supplies ONLY low layered stone canopies and tough alien engineering; no text from it. Landscape1536x1024, fixed level side-stage viewpoint. No fighting platform, foreground ledge, nearby floor, foot-contact line or foreground columns. Bottom quarter continues into far canyon shadows; all visible architecture remains distant.\nScene: an arid crater escarpment under a cold starry sky with TWO clearly separated rocky moons of different apparent size, both plausible distant celestial bodies, neither enormous filling the picture. The moons are an original scene motif, not a diagram of a canonical planet. Across the canyon is a low broad clan sanctuary/observation shelter cut into fractured rock plates; shallow overlapping basalt overhangs supported by ribbed dark alien metal. No towers. A few warm amber ventilation slits define the practical occupied structure. At the far side stands a small physical articulated astronomical sensor, an incomplete arc of metal ribs fixed to a solid base with cable connections; no portal, no magic. Tilted salt-grey rock plates and dark basalt terraces fade into blue-grey haze. Keep lower center calm and legible for separate fighters.\nStyle: polished realistic hand-painted videogame background, restrained moonlit slate blue, charcoal and warm dim bronze, believable solid load paths, geological detail and atmospheric depth. NO Gothic arches, medieval castle, cathedral spires, statues, giant mask faces, gods, human religious iconography, candles, braziers, flames, holographic ritual circles, floating objects, text, labels, UI, people, animals or silhouettes. No foreground combat ground.\n",
+  "prompts": [
+    {
+      "file": "036-depth.txt",
+      "prompt": "Use case: stylized-concept. Production opaque distant environment plate for an original Yautja 2D fighting-game stage 'Temple de la Double Lune'. It is an invented hunting-clan ceremonial outpost, NOT a literal canonical location and NOT a human religious temple. Reference1 supplies ONLY low layered stone canopies and tough alien engineering; no text from it. Landscape1536x1024, fixed level side-stage viewpoint. No fighting platform, foreground ledge, nearby floor, foot-contact line or foreground columns. Bottom quarter continues into far canyon shadows; all visible architecture remains distant.\nScene: an arid crater escarpment under a cold starry sky with TWO clearly separated rocky moons of different apparent size, both plausible distant celestial bodies, neither enormous filling the picture. The moons are an original scene motif, not a diagram of a canonical planet. Across the canyon is a low broad clan sanctuary/observation shelter cut into fractured rock plates; shallow overlapping basalt overhangs supported by ribbed dark alien metal. No towers. A few warm amber ventilation slits define the practical occupied structure. At the far side stands a small physical articulated astronomical sensor, an incomplete arc of metal ribs fixed to a solid base with cable connections; no portal, no magic. Tilted salt-grey rock plates and dark basalt terraces fade into blue-grey haze. Keep lower center calm and legible for separate fighters.\nStyle: polished realistic hand-painted videogame background, restrained moonlit slate blue, charcoal and warm dim bronze, believable solid load paths, geological detail and atmospheric depth. NO Gothic arches, medieval castle, cathedral spires, statues, giant mask faces, gods, human religious iconography, candles, braziers, flames, holographic ritual circles, floating objects, text, labels, UI, people, animals or silhouettes. No foreground combat ground.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 1,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Abri de clan bas nocturne, deux lunes conservées comme motif ORIGINAL du stage ; ne décrit pas l’astronomie canonique.",
+    "Aucun sol jouable dans P0 ; capteur dessiné avec pivots/câbles physiques et vide alpha.",
+    "Quatre modules statiques distincts, aucun portail magique, dieu ou visage."
+  ]
+}

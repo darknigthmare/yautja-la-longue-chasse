@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-020-trone-fracture",
+  "kind": "backdrop",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+  "sha256": "f63b0a5648dd67fde6d2a30d408e1361194f26547ab08ae72e70535e43eb7ea6",
+  "width": 1774,
+  "height": 887,
+  "hasAlpha": false,
+  "contentBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1774,
+    "height": 887
+  },
+  "receipt": "docs/v65-generation/arena-020-trone-fracture-backdrop.json",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-11c5c704-59e4-478d-aaf0-ace0dc42cb2d.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. Opaque depth/background plate for a high-quality side-view 2D fighting game. Original Yautja clan chamber 'Trône Fracturé', an invented damaged meeting lodge, NOT a canonical location or human throne room. Reference image1 supplies a broad layered basalt canopy and practical low alien architecture only; ignore all reference text. Landscape1536x1024 or wider, straight level camera, side-stage frontal view. Everything in this plate is middle/far depth: DO NOT depict the playable floor, nearby flat platform, foreground threshold, fighters or a chair. Bottom quarter must continue into distant machinery/rock shadows without a sharp horizontal line.\nScene: inside an ancient hunting-clan lodge built into a fractured basalt escarpment. Broad heavy layers of volcanic rock form a low elliptical roof, supported by curved blackened metal load-bearing ribs that resemble tough alien technology rather than a medieval cathedral. A collapsed rear wall opens onto a storm-grey arid canyon. Along the far back wall run ribbed conduits, recessed amber mechanical slits, partially broken dark alloy panels and a damaged clan archive recess. Several structural cables are slack and rooted at real anchors. A central opening behind the later combatants remains spacious and calm. Pale storm light from the broken roof at left, muted red-brown reflected wall tones, a few dim amber powered apertures. Damage is structural cracking and fallen distant slabs, no fire or activity.\nStyle: realistic hand-painted HD videogame environment, cinematic controlled depth, charcoal basalt and aged bronze, convincing utilitarian alien engineering, low wide shelter proportions. NO pointed arches, Gothic spires, castle towers, banners, torches, braziers, statues, gods, faces, giant masks, human throne, Earth heraldry, floating platforms, levitating objects, glyph text, labels, UI. No characters, no silhouettes, no creatures. No nearby floor or contact line.\n",
+  "prompts": [
+    {
+      "file": "020-depth.txt",
+      "prompt": "Use case: stylized-concept. Opaque depth/background plate for a high-quality side-view 2D fighting game. Original Yautja clan chamber 'Trône Fracturé', an invented damaged meeting lodge, NOT a canonical location or human throne room. Reference image1 supplies a broad layered basalt canopy and practical low alien architecture only; ignore all reference text. Landscape1536x1024 or wider, straight level camera, side-stage frontal view. Everything in this plate is middle/far depth: DO NOT depict the playable floor, nearby flat platform, foreground threshold, fighters or a chair. Bottom quarter must continue into distant machinery/rock shadows without a sharp horizontal line.\nScene: inside an ancient hunting-clan lodge built into a fractured basalt escarpment. Broad heavy layers of volcanic rock form a low elliptical roof, supported by curved blackened metal load-bearing ribs that resemble tough alien technology rather than a medieval cathedral. A collapsed rear wall opens onto a storm-grey arid canyon. Along the far back wall run ribbed conduits, recessed amber mechanical slits, partially broken dark alloy panels and a damaged clan archive recess. Several structural cables are slack and rooted at real anchors. A central opening behind the later combatants remains spacious and calm. Pale storm light from the broken roof at left, muted red-brown reflected wall tones, a few dim amber powered apertures. Damage is structural cracking and fallen distant slabs, no fire or activity.\nStyle: realistic hand-painted HD videogame environment, cinematic controlled depth, charcoal basalt and aged bronze, convincing utilitarian alien engineering, low wide shelter proportions. NO pointed arches, Gothic spires, castle towers, banners, torches, braziers, statues, gods, faces, giant masks, human throne, Earth heraldry, floating platforms, levitating objects, glyph text, labels, UI. No characters, no silhouettes, no creatures. No nearby floor or contact line.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 1,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Nouveau fond de loge basse fracturée, ouverture de canyon sans sol jouable.",
+    "Les quatre pièces sont distinctes, le siège a une assise/base physique lisible.",
+    "Aucun statut de salle canonique attribué."
+  ]
+}

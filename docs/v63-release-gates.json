@@ -1,7 +1,7 @@
 {
   "release": "V63",
   "checkedAt": "2026-09-30T23:15:39.388Z",
-  "status": "LOCAL_GATES_VERIFIED_PUBLIC_PENDING",
+  "status": "RELEASED_AND_PUBLICLY_VERIFIED",
   "tests": {
     "globalRun": {
       "tests": 1963,
@@ -66,9 +66,31 @@
     "unchanged": true
   },
   "deployment": {
-    "status": "pending"
+    "status": "READY",
+    "id": "dpl_7mvGX4ZStfri1fjPWrDis8cM3E3u",
+    "commit": "2dfa913da547554aa400f589faca031f96d95e11",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "gitPush": "HEAD:main confirmed"
   },
   "publicBrowser": {
-    "status": "pending"
+    "status": "PASS",
+    "menuScenarios": 12,
+    "headChoiceChecks": 3,
+    "hunterMissionScenarios": 4,
+    "dreadHeadStyles": 2,
+    "variantScenarios": 6,
+    "stageScenarios": 13,
+    "nativeAssetsSha256": 13,
+    "reports": [
+      "docs/v63-dreads-public-qa.json",
+      "docs/v63-hunter-mission-public-qa.json",
+      "docs/v63-public-assets.json",
+      "docs/v63-menu-public-qa.json",
+      "docs/v63-stage-public-qa.json",
+      "docs/v63-stage-public-visual-review.json",
+      "docs/v63-hunter-choice-public-qa.json",
+      "docs/v63-fighters-public-qa.json"
+    ],
+    "scope": "Isolated fixtures only. Public menu, appearance reload, real Canvas hunts, Homeworld movement/pause and actual Pit duels. Representative captures inspected."
   }
 }

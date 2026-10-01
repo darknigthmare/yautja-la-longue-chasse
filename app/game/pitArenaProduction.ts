@@ -1,4 +1,5 @@
 import { applyPitStageCompositionV63 } from "./pitStageCompositionV63";
+import { applyPitStageCompositionV65 } from "./pitStageCompositionV65";
 import type { PitArenaAmbientMotion } from "./pitArenaAmbience";
 import productionManifestJson from "./pitArenaProductionData.generated.json";
 import { isPitFirstEditionArenaId, type PitFirstEditionArenaId } from "./systems/pitFirstEdition";
@@ -223,7 +224,11 @@ export function resolvePitArenaProductionKit(
     if (!assets.length) return null;
     planes.push({ ...plane, assets: assets.sort((a, b) => (a.drawOrder ?? 0) - (b.drawOrder ?? 0)) });
   }
-  return { catalogueId: stage.catalogueId, arenaId, planes, paths: [...paths], requiredPaths };
+  const composedPlanes = applyPitStageCompositionV65(stage.catalogueId, planes);
+  if (composedPlanes === planes) return { catalogueId: stage.catalogueId, arenaId, planes, paths: [...paths], requiredPaths };
+  return { catalogueId: stage.catalogueId, arenaId, planes: composedPlanes,
+    paths: [...new Set(composedPlanes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => frame.path))))],
+    requiredPaths: [...new Set(composedPlanes.flatMap(plane => plane.assets.filter(asset => asset.requiredForRuntime).map(asset => asset.frames[0].path)))] };
 }
 
 /** Counts files and documented sub-plans separately from gameplay and from six-plane targets. */

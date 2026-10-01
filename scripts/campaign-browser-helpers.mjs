@@ -1,7 +1,9 @@
 import {build} from 'esbuild';
+import fs from 'node:fs/promises';
 let fixturePromise;
 export async function campaignFixture() {
   fixturePromise??=(async()=>{
+    if(process.env.CAMPAIGN_QA_FIXTURE_FILE)return JSON.parse(await fs.readFile(process.env.CAMPAIGN_QA_FIXTURE_FILE,'utf8'));
     const bundle=await build({stdin:{contents:"export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts';",resolveDir:process.cwd()},bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent'});
     const api=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
     return {key:api.SAVE_STORAGE_KEY,save:api.defaultSave('2026-09-20T00:00:00.000Z')};

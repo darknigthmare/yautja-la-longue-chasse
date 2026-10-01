@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "status": "NATIVE_ART_AND_STATIC_COMPOSITOR_REVIEW_COMPLETE",
+  "checkedAt": "2026-10-01T01:28:48.8462803Z",
+  "counts": {
+    "existingStagesRevised": 6,
+    "newStages": 0,
+    "acceptedNativePngs": 12,
+    "staticDrawings": 30,
+    "nativeGenerationCalls": 14,
+    "preservedIntermediateImages": 2,
+    "newAnimationFrames": 0,
+    "newBackgroundEvents": 0,
+    "nativeChecks": 30,
+    "compositorCameraChecks": 60,
+    "finalScreenshotsIndependentlyViewed": 8,
+    "literalWorkbookDossiersCertifiedComplete": 0
+  },
+  "stages": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "workbook": {
+        "stageKey": "ST064",
+        "range": "09_STAGES!A68:N68",
+        "eventsUnchanged": [
+          "E194",
+          "E195",
+          "E196"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+      "staticDrawings": 5
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "workbook": {
+        "stageKey": "ST072",
+        "range": "09_STAGES!A76:N76",
+        "eventsUnchanged": [
+          "E218",
+          "E219",
+          "E220"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+      "staticDrawings": 5
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "workbook": {
+        "stageKey": "ST088",
+        "range": "09_STAGES!A92:N92",
+        "eventsUnchanged": [
+          "E266",
+          "E267",
+          "E268"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+      "staticDrawings": 5
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "workbook": {
+        "stageKey": "ST102",
+        "range": "09_STAGES!A106:N106",
+        "eventsUnchanged": [
+          "E308",
+          "E309",
+          "E310"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+      "staticDrawings": 5
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "workbook": {
+        "stageKey": "ST120",
+        "range": "09_STAGES!A124:N124",
+        "eventsUnchanged": [
+          "E362",
+          "E363",
+          "E364"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+      "staticDrawings": 5
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "workbook": {
+        "stageKey": "ST127",
+        "range": "09_STAGES!A131:N131",
+        "eventsUnchanged": [
+          "E383",
+          "E384",
+          "E385"
+        ]
+      },
+      "backdrop": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png",
+      "atlas": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+      "staticDrawings": 5
+    }
+  ],
+  "proofs": [
+    "docs/v65-stage-static-native-qa.json",
+    "docs/v65-stage-static-visual-review.json",
+    "docs/v65-stage-static-art-provenance.md",
+    "docs/v65-generation/"
+  ],
+  "preserved": "All previous native PNGs, stage IDs and the two intermediate generated images are retained. Stage036 reuses the original technical020 floor PNGs without editing source pixels.",
+  "limits": [
+    "174 workbook dossiers have existing runtime kits; this is not artistic validation of174 dossiers.",
+    "The six static revisions do not complete their18 requested background animation descriptions.",
+    "181 other runtime arenas are not certified by this lot.",
+    "010 Forge,013 Mausoleum and014 Navigators remain candidates for a later visual revision.",
+    "These original scenes are inspired by primary production references and do not claim canon1:1.",
+    "Build, full application flow and production verification are owned by the release task and not claimed in this art delivery."
+  ],
+  "applicationFlowVerified": false,
+  "publicDeploymentVerified": false
+}

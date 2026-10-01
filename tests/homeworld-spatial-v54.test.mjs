@@ -10,18 +10,20 @@ const codex = await load("app/game/systems/homeworldSpatialCodex.ts");
 const hw = await load("app/game/systems/homeworld.ts");
 const art = (await load("app/game/systems/homeworldCityArtV54.ts")).HOMEWORLD_CITY_ART_V54;
 
-test("V54 extends two sides of the city while preserving spawn and the historical service coordinates", () => {
-  assert.deepEqual(city.HOMEWORLD_WORLD, { width: 6300, height: 3400 });
-  assert.deepEqual(city.createHomeworldActor(), { x: 430, y: 2210, vx: 0, vy: 0, grounded: true, facing: 1 });
+test("V64 extends the ground plan while preserving all V54 IDs and narrative/service bindings", () => {
+  assert.deepEqual(city.HOMEWORLD_WORLD, { width: 6300, height: 5300 });
+  assert.deepEqual(city.createHomeworldActor(), { x: 1280, y: 4480, vx: 0, vy: 0, grounded: true, facing: 1 });
   assert.equal(city.HOMEWORLD_DISTRICTS.length, 14);
-  assert.equal(city.HOMEWORLD_BUILDINGS.length, 19);
-  assert.equal(city.HOMEWORLD_STREETS.length, 14);
-  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { x: 400, y: 2220 });
-  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 });
-  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["training-service"], { x: 2220, y: 1330 });
+  assert.equal(city.HOMEWORLD_BUILDINGS.length, 43);
+  assert.equal(city.HOMEWORLD_STREETS.length, 18);
+  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { id: "personal-ship", x: 1280, y: 4400 });
+  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 * 1.55 });
+  assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["training-service"], { x: 2220, y: 1330 * 1.55 });
   assert.equal(Object.keys(city.HOMEWORLD_POINT_POSITIONS).length, 26);
   assert.equal(hw.HOMEWORLD_REGIONS.length, 10);
   assert.equal(hw.HOMEWORLD_NPCS.length, 12);
+  assert.deepEqual(city.HOMEWORLD_BUILDINGS.slice(0,19).map(b=>b.id),city.HOMEWORLD_BUILDINGS_V54.map(b=>b.id));
+  assert.deepEqual(Object.keys(city.HOMEWORLD_POINT_POSITIONS),Object.keys(city.HOMEWORLD_POINT_POSITIONS_V54));
 });
 
 test("all fourteen codex destinations are reachable with the full hunter footprint; no shortcut crosses scenery", () => {
@@ -42,7 +44,7 @@ test("new districts form loops: routes between both entrances stay within the se
     [{ x: 1080, y: 2380 }, { x: 3140, y: 2230 }, "convoy-works"],
     [{ x: 5260, y: 1010 }, { x: 5490, y: 2360 }, "rampart-walk"],
   ]) {
-    const route = codex.homeworldSpatialRoute(from, to);
+    const route = codex.homeworldSpatialRoute({x:from.x,y:from.y*1.55}, {x:to.x,y:to.y*1.55});
     assert.equal(route.status, "reachable", sector);
     assert(route.points.some(point => city.districtAtHomeworldPosition(point)?.id === sector), sector + " route must use extension");
   }
@@ -70,7 +72,7 @@ test("the spatial codex inspects actual placement, door collision, alpha anchor 
       const source = city.HOMEWORLD_BUILDINGS.find(b => b.id === building.id);
       assert.deepEqual(building.collision, city.homeworldBuildingCollision(source));
       assert.deepEqual(building.door, city.homeworldBuildingDoorPosition(source));
-      assert.equal(building.depth, source.y);
+      assert.equal(building.depth, Math.round(source.y));
     }
     for (const prop of record.props) assert.deepEqual(prop.image, city.homeworldPropArtPlacement(city.HOMEWORLD_PROPS.find(p => p.id === prop.id)));
   }
@@ -133,36 +135,30 @@ test("three source PNGs retain exact bytes; native building and beacon have audi
   }
 });
 
-test("all six native buildings share scale, ground contact, usable doorway and no foreign door overlay", () => {
-  const native = city.HOMEWORLD_BUILDINGS.filter(building => building.art);
-  assert.equal(native.length, 6);
-  const scales = [];
-  for (const building of native) {
-    const placed = city.homeworldBuildingArtPlacement(building), source = building.art;
-    const sx = placed.width / source.sourceWidth, sy = placed.height / source.sourceHeight;
-    assert(Math.abs(sx - sy) < 1e-8);
-    assert(Math.abs(placed.left + (source.alphaBounds.x + source.alphaBounds.width / 2) * sx - building.width / 2) < 1e-8);
-    assert(Math.abs(placed.top + (source.alphaBounds.y + source.alphaBounds.height) * sy - building.height) < 1e-8);
-    assert(art.compactRelay.doorway.width * sx >= 165, "door opening is wider than hero rig");
-    assert(art.compactRelay.doorway.height * sy >= 205, "door opening fits hero rig height");
-    assert(city.isHomeworldWalkable(city.homeworldBuildingDoorPosition(building)));
-    scales.push(sx);
+test("all43 native buildings share a measured socket, uniform pixels and traversable approach", () => {
+  const native=city.HOMEWORLD_BUILDINGS; assert.equal(native.length,43);
+  for(const building of native){
+    const placed=city.homeworldBuildingSpritePlacementV64(building),source=building.art;
+    const sx=placed.width/source.sourceWidth,sy=placed.height/source.sourceHeight;
+    assert(Math.abs(sx-sy)<1e-8);
+    const threshold=city.homeworldProjectGroundV64(building);
+    assert(Math.abs(placed.left+source.threshold.x*sx-threshold.x)<1e-8);
+    assert(Math.abs(placed.top+source.threshold.y*sy-threshold.y)<1e-8);
+    const door=city.homeworldBuildingDoorwayV64(building);
+    assert(door.clearWidth>=80 && door.clearHeight>=128,building.id+' measured opening');
+    assert(city.isHomeworldWalkable(door.approach));
   }
-  assert(scales.every(scale => scale === scales[0]));
-  const beacons = city.HOMEWORLD_PROPS.filter(prop => prop.asset === art.beacon.src);
-  assert.equal(beacons.length, 16);
-  assert(beacons.every(prop => prop.width === 76 && prop.height === 128));
-  const source = readFileSync("app/game/HomeworldCityScene.tsx", "utf8");
-  assert.match(source, /building\.art \? <>[\s\S]*?nativeBuildingArt[\s\S]*?: <>/);
+  assert.equal(city.HOMEWORLD_LEGACY_PROPS_V54.filter(p=>p.asset===art.beacon.src).length,16);
+  assert(city.HOMEWORLD_PROPS.every(p=>p.asset!==art.beacon.src),'legacy art retained but not rendered');
 });
 
 test("run2 narrow clan/forge join cannot become a false shortcut between sixteen-unit samples", () => {
   // Run2 browser: actual keys stopped at3589,1608. The old simplified segment
   // crossed a tiny invalid terrain interval that its16-unit sampling missed.
-  assert.equal(city.isHomeworldWalkable({ x: 3569.230769230769, y: 1614.7692307692307 }), false);
-  assert.equal(codex.isHomeworldRouteSegmentWalkable({ x: 3456, y: 1728 }, { x: 3584, y: 1600 }), false);
-  assert.equal(codex.isHomeworldRouteSegmentWalkable({ x: 3584, y: 1600 }, { x: 4032, y: 1408 }), false);
-  const start = { x: 1752, y: 2530 }, target = codex.HOMEWORLD_SPATIAL_SITES.find(site => site.id === "rampart-walk").approach;
+  assert.equal(city.isHomeworldWalkable({ x: 3569.230769230769, y: 1614.7692307692307*1.55 }), false);
+  assert.equal(codex.isHomeworldRouteSegmentWalkable({ x: 3456, y: 1728*1.55 }, { x: 3584, y: 1600*1.55 }), false);
+  assert.equal(codex.isHomeworldRouteSegmentWalkable({ x: 3584, y: 1600*1.55 }, { x: 4032, y: 1408*1.55 }), false);
+  const start = city.createHomeworldActor(), target = codex.HOMEWORLD_SPATIAL_SITES.find(site => site.id === "rampart-walk").approach;
   const route = codex.homeworldSpatialRoute(start, target);
   assert.equal(route.status, "reachable");
   let actor = { ...city.createHomeworldActor(), ...start };
@@ -185,22 +181,31 @@ test("run2 narrow clan/forge join cannot become a false shortcut between sixteen
   assert(Math.hypot(actor.x - target.x, actor.y - target.y) < 15);
 });
 
-test("ship occlusion reveals the historical spawn but never relocates it or fades a player standing in front", () => {
-  const ship = city.HOMEWORLD_POINT_POSITIONS["personal-ship"];
-  assert.equal(city.shouldFadeHomeworldShip(ship, city.createHomeworldActor()), true);
+test("the local shuttle is separate from the orbital terminal and leaves its pedestrian spawn clear", () => {
+  const ship = city.HOMEWORLD_SPACEPORT_V64.shuttle;
+  assert.equal(city.shouldFadeHomeworldShip(ship, city.createHomeworldActor()), false);
   assert.equal(city.shouldFadeHomeworldShip(ship, { x: ship.x + 300, y: ship.y - 20 }), false);
   assert.equal(city.shouldFadeHomeworldShip(ship, { x: ship.x, y: ship.y + 30 }), false);
   assert.equal(city.shouldFadeHomeworldShip(ship, { x: ship.x, y: ship.y - 300 }), false);
-  assert.deepEqual({ x: city.createHomeworldActor().x, y: city.createHomeworldActor().y }, { x: 430, y: 2210 });
+  assert.deepEqual({ x: city.createHomeworldActor().x, y: city.createHomeworldActor().y }, { x: 1280, y: 4480 });
 });
 
 test("compass preserves a nearby turning waypoint when the onward line would cut the building corner", () => {
-  const actor = { x: 1460, y: 2760 }, turn = { x: 1460, y: 2800 }, target = { x: 2100, y: 2800 };
-  assert(city.isHomeworldWalkable(actor));
-  assert.equal(codex.isHomeworldRouteSegmentWalkable(actor, target), false);
-  assert.equal(codex.isHomeworldRouteSegmentWalkable(actor, turn), true);
-  const guide = codex.homeworldRouteGuidance(actor, { status: "reachable", distance: 740, points: [{ x: 1460, y: 2700 }, turn, target] });
-  assert.deepEqual(guide.waypoint, turn);
-  assert.equal(guide.direction, "Sud ↓");
-  assert.equal(guide.arrived, false);
+  let fixture;
+  for (const site of codex.HOMEWORLD_SPATIAL_SITES) {
+    const route=codex.homeworldSpatialRoute(city.createHomeworldActor(),site.approach);
+    for(let i=1;i<route.points.length-1;i++) {
+      const previous=route.points[i-1],turn=route.points[i],target=route.points[i+1];
+      const length=Math.hypot(turn.x-previous.x,turn.y-previous.y); if(length<60)continue;
+      const actor={x:turn.x+(previous.x-turn.x)*40/length,y:turn.y+(previous.y-turn.y)*40/length};
+      if(city.isHomeworldWalkable(actor)&&Math.hypot(actor.x-target.x,actor.y-target.y)>80
+        &&!codex.isHomeworldRouteSegmentWalkable(actor,target)&&codex.isHomeworldRouteSegmentWalkable(actor,turn)) {fixture={actor,previous,turn,target};break;}
+    }
+    if(fixture)break;
+  }
+  assert(fixture,'real V64 corner required; original coordinates now lie beneath a new house');
+  const {actor,previous,turn,target}=fixture;
+  const guide=codex.homeworldRouteGuidance(actor,{status:'reachable',distance:500,points:[previous,turn,target]});
+  assert.deepEqual(guide.waypoint,turn);
+  assert.equal(guide.arrived,false);
 });

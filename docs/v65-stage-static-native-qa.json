@@ -1,0 +1,982 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "status": "NATIVE_REVIEWED_INTEGRATION_PENDING",
+  "stages": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "workbook": {
+        "stageKey": "ST064",
+        "range": "09_STAGES!A68:N68",
+        "eventsUnchanged": [
+          "E194",
+          "E195",
+          "E196"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-depth.png",
+        "sha256": "c4fc617ec87c5d9ab21da1a0bdb4101b294cfa30ce0f572ef481bc74c1293524",
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "receipt": "docs/v65-generation/arena-012-balcon-du-roi-de-la-chasse-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+        "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 19,
+          "y": 43,
+          "width": 1221,
+          "height": 1172
+        },
+        "receipt": "docs/v65-generation/arena-012-balcon-du-roi-de-la-chasse-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 603373,
+          "assignedPixels": 603373,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 16,
+            "y": 187,
+            "width": 654,
+            "height": 428
+          },
+          "alphaBounds": {
+            "x": 19,
+            "y": 190,
+            "width": 648,
+            "height": 422
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 177218,
+          "role": "Abri de clan lointain sous dalle rocheuse"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 694,
+            "y": 40,
+            "width": 530,
+            "height": 615
+          },
+          "alphaBounds": {
+            "x": 697,
+            "y": 43,
+            "width": 524,
+            "height": 609
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 124599,
+          "role": "Nervure de support boulonnée au socle"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 41,
+            "y": 833,
+            "width": 562,
+            "height": 339
+          },
+          "alphaBounds": {
+            "x": 44,
+            "y": 836,
+            "width": 556,
+            "height": 333
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 142558,
+          "role": "Console d’observation basse à écran encastré"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 665,
+            "y": 785,
+            "width": 578,
+            "height": 433
+          },
+          "alphaBounds": {
+            "x": 668,
+            "y": 788,
+            "width": 572,
+            "height": 427
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 158998,
+          "role": "Bord rocheux renforcé de métal"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Fond sans plan de combat peint, abris lourds bas et canyon aride.",
+        "Quatre objets alpha distincts, aucun personnage ni masque/statue.",
+        "Référence de vocabulaire architectural ; lieu et objets originaux."
+      ]
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "workbook": {
+        "stageKey": "ST072",
+        "range": "09_STAGES!A76:N76",
+        "eventsUnchanged": [
+          "E218",
+          "E219",
+          "E220"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+        "sha256": "f63b0a5648dd67fde6d2a30d408e1361194f26547ab08ae72e70535e43eb7ea6",
+        "width": 1774,
+        "height": 887,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1774,
+          "height": 887
+        },
+        "receipt": "docs/v65-generation/arena-020-trone-fracture-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+        "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 39,
+          "y": 46,
+          "width": 1181,
+          "height": 1146
+        },
+        "receipt": "docs/v65-generation/arena-020-trone-fracture-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 574138,
+          "assignedPixels": 574138,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 36,
+            "y": 226,
+            "width": 638,
+            "height": 422
+          },
+          "alphaBounds": {
+            "x": 39,
+            "y": 229,
+            "width": 632,
+            "height": 416
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 194742,
+          "role": "Alcôve d’archive distante et boîtiers fermés"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 786,
+            "y": 43,
+            "width": 428,
+            "height": 636
+          },
+          "alphaBounds": {
+            "x": 789,
+            "y": 46,
+            "width": 422,
+            "height": 630
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 139530,
+          "role": "Nervure fracturée aux câbles physiquement ancrés"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 51,
+            "y": 719,
+            "width": 554,
+            "height": 452
+          },
+          "alphaBounds": {
+            "x": 54,
+            "y": 722,
+            "width": 548,
+            "height": 446
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 142321,
+          "role": "Siège de clan endommagé sans symboles royaux humains"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 636,
+            "y": 907,
+            "width": 587,
+            "height": 288
+          },
+          "alphaBounds": {
+            "x": 639,
+            "y": 910,
+            "width": 581,
+            "height": 282
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 97545,
+          "role": "Débris bas de roche et de structure métallique"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Nouveau fond de loge basse fracturée, ouverture de canyon sans sol jouable.",
+        "Les quatre pièces sont distinctes, le siège a une assise/base physique lisible.",
+        "Aucun statut de salle canonique attribué."
+      ]
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "workbook": {
+        "stageKey": "ST088",
+        "range": "09_STAGES!A92:N92",
+        "eventsUnchanged": [
+          "E266",
+          "E267",
+          "E268"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+        "sha256": "09d8494a9b881043a40a2b4071c8499e4afef000917a7075421aac1a74198a76",
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "receipt": "docs/v65-generation/arena-036-temple-de-la-double-lune-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+        "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 26,
+          "y": 32,
+          "width": 1202,
+          "height": 1154
+        },
+        "receipt": "docs/v65-generation/arena-036-temple-de-la-double-lune-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 573925,
+          "assignedPixels": 573925,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 45,
+            "y": 29,
+            "width": 570,
+            "height": 677
+          },
+          "alphaBounds": {
+            "x": 48,
+            "y": 32,
+            "width": 564,
+            "height": 671
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 168475,
+          "role": "Capteur astronomique mécanique lointain"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 706,
+            "y": 54,
+            "width": 506,
+            "height": 664
+          },
+          "alphaBounds": {
+            "x": 709,
+            "y": 57,
+            "width": 500,
+            "height": 658
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 126502,
+          "role": "Support rocheux renforcé de métal"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 23,
+            "y": 849,
+            "width": 621,
+            "height": 332
+          },
+          "alphaBounds": {
+            "x": 26,
+            "y": 852,
+            "width": 615,
+            "height": 326
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 146631,
+          "role": "Console astronomique basse à écran encastré"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 654,
+            "y": 810,
+            "width": 577,
+            "height": 379
+          },
+          "alphaBounds": {
+            "x": 657,
+            "y": 813,
+            "width": 571,
+            "height": 373
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 132317,
+          "role": "Bordure basse de roche et conduites"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Abri de clan bas nocturne, deux lunes conservées comme motif ORIGINAL du stage ; ne décrit pas l’astronomie canonique.",
+        "Aucun sol jouable dans P0 ; capteur dessiné avec pivots/câbles physiques et vide alpha.",
+        "Quatre modules statiques distincts, aucun portail magique, dieu ou visage."
+      ]
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "workbook": {
+        "stageKey": "ST102",
+        "range": "09_STAGES!A106:N106",
+        "eventsUnchanged": [
+          "E308",
+          "E309",
+          "E310"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png",
+        "sha256": "2b72786f88673420d0f89d83bda9201749972ff54380185c1d730c7d9fe3219c",
+        "width": 1672,
+        "height": 941,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1672,
+          "height": 941
+        },
+        "receipt": "docs/v65-generation/arena-050-porte-de-l-audience-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+        "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 98,
+          "y": 157,
+          "width": 1059,
+          "height": 946
+        },
+        "receipt": "docs/v65-generation/arena-050-porte-de-l-audience-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 296597,
+          "assignedPixels": 296597,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 95,
+            "y": 301,
+            "width": 570,
+            "height": 271
+          },
+          "alphaBounds": {
+            "x": 98,
+            "y": 304,
+            "width": 564,
+            "height": 265
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 111874,
+          "role": "Sas d’accès lointain dans sa coque rocheuse"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 858,
+            "y": 154,
+            "width": 235,
+            "height": 428
+          },
+          "alphaBounds": {
+            "x": 861,
+            "y": 157,
+            "width": 229,
+            "height": 422
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 54320,
+          "role": "Montant structurel à capteurs et câbles"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 118,
+            "y": 884,
+            "width": 454,
+            "height": 214
+          },
+          "alphaBounds": {
+            "x": 121,
+            "y": 887,
+            "width": 448,
+            "height": 208
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 66147,
+          "role": "Terminal d’accès bas à écran encastré"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 725,
+            "y": 917,
+            "width": 435,
+            "height": 189
+          },
+          "alphaBounds": {
+            "x": 728,
+            "y": 920,
+            "width": 429,
+            "height": 183
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 64256,
+          "role": "Bordure de roche renforcée de conduites"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Porte horizontale technique remplaçant les grands visages/masques monumentaux.",
+        "Première plaquette trop près du bord : correction native d’espacement acceptée, original conservé.",
+        "Quatre objets complets et séparés ; le sas n’est pas une nouvelle porte interactive."
+      ]
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "workbook": {
+        "stageKey": "ST120",
+        "range": "09_STAGES!A124:N124",
+        "eventsUnchanged": [
+          "E362",
+          "E363",
+          "E364"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png",
+        "sha256": "14e77e5869a43513a0e098e643a00da974061d2d546ded266d8f42fbf0e0a199",
+        "width": 1774,
+        "height": 887,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1774,
+          "height": 887
+        },
+        "receipt": "docs/v65-generation/arena-069-salle-du-porte-cendres-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+        "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 32,
+          "y": 70,
+          "width": 1201,
+          "height": 1122
+        },
+        "receipt": "docs/v65-generation/arena-069-salle-du-porte-cendres-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 748486,
+          "assignedPixels": 748486,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 29,
+            "y": 315,
+            "width": 789,
+            "height": 449
+          },
+          "alphaBounds": {
+            "x": 32,
+            "y": 318,
+            "width": 783,
+            "height": 443
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 261107,
+          "role": "Échangeur géothermique fermé et conduites"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 849,
+            "y": 67,
+            "width": 350,
+            "height": 698
+          },
+          "alphaBounds": {
+            "x": 852,
+            "y": 70,
+            "width": 344,
+            "height": 692
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 151091,
+          "role": "Support à conduites avec capuchon supérieur fini"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 30,
+            "y": 859,
+            "width": 673,
+            "height": 336
+          },
+          "alphaBounds": {
+            "x": 33,
+            "y": 862,
+            "width": 667,
+            "height": 330
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 192317,
+          "role": "Coffre d’équipement scellé bas sur berceau"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 715,
+            "y": 850,
+            "width": 521,
+            "height": 339
+          },
+          "alphaBounds": {
+            "x": 718,
+            "y": 853,
+            "width": 515,
+            "height": 333
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 143971,
+          "role": "Bordure rocheuse avec conduite thermique protégée"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Chambre technique géothermique remplaçant le brasero lévitant, aucune magie ni lave dans la piste.",
+        "Correction native du sommet de support : capuchon et extrémités de conduites fermées ; première image conservée.",
+        "Quatre modules complets séparés ; coffre matériel bas, aucune nouvelle interaction ni animation."
+      ]
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "workbook": {
+        "stageKey": "ST127",
+        "range": "09_STAGES!A131:N131",
+        "eventsUnchanged": [
+          "E383",
+          "E384",
+          "E385"
+        ]
+      },
+      "backdrop": {
+        "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png",
+        "sha256": "3cf47eab56b3acd574d216281f8c7e5cc5bcf3a2cc65871ce0742a131e579506",
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "receipt": "docs/v65-generation/arena-076-atrium-des-mediateurs-backdrop.json"
+      },
+      "atlas": {
+        "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+        "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "contentBounds": {
+          "x": 21,
+          "y": 104,
+          "width": 1214,
+          "height": 968
+        },
+        "receipt": "docs/v65-generation/arena-076-atrium-des-mediateurs-atlas.json",
+        "coverage": {
+          "threshold": 8,
+          "visiblePixels": 467590,
+          "assignedPixels": 467590,
+          "nativeDrawings": 4,
+          "animationFrames": 0
+        }
+      },
+      "cells": [
+        {
+          "plane": "P1",
+          "sourceCrop": {
+            "x": 25,
+            "y": 239,
+            "width": 780,
+            "height": 372
+          },
+          "alphaBounds": {
+            "x": 28,
+            "y": 242,
+            "width": 774,
+            "height": 366
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 224273,
+          "role": "Alcôve de médiation basse sous canopée"
+        },
+        {
+          "plane": "P2",
+          "sourceCrop": {
+            "x": 849,
+            "y": 101,
+            "width": 389,
+            "height": 506
+          },
+          "alphaBounds": {
+            "x": 852,
+            "y": 104,
+            "width": 383,
+            "height": 500
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 89309,
+          "role": "Support nervuré de canopée sur pied solide"
+        },
+        {
+          "plane": "P3",
+          "sourceCrop": {
+            "x": 18,
+            "y": 872,
+            "width": 634,
+            "height": 199
+          },
+          "alphaBounds": {
+            "x": 21,
+            "y": 875,
+            "width": 628,
+            "height": 193
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 95879,
+          "role": "Banc de médiation bas et large"
+        },
+        {
+          "plane": "P5",
+          "sourceCrop": {
+            "x": 665,
+            "y": 922,
+            "width": 573,
+            "height": 153
+          },
+          "alphaBounds": {
+            "x": 668,
+            "y": 925,
+            "width": 567,
+            "height": 147
+          },
+          "alphaBoundsCoordinateSpace": "whole-source-pixels",
+          "visiblePixels": 58129,
+          "role": "Bordure rocheuse renforcée de métal"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+        "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+      ],
+      "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+      "visualReview": [
+        "Paire produite par root puis inspectée indépendamment par stage-agent.",
+        "Atrium de clan ouvert sur le canyon, lumière douce ivoire ; aucune statue ni trône.",
+        "Quatre silhouettes alpha intactes, colonnes de largeur inégale mesurées plutôt que découpées arbitrairement en carrés."
+      ]
+    }
+  ],
+  "nativeChecks": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "kind": "backdrop",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "kind": "atlas",
+      "check": "native-copy-sha256",
+      "passed": true
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "kind": "atlas",
+      "check": "native-alpha",
+      "passed": true
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "kind": "atlas",
+      "check": "all-visible-pixels-assigned-exactly-once",
+      "passed": true
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "kind": "atlas",
+      "check": "all-four-objects-clear-of-canvas-edges",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "stages": 6,
+    "nativePngs": 12,
+    "staticDrawings": 30,
+    "newAnimationFrames": 0,
+    "nativeChecks": 30
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 1000,
+        "left": 0,
+        "right": 1440,
+        "height": 1000,
+        "width": 1440
+      }
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 852,
+        "left": 0,
+        "right": 393,
+        "height": 852,
+        "width": 393
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 390,
+        "left": 0,
+        "right": 844,
+        "height": 390,
+        "width": 844
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Real UI clicks, isolated legacy campaign fixture, three viewport sizes; no player storage touched.",
+  "evidence": {
+    "path": "I:/CodexTemp/yautja-v65-20261001/local-navigation/report.json",
+    "sha256": "b0a416d420db5c0d162cf53625f69a9ef32efc6bb1b6e67532b725bd5388e3d0"
+  }
+}

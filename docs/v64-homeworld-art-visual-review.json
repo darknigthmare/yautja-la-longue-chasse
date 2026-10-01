@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_COMPOSITION_REVIEW_PASS_APPLICATION_QA_PENDING",
+  "reviewedAt": "2026-09-30T23:55:11.225Z",
+  "scope": "standalone native asset compositions, not the full playable city",
+  "reviewedCaptures": [
+    {
+      "file": "visual-qa/buildings.png",
+      "observations": [
+        "Façades orientées sud et sommets visibles dans une direction commune.",
+        "Cinq ouvertures et fondations lisibles au repère adulte100unités.",
+        "Le rectangle C a été ensuite resserré sans changer son PNG, suivant le contrôle indépendant."
+      ]
+    },
+    {
+      "file": "visual-qa/props.png",
+      "observations": [
+        "Neuf cellules de mobilier et trois panneaux complets, sans découpe parasite.",
+        "Alpha propre sur fond vert uniforme ; aucune frange de fond brun opaque.",
+        "Dimensions peintes cohérentes entre mobilier domestique, borne et panneaux."
+      ]
+    },
+    {
+      "file": "visual-qa/transport.png",
+      "observations": [
+        "Navette native déjà projetée et pad sol projeté une seule fois, contacts de trois pieds cohérents.",
+        "Pad réservé hors rue, entrée sud vide ; modèle de navette explicitement original.",
+        "Pavement répété sans grand raccord lumineux, motif répété visible mais cohérent comme revêtement."
+      ]
+    }
+  ],
+  "limits": [
+    "Cette revue ne certifie pas les43visites, collisions finales, tri de profondeur du jeu ou parcours narratifs.",
+    "Les cinq bâtiments sont des familles réemployées, pas43images uniques.",
+    "20dessins statiques ; aucune nouvelle animation n’est comptée."
+  ]
+}

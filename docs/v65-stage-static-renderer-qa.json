@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-01T01:26:32.145Z",
+  "sourceHashes": {
+    "app/game/pitStageCompositionV65.ts": "711a1c3e5cf6f4a53302ddfe474e23eac513bda98694ef4ab3ddbc7ad2034ef0",
+    "app/game/data/pitStageCompositionV65.json": "4fee1202e0b39e1aedcb50f45ed5c15982f4de0563e2d8e8356b2d8dc4e9d87f",
+    "app/game/pitArenaProduction.ts": "b49fbe048bce45c1328dd28e1c1985f6588a6f5a23d16f4323e2d995d8b94a7c",
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "scripts/verify-pit-stage-static-v65.mjs": "f5cea370bb8bdbeb36d5d182b0d592e6103ccb828a9f398bcf1086cd4ee4cfe6"
+  },
+  "stages": 6,
+  "cameraChecks": 60,
+  "captures": 66,
+  "reports": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-012-balcon-du-roi-de-la-chasse\\report.json"
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-020-trone-fracture\\report.json"
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-036-temple-de-la-double-lune\\report.json"
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-050-porte-de-l-audience\\report.json"
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-069-salle-du-porte-cendres\\report.json"
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "status": "PASS",
+      "cameraChecks": 10,
+      "captures": 11,
+      "report": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\arena-076-atrium-des-mediateurs\\report.json"
+    }
+  ],
+  "applicationFlowVerified": false,
+  "manualVisualReview": "See independent visual review",
+  "reportEvidence": {
+    "path": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\renderer-frozen\\report.json",
+    "sha256": "905f1065b4fd5cdc7492b52980f29adb2c7391bdf213f7f097c03e29de7e39c1"
+  },
+  "visualReview": {
+    "path": "docs/v65-stage-static-visual-review.json",
+    "sha256": "03f3ebe310812105c2fa905277b1f9e8a654bcab0c5fe748a0f7e417bc84787b"
+  }
+}

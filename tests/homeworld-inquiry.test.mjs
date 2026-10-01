@@ -11,6 +11,7 @@ const compile = async file => {
   return import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 };
 const world = await compile("app/game/systems/homeworld.ts");
+const interiors = await compile("app/game/systems/homeworldInteriorsV64.ts");
 const saves = await compile("app/game/save.ts");
 const context = { rankId: "elder", ownedTrophyCount: 500 };
 const act = (progress, action) => world.applyHomeworldAction(progress, { type: "counter-inquiry", action }, context);
@@ -112,6 +113,7 @@ const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Lat
 function callback(name, environment) {
   let implementation;
   function visit(node) {
+    if (ts.isFunctionDeclaration(node) && node.name?.getText(tree) === name) implementation = node;
     if (ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     ts.forEachChild(node, visit);
   }
@@ -126,8 +128,9 @@ function liveFixture() {
     setItem(key, value) { if (reject && key === "inquiry") throw new DOMException("QA refusal", "QuotaExceededError"); values.set(key, value); } };
   const base = saves.defaultSave("2026-09-20T12:00:00.000Z"); base.homeworld = createInquiryFixture(world);
   let durable = saves.writeSaveWithStatus(base, storage, "inquiry").save;
-  const env = { ...world, progressRef: { current: durable.homeworld }, saveRef: { current: durable }, save: durable,
+  const env = { ...world, ...interiors, progressRef: { current: durable.homeworld }, saveRef: { current: durable }, save: durable,
     suspendedRef: { current: false }, pausedRef: { current: false }, actorRef: { current: world.createHomeworldActor() }, dialogStateRef: { current: null },
+    interiorRef: { current: null },
     clearInputs() { cleared++; }, setAnnouncement() {}, onNotify(message) { notices.push(message); },
     setDialog(update) { dialog = update(dialog); }, dialogRef: { current: { focus() { focus++; } } }, requestAnimationFrame(fn) { fn(); return 1; },
     onProgress(progress) {
@@ -137,12 +140,18 @@ function liveFixture() {
       return result.persisted;
     },
   };
+  env.pointInCurrentSpace = callback("pointInCurrentSpace", env);
   env.persistAction = callback("persistAction", env); env.submitInquiry = callback("submitInquiry", env);
   const select = pointId => {
-    const point = world.HOMEWORLD_POINTS.find(point => point.id === pointId);
-    // Unit-test actor fixture only; the browser recipe physically walks the route.
-    env.actorRef.current = { ...env.actorRef.current, x: point.x, y: point.y + 45 };
-    assert.equal(world.nearestHomeworldPoint(env.actorRef.current)?.id, pointId);
+    const room = interiors.homeworldInteriorForPointV64(pointId);
+    const socket = room?.points.find(point => point.pointId === pointId);
+    assert.ok(room && socket, `authored interior for ${pointId}`);
+    // Unit actor fixture in the real room coordinate system. Browser QA walks doors.
+    env.interiorRef.current = room;
+    env.actorRef.current = { ...env.actorRef.current, x: socket.x, y: socket.y + 45 };
+    assert.equal(interiors.isHomeworldInteriorWalkableV64(room, env.actorRef.current), true);
+    const point = env.pointInCurrentSpace(env.actorRef.current, room);
+    assert.equal(point?.id, pointId);
     env.dialogStateRef.current = dialog = { point };
   };
   select("dock-officer-point");
@@ -181,6 +190,23 @@ test("live submit cannot advance from another NPC, remote position, suspended ci
   const forged = liveFixture(); forged.env.submitInquiry({ kind: "audience" }); assert.equal(forged.writes.length, 0);
   const wrong = liveFixture(); wrong.env.submitInquiry({ kind: "convoy", argument: "named-culprit" });
   assert.equal(wrong.writes.length, 0); assert.match(wrong.dialog.message, /pas l’identité/);
+});
+
+test("a stale inquiry dialog cannot submit from the old outdoor socket or another room", () => {
+  const action = choices("trace-chain")[0];
+  const outside = liveFixture(), oldPoint = world.HOMEWORLD_POINTS.find(point => point.id === "dock-officer-point");
+  outside.env.interiorRef.current = null;
+  outside.env.actorRef.current = { ...outside.env.actorRef.current, x: oldPoint.x, y: oldPoint.y + 45 };
+  outside.env.submitInquiry(action);
+  assert.equal(outside.writes.length, 0, "historical exterior coordinates cannot reach the indoor NPC");
+  assert.equal(outside.env.progressRef.current.inquiry.convoyReviewed, false);
+
+  const otherRoom = liveFixture(), staleDialog = otherRoom.env.dialogStateRef.current;
+  otherRoom.select("enforcer-point");
+  otherRoom.env.dialogStateRef.current = staleDialog;
+  otherRoom.env.submitInquiry(action);
+  assert.equal(otherRoom.writes.length, 0, "another room's valid NPC cannot authorize the old dialogue");
+  assert.equal(otherRoom.env.progressRef.current.inquiry.convoyReviewed, false);
 });
 
 

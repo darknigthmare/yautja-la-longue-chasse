@@ -61,6 +61,44 @@ test("complete export reads the known campaign and four annex families without a
   assert.deepEqual(snapshot(data), before); assert.equal(data.writes.length, 0);
   assert(parseCompleteArchive(result.serialized).archive);
 });
+test("historical ship presets without the new head field remain importable without altering source bytes", () => {
+  const source = fixture();
+  const archive = createCompleteArchive(source.campaign, source.data, owner).archive;
+  delete archive.campaign.appearance.headStyleId;
+  const oldPresets = archive.attachments.shipProgression.loadoutPresets.filter(preset => preset.appearance);
+  assert(oldPresets.length > 0);
+  for (const preset of oldPresets) delete preset.appearance.headStyleId;
+  const serialized = JSON.stringify(archive), before = snapshot(source.data);
+  const parsed = parseCompleteArchive(serialized);
+  assert(parsed.archive, parsed.failure);
+  for (const preset of parsed.archive.attachments.shipProgression.loadoutPresets.filter(preset => preset.appearance)) {
+    assert.equal(preset.appearance.headStyleId, "reference");
+  }
+  assert.equal(JSON.stringify(archive), serialized);
+  assert.deepEqual(snapshot(source.data), before);
+  assert.equal(source.data.writes.length, 0);
+  const destination = fixture(other);
+  assert.equal(importCompleteArchive(prepareCompleteArchiveImport(parsed.archive, destination.data), destination.data).persisted, true);
+  assert(parseCompleteArchive(createCompleteArchive(parsed.archive.campaign, destination.data, owner).serialized).archive);
+});
+
+test("legacy head migration does not excuse corrupt appearance fields or future ship versions", () => {
+  const source = fixture();
+  const clean = createCompleteArchive(source.campaign, source.data, owner).archive;
+  for (const mutate of [
+    a => { a.attachments.shipProgression.loadoutPresets[0].appearance.headStyleId = "unknown-head"; },
+    a => { a.attachments.shipProgression.loadoutPresets[0].appearance.headStyleId = null; },
+    a => { delete a.attachments.shipProgression.loadoutPresets[0].appearance.bodyMorphId; },
+    a => { a.attachments.shipProgression.loadoutPresets[0].loadout.armorId = "corrupt-armor"; },
+    a => { a.attachments.shipProgression.version = 100; },
+  ]) {
+    const invalid = structuredClone(clean);
+    delete invalid.attachments.shipProgression.loadoutPresets[0].appearance.headStyleId;
+    mutate(invalid);
+    assert.equal(parseCompleteArchive(JSON.stringify(invalid)).archive, null);
+  }
+});
+
 test("complete export rejects a transfer journal that appears after its stable snapshot", () => {
   const { campaign, data } = fixture();
   const getItem = data.getItem.bind(data);

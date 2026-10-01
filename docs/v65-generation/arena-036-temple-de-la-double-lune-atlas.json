@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-036-temple-de-la-double-lune",
+  "kind": "atlas",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+  "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+  "width": 1254,
+  "height": 1254,
+  "hasAlpha": true,
+  "contentBounds": {
+    "x": 26,
+    "y": 32,
+    "width": 1202,
+    "height": 1154
+  },
+  "receipt": "docs/v65-generation/arena-036-temple-de-la-double-lune-atlas.json",
+  "coverage": {
+    "threshold": 8,
+    "visiblePixels": 573925,
+    "assignedPixels": 573925,
+    "nativeDrawings": 4,
+    "animationFrames": 0
+  },
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-87856bfc-812c-49ca-a0f9-f20469757c8c.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. STATIC native transparent sprite atlas for the original Yautja stage 'Temple de la Double Lune', now a practical clan observatory/sanctuary, not a human temple. Reference1 gives materials and moonlit palette ONLY. Exactly FOUR separate complete objects in a strict2x2 grid on a square1536x1536 canvas, with generous40px alpha margins and wide clear gap between every cell. Front-facing side-stage view with shallow top surfaces, no corner isometry. Native transparent background, no ground plane, text, grid, shadow rectangle or connected diorama.\nTOP LEFT P1: one distant physical astronomical sensor assembly, three incomplete curved dark metal ribs on a squat basalt machinery plinth. Mechanical pivots, solid cable links, restrained dim amber instrument slots. The open space inside the ribs stays transparent. Not a portal, no hologram or glowing magic ring.\nTOP RIGHT P2: one sturdy upright basalt load-bearing post with layered dark alloy reinforcing bands, gently curved top rib and inset cable recess, solid broad horizontal base. Practical worn alien engineering, no Gothic ornament.\nBOTTOM LEFT P3: one LOW waist-high astronomical console, broad squat metal chassis bolted to stone, tilted dark glass instrument face with small amber star-like dots physically on the glass, no letters and no projected hologram. Complete base, all parts connected.\nBOTTOM RIGHT P5: one asymmetrical low fragment of fractured slate-blue basalt with a short inset ribbed metallic rail and two dim amber recessed nodes, a solid corner-ground object. No isolated rocks outside its silhouette.\nDetailed realistic hand-painted videogame art, cold moonlight upperleft, muted charcoal/slate with restrained warm circuitry, coherent anatomy of machinery and crisp alpha. No characters, animals, statues, gods, giant masks, floating objects, flames, medieval flags or arches. Four different static modular objects, no animation frames.\n",
+  "prompts": [
+    {
+      "file": "036-atlas.txt",
+      "prompt": "Use case: stylized-concept. STATIC native transparent sprite atlas for the original Yautja stage 'Temple de la Double Lune', now a practical clan observatory/sanctuary, not a human temple. Reference1 gives materials and moonlit palette ONLY. Exactly FOUR separate complete objects in a strict2x2 grid on a square1536x1536 canvas, with generous40px alpha margins and wide clear gap between every cell. Front-facing side-stage view with shallow top surfaces, no corner isometry. Native transparent background, no ground plane, text, grid, shadow rectangle or connected diorama.\nTOP LEFT P1: one distant physical astronomical sensor assembly, three incomplete curved dark metal ribs on a squat basalt machinery plinth. Mechanical pivots, solid cable links, restrained dim amber instrument slots. The open space inside the ribs stays transparent. Not a portal, no hologram or glowing magic ring.\nTOP RIGHT P2: one sturdy upright basalt load-bearing post with layered dark alloy reinforcing bands, gently curved top rib and inset cable recess, solid broad horizontal base. Practical worn alien engineering, no Gothic ornament.\nBOTTOM LEFT P3: one LOW waist-high astronomical console, broad squat metal chassis bolted to stone, tilted dark glass instrument face with small amber star-like dots physically on the glass, no letters and no projected hologram. Complete base, all parts connected.\nBOTTOM RIGHT P5: one asymmetrical low fragment of fractured slate-blue basalt with a short inset ribbed metallic rail and two dim amber recessed nodes, a solid corner-ground object. No isolated rocks outside its silhouette.\nDetailed realistic hand-painted videogame art, cold moonlight upperleft, muted charcoal/slate with restrained warm circuitry, coherent anatomy of machinery and crisp alpha. No characters, animals, statues, gods, giant masks, floating objects, flames, medieval flags or arches. Four different static modular objects, no animation frames.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 4,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Abri de clan bas nocturne, deux lunes conservées comme motif ORIGINAL du stage ; ne décrit pas l’astronomie canonique.",
+    "Aucun sol jouable dans P0 ; capteur dessiné avec pivots/câbles physiques et vide alpha.",
+    "Quatre modules statiques distincts, aucun portail magique, dieu ou visage."
+  ]
+}

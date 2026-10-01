@@ -5,7 +5,7 @@ import {menuFixturesV63} from './campaign-menu-v63-fixtures.mjs';
 const url=process.env.V63_QA_URL??'https://yautja-la-longue-chasse.vercel.app';
 const phase=process.env.V63_QA_PHASE??'before';
 const out=`work-local/v63/qa/menu/${phase}`;await fs.mkdir(out,{recursive:true});
-const fixtures=await menuFixturesV63(),browser=await chromium.launch({channel:'chrome',headless:true}),results=[];
+const fixtures=process.env.V63_QA_FIXTURE_FILE?JSON.parse(await fs.readFile(process.env.V63_QA_FIXTURE_FILE,'utf8')):await menuFixturesV63(),browser=await chromium.launch({channel:'chrome',headless:true}),results=[];
 async function verifyManualReplacement(page){
  await page.getByRole('button',{name:'Réglages',exact:true}).last().click();
  const panel=page.locator('[data-campaign-save-panel]');await panel.waitFor();

@@ -11,6 +11,14 @@ const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Lat
 const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
+function walkableDistrictPosition(id) {
+  const district = world.HOMEWORLD_DISTRICTS.find(item => item.id === id);
+  for (let y = district.y + 30; y < district.y + district.height - 30; y += 30)
+    for (let x = district.x + 30; x < district.x + district.width - 30; x += 30)
+      if (world.isHomeworldWalkable({ x, y }) && world.districtAtHomeworldActor({ x, y })?.id === id) return { x, y };
+  throw new Error(`No usable fixture position in ${id}`);
+}
+
 function liveCallback(name, environment) {
   let implementation;
   function visit(node) {
@@ -38,6 +46,7 @@ function fixture() {
     bindings: {}, held: { current: new Set() }, touch: { current: {} }, matchesControlAction: () => false,
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
+    interiorRef: { current: null },
     dreadMotionRef: { current: { angles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: world.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     spatialCodexOpenRef: { current: false },
@@ -93,7 +102,7 @@ test("repeated refusal keeps the same visit available and writes at most once pe
 test("several refused visited districts recover progressively; a second refusal does not erase the first ack", () => {
   const f = fixture(); f.tick();
   // A valid second actor-position fixture drives the same polling callback.
-  f.env.actorRef.current = { ...f.env.actorRef.current, x: 1750, y: 2000 };
+  f.env.actorRef.current = { ...f.env.actorRef.current, ...walkableDistrictPosition('market') };
   assert.equal(world.districtAtHomeworldActor(f.env.actorRef.current).id, "market");
   f.tick(); assert.deepEqual([...f.env.pendingVisitsRef.current], ["port", "market"]);
   let writes = 0; f.env.persist = () => ++writes === 1;
@@ -187,7 +196,7 @@ test("entering youth training keeps refused visits alive until an explicit succe
 
 test("a partially recovered visit queue still blocks departure for youth training", () => {
   const f = fixture(); f.tick();
-  f.env.actorRef.current = { ...f.env.actorRef.current, x: 1750, y: 2000 }; f.tick();
+  f.env.actorRef.current = { ...f.env.actorRef.current, ...walkableDistrictPosition('market') }; f.tick();
   let writes = 0, entries = 0;
   f.env.persist = () => ++writes === 1;
   f.env.onYouthTraining = () => { entries++; return true; };

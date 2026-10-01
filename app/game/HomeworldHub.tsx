@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element -- local transparent whole-character plates and game props */
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import { getChronicleRank } from "./systems/clanChronicle";
@@ -10,9 +10,9 @@ import { matchesControlAction, type ControlActionId } from "./systems/controlBin
 import { shipForId, type ShipId } from "./shipCatalogue";
 import type { SaveGame } from "./types";
 import {
-  HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, homeworldHeroPlate,
+  HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, HOMEWORLD_BUILDINGS, HOMEWORLD_POINTS, homeworldHeroPlate,
   HOMEWORLD_NPCS, HOMEWORLD_EVIDENCE, HOMEWORLD_REGIONS, HOMEWORLD_WITNESS_CHOICES,
-  createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, nearestHomeworldDoor,
+  createHomeworldActor, stepHomeworldActor, stepHomeworldActorOnFloor, nearestHomeworldPoint, nearestHomeworldDoor,
   districtAtHomeworldActor, applyHomeworldAction, shouldFadeHomeworldForeground, homeworldInquiryJournal, homeworldInquiryDialogue,
   type HomeworldAction, type HomeworldPoint, type HomeworldProgress, type HomeworldInquiryAction,
   type HomeworldService, type HomeworldWitnessChoice, type HomeworldPlayableRegionId,
@@ -21,6 +21,10 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 import HomeworldCityScene from "./HomeworldCityScene";
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
+import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
+import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingDoorwayV64 } from "./systems/homeworldGeometryV64";
+import { homeworldInteriorForBuildingV64, nearestHomeworldInteriorTargetV64, isHomeworldInteriorWalkableV64, type HomeworldInteriorV64 } from "./systems/homeworldInteriorsV64";
+import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from "./systems/homeworldCharacterPlacementV64";
 import { HUNTER_DREAD_STRANDS_V63, stepHunterDreadsV63, type DreadMotion } from "./hunterDreadsV63";
 import styles from "./HomeworldCity.module.css";
 
@@ -28,6 +32,8 @@ export interface HomeworldHubProps {
   save: SaveGame;
   selectedShipId: ShipId;
   suspended: boolean;
+  navigation?: ReactNode;
+  welcome?: ReactNode;
   /** Return false when durable saving failed; no local success is then announced. */
   onProgress(next: HomeworldProgress): boolean;
   onService(service: HomeworldService): void;
@@ -38,9 +44,20 @@ export interface HomeworldHubProps {
   onNotify(message: string): void;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining }: HomeworldHubProps) {
+function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null): HomeworldPoint | null {
+  if (!room) return nearestHomeworldPoint(actor);
+  const target = nearestHomeworldInteriorTargetV64(room, actor);
+  if (target?.kind !== "point") return null;
+  const original = HOMEWORLD_POINTS.find(point => point.id === target.pointId);
+  return original ? { ...original, ...target.position } : null;
+}
+
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
+  const [interiorId, setInteriorId] = useState<string | null>(null);
+  const interiorRef = useRef<HomeworldInteriorV64 | null>(null);
+  const exteriorAnchorRef = useRef(actor);
   const [phase, setPhase] = useState(0);
   const [dreadAngles, setDreadAngles] = useState<number[]>(() => HUNTER_DREAD_STRANDS_V63.map(() => 0));
   const dreadMotionRef = useRef<DreadMotion>({ angles: dreadAngles, velocities: HUNTER_DREAD_STRANDS_V63.map(() => 0) });
@@ -49,7 +66,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const [inactive, setInactive] = useState(false);
   const [spatialCodexOpen, setSpatialCodexOpen] = useState(false);
   const spatialCodexOpenRef = useRef(false);
-  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string } | null>(null);
+  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const viewportRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
@@ -67,10 +84,20 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const [pendingVisitCount, setPendingVisitCount] = useState(0);
   const gamepadStateRef = useRef(createHomeworldGamepadState());
   const bindings = save.settings.controlBindings;
-  const district = districtAtHomeworldActor(actor);
-  const nearest = nearestHomeworldPoint(actor);
-  const cameraX = Math.max(0, Math.min(HOMEWORLD_WORLD.width - viewportSize.width, actor.x - viewportSize.width * .5));
-  const cameraY = Math.max(0, Math.min(HOMEWORLD_WORLD.height - viewportSize.height, actor.y - viewportSize.height * .62));
+  const interior = interiorId ? homeworldInteriorForBuildingV64(interiorId) : null;
+  const currentBuilding = interiorId ? HOMEWORLD_BUILDINGS.find(building => building.id === interiorId) : null;
+  const district = currentBuilding ? HOMEWORLD_DISTRICTS.find(entry => entry.id === currentBuilding.districtId) : districtAtHomeworldActor(actor);
+  const nearest = pointInCurrentSpace(actor, interior);
+  const nearestDoor = interior ? null : nearestHomeworldDoor(actor);
+  const indoorTarget = interior ? nearestHomeworldInteriorTargetV64(interior, actor) : null;
+  const sceneWidth = interior?.width ?? HOMEWORLD_WORLD.width;
+  const sceneDepth = interior?.depth ?? HOMEWORLD_WORLD.height;
+  const projectedActor = homeworldProjectGroundV64(actor);
+  const zoom = interior ? Math.min(2, viewportSize.width / (sceneWidth + 90), viewportSize.height / (sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale + 220)) : HOMEWORLD_GEOMETRY_V64.zoom;
+  const cameraX = interior ? (sceneWidth - viewportSize.width / zoom) / 2
+    : Math.max(0, Math.min(sceneWidth - viewportSize.width / zoom, actor.x - viewportSize.width / zoom * .5));
+  const cameraY = interior ? (sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - 128 - viewportSize.height / zoom) / 2
+    : Math.max(-160, Math.min(sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - viewportSize.height / zoom, projectedActor.y - viewportSize.height / zoom * .62));
   const progress = save.homeworld;
   const youthWelcome = Boolean(save.prologue) && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(save.prologue?.chronicle) ?? "");
   const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen;
@@ -93,6 +120,32 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     gamepadStateRef.current = createHomeworldGamepadState();
     touch.current = { left: false, right: false, up: false, down: false, jump: false };
   }, []);
+
+  const enterInterior = useCallback((buildingId: string) => {
+    const building = nearestHomeworldDoor(actorRef.current);
+    if (interiorRef.current || suspendedRef.current || pausedRef.current || dialogStateRef.current || building?.id !== buildingId) return;
+    const room = homeworldInteriorForBuildingV64(buildingId);
+    if (!room) return;
+    clearInputs();
+    const approach = homeworldBuildingDoorwayV64(building).approach;
+    exteriorAnchorRef.current = { ...actorRef.current, ...approach, vx: 0, vy: 0 };
+    const next = { ...actorRef.current, ...room.spawn, vx: 0, vy: 0, facing: 1 as const };
+    interiorRef.current = room; actorRef.current = next;
+    setInteriorId(room.buildingId); setActor(next);
+    setAnnouncement(`Entrée dans ${room.title}. Approche les personnages ou rejoins la sortie au sud.`);
+    requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
+  }, [clearInputs]);
+
+  const exitInterior = useCallback(() => {
+    const room = interiorRef.current;
+    if (!room || suspendedRef.current || pausedRef.current || dialogStateRef.current
+      || nearestHomeworldInteriorTargetV64(room, actorRef.current)?.kind !== "exit") return;
+    clearInputs();
+    const next = { ...exteriorAnchorRef.current, vx: 0, vy: 0 };
+    interiorRef.current = null; actorRef.current = next;
+    setInteriorId(null); setActor(next); setAnnouncement("Retour au seuil extérieur.");
+    requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
+  }, [clearInputs]);
 
   const persistAction = useCallback((action: HomeworldAction, announce = true) => {
     const currentSave = saveRef.current;
@@ -157,18 +210,23 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
 
   const interact = useCallback(() => {
     if (suspendedRef.current || pausedRef.current || dialogStateRef.current) return;
-    const point = nearestHomeworldPoint(actorRef.current);
+    const room = interiorRef.current;
+    if (room && nearestHomeworldInteriorTargetV64(room, actorRef.current)?.kind === "exit") { exitInterior(); return; }
+    const door = room ? null : nearestHomeworldDoor(actorRef.current);
+    if (door) { enterInterior(door.id); return; }
+    const point = pointInCurrentSpace(actorRef.current, room);
     if (!point) return;
     clearInputs();
     let message: string | undefined;
     if (point.npcId && !(youthWelcome && point.npcId === "terrace-instructor" && !progressRef.current.greetedNpcIds.includes("hunt-king"))) {
       const greeting = persistAction({ type: "greet", npcId: point.npcId }, false);
-      message = greeting.message;
+      // Youth has its own greeting above; keep failure feedback, not adult service notices.
+      message = youthWelcome && greeting.ok ? undefined : greeting.message;
       if (!greeting.ok) { setDialog({ point, message }); return; }
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, persistAction, youthWelcome]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, youthWelcome]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -215,14 +273,14 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       previous = time;
       const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
       const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current;
-      const context = !active ? "inactive" : pausedRef.current ? "paused" : dialogStateRef.current ? "dialog" : "world";
+      const context = !active ? "inactive" : dialogStateRef.current ? "dialog" : pausedRef.current ? "paused" : "world";
       const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null : null;
       const gamepad = stepHomeworldGamepad(gamepadStateRef.current, pad, context);
       gamepadStateRef.current = gamepad.state;
       if (gamepad.actions.pause) {
         setPaused(!pausedRef.current); setInactive(false); clearInputs();
       }
-      if (!suspendedRef.current && !pausedRef.current) {
+      if (!suspendedRef.current && (!pausedRef.current || dialogStateRef.current)) {
         if (dialogStateRef.current) {
           const choices = [...(dialogRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? [])];
           if (gamepad.actions.menuDirection && choices.length) {
@@ -244,14 +302,18 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         const up = keyboardHeld("hunt.moveUp") || touch.current.up || gamepad.movement.up;
         const down = keyboardHeld("hunt.moveDown") || touch.current.down || gamepad.movement.down;
         const jump = keyboardHeld("hunt.jump") || touch.current.jump || gamepad.movement.jump;
-        const next = stepHomeworldActor(actorRef.current, { moveX: Number(right) - Number(left), climb: Number(down) - Number(up), jumpPressed: jump && !jumpWasPressed }, dt);
+        const controls = { moveX: Number(right) - Number(left), climb: Number(down) - Number(up), jumpPressed: jump && !jumpWasPressed };
+        const room = interiorRef.current;
+        const next = room ? stepHomeworldActorOnFloor(actorRef.current, controls, dt,
+          point => isHomeworldInteriorWalkableV64(room, point), () => ({ ...createHomeworldActor(), ...room.spawn }))
+          : stepHomeworldActor(actorRef.current, controls, dt);
         jumpWasPressed = jump;
         actorRef.current = next;
         // Same bounded springs as the hunt renderer, advanced only by this
         // active simulation clock: braking settles, pause freezes every strand.
         dreadMotionRef.current = stepHunterDreadsV63(dreadMotionRef.current, dt, next.vx * next.facing, next.vy);
         clock += dt;
-        const entered = districtAtHomeworldActor(next);
+        const entered = room ? null : districtAtHomeworldActor(next);
         if (entered && visitedAttempt.current !== entered.id) {
           visitedAttempt.current = entered.id;
           persistVisit(entered.id);
@@ -305,7 +367,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const submitInquiry = useCallback((action: HomeworldInquiryAction) => {
     if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt) return;
     const point = dialogStateRef.current?.point;
-    const nearby = nearestHomeworldPoint(actorRef.current);
+    const nearby = pointInCurrentSpace(actorRef.current, interiorRef.current);
     // A stale dialog or remote call cannot submit a different NPC's evidence.
     if (!point?.npcId || nearby?.id !== point.id) return;
     const offered = homeworldInquiryDialogue(progressRef.current, point.npcId)?.options ?? [];
@@ -341,37 +403,46 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     "arena-steward": "Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur.",
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
-  const title = youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres";
+  const title = dialog?.navigation ? "Navigation de la cité" : youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres";
   const heroPlate = youthWelcome ? {
     src: "/game/prologue/v47/unblooded-player.png", exactPreset: false, plateId: "unblooded-player-v47",
     status: "authored-unblooded-still", provenanceStatus: "noncanonical-project-interpretation",
   } : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const heroBob = actorSpeed > 5 ? Math.sin(phase * 11) * 1.5 : 0;
-  const activeDoorId = nearestHomeworldDoor(actor)?.id ?? null;
+  const activeDoorId = nearestDoor?.id ?? null;
+  const interactionLabel = indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label;
+  const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
+    ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
+    : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? 82 : 100);
   const fadedFrontPropIds = HOMEWORLD_PROPS
     .filter((prop) => shouldFadeHomeworldForeground(prop, actor))
     .map((prop) => prop.id)
     .join("|");
 
-  return <section ref={rootRef} className={styles.hub} aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true">
+  return <section ref={rootRef} className={styles.hub} style={suspended ? { display: "none" } : undefined}
+    aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-interior-id={interior?.buildingId}>
     <header className={styles.header}>
-      <div><div className={styles.eyebrow}>Yautja Prime · Monde natal</div><h2>La Cité des Premiers Trophées</h2><p>{youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure."}</p></div>
-      <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button>
+      <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior?.title ?? "La Cité des Premiers Trophées"}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
+      <div className={styles.hudActionsV64}><button type="button" onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
+      <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button></div>
     </header>
-    <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label="Cité jouable en perspective 2.5D" aria-describedby="homeworld-controls"
+    <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
-      <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
+      {!interior && <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
         open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open; setSpatialCodexOpen(open);
-          if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />
-      <div className={styles.sky} aria-hidden="true" /><div className={styles.distant} aria-hidden="true" style={{ transform: `translate(${-cameraX * .018}px,${-cameraY * .025}px)` }} />
-      <div className={styles.world} aria-hidden="true" style={{ width: HOMEWORLD_WORLD.width, height: HOMEWORLD_WORLD.height, transform: `translate(${-cameraX}px,${-cameraY}px)` }}>
-        <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />
-        <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${actor.x}px,${actor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
+          if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />}
+      {!interior && <div className={styles.sky} aria-hidden="true" />}
+      <div className={styles.world} aria-hidden="true" style={{ width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
+        {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
+          : <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />}
+        <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
+          <span className={styles.heroVisual}>
           {!youthWelcome && heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
-            morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
+            style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
             className={styles.heroPlate}
+            style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined}
             src={heroPlate.src}
             alt=""
             draggable={false}
@@ -381,24 +452,25 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
             data-asset-status={heroPlate.status}
             data-provenance-status={heroPlate.provenanceStatus}
           />}
+          </span>
           <i className={styles.heroMark} />
         </div>
       </div>
-      <div className={styles.haze} aria-hidden="true" /><div className={styles.foreground} style={{ left: -30 }} aria-hidden="true" /><div className={styles.foreground} style={{ right: -45 }} aria-hidden="true" />
-      <div className={styles.location}><strong>{district?.name ?? "Passerelle de liaison"}</strong><span>{youthWelcome && district?.id === "port" ? "Les convois et les navettes du clan animent les quais." : youthWelcome && district?.id === "forges" ? "Les artisans préparent les armes et les parures du clan." : district?.description ?? "Les rues obliques et les passages publics relient les cours de la cité."}</span></div>
-      <div className={styles.minimap} role="img" aria-label={`Plan de la cité : ${progress.visitedDistrictIds.length} quartiers visités sur ${HOMEWORLD_DISTRICTS.length}. Position : ${district?.name ?? "liaison"}.`}>
+      {!interior && <div className={styles.haze} aria-hidden="true" />}
+      <div className={styles.location}><strong>{district?.name ?? "Passerelle de liaison"}</strong><span>{interior ? "Rejoins le seuil au sud pour ressortir. Les personnages et objets se rencontrent à pied." : youthWelcome && district?.id === "port" ? "Les convois et les navettes du clan animent les quais." : youthWelcome && district?.id === "forges" ? "Les artisans préparent les armes et les parures du clan." : district?.description ?? "Les rues et passages publics relient les quartiers de la cité."}</span></div>
+      {!interior && <div className={styles.minimap} role="img" aria-label={`Plan de la cité : ${progress.visitedDistrictIds.length} quartiers visités sur ${HOMEWORLD_DISTRICTS.length}. Position : ${district?.name ?? "liaison"}.`}>
         {HOMEWORLD_DISTRICTS.map(entry => <i key={entry.id} className={styles.mapDistrict} data-visited={progress.visitedDistrictIds.includes(entry.id)} style={{ left: `${entry.x / HOMEWORLD_WORLD.width * 100}%`, top: `${entry.y / HOMEWORLD_WORLD.height * 100}%`, width: `${entry.width / HOMEWORLD_WORLD.width * 100}%`, height: `${entry.height / HOMEWORLD_WORLD.height * 100}%` }} />)}
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD.height * 100}%` }} />
-      </div>
-      {nearest && !blocked && <button className={styles.prompt} type="button" onClick={interact}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest.kind === "ship" ? "Quais du clan" : nearest.label}</button>}
+      </div>}
+      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={nearestDoor?.id} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
       {(paused || inactive || suspended) && !dialog && <div className={styles.pause}><strong>{suspended ? "Cité suspendue" : "Exploration en pause"}</strong>{!suspended && <button type="button" onClick={() => { setPaused(false); setInactive(false); viewportRef.current?.focus({ preventScroll: true }); }}>Reprendre l’exploration</button>}</div>}
     </div>
     <div className={styles.touch} aria-label="Commandes tactiles">
       <div className={styles.touchGroup}>{touchButton("left", "Marcher à gauche", "←")}{touchButton("right", "Marcher à droite", "→")}</div>
-      <div className={styles.touchGroup}>{touchButton("up", "Marcher vers le fond", "↑")}{touchButton("down", "Marcher vers l’avant", "↓")}<button type="button" aria-label="Interagir avec le point proche" disabled={blocked || !nearest} onClick={interact}>◉</button></div>
+      <div className={styles.touchGroup}>{touchButton("up", "Marcher vers le fond", "↑")}{touchButton("down", "Marcher vers l’avant", "↓")}<button type="button" aria-label="Interagir avec le point proche" disabled={blocked || !interactionLabel} onClick={interact}>◉</button></div>
     </div>
-    {youthWelcome && <section className={styles.notice} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : save.youthTraining?.checkpoint.phase === "cage-complete" ? "cage-returned" : save.youthTraining?.checkpoint.phase.startsWith("cage-") ? "cage-active" : save.youthTraining?.checkpoint.phase === "patrol-complete" ? "patrol-returned" : save.youthTraining?.checkpoint.phase.startsWith("patrol-") ? "patrol-active" : save.youthTraining?.checkpoint.phase === "desert-complete" ? "desert-returned" : save.youthTraining?.status === "completed" ? "desert-ready" : "training"}>
-      <strong>Accueil du clan</strong><p>{youthObjective}</p><p>Approche le personnage puis utilise Interaction. Ces rencontres ouvrent le dojo mais ne valident aucun exercice. Lame et biomask sont enregistrés uniquement aux étapes réussies. Dialogues originaux adaptés pour ce jeu.</p>
+    {youthWelcome && <section className={styles.youthHudV64} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : save.youthTraining?.checkpoint.phase === "cage-complete" ? "cage-returned" : save.youthTraining?.checkpoint.phase.startsWith("cage-") ? "cage-active" : save.youthTraining?.checkpoint.phase === "patrol-complete" ? "patrol-returned" : save.youthTraining?.checkpoint.phase.startsWith("patrol-") ? "patrol-active" : save.youthTraining?.checkpoint.phase === "desert-complete" ? "desert-returned" : save.youthTraining?.status === "completed" ? "desert-ready" : "training"}>
+      <strong>Accueil du clan</strong><p>{youthObjective}</p>
     </section>}
     <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? save.youthTraining?.status === "completed" ? "Formation accomplie · Premier réveil" : "Apprentissage Unblooded · Auprès du clan" : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" onClick={() => { clearInputs(); setDialog({ point: null }); }}>{youthWelcome ? "Journal de l’accueil" : "Journal de la cité"}</button>
@@ -408,26 +480,35 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
       <button type="button" className="ghost-button small" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>
     </div>}
-    <div id="homeworld-controls" className={styles.help}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les Marches de Cendre et le Désert de Verre proposent deux enquêtes jouables. Les huit autres régions et la campagne complète restent à produire."}</div>
+    <div id="homeworld-controls" className={styles.srOnly}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les Marches de Cendre et le Désert de Verre proposent deux enquêtes jouables. Les huit autres régions et la campagne complète restent à produire."}</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {dialog && <div className={styles.backdrop}>
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
         <div className={styles.eyebrow}>{selectedNpc?.role ?? (selectedPoint?.kind === "region" ? selectedRegion?.status === "playable-introduction" ? selectedRegion.name + " · enquête régionale" : "Frontière du territoire · niveau non livré" : "La Couronne de Cendres")}</div>
         <h3 id="homeworld-dialog-title">{title}</h3>
+        {dialog.navigation ? <>
+          <p>{interior?.description ?? "Une cité de clans et de serments. Ouvre une destination ou reprends l’exploration à ta position actuelle."}</p>
+          <div className={styles.navigationActionsV64} onClick={event => {
+            if (event.target instanceof HTMLElement && event.target.closest("button:not(:disabled)")) closeDialog();
+          }}>{navigation}</div>
+          {welcome && <section className={styles.notice}>{welcome}</section>}
+          <p>Marche : {controlActionShortcut("hunt.moveLeft", bindings)} / {controlActionShortcut("hunt.moveRight", bindings)} / {controlActionShortcut("hunt.moveUp", bindings)} / {controlActionShortcut("hunt.moveDown", bindings)}. Interaction : {controlActionShortcut("hunt.interact", bindings)}. Manette : stick ou croix, A interaction, B fermer, Start pause.</p>
+          <button type="button" onClick={closeDialog}>Fermer la navigation</button>
+        </> : <>
         {selectedPoint ? <>
           {selectedNpc && <p>« {youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »</p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Accueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.</p></div>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.description}</p>
-          {selectedPoint.kind === "ship" && <p>{youthWelcome ? "Les appareils du clan occupent les quais. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} t’attend aux quais. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}
+          {selectedPoint.kind === "ship" && <p>{youthWelcome ? "La navette de desserte relie les quais aux appareils du clan. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} reste en amarrage orbital. Cette console donne accès au transfert par la navette de desserte. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}
           {selectedRegion && <><p>{selectedRegion.description}</p>{youthWelcome && <p>Les sorties restent fermées pendant cet accueil. La formation, le premier biomask et le repos aux baraquements précèdent la première sortie de jeunesse ; le maître ouvre ensuite une reconnaissance guidée du désert depuis son dialogue.</p>}<div className={styles.notice}>
             {selectedRegion.status === "playable-introduction"
               ? selectedRegion.id === "glass-desert"
                 ? "Deuxième enquête jouable : plaques vitrifiées, fouisseur sensible aux vibrations, corniches ou leurres, site abandonné et balise de rabattage. Choix conservés après retour enregistré ; l’acte II reste à développer."
                 : "Première sortie jouable : pistes dans la cendre, passage supérieur, brouteur territorial et convoi disparu. Le rapport est conservé après retour en navette. Cette sortie ne termine pas tout l’acte I."
               : "Territoire prévu par la conversation source. Son niveau et ses rencontres restent à produire. Cette porte ne lance aucune mission d’une autre planète."}
-            {selectedRegion.id === "ash-marches" && !progress.evidenceIds.includes("suspect-trophy") && <p>Inspecte d’abord le trophée du convoi, juste à côté de cette porte.</p>}
+            {selectedRegion.id === "ash-marches" && !progress.evidenceIds.includes("suspect-trophy") && <p>Inspecte d’abord le trophée du convoi dans le Contrôle d’amarrage, au Port des Chasses.</p>}
             {selectedRegion.id === "glass-desert" && !progress.expeditions["ash-marches"] && <p>Remets d’abord le rapport complet des Marches à sa navette. Le Désert exige ce rapport durable ; aucun résultat THE PIT n’est requis.</p>}
           </div></>}
           {!youthWelcome && selectedPoint.kind === "audience" && <p>Présente les trois preuves et prends position sur le sort du témoin avant l’audience. Cette première décision est conservée dans ta sauvegarde ; elle ne termine pas toute la campagne.</p>}
@@ -464,8 +545,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
           {selectedPoint?.kind === "ship" && <button type="button" className={styles.primary} disabled={youthWelcome} onClick={onReturnShip}>{youthWelcome ? "Vaisseau personnel : rite Blooded requis" : "Monter à bord"}</button>}
           {selectedPoint?.service && <button type="button" className={styles.primary} disabled={youthServiceLocked} onClick={() => { const service = selectedPoint.service; if (service) { closeDialog(); onService(service); } }}>{youthServiceLocked ? "Formation préalable requise" : "Accéder au service"}</button>}
           {!youthWelcome && selectedPoint?.kind === "audience" && !progress.audienceOutcome && <button type="button" className={styles.primary} onClick={() => { const result = persistAction({ type: "audience" }); setDialog(current => current ? { ...current, message: result.message } : current); }}>Présenter mon dossier</button>}
-          <button type="button" onClick={closeDialog}>Revenir à la cité</button>
+          <button type="button" onClick={closeDialog}>{interior ? "Revenir dans la salle" : "Revenir à la cité"}</button>
         </div>
+        </>}
       </div>
     </div>}
   </section>;

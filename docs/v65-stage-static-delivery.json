@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "updatedAt": "2026-10-01T01:38:52.286Z",
+  "scope": "Six existing original stages receive static art revisions; no new animation work in this lot.",
+  "status": "LOCAL_APPLICATION_QA_PASS_NOT_PUBLICATION",
+  "counts": {
+    "existingStagesRevised": 6,
+    "newArenaIds": 0,
+    "newNativePngs": 12,
+    "newStaticDrawings": 30,
+    "newBackdrops": 6,
+    "newModuleDrawings": 24,
+    "staticModulePlacementsNotCountedAsDrawings": true,
+    "newAnimationFrames": 0,
+    "newStageEvents": 0,
+    "nativeGenerationCalls": 14,
+    "preservedIntermediateGenerations": 2,
+    "reusedFloorPngs": 4,
+    "deletedHistoricalFiles": 0,
+    "canonicalDossiersCertifiedComplete": 0
+  },
+  "stages": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "name": "Balcon du Roi de la Chasse",
+      "workbookKey": "ST064",
+      "cells": "09_STAGES!A68:N68",
+      "before": "Architecture gothique, loge de clan peu identifiable",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E194",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E195",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E196",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "name": "Trône Fracturé",
+      "workbookKey": "ST072",
+      "cells": "09_STAGES!A76:N76",
+      "before": "Arches et ruines médiévales, technologie du clan peu lisible",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E218",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E219",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E220",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "name": "Temple de la Double Lune",
+      "workbookKey": "ST088",
+      "cells": "09_STAGES!A92:N92",
+      "before": "Temple générique, original à rapprocher du vocabulaire matériel Yautja",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E266",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E267",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E268",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "name": "Porte de l'Audience",
+      "workbookKey": "ST102",
+      "cells": "09_STAGES!A106:N106",
+      "before": "Forteresse et grands masques génériques, sas industriel peu lisible",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E308",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E309",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E310",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "name": "Salle du Porte-Cendres",
+      "workbookKey": "ST120",
+      "cells": "09_STAGES!A124:N124",
+      "before": "Autel lévitant sans dispositif technologique explicite",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E362",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E363",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E364",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "name": "Atrium des Médiateurs",
+      "workbookKey": "ST127",
+      "cells": "09_STAGES!A131:N131",
+      "before": "Atrium ornemental générique, fonction de médiation peu lisible",
+      "canonicalLocation": false,
+      "eventsNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E383",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E384",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E385",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ]
+    }
+  ],
+  "nativeFiles": [
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-depth.png",
+      "sha256": "c4fc617ec87c5d9ab21da1a0bdb4101b294cfa30ce0f572ef481bc74c1293524",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+      "sha256": "ae0ad2e753f70febc5992cb9a2054a63f1d6d0efaa08b79aab11689bd085d366",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+      "sha256": "f63b0a5648dd67fde6d2a30d408e1361194f26547ab08ae72e70535e43eb7ea6",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+      "sha256": "3fa502d633bc498d7edadc77ba7ac33cfc163e0af6e296dc46436f7d00c0f932",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+      "sha256": "09d8494a9b881043a40a2b4071c8499e4afef000917a7075421aac1a74198a76",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+      "sha256": "587ed1a738b1f0ca6d4c51ee6870116e9c2fa4ad94289cc8cccf28392b1c612b",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png",
+      "sha256": "2b72786f88673420d0f89d83bda9201749972ff54380185c1d730c7d9fe3219c",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+      "sha256": "0590566c642b6750b7431425775b3486fce5b1308762a553300bd7ab4f8de50f",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png",
+      "sha256": "14e77e5869a43513a0e098e643a00da974061d2d546ded266d8f42fbf0e0a199",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+      "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png",
+      "sha256": "3cf47eab56b3acd574d216281f8c7e5cc5bcf3a2cc65871ce0742a131e579506",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+      "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "sourceWorkbook": {
+    "path": "C:/Users/chuck/Downloads/THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "reconciliation": {
+    "workbookDossiers": 174,
+    "workbookTargets": 170,
+    "runtimeStages": 187,
+    "dossiersWithoutRuntimeKit": 0,
+    "selectedStaticRevisions": 6,
+    "integratedStaticRevisions": 6,
+    "newArenas": 0,
+    "newAnimations": 0,
+    "literalDossiersCertifiedComplete": 0
+  },
+  "floorReuse": {
+    "proof": "docs/v65-stage-floor-proof.json",
+    "sourcePngsEdited": false,
+    "contactY": 430,
+    "fasciaY": 454,
+    "fasciaHeight": 240,
+    "arena036": "Uses unchanged contact and fascia PNGs from arena020, selected through original manifest ID plus SHA. Superseded ruins-tribunal images remain intact."
+  },
+  "correctedDuringVisualReview": [
+    "Throne020 lowered10worldunits so its painted lower steps meet the solid floor.",
+    "036 backdrop framing preserves both original moons; this is not a canonical astronomical claim.",
+    "036 figurative reused floor removed from runtime selection; technical floor020 reused without resizing its source PNG."
+  ],
+  "preservation": {
+    "oldArenaIds": true,
+    "combatSimulationUnchanged": true,
+    "oldNativeFilesByteIdentical": true,
+    "sourceWorkbookImmutable": true,
+    "mechanism": "Versioned static overlay binds all historical source IDs and SHA; mismatched historical sources keep the prior kit. Reused floor sources also require exact SHA."
+  },
+  "qa": {
+    "targetedTests": {
+      "status": "PASS",
+      "count": 39,
+      "log": {
+        "path": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\tests-final.log",
+        "sha256": "69e970f6a3e4fd209a16f2f2c1fd63c7a567dee7aeaf370ff22266a5cd577f8f"
+      }
+    },
+    "renderer": {
+      "status": "PASS",
+      "cameraChecks": 60,
+      "captures": 66,
+      "proof": "docs/v65-stage-static-renderer-qa.json"
+    },
+    "independentVisualReview": {
+      "path": "docs/v65-stage-static-visual-review.json",
+      "sha256": "03f3ebe310812105c2fa905277b1f9e8a654bcab0c5fe748a0f7e417bc84787b"
+    },
+    "application": {
+      "status": "PASS",
+      "checks": 11,
+      "captures": 18,
+      "proof": "docs/v65-stage-static-application-qa.json"
+    },
+    "journeyCompatibility": {
+      "status": "PASS",
+      "count": 34,
+      "log": {
+        "path": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\tests-journeys-v53.log",
+        "sha256": "d84b36b725cbf2649e8347f33d862d6c3cc89cafd33ee39f68e2217029ae594b"
+      },
+      "note": "Historical six-PNG assumption replaced by six complete rendering passes, distinct valid source regions and world-locked floor checks. Transfer consequences, replay checksums and both fighters remain tested; no runtime change."
+    }
+  },
+  "limits": [
+    "These six original project environments are adaptations guided by Yautja visual vocabulary, not certified1:1canonical locations.",
+    "All174workbookdossiers resolve to170runtime targets; this does not certify their art, animation or narrative completion.",
+    "The18animation requirements associated with these six dossiers remain outside this static lot.",
+    "The other181runtime arena kits were not visually certified by this lot.",
+    "V63 missing native ambient-register coverage does not mean absent backdrops.",
+    "No new character, new route, campaign chapter or new background animation is claimed.",
+    "Local tests, compiled builds, commit, deployment and public browser verification remain separate gates."
+  ]
+}

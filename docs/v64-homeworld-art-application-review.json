@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "release": "V64",
+  "status": "NATIVE_ART_AND_RENDERER_FIXES_REVIEWED_LOCAL_COMPILED_RECIPES_PASS",
+  "reviewedAt": "2026-10-01",
+  "url": "http://127.0.0.1:4182",
+  "scope": "Independent visual inspection of actual application captures produced by other team QA; not a claim to have operated all 43 doors or all gameplay services.",
+  "nativeArtMetrics": {
+    "acceptedPngs": 10,
+    "staticDrawings": 20,
+    "animationFrames": 0,
+    "generations": 16,
+    "preservedIntermediateOutputs": 6
+  },
+  "reviewedCaptures": [
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/review-small.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/spaceport.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/residence-port-2-interior.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/residence-port-1-door.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/market-armory-interior.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64/domestic-mobile.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64-final/trophy-mausoleum-interior.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/interiors-v64-final/residence-market-1-interior.jpg",
+    "I:/CodexTemp/yautja-v64-20261001/codex/city-1440x1000.png",
+    "I:/CodexTemp/yautja-v64-20261001/codex/1440x1000.png",
+    "I:/CodexTemp/yautja-v64-20261001/codex/393x852.png",
+    "I:/CodexTemp/yautja-v64-20261001/codex/844x390.png"
+  ],
+  "acceptedObservations": [
+    "The three domestic interior arrangements have clean native alpha, separate furniture and a common direction of visible upper surfaces.",
+    "The wall bays remain upright; low sidewall cutaways and the floor provide a readable room depth without vertically squashing furniture.",
+    "Painted furniture and actors have plausible relative sizes; their visible feet contact the floor in the reviewed compositions.",
+    "The exterior doors are visibly larger than an adult actor and retain the measured openings; house A contact at the threshold is readable.",
+    "The native shuttle and pad are correctly distinguished as an upright projected object and a ground surface; the inspected port view has no opaque image-background rectangle.",
+    "The desktop element codex explicitly identifies project-original content and shows the common geometric registry; this does not establish canonical fidelity of invented architecture."
+  ],
+  "findings": [
+    {
+      "id": "V64-VIS-01",
+      "status": "REPORTED_TO_RENDERER_OWNER",
+      "severity": "must-fix-before-visual-acceptance",
+      "evidence": "interiors-v64/residence-port-1-door.jpg, interiors-v64/spaceport.jpg, codex/city-1440x1000.png",
+      "observation": "The old perspective panorama and legacy orbital text remain visible between paved polygons and at the port border. Abrupt triangular pavement edges interrupt the common ground plane.",
+      "requestedCorrection": "A continuous native ground base under the walkable city, with the old panorama removed from that plane; any distant backdrop must not masquerade as traversable ground."
+    },
+    {
+      "id": "V64-VIS-02",
+      "status": "REPORTED_TO_RENDERER_OWNER",
+      "severity": "must-fix-before-visual-acceptance",
+      "evidence": "interiors-v64/residence-port-2-interior.jpg, interiors-v64/domestic-mobile.jpg, interiors-v64-final/residence-market-1-interior.jpg",
+      "observation": "The south exit label is clipped into a narrow gold line with fragments of letters.",
+      "requestedCorrection": "Keep the physical exit marker at the threshold but move the readable label outside the clipping floor plane or give it sufficient display bounds."
+    },
+    {
+      "id": "V64-VIS-03",
+      "status": "REPORTED_TO_ROOT_FOR_UI_REVIEW",
+      "severity": "follow-up-ui",
+      "evidence": "codex/393x852.png, codex/844x390.png",
+      "observation": "The proximity toast overlaps the open codex on small screens; the landscape capture does not show the upper dialog controls.",
+      "requestedCorrection": "Verify modal isolation, close-button accessibility and viewport scroll position in the final responsive run."
+    }
+  ],
+  "qaRunDistinction": {
+    "firstInteriorRun": "interiors-v64/failure.json contains an armory dialogue timeout and is not a complete PASS.",
+    "secondInteriorRun": "interiors-v64-final was still running at this review; its partial progress includes successful armory and mausoleum dialogues but is not substituted for its eventual final report.",
+    "codexRun": "codex/report.json reports three responsive functional checks PASS; this independent visual review records additional issues rather than changing that report."
+  },
+  "runtimeEditedByThisReview": false,
+  "limits": [
+    "This review covers selected visible compositions, not every exterior district or every depth-sorting state.",
+    "The native asset contract and standalone compositions passed separately; final application visual acceptance awaits the listed renderer corrections and new captures.",
+    "Publication and production verification remain separate gates."
+  ],
+  "followupReview": {
+    "reviewedAt": "2026-10-01T01:07:03.388Z",
+    "reviewer": "Homeworld renderer owner, following independent initial review",
+    "originalFindingsPreserved": true,
+    "findings": [
+      {
+        "id": "V64-VIS-01",
+        "status": "RESOLVED_IN_REVIEWED_CAPTURES",
+        "evidence": [
+          "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/spaceport.jpg",
+          "I:/CodexTemp/yautja-v64-20261001/navigation-release/393x852.png"
+        ],
+        "observation": "Continuous dark native ground base covers gaps; no old panoramic architecture remains. Pad has no flat orbital label; orbital transport is explained at the console. Paved polygon edges remain visible as street boundaries, with no claim that the entire dark background is walkable."
+      },
+      {
+        "id": "V64-VIS-02",
+        "status": "RESOLVED_IN_REVIEWED_CAPTURES",
+        "evidence": [
+          "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/domestic-mobile.jpg",
+          "I:/CodexTemp/yautja-v64-20261001/interiors-v64-immersive/residence-market-1-interior.jpg",
+          "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth/3-throne-audience-interior.jpg"
+        ],
+        "observation": "South exit label is fully visible above its marker on mobile and desktop. Native wall scale and actor/furniture ground contacts are preserved."
+      },
+      {
+        "id": "V64-VIS-03",
+        "status": "RESOLVED_IN_REVIEWED_CAPTURES_WITH_COMPACT_LANDSCAPE_LIMIT",
+        "evidence": [
+          "I:/CodexTemp/yautja-v64-20261001/codex-release/393x852.png",
+          "I:/CodexTemp/yautja-v64-20261001/codex-release/844x390.png",
+          "I:/CodexTemp/yautja-v64-20261001/navigation-release/393x852.png"
+        ],
+        "observation": "No proximity toast covers the codex panel; close controls are visible. Global topbar no longer covers Homeworld header. Portrait filters have separate rows. Landscape remains compact and needs inner scrolling."
+      }
+    ],
+    "scope": "Selected native compositions visually rechecked and six adult/four youth physical visits passed on local compiled4184. All43 geometric paths pass separately. Public deployment remains a separate gate.",
+    "compiledVerification": {
+      "url": "http://127.0.0.1:4184",
+      "adultRooms": 6,
+      "youthMeetings": 4,
+      "report": "docs/v64-homeworld-final-browser-qa.json",
+      "reviewedCaptures": [
+        "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/spaceport.jpg",
+        "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/domestic-mobile.jpg",
+        "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/dock-control-interior.jpg",
+        "I:/CodexTemp/yautja-v64-20261001/interiors-v64-production/trophy-mausoleum-interior.jpg",
+        "I:/CodexTemp/yautja-v64-20261001/interiors-v64-youth-production/4-training-hall-dialog.jpg"
+      ],
+      "observation": "Final compiled captures confirm continuous terrain, no projected orbital pad label, visible exit text, compact in-game header and all mobile movement controls within viewport. NPC/player/furniture ground alignment retained in reviewed public rooms. Dynamic trophy collection is empty in the synthetic adult fixture; this recipe does not visually certify owned trophy displays."
+    }
+  }
+}

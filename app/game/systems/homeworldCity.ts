@@ -11,6 +11,11 @@ import { trophyWallVisualForDefinitionId } from "../trophyVisualRegistry";
 import { SHIP_LEVEL_ART } from "../shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "../shipInteriorV22";
 import { HOMEWORLD_CITY_ART_V54 } from "./homeworldCityArtV54";
+import residencesV64 from "../data/homeworldResidencesV64.json";
+import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from "./homeworldArtV64";
+import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
+import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
+export { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldUnprojectGroundV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, homeworldBuildingSpritePlacementV64 } from "./homeworldGeometryV64";
 
 export interface HomeworldVec2 {
   readonly x: number;
@@ -50,23 +55,17 @@ export interface HomeworldBuildingModule {
   readonly height: number;
   readonly variant: "hall" | "stall" | "forge" | "archive" | "gate" | "tower";
   readonly doorSide: "left" | "center" | "right";
-  readonly art?: {
-    readonly src: string; readonly sourceWidth: number; readonly sourceHeight: number;
-    readonly alphaBounds: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
-  };
+  readonly footprint: { readonly width: number; readonly depth: number };
+  readonly wallHeight: number;
+  readonly entranceKind: "civic" | "domestic";
+  readonly artId: keyof typeof HOMEWORLD_BUILDING_ART_V64;
+  readonly art: HomeworldNativeBuildingArtV64;
 }
 
-/** Native whole-building art is contained uniformly; the painted bottom stays at the collision depth. */
+/** Relative sprite rectangle for callers with a projected building container. */
 export function homeworldBuildingArtPlacement(building: HomeworldBuildingModule) {
-  if (!building.art) return null;
-  const art = building.art, bounds = art.alphaBounds;
-  const scale = Math.min(building.width / bounds.width, building.height / bounds.height);
-  return {
-    left: building.width / 2 - (bounds.x + bounds.width / 2) * scale,
-    top: building.height - (bounds.y + bounds.height) * scale,
-    width: art.sourceWidth * scale,
-    height: art.sourceHeight * scale,
-  };
+  const image = homeworldBuildingSpritePlacementV64(building), anchor = homeworldProjectGroundV64(building);
+  return { ...image, left: image.left - (anchor.x - building.width / 2), top: image.top - (anchor.y - building.height) };
 }
 
 export interface HomeworldDecorProp {
@@ -79,6 +78,8 @@ export interface HomeworldDecorProp {
   readonly asset: string;
   readonly plane: "rear" | "ground" | "front";
   readonly fadeRadius?: number;
+  readonly artId?: "bench" | "chest" | "locker" | "console" | "workshop" | "cot" | "table" | "rock-plant" | "beacon";
+  readonly footprint?: { readonly halfWidth: number; readonly halfDepth: number };
 }
 
 const HOMEWORLD_PROP_ART = [
@@ -96,6 +97,12 @@ const HOMEWORLD_PROP_ART = [
 export function homeworldPropArtPlacement(prop: HomeworldDecorProp): {
   left: number; top: number; width: number; height: number;
 } {
+  if (prop.artId) {
+    const art = HOMEWORLD_PROP_ART_V64[prop.artId], scale = prop.width / art.alphaBounds.width;
+    const p = homeworldProjectGroundV64(prop);
+    return { left: p.x - art.pivot.x * scale, top: p.y - art.pivot.y * scale,
+      width: art.sourceRect.width * scale, height: art.sourceRect.height * scale };
+  }
   const art = HOMEWORLD_PROP_ART.find(candidate => candidate.src === prop.asset);
   if (!art) return { left: prop.x - prop.width / 2, top: prop.y - prop.height, width: prop.width, height: prop.height };
   const bounds = art.alphaBounds;
@@ -154,9 +161,9 @@ function district(
 
 /** One shared placement contract drives collisions, occlusion and the spatial codex. */
 export const HOMEWORLD_PLACEMENT_RULES = {
-  projection: "oblique-ground-plane",
-  anchor: "painted-bottom-center",
-  scale: "uniform-alpha-bounds",
+  projection: "orthographic-south-35",
+  anchor: "measured-ground-socket",
+  scale: "uniform-native-foundation",
   depth: "ground-y",
   propHalfWidthRatio: .22,
   propMinimumHalfWidth: 18,
@@ -164,11 +171,11 @@ export const HOMEWORLD_PLACEMENT_RULES = {
   propMinimumHalfDepth: 10,
   propMaximumHalfDepth: 24,
   buildingFadeOpacity: .32,
-  routeGrid: 64,
+  routeGrid: 32,
   routeSample: 4,
   routeClearance: 12,
 } as const;
-export const HOMEWORLD_WORLD = { width: 6_300, height: 3_400 } as const;
+export const HOMEWORLD_WORLD = { width: 6_300, height: 5_300 } as const;
 export const HOMEWORLD_ACTOR = {
   halfWidth: 24,
   halfDepth: 14,
@@ -178,7 +185,7 @@ export const HOMEWORLD_ACTOR = {
   tickSeconds: 1 / 60,
 } as const;
 
-export const HOMEWORLD_DISTRICTS: readonly HomeworldDistrict[] = [
+export const HOMEWORLD_DISTRICTS_V54: readonly HomeworldDistrict[] = [
   district("port", "Port des Chasses", "Ton vaisseau reste ton refuge. Les convois et les navettes animent les quais.", polygon([180, 1_980], [360, 1_590], [1_130, 1_650], [1_280, 2_180], [300, 2_400]), "#dfb078", "observatory"),
   district("market", "Marché des Clans", "Des échoppes spécialisées bordent une route d'artisans ouverte et lisible.", polygon([1_050, 1_670], [1_410, 1_420], [2_430, 1_490], [2_650, 2_030], [2_230, 2_250], [1_250, 2_170]), "#9ec9bd", "sanctum"),
   district("forges", "Forges Profondes", "Les ateliers préparent armes et parures sans supprimer la forge du vaisseau.", polygon([2_350, 1_570], [2_850, 1_440], [3_700, 1_640], [3_870, 2_120], [2_800, 2_270]), "#ef925b", "machinery"),
@@ -195,8 +202,11 @@ export const HOMEWORLD_DISTRICTS: readonly HomeworldDistrict[] = [
   district("rampart-walk", "Promenade des remparts", "Une voie extérieure relie la citadelle, le bastion et la galerie basse. Architecture et fonction civique sont des adaptations originales, pas une carte officielle de la planète.", polygon([5_290, 910], [5_820, 790], [6_150, 1_230], [6_090, 2_230], [5_700, 2_590], [5_270, 2_390], [5_130, 1_590]), "#91c5bb", "observatory"),
 ] as const;
 
+const expandGroundV64 = (point: HomeworldVec2): HomeworldVec2 => ({ x: point.x, y: point.y * HOMEWORLD_GEOMETRY_V64.planDepthExpansion });
+export const HOMEWORLD_DISTRICTS: readonly HomeworldDistrict[] = HOMEWORLD_DISTRICTS_V54.map(value => district(value.id, value.name, value.description, value.polygon.map(expandGroundV64), value.accent, value.texture));
+
 /** Authored overlaps connect every district without ladders or forced jumps. */
-export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [
+export const HOMEWORLD_STREETS_V54: readonly HomeworldStreet[] = [
   { id: "quay-court", label: "Cour des quais", polygon: polygon([230, 2_090], [390, 1_700], [1_270, 1_760], [1_180, 2_310]), accent: "#d6a66c", kind: "court" },
   { id: "artisan-bend", label: "Route des artisans", polygon: polygon([1_000, 1_790], [1_450, 1_480], [2_650, 1_590], [2_560, 2_150], [1_280, 2_160]), accent: "#86b9a9", kind: "passage" },
   { id: "forge-run", label: "Voie des forges", polygon: polygon([2_360, 1_690], [2_880, 1_510], [3_850, 1_780], [3_720, 2_220], [2_650, 2_180]), accent: "#d97949", kind: "passage" },
@@ -213,9 +223,26 @@ export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [
   { id: "rampart-south-link", label: "Retour des galeries", polygon: polygon([4_730, 2_120], [4_870, 1_890], [5_640, 2_220], [5_490, 2_500]), accent: "#91c5bb", kind: "undercity" },
 ] as const;
 
+export const HOMEWORLD_SPACEPORT_V64 = {
+  pad: { id: "clan-landing-pad", x: 660, y: 4560, width: 1000, depth: 760, height: 0 },
+  shuttle: { id: "clan-local-shuttle", x: 660, y: 4300, ...HOMEWORLD_TRANSPORT_ART_V64["clan-shuttle"].footprintWorld,
+    height: HOMEWORLD_TRANSPORT_ART_V64["clan-shuttle"].heightWorld - HOMEWORLD_TRANSPORT_ART_V64["clan-shuttle"].footprintWorld.depth * HOMEWORLD_GEOMETRY_V64.depthScale },
+  terminal: { id: "personal-ship", x: 1280, y: 4400 },
+  spawn: { x: 1280, y: 4480 },
+  pedestrian: { left: 1200, right: 1400, top: 3450, bottom: 4700 },
+  lore: "original-adaptation" as const,
+} as const;
+const extraStreetsV64: readonly HomeworldStreet[] = [
+  { id: "landing-apron", label: "Aire d’atterrissage de la navette", polygon: polygon([160,3800],[1160,3800],[1160,4560],[160,4560]), kind: "court", accent: "#b99b67" },
+  { id: "dock-pedestrian-lane", label: "Voie piétonne hors du pad", polygon: polygon([1200,3450],[1400,3450],[1400,4700],[1200,4700]), kind: "passage", accent: "#d6bd8e" },
+  { id: "quay-connection", label: "Raccord des quais au spatioport", polygon: polygon([680,3460],[1400,3460],[1400,3700],[680,3700]), kind: "passage", accent: "#d6bd8e" },
+  { id: "shuttle-access", label: "Passage du sas de transfert", polygon: polygon([1120,4220],[1260,4220],[1260,4440],[1120,4440]), kind: "passage", accent: "#d6bd8e" },
+];
+export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64];
+
 const BUILDING_ASSET_ROOT = "/game/ship-interior/";
 
-export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
+export const HOMEWORLD_BUILDINGS_V54 = [
   { id: "dock-control", districtId: "port", label: "Contrôle d'amarrage", x: 650, y: 1_900, width: 360, height: 280, variant: "tower", doorSide: "right" },
   { id: "market-armory", districtId: "market", label: "Échoppe d'équipement", x: 1_610, y: 1_810, width: 390, height: 250, variant: "stall", doorSide: "center" },
   { id: "market-canopy", districtId: "market", label: "Halle des échanges", x: 2_180, y: 1_720, width: 430, height: 300, variant: "hall", doorSide: "left" },
@@ -237,7 +264,20 @@ export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
   { id: "rampart-south-lodge", districtId: "rampart-walk", label: "Relais bas · extérieur", x: 5_610, y: 2_300, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
 ] as const;
 
-export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
+function nativeBuildingV64(seed: { id: string; districtId: string; label: string; x: number; y: number; width: number; depth: number; variant: HomeworldBuildingModule["variant"]; entranceKind: "civic" | "domestic"; artId: keyof typeof HOMEWORLD_BUILDING_ART_V64 }): HomeworldBuildingModule {
+  const art = HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = seed.width / (art.foundationFront.right - art.foundationFront.left);
+  return { ...seed, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
+    wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: seed.depth } };
+}
+export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
+  ...HOMEWORLD_BUILDINGS_V54.map(b => nativeBuildingV64({ ...b, label: b.label.replace(" · extérieur", ""), y: b.y * HOMEWORLD_GEOMETRY_V64.planDepthExpansion,
+    width: Math.max(570, b.width), depth: 340, entranceKind: "civic", artId: b.variant === "forge" ? "civic-forge" : "civic-hall" })),
+  ...residencesV64.map((b, index) => nativeBuildingV64({ ...b, label: "Maison du clan · " + String(index + 1).padStart(2, "0"),
+    variant: "hall", entranceKind: "domestic", artId: b.artId as keyof typeof HOMEWORLD_BUILDING_ART_V64 })),
+];
+
+/** Historical props/data remain available for provenance; V64 renders new native instances only. */
+export const HOMEWORLD_LEGACY_PROPS_V54: readonly HomeworldDecorProp[] = [
   { id: "dock-console", districtId: "port", x: 760, y: 2_110, width: 120, height: 125, asset: BUILDING_ASSET_ROOT + "v21/console-navigation.webp", plane: "ground" },
   { id: "market-rack-a", districtId: "market", x: 1_430, y: 2_050, width: 150, height: 135, asset: BUILDING_ASSET_ROOT + "v22/armory-rack.webp", plane: "ground" },
   { id: "market-rack-b", districtId: "market", x: 1_850, y: 1_650, width: 130, height: 120, asset: BUILDING_ASSET_ROOT + "v22/armory-rack.webp", plane: "rear" },
@@ -260,7 +300,7 @@ export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
   })),
 ] as const;
 
-export const HOMEWORLD_POINT_POSITIONS = {
+export const HOMEWORLD_POINT_POSITIONS_V54 = {
   "personal-ship": { x: 400, y: 2_220 },
   "dock-officer-point": { x: 690, y: 2_080 },
   "suspect-trophy-point": { x: 1_040, y: 1_970 },
@@ -288,6 +328,33 @@ export const HOMEWORLD_POINT_POSITIONS = {
   "region-first-city-ruins": { x: 2_730, y: 520 },
   "region-forbidden-reserve": { x: 4_800, y: 1_170 },
 } as const;
+
+const relocatedRegionsV64: Readonly<Record<string, HomeworldVec2>> = {
+  "region-storm-chain": { x: 3840, y: 800 }, "region-cold-crown": { x: 4940, y: 820 }, "region-forbidden-reserve": { x: 4920, y: 1880 },
+};
+export const HOMEWORLD_POINT_POSITIONS = Object.fromEntries(Object.entries(HOMEWORLD_POINT_POSITIONS_V54).map(([id, p]) => [id,
+  id === "personal-ship" ? HOMEWORLD_SPACEPORT_V64.terminal : relocatedRegionsV64[id] ?? expandGroundV64(p)])) as Record<keyof typeof HOMEWORLD_POINT_POSITIONS_V54, HomeworldVec2>;
+/** Populated with measured V64 atlas instances after the native art registry is frozen. */
+function nativePropV64(id: string, districtId: string, artId: keyof typeof HOMEWORLD_PROP_ART_V64, x: number, y: number): HomeworldDecorProp {
+  const art = HOMEWORLD_PROP_ART_V64[artId];
+  return { id, districtId, artId, x, y, width: art.alphaBounds.width * art.scaleWorldPerPixel,
+    height: art.heightWorld, asset: art.src, plane: "ground",
+    footprint: { halfWidth: art.footprintWorld.width / 2, halfDepth: art.footprintWorld.depth / 2 } };
+}
+/** Ground-front pivots, not decorative screen rectangles. All legacy props remain archived above. */
+export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
+  ...HOMEWORLD_BUILDINGS.filter(building => building.entranceKind === "civic").map(building =>
+    nativePropV64(`beacon-v64-${building.id}`, building.districtId, "beacon", building.x + (building.id === "trophy-mausoleum" ? -155 : 155), building.y + 110)),
+  ...["market-armory", "trophy-mausoleum", "training-hall", "rampart-north-lodge"].map(id => {
+    const building = HOMEWORLD_BUILDINGS.find(candidate => candidate.id === id)!;
+    return nativePropV64(`bench-v64-${id}`, building.districtId, "bench", building.x + (id === "training-hall" ? 360 : -185), building.y + (id === "training-hall" ? 102 : 150));
+  }),
+  nativePropV64("port-cargo-v64", "port", "chest", 1080, 4500),
+  ...["rite-sanctum", "clan-lodge"].map(id => {
+    const building = HOMEWORLD_BUILDINGS.find(candidate => candidate.id === id)!;
+    return nativePropV64(`garden-v64-${id}`, building.districtId, "rock-plant", building.x + (id === "rite-sanctum" ? 350 : -175), building.y + (id === "rite-sanctum" ? 9 : 150));
+  }),
+];
 
 const GENERIC_BODY_ROOT = "/game/assets/v3/actors/yautja/hunter/body/";
 
@@ -396,7 +463,7 @@ const NPC_POINT_IDS = [
   "audience-point",
 ] as const;
 
-export const HOMEWORLD_NPC_COLLIDERS = NPC_POINT_IDS.map((id) => ({
+export const HOMEWORLD_NPC_COLLIDERS = NPC_POINT_IDS.filter(id => !HOMEWORLD_INTERIOR_POINT_IDS_V64.has(id)).map((id) => ({
   id,
   ...HOMEWORLD_POINT_POSITIONS[id],
   radiusX: 28,
@@ -421,7 +488,7 @@ const POINT_PROP_COLLIDER_BLUEPRINTS = [
 ] as const;
 
 /** Stations and portal props have their own footprint, separate from their NPC. */
-export const HOMEWORLD_POINT_PROP_COLLIDERS = POINT_PROP_COLLIDER_BLUEPRINTS.map((entry) => {
+export const HOMEWORLD_LEGACY_POINT_PROP_COLLIDERS_V54 = POINT_PROP_COLLIDER_BLUEPRINTS.map((entry) => {
   const position = HOMEWORLD_POINT_POSITIONS[entry.id as keyof typeof HOMEWORLD_POINT_POSITIONS];
   return {
     id: entry.id,
@@ -431,8 +498,21 @@ export const HOMEWORLD_POINT_PROP_COLLIDERS = POINT_PROP_COLLIDER_BLUEPRINTS.map
     radiusY: entry.radiusY,
   };
 });
+/** Station artwork and solid volume share their native forward ground pivot. */
+export const HOMEWORLD_OUTDOOR_POINT_ART_V64 = Object.entries(HOMEWORLD_POINT_POSITIONS)
+  .filter(([id]) => id.startsWith("region-") || id === "personal-ship")
+  .map(([id, point]) => {
+    const artId = id === "personal-ship" ? "console" as const : "beacon" as const;
+    const art = HOMEWORLD_PROP_ART_V64[artId];
+    return { id, ...point, artId, asset: art.src, height: art.heightWorld, width: art.alphaBounds.width * art.scaleWorldPerPixel,
+      footprint: { halfWidth: art.footprintWorld.width / 2, halfDepth: art.footprintWorld.depth / 2 } };
+  });
+export const HOMEWORLD_POINT_PROP_COLLIDERS = HOMEWORLD_OUTDOOR_POINT_ART_V64.map(point => ({
+  id: point.id, x: point.x, y: point.y - point.footprint.halfDepth,
+  radiusX: point.footprint.halfWidth, radiusY: point.footprint.halfDepth,
+}));
 
-export const HOMEWORLD_TROPHY_SLOTS = [
+export const HOMEWORLD_TROPHY_SLOTS_V54 = [
   { x: 650, y: 1_470, width: 76, height: 92, plane: "rear" },
   { x: 745, y: 1_525, width: 82, height: 96, plane: "ground" },
   { x: 1_040, y: 1_535, width: 84, height: 100, plane: "ground" },
@@ -446,6 +526,8 @@ export const HOMEWORLD_TROPHY_SLOTS = [
   { x: 1_095, y: 1_355, width: 68, height: 84, plane: "rear" },
   { x: 1_185, y: 1_395, width: 70, height: 86, plane: "rear" },
 ] as const;
+
+export const HOMEWORLD_TROPHY_SLOTS = HOMEWORLD_TROPHY_SLOTS_V54.map(slot => ({ ...slot, y: slot.y * HOMEWORLD_GEOMETRY_V64.planDepthExpansion }));
 
 const TROPHY_PART_FALLBACK: Readonly<Record<TrophyRecord["partId"], string>> = {
   skull: "/game/assets/v3/actors/yautja/hunter/trophies/trophy-skull.webp",
@@ -491,23 +573,13 @@ export function isHomeworldTerrainWalkable(
   return samples.every(([x, y]) => isTerrainPoint({ x: point.x + x, y: point.y + y }));
 }
 
+/** Route target is the accessible approach, not the painted opening inside a solid wall. */
 export function homeworldBuildingDoorPosition(building: HomeworldBuildingModule): HomeworldVec2 {
-  const offset = building.doorSide === "left" ? -.19 : building.doorSide === "right" ? .19 : 0;
-  return { x: building.x + building.width * offset, y: building.y + 54 };
+  return homeworldBuildingDoorwayV64(building).approach;
 }
-
 export function homeworldBuildingCollision(building: HomeworldBuildingModule) {
-  const door = homeworldBuildingDoorPosition(building);
-  const doorWidth = Math.max(108, Math.min(148, building.width * .3));
-  return {
-    left: building.x - building.width * .46,
-    right: building.x + building.width * .46,
-    top: building.y - Math.min(112, building.height * .3),
-    bottom: building.y + 18,
-    doorLeft: door.x - doorWidth / 2,
-    doorRight: door.x + doorWidth / 2,
-    thresholdTop: building.y - 56,
-  } as const;
+  const footprint = homeworldBuildingFootprintV64(building);
+  return { ...footprint, thresholdTop: building.y } as const;
 }
 
 function rectangleTouchesFootprint(
@@ -540,17 +612,19 @@ export function homeworldCollisionAt(
     const insideThreshold = point.y - safeFootprint.halfDepth >= collision.thresholdTop;
     if (!(entirelyInDoor && insideThreshold)) return { kind: "building", id: building.id };
   }
+  const shuttle = HOMEWORLD_SPACEPORT_V64.shuttle;
+  if (rectangleTouchesFootprint(point, safeFootprint, shuttle.x - shuttle.width / 2, shuttle.x + shuttle.width / 2, shuttle.y - shuttle.depth, shuttle.y)) return { kind: "prop", id: shuttle.id };
   for (const prop of HOMEWORLD_PROPS) {
     if (prop.plane !== "ground") continue;
-    const halfPropWidth = Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfWidth, prop.width * HOMEWORLD_PLACEMENT_RULES.propHalfWidthRatio);
-    const halfPropDepth = Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfDepth, Math.min(HOMEWORLD_PLACEMENT_RULES.propMaximumHalfDepth, prop.height * HOMEWORLD_PLACEMENT_RULES.propHalfDepthRatio));
+    const halfPropWidth = prop.footprint?.halfWidth ?? Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfWidth, prop.width * HOMEWORLD_PLACEMENT_RULES.propHalfWidthRatio);
+    const halfPropDepth = prop.footprint?.halfDepth ?? Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfDepth, Math.min(HOMEWORLD_PLACEMENT_RULES.propMaximumHalfDepth, prop.height * HOMEWORLD_PLACEMENT_RULES.propHalfDepthRatio));
     if (rectangleTouchesFootprint(
       point,
       safeFootprint,
       prop.x - halfPropWidth,
       prop.x + halfPropWidth,
-      prop.y - halfPropDepth,
-      prop.y + 10,
+      prop.y - halfPropDepth * (prop.artId ? 2 : 1),
+      prop.y + (prop.artId ? 0 : halfPropDepth),
     )) return { kind: "prop", id: prop.id };
   }
   for (const npc of HOMEWORLD_NPC_COLLIDERS) {
@@ -586,8 +660,13 @@ export function nearestHomeworldDoor(
   let nearest: HomeworldBuildingModule | null = null;
   let distance = maximumDistance;
   for (const building of HOMEWORLD_BUILDINGS) {
-    const door = homeworldBuildingDoorPosition(building);
-    const candidate = Math.hypot(point.x - door.x, (point.y - door.y) * .82);
+    const opening = homeworldBuildingDoorwayV64(building), door = opening.approach;
+    // The interaction uses the same traversable south opening as the collider.
+    // Merely standing near the back or a side wall never opens an interior.
+    if (Math.abs(point.x - opening.threshold.x) > Math.max(0, opening.clearWidth / 2 - HOMEWORLD_ACTOR.halfWidth)
+      || point.y < opening.threshold.y + HOMEWORLD_ACTOR.halfDepth
+      || point.y > door.y + 35 || !isHomeworldWalkable(point)) continue;
+    const candidate = Math.hypot(point.x - door.x, point.y - door.y);
     if (candidate < distance) { distance = candidate; nearest = building; }
   }
   return nearest;
@@ -595,10 +674,9 @@ export function nearestHomeworldDoor(
 
 /** Fade the painted facade only while it covers the hunter on the rear ground plane. */
 export function shouldFadeHomeworldBuilding(building: HomeworldBuildingModule, actor: HomeworldVec2): boolean {
-  return actor.x > building.x - building.width * .55 - HOMEWORLD_ACTOR.halfWidth
-    && actor.x < building.x + building.width * .55 + HOMEWORLD_ACTOR.halfWidth
-    && actor.y > building.y - building.height - 12
-    && actor.y < building.y - 58;
+  const p = homeworldProjectGroundV64(actor), image = homeworldBuildingSpritePlacementV64(building);
+  return actor.y < building.y && p.x + HOMEWORLD_ACTOR.halfWidth > image.left && p.x - HOMEWORLD_ACTOR.halfWidth < image.left + image.width
+    && p.y > image.top && p.y - HOMEWORLD_ACTOR.height < image.top + image.height;
 }
 
 /** Ship art is a foreground occluder at its ground pivot; fading never changes its service or collider. */
@@ -609,7 +687,7 @@ export function shouldFadeHomeworldShip(ship: HomeworldVec2, actor: HomeworldVec
 }
 
 /** Road paint belongs to the ground plane, not to scenery depth or physical collision. */
-export const HOMEWORLD_WAYMARKS = [
+export const HOMEWORLD_WAYMARKS_V54 = [
   { id: "port-south", x: 1_080, y: 2_380, angle: 35, label: "ATELIERS ↓" },
   { id: "works-west", x: 1_470, y: 2_630, angle: -145, label: "QUAIS ↖" },
   { id: "works-east", x: 3_230, y: 2_560, angle: -110, label: "FORGES ↑" },
@@ -623,6 +701,9 @@ export const HOMEWORLD_WAYMARKS = [
   { id: "arena-lane", x: 1_810, y: 930, angle: -38, label: "ARÈNES ↗" },
   { id: "clan-lane", x: 3_000, y: 1_320, angle: -36, label: "CLANS ↗" },
 ] as const;
+
+export const HOMEWORLD_WAYMARKS = HOMEWORLD_WAYMARKS_V54.map(mark => ({ ...mark,
+  x: mark.id === "works-west" ? 1450 : mark.x, y: mark.y * HOMEWORLD_GEOMETRY_V64.planDepthExpansion }));
 
 export function shouldFadeHomeworldForeground(
   prop: HomeworldDecorProp,
@@ -656,64 +737,55 @@ const finite = (value: unknown, fallback = 0) =>
   typeof value === "number" && Number.isFinite(value) ? value : fallback;
 
 export function createHomeworldActor(): HomeworldActor {
-  return { x: 430, y: 2_210, vx: 0, vy: 0, grounded: true, facing: 1 };
+  return { ...HOMEWORLD_SPACEPORT_V64.spawn, vx: 0, vy: 0, grounded: true, facing: 1 };
 }
 
-function advanceHomeworldActor(current: HomeworldActor, input: HomeworldInput, dt: number): HomeworldActor {
-  let axisX = clamp(finite(input.moveX), -1, 1);
-  let axisY = clamp(finite(input.climb), -1, 1);
-  const magnitude = Math.hypot(axisX, axisY);
-  if (magnitude > 1) {
-    axisX /= magnitude;
-    axisY /= magnitude;
-  }
-  const intendedX = clamp(current.x + axisX * HOMEWORLD_ACTOR.walkSpeed * dt, 80, HOMEWORLD_WORLD.width - 80);
-  const intendedY = clamp(current.y + axisY * HOMEWORLD_ACTOR.depthSpeed * dt, 100, HOMEWORLD_WORLD.height - 100);
-  const intended = { x: intendedX, y: intendedY };
-  const xOnly = { x: intendedX, y: current.y };
-  const yOnly = { x: current.x, y: intendedY };
-  let x = current.x;
-  let y = current.y;
-  if (isHomeworldWalkable(intended)) {
-    x = intended.x;
-    y = intended.y;
-  } else {
-    // Axis separation lets the hunter slide along authored walls and corners.
-    if (isHomeworldWalkable(xOnly)) x = xOnly.x;
-    if (isHomeworldWalkable({ x, y: yOnly.y })) y = yOnly.y;
-  }
-  return {
-    x,
-    y,
-    vx: (x - current.x) / dt,
-    vy: (y - current.y) / dt,
-    grounded: true,
-    facing: axisX === 0 ? current.facing : axisX < 0 ? -1 : 1,
-  };
-}
-
-/** Bounded substeps prevent tunnelling through the irregular street outline. */
-export function stepHomeworldActor(actor: HomeworldActor, input: HomeworldInput, elapsedSeconds: number): HomeworldActor {
+/** The caller owns its floor, spawn and bounds. Interiors never fall back to a
+ * port position, and projected screen coordinates never enter this integrator. */
+export function stepHomeworldActorOnFloor(
+  actor: HomeworldActor,
+  input: HomeworldInput,
+  elapsedSeconds: number,
+  isWalkable: (point: HomeworldVec2) => boolean,
+  fallback: () => HomeworldActor = createHomeworldActor,
+): HomeworldActor {
   let remaining = clamp(finite(elapsedSeconds), 0, 1 / 30);
   if (remaining === 0) return actor;
   let next: HomeworldActor = {
-    x: clamp(finite(actor.x, 430), 80, HOMEWORLD_WORLD.width - 80),
-    y: clamp(finite(actor.y, 2_210), 100, HOMEWORLD_WORLD.height - 100),
-    vx: finite(actor.vx),
-    vy: finite(actor.vy),
-    grounded: true,
+    x: finite(actor.x, NaN), y: finite(actor.y, NaN),
+    vx: finite(actor.vx), vy: finite(actor.vy), grounded: true,
     facing: actor.facing === -1 ? -1 : 1,
   };
-  if (!isHomeworldWalkable(next)) next = createHomeworldActor();
-  while (remaining > 0.000001) {
-    const dt = Math.min(remaining, HOMEWORLD_ACTOR.tickSeconds);
-    next = advanceHomeworldActor(next, input, dt);
+  if (!isWalkable(next)) next = fallback();
+  if (!isWalkable(next)) return { ...next, vx: 0, vy: 0 };
+  let axisX = clamp(finite(input.moveX), -1, 1), axisY = clamp(finite(input.climb), -1, 1);
+  const magnitude = Math.hypot(axisX, axisY);
+  if (magnitude > 1) { axisX /= magnitude; axisY /= magnitude; }
+  while (remaining > .000001) {
+    const dt = Math.min(remaining, HOMEWORLD_ACTOR.tickSeconds), before = next;
+    const intended = { x: before.x + axisX * HOMEWORLD_ACTOR.walkSpeed * dt, y: before.y + axisY * HOMEWORLD_ACTOR.depthSpeed * dt };
+    let x = before.x, y = before.y;
+    if (isWalkable(intended)) { x = intended.x; y = intended.y; }
+    else {
+      if (isWalkable({ x: intended.x, y })) x = intended.x;
+      if (isWalkable({ x, y: intended.y })) y = intended.y;
+    }
+    next = { x, y, vx: (x - before.x) / dt, vy: (y - before.y) / dt,
+      facing: axisX === 0 ? before.facing : axisX < 0 ? -1 : 1, grounded: true };
     remaining -= dt;
   }
   return next;
 }
 
+/** Whole-body ground collision remains the single authority for world bounds. */
+export function stepHomeworldActor(actor: HomeworldActor, input: HomeworldInput, elapsedSeconds: number): HomeworldActor {
+  return stepHomeworldActorOnFloor(actor, input, elapsedSeconds, isHomeworldWalkable, createHomeworldActor);
+}
+
 export function districtAtHomeworldPosition(point: HomeworldVec2): HomeworldDistrict | null {
+  // The apron and the pedestrian approach are connected parts of the port.
+  // Their explicit ground polygons also own terrain collision and rendering.
+  if (extraStreetsV64.some(street => pointInHomeworldPolygon(point, street.polygon))) return HOMEWORLD_DISTRICTS.find(district => district.id === "port")!;
   const candidates = HOMEWORLD_DISTRICTS.filter(({ polygon: points }) => pointInHomeworldPolygon(point, points));
   return candidates.sort((left, right) => {
     const leftDistance = Math.hypot(point.x - (left.x + left.width / 2), point.y - (left.y + left.height / 2));

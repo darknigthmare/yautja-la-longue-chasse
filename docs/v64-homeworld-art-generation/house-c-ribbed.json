@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "house-c-ribbed",
+  "tool": "OpenAI builtin image_gen",
+  "path": "/game/homeworld/v64/house-c-ribbed.png",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-d6473286-6163-484d-b182-7393fb4f35d6.png",
+  "sourcePreserved": true,
+  "nativeBytesUnchanged": true,
+  "sha256": "d25853dc12b4bb598e33ef1fb3736cce1ea23b0eec2559aa076a941c94c65996",
+  "width": 1024,
+  "height": 1536,
+  "drawings": 1,
+  "animationFrames": 0,
+  "alphaOutside": true,
+  "prompts": [
+    {
+      "file": "house-c-prompt.txt",
+      "prompt": "Use case: stylized-concept. Create one tall compact Yautja-inspired habitation building sprite, family C \"Ribbed shelter\". Original urban adaptation, NOT an actual canon building. Native transparent PNG, isolated.\nMATERIALS AND SHAPE: tall dark bronze/charcoal alien metal shell on a low basalt foundation, three smooth structural ribs following the roof's visible north-south depth, layered shallow curved metal roof panels, weathered stone side piers, restrained warm amber maintenance slits. Different silhouette from a wide stone clan house: this is a compact tall engineered shelter with an arched shell but a flat front facade. No medieval architecture, no rounded human cottage, no windows or neon.\nCAMERA: ORTHOGRAPHIC front-south view, looking north/down at35degrees, yaw EXACTLYZERO. See TOP roof and FRONT wall only. No visible left/right exterior side wall. All front horizontals horizontal, wall verticals vertical. All roof depth recedes straight upward, no vanishing point, not an isometric diamond.\nPROPORTIONS: physical foundation width300 units, depth220; facade240units tall (2.4adult heights). Front-wall height is80percent of foundation WIDTH; make a genuinely TALL wall, not a shallow gate. Front open doorway centered, CLEAR passage90wide×145high, so doorway is30percent of whole building width and60percent of facade height. Solid facade above it remains40percent of wall height. Door's floor exactly shares the same flat southern ground edge as both stone piers, NO projecting feet, NO inset porch, NO steps, NO stairs. Thick dark recessed metal jamb, unambiguous straight painted threshold. Roof adds shallow crest only.\nCOMPOSITION: use a tall portrait canvas, whole building with40pxor more alpha margin. Approximate design at3px/world: foundation900pxwide, facade720pxhigh, roof projecteddepth378px, doorway270×435px. The ENTIRE asset is taller than wide. Centered with roof top aroundy180, front thresholdaroundy1350. Do not crop or flatten vertical height to fit a square.\nSTYLE: polished hand-painted realistic HD2D bitmap game sprite, finely detailed surfaces, warm neutral upper-left lighting and soft contact shadow, high readability. No people, scenery, ground patch, lettering or pasted icon. Single whole building, genuine alpha transparency."
+    },
+    {
+      "file": "house-c-edit-prompt.txt",
+      "prompt": "Correct this isolated videogame building sprite with precisely these changes and preserve every other design/camera/lighting/material detail. 1. REMOVE the entire brown grey background and all surrounding background haze completely; export genuine transparent ALPHA around the building, no solid rectangle, no halo. 2. WIDEN the central clear dark open doorway by40percent symmetrically, keeping its height unchanged and keeping its center. Move the side jambs outward coherently. The clear opening must be aroundone third of the overall building width, not a narrow slit. 3. REMOVE the projecting raised box-shaped foundation/plinth BELOW the doorway. The flat floor of the doorway must sit at the same ground line as the bottoms of both side piers, level entry, no step, no terrace, no pavement patch. Shorten the two stone piers to that same bottom line and end everything on a shared crisp horizontal base. Do not alter the upper ribbed roof at all. Preserve yawZERO front view, roof visible from35degrees above ground, vertical wall edges straight, no side wall exposed. Keep entire silhouette with alpha margin, no cropping, no people or text."
+    }
+  ],
+  "loreStatus": "original-game-adaptation-not-canonical-1-to-1"
+}
