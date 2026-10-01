@@ -55,6 +55,7 @@ function fixture() {
     dreadMotionRef: { current: { angles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: world.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     spatialCodexOpenRef: { current: false },
+    cityClockV68: { current: 0 },
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
     saveRef: { current: { createdAt: owner, profile: { rankId: "youngblood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },

@@ -5,9 +5,12 @@ import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/just
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
+import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
+import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
 import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
 import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
 import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
+import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import {
   ARMORS,
@@ -291,6 +294,8 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     youthTraining: null,
     soloV66: null,
     soloV67: null,
+    soloV68: null,
+    homeworldRegionV68: null,
     homeworldPassageV67: null,
     gameReserveV66: null,
     createdAt: now,
@@ -1258,6 +1263,8 @@ export function normalizeSave(value: unknown): SaveGame {
     youthTraining: normalizeYouthCampaign(source.youthTraining),
     soloV66: normalizeSoloV66Campaign(source.soloV66),
     soloV67: normalizeSoloV67Campaign(source.soloV67),
+    soloV68: normalizeSoloV68Campaign(source.soloV68),
+    homeworldRegionV68: normalizeHomeworldRegionV68(source.homeworldRegionV68),
     homeworldPassageV67: normalizeHomeworldPassageV67(source.homeworldPassageV67),
     gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
   };
@@ -1397,7 +1404,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       (isRecord(value.homeworld.mausoleum) && Number(value.homeworld.mausoleum.version) > 1) ||
       (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1) ||
       (isRecord(value.homeworld.sideStoryV66) && Number(value.homeworld.sideStoryV66.version) > 1) ||
-      (isRecord(value.homeworld.npcMissionsV66) && Number(value.homeworld.npcMissionsV66.version) > 1))) {
+      (isRecord(value.homeworld.npcMissionsV66) && Number(value.homeworld.npcMissionsV66.version) > 1) ||
+      (isRecord(value.homeworld.contractsV68) && Number(value.homeworld.contractsV68.version) > 1))) {
     return { save: null, failure: "future-version" };
   }
   if (isRecord(value.prologue) && (Number(value.prologue.version) > 1 ||
@@ -1423,7 +1431,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       (isRecord(value.soloV67.checkpoint) && Number(value.soloV67.checkpoint.version) > 1))) {
     return { save: null, failure: "future-version" };
   }
-  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.soloV68) && (Number(value.soloV68.version) > 1 ||
+      isRecord(value.soloV68.checkpoint) && Number(value.soloV68.checkpoint.version) > 1) ||
+      isRecord(value.homeworldRegionV68) && Number(value.homeworldRegionV68.version) > 1) return { save: null, failure: "future-version" };
+  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
+    const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
+    if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld) }, region.regionId).allowed ||
+        value.homeworldPassageV67 !== undefined && value.homeworldPassageV67 !== null) return { save: null, failure: "invalid-save" };
+  }
   if (isRecord(value.homeworldPassageV67) && Number(value.homeworldPassageV67.version) > 1) return { save: null, failure: "future-version" };
   if (value.homeworldPassageV67 !== undefined && value.homeworldPassageV67 !== null) {
     const passage = normalizeHomeworldPassageV67(value.homeworldPassageV67);
@@ -1435,7 +1451,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
   if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
       value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||
-      value.homeworld.npcMissionsV66 !== undefined && !isNpcMissionsV66(value.homeworld.npcMissionsV66))) {
+      value.homeworld.npcMissionsV66 !== undefined && !isNpcMissionsV66(value.homeworld.npcMissionsV66) ||
+      value.homeworld.contractsV68 !== undefined && !isHomeworldContractsV68(value.homeworld.contractsV68))) {
     return { save: null, failure: "invalid-save" };
   }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object

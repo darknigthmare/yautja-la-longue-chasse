@@ -3,6 +3,7 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { build, transform } from "esbuild";
+import ts from "typescript";
 
 const bundled = await build({
   entryPoints: [fileURLToPath(new URL("../app/game/save.ts", import.meta.url))],
@@ -160,9 +161,22 @@ test("caller mutation or a fabricated result cannot change the private attempted
 // Execute the real GameClient callback in a small hook/ref harness. The storage
 // model above is not a copy of the component's retry or acknowledgement logic.
 const client = await readFile(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
-const start = client.indexOf("  const pendingSocialWriteRef =");
-const end = client.indexOf("  const persistHomeworldProgress =", start);
-assert.ok(start > 0 && end > start, "GameClient social callback remains available for integration testing");
+const clientTree = ts.createSourceFile("GameClient.tsx", client, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+function declarationInitializer(name) {
+  let initializer;
+  function visit(node) {
+    if (ts.isVariableDeclaration(node) && node.name.getText(clientTree) === name) initializer = node.initializer;
+    ts.forEachChild(node, visit);
+  }
+  visit(clientTree);
+  assert.ok(initializer, "GameClient declaration remains available for integration testing: " + name);
+  return initializer;
+}
+const pendingInitializer = declarationInitializer("pendingSocialWriteRef");
+const callbackInitializer = declarationInitializer("persistSocialProgress");
+assert.ok(ts.isCallExpression(callbackInitializer) && callbackInitializer.arguments.length > 0, "Execute the actual useCallback implementation");
+const socialCallback = callbackInitializer.arguments[0];
+assert.ok(ts.isArrowFunction(socialCallback) || ts.isFunctionExpression(socialCallback), "Social persistence callback is executable");
 const harnessSource = `
 export function mount(initial, api, storage, key) {
   const saveRef = { current: initial };
@@ -180,7 +194,8 @@ export function mount(initial, api, storage, key) {
   const setToast = next => { toast = next; };
   const writeSaveWithStatus = next => api.writeSaveWithStatus(next, storage, key);
   const reconcileSaveWrite = (attempt, owner) => api.reconcileSaveWrite(attempt, owner, storage, key);
-  ${client.slice(start, end)}
+  const pendingSocialWriteRef = ${pendingInitializer.getText(clientTree)};
+  const persistSocialProgress = ${socialCallback.getText(clientTree)};
   return {
     act: persistSocialProgress,
     endSession() { sessionAliveRef.current = false; },

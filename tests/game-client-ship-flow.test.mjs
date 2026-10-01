@@ -28,6 +28,7 @@ function fixture() {
     sessionAliveRef: { current: true },
     // Adult campaign fixture has no uncertain nursery transaction.
     nurseryWriteAttemptRef: { current: null },
+    pendingSocialWriteRef: { current: null },
     setNurseryPersistenceError() {},
     save: { createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },

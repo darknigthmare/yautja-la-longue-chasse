@@ -1,4 +1,5 @@
 import type { SaveGame } from "../types";
+import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./campaignSoloV68";
 import { normalizeYouthCampaign } from "./youthCampaign";
 import { normalizeNurseryCampaign } from "./nurseryCampaign";
 import { recordChronicleEvidence } from "./clanChronicle";
@@ -28,7 +29,8 @@ function prerequisites(value: Record<string, unknown>) {
   const greeted = record(value.homeworld) && Array.isArray(value.homeworld.greetedNpcIds) ? value.homeworld.greetedNpcIds : [];
   return prologue?.status === "completed" && youth?.checkpoint.phase === "cage-complete" && youth.receipts.length === 20 &&
     prologue.chronicle.evidence.some(e => e.id === "training-completed") &&
-    prologue.chronicle.rites.length === 1 && prologue.chronicle.rites[0].id === "nursery-recognition" &&
+    prologue.chronicle.rites[0]?.id === "nursery-recognition" && (prologue.chronicle.rites.length === 1 ||
+      prologue.chronicle.rites.length === 2 && normalizeSoloV68Campaign(value.soloV68)?.status === "completed" && soloV68MatchesSave(value)) &&
     ["hunt-king", "terrace-instructor"].every(id => greeted.includes(id));
 }
 /** Cross-field check: an isolated first-tracks claim is never accepted as a played chapter. */

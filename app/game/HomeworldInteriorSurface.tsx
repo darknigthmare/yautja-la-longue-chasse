@@ -31,6 +31,9 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
       {group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art}
         x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={0} />)}
     </div>)}
+    {room.buildingId === 'market-armory' && <img src="/game/homeworld/v68/hunt-board.png" alt="" draggable={false} data-homeworld-hunt-board-v68
+      style={{ position:'absolute', maxWidth:'none', left:room.width * .22 - 1182 * .094 / 2, top:-1300 * .094,
+        width:1182 * .094, height:1330 * .094, zIndex:1, pointerEvents:'none' }} />}
     {displayed.map((trophy, i) => <img key={trophy.claimId} className={styles.interiorTrophyV64}
       data-trophy-claim-id={trophy.claimId} alt="" title={trophy.label} src={trophy.asset} draggable={false}
       style={{ left: trophySlots[i].x - trophySlots[i].width / 2, top: -trophySlots[i].elevation,

@@ -2,6 +2,7 @@ import type { SaveGame } from "../types";
 import { normalizeNurseryCampaign } from "./nurseryCampaign";
 import { normalizeYouthCampaign } from "./youthCampaign";
 import { normalizeSoloV66Campaign } from "./campaignSoloV66";
+import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./campaignSoloV68";
 import { recordChronicleEvidence } from "./clanChronicle";
 import { createSoloV67State, normalizeSoloV67State, soloV67Receipts, type SoloV67Receipt, type SoloV67State } from "./firstHuntSoloV67";
 
@@ -27,7 +28,8 @@ function prerequisites(v: Record<string, unknown>) {
   return nursery?.status === "completed" && youth?.checkpoint.phase === "cage-complete" && youth.receipts.length === 20 &&
     firstTracks?.status === "completed" && firstTracks.receipts.length === 7 &&
     ["first-tracks", "training-completed"].every(id => nursery.chronicle.evidence.some(e => e.id === id)) &&
-    nursery.chronicle.rites.length === 1 && nursery.chronicle.rites[0].id === "nursery-recognition" &&
+    nursery.chronicle.rites[0]?.id === "nursery-recognition" && (nursery.chronicle.rites.length === 1 ||
+      nursery.chronicle.rites.length === 2 && normalizeSoloV68Campaign(v.soloV68)?.status === "completed" && soloV68MatchesSave(v)) &&
     ["hunt-king", "terrace-instructor"].every(id => greeted.includes(id));
 }
 /** Missing old fields remain valid; a standalone claim or a rite must never manufacture this assessment. */

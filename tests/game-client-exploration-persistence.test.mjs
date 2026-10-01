@@ -69,6 +69,7 @@ function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
     sessionAliveRef: { current: true },
     // Adult campaign fixture has no uncertain nursery transaction.
     nurseryWriteAttemptRef: { current: null },
+    pendingSocialWriteRef: { current: null },
     setNurseryPersistenceError() {},
     save: first, saveRef: { current: first }, activeHuntSessionRef: { current: session },
     activeHuntWriteFailureRef: { current: null }, missionSettlementRef: { current: false }, pendingTerminalRunRef: { current: null },

@@ -42,6 +42,7 @@ function fixture() {
     gamepadStateRef: { current: createHomeworldGamepadState() },
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
+    cityClockV68: { current: 0 },
     actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
     interiorRef: { current: null }, stepHomeworldActorOnFloor: city.stepHomeworldActorOnFloor,
     dreadMotionRef: { current: { angles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: city.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
@@ -156,10 +157,12 @@ test("navigation dialog remains controller-accessible above an already paused ci
 test("the live city clock freezes strand position and velocity in pause, then settles after release", () => {
   const f = fixture(); f.release(); f.pad.axes[0] = 1; f.tick(30);
   assert(f.env.dreadAngles.some(angle => angle > .01), "real movement drives the actual spring function");
+  assert(f.env.cityClockV68.current > 0, "the shared resident and strand clock advances from actual simulation frames");
   f.pad.buttons[9].pressed = true; f.tick(2);
   assert.equal(f.env.pausedRef.current, true);
-  const paused = structuredClone(f.env.dreadMotionRef.current), drawn = [...f.env.dreadAngles];
+  const paused = structuredClone(f.env.dreadMotionRef.current), drawn = [...f.env.dreadAngles], cityTime = f.env.cityClockV68.current;
   f.tick(60);
+  assert.equal(f.env.cityClockV68.current, cityTime, "paused citizen routines cannot drift while the actor and strands are frozen");
   assert.deepEqual(f.env.dreadMotionRef.current, paused, "pause preserves spring velocities as well as angles");
   assert.deepEqual(f.env.dreadAngles, drawn, "no paused frame changes rendered strands");
   f.release(); f.pad.buttons[9].pressed = true; f.tick(2);

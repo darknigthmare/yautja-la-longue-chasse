@@ -169,7 +169,7 @@ test("the scene keeps stations, NPCs, doors, trophies and occlusion as separate 
   assert.match(css, /data-faded='true'/);
   assert.equal(existsSync("app/game/HomeworldHub.module.css"), false);
 });
-test("two playable introductions are distinguished from eight regions and five unbuilt acts", () => {
+test("two playable investigations coexist with eight village territories and five later campaign acts", () => {
   assert.equal(HOMEWORLD_REGIONS.length, 10);
   assert.equal(HOMEWORLD_REGIONS.filter(r => r.sourceCompleteness === "complete-description").length, 10);
   assert.equal(HOMEWORLD_REGIONS[7].id, "cold-crown");
@@ -178,7 +178,7 @@ test("two playable introductions are distinguished from eight regions and five u
   assert.equal(HOMEWORLD_REGIONS[9].id, "forbidden-reserve");
   assert.equal(hw.HOMEWORLD_CAMPAIGN_ACTS.length, 5);
   assert(hw.HOMEWORLD_CAMPAIGN_ACTS.every(act => act.status === "not-playable"));
-  for (const r of HOMEWORLD_REGIONS) { assert.equal(r.status, ["ash-marches","glass-desert"].includes(r.id) ? "playable-introduction" : "not-playable"); assert.equal(r.missionId, undefined); }
+  for (const r of HOMEWORLD_REGIONS) { assert.equal(r.status, ["ash-marches","glass-desert"].includes(r.id) ? "playable-introduction" : "playable-village"); assert.equal(r.missionId, undefined); }
 });
 test("corrupt or future data cannot invent prerequisites, audience outcomes or factions", () => {
   assert.deepEqual(normalizeHomeworldProgress(null), defaultHomeworldProgress());

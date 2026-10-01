@@ -1,0 +1,25 @@
+.root{color:#e7dbc4;border:1px solid #796242;background:linear-gradient(135deg,#181c1bdc,#0b1011ef);padding:18px;border-radius:5px;max-width:1040px;isolation:isolate}
+.header{display:flex;gap:22px;align-items:center;padding-bottom:16px;border-bottom:1px solid #5d503d}
+.boardArt{width:126px;height:148px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 18px #7dbfac28)}
+.header h4{font-size:clamp(23px,3vw,36px);line-height:1.15;letter-spacing:.07em;text-transform:uppercase;margin:7px 0 12px;color:#f4e7c8}
+.header p{margin:0 0 14px;max-width:56ch;line-height:1.55}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:#a8c7bd}
+.counters{display:flex;flex-wrap:wrap;gap:9px 18px;font-size:12px;color:#b9c5bd}.counters strong{color:#dec38d}
+.notice{padding:12px;border-left:3px solid #c69a54;background:#a878201a;line-height:1.6}
+.filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:18px 0}.filters label{display:grid;gap:5px;font-size:11px;letter-spacing:.04em;color:#cbbca1}
+.filters select{background:#0c1616;color:#e7dcc3;border:1px solid #786345;min-height:40px;padding:8px;min-width:170px;border-radius:3px}
+.filters button,.actions button{background:linear-gradient(#38584d,#21362e);color:#eee4ce;border:1px solid #8d9a72;min-height:42px;padding:10px 14px;cursor:pointer;border-radius:3px;font:inherit}
+.filters button[aria-pressed=true]{border-color:#e5c689;background:#354637}.filters button:disabled,.actions button:disabled,.filters select:disabled{opacity:.5;cursor:default}
+.filters button:focus-visible,.actions button:focus-visible,.filters select:focus-visible{outline:3px solid #ffe3a2;outline-offset:3px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-height:54vh;overflow:auto;overscroll-behavior:contain;padding:3px 5px 6px 3px;scrollbar-color:#92805b #121918}
+.card{position:relative;display:flex;flex-direction:column;padding:18px;border:1px solid #615440;background:linear-gradient(150deg,#28372e77,#171d1bd4);min-width:0;border-radius:4px;box-shadow:inset 4px 0 #53706044}
+.card[data-contract-phase=completed]{border-color:#4b6652;background:#13271b66;box-shadow:inset 4px 0 #678368}.card[data-contract-phase=return]{border-color:#baa06b;box-shadow:inset 4px 0 #c0a25d}
+.cardTop{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:#a9c6b8}.cardTop strong{color:#d4b780;white-space:nowrap}
+.card h5{font-size:19px;line-height:1.3;margin:13px 0 5px;color:#efe2c6}.card p{line-height:1.65;margin:10px 0;font-size:13px}.card .region{color:#b0c8bb;font-size:11px;margin:2px 0 8px}
+.card .restriction{font-size:11px;color:#b9ac92;padding-left:11px;border-left:2px solid #8b754c;margin-top:7px}
+.status{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#caaf78;margin-top:auto;padding-top:11px;border-top:1px solid #71846833}.card .objective{font-size:12px;color:#d8d7ba}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{font-size:12px}.actions .secondary{background:#17221a;border-color:#687264;color:#b9c7bb}.completed{font-size:11px;color:#a6c5a1;padding:8px 0}
+.empty{grid-column:1/-1;padding:30px;text-align:center;color:#b7baae}
+.journal{border-top:1px solid #83704b;padding-top:12px}.journal h4{margin:3px 0 9px}.journal p{font-size:12px;line-height:1.6;color:#c8c2ab}.journal ul{list-style:none;padding:0;display:grid;gap:12px;max-height:40vh;overflow:auto}.journal li{border-left:2px solid #8c9f75;padding-left:12px}.journal li>span{display:block;font-size:10px;color:#a9c8b8;margin-top:4px}
+@media(max-width:650px){.root{padding:12px}.header{gap:12px}.boardArt{width:72px;height:100px}.header h4{font-size:21px}.header p{font-size:12px}.counters{gap:6px;font-size:10px}.cards{grid-template-columns:1fr;max-height:49vh}.card{padding:14px}.filters{gap:9px}.filters label{flex:1;min-width:130px}.filters select{min-width:0;max-width:100%;width:100%}.filters button{font-size:11px;flex:1;white-space:normal}.cardTop{font-size:10px;letter-spacing:0}.card h5{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.root *{scroll-behavior:auto}}

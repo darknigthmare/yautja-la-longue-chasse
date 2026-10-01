@@ -1,6 +1,7 @@
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { defaultHomeworldSideStoryV66, normalizeHomeworldSideStoryV66, type HomeworldSideStoryV66Progress } from "./homeworldSideStoryV66";
 import { defaultNpcMissionsV66, normalizeNpcMissionsV66, type NpcMissionsV66 } from "./homeworldNpcMissionsV66";
+import { defaultHomeworldContractsV68, normalizeHomeworldContractsV68, type HomeworldContractsV68 } from "./homeworldContractsV68";
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
 import { defaultMausoleumProgress, normalizeMausoleumProgress, type MausoleumProgress } from "./mausoleum";
 import type { RankId } from "../types";
@@ -95,7 +96,7 @@ export const HOMEWORLD_REGIONS = [
   { id: "cold-crown", name: "Couronne Froide", description: "Très hauts massifs, glace et vestiges d'expéditions. Un carnivore isolé thermiquement laisse des indices physiques ; la préparation remplace une jauge de température punitive.", sourceCompleteness: "complete-description" },
   { id: "first-city-ruins", name: "Ruines de la Première Cité", description: "Site patrimonial, installations récentes suspectes, mécanismes de chasse, archives scellées, sentinelles et pièges.", sourceCompleteness: "complete-description" },
   { id: "forbidden-reserve", name: "Réserve Interdite", description: "Stations d'observation et confinement de créatures rapportées d'expédition. Les éventuels xénomorphes ne sont pas la faune ordinaire du monde natal.", sourceCompleteness: "complete-description" },
-].map((region) => ({ ...region, status: (region.id === "ash-marches" || region.id === "glass-desert") ? "playable-introduction" as const : "not-playable" as const }));
+].map((region) => ({ ...region, status: (region.id === "ash-marches" || region.id === "glass-desert") ? "playable-introduction" as const : "playable-village" as const }));
 
 /** Complete recovered outline, explicitly separate from the playable introductory dossier. */
 export const HOMEWORLD_CAMPAIGN_ACTS = [
@@ -137,7 +138,7 @@ const HOMEWORLD_POINT_BLUEPRINTS: readonly HomeworldPoint[] = [
   servicePoint("pit-service", "Entrée THE PIT", "arenas", 1_700, 500, "pit", "arena-steward"),
   { id: "temple-point", label: "Gardienne des rites", kind: "npc", districtId: "temple", x: 3_000, y: 500, npcId: "rite-keeper", description: "Faire reconnaître ton rang actuel, sans rite ni serment obligatoire." },
   { id: "audience-point", label: "Audience du Roi de la Chasse", kind: "audience", districtId: "citadel", x: 4_400, y: 500, npcId: "hunt-king", description: "Présenter le dossier et la décision expliquée au témoin." },
-  ...HOMEWORLD_REGIONS.map((region, index): HomeworldPoint => ({ id: `region-${region.id}`, label: region.name, kind: "region", ...regionDoors[index], regionId: region.id, description: (region.id === "ash-marches" || region.id === "glass-desert") ? region.id === "ash-marches" ? "Suivre le convoi dans les cendres, écarter la fausse piste et rapporter une preuve au port." : "Traverser le verre avec prudence et documenter les proies détournées. Rapport durable des Marches requis." : `${region.description} Région à produire : aucune chasse accessible ici.` })),
+  ...HOMEWORLD_REGIONS.map((region, index): HomeworldPoint => ({ id: `region-${region.id}`, label: region.name, kind: "region", ...regionDoors[index], regionId: region.id, description: `${region.description} Le sentier rejoint un village de clan et son terrain de reconnaissance.` })),
 ];
 export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEPRINTS.map((point): HomeworldPoint => {
   const position = HOMEWORLD_POINT_POSITIONS[point.id as keyof typeof HOMEWORLD_POINT_POSITIONS];
@@ -145,16 +146,17 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
 const choices: readonly HomeworldWitnessChoice[] = ["protect", "restitution", "investigate"];
 const outcomes: Record<HomeworldWitnessChoice, HomeworldAudienceOutcome> = { protect: "protected-witness", restitution: "ordered-restitution", investigate: "continued-investigation" };
-export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, sideStoryV66: defaultHomeworldSideStoryV66(), npcMissionsV66: defaultNpcMissionsV66(), mausoleum: defaultMausoleumProgress(), inquiry: defaultHomeworldInquiry(), expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
+export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, contractsV68: defaultHomeworldContractsV68(), sideStoryV66: defaultHomeworldSideStoryV66(), npcMissionsV66: defaultNpcMissionsV66(), mausoleum: defaultMausoleumProgress(), inquiry: defaultHomeworldInquiry(), expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
 export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   const clean = defaultHomeworldProgress();
   if (!record(value) || value.version !== 1) return clean;
+  clean.contractsV68 = normalizeHomeworldContractsV68(value.contractsV68);
   clean.mausoleum = normalizeMausoleumProgress(value.mausoleum);
   if (record(value.expeditions)) {
     clean.expeditions["ash-marches"] = normalizeHomeworldExpeditionProof(value.expeditions["ash-marches"]);
