@@ -1,0 +1,47 @@
+{
+  "version": "V74",
+  "status": "PASS_LOCAL",
+  "url": "http://127.0.0.1:4192",
+  "secondaryInteriors": {
+    "report": "work-local/v74/qa/secondary-interiors-local/report.json",
+    "checks": 42,
+    "captures": 40,
+    "distinctRooms": 37,
+    "distinctZones": 80,
+    "distinctPassages": 29,
+    "actualKeyboard": true,
+    "runtimeFunctionsReplaced": false,
+    "captionsInsideFloorAndOutsideExit": true,
+    "mobileViewport": {"width": 393, "height": 852},
+    "mobilePaintedActorHeight": 78.70815663128735,
+    "pauseKeepsSaveAndWorldFrozen": true,
+    "codexReadOnly": true,
+    "httpErrors": [],
+    "javascriptErrors": [],
+    "nativeFurnitureSha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844"
+  },
+  "motionPreload": {
+    "report": "work-local/v74/qa/motion-assets-local/report.json",
+    "checks": 3,
+    "captures": 3,
+    "actualPngRequestAbort": true,
+    "originalUrlRetry": true,
+    "controlsSaveClockAndGaitFrozenDuringError": true,
+    "firstNativeStepDecodedAfterRetry": true,
+    "javascriptErrors": []
+  },
+  "visuallyReviewed": [
+    "work-local/v74/qa/secondary-interiors-local/convoy-workshop-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/enforcer-bastion-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/trophy-mausoleum-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-port-1-mobile-native-interior.png",
+    "work-local/v74/qa/motion-assets-local/missing-animation-visible-error-and-safe-idle.png",
+    "work-local/v74/qa/motion-assets-local/first-native-step-after-recovery.png"
+  ],
+  "limits": [
+    "The isolated browser profile seeds model-tested prerequisite campaign state; these recipes do not replay that campaign.",
+    "The city layouts and native furniture usages are original adaptations, not claimed canonical Yautja domestic customs.",
+    "No new private upper floors, household population, quests or rewards are added by this interior lot.",
+    "This is the final local build verification, not a confirmed deployment or public-URL browser test."
+  ]
+}

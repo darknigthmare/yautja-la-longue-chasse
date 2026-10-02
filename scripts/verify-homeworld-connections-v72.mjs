@@ -24,13 +24,14 @@ const capture=async name=>{
   await decode();const path=output+'/'+name+'.jpg';await page.screenshot({path,type:'jpeg',quality:90});captures.push(path);
 };
 const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),p.SAVE_STORAGE_KEY);
+const cityReady=async()=>{await page.locator('[data-homeworld-hub]').waitFor();if(process.env.YAUTJA_QA_EXPECTED_VERSION==='V74')await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});};
 try{
   await page.addInitScript(({key,save})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));},{key:p.SAVE_STORAGE_KEY,save:fixture});
   // Own RAF and performance time before mounting the game: installing a clock
   // after an existing RAF loop resets its timestamps and can fake a blocked path.
   await page.clock.install();
-  await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await page.locator('[data-homeworld-hub]').waitFor();
-  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),'V73');
+  await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await cityReady();
+  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),process.env.YAUTJA_QA_EXPECTED_VERSION??'V73');
   await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));
   const nav=homeworldNavigatorV66(page,api);await nav.focus();
   const visited=[];
@@ -57,11 +58,11 @@ try{
       const viewport=region.locator('[tabindex="0"]');await viewport.focus();await page.keyboard.press('KeyE');await nav.tick(100);
       // Public E at the city-end socket commits and returns automatically.
       // The recovery button exists only if that durable handoff fails.
-      await page.clock.resume();await page.locator('[data-homeworld-hub]').waitFor();
+      await page.clock.resume();await cityReady();
       await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));await nav.tick(100);await nav.focus();
       const arrival=await nav.position();assert(Math.hypot(arrival.x-definition.arrival.x,arrival.y-definition.arrival.y)<1,regionId+' actual regional return uses same physical gate');
       await capture(regionId+'-regional-return');
-      const prior=await saved();await page.clock.resume();await page.reload({waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await page.locator('[data-homeworld-hub]').waitFor();
+      const prior=await saved();await page.clock.resume();await page.reload({waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await cityReady();
       await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));
       await nav.tick(150);await nav.focus();const after=await saved(),resumed=await nav.position(),spawn=api.createHomeworldActor();
       assert.equal(after.homeworldRegionV68,null,regionId+' completed journey remains cleared after reload');

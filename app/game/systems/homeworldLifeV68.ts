@@ -8,7 +8,8 @@ export interface HomeworldResidentV68 {
 export const HOMEWORLD_RESIDENTS_V68 = life.population as HomeworldResidentV68[];
 /** The city clock freezes with menus, focus loss and settings. Routes were
  * sampled against the real city footprint; no moving citizen crosses a wall.
- * Bitmap compositions translate along short routes; these are not new sheets. */
+ * This function provides route state only; the renderer chooses the native
+ * portrait or movement frames without changing any resident's identity/path. */
 export function homeworldResidentPoseV68(resident: HomeworldResidentV68, seconds: number) {
   const start = resident.path[0], end = resident.path.at(-1)!;
   const distance = Math.hypot(end.x - start.x, end.y - start.y);

@@ -18,7 +18,7 @@ import { canStartSoloV66 } from "./systems/campaignSoloV66";
 import { canStartSoloV67 } from "./systems/campaignSoloV67";
 import { homeworldCityArrivalV67 } from "./systems/homeworldArrivalV67";
 import {
-  HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, HOMEWORLD_BUILDINGS, HOMEWORLD_POINTS, homeworldHeroPlate,
+  HOMEWORLD_WORLD, HOMEWORLD_ACTOR, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, HOMEWORLD_BUILDINGS, HOMEWORLD_POINTS, homeworldHeroPlate,
   HOMEWORLD_NPCS, HOMEWORLD_EVIDENCE, HOMEWORLD_REGIONS, HOMEWORLD_WITNESS_CHOICES,
   createHomeworldActor, stepHomeworldActor, stepHomeworldActorOnFloor, nearestHomeworldPoint, nearestHomeworldDoor,
   districtAtHomeworldActor, applyHomeworldAction, shouldFadeHomeworldForeground, homeworldInquiryJournal, homeworldInquiryDialogue,
@@ -41,7 +41,10 @@ import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldRes
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
+import HomeworldYouthMotionV74 from "./HomeworldYouthMotionV74";
 import HomeworldYouthMotionV72 from "./HomeworldYouthMotionV72";
+import { useHomeworldMotionAssetsV74 } from "./useHomeworldMotionAssetsV74";
+import { homeworldYouthDirectionV74, type HomeworldYouthDirectionV74 } from "./systems/homeworldYouthMotionV74";
 import { homeworldCameraV72 } from "./systems/homeworldCameraV72";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingDoorwayV64 } from "./systems/homeworldGeometryV64";
 import { homeworldInteriorForBuildingV64, nearestHomeworldInteriorTargetV64, isHomeworldInteriorWalkableV64, type HomeworldInteriorV64 } from "./systems/homeworldInteriorsV64";
@@ -67,7 +70,8 @@ export interface HomeworldHubProps {
   onSoloV69?(): boolean;
   onSoloV70?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
-  /** A completed connector returns at its actual city threshold, including after reload. */
+  /** A completed connector returns at its physical threshold while its arrival
+   * request is pending. Ordinary city reloads use the existing Port spawn. */
   arrivalV67?: { pointId: string; requestId: string } | null;
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
@@ -84,6 +88,8 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
 export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
+  const [youthMotionV74, setYouthMotionV74] = useState({ direction: 's' as HomeworldYouthDirectionV74, distanceWorld: 0 });
+  const youthMotionRefV74 = useRef(youthMotionV74);
   const [interiorId, setInteriorId] = useState<string | null>(null);
   const interiorRef = useRef<HomeworldInteriorV64 | null>(null);
   const exteriorAnchorRef = useRef(actor);
@@ -127,8 +133,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const { x: cameraX, y: cameraY, zoom } = camera;
   const progress = save.homeworld;
   const youthWelcome = usesHomeworldYouthAppearanceV69(save);
+  const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome });
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
-  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen;
+  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || !motionAssetsV74.ready;
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
     if (!arrivalV67 || appliedArrivalV67.current === arrivalV67.requestId) return;
@@ -140,6 +147,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       appliedArrivalV67.current = arrivalV67.requestId;
       held.current.clear(); touch.current = { left: false, right: false, up: false, down: false, jump: false };
       actorRef.current = arriving; setActor(arriving); interiorRef.current = null; setInteriorId(null);
+      youthMotionRefV74.current = { ...youthMotionRefV74.current, direction: 's' };
+      setYouthMotionV74(youthMotionRefV74.current);
       setDialog(null); setPaused(false); setInactive(false);
     });
     return () => cancelAnimationFrame(frame);
@@ -155,7 +164,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     progressRef.current = save.homeworld; saveRef.current = save;
   }, [save]);
   useEffect(() => { suspendedRef.current = suspended; }, [suspended]);
-  useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen; }, [paused, inactive, spatialCodexOpen]);
+  useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || !motionAssetsV74.ready; }, [paused, inactive, spatialCodexOpen, motionAssetsV74.ready]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
   const clearInputs = useCallback(() => {
@@ -173,6 +182,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     const approach = homeworldBuildingDoorwayV64(building).approach;
     exteriorAnchorRef.current = { ...actorRef.current, ...approach, vx: 0, vy: 0 };
     const next = { ...actorRef.current, ...room.spawn, vx: 0, vy: 0, facing: 1 as const };
+    youthMotionRefV74.current = { ...youthMotionRefV74.current, direction: 'n' };
+    setYouthMotionV74(youthMotionRefV74.current);
     interiorRef.current = room; actorRef.current = next;
     setInteriorId(room.buildingId); setActor(next);
     setAnnouncement(`Entrée dans ${room.title}. Approche les personnages ou rejoins la sortie au sud.`);
@@ -351,11 +362,19 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         const jump = keyboardHeld("hunt.jump") || touch.current.jump || gamepad.movement.jump;
         const controls = { moveX: Number(right) - Number(left), climb: Number(down) - Number(up), jumpPressed: jump && !jumpWasPressed };
         const room = interiorRef.current;
-        const next = room ? stepHomeworldActorOnFloor(actorRef.current, controls, dt,
+        const before = actorRef.current;
+        const next = room ? stepHomeworldActorOnFloor(before, controls, dt,
           point => isHomeworldInteriorWalkableV64(room, point), () => ({ ...createHomeworldActor(), ...room.spawn }))
-          : stepHomeworldActor(actorRef.current, controls, dt);
+          : stepHomeworldActor(before, controls, dt);
         jumpWasPressed = jump;
         actorRef.current = next;
+        // Advance native walk poses only by real travel, never by a doorway
+        // teleport or a separate animation clock. Collision stops the cycle.
+        const travelled = Math.hypot(next.x - before.x, next.y - before.y);
+        youthMotionRefV74.current = {
+          direction: homeworldYouthDirectionV74({ x: next.vx, y: next.vy }, youthMotionRefV74.current.direction, Math.hypot(next.vx, next.vy) > 5),
+          distanceWorld: youthMotionRefV74.current.distanceWorld + (Number.isFinite(travelled) && travelled <= Math.max(HOMEWORLD_ACTOR.walkSpeed, HOMEWORLD_ACTOR.depthSpeed) * dt * 2 ? travelled : 0),
+        };
         // Same bounded springs as the hunt renderer, advanced only by this
         // active simulation clock: braking settles, pause freezes every strand.
         dreadMotionRef.current = stepHunterDreadsV63(dreadMotionRef.current, dt, next.vx * next.facing, next.vy);
@@ -366,7 +385,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           visitedAttempt.current = entered.id;
           persistVisit(entered.id);
         }
-        if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
+        if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); setYouthMotionV74(youthMotionRefV74.current); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
       } else jumpWasPressed = false;
       request = requestAnimationFrame(frame);
     };
@@ -520,11 +539,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     .join("|");
 
   return <section ref={rootRef} className={styles.hub} style={suspended ? { display: "none" } : undefined}
-    aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-interior-id={interior?.buildingId}>
+    aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId}>
     <header className={styles.header}>
       <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior?.title ?? "La Cité des Premiers Trophées"}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
       <div className={styles.hudActionsV64}><button type="button" onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
-      <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button></div>
+      <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); if (paused) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }}>{paused ? "Reprendre" : "Pause"}</button></div>
     </header>
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
@@ -539,9 +558,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         {!interior && <HomeworldOutskirtsV71 actor={actor} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} />}
         {!interior && <HomeworldRegionConnectionsV72 actor={actor} cameraX={cameraX} cameraY={cameraY} width={camera.viewWidth} height={camera.viewHeight} save={save} />}
         {!interior && <HomeworldPopulationV68 seconds={phase} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} activeId={nearbyResidentV68?.id} actorPosition={actor} />}
-        <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
+        <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
-          {youthWelcome ? <HomeworldYouthMotionV72 seconds={phase} moving={actorSpeed > 5} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
+          {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={actorSpeed > 5} velocity={{ x: actor.vx, y: actor.vy }} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
             className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined}
@@ -565,7 +584,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD.height * 100}%` }} />
       </div>}
       {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={nearestDoor?.id} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
-      {(paused || inactive || suspended) && !dialog && <div className={styles.pause}><strong>{suspended ? "Cité suspendue" : "Exploration en pause"}</strong>{!suspended && <button type="button" onClick={() => { setPaused(false); setInactive(false); viewportRef.current?.focus({ preventScroll: true }); }}>Reprendre l’exploration</button>}</div>}
+      {!motionAssetsV74.ready && <div className={styles.pause} data-homeworld-motion-loading-v74 role={motionAssetsV74.error ? "alert" : "status"} aria-live="polite">
+        <strong>{motionAssetsV74.error ? "Sprites indisponibles" : "Préparation de la cité"}</strong>
+        <span>{motionAssetsV74.error ?? `Animations : ${motionAssetsV74.loaded} / ${motionAssetsV74.total}`}</span>
+        {motionAssetsV74.error && <button type="button" onClick={motionAssetsV74.retry}>Réessayer les animations</button>}
+      </div>}
+      {motionAssetsV74.ready && (paused || inactive || suspended) && !dialog && <div className={styles.pause}><strong>{suspended ? "Cité suspendue" : "Exploration en pause"}</strong>{!suspended && <button type="button" onClick={() => { setPaused(false); setInactive(false); viewportRef.current?.focus({ preventScroll: true }); }}>Reprendre l’exploration</button>}</div>}
     </div>
     <div className={styles.touch} aria-label="Commandes tactiles">
       <div className={styles.touchGroup}>{touchButton("left", "Marcher à gauche", "←")}{touchButton("right", "Marcher à droite", "→")}</div>

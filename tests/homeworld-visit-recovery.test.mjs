@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function walkableDistrictPosition(id) {
@@ -56,6 +56,7 @@ function fixture() {
     dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     spatialCodexOpenRef: { current: false },
     cityClockV68: { current: 0 },
+    youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
     saveRef: { current: { createdAt: owner, profile: { rankId: "youngblood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },

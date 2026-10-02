@@ -53,7 +53,7 @@ test('six native civic facades retain painted doorway pivots and single scale in
   for(const building of api.HOMEWORLD_BUILDINGS)assert(api.isHomeworldWalkable(api.homeworldBuildingDoorwayV64(building).approach),building.id);
 });
 test('six functional wings expose three physically linked zones, thirty independently colliding furnishings and all existing service IDs',()=>{
-  const wings=api.HOMEWORLD_INTERIORS_V64.filter(room=>room.zones?.length);
+  const wings=api.HOMEWORLD_INTERIORS_V64.filter(room=>api.homeworldBuildingIdentityV72(room.buildingId)!==null);
   assert.equal(wings.length,6);assert.equal(wings.reduce((n,r)=>n+r.furniture.length,0),30);
   for(const room of wings){
     assert.equal(room.zones.length,3);assert.equal(room.partitions.length,4);

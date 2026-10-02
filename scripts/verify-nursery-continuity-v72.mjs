@@ -40,13 +40,15 @@ async function card(page, id, captureName = id) {
 async function accept(page, id, captureName = id) { const { button } = await card(page, id, captureName); await button.click(); await page.waitForTimeout(120); }
 async function actualCity(page) {
   await page.locator('[data-homeworld-hub="true"]').waitFor({ timeout: 120000 });
+  const nativeV74=process.env.YAUTJA_QA_EXPECTED_VERSION==='V74';
+  if(nativeV74)await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});
   const hero = page.locator('[data-homeworld-unblooded-v72]'); await hero.waitFor({ timeout: 120000 });
   const source = await hero.evaluate(async node => {
     const src = getComputedStyle(node).backgroundImage.match(/url\(["']?(.*?)["']?\)/)?.[1];
     const image = new Image(); image.src = src; await image.decode(); return { src, width: image.naturalWidth, height: image.naturalHeight };
   });
-  assert.match(source.src, /\/game\/youth\/v48\/unblooded-(left|right)\.png$/);
-  assert.equal(source.width, 1122); assert.equal(source.height, 1402);
+  assert.match(source.src, nativeV74?/\/game\/homeworld\/v74\/youth\/unblooded-[a-z-]+\.png$/:/\/game\/youth\/v48\/unblooded-(left|right)\.png$/);
+  assert.equal(source.width, nativeV74?1536:1122); assert.equal(source.height, nativeV74?1024:1402);
   await page.waitForLoadState("networkidle", { timeout: 120000 });
 }
 async function pauseAndResume(page, name) {
@@ -81,7 +83,7 @@ try {
   await page.getByRole("button", { name: /^Nouvelle partie/ }).click(); await page.getByLabel("Nom du chasseur").fill("QA Continuité V72");
   await page.getByRole("button", { name: /^Créer la partie 1/ }).click();
   await phase(page, "prompt").waitFor({ timeout: 120000 });
-  assert.equal(await page.locator("main").getAttribute("data-game-content-version"), "V73");
+  assert.equal(await page.locator("main").getAttribute("data-game-content-version"), process.env.YAUTJA_QA_EXPECTED_VERSION ?? "V73");
   for (const id of ["born-in-clan", "nursery-place", "mentor-briefing", "rival-oath", "duel-consent"]) {
     if (id === "mentor-briefing") {
       await card(page, id, null);

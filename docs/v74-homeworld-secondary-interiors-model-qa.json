@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "version": "V74",
+  "timestamp": "2026-10-02T08:15:17.370Z",
+  "command": "node --test --test-reporter=tap tests/homeworld-secondary-interiors-v74.test.mjs tests/homeworld-interiors-v64.test.mjs tests/homeworld-identity-v72.test.mjs tests/homeworld-interior-shell-v64.test.mjs tests/homeworld-geometry-v64.test.mjs tests/homeworld-spatial-v54.test.mjs",
+  "tests": 114,
+  "pass": 114,
+  "fail": 0,
+  "duration_ms": 9918.2146,
+  "scope": {
+    "secondaryRooms": 37,
+    "civicRooms": 13,
+    "domesticRooms": 24,
+    "zones": 80,
+    "partitions": 47,
+    "passages": 29,
+    "nativeFurniture": 153,
+    "codexRecords": 346,
+    "margin": 4,
+    "body": {
+      "halfWidth": 24,
+      "halfDepth": 14
+    }
+  },
+  "principalV73ModelSha256": "6d5505a37371b33034f46c8523e639ae6a7a7a41867747b24b3e773eae563ce0",
+  "nativeKitSha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844",
+  "browser": "pending final V74 build; not inferred from unit tests",
+  "deployment": "root-owned, not performed by this agent",
+  "additionalAudits": [
+    "37 physically unique layouts independently of labels",
+    "No independent furniture overlaps preserved observation console",
+    "Mausoleum preserves eight separate save-owned trophy sockets, last-eight cap and original definition asset",
+    "Existing fifteen point IDs and all43 envelope/spawn/exit contracts unchanged"
+  ]
+}

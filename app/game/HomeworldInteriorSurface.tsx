@@ -22,7 +22,10 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
   const trophySlots = homeworldInteriorTrophySlotsV64(room);
   const shell = homeworldInteriorShellV64(room);
   return <>
-    <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId} style={{
+    <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId}
+      data-homeworld-secondary-interior-v74={room.secondaryLayoutV74?room.buildingId:undefined}
+      data-homeworld-layout-archetype-v74={room.secondaryLayoutV74?.archetype}
+      data-homeworld-layout-spaces-v74={room.secondaryLayoutV74?room.zones?.length:undefined} style={{
       width: shell.floor.width, height: shell.floor.depth, transform: `scaleY(${HOMEWORLD_GEOMETRY_V64.depthScale})`,
       backgroundSize: `${shell.floor.art.tileWorldSize}px ${shell.floor.art.tileWorldSize}px`,
       '--homeworld-pavement': `url('${shell.floor.art.src}')`,
@@ -35,8 +38,14 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     </div>)}
     <HomeworldInteriorPartitionsV72 room={room}/>
     {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
-    {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id} style={{position:'absolute',left:zone.x+zone.width/2,top:(zone.y+zone.depth-36)*HOMEWORLD_GEOMETRY_V64.depthScale,
-      transform:'translateX(-50%)',font:'9px ui-monospace,monospace',letterSpacing:'.06em',color:'#a89979',pointerEvents:'none',zIndex:0}}>{zone.label}</span>)}
+    {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id}
+      data-homeworld-interior-zone-v74={room.secondaryLayoutV74?zone.id:undefined}
+      data-homeworld-floor-caption-v74={zone.id} title={zone.label} style={{position:'absolute',left:zone.x+zone.width/2,
+      // Keep the two caption lines inside the floor and north of the exit band.
+      // This is typography only: it never changes a zone, doorway or collision.
+      top:Math.min(zone.y+zone.depth-36,room.exit.y-60)*HOMEWORLD_GEOMETRY_V64.depthScale,
+      width:Math.max(48,zone.width-24),maxHeight:20,overflow:'hidden',lineHeight:'10px',textAlign:'center',
+      transform:'translateX(-50%)',fontSize:8,fontFamily:'ui-monospace,monospace',letterSpacing:'.06em',color:'#a89979',pointerEvents:'none',zIndex:0}}>{zone.label}</span>)}
     {room.buildingId === 'market-armory' && <img src="/game/homeworld/v68/hunt-board.png" alt="" draggable={false} data-homeworld-hunt-board-v68
       style={{ position:'absolute', maxWidth:'none', left:room.width * .22 - 1182 * .094 / 2, top:-1300 * .094,
         width:1182 * .094, height:1330 * .094, zIndex:1, pointerEvents:'none' }} />}

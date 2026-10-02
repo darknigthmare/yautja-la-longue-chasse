@@ -37,13 +37,19 @@ async function exitRoomSafely(){
 }
 async function verifyMotion(){
   const samples=[];await nav.focus();await page.keyboard.down('ArrowRight');
-  for(let i=0;i<14;i++){await nav.tick(34);samples.push(await page.locator('[data-homeworld-unblooded-v72]').evaluate(e=>({clip:e.dataset.homeworldUnbloodedV72,frame:e.dataset.nativeFrame,facing:e.dataset.nativeFacing,bg:e.style.backgroundImage,transform:getComputedStyle(e.parentElement).transform,seconds:document.querySelector('[data-homeworld-viewport]').dataset.citySeconds})));}
+  for(let i=0;i<14;i++){await nav.tick(34);samples.push(await page.locator('[data-homeworld-unblooded-v72]').evaluate(e=>({clip:e.dataset.homeworldUnbloodedV72,frame:e.dataset.nativeFrame,facing:e.dataset.nativeFacing,motionVersion:e.dataset.motionVersion,direction:e.dataset.nativeDirection,bg:e.style.backgroundImage,transform:getComputedStyle(e.parentElement).transform,seconds:document.querySelector('[data-homeworld-viewport]').dataset.citySeconds})));}
   await page.keyboard.up('ArrowRight');await nav.tick(40);
   checks.push({name:'native-unblooded-motion-samples',samples});
-  const moving=samples.filter(s=>s.clip==='walk');assert(moving.length>2);assert.deepEqual(new Set(moving.map(s=>s.frame)),new Set(['0','1']));assert(moving.every(s=>s.bg.includes('/game/youth/v48/unblooded-right.png')&&s.transform==='none'));
-  await page.keyboard.down('ArrowLeft');await nav.tick(150);assert.equal(await page.locator('[data-homeworld-unblooded-v72]').getAttribute('data-native-facing'),'-1');assert((await page.locator('[data-homeworld-unblooded-v72]').getAttribute('style')).includes('/game/youth/v48/unblooded-left.png'));
+  const moving=samples.filter(s=>s.clip==='walk');assert(moving.length>2);
+  const nativeV74=moving.every(s=>s.motionVersion==='74');
+  assert.deepEqual(new Set(moving.map(s=>s.frame)),new Set(nativeV74?['0','1','2','3']:['0','1']));
+  assert(moving.every(s=>s.bg.includes(nativeV74?'/game/homeworld/v74/youth/':'/game/youth/v48/unblooded-right.png')&&s.transform==='none'));
+  if(nativeV74)assert(moving.every(s=>s.direction==='e'),'Actual rightward velocity selects the authored east view');
+  await page.keyboard.down('ArrowLeft');await nav.tick(150);assert.equal(await page.locator('[data-homeworld-unblooded-v72]').getAttribute('data-native-facing'),'-1');
+  if(nativeV74)assert.equal(await page.locator('[data-homeworld-unblooded-v72]').getAttribute('data-native-direction'),'w');
+  else assert((await page.locator('[data-homeworld-unblooded-v72]').getAttribute('style')).includes('/game/youth/v48/unblooded-left.png'));
   await capture('unblooded-native-left-walk');await page.keyboard.up('ArrowLeft');await nav.tick(100);assert.equal(await page.locator('[data-homeworld-unblooded-v72]').getAttribute('data-homeworld-unblooded-v72'),'idle');
-  checks.push({name:'real-native-two-drawing-walk-and-left-right-unblooded',samples,limit:'Two native V48 walk drawings per facing, not an eight-direction full animation set.'});
+  checks.push({name:'real-native-walk-and-left-right-unblooded',samples,motionVersion:nativeV74?'74':'72',limit:nativeV74?'Four native poses per direction; all eight directions are checked in the separate V74 motion recipe.':'Two native V48 walk drawings per facing, not an eight-direction full animation set.'});
 }
 try{
   await page.addInitScript(({key,save})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));},{key:p.SAVE_STORAGE_KEY,save:firstTracksCompleted()});
@@ -51,7 +57,8 @@ try{
   // after mount would mix two performance.now origins in the QA harness.
   await page.clock.install();
   await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await page.locator('[data-homeworld-hub]').waitFor();
-  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),process.env.V72_IDENTITY_EXPECTED_VERSION??'V73');
+  if(process.env.YAUTJA_QA_EXPECTED_VERSION==='V74')await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});
+  assert.equal(await page.locator('main').getAttribute('data-game-content-version'),process.env.YAUTJA_QA_EXPECTED_VERSION??process.env.V72_IDENTITY_EXPECTED_VERSION??'V73');
   await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));nav=homeworldNavigatorV66(page,api,{waypointTolerance:3,driverTickMs:16,pulseInputs:true});await nav.focus();await capture('arrival-diverse-clothed-population');await verifyMotion();
   for(const id of['market-armory','deep-forge','clan-lodge','training-hall','memory-vault','throne-audience']){
     await exitRoomSafely();const building=api.HOMEWORLD_BUILDINGS.find(b=>b.id===id),door=api.homeworldBuildingDoorwayV64(building),from=await nav.position(),route=api.homeworldSpatialRoute(from,door.approach);
@@ -92,7 +99,7 @@ try{
     const response=await page.request.get(url+source.src);assert.equal(response.status(),200);const hash=crypto.createHash('sha256').update(await response.body()).digest('hex');assert.equal(hash,source.sha256);checks.push({name:'preserved-native-identity-http-sha',src:source.src,sha256:hash});
   }
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
-  await fs.writeFile(output+'/report.json',JSON.stringify({status:'PASS',url,checks,captures,errors,failures,limits:'Prior nursery, youth and First Tracks are model-played prerequisites in a new isolated browser context. Six physical facades and every public wing are visited through actual keyboard movement; other 37 interiors keep existing plans. Named residents have 12 unique native costumes, existing population uses14 roles but civilian walking sheets are not produced. Unblooded walk uses2 native drawings per facing. Private floors/apartments of the chief citadel are not simulated. Architecture and civilian clothing are original lore-compatible adaptations, not canonical one-to-one landmarks.'},null,2));
+  await fs.writeFile(output+'/report.json',JSON.stringify({status:'PASS',url,checks,captures,errors,failures,limits:'Prior nursery, youth and First Tracks are model-played prerequisites in a new isolated browser context. Six physical facades and every public wing are visited through actual keyboard movement. The V74 secondary interiors and full civilian/youth motion are verified in separate recipes. Named residents keep native V72 costumes. Private floors/apartments of the chief citadel are not simulated. Architecture and civilian clothing are original lore-compatible adaptations, not canonical one-to-one landmarks.'},null,2));
   console.log(JSON.stringify({status:'PASS',checks:checks.length,captures:captures.length,output}));
 }catch(error){await capture('failure').catch(()=>{});await fs.writeFile(output+'/report.json',JSON.stringify({status:'FAIL',url,error:String(error),checks,captures,errors,failures},null,2));throw error;}
 finally{await browser.close();}

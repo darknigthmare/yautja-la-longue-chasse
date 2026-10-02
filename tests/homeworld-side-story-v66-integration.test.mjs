@@ -4,6 +4,7 @@ import {test} from 'node:test';
 import {runInNewContext} from 'node:vm';
 import ts from 'typescript';
 import {build} from 'esbuild';
+import {homeworldInteriorPointFixture} from './helpers/homeworld-interior-point-fixture.mjs';
 
 const bundle=await build({stdin:{contents:`
  export * from './app/game/systems/homeworld';
@@ -49,7 +50,7 @@ function fixture(){
   const room=api.homeworldInteriorForPointV64(pointId),socket=room?.points.find(p=>p.pointId===pointId);
   assert.ok(socket,'Real interior socket for '+pointId);env.interiorRef.current=room;
   // Unit fixture only. Separate browser QA reaches doors and NPCs by walking.
-  env.actorRef.current={...env.actorRef.current,x:socket.x,y:socket.y+45};
+  env.actorRef.current={...env.actorRef.current,...homeworldInteriorPointFixture(api,room,pointId)};
   assert.equal(api.isHomeworldInteriorWalkableV64(room,env.actorRef.current),true);
   const point=env.pointInCurrentSpace(env.actorRef.current,room);assert.equal(point?.id,pointId);
   env.dialogStateRef.current=dialog={point};

@@ -5,6 +5,7 @@ import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
 import { createInquiryFixture } from "./fixtures/homeworld-inquiry.mjs";
+import { homeworldInteriorPointFixture } from "./helpers/homeworld-interior-point-fixture.mjs";
 
 const compile = async file => {
   const bundle = await build({ entryPoints: [file], bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent" });
@@ -148,7 +149,7 @@ function liveFixture() {
     assert.ok(room && socket, `authored interior for ${pointId}`);
     // Unit actor fixture in the real room coordinate system. Browser QA walks doors.
     env.interiorRef.current = room;
-    env.actorRef.current = { ...env.actorRef.current, x: socket.x, y: socket.y + 45 };
+    env.actorRef.current = { ...env.actorRef.current, ...homeworldInteriorPointFixture(interiors, room, pointId) };
     assert.equal(interiors.isHomeworldInteriorWalkableV64(room, env.actorRef.current), true);
     const point = env.pointInCurrentSpace(env.actorRef.current, room);
     assert.equal(point?.id, pointId);

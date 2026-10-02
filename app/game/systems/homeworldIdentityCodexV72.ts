@@ -1,10 +1,11 @@
 import {HOMEWORLD_INTERIORS_V64} from './homeworldInteriorsV64';
 import {HOMEWORLD_BUILDINGS} from './homeworldCity';
 import {HOMEWORLD_FURNITURE_ART_V72,homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
+import {homeworldBuildingIdentityV72} from './homeworldIdentityV72';
 import type {HomeworldElementRecordV64} from './homeworldElementCodexV64';
 /** Additional codex entries are derived from the exact furniture/partition models.
  * None of these fittings is a reward or an implicitly available service. */
-export const HOMEWORLD_IDENTITY_CODEX_V72:readonly HomeworldElementRecordV64[]=HOMEWORLD_INTERIORS_V64.flatMap(room=>{
+export const HOMEWORLD_IDENTITY_CODEX_V72:readonly HomeworldElementRecordV64[]=HOMEWORLD_INTERIORS_V64.filter(room=>homeworldBuildingIdentityV72(room.buildingId)!==null).flatMap(room=>{
   const building=HOMEWORLD_BUILDINGS.find(b=>b.id===room.buildingId)!;
   const common={districtId:building.districtId,spaceId:room.buildingId,lore:'original-adaptation' as const,door:null,source:[
     {label:'RPG Maker · intérieurs',url:'https://rpgmakerweb.com/blog/tutorial-mapping-interior',note:'Fonction des pièces, enveloppe extérieure, accès et mobilier. Inspiration mécanique seulement.'},

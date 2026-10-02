@@ -8,7 +8,8 @@ export default function HomeworldInteriorPartitionsV72({room}:{room:HomeworldInt
   return <>{(room.partitions??[]).map(wall=>{
     const horizontal=wall.orientation==='horizontal',art=HOMEWORLD_INTERIOR_ART_V64[horizontal?'north':'west'];
     const length=horizontal?wall.width:wall.depth,count=Math.ceil(length/art.moduleLengthWorld),height=wall.cutawayHeight+12;
-    return <span key={wall.id} data-interior-partition-v72={wall.id} data-collision-width={wall.width} data-collision-depth={wall.depth}
+    return <span key={wall.id} data-interior-partition-v72={wall.id}
+      data-interior-partition-v74={room.secondaryLayoutV74?wall.id:undefined} data-collision-width={wall.width} data-collision-depth={wall.depth}
       style={{position:'absolute',left:horizontal?wall.x:wall.x-15,top:wall.y*HOMEWORLD_GEOMETRY_V64.depthScale-height,
         width:horizontal?wall.width:42,height:horizontal?height+12:wall.depth*HOMEWORLD_GEOMETRY_V64.depthScale+height,
         overflow:'hidden',zIndex:Math.round(wall.y+wall.depth),pointerEvents:'none'}}>

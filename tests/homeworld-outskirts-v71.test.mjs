@@ -82,7 +82,8 @@ test('codex connects every real facade, front path, threshold and proportionate 
     const room=rooms.homeworldInteriorForBuildingV64(building.id),record=codex.HOMEWORLD_CONTEXT_CODEX_V71.find(r=>r.id==='assembly-v71:'+building.id);
     assert(record);assert.equal(record.asset,building.art.src);assert(room.width<=building.footprint.width&&room.depth<=building.footprint.depth);
     assert(record.associatedElementIds.includes('interior:'+building.id));assert(record.associatedElementIds.includes('door:'+building.id));
-    assert(record.associatedElementIds.includes('approach-v71:'+building.id));assert(room.props.length>0);
+    assert(record.associatedElementIds.includes('approach-v71:'+building.id));
+    assert(room.props.length+(room.furniture?.length??0)>0,'Every interior retains real independent furniture, including native V74 fittings');
     assert.equal(record.lore,'original-adaptation');
   }
   for(const record of codex.HOMEWORLD_CONTEXT_CODEX_V71)for(const id of record.associatedElementIds)assert(ids.has(id),record.id+' missing '+id);

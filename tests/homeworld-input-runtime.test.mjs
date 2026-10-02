@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function pollingEffect(environment) {
@@ -43,6 +43,8 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     cityClockV68: { current: 0 },
+    HOMEWORLD_ACTOR: city.HOMEWORLD_ACTOR, homeworldYouthDirectionV74: city.homeworldYouthDirectionV74,
+    youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
     actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
     interiorRef: { current: null }, stepHomeworldActorOnFloor: city.stepHomeworldActorOnFloor,
     dreadMotionRef: { current: { angles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: city.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },

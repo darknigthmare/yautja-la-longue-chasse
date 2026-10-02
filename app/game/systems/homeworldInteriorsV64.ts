@@ -2,6 +2,7 @@ import envelopes from '../data/homeworldInteriorEnvelopesV64.json';
 import { HOMEWORLD_PROP_ART_V64 } from './homeworldArtV64';
 import {homeworldFunctionalInteriorV72,homeworldInteriorPartitionBlocksV72,type HomeworldInteriorPartitionV72,type HomeworldInteriorZoneV72} from './homeworldFunctionalInteriorsV72';
 import {homeworldFurnitureTouchesV72,type HomeworldFurnitureInstanceV72} from './homeworldFurnitureV72';
+import {homeworldSecondaryInteriorV74,type HomeworldSecondaryLayoutV74} from './homeworldSecondaryInteriorsV74';
 
 /** Original civic/domestic interiors for this game; not a canonical map of Yautja Prime.
  * Coordinates are on the unprojected ground plane. The renderer alone applies
@@ -31,6 +32,8 @@ export interface HomeworldInteriorV64 {
   partitions?:readonly HomeworldInteriorPartitionV72[];
   zones?:readonly HomeworldInteriorZoneV72[];
   furniture?:readonly HomeworldFurnitureInstanceV72[];
+  /** Public placement contract for the 37 secondary rooms; no new gameplay actions. */
+  secondaryLayoutV74?:HomeworldSecondaryLayoutV74;
 }
 
 // Keep every original narrative/service ID. Entering a room grants no rank,
@@ -97,8 +100,8 @@ const civicRooms: HomeworldInteriorV64[] = Object.entries(HOMEWORLD_INTERIOR_BIN
   };
 });
 
-// Three furnished domestic plans are reused eight times each. Their contents
-// are purely environmental: no new shop, healing, rank or collectible action.
+// Preserve the original room variants and fallback data. V74 adds authored
+// secondary layouts below, without changing their envelope or gameplay actions.
 const domesticRooms: HomeworldInteriorV64[] = envelopes.filter(item => item.kind === 'domestic').map(envelope => {
   const width = envelope.width - 32, depth = envelope.depth - 32;
   const variant = envelope.variant as 'rest' | 'meal' | 'storage';
@@ -130,7 +133,7 @@ export function homeworldInteriorPropArtIdV64(kind: HomeworldInteriorPropV64['ki
   return ids[kind];
 }
 
-export const HOMEWORLD_INTERIORS_V64: readonly HomeworldInteriorV64[] = [...civicRooms, ...domesticRooms].map(homeworldFunctionalInteriorV72).map(room => ({
+export const HOMEWORLD_INTERIORS_V64: readonly HomeworldInteriorV64[] = [...civicRooms, ...domesticRooms].map(homeworldFunctionalInteriorV72).map(homeworldSecondaryInteriorV74).map(room => ({
   ...room,
   props: room.props.map(prop => {
     const art = HOMEWORLD_PROP_ART_V64[homeworldInteriorPropArtIdV64(prop.kind)];

@@ -37,7 +37,7 @@ try {
   check('desktop-mobile-new-game-form-ready-without-creating-user-data');
   const files = ['game/homeworld/v70/temple-modules.png', 'game/homeworld/v71/outskirts-kit.png', 'game/homeworld/v71/cinder-ground.png',
     'game/youth/v48/unblooded-left.png', 'game/youth/v48/unblooded-right.png'];
-  for (const folder of ['game/homeworld/v72', 'game/prologue/v72']) {
+  for (const folder of ['game/homeworld/v72', 'game/prologue/v72', 'game/homeworld/v74', 'game/homeworld/v74/youth']) {
     for (const file of await fs.readdir(path.join('public', folder))) if (file.endsWith('.png')) files.push(folder + '/' + file);
   }
   const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -53,7 +53,7 @@ try {
   await page.screenshot({ path: path.join(output, 'failure.png') }).catch(() => {});
 } finally { await browser.close(); }
 const report = { status: checks.every(c => c.passed) ? 'PASS' : 'FAIL', url, at: new Date().toISOString(), checks, errors,
-  limits: 'This recipe verifies shell and immutable bitmap delivery. The mounted game V73 version, gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate V72 recipes after creating or continuing a campaign. No real signup, login or email is performed.' };
+  limits: 'This recipe verifies shell and immutable bitmap delivery. The mounted game version, gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate recipes after creating or continuing a campaign. No real signup, login or email is performed.' };
 await fs.writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ status: report.status, checks: checks.length, output }));
 if (report.status !== 'PASS') process.exitCode = 1;
