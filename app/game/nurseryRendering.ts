@@ -146,7 +146,11 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
     const village = scene("village");
     const projection = backdrop(ctx, village, reducedMotion ? 1 : 1.45 - 0.45 * progress, reducedMotion ? 0.5 : 0.61 - 0.11 * progress);
     drawVillageVictory(ctx, presentation, bank, village, projection, reducedMotion);
-    if (!reducedMotion && progress < 0.15) { ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1; }
+    // The arena crossfade belongs only to the genuine post-KO reveal. During the
+    // opening memory the village is a clean establishing shot after the red moon.
+    if (!reducedMotion && presentation.phase === "village-reveal" && progress < 0.15) {
+      ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1;
+    }
   } else {
     backdrop(ctx, scene("redMoon"), reducedMotion ? 1 : 1.05 + 0.05 * smooth(presentation.camera.progress));
   }
