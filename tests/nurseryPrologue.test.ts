@@ -67,7 +67,7 @@ test("opening cinematic explains the duel before control and preserves an option
   assert.equal(api.getNurseryPresentation(state).camera.shot, "village");
   assert.equal(api.getNurseryNarrativeBeat(state)?.id, "nursery-purpose");
 
-  state = advance(state, 310);
+  state = advance(state, 350);
   assert.equal(api.getNurseryPresentation(state).camera.shot, "arena");
   assert.match(api.getNurseryNarrativeBeat(state)?.text ?? "", /Blooded/);
 
