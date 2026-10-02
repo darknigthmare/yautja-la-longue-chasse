@@ -33,6 +33,9 @@ La scène sert désormais de première reconnaissance du personnage :
 7. **Titre et ellipse**  
    Quelques années passent. Le personnage quitte la nurserie et entre dans la cité comme Unblooded. C'est à ce moment que commence réellement sa longue formation puis, bien plus tard, son propre rite de chasse.
 
+8. **Accueil dans la cité — L'appel de la Citadelle**  
+   L'écran Homeworld reprend explicitement le fil du souvenir : la victoire d'enfance n'était qu'une autorisation de poursuivre l'apprentissage. Devenu Unblooded, le joueur est convoqué par le chef à la Citadelle avant le dojo, l'armurerie et les Premières Pistes. La ville devient ainsi le chapitre suivant de l'histoire et non une destination sans transition.
+
 ## Cohérence franchise
 
 La franchise cinématographique établit explicitement dans *Alien vs. Predator* (2004) l'existence d'un **rite de passage / coming-of-age rite** pour de jeunes Predators. Le prologue V72 évite donc de confondre le simple duel d'enfance avec cette initiation beaucoup plus tardive.
