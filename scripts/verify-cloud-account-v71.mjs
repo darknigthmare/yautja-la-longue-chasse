@@ -81,7 +81,12 @@ async function openAccount(page){await page.bringToFront();await page.getByRole(
 async function signIn(page,email){const panel=page.locator('[data-cloud-account-v71]');await panel.getByLabel('Adresse courriel').fill(email);await panel.getByLabel('Mot de passe',{exact:true}).fill('FakeQA-password-only');await panel.getByRole('button',{name:'Se connecter',exact:true}).click();await page.waitForFunction(expected=>{try{return JSON.parse(localStorage.getItem('yautja-long-hunt.cloud.session-v71'))?.user?.email===expected;}catch{return false;}},email);}
 async function closeAccount(page){await page.getByRole('button',{name:'Fermer le compte',exact:true}).click();await page.locator('[data-cloud-account-v71]').waitFor({state:'hidden'});}
 async function waitCloud(predicate,label){for(let i=0;i<300;i++){if(predicate())return;await new Promise(resolve=>setTimeout(resolve,100));}assert.fail(label);}
-function sameArchive(a,b){assert.equal(model.cloudArchiveIdentityV71(a),model.cloudArchiveIdentityV71(b));}
+function sameArchive(a,b){
+ const expected=model.cloudArchiveIdentityV71(a),actual=model.cloudArchiveIdentityV71(b);
+ const left=new Map(a.entries.map(entry=>[entry.key,entry.raw])),right=new Map(b.entries.map(entry=>[entry.key,entry.raw]));
+ const differentKeys=[...new Set([...left.keys(),...right.keys()])].filter(key=>left.get(key)!==right.get(key));
+ assert.equal(expected===actual,true,'Exact confirmed archive bytes differ for keys: '+differentKeys.join(', '));
+}
 function mark(name,details={}){checks.push({name,status:'PASS',...details});console.log(JSON.stringify({check:checks.length,name,status:'PASS'}));}
 async function diagnostic(page){return page?.evaluate(()=>({url:location.href,hidden:document.hidden,focused:document.hasFocus(),nursery:[...document.querySelectorAll('canvas[data-nursery-phase]')].map(node=>({...node.dataset})),campaignMenu:document.querySelector('[data-campaign-menu]')?.getAttribute('aria-busy')??null,accountOpen:Boolean(document.querySelector('[data-cloud-account-v71]')),activeTag:document.activeElement?.tagName??null})).catch(error=>({diagnosticError:error.message}));}
 
@@ -129,9 +134,9 @@ try{
  assert.notEqual(model.cloudArchiveIdentityV71(offlineLocal),model.cloudArchiveIdentityV71(firstLocal));
  await screenshot(mobile,'mobile-offline-ready-checkpoint-durable-menu');mark('offline-loaded-scene-advances-and-ready-checkpoint-is-durable-cloud-unchanged',{actualBrowserOffline:true,cloudRevision:1,progression:'prompt → arrival → ready; paused and saved through UI',assetScope:'Scene fully loaded online before disconnect. Offline first load of assets is not claimed.'});
  cloudOutage=false;await mobileContext.setOffline(false);await openAccount(mobile);await mobile.getByRole('button',{name:'Actualiser la synchronisation',exact:true}).click();
- await waitCloud(()=>rows.get(A)?.revision>=2,'Reconnect did not upload mobile progress');sameArchive(offlineLocal,rows.get(A).snapshot);await screenshot(mobile,'mobile-reconnected-offline-checkpoint-upload');
+ await waitCloud(()=>rows.get(A)?.revision>=2&&model.cloudArchiveIdentityV71(rows.get(A).snapshot)===model.cloudArchiveIdentityV71(offlineLocal),'Reconnect did not upload exact mobile progress');sameArchive(offlineLocal,rows.get(A).snapshot);await screenshot(mobile,'mobile-reconnected-offline-checkpoint-upload');
  const reconnectRevision=rows.get(A).revision;await closeAccount(mobile);await createParty(mobile,2,'Deuxième partie en ligne QA');const twoParties=await capture(mobile);await openAccount(mobile);await mobile.getByRole('button',{name:'Actualiser la synchronisation',exact:true}).click();
- await waitCloud(()=>rows.get(A)?.revision>reconnectRevision,'Second online campaign did not synchronize');sameArchive(twoParties,rows.get(A).snapshot);await screenshot(mobile,'mobile-online-second-party-complete-archive-upload');
+ await waitCloud(()=>rows.get(A)?.revision>reconnectRevision&&model.cloudArchiveIdentityV71(rows.get(A).snapshot)===model.cloudArchiveIdentityV71(twoParties),'Second online campaign exact archive did not synchronize');sameArchive(twoParties,rows.get(A).snapshot);await screenshot(mobile,'mobile-online-second-party-complete-archive-upload');
  mark('reconnection-uploads-offline-progress-and-online-second-campaign-with-revision-CAS',{offlineCheckpointRevision:reconnectRevision,twoCampaignRevision:rows.get(A).revision});
  // Explicit fault fixture: stale queue is seeded, no game progression is invented.
  const desktopBefore=await capture(desktop),digest=await desktop.evaluate(async text=>{const bytes=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)));return [...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');},model.cloudArchiveIdentityV71(firstLocal));

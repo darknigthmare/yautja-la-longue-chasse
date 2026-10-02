@@ -36,3 +36,11 @@ La source finale passe **2 375/2 375 tests** sans exclusion ni annulation, ainsi
 Un espace vide encore marqué comme appartenant à un ancien compte conserve cette association : sa première partie nécessitera une confirmation explicite pour le nouveau compte. Le texte du panneau sans parties ne distingue pas encore ce cas rare de celui d'un appareil entièrement neuf. Aucun envoi vers le mauvais compte n'est effectué.
 
 La compilation finale, la régression complète, les nouvelles recettes navigateur et le commit public exact sont consignés dans les rapports de validation et de publication après leur exécution. Un diagnostic interrompu ou échoué n'est jamais présenté comme une preuve finale.
+
+## Publication vérifiée
+
+Le commit `e409775173407a2cb21f42bb57eebc947a7003a8` est poussé sur `main`, avec V70 inclus. Vercel `dpl_2hLyn51LArJ8tmJ1Tk9MfX34JuEa` est **READY en production pour ce SHA**. L'URL `https://yautja-la-longue-chasse.vercel.app` répond HTTP 200. Les trois images nouvelles V70/V71 sont identiques aux sources locales par SHA-256.
+
+Les quatre recettes publiques passent : menu et service réel en lecture seule (11 contrôles, 2 captures), comptes avec transport simulé (10 parcours, 15 captures), abords et maison atteints au clavier (10 contrôles, 8 captures), victoire du prologue après un duel neuf réellement gagné (4 groupes de vérification, 8 captures). Toutes ces captures sont inspectées. Le premier dessin de victoire est observé à tick 9 grâce à une pause déclenchée par le véritable bouton du jeu ; aucune horloge ni progression n'est injectée.
+
+La première recette publique de compte avait observé une révision intermédiaire avant le transfert attendu ; elle attend maintenant aussi l'identité brute exacte. La première capture du geste avait dépassé sa brève fenêtre ; l'observation déclenche maintenant la pause réelle immédiatement. Les deux diagnostics sont conservés. Aucun correctif runtime n'a été nécessaire après publication. Les rapports publics et cette consolidation sont conservés dans un commit de preuves séparé du commit de jeu déployé. Le détail et les limites restent dans `v71-publication-qa.json`.

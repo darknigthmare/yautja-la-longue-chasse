@@ -66,14 +66,27 @@ try {
   assert.equal((await snapshot()).victory, "none", "No wide-shot victory is pasted on the combat shot.");
   await capture(page, "desktop-nonlethal-ko");
   checks.push("Fresh campaign: actual keyboard nursery duel won, without seeded state, fabricated hit points or injected receipts.");
-  await phase("village-reveal").waitFor();
-  await page.waitForFunction(() => {
+  // Observe the real rendered phase before it starts, then activate the existing
+  // visible Pause button. This avoids a browser-protocol round trip consuming
+  // the first drawing's 20-tick window; it never changes simulation or saves.
+  await page.evaluate(() => {
     const node = document.querySelector("[data-nursery-prologue] canvas");
-    return node?.dataset.nurseryVictory === "youngling-arm-raised-rival-ko" && Number(node.dataset.nurseryVictoryTick) >= 8;
+    const observer = new MutationObserver(() => {
+      if (node?.dataset.nurseryPhase !== "village-reveal" ||
+          node.dataset.nurseryVictory !== "youngling-arm-raised-rival-ko" ||
+          Number(node.dataset.nurseryVictoryTick) < 8) return;
+      const button = [...document.querySelectorAll("[data-nursery-prologue] button")]
+        .find(candidate => candidate.textContent.trim() === "Pause et commandes" && !candidate.disabled);
+      if (!button) return;
+      observer.disconnect();
+      button.click();
+    });
+    observer.observe(node, { attributes: true, attributeFilter: ["data-nursery-phase", "data-nursery-victory", "data-nursery-victory-tick"] });
   });
-  await page.keyboard.press("Escape");
+  await phase("village-reveal").waitFor();
   await page.getByRole("dialog", { name: "Prologue en pause", exact: true }).waitFor();
-  const first = await snapshot(); assert.ok(first.victoryTick < 20, "Capture the native gesture's first drawing before its raised-arm frame.");
+  const first = await snapshot();
+  assert.ok(first.victoryTick >= 8 && first.victoryTick < 20, "Authentic UI pause freezes the first native drawing's observed 8..19-tick window.");
   await capture(page, "desktop-village-first-native-gesture", true);
   await page.waitForTimeout(400); assert.deepEqual(await snapshot(), first);
   await page.getByRole("button", { name: "Reprendre le prologue", exact: true }).click();
@@ -121,7 +134,7 @@ try {
   await page.waitForFunction(() => !document.querySelector("[data-nursery-prologue]"), null, { timeout: 60000 });
   checks.push("Wide village celebration is followed by the original moon title and the genuine next chapter, without extra rank or ship.");
   assert.deepEqual(errors, []); assert.deepEqual(failures, []);
-  await fs.writeFile(`${output}/report.json`, JSON.stringify({ status: "PASS", url, at: new Date().toISOString(), checks, captures, errors, failures,
+  await fs.writeFile(`${output}/report.json`, JSON.stringify({ status: "PASS", url, at: new Date().toISOString(), firstDrawingObserved: true, firstNativeDrawingState: first, checks, captures, errors, failures,
     limits: "The fresh nursery duel was browser-played. Mobile uses its actually saved victory checkpoint. Existing native V47 art is preserved; the gesture has two distinct bitmap drawings, not a newly generated longer atlas. No canonical map or complete game claim." }, null, 2));
   console.log(JSON.stringify({ status: "PASS", checks, captures }));
 } catch (error) {
