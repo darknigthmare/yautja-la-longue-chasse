@@ -53,6 +53,35 @@ test("loading never reveals a missing scene and a held confirmation cannot skip 
   assert.equal(api.getNurseryPresentation(state).hud, false);
 });
 
+test("opening cinematic explains the duel before control and preserves an optional skip", () => {
+  let state = tick(api.createNurseryPrologue({ readyMode: "press" }));
+  state = tick(state);
+  state = tick(state, { confirm: true });
+  assert.equal(state.phase, "arrival");
+  assert.equal(api.getNurseryPresentation(state).camera.shot, "red-moon");
+  assert.equal(api.getNurseryNarrativeBeat(state)?.id, "red-moon-oath");
+  assert.match(api.getNurseryNarrativeBeat(state)?.text ?? "", /quand frapper/);
+
+  state = tick(state); // release the confirmation used to enter the memory
+  state = advance(state, 130);
+  assert.equal(api.getNurseryPresentation(state).camera.shot, "village");
+  assert.equal(api.getNurseryNarrativeBeat(state)?.id, "nursery-purpose");
+
+  state = advance(state, 310);
+  assert.equal(api.getNurseryPresentation(state).camera.shot, "arena");
+  assert.match(api.getNurseryNarrativeBeat(state)?.text ?? "", /Blooded/);
+
+  let early = tick(api.createNurseryPrologue({ readyMode: "press" }));
+  early = tick(early); early = tick(early, { confirm: true }); early = tick(early);
+  early = advance(early, api.NURSERY_TIMING.arrivalSkipUnlockTicks - 3);
+  early = tick(early, { confirm: true });
+  assert.equal(early.phase, "arrival", "the first context beats cannot be skipped immediately");
+  early = tick(early);
+  early = tick(early, { confirm: true });
+  assert.equal(early.phase, "ready", "after the context minimum a fresh confirmation may skip the remaining cinematic");
+  assert.match(api.getNurseryNarrativeBeat(early)?.text ?? "", /retient son coup/);
+});
+
 test("readiness needs 120 consecutive visible active ticks and release cancels it", () => {
   let state = advance(atReady(), 119, { ready: true });
   assert.equal(state.phase, "ready"); assert.equal(state.readyTicks, 119);
