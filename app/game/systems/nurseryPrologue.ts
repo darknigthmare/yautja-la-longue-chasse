@@ -15,9 +15,9 @@ export const NURSERY_TIMING = {
   tickRate: 60,
   readyHoldTicks: 120,
   // Twelve seconds give the opening enough time to explain the clan, the rival and
-  // the exact purpose of the duel. After three seconds the player may skip it.
+  // the exact purpose of the duel. The skip unlocks only after those core beats.
   arrivalTicks: 720,
-  arrivalSkipUnlockTicks: 180,
+  arrivalSkipUnlockTicks: 480,
   koTicks: 90,
   villageRevealTicks: 240,
   moonTitleTicks: 180,
@@ -400,7 +400,7 @@ export function getNurseryNarrativeBeat(state: NurseryState): NurseryNarrativeBe
       id: "accept-the-circle",
       eyebrow: "Le cercle attend",
       speaker: "Maître de jeunesse",
-      text: "Lève le bras pour accepter l’épreuve. Lorsque l’un de vous tombe, l’autre retient son coup : le clan juge la maîtrise autant que la force.",
+      text: "Lève le bras pour accepter l’épreuve. Ce n’est pas ton Blooding : lorsque l’un de vous tombe, l’autre retient son coup. Le clan juge ici la maîtrise autant que la force.",
       canSkip: false,
     };
   }
