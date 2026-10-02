@@ -5,6 +5,7 @@ import {useCallback,useLayoutEffect,useRef,useState,type KeyboardEvent} from 're
 import {useMenuGamepad} from './useMenuGamepad';
 import {menuFocusIndex,type MenuDirection} from './systems/menuNavigation';
 import styles from './CampaignMainMenu.module.css';
+import {openCloudAccountV71} from './CloudAccountV71';
 
 export interface CampaignCheckpointView {id:string;kind:'manual'|'auto';index:number;label:string;savedAt:string;hasActiveHunt:boolean;playTimeSeconds:number;resumeLocation?:string}
 export interface CampaignSlotView {id:number;status:'empty'|'ready'|'blocked';revision:number;ownerCreatedAt:string|null;hunterName:string|null;checkpoints:readonly CampaignCheckpointView[];lastCheckpointId:string|null;recoveryAvailable?:boolean}
@@ -62,6 +63,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      <p className={styles.eyebrow}>Choisissez votre histoire</p>
      <button className={current?styles.featured:undefined} type="button" disabled={busy||!current} onClick={()=>current&&(archivesBlocked?open('load'):onContinue(current.id))}><span className={styles.actionTitle}>Continuer</span><small>{current?`Partie ${current.id} · ${current.hunterName??'Chasseur sans nom'}`:'Aucune campagne à reprendre'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog} onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+     <button type="button" disabled={busy} onClick={openCloudAccountV71}><span className={styles.actionTitle}>Compte & sauvegardes</span><small>Synchroniser mobile et ordinateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      {onMausoleum&&<button type="button" disabled={busy} onClick={onMausoleum}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
      <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      {catalog?.slots.every(s=>s.status!=='empty')&&<p className={styles.notice}>Les cinq emplacements sont occupés ou protégés. Nouvelle partie permet de choisir une campagne à remplacer, uniquement après confirmation.</p>}
@@ -91,7 +93,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
    <footer className={styles.footer}>
     <p className={styles.status} role="status" aria-live="polite">{busy?'Vérification et enregistrement des archives…':message}</p>
     <div className={styles.footerRail}><p>Clavier : flèches, Entrée, Échap · Manette : directions, A, B · Tactile : toucher</p><button type="button" disabled={busy} onClick={onRefresh}>Actualiser les archives</button></div>
-    <p className={styles.localNotice}>Sauvegardes locales à cet appareil · aucun envoi automatique.</p>
+    <p className={styles.localNotice}>Sauvegardes locales · synchronisation avec un compte connecté.</p>
    </footer>
   </div>
   {replacement&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="campaign-replace-title" onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>

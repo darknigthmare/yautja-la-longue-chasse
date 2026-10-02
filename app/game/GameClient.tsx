@@ -1,4 +1,5 @@
 "use client";
+import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
 
 /* eslint-disable @next/next/no-img-element */
@@ -12,6 +13,7 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
 import type { YouthState, YouthReceipt } from "./systems/youthTraining";
@@ -42,7 +44,7 @@ import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY } from "./systems/archiveTransferGuard";
-import { recoverArchiveTransaction, withArchiveTransferLock } from "./systems/archiveTransaction";
+import { withArchiveTransferLock } from "./systems/archiveTransaction";
 import { useMenuGamepad } from "./useMenuGamepad";
 import type {
   PitMatchCompleteResult,
@@ -950,7 +952,7 @@ function withPitWriteLock({
 }
 
 export default function GameClient() {
-  return <CampaignFrontEnd SessionComponent={GameSession} />;
+  return <CloudAccountV71><CampaignFrontEnd SessionComponent={GameSession} /></CloudAccountV71>;
 }
 
 function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMainMenu: () => void }) {
@@ -1060,7 +1062,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const hydrationTask = window.setTimeout(async () => {
       try {
         if (window.localStorage.getItem(ARCHIVE_TRANSFER_JOURNAL_KEY) !== null) {
-          const recovery = await withArchiveTransferLock(() => recoverArchiveTransaction(window.localStorage));
+          const recovery = await withArchiveTransferLock(() => recoverAnyArchiveV71(window.localStorage));
           if (hydrationCancelled) return;
           if (!recovery.acquired || recovery.value.status === "blocked") {
             setArchiveRecoveryIssue(recovery.acquired ? recovery.value.message : recovery.reason);
@@ -3004,7 +3006,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (archiveTransferBusy) return;
     setArchiveTransferBusy(true);
     try {
-      const result = await withArchiveTransferLock(() => recoverArchiveTransaction(window.localStorage));
+      const result = await withArchiveTransferLock(() => recoverAnyArchiveV71(window.localStorage));
       if (!result.acquired) { setArchiveRecoveryIssue(result.reason); return; }
       if (result.value.status === "blocked") setArchiveRecoveryIssue(result.value.message);
       else window.location.reload();
@@ -5035,6 +5037,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             ref={settingsDialogRef}
           >
             <h2 id="settings-title">Réglages du biomask</h2>
+            <button type="button" className="ghost-button" disabled={archiveTransferBusy || Boolean(archiveRecoveryIssue)} onClick={openCloudAccountV71}>Compte & sauvegardes synchronisées</button>
             <p>
               La difficulté modifie la résistance, les dégâts et la détection
               des proies. La progression n’est jamais supprimée après un échec.
@@ -5134,7 +5137,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <section className="save-transfer" aria-labelledby="save-transfer-title">
               <h3 id="save-transfer-title">Archives et récupération</h3>
               <p>L’export léger conserve la campagne, les options, l’inventaire, l’apparence, les trophées, Homeworld et la Justice. L’archive intégrale ajoute la chasse suspendue et son checkpoint, le vaisseau, ses préréglages, l’atelier, l’entraînement, l’infirmerie, THE PIT et son dernier replay.</p>
-              <p>Seules les données déjà enregistrées sont transférées. La position instantanée d’une visite du hub et une expédition non rapportée ne sont pas des checkpoints sauvegardés. Aucun cloud ni envoi automatique.</p>
+              <p>Seules les données déjà enregistrées sont transférées. La position instantanée d’une visite du hub et une expédition non rapportée ne sont pas des checkpoints sauvegardés. Sans compte connecté, aucun cloud ni envoi automatique. Le panneau Compte permet de synchroniser les cinq parties entre appareils.</p>
               <div className="modal-actions">
                 <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne légère</button>
                 <button type="button" className="ghost-button" disabled={archiveTransferBusy} onClick={exportComplete}>Exporter l’archive intégrale</button>

@@ -41,6 +41,10 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
     const tick = (now: number) => {
       frameId = window.requestAnimationFrame(tick);
       if (document.hidden || !document.hasFocus()) { state = freshMenuPadState(); return; }
+      // A modal can make this menu inert while its controller loop is still mounted.
+      // Ignore every action, including Back, so gameplay cannot resume behind it.
+      const root = rootRef.current;
+      if (!root || root.closest('[inert],[aria-hidden="true"]')) { state = freshMenuPadState(); return; }
       let pad: Gamepad | null | undefined;
       try { pad = Array.from(navigator.getGamepads?.() ?? []).find(candidate => candidate?.connected); }
       catch { padIdentity = ""; state = freshMenuPadState(); return; }
@@ -56,8 +60,6 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const result = menuPadStep(state, { direction, confirm: pressed(0), back: pressed(1) }, now);
       state = result.state;
       if (!result.direction && !result.confirm && !result.back) return;
-      const root = rootRef.current;
-      if (!root) return;
       const dialogs = Array.from(root.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'))
         .filter(element => !element.closest('[inert]') && element.getClientRects().length > 0);
       const scope = dialogs.at(-1) ?? root;

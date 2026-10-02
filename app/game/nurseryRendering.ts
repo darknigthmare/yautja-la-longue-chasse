@@ -1,5 +1,7 @@
 import { NURSERY_ARENA, type NurseryPresentation } from "./systems/nurseryPrologue";
 import { drawActorContactShadow, getSpriteContact } from "./spriteContact";
+import { NURSERY_VICTORY_COMPOSITION_V71, nurseryBackdropProjection, nurseryVictoryDrawingTicksV71,
+  type NurseryBackdropProjection } from "./systems/nurseryVictoryCompositionV71";
 
 export const NURSERY_ART_POSES = ["idle", "walk", "ready", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
 export type NurseryArtPose = typeof NURSERY_ART_POSES[number];
@@ -83,8 +85,32 @@ export async function loadNurseryArt(manifest: NurseryArtManifest): Promise<Nurs
 const smooth = (t: number) => t * t * (3 - 2 * t);
 function backdrop(ctx: CanvasRenderingContext2D, image: HTMLImageElement, zoom = 1, centerY = 0.5) {
   const w = NURSERY_ARENA.width, h = NURSERY_ARENA.height;
-  const scale = Math.max(w / image.width, h / image.height) * zoom;
-  ctx.drawImage(image, (w - image.width * scale) / 2, h / 2 - image.height * scale * centerY, image.width * scale, image.height * scale);
+  const projection = nurseryBackdropProjection(image.width, image.height, w, h, zoom, centerY);
+  ctx.drawImage(image, projection.x, projection.y, image.width * projection.scale, image.height * projection.scale);
+  return projection;
+}
+/** Independent native bitmap layers share the wide-shot floor and camera projection. */
+function drawVillageVictory(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation,
+  bank: NurseryArtBank, scene: HTMLImageElement, projection: NurseryBackdropProjection, reducedMotion: boolean) {
+  const tick = nurseryVictoryDrawingTicksV71(presentation, reducedMotion);
+  if (tick === null) return;
+  const composition = NURSERY_VICTORY_COMPOSITION_V71;
+  for (const id of ["player", "rival"] as const) {
+    const anchor = composition[id], atlas = bank.manifest.actors[id][anchor.direction];
+    const clip = atlas.clips[anchor.clip];
+    const frame = nurseryClipFrame(clip, id === "rival" ? Number.MAX_SAFE_INTEGER : tick);
+    const image = bank.images.get(atlas.src)!;
+    const contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+    const scale = scene.height * composition.bodyHeightFraction * projection.scale / atlas.bodyHeight;
+    const supportX = projection.x + scene.width * anchor.x * projection.scale;
+    const supportY = projection.y + scene.height * anchor.supportY * projection.scale;
+    const x = supportX - frame.pivot[0] * scale;
+    const y = supportY - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale;
+    const contactX = contact ? x + (contact.left + contact.right) * 0.5 * scale : supportX;
+    drawActorContactShadow(ctx, contactX, supportY,
+      contact ? Math.max(2, (contact.right - contact.left) * 0.5 * scale) : 4, 0);
+    ctx.drawImage(image, ...frame.rect, x, y, frame.rect[2] * scale, frame.rect[3] * scale);
+  }
 }
 /** No CSS actors, mirrored costume, health HUD or substitute adult rig. */
 export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation, bank: NurseryArtBank | null, reducedMotion: boolean) {
@@ -117,8 +143,10 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
     ctx.filter = "none";
   } else if (presentation.camera.shot === "village") {
     const progress = smooth(presentation.camera.progress);
-    backdrop(ctx, scene("village"), reducedMotion ? 1 : 1.45 - 0.45 * progress, reducedMotion ? 0.5 : 0.61 - 0.11 * progress);
-    if (progress < 0.15) { ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1; }
+    const village = scene("village");
+    const projection = backdrop(ctx, village, reducedMotion ? 1 : 1.45 - 0.45 * progress, reducedMotion ? 0.5 : 0.61 - 0.11 * progress);
+    drawVillageVictory(ctx, presentation, bank, village, projection, reducedMotion);
+    if (!reducedMotion && progress < 0.15) { ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1; }
   } else {
     backdrop(ctx, scene("redMoon"), reducedMotion ? 1 : 1.05 + 0.05 * smooth(presentation.camera.progress));
   }

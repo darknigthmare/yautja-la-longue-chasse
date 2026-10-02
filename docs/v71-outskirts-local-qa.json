@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4191",
+  "verificationScope": "Built local V71 server, real Chrome through Playwright, keyboard traversal and actual DOM/HTTP measurements. This is not a production deployment claim.",
+  "checks": [
+    {
+      "name": "actual-modular-floor-culling-and-native-art",
+      "view": "port-grounded-surroundings",
+      "mounted": 11,
+      "families": [
+        "outskirts-resinwood",
+        "outskirts-thicket",
+        "outskirts-basalt",
+        "outskirts-retaining"
+      ],
+      "transform": "matrix(1, 0, 0, 0.573576, 0, 0)",
+      "floorSize": {
+        "width": 2160,
+        "depth": 2400
+      }
+    },
+    {
+      "name": "actual-modular-floor-culling-and-native-art",
+      "view": "memory-vault-physical-arrival",
+      "mounted": 12,
+      "families": [
+        "outskirts-thicket",
+        "outskirts-retaining",
+        "outskirts-marker",
+        "outskirts-basalt"
+      ],
+      "transform": "matrix(1, 0, 0, 0.573576, 0, 0)",
+      "floorSize": {
+        "width": 2160,
+        "depth": 2400
+      }
+    },
+    {
+      "name": "preserved-public-keyboard-route",
+      "buildingId": "memory-vault",
+      "distance": 6593.076757313937,
+      "position": {
+        "x": 1162,
+        "y": 1114
+      },
+      "noTeleport": true
+    },
+    {
+      "name": "actual-modular-floor-culling-and-native-art",
+      "view": "rampart-watch-physical-arrival",
+      "mounted": 7,
+      "families": [
+        "outskirts-marker",
+        "outskirts-basalt",
+        "outskirts-retaining",
+        "outskirts-thicket"
+      ],
+      "transform": "matrix(1, 0, 0, 0.573576, 0, 0)",
+      "floorSize": {
+        "width": 2160,
+        "depth": 2640
+      }
+    },
+    {
+      "name": "preserved-public-keyboard-route",
+      "buildingId": "rampart-watch",
+      "distance": 6655.646103885337,
+      "position": {
+        "x": 5839,
+        "y": 2889
+      },
+      "noTeleport": true
+    },
+    {
+      "name": "portrait-public-edge-keyboard-route",
+      "from": {
+        "x": 5839,
+        "y": 2889
+      },
+      "to": {
+        "x": 5999,
+        "y": 2971
+      },
+      "distance": 190.12977747838696,
+      "noTeleport": true
+    },
+    {
+      "name": "actual-modular-floor-culling-and-native-art",
+      "view": "rampart-environment-portrait",
+      "mounted": 3,
+      "families": [
+        "outskirts-basalt",
+        "outskirts-retaining"
+      ],
+      "transform": "matrix(1, 0, 0, 0.573576, 0, 0)",
+      "floorSize": {
+        "width": 960,
+        "depth": 2160
+      }
+    },
+    {
+      "name": "connected-context-read-only-mobile-and-real-interior",
+      "buildingId": "residence-port-1",
+      "interior": {
+        "width": 328,
+        "depth": 208,
+        "props": 2
+      },
+      "publicRouteDistance": 7880.87927245064
+    },
+    {
+      "name": "unchanged-native-openai-http-bytes",
+      "src": "/game/homeworld/v71/cinder-ground.png",
+      "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"
+    },
+    {
+      "name": "unchanged-native-openai-http-bytes",
+      "src": "/game/homeworld/v71/outskirts-kit.png",
+      "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"
+    }
+  ],
+  "captures": [
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/port-grounded-surroundings.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/memory-vault-physical-arrival.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/rampart-watch-physical-arrival.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/connected-real-house-context-desktop.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/connected-real-house-context-portrait.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/connected-real-house-associated-links-portrait.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/rampart-environment-portrait.jpg",
+    "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/real-house-interior-proportion-and-furnishings.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "visualInspection": {
+    "reviewedCaptures": 8,
+    "observations": [
+      "Port shows separate native resinwoods, thickets and basalt beside the existing shuttle apron; the shuttle remains on its dedicated pad.",
+      "Memory and rampart views show a natural dark volcanic material outside individual public floor polygons, with no giant city backdrop substituting for geometry.",
+      "Final wall and thicket crops remain isolated; no neighboring wall fragment is visible in the thicket. Existing facade fades preserve the hero near thresholds.",
+      "Desktop context geometry and portrait associated-element links remain readable inside the scrolling atlas without horizontal overflow.",
+      "The real house is entered through its existing southern door and shows a smaller furnished room; the exterior floor layer is absent indoors."
+    ],
+    "limits": [
+      "Portrait rampart view primarily shows the street and natural floor; its three mounted environmental props are mostly peripheral. Mount counts do not mean every prop is visible unobstructed in a screenshot.",
+      "Large public squares remain open; this environmental lot does not establish uniformly dense city composition.",
+      "Memory roof adjacency is visually ambiguous. The candidate resident-memory-1 follows the ground path (1165,395.5) to (985,485.5), at elevation zero and behind memory-vault depth 1038.5; 21 supports are walkable. No real terrace or confirmed rendering defect is claimed from that screenshot. This lot did not change population placement or its renderer.",
+      "The natural texture is repeated in world-space cells; mathematical seamlessness and every possible camera angle were not independently proven.",
+      "All 139 new object supports have model coverage, but only three desktop city views, one portrait city view and one real house interior were inspected here."
+    ]
+  },
+  "qaCorrection": "An initial QA attempt stopped after Escape did not close the atlas from the scrolled associated record. The QA script now clicks its public close button and walks to a nearby reachable public edge for the narrow portrait view. No runtime source was changed for this retry.",
+  "limits": "Earlier nursery/youth/First Tracks are declared model-played prerequisites. Three city views and real house access are reached through public keyboard movement. The natural outskirts remain non-walkable; all 139 objects have model placement coverage but are not each individually visited. Art is an original adaptation, not a canonical 1:1 city or new walking animation."
+}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HOMEWORLD_ELEMENT_CODEX_V64, type HomeworldElementRecordV64 } from "./systems/homeworldElementCodexV64";
+import { type HomeworldElementRecordV64 } from "./systems/homeworldElementCodexV64";
+import { HOMEWORLD_ALL_ELEMENT_CODEX_V71 as HOMEWORLD_ELEMENT_CODEX_V64 } from "./systems/homeworldContextCodexV71";
 import styles from "./HomeworldElementCodex.module.css";
 
 const categories: Record<string, string> = {
@@ -27,7 +28,7 @@ export default function HomeworldElementCodex() {
     const ids = ["all", ...Object.keys(categories)];
     return ids[(ids.indexOf(current) + direction + ids.length) % ids.length];
   });
-  return <section className={styles.root} aria-label="Codex des éléments de la cité" data-homeworld-element-codex="v64">
+  return <section className={styles.root} aria-label="Codex des éléments de la cité" data-homeworld-element-codex="v71">
     <p className={styles.notice}>Un même registre pilote le plan, les empreintes et ce codex. Les positions sont des coordonnées au sol ; la caméra les projette à 35°. Les silhouettes gardent leurs proportions.</p>
     <div className={styles.filters}>
       <label>Rechercher<input aria-label="Rechercher" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Nom, lieu ou identifiant…" /></label>
@@ -61,6 +62,9 @@ export default function HomeworldElementCodex() {
         </div>
         {selected.asset && <p className={styles.asset}><strong>Image utilisée</strong><code>{selected.asset}</code></p>}
         <h5>Règles de placement</h5><ul>{selected.constraints.map((rule, index) => <li key={`${selected.id}-${index}`}>{rule}</li>)}</ul>
+        {!!selected.associatedElementIds?.length && <aside className={styles.sources}><h5>Éléments associés</h5><p>Chaque lien ouvre la fiche réelle de cet élément ; aucun déplacement n’est effectué.</p>
+          <div className={styles.contextLinksV71}>{selected.associatedElementIds.map(id=>{const linked=HOMEWORLD_ELEMENT_CODEX_V64.find(record=>record.id===id);return linked&&<button key={id} type="button" onClick={()=>{setCategory('all');setQuery('');setSelectedId(id);}}>{linked.label}</button>;})}</div>
+        </aside>}
         <aside className={styles.sources}><h5>Références et portée du lore</h5>
           <p>La disposition de cette cité et ses institutions sont une adaptation originale. Une référence de matériau, de motif ou d’objet ne rend pas canonique l’ensemble du lieu.</p>
           {selected.source.length ? selected.source.map((source, index) => <div key={`${source.url}-${index}`}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a><p>{source.note}</p></div>) : <p>Aucune référence officielle précise attribuée à cet élément. Ne pas le présenter comme une reproduction 1:1.</p>}

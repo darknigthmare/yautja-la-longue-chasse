@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
 import { drawNurseryScene, loadNurseryArt, type NurseryArtBank } from "./nurseryRendering";
+import { nurseryVictoryDrawingTicksV71 } from "./systems/nurseryVictoryCompositionV71";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { GameAudio } from "./sound";
 import { NurseryCrowdAudio } from "./nurseryAudio";
@@ -31,7 +32,7 @@ const PHASE_LABELS: Record<NurseryState["phase"], string> = {
   loading: "Chargement de la nurserie.", prompt: "Le prologue commence dans la nurserie.", arrival: "La foule tribale acclame les jeunes combattants.",
   ready: "Levez le bras lorsque vous êtes prêt.", duel: "Duel d’entraînement non létal. Vous êtes le Youngling à gauche au départ.",
   defeat: "Vous êtes à terre. Le duel est terminé. Vous pouvez réessayer.", ko: "Votre adversaire est à terre. Le duel est terminé.",
-  "village-reveal": "Le village est construit dans le squelette ancien, sec et évidé d’un scolopendre.",
+  "village-reveal": "Dans l’arène du village, le jeune victorieux lève le bras ; son rival reste au sol après le duel d’entraînement non létal.",
   "moon-title": "La caméra découvre la lune rouge. Yautja: The Long Hunt.", complete: "La nurserie est terminée. Enregistrement en cours.",
 };
 const TOUCH_ACTIONS = [
@@ -203,6 +204,9 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       canvas.dataset.nurseryBlade = result.state.blade.holder ?? "ground";
       canvas.dataset.nurseryReadyTicks = String(result.state.readyTicks);
       canvas.dataset.nurseryShot = presentation.camera.shot;
+      const victoryTick = nurseryVictoryDrawingTicksV71(presentation, reducedMotion);
+      canvas.dataset.nurseryVictory = victoryTick === null ? "none" : "youngling-arm-raised-rival-ko";
+      canvas.dataset.nurseryVictoryTick = victoryTick === null ? "" : String(victoryTick);
       for (const event of result.events) {
         if (event.type === "phase" && event.phase === "arrival") crowdRef.current?.arrival();
         if (event.type === "hit") audioRef.current?.hit();

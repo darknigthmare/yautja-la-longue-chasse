@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4191",
+  "scope": "Real Chromium mobile/desktop UI and localStorage. Supabase email/auth/REST transport wholly intercepted by QA-only fixtures; no real user, email or remote save created. Live provider SQL/RLS/CAS is a separate root verification.",
+  "checks": [
+    {
+      "name": "mobile-created-real-new-party-in-UI",
+      "status": "PASS",
+      "fixtureProgression": false,
+      "nurseryPrompt": true
+    },
+    {
+      "name": "mobile-explicit-association-uploads-complete-exact-confirmed-archive",
+      "status": "PASS",
+      "revision": 1
+    },
+    {
+      "name": "mobile-account-dialog-fits-viewport-and-traps-focus-with-inert-background",
+      "status": "PASS",
+      "x": 11.6875,
+      "y": 29.328125,
+      "width": 366.625,
+      "height": 785.328125,
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "overflow": false
+    },
+    {
+      "name": "empty-desktop-login-auto-restores-mobile-exact-bytes-reloads-and-continues",
+      "status": "PASS",
+      "sameAccount": true,
+      "actualGameResume": "nursery-prompt",
+      "rawByteEqualityBeforeContinue": true
+    },
+    {
+      "name": "offline-loaded-scene-advances-and-ready-checkpoint-is-durable-cloud-unchanged",
+      "status": "PASS",
+      "actualBrowserOffline": true,
+      "cloudRevision": 1,
+      "progression": "prompt → arrival → ready; paused and saved through UI",
+      "assetScope": "Scene fully loaded online before disconnect. Offline first load of assets is not claimed."
+    },
+    {
+      "name": "reconnection-uploads-offline-progress-and-online-second-campaign-with-revision-CAS",
+      "status": "PASS",
+      "offlineCheckpointRevision": 2,
+      "twoCampaignRevision": 3
+    },
+    {
+      "name": "stale-outbox-conflict-refreshes-current-cloud-preview-without-overwrite",
+      "status": "PASS",
+      "seededFaultFixture": true,
+      "cloudRevision": 4
+    },
+    {
+      "name": "explicit-cloud-choice-restores-all-copies-keeps-local-rescue-clears-old-queue-and-reloads",
+      "status": "PASS",
+      "rescueCount": 2
+    },
+    {
+      "name": "logout-login-other-account-preserves-previous-workspace-and-requires-explicit-choice",
+      "status": "PASS",
+      "accountBUploaded": false
+    }
+  ],
+  "captures": [
+    "work-local/v71/qa/cloud-local/created-party-1-mobile-nursery.png",
+    "work-local/v71/qa/cloud-local/mobile-first-account-upload.png",
+    "work-local/v71/qa/cloud-local/desktop-autoimport-main-menu.png",
+    "work-local/v71/qa/cloud-local/desktop-continues-mobile-nursery.png",
+    "work-local/v71/qa/cloud-local/mobile-offline-loaded-nursery-ready.png",
+    "work-local/v71/qa/cloud-local/mobile-offline-ready-checkpoint-durable-menu.png",
+    "work-local/v71/qa/cloud-local/mobile-reconnected-offline-checkpoint-upload.png",
+    "work-local/v71/qa/cloud-local/created-party-2-mobile-nursery.png",
+    "work-local/v71/qa/cloud-local/mobile-online-second-party-complete-archive-upload.png",
+    "work-local/v71/qa/cloud-local/desktop-stale-outbox-fresh-cloud-choice.png",
+    "work-local/v71/qa/cloud-local/desktop-confirmed-cloud-restore-two-parties.png",
+    "work-local/v71/qa/cloud-local/other-account-choice-does-not-upload-previous-account-parts.png"
+  ],
+  "providerRequests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "actor": "anonymous",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "actor": "anonymous",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": "simulated-offline"
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": "eq.1"
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": "eq.2"
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "actor": "account-A",
+      "expectedRevision": null
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "actor": "anonymous",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "actor": "account-B",
+      "expectedRevision": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/yautja_cloud_saves",
+      "status": 200,
+      "actor": "account-B",
+      "expectedRevision": null
+    }
+  ],
+  "pageErrors": [],
+  "gameProgressionFixtures": "None for online campaign creations or offline loaded-scene progression. The offline scene was loaded online first; offline first asset load is not supported/proven. Stale outbox/remote revision seeded solely as an explicit transport conflict fixture.",
+  "rawByteChecks": "All allowlisted raw storage strings compared, not just summary labels.",
+  "at": "2026-10-02T01:19:10.523Z",
+  "phase": "v71-final-local",
+  "sourceCommit": null,
+  "captureReview": {
+    "count": 12,
+    "inspected": 12,
+    "status": "PASS",
+    "notes": "All 12 actual captures inspected: account fits mobile viewport; labels and choice buttons readable; nursery loaded before offline progression; one and two campaign summaries consistent; conflict shows fresh remote revision; other account requires explicit association. The nursery initial prompt intentionally precedes its arena image."
+  }
+}

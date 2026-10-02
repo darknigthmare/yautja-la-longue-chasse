@@ -1,9 +1,10 @@
 "use client";
+import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import {useCallback,useEffect,useRef,useState,lazy,Suspense,type ComponentType} from 'react';
 import {flushSync} from 'react-dom';
 import CampaignMainMenu from './CampaignMainMenu';
 import {ARCHIVE_TRANSFER_JOURNAL_KEY} from './systems/archiveTransferGuard';
-import {recoverArchiveTransaction,withArchiveTransferLock} from './systems/archiveTransaction';
+import {withArchiveTransferLock} from './systems/archiveTransaction';
 import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,replaceCampaignSlot,recoverCampaignWorkspace,recoverAsNewCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
 const Mausoleum=lazy(()=>import("./Mausoleum"));
 export interface CampaignSessionEntry {slotId:CampaignSlotId;ownerCreatedAt:string;token:string;location:CampaignResumeLocation}
@@ -16,7 +17,7 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
   try{
    let recoveryMessage:string|null=null;
    if(window.localStorage.getItem(ARCHIVE_TRANSFER_JOURNAL_KEY)!==null){
-    const recovery=await withArchiveTransferLock(()=>recoverArchiveTransaction(window.localStorage));
+    const recovery=await withArchiveTransferLock(()=>recoverAnyArchiveV71(window.localStorage));
     if(!alive.current)return;
     recoveryMessage=recovery.acquired?recovery.value.message:recovery.reason;
     if(!recovery.acquired||recovery.value.status==='blocked'){setCatalog(loadCampaignSlots());setMessage(recoveryMessage);return;}

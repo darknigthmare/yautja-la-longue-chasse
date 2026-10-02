@@ -1,0 +1,14 @@
+{
+  "status":"PASS_WITH_LIMITS",
+  "checkedAt":"2026-10-02",
+  "provider":"Existing shared Supabase project, separate Yautja table",
+  "table":"public.yautja_cloud_saves",
+  "migration":"20261001235556_yautja_cloud_saves_v71.sql",
+  "migrationApplied":true,
+  "newPaidProjectCreated":false,
+  "roleTests":{"status":"PASS","checks":["authenticated own insert and revision update","stale revision update affects zero rows","revision jump rejected by trigger","other account reads zero rows","other account update affects zero rows","foreign owner insert refused","anonymous access refused"],"qaWritesRolledBack":true,"qaRowsRemaining":0},
+  "publicRest":{"status":"PASS","anonymousHttpStatus":401,"exposedRows":false},
+  "authSettings":{"emailEnabled":true,"signupDisabled":false,"emailConfirmationRequired":true,"anonymousAccountsEnabled":false},
+  "securityAdvisor":{"newYautjaTableOrFunctionFindings":0,"sharedPreexistingSettingsNotChanged":true,"leakedPasswordProtectionEnabled":false},
+  "limits":["No real user's credentials were requested or used.","No authentication email or real account creation was performed by QA.","Browser transfer evidence uses an isolated simulated Auth/REST transport, separately from these real database checks.","Shared Auth mail delivery and real-account cross-device login are not certified by this report.","The shared Auth service still has its existing leaked-password protection disabled; unrelated application functions and policies were not modified."]
+}

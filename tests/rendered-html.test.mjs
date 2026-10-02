@@ -52,10 +52,13 @@ test("server-renders the campaign menu before local archive hydration", async ()
     .replace(/<span\b(?=[^>]*\baria-hidden=["']true["'])[^>]*>[\s\S]*?<\/span>/gi, "")
     .replace(/<[^>]+>/g, "").trim();
   assert.deepEqual(buttons.map(([, , content]) => actionLabel(content)), [
-    "Continuer", "Nouvelle partie", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
+    "Continuer", "Nouvelle partie", "Compte &amp; sauvegardes", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
   ]);
   // No local archives are available to SSR: actions stay protected until hydration.
-  for (const [, attributes] of buttons) assert.match(attributes, /(?:^|\s)disabled(?:\s|=|$)/);
+  for (const [, attributes, content] of buttons) {
+    // Account access is independent of archive hydration; game actions remain protected.
+    if (actionLabel(content) !== "Compte &amp; sauvegardes") assert.match(attributes, /(?:^|\s)disabled(?:\s|=|$)/);
+  }
   assert.doesNotMatch(main, /data-campaign-session=|data-game-shell=|<canvas\b/);
 });
 

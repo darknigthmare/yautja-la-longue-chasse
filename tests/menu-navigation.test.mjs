@@ -98,7 +98,7 @@ test("simultaneous navigation and confirm activates the newly focused control", 
     click() { this.clicks++; }
   }
   const first = new Control(0), second = new Control(80);
-  const root = { querySelectorAll: selector => selector === "controls" ? [first, second] : [], contains: element => [first, second].includes(element) };
+  const root = { closest: () => null, querySelectorAll: selector => selector === "controls" ? [first, second] : [], contains: element => [first, second].includes(element) };
   document.activeElement = first;
   const environment = {
     useEffect: callback => callback(), freshMenuPadState, menuPadStep, menuFocusIndex,

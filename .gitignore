@@ -54,3 +54,6 @@ __pycache__/
 
 # owner-only DLC: never publish this local reference/asset tree
 /private-dlc/
+
+# Supabase CLI local cache, never application source.
+/supabase/.temp/
