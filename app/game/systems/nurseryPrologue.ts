@@ -325,14 +325,16 @@ export function getNurseryPresentation(state: NurseryState): NurseryPresentation
   const shot = phase === "loading" || phase === "prompt" ? "black" :
     phase === "arrival" ? arrivalShot :
     phase === "village-reveal" ? "village" : phase === "moon-title" || phase === "complete" ? "red-moon" : "arena";
-  const progress = phase === "arrival" ? clamp(state.phaseTick / NURSERY_TIMING.arrivalTicks, 0, 1) :
+  const arrivalProgress = arrivalShot === "red-moon" ? clamp(state.phaseTick / 120, 0, 1) :
+    arrivalShot === "village" ? clamp((state.phaseTick - 120) / 300, 0, 1) :
+    clamp((state.phaseTick - 420) / Math.max(1, NURSERY_TIMING.arrivalTicks - 420), 0, 1);
+  const progress = phase === "arrival" ? arrivalProgress :
     phase === "village-reveal" ? clamp(state.phaseTick / NURSERY_TIMING.villageRevealTicks, 0, 1) :
     phase === "moon-title" ? clamp(state.phaseTick / NURSERY_TIMING.moonTitleTicks, 0, 1) : phase === "complete" ? 1 : 0;
-  const arrivalArenaProgress = clamp((state.phaseTick - 420) / Math.max(1, NURSERY_TIMING.arrivalTicks - 420), 0, 1);
   return { phase, hud: false, vision: "natural-red-orange-yellow", controlEnabled: phase === "duel" && state.inputArmed,
     readyGestureProgress: clamp(state.readyTicks / NURSERY_TIMING.readyHoldTicks, 0, 1),
     showStartPrompt: phase === "prompt", showReadyPrompt: phase === "ready",
-    camera: { shot, progress, blur: phase === "arrival" && arrivalShot === "arena" ? 0.45 * (1 - arrivalArenaProgress) : 0 },
+    camera: { shot, progress, blur: phase === "arrival" && arrivalShot === "arena" ? 0.45 * (1 - arrivalProgress) : 0 },
     showTitle: phase === "moon-title" || phase === "complete", title: NURSERY_SOURCE.title,
     awaitingNextChapter: phase === "moon-title" && state.phaseTick >= NURSERY_TIMING.moonTitleTicks,
     groundBlade: { visible: state.blade.holder === null, x: state.blade.x, y: NURSERY_ARENA.groundY },
