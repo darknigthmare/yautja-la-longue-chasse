@@ -24,7 +24,7 @@ const capture=async name=>{
   await decode();const path=output+'/'+name+'.jpg';await page.screenshot({path,type:'jpeg',quality:90});captures.push(path);
 };
 const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),p.SAVE_STORAGE_KEY);
-const cityReady=async()=>{await page.locator('[data-homeworld-hub]').waitFor();if(process.env.YAUTJA_QA_EXPECTED_VERSION==='V74')await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});};
+const cityReady=async()=>{await page.locator('[data-homeworld-hub]').waitFor();if(['V74','V75'].includes(process.env.YAUTJA_QA_EXPECTED_VERSION))await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});};
 try{
   await page.addInitScript(({key,save})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));},{key:p.SAVE_STORAGE_KEY,save:fixture});
   // Own RAF and performance time before mounting the game: installing a clock

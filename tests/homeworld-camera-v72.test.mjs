@@ -26,3 +26,14 @@ test('city projection remains unchanged and an oversized viewport centres finite
   const tiny = homeworldCameraV72({ actor: { x: 0, y: 0 }, width: 100, depth: 100, viewport: { width: 2000, height: 1800 }, interior: true });
   assert([tiny.x, tiny.y, tiny.zoom].every(Number.isFinite));
 });
+
+test('V75 exterior camera reveals natural shoulders without extending simulated city bounds', () => {
+  const args = { width: 6400, depth: 5100, viewport: { width: 1000, height: 580 }, interior: false };
+  const west = homeworldCameraV72({ ...args, actor: { x: 0, y: 800 } });
+  const east = homeworldCameraV72({ ...args, actor: { x: args.width, y: 800 } });
+  assert.equal(west.x, -480);
+  assert.equal(east.x + east.viewWidth, args.width + 480);
+  assert(west.x <= 0 && west.x + west.viewWidth >= 0);
+  assert(east.x <= args.width && east.x + east.viewWidth >= args.width);
+  assert.equal(west.zoom, .96); assert.equal(east.zoom, .96);
+});

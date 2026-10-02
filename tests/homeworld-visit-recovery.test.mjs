@@ -55,6 +55,8 @@ function fixture() {
     dreadMotionRef: { current: { angles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: world.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     spatialCodexOpenRef: { current: false },
+    wayfindingOpenRefV75: { current: false },
+    setWayfindingOpenV75(value) { env.wayfindingOpenRefV75.current = value; }, setWayfindingRequestV75() {},
     cityClockV68: { current: 0 },
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,

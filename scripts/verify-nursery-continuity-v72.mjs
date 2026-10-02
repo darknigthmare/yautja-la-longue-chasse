@@ -40,7 +40,7 @@ async function card(page, id, captureName = id) {
 async function accept(page, id, captureName = id) { const { button } = await card(page, id, captureName); await button.click(); await page.waitForTimeout(120); }
 async function actualCity(page) {
   await page.locator('[data-homeworld-hub="true"]').waitFor({ timeout: 120000 });
-  const nativeV74=process.env.YAUTJA_QA_EXPECTED_VERSION==='V74';
+  const nativeV74=['V74','V75'].includes(process.env.YAUTJA_QA_EXPECTED_VERSION);
   if(nativeV74)await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});
   const hero = page.locator('[data-homeworld-unblooded-v72]'); await hero.waitFor({ timeout: 120000 });
   const source = await hero.evaluate(async node => {

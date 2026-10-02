@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "artStatus": "PARTIAL_ART",
+  "url": "http://127.0.0.1:4192",
+  "checks": [
+    {
+      "name": "actual-component-112-native-pose-windows",
+      "roles": 14,
+      "poses": 112,
+      "nativeDirections": 2,
+      "artStatus": "PARTIAL_ART"
+    },
+    {
+      "name": "98-existing-route-and-phase-metadata",
+      "residents": 98,
+      "routeSamples": 490,
+      "limit": "Model metadata, not 98 physically traversed browser routes."
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/01-chief-artisan-walk-corrected.png",
+      "sha256": "60be46ea15c029b51a0a434c313fe53c5d7e2bf31ae21d63c42b7e78a4e4be32"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/01-chief-artisan-walk-final.png",
+      "sha256": "8fbb493e9000c9cfd52305fd44a2ec25d16d84262be5dbffcdf5b99d5e390998"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/02-healer-archivist-walk-spaced.png",
+      "sha256": "8c748012dee7f4561ee96b49f49e79f34a5e0cd4b9262839cababcae98354882"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png",
+      "sha256": "a38be4b0b027898605441051dd17a4464280a4d4609fc0ae878783b29bec543f"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/04-instructor-apprentice-walk.png",
+      "sha256": "28ae135450c20f6b89b50f84964cd0d0809568b89570f5143df9454a134356f0"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/05-dock-forge-walk-spaced.png",
+      "sha256": "ee5f00ffb8b0806f6c22ba5c0226cbdf2ddc16e9375107a71d7bb530c0c5175f"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/06-witness-herald-walk.png",
+      "sha256": "03d4703c63c7b71cd75f4a37447a2953883958e8a0454015be7a9d05da03441b"
+    },
+    {
+      "name": "native-source-http-and-byte-sha256",
+      "src": "/game/homeworld/v74/07-arena-rite-walk.png",
+      "sha256": "6257cbf87b0fb410f5628bf4719914d5da5f0b223ca7b6d1efa252ee248bad81"
+    },
+    {
+      "name": "live-cold-loader-before-first-keyboard-step",
+      "before": {
+        "x": 1280,
+        "y": 4480
+      },
+      "after": {
+        "x": 1407,
+        "y": 4480
+      },
+      "manualDecodeBeforeFirstStep": false
+    },
+    {
+      "name": "live-culled-population-native-frames",
+      "snapshots": 40,
+      "residentsSeen": [
+        "resident-convoy-works-1",
+        "resident-convoy-works-3",
+        "resident-convoy-works-4",
+        "resident-v69-convoy-works-1"
+      ],
+      "rolesSeen": [
+        "forge-master",
+        "apprentice",
+        "archivist"
+      ],
+      "nativeSamples": 21,
+      "limit": "Only visible citizens at this viewport, not all 98 simultaneously."
+    },
+    {
+      "name": "public-pause-freezes-shared-clock-and-clips",
+      "durationMs": 2000
+    },
+    {
+      "name": "portrait-native-population-and-real-keyboard-step",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "visibleResidents": 2
+    }
+  ],
+  "captures": [
+    "work-local/v75/qa/civilian-motion-local/pose-board-112-native-windows.jpg",
+    "work-local/v75/qa/civilian-motion-local/city-civilian-native-walk.jpg",
+    "work-local/v75/qa/civilian-motion-local/city-pause-freezes-native-frames.jpg",
+    "work-local/v75/qa/civilian-motion-local/city-native-civilian-portrait.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "PARTIAL_ART / functional checks only. Four stylized poses per direction are wired, but near/far anatomical leg alternation is not artistically certified for every role. This is not fourteen commercially finalized walk cycles. The 112-pose board uses the actual component; live city checks cover visible culled citizens, not all 98 simultaneously. Campaign prerequisites are model-played only in isolated QA storage. No claim of persistent instantaneous hub coordinates."
+}

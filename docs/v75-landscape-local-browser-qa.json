@@ -1,0 +1,2009 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4192",
+  "checks": [
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "glass-desert-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -439.97265625,
+          "top": -252.806884765625,
+          "right": 1864.02734375,
+          "bottom": 1200.865234375
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 21,
+      "natives": [
+        {
+          "id": "landscape-v75-110",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4696,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-022",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4777,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-112",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4780,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-113",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 5048,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-023",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5188,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-015",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5366,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-014",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5443,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-011",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5488,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-016",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5531,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-017",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5696,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-020",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5766,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-012",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5825,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-013",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5893,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-010",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5920,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-027",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5976,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-212",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 6001,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-019",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 6101,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-033",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 6227,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-030",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 6231,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-025",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 6443,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-039",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 6602,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:glass-desert",
+          "material": "sandy-grit",
+          "region": "glass-desert"
+        },
+        {
+          "id": "landscape-floor-v75:thermal-caves",
+          "material": "mineral-crust",
+          "region": "thermal-caves"
+        },
+        {
+          "id": "landscape-floor-v75:south-alluvium",
+          "material": "sandy-grit",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "glass-desert",
+          "text": "Arches du DépartApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "landscape-v75-010",
+              "zIndex": 5920
+            }
+          ]
+        },
+        {
+          "regionId": "thermal-caves",
+          "text": "Galerie des FumerollesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "outskirts-v71-129",
+              "zIndex": 4666
+            },
+            {
+              "id": "landscape-v75-110",
+              "zIndex": 4696
+            },
+            {
+              "id": "outskirts-v71-139",
+              "zIndex": 4893
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "thermal-caves-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -238.16015625,
+          "top": -276.0550537109375,
+          "right": 1835.43994140625,
+          "bottom": 1177.6170654296875
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2160,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 15,
+      "natives": [
+        {
+          "id": "landscape-v75-174",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 3998,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-109",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4350,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-111",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4558,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-110",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4696,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-115",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4719,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-022",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4777,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-112",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4780,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-117",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 4916,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-034",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 4929,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-113",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 5048,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-197",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5049,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-023",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 5188,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-035",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5246,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-016",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5531,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-017",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5696,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:glass-desert",
+          "material": "sandy-grit",
+          "region": "glass-desert"
+        },
+        {
+          "id": "landscape-floor-v75:thermal-caves",
+          "material": "mineral-crust",
+          "region": "thermal-caves"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "thermal-caves",
+          "text": "Galerie des FumerollesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "outskirts-v71-129",
+              "zIndex": 4666
+            },
+            {
+              "id": "landscape-v75-110",
+              "zIndex": 4696
+            },
+            {
+              "id": "outskirts-v71-139",
+              "zIndex": 4893
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "forbidden-reserve-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -295.41845703125,
+          "top": -268.6383056640625,
+          "right": 1778.181640625,
+          "bottom": 1185.03369140625
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2160,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 19,
+      "natives": [
+        {
+          "id": "landscape-v75-071",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 2449,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-078",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 2646,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-079",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 2818,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-086",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 3062,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-159",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 3258,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-187",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 3509,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-158",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 3737,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-167",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 3739,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-160",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 3883,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-164",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 4010,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-161",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4039,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-162",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 4068,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-163",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4109,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-189",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4153,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-118",
+          "rect": "1024,0,512,512",
+          "art": "landscape-v75-vent",
+          "opacity": "1",
+          "zIndex": 4175,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-168",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 4292,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-172",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 4428,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-179",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 4441,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-199",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 5011,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:luminous-marshes",
+          "material": "damp-gravel",
+          "region": "luminous-marshes"
+        },
+        {
+          "id": "landscape-floor-v75:forbidden-reserve",
+          "material": "moss-soil",
+          "region": "forbidden-reserve"
+        },
+        {
+          "id": "landscape-floor-v75:east-ridge",
+          "material": "fractured-bedrock",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "forbidden-reserve",
+          "text": "Galerie des ObservateursAccès accompagné / autorisation requiseLe rapport du Désert de Verre est requis pour approcher le poste de confinement.",
+          "permission": "Le rapport du Désert de Verre est requis pour approcher le poste de confinement.",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "outskirts-v71-093",
+              "zIndex": 3667
+            },
+            {
+              "id": "outskirts-v71-102",
+              "zIndex": 3839
+            },
+            {
+              "id": "landscape-v75-162",
+              "zIndex": 4068
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "luminous-marshes-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -264.58349609375,
+          "top": -220.49703979492188,
+          "right": 1809.0166015625,
+          "bottom": 1233.1750793457031
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2160,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 15,
+      "natives": [
+        {
+          "id": "landscape-v75-072",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1180,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-073",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1211,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-067",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1313,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-068",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1383,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-074",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1389,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-069",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1621,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-064",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1819,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-062",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1967,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-065",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1968,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-061",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 2080,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-066",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 2142,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-063",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 2288,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-071",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 2449,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-078",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 2646,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-079",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 2818,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:luminous-marshes",
+          "material": "damp-gravel",
+          "region": "luminous-marshes"
+        },
+        {
+          "id": "landscape-floor-v75:forbidden-reserve",
+          "material": "moss-soil",
+          "region": "forbidden-reserve"
+        },
+        {
+          "id": "landscape-floor-v75:east-ridge",
+          "material": "fractured-bedrock",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "luminous-marshes",
+          "text": "Chaussée des RacinesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "gateway-v72:forbidden-reserve",
+              "zIndex": 3370
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "cold-crown-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -425.44140625,
+          "top": -258.5008850097656,
+          "right": 1878.55810546875,
+          "bottom": 1195.1712341308594
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 17,
+      "natives": [
+        {
+          "id": "landscape-v75-133",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-134",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-099",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-129",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-094",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-130",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-125",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-100",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-095",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-126",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-124",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-092",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-127",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-121",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 66,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-122",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 231,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-123",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 396,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-182",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 776,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:storm-chain",
+          "material": "fractured-bedrock",
+          "region": "storm-chain"
+        },
+        {
+          "id": "landscape-floor-v75:cold-crown",
+          "material": "fractured-bedrock",
+          "region": "cold-crown"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "cold-crown",
+          "text": "Approche de la CouronneApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": []
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "storm-chain-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -260.827880859375,
+          "top": -273.3499755859375,
+          "right": 1812.77197265625,
+          "bottom": 1180.3221435546875
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2160,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 18,
+      "natives": [
+        {
+          "id": "landscape-v75-097",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-098",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-096",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-093",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-059",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-094",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-090",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-091",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-047",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-060",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-054",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-089",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-048",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-088",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-087",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-092",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-049",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-041",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 89,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:pillar-jungle",
+          "material": "moss-soil",
+          "region": "pillar-jungle"
+        },
+        {
+          "id": "landscape-floor-v75:storm-chain",
+          "material": "fractured-bedrock",
+          "region": "storm-chain"
+        },
+        {
+          "id": "landscape-floor-v75:cold-crown",
+          "material": "fractured-bedrock",
+          "region": "cold-crown"
+        },
+        {
+          "id": "landscape-floor-v75:northern-shelter",
+          "material": "moss-soil",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "storm-chain",
+          "text": "Départ des Trois VentsApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "life-v69-brazier-citadel",
+              "zIndex": 443
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "pillar-jungle-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -451.0665283203125,
+          "top": -217.49285888671875,
+          "right": 1852.9334716796875,
+          "bottom": 1236.1792602539062
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 18,
+      "natives": [
+        {
+          "id": "landscape-v75-058",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-096",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-057",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-059",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-053",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-056",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-052",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-045",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-046",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-047",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-051",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-054",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-048",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-044",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-043",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-042",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-049",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-041",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 89,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:pillar-jungle",
+          "material": "moss-soil",
+          "region": "pillar-jungle"
+        },
+        {
+          "id": "landscape-floor-v75:storm-chain",
+          "material": "fractured-bedrock",
+          "region": "storm-chain"
+        },
+        {
+          "id": "landscape-floor-v75:northern-shelter",
+          "material": "moss-soil",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "pillar-jungle",
+          "text": "Passerelle des PiliersApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": []
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "pillar-jungle-northern-relief-portrait",
+      "coverage": {
+        "floor": {
+          "left": -283.366455078125,
+          "top": -225.9730224609375,
+          "right": 638.2333984375,
+          "bottom": 963.3951416015625
+        },
+        "viewport": {
+          "left": 0,
+          "top": 54,
+          "right": 393,
+          "bottom": 706
+        },
+        "width": 960,
+        "depth": 2160,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 5,
+      "natives": [
+        {
+          "id": "landscape-v75-053",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-052",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-045",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-046",
+          "rect": "535,0,489,512",
+          "art": "landscape-v75-resinwood",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-043",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:pillar-jungle",
+          "material": "moss-soil",
+          "region": "pillar-jungle"
+        },
+        {
+          "id": "landscape-floor-v75:northern-shelter",
+          "material": "moss-soil",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "pillar-jungle",
+          "text": "Passerelle des PiliersApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": []
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "first-city-ruins-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -430.1533203125,
+          "top": -258.2089538574219,
+          "right": 1873.8466796875,
+          "bottom": 1195.4631652832031
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 16,
+      "natives": [
+        {
+          "id": "landscape-v75-156",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-155",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-157",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-149",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-148",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-147",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-180",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-145",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-150",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-144",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-143",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-055",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-141",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-142",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 1,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-140",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 147,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-106",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 169,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:leviathan-coast",
+          "material": "damp-gravel",
+          "region": "leviathan-coast"
+        },
+        {
+          "id": "landscape-floor-v75:first-city-ruins",
+          "material": "sandy-grit",
+          "region": "first-city-ruins"
+        },
+        {
+          "id": "landscape-floor-v75:western-drain",
+          "material": "damp-gravel",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "first-city-ruins",
+          "text": "Voie des StèlesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "gateway-v72:leviathan-coast",
+              "zIndex": 1030
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "leviathan-coast-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -448.9810485839844,
+          "top": -298.1431884765625,
+          "right": 1855.0189514160156,
+          "bottom": 1155.52880859375
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2640,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 3,
+      "natives": [
+        {
+          "id": "landscape-v75-140",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 147,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-106",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 169,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-101",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1676,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:ash-marches",
+          "material": "dry-ash",
+          "region": "ash-marches"
+        },
+        {
+          "id": "landscape-floor-v75:leviathan-coast",
+          "material": "damp-gravel",
+          "region": "leviathan-coast"
+        },
+        {
+          "id": "landscape-floor-v75:first-city-ruins",
+          "material": "sandy-grit",
+          "region": "first-city-ruins"
+        },
+        {
+          "id": "landscape-floor-v75:western-drain",
+          "material": "damp-gravel",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "leviathan-coast",
+          "text": "Corniche des MaréesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": []
+        },
+        {
+          "regionId": "first-city-ruins",
+          "text": "Voie des StèlesApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": [
+            {
+              "id": "gateway-v72:leviathan-coast",
+              "zIndex": 1030
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-modular-landscape-camera-view",
+      "view": "ash-marches-modular-shoulders",
+      "coverage": {
+        "floor": {
+          "left": -446.94329833984375,
+          "top": -200.731201171875,
+          "right": 1857.0567016601562,
+          "bottom": 1120.7889404296875
+        },
+        "viewport": {
+          "left": 0,
+          "top": 56.5,
+          "right": 1440,
+          "bottom": 881.5
+        },
+        "width": 2400,
+        "depth": 2400,
+        "transform": "matrix(1, 0, 0, 0.573576, 0, 0)"
+      },
+      "mounted": 3,
+      "natives": [
+        {
+          "id": "landscape-v75-101",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 1676,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-001",
+          "rect": "584,512,456,512",
+          "art": "landscape-v75-thicket",
+          "opacity": "1",
+          "zIndex": 2312,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        },
+        {
+          "id": "landscape-v75-006",
+          "rect": "0,0,530,512",
+          "art": "landscape-v75-basalt",
+          "opacity": "1",
+          "zIndex": 3126,
+          "image": "/game/homeworld/v71/outskirts-kit.png"
+        }
+      ],
+      "patches": [
+        {
+          "id": "landscape-floor-v75:ash-marches",
+          "material": "dry-ash",
+          "region": "ash-marches"
+        },
+        {
+          "id": "landscape-floor-v75:leviathan-coast",
+          "material": "damp-gravel",
+          "region": "leviathan-coast"
+        },
+        {
+          "id": "landscape-floor-v75:western-drain",
+          "material": "damp-gravel",
+          "region": "plateau"
+        }
+      ],
+      "annotations": [
+        {
+          "regionId": "ash-marches",
+          "text": "Chaussée des CendresApprocher le seuil · interagir",
+          "permission": "",
+          "zIndex": 10000,
+          "intersectingProps": []
+        }
+      ]
+    },
+    {
+      "name": "landscape-linked-codex-read-only",
+      "records": 3
+    },
+    {
+      "name": "native-existing-and-new-png-bytes",
+      "src": "/game/homeworld/v75/landscape-ground-materials-native.png",
+      "sha256": "b144ee16a08881cce91b7652c8f2d8801e6c51c25e441e6586d407857c7b6307"
+    },
+    {
+      "name": "native-existing-and-new-png-bytes",
+      "src": "/game/homeworld/v71/cinder-ground.png",
+      "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"
+    },
+    {
+      "name": "native-existing-and-new-png-bytes",
+      "src": "/game/homeworld/v71/outskirts-kit.png",
+      "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"
+    }
+  ],
+  "routes": [
+    {
+      "regionId": "glass-desert",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "to": {
+        "x": 3848,
+        "y": 5601
+      },
+      "distance": 3201.6105020512587,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "thermal-caves",
+      "from": {
+        "x": 3848,
+        "y": 5601
+      },
+      "to": {
+        "x": 4598,
+        "y": 4413
+      },
+      "distance": 4611.305162722037,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "forbidden-reserve",
+      "from": {
+        "x": 4598,
+        "y": 4413
+      },
+      "to": {
+        "x": 6578,
+        "y": 3439
+      },
+      "distance": 7194.902782839811,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "luminous-marshes",
+      "from": {
+        "x": 6578,
+        "y": 3439
+      },
+      "to": {
+        "x": 6546,
+        "y": 2152
+      },
+      "distance": 3193.5925582335576,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "cold-crown",
+      "from": {
+        "x": 6546,
+        "y": 2152
+      },
+      "to": {
+        "x": 5753,
+        "y": 300
+      },
+      "distance": 3256.1816103682086,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "storm-chain",
+      "from": {
+        "x": 5753,
+        "y": 300
+      },
+      "to": {
+        "x": 4142,
+        "y": 159
+      },
+      "distance": 3298.7864762574827,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "pillar-jungle",
+      "from": {
+        "x": 4142,
+        "y": 159
+      },
+      "to": {
+        "x": 2900,
+        "y": 254
+      },
+      "distance": 1832.8834518801837,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "first-city-ruins",
+      "from": {
+        "x": 2900,
+        "y": 254
+      },
+      "to": {
+        "x": 718,
+        "y": 300
+      },
+      "distance": 5472.204940860836,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "leviathan-coast",
+      "from": {
+        "x": 718,
+        "y": 300
+      },
+      "to": {
+        "x": 498,
+        "y": 1093
+      },
+      "distance": 1914.0230314621183,
+      "publicKeyboard": true,
+      "newPermission": false
+    },
+    {
+      "regionId": "ash-marches",
+      "from": {
+        "x": 498,
+        "y": 1093
+      },
+      "to": {
+        "x": 496,
+        "y": 2356
+      },
+      "distance": 2657.797706809019,
+      "publicKeyboard": true,
+      "newPermission": false
+    }
+  ],
+  "captures": [
+    "work-local/v75/qa/landscape-local/glass-desert-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/thermal-caves-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/forbidden-reserve-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/luminous-marshes-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/cold-crown-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/storm-chain-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/pillar-jungle-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/pillar-jungle-northern-relief-portrait.jpg",
+    "work-local/v75/qa/landscape-local/first-city-ruins-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/leviathan-coast-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/ash-marches-modular-shoulders.jpg",
+    "work-local/v75/qa/landscape-local/floor-landscape-v75-linked-codex.jpg",
+    "work-local/v75/qa/landscape-local/landscape-floor-v75-thermal-caves-linked-codex.jpg",
+    "work-local/v75/qa/landscape-local/landscape-v75-001-linked-codex.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Ten existing gates approached by real keyboard with campaign prerequisites in isolated QA storage. New natural modules never change walking floor, collisions, permissions or saves. All212supports/14patches covered by model tests, not each manually visited. Original plateau ecology, not canonical 1:1 planetary geography. Native texture periodicity requested, not mathematically certified."
+}

@@ -42,6 +42,7 @@ function fixture() {
     gamepadStateRef: { current: createHomeworldGamepadState() },
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
+    wayfindingOpenRefV75: { current: false },
     cityClockV68: { current: 0 },
     HOMEWORLD_ACTOR: city.HOMEWORLD_ACTOR, homeworldYouthDirectionV74: city.homeworldYouthDirectionV74,
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
@@ -59,8 +60,8 @@ function fixture() {
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
     persistVisit() {}, setActor() {}, setPhase() {},
     setDreadAngles(value) { env.dreadAngles = value; },
-    setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; },
-    setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; events.push(["paused", paused]); },
+    setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; },
+    setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; events.push(["paused", paused]); },
     clearInputs() { env.held.current.clear(); for (const key of Object.keys(env.touch.current)) env.touch.current[key] = false; env.gamepadStateRef.current = createHomeworldGamepadState(); },
     interact() { events.push(["interact"]); env.clearInputs(); env.dialogStateRef.current = { point: "nearby" }; env.document.activeElement = dialog; },
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
@@ -98,6 +99,23 @@ test("V54 spatial atlas owns controller input exclusively and closing requires a
   f.tick(4);
   assert.deepEqual(f.env.actorRef.current, before);
   assert.deepEqual(f.events, [], "held atlas buttons cannot leak into city interactions");
+  f.release(); f.pad.axes[0] = 1; f.tick(3);
+  assert(f.env.actorRef.current.x > before.x);
+});
+
+test("V75 destination finder consumes no city controller action and requires release after closing", () => {
+  const f = fixture(); f.release();
+  f.env.wayfindingOpenRefV75.current = true; f.env.pausedRef.current = true; f.env.clearInputs();
+  const before = { ...f.env.actorRef.current }, clock = f.env.cityClockV68.current;
+  f.pad.axes[0] = 1; f.pad.buttons[0].pressed = true; f.pad.buttons[9].pressed = true;
+  f.tick(20);
+  assert.deepEqual(f.env.actorRef.current, before);
+  assert.equal(f.env.cityClockV68.current, clock);
+  assert.deepEqual(f.events, [], "finder confirmation must not also interact with or pause the city");
+  f.env.wayfindingOpenRefV75.current = false; f.env.pausedRef.current = false; f.env.clearInputs();
+  f.tick(4);
+  assert.deepEqual(f.env.actorRef.current, before);
+  assert.deepEqual(f.events, [], "held menu controls must remain neutralized on return");
   f.release(); f.pad.axes[0] = 1; f.tick(3);
   assert(f.env.actorRef.current.x > before.x);
 });

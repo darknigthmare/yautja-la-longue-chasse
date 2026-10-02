@@ -1,4 +1,7 @@
 .floor{position:absolute;transform-origin:0 0;overflow:hidden;pointer-events:none;z-index:0}
+/* These are navigation annotations, above depth-sorted scenery but contained
+   by the transformed world, below the actual HUD and modal layers. */
+.label,.direction{z-index:10000}
 .label,.direction{position:absolute;transform:translateX(-50%);pointer-events:none;user-select:none;max-width:310px;text-align:center;white-space:nowrap;background:#111a18dc;border:1px solid #9e8c64;border-radius:3px;padding:6px 12px;color:#e7d6aa;font-family:Georgia,serif;font-size:15px;text-shadow:0 1px 3px #000}
 .label strong{font-weight:normal}.label small,.direction small{display:block;color:#b8b8a2;font-family:Arial,sans-serif;font-size:10px;margin-top:4px}.label em{display:block;white-space:normal;max-width:270px;color:#dfb28c;font:11px/1.4 Arial,sans-serif;margin-top:5px}.direction{padding:4px 9px;border-color:#68776a;font-size:12px;background:#15211bd9}.direction small{font-size:9px}
 @media(max-width:650px){.label{font-size:13px;max-width:270px}.label small{font-size:9px}.direction{font-size:11px;max-width:230px;white-space:normal}.direction small{font-size:8px}}

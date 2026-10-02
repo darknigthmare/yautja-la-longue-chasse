@@ -40,6 +40,10 @@ try {
   for (const folder of ['game/homeworld/v72', 'game/prologue/v72', 'game/homeworld/v74', 'game/homeworld/v74/youth']) {
     for (const file of await fs.readdir(path.join('public', folder))) if (file.endsWith('.png')) files.push(folder + '/' + file);
   }
+  // Follow the active V75 registries, not drafts from generation folders.
+  const architecture = JSON.parse(await fs.readFile('app/game/data/homeworldArchitectureArtV75.json', 'utf8'));
+  for (const identity of Object.values(architecture)) files.push(identity.art.src.replace(/^\//, ''));
+  files.push('game/homeworld/v75/landscape-ground-materials-native.png');
   const sha = bytes => createHash('sha256').update(bytes).digest('hex');
   for (const file of files) {
     const remote = await page.request.get(new URL('/' + file, url).href);

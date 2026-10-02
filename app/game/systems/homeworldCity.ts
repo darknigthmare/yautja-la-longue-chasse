@@ -17,6 +17,7 @@ import lifeV69 from "../data/homeworldLifeV69.json";
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from "./homeworldArtV64";
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { homeworldBuildingIdentityV72 } from "./homeworldIdentityV72";
+import { homeworldBuildingIdentityV75 } from "./homeworldArchitectureArtV75";
 import { HOMEWORLD_CONNECTION_WORLD_V72, HOMEWORLD_CONNECTION_STREETS_V72, homeworldConnectionThresholdV72, homeworldConnectionCollisionV72 } from "./homeworldRegionConnectionsV72";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
 export { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldUnprojectGroundV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, homeworldBuildingSpritePlacementV64 } from "./homeworldGeometryV64";
@@ -269,7 +270,7 @@ export const HOMEWORLD_BUILDINGS_V54 = [
 ] as const;
 
 function nativeBuildingV64(seed: { id: string; districtId: string; label: string; x: number; y: number; width: number; depth: number; variant: HomeworldBuildingModule["variant"]; entranceKind: "civic" | "domestic"; artId: keyof typeof HOMEWORLD_BUILDING_ART_V64 }): HomeworldBuildingModule {
-  const identity = homeworldBuildingIdentityV72(seed.id);
+  const identity = homeworldBuildingIdentityV72(seed.id) ?? homeworldBuildingIdentityV75(seed.id);
   const art = identity?.art ?? HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = seed.width / (art.foundationFront.right - art.foundationFront.left);
   return { ...seed, label: identity?.title ?? seed.label, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
     wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: identity?.depth ?? seed.depth } };

@@ -24,16 +24,24 @@ export default memo(function HomeworldRegionConnectionsV72({actor,cameraX,camera
   const right=Math.min(HOMEWORLD_CONNECTION_WORLD_V72.width,Math.ceil((cameraX+width+160)/240)*240);
   const bottom=Math.min(HOMEWORLD_CONNECTION_WORLD_V72.height,Math.ceil(((cameraY+height)/depth+180)/240)*240);
   const floorWidth=Math.max(1,right-left),floorDepth=Math.max(1,bottom-top);
+  const visibleStreets=HOMEWORLD_CONNECTION_STREETS_V72.filter(street=>!(street.polygon.every(p=>p.x<left)||street.polygon.every(p=>p.x>right)||street.polygon.every(p=>p.y<top)||street.polygon.every(p=>p.y>bottom)));
   return <>
     <svg data-homeworld-connection-floor="v72" className={styles.floor} width={floorWidth} height={floorDepth}
       viewBox={`${left} ${top} ${floorWidth} ${floorDepth}`} style={{left,top:top*depth,transform:`scaleY(${depth})`}}>
       <defs><pattern id={`${id}-paving`} width="110" height="110" patternUnits="userSpaceOnUse">
         <image href={HOMEWORLD_GROUND_ART_V64.src} width="110" height="110" preserveAspectRatio="none" />
       </pattern></defs>
-      {HOMEWORLD_CONNECTION_STREETS_V72.map(street=>{
-        if(street.polygon.every(p=>p.x<left)||street.polygon.every(p=>p.x>right)||street.polygon.every(p=>p.y<top)||street.polygon.every(p=>p.y>bottom))return null;
+      {/* Paint every outer edge before the opaque walking surfaces. Overlapping
+          capsule joins disappear inside the union, while the exact historical
+          physics polygons and native material coordinates remain unchanged. */}
+      <g data-homeworld-connection-outer-edges-v75="true" aria-hidden="true">
+        {visibleStreets.map(street=><polygon key={street.id} points={street.polygon.map(p=>`${p.x},${p.y}`).join(' ')}
+          fill="none" stroke="#a2957b" strokeOpacity=".65" strokeWidth="4" />)}
+      </g>
+      <g fill="#49483e">{visibleStreets.map(street=><polygon key={street.id} points={street.polygon.map(p=>`${p.x},${p.y}`).join(' ')} />)}</g>
+      {visibleStreets.map(street=>{
         return <polygon key={street.id} data-homeworld-connection-band-v72={street.id} points={street.polygon.map(p=>`${p.x},${p.y}`).join(' ')}
-          fill={`url(#${id}-paving)`} stroke="#a2957b" strokeOpacity=".65" strokeWidth="4" />;
+          fill={`url(#${id}-paving)`} />;
       })}
       {HOMEWORLD_REGION_CONNECTIONS_V72.map(item=>{
         if(item.nodes.every(p=>p.x<left)||item.nodes.every(p=>p.x>right)||item.nodes.every(p=>p.y<top)||item.nodes.every(p=>p.y>bottom))return null;
@@ -53,7 +61,7 @@ export default memo(function HomeworldRegionConnectionsV72({actor,cameraX,camera
       return <div key={item.regionId} data-homeworld-region-connection-v72={item.regionId} data-connection-authorized={!!allowed}>
         <HomeworldNativePropV64 id={`gateway-v72:${item.regionId}`} artId={`gateway-v72:${item.artId}`} art={art}
           x={p.x} y={p.y} depth={item.threshold.y} heightWorld={art.heightWorld*scale} style={{opacity:obscures?.25:1}} />
-        <span className={styles.label} style={{left:p.x,top:p.y+54,zIndex:Math.round(item.arrival.y)+1,opacity:near?1:.7}}>
+        <span className={styles.label} style={{left:p.x,top:p.y+54,opacity:near?1:.7}}>
           <strong>{item.name}</strong><small>{allowed?'Approcher le seuil · interagir':'Accès accompagné / autorisation requise'}</small>
           {near&&!allowed&&<em>{village.reason}</em>}
         </span>
@@ -64,7 +72,7 @@ export default memo(function HomeworldRegionConnectionsV72({actor,cameraX,camera
       if(p.x+150<cameraX||p.x-150>cameraX+width||p.y+100<cameraY||p.y-art.heightWorld>cameraY+height)return null;
       return <div key={sign.id} data-homeworld-direction-sign-v72={sign.regionId}>
         <HomeworldNativePropV64 id={sign.id} artId="direction-beacon-v72" art={art} x={p.x} y={p.y} depth={sign.y} />
-        <span className={styles.direction} style={{left:p.x,top:p.y+10,zIndex:Math.round(sign.y)+1}}>{homeworldConnectionCompassV72(sign.regionId,depth)} {sign.label}<small>Repère · rejoindre le seuil extérieur</small></span>
+        <span className={styles.direction} style={{left:p.x,top:p.y+10}}>{homeworldConnectionCompassV72(sign.regionId,depth)} {sign.label}<small>Repère · rejoindre le seuil extérieur</small></span>
       </div>;
     })}
     {HOMEWORLD_CONNECTION_FURNITURE_V72.map(item=>homeworldFurnitureVisibleV72(item,camera,depth)

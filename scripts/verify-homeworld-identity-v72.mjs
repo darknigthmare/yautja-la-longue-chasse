@@ -57,7 +57,7 @@ try{
   // after mount would mix two performance.now origins in the QA harness.
   await page.clock.install();
   await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await page.locator('[data-homeworld-hub]').waitFor();
-  if(process.env.YAUTJA_QA_EXPECTED_VERSION==='V74')await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});
+  if(['V74','V75'].includes(process.env.YAUTJA_QA_EXPECTED_VERSION))await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({timeout:120000});
   assert.equal(await page.locator('main').getAttribute('data-game-content-version'),process.env.YAUTJA_QA_EXPECTED_VERSION??process.env.V72_IDENTITY_EXPECTED_VERSION??'V73');
   await page.clock.pauseAt(await page.evaluate(()=>Date.now()+150));nav=homeworldNavigatorV66(page,api,{waypointTolerance:3,driverTickMs:16,pulseInputs:true});await nav.focus();await capture('arrival-diverse-clothed-population');await verifyMotion();
   for(const id of['market-armory','deep-forge','clan-lodge','training-hall','memory-vault','throne-audience']){

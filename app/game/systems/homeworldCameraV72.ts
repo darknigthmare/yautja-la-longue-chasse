@@ -16,7 +16,10 @@ export function homeworldCameraV72({ actor, viewport, width, depth, interior }: 
   const viewWidth = screen.width / zoom, viewHeight = screen.height / zoom;
   const ground = homeworldProjectGroundV64(actor);
   const clampOrCentre = (value: number, low: number, high: number) => high < low ? (low + high) / 2 : Math.max(low, Math.min(high, value));
-  const x = follow ? clampOrCentre(actor.x - viewWidth * .5, interior ? -45 : 0, width + (interior ? 45 : 0) - viewWidth)
+  // V75: frame the continuous natural shoulders at the western/eastern exits.
+  // This changes observation only; actor bounds, route permissions and scale
+  // remain the existing physical plan. The extended terrain covers this apron.
+  const x = follow ? clampOrCentre(actor.x - viewWidth * .5, interior ? -45 : -480, width + (interior ? 45 : 480) - viewWidth)
     : (width - viewWidth) / 2;
   // Near the northern edge, leave more sky above the actor for the tall gateway
   // silhouettes. This changes framing only; physical bounds remain the floor.

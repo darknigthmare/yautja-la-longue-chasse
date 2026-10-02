@@ -713,6 +713,9 @@
 .landingPadV64 { position:absolute; z-index:2; background-size:100% 100%; background-repeat:no-repeat; }
 .landingPadV64 span { position:absolute; bottom:15px; width:100%; text-align:center; color:#c7b98d; font:12px ui-monospace,monospace; }
 .buildingV64 { position:absolute; pointer-events:none; transition:opacity 150ms ease; }
+/* A reached door is the current interaction. Keep regional arrows' physical
+   beacons, but hide their secondary text rather than overlap the door legend. */
+.viewport[data-homeworld-active-door] [data-homeworld-direction-sign-v72] > span:not([data-homeworld-prop-id]) { visibility:hidden; }
 .buildingV64[data-occluded='true'] { opacity:.32; }
 .buildingV64>img { display:block; width:100%; height:100%; max-width:none; }
 .doorMarkerV64 { position:absolute; width:0; height:0; }

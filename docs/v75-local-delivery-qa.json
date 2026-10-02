@@ -1,0 +1,117 @@
+{
+  "version": "V75",
+  "status": "PASS",
+  "sourceFrozenAt": "2026-10-02T15:10:13.8324235Z",
+  "baseHead": "40524730b5f69676d3c679468323968660fc2d7c",
+  "note": "Final source freeze: selected-door annotation priority excludes physical native beacon sprites; native portals/props/models unchanged",
+  "delivered": {
+    "secondaryNativeFacades": 13,
+    "independentFrontageFurniture": 62,
+    "newLandscapeModules": 212,
+    "landscapePatches": 14,
+    "landscapeMaterials": 6,
+    "conversationDistricts": 14,
+    "conversationTopics": 3,
+    "contextCodexRecords": 1195
+  },
+  "tests": 2502,
+  "recipes": [
+    {
+      "scope": "wayfinding",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 10,
+      "captures": 14,
+      "report": "docs/v75-wayfinding-local-browser-qa.json"
+    },
+    {
+      "scope": "conversations",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 3,
+      "captures": 7,
+      "report": "docs/v75-conversations-local-browser-qa.json"
+    },
+    {
+      "scope": "landscape",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 14,
+      "report": "docs/v75-landscape-local-browser-qa.json"
+    },
+    {
+      "scope": "architecture",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 18,
+      "captures": 17,
+      "report": "docs/v75-architecture-local-browser-qa.json"
+    },
+    {
+      "scope": "identity",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 24,
+      "report": "docs/v75-identity-local-browser-qa.json"
+    },
+    {
+      "scope": "youth-motion",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 27,
+      "captures": 13,
+      "report": "docs/v75-youth-motion-local-browser-qa.json"
+    },
+    {
+      "scope": "civilian-motion",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 14,
+      "captures": 4,
+      "report": "docs/v75-civilian-motion-local-browser-qa.json"
+    },
+    {
+      "scope": "motion-assets",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 3,
+      "captures": 3,
+      "report": "docs/v75-motion-assets-local-browser-qa.json"
+    },
+    {
+      "scope": "prologue",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 8,
+      "captures": 26,
+      "report": "docs/v75-prologue-local-browser-qa.json"
+    },
+    {
+      "scope": "shell",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 57,
+      "captures": null,
+      "report": "docs/v75-shell-local-browser-qa.json"
+    },
+    {
+      "scope": "connections",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 18,
+      "report": "docs/v75-connections-local-browser-qa.json"
+    },
+    {
+      "scope": "secondary-interiors",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 42,
+      "captures": 40,
+      "report": "docs/v75-secondary-interiors-local-browser-qa.json"
+    }
+  ],
+  "limits": "Local complete lot gates only; GitHub and public exact-source deployment are separate gates."
+}

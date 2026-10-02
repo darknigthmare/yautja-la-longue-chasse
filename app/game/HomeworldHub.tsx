@@ -37,7 +37,9 @@ import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
-import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldResidentV69 as nearestHomeworldResidentV68, homeworldResidentDialogueV69 as homeworldResidentDialogueV68 } from "./systems/homeworldLifeV69";
+import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldResidentV69 as nearestHomeworldResidentV68 } from "./systems/homeworldLifeV69";
+import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
+import HomeworldWayfindingV75 from "./HomeworldWayfindingV75";
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
@@ -101,6 +103,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const [inactive, setInactive] = useState(false);
   const [spatialCodexOpen, setSpatialCodexOpen] = useState(false);
   const spatialCodexOpenRef = useRef(false);
+  const [wayfindingOpenV75, setWayfindingOpenV75] = useState(false);
+  const wayfindingOpenRefV75 = useRef(false);
+  const [wayfindingRequestV75, setWayfindingRequestV75] = useState<{ id: string; nonce: number } | null>(null);
   const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentId?: string } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -111,7 +116,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const progressRef = useRef(save.homeworld);
   const saveRef = useRef(save);
   const suspendedRef = useRef(suspended);
-  const pausedRef = useRef(paused || inactive || spatialCodexOpen);
+  const pausedRef = useRef(paused || inactive || spatialCodexOpen || wayfindingOpenV75);
   const dialogStateRef = useRef(dialog);
   const cityClockV68 = useRef(0);
   const visitedAttempt = useRef<string | null>(null);
@@ -135,7 +140,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthWelcome = usesHomeworldYouthAppearanceV69(save);
   const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome });
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
-  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || !motionAssetsV74.ready;
+  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready;
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
     if (!arrivalV67 || appliedArrivalV67.current === arrivalV67.requestId) return;
@@ -150,6 +155,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       youthMotionRefV74.current = { ...youthMotionRefV74.current, direction: 's' };
       setYouthMotionV74(youthMotionRefV74.current);
       setDialog(null); setPaused(false); setInactive(false);
+      wayfindingOpenRefV75.current = false; setWayfindingOpenV75(false); setWayfindingRequestV75(null);
     });
     return () => cancelAnimationFrame(frame);
   }, [arrivalV67]);
@@ -160,11 +166,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if (pendingVisitOwnerRef.current !== save.createdAt) {
       pendingVisitsRef.current.clear(); pendingVisitOwnerRef.current = save.createdAt;
       visitedAttempt.current = null; setPendingVisitCount(0);
+      wayfindingOpenRefV75.current = false; setWayfindingOpenV75(false); setWayfindingRequestV75(null);
     }
     progressRef.current = save.homeworld; saveRef.current = save;
   }, [save]);
   useEffect(() => { suspendedRef.current = suspended; }, [suspended]);
-  useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || !motionAssetsV74.ready; }, [paused, inactive, spatialCodexOpen, motionAssetsV74.ready]);
+  useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready; }, [paused, inactive, spatialCodexOpen, wayfindingOpenV75, motionAssetsV74.ready]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
   const clearInputs = useCallback(() => {
@@ -172,6 +179,29 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     gamepadStateRef.current = createHomeworldGamepadState();
     touch.current = { left: false, right: false, up: false, down: false, jump: false };
   }, []);
+
+  const changeWayfindingOpenV75 = useCallback((open: boolean) => {
+    clearInputs();
+    wayfindingOpenRefV75.current = open;
+    if (open) {
+      // One modal owns keyboard and gamepad. Do not leave an old dialogue or
+      // atlas focus trap running under the physical destination finder.
+      dialogStateRef.current = null; setDialog(null);
+      spatialCodexOpenRef.current = false; setSpatialCodexOpen(false);
+    }
+    pausedRef.current = paused || inactive || open || (open ? false : spatialCodexOpen) || !motionAssetsV74.ready;
+    setWayfindingOpenV75(open);
+    if (!open) requestAnimationFrame(() => {
+      if (!wayfindingOpenRefV75.current && !spatialCodexOpenRef.current && !dialogStateRef.current)
+        viewportRef.current?.focus({ preventScroll: true });
+    });
+  }, [clearInputs, paused, inactive, spatialCodexOpen, motionAssetsV74.ready]);
+
+  const requestLandmarkV75 = useCallback((id: string) => {
+    if (suspendedRef.current || inactive || !motionAssetsV74.ready) return;
+    setWayfindingRequestV75(current => ({ id, nonce: (current?.nonce ?? 0) + 1 }));
+    changeWayfindingOpenV75(true);
+  }, [changeWayfindingOpenV75, inactive, motionAssetsV74.ready]);
 
   const enterInterior = useCallback((buildingId: string) => {
     const building = nearestHomeworldDoor(actorRef.current);
@@ -330,7 +360,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       const dt = previous ? Math.min((time - previous) / 1000, 1 / 30) : 0;
       previous = time;
       const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
-      const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current;
+      const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current && !wayfindingOpenRefV75.current;
       const context = !active ? "inactive" : dialogStateRef.current ? "dialog" : pausedRef.current ? "paused" : "world";
       const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null : null;
       const gamepad = stepHomeworldGamepad(gamepadStateRef.current, pad, context);
@@ -542,15 +572,21 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId}>
     <header className={styles.header}>
       <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior?.title ?? "La Cité des Premiers Trophées"}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
-      <div className={styles.hudActionsV64}><button type="button" onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
-      <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); if (paused) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }}>{paused ? "Reprendre" : "Pause"}</button></div>
+      <div className={styles.hudActionsV64}><button type="button" disabled={suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready} onClick={() => changeWayfindingOpenV75(true)}>Repères</button>
+      <button type="button" disabled={wayfindingOpenV75 || spatialCodexOpen} onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
+      <button type="button" disabled={wayfindingOpenV75 || spatialCodexOpen} onClick={() => { clearInputs(); setPaused(value => !value); if (paused) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }}>{paused ? "Reprendre" : "Pause"}</button></div>
     </header>
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
+      data-homeworld-active-door={activeDoorId ?? undefined}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
       {!interior && <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
-        save={save} open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
-        onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open; setSpatialCodexOpen(open);
+        save={save} open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog || wayfindingOpenV75}
+        onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open || wayfindingOpenV75 || !motionAssetsV74.ready; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />}
+      <HomeworldWayfindingV75 key={save.createdAt} save={save} actor={actor} interiorId={interiorId} open={wayfindingOpenV75}
+        disabled={suspended || paused || inactive || !!dialog || spatialCodexOpen || !motionAssetsV74.ready}
+        suspended={suspended || paused || inactive || !motionAssetsV74.ready} targetRequest={wayfindingRequestV75}
+        interactionShortcut={controlActionShortcut("hunt.interact", bindings)} onOpenChange={changeWayfindingOpenV75} />
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
@@ -692,7 +728,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
               <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
             </div>)}
           </section>}
-        </> : selectedResidentV68 ? <p><YautjaTranslationV67 text={homeworldResidentDialogueV68(selectedResidentV68, phase)} paused={suspended || paused || inactive} /></p> : youthWelcome ? <>
+        </> : selectedResidentV68 ? <HomeworldResidentConversationV75 key={selectedResidentV68.id} resident={selectedResidentV68} seconds={phase} paused={suspended || paused || inactive} onLandmark={requestLandmarkV75} /> : youthWelcome ? <>
           <h4>Parcours Unblooded</h4><p>{youthObjective}</p><p>{youthEquipmentSummary(save.youthTraining)}</p>
           <ul><li>{youthChiefMet ? "✓" : "○"} Rencontre du chef à la Citadelle.</li><li>{youthMentorMet ? "✓" : "○"} Rencontre de l’instructeur après l’accueil du chef.</li></ul>
           <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le journal montre uniquement les étapes réellement jouées : aucune formation ni remise d’équipement n’est validée par sa lecture.</p>

@@ -1,0 +1,678 @@
+{
+  "dock-control": {
+    "title": "Contrôle des quais",
+    "role": "navigation",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/dock-control.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 14,
+        "y": 98,
+        "width": 1510,
+        "height": 785
+      },
+      "foundationFront": {
+        "left": 14,
+        "right": 1523,
+        "y": 882
+      },
+      "threshold": {
+        "x": 768,
+        "y": 869
+      },
+      "doorway": {
+        "x": 635,
+        "y": 368,
+        "width": 266,
+        "height": 501
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "c8f15bd38428b918aea98270a3f32fc3cc81c4dc37c00aeb4596baa6ef2f8e93",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.40382957458496094,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "market-canopy": {
+    "title": "Halle des échanges",
+    "role": "commerce",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/market-canopy.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 1,
+        "y": 41,
+        "width": 1534,
+        "height": 817
+      },
+      "foundationFront": {
+        "left": 3,
+        "right": 1533,
+        "y": 857
+      },
+      "threshold": {
+        "x": 768,
+        "y": 850
+      },
+      "doorway": {
+        "x": 603,
+        "y": 386,
+        "width": 330,
+        "height": 464
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "1f7f995377dace094438de0ee0fab4b6fa47a3f9ca79632de8573c333ce55a04",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.35942713419596356,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "undercity-refuge": {
+    "title": "Refuge des galeries",
+    "role": "refuge",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/undercity-refuge.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 20,
+        "y": 81,
+        "width": 1495,
+        "height": 817
+      },
+      "foundationFront": {
+        "left": 20,
+        "right": 1514,
+        "y": 897
+      },
+      "threshold": {
+        "x": 779,
+        "y": 894
+      },
+      "doorway": {
+        "x": 650,
+        "y": 348,
+        "width": 258,
+        "height": 546
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.4022541046142578,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "trophy-mausoleum": {
+    "title": "Mausolée des prises",
+    "role": "memoire",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/trophy-mausoleum.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 28,
+        "y": 36,
+        "width": 1481,
+        "height": 920
+      },
+      "foundationFront": {
+        "left": 28,
+        "right": 1508,
+        "y": 955
+      },
+      "threshold": {
+        "x": 768,
+        "y": 947
+      },
+      "doorway": {
+        "x": 635,
+        "y": 587,
+        "width": 266,
+        "height": 360
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "e6e858914c92eb4a8af0c0fb7569dc540a354718c670e6cbd70c117790e56092",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.3387870788574219,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "enforcer-bastion": {
+    "title": "Bastion des gardiens",
+    "role": "garde",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/enforcer-bastion.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 25,
+        "y": 73,
+        "width": 1487,
+        "height": 869
+      },
+      "foundationFront": {
+        "left": 25,
+        "right": 1511,
+        "y": 941
+      },
+      "threshold": {
+        "x": 768,
+        "y": 925
+      },
+      "doorway": {
+        "x": 641,
+        "y": 453,
+        "width": 254,
+        "height": 472
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "962aca0126018f05e1c9bdde03580e47e7ad6001e577c409f0971e9978e0adf6",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.3257071177164714,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "pit-gate": {
+    "title": "Porte de la Fosse",
+    "role": "arene",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/pit-gate.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 20,
+        "y": 48,
+        "width": 1496,
+        "height": 925
+      },
+      "foundationFront": {
+        "left": 20,
+        "right": 1515,
+        "y": 972
+      },
+      "threshold": {
+        "x": 768,
+        "y": 969
+      },
+      "doorway": {
+        "x": 609,
+        "y": 580,
+        "width": 318,
+        "height": 389
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "5322dab7dfdd42f0dcb0fcdf250f670ac0e7313b078c4a6eac4a86a18c152a69",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.335086186726888,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "rite-sanctum": {
+    "title": "Sanctuaire des rites",
+    "role": "rite",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/rite-sanctum.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 0,
+        "y": 22,
+        "width": 1536,
+        "height": 889
+      },
+      "foundationFront": {
+        "left": 0,
+        "right": 1535,
+        "y": 910
+      },
+      "threshold": {
+        "x": 768,
+        "y": 907
+      },
+      "doorway": {
+        "x": 635,
+        "y": 408,
+        "width": 266,
+        "height": 499
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "24b5fdce488d7f32d4f630a4ab86b7d8974fb85f07411838849160462364e989",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.33839988708496094,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "convoy-workshop": {
+    "title": "Atelier des convois",
+    "role": "atelier",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/convoy-workshop.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 33,
+        "y": 158,
+        "width": 1472,
+        "height": 736
+      },
+      "foundationFront": {
+        "left": 33,
+        "right": 1504,
+        "y": 893
+      },
+      "threshold": {
+        "x": 768,
+        "y": 888
+      },
+      "doorway": {
+        "x": 650,
+        "y": 461,
+        "width": 236,
+        "height": 427
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "da7787f9ad19485ecc3a056164a9cca08d0001278420b4d6ca26df15cc9b3155",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.42183367411295575,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "convoy-store": {
+    "title": "Dépôt des convois",
+    "role": "stockage",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/convoy-store.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 17,
+        "y": 160,
+        "width": 1503,
+        "height": 682
+      },
+      "foundationFront": {
+        "left": 17,
+        "right": 1519,
+        "y": 841
+      },
+      "threshold": {
+        "x": 768,
+        "y": 837
+      },
+      "doorway": {
+        "x": 590,
+        "y": 405,
+        "width": 356,
+        "height": 432
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "d873a6fea3a8522a74e850b8011a5e55f0f745a5efc23692bcc4c24e595a50de",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.45404688517252606,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "convoy-south-shelter": {
+    "title": "Abri des convois",
+    "role": "relais",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/convoy-south-shelter.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 10,
+        "y": 181,
+        "width": 1517,
+        "height": 714
+      },
+      "foundationFront": {
+        "left": 10,
+        "right": 1526,
+        "y": 894
+      },
+      "threshold": {
+        "x": 768,
+        "y": 878
+      },
+      "doorway": {
+        "x": 632,
+        "y": 398,
+        "width": 272,
+        "height": 480
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "ad293efca831b5c4ce017ce19b51581373eec3459ea501cecfee35cc6b4bc8f8",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.41971460978190106,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "rampart-north-lodge": {
+    "title": "Relais des remparts hauts",
+    "role": "vigie",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 48,
+        "y": 16,
+        "width": 1441,
+        "height": 973
+      },
+      "foundationFront": {
+        "left": 64,
+        "right": 1472,
+        "y": 988
+      },
+      "threshold": {
+        "x": 768,
+        "y": 976
+      },
+      "doorway": {
+        "x": 623,
+        "y": 374,
+        "width": 290,
+        "height": 602
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "1e0bea50c99fdbdf722937647b5966dbc7af9f36591ce2eecbe12d45c022ae19",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.3360392252604167,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "rampart-watch": {
+    "title": "Vigie des remparts",
+    "role": "vigie",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/rampart-watch.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 23,
+        "y": 26,
+        "width": 1492,
+        "height": 887
+      },
+      "foundationFront": {
+        "left": 23,
+        "right": 1514,
+        "y": 912
+      },
+      "threshold": {
+        "x": 768,
+        "y": 907
+      },
+      "doorway": {
+        "x": 630,
+        "y": 380,
+        "width": 276,
+        "height": 527
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "b450450aa1b7874e5596ba965998a5179de18176318900ef3b8361474c75c5c3",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.3621667226155599,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  },
+  "rampart-south-lodge": {
+    "title": "Relais des remparts bas",
+    "role": "relais",
+    "depth": 340,
+    "art": {
+      "src": "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 37,
+        "y": 69,
+        "width": 1463,
+        "height": 811
+      },
+      "foundationFront": {
+        "left": 37,
+        "right": 1499,
+        "y": 879
+      },
+      "threshold": {
+        "x": 768,
+        "y": 873
+      },
+      "doorway": {
+        "x": 625,
+        "y": 399,
+        "width": 286,
+        "height": 474
+      },
+      "footprintWorld": {
+        "width": 570,
+        "depth": 340
+      },
+      "wallHeightWorld": 242,
+      "sha256": "b41d39119f6993fd2cff35a1cb062fed5b80e44b0ed8f5d77754c8f2ebe716f0",
+      "measurementStatus": "v75-native-alpha200-foundation-edge-and-front-floor-threshold; doorway-width-is-walkable-foot-aperture-not-lintel-width"
+    },
+    "measurement": {
+      "alphaThreshold": 200,
+      "transparentPixelRatio": 0.4173450469970703,
+      "cornerAlphas": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "doorWidthPlane": "front ground support between inner jamb feet; opening tapers above the protagonist",
+      "thresholdPlane": "front edge of the actual painted entrance floor, not its rear edge",
+      "logicalOverride": null
+    },
+    "lore": "original-adaptation"
+  }
+}

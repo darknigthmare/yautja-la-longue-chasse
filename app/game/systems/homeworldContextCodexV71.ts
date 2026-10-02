@@ -8,18 +8,25 @@ import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
 import { HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74 } from './homeworldSecondaryInteriorCodexV74';
 import { HOMEWORLD_POPULATION_CODEX_V74 } from './homeworldPopulationCodexV74';
 import { HOMEWORLD_CIVILIAN_MOTION_CODEX_V74 } from './homeworldCivilianMotionCodexV74';
+import { HOMEWORLD_CONVERSATION_CODEX_V75 } from './homeworldResidentConversationsV75';
+import { HOMEWORLD_ARCHITECTURE_CODEX_V75 } from './homeworldArchitectureV75';
+import { HOMEWORLD_LANDSCAPE_CODEX_V75, HOMEWORLD_LANDSCAPE_BOUNDS_V75 } from './homeworldLandscapeV75';
 import { homeworldInteriorForBuildingV64, homeworldInteriorPropArtIdV64 } from './homeworldInteriorsV64';
 import { HOMEWORLD_OUTSKIRTS_ART_V71, HOMEWORLD_OUTSKIRTS_GROUND_V71 } from './homeworldOutskirtsArtV71';
-import { HOMEWORLD_OUTSKIRTS_MODULES_V71, HOMEWORLD_OUTSKIRTS_BOUNDS_V71,
+import { HOMEWORLD_OUTSKIRTS_MODULES_V71,
   HOMEWORLD_OUTSKIRTS_CLEARANCE_V71, HOMEWORLD_BUILDING_APPROACHES_V71, homeworldOutskirtsFootprintV71 } from './homeworldOutskirtsV71';
 export { HOMEWORLD_BUILDING_APPROACHES_V71 } from './homeworldOutskirtsV71';
 export interface HomeworldContextRecordV71 extends HomeworldElementRecordV64 { associatedElementIds: readonly string[] }
 const base={spaceId:'world',position:{x:0,y:0,z:0},dimensions:{width:0,depth:0,height:0},footprint:null,door:null,
   lore:'original-adaptation' as const,source:[],constraints:[],asset:null,associatedElementIds:[]};
+const architectureRecordsV75:HomeworldContextRecordV71[]=HOMEWORLD_ARCHITECTURE_CODEX_V75.map(record=>{
+  const buildingId=record.id.split(':')[1];
+  return {...record,associatedElementIds:[buildingId,`door:${buildingId}`,`interior:${buildingId}`]};
+});
 const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
   const room=homeworldInteriorForBuildingV64(building.id)!,door=homeworldBuildingDoorwayV64(building),footprint=homeworldBuildingFootprintV64(building);
-  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id);
-  const exteriorFurniture=HOMEWORLD_ELEMENT_CODEX_V64.filter(record=>record.category==='prop'&&record.spaceId==='world'
+  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...architectureRecordsV75].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`);
+  const exteriorFurniture=[...HOMEWORLD_ELEMENT_CODEX_V64,...architectureRecordsV75].filter(record=>record.category==='prop'&&record.spaceId==='world'
     &&record.districtId===building.districtId&&Math.hypot(record.position.x-building.x,record.position.y-building.y)<building.width);
   const streets=HOMEWORLD_STREETS.filter(street=>street.polygon.some(p=>Math.hypot(p.x-door.approach.x,p.y-door.approach.y)<800));
   return {...base,id:`assembly-v71:${building.id}`,label:`Ensemble · ${building.label}`,category:'building',districtId:building.districtId,
@@ -61,10 +68,11 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
   ...contexts,...approaches,...outdoors,...HOMEWORLD_IDENTITY_CODEX_V72.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_CIVILIAN_MOTION_CODEX_V74.map(record=>({...record,associatedElementIds:[]})),
-  ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · ceinture de la cité',category:'floor',districtId:'outskirts',
-    position:{x:HOMEWORLD_OUTSKIRTS_BOUNDS_V71.left,y:HOMEWORLD_OUTSKIRTS_BOUNDS_V71.top,z:0},
-    dimensions:{width:HOMEWORLD_OUTSKIRTS_BOUNDS_V71.width,depth:HOMEWORLD_OUTSKIRTS_BOUNDS_V71.depth,height:0},asset:HOMEWORLD_OUTSKIRTS_GROUND_V71.src,
+  ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONVERSATION_CODEX_V75,...architectureRecordsV75,...HOMEWORLD_LANDSCAPE_CODEX_V75,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · base de cendre et ceinture V75',category:'floor',districtId:'outskirts',
+    position:{x:HOMEWORLD_LANDSCAPE_BOUNDS_V75.left,y:HOMEWORLD_LANDSCAPE_BOUNDS_V75.top,z:0},
+    dimensions:{width:HOMEWORLD_LANDSCAPE_BOUNDS_V75.width,depth:HOMEWORLD_LANDSCAPE_BOUNDS_V75.depth,height:0},asset:HOMEWORLD_OUTSKIRTS_GROUND_V71.src,
     constraints:['Texture de terrain native répétée en modules de 240 unités. Ce matériau ne contient ni cité ni panorama peint.',
+      'Enveloppe V75 prolongée au nord pour couvrir la caméra réelle ; le matériau de base V71 et ses anciens modules sont conservés. Les variations de sol et relief sont détaillées dans les fiches V75 associées.',
       'Chaque polygone public est exclu séparément : les recouvrements de rues restent publics, sans trou produit par un masque pair/impair.',
       'Sol projeté une fois à 35°. Roches, murs et végétaux au-dessus gardent leur échelle uniforme.',
       'Le prolongement visuel ne permet pas de sortir des limites de déplacement ; les dix chemins V72 mènent à leurs seuils physiques et gardent les permissions de progression.']}];

@@ -1,3 +1,6 @@
 .ground { position:absolute; z-index:0; pointer-events:none; transform-origin:0 0; filter:brightness(.85) saturate(.85); }
 .module { transition:opacity 140ms ease; }
+/* Material fades are world-space alpha geometry; the immutable native images
+   are neither blurred nor rotated to conceal a perspective mismatch. */
+.ground image { image-rendering:auto; }
 @media(prefers-reduced-motion:reduce) { .module { transition:none; } }

@@ -8,6 +8,7 @@ import styles from "./HomeworldSpatialCodex.module.css";
 import HomeworldElementCodex from "./HomeworldElementCodex";
 import type { SaveGame } from "./types";
 import { HOMEWORLD_ATLAS_ROUTES_V70, homeworldAtlasRouteAccessV70 } from "./systems/homeworldAtlasRoutesV70";
+import { homeworldWayfindingRegionVisibilityV75 } from "./systems/homeworldWayfindingV75";
 
 export interface HomeworldSpatialCodexProps {
   actor: HomeworldVec2;
@@ -57,7 +58,9 @@ export default function HomeworldSpatialCodex({ actor, visitedDistrictIds, youth
     }, 50);
     return () => window.clearInterval(timer);
   }, [open]);
-  const destinations = scope === 'regions' ? HOMEWORLD_ATLAS_ROUTES_V70 : HOMEWORLD_SPATIAL_SITES;
+  const destinations = scope === 'regions' ? HOMEWORLD_ATLAS_ROUTES_V70.filter(entry => save
+    ? homeworldWayfindingRegionVisibilityV75(save, entry.regionId).visible
+    : entry.regionId !== 'forbidden-reserve') : HOMEWORLD_SPATIAL_SITES;
   const site = destinations.find(entry => entry.id === siteId) ?? destinations[0];
   const regionalSite = scope === 'regions' ? HOMEWORLD_ATLAS_ROUTES_V70.find(entry => entry.id === site.id) : null;
   const regionalAccess = regionalSite ? homeworldAtlasRouteAccessV70(save, regionalSite.regionId) : null;

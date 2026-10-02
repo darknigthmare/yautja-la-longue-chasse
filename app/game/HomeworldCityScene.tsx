@@ -10,6 +10,7 @@ import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from './systems/homeworldInteriorsV6
 import { HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from './systems/homeworldArtV64';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
+import HomeworldArchitectureV75 from './HomeworldArchitectureV75';
 import styles from './HomeworldCity.module.css';
 
 interface HomeworldCitySceneProps {
@@ -55,6 +56,7 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ activeDoorId, acti
       const socket = homeworldProjectGroundV64(homeworldBuildingDoorwayV64(building).threshold);
       return <div key={building.id} className={styles.buildingV64} data-building-id={building.id}
         data-building-art={building.artId} data-entrance-kind={building.entranceKind}
+        data-building-native-source={building.art.src}
         data-occluded={!!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition)}
         style={{ ...position, zIndex: Math.round(building.y) }}>
         {building.art.sourceRect ? <span data-native-building-atlas-v72={building.id} style={{display:'block',width:'100%',height:'100%',
@@ -66,6 +68,7 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ activeDoorId, acti
           style={{ left: socket.x - position.left, top: socket.y - position.top }}><i /><b>{building.label}</b></span>}
       </div>;
     })}
+    <HomeworldArchitectureV75 actor={actorPosition}/>
     {HOMEWORLD_PROPS.map(prop => {
       if (!prop.artId) return null; // Legacy sources are preserved outside this new projection.
       const p = homeworldProjectGroundV64(prop);
