@@ -51,7 +51,7 @@ Références de contrôle :
 
 - `NURSERY_TIMING.arrivalTicks` passe à 720 ticks (12 s).
 - Les trois décors déjà validés sont réutilisés comme plans de cinéma : lune rouge → village → arène.
-- Après 180 ticks (3 s), le joueur peut passer le reste de la cinématique avec une nouvelle pression de confirmation.
+- Après 480 ticks (8 s), une fois le clan, le but du duel et le statut du rival posés, le joueur peut passer la fin de la cinématique avec une nouvelle pression de confirmation.
 - Les checkpoints existants restent au format `version: 1`; aucune nouvelle récompense ni preuve de progression n'est ajoutée.
 - `getNurseryNarrativeBeat(state)` fournit au rendu une couche narrative indépendante de la simulation du combat.
 - Le HUD de combat reste absent pendant le prologue.
