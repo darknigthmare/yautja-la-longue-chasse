@@ -1,0 +1,243 @@
+{
+  "version": "V74",
+  "status": "PASS",
+  "verifiedAt": "2026-10-02T09:34:46.332Z",
+  "sourceCommit": "ed19caf3120122d14da22a0e0e0e23d7b5e15436",
+  "githubMain": "ed19caf3120122d14da22a0e0e0e23d7b5e15436",
+  "publicUrl": "https://yautja-la-longue-chasse.vercel.app",
+  "deployment": {
+    "id": "dpl_DCxBhVfrPEjftk5KHc6FYjkeAvgT",
+    "state": "READY",
+    "target": "production",
+    "url": "yautja-la-longue-chasse-j447mwjjr-darknigthmares-projects.vercel.app",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ],
+    "sha": "ed19caf3120122d14da22a0e0e0e23d7b5e15436",
+    "vercelReadyTimestamp": 1790933030511,
+    "observedAt": "2026-10-02T09:25:16.139Z"
+  },
+  "local": {
+    "build": {
+      "version": "V74",
+      "portableExitCode": 0,
+      "nextExitCode": 0,
+      "completedAt": "2026-10-02T08:58:07.8954357Z",
+      "sourceFrozenAt": "2026-10-02T08:56:01.5860314Z",
+      "limits": "Local final builds; this is not a public deployment."
+    },
+    "regression": {
+      "version": "V74",
+      "status": "PASS",
+      "tests": 2464,
+      "passed": 2464,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "completedAt": "2026-10-02T09:04:40.9061338Z",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+      "limits": "Full suite on final frozen runtime sources; artwork fidelity remains separately PARTIAL_ART for civilian gait."
+    },
+    "staticChecks": {
+      "version": "V74",
+      "typecheckExitCode": 0,
+      "lintExitCode": 0,
+      "compiledCssExitCode": 0,
+      "completedAt": "2026-10-02T08:59:46.3179324Z",
+      "lintErrors": 0,
+      "preExistingImageWarnings": 3
+    },
+    "compiledCss": {
+      "status": "PASS",
+      "checkedAt": "2026-10-02T08:59:46.231Z",
+      "nextDir": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\.next",
+      "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+      "files": [
+        {
+          "path": "static/css/5a5c0d93c683a591.css",
+          "bytes": 123962,
+          "sha256": "58f455f6a3ac559f82d784c3272328f6581108b10cabc83ce428e0fb3415d015"
+        },
+        {
+          "path": "static/css/702593c94914f967.css",
+          "bytes": 16684,
+          "sha256": "2c262f7ca24acbc79d44752ef8fc729fe24dc92d8f94e9da2a4159f843dc087b"
+        }
+      ],
+      "checks": [
+        {
+          "id": "toast-does-not-intercept-hud",
+          "selector": "toast",
+          "property": "pointer-events",
+          "expected": "none",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".toast",
+              "value": "none",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "immersive-toast-above-desktop-menu",
+          "selector": "desktop",
+          "property": "bottom",
+          "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+              "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-below-health-hud",
+          "selector": "touch",
+          "property": "top",
+          "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-releases-bottom",
+          "selector": "touch",
+          "property": "bottom",
+          "expected": "auto",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "auto",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+        "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+        "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+      ]
+    }
+  },
+  "public": {
+    "recipes": [
+      {
+        "scope": "shell",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 43,
+        "captures": 2,
+        "report": "docs/v74-shell-public-browser-qa.json"
+      },
+      {
+        "scope": "prologue",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 8,
+        "captures": 26,
+        "report": "docs/v74-prologue-public-browser-qa.json"
+      },
+      {
+        "scope": "identity",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 24,
+        "report": "docs/v74-identity-public-browser-qa.json"
+      },
+      {
+        "scope": "connections",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 18,
+        "report": "docs/v74-connections-public-browser-qa.json"
+      },
+      {
+        "scope": "youth-motion",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 27,
+        "captures": 13,
+        "report": "docs/v74-youth-motion-public-browser-qa.json"
+      },
+      {
+        "scope": "secondary-interiors",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 42,
+        "captures": 40,
+        "report": "docs/v74-secondary-interiors-public-browser-qa.json"
+      },
+      {
+        "scope": "motion-assets",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v74-motion-assets-public-browser-qa.json"
+      },
+      {
+        "scope": "civilian-motion",
+        "status": "PASS",
+        "artStatus": "PARTIAL_ART",
+        "checks": 14,
+        "captures": 4,
+        "report": "docs/v74-civilian-motion-public-browser-qa.json"
+      }
+    ],
+    "nativePngChecks": 39,
+    "allNativePngHttpAndShaPassed": true
+  },
+  "delivered": {
+    "secondaryInteriors": 37,
+    "secondaryInteriorZones": 80,
+    "secondaryPassages": 29,
+    "independentFurniture": 153,
+    "youngDirections": 8,
+    "youngNativePoses": 40,
+    "civilianNativePoses": 112,
+    "civilianCostumes": 14,
+    "existingResidents": 98,
+    "newNativePng": 24,
+    "contextCodexRecords": 879
+  },
+  "limits": [
+    "Civilian cycles are PARTIAL_ART: some apparent leg alternations still need refinement.",
+    "Original city and local customs are lore-compatible adaptations, not a canon 1:1 city or universal monarchy.",
+    "Young V74 locomotion is integrated in Homeworld city/interiors; regional/prologue avatars remain unchanged.",
+    "Account access is visible, but real account login/signup/email and cross-device sync were not exercised.",
+    "QA uses isolated browser saves, never the user live save.",
+    "This release proves this Homeworld lot, not completion of every historical campaign, arena or commercial-game objective."
+  ]
+}
