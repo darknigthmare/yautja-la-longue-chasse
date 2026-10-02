@@ -27,6 +27,9 @@ export function campaignWelcomeV69(save: SaveGame) {
     title:'Unblooded — Les Premières Pistes accomplies',intro:'Ta formation et le premier relevé de terrain sont conservés. Les routes ordinaires des villages sont ouvertes.',
     next:'Le maître prépare La Piste sans guide à la Maison des Terrasses. Les guides régionaux et le Tableau des chasses du marché proposent aussi des relevés, observations et défis non létaux. Respecte les conditions propres à chaque territoire.',
   };
-  return {title:'Quelques années plus tard — Unblooded',intro:'Ton apprentissage se déroule auprès du clan : accueil du chef, dojo du maître, armurerie, camp et baraquements. Chaque étape conserve les exercices réellement réussis.',
-    next:'Rejoins le chef à la Citadelle, au nord-est, puis l’instructeur des terrasses. Approche-les et utilise Interaction. Le dojo, l’équipement de formation et les Premières Pistes précèdent les sorties vers les villages. Le vaisseau personnel attend le rite Blooded.'};
+  return {
+    title:'Quelques années plus tard — L’appel de la Citadelle',
+    intro:'Le souvenir du cercle de jeunesse est derrière toi. Tu as grandi parmi les tiens sans trophée ni marque de Blooded. La reconnaissance gagnée enfant t’a seulement permis de poursuivre l’apprentissage ; aujourd’hui, le clan te reçoit enfin comme Unblooded.',
+    next:'Le chef t’a convoqué à la Citadelle, au nord-est. Présente-toi à lui avant de rejoindre le maître des terrasses : dojo, armurerie, camp et Premières Pistes formeront ta véritable préparation. Le Blooding et le droit de chasser seul viendront plus tard.',
+  };
 }
