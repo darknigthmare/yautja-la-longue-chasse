@@ -8,6 +8,15 @@ test('V69 adds safe distinct residents in every district without replacing old r
   assert.equal(new Set(api.HOMEWORLD_RESIDENTS_V69.map(r=>r.id)).size,98);
   for(const d of api.HOMEWORLD_DISTRICTS) assert.equal(api.HOMEWORLD_NEW_RESIDENTS_V69.filter(r=>r.districtId===d.id).length,3);
   for(const r of api.HOMEWORLD_RESIDENTS_V69) {
+    // A time sample can jump over a narrow prop corner. Check the entire authored
+    // segment as well, independent of the resident's speed and starting phase.
+    for(let segment=1;segment<r.path.length;segment++) {
+      const from=r.path[segment-1],to=r.path[segment],steps=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/.5));
+      for(let i=0;i<=steps;i++) {
+        const p={x:from.x+(to.x-from.x)*i/steps,y:from.y+(to.y-from.y)*i/steps};
+        assert(api.isHomeworldWalkable(p),r.id+' crosses a solid between routine time samples');
+      }
+    }
     let moved = false;
     for(let s=0;s<240;s+=.25) {
       const p=api.homeworldResidentPoseV69(r,s);

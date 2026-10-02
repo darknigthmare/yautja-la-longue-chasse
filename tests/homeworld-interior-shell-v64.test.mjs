@@ -5,10 +5,10 @@ import { build } from 'esbuild';
 const result=await build({stdin:{contents:"export * from './app/game/systems/homeworldInteriorShellV64.ts';export * from './app/game/systems/homeworldInteriorsV64.ts';export * from './app/game/systems/homeworldElementCodexV64.ts';export * from './app/game/systems/homeworldGeometryV64.ts';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const model=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 
-test('43 floors and286 native panels have stable unique records, including every clipped terminal module',()=>{
+test('43 floors and294 native panels have stable unique records, including every clipped terminal module',()=>{
   const shells=model.HOMEWORLD_INTERIORS_V64.map(model.homeworldInteriorShellV64);
   const panels=shells.flatMap(s=>s.groups.flatMap(g=>g.panels));
-  assert.equal(shells.length,43);assert.equal(panels.length,286);assert.equal(new Set(panels.map(p=>p.id)).size,286);
+  assert.equal(shells.length,43);assert.equal(panels.length,294);assert.equal(new Set(panels.map(p=>p.id)).size,294);
   for(const room of model.HOMEWORLD_INTERIORS_V64){
     const shell=model.homeworldInteriorShellV64(room),record=model.homeworldElementByIdV64(`floor:${shell.floor.id}`);
     assert.equal(record.asset,shell.floor.art.src);assert.deepEqual(record.dimensions,{width:room.width,depth:room.depth,height:0});

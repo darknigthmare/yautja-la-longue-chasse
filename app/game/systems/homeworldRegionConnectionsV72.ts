@@ -44,6 +44,13 @@ export function homeworldGatewayScaleV72(item: HomeworldRegionConnectionV72) {
 export function homeworldConnectionLengthV72(item: HomeworldRegionConnectionV72) {
   return item.nodes.slice(1).reduce((length,p,index)=>length+Math.hypot(p.x-item.nodes[index].x,p.y-item.nodes[index].y),0);
 }
+/** Compass bearing points towards the actual threshold in screen projection;
+ * it is not a straight-line navigation exemption through city buildings. */
+export function homeworldConnectionCompassV72(regionId:string,depthScale:number) {
+  const item=homeworldConnectionByRegionV72(regionId);if(!item)return '';
+  const angle=Math.atan2((item.threshold.y-item.legacySign.y)*depthScale,item.threshold.x-item.legacySign.x);
+  return ['→','↘','↓','↙','←','↖','↑','↗'][(Math.round(angle/(Math.PI/4))+8)%8];
+}
 
 /** Each segment is a capsule-shaped polygon. Their actual overlaps are public
  * terrain, not just a drawn line. The aperture apron overlaps the final cap.
@@ -106,7 +113,7 @@ export const HOMEWORLD_CONNECTION_FURNITURE_V72: readonly (HomeworldFurnitureIns
       'storm-chain:1':{x:3710,y:280}, 'storm-chain:3':{x:3870,y:720},
       'luminous-marshes:1':{x:6050,y:2440}, 'luminous-marshes:3':{x:6260,y:2600},
       'first-city-ruins:2':{x:1150,y:350}, 'first-city-ruins:3':{x:280,y:450},
-      'leviathan-coast:1':{x:920,y:1150}, 'leviathan-coast:2':{x:960,y:1440}, 'leviathan-coast:3':{x:1440,y:1450},
+      'leviathan-coast:1':{x:790,y:1630}, 'leviathan-coast:2':{x:960,y:1440}, 'leviathan-coast:3':{x:1380,y:1360},
       'cold-crown:3':{x:6070,y:680},
     };
     return artIds.map((artId,n)=>{

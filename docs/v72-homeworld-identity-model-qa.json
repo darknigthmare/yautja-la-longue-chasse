@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "suite": "homeworld identity, real city geometry, 43 room paths, perimeter shell and spatial destinations",
-  "targetedTests": 74,
+  "suite": "homeworld identity, real city geometry, 43 room paths, perimeter shell, spatial destinations, 98 population routines and native alpha occlusion",
+  "targetedTests": 80,
   "newIdentityTests": 6,
   "verified": {
     "nativeOpenAIIdentityPngSources": 3,
@@ -14,6 +14,13 @@
     "newIndependentInteriorFurniture": 30,
     "additionalCodexEntries": 72,
     "existingBuildingDoorApproachesAccessible": 43,
+    "existingBuildingDoorsReachableFromSpawn": 43,
+    "regionThresholdsReachableFromSpawn": 10,
+    "residentRoutinesOnActualWalkableGround": 98,
+    "locallyReroutedResidents": 4,
+    "wholeRoutineSeconds": 240,
+    "wholeRoutineTimeSampleSeconds": 0.25,
+    "continuousAuthoredSegmentSampleDistance": 0.5,
     "existingInteriorServicePointsAccessible": 15,
     "physicalCityDestinationsReachable": 14,
     "unbloodedWalkDrawingsPerNativeFacing": 2,
@@ -26,6 +33,8 @@
   "evidence": {
     "fastTests": "work-local/v72/identity-final-fast-tests.log",
     "spatialTests": "work-local/v72/identity-spatial-final.log",
+    "populationAndDoorRouteTests": "work-local/v72/population-final-tests.log",
+    "fineResidentRouteTests": "work-local/v72/population-fine-segments-tests.log",
     "lint": "work-local/v72/identity-lint-final.log",
     "browserRecipe": "scripts/verify-homeworld-identity-v72.mjs"
   },

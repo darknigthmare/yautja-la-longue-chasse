@@ -243,7 +243,10 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
     const village = scene("village");
     const projection = backdrop(ctx, village, reducedMotion ? 1 : 1.45 - 0.45 * progress, reducedMotion ? 0.5 : 0.61 - 0.11 * progress);
     drawVillageVictory(ctx, presentation, bank, village, projection, reducedMotion);
-    if (!reducedMotion && progress < 0.15) { ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1; }
+    // Crossfade only after a real knockout; intro cards show a clean village.
+    if (!reducedMotion && presentation.phase === "village-reveal" && progress < 0.15) {
+      ctx.globalAlpha = 1 - progress / 0.15; backdrop(ctx, scene("arena")); ctx.globalAlpha = 1;
+    }
   } else if (presentation.camera.shot === "clan-road") {
     const road = bank.continuitySceneV72;
     if (road) {

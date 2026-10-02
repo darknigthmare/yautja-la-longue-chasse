@@ -1,0 +1,27 @@
+{
+  "version": "V72",
+  "publicIntegration": "V73",
+  "generator": "native image_gen.imagegen",
+  "mode": "original-adaptation",
+  "preservedOldAssets": true,
+  "sources": [
+    {
+      "path": "public/game/homeworld/v72/civic-furniture-kit.png",
+      "nativeWidth": 1448,
+      "nativeHeight": 1086,
+      "sha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844",
+      "objects": 12,
+      "prompt": "Use case: stylized-concept. Asset type: independent transparent game furniture atlas for Yautja — La Longue Chasse. Generate an original lore-compatible civilian Yautja city furniture kit, not human medieval furniture, no weapons, no characters. Exactly TWELVE separated objects, evenly placed as a FOUR-column by THREE-row grid. EACH object fully within its own generous cell with clear transparent padding, no captions or cell borders. Fixed orthographic camera looking due north with 35 degree downward pitch, no horizontal yaw: front facing objects symmetrical left/right, visible front and shallow top surfaces, no isometric side view, no perspective vanishing point. Dark hand-painted realistic JRPG diorama quality, basalt, aged bronze, carved resinwood, muted cloth, restrained amber and cyan lights. Row 1 left to right: a local Yautja chieftain's raised ceremonial seat with a plain heavy basalt back and carved tusk-like side uprights, no human crown; low civic archive register desk with inset amber data tablet and sealed records; artisan repair bench with clamps, sockets and non-combat calibration tools; civilian healer's long low treatment couch with folded cloth and small tray. Row 2: small broad freestanding resonance training gong in ribbed bronze frame; household clothing and parure drying rack with folded woven wraps and beads, absolutely no human tunics or swords; three sealed storage jars in a stone carrying tray; low freestanding amber resin lantern with metal protective fins, no medieval flame. Row 3: common meal table with three shallow bowls and serving stone; pair of lashed convoy cargo boxes with broad carry grips; house banner on a short two-foot resinwood stand with original non-readable abstract clan markings; low three-place carved basalt bench. All objects grounded by a clearly visible front support edge, no painted external ground, no drop shadows beyond each silhouette, no solid background or backdrop. Entire canvas genuinely transparent RGBA."
+    },
+    {
+      "path": "public/game/homeworld/v72/region-gateway-kit.png",
+      "nativeWidth": 1312,
+      "nativeHeight": 1199,
+      "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd",
+      "objects": 4,
+      "prompt": "Use case: stylized-concept. Asset type: FOUR independent transparent monumental entrance modules for a modular 2.5D Yautja city game. Exactly a TWO by TWO grid, four entirely separate archways, generous transparent gutters. Camera is strict orthographic due north, 35 degree downward pitch, horizontal yaw ZERO. FRONT facing arches with shallow visible top surfaces, absolutely no diagonal isometric yaw or vanishing-point perspective. Each arch has two ground-supported side pillars and an overhead lintel or root span, but completely OPEN EMPTY TRANSPARENT central passage from beneath the lintel to bottom edge; do not draw a door, backdrop, landscape, floor, bridge deck, or stairs across this clear opening. Tall enough for a Yautja to walk underneath; opening is wide, roughly half the cell width, and pillars thick. Bottom support pads visible and level with each other, strong stable stone attachment, no floating elements. Dark hand-painted realistic JRPG diorama art matching Yautja basalt city with aged bronze fins, carved resinwood, fine weathering, original alien motifs but no legible text. TOP LEFT: broad basalt processional arch with two carved high plinths, a low horizontal bronze-tusk lintel and amber route lights, practical and monumental not medieval. TOP RIGHT: thick resinwood/root-linked canopy gateway for forest and marsh paths, straight upright ground supports and restrained green luminescent embedded accents, no hanging vines in the traversable opening. BOTTOM LEFT: ribbed dark metal and volcanic rock thermal-gallery entrance, inset copper vent fins entirely on outer sides, two amber lamps, no smoke covering opening. BOTTOM RIGHT: fortified observation gate with basalt pillars, old angular bronze armor plates and muted magenta signal strips, open center without barrier. All four modules fully contained in their cells, not touching neighbors, consistent fixed camera and physical ground level. No humans, no creatures, no vehicles, no castles, no crown, no non-transparent background; genuine RGBA transparency."
+    }
+  ],
+  "processing": "Native full sources preserved without editing or background replacement. Runtime rectangular CSS clipping; alpha support and transparent apertures measured. Uniform scale; ground projection once.",
+  "limits": "Original civilian city adaptation. No canonical city map, furniture dimensions or universal monarchy asserted; local approaches link the existing authored regional actions without granting progression."
+}

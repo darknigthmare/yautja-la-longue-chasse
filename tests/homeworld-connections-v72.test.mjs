@@ -61,6 +61,9 @@ test('forty independent shoulder furnishings never intersect roads or building g
   const props=model.HOMEWORLD_CONNECTION_FURNITURE_V72.map(item=>({item,box:furniture.homeworldFurnitureFootprintV72(item)}));
   for(const {item,box}of props){
     for(const b of city.HOMEWORLD_BUILDINGS)assert(!intersects(box,city.homeworldBuildingFootprintV64(b)),item.id+' masonry '+b.id);
+    for(const p of city.HOMEWORLD_PROPS){if(p.plane!=='ground')continue;const hw=p.footprint?.halfWidth,hd=p.footprint?.halfDepth;
+      if(hw!==undefined&&hd!==undefined)assert(!intersects(box,{left:p.x-hw,right:p.x+hw,top:p.y-hd*(p.artId?2:1),bottom:p.y+(p.artId?0:hd)}),item.id+' existing prop '+p.id);
+    }
     for(let y=box.top;y<=box.bottom;y+=4)for(let x=box.left;x<=box.right;x+=4)
       assert.equal(model.homeworldConnectionFloorV72({x,y}),false,item.id+' traversable road overlap');
     assert.equal(model.homeworldConnectionCollisionV72({x:(box.left+box.right)/2,y:(box.top+box.bottom)/2},{halfWidth:0,halfDepth:0})?.id,item.id);
@@ -75,6 +78,16 @@ test('real navigation guides all ten former urban landmarks to their physical de
     assert.deepEqual(route.points[0],start);assert.deepEqual(route.points.at(-1),r.arrival);assert(route.distance>200);
     for(let n=1;n<route.points.length;n++)assert(atlas.isHomeworldRouteSegmentWalkable(route.points[n-1],route.points[n]),r.regionId+' guided segment');
   }
+});
+
+test('all forty-three existing building entrances remain connected while every new threshold is reachable from the public spawn',()=>{
+  assert.equal(city.HOMEWORLD_BUILDINGS.length,43);
+  const start=city.createHomeworldActor();
+  for(const building of city.HOMEWORLD_BUILDINGS){const goal=city.homeworldBuildingDoorwayV64(building).approach;
+    assert.equal(atlas.homeworldSpatialRoute(start,goal).status,'reachable','existing public doorway '+building.id);
+  }
+  for(const connection of model.HOMEWORLD_REGION_CONNECTIONS_V72)
+    assert.equal(atlas.homeworldSpatialRoute(start,connection.arrival).status,'reachable','regional threshold '+connection.regionId);
 });
 
 test('native PNGs and every cell stay transparent, unmodified and padded with genuine open apertures',async()=>{
@@ -108,7 +121,7 @@ test('codex records derive from actual measured native supports, paths and furni
 });
 
 test('actual JSX mounts only nearby native props and projects the floor once without painting a giant backdrop',async()=>{
-  const result=await build({stdin:{contents:`import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import View from './app/game/HomeworldRegionConnectionsV72.tsx';import {defaultSave} from './app/game/save.ts';export const html=renderToStaticMarkup(React.createElement(View,{actor:{x:500,y:1100},cameraX:0,cameraY:70,width:1200,height:850,save:defaultSave()}));`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent',external:['react','react-dom/server'],plugins:[{name:'native-cells-css-only',setup(build){build.onLoad({filter:/\.module\.css$/},()=>({contents:'export default {};',loader:'js'}));}}]});
+  const result=await build({stdin:{contents:`import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import View from './app/game/HomeworldRegionConnectionsV72.tsx';export const html=renderToStaticMarkup(React.createElement(View,{actor:{x:500,y:1100},cameraX:0,cameraY:70,width:1200,height:850,save:{prologue:null,homeworld:{expeditions:{},evidenceIds:[]}}}));`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent',external:['react','react-dom/server'],plugins:[{name:'native-cells-css-only',setup(build){build.onLoad({filter:/\.module\.css$/},()=>({contents:'export default {};',loader:'js'}));}}]});
   const output={exports:{}};new Function('require','module','exports',result.outputFiles[0].text)(createRequire(import.meta.url),output,output.exports);
   const html=output.exports.html;assert(html.includes('data-homeworld-connection-floor="v72"'));assert(html.includes(`scaleY(${geo.HOMEWORLD_GEOMETRY_V64.depthScale})`));
   const count=(html.match(/data-homeworld-region-connection-v72=/g)??[]).length;assert(count>0&&count<10,'camera culls distant entrances');

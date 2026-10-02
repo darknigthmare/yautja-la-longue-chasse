@@ -9,13 +9,19 @@ const city = await load("app/game/systems/homeworldCity.ts");
 const codex = await load("app/game/systems/homeworldSpatialCodex.ts");
 const hw = await load("app/game/systems/homeworld.ts");
 const art = (await load("app/game/systems/homeworldCityArtV54.ts")).HOMEWORLD_CITY_ART_V54;
+const regionConnections = JSON.parse(readFileSync("app/game/data/homeworldRegionConnectionsV72.json", "utf8"));
 
 test("V64 extends the ground plan while preserving all V54 IDs and narrative/service bindings", () => {
   assert.deepEqual(city.HOMEWORLD_WORLD, { width: 7200, height: 5900 });
   assert.deepEqual(city.createHomeworldActor(), { x: 1280, y: 4480, vx: 0, vy: 0, grounded: true, facing: 1 });
   assert.equal(city.HOMEWORLD_DISTRICTS.length, 14);
   assert.equal(city.HOMEWORLD_BUILDINGS.length, 43);
-  assert.equal(city.HOMEWORLD_STREETS.length, 55,'eighteen preserved city roads plus thirty-seven physical region-approach ground segments');
+  const connectionPolygonIds = regionConnections.flatMap(connection => [
+    ...connection.nodes.slice(1).map((_, index) => `connection-v72:${connection.regionId}:${index}`),
+    `connection-v72:${connection.regionId}:aperture`,
+  ]);
+  assert.equal(city.HOMEWORLD_STREETS.length, 18 + connectionPolygonIds.length, 'eighteen preserved city roads plus one real polygon per authored connection segment and aperture');
+  assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('connection-v72:')).map(street => street.id), connectionPolygonIds);
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { id: "personal-ship", x: 1280, y: 4400 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 * 1.55 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["training-service"], { x: 2220, y: 1330 * 1.55 });

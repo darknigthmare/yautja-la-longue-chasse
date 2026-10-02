@@ -12,7 +12,7 @@ export interface NurseryContinuityV72 {
 }
 export const NURSERY_CONTINUITY_V72 = {
   introPages: 5, debriefPages: 2, journeyPages: 2,
-  minimumReadTicks: 24, walkoutTicks: 300, clanEntryTicks: 240, clanDepartureTicks: 240,
+  minimumReadTicks: 24, arrivalTicks: 90, walkoutTicks: 300, clanEntryTicks: 240, clanDepartureTicks: 240,
   roadSrc: "/game/prologue/v72/nursery-exit.png",
   corridorSrc: "/game/prologue/v72/clan-arrival-corridor.png",
   hallSrc: "/game/prologue/v72/clan-audience-hall.png",

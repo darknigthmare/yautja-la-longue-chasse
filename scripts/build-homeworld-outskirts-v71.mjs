@@ -2,8 +2,15 @@ import { build } from 'esbuild';
 import fs from 'node:fs/promises';
 const load = async file => { const result = await build({entryPoints:[file],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'}); return import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64')); };
 const city = await load('app/game/systems/homeworldCity.ts');
+const connections = await load('app/game/systems/homeworldRegionConnectionsV72.ts');
 const { HOMEWORLD_OUTSKIRTS_ART_V71: arts } = await load('app/game/systems/homeworldOutskirtsArtV71.ts');
 const polygons = [...city.HOMEWORLD_DISTRICTS, ...city.HOMEWORLD_STREETS].map(item=>item.polygon);
+const reserved = [
+  ...connections.homeworldConnectionFurnitureFootprintsV72(),
+  ...connections.HOMEWORLD_REGION_CONNECTIONS_V72.flatMap(connections.homeworldGatewayFootprintsV72),
+  ...connections.HOMEWORLD_CONNECTION_DIRECTION_SIGNS_V72.map(sign=>({left:sign.x-sign.footprintWorld.width/2,
+    right:sign.x+sign.footprintWorld.width/2,top:sign.y-sign.footprintWorld.depth,bottom:sign.y})),
+];
 const distanceSegment = (p,a,b) => { const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy||1))); return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy); };
 const edgeDistance = point => Math.min(...polygons.flatMap(poly=>poly.map((a,i)=>distanceSegment(point,a,poly[(i+1)%poly.length]))));
 const terrain = p => city.isHomeworldTerrainWalkable(p,{halfWidth:0,halfDepth:0});
@@ -38,7 +45,7 @@ for(let y=-240;y<=city.HOMEWORLD_WORLD.height+240;y+=205)for(let x=-300+(Math.fl
   const artId=choose(point.x,point.y,index),scale=[.76,.9,1,1.08][index%4];
   const district=city.HOMEWORLD_DISTRICTS.reduce((a,b)=>Math.hypot(point.x-a.x-a.width/2,point.y-a.y-a.height/2)<Math.hypot(point.x-b.x-b.width/2,point.y-b.y-b.height/2)?a:b);
   const item={id:'outskirts-v71-'+String(accepted.length+1).padStart(3,'0'),artId,...point,scale,districtId:district.id};
-  const rect=box(item); if(!clear(rect)||boxes.some(b=>overlaps(rect,b)))continue;
+  const rect=box(item); if(!clear(rect)||boxes.some(b=>overlaps(rect,b))||reserved.some(b=>overlaps(rect,b)))continue;
   accepted.push(item);boxes.push(rect);
 }
 const target='app/game/data/homeworldOutskirtsV71.json';

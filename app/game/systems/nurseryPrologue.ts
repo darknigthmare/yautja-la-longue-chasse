@@ -15,8 +15,15 @@ export const NURSERY_SOURCE = {
   title: "Yautja: The Long Hunt",
 } as const;
 export const NURSERY_TIMING = {
-  tickRate: 60, readyHoldTicks: 120, arrivalTicks: 90, koTicks: 90,
-  villageRevealTicks: 240, moonTitleTicks: 180,
+  tickRate: 60,
+  readyHoldTicks: 120,
+  // Twelve seconds give the opening enough time to explain the clan, the rival and
+  // the exact purpose of the duel. The skip unlocks only after those core beats.
+  arrivalTicks: 720,
+  arrivalSkipUnlockTicks: 480,
+  koTicks: 90,
+  villageRevealTicks: 240,
+  moonTitleTicks: 180,
 } as const;
 export const NURSERY_ARENA = {
   width: 960, height: 540, left: 96, right: 864, groundY: 414,
@@ -260,7 +267,14 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
         } else transition(state, "arrival", events);
       }
       break;
-    case "arrival": if (state.phaseTick >= NURSERY_TIMING.arrivalTicks) transition(state, "ready", events); break;
+    case "arrival":
+      // Legacy openings retain their timed establishing sequence. The new
+      // director has already shown context at the player's reading pace.
+      if (state.phaseTick >= (state.continuityV72 ? NURSERY_CONTINUITY_V72.arrivalTicks : NURSERY_TIMING.arrivalTicks) ||
+          !state.continuityV72 && usable && pressed.confirm && state.phaseTick >= NURSERY_TIMING.arrivalSkipUnlockTicks) {
+        transition(state, "ready", events);
+      }
+      break;
     case "ready":
       if (state.readyMode === "press") {
         if (usable && pressed.ready) transition(state, "duel", events);
@@ -372,22 +386,30 @@ export interface NurseryPresentation {
 export function getNurseryPresentation(state: NurseryState): NurseryPresentation {
   const phase = state.phase;
   const story = state.continuityV72;
+  const arrivalShot = state.phaseTick < 120 ? "red-moon" : state.phaseTick < 420 ? "village" : "arena";
+  const arrivalProgress = arrivalShot === "red-moon" ? clamp(state.phaseTick / 120, 0, 1) :
+    arrivalShot === "village" ? clamp((state.phaseTick - 120) / 300, 0, 1) :
+    clamp((state.phaseTick - 420) / Math.max(1, NURSERY_TIMING.arrivalTicks - 420), 0, 1);
   const shot = phase === "prompt" && story ? story.introPage < 2 ? "village" : "arena" :
     phase === "clan-entry" || phase === "reception" && story?.receptionPage === 0 ? "clan-corridor" :
     phase === "reception" || phase === "clan-departure" || phase === "complete" && story ? "clan-hall" :
     phase === "walkout" || phase === "journey" ? "clan-road" :
     phase === "loading" || phase === "prompt" ? "black" :
+    phase === "arrival" && !story ? arrivalShot :
     phase === "village-reveal" ? "village" : phase === "moon-title" || phase === "complete" ? "red-moon" : "arena";
   const progress = phase === "clan-entry" ? clamp(state.phaseTick / NURSERY_CONTINUITY_V72.clanEntryTicks, 0, 1) :
     phase === "clan-departure" ? clamp(state.phaseTick / NURSERY_CONTINUITY_V72.clanDepartureTicks, 0, 1) :
     phase === "walkout" ? clamp(state.phaseTick / NURSERY_CONTINUITY_V72.walkoutTicks, 0, 1) :
     phase === "prompt" && story || phase === "journey" || phase === "reception" ? 1 :
+    phase === "arrival" && !story ? arrivalProgress :
     phase === "village-reveal" ? clamp(state.phaseTick / NURSERY_TIMING.villageRevealTicks, 0, 1) :
     phase === "moon-title" ? clamp(state.phaseTick / NURSERY_TIMING.moonTitleTicks, 0, 1) : phase === "complete" ? 1 : 0;
   return { phase, hud: false, vision: "natural-red-orange-yellow", controlEnabled: phase === "duel" && state.inputArmed,
     readyGestureProgress: clamp(state.readyTicks / NURSERY_TIMING.readyHoldTicks, 0, 1),
     showStartPrompt: phase === "prompt", showReadyPrompt: phase === "ready",
-    camera: { shot, progress, blur: phase === "arrival" ? 1 - clamp(state.phaseTick / NURSERY_TIMING.arrivalTicks, 0, 1) : 0 },
+    camera: { shot, progress, blur: phase === "arrival" ? story ?
+      1 - clamp(state.phaseTick / NURSERY_CONTINUITY_V72.arrivalTicks, 0, 1) :
+      arrivalShot === "arena" ? 0.45 * (1 - arrivalProgress) : 0 : 0 },
     showTitle: phase === "moon-title" || phase === "complete" && !story, title: NURSERY_SOURCE.title,
     awaitingNextChapter: (phase === "moon-title" && !story && state.phaseTick >= NURSERY_TIMING.moonTitleTicks) ||
       phase === "reception" && story?.receptionPage === 3 || phase === "clan-departure" && state.phaseTick >= NURSERY_CONTINUITY_V72.clanDepartureTicks,
@@ -396,6 +418,97 @@ export function getNurseryPresentation(state: NurseryState): NurseryPresentation
       facing: actor.facing, pose: phase === "debrief" && actor.id === "rival" && story?.debriefPage === 1 ? "idle" :
         actor.id === "player" && phase === "ready" && state.readyTicks > 0 ? "ready" : actor.action === "idle" && Math.abs(actor.vx) > 0.1 ? "walk" : actor.action,
       poseTick: actor.action === "idle" ? state.tick : actor.actionTick, holdsDetachedBlade: state.blade.holder === actor.id && !nurseryContinuityPhaseV72(phase) })) };
+}
+
+export interface NurseryNarrativeBeat {
+  id: string;
+  eyebrow: string;
+  speaker: string;
+  text: string;
+  canSkip: boolean;
+}
+
+/**
+ * Story layer for the opening. It deliberately separates the childhood duel
+ * from the later Blooding/First Hunt: winning here grants no trophy, mark,
+ * adult weapon or autonomous hunting right.
+ */
+export function getNurseryNarrativeBeat(state: NurseryState): NurseryNarrativeBeat | null {
+  if (state.phase === "prompt") {
+    return {
+      id: "before-the-mask",
+      eyebrow: "Prologue · Avant la chasse",
+      speaker: "Mémoire du clan",
+      text: "Avant le biomask, avant le premier trophée, tu n’es encore qu’un Youngling élevé sous le regard du clan.",
+      canSkip: false,
+    };
+  }
+  if (state.phase === "arrival") {
+    const canSkip = state.phaseTick >= NURSERY_TIMING.arrivalSkipUnlockTicks;
+    if (state.phaseTick < 120) return {
+      id: "red-moon-oath",
+      eyebrow: "Monde natal · Bien des années avant le Blooding",
+      speaker: "Voix du clan",
+      text: "Sur le monde natal, les jeunes apprennent d’abord une règle simple : survivre ne suffit pas. Un chasseur doit savoir quand frapper — et quand s’arrêter.",
+      canSkip,
+    };
+    if (state.phaseTick < 300) return {
+      id: "nursery-purpose",
+      eyebrow: "Le village de jeunesse",
+      speaker: "Maître de jeunesse",
+      text: "Aujourd’hui, le clan ne t’envoie pas chasser. Il t’observe. Le cercle de la nurserie mesure ta maîtrise, ton courage et ton sang-froid.",
+      canSkip,
+    };
+    if (state.phaseTick < 480) return {
+      id: "rival-not-prey",
+      eyebrow: "Le cercle",
+      speaker: "Maître de jeunesse",
+      text: "Celui qui te fait face n’est pas une proie. C’est un autre Youngling, élevé pour le même futur. Le duel est non létal : vaincre signifie mettre à terre, jamais exécuter.",
+      canSkip,
+    };
+    return {
+      id: "not-the-blooding",
+      eyebrow: "Première épreuve",
+      speaker: "Maître de jeunesse",
+      text: "Réussir ne fera pas de toi un Blooded. Aucun trophée, aucun marquage, aucun droit de chasse autonome. Ce combat décide seulement si tu es prêt à commencer la formation des Unblooded.",
+      canSkip,
+    };
+  }
+  if (state.phase === "ready") {
+    return {
+      id: "accept-the-circle",
+      eyebrow: "Le cercle attend",
+      speaker: "Maître de jeunesse",
+      text: "Lève le bras pour accepter l’épreuve. Ce n’est pas ton Blooding : lorsque l’un de vous tombe, l’autre retient son coup. Le clan juge ici la maîtrise autant que la force.",
+      canSkip: false,
+    };
+  }
+  if (state.phase === "village-reveal") {
+    if (state.phaseTick < 120) return {
+      id: "mercy-is-control",
+      eyebrow: "Après le duel",
+      speaker: "Mémoire du clan",
+      text: "Le coup final est retenu. Ton rival respire. Le clan a vu ce qu’il voulait voir : de la maîtrise, pas un cadavre.",
+      canSkip: false,
+    };
+    return {
+      id: "recognition-only",
+      eyebrow: "Première reconnaissance",
+      speaker: "Mémoire du clan",
+      text: "Tu n’as gagné ni trophée ni marque de Blooded. Seulement le droit de poursuivre l’apprentissage sous le regard du clan.",
+      canSkip: false,
+    };
+  }
+  if (state.phase === "moon-title" || state.phase === "complete") {
+    return {
+      id: "years-later",
+      eyebrow: "Quelques années plus tard",
+      speaker: "Mémoire du clan",
+      text: "Tu quittes la nurserie. Encore sans trophée et sans chasse propre, tu entres dans la cité comme Unblooded. La longue chasse commence vraiment.",
+      canSkip: false,
+    };
+  }
+  return null;
 }
 
 const phases: readonly NurseryPhase[] = ["loading", "prompt", "arrival", "ready", "duel", "defeat", "ko", "village-reveal", "moon-title", "debrief", "walkout", "journey", "reception", "clan-entry", "clan-departure", "complete"];

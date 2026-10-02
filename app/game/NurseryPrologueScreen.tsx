@@ -12,6 +12,7 @@ import { NURSERY_CONTROL_ACTIONS, sampleNurseryControls, type NurseryTouchAction
 import { advanceNurseryFrame, createNurseryFrameAdapter, createNurseryPrologue, getNurseryPresentation,
   normalizeNurseryCheckpoint, type NurseryCompletionReceipt, type NurseryState } from "./systems/nurseryPrologue";
 import styles from "./NurseryPrologueScreen.module.css";
+import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { enableNurseryContinuityV72, nurseryStoryCardV72, skipNurseryContextV72, type NurseryStoryCardV72 } from "./systems/nurseryContinuityV72";
 
 export interface NurseryPrologueScreenProps {
@@ -31,8 +32,8 @@ export interface NurseryPrologueScreenProps {
   onExit(): void | Promise<void>;
 }
 const PHASE_LABELS: Record<NurseryState["phase"], string> = {
-  loading: "Chargement de la nurserie.", prompt: "Le prologue commence dans la nurserie.", arrival: "La foule tribale acclame les jeunes combattants.",
-  ready: "Levez le bras lorsque vous êtes prêt.", duel: "Duel d’entraînement non létal. Vous êtes le Youngling à gauche au départ.",
+  loading: "Chargement de la nurserie.", prompt: "Le prologue commence avant la première chasse.", arrival: "Cinématique : le clan explique le sens du duel de jeunesse.",
+  ready: "Le maître de jeunesse attend votre geste d’acceptation.", duel: "Duel d’entraînement non létal. Vous êtes le Youngling à gauche au départ.",
   defeat: "Vous êtes à terre. Le duel est terminé. Vous pouvez réessayer.", ko: "Votre adversaire est à terre. Le duel est terminé.",
   "village-reveal": "Dans l’arène du village, le jeune victorieux lève le bras ; son rival reste au sol après le duel d’entraînement non létal.",
   "moon-title": "La caméra découvre la lune rouge. Yautja: The Long Hunt.", complete: "La nurserie est terminée. Enregistrement en cours.",
@@ -48,6 +49,7 @@ const TOUCH_ACTIONS = [
   ["light", "Poing", "Donner un coup de poing"], ["blade", "Lame", "Attaquer avec la lame ramassée"],
   ["dodge", "Esquive", "Esquiver"], ["throw", "Projection", "Projeter l’adversaire proche"], ["pickup", "Ramasser", "Ramasser la lame au sol"],
 ] as const;
+const SPOKEN_STORY_CARDS = new Set(["mentor-briefing", "rival-oath", "duel-consent", "master-stop", "rival-recovery", "clan-code", "clan-mentor", "city-exit"]);
 
 /** The scene owns presentation/input only. Campaign proof and storage belong to the parent. */
 export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps) {
@@ -294,9 +296,10 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
           if (adapterRef.current.state.phase === "duel" && !pausedRef.current && !latestRef.current.externallyPaused && !gameControl) pause();
         }} />
       {(!bank || phase === "loading") && <div className={styles.prompt} role="status"><p>{artError ? "Le prologue attend ses images." : "Chargement de la nurserie et de l'accueil du clan…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" onClick={() => setLoadAttempt(value => value + 1)}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
-      {!effectivePaused && storyCard && bank && <div className={styles.story} data-nursery-story-card={storyCard.id}>
+      {storyCard && bank && <div className={styles.story} hidden={effectivePaused} data-nursery-story-card={storyCard.id}>
         <p className={styles.storyChapter}>{storyCard.chapter}</p><h2>{storyCard.title}</h2>
-        <p className={styles.storySpeaker}>{storyCard.speaker}</p><p className={styles.storyText}>{storyCard.text}</p>
+        <p className={styles.storySpeaker}>{storyCard.speaker}</p><p className={styles.storyText}>{SPOKEN_STORY_CARDS.has(storyCard.id) ?
+          <YautjaTranslationV67 text={storyCard.text} paused={effectivePaused} reducedMotion={reducedMotion} /> : storyCard.text}</p>
         <p className={styles.storyObjective}>{storyCard.objective}</p>
         <div className={styles.storyActions}><button type="button" data-nursery-confirm data-nursery-story-continue
           disabled={!storyReady || storyCard.id === "city-exit" && !props.nextChapterReady} onClick={() => pulseTouch("confirm")}>{storyCard.button}</button>
@@ -308,9 +311,9 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
         {phase === "prompt" && <><p className={styles.start}>La longue chasse commence ici.</p><p>Appuyez sur une touche · Manette A</p><button type="button" data-nursery-confirm onClick={() => pulseTouch("confirm")}>Entrer dans la nurserie</button></>}
         {phase === "ready" && <><p>Levez le bras pour entrer dans le duel.</p><p className={styles.readyContext}>Exercice surveillé · Tu es le jeune à gauche. Mets le rival à terre, puis l’exercice s’arrête.</p><p>{pressReady ? "Appuyez sur Entrée / A." : "Maintenez Entrée / A pendant 2 secondes."}</p>
           <div className={styles.readyMeter} aria-hidden="true"><span style={{ width: `${Math.round(readyProgress * 100)}%` }} /></div>
-          {pressReady ? <button type="button" onClick={() => pulseTouch("ready")}>Je suis prêt</button> : touchButton("ready", "Maintenir : je suis prêt", "Maintenir pendant deux secondes pour lever le bras")}
+          {pressReady ? <button type="button" onClick={() => pulseTouch("ready")}>J’accepte l’épreuve</button> : touchButton("ready", "Maintenir : j’accepte", "Maintenir pendant deux secondes pour lever le bras et accepter le duel")}
           <label className={styles.option}><input type="checkbox" checked={pressReady} onChange={changeReadyMode} />Valider Prêt par une simple pression</label></>}
-        {phase === "defeat" && <><p>Vous êtes à terre. Le duel est terminé.</p><p>Ce combat d’entraînement n’est pas létal.</p><button type="button" data-nursery-retry onClick={() => pulseTouch("retry")}>Réessayer le duel</button></>}
+        {phase === "defeat" && <><p>Vous êtes à terre. Le duel est terminé.</p><p>Ce combat d’entraînement n’est pas létal : votre rival retient son coup final.</p><button type="button" data-nursery-retry onClick={() => pulseTouch("retry")}>Réessayer le duel</button></>}
       </div>}
       {phase === "moon-title" && !storyCard && <div className={styles.title}><h1>Yautja: The Long Hunt</h1><p>Un exercice s’achève. Ton apprentissage commence à peine.</p>{awaitingChapter && <p>Le chapitre suivant se prépare. Votre point de reprise est conservé.</p>}</div>}
       {phase === "complete" && <div className={styles.walkCaption}><strong>Vers la cité du clan</strong><p role="status">{saving ? "Enregistrement du prologue et de l'accueil…" : saveError ? "La fin reste à enregistrer. Vous pouvez réessayer sans rejouer le duel." : "Le passage vers la cité est prêt."}</p></div>}

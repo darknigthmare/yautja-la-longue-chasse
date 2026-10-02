@@ -2,17 +2,17 @@ import { memo } from 'react';
 import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import { homeworldResidentRoleV72 } from './systems/homeworldIdentityV72';
 import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, homeworldResidentPoseV69 as homeworldResidentPoseV68, homeworldResidentActivityV69 } from './systems/homeworldLifeV69';
-import { homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './systems/homeworldGeometryV64';
-import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, type HomeworldVec2 } from './systems/homeworldCity';
+import { homeworldProjectGroundV64 } from './systems/homeworldGeometryV64';
+import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, homeworldBuildingVisibleBoundsV72, type HomeworldVec2 } from './systems/homeworldCity';
 import styles from './HomeworldCity.module.css';
-/** Cull before rendering modular bitmaps. This keeps a city-wide population
+/** Cull before rendering native civilian bitmaps. This keeps a city-wide population
  * inexpensive while preserving proper ground-y occlusion and foot anchors. */
 export default memo(function HomeworldPopulationV68({ seconds, cameraX, cameraY, width, height, activeId, actorPosition }: {
   seconds: number; cameraX: number; cameraY: number; width: number; height: number; activeId?: string; actorPosition?: HomeworldVec2;
 }) {
   // Facade fading exposes only the controlled hero. Other residents behind it
   // keep the normal opaque roof occlusion, instead of appearing on the roof.
-  const masks = actorPosition ? HOMEWORLD_BUILDINGS.filter(b => shouldFadeHomeworldBuilding(b, actorPosition)).map(b => ({ y: b.y, rect: homeworldBuildingSpritePlacementV64(b) })) : [];
+  const masks = actorPosition ? HOMEWORLD_BUILDINGS.filter(b => shouldFadeHomeworldBuilding(b, actorPosition)).map(b => ({ y: b.y, rect: homeworldBuildingVisibleBoundsV72(b) })) : [];
   return <>{HOMEWORLD_RESIDENTS_V68.map(resident => {
     const pose = homeworldResidentPoseV68(resident, seconds), p = homeworldProjectGroundV64(pose);
     if (p.x < cameraX - 130 || p.x > cameraX + width + 130 || p.y < cameraY - 30 || p.y > cameraY + height + 150) return null;

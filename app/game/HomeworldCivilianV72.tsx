@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { homeworldCivilianArtV72,type HomeworldCivilianRoleV72 } from './systems/homeworldIdentityV72';
 /** Clip the preserved PNG, using the native ground pivot and uniform scale.
  * Civilian residents retain their existing locomotion paths. These are dedicated
- * clothed portraits, not full movement sheets; the Youngling has a separate native cycle. */
+ * clothed portraits, not full movement sheets; the playable Unblooded has a separate native cycle. */
 export default function HomeworldCivilianV72({role,facing=1,height,style}:{role:HomeworldCivilianRoleV72;facing?:1|-1;height?:number;style?:CSSProperties}){
   const art=homeworldCivilianArtV72(role),scale=(height??art.heightWorld)/art.alphaBounds.height;
   return <span data-homeworld-civilian-v72={role} data-native-source={art.src} aria-hidden="true" style={{position:'absolute',

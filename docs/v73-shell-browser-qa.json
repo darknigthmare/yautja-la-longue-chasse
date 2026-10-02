@@ -1,0 +1,178 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4192",
+  "at": "2026-10-02T03:50:35.716Z",
+  "checks": [
+    {
+      "name": "actual-game-shell-http",
+      "passed": true,
+      "details": {
+        "http": 200
+      }
+    },
+    {
+      "name": "existing-account-menu-remains-available-and-modal",
+      "passed": true
+    },
+    {
+      "name": "desktop-mobile-new-game-form-ready-without-creating-user-data",
+      "passed": true
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v70/temple-modules.png",
+        "http": 200,
+        "bytes": 2390561,
+        "sha256": "5490c9a2f87c6fe4b57364c72fc207362bf3d5d3f7ae335a4057136cf861ef93"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v71/outskirts-kit.png",
+        "http": 200,
+        "bytes": 2469209,
+        "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v71/cinder-ground.png",
+        "http": 200,
+        "bytes": 3543109,
+        "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/youth/v48/unblooded-left.png",
+        "http": 200,
+        "bytes": 1470891,
+        "sha256": "a3e81485b962238e88601e30e00053bf84eeaa1c00f886b754245f2850eb93c6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/youth/v48/unblooded-right.png",
+        "http": 200,
+        "bytes": 1366371,
+        "sha256": "ad1873f50d793d0d570379f32ceb4d368843c2bc84c56c88b6f898bab6e78fc6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-furniture-kit.png",
+        "http": 200,
+        "bytes": 1728885,
+        "sha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-identity-atlas.png",
+        "http": 200,
+        "bytes": 2324390,
+        "sha256": "79fe4cb8ee1d7ed10805ec1c37506f59fecbedffdf0e7d663b0e6b0edec22710"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-specialists-spaced-atlas.png",
+        "http": 200,
+        "bytes": 2032614,
+        "sha256": "1777f2db4df94b74fed8fc3b78d5777cf8701b7b7fd3405457281e63dd23345a"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civilian-roles-atlas.png",
+        "http": 200,
+        "bytes": 2434438,
+        "sha256": "ea2fc8d4eb119fd0db41af9cc352d5dba1f729e1dc316e312f7561185ade8037"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/region-gateway-kit.png",
+        "http": 200,
+        "bytes": 2164987,
+        "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-arrival-corridor.png",
+        "http": 200,
+        "bytes": 2723819,
+        "sha256": "7df108ae617534f1a361c7aca0bd9ed1227db7b4da300998d344d868c79d3953"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-audience-hall.png",
+        "http": 200,
+        "bytes": 2717614,
+        "sha256": "646aced3fe9a62fa5ea6fcceb249546ff2bde87fc57d216475b5b3fdf9bb2b6c"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-chief-seated.png",
+        "http": 200,
+        "bytes": 2633038,
+        "sha256": "491c94e1ff66c7496871f729a952a5d09486aae4057015551604c2d3f0bc611f"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-door-veil.png",
+        "http": 200,
+        "bytes": 1994914,
+        "sha256": "f14d017cefcd5f4a940b9aaf70caf39c8c99f94976acff7013fb1b37f8891cb7"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/nursery-exit.png",
+        "http": 200,
+        "bytes": 2863616,
+        "sha256": "93505a26dd343b3b6cef3f049bf576ca45c0003e5923c5191c13b2fbb4be5c42"
+      }
+    },
+    {
+      "name": "no-javascript-errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "limits": "This recipe verifies shell and immutable bitmap delivery. The mounted game V73 version, gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate V72 recipes after creating or continuing a campaign. No real signup, login or email is performed."
+}

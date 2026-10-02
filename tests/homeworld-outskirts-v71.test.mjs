@@ -8,9 +8,10 @@ const load=async path=>{const r=await build({entryPoints:[path],bundle:true,writ
 const city=await load('app/game/systems/homeworldCity.ts'),model=await load('app/game/systems/homeworldOutskirtsV71.ts');
 const art=await load('app/game/systems/homeworldOutskirtsArtV71.ts'),codex=await load('app/game/systems/homeworldContextCodexV71.ts');
 const rooms=await load('app/game/systems/homeworldInteriorsV64.ts'),geo=await load('app/game/systems/homeworldGeometryV64.ts');
+const connections=await load('app/game/systems/homeworldRegionConnectionsV72.ts');
 test('outskirts preserve every public support with measured clearance and no overlapping terrain footprints',()=>{
-  assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,193,'V72 extends the surroundings around the final physical regional connections');
-  assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,193);
+  assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,162,'V73 preserves measured clearance around every final regional path and its seventy reserved volumes');
+  assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,162);
   assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.artId)).size,6);
   for(const item of model.HOMEWORLD_OUTSKIRTS_MODULES_V71){
     const r=model.homeworldOutskirtsFootprintV71(item), margin=model.HOMEWORLD_OUTSKIRTS_CLEARANCE_V71;
@@ -20,6 +21,13 @@ test('outskirts preserve every public support with measured clearance and no ove
       assert.equal(city.isHomeworldTerrainWalkable({x,y},{halfWidth:0,halfDepth:0}),false,item.id+' public support overlap');
   }
   const rects=model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(model.homeworldOutskirtsFootprintV71);
+  const reserved=[...connections.homeworldConnectionFurnitureFootprintsV72(),
+    ...connections.HOMEWORLD_REGION_CONNECTIONS_V72.flatMap(connections.homeworldGatewayFootprintsV72),
+    ...connections.HOMEWORLD_CONNECTION_DIRECTION_SIGNS_V72.map(sign=>({left:sign.x-sign.footprintWorld.width/2,
+      right:sign.x+sign.footprintWorld.width/2,top:sign.y-sign.footprintWorld.depth,bottom:sign.y}))];
+  assert.equal(reserved.length,70,'Forty independent furnishings, twenty lateral gateway bases and ten old direction signs');
+  for(const a of rects)for(const b of reserved)
+    assert(!(a.left<b.right+30&&a.right>b.left-30&&a.top<b.bottom+30&&a.bottom>b.top-30),'outskirts preserve a real gap around V72 entrance furniture');
   for(let i=0;i<rects.length;i++)for(let j=i+1;j<rects.length;j++){
     const a=rects[i],b=rects[j];assert(!(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top));
   }

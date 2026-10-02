@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "moduleVersion": "V72",
+  "publicIntegration": "V73",
+  "suite": "tests/homeworld-connections-v72.test.mjs",
+  "tests": 9,
+  "failed": 0,
+  "log": "work-local/v72/connections-model-final-qa.log",
+  "checks": {
+    "regionalThresholds": 10,
+    "formerUrbanSigns": 10,
+    "solidGatewayFeet": 20,
+    "independentExteriorFurniture": 40,
+    "existingBuildingDoorsReachableFromSpawn": 43,
+    "regionalThresholdsReachableFromSpawn": 10,
+    "formerSignToPhysicalThresholdRoutes": 10,
+    "codexActualAssetRecords": 100,
+    "nativeTransparentSources": 2,
+    "nativePaddedCells": 16,
+    "sourceBytesUnchanged": true,
+    "actualJsxCameraCulling": true,
+    "permissionsUnchanged": true,
+    "targetedEslint": "PASS"
+  },
+  "corrections": [
+    "Native root-canopy opening measured narrower so painted support pixels are never inside the clear gameplay aperture.",
+    "Ruins approach uses a walkable western loop around the expanded memory wing rather than an isolated upper pocket.",
+    "Coastal storage jars relocated to790/1630 to preserve the public path before the memory register, without changing actor size, clearance or navigation grid.",
+    "All exterior furniture volume rectangles checked against existing building masonry, existing props and traversable connection polygons."
+  ],
+  "limits": "Static model, native assets, collision/navigation and actual renderer markup checked. Browser flow is a separate report produced after the final V73 server starts. Original city adaptation, not canonical geography."
+}

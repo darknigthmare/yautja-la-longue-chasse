@@ -1,7 +1,7 @@
 import life from '../data/homeworldLifeV69.json';
 import { HOMEWORLD_RESIDENTS_V68, homeworldResidentPoseV68, homeworldResidentDialogueV68, type HomeworldResidentV68 } from './homeworldLifeV68';
-import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, type HomeworldVec2 } from './homeworldCity';
-import { homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './homeworldGeometryV64';
+import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, homeworldBuildingVisibleBoundsV72, type HomeworldVec2 } from './homeworldCity';
+import { homeworldProjectGroundV64 } from './homeworldGeometryV64';
 export interface HomeworldResidentV69 extends HomeworldResidentV68 {
   name?: string; activity?: 'inspection' | 'transmission' | 'preparation';
 }
@@ -14,7 +14,7 @@ export function homeworldResidentRoofOccludedV69(pose: HomeworldVec2, actor: Hom
   const p=homeworldProjectGroundV64(pose);
   return HOMEWORLD_BUILDINGS.some(b=>{
     if(pose.y>=b.y || !shouldFadeHomeworldBuilding(b,actor)) return false;
-    const r=homeworldBuildingSpritePlacementV64(b);
+    const r=homeworldBuildingVisibleBoundsV72(b);
     return p.x>r.left&&p.x<r.left+r.width&&p.y>r.top&&p.y<r.top+r.height;
   });
 }

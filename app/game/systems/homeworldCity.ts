@@ -679,9 +679,18 @@ export function nearestHomeworldDoor(
   return nearest;
 }
 
+/** Painted bounds exclude transparent atlas padding; they never alter the physical footprint. */
+export function homeworldBuildingVisibleBoundsV72(building: HomeworldBuildingModule) {
+  const image = homeworldBuildingSpritePlacementV64(building), art = building.art;
+  if (!art) return image;
+  const scale = image.width / (art.sourceRect?.width ?? art.sourceWidth);
+  return { left: image.left + art.alphaBounds.x * scale, top: image.top + art.alphaBounds.y * scale,
+    width: art.alphaBounds.width * scale, height: art.alphaBounds.height * scale };
+}
+
 /** Fade the painted facade only while it covers the hunter on the rear ground plane. */
 export function shouldFadeHomeworldBuilding(building: HomeworldBuildingModule, actor: HomeworldVec2): boolean {
-  const p = homeworldProjectGroundV64(actor), image = homeworldBuildingSpritePlacementV64(building);
+  const p = homeworldProjectGroundV64(actor), image = homeworldBuildingVisibleBoundsV72(building);
   return actor.y < building.y && p.x + HOMEWORLD_ACTOR.halfWidth > image.left && p.x - HOMEWORLD_ACTOR.halfWidth < image.left + image.width
     && p.y > image.top && p.y - HOMEWORLD_ACTOR.height < image.top + image.height;
 }

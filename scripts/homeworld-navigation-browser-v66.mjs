@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 
 /** QA-only navigation: plans from the real model, then reaches every position via public keyboard input. */
-export function homeworldNavigatorV66(page,api,{controlledClock=true}={}){
+export function homeworldNavigatorV66(page,api,{controlledClock=true,waypointTolerance=7,driverTickMs=32,pulseInputs=false}={}){
  const held=new Set(),routes=[];
  const tick=ms=>controlledClock?page.clock.runFor(ms):page.waitForTimeout(ms);
  const position=()=>page.locator('[data-homeworld-actor]').evaluate(e=>({x:Number(e.dataset.x),y:Number(e.dataset.y)}));
  const currentRoom=async()=>api.homeworldInteriorForBuildingV64(await page.locator('[data-homeworld-hub]').getAttribute('data-homeworld-interior-id'));
  const release=async()=>{for(const key of held)await page.keyboard.up(key);held.clear();await tick(32);};
  const focus=async()=>{await page.bringToFront();const viewport=page.locator('[data-homeworld-viewport]');await viewport.focus();await tick(64);assert(await viewport.evaluate(e=>document.activeElement===e&&document.hasFocus()),'Actual world keyboard focus');};
- async function driveTo(target,tolerance=7){
+ async function driveTo(target,tolerance=waypointTolerance){
   let stagnant=0,previous=await position();
   for(let attempt=0;attempt<300;attempt++){
    const point=await position(),dx=target.x-point.x,dy=target.y-point.y;
@@ -16,7 +16,12 @@ export function homeworldNavigatorV66(page,api,{controlledClock=true}={}){
    const keys=new Set([...(Math.abs(dx)>tolerance?[dx>0?'ArrowRight':'ArrowLeft']:[]),...(Math.abs(dy)>tolerance?[dy>0?'ArrowDown':'ArrowUp']:[])]);
    for(const key of held)if(!keys.has(key)){await page.keyboard.up(key);held.delete(key);}
    for(const key of keys)if(!held.has(key)){await page.keyboard.down(key);held.add(key);}
-   await tick(32);if(Math.hypot(point.x-previous.x,point.y-previous.y)<1)stagnant++;else stagnant=0;
+   await tick(driverTickMs);
+   // Tight-room QA uses short physical key presses. Releasing lets the 30Hz
+   // visible actor catch up before the next correction; sustained city steering
+   // retains its existing default behavior.
+   if(pulseInputs)await release();
+   if(Math.hypot(point.x-previous.x,point.y-previous.y)<1)stagnant++;else stagnant=0;
    assert(stagnant<25,`Blocked keyboard route: ${JSON.stringify(point)} -> ${JSON.stringify(target)}`);previous=point;
   }
   throw Error('Route budget exceeded '+JSON.stringify(target));

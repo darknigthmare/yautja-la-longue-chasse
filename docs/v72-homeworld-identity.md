@@ -20,7 +20,7 @@ Les appartements privés et étages de la citadelle ne sont pas simulés. Les37 
 
 ## Population et jeune jouable
 
-Trois atlas OpenAI transparents sont intégrés sans modifier leurs pixels. Six façades et14 rôles civiques sont découpés par cellules natives. Les12 PNJ nommés ont12 costumes distincts, dont un chef original à112u de hauteur, avec robe et mantelet cérémoniel. Les habitants existants gardent leurs itinéraires et reçoivent des tenues correspondant à leurs fonctions.
+Trois atlas OpenAI transparents sont intégrés sans modifier leurs pixels. Six façades et 14 rôles civiques sont découpés par cellules natives. Les 12 PNJ nommés ont 12 costumes distincts, dont un chef original à 112u de hauteur, avec robe et mantelet cérémoniel. Les 98 habitants reçoivent des tenues correspondant à leurs fonctions. Quatre itinéraires sont déplacés localement, dans leur quartier d’origine, pour éviter le nouveau volume de la citadelle, le mobilier de la côte et un pilier des Cendres. Leurs identités, vitesses, activités et phases restent inchangées. L’occlusion utilise les limites alpha réellement peintes, pas les marges transparentes des atlas.
 
 Le jeune du Homeworld après l’ellipse est **Unblooded**, pas le Youngling enfant du duel. Il utilise les deux véritables dessins de marche V48 par orientation, avec pivots de pieds et atlas gauche/droite natifs1122×1402. La pause fige la même horloge. Ce cycle est un cycle àdeux dessins par face, pas une animation complète àhuit directions. Les PNJ civiques utilisent des portraits habillés sur leurs routes existantes ; leur jeu complet de marche n’est pas produit dans ce lot.
 

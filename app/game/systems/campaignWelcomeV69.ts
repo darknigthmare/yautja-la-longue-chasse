@@ -27,6 +27,14 @@ export function campaignWelcomeV69(save: SaveGame) {
     title:'Unblooded — Les Premières Pistes accomplies',intro:'Ta formation et le premier relevé de terrain sont conservés. Les routes ordinaires des villages sont ouvertes.',
     next:'Le maître prépare La Piste sans guide à la Maison des Terrasses. Les guides régionaux et le Tableau des chasses du marché proposent aussi des relevés, observations et défis non létaux. Respecte les conditions propres à chaque territoire.',
   };
-  return {title:'Quelques années plus tard — Unblooded',intro:'Ton apprentissage se déroule auprès du clan : accueil du chef, dojo du maître, armurerie, camp et baraquements. Chaque étape conserve les exercices réellement réussis.',
-    next:'Rejoins le chef à la Citadelle, au nord-est, puis l’instructeur des terrasses. Approche-les et utilise Interaction. Le dojo, l’équipement de formation et les Premières Pistes précèdent les sorties vers les villages. Le vaisseau personnel attend le rite Blooded.'};
+  if(save.prologue.checkpoint.continuityV72?.receptionPage===4) return {
+    title:'Unblooded — Après l’audience du clan',
+    intro:'Ton nom a été annoncé et le chef a rappelé le code devant l’assemblée. Après la formation qui a suivi ton enfance, tu as rejoint le hall comme Unblooded, puis quitté l’audience à pied. Aucun trophée, rang Blooded ou vaisseau personnel ne t’a été accordé.',
+    next:'Cette audience publique annonce ta venue. Rejoins le chef dans l’aile d’audience de la Citadelle pour confirmer personnellement ton affectation et recevoir ses consignes, puis l’instructeur des terrasses. Dojo, armurerie, camp et baraquements restent des étapes jouables ; le Premier Sang est une expédition distincte.',
+  };
+  return {
+    title:'Quelques années plus tard — L’appel de la Citadelle',
+    intro:'Le souvenir du cercle de jeunesse est derrière toi. Tu as grandi parmi les tiens sans trophée ni marque de Blooded. La reconnaissance gagnée enfant t’a seulement permis de poursuivre l’apprentissage ; aujourd’hui, le clan te reçoit enfin comme Unblooded.',
+    next:'Le chef t’a convoqué à la Citadelle, au nord-est. Présente-toi à lui avant de rejoindre le maître des terrasses : dojo, armurerie, camp et Premières Pistes formeront ta véritable préparation. Le Blooding et le droit de chasser seul viendront plus tard.',
+  };
 }

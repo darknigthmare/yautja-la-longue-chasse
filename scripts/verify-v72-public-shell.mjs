@@ -16,8 +16,10 @@ const check = (name, details) => checks.push({ name, passed: true, details });
 try {
   const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
   assert.equal(response.status(), 200);
-  assert.equal(await page.locator('main').getAttribute('data-game-content-version'), 'V72');
-  check('actual-v72-game-http-and-version', { http: response.status() });
+  // The campaign menu owns its main node. The mounted game version is checked
+  // after creating/continuing a campaign in the separate gameplay recipes.
+  await page.locator('[data-campaign-menu]').waitFor();
+  check('actual-game-shell-http', { http: response.status() });
   await page.getByRole('button', { name: /^Compte & sauvegardes/ }).click();
   await page.locator('[data-cloud-account-v71]').waitFor();
   assert(await page.locator('[data-campaign-menu]').evaluate(el => Boolean(el.closest('[inert]'))));
@@ -51,7 +53,7 @@ try {
   await page.screenshot({ path: path.join(output, 'failure.png') }).catch(() => {});
 } finally { await browser.close(); }
 const report = { status: checks.every(c => c.passed) ? 'PASS' : 'FAIL', url, at: new Date().toISOString(), checks, errors,
-  limits: 'This recipe verifies shell and immutable bitmap delivery. Gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate V72 recipes. No real signup, login or email is performed.' };
+  limits: 'This recipe verifies shell and immutable bitmap delivery. The mounted game V73 version, gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate V72 recipes after creating or continuing a campaign. No real signup, login or email is performed.' };
 await fs.writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ status: report.status, checks: checks.length, output }));
 if (report.status !== 'PASS') process.exitCode = 1;

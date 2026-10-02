@@ -5,7 +5,7 @@ import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64 } from './systems/hom
 import { HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64 } from './systems/homeworldArtV64';
 import { HOMEWORLD_REGION_CONNECTIONS_V72, HOMEWORLD_GATEWAY_ART_V72, HOMEWORLD_CONNECTION_WORLD_V72,
   HOMEWORLD_CONNECTION_STREETS_V72, HOMEWORLD_CONNECTION_DIRECTION_SIGNS_V72, HOMEWORLD_CONNECTION_FURNITURE_V72,
-  homeworldConnectionVisibleV72, homeworldGatewayScaleV72 } from './systems/homeworldRegionConnectionsV72';
+  homeworldConnectionVisibleV72, homeworldGatewayScaleV72, homeworldConnectionCompassV72 } from './systems/homeworldRegionConnectionsV72';
 import { homeworldFurnitureVisibleV72 } from './systems/homeworldFurnitureV72';
 import { canEnterHomeworldRegionV68 } from './systems/homeworldRegionsV68';
 import { canEnterHomeworldPassageV67 } from './systems/homeworldPassageV67';
@@ -64,7 +64,7 @@ export default memo(function HomeworldRegionConnectionsV72({actor,cameraX,camera
       if(p.x+150<cameraX||p.x-150>cameraX+width||p.y+100<cameraY||p.y-art.heightWorld>cameraY+height)return null;
       return <div key={sign.id} data-homeworld-direction-sign-v72={sign.regionId}>
         <HomeworldNativePropV64 id={sign.id} artId="direction-beacon-v72" art={art} x={p.x} y={p.y} depth={sign.y} />
-        <span className={styles.direction} style={{left:p.x,top:p.y+10,zIndex:Math.round(sign.y)+1}}>↗ {sign.label}<small>Repère · rejoindre le seuil extérieur</small></span>
+        <span className={styles.direction} style={{left:p.x,top:p.y+10,zIndex:Math.round(sign.y)+1}}>{homeworldConnectionCompassV72(sign.regionId,depth)} {sign.label}<small>Repère · rejoindre le seuil extérieur</small></span>
       </div>;
     })}
     {HOMEWORLD_CONNECTION_FURNITURE_V72.map(item=>homeworldFurnitureVisibleV72(item,camera,depth)
