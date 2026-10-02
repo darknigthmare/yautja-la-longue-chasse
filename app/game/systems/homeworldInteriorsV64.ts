@@ -1,5 +1,7 @@
 import envelopes from '../data/homeworldInteriorEnvelopesV64.json';
 import { HOMEWORLD_PROP_ART_V64 } from './homeworldArtV64';
+import {homeworldFunctionalInteriorV72,homeworldInteriorPartitionBlocksV72,type HomeworldInteriorPartitionV72,type HomeworldInteriorZoneV72} from './homeworldFunctionalInteriorsV72';
+import {homeworldFurnitureTouchesV72,type HomeworldFurnitureInstanceV72} from './homeworldFurnitureV72';
 
 /** Original civic/domestic interiors for this game; not a canonical map of Yautja Prime.
  * Coordinates are on the unprojected ground plane. The renderer alone applies
@@ -26,6 +28,9 @@ export interface HomeworldInteriorV64 {
   exit: InteriorGroundPointV64;
   points: readonly HomeworldInteriorPointV64[];
   props: readonly HomeworldInteriorPropV64[];
+  partitions?:readonly HomeworldInteriorPartitionV72[];
+  zones?:readonly HomeworldInteriorZoneV72[];
+  furniture?:readonly HomeworldFurnitureInstanceV72[];
 }
 
 // Keep every original narrative/service ID. Entering a room grants no rank,
@@ -125,7 +130,7 @@ export function homeworldInteriorPropArtIdV64(kind: HomeworldInteriorPropV64['ki
   return ids[kind];
 }
 
-export const HOMEWORLD_INTERIORS_V64: readonly HomeworldInteriorV64[] = [...civicRooms, ...domesticRooms].map(room => ({
+export const HOMEWORLD_INTERIORS_V64: readonly HomeworldInteriorV64[] = [...civicRooms, ...domesticRooms].map(homeworldFunctionalInteriorV72).map(room => ({
   ...room,
   props: room.props.map(prop => {
     const art = HOMEWORLD_PROP_ART_V64[homeworldInteriorPropArtIdV64(prop.kind)];
@@ -171,6 +176,8 @@ export function isHomeworldInteriorWalkableV64(room: HomeworldInteriorV64, point
     || footprint.halfWidth < 0 || footprint.halfDepth < 0) return false;
   if (point.x - footprint.halfWidth < 10 || point.x + footprint.halfWidth > room.width - 10
     || point.y - footprint.halfDepth < 10 || point.y + footprint.halfDepth > room.depth - 10) return false;
+  if(homeworldInteriorPartitionBlocksV72(room,point,footprint))return false;
+  if((room.furniture??[]).some(item=>homeworldFurnitureTouchesV72(item,point,footprint)))return false;
   for (const prop of room.props) if (Math.abs(point.x - prop.x) < prop.halfWidth + footprint.halfWidth
     && point.y + footprint.halfDepth > prop.y - prop.halfDepth * 2
     && point.y - footprint.halfDepth < prop.y) return false;

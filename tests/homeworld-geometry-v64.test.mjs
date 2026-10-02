@@ -36,7 +36,7 @@ test('painted forward prop pivots and station volumes share the exact native wid
   assert.equal(city.HOMEWORLD_PROPS.filter(p=>!newDecorIds.includes(p.id)&&!v69DecorIds.includes(p.id)).length,26,'all twenty-six original V64 props are retained');
   assert.equal(v69DecorIds.length,3,'V69 adds three supported native braziers');
   assert.equal(city.HOMEWORLD_PROPS.length,44);
-  assert.equal(city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length,11);
+  assert.equal(city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length,1,'the transfer terminal remains native V64; ten region beacons have become physical V72 approaches');
   for(const prop of city.HOMEWORLD_PROPS){
     const source=art.HOMEWORLD_PROP_ART_V64[prop.artId],p=city.homeworldPropArtPlacement(prop);
     const sx=p.width/source.sourceRect.width,sy=p.height/source.sourceRect.height;
@@ -70,10 +70,13 @@ test('the element codex enumerates actual spaces, source assets and measurements
   assert.equal(records.filter(r=>r.category==='service').length,26);
   assert.equal(records.filter(r=>r.category==='npc').length,12);
   assert.equal(records.filter(r=>r.category==='floor').length,43);
-  assert.equal(records.filter(r=>r.category==='panel').length,286);
+  const expectedPanels=rooms.HOMEWORLD_INTERIORS_V64.reduce((total,room)=>total+Math.ceil(room.width/art.HOMEWORLD_INTERIOR_ART_V64.north.moduleLengthWorld)+Math.ceil(room.depth/art.HOMEWORLD_INTERIOR_ART_V64.west.moduleLengthWorld)+Math.ceil(room.depth/art.HOMEWORLD_INTERIOR_ART_V64.east.moduleLengthWorld),0);
+  assert.equal(records.filter(r=>r.category==='panel').length,expectedPanels,'every native perimeter panel is enumerated after functional wing dimensions change');
   assert.equal(records.filter(r=>r.category==='prop'&&newDecorIds.some(id=>r.id===`prop:${id}`)).length,15,'the codex includes every additional native physical prop once');
-  assert.equal(records.length,741);
-  assert.equal(records.filter(r=>r.category==='prop').length,city.HOMEWORLD_PROPS.length+11+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0));
+  const expectedRecords=city.HOMEWORLD_DISTRICTS.length+city.HOMEWORLD_STREETS.length+43+86+12+26+43+43+expectedPanels+2+
+    city.HOMEWORLD_PROPS.length+city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0);
+  assert.equal(records.length,expectedRecords,'the complete live city model is enumerated without duplicates or dropped classes');
+  assert.equal(records.filter(r=>r.category==='prop').length,city.HOMEWORLD_PROPS.length+city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0));
   for(const r of records){
     assert(Object.values(r.position).every(Number.isFinite),r.id);assert(Object.values(r.dimensions).every(v=>Number.isFinite(v)&&v>=0),r.id);
     assert(r.constraints.length>0,r.id);assert.equal(r.lore,'original-adaptation');

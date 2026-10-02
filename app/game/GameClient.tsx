@@ -1544,7 +1544,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const next = withNurseryCompletion(saveRef.current, receipt, state);
     if (!next || !persistNursery(next)) return false;
     setNewGamePhase(null); setHubLocation("homeworld"); setScreen("homeworld");
-    setToast("Nurserie achevée et sauvegardée. Quelques années plus tard, ton accueil Unblooded commence dans la cité.");
+    setToast("Prologue achevé et sauvegardé. Après la formation et le voyage, ton parcours Unblooded se poursuit dans la cité du clan.");
     return true;
   }, [nurseryNextChapterReady, persistNursery, reconcileNurseryAttempt]);
 
@@ -3300,7 +3300,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="physical-deck-toolbar"><button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button></div>
           {nurseryChapterError && <div role="status" className="save-transfer"><p>{nurseryChapterError}</p><button type="button" onClick={() => { setNurseryChapterError(null); setNurseryChapterLoadAttempt(value => value + 1); }}>Réessayer le chargement de la cité</button></div>}
           <Suspense fallback={<DeferredGameScreen />}>
-            <NurseryPrologueScreen key={save.createdAt} checkpoint={save.prologue.checkpoint}
+            <NurseryPrologueScreen key={save.createdAt} hunterName={save.profile.hunterName} checkpoint={save.prologue.checkpoint}
               bindings={save.settings.controlBindings} nextChapterReady={nurseryNextChapterReady}
               externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
               persistenceError={nurseryPersistenceError} soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}

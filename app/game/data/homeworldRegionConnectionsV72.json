@@ -1,0 +1,420 @@
+[
+  {
+    "regionId": "ash-marches",
+    "name": "Chaussée des Cendres",
+    "artId": "processional",
+    "material": "basalt",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 310,
+        "y": 2740
+      },
+      {
+        "x": 250,
+        "y": 2530
+      },
+      {
+        "x": 500,
+        "y": 2360
+      }
+    ],
+    "threshold": {
+      "x": 500,
+      "y": 2290
+    },
+    "arrival": {
+      "x": 500,
+      "y": 2360
+    },
+    "legacySign": {
+      "x": 970,
+      "y": 2743.5
+    },
+    "note": "Corniche basaltique avec banquettes de porteurs ; le grand canyon et les ponts se trouvent au-delà du seuil.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "glass-desert",
+    "name": "Arches du Départ",
+    "artId": "processional",
+    "material": "slabs",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 3250,
+        "y": 4840
+      },
+      {
+        "x": 3520,
+        "y": 5010
+      },
+      {
+        "x": 3850,
+        "y": 5100
+      },
+      {
+        "x": 3850,
+        "y": 5600
+      }
+    ],
+    "threshold": {
+      "x": 3850,
+      "y": 5530
+    },
+    "arrival": {
+      "x": 3850,
+      "y": 5600
+    },
+    "legacySign": {
+      "x": 2250,
+      "y": 2650.5
+    },
+    "note": "Départ au sud de la cour des convois, hors des logements et du pad ; la voie locale mène aux arches du désert.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "pillar-jungle",
+    "name": "Passerelle des Piliers",
+    "artId": "root-canopy",
+    "material": "resinwood",
+    "clearWidth": 200,
+    "nodes": [
+      {
+        "x": 2860,
+        "y": 700
+      },
+      {
+        "x": 2900,
+        "y": 460
+      },
+      {
+        "x": 2900,
+        "y": 250
+      }
+    ],
+    "threshold": {
+      "x": 2900,
+      "y": 180
+    },
+    "arrival": {
+      "x": 2900,
+      "y": 250
+    },
+    "legacySign": {
+      "x": 2660,
+      "y": 1658.5
+    },
+    "note": "Sentier de racines maçonnées au nord ; le seuil conserve la largeur de passage d’une délégation accompagnée.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "luminous-marshes",
+    "name": "Chaussée des Racines",
+    "artId": "root-canopy",
+    "material": "resinwood",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 6030,
+        "y": 2060
+      },
+      {
+        "x": 6300,
+        "y": 2370
+      },
+      {
+        "x": 6540,
+        "y": 2330
+      },
+      {
+        "x": 6540,
+        "y": 2150
+      }
+    ],
+    "threshold": {
+      "x": 6540,
+      "y": 2080
+    },
+    "arrival": {
+      "x": 6540,
+      "y": 2150
+    },
+    "legacySign": {
+      "x": 3760,
+      "y": 1813.5
+    },
+    "note": "Chaussée sèche depuis les remparts est. Les planchers du marais sont rencontrés après la limite de la cité, pas sur ses rues.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "storm-chain",
+    "name": "Départ des Trois Vents",
+    "artId": "processional",
+    "material": "slabs",
+    "clearWidth": 200,
+    "nodes": [
+      {
+        "x": 3960,
+        "y": 500
+      },
+      {
+        "x": 3840,
+        "y": 350
+      },
+      {
+        "x": 4140,
+        "y": 200
+      },
+      {
+        "x": 4140,
+        "y": 160
+      }
+    ],
+    "threshold": {
+      "x": 4140,
+      "y": 90
+    },
+    "arrival": {
+      "x": 4140,
+      "y": 160
+    },
+    "legacySign": {
+      "x": 3840,
+      "y": 800
+    },
+    "note": "Corniche haute vers les cols ; les ponts des crêtes appartiennent au trajet régional existant. Pas de ravin fictif sous la cité.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "leviathan-coast",
+    "name": "Corniche des Marées",
+    "artId": "processional",
+    "material": "basalt",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 740,
+        "y": 1430
+      },
+      {
+        "x": 500,
+        "y": 1340
+      },
+      {
+        "x": 500,
+        "y": 1100
+      }
+    ],
+    "threshold": {
+      "x": 500,
+      "y": 1030
+    },
+    "arrival": {
+      "x": 500,
+      "y": 1100
+    },
+    "legacySign": {
+      "x": 1350,
+      "y": 1891
+    },
+    "note": "Descente occidentale à l’écart du port spatial ; aucun vaisseau ne stationne sur le chemin du rivage.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "thermal-caves",
+    "name": "Galerie des Fumerolles",
+    "artId": "thermal",
+    "material": "ribbed",
+    "clearWidth": 180,
+    "nodes": [
+      {
+        "x": 3800,
+        "y": 3360
+      },
+      {
+        "x": 4050,
+        "y": 3900
+      },
+      {
+        "x": 4550,
+        "y": 4150
+      },
+      {
+        "x": 4600,
+        "y": 4420
+      }
+    ],
+    "threshold": {
+      "x": 4600,
+      "y": 4350
+    },
+    "arrival": {
+      "x": 4600,
+      "y": 4420
+    },
+    "legacySign": {
+      "x": 3520,
+      "y": 2759
+    },
+    "note": "Galerie extérieure depuis les forges basses. Outils et lampes restent sur les épaules, hors des courants de vapeur.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "cold-crown",
+    "name": "Approche de la Couronne",
+    "artId": "processional",
+    "material": "slabs",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 5030,
+        "y": 1030
+      },
+      {
+        "x": 5300,
+        "y": 700
+      },
+      {
+        "x": 5650,
+        "y": 520
+      },
+      {
+        "x": 5750,
+        "y": 300
+      }
+    ],
+    "threshold": {
+      "x": 5750,
+      "y": 230
+    },
+    "arrival": {
+      "x": 5750,
+      "y": 300
+    },
+    "legacySign": {
+      "x": 4940,
+      "y": 820
+    },
+    "note": "Corniche nord-est abritée, jalonnée de réserves ; le viaduc et les vestibules enneigés demeurent dans le territoire.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "first-city-ruins",
+    "name": "Voie des Stèles",
+    "artId": "observatory",
+    "material": "basalt",
+    "clearWidth": 200,
+    "nodes": [
+      {
+        "x": 800,
+        "y": 1450
+      },
+      {
+        "x": 300,
+        "y": 1500
+      },
+      {
+        "x": 120,
+        "y": 1300
+      },
+      {
+        "x": 100,
+        "y": 1000
+      },
+      {
+        "x": 150,
+        "y": 800
+      },
+      {
+        "x": 480,
+        "y": 640
+      },
+      {
+        "x": 650,
+        "y": 450
+      },
+      {
+        "x": 720,
+        "y": 380
+      },
+      {
+        "x": 720,
+        "y": 300
+      }
+    ],
+    "threshold": {
+      "x": 720,
+      "y": 230
+    },
+    "arrival": {
+      "x": 720,
+      "y": 300
+    },
+    "legacySign": {
+      "x": 2730,
+      "y": 806
+    },
+    "note": "Voie nord-ouest depuis les archives. Les marqueurs modernes restent distincts des tombes et monuments du biome.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  },
+  {
+    "regionId": "forbidden-reserve",
+    "name": "Galerie des Observateurs",
+    "artId": "observatory",
+    "material": "ribbed",
+    "clearWidth": 220,
+    "nodes": [
+      {
+        "x": 5920,
+        "y": 3100
+      },
+      {
+        "x": 6240,
+        "y": 3240
+      },
+      {
+        "x": 6580,
+        "y": 3220
+      },
+      {
+        "x": 6580,
+        "y": 3440
+      }
+    ],
+    "threshold": {
+      "x": 6580,
+      "y": 3370
+    },
+    "arrival": {
+      "x": 6580,
+      "y": 3440
+    },
+    "legacySign": {
+      "x": 4920,
+      "y": 1880
+    },
+    "note": "Départ est en dehors des maisons ; double signal de confinement. Cette arche n’ouvre jamais un enclos et ne donne aucune autorisation.",
+    "lore": "original-adaptation",
+    "traversal": "existing-region-action",
+    "rewards": false
+  }
+]

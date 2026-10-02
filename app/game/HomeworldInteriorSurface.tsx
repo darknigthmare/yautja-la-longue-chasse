@@ -8,10 +8,12 @@ import { homeworldInteriorPropArtIdV64, homeworldInteriorTrophySlotsV64, type Ho
 import { homeworldInteriorShellV64 } from './systems/homeworldInteriorShellV64';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
+import HomeworldInteriorPartitionsV72 from './HomeworldInteriorPartitionsV72';
+import HomeworldFurnitureV72 from './HomeworldFurnitureV72';
 import styles from './HomeworldCity.module.css';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
-export default function HomeworldInteriorSurface({ room, activePointId, trophies = [] }: {
+export default function HomeworldInteriorSurface({ room, activePointId, trophies = [], actorPosition }: {
   room: HomeworldInteriorV64; actorPosition: HomeworldGroundPointV64;
   activePointId: string | null; trophies?: readonly TrophyRecord[];
 }) {
@@ -31,6 +33,10 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
       {group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art}
         x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={0} />)}
     </div>)}
+    <HomeworldInteriorPartitionsV72 room={room}/>
+    {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
+    {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id} style={{position:'absolute',left:zone.x+zone.width/2,top:(zone.y+zone.depth-36)*HOMEWORLD_GEOMETRY_V64.depthScale,
+      transform:'translateX(-50%)',font:'9px ui-monospace,monospace',letterSpacing:'.06em',color:'#a89979',pointerEvents:'none',zIndex:0}}>{zone.label}</span>)}
     {room.buildingId === 'market-armory' && <img src="/game/homeworld/v68/hunt-board.png" alt="" draggable={false} data-homeworld-hunt-board-v68
       style={{ position:'absolute', maxWidth:'none', left:room.width * .22 - 1182 * .094 / 2, top:-1300 * .094,
         width:1182 * .094, height:1330 * .094, zIndex:1, pointerEvents:'none' }} />}

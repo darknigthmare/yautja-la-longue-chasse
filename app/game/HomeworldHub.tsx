@@ -28,6 +28,7 @@ import {
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
 import HomeworldCityScene from "./HomeworldCityScene";
 import HomeworldOutskirtsV71 from "./HomeworldOutskirtsV71";
+import HomeworldRegionConnectionsV72 from "./HomeworldRegionConnectionsV72";
 import HomeworldPopulationV68 from "./HomeworldPopulationV68";
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
@@ -40,6 +41,8 @@ import { HOMEWORLD_RESIDENTS_V69 as HOMEWORLD_RESIDENTS_V68, nearestHomeworldRes
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
+import HomeworldYouthMotionV72 from "./HomeworldYouthMotionV72";
+import { homeworldCameraV72 } from "./systems/homeworldCameraV72";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingDoorwayV64 } from "./systems/homeworldGeometryV64";
 import { homeworldInteriorForBuildingV64, nearestHomeworldInteriorTargetV64, isHomeworldInteriorWalkableV64, type HomeworldInteriorV64 } from "./systems/homeworldInteriorsV64";
 import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from "./systems/homeworldCharacterPlacementV64";
@@ -120,11 +123,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const sceneWidth = interior?.width ?? HOMEWORLD_WORLD.width;
   const sceneDepth = interior?.depth ?? HOMEWORLD_WORLD.height;
   const projectedActor = homeworldProjectGroundV64(actor);
-  const zoom = interior ? Math.min(2, viewportSize.width / (sceneWidth + 90), viewportSize.height / (sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale + 220)) : HOMEWORLD_GEOMETRY_V64.zoom;
-  const cameraX = interior ? (sceneWidth - viewportSize.width / zoom) / 2
-    : Math.max(0, Math.min(sceneWidth - viewportSize.width / zoom, actor.x - viewportSize.width / zoom * .5));
-  const cameraY = interior ? (sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - 128 - viewportSize.height / zoom) / 2
-    : Math.max(-160, Math.min(sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale - viewportSize.height / zoom, projectedActor.y - viewportSize.height / zoom * .62));
+  const camera = homeworldCameraV72({ actor, viewport: viewportSize, width: sceneWidth, depth: sceneDepth, interior: !!interior });
+  const { x: cameraX, y: cameraY, zoom } = camera;
   const progress = save.homeworld;
   const youthWelcome = usesHomeworldYouthAppearanceV69(save);
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
@@ -508,7 +508,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const title = dialog?.navigation ? "Navigation de la cité" : selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
   const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
-  const heroBob = actorSpeed > 5 ? Math.sin(phase * 11) * 1.5 : 0;
+  const heroBob = !youthWelcome && actorSpeed > 5 ? Math.sin(phase * 11) * 1.5 : 0;
   const activeDoorId = nearestDoor?.id ?? null;
   const interactionLabel = indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : null);
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
@@ -533,14 +533,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />}
       {!interior && <div className={styles.sky} aria-hidden="true" />}
-      <div className={styles.world} aria-hidden="true" style={{ width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
+      <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
           : <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />}
         {!interior && <HomeworldOutskirtsV71 actor={actor} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} />}
+        {!interior && <HomeworldRegionConnectionsV72 actor={actor} cameraX={cameraX} cameraY={cameraY} width={camera.viewWidth} height={camera.viewHeight} save={save} />}
         {!interior && <HomeworldPopulationV68 seconds={phase} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} activeId={nearbyResidentV68?.id} actorPosition={actor} />}
         <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
-          <span className={styles.heroVisual}>
-          {!youthWelcome && heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
+          <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
+          {youthWelcome ? <HomeworldYouthMotionV72 seconds={phase} moving={actorSpeed > 5} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
             className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined}

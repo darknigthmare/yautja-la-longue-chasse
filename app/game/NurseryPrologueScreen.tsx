@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
-import { drawNurseryScene, loadNurseryArt, type NurseryArtBank } from "./nurseryRendering";
+import { drawNurseryScene, loadNurseryArt, loadNurseryContinuityArtV72, type NurseryArtBank } from "./nurseryRendering";
 import { nurseryVictoryDrawingTicksV71 } from "./systems/nurseryVictoryCompositionV71";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { GameAudio } from "./sound";
@@ -12,9 +12,11 @@ import { NURSERY_CONTROL_ACTIONS, sampleNurseryControls, type NurseryTouchAction
 import { advanceNurseryFrame, createNurseryFrameAdapter, createNurseryPrologue, getNurseryPresentation,
   normalizeNurseryCheckpoint, type NurseryCompletionReceipt, type NurseryState } from "./systems/nurseryPrologue";
 import styles from "./NurseryPrologueScreen.module.css";
+import { enableNurseryContinuityV72, nurseryStoryCardV72, skipNurseryContextV72, type NurseryStoryCardV72 } from "./systems/nurseryContinuityV72";
 
 export interface NurseryPrologueScreenProps {
   checkpoint?: unknown;
+  hunterName?: string;
   readyMode?: "hold" | "press";
   bindings: ControlBindings;
   nextChapterReady: boolean;
@@ -34,6 +36,12 @@ const PHASE_LABELS: Record<NurseryState["phase"], string> = {
   defeat: "Vous êtes à terre. Le duel est terminé. Vous pouvez réessayer.", ko: "Votre adversaire est à terre. Le duel est terminé.",
   "village-reveal": "Dans l’arène du village, le jeune victorieux lève le bras ; son rival reste au sol après le duel d’entraînement non létal.",
   "moon-title": "La caméra découvre la lune rouge. Yautja: The Long Hunt.", complete: "La nurserie est terminée. Enregistrement en cours.",
+  debrief: "Le maître arrête l'exercice. Le rival est soigné et récupère ; les deux jeunes vont quitter l'arène ensemble.",
+  walkout: "Les deux jeunes quittent à pied la nurserie par le passage du village.",
+  journey: "Une ellipse distingue l'enfance de la formation Unblooded, puis l'escorte vers la cité.",
+  reception: "Avant d'entrer dans la cité, écouter les consignes : rencontrer le chef des Chasses puis l'instructeur des terrasses.",
+  "clan-entry": "Le nom est annoncé. Le voile s'ouvre et l'Unblooded rejoint à pied la cérémonie du chef.",
+  "clan-departure": "L'audience est terminée. L'Unblooded quitte à pied le hall pour la cité ; la fin reste à enregistrer.",
 };
 const TOUCH_ACTIONS = [
   ["left", "←", "Se déplacer à gauche"], ["right", "→", "Se déplacer à droite"],
@@ -43,7 +51,7 @@ const TOUCH_ACTIONS = [
 
 /** The scene owns presentation/input only. Campaign proof and storage belong to the parent. */
 export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps) {
-  const [initial] = useState(() => normalizeNurseryCheckpoint(props.checkpoint) ?? createNurseryPrologue({ readyMode: props.readyMode }));
+  const [initial] = useState(() => enableNurseryContinuityV72(normalizeNurseryCheckpoint(props.checkpoint) ?? createNurseryPrologue({ readyMode: props.readyMode })));
   const adapterRef = useRef(createNurseryFrameAdapter(initial));
   const latestRef = useRef(props);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -72,6 +80,8 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
   const [reducedByOs, setReducedByOs] = useState(false);
   const [awaitingChapter, setAwaitingChapter] = useState(false);
   const [releaseRequired, setReleaseRequired] = useState(false);
+  const [storyCard, setStoryCard] = useState<NurseryStoryCardV72 | null>(() => nurseryStoryCardV72(initial, props.hunterName));
+  const [storyReady, setStoryReady] = useState(false);
   const effectivePaused = paused || props.externallyPaused === true;
   const reducedMotion = props.reducedMotion === true || reducedByOs;
 
@@ -129,8 +139,8 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
   }, [props.soundEnabled, props.masterVolume, props.effectsVolume, effectivePaused]);
   useEffect(() => {
     let active = true;
-    loadNurseryArt(NURSERY_ART_MANIFEST).then(result => {
-      if (active) { setBank(result); setArtError(""); }
+    Promise.all([loadNurseryArt(NURSERY_ART_MANIFEST), loadNurseryContinuityArtV72()]).then(([result, continuityArt]) => {
+      if (active) { setBank({ ...result, ...continuityArt }); setArtError(""); }
     }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Les images de la nurserie n’ont pas pu être chargées."); } });
     return () => { active = false; };
   }, [loadAttempt]);
@@ -207,21 +217,28 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       const victoryTick = nurseryVictoryDrawingTicksV71(presentation, reducedMotion);
       canvas.dataset.nurseryVictory = victoryTick === null ? "none" : "youngling-arm-raised-rival-ko";
       canvas.dataset.nurseryVictoryTick = victoryTick === null ? "" : String(victoryTick);
+      const card = nurseryStoryCardV72(result.state, latestRef.current.hunterName);
+      canvas.dataset.nurseryStory = card?.id ?? "none";
+      canvas.dataset.nurseryWalkout = result.state.phase === "walkout" ? "native-younglings-walking-on-village-path" : "none";
+      canvas.dataset.nurseryCeremony = presentation.camera.shot === "clan-hall" || presentation.camera.shot === "clan-corridor" ? "unblooded-after-ellipse" : "none";
       for (const event of result.events) {
         if (event.type === "phase" && event.phase === "arrival") crowdRef.current?.arrival();
         if (event.type === "hit") audioRef.current?.hit();
         if (event.type === "pickup") audioRef.current?.weaponSwitch();
       }
       const phaseChanged = result.events.some(event => event.type === "phase");
+      const storyChanged = result.events.some(event => event.type === "story");
       if (phaseChanged && ["prompt", "arrival", "duel"].includes(result.state.phase)) { touchRef.current.clear(); canvas.focus(); }
       if (result.completion && !completionRef.current) {
         completionRef.current = { receipt: result.completion, state: result.state };
         void submitCompletion();
-      } else if (result.state.phase !== "complete" && (phaseChanged || result.state.tick - lastCheckpointTick >= 120)) {
+      } else if (result.state.phase !== "complete" && (phaseChanged || storyChanged || result.state.tick - lastCheckpointTick >= 120)) {
         lastCheckpointTick = result.state.tick; checkpoint();
       }
-      if (phaseChanged || timestamp - lastUi >= 80) {
+      if (phaseChanged || storyChanged || timestamp - lastUi >= 80) {
         lastUi = timestamp; setPhase(result.state.phase); setReadyProgress(presentation.readyGestureProgress);
+        setStoryCard(previous => previous?.id === card?.id ? previous : card);
+        setStoryReady(result.state.continuityV72?.recap === true || result.state.phaseTick >= 24);
         setAwaitingChapter(presentation.awaitingNextChapter && !latestRef.current.nextChapterReady);
         setReleaseRequired(!blocked && result.state.phase === "duel" && (!armedRef.current || !result.state.inputArmed));
       }
@@ -256,6 +273,12 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
     checkpoint();
   };
   const promptPhase = phase === "prompt" || phase === "ready" || phase === "defeat";
+  const skipContext = () => {
+    clearInput();
+    const state = skipNurseryContextV72(adapterRef.current.state);
+    adapterRef.current = createNurseryFrameAdapter(state); setStoryCard(nurseryStoryCardV72(state, latestRef.current.hunterName));
+    setStoryReady(false); checkpoint(); canvasRef.current?.focus();
+  };
 
   return <section ref={rootRef} className={styles.screen} data-nursery-prologue data-nursery-hud="false" data-reduced-motion={reducedMotion}>
     <header className={styles.toolbar}><span>Prologue · La nurserie</span><div>
@@ -270,16 +293,30 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
           const gameControl = target instanceof HTMLElement && target.hasAttribute("data-nursery-action");
           if (adapterRef.current.state.phase === "duel" && !pausedRef.current && !latestRef.current.externallyPaused && !gameControl) pause();
         }} />
-      {phase === "loading" && <div className={styles.prompt} role="status"><p>{artError ? "Le prologue attend ses images." : "Chargement de la nurserie…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" onClick={() => setLoadAttempt(value => value + 1)}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
-      {!effectivePaused && promptPhase && <div className={styles.prompt}>
+      {(!bank || phase === "loading") && <div className={styles.prompt} role="status"><p>{artError ? "Le prologue attend ses images." : "Chargement de la nurserie et de l'accueil du clan…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" onClick={() => setLoadAttempt(value => value + 1)}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
+      {!effectivePaused && storyCard && bank && <div className={styles.story} data-nursery-story-card={storyCard.id}>
+        <p className={styles.storyChapter}>{storyCard.chapter}</p><h2>{storyCard.title}</h2>
+        <p className={styles.storySpeaker}>{storyCard.speaker}</p><p className={styles.storyText}>{storyCard.text}</p>
+        <p className={styles.storyObjective}>{storyCard.objective}</p>
+        <div className={styles.storyActions}><button type="button" data-nursery-confirm data-nursery-story-continue
+          disabled={!storyReady || storyCard.id === "city-exit" && !props.nextChapterReady} onClick={() => pulseTouch("confirm")}>{storyCard.button}</button>
+          {phase === "prompt" && storyCard.id !== "duel-consent" && <button type="button" className={styles.storySkip} onClick={skipContext}>Passer le contexte · garder les consignes</button>}</div>
+        <span className={styles.storyShortcut}>Entrée / Manette A · Lecture à votre rythme</span>
+        {awaitingChapter && <p role="status">La cité se prépare. Votre point de reprise est conservé.</p>}
+      </div>}
+      {!effectivePaused && promptPhase && !storyCard && <div className={styles.prompt}>
         {phase === "prompt" && <><p className={styles.start}>La longue chasse commence ici.</p><p>Appuyez sur une touche · Manette A</p><button type="button" data-nursery-confirm onClick={() => pulseTouch("confirm")}>Entrer dans la nurserie</button></>}
-        {phase === "ready" && <><p>Levez le bras pour entrer dans le duel.</p><p>{pressReady ? "Appuyez sur Entrée / A." : "Maintenez Entrée / A pendant 2 secondes."}</p>
+        {phase === "ready" && <><p>Levez le bras pour entrer dans le duel.</p><p className={styles.readyContext}>Exercice surveillé · Tu es le jeune à gauche. Mets le rival à terre, puis l’exercice s’arrête.</p><p>{pressReady ? "Appuyez sur Entrée / A." : "Maintenez Entrée / A pendant 2 secondes."}</p>
           <div className={styles.readyMeter} aria-hidden="true"><span style={{ width: `${Math.round(readyProgress * 100)}%` }} /></div>
           {pressReady ? <button type="button" onClick={() => pulseTouch("ready")}>Je suis prêt</button> : touchButton("ready", "Maintenir : je suis prêt", "Maintenir pendant deux secondes pour lever le bras")}
           <label className={styles.option}><input type="checkbox" checked={pressReady} onChange={changeReadyMode} />Valider Prêt par une simple pression</label></>}
         {phase === "defeat" && <><p>Vous êtes à terre. Le duel est terminé.</p><p>Ce combat d’entraînement n’est pas létal.</p><button type="button" data-nursery-retry onClick={() => pulseTouch("retry")}>Réessayer le duel</button></>}
       </div>}
-      {(phase === "moon-title" || phase === "complete") && <div className={styles.title}><h1>Yautja: The Long Hunt</h1>{awaitingChapter && <p>Le chapitre suivant se prépare. Votre point de reprise est conservé.</p>}{phase === "complete" && <p role="status">{saving ? "Enregistrement de la fin du prologue…" : saveError ? "L’enregistrement reste à confirmer." : "La nurserie est terminée."}</p>}</div>}
+      {phase === "moon-title" && !storyCard && <div className={styles.title}><h1>Yautja: The Long Hunt</h1><p>Un exercice s’achève. Ton apprentissage commence à peine.</p>{awaitingChapter && <p>Le chapitre suivant se prépare. Votre point de reprise est conservé.</p>}</div>}
+      {phase === "complete" && <div className={styles.walkCaption}><strong>Vers la cité du clan</strong><p role="status">{saving ? "Enregistrement du prologue et de l'accueil…" : saveError ? "La fin reste à enregistrer. Vous pouvez réessayer sans rejouer le duel." : "Le passage vers la cité est prêt."}</p></div>}
+      {phase === "walkout" && !effectivePaused && <div className={styles.walkCaption}><strong>Retour au village · à pied</strong><p>Le rival a récupéré. Vous rendez le matériel et quittez ensemble la nurserie.</p></div>}
+      {phase === "clan-entry" && !effectivePaused && <div className={styles.walkCaption}><strong>L’annonce est reçue · le voile s’ouvre</strong><p>L’Unblooded traverse le couloir pour rejoindre le hall d’audience.</p></div>}
+      {phase === "clan-departure" && !effectivePaused && <div className={styles.walkCaption}><strong>L’audience s’achève · vers les allées de la cité</strong><p>Le jeune quitte le hall à pied. Les consignes personnelles restent à recevoir sur place.</p></div>}
       {paused && !props.externallyPaused && <div className={styles.backdrop}><div ref={panelRef} className={styles.pause} role="dialog" aria-modal="true" aria-label="Prologue en pause"
         onKeyDown={event => {
           if (event.key === "Escape") { event.preventDefault(); resume(); }
@@ -303,7 +340,7 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
         <button type="button" onClick={() => void exit()}>Enregistrer et revenir au menu</button>
       </div></div>}
     </div>
-    <p className={styles.srOnly} aria-live="polite">{PHASE_LABELS[phase]}</p>
+    <p className={styles.srOnly} aria-live="polite">{storyCard ? `${storyCard.speaker}. ${storyCard.title}. ${storyCard.text} ${storyCard.objective}` : PHASE_LABELS[phase]}</p>
     {releaseRequired && <p className={styles.release} role="status">Relâchez les commandes pour commencer ou reprendre le duel.</p>}
     {(saveError || props.persistenceError) && <div role="alert" className={styles.saveError}><p>{props.persistenceError || saveError}</p>{phase === "complete" && <button type="button" disabled={saving} onClick={() => void submitCompletion()}>Réessayer l’enregistrement</button>}</div>}
     {showTouch && phase === "duel" && !effectivePaused && <div className={styles.touch} aria-label="Commandes tactiles du duel">{TOUCH_ACTIONS.map(([action, label, title]) => touchButton(action, label, title))}</div>}

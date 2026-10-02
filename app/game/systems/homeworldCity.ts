@@ -16,6 +16,8 @@ import lifeV68 from "../data/homeworldLifeV68.json";
 import lifeV69 from "../data/homeworldLifeV69.json";
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from "./homeworldArtV64";
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
+import { homeworldBuildingIdentityV72 } from "./homeworldIdentityV72";
+import { HOMEWORLD_CONNECTION_WORLD_V72, HOMEWORLD_CONNECTION_STREETS_V72, homeworldConnectionThresholdV72, homeworldConnectionCollisionV72 } from "./homeworldRegionConnectionsV72";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
 export { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldUnprojectGroundV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, homeworldBuildingSpritePlacementV64 } from "./homeworldGeometryV64";
 
@@ -177,7 +179,7 @@ export const HOMEWORLD_PLACEMENT_RULES = {
   routeSample: 4,
   routeClearance: 12,
 } as const;
-export const HOMEWORLD_WORLD = { width: 6_300, height: 5_300 } as const;
+export const HOMEWORLD_WORLD = { width: HOMEWORLD_CONNECTION_WORLD_V72.width, height: HOMEWORLD_CONNECTION_WORLD_V72.height } as const;
 export const HOMEWORLD_ACTOR = {
   halfWidth: 24,
   halfDepth: 14,
@@ -240,7 +242,7 @@ const extraStreetsV64: readonly HomeworldStreet[] = [
   { id: "quay-connection", label: "Raccord des quais au spatioport", polygon: polygon([680,3460],[1400,3460],[1400,3700],[680,3700]), kind: "passage", accent: "#d6bd8e" },
   { id: "shuttle-access", label: "Passage du sas de transfert", polygon: polygon([1120,4220],[1260,4220],[1260,4440],[1120,4440]), kind: "passage", accent: "#d6bd8e" },
 ];
-export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64];
+export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64, ...HOMEWORLD_CONNECTION_STREETS_V72];
 
 const BUILDING_ASSET_ROOT = "/game/ship-interior/";
 
@@ -267,9 +269,10 @@ export const HOMEWORLD_BUILDINGS_V54 = [
 ] as const;
 
 function nativeBuildingV64(seed: { id: string; districtId: string; label: string; x: number; y: number; width: number; depth: number; variant: HomeworldBuildingModule["variant"]; entranceKind: "civic" | "domestic"; artId: keyof typeof HOMEWORLD_BUILDING_ART_V64 }): HomeworldBuildingModule {
-  const art = HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = seed.width / (art.foundationFront.right - art.foundationFront.left);
-  return { ...seed, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
-    wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: seed.depth } };
+  const identity = homeworldBuildingIdentityV72(seed.id);
+  const art = identity?.art ?? HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = seed.width / (art.foundationFront.right - art.foundationFront.left);
+  return { ...seed, label: identity?.title ?? seed.label, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
+    wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: identity?.depth ?? seed.depth } };
 }
 export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
   ...HOMEWORLD_BUILDINGS_V54.map(b => nativeBuildingV64({ ...b, label: b.label.replace(" · extérieur", ""), y: b.y * HOMEWORLD_GEOMETRY_V64.planDepthExpansion,
@@ -335,7 +338,7 @@ const relocatedRegionsV64: Readonly<Record<string, HomeworldVec2>> = {
   "region-storm-chain": { x: 3840, y: 800 }, "region-cold-crown": { x: 4940, y: 820 }, "region-forbidden-reserve": { x: 4920, y: 1880 },
 };
 export const HOMEWORLD_POINT_POSITIONS = Object.fromEntries(Object.entries(HOMEWORLD_POINT_POSITIONS_V54).map(([id, p]) => [id,
-  id === "personal-ship" ? HOMEWORLD_SPACEPORT_V64.terminal : relocatedRegionsV64[id] ?? expandGroundV64(p)])) as Record<keyof typeof HOMEWORLD_POINT_POSITIONS_V54, HomeworldVec2>;
+  id === "personal-ship" ? HOMEWORLD_SPACEPORT_V64.terminal : (id.startsWith("region-") ? homeworldConnectionThresholdV72(id.slice(7)) : null) ?? relocatedRegionsV64[id] ?? expandGroundV64(p)])) as Record<keyof typeof HOMEWORLD_POINT_POSITIONS_V54, HomeworldVec2>;
 /** Populated with measured V64 atlas instances after the native art registry is frozen. */
 function nativePropV64(id: string, districtId: string, artId: keyof typeof HOMEWORLD_PROP_ART_V64, x: number, y: number): HomeworldDecorProp {
   const art = HOMEWORLD_PROP_ART_V64[artId];
@@ -504,7 +507,7 @@ export const HOMEWORLD_LEGACY_POINT_PROP_COLLIDERS_V54 = POINT_PROP_COLLIDER_BLU
 });
 /** Station artwork and solid volume share their native forward ground pivot. */
 export const HOMEWORLD_OUTDOOR_POINT_ART_V64 = Object.entries(HOMEWORLD_POINT_POSITIONS)
-  .filter(([id]) => id.startsWith("region-") || id === "personal-ship")
+  .filter(([id]) => id === "personal-ship")
   .map(([id, point]) => {
     const artId = id === "personal-ship" ? "console" as const : "beacon" as const;
     const art = HOMEWORLD_PROP_ART_V64[artId];
@@ -646,7 +649,7 @@ export function homeworldCollisionAt(
       prop.y + prop.radiusY,
     )) return { kind: "prop", id: prop.id };
   }
-  return null;
+  return homeworldConnectionCollisionV72(point, safeFootprint);
 }
 
 export function isHomeworldWalkable(

@@ -7,6 +7,8 @@ const hw = await import("data:text/javascript;base64," + Buffer.from(compiled.ou
 const { HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_STREETS, HOMEWORLD_BUILDINGS, HOMEWORLD_PROPS, HOMEWORLD_POINT_POSITIONS, HOMEWORLD_POINT_PROP_COLLIDERS, HOMEWORLD_NPC_COLLIDERS, HOMEWORLD_NPC_PLATES, HOMEWORLD_GENERIC_HUNTER_PLATES, HOMEWORLD_TROPHY_SLOTS, HOMEWORLD_POINTS, HOMEWORLD_REGIONS, HOMEWORLD_NPCS, HOMEWORLD_ORGANIZATIONS, HOMEWORLD_EVIDENCE, HOMEWORLD_WITNESS_CHOICES, defaultHomeworldProgress, normalizeHomeworldProgress, applyHomeworldAction, createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, districtAtHomeworldActor, isHomeworldTerrainWalkable, isHomeworldWalkable, homeworldBuildingCollision, homeworldBuildingDoorPosition, homeworldCollisionAt, homeworldHeroPlate, homeworldNpcPlate, homeworldTrophyDisplays, nearestHomeworldDoor, shouldFadeHomeworldForeground } = hw;
 const interiorBundle = await build({entryPoints:['app/game/systems/homeworldInteriorsV64.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const rooms = await import('data:text/javascript;base64,'+Buffer.from(interiorBundle.outputFiles[0].text).toString('base64'));
+const connectionBundle = await build({entryPoints:['app/game/systems/homeworldRegionConnectionsV72.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const connections = await import('data:text/javascript;base64,'+Buffer.from(connectionBundle.outputFiles[0].text).toString('base64'));
 const context = { rankId: "young-blood", ownedTrophyCount: 0 };
 const act = (progress, action, settings = context) => applyHomeworldAction(progress, action, settings);
 const chain = () => HOMEWORLD_EVIDENCE.reduce((p, e) => act(p, { type: "inspect", evidenceId: e.id }).progress, defaultHomeworldProgress());
@@ -29,7 +31,12 @@ test("the 2.5D city preserves twelve service districts and adds two connected or
   }
   assert.equal(Object.keys(HOMEWORLD_POINT_POSITIONS).length, HOMEWORLD_POINTS.length);
   for (const point of HOMEWORLD_POINTS) {
-    assert.equal(districtAtHomeworldActor(point)?.id, point.districtId, point.id);
+    if (point.kind === 'region') {
+      const connection = connections.homeworldConnectionByRegionV72(point.regionId);
+      assert(connection, point.id + ' has a real regional connector');
+      assert.deepEqual({x:point.x,y:point.y}, connection.threshold);
+      assert(connections.homeworldConnectionFloorV72(point), point.id + ' is on the real exterior apron');
+    } else assert.equal(districtAtHomeworldActor(point)?.id, point.districtId, point.id);
     const room = rooms.homeworldInteriorForPointV64(point.id);
     if (room) { assert.notEqual(nearestHomeworldPoint(point)?.id, point.id, 'no duplicate outdoor service'); assert(room.points.some(p=>p.pointId===point.id)); }
     else assert.equal(nearestHomeworldPoint(point)?.id, point.id, point.id + ' cannot be shadowed');
@@ -98,7 +105,8 @@ test("solid scenery has actor volume while every authored doorway keeps a reacha
     assert.equal(collision?.kind, "prop", prop.id);
     assert.equal(collision?.id, prop.id, prop.id);
   }
-  assert.equal(HOMEWORLD_POINT_PROP_COLLIDERS.length, 11, "ten regional portals and orbital terminal stay outside");
+  assert.equal(HOMEWORLD_POINT_PROP_COLLIDERS.length, 1, "Only the orbital terminal uses a generic station collider; V72 gateways have lateral bases");
+  assert.equal(connections.HOMEWORLD_REGION_CONNECTIONS_V72.length, 10);
   for (const prop of HOMEWORLD_POINT_PROP_COLLIDERS) {
     assert.equal(isHomeworldWalkable(prop), false, prop.id + " station or portal has no volume");
   }

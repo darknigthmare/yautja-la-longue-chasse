@@ -57,7 +57,11 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ activeDoorId, acti
         data-building-art={building.artId} data-entrance-kind={building.entranceKind}
         data-occluded={!!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition)}
         style={{ ...position, zIndex: Math.round(building.y) }}>
-        <img src={building.art.src} alt="" draggable={false} />
+        {building.art.sourceRect ? <span data-native-building-atlas-v72={building.id} style={{display:'block',width:'100%',height:'100%',
+          backgroundImage:`url('${building.art.src}')`,backgroundRepeat:'no-repeat',
+          backgroundSize:`${building.art.sourceWidth*position.width/building.art.sourceRect.width}px ${building.art.sourceHeight*position.height/building.art.sourceRect.height}px`,
+          backgroundPosition:`${-building.art.sourceRect.x*position.width/building.art.sourceRect.width}px ${-building.art.sourceRect.y*position.height/building.art.sourceRect.height}px`}}/>
+          : <img src={building.art.src} alt="" draggable={false} />}
         {active && <span className={styles.doorMarkerV64} data-painted-door-id={building.id}
           style={{ left: socket.x - position.left, top: socket.y - position.top }}><i /><b>{building.label}</b></span>}
       </div>;

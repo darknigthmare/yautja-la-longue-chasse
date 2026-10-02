@@ -8,6 +8,7 @@ import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingF
 import { HOMEWORLD_INTERIORS_V64, homeworldInteriorForPointV64, homeworldInteriorPropArtIdV64,
   homeworldInteriorPointPropV64, homeworldInteriorTrophySlotsV64 } from './homeworldInteriorsV64';
 import { homeworldInteriorShellV64 } from './homeworldInteriorShellV64';
+import {HOMEWORLD_NPC_ROLES_V72,homeworldCivilianArtV72} from './homeworldIdentityV72';
 
 type Point = { x: number; y: number };
 export interface HomeworldElementRecordV64 {
@@ -54,10 +55,12 @@ const points = HOMEWORLD_POINTS.map(point => {
 const npcs = HOMEWORLD_POINTS.filter(point => point.npcId).map(point => {
   const room = homeworldInteriorForPointV64(point.id), local = room?.points.find(candidate => candidate.pointId === point.id) ?? point;
   const npc = HOMEWORLD_NPCS.find(candidate => candidate.id === point.npcId);
+  const role=HOMEWORLD_NPC_ROLES_V72[point.npcId!],civilian=role?homeworldCivilianArtV72(role):null;
   return record({ id: `npc:${point.npcId}`, label: npc?.name ?? point.label, category: 'npc', districtId: point.districtId,
     spaceId: room?.buildingId ?? 'world', position: { x: local.x, y: local.y, z: 0 },
-    dimensions: { width: 32, depth: 20, height: HOMEWORLD_GEOMETRY_V64.adultHeight }, footprint: rectangle(local, 32, 20),
-    asset: homeworldNpcPlate(point.npcId!), constraints: ['Pieds au sol et hauteur peinte adulte de 100 unités, sans étirement.', 'Habitant original du projet ; sa fonction ne décrit pas une institution canonique universelle.'] });
+    dimensions: { width: 32, depth: 20, height: civilian?.heightWorld??HOMEWORLD_GEOMETRY_V64.adultHeight }, footprint: rectangle(local, 32, 20),
+    asset: civilian?.src??homeworldNpcPlate(point.npcId!), constraints: [`Pieds au pivot natif et hauteur peinte de ${civilian?.heightWorld??100} unités, sans étirement.`, 'Habitant original du projet ; sa fonction ne décrit pas une institution canonique universelle.',
+      ...(civilian?[`Costume civique natif dédié : ${role}. Cellule ${JSON.stringify(civilian.sourceRect)} ; SHA256 ${civilian.sha256}.`]:[])] });
 });
 const interiors = HOMEWORLD_INTERIORS_V64.flatMap(room => {
   const building = HOMEWORLD_BUILDINGS.find(candidate => candidate.id === room.buildingId)!;

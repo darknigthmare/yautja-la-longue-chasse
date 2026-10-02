@@ -5,6 +5,8 @@ import { homeworldProjectGroundV64 } from './systems/homeworldGeometryV64';
 import { homeworldModularPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { HOMEWORLD_PROP_ART_V64 } from './systems/homeworldArtV64';
 import HomeworldModularHunter from './HomeworldModularHunter';
+import HomeworldCivilianV72 from './HomeworldCivilianV72';
+import { HOMEWORLD_NPC_ROLES_V72 } from './systems/homeworldIdentityV72';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import styles from './HomeworldCity.module.css';
 
@@ -20,7 +22,7 @@ export default function HomeworldPointVisualV64({ point, active, youthWelcome = 
   return <div className={styles.pointV64} data-point-id={point.id} data-kind={point.kind}
     data-point-ground-x={point.x} data-point-ground-y={point.y}
     style={{ left: p.x, top: p.y, zIndex: Math.round(point.y) }}>
-    {modules && <HomeworldModularHunter {...modules} className={styles.npcV64}
+    {npc && HOMEWORLD_NPC_ROLES_V72[npc.id] ? <HomeworldCivilianV72 role={HOMEWORLD_NPC_ROLES_V72[npc.id]} /> : modules && <HomeworldModularHunter {...modules} className={styles.npcV64}
       style={{ position: 'absolute', ...(placement ?? { left: -36, top: -105, width: 70, height: 105 }) }} />}
     {!npc && (point.evidenceId === 'suspect-trophy'
       ? <img src="/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp" alt="" draggable={false}

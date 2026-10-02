@@ -9,8 +9,8 @@ const city=await load('app/game/systems/homeworldCity.ts'),model=await load('app
 const art=await load('app/game/systems/homeworldOutskirtsArtV71.ts'),codex=await load('app/game/systems/homeworldContextCodexV71.ts');
 const rooms=await load('app/game/systems/homeworldInteriorsV64.ts'),geo=await load('app/game/systems/homeworldGeometryV64.ts');
 test('outskirts preserve every public support with measured clearance and no overlapping terrain footprints',()=>{
-  assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,139);
-  assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,139);
+  assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,193,'V72 extends the surroundings around the final physical regional connections');
+  assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,193);
   assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.artId)).size,6);
   for(const item of model.HOMEWORLD_OUTSKIRTS_MODULES_V71){
     const r=model.homeworldOutskirtsFootprintV71(item), margin=model.HOMEWORLD_OUTSKIRTS_CLEARANCE_V71;
@@ -89,6 +89,6 @@ test('actual JSX projects ground once, masks all public polygons, and crops inde
   assert.equal((html.match(/<polygon /g)??[]).length,(city.HOMEWORLD_DISTRICTS.length+city.HOMEWORLD_STREETS.length)*2,'union ground masks are actual rendered polygons');
   assert.equal((html.match(/data-homeworld-approach-v71=/g)??[]).length,43);
   const nativeCount=(html.match(/data-homeworld-prop-id="outskirts-v71-/g)??[]).length;
-  assert(nativeCount>0&&nativeCount<139);assert(html.includes('data-native-source-rect='));
+  assert(nativeCount>0&&nativeCount<model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length);assert(html.includes('data-native-source-rect='));
   assert(!html.includes('backgrounds/'),'no painted panorama substitutes for outside terrain');
 });

@@ -11,11 +11,11 @@ const hw = await load("app/game/systems/homeworld.ts");
 const art = (await load("app/game/systems/homeworldCityArtV54.ts")).HOMEWORLD_CITY_ART_V54;
 
 test("V64 extends the ground plan while preserving all V54 IDs and narrative/service bindings", () => {
-  assert.deepEqual(city.HOMEWORLD_WORLD, { width: 6300, height: 5300 });
+  assert.deepEqual(city.HOMEWORLD_WORLD, { width: 7200, height: 5900 });
   assert.deepEqual(city.createHomeworldActor(), { x: 1280, y: 4480, vx: 0, vy: 0, grounded: true, facing: 1 });
   assert.equal(city.HOMEWORLD_DISTRICTS.length, 14);
   assert.equal(city.HOMEWORLD_BUILDINGS.length, 43);
-  assert.equal(city.HOMEWORLD_STREETS.length, 18);
+  assert.equal(city.HOMEWORLD_STREETS.length, 55,'eighteen preserved city roads plus thirty-seven physical region-approach ground segments');
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { id: "personal-ship", x: 1280, y: 4400 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 * 1.55 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["training-service"], { x: 2220, y: 1330 * 1.55 });
@@ -139,7 +139,7 @@ test("all43 native buildings share a measured socket, uniform pixels and travers
   const native=city.HOMEWORLD_BUILDINGS; assert.equal(native.length,43);
   for(const building of native){
     const placed=city.homeworldBuildingSpritePlacementV64(building),source=building.art;
-    const sx=placed.width/source.sourceWidth,sy=placed.height/source.sourceHeight;
+    const sx=placed.width/(source.sourceRect?.width??source.sourceWidth),sy=placed.height/(source.sourceRect?.height??source.sourceHeight);
     assert(Math.abs(sx-sy)<1e-8);
     const threshold=city.homeworldProjectGroundV64(building);
     assert(Math.abs(placed.left+source.threshold.x*sx-threshold.x)<1e-8);

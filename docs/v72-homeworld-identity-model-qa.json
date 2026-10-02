@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "suite": "homeworld identity, real city geometry, 43 room paths, perimeter shell and spatial destinations",
+  "targetedTests": 74,
+  "newIdentityTests": 6,
+  "verified": {
+    "nativeOpenAIIdentityPngSources": 3,
+    "civicFacades": 6,
+    "distinctNamedNpcCostumes": 12,
+    "civilianRoleSprites": 14,
+    "functionalPublicWings": 6,
+    "walkableWingZones": 18,
+    "physicalInnerPartitions": 24,
+    "newIndependentInteriorFurniture": 30,
+    "additionalCodexEntries": 72,
+    "existingBuildingDoorApproachesAccessible": 43,
+    "existingInteriorServicePointsAccessible": 15,
+    "physicalCityDestinationsReachable": 14,
+    "unbloodedWalkDrawingsPerNativeFacing": 2,
+    "unbloodedNativeAtlasWidth": 1122,
+    "unbloodedNativeAtlasHeight": 1402,
+    "nativeSourcesEdited": false,
+    "existingAssetsDeleted": false,
+    "localCreationClaimsCanonicalKingOrUniversalGovernment": false
+  },
+  "evidence": {
+    "fastTests": "work-local/v72/identity-final-fast-tests.log",
+    "spatialTests": "work-local/v72/identity-spatial-final.log",
+    "lint": "work-local/v72/identity-lint-final.log",
+    "browserRecipe": "scripts/verify-homeworld-identity-v72.mjs"
+  },
+  "limits": [
+    "Model and source-byte verification are separate from browser verification and publication.",
+    "Six principal public wings are refactored; the other 37 interiors retain their earlier plans.",
+    "Private apartments and additional chief-citadel floors are not simulated.",
+    "Civilian residents move along existing routes with dedicated clothed portraits; full civilian walking sheets are not produced.",
+    "The playable Unblooded uses two genuine native walk drawings per left/right facing, not a complete eight-direction animation set.",
+    "Architecture, civilian costumes and local chief are original lore-compatible adaptations, not canonical one-to-one representations."
+  ]
+}

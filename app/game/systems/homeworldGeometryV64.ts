@@ -11,6 +11,8 @@ export interface HomeworldGroundPointV64 { readonly x: number; readonly y: numbe
 export interface HomeworldPixelRectV64 { readonly x: number; readonly y: number; readonly width: number; readonly height: number }
 export interface HomeworldNativeBuildingArtV64 {
   readonly src: string; readonly sourceWidth: number; readonly sourceHeight: number;
+  /** Optional atlas window. All socket/bounds coordinates are local to this window. */
+  readonly sourceRect?: HomeworldPixelRectV64;
   readonly alphaBounds: HomeworldPixelRectV64;
   readonly foundationFront: { readonly left: number; readonly right: number; readonly y: number };
   readonly threshold: HomeworldGroundPointV64;
@@ -40,7 +42,7 @@ export function homeworldBuildingSpritePlacementV64(building: HomeworldGeometryB
   const p = homeworldProjectGroundV64(building), art = building.art;
   if (!art) return { left: p.x - building.width / 2, top: p.y - building.height, width: building.width, height: building.height };
   const scale = homeworldBuildingSpriteScaleV64(building);
-  return { left: p.x - art.threshold.x * scale, top: p.y - art.threshold.y * scale, width: art.sourceWidth * scale, height: art.sourceHeight * scale };
+  return { left: p.x - art.threshold.x * scale, top: p.y - art.threshold.y * scale, width: (art.sourceRect?.width ?? art.sourceWidth) * scale, height: (art.sourceRect?.height ?? art.sourceHeight) * scale };
 }
 /** Logical threshold, traversal approach and measured source socket stay together. */
 export function homeworldBuildingDoorwayV64(building: HomeworldGeometryBuildingV64) {
