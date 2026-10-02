@@ -1,0 +1,558 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "at": "2026-10-02T15:42:52.008Z",
+  "checks": [
+    {
+      "name": "actual-game-shell-http",
+      "passed": true,
+      "details": {
+        "http": 200
+      }
+    },
+    {
+      "name": "existing-account-menu-remains-available-and-modal",
+      "passed": true
+    },
+    {
+      "name": "desktop-mobile-new-game-form-ready-without-creating-user-data",
+      "passed": true
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v70/temple-modules.png",
+        "http": 200,
+        "bytes": 2390561,
+        "sha256": "5490c9a2f87c6fe4b57364c72fc207362bf3d5d3f7ae335a4057136cf861ef93"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v71/outskirts-kit.png",
+        "http": 200,
+        "bytes": 2469209,
+        "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v71/cinder-ground.png",
+        "http": 200,
+        "bytes": 3543109,
+        "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/youth/v48/unblooded-left.png",
+        "http": 200,
+        "bytes": 1470891,
+        "sha256": "a3e81485b962238e88601e30e00053bf84eeaa1c00f886b754245f2850eb93c6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/youth/v48/unblooded-right.png",
+        "http": 200,
+        "bytes": 1366371,
+        "sha256": "ad1873f50d793d0d570379f32ceb4d368843c2bc84c56c88b6f898bab6e78fc6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-furniture-kit.png",
+        "http": 200,
+        "bytes": 1728885,
+        "sha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-identity-atlas.png",
+        "http": 200,
+        "bytes": 2324390,
+        "sha256": "79fe4cb8ee1d7ed10805ec1c37506f59fecbedffdf0e7d663b0e6b0edec22710"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civic-specialists-spaced-atlas.png",
+        "http": 200,
+        "bytes": 2032614,
+        "sha256": "1777f2db4df94b74fed8fc3b78d5777cf8701b7b7fd3405457281e63dd23345a"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/civilian-roles-atlas.png",
+        "http": 200,
+        "bytes": 2434438,
+        "sha256": "ea2fc8d4eb119fd0db41af9cc352d5dba1f729e1dc316e312f7561185ade8037"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v72/region-gateway-kit.png",
+        "http": 200,
+        "bytes": 2164987,
+        "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-arrival-corridor.png",
+        "http": 200,
+        "bytes": 2723819,
+        "sha256": "7df108ae617534f1a361c7aca0bd9ed1227db7b4da300998d344d868c79d3953"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-audience-hall.png",
+        "http": 200,
+        "bytes": 2717614,
+        "sha256": "646aced3fe9a62fa5ea6fcceb249546ff2bde87fc57d216475b5b3fdf9bb2b6c"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-chief-seated.png",
+        "http": 200,
+        "bytes": 2633038,
+        "sha256": "491c94e1ff66c7496871f729a952a5d09486aae4057015551604c2d3f0bc611f"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/clan-door-veil.png",
+        "http": 200,
+        "bytes": 1994914,
+        "sha256": "f14d017cefcd5f4a940b9aaf70caf39c8c99f94976acff7013fb1b37f8891cb7"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/prologue/v72/nursery-exit.png",
+        "http": 200,
+        "bytes": 2863616,
+        "sha256": "93505a26dd343b3b6cef3f049bf576ca45c0003e5923c5191c13b2fbb4be5c42"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/01-chief-artisan-walk-corrected.png",
+        "http": 200,
+        "bytes": 1761995,
+        "sha256": "60be46ea15c029b51a0a434c313fe53c5d7e2bf31ae21d63c42b7e78a4e4be32"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/01-chief-artisan-walk-final.png",
+        "http": 200,
+        "bytes": 1971705,
+        "sha256": "8fbb493e9000c9cfd52305fd44a2ec25d16d84262be5dbffcdf5b99d5e390998"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/02-healer-archivist-walk-spaced.png",
+        "http": 200,
+        "bytes": 1385845,
+        "sha256": "8c748012dee7f4561ee96b49f49e79f34a5e0cd4b9262839cababcae98354882"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png",
+        "http": 200,
+        "bytes": 1145290,
+        "sha256": "a38be4b0b027898605441051dd17a4464280a4d4609fc0ae878783b29bec543f"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/04-instructor-apprentice-walk.png",
+        "http": 200,
+        "bytes": 1750095,
+        "sha256": "28ae135450c20f6b89b50f84964cd0d0809568b89570f5143df9454a134356f0"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/05-dock-forge-walk-spaced.png",
+        "http": 200,
+        "bytes": 1139936,
+        "sha256": "ee5f00ffb8b0806f6c22ba5c0226cbdf2ddc16e9375107a71d7bb530c0c5175f"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/06-witness-herald-walk.png",
+        "http": 200,
+        "bytes": 1860844,
+        "sha256": "03d4703c63c7b71cd75f4a37447a2953883958e8a0454015be7a9d05da03441b"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/07-arena-rite-walk.png",
+        "http": 200,
+        "bytes": 1734418,
+        "sha256": "6257cbf87b0fb410f5628bf4719914d5da5f0b223ca7b6d1efa252ee248bad81"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-e-opposite.png",
+        "http": 200,
+        "bytes": 1847678,
+        "sha256": "13f133fbe02f3e9cf62504522f82a65b266a0ca8cd2b07c74fea50cf0aba7c4c"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-e.png",
+        "http": 200,
+        "bytes": 1817887,
+        "sha256": "58050ea7f524cd5535ae823ea1342e06430545d856c9a5d5f5c370cf874c050d"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-n-opposite.png",
+        "http": 200,
+        "bytes": 1702804,
+        "sha256": "b91c9e90f939ffb1b467edc7ee818cb37ddf77669a2fa3b4e9dd22416ae28252"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-n.png",
+        "http": 200,
+        "bytes": 1681347,
+        "sha256": "60c7e7e204cbafa2c95cfb1a5e888cc348464378e81f92a7782a35b845344827"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-ne-opposite.png",
+        "http": 200,
+        "bytes": 1763637,
+        "sha256": "2c72703b5cbb6418fdd21449800fd97314e5c205a7d3f5714ef4755b01fe0acf"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-ne.png",
+        "http": 200,
+        "bytes": 1722515,
+        "sha256": "6d3e51af9566f0727ec49d7f98e8b283248d9f521a2fec3d6e47b2cf706c280d"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-nw-opposite.png",
+        "http": 200,
+        "bytes": 1754524,
+        "sha256": "4dfc42110464783515757c9befe645e3b069f2a9998ea6184f764df92cc14954"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-nw.png",
+        "http": 200,
+        "bytes": 1761960,
+        "sha256": "207ffe14f23b5460483e93a604c5d3cd904aa8eee979cf166006919de6425ae1"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-s-opposite.png",
+        "http": 200,
+        "bytes": 1825187,
+        "sha256": "ba56b4ed48b25ec94a298fdd6da61a38647236b695afa09d87bffb08398f2615"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-s.png",
+        "http": 200,
+        "bytes": 1805121,
+        "sha256": "503eafd381df53c2f06b0a17b6c943f80afd86b7ca7dc2d50ea45c421dcd2b0a"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-se-opposite.png",
+        "http": 200,
+        "bytes": 1923308,
+        "sha256": "f27af84e5c11d4ac283e9a070f55b784be2f8fb2b4983915e4db2eff1bd666f4"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-se.png",
+        "http": 200,
+        "bytes": 1931979,
+        "sha256": "fdf9142912b36ff7f9f25934017ed63b57102a19b74d07b47e51d54386ccbfea"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-sw-opposite.png",
+        "http": 200,
+        "bytes": 1921568,
+        "sha256": "55aa80c67a7ffe76d244c47ed91209dfef427a1bc4cda317f1da5424eec3453f"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-sw.png",
+        "http": 200,
+        "bytes": 1916342,
+        "sha256": "f12e7b4f346ce1a3571d9c056cc54963d545cb29967f13743a9b0b6094d35bf6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-w-opposite.png",
+        "http": 200,
+        "bytes": 1767830,
+        "sha256": "95e44819676b13e84544c304cff55d8b3bf60365887a170ee09a840d5b04f0a3"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v74/youth/unblooded-w.png",
+        "http": 200,
+        "bytes": 1749987,
+        "sha256": "b69df615261fd488a937871bc7d11357ed754c89ca7955925709bee02e7367a5"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/dock-control.png",
+        "http": 200,
+        "bytes": 2399318,
+        "sha256": "c8f15bd38428b918aea98270a3f32fc3cc81c4dc37c00aeb4596baa6ef2f8e93"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/market-canopy.png",
+        "http": 200,
+        "bytes": 2504853,
+        "sha256": "1f7f995377dace094438de0ee0fab4b6fa47a3f9ca79632de8573c333ce55a04"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/undercity-refuge.png",
+        "http": 200,
+        "bytes": 2492889,
+        "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/trophy-mausoleum.png",
+        "http": 200,
+        "bytes": 2688823,
+        "sha256": "e6e858914c92eb4a8af0c0fb7569dc540a354718c670e6cbd70c117790e56092"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/enforcer-bastion.png",
+        "http": 200,
+        "bytes": 2517623,
+        "sha256": "962aca0126018f05e1c9bdde03580e47e7ad6001e577c409f0971e9978e0adf6"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/pit-gate.png",
+        "http": 200,
+        "bytes": 2859238,
+        "sha256": "5322dab7dfdd42f0dcb0fcdf250f670ac0e7313b078c4a6eac4a86a18c152a69"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/rite-sanctum.png",
+        "http": 200,
+        "bytes": 2547165,
+        "sha256": "24b5fdce488d7f32d4f630a4ab86b7d8974fb85f07411838849160462364e989"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/convoy-workshop.png",
+        "http": 200,
+        "bytes": 2368526,
+        "sha256": "da7787f9ad19485ecc3a056164a9cca08d0001278420b4d6ca26df15cc9b3155"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/convoy-store.png",
+        "http": 200,
+        "bytes": 2207951,
+        "sha256": "d873a6fea3a8522a74e850b8011a5e55f0f745a5efc23692bcc4c24e595a50de"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/convoy-south-shelter.png",
+        "http": 200,
+        "bytes": 2337718,
+        "sha256": "ad293efca831b5c4ce017ce19b51581373eec3459ea501cecfee35cc6b4bc8f8"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/rampart-north-lodge.png",
+        "http": 200,
+        "bytes": 2517884,
+        "sha256": "1e0bea50c99fdbdf722937647b5966dbc7af9f36591ce2eecbe12d45c022ae19"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/rampart-watch.png",
+        "http": 200,
+        "bytes": 2528718,
+        "sha256": "b450450aa1b7874e5596ba965998a5179de18176318900ef3b8361474c75c5c3"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/architecture/rampart-south-lodge.png",
+        "http": 200,
+        "bytes": 2433695,
+        "sha256": "b41d39119f6993fd2cff35a1cb062fed5b80e44b0ed8f5d77754c8f2ebe716f0"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity",
+      "passed": true,
+      "details": {
+        "file": "game/homeworld/v75/landscape-ground-materials-native.png",
+        "http": 200,
+        "bytes": 3765652,
+        "sha256": "b144ee16a08881cce91b7652c8f2d8801e6c51c25e441e6586d407857c7b6307"
+      }
+    },
+    {
+      "name": "no-javascript-errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "limits": "This recipe verifies shell and immutable bitmap delivery. The mounted game version, gameplay, movement, narrative continuity, physical routes and save refusal are verified in separate recipes after creating or continuing a campaign. No real signup, login or email is performed."
+}
