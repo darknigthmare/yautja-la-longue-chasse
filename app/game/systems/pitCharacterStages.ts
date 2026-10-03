@@ -1,5 +1,5 @@
 import { PIT_VERSUS_FIGHTER_IDS, getPitFighterProfile } from "./pitRosterExpansion";
-import { PIT_LORE_STAGE_DEFINITIONS, PIT_EXPLICIT_STAGE_ASSOCIATIONS, type PitStageSourceClassification, type PitStageSourceStatus } from "./pitLoreStages";
+import { PIT_LORE_STAGE_DEFINITIONS, PIT_EXPLICIT_STAGE_ASSOCIATIONS, type PitExplicitStageAssociation, type PitStageSourceClassification, type PitStageSourceStatus } from "./pitLoreStages";
 import { PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56 } from './pitOriginalStagesV56';
 
 export type PitCharacterStageCoverage = "dedicated-lateral-adaptation" | "existing-work-setting" | "reference-needed" | "identity-unverified" | "cosmetic-no-exclusive-location" | "original-exhibition";
@@ -16,6 +16,14 @@ export interface PitCharacterStageAssociation {
 }
 
 // Explicit identity associations only. Never infer a biography from the shape of an imported bitmap.
+const referencedAssociationsV79: readonly PitExplicitStageAssociation[] = [
+  { fighterId: 'user-last-hunt-super', stageId: 'arena-179-last-hunt-preserve', classification: 'work-setting', sourceStatus: 'primary-limited',
+    reason: 'Réserve déjà adaptée depuis The Last Hunt. Le chasseur est référencé par les planches du numéro 3 ; ce décor reste une composition de jeu, pas sa salle personnelle ni la géométrie exacte d’une case.',
+    sourceUrls: ['https://www.marvel.com/comics/collection/110461/', 'https://aiptcomics.com/2024/04/19/marvel-preview-predator-the-last-hunt-3/'] },
+  { fighterId: 'user-avp-classic-2000', stageId: 'arena-128-avp-classic-2000-colonial-base', classification: 'work-setting', sourceStatus: 'primary-limited',
+    reason: 'Base coloniale de l’édition Classic 2000 déjà adaptée. Association au jeu confirmé par ses captures et son manuel ; aucun nom individuel, niveau exact ou lieu exclusif n’est inventé.',
+    sourceUrls: ['https://store.steampowered.com/app/3730/', 'https://store.steampowered.com/manual/3730'] },
+];
 const sharedWorkSettings: readonly { fighters: readonly string[]; stageId: string; reason: string }[] = [
   { fighters: ["jungle-hunter"], stageId: "arena-103-predator-1987-final-trap-clearing", reason: "Clairière finale du film d’origine ; composition 2D déjà adaptée." },
   { fighters: ["city-hunter", "greyback", "user-boar", "user-guardian", "user-lost", "user-scout", "user-shaman", "user-snake", "user-stalker", "user-warrior"], stageId: "arena-106-predator-2-1990-trophy-ship", reason: "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre." },
@@ -37,7 +45,8 @@ export function getPitCharacterStageAssociation(fighterId: string): PitCharacter
   const fighter = getPitFighterProfile(fighterId as typeof PIT_VERSUS_FIGHTER_IDS[number]);
   const base = { fighterId, fighterName: fighter.name, exactGeometryCertified: false as const, classification: "unresolved" as const, sourceStatus: "unresolved" as const, sourceUrls: [] as readonly string[] };
   const explicit = PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56.find(entry => entry.fighterId === fighterId)
-    ?? PIT_EXPLICIT_STAGE_ASSOCIATIONS.find(entry => entry.fighterId === fighterId);
+    ?? PIT_EXPLICIT_STAGE_ASSOCIATIONS.find(entry => entry.fighterId === fighterId)
+    ?? referencedAssociationsV79.find(entry => entry.fighterId === fighterId);
   if (explicit) return { ...base, ...explicit, coverage: explicit.classification === "character-setting" ? "dedicated-lateral-adaptation" : explicit.classification === "work-setting" ? "existing-work-setting" : "original-exhibition" };
   const dedicated = PIT_LORE_STAGE_DEFINITIONS.find(stage => (stage.dedicatedFighters as readonly string[]).includes(fighterId));
   if (dedicated) return { ...base, stageId: dedicated.id, coverage: "dedicated-lateral-adaptation", reason: dedicated.sourceClaim };

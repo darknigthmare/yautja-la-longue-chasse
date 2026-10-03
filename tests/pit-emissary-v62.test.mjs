@@ -39,7 +39,8 @@ function browser(failed = []) {
   return { requests, restore() { Object.assign(globalThis, previous); } };
 }
 test('Emissary PHG is a distinct199th identity and restores its own appearance without gaining campaign unlocks', () => {
-  assert.equal(p.PIT_VERSUS_FIGHTER_IDS.length, 199);
+  assert.equal(p.PIT_VERSUS_FIGHTER_IDS[198], fighter.id, 'the historical 199th identity keeps its position when later lots append hunters');
+  assert.ok(p.PIT_VERSUS_FIGHTER_IDS.length >= 199);
   assert.equal(p.PIT_VERSUS_FIGHTER_IDS.filter(id => id === fighter.id).length, 1);
   assert.equal(new Set(['user-emissary-1','user-emissary-2',fighter.id].map(id => p.getPitFighterProfile(id).name)).size, 3);
   assert.match(p.getPitFighterProfile(fighter.id).sourceWork, /Hunting Grounds/);

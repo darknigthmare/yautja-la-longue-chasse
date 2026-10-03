@@ -15,6 +15,7 @@ import type { PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { PIT_ARENAS, PIT_FIGHTERS, PIT_ROUND_FRAMES, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
+import { getPitFloorTileSizeV79, getPitStageRearGroundBandV79, getPitStageRearGroundMaterialSizeV79 } from "./pitStageLayoutV79";
 
 /** These six bitmap passes are presentation only. They never alter the arena or replay. */
 export type PitArenaPlaneId = "P0" | "P1" | "P2" | "P3" | "P4" | "P5";
@@ -376,8 +377,10 @@ function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaP
       try {
         context.globalAlpha *= asset.opacity * (options.highContrast ? .45 : 1);
         if (asset.mode === "repeat-x" || asset.mode === "strip-x") {
-          const width = (asset.mode === "strip-x" ? placement.height * source.width / source.height : placement.width) * transform.scale;
-          const height = source.height / source.width * width;
+          const size = getPitFloorTileSizeV79(asset, placement, source, bank.productionKit);
+          if (!size) continue;
+          const width = size.width * transform.scale;
+          const height = size.height * transform.scale;
           const origin = placement.x * transform.scale + transform.translateX;
           const floorY = (asset.mode === "repeat-x" ? arena.groundY : placement.y) * transform.scale + transform.translateY;
           const first = Math.floor(-origin / width) - 1;
@@ -420,6 +423,36 @@ function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaP
   return drawn;
 }
 
+/** Draw before every P1/P2/P3 native actor. Only repeat-x material participates;
+ * a front fascia is never reused as a rear surface or painted over a fighter. */
+function drawProductionRearGroundV79(context: CanvasRenderingContext2D, state: PitCombatState,
+  camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): void {
+  const arena = PIT_ARENAS[state.arenaId], ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
+  const band = getPitStageRearGroundBandV79(arena, ground);
+  if (!band || band.clip.height <= 0) return;
+  for (const asset of bank.productionKit!.planes.find(p => p.id === "P4")?.assets ?? []) {
+    if (asset.mode !== "repeat-x") continue;
+    const completeLoop = asset.animation && asset.frames.length > 1 && asset.frames.every(f => bank.images.has(f.path));
+    const index = completeLoop && !options.reducedMotion ? Math.floor(Math.max(0, state.frame) * asset.animation!.fps / 60) % asset.frames.length
+      : completeLoop && options.reducedMotion ? Math.min(asset.frames.length - 1, Math.max(0, asset.animation!.reducedMotionFrame)) : 0;
+    const frame = asset.frames[index], image = frame && bank.images.get(frame.path);
+    if (!image || !frame.generation) continue;
+    const source = asset.sourceCrop ?? frame.generation.contentBounds, size = getPitStageRearGroundMaterialSizeV79(source, band.height);
+    if (!size) continue;
+    for (const placement of asset.placements) {
+      const origin = placement.x * ground.scale + ground.translateX;
+      const first = Math.floor(-origin / size.width) - 1, last = Math.ceil((arena.width - origin) / size.width) + 1;
+      context.save();
+      try {
+        context.beginPath(); context.rect(band.clip.x, band.clip.y, band.clip.width, band.clip.height); context.clip();
+        context.globalAlpha *= asset.opacity * (options.highContrast ? .45 : 1);
+        for (let tile = first; tile <= last; tile++) context.drawImage(image, source.x, source.y, source.width, source.height,
+          origin + tile * size.width, band.top, size.width + .5, size.height);
+      } finally { context.restore(); }
+    }
+  }
+}
+
 function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCombatState,
   camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): PitArenaDrawReport {
   const arena = PIT_ARENAS[state.arenaId];
@@ -449,6 +482,7 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
     context.fillStyle = options.highContrast ? "#06100e" : arena.palette.sky;
     context.fillRect(0, 0, arena.width, arena.height);
     for (const plane of bank.productionKit!.planes.filter(entry => entry.id !== "P5")) {
+      if (plane.id === "P1") drawProductionRearGroundV79(context, state, camera, bank, options);
       if (plane.id === "P4") {
         context.fillStyle = options.highContrast ? "#06100e" : arena.palette.ground;
         context.fillRect(0, floorY, arena.width, Math.max(0, arena.height - floorY));
@@ -580,6 +614,23 @@ export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: P
         (left + right - coverWidth) / 2, (top + bottom - coverHeight) / 2, coverWidth, coverHeight);
       context.restore();
       drawnPlanes.push("P0");
+    }
+    // Legacy banks use the same rear band, before their background props.
+    const rearFloor = art && validBank?.images.get(art.floor.src);
+    const rearGround = getPitArenaLayerTransform(state.arenaId, "P4", camera);
+    const rearBand = getPitStageRearGroundBandV79(arena, rearGround);
+    if (rearFloor && art && rearBand && rearBand.clip.height > 0) {
+      const [sx, sy, sw, sh] = art.floor.crop;
+      const size = getPitStageRearGroundMaterialSizeV79({x:sx,y:sy,width:sw,height:sh}, rearBand.height);
+      if (size) {
+        context.save();
+        try {
+          context.beginPath(); context.rect(rearBand.clip.x, rearBand.clip.y, rearBand.clip.width, rearBand.clip.height); context.clip();
+          const first = Math.floor(-rearGround.translateX / size.width) - 1, last = Math.ceil((arena.width - rearGround.translateX) / size.width) + 1;
+          for (let tile = first; tile <= last; tile++) context.drawImage(rearFloor, sx, sy, sw, sh,
+            rearGround.translateX + tile * size.width, rearBand.top, size.width + .5, size.height);
+        } finally { context.restore(); }
+      }
     }
     if (validBank) for (const plane of ["P1", "P2", "P3"] as const) {
       if (drawProps(context, plane, state, camera, validBank, options)) drawnPlanes.push(plane);

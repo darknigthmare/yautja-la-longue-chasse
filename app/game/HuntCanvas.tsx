@@ -6,9 +6,11 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ReactNode,
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import { createPortal } from "react-dom";
 import {
   DIFFICULTY_BY_ID,
   GEAR_BY_ID,
@@ -18,6 +20,10 @@ import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
+import { missionOpeningV78, missionActionTextV78 } from "./missionOpeningV78";
+import presentationStyles from "./HuntCanvas.module.css";
+import { createHuntAnnouncementQueueV78, enqueueHuntAnnouncementV78, advanceHuntAnnouncementQueueV78,
+  type HuntAnnouncementQueueV78, type HuntAnnouncementPriorityV78 } from "./huntAnnouncementQueueV78";
 import HuntRitesMenuV77 from './HuntRitesMenuV77';
 import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,
   type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';
@@ -2222,6 +2228,7 @@ function updateMissionCheckpoint(state: GameState): void {
     state,
     `Relais de chasse ${state.nextCheckpointIndex}/${state.checkpointPositions.length} synchronisé.`,
     3.2,
+    "narrative",
   );
   queueSound(state, "objective");
 }
@@ -2371,6 +2378,7 @@ function spawnExtractionThreat(
     state,
     "Le sang de l’Apex attire une dernière menace sur la route d’extraction.",
     4,
+    "narrative",
   );
 }
 
@@ -2405,9 +2413,30 @@ function recordPlasmaRestraintViolation(
   );
 }
 
-function announce(state: GameState, message: string, seconds = 3): void {
+// UI-only ownership: retries/resumes create another runtime object and no queue is saved.
+const huntAnnouncementsV78 = new WeakMap<GameState, HuntAnnouncementQueueV78>();
+
+function announce(state: GameState, message: string, seconds = 3,
+  priority: HuntAnnouncementPriorityV78 = "tactical"): void {
+  // Preserve the existing canonical message fields used by legacy checkpoints/QTE.
   state.message = message;
   state.messageTimer = seconds;
+  huntAnnouncementsV78.set(state, enqueueHuntAnnouncementV78(
+    huntAnnouncementsV78.get(state) ?? createHuntAnnouncementQueueV78(state.elapsed),
+    message, seconds, priority, state.elapsed,
+  ));
+}
+
+function visibleHuntAnnouncementV78(state: GameState): string {
+  const queued = huntAnnouncementsV78.get(state);
+  if (!queued) return state.messageTimer > 0 ? state.message : "";
+  const current = advanceHuntAnnouncementQueueV78(queued, state.elapsed);
+  huntAnnouncementsV78.set(state, current);
+  // Never put delayed prose over a live rite cue, death or extraction completion.
+  if (state.trophyExtracting || state.phase === "dead" || state.phase === "finished") {
+    return state.messageTimer > 0 ? state.message : "";
+  }
+  return current.active?.text ?? "";
 }
 
 function queueSound(state: GameState, sound: GameSfxId): void {
@@ -2439,7 +2468,7 @@ function completeObjective(
       objective.honorBonus,
       "objective",
     );
-    announce(state, `Objectif accompli : ${objective.label}`, 4);
+    announce(state, `Objectif accompli : ${objective.label}`, 4, "narrative");
     queueSound(state, "objective");
   }
 }
@@ -2711,7 +2740,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     bossHealth: Math.max(0, state.boss.health),
     bossMaxHealth: state.boss.maxHealth,
     bossPhase: bossPhase?.label ?? "",
-    message: state.messageTimer > 0 ? state.message : "",
+    message: visibleHuntAnnouncementV78(state),
     trophySeconds,
     elapsed: state.elapsed,
   };
@@ -5489,6 +5518,7 @@ function updateRevealEffects(state: GameState): void {
       revealed === 1 ? "" : "s"
     } signature${revealed === 1 ? "" : "s"}.`,
     1.6,
+    "routine",
   );
 }
 
@@ -5545,6 +5575,7 @@ function activateGearSlot(
         revealed === 1 ? "" : "s"
       } révélée${revealed === 1 ? "" : "s"}.`,
       2.2,
+      "routine",
     );
     return;
   }
@@ -5579,6 +5610,7 @@ function activateGearSlot(
     state,
     `${GEAR_BY_ID[event.gearId].name} déployé · ${slot.charges - 1 < 0 ? 0 : result.state.slots[slotIndex].charges} charge(s).`,
     2,
+    "routine",
   );
 }
 
@@ -6340,7 +6372,7 @@ function playerMeleeTechnique(
     throw: "Projection verrouillée.",
     execution: "Exécution rituelle engagée.",
   };
-  announce(state, labels[actionKind], 1.1);
+  announce(state, labels[actionKind], 1.1, "routine");
 }
 
 function playerMeleeParry(state: GameState): void {
@@ -6355,7 +6387,7 @@ function playerMeleeParry(state: GameState): void {
   state.player.stamina -= staminaCost;
   state.player.weaponChargeSeconds = 0;
   state.player.melee = request.state;
-  announce(state, "Parade armée : réponds pendant l'impact.", 1.1);
+  announce(state, "Parade armée : réponds pendant l'impact.", 1.1, "routine");
 }
 
 function playerMeleeDodge(
@@ -6378,7 +6410,7 @@ function playerMeleeDodge(
   );
   state.player.velocityX = huntMeleeDodgeVelocity(request.state);
   state.jumpAssist = freshJumpAssistState({ requireRelease: true });
-  announce(state, "Esquive de chasse.", 0.8);
+  announce(state, "Esquive de chasse.", 0.8, "routine");
 }
 
 function resolvePlayerMeleeParry(
@@ -6403,7 +6435,7 @@ function resolvePlayerMeleeParry(
   attacker.attackCooldown = Math.max(attacker.attackCooldown, 0.65);
   queueSound(state, "slash");
   if (state.screenShakeEnabled) state.screenShake = Math.max(state.screenShake, 5);
-  announce(state, attacker.boss ? "Parade Apex réussie." : "Parade parfaite.", 1.2);
+  announce(state, attacker.boss ? "Parade Apex réussie." : "Parade parfaite.", 1.2, "routine");
   return true;
 }
 
@@ -6441,6 +6473,7 @@ function updatePlayerMeleeCombat(
       state,
       `Enchainement de lames ${comboIndex + 1}/3.`,
       0.7,
+      "routine",
     );
   }
 
@@ -6785,6 +6818,7 @@ function playerScan(state: GameState, mission: MissionDefinition): void {
         }.`
       : "Aucune nouvelle signature dans la portée du biomask.",
     2,
+    "routine",
   );
 }
 
@@ -6801,6 +6835,7 @@ function playerHeal(state: GameState): void {
         ? "Aucune charge de Medicomp."
         : "Le Medicomp n’est pas nécessaire.",
       1.5,
+      player.medicomps <= 0 ? "tactical" : "routine",
     );
     return;
   }
@@ -6862,6 +6897,7 @@ function finishTrophyExtraction(
       state,
       `${drop.name} prélevé et scellé. La chasse continue.`,
       3.2,
+      "narrative",
     );
     return;
   }
@@ -6923,6 +6959,7 @@ function finishTrophyExtraction(
     state,
     `${mission.trophy.name} : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.`,
     5,
+    "narrative",
   );
 }
 
@@ -6942,7 +6979,7 @@ function interact(
         state.world = applyExplorationWorld(state.world, state.exploration);
         queueSound(state, "objective");
       }
-      announce(state, interaction.message, 4);
+      announce(state, interaction.message, 4, interaction.changed ? "narrative" : "routine");
       return;
     }
   }
@@ -6983,7 +7020,7 @@ function interact(
         5,
         "objective",
       );
-      announce(state, "Technologie récupérée.", 2);
+      announce(state, "Technologie récupérée.", 2, "narrative");
       return;
     }
   }
@@ -7086,7 +7123,7 @@ function interact(
     }
     return;
   }
-  announce(state, "Rien à activer à portée.", 1.4);
+  announce(state, "Rien à activer à portée.", 1.4, "routine");
 }
 
 function updateObjectiveFlow(
@@ -7111,7 +7148,7 @@ function updateObjectiveFlow(
       "objective",
       scanObjective?.id ?? null,
     );
-    announce(state, `${mission.targetName} peut désormais être pisté.`, 4);
+    announce(state, `${mission.targetName} peut désormais être pisté.`, 4, "narrative");
   }
 
   if (state.phase !== "target") return;
@@ -7155,6 +7192,7 @@ function updateObjectiveFlow(
       state,
       `Cible Apex détectée : ${mission.boss.name}.`,
       4,
+      "narrative",
     );
   }
 }
@@ -7169,7 +7207,7 @@ function selectWeaponSlot(
   state.player.weaponChargeSeconds = 0;
   const weapon = equippedWeapon(loadout, slotIndex);
   queueSound(state, "weapon-switch");
-  announce(state, `${weapon.name} sélectionné.`, 1.2);
+  announce(state, `${weapon.name} sélectionné.`, 1.2, "routine");
 }
 
 function updateAimState(
@@ -7364,13 +7402,14 @@ function updatePlayer(
 
   if (consume(input, "mask")) {
     if (!appearance.biomaskId) {
-      announce(state, "Aucun biomask dans cette apparence.", 1.8);
+      announce(state, "Aucun biomask dans cette apparence.", 1.8, "routine");
     } else {
       player.maskOn = !player.maskOn;
       announce(
         state,
         player.maskOn ? "Biomask verrouillé." : "Biomask retiré.",
         1.4,
+        "routine",
       );
       queueSound(state, player.maskOn ? "mask-on" : "mask-off");
     }
@@ -7654,10 +7693,10 @@ function updatePlayer(
   if (consume(input, "cloak") && !actionLocked) {
     if (player.cloaked) {
       forceDecloak(state);
-      announce(state, "Camouflage désactivé.", 1.2);
+      announce(state, "Camouflage désactivé.", 1.2, "routine");
     } else if (player.energy >= 20) {
       player.cloaked = true;
-      announce(state, "Camouflage actif.", 1.2);
+      announce(state, "Camouflage actif.", 1.2, "routine");
       queueSound(state, "cloak-on");
     } else {
       announce(state, "Énergie insuffisante pour le camouflage.", 1.8);
@@ -8879,7 +8918,7 @@ function restoreProjectileAmmo(
   );
   if (state.player.weaponAmmo[slotIndex] > previousAmmo) {
     queueSound(state, "weapon-switch");
-    announce(state, message, 1.2);
+    announce(state, message, 1.2, "routine");
   }
 }
 
@@ -9371,6 +9410,7 @@ function stepGame(
       state,
       `${currentWorldScreen.label} — ${currentWorldScreen.objectiveCue}`,
       4.2,
+      "narrative",
     );
   }
 
@@ -9443,6 +9483,9 @@ export default function HuntCanvas({
   const requestAbortRef = useRef<() => void>(() => undefined);
   const requestSuspendRef = useRef<() => void>(() => undefined);
   const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
+  const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
+  const missionOpeningActiveRef = useRef(false);
+  const openingSeenRunRef = useRef<string | null>(null);
   const inputRef = useRef<InputHub>({
     keyboardHeld: new Set(),
     touchHeld: new Set(),
@@ -9456,13 +9499,14 @@ export default function HuntCanvas({
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
+  const [missionOpeningOpen, setMissionOpeningOpen] = useState(false);
   const [openingHint, setOpeningHint] = useState<FirstHuntHint | null>(null);
-  const [openingGuideCollapsed, setOpeningGuideCollapsed] = useState(false);
+  const [openingGuideCollapsed, setOpeningGuideCollapsed] = useState(true);
 
   // Audio observes simulation snapshots; no combat or timing depends on playback.
   useEffect(() => {
-    onMusicContext?.(ui.paused || ui.phase === "dead" || ui.phase === "finished" ? null : ui.musicContext);
-  }, [onMusicContext, ui.musicContext, ui.paused, ui.phase]);
+    onMusicContext?.(missionOpeningOpen || ui.paused || ui.phase === "dead" || ui.phase === "finished" ? null : ui.musicContext);
+  }, [onMusicContext, ui.musicContext, ui.paused, ui.phase, missionOpeningOpen]);
 
   useEffect(() => {
     finishRef.current = onFinish;
@@ -9497,6 +9541,7 @@ export default function HuntCanvas({
   }, [onSound]);
 
   const huntDialogOpen =
+    (missionOpeningOpen && assetsReady) ||
     (ui.paused && ui.phase !== "dead" && ui.phase !== "finished") ||
     ui.phase === "dead";
 
@@ -9568,7 +9613,7 @@ export default function HuntCanvas({
         fallbackFocusTarget?.focus({ preventScroll: true });
       }
     };
-  }, [huntDialogOpen]);
+  }, [huntDialogOpen, missionOpeningOpen]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -9617,6 +9662,33 @@ export default function HuntCanvas({
       game.paused = true;
       window.queueMicrotask(() => resumeFailureRef.current?.());
     }
+    // A presentation gate never advances the simulation and never rewrites a save.
+    // Any native/legacy resume (including a passage checkpoint) skips this briefing.
+    const openingRunId = `${mission.id}:${encounterRun}`;
+    let openingActive = !invalidResume && resumeSnapshot == null &&
+      resumeRetryCheckpoint == null && openingSeenRunRef.current !== openingRunId;
+    if (resumeSnapshot != null || resumeRetryCheckpoint != null) openingSeenRunRef.current = openingRunId;
+    missionOpeningActiveRef.current = openingActive;
+    setMissionOpeningOpen(openingActive);
+    dismissMissionOpeningRef.current = () => {
+      if (!openingActive) return;
+      openingActive = false;
+      openingSeenRunRef.current = openingRunId;
+      missionOpeningActiveRef.current = false;
+      input.pressed.clear();
+      input.keyboardHeld.clear();
+      input.touchHeld.clear();
+      input.gamepadHeld.clear();
+      input.previousGamepadButtons = [];
+      input.gamepadNeedsNeutral = true;
+      input.gamepadDialogActions = [];
+      game.jumpAssist = freshJumpAssistState({ requireRelease: true });
+      lastTime = performance.now();
+      accumulator = 0;
+      // Preserve a real focus-loss pause instead of silently resuming after a blur.
+      setUi(snapshot(game, mission));
+      setMissionOpeningOpen(false);
+    };
     const guideEnabled = firstHuntGuideEnabled && mission.id === "jungle-vey";
     let guideLearning = createFirstHuntLearning(firstHuntObservation(game), Boolean(restoredHunt));
     setOpeningHint(guideEnabled ? firstHuntHint(guideLearning) : null);
@@ -10173,7 +10245,7 @@ export default function HuntCanvas({
       Boolean(
         target.closest(
           'button, a, input, select, textarea, [contenteditable]:not([contenteditable="false"])',
-        ),
+        ) || target.closest("summary"),
       );
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented) return;
@@ -10261,7 +10333,11 @@ export default function HuntCanvas({
       announce(game, "Manette déconnectée — chasse en pause.", 3);
       onBlur();
     };
-    window.addEventListener("keydown", onKeyDown, { passive: false });
+    // Native briefing buttons own Enter/Space/Tab; bindings resume after consent.
+    const onGameplayKeyDown = (event: KeyboardEvent) => {
+      if (!openingActive) onKeyDown(event);
+    };
+    window.addEventListener("keydown", onGameplayKeyDown, { passive: false });
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onBlur);
     window.addEventListener("pagehide", onBlur);
@@ -10273,6 +10349,27 @@ export default function HuntCanvas({
       if (!alive) return;
       if (!assetsLoaded) {
         lastTime = time;
+        frameId = requestAnimationFrame(frame);
+        return;
+      }
+      if (openingActive) {
+        // Keep the authored insertion visible, but freeze AI, damage and all clocks.
+        lastTime = time;
+        accumulator = 0;
+        const interruption = pollGamepad(input);
+        if (interruption && !game.paused) {
+          game.paused = true;
+          lastObservedPaused = true;
+          setUi(snapshot(game, mission));
+          emitPersistence(persistHuntRef.current);
+        }
+        navigateHuntDialogWithGamepad(huntDialogRef.current, input.gamepadDialogActions.splice(0));
+        input.pressed.clear();
+        renderGame(context, game, mission, loadout, appearance, assets, encounterRun, deviceScale);
+        if (time - lastUiPush >= 100) {
+          lastUiPush = time;
+          setUi(snapshot(game, mission));
+        }
         frameId = requestAnimationFrame(frame);
         return;
       }
@@ -10340,10 +10437,12 @@ export default function HuntCanvas({
 
     return () => {
       alive = false;
+      dismissMissionOpeningRef.current = () => undefined;
+      missionOpeningActiveRef.current = false;
       riteMenuActionRef.current=()=>undefined;
       cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keydown", onGameplayKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
       window.removeEventListener("pagehide", onBlur);
@@ -10378,10 +10477,12 @@ export default function HuntCanvas({
   ]);
 
   const pressAction = useCallback((action: Action) => {
+    if (missionOpeningActiveRef.current) return;
     inputRef.current.pressed.add(action);
   }, []);
 
   const setTouchHeld = useCallback((action: Action, held: boolean) => {
+    if (missionOpeningActiveRef.current && held) return;
     if (held) inputRef.current.touchHeld.add(action);
     else inputRef.current.touchHeld.delete(action);
   }, []);
@@ -10441,6 +10542,16 @@ export default function HuntCanvas({
   );
 
   const weapon = equippedWeapon(loadout, ui.activeWeaponSlot);
+  const opening = missionOpeningV78(mission);
+  const viewportDialogStyle = {
+    "--hunt-accent": mission.palette.accent,
+    "--hunt-danger": mission.palette.danger,
+    "--hunt-sky": mission.palette.sky,
+    color: styles.shell.color,
+    fontFamily: styles.shell.fontFamily,
+  } as CSSProperties;
+  const hasLocalMap = mission.id === PILOT_MISSION_ID || mission.id === ICE_MISSION_ID ||
+    isExpansionExplorationMission(mission.id);
   const phaseLabel =
     ui.phase === "tracking"
       ? "TRAQUE"
@@ -10520,12 +10631,17 @@ export default function HuntCanvas({
         <div aria-live="polite" aria-atomic="true">
           <span style={styles.objectiveKicker}>OBJECTIF ACTIF</span>
           <strong style={styles.objectiveTitle}>{ui.objective}</strong>
-          <span style={styles.objectiveDetail}>{ui.objectiveDetail}</span>
+          <span style={styles.objectiveDetail}>{missionActionTextV78(ui.objectiveDetail, {
+            scan: `${controlActionShortcut("hunt.scan", activeBindings)} / LB`,
+            interact: `${controlActionShortcut("hunt.interact", activeBindings)} / B`,
+          })}</span>
           {ui.pilotHint && <span style={{ ...styles.objectiveDetail, color: "#d9f1ad" }}>
             {ui.pilotHint} · Interaction {controlActionShortcut("hunt.interact", activeBindings)}
           </span>}
         </div>
-        <div style={styles.stats}>
+        <details className={presentationStyles.missionStats}>
+          <summary>Détails · {formatTime(ui.elapsed)}</summary>
+          <div style={styles.stats}>
           <span>Honneur {ui.honor >= 0 ? "+" : ""}{ui.honor}</span>
           <span>Éliminations {ui.kills}</span>
           <span>Scans {ui.scans}</span>
@@ -10540,7 +10656,8 @@ export default function HuntCanvas({
             Impulsion {ui.aerialBoostUsed ? "À RECHARGER AU SOL" : "PRÊTE"} · {controlActionShortcut("hunt.jump", activeBindings)}
           </span>}
           <span>{formatTime(ui.elapsed)}</span>
-        </div>
+          </div>
+        </details>
       </div>
 
       {ui.bossName ? (
@@ -10561,7 +10678,7 @@ export default function HuntCanvas({
 
       {/* Bloc : scène Canvas. Toute action reste doublée par un bouton DOM. */}
       <div style={styles.canvasFrame}>
-        {firstHuntGuideEnabled && assetsReady && !ui.paused && openingHint && <FirstHuntGuide hint={openingHint} bindings={activeBindings} collapsed={openingGuideCollapsed} onToggle={() => setOpeningGuideCollapsed(value => !value)} onReturnToPlay={() => canvasRef.current?.focus()} />}
+        {firstHuntGuideEnabled && assetsReady && !missionOpeningOpen && !ui.paused && openingHint && <FirstHuntGuide hint={openingHint} bindings={activeBindings} collapsed={openingGuideCollapsed} onToggle={() => setOpeningGuideCollapsed(value => !value)} onReturnToPlay={() => canvasRef.current?.focus()} />}
         <canvas
           ref={canvasRef}
           className="hunt-canvas"
@@ -10611,7 +10728,10 @@ export default function HuntCanvas({
 
         {ui.message ? (
           <div style={styles.message} aria-live="polite">
-            {ui.message}
+            {missionActionTextV78(ui.message, {
+              scan: `${controlActionShortcut("hunt.scan", activeBindings)} / LB`,
+              interact: `${controlActionShortcut("hunt.interact", activeBindings)} / B`,
+            })}
           </div>
         ) : null}
 
@@ -10644,15 +10764,16 @@ export default function HuntCanvas({
           </div>
         ) : null}
 
-        {ui.paused && ui.phase !== "dead" && ui.phase !== "finished" ? (
-          <div style={styles.modalBackdrop} data-hunt-dialog-backdrop>
+        {ui.paused && !missionOpeningOpen && ui.phase !== "dead" && ui.phase !== "finished" ? (
+          <HuntViewportDialogV79>
+          <div className={presentationStyles.pauseBackdrop} style={viewportDialogStyle} data-hunt-dialog-backdrop>
             <div
               ref={huntDialogRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby="hunt-pause-title"
               tabIndex={-1}
-              style={{ ...styles.modal, width: "min(100%, 760px)", maxHeight: "100%", overflowY: "auto", boxSizing: "border-box" }}
+              style={{ ...styles.modal, width: "min(100%, 760px)", maxHeight: "calc(100svh - 32px)", overflowY: "auto", boxSizing: "border-box" }}
             >
               <span style={styles.modalKicker}>BIOMASK EN VEILLE</span>
               <h2 id="hunt-pause-title" style={styles.modalTitle}>Chasse en pause</h2>
@@ -10683,6 +10804,10 @@ export default function HuntCanvas({
                   Abandonner la chasse
                 </button>
               </div>
+              {hasLocalMap && <div className={presentationStyles.mapLegend} role="note" data-hunt-map-scale="local">
+                <strong>Plan local · salles, étages et passages</strong>
+                <p>Cette vue détaille les connexions et la hauteur des salles autour de toi. Plusieurs salles ou étages peuvent appartenir au même secteur de chasse.</p>
+              </div>}
               {mission.id === PILOT_MISSION_ID && (
                 <PilotExplorationMap progress={ui.exploration} playerX={ui.playerX} playerY={ui.playerY} />
               )}
@@ -10697,6 +10822,11 @@ export default function HuntCanvas({
                   playerY={ui.playerY}
                 />
               )}
+              <div className={presentationStyles.mapLegend} role="note" data-hunt-map-scale="regional">
+                <strong>Vue régionale · secteurs du trajet</strong>
+                <p>Cette vue situe ton avancée d’ouest en est dans la zone de chasse. Elle regroupe les lieux par secteur sans représenter leurs étages.</p>
+                {hasLocalMap && <p>Les deux repères suivent la même position réelle : le nom précis d’une salle et celui de son secteur peuvent donc différer. Les « ? » désignent des lieux encore inexplorés ; aucune carte ne téléporte le chasseur.</p>}
+              </div>
               <ExplorationMap
                 missionId={mission.id}
                 playerX={ui.playerX}
@@ -10705,6 +10835,7 @@ export default function HuntCanvas({
               />
             </div>
           </div>
+          </HuntViewportDialogV79>
         ) : null}
 
         {ui.phase === "dead" ? (
@@ -10757,8 +10888,8 @@ export default function HuntCanvas({
       </div>
 
       {/* Bloc : contrôles tactiles et aide clavier/manette. */}
-      <div style={styles.controls}>
-        <div style={styles.moveControls} role="group" aria-label="Déplacement tactile">
+      <div className={presentationStyles.controls}>
+        <div className={presentationStyles.moveControls} style={styles.moveControls} role="group" aria-label="Déplacement tactile">
           <button
             type="button"
             {...makeHoldHandlers("left")}
@@ -10801,12 +10932,33 @@ export default function HuntCanvas({
           </button>
         </div>
 
-        <div style={styles.actionControls} role="group" aria-label="Actions tactiles">
+        <div className={presentationStyles.actionControls} role="group" aria-label="Actions tactiles">
+          <div className={presentationStyles.quickControls}>
           <ActionButton
-            label="Lames / technique"
+            label="Lames"
             shortcut={controlActionShortcut("hunt.melee", activeBindings)}
             onPress={() => pressAction("melee")}
           />
+          <ActionButton
+            label={`${weapon.shortName}${ui.ammo >= 0 ? ` · ${ui.ammo}` : ""}`}
+            shortcut={controlActionShortcut("hunt.weaponPrimary", activeBindings)}
+            onPress={() => pressAction("weapon")}
+          />
+          <ActionButton
+            label="Scan"
+            shortcut={controlActionShortcut("hunt.scan", activeBindings)}
+            onPress={() => pressAction("scan")}
+          />
+          <ActionButton
+            label="Interagir"
+            shortcut={controlActionShortcut("hunt.interact", activeBindings)}
+            onPress={() => pressAction("interact")}
+          />
+          </div>
+        </div>
+        <details className={presentationStyles.equipmentTray}>
+          <summary>Équipement et techniques</summary>
+          <div className={presentationStyles.secondaryControls}>
           {loadout.weaponIds.map((weaponId, index) => (
             <ActionButton
               key={`${weaponId}-${index}`}
@@ -10823,11 +10975,6 @@ export default function HuntCanvas({
               }
             />
           ))}
-          <ActionButton
-            label={`${weapon.shortName}${ui.ammo >= 0 ? ` · ${ui.ammo}` : ""}`}
-            shortcut={controlActionShortcut("hunt.weaponPrimary", activeBindings)}
-            onPress={() => pressAction("weapon")}
-          />
           <button
             type="button"
             {...makeHoldHandlers("aim")}
@@ -10848,11 +10995,6 @@ export default function HuntCanvas({
             shortcut={controlActionShortcut("hunt.toggleMask", activeBindings)}
             active={ui.maskOn}
             onPress={() => pressAction("mask")}
-          />
-          <ActionButton
-            label="Scan"
-            shortcut={controlActionShortcut("hunt.scan", activeBindings)}
-            onPress={() => pressAction("scan")}
           />
           <ActionButton
             label={ui.cloaked ? "Visible" : "Camouflage"}
@@ -10886,14 +11028,12 @@ export default function HuntCanvas({
             shortcut={controlActionShortcut("hunt.heal", activeBindings)}
             onPress={() => pressAction("heal")}
           />
-          <ActionButton
-            label="Interagir"
-            shortcut={controlActionShortcut("hunt.interact", activeBindings)}
-            onPress={() => pressAction("interact")}
-          />
-        </div>
+          </div>
+        </details>
       </div>
 
+      <details className={presentationStyles.commandHelp}>
+      <summary>Commandes clavier et manette</summary>
       <footer style={styles.help}>
         <span>{controlActionShortcut("hunt.moveLeft", activeBindings)}/{controlActionShortcut("hunt.moveRight", activeBindings)} · déplacement</span>
         <span>{controlActionShortcut("hunt.moveUp", activeBindings)}/{controlActionShortcut("hunt.moveDown", activeBindings)} · grimpe</span>
@@ -10915,8 +11055,37 @@ export default function HuntCanvas({
         <span>{controlActionShortcut("hunt.pause", activeBindings)} · pause</span>
         <span>Manette compatible</span>
       </footer>
+      </details>
+
+      {missionOpeningOpen && assetsReady ? (
+        <HuntViewportDialogV79>
+        <div className={presentationStyles.openingBackdrop} style={viewportDialogStyle} data-hunt-dialog-backdrop data-mission-opening-v78>
+          <div ref={huntDialogRef} className={presentationStyles.openingPanel}
+            role="dialog" aria-modal="true" aria-labelledby="hunt-opening-title" tabIndex={-1}>
+            <span className={presentationStyles.openingKicker}>INSERTION · {opening.location}</span>
+            <h2 id="hunt-opening-title">{opening.title}</h2>
+            <p className={presentationStyles.openingSubtitle}>{opening.subtitle}</p>
+            <p>{opening.context}</p>
+            <ol>{opening.steps.map(step => <li key={step.id}>{step.label}</li>)}</ol>
+            <p className={presentationStyles.openingHint}>Prends le temps de lire. La chasse et son horloge attendent ton départ.</p>
+            <div className={presentationStyles.openingActions}>
+              <button type="button" style={styles.primaryButton} onClick={() => dismissMissionOpeningRef.current()}>Commencer la chasse</button>
+              <button type="button" style={styles.ghostButton} onClick={() => dismissMissionOpeningRef.current()}>Passer le briefing</button>
+            </div>
+          </div>
+        </div>
+        </HuntViewportDialogV79>
+      ) : null}
     </section>
   );
+}
+
+/** Screen transitions keep a transform even after their animation ends. Mount
+ * viewport dialogs outside that containing block; direct focus/gamepad refs and
+ * the existing inert/restore effect still own the same dialog elements. These
+ * overlays open only after browser effects have loaded the hunt assets. */
+function HuntViewportDialogV79({ children }: { children: ReactNode }) {
+  return typeof document === "undefined" ? null : createPortal(children, document.body);
 }
 
 function ResourceMeter({
@@ -10963,6 +11132,7 @@ function ActionButton({
   return (
     <button
       type="button"
+      className={presentationStyles.actionButton}
       onClick={onPress}
       disabled={disabled}
       style={{
@@ -10986,8 +11156,8 @@ function formatTime(seconds: number): string {
 }
 
 // ---------------------------------------------------------------------------
-// Self-contained presentation: the component can be integrated before the
-// global game stylesheet without exposing an unstyled or inaccessible build.
+// Base presentation stays local; the scoped module owns responsive controls
+// and the briefing overlay without changing global game layouts.
 // ---------------------------------------------------------------------------
 
 const styles: Record<string, CSSProperties> = {
@@ -11282,7 +11452,7 @@ const styles: Record<string, CSSProperties> = {
   },
   controls: {
     display: "flex",
-    alignItems: "stretch",
+    alignItems: "flex-start",
     justifyContent: "space-between",
     gap: 12,
     padding: "12px 0",
@@ -11290,6 +11460,8 @@ const styles: Record<string, CSSProperties> = {
   moveControls: {
     display: "grid",
     gridTemplateColumns: "repeat(3, 52px)",
+    gridAutoRows: 52,
+    alignContent: "start",
     gap: 7,
   },
   controlButton: {

@@ -22,7 +22,7 @@ export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGam
   bundle: true, write: false, format: "cjs", platform: "node", jsx: "automatic",
   // This suite executes simulation/lifecycle functions, never component styling.
   loader: { ".module.css": "empty" },
-  external: ["react", "react/jsx-runtime"], logLevel: "silent",
+  external: ["react", "react/jsx-runtime", "react-dom"], logLevel: "silent",
 });
 const browser = { hidden: false, focused: true, pads: [] };
 const compiled = { exports: {} };

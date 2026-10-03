@@ -11,6 +11,7 @@ const manifest = JSON.parse(await fs.readFile('app/game/data/pitRosterIconsV45.j
 const sourceManifest = JSON.parse(await fs.readFile('app/game/data/pitUserHuntersV44.json', 'utf8'));
 const originalsV56 = JSON.parse(await fs.readFile('app/game/data/pitOriginalFighterArtV56.json', 'utf8'));
 const additionsV62 = JSON.parse(await fs.readFile('app/game/data/pitUserHuntersV62.json', 'utf8')).fighters;
+const additionsV79 = JSON.parse(await fs.readFile('app/game/data/pitUserHuntersV79.json', 'utf8')).fighters;
 const sourceFighters = sourceManifest.fighters.filter(fighter => fighter.id.startsWith('user-') && fighter.variants.length > 0);
 const digest = value => createHash('sha256').update(value).digest('hex');
 const local = src => path.join('public', src.slice(1));
@@ -78,6 +79,36 @@ test('lossless encoded thumbnails preserve the complete resized source and trans
   }
 });
 
+test('V79 additions retain their exact native sources and small transparent SHA-bound roster icons', async () => {
+  assert.deepEqual(additionsV79.map(fighter => fighter.id), ['user-last-hunt-super', 'user-avp-classic-2000']);
+  for (const fighter of additionsV79) {
+    const icon = fighter.icon, original = fighter.variants[0];
+    assert.equal(icon.sourceVariantId, original.id);
+    assert.equal(icon.sourceSrc, original.src);
+    assert.equal(icon.sourceSha256, original.sha256);
+    assert(icon.width > 0 && icon.width <= 128);
+    assert(icon.height > 0 && icon.height <= 192);
+    assert(icon.bytes <= 40 * 1024, `${fighter.id}: V79 grid icon exceeds the unchanged 40 KiB budget`);
+    const sourceBytes = await fs.readFile(local(original.src));
+    assert.equal(digest(sourceBytes), original.sha256, `${fighter.id}: native source modified`);
+    const sourceMetadata = await sharp(sourceBytes).metadata();
+    assert.equal(sourceMetadata.width, original.width);
+    assert.equal(sourceMetadata.height, original.height);
+    assert.equal(sourceMetadata.hasAlpha, true);
+    const iconBytes = await fs.readFile(local(icon.src));
+    assert.equal(digest(iconBytes), icon.sha256);
+    assert.equal(iconBytes.length, icon.bytes);
+    const metadata = await sharp(iconBytes).metadata();
+    assert.equal(metadata.format, 'webp');
+    assert.equal(metadata.width, icon.width);
+    assert.equal(metadata.height, icon.height);
+    assert.equal(metadata.hasAlpha, true);
+    const alpha = (await sharp(iconBytes).ensureAlpha().stats()).channels[3];
+    assert.equal(alpha.min, 0, `${fighter.id}: icon needs transparent margins`);
+    assert(alpha.max > 0, `${fighter.id}: icon cannot be empty`);
+  }
+});
+
 const bundle = await build({ stdin: { contents: `
 export {default as Selection} from './app/game/PitSelectionFlow';
 export {getPitRosterIcon} from './app/game/pitRosterIcons';
@@ -111,6 +142,7 @@ test('every roster page requests supplied thumbnails only, while historical port
         assert(tile.includes(`data-pit-roster-icon="${id}"`));
         assert.doesNotMatch(tile, /\/v44\/user-hunters\//, `${id}: original source leaked into grid`);
         assert.doesNotMatch(tile, /\/user-pack\/v56\/(?:source|cutouts)\//, `${id}: full-resolution source leaked into grid`);
+        assert.doesNotMatch(tile, /\/v79\/fighters\/[^/]+\/stance-right\.png/, `${id}: native V79 full-resolution pose leaked into grid`);
         assert.match(tile, /loading="lazy" decoding="async"/);
         pageBytes += icon.bytes;
         seen.add(id);
@@ -121,6 +153,6 @@ test('every roster page requests supplied thumbnails only, while historical port
     }
     assert(pageBytes < 960 * 1024, 'a supplied roster page must stay below 960 KiB');
   }
-  assert.deepEqual([...seen].sort(), [...Object.keys(manifest.icons), ...originalsV56.fighters.map(fighter => fighter.fighterId), ...additionsV62.map(fighter => fighter.id)].sort());
+  assert.deepEqual([...seen].sort(), [...Object.keys(manifest.icons), ...originalsV56.fighters.map(fighter => fighter.fighterId), ...additionsV62.map(fighter => fighter.id), ...additionsV79.map(fighter => fighter.id)].sort());
   for (const invalid of ['city-hunter', 'user-missing', '__proto__', 'constructor']) assert.equal(getPitRosterIcon(invalid), null);
 });

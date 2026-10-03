@@ -10,6 +10,23 @@ const bundle = await build({ stdin: { contents: [
 const p = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const source = JSON.parse(await fs.readFile('docs/v56-excel-priorities.json', 'utf8'));
 
+function playedTerminal(trial, winningSlot) {
+  let combat = p.createPitCombatState(trial.leftId, trial.rightId, { arenaId: trial.arenaId });
+  for (let tick = 0; tick < 18000 && combat.phase !== 'match-over'; tick++) {
+    const actor = combat.fighters[winningSlot], target = combat.fighters[1 - winningSlot], input = [{}, {}];
+    if (combat.phase === 'round') {
+      if (Math.abs(actor.x - target.x) > 64) input[winningSlot] = target.x > actor.x ? { right: true } : { left: true };
+      else if (target.phase !== 'knockdown' && target.wakeInvulnerabilityFrames === 0 && actor.phase === 'idle') input[winningSlot] = { attack: 'heavy' };
+    }
+    combat = p.stepPitCombat(combat, input);
+  }
+  assert.equal(combat.phase, 'match-over');
+  assert.equal(combat.fighters[winningSlot].roundsWon, 2);
+  assert.equal(combat.matchWinnerId, combat.fighters[winningSlot].definitionId);
+  assert.deepEqual(p.deserializePitCombat(p.serializePitCombat(combat)), combat);
+  return combat;
+}
+
 test('four extracts preserve the workbook rival and scene, without manufacturing missing campaign opponents', async () => {
   assert.equal(p.PIT_NARRATIVE_TRIALS_V57.length, 4);
   assert.equal(new Set(p.PIT_NARRATIVE_TRIALS_V57.map(x => x.id)).size, 4);
@@ -46,29 +63,32 @@ test('the actual Canvas callback branch resolves extension narratives without op
   const effectStart = canvas.lastIndexOf('useEffect(() => {', playerLine) + 'useEffect(() => {'.length;
   const branchEnd = canvas.indexOf('if (mode === "descent")', playerLine);
   assert(playerLine > 0 && effectStart > 0 && branchEnd > playerLine);
-  // Execute the real effect prelude, not a duplicate of its gate. The terminal
-  // fixture isolates callback routing; the tests below exercise actual bouts.
+  // Execute the real effect prelude against valid terminals produced by actual
+  // bouts, and settle its real Promise callback before examining delivery.
   const callbackBundle = await build({ stdin: { contents: `
     import {isPitFirstEditionFighterId} from './app/game/systems/pitFirstEdition';
-    export function report(combat, narrativeEncounter) {
+    export async function report(combat, narrativeEncounter) {
       const calls = []; let enteredOrdinaryPersistence = false;
       const playbackReplay = false, reportedMatchFrameRef = {current:null};
       const recorderRef = {current:null}, matchResultIdRef = {current:'callback-fixture'}, mode = 'cpu';
       const setRecordedReplay = () => {}, setReplayNotice = () => {}, setAriaAnnouncement = () => {};
       const onNarrativeComplete = result => { calls.push(result); };
       const effect = () => { ${canvas.slice(effectStart, branchEnd)} enteredOrdinaryPersistence = true; };
-      effect(); return {calls, enteredOrdinaryPersistence};
+      effect(); await Promise.resolve(); await Promise.resolve(); return {calls, enteredOrdinaryPersistence};
     }`, resolveDir: process.cwd(), loader: 'ts' }, bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent' });
   const callback = await import('data:text/javascript;base64,' + Buffer.from(callbackBundle.outputFiles[0].text).toString('base64'));
   for (const trial of p.PIT_NARRATIVE_TRIALS_V57.filter(item => ['greyback', 'machiko-noguchi'].includes(item.leftId))) {
     for (const winnerId of [trial.leftId, trial.rightId]) {
-      const combat = p.createPitCombatState(trial.leftId, trial.rightId, { arenaId: trial.arenaId });
-      combat.phase = 'match-over'; combat.matchWinnerId = winnerId;
-      const narrative = callback.report(combat, trial);
+      const winningSlot = winnerId === trial.leftId ? 0 : 1;
+      const combat = playedTerminal(trial, winningSlot);
+      const malformed = structuredClone(combat);
+      for (const fighter of malformed.fighters) fighter.roundsWon = 0;
+      assert.throws(() => p.deserializePitCombat(p.serializePitCombat(malformed)), 'zero-round terminal must not be accepted at the combat restore boundary');
+      const narrative = await callback.report(combat, trial);
       assert.equal(narrative.calls.length, 1); assert.equal(narrative.enteredOrdinaryPersistence, false);
       assert.equal(p.resolvePitNarrativeOutcome(trial, narrative.calls[0]), winnerId === trial.leftId ? 'victory' : 'defeat');
       assert.equal(narrative.calls[0].cosmeticRewardIds, undefined); assert.equal(narrative.calls[0].arcadeCompleted, undefined);
-      assert.deepEqual(callback.report(combat, undefined), {calls: [], enteredOrdinaryPersistence: false});
+      assert.deepEqual(await callback.report(combat, undefined), {calls: [], enteredOrdinaryPersistence: false});
     }
   }
 });

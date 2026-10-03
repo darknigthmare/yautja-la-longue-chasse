@@ -267,7 +267,7 @@ const HomeworldRegionV68 = React.lazy(() => import("./HomeworldRegionV68"));
 const HomeworldPassageV67 = React.lazy(() => import("./HomeworldPassageV67"));
 const GameReserveV66 = React.lazy(() => import("./GameReserveV66"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
-const PitCanvas = React.lazy(() => import("./PitCanvas"));
+const PitCanvas = React.lazy(() => import("./PitExperienceV79"));
 const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
@@ -2062,6 +2062,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         setToast("Le vaisseau personnel et les chasses autonomes attendent le rite Blooded. Ton apprentissage se poursuit sur le Homeworld."); return;
       }
       void playSound("ui");
+      // A proximity prompt belongs to the scene that produced it. Do not carry
+      // the ship airlock hint over the city HUD after changing location.
+      setToast(null);
       if (next === "deck" || next === "ship") setHubLocation("deck");
       if (next === "homeworld") setHubLocation("homeworld");
       setScreen(next);
@@ -4799,6 +4802,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       {screen === "pit" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <PitCanvas
+            key={save.createdAt}
+            ownerSaveCreatedAt={save.createdAt}
             onOpenNarrativeTrials={() => go("pit-narrative")}
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}

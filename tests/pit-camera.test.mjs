@@ -1,26 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { build } from "esbuild";
 import { fileURLToPath } from "node:url";
-
-const bundle = await build({
-  stdin: {
-    contents: [
-      'export { createPitCombatState, PIT_ARENAS, PIT_FIGHTERS, stepPitCombat, serializePitCombat } from "./app/game/systems/pitCombat";',
-      'export * from "./app/game/systems/pitCamera";',
-    ].join("\n"),
-    resolveDir: fileURLToPath(new URL("..", import.meta.url)),
-    loader: "ts",
-  },
-  bundle: true,
-  write: false,
-  format: "esm",
-  platform: "node",
-});
-
-const api = await import(
-  "data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64")
-);
+import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+const source = homeworldSceneSsrV78(fileURLToPath(new URL('..', import.meta.url)));
+const api = { ...source.load('app/game/systems/pitCombat.ts'), ...source.load('app/game/systems/pitCamera.ts') };
 
 function stateAt(leftX, rightX, leftY = 0, rightY = 0) {
   const state = api.createPitCombatState("jungle-hunter", "city-hunter", {
@@ -33,6 +16,20 @@ function stateAt(leftX, rightX, leftY = 0, rightY = 0) {
   state.fighters[1].y = rightY;
   return state;
 }
+
+test('CQC ground baseline stays fixed through retreats and interpolated zooms', () => {
+  let camera = null;
+  for (let frame = 0; frame < 100; frame++) {
+    const spread = 80 + frame * 6;
+    const state = stateAt(480 - spread / 2, 480 + spread / 2);
+    state.frame = frame;
+    camera = api.advancePitPresentationCamera(camera, state);
+    const arena = api.PIT_ARENAS[state.arenaId];
+    const floor = arena.height / 2 + (arena.groundY - camera.centerY) * camera.zoom;
+    assert.ok(Math.abs(floor - arena.groundY) < 1e-8, `frame ${frame}: ${floor}`);
+    assertContained(camera, state);
+  }
+});
 
 test("close fighters receive a stronger presentation zoom without changing combat state", () => {
   const state = stateAt(430, 530);

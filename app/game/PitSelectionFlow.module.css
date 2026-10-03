@@ -97,7 +97,7 @@
 .rosterTools input::placeholder { color: #aabbb0; }
 .rosterTools > span { font-size: .59rem; white-space: nowrap; padding-block: 14px; color: #b5c3b8; }
 .rosterTools button { min-height: 44px; border: 1px solid #a99259; background: #102219; color: #e7d6b0; font-size: .64rem; padding: 6px; cursor: pointer; }
-.roster { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-auto-rows: minmax(70px, 1fr); gap: 5px; flex: 1 1 0; min-height: 148px; overflow: auto; padding: 4px; overscroll-behavior: contain; scrollbar-color: #b6a373 #102219; }
+.roster { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-auto-rows: 90px; align-content: start; gap: 5px; flex: 1 1 0; min-height: 148px; overflow: auto; padding: 4px; overscroll-behavior: contain; scrollbar-color: #b6a373 #102219; }
 .roster button, .stages button { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 44px; padding: 0; border: 1px solid #9da38d6b; background: #14211c; color: #f0eadb; cursor: pointer; overflow: hidden; text-align: center; transition: border-color .12s, background-color .12s; }
 .roster button[aria-selected="true"], .stages button[aria-selected="true"] { border-color: #ffdda0; background: #574d2b; box-shadow: inset 0 0 0 1px #ffe1a1, 0 0 12px #d4a95d38; }
 .roster button[aria-selected="true"]::after, .stages button[aria-selected="true"]::after { content: ""; position: absolute; inset: 0; border: 2px solid #ffdf94; pointer-events: none; }
@@ -168,7 +168,7 @@
 .flow[data-high-contrast="true"] :is(.rosterConsole, .stageBrowser, .stageShowcase, .slotButton) { background: #050a08; border-color: #ddd; }
 @media (min-width: 1650px) {
   .fighterLayout { grid-template-columns: minmax(250px, 1fr) minmax(590px, 1.7fr) minmax(250px, 1fr); }
-  .roster { grid-auto-rows: minmax(90px, 1fr); }
+  .roster { grid-auto-rows: 104px; }
   .roster button strong { font-size: .64rem; flex-basis: 32px; }
   .stages { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 104px; }
 }

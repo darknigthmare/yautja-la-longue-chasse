@@ -1,5 +1,6 @@
 import {normalizeHomeworldCheckpointV77,type HomeworldCheckpointV77} from './homeworldCheckpointV77';
-import {HOMEWORLD_BUILDINGS_V77,createHomeworldWorldActorV77,homeworldWalkableV77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {HOMEWORLD_BUILDINGS_V77,createHomeworldWorldActorV77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {homeworldUrbanWalkableV78 as homeworldWalkableV77} from './homeworldStreetModulesV78';
 import {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64} from './homeworldInteriorsV64';
 import {homeworldBuildingDoorwayV64} from './homeworldGeometryV64';
 import type {HomeworldActor} from './homeworldCity';

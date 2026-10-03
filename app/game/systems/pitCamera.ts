@@ -135,6 +135,16 @@ function fixedPresentationZoom(state: PitCombatState): number {
 const fitCenter = (center: number, span: number, low: number, high: number): number =>
   span >= high - low ? (low + high) / 2 : clamp(center, low + span / 2, high - span / 2);
 
+/** CQC projects around the feet rather than the centre of the image. Preserve
+ * that ground baseline whenever the complete native silhouettes fit; a high
+ * jump or extended weapon may still move it for visibility. Presentation only. */
+function groundedCenterY(arena: { height: number; groundY: number }, zoom: number,
+  top: number, bottom: number): number {
+  const halfHeight = arena.height / (2 * zoom);
+  const preferred = arena.groundY - (arena.groundY - arena.height / 2) / zoom;
+  return clamp(preferred, bottom - halfHeight, top + halfHeight);
+}
+
 export function targetPitPresentationCamera(
   state: PitCombatState, options: PitCameraOptions = {},
 ): PitPresentationCamera {
@@ -151,11 +161,13 @@ export function targetPitPresentationCamera(
   const top = bounds.top - TOP_MARGIN;
   const bottom = Math.max(bounds.bottom, arena.groundY + FLOOR_MARGIN);
   const zoom = clamp(Math.min(arena.width / Math.max(1, right - left),
-    arena.height / Math.max(1, bottom - top)), MIN_ZOOM, MAX_ZOOM);
+    arena.height / Math.max(1, bottom - top),
+    arena.groundY / Math.max(1, arena.groundY - top),
+    (arena.height - arena.groundY) / Math.max(1, bottom - arena.groundY)), MIN_ZOOM, MAX_ZOOM);
   return {
     arenaId: state.arenaId, frame: state.frame, mode: "follow",
     centerX: fitCenter((left + right) / 2, arena.width / zoom, Math.min(0, left), Math.max(arena.width, right)),
-    centerY: fitCenter((top + bottom) / 2, arena.height / zoom, Math.min(0, top), Math.max(arena.height, bottom)),
+    centerY: groundedCenterY(arena, zoom, top, bottom),
     zoom, targetZoom: zoom,
   };
 }
@@ -168,10 +180,12 @@ function containVisuals(camera: PitPresentationCamera, state: PitCombatState): P
   const arena = PIT_ARENAS[state.arenaId], bounds = getPitPresentationBounds(state);
   const zoom = Math.min(camera.zoom, arena.width / Math.max(1, bounds.right - bounds.left),
     arena.height / Math.max(1, bounds.bottom - bounds.top));
-  const halfW = arena.width / zoom / 2, halfH = arena.height / zoom / 2;
+  const halfW = arena.width / zoom / 2;
   return { ...camera, zoom,
     centerX: clamp(camera.centerX, bounds.right - halfW, bounds.left + halfW),
-    centerY: clamp(camera.centerY, bounds.bottom - halfH, bounds.top + halfH),
+    // Recompute from the final, interpolated/safety-constrained zoom. Interpolating
+    // the vertical centre separately makes the feet slide even between ground poses.
+    centerY: groundedCenterY(arena, zoom, bounds.top, bounds.bottom),
   };
 }
 

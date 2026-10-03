@@ -29,12 +29,15 @@ import HomeworldWorldSceneV77 from './HomeworldWorldSceneV77';
 import HomeworldWorldMapV77 from './HomeworldWorldMapV77';
 import {HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_RESIDENTS_V77,
  nearestHomeworldDoorV77,nearestHomeworldPointV77,nearestHomeworldResidentV77,districtAtHomeworldActorV77,
- stepHomeworldWorldActorV77,homeworldLevelV77,projectHomeworldWorldV77,homeworldCameraWorldV77,
+ homeworldLevelV77,projectHomeworldWorldV77,homeworldCameraWorldV77,
  beginHomeworldTransitV77,stepHomeworldTransitV77,nearestHomeworldConnectorV77,homeworldWorldArrivalV77,
  HOMEWORLD_CONNECTORS_V77,beginHomeworldSkiffV77,stepHomeworldSkiffV77,type HomeworldSkiffV77,type HomeworldLevelV77,type HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {resolveHomeworldLocationV77,createHomeworldCheckpointV77} from './systems/homeworldLocationV77';
+import {stepHomeworldUrbanActorV78 as stepHomeworldWorldActorV77} from './systems/homeworldStreetModulesV78';
+import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77} from './systems/homeworldConnectorArtV77';
 import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacementV77';
+import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
@@ -86,7 +89,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -658,8 +661,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
-          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} />}
-        <div className={styles.hero} data-homeworld-actor="true" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
+          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} />}
+        <div className={styles.hero} data-homeworld-actor="true" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img

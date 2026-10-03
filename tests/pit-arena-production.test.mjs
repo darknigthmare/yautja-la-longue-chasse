@@ -22,13 +22,48 @@ function reviewedFixture() {
 }
 function recorder() {
   const calls = [], stack = [];
-  const state = { globalAlpha: 1, imageSmoothingEnabled: true };
+  let lastRect = null;
+  const state = { globalAlpha: 1, imageSmoothingEnabled: true, activeClip: null };
   return new Proxy({ calls, ...state }, { get(target, key) {
     if (key in target) return target[key];
-    if (key === "save") return () => { stack.push({ globalAlpha: target.globalAlpha }); calls.push({ name: "save", args: [] }); };
+    if (key === "save") return () => { stack.push({ globalAlpha: target.globalAlpha, activeClip: target.activeClip }); calls.push({ name: "save", args: [] }); };
     if (key === "restore") return () => { Object.assign(target, stack.pop()); calls.push({ name: "restore", args: [] }); };
-    return (...args) => calls.push({ name: key, args, alpha: target.globalAlpha });
+    if (key === "beginPath") return () => { lastRect = null; calls.push({ name: key, args: [] }); };
+    if (key === "rect") return (x, y, width, height) => { lastRect = { x, y, width, height }; calls.push({ name: key, args: [x, y, width, height] }); };
+    if (key === "clip") return () => { target.activeClip = lastRect; calls.push({ name: key, args: [], clip: target.activeClip }); };
+    return (...args) => calls.push({ name: key, args, alpha: target.globalAlpha, clip: target.activeClip });
   } });
+}
+// A repeat-x source is drawn twice: rear material clipped above the lane, then
+// the contact strip. Derive the physical lane independently of draw order.
+function floorPasses(context, arenaId, camera, asset) {
+  const arena = api.PIT_ARENAS[arenaId];
+  const ground = api.getPitArenaLayerTransform(arenaId, "P4", camera);
+  const contactY = arena.groundY * ground.scale + ground.translateY;
+  const rearY = contactY - 46 * ground.scale;
+  const clipY = Math.max(0, rearY);
+  const clipHeight = Math.max(0, Math.min(arena.height, contactY) - clipY);
+  const all = context.calls.filter(call => call.name === "drawImage" && call.args[0].src === asset.frames[0].path);
+  const rear = all.filter(call => call.clip !== null), contact = all.filter(call => call.clip === null);
+  assert(contact.length > 0, arenaId + " missing contact strip");
+  assert.equal(rear.length > 0, clipHeight > 0, arenaId + " missing or out-of-viewport rear material");
+  for (const call of contact) assert(Math.abs(call.args[6] - contactY) < 1e-9, arenaId + " contact moved off the physical lane");
+  for (const call of rear) {
+    assert(Math.abs(call.args[6] - rearY) < 1e-9, arenaId + " rear material origin");
+    assert(Math.abs(call.args[8] - 46 * ground.scale) < 1e-9, arenaId + " rear material must be 46 world units");
+    assert.equal(call.clip.x, 0, arenaId + " rear clip left edge");
+    assert.equal(call.clip.width, arena.width, arenaId + " rear clip viewport width");
+    assert(Math.abs(call.clip.y - clipY) < 1e-9, arenaId + " rear clip upper boundary");
+    assert(Math.abs(call.clip.height - clipHeight) < 1e-9, arenaId + " rear clip lower boundary");
+    assert(context.calls.indexOf(call) < context.calls.indexOf(contact[0]), arenaId + " rear material must precede contact");
+  }
+  for (const call of all) assert(Math.abs((call.args[7] - .5) / call.args[3] - call.args[8] / call.args[4]) < 1e-9, arenaId + " floor source must retain uniform scale");
+  for (const pass of [rear, contact]) if (pass.length) {
+    assert(pass[0].args[5] <= 0, arenaId + " uncovered left floor edge");
+    assert(pass.at(-1).args[5] + pass.at(-1).args[7] >= arena.width, arenaId + " uncovered right floor edge");
+    for (let i = 1; i < pass.length; i++) assert(pass[i].args[5] <= pass[i - 1].args[5] + pass[i - 1].args[7], arenaId + " floor seam");
+  }
+  return { rear, contact, contactY };
 }
 function fakeImageClass(fail = () => false, pending = false) {
   return class {
@@ -149,11 +184,8 @@ test("cropped sub-plans retain aspect ratio, six independent passes and world-lo
       const drawing = context.calls.find(call => call.name === "drawImage" && call.args[0].src === pillar.frames[0].path);
       assert.deepEqual(drawing.args.slice(1, 5), [200, 100, 400, 1500]);
       assert(Math.abs(drawing.args[7] / drawing.args[8] - 400 / 1500) < 1e-9);
-      const floorDraws = context.calls.filter(call => call.name === "drawImage" && call.args[0].src === tile.frames[0].path);
-      assert(floorDraws[0].args[5] <= 0);
-      assert(floorDraws.at(-1).args[5] + floorDraws.at(-1).args[7] >= 960);
-      assert(floorDraws.every(call => Math.abs(call.args[6] - (270 + (430 - camera.centerY) * zoom)) < 1e-9));
-      for (let i = 1; i < floorDraws.length; i++) assert(floorDraws[i].args[5] <= floorDraws[i - 1].args[5] + floorDraws[i - 1].args[7]);
+      const floor = floorPasses(context, "the-pit", camera, tile);
+      assert(Math.abs(floor.contactY - (270 + (430 - camera.centerY) * zoom)) < 1e-9);
       assert.equal(api.serializePitCombat(state), snapshot);
       assert.deepEqual(camera, frozenCamera);
       assert.equal(context.calls.filter(call => call.name === "save").length, context.calls.filter(call => call.name === "restore").length);
@@ -204,7 +236,10 @@ test("separate Hall trophies remain inside their display cases through actual dr
   const state = api.createPitCombatState("jungle-hunter", "city-hunter", { mode: "training", arenaId: "trophy-hall" });
   for (const centerX of [180, 480, 780]) for (const centerY of [170, 270, 360]) for (const zoom of [.8, 1, 1.95]) for (const reducedMotion of [false, true]) {
     const context = recorder();
-    api.drawPitArenaBackdrop(context, state, { arenaId: "trophy-hall", centerX, centerY, zoom }, bank, { reducedMotion });
+    const camera = { arenaId: "trophy-hall", centerX, centerY, zoom };
+    api.drawPitArenaBackdrop(context, state, camera, bank, { reducedMotion });
+    const tile = kit.planes.find(plane => plane.id === "P4").assets.find(asset => asset.mode === "repeat-x");
+    const contactFloor = floorPasses(context, "trophy-hall", camera, tile).contact[0];
     const bounds = filename => {
       const drawing = context.calls.find(call => call.name === "drawImage" && call.args[0].src.endsWith(filename + ".png"));
       assert(drawing, filename);
@@ -213,7 +248,7 @@ test("separate Hall trophies remain inside their display cases through actual dr
     };
     for (const [caseId, trophyId] of [["p2-b-display-case-left", "p3-a-trophy-crowned-skull"], ["p2-c-display-case-right", "p3-b-trophy-armored-jaw"]]) {
       const cabinet = bounds(caseId), trophy = bounds(trophyId);
-      const floor = bounds("p4-a-gallery-floor-tile");
+      const floor = { y: contactFloor.args[6] };
       assert(Math.abs(cabinet.y + cabinet.height - floor.y) < 5, caseId + " floats or sinks relative to the real contact floor");
       assert(trophy.x >= cabinet.x + cabinet.width * .07, trophyId + " exits left of its case");
       assert(trophy.x + trophy.width <= cabinet.x + cabinet.width * .93, trophyId + " exits right of its case");
@@ -261,7 +296,8 @@ test("V34 grounded objects keep their feet on P4 and suspended modules remain at
       api.drawPitArenaBackdrop(context, state, camera, bank, { reducedMotion });
       api.drawPitArenaForeground(context, state, camera, bank, { reducedMotion });
       const drawings = context.calls.filter(call => call.name === "drawImage");
-      const floor = drawings.find(call => call.args[0].src.endsWith("/p4-a-contact-floor.png"));
+      const tile = kit.planes.find(plane => plane.id === "P4").assets.find(asset => asset.mode === "repeat-x");
+      const floor = floorPasses(context, id, camera, tile).contact[0];
       assert(floor);
       for (const plane of kit.planes) for (const asset of plane.assets.filter(a => a.mode === "module")) {
         const drawing = drawings.find(call => call.args[0].src === asset.frames[0].path);

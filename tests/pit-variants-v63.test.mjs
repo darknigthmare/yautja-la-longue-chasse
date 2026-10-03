@@ -24,7 +24,7 @@ function browser(failed=[]){
   return{requests,restore(){Object.assign(globalThis,previous);}};
 }
 test('V63 adds two source-specific appearances with no new identities and preserves every historical default and bitmap',()=>{
-  assert.equal(p.PIT_VERSUS_FIGHTER_IDS.length,199);assert.equal(receipt.newIdentities,0);assert.equal(receipt.newAppearances,2);
+  assert.equal(p.PIT_VERSUS_FIGHTER_IDS.length,201);assert.equal(receipt.newIdentities,0);assert.equal(receipt.newAppearances,2);
   for(const original of historical.fighters){const actual=p.getPitFighterVariants(original.id),addition=manifest.variantAdditions.find(a=>a.fighterId===original.id);
     assert.equal(actual.length,original.variants.length+(addition?.variants.length??0));
     assert.deepEqual(actual.slice(0,original.variants.length).map((v,i)=>({...v,label:original.variants[i].label})),original.variants);

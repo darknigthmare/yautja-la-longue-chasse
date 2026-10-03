@@ -6,6 +6,8 @@ import {HOMEWORLD_FAUNA_CODEX_V77} from './homeworldFaunaV77';
 import {HOMEWORLD_CONCEPT_CODEX_V77} from './homeworldConceptRefsV77';
 import {HOMEWORLD_WORLD_CODEX_V77,homeworldRecordPlacementV77} from './homeworldWorldCodexV77';
 import {HOMEWORLD_LAVA_CODEX_V77} from './homeworldLavaPlacementV77';
+import {HOMEWORLD_URBAN_CODEX_V78} from './homeworldUrbanCodexV78';
+import {HOMEWORLD_CITY_NATIVE_CODEX_V78} from './homeworldCityNativeCodexV78';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
@@ -123,4 +125,8 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
 export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64&{associatedElementIds?:readonly string[]})[]=[
   ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null),
   ...HOMEWORLD_WORLD_CODEX_V77,...HOMEWORLD_LAVA_CODEX_V77,...HOMEWORLD_FAUNA_CODEX_V77,...HOMEWORLD_CONCEPT_CODEX_V77,
+  // V78 records already own world coordinates and elevation. Never apply the
+  // legacy port relocation to them a second time.
+  ...HOMEWORLD_URBAN_CODEX_V78,
+  ...HOMEWORLD_CITY_NATIVE_CODEX_V78,
 ];

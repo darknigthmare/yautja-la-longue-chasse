@@ -252,12 +252,15 @@ interface PendingPitRunTransition {
 }
 
 interface PitCanvasProps {
+  /** Restore the visited hero only; this is not a durable versus checkpoint. */
+  initialLeftId?: PitVersusFighterId;
   /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
   narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId };
   /** Reserved for an actual scenario controller; current workbook extracts emit no V61 story cue. */
   narrativeStageCues?: PitStageNarrativeCuesV61;
   onNarrativeComplete?: (result: PitNarrativeResultInput) => void | Promise<void>;
   onOpenNarrativeTrials?: () => void;
+  onOpenCharacterChronicle?: (fighterId: PitVersusFighterId) => void;
   controlBindings: ControlBindings;
   highContrast: boolean;
   reducedGore: boolean;
@@ -993,7 +996,7 @@ export function FighterCard({
       </div>
       {!authoredPortrait && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? <><span>Image indisponible</span> <button type="button" onClick={() => setFailedArtSrc(null)}>Réessayer le portrait</button></> : "Image à produire"}</small> : null}
       <h3>{fighter.name}</h3>
-      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : 'image fournie · pose fixe'}</small>}
+      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : userVariant.sourceArchive.startsWith('OpenAI') ? 'illustration OpenAI référencée · pose fixe' : 'image fournie · pose fixe'}</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
       <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : fighter.attacks.technique.label}</small>
       {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
@@ -1040,10 +1043,12 @@ function roundPresentationAnnouncement(presentation: PitRoundPresentationView, c
 }
 
 export default function PitCanvas({
+  initialLeftId,
   narrativeEncounter,
   narrativeStageCues,
   onNarrativeComplete,
   onOpenNarrativeTrials,
+  onOpenCharacterChronicle,
   controlBindings,
   highContrast,
   reducedGore,
@@ -1069,8 +1074,8 @@ export default function PitCanvas({
   const presentationMotion = resolvePitPresentationMotion({ prefersReducedMotion, screenShake, fixedCamera });
   const reducedCameraMotion = presentationMotion.reducedMotion;
   const [mode, setMode] = useState<PitMode>("cpu");
-  const [leftId, setLeftId] = useState<PitVersusFighterId>(narrativeEncounter?.leftId ?? "jungle-hunter");
-  const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? "berserker");
+  const [leftId, setLeftId] = useState<PitVersusFighterId>(() => narrativeEncounter?.leftId ?? (isPitVersusFighterId(initialLeftId) ? initialLeftId : "jungle-hunter"));
+  const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? (initialLeftId === "berserker" ? "jungle-hunter" : "berserker"));
   const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
   const [rightVariantId, setRightVariantId] = useState<string | null>(null);
   const [arenaId, setArenaId] = useState<PitArenaId>(narrativeEncounter?.arenaId ?? "the-pit");
@@ -2785,7 +2790,7 @@ export default function PitCanvas({
         rightId: combat.fighters[1].definitionId,
         arenaId: combat.arenaId,
       };
-      if (onNarrativeComplete) void Promise.resolve(onNarrativeComplete(narrativeResult)).catch(() => {
+      if (onNarrativeComplete) void Promise.resolve().then(() => onNarrativeComplete(narrativeResult)).catch(() => {
         setReplayNotice("L’issue de cette épreuve n’a pas pu être transmise au récit. Aucun succès n’est attribué.");
       });
       return;
@@ -3059,6 +3064,7 @@ export default function PitCanvas({
           <div><span className={styles.eyebrow}>RITUELS DE COMBAT</span><h2 id="pit-title">THE PIT</h2></div>
           <p className={styles.selectionPopulation}>{PIT_VERSUS_FIGHTER_IDS.length} chasseurs <span>· {PIT_ARENA_IDS.length} arènes</span></p>
           <div className={styles.selectionHeaderActions}>
+            {onOpenCharacterChronicle ? <button type="button" className={styles.utilityButton} data-pit-character-chronicle-open onClick={() => onOpenCharacterChronicle(leftId)}>Chronique du chasseur</button> : null}
             {onOpenNarrativeTrials ? <button type="button" className={styles.utilityButton} data-pit-narrative-open onClick={onOpenNarrativeTrials}>Épreuves narratives</button> : null}
             <button ref={selectionOptionsTriggerRef} type="button" className={styles.utilityButton} data-pit-options-open aria-haspopup="dialog" aria-expanded={selectionOptionsOpen} onClick={openSelectionOptions}>Options & parcours</button>
             <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>

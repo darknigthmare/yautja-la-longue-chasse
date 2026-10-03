@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "release": "V79",
+  "fighters": [
+    {
+      "id": "user-last-hunt-super",
+      "name": "Super Predator — The Last Hunt",
+      "sourceLabel": "Predator: The Last Hunt #3 · apparence masquée · adaptation référencée",
+      "artProvenance": "openai-primary-reference",
+      "canonicalFidelityCertified": false,
+      "variants": [
+        {
+          "id": "last-hunt-super-referenced-stance-v79",
+          "label": "Apparence référencée · pose native fixe",
+          "src": "/game/sprites/v79/fighters/last-hunt-super/stance-right.png",
+          "width": 1024,
+          "height": 1536,
+          "pivot": [
+            534,
+            1503
+          ],
+          "bodyTopY": 26,
+          "nativeFacing": "right",
+          "sha256": "a3a6bae74c1c6609bb4f29ba7a3a46ed5ed0b64b633e6ba4812fe003bc46b603",
+          "sourceArchive": "OpenAI V79 · références publiques inspectées",
+          "sourceEntry": "docs/v79-reference-hunters-art.md",
+          "frameCount": 1,
+          "animated": false,
+          "identityStatus": "referenced-incarnation",
+          "canonicalFidelityCertified": false,
+          "sourceUrls": [
+            "https://www.marvel.com/comics/collection/110461/",
+            "https://aiptcomics.com/2024/04/19/marvel-preview-predator-the-last-hunt-3/"
+          ],
+          "sourceNotes": [
+            "Only the large foreground spiked hunter is the identity reference; the two inset hunters are excluded.",
+            "Helmet, pauldrons, mottled skin and crescent wrist blades reviewed against the issue preview. Unseen surfaces and guard stance are conservative reconstructions, not certified 1:1.",
+            "One native right-facing stance only. Left-facing display is a provisional mirror, not separately authored canon art. No drawn movement, attack, victory or defeat animation is delivered."
+          ]
+        }
+      ],
+      "icon": {
+        "src": "/game/sprites/v79/fighters/last-hunt-super/roster-icon.webp",
+        "width": 128,
+        "height": 192,
+        "bytes": 14362,
+        "sourceSrc": "/game/sprites/v79/fighters/last-hunt-super/stance-right.png",
+        "sourceSha256": "a3a6bae74c1c6609bb4f29ba7a3a46ed5ed0b64b633e6ba4812fe003bc46b603",
+        "sourceVariantId": "last-hunt-super-referenced-stance-v79",
+        "sha256": "94f0502d89298eaf2523d754973022669b00689e4fa0c944a6d819b69e11a099"
+      }
+    },
+    {
+      "id": "user-avp-classic-2000",
+      "name": "Predator — AVP Classic 2000",
+      "sourceLabel": "Aliens versus Predator Classic 2000 · modèle joueur Rebellion · adaptation référencée",
+      "artProvenance": "openai-primary-reference",
+      "canonicalFidelityCertified": false,
+      "variants": [
+        {
+          "id": "avp-classic-2000-referenced-stance-v79",
+          "label": "Apparence référencée · pose native fixe",
+          "src": "/game/sprites/v79/fighters/avp-classic-2000/stance-right.png",
+          "width": 1145,
+          "height": 1374,
+          "pivot": [
+            540,
+            1354
+          ],
+          "bodyTopY": 13,
+          "nativeFacing": "right",
+          "sha256": "04a93516a65155301eeb0ea8484cde6a7da349b582598965920806c8cee5a227",
+          "sourceArchive": "OpenAI V79 · références publiques inspectées",
+          "sourceEntry": "docs/v79-reference-hunters-art.md",
+          "frameCount": 1,
+          "animated": false,
+          "identityStatus": "referenced-incarnation",
+          "canonicalFidelityCertified": false,
+          "sourceUrls": [
+            "https://store.steampowered.com/app/3730/",
+            "https://store.steampowered.com/manual/3730"
+          ],
+          "sourceNotes": [
+            "The model from the official Classic 2000 screenshots is distinct from the 2010 AVP hunters. No personal name is invented.",
+            "Bronze/olive broad mask, dark blue locks with gold rings, green angular armor and rectangular gauntlets reviewed against the actual game model. Small hidden surfaces are reconstructed.",
+            "No combi-stick is assigned: the Classic 2000 manual lists wrist blades, plasma pistol, speargun, shoulder cannon and disc.",
+            "One native right-facing stance only; no complete animation sheet or certified 1:1 fidelity. The shared duel profile does not create exclusive canonical techniques."
+          ]
+        }
+      ],
+      "icon": {
+        "src": "/game/sprites/v79/fighters/avp-classic-2000/roster-icon.webp",
+        "width": 128,
+        "height": 192,
+        "bytes": 10420,
+        "sourceSrc": "/game/sprites/v79/fighters/avp-classic-2000/stance-right.png",
+        "sourceSha256": "04a93516a65155301eeb0ea8484cde6a7da349b582598965920806c8cee5a227",
+        "sourceVariantId": "avp-classic-2000-referenced-stance-v79",
+        "sha256": "0a2d1fbe42b94f5ad57948fcbfd63131dd7375dd3de595261b71a33bdd4c2573"
+      }
+    }
+  ]
+}

@@ -13,7 +13,7 @@ export interface HomeworldNativeSpriteCellV64 {
 }
 
 /** Native cell, one uniform scale, and a measured support point. The caller
- * supplies an already projected ground anchor; depth remains unprojected y. */
+ * supplies an already projected ground anchor and its scene sorting depth. */
 export default function HomeworldNativePropV64({ id, artId, art, x, y, depth, heightWorld = art.heightWorld, className, style }: {
   id: string; artId: string; art: HomeworldNativeSpriteCellV64;
   x: number; y: number; depth: number; heightWorld?: number;

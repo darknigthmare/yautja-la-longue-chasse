@@ -1,12 +1,44 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
+import ts from "typescript";
 
 const gameClientUrl = new URL("../app/game/GameClient.tsx", import.meta.url);
 const pitCanvasUrl = new URL("../app/game/PitCanvas.tsx", import.meta.url);
 
+function eagerImportModules(source) {
+  const file = ts.createSourceFile("GameClient.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  return new Set(file.statements.filter(ts.isImportDeclaration).filter(declaration => {
+    const clause = declaration.importClause;
+    if (!clause) return true; // Side-effect imports execute the module.
+    if (clause.isTypeOnly) return false;
+    if (clause.name) return true;
+    const bindings = clause.namedBindings;
+    return !bindings || !ts.isNamedImports(bindings) || bindings.elements.length === 0 ||
+      bindings.elements.some(element => !element.isTypeOnly);
+  }).map(declaration => declaration.moduleSpecifier.text));
+}
+
+test("TSX import inspection permits types but rejects multiline and side-effect eager modules", () => {
+  const imports = eagerImportModules(`
+    import type { Props } from "./PitCanvas";
+    import { type WrapperProps } from "./PitExperienceV79";
+    import {
+      Selection
+    } from "./PitExperienceV79";
+    import "./PitCanvas";
+    import type { RegionProps } from "./HomeworldRegionV68";
+    import { type RegionProps, Region } from "./HomeworldRegionV68";
+    const Canvas = React.lazy(() => import("./HuntCanvas"));
+  `);
+  assert.deepEqual([...imports].sort(), ["./HomeworldRegionV68", "./PitCanvas", "./PitExperienceV79"]);
+  assert.equal(eagerImportModules('import type { Props } from "./PitCanvas";').size, 0);
+  assert.equal(eagerImportModules('import { type Props } from "./PitExperienceV79";').size, 0);
+});
+
 test("GameClient lazily loads every heavyweight game surface", async () => {
   const source = await readFile(gameClientUrl, "utf8");
+  const eagerModules = eagerImportModules(source);
 
   assert.match(
     source,
@@ -18,6 +50,8 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   );
   assert.doesNotMatch(source, /import HuntCanvas from "\.\/HuntCanvas"/);
   assert.doesNotMatch(source, /import ShipHub from "\.\/ShipHub"/);
+  assert(!eagerModules.has("./HuntCanvas"));
+  assert(!eagerModules.has("./ShipHub"));
   for (const componentName of [
     "PitCanvas",
     "PitNarrativeTrials",
@@ -41,21 +75,26 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "HomeworldRegionV68",
     "GameReserveV66",
   ]) {
+    const moduleName = componentName === "PitCanvas" ? "PitExperienceV79" : componentName;
     assert.match(
       source,
       new RegExp(
-        `const ${componentName} = React\\.lazy\\(\\(\\) => import\\("\\.\\/${componentName}"\\)\\)`,
+        `const ${componentName} = React\\.lazy\\(\\(\\) => import\\("\\.\\/${moduleName}"\\)\\)`,
       ),
     );
     assert.doesNotMatch(
       source,
       new RegExp(`import ${componentName} from "\\.\\/${componentName}"`),
     );
+    for (const forbidden of new Set([componentName, moduleName])) {
+      assert(!eagerModules.has(`./${forbidden}`), `${forbidden} must not be imported eagerly`);
+    }
   }
   assert.match(
     source,
     /const CatalogueHunterBrowser = React\.lazy\(\(\) =>[\s\S]*?default: module\.CatalogueHunterBrowser/,
   );
+  assert(!eagerModules.has("./CatalogueHunterBrowser"));
   assert.equal(source.match(/<ShipHub/g)?.length, 2);
   assert.equal(source.match(/<HuntCanvas/g)?.length, 1);
   assert.equal(source.match(/<PitCanvas/g)?.length, 1);

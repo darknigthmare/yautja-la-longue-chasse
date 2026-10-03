@@ -1,6 +1,7 @@
 import manifest from '../data/pitUserHuntersV44.json';
 import additionsV62 from '../data/pitUserHuntersV62.json';
 import variantsV63 from '../data/pitUserVariantsV63.json';
+import additionsV79 from '../data/pitUserHuntersV79.json';
 import { PIT_FIRST_EDITION_FIGHTERS, type PitEditionFighterDefinition } from './pitFirstEdition';
 import { getPitVariantLabelV62, PIT_ROSTER_IDENTITY_NOTES_V62 } from './pitRosterIdentityV62';
 
@@ -22,7 +23,7 @@ export interface PitUserVariant {
 interface PitUserHunter { readonly id: string; readonly name: string; readonly sourceLabel: string; readonly artProvenance?: 'openai-primary-reference'; readonly variants: readonly PitUserVariant[] }
 /** Append game-specific appearances without replacing historical IDs, pixels or default order. */
 const variantAdditions = new Map(variantsV63.variantAdditions.map(entry => [entry.fighterId, entry.variants as unknown as readonly PitUserVariant[]]));
-const hunters: readonly PitUserHunter[] = ([...manifest.fighters, ...additionsV62.fighters] as unknown as readonly PitUserHunter[]).map(hunter => {
+const hunters: readonly PitUserHunter[] = ([...manifest.fighters, ...additionsV62.fighters, ...additionsV79.fighters] as unknown as readonly PitUserHunter[]).map(hunter => {
  const note = PIT_ROSTER_IDENTITY_NOTES_V62[hunter.id];
  return { ...hunter, name: note?.name ?? hunter.name, sourceLabel: note?.sourceLabel ?? hunter.sourceLabel,
   variants: [...hunter.variants, ...(variantAdditions.get(hunter.id) ?? [])].map(variant => ({ ...variant, label: getPitVariantLabelV62(hunter.id, variant.id, variant.label) })) };
