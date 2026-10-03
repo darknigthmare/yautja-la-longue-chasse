@@ -17,8 +17,9 @@ export interface HomeworldElementRecordV64 {
   districtId: string; spaceId: string;
   position: Point & { z: number };
   dimensions: { width: number; depth: number; height: number };
-  footprint: { left: number; right: number; top: number; bottom: number } | null;
-  door: { threshold: Point; approach: Point; clearWidth: number; clearHeight: number; paintedSocket?: unknown } | null;
+  footprint: { left: number; right: number; top: number; bottom: number; polygon?:readonly Point[] } | null;
+  door: { threshold: Point; approach: Point; clearWidth: number; clearHeight: number; paintedSocket?: unknown;
+    normal?:Point;groundOpening?:{left:Point;right:Point} } | null;
   lore: 'original-adaptation' | 'licensed-reference-adaptation';
   source: { label: string; url: string; note: string }[];
   constraints: string[]; asset: string | null;
@@ -36,8 +37,10 @@ const record = (value: Pick<HomeworldElementRecordV64, 'id' | 'label' | 'categor
 const buildings = HOMEWORLD_BUILDINGS.flatMap(building => {
   const door = homeworldBuildingDoorwayV64(building), footprint = homeworldBuildingFootprintV64(building);
   const common = { districtId: building.districtId, position: { x: building.x, y: building.y, z: 0 }, door,
-    constraints: ['Façade sud. PNG natif à échelle uniforme ; seuil peint aligné sur le seuil logique.',
-      'Empreinte solide au nord du seuil ; le retrait mesuré autorise seulement le passage central devant la façade.',
+    constraints: [building.art.groundFrame ? `Bâtiment orienté de ${building.art.groundFrame.yawDegrees}° au sol. Caméra yaw0/pitch35 inchangée ; aucune rotation du bitmap.`
+      : 'Façade sud. PNG natif à échelle uniforme ; seuil peint aligné sur le seuil logique.',
+      building.art.groundFrame ? 'Empreinte solide orientée derrière le segment de fondation mesuré ; approche suivant la normale réelle de la porte.'
+      : 'Empreinte solide au nord du seuil ; le retrait mesuré autorise seulement le passage central devant la façade.',
       'Intérieur visitable. Les conditions des services et de l’enquête restent inchangées.',
       `Métrologie : ${building.art.measurementStatus ?? 'mesure visuelle des pixels sources'}.`],
     asset: building.art.src, source: architectureSources };
@@ -113,6 +116,8 @@ export const HOMEWORLD_ELEMENT_CODEX_V64: readonly HomeworldElementRecordV64[] =
     const position = { x: Math.min(...xs), y: Math.min(...ys), z: 0 };
     return record({ id: `street:${street.id}`, label: street.label, category: 'street', position,
       dimensions: { width: Math.max(...xs) - position.x, depth: Math.max(...ys) - position.y, height: 0 },
+      ...(/^(forecourt|forecourt-link)-v76:/.test(street.id)?{asset:HOMEWORLD_GROUND_ART_V64.src,
+        footprint:{left:position.x,right:Math.max(...xs),top:position.y,bottom:Math.max(...ys),polygon:street.polygon}}:{}),
       constraints: ['Terrain polygonal connecté ; empreinte complète du chasseur contrôlée à chaque pas.', 'Les dalles sont projetées comme le sol, pas comme une façade verticale.'] }); }),
   ...buildings,
   ...HOMEWORLD_PROPS.map(prop => record({ id: `prop:${prop.id}`, label: prop.artId ? propNames[prop.artId] : prop.id, category: 'prop', districtId: prop.districtId,

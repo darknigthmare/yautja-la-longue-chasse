@@ -95,7 +95,7 @@ test('actual JSX projects ground once, masks all public polygons, and crops inde
   const {html}=taskModule.exports;
   assert(html.includes('data-homeworld-outskirts-floor="v71"'));assert(html.includes('scaleY(0.573576436351046)'));
   assert(!html.includes('width="8100"'),'actual ground SVG is restricted to camera window');
-  assert.equal((html.match(/<polygon /g)??[]).length,(city.HOMEWORLD_DISTRICTS.length+city.HOMEWORLD_STREETS.length)*2,'union ground masks are actual rendered polygons');
+  assert.equal((html.match(/<polygon /g)??[]).length,(city.HOMEWORLD_DISTRICTS.length+city.HOMEWORLD_STREETS.length)*2+model.HOMEWORLD_BUILDING_APPROACHES_V71.filter(p=>p.polygon).length,'union masks and oriented threshold floors are actual rendered polygons');
   assert.equal((html.match(/data-homeworld-approach-v71=/g)??[]).length,43);
   const nativeCount=(html.match(/data-homeworld-prop-id="outskirts-v71-/g)??[]).length;
   assert(nativeCount>0&&nativeCount<model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length);assert(html.includes('data-native-source-rect='));

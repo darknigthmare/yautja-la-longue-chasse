@@ -56,7 +56,7 @@ export default function HomeworldElementCodex() {
             <dt>Position X ; Y ; Z</dt><dd>{point(selected.position)} ; {units(selected.position.z)}</dd>
             <dt>Largeur × profondeur × hauteur</dt><dd>{units(selected.dimensions.width)} × {units(selected.dimensions.depth)} × {units(selected.dimensions.height)} u.</dd>
             <dt>Repère d’échelle</dt><dd>Chasseur adulte : 100 u. ≈ 2,3 m. Échelle de travail du projet.</dd>
-            <dt>Projection</dt><dd>Orthographique · façade sud · sol Y × sin(35°) ; hauteurs verticales non comprimées.</dd>
+            <dt>Projection</dt><dd>Caméra orthographique fixe · sol Y × sin(35°) ; hauteurs verticales non comprimées. L’orientation du bâtiment ou du meuble appartient à son dessin natif.</dd>
             {selected.door && <><dt>Seuil / approche</dt><dd>{point(selected.door.threshold)} / {point(selected.door.approach)}</dd><dt>Passage libre</dt><dd>{units(selected.door.clearWidth)} × {units(selected.door.clearHeight)} u.</dd></>}
           </dl>
         </div>
@@ -86,9 +86,11 @@ function ElementFootprint({ record }: { record: HomeworldElementRecordV64 }) {
   const bottom = Math.max(footprint.bottom, door?.approach.y ?? footprint.bottom) + margin;
   const scale = Math.max(right - left, bottom - top);
   return <figure className={styles.plan}><svg viewBox={`${left} ${top} ${right - left} ${bottom - top}`} role="img" aria-label={`Empreinte au sol de ${record.label}, vue en plan ; seuil et approche en or.`}>
-    <rect x={footprint.left} y={footprint.top} width={width} height={depth} rx={scale * .012} fill="#43564d" stroke="#a9c4aa" strokeWidth={scale * .009} />
+    {footprint.polygon ? <polygon points={footprint.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#43564d" stroke="#a9c4aa" strokeWidth={scale*.009}/>
+      : <rect x={footprint.left} y={footprint.top} width={width} height={depth} rx={scale * .012} fill="#43564d" stroke="#a9c4aa" strokeWidth={scale * .009} />}
     {door && <><path d={`M${door.approach.x} ${door.approach.y} L${door.threshold.x} ${door.threshold.y}`} fill="none" stroke="#f4cd83" strokeWidth={scale * .016} strokeDasharray={`${scale * .018} ${scale * .018}`} />
-      <path d={`M${door.threshold.x - door.clearWidth / 2} ${door.threshold.y} h${door.clearWidth}`} fill="none" stroke="#fff0c0" strokeWidth={scale * .023} />
+      <path d={door.groundOpening ? `M${door.groundOpening.left.x} ${door.groundOpening.left.y} L${door.groundOpening.right.x} ${door.groundOpening.right.y}`
+        : `M${door.threshold.x - door.clearWidth / 2} ${door.threshold.y} h${door.clearWidth}`} fill="none" stroke="#fff0c0" strokeWidth={scale * .023} />
       <circle cx={door.approach.x} cy={door.approach.y} r={scale * .021} fill="#f4cd83" /></>}
     <text x={left + scale * .03} y={top + scale * .055} fill="#afc7bd" fontSize={scale * .043}>N ↑</text>
   </svg><figcaption>Vue en plan · vert : empreinte · or : accès. La perspective à l’écran est calculée séparément.</figcaption></figure>;

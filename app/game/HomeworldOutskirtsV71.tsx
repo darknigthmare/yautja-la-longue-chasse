@@ -64,8 +64,11 @@ export default memo(function HomeworldOutskirtsV71({actor,cameraX,cameraY,width,
         data-landscape-material={patch.materialId} data-landscape-region={patch.regionId??'plateau'}
         x={patch.x-patch.radiusX} y={patch.y-patch.radiusY} width={patch.radiusX*2} height={patch.radiusY*2}
         fill={`url(#${id}-${patch.materialId})`} opacity={patch.opacity} mask={`url(#${id}-patch-${index})`}/>)}</g>
-      <g mask={`url(#${id}-public)`}>{HOMEWORLD_BUILDING_APPROACHES_V71.map(path=><rect key={path.id} data-homeworld-approach-v71={path.buildingId}
-        x={path.x} y={path.y} width={path.width} height={path.depth} fill={`url(#${id}-paving)`} stroke="#bfa97a" strokeOpacity=".38" strokeWidth="3" />)}</g>
+      <g mask={`url(#${id}-public)`}>{HOMEWORLD_BUILDING_APPROACHES_V71.map(path=>path.polygon
+        ? <polygon key={path.id} data-homeworld-approach-v71={path.buildingId} data-homeworld-approach-oriented-v76="true"
+          points={path.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill={`url(#${id}-paving)`} stroke="#bfa97a" strokeOpacity=".38" strokeWidth="3" />
+        : <rect key={path.id} data-homeworld-approach-v71={path.buildingId}
+          x={path.x} y={path.y} width={path.width} height={path.depth} fill={`url(#${id}-paving)`} stroke="#bfa97a" strokeOpacity=".38" strokeWidth="3" />)}</g>
     </svg>
     {landscapeModules.map(module=>{
       if(!homeworldOutskirtsVisibleV71(module,{x:cameraX,y:cameraY,width,height}))return null;

@@ -18,8 +18,14 @@ import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { homeworldBuildingIdentityV72 } from "./homeworldIdentityV72";
 import { homeworldBuildingIdentityV75 } from "./homeworldArchitectureArtV75";
+import {homeworldBuildingIdentityV76} from './homeworldArchitectureArtV76';
+import {HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76} from './homeworldBuildingPlacementsV76';
+import {HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76,homeworldFrontagePlacementV76,homeworldBeaconPlacementV76,homeworldBenchPlacementV76} from './homeworldFrontagePlacementsV76';
+import {homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
+import {homeworldExteriorCollisionV76} from './homeworldExteriorDecorV76';
+import {homeworldForecourtsV76,HOMEWORLD_FORECOURT_LINKS_V76} from './homeworldForecourtsV76';
 import { HOMEWORLD_CONNECTION_WORLD_V72, HOMEWORLD_CONNECTION_STREETS_V72, homeworldConnectionThresholdV72, homeworldConnectionCollisionV72 } from "./homeworldRegionConnectionsV72";
-import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
+import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingSpriteScaleV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, homeworldBuildingGroundFrameV76, homeworldBuildingTouchesV76, homeworldBuildingCoversPaintV76, type HomeworldNativeBuildingArtV64 } from "./homeworldGeometryV64";
 export { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldUnprojectGroundV64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64, homeworldBuildingSpritePlacementV64 } from "./homeworldGeometryV64";
 
 export interface HomeworldVec2 {
@@ -243,7 +249,6 @@ const extraStreetsV64: readonly HomeworldStreet[] = [
   { id: "quay-connection", label: "Raccord des quais au spatioport", polygon: polygon([680,3460],[1400,3460],[1400,3700],[680,3700]), kind: "passage", accent: "#d6bd8e" },
   { id: "shuttle-access", label: "Passage du sas de transfert", polygon: polygon([1120,4220],[1260,4220],[1260,4440],[1120,4440]), kind: "passage", accent: "#d6bd8e" },
 ];
-export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64, ...HOMEWORLD_CONNECTION_STREETS_V72];
 
 const BUILDING_ASSET_ROOT = "/game/ship-interior/";
 
@@ -270,8 +275,10 @@ export const HOMEWORLD_BUILDINGS_V54 = [
 ] as const;
 
 function nativeBuildingV64(seed: { id: string; districtId: string; label: string; x: number; y: number; width: number; depth: number; variant: HomeworldBuildingModule["variant"]; entranceKind: "civic" | "domestic"; artId: keyof typeof HOMEWORLD_BUILDING_ART_V64 }): HomeworldBuildingModule {
-  const identity = homeworldBuildingIdentityV72(seed.id) ?? homeworldBuildingIdentityV75(seed.id);
-  const art = identity?.art ?? HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = seed.width / (art.foundationFront.right - art.foundationFront.left);
+  const offset=HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76[seed.id];
+  if(offset)seed={...seed,x:seed.x+offset.x,y:seed.y+offset.y};
+  const identity = homeworldBuildingIdentityV76(seed.id) ?? homeworldBuildingIdentityV72(seed.id) ?? homeworldBuildingIdentityV75(seed.id);
+  const art = identity?.art ?? HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = homeworldBuildingSpriteScaleV64({...seed,height:0,art});
   return { ...seed, label: identity?.title ?? seed.label, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
     wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: identity?.depth ?? seed.depth } };
 }
@@ -281,6 +288,16 @@ export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
   ...residencesV64.map((b, index) => nativeBuildingV64({ ...b, label: "Maison du clan · " + String(index + 1).padStart(2, "0"),
     variant: "hall", entranceKind: "domestic", artId: b.artId as keyof typeof HOMEWORLD_BUILDING_ART_V64 })),
 ];
+/** Twelve relocated legacy fixtures will have their own real volumes when
+ * their host façades turn. Front-facing historical bays remain unchanged. */
+export const HOMEWORLD_FORECOURTS_V76=homeworldForecourtsV76(HOMEWORLD_BUILDINGS);
+export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64, ...HOMEWORLD_CONNECTION_STREETS_V72, ...HOMEWORLD_FORECOURTS_V76, ...HOMEWORLD_FORECOURT_LINKS_V76];
+
+export const HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76=HOMEWORLD_BUILDINGS.flatMap(building=>building.art.groundFrame
+  ? (HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76[building.id]??[]).map((arrangement,index)=>({
+    id:`v75-frontage:${building.id}:${index+1}`,artId:arrangement.artId,scale:arrangement.scale,
+    ...homeworldFrontagePlacementV76(building,arrangement)})) : []);
+const angledFrontageCollidersV76=HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.map(item=>({id:item.id,...homeworldFurnitureFootprintV72(item)}));
 
 /** Historical props/data remain available for provenance; V64 renders new native instances only. */
 export const HOMEWORLD_LEGACY_PROPS_V54: readonly HomeworldDecorProp[] = [
@@ -349,13 +366,19 @@ function nativePropV64(id: string, districtId: string, artId: keyof typeof HOMEW
 }
 /** Ground-front pivots, not decorative screen rectangles. All legacy props remain archived above. */
 export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
-  ...(lifeV69.decorations ?? []) as HomeworldDecorProp[],
+  // The historical citadel brazier's north-west support was 11.77 units beyond
+  // the real district edge. A twelve-unit inward shift seats its whole 96×50
+  // base; the original data, native PNG, scale, identity and collider stay intact.
+  ...(lifeV69.decorations ?? []).map(prop => prop.id === "life-v69-brazier-citadel" ? { ...prop, y: prop.y + 12 } : prop) as HomeworldDecorProp[],
   ...lifeV68.decorations as HomeworldDecorProp[],
-  ...HOMEWORLD_BUILDINGS.filter(building => building.entranceKind === "civic").map(building =>
-    nativePropV64(`beacon-v64-${building.id}`, building.districtId, "beacon", building.x + (building.id === "trophy-mausoleum" ? -155 : 155), building.y + 110)),
+  ...HOMEWORLD_BUILDINGS.filter(building => building.entranceKind === "civic").map(building => {
+    const position=homeworldBeaconPlacementV76(building);
+    return nativePropV64(`beacon-v64-${building.id}`, building.districtId, "beacon", position.x, position.y);
+  }),
   ...["market-armory", "trophy-mausoleum", "training-hall", "rampart-north-lodge"].map(id => {
     const building = HOMEWORLD_BUILDINGS.find(candidate => candidate.id === id)!;
-    return nativePropV64(`bench-v64-${id}`, building.districtId, "bench", building.x + (id === "training-hall" ? 360 : -185), building.y + (id === "training-hall" ? 102 : 150));
+    const position=homeworldBenchPlacementV76(building);
+    return nativePropV64(`bench-v64-${id}`, building.districtId, "bench", position.x, position.y);
   }),
   nativePropV64("port-cargo-v64", "port", "chest", 1080, 4500),
   ...["rite-sanctum", "clan-lodge"].map(id => {
@@ -575,8 +598,8 @@ export function isHomeworldTerrainWalkable(
   const halfDepth = Math.max(0, finite(footprint.halfDepth));
   const samples: readonly [number, number][] = [
     [0, 0], [-halfWidth, 0], [halfWidth, 0], [0, -halfDepth], [0, halfDepth],
-    [-halfWidth * .7, -halfDepth * .7], [halfWidth * .7, -halfDepth * .7],
-    [-halfWidth * .7, halfDepth * .7], [halfWidth * .7, halfDepth * .7],
+    [-halfWidth, -halfDepth], [halfWidth, -halfDepth],
+    [-halfWidth, halfDepth], [halfWidth, halfDepth],
   ];
   return samples.every(([x, y]) => isTerrainPoint({ x: point.x + x, y: point.y + y }));
 }
@@ -615,12 +638,23 @@ export function homeworldCollisionAt(
   for (const building of HOMEWORLD_BUILDINGS) {
     const collision = homeworldBuildingCollision(building);
     if (!rectangleTouchesFootprint(point, safeFootprint, collision.left, collision.right, collision.top, collision.bottom)) continue;
+    if(building.art.groundFrame){
+      if(!homeworldBuildingTouchesV76(building,point,safeFootprint))continue;
+      const frame=homeworldBuildingGroundFrameV76(building),local=frame.local(point),door=homeworldBuildingDoorwayV64(building);
+      const along=Math.abs(frame.tangent.x)*safeFootprint.halfWidth+Math.abs(frame.tangent.y)*safeFootprint.halfDepth;
+      const across=Math.abs(frame.normal.x)*safeFootprint.halfWidth+Math.abs(frame.normal.y)*safeFootprint.halfDepth;
+      if(Math.abs(local.u)+along<=door.clearWidth/2&&local.v-across>=0)continue;
+      return {kind:'building',id:building.id};
+    }
     const entirelyInDoor = point.x - safeFootprint.halfWidth >= collision.doorLeft
       && point.x + safeFootprint.halfWidth <= collision.doorRight;
     const insideThreshold = point.y - safeFootprint.halfDepth >= collision.thresholdTop;
     if (!(entirelyInDoor && insideThreshold)) return { kind: "building", id: building.id };
   }
   const shuttle = HOMEWORLD_SPACEPORT_V64.shuttle;
+  for(const item of angledFrontageCollidersV76){
+    if(rectangleTouchesFootprint(point,safeFootprint,item.left,item.right,item.top,item.bottom))return {kind:'prop',id:item.id};
+  }
   if (rectangleTouchesFootprint(point, safeFootprint, shuttle.x - shuttle.width / 2, shuttle.x + shuttle.width / 2, shuttle.y - shuttle.depth, shuttle.y)) return { kind: "prop", id: shuttle.id };
   for (const prop of HOMEWORLD_PROPS) {
     if (prop.plane !== "ground") continue;
@@ -650,7 +684,8 @@ export function homeworldCollisionAt(
       prop.y + prop.radiusY,
     )) return { kind: "prop", id: prop.id };
   }
-  return homeworldConnectionCollisionV72(point, safeFootprint);
+  const exteriorDecorId=homeworldExteriorCollisionV76(point,safeFootprint);
+  return exteriorDecorId ? {kind:'prop',id:exteriorDecorId} : homeworldConnectionCollisionV72(point, safeFootprint);
 }
 
 export function isHomeworldWalkable(
@@ -669,6 +704,15 @@ export function nearestHomeworldDoor(
   let distance = maximumDistance;
   for (const building of HOMEWORLD_BUILDINGS) {
     const opening = homeworldBuildingDoorwayV64(building), door = opening.approach;
+    if(building.art.groundFrame){
+      const frame=homeworldBuildingGroundFrameV76(building),local=frame.local(point);
+      const along=Math.abs(frame.tangent.x)*HOMEWORLD_ACTOR.halfWidth+Math.abs(frame.tangent.y)*HOMEWORLD_ACTOR.halfDepth;
+      const across=Math.abs(frame.normal.x)*HOMEWORLD_ACTOR.halfWidth+Math.abs(frame.normal.y)*HOMEWORLD_ACTOR.halfDepth;
+      if(Math.abs(local.u)>opening.clearWidth/2-along||local.v<across
+        ||local.v>HOMEWORLD_GEOMETRY_V64.doorApproachDistance+35||!isHomeworldWalkable(point))continue;
+      const candidate=Math.hypot(point.x-door.x,point.y-door.y);
+      if(candidate<distance){distance=candidate;nearest=building;}continue;
+    }
     // The interaction uses the same traversable south opening as the collider.
     // Merely standing near the back or a side wall never opens an interior.
     if (Math.abs(point.x - opening.threshold.x) > Math.max(0, opening.clearWidth / 2 - HOMEWORLD_ACTOR.halfWidth)
@@ -690,10 +734,16 @@ export function homeworldBuildingVisibleBoundsV72(building: HomeworldBuildingMod
 }
 
 /** Fade the painted facade only while it covers the hunter on the rear ground plane. */
+export function homeworldBuildingRenderDepthV76(building:HomeworldBuildingModule,actor?:HomeworldVec2):number {
+  if(!building.art.groundFrame)return building.y;
+  const frame=homeworldBuildingGroundFrameV76(building),x=Math.min(frame.frontRight.x,Math.max(frame.frontLeft.x,actor?.x??building.x));
+  return frame.frontLeft.y+(x-frame.frontLeft.x)*(frame.frontRight.y-frame.frontLeft.y)/(frame.frontRight.x-frame.frontLeft.x);
+}
 export function shouldFadeHomeworldBuilding(building: HomeworldBuildingModule, actor: HomeworldVec2): boolean {
   const p = homeworldProjectGroundV64(actor), image = homeworldBuildingVisibleBoundsV72(building);
-  return actor.y < building.y && p.x + HOMEWORLD_ACTOR.halfWidth > image.left && p.x - HOMEWORLD_ACTOR.halfWidth < image.left + image.width
-    && p.y > image.top && p.y - HOMEWORLD_ACTOR.height < image.top + image.height;
+  return actor.y < homeworldBuildingRenderDepthV76(building,actor) && p.x + HOMEWORLD_ACTOR.halfWidth > image.left && p.x - HOMEWORLD_ACTOR.halfWidth < image.left + image.width
+    && p.y > image.top && p.y - HOMEWORLD_ACTOR.height < image.top + image.height
+    && (!building.art.opaqueRowsV76||homeworldBuildingCoversPaintV76(building,actor,HOMEWORLD_ACTOR));
 }
 
 /** Ship art is a foreground occluder at its ground pivot; fading never changes its service or collider. */

@@ -4,7 +4,7 @@ import { memo, type CSSProperties } from 'react';
 import type { ShipId } from './shipCatalogue';
 import type { TrophyRecord } from './types';
 import { HOMEWORLD_BUILDINGS, HOMEWORLD_DISTRICTS, HOMEWORLD_POINTS, HOMEWORLD_PROPS, HOMEWORLD_STREETS, HOMEWORLD_WORLD, polygonCss } from './systems/homeworld';
-import { shouldFadeHomeworldBuilding, HOMEWORLD_WAYMARKS, HOMEWORLD_SPACEPORT_V64, type HomeworldVec2 } from './systems/homeworldCity';
+import { shouldFadeHomeworldBuilding,homeworldBuildingRenderDepthV76, HOMEWORLD_WAYMARKS, HOMEWORLD_SPACEPORT_V64, type HomeworldVec2 } from './systems/homeworldCity';
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64, homeworldBuildingDoorwayV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from './systems/homeworldInteriorsV64';
 import { HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from './systems/homeworldArtV64';
@@ -57,8 +57,9 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ activeDoorId, acti
       return <div key={building.id} className={styles.buildingV64} data-building-id={building.id}
         data-building-art={building.artId} data-entrance-kind={building.entranceKind}
         data-building-native-source={building.art.src}
+        data-building-orientation-v76={building.art.groundFrame?.yawDegrees??0}
         data-occluded={!!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition)}
-        style={{ ...position, zIndex: Math.round(building.y) }}>
+        style={{ ...position, zIndex: Math.round(homeworldBuildingRenderDepthV76(building,actorPosition)) }}>
         {building.art.sourceRect ? <span data-native-building-atlas-v72={building.id} style={{display:'block',width:'100%',height:'100%',
           backgroundImage:`url('${building.art.src}')`,backgroundRepeat:'no-repeat',
           backgroundSize:`${building.art.sourceWidth*position.width/building.art.sourceRect.width}px ${building.art.sourceHeight*position.height/building.art.sourceRect.height}px`,

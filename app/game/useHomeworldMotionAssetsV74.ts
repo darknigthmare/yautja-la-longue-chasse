@@ -2,7 +2,7 @@ import {useCallback,useEffect,useState} from 'react';
 import {HOMEWORLD_CIVILIAN_MOTION_V74} from './systems/homeworldCivilianMotionV74';
 import {HOMEWORLD_YOUTH_MOTION_ART_V74} from './systems/homeworldYouthMotionV74';
 
-export interface HomeworldMotionSourceV74 {src:string;sourceWidth:number;sourceHeight:number}
+export interface HomeworldMotionSourceV74 {src:string;sourceWidth:number;sourceHeight:number;kind?:'scene'}
 export interface HomeworldMotionAssetsProgressV74 {ready:boolean;error:string|null;loaded:number;total:number}
 export interface HomeworldMotionAssetsV74 extends HomeworldMotionAssetsProgressV74 {retry:()=>void}
 
@@ -15,18 +15,22 @@ const civilianSources=Object.entries(HOMEWORLD_CIVILIAN_MOTION_V74.sources)
 const youthSources=Object.entries(HOMEWORLD_YOUTH_MOTION_ART_V74.sources)
   .filter(([id])=>youthSourceIds.has(id)).map(([,source])=>source);
 const allSources=[...civilianSources,...youthSources];
+const noAdditionalSources:readonly HomeworldMotionSourceV74[]=[];
 
 /** Metadata/string references only. No decoded image or GPU resource is cached. */
 export function homeworldMotionSourcesV74(youth:boolean):readonly HomeworldMotionSourceV74[]{
   return youth?allSources:civilianSources;
 }
+function resources(youth:boolean,additionalSources:readonly HomeworldMotionSourceV74[]){
+  return [...new Map([...homeworldMotionSourcesV74(youth),...additionalSources].map(source=>[source.src,source])).values()];
+}
 
 /** Resource loader separated for lifecycle tests. It has no simulation clock,
  * rAF, save access or gameplay action; cancel only abandons pending static PNGs. */
-export function preloadHomeworldMotionAssetsV74({youth,reload=false,onProgress}:{
-  youth:boolean;reload?:boolean;onProgress:(progress:HomeworldMotionAssetsProgressV74)=>void;
+export function preloadHomeworldMotionAssetsV74({youth,reload=false,additionalSources=noAdditionalSources,onProgress}:{
+  youth:boolean;reload?:boolean;additionalSources?:readonly HomeworldMotionSourceV74[];onProgress:(progress:HomeworldMotionAssetsProgressV74)=>void;
 }){
-  const sources=homeworldMotionSourcesV74(youth),total=sources.length;
+  const sources=resources(youth,additionalSources),total=sources.length;
   const pending=new Set<()=>void>();let alive=true,loaded=0,error:string|null=null;
   const report=()=>{if(alive)onProgress({ready:loaded===total&&error===null,error,loaded,total});};
   const tasks=sources.map(async source=>{
@@ -47,13 +51,13 @@ export function preloadHomeworldMotionAssetsV74({youth,reload=false,onProgress}:
       await image.decode();
       if(!alive||!image)return;
       if(image.naturalWidth!==source.sourceWidth||image.naturalHeight!==source.sourceHeight){
-        throw new Error(`Dimensions d’animation incompatibles : ${source.src}. Attendues ${source.sourceWidth}×${source.sourceHeight}, reçues ${image.naturalWidth}×${image.naturalHeight}.`);
+        throw new Error(`Dimensions ${source.kind==='scene'?'de décor':'d’animation'} incompatibles : ${source.src}. Attendues ${source.sourceWidth}×${source.sourceHeight}, reçues ${image.naturalWidth}×${image.naturalHeight}.`);
       }
       loaded++;report();
     }catch(reason){
       if(!alive)return;
-      error??=reason instanceof Error&&reason.message.startsWith('Dimensions d’animation incompatibles')?reason.message:
-        `Impossible de charger ou de décoder l’animation : ${source.src}. Vérifie la connexion puis réessaie.`;
+      error??=reason instanceof Error&&reason.message.startsWith('Dimensions ')?reason.message:
+        `Impossible de charger ou de décoder ${source.kind==='scene'?'le décor natif':'l’animation'} : ${source.src}. Vérifie la connexion puis réessaie.`;
       report();
     }finally{
       pending.delete(cancel);
@@ -68,16 +72,16 @@ export function preloadHomeworldMotionAssetsV74({youth,reload=false,onProgress}:
 
 /** The owner must block controls while !ready and keep its existing simulation
  * paused. A new source set or retry is synchronously unready before effects run. */
-export function useHomeworldMotionAssetsV74({youth}:{youth:boolean}):HomeworldMotionAssetsV74{
+export function useHomeworldMotionAssetsV74({youth,additionalSources=noAdditionalSources}:{youth:boolean;additionalSources?:readonly HomeworldMotionSourceV74[]}):HomeworldMotionAssetsV74{
   const [attempt,setAttempt]=useState(0);
-  const key=`${youth?'youth':'adult'}:${attempt}`,total=homeworldMotionSourcesV74(youth).length;
+  const key=`${youth?'youth':'adult'}:${attempt}:${additionalSources.map(source=>`${source.src}:${source.sourceWidth}:${source.sourceHeight}`).join('|')}`,total=resources(youth,additionalSources).length;
   const [progress,setProgress]=useState<HomeworldMotionAssetsProgressV74&{key:string}>({key:'',ready:false,error:null,loaded:0,total});
   const retry=useCallback(()=>setAttempt(previous=>previous+1),[]);
   useEffect(()=>{
     let alive=true;
-    const preload=preloadHomeworldMotionAssetsV74({youth,reload:attempt>0,onProgress:next=>{if(alive)setProgress({...next,key});}});
+    const preload=preloadHomeworldMotionAssetsV74({youth,reload:attempt>0,additionalSources,onProgress:next=>{if(alive)setProgress({...next,key});}});
     return()=>{alive=false;preload.cancel();};
-  },[youth,attempt,key]);
+  },[youth,attempt,key,additionalSources]);
   return progress.key===key?{ready:progress.ready,error:progress.error,loaded:progress.loaded,total,retry}:
     {ready:false,error:null,loaded:0,total,retry};
 }

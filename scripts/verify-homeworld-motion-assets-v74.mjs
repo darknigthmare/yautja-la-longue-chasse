@@ -7,8 +7,10 @@ import {firstTracksCompleted,p} from '../tests/helpers/solo-v67-campaign-route.m
 const url=process.env.V74_MOTION_ASSETS_QA_URL??'http://127.0.0.1:4192';
 const output=process.env.V74_MOTION_ASSETS_QA_OUTPUT??'work-local/v74/qa/motion-assets';
 const version=process.env.YAUTJA_QA_EXPECTED_VERSION??'V74';
-const api=homeworldQaModelV64(process.cwd(),['homeworldYouthMotionV74.ts']);
-const missing=api.HOMEWORLD_YOUTH_MOTION_ART_V74.sources['nw-opposite'].src;
+const api=homeworldQaModelV64(process.cwd(),['homeworldYouthMotionV74.ts','homeworldSceneAssetsV76.ts']);
+const missing=process.env.V76_SCENE_ASSET_FAILURE==='1'
+  ?api.HOMEWORLD_SCENE_ASSETS_V76.find(source=>source.src.endsWith('/interior/rack-lateral.png')).src
+  :api.HOMEWORLD_YOUTH_MOTION_ART_V74.sources['nw-opposite'].src;
 await fs.mkdir(output,{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage();

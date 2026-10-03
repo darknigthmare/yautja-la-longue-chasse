@@ -47,7 +47,9 @@ test('all 37 formerly secondary rooms have distinct authored plans; six principa
     zones:r.zones.map(z=>[z.x,z.y,z.width,z.depth]),
     furniture:r.furniture.map(f=>[f.artId,f.x,f.y,f.scale])}))).size,37,'plans differ physically, not only by labels');
   assert.equal(new Set(Object.values(api.HOMEWORLD_SECONDARY_RECIPES_V74).map(r=>r.topology)).size,7);
-  const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId));
+  // New independent V76 decor must not conceal any change to the original six
+  // layouts, stations, services or props. Strip this one additive field only.
+  const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room};delete original.orientedDecorV76;return original;});
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(main)).digest('hex'),'6d5505a37371b33034f46c8523e639ae6a7a7a41867747b24b3e773eae563ce0');
   for(const room of api.HOMEWORLD_INTERIORS_V64){
     const envelope=envelopes.find(e=>e.buildingId===room.buildingId);

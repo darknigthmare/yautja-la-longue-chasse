@@ -1,0 +1,179 @@
+{
+  "version": "V76",
+  "status": "PASS",
+  "sourceFrozenAt": "2026-10-03T02:27:52.060Z",
+  "baseHead": "d191df92f43da7223364ea1005eaafb3e7c0c3bb",
+  "delivered": {
+    "nativeAngledFacades": 6,
+    "interiorDecor": 92,
+    "exteriorDecor": 74,
+    "exteriorSolids": 70,
+    "exteriorOrnaments": 4,
+    "buildings": 43,
+    "contextCodexRecords": 1367,
+    "allCodexRecords": 2078,
+    "scenePreloadSources": 15,
+    "newNativePng": 14,
+    "buildingPlacementOffsets": {
+      "dock-control": {
+        "x": -110,
+        "y": 20,
+        "reason": "Passage conservé entre les deux routines du port, ancien signe des Cendres et maisons du quai."
+      },
+      "trophy-mausoleum": {
+        "x": -240,
+        "y": -50,
+        "reason": "Libération de la promenade des archives, du porteur de l’esplanade et de la route vers les Ruines."
+      },
+      "rite-sanctum": {
+        "x": 200,
+        "y": -60,
+        "reason": "Dégagement des trois habitants du temple et du patrouilleur des arènes, sans déplacer leur routine."
+      },
+      "convoy-workshop": {
+        "x": 120,
+        "y": -40,
+        "reason": "Balise de sol QUAIS dégagée avec la marge corporelle du guidage, et routine de manutention libre autour du vrai socle oblique."
+      },
+      "convoy-store": {
+        "x": -20,
+        "y": -60,
+        "reason": "Allée de la messagère des convois libre devant la réserve orientée et ses deux meubles."
+      }
+    },
+    "pavedForecourts": 6,
+    "newPavedLinks": 1
+  },
+  "tests": 2597,
+  "recipes": [
+    {
+      "scope": "exterior-decor",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 12,
+      "captures": 7,
+      "report": "docs/v76-exterior-decor-local-browser-qa.json"
+    },
+    {
+      "scope": "scene-assets",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 3,
+      "captures": 3,
+      "report": "docs/v76-scene-assets-local-browser-qa.json"
+    },
+    {
+      "scope": "interior-decor",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 16,
+      "captures": 11,
+      "report": "docs/v76-interior-decor-local-browser-qa.json"
+    },
+    {
+      "scope": "angles",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 9,
+      "captures": 15,
+      "report": "docs/v76-angles-local-browser-qa.json"
+    },
+    {
+      "scope": "wayfinding",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 10,
+      "captures": 14,
+      "report": "docs/v76-wayfinding-local-browser-qa.json"
+    },
+    {
+      "scope": "conversations",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 3,
+      "captures": 7,
+      "report": "docs/v76-conversations-local-browser-qa.json"
+    },
+    {
+      "scope": "landscape",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 14,
+      "report": "docs/v76-landscape-local-browser-qa.json"
+    },
+    {
+      "scope": "architecture",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 18,
+      "captures": 17,
+      "report": "docs/v76-architecture-local-browser-qa.json"
+    },
+    {
+      "scope": "identity",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 24,
+      "report": "docs/v76-identity-local-browser-qa.json"
+    },
+    {
+      "scope": "youth-motion",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 27,
+      "captures": 13,
+      "report": "docs/v76-youth-motion-local-browser-qa.json"
+    },
+    {
+      "scope": "civilian-motion",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 14,
+      "captures": 4,
+      "report": "docs/v76-civilian-motion-local-browser-qa.json"
+    },
+    {
+      "scope": "motion-assets",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 3,
+      "captures": 3,
+      "report": "docs/v76-motion-assets-local-browser-qa.json"
+    },
+    {
+      "scope": "prologue",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 8,
+      "captures": 26,
+      "report": "docs/v76-prologue-local-browser-qa.json"
+    },
+    {
+      "scope": "shell",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 71,
+      "captures": null,
+      "report": "docs/v76-shell-local-browser-qa.json"
+    },
+    {
+      "scope": "connections",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 15,
+      "captures": 18,
+      "report": "docs/v76-connections-local-browser-qa.json"
+    },
+    {
+      "scope": "secondary-interiors",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": 42,
+      "captures": 40,
+      "report": "docs/v76-secondary-interiors-local-browser-qa.json"
+    }
+  ],
+  "limits": "Local source/build/browser only; publication requires exact-source READY and independent public browser checks."
+}

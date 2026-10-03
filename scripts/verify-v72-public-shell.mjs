@@ -44,6 +44,10 @@ try {
   const architecture = JSON.parse(await fs.readFile('app/game/data/homeworldArchitectureArtV75.json', 'utf8'));
   for (const identity of Object.values(architecture)) files.push(identity.art.src.replace(/^\//, ''));
   files.push('game/homeworld/v75/landscape-ground-materials-native.png');
+  const angled=JSON.parse(await fs.readFile('app/game/data/homeworldArchitectureArtV76.json','utf8'));
+  const interior=JSON.parse(await fs.readFile('app/game/data/homeworldInteriorDecorArtV76.json','utf8'));
+  const exterior=JSON.parse(await fs.readFile('app/game/data/homeworldExteriorArtV76.json','utf8'));
+  for(const art of [...Object.values(angled).map(identity=>identity.art),...Object.values(interior),...Object.values(exterior)])files.push(art.src.replace(/^\//,''));
   const sha = bytes => createHash('sha256').update(bytes).digest('hex');
   for (const file of files) {
     const remote = await page.request.get(new URL('/' + file, url).href);

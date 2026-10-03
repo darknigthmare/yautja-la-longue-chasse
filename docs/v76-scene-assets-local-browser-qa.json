@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "version": "V76",
+  "url": "http://127.0.0.1:4194",
+  "checks": [
+    {
+      "name": "real-missing-png-uses-safe-idle-and-freezes-controls-world-save",
+      "source": "/game/homeworld/v76/interior/rack-lateral.png",
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "real-original-png-retry-recovers-without-save-loss",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+          "denied": true
+        },
+        {
+          "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+          "denied": false
+        },
+        {
+          "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+          "denied": false
+        }
+      ]
+    },
+    {
+      "name": "first-actual-native-step-remains-decoded-and-movement-resumes",
+      "src": "/game/homeworld/v74/youth/unblooded-e.png",
+      "natural": {
+        "width": 1536,
+        "height": 1024
+      }
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/scene-assets-local/missing-animation-visible-error-and-safe-idle.png",
+    "work-local/v76/qa/scene-assets-local/original-png-retry-all-native-animations-ready.png",
+    "work-local/v76/qa/scene-assets-local/first-native-step-after-recovery.png"
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+      "denied": true
+    },
+    {
+      "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+      "denied": false
+    },
+    {
+      "url": "http://127.0.0.1:4194/game/homeworld/v76/interior/rack-lateral.png",
+      "denied": false
+    }
+  ],
+  "limits": "An isolated model-tested post-campaign prerequisite profile is seeded. The failure is a real browser PNG request abort, not a replacement runtime/physics function. Retry uses the original static URL; movement, clock, gait distance and save freeze are verified in the actual game."
+}

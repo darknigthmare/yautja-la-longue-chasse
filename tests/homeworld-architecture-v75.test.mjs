@@ -7,13 +7,13 @@ import sharp from 'sharp';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
 import {inspectHomeworldArchitecturePngV75} from '../scripts/measure-homeworld-architecture-v75.mjs';
 
-const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldArchitectureArtV75.ts','homeworldArchitectureV75.ts','homeworldFurnitureV72.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldInteriorsV64.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldArchitectureArtV75.ts','homeworldArchitectureArtV76.ts','homeworldArchitectureV75.ts','homeworldFurnitureV72.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldInteriorsV64.ts']);
 const identities=Object.entries(api.HOMEWORLD_ARCHITECTURE_IDENTITIES_V75);
 test('thirteen functional secondary facades use genuine independent PNGs without replacing the six main wings or twenty-four dwellings',()=>{
  assert.equal(identities.length,13);assert.equal(new Set(identities.map(([,i])=>i.art.src)).size,13);
  for(const building of api.HOMEWORLD_BUILDINGS){
   const current=api.homeworldBuildingIdentityV75(building.id);
-  if(current){assert.equal(building.art.src,current.art.src);assert.equal(building.footprint.width,570);assert.equal(building.footprint.depth,340);}
+  if(current){assert.equal(building.art.src,(api.homeworldBuildingIdentityV76(building.id)??current).art.src);assert.equal(building.footprint.width,570);assert.equal(building.footprint.depth,340);}
   else if(api.homeworldBuildingIdentityV72(building.id))assert.equal(building.art.src,api.homeworldBuildingIdentityV72(building.id).art.src);
   else assert(building.art.src.startsWith('/game/homeworld/v64/house-'));
  }
@@ -36,7 +36,9 @@ for(const [id,identity]of identities)test('native metrology, source SHA, uniform
  assert.equal(art.foundationFront.y,source.alphaBounds.y+source.alphaBounds.height-1);
  assert(art.threshold.y<=art.foundationFront.y&&art.threshold.y>art.doorway.y);
  assert(art.threshold.x>=art.doorway.x&&art.threshold.x<=art.doorway.x+art.doorway.width);
- const building=api.HOMEWORLD_BUILDINGS.find(b=>b.id===id),position=api.homeworldBuildingSpritePlacementV64(building),scale=position.width/art.sourceWidth;
+ // Historical PNGs retain their complete original metrology even where a V76
+ // angled view now runs. Check their source contract, not the new view's scale.
+ const current=api.HOMEWORLD_BUILDINGS.find(b=>b.id===id),building={...current,art},position=api.homeworldBuildingSpritePlacementV64(building),scale=position.width/art.sourceWidth;
  assert(Math.abs(scale-position.height/art.sourceHeight)<1e-12);
  const projected=api.homeworldProjectGroundV64(building);
  assert(Math.abs(position.left+art.threshold.x*scale-projected.x)<1e-8);assert(Math.abs(position.top+art.threshold.y*scale-projected.y)<1e-8);
@@ -44,19 +46,30 @@ for(const [id,identity]of identities)test('native metrology, source SHA, uniform
  assert(door.clearWidth>=80,'native foot aperture too narrow');assert(door.clearHeight>=128,'native opening too low for the adult reference');
  assert(Math.abs(door.frontOffset-Math.max(0,(art.foundationFront.y-art.threshold.y)*scale/api.HOMEWORLD_GEOMETRY_V64.depthScale))<1e-12);
  assert(door.frontOffset<=11,'no long unpainted threshold or invented platform');
- assert(api.isHomeworldWalkable(door.approach));assert.equal(api.nearestHomeworldDoor(door.approach)?.id,id);
+ const activeDoor=api.homeworldBuildingDoorwayV64(current);
+ assert(api.isHomeworldWalkable(activeDoor.approach));assert.equal(api.nearestHomeworldDoor(activeDoor.approach)?.id,id);
 });
-test('all sixty-two independent frontage fittings rest within already-solid side bays, never the door, approach or public path',()=>{
+test('all sixty-two original frontage fittings remain physical, with twelve moved onto measured angled forecourts',()=>{
  assert.equal(api.HOMEWORLD_FRONTAGE_ITEMS_V75.length,62);assert.equal(new Set(api.HOMEWORLD_FRONTAGE_ITEMS_V75.map(i=>i.id)).size,62);
  for(const item of api.HOMEWORLD_FRONTAGE_ITEMS_V75){
   const building=api.HOMEWORLD_BUILDINGS.find(b=>b.id===item.buildingId),buildingBox=api.homeworldBuildingFootprintV64(building),box=api.homeworldFurnitureFootprintV72(item),door=api.homeworldBuildingDoorwayV64(building);
-  assert(box.left>=buildingBox.left&&box.right<=buildingBox.right&&box.top>=buildingBox.top&&box.bottom<=buildingBox.bottom,item.id+' extends onto street');
-  assert(box.right<=buildingBox.doorLeft-24||box.left>=buildingBox.doorRight+24,item.id+' narrows passage');
-  assert.equal(item.y,building.y+door.frontOffset,'native feet must rest on real front foundation edge');
+  if(building.art.groundFrame){
+   const frame=api.homeworldBuildingGroundFrameV76(building),p=frame.local(item);
+   const depth=building.id==='dock-control'&&item.artId==='register-desk'?80:
+    building.id==='rite-sanctum'&&item.artId==='resin-lantern'?140:
+    building.id==='convoy-workshop'&&item.artId==='convoy-crates'?160:100;
+   assert(Math.abs(p.v-(door.frontOffset+depth))<1e-8,'actual measured forecourt depth');
+   assert(api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.some(c=>c.id===item.id&&c.x===item.x&&c.y===item.y),'renderer and collider share exact position');
+  }else{
+   assert(box.left>=buildingBox.left&&box.right<=buildingBox.right&&box.top>=buildingBox.top&&box.bottom<=buildingBox.bottom,item.id+' extends onto street');
+   assert(box.right<=buildingBox.doorLeft-24||box.left>=buildingBox.doorRight+24,item.id+' narrows passage');
+   assert.equal(item.y,building.y+door.frontOffset,'native feet must rest on real front foundation edge');
+  }
   for(let y=box.top;y<=box.bottom;y+=5)for(let x=box.left;x<=box.right;x+=5)
    assert(!api.isHomeworldWalkable({x,y}),item.id+' can be walked through; existing masonry must own full volume');
   assert(api.isHomeworldWalkable(door.approach));
  }
+ assert.equal(api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.length,12);
  assert.equal(new Set(api.HOMEWORLD_FRONTAGE_ITEMS_V75.map(i=>i.artId)).size,9,'multiple native functional furnishings, not repeated identical facade stamps');
 });
 test('architecture codex reflects the actual model and contains only original non-rewarding fittings with unique IDs',async()=>{

@@ -80,7 +80,10 @@ test('actual landscape JSX retains every public union mask and mounts separate n
   const result=await build({stdin:{contents:"import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import View from './app/game/HomeworldOutskirtsV71.tsx';export const html=renderToStaticMarkup(React.createElement(View,{actor:{x:2900,y:250},cameraX:2200,cameraY:-620,width:1440,height:1000}));",resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,platform:'node',format:'cjs',external:['react','react-dom/server'],plugins:[{name:'css-test-only',setup(build){build.onLoad({filter:/\.module\.css$/},()=>({contents:'export default {};',loader:'js'}));}}]});
   const taskModule={exports:{}};new Function('require','module','exports',result.outputFiles[0].text)(createRequire(import.meta.url),taskModule,taskModule.exports);const html=taskModule.exports.html;
   assert.match(html,/data-homeworld-landscape-floor="v75"/);assert.match(html,/scaleY\(0\.573576436351046\)/);
-  assert.equal((html.match(/<polygon /g)??[]).length,(api.HOMEWORLD_DISTRICTS.length+api.HOMEWORLD_STREETS.length)*2,'ALL public surfaces still exclude natural floor');
+  const masks=[...html.matchAll(/<mask[^>]+id="[^\"]+-(?:outside|public)"[^>]*>([\s\S]*?)<\/mask>/g)];
+  assert.equal(masks.length,2,'both real terrain masks');
+  for(const mask of masks)assert.equal((mask[1].match(/<polygon /g)??[]).length,api.HOMEWORLD_DISTRICTS.length+api.HOMEWORLD_STREETS.length,'ALL public surfaces remain in each terrain union mask');
+  assert.equal((html.match(/data-homeworld-approach-oriented-v76="true"/g)??[]).length,6,'six independent angled doorway floors do not alter the terrain mask');
   assert.equal((html.match(/data-homeworld-landscape-native-material=/g)??[]).length,6);
   assert((html.match(/data-homeworld-prop-id="landscape-v75-/g)??[]).length>0);
   assert((html.match(/data-homeworld-landscape-patch-v75=/g)??[]).length>0);

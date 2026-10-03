@@ -20,7 +20,13 @@ test("V64 extends the ground plan while preserving all V54 IDs and narrative/ser
     ...connection.nodes.slice(1).map((_, index) => `connection-v72:${connection.regionId}:${index}`),
     `connection-v72:${connection.regionId}:aperture`,
   ]);
-  assert.equal(city.HOMEWORLD_STREETS.length, 18 + connectionPolygonIds.length, 'eighteen preserved city roads plus one real polygon per authored connection segment and aperture');
+  const nativeForecourtIds = ['dock-control', 'trophy-mausoleum', 'rite-sanctum', 'convoy-workshop', 'convoy-store', 'rampart-watch']
+    .map(buildingId => 'forecourt-v76:' + buildingId);
+  const nativeLinkIds = ['forecourt-link-v76:trophy-mausoleum'];
+  assert.equal(city.HOMEWORLD_STREETS.length, 18 + connectionPolygonIds.length + nativeForecourtIds.length + nativeLinkIds.length,
+    'eighteen preserved city roads, each authored connection polygon, six native V76 forecourts and the western mausoleum link');
+  assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('forecourt-v76:')).map(street => street.id), nativeForecourtIds);
+  assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('forecourt-link-v76:')).map(street => street.id), nativeLinkIds);
   assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('connection-v72:')).map(street => street.id), connectionPolygonIds);
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { id: "personal-ship", x: 1280, y: 4400 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 * 1.55 });
@@ -59,7 +65,15 @@ test("new districts form loops: routes between both entrances stay within the se
 
 test("navigation refuses corrupt, blocked and out-of-world destinations without moving or persisting anything", () => {
   const actor = city.createHomeworldActor(), original = JSON.stringify(actor);
-  for (const goal of [{ x: NaN, y: 1 }, { x: 500000, y: 100 }, { x: 760, y: 2110 }, { x: 650, y: 1860 }]) {
+  // A former wall coordinate can become valid after an authored placement
+  // moves. Use the real solid centres, retaining the complete refusal contract.
+  const blocked=city.HOMEWORLD_BUILDINGS.slice(0,2).map(building=>{
+    const box=city.homeworldBuildingCollision(building);
+    const point=box.polygon ? {x:box.polygon.reduce((n,p)=>n+p.x,0)/box.polygon.length,y:box.polygon.reduce((n,p)=>n+p.y,0)/box.polygon.length}
+      : {x:(box.left+box.right)/2,y:(box.top+box.bottom)/2};
+    assert.equal(city.homeworldCollisionAt(point)?.id,building.id,'a current real solid');return point;
+  });
+  for (const goal of [{ x: NaN, y: 1 }, { x: 500000, y: 100 }, ...blocked]) {
     assert.equal(codex.homeworldSpatialRoute(actor, goal).status, "unavailable");
   }
   assert.equal(JSON.stringify(actor), original);

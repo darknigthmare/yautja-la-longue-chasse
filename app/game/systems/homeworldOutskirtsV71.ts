@@ -24,8 +24,15 @@ export function homeworldOutskirtsGroundWindowV71(camera:{x:number;y:number;widt
 }
 export const HOMEWORLD_BUILDING_APPROACHES_V71=HOMEWORLD_BUILDINGS.map(building=>{
   const door=homeworldBuildingDoorwayV64(building);
+  const polygon=door.groundOpening&&door.normal ? [door.groundOpening.left,door.groundOpening.right,
+    {x:door.groundOpening.right.x+door.normal.x*106,y:door.groundOpening.right.y+door.normal.y*106},
+    {x:door.groundOpening.left.x+door.normal.x*106,y:door.groundOpening.left.y+door.normal.y*106}] : null;
+  const rect=polygon ? {x:Math.min(...polygon.map(p=>p.x)),y:Math.min(...polygon.map(p=>p.y)),
+    width:Math.max(...polygon.map(p=>p.x))-Math.min(...polygon.map(p=>p.x)),
+    depth:Math.max(...polygon.map(p=>p.y))-Math.min(...polygon.map(p=>p.y))}
+    : {x:building.x-door.clearWidth/2,y:building.y,width:door.clearWidth,depth:door.approach.y-building.y+36};
   return {id:`approach-v71:${building.id}`,buildingId:building.id,districtId:building.districtId,
-    x:building.x-door.clearWidth/2,y:building.y,width:door.clearWidth,depth:door.approach.y-building.y+36,
+    ...rect,polygon,
     threshold:door.threshold,approach:door.approach,src:HOMEWORLD_GROUND_ART_V64.src};
 });
 export function homeworldOutskirtsFootprintV71(module: HomeworldOutskirtsModuleV71) {

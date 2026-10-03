@@ -28,6 +28,7 @@ import {
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
 import HomeworldCityScene from "./HomeworldCityScene";
 import HomeworldOutskirtsV71 from "./HomeworldOutskirtsV71";
+import HomeworldExteriorDecorV76 from "./HomeworldExteriorDecorV76";
 import HomeworldRegionConnectionsV72 from "./HomeworldRegionConnectionsV72";
 import HomeworldPopulationV68 from "./HomeworldPopulationV68";
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
@@ -46,6 +47,7 @@ import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
 import HomeworldYouthMotionV74 from "./HomeworldYouthMotionV74";
 import HomeworldYouthMotionV72 from "./HomeworldYouthMotionV72";
 import { useHomeworldMotionAssetsV74 } from "./useHomeworldMotionAssetsV74";
+import {HOMEWORLD_SCENE_ASSETS_V76} from './systems/homeworldSceneAssetsV76';
 import { homeworldYouthDirectionV74, type HomeworldYouthDirectionV74 } from "./systems/homeworldYouthMotionV74";
 import { homeworldCameraV72 } from "./systems/homeworldCameraV72";
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingDoorwayV64 } from "./systems/homeworldGeometryV64";
@@ -138,7 +140,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const { x: cameraX, y: cameraY, zoom } = camera;
   const progress = save.homeworld;
   const youthWelcome = usesHomeworldYouthAppearanceV69(save);
-  const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome });
+  const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome, additionalSources:HOMEWORLD_SCENE_ASSETS_V76 });
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
   const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready;
   const appliedArrivalV67 = useRef<string | null>(null);
@@ -592,6 +594,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
           : <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />}
         {!interior && <HomeworldOutskirtsV71 actor={actor} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} />}
+        {!interior && <HomeworldExteriorDecorV76 actor={actor} cameraX={cameraX} cameraY={cameraY} width={camera.viewWidth} height={camera.viewHeight} />}
         {!interior && <HomeworldRegionConnectionsV72 actor={actor} cameraX={cameraX} cameraY={cameraY} width={camera.viewWidth} height={camera.viewHeight} save={save} />}
         {!interior && <HomeworldPopulationV68 seconds={phase} cameraX={cameraX} cameraY={cameraY} width={viewportSize.width / zoom} height={viewportSize.height / zoom} activeId={nearbyResidentV68?.id} actorPosition={actor} />}
         <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>

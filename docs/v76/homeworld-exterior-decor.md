@@ -1,0 +1,40 @@
+# Mobilier extérieur V76
+
+Ce lot ajoute **70 meubles solides et quatre tissus muraux**, répartis dans les quatorze quartiers de l’implantation V76. Les 43 identifiants de bâtiments et de portes, les dix raccords régionaux, la navette et les 98 routines civiles restent conservés. Le chantier d’architecture associé a déplacé cinq hôtes pour libérer leurs vraies approches ; les placements décoratifs sont calculés contre ces volumes définitifs, pas contre les coordonnées V75. Le mobilier n’est ni récupérable ni un nouveau service. La cité et ses équipements civils restent une adaptation originale du projet ; aucune carte, plante, institution ou pièce de mobilier canonique 1:1 n’est affirmée.
+
+Quatre assets distincts ont été générés avec l’outil OpenAI intégré : bac minéral allongé orienté à gauche, banc de terrasse orienté à droite, petit auvent marchand diagonal et rack logistique de six contenants. Il s’agit de quatre PNG natifs indépendants, pas d’une déclinaison CSS d’un seul objet. Ils sont conservés intacts dans `public/game/homeworld/v76/`. Les sources originales restent dans le dossier `generated_images` ; les PNG V72/V75 restent présents et inchangés. Les prompts et mesures complètes sont dans `exterior-native-art.json`.
+
+| Source native | Dimensions | Instances | Alpha128 : boîte mesurée |
+| --- | --- | --- | --- |
+| mineral-planter-left-native.png | 1536 × 1024 | 4 | 60, 69, 1409, 896 |
+| terrace-bench-right-native.png | 1536 × 1024 | 6 | 54, 30, 1445, 948 |
+| merchant-canopy-diagonal-native.png | 1536 × 1024 | 1 | 216, 15, 1216, 975 |
+| logistics-container-rack-native.png | 1312 × 1199 | 5 | 51, 60, 1211, 1076 |
+
+Les quatre coins de chaque source sont transparents. L’alpha majoritaire de l’objet peut être 254 plutôt que 255 ; il est préservé. Aucun détourage, recoloriage, rééchantillonnage, miroir ou rotation du bitmap n’est appliqué. Le kit civique V72 fournit le reste : jarres scellées, caisses, lanternes, portants, établis, table, gongs, bancs et tissus de clan. Les mots « orientation gauche/droite » désignent la perspective dessinée nativement, sans changer la caméra yaw0/pitch35 du monde.
+
+## Placement et appuis
+
+`homeworldExteriorDecorV76.json` contient les positions individuelles retenues, les échelles, les fonctions et les bâtiments associés. Les ensembles distinguent logistique des quais/convois, échanges civils, entretien artisanal, haltes, repos, jardins minéraux et abords des rites. Les poches d’implantation sont choisies par quartier et fonction puis validées ; aucun aléatoire ou déplacement de prop ne se produit en jeu. Là où un grand meuble ne tient pas, le placement emploie une petite jarre ou une lanterne plutôt que de réduire le passage.
+
+Pour les quatre nouveaux objets, le contour convexe des appuis visibles est mesuré dans la source : quatre points, ou cinq pour le bac allongé. Chaque point tombe sur un pixel de support dont l’alpha atteint 128. Ce contour est déprojeté vers le terrain une seule fois. Le pivot est le centre horizontal des appuis au niveau de l’appui le plus proche ; il peut être un point virtuel entre les pieds, mais les points de contact véritables restent dans le codex des mesures. Les fenêtres visuelles gardent une échelle uniforme. La hauteur publiée dans le codex soustrait la profondeur projetée à l’enveloppe peinte, sans écraser le sprite.
+
+La collision partage le même polygone convexe. Le cache immuable par instance conserve ses points et sa boîte ; une présélection AABB évite de lancer le test SAT sur les objets éloignés. Les anciens meubles V72 gardent leurs empreintes mesurées rectangulaires. Les quatre tissus de façade sont élevés de 92 unités et explicitement non solides. Les sprites sont triés par Y du terrain, seuls les objets dans la fenêtre de caméra élargie sont montés, et un meuble devant le joueur s’efface partiellement si son enveloppe peinte cache le joueur. Ni l’horloge ni l’état de partie ne sont modifiés par ce renderer.
+
+## Circulation conservée
+
+Les six façades obliques disposent d’une réserve x ±440, de 470 unités derrière le seuil à 170 devant, plus 26 de marge. Les douze fixtures V75 réorientées sont contrôlées séparément. Les autres bâtiments réservent leur empreinte entière ; chaque seuil et approche conserve une bande de circulation. Le pad, la voie piétonne et le sas de navette sont exclus. Les volumes des anciens props, habitants immobiles, bornes, supports des portiques et 40 meubles régionaux sont également réservés.
+
+Le placement préserve les segments complets des 98 routines avec le corps civil et huit unités de marge, pas seulement quelques poses. Les itinéraires publics entre le spawn et chaque porte/région servent de réserve supplémentaire, ainsi que les chemins vers tous les repères au sol et les dix trajets entre anciens panneaux et nouvelles arrivées. Les dix chaussées régionales sont exclues du mobilier nouveau. Les tests finaux utilisent la City réelle avec la collision V76 branchée : A* jusqu’aux 43 approches et dix arrivées, points intermédiaires tous les quatre unités avec le corps du joueur et 12 unités de marge, puis segment arrivée → seuil réel.
+
+## Vérifications et limites
+
+Lors d’une régénération, le générateur calcule les itinéraires de réserve dans son modèle isolé après avoir retiré en mémoire sa propre ancienne liste de 70 solides. Ce retrait ne touche ni la City en jeu ni le JSON tant que tous les placements n’ont pas été validés. Les bâtiments, les devantures et tous les décors antérieurs restent actifs dans ce calcul. La suite finale recharge ensuite le nouveau JSON dans une City fraîche et conserve chaque collision réelle, sans exemption pour le mobilier V76 ni les autres objets.
+
+La vérification finale du 2 octobre 2026 de `tests/homeworld-exterior-decor-v76.test.mjs` passe **8/8 tests en 39,92 secondes**, sans test ignoré, après le dernier placement de devanture d’atelier. Elle valide les 98 segments contre la **City complète** à pas de 0,5 unité, les 43 portes, les dix arrivées régionales, les repères au sol, les dix chemins des anciens panneaux et les centres des raccords. Le diagnostic de sélection des 42 nouveaux résidents, aux secondes 0, 20 et 60, ne relève plus de collision ni de faux masquage ; les 56 routines antérieures ont leurs propres gates V68. ESLint ciblé passe sur les cinq fichiers du lot. Le JSON des 74 objets et les quatre PNG sont figés.
+
+La première implantation avait laissé trois meubles V76 devant un repère ou une ancienne approche. La régénération les a corrigés en réservant ces points et leurs vrais chemins. Les corrections d’architecture ont libéré les routines autour des cinq hôtes déplacés et ouvert les débouchés des quais, du mausolée et des rites, avec les volumes physiques conservés. Le dernier déplacement de devanture d’atelier évite un chevauchement avec un coffre antérieur ; les huit tests et les réserves des douze meubles de devanture ont été rejoués sur cette implantation finale. La régression globale et le navigateur final restent des gates distincts.
+
+La recette navigateur `scripts/verify-homeworld-exterior-decor-v76.mjs` est prête pour le build final géré par l’agent principal. Elle rejoint cinq poches représentatives au clavier, lit les vrais sprites montés et leurs échelles/pivots, vérifie un écran mobile du marché, les quatre sources HTTP/SHA et la fiche codex sans déplacer le joueur pendant sa lecture. Les captures et le rapport se trouvent sous `work-local/v76/qa/exterior-local`, puis un dossier public distinct après la publication. Cette préparation ne vaut pas résultat navigateur ; les preuves seront ajoutées seulement après exécution et inspection.
+
+Les contacts sont une mesure visuelle de silhouettes natives, pas une métrologie officielle. Les objets sont de petits équipements civiques solides ; l’auvent est un étal avec son comptoir, pas un nouveau bâtiment où marcher sous une porte invisible. Les scènes restent consultables et les anciens assets ne sont pas supprimés. Le travail ne prétend pas finaliser les limites artistiques des cycles civils V74.

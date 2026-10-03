@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4194",
+  "checkedAt": "2026-10-03T02:48:21.840Z",
+  "checks": [
+    "Yautja speech deciphers into French, pauses without resetting, and Lire immédiatement reveals text without accepting a scene or issuing a combat input.",
+    "A refused dialogue-page checkpoint pauses the real scene and retains older stored bytes; recovery durably saves the same page before allowing further narration.",
+    "New real campaign reads clan, nursery, nonlethal rules, rival and explicit consent; no fabricated checkpoint.",
+    "Real keyboard duel won; arm-raised native victory and nonlethal rival preserved; held readiness does not attack.",
+    "All post-duel pages, real Youngling walkout, explicit age ellipse, named terminal, moving veil, V48 Unblooded walk, seated chief/role crowd and hall exit are linked.",
+    "Final completion quota refusal leaves all stored records active; exact UI retry completes once and reaches the actual city without replaying the duel or granting hunting rites.",
+    "Mobile 390x844 resumes the genuine won checkpoint, keeps the top-aligned cinematic visible above the dialogue, reads the whole welcome, uses 44px targets without horizontal overflow, and honors reduced motion.",
+    "A missing new PNG on a genuine resumed scene freezes that scene and exposes retry; recovering the image restores the same won checkpoint, without resetting the prologue."
+  ],
+  "captures": [
+    "work-local/v76/qa/prologue-local/desktop-born-in-clan.png",
+    "work-local/v76/qa/prologue-local/desktop-dialogue-write-refusal-keeps-scene-open.png",
+    "work-local/v76/qa/prologue-local/desktop-duel-consent.png",
+    "work-local/v76/qa/prologue-local/desktop-genuine-wide-victory.png",
+    "work-local/v76/qa/prologue-local/desktop-master-stop.png",
+    "work-local/v76/qa/prologue-local/desktop-younglings-native-road.png",
+    "work-local/v76/qa/prologue-local/desktop-ellipse.png",
+    "work-local/v76/qa/prologue-local/desktop-announcement.png",
+    "work-local/v76/qa/prologue-local/desktop-open-veil-unblooded-walk.png",
+    "work-local/v76/qa/prologue-local/desktop-clan-code.png",
+    "work-local/v76/qa/prologue-local/desktop-native-clan-hall.png",
+    "work-local/v76/qa/prologue-local/desktop-city-directions.png",
+    "work-local/v76/qa/prologue-local/desktop-walking-out-of-hall.png",
+    "work-local/v76/qa/prologue-local/desktop-save-refusal-with-retry.png",
+    "work-local/v76/qa/prologue-local/desktop-real-city-after-durable-completion.png",
+    "work-local/v76/qa/prologue-local/mobile-master-stop.png",
+    "work-local/v76/qa/prologue-local/mobile-rival-recovery.png",
+    "work-local/v76/qa/prologue-local/mobile-static-youngling-road.png",
+    "work-local/v76/qa/prologue-local/mobile-ellipse.png",
+    "work-local/v76/qa/prologue-local/mobile-announcement.png",
+    "work-local/v76/qa/prologue-local/mobile-static-unblooded-corridor.png",
+    "work-local/v76/qa/prologue-local/mobile-clan-code.png",
+    "work-local/v76/qa/prologue-local/mobile-native-clan-hall.png",
+    "work-local/v76/qa/prologue-local/mobile-city-directions.png",
+    "work-local/v76/qa/prologue-local/missing-art-on-resume-keeps-checkpoint.png",
+    "work-local/v76/qa/prologue-local/asset-retry-restores-same-debrief.png"
+  ],
+  "assets": [
+    {
+      "path": "/game/prologue/v72/nursery-exit.png",
+      "bytes": 2863616,
+      "sha256": "93505a26dd343b3b6cef3f049bf576ca45c0003e5923c5191c13b2fbb4be5c42"
+    },
+    {
+      "path": "/game/prologue/v72/clan-arrival-corridor.png",
+      "bytes": 2723819,
+      "sha256": "7df108ae617534f1a361c7aca0bd9ed1227db7b4da300998d344d868c79d3953"
+    },
+    {
+      "path": "/game/prologue/v72/clan-audience-hall.png",
+      "bytes": 2717614,
+      "sha256": "646aced3fe9a62fa5ea6fcceb249546ff2bde87fc57d216475b5b3fdf9bb2b6c"
+    },
+    {
+      "path": "/game/prologue/v72/clan-chief-seated.png",
+      "bytes": 2633038,
+      "sha256": "491c94e1ff66c7496871f729a952a5d09486aae4057015551604c2d3f0bc611f"
+    },
+    {
+      "path": "/game/prologue/v72/clan-door-veil.png",
+      "bytes": 1994914,
+      "sha256": "f14d017cefcd5f4a940b9aaf70caf39c8c99f94976acff7013fb1b37f8891cb7"
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": [
+    "Text subtitles are not voiced dialogue.",
+    "The original clan architecture is an adaptation; no canonical map, franchise king or whole campaign completion is claimed."
+  ]
+}

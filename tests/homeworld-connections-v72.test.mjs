@@ -60,7 +60,11 @@ test('forty independent shoulder furnishings never intersect roads or building g
   assert.equal(model.HOMEWORLD_CONNECTION_FURNITURE_V72.length,40);
   const props=model.HOMEWORLD_CONNECTION_FURNITURE_V72.map(item=>({item,box:furniture.homeworldFurnitureFootprintV72(item)}));
   for(const {item,box}of props){
-    for(const b of city.HOMEWORLD_BUILDINGS)assert(!intersects(box,city.homeworldBuildingFootprintV64(b)),item.id+' masonry '+b.id);
+    // The whole furnishing rectangle must avoid actual masonry. Angled native
+    // buildings have empty AABB corners; those are not building ground volume.
+    for(const b of city.HOMEWORLD_BUILDINGS)assert(!geo.homeworldBuildingTouchesV76(b,
+      {x:(box.left+box.right)/2,y:(box.top+box.bottom)/2},
+      {halfWidth:(box.right-box.left)/2,halfDepth:(box.bottom-box.top)/2}),item.id+' masonry '+b.id);
     for(const p of city.HOMEWORLD_PROPS){if(p.plane!=='ground')continue;const hw=p.footprint?.halfWidth,hd=p.footprint?.halfDepth;
       if(hw!==undefined&&hd!==undefined)assert(!intersects(box,{left:p.x-hw,right:p.x+hw,top:p.y-hd*(p.artId?2:1),bottom:p.y+(p.artId?0:hd)}),item.id+' existing prop '+p.id);
     }

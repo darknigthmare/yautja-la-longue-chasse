@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
+import {readFileSync} from 'node:fs';
 const load=async path=>{const r=await build({entryPoints:[path],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
 const city=await load('app/game/systems/homeworldCity.ts'), codex=await load('app/game/systems/homeworldElementCodexV64.ts');
 const geo=await load('app/game/systems/homeworldGeometryV64.ts'), rooms=await load('app/game/systems/homeworldInteriorsV64.ts');
@@ -16,18 +17,19 @@ test('one35-degree camera preserves vertical adult/door scale, including inverse
     close(r.x,p.x);close(r.y,p.y);close(geo.homeworldProjectGroundV64(p).y-q.y,z);
   }
 });
-test('43 solid envelopes never overlap, every door accepts only its accessible south passage',()=>{
+test('43 actual solid envelopes never overlap, every door accepts only its accessible front passage',()=>{
   assert.equal(city.HOMEWORLD_BUILDINGS.length,43);
-  const footprints=city.HOMEWORLD_BUILDINGS.map(b=>geo.homeworldBuildingFootprintV64(b));
-  for(let i=0;i<footprints.length;i++)for(let j=i+1;j<footprints.length;j++){
-    const a=footprints[i],b=footprints[j];assert(!(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top),`${i}/${j}`);
+  for(let i=0;i<city.HOMEWORLD_BUILDINGS.length;i++)for(let j=i+1;j<city.HOMEWORLD_BUILDINGS.length;j++){
+    assert(!geo.homeworldBuildingFootprintsOverlapV76(city.HOMEWORLD_BUILDINGS[i],city.HOMEWORLD_BUILDINGS[j]),`${i}/${j}`);
   }
   for(const building of city.HOMEWORLD_BUILDINGS){
     const door=geo.homeworldBuildingDoorwayV64(building);
     assert.equal(city.nearestHomeworldDoor(door.approach)?.id,building.id);
-    for(const p of [{x:building.x,y:building.y-20},{x:building.x+building.width/2,y:building.y+25},{x:building.x,y:door.approach.y+60}])
+    const frame=geo.homeworldBuildingGroundFrameV76(building);
+    const world=(u,v)=>({x:building.x+u*frame.tangent.x+v*frame.normal.x,y:building.y+u*frame.tangent.y+v*frame.normal.y});
+    for(const p of [world(0,-20),world(building.width/2,25),world(0,130)])
       assert.notEqual(city.nearestHomeworldDoor(p)?.id,building.id,`cannot enter ${building.id} through back/side/from afar`);
-    assert.equal(city.isHomeworldWalkable({x:building.x,y:building.y-70}),false,'front wall remains solid');
+    assert.equal(city.isHomeworldWalkable(world(0,-70)),false,'front wall remains solid');
   }
 });
 test('painted forward prop pivots and station volumes share the exact native width and depth',()=>{
@@ -37,6 +39,13 @@ test('painted forward prop pivots and station volumes share the exact native wid
   assert.equal(v69DecorIds.length,3,'V69 adds three supported native braziers');
   assert.equal(city.HOMEWORLD_PROPS.length,44);
   assert.equal(city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length,1,'the transfer terminal remains native V64; ten region beacons have become physical V72 approaches');
+  const originalBrazier=JSON.parse(readFileSync('app/game/data/homeworldLifeV69.json','utf8')).decorations.find(p=>p.id==='life-v69-brazier-citadel');
+  const seatedBrazier=city.HOMEWORLD_PROPS.find(p=>p.id===originalBrazier.id);
+  assert.deepEqual(seatedBrazier,{...originalBrazier,y:originalBrazier.y+12},'only the twelve-unit native support placement changes');
+  const originalCorner={x:originalBrazier.x-originalBrazier.footprint.halfWidth,y:originalBrazier.y-2*originalBrazier.footprint.halfDepth};
+  assert.equal(city.isHomeworldTerrainWalkable(originalCorner,{halfWidth:0,halfDepth:0}),false,'the former unsupported ground corner remains outside terrain');
+  assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+11},{halfWidth:0,halfDepth:0}),false,'eleven whole ground units are insufficient');
+  assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+12},{halfWidth:0,halfDepth:0}),true,'the minimum twelve-unit shift places the same support on real ground');
   for(const prop of city.HOMEWORLD_PROPS){
     const source=art.HOMEWORLD_PROP_ART_V64[prop.artId],p=city.homeworldPropArtPlacement(prop);
     const sx=p.width/source.sourceRect.width,sy=p.height/source.sourceRect.height;

@@ -10,7 +10,7 @@ const url=process.env.V75_ARCHITECTURE_QA_URL??'http://localhost:4193';
 const output=process.env.V75_ARCHITECTURE_QA_OUTPUT??'work-local/v75/qa/architecture-candidate';
 const expectedVersion=process.env.YAUTJA_QA_EXPECTED_VERSION??'V75';
 await fs.mkdir(output,{recursive:true});
-const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldSpatialCodex.ts','homeworldInteriorsV64.ts','homeworldArchitectureArtV75.ts','homeworldArchitectureV75.ts','homeworldFurnitureV72.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldSpatialCodex.ts','homeworldInteriorsV64.ts','homeworldArchitectureArtV75.ts','homeworldArchitectureV75.ts','homeworldFurnitureV72.ts','homeworldGeometryV64.ts']);
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],captures=[],errors=[],httpFailures=[];
 page.setDefaultTimeout(60000);page.on('pageerror',error=>errors.push(error.message));page.on('response',response=>{if(response.status()>=400)httpFailures.push({url:response.url(),status:response.status()});});
@@ -31,12 +31,14 @@ async function nativeFrontage(building){
  assert.equal(await source.evaluate(image=>image.naturalWidth),building.art.sourceWidth);assert.equal(await source.evaluate(image=>image.naturalHeight),building.art.sourceHeight);
  const imageRect=await source.boundingBox(),scale=imageRect.width/building.art.sourceWidth;
  assert(Math.abs(imageRect.height-building.art.sourceHeight*scale)<.03,'native facade aspect ratio: '+building.id+' '+JSON.stringify(imageRect));
- const base=imageRect.y+building.art.foundationFront.y*scale;
+ const zoom=scale/api.homeworldBuildingSpriteScaleV64(building);
  for(const item of api.HOMEWORLD_FRONTAGE_ITEMS_V75.filter(item=>item.buildingId===building.id)){
   const element=page.locator('[data-homeworld-prop-id="'+item.id+'"]'),rect=await element.boundingBox(),art=api.HOMEWORLD_FURNITURE_ART_V72[item.artId];
   assert(rect,'separate mounted frontage '+item.id);const fixtureScale=rect.width/art.sourceRect.width;
   assert(Math.abs(rect.height-art.sourceRect.height*fixtureScale)<.02,'native fitting aspect ratio: '+item.id+' '+JSON.stringify(rect));
-  assert(Math.abs(rect.y+art.pivot.y*fixtureScale-base)<.1,item.id+' feet float relative to painted foundation');
+  const anchorX=imageRect.x+building.art.threshold.x*scale+(item.x-building.x)*zoom;
+  const anchorY=imageRect.y+building.art.threshold.y*scale+(item.y-building.y)*api.HOMEWORLD_GEOMETRY_V64.depthScale*zoom;
+  assert(Math.abs(rect.y+art.pivot.y*fixtureScale-anchorY)<.1&&Math.abs(rect.x+art.pivot.x*fixtureScale-anchorX)<.1,item.id+' native feet float relative to their measured ground placement');
   const footprint=api.homeworldFurnitureFootprintV72(item);assert(!api.isHomeworldWalkable({x:(footprint.left+footprint.right)/2,y:(footprint.top+footprint.bottom)/2}));
  }
  return {activeDoorId,regionalDirections,regionalNativeBeacons,paintedDoor:api.homeworldBuildingDoorwayV64(building),nativeSource:building.art.src,fixtureIds:api.HOMEWORLD_FRONTAGE_ITEMS_V75.filter(item=>item.buildingId===building.id).map(item=>item.id)};

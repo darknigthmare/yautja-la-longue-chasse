@@ -9,6 +9,8 @@ const interiorBundle = await build({entryPoints:['app/game/systems/homeworldInte
 const rooms = await import('data:text/javascript;base64,'+Buffer.from(interiorBundle.outputFiles[0].text).toString('base64'));
 const connectionBundle = await build({entryPoints:['app/game/systems/homeworldRegionConnectionsV72.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const connections = await import('data:text/javascript;base64,'+Buffer.from(connectionBundle.outputFiles[0].text).toString('base64'));
+const geometryBundle = await build({entryPoints:['app/game/systems/homeworldGeometryV64.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const geometry = await import('data:text/javascript;base64,'+Buffer.from(geometryBundle.outputFiles[0].text).toString('base64'));
 const context = { rankId: "young-blood", ownedTrophyCount: 0 };
 const act = (progress, action, settings = context) => applyHomeworldAction(progress, action, settings);
 const chain = () => HOMEWORLD_EVIDENCE.reduce((p, e) => act(p, { type: "inspect", evidenceId: e.id }).progress, defaultHomeworldProgress());
@@ -114,7 +116,9 @@ test("solid scenery has actor volume while every authored doorway keeps a reacha
     const volume = homeworldBuildingCollision(building);
     const wallX = Math.abs(volume.left - homeworldBuildingDoorPosition(building).x) > Math.abs(volume.right - homeworldBuildingDoorPosition(building).x)
       ? volume.left + 8 : volume.right - 8;
-    const wall = { x: wallX, y: building.y - 24 };
+    const frame=geometry.homeworldBuildingGroundFrameV76(building);
+    const wall = building.art.groundFrame ? {x:building.x+frame.tangent.x*(frame.uMax-20)+frame.normal.x*(frame.vFront-24),
+      y:building.y+frame.tangent.y*(frame.uMax-20)+frame.normal.y*(frame.vFront-24)} : { x: wallX, y: building.y - 24 };
     assert.equal(homeworldCollisionAt(wall, { halfWidth: 0, halfDepth: 0 })?.id, building.id, building.id + " facade is not solid");
     const door = homeworldBuildingDoorPosition(building);
     assert(isHomeworldWalkable(door), building.id + " door approach is blocked");

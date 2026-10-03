@@ -1,0 +1,26 @@
+{
+  "tool": "OpenAI image_gen built-in",
+  "transparent_background": true,
+  "reference": "/game/homeworld/v72/civic-furniture-kit.png",
+  "commonSpecification": "Use case: stylized-concept. Asset type: independent transparent PNG environment prop for a 2.5D Yautja city interior. Reference image: existing civic-furniture-kit is material/style reference only; do NOT produce atlas or reuse its frontal orientation. Primary request: [subject specification]. Camera invariant: fixed orthographic game camera, world camera yaw0 and elevation/pitch35, south looking north. ONLY object orientation changes; vertical edges upright. Hand-painted semi-realistic pre-rendered style, warm bronze/charcoal stone. One complete isolated object with transparent padding, no floor/horizon/cast shadow/text/watermarks; native 3D volume, no digital rotation/mirror. Original civilian local prop, not a canon weapon or architecture claim.",
+  "subjectSpecifications": [
+    [
+      "bench-left",
+      "One single long backless stone bench matching the bottom-right bench reference: dark basalt seat panels, bronze bone-shaped supports, no extra accessories. The BENCH long axis runs diagonally from screen lower-left FRONT end to screen upper-right BACK end (object yaw approximately 45 degrees clockwise relative to frontal reference). Visible broad front-left end face and long right side, two complete sturdy supports resting on the same ground plane. Bench is low, long, no chair back."
+    ],
+    [
+      "worktable-right",
+      "One single practical artisan worktable matching the top-row third reference workbench: dark basalt slab, worn bronze frame and four sturdy legs, a small vice and two simple maintenance tools on top, lower shelf with sealed cloth rolls. Worktable long axis runs diagonally from screen lower-right FRONT end to screen upper-left BACK end (object yaw about -45 degrees relative frontal reference). Visible broad right/front end and long left side. This is civilian maintenance furniture, not a canonical weapon rack."
+    ],
+    [
+      "rack-lateral",
+      "One single freestanding tall narrow storage shelving rack with three open shelves, bronze ribbed frame, dark basalt bases, a few sealed cloth rolls and plain lidded jars only. Matches materials and visual style of the reference clothing-rack and crates. Rack long horizontal width is oriented along world DEPTH: its broad front/open shelf face points toward screen LEFT and camera sees the left front shelves, while its thin right/back side recedes toward screen upper-right. Truly side-oriented tall shelving, not another frontal rack. Four sturdy vertical uprights connected with load-bearing shelves and feet."
+    ],
+    [
+      "chest-diagonal",
+      "One single closed rectangular civilian storage chest matching one of the bottom-row second reference convoy crates: dark basalt inset panels, worn bronze ribbed corner frame and practical rope bindings. Orient its long side diagonally from screen lower-left/front to screen upper-right/back; visible left/front short face and right long face, complete closed lid top. Low squat supported storage chest, one chest only, no skulls, no trophies, no weapons, no fictional relics."
+    ]
+  ],
+  "benchFinalPrompt": "Generate an independent environment sprite: one exact long backless dark-basalt and antique bronze bench matching the bottom-right object in reference civic furniture kit. View: orthographic camera yaw0, elevation35 degrees, looking from south; bench rotated in actual 3D by45degrees so long axis rises from lower-left/front to upper-right/back. Two sturdy end supports, no chair back, three rectangular seat slabs. Canvas fully TRANSPARENT except the opaque object: ZERO glow, ZERO haze, ZERO shadow, ZERO vignette, ZERO ambient particles, ZERO surrounding lighting falloff; show no light source or floor. Crisp clean cutout alpha of bench silhouette, entirely transparent black corners. Padded20percent around entire isolated bench, not an atlas. Keep vertical supports upright, warm bronze and charcoal stone handpainted realistic 2.5D style reference. No text, no logo, no skulls/weapons/trophies. Original furniture in local game city, not canon prop claim.",
+  "notes": "Alpha copied unmodified. Prompts are provenance, not claims of a numerical 3D reconstruction. Actual art and measurements live in runtime manifest."
+}

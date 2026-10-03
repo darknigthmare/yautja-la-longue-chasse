@@ -1,0 +1,471 @@
+{
+  "version": 76,
+  "generator": "OpenAI builtin image_gen",
+  "assetCount": 4,
+  "sourceBytesChanged": false,
+  "referenceInspected": "/game/homeworld/v72/civic-furniture-kit.png",
+  "commonPrompt": "ONE independent exterior game prop; weathered charcoal basalt, ribbed bronze alloy, small bone-like fasteners, civilian use. Fixed orthographic camera world yaw0, pitch35, vertical posts, diffuse light upper left. Whole object, true alpha transparent background, no scene/building/panorama/people/weapon/text/watermark/grid. Do not create an atlas.",
+  "assets": [
+    {
+      "id": "mineral-planter-left",
+      "file": "C:/Users/chuck/.codex/generated_images/01a0fa65-ef9e-7cd3-b865-ae809f1684da/exec-cd9c9c31-4d44-4a67-b771-1245c606a134.png",
+      "sha256": "760776e5d6bb65ca2eddd6d22f3fac8dd17b1f0525a5fc95a5ac8d3795ab1af1",
+      "bytes": 2149028,
+      "width": 1536,
+      "height": 1024,
+      "transparent": 1019673,
+      "partial": 553191,
+      "opaque": 0,
+      "bounds": {
+        "10": {
+          "x": 59,
+          "y": 68,
+          "width": 1411,
+          "height": 898,
+          "count": 537131
+        },
+        "128": {
+          "x": 60,
+          "y": 69,
+          "width": 1409,
+          "height": 896,
+          "count": 532053
+        },
+        "240": {
+          "x": 61,
+          "y": 80,
+          "width": 1407,
+          "height": 884,
+          "count": 526704
+        }
+      },
+      "corners": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ]
+      ],
+      "promptSubject": "Bac civique original : basalte, gravier, cristaux volcaniques et trois plantes locales contenues. Aucune espèce canonique nouvelle n’est affirmée.",
+      "runtimeAsset": "/game/homeworld/v76/mineral-planter-left-native.png",
+      "art": {
+        "src": "/game/homeworld/v76/mineral-planter-left-native.png",
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 60,
+          "y": 69,
+          "width": 1409,
+          "height": 896
+        },
+        "pivot": {
+          "x": 767.5,
+          "y": 960
+        },
+        "heightWorld": 133.54151880766503,
+        "scaleWorldPerPixel": 0.149041873669269,
+        "footprintWorld": {
+          "width": 193.30731014904188,
+          "depth": 107.83632948075139
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 119,
+            "y": 549
+          },
+          {
+            "x": 219,
+            "y": 592
+          },
+          {
+            "x": 1168,
+            "y": 960
+          },
+          {
+            "x": 1416,
+            "y": 834
+          },
+          {
+            "x": 305,
+            "y": 545
+          }
+        ],
+        "label": "Bac minéral allongé · orientation gauche",
+        "function": "jardin-mineral",
+        "sha256": "760776e5d6bb65ca2eddd6d22f3fac8dd17b1f0525a5fc95a5ac8d3795ab1af1",
+        "lore": "Bac civique original : basalte, gravier, cristaux volcaniques et trois plantes locales contenues. Aucune espèce canonique nouvelle n’est affirmée.",
+        "measurementStatus": "native-alpha-128-visible-ground-contact-convex-hull-no-pixel-edit",
+        "projection": "Fixed world yaw0 / pitch35; intrinsic native orientation, no CSS rotation/mirror. The ground contact polygon is deprojected once from source pixels."
+      }
+    },
+    {
+      "id": "terrace-bench-right",
+      "file": "C:/Users/chuck/.codex/generated_images/01a0fa65-ef9e-7cd3-b865-ae809f1684da/exec-727b8376-5c97-4936-b870-ed585d09d2cb.png",
+      "sha256": "e82d165a885ee6f890fbef5c333cfd5820e5a440b0c431e2eb286e545e93cff2",
+      "bytes": 2118557,
+      "width": 1536,
+      "height": 1024,
+      "transparent": 971819,
+      "partial": 601045,
+      "opaque": 0,
+      "bounds": {
+        "10": {
+          "x": 53,
+          "y": 29,
+          "width": 1447,
+          "height": 949,
+          "count": 584103
+        },
+        "128": {
+          "x": 54,
+          "y": 30,
+          "width": 1445,
+          "height": 948,
+          "count": 578836
+        },
+        "240": {
+          "x": 54,
+          "y": 31,
+          "width": 1445,
+          "height": 946,
+          "count": 573434
+        }
+      },
+      "corners": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "promptSubject": "Banc civil original du clan : assise de basalte, trois appuis et rail de bronze, textile tissé. Orientation native distincte, aucun miroir de l’ancien banc.",
+      "runtimeAsset": "/game/homeworld/v76/terrace-bench-right-native.png",
+      "art": {
+        "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 54,
+          "y": 30,
+          "width": 1445,
+          "height": 948
+        },
+        "pivot": {
+          "x": 838.5,
+          "y": 975
+        },
+        "heightWorld": 114.80968858131487,
+        "scaleWorldPerPixel": 0.12110726643598616,
+        "footprintWorld": {
+          "width": 143.75432525951555,
+          "depth": 96.28169847097828
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 245,
+            "y": 975
+          },
+          {
+            "x": 1410,
+            "y": 595
+          },
+          {
+            "x": 1432,
+            "y": 519
+          },
+          {
+            "x": 295,
+            "y": 877
+          }
+        ],
+        "label": "Banc de terrasse · orientation droite",
+        "function": "repos",
+        "sha256": "e82d165a885ee6f890fbef5c333cfd5820e5a440b0c431e2eb286e545e93cff2",
+        "lore": "Banc civil original du clan : assise de basalte, trois appuis et rail de bronze, textile tissé. Orientation native distincte, aucun miroir de l’ancien banc.",
+        "measurementStatus": "native-alpha-128-visible-ground-contact-convex-hull-no-pixel-edit",
+        "projection": "Fixed world yaw0 / pitch35; intrinsic native orientation, no CSS rotation/mirror. The ground contact polygon is deprojected once from source pixels."
+      }
+    },
+    {
+      "id": "merchant-canopy-diagonal",
+      "file": "C:/Users/chuck/.codex/generated_images/01a0fa65-ef9e-7cd3-b865-ae809f1684da/exec-5938e48d-82bc-4fd0-bdf7-af1f2a4c948e.png",
+      "sha256": "05a92ec51800422f1fbbe396555cee2de7025d1b18f2af0a8c57cde2a9e7e60b",
+      "bytes": 2226386,
+      "width": 1536,
+      "height": 1024,
+      "transparent": 1012866,
+      "partial": 559998,
+      "opaque": 0,
+      "bounds": {
+        "10": {
+          "x": 215,
+          "y": 14,
+          "width": 1218,
+          "height": 977,
+          "count": 533005
+        },
+        "128": {
+          "x": 216,
+          "y": 15,
+          "width": 1216,
+          "height": 975,
+          "count": 526147
+        },
+        "240": {
+          "x": 216,
+          "y": 16,
+          "width": 1215,
+          "height": 974,
+          "count": 518886
+        }
+      },
+      "corners": [
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ]
+      ],
+      "promptSubject": "Petit étal ouvert original : textile sombre, quatre poteaux verticaux et comptoir de contenants et tissus. Ce mobilier n’est ni un bâtiment visitable ni une nouvelle institution canonique.",
+      "runtimeAsset": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+      "art": {
+        "src": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 216,
+          "y": 15,
+          "width": 1216,
+          "height": 975
+        },
+        "pivot": {
+          "x": 834.5,
+          "y": 985
+        },
+        "heightWorld": 180.40707236842107,
+        "scaleWorldPerPixel": 0.18503289473684212,
+        "footprintWorld": {
+          "width": 206.31167763157896,
+          "depth": 140.32882822484785
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 277,
+            "y": 817
+          },
+          {
+            "x": 1090,
+            "y": 985
+          },
+          {
+            "x": 1392,
+            "y": 653
+          },
+          {
+            "x": 734,
+            "y": 550
+          }
+        ],
+        "label": "Auvent marchand diagonal · quatre appuis",
+        "function": "commerce",
+        "sha256": "05a92ec51800422f1fbbe396555cee2de7025d1b18f2af0a8c57cde2a9e7e60b",
+        "lore": "Petit étal ouvert original : textile sombre, quatre poteaux verticaux et comptoir de contenants et tissus. Ce mobilier n’est ni un bâtiment visitable ni une nouvelle institution canonique.",
+        "measurementStatus": "native-alpha-128-visible-ground-contact-convex-hull-no-pixel-edit",
+        "projection": "Fixed world yaw0 / pitch35; intrinsic native orientation, no CSS rotation/mirror. The ground contact polygon is deprojected once from source pixels."
+      }
+    },
+    {
+      "id": "logistics-container-rack",
+      "file": "C:/Users/chuck/.codex/generated_images/01a0fa65-ef9e-7cd3-b865-ae809f1684da/exec-3fbb532b-3c35-4a61-813b-61a111f240ce.png",
+      "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90",
+      "bytes": 2074756,
+      "width": 1312,
+      "height": 1199,
+      "transparent": 646694,
+      "partial": 925992,
+      "opaque": 402,
+      "bounds": {
+        "10": {
+          "x": 50,
+          "y": 59,
+          "width": 1212,
+          "height": 1078,
+          "count": 897420
+        },
+        "128": {
+          "x": 51,
+          "y": 60,
+          "width": 1211,
+          "height": 1076,
+          "count": 889278
+        },
+        "240": {
+          "x": 52,
+          "y": 61,
+          "width": 1209,
+          "height": 1074,
+          "count": 880404
+        }
+      },
+      "corners": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "promptSubject": "Rack original pour contenants réutilisables et outils civils. Six récipients sur deux étagères, deux patins au sol ; aucune arme, munition ni butin.",
+      "runtimeAsset": "/game/homeworld/v76/logistics-container-rack-native.png",
+      "art": {
+        "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+        "sourceWidth": 1312,
+        "sourceHeight": 1199,
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1312,
+          "height": 1199
+        },
+        "alphaBounds": {
+          "x": 51,
+          "y": 60,
+          "width": 1211,
+          "height": 1076
+        },
+        "pivot": {
+          "x": 657.5,
+          "y": 1133
+        },
+        "heightWorld": 128.83567299752272,
+        "scaleWorldPerPixel": 0.11973575557390587,
+        "footprintWorld": {
+          "width": 135.66061106523534,
+          "depth": 21.919056534542708
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 91,
+            "y": 1133
+          },
+          {
+            "x": 1224,
+            "y": 1133
+          },
+          {
+            "x": 1168,
+            "y": 1028
+          },
+          {
+            "x": 140,
+            "y": 1028
+          }
+        ],
+        "label": "Rack logistique · six contenants",
+        "function": "logistique",
+        "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90",
+        "lore": "Rack original pour contenants réutilisables et outils civils. Six récipients sur deux étagères, deux patins au sol ; aucune arme, munition ni butin.",
+        "measurementStatus": "native-alpha-128-visible-ground-contact-convex-hull-no-pixel-edit",
+        "projection": "Fixed world yaw0 / pitch35; intrinsic native orientation, no CSS rotation/mirror. The ground contact polygon is deprojected once from source pixels."
+      }
+    }
+  ],
+  "limits": [
+    "Original clan furniture, not 1:1 official settlement props.",
+    "Visible base-contact outline measured from native illustration, four points or five on planter; conservative clearance tested on live geometry.",
+    "Source transparency and aspect retained; no recolour, mirror, raster crop or recompression."
+  ]
+}

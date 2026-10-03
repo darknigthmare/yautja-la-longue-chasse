@@ -1,7 +1,7 @@
 import life from '../data/homeworldLifeV69.json';
 import { HOMEWORLD_RESIDENTS_V68, homeworldResidentPoseV68, homeworldResidentDialogueV68, type HomeworldResidentV68 } from './homeworldLifeV68';
-import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, homeworldBuildingVisibleBoundsV72, type HomeworldVec2 } from './homeworldCity';
-import { homeworldProjectGroundV64 } from './homeworldGeometryV64';
+import { HOMEWORLD_BUILDINGS, shouldFadeHomeworldBuilding, homeworldBuildingVisibleBoundsV72,homeworldBuildingRenderDepthV76, type HomeworldVec2 } from './homeworldCity';
+import { homeworldProjectGroundV64,homeworldBuildingCoversPaintV76 } from './homeworldGeometryV64';
 export interface HomeworldResidentV69 extends HomeworldResidentV68 {
   name?: string; activity?: 'inspection' | 'transmission' | 'preparation';
 }
@@ -13,7 +13,8 @@ export const homeworldResidentPoseV69 = homeworldResidentPoseV68;
 export function homeworldResidentRoofOccludedV69(pose: HomeworldVec2, actor: HomeworldVec2) {
   const p=homeworldProjectGroundV64(pose);
   return HOMEWORLD_BUILDINGS.some(b=>{
-    if(pose.y>=b.y || !shouldFadeHomeworldBuilding(b,actor)) return false;
+    if(pose.y>=homeworldBuildingRenderDepthV76(b,pose) || !shouldFadeHomeworldBuilding(b,actor)) return false;
+    if(b.art.opaqueRowsV76)return homeworldBuildingCoversPaintV76(b,pose);
     const r=homeworldBuildingVisibleBoundsV72(b);
     return p.x>r.left&&p.x<r.left+r.width&&p.y>r.top&&p.y<r.top+r.height;
   });
