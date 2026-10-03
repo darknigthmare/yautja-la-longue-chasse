@@ -2875,6 +2875,11 @@ select:focus-visible,
     opacity: 0.4;
   }
 
+  /* The title rig is decorative; keep its off-screen pose out of menu scrolling. */
+  .title-screen .hero-stage {
+    overflow: hidden;
+  }
+
   .hero-hunter {
     right: -18%;
     width: 95vw;
