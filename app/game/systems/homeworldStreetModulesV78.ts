@@ -2,10 +2,11 @@ import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_RESIDENTS_V77,HOMEWORLD_POINTS_V77,HOM
 import {HOMEWORLD_ACTOR,pointInHomeworldPolygon,stepHomeworldActorOnFloor,type HomeworldFootprint,type HomeworldActor,type HomeworldInput} from './homeworldCity';
 import {HOMEWORLD_INTERIOR_POINT_IDS_V64} from './homeworldInteriorsV64';
 import {homeworldBuildingDoorwayV64,homeworldBuildingFootprintV64,homeworldProjectGroundV64} from './homeworldGeometryV64';
-import {HOMEWORLD_EXTERIOR_ART_V76,homeworldExteriorPolygonV76,homeworldExteriorTouchesV76,homeworldExteriorVisibleBoundsV76,type HomeworldExteriorModuleV76} from './homeworldExteriorDecorV76';
+import type {HomeworldExteriorModuleV76} from './homeworldExteriorDecorV76';
 import {homeworldLevelV77} from './homeworldWorldV77';
 import {homeworldUrbanFacadeCollisionV78} from './homeworldUrbanFacadesV78';
-import {compileHomeworldCityNativeV78,homeworldCityNativeTouchesV78} from './homeworldCityNativePlacementV78';
+import {compileHomeworldCityNativeV78,homeworldCityNativeTouchesV78,homeworldCityNativePolygonV78} from './homeworldCityNativePlacementV78';
+import {HOMEWORLD_COURT_ART_V80,homeworldCourtPolygonV80,homeworldCourtTouchesV80,homeworldCourtAlternativeV80} from './homeworldCourtArtV80';
 import {HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78,homeworldUrbanOverlapV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
 
 export interface HomeworldUrbanNativePropV78 extends HomeworldExteriorModuleV76 {
@@ -60,11 +61,11 @@ export const HOMEWORLD_URBAN_PROP_CANDIDATES_V78:readonly HomeworldUrbanNativePr
  * in its bounding box.10u baseline collision margins cover between samples.
  * Terrain and collision are never shrunk to make a decorative placement pass. */
 export function homeworldUrbanPlacementRefusalV78(item:HomeworldUrbanNativePropV78,accepted:readonly HomeworldUrbanNativePropV78[]):string|null{
- const art=HOMEWORLD_EXTERIOR_ART_V76[item.artId];if(!art?.nativeGroundSupport)return 'Missing measured native ground contact';
- const polygon=homeworldExteriorPolygonV76(item);
+ const art=HOMEWORLD_COURT_ART_V80[item.artId];if(!art?.nativeGroundSupport)return 'Missing measured native ground contact';
+ const polygon=homeworldCourtPolygonV80(item);
  const conflict=HOMEWORLD_URBAN_RESERVES_V78.find(r=>r.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,r.polygon));if(conflict)return conflict.id;
  for(const b of HOMEWORLD_BUILDINGS_V77){if(b.levelId!==item.levelId)continue;const box=homeworldBuildingFootprintV64(b);if(homeworldUrbanOverlapV78(polygon,boxPolygon(box)))return 'building:'+b.id;}
- for(const old of accepted)if(old.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,homeworldExteriorPolygonV76(old)))return 'new-prop:'+old.id;
+ for(const old of accepted)if(old.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,homeworldCourtPolygonV80(old)))return 'new-prop:'+old.id;
  const left=Math.min(...polygon.map(p=>p.x)),right=Math.max(...polygon.map(p=>p.x)),top=Math.min(...polygon.map(p=>p.y)),bottom=Math.max(...polygon.map(p=>p.y));
  const nx=Math.max(1,Math.ceil((right-left)/12)),ny=Math.max(1,Math.ceil((bottom-top)/12));
  for(let ix=0;ix<=nx;ix++)for(let iy=0;iy<=ny;iy++){
@@ -80,17 +81,28 @@ function compile(){
  return{accepted,rejected};
 }
 const placements=compile();
-export const HOMEWORLD_URBAN_PROPS_V78:readonly HomeworldUrbanNativePropV78[]=placements.accepted;
+export const HOMEWORLD_URBAN_LEGACY_PROPS_V78:readonly HomeworldUrbanNativePropV78[]=placements.accepted;
 export const HOMEWORLD_URBAN_PROP_REJECTIONS_V78=placements.rejected;
-const nativePlacements=compileHomeworldCityNativeV78(HOMEWORLD_URBAN_RESERVES_V78,HOMEWORLD_URBAN_PROPS_V78,homeworldUrbanTerrainV78);
+const nativePlacements=compileHomeworldCityNativeV78(HOMEWORLD_URBAN_RESERVES_V78,HOMEWORLD_URBAN_LEGACY_PROPS_V78,homeworldUrbanTerrainV78);
 export const HOMEWORLD_CITY_GENERATED_PROPS_V78=nativePlacements.accepted;
 export const HOMEWORLD_CITY_GENERATED_REJECTIONS_V78=nativePlacements.rejected;
 export const HOMEWORLD_CITY_GENERATED_UNPLACED_V78=nativePlacements.unplaced;
+const courtProps=placements.accepted.slice(),courtRevisions:{id:string;fromArtId:string;toArtId:string}[]=[],courtRefusals:{id:string;reason:string;keptArtId:string}[]=[];
+for(let i=0;i<courtProps.length;i++){
+ const old=courtProps[i],alternative=homeworldCourtAlternativeV80(old);if(!alternative)continue;
+ const conflict=homeworldUrbanPlacementRefusalV78(alternative,courtProps.filter((_,index)=>index!==i))
+  ??(nativePlacements.accepted.some(p=>p.levelId===alternative.levelId&&homeworldUrbanOverlapV78(homeworldCourtPolygonV80(alternative),homeworldCityNativePolygonV78(p)))?'native-city-support':null);
+ if(conflict){courtRefusals.push({id:old.id,reason:conflict,keptArtId:old.artId});continue;}
+ courtProps[i]=alternative;courtRevisions.push({id:old.id,fromArtId:old.artId,toArtId:alternative.artId});
+}
+export const HOMEWORLD_COURT_REVISIONS_V80=courtRevisions;
+export const HOMEWORLD_COURT_REFUSALS_V80=courtRefusals;
+export const HOMEWORLD_URBAN_PROPS_V78:readonly HomeworldUrbanNativePropV78[]=courtProps;
 export function homeworldUrbanCollisionV78(level:HomeworldLevelV77,point:HomeworldUrbanPointV78,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const old=homeworldCollisionV77(level,point,body);if(old)return old;
  const facade=homeworldUrbanFacadeCollisionV78(level,point,body);if(facade)return facade;
  const generated=HOMEWORLD_CITY_GENERATED_PROPS_V78.find(item=>item.levelId===level&&homeworldCityNativeTouchesV78(item,point,body));if(generated)return{kind:'prop' as const,id:generated.id};
- const item=HOMEWORLD_URBAN_PROPS_V78.find(item=>item.levelId===level&&homeworldExteriorTouchesV76(item,point,body));
+ const item=HOMEWORLD_URBAN_PROPS_V78.find(item=>item.levelId===level&&homeworldCourtTouchesV80(item,point,body));
  return item?{kind:'prop' as const,id:item.id}:null;
 }
 export const homeworldUrbanWalkableV78=(level:HomeworldLevelV77,point:HomeworldUrbanPointV78,body:HomeworldFootprint=HOMEWORLD_ACTOR)=>
@@ -105,8 +117,8 @@ export function stepHomeworldUrbanActorV78(actor:HomeworldActor,input:HomeworldI
 /** Same native dimensions and source pivot for the future root renderer.
  * No CSS rotation, mirror, free resizing or actor-space projection is allowed. */
 export function homeworldUrbanNativePlacementV78(item:HomeworldUrbanNativePropV78){
- const art=HOMEWORLD_EXTERIOR_ART_V76[item.artId],elevation=homeworldLevelV77(item.levelId).elevation,p=homeworldProjectGroundV64(item,elevation),scale=art.scaleWorldPerPixel*item.scale;
+ const art=HOMEWORLD_COURT_ART_V80[item.artId],elevation=homeworldLevelV77(item.levelId).elevation,p=homeworldProjectGroundV64(item,elevation),scale=art.scaleWorldPerPixel*item.scale;
  return{src:art.src,sha256:art.sha256,sourceWidth:art.sourceWidth,sourceHeight:art.sourceHeight,scale,
   left:p.x-art.pivot.x*scale,top:p.y-art.pivot.y*scale,width:art.sourceRect.width*scale,height:art.sourceRect.height*scale,
-  alpha:homeworldExteriorVisibleBoundsV76({...item,elevation}),polygon:homeworldExteriorPolygonV76(item),elevation};
+  alpha:{left:p.x+(art.alphaBounds.x-art.pivot.x)*scale,top:p.y+(art.alphaBounds.y-art.pivot.y)*scale,width:art.alphaBounds.width*scale,height:art.alphaBounds.height*scale},polygon:homeworldCourtPolygonV80(item),elevation};
 }

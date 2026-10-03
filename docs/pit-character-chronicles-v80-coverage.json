@@ -1,0 +1,2178 @@
+{
+  "schema": "yautja.pit-chronicles.coverage/2",
+  "generatedAt": "2026-10-03T19:42:12.877Z",
+  "baseCommit": "5bfd43275f39ccbb50287841db1fe56e24cc22e7",
+  "status": "SOURCE_MOUNTED_UNIT_SSR_AND_REPRESENTATIVE_LOCAL_BROWSER_PASS_PUBLIC_PENDING",
+  "counts": {
+    "fighters": 201,
+    "routeDuels": 1608,
+    "introPanels": 603,
+    "outroPanels": 603,
+    "panelRecords": 1206,
+    "legacyRoutesRetained": 4,
+    "legacyDuelsEach": 3,
+    "dedicatedNewPaintings": 0,
+    "nativeFullSceneAssigned": 0,
+    "tests": 230,
+    "pass": 230,
+    "fail": 0,
+    "uniquePanelTextCompositions": 1206
+  },
+  "cqcSource": {
+    "version": "0.56",
+    "sourceKind": "user-supplied-source",
+    "path": "C:/Users/chuck/Downloads/CQC_Versus_Legacy_v0.56_BACKLOG_SPLIT/cqc-versus-v056/src",
+    "files": [
+      {
+        "path": "chronicles-core-v056.js",
+        "sha256": "57a6adbcdc488a6ab6ad0ee1678f65e64f82324a0d32abd070afbf97507a0a84"
+      },
+      {
+        "path": "chronicles-data-v056.js",
+        "sha256": "bd82874766b56cdb348a4b781228516ceee0cb739b140427d7f926b2a64034d0"
+      },
+      {
+        "path": "chronicles-cinema-v056.js",
+        "sha256": "07aa7f877ca678927424a69429fe82c2334ac8dae382f31b9d9b254f31355e33"
+      }
+    ],
+    "transfer": "3 intro / 8 CPU encounters / 3 outro; composition vs fullScene distinction, original alternative stories",
+    "notTransferred": "MGS canon, characters, text, assets or iframe protocol"
+  },
+  "legacy": {
+    "routeDefinitionJsonSha256": "736ff270cd11aa1eab264e46b70a79636b542b5faa730ad86cb6571da00413d7",
+    "migration": "none; preserve original v1 routes, ordered result receipts and owner/fighter keys; v2 namespace independent",
+    "v1Namespace": "yautja-long-hunt.the-pit-character-chronicles.v1.{encodedOwner}.{fighterId}",
+    "v2Namespace": "yautja-long-hunt.the-pit-character-chronicles.v2.{encodedOwner}.{fighterId}"
+  },
+  "authoring": {
+    "premises": "201 manually written original rows with unique title/premise/closing choice; full physical-plot revision",
+    "chapters": "8 authored dramatic families compose profile/object/opponent-specific before/challenge/after, not 1608 independently hand-written scripts",
+    "rivals": "actual roster IDs, last encounter; narrative relationship original, not an asserted published rivalry",
+    "biographies": "4 existing primary summaries; 3 project original/user-attributed V56 entries; 194 roster attributions not certified canonical biographies",
+    "editorialCheck": "No software/canon/certification meta-discourse inside played V80 panels/encounters. Editorial aid, not literary-quality certification.",
+    "panelUniquenessMethod": "Count distinct JSON {title,text}; text uniqueness is not proof of distinct pictorial concepts, dedicated paintings or animations.",
+    "finalProseCorrections": "French contractions and sentence starts; narrative role labels separate from product/uncertainty labels; authored choices preserved verbatim; no premature object possession.",
+    "alphaFinalCorrection": "Only Alpha premise corrected: the last bearer guards passage eight, not an implied ninth bearer behind eight guards. Previous targeted proof retained; final candidate gates belong to root."
+  },
+  "verification": {
+    "targetedTests": "230/230 PASS after sole Alpha eighth-passage wording correction; fresh log work-local/v80-chronicles-tests-alpha-final.log; preceding logs retained",
+    "typecheck": "npx tsc --noEmit --incremental false --pretty false exit0 before sole Alpha wording correction; final whole-candidate gate belongs to root",
+    "eslint": "four chronicle TS/TSX files exit0 before sole Alpha wording correction; final whole-candidate gate belongs to root",
+    "browser": {
+      "scope": "One real first V80 Greyback CPU match on compiled Next localhost4204, not all8duels; defaultSave deck-entry fixture only, no chronicle/HP/result injection.",
+      "status": "PASS_ONE_REAL_CHRONICLE_DUEL_V80_PENDING_VISUAL_REVIEW",
+      "reviewVerdict": "PASS_WITH_LIMITS",
+      "report": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-local-cleanup3/report.json",
+        "sha256": "3aee7b888ab3ccce2c311711e001a9ae866107536277877412501cc00ecc5366"
+      },
+      "review": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-local-cleanup3/review.fragment.json",
+        "sha256": "288115178d7db35f27ce80a7b0a67863e0a2c3e5036ac827869f32f7a995e801"
+      },
+      "captures": 13,
+      "actuallyOpened": 13,
+      "checks": 5,
+      "rawErrors": 0,
+      "syntheticReceipts": 0,
+      "result": "real-defeat",
+      "uniqueReceipts": 1,
+      "processExit": 0,
+      "sourceBeforeEqualsAfter": true,
+      "broaderUiQa": "belongs to root; not certified by this one-duel report",
+      "knownVisualLimits": [
+        "P2 MENU overlays right end of finisher skip button",
+        "Vertical desktop narrative scroll and small eight-opponent labels"
+      ]
+    },
+    "publication": "not performed by this agent",
+    "candidate2GlobalGates": [
+      {
+        "label": "regression-final-2",
+        "file": "work-local/v80/gates/regression-final-2.json",
+        "sha256": "fe6b8061cd41935cb6ffadb0489dedcd830d788d0196109a148de01490973bec",
+        "exitCode": 0,
+        "finishedAt": "2026-10-03T20:05:10.548Z",
+        "counts": {
+          "tests": 2940,
+          "suites": 0,
+          "pass": 2940,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "logSha256": "d1839b49b96eb453a240910d5b957596b5fef9cf58378a1b7f1df0afd3d2ff1b"
+      },
+      {
+        "label": "next-final-build-2",
+        "file": "work-local/v80/gates/next-final-build-2.json",
+        "sha256": "b8692e1bfe2f5a39ab869dc4ae3992b700a824c2ac801bbd8b2c4dd197ac077f",
+        "exitCode": 0,
+        "finishedAt": "2026-10-03T19:43:37.601Z",
+        "counts": {
+          "tests": 0,
+          "suites": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "logSha256": "ae6971bad04463bb21da6b24d3523ceadaac3c40eb2456ef9601b114198ceb58"
+      },
+      {
+        "label": "vinext-final-build-2",
+        "file": "work-local/v80/gates/vinext-final-build-2.json",
+        "sha256": "8035e64b717696289820cfae12d0c54bdc94b5d3886ee1b50beb2e75e4462990",
+        "exitCode": 0,
+        "finishedAt": "2026-10-03T19:47:40.800Z",
+        "counts": {
+          "tests": 0,
+          "suites": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "logSha256": "753ddcb1d84a2392e3d1bd726b271cc28b2a040573be3e80fac15439dff150db"
+      },
+      {
+        "label": "lint-final",
+        "file": "work-local/v80/gates/lint-final.json",
+        "sha256": "ee89b77878aadd4acc957f1a8e07b6ffcde7215014fac8b60069157d505690c5",
+        "exitCode": 0,
+        "finishedAt": "2026-10-03T19:44:50.787Z",
+        "counts": {
+          "tests": 0,
+          "suites": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "logSha256": "58a75e30097da7e3674626cc1f8e0b311d8f08ba652e87e558d2f23a417a5d26"
+      },
+      {
+        "label": "tsc-next-final-2",
+        "file": "work-local/v80/gates/tsc-next-final-2.json",
+        "sha256": "61af6f9d0cb38c87ae1cd7aa421622cfa973cb410422f7458e48521607d2e319",
+        "exitCode": 0,
+        "finishedAt": "2026-10-03T19:57:00.581Z",
+        "counts": {
+          "tests": 0,
+          "suites": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "rootUiCandidate2": {
+      "file": "work-local/v80/qa/chronicle-ui-final-local-r3/report.json",
+      "sha256": "66eeb7fec270a19cb8d049d7e1c8b9f882d5db03b2c68894a245679a3e63fe65",
+      "status": "PASS_CHRONICLE_UI_V80_PENDING_VISUAL_REVIEW",
+      "captures": 20,
+      "checks": 4,
+      "completedAt": "2026-10-03T20:03:45.093Z",
+      "scope": "Read-only raw root report; this agent did not open these20images or certify their visual review. Ending examples use explicit synthetic8receipt fixtures, not browser wins."
+    },
+    "candidate3": "Fresh build/QA planned after real MENU/finisher-skip/touchpads and city access/UI fixes. Candidate2 proofs retained, not automatically reused as source equality for candidate3.",
+    "candidate3RealDuel": {
+      "status": "PASS_WITH_LIMITS",
+      "candidateId": "v80-final-next3-local",
+      "base": "http://localhost:4204",
+      "startedAt": "2026-10-03T20:27:40.792Z",
+      "completedAt": "2026-10-03T20:28:37.305Z",
+      "report": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-next3-local/report.json",
+        "sha256": "a63c246c80ef90933e906569c6a72c01c505ded01e9b829e6f434b25d03b879b"
+      },
+      "visualReview": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-next3-local/review.fragment.json",
+        "sha256": "8e111b88bf558168cc83d9b566ea797f075bce93cd7ad78044d0bbef4bf3365f",
+        "actuallyOpened": 13,
+        "method": "functions.view_image",
+        "reviewedAt": "2026-10-03T20:30:33.476Z"
+      },
+      "checks": 5,
+      "captures": 13,
+      "errors": 0,
+      "realPlayedMatches": 1,
+      "syntheticResults": 0,
+      "result": "real-defeat",
+      "sourceCount": 13,
+      "sourceBeforeAfterIdentical": true,
+      "menuSkipOverlapResolved": true,
+      "menuSkipIntersectionArea": 0,
+      "menuSkipHorizontalGapPx": 26.25,
+      "terminalPadsObserved": null,
+      "limits": [
+        "One first encounter of the Greyback content-version-2 route only, not all eight duels or 201 stories won.",
+        "A nonlethal presentation with shipped art is not a newly drawn native finisher animation or a canonical story event.",
+        "Desktop Chromium browser gameplay only; no physical gamepad, mobile handset, cloud sync or user save is certified.",
+        "Public commit/READY binding is required separately when the configured base is HTTPS; local runs are not a public release gate.",
+        "Tableaux introductifs et briefing avec scroll vertical sur1440x900 ; petits libellés des huit duels restent une réserve de lisibilité.",
+        "La finition utilise les assets livrés et poses du moteur ; ce contrôle ne certifie pas une animation anatomique native dessinée ou fidélité visuelle1:1.",
+        "Absence de pads terminaux observée sur ce contexte desktop sans touch. Le téléphone et la manette physiques ne sont pas certifiés.",
+        "Les13images de candidate2 et leurs reçus restent historiques inchangés ; aucune preuve publique n’est encore acquise."
+      ],
+      "publication": "No public V80 recipe yet; exact commit, READY and fresh HTTPS captures remain separate."
+    },
+    "candidate4RealDuel": {
+      "status": "PASS_WITH_LIMITS",
+      "candidateId": "v80-final-local-build4",
+      "base": "http://127.0.0.1:4204",
+      "report": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-next4-local/report.json",
+        "sha256": "708d1abff6c496243262ebefa9df73c8d386d72ceed81e61e62f45894d70baa7",
+        "startedAt": "2026-10-03T20:53:06.148Z",
+        "completedAt": "2026-10-03T20:54:04.052Z"
+      },
+      "visualReview": {
+        "file": "work-local/v80/qa/chronicle-real-duel-final-next4-local/review.fragment.json",
+        "sha256": "9bdb92e1ca784f33034f3eb2e054dd12d9e16c2b711a52af92a098835f0c27b4",
+        "actuallyOpened": 13,
+        "method": "functions.view_image",
+        "reviewedAt": "2026-10-03T20:55:51.481Z"
+      },
+      "checks": 5,
+      "captures": 13,
+      "errors": 0,
+      "sourceCount": 14,
+      "sourceBeforeAfterIdentical": true,
+      "globalsCss": {
+        "file": "app/globals.css",
+        "sha256": "12d12cdfd3f75e7a1196d7b4d5424787e7f770344c5d0c7428de94156948ed75"
+      },
+      "scope": "NEXT4 compiled, fourteen source hashes including global CSS; one genuine first Greyback V80 CPU match and thirteen freshly opened captures. Not eight wins or201completed routes.",
+      "limits": [
+        "One first encounter of the Greyback content-version-2 route only, not all eight duels or 201 stories won.",
+        "A nonlethal presentation with shipped art is not a newly drawn native finisher animation or a canonical story event.",
+        "Desktop Chromium browser gameplay only; no physical gamepad, mobile handset, cloud sync or user save is certified.",
+        "Public commit/READY binding is required separately when the configured base is HTTPS; local runs are not a public release gate.",
+        "Long scroll vertical and small eight-duel labels remain in narrative tableaux.",
+        "Terminal pads are absent in this desktop context without touch; no physical handset/gamepad certification.",
+        "No old PNG is reused. Candidate2/3 evidence and raw reports remain unchanged; this gate is local, no READY/public V80 evidence yet."
+      ],
+      "realPlayedMatches": 1,
+      "syntheticResults": 0,
+      "result": "real-defeat",
+      "receipt": {
+        "resultId": "pit-23b8c97d-a034-417c-88a4-b60df3e7e04f",
+        "encounterId": "pit-v80-greyback-1",
+        "leftId": "greyback",
+        "rightId": "user-warrior",
+        "arenaId": "arena-106-predator-2-1990-trophy-ship",
+        "winnerId": "user-warrior"
+      },
+      "endingStillLocked": true,
+      "menuSkipIntersectionArea": 0,
+      "menuSkipHorizontalGapPx": 26.25,
+      "terminalPadsObserved": null
+    },
+    "candidate4Ui": {
+      "status": "PASS_WITH_LIMITS",
+      "candidateId": "v80-final-local-build4",
+      "base": "http://127.0.0.1:4204",
+      "report": {
+        "file": "work-local/v80/qa/chronicle-ui-final-next4-local/report.json",
+        "sha256": "725397dc720648dfe6bcc312e01600a07e3b6a04513e763e3ba8237a64bb8472",
+        "startedAt": "2026-10-03T20:52:56.863Z",
+        "completedAt": "2026-10-03T20:53:33.982Z"
+      },
+      "visualReview": {
+        "file": "work-local/v80/qa/chronicle-ui-final-next4-local/review.fragment.json",
+        "sha256": "21daf7adda19c68759ff410707997745442dcf3a24f9897aa05ab2aefa66f456",
+        "actuallyOpened": 20,
+        "method": "functions.view_image",
+        "reviewedAt": "2026-10-03T20:58:15.009Z"
+      },
+      "checks": 4,
+      "captures": 20,
+      "errors": 0,
+      "sourceCount": 10,
+      "sourceBeforeAfterIdentical": true,
+      "globalsCss": {
+        "file": "app/globals.css",
+        "sha256": "12d12cdfd3f75e7a1196d7b4d5424787e7f770344c5d0c7428de94156948ed75"
+      },
+      "scope": "Independent real opening of20fresh ROOT NEXT4 compiled screenshots. Ten consumer hashes including app/globals.css; UI fixture catalogue/legacy/threeGreybackintro and JungleHunter/Theta endings with8syntheticreceipts each, never browser victories.",
+      "limits": [
+        "Les fins utilisent huit reçus synthétiques par parcours pour examiner leur UI ; ces20captures ne prouvent aucune victoire en navigateur ou huit duels effectivement joués.",
+        "Le checkpoint legacy est un fixture de modèle, pas une sauvegarde utilisateur. Les fins et galeries sont parcourues en lecture seule selon le rapport brut.",
+        "Les tableaux desktop/mobile exigent un défilement vertical ; le briefing mobile dépasse1400px en capture pleine page. Les portraits mobile sont petits et les labels des huit combats restent modestes.",
+        "Le catalogue est borné par une hauteur interne : seules certaines cartes montées sont simultanément visibles. Le rapport vérifie pagination et recherche, pas une revue de chacun des201portraits.",
+        "Ces compositions réemploient portraits et stages natifs existants ; elles ne certifient ni peinture narrative dédiée, animation anatomique dessinée ni fidélité1:1 globale.",
+        "Mobile Chromium390x844 est un viewport simulé, pas un téléphone ou une manette physiques.",
+        "Aucun des20anciens pixels UI n’a été utilisé ; aucune app/source/test ni reçu brut n’a été modifié par cette revue.",
+        "This is NEXT4 local evidence with global CSS source binding. No public deployment/READY or newer source is certified.",
+        "The global CSS hash is bound, but no global toast notification is deliberately triggered by this chronicle UI recipe."
+      ],
+      "browserWins": 0,
+      "syntheticEndingRoutes": 2,
+      "syntheticReducerReceiptsPerEnding": 8
+    }
+  },
+  "limits": [
+    "Unit receipts are synthetic and ordered, not 201 browser campaigns won.",
+    "SSR opens no pixels and decodes no PNG; source-file existence checked only.",
+    "1206 panel records compose existing native art; no 1206 new illustrations and no 402 full paintings.",
+    "Weapons, poses and gameplay remain existing runtime implementations; no new individual ability is promised from a bitmap.",
+    "Props and action prose are narrative only; no physical captives, new objective actors, destruction or scripted extraction implemented.",
+    "Original alternative scenes never rewrite film/comic deaths, survivors, parentage or campaign ranks.",
+    "Checkpoint is local device/owner/fighter/content-version; no cloud synchronization or server anti-cheat.",
+    "Final complete build, scoped desktop/mobile keyboard/gamepad browser QA and public production checks belong to root and remain pending."
+  ],
+  "sourceFiles": [
+    {
+      "path": "app/game/systems/pitCharacterChroniclesV79.ts",
+      "sha256": "23a7cd5a8fbfbcadc8c28b56471f563fd68c68f2a04a632648346539eb8d5637"
+    },
+    {
+      "path": "app/game/systems/pitCharacterChronicleDataV80.ts",
+      "sha256": "7e538a17ad8b9aaccff1d843baaa5c42639216b3857b76d32cd8e1f74a1884d1"
+    },
+    {
+      "path": "app/game/data/pitChronicleSeedsV80.ts",
+      "sha256": "6da4ac4d91bb509efbcf06b3e9509fd057752a2115b81abf77a6376cddc48159"
+    },
+    {
+      "path": "app/game/PitExperienceV79.tsx",
+      "sha256": "c8bb9364384a2b3ab94334687d28f6c9f1f05c04a7037afe909383b679b61460"
+    },
+    {
+      "path": "app/game/PitExperienceV79.module.css",
+      "sha256": "cc905801f0b515bb4570cb31271fe457830801457850d5dd303078fa69b94bed"
+    },
+    {
+      "path": "tests/pit-character-chronicles-v79.test.mjs",
+      "sha256": "96539ebb430757ddc44e9af5ffa9756a9c189d3223a93682f7dd479c1ba83625"
+    },
+    {
+      "path": "tests/pit-character-chronicles-ui-v79.test.mjs",
+      "sha256": "656964b124fc17456a1b51ee5afa6f88bbdbb5fbb556ddffb995cc1775a0f80a"
+    },
+    {
+      "path": "tests/pit-character-chronicles-v80.test.mjs",
+      "sha256": "248f8a1be2e5e4e3ef17d859513fea35e9c2f51e99558fca2761a1cfaacd71d9"
+    }
+  ],
+  "routes": [
+    {
+      "fighterId": "jungle-hunter",
+      "title": "La chaleur sous la boue",
+      "rivalId": "city-hunter",
+      "stageId": "arena-103-predator-1987-final-trap-clearing",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v5/film-plates/jungle-hunter.png"
+    },
+    {
+      "fighterId": "city-hunter",
+      "title": "Au-dessus du vacarme",
+      "rivalId": "jungle-hunter",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v31/film-plates/city-hunter.png"
+    },
+    {
+      "fighterId": "scar",
+      "title": "La marque et le choix",
+      "rivalId": "celtic",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v5/film-plates/scar.png"
+    },
+    {
+      "fighterId": "celtic",
+      "title": "Le poids de la garde",
+      "rivalId": "scar",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v5/film-plates/celtic.png"
+    },
+    {
+      "fighterId": "wolf",
+      "title": "Ce qui ne doit pas sortir",
+      "rivalId": "berserker",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v5/film-plates/wolf.png"
+    },
+    {
+      "fighterId": "feral-hunter",
+      "title": "Le retour du projectile",
+      "rivalId": "falconer",
+      "stageId": "arena-115-prey-2022-mud-pit",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v5/film-plates/feral-hunter.png"
+    },
+    {
+      "fighterId": "berserker",
+      "title": "Le camp sans maître",
+      "rivalId": "user-classic-2010",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v5/film-plates/berserker.png"
+    },
+    {
+      "fighterId": "falconer",
+      "title": "Une ombre de trop",
+      "rivalId": "tracker",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v5/film-plates/falconer.png"
+    },
+    {
+      "fighterId": "scarface",
+      "title": "La dette mesurable",
+      "rivalId": "stone-heart",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v31/film-plates/scarface.png"
+    },
+    {
+      "fighterId": "valkyrie",
+      "title": "Le prix du passage",
+      "rivalId": "witch",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v31/film-plates/valkyrie.png"
+    },
+    {
+      "fighterId": "witch",
+      "title": "Le piège déclaré",
+      "rivalId": "valkyrie",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v31/film-plates/witch.png"
+    },
+    {
+      "fighterId": "enforcer",
+      "title": "La garde du renégat",
+      "rivalId": "user-bad-blood",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v31/film-plates/enforcer.png"
+    },
+    {
+      "fighterId": "tracker",
+      "title": "La piste interrompue",
+      "rivalId": "berserker",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "biographyEvidence": "primary-summary",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v5/film-plates/tracker.png"
+    },
+    {
+      "fighterId": "greyback",
+      "title": "Le retrait accordé",
+      "rivalId": "city-hunter",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "primary-summary",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v5/film-plates/greyback.png"
+    },
+    {
+      "fighterId": "theta",
+      "title": "Le nom du disparu",
+      "rivalId": "user-last-hunt-super",
+      "stageId": "arena-141-theta-tundra-outpost",
+      "biographyEvidence": "primary-summary",
+      "axis": "rescue",
+      "nativePortrait": "atlas-only"
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "title": "Passer sans disparaître",
+      "rivalId": "user-tichinde",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "biographyEvidence": "primary-summary",
+      "axis": "rescue",
+      "nativePortrait": "atlas-only"
+    },
+    {
+      "fighterId": "kok-warlord",
+      "title": "Le siège sans décret",
+      "rivalId": "greyback",
+      "stageId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v5/film-plates/kok-warlord.png"
+    },
+    {
+      "fighterId": "stone-heart",
+      "title": "L'empreinte sous le métal",
+      "rivalId": "scarface",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v31/film-plates/stone-heart.png"
+    },
+    {
+      "fighterId": "original-arid-ermit-yautja",
+      "title": "La réserve d'eau",
+      "rivalId": "user-lava-planet",
+      "stageId": "arena-087-cercle-ambre",
+      "biographyEvidence": "project-original",
+      "axis": "custody",
+      "nativePortrait": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png"
+    },
+    {
+      "fighterId": "original-mutated-yautja",
+      "title": "Tenir son propre appui",
+      "rivalId": "enforcer",
+      "stageId": "arena-085-cercle-sang",
+      "biographyEvidence": "project-original",
+      "axis": "identity",
+      "nativePortrait": "/game/user-pack/v56/cutouts/mutated-yautja.png"
+    },
+    {
+      "fighterId": "guest-amengi-female",
+      "title": "La place de l'invitée",
+      "rivalId": "user-alpha",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "project-original",
+      "axis": "identity",
+      "nativePortrait": "/game/user-pack/v56/cutouts/amengi-female.png"
+    },
+    {
+      "fighterId": "user-dark-horse-25th",
+      "title": "L'ombre sur le métal",
+      "rivalId": "user-dark",
+      "stageId": "arena-149-dark-horse-new-york",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/69c9bee48e837c1bbb78492e9575269d3818edcd1f5573e37280c14ed1d42ee5.png"
+    },
+    {
+      "fighterId": "user-warp-adjutant",
+      "title": "La relève du seuil",
+      "rivalId": "user-warp-enforcer",
+      "stageId": "arena-045-galerie-des-serments",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b95c75bd0a26c86744ead1035b8012751ed45d663321f7104b5909e30b465b6a.png"
+    },
+    {
+      "fighterId": "user-ahab",
+      "title": "La trace qui résiste",
+      "rivalId": "user-hornhead",
+      "stageId": "arena-148-ahab-lv223",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png"
+    },
+    {
+      "fighterId": "user-albino",
+      "title": "Visible dans la pluie",
+      "rivalId": "user-big-red",
+      "stageId": "arena-142-dead-end-alley",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/c6b065a0034e7d89ab968dc8f8ff14fc85bd742b5c4fdfa6a5fe28c6ffa2edd0.png"
+    },
+    {
+      "fighterId": "user-alpha",
+      "title": "Le premier outil",
+      "rivalId": "guest-amengi-female",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b6011f980dcd72247a2c9c7a98c19be653dfc1e88b0b2c632d60e2653d443bcb.png"
+    },
+    {
+      "fighterId": "user-amazon-phg",
+      "title": "Une rive pour deux",
+      "rivalId": "user-cleopatra-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0ec2b204583bd7f74ad0a2d6dcaab386135bc949f32b81dbaf90e96c46a7cd36.png"
+    },
+    {
+      "fighterId": "user-ancient-warrior",
+      "title": "La place de l'ancien",
+      "rivalId": "user-youngblood",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0f1a3e26c049ffecf8b4f269df20b466560254f90a8d7ad879c2faebdc42d80c.png"
+    },
+    {
+      "fighterId": "user-extinction-ancient",
+      "title": "Le relais de la ligne",
+      "rivalId": "user-extinction-vanguard",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/447e32b132461f5b446386f6c2ef6e90d96ac5aae68d0abb564a94e22ed7088f.png"
+    },
+    {
+      "fighterId": "user-ancient-homeworld",
+      "title": "La mémoire de la lisière",
+      "rivalId": "user-homeworld-tatoue",
+      "stageId": "arena-047-bassin-des-chasses",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/09543335389c1f975786c52278ff4e2f576dae40f3953b430a6e417592ac3b54.png"
+    },
+    {
+      "fighterId": "user-ancient-primal-hunt",
+      "title": "Le signe dans la pierre",
+      "rivalId": "user-lord",
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b7b2badbd33475472be01ab3b174150f43b1c4afb929e27d86892eb26ef4d732.png"
+    },
+    {
+      "fighterId": "user-anubis-phg",
+      "title": "Le seuil compté",
+      "rivalId": "user-exalted-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7e91e55f8be40a0a41172f6ad680e45d436f7c22cec1b31c3a5e816e025aa94f.png"
+    },
+    {
+      "fighterId": "user-lot2-13",
+      "title": "La pointe et la cape",
+      "rivalId": "user-clan-leader",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/1479d88a8c694f3ecab9134ac10046b274e049528deadd4e0e7dd784c92e9a93.png"
+    },
+    {
+      "fighterId": "user-assassin",
+      "title": "La mesure du gabarit",
+      "rivalId": "user-fugitive",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/967f985148bbfca6a3d7408908315ae3c82b0ad7833d5b73b31b16a40fa16fc8.png"
+    },
+    {
+      "fighterId": "user-homeworld-masque-anguleux",
+      "title": "L'angle de l'embuscade",
+      "rivalId": "enforcer",
+      "stageId": "arena-047-bassin-des-chasses",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/8e66f527f56920cd3e0524106085db8436846333c4952fd46901fc654cbd3d30.png"
+    },
+    {
+      "fighterId": "user-homeworld-masque-evase",
+      "title": "La voie écartée",
+      "rivalId": "user-ancient-homeworld",
+      "stageId": "arena-047-bassin-des-chasses",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ad60e6f196070b855c52bfbebbdd443641659ed1e8c34d7ed0181a94e6a9081c.png"
+    },
+    {
+      "fighterId": "user-homeworld-tatoue",
+      "title": "Le signe sous la poussière",
+      "rivalId": "enforcer",
+      "stageId": "arena-047-bassin-des-chasses",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/07ba67b4f5fba368367ac61bc898f453413ab5b7b2385c6da72510f3f5d65e59.png"
+    },
+    {
+      "fighterId": "user-bad-blood",
+      "title": "La garde profanée",
+      "rivalId": "enforcer",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/06fe1d9e8e97324074099503760138982c4363aa1b3431ba3c86d63002d02403.png"
+    },
+    {
+      "fighterId": "user-berserker-class-phg",
+      "title": "La charge interrompue",
+      "rivalId": "user-scout-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/2c2336c98d456d1de6828f80173dd8df74c85a594198c0a9b950c5b155e1b44a.png"
+    },
+    {
+      "fighterId": "user-big-game",
+      "title": "La dernière empreinte",
+      "rivalId": "user-primal",
+      "stageId": "arena-143-big-game-new-mexico",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/62e970c66266165250e05bca51446baf3e6b6a68d904e9a14a8ebee02e40f5b9.png"
+    },
+    {
+      "fighterId": "user-big-mama",
+      "title": "L'espace confié",
+      "rivalId": "user-smiley",
+      "stageId": "arena-153-big-mama-skyliner",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77.png"
+    },
+    {
+      "fighterId": "user-big-red",
+      "title": "La couleur du signal",
+      "rivalId": "user-wasp",
+      "stageId": "arena-142-dead-end-alley",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/45c8f7f300410673df1400a2dea61d9c808493656c1ae6739b3d53bb49ca7861.png"
+    },
+    {
+      "fighterId": "user-bionic-phg",
+      "title": "Le contrôle rendu",
+      "rivalId": "user-exiled-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ea927cef0e8dc2d6fe791dd1ab5ef15432d7eba90f1e0ac50c8d6deb7c1d8c42.png"
+    },
+    {
+      "fighterId": "user-extinction-blazer",
+      "title": "La voie après la chaleur",
+      "rivalId": "user-extinction-hydra",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/88eb8a4fe7e77a5582def35d34ccdf99114ebaf14c604e25d3b724a4a62a6f83.png"
+    },
+    {
+      "fighterId": "user-boar",
+      "title": "Le support manquant",
+      "rivalId": "greyback",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f9f9f1c46746f35029b72350b3954093de969456f6368044b28f6c6514f2cc0e.png"
+    },
+    {
+      "fighterId": "user-bonegrill-avpr",
+      "title": "La relève du couloir",
+      "rivalId": "wolf",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/18689f6c48637041a538dcfd8bf5956a0473aaa992e4f1339fd9855ae7365a58.png"
+    },
+    {
+      "fighterId": "user-extinction-brawler",
+      "title": "L'appui qui tient",
+      "rivalId": "user-extinction-disc-master",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ddcb8fc7d4477207a0b02fad76dc5f746673dbb299e7e2a9b5ba662ffb2345d2.png"
+    },
+    {
+      "fighterId": "user-broken-tusk",
+      "title": "Le signe partagé",
+      "rivalId": "user-tichinde",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/e9e621098c9ccbf37997533d9ee9de55fa24532fe876bd9b64a6a98b048daf0b.png"
+    },
+    {
+      "fighterId": "user-bull-avpr",
+      "title": "La masse et le passage",
+      "rivalId": "user-bonegrill-avpr",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/bfedd634bf1371a6622f90370bbdd232339929eecfb6f0d6d89439beb4a64aac.png"
+    },
+    {
+      "fighterId": "user-captive",
+      "title": "La porte du retour",
+      "rivalId": "user-classic-2010",
+      "stageId": "arena-072-reserve-de-quarantaine",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d9119c522608c1add3204c658dd9cc28bfe66cc33b0d0233a03cf749a7a8195c.png"
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-en-garde-de-combat",
+      "title": "La longueur du passage",
+      "rivalId": "user-extinction-spear-master",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/2df92e2ba4956a7f480828a2febd012ff4b958d3af75c80aac3586ef05fff86c.png"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-masquee-au-combistick",
+      "title": "La marque rouge",
+      "rivalId": "user-chasseuse-yautja-en-garde-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a6b2781b35b33a9237caa0e02f738c383d511c85d1a1c18196219ebea958a2f2.png"
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-au-masque-rituel",
+      "title": "Le cercle du disque",
+      "rivalId": "user-enforcer-yautja-au-disque-intelligent",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/73f79dae4a5dac5492ec168b003ca54b11a40ae93b06dc660308749aff2a0e8e.png"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-au-masque-d-elan",
+      "title": "Le passage des branches",
+      "rivalId": "user-guardian",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/cf8b0de4b06aa6de54faf403ca4d93a308a78da241fb6b681c4d93de36fbc175.png"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-en-posture-de-combat",
+      "title": "Tenir sans figer",
+      "rivalId": "user-entraineuse-yautja-masquee-couteau-en-garde",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d17444419b18f3230ac25e9ed4424a48994c60c88eda347bc89e23aed8a43192.png"
+    },
+    {
+      "fighterId": "user-chasseur-alien-aux-runes-celtiques",
+      "title": "Les signes de la piste",
+      "rivalId": "user-guerrier-yautja-aux-runes-nordiques",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/e20419b8dbfb0c40ba53f3ef7f2878fc01dab2921ac353407890bb91bb71f549.png"
+    },
+    {
+      "fighterId": "user-avp-prologue-1904",
+      "title": "Une silhouette au seuil",
+      "rivalId": "user-elder-avp",
+      "stageId": "arena-123-avp-2004-whaling-station",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/41189ce56dd6f695a47118a051f9050d9c93f3f8971286622ce953c15fd7f6fd.png"
+    },
+    {
+      "fighterId": "user-a-full-body-high-detail-png-style-character-illus",
+      "title": "L'allonge annoncée",
+      "rivalId": "user-swift-knife",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/89f9d3a2add6aaa29dbe79372ce737a0ccfbe3007d5ccefaa3f371f730403b3b.png"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-au-bio-masque",
+      "title": "La garde sous le masque",
+      "rivalId": "user-exalted-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/74127a19fa4ca9cd7657034b37f0aab24a6e387939696877fc27015139e18ab6.png"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-masque-au-combistick",
+      "title": "La garde argentée",
+      "rivalId": "user-extinction-spear-master",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/8499df2e512e5ba302d8835bf25354df98d6d04425e3a337cdef87d2e9059da5.png"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-sans-casque",
+      "title": "Le visage et le disque",
+      "rivalId": "user-shaman",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/430c5a7dc646d598e6eb002c29b4ffac51f24dc10d86f4fbb5606877ddf1c49f.png"
+    },
+    {
+      "fighterId": "user-combattant-en-armure-sur-fond-transparent",
+      "title": "Ce qui tient sous la lumière",
+      "rivalId": "user-guerrier-yautja-sans-casque",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/98ced7ec0066b1995fcfc185408607b12bfcb8da5b1eba33d8336b93887dd0a5.png"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-ceremoniel-en-armure",
+      "title": "La cérémonie interrompue",
+      "rivalId": "greyback",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/9d3cdb60a99a905a9fee30f0d27ab9f22d3c1524cda15ef1d1bf8a6819e14d6d.png"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-en-armure-de-combat",
+      "title": "La pièce remplacée",
+      "rivalId": "user-bionic-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d0909433b5052509afa70fe94dc19d5e603a87b43aaa065a9d71e93a268aaa88.png"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-tribal-en-armure",
+      "title": "Le lien de la halte",
+      "rivalId": "user-lost",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/6e6f48d30c3b38a7195bc29b09bf2e143b19e10fca3cc68b5f50888585ba9d90.png"
+    },
+    {
+      "fighterId": "user-yautja-insulaire-en-garde-armee",
+      "title": "Le retour à la rive",
+      "rivalId": "user-exiled-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4cc299762d6cb35440a42d3f0ff9d90229599d90ff1ff0cff58193900f9943c4.png"
+    },
+    {
+      "fighterId": "user-a-clean-png-illustration-style-scene-a-single-ful",
+      "title": "L'espace sous la garde",
+      "rivalId": "user-shorty",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/8f18bab1c502c4066466982f9a7fe2ac143a177c2f3f7d6f07598abb79b70689.png"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-sans-biomasque-en-garde",
+      "title": "Présenter son visage",
+      "rivalId": "user-captive",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/59e71f77fd2397b4a06dbecd10506a2925f4e410e6a529d98a9da00c9fa4c7ac.png"
+    },
+    {
+      "fighterId": "user-chef-alien-masque-aux-scythes-d-avant-bras",
+      "title": "Le chef mis à l'épreuve",
+      "rivalId": "user-clan-leader",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a48a061579afd9d8e49cd1dc8c858fae223c24062af556cb9d705d94a0ad8cb9.png"
+    },
+    {
+      "fighterId": "user-chopper",
+      "title": "La seconde voie",
+      "rivalId": "celtic",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/148c44c1530494151b4cd66aae7befd901740c2b0e8a8f83020134f5f96c64fd.png"
+    },
+    {
+      "fighterId": "user-clan-leader",
+      "title": "La parole du cercle",
+      "rivalId": "greyback",
+      "stageId": "arena-095-duel-des-anciens",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/178dde36c091e75d01f8c9181b40c5dc44e195a190e859d3733fcad6ced4d4e8.png"
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "title": "Sortir avec la preuve",
+      "rivalId": "berserker",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/85d431ce6976078f7fced3e0e883ae65249519f60606c41d545080267acffe09.png"
+    },
+    {
+      "fighterId": "user-cleopatra-phg",
+      "title": "La mesure du rang",
+      "rivalId": "user-exalted-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/986568e0f250645b7018fe7add8e488d193a81afee96a1f87b1a4faf5393a001.png"
+    },
+    {
+      "fighterId": "user-lot2-14",
+      "title": "Les plumes du témoin",
+      "rivalId": "user-lot2-13",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/860fa4920c236ce41942a04a9b6009a9c84a9e0b870fa3024a387004efdde145.png"
+    },
+    {
+      "fighterId": "user-lot2-15",
+      "title": "Le passage du colosse",
+      "rivalId": "stone-heart",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/51b40041f37f2d01b15f0887678d32f9738a3dc8c1ddbc2f244d2ecf8fca3369.png"
+    },
+    {
+      "fighterId": "user-cracked-tusk",
+      "title": "Le défaut visible",
+      "rivalId": "user-renegade",
+      "stageId": "arena-091-duel-des-lames",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/5c57dedef4fbab77505635b6de9d731fa29f7a613741cb45ecd795b228308810.png"
+    },
+    {
+      "fighterId": "user-lot2-16",
+      "title": "Compter les gestes",
+      "rivalId": "user-four-armed",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/84b97d7d0ab484792bcdd18d9a1cb81b011db5dfc4a94a690a9b24ba9b89a3e7.png"
+    },
+    {
+      "fighterId": "user-dark",
+      "title": "La marque retrouvée",
+      "rivalId": "user-lord",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff.png"
+    },
+    {
+      "fighterId": "user-dek",
+      "title": "La petite place",
+      "rivalId": "user-njohrr",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/fb324d3ef04571df533fdd6093101842ce80f7ed8c41220f68f9d427e392a43e.png"
+    },
+    {
+      "fighterId": "user-extinction-disc-master",
+      "title": "La mesure du retour",
+      "rivalId": "user-extinction-spear-master",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ab30bfe05e1a9e54a83918cdf5ba1079986b4f643ee82752022887874c05cba5.png"
+    },
+    {
+      "fighterId": "user-donatiki-en-armure-doree",
+      "title": "Le nom sous la dorure",
+      "rivalId": "user-predateur-yautja-en-armure-doree",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/8863d6576dc80b99ea886ddc4bf6d40fc6ee62fd71997e358fa6c13ed4493d15.png"
+    },
+    {
+      "fighterId": "user-elder-avp",
+      "title": "Le signe remis",
+      "rivalId": "scar",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/342033dd006fcf3163d3092fe32f8ac9d4aa44d63e20a8737afbb14418ef8add.png"
+    },
+    {
+      "fighterId": "user-gotham-elder",
+      "title": "Le retrait surveillé",
+      "rivalId": "user-batman-vs-predator",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/af5eb4504e94809531fdca326c00dbe214423e447b2e9e14a381c2c552a97af7.png"
+    },
+    {
+      "fighterId": "user-elder-belize",
+      "title": "La halte sans droit",
+      "rivalId": "user-primal",
+      "stageId": "arena-031-c-ur-de-mangrove",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/48486e392ac1be215c4fb6648dcc1e07385492f3a3d1ab847e995f5f289690d2.png"
+    },
+    {
+      "fighterId": "user-elder-tartarus",
+      "title": "La voie des témoins",
+      "rivalId": "user-hornhead",
+      "stageId": "arena-154-life-death-tartarus",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a3ebf3dbb9b43979a67223625c9d7e21f667a2271c94d893a5573964861130a2.png"
+    },
+    {
+      "fighterId": "user-emissary-1",
+      "title": "Le premier contact rompu",
+      "rivalId": "user-emissary-2",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/5c3cc4178ba034bf93928c39d68edcfdb92c94aedb379fc821ce48a4cbf64f9d.png"
+    },
+    {
+      "fighterId": "user-emissary-2",
+      "title": "Le second témoin",
+      "rivalId": "user-emissary-1",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a2a301c7c8aba81c51f7988e2109c45828ddac55aaa08362b2123d058b213ee0.png"
+    },
+    {
+      "fighterId": "user-warp-enforcer",
+      "title": "L'ordre sous pression",
+      "rivalId": "user-warp-adjutant",
+      "stageId": "arena-045-galerie-des-serments",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/6d6d9738cfce5dc8f99d13c67e97548b82226bac5b932f373f721aa0f34eb0eb.png"
+    },
+    {
+      "fighterId": "user-enforcer-yautja-au-disque-intelligent",
+      "title": "Le disque sans prise",
+      "rivalId": "enforcer",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/045208a9fb9436c04c75b0b2433d160fecc15a2747de0cda2fcfcd0f742dfe92.png"
+    },
+    {
+      "fighterId": "user-entraineuse-yautja-masquee-couteau-en-garde",
+      "title": "Corriger l'appui",
+      "rivalId": "user-youngblood",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/be29723fefd75590a450875deb2da936e94e1fbb7141a1fbe3c7e5807a1b6cdd.png"
+    },
+    {
+      "fighterId": "user-avpr-corridor-crew",
+      "title": "Le poste sans réponse",
+      "rivalId": "wolf",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/035cb8f6584fdd1be19f04e8c63dec23d6de2430f52bb3d257ac858a4c7ea0d9.png"
+    },
+    {
+      "fighterId": "user-exalted-phg",
+      "title": "Le privilège éprouvé",
+      "rivalId": "user-cleopatra-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/97b56a8b59065181d94348156cb46effbcdf0dd9e5fac7563034a98bc8eb33d6.png"
+    },
+    {
+      "fighterId": "user-exiled-phg",
+      "title": "Le retour sans dette",
+      "rivalId": "user-pirate-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/66be9da515af949bb23b66fb9e214ba66cbe5f7ab47daac900a2e45ed3bfdf76.png"
+    },
+    {
+      "fighterId": "user-four-armed",
+      "title": "La garde multiple",
+      "rivalId": "user-lot2-16",
+      "stageId": "arena-077-fosse-du-tonnerre",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4416a0debe21443fed3a5d40f9fb7831d6b8130adc7846adc12b800c95ec24d3.png"
+    },
+    {
+      "fighterId": "user-fugitive",
+      "title": "Le paquet confié",
+      "rivalId": "user-assassin",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/921c7d5c5410cfa229d330092847e0945de2637b9e30acb8b1e553791a22be81.png"
+    },
+    {
+      "fighterId": "user-garde-clan-kok-badlands",
+      "title": "La garde du passage",
+      "rivalId": "kok-warlord",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/84cd3e7fa86fa40d366e548ee86950cba5727211ce235793fc14fff565b6ee33.png"
+    },
+    {
+      "fighterId": "user-warp-gardien",
+      "title": "Le seuil qui revient",
+      "rivalId": "user-warp-adjutant",
+      "stageId": "arena-045-galerie-des-serments",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0611e526d887023e32f061fbf12f946316bd2e4ae04c0b05f128d9006393678c.png"
+    },
+    {
+      "fighterId": "user-ghost",
+      "title": "L'absence consignée",
+      "rivalId": "user-stalker-kenner",
+      "stageId": "arena-089-cercle-eclipse",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7c76e3c4266f91cf31fe84482aaf51efa3cf66e0c77cb2877c9c3d4961c3e556.png"
+    },
+    {
+      "fighterId": "user-gladiator-phg",
+      "title": "L'arène quittable",
+      "rivalId": "kok-warlord",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/78272dbb293dc528c51c372c03e54c160e0be234e483a0116f662e01df8a0d41.png"
+    },
+    {
+      "fighterId": "user-graveyard",
+      "title": "La mémoire sans prise",
+      "rivalId": "user-light-stepper",
+      "stageId": "arena-040-fonderie-zero",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f157b84db2f55560e0038e1e67887df45628ba159fa01531648c658dde38b7cf.png"
+    },
+    {
+      "fighterId": "user-guardian",
+      "title": "L'entrée et le retour",
+      "rivalId": "user-scout",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7d1ef347a99ea21ed95d95082ccfae5499b9d118f75f341d1e243d7c49969197.png"
+    },
+    {
+      "fighterId": "user-guerrier-alien-blinde-chasseur-d-acier",
+      "title": "Le métal ne décide pas",
+      "rivalId": "stone-heart",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/be16bcbefa3262fd0a3cfd7fafb3effe24ecaf76c5bb3ac79535f7c33115547c.png"
+    },
+    {
+      "fighterId": "user-guerrier-cyborg-biomecanique-aux-lames-retractable",
+      "title": "La course raccourcie",
+      "rivalId": "user-swift-knife",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4ce239b929c5cc5e9369cf42b742ff4535791885eb5e06cdc3c551e412feed8f.png"
+    },
+    {
+      "fighterId": "user-guerrier-extraterrestre-aux-lames-acerees",
+      "title": "L'entaille témoin",
+      "rivalId": "user-a-full-body-high-detail-png-style-character-illus",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ed48da25fdb5dea56a69c936e148af56fed2bfe868e4678fb4ab4bdc5ecce0cf.png"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-aux-runes-nordiques",
+      "title": "Le signe dans la poussière",
+      "rivalId": "user-chasseur-alien-aux-runes-celtiques",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0cf7c96bb9108d0d098462f7c21e93b9e69a53937aa92efb8c3f9403e1d7e828.png"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-exile-en-posture-de-chasse",
+      "title": "Le départ volontaire",
+      "rivalId": "user-exiled-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/998e7ade91cf8888ea98302b3cd85a706ba3542100cbd28f70fefbde95100c9d.png"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-au-masque-biometrique",
+      "title": "La lecture refusée",
+      "rivalId": "user-chasseur-yautja-au-bio-masque",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a00b5f9afcd5a83617e8aaa33430b785725652bafb89df1ab426979f72406772.png"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-masquee-en-garde",
+      "title": "Garder sa place",
+      "rivalId": "user-chasseresse-yautja-en-posture-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d13eee2a4ee0338182f5d14cee37e5686194fabc4da2e10d34169a18ab3c49e4.png"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-aux-ornements-egyptiens",
+      "title": "L'ornement dans la garde",
+      "rivalId": "user-anubis-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/490675a9af760dde577ba5e0dcc06c42aa9afddfb4c441a0e84a3767a026981f.png"
+    },
+    {
+      "fighterId": "user-hashori",
+      "title": "Le relais de Hashori",
+      "rivalId": "user-sister-midnight",
+      "stageId": "arena-160-rage-war-umf12",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b36f4cb6047350afc67c1c06f0534b6a332a9a4756fe8e0b3406b16b57176dd5.png"
+    },
+    {
+      "fighterId": "user-hive-wars",
+      "title": "Le front lisible",
+      "rivalId": "user-extinction-vanguard",
+      "stageId": "the-pit",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/85a003e5731845c6aaa6ac27d7ec927448ae2ea17e28a2fc432f8b8584c2adfd.png"
+    },
+    {
+      "fighterId": "user-hook",
+      "title": "Le point d'accroche",
+      "rivalId": "user-long-spear",
+      "stageId": "arena-158-thicker-blood-charter",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/50b883dffaa79c71fb8af1ec479493cd26bf1cbe4ea5b9e3d7a16e212810dbc5.png"
+    },
+    {
+      "fighterId": "user-hornhead",
+      "title": "L'empreinte de la hauteur",
+      "rivalId": "user-ahab",
+      "stageId": "arena-154-life-death-tartarus",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/02c6c272c04536b6ccbe9a74180e992b4ce5596ecca0ab09e616358ccf2a5338.png"
+    },
+    {
+      "fighterId": "user-extinction-hunter",
+      "title": "Le relais de chasse",
+      "rivalId": "user-extinction-stalker",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0b16a85b64fdaa3ff784f0a0ac8d630f3ca65fa65cdf674a2d1e3e0a0c79dc2a.png"
+    },
+    {
+      "fighterId": "user-hunter-class-phg",
+      "title": "Le départ sans habitude",
+      "rivalId": "user-scout-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/406cf16f35907bcc3be71b2fa0bef7799805e024025e56a3c43993f58ba29a91.png"
+    },
+    {
+      "fighterId": "user-extinction-hydra",
+      "title": "Deux voies, une relève",
+      "rivalId": "user-extinction-blazer",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d70f18d63d9ff951fbea1e72622e6dbd39ca20291499f1c08152074a53725acd.png"
+    },
+    {
+      "fighterId": "user-jotun-grendel",
+      "title": "Le poids sur la glace",
+      "rivalId": "user-oni",
+      "stageId": "arena-116-killer-of-killers-2025-viking-ice",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png"
+    },
+    {
+      "fighterId": "user-kalakta",
+      "title": "Le nom et le siège",
+      "rivalId": "user-clan-leader",
+      "stageId": "arena-160-rage-war-umf12",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/aa864db601e7535b7969adea3d79d0cd92b8e8330607ec62ad7c4345c24bc630.png"
+    },
+    {
+      "fighterId": "user-kwei",
+      "title": "La place du retour",
+      "rivalId": "user-njohrr",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6.png"
+    },
+    {
+      "fighterId": "user-lasershot",
+      "title": "L'axe annoncé",
+      "rivalId": "user-bionic-phg",
+      "stageId": "arena-040-fonderie-zero",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/bc0c0d6cc23f99f95728c3a8544b09db6abc99f52b41f66c7290a4320d211bab.png"
+    },
+    {
+      "fighterId": "user-lava-planet",
+      "title": "La halte refroidie",
+      "rivalId": "user-extinction-blazer",
+      "stageId": "the-pit",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/433e2660c5e6c9c909a4e17004d10dda6d51726026e7c2baf98dcd8a016abbf7.png"
+    },
+    {
+      "fighterId": "user-light-stepper",
+      "title": "Le pas consigné",
+      "rivalId": "user-graveyard",
+      "stageId": "arena-011-reserve-des-crocs",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f712f27da2ff4e4ef5468a228e285c20ea30df92423d1f5644141fc6953aa7ad.png"
+    },
+    {
+      "fighterId": "user-long-spear",
+      "title": "L'allonge rendue",
+      "rivalId": "scarface",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/fab493fb784672fc605ed501f4934e5732a8553d20ee313e9d294732924e295a.png"
+    },
+    {
+      "fighterId": "user-lord",
+      "title": "Le titre et la prise",
+      "rivalId": "user-dark",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44.png"
+    },
+    {
+      "fighterId": "user-lost",
+      "title": "Le chemin du sas",
+      "rivalId": "user-guardian",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/aeab570085b26a9023423a64eaa29df36728baf5b88f53d387a356920793d569.png"
+    },
+    {
+      "fighterId": "user-arcade-mad",
+      "title": "Le coin du terrain",
+      "rivalId": "user-arcade-warrior",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/c6dc527c2c010e6f0b4345da50c9510e6af7b87e51dc23dd310d561f998c49c7.png"
+    },
+    {
+      "fighterId": "user-mega-city-one",
+      "title": "La voie haute interdite",
+      "rivalId": "user-batman-vs-predator",
+      "stageId": "arena-155-judge-dredd-megacity",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0a438333d1149961d25127360371f6035c6a165ab333b84b87b9a7e3b33ff9fe.png"
+    },
+    {
+      "fighterId": "user-jla-green-lantern-meta",
+      "title": "Le cercle sans serment",
+      "rivalId": "user-sinestro-corps-predator",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/27478dbbde7b2914bfc41fd834fe9fc64a9ce314ffc7499d722ba04003fb5232.png"
+    },
+    {
+      "fighterId": "user-jla-aquaman-meta",
+      "title": "La rive non possédée",
+      "rivalId": "user-jla-wonderwoman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4ec8af762615b7f2dc20d37e2ed4c06f7c9aa3473d63afba08f1d3d982116080.png"
+    },
+    {
+      "fighterId": "user-jla-atom-meta",
+      "title": "L'échelle de l'embuscade",
+      "rivalId": "user-jla-flash-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/454f081de7b077e71d7fe377d5795d1b477638fc8a431567e1371b473e767faf.png"
+    },
+    {
+      "fighterId": "user-jla-flash-meta",
+      "title": "Le départ retardé",
+      "rivalId": "user-jla-atom-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/cb475875bb317e0f00be2a39fe5b8e6e6799cbb69e328061528fc5dd1a3f7943.png"
+    },
+    {
+      "fighterId": "user-jla-martian-meta",
+      "title": "Le visage non emprunté",
+      "rivalId": "user-jla-plastic-man-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/dd95d04c555c9e500e1f3b1b5e0da3a01ff8a78728204a3f43d2836338395541.png"
+    },
+    {
+      "fighterId": "user-jla-plastic-man-meta",
+      "title": "La forme conservée",
+      "rivalId": "user-jla-martian-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/193f49554ec52e86ae4e364932cc0692b77011028b6f829bc83a0c8abb1f9794.png"
+    },
+    {
+      "fighterId": "user-jla-superman-meta",
+      "title": "Le poids du passage",
+      "rivalId": "user-jla-wonderwoman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/678c998e9d63a9f2dbd167158fe44af96e8cd96fb8dc4cd966819dbc9b51ae51.png"
+    },
+    {
+      "fighterId": "user-jla-wonderwoman-meta",
+      "title": "Le lien déclaré",
+      "rivalId": "user-jla-superman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/e676047c6bd0130849be34c5e1f1ed936c644e0812a69a6b5937a3267050d9e0.png"
+    },
+    {
+      "fighterId": "user-mere-dek-kwei",
+      "title": "La voie des deux retours",
+      "rivalId": "user-njohrr",
+      "stageId": "arena-045-galerie-des-serments",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/84e5361339c64ec2d7c2408d73623624b735c8d69e37291970045bc7f6164e54.png"
+    },
+    {
+      "fighterId": "user-nightstorm",
+      "title": "Le signal dans le noir",
+      "rivalId": "user-ghost",
+      "stageId": "the-pit",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/cbfc02f4a2cba048f284fc3792d8e9af5607a95edc0f29e396a3b239cf7f4a9c.png"
+    },
+    {
+      "fighterId": "user-njohrr",
+      "title": "La loi descendue",
+      "rivalId": "user-dek",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb.png"
+    },
+    {
+      "fighterId": "user-ny-ytap",
+      "title": "Le détour de Ny Ytap",
+      "rivalId": "user-yuahro",
+      "stageId": "arena-161-rift-war-lv363",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f2447e13671e5dda9b29a9ce1a7efd7c54ffca91f671ee4810e31ccc8aaa47ba.png"
+    },
+    {
+      "fighterId": "user-oni",
+      "title": "La voie silencieuse",
+      "rivalId": "user-jotun-grendel",
+      "stageId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2.png"
+    },
+    {
+      "fighterId": "user-pilot-bullet",
+      "title": "Le dernier point d'appui",
+      "rivalId": "user-oni",
+      "stageId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/bb2d2ec01b24faea1b6cb499e16094e5f018165f1d0d8feb7b460ae4cf1fd500.png"
+    },
+    {
+      "fighterId": "user-pirate-phg",
+      "title": "L'amarrage partagé",
+      "rivalId": "user-exiled-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/3e4a9b9c0db843f6df3b5895e4b9a30397172dd1639a1f13ae5a73b3fb71ef47.png"
+    },
+    {
+      "fighterId": "user-vega4-snes",
+      "title": "Le tableau d'une autre piste",
+      "rivalId": "user-avp-classic-2000",
+      "stageId": "arena-054-egouts-avp-etude-snes",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/cea1425a3b0de159e4352f4daeff564fd387a1664698f363708379e8d0d54862.png"
+    },
+    {
+      "fighterId": "user-arcade-hunter",
+      "title": "Le relais du partenaire",
+      "rivalId": "user-arcade-warrior",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7f4f60ae4a03d3a46da1cbbd18c882819d33d959ad99a50d042193930d11330b.png"
+    },
+    {
+      "fighterId": "user-king-marvel",
+      "title": "Le siège contestable",
+      "rivalId": "user-prince-marvel",
+      "stageId": "arena-152-marvel-wakanda",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4e6ff4dd2975b48901cc865bd5acb10b4721f770c761c3b3667385b25ee7c3c5.png"
+    },
+    {
+      "fighterId": "user-prince-marvel",
+      "title": "Une place avant le titre",
+      "rivalId": "user-king-marvel",
+      "stageId": "arena-050-porte-de-l-audience",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/188a478f2cd85240a877b336e4f0a26045cf739c1f6c8313c9aa14e91ee92934.png"
+    },
+    {
+      "fighterId": "user-arcade-warrior",
+      "title": "La largeur du relais",
+      "rivalId": "user-arcade-mad",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b003f01a0f8990513c948f622f2f883e805b2746364d83be2d0b5a8aecfcd313.png"
+    },
+    {
+      "fighterId": "user-predator-egyptienne-en-armure-doree",
+      "title": "La dorure dans la poussière",
+      "rivalId": "user-guerriere-yautja-aux-ornements-egyptiens",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a5ca46f6ca907f7b5777175c2dbf9b716e0374566d295b47eabb0850a2c107ae.png"
+    },
+    {
+      "fighterId": "user-batman-vs-predator",
+      "title": "La mesure sur les toits",
+      "rivalId": "user-gotham-elder",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7cc2da0b37ed06e1f638e1430954342319f8d77f41c2bdd860d0ac997d981ab6.png"
+    },
+    {
+      "fighterId": "user-gotham-bloodmatch",
+      "title": "Le témoin sous la pluie",
+      "rivalId": "user-batman-vs-predator",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/c4960c1e1d9b42e2ecf855ab66712edd2313beff64d148ce38c636e589be89f9.png"
+    },
+    {
+      "fighterId": "user-demons-gold",
+      "title": "Le métal et la prise",
+      "rivalId": "user-lava-planet",
+      "stageId": "arena-034-archive-interdite",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/2db4d6542d4cd0e130cced0304d0d39def1e1ed04ce70603e4542dd7e0b95a78.png"
+    },
+    {
+      "fighterId": "user-wolverine-hunter",
+      "title": "La trace durable",
+      "rivalId": "user-light-stepper",
+      "stageId": "arena-151-wolverine-canada",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/9afcfea453d263ac6825f9b338cc496450905556ceb1fc1bf7f2bd47ee487428.png"
+    },
+    {
+      "fighterId": "user-primal",
+      "title": "Le passage vivant",
+      "rivalId": "user-big-game",
+      "stageId": "arena-159-primal-alaska",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f1baf433ebc0978a2d9a27338f7a7bfebbb84ad21cbd349a67514c5badfc8df0.png"
+    },
+    {
+      "fighterId": "user-prince",
+      "title": "Le titre de l'épreuve",
+      "rivalId": "user-lord",
+      "stageId": "arena-145-avp2-lv1201-forest",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7ea916d16bbe0ba66638ed6c85d2030d346144e1af5717a666743aef66a5506e.png"
+    },
+    {
+      "fighterId": "user-predateur-capture-en-armure-ravagee",
+      "title": "Le lien observé",
+      "rivalId": "user-captive",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/eff9e8dd6b6e523e8854c248333a1e52fcac8b98047c7131c0c43b821a9c5147.png"
+    },
+    {
+      "fighterId": "user-predateur-cybernetique-en-armure-de-combat",
+      "title": "Le réglage volontaire",
+      "rivalId": "user-bionic-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/2d4d8b15e84c0ea18a5ac43e5b54644a5047633467fd99929f45e32faefb0915.png"
+    },
+    {
+      "fighterId": "user-predateur-exalte-en-armure-ceremonielle",
+      "title": "La place sans faveur",
+      "rivalId": "user-exalted-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0f95364d6a2ee74f3e45e3968f6bfca0bfc4bb9f6277a2a9e58beaca715c4946.png"
+    },
+    {
+      "fighterId": "user-predateur-pirate-en-armure-corsaire",
+      "title": "L'amarre de l'invité",
+      "rivalId": "user-pirate-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/e160fc44555405bf4b9ae8762ffbe6a3715ef093600bc06612a87d11159ec423.png"
+    },
+    {
+      "fighterId": "user-predateur-viking-en-armure-runique",
+      "title": "Le signe de l'appui",
+      "rivalId": "user-viking-phg",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4472e87df731038d0026b9928705df0da24dd63d3a12f9cab47438426c21abb9.png"
+    },
+    {
+      "fighterId": "user-predateur-yautja-en-armure-doree",
+      "title": "Le flanc sous la dorure",
+      "rivalId": "user-donatiki-en-armure-doree",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/766f91821403ef5f7c2b78eb00dcc69df3dbe7bb9e6833889779377ac5df1c8f.png"
+    },
+    {
+      "fighterId": "user-renegade",
+      "title": "Le retour contesté",
+      "rivalId": "enforcer",
+      "stageId": "arena-091-duel-des-lames",
+      "biographyEvidence": "roster-attribution",
+      "axis": "freedom",
+      "nativePortrait": "/game/sprites/v44/user-hunters/00fe8e193517bae8a08faeeb56911e55505d9e6cae29388e95c606bf32762d2f.png"
+    },
+    {
+      "fighterId": "user-riverdale",
+      "title": "La rue encore ouverte",
+      "rivalId": "user-big-game",
+      "stageId": "arena-144-archie-riverdale",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/bc83b1bd8c47137c8690ccd2eda1be95e3108ac3331c11e9fd130259204938d5.png"
+    },
+    {
+      "fighterId": "user-samourai-yautja-en-armure-ecarlate",
+      "title": "Le fourreau séparé",
+      "rivalId": "user-samurai",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/4cff49f48f420a3d8d78579d0598c712b014d30c158898e8c73018d6f2a6e641.png"
+    },
+    {
+      "fighterId": "user-samurai",
+      "title": "Le passage du fourreau",
+      "rivalId": "user-oni",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d75f93b15e15ede3171d8c273cd0eea64c708788a2266fe84c7f8924f5134c6c.png"
+    },
+    {
+      "fighterId": "user-scavage",
+      "title": "La pièce sans propriétaire",
+      "rivalId": "user-viper",
+      "stageId": "arena-091-duel-des-lames",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/b5d458f3e51f921a3e24841aadff8284eae3e57471c9b38e40b27fb0cfe377a0.png"
+    },
+    {
+      "fighterId": "user-scout",
+      "title": "La carte de l'autre côté",
+      "rivalId": "user-guardian",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/359d1fe6e52ed71461742ca99c95004f73bf9209f7d1c7fc94f38235a8a88656.png"
+    },
+    {
+      "fighterId": "user-scout-class-phg",
+      "title": "La mesure de la vitesse",
+      "rivalId": "user-berserker-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/6c74994765c47e360556eb160a78cced75b375e897077e4f091da046983afa2a.png"
+    },
+    {
+      "fighterId": "user-serpent-hunter",
+      "title": "L'ornement contrôlé",
+      "rivalId": "scar",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b.png"
+    },
+    {
+      "fighterId": "user-shaman",
+      "title": "La parole après le heurt",
+      "rivalId": "greyback",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/db421d1f7777950d3c73f1054417a96b69a1b20729254f43d02b19a16009b211.png"
+    },
+    {
+      "fighterId": "user-shorty",
+      "title": "L'appui à sa hauteur",
+      "rivalId": "user-topknot",
+      "stageId": "arena-028-mat-du-vaisseau-temple",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/f45f73b1289fe2f7f38d261cbd00d048b8145878557c8e3d33c735f9d348870b.png"
+    },
+    {
+      "fighterId": "user-sinestro-corps-predator",
+      "title": "L'anneau et la garde",
+      "rivalId": "user-jla-green-lantern-meta",
+      "stageId": "arena-156-sinestro-earth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/e2af588c6e8544fd451a57a0e6ea7b3c357faadf45a4381a4d17805545d938c0.png"
+    },
+    {
+      "fighterId": "user-sister-midnight",
+      "title": "Le témoin du dernier relais",
+      "rivalId": "user-hashori",
+      "stageId": "arena-157-mindhunter-orbital-prison",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rescue",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d1efe5601c30674bfb2887b21ede3c9baf6ae598e9bfd692430acbdea89f8211.png"
+    },
+    {
+      "fighterId": "user-skinner",
+      "title": "La station encore lisible",
+      "rivalId": "user-dark-horse-25th",
+      "stageId": "arena-150-skinner-subway",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/dfd48bdbabc1434803fa8f7bb839d84630ee3f0979c8ce860984a11b19949c71.png"
+    },
+    {
+      "fighterId": "user-smiley",
+      "title": "La trace sous le trophée",
+      "rivalId": "user-big-mama",
+      "stageId": "arena-027-station-des-braconniers",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/2186dd14c94b685464bbbcf70dfa7ecec03f87aca71fa7343e428f479a5cfce0.png"
+    },
+    {
+      "fighterId": "user-snake",
+      "title": "Le détour déclaré",
+      "rivalId": "user-stalker",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/5ec6f6c79565ee6295137e1cd515412befc2fc623a3822000118f29ff1006c3e.png"
+    },
+    {
+      "fighterId": "user-spartan",
+      "title": "Le relais de l'élite",
+      "rivalId": "user-wolf-elite-bg386",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d.png"
+    },
+    {
+      "fighterId": "user-extinction-spear-master",
+      "title": "L'allonge de l'équipe",
+      "rivalId": "user-extinction-disc-master",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/fa9e11cb64d7158515a458c1b9d7f2b01b8fc04268ea7483338482b409169967.png"
+    },
+    {
+      "fighterId": "user-spiked-tail",
+      "title": "Le revers du gabarit",
+      "rivalId": "user-cracked-tusk",
+      "stageId": "arena-089-cercle-eclipse",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/824cdfaf469d27acfd51c5ad6f9a30dce35e96f090003c4bdea972a207d8b0ed.png"
+    },
+    {
+      "fighterId": "user-stalker",
+      "title": "La piste avant la porte",
+      "rivalId": "user-snake",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/27c764132364da5e9cbf649c60ddd749816d954e9a913c7de79199761b8d721e.png"
+    },
+    {
+      "fighterId": "user-stalker-kenner",
+      "title": "L'ombre de la seconde halte",
+      "rivalId": "user-stalker",
+      "stageId": "arena-089-cercle-eclipse",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/a3689ab1766c88b3e7e86f8c075e383935752f414d3538a22dd3c970e537fdaa.png"
+    },
+    {
+      "fighterId": "user-extinction-stalker",
+      "title": "Le troisième relais",
+      "rivalId": "user-stalker-kenner",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/da892057a190560feb937bc284ed53d42829c9b402b75c5eb2d76e8c2afc9eff.png"
+    },
+    {
+      "fighterId": "user-swift-knife",
+      "title": "L'appui avant la coupe",
+      "rivalId": "scarface",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "biographyEvidence": "roster-attribution",
+      "axis": "repair",
+      "nativePortrait": "/game/sprites/v44/user-hunters/45ddc1d47bfd0f6683340de57f90ab7244ff1568ddce7b80a7f7c5c81fcc0a55.png"
+    },
+    {
+      "fighterId": "user-temple-guard",
+      "title": "Le temple quittable",
+      "rivalId": "user-elder-avp",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/ea543fea56da030a6b5920122c09e7e5a9ffcf10dfd8b82046358ddfcc0bf0d1.png"
+    },
+    {
+      "fighterId": "user-tichinde",
+      "title": "La place disputée",
+      "rivalId": "machiko-noguchi",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/496a428eab7ebe31ef3df005153824764f01c373a7a2f8043c599e22510b3e1b.png"
+    },
+    {
+      "fighterId": "user-topknot",
+      "title": "Le lien de commandement",
+      "rivalId": "user-shorty",
+      "stageId": "arena-028-mat-du-vaisseau-temple",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/c52e2d9360c5b1506556164bfbf25d72e4de153119c72796082e1bba5974c321.png"
+    },
+    {
+      "fighterId": "user-two-stripes",
+      "title": "Les deux traces",
+      "rivalId": "user-light-stepper",
+      "stageId": "arena-011-reserve-des-crocs",
+      "biographyEvidence": "roster-attribution",
+      "axis": "hunt",
+      "nativePortrait": "/game/sprites/v44/user-hunters/1b7734c10fab1cd3c34bd465cf211988517a5a32228110663ad5cac2742958cb.png"
+    },
+    {
+      "fighterId": "user-extinction-vanguard",
+      "title": "La ligne transmissible",
+      "rivalId": "user-extinction-ancient",
+      "stageId": "arena-147-extinction-lv742",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0790d36d7b509767dc2bd78ed2ed8cb4046eae7de3f11480bd54f1b88bac8464.png"
+    },
+    {
+      "fighterId": "user-viking-phg",
+      "title": "Le siège du retour",
+      "rivalId": "valkyrie",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/3b109b6e1e114e386f0f0d58788141e0925a1451ad2da0e3c75d988bdb249c0c.png"
+    },
+    {
+      "fighterId": "user-viper",
+      "title": "La pièce sous contrôle",
+      "rivalId": "user-scavage",
+      "stageId": "arena-009-quais-du-premier-sang",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/80daab7cc85e91a44b8c93097f2d1da340ea0bc0fdf425e663124e2f74b9e826.png"
+    },
+    {
+      "fighterId": "user-lot2-18",
+      "title": "Les défenses dans la garde",
+      "rivalId": "user-cracked-tusk",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/d510894e8db0647685f0218f07e14d3fde64d013325222d2e400666a3e2b4d5e.png"
+    },
+    {
+      "fighterId": "user-warrior",
+      "title": "La place de la force",
+      "rivalId": "user-boar",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/47aa6ab4277c7c71c084ac3cbade92ee80a0b366fe73c5c0ed29da504aed01d7.png"
+    },
+    {
+      "fighterId": "user-wasp",
+      "title": "Le signal jaune",
+      "rivalId": "user-albino",
+      "stageId": "arena-142-dead-end-alley",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v44/user-hunters/7c078f8e5a114b6477bd7f6f48541a03088a3610e7c1e542f308b1880b9da05a.png"
+    },
+    {
+      "fighterId": "user-wolf-elite-bg386",
+      "title": "Le poste de l'élite",
+      "rivalId": "wolf",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/15bdf673ae9fd745e89918ed8bdfb9746c03afa854698c2625fa8f325f7d8432.png"
+    },
+    {
+      "fighterId": "user-yaquita",
+      "title": "La halte de Yaquita",
+      "rivalId": "user-hashori",
+      "stageId": "arena-160-rage-war-umf12",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/29a504cc89562e8d97ffa37f9eaf4c75da9b7e373fb2b5848150b13f8e19b6a4.png"
+    },
+    {
+      "fighterId": "user-lot2-17",
+      "title": "La halte rouge et noire",
+      "rivalId": "user-nightstorm",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/aed80b240ccb9e82a83b6837648cf133f7d7596f180d75697b6db1f1a5bf2039.png"
+    },
+    {
+      "fighterId": "user-yautja-masque-en-garde-defensive",
+      "title": "Le recul maîtrisé",
+      "rivalId": "user-warrior",
+      "stageId": "arena-081-cercle-obsidienne",
+      "biographyEvidence": "roster-attribution",
+      "axis": "rule",
+      "nativePortrait": "/game/sprites/v44/user-hunters/5d28186b7a489b49da0635893e49ab4dfb0b60ee9fb567583591064e05fa6e5c.png"
+    },
+    {
+      "fighterId": "user-youngblood",
+      "title": "La marque attendue",
+      "rivalId": "user-elder-avp",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "biographyEvidence": "roster-attribution",
+      "axis": "identity",
+      "nativePortrait": "/game/sprites/v44/user-hunters/80be32047ecc512da7f63dd88532f37b53086330151ff432a55d72ce392f0658.png"
+    },
+    {
+      "fighterId": "user-yuahro",
+      "title": "Le retour de Yuahro",
+      "rivalId": "user-ny-ytap",
+      "stageId": "canopy-causeway",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v44/user-hunters/0383a79aeac953cfb9cc6fa86cb20b1457d8631df731bb3370467a31d3df3329.png"
+    },
+    {
+      "fighterId": "user-emissary-phg",
+      "title": "Le matériel repris",
+      "rivalId": "user-emissary-1",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v62/fighters/emissary-phg/portrait.png"
+    },
+    {
+      "fighterId": "user-last-hunt-super",
+      "title": "La réserve sous garde",
+      "rivalId": "theta",
+      "stageId": "arena-179-last-hunt-preserve",
+      "biographyEvidence": "roster-attribution",
+      "axis": "custody",
+      "nativePortrait": "/game/sprites/v79/fighters/last-hunt-super/stance-right.png"
+    },
+    {
+      "fighterId": "user-avp-classic-2000",
+      "title": "L'arsenal et le passage",
+      "rivalId": "user-dark",
+      "stageId": "arena-128-avp-classic-2000-colonial-base",
+      "biographyEvidence": "roster-attribution",
+      "axis": "archive",
+      "nativePortrait": "/game/sprites/v79/fighters/avp-classic-2000/stance-right.png"
+    }
+  ]
+}

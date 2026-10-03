@@ -2693,6 +2693,13 @@ select:focus-visible,
   padding: 8px 12px;
 }
 
+/* Terminal touch pads are unmounted; keep status clear of the finishing HUD. */
+.game-shell:has([data-pit-immersive="true"] [data-pit-finisher-hud]) > .toast {
+  top: max(152px, calc(env(safe-area-inset-top) + 142px));
+  bottom: auto;
+  padding: 8px 12px;
+}
+
 .save-warning {
   position: fixed;
   z-index: 46;

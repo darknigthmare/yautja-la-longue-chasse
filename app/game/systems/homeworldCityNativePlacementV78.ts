@@ -1,8 +1,9 @@
 import {HOMEWORLD_CITY_NATIVE_ART_V78,type HomeworldCityNativeArtIdV78} from './homeworldCityNativeArtV78';
 import {HOMEWORLD_GEOMETRY_V64,homeworldProjectGroundV64} from './homeworldGeometryV64';
-import {homeworldCollisionV77,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {HOMEWORLD_BUILDINGS_V77,homeworldCollisionV77,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {HOMEWORLD_ACTOR,pointInHomeworldPolygon,type HomeworldFootprint} from './homeworldCity';
-import {homeworldExteriorPolygonV76,type HomeworldExteriorModuleV76} from './homeworldExteriorDecorV76';
+import type {HomeworldExteriorModuleV76} from './homeworldExteriorDecorV76';
+import {homeworldCourtPolygonV80 as homeworldExteriorPolygonV76} from './homeworldCourtArtV80';
 import {homeworldUrbanFacadeCollisionV78} from './homeworldUrbanFacadesV78';
 import {homeworldUrbanOverlapV78,homeworldUrbanRectV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
 export interface HomeworldCityNativePlacementV78{
@@ -51,12 +52,16 @@ export function compileHomeworldCityNativeV78(reserves:readonly Reserve[],legacy
   'terrace-retaining-front':0,'port-cargo-sorting-cart':7,'clan-common-table-left':6,'civic-water-cistern-right':3};
  for(const artId of Object.keys(HOMEWORLD_CITY_NATIVE_ART_V78) as HomeworldCityNativeArtIdV78[]){
   let placed=false;
-  const primary=clusters[firstCourt[artId]],fallback=artId==='port-cargo-sorting-cart'?[...clusters.slice(7),...clusters.slice(0,7)]:clusters;
+  // The archive rack previously stood behind a tall closed facade. Its whole
+  // unchanged PNG now belongs beside the real memory-vault, not that facade's
+  // ghosted courtyard. It still passes the same support/routes/solid checks.
+  const memory=HOMEWORLD_BUILDINGS_V77.find(b=>b.id==='memory-vault')!;
+  const primary=artId==='archive-shelf-right'?{x:memory.x-364,y:memory.y+300,levelId:memory.levelId}:clusters[firstCourt[artId]],fallback=artId==='port-cargo-sorting-cart'?[...clusters.slice(7),...clusters.slice(0,7)]:clusters;
   const ordered=[primary,...fallback.filter(c=>c!==primary)];
   for(const cluster of ordered){if(placed)break;
    for(const dy of[-170,-125,-85,125,170]){if(placed)break;for(const dx of[0,-80,80,-180,180]){
     const item:HomeworldCityNativePlacementV78={id:'city-native-v78:'+artId,artId,x:cluster.x+dx,y:cluster.y+dy,levelId:cluster.levelId,
-     districtId:cluster.levelId==='0'?'port':'undercity',interactive:false,solid:true};
+     districtId:artId==='archive-shelf-right'&&cluster===primary?'memory':cluster.levelId==='0'?'port':'undercity',interactive:false,solid:true};
     // Keep the14old decorative48u circuits clear as well as98original ones.
     const extra=clusters.find(c=>c.levelId===item.levelId&&homeworldUrbanOverlapV78(homeworldCityNativePolygonV78(item),homeworldUrbanRectV78(c.x-60,c.y-38,c.x+60,c.y+38)));
     const reason=extra?'extra-circuit:'+extra.x+':'+extra.y:homeworldCityNativeRefusalV78(item,reserves,legacy,accepted,terrain);

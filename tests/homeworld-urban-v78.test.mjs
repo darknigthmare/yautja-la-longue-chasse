@@ -12,7 +12,13 @@ test('V78 density is measured, additive and keeps four rejected candidates inste
   'urban-v78:lower-halt-west:covered-work','urban-v78:lower-halt-west:mineral-bed',
   'urban-v78:lower-middle-halt:covered-work','urban-v78:lower-middle-halt:mineral-bed']);
  for(const p of api.HOMEWORLD_URBAN_PROPS_V78){
-  assert.equal(p.scale,api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.find(c=>c.id===p.id).scale);
+  const original=api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.find(c=>c.id===p.id);
+  const historical=api.HOMEWORLD_URBAN_LEGACY_PROPS_V78.find(c=>c.id===p.id);
+  assert.equal(historical.scale,original.scale,'the original V78 source/size remains preserved');
+  assert.equal(p.x,historical.x);assert.equal(p.y,historical.y);assert.equal(p.levelId,historical.levelId);
+  const revision=api.HOMEWORLD_COURT_REVISIONS_V80.find(r=>r.id===p.id);
+  if(revision){assert.equal(p.artId,revision.toArtId);assert.equal(historical.artId,revision.fromArtId);assert.equal(p.scale,1,'new source uses its complete authored native scale');}
+  else{assert.equal(p.artId,historical.artId);assert.equal(p.scale,historical.scale);}
   assert.equal(p.interactive,false);assert.equal(p.solid,true);
   assert.equal(api.homeworldUrbanPlacementRefusalV78(p,api.HOMEWORLD_URBAN_PROPS_V78.filter(q=>q!==p)),null);
   const placement=api.homeworldUrbanNativePlacementV78(p);assert(placement.sha256&&placement.sourceWidth>0);

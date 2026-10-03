@@ -10,7 +10,9 @@ const C = loader.load('app/game/systems/pitCharacterChroniclesV79.ts');
 const combat = loader.load('app/game/systems/pitCombat.ts');
 const roster = loader.load('app/game/systems/pitRosterExpansion.ts');
 const owner = '2026-10-03T08:00:00.000Z';
-const create = id => C.createPitCharacterChronicleRunV79(id, owner, 'test-run-' + id);
+// Historical routes are exercised explicitly against contentVersion 1. The
+// V80 suite separately executes all 201 current routes and storage namespaces.
+const create = id => C.createPitCharacterChronicleRunV79(id, owner, 'test-run-' + id, 1);
 function fight(run) {
   let next = run;
   while (['intro', 'post', 'defeat'].includes(next.phase)) next = C.advancePitCharacterChronicleV79(next);
@@ -65,7 +67,7 @@ test('four distinct authored routes use actual combatants and existing arenas; n
   assert.equal(sequences.size, 4);
 });
 
-test('all runtime roster entries have honest archives, only four advertise playable authored stories', () => {
+test('all runtime roster entries have authored original branches with honest biography provenance', () => {
   assert.equal(C.PIT_CHARACTER_CHRONICLE_ARCHIVE_IDS_V79.length, roster.PIT_VERSUS_FIGHTER_IDS.length);
   let authored = 0;
   for (const id of roster.PIT_VERSUS_FIGHTER_IDS) {
@@ -73,11 +75,11 @@ test('all runtime roster entries have honest archives, only four advertise playa
     assert.equal(archive.name, roster.getPitFighterProfile(id).name);
     assert.equal(archive.sourceWork, roster.getPitFighterProfile(id).sourceWork);
     if (archive.status === 'authored-reconstruction') authored++;
-    else { assert.equal(archive.route, null); assert.match(archive.limitation, /non produite/); }
+    else assert.fail('missing authored route: ' + id);
   }
-  assert.equal(authored, 4);
+  assert.equal(authored, roster.PIT_VERSUS_FIGHTER_IDS.length);
   assert.equal(C.getPitCharacterChronicleStatusV79('not-a-hunter'), null);
-  assert.equal(C.getPitCharacterChronicleRouteV79('jungle-hunter'), null);
+  assert.equal(C.getPitCharacterChronicleRouteV79('jungle-hunter', 1), null);
 });
 
 for (const id of C.PIT_CHARACTER_CHRONICLE_CURATED_IDS_V79) {
@@ -178,5 +180,5 @@ test('separate owner namespace and no campaign/historical Arcade persistence dep
     'ownerSaveCreatedAt', 'page', 'phase', 'results', 'routeId', 'runId', 'version'].sort());
   assert.notEqual(C.pitCharacterChronicleStorageKeyV79(owner), C.pitCharacterChronicleStorageKeyV79('2026-10-04T08:00:00.000Z'));
   assert.match(C.pitCharacterChronicleStorageKeyV79(owner), /the-pit-character-chronicles\.v1\./);
-  assert.throws(() => C.createPitCharacterChronicleRunV79('jungle-hunter', owner, 'run'));
+  assert.throws(() => C.createPitCharacterChronicleRunV79('jungle-hunter', owner, 'run', 1));
 });

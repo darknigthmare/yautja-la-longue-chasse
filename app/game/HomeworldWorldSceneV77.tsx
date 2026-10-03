@@ -9,11 +9,8 @@ import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_PROPS_V77,HOMEWOR
  HOMEWORLD_CONNECTIONS_V77,HOMEWORLD_CONNECTION_FURNITURE_V77,HOMEWORLD_POINTS_V77,homeworldLevelV77,type HomeworldLevelV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_INTERIOR_POINT_IDS_V64} from './systems/homeworldInteriorsV64';
 import {HOMEWORLD_OUTSKIRTS_ART_V71,HOMEWORLD_OUTSKIRTS_GROUND_V71} from './systems/homeworldOutskirtsArtV71';
-import {HOMEWORLD_OUTSKIRTS_MODULES_V71} from './systems/homeworldOutskirtsV71';
-import {HOMEWORLD_LANDSCAPE_MODULES_V75} from './systems/homeworldLandscapeV75';
 import {HOMEWORLD_GROUND_ART_V64,HOMEWORLD_PROP_ART_V64,HOMEWORLD_TRANSPORT_ART_V64} from './systems/homeworldArtV64';
 import {HOMEWORLD_FURNITURE_ART_V72} from './systems/homeworldFurnitureV72';
-import {HOMEWORLD_EXTERIOR_ART_V76} from './systems/homeworldExteriorDecorV76';
 import {HOMEWORLD_GATEWAY_ART_V72,homeworldGatewayScaleV72} from './systems/homeworldRegionConnectionsV72';
 import {HOMEWORLD_COUNCIL_STAIR_ART_V77,homeworldCouncilStairPlacementV77} from './systems/homeworldConnectorArtV77';
 import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingCoversPaintV76,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
@@ -25,6 +22,9 @@ import {HOMEWORLD_CITY_NATIVE_ART_V78} from './systems/homeworldCityNativeArtV78
 import {HOMEWORLD_URBAN_EXTRAS_V78,homeworldUrbanExtraRoleV78} from './systems/homeworldUrbanPopulationV78';
 import {homeworldPaintedLevelsV78,homeworldSceneDepthV78,homeworldGroundDepthV78,HOMEWORLD_CONNECTOR_DRAW_DEPTH_V78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_URBAN_FACADES_V78} from './systems/homeworldUrbanFacadesV78';
+import {HOMEWORLD_CIVIC_ART_V80,HOMEWORLD_CIVIC_PROPS_V80} from './systems/homeworldCivicDecorV80';
+import {HOMEWORLD_COURT_ART_V80} from './systems/homeworldCourtArtV80';
+import {HOMEWORLD_NATURAL_MODULES_V80} from './systems/homeworldNaturalPlacementsV80';
 import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
@@ -50,12 +50,15 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    <defs><pattern id={`${id}-natural`} width="300" height={300*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_OUTSKIRTS_GROUND_V71.src} width="300" height={300*d} preserveAspectRatio="none"/></pattern></defs>
    <rect x={camera.x} y={camera.y} width={camera.viewWidth} height={camera.viewHeight} fill={`url(#${id}-natural)`}/>
   </svg>
-  {HOMEWORLD_LEVELS_V77.map(level=><svg key={level.id} aria-hidden="true" data-homeworld-level-ground-v77={level.id}
+  {HOMEWORLD_LEVELS_V77.filter(level=>painted(level.id)).map(level=><svg key={level.id} aria-hidden="true" data-homeworld-level-ground-v77={level.id}
    width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
    style={{position:'absolute',left:camera.x,top:camera.y,zIndex:homeworldGroundDepthV78(level.id,levelId,transit),pointerEvents:'none'}}>
    <defs><pattern id={`${id}-paving-${level.id}`} width="150" height={150*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_GROUND_ART_V64.src} width="150" height={150*d} preserveAspectRatio="none"/></pattern></defs>
-   {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId===level.id).map(ground=><polygon key={ground.id} data-world-ground-id-v77={ground.id}
-    points={ground.polygon.map(p=>`${p.x},${p.y*d-level.elevation}`).join(' ')} fill={`url(#${id}-paving-${level.id})`} stroke={level.id===levelId?'#a58c67':'#514639'} strokeWidth="2" opacity={level.id===levelId?1:.72}/>)}</svg>)}
+   {/* One source-aligned opaque union: internal legacy route overlaps must not
+       paint rectangular border grids or expose unrelated background floors. */}
+   <g className={styles.civicGroundUnionV80} data-homeworld-ground-union-v80={level.id}>
+    {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId===level.id).map(ground=><polygon key={ground.id} data-world-ground-id-v77={ground.id}
+     points={ground.polygon.map(p=>`${p.x},${p.y*d-level.elevation}`).join(' ')} fill={`url(#${id}-paving-${level.id})`} stroke="none" opacity="1"/>)}</g></svg>)}
   {paintedBuildings.filter(building=>painted(building.levelId)).map(building=>{
    const image=homeworldBuildingSpritePlacementV64(building),z=homeworldLevelV77(building.levelId).elevation,box={...image,top:image.top-z};if(!visible(box,camera))return null;
    return <div key={building.id} className={styles.buildingV64} data-building-id={building.id} data-world-level-v77={building.levelId}
@@ -73,11 +76,12 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {painted('0')&&<div className={styles.landingPadV64} data-homeworld-spaceport="pad" style={{left:HOMEWORLD_SPACEPORT_V77.pad.x-HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].pivot.x*HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].scaleWorldPerPixel,
    top:(HOMEWORLD_SPACEPORT_V77.pad.y-HOMEWORLD_SPACEPORT_V77.pad.depth/2-HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].pivot.y*HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].scaleWorldPerPixel)*d,
    width:HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].renderWidthWorld,height:HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].renderDepthWorld*d,backgroundImage:`url('${HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].src}')`,zIndex:-10999}}/>}
-  {painted('0')&&[...HOMEWORLD_OUTSKIRTS_MODULES_V71,...HOMEWORLD_LANDSCAPE_MODULES_V75].map(item=>{const art=HOMEWORLD_OUTSKIRTS_ART_V71[item.artId];return prop(item.id,'landscape:'+item.artId,art,item,'0',art.heightWorld*item.scale,1);})}
+  {painted('0')&&HOMEWORLD_NATURAL_MODULES_V80.map(item=>{const art=HOMEWORLD_OUTSKIRTS_ART_V71[item.artId];return prop(item.id,'landscape:'+item.artId,art,item,'0',art.heightWorld*item.scale,1);})}
   {HOMEWORLD_PROPS_V77.filter(item=>painted(item.levelId)).map(item=>item.artId?prop(item.id,item.artId,HOMEWORLD_PROP_ART_V64[item.artId],item,item.levelId,item.height,item.levelId===levelId&&shouldFadeHomeworldForeground(item,actor)?.2:1):null)}
   {[...HOMEWORLD_FRONTAGE_V77,...HOMEWORLD_CONNECTION_FURNITURE_V77].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_FURNITURE_ART_V72[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*(item.scale??1));})}
-  {[...HOMEWORLD_EXTERIOR_V77,...HOMEWORLD_URBAN_PROPS_V78].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_EXTERIOR_ART_V76[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*item.scale,1,item.elevation??0);})}
+  {[...HOMEWORLD_EXTERIOR_V77,...HOMEWORLD_URBAN_PROPS_V78].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_COURT_ART_V80[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*item.scale,1,item.elevation??0);})}
   {HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CITY_NATIVE_ART_V78[item.artId];return prop(item.id,'city-native-v78:'+item.artId,art,item,item.levelId,art.heightWorld);})}
+  {HOMEWORLD_CIVIC_PROPS_V80.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CIVIC_ART_V80[item.artId];return prop(item.id,'civic-native-v80:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{

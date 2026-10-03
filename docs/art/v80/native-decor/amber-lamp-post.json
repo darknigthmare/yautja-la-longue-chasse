@@ -1,0 +1,93 @@
+{
+  "id": "amber-lamp-post",
+  "input": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-44f0386a-5522-4aa1-be68-ac526faf63f7.png",
+  "heightWorld": 70,
+  "nativeGroundSupport": [
+    {
+      "x": 399,
+      "y": 1033
+    },
+    {
+      "x": 520,
+      "y": 1144
+    },
+    {
+      "x": 677,
+      "y": 1145
+    },
+    {
+      "x": 832,
+      "y": 1060
+    },
+    {
+      "x": 855,
+      "y": 1020
+    },
+    {
+      "x": 731,
+      "y": 986
+    },
+    {
+      "x": 514,
+      "y": 982
+    }
+  ],
+  "label": "Borne lumineuse ambrée",
+  "function": "Repère bas de cour et de devanture, hors chemin et seuil",
+  "lore": "Éclairage utilitaire original de clan ; aucune technologie canonique affirmée",
+  "prompt": "Use case: stylized-concept. Asset: ONE independent transparent native raster courtyard prop, original Yautja clan-city2.5D game. NEW subject: SHORT CIVIC AMBER LANTERN POST, native subtle screenRIGHTorientation. Volcanicbasaltweightedoctagonalbase, a weatheredbronzecolumn with protectivecurved ribs enclosingONEsmallamberlight midwayup, carvedangularinlays restrained, utilitarianfuturistictribal design ratherthan humanstreetlamp. Uppercap narrowandsecure, entiremasscontinuousconnectedtofoot. HEIGHT70worldunits(adultYautja100), footprint32x30, visuallysmallcourtyardwayfindinglamp. Fixedorthographiccamera yaw0 pitch35degrees,depth0.574, upperleftwarmkeylight realisticdetailedhandpaintedraster. RealPNGtransparentalpha, unbrokenfullbaseandtop framedwith15percentclearemptymargin square1024canvas. Shortattachedcontactshadow and glowkeptinsidecage,noopaquehalooutside silhouette. Nohumanletters, beings, skulls, weapons, landscape, street/floorplane, detachedpieces, atlas/collage,frameorwatermark. Originalutilityprop,nocanontechnologyassertion.",
+  "tool": "OpenAI built-in image_gen",
+  "reviewedAt": "2026-10-03",
+  "review": "Complete low post/base/light cage inspected; glow stays inside silhouette, alpha/background preserved, no animation delivered",
+  "sha256": "c89bb821c84fcb31fd633815d13001d8ef386a989f49f4383d7d0097b09dc09c",
+  "sourceWidth": 1254,
+  "sourceHeight": 1254,
+  "alphaBounds": {
+    "x": 385,
+    "y": 94,
+    "width": 487,
+    "height": 1057
+  },
+  "transparentPixels": 1299745,
+  "totalPixels": 1572516,
+  "destination": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\homeworld\\v80\\amber-lamp-post.png",
+  "sourceByteIdentical": true,
+  "installedAt": "2026-10-03T18:54:18.707Z",
+  "status": "SOURCE_MEASURED_AND_INSTALLED_RUNTIME_PLACEMENT_SEPARATE",
+  "supportRevisions": [
+    {
+      "at": "2026-10-03T19:02:21.020Z",
+      "previous": [
+        {
+          "x": 399,
+          "y": 1033
+        },
+        {
+          "x": 520,
+          "y": 1144
+        },
+        {
+          "x": 677,
+          "y": 1145
+        },
+        {
+          "x": 863,
+          "y": 1075
+        },
+        {
+          "x": 855,
+          "y": 1020
+        },
+        {
+          "x": 731,
+          "y": 986
+        },
+        {
+          "x": 514,
+          "y": 982
+        }
+      ],
+      "reason": "Visual foot-boundary correction verified against native alpha>=128; source PNG and SHA unchanged"
+    }
+  ]
+}

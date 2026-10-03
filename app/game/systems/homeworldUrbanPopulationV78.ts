@@ -3,7 +3,7 @@ import type {HomeworldResidentV69} from './homeworldLifeV69';
 import type {HomeworldFootprint} from './homeworldCity';
 import {HOMEWORLD_ACTOR} from './homeworldCity';
 import {HOMEWORLD_URBAN_PROPS_V78,HOMEWORLD_URBAN_RESERVES_V78,homeworldUrbanWalkableV78} from './homeworldStreetModulesV78';
-import {homeworldExteriorPolygonV76} from './homeworldExteriorDecorV76';
+import {homeworldCourtPolygonV80 as homeworldExteriorPolygonV76} from './homeworldCourtArtV80';
 import {homeworldUrbanCorridorV78,homeworldUrbanOverlapV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
 import {homeworldResidentRoleV72,type HomeworldCivilianRoleV72} from './homeworldIdentityV72';
 export interface HomeworldUrbanExtraV78 extends HomeworldResidentV69 {

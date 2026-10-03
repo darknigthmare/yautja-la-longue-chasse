@@ -23,7 +23,7 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;
 const render = (fighterId, run, highContrast = false) => renderToStaticMarkup(React.createElement(Scene, {
   fighterId, run, highContrast, onPreview: () => { throw Error('SSR must not pretend to load a stage.'); },
 }));
-const create = id => C.createPitCharacterChronicleRunV79(id, owner, 'ui-real-' + id);
+const create = id => C.createPitCharacterChronicleRunV79(id, owner, 'ui-real-' + id, 1);
 function enter(run) {
   let next = run;
   while (['intro', 'post', 'defeat'].includes(next.phase)) next = C.advancePitCharacterChronicleV79(next);
@@ -120,7 +120,7 @@ for (const route of C.PIT_CHARACTER_CHRONICLE_ROUTES_V79) {
     }
     const finished = render(route.fighterId, run);
     assert.equal(run.phase, 'finished');
-    assert.match(finished, /Les trois rencontres sont remportées/);
+    assert.match(finished, /Les 3 rencontres sont remportées/);
     assert.equal((finished.match(/data-complete="true"/g) ?? []).length, 3);
     assert.doesNotMatch(finished, /aria-current="step"/);
     assert.equal(JSON.stringify(create(route.fighterId)), initialBytes, 'rendering must not mutate story state');
@@ -134,7 +134,7 @@ test('real defeat/reload states show remaining recoveries and the correct pendin
     const html = render('tracker', run);
     assert.equal((html.match(/data-complete="true"/g) ?? []).length, 0);
     if (index < 2) assert.ok(html.includes(`Il reste ${run.continuesRemaining} reprise`));
-    else { assert.match(html, /Les deux reprises ont été utilisées/); assert.doesNotMatch(html, /Les trois rencontres sont remportées/); }
+    else { assert.match(html, /Les deux reprises ont été utilisées/); assert.doesNotMatch(html, /Les 3 rencontres sont remportées/); }
   }
   let live = settle(enter(create('theta')), 'first-win');
   live = enter(live);
@@ -151,16 +151,17 @@ test('real defeat/reload states show remaining recoveries and the correct pendin
   assert.equal(JSON.stringify(live), before);
 });
 
-test('unproduced roster stories render honest archives and never advertise an authored or completed campaign', () => {
+test('new authored profiles render their original branch and honest identity provenance before any duel', () => {
   const ids = ['jungle-hunter', 'city-hunter', 'berserker', 'wolf'];
   for (const id of ids) {
     const status = C.getPitCharacterChronicleStatusV79(id), html = render(id, null);
-    assert.equal(status.route, null);
+    assert.equal(status.route.version, 2);
     assert.ok(html.includes(escape(roster.getPitFighterProfile(id).name)));
     assert.ok(html.includes(escape(status.biography)));
     assert.ok(html.includes(escape(status.limitation)));
-    assert.match(html, /ARCHIVE · CHRONIQUE À PRODUIRE/);
-    assert.doesNotMatch(html, /RECONSTITUTION ORIGINALE|Rencontres de la chronique|data-complete|Les trois rencontres sont remportées/);
+    assert.match(html, /RECONSTITUTION ORIGINALE/);
+    assert.match(html, /IDENTITÉ FOURNIE · BIOGRAPHIE NON CERTIFIÉE/);
+    assert.doesNotMatch(html, /Rencontres de la chronique|data-complete|Les 8 rencontres sont remportées/);
   }
 });
 
@@ -225,17 +226,17 @@ test('real result callback persists the outcome but leaves KO/victory mounted un
 });
 
 test('checkpoint restoration is owner/fighter guarded, cancellable and cannot silently overwrite an incompatible slot', () => {
-  assert.match(source, /\$\{pitCharacterChronicleStorageKeyV79\(owner\)\}\.\$\{fighter\}/);
+  assert.match(source, /\$\{pitCharacterChronicleStorageKeyV79\(owner, version\)\}\.\$\{fighter\}/);
   assert.match(source, /parsePitCharacterChronicleRunV79\(serialized, ownerSaveCreatedAt\)/);
   assert.match(source, /restored\?\.fighterId !== selectedRoute\.fighterId/);
   assert.match(source, /queueMicrotask\(\(\) => \{\s*if \(cancelled\) return;/);
-  assert.match(source, /return \(\) => \{ cancelled = true; \};\s*\}, \[selectedId, ownerSaveCreatedAt\]\)/);
+  assert.match(source, /return \(\) => \{ cancelled = true; \};\s*\}, \[selectedId, ownerSaveCreatedAt, contentVersion\]\)/);
   assert.match(source, /currentRun \|\| hasCheckpoint \? setConfirmRestart\(true\) : start\(\)/);
   assert.doesNotMatch(source, /localStorage\.(?:clear|removeItem)\(/);
   assert.match(arrow('store'), /localStorage\.getItem\(key\) !== serialized/);
   assert.match(source, /inert=\{confirmRestart\}/);
   assert.match(source, /role="alertdialog" aria-modal="true"/);
-  assert.match(source, /if \(confirmRestart\) setConfirmRestart\(false\); else onBack\(\)/);
+  assert.match(source, /if \(confirmRestart\) setConfirmRestart\(false\); else if \(reviewPanel\) setReviewPanel\(null\); else onBack\(\)/);
   assert.match(source, /confirmRestart && event\.key === 'Tab'/);
   assert.match(source, /document\.activeElement === first.*document\.activeElement === last/);
 });

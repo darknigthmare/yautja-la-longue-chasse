@@ -718,6 +718,7 @@
 .viewport[data-homeworld-active-door] [data-homeworld-direction-sign-v72] > span:not([data-homeworld-prop-id]),
 .viewport[data-homeworld-active-door] [data-homeworld-region-connection-v72] > span:not([data-homeworld-prop-id]) { visibility:hidden; }
 .buildingV64[data-occluded='true'] { opacity:.32; }
+.civicGroundUnionV80 { filter:drop-shadow(0 3px 1px #060909a8); }
 .buildingV64>img { display:block; width:100%; height:100%; max-width:none; }
 .doorMarkerV64 { position:absolute; width:0; height:0; }
 .doorMarkerV64 i { position:absolute; left:-36px; top:-3px; width:72px; height:7px; border-radius:50%; background:#d5e2ac88; box-shadow:0 0 12px #cecf9c88; }

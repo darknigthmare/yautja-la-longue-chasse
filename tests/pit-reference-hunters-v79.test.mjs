@@ -41,7 +41,15 @@ for (const fighter of manifest.fighters) {
     assert.equal(v.animated, false); assert.equal(v.frameCount, 1); assert.equal(v.canonicalFidelityCertified, false);
     const profile = roster.getPitFighterProfile(fighter.id);
     assert.equal(profile.progressionAvailable, false); assert.equal(profile.gameplayAdaptation, 'shared-balanced-duel');
-    assert.equal(chronicles.getPitCharacterChronicleStatusV79(fighter.id).route, null);
+    // V79 never had a personal route for these two identities. V80 adds an
+    // explicitly original route without upgrading the static art to certified
+    // fidelity or granting campaign progression.
+    assert.equal(chronicles.getPitCharacterChronicleStatusV79(fighter.id, 1).route, null);
+    const chronicle = chronicles.getPitCharacterChronicleStatusV79(fighter.id, 2);
+    assert.equal(chronicle.route.version, 2);
+    assert.equal(chronicle.route.encounters.length, 8);
+    assert.equal(chronicle.provenance, 'roster-attribution');
+    assert.match(chronicle.route.continuity, /Aucune rencontre, mort, survie/);
     const association = stages.getPitCharacterStageAssociation(fighter.id);
     assert.equal(association.coverage, 'existing-work-setting'); assert.equal(association.exactGeometryCertified, false);
     assert(combat.PIT_ARENAS[association.stageId]); assert(association.sourceUrls.length >= 2);

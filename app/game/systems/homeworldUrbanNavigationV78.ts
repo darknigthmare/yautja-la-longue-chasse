@@ -3,7 +3,7 @@
  * renderer/actor/save guards must be promoted together by root. */
 import {HOMEWORLD_WORLD_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
 import type {HomeworldVec2} from './homeworldCity';
-import {homeworldUrbanWalkableV78} from './homeworldStreetModulesV78';
+import {homeworldCivicWalkableV80 as homeworldUrbanWalkableV78} from './homeworldCivicWorldV80';
 export interface HomeworldUrbanWalkRouteV78 {levelId:HomeworldLevelV77;status:'reachable'|'unavailable';points:HomeworldVec2[];distance:number;}
 const step=32,cols=Math.ceil(HOMEWORLD_WORLD_V77.width/step),rows=Math.ceil(HOMEWORLD_WORLD_V77.height/step);
 const grid=new Map<string,boolean>();

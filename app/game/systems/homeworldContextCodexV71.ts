@@ -8,6 +8,10 @@ import {HOMEWORLD_WORLD_CODEX_V77,homeworldRecordPlacementV77} from './homeworld
 import {HOMEWORLD_LAVA_CODEX_V77} from './homeworldLavaPlacementV77';
 import {HOMEWORLD_URBAN_CODEX_V78} from './homeworldUrbanCodexV78';
 import {HOMEWORLD_CITY_NATIVE_CODEX_V78} from './homeworldCityNativeCodexV78';
+import {HOMEWORLD_CIVIC_CODEX_V80} from './homeworldCivicDecorV80';
+import {HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80} from './homeworldCivicArchitectureV80';
+import {HOMEWORLD_PORT_SHOULDER_CODEX_V80} from './homeworldPortShouldersV80';
+import {homeworldNaturalRecordPlacementV80} from './homeworldNaturalPlacementsV80';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
@@ -123,10 +127,13 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
       'Sol projeté une fois à 35°. Roches, murs et végétaux au-dessus gardent leur échelle uniforme.',
       'Le prolongement visuel ne permet pas de sortir des limites de déplacement ; les dix chemins V72 mènent à leurs seuils physiques et gardent les permissions de progression.']}];
 export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64&{associatedElementIds?:readonly string[]})[]=[
-  ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null),
+  ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null).map(homeworldNaturalRecordPlacementV80),
   ...HOMEWORLD_WORLD_CODEX_V77,...HOMEWORLD_LAVA_CODEX_V77,...HOMEWORLD_FAUNA_CODEX_V77,...HOMEWORLD_CONCEPT_CODEX_V77,
   // V78 records already own world coordinates and elevation. Never apply the
   // legacy port relocation to them a second time.
   ...HOMEWORLD_URBAN_CODEX_V78,
   ...HOMEWORLD_CITY_NATIVE_CODEX_V78,
+  ...HOMEWORLD_CIVIC_CODEX_V80,
+  ...HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80,
+  ...HOMEWORLD_PORT_SHOULDER_CODEX_V80,
 ];

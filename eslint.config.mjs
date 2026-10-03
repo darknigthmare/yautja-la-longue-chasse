@@ -10,6 +10,8 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
+    // Vinext production bundles are generated output, like Next's .next.
+    "dist/**",
     // Generated QA exports are not application source.
     "outputs/**",
     "tmp/**",

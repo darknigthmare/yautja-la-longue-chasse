@@ -33,7 +33,9 @@ import {HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_DISTRICTS_V77,HOME
  beginHomeworldTransitV77,stepHomeworldTransitV77,nearestHomeworldConnectorV77,homeworldWorldArrivalV77,
  HOMEWORLD_CONNECTORS_V77,beginHomeworldSkiffV77,stepHomeworldSkiffV77,type HomeworldSkiffV77,type HomeworldLevelV77,type HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {resolveHomeworldLocationV77,createHomeworldCheckpointV77} from './systems/homeworldLocationV77';
-import {stepHomeworldUrbanActorV78 as stepHomeworldWorldActorV77} from './systems/homeworldStreetModulesV78';
+import {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './systems/homeworldCivicWorldV80';
+import {HOMEWORLD_CIVIC_SCENE_SOURCES_V80} from './systems/homeworldCivicDecorV80';
+import {homeworldCivicNeighborhoodV80} from './systems/homeworldCivicNeighborhoodsV80';
 import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77} from './systems/homeworldConnectorArtV77';
 import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacementV77';
@@ -89,7 +91,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -636,6 +638,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthSpeedV74 = Math.hypot(youthMotionV74.velocity.x, youthMotionV74.velocity.y);
   const heroBob = !youthWelcome && actorSpeed > 5 ? Math.sin(phase * 11) * 1.5 : 0;
   const activeDoorId = nearestDoor?.id ?? null;
+  const civicNeighborhoodV80=homeworldCivicNeighborhoodV80(levelIdV77,actor);
   const nearbyConnectorV77 = !interior ? nearestHomeworldConnectorV77(levelIdV77, actor) : null;
   const nearbyCntlipHostV77=homeworldCntlipEligibleV77(save)?homeworldCntlipReachedV77(interior,actor):null;
   const interactionLabel = nearbyConnectorV77 ? nearbyConnectorV77.connector.name : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : null);
@@ -682,7 +685,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         </div>
       </div>
       {!interior && <div className={styles.haze} aria-hidden="true" />}
-      <div className={styles.location}><strong>{levelIdV77} · {district?.name ?? homeworldLevelV77(levelIdV77).name}</strong><span>{interior ? "Rejoins le seuil au sud pour ressortir. Les personnages et objets se rencontrent à pied." : youthWelcome && district?.id === "port" ? "Les convois et les navettes du clan animent les quais." : youthWelcome && district?.id === "forges" ? "Les artisans préparent les armes et les parures du clan." : district?.description ?? "Les rues et passages publics relient les quartiers de la cité."}</span></div>
+      <div className={styles.location} data-homeworld-neighborhood-v80={interior?undefined:civicNeighborhoodV80.id}><strong>{levelIdV77} · {interior?district?.name??homeworldLevelV77(levelIdV77).name:civicNeighborhoodV80.label}</strong><span>{interior ? "Rejoins le seuil au sud pour ressortir. Les personnages et objets se rencontrent à pied." : youthWelcome && district?.id === "port" ? "Les convois et les navettes du clan animent les quais." : youthWelcome && district?.id === "forges" ? "Les artisans préparent les armes et les parures du clan." : civicNeighborhoodV80.detail}</span></div>
       {!interior && <div className={styles.minimap} role="img" aria-label={`Plan de la cité : ${progress.visitedDistrictIds.length} quartiers visités sur ${HOMEWORLD_DISTRICTS.length}. Position : ${district?.name ?? "liaison"}.`}>
         {HOMEWORLD_DISTRICTS_V77.filter(entry => entry.levelId === levelIdV77).map(entry => <i key={entry.id} className={styles.mapDistrict} data-visited={progress.visitedDistrictIds.includes(entry.id)} style={{ left: `${entry.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${entry.y / HOMEWORLD_WORLD_V77.height * 100}%`, width: `${entry.width / HOMEWORLD_WORLD_V77.width * 100}%`, height: `${entry.height / HOMEWORLD_WORLD_V77.height * 100}%` }} />)}
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD_V77.height * 100}%` }} />

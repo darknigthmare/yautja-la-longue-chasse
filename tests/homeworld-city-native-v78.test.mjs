@@ -27,7 +27,11 @@ test('all13 installed originals retain SHA and dimensions; only7 reviewed suppor
  assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.length,7);
  assert.deepEqual(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78,[]);
  assert(urban.HOMEWORLD_CITY_GENERATED_REJECTIONS_V78.length>0);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(p=>p.levelId==='-1A').length,6);
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(p=>p.levelId==='-1A').length,5);
+ const archive=urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId==='archive-shelf-right');
+ const memory=world.HOMEWORLD_BUILDINGS_V77.find(b=>b.id==='memory-vault');
+ assert.equal(archive.levelId,memory.levelId);assert.equal(archive.districtId,memory.districtId);
+ assert(Math.hypot(archive.x-memory.x,archive.y-memory.y)<700,'the unchanged rack belongs near the real archive');
  assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId==='port-cargo-sorting-cart').levelId,'0');
 });
 

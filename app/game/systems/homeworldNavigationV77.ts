@@ -1,4 +1,5 @@
-import {HOMEWORLD_WORLD_V77,HOMEWORLD_CONNECTORS_V77,homeworldWalkableV77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {HOMEWORLD_WORLD_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {homeworldCivicWalkableV80 as homeworldWalkableV77} from './homeworldCivicWorldV80';
 import type {HomeworldVec2} from './homeworldCity';
 export interface HomeworldWalkRouteV77 {levelId:HomeworldLevelV77;status:'reachable'|'unavailable';points:HomeworldVec2[];distance:number;}
 const step=32,cols=Math.ceil(HOMEWORLD_WORLD_V77.width/step),rows=Math.ceil(HOMEWORLD_WORLD_V77.height/step);

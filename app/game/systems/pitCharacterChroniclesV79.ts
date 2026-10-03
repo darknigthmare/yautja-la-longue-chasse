@@ -2,6 +2,7 @@ import { PIT_VERSUS_FIGHTER_IDS, getPitFighterProfile, isPitVersusFighterId, typ
 import { isPitOriginalFighterIdV56 } from './pitOriginalFightersV56';
 import type { PitArenaId } from './pitCombat';
 import type { PitNarrativeResultInput } from './pitNarrativeTrialsV57';
+import { buildPitCharacterChronicleRoutesV80 } from './pitCharacterChronicleDataV80';
 
 /** Character stories are a separate narrative sidecar. They never write the
  * historical Arcade/Circuit archive, campaign ranks, inventory or rewards. */
@@ -10,7 +11,7 @@ export const PIT_CHARACTER_CHRONICLE_MAX_RESULTS_V79 = 24;
 export const PIT_CHARACTER_CHRONICLE_MAX_BYTES_V79 = 32 * 1024;
 export const PIT_CHARACTER_CHRONICLE_CONTINUES_V79 = 2;
 export const PIT_CHARACTER_CHRONICLE_CURATED_IDS_V79 = ['greyback', 'tracker', 'machiko-noguchi', 'theta'] as const;
-export type PitCharacterChronicleCuratedIdV79 = typeof PIT_CHARACTER_CHRONICLE_CURATED_IDS_V79[number];
+export type PitCharacterChronicleCuratedIdV79 = PitVersusFighterId;
 
 export interface PitCharacterChroniclePanelV79 {
   readonly title: string;
@@ -20,6 +21,11 @@ export interface PitCharacterChroniclePanelV79 {
   /** Reuses existing stage layers and a supplied portrait; not a new painting,
    * cinematic film or a fully drawn movement animation. Do not mirror the art. */
   readonly illustrationKind: 'existing-stage-and-portrait';
+  readonly camera?: 'wide' | 'profile' | 'close';
+  /** Optional dedicated native scene; no atlas cell, fake crop or portrait
+   * overlay. Absent for V80's current stage/portrait compositions. */
+  readonly fullScene?: { readonly src: string; readonly width: number; readonly height: number;
+    readonly sha256: string; readonly provenance: string; readonly alt: string };
 }
 export interface PitCharacterChronicleEncounterV79 {
   readonly id: string;
@@ -34,7 +40,7 @@ export interface PitCharacterChronicleEncounterV79 {
   readonly mode: 'cpu';
 }
 export interface PitCharacterChronicleRouteV79 {
-  readonly version: 1;
+  readonly version: 1 | 2;
   readonly id: string;
   readonly fighterId: PitCharacterChronicleCuratedIdV79;
   readonly title: string;
@@ -45,6 +51,11 @@ export interface PitCharacterChronicleRouteV79 {
   readonly intro: readonly PitCharacterChroniclePanelV79[];
   readonly encounters: readonly PitCharacterChronicleEncounterV79[];
   readonly outro: readonly PitCharacterChroniclePanelV79[];
+  readonly biographyEvidence?: 'primary-summary' | 'project-original' | 'roster-attribution';
+  readonly rivalId?: PitVersusFighterId;
+  readonly rivalReason?: string;
+  readonly familyNote?: string;
+  readonly sourceWork?: string;
 }
 
 function panel(focusId: PitVersusFighterId, arenaId: PitArenaId, title: string, text: string): PitCharacterChroniclePanelV79 {
@@ -152,15 +163,18 @@ export const PIT_CHARACTER_CHRONICLE_ROUTES_V79: readonly PitCharacterChronicleR
   },
 ];
 
-export function getPitCharacterChronicleRouteV79(fighterId: unknown): PitCharacterChronicleRouteV79 | null {
-  return PIT_CHARACTER_CHRONICLE_ROUTES_V79.find(route => route.fighterId === fighterId) ?? null;
+/** These four v1 routes and their IDs/receipts are kept byte-for-byte in their
+ * original order. New runs use v2; a legacy save always resolves against v1. */
+export const PIT_CHARACTER_CHRONICLE_ROUTES_V80 = buildPitCharacterChronicleRoutesV80(PIT_CHARACTER_CHRONICLE_ROUTES_V79);
+export function getPitCharacterChronicleRouteV79(fighterId: unknown, contentVersion: 1 | 2 = 2): PitCharacterChronicleRouteV79 | null {
+  return (contentVersion === 1 ? PIT_CHARACTER_CHRONICLE_ROUTES_V79 : PIT_CHARACTER_CHRONICLE_ROUTES_V80).find(route => route.fighterId === fighterId) ?? null;
 }
-export function getPitCharacterChronicleStatusV79(fighterId: unknown) {
+export function getPitCharacterChronicleStatusV79(fighterId: unknown, contentVersion: 1 | 2 = 2) {
   if (!isPitVersusFighterId(fighterId)) return null;
-  const profile = getPitFighterProfile(fighterId), route = getPitCharacterChronicleRouteV79(fighterId);
+  const profile = getPitFighterProfile(fighterId), route = getPitCharacterChronicleRouteV79(fighterId, contentVersion);
   return { fighterId, name: profile.name, sourceWork: profile.sourceWork,
     status: route ? 'authored-reconstruction' as const : 'archive-only' as const,
-    provenance: route ? 'curated-primary-reference' as const : isPitOriginalFighterIdV56(fighterId) ? 'project-original' as const : 'existing-profile-reference' as const,
+    provenance: route?.biographyEvidence ?? (route && contentVersion === 1 ? 'primary-summary' as const : isPitOriginalFighterIdV56(fighterId) ? 'project-original' as const : 'roster-attribution' as const),
     biography: route?.biography ?? profile.arcadeIntro,
     limitation: route?.limitation ?? 'Fiche issue du profil existant. Chronique illustrée non produite ; cette archive ne certifie ni biographie canonique complète ni fidélité visuelle 1:1.',
     route };
@@ -178,7 +192,7 @@ export interface PitCharacterChronicleResultV79 {
 }
 export interface PitCharacterChronicleRunV79 {
   readonly version: 1;
-  readonly contentVersion: 1;
+  readonly contentVersion: 1 | 2;
   readonly routeId: string;
   readonly fighterId: PitCharacterChronicleCuratedIdV79;
   readonly ownerSaveCreatedAt: string;
@@ -204,13 +218,13 @@ function outcome(result: PitCharacterChronicleResultV79): 'victory' | 'defeat' |
   return result.winnerId === result.leftId ? 'victory' : result.winnerId === result.rightId ? 'defeat' : 'draw';
 }
 
-export function pitCharacterChronicleStorageKeyV79(ownerSaveCreatedAt: string): string {
+export function pitCharacterChronicleStorageKeyV79(ownerSaveCreatedAt: string, contentVersion: 1 | 2 = 1): string {
   if (!owner(ownerSaveCreatedAt)) throw Error('Propriétaire de chronique invalide.');
-  return 'yautja-long-hunt.the-pit-character-chronicles.v1.' + encodeURIComponent(ownerSaveCreatedAt);
+  return `yautja-long-hunt.the-pit-character-chronicles.v${contentVersion}.` + encodeURIComponent(ownerSaveCreatedAt);
 }
 export function createPitCharacterChronicleRunV79(fighterId: PitCharacterChronicleCuratedIdV79,
-  ownerSaveCreatedAt: string, runId: string): PitCharacterChronicleRunV79 {
-  const route = getPitCharacterChronicleRouteV79(fighterId);
+  ownerSaveCreatedAt: string, runId: string, contentVersion: 1 | 2 = 2): PitCharacterChronicleRunV79 {
+  const route = getPitCharacterChronicleRouteV79(fighterId, contentVersion);
   if (!route || !owner(ownerSaveCreatedAt) || !identifier(runId)) throw Error('Création de chronique refusée.');
   return { version: 1, contentVersion: route.version, routeId: route.id, fighterId, ownerSaveCreatedAt, runId,
     phase: 'intro', encounterIndex: 0, page: 0, continuesRemaining: 2, results: [] };
@@ -220,9 +234,9 @@ export function createPitCharacterChronicleRunV79(fighterId: PitCharacterChronic
  * an ending; malformed, wrong-owner and future-content snapshots are rejected. */
 export function normalizePitCharacterChronicleRunV79(value: unknown, expectedOwner?: string): PitCharacterChronicleRunV79 | null {
   try {
-    if (!record(value) || value.version !== 1 || value.contentVersion !== 1 || !owner(value.ownerSaveCreatedAt)
+    if (!record(value) || value.version !== 1 || value.contentVersion !== 1 && value.contentVersion !== 2 || !owner(value.ownerSaveCreatedAt)
       || expectedOwner !== undefined && value.ownerSaveCreatedAt !== expectedOwner || !identifier(value.runId)) return null;
-    const route = getPitCharacterChronicleRouteV79(value.fighterId);
+    const route = getPitCharacterChronicleRouteV79(value.fighterId, value.contentVersion);
     if (!route || value.routeId !== route.id || !Array.isArray(value.results) || value.results.length > PIT_CHARACTER_CHRONICLE_MAX_RESULTS_V79) return null;
     const results: PitCharacterChronicleResultV79[] = [], seen = new Set<string>();
     let wins = 0, defeats = 0;
@@ -250,7 +264,7 @@ export function normalizePitCharacterChronicleRunV79(value: unknown, expectedOwn
     if (complete && !['post', 'outro', 'finished'].includes(String(phase))) return null;
     if (defeats > 2 && phase !== 'failed') return null;
     if (phase !== 'intro' && phase !== 'outro' && value.page !== 0) return null;
-    return { version: 1, contentVersion: 1, routeId: route.id, fighterId: route.fighterId,
+    return { version: 1, contentVersion: route.version, routeId: route.id, fighterId: route.fighterId,
       ownerSaveCreatedAt: value.ownerSaveCreatedAt, runId: value.runId, phase: phase as PitCharacterChroniclePhaseV79,
       encounterIndex: wins, page: value.page, continuesRemaining: Math.max(0, 2 - defeats), results };
   } catch { return null; }
@@ -260,10 +274,10 @@ function required(run: PitCharacterChronicleRunV79): PitCharacterChronicleRunV79
 }
 export function getPitCharacterChronicleEncounterV79(run: PitCharacterChronicleRunV79): PitCharacterChronicleEncounterV79 | null {
   const valid = normalizePitCharacterChronicleRunV79(run);
-  return valid ? getPitCharacterChronicleRouteV79(valid.fighterId)!.encounters[valid.encounterIndex] ?? null : null;
+  return valid ? getPitCharacterChronicleRouteV79(valid.fighterId, valid.contentVersion)!.encounters[valid.encounterIndex] ?? null : null;
 }
 export function advancePitCharacterChronicleV79(value: PitCharacterChronicleRunV79): PitCharacterChronicleRunV79 {
-  const run = required(value), route = getPitCharacterChronicleRouteV79(run.fighterId)!;
+  const run = required(value), route = getPitCharacterChronicleRouteV79(run.fighterId, run.contentVersion)!;
   if (run.phase === 'intro') return run.page + 1 < route.intro.length ? { ...run, page: run.page + 1 } : { ...run, phase: 'pre', page: 0 };
   if (run.phase === 'pre') return { ...run, phase: 'fight' };
   if (run.phase === 'post') return { ...run, phase: run.encounterIndex === route.encounters.length ? 'outro' : 'pre', page: 0 };
@@ -307,4 +321,14 @@ export function serializePitCharacterChronicleRunV79(value: PitCharacterChronicl
 export function parsePitCharacterChronicleRunV79(serialized: unknown, expectedOwner: string): PitCharacterChronicleRunV79 | null {
   if (typeof serialized !== 'string' || serialized.length > PIT_CHARACTER_CHRONICLE_MAX_BYTES_V79) return null;
   try { const run = normalizePitCharacterChronicleRunV79(JSON.parse(serialized), expectedOwner); return run ? checkpointPitCharacterChronicleV79(run) : null; } catch { return null; }
+}
+
+/** Read-only gallery rights come from the validated checkpoint journal, never
+ * a menu click or a forged encounterIndex. This is local progression, not
+ * server-side anti-cheat or a campaign unlock. */
+export function getPitCharacterChronicleGalleryAccessV80(value: unknown): { readonly intro: boolean; readonly outro: boolean } {
+  const run = normalizePitCharacterChronicleRunV79(value);
+  if (!run) return { intro: false, outro: false };
+  const route = getPitCharacterChronicleRouteV79(run.fighterId, run.contentVersion)!;
+  return { intro: true, outro: run.encounterIndex === route.encounters.length };
 }

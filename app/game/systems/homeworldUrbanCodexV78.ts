@@ -4,7 +4,7 @@ import {HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_LOTS_V78} from './homeworldUr
 import {HOMEWORLD_URBAN_EXTRAS_V78,homeworldUrbanExtraRoleV78} from './homeworldUrbanPopulationV78';
 import {homeworldCivilianArtV72} from './homeworldIdentityV72';
 import {HOMEWORLD_GROUND_ART_V64} from './homeworldArtV64';
-import {HOMEWORLD_EXTERIOR_ART_V76} from './homeworldExteriorDecorV76';
+import {HOMEWORLD_COURT_ART_V80 as HOMEWORLD_EXTERIOR_ART_V76} from './homeworldCourtArtV80';
 import {HOMEWORLD_GEOMETRY_V64} from './homeworldGeometryV64';
 import {homeworldLevelV77} from './homeworldWorldV77';
 import {HOMEWORLD_URBAN_FACADES_V78,homeworldUrbanFacadePlacementV78} from './homeworldUrbanFacadesV78';
