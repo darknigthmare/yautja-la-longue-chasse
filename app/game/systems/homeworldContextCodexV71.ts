@@ -2,6 +2,10 @@
  * second approximate plan. No new canonical settlement or institution is asserted. */
 import { HOMEWORLD_BUILDINGS, HOMEWORLD_STREETS } from './homeworldCity';
 import { HOMEWORLD_ELEMENT_CODEX_V64, type HomeworldElementRecordV64 } from './homeworldElementCodexV64';
+import {HOMEWORLD_FAUNA_CODEX_V77} from './homeworldFaunaV77';
+import {HOMEWORLD_CONCEPT_CODEX_V77} from './homeworldConceptRefsV77';
+import {HOMEWORLD_WORLD_CODEX_V77,homeworldRecordPlacementV77} from './homeworldWorldCodexV77';
+import {HOMEWORLD_LAVA_CODEX_V77} from './homeworldLavaPlacementV77';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
@@ -116,4 +120,7 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
       'Chaque polygone public est exclu séparément : les recouvrements de rues restent publics, sans trou produit par un masque pair/impair.',
       'Sol projeté une fois à 35°. Roches, murs et végétaux au-dessus gardent leur échelle uniforme.',
       'Le prolongement visuel ne permet pas de sortir des limites de déplacement ; les dix chemins V72 mènent à leurs seuils physiques et gardent les permissions de progression.']}];
-export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64&{associatedElementIds?:readonly string[]})[]=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71];
+export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64&{associatedElementIds?:readonly string[]})[]=[
+  ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null),
+  ...HOMEWORLD_WORLD_CODEX_V77,...HOMEWORLD_LAVA_CODEX_V77,...HOMEWORLD_FAUNA_CODEX_V77,...HOMEWORLD_CONCEPT_CODEX_V77,
+];

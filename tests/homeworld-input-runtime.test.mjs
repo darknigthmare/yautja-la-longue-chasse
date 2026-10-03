@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function pollingEffect(environment) {
@@ -36,6 +36,7 @@ function fixture() {
   }));
   let sequence = 0, time = 0, cleanup, paused = false, inactive = false;
   const env = {
+    ...city,
     createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice,
     matchesControlAction: () => false, bindings: {}, held: { current: new Set() },
     touch: { current: { left: false, right: false, up: false, down: false, jump: false } },
@@ -46,7 +47,11 @@ function fixture() {
     cityClockV68: { current: 0 },
     HOMEWORLD_ACTOR: city.HOMEWORLD_ACTOR, homeworldYouthDirectionV74: city.homeworldYouthDirectionV74,
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
-    actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
+    actorRef: { current: city.createHomeworldWorldActorV77() }, visitedAttempt: { current: null },
+    levelRefV77: {current:'0'}, transitRefV77: {current:null}, skiffRefV77: {current:null}, cntlipMovementRefV77: {current:1},
+    exteriorAnchorRef: {current:city.createHomeworldWorldActorV77()},
+    setSkiffV77() {}, setTransitV77() {}, setElevationV77() {}, setLevelIdV77() {}, setAnnouncement() {},
+    recordLocationV77() { throw new Error('No completed connector or skiff in these declared world input cases'); },
     interiorRef: { current: null }, stepHomeworldActorOnFloor: city.stepHomeworldActorOnFloor,
     dreadMotionRef: { current: { angles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: city.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     stepHunterDreadsV63: city.stepHunterDreadsV63,
@@ -217,4 +222,46 @@ test("Start resumes after window inactivity in one intentional press, without to
   f.pad.buttons[9].pressed = true; f.tick(3);
   assert.equal(f.env.pausedRef.current, false);
   assert.deepEqual(f.events, [["paused", false]]);
+});
+
+test("real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait", () => {
+  const f = fixture(); f.release();
+  const connector = city.HOMEWORLD_CONNECTORS_V77.find(item => item.id === 'council-stair');
+  f.env.actorRef.current = { ...city.createHomeworldWorldActorV77(), ...connector.from.point };
+  f.env.transitRefV77.current = city.beginHomeworldTransitV77('0', f.env.actorRef.current);
+  assert(f.env.transitRefV77.current);
+  const poses = new Set();
+  for (let frame = 0; frame < 180; frame++) {
+    const before = { ...f.env.actorRef.current }; f.tick();
+    const actual = f.env.actorRef.current, motion = f.env.youthMotionRefV74.current;
+    assert.equal(actual.vx, 0); assert.equal(actual.vy, 0);
+    assert(Math.abs(actual.x - connector.from.point.x) < 1e-7);
+    assert(Math.abs(actual.y - (connector.from.point.y + (connector.to.point.y - connector.from.point.y) * f.env.transitRefV77.current.elapsed / connector.duration)) < 1e-7);
+    assert(Math.abs(motion.velocity.y - (actual.y - before.y) * 60) < 1e-7, 'the native visual speed is measured from this real RAF step');
+    const native = city.homeworldYouthFrameV74({seconds:f.env.cityClockV68.current,moving:true,velocity:motion.velocity,lastDirection:motion.direction,distanceWorld:motion.distanceWorld});
+    assert.equal(native.clipId, 'walk'); assert.equal(native.direction, 'n'); poses.add(native.frame.id);
+  }
+  assert(poses.size >= 3, 'real travel selects several original drawings, not an idle plate or invented limb animation');
+  const beforePause = structuredClone({actor:f.env.actorRef.current,transit:f.env.transitRefV77.current,motion:f.env.youthMotionRefV74.current,clock:f.env.cityClockV68.current});
+  f.env.pausedRef.current = true; f.tick(120);
+  assert.deepEqual(structuredClone({actor:f.env.actorRef.current,transit:f.env.transitRefV77.current,motion:f.env.youthMotionRefV74.current,clock:f.env.cityClockV68.current}), beforePause);
+});
+
+test("stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking", () => {
+  for (const kind of ['lift', 'skiff']) {
+    const f = fixture(); f.release();
+    const connector = city.HOMEWORLD_CONNECTORS_V77.find(item => item.id === 'clan-lift');
+    f.env.actorRef.current = { ...city.createHomeworldWorldActorV77(), ...(kind === 'lift' ? connector.from.point : {x:460,y:3600}) };
+    const start = { ...f.env.actorRef.current };
+    if (kind === 'lift') f.env.transitRefV77.current = city.beginHomeworldTransitV77('0', start);
+    else f.env.skiffRefV77.current = city.beginHomeworldSkiffV77('0', start, true);
+    assert(kind === 'lift' ? f.env.transitRefV77.current : f.env.skiffRefV77.current);
+    f.tick(120);
+    const actual = f.env.actorRef.current, motion = f.env.youthMotionRefV74.current;
+    assert.equal(motion.velocity.x, 0); assert.equal(motion.velocity.y, 0);
+    assert.equal(actual.vx, 0); assert.equal(actual.vy, 0);
+    assert.equal(city.homeworldYouthFrameV74({seconds:f.env.cityClockV68.current,moving:Math.hypot(motion.velocity.x,motion.velocity.y)>5,velocity:motion.velocity,distanceWorld:motion.distanceWorld}).clipId, 'idle');
+    if (kind === 'lift') { assert.equal(actual.x, start.x); assert.equal(actual.y, start.y); }
+    else assert(Math.hypot(actual.x-start.x,actual.y-start.y)>5, 'the real skiff moved while its passenger stayed in the native idle pose');
+  }
 });

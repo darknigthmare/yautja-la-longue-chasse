@@ -18,6 +18,11 @@ import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
+import HuntRitesMenuV77 from './HuntRitesMenuV77';
+import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,
+  type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';
+import {huntRitesRunIdV77,riteRuntimeContextV77,restoreRitesRuntimeV77,followRiteCorpseAnchorsV77,
+  riteWitnessCanSeeV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
 import { createFirstHuntLearning, observeFirstHunt, firstHuntHint, type FirstHuntObservation, type FirstHuntHint } from "./systems/firstHuntGuide";
 import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
 import { PilotExplorationMap } from "./PilotExplorationMap";
@@ -390,6 +395,10 @@ interface EnemyState extends Vec2 {
   active: boolean;
   /** Scheduled wave activation; null for already materialised agents/bosses. */
   waveActivationAt: number | null;
+  /** Only actual new deaths receive this proof; legacy corpses are never invented. */
+  riteDefeatedAt?: number;
+  riteFallVelocity?: number;
+  riteInvestigate?: { x:number; y:number; until:number };
   lastTrackX: number;
   lastTrackAt: number;
 }
@@ -469,6 +478,8 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  huntRites?: RitesOfHuntV77;
+  riteOperationDamageStart?: number | null;
   exploration?: ExplorationProgress;
   visitedScreenIds?: string[];
   phase: HuntPhase;
@@ -648,6 +659,9 @@ interface InputHub {
 }
 
 interface GameState {
+  huntRites: RitesOfHuntV77;
+  riteMenuCorpseId: string | null;
+  riteOperationDamageStart: number | null;
   phase: HuntPhase;
   paused: boolean;
   elapsed: number;
@@ -726,6 +740,7 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  huntRiteMenu: HuntRiteMenuSnapshotV77 | null;
   musicContext: "exploration" | "combat" | "boss";
   playerX: number;
   playerY: number;
@@ -821,6 +836,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 }
 
 const EMPTY_UI: UiSnapshot = {
+  huntRiteMenu: null,
   musicContext: "exploration",
   playerX: 0,
   playerY: 0,
@@ -1297,6 +1313,9 @@ function makeGameState(
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
   const state: GameState = {
+    huntRites: createRitesOfHuntV77(huntRitesRunIdV77(mission.id, ecologyRunSeed), mission.id),
+    riteMenuCorpseId: null,
+    riteOperationDamageStart: null,
     phase: "tracking",
     paused: false,
     elapsed: 0,
@@ -1615,6 +1634,8 @@ function captureCheckpoint(
     );
   }
   return {
+    huntRites: state.huntRites ? JSON.parse(JSON.stringify(state.huntRites)) : undefined,
+    riteOperationDamageStart: state.riteOperationDamageStart ?? null,
     exploration: normalizeExplorationProgress(state.exploration),
     visitedScreenIds: [...(state.visitedScreenIds ?? [])],
     phase: state.phase,
@@ -1945,6 +1966,14 @@ function deserializeActiveHuntCheckpoint(
     !(checkpoint.projectiles as JsonObject[]).every(isValidSerializedHuntProjectile)
   ) return null;
 
+  if (checkpoint.huntRites !== undefined) {
+    const raw = checkpoint.huntRites;
+    if (!isJsonObject(raw) || typeof raw.runId !== 'string' || typeof raw.missionId !== 'string' ||
+      !restoreRitesRuntimeV77(raw, raw.runId, raw.missionId, checkpoint.enemies as unknown as EnemyState[], checkpoint.elapsed as number, riteSourceLabelV77)) return null;
+    if(raw.operation!==null&&(!isFiniteJsonNumber(checkpoint.riteOperationDamageStart)||
+      (checkpoint.riteOperationDamageStart as number)<0||(checkpoint.riteOperationDamageStart as number)>(checkpoint.damageTaken as number)))return null;
+    if(raw.operation===null&&checkpoint.riteOperationDamageStart!==null)return null;
+  }
   const {
     spawnedWaves,
     completedObjectives,
@@ -1992,6 +2021,11 @@ function restoreCheckpoint(
   checkpoint: MissionCheckpointPayload,
   mode: "retry" | "resume" = "retry",
 ): GameState {
+  const restoredRites = checkpoint.huntRites===undefined
+    ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[]} : undefined
+    : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
+    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77);
+  if (checkpoint.huntRites!==undefined&&!restoredRites) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const player = clonePlayerState(checkpoint.player);
   // Permanent discoveries survive a retry and are merged with the current
   // campaign on resume. Recompute the bonus from its identity, never stack it.
@@ -2047,6 +2081,9 @@ function restoreCheckpoint(
 
   return {
     ...state,
+    huntRites: restoredRites ?? state.huntRites,
+    riteMenuCorpseId: null,
+    riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
     exploration,
     jumpAssist: freshJumpAssistState({ requireRelease: true }),
     world,
@@ -2607,6 +2644,9 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
         )
       : null;
   return {
+    huntRiteMenu: huntRiteMenuSnapshotV77(state.huntRites,
+      {x:state.player.x+state.player.width/2,y:state.player.y+state.player.height},state.riteMenuCorpseId,
+      !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0),
     musicContext: state.boss.active && state.boss.alive ? "boss"
       : state.enemies.some(enemy => enemy.active && enemy.alive &&
           state.aiBrains[enemy.id]?.mode === "engage") ? "combat" : "exploration",
@@ -4901,10 +4941,12 @@ function renderGame(
 
   drawGuardianAdaptiveField(context, state, palette);
 
+  drawHuntRiteCorpsesV77(context,state,assets);
+
   // Enemies, boss and projectiles.
   const visibleEnemies = [
     ...state.enemies.filter(
-      (enemy) => enemy.active && (enemy.alive || enemy.deathAnimation > 0),
+      (enemy) => enemy.active && (enemy.alive || enemy.deathAnimation > 0 && !state.huntRites.corpses.some(c=>c.id===enemy.id)),
     ),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
   ];
@@ -5905,6 +5947,89 @@ function spawnGore(
   }
 }
 
+
+function riteSourceLabelV77(id:string):string {
+  return ecologyV8EnemyForId(id)?.name ?? enemyV7ForId(id)?.name ?? id;
+}
+function riteContextV77(state:GameState) {
+  return riteRuntimeContextV77(state.huntRites,state.player,state.enemies,riteSourceLabelV77,
+    state.paused||state.phase==='dead'||state.phase==='finished');
+}
+function ritePersistenceKeyV77(state:RitesOfHuntV77):string {
+  return state.corpses.length+':'+state.completedEventIds.length+':'+state.corpses.reduce((count,c)=>count+c.witnesses.length,0);
+}
+function updateHuntRitesV77(state:GameState,delta:number):void {
+  state.huntRites=followRiteCorpseAnchorsV77(state.huntRites,state.enemies);
+  if (state.phase!=='tracking'&&state.phase!=='target'||state.trophyExtracting) {
+    state.riteMenuCorpseId=null;
+    if(state.huntRites.operation)state.huntRites={...state.huntRites,operation:null};
+    state.riteOperationDamageStart=null;
+  }
+  if(state.huntRites.operation&&(state.riteOperationDamageStart===null||state.damageTaken>state.riteOperationDamageStart)){
+    state.huntRites={...state.huntRites,operation:null};state.riteOperationDamageStart=null;
+    announce(state,'Rite interrompu par les dégâts ; aucun geste confirmé.',2.8);
+  }
+  const context=riteContextV77(state),before=state.huntRites.operation;
+  const stepped=stepHuntRiteV77(state.huntRites,delta,context);
+  state.huntRites={...stepped.state,elapsed:state.elapsed};
+  if(!state.huntRites.operation)state.riteOperationDamageStart=null;
+  if(stepped.accepted||before&&!state.huntRites.operation)announce(state,stepped.message,2.8);
+  if(state.riteMenuCorpseId&&!huntRiteMenuSnapshotV77(state.huntRites,context.actor,state.riteMenuCorpseId,true)?.open)state.riteMenuCorpseId=null;
+  for(const corpse of state.huntRites.corpses){
+    if(corpse.erased||!corpse.marked)continue;
+    for(const witness of state.enemies){
+      if(corpse.witnesses.includes(witness.id))continue;
+      const at={x:witness.x+witness.width/2,y:witness.y+witness.height/2};
+      const occlusion=calculateLineOfSightOcclusion(at,corpse,state.world.covers.filter(c=>!state.brokenPillarIds.has(c.id)));
+      const visible=riteWitnessCanSeeV77(witness,corpse,state.world.platforms,occlusion);
+      const discovery=discoverHuntRiteV77(state.huntRites,corpse.id,{id:witness.id,kind:witness.kind,position:at,alive:witness.alive&&witness.active,lineOfSight:visible},context);
+      if(!discovery.accepted)continue;
+      state.huntRites=discovery.state;
+      const brain=state.aiBrains[witness.id]??createAiBrain(witness.id,witness.kind);
+      state.aiBrains[witness.id]=reactToRiteWitnessV77(brain);
+      witness.riteInvestigate={x:corpse.x,y:corpse.y,until:state.elapsed+6};
+      queueSound(state,'enemy-alert');
+    }
+  }
+}
+/** Native death cell measured once. Legacy art without a real death pose gets
+ * a sober inert silhouette, never a rotated alive character or explicit gore. */
+const riteDeathCellsV77=new WeakMap<HTMLImageElement,{left:number;top:number;width:number;height:number;pivotX:number;pivotY:number}|null>();
+function riteDeathCellV77(image:HTMLImageElement) {
+  if(riteDeathCellsV77.has(image))return riteDeathCellsV77.get(image)??null;
+  if(!image.naturalWidth||image.naturalWidth%6||!image.naturalHeight)return null;
+  let result:null|{left:number;top:number;width:number;height:number;pivotX:number;pivotY:number}=null;
+  try {const width=image.naturalWidth/6,height=image.naturalHeight,canvas=document.createElement('canvas');
+    canvas.width=width;canvas.height=height;const context=canvas.getContext('2d',{willReadFrequently:true});
+    if(context){context.drawImage(image,width*5,0,width,height,0,0,width,height);const data=context.getImageData(0,0,width,height).data;
+      let left=width,top=height,right=-1,bottom=-1,clear=0;
+      for(let y=0;y<height;y++)for(let x=0;x<width;x++){const a=data[(y*width+x)*4+3];if(a===0)clear++;if(a<24)continue;
+        left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x);bottom=Math.max(bottom,y);}
+      if(right>=left&&bottom>=top&&clear>32)result={left,top,width:right-left+1,height:bottom-top+1,pivotX:(left+right+1)/2,pivotY:bottom+1};
+    }
+  }catch{/* Unavailable or opaque cell: the nonexplicit fallback remains visible. */}
+  riteDeathCellsV77.set(image,result);return result;
+}
+function drawHuntRiteCorpsesV77(context:CanvasRenderingContext2D,state:GameState,assets:AssetBank):void {
+  for(const corpse of state.huntRites.corpses){
+    if(corpse.erased)continue;const enemy=state.enemies.find(e=>e.id===corpse.id&&!e.alive&&e.active&&e.health===0&&e.archetype===corpse.sourceEnemyId);
+    if(!enemy)continue;
+    const v8=ecologyV8EnemyForId(enemy.archetype),v7=enemyV7ForId(enemy.archetype);
+    const image=v8?assets.enemyV8[v8.id]:v7?assets.enemyV7[v7.id]:null,cell=image?riteDeathCellV77(image):null;
+    context.save();context.globalAlpha=.86;
+    if(image&&cell){const sourceWidth=image.naturalWidth/6,scale=Math.min(enemy.width/cell.width,enemy.height/cell.height);
+      context.drawImage(image,sourceWidth*5,0,sourceWidth,image.naturalHeight,
+        corpse.x-cell.pivotX*scale,corpse.y-cell.pivotY*scale,sourceWidth*scale,image.naturalHeight*scale);
+    }else{context.fillStyle='#24312ee6';context.strokeStyle='#879183';context.lineWidth=1;
+      context.beginPath();context.ellipse(corpse.x,corpse.y-7,Math.max(15,enemy.width*.4),7,0,0,Math.PI*2);context.fill();context.stroke();}
+    if(corpse.marked){context.strokeStyle='#e5c282';context.lineWidth=2;context.beginPath();
+      context.moveTo(corpse.x-8,corpse.y-15);context.lineTo(corpse.x,corpse.y-25);context.lineTo(corpse.x+8,corpse.y-15);
+      context.moveTo(corpse.x,corpse.y-25);context.lineTo(corpse.x,corpse.y-9);context.stroke();}
+    if(corpse.analyzed){context.strokeStyle='#8eb4a7';context.lineWidth=1;context.setLineDash([3,3]);context.strokeRect(corpse.x-18,corpse.y-30,36,30);context.setLineDash([]);}
+    context.restore();
+  }
+}
+
 function damageEnemy(
   state: GameState,
   mission: MissionDefinition,
@@ -5938,6 +6063,10 @@ function damageEnemy(
 
   enemy.health = 0;
   enemy.alive = false;
+  if(!enemy.boss){enemy.riteDefeatedAt=state.elapsed;enemy.riteFallVelocity=0;
+    const context=riteContextV77(state),proof=context.prey.find(p=>p.id===enemy.id);
+    if(proof)state.huntRites=registerRitePreyV77(state.huntRites,proof,context).state;
+  }
   enemy.deathAnimation =
     ecologyV8EnemyForId(enemy.archetype) || enemyV7ForId(enemy.archetype)
       ? 0.85
@@ -7726,6 +7855,12 @@ function updateRegularEnemy(
     enemy.telegraph = 0;
     enemy.pendingAttackId = null;
     enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
+    if(enemy.riteDefeatedAt!==undefined){
+      const velocity=Math.min(1200,(enemy.riteFallVelocity??0)+GRAVITY*delta);
+      const landed=resolvePlatformMotion({...enemy,velocityX:0,velocityY:velocity},
+        {x:enemy.x,y:enemy.y+velocity*delta},state.world.platforms,state.world.floorY);
+      enemy.x=landed.x;enemy.y=landed.y;enemy.riteFallVelocity=landed.grounded?0:landed.velocityY;
+    }
     return;
   }
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
@@ -7939,19 +8074,25 @@ function updateRegularEnemy(
     }
   }
 
-  const moveIntent =
-    ecologyProfile?.mobility === "stationary" ? 0 : aiStep.intent.moveX;
+  const riteInvestigation=enemy.riteInvestigate;
+  const inspectingRite=!!riteInvestigation&&(riteInvestigation.until>state.elapsed||
+    aiStep.brain.lastKnownTarget===null&&(aiStep.brain.mode==='suspicion'||aiStep.brain.mode==='search'))&&visualContact<.34&&thermalContact<.34
+    &&!heardNoise&&track.strength<.18&&scent.strength<.18;
+  if(riteInvestigation&&riteInvestigation.until<=state.elapsed&&aiStep.brain.mode==='patrol')enemy.riteInvestigate=undefined;
+  const moveIntent = ecologyProfile?.mobility === "stationary" ? 0 : inspectingRite
+    ? (Math.abs(riteInvestigation!.x-selfPosition.x)<38?0:riteInvestigation!.x>selfPosition.x?1:-1)
+    : aiStep.intent.moveX;
   if (moveIntent !== 0) {
     enemy.facing = moveIntent;
   }
   enemy.velocityX =
-    moveIntent * enemy.moveSpeed * aiStep.intent.speedMultiplier;
+    moveIntent * enemy.moveSpeed * (inspectingRite ? .3 : aiStep.intent.speedMultiplier);
   const rangedAttack =
     enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
   const meleeRange = enemy.width * 0.8 + player.width * 0.55 + 52;
-  const wantsAttack =
+  const wantsAttack = !inspectingRite && (
     aiStep.intent.action === "attack" ||
-    aiStep.intent.action === "suppress";
+    aiStep.intent.action === "suppress");
   const requestedAttackId =
     wantsAttack && rangedAttack && targetDistance < 650
       ? REGULAR_RANGED_ATTACK_ID
@@ -7966,6 +8107,7 @@ function updateRegularEnemy(
     },
     {
       deltaSeconds: delta,
+      cancelled: inspectingRite,
       request: requestedAttackId
         ? regularEnemyAttackRequest(enemy, requestedAttackId)
         : null,
@@ -9213,6 +9355,7 @@ function stepGame(
   state.playerUsedEnergyWeapon = false;
   updateProjectiles(state, mission, delta);
   updateGoreParticles(state, delta);
+  if(state.huntRites)updateHuntRitesV77(state, delta);
   updateObjectiveFlow(state, mission, difficulty);
 
   const currentWorldScreen = getWorldScreenAtX(
@@ -9299,6 +9442,7 @@ export default function HuntCanvas({
   const reportFailureRef = useRef<() => void>(() => undefined);
   const requestAbortRef = useRef<() => void>(() => undefined);
   const requestSuspendRef = useRef<() => void>(() => undefined);
+  const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
   const inputRef = useRef<InputHub>({
     keyboardHeld: new Set(),
     touchHeld: new Set(),
@@ -9457,7 +9601,11 @@ export default function HuntCanvas({
     );
     const invalidResume =
       (resumeSnapshot != null && !restoredHunt) ||
-      (resumeRetryCheckpoint != null && !restoredRetry);
+      (resumeRetryCheckpoint != null && !restoredRetry) ||
+      (restoredHunt && !restoreRitesRuntimeV77(restoredHunt.checkpoint.huntRites,game.huntRites.runId,mission.id,
+        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77)) ||
+      (restoredRetry && !restoreRitesRuntimeV77(restoredRetry.checkpoint.huntRites,game.huntRites.runId,mission.id,
+        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77));
     if (restoredHunt && !invalidResume) {
       game = restoreCheckpoint(game, restoredHunt.checkpoint, "resume");
       game.nextCheckpointIndex = Math.min(
@@ -9481,6 +9629,7 @@ export default function HuntCanvas({
       explorationProgressRef.current?.(normalizeExplorationProgress(game.exploration));
     };
     let lastPersistedElapsed = game.elapsed;
+    let lastRitePersistenceKey = ritePersistenceKeyV77(game.huntRites);
     let lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     const assets: AssetBank = {
       background: null,
@@ -9965,6 +10114,7 @@ export default function HuntCanvas({
       const payload = persistencePayloadFor(game);
       if (!payload) return;
       handler?.(payload);
+      lastRitePersistenceKey = ritePersistenceKeyV77(game.huntRites);
       lastPersistedElapsed = game.elapsed;
       lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     };
@@ -10004,6 +10154,20 @@ export default function HuntCanvas({
       emitPersistence(suspendHuntRef.current);
     };
 
+    riteMenuActionRef.current = (action) => {
+      if(game.paused||game.phase!=='tracking'&&game.phase!=='target'||game.trophyExtracting||game.player.health<=0)return;
+      const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true);
+      if(action==='close'){game.riteMenuCorpseId=null;game.huntRites={...game.huntRites,operation:null};game.riteOperationDamageStart=null;}
+      else if(action==='open'){if(menu)game.riteMenuCorpseId=menu.corpseId;}
+      else if(menu&&menu.open){
+        if(action==='flay'||action==='hang') {announce(game,'Flaying Tool acquis et supports/animations dédiés indisponibles ; geste verrouillé.',3);return;}
+        const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context);
+        game.huntRites=started.state;if(started.accepted&&started.state.operation)game.riteOperationDamageStart=game.damageTaken;
+        announce(game,started.message,3);
+        if(action==='leave'&&started.accepted)game.riteMenuCorpseId=null;
+      }
+      setUi(snapshot(game,mission));emitPersistence(persistHuntRef.current);
+    };
     const isInteractiveControl = (target: EventTarget | null) =>
       target instanceof Element &&
       Boolean(
@@ -10034,6 +10198,7 @@ export default function HuntCanvas({
       }
       if (
         isInteractiveControl(event.target) &&
+        !(event.target instanceof Element && event.target.closest('[data-hunt-rites-v77]')) &&
         !actions.includes("pause")
       ) {
         return;
@@ -10147,6 +10312,7 @@ export default function HuntCanvas({
         lastObservedPaused = game.paused;
         emitPersistence(persistHuntRef.current);
       } else if (
+        ritePersistenceKeyV77(game.huntRites) !== lastRitePersistenceKey ||
         game.nextCheckpointIndex !== lastPersistedCheckpointIndex ||
         game.elapsed - lastPersistedElapsed >= 15
       ) {
@@ -10174,6 +10340,7 @@ export default function HuntCanvas({
 
     return () => {
       alive = false;
+      riteMenuActionRef.current=()=>undefined;
       cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
       window.removeEventListener("keydown", onKeyDown);
@@ -10447,6 +10614,10 @@ export default function HuntCanvas({
             {ui.message}
           </div>
         ) : null}
+
+        <HuntRitesMenuV77 menu={assetsReady?ui.huntRiteMenu:null}
+          onOpen={()=>riteMenuActionRef.current('open')} onClose={()=>riteMenuActionRef.current('close')}
+          onAction={action=>riteMenuActionRef.current(action)}/>
 
         {ui.trophySeconds !== null ? (
           <div style={styles.trophyTimer}>
@@ -11146,7 +11317,9 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     gap: 8,
     padding: "7px 10px",
-    border: "1px solid #769e8e55",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "#769e8e55",
     borderRadius: 10,
     background: "#0a1311e8",
     color: "#dcebe5",

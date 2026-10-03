@@ -29,7 +29,7 @@ export default function HomeworldElementCodex() {
     return ids[(ids.indexOf(current) + direction + ids.length) % ids.length];
   });
   return <section className={styles.root} aria-label="Codex des éléments de la cité" data-homeworld-element-codex="v71">
-    <p className={styles.notice}>Un même registre pilote le plan, les empreintes et ce codex. Les positions sont des coordonnées au sol ; la caméra les projette à 35°. Les silhouettes gardent leurs proportions.</p>
+    <p className={styles.notice}>Les fiches suivent les niveaux physiques de la cité. X et Y décrivent le sol, Z son altitude ; la caméra projette le sol à 35° et adapte son zoom pendant les passages. Les silhouettes gardent leurs proportions. Les références illustrées restent séparées du terrain jouable.</p>
     <div className={styles.filters}>
       <label>Rechercher<input aria-label="Rechercher" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Nom, lieu ou identifiant…" /></label>
       <label>Famille<select aria-label="Famille" value={category} onChange={event => setCategory(event.target.value)}>
@@ -54,9 +54,9 @@ export default function HomeworldElementCodex() {
           <dl>
             <dt>Espace / quartier</dt><dd>{selected.spaceId} / {selected.districtId || "—"}</dd>
             <dt>Position X ; Y ; Z</dt><dd>{point(selected.position)} ; {units(selected.position.z)}</dd>
-            <dt>Largeur × profondeur × hauteur</dt><dd>{units(selected.dimensions.width)} × {units(selected.dimensions.depth)} × {units(selected.dimensions.height)} u.</dd>
-            <dt>Repère d’échelle</dt><dd>Chasseur adulte : 100 u. ≈ 2,3 m. Échelle de travail du projet.</dd>
-            <dt>Projection</dt><dd>Caméra orthographique fixe · sol Y × sin(35°) ; hauteurs verticales non comprimées. L’orientation du bâtiment ou du meuble appartient à son dessin natif.</dd>
+            <dt>Largeur × profondeur × hauteur</dt><dd>{units(selected.dimensions.width)} × {units(selected.dimensions.depth)} × {units(selected.dimensions.height)} {selected.spaceId.startsWith('reference:')?'px source':'u.'}</dd>
+            <dt>Repère d’échelle</dt><dd>{selected.spaceId.startsWith('reference:')?'Document illustré : ses pixels ne donnent aucune taille physique canonique.':'Chasseur adulte : 100 u. ≈ 2,3 m. Échelle de travail du projet.'}</dd>
+            <dt>Projection</dt><dd>Vue orthographique · sol Y × sin(35°), altitude Z soustraite à l’écran ; zoom propre à chaque niveau. Les hauteurs et silhouettes gardent leur échelle uniforme. L’orientation du bâtiment ou du meuble appartient à son dessin natif.</dd>
             {selected.door && <><dt>Seuil / approche</dt><dd>{point(selected.door.threshold)} / {point(selected.door.approach)}</dd><dt>Passage libre</dt><dd>{units(selected.door.clearWidth)} × {units(selected.door.clearHeight)} u.</dd></>}
           </dl>
         </div>

@@ -11,6 +11,7 @@ import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
 import HomeworldInteriorPartitionsV72 from './HomeworldInteriorPartitionsV72';
 import HomeworldFurnitureV72 from './HomeworldFurnitureV72';
 import HomeworldInteriorDecorV76 from './HomeworldInteriorDecorV76';
+import HomeworldCntlipHostsV77 from './HomeworldCntlipHostsV77';
 import styles from './HomeworldCity.module.css';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
@@ -38,6 +39,7 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
         x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={0} />)}
     </div>)}
     <HomeworldInteriorPartitionsV72 room={room}/>
+    <HomeworldCntlipHostsV77 room={room}/>
     {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
     {(room.orientedDecorV76??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}
     {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id}

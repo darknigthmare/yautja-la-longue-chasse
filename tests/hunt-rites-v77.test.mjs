@@ -1,0 +1,31 @@
+import test from'node:test';import assert from'node:assert/strict';
+import{createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77}from'../app/game/systems/ritesOfHuntV77.ts';
+function scene(options={}){const prey={id:'guard-a',sourceEnemyId:'human-soldier',label:'Garde armé',x:420,y:600,defeated:true,active:true,health:0,kind:'human',worthy:true,protectedPrey:false,defeatedAt:8,...options};
+ const context={runId:'played-run',missionId:'jungle-vey',actor:{x:425,y:590},health:100,suspended:false,flayingToolOwned:true,prey:[prey],supports:[{id:'beam-a',x:435,y:460,suitable:true,maximumMass:200}]};
+ const empty=createRitesOfHuntV77(context.runId,context.missionId),registered=registerRitePreyV77(empty,prey,context);assert(registered.accepted);return{state:registered.state,context,prey};}
+function complete(state,action,context,options){let r=startHuntRiteV77(state,'guard-a',action,context,options);assert(r.accepted,r.message);state=r.state;let final;
+ for(let i=0;i<100&&state.operation;i++){final=stepHuntRiteV77(state,.05,context);state=final.state;}assert.equal(state.operation,null);assert(final.accepted,final.message);return state;}
+test('only actual defeated proof registers; repeated callback preserves work and does not duplicate prey',()=>{const {state,context,prey}=scene();assert.equal(registerRitePreyV77(state,prey,context).state,state);
+ const empty=createRitesOfHuntV77('played-run','jungle-vey');for(const change of[{defeated:false},{health:1},{active:false},{x:NaN},{id:''}]){const p={...prey,...change};assert(!registerRitePreyV77(empty,p,{...context,prey:[p]}).accepted);}assert(!registerRitePreyV77(empty,{...prey},context).accepted);assert(!registerRitePreyV77(empty,prey,{...context,runId:'foreign'}).accepted);});
+test('a rite is timed while threats remain live; pause freezes identity and damage cancels without completion',()=>{const {state,context}=scene();const active=startHuntRiteV77(state,'guard-a','flay',context).state;const before=JSON.stringify(active);
+ assert.equal(stepHuntRiteV77(active,.05,{...context,suspended:true}).state,active);assert.equal(JSON.stringify(active),before);
+ const step=stepHuntRiteV77(active,.05,context).state;assert.equal(step.corpses[0].flayed,false);assert.equal(step.operation.elapsed,.05);
+ const hit=stepHuntRiteV77(step,.05,{...context,health:99});assert.equal(hit.state.operation,null);assert.equal(hit.state.corpses[0].flayed,false);assert.deepEqual(hit.state.completedEventIds,[]);
+ assert.equal(stepHuntRiteV77(active,5,context).state,active);assert.equal(stepHuntRiteV77(active,NaN,context).state,active);});
+test('flaying requires the acquired tool; suspension requires completed work and a real higher mass-bearing support',()=>{const {state,context}=scene();assert(!startHuntRiteV77(state,'guard-a','flay',{...context,flayingToolOwned:false}).accepted);
+ assert(!startHuntRiteV77(state,'guard-a','hang',context,{supportId:'beam-a'}).accepted);const done=complete(state,'flay',context);
+ for(const supports of[[],[{...context.supports[0],suitable:false}],[{...context.supports[0],maximumMass:0}],[{...context.supports[0],y:590}]])assert(!startHuntRiteV77(done,'guard-a','hang',{...context,supports},{supportId:'beam-a'}).accepted);
+ const hanging=complete(done,'hang',context,{supportId:'beam-a'});assert.deepEqual(hanging.corpses[0].hangingAt,{x:435,y:460});assert(!startHuntRiteV77(hanging,'guard-a','flay',context).accepted);
+ assert.equal(hanging.honorDelta,0);assert(!('inventory' in hanging));assert(!('rank' in hanging));});
+test('dishonor needs an explicit choice and negative consequence, never a rank or trophy grant',()=>{const {state,context}=scene({worthy:false,protectedPrey:true});assert(!startHuntRiteV77(state,'guard-a','flay',context).accepted);
+ const violated=complete(state,'flay',context,{confirmDishonor:true});assert.equal(violated.honorDelta,-15);assert(!startHuntRiteV77(violated,'guard-a','flay',context,{confirmDishonor:true}).accepted);
+ assert.equal(violated.honorDelta,-15);assert.equal(violated.completedEventIds.length,1);});
+test('actual witnesses add terror and awareness once, rather than an invisible passive damage bonus',()=>{const {state,context}=scene();const marked=complete(state,'mark',context);const witness={id:'guard-b',kind:'human',position:{x:470,y:550},alive:true,lineOfSight:true};
+ const seen=discoverHuntRiteV77(marked,'guard-a',witness,context);assert(seen.accepted);assert.equal(seen.state.fear,8);assert.equal(seen.state.awareness,8);assert.equal(discoverHuntRiteV77(seen.state,'guard-a',witness,context).state,seen.state);
+ for(const changes of[{alive:false},{lineOfSight:false},{kind:'beast'},{position:{x:1500,y:500}}])assert(!discoverHuntRiteV77(marked,'guard-a',{...witness,...changes},context).accepted);
+ assert(!discoverHuntRiteV77(marked,'guard-a',witness,{...context,suspended:true}).accepted);});
+test('corpse position remains usable until erased; leave preserves the exact ledger',()=>{const {state,context}=scene();assert.equal(nearestRiteCorpseV77(state,context.actor).id,'guard-a');assert.equal(nearestRiteCorpseV77(state,{x:0,y:0}),null);
+ assert.equal(startHuntRiteV77(state,'guard-a','leave',context).state,state);const erased=complete(state,'erase',context);assert.equal(nearestRiteCorpseV77(erased,context.actor),null);assert(!startHuntRiteV77(erased,'guard-a','analyze',context).accepted);});
+test('the complete ledger round trips; absent legacy ledger invents no past corpses and a foreign owner cannot import it',()=>{const {state,context}=scene();const marked=complete(state,'mark',context);assert.deepEqual(normalizeRitesOfHuntV77(JSON.parse(JSON.stringify(marked)),context.runId,context.missionId),marked);
+ assert.equal(normalizeRitesOfHuntV77(marked,'other-run',context.missionId),null);assert.deepEqual(normalizeRitesOfHuntV77(undefined,context.runId,context.missionId).corpses,[]);
+ for(const alter of[s=>s.version=2,s=>s.fear=Infinity,s=>s.corpses.push({...s.corpses[0]}),s=>s.completedEventIds.push('flay:not-registered'),s=>s.corpses[0].marked=false,s=>s.corpses[0].supportId='forged-beam',s=>s.corpses[0].witnesses=['same','same']]){const payload=JSON.parse(JSON.stringify(marked));alter(payload);assert.equal(normalizeRitesOfHuntV77(payload,context.runId,context.missionId),null);}});

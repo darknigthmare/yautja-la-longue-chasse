@@ -12,6 +12,7 @@ import {
   type EcologyV8PlanetId,
 } from "./ecologyV8";
 import EnemyTrophyPreview from "./EnemyTrophyPreview";
+import HomeworldFaunaCatalogueV77 from "./HomeworldFaunaCatalogueV77";
 
 const CATEGORY_LABELS: Record<EcologyV8Category, string> = {
   fauna: "Faune",
@@ -246,6 +247,7 @@ export default function EnemyBestiaryV8({
           );
         })}
       </div>
+      <HomeworldFaunaCatalogueV77 />
     </section>
   );
 }

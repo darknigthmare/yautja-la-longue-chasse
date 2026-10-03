@@ -38,7 +38,7 @@ const boundsOfPoint=p=>{
     {left:p.x-16,right:p.x+16,top:p.y-10,bottom:p.y+10};
 };
 
-test('all 37 formerly secondary rooms have distinct authored plans; six principal V73 rooms are byte-identical',()=>{
+test('all 37 secondary plans remain distinct; six original principal plans are preserved beside two explicit V77 tables',()=>{
   assert.equal(rooms.length,37);assert.equal(rooms.filter(r=>r.kind==='civic').length,13);assert.equal(rooms.filter(r=>r.kind==='domestic').length,24);
   assert.equal(Object.keys(api.HOMEWORLD_SECONDARY_RECIPES_V74).length,37);
   assert.equal(new Set(rooms.map(r=>r.secondaryLayoutV74.archetype)).size,37);
@@ -47,9 +47,20 @@ test('all 37 formerly secondary rooms have distinct authored plans; six principa
     zones:r.zones.map(z=>[z.x,z.y,z.width,z.depth]),
     furniture:r.furniture.map(f=>[f.artId,f.x,f.y,f.scale])}))).size,37,'plans differ physically, not only by labels');
   assert.equal(new Set(Object.values(api.HOMEWORLD_SECONDARY_RECIPES_V74).map(r=>r.topology)).size,7);
-  // New independent V76 decor must not conceal any change to the original six
-  // layouts, stations, services or props. Strip this one additive field only.
-  const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room};delete original.orientedDecorV76;return original;});
+  // Preserve the exact historical fingerprint of every original field. Only
+  // independent V76 decor and these two named, measured V77 additions may be
+  // excluded; a changed old table, prop, wall, point or position still fails.
+  const additions=[
+    {buildingId:'pit-gate',table:{id:'pit-gate-v77-cntlip-table',artId:'meal-table',x:185,y:225,scale:.40}},
+    {buildingId:'throne-audience',table:{id:'throne-audience-v77-cntlip-table',artId:'meal-table',x:410,y:141,scale:.62}},
+  ];
+  const addedIds=new Set(additions.map(entry=>entry.table.id));
+  for(const addition of additions){
+    const room=api.HOMEWORLD_INTERIORS_V64.find(entry=>entry.buildingId===addition.buildingId);
+    assert.deepEqual(room.furniture.filter(table=>table.id===addition.table.id),[addition.table]);
+  }
+  assert.equal(api.HOMEWORLD_INTERIORS_V64.flatMap(room=>room.furniture).filter(table=>table.id.includes('-v77-cntlip-')).length,2);
+  const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room,furniture:room.furniture.filter(table=>!addedIds.has(table.id))};delete original.orientedDecorV76;return original;});
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(main)).digest('hex'),'6d5505a37371b33034f46c8523e639ae6a7a7a41867747b24b3e773eae563ce0');
   for(const room of api.HOMEWORLD_INTERIORS_V64){
     const envelope=envelopes.find(e=>e.buildingId===room.buildingId);

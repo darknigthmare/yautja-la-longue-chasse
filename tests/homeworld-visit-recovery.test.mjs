@@ -8,14 +8,14 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export * from './app/game/systems/homeworldLocationV77.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function walkableDistrictPosition(id) {
-  const district = world.HOMEWORLD_DISTRICTS.find(item => item.id === id);
+  const district = world.HOMEWORLD_DISTRICTS_V77.find(item => item.id === id);
   for (let y = district.y + 30; y < district.y + district.height - 30; y += 30)
     for (let x = district.x + 30; x < district.x + district.width - 30; x += 30)
-      if (world.isHomeworldWalkable({ x, y }) && world.districtAtHomeworldActor({ x, y })?.id === id) return { x, y };
+      if (world.homeworldWalkableV77(district.levelId,{ x, y }) && world.districtAtHomeworldActorV77(district.levelId,{ x, y })?.id === id) return { x, y };
   throw new Error(`No usable fixture position in ${id}`);
 }
 
@@ -43,7 +43,9 @@ function liveCallback(name, environment) {
 
 function fixture() {
   let frame, time = 0, cleanup;
-  const initial = world.defaultHomeworldProgress(), attempts = [], messages = [], actor = world.createHomeworldActor();
+  // The V77 spaceport spawn is outside the visited Port district. These
+  // recovery cases declare an actor already at an actual walkable Port entry.
+  const initial = world.defaultHomeworldProgress(), attempts = [], messages = [], actor = {...world.createHomeworldWorldActorV77(),...walkableDistrictPosition('port')};
   const owner = "2026-09-20T12:00:00.000Z";
   const pad = { connected: false, id: "visit-recovery-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const env = {
@@ -51,6 +53,9 @@ function fixture() {
     bindings: {}, held: { current: new Set() }, touch: { current: {} }, matchesControlAction: () => false,
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
+    levelRefV77: {current:'0'}, transitRefV77: {current:null}, skiffRefV77: {current:null}, cntlipMovementRefV77: {current:1},
+    exteriorAnchorRef: {current:actor},
+    setSkiffV77() {}, setTransitV77() {}, setElevationV77() {}, setLevelIdV77() {},
     interiorRef: { current: null },
     dreadMotionRef: { current: { angles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: world.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
     dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
@@ -60,7 +65,7 @@ function fixture() {
     cityClockV68: { current: 0 },
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
-    saveRef: { current: { createdAt: owner, profile: { rankId: "youngblood" }, trophies: [] } }, progressRef: { current: initial },
+    saveRef: { current: { createdAt: owner, profile: { rankId: "young-blood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },
     navigator: { getGamepads: () => [pad] }, requestAnimationFrame(fn) { frame = fn; return 1; }, cancelAnimationFrame() {},
     setActor() {}, setPhase() {}, setPaused() {}, setInactive() {}, closeDialog() {}, interact() {},
@@ -71,12 +76,12 @@ function fixture() {
     onYouthTraining: () => true,
     onSoloV66: () => true,
     persist: () => false,
-    onProgress(progress) { attempts.push(structuredClone(progress)); return env.persist(progress); },
+    persistProgress(progress) { attempts.push(structuredClone(progress)); return env.persist(progress); },
   };
   env.save = { ...env.saveRef.current, homeworld: initial };
   env.viewportRef = { current: { focus() { env.document.activeElement = env.viewportRef.current; } } };
   env.dialogRef = { current: { focus() { env.document.activeElement = env.dialogRef.current; }, querySelectorAll: () => [] } };
-  for (const name of ["pointInCurrentSpace", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry"]) env[name] = liveCallback(name, env);
+  for (const name of ["pointInCurrentSpace", "onProgress", "recordLocationV77", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry"]) env[name] = liveCallback(name, env);
   const effect = liveCallback("poll", env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = (count = 1) => { for (let i = 0; i < count; i++) { time += 1000 / 60; frame(time); } };
@@ -86,7 +91,7 @@ function fixture() {
 
 test("a refused actual Port entry stays pending without a frame-write loop, then retries in place", () => {
   const f = fixture(), original = structuredClone(f.initial), actor = structuredClone(f.env.actorRef.current);
-  assert.equal(world.districtAtHomeworldActor(actor).id, "port");
+  assert.equal(world.districtAtHomeworldActorV77('0',actor).id, "port");
   f.tick(); assert.equal(f.attempts.length, 1); assert.equal(f.env.pendingVisitCount, 1);
   assert.deepEqual(f.env.progressRef.current, original, "refusal cannot announce local discovery success");
   f.env.persist = () => true; f.render(); f.tick(180);
@@ -113,7 +118,7 @@ test("several refused visited districts recover progressively; a second refusal 
   const f = fixture(); f.tick();
   // A valid second actor-position fixture drives the same polling callback.
   f.env.actorRef.current = { ...f.env.actorRef.current, ...walkableDistrictPosition('market') };
-  assert.equal(world.districtAtHomeworldActor(f.env.actorRef.current).id, "market");
+  assert.equal(world.districtAtHomeworldActorV77('0',f.env.actorRef.current).id, "market");
   f.tick(); assert.deepEqual([...f.env.pendingVisitsRef.current], ["port", "market"]);
   let writes = 0; f.env.persist = () => ++writes === 1;
   f.env.retryPendingVisits();
@@ -131,8 +136,10 @@ test("retry uses latest acknowledged evidence and relations, never a stale faile
   assert.equal(f.env.persistAction({ type: "inspect", evidenceId: "suspect-trophy" }, false).ok, true);
   const current = structuredClone(f.env.progressRef.current);
   f.env.retryPendingVisits();
-  const expected = world.applyHomeworldAction(current, { type: "visit", districtId: "port" }, { rankId: "youngblood", ownedTrophyCount: 0 }).progress;
-  assert.deepEqual(f.env.progressRef.current, expected);
+  const expected = world.applyHomeworldAction(current, { type: "visit", districtId: "port" }, { rankId: "young-blood", ownedTrophyCount: 0 }).progress;
+  // The live durable wrapper creates a new object in the isolated VM realm;
+  // compare every serialized save field, not that realm's Object prototype.
+  assert.deepEqual(structuredClone(f.env.progressRef.current), expected);
   assert.deepEqual(f.env.progressRef.current.relations, current.relations, "visits do not grant relationship rewards");
   assert.deepEqual(f.env.progressRef.current.expeditions, current.expeditions, "visits cannot complete an expedition");
   assert.deepEqual(f.env.progressRef.current.evidenceIds, ["suspect-trophy"]);
@@ -141,7 +148,7 @@ test("retry uses latest acknowledged evidence and relations, never a stale faile
 
 test("a visit already durably acknowledged elsewhere clears pending state without another write", () => {
   const f = fixture(); f.tick();
-  f.env.progressRef.current = world.applyHomeworldAction(f.env.progressRef.current, { type: "visit", districtId: "port" }, { rankId: "youngblood", ownedTrophyCount: 0 }).progress;
+  f.env.progressRef.current = world.applyHomeworldAction(f.env.progressRef.current, { type: "visit", districtId: "port" }, { rankId: "young-blood", ownedTrophyCount: 0 }).progress;
   f.env.retryPendingVisits(); assert.equal(f.attempts.length, 1); assert.equal(f.env.pendingVisitCount, 0);
   assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port"]);
 });

@@ -52,9 +52,13 @@ test('six native civic facades retain painted doorway pivots and single scale in
   assert.equal(seen.size,6);
   for(const building of api.HOMEWORLD_BUILDINGS)assert(api.isHomeworldWalkable(api.homeworldBuildingDoorwayV64(building).approach),building.id);
 });
-test('six functional wings expose three physically linked zones, thirty independently colliding furnishings and all existing service IDs',()=>{
+test('six functional wings preserve thirty original furnishings plus the single measured court reception table',()=>{
   const wings=api.HOMEWORLD_INTERIORS_V64.filter(room=>api.homeworldBuildingIdentityV72(room.buildingId)!==null);
-  assert.equal(wings.length,6);assert.equal(wings.reduce((n,r)=>n+r.furniture.length,0),30);
+  const tableId='throne-audience-v77-cntlip-table';
+  assert.equal(wings.length,6);assert.equal(wings.reduce((n,r)=>n+r.furniture.length,0),31);
+  assert.equal(wings.flatMap(room=>room.furniture).filter(table=>table.id!==tableId).length,30);
+  assert.deepEqual(wings.find(room=>room.buildingId==='throne-audience').furniture.filter(table=>table.id===tableId),
+    [{id:tableId,artId:'meal-table',x:410,y:141,scale:.62}]);
   for(const room of wings){
     assert.equal(room.zones.length,3);assert.equal(room.partitions.length,4);
     const plan=api.homeworldInteriorPartitionPlanV72(room);
@@ -86,8 +90,14 @@ test('Unblooded movement alternates genuine V48 drawings and native directions w
   assert.notEqual(api.homeworldYouthFrameV72(0,true,1).actor.src,api.homeworldYouthFrameV72(0,true,-1).actor.src);
 });
 test('V72 codex enumerates every real wall, wingzone and furnishing without claiming a full private palace or canonical universal monarchy',()=>{
-  const records=api.HOMEWORLD_IDENTITY_CODEX_V72;assert.equal(records.length,72);assert.equal(new Set(records.map(r=>r.id)).size,72);
-  assert.equal(records.filter(r=>r.category==='prop').length,30);assert.equal(records.filter(r=>r.category==='panel').length,24);
+  // The Pit table belongs to a secondary room, outside these six V72 wings.
+  // Only the court addition produces one extra record here (72 -> 73).
+  const records=api.HOMEWORLD_IDENTITY_CODEX_V72;assert.equal(records.length,73);assert.equal(new Set(records.map(r=>r.id)).size,73);
+  const courtId='v72-furniture:throne-audience-v77-cntlip-table';
+  assert.equal(records.filter(r=>r.id!==courtId).length,72);
+  assert.equal(records.filter(r=>r.category==='prop').length,31);assert.equal(records.filter(r=>r.category==='panel').length,24);
+  const reception=records.find(r=>r.id===courtId);assert(reception);assert.equal(reception.spaceId,'throne-audience');
+  assert.deepEqual(reception.position,{x:410,y:141,z:0});assert.equal(reception.category,'prop');
   for(const record of records){assert.equal(record.lore,'original-adaptation');assert(record.constraints.length>=3);assert(Object.values(record.dimensions).every(Number.isFinite));}
   assert(records.some(r=>r.constraints.join(' ').includes('appartements et étages privés ne sont pas simulés')));
 });

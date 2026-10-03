@@ -9,6 +9,7 @@ const city=await load('app/game/systems/homeworldCity.ts'),model=await load('app
 const art=await load('app/game/systems/homeworldOutskirtsArtV71.ts'),codex=await load('app/game/systems/homeworldContextCodexV71.ts');
 const rooms=await load('app/game/systems/homeworldInteriorsV64.ts'),geo=await load('app/game/systems/homeworldGeometryV64.ts');
 const connections=await load('app/game/systems/homeworldRegionConnectionsV72.ts');
+const cityWorld=await load('app/game/systems/homeworldWorldV77.ts');
 test('outskirts preserve every public support with measured clearance and no overlapping terrain footprints',()=>{
   assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,162,'V73 preserves measured clearance around every final regional path and its seventy reserved volumes');
   assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,162);
@@ -86,7 +87,16 @@ test('codex connects every real facade, front path, threshold and proportionate 
     assert(room.props.length+(room.furniture?.length??0)>0,'Every interior retains real independent furniture, including native V74 fittings');
     assert.equal(record.lore,'original-adaptation');
   }
-  for(const record of codex.HOMEWORLD_CONTEXT_CODEX_V71)for(const id of record.associatedElementIds)assert(ids.has(id),record.id+' missing '+id);
+  // The original V71 context is a source record catalogue. The live aggregate
+  // replaces the west coast and canyon portals by physical V77 docks and
+  // rewrites links rather than keeping dead legacy connection IDs.
+  for(const old of codex.HOMEWORLD_CONTEXT_CODEX_V71){
+    const record=codex.HOMEWORLD_ALL_ELEMENT_CODEX_V71.find(r=>r.id===old.id);
+    if(!record){assert(['connection:leviathan-coast','connection:thermal-caves'].includes(old.districtId),old.id+' only the two replaced western connections may be absent');assert(ids.has('dock-v77:'+old.districtId.slice(11)));continue;}
+    for(const id of record.associatedElementIds??[])assert(ids.has(id),record.id+' missing '+id);
+    if(record.spaceId==='world'&&old.districtId==='port')assert.equal(record.position.x,old.position.x+cityWorld.HOMEWORLD_PORT_TRANSLATION_V77.x,old.id+' real eastern port');
+  }
+  for(const dock of cityWorld.HOMEWORLD_REGIONAL_DOCKS_V77){const r=codex.HOMEWORLD_ALL_ELEMENT_CODEX_V71.find(r=>r.id==='dock-v77:'+dock.regionId);assert(r);assert.deepEqual(r.position,{...dock.point,z:0});}
 });
 test('actual JSX projects ground once, masks all public polygons, and crops independent native cells',async()=>{
   const result=await build({stdin:{contents:`import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import View from './app/game/HomeworldOutskirtsV71.tsx';export const html=renderToStaticMarkup(React.createElement(View,{actor:{x:1280,y:4480},cameraX:530,cameraY:2180,width:1500,height:900}));`,resolveDir:process.cwd(),loader:'tsx'},

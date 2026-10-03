@@ -8,6 +8,7 @@ import {homeworldInteriorPointFixture} from './helpers/homeworld-interior-point-
 
 const bundle=await build({stdin:{contents:`
  export * from './app/game/systems/homeworld';
+ export * from './app/game/systems/homeworldWorldV77';
  export * from './app/game/systems/homeworldInteriorsV64';
  export * from './app/game/systems/homeworldSideStoryV66';
  export * from './app/game/systems/homeworldNpcMissionsV66';
@@ -37,11 +38,11 @@ function fixture(){
  }};
  let durable=api.writeSaveWithStatus(api.defaultSave('2026-09-20T12:00:00.000Z'),storage,'v66').save;
  const env={...api,save:durable,saveRef:{current:durable},progressRef:{current:durable.homeworld},
-  actorRef:{current:api.createHomeworldActor()},interiorRef:{current:null},dialogStateRef:{current:null},
+  actorRef:{current:api.createHomeworldWorldActorV77()},interiorRef:{current:null},dialogStateRef:{current:null},levelRefV77:{current:'0'},
   suspendedRef:{current:false},pausedRef:{current:false},clearInputs(){},setAnnouncement(){},onNotify(value){notices.push(value);},
   setDialog(update){dialog=update(dialog);},onProgress(progress){
    const result=api.writeSaveWithStatus({...durable,homeworld:progress},storage,'v66');writes.push(result.persisted);
-   if(result.persisted){durable=result.save;env.saveRef.current=durable;env.save=durable;}return result.persisted;
+   if(result.persisted){durable=result.save;env.saveRef.current=durable;env.save=durable;env.progressRef.current=durable.homeworld;}return result.persisted;
   },
  };
  env.pointInCurrentSpace=callback('pointInCurrentSpace',env);
@@ -49,10 +50,11 @@ function fixture(){
  const select=pointId=>{
   const room=api.homeworldInteriorForPointV64(pointId),socket=room?.points.find(p=>p.pointId===pointId);
   assert.ok(socket,'Real interior socket for '+pointId);env.interiorRef.current=room;
+  env.levelRefV77.current=api.HOMEWORLD_BUILDINGS_V77.find(building=>building.id===room.buildingId).levelId;
   // Unit fixture only. Separate browser QA reaches doors and NPCs by walking.
   env.actorRef.current={...env.actorRef.current,...homeworldInteriorPointFixture(api,room,pointId)};
   assert.equal(api.isHomeworldInteriorWalkableV64(room,env.actorRef.current),true);
-  const point=env.pointInCurrentSpace(env.actorRef.current,room);assert.equal(point?.id,pointId);
+  const point=env.pointInCurrentSpace(env.actorRef.current,room,env.levelRefV77.current);assert.equal(point?.id,pointId);
   env.dialogStateRef.current=dialog={point};
  };
  return{env,storage,values,writes,notices,select,setRejected(value){reject=value;},get durable(){return durable;},get dialog(){return dialog;}};

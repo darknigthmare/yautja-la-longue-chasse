@@ -1,0 +1,118 @@
+[
+  {
+    "id": "lava-warrior-left",
+    "heightWorld": 620,
+    "pivot": {
+      "x": 574,
+      "y": 1338
+    },
+    "format": "held",
+    "src": "/game/homeworld/v77/lava-warrior-left.png",
+    "sourceWidth": 1145,
+    "sourceHeight": 1374,
+    "sourceRect": {
+      "x": 0,
+      "y": 0,
+      "width": 1145,
+      "height": 1374
+    },
+    "alphaBounds": {
+      "x": 232,
+      "y": 22,
+      "width": 685,
+      "height": 1330
+    },
+    "alphaThreshold": 24,
+    "borderPixels": 0,
+    "sha256": "7b43577d167648627edf98e1186c599da3615e102eda466d41950e642f1ce844",
+    "bytes": 1157816,
+    "method": "built-in-image_gen",
+    "lore": "original-adaptation",
+    "sourceFile": "exec-3a189e0e-2ed6-41f5-81ce-a91394428290.png",
+    "measurement": "Visually inspected source points; physical placement awaits runtime QA; no calibrated3D or canon1:1 claim"
+  },
+  {
+    "id": "lava-warrior-right",
+    "heightWorld": 620,
+    "pivot": {
+      "x": 525,
+      "y": 1500
+    },
+    "format": "held",
+    "src": "/game/homeworld/v77/lava-warrior-right.png",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536,
+    "sourceRect": {
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 1536
+    },
+    "alphaBounds": {
+      "x": 165,
+      "y": 15,
+      "width": 723,
+      "height": 1503
+    },
+    "alphaThreshold": 24,
+    "borderPixels": 0,
+    "sha256": "9721cd77238c51bdb7bc46d84d4c2d0a4f1198f6b5a7c04e08f39214b5616d83",
+    "bytes": 2095631,
+    "method": "built-in-image_gen",
+    "lore": "original-adaptation",
+    "sourceFile": "exec-5fbeaff9-7dd5-4df8-bf69-e7a02c4f6481.png",
+    "measurement": "Visually inspected source points; physical placement awaits runtime QA; no calibrated3D or canon1:1 claim"
+  },
+  {
+    "id": "lava-transit-skiff",
+    "heightWorld": 180,
+    "pivot": {
+      "x": 1000,
+      "y": 320
+    },
+    "format": "held",
+    "pivotRole": "clear central passenger deck, not a ground foot",
+    "ferrymanSource": {"x": 730, "y": 405},
+    "deckSource": [
+      {
+        "x": 505,
+        "y": 389
+      },
+      {
+        "x": 1170,
+        "y": 176
+      },
+      {
+        "x": 1358,
+        "y": 295
+      },
+      {
+        "x": 687,
+        "y": 527
+      }
+    ],
+    "src": "/game/homeworld/v77/lava-transit-skiff.png",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024,
+    "sourceRect": {
+      "x": 0,
+      "y": 0,
+      "width": 1536,
+      "height": 1024
+    },
+    "alphaBounds": {
+      "x": 40,
+      "y": 5,
+      "width": 1469,
+      "height": 919
+    },
+    "alphaThreshold": 24,
+    "borderPixels": 0,
+    "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+    "bytes": 2422116,
+    "method": "built-in-image_gen",
+    "lore": "original-adaptation",
+    "sourceFile": "exec-9865aae5-f80b-4630-9ecb-570ac12059f4.png",
+    "measurement": "Visually inspected source points; physical placement awaits runtime QA; no calibrated3D or canon1:1 claim"
+  }
+]

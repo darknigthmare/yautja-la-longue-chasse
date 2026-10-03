@@ -3,6 +3,9 @@ import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
+import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
+import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
@@ -1405,6 +1408,18 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
+  }
+  if(isRecord(value.homeworld)){
+    const locationStatus=inspectHomeworldCheckpointV77(value.homeworld.locationV77);
+    if(locationStatus==='future-version'||locationStatus==='invalid-save')return {save:null,failure:locationStatus};
+    if(isRecord(value.homeworld.locationV77)&&value.homeworld.locationV77.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+    if(value.homeworld.cntlipV77!==undefined){
+      const raw=value.homeworld.cntlipV77;
+      if(isRecord(raw)&&(Number(raw.version)>1||isRecord(raw.state)&&Number(raw.state.version)>1))return {save:null,failure:'future-version'};
+      const ledger=normalizeCntlipLedgerV77(raw);
+      if(!ledger)return {save:null,failure:'invalid-save'};
+      if(ledger.invitedSiteIds.length>0&&(!isRecord(value.profile)||!homeworldCntlipEligibleV77({profile:value.profile as unknown as SaveGame['profile'],prologue:normalizeNurseryCampaign(value.prologue),homeworld:normalizeHomeworldProgress(value.homeworld)})))return {save:null,failure:'invalid-save'};
+    }
   }
   // Homeworld evolves additively within the campaign version. A newer nested
   // schema must retain its original bytes, not normalize into an empty dossier.

@@ -1,8 +1,53 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { createRequire } from "node:module";
+import { runInNewContext } from "node:vm";
+
+const ts = createRequire(import.meta.url)("typescript");
 
 const read = (path) => readFile(path, "utf8");
+
+// Execute the actual source callbacks: a source regex alone cannot establish
+// which focused controls may receive a nonmodal hunt shortcut.
+function actualHuntKeyboardHandler(source, actions) {
+  const file = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const callbacks = new Map();
+  function visit(node) {
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) &&
+        ["isInteractiveControl", "onKeyDown"].includes(node.name.text)) {
+      assert(!callbacks.has(node.name.text), "keyboard callback must be unambiguous");
+      callbacks.set(node.name.text, node.initializer.getText(file));
+    }
+    ts.forEachChild(node, visit);
+  }
+  visit(file);
+  assert.equal(callbacks.size, 2, "actual interactive predicate and handler must exist");
+  const input = { keyboardHeld: new Set(), pressed: new Set() };
+  class FocusElement {
+    constructor(interactive, rites = false) { this.interactive = interactive; this.rites = rites; }
+    closest(selector) { return (selector === "[data-hunt-rites-v77]" ? this.rites : this.interactive) ? this : null; }
+  }
+  const compiled = ts.transpileModule(
+    [...callbacks].map(([name, body]) => `const ${name} = ${body};`).join("\n") + "\nthis.invoke = onKeyDown;",
+    { compilerOptions: { target: ts.ScriptTarget.ES2022 } },
+  ).outputText;
+  const context = { Element: FocusElement, input, activeBindings: [],
+    matchingControlActions: () => actions, HUNT_CONTROL_ACTIONS: Object.fromEntries(actions.map(action => [action, action])),
+    isHeldKeyboardAction: action => ["left", "right", "jump"].includes(action) };
+  runInNewContext(compiled, context);
+  return { input, FocusElement, invoke: context.invoke };
+}
+
+function checkHuntShortcut(source, { interactive, rites = false, action, key, allowed, modifier = false }) {
+  const runtime = actualHuntKeyboardHandler(source, [action]);
+  let prevented = false;
+  runtime.invoke({ target: new runtime.FocusElement(interactive, rites), key, code: "KeyE",
+    defaultPrevented: false, ctrlKey: modifier, metaKey: false, altKey: false, repeat: false,
+    preventDefault() { prevented = true; } });
+  assert.equal(runtime.input.pressed.has(action), allowed, `${action}/${key}: focused control safety`);
+  assert.equal(prevented, allowed, `${action}/${key}: native activation/default must stay untouched when refused`);
+}
 
 test("galaxy navigation keeps flight controls inside its spatial region", async () => {
   const source = await read("app/game/GalaxyMapPanel.tsx");
@@ -91,10 +136,17 @@ test("hunt mission keeps keyboard controls, live updates and modal focus accessi
     hunt,
     /isInteractiveControl\(event\.target\) &&\s*\(event\.key === "Enter" \|\| event\.key === " "\)/,
   );
-  assert.match(
-    hunt,
-    /isInteractiveControl\(event\.target\) &&\s*!actions\.includes\("pause"\)/,
-  );
+  for (const example of [
+    { interactive: true, action: "interact", key: "e", allowed: false },
+    { interactive: true, action: "melee", key: "j", allowed: false },
+    { interactive: true, action: "pause", key: "Escape", allowed: true },
+    { interactive: true, rites: true, action: "interact", key: "e", allowed: true },
+    { interactive: false, action: "interact", key: "e", allowed: true },
+    { interactive: true, rites: true, action: "interact", key: "Enter", allowed: false },
+    { interactive: true, rites: true, action: "interact", key: " ", allowed: false },
+    { interactive: true, action: "pause", key: "Enter", allowed: false },
+    { interactive: true, rites: true, action: "interact", key: "e", allowed: false, modifier: true },
+  ]) checkHuntShortcut(hunt, example);
   assert.match(
     hunt,
     /const onKeyUp = \(event: KeyboardEvent\) => \{\s*const actions = matchingControlActions/,

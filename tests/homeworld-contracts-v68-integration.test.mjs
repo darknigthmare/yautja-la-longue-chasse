@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 
 const bundle = await build({ stdin: { contents: `
 export * from './app/game/systems/homeworld';
+export * from './app/game/systems/homeworldWorldV77';
 export * from './app/game/systems/homeworldInteriorsV64';
 export * from './app/game/systems/homeworldContractsV68';
 export * from './app/game/systems/homeworldRegionsV68';
@@ -46,7 +47,7 @@ function fixture(initialOverrides = {}) {
   const environment = { ...api, structuredClone, crypto: { randomUUID: () => 'v68-new-run' },
     save: initial, saveRef: { current: initial }, entry: { ownerCreatedAt: initial.createdAt }, progressRef: { current: initial.homeworld },
     sessionAliveRef: { current: true }, pendingTerminalRunRef: { current: null }, pendingSocialWriteRef: { current: null }, activeHuntSessionRef: { current: null },
-    actorRef: { current: api.createHomeworldActor() }, interiorRef: { current: null }, dialogStateRef: { current: null },
+    actorRef: { current: api.createHomeworldWorldActorV77() }, interiorRef: { current: null }, dialogStateRef: { current: null }, levelRefV77: { current: '0' },
     suspendedRef: { current: false }, pausedRef: { current: false }, youthWelcome: false,
     clearInputs() {}, setAnnouncement() {}, setSaveFailure() {}, setHubLocation() {},
     setScreen(screen) { screens.push(screen); }, setToast(message) { notices.push(message); }, onNotify(message) { notices.push(message); },
@@ -64,8 +65,9 @@ function fixture(initialOverrides = {}) {
   const select = pointId => {
     const room = api.homeworldInteriorForPointV64(pointId), point = room.points.find(item => item.pointId === pointId);
     environment.interiorRef.current = room;
+    environment.levelRefV77.current = api.HOMEWORLD_BUILDINGS_V77.find(building => building.id === room.buildingId).levelId;
     environment.actorRef.current = { ...environment.actorRef.current, x: point.x, y: point.y + 45 };
-    const actualPoint = environment.pointInCurrentSpace(environment.actorRef.current, room);
+    const actualPoint = environment.pointInCurrentSpace(environment.actorRef.current, room, environment.levelRefV77.current);
     assert.equal(actualPoint.id, pointId);
     environment.dialogStateRef.current = dialog = { point: actualPoint };
   };

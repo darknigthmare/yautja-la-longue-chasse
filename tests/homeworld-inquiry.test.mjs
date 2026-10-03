@@ -13,6 +13,7 @@ const compile = async file => {
 };
 const world = await compile("app/game/systems/homeworld.ts");
 const interiors = await compile("app/game/systems/homeworldInteriorsV64.ts");
+const cityWorld = await compile("app/game/systems/homeworldWorldV77.ts");
 const saves = await compile("app/game/save.ts");
 const context = { rankId: "elder", ownedTrophyCount: 500 };
 const act = (progress, action) => world.applyHomeworldAction(progress, { type: "counter-inquiry", action }, context);
@@ -129,7 +130,7 @@ function liveFixture() {
     setItem(key, value) { if (reject && key === "inquiry") throw new DOMException("QA refusal", "QuotaExceededError"); values.set(key, value); } };
   const base = saves.defaultSave("2026-09-20T12:00:00.000Z"); base.homeworld = createInquiryFixture(world);
   let durable = saves.writeSaveWithStatus(base, storage, "inquiry").save;
-  const env = { ...world, ...interiors, progressRef: { current: durable.homeworld }, saveRef: { current: durable }, save: durable,
+  const env = { ...world, ...interiors, ...cityWorld, progressRef: { current: durable.homeworld }, saveRef: { current: durable }, save: durable, levelRefV77: { current: '0' },
     suspendedRef: { current: false }, pausedRef: { current: false }, actorRef: { current: world.createHomeworldActor() }, dialogStateRef: { current: null },
     interiorRef: { current: null },
     clearInputs() { cleared++; }, setAnnouncement() {}, onNotify(message) { notices.push(message); },
@@ -137,7 +138,7 @@ function liveFixture() {
     onProgress(progress) {
       const result = saves.writeSaveWithStatus({ ...durable, homeworld: progress }, storage, "inquiry");
       writes.push(result.persisted);
-      if (result.persisted) { durable = result.save; env.saveRef.current = durable; env.save = durable; }
+      if (result.persisted) { durable = result.save; env.saveRef.current = durable; env.save = durable; env.progressRef.current = durable.homeworld; }
       return result.persisted;
     },
   };
@@ -149,9 +150,10 @@ function liveFixture() {
     assert.ok(room && socket, `authored interior for ${pointId}`);
     // Unit actor fixture in the real room coordinate system. Browser QA walks doors.
     env.interiorRef.current = room;
+    env.levelRefV77.current = cityWorld.HOMEWORLD_BUILDINGS_V77.find(building => building.id === room.buildingId).levelId;
     env.actorRef.current = { ...env.actorRef.current, ...homeworldInteriorPointFixture(interiors, room, pointId) };
     assert.equal(interiors.isHomeworldInteriorWalkableV64(room, env.actorRef.current), true);
-    const point = env.pointInCurrentSpace(env.actorRef.current, room);
+    const point = env.pointInCurrentSpace(env.actorRef.current, room, env.levelRefV77.current);
     assert.equal(point?.id, pointId);
     env.dialogStateRef.current = dialog = { point };
   };

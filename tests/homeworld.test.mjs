@@ -153,6 +153,7 @@ test("foreground occluders fade only inside their authored radius", () => {
 
 test("the scene keeps stations, NPCs, doors, trophies and occlusion as separate render layers", () => {
   const scene = readFileSync("app/game/HomeworldCityScene.tsx", "utf8");
+  const worldScene = readFileSync("app/game/HomeworldWorldSceneV77.tsx", "utf8");
   const hub = readFileSync("app/game/HomeworldHub.tsx", "utf8");
   const css = readFileSync("app/game/HomeworldCity.module.css", "utf8");
   const pointVisual = readFileSync("app/game/HomeworldPointVisualV64.tsx", "utf8");
@@ -168,14 +169,19 @@ test("the scene keeps stations, NPCs, doors, trophies and occlusion as separate 
   assert.match(scene, /data-occluded=/);
   assert.match(scene, /data-painted-door-id=\{building\.id\}/);
   assert.match(scene, /homeworldBuildingDoorwayV64\(building\)\.threshold/);
-  assert.match(hub, /HomeworldCityScene[^\n]*fadedFrontPropIds=\{fadedFrontPropIds\} trophies=\{save\.trophies\}/);
+  assert.match(hub, /HomeworldWorldSceneV77[^\n]*actor=\{actor\} levelId=\{levelIdV77\}/);
+  assert.match(hub, /HomeworldInteriorSurface[^\n]*trophies=\{save\.trophies\}/);
+  assert.match(worldScene, /HOMEWORLD_INTERIOR_POINT_IDS_V64\.has\(p\.id\)/);
+  assert.match(worldScene, /data-occluded=/);
+  assert.match(worldScene, /data-painted-door-id=\{building\.id\}/);
+  assert.match(worldScene, /data-homeworld-level-ground-v77=\{level\.id\}/);
   assert.match(hub, /data-asset-status=\{heroPlate\.status\}/);
   assert.match(hub, /data-provenance-status=\{heroPlate\.provenanceStatus\}/);
   assert.match(hub, /data-facing=\{actor\.facing\}/);
   assert.match(css, /\.hero\[data-facing='-1'\] \.heroVisual\s*\{[^}]*transform:\s*scaleX\(-1\)/s);
   assert.match(hub, /className=\{styles\.heroVisual\}/);
   assert.doesNotMatch(hub, /Plaque exacte à produire|heroPlatePending/);
-  assert.match(hub, /rampes obliques forment un seul réseau au sol/);
+  assert.match(hub, /HomeworldWorldMapV77/);
   assert.match(css, /doorMarkerV64/);
   assert.doesNotMatch(css, /heroPlatePending/);
   assert.match(css, /data-faded='true'/);

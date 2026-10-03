@@ -14,6 +14,8 @@ import { matchesControlAction } from './systems/controlBindings';
 import { controlActionShortcut } from './controlBindingLabels';
 import { HOMEWORLD_REGIONS_V68, HOMEWORLD_REGION_TRAIL_V68, HOMEWORLD_REGION_TRACES_V68, HOMEWORLD_REGION_HAZARD_V68, HOMEWORLD_REGION_INTERIOR_V68, HOMEWORLD_VILLAGE_WORLD_V68, HOMEWORLD_VILLAGE_PERIMETER_V68, HOMEWORLD_REGION_FIELD_PERIMETER_V68, REGION_FAUNA_ART_V68, REGION_WARD_IDS_V68, REGION_WARD_POSTS_V68, canEnterHomeworldRegionV68, createHomeworldRegionV68, normalizeHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, stepHomeworldRegionV68, homeworldRegionInteractionV68, regionInteractionDialogueV68, regionObjectiveV68, regionResidentPositionV68, regionBridgesV68, regionHazardPhaseV68, homeworldRegionRouteMetresV68, homeworldRegionInteriorPropsV68, type HomeworldRegionIdV68, type HomeworldRegionStateV68, type RegionFieldEventV68 } from './systems/homeworldRegionsV68';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
+import HomeworldFaunaDisplayV77 from './HomeworldFaunaDisplayV77';
+import {homeworldFaunaSourceUrlsV77,homeworldFaunaDimensionsV77} from './systems/homeworldFaunaV77';
 import HomeworldModularHunter from './HomeworldModularHunter';
 import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
@@ -109,8 +111,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, []);
   useEffect(() => {
     let cancelled = false; readyRef.current = false;
-    const urls = [...new Set([definition.panorama, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.src : undefined, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
-    Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const img = new Image(); img.onload = () => img.naturalWidth ? resolve() : reject(new Error(src)); img.onerror = () => reject(new Error(src)); img.src = src; }))).then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } }).catch(() => { if (!cancelled) { setArtError('Un décor ne s’est pas chargé. La traversée reste en pause.'); setReady(false); } });
+    const urls = [...new Set([definition.panorama, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.src : undefined, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...homeworldFaunaSourceUrlsV77(regionId), ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
+    Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const img = new Image(); img.onload = () => homeworldFaunaDimensionsV77(src, img.naturalWidth, img.naturalHeight) ? resolve() : reject(new Error(src)); img.onerror = () => reject(new Error(src)); img.src = src; }))).then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } }).catch(() => { if (!cancelled) { setArtError('Un décor ne s’est pas chargé. La traversée reste en pause.'); setReady(false); } });
     return () => { cancelled = true; };
   }, [definition.panorama, youthWelcome, regionId, artAttempt]);
   useEffect(() => {
@@ -215,6 +217,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         </g></svg>
         {state.zone === 'village' && navigation && <svg className={styles.localRoute} width={world.width} height={world.depth * d} aria-hidden="true" data-village-route-v70={navigation.id}><g transform={`scale(1 ${d})`}><polyline points={navigation.points.map(p => `${p.x},${p.y}`).join(' ')} fill="none" stroke="#efd698" strokeWidth="9" strokeDasharray="24 24" />{destination && <ellipse cx={destination.x} cy={destination.y} rx="65" ry="65" fill="none" stroke="#efd698" strokeWidth="8" />}</g></svg>}
         {state.zone === 'passage' && <>
+          <HomeworldFaunaDisplayV77 regionId={regionId} tick={state.tick} groundColor={definition.groundColor} />
           {regionBridgesV68(regionId).flatMap((b, n) => Array.from({ length: b.modules }, (_, i) => { const p = project({ x: b.x + i * bridge.width, y: b.y }); return <img key={`${n}-${i}`} className={styles.bridge} data-region-bridge={`${n}-${i}`} src={bridge.src} alt="" draggable={false} style={{ left: p.x - bridge.deck.left * bridgeScale, top: p.y - (bridge.deck.back + bridge.deck.front) / 2 * bridgeScale, width: bridge.sourceWidth * bridgeScale, height: bridge.sourceHeight * bridgeScale }} />; }))}
           {definition.route.map((p, n) => { const v = project(p); return <span key={n} className={styles.waypoint} style={{ left: v.x, top: v.y + 18 }}><b>{n === definition.route.length - 1 ? definition.village : p.name}</b><small>{Math.round(n / (definition.route.length - 1) * homeworldRegionRouteMetresV68(regionId))} m</small></span>; })}
         </>}

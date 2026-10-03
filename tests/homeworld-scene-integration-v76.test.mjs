@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';import test from 'node:test';import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
-const a=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldSpatialCodex.ts','homeworldGeometryV64.ts','homeworldContextCodexV71.ts','homeworldInteriorsV64.ts','homeworldArchitectureV75.ts','homeworldExteriorDecorV76.ts','homeworldBuildingPlacementsV76.ts','homeworldFurnitureV72.ts']);
+const a=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldSpatialCodex.ts','homeworldGeometryV64.ts','homeworldContextCodexV71.ts','homeworldInteriorsV64.ts','homeworldArchitectureV75.ts','homeworldExteriorDecorV76.ts','homeworldBuildingPlacementsV76.ts','homeworldFurnitureV72.ts','homeworldWorldV77.ts']);
+// Translating a computed native polygon or recomputing it at its translated
+// origin differs by one IEEE754 ulp. Compare only that proven operation budget.
+const samePoints=(actual,expected)=>{assert.equal(actual.length,expected.length);for(let i=0;i<actual.length;i++)for(const axis of['x','y'])assert(Math.abs(actual[i][axis]-expected[i][axis])<=Number.EPSILON*Math.max(1,Math.abs(actual[i][axis]),Math.abs(expected[i][axis]))*4,`${i}.${axis} physical native coordinate`);};
 test('all 43 final physical doors are joined to spawn by actual full-body routes with clearance',()=>{
  for(const building of a.HOMEWORLD_BUILDINGS){const door=a.homeworldBuildingDoorwayV64(building),route=a.homeworldSpatialRoute(a.createHomeworldActor(),door.approach);
   assert.equal(route.status,'reachable',building.id);assert.equal(a.nearestHomeworldDoor(route.points.at(-1))?.id,building.id);
@@ -8,14 +11,17 @@ test('all 43 final physical doors are joined to spawn by actual full-body routes
 });
 test('all new decor and six angled facades are individually enumerated with actual scene bounds and real links',()=>{
  const records=a.HOMEWORLD_ALL_ELEMENT_CODEX_V71,ids=new Set(records.map(r=>r.id));assert.equal(ids.size,records.length);
- const interiors=a.HOMEWORLD_INTERIORS_V64.flatMap(r=>r.orientedDecorV76??[]),exteriors=a.HOMEWORLD_EXTERIOR_MODULES_V76;
+ const interiors=a.HOMEWORLD_INTERIORS_V64.flatMap(r=>r.orientedDecorV76??[]),exteriors=a.HOMEWORLD_EXTERIOR_V77;
  assert.equal(interiors.length,92);assert.equal(exteriors.length,74);assert.equal(records.filter(r=>r.id.startsWith('v76-facade:')).length,6);
  for(const item of [...interiors,...exteriors]){const record=records.find(r=>r.id===item.id);assert(record,item.id);assert(record.constraints.length>=4);assert(record.asset);assert.equal(record.lore,'original-adaptation');
   assert.equal(record.position.x,item.x);assert.equal(record.position.y,item.y);assert.equal(!!record.footprint,item.solid);for(const id of record.associatedElementIds)assert(ids.has(id),item.id+' missing '+id);
+  if(item.levelId)assert.equal(record.position.z,a.homeworldLevelV77(item.levelId).elevation+(item.elevation??0),item.id+' actual World floor plus measured wall height');
  }
- for(const building of a.HOMEWORLD_BUILDINGS.filter(b=>b.art.groundFrame)){const record=records.find(r=>r.id==='v76-facade:'+building.id);assert.equal(record.asset,building.art.src);
-  assert.deepEqual(record.footprint.polygon,a.homeworldBuildingGroundFrameV76(building).polygon);assert.deepEqual(record.door.groundOpening,a.homeworldBuildingDoorwayV64(building).groundOpening);
-  const approach=a.HOMEWORLD_BUILDING_APPROACHES_V71.find(p=>p.buildingId===building.id);assert.equal(approach.polygon.length,4);assert.deepEqual(approach.polygon.slice(0,2),Object.values(record.door.groundOpening));
+ for(const building of a.HOMEWORLD_BUILDINGS_V77.filter(b=>b.art.groundFrame)){const record=records.find(r=>r.id==='v76-facade:'+building.id);assert.equal(record.asset,building.art.src);
+  samePoints(record.footprint.polygon,a.homeworldBuildingGroundFrameV76(building).polygon);samePoints(Object.values(record.door.groundOpening),Object.values(a.homeworldBuildingDoorwayV64(building).groundOpening));
+  const approach=a.HOMEWORLD_BUILDING_APPROACHES_V71.find(p=>p.buildingId===building.id),old=a.HOMEWORLD_BUILDINGS.find(b=>b.id===building.id);
+  assert.equal(approach.polygon.length,4);samePoints(approach.polygon.slice(0,2).map(p=>({x:p.x+building.x-old.x,y:p.y+building.y-old.y})),Object.values(record.door.groundOpening));
+  assert.equal(record.position.z,a.homeworldLevelV77(building.levelId).elevation);
  }
 });
 test('five authored placements clear angled volumes and old paths; no stable building or room IDs are removed',()=>{
@@ -41,7 +47,7 @@ test('six physical forecourts support native furnishings and beacons and expose 
  for(const court of a.HOMEWORLD_FORECOURTS_V76){
   assert(a.HOMEWORLD_STREETS.includes(court));
   const record=a.HOMEWORLD_ALL_ELEMENT_CODEX_V71.find(r=>r.id==='street:'+court.id);
-  assert.deepEqual(record.footprint.polygon,court.polygon);assert(record.asset);
+  const actual=a.HOMEWORLD_GROUND_V77.find(g=>g.id===court.id);assert(actual);assert.deepEqual(record.footprint.polygon,actual.polygon);assert(record.asset);assert.equal(record.position.z,a.homeworldLevelV77(actual.levelId).elevation);
  }
  for(const item of a.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76){
   const box=a.homeworldFurnitureFootprintV72(item);
