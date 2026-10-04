@@ -8,7 +8,7 @@ export interface HomeworldPad {
   readonly buttons: readonly { readonly pressed: boolean }[];
 }
 interface HomeworldPadSample {
-  left: boolean; right: boolean; up: boolean; down: boolean; jump: boolean;
+  left: boolean; right: boolean; up: boolean; down: boolean; jump: boolean; sprint: boolean;
   confirm: boolean; cancel: boolean; pause: boolean; menuUp: boolean; menuDown: boolean;
 }
 export interface HomeworldGamepadState {
@@ -18,7 +18,7 @@ export interface HomeworldGamepadState {
   readonly previous: Readonly<HomeworldPadSample>;
 }
 const neutral = (): HomeworldPadSample => ({ left: false, right: false, up: false, down: false,
-  jump: false, confirm: false, cancel: false, pause: false, menuUp: false, menuDown: false });
+  jump: false, sprint: false, confirm: false, cancel: false, pause: false, menuUp: false, menuDown: false });
 
 export function createHomeworldGamepadState(): HomeworldGamepadState {
   return { context: "inactive", controller: null, ready: false, previous: neutral() };
@@ -26,7 +26,7 @@ export function createHomeworldGamepadState(): HomeworldGamepadState {
 
 /** Polling is pure: no DOM, storage, rewards or timing-dependent auto-repeat. */
 export function stepHomeworldGamepad(state: HomeworldGamepadState, pad: HomeworldPad | null, context: HomeworldPadContext) {
-  const empty = { movement: { left: false, right: false, up: false, down: false, jump: false },
+  const empty = { movement: { left: false, right: false, up: false, down: false, jump: false, sprint: false },
     actions: { confirm: false, cancel: false, pause: false, menuDirection: 0 as -1 | 0 | 1 } };
   if (context === "inactive" || !pad?.connected) return { state: createHomeworldGamepadState(), ...empty };
   const button = (index: number) => pad.buttons[index]?.pressed === true;
@@ -35,7 +35,7 @@ export function stepHomeworldGamepad(state: HomeworldGamepadState, pad: Homeworl
   const sample: HomeworldPadSample = {
     left: button(14) || x < -.22, right: button(15) || x > .22,
     up: button(12) || y < -.35, down: button(13) || y > .35,
-    jump: button(2), confirm: button(0), cancel: button(1), pause: button(9),
+    jump: button(2), sprint: button(10), confirm: button(0), cancel: button(1), pause: button(9),
     menuUp: button(12) || y < -.5, menuDown: button(13) || y > .5,
   };
   const controller = `${pad.index}:${pad.id}`;
@@ -49,7 +49,7 @@ export function stepHomeworldGamepad(state: HomeworldGamepadState, pad: Homeworl
     : sample.menuDown && !previous.menuDown ? 1 : sample.menuUp && !previous.menuUp ? -1 : 0;
   return {
     state: next,
-    movement: world ? { left: sample.left, right: sample.right, up: sample.up, down: sample.down, jump: sample.jump } : empty.movement,
+    movement: world ? { left: sample.left, right: sample.right, up: sample.up, down: sample.down, jump: sample.jump, sprint: sample.sprint } : empty.movement,
     actions: {
       confirm: (world || dialog) && sample.confirm && !previous.confirm,
       cancel: dialog && sample.cancel && !previous.cancel,

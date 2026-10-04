@@ -8,6 +8,8 @@ import {homeworldUrbanFacadeCollisionV78} from './homeworldUrbanFacadesV78';
 import {compileHomeworldCityNativeV78,homeworldCityNativeTouchesV78,homeworldCityNativePolygonV78} from './homeworldCityNativePlacementV78';
 import {HOMEWORLD_COURT_ART_V80,homeworldCourtPolygonV80,homeworldCourtTouchesV80,homeworldCourtAlternativeV80} from './homeworldCourtArtV80';
 import {HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78,homeworldUrbanOverlapV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
+import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
+import {homeworldUsageEnvelopesV81,homeworldEnvelopesOverlapV81,homeworldEnvelopeBoundsV81} from './homeworldUsageEnvelopesV81';
 
 export interface HomeworldUrbanNativePropV78 extends HomeworldExteriorModuleV76 {
  readonly levelId:HomeworldLevelV77;readonly interactive:false;readonly nativeStatus:'EXISTING_MEASURED_NATIVE';
@@ -36,25 +38,13 @@ export function homeworldUrbanTerrainV78(level:HomeworldLevelV77,point:Homeworld
   return homeworldTerrainV77(level,p,{halfWidth:0,halfDepth:0})||added.some(g=>pointInHomeworldPolygon(p,g.polygon));
  });
 }
-const clusters=[
- ...[3500,4140,4780,5420,6060,6700,7340].map((x,i)=>({id:'port-court-'+i,levelId:'0' as const,districtId:'port',x,y:5220,use:'logistics'})),
- {id:'lower-halt-west',levelId:'-1A' as const,districtId:'undercity',x:3070,y:4150,use:'rest'},
- {id:'lower-exchange-north',levelId:'-1A' as const,districtId:'undercity',x:3150,y:3130,use:'exchange'},
- {id:'lower-work-north',levelId:'-1A' as const,districtId:'undercity',x:4150,y:3020,use:'work'},
- {id:'lower-eastern-halt',levelId:'-1A' as const,districtId:'undercity',x:4840,y:4540,use:'rest'},
- {id:'lower-middle-halt',levelId:'-1A' as const,districtId:'undercity',x:3730,y:4050,use:'rest'},
- {id:'lower-work-south',levelId:'-1A' as const,districtId:'undercity',x:3600,y:4800,use:'work'},
- {id:'lower-rest-south',levelId:'-1A' as const,districtId:'undercity',x:4210,y:4840,use:'rest'},
-];
-const recipes=[
- {suffix:'storage',artId:'logistics-container-rack',dx:-140,dy:-80,scale:.75},
- {suffix:'covered-work',artId:'merchant-canopy-diagonal',dx:140,dy:-80,scale:.7},
- {suffix:'bench',artId:'terrace-bench-right',dx:-140,dy:60,scale:.75},
- {suffix:'mineral-bed',artId:'mineral-planter-left',dx:140,dy:80,scale:.6},
-] as const;
-export const HOMEWORLD_URBAN_PROP_CANDIDATES_V78:readonly HomeworldUrbanNativePropV78[]=clusters.flatMap(c=>recipes.map(r=>({
- id:'urban-v78:'+c.id+':'+r.suffix,artId:r.artId,x:c.x+r.dx,y:c.y+r.dy,scale:r.scale,levelId:c.levelId,districtId:c.districtId,
- groupId:'urban-v78:'+c.id,function:c.use,label:'Cour civique · '+r.suffix,associatedBuildingId:null,solid:true,
+/** V81 replaces the universal four-object mirrored kit. These are world
+ * anchors authored for real loading/service/rest uses, not offsets sampled
+ * until a collider happens to fit. The historical provider name is retained
+ * for all render/navigation/checkpoint consumers. */
+export const HOMEWORLD_URBAN_PROP_CANDIDATES_V78:readonly HomeworldUrbanNativePropV78[]=HOMEWORLD_AUTHORED_COURTS_V81.flatMap(c=>c.props.map(r=>({
+ id:'urban-v81:'+c.id+':'+r.name,artId:r.artId,x:r.x,y:r.y,scale:r.scale,levelId:c.levelId,districtId:c.districtId,
+ groupId:'urban-v81:'+c.id,function:c.use,label:r.purpose,associatedBuildingId:null,solid:true,
  interactive:false,nativeStatus:'EXISTING_MEASURED_NATIVE',
 })));
 /** Conservative coverage checks the measured native polygon and every12u cell
@@ -66,6 +56,21 @@ export function homeworldUrbanPlacementRefusalV78(item:HomeworldUrbanNativePropV
  const conflict=HOMEWORLD_URBAN_RESERVES_V78.find(r=>r.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,r.polygon));if(conflict)return conflict.id;
  for(const b of HOMEWORLD_BUILDINGS_V77){if(b.levelId!==item.levelId)continue;const box=homeworldBuildingFootprintV64(b);if(homeworldUrbanOverlapV78(polygon,boxPolygon(box)))return 'building:'+b.id;}
  for(const old of accepted)if(old.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,homeworldCourtPolygonV80(old)))return 'new-prop:'+old.id;
+ const envelopes=homeworldUsageEnvelopesV81(item.artId,polygon);
+ for(const old of accepted){if(old.levelId!==item.levelId)continue;
+  const other=homeworldUsageEnvelopesV81(old.artId,homeworldCourtPolygonV80(old));
+  if(envelopes.usage&&homeworldEnvelopesOverlapV81(envelopes.usage,other.physical))return 'usage-blocked:'+old.id;
+  if(other.usage&&homeworldEnvelopesOverlapV81(other.usage,envelopes.physical))return 'blocks-usage:'+old.id;
+  if(envelopes.role.family==='bench'&&other.role.family==='bench'&&homeworldEnvelopesOverlapV81(envelopes.social,other.social))return 'bench-social-clearance:'+old.id;
+ }
+ if(envelopes.usage){
+  for(const b of HOMEWORLD_BUILDINGS_V77)if(b.levelId===item.levelId&&homeworldEnvelopesOverlapV81(envelopes.usage,homeworldEnvelopeBoundsV81(homeworldBuildingFootprintV64(b).polygon??boxPolygon(homeworldBuildingFootprintV64(b)))))return 'usage-building:'+b.id;
+  const use=envelopes.usage;
+  for(const x of [use.left+24,(use.left+use.right)/2,use.right-24])for(const y of [use.top+14,(use.top+use.bottom)/2,use.bottom-14]){
+   if(!homeworldUrbanTerrainV78(item.levelId,{x,y}))return 'usage-unsupported';
+   const obstacle=homeworldCollisionV77(item.levelId,{x,y});if(obstacle)return 'usage-old-volume:'+obstacle.id;
+  }
+ }
  const left=Math.min(...polygon.map(p=>p.x)),right=Math.max(...polygon.map(p=>p.x)),top=Math.min(...polygon.map(p=>p.y)),bottom=Math.max(...polygon.map(p=>p.y));
  const nx=Math.max(1,Math.ceil((right-left)/12)),ny=Math.max(1,Math.ceil((bottom-top)/12));
  for(let ix=0;ix<=nx;ix++)for(let iy=0;iy<=ny;iy++){

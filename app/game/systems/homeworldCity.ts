@@ -19,6 +19,7 @@ import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { homeworldBuildingIdentityV72 } from "./homeworldIdentityV72";
 import { homeworldBuildingIdentityV75 } from "./homeworldArchitectureArtV75";
 import {homeworldBuildingIdentityV76} from './homeworldArchitectureArtV76';
+import {homeworldBuildingIdentityV81} from './homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76} from './homeworldBuildingPlacementsV76';
 import {HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76,homeworldFrontagePlacementV76,homeworldBeaconPlacementV76,homeworldBenchPlacementV76} from './homeworldFrontagePlacementsV76';
 import {homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
@@ -277,7 +278,9 @@ export const HOMEWORLD_BUILDINGS_V54 = [
 function nativeBuildingV64(seed: { id: string; districtId: string; label: string; x: number; y: number; width: number; depth: number; variant: HomeworldBuildingModule["variant"]; entranceKind: "civic" | "domestic"; artId: keyof typeof HOMEWORLD_BUILDING_ART_V64 }): HomeworldBuildingModule {
   const offset=HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76[seed.id];
   if(offset)seed={...seed,x:seed.x+offset.x,y:seed.y+offset.y};
-  const identity = homeworldBuildingIdentityV76(seed.id) ?? homeworldBuildingIdentityV72(seed.id) ?? homeworldBuildingIdentityV75(seed.id);
+  const nativeV81 = homeworldBuildingIdentityV81(seed.id);
+  if(nativeV81) seed={...seed,width:nativeV81.width,depth:nativeV81.depth};
+  const identity = nativeV81 ?? homeworldBuildingIdentityV76(seed.id) ?? homeworldBuildingIdentityV72(seed.id) ?? homeworldBuildingIdentityV75(seed.id);
   const art = identity?.art ?? HOMEWORLD_BUILDING_ART_V64[seed.artId], scale = homeworldBuildingSpriteScaleV64({...seed,height:0,art});
   return { ...seed, label: identity?.title ?? seed.label, doorSide: "center", art, height: (art.threshold.y - art.alphaBounds.y) * scale,
     wallHeight: art.wallHeightWorld * seed.width / art.footprintWorld.width, footprint: { width: seed.width, depth: identity?.depth ?? seed.depth } };
@@ -796,7 +799,11 @@ export interface HomeworldInput {
   climb: number;
   /** Reserved for a future authored evade. It never changes collision or elevation. */
   jumpPressed: boolean;
+  /** Hold-to-run. Optional so historical routes and checkpoint callers keep walking. */
+  sprinting?: boolean;
 }
+
+export const HOMEWORLD_RUN_MULTIPLIER_V81 = 1.8;
 
 const clamp = (value: number, minimum: number, maximum: number) =>
   Math.max(minimum, Math.min(maximum, value));
@@ -828,9 +835,13 @@ export function stepHomeworldActorOnFloor(
   let axisX = clamp(finite(input.moveX), -1, 1), axisY = clamp(finite(input.climb), -1, 1);
   const magnitude = Math.hypot(axisX, axisY);
   if (magnitude > 1) { axisX /= magnitude; axisY /= magnitude; }
+  const pace = input.sprinting === true ? HOMEWORLD_RUN_MULTIPLIER_V81 : 1;
+  // A running step must sample at least as often along the floor as walking.
+  // Thin walls, closed doors and unsupported edges cannot be skipped at speed.
+  const motionTick = HOMEWORLD_ACTOR.tickSeconds / pace;
   while (remaining > .000001) {
-    const dt = Math.min(remaining, HOMEWORLD_ACTOR.tickSeconds), before = next;
-    const intended = { x: before.x + axisX * HOMEWORLD_ACTOR.walkSpeed * dt, y: before.y + axisY * HOMEWORLD_ACTOR.depthSpeed * dt };
+    const dt = Math.min(remaining, motionTick), before = next;
+    const intended = { x: before.x + axisX * HOMEWORLD_ACTOR.walkSpeed * pace * dt, y: before.y + axisY * HOMEWORLD_ACTOR.depthSpeed * pace * dt };
     let x = before.x, y = before.y;
     if (isWalkable(intended)) { x = intended.x; y = intended.y; }
     else {

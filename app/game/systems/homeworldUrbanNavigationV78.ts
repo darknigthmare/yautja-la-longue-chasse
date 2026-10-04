@@ -18,10 +18,12 @@ export function homeworldUrbanRouteSegmentV78(level:HomeworldLevelV77,a:Homeworl
 }
 const isNode=(level:HomeworldLevelV77,key:number)=>{const id=level+':'+key;if(!grid.has(id))grid.set(id,clear(level,position(key)));return grid.get(id)!;};
 const isEdge=(level:HomeworldLevelV77,a:number,b:number)=>{const id=[level,Math.min(a,b),Math.max(a,b)].join(':');if(!edges.has(id))edges.set(id,homeworldUrbanRouteSegmentV78(level,position(a),position(b)));return edges.get(id)!;};
-const anchor=(level:HomeworldLevelV77,p:HomeworldVec2)=>{
+const anchors=(level:HomeworldLevelV77,p:HomeworldVec2)=>{
  const x=Math.round(p.x/step),y=Math.round(p.y/step),candidates=[];
  for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){const cx=x+dx,cy=y+dy;if(cx<0||cx>=cols||cy<0||cy>=rows)continue;const key=cy*cols+cx; candidates.push({key,d:Math.hypot(cx*step-p.x,cy*step-p.y)});}
- return candidates.sort((a,b)=>a.d-b.d).find(candidate=>isNode(level,candidate.key)&&homeworldUrbanRouteSegmentV78(level,p,position(candidate.key)))?.key??null;
+ // A doorway alcove may contain the closest safe node but no safe outgoing
+ // edge. Keep all verified socket anchors; never weaken body or edge margins.
+ return candidates.sort((a,b)=>a.d-b.d).filter(candidate=>isNode(level,candidate.key)&&homeworldUrbanRouteSegmentV78(level,p,position(candidate.key)));
 };
 const routes=new Map<string,HomeworldUrbanWalkRouteV78>();
 export function homeworldUrbanWalkRouteV78(level:HomeworldLevelV77,a:HomeworldVec2,b:HomeworldVec2):HomeworldUrbanWalkRouteV78{
@@ -32,15 +34,18 @@ function walkRoute(level:HomeworldLevelV77,a:HomeworldVec2,b:HomeworldVec2):Home
  const refusal={levelId:level,status:'unavailable' as const,points:[],distance:0};
  if(!homeworldUrbanWalkableV78(level,a)||!homeworldUrbanWalkableV78(level,b))return refusal;
  if(homeworldUrbanRouteSegmentV78(level,a,b))return{levelId:level,status:'reachable',points:[a,b],distance:Math.hypot(a.x-b.x,a.y-b.y)};
- const start=anchor(level,a),goal=anchor(level,b);if(start===null||goal===null)return refusal;
- const goalPoint=position(goal),score=new Map([[start,0]]),previous=new Map<number,number>(),open:{key:number;cost:number}[]=[{key:start,cost:0}],closed=new Set<number>();
+ const starts=anchors(level,a),goals=anchors(level,b);if(!starts.length||!goals.length)return refusal;
+ const goalKeys=new Set(goals.map(g=>g.key)),goalPoints=goals.map(g=>position(g.key));
+ const heuristic=(p:HomeworldVec2)=>Math.min(...goalPoints.map(g=>Math.hypot(p.x-g.x,p.y-g.y)));
+ const score=new Map(starts.map(s=>[s.key,s.d])),previous=new Map<number,number>(),open:{key:number;cost:number}[]=[],closed=new Set<number>();
+ for(const start of starts)heapPush(open,{key:start.key,cost:start.d+heuristic(position(start.key))});
  while(open.length&&closed.size<cols*rows){const current=heapPop(open).key;if(closed.has(current))continue;
-  if(current===goal){const points=[b,position(goal)];let cursor=goal;while(previous.has(cursor)){cursor=previous.get(cursor)!;points.push(position(cursor));}points.push(a);points.reverse();
+  if(goalKeys.has(current)){const points=[b,position(current)];let cursor=current;while(previous.has(cursor)){cursor=previous.get(cursor)!;points.push(position(cursor));}points.push(a);points.reverse();
    return{levelId:level,status:'reachable',points,distance:points.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-points[i].x,p.y-points[i].y),0)};}
   closed.add(current);const x=current%cols,y=Math.floor(current/cols);
   for(const[dx,dy]of[[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[1,-1],[-1,1],[1,1]]){const cx=x+dx,cy=y+dy,key=cy*cols+cx;
    if(cx<0||cx>=cols||cy<0||cy>=rows||closed.has(key)||!isNode(level,key)||!isEdge(level,current,key))continue;
-   const value=score.get(current)!+Math.hypot(dx,dy)*step;if(value>=(score.get(key)??Infinity))continue;score.set(key,value);previous.set(key,current);const next=position(key);heapPush(open,{key,cost:value+Math.hypot(next.x-goalPoint.x,next.y-goalPoint.y)});
+   const value=score.get(current)!+Math.hypot(dx,dy)*step;if(value>=(score.get(key)??Infinity))continue;score.set(key,value);previous.set(key,current);const next=position(key);heapPush(open,{key,cost:value+heuristic(next)});
   }
  }return refusal;
 }

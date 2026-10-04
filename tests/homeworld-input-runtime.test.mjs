@@ -5,6 +5,7 @@ import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "../app/game/systems/homeworldInput.ts";
+import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "../app/game/systems/controlBindings.ts";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -26,6 +27,24 @@ function pollingEffect(environment) {
   return runInNewContext(`(() => { ${compiled}; return handler; })()`, environment);
 }
 
+function liveSprintHandler(kind, environment) {
+  let implementation;
+  const visit = node => {
+    if (kind === 'keyboard' && ts.isVariableDeclaration(node) && node.name.getText(tree) === 'onWorldKey') implementation = node.initializer;
+    if (kind === 'touch' && ts.isJsxOpeningElement(node)
+      && node.attributes.properties.some(prop => ts.isJsxAttribute(prop) && prop.name.getText(tree) === 'data-homeworld-run-toggle-v81')) {
+      const click = node.attributes.properties.find(prop => ts.isJsxAttribute(prop) && prop.name.getText(tree) === 'onClick');
+      implementation = click?.initializer?.expression;
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(tree); assert(implementation, 'test executes the live ' + kind + ' sprint handler');
+  const compiled = ts.transpileModule(`const handler = ${implementation.getText(tree)};`, {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
+  }).outputText;
+  return runInNewContext(`(() => { ${compiled}; return handler; })()`, environment);
+}
+
 function fixture() {
   const frames = new Map(), events = [];
   const pad = { connected: true, id: "virtual-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
@@ -39,7 +58,7 @@ function fixture() {
     ...city,
     createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice,
     matchesControlAction: () => false, bindings: {}, held: { current: new Set() },
-    touch: { current: { left: false, right: false, up: false, down: false, jump: false } },
+    touch: { current: { left: false, right: false, up: false, down: false, jump: false, sprint: false } },
     gamepadStateRef: { current: createHomeworldGamepadState() },
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
@@ -264,4 +283,84 @@ test("stationary lift and moving skiff retain native idle; vehicle translation c
     if (kind === 'lift') { assert.equal(actual.x, start.x); assert.equal(actual.y, start.y); }
     else assert(Math.hypot(actual.x-start.x,actual.y-start.y)>5, 'the real skiff moved while its passenger stayed in the native idle pose');
   }
+});
+
+test("the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel", () => {
+  const walk = fixture(), run = fixture(); walk.release(); run.release();
+  const startWalk = { ...walk.env.actorRef.current }, startRun = { ...run.env.actorRef.current };
+  walk.pad.axes[0] = 1; run.pad.axes[0] = 1; run.pad.buttons[10].pressed = true;
+  walk.tick(8); run.tick(8);
+  const walked = walk.env.actorRef.current.x - startWalk.x, ran = run.env.actorRef.current.x - startRun.x;
+  assert(walked > 0);
+  assert(Math.abs(ran / walked - 1.8) < 1e-8, 'the live city motor consumes L3, not only a controller model');
+  assert(Math.abs(run.env.youthMotionRefV74.current.distanceWorld - ran) < 1e-8);
+  assert.equal(run.env.youthMotionRefV74.current.velocity.x, run.env.actorRef.current.vx);
+  run.pad.buttons[10].pressed = false; run.tick();
+  assert(Math.abs(run.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed) < 1e-8, 'release immediately restores walking');
+});
+
+test("keyboard sprint uses the configured hold action, and touch sprint shares the same motor", () => {
+  for (const device of ['keyboard', 'touch']) {
+    const f = fixture(); f.release();
+    const start = { ...f.env.actorRef.current };
+    if (device === 'keyboard') {
+      f.env.matchesControlAction = (action, code) => action === 'hunt.aim' && code === 'KeyT' || action === 'hunt.moveRight' && code === 'KeyD';
+      f.env.held.current.add('KeyT'); f.env.held.current.add('KeyD');
+    } else { f.env.touch.current.sprint = true; f.env.touch.current.right = true; }
+    f.tick(5);
+    assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed * 1.8) < 1e-8, device);
+    assert(f.env.actorRef.current.x > start.x);
+    f.env.clearInputs(); f.tick(2);
+    assert.equal(f.env.actorRef.current.vx, 0, device + ' stops after blur/modal input clearing');
+  }
+});
+
+test("held L3 alone cannot arm sprint across pause, dialog or focus ownership changes", () => {
+  for (const target of ['pause', 'dialog', 'focus']) {
+    const f = fixture(); f.release(); f.pad.axes[0] = 1; f.pad.buttons[10].pressed = true; f.tick(3);
+    f.env.clearInputs();
+    if (target === 'pause') f.env.pausedRef.current = true;
+    if (target === 'dialog') { f.env.dialogStateRef.current = {}; f.env.document.activeElement = f.dialog; }
+    if (target === 'focus') f.env.document.activeElement = f.outside;
+    const position = { x: f.env.actorRef.current.x, y: f.env.actorRef.current.y };
+    f.tick(20);
+    assert.deepEqual({ x: f.env.actorRef.current.x, y: f.env.actorRef.current.y }, position);
+    f.env.pausedRef.current = false; f.env.dialogStateRef.current = null; f.env.document.activeElement = f.world;
+    f.env.clearInputs(); f.tick(5);
+    assert.deepEqual({ x: f.env.actorRef.current.x, y: f.env.actorRef.current.y }, position, target + ' requires neutral after the context change');
+    f.release(); f.pad.axes[0] = 1; f.pad.buttons[10].pressed = true; f.tick(3);
+    assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed * 1.8) < 1e-8, target + ' deliberately resumes running');
+  }
+});
+
+test('the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts', () => {
+  const f = fixture(); f.release();
+  f.env.matchesControlAction = matchesControlAction;
+  f.env.bindings = { ...DEFAULT_CONTROL_BINDINGS, 'hunt.aim': ['KeyT'] };
+  f.env.blocked = false; f.env.viewportRef = { current: f.world };
+  const handler = liveSprintHandler('keyboard', f.env);
+  const send = (code, extra = {}) => {
+    const event = { target: f.world, nativeEvent: { code }, code, altKey: false, ctrlKey: false, metaKey: false,
+      preventDefault() {}, stopPropagation() {}, ...extra };
+    handler(event);
+  };
+  send('ShiftLeft'); assert.equal(f.env.held.current.has('ShiftLeft'), false);
+  send('KeyT', { ctrlKey: true }); assert.equal(f.env.held.current.has('KeyT'), false);
+  f.env.blocked = true; send('KeyT'); assert.equal(f.env.held.current.has('KeyT'), false);
+  f.env.blocked = false; send('KeyT'); send('KeyD'); f.tick(3);
+  assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed * 1.8) < 1e-8);
+});
+
+test('the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking', () => {
+  const f = fixture(); f.release(); f.env.blocked = false;
+  let pressed = false; f.env.setTouchRunningV81 = value => { pressed = value; };
+  const click = liveSprintHandler('touch', f.env);
+  const start = { ...f.env.actorRef.current };
+  click(); assert.equal(pressed, true); assert.equal(f.env.touch.current.sprint, true);
+  f.tick(3); assert.equal(f.env.actorRef.current.x, start.x, 'Course without a direction is stationary');
+  f.env.touch.current.right = true; f.tick(3);
+  assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed * 1.8) < 1e-8);
+  click(); assert.equal(pressed, false); f.tick();
+  assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed) < 1e-8);
+  f.env.blocked = true; click(); assert.equal(f.env.touch.current.sprint, false);
 });

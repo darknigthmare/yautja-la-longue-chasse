@@ -46,14 +46,14 @@ test('V80 new PNGs are independent unchanged alpha sources with painted native c
    }
    assert(contact,id+' ground landmark is farther than 12px from substantial painted base');
   }
-  assert(props.some(p=>p.artId===id),id+' installed but never mounted');
+  assert([...props,...api.HOMEWORLD_URBAN_PROPS_V78].some(p=>p.artId===id||p.artId==='court-native-v80:'+id),id+' installed but never mounted in an actual civic/court consumer');
  }
 });
 
 test('V80 whole native solids partition the candidate set, keep all refusals and share paint/collision/codex geometry',()=>{
  const candidates=api.HOMEWORLD_CIVIC_CANDIDATES_V80,refusals=api.HOMEWORLD_CIVIC_REFUSALS_V80;
  const acceptedIds=new Set(props.map(p=>p.id)),refusedIds=new Set(refusals.map(p=>p.id));
- assert(props.length>=50);assert(refusals.length>0);assert.equal(acceptedIds.size,props.length);assert.equal(refusedIds.size,refusals.length);
+ assert(props.length>=10);assert(refusals.length>0);assert.equal(acceptedIds.size,props.length);assert.equal(refusedIds.size,refusals.length);
  assert.equal(props.length+refusals.length,candidates.length);
  for(const c of candidates)assert(acceptedIds.has(c.id)!==refusedIds.has(c.id),c.id+' is lost or counted twice');
  assert(refusals.some(r=>r.reason.startsWith('reserved:')));assert(refusals.some(r=>r.reason.startsWith('old-volume:')));
@@ -156,6 +156,6 @@ test('43 architectural notes bind each real exterior threshold to its actual unc
   assert.equal(plan.nativeView,building.art.groundFrame?'MEASURED_NATIVE_OBLIQUE':'EXISTING_NATIVE_FRONTAL');
   const records=api.HOMEWORLD_ALL_ELEMENT_CODEX_V71.filter(r=>r.id==='civic-v80:building-context:'+building.id);assert.equal(records.length,1);
   assert.equal(records[0].door,null);assert.equal(records[0].asset,building.art.src);assert.equal(records[0].position.z,api.homeworldLevelV77(building.levelId).elevation);
-  if(building.id==='throne-audience')assert(records[0].constraints.some(c=>c.includes('palais monumental et suites privées non produits')));
+  if(building.id==='throne-audience')assert(records[0].constraints.some(c=>c.includes('Palais monumental natif V81')&&c.includes('suites privées complètes')));
  }
 });

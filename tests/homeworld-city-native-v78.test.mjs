@@ -9,7 +9,7 @@ const art=load('homeworldCityNativeArtV78'),placements=load('homeworldCityNative
 const world=load('homeworldWorldV77'),navigation=load('homeworldUrbanNavigationV78'),codex=load('homeworldCityNativeCodexV78');
 const manifest=JSON.parse(fs.readFileSync('app/game/data/homeworldCityGeneratedProvenanceV78.json','utf8'));
 
-test('all13 installed originals retain SHA and dimensions; only7 reviewed support modules are activated',async()=>{
+test('all13 installed originals retain SHA and dimensions; V81 separately reports one reviewed source without a safe authored placement',async()=>{
  assert.equal(manifest.modules.length,13);
  assert.equal(manifest.runtimeIntegration,true);assert.equal(manifest.runtimeMountedCount,7);assert.equal(manifest.runtimeWithheldCount,6);
  for(const source of manifest.modules){
@@ -24,14 +24,12 @@ test('all13 installed originals retain SHA and dimensions; only7 reviewed suppor
  }
  assert.equal(Object.keys(art.HOMEWORLD_CITY_NATIVE_ART_V78).length,7);
  assert.equal(art.HOMEWORLD_CITY_NATIVE_WITHHELD_V78.length,6);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.length,7);
- assert.deepEqual(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78,[]);
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.length,6);
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78.length,1);
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78[0],'archive-shelf-right');
  assert(urban.HOMEWORLD_CITY_GENERATED_REJECTIONS_V78.length>0);
  assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(p=>p.levelId==='-1A').length,5);
- const archive=urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId==='archive-shelf-right');
- const memory=world.HOMEWORLD_BUILDINGS_V77.find(b=>b.id==='memory-vault');
- assert.equal(archive.levelId,memory.levelId);assert.equal(archive.districtId,memory.districtId);
- assert(Math.hypot(archive.x-memory.x,archive.y-memory.y)<700,'the unchanged rack belongs near the real archive');
+ assert(!urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.some(p=>p.artId==='archive-shelf-right'),'do not hide the rack behind the mausoleum or move it into unrelated logistics to force seven mounts');
  assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId==='port-cargo-sorting-cart').levelId,'0');
 });
 
@@ -40,7 +38,9 @@ test('native support centres actually lie on substantial source pixels and scale
   const {data,info}=await sharp('public'+a.src).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   assert(a.nativeGroundSupport.length>=3);assert.equal(a.supportTolerancePixels,12);
   for(const p of a.nativeGroundSupport)assert(data[(Math.round(p.y)*info.width+Math.round(p.x))*4+3]>128,a.id+' support point outside substantial painted base');
-  const item=urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId===a.id),paint=placements.homeworldCityNativePaintV78(item);
+  const item=urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId===a.id);
+  if(!item){assert(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78.includes(a.id));continue;}
+  const paint=placements.homeworldCityNativePaintV78(item);
   assert(Math.abs(paint.width/a.sourceWidth-paint.height/a.sourceHeight)<1e-12);
   assert.equal(paint.elevation,world.homeworldLevelV77(item.levelId).elevation);
   assert.equal(paint.left+a.pivot.x*paint.scale,item.x);
@@ -81,7 +81,7 @@ test('real SSR mounts whole native files on their occupied floor and never mount
  assert.equal(art.HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78.length,7);
 });
 
-test('a full-body route reaches a real observation approach to all7 props from current Port spawn without teleport',()=>{
+test('a full-body route reaches a real observation approach to every currently mounted native prop without teleport',()=>{
  for(const item of urban.HOMEWORLD_CITY_GENERATED_PROPS_V78){
   const polygon=placements.homeworldCityNativePolygonV78(item);
   const spots=[{x:item.x,y:Math.max(...polygon.map(p=>p.y))+50},{x:item.x,y:Math.min(...polygon.map(p=>p.y))-50},

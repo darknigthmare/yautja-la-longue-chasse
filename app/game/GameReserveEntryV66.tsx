@@ -2,6 +2,7 @@
 import { useState } from "react";
 import type { SaveGame } from "./types";
 import { gameReserveV66Summary } from "./systems/gameReserveV66";
+import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 /** Replacing a reserve checkpoint requires an explicit, cancellable confirmation.
  * No change is displayed as successful until the campaign owner acknowledges it. */
 export default function GameReserveEntryV66({save,onOpen}:{save:SaveGame;onOpen?:(fresh:boolean)=>boolean}) {
@@ -12,7 +13,7 @@ export default function GameReserveEntryV66({save,onOpen}:{save:SaveGame;onOpen?
     <h3>Game Reserve · Vharuun</h3>
     <p>Première expédition : trois secteurs reliés, huit combattants humains adultes armés et deux appareils qu’ils peuvent réparer pour s’évader. Observe les traces, approche sous couvert, choisis tes prises ou rejoins ton point de retour.</p>
     <p>Vharuun et ces adversaires sont des créations du jeu. Les neuf autres réserves et les cent portraits de la discussion ne sont pas intégrés à cette expédition. Aucun rite, rang ou équipement n’est accordé par ce mode.</p>
-    {save.prologue ? <p data-game-reserve-locked>Les expéditions autonomes ne sont pas ouvertes au parcours de jeunesse. Poursuis la formation auprès du maître.</p> : <>
+    {!mainMenuModeAccessV81(save,mainMenuBrowserShipContextV81(save))['game-reserve'] ? <p data-game-reserve-locked>La réserve attend le rite Blooded, un vaisseau personnel disponible et ses coordonnées acquises dans l’histoire. L’accès libre avec avertissement spoilers reste disponible depuis le menu principal.</p> : <>
       {summary && <p data-game-reserve-summary>{summary.observed} combattants observés · {summary.secured} prises sécurisées · {summary.escaped} évadés · {summary.remaining} encore présents. Durée : {Math.floor(summary.seconds / 60)} min {summary.seconds % 60} s.</p>}
       <button type="button" data-game-reserve-start disabled={!onOpen || confirm} onClick={()=>launch(false)}>{progress?progress.status==='active'?'Reprendre l’expédition':'Revoir le bilan':'Préparer l’expédition'}</button>
       {progress && !confirm && <button type="button" data-game-reserve-new onClick={()=>setConfirm(true)}>Nouvelle expédition</button>}

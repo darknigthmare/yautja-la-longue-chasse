@@ -39,7 +39,7 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "hunt.selectWeaponOne", context: "hunt", behavior: "press", label: "Sélectionner l’arme 1" },
   { id: "hunt.selectWeaponTwo", context: "hunt", behavior: "press", label: "Sélectionner l’arme 2" },
   { id: "hunt.nextWeapon", context: "hunt", behavior: "press", label: "Arme suivante" },
-  { id: "hunt.aim", context: "hunt", behavior: "hold", label: "Viser" },
+  { id: "hunt.aim", context: "hunt", behavior: "hold", label: "Viser / courir dans la cité" },
   { id: "hunt.toggleMask", context: "hunt", behavior: "press", label: "Activer le biomask" },
   { id: "hunt.scan", context: "hunt", behavior: "press", label: "Scanner" },
   { id: "hunt.toggleCloak", context: "hunt", behavior: "press", label: "Activer le camouflage" },

@@ -25,7 +25,7 @@ test('43 unique bounded rooms preserve 19 civic and 24 domestic entries without 
   for(const variant of ['rest','meal','storage'])assert.equal(rooms.filter(room=>room.kind==='domestic'&&room.variant===variant).length,8);
   assert.equal(rooms.reduce((sum,room)=>sum+room.points.length,0),15);
   for(const room of rooms){
-    const envelope=envelopes.find(item=>item.buildingId===room.buildingId);
+    const envelope=room.monumentLayoutV81?.exteriorEnvelope??envelopes.find(item=>item.buildingId===room.buildingId);
     assert.equal(room.width,envelope.width-32);assert.equal(room.depth,envelope.depth-32);
     if(room.kind==='domestic')assert.deepEqual(room.points,[]);
     assert(api.HOMEWORLD_BUILDINGS.some(building=>building.id===room.buildingId));

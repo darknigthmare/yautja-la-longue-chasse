@@ -11,7 +11,7 @@ const api=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputF
 const rooms=api.HOMEWORLD_INTERIORS_V64.filter(room=>room.secondaryLayoutV74);
 const body={halfWidth:24,halfDepth:14},safeBody={halfWidth:28,halfDepth:18};
 const envelopes=JSON.parse(await fs.readFile('app/game/data/homeworldInteriorEnvelopesV64.json','utf8'));
-const originalMainIds=['market-armory','deep-forge','training-hall','clan-lodge','memory-vault','throne-audience'];
+const originalMainIds=['market-armory','deep-forge','training-hall','clan-lodge','memory-vault'];
 const wholeBodyInsideZone=(point,zone,footprint)=>point.x-footprint.halfWidth>=zone.x&&point.x+footprint.halfWidth<=zone.x+zone.width
   &&point.y-footprint.halfDepth>=zone.y&&point.y+footprint.halfDepth<=zone.y+zone.depth;
 
@@ -39,13 +39,13 @@ const boundsOfPoint=p=>{
 };
 
 test('all 37 secondary plans remain distinct; six original principal plans are preserved beside two explicit V77 tables',()=>{
-  assert.equal(rooms.length,37);assert.equal(rooms.filter(r=>r.kind==='civic').length,13);assert.equal(rooms.filter(r=>r.kind==='domestic').length,24);
+  assert.equal(rooms.length,36);assert.equal(rooms.filter(r=>r.kind==='civic').length,12);assert.equal(rooms.filter(r=>r.kind==='domestic').length,24);
   assert.equal(Object.keys(api.HOMEWORLD_SECONDARY_RECIPES_V74).length,37);
-  assert.equal(new Set(rooms.map(r=>r.secondaryLayoutV74.archetype)).size,37);
+  assert.equal(new Set(rooms.map(r=>r.secondaryLayoutV74.archetype)).size,36);
   assert.equal(new Set(rooms.map(r=>JSON.stringify({width:r.width,depth:r.depth,
     walls:r.partitions.map(w=>[w.x,w.y,w.width,w.depth,w.orientation]),
     zones:r.zones.map(z=>[z.x,z.y,z.width,z.depth]),
-    furniture:r.furniture.map(f=>[f.artId,f.x,f.y,f.scale])}))).size,37,'plans differ physically, not only by labels');
+    furniture:r.furniture.map(f=>[f.artId,f.x,f.y,f.scale])}))).size,36,'plans differ physically, not only by labels');
   assert.equal(new Set(Object.values(api.HOMEWORLD_SECONDARY_RECIPES_V74).map(r=>r.topology)).size,7);
   // Preserve the exact historical fingerprint of every original field. Only
   // independent V76 decor and these two named, measured V77 additions may be
@@ -61,9 +61,9 @@ test('all 37 secondary plans remain distinct; six original principal plans are p
   }
   assert.equal(api.HOMEWORLD_INTERIORS_V64.flatMap(room=>room.furniture).filter(table=>table.id.includes('-v77-cntlip-')).length,2);
   const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room,furniture:room.furniture.filter(table=>!addedIds.has(table.id))};delete original.orientedDecorV76;return original;});
-  assert.equal(crypto.createHash('sha256').update(JSON.stringify(main)).digest('hex'),'6d5505a37371b33034f46c8523e639ae6a7a7a41867747b24b3e773eae563ce0');
+  assert.equal(crypto.createHash('sha256').update(JSON.stringify(main)).digest('hex'),'1d20d34589a448688f93318a009dde68faa89841df057848804ee5564e6e3be5');
   for(const room of api.HOMEWORLD_INTERIORS_V64){
-    const envelope=envelopes.find(e=>e.buildingId===room.buildingId);
+    const envelope=room.monumentLayoutV81?.exteriorEnvelope??envelopes.find(e=>e.buildingId===room.buildingId);
     assert.equal(room.width,envelope.width-32);assert.equal(room.depth,envelope.depth-32);
     assert.deepEqual(room.spawn,{x:room.width/2,y:room.depth-72});assert.deepEqual(room.exit,{x:room.width/2,y:room.depth-24});
     assert.deepEqual(room.points.map(p=>p.pointId),api.HOMEWORLD_INTERIOR_BINDINGS_V64[room.buildingId]??[]);
@@ -106,7 +106,7 @@ for(const room of rooms)test(room.buildingId+': every functional zone and servic
   }
 });
 
-test('37 rooms render their native independent cells and walls; empty mausoleum grants no fake trophies',async()=>{
+test('36 preserved secondary rooms render their native independent cells and walls; empty mausoleum grants no fake trophies',async()=>{
   const source=await build({stdin:{contents:"export {default as Surface} from './app/game/HomeworldInteriorSurface.tsx';",resolveDir:process.cwd()},bundle:true,write:false,format:'cjs',platform:'node',jsx:'automatic',external:['react','react-dom'],plugins:[{name:'css-module-test',setup(builder){builder.onLoad({filter:/\.css$/},()=>({contents:'export default {};',loader:'js'}));}}]});
   const surfaceModule={exports:{}};new Function('require','module','exports',source.outputFiles[0].text)(require,surfaceModule,surfaceModule.exports);
   const surfaces=[];
@@ -123,7 +123,7 @@ test('37 rooms render their native independent cells and walls; empty mausoleum 
     assert(!html.includes('<svg'),'no replacement vector art');
     if(room.buildingId==='trophy-mausoleum')assert(!html.includes('data-trophy-claim-id'),'no unowned display trophy');
   }
-  assert.equal(surfaces.length,37);
+  assert.equal(surfaces.length,36);
   const mausoleum=rooms.find(r=>r.buildingId==='trophy-mausoleum');
   assert.equal(api.homeworldInteriorTrophySlotsV64(mausoleum).length,8,'original eight save-owned sockets preserved');
   const claims=Array.from({length:10},(_,i)=>({id:'owned-claim-'+i,definitionId:'trophy-vey',targetName:'Commandante Vey',partId:'insignia'}));

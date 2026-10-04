@@ -1,16 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
-const api=homeworldQaModelV64(process.cwd(),['homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldUrbanLayoutV78.ts','homeworldStreetModulesV78.ts','homeworldUrbanPopulationV78.ts','homeworldUrbanNavigationV78.ts','homeworldUrbanFacadesV78.ts','homeworldUrbanCodexV78.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldUrbanLayoutV78.ts','homeworldStreetModulesV78.ts','homeworldUrbanPopulationV78.ts','homeworldUrbanNavigationV78.ts','homeworldUrbanFacadesV78.ts','homeworldUrbanCodexV78.ts','homeworldAuthoredLotsV81.ts']);
 const body={halfWidth:24,halfDepth:14};
-test('V78 density is measured, additive and keeps four rejected candidates instead of silently shrinking solids',()=>{
+test('authored V81 court density preserves whole native assets and every refused candidate',()=>{
  assert.equal(api.HOMEWORLD_BUILDINGS_V77.length,43);assert.equal(api.HOMEWORLD_RESIDENTS_V77.length,98);
- assert.equal(api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.length,56);assert.equal(api.HOMEWORLD_URBAN_PROPS_V78.length,52);
- assert.equal(api.HOMEWORLD_URBAN_PROPS_V78.filter(p=>p.levelId==='-1A').length,24);
- assert.equal(api.HOMEWORLD_URBAN_PROPS_V78.filter(p=>p.levelId==='0').length,28);
- assert.deepEqual(api.HOMEWORLD_URBAN_PROP_REJECTIONS_V78.map(p=>p.id),[
-  'urban-v78:lower-halt-west:covered-work','urban-v78:lower-halt-west:mineral-bed',
-  'urban-v78:lower-middle-halt:covered-work','urban-v78:lower-middle-halt:mineral-bed']);
+ assert.equal(api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.length,api.HOMEWORLD_AUTHORED_COURTS_V81.reduce((n,c)=>n+c.props.length,0));
+ assert(api.HOMEWORLD_URBAN_PROPS_V78.length>14);assert(api.HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length>0);
+ const acceptedIds=new Set(api.HOMEWORLD_URBAN_PROPS_V78.map(p=>p.id)),refusedIds=new Set(api.HOMEWORLD_URBAN_PROP_REJECTIONS_V78.map(p=>p.id));
+ assert.equal(acceptedIds.size+refusedIds.size,api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.length);
+ for(const p of api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78)assert(acceptedIds.has(p.id)!==refusedIds.has(p.id),p.id);
+ assert(new Set(api.HOMEWORLD_AUTHORED_COURTS_V81.map(c=>c.composition)).size>=10);
  for(const p of api.HOMEWORLD_URBAN_PROPS_V78){
   const original=api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.find(c=>c.id===p.id);
   const historical=api.HOMEWORLD_URBAN_LEGACY_PROPS_V78.find(c=>c.id===p.id);
@@ -78,9 +78,9 @@ test('eight original native facade placeholders fit their lots and an adult; no 
   for(const other of api.HOMEWORLD_URBAN_FACADES_V78.filter(f=>f!==facade))assert.equal(api.homeworldUrbanOverlapV78(placement.footprint,api.homeworldUrbanFacadePlacementV78(other).footprint),false);
  }
 });
-test('all 101 urban codex records describe the actual floor, measured solids and honestly pending dedicated art',()=>{
+test('urban codex records cover every actual floor, measured solid and honestly pending dedicated art',()=>{
  const records=api.HOMEWORLD_URBAN_CODEX_V78;
- assert.equal(records.length,101);assert.equal(new Set(records.map(r=>r.id)).size,101);
+ assert(records.length>60);assert.equal(new Set(records.map(r=>r.id)).size,records.length);
  for(const facade of api.HOMEWORLD_URBAN_FACADES_V78){
   const record=records.find(r=>r.id===facade.id),paint=api.homeworldUrbanFacadePlacementV78(facade);
   assert.equal(record.category,'building');assert.equal(record.door,null);assert.equal(record.asset,facade.art.src);

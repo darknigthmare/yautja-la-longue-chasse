@@ -40,6 +40,7 @@ import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77} from './systems/homeworldConnectorArtV77';
 import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacementV77';
 import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
+import {HOMEWORLD_NATIVE_SCENE_SOURCES_V81} from './systems/homeworldNativeArchitectureV81';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
@@ -66,6 +67,7 @@ import { homeworldInteriorForBuildingV64, nearestHomeworldInteriorTargetV64, isH
 import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from "./systems/homeworldCharacterPlacementV64";
 import { HUNTER_DREAD_STRANDS_V63, stepHunterDreadsV63, type DreadMotion } from "./hunterDreadsV63";
 import styles from "./HomeworldCity.module.css";
+import sprintStylesV81 from "./HomeworldSprintV81.module.css";
 
 export interface HomeworldHubProps {
   save: SaveGame;
@@ -91,7 +93,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -134,7 +136,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const rootRef = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const held = useRef(new Set<string>());
-  const touch = useRef({ left: false, right: false, up: false, down: false, jump: false });
+  const touch = useRef({ left: false, right: false, up: false, down: false, jump: false, sprint: false });
+  const [touchRunningV81, setTouchRunningV81] = useState(false);
   const progressRef = useRef(save.homeworld);
   const saveRef = useRef(save);
   const suspendedRef = useRef(suspended);
@@ -173,7 +176,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if (!arriving) return;
     const frame = requestAnimationFrame(() => {
       appliedArrivalV67.current = arrivalV67.requestId;
-      held.current.clear(); touch.current = { left: false, right: false, up: false, down: false, jump: false };
+      held.current.clear(); touch.current = { left: false, right: false, up: false, down: false, jump: false, sprint: false }; setTouchRunningV81(false);
       actorRef.current = arriving.actor; setActor(arriving.actor); exteriorAnchorRef.current = arriving.actor; interiorRef.current = null; setInteriorId(null);
       levelRefV77.current = arriving.levelId; setLevelIdV77(arriving.levelId); setElevationV77(homeworldLevelV77(arriving.levelId).elevation); transitRefV77.current = null; setTransitV77(null);
       youthMotionRefV74.current = { ...youthMotionRefV74.current, direction: 's' };
@@ -215,7 +218,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const clearInputs = useCallback(() => {
     held.current.clear();
     gamepadStateRef.current = createHomeworldGamepadState();
-    touch.current = { left: false, right: false, up: false, down: false, jump: false };
+    touch.current = { left: false, right: false, up: false, down: false, jump: false, sprint: false };
+    setTouchRunningV81(false);
   }, []);
   const cntlipV77=useHomeworldCntlipV77({save,actor,room:interior,sceneReady:!suspended&&!paused&&!inactive&&!transitV77&&!skiffV77&&motionAssetsV74.ready,saveRef,progressRef,actorRef,interiorRef,onProgress,clearInputs,onNotify,
     sceneAvailable:()=>!suspendedRef.current&&!pausedRef.current&&!transitRefV77.current&&!skiffRefV77.current&&!document.hidden});
@@ -381,7 +385,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   }, []);
 
   useEffect(() => {
-    if (blocked) clearInputs();
+    if (!blocked) return;
+    // The motor is already gated by its modal/suspension refs. Defer only the
+    // tactile button's React state reset, avoiding a cascading effect render.
+    const frame = requestAnimationFrame(clearInputs);
+    return () => cancelAnimationFrame(frame);
   }, [blocked, clearInputs]);
 
   useEffect(() => {
@@ -443,7 +451,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         const up = keyboardHeld("hunt.moveUp") || touch.current.up || gamepad.movement.up;
         const down = keyboardHeld("hunt.moveDown") || touch.current.down || gamepad.movement.down;
         const jump = keyboardHeld("hunt.jump") || touch.current.jump || gamepad.movement.jump;
-        const controls = { moveX: (Number(right) - Number(left))*cntlipMovementRefV77.current, climb: (Number(down) - Number(up))*cntlipMovementRefV77.current, jumpPressed: jump && !jumpWasPressed };
+        const sprinting = keyboardHeld("hunt.aim") || touch.current.sprint || gamepad.movement.sprint;
+        const controls = { moveX: (Number(right) - Number(left))*cntlipMovementRefV77.current, climb: (Number(down) - Number(up))*cntlipMovementRefV77.current, jumpPressed: jump && !jumpWasPressed, sprinting };
         const room = interiorRef.current;
         const before = actorRef.current;
         const walkingTransitV77 = !!transitRefV77.current && !room && !skiffRefV77.current;
@@ -505,7 +514,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
 
   const onWorldKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== viewportRef.current || blocked || event.altKey || event.ctrlKey || event.metaKey) return;
-    const movement: ControlActionId[] = ["hunt.moveLeft", "hunt.moveRight", "hunt.moveUp", "hunt.moveDown"];
+    const movement: ControlActionId[] = ["hunt.moveLeft", "hunt.moveRight", "hunt.moveUp", "hunt.moveDown", "hunt.aim"];
     if (movement.some(action => matchesControlAction(action, event.nativeEvent, bindings))) {
       event.preventDefault(); event.stopPropagation(); held.current.add(event.code);
     } else if (matchesControlAction("hunt.interact", event.nativeEvent, bindings)) {
@@ -665,7 +674,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
           : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} />}
-        <div className={styles.hero} data-homeworld-actor="true" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
+        <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
@@ -702,6 +711,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     </div>
     <div className={styles.touch} aria-label="Commandes tactiles">
       <div className={styles.touchGroup}>{touchButton("left", "Marcher à gauche", "←")}{touchButton("right", "Marcher à droite", "→")}</div>
+      <button type="button" className={sprintStylesV81.run} data-homeworld-run-toggle-v81
+        aria-label="Course dans la cité" aria-pressed={touchRunningV81} disabled={blocked}
+        title={`Course : maintenir ${controlActionShortcut("hunt.aim", bindings)} ou L3. Sur écran tactile : activer Course, puis une direction.`}
+        onPointerDown={event => event.preventDefault()}
+        onClick={() => { if (blocked) return; const running = !touch.current.sprint; touch.current.sprint = running; setTouchRunningV81(running); }}>Course {touchRunningV81 ? "●" : "○"}</button>
       <div className={styles.touchGroup}>{touchButton("up", "Marcher vers le fond", "↑")}{touchButton("down", "Marcher vers l’avant", "↓")}<button type="button" aria-label="Interagir avec le point proche" disabled={blocked || !interactionLabel} onClick={interact}>◉</button></div>
     </div>
     {youthWelcome && <section className={styles.youthHudV64} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : save.youthTraining?.checkpoint.phase === "cage-complete" ? "cage-returned" : save.youthTraining?.checkpoint.phase.startsWith("cage-") ? "cage-active" : save.youthTraining?.checkpoint.phase === "patrol-complete" ? "patrol-returned" : save.youthTraining?.checkpoint.phase.startsWith("patrol-") ? "patrol-active" : save.youthTraining?.checkpoint.phase === "desert-complete" ? "desert-returned" : save.youthTraining?.status === "completed" ? "desert-ready" : "training"}>
@@ -715,7 +729,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
       <button type="button" className="ghost-button small" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>
     </div>}
-    <div id="homeworld-controls" className={styles.srOnly}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les dix routes rejoignent des villages de clan. Reçois les contrats à l’armurerie du marché et auprès des commanditaires ; consigne les preuves sur le terrain avant de les remettre."}</div>
+    <div id="homeworld-controls" className={styles.srOnly}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Course en maintenant <kbd>{controlActionShortcut("hunt.aim", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, maintenir L3 pour courir, A interaction, B fermer. Sur écran tactile, active Course puis une direction ; désactive Course pour marcher. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les dix routes rejoignent des villages de clan. Reçois les contrats à l’armurerie du marché et auprès des commanditaires ; consigne les preuves sur le terrain avant de les remettre."}</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {dialog && <div className={styles.backdrop}>
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
@@ -731,7 +745,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             if (event.target instanceof HTMLElement && event.target.closest("button:not(:disabled)")) closeDialog();
           }}>{navigation}</div>
           {welcome && <section className={styles.notice}>{welcome}</section>}
-          <p>Marche : {controlActionShortcut("hunt.moveLeft", bindings)} / {controlActionShortcut("hunt.moveRight", bindings)} / {controlActionShortcut("hunt.moveUp", bindings)} / {controlActionShortcut("hunt.moveDown", bindings)}. Interaction : {controlActionShortcut("hunt.interact", bindings)}. Manette : stick ou croix, A interaction, B fermer, Start pause.</p>
+          <p>Marche : {controlActionShortcut("hunt.moveLeft", bindings)} / {controlActionShortcut("hunt.moveRight", bindings)} / {controlActionShortcut("hunt.moveUp", bindings)} / {controlActionShortcut("hunt.moveDown", bindings)}. Course : maintenir {controlActionShortcut("hunt.aim", bindings)} ou L3, ou activer le bouton Course sur écran tactile. Interaction : {controlActionShortcut("hunt.interact", bindings)}. Manette : stick ou croix, A interaction, B fermer, Start pause.</p>
           <button type="button" onClick={closeDialog}>Fermer la navigation</button>
         </> : <>
         {selectedPoint ? <>

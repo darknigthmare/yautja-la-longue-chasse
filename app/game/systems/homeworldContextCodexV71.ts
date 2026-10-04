@@ -16,6 +16,9 @@ import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingF
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
 import { HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74 } from './homeworldSecondaryInteriorCodexV74';
+import { HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81 } from './homeworldMonumentInteriorCodexV81';
+import { HOMEWORLD_NATIVE_ARCHITECTURE_CODEX_V81 } from './homeworldNativeArchitectureCodexV81';
+import { homeworldBuildingIdentityV81 } from './homeworldNativeArchitectureV81';
 import { HOMEWORLD_POPULATION_CODEX_V74 } from './homeworldPopulationCodexV74';
 import { HOMEWORLD_CIVILIAN_MOTION_CODEX_V74 } from './homeworldCivilianMotionCodexV74';
 import { HOMEWORLD_CONVERSATION_CODEX_V75 } from './homeworldResidentConversationsV75';
@@ -54,6 +57,13 @@ const exteriorDecorRecordsV76:HomeworldContextRecordV71[]=HOMEWORLD_EXTERIOR_COD
 });
 const angledArchitectureRecordsV76:HomeworldContextRecordV71[]=Object.entries(HOMEWORLD_ARCHITECTURE_IDENTITIES_V76).map(([id,identity])=>{
   const building=HOMEWORLD_BUILDINGS.find(b=>b.id===id)!,frame=identity.art.groundFrame!;
+  if(homeworldBuildingIdentityV81(id))return {...base,id:`v76-facade:${id}`,label:`Archive V76 · ${identity.title}`,category:'building',districtId:building.districtId,spaceId:`archive:architecture-v76:${id}`,
+    position:{x:0,y:0,z:0},dimensions:{width:570,depth:340,height:identity.art.wallHeightWorld},footprint:null,door:null,asset:identity.art.src,
+    associatedElementIds:[id,`v81-facade:${id}`],source:[{label:'PNG V76 archivé, non utilisé par la façade active',url:identity.art.src,note:`SHA256 ${identity.art.sha256}; référence précédente ${identity.measurement.sourceReference}.`}],
+    constraints:['Ancienne façade conservée comme archive visuelle ; cette fiche ne décrit aucun volume runtime ni porte active.',
+      'Les dimensions indiquées appartiennent au modèle V76 historique, pas au Conseil monumental V81.',
+      `La façade, le hull réel et les seuils actuels sont décrits uniquement dans la fiche v81-facade:${id}.`,
+      'Pixels et métrologie historiques préservés ; aucun nouveau gain ou usage canonique déduit.']};
   return {...base,id:`v76-facade:${id}`,label:`Vue oblique · ${identity.title}`,category:'building',districtId:building.districtId,
     position:{x:building.x,y:building.y,z:0},dimensions:{...building.footprint,height:building.wallHeight},
     footprint:homeworldBuildingFootprintV64(building),door:homeworldBuildingDoorwayV64(building),asset:identity.art.src,
@@ -61,7 +71,7 @@ const angledArchitectureRecordsV76:HomeworldContextRecordV71[]=Object.entries(HO
     source:[{label:'Vue native OpenAI mesurée et façade précédente conservée',url:identity.art.src,note:`SHA256 ${identity.art.sha256}. Référence : ${identity.measurement.sourceReference}.`}],
     constraints:[`Orientation du bâtiment mesurée ${frame.yawDegrees.toFixed(2)}° ; caméra fixe yaw0/pitch35. PNG natif sans rotation, miroir ou étirement.`,
       'Seuil peint, segment de fondation et largeur utile entre jambages mesurés séparément dans la source.',
-      'Volume solide orienté de570×340 ; ouverture de porte et parvis suivent la normale réelle. Les coins vides du rectangle englobant restent ouverts.',
+      `Volume solide orienté de ${building.footprint.width} × ${building.footprint.depth} ; ouverture de porte et parvis suivent la normale réelle. Les coins vides du rectangle englobant restent ouverts.`,
       'Le tri de cette façade suit son segment avant à l’abscisse du héros ; il ne traite pas les deux coins obliques comme une seule ligne horizontale. L’atténuation ne retire aucun obstacle.',
       'Identifiants persistants conservés. Cinq implantations sont ajustées et six parvis sont dallés pour dégager les anciens parcours, sans réduire la vraie collision. Aucun nouveau service ni gain de progression.',
       'L’ancienne vue de face V75 reste archivée avec son image et ses mesures ; elle n’est pas effacée.',
@@ -69,11 +79,18 @@ const angledArchitectureRecordsV76:HomeworldContextRecordV71[]=Object.entries(HO
 });
 const architectureRecordsV75:HomeworldContextRecordV71[]=HOMEWORLD_ARCHITECTURE_CODEX_V75.map(record=>{
   const buildingId=record.id.split(':')[1];
+  if(homeworldBuildingIdentityV81(buildingId))return {...record,label:'Archive V75 · '+record.label,spaceId:`archive:architecture-v75:${buildingId}`,position:{x:0,y:0,z:0},footprint:null,door:null,
+    constraints:[...record.constraints,'Façade historique archivée, non montée dans le renderer actif et sans volume runtime. La géométrie actuelle relève de v81-facade:'+buildingId+'.'],
+    associatedElementIds:[buildingId,`v81-facade:${buildingId}`]};
   return {...record,associatedElementIds:[buildingId,`door:${buildingId}`,`interior:${buildingId}`]};
+});
+const nativeArchitectureRecordsV81:HomeworldContextRecordV71[]=HOMEWORLD_NATIVE_ARCHITECTURE_CODEX_V81.map(record=>{
+  const id=record.id.slice('v81-facade:'.length);
+  return {...record,associatedElementIds:[id,`door:${id}`,`interior:${id}`,`approach-v71:${id}`,`assembly-v71:${id}`]};
 });
 const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
   const room=homeworldInteriorForBuildingV64(building.id)!,door=homeworldBuildingDoorwayV64(building),footprint=homeworldBuildingFootprintV64(building);
-  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...architectureRecordsV75,...angledArchitectureRecordsV76,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`);
+  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`||record.id===`v81-facade:${building.id}`);
   const exteriorFurniture=[...HOMEWORLD_ELEMENT_CODEX_V64,...architectureRecordsV75,...exteriorDecorRecordsV76].filter(record=>record.category==='prop'&&record.spaceId==='world'
     &&record.districtId===building.districtId&&Math.hypot(record.position.x-building.x,record.position.y-building.y)<building.width);
   const streets=HOMEWORLD_STREETS.filter(street=>street.polygon.some(p=>Math.hypot(p.x-door.approach.x,p.y-door.approach.y)<800));
@@ -87,6 +104,7 @@ const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
       `Fonction de la pièce : ${room.description}`,
       `Mobilier intérieur réel : ${room.props.map(prop=>`${prop.id} (${homeworldInteriorPropArtIdV64(prop.kind)}, ${Math.round(prop.width)} × ${Math.round(prop.height)} peints)`).join(' ; ')}. Les modules natifs et les zones de ce lieu sont détaillés dans les fiches associées.`,
       `${room.orientedDecorV76?.length??0} modules orientés V76, avec appuis, usages et volumes individuels dans leurs fiches associées.`,
+      ...(room.monumentLayoutV81?[`${room.monumentDecorV81?.length??0} modules natifs supplémentaires et ${room.monumentInhabitantsV81?.length??0} habitants stationnaires non interactifs du complexe public V81, détaillés dans leurs fiches associées.`]:[]),
       `Voies proches : ${streets.map(street=>street.label).join(' ; ')||'cour du quartier'}. Les trajets accessibles demeurent calculés par les collisions existantes.`,
       `${exteriorFurniture.length} mobilier(s) extérieur(s) voisin(s) répertorié(s). Les liens ne donnent aucune nouvelle interaction.`,
       'Barrières : seules les façades, volumes et meubles solides déjà présents bloquent le passage. Aucun faux grillage inaccessible ne coupe la rue.',
@@ -117,8 +135,9 @@ const outdoors:HomeworldContextRecordV71[]=HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m
 export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
   ...contexts,...approaches,...outdoors,...HOMEWORLD_IDENTITY_CODEX_V72.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
+  ...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`]})),
   ...HOMEWORLD_CIVILIAN_MOTION_CODEX_V74.map(record=>({...record,associatedElementIds:[]})),
-  ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONVERSATION_CODEX_V75,...architectureRecordsV75,...angledArchitectureRecordsV76,...interiorDecorRecordsV76,...exteriorDecorRecordsV76,...HOMEWORLD_LANDSCAPE_CODEX_V75,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · base de cendre et ceinture V75',category:'floor',districtId:'outskirts',
+  ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONVERSATION_CODEX_V75,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76,...exteriorDecorRecordsV76,...HOMEWORLD_LANDSCAPE_CODEX_V75,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · base de cendre et ceinture V75',category:'floor',districtId:'outskirts',
     position:{x:HOMEWORLD_LANDSCAPE_BOUNDS_V75.left,y:HOMEWORLD_LANDSCAPE_BOUNDS_V75.top,z:0},
     dimensions:{width:HOMEWORLD_LANDSCAPE_BOUNDS_V75.width,depth:HOMEWORLD_LANDSCAPE_BOUNDS_V75.depth,height:0},asset:HOMEWORLD_OUTSKIRTS_GROUND_V71.src,
     constraints:['Texture de terrain native répétée en modules de 240 unités. Ce matériau ne contient ni cité ni panorama peint.',

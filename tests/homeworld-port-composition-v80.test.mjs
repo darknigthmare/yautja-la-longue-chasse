@@ -4,13 +4,17 @@ import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 const qa=homeworldSceneSsrV78(),load=id=>qa.load('app/game/systems/'+id+'.ts');
 const world=load('homeworldWorldV77'),urban=load('homeworldStreetModulesV78'),dress=load('homeworldCourtArtV80'),nature=load('homeworldPortShouldersV80');
 const extra=load('homeworldUrbanPopulationV78'),geo=load('homeworldGeometryV64');
-test('seven port halts now have different real native silhouettes, while rejected substitutions keep original visible solids',()=>{
- assert.equal(urban.HOMEWORLD_URBAN_LEGACY_PROPS_V78.length,52);assert.equal(urban.HOMEWORLD_URBAN_PROPS_V78.length,52);
- assert.equal(urban.HOMEWORLD_COURT_REVISIONS_V80.length,22);assert.equal(urban.HOMEWORLD_COURT_REFUSALS_V80.length,6);
+const authored=load('homeworldAuthoredLotsV81');
+test('seven authored port shoulders have distinct lots and functions without forcing four props into every court',()=>{
+ assert.equal(urban.HOMEWORLD_URBAN_PROPS_V78.length+urban.HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length,urban.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.length);
+ const courts=authored.HOMEWORLD_AUTHORED_COURTS_V81.filter(c=>c.levelId==='0');
+ assert.equal(courts.length,7);assert.equal(new Set(courts.map(c=>JSON.stringify(c.polygon))).size,7);
+ assert(new Set(courts.map(c=>c.props.length)).size>=3);
  const signatures=[];
  for(let i=0;i<7;i++){
-  const props=urban.HOMEWORLD_URBAN_PROPS_V78.filter(p=>p.groupId==='urban-v78:port-court-'+i);assert.equal(props.length,4);
-  signatures.push(props.map(p=>dress.HOMEWORLD_COURT_ART_V80[p.artId].src).join('|'));
+  const court=courts[i],props=urban.HOMEWORLD_URBAN_PROPS_V78.filter(p=>p.groupId==='urban-v81:'+court.id);
+  assert(props.length<=court.props.length);
+  signatures.push(court.composition+'|'+props.map(p=>dress.HOMEWORLD_COURT_ART_V80[p.artId].src).join('|'));
   for(const p of props){
    assert.equal(p.interactive,false);assert.equal(p.solid,true);
    const old=urban.HOMEWORLD_URBAN_LEGACY_PROPS_V78.find(o=>o.id===p.id),revised=urban.HOMEWORLD_COURT_REVISIONS_V80.some(r=>r.id===p.id);
@@ -21,9 +25,9 @@ test('seven port halts now have different real native silhouettes, while rejecte
    assert.equal(urban.homeworldUrbanPlacementRefusalV78(p,urban.HOMEWORLD_URBAN_PROPS_V78.filter(o=>o!==p)),null);
   }
  }
- assert.equal(new Set(signatures).size,7,'seven copies of the same four sources are not a varied city');
- assert.equal(new Set(urban.HOMEWORLD_URBAN_PROPS_V78.filter(p=>p.artId.startsWith('court-native-v80:')).map(p=>p.artId)).size,7,'wall substitutions remain refused; its eighth source is used on other real frontages');
- assert(urban.HOMEWORLD_COURT_REFUSALS_V80.every(r=>r.reason==='port-main-throughfare'),'never reduce new furniture to pass through the reserved main road');
+ assert.equal(new Set(signatures).size,7,'composition and activity must distinguish the seven shoulders');
+ assert(new Set(urban.HOMEWORLD_URBAN_PROPS_V78.map(p=>p.artId)).size>=6);
+ for(const r of urban.HOMEWORLD_URBAN_PROP_REJECTIONS_V78)assert(r.reason&&!urban.HOMEWORLD_URBAN_PROPS_V78.some(p=>p.id===r.id),'never shrink or invisibly mount refused geometry');
  for(const r of extra.HOMEWORLD_URBAN_EXTRAS_V78)for(let t=0;t<=60;t+=.25)assert(urban.homeworldUrbanWalkableV78(r.levelId,world.homeworldResidentPoseV77(r,t),{halfWidth:36,halfDepth:26}));
 });
 test('port shoulders keep full measured natural supports outside public ground and never grant invisible access',()=>{

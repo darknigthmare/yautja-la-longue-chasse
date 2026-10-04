@@ -1,4 +1,5 @@
 import type {HomeworldLevelV77} from './homeworldWorldV77';
+import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 
 export interface HomeworldUrbanPointV78 {readonly x:number;readonly y:number}
 export interface HomeworldUrbanStreetV78 {
@@ -14,11 +15,11 @@ export interface HomeworldUrbanLotV78 {
 const p=(x:number,y:number):HomeworldUrbanPointV78=>({x,y});
 export const HOMEWORLD_URBAN_STREETS_V78:readonly HomeworldUrbanStreetV78[]=[
  {id:'urban-v78:lower-main',levelId:'-1A',label:'Rue des cours basses',clearWidth:160,
- nodes:[p(2960,4840),p(2960,4600),p(3320,4600),p(3320,4200),p(3980,4200),p(3980,3940)]},
+ nodes:[p(2960,4840),p(3030,4540),p(3320,4480),p(3290,4170),p(3740,4140),p(3980,3940)]},
  {id:'urban-v78:lower-gallery',levelId:'-1A',label:'Traversée vers les galeries',clearWidth:160,
- nodes:[p(3980,3940),p(4360,3940),p(4360,3810),p(4860,3810)]},
+ nodes:[p(3980,3940),p(4415,3905),p(4860,3810)]},
  {id:'urban-v78:lower-loop',levelId:'-1A',label:'Boucle des ateliers et haltes',clearWidth:144,
- nodes:[p(3320,4200),p(3320,3600),p(3980,3600),p(4360,3600),p(4360,3940)]},
+ nodes:[p(3290,4170),p(3320,3600),p(3820,3565),p(4360,3600),p(4415,3905)]},
 ];
 const lot=(id:string,left:number,top:number,right:number,bottom:number,use:HomeworldUrbanLotV78['use'],label:string):HomeworldUrbanLotV78=>({
  id:'urban-v78:'+id,levelId:'-1A',label,bounds:{left,top,right,bottom},use,artStatus:'NATIVE_LAYOUT_REQUIRED',interactive:false,
@@ -66,9 +67,9 @@ export const HOMEWORLD_URBAN_STREET_GROUND_V78=HOMEWORLD_URBAN_STREETS_V78.flatM
  * rectangles add support; none remove old streets or enlarge an invisible
  * collision. Props on them use the identical measured polygon in rendering,
  * collision and the codex, mounted together by the V78 scene integration. */
-export const HOMEWORLD_URBAN_PORT_COURTS_V78=[3500,4140,4780,5420,6060,6700,7340].map((x,i)=>({
- id:'urban-v78:port-court:'+i,label:'Cour de desserte '+(i+1),levelId:'0' as const,kind:'plaza' as const,accent:'#ad8a5c',
- polygon:homeworldUrbanRectV78(x-250,4970,x+250,5320),
+export const HOMEWORLD_URBAN_PORT_COURTS_V78=HOMEWORLD_AUTHORED_COURTS_V81.filter(c=>c.levelId==='0').map((court,i)=>({
+ id:'urban-v78:port-court:'+i,label:court.label,levelId:'0' as const,kind:'plaza' as const,accent:'#ad8a5c',
+ polygon:court.polygon,
 }));
 export const HOMEWORLD_URBAN_GROUND_V78=[...HOMEWORLD_URBAN_STREET_GROUND_V78,...HOMEWORLD_URBAN_PORT_COURTS_V78];
 export const HOMEWORLD_URBAN_LAYOUT_LIMITS_V78=[

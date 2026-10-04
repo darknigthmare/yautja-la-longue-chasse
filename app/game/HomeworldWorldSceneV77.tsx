@@ -4,6 +4,8 @@ import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
 import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
+import HomeworldBackdropV81 from './HomeworldBackdropV81';
+import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
  HOMEWORLD_RESIDENTS_V77,homeworldResidentPoseV77,HOMEWORLD_LEVELS_V77,HOMEWORLD_SPACEPORT_V77,HOMEWORLD_CONNECTORS_V77,
  HOMEWORLD_CONNECTIONS_V77,HOMEWORLD_CONNECTION_FURNITURE_V77,HOMEWORLD_POINTS_V77,homeworldLevelV77,type HomeworldLevelV77} from './systems/homeworldWorldV77';
@@ -45,15 +47,22 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   return <HomeworldNativePropV64 key={key} id={key} artId={artId} art={art} x={p.x} y={p.y} depth={depth(level,point.y,extraElevation)} heightWorld={heightWorld} style={{opacity}}/>;
  };
  return <>
+  <HomeworldBackdropV81 camera={camera} levelId={levelId} paintedLevels={paintedLevels} seconds={seconds} reducedMotion={reducedMotion}/>
   <HomeworldLavaSceneV77 actor={actor} skiffActive={skiffActive} skiffPoint={actor} floor={levelId} camera={camera} seconds={seconds} reducedMotion={reducedMotion}/>
   <svg aria-hidden="true" data-homeworld-natural-ground-v77="true" width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`} style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-40000,pointerEvents:'none'}}>
    <defs><pattern id={`${id}-natural`} width="300" height={300*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_OUTSKIRTS_GROUND_V71.src} width="300" height={300*d} preserveAspectRatio="none"/></pattern></defs>
-   <rect x={camera.x} y={camera.y} width={camera.viewWidth} height={camera.viewHeight} fill={`url(#${id}-natural)`}/>
+   {/* Local terrace shoulders, not an opaque wallpaper across sky and chasms.
+       These narrow painted margins grant no additional walkable surface. */}
+   {painted('0')&&[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId==='0').map(ground=><polygon key={ground.id}
+    points={ground.polygon.map(p=>`${p.x},${p.y*d}`).join(' ')} fill={`url(#${id}-natural)`}
+    stroke={`url(#${id}-natural)`} strokeWidth="22" strokeLinejoin="round"/>)}
   </svg>
   {HOMEWORLD_LEVELS_V77.filter(level=>painted(level.id)).map(level=><svg key={level.id} aria-hidden="true" data-homeworld-level-ground-v77={level.id}
    width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
    style={{position:'absolute',left:camera.x,top:camera.y,zIndex:homeworldGroundDepthV78(level.id,levelId,transit),pointerEvents:'none'}}>
-   <defs><pattern id={`${id}-paving-${level.id}`} width="150" height={150*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_GROUND_ART_V64.src} width="150" height={150*d} preserveAspectRatio="none"/></pattern></defs>
+   <defs><pattern id={`${id}-paving-${level.id}`} width="360" height={360*d} patternUnits="userSpaceOnUse"><image
+    href={HOMEWORLD_NATIVE_CATALOGUE_V81.assets[level.id.startsWith('-')?'paving-undercity':level.id.startsWith('+')?'paving-council':'paving-civic'].art.src}
+    width="360" height={360*d} preserveAspectRatio="none"/></pattern></defs>
    {/* One source-aligned opaque union: internal legacy route overlaps must not
        paint rectangular border grids or expose unrelated background floors. */}
    <g className={styles.civicGroundUnionV80} data-homeworld-ground-union-v80={level.id}>

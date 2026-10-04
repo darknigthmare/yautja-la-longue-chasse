@@ -20,7 +20,8 @@ import type { PitNarrativeResultInput } from './systems/pitNarrativeTrialsV57';
 import { useMenuGamepad } from './useMenuGamepad';
 import styles from './PitExperienceV79.module.css';
 
-type Props = ComponentProps<typeof PitCanvas> & { ownerSaveCreatedAt: string };
+export interface PitChronicleStorageV81 { getItem(key: string): string | null; setItem(key: string, value: string): void }
+type Props = ComponentProps<typeof PitCanvas> & { ownerSaveCreatedAt: string; chronicleStorage?: PitChronicleStorageV81 };
 function subscribeCompactRoster(notify: () => void) {
   const media = window.matchMedia('(max-width: 760px)');
   media.addEventListener('change', notify); return () => media.removeEventListener('change', notify);
@@ -30,22 +31,23 @@ const desktopRosterSnapshot = () => false;
 
 /** The original versus controller is unmounted while reading. No combat input
  * listener or gamepad loop remains behind these menus or a second duel. */
-export default function PitExperienceV79({ ownerSaveCreatedAt, ...pitProps }: Props) {
+export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, ...pitProps }: Props) {
   const [selected, setSelected] = useState<PitVersusFighterId | null>(null);
   const [lastFighter, setLastFighter] = useState<PitVersusFighterId | undefined>();
   const choose = (id: PitVersusFighterId) => { setLastFighter(id); setSelected(id); };
   return selected === null ? <PitCanvas {...pitProps} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose} />
     : <PitCharacterChronicleControllerV79 key={ownerSaveCreatedAt} ownerSaveCreatedAt={ownerSaveCreatedAt}
-      selectedId={selected} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} />;
+      selectedId={selected} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} chronicleStorage={chronicleStorage} />;
 }
 
 function storageKey(owner: string, fighter: PitCharacterChronicleCuratedIdV79, version: 1 | 2) {
   return `${pitCharacterChronicleStorageKeyV79(owner, version)}.${fighter}`;
 }
 
-function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, onChoose, onBack, pitProps }: {
+function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, onChoose, onBack, pitProps, chronicleStorage }: {
   ownerSaveCreatedAt: string; selectedId: PitVersusFighterId; onChoose: (id: PitVersusFighterId) => void;
   onBack: () => void; pitProps: ComponentProps<typeof PitCanvas>;
+  chronicleStorage?: PitChronicleStorageV81;
 }) {
   const [run, setRun] = useState<PitCharacterChronicleRunV79 | null>(null);
   const [contentVersion, setContentVersion] = useState<1 | 2>(2);
@@ -96,7 +98,7 @@ function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, on
     let exists = false;
     if (selectedRoute) {
       try {
-        const serialized = localStorage.getItem(storageKey(ownerSaveCreatedAt, selectedRoute.fighterId, contentVersion));
+        const serialized = (chronicleStorage ?? localStorage).getItem(storageKey(ownerSaveCreatedAt, selectedRoute.fighterId, contentVersion));
         if (serialized !== null) {
           exists = true;
           restored = parsePitCharacterChronicleRunV79(serialized, ownerSaveCreatedAt);
@@ -108,7 +110,7 @@ function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, on
     completedDuel.current = null; setRun(restored); setLoadedId(selectedId); setLoadedVersion(contentVersion); setReviewPanel(null); setNotice(message); setConfirmRestart(false); setHasCheckpoint(exists);
     });
     return () => { cancelled = true; };
-  }, [selectedId, ownerSaveCreatedAt, contentVersion]);
+  }, [selectedId, ownerSaveCreatedAt, contentVersion, chronicleStorage]);
   useEffect(() => {
     if (inDuel) return;
     const scope = root.current?.querySelector<HTMLElement>('[role="alertdialog"]') ?? root.current;
@@ -118,8 +120,9 @@ function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, on
   const store = (next: PitCharacterChronicleRunV79) => {
     try {
       const key = storageKey(ownerSaveCreatedAt, next.fighterId, next.contentVersion), serialized = serializePitCharacterChronicleRunV79(next);
-      localStorage.setItem(key, serialized);
-      if (localStorage.getItem(key) !== serialized) throw Error('Checkpoint non confirmé.');
+      const destination = chronicleStorage ?? localStorage;
+      destination.setItem(key, serialized);
+      if (destination.getItem(key) !== serialized) throw Error('Checkpoint non confirmé.');
       setHasCheckpoint(true);
       setNotice('Checkpoint enregistré sur cet appareil.');
     } catch { setNotice('Checkpoint non enregistré. Le parcours reste disponible durant cette visite ; réessayez la sauvegarde avant de quitter.'); }

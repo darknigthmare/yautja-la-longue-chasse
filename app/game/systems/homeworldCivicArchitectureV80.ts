@@ -28,6 +28,6 @@ export const HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80:readonly HomeworldElementRec
    `Espaces existants: ${room.zones.join(' / ')||room.title}; ${room.fixtures.length} éléments intérieurs conservés.`,
    `${plan.civicFrontageIds.length} objets V80 de devanture; sols, empreintes et trajectoires restent contrôlés séparément.`,
    'Ce panneau ne crée aucun accès, service, gain ni intérieur supplémentaire.',
-   building.id==='throne-audience'?'Aile publique existante ; palais monumental et suites privées non produits.':'Le plan décrit uniquement la pièce ou les zones actuellement visitables.',
+   building.id==='throne-audience'?'Palais monumental natif V81 et aile publique visitable ; suites privées complètes et cinématiques royales non produites.':building.id==='rite-sanctum'?'Conseil monumental natif V81 et galerie publique visitable ; seules les zones effectivement montées sont décrites.':'Le plan décrit uniquement la pièce ou les zones actuellement visitables.',
    plan.nativeView==='EXISTING_NATIVE_FRONTAL'?'Façade frontale conservée ; aucune nouvelle vue oblique ou architecture achevée affirmée.':'Angle dessiné nativement et appuis mesurés ; aucune rotation CSS.']};
 });

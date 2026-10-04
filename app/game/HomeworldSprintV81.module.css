@@ -1,0 +1,16 @@
+.run {
+  white-space: nowrap;
+  padding-inline: 10px;
+  font-size: 12px !important;
+}
+
+.run[aria-pressed="true"] {
+  color: #ffdc9d !important;
+  border-color: #bd8752 !important;
+  background: #513a27 !important;
+}
+
+.run:focus-visible {
+  outline: 2px solid #ffdc9d;
+  outline-offset: 3px;
+}

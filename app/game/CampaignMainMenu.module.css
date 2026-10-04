@@ -78,6 +78,8 @@
 .root button.featured:hover:not(:disabled) { background: #efc988; }
 .primary button { padding: 17px 48px 17px 20px; border-left: 3px solid #866442; }
 .primary button.featured { border-left-color: #fff0c6; }
+.primary button.gameMode { border-left-color: #cf713e; background: linear-gradient(100deg, #362016eb, #17110dd9); }
+.primary button.gameMode small { color: #e9c79b; }
 .actionTitle { display: block; font-size: clamp(1.1rem, 1.6vw, 1.45rem); font-weight: 700; }
 .primary small { display: block; margin-top: 6px; font-size: .74rem; line-height: 1.5; overflow-wrap: anywhere; }
 .actionArrow { position: absolute; right: 19px; top: 50%; transform: translateY(-50%); font-size: 2rem; line-height: 1; }

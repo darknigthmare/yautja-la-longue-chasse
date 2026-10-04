@@ -13,6 +13,8 @@ import {HOMEWORLD_REGION_CONNECTIONS_V72,HOMEWORLD_CONNECTION_STREETS_V72,HOMEWO
  homeworldGatewayFootprintsV72} from './homeworldRegionConnectionsV72';
 import {homeworldCouncilStairRailsV77} from './homeworldConnectorArtV77';
 import {HOMEWORLD_LAVA_BASES_V77,homeworldSkiffFootOnDeckV77} from './homeworldLavaPlacementV77';
+import {HOMEWORLD_RESIDENT_PATH_REVISIONS_V81} from './homeworldResidentPlacementsV81';
+import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81} from './homeworldLegacyPlacementsV81';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
  * Vertical coordinates are physical world units, not a CSS transform of actors. */
@@ -35,13 +37,13 @@ const move=(point:HomeworldVec2,districtId:string)=>districtId==='port'
 export const HOMEWORLD_BUILDINGS_V77=HOMEWORLD_BUILDINGS.map(building=>({...building,...move(building,building.districtId),levelId:homeworldDistrictLevelV77(building.districtId)}));
 export const HOMEWORLD_DISTRICTS_V77=HOMEWORLD_DISTRICTS.map(district=>({...district,...move(district,district.id),
  levelId:homeworldDistrictLevelV77(district.id),polygon:district.polygon.map(point=>move(point,district.id))}));
-export const HOMEWORLD_PROPS_V77=HOMEWORLD_PROPS.map(prop=>({...prop,...move(prop,prop.districtId),levelId:homeworldDistrictLevelV77(prop.districtId)}));
+export const HOMEWORLD_PROPS_V77=HOMEWORLD_PROPS.map(prop=>({...prop,...move(HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81[prop.id]??prop,prop.districtId),levelId:homeworldDistrictLevelV77(prop.districtId)}));
 export const HOMEWORLD_FRONTAGE_V77=HOMEWORLD_FRONTAGE_ITEMS_V75
  .map(item=>{const building=HOMEWORLD_BUILDINGS.find(building=>building.id===item.buildingId)!;
   return{...item,...move(item,building.districtId),levelId:homeworldDistrictLevelV77(building.districtId)};});
 export const HOMEWORLD_EXTERIOR_V77=HOMEWORLD_EXTERIOR_MODULES_V76.map(item=>({...item,...move(item,item.districtId),levelId:homeworldDistrictLevelV77(item.districtId)}));
 export const HOMEWORLD_RESIDENTS_V77=HOMEWORLD_RESIDENTS_V69.map(resident=>({...resident,
- levelId:homeworldDistrictLevelV77(resident.districtId),path:resident.path.map(point=>move(point,resident.districtId))}));
+ levelId:homeworldDistrictLevelV77(resident.districtId),path:(HOMEWORLD_RESIDENT_PATH_REVISIONS_V81[resident.id]??resident.path).map(point=>move(point,resident.districtId))}));
 export const homeworldResidentPoseV77=homeworldResidentPoseV69;
 export function nearestHomeworldResidentV77(levelId:HomeworldLevelV77,actor:HomeworldVec2,seconds:number){
  return HOMEWORLD_RESIDENTS_V77.filter(r=>r.levelId===levelId).map(resident=>({resident,p:homeworldResidentPoseV77(resident,seconds)})).filter(item=>Math.hypot(item.p.x-actor.x,item.p.y-actor.y)<100).sort((a,b)=>Math.hypot(a.p.x-actor.x,a.p.y-actor.y)-Math.hypot(b.p.x-actor.x,b.p.y-actor.y))[0]?.resident??null;
@@ -84,6 +86,10 @@ const road=(id:string,levelId:HomeworldLevelV77,nodes:HomeworldVec2[],width=260)
  * uniform native scale stay unchanged; real lower/upper terraces support it. */
 export const HOMEWORLD_COUNCIL_STAIR_LANDINGS_V77={from:{levelId:'0' as const,point:{x:4500,y:2900},elevation:0},to:{levelId:'+1' as const,point:{x:4500,y:2720},elevation:520}};
 export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
+ // Actual native hulls receive their authored masonry plinths, not borrowed
+ // invisible terrain. The V81 renderer extrudes/paves these same polygons.
+ {id:'plinth-v81:port-house-east',label:'Socle des équipages · rive est',levelId:'0' as const,polygon:[{x:7285,y:3050},{x:7795,y:3030},{x:7860,y:3095},{x:7850,y:3440},{x:7710,y:3500},{x:7310,y:3460}]},
+ {id:'plinth-v81:clan-court-east',label:'Socle de la délégation · revers de falaise',levelId:'0' as const,polygon:[{x:3670,y:2120},{x:4120,y:2060},{x:4220,y:2120},{x:4245,y:2320},{x:3920,y:2500},{x:3690,y:2440}]},
  ...HOMEWORLD_LAVA_BASES_V77.map(base=>base.terrain),
  // Some preserved civilian routes originally used the overlap of two
  // neighbourhoods. Their native pedestrian terraces now belong explicitly to

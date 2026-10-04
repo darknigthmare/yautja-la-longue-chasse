@@ -24,6 +24,10 @@ export interface HomeworldNativeBuildingArtV64 {
   readonly wallHeightWorld: number;
   readonly sha256: string;
   readonly measurementStatus?: string;
+  /** V81 multi-wing volumes can have a genuinely non-rectangular foundation.
+   * Human-observed native support hull, local source pixels. It is projected
+   * once with the same source scale; no collider based only on alpha is used. */
+  readonly groundSupportPixelsV81?:readonly HomeworldGroundPointV64[];
   /** V76 measured ground segments for a genuinely angled native drawing.
    * Coordinates stay local to the source cell. No renderer rotation is used. */
   readonly groundFrame?: {
@@ -73,8 +77,10 @@ export function homeworldBuildingGroundFrameV76(building: HomeworldGeometryBuild
   const frontRight=frame ? pixelToGround(frame.frontRight) : {x:building.x+halfWidth,y:building.y+frontOffset};
   const depth=building.footprint?.depth??340;
   const solidDepth=frame ? depth : depth+frontOffset;
-  const polygon=[frontLeft,frontRight,{x:frontRight.x-normal.x*solidDepth,y:frontRight.y-normal.y*solidDepth},
-    {x:frontLeft.x-normal.x*solidDepth,y:frontLeft.y-normal.y*solidDepth}];
+  const polygon=art?.groundSupportPixelsV81?.length
+    ? art.groundSupportPixelsV81.map(pixelToGround)
+    : [frontLeft,frontRight,{x:frontRight.x-normal.x*solidDepth,y:frontRight.y-normal.y*solidDepth},
+      {x:frontLeft.x-normal.x*solidDepth,y:frontLeft.y-normal.y*solidDepth}];
   const local=(p:HomeworldGroundPointV64)=>({u:(p.x-building.x)*tangent.x+(p.y-building.y)*tangent.y,
     v:(p.x-building.x)*normal.x+(p.y-building.y)*normal.y});
   const left=local(frontLeft),right=local(frontRight);
@@ -87,7 +93,10 @@ export function homeworldBuildingGroundFrameV76(building: HomeworldGeometryBuild
 export function homeworldBuildingTouchesV76(building:HomeworldGeometryBuildingV64,point:HomeworldGroundPointV64,
   actor:{halfWidth:number;halfDepth:number}) {
   const frame=homeworldBuildingGroundFrameV76(building);
-  for(const axis of [{x:1,y:0},{x:0,y:1},frame.tangent,frame.normal]){
+  const axes=building.art?.groundSupportPixelsV81?.length
+    ? frame.polygon.map((p,i)=>{const q=frame.polygon[(i+1)%frame.polygon.length];return{x:-(q.y-p.y),y:q.x-p.x};})
+    : [frame.tangent,frame.normal];
+  for(const axis of [{x:1,y:0},{x:0,y:1},...axes]){
     const values=frame.polygon.map(p=>p.x*axis.x+p.y*axis.y),centre=point.x*axis.x+point.y*axis.y;
     const radius=Math.abs(axis.x)*actor.halfWidth+Math.abs(axis.y)*actor.halfDepth;
     if(centre+radius<=Math.min(...values)||centre-radius>=Math.max(...values))return false;
@@ -96,7 +105,8 @@ export function homeworldBuildingTouchesV76(building:HomeworldGeometryBuildingV6
 }
 export function homeworldBuildingFootprintsOverlapV76(a:HomeworldGeometryBuildingV64,b:HomeworldGeometryBuildingV64) {
   const first=homeworldBuildingGroundFrameV76(a),second=homeworldBuildingGroundFrameV76(b);
-  for(const axis of [first.tangent,first.normal,second.tangent,second.normal]){
+  const axes=(frame:HomeworldBuildingGroundFrameV76)=>frame.polygon.map((p,i)=>{const q=frame.polygon[(i+1)%frame.polygon.length];return{x:-(q.y-p.y),y:q.x-p.x};});
+  for(const axis of [...axes(first),...axes(second)]){
     const left=first.polygon.map(p=>p.x*axis.x+p.y*axis.y),right=second.polygon.map(p=>p.x*axis.x+p.y*axis.y);
     if(Math.max(...left)<=Math.min(...right)||Math.max(...right)<=Math.min(...left))return false;
   }

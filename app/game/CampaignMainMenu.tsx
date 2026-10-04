@@ -6,6 +6,8 @@ import {useMenuGamepad} from './useMenuGamepad';
 import {menuFocusIndex,type MenuDirection} from './systems/menuNavigation';
 import styles from './CampaignMainMenu.module.css';
 import {openCloudAccountV71} from './CloudAccountV71';
+import { MAIN_MENU_MODE_LABELS_V81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
+import { GAME_CONTENT_VERSION } from './buildInfo';
 
 export interface CampaignCheckpointView {id:string;kind:'manual'|'auto';index:number;label:string;savedAt:string;hasActiveHunt:boolean;playTimeSeconds:number;resumeLocation?:string}
 export interface CampaignSlotView {id:number;status:'empty'|'ready'|'blocked';revision:number;ownerCreatedAt:string|null;hunterName:string|null;checkpoints:readonly CampaignCheckpointView[];lastCheckpointId:string|null;recoveryAvailable?:boolean}
@@ -23,26 +25,29 @@ function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onB
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
 }
-export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew}:{
+export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode}:{
  onMausoleum?:()=>void;
  catalog:CampaignCatalogView|null;busy:boolean;message:string|null;onRefresh:()=>void;
  onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
  onReplace?:(slotId:number,name:string,expectedRevision:number,expectedOwnerCreatedAt:string)=>void;
  onWorkspaceRecover?:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
  onRecoverNew?:(slotId:number,name:string)=>void;
+ modeAccess?:Readonly<Record<MainMenuGameModeV81,boolean>>;
+ onOpenGameMode?:(mode:MainMenuGameModeV81,spoilersConfirmed:boolean)=>void;
 }){
  const [view,setView]=useState<'main'|'new'|'load'>('main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
  const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;recovery?:boolean}|null>(null);
+ const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|null>(null);
  const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
- const back=useCallback(()=>{if(busy)return;if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else setView('main');},[busy,confirmation,replacement]);
- useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation||replacement)}:${busy}`,back);
+ const back=useCallback(()=>{if(busy)return;if(spoilerMode)setSpoilerMode(null);else if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else setView('main');},[busy,confirmation,replacement,spoilerMode]);
+ useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation||replacement||spoilerMode)}:${busy}`,back);
  useLayoutEffect(()=>{
   if(busy)return;
   // Closing a checkpoint dialog returns to its exact originating save, not the menu header.
   const trigger=confirmationTriggerRef.current;
-  if(!confirmation&&!replacement&&trigger?.isConnected){confirmationTriggerRef.current=null;trigger.focus();return;}
+  if(!confirmation&&!replacement&&!spoilerMode&&trigger?.isConnected){confirmationTriggerRef.current=null;trigger.focus();return;}
   const scope=dialogRef.current??rootRef.current;if(scope)controls(scope)[0]?.focus();
- },[view,confirmation,replacement,busy]);
+ },[view,confirmation,replacement,spoilerMode,busy]);
  const archivesBlocked=Boolean((catalog?.status&&catalog.status!=='ready')||catalog?.workspaceRecoveryAvailable);
  const canRecoverWorkspace=Boolean(catalog?.workspaceRecoveryAvailable&&onWorkspaceRecover);
  const ready=catalog?.slots.filter(slot=>slot.status==='ready')??[];
@@ -51,9 +56,14 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const canRecoverNew=Boolean(catalog?.workspaceRecoveryAvailable&&ready.length===0&&slot?.status==='empty'&&onRecoverNew);
  const currentCheckpoint=current?.checkpoints.find(checkpoint=>checkpoint.id===current.lastCheckpointId)??current?.checkpoints.toSorted((a,b)=>Date.parse(b.savedAt)-Date.parse(a.savedAt))[0];
  const open=(target:'new'|'load')=>{setConfirmation(null);setView(target);setSelected((target==='new'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
- return <main ref={rootRef} className={styles.root} data-campaign-menu={view} aria-busy={busy} onKeyDown={event=>navigateKeys(event,dialogRef.current??rootRef.current,back)}>
+ const requestGameMode=useCallback((mode:MainMenuGameModeV81,trigger:HTMLButtonElement)=>{
+  if(busy)return;
+  if(modeAccess?.[mode])onOpenGameMode?.(mode,false);
+  else{confirmationTriggerRef.current=trigger;setSpoilerMode(mode);}
+ },[busy,modeAccess,onOpenGameMode]);
+ return <main ref={rootRef} className={styles.root} data-campaign-menu={view} data-game-content-version={GAME_CONTENT_VERSION} aria-busy={busy} onKeyDown={event=>navigateKeys(event,dialogRef.current??rootRef.current,back)}>
   <img className={styles.scenery} src="/game/prologue/v47/village.png" alt="" fetchPriority="high" decoding="async" data-campaign-scenery />
-  <div className={styles.shell} inert={confirmation!==null||replacement!==null}>
+  <div className={styles.shell} inert={confirmation!==null||replacement!==null||spoilerMode!==null}>
    <header className={styles.header}>
     <div className={styles.archiveBar}><p>CHRONIQUES DU CLAN</p><span>5 parties · 10 manuelles + 2 autos par partie</span></div>
     <h1>Yautja<span>La Longue Chasse</span></h1>
@@ -63,6 +73,10 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      <p className={styles.eyebrow}>Choisissez votre histoire</p>
      <button className={current?styles.featured:undefined} type="button" disabled={busy||!current} onClick={()=>current&&(archivesBlocked?open('load'):onContinue(current.id))}><span className={styles.actionTitle}>Continuer</span><small>{current?`Partie ${current.id} · ${current.hunterName??'Chasseur sans nom'}`:'Aucune campagne à reprendre'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog} onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+     {onOpenGameMode&&<>
+      <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="the-pit" data-story-unlocked={modeAccess?.['the-pit']===true} onClick={event=>requestGameMode('the-pit',event.currentTarget)}><span className={styles.actionTitle}>The Pit</span><small>Duels, roster, arènes et chroniques des chasseurs{!modeAccess?.['the-pit']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+      <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="game-reserve" data-story-unlocked={modeAccess?.['game-reserve']===true} onClick={event=>requestGameMode('game-reserve',event.currentTarget)}><span className={styles.actionTitle}>Game Reserve Planet</span><small>Expédition de chasse sur la réserve de Vharuun{!modeAccess?.['game-reserve']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+     </>}
      <button type="button" disabled={busy} onClick={openCloudAccountV71}><span className={styles.actionTitle}>Compte & sauvegardes</span><small>Synchroniser mobile et ordinateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      {onMausoleum&&<button type="button" disabled={busy} onClick={onMausoleum}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
      <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
@@ -96,6 +110,12 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
     <p className={styles.localNotice}>Sauvegardes locales · synchronisation avec un compte connecté.</p>
    </footer>
   </div>
+  {spoilerMode&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="alertdialog" aria-modal="true" aria-labelledby="game-mode-spoiler-title" aria-describedby="game-mode-spoiler-description" data-main-menu-spoiler={spoilerMode} onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>
+   <p className={styles.eyebrow}>Accès anticipé · spoilers</p><h2 id="game-mode-spoiler-title">Entrer dans {MAIN_MENU_MODE_LABELS_V81[spoilerMode]} ?</h2>
+   <p id="game-mode-spoiler-description">Vous n’avez pas encore atteint le palier nécessaire dans votre histoire actuelle. Ce mode peut révéler des chasseurs, des lieux, des armes ou des événements que vous n’avez pas encore découverts.</p>
+   <p>Voulez-vous continuer malgré les spoilers ? Vous jouerez dans un profil libre local séparé. Votre campagne et ses cinq emplacements restent inchangés ; aucun palier de l’histoire ne sera débloqué.</p>
+   <div className={styles.dialogActions}><button type="button" disabled={busy} data-spoiler-cancel onClick={()=>setSpoilerMode(null)}>Revenir au menu</button><button type="button" disabled={busy} data-spoiler-confirm onClick={()=>{const mode=spoilerMode;setSpoilerMode(null);onOpenGameMode?.(mode,true);}}>Accéder malgré les spoilers</button></div>
+  </section></div>}
   {replacement&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="campaign-replace-title" onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>
    <p className={styles.eyebrow}>{replacement.recovery?'Récupération des archives':'Remplacement d’une campagne'}</p><h2 id="campaign-replace-title">{replacement.recovery?`Repartir dans la partie ${replacement.slot.id} ?`:`Remplacer la partie ${replacement.slot.id} ?`}</h2>
    <p>{replacement.recovery?'Aucune campagne lisible. Emplacement libre':<strong>{replacement.slot.hunterName||'Chasseur sans nom'}</strong>} · partie {replacement.slot.id} · {replacement.slot.checkpoints.length} sauvegarde(s).</p>

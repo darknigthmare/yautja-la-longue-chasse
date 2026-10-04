@@ -17,7 +17,8 @@ test('thirteen functional secondary facades use genuine independent PNGs without
   else if(api.homeworldBuildingIdentityV72(building.id))assert.equal(building.art.src,api.homeworldBuildingIdentityV72(building.id).art.src);
   else assert(building.art.src.startsWith('/game/homeworld/v64/house-'));
  }
- assert.equal(api.HOMEWORLD_BUILDINGS.length,43);assert.equal(api.HOMEWORLD_INTERIORS_V64.filter(room=>room.secondaryLayoutV74).length,37);
+ assert.equal(api.HOMEWORLD_BUILDINGS.length,43);assert.equal(api.HOMEWORLD_INTERIORS_V64.filter(room=>room.secondaryLayoutV74).length,36);
+ assert.equal(api.HOMEWORLD_INTERIORS_V64.filter(room=>room.monumentLayoutV81).length,2);
  assert.equal(api.homeworldBuildingIdentityV75('memory-vault'),null);assert.equal(api.homeworldBuildingIdentityV75('not-a-building'),null);
 });
 for(const [id,identity]of identities)test('native metrology, source SHA, uniform scale and physical painted entrance · '+id,async()=>{

@@ -23,8 +23,11 @@ test('43 rooms receive independent function-labelled scenery without replacing V
  assert.equal(new Set(items.map(p=>p.artId)).size,4);assert.equal(rooms.reduce((n,r)=>n+r.points.length,0),15);
  // V77 appends two explicitly identified tables. Still compare all original
  // V72/V74 fields byte-for-byte; new geometry is independently tested in V77.
- const oldMain=rooms.filter(r=>['market-armory','deep-forge','training-hall','clan-lodge','memory-vault','throne-audience'].includes(r.buildingId)).map(room=>{const old={...room,furniture:room.furniture.filter(item=>!item.id.endsWith('-v77-cntlip-table'))};delete old.orientedDecorV76;return old;});
- assert.equal(crypto.createHash('sha256').update(JSON.stringify(oldMain)).digest('hex'),'6d5505a37371b33034f46c8523e639ae6a7a7a41867747b24b3e773eae563ce0','existing six rooms unchanged');
+ // V81 intentionally replaces the public palace only; the other five principal
+ // rooms remain protected by their pre-refactor fingerprint. New monumental
+ // geometry and its furniture/use zones are checked in the V81 tests.
+ const oldMain=rooms.filter(r=>['market-armory','deep-forge','training-hall','clan-lodge','memory-vault'].includes(r.buildingId)).map(room=>{const old={...room,furniture:room.furniture.filter(item=>!item.id.endsWith('-v77-cntlip-table'))};delete old.orientedDecorV76;return old;});
+ assert.equal(crypto.createHash('sha256').update(JSON.stringify(oldMain)).digest('hex'),'1d20d34589a448688f93318a009dde68faa89841df057848804ee5564e6e3be5','other five principal rooms unchanged');
  for(const r of rooms){assert(r.orientedDecorV76.length>=1);if(r.kind==='domestic')assert(r.orientedDecorV76.length<=2);assert.deepEqual(r.points.map(p=>p.pointId),api.HOMEWORLD_INTERIOR_BINDINGS_V64[r.buildingId]??[]);for(const p of r.orientedDecorV76){assert(p.id.startsWith(r.buildingId+'-v76-'));assert(p.purpose.startsWith(r.title));assert(p.solid);if(p.artId==='worktable-right')assert(['dock-control','market-armory','deep-forge','convoy-workshop'].includes(r.buildingId),'no vice/worktools in audience or rites');}}
 });
 for(const room of api.HOMEWORLD_INTERIORS_V64)test(room.buildingId+': physical exits, services, every space and passage retain four-unit body clearance',()=>{

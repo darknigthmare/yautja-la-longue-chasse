@@ -5,10 +5,10 @@ import { build } from 'esbuild';
 const result=await build({stdin:{contents:"export * from './app/game/systems/homeworldInteriorShellV64.ts';export * from './app/game/systems/homeworldInteriorsV64.ts';export * from './app/game/systems/homeworldElementCodexV64.ts';export * from './app/game/systems/homeworldGeometryV64.ts';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const model=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 
-test('43 floors and294 native panels have stable unique records, including every clipped terminal module',()=>{
+test('43 floors and302 native panels have stable unique records, including monumental envelopes and every clipped terminal module',()=>{
   const shells=model.HOMEWORLD_INTERIORS_V64.map(model.homeworldInteriorShellV64);
   const panels=shells.flatMap(s=>s.groups.flatMap(g=>g.panels));
-  assert.equal(shells.length,43);assert.equal(panels.length,294);assert.equal(new Set(panels.map(p=>p.id)).size,294);
+  assert.equal(shells.length,43);assert.equal(panels.length,302);assert.equal(new Set(panels.map(p=>p.id)).size,302);
   for(const room of model.HOMEWORLD_INTERIORS_V64){
     const shell=model.homeworldInteriorShellV64(room),record=model.homeworldElementByIdV64(`floor:${shell.floor.id}`);
     assert.equal(record.asset,shell.floor.art.src);assert.deepEqual(record.dimensions,{width:room.width,depth:room.depth,height:0});
@@ -34,7 +34,7 @@ test('shared shell preserves reviewed north/side pixel pivots and clipped sizes 
     assert.equal(side.clip.left+panel.localPaintPivot.x,panel.groundPivot.x);
   }
   const large=model.homeworldInteriorShellV64(model.HOMEWORLD_INTERIORS_V64.find(r=>r.buildingId==='throne-audience'));
-  assert.deepEqual(large.groups[0].panels.map(p=>p.visibleLength),[180,180,180,28]);
+  assert.deepEqual(large.groups[0].panels.map(p=>p.visibleLength),[180,180,180,180,180,168]);
 });
 test('Surface and codex consume the one shell helper; rendering does not own independent module counts',()=>{
   const surface=readFileSync('app/game/HomeworldInteriorSurface.tsx','utf8'),codex=readFileSync('app/game/systems/homeworldElementCodexV64.ts','utf8');

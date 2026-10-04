@@ -1,6 +1,6 @@
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_SPACEPORT_V77,homeworldTerrainV77,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
 import type {HomeworldVec2} from './homeworldCity';
-import {HOMEWORLD_COURT_RECIPES_V80} from './homeworldCourtArtV80';
+import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 
 /** Local civic names describe this game's layout; they are not named official
  * Yautja settlements, new districts to unlock, or discoveries to persist. */
@@ -11,7 +11,7 @@ export const HOMEWORLD_CIVIC_NEIGHBORHOODS_V80=[
  {id:'lower-water',levelId:'-1A' as const,x:4840,y:4540,label:'Cour des citernes',detail:'La réserve d’eau civique marque l’extrémité orientale des cours.'},
  {id:'lower-forge',levelId:'-1A' as const,x:3600,y:4800,label:'Cour des artisans',detail:'Les outils de maintenance et les réserves bordent les devantures.'},
  {id:'lower-common',levelId:'-1A' as const,x:4210,y:4840,label:'Cour commune',detail:'La table et les haltes sont distinctes du passage public.'},
- ...[3500,4140,4780,5420,6060,6700,7340].map((x,i)=>({id:'port-causeway-'+i,levelId:'0' as const,x,y:5220,label:HOMEWORLD_COURT_RECIPES_V80[i].label,detail:'Les cours latérales gardent le grand axe libre ; le mobilier natif varie selon la fonction de chaque halte.'})),
+ ...HOMEWORLD_AUTHORED_COURTS_V81.filter(c=>c.levelId==='0').map((c,i)=>({id:'port-causeway-'+i,levelId:'0' as const,x:c.x,y:c.y,label:c.label,detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'})),
 ] as const;
 export function homeworldCivicNeighborhoodV80(levelId:HomeworldLevelV77,point:HomeworldVec2){
  const port=HOMEWORLD_SPACEPORT_V77,pad=port.pad,onPad=point.x>=pad.x-pad.width/2&&point.x<=pad.x+pad.width/2&&point.y>=pad.y-pad.depth/2&&point.y<=pad.y+pad.depth/2;

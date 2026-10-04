@@ -32,6 +32,7 @@ import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarks
 import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomeworldPassageV67, canAdvanceHomeworldPassageV67, beginReturnHomeworldPassageV67, type HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, canAdvanceGameReserveV66, type GameReserveV66State } from "./systems/gameReserveV66";
+import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
 import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
@@ -969,6 +970,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [nurseryChapterLoadAttempt, setNurseryChapterLoadAttempt] = useState(0);
   const sessionAliveRef = useRef(true);
   const startupResumeRef = useRef(false);
+  const menuModeStartedRefV81 = useRef(false);
   const [campaignCatalog, setCampaignCatalog] = useState<CampaignSlotCatalog | null>(null);
   const [campaignSaveBusy, setCampaignSaveBusy] = useState(false);
   const [campaignSaveMessage, setCampaignSaveMessage] = useState<string | null>(null);
@@ -2028,7 +2030,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openGameReserveV66 = useCallback((fresh = false): boolean => {
     // The autonomous expedition cannot lend a ship or adult arsenal to a youth save.
-    if (!sessionAliveRef.current || saveRef.current.createdAt !== entry.ownerCreatedAt || saveRef.current.prologue) return false;
+    if (!sessionAliveRef.current || saveRef.current.createdAt !== entry.ownerCreatedAt || !mainMenuModeAccessV81(saveRef.current,mainMenuBrowserShipContextV81(saveRef.current))['game-reserve']) return false;
     const existing = saveRef.current.gameReserveV66;
     const random = new Uint32Array(1); globalThis.crypto.getRandomValues(random);
     const next = fresh || !existing ? createGameReserveV66(random[0]) : existing;
@@ -2037,7 +2039,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const checkpointGameReserveV66 = useCallback((state: GameReserveV66State): boolean => {
     const current = saveRef.current;
-    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || current.prologue || !current.gameReserveV66 ||
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !mainMenuModeAccessV81(current,mainMenuBrowserShipContextV81(current))['game-reserve'] || !current.gameReserveV66 ||
         !canAdvanceGameReserveV66(current.gameReserveV66, state)) return false;
     return persistSocialProgress({ gameReserveV66: state });
   }, [entry.ownerCreatedAt, persistSocialProgress]);
@@ -2208,6 +2210,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
     go("pit");
   }, [go, screen, shipStationOpen, hubLocation]);
+
+  useEffect(() => {
+    if (!hydrated || !entry.menuMode || menuModeStartedRefV81.current || !sessionAliveRef.current || archiveRecoveryIssue) return;
+    // Defer until hydration and owner checks have completed. No story scene,
+    // checkpoint or unlock is fabricated to service this title-menu shortcut.
+    const task = window.setTimeout(() => {
+      if (!sessionAliveRef.current || menuModeStartedRefV81.current) return;
+      menuModeStartedRefV81.current = true;
+      if (!mainMenuModeAccessV81(saveRef.current,mainMenuBrowserShipContextV81(saveRef.current))[entry.menuMode!]) { setToast('Le palier de cet accès n’est plus confirmé dans cette campagne. Reviens au menu pour choisir l’accès libre ; la campagne reste protégée.'); return; }
+      if (entry.menuMode === 'the-pit') openPit();
+      else if (!openGameReserveV66()) setToast('L’expédition n’a pas pu être sauvegardée. Aucun checkpoint existant n’a été remplacé.');
+    }, 0);
+    return () => window.clearTimeout(task);
+  }, [hydrated, entry.menuMode, archiveRecoveryIssue, openPit, openGameReserveV66]);
 
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
@@ -3237,7 +3253,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <GameReserveV66 key={save.createdAt + ":" + save.gameReserveV66.seed} checkpoint={save.gameReserveV66} bindings={save.settings.controlBindings}
             externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOpenSettings={() => setSettingsOpen(true)}
-            onCheckpoint={checkpointGameReserveV66} onExit={() => { setScreen("clan-chronicle"); }} />
+            onCheckpoint={checkpointGameReserveV66} onExit={() => { if (entry.menuMode) return returnToMainMenu(); setScreen("clan-chronicle"); }} />
         </Suspense>
       </section>}
 
@@ -4815,8 +4831,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             savedDescentRuns={pitDescentRuns}
             onMatchComplete={recordPitMatch}
             onRunTransition={recordPitRunTransition}
-            exitLabel={pitReturnScreen === "homeworld" ? "Retour à la cité" : "Retour au vaisseau"}
-            onExit={() => go(pitReturnScreen)}
+            exitLabel={entry.menuMode ? "Retour au menu principal" : pitReturnScreen === "homeworld" ? "Retour à la cité" : "Retour au vaisseau"}
+            onExit={() => { if (entry.menuMode) void returnToMainMenu(); else go(pitReturnScreen); }}
           />
         </Suspense>
       )}

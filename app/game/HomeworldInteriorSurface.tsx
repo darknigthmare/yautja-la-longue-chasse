@@ -12,6 +12,7 @@ import HomeworldInteriorPartitionsV72 from './HomeworldInteriorPartitionsV72';
 import HomeworldFurnitureV72 from './HomeworldFurnitureV72';
 import HomeworldInteriorDecorV76 from './HomeworldInteriorDecorV76';
 import HomeworldCntlipHostsV77 from './HomeworldCntlipHostsV77';
+import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import styles from './HomeworldCity.module.css';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
@@ -25,6 +26,8 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
   const shell = homeworldInteriorShellV64(room);
   return <>
     <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId}
+      data-homeworld-monument-interior-v81={room.monumentLayoutV81?room.buildingId:undefined}
+      data-homeworld-monument-spaces-v81={room.monumentLayoutV81?room.zones?.length:undefined}
       data-homeworld-secondary-interior-v74={room.secondaryLayoutV74?room.buildingId:undefined}
       data-homeworld-layout-archetype-v74={room.secondaryLayoutV74?.archetype}
       data-homeworld-layout-spaces-v74={room.secondaryLayoutV74?room.zones?.length:undefined} style={{
@@ -40,8 +43,14 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     </div>)}
     <HomeworldInteriorPartitionsV72 room={room}/>
     <HomeworldCntlipHostsV77 room={room}/>
+    {(room.monumentInhabitantsV81??[]).map(npc => <div key={npc.id} data-homeworld-monument-inhabitant-v81={npc.id}
+      data-native-role={npc.role} data-interactive="false" data-native-animation-status={npc.motion} title={npc.label}
+      style={{position:'absolute',left:npc.x,top:npc.y*HOMEWORLD_GEOMETRY_V64.depthScale,zIndex:Math.round(npc.y)+2,pointerEvents:'none'}}>
+      <HomeworldCivilianV72 role={npc.role} facing={npc.facing} height={100}/>
+    </div>)}
     {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
     {(room.orientedDecorV76??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}
+    {(room.monumentDecorV81??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}
     {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id}
       data-homeworld-interior-zone-v74={room.secondaryLayoutV74?zone.id:undefined}
       data-homeworld-floor-caption-v74={zone.id} title={zone.label} style={{position:'absolute',left:zone.x+zone.width/2,

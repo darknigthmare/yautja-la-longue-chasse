@@ -2,7 +2,7 @@ import manifest from '../data/homeworldNativeDecorV80.json';
 import {HOMEWORLD_EXTERIOR_ART_V76} from './homeworldExteriorDecorV76';
 import {HOMEWORLD_CITY_NATIVE_ART_V78} from './homeworldCityNativeArtV78';
 import {HOMEWORLD_BUILDINGS_V77,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
-import {HOMEWORLD_URBAN_RESERVES_V78,homeworldUrbanTerrainV78,homeworldUrbanCollisionV78} from './homeworldStreetModulesV78';
+import {HOMEWORLD_URBAN_RESERVES_V78,HOMEWORLD_URBAN_PROPS_V78,HOMEWORLD_CITY_GENERATED_PROPS_V78,homeworldUrbanTerrainV78,homeworldUrbanCollisionV78} from './homeworldStreetModulesV78';
 import {HOMEWORLD_URBAN_EXTRAS_V78} from './homeworldUrbanPopulationV78';
 import {HOMEWORLD_URBAN_FACADES_V78} from './homeworldUrbanFacadesV78';
 import {homeworldUrbanCorridorV78,homeworldUrbanOverlapV78,homeworldUrbanRectV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
@@ -10,6 +10,10 @@ import {HOMEWORLD_ACTOR,pointInHomeworldPolygon,homeworldBuildingRenderDepthV76,
 import {HOMEWORLD_GEOMETRY_V64,homeworldBuildingGroundFrameV76,homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64} from './homeworldGeometryV64';
 import type {HomeworldNativeSpriteCellV64} from '../HomeworldNativePropV64';
 import type {HomeworldElementRecordV64} from './homeworldElementCodexV64';
+import {HOMEWORLD_FRONTAGE_PLANS_V81} from './homeworldAuthoredLotsV81';
+import {homeworldUsageEnvelopesV81,homeworldEnvelopesOverlapV81} from './homeworldUsageEnvelopesV81';
+import {homeworldCourtPolygonV80} from './homeworldCourtArtV80';
+import {homeworldCityNativePolygonV78} from './homeworldCityNativePlacementV78';
 
 export interface HomeworldCivicArtV80 extends HomeworldNativeSpriteCellV64 {
  readonly nativeGroundSupport:readonly HomeworldUrbanPointV78[];
@@ -68,6 +72,21 @@ export function homeworldCivicRefusalV80(item:HomeworldCivicPropV80,accepted:rea
  const polygon=homeworldCivicPolygonV80(item);
  for(const r of [...HOMEWORLD_URBAN_RESERVES_V78,...extras])if(r.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,r.polygon))return'reserved:'+r.id;
  for(const p of accepted)if(p.levelId===item.levelId&&homeworldUrbanOverlapV78(polygon,homeworldCivicPolygonV80(p)))return'new-prop:'+p.id;
+ const envelopes=homeworldUsageEnvelopesV81(item.artId,polygon);
+ const others=[...accepted.map(p=>({id:p.id,levelId:p.levelId,artId:p.artId,polygon:homeworldCivicPolygonV80(p)})),
+  ...HOMEWORLD_URBAN_PROPS_V78.map(p=>({id:p.id,levelId:p.levelId,artId:p.artId,polygon:homeworldCourtPolygonV80(p)})),
+  ...HOMEWORLD_CITY_GENERATED_PROPS_V78.map(p=>({id:p.id,levelId:p.levelId,artId:p.artId,polygon:homeworldCityNativePolygonV78(p)}))];
+ for(const p of others){if(p.levelId!==item.levelId)continue;const other=homeworldUsageEnvelopesV81(p.artId,p.polygon);
+  if(envelopes.usage&&homeworldEnvelopesOverlapV81(envelopes.usage,other.physical))return'usage-blocked:'+p.id;
+  if(other.usage&&homeworldEnvelopesOverlapV81(other.usage,envelopes.physical))return'blocks-usage:'+p.id;
+  if(envelopes.role.family==='bench'&&other.role.family==='bench'&&homeworldEnvelopesOverlapV81(envelopes.social,other.social))return'bench-social-clearance:'+p.id;
+ }
+ if(envelopes.usage){const u=envelopes.usage;
+  for(const x of [u.left+24,(u.left+u.right)/2,u.right-24])for(const y of [u.top+14,(u.top+u.bottom)/2,u.bottom-14]){
+   if(!homeworldUrbanTerrainV78(item.levelId,{x,y}))return'usage-unsupported';
+   const conflict=homeworldUrbanCollisionV78(item.levelId,{x,y});if(conflict)return'usage-old-volume:'+conflict.id;
+  }
+ }
  const hidden=homeworldCivicFacadeObstructionV80(item);if(hidden)return'painted-facade:'+hidden;
  const left=Math.min(...polygon.map(p=>p.x)),right=Math.max(...polygon.map(p=>p.x)),top=Math.min(...polygon.map(p=>p.y)),bottom=Math.max(...polygon.map(p=>p.y));
  const nx=Math.max(1,Math.ceil((right-left)/12)),ny=Math.max(1,Math.ceil((bottom-top)/12));
@@ -79,40 +98,19 @@ export function homeworldCivicRefusalV80(item:HomeworldCivicPropV80,accepted:rea
   const old=homeworldUrbanCollisionV78(item.levelId,p,{halfWidth:12,halfDepth:12});if(old)return'old-volume:'+old.id;
  }return null;
 }
-const available=(...ids:string[])=>ids.find(id=>HOMEWORLD_CIVIC_ART_V80[id]);
-const presets={
- rest:[['bench-left','terrace-bench-right'],['mineral-basin-right','mineral-planter-left'],['corner-wall-left','terrace-retaining-front'],['amber-lamp-post']],
- work:[['maintenance-rack','logistics-container-rack'],['forge-workstation-left'],['sealed-cargo-case-left'],['amber-lamp-post']],
- archive:[['clan-lectern-right','archive-shelf-right'],['bench-left','terrace-bench-right'],['mineral-basin-right','mineral-planter-left'],['clan-banner-standard']],
- exchange:[['market-stall-right'],['clan-common-table-left'],['sealed-cargo-case-left'],['amber-lamp-post']],
- freight:[['port-cargo-sorting-cart'],['maintenance-rack','logistics-container-rack'],['sealed-cargo-case-left'],['clan-banner-standard']],
-} as const;
-type Use=keyof typeof presets;
-const useLabel:Record<Use,string>={rest:'Halte',work:'Entretien',archive:'Consultation',exchange:'Échanges',freight:'Chargements'};
-const propLabel=(use:Use,artId:string)=>useLabel[use]+' · '+HOMEWORLD_CIVIC_ART_V80[artId].label;
-const getUseFor=(id:string):Use=>/forge|workshop/.test(id)?'work':/memory|mausoleum|sanctum/.test(id)?'archive':/dock|store|convoy/.test(id)?'freight':/market/.test(id)?'exchange':'rest';
 const candidates:HomeworldCivicPropV80[]=[];
-for(const b of HOMEWORLD_BUILDINGS_V77){const frame=homeworldBuildingGroundFrameV76(b),use=getUseFor(b.id),recipe=presets[use];
- for(const side of[-1,1])for(let slot=0;slot<recipe.length;slot++){
-  const artId=available(...recipe[slot]);if(!artId)continue;
-  const u=side*((b.footprint.width/2)+[70,40,120,70][slot]),v=frame.vFront+[190,330,470,100][slot];
-  candidates.push({id:`civic-v80:${b.id}:${side<0?'left':'right'}:${slot}`,artId,scale:slot===2?.85:1,
-   x:b.x+frame.tangent.x*u+frame.normal.x*v,y:b.y+frame.tangent.y*u+frame.normal.y*v,
-   levelId:b.levelId,districtId:b.districtId,clusterId:'frontage:'+b.id,buildingId:b.id,label:propLabel(use,artId),solid:true,interactive:false});
+for(const b of HOMEWORLD_BUILDINGS_V77){const frame=homeworldBuildingGroundFrameV76(b),plan=HOMEWORLD_FRONTAGE_PLANS_V81[b.id]??[];
+ for(const [slot,r] of plan.entries()){
+  const v=frame.vFront+r.v;
+  candidates.push({id:`civic-v81:${b.id}:${slot}`,artId:r.artId,scale:r.scale??1,
+   x:b.x+frame.tangent.x*r.u+frame.normal.x*v,y:b.y+frame.tangent.y*r.u+frame.normal.y*v,
+   levelId:b.levelId,districtId:b.districtId,clusterId:'frontage:'+b.id,buildingId:b.id,label:r.purpose,solid:true,interactive:false});
  }
 }
-const courts=[
- ...[3500,4140,4780,5420,6060,6700,7340].map((x,i)=>({id:'port-'+i,x,y:5220,levelId:'0' as const,districtId:'port',use:'freight' as Use})),
- ...[{id:'market',x:3150,y:3130,use:'exchange' as Use},{id:'maintenance',x:4150,y:3020,use:'work' as Use},
-  {id:'west-rest',x:3070,y:4150,use:'rest' as Use},{id:'east-cistern',x:4840,y:4540,use:'rest' as Use},
-  {id:'middle-rest',x:3730,y:4050,use:'rest' as Use},{id:'forge',x:3600,y:4800,use:'work' as Use},
-  {id:'common',x:4210,y:4840,use:'exchange' as Use}].map(c=>({...c,levelId:'-1A' as const,districtId:'undercity'})),
-];
-for(const c of courts)for(let slot=0;slot<8;slot++){
- const artId=available(...presets[c.use][slot%4]);if(!artId)continue;
- candidates.push({id:`civic-v80:court:${c.id}:${slot}`,artId,scale:1,x:c.x+(slot%2?-220:220),y:c.y+[-210,210,-330,330,-450,450,-570,570][slot],
-  levelId:c.levelId,districtId:c.districtId,clusterId:'court:'+c.id,buildingId:null,label:propLabel(c.use,artId),solid:true,interactive:false});
-}
+// The common table and retaining corner are specific named social/terrace
+// compositions. They are not appended to every frontage or repeated in rows.
+candidates.push({id:'civic-v81:court:lower-common:table',artId:'clan-common-table-left',scale:1,x:4380,y:4960,levelId:'-1A',districtId:'undercity',clusterId:'court:lower-common',buildingId:null,label:'Table sociale dans la poche orientale ; allée extérieure libre',solid:true,interactive:false},
+ {id:'civic-v81:court:lower-west-rest:wall',artId:'corner-wall-left',scale:1,x:2810,y:4545,levelId:'-1A',districtId:'undercity',clusterId:'court:lower-west-rest',buildingId:null,label:'Retour du soutènement au revers de la halte',solid:true,interactive:false});
 export const HOMEWORLD_CIVIC_ORIGINAL_CANDIDATES_V80:readonly HomeworldCivicPropV80[]=candidates;
 /** Browser view11 exposed this pupitre beneath the old native thicket071.
  * Retain the generated origin, ID, scale and hull; move only its world anchor
