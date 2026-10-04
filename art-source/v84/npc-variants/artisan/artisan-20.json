@@ -1,0 +1,49 @@
+{
+  "id": "artisan-20",
+  "role": "artisan",
+  "description": "Exceptionally broad but anatomically plausible adult workshop clamp maker with copper-gray scales and dark veining, enormous squared ridged alien forehead. Short thick dreadlocks splay into two restrained lateral loops secured by hide bands. Heavy ash-brown full-bib apron with one folded corner, long open lower panels, wide utility belt, reinforced fabric trousers. Holds a small hinged metal work clamp close to chest in left hand and tiny rivet tongs low in right. Calm wide stance, four distinct mandibles and fully visible bare clawed feet.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Exceptionally broad but anatomically plausible adult workshop clamp maker with copper-gray scales and dark veining, enormous squared ridged alien forehead. Short thick dreadlocks splay into two restrained lateral loops secured by hide bands. Heavy ash-brown full-bib apron with one folded corner, long open lower panels, wide utility belt, reinforced fabric trousers. Holds a small hinged metal work clamp close to chest in left hand and tiny rivet tongs low in right. Calm wide stance, four distinct mandibles and fully visible bare clawed feet.",
+  "status": "validated",
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-20.png",
+  "githubBlobSha": "0ed8553585bb729fecfbb4bdf38a0ef4da030702",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    51,
+    0,
+    1012,
+    1523
+  ],
+  "transparent_fraction": 0.5646413167317709,
+  "sha256": "f51aac5b7c9e73c963beb4fe60fa9e13fdf3e04e46266f1f51d212d730a7ff1f",
+  "byte_count": 2394132,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-20.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png",
+  "gitBlobSha1": "0ed8553585bb729fecfbb4bdf38a0ef4da030702",
+  "maxBorderAlpha": 3,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-20-before-face-review-d0e08c546460.png",
+    "sha256": "d0e08c5464609fef20ec36cab7fea7fb88368190a0c23a190d8f513a5dae0720"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "13",
+  "name": "Inspecteur des conteneurs",
+  "description": "Very tall muscular adult, russet spotted hide, massive ridged forehead, asymmetrical but intact mandibles, heavy long black dreadlocks. Dusty tan sleeveless tunic with thick padded shoulder straps, single bronze pauldron, wide segmented belt. Holds a compact pressure-lock testing device against a round sealed transport flask; square bolted canister secured to back. Arms gathered at mid-torso, neutral stance.",
+  "prompt": "Use case: stylized-concept. Produce exactly ONE individual full-body adult Yautja NPC game sprite: a caravan QUARTERMASTER of the Peuple des Citernes desert tribe. Image1 is reference ONLY for this role's tribe materials and visual identity: sand-worn tan cloth wraps and capes, dark leather harness/pouches, patinated bronze travel protection, restrained blue-glass water flasks and practical caravan supplies. Image2 is reference ONLY for cinematic realistically handpainted 2D game rendering, body proportions, readable silhouette and slightly elevated three-quarter camera FACING RIGHT. One NEW distinct individual, never a recoloured copy. Canonical alien Yautja cranium, four mandibles when face is exposed, tendril dreadlocks and clawed hands/feet. Working logistics specialist in calm idle stance, not combat. All baggage must be physically attached, held or strapped; no loose items around character. Crisp silhouette, detailed convincing textiles and weathered metal, soft overhead-left lighting. Full body head-to-toes and ALL equipment must fit inside frame with at least8% empty margin every side; do not crop. Genuine transparent alpha background. No scenery, backdrop, ground, platform, floor shadow, glow cloud, text, readable writing, numbers, labels, watermark, border, extra person, collage or atlas. No magical staff. At ordinary game sprite scale, face, posture, clothes and cargo shape must distinguish this person.\nDistinct individual design: Very tall muscular adult, russet spotted hide, massive ridged forehead, asymmetrical but intact mandibles, heavy long black dreadlocks. Dusty tan sleeveless tunic with thick padded shoulder straps, single bronze pauldron, wide segmented belt. Holds a compact pressure-lock testing device against a round sealed transport flask; square bolted canister secured to back. Arms gathered at mid-torso, neutral stance.",
+  "status": "generated",
+  "file": "tribe-desert-quartermaster-13.png",
+  "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-560bbd18-45ad-4890-9aa6-cba520b23c45.png",
+  "validation": {
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_pixels": 940237,
+    "pixel_count": 1572864,
+    "sha256": "c018f3f7d4847e070fa9bf9cdfc6ea09b5b8114aebea328bfcc2dca32d2b11d8"
+  },
+  "githubBlobSha": "1e87021500b90c31c39634756f43260fecf393e1",
+  "revisions": [
+    {
+      "file": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-desert-quartermaster/tribe-desert-quartermaster-13-414b9e185e77.png",
+      "sha256": "414b9e185e773ca97f75efafc2467066bcf2a87502b9de3fb8ed499013cacd61",
+      "githubBlobSha": "82832a8adb3ae012df9bec1eadec79a83aa36d83",
+      "reason": "Exposed head had simplified noncinematic mandibular anatomy"
+    }
+  ],
+  "revisionKind": "official-yautja-face-anatomy",
+  "revisionPrompt": "Edit IMAGE1, the complete original Yautja game sprite, with only a targeted correction of the uncovered FACE and its mandibular anatomy. IMAGE2 is the official 1987 Predator mechanical head photograph, used solely as exact facial anatomical reference.\nPRESERVE the same full-body adult NPC identity: body height and build, every piece of clothing, fabric colors, armor, tools, harness, held objects, hands, feet, thick biological scalp tendrils, pose, lighting, and overall game rendering style. Lock everything from neck downward. Keep the entire original character and all held equipment visible inside transparent margins. Do not zoom in, crop, add scenery, ground, shadow, text, watermark, or a second person. Real alpha transparent background.\nCorrect the exposed head to ultra-faithful cinematic Yautja anatomy seen in image2: broad alien cranial dome and heavy orbital folds, small recessed alien eyes, reptilian granular mottled hide. No human nose bridge, no human lips, no human chin, no two nasal tubes. EXACTLY FOUR distinct EXTERNAL FLESHY MANDIBLE LOBES around a separate INNER TOOTHED MOUTH: two UPPER CHEEK lobes each ending in a short inward/downward tusk, plus two large LOWER fleshy jaw lobes each ending in a long tusk curving UPWARDS. Their fleshy bases must visibly belong to four separate jaw appendages. Do not replace these with two smooth hanging tubes or two ordinary cheek fangs. Relaxed slightly parted four jaws, neutral attentive NPC expression, enough face turned three-quarter toward viewer that ALL FOUR external mandibles can be read. Keep the original person's cranial proportions, skin color, distinguishing spots/scars and tendril arrangement as much as the anatomical fix permits. Biological thick dreadlock tendrils, not human hair.\nThe intended result is the same original full-body character after a precise facial-anatomy correction, retaining all non-face design details. Do not copy the photo background, clothes, logos or watermark.",
+  "faceReview": {
+    "status": "approved",
+    "face": "visible-four-mandibles",
+    "sha256": "c018f3f7d4847e070fa9bf9cdfc6ea09b5b8114aebea328bfcc2dca32d2b11d8",
+    "review": "Complete generated PNG visually inspected against official 1987 reference."
+  }
+}

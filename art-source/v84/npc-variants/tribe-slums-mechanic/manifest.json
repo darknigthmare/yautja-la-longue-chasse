@@ -1,0 +1,885 @@
+{
+  "role": "tribe-slums-mechanic",
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+  ],
+  "method": "built-in image_gen, independent generation per variant",
+  "variants": [
+    {
+      "id": "tribe-slums-mechanic-01",
+      "role": "tribe-slums-mechanic",
+      "description": "Adult female mechanic with broad athletic shoulders and strong long legs, ochre-gray speckled scales, thick dreadlocks in a high rear ponytail. Unique short angular gray work biomask with square vent grille and one amber sensor. Salvaged asymmetrical graphite chest protection, copper-patched left shoulder guard, tool belt with cable coil and power cells. Holds a medium adjustable wrench lowered in right hand and a small diagnostic tablet in left.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Adult female mechanic with broad athletic shoulders and strong long legs, ochre-gray speckled scales, thick dreadlocks in a high rear ponytail. Unique short angular gray work biomask with square vent grille and one amber sensor. Salvaged asymmetrical graphite chest protection, copper-patched left shoulder guard, tool belt with cable coil and power cells. Holds a medium adjustable wrench lowered in right hand and a small diagnostic tablet in left. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        230,
+        26,
+        884,
+        1507
+      ],
+      "transparent_fraction": 0.6755758921305338,
+      "sha256": "f956c22a2c95641580731fee2f7edf6f0d3fd99425323f64535a6819efe8e239",
+      "byte_count": 2107700,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-74c8fd88-844c-4f38-9eea-a66f2318bdcb.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-01.png",
+      "githubBlobSha": "345773906fb5896a04447b1b7b4e5b840b1a659e",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-02",
+      "role": "tribe-slums-mechanic",
+      "description": "Stocky older male mechanic, broad charcoal-gray ridged skull and pale speckled skin, heavy dreadlocks in two low loops. Face fully visible with correct four mandibles. Oil-stained dark sleeveless work coveralls with a thick diagonal leather harness, one reinforced knee, worn bronze arm guards. Holds a compact torque ratchet at waist and a small removed motor cylinder in left hand; no weapon.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Stocky older male mechanic, broad charcoal-gray ridged skull and pale speckled skin, heavy dreadlocks in two low loops. Face fully visible with correct four mandibles. Oil-stained dark sleeveless work coveralls with a thick diagonal leather harness, one reinforced knee, worn bronze arm guards. Holds a compact torque ratchet at waist and a small removed motor cylinder in left hand; no weapon.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        14,
+        1010,
+        1512
+      ],
+      "transparent_fraction": 0.5977547963460287,
+      "sha256": "11d6205f84e8e8eda03ebedc41e84e8d1ef1a96fbe92b256f8ba24b51d78b811",
+      "byte_count": 2288258,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-42cd5360-1c56-492a-a032-f67856a5fa33.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-02.png",
+      "githubBlobSha": "fe3f4503a0ead3a6eb48710393e3bd46414079df",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-42cd5360-1c56-492a-a032-f67856a5fa33.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-42cd5360-1c56-492a-a032-f67856a5fa33.png",
+      "gitBlobSha1": "fe3f4503a0ead3a6eb48710393e3bd46414079df",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-02-before-face-review-2f35a2095005.png",
+        "sha256": "2f35a2095005af805f8c59e605f74247865414e991f82ae3e3e413343ce6c1ca"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-03",
+      "role": "tribe-slums-mechanic",
+      "description": "Tall lean adult female technician with narrow olive-gray head, long slim dreadlocks tied as one rear braid. Half-face industrial respirator leaves brow and upper mandibles visible. Worn gray short work jacket with mismatched reclaimed metal chest inserts, two rectangular hip tool bags and reinforced trousers. Holds a cable crimping tool and a short coiled wiring harness, both clearly handheld at waist.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Tall lean adult female technician with narrow olive-gray head, long slim dreadlocks tied as one rear braid. Half-face industrial respirator leaves brow and upper mandibles visible. Worn gray short work jacket with mismatched reclaimed metal chest inserts, two rectangular hip tool bags and reinforced trousers. Holds a cable crimping tool and a short coiled wiring harness, both clearly handheld at waist. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        266,
+        43,
+        909,
+        1499
+      ],
+      "transparent_fraction": 0.6830863952636719,
+      "sha256": "d51b5aa993778e76ec7160caab9a4aab6051cd2ff8254c0256068cc43286a5ad",
+      "byte_count": 2083970,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-459380bc-3de2-49e6-9532-843a48534499.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-03.png",
+      "githubBlobSha": "f76f6cd6d56b50db3cfac5c32966602e3902ef1c",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-04",
+      "role": "tribe-slums-mechanic",
+      "description": "Very broad male maintenance expert with amber-brown scales and dark mottles, low flattened crown, short thick dreadlocks swept backward. Rounded protective work visor raised above forehead, full alien face visible. Heavy sleeveless black work vest, scratched copper chest guard, large hanging tool roll, dark gray work trousers with padding. Both hands examine a small circuit housing with one probe touching it.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very broad male maintenance expert with amber-brown scales and dark mottles, low flattened crown, short thick dreadlocks swept backward. Rounded protective work visor raised above forehead, full alien face visible. Heavy sleeveless black work vest, scratched copper chest guard, large hanging tool roll, dark gray work trousers with padding. Both hands examine a small circuit housing with one probe touching it.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        13,
+        1012,
+        1512
+      ],
+      "transparent_fraction": 0.6140009562174479,
+      "sha256": "ad0f15433071303db279a9c8edfebfd33e7e1e07c78d058458595900a5bf7cce",
+      "byte_count": 2272443,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e30c4bfc-93df-40b7-94c9-677bdfd97a51.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-04.png",
+      "githubBlobSha": "c4a6f60208c6faeb501c0d6f23b551cab799ed95",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-e30c4bfc-93df-40b7-94c9-677bdfd97a51.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e30c4bfc-93df-40b7-94c9-677bdfd97a51.png",
+      "gitBlobSha1": "c4a6f60208c6faeb501c0d6f23b551cab799ed95",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-04-before-face-review-3702b7a7d9cd.png",
+        "sha256": "3702b7a7d9cddf391a93032617874ceafa96df18dfe3dec0d8228d85d8e24034"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-05",
+      "role": "tribe-slums-mechanic",
+      "description": "Slender mature female field mechanic with pale sand-gray scales and black freckles, angular high brow, dreadlocks bound into a folded knot high behind head. Unique tapered biomask with two narrow copper side vents, scratched steel. Patchwork brown industrial vest over dark utility underlayer, one shoulder cable spool and compact square hip scanner. Holds a blunt repair driver downwards and a palm-sized turbine cartridge near chest.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Slender mature female field mechanic with pale sand-gray scales and black freckles, angular high brow, dreadlocks bound into a folded knot high behind head. Unique tapered biomask with two narrow copper side vents, scratched steel. Patchwork brown industrial vest over dark utility underlayer, one shoulder cable spool and compact square hip scanner. Holds a blunt repair driver downwards and a palm-sized turbine cartridge near chest. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        283,
+        98,
+        855,
+        1443
+      ],
+      "transparent_fraction": 0.7221145629882812,
+      "sha256": "5860309ea10f784cf35cd7f98595fb41d78b624c6704c5a486b3719cbdfdd186",
+      "byte_count": 1919237,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-de292958-b98c-4140-819e-580a7712cc36.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-05.png",
+      "githubBlobSha": "14a0bff88b6e2880a78a5e3f889e6776a6623c28",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-06",
+      "role": "tribe-slums-mechanic",
+      "description": "Short sturdy male mechanic, blue-gray scales with copper flecks, wide ridged unmasked forehead and proper four mandibles. Long thick dreadlocks bound with scavenged dark rings in three bunches. Gray grease-marked work apron over a reinforced black utility tunic, copper elbow plates and asymmetrical work shin guards. One hand carries a small portable multimeter, other holds its connected probe with cable safely looped to body.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short sturdy male mechanic, blue-gray scales with copper flecks, wide ridged unmasked forehead and proper four mandibles. Long thick dreadlocks bound with scavenged dark rings in three bunches. Gray grease-marked work apron over a reinforced black utility tunic, copper elbow plates and asymmetrical work shin guards. One hand carries a small portable multimeter, other holds its connected probe with cable safely looped to body.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        21,
+        988,
+        1536
+      ],
+      "transparent_fraction": 0.606177012125651,
+      "sha256": "aeb914018f456e48a8be00975fafb932943b9bb5fb6959dae1fe8a7ffa7925b2",
+      "byte_count": 2326365,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-06.png",
+      "githubBlobSha": "a1fd1dd81b35b3e984f567c6b54765c022422e61",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png",
+      "gitBlobSha1": "a1fd1dd81b35b3e984f567c6b54765c022422e61",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-06-before-face-review-dc4742f1e27a.png",
+        "sha256": "dc4742f1e27a30100e2204765db0774132bbc8b44aad1c1142aa26b1e4259bb5"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-07",
+      "role": "tribe-slums-mechanic",
+      "description": "Tall powerful female machine specialist with bronze-gray scales, thick neck and strong arms, dark dreadlocks in a low tight ponytail. Heavy wide industrial biomask with a flat central faceplate and slotted jaw grille, no weapons attachments. Worn armored workshop vest, one square shoulder pad, wide utility belt with two flat battery packs. Holds a small socket wrench and a dented mechanical elbow fitting, relaxed standing work pose.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Tall powerful female machine specialist with bronze-gray scales, thick neck and strong arms, dark dreadlocks in a low tight ponytail. Heavy wide industrial biomask with a flat central faceplate and slotted jaw grille, no weapons attachments. Worn armored workshop vest, one square shoulder pad, wide utility belt with two flat battery packs. Holds a small socket wrench and a dented mechanical elbow fitting, relaxed standing work pose. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        236,
+        103,
+        865,
+        1447
+      ],
+      "transparent_fraction": 0.7147579193115234,
+      "sha256": "2b69f531241567541c4bf989215e653667c03add23a92f50b881a7baaeb02d1d",
+      "byte_count": 1936051,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d0c6c926-723d-45d7-989a-b062492c981c.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-07.png",
+      "githubBlobSha": "96ed63997bd07d12357ae24003fa04b6477f8697",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-08",
+      "role": "tribe-slums-mechanic",
+      "description": "Very slim older male repairer with charcoal skin and pale age patches, long narrow skull, thin gray-black dreadlocks in one side braid. No helmet; correct four mandibles and intelligent eyes. Ragged short charcoal technician coat with reinforced cuffs, copper-patched waist harness, a little folded inspection light on chest. Inspects a small damaged data module while using a fine screwdriver in other hand, long wrapped work trousers.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very slim older male repairer with charcoal skin and pale age patches, long narrow skull, thin gray-black dreadlocks in one side braid. No helmet; correct four mandibles and intelligent eyes. Ragged short charcoal technician coat with reinforced cuffs, copper-patched waist harness, a little folded inspection light on chest. Inspects a small damaged data module while using a fine screwdriver in other hand, long wrapped work trousers.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        16,
+        964,
+        1505
+      ],
+      "transparent_fraction": 0.6759147644042969,
+      "sha256": "0ca10d08e05ef38b46a78445906989b3f17fa3f92a49d99084b06e3f95a3308f",
+      "byte_count": 2033736,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-615f3738-c40c-4b70-ab0e-bace9dd1f6b4.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-08.png",
+      "githubBlobSha": "f58be82497be960a8599738cc52f11318e114714",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-615f3738-c40c-4b70-ab0e-bace9dd1f6b4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-615f3738-c40c-4b70-ab0e-bace9dd1f6b4.png",
+      "gitBlobSha1": "f58be82497be960a8599738cc52f11318e114714",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-08-before-face-review-9e5540b0e52d.png",
+        "sha256": "9e5540b0e52d4a38cda0694c7147389cfcc2b23fded2eebb944ed865cde6ca16"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-09",
+      "role": "tribe-slums-mechanic",
+      "description": "Medium-height athletic adult female mechanic, mottled ivory-olive scales, broad domed forehead, short thick dreadlocks in two high side bunches. Protective half visor raised on one side leaves face visible. Rust-brown sleeveless work suit with dark angular chest and knee panels, neatly contained loops of power cable on belt. Holds a compact manual pump tool and a short hose coupling separately at waist.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height athletic adult female mechanic, mottled ivory-olive scales, broad domed forehead, short thick dreadlocks in two high side bunches. Protective half visor raised on one side leaves face visible. Rust-brown sleeveless work suit with dark angular chest and knee panels, neatly contained loops of power cable on belt. Holds a compact manual pump tool and a short hose coupling separately at waist.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        65,
+        19,
+        1010,
+        1510
+      ],
+      "transparent_fraction": 0.6428241729736328,
+      "sha256": "977a77572bd939f0a01f2849794b38ab2f84135b6a56183873e33a543d11d136",
+      "byte_count": 2176410,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-09.png",
+      "githubBlobSha": "b8a55bbc1eeb7800827940a4beb85e0186b28269",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png",
+      "gitBlobSha1": "b8a55bbc1eeb7800827940a4beb85e0186b28269",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-09-before-face-review-2da9224da4bb.png",
+        "sha256": "2da9224da4bb5be8a4bb8ad4f60b0a2aaffbbe924a97d9ed33e7a83af5febd99"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-10",
+      "role": "tribe-slums-mechanic",
+      "description": "Barrel-chested adult male equipment mechanic, deep umber scales and ochre spots, thick dreadlocks cascading behind in one broad bound bundle. Unique asymmetrical steel biomask with three small amber diagnostic lenses on one temple and visible lower grille. Salvaged charcoal protective chestplate over coarse gray utility fabric, huge single side tool pouch and reinforced shins. Large closed pliers lowered in one hand, compact oil reservoir in other.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Barrel-chested adult male equipment mechanic, deep umber scales and ochre spots, thick dreadlocks cascading behind in one broad bound bundle. Unique asymmetrical steel biomask with three small amber diagnostic lenses on one temple and visible lower grille. Salvaged charcoal protective chestplate over coarse gray utility fabric, huge single side tool pouch and reinforced shins. Large closed pliers lowered in one hand, compact oil reservoir in other. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        210,
+        103,
+        889,
+        1456
+      ],
+      "transparent_fraction": 0.6713091532389323,
+      "sha256": "912f5dc83b5cd8218640eb4e4419c24ed77569fc1f9b84705a21419fa67f426d",
+      "byte_count": 2084261,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-44987094-a2f5-49fc-8ef2-5da2ad4a7172.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-10.png",
+      "githubBlobSha": "3550b4675fe7601a3d304bf70a11602afba7510c",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-11",
+      "role": "tribe-slums-mechanic",
+      "description": "Tall narrow-shouldered mature female instrument mechanic with silver-gray scales and dark fine spots, long dreadlocks braided in two thin strands behind. Unmasked face with angular four mandibles and a sharp central skull ridge. Short pale gray technician jacket, dark leather tool harness, tiny chest diagnostic screen and black fabric work trousers. Holds a delicate electronic test probe and small triangular sensor plate at sternum.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall narrow-shouldered mature female instrument mechanic with silver-gray scales and dark fine spots, long dreadlocks braided in two thin strands behind. Unmasked face with angular four mandibles and a sharp central skull ridge. Short pale gray technician jacket, dark leather tool harness, tiny chest diagnostic screen and black fabric work trousers. Holds a delicate electronic test probe and small triangular sensor plate at sternum.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        65,
+        17,
+        1010,
+        1518
+      ],
+      "transparent_fraction": 0.7099831899007162,
+      "sha256": "72c833a04517a43ef7aa34fd07f0495f1dbf08f8f28f703b616d3674a514151f",
+      "byte_count": 1949190,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-11.png",
+      "githubBlobSha": "ddb58372300b3586388974f22849b6f9b34f1217",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png",
+      "gitBlobSha1": "ddb58372300b3586388974f22849b6f9b34f1217",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-11-before-face-review-a4df796d4e85.png",
+        "sha256": "a4df796d4e8551af6602e39df213eddf373d041bffd1fa2c503ed11c24ffedc0"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-12",
+      "role": "tribe-slums-mechanic",
+      "description": "Short heavily built male industrial repairer with copper-olive skin and charcoal patches, wide low brow, dreadlocks in a short crown knot. Blunt battered welding work shield raised over crown, face completely visible. Thick gray work overalls with a broad rust leather front panel, strong tool belt, mismatched protective gauntlets. Holds a cold welding handpiece safely downward and a small metal repair patch, no sparks or flame.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short heavily built male industrial repairer with copper-olive skin and charcoal patches, wide low brow, dreadlocks in a short crown knot. Blunt battered welding work shield raised over crown, face completely visible. Thick gray work overalls with a broad rust leather front panel, strong tool belt, mismatched protective gauntlets. Holds a cold welding handpiece safely downward and a small metal repair patch, no sparks or flame.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        2,
+        0,
+        981,
+        1536
+      ],
+      "transparent_fraction": 0.5480906168619791,
+      "sha256": "cdd9f45e9627fa5a0086aed64cee2f0c926fbd6ed504550ed0d9ea8ced2337a7",
+      "byte_count": 2480537,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5344d7ea-b44c-43d7-96cd-fd937de0f03a.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-12.png",
+      "githubBlobSha": "0400e6d5574d965ae6deee14358759830258dc1f",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-5344d7ea-b44c-43d7-96cd-fd937de0f03a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5344d7ea-b44c-43d7-96cd-fd937de0f03a.png",
+      "gitBlobSha1": "0400e6d5574d965ae6deee14358759830258dc1f",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-12-before-face-review-c9d1b23d052e.png",
+        "sha256": "c9d1b23d052e2d005071e33dae26da065453780523ed2406764b5dd674aef4f0"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-13",
+      "role": "tribe-slums-mechanic",
+      "description": "Lean athletic adult mechanic; sand-gray skin with small charcoal freckles; tall broad-backed skull; shoulder-length black tendrils gathered into a tidy rear half-loop. Full face visible and all four mandibles. Closed high-neck graphite technical coveralls with long sleeves, patched copper-gray utility vest fully fastened over torso, straight reinforced trousers, two angled hip cases and compact knee guards. Holds a cylindrical power-cell cartridge in left hand and a short torque driver in lowered right. Neutral upright diagnostic pose.",
+      "prompt": "Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs. ROLE: industrial mechanic of the Forges Basses tribe. Civilian mechanical repair tools and practical salvaged sci-fi work clothing, no guns or combat weapons. NEW INDIVIDUAL: Lean athletic adult mechanic; sand-gray skin with small charcoal freckles; tall broad-backed skull; shoulder-length black tendrils gathered into a tidy rear half-loop. Full face visible and all four mandibles. Closed high-neck graphite technical coveralls with long sleeves, patched copper-gray utility vest fully fastened over torso, straight reinforced trousers, two angled hip cases and compact knee guards. Holds a cylindrical power-cell cartridge in left hand and a short torque driver in lowered right. Neutral upright diagnostic pose.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6c58eaf2-9cb4-475a-b09a-ad9c6a8d6871.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6c58eaf2-9cb4-475a-b09a-ad9c6a8d6871.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "31e9e16835cfcc78ac31ba187801cf6e541b983f",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-13.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        16,
+        1012,
+        1520
+      ],
+      "transparent_fraction": 0.6401551564534506,
+      "sha256": "42f2e13c89ce092b1694ea92f092c64777efba6f468c06a3ac052af9e51c4cd4",
+      "gitBlobSha1": "31e9e16835cfcc78ac31ba187801cf6e541b983f",
+      "byte_count": 2201105,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-14",
+      "role": "tribe-slums-mechanic",
+      "description": "Very tall muscular male hydraulics mechanic, gray-green skin with ivory mottles, thick dreadlocks tied very low behind neck. Face unmasked, massive domed skull and proper four mandibles. Broad scratched steel work vest, brown padded one-shoulder sleeve, large waist coil of short hose, dark double-knee work trousers. Cradles a short disassembled hydraulic piston horizontally in both hands at waist.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall muscular male hydraulics mechanic, gray-green skin with ivory mottles, thick dreadlocks tied very low behind neck. Face unmasked, massive domed skull and proper four mandibles. Broad scratched steel work vest, brown padded one-shoulder sleeve, large waist coil of short hose, dark double-knee work trousers. Cradles a short disassembled hydraulic piston horizontally in both hands at waist.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        1010,
+        1514
+      ],
+      "transparent_fraction": 0.637488047281901,
+      "sha256": "01ec3c7723cd385d7b0cf8cf6b1575b1499b13af4584a264222b8bbc9bedae96",
+      "byte_count": 2213372,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f6621737-4639-42e0-b034-b97f354810ed.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-14.png",
+      "githubBlobSha": "058e970d469d87de160ed2ec342e9492aac43c7f",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-14.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f6621737-4639-42e0-b034-b97f354810ed.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f6621737-4639-42e0-b034-b97f354810ed.png",
+      "gitBlobSha1": "058e970d469d87de160ed2ec342e9492aac43c7f",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-14-before-face-review-fa4c98e1d1e6.png",
+        "sha256": "fa4c98e1d1e66c89dffda076e1467210e0ecfee0f6675af2f7708b418f9c446d"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-15",
+      "role": "tribe-slums-mechanic",
+      "description": "Compact mature female maintenance technician with ochre scales and black cheek mottles, short broad forehead, many fine dreadlocks gathered in a high folded bun. Industrial faceplate covering only lower face leaves eyes and skull visible. Weathered dark blue-gray utility coveralls with a tan leather tool bib, small copper knee panels, a side pouch with connector caps. Holds a small open spanner and a detached valve housing.",
+      "prompt": "Use case: stylized-concept. ONE individual full-body Yautja tribal MECHANIC NPC sprite. RGBA transparent background. COMPOSITION: entire character plus tools should occupy ONLY central 76 percent of image height, at least 10 percent clear empty margin above head and below feet and 8 percent left/right. Zoom out for complete crown, dreadlocks, feet and tools, never cropped. Image1 is ROLE/MATERIAL reference: the existing Forges Basses mechanic, industrial salvage sci-fi protection, scratched dark metal with worn copper repair patches, practical handheld equipment. Image2 is PROJECTION/RENDER reference only: realistic painterly 2D game NPC, slightly elevated three-quarter view facing RIGHT, readable silhouette and restrained upper-left light. Create a completely NEW adult individual: Compact mature female maintenance technician with ochre scales and black cheek mottles, short broad forehead, many fine dreadlocks gathered in a high folded bun. Industrial faceplate covering only lower face leaves eyes and skull visible. Weathered dark blue-gray utility coveralls with a tan leather tool bib, small copper knee panels, a side pouch with connector caps. Holds a small open spanner and a detached valve housing. Fully believable Predator/Yautja anatomy; four mandibles and no human nose or human lips when face visible, fleshy dreadlocks, scaly skin, clawed hands and feet. Mask, if specified, must be a NEW industrial design, not copy of image1. Feet/claws remain visible under work protection. Technological civil mechanic role, salvaged functional repair gear; no gun, no blade weapon, no shoulder cannon, no medieval fantasy. Different physique, skull/mask silhouette, dreadlocks, clothing construction, pose and tools versus every other variant; not a recolor. ONE character only with all objects held or worn, not a scene. Actual transparent alpha, no opaque background, no ground, no floor shadow, no vignette, no extra glow, no smoke, no sparks, no text or letters, no labels, no frame, no collage, no contact sheet. Whole figure and tools centered small enough for wide margins. Painterly realistic 2D sprite matching the game.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        239,
+        72,
+        850,
+        1447
+      ],
+      "transparent_fraction": 0.7234350840250651,
+      "sha256": "f69a9fad9fd601979544b1ee782380aab063086f673af0f0f96f16ad0210009c",
+      "byte_count": 1885670,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-881c84fd-99ab-4f6d-bf77-adf83e9c9368.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-15.png",
+      "githubBlobSha": "f03e520ae8ab0907914726703c2cc2fc992646b6",
+      "blobError": null,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-16",
+      "role": "tribe-slums-mechanic",
+      "description": "Long-limbed elderly male electrician with dark slate skin and sparse pale gold freckles, narrow wrinkled ridged face, thin gray-black dreadlocks falling loosely to shoulder. Face fully visible, no mask. Brown short technician coat with rolled sleeves, charcoal harness with neat cable loops, padded black work trousers. Tests a small two-terminal power module with two connected leads, all wires looped tightly within silhouette.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Long-limbed elderly male electrician with dark slate skin and sparse pale gold freckles, narrow wrinkled ridged face, thin gray-black dreadlocks falling loosely to shoulder. Face fully visible, no mask. Brown short technician coat with rolled sleeves, charcoal harness with neat cable loops, padded black work trousers. Tests a small two-terminal power module with two connected leads, all wires looped tightly within silhouette.",
+      "status": "validated",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        31,
+        1010,
+        1516
+      ],
+      "transparent_fraction": 0.7201143900553385,
+      "sha256": "84da7fb7b94062ac05fdc827cb72ee45a87e15c91b9a5f4144af76080d59b94d",
+      "byte_count": 1923388,
+      "original_bytes_preserved": true,
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-335d96aa-dffc-4df0-bde5-a73642efd4d8.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-16.png",
+      "githubBlobSha": "2ddbc0136b3af4cb9f25180b3bb46e64e5bbf50d",
+      "blobError": null,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-16.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-335d96aa-dffc-4df0-bde5-a73642efd4d8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-335d96aa-dffc-4df0-bde5-a73642efd4d8.png",
+      "gitBlobSha1": "2ddbc0136b3af4cb9f25180b3bb46e64e5bbf50d",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-16-before-face-review-3e2d3afdd9ee.png",
+        "sha256": "3e2d3afdd9ee20dcf73356a6f966d5d4595302c2aa7d9a9a7afb18853f66363f"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-17",
+      "role": "tribe-slums-mechanic",
+      "description": "Very broad sturdy adult mechanical salvage specialist, smoky olive skin and orange mottles, low wide skull, thick short tendrils arranged in three short rear bunches. Full face visible and all four mandibles. Fully closed copper-patched graphite technician jacket, large reinforced thigh pouch, sturdy work leg guards over dark heavy trousers. Holds a blunt circular broken gear segment in left hand and a compact heavy adjustable wrench lowered in right, elbows apart, weight on right leg.",
+      "prompt": "Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs. ROLE: industrial mechanic of the Forges Basses tribe. Civilian mechanical repair tools and practical salvaged sci-fi work clothing, no guns or combat weapons. NEW INDIVIDUAL: Very broad sturdy adult mechanical salvage specialist, smoky olive skin and orange mottles, low wide skull, thick short tendrils arranged in three short rear bunches. Full face visible and all four mandibles. Fully closed copper-patched graphite technician jacket, large reinforced thigh pouch, sturdy work leg guards over dark heavy trousers. Holds a blunt circular broken gear segment in left hand and a compact heavy adjustable wrench lowered in right, elbows apart, weight on right leg.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-35d15a42-9d80-45b6-afed-a6b6ffcd8965.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-35d15a42-9d80-45b6-afed-a6b6ffcd8965.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "8ec251367be6cc029acd76081e15b0e208d3d703",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-17.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        12,
+        992,
+        1536
+      ],
+      "transparent_fraction": 0.5709673563639323,
+      "sha256": "77a6c1bbd0232f82f4fae28f32650c0c57651ea44d8b3be83b6dad9e7f728e0f",
+      "gitBlobSha1": "8ec251367be6cc029acd76081e15b0e208d3d703",
+      "byte_count": 2414178,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-18",
+      "role": "tribe-slums-mechanic",
+      "description": "Short wiry adult male electronics repairer; pale gray-tan scales and dark freckles, compact tall broad-backed head; skull tendrils tied in an asymmetrical folded rear bundle. Small single-eye magnifier on thin head strap leaves outer jaws completely unobstructed and other eye visible. Closed long-sleeved gray work tunic with asymmetrical brown leather pockets and one salvaged metal shoulder cap, wrapped work trousers. Inspects a small circuit board at waist while holding a tiny unlit soldering handpiece, no smoke. Slight forward concentration.",
+      "prompt": "Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs. ROLE: industrial mechanic of the Forges Basses tribe. Civilian mechanical repair tools and practical salvaged sci-fi work clothing, no guns or combat weapons. NEW INDIVIDUAL: Short wiry adult male electronics repairer; pale gray-tan scales and dark freckles, compact tall broad-backed head; skull tendrils tied in an asymmetrical folded rear bundle. Small single-eye magnifier on thin head strap leaves outer jaws completely unobstructed and other eye visible. Closed long-sleeved gray work tunic with asymmetrical brown leather pockets and one salvaged metal shoulder cap, wrapped work trousers. Inspects a small circuit board at waist while holding a tiny unlit soldering handpiece, no smoke. Slight forward concentration.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-355043c4-552a-497d-a96c-4fa821e1d328.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-355043c4-552a-497d-a96c-4fa821e1d328.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "4c0ba54db97ddf5e057f2ccd047a3c275f4f4b76",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-18.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        1012,
+        1536
+      ],
+      "transparent_fraction": 0.6378377278645834,
+      "sha256": "4f3fb3e4fbc7b07a8c7bddfb0011bc8b97788ac755e69ed5bcc42b4ad948c4ce",
+      "gitBlobSha1": "4c0ba54db97ddf5e057f2ccd047a3c275f4f4b76",
+      "byte_count": 2201212,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-19",
+      "role": "tribe-slums-mechanic",
+      "description": "Tall strong older adult workshop mechanic; bronze-black scales with pale gray patches, heavy tendrils in a low double loop; broad angular skull and deep brow, four obvious mandibles. Long split dark industrial work apron over closed gray work shirt and reinforced gray trousers, scratched copper forearm plates, compact toolkit at each hip. Both hands support a small open rectangular gearbox showing a few recognizably mechanical components, hips angled slightly right, head nearly frontal.",
+      "prompt": "Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs. ROLE: industrial mechanic of the Forges Basses tribe. Civilian mechanical repair tools and practical salvaged sci-fi work clothing, no guns or combat weapons. NEW INDIVIDUAL: Tall strong older adult workshop mechanic; bronze-black scales with pale gray patches, heavy tendrils in a low double loop; broad angular skull and deep brow, four obvious mandibles. Long split dark industrial work apron over closed gray work shirt and reinforced gray trousers, scratched copper forearm plates, compact toolkit at each hip. Both hands support a small open rectangular gearbox showing a few recognizably mechanical components, hips angled slightly right, head nearly frontal.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-bd9be96a-d616-4401-a77b-5b1dce23a62c.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-bd9be96a-d616-4401-a77b-5b1dce23a62c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "8e1021a5f4024716fd7dfab78bc38dc62222b08f",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-19.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        64,
+        13,
+        968,
+        1523
+      ],
+      "transparent_fraction": 0.6330000559488932,
+      "sha256": "1e76046e747291ab5e4e4dcbb00673bfb99a3a238ccbbbab2855162576a05d58",
+      "gitBlobSha1": "8e1021a5f4024716fd7dfab78bc38dc62222b08f",
+      "byte_count": 2182038,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "tribe-slums-mechanic-20",
+      "role": "tribe-slums-mechanic",
+      "description": "Massive mature male power-systems mechanic, sand-gray skin with clustered black mottles, broad squared dome and thick short tendrils held back with plain bands; unmasked full anatomical four-lobed mandible face. Heavy fully fastened black utility vest over closed work shirt, one orange-brown patched shoulder panel, broad tool harness carrying small closed cases and short cable coils; strong trousered legs. Holds a small diagnostic scanner at chest in left hand and blunt socket driver lowered at right, relaxed broad planted stance.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs. ROLE: industrial mechanic of the Forges Basses tribe. Civilian mechanical repair tools and practical salvaged sci-fi work clothing, no guns or combat weapons. NEW INDIVIDUAL: Massive mature male power-systems mechanic, sand-gray skin with clustered black mottles, broad squared dome and thick short tendrils held back with plain bands; unmasked full anatomical four-lobed mandible face. Heavy fully fastened black utility vest over closed work shirt, one orange-brown patched shoulder panel, broad tool harness carrying small closed cases and short cable coils; strong trousered legs. Holds a small diagnostic scanner at chest in left hand and blunt socket driver lowered at right, relaxed broad planted stance.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5955d04f-b836-4c58-b446-0ffb347cefcc.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-5955d04f-b836-4c58-b446-0ffb347cefcc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "90141a59c9e4574a006722af810d56e98542089f",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-20.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        34,
+        1012,
+        1518
+      ],
+      "transparent_fraction": 0.6048272450764974,
+      "sha256": "d216bbcf2570ece0f67646c1390acefc1e30e9511b349109ebae8591590e8fed",
+      "gitBlobSha1": "90141a59c9e4574a006722af810d56e98542089f",
+      "byte_count": 2313971,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    }
+  ],
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+}

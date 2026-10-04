@@ -1,0 +1,49 @@
+{
+  "id": "artisan-11",
+  "role": "artisan",
+  "description": "Very tall slender elderly precision mechanic with soot-brown scales, many pale spots, narrow angular skull and aged ridged brow. Long thin dreadlocks bound into one braid over the left rear shoulder. Full-neck charcoal leather apron, narrow split hem almost to ankles, crossbody round instrument case. Both hands low at sternum: left holds small lens housing, right holds tiny screwdriver near housing. Shoulders slightly hunched, calm thoughtful look, correct four mandibles and exposed clawed feet.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall slender elderly precision mechanic with soot-brown scales, many pale spots, narrow angular skull and aged ridged brow. Long thin dreadlocks bound into one braid over the left rear shoulder. Full-neck charcoal leather apron, narrow split hem almost to ankles, crossbody round instrument case. Both hands low at sternum: left holds small lens housing, right holds tiny screwdriver near housing. Shoulders slightly hunched, calm thoughtful look, correct four mandibles and exposed clawed feet.",
+  "status": "validated",
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-11.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    0,
+    1012,
+    1518
+  ],
+  "transparent_fraction": 0.6845143636067709,
+  "sha256": "62e72a94b44dfc35e792019eec5ce823574127b1d2d4001f14526973dc303c0f",
+  "byte_count": 1984684,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-11.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "githubBlobSha": "a9f5d52321c8726ec36982d920b1211c6d7a3850",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png",
+  "gitBlobSha1": "a9f5d52321c8726ec36982d920b1211c6d7a3850",
+  "maxBorderAlpha": 1,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-11-before-face-review-3c140f10a785.png",
+    "sha256": "3c140f10a785e8ff4e08ef32cfabcb0da6ef4bc113e65eeba93ed5df5fa81925"
+  }
+}

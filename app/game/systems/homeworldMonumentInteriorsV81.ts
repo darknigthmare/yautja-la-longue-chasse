@@ -3,6 +3,7 @@ import type { HomeworldInteriorPartitionV72, HomeworldInteriorZoneV72 } from './
 import type { HomeworldFurnitureArtIdV72, HomeworldFurnitureInstanceV72 } from './homeworldFurnitureV72';
 import type { HomeworldInteriorDecorArtIdV76, HomeworldInteriorDecorInstanceV76 } from './homeworldInteriorDecorV76';
 import type { HomeworldCivilianRoleV72 } from './homeworldIdentityV72';
+import npcAdditionsV84 from '../data/homeworldNpcAdditionsV84.json';
 
 export interface HomeworldMonumentInhabitantV81 {
   id: string; role: HomeworldCivilianRoleV72; label: string; x: number; y: number; facing: 1 | -1;
@@ -128,6 +129,11 @@ export function homeworldMonumentInteriorV81(room: HomeworldInteriorV64): Homewo
     { id: 'council-v81-herald', role: 'herald', label: 'Représentant d’un clan allié', x: 356, y: 174, facing: 1, interactive: false, motion: 'preserved-native-idle-no-new-gesture-clip' },
     { id: 'council-v81-rite-observer', role: 'rite-keeper', label: 'Ancien observateur des rites locaux', x: 654, y: 218, facing: -1, interactive: false, motion: 'preserved-native-idle-no-new-gesture-clip' },
   ];
+  inhabitants.push(...npcAdditionsV84.interiors.filter(npc => npc.buildingId === room.buildingId).map(npc => ({
+    id: npc.id, role: npc.fallbackRole as HomeworldCivilianRoleV72, label: npc.label,
+    x: npc.x, y: npc.y, facing: npc.facing as 1 | -1,
+    interactive: false as const, motion: 'preserved-native-idle-no-new-gesture-clip' as const,
+  })));
   return { ...preserved, title, width, depth, props, furniture, zones, partitions,
     description: `${palace ? 'Vestibule, garde, grande chambre d’audience, galerie des marques et annexe des clans' : 'Vestibule, registres, recueillement et chambre des représentants'} reliés à pied. Composition originale pour ce jeu ; aucun nouveau rang, dossier, service ou accès royal n’est accordé. Les suites privées et les étages non produits restent hors de cette aile publique.`,
     spawn: { x: width / 2, y: depth - 72 }, exit: { x: width / 2, y: depth - 24 },

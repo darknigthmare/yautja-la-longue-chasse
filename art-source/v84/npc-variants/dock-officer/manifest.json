@@ -1,0 +1,895 @@
+{
+  "role": "dock-officer",
+  "requested": 20,
+  "ready": 20,
+  "status": "complete",
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civic-specialists-spaced-atlas.png",
+  "referenceCell": 0,
+  "promptCommon": "Use case: stylized-concept. ONE standalone transparent full-body 2D NPC sprite for Yautja The Long Hunt. Reference image is STYLE/SPECIES reference only; use TOP LEFT dock officer (cell0) for civilian role and painterly material rendering, create ONE different individual described below. Realistic painterly videogame art, correct adult Yautja alien head/four mandibles/dreadlocks/reptilian skin/clawed feet, no human facial anatomy. Port navigation and logistics officer: civilian practical tunic/vest and restrained bronze fittings, role-appropriate handheld tool, no soldier armor, no weapon. Full body relaxed standing three-quarter facing RIGHT from slightly elevated camera, head to clawed feet and all equipment entirely visible. Subject occupies at most82% image height; leave8% transparent clear margins ALL sides including above head and below feet. Actual transparent alpha backdrop; no ground, no cast shadow, no scenery, no text or readable symbols, no border, no additional characters, no sheet/atlas. Each new identity must differ structurally, not a recolor.",
+  "variants": [
+    {
+      "id": "dock-officer-01",
+      "name": "Harbor master",
+      "design": "Very broad mature male with olive mottled hide, heavy square cranium, long tusked exposed mandibles, shoulder-length thick dreadlocks with plain copper rings. Sleeveless charcoal wrap tunic with raised leather collar, two broad diagonal harness straps and small bronze shoulder tabs, heavy stitched knee apron. Carries a rectangular sealed navigation tablet under left arm; right hand on belt with three cargo seals. Clawed feet bare with ankle wraps; solid relaxed stance.",
+      "status": "generated",
+      "file": "dock-officer-01.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-adc30636-3181-4863-80a1-2a1cf6c8118b.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6034762064615885,
+      "sha256": "c80942a73b1c583b3948e4a73cd6312eb4a1526714f0d4315ad5ddd259d5606a",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-01",
+          "name": "Harbor master",
+          "design": "Very broad mature male with olive mottled hide, heavy square cranium, long tusked exposed mandibles, shoulder-length thick dreadlocks with plain copper rings. Sleeveless charcoal wrap tunic with raised leather collar, two broad diagonal harness straps and small bronze shoulder tabs, heavy stitched knee apron. Carries a rectangular sealed navigation tablet under left arm; right hand on belt with three cargo seals. Clawed feet bare with ankle wraps; solid relaxed stance.",
+          "status": "generated",
+          "file": "dock-officer-01.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9298e512-b79b-4e9c-abe4-8293d408c782.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6059087117513021,
+          "sha256": "19fcbdf84ca552752e3425a46c815bc58ccc36a18f43296a8dc621bbc8ef4633",
+          "githubBlobSha": "332a73839307633e03da394b3230f0f0605e7777",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-01-r1-19fcbdf84c.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "34eb8bca04be64726303782833d11c51112b6e11",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-02",
+      "name": "Approach controller",
+      "design": "Tall slender adult female with pale ash-speckled hide, narrow face and four fine mandibles, long thin dreadlocks tied high. Long navy-charcoal fitted vest with asymmetric grey shoulder shawl, copper chest clasp, split hip panels over close woven trousers. Holds a compact ring-shaped navigation receiver at waist, separate stylus in other hand. Small earpiece attached along head ridge, no helmet, attentive neutral stance.",
+      "status": "generated",
+      "file": "dock-officer-02.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-693a507a-da07-4664-9002-3eb0be422dc1.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.7199783325195312,
+      "sha256": "a87a740d8050bd5d81f627d25dbec31085e5b19ef1af598eee9431983c313857",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-02",
+          "name": "Approach controller",
+          "design": "Tall slender adult female with pale ash-speckled hide, narrow face and four fine mandibles, long thin dreadlocks tied high. Long navy-charcoal fitted vest with asymmetric grey shoulder shawl, copper chest clasp, split hip panels over close woven trousers. Holds a compact ring-shaped navigation receiver at waist, separate stylus in other hand. Small earpiece attached along head ridge, no helmet, attentive neutral stance.",
+          "status": "generated",
+          "file": "dock-officer-02.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-57b67331-06b1-47f9-9917-77602a8dfdd2.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.7268689473470052,
+          "sha256": "57371744930d69499bcc8f1fdd9c2c7ec80c916fed1577bff1a850c022d3cc25",
+          "githubBlobSha": "6737fe049a9b830b70e3dac1855f4a94d9779cee",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-02-r1-5737174493.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "38a3addf0af3e4fa8138120798301d534616464d",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-03",
+      "name": "Cargo inspector",
+      "design": "Short stocky male with rust-brown spotted hide, short domed skull and blunt mandibular tusks, short dense dreadlocks arranged behind neck. Broad utility leather waistcoat over heavy charcoal work tunic, worn square copper fasteners, bulky practical belt pouches, double layered short apron. Holds a small two-jaw cargo seal scanner downward in right hand, left hand relaxed; rolled sleeves and bare clawed feet.",
+      "status": "generated",
+      "file": "dock-officer-03.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f063fe05-d60e-4837-86da-604016a17c49.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6005674997965494,
+      "sha256": "ac2ce2096b6660d41cb731efe2bd02119903ecc92372d3fb6d2f1274971fc6fe",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-03",
+          "name": "Cargo inspector",
+          "design": "Short stocky male with rust-brown spotted hide, short domed skull and blunt mandibular tusks, short dense dreadlocks arranged behind neck. Broad utility leather waistcoat over heavy charcoal work tunic, worn square copper fasteners, bulky practical belt pouches, double layered short apron. Holds a small two-jaw cargo seal scanner downward in right hand, left hand relaxed; rolled sleeves and bare clawed feet.",
+          "status": "generated",
+          "file": "dock-officer-03.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-be296628-5edc-44f7-8d01-3db7527ea2b9.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6366144816080729,
+          "sha256": "21cdad7b8bd39eef2f470f9fdbfd589036aa1f6aa4427294aa82b86fa8fbe399",
+          "githubBlobSha": "be28f2d5104af2b93df4cb02bc59ac79d9c8771e",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-03-r1-21cdad7b8b.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "15823164276b352c9cab1f54d03ad68b3c83502f",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-04",
+      "name": "Mooring coordinator",
+      "design": "Large muscular adult with sand-yellow spotted skin and broad exposed mandibles, black dreadlocks in single thick nape knot. Open-sided dark-grey padded work vest over black wrap shirt, brass harness rings, dark long work skirt split to knee, forearm wraps. A neatly coiled thick alien mooring cable over left shoulder held by one hand, small locking hook attached safely at belt; other hand on hip.",
+      "status": "generated",
+      "file": "dock-officer-04.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ce470301-92d3-409e-a6a0-3d23db057dae.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6372756958007812,
+      "sha256": "3c27e5bfa418a17f818b6d4c7871e2c0ef0a9d0ec037d7df8123bcc51810d3e6",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-04",
+          "name": "Mooring coordinator",
+          "design": "Large muscular adult with sand-yellow spotted skin and broad exposed mandibles, black dreadlocks in single thick nape knot. Open-sided dark-grey padded work vest over black wrap shirt, brass harness rings, dark long work skirt split to knee, forearm wraps. A neatly coiled thick alien mooring cable over left shoulder held by one hand, small locking hook attached safely at belt; other hand on hip.",
+          "status": "generated",
+          "file": "dock-officer-04.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-77f9b317-1054-4a53-9f5e-14064d78b8ee.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6410770416259766,
+          "sha256": "fdaea5a6d3aa471f7344da0e13bcf4cce3972cec8751a35eb0141b33259b11a5",
+          "githubBlobSha": "7d3017713eedbbf50d43220d57e6fcaaaf6e4661",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-04-r1-fdaea5a6d3.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "298e592d46fccddc7bad777983d1759580cc5dd2",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-05",
+      "name": "Navigation clerk",
+      "design": "Lean elderly male with pale silver reptilian hide, uneven brow and long exposed mandibles, white dreadlocks hanging mid-back. Long charcoal civilian coat with narrow bronze seams and a soft high neck wrap, slim leather belt carrying two navigation cylinders. Holds a closed thin metal chart folio in both hands before abdomen; slight stoop, calm observant face, sparse shin wraps and clawed feet.",
+      "status": "generated",
+      "file": "dock-officer-05.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-70b33091-9ec0-41f7-a983-304f2237822b.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6981741587320963,
+      "sha256": "f25f0ccddf0fca92f87d176293a0c8261102ef14a77fa88261994bfb9daaffb9",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-05",
+          "name": "Navigation clerk",
+          "design": "Lean elderly male with pale silver reptilian hide, uneven brow and long exposed mandibles, white dreadlocks hanging mid-back. Long charcoal civilian coat with narrow bronze seams and a soft high neck wrap, slim leather belt carrying two navigation cylinders. Holds a closed thin metal chart folio in both hands before abdomen; slight stoop, calm observant face, sparse shin wraps and clawed feet.",
+          "status": "generated",
+          "file": "dock-officer-05.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cf2c87f9-f7a2-4afc-9ad9-11e24c8c3b24.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.7053699493408203,
+          "sha256": "bd9a27af1a50ca522f4d0abb6893d05452cffcc1ea7860fefb5df808db19b940",
+          "githubBlobSha": "e4fab6dac44f3a8364d543b9e50af7f7e12fc70b",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-05-r1-bd9a27af1a.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "8171f1ca3f4f6d081fbe405b12233e77e736d9dc",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-06",
+      "name": "Fuel dispatcher",
+      "design": "Powerful adult female with dark teal-grey pebble skin, broad four-mandibled face, black dreadlocks grouped into two compact rear bundles. Heavy sleeveless ochre work tunic under cropped dark reinforced vest, wide crossbody safety belt, short dark skirt panels and tough leg wraps. Carries a sealed cylindrical pressure reader in left hand and a short capped coupling tool in right, no weapon. Practical robust silhouette.",
+      "status": "generated",
+      "file": "dock-officer-06.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b02ec2e5-1bc5-49da-9a2b-c55a03ac628e.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6521981557210287,
+      "sha256": "46d39e3fa96695f6246aeab6f4a8de6e91ba6233cda4ff6bfa12769eec0716a1",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-06",
+          "name": "Fuel dispatcher",
+          "design": "Powerful adult female with dark teal-grey pebble skin, broad four-mandibled face, black dreadlocks grouped into two compact rear bundles. Heavy sleeveless ochre work tunic under cropped dark reinforced vest, wide crossbody safety belt, short dark skirt panels and tough leg wraps. Carries a sealed cylindrical pressure reader in left hand and a short capped coupling tool in right, no weapon. Practical robust silhouette.",
+          "status": "generated",
+          "file": "dock-officer-06.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f4afac21-194c-46a6-ada4-de93af247109.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6562461853027344,
+          "sha256": "f2d7a3ccca051accab94294e657eb4fd61995f1309b94a483cff6687a9e2ae22",
+          "githubBlobSha": "acb9cfffe347d15fac5aa5fb76292f4d2e15de8b",
+          "alphaCorners": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-06-r1-f2d7a3ccca.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "a1920165db50a10827fb5dfb64af6886f1ab60c9",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-07",
+      "name": "Dock scheduler",
+      "design": "Average adult male with cream-tan spotted hide, long tapered cranium and thin mandibles, long dreadlocks swept over one shoulder. Dark wrap tunic with asymmetric long left hem, bronze rectangular breast badge without writing, narrow satchel strap, high soft collar. One hand studies a small square slate at chest height, other hand lowered holding two small seal tags. Straight tidy posture.",
+      "status": "generated",
+      "file": "dock-officer-07.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fda51366-3fce-45df-b979-7adf9f5ff67d.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6754557291666666,
+      "sha256": "2168bc255f9287c0bf95e8b3825d6046383e29ad95c20d648fd8603e0dd07c23",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-07",
+          "name": "Dock scheduler",
+          "design": "Average adult male with cream-tan spotted hide, long tapered cranium and thin mandibles, long dreadlocks swept over one shoulder. Dark wrap tunic with asymmetric long left hem, bronze rectangular breast badge without writing, narrow satchel strap, high soft collar. One hand studies a small square slate at chest height, other hand lowered holding two small seal tags. Straight tidy posture.",
+          "status": "generated",
+          "file": "dock-officer-07.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-207609f1-a6f1-4718-afbb-fe67c0041d23.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6927617390950521,
+          "sha256": "acd6ee292dc1c7a091bff0e29c6b9bf78451af3d02e9f438316001dbf63dd0ab",
+          "githubBlobSha": "9f45d643e16a7d6154e0436aa5e5e39f5161b951",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-07-r1-acd6ee292d.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "b5a54187a486b15adb4a5812519bdb063333ef2e",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-08",
+      "name": "Berth marshal",
+      "design": "Very tall muscular male, charcoal skin with subdued copper mottling, angular brow, exposed prominent mandibles and many long heavy dreadlocks. Layered sleeveless grey-black officer coat with broad copper shoulder clasps, dark sash and several cargo-key loops. Holds a short baton-shaped unlit directional beacon beside leg with no blade; left hand lightly touches wrist communicator. Open steady stance.",
+      "status": "generated",
+      "file": "dock-officer-08.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9f1441da-5b79-49f0-bf62-f744e4c2c3e2.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6579049428304037,
+      "sha256": "5ff6fb098be01d2a47298fd061c71d2166df456a070e2342fd970780ba263398",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-08",
+          "name": "Berth marshal",
+          "design": "Very tall muscular male, charcoal skin with subdued copper mottling, angular brow, exposed prominent mandibles and many long heavy dreadlocks. Layered sleeveless grey-black officer coat with broad copper shoulder clasps, dark sash and several cargo-key loops. Holds a short baton-shaped unlit directional beacon beside leg with no blade; left hand lightly touches wrist communicator. Open steady stance.",
+          "status": "generated",
+          "file": "dock-officer-08.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cf8ca91f-322d-4ca6-aaff-ec4432447c0e.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6617813110351562,
+          "sha256": "4262df8c4085a4a990f490d6f8856e9147de42e4606516baffbcf85a5fedb076",
+          "githubBlobSha": "e87c1699e4554fa73cd3a0d12b81fb519727d9f4",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-08-r1-4262df8c40.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "35ed7572a9954ce403d6ad636ca87f38538b5726",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-09",
+      "name": "Freight quartermaster",
+      "design": "Short broad mature female with olive-brown speckled hide, low wide cranium and four stout mandibles, short dreadlocks with leather ties. Dark quilted shoulder wrap, long brown leather front apron over black calf-length tunic, large divided tool belt. Carries a small secured rectangular inventory case by its handle in left hand; right hand resting on belt. Heavy forearm gloves with claw tips.",
+      "status": "generated",
+      "file": "dock-officer-09.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0d2e2684-5fbb-42b6-8790-c3104d7f00fd.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6031309763590494,
+      "sha256": "b572fe811292f054a0634e3f282a96147894f50f6477b275bba56431092ddbab",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-09",
+          "name": "Freight quartermaster",
+          "design": "Short broad mature female with olive-brown speckled hide, low wide cranium and four stout mandibles, short dreadlocks with leather ties. Dark quilted shoulder wrap, long brown leather front apron over black calf-length tunic, large divided tool belt. Carries a small secured rectangular inventory case by its handle in left hand; right hand resting on belt. Heavy forearm gloves with claw tips.",
+          "status": "generated",
+          "file": "dock-officer-09.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-74b9b2c4-f5af-427c-87e9-9ce9fcee7d05.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6272621154785156,
+          "sha256": "bce8880b66de5fbafaa644f43d437f2da97605aab448fe9cf31119e8b5b646b2",
+          "githubBlobSha": "99dc609baf9cb5a8a055cb03d9baec58a8a6c03d",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-09-r1-bce8880b66.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "a14d72ac059ceb6756d5cd3ac20d7e62cb0a0c29",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-10",
+      "name": "Traffic signal operator",
+      "design": "Slender adult male with reddish speckled hide, exposed narrow mandible face and high tapered crown, thin dreadlocks tied into a high braid-like bundle. Close dark navy sleeveless tunic, simple cream neck scarf, copper-edged asymmetric harness plate, narrow divided trousers. Holds two short folded dark landing wands, one each hand lowered. Long wrapped shins and bare clawed feet, alert light posture.",
+      "status": "generated",
+      "file": "dock-officer-10.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-24078bcc-2e80-4360-b370-44a817ce5d54.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6956596374511719,
+      "sha256": "51065d6f83acea45842a9990a29517008c55b3462048a524c60dc77c9f79a653",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-10",
+          "name": "Traffic signal operator",
+          "design": "Slender adult male with reddish speckled hide, exposed narrow mandible face and high tapered crown, thin dreadlocks tied into a high braid-like bundle. Close dark navy sleeveless tunic, simple cream neck scarf, copper-edged asymmetric harness plate, narrow divided trousers. Holds two short folded dark landing wands, one each hand lowered. Long wrapped shins and bare clawed feet, alert light posture.",
+          "status": "generated",
+          "file": "dock-officer-10.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-938d7e35-a68f-4c39-a1ad-0aa5b9345de9.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.717767079671224,
+          "sha256": "0b7b802ea4c93c07fc664460a39770519aa7e7d6970ac381e5361c179a77b777",
+          "githubBlobSha": "8d4fed573efb6dc5e00c90b868b9712b86aa4113",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-10-r1-0b7b802ea4.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "274e6ed5c413639cca43cfc249ed71b83afd35bf",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-11",
+      "name": "Customs recorder",
+      "design": "Medium sturdy elderly male with light grey mottled hide, pronounced brow folds, blunt tusks and white-black dreadlocks tucked into collar. Long charcoal coat with bronze horizontal chest toggles, slim beige diagonal sash, knee-length side panels, low open boots revealing claws. Holds an open small hinged record tablet with no visible lettering in one hand, stylus tucked behind belt. Thoughtful poised idle stance.",
+      "status": "generated",
+      "file": "dock-officer-11.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-499cc945-5ba5-4a60-bec6-dc25b7f20894.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6254952748616537,
+      "sha256": "5bf7ba988e01232bd1d5db8549c17153898a791bf4afff1404ee21f777cee5d9",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-11",
+          "name": "Customs recorder",
+          "design": "Medium sturdy elderly male with light grey mottled hide, pronounced brow folds, blunt tusks and white-black dreadlocks tucked into collar. Long charcoal coat with bronze horizontal chest toggles, slim beige diagonal sash, knee-length side panels, low open boots revealing claws. Holds an open small hinged record tablet with no visible lettering in one hand, stylus tucked behind belt. Thoughtful poised idle stance.",
+          "status": "generated",
+          "file": "dock-officer-11.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b8a3f3e3-e63a-42ec-8764-9c62e69c03f3.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6461906433105469,
+          "sha256": "4334f2171545749d834f6e89e3dd359e0db65447dc680df1184cb5c7fd3748c1",
+          "githubBlobSha": "982d3b4c21deccbb22445aca1f9571708dd1a0cc",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-11-r1-4334f21715.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "dac1ed254e28dcc32a02ae563f5b03b0a85d84d2",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-12",
+      "name": "Dock surveyor",
+      "design": "Tall lean female with greenish slate speckled hide, exposed flat-topped cranium and small curved mandibles, black dreadlocks tied low. Cropped charcoal canvas work jacket with rolled sleeves and one narrow leather shoulder pad, dark wrap skirt over practical trousers. Carries a compact folded three-leg range-measuring instrument vertically against right side, left hand on a round belt instrument. No weapon.",
+      "status": "generated",
+      "file": "dock-officer-12.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-21fbecd0-6bff-4786-a978-9799329efe6d.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6904939015706381,
+      "sha256": "2bbc820af487b71a3117541178429501f57820af5a809513461fbbd95d44d3d8",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-12",
+          "name": "Dock surveyor",
+          "design": "Tall lean female with greenish slate speckled hide, exposed flat-topped cranium and small curved mandibles, black dreadlocks tied low. Cropped charcoal canvas work jacket with rolled sleeves and one narrow leather shoulder pad, dark wrap skirt over practical trousers. Carries a compact folded three-leg range-measuring instrument vertically against right side, left hand on a round belt instrument. No weapon.",
+          "status": "generated",
+          "file": "dock-officer-12.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cf0edc94-abd5-4aff-bbeb-8f12d6af2599.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6969521840413412,
+          "sha256": "8208e5504abc95008bcbf158e8c6406fa9fa257ca1e36e9250b8a47b3889c880",
+          "githubBlobSha": "5cb160ea5870d308668502afa48ccea474b95c75",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-12-r1-8208e5504a.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "0bb87a6e222ad99a0b7b45ac4f86cc4358e497eb",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-13",
+      "name": "Cargo seal specialist",
+      "design": "Broad muscular male with reddish copper hide, wide heavy mandibled face, scar through one outer brow, short thick dreadlocks swept back. Black leather vest with reinforced shoulders and a long diagonal grey linen sash, broad bronze belt, cropped dark wrap trousers. Holds an irregular hexagonal stamp tool safely downward in left hand and a bundle of small unmarked metal seal plates in right. Strong relaxed stance.",
+      "status": "generated",
+      "file": "dock-officer-13.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6e30e28c-f27e-4584-9c38-b5e70bbbc5ed.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6187210083007812,
+      "sha256": "f141467282af538a58072f16ee80479dfd0bac71131d8acaf4cc4bf5b023093d",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-13",
+          "name": "Cargo seal specialist",
+          "design": "Broad muscular male with reddish copper hide, wide heavy mandibled face, scar through one outer brow, short thick dreadlocks swept back. Black leather vest with reinforced shoulders and a long diagonal grey linen sash, broad bronze belt, cropped dark wrap trousers. Holds an irregular hexagonal stamp tool safely downward in left hand and a bundle of small unmarked metal seal plates in right. Strong relaxed stance.",
+          "status": "generated",
+          "file": "dock-officer-13.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-af1b8ab8-f206-40a4-9f7e-a823567033da.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6283289591471354,
+          "sha256": "14b39767528acd283010fa7267eaee0018d48ef44b343c1ff0887aad3e5c4ae2",
+          "githubBlobSha": "ffbff92fd03b5eee6bb13493e4b5bfa1310ea7d5",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-13-r1-14b3976752.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "8bca10abbb5a364045edd52a01717e79fad27645",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-14",
+      "name": "Manifest courier",
+      "design": "Small lean adult female with warm ochre mottled hide, narrow domed head, fine four mandibles, long thin dreadlocks partly tied into a rear loop. Short charcoal tunic, dark slate capelet over one shoulder, single long crossbody dispatch satchel with bronze clasp, light wrapped calves. Carries two narrow sealed message tubes in right hand, left adjusting satchel strap; one foot naturally ahead.",
+      "status": "generated",
+      "file": "dock-officer-14.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1b95c16e-5629-4ba2-abfa-adc87c387972.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.7057762145996094,
+      "sha256": "c1e5478a9223bad0e43d066c9deb795d7a183783169240a05213b62e5c2eaba6",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-14",
+          "name": "Manifest courier",
+          "design": "Small lean adult female with warm ochre mottled hide, narrow domed head, fine four mandibles, long thin dreadlocks partly tied into a rear loop. Short charcoal tunic, dark slate capelet over one shoulder, single long crossbody dispatch satchel with bronze clasp, light wrapped calves. Carries two narrow sealed message tubes in right hand, left adjusting satchel strap; one foot naturally ahead.",
+          "status": "generated",
+          "file": "dock-officer-14.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-984fb2e5-caf2-4564-b5d6-42c14dfd534b.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.7312355041503906,
+          "sha256": "d70f1d3cc3392e6547ec5de1801eb1765b7e6e3cd7cc9cc441678d8fd672c4f3",
+          "githubBlobSha": "8dc612e5349f530a849b7569249825ccf82c7e6d",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-14-r1-d70f1d3cc3.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "3d89c9f57db08996ca3aa14eeb4d531b909d2d20",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-15",
+      "name": "Veteran arrival officer",
+      "design": "Towering aged male with pale sandy hide, pronounced exposed tusks and heavy ridged forehead, thick grey dreadlocks to waist. Long dark double-breasted style alien coat with staggered bronze fasteners, broad structured collar, soft faded teal belt sash, two long skirt tails. A thin navigational staff-like pointer held vertical at side with rounded nonweapon tip; small folded folio at belt. Upright dignified posture.",
+      "status": "generated",
+      "file": "dock-officer-15.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aac0eb55-865a-427d-bc65-be777309e9e0.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6259454091389974,
+      "sha256": "2cdaa7b65d285cfdc5459e29662206ae17324eba707dde7663af466493917bd1",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-15",
+          "name": "Veteran arrival officer",
+          "design": "Towering aged male with pale sandy hide, pronounced exposed tusks and heavy ridged forehead, thick grey dreadlocks to waist. Long dark double-breasted style alien coat with staggered bronze fasteners, broad structured collar, soft faded teal belt sash, two long skirt tails. A thin navigational staff-like pointer held vertical at side with rounded nonweapon tip; small folded folio at belt. Upright dignified posture.",
+          "status": "generated",
+          "file": "dock-officer-15.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f67136b2-87c5-4f56-9536-d6da836eb78d.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6309051513671875,
+          "sha256": "e9b75657e83cf329b50a98ffc49991a5bb887eff5a4995612fe6bf75748e0e6a",
+          "githubBlobSha": "6d8395c90dd3693ddde72067669bc408c50d475e",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-15-r1-e9b75657e8.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "510d325fbb43dfef5655ef0289b2eec6bf1b5216",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-16",
+      "name": "Loading balance auditor",
+      "design": "Short barrel-chested male with deep blue-grey speckled skin, rounded exposed mandible face, dense medium dreadlocks with two brass bands. Heavy black work smock with square copper plate clasps, large padded rolled collar, broad toolbelt with weights and measuring discs, reinforced knees. Holds a closed oval measuring instrument in both hands at waist; feet widely planted.",
+      "status": "generated",
+      "file": "dock-officer-16.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-37f65293-7217-4bd3-a416-187c707149e0.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6278362274169922,
+      "sha256": "ec7c483bc60d1996edda79396d63207092d38fe1cf1356cc4ce6cfa7682462a4",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-16",
+          "name": "Loading balance auditor",
+          "design": "Short barrel-chested male with deep blue-grey speckled skin, rounded exposed mandible face, dense medium dreadlocks with two brass bands. Heavy black work smock with square copper plate clasps, large padded rolled collar, broad toolbelt with weights and measuring discs, reinforced knees. Holds a closed oval measuring instrument in both hands at waist; feet widely planted.",
+          "status": "generated",
+          "file": "dock-officer-16.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cf304c41-b229-4dc8-9ec9-edd50691499e.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6376355489095052,
+          "sha256": "7613be32b972d696b1a5de8982e33dddc0f1ef243092a6cc47e37f08f374bb60",
+          "githubBlobSha": "2d101c9502ea1dd682cc39fc2b9dfd1cd4098caf",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-16-r1-7613be32b9.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "7e29afa010bbcda1af9a237fec4f1cdbad6c4b63",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-17",
+      "name": "Shuttle liaison",
+      "design": "Athletic female adult with golden-brown leopard mottling, four exposed alien mandibles, elongated high forehead, long dreadlocks neatly bundled to one side. Tailored dark charcoal long vest over dark teal wraps, narrow bronze shoulder bands, cream waist cord, two split calf-length panels. Carries a slim faceted navigation tablet at hip and has a small circular communication device on forearm, hand open in restrained welcoming gesture.",
+      "status": "generated",
+      "file": "dock-officer-17.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7433aa7a-0baa-4189-aef5-225e4301a52c.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6821645100911459,
+      "sha256": "4e42bdea084fe026be57829ad4a3075ec45a341dde20ad201ba57ccac0fb40ac",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-17",
+          "name": "Shuttle liaison",
+          "design": "Athletic female adult with golden-brown leopard mottling, four exposed alien mandibles, elongated high forehead, long dreadlocks neatly bundled to one side. Tailored dark charcoal long vest over dark teal wraps, narrow bronze shoulder bands, cream waist cord, two split calf-length panels. Carries a slim faceted navigation tablet at hip and has a small circular communication device on forearm, hand open in restrained welcoming gesture.",
+          "status": "generated",
+          "file": "dock-officer-17.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9aaecd3e-1727-49bb-8c1c-e5ffbc5b4b18.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6889324188232422,
+          "sha256": "d5abba97e9623e98fa725f95dfcc61b52019f903b20b9699f20445ba7304b606",
+          "githubBlobSha": "158ca84d15744854eed8751be3b621edd524f69f",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-17-r1-d5abba97e9.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "191ed8a3bf860de1d8e71ee6511687080b802b3e",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-18",
+      "name": "Maintenance dispatcher",
+      "design": "Broad adult male with olive-grey reptilian hide, flattened wide brow and short mandibles, dreadlocks cropped at shoulders. Sleeveless black canvas officer vest with deep front pockets and one large copper circular collar clip, thick brown belt and short heavy apron, practical cloth leg wraps. Left hand holds a folded compact diagnostic probe, right hand grips a small utility ring with three chunky coupling keys; no armor or gun.",
+      "status": "generated",
+      "file": "dock-officer-18.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a126c167-4273-4ef3-9c9a-360dd5d82382.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6385046641031901,
+      "sha256": "97bc3668a494d8f8b1430dacd84d3175898c7fcb1102600291a18a652008ffe2",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-18",
+          "name": "Maintenance dispatcher",
+          "design": "Broad adult male with olive-grey reptilian hide, flattened wide brow and short mandibles, dreadlocks cropped at shoulders. Sleeveless black canvas officer vest with deep front pockets and one large copper circular collar clip, thick brown belt and short heavy apron, practical cloth leg wraps. Left hand holds a folded compact diagnostic probe, right hand grips a small utility ring with three chunky coupling keys; no armor or gun.",
+          "status": "generated",
+          "file": "dock-officer-18.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d4ef9561-9ec1-430d-9b15-b0e5ce43fe2a.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6661027272542318,
+          "sha256": "9d1f5197f8c0d4d285db779da8bcdf7cd53f8fed6ca3cdd8c6348ca4ba00f9bc",
+          "githubBlobSha": "41247f5da88efc37f56a05368f11b39e8c2c0642",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-18-r1-9d1f5197f8.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "76d655bbce91fe4e498d8cef0ed41db1251efd2f",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-19",
+      "name": "Quay route planner",
+      "design": "Very lean older female with pale ivory spotted hide, narrow wrinkled alien face, long fine four mandibles, grey thin dreadlocks in low tail. Long soft charcoal robes with asymmetrical navy hip wrap, narrow bronze-edged diagonal shoulder sash and small map case. Holds a shallow circular astrogation plate against left forearm and a stylus in right hand at waist, calm careful posture.",
+      "status": "generated",
+      "file": "dock-officer-19.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-dd2a3df4-ecb0-4fe0-a031-a0b2d770cd9f.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6656964619954427,
+      "sha256": "0bf46307fb856b88a0579204a0580c6df811fed4896306599c8be3a7e95f65d3",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-19",
+          "name": "Quay route planner",
+          "design": "Very lean older female with pale ivory spotted hide, narrow wrinkled alien face, long fine four mandibles, grey thin dreadlocks in low tail. Long soft charcoal robes with asymmetrical navy hip wrap, narrow bronze-edged diagonal shoulder sash and small map case. Holds a shallow circular astrogation plate against left forearm and a stylus in right hand at waist, calm careful posture.",
+          "status": "generated",
+          "file": "dock-officer-19.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-395a0895-59e2-4d20-83c8-8a25a37e1322.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.681921641031901,
+          "sha256": "8db2f214faa8f5c8a4abd5ed2e6eae7fb693e5d8c2fdfd25d91e9af446789bd1",
+          "githubBlobSha": "104f6163fe35fcff4a280791bc977b4b95b2b7da",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-19-r1-8db2f214fa.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "42550fd295caaee946eb4da918c516db99a4641b",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "dock-officer-20",
+      "name": "Senior port coordinator",
+      "design": "Tall broad adult male with deep ochre mottled skin, wide exposed mandibled face and pronounced domed crown, thick black dreadlocks with a single broad bronze nape cuff. Formal but practical charcoal tunic with three large angular leather collar panels, rich dark-teal side sash, copper shoulder fittings and long split hem, sturdy shin wraps. Holds a sealed rectangular chart folio under one arm and a rounded landing beacon in other hand pointed down; composed leader stance.",
+      "status": "generated",
+      "file": "dock-officer-20.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-595f0857-dfb2-4296-8cc5-8e291c965b60.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5972614288330078,
+      "sha256": "60f27a811a2d327b783bd9ccd4137ce467a8a7d5a3c03927a4c522ad973fa2ee",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        {
+          "id": "dock-officer-20",
+          "name": "Senior port coordinator",
+          "design": "Tall broad adult male with deep ochre mottled skin, wide exposed mandibled face and pronounced domed crown, thick black dreadlocks with a single broad bronze nape cuff. Formal but practical charcoal tunic with three large angular leather collar panels, rich dark-teal side sash, copper shoulder fittings and long split hem, sturdy shin wraps. Holds a sealed rectangular chart folio under one arm and a rounded landing beacon in other hand pointed down; composed leader stance.",
+          "status": "generated",
+          "file": "dock-officer-20.png",
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f60ee438-8ed8-4f48-97a3-031529f4cf10.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaZeroFraction": 0.6024042765299479,
+          "sha256": "d8cef65699dc69b3c0bbeabf17498c1fcb738f712bf74884bd05954e5a3063a5",
+          "githubBlobSha": "4677fb9eb6283ffc7c295561900d41ab7f8c4860",
+          "alphaCorners": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "archivedFile": "/workspace/scratch/41fc0564188e/npc-generation-revisions/dock-officer/dock-officer-20-r1-d8cef65699.png"
+        }
+      ],
+      "revision": 2,
+      "faceReviewStatus": "approved",
+      "githubBlobSha": "096d2be08b580c8ade1d3b0f5c181b53d98a5ae7",
+      "observedFace": "visible-four-mandibles"
+    }
+  ],
+  "faceReview": "face-review.json",
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "anatomyCorrectionPrompt": "EDIT THE FIRST INPUT IMAGE, one existing complete Yautja NPC sprite. The SECOND input is an anatomical reference ONLY: Stan Winston original1987Predator face photograph. Repair ONLY the exposed biological face/head anatomy of the first sprite, retaining its individual age, skin pigmentation, original scalp tendril arrangement and headwear. The new face must be ULTRA FAITHFUL to the film reference: broad back-swept cranium and deep alien orbital ridges; fleshy lateral mouth lobes; FOUR anatomically DISTINCT EXTERNAL MANDIBULAR ARMS, two UPPER cheek tusks at left/right AND two long LOWER mandibular arms curling UP, framing a SEPARATE INNER TOOTHED MOUTH. Four arms and their bases must read clearly. Turn the head slightly toward spectator only as needed to see all four. No human nose/lips/face, no two vertical nose-tubes, no mouth reduced to two descending tusks, no fused chin-tentacles. Do not hide the mouth under a newly added mask. Keep original head approximately the same size and placement. Keep the pose, body proportions, arms, hands, feet, ALL clothing/armor/jewelry, tools/weapons/accessories, color palette and painterly game sprite finish as close to the first image as possible. Existing forehead helmets/bands remain above the new exposed alien face. Relaxed neutral guard/civilian stance and gently partly open four mandibles, no new fighting action. Do not copy photographic background, black vest, logo, watermark or any other photo element. Deliver ONE complete full-body sprite on TRUE TRANSPARENT alpha, same portrait canvas composition, whole head, feet and every piece of carried equipment visible with clear margins. No scenery, floor or ground/cast shadow, no background panel or contact sheet, no writing, UI, border or watermark. This is an anatomy correction of the SAME individual, not a new outfit or role."
+}

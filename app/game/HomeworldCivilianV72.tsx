@@ -1,10 +1,17 @@
 import type { CSSProperties } from 'react';
 import { homeworldCivilianArtV72,type HomeworldCivilianRoleV72 } from './systems/homeworldIdentityV72';
 import {homeworldCivilianMotionFrameV74} from './systems/homeworldCivilianMotionV74';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
+interface CivilianPropsV84 {role:HomeworldCivilianRoleV72;npcId?:string;facing?:1|-1;height?:number;style?:CSSProperties;moving?:boolean;seconds?:number;speed?:number}
+/** Existing identity, service, route and collision stay owned by their callers. */
+export default function HomeworldCivilianV72(props:CivilianPropsV84){
+  const original=<OriginalHomeworldCivilianV72 {...props}/>;
+  return props.npcId?<HomeworldNpcSpriteV84 npcId={props.npcId} role={props.role} facing={props.facing} height={props.height} moving={props.moving} style={props.style}>{original}</HomeworldNpcSpriteV84>:original;
+}
 /** Clip the preserved PNG, using the native ground pivot and uniform scale.
  * Existing named inhabitants remain on their preserved idle portraits by default.
  * Walking residents use genuine separately drawn native left/right frames. */
-export default function HomeworldCivilianV72({role,facing=1,height,style,moving=false,seconds=0,speed}:{role:HomeworldCivilianRoleV72;facing?:1|-1;height?:number;style?:CSSProperties;moving?:boolean;seconds?:number;speed?:number}){
+function OriginalHomeworldCivilianV72({role,facing=1,height,style,moving=false,seconds=0,speed}:CivilianPropsV84){
   if(moving){
     const {source,frame,index,clip,scale}=homeworldCivilianMotionFrameV74(role,seconds,facing,height,speed);
     return <span data-homeworld-civilian-v72={role} data-native-source={source.src} data-native-clip={`walk-${clip}`} data-native-frame={index} data-native-facing={facing} data-motion-version="74" aria-hidden="true" style={{position:'absolute',

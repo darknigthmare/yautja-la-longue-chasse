@@ -1,0 +1,796 @@
+{
+  "role": "healer",
+  "target": 20,
+  "complete": true,
+  "generator": "built-in image_gen",
+  "reference": "npc-reference/civilian-roles-atlas.png top row third",
+  "designs": [
+    {
+      "n": 1,
+      "name": "Suture veteran",
+      "design": "Stocky mature male with broad square ochre-speckled cranium, deep brow and short dreadlocks gathered into a low loop. Ivory cross-wrapped sleeveless tunic with split teal skirt panels, heavy brown medical waist harness, a hard oval medicomp case at left hip and two bone-handled wound clips. Holds a palm-sized folded bandage in the left hand and small blunt forceps in the right; relaxed weight over right leg."
+    },
+    {
+      "n": 2,
+      "name": "Field triage medic",
+      "design": "Tall lean mature female Yautja, anatomically alien predatory face with four clear mandibles, grey green scales and long dreadlocks bundled over one shoulder. High-neck teal padded vest over ivory knee-length asymmetrical wrap, crossed broad leather harness and rectangular medicomp backpack, bandage rolls along right hip. Left hand grips a compact ceramic medical scanner; right hand rests on a closed kit strap, slightly angled stance."
+    },
+    {
+      "n": 3,
+      "name": "Remedy keeper",
+      "design": "Short broad elderly female Yautja with rounded heavily ridged pale olive cranium, fully alien four mandibles and silver tipped short radial dreadlocks. Full ivory calf-length apron over brown split trousers and a dark teal shawl fastened only at one shoulder. Two crescent medicine pouches and tiny sealed specimen jars across a low belt. Both clawed hands cradle a small stone mortar at waist height, broad planted feet."
+    },
+    {
+      "n": 4,
+      "name": "Bone-setter",
+      "design": "Very tall robust male Yautja with narrow charcoal face, high sagittal brow and thick dreadlocks tied into two rear bunches. Diagonal cream wrap across chest under a short teal work apron, stout brown split kilt over leg bindings, leather forearm splint bracers. Ribbed medical satchel at lower back, folded segmented limb splint held vertically close to torso with left hand, right arm loose at side, staggered feet."
+    },
+    {
+      "n": 5,
+      "name": "Injector specialist",
+      "design": "Compact athletic female Yautja with warm mottled russet scales, triangular ridged skull, four mandibles, mid-length dreadlocks in three braided bundles with tiny ivory rings. Brown fitted functional tabard with wide ivory diagonal sash and teal thigh panels, rows of capped injection cartridges in a rigid chest wallet and compact medicomp belt. Holds a small closed alien auto-injector horizontally in front of body and checks its side, one knee slightly bent."
+    },
+    {
+      "n": 6,
+      "name": "Clinic elder",
+      "design": "Tall stooped elderly male with pale stone-grey scales, wrinkled heavy mandibles, wide cranial dome and sparse very long white-tipped dreadlocks. Long teal split robe with ivory collar and rolled sleeves, broad brown belt with two large soft rectangular pouches, metal stethoscope-like alien diagnostic sensor looped at chest. One hand gathers a folded clean cloth at abdomen, the other touches a hanging compact scanner, subtle forward-leaning posture."
+    },
+    {
+      "n": 7,
+      "name": "Herbal wound dresser",
+      "design": "Muscular adult female Yautja with dark olive stippled skin, flat broad skull and short swept-back thick dreadlocks held by three transverse copper clips. Cream sleeveless utility jacket with stepped hem over teal wrapped trousers, wide leather shoulder sling bearing sealed greenish ceramic medicine vials, compact side satchel. Left hand holds a tightly corked little remedy jar; right hand presents a rolled gauze bundle. Feet in a calm open stance."
+    },
+    {
+      "n": 8,
+      "name": "Emergency responder",
+      "design": "Medium height wiry male Yautja with burnt amber scale patches, sharp deep eye ridges and a high crown of tied dreadlocks falling down the back. Short split ivory coat with teal reinforcement panels, brown chest harness, large angular hard medical case at right side and two stacked bandage canisters at left. Right hand rests on chest harness while left hand carries a small folded stretcher strap bundle close to thigh; active ready stance."
+    },
+    {
+      "n": 9,
+      "name": "Recovery attendant",
+      "design": "Broad soft-bodied mature female Yautja with slate blue-grey scales and pale throat, rounded jaw mandibles and shoulder-length dreadlocks in wide parallel cords. Teal belted long vest over loose ivory knee-length wrap and brown leggings, quilted kidney-shaped leather medical pouch and small ceramic cups in secure loops. Holds a shallow lidded medicine bowl level at waist with both hands, grounded slightly outward feet."
+    },
+    {
+      "n": 10,
+      "name": "Scar specialist",
+      "design": "Long-limbed mature male Yautja with asymmetrical old scar across left brow, golden tan speckled hide and slim cranium, very long dreadlocks tied low with a strip of teal cloth. Full brown leather working apron with ivory side panels over a teal under-tunic, tiny surgical clamps aligned in a roll at one hip, rounded rear medicomp pack. Holding a small folded instrument cloth in left hand and a capped healing applicator in right, elbows held near ribs."
+    },
+    {
+      "n": 11,
+      "name": "Mountain healer",
+      "design": "Short powerful male Yautja, pale moss scales, thick round brow ridges, stout mandibles and thick dreadlocks wrapped into a compact bun behind head. Layered ivory padded sleeveless overcoat, dark teal diagonal skirt, insulated brown shin wraps and broad leather belt with cylindrical medical canisters. Cradles an oblong closed bone-and-metal thermal medical case against right side, free left hand loosely raised to chest."
+    },
+    {
+      "n": 12,
+      "name": "Ritual recovery medic",
+      "design": "Tall slender adult female Yautja with deep umber scales and ivory speckles, long narrow alien skull and four unmistakable mandibles, dreadlocks split into a short crown and long central back fall. Cream asymmetric wrap dress over functional brown trousers, narrow teal embroidered borders and overlapping leather medicine belts, triangular medicomp wallet. Left hand holds a small carved bone-handled diagnostic probe and right hand grips a little vial rack, neutral composed posture."
+    },
+    {
+      "n": 13,
+      "name": "Expedition paramedic",
+      "design": "Very muscular adult male Yautja with red-brown reptilian scales, blocky brow, short mandible tusks and stubby dreadlocks secured by a wide worn head strap that leaves alien skull visible. Short teal reinforced vest with ivory abdomen wrap, knee-length rugged brown divided work skirt, compact roll-top medical backpack and large stacked hip pouches. Both hands carry a sturdy small rectangular medical kit by its top handle in front of hips, wide stable stance."
+    },
+    {
+      "n": 14,
+      "name": "Medicine archivist",
+      "design": "Average height elderly female Yautja with sage-green pale spotted scales, broad furrowed cranium, delicate but alien mandibles and long thin grey dreadlocks bound into a single hanging rear tail. High-collared ivory tabard with teal front inserts over brown leggings, horizontal leather vial cases across waist and flat specimen-document pouch at side, no written markings. Studies a closed palm-sized dark medical scanner held in left hand, right hand resting across opposite forearm."
+    },
+    {
+      "n": 15,
+      "name": "Pulse technician",
+      "design": "Tall angular young adult male Yautja with dark slate mottled skin, narrow high skull and swept-back fine dreadlocks gathered into three narrow hanging braids. Teal wrapped sleeveless upper tunic beneath ivory segmented work apron, brown strap harness with a round compact medical sensor module, four sealed ceramic canisters on left hip. Right hand holds a wired palm-sized pulse sensor while left supports its short cable spool at abdomen, poised slightly sideways."
+    },
+    {
+      "n": 16,
+      "name": "Burn care specialist",
+      "design": "Broad-shouldered adult female Yautja with bronze olive scales and scarred outer mandible plates, deep-set eyes, medium dreadlocks separated into two thick low tails. Brown sleeveless medical smock with an ivory over-apron and teal knee panels, layered soft protective forearm wraps, wide diagonal satchel with two folded gauze packets. Holds a squat lidded ointment pot in left hand and flat clean applicator spatula in right hand at waist, one foot forward."
+    },
+    {
+      "n": 17,
+      "name": "Traveling healer",
+      "design": "Lean elderly male Yautja with elongated pale sand-colored spotted head, long lower mandibles and uneven shoulder-length grey dreadlocks tied with plain leather rings. Ivory hood folded down behind neck, calf-length teal split traveling coat over brown utility trousers, cross-body crescent medical satchel and rolled bandages strapped to belt. Left hand holds a closed oval medicomp case beside thigh, right grips the shoulder strap, slightly hunched traveling stance."
+    },
+    {
+      "n": 18,
+      "name": "Medical apprentice adult",
+      "design": "Small slim young adult female Yautja, unmistakably adult fully alien proportions, dark green scales with copper flecks, narrow cranial ridge and short tidy dreadlocks bound behind each side. Simple ivory sleeveless crossover tunic with teal short apron over brown knee wraps, three distinct cloth pouches and capped compact injector on woven utility belt. Holds a folded square medical instrument roll carefully in both hands near abdomen, knees relaxed and feet together but separated."
+    },
+    {
+      "n": 19,
+      "name": "Surgical kit master",
+      "design": "Huge barrel-chested middle-aged male Yautja with black-speckled ochre scales, heavy squared cranial ridges and massive four mandibles, long thick dreadlocks bound with bone rings in a low fan. Large ivory paneled apron over teal split tunic and brown leggings, wide medical harness with two angular metal tool boxes and clean cloth bundles. Right clawed hand holds a small closed forceps set; left arm folded under a compact hard medical tray against the waist, dominant planted stance."
+    },
+    {
+      "n": 20,
+      "name": "Community physician",
+      "design": "Medium-height mature female Yautja with pale grey and warm mottled olive reptilian scales, broad graceful alien brow and four clear mandibles, long dreadlocks braided into an elaborate low horizontal loop. Teal sleeveless high-collared robe opening over an ivory layered wrap skirt and brown leg wraps, brown diagonal physician sash with three different compact medicine cases and a rounded shoulder pouch. Left hand loosely holds a capped ceramic remedy tube at chest height while right rests over the belt, calm reassuring open stance."
+    }
+  ],
+  "common_prompt": "Use case: stylized-concept. Asset type: production-ready single 2D NPC game sprite for Yautja: La Longue Chasse. Reference image is STYLE AND SPECIES REFERENCE ONLY: match the realistic hand-painted rendering, full body proportions and slightly elevated three-quarter camera of the healer, the THIRD character in TOP row. Create exactly ONE entirely new healer character, never a sheet. Full body, facing right in three-quarter view, isolated with generous clear margin around head, feet and all gear. Clearly recognizable Predator/Yautja alien anatomy: scale-covered body, ridged cranium, four mandibular facial appendages, visible dreadlocks, clawed hands and feet. Adult civic healer, practical fully clothed functional nonsexual garments, compact medical supplies. Highly legible silhouette and rich leather/cloth/scale texture with grounded diffuse illumination. TRANSPARENT BACKGROUND with actual alpha. No ground, no environment, no cast shadow, no lettering, no labels, no watermark. No human face, no elf ears, no magical fantasy staff, no weapons, no extra characters or separate props. All tools worn or held. Frame with EMPTY TRANSPARENT MARGINS of at least8% on every side: character occupies only80% of canvas height, from highest dreadlock to lowest claw. Camera pulled back enough to show the entire full figure. ",
+  "outputs": [
+    {
+      "n": 1,
+      "role": "healer",
+      "name": "Suture veteran",
+      "design": "Stocky mature male with broad square ochre-speckled cranium, deep brow and short dreadlocks gathered into a low loop. Ivory cross-wrapped sleeveless tunic with split teal skirt panels, heavy brown medical waist harness, a hard oval medicomp case at left hip and two bone-handled wound clips. Holds a palm-sized folded bandage in the left hand and small blunt forceps in the right; relaxed weight over right leg.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-ecd54225-dcb1-4091-915b-9a542c8a9474.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-01.png",
+      "filename": "healer-01.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-01.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-01.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 01, Suture veteran. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6111,
+      "bodyBoundsA128": [
+        233,
+        9,
+        892,
+        1493
+      ],
+      "sha256": "a61a54e4a594424f305cb94adb12e557c4f232b294ad0a4ed6743d90d65b2742",
+      "ancestorSha256": "fd3456f802504de7964e35a0a56413acd9c094436c48911907b228d7566da389",
+      "githubBlobSha": "09ac3d9362767b8e33b72e7d3a06d46674f5cf1d",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 2,
+      "role": "healer",
+      "name": "Field triage medic",
+      "design": "Tall lean mature female Yautja, anatomically alien predatory face with four clear mandibles, grey green scales and long dreadlocks bundled over one shoulder. High-neck teal padded vest over ivory knee-length asymmetrical wrap, crossed broad leather harness and rectangular medicomp backpack, bandage rolls along right hip. Left hand grips a compact ceramic medical scanner; right hand rests on a closed kit strap, slightly angled stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-1f0bb6be-d7ad-470c-b6d0-2ea04f738229.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-02.png",
+      "filename": "healer-02.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-02.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 02, Field triage medic. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.645,
+      "bodyBoundsA128": [
+        232,
+        14,
+        869,
+        1518
+      ],
+      "sha256": "e5f63058034e8081ce669911710036e3afe2a51f5d9b7f1a61684aa3fc1aa796",
+      "ancestorSha256": "1b1488d0fa00dcf51b2a9feb4c6284b65ff1c345c923aa6aa2fa47a0023ca27c",
+      "githubBlobSha": "5e4300edefa424a99a7088c4d973287df29c61b9",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 3,
+      "role": "healer",
+      "name": "Remedy keeper",
+      "design": "Short broad elderly female Yautja with rounded heavily ridged pale olive cranium, fully alien four mandibles and silver tipped short radial dreadlocks. Full ivory calf-length apron over brown split trousers and a dark teal shawl fastened only at one shoulder. Two crescent medicine pouches and tiny sealed specimen jars across a low belt. Both clawed hands cradle a small stone mortar at waist height, broad planted feet.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-11eb6691-3285-4902-bb91-3e5c8acc9a4e.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-03.png",
+      "filename": "healer-03.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-03.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-03.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 03, Remedy keeper. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6004,
+      "bodyBoundsA128": [
+        220,
+        23,
+        810,
+        1518
+      ],
+      "sha256": "913f29dee8d62c108e0a6c71332d919d800c4427f2b63669c0b13eb06b47149f",
+      "ancestorSha256": "0c5eafdeae822137162ec92d5b3da3cb421e94d6ee6ff77d1ebf01648d2e24c5",
+      "githubBlobSha": "31668d7fbb8b73b846e5013b8225fd7a8eb1128b",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 4,
+      "role": "healer",
+      "name": "Bone-setter",
+      "design": "Very tall robust male Yautja with narrow charcoal face, high sagittal brow and thick dreadlocks tied into two rear bunches. Diagonal cream wrap across chest under a short teal work apron, stout brown split kilt over leg bindings, leather forearm splint bracers. Ribbed medical satchel at lower back, folded segmented limb splint held vertically close to torso with left hand, right arm loose at side, staggered feet.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-a531d4c1-2a81-4a54-b9eb-1b15f7a895f3.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-04.png",
+      "filename": "healer-04.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-04.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 04, Bone-setter. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6343,
+      "bodyBoundsA128": [
+        250,
+        10,
+        819,
+        1521
+      ],
+      "sha256": "1e8a8dfd30b022f04d7a064a2d0d04723641e3839a2d21b3a56893b5c70e3584",
+      "ancestorSha256": "b76f1e10166330343b9448d91d36aee9d549ff922d39bf4b25b44a2f509ccb7a",
+      "githubBlobSha": "a590de03dd3cfa19fe8954ad6ee236fbbf8dba20",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 5,
+      "role": "healer",
+      "name": "Injector specialist",
+      "design": "Compact athletic female Yautja with warm mottled russet scales, triangular ridged skull, four mandibles, mid-length dreadlocks in three braided bundles with tiny ivory rings. Brown fitted functional tabard with wide ivory diagonal sash and teal thigh panels, rows of capped injection cartridges in a rigid chest wallet and compact medicomp belt. Holds a small closed alien auto-injector horizontally in front of body and checks its side, one knee slightly bent.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-199ca5f1-d2fc-4e61-afdb-c2807446f31b.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-05.png",
+      "filename": "healer-05.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-05.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-05.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 05, Injector specialist. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6765,
+      "bodyBoundsA128": [
+        319,
+        13,
+        873,
+        1514
+      ],
+      "sha256": "b8a21fbdd5cca7c73575e79d1f333428c5f611a91dc39af95f50d39ddb136d8b",
+      "ancestorSha256": "f4078cccad8304c4691bc8a26386f62c497469bd45015cdcdf2ca699ee422b4a",
+      "githubBlobSha": "759ee4254e3a4e29c22d7e4cc370259c4d5f650f",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 6,
+      "role": "healer",
+      "name": "Clinic elder",
+      "design": "Tall stooped elderly male with pale stone-grey scales, wrinkled heavy mandibles, wide cranial dome and sparse very long white-tipped dreadlocks. Long teal split robe with ivory collar and rolled sleeves, broad brown belt with two large soft rectangular pouches, metal stethoscope-like alien diagnostic sensor looped at chest. One hand gathers a folded clean cloth at abdomen, the other touches a hanging compact scanner, subtle forward-leaning posture.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-336c6b85-275a-47b4-b89d-25080f4edcd2.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-06.png",
+      "filename": "healer-06.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-06.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 06, Clinic elder. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6014,
+      "bodyBoundsA128": [
+        246,
+        13,
+        816,
+        1525
+      ],
+      "sha256": "ea69d1a3346a34a2ba372ffb1c79063ba40ac4c098e36d850ad389d38a0daa56",
+      "ancestorSha256": "ab08515b8513f753e77300b0e63ca939ecf60f92514fe7cce0b9efab5eb7425b",
+      "githubBlobSha": "a873559a5fcae2be72449598c790f5506b83c83f",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 7,
+      "role": "healer",
+      "name": "Herbal wound dresser",
+      "design": "Muscular adult female Yautja with dark olive stippled skin, flat broad skull and short swept-back thick dreadlocks held by three transverse copper clips. Cream sleeveless utility jacket with stepped hem over teal wrapped trousers, wide leather shoulder sling bearing sealed greenish ceramic medicine vials, compact side satchel. Left hand holds a tightly corked little remedy jar; right hand presents a rolled gauze bundle. Feet in a calm open stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-f252a7ec-c726-4a14-8120-90a2acbe0f38.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-07.png",
+      "filename": "healer-07.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-07.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-07.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 07, Herbal wound dresser. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.62,
+      "bodyBoundsA128": [
+        165,
+        12,
+        921,
+        1524
+      ],
+      "sha256": "dc792af1b9c348796e5f65e1d8e1374e201b17d0b5e592809e2ce235bf3742f8",
+      "ancestorSha256": "35bcfcf9a3744cf233a6103cff9696e405fd33274af708c1a4797bb687132f91",
+      "githubBlobSha": "1c576388c8051b74b7b6acc4ab9a017d71cabb36",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 8,
+      "role": "healer",
+      "name": "Emergency responder",
+      "design": "Medium height wiry male Yautja with burnt amber scale patches, sharp deep eye ridges and a high crown of tied dreadlocks falling down the back. Short split ivory coat with teal reinforcement panels, brown chest harness, large angular hard medical case at right side and two stacked bandage canisters at left. Right hand rests on chest harness while left hand carries a small folded stretcher strap bundle close to thigh; active ready stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-234951c3-318a-4d16-b3ac-8f8fe9b5740e.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-08.png",
+      "filename": "healer-08.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-08.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 08, Emergency responder. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6287,
+      "bodyBoundsA128": [
+        261,
+        28,
+        917,
+        1503
+      ],
+      "sha256": "27765ff82e3c202f987ed77f5e72bf4f67e68857bcaba92fce4ae0394b068b64",
+      "ancestorSha256": "269bb8fe5cf91bf25c3264d452072f2ef31eb8fd9da85202fb1ce9f132f09ac1",
+      "githubBlobSha": "d5a8e72df83949eabe3bda9ced85c884a83cd6ef",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 9,
+      "role": "healer",
+      "name": "Recovery attendant",
+      "design": "Broad soft-bodied mature female Yautja with slate blue-grey scales and pale throat, rounded jaw mandibles and shoulder-length dreadlocks in wide parallel cords. Teal belted long vest over loose ivory knee-length wrap and brown leggings, quilted kidney-shaped leather medical pouch and small ceramic cups in secure loops. Holds a shallow lidded medicine bowl level at waist with both hands, grounded slightly outward feet.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-0caec950-3cef-4fd9-8733-8451071cdcc8.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-09.png",
+      "filename": "healer-09.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-09.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 09, Recovery attendant. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6169,
+      "bodyBoundsA128": [
+        236,
+        5,
+        842,
+        1521
+      ],
+      "sha256": "91909631bbd36df0a65c16cd46de2dab88aee45f2e9770eb35679e8b68a9105b",
+      "ancestorSha256": "acb324b0517cfc427fafd13d62db86027c66be5a2d39ec0717e7bd53afa29e34",
+      "githubBlobSha": "0ad53215d647e3713acdade8aa8ed40d0a8835b4",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 10,
+      "role": "healer",
+      "name": "Scar specialist",
+      "design": "Long-limbed mature male Yautja with asymmetrical old scar across left brow, golden tan speckled hide and slim cranium, very long dreadlocks tied low with a strip of teal cloth. Full brown leather working apron with ivory side panels over a teal under-tunic, tiny surgical clamps aligned in a roll at one hip, rounded rear medicomp pack. Holding a small folded instrument cloth in left hand and a capped healing applicator in right, elbows held near ribs.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-07a52762-dd0f-4b9d-9dc2-4c3745b04cc8.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-10.png",
+      "filename": "healer-10.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-10.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-10.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 10, Scar specialist. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6161,
+      "bodyBoundsA128": [
+        238,
+        18,
+        879,
+        1520
+      ],
+      "sha256": "afaf491667f2cea17cf02528108e18304acc3252f7df31c3f9b7d5878d2fca49",
+      "ancestorSha256": "8d4107300c694d66082f08a4025d9a18c54e740025182d47ab21454edad042ac",
+      "githubBlobSha": "90c0482cd2d5fc0613481dcb85ac3a15e81a5d21",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 11,
+      "role": "healer",
+      "name": "Mountain healer",
+      "design": "Short powerful male Yautja, pale moss scales, thick round brow ridges, stout mandibles and thick dreadlocks wrapped into a compact bun behind head. Layered ivory padded sleeveless overcoat, dark teal diagonal skirt, insulated brown shin wraps and broad leather belt with cylindrical medical canisters. Cradles an oblong closed bone-and-metal thermal medical case against right side, free left hand loosely raised to chest.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-7f16d36c-370d-4092-861a-fe7e3b7d8d0b.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-11.png",
+      "filename": "healer-11.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-11.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 11, Mountain healer. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.5788,
+      "bodyBoundsA128": [
+        190,
+        11,
+        872,
+        1526
+      ],
+      "sha256": "4b682772d4ce2e85e29024886a27056c6f87b56202cac686dc6ee96458cbc11b",
+      "ancestorSha256": "492ff00051875af561629a668454b7451816cf7a3a490e642ec085b447d03abb",
+      "githubBlobSha": "52e2f5971f4606df21aa4ccd44eb5546b3ac9fe8",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 12,
+      "role": "healer",
+      "name": "Ritual recovery medic",
+      "design": "Tall slender adult female Yautja with deep umber scales and ivory speckles, long narrow alien skull and four unmistakable mandibles, dreadlocks split into a short crown and long central back fall. Cream asymmetric wrap dress over functional brown trousers, narrow teal embroidered borders and overlapping leather medicine belts, triangular medicomp wallet. Left hand holds a small carved bone-handled diagnostic probe and right hand grips a little vial rack, neutral composed posture.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-a6521efe-aa23-48c2-badb-248bd8075c7e.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-12.png",
+      "filename": "healer-12.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-12.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 12, Ritual recovery medic. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.659,
+      "bodyBoundsA128": [
+        279,
+        10,
+        844,
+        1521
+      ],
+      "sha256": "f2a98414ecbf642aa9e1b7a8d4870005200cfb602637f590247fdcbc997f5e5a",
+      "ancestorSha256": "019d130fba098364d90b9955cb8e213bb0238aed405689e94f97e5a3a980564c",
+      "githubBlobSha": "9c4f7ffbf0082d088cbfa14bc2229863437d6cf8",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 13,
+      "role": "healer",
+      "name": "Expedition paramedic",
+      "design": "Very muscular adult male Yautja with red-brown reptilian scales, blocky brow, short mandible tusks and stubby dreadlocks secured by a wide worn head strap that leaves alien skull visible. Short teal reinforced vest with ivory abdomen wrap, knee-length rugged brown divided work skirt, compact roll-top medical backpack and large stacked hip pouches. Both hands carry a sturdy small rectangular medical kit by its top handle in front of hips, wide stable stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-d053d0c6-b152-4d77-b563-dd1e3794c4b9.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-13.png",
+      "filename": "healer-13.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-13.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-13.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 13, Expedition paramedic. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6229,
+      "bodyBoundsA128": [
+        227,
+        23,
+        847,
+        1518
+      ],
+      "sha256": "492f3fbdf6ce9eaf392a109d9c9a6ebfdd2f20408784a19fd1ad2be18c63bc79",
+      "ancestorSha256": "089d89716dd77038af089ed4cb908e1c5934d45caf0712f1f2f71ce5d88f7553",
+      "githubBlobSha": "ee8a8bb3cf23bed7581582da65bea1405f77a48d",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 14,
+      "role": "healer",
+      "name": "Medicine archivist",
+      "design": "Average height elderly female Yautja with sage-green pale spotted scales, broad furrowed cranium, delicate but alien mandibles and long thin grey dreadlocks bound into a single hanging rear tail. High-collared ivory tabard with teal front inserts over brown leggings, horizontal leather vial cases across waist and flat specimen-document pouch at side, no written markings. Studies a closed palm-sized dark medical scanner held in left hand, right hand resting across opposite forearm.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-1c8e418d-f510-48a5-b4e9-fbd1aeef43e9.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-14.png",
+      "filename": "healer-14.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-14.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-14.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 14, Medicine archivist. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6739,
+      "bodyBoundsA128": [
+        292,
+        12,
+        850,
+        1510
+      ],
+      "sha256": "ce2a6e8fcc08b58f4c87922781d92a9da47359b3c9d6282fbe2371fa0a904e94",
+      "ancestorSha256": "149f5abc0bc4b1f99469e08474f0f6e83f4eb95af46acdcdcdc0eaf0ec77c04b",
+      "githubBlobSha": "eda25eed14dca6ca64b3d9117f8092d5debed538",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 15,
+      "role": "healer",
+      "name": "Pulse technician",
+      "design": "Tall angular young adult male Yautja with dark slate mottled skin, narrow high skull and swept-back fine dreadlocks gathered into three narrow hanging braids. Teal wrapped sleeveless upper tunic beneath ivory segmented work apron, brown strap harness with a round compact medical sensor module, four sealed ceramic canisters on left hip. Right hand holds a wired palm-sized pulse sensor while left supports its short cable spool at abdomen, poised slightly sideways.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-4aeadd05-7dda-4580-abef-1e9f7bf69b99.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-15.png",
+      "filename": "healer-15.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-15.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-15.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 15, Pulse technician. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6703,
+      "bodyBoundsA128": [
+        292,
+        32,
+        895,
+        1506
+      ],
+      "sha256": "4af5beff88d57e6c47ab1683a750df9266ec264d219d4db5f375122ab056f32b",
+      "ancestorSha256": "4a7bf938cce9e093df077ed9094b2238cfc24d27b969c6f876b071ee689e1048",
+      "githubBlobSha": "e5cdb74f74123b5a5268a790b632c0be99265336",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 16,
+      "role": "healer",
+      "name": "Burn care specialist",
+      "design": "Broad-shouldered adult female Yautja with bronze olive scales and scarred outer mandible plates, deep-set eyes, medium dreadlocks separated into two thick low tails. Brown sleeveless medical smock with an ivory over-apron and teal knee panels, layered soft protective forearm wraps, wide diagonal satchel with two folded gauze packets. Holds a squat lidded ointment pot in left hand and flat clean applicator spatula in right hand at waist, one foot forward.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-81d03ef7-7ed4-416a-be86-139553f511bd.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-16.png",
+      "filename": "healer-16.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-16.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-16.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 16, Burn care specialist. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6351,
+      "bodyBoundsA128": [
+        249,
+        14,
+        885,
+        1515
+      ],
+      "sha256": "cc265a5bcaedadf1deb52a1732fb2f18ebecff1e48a429411da2f2f0c9b69b63",
+      "ancestorSha256": "467d65d38aef7ae26b95c45fa379de505447a4f0cd29a43bc758909061bfe98d",
+      "githubBlobSha": "9052bf3bacb79378bbec76e3e8e296f6cd8a740d",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 17,
+      "role": "healer",
+      "name": "Traveling healer",
+      "design": "Lean elderly male Yautja with elongated pale sand-colored spotted head, long lower mandibles and uneven shoulder-length grey dreadlocks tied with plain leather rings. Ivory hood folded down behind neck, calf-length teal split traveling coat over brown utility trousers, cross-body crescent medical satchel and rolled bandages strapped to belt. Left hand holds a closed oval medicomp case beside thigh, right grips the shoulder strap, slightly hunched traveling stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-e2ebc762-c796-4150-ba8e-913fafbc8083.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-17.png",
+      "filename": "healer-17.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-17.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-17.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 17, Traveling healer. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6338,
+      "bodyBoundsA128": [
+        254,
+        22,
+        863,
+        1494
+      ],
+      "sha256": "6370f2c10e4fe912adea3726c24370e5ee60f1da56aba5c952174b1b9d84d534",
+      "ancestorSha256": "adea9d82eee29d7dd87a1db8ff245c8d3f4102590ffe2956a4742eb54cf9007a",
+      "githubBlobSha": "94790190ef97766d5f3f421a59e2369d841ff9eb",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 18,
+      "role": "healer",
+      "name": "Medical apprentice adult",
+      "design": "Small slim young adult female Yautja, unmistakably adult fully alien proportions, dark green scales with copper flecks, narrow cranial ridge and short tidy dreadlocks bound behind each side. Simple ivory sleeveless crossover tunic with teal short apron over brown knee wraps, three distinct cloth pouches and capped compact injector on woven utility belt. Holds a folded square medical instrument roll carefully in both hands near abdomen, knees relaxed and feet together but separated.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-205a61ec-2d8f-4c05-b7ce-5c9247c2e6f9.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-18.png",
+      "filename": "healer-18.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-18.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-18.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 18, Medical apprentice adult. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.7229,
+      "bodyBoundsA128": [
+        328,
+        12,
+        792,
+        1499
+      ],
+      "sha256": "df1a4d62402b6de1e396dc9ad9703b6ca645e4cd06b963084d4ec22ac86f4dbf",
+      "ancestorSha256": "ac6646df307584726e07c88d3a06c821e98a36be409306aaf2feb349413569dc",
+      "githubBlobSha": "9cd75560945ec5615533e052d189754d0b30a820",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 19,
+      "role": "healer",
+      "name": "Surgical kit master",
+      "design": "Huge barrel-chested middle-aged male Yautja with black-speckled ochre scales, heavy squared cranial ridges and massive four mandibles, long thick dreadlocks bound with bone rings in a low fan. Large ivory paneled apron over teal split tunic and brown leggings, wide medical harness with two angular metal tool boxes and clean cloth bundles. Right clawed hand holds a small closed forceps set; left arm folded under a compact hard medical tray against the waist, dominant planted stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-29f88197-2e8b-4d87-a025-589dc5874a86.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-19.png",
+      "filename": "healer-19.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-19.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-19.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 19, Surgical kit master. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.5844,
+      "bodyBoundsA128": [
+        198,
+        24,
+        902,
+        1491
+      ],
+      "sha256": "4d0078998954141bbc0ec254b67e2dd3e2f9b81b73052047f0bb8a010b343868",
+      "ancestorSha256": "f9110ea4505bc93c0a77ffd010d6b08c7ad59cabe49b60b29af09dae5f37f585",
+      "githubBlobSha": "efa8e39d311288cf8175fa2acb2c6125676d2e4a",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    },
+    {
+      "n": 20,
+      "role": "healer",
+      "name": "Community physician",
+      "design": "Medium-height mature female Yautja with pale grey and warm mottled olive reptilian scales, broad graceful alien brow and four clear mandibles, long dreadlocks braided into an elaborate low horizontal loop. Teal sleeveless high-collared robe opening over an ivory layered wrap skirt and brown leg wraps, brown diagonal physician sash with three different compact medicine cases and a rounded shoulder pouch. Left hand loosely holds a capped ceramic remedy tube at chest height while right rests over the belt, calm reassuring open stance.",
+      "path": "/workspace/scratch/41fc0564188e/generated_images/exec-de617d2c-5a79-435e-8631-e9d05af18914.png",
+      "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-20.png",
+      "filename": "healer-20.png",
+      "status": "generated",
+      "generator": "built-in image_gen",
+      "revision": 2,
+      "faceCorrection": true,
+      "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-20.png",
+      "referencePaths": [
+        "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-20.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "anatomyReference": "stan-winston-predator-test.jpg",
+      "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 20, Community physician. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixelRatio": 0.6423,
+      "bodyBoundsA128": [
+        265,
+        20,
+        823,
+        1510
+      ],
+      "sha256": "7f4a1d67b23f62c6c5c61ca11d099f7799eb04cb335aa894fba5b6c557d18156",
+      "ancestorSha256": "2d2d22afb3308aec5bfb0f7e788bc601e2deaebe6826ea033626cb5c6dc95377",
+      "githubBlobSha": "eaa346d4bcc7c2af95ebc595e331e04efbb6bce4",
+      "faceReview": "approved",
+      "face": "visible-four-mandibles"
+    }
+  ],
+  "faceCorrectionCount": 20,
+  "faceCorrectionStatus": "complete",
+  "faceReview": "face-review.json",
+  "faceReviewStatus": "approved"
+}

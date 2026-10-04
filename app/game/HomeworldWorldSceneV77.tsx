@@ -111,7 +111,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    if(paintedBuildings.some(b=>{if(b.levelId!==resident.levelId||pose.y>=homeworldBuildingRenderDepthV76(b,pose))return false;if(b.art.opaqueRowsV76)return homeworldBuildingCoversPaintV76(b,pose);const bounds=homeworldBuildingVisibleBoundsV72(b),foot=homeworldProjectGroundV64(pose);return foot.x>bounds.left&&foot.x<bounds.left+bounds.width&&foot.y>bounds.top&&foot.y<bounds.top+bounds.height;}))return null;
    return <span key={resident.id} className={styles.residentV68} data-homeworld-resident={resident.id} data-world-level-v77={resident.levelId}
     data-x={pose.x} data-y={pose.y} data-moving={pose.moving} style={{left:p.x,top:p.y,zIndex:depth(resident.levelId,pose.y)}}>
-    <HomeworldCivilianV72 role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={seconds+resident.phaseSeconds} speed={resident.speed}/>
+    <HomeworldCivilianV72 npcId={resident.id} role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={seconds+resident.phaseSeconds} speed={resident.speed}/>
    </span>;
   })}
   {HOMEWORLD_CONNECTORS_V77.filter(connector=>painted(connector.from.levelId)||painted(connector.to.levelId)).map(connector=>{

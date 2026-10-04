@@ -1,0 +1,34 @@
+{
+  "n": 10,
+  "role": "healer",
+  "name": "Scar specialist",
+  "design": "Long-limbed mature male Yautja with asymmetrical old scar across left brow, golden tan speckled hide and slim cranium, very long dreadlocks tied low with a strip of teal cloth. Full brown leather working apron with ivory side panels over a teal under-tunic, tiny surgical clamps aligned in a roll at one hip, rounded rear medicomp pack. Holding a small folded instrument cloth in left hand and a capped healing applicator in right, elbows held near ribs.",
+  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-07a52762-dd0f-4b9d-9dc2-4c3745b04cc8.png",
+  "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-10.png",
+  "filename": "healer-10.png",
+  "status": "generated",
+  "generator": "built-in image_gen",
+  "revision": 2,
+  "faceCorrection": true,
+  "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-10.png",
+  "referencePaths": [
+    "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-10.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "anatomyReference": "stan-winston-predator-test.jpg",
+  "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 10, Scar specialist. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+  "width": 1024,
+  "height": 1536,
+  "transparentPixelRatio": 0.6161,
+  "bodyBoundsA128": [
+    238,
+    18,
+    879,
+    1520
+  ],
+  "sha256": "afaf491667f2cea17cf02528108e18304acc3252f7df31c3f9b7d5878d2fca49",
+  "ancestorSha256": "8d4107300c694d66082f08a4025d9a18c54e740025182d47ab21454edad042ac",
+  "githubBlobSha": "90c0482cd2d5fc0613481dcb85ac3a15e81a5d21",
+  "faceReview": "approved",
+  "face": "visible-four-mandibles"
+}

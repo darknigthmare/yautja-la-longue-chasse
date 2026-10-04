@@ -10,6 +10,6 @@ export default function HomeworldCntlipHostsV77({room}:{room:HomeworldInteriorV6
   const point=homeworldProjectGroundV64(host);
   return <div data-homeworld-cntlip-host-v77={host.id} data-cntlip-native-table={host.tableId} title={`${host.name} · réception originale du clan`}
     style={{position:'absolute',left:point.x,top:point.y,zIndex:Math.round(host.y)+2,pointerEvents:'none'}}>
-    <HomeworldCivilianV72 role={host.role} facing={-1} height={100}/>
+    <HomeworldCivilianV72 npcId={host.id} role={host.role} facing={-1} height={100}/>
   </div>;
 }

@@ -1,0 +1,51 @@
+{
+  "id": "tribe-slums-mechanic-11",
+  "role": "tribe-slums-mechanic",
+  "description": "Tall narrow-shouldered mature female instrument mechanic with silver-gray scales and dark fine spots, long dreadlocks braided in two thin strands behind. Unmasked face with angular four mandibles and a sharp central skull ridge. Short pale gray technician jacket, dark leather tool harness, tiny chest diagnostic screen and black fabric work trousers. Holds a delicate electronic test probe and small triangular sensor plate at sternum.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall narrow-shouldered mature female instrument mechanic with silver-gray scales and dark fine spots, long dreadlocks braided in two thin strands behind. Unmasked face with angular four mandibles and a sharp central skull ridge. Short pale gray technician jacket, dark leather tool harness, tiny chest diagnostic screen and black fabric work trousers. Holds a delicate electronic test probe and small triangular sensor plate at sternum.",
+  "status": "validated",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    17,
+    1010,
+    1518
+  ],
+  "transparent_fraction": 0.7099831899007162,
+  "sha256": "72c833a04517a43ef7aa34fd07f0495f1dbf08f8f28f703b616d3674a514151f",
+  "byte_count": 1949190,
+  "original_bytes_preserved": true,
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-11.png",
+  "githubBlobSha": "ddb58372300b3586388974f22849b6f9b34f1217",
+  "blobError": null,
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-11.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fcad11aa-2c1c-43a0-ac43-1dec8b85e5ea.png",
+  "gitBlobSha1": "ddb58372300b3586388974f22849b6f9b34f1217",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-11-before-face-review-a4df796d4e85.png",
+    "sha256": "a4df796d4e8551af6602e39df213eddf373d041bffd1fa2c503ed11c24ffedc0"
+  },
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  }
+}

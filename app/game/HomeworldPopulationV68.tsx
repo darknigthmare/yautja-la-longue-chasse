@@ -20,7 +20,7 @@ export default memo(function HomeworldPopulationV68({ seconds, cameraX, cameraY,
     return <span key={resident.id} className={styles.residentV68} data-homeworld-resident={resident.id} data-activity={resident.activity ?? 'visitor'} data-x={pose.x.toFixed(1)} data-y={pose.y.toFixed(1)} data-moving={pose.moving}
       style={{ left: p.x, top: p.y, zIndex: Math.round(pose.y) }}>
       <i className={styles.residentShadowV68} />
-      <HomeworldCivilianV72 role={homeworldResidentRoleV72(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100}
+      <HomeworldCivilianV72 npcId={resident.id} role={homeworldResidentRoleV72(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100}
         moving={pose.moving} seconds={seconds+resident.phaseSeconds} speed={resident.speed}/>
       {resident.id === activeId && <b className={styles.residentLabelV68}>{homeworldResidentActivityV69(resident, seconds)}</b>}
     </span>;
