@@ -52,7 +52,7 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     {(room.monumentInhabitantsV81??[]).map(npc => <div key={npc.id} data-homeworld-monument-inhabitant-v81={npc.id}
       data-native-role={npc.role} data-interactive="false" data-native-animation-status={npc.motion} title={npc.label}
       style={{position:'absolute',left:npc.x,top:npc.y*HOMEWORLD_GEOMETRY_V64.depthScale,zIndex:Math.round(npc.y)+2,pointerEvents:'none'}}>
-      <HomeworldCivilianV72 role={npc.role} facing={npc.facing} height={100}/>
+      <HomeworldCivilianV72 npcId={npc.id} role={npc.role} facing={npc.facing} height={100}/>
     </div>)}
     {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
     {(room.orientedDecorV76??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}

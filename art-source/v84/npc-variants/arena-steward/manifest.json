@@ -1,0 +1,392 @@
+{
+  "role": "arena-steward",
+  "requested": 20,
+  "ready": 20,
+  "status": "complete",
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civic-specialists-spaced-atlas.png",
+  "referenceCell": 4,
+  "promptCommon": "Use case: stylized-concept. ONE standalone transparent full-body 2D NPC sprite for Yautja The Long Hunt. Reference image is STYLE/SPECIES ONLY: use BOTTOM CENTER arena steward (cell4 in6-character reference), ochre tunic/dark cloth shoulder detail and painterly finish. Create ONE entirely different individual described below, not an existing reference character. Adult Yautja alien anatomy: proper cranium, exposed four mandibles when unmasked, dreadlocks, reptilian spotted hide, clawed feet. Arena organization/adjudication steward, civilian clothing and role tools, restrained bronze details, not soldier or active gladiator. Realistic detailed painterly game art. Relaxed standing three-quarter facing RIGHT, slightly elevated view. Full body head-to-feet, all tools visible,8% transparent clear margins ALL sides; figure no more82% canvas height. Actual transparent alpha background. No terrain, cast shadow, backdrop, additional characters, sheet, atlas, writing, interface, border, watermark. New proportions, face, dreadlocks, clothes, and tool arrangement for each sprite.",
+  "variants": [
+    {
+      "id": "arena-steward-01",
+      "name": "Chief arena steward",
+      "design": "Stocky broad mature male with olive speckled hide, wide exposed four mandibles, broad domed cranium and thick shoulder-length dreadlocks. Warm ochre short-sleeved tunic with one broad folded charcoal shoulder shawl, bronze shoulder clasp, heavy leather belt with simple unmarked seals, black apron panels to knees. Holds a short rounded signal baton down beside leg, other hand on waist. Civilian event official, no battle armor.",
+      "status": "generated",
+      "file": "arena-steward-01.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-36a13c91-2876-4690-8707-7e80c1b42dd5.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6049639383951823,
+      "sha256": "a1cee978753af316136c70e23f854363474e897ba2a095174d7f247f527d574c",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "b88fe552de2c72676127a784848f142075fd491e"
+    },
+    {
+      "id": "arena-steward-02",
+      "name": "Contest registrar",
+      "design": "Tall slender adult female, ivory spotted hide, exposed narrow skull and four delicate curved mandibles, long thin dreadlocks tied high. Flowing ochre-grey wrap robe with narrow black fitted vest, long asymmetrical side panel and small bronze chest clasp. Holds a slim closed contest-registration tablet vertically against abdomen with both hands, stylus tucked at belt, calm upright stance.",
+      "status": "generated",
+      "file": "arena-steward-02.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d5be75ec-e449-4163-a95d-4f3dee7269cb.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.7226524353027344,
+      "sha256": "5cc8fd407b02dad0586b993f38f47f8ac0e0ef5e9ff75bd1e7a1ee0ea58aa772",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "9a964bd010cf06517796ea1fae38c12e5d398e67"
+    },
+    {
+      "id": "arena-steward-03",
+      "name": "Senior adjudicator",
+      "design": "Lean elderly male with pale sandy reptilian hide, heavy brow folds, long exposed mandibular tusks, grey dreadlocks to mid-back. Long formal charcoal gown with broad ochre central panel, structured layered cloth collar, bronze rank medallion with abstract geometry, soft waist sash. Holds a plain flat circular officiating disk low in left hand, right resting at waist. Dignified slight stoop.",
+      "status": "generated",
+      "file": "arena-steward-03.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a2b9bf5c-b061-431e-a30b-fe2b3011fc68.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6081104278564453,
+      "sha256": "60ac0b1a6b1d21483794117781ed126e90511f91563c2a30aa6b1f9161a2c167",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "acfe101e33c51c003856ca900730ec7c92a69342"
+    },
+    {
+      "id": "arena-steward-04",
+      "name": "Admission supervisor",
+      "design": "Short heavy female adult with reddish olive mottled skin, low rounded exposed mandible face, short thick dreadlocks in rear bun. Practical mustard tunic under long brown leather tabard, black shoulder roll, wide belt with separate pouches for small unmarked metal entry tokens, ankle wraps. Holds a compact token dispenser at waist with both hands; sturdy welcoming stance.",
+      "status": "generated",
+      "file": "arena-steward-04.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c00ef320-f2b7-44f0-ba29-a90788cc5881.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6397965749104818,
+      "sha256": "cebe5355558c86e5121ba86cf32c3b25c0fcc968313db35b51e3ec9324e583b8",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "91b5f0a5ad4469b90a3bc40e8d77e029f38ae07c"
+    },
+    {
+      "id": "arena-steward-05",
+      "name": "Arena announcer",
+      "design": "Very tall lean male with dark copper-brown hide and charcoal speckles, elongated exposed mandibled skull, long dreadlocks swept over one shoulder. Sleeveless golden-ochre robe with dark short asymmetrical capelet, crossed narrow leather chest straps and bronze clasps, calf wraps. Holds a short curved ceremonial signal horn against right hip, left hand open beside belt. No mouthpiece touching face.",
+      "status": "generated",
+      "file": "arena-steward-05.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3af30fb2-06c3-4077-aff2-841bbb5aa8bc.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6685784657796224,
+      "sha256": "157c75af39adb7089af137c3899cfe99a018a829f1f58b24a8c842867e874118",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "1e896f8b677ffc98f43add8d60b252083e17659e"
+    },
+    {
+      "id": "arena-steward-06",
+      "name": "Match referee",
+      "design": "Athletic muscular adult female with ash-grey mottled hide, strong broad four-mandibled face, black dreadlocks tied tightly at nape. Short ochre training-style official tunic, thick black diagonal cloth sash, wrapped forearms and legs, two simple belt cases. Holds a folded dark-gold signal pennant on short rounded pole beside right thigh, left palm gently raised near chest to signal pause. No blade or armor.",
+      "status": "generated",
+      "file": "arena-steward-06.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-df70866b-827d-4836-9a6b-f8c76e979ae2.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6753253936767578,
+      "sha256": "f3a1ba410a4730f7bb575e90b98b05646ae45300f710fd1ddd2299ad081419d4",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "69955d513694c69806b617ab4aaa52848d79271e"
+    },
+    {
+      "id": "arena-steward-07",
+      "name": "Equipment registrar",
+      "design": "Broad middle-aged male with golden leopard-spotted hide, square cranium, blunt mandibles and medium dreadlocks with three plain bronze cuffs. Charcoal leather apron over ochre rolled-sleeve tunic, reinforced civilian belt, bare muscular forearms. Holds a CLOSED compact biomask in one hand at hip for equipment registration and a thin inspection tablet in other, neither worn nor fighting stance.",
+      "status": "generated",
+      "file": "arena-steward-07.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e989e6e7-f08a-433a-acb9-ad5fb2d46fe1.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6109396616617838,
+      "sha256": "971bcab21e0ba9e7c44d3a94c25a51e0d3db7e5ae167c1a616592fdb34128fa8",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "8dc973e8d3fda5da248f8b2ab3a946515b4f2a32"
+    },
+    {
+      "id": "arena-steward-08",
+      "name": "Gate steward",
+      "design": "Towering heavy male with slate-blue speckled hide, domed uncovered head, four thick ivory mandibular tusks, long dense black dreadlocks. Heavy black quilted sleeveless coat over mustard knee tunic, broad bronze collar toggles, large key ring attached to waist, dark calf bindings. One hand grips a loop carrying three chunky gate keys, other rests lightly on belt. Relaxed official posture.",
+      "status": "generated",
+      "file": "arena-steward-08.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7caff3e8-7c53-4973-b105-91c26f6c45a7.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5991999308268229,
+      "sha256": "dba43b2a6e4b3422d6cf232478257ff6f0401ce64e29d080b7582749244155c5",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "8be380b6ac50ce541a2ec06c027b4673cd5ab417"
+    },
+    {
+      "id": "arena-steward-09",
+      "name": "Arena timekeeper",
+      "design": "Short stout elderly female with light grey mottled skin, rounded exposed mandible face, white dreadlocks in compact shoulder bundle. Ochre work dress with dark long apron and small bronze shoulder clasps, wide soft black belt. Holds a compact enclosed mechanical timing instrument with concentric rings in both hands at belly, small reset pointer attached to belt. Practical clothes, no numerals or readable text.",
+      "status": "generated",
+      "file": "arena-steward-09.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-24560e9a-c41b-4339-b734-3cae13d565c4.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6351165771484375,
+      "sha256": "9837c5643ed1d0abe41a4504b616aee3f4e8a644e8710c0d245d62cee88fede0",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "09ddc9a7c00f1c63b3866e38a19476685381b2dc"
+    },
+    {
+      "id": "arena-steward-10",
+      "name": "Score recorder",
+      "design": "Very tall narrow male with green-grey hide, sharp tapered forehead and exposed slim mandibles, long thin dreadlocks tied in low tail. Long charcoal sleeveless vest over golden ochre wrap tunic, slim bronze-edged sash, split knee panels and plain ankle wraps. A small angular blank-faced score slate held at chest height in left hand, stylus in right hand near surface; thoughtful relaxed stance.",
+      "status": "generated",
+      "file": "arena-steward-10.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-63740dc8-a93b-4ea6-99e2-7434c996395d.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6863854726155599,
+      "sha256": "de7e5e0058c3a9d99fa2dd4b53fb61568ad53f2bda8c725b9ead010ff1339fbf",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "5fdd2b65f3e18c1479e80ef43a18208f69bbaa39"
+    },
+    {
+      "id": "arena-steward-11",
+      "name": "Corner attendant",
+      "design": "Small agile adult female with bright rust speckled hide, low elongated skull, four fine mandibles, short black dreadlocks tied high with long loose side strands. Honey-ochre sleeveless tunic, one dark folded shoulder shawl, broad cloth sash, narrow side satchel and calf wraps. Holds neatly folded charcoal officiating cloth and two small sealed token boxes under left arm, right hand open. No medical symbols.",
+      "status": "generated",
+      "file": "arena-steward-11.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ed31f6a4-a2be-48e3-a22d-c5656b039afd.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.7081184387207031,
+      "sha256": "81ff165cb38ba90d07192c696e93969dc34900212fd42aa2b3d6525401ba3b49",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "92368d1f71ec4cfb1893dc44307d6879ecd2646a"
+    },
+    {
+      "id": "arena-steward-12",
+      "name": "Floor coordinator",
+      "design": "Medium stocky male with olive-black mottling, broad exposed four-mandibled face, high ridged dome, short thick dreadlocks. Cropped black civilian vest over ochre half-sleeve tunic, heavy leather utility apron and broad belt. A compact chalk-line marking spool in left hand, capped short floor-marker in right hand, simple practical stance with feet apart. Clearly logistics official, no rake, no battle weapon.",
+      "status": "generated",
+      "file": "arena-steward-12.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-103b62f8-30fd-4a2f-b9f2-1e81a3b07877.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6253318786621094,
+      "sha256": "f8c955993bc61503223dad702ec9d2c9712c197f3358e4e39e775b3fe8c98599",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "83ed4d98b373f22300d5d9d913e4d2e0e93bbd16"
+    },
+    {
+      "id": "arena-steward-13",
+      "name": "Ritual marshal",
+      "design": "Tall elderly male with pale cream spotted hide, exposed weathered mandibles and long ivory tusks, white-grey dreadlocks extending to waist. Long ochre official robe under a small dark layered mantle, asymmetric black sash with abstract bronze fittings, narrow belt, ankle wraps. Holds a slender ceremonial staff with a smooth closed ring-shaped top upright beside body; free hand at abdomen. No crown, no magic or glowing effects.",
+      "status": "generated",
+      "file": "arena-steward-13.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-703d6e35-6158-48d2-86ca-355b75a1dc30.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6169312795003256,
+      "sha256": "37b8ff391c80f466c99f516c345a20e894c5423b10752131c6c8d014a51b5978",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "e6367b591983e14b7e1748e593c17b14f960375d"
+    },
+    {
+      "id": "arena-steward-14",
+      "name": "Pairing coordinator",
+      "design": "Lean adult male with russet-brown mottled hide, narrow angular skull, exposed four mandibles, dreadlocks gathered into one high rear knot. Charcoal long-sleeved tunic with broad honey-ochre V-shaped overlay, short black split skirt panels over trousers, bronze belt clasps. Holds two flat unmarked contender token disks of slightly different shapes in one hand while checking wrist reader with the other; neutral official stance.",
+      "status": "generated",
+      "file": "arena-steward-14.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c4a28495-bc2e-453f-a616-4e922a0afe93.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6978187561035156,
+      "sha256": "ad287b0477b9849e71c125bfeb693518299778589068ae895564e585b844af2a",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "c5690fa2a22a8060ff557b979318e2c4894b58bd"
+    },
+    {
+      "id": "arena-steward-15",
+      "name": "Prize custodian",
+      "design": "Medium strong female with pale grey leopard-spotted hide, broad alien exposed mandibles, smooth domed cranium, long black dreadlocks bound in two rear loops. Formal ochre tunic with dark shoulder shawl crossed over chest, narrow bronze trim and long split hem, wrapped shins. Carries a small CLOSED rectangular prize case with handle in left hand, right hand rests on a sash holding one round medallion. No trophy skulls.",
+      "status": "generated",
+      "file": "arena-steward-15.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3e0a0b95-bffb-41f5-ad91-8c623f759baa.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6989154815673828,
+      "sha256": "3e85c106a7aee072937480eea142ee15f9f18a8b541f0a8a01f0a54aa60ec2e6",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "3e7aeb3bdff8927733aa563a917de85fcd909826"
+    },
+    {
+      "id": "arena-steward-16",
+      "name": "Inspection steward",
+      "design": "Very broad muscular male with dark yellow-green hide, blunt exposed mandibles and a scarred wide brow, cropped thick dreadlocks. Heavy worn black leather front apron over ochre short-sleeve work tunic, bronze utility buckles, thick wrist wraps, dark knee pads. Holds a compact closed caliper-shaped inspection tool at waist and a small unmarked equipment tag plate. Relaxed work pose, no combat armor.",
+      "status": "generated",
+      "file": "arena-steward-16.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fe9525d6-c827-4465-9631-c8ac7b559377.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6350199381510416,
+      "sha256": "c65b9dc7993a03b0bbea09e6732c1d52b9fe4b8f389aa49d4a45f0492f671f4a",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "fd3a79b04d462555046e8bd2ea10839cc8b8e3a6"
+    },
+    {
+      "id": "arena-steward-17",
+      "name": "Spectator liaison",
+      "design": "Tall heavy female with tan-copper spots, exposed broad mandible face, long dreadlocks swept behind shoulders with two dark bands. Long charcoal coat with mustard asymmetric front panel and folded cloth collar, narrow bronze shoulder clips, broad belt with a small token pouch. Holds a compact enclosed unlit usher lantern down at one side, other hand makes a restrained welcoming gesture. Full limb silhouette inside frame.",
+      "status": "generated",
+      "file": "arena-steward-17.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-70945b78-1f13-4fdc-9353-a211e51350d8.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6045023600260416,
+      "sha256": "235672ed02b19d6bd94d9ec0d546e0fcdef3342e9141bfd6233fa55611965bc3",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "d1d498b506e04e1d3ff17ebf37740d2d74276fa4"
+    },
+    {
+      "id": "arena-steward-18",
+      "name": "Ranking adjudicator",
+      "design": "Gaunt old male with ivory-grey reptilian skin, pronounced narrow brow, four curved mandibular tusks, long sparse white dreadlocks. Straight black official robes with a single wide diagonal ochre sash from shoulder to hip, small bronze clasps, narrow waist cord and sandals-like ankle straps leaving claws visible. Carries three small ranking cylinders in a holder on belt, both hands lightly clasped at lower chest. Reserved authority.",
+      "status": "generated",
+      "file": "arena-steward-18.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a0d84972-998b-49e1-b785-56b86a38b6a9.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6580352783203125,
+      "sha256": "3e0068ce49fb4e297d25981522eb594536ce80e457e09cf989cefeccf7f0d693",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "93704c73ca7113c6bd43406af0b1c49648bccb0f"
+    },
+    {
+      "id": "arena-steward-19",
+      "name": "Match starter",
+      "design": "Compact athletic adult female with deep red-brown speckled hide, narrow uncovered skull, blunt four mandibles, medium dreadlocks tied in short nape fan. Short mustard official tunic with broad charcoal side panels, fitted cloth trousers, wrapped calves and leather bracers. Holds two small paired wooden-metal signal clappers down by thighs, no firearms; one foot a little forward in alert relaxed stance.",
+      "status": "generated",
+      "file": "arena-steward-19.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3e1f937d-60d4-4957-8a40-742b31fe177d.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6993122100830078,
+      "sha256": "f8af88d5b5a094a4d59760f1f2b6686e654380b477ff6a174344806bb9093eef",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "171da9d798a12911c8906712b33ccb9f523efa52"
+    },
+    {
+      "id": "arena-steward-20",
+      "name": "Arena superintendent",
+      "design": "Broad tall mature male with silver-grey spotted hide, large exposed tusked mandibles, high domed brow and thick black-grey dreadlocks mid-back. Rich muted gold short-sleeved official robe with three black overlapping shoulder cloth panels, large geometric bronze chest medallion, dark waist sash and long split hems. Holds a closed heavy registration folio under left arm, right hand at belt with rounded signal baton. Composed grounded posture, no king crown.",
+      "status": "generated",
+      "file": "arena-steward-20.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-31401193-e4a6-481d-9e04-4575ec139f3d.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5905342102050781,
+      "sha256": "c4046f7ba84aca5ee39b84f33baa1b11e829a312b25a116f5b4e2dd587e84a40",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "04bc8898e1d31b97ef2154d163d425485b9aa69a"
+    }
+  ]
+}

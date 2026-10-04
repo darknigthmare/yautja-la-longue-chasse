@@ -1,0 +1,564 @@
+{
+  "role": "tribe-forest-builder",
+  "tribe": "Terrasses des Hautes Branches",
+  "method": "built-in image_gen, one independent call per sprite",
+  "references": [
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+  ],
+  "sprites": [
+    {
+      "id": "01",
+      "name": "Monteur des plateformes",
+      "description": "Very broad muscular adult with thick arms, dark olive hide with tawny speckles, wide flattened unmasked face, short blunt mandibles, thick black dreadlocks tied low. Sleeveless grey work tunic, split leather apron, green-patinated steel shoulder guard and shin plates. Holding a small wood-and-metal construction mallet downward in one hand and a broad bolted support bracket against hip; rope coil attached to climbing harness. Weight on rear leg.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very broad muscular adult with thick arms, dark olive hide with tawny speckles, wide flattened unmasked face, short blunt mandibles, thick black dreadlocks tied low. Sleeveless grey work tunic, split leather apron, green-patinated steel shoulder guard and shin plates. Holding a small wood-and-metal construction mallet downward in one hand and a broad bolted support bracket against hip; rope coil attached to climbing harness. Weight on rear leg.",
+      "status": "generated",
+      "file": "tribe-forest-builder-01.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4edb2fcb-a212-48aa-a13f-c936189111b3.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 867273,
+        "pixel_count": 1572864,
+        "sha256": "f895315d524b508aca8e08d562f5a0f8f9c584bd25cbcf890a045f5790a26ed7"
+      },
+      "githubBlobSha": "ff29b7c71c19429c3b305c6ba927167b041d4fda"
+    },
+    {
+      "id": "02",
+      "name": "Bâtisseuse des passerelles",
+      "description": "Tall slender adult female with cool pale green spotted skin, long narrow brow crest, fine angular mandibles, long dreads bound over one shoulder. Fitted charcoal-green work vest over grey long-sleeve shirt, knee-length wrap apron and climbing belt with two carabiners. Holds a compact block-and-tackle pulley and a neatly wound rope coil at waist. Upright attentive stance.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall slender adult female with cool pale green spotted skin, long narrow brow crest, fine angular mandibles, long dreads bound over one shoulder. Fitted charcoal-green work vest over grey long-sleeve shirt, knee-length wrap apron and climbing belt with two carabiners. Holds a compact block-and-tackle pulley and a neatly wound rope coil at waist. Upright attentive stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-02.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0ea411c9-f190-48c8-8ba6-837f96bb1dd2.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 983173,
+        "pixel_count": 1572864,
+        "sha256": "23af0f9b7f4828582d61937ee885170fb9a24e922a4da6162afa8327c5c75e9a"
+      },
+      "githubBlobSha": "bef86ff4b773490b75d4419f7bcd83167f1734d8"
+    },
+    {
+      "id": "03",
+      "name": "Ajusteur des poutres",
+      "description": "Short stocky adult, powerful shoulders, mottled slate hide, low broad cranium covered by a unique flat steel-grey work mask with green patina and wide rectangular brow, short tied dreads. Rolled-sleeve grey shirt, broad dark leather utility apron and thick knee pads. Holds a small heavy hand plane in one hand and short measuring calipers in the other. Strong planted stance, compact tool pouch.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Short stocky adult, powerful shoulders, mottled slate hide, low broad cranium covered by a unique flat steel-grey work mask with green patina and wide rectangular brow, short tied dreads. Rolled-sleeve grey shirt, broad dark leather utility apron and thick knee pads. Holds a small heavy hand plane in one hand and short measuring calipers in the other. Strong planted stance, compact tool pouch.",
+      "status": "generated",
+      "file": "tribe-forest-builder-03.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5b902d5f-6016-4b22-b735-153ea9d75757.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 881354,
+        "pixel_count": 1572864,
+        "sha256": "a11e101421ee8792ad7b00eea87f01b579176e1f870a30b58de135b83859a41c"
+      },
+      "githubBlobSha": "95a128b11fe1b6f73c5d72523878ad44ef341fa1"
+    },
+    {
+      "id": "04",
+      "name": "Ancien charpentier",
+      "description": "Lean elderly adult, weathered pale ochre-grey face, long grey dreadlocks loosely tied behind, narrow exposed mandibles with a short natural tusk, faint old brow mark. Long grey canvas coat tucked clear of feet, green shoulder capelet, worn steel forearm protection. Carefully holds a short folding measuring rule and a small timber joint sample fastened in one hand, belt of chisels in covered pouches. Slight dignified stoop.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Lean elderly adult, weathered pale ochre-grey face, long grey dreadlocks loosely tied behind, narrow exposed mandibles with a short natural tusk, faint old brow mark. Long grey canvas coat tucked clear of feet, green shoulder capelet, worn steel forearm protection. Carefully holds a short folding measuring rule and a small timber joint sample fastened in one hand, belt of chisels in covered pouches. Slight dignified stoop.",
+      "status": "generated",
+      "file": "tribe-forest-builder-04.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-7fc21768-8e0c-49a9-b72c-4bb38ee2e76d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 916568,
+        "pixel_count": 1572864,
+        "sha256": "4cf7b8bbc87e915b733cbeeceb8b5b2652c37a190a0d5ba0f64351c5795be9d1"
+      },
+      "githubBlobSha": "a97695d2ba487f5044cc975f47e9bd40f0b60245"
+    },
+    {
+      "id": "05",
+      "name": "Bâtisseuse des ancrages",
+      "description": "Broad-shouldered athletic adult female, russet skin with dark olive mottles, high rugged head crest, unmasked four broad mandibles, thick dreadlocks in a high practical knot. Short grey wrap vest, heavy green leather safety harness and segmented shin guards. One hand holds a wide steel anchor clamp closed safely, the other steadies a coiled securing cable attached to hip. Stable legs-apart work posture.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Broad-shouldered athletic adult female, russet skin with dark olive mottles, high rugged head crest, unmasked four broad mandibles, thick dreadlocks in a high practical knot. Short grey wrap vest, heavy green leather safety harness and segmented shin guards. One hand holds a wide steel anchor clamp closed safely, the other steadies a coiled securing cable attached to hip. Stable legs-apart work posture.",
+      "status": "generated",
+      "file": "tribe-forest-builder-05.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-39897526-6f02-4c0c-b789-19cf624bf696.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 977088,
+        "pixel_count": 1572864,
+        "sha256": "4ab5bcde41b066122d5bb6cf3d1ef0a167cc760d96c00d3abd86bd70e0efb3d5"
+      },
+      "githubBlobSha": "676af30e13e7e2c76ca90a7dad1fc4130d175e9d"
+    },
+    {
+      "id": "06",
+      "name": "Contrôleur d’aplomb",
+      "description": "Very tall slim adult with long limbs, grey-brown speckled hide, backward swept narrow crest and pointed mandibles, many fine dreads with bronze ties. Long split grey apron over sleeveless dark green tunic, light steel wrist guards. Holds a small steel spirit-level frame with clear glass bubble tube at chest height and a compact plumb bob suspended only to belt level. Focused head tilt.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very tall slim adult with long limbs, grey-brown speckled hide, backward swept narrow crest and pointed mandibles, many fine dreads with bronze ties. Long split grey apron over sleeveless dark green tunic, light steel wrist guards. Holds a small steel spirit-level frame with clear glass bubble tube at chest height and a compact plumb bob suspended only to belt level. Focused head tilt.",
+      "status": "generated",
+      "file": "tribe-forest-builder-06.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0fd24c43-deb8-4990-9d85-0411f22526f7.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 991968,
+        "pixel_count": 1572864,
+        "sha256": "54c3a19592ed83f9c4479bc71b192965a75f9bf9e5b217136998d8bef5c6ab7f"
+      },
+      "githubBlobSha": "7f60a427b20315754eed4e7562f9bbf2d8b18be2"
+    },
+    {
+      "id": "07",
+      "name": "Assembleur des ponts",
+      "description": "Heavyset adult, thick neck and large hands, moss-green mottled skin, square cranial ridge, shoulder-length dreads; steel brow half-mask above broad exposed mandibles. Thick padded grey work jacket, broad harness with steel D-rings, cropped double apron panels. Supports a compact jointed metal bridge fitting with both hands against stomach, short chain fastened at belt. Broad balanced stance.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Heavyset adult, thick neck and large hands, moss-green mottled skin, square cranial ridge, shoulder-length dreads; steel brow half-mask above broad exposed mandibles. Thick padded grey work jacket, broad harness with steel D-rings, cropped double apron panels. Supports a compact jointed metal bridge fitting with both hands against stomach, short chain fastened at belt. Broad balanced stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-07.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0dee5cea-8617-42c9-8976-b6797cbabd35.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 892611,
+        "pixel_count": 1572864,
+        "sha256": "268363f798523e4d4d0a57392ea7bb178d37cfafb576d6b7f283218d66df07e7"
+      },
+      "githubBlobSha": "eb4ebfe6da7d63e4393d8fbabad8d3a40df5fa59"
+    },
+    {
+      "id": "08",
+      "name": "Tresseuse de soutènement",
+      "description": "Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-08.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-622ae162-863b-4167-be80-16c50889a48d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1029853,
+        "pixel_count": 1572864,
+        "sha256": "9d2927d9d712f22f85848a346550cd7debdd4bfb36c769e08359702e9d2f44de"
+      },
+      "githubBlobSha": "067ea09a6b349e6462b71b158bf0659754eb2453"
+    },
+    {
+      "id": "09",
+      "name": "Réparateur des platelages",
+      "description": "Muscular adult with dense charcoal and ochre spotted skin, broad flat forehead, heavy exposed mandibles, black dreads separated into four short bound bundles. Grey sleeveless canvas vest, heavily worn rectangular leather apron, steel knee and forearm guards. Holds a short closed folding hand saw at side and a compact claw hammer lowered, pouch of blunt fasteners at hip. Casual ready stance.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Muscular adult with dense charcoal and ochre spotted skin, broad flat forehead, heavy exposed mandibles, black dreads separated into four short bound bundles. Grey sleeveless canvas vest, heavily worn rectangular leather apron, steel knee and forearm guards. Holds a short closed folding hand saw at side and a compact claw hammer lowered, pouch of blunt fasteners at hip. Casual ready stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-09.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-dc8077e2-3286-4c03-b0ce-b25630215a06.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 970753,
+        "pixel_count": 1572864,
+        "sha256": "2b7932b39b6921e675900da37d180aaa2c6cb20902ca41ffac9e70681fdd175d"
+      },
+      "githubBlobSha": "a5c679b91f66cbf6c6c2a7aadc7f92cdb8d15c8f"
+    },
+    {
+      "id": "10",
+      "name": "Inspectrice des structures",
+      "description": "Tall adult female, pale slate-green face, elongated finely ridged head, long tapered mandibles, ash-black dreads cascading behind. Grey ankle-length split work coat over fitted green trousers, one steel shoulder plate. Holds a compact nonverbal construction inspection slate in one hand and short wide calipers in the other; rope tether clipped to belt. Upright serious posture.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall adult female, pale slate-green face, elongated finely ridged head, long tapered mandibles, ash-black dreads cascading behind. Grey ankle-length split work coat over fitted green trousers, one steel shoulder plate. Holds a compact nonverbal construction inspection slate in one hand and short wide calipers in the other; rope tether clipped to belt. Upright serious posture.",
+      "status": "generated",
+      "file": "tribe-forest-builder-10.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-982732d7-3a96-4527-ab73-2caac7f3d3cd.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 965336,
+        "pixel_count": 1572864,
+        "sha256": "08a25d8d21f54eca2e13cf9e95e82ed5ea1ae0847d6436af9ca02ad4e0ccaed4"
+      },
+      "githubBlobSha": "0b1ca8c6545472686b0f9b2a0f5987ab55fde8c8"
+    },
+    {
+      "id": "11",
+      "name": "Responsable des cordages",
+      "description": "Medium-height broad adult, copper-green striped hide, low swept crown, strong mandibular tusks, black dreads in a top bundle. Grey linen shirt with rolled sleeves, moss-green padded vest, steel climbing greaves. Carries a thick compact rope coil over one shoulder while holding a short metal tensioning ratchet down at waist; no trailing rope. Torso angled slightly right.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Medium-height broad adult, copper-green striped hide, low swept crown, strong mandibular tusks, black dreads in a top bundle. Grey linen shirt with rolled sleeves, moss-green padded vest, steel climbing greaves. Carries a thick compact rope coil over one shoulder while holding a short metal tensioning ratchet down at waist; no trailing rope. Torso angled slightly right.",
+      "status": "generated",
+      "file": "tribe-forest-builder-11.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5a545549-7917-45be-a960-6949d657b6cd.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 979160,
+        "pixel_count": 1572864,
+        "sha256": "b8665d71bcf8eea4b6da4029cfd43a70d4a6a51147fa4c29c498787b17cb8474"
+      },
+      "githubBlobSha": "97595fd0970d4f46eb6f2f9075551777519dd1e1"
+    },
+    {
+      "id": "12",
+      "name": "Artisane des ferrures",
+      "description": "Slender older adult female, weathered olive face, fine long mandibles, sparse silver-black dreads, round steel work goggles above brow. Grey long-sleeve tunic with reinforced elbow patches, pocketed green leather apron and soft knee wraps. Holds a small hinged steel bracket and a compact file, closed tool tin attached at belt. Close careful hands and mild forward lean.",
+      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Slender older adult female, weathered olive face, fine long mandibles, sparse silver-black dreads, round steel work goggles above brow. Grey long-sleeve tunic with reinforced elbow patches, pocketed green leather apron and soft knee wraps. Holds a small hinged steel bracket and a compact file, closed tool tin attached at belt. Close careful hands and mild forward lean.",
+      "status": "generated",
+      "file": "tribe-forest-builder-12.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f4031bfb-77b4-449c-8c5c-dd7d03466a6b.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1062419,
+        "pixel_count": 1572864,
+        "sha256": "2a4b695e4634b7aec1ccfd88663b5923497cbe0e40eea0e7ff26c3917b1df4da"
+      },
+      "githubBlobSha": "27f44851aab722a29a4d034a54790be8b851dd2b"
+    },
+    {
+      "id": "13",
+      "name": "Poseur de traverses",
+      "description": "Very tall muscular adult, brown-grey mottled hide, massive low rectangular crest, large four mandibles, heavy long dreads. Reinforced dark green lifting harness over grey sleeveless tunic, steel shoulder covers, split short apron. Holds a single short thick timber brace vertically tight to one side, other hand gripping a small construction clamp; timber stops below head and above knees. Weight counterbalanced.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. The four fleshy lobes must be individually legible, slightly open in calm neutral expression. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very tall muscular adult, brown-grey mottled hide, massive low rectangular crest, large four mandibles, heavy long dreads. Reinforced dark green lifting harness over grey sleeveless tunic, steel shoulder covers, split short apron. Holds a single short thick timber brace vertically tight to one side, other hand gripping a small construction clamp; timber stops below head and above knees. Weight counterbalanced.",
+      "status": "generated",
+      "file": "tribe-forest-builder-13.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3ee923c5-bd18-4802-b82d-2bb6310d9969.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 844277,
+        "pixel_count": 1572864,
+        "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40"
+      },
+      "githubBlobSha": "d084583b4b2346663ee8bc0de44e2bd46d1bc436",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "14",
+      "name": "Bâtisseuse des terrasses",
+      "description": "Strong adult female, green-grey speckled skin, wide domed head crest, four angular mandibles, dreads in two practical bundles. Grey cross-wrap work coat, dark leather tool bandolier, green-patinated steel forearm guards. One hand carries a compact wood-and-steel tool box; other holds a short broad trowel safely down. Fitted trousers and free visible feet. Open supervisory stance.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Strong adult female, green-grey speckled skin, wide domed head crest, four angular mandibles, dreads in two practical bundles. Grey cross-wrap work coat, dark leather tool bandolier, green-patinated steel forearm guards. One hand carries a compact wood-and-steel tool box; other holds a short broad trowel safely down. Fitted trousers and free visible feet. Open supervisory stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-14.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f74f7e22-6775-4f22-9bc5-f311da6db1c6.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 896235,
+        "pixel_count": 1572864,
+        "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5"
+      },
+      "githubBlobSha": "230139a17a8c8cf6f005a40ad80d2b6dadf5c0f9",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "15",
+      "name": "Serrurier des accès",
+      "description": "Short compact adult, deep slate-brown mottled skin, wide jaw, low head ridge, steel mask with a distinctive narrow forehead and inset cheek panels, tied-back short dreads. Grey hood resting down at neck, small dark green shoulder cape, divided leather apron. Holds a rectangular mechanical lock assembly and a ring of a few broad industrial keys, secured pouches at waist. Calm concentrated stance.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Short compact adult, deep slate-brown mottled skin, wide jaw, low head ridge, steel mask with a distinctive narrow forehead and inset cheek panels, tied-back short dreads. Grey hood resting down at neck, small dark green shoulder cape, divided leather apron. Holds a rectangular mechanical lock assembly and a ring of a few broad industrial keys, secured pouches at waist. Calm concentrated stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-15.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f4780936-451f-4952-a915-68fff06dffa8.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 936580,
+        "pixel_count": 1572864,
+        "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d"
+      },
+      "githubBlobSha": "438d905c9060ae8a3b9a9b7fcefbfebd2141c4aa",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "16",
+      "name": "Technicienne des harnais",
+      "description": "Young fully adult female with lean long limbs, pale cool grey spotted hide, tapered head, compact mandibular tusks, shoulder-length black dreads with plain steel rings. Simple grey sleeveless tunic and green knee trousers, narrow steel bracers. Holds a folded climbing harness with visible straps and two carabiners at mid-torso, free hand inspecting one buckle. Easy waiting posture.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Young fully adult female with lean long limbs, pale cool grey spotted hide, tapered head, compact mandibular tusks, shoulder-length black dreads with plain steel rings. Simple grey sleeveless tunic and green knee trousers, narrow steel bracers. Holds a folded climbing harness with visible straps and two carabiners at mid-torso, free hand inspecting one buckle. Easy waiting posture.",
+      "status": "generated",
+      "file": "tribe-forest-builder-16.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-14bbe009-022f-4199-96fd-3314a6173e3f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1047780,
+        "pixel_count": 1572864,
+        "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f"
+      },
+      "githubBlobSha": "2c230d79bd2a9633ea96b41de164cd0ed0b56f58",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "17",
+      "name": "Maître des assemblages",
+      "description": "Very old broad adult, pale grey-ochre skin with dark freckles, deep forehead ridges, one shorter mandibular tusk, long silver dreads tied loosely. Repaired long grey cloth work coat, patinated steel collar plate, broad leather waist sash, wrapped shins. Holds a short joint template shaped like a robust right-angle gauge and a small fitting chisel pointing down. Steady authoritative body, no staff.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very old broad adult, pale grey-ochre skin with dark freckles, deep forehead ridges, one shorter mandibular tusk, long silver dreads tied loosely. Repaired long grey cloth work coat, patinated steel collar plate, broad leather waist sash, wrapped shins. Holds a short joint template shaped like a robust right-angle gauge and a small fitting chisel pointing down. Steady authoritative body, no staff.",
+      "status": "generated",
+      "file": "tribe-forest-builder-17.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2a6eca4a-0237-4021-98b8-a3dc9e9739b5.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 848837,
+        "pixel_count": 1572864,
+        "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4"
+      },
+      "githubBlobSha": "ae35529d3405bdcbb40ac449b8744209b5470848",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "18",
+      "name": "Étalonneur des tensions",
+      "description": "Tall slim adult with long dexterous hands, olive-brown mottled hide, high narrow swept forehead, fine mandibles, black dreadlocks tied in a low braid. Grey knee-length tunic, broad green leather chest harness, asymmetrical side apron. Holds a compact mechanical cable-tension meter with a short closed loop of sample cable, steel adjustment spanner tucked at hip. Head lowered examining meter.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall slim adult with long dexterous hands, olive-brown mottled hide, high narrow swept forehead, fine mandibles, black dreadlocks tied in a low braid. Grey knee-length tunic, broad green leather chest harness, asymmetrical side apron. Holds a compact mechanical cable-tension meter with a short closed loop of sample cable, steel adjustment spanner tucked at hip. Head lowered examining meter.",
+      "status": "generated",
+      "file": "tribe-forest-builder-18.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-356a8c8c-8a0d-456b-a0b4-d9388eb3e76a.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1017653,
+        "pixel_count": 1572864,
+        "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2"
+      },
+      "githubBlobSha": "e039804d86e6d872132651bff1dafb91f4c89698",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "19",
+      "name": "Bâtisseuse des charpentes",
+      "description": "Stocky adult female with powerful short legs, amber-green face with bold head patches, broad rugged crest, stout mandibles, thick shoulder-length dreads; steel protective face shield folded securely at belt. Heavy short grey work jacket, steel shoulder and knee protection. Holds a single compact bolted beam connector chest-height with both hands, hammer clipped to belt. Low sturdy stance.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Stocky adult female with powerful short legs, amber-green face with bold head patches, broad rugged crest, stout mandibles, thick shoulder-length dreads; steel protective face shield folded securely at belt. Heavy short grey work jacket, steel shoulder and knee protection. Holds a single compact bolted beam connector chest-height with both hands, hammer clipped to belt. Low sturdy stance.",
+      "status": "generated",
+      "file": "tribe-forest-builder-19.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f45137e2-7460-4640-8cde-3878c389a871.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 823981,
+        "pixel_count": 1572864,
+        "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632"
+      },
+      "githubBlobSha": "9692566805fa2baf5fdeb3c116af03958e735ea6",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    },
+    {
+      "id": "20",
+      "name": "Arpenteur de la canopée",
+      "description": "Long-limbed middle-aged adult, slate skin with green-ochre mottling, high flat forehead crest, long mandibles, very long dreads gathered tightly low. Sleeveless grey tunic, green shoulder scarf tucked into utility harness, steel forearm guard and shin splints. Holds a compact optical construction level on a folded short support at waist, other hand indicates a small calm alignment gesture. Practical survey pouch and short rope coil at hip.",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Long-limbed middle-aged adult, slate skin with green-ochre mottling, high flat forehead crest, long mandibles, very long dreads gathered tightly low. Sleeveless grey tunic, green shoulder scarf tucked into utility harness, steel forearm guard and shin splints. Holds a compact optical construction level on a folded short support at waist, other hand indicates a small calm alignment gesture. Practical survey pouch and short rope coil at hip.",
+      "status": "generated",
+      "file": "tribe-forest-builder-20.png",
+      "anatomyGuidance": "official-1987-four-mandibles",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5e51d566-9ddf-413e-9755-48ad81d8bcc6.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 955743,
+        "pixel_count": 1572864,
+        "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf"
+      },
+      "githubBlobSha": "0c8834c4788b660441a0594d59d474c5e32ca55a",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf",
+        "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
+      }
+    }
+  ],
+  "completed": 20,
+  "anatomicalReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "referencesForSprites13to20": [
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+  ],
+  "officiallyReviewedSlots": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": "V84",
+  "interiors": [
+    { "id": "palace-v84-court-registrar", "buildingId": "throne-audience", "role": "royal-court", "fallbackRole": "herald", "label": "Officier des audiences du Roi", "x": 350, "y": 215, "facing": 1 },
+    { "id": "palace-v84-court-envoy", "buildingId": "throne-audience", "role": "royal-court", "fallbackRole": "herald", "label": "Déléguée de la cour des clans", "x": 342, "y": 352, "facing": 1 },
+    { "id": "palace-v84-court-attendant", "buildingId": "throne-audience", "role": "royal-court", "fallbackRole": "herald", "label": "Intendant de la chambre d’audience", "x": 696, "y": 362, "facing": -1 },
+    { "id": "palace-v84-court-seals", "buildingId": "throne-audience", "role": "royal-court", "fallbackRole": "herald", "label": "Gardienne des sceaux de la cour", "x": 710, "y": 220, "facing": -1 },
+    { "id": "council-v84-elder-west", "buildingId": "rite-sanctum", "role": "elder-council", "fallbackRole": "rite-keeper", "label": "Ancien de la chambre des représentants", "x": 404, "y": 236, "facing": 1 },
+    { "id": "council-v84-elder-east", "buildingId": "rite-sanctum", "role": "elder-council", "fallbackRole": "rite-keeper", "label": "Ancienne des délibérations", "x": 714, "y": 206, "facing": -1 }
+  ],
+  "urban": [
+    { "id": "urban-v84:stable-supplies", "role": "stable-keeper", "fallbackRole": "artisan", "label": "Palefrenier des montures", "levelId": "0", "districtId": "port", "path": [{ "x": 3460, "y": 5000 }, { "x": 3520, "y": 4970 }], "phaseSeconds": 1.5 },
+    { "id": "urban-v84:stable-harness", "role": "stable-keeper", "fallbackRole": "artisan", "label": "Soigneuse des écuries", "levelId": "0", "districtId": "port", "path": [{ "x": 4010, "y": 5270 }, { "x": 4070, "y": 5230 }], "phaseSeconds": 8.25 },
+    { "id": "urban-v84:kennel-return", "role": "kennel-handler", "fallbackRole": "guard", "label": "Maître du chenil des chasses", "levelId": "0", "districtId": "port", "path": [{ "x": 7350, "y": 5000 }, { "x": 7410, "y": 4960 }], "phaseSeconds": 4.75 },
+    { "id": "urban-v84:kennel-care", "role": "kennel-handler", "fallbackRole": "healer", "label": "Soigneuse des chiens de chasse", "levelId": "0", "districtId": "port", "path": [{ "x": 7460, "y": 5100 }, { "x": 7510, "y": 5070 }], "phaseSeconds": 11.5 }
+  ],
+  "roleOverrides": [
+    { "id": "court-table-herald", "role": "royal-court" },
+    { "id": "council-v81-rite-observer", "role": "elder-council" }
+  ]
+}

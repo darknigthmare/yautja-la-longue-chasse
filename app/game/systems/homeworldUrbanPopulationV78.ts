@@ -7,6 +7,7 @@ import {homeworldCourtPolygonV80 as homeworldExteriorPolygonV76} from './homewor
 import {homeworldUrbanCorridorV78,homeworldUrbanOverlapV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
 import {homeworldResidentRoleV72,type HomeworldCivilianRoleV72} from './homeworldIdentityV72';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
+import npcAdditionsV84 from '../data/homeworldNpcAdditionsV84.json';
 export interface HomeworldUrbanExtraV78 extends HomeworldResidentV69 {
  readonly levelId:HomeworldLevelV77;readonly sourceResidentId:string;readonly interactive:false;readonly saveVisit:false;readonly solid:false;
  readonly civilianRole:HomeworldCivilianRoleV72;
@@ -15,13 +16,22 @@ const quayRoles:readonly HomeworldCivilianRoleV72[]=['dock-officer','courier','a
 const lowerRoles:readonly HomeworldCivilianRoleV72[]=['witness','artisan','forge-master','witness','courier','artisan','healer'];
 const seeds=HOMEWORLD_AUTHORED_COURTS_V81.map((court,i)=>({id:(i<7?'quay-':'lower-')+(i<7?i:i-7),levelId:court.levelId,districtId:court.districtId,
  path:court.pedestrian,civilianRole:i<7?quayRoles[i]:lowerRoles[i-7]}));
-export const HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78:readonly HomeworldUrbanExtraV78[]=seeds.map((seed,i)=>{
+const originalExtras:readonly HomeworldUrbanExtraV78[]=seeds.map((seed,i)=>{
  const source=HOMEWORLD_RESIDENTS_V77.find(r=>r.morphId!=='young'&&homeworldResidentRoleV72(r)===seed.civilianRole);
  if(!source)throw Error('Missing original persona for measured courtyard costume: '+seed.civilianRole);
  return{...source,id:'urban-v78:extra:'+seed.id,name:undefined,activity:undefined,districtId:seed.districtId,
  levelId:seed.levelId,sourceResidentId:source.id,path:seed.path.map(p=>({...p})),
  phaseSeconds:i*2.75,civilianRole:seed.civilianRole,interactive:false,saveVisit:false,solid:false};
 });
+const serviceExtrasV84:readonly HomeworldUrbanExtraV78[]=npcAdditionsV84.urban.map(seed=>{
+ const civilianRole=seed.fallbackRole as HomeworldCivilianRoleV72;
+ const source=HOMEWORLD_RESIDENTS_V77.find(r=>r.morphId!=='young'&&homeworldResidentRoleV72(r)===civilianRole);
+ if(!source)throw Error('Missing native fallback for service attendant: '+seed.id);
+ return {...source,id:seed.id,role:seed.label,name:undefined,activity:undefined,districtId:seed.districtId,
+  levelId:seed.levelId as HomeworldLevelV77,sourceResidentId:source.id,path:seed.path.map(p=>({...p})),
+  phaseSeconds:seed.phaseSeconds,civilianRole,interactive:false,saveVisit:false,solid:false};
+});
+export const HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78:readonly HomeworldUrbanExtraV78[]=[...originalExtras,...serviceExtrasV84];
 /** The explicit native costume follows the actual original persona rather than
  * re-hashing its new courtyard ID/district into an unrelated occupation. */
 export function homeworldUrbanExtraRoleV78(resident:HomeworldResidentV69|HomeworldUrbanExtraV78):HomeworldCivilianRoleV72{

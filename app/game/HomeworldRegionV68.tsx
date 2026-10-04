@@ -17,6 +17,7 @@ import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldFaunaDisplayV77 from './HomeworldFaunaDisplayV77';
 import {homeworldFaunaSourceUrlsV77,homeworldFaunaDimensionsV77} from './systems/homeworldFaunaV77';
 import HomeworldModularHunter from './HomeworldModularHunter';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_ACTIVITIES_V70, createVillageActivitySessionV70, nearestVillageActivityV70, stepVillageActivityV70 } from './systems/homeworldVillageActivitiesV70';
@@ -197,7 +198,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
-    return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} /><HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} /></span>;
+    return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} /><HomeworldNpcSpriteV84 npcId={id} regionId={regionId} height={morph === 'young' ? 82 : 100} moving={moving}><HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} /></HomeworldNpcSpriteV84></span>;
   };
   return <section className={styles.root} data-homeworld-region-v68={regionId} data-zone={state.zone} data-interior-building={state.buildingId ?? undefined} data-state-tick={state.tick} style={{ '--region-accent': definition.accent, '--region-ground': definition.groundColor } as CSSProperties} inert={suspended}>
     <div className={styles.panorama} aria-hidden="true" style={{ backgroundImage: `url("${definition.panorama}")`, transform: `translateX(${-Math.min(90, state.actor.x / 210)}px)` }} />

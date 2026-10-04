@@ -3,6 +3,7 @@ import { HOMEWORLD_BUILDINGS } from './homeworldCity';
 import { HOMEWORLD_FURNITURE_ART_V72, homeworldFurnitureFootprintV72 } from './homeworldFurnitureV72';
 import { HOMEWORLD_INTERIOR_DECOR_ART_V76, homeworldInteriorDecorBoundsV76 } from './homeworldInteriorDecorV76';
 import { homeworldCivilianArtV72 } from './homeworldIdentityV72';
+import { homeworldNpcVariantV84 } from './homeworldNpcVariantsV84';
 import type { HomeworldElementRecordV64 } from './homeworldElementCodexV64';
 
 /** Exact public-complex records. V72 already enumerates palace walls, zones and
@@ -60,10 +61,10 @@ export const HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81: readonly HomeworldElementRec
           'Appui réel solide testé avec meubles, cloisons, passages et marge du corps entier. Aucun gain implicite.'] });
     }
     for (const npc of room.monumentInhabitantsV81 ?? []) {
-      const art = homeworldCivilianArtV72(npc.role);
+      const art = homeworldCivilianArtV72(npc.role), variant = homeworldNpcVariantV84(npc.id, npc.role);
       records.push({ ...common, id: `npc:${npc.id}`, label: npc.label, category: 'npc', position: { x: npc.x, y: npc.y, z: 0 },
-        dimensions: { width: 32, depth: 20, height: 100 }, footprint: { left: npc.x - 16, right: npc.x + 16, top: npc.y - 10, bottom: npc.y + 10 }, asset: art.src,
-        constraints: [`Identité native ${npc.role}, cellule ${JSON.stringify(art.sourceRect)}, pieds au pivot peint.`,
+        dimensions: { width: 32, depth: 20, height: 100 }, footprint: { left: npc.x - 16, right: npc.x + 16, top: npc.y - 10, bottom: npc.y + 10 }, asset: variant?.src ?? art.src,
+        constraints: [variant ? `Personnage ${variant.id} ; rôle ${variant.role}, pieds au pivot peint, pose fixe.` : `Identité native ${npc.role}, cellule ${JSON.stringify(art.sourceRect)}, pieds au pivot peint.`,
           'Présence stationnaire non interactive ; illustration native au repos, aucun nouveau clip de geste ou dialogue.',
           'Corps solide contrôlé avec les vrais meubles et murs ; placé hors de l’axe de circulation.',
           'Personnage contextuel anonyme, sans mission, récompense, service ni rang créé.'] });

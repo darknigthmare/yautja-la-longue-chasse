@@ -1,0 +1,693 @@
+{
+  "role": "archivist",
+  "requested": 20,
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civilian-roles-atlas.png",
+  "referenceCell": 3,
+  "generation": "built-in image_gen; one independent image per character",
+  "basePrompt": "Use case: stylized-concept. Asset type: ONE INDIVIDUAL full-body transparent NPC sprite for the Yautja: La Longue Chasse 2D game. Reference image is used ONLY for painterly rendering, anatomy and perspective, not as an image to copy or a sheet to reproduce. Generate exactly ONE newly designed adult Yautja, no extra characters. Realistic intricately hand-painted 2D game character, subtle linework, tactile weathered bronze, leather and woven fabric. Slight view from above, three-quarter facing RIGHT, standing idle or light work gesture. Correct adult Yautja anatomy with four mandibles around toothed mouth, alien brow, mottled scaly hide, dreadlock tendrils, alien clawed hands and bare clawed feet. Entire body and held props fully visible. Keep hairstyle, head shape, body silhouette, garment construction, accessories and pose visibly unique. Genuine transparent alpha outside character: no ground, no terrain, no cast shadow, no backdrop or environment, no text or UI, no labels, no watermark, no duplicate, no human face, no extra limbs. Neutral diffuse illumination. Framing: zoom out; character including hair and toes occupies at most82% of height with at least8% blank transparent margin above highest hair and below lowest claw, and generous side margins. ROLE: YAUTJA ARCHIVIST, reference top row fourth character (far right, silver dreadlocks and black robes). Civilian guardian of records, with dignified scholar vestments and archive-handling equipment, no weapons or combat armor. Original design: ",
+  "framingInstruction": " FRAMING PRIORITY: pull the camera back; leave 8% of the image height fully empty and transparent above the highest hair tip AND below the lowest claw. Entire character and equipment must fit, no clipping.",
+  "entries": [
+    {
+      "number": 1,
+      "path": "archivist-01.png",
+      "design": "Tall lean archivist with a narrow angular high forehead, slim four mandibles and short platinum dreadlocks tied in a narrow back knot. Long charcoal sleeveless scholar robe made from two broad straight panels, pale edged shoulder yoke, high soft collar, belt with one thin rectangular record pouch. Holds a bronze-framed archive slate flat at chest with left hand while right hand hovers a small stylus above it. Slate-grey spotted hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6db04b4e-222e-4d77-ae8d-c2153648aa78.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2036656,
+      "sha256": "4c2c859198ce9352d0fb81f5aab7bcc74f91cd644864b8d84c315d173dbd544e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        44,
+        1010,
+        1512
+      ],
+      "fully_transparent_pixels": 1080117,
+      "githubBlobSha": "d6e1939efd39475778d3e6450ef6cf6c079fcda0",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        290,
+        47,
+        885,
+        1491
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 2,
+      "path": "archivist-02.png",
+      "design": "Compact broad archivist with a domed crown, blunt broad mandibles and thick dark dreadlocks tied in a low double bundle. Wine-brown high-collar draped tabard over a heavy calf-length black robe, two small scroll cylinders on one hip. Both hands support an open broad bound folio with blank pages. Sturdy posture with feet wide. Copper-ochre mottled scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ffe259ea-2295-4ab8-b6c0-8c33f6b788b0.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2209378,
+      "sha256": "8153f5d109dcc42aa66526a895cd653e4008038dc0ea08bf68a2692564ee02ef",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        39,
+        32,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 967501,
+      "githubBlobSha": "41233d3156378b52fcfee050fc37b1a525d2368a",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        257,
+        70,
+        975,
+        1488
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 3,
+      "path": "archivist-03.png",
+      "design": "Slender adult female archivist, small rounded cranial crest, delicate angular four mandibles, side-looped silver dreadlocks. Ivory asymmetrical sleeveless robe, dark sage diagonal sash, deep triangular robe split showing bare clawed feet and ankle wraps. Left arm cradles three narrow flat archive plates in a cloth sleeve, right hand holds a small checksum disc. Pale olive skin, attentive rightward gaze.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-44a86480-2008-4040-aca5-ad3b906a93ae.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2094413,
+      "sha256": "96bed9da3b5b4cce307e2a14a95ac6c0f0f423d82ee8b8003cfb3bf2fe185d37",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        27,
+        50,
+        964,
+        1524
+      ],
+      "fully_transparent_pixels": 1088424,
+      "githubBlobSha": "adfadfa7b34d0d79e1e673fb94003819f065b957",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        295,
+        56,
+        852,
+        1451
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 4,
+      "path": "archivist-04.png",
+      "design": "Very old tall Yautja archivist with pronounced brow ridges, narrow weathered mandibles and sparse shoulder-length grey dreadlocks. Long dark high-collar robe with a straight silver embroidered front strip, layered short shoulder cape, rectangular tablet holder at the waist. Left hand leans lightly on a plain archival walking staff with a closed ring head, right hand examines a hinged slate. Stooped dignified posture, ash-grey scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7fc957b1-d8da-4dbf-aa63-f332508eaa7c.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2278661,
+      "sha256": "d53902878f7643c3d3dd73d642597871e993179ae721091bf89262a7f8a4f0fa",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        27,
+        25,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 999844,
+      "githubBlobSha": "21c1da2674c02da71f669163fd0cbd1e857b068f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        267,
+        99,
+        921,
+        1465
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 5,
+      "path": "archivist-05.png",
+      "design": "Large muscular archive custodian with a wide ridged skull, thick four mandibles and short dreadlocks arranged in a broad backward fan. Reinforced sleeveless scholar apron made from four broad flat leather panels over an olive calf-length robe. Carries a large framed archive cylinder horizontally in both hands, close to the abdomen. Wide thick belt with tiny lock key case. Dark bronze-speckled hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-989f634d-a1a1-4862-9ca5-0856ae801afb.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2076652,
+      "sha256": "e6e68bae8bbf98d011c1dd738a87692a4c5ca0d7cc3c26214a2f1124847c75dc",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        75,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 1065419,
+      "githubBlobSha": "831b3c4ffae57741adede348c9814008a763add7",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        263,
+        91,
+        813,
+        1460
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 6,
+      "path": "archivist-06.png",
+      "design": "Thin slightly hunched middle-aged archivist with an elongated swept skull, close-set four mandibles and tightly braided dreadlocks gathering behind the right shoulder. Parchment-colored crosswrap over a black long robe, several small angled record sleeves on belt, loose short sleeves. Left palm holds a small open archival box of rigid memory slats; right hand selects one slat carefully. Weathered beige-grey hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-527f6f59-b5df-40f5-a229-4374fa521769.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2250226,
+      "sha256": "60bd2905f18aa62e6564498d23c2ab15532a1c96c03f906ef724b8d67e96c19f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        45,
+        29,
+        978,
+        1520
+      ],
+      "fully_transparent_pixels": 1012407,
+      "githubBlobSha": "ba2254b99f6116bcc015af6e1958119a339eeced",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        255,
+        31,
+        895,
+        1502
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 7,
+      "path": "archivist-07.png",
+      "design": "Tall robust adult female archivist with a wide smooth crown, strong outward mandibles and asymmetric medium-length dreadlocks with two long locks framing the chest. Deep blue sleeveless scholar robe, short side cape, a circular bronze register case mounted at the chest on crossed straps. Right hand holds a delicate stylus downward and left hand carries a circular archive plate at waist. Warm ochre scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-01f9a6d1-b154-436b-ab5c-80bf7402ed28.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2171581,
+      "sha256": "a9d86f42ea2804f423ef4ad49df8afd8c2358a06c84417efd6f5df11a3ee8650",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        39,
+        23,
+        1010,
+        1516
+      ],
+      "fully_transparent_pixels": 1022812,
+      "githubBlobSha": "d804a3d3689e60f17f409fa0930b00ba3318f2bf",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        209,
+        44,
+        860,
+        1488
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 8,
+      "path": "archivist-08.png",
+      "design": "Short aged broad-backed archivist with a heavy low brow, substantial square four mandibles and numerous thick grey dreadlocks gathered into a compact high bun. Three-tier charcoal robe with a wide rectangular waist panel, heavy bronze archive key ring hanging at left side. Both hands hold a thick closed codex against the abdomen with a broad angular cover emblem, no text. Cool mottled grey hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a9a4714e-d12f-41d0-b7ef-9c79c0daaa82.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2191497,
+      "sha256": "d27036bb6582985529707474b22e84e8f54dab449e962f3b70d6304f32766ef1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        39,
+        25,
+        1010,
+        1516
+      ],
+      "fully_transparent_pixels": 1026064,
+      "githubBlobSha": "984438e07459f8a0ea2d8b95f81e10db109dd61d",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        271,
+        60,
+        815,
+        1482
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 9,
+      "path": "archivist-09.png",
+      "design": "Exceptionally tall slender archivist with a high broad forehead, pointed lower mandibles and very short dreadlocks surrounding the back crown. Sleeveless split black robe with a long stiff rectangular silver-edged central panel, narrow asymmetrical shoulder wrap. Two thin rectangular record plaques stacked under the left forearm; right index claw points toward one plaque. Pale sandstone mottled skin.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-afdbd801-fc68-4c60-95b9-8eac090d68d5.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1928679,
+      "sha256": "9c15d145c19f829bad0367e72a2f0c4aad8d9e3228d327f41314a0696820e30f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        63,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 1138594,
+      "githubBlobSha": "91f491d6d2d69b831c65bce726286992fe9a1f96",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        320,
+        66,
+        889,
+        1445
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 10,
+      "path": "archivist-10.png",
+      "design": "Medium athletic archivist with a broad domed skull, flared upper mandibles and long ochre-banded dreadlocks draped over the left shoulder. Sleeveless charcoal vest over a layered umber robe with overlapping hexagonal hem panels; belt carries an oval framed magnifier in a case. Holds a wide folded map-like blank archive sheet between both hands, looking down slightly. Golden brown scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a2fec0e2-3fb9-4a2f-afac-5cd7ad284296.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2161621,
+      "sha256": "c1e20780af47f1abf409b11b3b6e12cb0a6b60126e283997f2502d58aed847ec",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        19,
+        1012,
+        1520
+      ],
+      "fully_transparent_pixels": 1028706,
+      "githubBlobSha": "3794e490d43faba2235631569fd9a1d4116aa819",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        253,
+        26,
+        905,
+        1500
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 11,
+      "path": "archivist-11.png",
+      "design": "Stocky adult female archivist with a short central forehead crest, broad curved mandibles and shoulder-length dark dreadlocks divided into three small tied bunches. Long moss-green robe, a high structured collar and broad diagonal leather record sash holding three flat plaques. One arm rests across torso while other hand lifts a narrow archive cylinder close to the face. Warm stone-grey speckled hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8d1a5583-c221-453b-868e-d1020d94f6b2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2150524,
+      "sha256": "b026e1abc7e2c0f670d90781f4067e1875b44c2db6dde52ea76adeab676f654e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        23,
+        1010,
+        1536
+      ],
+      "fully_transparent_pixels": 1022153,
+      "githubBlobSha": "d55198afab599be9691b09c55f102b354162bcc5",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        289,
+        110,
+        857,
+        1460
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 12,
+      "path": "archivist-12.png",
+      "design": "Lean mature archivist with a sharply sloped long skull, slim closed four mandibles and extremely long white-tipped dreadlocks tied into one low rope braid. Narrow black scholar coat with sleeveless ivory overdrape, asymmetrical skirt hem, twin small square belt cases. Opens a compact bifold bronze slate with both hands at chest height. Off-white mottled hide, subtly side-on right-facing stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-18ed38ef-9cad-4d57-9c55-ccbe7b10568c.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2061955,
+      "sha256": "7bcbb545b77e460b5603ee99578b7599b4102ec1afd7fb3c8eb046705442d460",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        50,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 1085252,
+      "githubBlobSha": "7256a3353881688759a746d03615274a299a0878",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        274,
+        55,
+        852,
+        1473
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 13,
+      "path": "archivist-13.png",
+      "design": "Heavy-set middle-aged archivist with a broad low skull, blunt wide mandibles and short thick dreadlocks around neck. Deep brown robe with wide sleeveless slate-colored apron, rounded raised shoulder cloth and a large geometric clasp. Carries a wooden-bronze record tray containing three sealed stubby archive canisters, held carefully with both hands. Ochre scales, firm even-footed stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c826daf1-4b73-4be1-b81b-5647dc4014e1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2172131,
+      "sha256": "0027f28fe0157f2fd9d60b95c4d87ecf87e97aeabd0364e0d781577a842ee98f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        36,
+        1010,
+        1536
+      ],
+      "fully_transparent_pixels": 1005912,
+      "githubBlobSha": "e387243c80e221f8035b324a65a45b5b13e27327",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        259,
+        74,
+        909,
+        1480
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 14,
+      "path": "archivist-14.png",
+      "design": "Tall lanky archivist with pronounced jagged brow ridges, angular four mandibles and two high loops of black dreadlocks behind the crown. Long narrow muted burgundy robe with open sides over close wrapped leggings and visible bare feet, cross-body book harness. A long slender archive scroll tube rests under the left arm while right hand checks a tiny key at waist. Dark slate hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b3387909-5897-43b8-bf06-8b815b24abec.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1979812,
+      "sha256": "4006e8b210a5d7f4d3619690e6d8a23f2fab501191df6c0ea27108c834a96dca",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        57,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 1083021,
+      "githubBlobSha": "5e831dff4582fc3c5eec533729db5069127c774f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        290,
+        60,
+        812,
+        1464
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 15,
+      "path": "archivist-15.png",
+      "design": "Adult female senior archivist with a wide plated forehead, strong swept mandibles and long silver dreadlocks pinned into a broad loose back arc. Charcoal-and-ivory layered ceremonial scholar vestments, broad hanging stole split into three tails, thick simple belt. Holds a heavy circular bronze archive seal at the waist in both hands. Weathered grey speckled skin, upright authoritative bearing.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f18e2fd2-0c39-4cd9-b82d-f33627092fb2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2204803,
+      "sha256": "5e10fb4d5a59c233a3a1d0c931e6d0d9c9bd893166d690ee384b8c7e52ff8bbe",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        48,
+        964,
+        1494
+      ],
+      "fully_transparent_pixels": 1018525,
+      "githubBlobSha": "5cd156c4f3fbef19f3fc172bb7b1d91508d16cea",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        277,
+        51,
+        798,
+        1491
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 16,
+      "path": "archivist-16.png",
+      "design": "Compact wiry record keeper with a narrow peaked crown, small angular four mandibles and thin mid-length dreadlocks bundled over right shoulder. Shorter knee-length archive tunic under an open long black scholar wrap, a grid of eight small thin record pockets across one side of chest. Right hand draws one flat record strip from a pocket while left supports a closed narrow folio. Tan olive scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-af472ff0-b7ff-48b4-8671-269e55bbf0ee.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1987979,
+      "sha256": "0c7d576e5279d3c8cd17a1790b4590f6422d730d1fe6eafca01ec188645dd6e9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        9,
+        1010,
+        1518
+      ],
+      "fully_transparent_pixels": 1097833,
+      "githubBlobSha": "324ff8f3e7d88af683fb8e1edbff9d039adf2d7c",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        266,
+        62,
+        822,
+        1466
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 17,
+      "path": "archivist-17.png",
+      "design": "Very tall broad-shouldered archivist with a flat wide cranium, curved heavy lower mandibles and pale short dreadlocks forming a low rear fan. Heavy asymmetrical charcoal robe and one stiff bronze-trimmed shoulder shawl, wide padded belt. Holds a tall rectangular engraved archive panel upright beside the body with left hand; right hand rests open on chest. Dark grey mottled hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e357d058-1c31-4921-a692-9fa440cc329e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2318583,
+      "sha256": "8452f726abca4f61fae8a40081c36ecd1919fc481e9ea8028a402c9f43bdc53e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        45,
+        57,
+        1006,
+        1536
+      ],
+      "fully_transparent_pixels": 952762,
+      "githubBlobSha": "c53e0c353f4be6c867d1611904076f7e38f8aa8a",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        238,
+        99,
+        894,
+        1467
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 18,
+      "path": "archivist-18.png",
+      "design": "Slender slightly stooped elder female archivist with a rounded low crown, delicate four mandibles and long loose white dreadlocks gathered softly behind one ear ridge. Muted sage long scholar robe with very short sleeves, layered ivory hem, narrow rope belt with one old key. Right hand holds a small framed viewing lens while left supports an unmarked small archive tablet beneath it. Pale golden-grey scales.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-211a2978-a020-405a-9037-9173670d3f06.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2159066,
+      "sha256": "4466e0f1114f5b94aff00e596c5a088294b1d3c7b0ed76e3a5fa5e515ac039c1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        53,
+        1006,
+        1514
+      ],
+      "fully_transparent_pixels": 1042940,
+      "githubBlobSha": "9a36c3f30bda3ef8d01622386c3d7d36407b780c",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        281,
+        69,
+        874,
+        1483
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 19,
+      "path": "archivist-19.png",
+      "design": "Medium-height robust archivist with a pronounced central cranial ridge, broad mouth mandibles and black dreadlocks cut at staggered lengths around shoulder blades. Long graphite scholar robe beneath a sleeveless brown leather record vest with a broad horizontal silver clasp. A rigid rectangular archive case hangs low at right side; both hands carefully close its double latch. Deep olive scale pattern.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6c0136ba-cef6-4857-87cb-e5d94b0cb913.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2056439,
+      "sha256": "4cde2ffb5cfc77a9a67da03c2cc0541f135b51f6caf53c1ca6c2bb3bc7f442a8",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        64,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 1052202,
+      "githubBlobSha": "53095d3e7b5eb390920ead3b8f0124bbe4a5b22a",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        262,
+        76,
+        832,
+        1451
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 20,
+      "path": "archivist-20.png",
+      "design": "Tall graceful adult female archivist with an elongated oval forehead, long fine lower mandibles and dark-to-silver dreadlocks gathered into two low loops. Long sleeveless charcoal robe with diagonal cream wrap and single wide slate-blue stole, narrow bronze waist rings. Left arm holds a closed thin book to the chest while the right palm offers a single blank ceramic memory tile. Light brown mottled hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-28e86229-f8bf-4391-9e29-0ee23846ff52.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2013965,
+      "sha256": "be08c907a3554d2f5348736880fbefd62b8f809410d1d9b45f718216799bac7c",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        48,
+        1012,
+        1518
+      ],
+      "fully_transparent_pixels": 1086919,
+      "githubBlobSha": "fb834903def67471f6e42419a73cabb700ab5e37",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        250,
+        52,
+        783,
+        1471
+      ],
+      "edgeAlphaMax": 0
+    }
+  ],
+  "completed": 20,
+  "visualNotes": "20 independent full-body adult Yautja archivists, individually visually inspected. All original PNG bytes preserved. Soft transparency near outer canvas is recorded separately from core subject bounds."
+}

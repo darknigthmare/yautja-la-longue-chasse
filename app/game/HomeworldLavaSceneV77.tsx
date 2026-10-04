@@ -35,7 +35,7 @@ export default memo(function HomeworldLavaSceneV77({actor,skiffActive=false,skif
     <HomeworldNativePropV64 id="lava-skiff-v77" artId={skiff.id} art={skiff} x={p.x} y={p.y} depth={depth(point.y)-1}/>
     <span data-homeworld-ferryman-v77 data-native-animation-clips="0" aria-hidden="true"
       style={{position:'absolute',left:ferryman.x,top:ferryman.y,zIndex:depth(point.y)}}>
-      <HomeworldCivilianV72 role="dock-officer" facing={-1} height={95} moving={false}/>
+      <HomeworldCivilianV72 npcId="lava-ferryman-v77" role="dock-officer" facing={-1} height={95} moving={false}/>
     </span>
   </>;
 });

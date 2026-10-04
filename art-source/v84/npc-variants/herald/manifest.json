@@ -1,0 +1,702 @@
+{
+  "role": "herald",
+  "requested": 20,
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civic-specialists-spaced-atlas.png",
+  "referenceCell": 3,
+  "generation": "built-in image_gen; one independent image per character",
+  "basePrompt": "Use case: stylized-concept. Asset type: ONE INDIVIDUAL full-body transparent NPC sprite for the Yautja: La Longue Chasse 2D game. Reference image is used ONLY for painterly rendering, anatomy and perspective, not as an image to copy or a sheet to reproduce. Generate exactly ONE newly designed adult Yautja, no extra characters. Realistic intricately hand-painted 2D game character, subtle linework, tactile weathered bronze, leather and woven fabric. Slight view from above, three-quarter facing RIGHT, standing idle or light work gesture. Correct adult Yautja anatomy with four mandibles around toothed mouth, alien brow, mottled scaly hide, dreadlock tendrils, alien clawed hands and bare clawed feet. Entire body and held props fully visible. Keep hairstyle, head shape, body silhouette, garment construction, accessories and pose visibly unique. Genuine transparent alpha outside character: no ground, no terrain, no cast shadow, no backdrop or environment, no text or UI, no labels, no watermark, no duplicate, no human face, no extra limbs. Neutral diffuse illumination. Framing: zoom out; character including hair and toes occupies at most82% of height with at least8% blank transparent margin above highest hair and below lowest claw, and generous side margins. ROLE: YAUTJA HERALD AND CIVIC ANNOUNCER. Use the BOTTOM LEFT figure (cell3) of the provided 2-by-3 reference: ivory ceremonial tunic, red geometric motifs, bronze announcement cylinder, light civic regalia. Preserve that role language, invent a new individual. No combat weapons; role props are announcement horns, sealed proclamations, civic standards and insignia. Garment markings are abstract shapes, not readable letters. Original design: ",
+  "framingInstruction": " FRAMING PRIORITY: pull the camera back; leave 8% of the image height fully empty and transparent above the highest hair tip AND below the lowest claw. Entire character and equipment must fit, no clipping.",
+  "entries": [
+    {
+      "number": 1,
+      "path": "herald-01.png",
+      "design": "Tall lean herald with a narrow high forehead, slender mandibles and two short dreadlock knots at the back. Ivory straight two-panel sleeveless tabard with broad red angular border, thin crimson sash and bronze circular chest badge. Right hand holds a short vertical civic standard with a small triangular cream pennant, left holds a compact bronze call horn downward. Sand-gold mottled hide, upright composed stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ddf1701b-a4ba-4ce8-9b88-fcd4f42f58d8.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2198047,
+      "sha256": "90e973a9271659178e61300ddfc5cec60f8faa96b9d7a4af879e30765790da1a",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        28,
+        974,
+        1536
+      ],
+      "fully_transparent_pixels": 1021884,
+      "githubBlobSha": "a1f453a4d3dc8d802e2a8fa7c45a120efd158227",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        75,
+        30,
+        968,
+        1461
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 2,
+      "path": "herald-02.png",
+      "design": "Short broad-shouldered herald with a domed skull, heavy squared mandibles and thick shoulder-length dreadlocks. Short ivory ceremonial tunic, red side chevrons, double wide brown belt and a square soft shoulder wrap. Holds a broad short flared announcement tube away from chest in the right hand; left palm lifted in an open speaking gesture. Rust-tan scale pattern, feet wide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bd6a3430-de7a-468a-9024-be6c258c4418.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2089213,
+      "sha256": "ad2ce0be4158d85ab0c6d7b0bebb4be432958ae0187c48a98e0154ef5ea31fd3",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        45,
+        19,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 1070361,
+      "githubBlobSha": "81b3efb1bb095bec883361ee702d56c5c3daff97",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        157,
+        153,
+        994,
+        1411
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 3,
+      "path": "herald-03.png",
+      "design": "Long-legged adult female herald with a smooth narrow cranium, fine curved lower mandibles and long dreadlocks swept into one low braid. Ivory asymmetrical half-cape, long narrow split tabard with red embroidered edges and one diagonal crimson sash. Slim curved bronze horn carried low in left hand, right hand rests over a chest seal. Pale stone-grey scales, light offset stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bd33e480-3256-4f60-8652-cb22c83818c6.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2120934,
+      "sha256": "a60ae34674470009fb216ecf9d5f8c009f92b704cfe37d841ebc0ccd18f71748",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        43,
+        23,
+        1010,
+        1517
+      ],
+      "fully_transparent_pixels": 1055183,
+      "githubBlobSha": "35f33ad093f9976f2beb4b8542e0059444ae0a5f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        267,
+        100,
+        953,
+        1447
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 4,
+      "path": "herald-04.png",
+      "design": "Tall elderly herald with a deeply ridged brow, thick downturned mandibles and pale short dreadlocks gathered loosely behind neck. Ivory and faded ochre long civic robe, broad collar, soft crimson shoulder stole. Left arm supports a flat framed proclamation tablet against torso; right grips a short ring-headed ceremonial staff. Weathered ash-grey hide, slight dignified stoop.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aa06ab21-9a54-423b-88e4-3f47366bca5b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2327954,
+      "sha256": "c22ffb3b727e32faadd239aed5711694818a2cc3890294edb82e0ee213b3647a",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        79,
+        1006,
+        1518
+      ],
+      "fully_transparent_pixels": 960027,
+      "githubBlobSha": "1dd4d010ccda4151055d4e732a9c7aa7f400eb18",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        218,
+        84,
+        948,
+        1452
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 5,
+      "path": "herald-05.png",
+      "design": "Large muscular herald with a wide flat forehead, heavy outward mandibles and black dreadlocks tied in a compact horizontal bundle. Long sleeveless ivory vest open at the sides, three broad crimson cloth panels at waist, low back harness bearing two short soft pennants. Both hands cradle a sealed large bronze announcement cylinder horizontally. Dark gold spotted hide, commanding stable stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c2246766-5880-4a21-be81-3d584662fc98.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2090083,
+      "sha256": "b2d791a5136fa5944912b5c19082b1506aad4a095d273d97def2a4a449276e71",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        32,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 1060775,
+      "githubBlobSha": "3f2a6b9737253ee8a8313d25edf08c1f89a71770",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        198,
+        117,
+        854,
+        1420
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 6,
+      "path": "herald-06.png",
+      "design": "Very slim agile herald with an angular swept forehead, long narrow mandibles and a thick dreadlock side braid over left shoulder. Knee-length ivory tunic with one loose sleeve, red geometric shoulder edging, broad woven sash with small ceremonial bone beads. Right hand holds a short bronze insignia baton upright at the chest, left hand lightly grasps sash. Muted olive mottled skin.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b8fdca30-b0a4-4be9-a907-5787d365b8ed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1903488,
+      "sha256": "cefc2ef6301b359182920f4bc13eef459b167bebb358e747ac2aa9ac79af1fca",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        45,
+        36,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 1141993,
+      "githubBlobSha": "8358bdd515e5a22d644a0ea4d35313f9b697b09b",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        271,
+        131,
+        816,
+        1421
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 7,
+      "path": "herald-07.png",
+      "design": "Medium-height barrel-chested herald with a low oval skull, short broad mandibles and dreadlocks forming a wide rear fan. Off-white wrapped long vest, narrow red central banner strip, high leather belt with a small sealed scroll case. Holds a compact two-part bronze signal horn horizontally at waist, both hands naturally supporting it. Charcoal-grey scales with pale spots.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-827ffce6-10a5-4876-b75f-67ba02c56c89.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2243185,
+      "sha256": "ff889a6af8edeab9dde463c6d133e26d28bb04a1fab3e391e12239adc35abb8a",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        50,
+        1010,
+        1490
+      ],
+      "fully_transparent_pixels": 982466,
+      "githubBlobSha": "e0ec2abcebefce6dbfb873c6ac1f9488bdb5950c",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        226,
+        54,
+        903,
+        1472
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 8,
+      "path": "herald-08.png",
+      "design": "Compact powerful adult female herald with a broad smooth crown, strong four mandibles and thick dreadlocks in two low bunches. Ivory short layered poncho with serrated geometric crimson hem over a split ceremonial kilt, broad bronze clasp and wrist annunciator. One hand touches the wrist device while the other makes a restrained palm-out announcement gesture. Ochre mottled hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bfb70fcc-94a3-4553-b293-2d965742ca4a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2016183,
+      "sha256": "9b04f044c0208efe12cca69170549638b9ce4403bb04a4c8836e3c3aba8f6971",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        23,
+        1012,
+        1520
+      ],
+      "fully_transparent_pixels": 1111871,
+      "githubBlobSha": "920aaed5eaac874a50f20c358c12c480311c3ba3",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        241,
+        137,
+        977,
+        1427
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 9,
+      "path": "herald-09.png",
+      "design": "Very tall narrow-built herald with a pronounced red-brown central forehead ridge, long curved mandibles and long cream dreadlocks with dark roots. Layered ivory ankle-length ceremonial robe, short red shoulder mantle and wide asymmetric sash. Left hand displays a rigid narrow proclamation board, right hand points toward its blank surface. Pale sand scales, attentive forward incline.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a693c417-1091-4e0f-a7d4-330ab36c7093.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2189209,
+      "sha256": "4c9d5ed2ab947f5251417946211d8cc809bb0f85c3ec9b46cd0751abb392682e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        72,
+        986,
+        1520
+      ],
+      "fully_transparent_pixels": 1025025,
+      "githubBlobSha": "d7408668ae51eaa090a0a961b144c56a9c10b29c",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        245,
+        77,
+        933,
+        1450
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 10,
+      "path": "herald-10.png",
+      "design": "Short stocky herald with a wide round crown, heavy lower mandibles and thick dark dreadlocks loosely tied at nape. Ivory chest wrap with a bold crimson geometric pendant panel, red split side skirts, braided belt. Large curved bronze horn slung diagonally at the back; right hand holds a folded cream-red ceremonial banner cloth, left rests at belt. Warm russet hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4bec9dc1-fcf7-4cb3-ae88-76a50df43b45.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2406680,
+      "sha256": "48dcd03877176e196d5ee2d5e782c39ab68d6c5f657d0c4fd9d390b62ad9a6fd",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        7,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 938392,
+      "githubBlobSha": "efb984584c250a1c7fc3b719e5daf72e823481b7",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        113,
+        107,
+        875,
+        1447
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 11,
+      "path": "herald-11.png",
+      "design": "Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c1a3ae9a-7d21-42c9-81df-9ddea61ee8a5.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2270144,
+      "sha256": "2013146d6bc18ded0ef7aff173512a17f5819f05b4b29b0ba3070642e3ca928b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        73,
+        1010,
+        1480
+      ],
+      "fully_transparent_pixels": 999149,
+      "githubBlobSha": "f23e7e407d04e3adbe7d71f4ca24e95ec6c14c0c",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        186,
+        77,
+        971,
+        1460
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 12,
+      "path": "herald-12.png",
+      "design": "Older broad-hipped female herald with a short low forehead crest, fine weathered mandibles and long white-tipped dreadlocks tied into a low loop. Cream pleated long civic kilt and sleeveless waistcoat, two slender crimson banner sashes reaching calf, high bronze collar medallion. Both hands folded naturally around a small sealed proclamation cylinder at waist. Grey olive scale pattern.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7635c799-3e53-43c3-9f87-961f4c34d317.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2092663,
+      "sha256": "f26f61120db573c60eb340778b91ffb8f9d07ced3ab293976d367875e54d8a4b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        73,
+        964,
+        1514
+      ],
+      "fully_transparent_pixels": 1058851,
+      "githubBlobSha": "e69afe72110c8462f396a1122a1a942b3c1b2576",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        270,
+        89,
+        813,
+        1434
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 13,
+      "path": "herald-13.png",
+      "design": "Tall robust herald with a broad tapering skull, flared upper mandibles and medium black dreadlocks swept behind one shoulder. Ivory sleeveless robe with broad rectangular red-edged shoulder tabs, triangular front apron and belt of plain bronze plates. Right hand presents a small circular alien voice-projector device at chest level; left hand steady on its attached strap. Pale cream spotted hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3428c0b8-a1e4-4de1-8224-3ac1f320229a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2271837,
+      "sha256": "712fe6f235ea3a6c33da1e269eea04d60f849e4e7d7e8faa35380b2fea29b15b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        72,
+        33,
+        938,
+        1518
+      ],
+      "fully_transparent_pixels": 980089,
+      "githubBlobSha": "61b3d178a6820f723a0bea4fa27920c00db22b4e",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        227,
+        66,
+        928,
+        1466
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 14,
+      "path": "herald-14.png",
+      "design": "Lean middle-aged herald with a narrow sloped crown, long thin lower mandibles and a single low dreadlock knot plus a few loose side locks. Calf-length ivory tunic with thick crimson hem, fitted open brown civic vest and diagonal red sash. Left forearm carries a stack of flat sealed proclamations; right index claw raised in an explanatory gesture. Muted green-ochre hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5d614507-2eb1-42f7-a5c3-612707a2e3d5.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2120108,
+      "sha256": "c76053ca666973e4632c29f079aae57a47f11c3b543517729bd0d4e73e7f27e9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        79,
+        1010,
+        1521
+      ],
+      "fully_transparent_pixels": 1047631,
+      "githubBlobSha": "cb1ebfd6627d43f71e3e0e2a5d434331861f0352",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        211,
+        82,
+        920,
+        1457
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 15,
+      "path": "herald-15.png",
+      "design": "Broad adult female herald with a high smooth forehead plate, strong inward-curved mandibles and layered shoulder-length black dreadlocks. Ivory high-neck ceremonial wrap with three broad front panels and fine crimson angular borders, leather belt with a bronze oval seal. Holds a medium straight announcement horn vertically with both hands close to abdomen. Weathered grey mottled skin.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bd39c573-792d-4760-8fd1-c450638bee19.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2051695,
+      "sha256": "dbed7da8a2ad745ea26f31d40ea3dde4f9b05bee12b86d900d9ef7fc0f47a4bf",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        37,
+        1012,
+        1455
+      ],
+      "fully_transparent_pixels": 1073853,
+      "githubBlobSha": "ebda5c1da8198b645f9f819b0f5a4846cc17159e",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        272,
+        110,
+        801,
+        1452
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 16,
+      "path": "herald-16.png",
+      "design": "Very tall heavily built herald with a square deeply furrowed skull, short broad mandibles and thick dreadlocks tied into two back loops. Long ivory sleeveless robe, wide diagonal crimson waist wrap, prominent bronze chest insignia and three hanging plain civic seals. Right hand supports a short staff with one red-edged ivory square pennant; left hand relaxed at hip. Golden olive hide.",
+      "status": "generated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3d0dfeb9-b685-4c91-a521-e06089caa576.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2351084,
+      "sha256": "21810bd79be109e6598a8136aeb897fbba5e6e4624f438f8b13bb99c0104dc57",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        59,
+        8,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 953286,
+      "githubBlobSha": "463f866e1f489168339054af91fb4191464ae610",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        180,
+        61,
+        984,
+        1467
+      ],
+      "finalFaceValidation": "revision-review-pending"
+    },
+    {
+      "number": 17,
+      "path": "herald-17.png",
+      "design": "Short wiry herald with a pointed forehead crest, long slim mandibles and a compact upright fan of short dreadlocks. Overlapping ivory ceremonial tunic strips edged red, slim shoulder cape, strong cloth calf wraps and a narrow belt. Left hand carries a small bronze hand chime by its ring; right holds a short announcement scroll tube. Light tan speckled hide, one foot subtly forward.",
+      "status": "generated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0c4320f8-6011-44d8-8b4a-848db5ebdea5.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2384531,
+      "sha256": "97ae7c34327a6f867bc3d905e7d7ea8acfcf56101311c1cd763ea2897dca419e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        53,
+        1002,
+        1516
+      ],
+      "fully_transparent_pixels": 955552,
+      "githubBlobSha": "797d505f87fab7ea7accd56d33e0a579ed42bc8f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        177,
+        60,
+        929,
+        1488
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified"
+    },
+    {
+      "number": 18,
+      "path": "herald-18.png",
+      "design": "Older dark-skinned herald with a broad low brow, weathered angular four mandibles and pale dreadlocks looped loosely behind the crown. White travel ceremonial mantle with hood resting back to reveal entire face, red internal lining and long slim front banner strip. One hand holds a short curved bronze call horn near hip, other grasps mantle clasp. Dark slate mottled scales.",
+      "status": "generated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6a42bbc6-af4a-4603-9833-1c68b4e39fa4.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2400584,
+      "sha256": "50461998e403bfab1ba4239058a8296a1eb51c1bec0805612be4ee32f5354167",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        28,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 913899,
+      "githubBlobSha": "488d7585eba46f41e2ede1e0ca564642a9e39cec",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        183,
+        31,
+        838,
+        1490
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified"
+    },
+    {
+      "number": 19,
+      "path": "herald-19.png",
+      "design": "Tall slender adult female herald with an oval cranial crest, delicate pointed lower mandibles and thin long dreadlocks swept to the right shoulder. Ivory long wrap robe with a broad red angular stole and short structured shoulder collar, tiny bronze seal hanging at waist. Both hands open a small blank ceremonial proclamation scroll at chest, gaze lowered slightly. Deep brown spotted hide.",
+      "status": "generated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f8100d0f-f13d-43ee-a98e-571103c34a01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2103815,
+      "sha256": "8d2514a7f6b79e1af1926b96e6e1f75e7667b0fb3e87f0d2f772b379de3c23aa",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        40,
+        1010,
+        1493
+      ],
+      "fully_transparent_pixels": 1031243,
+      "githubBlobSha": "8251f19cf68453f027de41a3a2f319da78c9933d",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        229,
+        45,
+        897,
+        1491
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified"
+    },
+    {
+      "number": 20,
+      "path": "herald-20.png",
+      "design": "Medium muscular herald with a wide arched forehead, substantial four mandibles and thick short dreadlocks tied at varying lengths. Ivory double-breasted civic tunic with bold crimson edging, long asymmetric rear cloth panel and wide belt. Hands resting on belt edges, prominent bronze civic badge on chest, compact curved announcement horn hanging from a strong side strap. Sage-green mottled scales, neutral welcoming posture.",
+      "status": "generated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f1112c45-7836-4168-b171-57e00c8f8f0b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2302356,
+      "sha256": "8b89e393a3a963b1401b2c8588ae5120c534de8bd4ee01689da89094668400bf",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        39,
+        1012,
+        1516
+      ],
+      "fully_transparent_pixels": 957252,
+      "githubBlobSha": "69b49c2774145a7fb7ab798260ad936d8c88c903",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        213,
+        60,
+        853,
+        1488
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified"
+    }
+  ],
+  "anatomyReferenceAddedAtVariant": 17,
+  "completed": 20,
+  "visualNotes": "20 distinct full-body heralds generated. Variants17-20 use the official Stan Winston anatomical reference. Earlier exposed faces await requested targeted revision review."
+}

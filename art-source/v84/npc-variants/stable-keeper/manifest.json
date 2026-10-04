@@ -1,0 +1,207 @@
+{
+  "role": "stable-keeper",
+  "requested": 20,
+  "ready": 5,
+  "status": "generating",
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png",
+  "referenceCell": 1,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "promptCommon": "Use case: stylized-concept. Create ONE new standalone FULL BODY 2D game NPC sprite on actual transparent alpha. FIRST REFERENCE (Stan Winston original1987Predator head photograph) has ABSOLUTE PRIORITY for Yautja biological face anatomy: broad back-swept cranium, deep alien orbital brow ridges, lateral fleshy mouth lobes, FOUR SEPARATE EXTERNAL MANDIBULAR ARMS: an upper-left and upper-right cheek tusk plus two long lower mandibular arms curling UP around a SEPARATE inner toothed mouth. Thick dark scalp TENDRILS, never human hair. No human nose/lips/facial structure, no two nose-tubes, no face reduced to two downward tusks. If face is unmasked, turn it toward viewer enough to see the four mandibles, relaxed partially spread and distinct without an exaggerated roar. Retain this anatomy while using the individual's specified cranium, proportions, pigmentation and tendril arrangement. SECOND REFERENCE (game atlas) is ONLY painterly rendering, camera and CIVILIAN work clothes/material reference: top row SECOND adult artisan, NEVER its inaccurate narrow facial anatomy. Subject is one adult Yautja stable keeper/mount caretaker, outfit and tools as described below, NO animal in this PNG. Practical civilian stable work clothes, not soldier armor. Realistic detailed painterly game art, full body relaxed standing3/4facingRIGHT from slightly elevated camera, face more toward spectator. Full head-to-clawed-feet and every tool visible with generous8%clear transparent margins on ALL sides; subject<=82%height, no cropping. ONE person, no additional people/animals/terrain/floor/castshadow/backdrop/smoke/glow/grid/contactsheet/text/UI/watermark. Do not copy photograph background, logo, watermark or clothing. Each new NPC has its own silhouette, age, physique, head, hairstyle of thick tendrils, tool and work outfit.",
+  "variants": [
+    {
+      "id": "stable-keeper-01",
+      "name": "Chief mount groom",
+      "design": "Broad stocky mature male Yautja with deep olive and ochre mottling, low broad posterior cranium, heavy orbital ridges, four short stout separate mandibles around an inner mouth; thick black scalp tendrils tied low with plain iron rings. Sleeveless weathered chestnut leather work vest over dark linen, broad divided knee apron, padded forearms and calf wraps. Carries a large stiff rectangular grooming brush in right hand and a compact brass pot of hide balm in left. Rounded barrel torso and solid relaxed stance, unmasked. NO combat armor.",
+      "status": "generated",
+      "file": "stable-keeper-01.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e838c36d-8dee-4988-95fc-042277dc229e.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5837453206380209,
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "468c07fcf8c1277d2be5028c0594509afa93d0de8f0d2e33e12891cdfc56e405",
+      "revision": 1,
+      "faceReviewStatus": "awaiting-visual-review",
+      "githubBlobSha": "f7524b29b2f5f3def25de12dd3f2dd49889203d2"
+    },
+    {
+      "id": "stable-keeper-02",
+      "name": "Rein handler",
+      "design": "Very tall slender adult female Yautja with cool grey mottled hide, long swept-back skull, distinct four slender mandibles, high-tied heavy scalp tendrils falling down her back. Long muted sage sleeveless workcoat with asymmetrical buttonless overlap, narrow tan apron and crossbody soft pouch. A tidy coil of broad braided reins rests over left forearm; right hand loosely holds a bronze harness buckle. Slim upright silhouette, calm exposed alien face.",
+      "status": "generated",
+      "file": "stable-keeper-02.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6e65ec56-f0dd-4199-9a98-f0fac011f194.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6799519856770834,
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "802186b133cb41e18b93a2000b33507155bd27f213506887660b09420d51117c",
+      "revision": 1,
+      "faceReviewStatus": "awaiting-visual-review",
+      "githubBlobSha": "22682eedbb8cac1d8d7dc11d31066d0eb74c44aa"
+    },
+    {
+      "id": "stable-keeper-03",
+      "name": "Feed steward",
+      "design": "Short broad round-bellied adult male Yautja, sandy speckled hide, broad aged brow and one shortened upper mandible tip while all four arms are present, short thick untied scalp tendrils. Oat-colored rolled-sleeve linen tunic, dark russet waist apron with stitched pockets, simple belt. Holds a small handled feed pail down beside right leg; left hand holds a shallow scoop close to belly. Civilian bulky friendly working silhouette.",
+      "status": "planned",
+      "githubBlobSha": "71f70520a7321ef41bff5e504e8fc81f8418f156"
+    },
+    {
+      "id": "stable-keeper-04",
+      "name": "Mount medic",
+      "design": "Lean elderly female Yautja, pale stone-grey mottled hide, deeply ridged broad cranium, four well-separated ivory mandibular arms, silver-grey heavy scalp tendrils shoulder length. Muted burgundy long wrap tunic under a charcoal short leather bolero, clean off-white cuff wraps and divided apron. Carries a closed bronze-edged veterinary medical case at thigh and holds a folded clean dressing with opposite hand. Exposed film-correct face, no red cross, no logos.",
+      "status": "generated",
+      "file": "stable-keeper-04.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-eb621c7f-b58b-4d98-8683-f764414073d0.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6481145222981771,
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "64ee1bcd1ec03d02b047bd06350a7d6edd1af0816c3b150726838391686277fa",
+      "revision": 1,
+      "faceReviewStatus": "awaiting-visual-review",
+      "githubBlobSha": "f3b19acaf6979f9ef6e44458bea584c147d55a51"
+    },
+    {
+      "id": "stable-keeper-05",
+      "name": "Saddle fitter",
+      "design": "Powerful thickset reddish-umber male Yautja with broad bony cranial ridges and four large ivory mandibles, black scalp tendrils swept to one side with two copper bands. Dark teal sleeveless quilted work tunic, wide brown leather tool belt, substantial split apron, bare clawed toes. Holds one compact folded alien saddle pad under left arm, right hand rests on an oversized curved strap-measuring gauge hanging from belt. No animal or separate saddle on ground.",
+      "status": "generated",
+      "file": "stable-keeper-05.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1f1959c7-fea5-4e30-9bb8-9ed487cb2b96.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6040248870849609,
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "1f309e96a4eab78b6c3437b71802e83ee11ec36135a9890a4f1ab435035d0218",
+      "revision": 1,
+      "faceReviewStatus": "awaiting-visual-review"
+    },
+    {
+      "id": "stable-keeper-06",
+      "name": "Young brush keeper",
+      "design": "Small athletic young adult female Yautja with warm golden freckled hide, broad rear skull, four small distinct mandibles and compact thick tendrils tied high with one pale bone ring. Rust-orange short work wrap over charcoal undershirt, dark skirt panels over leg wraps, diagonal tool pouch. Holds a round currycomb in left clawed hand and a long-handled soft brush lowered in right. Quiet energetic standing pose.",
+      "status": "generated",
+      "file": "stable-keeper-06.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-44b57cc6-b0f2-40bc-8114-64011dacbc44.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6736876169840494,
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "93c59f04b512502e9c87499a2b9f95748829b935a2e33ae03c342a9879b802cd",
+      "revision": 1,
+      "faceReviewStatus": "awaiting-visual-review"
+    },
+    {
+      "id": "stable-keeper-07",
+      "name": "Harness repairer",
+      "design": "Very tall gaunt older male Yautja, charcoal and olive hide with pale facial speckling, long broad back-swept cranium and four separated asymmetric mandibles; long scalp tendrils with sparse brass cuffs. Heavy tan leather chest apron over dark green fitted tunic, riveted tool belt with small repair tools. Holds a loose folded leather harness close to torso with both hands. Relaxed sloping shoulders, no blades or weapons.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-08",
+      "name": "Water caretaker",
+      "design": "Broad-shouldered muscular mature female Yautja, cool slate hide, squared alien orbital ridges, four strong ivory mandibles, thick scalp tendrils in two low bundles. Sleeveless dark plum knee tunic with ochre sash, worn brown hip apron and practical wrist wraps. Carries a narrow bronze water canister with closed lid by a handle in one hand; other hand rests gently at hip. No liquid pouring or environment.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-09",
+      "name": "Keeper in dust mask",
+      "design": "Compact stout adult male Yautja, mottled grey hide, thick black scalp tendrils and big alien rear cranium. Wears a FUNCTIONAL FULL-FACE dark bronze stable dust respirator covering eyes, entire mouth and all mandibles with a broad smooth mask and two small side filters; no human nasal tubes. Ochre rolled-sleeve work smock, charcoal divided apron and broad utility belt. Holds a closed feed sack at his waist in both clawed hands, slight relaxed forward bend. No weapons.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-10",
+      "name": "Paddock record keeper",
+      "design": "Very slim old female Yautja, ivory and lavender-grey mottling, wide brow, four fine mandibles distinctly encircling separate small inner mouth, long silver-black scalp tendrils with simple woven cuffs. Olive long robe cut to mid-calf with short fitted leather work vest and narrow dusty-red belt. Holds a small unlettered bronze record slate against chest and an unmarked seal stylus down at side. Light civilian silhouette, clawed feet clear.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-11",
+      "name": "Blanket attendant",
+      "design": "Heavy-set tall adult male Yautja, rich umber spotted hide, domed bony crown, four broad mandibles, dense long black tendrils tied loosely behind shoulders. Muted cream coarse tunic with dark brown short shoulder shawl, blue-grey wide waist sash, dark calf trousers with clawed bare feet. Carries a folded thick striped saddle blanket over both forearms across waist; blanket geometric stripes only and stays close to body.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-12",
+      "name": "Bonding trainer",
+      "design": "Lean athletic middle-aged female Yautja, pale olive freckles, four properly jointed mandibles, broad swept-back skull and thick black scalp tendrils half tied. Moss-green fitted sleeveless workcoat over black linen, tan hip pouch, dark leather forearm guards and leg wraps. Holds a short plain wooden target wand downward in right hand and a little closed reward pouch in left. Calm open stance, training tool clearly blunt civilian, no animal.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-13",
+      "name": "Hoof and claw specialist",
+      "design": "Short extremely broad older male Yautja, ochre-red mottled hide, high alien brow and four ivory mandibular arms with worn tips, thick salt-and-black tendrils neck length. Charcoal heavy leather bib apron over faded mustard tunic, riveted knee pads, soft calf wraps. Holds a broad blunt grooming file horizontally at waist in one hand and a folded grey cloth in the other; closed clipping tools on belt. No animal limb.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-14",
+      "name": "Travel tack porter",
+      "design": "Tall slender adult male Yautja, silvery-grey dark-spotted skin, long strong rear skull and four long separately readable mandibular arms, heavy black scalp tendrils bound with one ring low behind. Faded russet wrap tunic under a dark leather cross harness, long split olive waist panels, simple wristbands. Compact cylindrical tack roll strapped across upper back; holds one neat coil of leather straps in left hand, right arm relaxed.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-15",
+      "name": "Sanctuary nurse",
+      "design": "Petite but muscular mature female Yautja, warm tan finely speckled hide, wide cranium with deep orbital ridges, four gentle partially open mandibular arms, short thick dark tendrils with ceramic beads. Dull indigo short-sleeved care tunic, cream apron with rounded split hem, green belt pouches. Holds a small sealed ceramic ointment jar and soft folded cloth close to her waist. Calm head tilted slightly toward viewer.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-16",
+      "name": "Night stable attendant",
+      "design": "Huge heavy adult male Yautja, dark reddish-brown spotted hide, broad skull, four distinct massive ivory mandibles, long tied black scalp tendrils. Brown hooded cloak with hood DOWN over dark green work vest and thick rope belt, charcoal apron and wraps. Carries one compact unlit protective-cage bronze lantern close to thigh and a ring of three very large simple stall keys in other hand. No glow, no lantern light or scenery.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-17",
+      "name": "Respirator feed mixer",
+      "design": "Tall powerful adult female Yautja, slate mottled hide and long thick scalp tendrils tied back. FULL FACE smooth antique bronze protective stable respirator covers eyes, nose area, entire mouth and all four mandibles; no exposed mouth. Dusty saffron practical sleeveless smock with grey heavy apron and broad padded belt. Holds a compact sealed rectangular feed tin against left hip and small measuring cup in right clawed hand. Civilian work attire, no armor.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-18",
+      "name": "Senior bridle maker",
+      "design": "Very old slender male Yautja with pale beige heavily mottled hide, pronounced broad rear skull, deep forehead creases, four authentic external mandibles with aged ivory tips; extra-long greying scalp tendrils with small bronze bands. Dark wine wrap tunic, ochre narrow leather chest apron, faded black shawl over one shoulder. Examines a single compact alien bridle held between both hands at waist. Bent but balanced relaxed stance, all equipment remains near body.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-19",
+      "name": "Molt care specialist",
+      "design": "Stocky muscular female Yautja, blue-grey spotted hide, rounded broad alien brow, four clearly separated mandibular arms, short clustered black scalp tendrils in a low knot. Earth-red utility vest over cream linen shirt, thick charcoal knee apron, two small bronze tins on belt, bare clawed feet. Holds a long soft grooming mitt draped over one forearm and a broad flat wooden scraper with blunt edge lowered at side. No animal skin or body part.",
+      "status": "planned"
+    },
+    {
+      "id": "stable-keeper-20",
+      "name": "Master stable keeper",
+      "design": "Tall imposing aged female Yautja, warm ivory and ochre mottled hide, very broad film-accurate rear cranium with a few short bony ridge spines, four strong distinct mandibles, long black-grey scalp tendrils tied with three engraved bronze cuffs. Forest-green layered workcoat with wide chestnut leather collar, asymmetrical long tan apron, burgundy sash and tidy utility belt. Left hand rests on a short blunt crook-handled walking staff; right holds a small rolled blank ledger. Dignified civilian stance, restrained bronze details, no warrior armor.",
+      "status": "planned"
+    }
+  ]
+}

@@ -1,0 +1,658 @@
+{
+  "role": "chief",
+  "requested": 20,
+  "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
+  "referenceCell": 0,
+  "method": "one independent imagegen call per sprite; original transparent PNG preserved",
+  "ready": 20,
+  "variants": [
+    {
+      "slot": 1,
+      "id": "chief-01",
+      "role": "chief",
+      "name": "Ancien au sceptre de clan",
+      "description": "A broad-shouldered elderly male chief with pale ochre freckled skin, a wide heavy brow and deep facial grooves. Thick silver-streaked dreads fall over one shoulder. He wears a wine-red ceremonial robe with a broad collar of small carved bone slats, layered bronze waist plaques and dark wrapped greaves. Right hand calmly grips a tall ring-headed bronze sceptre beside his body; left hand rests over his belt. Robust dignified silhouette.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-01.png",
+      "previousSha256": "e3877e70cd801a664dde08781b906a2fa43e62a7103feb6ca739c5bac1c69ff4",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-f0deb324-43df-43c7-84fe-871669d33847.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-01.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-161349fb-2122-436c-973d-91d7566baf3c.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2578789,
+      "sha256": "2e3d4c44780e525594a8db231388598b0bd3095ef0822cea01fd167b6e85d4bf",
+      "gitBlobSha": "4aa77f71ab0d1aadbe5a1105503f53f8484a7b49",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5254764556884766,
+      "alpha_bounds": [
+        173,
+        16,
+        888,
+        1517
+      ],
+      "githubBlobSha": "4aa77f71ab0d1aadbe5a1105503f53f8484a7b49"
+    },
+    {
+      "slot": 2,
+      "id": "chief-02",
+      "role": "chief",
+      "name": "Chef des délégations",
+      "description": "A very tall slender dark-grey male chief with narrow facial plates, long thin black dreadlocks tied in three low bundles, and bright amber eyes. A saffron inner robe beneath a sharply cut dark-bronze sleeveless ceremonial coat, high structured shoulders and long split skirt. Both hands hold a SHORT horizontal carved baton across his waist. Fine triangular bronze jewelry, lean elegant silhouette.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-02.png",
+      "previousSha256": "cf77391e4c4b2a451adca6847c86630562493d6fc5ae6ebeb71bd6b1e5ffdbc8",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-c8d42d35-4935-4b15-9577-9767416aed36.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-02.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f4e1f1b9-0425-458b-9ace-7dcc5bffb40f.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2244675,
+      "sha256": "2e337113c72e273bf64faf0647c5f52609fafe610e4107907a52de746c2b3386",
+      "gitBlobSha": "54f2a1bf9a4dd0fcb21da5f536dd3a974f00d398",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6286983489990234,
+      "alpha_bounds": [
+        248,
+        9,
+        847,
+        1523
+      ],
+      "githubBlobSha": "54f2a1bf9a4dd0fcb21da5f536dd3a974f00d398"
+    },
+    {
+      "slot": 3,
+      "id": "chief-03",
+      "role": "chief",
+      "name": "Matriarche au sceau",
+      "description": "A powerful mature female Yautja chief with an obsidian mottled head, stout athletic build and thick short dreadlocks gathered behind the neck. A deep jade ceremonial mantle, charcoal wrap skirt, wide round carved ivory gorget and layered heavy bronze hip ornaments. She holds a flat circular clan seal with both hands in front of her abdomen. Adult nonsexual design, completely practical full clothing, stern mandibles and grounded broad stance.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-03.png",
+      "previousSha256": "1242ccbc0cf27e58d1fb5a2caa20a9dd085b1a92f304468c70082cebb75321dc",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-d0c31e37-d3be-49e3-878f-5b63dfd8ea7e.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-03.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-28fcb017-5108-4f4d-8efd-07e207e8acfe.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2363860,
+      "sha256": "457e8d26c923eb0115915d4ea088f4d6adb28b1843b6dddcd6316bc5c4b7746c",
+      "gitBlobSha": "0b7f5a1b226541b4962410b51d959f89079e5253",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5901215871175131,
+      "alpha_bounds": [
+        219,
+        14,
+        831,
+        1501
+      ],
+      "githubBlobSha": "0b7f5a1b226541b4962410b51d959f89079e5253"
+    },
+    {
+      "slot": 4,
+      "id": "chief-04",
+      "role": "chief",
+      "name": "Vétéran de la cour",
+      "description": "A compact stocky male chief with amber patterned skin, healed scratches on the cranial dome, one short outer mandible tusk and a mass of thick black dread tendrils braided with large bone rings. He wears an asymmetrical crimson shoulder cloak and a dark brown long ceremonial tunic with strong ribbed bronze chest plates. In one hand a short staff with stacked geometric bone shapes, other hand open in a measured gesture. Full intact body and complete staff.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-04.png",
+      "previousSha256": "4fc153e384e086efcff4a226612ae0e8fd44904e7212ab56a5138a1fbda8ad57",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-3771bfdc-1cbd-4411-a529-6115f1146ff9.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-04.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0d0b37e7-8c33-4c85-b557-c4b4e67df966.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2465197,
+      "sha256": "f388c5772211504573f005b572b93bfc9c77a04ff43287ca60c21354c85ad5ad",
+      "gitBlobSha": "99f47df9bcc268a1bbf45b24239d413236f2bead",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5764274597167969,
+      "alpha_bounds": [
+        152,
+        42,
+        984,
+        1481
+      ],
+      "githubBlobSha": "99f47df9bcc268a1bbf45b24239d413236f2bead"
+    },
+    {
+      "slot": 5,
+      "id": "chief-05",
+      "role": "chief",
+      "name": "Ancien des pactes",
+      "description": "A thin very old male chief with pale grey speckled skin and exceptionally long silver dreads in two thick cords. Long midnight-blue ceremonial robe with a narrow gold geometric border and wide belt carrying sealed bronze cylinders. He calmly holds a folded bronze-edged covenant folio against his chest. High bony shoulders, slightly bent elbows, no staff, long distinctive silhouette.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-05.png",
+      "previousSha256": "f900842bea824c1e37fa0b6d67b18d7c3e4a4f701e8049c02c0d05cbdf4cbe07",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-ca94f345-dfa9-4383-add8-05b9190b938f.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-05.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d023fc7a-6651-4093-bba7-0840161ef819.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2232644,
+      "sha256": "6a6af44d0244e450ae530414fd88d73fee0c5ff4cd813077c21c2b51fd1ff13b",
+      "gitBlobSha": "0221a586e85eea58617cd03ab8b5b358c4587cd1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6124776204427084,
+      "alpha_bounds": [
+        264,
+        26,
+        799,
+        1512
+      ],
+      "githubBlobSha": "0221a586e85eea58617cd03ab8b5b358c4587cd1"
+    },
+    {
+      "slot": 6,
+      "id": "chief-06",
+      "role": "chief",
+      "name": "Chef des terrasses",
+      "description": "A large athletic olive-skinned mature male chief with dark marbled markings, a wide head, short backward-swept dreadlocks and four prominent mandibles. Navy cloak attached to one large carved-bone shoulder guard, dark sand long split robe and heavy bronze arm cuffs. One hand on his hip and the other carrying a compact bronze armillary clan symbol at belt height. Commanding but peaceful.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-06.png",
+      "previousSha256": "2b571358ace21fbb3020ed7cc9e170159928949b2bdd69f30186c621bf53ed13",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-d657f3f7-3e51-4142-9ce8-4914ae8b5bc1.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-06.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c8cf2a5d-0f0d-4495-9cdb-345896c225ab.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2587066,
+      "sha256": "b9f612a97b4ebbcfc19777bd505acf3b1f7747b1d5457cbf981fd3c32fc96df8",
+      "gitBlobSha": "6e7e9c82a8f4003d3ae50c232ed666703ca4aa69",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5200341542561849,
+      "alpha_bounds": [
+        128,
+        10,
+        919,
+        1507
+      ],
+      "githubBlobSha": "6e7e9c82a8f4003d3ae50c232ed666703ca4aa69"
+    },
+    {
+      "slot": 7,
+      "id": "chief-07",
+      "role": "chief",
+      "name": "Chef au masque d’ivoire",
+      "description": "A medium-built adult chief wearing a unique narrow ivory Yautja biomask with long angular cheek ridges and thin unlit eye slits; no human face. Dense black dreads decorated with polished bronze beads. Ceremonial black body armor beneath a cream sleeveless long coat, dark purple sash, delicate bone shoulder fan. Holds a crescent-ended short sceptre vertically in front with both hands, entirely in frame.",
+      "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+      "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-07.png",
+      "previousSha256": "1d057022695935b843e28fc1f322a378c150bcafd59de450dcedf7ee5ef852d3",
+      "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-ac5205b4-b931-4e8f-a5eb-b4f94c7bacad.png",
+      "facialCorrection": true,
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-07.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3e83e516-d319-4254-9aba-996c7032b11d.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2337229,
+      "sha256": "5c516029a5eefac748e90ec2f5523dfc0a5ee6dfe8d70e0202a3afd08d07eadd",
+      "gitBlobSha": "daeddfe7138df87491594082cc7f1bb7ed189d4f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6129156748453776,
+      "alpha_bounds": [
+        257,
+        10,
+        839,
+        1502
+      ],
+      "githubBlobSha": "daeddfe7138df87491594082cc7f1bb7ed189d4f"
+    },
+    {
+      "slot": 8,
+      "id": "chief-08",
+      "role": "chief",
+      "name": "Dignitaire au masque sombre",
+      "description": "A broad short adult chief in an original matte obsidian Yautja biomask with a broad vaulted forehead, an asymmetric bronze brow inlay and recessed small eye openings. Short thick dreads framed by one low bronze neck ring. Deep red pleated ceremonial robe with an engraved bronze chest medallion and a short segmented shoulder cape. Empty hands calmly clasped at abdomen; heavy compact silhouette.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A broad short adult chief in an original matte obsidian Yautja biomask with a broad vaulted forehead, an asymmetric bronze brow inlay and recessed small eye openings. Short thick dreads framed by one low bronze neck ring. Deep red pleated ceremonial robe with an engraved bronze chest medallion and a short segmented shoulder cape. Empty hands calmly clasped at abdomen; heavy compact silhouette.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-08.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8fb30efa-28fb-4320-8391-5630885cf742.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2359522,
+      "sha256": "2a1a4f5e5513c57079402237c9cee38610ea80194e347c26e4e0bcb73abefb29",
+      "gitBlobSha": "d498aa93e7206e645b6415702addff121d8078ff",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5801671346028646,
+      "alpha_bounds": [
+        231,
+        38,
+        848,
+        1504
+      ],
+      "githubBlobSha": "d498aa93e7206e645b6415702addff121d8078ff"
+    },
+    {
+      "slot": 9,
+      "id": "chief-09",
+      "role": "chief",
+      "name": "Chef aux anneaux d’or",
+      "description": "An old tall male chief with warm tan skin, small dark freckles, pointed cheek plates and a white streak running through long coarse dreadlocks. Wears an ochre layered ceremonial tunic under a narrow dark olive sleeveless robe, several large circular bronze necklaces and thin bone wrist cuffs. Carries a small closed octagonal clan reliquary in his left hand, right hand lightly touches its lid. No staff.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: An old tall male chief with warm tan skin, small dark freckles, pointed cheek plates and a white streak running through long coarse dreadlocks. Wears an ochre layered ceremonial tunic under a narrow dark olive sleeveless robe, several large circular bronze necklaces and thin bone wrist cuffs. Carries a small closed octagonal clan reliquary in his left hand, right hand lightly touches its lid. No staff.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-09.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-92e703e3-035c-422f-9741-dea153b803dd.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2264460,
+      "sha256": "b65add7ae152c6cb1c0f24aaea71fe2481cb28975ba95e9304f1176e65728626",
+      "gitBlobSha": "fb52a1fd1554619d55d1ddd9f81087e6bc981e81",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6262715657552084,
+      "alpha_bounds": [
+        252,
+        35,
+        796,
+        1507
+      ],
+      "githubBlobSha": "fb52a1fd1554619d55d1ddd9f81087e6bc981e81"
+    },
+    {
+      "slot": 10,
+      "id": "chief-10",
+      "role": "chief",
+      "name": "Matriarche des serments",
+      "description": "A lean muscular mature female chief with pale grey marbled skin, broad anatomical mandibles, dark amber eyes and long black dreads gathered low with flat bronze clasps. Black ceremonial robe split over wrapped dark trousers, broad ivory chest plaque and a crimson waist sash with hanging discs. Holds a straight short bronze oath rod angled close across her torso. Fully covered adult practical clothing, no sexual emphasis.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A lean muscular mature female chief with pale grey marbled skin, broad anatomical mandibles, dark amber eyes and long black dreads gathered low with flat bronze clasps. Black ceremonial robe split over wrapped dark trousers, broad ivory chest plaque and a crimson waist sash with hanging discs. Holds a straight short bronze oath rod angled close across her torso. Fully covered adult practical clothing, no sexual emphasis.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-10.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1a010f8a-9cca-4bae-8fbb-c6cd3b3fc492.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2323975,
+      "sha256": "fb36ff99d9a54661e39a60e159453cbfd57a2557d6765caaffd0117e6ff485c9",
+      "gitBlobSha": "d4af11b5e44f8bf3631fb417da379668dab0f0d7",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6064561208089193,
+      "alpha_bounds": [
+        220,
+        18,
+        848,
+        1494
+      ],
+      "githubBlobSha": "d4af11b5e44f8bf3631fb417da379668dab0f0d7"
+    },
+    {
+      "slot": 11,
+      "id": "chief-11",
+      "role": "chief",
+      "name": "Doyen de la cité",
+      "description": "A very heavy-set elderly male Yautja chief with an enormous wide ochre cranial dome, heavy textured jowls and short silver-black dread tendrils. Thick deep plum brocade long coat, copper-colored layered belt plates, compact bone shoulder rings. Both hands open in a calm welcoming gesture close to his sides; large clawed feet and full robe hem visible. Distinct broad round silhouette, realistic anatomy.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A very heavy-set elderly male Yautja chief with an enormous wide ochre cranial dome, heavy textured jowls and short silver-black dread tendrils. Thick deep plum brocade long coat, copper-colored layered belt plates, compact bone shoulder rings. Both hands open in a calm welcoming gesture close to his sides; large clawed feet and full robe hem visible. Distinct broad round silhouette, realistic anatomy.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-11.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-31269627-1519-44ce-9059-af58680f266a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2661412,
+      "sha256": "e98aeacae1497755bddaab255a1f5e6eab0013c0e9948795d8258dfa4e8d27c9",
+      "gitBlobSha": "9f036d1bf01dfd9d845ce6a498a71ec243185aa0",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5090134938557943,
+      "alpha_bounds": [
+        141,
+        65,
+        947,
+        1494
+      ],
+      "githubBlobSha": "9f036d1bf01dfd9d845ce6a498a71ec243185aa0"
+    },
+    {
+      "slot": 12,
+      "id": "chief-12",
+      "role": "chief",
+      "name": "Jeune chef de lignée",
+      "description": "A young adult athletic chief with deep umber skin and a few broad pale markings on his head and arms. Medium dreadlocks bundled high at the back, with several loose side tendrils. A restrained dark green formal tunic, one bronze shoulder plate, long sand-colored sash and angular carved bone belt buckle. Holds three large connected ceremonial clan tokens in one hand, other arm relaxed. Self-assured calm stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A young adult athletic chief with deep umber skin and a few broad pale markings on his head and arms. Medium dreadlocks bundled high at the back, with several loose side tendrils. A restrained dark green formal tunic, one bronze shoulder plate, long sand-colored sash and angular carved bone belt buckle. Holds three large connected ceremonial clan tokens in one hand, other arm relaxed. Self-assured calm stance.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-12.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-baa2b73a-e9f0-46e9-9740-427243b85ff3.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2317288,
+      "sha256": "3952db7050c6f4480871acf77b6209946b0dc59b1f4a7e60c2396c09431d7068",
+      "gitBlobSha": "51a85fa3b26bf852f133f3dadcf92d96bc46fcc7",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6212259928385416,
+      "alpha_bounds": [
+        218,
+        21,
+        843,
+        1494
+      ],
+      "githubBlobSha": "51a85fa3b26bf852f133f3dadcf92d96bc46fcc7"
+    },
+    {
+      "slot": 13,
+      "id": "chief-13",
+      "role": "chief",
+      "name": "Chef austère",
+      "description": "A very long-limbed slender adult male chief with olive-grey skin, a narrow long cranial dome, sparse long rope-like dreads and short tusks. Simple flowing charcoal cloak over a dark bronze wrap tunic, a single large round polished bone chest plate and patterned cuff bands. Both hands folded across the chest, no weapons or staff. Elegant austere form, still a distinct Yautja ceremonial leader.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is Stan Winston's original Predator design, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A very long-limbed slender adult male chief with olive-grey skin, a narrow long cranial dome, sparse long rope-like dreads and short tusks. Simple flowing charcoal cloak over a dark bronze wrap tunic, a single large round polished bone chest plate and patterned cuff bands. Both hands folded across the chest, no weapons or staff. Elegant austere form, still a distinct Yautja ceremonial leader.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-13.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2f25c95b-ed6f-4b56-8f1e-4140e7ee103a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2135827,
+      "sha256": "44b908aa67f1c27e57c15b79eeb4bbeed0bd1151a7ea645d525517d25ea220dd",
+      "gitBlobSha": "885af819af73aa4a21b5b91e2150254de9cd0229",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.6472975413004557,
+      "alpha_bounds": [
+        269,
+        11,
+        815,
+        1495
+      ],
+      "githubBlobSha": "885af819af73aa4a21b5b91e2150254de9cd0229"
+    },
+    {
+      "slot": 14,
+      "id": "chief-14",
+      "role": "chief",
+      "name": "Ancien au bâton d’appui",
+      "description": "A very elderly stocky chief with pale sand skin, large dark forehead mottling, long amber-grey dreadlocks bound in broad cloth rings and an old unmasked Yautja face. Slight natural forward lean with a sturdy bronze-topped walking staff held close and FULLY inside frame. Rich russet robe, wide ivory collar with three round reliefs, dark layered leg wraps. His free hand rests on his upper waist.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is Stan Winston's original Predator design, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A very elderly stocky chief with pale sand skin, large dark forehead mottling, long amber-grey dreadlocks bound in broad cloth rings and an old unmasked Yautja face. Slight natural forward lean with a sturdy bronze-topped walking staff held close and FULLY inside frame. Rich russet robe, wide ivory collar with three round reliefs, dark layered leg wraps. His free hand rests on his upper waist.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-14.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b0ac92c5-24df-46e6-bc12-5cd01ecb2174.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2866024,
+      "sha256": "770a6a13c10212d0d574967933093b4879c2c8c9a995f4a5fc9b64c0c046ef00",
+      "gitBlobSha": "b31d361af259c6a213c410569da2c59a5667a69e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.4630228678385417,
+      "alpha_bounds": [
+        117,
+        52,
+        958,
+        1503
+      ],
+      "githubBlobSha": "b31d361af259c6a213c410569da2c59a5667a69e"
+    },
+    {
+      "slot": 15,
+      "id": "chief-15",
+      "role": "chief",
+      "name": "Gardien de la préséance",
+      "description": "A broad muscular middle-aged male chief with dark forest-green marbled skin, a high rounded forehead and short thick grey-tipped dreads. A distinctive symmetrical fan of small bone blades across the upper shoulder mantle, long brown-green ceremonial skirt and multiple bronze waist bands. Hands crossed low at the belt. Dignified static stance, full clawed toes and all bone ornaments visible.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is Stan Winston's original Predator design, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A broad muscular middle-aged male chief with dark forest-green marbled skin, a high rounded forehead and short thick grey-tipped dreads. A distinctive symmetrical fan of small bone blades across the upper shoulder mantle, long brown-green ceremonial skirt and multiple bronze waist bands. Hands crossed low at the belt. Dignified static stance, full clawed toes and all bone ornaments visible.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-15.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-89ebaf9f-06c0-4cb7-b8cd-d4115bad6139.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2553788,
+      "sha256": "d04f48c074927b1290f8f7e1b88275133053b9c4f3d482a5c7fdc3b812cb1248",
+      "gitBlobSha": "fb8830770d1b0e9ad626503a74d72820ba24f45f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5582968393961588,
+      "alpha_bounds": [
+        170,
+        45,
+        832,
+        1510
+      ],
+      "githubBlobSha": "fb8830770d1b0e9ad626503a74d72820ba24f45f"
+    },
+    {
+      "slot": 16,
+      "id": "chief-16",
+      "role": "chief",
+      "name": "Matriarche des lignées",
+      "description": "An elderly medium-height female chief with mottled burnt-bronze skin, wide cheekbone plates, calm exposed mandibles and thick silver dreadlocks forming one heavy side bundle. Heavy crimson long vest over charcoal wraps, amber-bronze chest carapace, multiple small bone family seals hung from one side of the belt. Holds a closed narrow ceremonial scroll case upright against her abdomen. Adult fully clothed powerful appearance.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is Stan Winston's original Predator design, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: An elderly medium-height female chief with mottled burnt-bronze skin, wide cheekbone plates, calm exposed mandibles and thick silver dreadlocks forming one heavy side bundle. Heavy crimson long vest over charcoal wraps, amber-bronze chest carapace, multiple small bone family seals hung from one side of the belt. Holds a closed narrow ceremonial scroll case upright against her abdomen. Adult fully clothed powerful appearance.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-16.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c6654073-8a0c-4106-af01-a83082c05091.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2417292,
+      "sha256": "1ac43a8c0be9241e9460f27e8ec0eacba2b25c5c8d3a99dbc82e0597f564fec6",
+      "gitBlobSha": "fab89d26134cbbcf8a176e09233980c255147582",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.602203369140625,
+      "alpha_bounds": [
+        234,
+        39,
+        836,
+        1511
+      ],
+      "githubBlobSha": "fab89d26134cbbcf8a176e09233980c255147582"
+    },
+    {
+      "slot": 17,
+      "id": "chief-17",
+      "role": "chief",
+      "name": "Chef des audiences",
+      "description": "A tall mature chief with blue-grey skin and irregular pale speckles, narrow intense eyes, a broad central cranial crest and long black dread tendrils tied into a low horizontal bundle. Wears an ivory long ceremonial robe, a dark teal half-cloak and bronze bracers with deeply engraved angular designs. One hand raised gently palm inward in a speaking gesture, the other holds a smooth bronze sphere at waist height.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is a close-up photograph of the original 1987 Predator animatronic face, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body angled screen-right and face near-front three-quarter so all four mandibles are visible. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A tall mature chief with blue-grey skin and irregular pale speckles, narrow intense eyes, a broad central cranial crest and long black dread tendrils tied into a low horizontal bundle. Wears an ivory long ceremonial robe, a dark teal half-cloak and bronze bracers with deeply engraved angular designs. One hand raised gently palm inward in a speaking gesture, the other holds a smooth bronze sphere at waist height.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-17.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c279fa12-1f08-4882-b00f-57cb6d4d1a0f.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2547828,
+      "sha256": "6f8d4cb06c964068ec4106a0547246cc1cc94e7229bc7c3c6cb934136aa42e0e",
+      "gitBlobSha": "8596c35d661e6e41ac9e25e46e35e21b31366282",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5544102986653646,
+      "alpha_bounds": [
+        138,
+        18,
+        847,
+        1519
+      ],
+      "githubBlobSha": "8596c35d661e6e41ac9e25e46e35e21b31366282"
+    },
+    {
+      "slot": 18,
+      "id": "chief-18",
+      "role": "chief",
+      "name": "Chef au manteau de plaques",
+      "description": "A compact muscular adult male chief with dark brown spotted skin, a blunt broad Yautja face and very thick short dreadlocks secured with flat ivory clasps. A short mantle of overlapping bronze oval plaques over a deep blue full-length robe, wide cream belt and simple bone pendants. Carries a tall slim carved staff with a broad diamond-shaped head tight beside the shoulder, whole staff and body visible with margins.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is a close-up photograph of the original 1987 Predator animatronic face, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body angled screen-right and face near-front three-quarter so all four mandibles are visible. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A compact muscular adult male chief with dark brown spotted skin, a blunt broad Yautja face and very thick short dreadlocks secured with flat ivory clasps. A short mantle of overlapping bronze oval plaques over a deep blue full-length robe, wide cream belt and simple bone pendants. Carries a tall slim carved staff with a broad diamond-shaped head tight beside the shoulder, whole staff and body visible with margins.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-18.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-47b5d989-958c-49fc-9437-73ec74976fbe.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2726988,
+      "sha256": "8e9aca902014bcf07891a6ca2e1d61b63117bf30d9955e54de765b825692be21",
+      "gitBlobSha": "ea95bbd9039bb75da38f4993dbed5cce7252152c",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.4985249837239583,
+      "alpha_bounds": [
+        155,
+        44,
+        887,
+        1499
+      ],
+      "githubBlobSha": "ea95bbd9039bb75da38f4993dbed5cce7252152c"
+    },
+    {
+      "slot": 19,
+      "id": "chief-19",
+      "role": "chief",
+      "name": "Ancien des routes de clan",
+      "description": "A lean weathered elderly chief with pale olive skin, a long old scar on one side of the head, four asymmetrical natural mandible tusks and swept-back grey dreads with a handful of copper cuffs. Burnished bronze ceremonial breastplate over rust-orange cloth, long split charcoal robe and fitted wraps. Carries a folded dark cloth standard rolled around a short rod across both forearms. No loose floor props.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is a close-up photograph of the original 1987 Predator animatronic face, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body angled screen-right and face near-front three-quarter so all four mandibles are visible. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A lean weathered elderly chief with pale olive skin, a long old scar on one side of the head, four asymmetrical natural mandible tusks and swept-back grey dreads with a handful of copper cuffs. Burnished bronze ceremonial breastplate over rust-orange cloth, long split charcoal robe and fitted wraps. Carries a folded dark cloth standard rolled around a short rod across both forearms. No loose floor props.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-19.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-778c6a52-b042-486d-a01f-68ad2596ccbd.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2449152,
+      "sha256": "42890df2e7405d504fe543e588c54767a23ee102585d0a1722ada685d28ecbec",
+      "gitBlobSha": "a1ffc842ede2217433ced2e799ec3358eebe1e31",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.583221435546875,
+      "alpha_bounds": [
+        213,
+        17,
+        879,
+        1521
+      ],
+      "githubBlobSha": "a1ffc842ede2217433ced2e799ec3358eebe1e31"
+    },
+    {
+      "slot": 20,
+      "id": "chief-20",
+      "role": "chief",
+      "name": "Chef au cercle de mémoire",
+      "description": "A massive tall elder chief with warm grey skin, dense black mottling, a wide domed head and long black-white dreadlocks falling evenly down his back. Burgundy and ivory layered robes, heavy circular bronze gorget, carved bone belt with three oval plaques and broad bronze ankle guards. In his right hand a small open ring-shaped clan emblem at chest level, left hand gently closed near hip. Calm stately three-quarter stance.",
+      "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is a close-up photograph of the original 1987 Predator animatronic face, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body angled screen-right and face near-front three-quarter so all four mandibles are visible. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A massive tall elder chief with warm grey skin, dense black mottling, a wide domed head and long black-white dreadlocks falling evenly down his back. Burgundy and ivory layered robes, heavy circular bronze gorget, carved bone belt with three oval plaques and broad bronze ankle guards. In his right hand a small open ring-shaped clan emblem at chest level, left hand gently closed near hip. Calm stately three-quarter stance.",
+      "status": "ready",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-20.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-60004c70-2107-4ae5-a9f2-024f46fffc6f.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2656282,
+      "sha256": "07c1b6569e7568ea1479cb388b7ebc120382b5e3ccb3c0f76353dcc822f02adb",
+      "gitBlobSha": "f5169752d1a8b22a0fd4b6626b864e0b343b4fba",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_ratio": 0.5274931589762369,
+      "alpha_bounds": [
+        166,
+        22,
+        860,
+        1517
+      ],
+      "githubBlobSha": "f5169752d1a8b22a0fd4b6626b864e0b343b4fba"
+    }
+  ]
+}

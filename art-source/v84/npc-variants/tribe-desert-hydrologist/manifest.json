@@ -1,0 +1,475 @@
+{
+  "role": "desert-hydrologist",
+  "tribe": "Peuple des Citernes",
+  "method": "built-in image_gen, one independent call per sprite",
+  "references": [
+    "public/game/assets/v37/tribes/v2/pnj-desert-hydrologue-v2--95371c77d19d1199.webp",
+    "npc-reference/civilian-roles-atlas.png"
+  ],
+  "sprites": [
+    {
+      "id": "01",
+      "name": "Jaugeur des bassins",
+      "description": "Large adult with barrel chest, broad mottled ochre brow, black dreadlocks tied low with a few bronze rings, unmasked four mandibles; sleeveless sand-canvas tunic, heavy diagonal leather harness, short apron, bronze forearm guards. Holding a small round brass pressure gauge in one hand and a compact bronze cistern valve key lowered in the other; belt-mounted single blue-glass water sample vial. Stable planted stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Large adult with barrel chest, broad mottled ochre brow, black dreadlocks tied low with a few bronze rings, unmasked four mandibles; sleeveless sand-canvas tunic, heavy diagonal leather harness, short apron, bronze forearm guards. Holding a small round brass pressure gauge in one hand and a compact bronze cistern valve key lowered in the other; belt-mounted single blue-glass water sample vial. Stable planted stance.",
+      "status": "generated",
+      "file": "desert-hydrologist-01.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-987725f4-0d81-4aa3-902c-1d218385045f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "sha256": "95adf1ddfb86c6c1201170ce52ec38946b8465dc65b5d7e22b3024b5f45620cc"
+      }
+    },
+    {
+      "id": "02",
+      "name": "Releveuse des sources",
+      "description": "Tall lean adult female Yautja with angular jade-grey spotted face, narrow raised forehead crest, longer outward mandible tips, long dreadlocks pulled to one shoulder; layered sleeved beige wrap coat with split hem, asymmetric bronze shoulder cover, fabric hood resting behind the neck. Holds an upright slender blue-glass graduated sampling cylinder close to the chest with a small measuring caliper lowered in the other hand; two flat water flasks on belt. Attentive slight forward lean.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Tall lean adult female Yautja with angular jade-grey spotted face, narrow raised forehead crest, longer outward mandible tips, long dreadlocks pulled to one shoulder; layered sleeved beige wrap coat with split hem, asymmetric bronze shoulder cover, fabric hood resting behind the neck. Holds an upright slender blue-glass graduated sampling cylinder close to the chest with a small measuring caliper lowered in the other hand; two flat water flasks on belt. Attentive slight forward lean.",
+      "status": "generated",
+      "file": "desert-hydrologist-02.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8acf30b6-af2f-4852-ae17-951db2ad077b.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1024139,
+        "pixel_count": 1572864,
+        "sha256": "e666f9f50dca000caaa70b97723f895544b834a5846f0e8d8ce7a983f53c3526"
+      }
+    },
+    {
+      "id": "03",
+      "name": "Mécanicien des vannes",
+      "description": "Shorter adult Yautja with very thick forearms, wide face, dark umber speckled skin, several very short dreadlocks; broad worn bronze respirator mask covers face, sloped forehead faceplate distinct from source. Rolled-sleeve rough beige work shirt, knee-length leather tool apron, sand leg wraps and bronze kneepads. A broad pipe wrench held safely downward and a coiled flexible hose secured over one shoulder; compact valve parts pouch. Weight on bent near leg.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Shorter adult Yautja with very thick forearms, wide face, dark umber speckled skin, several very short dreadlocks; broad worn bronze respirator mask covers face, sloped forehead faceplate distinct from source. Rolled-sleeve rough beige work shirt, knee-length leather tool apron, sand leg wraps and bronze kneepads. A broad pipe wrench held safely downward and a coiled flexible hose secured over one shoulder; compact valve parts pouch. Weight on bent near leg.",
+      "status": "generated",
+      "file": "desert-hydrologist-03.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-99909c1f-586b-497d-830c-cdbda62bcf04.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 947971,
+        "pixel_count": 1572864,
+        "sha256": "6ea27cd45da3e5c4b6d89de0e82163d456eee398d1fdb40ac52301e8d7108432"
+      }
+    },
+    {
+      "id": "04",
+      "name": "Inspecteur des conduites",
+      "description": "Older tall wiry adult with pale grey dreads in two loose rope bundles, weathered slate speckled skin, long narrow exposed mandibles, healed thin face mark. Sand-worn long sleeveless wrap robe over a fitted linen shirt, shoulder capelet, patinated bronze chest fitting with blue-glass water inspection window. Holds a short articulated inspection probe at waist height and a small bronze mechanical meter in the other hand. Head lowered calmly toward meter.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Older tall wiry adult with pale grey dreads in two loose rope bundles, weathered slate speckled skin, long narrow exposed mandibles, healed thin face mark. Sand-worn long sleeveless wrap robe over a fitted linen shirt, shoulder capelet, patinated bronze chest fitting with blue-glass water inspection window. Holds a short articulated inspection probe at waist height and a small bronze mechanical meter in the other hand. Head lowered calmly toward meter.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-04.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-12b003a8-6b15-4ba4-8910-1104a143cd43.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 983865,
+        "pixel_count": 1572864,
+        "sha256": "61db169a1a070e5b2e1f4f9e76210b473c6a1eedc476cceda425776a7048f09d"
+      }
+    },
+    {
+      "id": "05",
+      "name": "Technicienne de filtration",
+      "description": "Strong adult female with broad dark olive cranial crest, spotted ochre cheeks, unmasked four mandibles, thick dreadlocks looped into practical half knot. Fitted beige cloth vest, broad crossed straps, three-quarter loose trousers, asymmetric bronze forearm guards, grey-beige calf wraps. Cradles a bronze cylindrical removable filter cartridge with visible mesh grille, a small cleaning brush clipped to belt, turquoise-glass sample bottle at hip. Open upright stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Strong adult female with broad dark olive cranial crest, spotted ochre cheeks, unmasked four mandibles, thick dreadlocks looped into practical half knot. Fitted beige cloth vest, broad crossed straps, three-quarter loose trousers, asymmetric bronze forearm guards, grey-beige calf wraps. Cradles a bronze cylindrical removable filter cartridge with visible mesh grille, a small cleaning brush clipped to belt, turquoise-glass sample bottle at hip. Open upright stance.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-05.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-512d9707-26d5-42be-86ee-ac8cadee433d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1016242,
+        "pixel_count": 1572864,
+        "sha256": "08ef07c6337600570601c4a88f0d35997f3f77274ec72c93459605e98fb87e75"
+      }
+    },
+    {
+      "id": "06",
+      "name": "Sondeur de profondeur",
+      "description": "Very tall slender adult Yautja, long arms, narrow copper-speckled head, two diagonal ash marks across the brow, many fine black dreadlocks with sparse bronze bands. Beige poncho-like short shoulder drape over knee-length split tunic, angular bronze greaves. Holds a hand spool with a thin coiled measuring line and a small bronze weighted probe hanging only to knee level, safely inside sprite bounds; pouch of water-testing ampoules. One foot ahead, looking right.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Very tall slender adult Yautja, long arms, narrow copper-speckled head, two diagonal ash marks across the brow, many fine black dreadlocks with sparse bronze bands. Beige poncho-like short shoulder drape over knee-length split tunic, angular bronze greaves. Holds a hand spool with a thin coiled measuring line and a small bronze weighted probe hanging only to knee level, safely inside sprite bounds; pouch of water-testing ampoules. One foot ahead, looking right.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-06.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d6772254-b369-4009-a915-43debdc92d64.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 974210,
+        "pixel_count": 1572864,
+        "sha256": "1024858223dc62b57d95c626180e445d9f493298f0eafa723cc1d0bda8bb3c22"
+      }
+    },
+    {
+      "id": "07",
+      "name": "Garde des pompes",
+      "description": "Heavyset adult with powerful shoulders and short neck, grey-green face, wide blunt mandibles, thick shoulder-length dreadlocks; bronze half-mask over upper face leaves mandibles visible. Heavy sand-cloth sleeved work jacket, low diagonal belt, worn bronze chest plate fitted for maintenance, compact twin narrow water tanks on the back. Holds a small bronze pump handle assembly with both hands at the waist. Wide balanced stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Heavyset adult with powerful shoulders and short neck, grey-green face, wide blunt mandibles, thick shoulder-length dreadlocks; bronze half-mask over upper face leaves mandibles visible. Heavy sand-cloth sleeved work jacket, low diagonal belt, worn bronze chest plate fitted for maintenance, compact twin narrow water tanks on the back. Holds a small bronze pump handle assembly with both hands at the waist. Wide balanced stance.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-07.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a87df708-aec5-4c00-a395-70406d21b754.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 893620,
+        "pixel_count": 1572864,
+        "sha256": "1915151fce5c67fa5d8906b78b8e72fd824da2c42bcd13c0380081c8a953ef27"
+      }
+    },
+    {
+      "id": "08",
+      "name": "Préleveuse de citerne",
+      "description": "Small-framed agile adult female Yautja, slim limbs, densely spotted yellow-brown skin, high compact head crest, short tied-back dreadlocks, unmasked face with clearly alien mandibles. Sand-coloured long tunic with side openings over dark fitted knee trousers, rolled sleeves, narrow tool belt and one shoulder harness. Holds a squat sealed blue-glass collection jar by its handle, other hand holding a short sampling dipper tucked close to body. Gentle bent elbow, alert posture.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Small-framed agile adult female Yautja, slim limbs, densely spotted yellow-brown skin, high compact head crest, short tied-back dreadlocks, unmasked face with clearly alien mandibles. Sand-coloured long tunic with side openings over dark fitted knee trousers, rolled sleeves, narrow tool belt and one shoulder harness. Holds a squat sealed blue-glass collection jar by its handle, other hand holding a short sampling dipper tucked close to body. Gentle bent elbow, alert posture.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-08.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-303372ea-f113-4725-b5d0-5e07229b9b70.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1042006,
+        "pixel_count": 1572864,
+        "sha256": "63b807ad13dfce94c98839a5c3aa11d3b29d67257ddc6884fce9a00e9d228b94"
+      }
+    },
+    {
+      "id": "09",
+      "name": "Réparateur des joints",
+      "description": "Adult with long broad torso and thick legs, dark charcoal skin with copper speckles, flattened ridged crown, thick dreadlocks bound into several short sections. Asymmetric folded beige cloth vest with exposed strong arms, long sand-canvas front apron, bronze bracers and knee plates. Holds a rounded bronze pipe coupling in one hand and an adjustable small wrench in the other; spare dark gasket loops on belt. Looking down at coupling, tools inside silhouette.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Adult with long broad torso and thick legs, dark charcoal skin with copper speckles, flattened ridged crown, thick dreadlocks bound into several short sections. Asymmetric folded beige cloth vest with exposed strong arms, long sand-canvas front apron, bronze bracers and knee plates. Holds a rounded bronze pipe coupling in one hand and an adjustable small wrench in the other; spare dark gasket loops on belt. Looking down at coupling, tools inside silhouette.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-09.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e4ae9d0f-8efd-48ae-a976-a88a4e37c44f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 990481,
+        "pixel_count": 1572864,
+        "sha256": "788a2a194efa6601faa7fbd68a2460e5997dd0fa74f8af91dad11af61c878f5f"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Archiviste des niveaux d’eau",
+      "description": "Mature lean adult with pale sandy hide and dark freckle patches, elongated skull ridge, small curled mandible tusks, long ash-black dreadlocks braided with plain bronze rings. Narrow full-length beige divided robe over practical trousers, tan waist sash, small bronze shoulder plates. Supports a rugged hand-held bronze water-level recorder with faint cyan display, no readable lettering, stylus-like measurement probe in free hand. Composed upright posture.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Mature lean adult with pale sandy hide and dark freckle patches, elongated skull ridge, small curled mandible tusks, long ash-black dreadlocks braided with plain bronze rings. Narrow full-length beige divided robe over practical trousers, tan waist sash, small bronze shoulder plates. Supports a rugged hand-held bronze water-level recorder with faint cyan display, no readable lettering, stylus-like measurement probe in free hand. Composed upright posture.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-10.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8a854d2c-dc63-4260-8cb6-8aacc32d3071.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1005039,
+        "pixel_count": 1572864,
+        "sha256": "feb1f0b7a2b0056ce0e720b8527f398c2d663a57fdbe9bd2efe1ccb0be61acd2"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Contrôleuse des fuites",
+      "description": "Adult female with tall broad-shouldered athletic build, bronze-brown skin with olive dark stripes, blunt frontal crest, black dreadlocks tied in a short high bundle; unmasked mandibles with an old pale cheek scar. Thick short-sleeved beige overcoat, folded collar, crossed leather tool straps, bronze shin guards. Holds a compact acoustic leak detector shaped like a practical bronze meter with a short sensor lead coiled safely at wrist; narrow blue-glass test tube case on belt. Head cocked slightly listening.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Adult female with tall broad-shouldered athletic build, bronze-brown skin with olive dark stripes, blunt frontal crest, black dreadlocks tied in a short high bundle; unmasked mandibles with an old pale cheek scar. Thick short-sleeved beige overcoat, folded collar, crossed leather tool straps, bronze shin guards. Holds a compact acoustic leak detector shaped like a practical bronze meter with a short sensor lead coiled safely at wrist; narrow blue-glass test tube case on belt. Head cocked slightly listening.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-11.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-85cb11dd-8d53-46b5-a392-c3db0ef46409.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1045980,
+        "pixel_count": 1572864,
+        "sha256": "f55ceb2b7095b902d65323f08aba0f24d3c5291d712354ca4132d02e4e0393f2"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Hydrologue des galeries",
+      "description": "Narrow-shouldered elder adult with stooped but capable posture, mottled grey ochre face, ridged narrow brow, sparse long silver-streaked dreadlocks; unique bronze brow goggles above exposed mandibles. Sand linen layered tunic with fitted long sleeves, broad worn apron, soft knee wraps, one compact back reservoir. Holds a small metal lamp-like blue water inspection capsule close to the hip and a short foldable flow meter in the other hand. Feet visible, mild forward inclination.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Narrow-shouldered elder adult with stooped but capable posture, mottled grey ochre face, ridged narrow brow, sparse long silver-streaked dreadlocks; unique bronze brow goggles above exposed mandibles. Sand linen layered tunic with fitted long sleeves, broad worn apron, soft knee wraps, one compact back reservoir. Holds a small metal lamp-like blue water inspection capsule close to the hip and a short foldable flow meter in the other hand. Feet visible, mild forward inclination.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-12.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e7740271-6721-4113-8a86-c673ceabe432.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 930223,
+        "pixel_count": 1572864,
+        "sha256": "34b8e5cf0f6b2209a9649d84ead5995c868266a2cfef48f463d4f806adc36eca"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Assembleur de débitmètres",
+      "description": "Very muscular adult, dense russet spotted hide, wide head with low squared crest, pronounced asymmetrical mandible tusks, thick black dreadlocks hanging to mid-back. Sleeveless reinforced cream work tunic, cropped leather apron split into two panels, single bronze shoulder guard, heavy belt. Holding a disassembled round bronze flow meter across both hands with an exposed miniature turbine component, several tool pockets and sealed small water flask. Relaxed square stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Very muscular adult, dense russet spotted hide, wide head with low squared crest, pronounced asymmetrical mandible tusks, thick black dreadlocks hanging to mid-back. Sleeveless reinforced cream work tunic, cropped leather apron split into two panels, single bronze shoulder guard, heavy belt. Holding a disassembled round bronze flow meter across both hands with an exposed miniature turbine component, several tool pockets and sealed small water flask. Relaxed square stance.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-13.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-20803a0e-b156-438d-9c3b-bb2844b8542f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 933560,
+        "pixel_count": 1572864,
+        "sha256": "1ee6550b4d63c2e030adb6f7110ef3527fc72c10af46abe192665c1bbb98bbd2"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Gardienne des réserves",
+      "description": "Tall adult female with long legs, pale green-grey finely spotted skin, high broad domed crest, four fine angular mandibles, long dark dreadlocks tied behind. Layered sand cloth ankle-length split outer garment over utilitarian knee trousers, faded turquoise stitch trims in keeping with the tribe, bronze arm plates. One arm holds a flat elongated bronze cistern survey tablet with blue-glass bubble-level tube inset; other hand holds a short bent valve key. Upright supervisory pose.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Tall adult female with long legs, pale green-grey finely spotted skin, high broad domed crest, four fine angular mandibles, long dark dreadlocks tied behind. Layered sand cloth ankle-length split outer garment over utilitarian knee trousers, faded turquoise stitch trims in keeping with the tribe, bronze arm plates. One arm holds a flat elongated bronze cistern survey tablet with blue-glass bubble-level tube inset; other hand holds a short bent valve key. Upright supervisory pose.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-14.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-56cf3950-9894-4740-86d2-c140e5080e29.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1022892,
+        "pixel_count": 1572864,
+        "sha256": "ec7be3995e389a740f7008e6d45b8ec3873fb2fb377e829f0ae8565f93d742cb"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Porteur de sondes",
+      "description": "Compact adult with thick neck, rounded powerful shoulders, speckled dark brown hide, low brow, several dreadlocks bundled horizontally at nape, exposed mandibles. Sand-cloth hood down at neck, rough cream open-sided tunic over long-sleeved fitted undergarment, reinforced bronze greaves. Carries a practical narrow bronze equipment case by one handle, other hand steadies a strapped slender sample-tube rack at hip; nothing detached. Slightly turned shoulders, idle load-carrying stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Compact adult with thick neck, rounded powerful shoulders, speckled dark brown hide, low brow, several dreadlocks bundled horizontally at nape, exposed mandibles. Sand-cloth hood down at neck, rough cream open-sided tunic over long-sleeved fitted undergarment, reinforced bronze greaves. Carries a practical narrow bronze equipment case by one handle, other hand steadies a strapped slender sample-tube rack at hip; nothing detached. Slightly turned shoulders, idle load-carrying stance.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-15.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-193b34bd-3c29-40c6-bc30-93f36116bb6f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 978252,
+        "pixel_count": 1572864,
+        "sha256": "594c65242a7a4d25a04fcb21b3107f40f7de06efb356deb6eeae4ce1bb43fa5a"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Spécialiste des condensateurs",
+      "description": "Young adult female, fully adult body proportions, lean but defined arms, cool grey spotted skin, tapered head crest, four compact mandibles, many shoulder-length dreads with a few copper ties. Short beige cross-wrapped robe, strong leather utility waist belt, plain bronze elbow guards, linen trousers. Holds a small hexagonal bronze condenser component with a blue-glass inspection port close to torso and a fine maintenance tool down by thigh. Curious focused upright pose.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Young adult female, fully adult body proportions, lean but defined arms, cool grey spotted skin, tapered head crest, four compact mandibles, many shoulder-length dreads with a few copper ties. Short beige cross-wrapped robe, strong leather utility waist belt, plain bronze elbow guards, linen trousers. Holds a small hexagonal bronze condenser component with a blue-glass inspection port close to torso and a fine maintenance tool down by thigh. Curious focused upright pose.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-16.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d95f1133-ae70-40ca-8ccd-68da9ef5def5.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1076446,
+        "pixel_count": 1572864,
+        "sha256": "0b2aa9fea72576009605e68eb9d40729758e7c5babfaa82fafac2ed2cfc43e85"
+      },
+      "githubBlobSha": "ac21a23048e0a1af5138be27ba63bf626fdc70d4"
+    },
+    {
+      "id": "17",
+      "name": "Maître de réseau",
+      "description": "Very old broad adult with weathered pale tan speckled head, deep brow grooves, one naturally shorter mandible tusk, long silver-black dreadlocks loosely tied at back. Sand-coloured heavy knee-length coat with stitched repairs and broad sash, matte bronze breast fitting, segmented forearm guards. Holds a practical round handwheel control valve in one hand, other supports a rolled pipe-network schematic made of blank etched metal sheets with no readable text. Mature steady authoritative stance.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Very old broad adult with weathered pale tan speckled head, deep brow grooves, one naturally shorter mandible tusk, long silver-black dreadlocks loosely tied at back. Sand-coloured heavy knee-length coat with stitched repairs and broad sash, matte bronze breast fitting, segmented forearm guards. Holds a practical round handwheel control valve in one hand, other supports a rolled pipe-network schematic made of blank etched metal sheets with no readable text. Mature steady authoritative stance.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-17.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6cc54528-faa0-40ef-acb8-79017d8b0882.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 955301,
+        "pixel_count": 1572864,
+        "sha256": "b7b18bf4a1d2809e80a8ee2c24316553c6848d74d6c50a7e563db4bd7df5114e"
+      },
+      "githubBlobSha": "af4f00e2816e87a4837a4ad7bb532c9dd6b570ac"
+    },
+    {
+      "id": "18",
+      "name": "Étalonneur de capteurs",
+      "description": "Medium-height adult with long slender hands, olive-brown spotted skin, backward sweeping head crest, narrow mandibles, black dreadlocks arranged into a compact three-bundle fall. High-collar beige short tunic over long canvas trousers, asymmetrical sand cloth apron, bronze hip instrument holder. Holds two small connected bronze calibration meters with blue glass viewing chambers, short safely looped tubing entirely within silhouette. Carefully examining instruments at lower chest height.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Medium-height adult with long slender hands, olive-brown spotted skin, backward sweeping head crest, narrow mandibles, black dreadlocks arranged into a compact three-bundle fall. High-collar beige short tunic over long canvas trousers, asymmetrical sand cloth apron, bronze hip instrument holder. Holds two small connected bronze calibration meters with blue glass viewing chambers, short safely looped tubing entirely within silhouette. Carefully examining instruments at lower chest height.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-18.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2d4b599c-a485-4fa6-b244-85dd8ae5f894.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1059929,
+        "pixel_count": 1572864,
+        "sha256": "fe09957620b601882484875d46f1c42de610a1f068c8d159419be178b8b1bffc"
+      },
+      "githubBlobSha": "2a9a04e730da40266d59d9e550150f4d01a2250a"
+    },
+    {
+      "id": "19",
+      "name": "Technicienne des bassins profonds",
+      "description": "Stocky adult female with strong short legs, wide amber spotted face, bold dark cranial patches, long broad mandibles, shoulder-length thick dreadlocks; a unique bronze breathing mask hangs attached at hip without obscuring body. Heavy short sand-canvas work coat with rolled cuffs, overlapping beige trouser panels, bronze knee guards. Carries a sealed tall blue-glass water sample canister cradled in both arms, compact wrench clipped to side. Feet apart and slight torso lean counterbalancing load.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Stocky adult female with strong short legs, wide amber spotted face, bold dark cranial patches, long broad mandibles, shoulder-length thick dreadlocks; a unique bronze breathing mask hangs attached at hip without obscuring body. Heavy short sand-canvas work coat with rolled cuffs, overlapping beige trouser panels, bronze knee guards. Carries a sealed tall blue-glass water sample canister cradled in both arms, compact wrench clipped to side. Feet apart and slight torso lean counterbalancing load.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-19.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-48ed6b80-a1c4-45bd-be85-42b4cc7ae16f.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 943740,
+        "pixel_count": 1572864,
+        "sha256": "c619170fb02d0ce405763c2ee61dcf976a9719e2cc297c5781f23473d530185d"
+      },
+      "githubBlobSha": "4ef7b0ee930efd530258117f275d71ed79f916b9"
+    },
+    {
+      "id": "20",
+      "name": "Contrôleur des aqueducs",
+      "description": "Long-limbed middle-aged adult with dark slate and ochre mottled skin, high flat narrow forehead ridge, long mandible tusks, very long dreadlocks collected in a low braided tail. Sand-worn sleeveless beige tunic, long shoulder scarf tucked into leather harness, one bronze forearm guard and matching shin plates. Holds a compact bronze sighting level on a folded short hand support at waist height, other hand steadies a flat disk water-flow sensor on belt. Body three-quarter right, head attentive, calm walking-idle weight shift.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Long-limbed middle-aged adult with dark slate and ochre mottled skin, high flat narrow forehead ridge, long mandible tusks, very long dreadlocks collected in a low braided tail. Sand-worn sleeveless beige tunic, long shoulder scarf tucked into leather harness, one bronze forearm guard and matching shin plates. Holds a compact bronze sighting level on a folded short hand support at waist height, other hand steadies a flat disk water-flow sensor on belt. Body three-quarter right, head attentive, calm walking-idle weight shift.\nFraming priority: at least 8% truly empty transparent margin above head and below both feet. Frame the WHOLE character from far enough away. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+      "status": "generated",
+      "file": "desert-hydrologist-20.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2cd2dd71-1b2c-4f72-82b4-47b390d2efb1.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1023236,
+        "pixel_count": 1572864,
+        "sha256": "c70a5c30ab543ff18e0953ef59a634b6e731a4ae27d43f3de648a833c2e04379"
+      },
+      "githubBlobSha": "26f9ac0cc3887d5f068ae66a480834bff0d2e7a8"
+    }
+  ],
+  "completed": 20
+}
