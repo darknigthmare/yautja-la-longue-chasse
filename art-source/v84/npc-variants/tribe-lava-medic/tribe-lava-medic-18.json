@@ -3,20 +3,32 @@
   "role": "tribe-lava-medic",
   "name": "Recovery specialist adult",
   "design": "Small slim young adult female unmasked Yautja, dark charcoal scaled hide with copper flecks, narrow ridged skull and four visible mandibles, short neatly bound dreadlocks. Modest ash crossover tunic over full charcoal sleeves and trousers, simple brown ceramic-reinforced waist harness, a short split dark apron. Both hands hold a closed square medical instrument roll at abdomen, three nonmatching cloth pouches and capped tiny injector on belt.",
-  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-4edca72e-5642-4443-a0fd-8a875d0c5854.png",
+  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-06001ad1-9dd4-4e11-b0cb-859615090e31.png",
   "destination": "/workspace/scratch/41fc0564188e/npc-generation/tribe-lava-medic/tribe-lava-medic-18.png",
   "filename": "tribe-lava-medic-18.png",
   "status": "generated",
   "generator": "built-in image_gen",
-  "prompt": "Use case: stylized-concept. Asset type: production-ready single full-body 2D game NPC sprite, Yautja: La Longue Chasse. Generate ONE genuinely new Caldeira tribe medical NPC. Image1 is the exact ROLE AND CULTURAL REFERENCE: Caldeira medic, dark charcoal/ash cloth, dark copper or bronze protective pieces and biomask, compact medicine cases and small warm orange diagnostic indicators. Image2 is STYLE/CAMERA REFERENCE ONLY: use its realistic handpainted 2D rendering, believable adult anatomy and slightly elevated three-quarter right-facing view. Do not copy the reference character or produce a sheet. Four Yautja mandibles when unmasked, ridged alien cranium, thick dreadlocks, reptilian scaled hide and clawed hands/feet. Each requested face/biomask is unique. Functional fully clothed, modest working medics, no sexualization. All items secured to body or held in hands. Soft neutral diffuse light, texture detail in cloth/metal/scales. Entire figure including all hair and feet, pulled-back camera; subject only80% canvas height, at least8% empty margin each side. TRUE TRANSPARENT ALPHA backdrop, no ground/shadow/environment, no light halo or fog, no labels/text/watermark, no extra character, no detached props, no weapons or wizard staff. Avoid human/elf faces and human flags or medical insignia. Unique NPC 18: Recovery specialist adult. Small slim young adult female unmasked Yautja, dark charcoal scaled hide with copper flecks, narrow ridged skull and four visible mandibles, short neatly bound dreadlocks. Modest ash crossover tunic over full charcoal sleeves and trousers, simple brown ceramic-reinforced waist harness, a short split dark apron. Both hands hold a closed square medical instrument roll at abdomen, three nonmatching cloth pouches and capped tiny injector on belt.",
+  "revision": 2,
+  "faceCorrection": true,
+  "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/tribe-lava-medic/tribe-lava-medic-18.png",
+  "referencePaths": [
+    "/workspace/scratch/41fc0564188e/npc-generation-ancestors/tribe-lava-medic/tribe-lava-medic-18.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "anatomyReference": "stan-winston-predator-test.jpg",
+  "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet.  Specific target: tribe-lava-medic 18, Recovery specialist adult. Maintain this person's original skull color, scale pattern, scalp tendrils, clothing, medical kit and individual body.",
   "width": 1024,
   "height": 1536,
-  "transparentPixelRatio": 0.7257,
+  "transparentPixelRatio": 0.7203,
   "bodyBoundsA128": [
     341,
-    17,
-    779,
-    1516
+    15,
+    785,
+    1517
   ],
-  "githubBlobSha": "408e99e037813b439725c04210c9046722eb5485"
+  "sha256": "c2f15bddd746cb4957b1c4f77fe6de7b481980a54b4c958dece918ad6820cdbc",
+  "ancestorSha256": "0acbf96285fa21f9b08291b67b233b11c0efa1359ef89bf4744f3ddd36006107",
+  "githubBlobSha": "9cc1a0a77bee7e70c06174f56dac1f31e2b32718",
+  "faceReview": "approved",
+  "face": "visible-four-mandibles"
 }

@@ -3,20 +3,32 @@
   "role": "tribe-darkjungle-botanist",
   "name": "Wandering botanist",
   "design": "Lean elderly male unmasked Yautja with pale grey speckled skin, elongated alien skull and long mandibles, uneven grey shoulder-length dreadlocks. Navy hood folded behind head, calf-length slate and indigo split traveling coat, fully covered brown utility trousers and light blue metal shoulder strip. Left carries a closed oval specimen case with small glass window showing ONE dark violet seed pod, right grips crescent satchel strap. Folded soil scoop secured at belt.",
-  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-feffca6b-7598-451d-b777-562c9f592300.png",
+  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-e9d0ab77-2c77-473a-9311-4a816f4a1095.png",
   "destination": "/workspace/scratch/41fc0564188e/npc-generation/tribe-darkjungle-botanist/tribe-darkjungle-botanist-17.png",
   "filename": "tribe-darkjungle-botanist-17.png",
   "status": "generated",
   "generator": "built-in image_gen",
-  "prompt": "Use case: stylized-concept. Asset type: one full-body 2D game NPC sprite for Yautja: La Longue Chasse. Create exactly ONE new BOTANIST of the Veilleurs / dark jungle tribe. First image is ROLE/CULTURE reference: restrained navy-indigo cloth and blue-black steel protection/biomask, slate/grey scales, practical botanical sample containers with tiny cyan-violet bioluminescent plants, field tools. Second image is RENDER/CAMERA style reference ONLY: realistic handpainted 2D, slightly elevated three-quarter camera facing right. Do not copy its characters. Unique alien face or biomask, body silhouette, dreadlock arrangement, garment cut and gear placement specified below. Unmasked heads have ridged Yautja skull and four alien mandibles, never human or elf faces; scaled hide, clawed hands/feet. All are adults, fully clothed modest functional naturalist garments, no sexualization, no elite warrior weapons. Attached or hand-held objects only; plant specimens are SMALL contained study samples, not scenery. Exactly one humanoid, no sheets or duplicate figures. True transparent alpha, no background, cast shadow, floor, haze, halo, labels, writing, watermark. Whole body and every tool entirely within frame, pulled back camera, leave at least8% completely empty margin on all four sides, figure at most80% canvas height. Unique NPC 17: Wandering botanist. Lean elderly male unmasked Yautja with pale grey speckled skin, elongated alien skull and long mandibles, uneven grey shoulder-length dreadlocks. Navy hood folded behind head, calf-length slate and indigo split traveling coat, fully covered brown utility trousers and light blue metal shoulder strip. Left carries a closed oval specimen case with small glass window showing ONE dark violet seed pod, right grips crescent satchel strap. Folded soil scoop secured at belt.",
+  "revision": 2,
+  "faceCorrection": true,
+  "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/tribe-darkjungle-botanist/tribe-darkjungle-botanist-17.png",
+  "referencePaths": [
+    "/workspace/scratch/41fc0564188e/npc-generation-ancestors/tribe-darkjungle-botanist/tribe-darkjungle-botanist-17.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "anatomyReference": "stan-winston-predator-test.jpg",
+  "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet.  Specific target: tribe-darkjungle-botanist 17, Wandering botanist. Maintain this person's original skull color, scale pattern, scalp tendrils, indigo clothing, plant specimen kit, held items and individual body.",
   "width": 1024,
   "height": 1536,
-  "transparentPixelRatio": 0.6575,
+  "transparentPixelRatio": 0.6233,
   "bodyBoundsA128": [
-    240,
-    52,
-    811,
-    1511
+    242,
+    12,
+    835,
+    1519
   ],
-  "githubBlobSha": "f69912fea176613f4642e9ab619b8403e3222709"
+  "sha256": "a251251de99656e1250a261ab8b036b0ae4c8e51998b5ed3d4b36f2d88ffa207",
+  "ancestorSha256": "5f5b0da5753a82afe66b7aa6a2e2ae5607213da3196d187a66b57f7f880897ee",
+  "githubBlobSha": "21659c0765124b6c924a911b3ce3ce11d45947e2",
+  "faceReview": "approved",
+  "face": "visible-four-mandibles"
 }

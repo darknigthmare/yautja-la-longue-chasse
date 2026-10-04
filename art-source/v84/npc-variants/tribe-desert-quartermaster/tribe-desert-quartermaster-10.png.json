@@ -5,7 +5,7 @@
   "prompt": "Use case: stylized-concept. Produce exactly ONE individual full-body adult Yautja NPC game sprite: a caravan QUARTERMASTER of the Peuple des Citernes desert tribe. Image1 is reference ONLY for this role's tribe materials and visual identity: sand-worn tan cloth wraps and capes, dark leather harness/pouches, patinated bronze travel protection, restrained blue-glass water flasks and practical caravan supplies. Image2 is reference ONLY for cinematic realistically handpainted 2D game rendering, body proportions, readable silhouette and slightly elevated three-quarter camera FACING RIGHT. One NEW distinct individual, never a recoloured copy. Canonical alien Yautja cranium, four mandibles when face is exposed, tendril dreadlocks and clawed hands/feet. Working logistics specialist in calm idle stance, not combat. All baggage must be physically attached, held or strapped; no loose items around character. Crisp silhouette, detailed convincing textiles and weathered metal, soft overhead-left lighting. Full body head-to-toes and ALL equipment must fit inside frame with at least8% empty margin every side; do not crop. Genuine transparent alpha background. No scenery, backdrop, ground, platform, floor shadow, glow cloud, text, readable writing, numbers, labels, watermark, border, extra person, collage or atlas. No magical staff. At ordinary game sprite scale, face, posture, clothes and cargo shape must distinguish this person.\nDistinct individual design: Tall adult female, pale slate spotted head, long narrow crown ridge, unmasked tapered mandibles, long ash-black dreads. Sand-cloth ankle-length split travelling coat, folded scarf at neck, leather belt with broad compartments. Carries a small bronze handheld scanning plate and a narrow locked specimen transport case, blue status glass with no writing. Upright formal posture.",
   "status": "generated",
   "file": "tribe-desert-quartermaster-10.png",
-  "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3647e150-c63a-451f-bbdc-ddd1a92084db.png",
+  "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6310e08c-eb76-4f80-9ac9-b02c7cc699c8.png",
   "validation": {
     "size": [
       1024,
@@ -16,9 +16,25 @@
       0,
       254
     ],
-    "transparent_pixels": 950144,
+    "transparent_pixels": 943363,
     "pixel_count": 1572864,
-    "sha256": "521a553dd3d58c07c932bbad26149f689ca2071b066920fda2c237d48f71293b"
+    "sha256": "cd6864516a997ff935f044c30bb5c74f211ba8acfdace9cacc933635eb417f32"
   },
-  "githubBlobSha": "790776f4342f803fd1b2541bad2d06d5b35d6ddc"
+  "githubBlobSha": "4d5f5422260fac651daf708feba454ac8b436d84",
+  "revisions": [
+    {
+      "file": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-desert-quartermaster/tribe-desert-quartermaster-10-521a553dd3d5.png",
+      "sha256": "521a553dd3d58c07c932bbad26149f689ca2071b066920fda2c237d48f71293b",
+      "githubBlobSha": "790776f4342f803fd1b2541bad2d06d5b35d6ddc",
+      "reason": "Exposed head had simplified noncinematic mandibular anatomy"
+    }
+  ],
+  "revisionKind": "official-yautja-face-anatomy",
+  "revisionPrompt": "Edit IMAGE1, the complete original Yautja game sprite, with only a targeted correction of the uncovered FACE and its mandibular anatomy. IMAGE2 is the official 1987 Predator mechanical head photograph, used solely as exact facial anatomical reference.\nPRESERVE the same full-body adult NPC identity: body height and build, every piece of clothing, fabric colors, armor, tools, harness, held objects, hands, feet, thick biological scalp tendrils, pose, lighting, and overall game rendering style. Lock everything from neck downward. Keep the entire original character and all held equipment visible inside transparent margins. Do not zoom in, crop, add scenery, ground, shadow, text, watermark, or a second person. Real alpha transparent background.\nCorrect the exposed head to ultra-faithful cinematic Yautja anatomy seen in image2: broad alien cranial dome and heavy orbital folds, small recessed alien eyes, reptilian granular mottled hide. No human nose bridge, no human lips, no human chin, no two nasal tubes. EXACTLY FOUR distinct EXTERNAL FLESHY MANDIBLE LOBES around a separate INNER TOOTHED MOUTH: two UPPER CHEEK lobes each ending in a short inward/downward tusk, plus two large LOWER fleshy jaw lobes each ending in a long tusk curving UPWARDS. Their fleshy bases must visibly belong to four separate jaw appendages. Do not replace these with two smooth hanging tubes or two ordinary cheek fangs. Relaxed slightly parted four jaws, neutral attentive NPC expression, enough face turned three-quarter toward viewer that ALL FOUR external mandibles can be read. Keep the original person's cranial proportions, skin color, distinguishing spots/scars and tendril arrangement as much as the anatomical fix permits. Biological thick dreadlock tendrils, not human hair.\nThe intended result is the same original full-body character after a precise facial-anatomy correction, retaining all non-face design details. Do not copy the photo background, clothes, logos or watermark.",
+  "faceReview": {
+    "status": "approved",
+    "face": "visible-four-mandibles",
+    "sha256": "cd6864516a997ff935f044c30bb5c74f211ba8acfdace9cacc933635eb417f32",
+    "review": "Complete generated PNG visually inspected against official 1987 reference."
+  }
 }

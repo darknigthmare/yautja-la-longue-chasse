@@ -485,11 +485,13 @@
       "sha256": "785cffca06aae8fe0f166e2520e9d6bba0dda5fcd1b5bb282aaa39f81b79479c",
       "gitBlobSha1": "c3c24fa9acadd705f075198a5e86c9ead497eb71",
       "byte_count": 2261679,
-      "status": "generated",
+      "status": "validated",
       "validation": {
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
       }
     },
     {
@@ -524,16 +526,306 @@
       "sha256": "46e1d043550382e127fe192477d119b261fca82e46c664bb778d4b5fc8caaa0b",
       "gitBlobSha1": "9c27fd48ebf3a255a434218e4fa631494de6ed6e",
       "byte_count": 2022760,
-      "status": "generated",
+      "status": "validated",
       "validation": {
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-14",
+      "role": "resident",
+      "description": "Tall athletic adult resident with warm olive skin and cream dots along wide ridged crown, heavy black tendrils swept back and tied into a high narrow bundle. Fully closed sleeved slate tunic with long left side panel, dark red broad waist sash, loose umber trousers and low simple leg wraps. Empty hands behind back but visible at hips, weight on rear foot. No armor or weapons, straightforward civilian clothing.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Tall athletic adult resident with warm olive skin and cream dots along wide ridged crown, heavy black tendrils swept back and tied into a high narrow bundle. Fully closed sleeved slate tunic with long left side panel, dark red broad waist sash, loose umber trousers and low simple leg wraps. Empty hands behind back but visible at hips, weight on rear foot. No armor or weapons, straightforward civilian clothing.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6a1841ef-97d3-41b7-b3f2-10281064f5a9.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6a1841ef-97d3-41b7-b3f2-10281064f5a9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "980e3a6fc31ba48e38ce792f7b1401e3a41ad8b6",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-14.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        65,
+        25,
+        1012,
+        1510
+      ],
+      "transparent_fraction": 0.7058238983154297,
+      "sha256": "ae766b5b929af864facb2cba0b2767fbff517fd5addbaf5169524dd61146780c",
+      "gitBlobSha1": "980e3a6fc31ba48e38ce792f7b1401e3a41ad8b6",
+      "byte_count": 1958722,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-15",
+      "role": "resident",
+      "description": "Short sturdy mature civilian with graphite-gray scales and gold-brown brow patches, unusually wide flat crown, short coarse black tendrils arranged in three rear loops. Closed muted crimson knee-length tunic under charcoal sleeveless cloth over-vest, narrow woven gray belt, dark trousers. Carries a small soft tan bag from right shoulder; right hand loosely holds its strap, left relaxed. Four distinct jaws and calm deep-set eyes.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Short sturdy mature civilian with graphite-gray scales and gold-brown brow patches, unusually wide flat crown, short coarse black tendrils arranged in three rear loops. Closed muted crimson knee-length tunic under charcoal sleeveless cloth over-vest, narrow woven gray belt, dark trousers. Carries a small soft tan bag from right shoulder; right hand loosely holds its strap, left relaxed. Four distinct jaws and calm deep-set eyes.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b2970beb-5c6c-4caa-96b8-7773e0d6d479.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-b2970beb-5c6c-4caa-96b8-7773e0d6d479.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "b92b28cf346aaf778bd626786eeabc37011359e2",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-15.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        3,
+        60,
+        1004,
+        1536
+      ],
+      "transparent_fraction": 0.6071128845214844,
+      "sha256": "97b2278f74a78be3fe7e306a29d80a5f845e0ac1f0974b983e2d44251382ed8d",
+      "gitBlobSha1": "b92b28cf346aaf778bd626786eeabc37011359e2",
+      "byte_count": 2297488,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-16",
+      "role": "resident",
+      "description": "Very tall elderly thin resident with dark olive skin and ivory age mottles across enormous broad ridged crown, sparse long gray leathery tendrils drawn into a loose nape knot. Long closed ash-brown tunic with wide sleeves and deep split hem over charcoal trousers, simple dark blue shoulder shawl and gray sash. Both hands support a single neatly folded dark textile at waist. Slight forward bend, dignified ordinary civilian.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Very tall elderly thin resident with dark olive skin and ivory age mottles across enormous broad ridged crown, sparse long gray leathery tendrils drawn into a loose nape knot. Long closed ash-brown tunic with wide sleeves and deep split hem over charcoal trousers, simple dark blue shoulder shawl and gray sash. Both hands support a single neatly folded dark textile at waist. Slight forward bend, dignified ordinary civilian.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-874fc2d0-e3d0-42ed-aa3a-e8598760bade.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-874fc2d0-e3d0-42ed-aa3a-e8598760bade.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "d2df645e4f6e03ae1e3c69c6ad909826281f8ae0",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-16.png",
+      "dimensions": [
+        1051,
+        1496
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bounds": [
+        106,
+        31,
+        1032,
+        1481
+      ],
+      "transparent_fraction": 0.6655947735032081,
+      "sha256": "fe5713466fb6394cc373c3b411e7765dc507ee6ebec2097eb8f6314f462315f1",
+      "gitBlobSha1": "d2df645e4f6e03ae1e3c69c6ad909826281f8ae0",
+      "byte_count": 1297711,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-17",
+      "role": "resident",
+      "description": "Compact broad-shouldered adult resident with tawny-gray scales and dark clustered forehead flecks, high rounded broad skull, thick black tendrils hanging separately to upper back with no rings. Fully fastened graphite long-sleeved shirt with short tan woven poncho panel over shoulders, dark wrapped waist cloth and gray trousers. Left hand loosely raised in a small conversational palm-up gesture, right empty hand down. No second character.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Compact broad-shouldered adult resident with tawny-gray scales and dark clustered forehead flecks, high rounded broad skull, thick black tendrils hanging separately to upper back with no rings. Fully fastened graphite long-sleeved shirt with short tan woven poncho panel over shoulders, dark wrapped waist cloth and gray trousers. Left hand loosely raised in a small conversational palm-up gesture, right empty hand down. No second character.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-83f8375b-336c-4d99-90bb-3ca32a9ab161.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-83f8375b-336c-4d99-90bb-3ca32a9ab161.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "87675f5c8308fcc683d57c652fed8a728ce6b5a9",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-17.png",
+      "dimensions": [
+        1051,
+        1496
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bounds": [
+        19,
+        19,
+        1041,
+        1468
+      ],
+      "transparent_fraction": 0.6593936510682467,
+      "sha256": "3f372c569638ebc0f0f83162848c5e1952c964cbb028f933b7dda0c2c0f54440",
+      "gitBlobSha1": "87675f5c8308fcc683d57c652fed8a728ce6b5a9",
+      "byte_count": 1411963,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-18",
+      "role": "resident",
+      "description": "Medium-height curvy sturdy adult civilian with pale bronze skin and black brow-edge mottles, low wide posterior dome, medium gray-black tendrils bound in two short rear braids. Closed dark blue-gray cloth tunic with broad rust front apron-like everyday panel, full gray trousers, soft brown waist sash. Right arm cradles a small closed woven basket at hip, left hand empty relaxed. All objects small and attached.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Medium-height curvy sturdy adult civilian with pale bronze skin and black brow-edge mottles, low wide posterior dome, medium gray-black tendrils bound in two short rear braids. Closed dark blue-gray cloth tunic with broad rust front apron-like everyday panel, full gray trousers, soft brown waist sash. Right arm cradles a small closed woven basket at hip, left hand empty relaxed. All objects small and attached.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-ef4b8c0c-374f-4ebc-8e4d-868823cde0f0.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-ef4b8c0c-374f-4ebc-8e4d-868823cde0f0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "0745b7ba40e33002a5114153fbb81b667d595f75",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-18.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        33,
+        25,
+        1012,
+        1509
+      ],
+      "transparent_fraction": 0.648400624593099,
+      "sha256": "4a4f25059839f4b33173efdc7bb7d66d60caacb81ef4ed4ce1e74cf9a1b8b39a",
+      "gitBlobSha1": "0745b7ba40e33002a5114153fbb81b667d595f75",
+      "byte_count": 2177676,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-19",
+      "role": "resident",
+      "description": "Tall lanky mature adult resident with charcoal-brown scales and amber streaks across temple ridges, broad long-back skull, black tendrils secured in a low folded double-loop. Fully closed pale umber long shirt under a short charcoal wrap jacket, asymmetric calf-length dark side cloth, gray loose trousers and simple red waist cord. One hand tucked loosely at cloth belt, other holds a small simple unmarked cup. Neutral gaze nearly frontal.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Tall lanky mature adult resident with charcoal-brown scales and amber streaks across temple ridges, broad long-back skull, black tendrils secured in a low folded double-loop. Fully closed pale umber long shirt under a short charcoal wrap jacket, asymmetric calf-length dark side cloth, gray loose trousers and simple red waist cord. One hand tucked loosely at cloth belt, other holds a small simple unmarked cup. Neutral gaze nearly frontal.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0c5ec2c4-48b3-49ee-b76c-50c6a932f407.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-0c5ec2c4-48b3-49ee-b76c-50c6a932f407.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "a3f97ef0c6de90740a564a0ea3abdc3c67a2fdc2",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-19.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        25,
+        1012,
+        1505
+      ],
+      "transparent_fraction": 0.6727606455485026,
+      "sha256": "8caafc94ea44a8d32f90e89776825b3cfa9eea30de6770250bf2a5c31de9e9c1",
+      "gitBlobSha1": "a3f97ef0c6de90740a564a0ea3abdc3c67a2fdc2",
+      "byte_count": 2021865,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      }
+    },
+    {
+      "id": "resident-20",
+      "role": "resident",
+      "description": "Massive broad older civilian resident with ochre-gray scales and dark oval crown markings, wide domed skull with heavy brow and large four mandible lobes, thick gray-black tendrils gathered into a short high knot. Loose closed charcoal long tunic with wide muted copper fabric cuffs and gray front panel, plain maroon sash, thick dark trousers. Empty hands resting comfortably low, one foot slightly ahead. Simple resident with no tools, armor or ceremonial ornaments.",
+      "prompt": "COMPOSITION CRITICAL: zoom OUT; the complete figure from crown to toe must occupy only 78 percent of image height, with 10 percent EMPTY transparent space ABOVE and BELOW and 8 percent on both sides. Never frame so tightly as reference 2. Use case: stylized-concept. Create ONE NEW INDIVIDUAL Yautja / Predator adult NPC, full body as a realistic painterly 2D game sprite, actual transparent RGBA background. Image 1 is the PRIMARY ANATOMY REFERENCE: match the actual 1987 Predator face construction. Wide posterior skull and deep ridged heavy brow, FOUR distinct fleshy outer mandible lobes encircle a small internal toothed mouth: two upper cheek lobes with tusks and two large lower lobes with upward-curving long tusks. Outer mandibles are fleshy jaw appendages, not just teeth stuck onto a human face. All four clearly readable. No human nose/lips/beard, no orc, no snout, no pair-only tusks, no cat. Thick tapering leathery dreadlock tendrils physically sprout from rear skull, no human hair. Scaled reptilian alien skin, muscular Yautja proportions, five-finger clawed hands and heavy clawed toes. Image 2 is ROLE / MATERIAL / GAME RENDER reference only; ignore its face if it conflicts with image 1. Create a unique individual through different skull shape, skin pattern, tendril arrangement, build, outfit cut, accessories and posture. Near-front three-quarter view facing slightly RIGHT so all four mandibles read clearly. Realistic detailed painterly material rendering with readable crisp silhouette and soft upper-left light. Body entirely inside central 80 percent of canvas; generous 8-10 percent empty transparent margin around head, hands, feet and held objects. Full head to whole clawed feet, no crop. One character only. All objects held or worn. No ground, no floor shadow, no background, no pedestal, no scene, no extra character, no animal, no caption/text/signature/logo, no glow, no vignette, no collage/sheet. Fully clothed functional civilian clothing, closed opaque torso, covered hips and thighs.  INDIVIDUALITY: transfer species anatomy and game rendering only, not either reference individual's exact identity. The following NEW INDIVIDUAL description controls skull proportions, complexion, body build and tendril hairstyle. Its specific changed body shape and tied tendril arrangement are mandatory; do not automatically repeat loose long dreadlocks or the same face color. ROLE: ordinary Homeworld civilian resident, matching ONLY the BOTTOM-RIGHT civilian's painterly game style in reference 2. Reference 2 is a multi-character style atlas, but output exactly ONE new individual resident. Everyday simple fabric clothing, plain sash, no armor, no rank regalia, no weapons, no trade/profession equipment. Keep the PRIMARY image 1 four-mandible anatomical face.. NEW INDIVIDUAL: Massive broad older civilian resident with ochre-gray scales and dark oval crown markings, wide domed skull with heavy brow and large four mandible lobes, thick gray-black tendrils gathered into a short high knot. Loose closed charcoal long tunic with wide muted copper fabric cuffs and gray front panel, plain maroon sash, thick dark trousers. Empty hands resting comfortably low, one foot slightly ahead. Simple resident with no tools, armor or ceremonial ornaments.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+        "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3e5bbf79-315d-4a33-9f79-eaea347df4a8.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-3e5bbf79-315d-4a33-9f79-eaea347df4a8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "c84d3b6f3fcf60240b442b9d4147ea7209190ca4",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/resident/resident-20.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        63,
+        985,
+        1516
+      ],
+      "transparent_fraction": 0.6247831980387369,
+      "sha256": "b09a8e3c46e074ddbf4c03bb1893cd12e5672d41b33f7dca8abdd1778c020f8d",
+      "gitBlobSha1": "c84d3b6f3fcf60240b442b9d4147ea7209190ca4",
+      "byte_count": 2231696,
+      "status": "validated",
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "four_mandibles_visually_checked": true
       }
     }
   ],
   "references": [
     "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
     "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
-  ]
+  ],
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
 }

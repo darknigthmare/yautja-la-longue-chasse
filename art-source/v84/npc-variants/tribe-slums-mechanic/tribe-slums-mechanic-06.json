@@ -1,0 +1,51 @@
+{
+  "id": "tribe-slums-mechanic-06",
+  "role": "tribe-slums-mechanic",
+  "description": "Short sturdy male mechanic, blue-gray scales with copper flecks, wide ridged unmasked forehead and proper four mandibles. Long thick dreadlocks bound with scavenged dark rings in three bunches. Gray grease-marked work apron over a reinforced black utility tunic, copper elbow plates and asymmetrical work shin guards. One hand carries a small portable multimeter, other holds its connected probe with cable safely looped to body.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short sturdy male mechanic, blue-gray scales with copper flecks, wide ridged unmasked forehead and proper four mandibles. Long thick dreadlocks bound with scavenged dark rings in three bunches. Gray grease-marked work apron over a reinforced black utility tunic, copper elbow plates and asymmetrical work shin guards. One hand carries a small portable multimeter, other holds its connected probe with cable safely looped to body.",
+  "status": "validated",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    49,
+    21,
+    988,
+    1536
+  ],
+  "transparent_fraction": 0.606177012125651,
+  "sha256": "aeb914018f456e48a8be00975fafb932943b9bb5fb6959dae1fe8a7ffa7925b2",
+  "byte_count": 2326365,
+  "original_bytes_preserved": true,
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-06.png",
+  "githubBlobSha": "a1fd1dd81b35b3e984f567c6b54765c022422e61",
+  "blobError": null,
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-06.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-205fd41a-8064-48ff-a5bb-5a8fd07818e9.png",
+  "gitBlobSha1": "a1fd1dd81b35b3e984f567c6b54765c022422e61",
+  "maxBorderAlpha": 1,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-06-before-face-review-dc4742f1e27a.png",
+    "sha256": "dc4742f1e27a30100e2204765db0774132bbc8b44aad1c1142aa26b1e4259bb5"
+  },
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  }
+}

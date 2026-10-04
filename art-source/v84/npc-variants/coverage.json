@@ -1,9 +1,9 @@
 {
   "target": 640,
-  "ready": 559,
-  "complete": false,
-  "facialReviewed": 148,
-  "facialReviewComplete": false,
+  "ready": 640,
+  "complete": true,
+  "facialReviewed": 640,
+  "facialReviewComplete": true,
   "roles": [
     {
       "id": "chief",
@@ -14,7 +14,7 @@
       "referenceCell": 0,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 8
+      "facialReviewed": 20
     },
     {
       "id": "artisan",
@@ -25,7 +25,7 @@
       "referenceCell": 1,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "healer",
@@ -36,7 +36,7 @@
       "referenceCell": 2,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "archivist",
@@ -47,7 +47,7 @@
       "referenceCell": 3,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "guard",
@@ -58,7 +58,7 @@
       "referenceCell": 4,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "courier",
@@ -69,7 +69,7 @@
       "referenceCell": 5,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "instructor",
@@ -90,8 +90,8 @@
       "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
       "referenceCell": 7,
       "use": "homeworld-population",
-      "ready": 15,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "dock-officer",
@@ -102,7 +102,7 @@
       "referenceCell": 0,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "forge-master",
@@ -113,7 +113,7 @@
       "referenceCell": 1,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "witness",
@@ -135,7 +135,7 @@
       "referenceCell": 3,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "arena-steward",
@@ -146,7 +146,7 @@
       "referenceCell": 4,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "rite-keeper",
@@ -168,7 +168,7 @@
       "referenceCell": 5,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "porter",
@@ -179,7 +179,7 @@
       "referenceCell": 5,
       "use": "homeworld-population",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "hunter",
@@ -200,8 +200,8 @@
       "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
       "referenceCell": 1,
       "use": "homeworld-population",
-      "ready": 13,
-      "facialReviewed": 11
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "royal-court",
@@ -211,8 +211,8 @@
       "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
       "referenceCell": 0,
       "use": "homeworld-population",
-      "ready": 10,
-      "facialReviewed": 4
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "elder-council",
@@ -222,8 +222,8 @@
       "reference": "/game/homeworld/v72/civic-specialists-spaced-atlas.png",
       "referenceCell": 5,
       "use": "homeworld-population",
-      "ready": 4,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "stable-keeper",
@@ -233,8 +233,8 @@
       "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
       "referenceCell": 1,
       "use": "homeworld-population",
-      "ready": 13,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "kennel-handler",
@@ -244,8 +244,8 @@
       "reference": "/game/homeworld/v72/civilian-roles-atlas.png",
       "referenceCell": 4,
       "use": "homeworld-population",
-      "ready": 0,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "tribe-desert-hydrologist",
@@ -255,7 +255,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-desert-hydrologue-v2--95371c77d19d1199.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "tribe-desert-quartermaster",
@@ -265,7 +265,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-desert-intendante-v2--8258ef482fcac74a.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "tribe-forest-builder",
@@ -275,7 +275,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "tribe-forest-archivist",
@@ -295,7 +295,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 5
+      "facialReviewed": 20
     },
     {
       "id": "tribe-slums-trader",
@@ -314,8 +314,8 @@
       "target": 20,
       "reference": "/game/assets/v37/tribes/v2/pnj-lava-fondeur-v2--bd930342f88b9bf1.webp",
       "use": "tribe-catalogue",
-      "ready": 16,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     },
     {
       "id": "tribe-lava-medic",
@@ -325,7 +325,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-lava-medecin-v2--b7a2e90b5bffd65a.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "tribe-darkjungle-botanist",
@@ -335,7 +335,7 @@
       "reference": "/game/assets/v37/tribes/v2/pnj-darkjungle-botaniste-v2--c8ab0db26f936ad8.webp",
       "use": "tribe-catalogue",
       "ready": 20,
-      "facialReviewed": 0
+      "facialReviewed": 20
     },
     {
       "id": "tribe-darkjungle-guide",
@@ -344,8 +344,8 @@
       "target": 20,
       "reference": "/game/assets/v37/tribes/v2/pnj-darkjungle-guide-v2--dcd7c876e19d6708.webp",
       "use": "tribe-catalogue",
-      "ready": 8,
-      "facialReviewed": 0
+      "ready": 20,
+      "facialReviewed": 20
     }
   ]
 }

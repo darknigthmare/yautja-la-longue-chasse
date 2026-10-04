@@ -7,11 +7,11 @@
       "id": "forge-master-01",
       "role": "forge-master",
       "description": "Very broad stocky older forge master, graphite-gray scales with pale mottles, low angular forehead, black dreadlocks grouped in a short high knot. Thick dark rust leather bib apron with two wide front panels, heavy open-claw heat gloves, reinforced work trousers. Holds a broad rectangular forging hammer lowered in right hand and closed long forge tongs in left, both tools fully within silhouette. Solid wide stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Very broad stocky older forge master, graphite-gray scales with pale mottles, low angular forehead, black dreadlocks grouped in a short high knot. Thick dark rust leather bib apron with two wide front panels, heavy open-claw heat gloves, reinforced work trousers. Holds a broad rectangular forging hammer lowered in right hand and closed long forge tongs in left, both tools fully within silhouette. Solid wide stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very broad stocky older forge master, graphite-gray scales with pale mottles, low angular forehead, black dreadlocks grouped in a short high knot. Thick dark rust leather bib apron with two wide front panels, heavy open-claw heat gloves, reinforced work trousers. Holds a broad rectangular forging hammer lowered in right hand and closed long forge tongs in left, both tools fully within silhouette. Solid wide stance.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-dac089fb-b49e-426a-a654-a08261edab4a.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e4b2f794-877a-4015-9946-02fa16641c50.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-01.png",
-      "githubBlobSha": "087bd5de4b12c97fa72345129bc00faae06236e8",
+      "githubBlobSha": "5f2980c698a4b0f8395a6ec015cc55491040419f",
       "dimensions": [
         1024,
         1536
@@ -22,30 +22,45 @@
         254
       ],
       "alpha_bounds": [
-        201,
-        159,
-        918,
-        1383
+        0,
+        32,
+        1010,
+        1536
       ],
-      "transparent_fraction": 0.7025299072265625,
-      "sha256": "9fb326ab020254ea65bb9c725eb9b856d564358c21da09fe0ecac4ae00a103ae",
-      "byte_count": 1896005,
+      "transparent_fraction": 0.5695514678955078,
+      "sha256": "cfe539523034da746a8afbaf411ba03b6b21c083b6981fc63fd195116b06cb64",
+      "byte_count": 2343732,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-01.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-e4b2f794-877a-4015-9946-02fa16641c50.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e4b2f794-877a-4015-9946-02fa16641c50.png",
+      "gitBlobSha1": "5f2980c698a4b0f8395a6ec015cc55491040419f",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-01-before-face-review-9fb326ab0202.png",
+        "sha256": "9fb326ab020254ea65bb9c725eb9b856d564358c21da09fe0ecac4ae00a103ae"
       }
     },
     {
       "id": "forge-master-02",
       "role": "forge-master",
       "description": "Tall lean master with pale olive scales and dark freckles, long ridged alien skull, dreadlocks swept into one narrow rear braid. Long slender brown leather apron with diagonal chest strap, two high tool pockets, slim riveted heat cuffs. Holds a small pointed peen hammer across waist and a fist-sized cool hammered metal billet in other hand. Attentive chin-down stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Tall lean master with pale olive scales and dark freckles, long ridged alien skull, dreadlocks swept into one narrow rear braid. Long slender brown leather apron with diagonal chest strap, two high tool pockets, slim riveted heat cuffs. Holds a small pointed peen hammer across waist and a fist-sized cool hammered metal billet in other hand. Attentive chin-down stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall lean master with pale olive scales and dark freckles, long ridged alien skull, dreadlocks swept into one narrow rear braid. Long slender brown leather apron with diagonal chest strap, two high tool pockets, slim riveted heat cuffs. Holds a small pointed peen hammer across waist and a fist-sized cool hammered metal billet in other hand. Attentive chin-down stance.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-23b550bd-1eee-4aaa-b92d-c5e42a8df577.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2889aa83-8c3a-4a9e-954b-5e4ea9c7e87a.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-02.png",
-      "githubBlobSha": "011e47133ebead61e7c2b89337da9a5c9f3f7319",
+      "githubBlobSha": "dee1d28a7706ea2508cd5a4c30b9760195ab9caa",
       "dimensions": [
         1024,
         1536
@@ -56,26 +71,41 @@
         254
       ],
       "alpha_bounds": [
-        275,
-        50,
-        875,
-        1369
+        65,
+        0,
+        1010,
+        1536
       ],
-      "transparent_fraction": 0.728326161702474,
-      "sha256": "3822ccd43a6af662c61d21b70649562d2b5ce89a19e0a367355783773a799380",
-      "byte_count": 1838711,
+      "transparent_fraction": 0.6677659352620443,
+      "sha256": "4585aad3c5a082c4edec7cbc6b139183d490b5476c1bdf420a2b66d277d75344",
+      "byte_count": 2042353,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-2889aa83-8c3a-4a9e-954b-5e4ea9c7e87a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2889aa83-8c3a-4a9e-954b-5e4ea9c7e87a.png",
+      "gitBlobSha1": "dee1d28a7706ea2508cd5a4c30b9760195ab9caa",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-02-before-face-review-3822ccd43a6a.png",
+        "sha256": "3822ccd43a6af662c61d21b70649562d2b5ce89a19e0a367355783773a799380"
       }
     },
     {
       "id": "forge-master-03",
       "role": "forge-master",
       "description": "Heavy-hipped muscular adult master, bronze-brown scales with black patches, broad flat brow, thick dreadlocks in two low tied bunches. Short blackened leather bib apron with a broad square hem, large crossed waist belt, charcoal wrapped trousers. One hand rests a compact heavy forging mallet against shoulder, other hangs relaxed with a small metal gauge. All parts fully contained.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Heavy-hipped muscular adult master, bronze-brown scales with black patches, broad flat brow, thick dreadlocks in two low tied bunches. Short blackened leather bib apron with a broad square hem, large crossed waist belt, charcoal wrapped trousers. One hand rests a compact heavy forging mallet against shoulder, other hangs relaxed with a small metal gauge. All parts fully contained. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Heavy-hipped muscular adult master, bronze-brown scales with black patches, broad flat brow, thick dreadlocks in two low tied bunches. Short blackened leather bib apron with a broad square hem, large crossed waist belt, charcoal wrapped trousers. One hand rests a compact heavy forging mallet against shoulder, other hangs relaxed with a small metal gauge. All parts fully contained.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -87,30 +117,45 @@
         254
       ],
       "alpha_bounds": [
-        252,
-        140,
-        873,
-        1408
+        49,
+        19,
+        1010,
+        1536
       ],
-      "transparent_fraction": 0.7100385030110677,
-      "sha256": "24855faf45845267f6043d22ed1df8f2f4db54e27a6d0135622873d0f6139f28",
-      "byte_count": 1895150,
+      "transparent_fraction": 0.6077791849772135,
+      "sha256": "c072462cea9355badf772d0fe12f16f993620c057edc8eac8f2e6e6bb4d03455",
+      "byte_count": 2275900,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-52e8ccd5-b16d-4d93-a1c2-447fde27227b.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-31320e5c-ac4b-48b5-8618-03b2035e5f54.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-03.png",
-      "githubBlobSha": "224bdd697938fc1543bcc810ec19b8c4050f35a6",
+      "githubBlobSha": "c96a6c7565cbdcca4f3ff44a1fc3cfb780e58455",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-03.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-31320e5c-ac4b-48b5-8618-03b2035e5f54.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-31320e5c-ac4b-48b5-8618-03b2035e5f54.png",
+      "gitBlobSha1": "c96a6c7565cbdcca4f3ff44a1fc3cfb780e58455",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-03-before-face-review-24855faf4584.png",
+        "sha256": "24855faf45845267f6043d22ed1df8f2f4db54e27a6d0135622873d0f6139f28"
       }
     },
     {
       "id": "forge-master-04",
       "role": "forge-master",
       "description": "Middle-aged angular master, ash-gray scales and ivory streaks, high central skull ridge, short loose dreadlocks reaching neck. Patchwork russet heat apron with one off-center long front flap, dull copper leather-backed forearm protectors. Holds long closed tongs diagonally across body with two hands, gripping a small COLD dark metal ring; no glow or sparks. Narrow grounded stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Middle-aged angular master, ash-gray scales and ivory streaks, high central skull ridge, short loose dreadlocks reaching neck. Patchwork russet heat apron with one off-center long front flap, dull copper leather-backed forearm protectors. Holds long closed tongs diagonally across body with two hands, gripping a small COLD dark metal ring; no glow or sparks. Narrow grounded stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Middle-aged angular master, ash-gray scales and ivory streaks, high central skull ridge, short loose dreadlocks reaching neck. Patchwork russet heat apron with one off-center long front flap, dull copper leather-backed forearm protectors. Holds long closed tongs diagonally across body with two hands, gripping a small COLD dark metal ring; no glow or sparks. Narrow grounded stance.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -122,30 +167,45 @@
         254
       ],
       "alpha_bounds": [
-        214,
-        154,
-        910,
-        1391
+        49,
+        45,
+        994,
+        1512
       ],
-      "transparent_fraction": 0.7374871571858724,
-      "sha256": "320129134136eba75ecab9d5cb4cb268f3470cdbd1cc326e6ce510c5ba2696c7",
-      "byte_count": 1797492,
+      "transparent_fraction": 0.6488552093505859,
+      "sha256": "353c60b8cabc0c27de6a72f186565b11fb1f36fb0ad7ccf9188510176cadba3d",
+      "byte_count": 2144087,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-19bf8765-c1c9-43ee-81b1-e1cc543b3a96.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8568d944-dfee-4de1-aa68-d886667ec5d7.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-04.png",
-      "githubBlobSha": "022a7c592d0eba40c8c04df663ff93e7199325be",
+      "githubBlobSha": "9d89b0a58608a93e7d2bbfd7fcc66ba29ef97710",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-8568d944-dfee-4de1-aa68-d886667ec5d7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8568d944-dfee-4de1-aa68-d886667ec5d7.png",
+      "gitBlobSha1": "9d89b0a58608a93e7d2bbfd7fcc66ba29ef97710",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-04-before-face-review-320129134136.png",
+        "sha256": "320129134136eba75ecab9d5cb4cb268f3470cdbd1cc326e6ce510c5ba2696c7"
       }
     },
     {
       "id": "forge-master-05",
       "role": "forge-master",
       "description": "Broad tall mature master with warm ochre scales, charcoal shoulder mottling, strong squared ridged forehead. Dense thick dreadlocks banded back in three sections. Olive-black leather apron with a rounded hem over beige heat-resistant fabric trousers, one large stitched hip pouch. Holds a short double-face square hammer vertically head down in one hand and examines an engraved cold metal plate in the other.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Broad tall mature master with warm ochre scales, charcoal shoulder mottling, strong squared ridged forehead. Dense thick dreadlocks banded back in three sections. Olive-black leather apron with a rounded hem over beige heat-resistant fabric trousers, one large stitched hip pouch. Holds a short double-face square hammer vertically head down in one hand and examines an engraved cold metal plate in the other. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Broad tall mature master with warm ochre scales, charcoal shoulder mottling, strong squared ridged forehead. Dense thick dreadlocks banded back in three sections. Olive-black leather apron with a rounded hem over beige heat-resistant fabric trousers, one large stitched hip pouch. Holds a short double-face square hammer vertically head down in one hand and examines an engraved cold metal plate in the other.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -157,30 +217,45 @@
         254
       ],
       "alpha_bounds": [
-        209,
-        76,
-        948,
-        1469
+        49,
+        40,
+        1010,
+        1518
       ],
-      "transparent_fraction": 0.6460736592610677,
-      "sha256": "6cbb4ed17e94f73c6429ba895fabd0c6d26bfadff394053cebc6096cc35119c9",
-      "byte_count": 2176378,
+      "transparent_fraction": 0.6302363077799479,
+      "sha256": "dd06e20ec327d1303b8bf5da63572c8604ab68b3ba30172762e0f54b0717061a",
+      "byte_count": 2226217,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-c8359c84-eac3-4d9a-80c8-eea3a7ebf859.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-af6fb90e-accf-456c-81ab-a1d950a28adf.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-05.png",
-      "githubBlobSha": "73ecf1ee46c214ced2606f6a130a3b83161d7ca2",
+      "githubBlobSha": "7dd0dc0c6b58be294ae17b8b8da35a31cbfe9b1b",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-05.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-af6fb90e-accf-456c-81ab-a1d950a28adf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-af6fb90e-accf-456c-81ab-a1d950a28adf.png",
+      "gitBlobSha1": "7dd0dc0c6b58be294ae17b8b8da35a31cbfe9b1b",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-05-before-face-review-6cbb4ed17e94.png",
+        "sha256": "6cbb4ed17e94f73c6429ba895fabd0c6d26bfadff394053cebc6096cc35119c9"
       }
     },
     {
       "id": "forge-master-06",
       "role": "forge-master",
       "description": "Short wiry veteran master with smoke-slate scales, many pale age spots, deeply lined alien cranium, thin uneven dreadlocks tied high then draped behind. Long narrow gray leather apron with oversized chest pocket and a leather half cape protecting one shoulder only. Holds a small ball-peen hammer in one hand and a compact riveting stake tool in other. Slight forward lean, correct muscular alien anatomy.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Short wiry veteran master with smoke-slate scales, many pale age spots, deeply lined alien cranium, thin uneven dreadlocks tied high then draped behind. Long narrow gray leather apron with oversized chest pocket and a leather half cape protecting one shoulder only. Holds a small ball-peen hammer in one hand and a compact riveting stake tool in other. Slight forward lean, correct muscular alien anatomy. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short wiry veteran master with smoke-slate scales, many pale age spots, deeply lined alien cranium, thin uneven dreadlocks tied high then draped behind. Long narrow gray leather apron with oversized chest pocket and a leather half cape protecting one shoulder only. Holds a small ball-peen hammer in one hand and a compact riveting stake tool in other. Slight forward lean, correct muscular alien anatomy.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -192,30 +267,45 @@
         254
       ],
       "alpha_bounds": [
-        238,
-        72,
-        859,
-        1410
+        0,
+        19,
+        998,
+        1514
       ],
-      "transparent_fraction": 0.6814193725585938,
-      "sha256": "f41566e0340fb5d7863f0f882ae9bdec263967bcbc4b90e094560dca2b002e50",
-      "byte_count": 1977081,
+      "transparent_fraction": 0.6419989267985026,
+      "sha256": "4a7ed1ad3e15243e00404ebc88d1bcb8018df75675bd3717cc2fd53ceb0f18f2",
+      "byte_count": 2140586,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5b2a4a7b-b108-46d3-8df3-4df05a8c5e55.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8e632e0b-7c38-4918-9e25-a515de7a1bf4.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-06.png",
-      "githubBlobSha": "3adccf37d4ea5e46660eb70a6b5dbbecfa43c7fb",
+      "githubBlobSha": "9f34270b8e27a93bceb186194d9448037e453263",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-8e632e0b-7c38-4918-9e25-a515de7a1bf4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8e632e0b-7c38-4918-9e25-a515de7a1bf4.png",
+      "gitBlobSha1": "9f34270b8e27a93bceb186194d9448037e453263",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-06-before-face-review-f41566e0340f.png",
+        "sha256": "f41566e0340fb5d7863f0f882ae9bdec263967bcbc4b90e094560dca2b002e50"
       }
     },
     {
       "id": "forge-master-07",
       "role": "forge-master",
       "description": "Very muscular broad-shouldered master, rusty red-brown and charcoal scaled skin, large tall forehead crest, thick black dreadlocks in a practical crown knot. Heavy dark brown leather apron ends just below knees with split skirt and reinforced waist, thick protective wrist wraps. One hand carries a broad flat-headed heavy hammer down along thigh, other clasps a pair of short forge pliers at belly.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Very muscular broad-shouldered master, rusty red-brown and charcoal scaled skin, large tall forehead crest, thick black dreadlocks in a practical crown knot. Heavy dark brown leather apron ends just below knees with split skirt and reinforced waist, thick protective wrist wraps. One hand carries a broad flat-headed heavy hammer down along thigh, other clasps a pair of short forge pliers at belly. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very muscular broad-shouldered master, rusty red-brown and charcoal scaled skin, large tall forehead crest, thick black dreadlocks in a practical crown knot. Heavy dark brown leather apron ends just below knees with split skirt and reinforced waist, thick protective wrist wraps. One hand carries a broad flat-headed heavy hammer down along thigh, other clasps a pair of short forge pliers at belly.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -227,30 +317,46 @@
         254
       ],
       "alpha_bounds": [
-        228,
-        162,
-        788,
-        1373
+        0,
+        15,
+        1010,
+        1512
       ],
-      "transparent_fraction": 0.7401752471923828,
-      "sha256": "388346e5bdaba32057bc8bc810ef032c7f53918dcf92be3bc0a1802234597f78",
-      "byte_count": 1748597,
+      "transparent_fraction": 0.6170177459716797,
+      "sha256": "5339fe0450f5ba67bdce8384a3cff3d3d87a785610cc33bb7871cd1fb54b3a98",
+      "byte_count": 2218926,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e91c83d7-16d1-404e-bb07-7987d5b468a8.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a9ec377d-f7f4-41a8-939d-d1dd515352cf.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-07.png",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "blobError": "Missing SHA from create_blob response; root informed to recover"
+      "blobError": "Missing SHA from create_blob response; root informed to recover",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-07.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-a9ec377d-f7f4-41a8-939d-d1dd515352cf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "7368d908d6f01e80b9fc32ce22896662a459c4d5",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a9ec377d-f7f4-41a8-939d-d1dd515352cf.png",
+      "gitBlobSha1": "7368d908d6f01e80b9fc32ce22896662a459c4d5",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-07-before-face-review-388346e5bdab.png",
+        "sha256": "388346e5bdaba32057bc8bc810ef032c7f53918dcf92be3bc0a1802234597f78"
+      }
     },
     {
       "id": "forge-master-08",
       "role": "forge-master",
       "description": "Tall slender adult master with cool sand-gray scales and black flecks, narrow high skull. Long dreadlocks bound together low behind neck, minimal dull metal bands. Asymmetric black leather chest apron fastens from one shoulder with a pale patched lower panel, slim dark work trousers. Holds an angular precision hammer low and a small openwork alien metal clasp up near sternum, calm upright stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Tall slender adult master with cool sand-gray scales and black flecks, narrow high skull. Long dreadlocks bound together low behind neck, minimal dull metal bands. Asymmetric black leather chest apron fastens from one shoulder with a pale patched lower panel, slim dark work trousers. Holds an angular precision hammer low and a small openwork alien metal clasp up near sternum, calm upright stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall slender adult master with cool sand-gray scales and black flecks, narrow high skull. Long dreadlocks bound together low behind neck, minimal dull metal bands. Asymmetric black leather chest apron fastens from one shoulder with a pale patched lower panel, slim dark work trousers. Holds an angular precision hammer low and a small openwork alien metal clasp up near sternum, calm upright stance.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -262,30 +368,45 @@
         254
       ],
       "alpha_bounds": [
-        238,
-        111,
-        834,
-        1408
+        49,
+        40,
+        1012,
+        1536
       ],
-      "transparent_fraction": 0.7346814473470052,
-      "sha256": "1e2177aae075b1c8d44c8b0fb4ecf10e9175cfd1328b93f9dc1606d19c6d73aa",
-      "byte_count": 1808882,
+      "transparent_fraction": 0.6990801493326823,
+      "sha256": "f011747e259c86757b192651d98633be53dc2d06d4b7af74403fed5919e5572b",
+      "byte_count": 1915638,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8576e5c1-4c0a-471c-9c54-fa2bfa895b73.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-cbd0e572-c3f1-4f21-a534-1d94fd7c7f3a.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-08.png",
-      "githubBlobSha": "1236209c8b02fcb4d78166d2a7d6e205a3d6b623",
+      "githubBlobSha": "39b2e0a0151603966019e9a292e6064469735b27",
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-cbd0e572-c3f1-4f21-a534-1d94fd7c7f3a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cbd0e572-c3f1-4f21-a534-1d94fd7c7f3a.png",
+      "gitBlobSha1": "39b2e0a0151603966019e9a292e6064469735b27",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-08-before-face-review-1e2177aae075.png",
+        "sha256": "1e2177aae075b1c8d44c8b0fb4ecf10e9175cfd1328b93f9dc1606d19c6d73aa"
       }
     },
     {
       "id": "forge-master-09",
       "role": "forge-master",
       "description": "Medium-height barrel-chested older master with olive-bronze scales and black scales near jaw, broad domed head, short dense dreadlocks fanning behind with a cloth tie. Wide chest leather apron with two shoulder straps and a detachable-looking knee flap, dark forearm heat guards. Both hands cradle a long blacksmith's swage tool diagonally at waist, fixed nonthreatening working pose.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Medium-height barrel-chested older master with olive-bronze scales and black scales near jaw, broad domed head, short dense dreadlocks fanning behind with a cloth tie. Wide chest leather apron with two shoulder straps and a detachable-looking knee flap, dark forearm heat guards. Both hands cradle a long blacksmith's swage tool diagonally at waist, fixed nonthreatening working pose. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height barrel-chested older master with olive-bronze scales and black scales near jaw, broad domed head, short dense dreadlocks fanning behind with a cloth tie. Wide chest leather apron with two shoulder straps and a detachable-looking knee flap, dark forearm heat guards. Both hands cradle a long blacksmith's swage tool diagonally at waist, fixed nonthreatening working pose.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -297,31 +418,46 @@
         254
       ],
       "alpha_bounds": [
-        260,
-        154,
-        861,
-        1412
+        65,
+        65,
+        1005,
+        1488
       ],
-      "transparent_fraction": 0.71405029296875,
-      "sha256": "625f57e5dd9d10800e618207a55a3654ed0b6120dbe2339ac2093cbbcd28555e",
-      "byte_count": 1859974,
+      "transparent_fraction": 0.6387240091959635,
+      "sha256": "de54035a73d168df837a507a5f47fd1ea554c2f8622e9c3c660a91c452d48efa",
+      "byte_count": 2148733,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-046537bc-bb6f-4391-8d92-313bbed4ef57.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-44d5d2c3-9a92-4d64-a5b5-7f36b7e5ec9c.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-09.png",
-      "githubBlobSha": "28b214c6acbcf762e0d7199db7b9772b1b70e0b3",
+      "githubBlobSha": "5a22993f8c2a3aa4357a77e57430557e75a96441",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-44d5d2c3-9a92-4d64-a5b5-7f36b7e5ec9c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-44d5d2c3-9a92-4d64-a5b5-7f36b7e5ec9c.png",
+      "gitBlobSha1": "5a22993f8c2a3aa4357a77e57430557e75a96441",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-09-before-face-review-625f57e5dd9d.png",
+        "sha256": "625f57e5dd9d10800e618207a55a3654ed0b6120dbe2339ac2093cbbcd28555e"
       }
     },
     {
       "id": "forge-master-10",
       "role": "forge-master",
       "description": "Long-armed heavy master with pale silver skin and charcoal mottling, flattened ridged forehead, black dreadlocks in four organized rope bundles. Rust-red leather apron with layered short skirt panels and large left tool roll, thick padded dark gray sleeves rolled above elbow. Carries a hammer with a narrow cylindrical head in one hand, closed metal tongs in the other. Strong resting stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Long-armed heavy master with pale silver skin and charcoal mottling, flattened ridged forehead, black dreadlocks in four organized rope bundles. Rust-red leather apron with layered short skirt panels and large left tool roll, thick padded dark gray sleeves rolled above elbow. Carries a hammer with a narrow cylindrical head in one hand, closed metal tongs in the other. Strong resting stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Long-armed heavy master with pale silver skin and charcoal mottling, flattened ridged forehead, black dreadlocks in four organized rope bundles. Rust-red leather apron with layered short skirt panels and large left tool roll, thick padded dark gray sleeves rolled above elbow. Carries a hammer with a narrow cylindrical head in one hand, closed metal tongs in the other. Strong resting stance.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -333,31 +469,46 @@
         254
       ],
       "alpha_bounds": [
-        218,
-        132,
-        913,
-        1431
+        49,
+        0,
+        1006,
+        1516
       ],
-      "transparent_fraction": 0.6872138977050781,
-      "sha256": "5e769cbccc8285b42d101f3bccc5a3a3a1ed72e196140b8999d865a439aa6a48",
-      "byte_count": 1963404,
+      "transparent_fraction": 0.6001574198404948,
+      "sha256": "e2f24e16ffde0b0d8bb86cfacf62f7178bd74ca5e6104ee40f58a280119c7731",
+      "byte_count": 2267306,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f0324a9c-dcbf-4203-95b7-94db779819df.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b860c1df-18d1-45a0-9f8b-7cd0eeaf0000.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-10.png",
-      "githubBlobSha": "c2d99c9b3e6e323028ae1382f6e1b5e27029c5bd",
+      "githubBlobSha": "f0cb84900b425c802e4a2ba9ccec9ec546e269ea",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-10.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-b860c1df-18d1-45a0-9f8b-7cd0eeaf0000.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b860c1df-18d1-45a0-9f8b-7cd0eeaf0000.png",
+      "gitBlobSha1": "f0cb84900b425c802e4a2ba9ccec9ec546e269ea",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-10-before-face-review-5e769cbccc82.png",
+        "sha256": "5e769cbccc8285b42d101f3bccc5a3a3a1ed72e196140b8999d865a439aa6a48"
       }
     },
     {
       "id": "forge-master-11",
       "role": "forge-master",
       "description": "Compact mature master with deep umber scales and tawny spots, pronounced angled brow, short thick dreadlocks tied tightly behind. Beige scarred hide apron with a huge rectangular front pocket, wide double belt, reinforced cloth trousers. Left hand supports a cold dark alien metal dome the size of fist, right holds a tiny forming hammer near it. Head inclined toward work.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Compact mature master with deep umber scales and tawny spots, pronounced angled brow, short thick dreadlocks tied tightly behind. Beige scarred hide apron with a huge rectangular front pocket, wide double belt, reinforced cloth trousers. Left hand supports a cold dark alien metal dome the size of fist, right holds a tiny forming hammer near it. Head inclined toward work. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Compact mature master with deep umber scales and tawny spots, pronounced angled brow, short thick dreadlocks tied tightly behind. Beige scarred hide apron with a huge rectangular front pocket, wide double belt, reinforced cloth trousers. Left hand supports a cold dark alien metal dome the size of fist, right holds a tiny forming hammer near it. Head inclined toward work.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -369,31 +520,46 @@
         254
       ],
       "alpha_bounds": [
-        264,
-        143,
-        863,
-        1389
+        49,
+        13,
+        1004,
+        1514
       ],
-      "transparent_fraction": 0.7278728485107422,
-      "sha256": "532ff0681c29cc9de14017fc926a8ead6570e68d064dfc22d2b121b17baf89c9",
-      "byte_count": 1802637,
+      "transparent_fraction": 0.639776865641276,
+      "sha256": "11ed764f3240201a91e1d758f27d8396bf9fb069ab7583e9f62733eb94318803",
+      "byte_count": 2116979,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0962c961-9e33-43c6-adba-15c0411c87a4.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0756b199-7f63-4977-98f1-e8744e25a051.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-11.png",
-      "githubBlobSha": "800913d8b39b500033fec1138b84c0e035cb9357",
+      "githubBlobSha": "3529cd478db5cac7189fb1c01eec13904a08feb8",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-0756b199-7f63-4977-98f1-e8744e25a051.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0756b199-7f63-4977-98f1-e8744e25a051.png",
+      "gitBlobSha1": "3529cd478db5cac7189fb1c01eec13904a08feb8",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-11-before-face-review-532ff0681c29.png",
+        "sha256": "532ff0681c29cc9de14017fc926a8ead6570e68d064dfc22d2b121b17baf89c9"
       }
     },
     {
       "id": "forge-master-12",
       "role": "forge-master",
       "description": "Tall bulky veteran master with gray-green scales and ivory mottles, high blunt forehead, long gray-black dreadlocks in one large low loop. Charcoal leather heat apron with rounded chest and angular knee hem, rust-colored cloth side panels, heavy gloves open at claws. Rests a short sledgehammer diagonally across both palms at hip level, relaxed elbows and broad grounded stance.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Tall bulky veteran master with gray-green scales and ivory mottles, high blunt forehead, long gray-black dreadlocks in one large low loop. Charcoal leather heat apron with rounded chest and angular knee hem, rust-colored cloth side panels, heavy gloves open at claws. Rests a short sledgehammer diagonally across both palms at hip level, relaxed elbows and broad grounded stance. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall bulky veteran master with gray-green scales and ivory mottles, high blunt forehead, long gray-black dreadlocks in one large low loop. Charcoal leather heat apron with rounded chest and angular knee hem, rust-colored cloth side panels, heavy gloves open at claws. Rests a short sledgehammer diagonally across both palms at hip level, relaxed elbows and broad grounded stance.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -405,31 +571,46 @@
         254
       ],
       "alpha_bounds": [
-        250,
-        77,
-        855,
-        1461
+        49,
+        17,
+        1006,
+        1514
       ],
-      "transparent_fraction": 0.6760450998942057,
-      "sha256": "59a312233adc07e5b033bc84439a35b1d12e04023d6d34677f4d43d13347bf74",
-      "byte_count": 2020573,
+      "transparent_fraction": 0.6498152414957682,
+      "sha256": "a28d8f5b2d2bbe5f5cbb2a0580e5ccfdba878570aaffce74f6a7079282abd71b",
+      "byte_count": 2053843,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6aefbb89-4ed9-470d-b539-20cddb79f43a.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3d9cc6cc-0e43-42fd-ac8a-dbb16bb122d5.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-12.png",
-      "githubBlobSha": "748eb1e79c75b47cc774f1fb53d48f23872a377a",
+      "githubBlobSha": "aca95dc4eaf0cb0e97947a68042e1e354392220c",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-3d9cc6cc-0e43-42fd-ac8a-dbb16bb122d5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3d9cc6cc-0e43-42fd-ac8a-dbb16bb122d5.png",
+      "gitBlobSha1": "aca95dc4eaf0cb0e97947a68042e1e354392220c",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-12-before-face-review-59a312233adc.png",
+        "sha256": "59a312233adc07e5b033bc84439a35b1d12e04023d6d34677f4d43d13347bf74"
       }
     },
     {
       "id": "forge-master-13",
       "role": "forge-master",
       "description": "Slender middle-aged master with ochre-gray skin and dense fine black freckles, elongated smooth ridged skull. Shoulder-length thin dreadlocks half tucked into a narrow neck wrap. Short tan leather crossback bib apron over a dark sleeveless work tunic and loose wrapped trousers, multiple slim tool loops. Right hand holds a flat planishing hammer, left hand displays a small shaped strip of metal.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Slender middle-aged master with ochre-gray skin and dense fine black freckles, elongated smooth ridged skull. Shoulder-length thin dreadlocks half tucked into a narrow neck wrap. Short tan leather crossback bib apron over a dark sleeveless work tunic and loose wrapped trousers, multiple slim tool loops. Right hand holds a flat planishing hammer, left hand displays a small shaped strip of metal. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Slender middle-aged master with ochre-gray skin and dense fine black freckles, elongated smooth ridged skull. Shoulder-length thin dreadlocks half tucked into a narrow neck wrap. Short tan leather crossback bib apron over a dark sleeveless work tunic and loose wrapped trousers, multiple slim tool loops. Right hand holds a flat planishing hammer, left hand displays a small shaped strip of metal.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -441,31 +622,46 @@
         254
       ],
       "alpha_bounds": [
-        269,
-        187,
-        842,
-        1372
+        51,
+        16,
+        1010,
+        1512
       ],
-      "transparent_fraction": 0.7715346018473307,
-      "sha256": "976e9b5051ba7068cef7f40de58e65001562fb09c6c871d233791a786db63c67",
-      "byte_count": 1698554,
+      "transparent_fraction": 0.6552403767903646,
+      "sha256": "11e4e9b1ae2bd4f8bb9128de848f35ee08d0e0f26fb44fbf71c312e220bff7c4",
+      "byte_count": 2137271,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8ca3874c-00f5-4ed9-9707-fd61c9c38c06.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-00e0d118-2b47-4abf-b9cb-ba3f9f60c339.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-13.png",
-      "githubBlobSha": "9be529c4a3a4b44eb888d2db3125600a59043569",
+      "githubBlobSha": "89dcafbaf5b3ab3a6ce82dd8816071d8c24634aa",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-13.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-00e0d118-2b47-4abf-b9cb-ba3f9f60c339.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-00e0d118-2b47-4abf-b9cb-ba3f9f60c339.png",
+      "gitBlobSha1": "89dcafbaf5b3ab3a6ce82dd8816071d8c24634aa",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-13-before-face-review-976e9b5051ba.png",
+        "sha256": "976e9b5051ba7068cef7f40de58e65001562fb09c6c871d233791a786db63c67"
       }
     },
     {
       "id": "forge-master-14",
       "role": "forge-master",
       "description": "Very broad squat master with dark blue-gray scales and copper patches, wide flat skull, thick dreadlocks folded into two small high side bundles. Deep rust leather apron with full chest coverage, asymmetrical lower panels and broad buckled waist, black leather heat cuffs. Holds a short heavy hexagonal hammer upright at waist and a closed scissor-style forge clamp lowered alongside body.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Very broad squat master with dark blue-gray scales and copper patches, wide flat skull, thick dreadlocks folded into two small high side bundles. Deep rust leather apron with full chest coverage, asymmetrical lower panels and broad buckled waist, black leather heat cuffs. Holds a short heavy hexagonal hammer upright at waist and a closed scissor-style forge clamp lowered alongside body. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very broad squat master with dark blue-gray scales and copper patches, wide flat skull, thick dreadlocks folded into two small high side bundles. Deep rust leather apron with full chest coverage, asymmetrical lower panels and broad buckled waist, black leather heat cuffs. Holds a short heavy hexagonal hammer upright at waist and a closed scissor-style forge clamp lowered alongside body.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -477,31 +673,46 @@
         254
       ],
       "alpha_bounds": [
-        207,
-        150,
-        925,
-        1428
+        0,
+        16,
+        990,
+        1536
       ],
-      "transparent_fraction": 0.6544780731201172,
-      "sha256": "e2564285e70f615666e8915d46aabd49b9251948917d03dc0e20728df05dd2c3",
-      "byte_count": 2099280,
+      "transparent_fraction": 0.547217051188151,
+      "sha256": "d83432d1b90544eb504aa7c2c87f268aba1ac503cad67333ea09d4de89da7c3e",
+      "byte_count": 2460246,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-ad1dee78-baad-4e94-b0a3-13f9fa0c7f07.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a857fa93-c575-4aed-ba7f-bf71175b7ad2.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-14.png",
-      "githubBlobSha": "485513584e8e72099cd3eac18097111f1e9872d0",
+      "githubBlobSha": "b05aa3cbaa73837ca3b217026ef2f8e3bc914d08",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-14.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-a857fa93-c575-4aed-ba7f-bf71175b7ad2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a857fa93-c575-4aed-ba7f-bf71175b7ad2.png",
+      "gitBlobSha1": "b05aa3cbaa73837ca3b217026ef2f8e3bc914d08",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-14-before-face-review-e2564285e70f.png",
+        "sha256": "e2564285e70f615666e8915d46aabd49b9251948917d03dc0e20728df05dd2c3"
       }
     },
     {
       "id": "forge-master-15",
       "role": "forge-master",
       "description": "Tall lithe elder master with charcoal scales and pale age flecks, sharp eye ridges, long black-gray dreadlocks braided down one side of back. Long dark brown leather apron with high chest bib and narrow straight hem, a round tools case high on hip. Inspects a small cold hammered vessel with one hand, tiny finishing hammer in the other. Slight bent shoulders, fully visible clawed feet.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Tall lithe elder master with charcoal scales and pale age flecks, sharp eye ridges, long black-gray dreadlocks braided down one side of back. Long dark brown leather apron with high chest bib and narrow straight hem, a round tools case high on hip. Inspects a small cold hammered vessel with one hand, tiny finishing hammer in the other. Slight bent shoulders, fully visible clawed feet. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall lithe elder master with charcoal scales and pale age flecks, sharp eye ridges, long black-gray dreadlocks braided down one side of back. Long dark brown leather apron with high chest bib and narrow straight hem, a round tools case high on hip. Inspects a small cold hammered vessel with one hand, tiny finishing hammer in the other. Slight bent shoulders, fully visible clawed feet.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -513,31 +724,46 @@
         254
       ],
       "alpha_bounds": [
-        294,
-        77,
-        831,
-        1390
+        65,
+        13,
+        1010,
+        1503
       ],
-      "transparent_fraction": 0.7451006571451823,
-      "sha256": "1cd311901f5ad784b40b3944e71ed13b520a095e276061031f001668c57521f5",
-      "byte_count": 1759140,
+      "transparent_fraction": 0.6868565877278646,
+      "sha256": "8e5cb639962cc69e42fa53df0f55202a0c7514634412db6a2ea61366c9ae60fe",
+      "byte_count": 1956744,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-510dbfad-7052-4e4c-9378-45472b06542a.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-1abc6015-d8d8-4c21-9055-99bb2b695b63.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-15.png",
-      "githubBlobSha": "c9a57c87140d63b0cda1a3e55088169cb71339c2",
+      "githubBlobSha": "abb22defc2ec0c1653204e44f262958f9605fe2d",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-15.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-1abc6015-d8d8-4c21-9055-99bb2b695b63.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1abc6015-d8d8-4c21-9055-99bb2b695b63.png",
+      "gitBlobSha1": "abb22defc2ec0c1653204e44f262958f9605fe2d",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-15-before-face-review-1cd311901f5a.png",
+        "sha256": "1cd311901f5ad784b40b3944e71ed13b520a095e276061031f001668c57521f5"
       }
     },
     {
       "id": "forge-master-16",
       "role": "forge-master",
       "description": "Thick-necked strong adult master with sandy scales and dark mottled bands, rounded ridged forehead, many short thick dreadlocks swept backward. Knee-length olive leather apron with two overlapping triangular panels, broad tan waist sash under utility belt, braced wrists. One hand grips small hinged tongs holding a cool metal bolt, other hand holds a square-head hammer downwards.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Thick-necked strong adult master with sandy scales and dark mottled bands, rounded ridged forehead, many short thick dreadlocks swept backward. Knee-length olive leather apron with two overlapping triangular panels, broad tan waist sash under utility belt, braced wrists. One hand grips small hinged tongs holding a cool metal bolt, other hand holds a square-head hammer downwards. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Thick-necked strong adult master with sandy scales and dark mottled bands, rounded ridged forehead, many short thick dreadlocks swept backward. Knee-length olive leather apron with two overlapping triangular panels, broad tan waist sash under utility belt, braced wrists. One hand grips small hinged tongs holding a cool metal bolt, other hand holds a square-head hammer downwards.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -549,31 +775,46 @@
         254
       ],
       "alpha_bounds": [
-        176,
-        115,
-        987,
-        1419
+        49,
+        9,
+        1024,
+        1518
       ],
-      "transparent_fraction": 0.6770540873209635,
-      "sha256": "84bf3abf56aa13fefc4d8cd74d7bdd67511fb6d4e1a9a7077d8621f011c14604",
-      "byte_count": 2035789,
+      "transparent_fraction": 0.5788974761962891,
+      "sha256": "e0e9f4402cde731c887807cb5cc89b5edf70f125d09902900fb22f0cf325ac18",
+      "byte_count": 2375922,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-1d4b0d3f-8c34-416a-ba30-f01396b9ee33.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-29b075fe-e22d-4dbf-8326-b1acd600af0d.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-16.png",
-      "githubBlobSha": "81b0c8946457f31d2efe2352c6863b2ca55d5c7f",
+      "githubBlobSha": "4c1d285b81d4301c2980c477f96d32c28b071bc4",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-16.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-29b075fe-e22d-4dbf-8326-b1acd600af0d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-29b075fe-e22d-4dbf-8326-b1acd600af0d.png",
+      "gitBlobSha1": "4c1d285b81d4301c2980c477f96d32c28b071bc4",
+      "maxBorderAlpha": 4,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-16-before-face-review-84bf3abf56aa.png",
+        "sha256": "84bf3abf56aa13fefc4d8cd74d7bdd67511fb6d4e1a9a7077d8621f011c14604"
       }
     },
     {
       "id": "forge-master-17",
       "role": "forge-master",
       "description": "Average-height athletic master with warm bronze-gray scales and scattered ivory spots, narrow domed crown. Long dreadlocks in a neatly bound high ponytail. Dark brown apron with one broad shoulder strap, leather lower hem folded up at one corner, long side tool pocket. Carries two short differently shaped forming hammers in separate lowered hands; unmistakable workshop tools, never weapons.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Average-height athletic master with warm bronze-gray scales and scattered ivory spots, narrow domed crown. Long dreadlocks in a neatly bound high ponytail. Dark brown apron with one broad shoulder strap, leather lower hem folded up at one corner, long side tool pocket. Carries two short differently shaped forming hammers in separate lowered hands; unmistakable workshop tools, never weapons. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Average-height athletic master with warm bronze-gray scales and scattered ivory spots, narrow domed crown. Long dreadlocks in a neatly bound high ponytail. Dark brown apron with one broad shoulder strap, leather lower hem folded up at one corner, long side tool pocket. Carries two short differently shaped forming hammers in separate lowered hands; unmistakable workshop tools, never weapons.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -585,31 +826,46 @@
         254
       ],
       "alpha_bounds": [
-        230,
-        73,
-        907,
-        1467
+        65,
+        23,
+        942,
+        1501
       ],
-      "transparent_fraction": 0.6916224161783854,
-      "sha256": "605af8bc0c22e5e5777387638088c92b05426d17e8cd1e7f32f5e940c2356377",
-      "byte_count": 1974271,
+      "transparent_fraction": 0.6518929799397787,
+      "sha256": "9339499b5523b33dbbc785385db672d406e64490943fb0f18ba872a7c33724b1",
+      "byte_count": 2112017,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d8d450e6-6023-45bd-b8a8-6e49e0d9a54f.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-17.png",
-      "githubBlobSha": "1db46c10e47047218f9056a544392f12a4ef6308",
+      "githubBlobSha": "ad5c2b7222dc2b3d35808984ac1e568e8e9722c1",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-17.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png",
+      "gitBlobSha1": "ad5c2b7222dc2b3d35808984ac1e568e8e9722c1",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-17-before-face-review-605af8bc0c22.png",
+        "sha256": "605af8bc0c22e5e5777387638088c92b05426d17e8cd1e7f32f5e940c2356377"
       }
     },
     {
       "id": "forge-master-18",
       "role": "forge-master",
       "description": "Very tall lean older master with pale gray-green scales, black speckles and rough aged ridges, small angular head. Thin gray-black dreadlocks gathered in a high narrow folded bun. Faded oxblood leather apron with a square chest pocket and three long hanging front panels, coarse wrapped work trousers. Holds a small punch in one hand and a light forging hammer in other at waist; tools separated.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Very tall lean older master with pale gray-green scales, black speckles and rough aged ridges, small angular head. Thin gray-black dreadlocks gathered in a high narrow folded bun. Faded oxblood leather apron with a square chest pocket and three long hanging front panels, coarse wrapped work trousers. Holds a small punch in one hand and a light forging hammer in other at waist; tools separated. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall lean older master with pale gray-green scales, black speckles and rough aged ridges, small angular head. Thin gray-black dreadlocks gathered in a high narrow folded bun. Faded oxblood leather apron with a square chest pocket and three long hanging front panels, coarse wrapped work trousers. Holds a small punch in one hand and a light forging hammer in other at waist; tools separated.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -621,31 +877,46 @@
         254
       ],
       "alpha_bounds": [
-        268,
-        98,
-        849,
-        1412
+        73,
+        13,
+        938,
+        1512
       ],
-      "transparent_fraction": 0.7414239247639974,
-      "sha256": "420fadcf97cc6e5192c1f3a872855e2e1b4d2bac79a5fe6230973222d31a3167",
-      "byte_count": 1787277,
+      "transparent_fraction": 0.6685746510823568,
+      "sha256": "07d44f5ed5d844490d9d7050c73f685c3d4cfb15dc62e26f58f5d42cafe80069",
+      "byte_count": 2071069,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-1ecc40bc-5a95-4468-bf37-df1bff20b6d5.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-18.png",
-      "githubBlobSha": "af1437d9f1a46301f7b335aed5a359dbe50b2a5b",
+      "githubBlobSha": "562eedfc886c60143cacbe15872ecd0279f08a9b",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-18.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png",
+      "gitBlobSha1": "562eedfc886c60143cacbe15872ecd0279f08a9b",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-18-before-face-review-420fadcf97cc.png",
+        "sha256": "420fadcf97cc6e5192c1f3a872855e2e1b4d2bac79a5fe6230973222d31a3167"
       }
     },
     {
       "id": "forge-master-19",
       "role": "forge-master",
       "description": "Heavy broad adult master with copper-brown pebbled scales and dark mottles, unusually wide sloping skull, thick dreadlocks in short rear clusters secured with plain rings. Ash-colored reinforced leather bib apron with a large curved hem, heavy russet work wrap underneath, padded forearm cuffs. Cradles a cool thick alien metal collar in left arm while a rectangular mallet hangs from right hand.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Heavy broad adult master with copper-brown pebbled scales and dark mottles, unusually wide sloping skull, thick dreadlocks in short rear clusters secured with plain rings. Ash-colored reinforced leather bib apron with a large curved hem, heavy russet work wrap underneath, padded forearm cuffs. Cradles a cool thick alien metal collar in left arm while a rectangular mallet hangs from right hand. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Heavy broad adult master with copper-brown pebbled scales and dark mottles, unusually wide sloping skull, thick dreadlocks in short rear clusters secured with plain rings. Ash-colored reinforced leather bib apron with a large curved hem, heavy russet work wrap underneath, padded forearm cuffs. Cradles a cool thick alien metal collar in left arm while a rectangular mallet hangs from right hand.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -657,31 +928,46 @@
         254
       ],
       "alpha_bounds": [
-        222,
-        174,
-        861,
-        1400
+        0,
+        0,
+        1012,
+        1536
       ],
-      "transparent_fraction": 0.6956577301025391,
-      "sha256": "6f075b26ac39334a83426e59f91c6617ceb15e0fb7e273947dc0c4550684adc3",
-      "byte_count": 1965392,
+      "transparent_fraction": 0.5358969370524088,
+      "sha256": "b1fbe7413c2161f593aa223bacc4e0bac2d8a400ecb6021633188e6b3b1ce2c4",
+      "byte_count": 2459231,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-1cb2f663-9442-480d-9ee1-ca8ef5f239b4.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fde01fde-380a-4a5e-b296-f1871cb2257a.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-19.png",
-      "githubBlobSha": "68f1b0934e999804e09c6a9090ee56d46e097eb4",
+      "githubBlobSha": "cee4e130283c469159f3aef3f599d628912cfe14",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-19.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fde01fde-380a-4a5e-b296-f1871cb2257a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fde01fde-380a-4a5e-b296-f1871cb2257a.png",
+      "gitBlobSha1": "cee4e130283c469159f3aef3f599d628912cfe14",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-19-before-face-review-6f075b26ac39.png",
+        "sha256": "6f075b26ac39334a83426e59f91c6617ceb15e0fb7e273947dc0c4550684adc3"
       }
     },
     {
       "id": "forge-master-20",
       "role": "forge-master",
       "description": "Compact but powerful elderly master with soot-gray scales and pale gold spots, deeply ridged broad forehead, short graying dreadlocks in a low tight bundle. Long weathered black leather apron with copper-brown seam repairs, asymmetrical bib and broad waist straps, short rolled tool bag. Holds an ornate but functional blunt masterwork forging hammer horizontally across waist in both hands, calm confident posture.",
-      "prompt": "Use case: stylized-concept. ONE INDIVIDUAL FULL-BODY 2D GAME SPRITE, real transparent RGBA. COMPOSITION FIRST: entire character and tools must occupy at most 78 percent of canvas height, centered with at least 10 percent EMPTY TRANSPARENT SPACE above crown and below claws, at least 8 percent at left/right. Zoom out enough, do not crop or fill canvas. The attached atlas is STYLE AND ROLE REFERENCE ONLY. Match TOP ROW CENTER forge master: realistic painterly 2D rendering, believable stocky alien anatomy, simple civilian forge leathers, bronze work guards, industrial metal hammer, dark linework and restrained warm upper-left lighting. Create a NEW ORIGINAL adult Yautja forge master: Compact but powerful elderly master with soot-gray scales and pale gold spots, deeply ridged broad forehead, short graying dreadlocks in a low tight bundle. Long weathered black leather apron with copper-brown seam repairs, asymmetrical bib and broad waist straps, short rolled tool bag. Holds an ornate but functional blunt masterwork forging hammer horizontally across waist in both hands, calm confident posture. Every figure clearly different in physique, head shape, dreadlock arrangement, apron cut, belts, tool shapes and hand pose, not a recolor. Correct Yautja four mandibles, scaled face without human nose or lips, fleshy dreadlocks, clawed hands and fully exposed clawed feet. Realistic professional 2D game sprite at slightly elevated camera and three-quarter facing RIGHT, relaxed stationary working or idle pose. Civilian tradesperson, no combat armor, no trophies, no warrior or medieval fantasy styling, no giant weapon. ONE character, all held or worn objects attached to hands/belt; no loose scenery. Truly transparent background, no colored field, no ground, no contact shadow, no baked shadow, no glow, no vignette, no sparks, no text, no border, no contact sheet or collage. Full body and tools INSIDE CENTRAL 80 PERCENT of canvas, large transparent margins.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Compact but powerful elderly master with soot-gray scales and pale gold spots, deeply ridged broad forehead, short graying dreadlocks in a low tight bundle. Long weathered black leather apron with copper-brown seam repairs, asymmetrical bib and broad waist straps, short rolled tool bag. Holds an ornate but functional blunt masterwork forging hammer horizontally across waist in both hands, calm confident posture.",
       "status": "validated",
       "dimensions": [
         1024,
@@ -693,25 +979,41 @@
         254
       ],
       "alpha_bounds": [
-        275,
-        113,
-        939,
-        1405
+        49,
+        32,
+        976,
+        1495
       ],
-      "transparent_fraction": 0.6851730346679688,
-      "sha256": "f6031c3079c589d59022f5b29d38d85b29ae0ec6c6e741d8df9d32d3bbde0bcd",
-      "byte_count": 1968968,
+      "transparent_fraction": 0.599341074625651,
+      "sha256": "8c4a048988d43846578808bd53ac190dd51e32165ff3c2edcb46ab3b086881b4",
+      "byte_count": 2243356,
       "original_bytes_preserved": true,
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e8550765-437f-4be1-bef2-fbc06ceb58b7.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-9e158c32-38f6-4c33-a533-5533579883ad.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-20.png",
-      "githubBlobSha": "f47ac19e357b3a14fbdb60660336c78970e44422",
+      "githubBlobSha": "65d4f7e71d795cfaad4301aaa2999e8825f812e9",
       "blobError": null,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-20.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-9e158c32-38f6-4c33-a533-5533579883ad.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9e158c32-38f6-4c33-a533-5533579883ad.png",
+      "gitBlobSha1": "65d4f7e71d795cfaad4301aaa2999e8825f812e9",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-20-before-face-review-f6031c3079c5.png",
+        "sha256": "f6031c3079c589d59022f5b29d38d85b29ae0ec6c6e741d8df9d32d3bbde0bcd"
       }
     }
-  ]
+  ],
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
 }

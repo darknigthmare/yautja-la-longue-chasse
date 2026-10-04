@@ -7,10 +7,10 @@
       "id": "artisan-01",
       "role": "artisan",
       "description": "Short, stocky barrel-chested older craftsperson; broad ridged head; ochre scales with charcoal speckles; thick black dreadlocks in a low short bundle; large split-front knee-length russet leather apron, two square waist pouches, side tool wrap; right hand lowers a small tack hammer, left inspects a riveted metal buckle.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Short, stocky barrel-chested older craftsperson; broad ridged head; ochre scales with charcoal speckles; thick black dreadlocks in a low short bundle; large split-front knee-length russet leather apron, two square waist pouches, side tool wrap; right hand lowers a small tack hammer, left inspects a riveted metal buckle. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short, stocky barrel-chested older craftsperson; broad ridged head; ochre scales with charcoal speckles; thick black dreadlocks in a low short bundle; large split-front knee-length russet leather apron, two square waist pouches, side tool wrap; right hand lowers a small tack hammer, left inspects a riveted metal buckle.",
       "status": "validated",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-01.png",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a355c93c-4670-4174-aa84-f3c081d51c2a.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png",
       "dimensions": [
         1024,
         1536
@@ -20,29 +20,45 @@
         0,
         254
       ],
-      "transparent_fraction": 0.5621986389160156,
+      "transparent_fraction": 0.5551350911458334,
       "alpha_bounds": [
-        126,
-        24,
-        966,
-        1515
+        0,
+        19,
+        1005,
+        1521
       ],
-      "sha256": "cd94da6b4167c302e55f2cd22fd3f58f67af6a38a9a513c24bac283fc7221ba3",
-      "byte_count": 2526880,
+      "sha256": "f8d941e175551f907f5d39ae49845f0c66515a7b0e0f3dfff6d2128442a2a5d6",
+      "byte_count": 2474771,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-01.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "faf38b194afe453875fec8a6ef7ed0d2ea9199c9",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png",
+      "gitBlobSha1": "faf38b194afe453875fec8a6ef7ed0d2ea9199c9",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-01-before-face-review-cd94da6b4167.png",
+        "sha256": "cd94da6b4167c302e55f2cd22fd3f58f67af6a38a9a513c24bac283fc7221ba3"
       }
     },
     {
       "id": "artisan-02",
       "role": "artisan",
       "description": "Tall very lean adult craftsperson with narrow elongated Yautja crown and olive-gray mottled scales. Thin long dreadlocks tied halfway up in a high narrow ponytail. One wide diagonal leather shoulder strap secures a knee-length asymmetrical dark umber apron that is open at one hip, with stitched tool loops. Both elbows bent low: one hand holds a small curved leatherworker's awl, other hand holds a loosely coiled thick leather strap. Slight forward attentive posture, long wrapped calves, exposed clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall very lean adult craftsperson with narrow elongated Yautja crown and olive-gray mottled scales. Thin long dreadlocks tied halfway up in a high narrow ponytail. One wide diagonal leather shoulder strap secures a knee-length asymmetrical dark umber apron that is open at one hip, with stitched tool loops. Both elbows bent low: one hand holds a small curved leatherworker's awl, other hand holds a loosely coiled thick leather strap. Slight forward attentive posture, long wrapped calves, exposed clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall very lean adult craftsperson with narrow elongated Yautja crown and olive-gray mottled scales. Thin long dreadlocks tied halfway up in a high narrow ponytail. One wide diagonal leather shoulder strap secures a knee-length asymmetrical dark umber apron that is open at one hip, with stitched tool loops. Both elbows bent low: one hand holds a small curved leatherworker's awl, other hand holds a loosely coiled thick leather strap. Slight forward attentive posture, long wrapped calves, exposed clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-be92f6b2-f839-4051-9a75-6b904abcc56a.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5a956726-90cf-4806-b029-5c25ee1a46da.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-02.png",
       "dimensions": [
         1024,
@@ -54,28 +70,44 @@
         254
       ],
       "alpha_bounds": [
-        288,
-        11,
-        930,
-        1497
+        49,
+        9,
+        1010,
+        1500
       ],
-      "transparent_fraction": 0.7031841278076172,
-      "sha256": "ef1fd53f8995a0f4af2b06c63c3094930dc9328f0185ac83610641dfc63c8ce0",
-      "byte_count": 1963049,
+      "transparent_fraction": 0.7019443511962891,
+      "sha256": "1028a8ae6d7c3e48080b43d4889bf7c480ac8eb2540174513b151832cc711fc5",
+      "byte_count": 1986389,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-5a956726-90cf-4806-b029-5c25ee1a46da.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "60d594e4f0ac555ecbe38a8876dfe8c2ef7ee10b",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5a956726-90cf-4806-b029-5c25ee1a46da.png",
+      "gitBlobSha1": "60d594e4f0ac555ecbe38a8876dfe8c2ef7ee10b",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-02-before-face-review-ef1fd53f8995.png",
+        "sha256": "ef1fd53f8995a0f4af2b06c63c3094930dc9328f0185ac83610641dfc63c8ce0"
       }
     },
     {
       "id": "artisan-03",
       "role": "artisan",
       "description": "Heavy broad-hipped mature adult with flattened broad Yautja forehead, slate-gray scales and pale freckles. Dreadlocks arranged in two thick low loops behind shoulders, short forelocks. Short rectangular oxblood waist apron over a sleeveless work tunic and baggy wrapped trousers, chunky side pouches. Leather repair specialist examining a three-strap alien ankle cuff in left hand, broad bone-handled stitching tool held low in right hand. One foot slightly advanced and chin lowered.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Heavy broad-hipped mature adult with flattened broad Yautja forehead, slate-gray scales and pale freckles. Dreadlocks arranged in two thick low loops behind shoulders, short forelocks. Short rectangular oxblood waist apron over a sleeveless work tunic and baggy wrapped trousers, chunky side pouches. Leather repair specialist examining a three-strap alien ankle cuff in left hand, broad bone-handled stitching tool held low in right hand. One foot slightly advanced and chin lowered. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Heavy broad-hipped mature adult with flattened broad Yautja forehead, slate-gray scales and pale freckles. Dreadlocks arranged in two thick low loops behind shoulders, short forelocks. Short rectangular oxblood waist apron over a sleeveless work tunic and baggy wrapped trousers, chunky side pouches. Leather repair specialist examining a three-strap alien ankle cuff in left hand, broad bone-handled stitching tool held low in right hand. One foot slightly advanced and chin lowered.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-37a1db1d-02e9-4b96-8ef2-db6299b136cd.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3986ef43-ea9f-4d58-a137-cef83e01e432.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-03.png",
       "dimensions": [
         1024,
@@ -87,28 +119,44 @@
         254
       ],
       "alpha_bounds": [
-        240,
-        10,
-        988,
-        1526
+        0,
+        6,
+        1005,
+        1536
       ],
-      "transparent_fraction": 0.6187909444173177,
-      "sha256": "84296f670d83d90c6037111459a2800f4b10af9923fd42e42e6707ad26960f9b",
-      "byte_count": 2248603,
+      "transparent_fraction": 0.6136455535888672,
+      "sha256": "22911011ec04a91e36dbbefba03babc3a3982a6aadc96ebdf4cc9f6abb6f1611",
+      "byte_count": 2267171,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-03.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-3986ef43-ea9f-4d58-a137-cef83e01e432.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "b43214461d7969664ceec65c6738d45618cf1105",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3986ef43-ea9f-4d58-a137-cef83e01e432.png",
+      "gitBlobSha1": "b43214461d7969664ceec65c6738d45618cf1105",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-03-before-face-review-84296f670d83.png",
+        "sha256": "84296f670d83d90c6037111459a2800f4b10af9923fd42e42e6707ad26960f9b"
       }
     },
     {
       "id": "artisan-04",
       "role": "artisan",
       "description": "Medium-height thick-armed adult potter with moss-green and ochre pebbled skin, high central skull ridge. Three large grouped dreadlock braids hang behind. Asymmetrical long sepia bib apron marked with dried pale clay, wide cloth waist wrap, narrow ankle wraps. Holds a small ribbed alien ceramic vessel close to belly with left hand and a modest crescent scraping tool angled outward in right hand. Relaxed tilted torso and wide planted clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Medium-height thick-armed adult potter with moss-green and ochre pebbled skin, high central skull ridge. Three large grouped dreadlock braids hang behind. Asymmetrical long sepia bib apron marked with dried pale clay, wide cloth waist wrap, narrow ankle wraps. Holds a small ribbed alien ceramic vessel close to belly with left hand and a modest crescent scraping tool angled outward in right hand. Relaxed tilted torso and wide planted clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height thick-armed adult potter with moss-green and ochre pebbled skin, high central skull ridge. Three large grouped dreadlock braids hang behind. Asymmetrical long sepia bib apron marked with dried pale clay, wide cloth waist wrap, narrow ankle wraps. Holds a small ribbed alien ceramic vessel close to belly with left hand and a modest crescent scraping tool angled outward in right hand. Relaxed tilted torso and wide planted clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d6724436-dbf9-4e33-864e-76b0d3f65a61.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fcfad9c0-f161-4d3c-9cb6-c5920b9155f0.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-04.png",
       "dimensions": [
         1024,
@@ -120,28 +168,44 @@
         254
       ],
       "alpha_bounds": [
-        271,
-        14,
-        820,
-        1518
+        65,
+        0,
+        832,
+        1536
       ],
-      "transparent_fraction": 0.6551462809244791,
-      "sha256": "01eafb5706da93a585a16c5906d2304d34769d312b6e993897b2debbd49d1dd3",
-      "byte_count": 2248778,
+      "transparent_fraction": 0.6436494191487631,
+      "sha256": "2283bdb5e7a1573d9c9134776576fd1d816b5ef88c982ac618fa4db7da4dff4b",
+      "byte_count": 2242563,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fcfad9c0-f161-4d3c-9cb6-c5920b9155f0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "adc6aa40e2c704c5f5743ba2972f9145ce556252",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fcfad9c0-f161-4d3c-9cb6-c5920b9155f0.png",
+      "gitBlobSha1": "adc6aa40e2c704c5f5743ba2972f9145ce556252",
+      "maxBorderAlpha": 6,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-04-before-face-review-01eafb5706da.png",
+        "sha256": "01eafb5706da93a585a16c5906d2304d34769d312b6e993897b2debbd49d1dd3"
       }
     },
     {
       "id": "artisan-05",
       "role": "artisan",
       "description": "Tall angular long-armed adult instrument maker, cool silver-gray skin with dense fine black mottles, small sharp eye ridges, correct compact four mandibles. Many short thick dreadlocks trimmed to shoulders and bound with evenly spaced dull bronze rings. Narrow long black leather apron over sleeveless brown cloth tunic, a high cross-body tool pouch. Both hands carefully calibrate a small alien metal measuring ring at chest height. Straight legs, narrow stance, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall angular long-armed adult instrument maker, cool silver-gray skin with dense fine black mottles, small sharp eye ridges, correct compact four mandibles. Many short thick dreadlocks trimmed to shoulders and bound with evenly spaced dull bronze rings. Narrow long black leather apron over sleeveless brown cloth tunic, a high cross-body tool pouch. Both hands carefully calibrate a small alien metal measuring ring at chest height. Straight legs, narrow stance, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall angular long-armed adult instrument maker, cool silver-gray skin with dense fine black mottles, small sharp eye ridges, correct compact four mandibles. Many short thick dreadlocks trimmed to shoulders and bound with evenly spaced dull bronze rings. Narrow long black leather apron over sleeveless brown cloth tunic, a high cross-body tool pouch. Both hands carefully calibrate a small alien metal measuring ring at chest height. Straight legs, narrow stance, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-bcca4524-2b55-4548-acf9-17d70dc08abb.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-05.png",
       "dimensions": [
         1024,
@@ -153,28 +217,44 @@
         254
       ],
       "alpha_bounds": [
-        260,
-        7,
-        821,
-        1525
+        65,
+        0,
+        1010,
+        1536
       ],
-      "transparent_fraction": 0.6753374735514323,
-      "sha256": "036a99caf684eb72743b4c909880f5578220e139590d3a373f16661fb9483d4e",
-      "byte_count": 2031485,
+      "transparent_fraction": 0.6680564880371094,
+      "sha256": "c40cd147323214141e2136fe0417d42e28e6e92ffc0b4f21b077034e097d2f08",
+      "byte_count": 2056059,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-05.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "ac2f3493755a16bc5e00b176d0c2845b8672b658",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png",
+      "gitBlobSha1": "ac2f3493755a16bc5e00b176d0c2845b8672b658",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-05-before-face-review-036a99caf684.png",
+        "sha256": "036a99caf684eb72743b4c909880f5578220e139590d3a373f16661fb9483d4e"
       }
     },
     {
       "id": "artisan-06",
       "role": "artisan",
       "description": "Compact broad-shouldered adult cordage artisan with rust-gold skin, dark scale bands, round sloping cranium. Thick dreadlocks gathered in a high folded knot with a few short side locks. Open-sided waxed brown apron with two overlapping angled front panels and an enormous side roll of cord attached to belt. Both hands braid a short loop of thick dark cable at waist level, loop clearly contained within silhouette. Torso slightly rotated, weighted back foot, clawed toes visible.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Compact broad-shouldered adult cordage artisan with rust-gold skin, dark scale bands, round sloping cranium. Thick dreadlocks gathered in a high folded knot with a few short side locks. Open-sided waxed brown apron with two overlapping angled front panels and an enormous side roll of cord attached to belt. Both hands braid a short loop of thick dark cable at waist level, loop clearly contained within silhouette. Torso slightly rotated, weighted back foot, clawed toes visible. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Compact broad-shouldered adult cordage artisan with rust-gold skin, dark scale bands, round sloping cranium. Thick dreadlocks gathered in a high folded knot with a few short side locks. Open-sided waxed brown apron with two overlapping angled front panels and an enormous side roll of cord attached to belt. Both hands braid a short loop of thick dark cable at waist level, loop clearly contained within silhouette. Torso slightly rotated, weighted back foot, clawed toes visible.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8e030c48-1048-4f84-ade3-6eec12771afb.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4a7ee76d-b609-4404-ab8c-cf4250e987f2.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-06.png",
       "dimensions": [
         1024,
@@ -186,28 +266,44 @@
         254
       ],
       "alpha_bounds": [
-        234,
-        7,
-        796,
-        1523
+        27,
+        0,
+        1010,
+        1525
       ],
-      "transparent_fraction": 0.6576048533121744,
-      "sha256": "59155631f26df4894d92ad1eab9a188c0a70ca21efc65d22b4f378d739ceaa7a",
-      "byte_count": 2119411,
+      "transparent_fraction": 0.6572138468424479,
+      "sha256": "f117703b3fb5e572eb89fa188089752854847835e35f7e8a39676a57dc3be261",
+      "byte_count": 2089042,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-4a7ee76d-b609-4404-ab8c-cf4250e987f2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "4e19b6bd41c3f7a09a66eb3275e1ceac3451faf6",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4a7ee76d-b609-4404-ab8c-cf4250e987f2.png",
+      "gitBlobSha1": "4e19b6bd41c3f7a09a66eb3275e1ceac3451faf6",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-06-before-face-review-59155631f26d.png",
+        "sha256": "59155631f26df4894d92ad1eab9a188c0a70ca21efc65d22b4f378d739ceaa7a"
       }
     },
     {
       "id": "artisan-07",
       "role": "artisan",
       "description": "Broad muscular mature bone carver with pale ivory-olive scales and charcoal lichen mottling, deeply ridged skull. Long heavy dreadlocks swept into a single asymmetrical bundle over rear shoulder. Patched tan leather apron hangs from one shoulder and splits into three uneven knee-length panels, leather work wraps at wrists. Left palm supports a small carved alien decorative bead block, right hand holds a short precision chisel. Quiet concentrated pose looking down at object, correct exposed clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Broad muscular mature bone carver with pale ivory-olive scales and charcoal lichen mottling, deeply ridged skull. Long heavy dreadlocks swept into a single asymmetrical bundle over rear shoulder. Patched tan leather apron hangs from one shoulder and splits into three uneven knee-length panels, leather work wraps at wrists. Left palm supports a small carved alien decorative bead block, right hand holds a short precision chisel. Quiet concentrated pose looking down at object, correct exposed clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Broad muscular mature bone carver with pale ivory-olive scales and charcoal lichen mottling, deeply ridged skull. Long heavy dreadlocks swept into a single asymmetrical bundle over rear shoulder. Patched tan leather apron hangs from one shoulder and splits into three uneven knee-length panels, leather work wraps at wrists. Left palm supports a small carved alien decorative bead block, right hand holds a short precision chisel. Quiet concentrated pose looking down at object, correct exposed clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a5cee6d4-88e1-4cd8-940e-7dec5ddd3cb1.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5a6bcd43-0523-4744-9ca7-123582ac0d87.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-07.png",
       "dimensions": [
         1024,
@@ -219,28 +315,44 @@
         254
       ],
       "alpha_bounds": [
-        237,
-        11,
-        858,
-        1525
+        49,
+        1,
+        1010,
+        1536
       ],
-      "transparent_fraction": 0.6603145599365234,
-      "sha256": "9fa51276067e91e46cc12fc3bde1391d1fe266c973bd185b001241257d1963b5",
-      "byte_count": 2169849,
+      "transparent_fraction": 0.6556040445963541,
+      "sha256": "aefaeea9f6c361bfdf12b5ddf4f1221b11a2d11329fdcb1977f729cc737174ef",
+      "byte_count": 2142584,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-07.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-5a6bcd43-0523-4744-9ca7-123582ac0d87.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "4a625b5a35a9a9dba7506ece6f9d5de3d8319b02",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5a6bcd43-0523-4744-9ca7-123582ac0d87.png",
+      "gitBlobSha1": "4a625b5a35a9a9dba7506ece6f9d5de3d8319b02",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-07-before-face-review-9fa51276067e.png",
+        "sha256": "9fa51276067e91e46cc12fc3bde1391d1fe266c973bd185b001241257d1963b5"
       }
     },
     {
       "id": "artisan-08",
       "role": "artisan",
       "description": "Slender mature textile artisan with smoke-slate skin and sparse warm gold mottling, long oval alien cranium. Dreadlocks arranged as a half-tied crown bundle with loose lengths down back. Faded red-brown long leather apron with open front over coarse gray work clothes, narrow belt and hanging folded leather scissors sheath. One hand holds closed heavy bronze shears downward, other forearm carries a folded thick woven cloth bolt. Head turned right, one relaxed bent knee, clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Slender mature textile artisan with smoke-slate skin and sparse warm gold mottling, long oval alien cranium. Dreadlocks arranged as a half-tied crown bundle with loose lengths down back. Faded red-brown long leather apron with open front over coarse gray work clothes, narrow belt and hanging folded leather scissors sheath. One hand holds closed heavy bronze shears downward, other forearm carries a folded thick woven cloth bolt. Head turned right, one relaxed bent knee, clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Slender mature textile artisan with smoke-slate skin and sparse warm gold mottling, long oval alien cranium. Dreadlocks arranged as a half-tied crown bundle with loose lengths down back. Faded red-brown long leather apron with open front over coarse gray work clothes, narrow belt and hanging folded leather scissors sheath. One hand holds closed heavy bronze shears downward, other forearm carries a folded thick woven cloth bolt. Head turned right, one relaxed bent knee, clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4c13c0cf-f6fa-45b2-84ec-c1cd33724683.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-85015e1c-ce70-4801-96cc-c754fd7ba949.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-08.png",
       "dimensions": [
         1024,
@@ -252,28 +364,44 @@
         254
       ],
       "alpha_bounds": [
-        300,
-        10,
-        887,
-        1520
+        65,
+        0,
+        898,
+        1522
       ],
-      "transparent_fraction": 0.6452134450276693,
-      "sha256": "dfadeef4fec0c85415a4e0e8b2a181c1d00502f7f46f24a25d5dee1dd0a03d81",
-      "byte_count": 2175688,
+      "transparent_fraction": 0.6392587025960287,
+      "sha256": "332b830553e2ce7c345586c17a3e47b1439b06f79766c75c863f773689bb35ce",
+      "byte_count": 2205731,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-85015e1c-ce70-4801-96cc-c754fd7ba949.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "e6fec81b709efadbd9b4131e1a56f7cc6322262c",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-85015e1c-ce70-4801-96cc-c754fd7ba949.png",
+      "gitBlobSha1": "e6fec81b709efadbd9b4131e1a56f7cc6322262c",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-08-before-face-review-dfadeef4fec0.png",
+        "sha256": "dfadeef4fec0c85415a4e0e8b2a181c1d00502f7f46f24a25d5dee1dd0a03d81"
       }
     },
     {
       "id": "artisan-09",
       "role": "artisan",
       "description": "Tall powerful shell-polishing craftsperson, blue-gray leathery scales with copper spots, pronounced angular brow and four mandibles. Very thick swept-back dreadlocks decorated with only a few worn bone rings. Diagonal half apron across one thigh, sleeveless dark hide work shirt, large low opposite-thigh tool bag. Holds a palm-sized iridescent shell disk against a rough cleaning cloth with both hands at lower chest. Stable wide stance, wrapped shins, fully visible clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall powerful shell-polishing craftsperson, blue-gray leathery scales with copper spots, pronounced angular brow and four mandibles. Very thick swept-back dreadlocks decorated with only a few worn bone rings. Diagonal half apron across one thigh, sleeveless dark hide work shirt, large low opposite-thigh tool bag. Holds a palm-sized iridescent shell disk against a rough cleaning cloth with both hands at lower chest. Stable wide stance, wrapped shins, fully visible clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall powerful shell-polishing craftsperson, blue-gray leathery scales with copper spots, pronounced angular brow and four mandibles. Very thick swept-back dreadlocks decorated with only a few worn bone rings. Diagonal half apron across one thigh, sleeveless dark hide work shirt, large low opposite-thigh tool bag. Holds a palm-sized iridescent shell disk against a rough cleaning cloth with both hands at lower chest. Stable wide stance, wrapped shins, fully visible clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0f5c4835-53ed-4501-9a41-ca3d7d4e965f.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fc01c312-6463-4b5e-881c-6728cf868172.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-09.png",
       "dimensions": [
         1024,
@@ -285,28 +413,44 @@
         254
       ],
       "alpha_bounds": [
-        263,
-        6,
-        837,
-        1526
+        49,
+        0,
+        1012,
+        1536
       ],
-      "transparent_fraction": 0.6652628580729166,
-      "sha256": "29190990f05f58240eabb1d5d770668c1a3435c3980d04b6064fd011a8bd44f0",
-      "byte_count": 2136645,
+      "transparent_fraction": 0.6564839680989584,
+      "sha256": "1647f7d363c5a3b6f9138ba2eb69e78e8ab21600180a4d9cb5db1374eeee1a8b",
+      "byte_count": 2141678,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fc01c312-6463-4b5e-881c-6728cf868172.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "4e4aa6fbc6f2db776d679908cefde5af7cb9f53a",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fc01c312-6463-4b5e-881c-6728cf868172.png",
+      "gitBlobSha1": "4e4aa6fbc6f2db776d679908cefde5af7cb9f53a",
+      "maxBorderAlpha": 6,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-09-before-face-review-29190990f05f.png",
+        "sha256": "29190990f05f58240eabb1d5d770668c1a3435c3980d04b6064fd011a8bd44f0"
       }
     },
     {
       "id": "artisan-10",
       "role": "artisan",
       "description": "Short barrel-shaped hardware repairer with bronze-gray skin and dark navy patches, broad flat ridged forehead. Dreadlocks gathered into three separate thick descending bunches behind head. Rigid square leather chest-flap apron fastens with side buckles, hem above knees; multiple short metal tool loops at belt, wrapped loose trousers. Left hand holds a small alien mechanical bracket; right hand turns a compact heavy screwdriver while both hands remain clearly separated. Slight sideways lean, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Short barrel-shaped hardware repairer with bronze-gray skin and dark navy patches, broad flat ridged forehead. Dreadlocks gathered into three separate thick descending bunches behind head. Rigid square leather chest-flap apron fastens with side buckles, hem above knees; multiple short metal tool loops at belt, wrapped loose trousers. Left hand holds a small alien mechanical bracket; right hand turns a compact heavy screwdriver while both hands remain clearly separated. Slight sideways lean, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short barrel-shaped hardware repairer with bronze-gray skin and dark navy patches, broad flat ridged forehead. Dreadlocks gathered into three separate thick descending bunches behind head. Rigid square leather chest-flap apron fastens with side buckles, hem above knees; multiple short metal tool loops at belt, wrapped loose trousers. Left hand holds a small alien mechanical bracket; right hand turns a compact heavy screwdriver while both hands remain clearly separated. Slight sideways lean, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a08cbb11-4d76-4897-a794-ddb5354887ee.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-46be8b11-1795-4577-9f36-c2c25f337d29.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-10.png",
       "dimensions": [
         1024,
@@ -318,28 +462,44 @@
         254
       ],
       "alpha_bounds": [
-        241,
-        5,
-        896,
-        1526
+        45,
+        0,
+        1012,
+        1528
       ],
-      "transparent_fraction": 0.6181735992431641,
-      "sha256": "41579f5acc1b2efd2fbee90db599c9060ebf83fd8c95cfd558610a073e55266d",
-      "byte_count": 2260966,
+      "transparent_fraction": 0.6153450012207031,
+      "sha256": "143d725e2d8d9b5eb85586b0ecda9b3b321c8d2adc270deb8d77dc6e3c863a7b",
+      "byte_count": 2250498,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-10.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-46be8b11-1795-4577-9f36-c2c25f337d29.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "5653f2832ba163b236dd7c730012573b38a1b1c2",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-46be8b11-1795-4577-9f36-c2c25f337d29.png",
+      "gitBlobSha1": "5653f2832ba163b236dd7c730012573b38a1b1c2",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-10-before-face-review-41579f5acc1b.png",
+        "sha256": "41579f5acc1b2efd2fbee90db599c9060ebf83fd8c95cfd558610a073e55266d"
       }
     },
     {
       "id": "artisan-11",
       "role": "artisan",
       "description": "Very tall slender elderly precision mechanic with soot-brown scales, many pale spots, narrow angular skull and aged ridged brow. Long thin dreadlocks bound into one braid over the left rear shoulder. Full-neck charcoal leather apron, narrow split hem almost to ankles, crossbody round instrument case. Both hands low at sternum: left holds small lens housing, right holds tiny screwdriver near housing. Shoulders slightly hunched, calm thoughtful look, correct four mandibles and exposed clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Very tall slender elderly precision mechanic with soot-brown scales, many pale spots, narrow angular skull and aged ridged brow. Long thin dreadlocks bound into one braid over the left rear shoulder. Full-neck charcoal leather apron, narrow split hem almost to ankles, crossbody round instrument case. Both hands low at sternum: left holds small lens housing, right holds tiny screwdriver near housing. Shoulders slightly hunched, calm thoughtful look, correct four mandibles and exposed clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall slender elderly precision mechanic with soot-brown scales, many pale spots, narrow angular skull and aged ridged brow. Long thin dreadlocks bound into one braid over the left rear shoulder. Full-neck charcoal leather apron, narrow split hem almost to ankles, crossbody round instrument case. Both hands low at sternum: left holds small lens housing, right holds tiny screwdriver near housing. Shoulders slightly hunched, calm thoughtful look, correct four mandibles and exposed clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e9f9b564-10ce-4f02-84ea-ececcf0d6340.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-11.png",
       "dimensions": [
         1024,
@@ -351,28 +511,44 @@
         254
       ],
       "alpha_bounds": [
-        270,
-        14,
-        762,
-        1513
+        65,
+        0,
+        1012,
+        1518
       ],
-      "transparent_fraction": 0.6893825531005859,
-      "sha256": "3c140f10a785e8ff4e08ef32cfabcb0da6ef4bc113e65eeba93ed5df5fa81925",
-      "byte_count": 1929296,
+      "transparent_fraction": 0.6845143636067709,
+      "sha256": "62e72a94b44dfc35e792019eec5ce823574127b1d2d4001f14526973dc303c0f",
+      "byte_count": 1984684,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "a9f5d52321c8726ec36982d920b1211c6d7a3850",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-258fac28-67b9-4a92-9baf-91bc8ff6ea3c.png",
+      "gitBlobSha1": "a9f5d52321c8726ec36982d920b1211c6d7a3850",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-11-before-face-review-3c140f10a785.png",
+        "sha256": "3c140f10a785e8ff4e08ef32cfabcb0da6ef4bc113e65eeba93ed5df5fa81925"
       }
     },
     {
       "id": "artisan-12",
       "role": "artisan",
       "description": "Robust adult hideworker with broad domed skull, warm sand-gray scales and black patches, thick short neck. Dreadlocks fan across shoulders with restrained copper rings. Short wide dark blue leather apron over layered brown wraps, wide cinched belt with two soft tools pouches. Carries two rolled small cut hides tucked under left arm, small curved stitching needle held in right hand with a short visible thread. Hip cocked slightly, heavy sturdy legs, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Robust adult hideworker with broad domed skull, warm sand-gray scales and black patches, thick short neck. Dreadlocks fan across shoulders with restrained copper rings. Short wide dark blue leather apron over layered brown wraps, wide cinched belt with two soft tools pouches. Carries two rolled small cut hides tucked under left arm, small curved stitching needle held in right hand with a short visible thread. Hip cocked slightly, heavy sturdy legs, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Robust adult hideworker with broad domed skull, warm sand-gray scales and black patches, thick short neck. Dreadlocks fan across shoulders with restrained copper rings. Short wide dark blue leather apron over layered brown wraps, wide cinched belt with two soft tools pouches. Carries two rolled small cut hides tucked under left arm, small curved stitching needle held in right hand with a short visible thread. Hip cocked slightly, heavy sturdy legs, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-cf4d03c2-9529-4429-a692-a1c068c68792.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-ad9aadc4-4c43-4348-842f-1db456d12244.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-12.png",
       "dimensions": [
         1024,
@@ -384,28 +560,44 @@
         254
       ],
       "alpha_bounds": [
-        195,
-        21,
-        975,
-        1521
+        35,
+        1,
+        1012,
+        1524
       ],
-      "transparent_fraction": 0.6033884684244791,
-      "sha256": "1f203973953c52b0f5ef425b0c8c77c1d2b20125b96e2b0be187045f2f737b38",
-      "byte_count": 2359144,
+      "transparent_fraction": 0.5976568857828776,
+      "sha256": "594763d83452567033526e8781a600d556aa91e2505fb5178481a92ae66efefc",
+      "byte_count": 2323624,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-ad9aadc4-4c43-4348-842f-1db456d12244.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "b24f4207def5f017064697b4e38617235f32d579",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ad9aadc4-4c43-4348-842f-1db456d12244.png",
+      "gitBlobSha1": "b24f4207def5f017064697b4e38617235f32d579",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-12-before-face-review-1f203973953c.png",
+        "sha256": "1f203973953c52b0f5ef425b0c8c77c1d2b20125b96e2b0be187045f2f737b38"
       }
     },
     {
       "id": "artisan-13",
       "role": "artisan",
       "description": "Tall muscular adult metal finisher with tawny scales, large charcoal patches, smooth high forehead ridge. Long dreadlocks braided behind and secured by a narrow practical cloth band. Sleeveless work harness supporting a chest-width burnt-sienna apron with rounded lower hem and a single diagonal pocket; no armor. Small light embossing hammer in right hand lowered alongside thigh, left hand raises a curved half-finished metal wrist clasp for inspection. Three-quarter right facing upright stance, visible clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall muscular adult metal finisher with tawny scales, large charcoal patches, smooth high forehead ridge. Long dreadlocks braided behind and secured by a narrow practical cloth band. Sleeveless work harness supporting a chest-width burnt-sienna apron with rounded lower hem and a single diagonal pocket; no armor. Small light embossing hammer in right hand lowered alongside thigh, left hand raises a curved half-finished metal wrist clasp for inspection. Three-quarter right facing upright stance, visible clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall muscular adult metal finisher with tawny scales, large charcoal patches, smooth high forehead ridge. Long dreadlocks braided behind and secured by a narrow practical cloth band. Sleeveless work harness supporting a chest-width burnt-sienna apron with rounded lower hem and a single diagonal pocket; no armor. Small light embossing hammer in right hand lowered alongside thigh, left hand raises a curved half-finished metal wrist clasp for inspection. Three-quarter right facing upright stance, visible clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-17247c5a-e252-40fc-9581-b75d5f1e4369.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f1f62c31-17a7-41ba-a548-4976cf4e21fc.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-13.png",
       "dimensions": [
         1024,
@@ -417,28 +609,44 @@
         254
       ],
       "alpha_bounds": [
-        244,
-        15,
-        925,
-        1511
+        45,
+        10,
+        1012,
+        1519
       ],
-      "transparent_fraction": 0.6472180684407552,
-      "sha256": "3a38330799aeebfca45e2f5d2b2b817d43eaac7f5ff74b1ba2415b0ea7fb4d3b",
-      "byte_count": 2171673,
+      "transparent_fraction": 0.6416734059651693,
+      "sha256": "fc98349db77e35dfe0533bb5787497aeefa2c924fbb792ce5e3c66e371b3dc28",
+      "byte_count": 2175127,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-13.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f1f62c31-17a7-41ba-a548-4976cf4e21fc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "15fb18a8c0fe556bae1dfa08574952adff431d2e",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f1f62c31-17a7-41ba-a548-4976cf4e21fc.png",
+      "gitBlobSha1": "15fb18a8c0fe556bae1dfa08574952adff431d2e",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-13-before-face-review-3a38330799ae.png",
+        "sha256": "3a38330799aeebfca45e2f5d2b2b817d43eaac7f5ff74b1ba2415b0ea7fb4d3b"
       }
     },
     {
       "id": "artisan-14",
       "role": "artisan",
       "description": "Average-height round-bellied older engraver with ash-olive pebbled scales and pale horizontal spots, small blunt alien head and deeply folded mandibles. Short thick dreadlock crest spills backward. Long split greenish-brown leather apron with offset bib, two oversized circular tool pockets on hips. Left hand holds an oval stamped metal ornament and right holds a delicate short engraving graver near its edge. Quiet absorbed posture, front foot turned slightly outward, wrapped trousers and exposed claws.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Average-height round-bellied older engraver with ash-olive pebbled scales and pale horizontal spots, small blunt alien head and deeply folded mandibles. Short thick dreadlock crest spills backward. Long split greenish-brown leather apron with offset bib, two oversized circular tool pockets on hips. Left hand holds an oval stamped metal ornament and right holds a delicate short engraving graver near its edge. Quiet absorbed posture, front foot turned slightly outward, wrapped trousers and exposed claws. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Average-height round-bellied older engraver with ash-olive pebbled scales and pale horizontal spots, small blunt alien head and deeply folded mandibles. Short thick dreadlock crest spills backward. Long split greenish-brown leather apron with offset bib, two oversized circular tool pockets on hips. Left hand holds an oval stamped metal ornament and right holds a delicate short engraving graver near its edge. Quiet absorbed posture, front foot turned slightly outward, wrapped trousers and exposed claws.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f551f1e9-1df1-444e-a4ee-75cf6b77f599.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f2ee5d01-362f-4ed9-a696-1c13b96da664.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-14.png",
       "dimensions": [
         1024,
@@ -450,28 +658,44 @@
         254
       ],
       "alpha_bounds": [
-        266,
-        27,
-        877,
-        1519
+        65,
+        17,
+        1010,
+        1522
       ],
-      "transparent_fraction": 0.6428648630777994,
-      "sha256": "444a6b36107f52cb866b34d9e8fc55dd1c23c9c2ed7fe806a80fd5c1a07a188d",
-      "byte_count": 2193595,
+      "transparent_fraction": 0.6343860626220703,
+      "sha256": "438069d91402a66f019c3aed902cc46dd8236ea2a4a24f49bff964f4c845726f",
+      "byte_count": 2223570,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-14.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f2ee5d01-362f-4ed9-a696-1c13b96da664.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "ca413c76a9640b8cc176055ea3521db38cde5f40",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f2ee5d01-362f-4ed9-a696-1c13b96da664.png",
+      "gitBlobSha1": "ca413c76a9640b8cc176055ea3521db38cde5f40",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-14-before-face-review-444a6b36107f.png",
+        "sha256": "444a6b36107f52cb866b34d9e8fc55dd1c23c9c2ed7fe806a80fd5c1a07a188d"
       }
     },
     {
       "id": "artisan-15",
       "role": "artisan",
       "description": "Tall slim adult tube-and-fitting artisan with deep brown-black scales and tawny freckles, elongated angular head. Extremely long thin dreadlocks gathered into a narrow vertical tail down spine. Cream-tan leather bib apron has triangular skirt panels and dark seam binding, broad back straps and a small waist tool caddy. Right hand lowers long measuring calipers fully contained within image, left hand cradles a short shaped metal pipe fitting horizontally at waist. Long lean legs, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall slim adult tube-and-fitting artisan with deep brown-black scales and tawny freckles, elongated angular head. Extremely long thin dreadlocks gathered into a narrow vertical tail down spine. Cream-tan leather bib apron has triangular skirt panels and dark seam binding, broad back straps and a small waist tool caddy. Right hand lowers long measuring calipers fully contained within image, left hand cradles a short shaped metal pipe fitting horizontally at waist. Long lean legs, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall slim adult tube-and-fitting artisan with deep brown-black scales and tawny freckles, elongated angular head. Extremely long thin dreadlocks gathered into a narrow vertical tail down spine. Cream-tan leather bib apron has triangular skirt panels and dark seam binding, broad back straps and a small waist tool caddy. Right hand lowers long measuring calipers fully contained within image, left hand cradles a short shaped metal pipe fitting horizontally at waist. Long lean legs, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-c8559852-8d60-48f0-8aa0-b1c9ee1c78d8.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d50e4095-faf6-4a6b-bfb5-8dc7e99f11d2.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-15.png",
       "dimensions": [
         1024,
@@ -483,28 +707,44 @@
         254
       ],
       "alpha_bounds": [
-        270,
-        16,
-        820,
-        1508
+        65,
+        10,
+        1012,
+        1512
       ],
-      "transparent_fraction": 0.7168502807617188,
-      "sha256": "b275b184cb29f4d64590bc95685abf69be91a54885dc60cd07fc451bf5a7d753",
-      "byte_count": 1943670,
+      "transparent_fraction": 0.7139746348063151,
+      "sha256": "fb1ea3ddb3d410fa00675f3d4893adb6e72241aa4057debcf4d034560bc1b74a",
+      "byte_count": 1939061,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-15.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-d50e4095-faf6-4a6b-bfb5-8dc7e99f11d2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "e90f9838bab46d55ff161e446e153a1a1b5941eb",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d50e4095-faf6-4a6b-bfb5-8dc7e99f11d2.png",
+      "gitBlobSha1": "e90f9838bab46d55ff161e446e153a1a1b5941eb",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-15-before-face-review-b275b184cb29.png",
+        "sha256": "b275b184cb29f4d64590bc95685abf69be91a54885dc60cd07fc451bf5a7d753"
       }
     },
     {
       "id": "artisan-16",
       "role": "artisan",
       "description": "Compact agile harness maker with ochre-green skin, dense dark cheek mottles, broad rounded Yautja forehead. Dreadlocks neatly folded in a high side bundle with several short loose strands. Short waist apron made from asymmetrical overlapping leather flaps, sleeveless cloth undershirt, thick double belt, wraps from knee to ankle. Holds a compact folded alien pack harness and adjusts one strap with a short blunt punch in the other hand. Torso slightly bent over work, correct mandibles and clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Compact agile harness maker with ochre-green skin, dense dark cheek mottles, broad rounded Yautja forehead. Dreadlocks neatly folded in a high side bundle with several short loose strands. Short waist apron made from asymmetrical overlapping leather flaps, sleeveless cloth undershirt, thick double belt, wraps from knee to ankle. Holds a compact folded alien pack harness and adjusts one strap with a short blunt punch in the other hand. Torso slightly bent over work, correct mandibles and clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Compact agile harness maker with ochre-green skin, dense dark cheek mottles, broad rounded Yautja forehead. Dreadlocks neatly folded in a high side bundle with several short loose strands. Short waist apron made from asymmetrical overlapping leather flaps, sleeveless cloth undershirt, thick double belt, wraps from knee to ankle. Holds a compact folded alien pack harness and adjusts one strap with a short blunt punch in the other hand. Torso slightly bent over work, correct mandibles and clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b989d5e6-9f61-4f6b-b165-b4fac8701560.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4b49de38-9a85-4909-8a2a-38fd6faba002.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-16.png",
       "dimensions": [
         1024,
@@ -516,28 +756,44 @@
         254
       ],
       "alpha_bounds": [
-        257,
-        13,
-        886,
-        1497
+        0,
+        11,
+        962,
+        1536
       ],
-      "transparent_fraction": 0.6487178802490234,
-      "sha256": "11d27f91d3b915e2cba0f7dfec24ecd489ebad02dd0e12d846baef7818d9b1fe",
-      "byte_count": 2174863,
+      "transparent_fraction": 0.6478735605875651,
+      "sha256": "4d235594499c17b2f8d32a718fe93c24d347def294df27b6cbe2157cbd45b780",
+      "byte_count": 2167280,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-16.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-4b49de38-9a85-4909-8a2a-38fd6faba002.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "f3bff44600d84c64d2aafb251188a3f02f4ca099",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4b49de38-9a85-4909-8a2a-38fd6faba002.png",
+      "gitBlobSha1": "f3bff44600d84c64d2aafb251188a3f02f4ca099",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-16-before-face-review-11d27f91d3b9.png",
+        "sha256": "11d27f91d3b915e2cba0f7dfec24ecd489ebad02dd0e12d846baef7818d9b1fe"
       }
     },
     {
       "id": "artisan-17",
       "role": "artisan",
       "description": "Very broad heavy elderly lamp maker with gray-gold scales and ivory mottling, thick eyebrow ridges, weathered four mandibles. Gray-black heavy dreadlocks hang to chest in uneven blunt lengths. Layered coarse dark blue-gray leather apron with reinforced cloth upper panel, unusual double hip strap, short thick gloves open at claws. Left hand supports a small square alien lamp housing, right hand polishes its face with a tiny rag. Upright relaxed shoulders, stout legs, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Very broad heavy elderly lamp maker with gray-gold scales and ivory mottling, thick eyebrow ridges, weathered four mandibles. Gray-black heavy dreadlocks hang to chest in uneven blunt lengths. Layered coarse dark blue-gray leather apron with reinforced cloth upper panel, unusual double hip strap, short thick gloves open at claws. Left hand supports a small square alien lamp housing, right hand polishes its face with a tiny rag. Upright relaxed shoulders, stout legs, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very broad heavy elderly lamp maker with gray-gold scales and ivory mottling, thick eyebrow ridges, weathered four mandibles. Gray-black heavy dreadlocks hang to chest in uneven blunt lengths. Layered coarse dark blue-gray leather apron with reinforced cloth upper panel, unusual double hip strap, short thick gloves open at claws. Left hand supports a small square alien lamp housing, right hand polishes its face with a tiny rag. Upright relaxed shoulders, stout legs, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-05d3baed-89d5-4008-8907-60e07dc6f473.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-cb132988-46c3-4f7e-892e-ae6838355945.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-17.png",
       "dimensions": [
         1024,
@@ -549,28 +805,44 @@
         254
       ],
       "alpha_bounds": [
-        252,
+        65,
         15,
-        857,
-        1529
+        1012,
+        1527
       ],
-      "transparent_fraction": 0.6200580596923828,
-      "sha256": "f75d32ce0521d3d7387994bd58532f6d3f6f8837962dc8da104f222f467ef921",
-      "byte_count": 2257059,
+      "transparent_fraction": 0.6165377298990885,
+      "sha256": "7d684f4c70d1fc5d37e46fd047d6e71c1aeb43f61a8d3c75317c4c49da41463f",
+      "byte_count": 2272695,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-17.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-cb132988-46c3-4f7e-892e-ae6838355945.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "46e017c23ae6fc3f861d2d467700fe05204508af",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cb132988-46c3-4f7e-892e-ae6838355945.png",
+      "gitBlobSha1": "46e017c23ae6fc3f861d2d467700fe05204508af",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-17-before-face-review-f75d32ce0521.png",
+        "sha256": "f75d32ce0521d3d7387994bd58532f6d3f6f8837962dc8da104f222f467ef921"
       }
     },
     {
       "id": "artisan-18",
       "role": "artisan",
       "description": "Tall thin younger adult lacquer craftsperson with moss-brown scales and copper freckles, compact smooth ridged skull, smaller but correct four mandibles. Dreadlocks bound in an upright upper bundle with dull spiral rings. Soft golden-brown chest apron with crossing straps and one long narrow hanging panel over cropped work trousers, small flat hip case. One hand holds a small turned resin flask upright, other holds a thin lacquer brush away from body. Light balanced stance, bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Tall thin younger adult lacquer craftsperson with moss-brown scales and copper freckles, compact smooth ridged skull, smaller but correct four mandibles. Dreadlocks bound in an upright upper bundle with dull spiral rings. Soft golden-brown chest apron with crossing straps and one long narrow hanging panel over cropped work trousers, small flat hip case. One hand holds a small turned resin flask upright, other holds a thin lacquer brush away from body. Light balanced stance, bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall thin younger adult lacquer craftsperson with moss-brown scales and copper freckles, compact smooth ridged skull, smaller but correct four mandibles. Dreadlocks bound in an upright upper bundle with dull spiral rings. Soft golden-brown chest apron with crossing straps and one long narrow hanging panel over cropped work trousers, small flat hip case. One hand holds a small turned resin flask upright, other holds a thin lacquer brush away from body. Light balanced stance, bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b8f08a94-3b7d-437f-8013-3d77bc95ce14.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-7022ff73-5917-4228-ab78-2c0bd3fc841e.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-18.png",
       "dimensions": [
         1024,
@@ -582,28 +854,44 @@
         254
       ],
       "alpha_bounds": [
-        304,
-        7,
-        863,
-        1515
+        57,
+        0,
+        996,
+        1516
       ],
-      "transparent_fraction": 0.7217998504638672,
-      "sha256": "dc54d1a1908e1c291c9d86fc6abd4933ad8e1dd07cd8824c53f7f1c7a1d29c54",
-      "byte_count": 1908944,
+      "transparent_fraction": 0.7202841440836588,
+      "sha256": "fe759a6c5a0e419f0a2ba00855869df7b73306f32b2c55bfc58564c97afd8cc4",
+      "byte_count": 1893046,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-18.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-7022ff73-5917-4228-ab78-2c0bd3fc841e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "a1318e13e4bd2d26f7bcb682e4b4a8d03bfb98a5",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7022ff73-5917-4228-ab78-2c0bd3fc841e.png",
+      "gitBlobSha1": "a1318e13e4bd2d26f7bcb682e4b4a8d03bfb98a5",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-18-before-face-review-dc54d1a1908e.png",
+        "sha256": "dc54d1a1908e1c291c9d86fc6abd4933ad8e1dd07cd8824c53f7f1c7a1d29c54"
       }
     },
     {
       "id": "artisan-19",
       "role": "artisan",
       "description": "Athletic long-legged adult basket-and-fittings artisan with pale sandstone skin and dark leopard mottles, wide flattened crown. Two large bound dreadlock bundles run down back, no head ornament. Belted half-apron of tan and dark gray leather with one long asymmetrical side panel, sleeveless work tunic, thick forearm cloth wraps. Holds a small tightly woven alien fiber basket at one hip with left hand, modest metal punch upright in right. Shoulder angled back, distinct long shins and clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Athletic long-legged adult basket-and-fittings artisan with pale sandstone skin and dark leopard mottles, wide flattened crown. Two large bound dreadlock bundles run down back, no head ornament. Belted half-apron of tan and dark gray leather with one long asymmetrical side panel, sleeveless work tunic, thick forearm cloth wraps. Holds a small tightly woven alien fiber basket at one hip with left hand, modest metal punch upright in right. Shoulder angled back, distinct long shins and clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Athletic long-legged adult basket-and-fittings artisan with pale sandstone skin and dark leopard mottles, wide flattened crown. Two large bound dreadlock bundles run down back, no head ornament. Belted half-apron of tan and dark gray leather with one long asymmetrical side panel, sleeveless work tunic, thick forearm cloth wraps. Holds a small tightly woven alien fiber basket at one hip with left hand, modest metal punch upright in right. Shoulder angled back, distinct long shins and clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-dbac66b1-229f-4c70-bb14-c1325cea9e31.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-19.png",
       "dimensions": [
         1024,
@@ -615,30 +903,46 @@
         254
       ],
       "alpha_bounds": [
-        248,
-        19,
-        896,
-        1514
+        65,
+        13,
+        912,
+        1520
       ],
-      "transparent_fraction": 0.6685778299967448,
-      "sha256": "3527dcf62651390ec3a2ee0af60ab99d28399bd2e042ed644dc8a7497cbba840",
-      "byte_count": 2140975,
+      "transparent_fraction": 0.6631730397542318,
+      "sha256": "3d2e86c1d493449816c0408429d3631e384b8fccbbe139a3670e33ba798a067f",
+      "byte_count": 2148226,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-19.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "githubBlobSha": "5671d2df9e97bccb794ad8aff0cf3ff04c4809fb",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png",
+      "gitBlobSha1": "5671d2df9e97bccb794ad8aff0cf3ff04c4809fb",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-19-before-face-review-3527dcf62651.png",
+        "sha256": "3527dcf62651390ec3a2ee0af60ab99d28399bd2e042ed644dc8a7497cbba840"
       }
     },
     {
       "id": "artisan-20",
       "role": "artisan",
       "description": "Exceptionally broad but anatomically plausible adult workshop clamp maker with copper-gray scales and dark veining, enormous squared ridged alien forehead. Short thick dreadlocks splay into two restrained lateral loops secured by hide bands. Heavy ash-brown full-bib apron with one folded corner, long open lower panels, wide utility belt, reinforced fabric trousers. Holds a small hinged metal work clamp close to chest in left hand and tiny rivet tongs low in right. Calm wide stance, four distinct mandibles and fully visible bare clawed feet.",
-      "prompt": "Use case: stylized-concept. Asset: ONE individual transparent full-body 2D Yautja civilian artisan NPC sprite for Yautja: The Long Hunt. Attached atlas is STYLE REFERENCE ONLY: match realistic painterly material rendering, readable dark linework and believable proportions of artisan TOP ROW SECOND FROM LEFT. Create a completely NEW adult Yautja individual: Exceptionally broad but anatomically plausible adult workshop clamp maker with copper-gray scales and dark veining, enormous squared ridged alien forehead. Short thick dreadlocks splay into two restrained lateral loops secured by hide bands. Heavy ash-brown full-bib apron with one folded corner, long open lower panels, wide utility belt, reinforced fabric trousers. Holds a small hinged metal work clamp close to chest in left hand and tiny rivet tongs low in right. Calm wide stance, four distinct mandibles and fully visible bare clawed feet. All must remain unmistakably Yautja: correct four split mandibles around alien mouth, no human nose, no human lips, ridged scaly forehead, fleshy dreadlocks, muscular alien anatomy, naturally clawed hands and feet. Civilian tradesperson clothing and small working tools, no warrior armor, no weapons, no medieval human/fantasy elf appearance. Slight elevated camera, three-quarter facing RIGHT. Whole figure from crown to complete toes and all tools fully visible, generous empty transparent margin, all objects held or worn. ONE character only. Richly detailed realistic painterly 2D game sprite with clean crisp alpha silhouette, soft restrained upper-left light matching reference. ACTUAL TRANSPARENT BACKGROUND with no opaque field. No ground, no environment, no contact shadow or baked shadow, no glow, no vignette, no text, no labels, no watermark, no border, no sheet or collage. New silhouette, face, hairstyle, outfit construction, hands and pose, never a recolor of the atlas or an existing variant.",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Exceptionally broad but anatomically plausible adult workshop clamp maker with copper-gray scales and dark veining, enormous squared ridged alien forehead. Short thick dreadlocks splay into two restrained lateral loops secured by hide bands. Heavy ash-brown full-bib apron with one folded corner, long open lower panels, wide utility belt, reinforced fabric trousers. Holds a small hinged metal work clamp close to chest in left hand and tiny rivet tongs low in right. Calm wide stance, four distinct mandibles and fully visible bare clawed feet.",
       "status": "validated",
-      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-41dbf16b-7f08-4bd3-8a6c-883192414862.png",
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png",
       "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-20.png",
-      "githubBlobSha": "d29684c05c79353b5ffdf86c339d2f9ad516d521",
+      "githubBlobSha": "0ed8553585bb729fecfbb4bdf38a0ef4da030702",
       "dimensions": [
         1024,
         1536
@@ -649,20 +953,36 @@
         254
       ],
       "alpha_bounds": [
-        197,
-        12,
-        927,
-        1516
+        51,
+        0,
+        1012,
+        1523
       ],
-      "transparent_fraction": 0.5747858683268229,
-      "sha256": "d0e08c5464609fef20ec36cab7fea7fb88368190a0c23a190d8f513a5dae0720",
-      "byte_count": 2391539,
+      "transparent_fraction": 0.5646413167317709,
+      "sha256": "f51aac5b7c9e73c963beb4fe60fa9e13fdf3e04e46266f1f51d212d730a7ff1f",
+      "byte_count": 2394132,
       "validation": {
-        "full_body_visually_checked": true,
         "original_bytes_preserved": true,
         "genuine_transparency": true,
-        "separate_individual": true
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-20.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b043ab18-80d1-4baf-a264-bec290703e4c.png",
+      "gitBlobSha1": "0ed8553585bb729fecfbb4bdf38a0ef4da030702",
+      "maxBorderAlpha": 3,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-20-before-face-review-d0e08c546460.png",
+        "sha256": "d0e08c5464609fef20ec36cab7fea7fb88368190a0c23a190d8f513a5dae0720"
       }
     }
-  ]
+  ],
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
 }

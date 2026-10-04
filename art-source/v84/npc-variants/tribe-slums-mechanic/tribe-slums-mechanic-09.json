@@ -1,0 +1,51 @@
+{
+  "id": "tribe-slums-mechanic-09",
+  "role": "tribe-slums-mechanic",
+  "description": "Medium-height athletic adult female mechanic, mottled ivory-olive scales, broad domed forehead, short thick dreadlocks in two high side bunches. Protective half visor raised on one side leaves face visible. Rust-brown sleeveless work suit with dark angular chest and knee panels, neatly contained loops of power cable on belt. Holds a compact manual pump tool and a short hose coupling separately at waist.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height athletic adult female mechanic, mottled ivory-olive scales, broad domed forehead, short thick dreadlocks in two high side bunches. Protective half visor raised on one side leaves face visible. Rust-brown sleeveless work suit with dark angular chest and knee panels, neatly contained loops of power cable on belt. Holds a compact manual pump tool and a short hose coupling separately at waist.",
+  "status": "validated",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    19,
+    1010,
+    1510
+  ],
+  "transparent_fraction": 0.6428241729736328,
+  "sha256": "977a77572bd939f0a01f2849794b38ab2f84135b6a56183873e33a543d11d136",
+  "byte_count": 2176410,
+  "original_bytes_preserved": true,
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-09.png",
+  "githubBlobSha": "b8a55bbc1eeb7800827940a4beb85e0186b28269",
+  "blobError": null,
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/tribe-slums-mechanic/tribe-slums-mechanic-09.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-25d495ba-4b75-45d2-b020-ee6831da7f13.png",
+  "gitBlobSha1": "b8a55bbc1eeb7800827940a4beb85e0186b28269",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-slums-mechanic/tribe-slums-mechanic-09-before-face-review-2da9224da4bb.png",
+    "sha256": "2da9224da4bb5be8a4bb8ad4f60b0a2aaffbbe924a97d9ed33e7a83af5febd99"
+  },
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  }
+}

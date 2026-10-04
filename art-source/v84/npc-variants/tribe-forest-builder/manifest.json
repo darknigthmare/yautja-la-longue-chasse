@@ -6,61 +6,146 @@
     "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
     "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
   ],
-  "sprites": [
+  "completed": 20,
+  "anatomicalReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "referencesForSprites13to20": [
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+  ],
+  "officiallyReviewedSlots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "variants": [
     {
-      "id": "01",
+      "id": "tribe-forest-builder-01",
       "name": "Monteur des plateformes",
       "description": "Very broad muscular adult with thick arms, dark olive hide with tawny speckles, wide flattened unmasked face, short blunt mandibles, thick black dreadlocks tied low. Sleeveless grey work tunic, split leather apron, green-patinated steel shoulder guard and shin plates. Holding a small wood-and-metal construction mallet downward in one hand and a broad bolted support bracket against hip; rope coil attached to climbing harness. Weight on rear leg.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very broad muscular adult with thick arms, dark olive hide with tawny speckles, wide flattened unmasked face, short blunt mandibles, thick black dreadlocks tied low. Sleeveless grey work tunic, split leather apron, green-patinated steel shoulder guard and shin plates. Holding a small wood-and-metal construction mallet downward in one hand and a broad bolted support bracket against hip; rope coil attached to climbing harness. Weight on rear leg.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very broad muscular adult with thick arms, dark olive hide with tawny speckles, wide flattened unmasked face, short blunt mandibles, thick black dreadlocks tied low. Sleeveless grey work tunic, split leather apron, green-patinated steel shoulder guard and shin plates. Holding a small wood-and-metal construction mallet downward in one hand and a broad bolted support bracket against hip; rope coil attached to climbing harness. Weight on rear leg.",
+      "status": "validated",
       "file": "tribe-forest-builder-01.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4edb2fcb-a212-48aa-a13f-c936189111b3.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 867273,
-        "pixel_count": 1572864,
-        "sha256": "f895315d524b508aca8e08d562f5a0f8f9c584bd25cbcf890a045f5790a26ed7"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "ff29b7c71c19429c3b305c6ba927167b041d4fda"
+      "githubBlobSha": "93a26f1841c1effd0755af82e6df77c24f3f84da",
+      "role": "tribe-forest-builder",
+      "sha256": "84ef99405b1bb80f6a1f2560afd8023345e48efdd392e894b55d99c95bbe5288",
+      "gitBlobSha1": "93a26f1841c1effd0755af82e6df77c24f3f84da",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-01.png",
+      "byte_count": 2581535,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-01.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-25ab22fb-5f25-499c-9ecd-0214acbe7390.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-25ab22fb-5f25-499c-9ecd-0214acbe7390.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-25ab22fb-5f25-499c-9ecd-0214acbe7390.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        958,
+        1536
+      ],
+      "transparent_fraction": 0.5439281463623047,
+      "maxBorderAlpha": 12,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-01-before-face-review-f895315d524b.png",
+        "sha256": "f895315d524b508aca8e08d562f5a0f8f9c584bd25cbcf890a045f5790a26ed7"
+      }
     },
     {
-      "id": "02",
+      "id": "tribe-forest-builder-02",
       "name": "Bâtisseuse des passerelles",
       "description": "Tall slender adult female with cool pale green spotted skin, long narrow brow crest, fine angular mandibles, long dreads bound over one shoulder. Fitted charcoal-green work vest over grey long-sleeve shirt, knee-length wrap apron and climbing belt with two carabiners. Holds a compact block-and-tackle pulley and a neatly wound rope coil at waist. Upright attentive stance.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall slender adult female with cool pale green spotted skin, long narrow brow crest, fine angular mandibles, long dreads bound over one shoulder. Fitted charcoal-green work vest over grey long-sleeve shirt, knee-length wrap apron and climbing belt with two carabiners. Holds a compact block-and-tackle pulley and a neatly wound rope coil at waist. Upright attentive stance.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall slender adult female with cool pale green spotted skin, long narrow brow crest, fine angular mandibles, long dreads bound over one shoulder. Fitted charcoal-green work vest over grey long-sleeve shirt, knee-length wrap apron and climbing belt with two carabiners. Holds a compact block-and-tackle pulley and a neatly wound rope coil at waist. Upright attentive stance.",
+      "status": "validated",
       "file": "tribe-forest-builder-02.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0ea411c9-f190-48c8-8ba6-837f96bb1dd2.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 983173,
-        "pixel_count": 1572864,
-        "sha256": "23af0f9b7f4828582d61937ee885170fb9a24e922a4da6162afa8327c5c75e9a"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "bef86ff4b773490b75d4419f7bcd83167f1734d8"
+      "githubBlobSha": "653bbd4d8bcd1e1b902f2c4650bc964b55688935",
+      "role": "tribe-forest-builder",
+      "sha256": "1de1978553e413e9827f9fc6a864ffbb83b39c934eb580a0d19f243cdc7e16e7",
+      "gitBlobSha1": "653bbd4d8bcd1e1b902f2c4650bc964b55688935",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-02.png",
+      "byte_count": 2297838,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-a093ac82-100c-45bb-b39c-0a0f2d6774ab.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-a093ac82-100c-45bb-b39c-0a0f2d6774ab.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a093ac82-100c-45bb-b39c-0a0f2d6774ab.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        1010,
+        1528
+      ],
+      "transparent_fraction": 0.6263211568196615,
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-02-before-face-review-23af0f9b7f48.png",
+        "sha256": "23af0f9b7f4828582d61937ee885170fb9a24e922a4da6162afa8327c5c75e9a"
+      }
     },
     {
-      "id": "03",
+      "id": "tribe-forest-builder-03",
       "name": "Ajusteur des poutres",
       "description": "Short stocky adult, powerful shoulders, mottled slate hide, low broad cranium covered by a unique flat steel-grey work mask with green patina and wide rectangular brow, short tied dreads. Rolled-sleeve grey shirt, broad dark leather utility apron and thick knee pads. Holds a small heavy hand plane in one hand and short measuring calipers in the other. Strong planted stance, compact tool pouch.",
       "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Short stocky adult, powerful shoulders, mottled slate hide, low broad cranium covered by a unique flat steel-grey work mask with green patina and wide rectangular brow, short tied dreads. Rolled-sleeve grey shirt, broad dark leather utility apron and thick knee pads. Holds a small heavy hand plane in one hand and short measuring calipers in the other. Strong planted stance, compact tool pouch.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-03.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5b902d5f-6016-4b22-b735-153ea9d75757.png",
       "validation": {
@@ -75,232 +160,492 @@
         ],
         "transparent_pixels": 881354,
         "pixel_count": 1572864,
-        "sha256": "a11e101421ee8792ad7b00eea87f01b579176e1f870a30b58de135b83859a41c"
+        "sha256": "a11e101421ee8792ad7b00eea87f01b579176e1f870a30b58de135b83859a41c",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": false
       },
-      "githubBlobSha": "95a128b11fe1b6f73c5d72523878ad44ef341fa1"
+      "githubBlobSha": "95a128b11fe1b6f73c5d72523878ad44ef341fa1",
+      "role": "tribe-forest-builder",
+      "sha256": "a11e101421ee8792ad7b00eea87f01b579176e1f870a30b58de135b83859a41c",
+      "gitBlobSha1": "95a128b11fe1b6f73c5d72523878ad44ef341fa1",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-03.png",
+      "byte_count": 2542560
     },
     {
-      "id": "04",
+      "id": "tribe-forest-builder-04",
       "name": "Ancien charpentier",
       "description": "Lean elderly adult, weathered pale ochre-grey face, long grey dreadlocks loosely tied behind, narrow exposed mandibles with a short natural tusk, faint old brow mark. Long grey canvas coat tucked clear of feet, green shoulder capelet, worn steel forearm protection. Carefully holds a short folding measuring rule and a small timber joint sample fastened in one hand, belt of chisels in covered pouches. Slight dignified stoop.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Lean elderly adult, weathered pale ochre-grey face, long grey dreadlocks loosely tied behind, narrow exposed mandibles with a short natural tusk, faint old brow mark. Long grey canvas coat tucked clear of feet, green shoulder capelet, worn steel forearm protection. Carefully holds a short folding measuring rule and a small timber joint sample fastened in one hand, belt of chisels in covered pouches. Slight dignified stoop.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Lean elderly adult, weathered pale ochre-grey face, long grey dreadlocks loosely tied behind, narrow exposed mandibles with a short natural tusk, faint old brow mark. Long grey canvas coat tucked clear of feet, green shoulder capelet, worn steel forearm protection. Carefully holds a short folding measuring rule and a small timber joint sample fastened in one hand, belt of chisels in covered pouches. Slight dignified stoop.",
+      "status": "validated",
       "file": "tribe-forest-builder-04.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-7fc21768-8e0c-49a9-b72c-4bb38ee2e76d.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 916568,
-        "pixel_count": 1572864,
-        "sha256": "4cf7b8bbc87e915b733cbeeceb8b5b2652c37a190a0d5ba0f64351c5795be9d1"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "a97695d2ba487f5044cc975f47e9bd40f0b60245"
+      "githubBlobSha": "c16c35af90b5078176bc412b6a2d28664f028f70",
+      "role": "tribe-forest-builder",
+      "sha256": "5de72b7cfd07993042fb28f374fd0da1bb0dff8181e4d72a5902c831afd60a86",
+      "gitBlobSha1": "c16c35af90b5078176bc412b6a2d28664f028f70",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-04.png",
+      "byte_count": 2468534,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6d7e1af4-6c9b-49c7-89de-e04a54dc1736.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6d7e1af4-6c9b-49c7-89de-e04a54dc1736.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6d7e1af4-6c9b-49c7-89de-e04a54dc1736.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        1012,
+        1536
+      ],
+      "transparent_fraction": 0.5828577677408854,
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-04-before-face-review-4cf7b8bbc87e.png",
+        "sha256": "4cf7b8bbc87e915b733cbeeceb8b5b2652c37a190a0d5ba0f64351c5795be9d1"
+      }
     },
     {
-      "id": "05",
+      "id": "tribe-forest-builder-05",
       "name": "Bâtisseuse des ancrages",
       "description": "Broad-shouldered athletic adult female, russet skin with dark olive mottles, high rugged head crest, unmasked four broad mandibles, thick dreadlocks in a high practical knot. Short grey wrap vest, heavy green leather safety harness and segmented shin guards. One hand holds a wide steel anchor clamp closed safely, the other steadies a coiled securing cable attached to hip. Stable legs-apart work posture.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Broad-shouldered athletic adult female, russet skin with dark olive mottles, high rugged head crest, unmasked four broad mandibles, thick dreadlocks in a high practical knot. Short grey wrap vest, heavy green leather safety harness and segmented shin guards. One hand holds a wide steel anchor clamp closed safely, the other steadies a coiled securing cable attached to hip. Stable legs-apart work posture.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Broad-shouldered athletic adult female, russet skin with dark olive mottles, high rugged head crest, unmasked four broad mandibles, thick dreadlocks in a high practical knot. Short grey wrap vest, heavy green leather safety harness and segmented shin guards. One hand holds a wide steel anchor clamp closed safely, the other steadies a coiled securing cable attached to hip. Stable legs-apart work posture.",
+      "status": "validated",
       "file": "tribe-forest-builder-05.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-39897526-6f02-4c0c-b789-19cf624bf696.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 977088,
-        "pixel_count": 1572864,
-        "sha256": "4ab5bcde41b066122d5bb6cf3d1ef0a167cc760d96c00d3abd86bd70e0efb3d5"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "676af30e13e7e2c76ca90a7dad1fc4130d175e9d"
+      "githubBlobSha": "d39fd7ccca3f0497f25cfa7e1b5202329dc880a6",
+      "role": "tribe-forest-builder",
+      "sha256": "6dca4bf927a1b08ab87e31638d77d52eaf3769b6393f1652a95e8c89210da040",
+      "gitBlobSha1": "d39fd7ccca3f0497f25cfa7e1b5202329dc880a6",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-05.png",
+      "byte_count": 2340150,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-05.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-1f332cd6-d769-4c9c-b253-bb7e79aef8d5.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-1f332cd6-d769-4c9c-b253-bb7e79aef8d5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1f332cd6-d769-4c9c-b253-bb7e79aef8d5.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        9,
+        990,
+        1520
+      ],
+      "transparent_fraction": 0.6209214528401693,
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-05-before-face-review-4ab5bcde41b0.png",
+        "sha256": "4ab5bcde41b066122d5bb6cf3d1ef0a167cc760d96c00d3abd86bd70e0efb3d5"
+      }
     },
     {
-      "id": "06",
+      "id": "tribe-forest-builder-06",
       "name": "Contrôleur d’aplomb",
       "description": "Very tall slim adult with long limbs, grey-brown speckled hide, backward swept narrow crest and pointed mandibles, many fine dreads with bronze ties. Long split grey apron over sleeveless dark green tunic, light steel wrist guards. Holds a small steel spirit-level frame with clear glass bubble tube at chest height and a compact plumb bob suspended only to belt level. Focused head tilt.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very tall slim adult with long limbs, grey-brown speckled hide, backward swept narrow crest and pointed mandibles, many fine dreads with bronze ties. Long split grey apron over sleeveless dark green tunic, light steel wrist guards. Holds a small steel spirit-level frame with clear glass bubble tube at chest height and a compact plumb bob suspended only to belt level. Focused head tilt.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall slim adult with long limbs, grey-brown speckled hide, backward swept narrow crest and pointed mandibles, many fine dreads with bronze ties. Long split grey apron over sleeveless dark green tunic, light steel wrist guards. Holds a small steel spirit-level frame with clear glass bubble tube at chest height and a compact plumb bob suspended only to belt level. Focused head tilt.",
+      "status": "validated",
       "file": "tribe-forest-builder-06.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0fd24c43-deb8-4990-9d85-0411f22526f7.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 991968,
-        "pixel_count": 1572864,
-        "sha256": "54c3a19592ed83f9c4479bc71b192965a75f9bf9e5b217136998d8bef5c6ab7f"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "7f60a427b20315754eed4e7562f9bbf2d8b18be2"
+      "githubBlobSha": "d2f93430f24ee63520a5d0c28bb91de0db9eea1b",
+      "role": "tribe-forest-builder",
+      "sha256": "437a9710be8b91d8eff168a0449068669bb65d5a49e8191d3d88d1a924ce635b",
+      "gitBlobSha1": "d2f93430f24ee63520a5d0c28bb91de0db9eea1b",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-06.png",
+      "byte_count": 2265071,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0f6c62fe-dba2-4ff3-ab38-8871d5749aa4.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-0f6c62fe-dba2-4ff3-ab38-8871d5749aa4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0f6c62fe-dba2-4ff3-ab38-8871d5749aa4.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        27,
+        0,
+        1010,
+        1536
+      ],
+      "transparent_fraction": 0.6260458628336588,
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-06-before-face-review-54c3a19592ed.png",
+        "sha256": "54c3a19592ed83f9c4479bc71b192965a75f9bf9e5b217136998d8bef5c6ab7f"
+      }
     },
     {
-      "id": "07",
+      "id": "tribe-forest-builder-07",
       "name": "Assembleur des ponts",
       "description": "Heavyset adult, thick neck and large hands, moss-green mottled skin, square cranial ridge, shoulder-length dreads; steel brow half-mask above broad exposed mandibles. Thick padded grey work jacket, broad harness with steel D-rings, cropped double apron panels. Supports a compact jointed metal bridge fitting with both hands against stomach, short chain fastened at belt. Broad balanced stance.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Heavyset adult, thick neck and large hands, moss-green mottled skin, square cranial ridge, shoulder-length dreads; steel brow half-mask above broad exposed mandibles. Thick padded grey work jacket, broad harness with steel D-rings, cropped double apron panels. Supports a compact jointed metal bridge fitting with both hands against stomach, short chain fastened at belt. Broad balanced stance.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Heavyset adult, thick neck and large hands, moss-green mottled skin, square cranial ridge, shoulder-length dreads; steel brow half-mask above broad exposed mandibles. Thick padded grey work jacket, broad harness with steel D-rings, cropped double apron panels. Supports a compact jointed metal bridge fitting with both hands against stomach, short chain fastened at belt. Broad balanced stance.",
+      "status": "validated",
       "file": "tribe-forest-builder-07.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0dee5cea-8617-42c9-8976-b6797cbabd35.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 892611,
-        "pixel_count": 1572864,
-        "sha256": "268363f798523e4d4d0a57392ea7bb178d37cfafb576d6b7f283218d66df07e7"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "eb4ebfe6da7d63e4393d8fbabad8d3a40df5fa59"
+      "githubBlobSha": "b6a558161f983aff4e93b3751f50ee01e3bcec43",
+      "role": "tribe-forest-builder",
+      "sha256": "01607ca65ad57e50ba07e7c5d4f69d0b86d5ac298929cf200e05d93c642ab4d1",
+      "gitBlobSha1": "b6a558161f983aff4e93b3751f50ee01e3bcec43",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-07.png",
+      "byte_count": 2464507,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-07.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4842479c-265d-41e2-bc9c-b943a2db724a.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-4842479c-265d-41e2-bc9c-b943a2db724a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4842479c-265d-41e2-bc9c-b943a2db724a.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        0,
+        1010,
+        1536
+      ],
+      "transparent_fraction": 0.5584767659505209,
+      "maxBorderAlpha": 5,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-07-before-face-review-268363f79852.png",
+        "sha256": "268363f798523e4d4d0a57392ea7bb178d37cfafb576d6b7f283218d66df07e7"
+      }
     },
     {
-      "id": "08",
+      "id": "tribe-forest-builder-08",
       "name": "Tresseuse de soutènement",
       "description": "Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
+      "status": "validated",
       "file": "tribe-forest-builder-08.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-622ae162-863b-4167-be80-16c50889a48d.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 1029853,
-        "pixel_count": 1572864,
-        "sha256": "9d2927d9d712f22f85848a346550cd7debdd4bfb36c769e08359702e9d2f44de"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "067ea09a6b349e6462b71b158bf0659754eb2453"
+      "githubBlobSha": "54cabab9f4ddeba9c464fba0153f779e61456c09",
+      "role": "tribe-forest-builder",
+      "sha256": "b8d65d571de26429444e920752f87d3a6e3ece6f8ea39c36d39feebe587f7270",
+      "gitBlobSha1": "54cabab9f4ddeba9c464fba0153f779e61456c09",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-08.png",
+      "byte_count": 2227492,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        12,
+        968,
+        1526
+      ],
+      "transparent_fraction": 0.6533641815185547,
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-08-before-face-review-9d2927d9d712.png",
+        "sha256": "9d2927d9d712f22f85848a346550cd7debdd4bfb36c769e08359702e9d2f44de"
+      }
     },
     {
-      "id": "09",
+      "id": "tribe-forest-builder-09",
       "name": "Réparateur des platelages",
       "description": "Muscular adult with dense charcoal and ochre spotted skin, broad flat forehead, heavy exposed mandibles, black dreads separated into four short bound bundles. Grey sleeveless canvas vest, heavily worn rectangular leather apron, steel knee and forearm guards. Holds a short closed folding hand saw at side and a compact claw hammer lowered, pouch of blunt fasteners at hip. Casual ready stance.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Muscular adult with dense charcoal and ochre spotted skin, broad flat forehead, heavy exposed mandibles, black dreads separated into four short bound bundles. Grey sleeveless canvas vest, heavily worn rectangular leather apron, steel knee and forearm guards. Holds a short closed folding hand saw at side and a compact claw hammer lowered, pouch of blunt fasteners at hip. Casual ready stance.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Muscular adult with dense charcoal and ochre spotted skin, broad flat forehead, heavy exposed mandibles, black dreads separated into four short bound bundles. Grey sleeveless canvas vest, heavily worn rectangular leather apron, steel knee and forearm guards. Holds a short closed folding hand saw at side and a compact claw hammer lowered, pouch of blunt fasteners at hip. Casual ready stance.",
+      "status": "validated",
       "file": "tribe-forest-builder-09.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-dc8077e2-3286-4c03-b0ce-b25630215a06.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 970753,
-        "pixel_count": 1572864,
-        "sha256": "2b7932b39b6921e675900da37d180aaa2c6cb20902ca41ffac9e70681fdd175d"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "a5c679b91f66cbf6c6c2a7aadc7f92cdb8d15c8f"
+      "githubBlobSha": "60496fa930f78df554dc57bc73b1f026a2609f0c",
+      "role": "tribe-forest-builder",
+      "sha256": "c8688c14917c0173ebf248151f1f5bf7e69e55fbdc61e3689fcd403c1f9b3321",
+      "gitBlobSha1": "60496fa930f78df554dc57bc73b1f026a2609f0c",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-09.png",
+      "byte_count": 2344545,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e5eb7dc2-96ce-42fe-98b0-ab8e4dc4c60e.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-e5eb7dc2-96ce-42fe-98b0-ab8e4dc4c60e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e5eb7dc2-96ce-42fe-98b0-ab8e4dc4c60e.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        972,
+        1522
+      ],
+      "transparent_fraction": 0.6076043446858724,
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-09-before-face-review-2b7932b39b69.png",
+        "sha256": "2b7932b39b6921e675900da37d180aaa2c6cb20902ca41ffac9e70681fdd175d"
+      }
     },
     {
-      "id": "10",
+      "id": "tribe-forest-builder-10",
       "name": "Inspectrice des structures",
       "description": "Tall adult female, pale slate-green face, elongated finely ridged head, long tapered mandibles, ash-black dreads cascading behind. Grey ankle-length split work coat over fitted green trousers, one steel shoulder plate. Holds a compact nonverbal construction inspection slate in one hand and short wide calipers in the other; rope tether clipped to belt. Upright serious posture.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall adult female, pale slate-green face, elongated finely ridged head, long tapered mandibles, ash-black dreads cascading behind. Grey ankle-length split work coat over fitted green trousers, one steel shoulder plate. Holds a compact nonverbal construction inspection slate in one hand and short wide calipers in the other; rope tether clipped to belt. Upright serious posture.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall adult female, pale slate-green face, elongated finely ridged head, long tapered mandibles, ash-black dreads cascading behind. Grey ankle-length split work coat over fitted green trousers, one steel shoulder plate. Holds a compact nonverbal construction inspection slate in one hand and short wide calipers in the other; rope tether clipped to belt. Upright serious posture.",
+      "status": "validated",
       "file": "tribe-forest-builder-10.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-982732d7-3a96-4527-ab73-2caac7f3d3cd.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 965336,
-        "pixel_count": 1572864,
-        "sha256": "08a25d8d21f54eca2e13cf9e95e82ed5ea1ae0847d6436af9ca02ad4e0ccaed4"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "0b1ca8c6545472686b0f9b2a0f5987ab55fde8c8"
+      "githubBlobSha": "3c133b072536d4c1cedb229df5b6c42ef178dc8f",
+      "role": "tribe-forest-builder",
+      "sha256": "cff5c217ebc29e846f5e4e3e9ce1ac373128a0cd8bafc966b44d3cdcbd2e0720",
+      "gitBlobSha1": "3c133b072536d4c1cedb229df5b6c42ef178dc8f",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-10.png",
+      "byte_count": 2427341,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-10.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fbbda7c9-8e9d-4222-8b81-946846ba8da5.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-fbbda7c9-8e9d-4222-8b81-946846ba8da5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fbbda7c9-8e9d-4222-8b81-946846ba8da5.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        67,
+        0,
+        947,
+        1536
+      ],
+      "transparent_fraction": 0.6007734934488932,
+      "maxBorderAlpha": 3,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-10-before-face-review-08a25d8d21f5.png",
+        "sha256": "08a25d8d21f54eca2e13cf9e95e82ed5ea1ae0847d6436af9ca02ad4e0ccaed4"
+      }
     },
     {
-      "id": "11",
+      "id": "tribe-forest-builder-11",
       "name": "Responsable des cordages",
       "description": "Medium-height broad adult, copper-green striped hide, low swept crown, strong mandibular tusks, black dreads in a top bundle. Grey linen shirt with rolled sleeves, moss-green padded vest, steel climbing greaves. Carries a thick compact rope coil over one shoulder while holding a short metal tensioning ratchet down at waist; no trailing rope. Torso angled slightly right.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Medium-height broad adult, copper-green striped hide, low swept crown, strong mandibular tusks, black dreads in a top bundle. Grey linen shirt with rolled sleeves, moss-green padded vest, steel climbing greaves. Carries a thick compact rope coil over one shoulder while holding a short metal tensioning ratchet down at waist; no trailing rope. Torso angled slightly right.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height broad adult, copper-green striped hide, low swept crown, strong mandibular tusks, black dreads in a top bundle. Grey linen shirt with rolled sleeves, moss-green padded vest, steel climbing greaves. Carries a thick compact rope coil over one shoulder while holding a short metal tensioning ratchet down at waist; no trailing rope. Torso angled slightly right.",
+      "status": "validated",
       "file": "tribe-forest-builder-11.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5a545549-7917-45be-a960-6949d657b6cd.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 979160,
-        "pixel_count": 1572864,
-        "sha256": "b8665d71bcf8eea4b6da4029cfd43a70d4a6a51147fa4c29c498787b17cb8474"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "97595fd0970d4f46eb6f2f9075551777519dd1e1"
+      "githubBlobSha": "ac88506606e45b6f68a7f238d299f55fc9f1da55",
+      "role": "tribe-forest-builder",
+      "sha256": "d1ee805b65d880c55f3323c5fb858465f94f23e30a7655577597c81b7be97d61",
+      "gitBlobSha1": "ac88506606e45b6f68a7f238d299f55fc9f1da55",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-11.png",
+      "byte_count": 2297967,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-cbf0024a-df44-4f90-b921-c2564355a405.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-cbf0024a-df44-4f90-b921-c2564355a405.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-cbf0024a-df44-4f90-b921-c2564355a405.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        45,
+        14,
+        1005,
+        1536
+      ],
+      "transparent_fraction": 0.6220219930013021,
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-11-before-face-review-b8665d71bcf8.png",
+        "sha256": "b8665d71bcf8eea4b6da4029cfd43a70d4a6a51147fa4c29c498787b17cb8474"
+      }
     },
     {
-      "id": "12",
+      "id": "tribe-forest-builder-12",
       "name": "Artisane des ferrures",
       "description": "Slender older adult female, weathered olive face, fine long mandibles, sparse silver-black dreads, round steel work goggles above brow. Grey long-sleeve tunic with reinforced elbow patches, pocketed green leather apron and soft knee wraps. Holds a small hinged steel bracket and a compact file, closed tool tin attached at belt. Close careful hands and mild forward lean.",
-      "prompt": "Use case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image1 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image2 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Slender older adult female, weathered olive face, fine long mandibles, sparse silver-black dreads, round steel work goggles above brow. Grey long-sleeve tunic with reinforced elbow patches, pocketed green leather apron and soft knee wraps. Holds a small hinged steel bracket and a compact file, closed tool tin attached at belt. Close careful hands and mild forward lean.",
-      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Slender older adult female, weathered olive face, fine long mandibles, sparse silver-black dreads, round steel work goggles above brow. Grey long-sleeve tunic with reinforced elbow patches, pocketed green leather apron and soft knee wraps. Holds a small hinged steel bracket and a compact file, closed tool tin attached at belt. Close careful hands and mild forward lean.",
+      "status": "validated",
       "file": "tribe-forest-builder-12.png",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f4031bfb-77b4-449c-8c5c-dd7d03466a6b.png",
       "validation": {
-        "size": [
-          1024,
-          1536
-        ],
-        "mode": "RGBA",
-        "alpha_extrema": [
-          0,
-          254
-        ],
-        "transparent_pixels": 1062419,
-        "pixel_count": 1572864,
-        "sha256": "2a4b695e4634b7aec1ccfd88663b5923497cbe0e40eea0e7ff26c3917b1df4da"
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
-      "githubBlobSha": "27f44851aab722a29a4d034a54790be8b851dd2b"
+      "githubBlobSha": "66fca4585d4fb27abb44d52c17ec54f1f39e1cea",
+      "role": "tribe-forest-builder",
+      "sha256": "28374ce594afef702f6cf8d48d6b96f896c4d5a2e32af4bdc9c7d575aa54ff12",
+      "gitBlobSha1": "66fca4585d4fb27abb44d52c17ec54f1f39e1cea",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-12.png",
+      "byte_count": 2191941,
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-797ec66a-a4f2-49b8-9d56-dac517686c5f.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-797ec66a-a4f2-49b8-9d56-dac517686c5f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-797ec66a-a4f2-49b8-9d56-dac517686c5f.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        986,
+        1530
+      ],
+      "transparent_fraction": 0.6568953196207682,
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-12-before-face-review-2a4b695e4634.png",
+        "sha256": "2a4b695e4634b7aec1ccfd88663b5923497cbe0e40eea0e7ff26c3917b1df4da"
+      }
     },
     {
-      "id": "13",
+      "id": "tribe-forest-builder-13",
       "name": "Poseur de traverses",
       "description": "Very tall muscular adult, brown-grey mottled hide, massive low rectangular crest, large four mandibles, heavy long dreads. Reinforced dark green lifting harness over grey sleeveless tunic, steel shoulder covers, split short apron. Holds a single short thick timber brace vertically tight to one side, other hand gripping a small construction clamp; timber stops below head and above knees. Weight counterbalanced.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. The four fleshy lobes must be individually legible, slightly open in calm neutral expression. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very tall muscular adult, brown-grey mottled hide, massive low rectangular crest, large four mandibles, heavy long dreads. Reinforced dark green lifting harness over grey sleeveless tunic, steel shoulder covers, split short apron. Holds a single short thick timber brace vertically tight to one side, other hand gripping a small construction clamp; timber stops below head and above knees. Weight counterbalanced.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-13.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3ee923c5-bd18-4802-b82d-2bb6310d9969.png",
@@ -316,7 +661,10 @@
         ],
         "transparent_pixels": 844277,
         "pixel_count": 1572864,
-        "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40"
+        "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "d084583b4b2346663ee8bc0de44e2bd46d1bc436",
       "faceReview": {
@@ -324,14 +672,19 @@
         "face": "visible-four-mandibles",
         "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "4b852e4b20ed6fa98e998b1cc477a4af3d4a2fb7f15ea6affa2f8d41b3604d40",
+      "gitBlobSha1": "d084583b4b2346663ee8bc0de44e2bd46d1bc436",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-13.png",
+      "byte_count": 2673218
     },
     {
-      "id": "14",
+      "id": "tribe-forest-builder-14",
       "name": "Bâtisseuse des terrasses",
       "description": "Strong adult female, green-grey speckled skin, wide domed head crest, four angular mandibles, dreads in two practical bundles. Grey cross-wrap work coat, dark leather tool bandolier, green-patinated steel forearm guards. One hand carries a compact wood-and-steel tool box; other holds a short broad trowel safely down. Fitted trousers and free visible feet. Open supervisory stance.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Strong adult female, green-grey speckled skin, wide domed head crest, four angular mandibles, dreads in two practical bundles. Grey cross-wrap work coat, dark leather tool bandolier, green-patinated steel forearm guards. One hand carries a compact wood-and-steel tool box; other holds a short broad trowel safely down. Fitted trousers and free visible feet. Open supervisory stance.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-14.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f74f7e22-6775-4f22-9bc5-f311da6db1c6.png",
@@ -347,7 +700,10 @@
         ],
         "transparent_pixels": 896235,
         "pixel_count": 1572864,
-        "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5"
+        "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "230139a17a8c8cf6f005a40ad80d2b6dadf5c0f9",
       "faceReview": {
@@ -355,14 +711,19 @@
         "face": "visible-four-mandibles",
         "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "da1e445c406d65f35c2a4b5c040e58550676919e4fed357923bc4124cd314df5",
+      "gitBlobSha1": "230139a17a8c8cf6f005a40ad80d2b6dadf5c0f9",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-14.png",
+      "byte_count": 2447430
     },
     {
-      "id": "15",
+      "id": "tribe-forest-builder-15",
       "name": "Serrurier des accès",
       "description": "Short compact adult, deep slate-brown mottled skin, wide jaw, low head ridge, steel mask with a distinctive narrow forehead and inset cheek panels, tied-back short dreads. Grey hood resting down at neck, small dark green shoulder cape, divided leather apron. Holds a rectangular mechanical lock assembly and a ring of a few broad industrial keys, secured pouches at waist. Calm concentrated stance.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Short compact adult, deep slate-brown mottled skin, wide jaw, low head ridge, steel mask with a distinctive narrow forehead and inset cheek panels, tied-back short dreads. Grey hood resting down at neck, small dark green shoulder cape, divided leather apron. Holds a rectangular mechanical lock assembly and a ring of a few broad industrial keys, secured pouches at waist. Calm concentrated stance.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-15.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f4780936-451f-4952-a915-68fff06dffa8.png",
@@ -378,7 +739,10 @@
         ],
         "transparent_pixels": 936580,
         "pixel_count": 1572864,
-        "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d"
+        "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "438d905c9060ae8a3b9a9b7fcefbfebd2141c4aa",
       "faceReview": {
@@ -386,14 +750,19 @@
         "face": "visible-four-mandibles",
         "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "3219a6fe90e1e3685d7aa4623e4ba9ef1e2239e27ee6381c4f6b01fc989bcb7d",
+      "gitBlobSha1": "438d905c9060ae8a3b9a9b7fcefbfebd2141c4aa",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-15.png",
+      "byte_count": 2376792
     },
     {
-      "id": "16",
+      "id": "tribe-forest-builder-16",
       "name": "Technicienne des harnais",
       "description": "Young fully adult female with lean long limbs, pale cool grey spotted hide, tapered head, compact mandibular tusks, shoulder-length black dreads with plain steel rings. Simple grey sleeveless tunic and green knee trousers, narrow steel bracers. Holds a folded climbing harness with visible straps and two carabiners at mid-torso, free hand inspecting one buckle. Easy waiting posture.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Young fully adult female with lean long limbs, pale cool grey spotted hide, tapered head, compact mandibular tusks, shoulder-length black dreads with plain steel rings. Simple grey sleeveless tunic and green knee trousers, narrow steel bracers. Holds a folded climbing harness with visible straps and two carabiners at mid-torso, free hand inspecting one buckle. Easy waiting posture.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-16.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-14bbe009-022f-4199-96fd-3314a6173e3f.png",
@@ -409,7 +778,10 @@
         ],
         "transparent_pixels": 1047780,
         "pixel_count": 1572864,
-        "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f"
+        "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "2c230d79bd2a9633ea96b41de164cd0ed0b56f58",
       "faceReview": {
@@ -417,14 +789,19 @@
         "face": "visible-four-mandibles",
         "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "27b3140340ac095fb157acd6b45b0c2fe6f648105448c043a693096debc2d88f",
+      "gitBlobSha1": "2c230d79bd2a9633ea96b41de164cd0ed0b56f58",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-16.png",
+      "byte_count": 2118782
     },
     {
-      "id": "17",
+      "id": "tribe-forest-builder-17",
       "name": "Maître des assemblages",
       "description": "Very old broad adult, pale grey-ochre skin with dark freckles, deep forehead ridges, one shorter mandibular tusk, long silver dreads tied loosely. Repaired long grey cloth work coat, patinated steel collar plate, broad leather waist sash, wrapped shins. Holds a short joint template shaped like a robust right-angle gauge and a small fitting chisel pointing down. Steady authoritative body, no staff.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Very old broad adult, pale grey-ochre skin with dark freckles, deep forehead ridges, one shorter mandibular tusk, long silver dreads tied loosely. Repaired long grey cloth work coat, patinated steel collar plate, broad leather waist sash, wrapped shins. Holds a short joint template shaped like a robust right-angle gauge and a small fitting chisel pointing down. Steady authoritative body, no staff.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-17.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2a6eca4a-0237-4021-98b8-a3dc9e9739b5.png",
@@ -440,7 +817,10 @@
         ],
         "transparent_pixels": 848837,
         "pixel_count": 1572864,
-        "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4"
+        "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "ae35529d3405bdcbb40ac449b8744209b5470848",
       "faceReview": {
@@ -448,14 +828,19 @@
         "face": "visible-four-mandibles",
         "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "7c6bbcf7647258df0e26c1a6258d6634d66273576334f2e47d410f4001dd12b4",
+      "gitBlobSha1": "ae35529d3405bdcbb40ac449b8744209b5470848",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-17.png",
+      "byte_count": 2662780
     },
     {
-      "id": "18",
+      "id": "tribe-forest-builder-18",
       "name": "Étalonneur des tensions",
       "description": "Tall slim adult with long dexterous hands, olive-brown mottled hide, high narrow swept forehead, fine mandibles, black dreadlocks tied in a low braid. Grey knee-length tunic, broad green leather chest harness, asymmetrical side apron. Holds a compact mechanical cable-tension meter with a short closed loop of sample cable, steel adjustment spanner tucked at hip. Head lowered examining meter.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Tall slim adult with long dexterous hands, olive-brown mottled hide, high narrow swept forehead, fine mandibles, black dreadlocks tied in a low braid. Grey knee-length tunic, broad green leather chest harness, asymmetrical side apron. Holds a compact mechanical cable-tension meter with a short closed loop of sample cable, steel adjustment spanner tucked at hip. Head lowered examining meter.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-18.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-356a8c8c-8a0d-456b-a0b4-d9388eb3e76a.png",
@@ -471,7 +856,10 @@
         ],
         "transparent_pixels": 1017653,
         "pixel_count": 1572864,
-        "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2"
+        "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "e039804d86e6d872132651bff1dafb91f4c89698",
       "faceReview": {
@@ -479,14 +867,19 @@
         "face": "visible-four-mandibles",
         "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "2d8acb8d8aa6776fa13e9b5cf2690ffcf26713e42291ab8ab061ab463a720fc2",
+      "gitBlobSha1": "e039804d86e6d872132651bff1dafb91f4c89698",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-18.png",
+      "byte_count": 2242762
     },
     {
-      "id": "19",
+      "id": "tribe-forest-builder-19",
       "name": "Bâtisseuse des charpentes",
       "description": "Stocky adult female with powerful short legs, amber-green face with bold head patches, broad rugged crest, stout mandibles, thick shoulder-length dreads; steel protective face shield folded securely at belt. Heavy short grey work jacket, steel shoulder and knee protection. Holds a single compact bolted beam connector chest-height with both hands, hammer clipped to belt. Low sturdy stance.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Stocky adult female with powerful short legs, amber-green face with bold head patches, broad rugged crest, stout mandibles, thick shoulder-length dreads; steel protective face shield folded securely at belt. Heavy short grey work jacket, steel shoulder and knee protection. Holds a single compact bolted beam connector chest-height with both hands, hammer clipped to belt. Low sturdy stance.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-19.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f45137e2-7460-4640-8cde-3878c389a871.png",
@@ -502,7 +895,10 @@
         ],
         "transparent_pixels": 823981,
         "pixel_count": 1572864,
-        "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632"
+        "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "9692566805fa2baf5fdeb3c116af03958e735ea6",
       "faceReview": {
@@ -510,14 +906,19 @@
         "face": "visible-four-mandibles",
         "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "91d2970684884fff34baabfaf093660a871670b3a823144cf814819fd31eb632",
+      "gitBlobSha1": "9692566805fa2baf5fdeb3c116af03958e735ea6",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-19.png",
+      "byte_count": 2625137
     },
     {
-      "id": "20",
+      "id": "tribe-forest-builder-20",
       "name": "Arpenteur de la canopée",
       "description": "Long-limbed middle-aged adult, slate skin with green-ochre mottling, high flat forehead crest, long mandibles, very long dreads gathered tightly low. Sleeveless grey tunic, green shoulder scarf tucked into utility harness, steel forearm guard and shin splints. Holds a compact optical construction level on a folded short support at waist, other hand indicates a small calm alignment gesture. Practical survey pouch and short rope coil at hip.",
       "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Exactly ONE new individual full-body adult Yautja NPC sprite, a working BUILDER of the forest canopy tribe Terrasses des Hautes Branches. Image2 is reference only for tribal identity: practical grey cloth work aprons, dark forest-green leather harnesses, weathered steel-grey armor with muted green moss-like patina, rope, metal fittings and measuring/building equipment. Image3 is reference only for realistic cinematic handpainted 2D game style and slightly elevated three-quarter camera FACING RIGHT. Design a distinct individual with alien Yautja ridged cranium, four mandibular jaws when unmasked, tendril dreadlocks, clawed hands and feet. No human face. Occupational role is constructing and maintaining canopy platforms and rope bridges, in calm standing idle pose, not combat. Tools must be short practical construction implements, ropes secured in coils, all equipment actually held or fastened to harness, no floating separate props. Very readable silhouette, finely textured convincing cloth/leather/metal, soft overhead-left illumination, no dramatic rim effect. FULL BODY from head to feet plus all equipment inside 8% genuinely empty margins on all sides. Actual transparent alpha backdrop; no scene, trees, landscape, ground, platform, floor shadow, glow cloud, text, lettering, watermark, frame, collage, character sheet, other characters or magical staffs. Source is material reference, do not merely recolour or copy source person.\nDistinct individual design: Long-limbed middle-aged adult, slate skin with green-ochre mottling, high flat forehead crest, long mandibles, very long dreads gathered tightly low. Sleeveless grey tunic, green shoulder scarf tucked into utility harness, steel forearm guard and shin splints. Holds a compact optical construction level on a folded short support at waist, other hand indicates a small calm alignment gesture. Practical survey pouch and short rope coil at hip.",
-      "status": "generated",
+      "status": "validated",
       "file": "tribe-forest-builder-20.png",
       "anatomyGuidance": "official-1987-four-mandibles",
       "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5e51d566-9ddf-413e-9755-48ad81d8bcc6.png",
@@ -533,7 +934,10 @@
         ],
         "transparent_pixels": 955743,
         "pixel_count": 1572864,
-        "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf"
+        "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf",
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
       },
       "githubBlobSha": "0c8834c4788b660441a0594d59d474c5e32ca55a",
       "faceReview": {
@@ -541,24 +945,27 @@
         "face": "visible-four-mandibles",
         "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf",
         "review": "Visually inspected complete generated PNG; four external mandible lobes, lower upward tusks, separate inner mouth; official1987 reference."
-      }
+      },
+      "role": "tribe-forest-builder",
+      "sha256": "02ac2692ed2ec860320c7ab7df43ca51915b528fc0447da764beeaceb44f77cf",
+      "gitBlobSha1": "0c8834c4788b660441a0594d59d474c5e32ca55a",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-20.png",
+      "byte_count": 2393029
     }
   ],
-  "completed": 20,
-  "anatomicalReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
-  "referencesForSprites13to20": [
-    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
-    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
-    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
-  ],
-  "officiallyReviewedSlots": [
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter",
+  "facialReviewComplete": true,
+  "anatomyCorrectedSlots": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
   ]
 }

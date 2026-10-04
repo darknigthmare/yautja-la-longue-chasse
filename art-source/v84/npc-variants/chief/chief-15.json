@@ -4,28 +4,32 @@
   "role": "chief",
   "name": "Gardien de la préséance",
   "description": "A broad muscular middle-aged male chief with dark forest-green marbled skin, a high rounded forehead and short thick grey-tipped dreads. A distinctive symmetrical fan of small bone blades across the upper shoulder mantle, long brown-green ceremonial skirt and multiple bronze waist bands. Hands crossed low at the belt. Dignified static stance, full clawed toes and all bone ornaments visible.",
-  "prompt": "FACIAL ANATOMY PRIORITY: reference image1 is Stan Winston's original Predator design, from the official Stan Winston School production archive. Use it for the actual skull and mandible structure. Reference image2 is the game role/style atlas only. Draw a recognizable classic cinema Yautja face: broad back-swept cranial dome, deep angular brow above small recessed eyes, a recessed inner mouth with small teeth, FOUR separate fleshy hinged external mandibles surrounding it (two upper cheek mandibles with hooked tusks and two larger lower mandibles). All four must read clearly, slightly parted in a calm expression, attached outside the inner mouth. The face turns three-quarter toward viewer so both sides of the mandible structure are visible while body angles screen-right. Never a human nose, lips, beard or an orc/pig snout, never a pair of tubes or just two downward tusks. Dense thick scalp quills/tendrils are anatomy, not human hair. No mask hiding anatomy. Preserve classic film proportions while varying individual scarring and markings. \nUse case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A broad muscular middle-aged male chief with dark forest-green marbled skin, a high rounded forehead and short thick grey-tipped dreads. A distinctive symmetrical fan of small bone blades across the upper shoulder mantle, long brown-green ceremonial skirt and multiple bronze waist bands. Hands crossed low at the belt. Dignified static stance, full clawed toes and all bone ornaments visible.",
+  "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+  "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-15.png",
+  "previousSha256": "d04f48c074927b1290f8f7e1b88275133053b9c4f3d482a5c7fdc3b812cb1248",
+  "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-89ebaf9f-06c0-4cb7-b8cd-d4115bad6139.png",
+  "facialCorrection": true,
   "status": "ready",
   "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-15.png",
-  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-89ebaf9f-06c0-4cb7-b8cd-d4115bad6139.png",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b48dd75f-06ed-4d02-b990-94fa2c12fa2a.png",
   "size": [
     1024,
     1536
   ],
   "mode": "RGBA",
-  "bytes": 2553788,
-  "sha256": "d04f48c074927b1290f8f7e1b88275133053b9c4f3d482a5c7fdc3b812cb1248",
-  "gitBlobSha": "fb8830770d1b0e9ad626503a74d72820ba24f45f",
+  "bytes": 2540233,
+  "sha256": "85ef58b43ace7bcc3059b15c4b758fa2b8bc68fc0aee38d2889bb2d583ddf892",
+  "gitBlobSha": "ba4229dc174d399b47d3715b221443ebd8e4048c",
   "alpha_extrema": [
     0,
     254
   ],
-  "transparent_ratio": 0.5582968393961588,
+  "transparent_ratio": 0.5478649139404297,
   "alpha_bounds": [
-    170,
-    45,
-    832,
-    1510
+    169,
+    5,
+    833,
+    1500
   ],
-  "githubBlobSha": "fb8830770d1b0e9ad626503a74d72820ba24f45f"
+  "githubBlobSha": "ba4229dc174d399b47d3715b221443ebd8e4048c"
 }

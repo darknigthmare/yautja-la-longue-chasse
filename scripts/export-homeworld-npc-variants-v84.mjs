@@ -32,6 +32,7 @@ const files = [
   'tests/homeworld-npc-variants-v84.test.mjs', 'tests/homeworld-npc-rendering-v84.test.mjs',
   'tests/homeworld-monument-interiors-v81.test.mjs',
   'docs/homeworld-npc-variants-v84.md',
+  'docs/homeworld-npc-variants-v84-validation.json',
 ];
 async function collect(directory) {
   const entries = await fs.readdir(path.join(root, directory), { withFileTypes: true });
@@ -99,6 +100,8 @@ Les cinq tribus historiques de V37 possèdent chacune deux métiers, soit 40 spr
 Chaque PNG représente un personnage entier et indépendant, en pose fixe, avec un canal alpha. Les différences portent sur la silhouette, le visage, les dreadlocks, les vêtements, l’équipement et la posture. Il ne s’agit pas de nouvelles planches d’animation. Dans cette livraison, un PNJ qui se déplace garde sa pose fixe et son identité visuelle.
 
 Les PNG originaux sont conservés sans recadrage ni recoloration. Le moteur applique seulement l’échelle d’affichage, l’ancrage au sol et le sens du personnage. La galerie pagine les fichiers, et les scènes conservent leur filtrage des acteurs visibles.
+
+Chaque visage a été contrôlé sur son PNG définitif. Les quatre mandibules externes, les défenses et la dentition intérieure suivent les archives du [Predator original de Stan Winston Studio](https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter). Les biomasques réellement couvrants sont conservés. Les revues associées aux empreintes des fichiers sont incluses dans les notes de création.
 
 ## Installation dans une copie V83
 

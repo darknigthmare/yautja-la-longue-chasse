@@ -4,28 +4,32 @@
   "role": "chief",
   "name": "Doyen de la cité",
   "description": "A very heavy-set elderly male Yautja chief with an enormous wide ochre cranial dome, heavy textured jowls and short silver-black dread tendrils. Thick deep plum brocade long coat, copper-colored layered belt plates, compact bone shoulder rings. Both hands open in a calm welcoming gesture close to his sides; large clawed feet and full robe hem visible. Distinct broad round silhouette, realistic anatomy.",
-  "prompt": "Use case: stylized-concept. Asset type: one individual transparent PNG NPC sprite for the 2D game Yautja: La Longue Chasse. The provided atlas is a STYLE and camera reference only: the CHIEF is the top-left figure. Make ONE new adult Yautja clan chief of the same social role, not a copy of that individual. Match the realistic hand-painted texture, anatomical mandibles, broad alien cranial dome, tendril dreadlocks, clawed hands and three large clawed toes, layered ceremonial cloth, aged bronze and bone ornaments. Use a slight elevated orthographic three-quarter view, body and face facing screen-right. Full body, upright grounded pose, all hair, regalia, held objects, hands and feet fully inside the image. Leave a generous clear margin around every silhouette, about 8 percent on all sides; entire subject about80 percent canvas height. Keep tools carried or attached to the body. One character only, no scenery, no floor, no pedestal, no cast ground shadow, no text, no watermark, no grid or sprite sheet. Actual transparent alpha background. Rich natural material colors. The character must be visibly a new individual through build, head, face, dread arrangement, clothes, pose and ornaments, not just a palette change. Preserve believable Predator/Yautja species anatomy, not a human face. This is a non-combat ceremonial leader, no attack pose.\nUnique individual design: A very heavy-set elderly male Yautja chief with an enormous wide ochre cranial dome, heavy textured jowls and short silver-black dread tendrils. Thick deep plum brocade long coat, copper-colored layered belt plates, compact bone shoulder rings. Both hands open in a calm welcoming gesture close to his sides; large clawed feet and full robe hem visible. Distinct broad round silhouette, realistic anatomy.",
+  "prompt": "Use case: precise-edit/inpainting. Return ONE complete individual transparent PNG sprite. Edit the FIRST input PNG, preserving that same NPC's body proportions, clothing, every ornament, carried object, arm/hand pose, feet, silhouette, painterly rendering, canvas aspect ratio and fully transparent background. Only correct the head and exposed FACE. The SECOND input photograph shows the actual original1987 Predator face from Stan Winston Studio and is the anatomical authority; do not copy its background, text, watermark, photographic rendering or exact pigmentation. Rebuild the first character's too-narrow tubular mouth as a classic film Yautja: wide back-swept domed skull, deep broad angular brow and recessed eyes, FOUR clearly separated fleshy external mandible lobes (two upper cheek lobes with hooked tusks, two long lower lobes with upward tusks), around a distinct recessed INNER mouth with its own visible small upper and lower teeth. Broad skin membranes join these lobes to the cheeks as in photo. This is not two tubes, human lips, human nose, pig/orc snout or only hanging tusks. Face near-front three-quarter, enough to clearly show all four external mandibles; calm partly open mouth. Preserve this individual's skin palette and facial marks while correcting anatomy. Preserve thick organic scalp quills/tendrils. No second person, no reference inset, no added text or logo, no floor, no ground shadow, no solid background. Full body and objects must stay entirely inside clear margins. The final image must still be the first NPC in the same attire and role, with only its facial anatomy corrected.",
+  "targetPath": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-11.png",
+  "previousSha256": "e98aeacae1497755bddaab255a1f5e6eab0013c0e9948795d8258dfa4e8d27c9",
+  "previousSource": "/workspace/scratch/41fc0564188e/generated_images/exec-31269627-1519-44ce-9059-af58680f266a.png",
+  "facialCorrection": true,
   "status": "ready",
   "path": "/workspace/scratch/41fc0564188e/npc-generation/chief/chief-11.png",
-  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-31269627-1519-44ce-9059-af58680f266a.png",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6ab71fe5-5d45-4986-92ac-7c9770cbdcd5.png",
   "size": [
     1024,
     1536
   ],
   "mode": "RGBA",
-  "bytes": 2661412,
-  "sha256": "e98aeacae1497755bddaab255a1f5e6eab0013c0e9948795d8258dfa4e8d27c9",
-  "gitBlobSha": "9f036d1bf01dfd9d845ce6a498a71ec243185aa0",
+  "bytes": 2630834,
+  "sha256": "7a3b1f4d7b2b8e9531c23002c6c5c304328f1790d1ade5d982cc1034ea9078df",
+  "gitBlobSha": "e715d2add0903832bfde4e3847f6527366c8889b",
   "alpha_extrema": [
     0,
     254
   ],
-  "transparent_ratio": 0.5090134938557943,
+  "transparent_ratio": 0.49015553792317706,
   "alpha_bounds": [
-    141,
-    65,
-    947,
-    1494
+    131,
+    40,
+    959,
+    1500
   ],
-  "githubBlobSha": "9f036d1bf01dfd9d845ce6a498a71ec243185aa0"
+  "githubBlobSha": "e715d2add0903832bfde4e3847f6527366c8889b"
 }

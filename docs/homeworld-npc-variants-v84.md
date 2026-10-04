@@ -4,11 +4,12 @@
 
 Base auditée : V83, commit `9456292f1e60f506b0c982187ca782eefbab2a81`, daté du 4 octobre 2026.
 
-La livraison vise 20 PNG individuels pour chacune des 32 familles :
+La livraison contient 20 PNG individuels pour chacune des 32 familles :
 14 métiers de la cité, 4 familles régionales et 10 métiers des cinq tribus
 historiques de V37, plus 4 familles de la cour et des services animaliers,
-soit 640 dessins. Le nombre effectivement importé reste
-lisible dans `app/game/data/homeworldNpcVariantsV84.json`. L’export final refuse
+soit 640 dessins, tous importés et associés à une revue du visage sur leur
+SHA256 définitif. Le catalogue complet est consigné dans
+`app/game/data/homeworldNpcVariantsV84.json`. L’export final refuse
 de produire le paquet si une famille contient moins de 20 fichiers ou si une
 revue faciale manque pour le SHA256 de l’un des PNG définitifs.
 
@@ -19,7 +20,7 @@ Les notes de création sont conservées dans `art-source/v84/npc-variants`.
 
 ## Population conservée
 
-Le recensement conserve 434 placements de PNJ :
+Le recensement conserve 434 identités de PNJ :
 
 | Population V83 | Nombre |
 | --- | ---: |
@@ -70,9 +71,9 @@ complète cette référence. Les photographies de référence ne sont pas redist
 dans les fichiers du jeu.
 
 La revue porte sur le crâne, le front, les quatre lobes mandibulaires externes,
-les défenses et la bouche interne dentée, ainsi que les tendrils épais du crâne.
+les défenses et la bouche interne dentée, ainsi que les dreadlocks organiques épaisses.
 Les premières générations qui simplifiaient les mandibules en deux replis sont
-révisées en conservant la tenue, les outils et l’identité du personnage. Un
+corrigées en conservant la tenue, les outils et l’identité du personnage. Un
 biomasque ou respirateur réellement couvrant est identifié séparément.
 Chaque fichier final approuvé est consigné dans `face-review.json` avec son
 SHA256. L’export compare cette validation aux octets effectivement livrés.
@@ -120,7 +121,7 @@ pour cinq tribus historiques. Ces cinq lieux dédiés ne sont pas livrés comme
 destinations jouables dans V83. Cette modification ajoute leurs 200 personnages
 à la galerie et au catalogue des rôles sans inventer de nouveaux hubs.
 
-| Tribu historique | Métiers | Sprites visés |
+| Tribu historique | Métiers | Sprites livrés |
 | --- | --- | ---: |
 | Peuple des Citernes | Hydrologues ; intendants des caravanes | 40 |
 | Terrasses des Hautes Branches | Bâtisseurs ; archivistes | 40 |
@@ -143,9 +144,11 @@ village, ainsi que les dix nouvelles implantations. Les dix tests des intérieur
 monumentaux contrôlent également l’accès aux salles, les meubles et les services.
 Le rendu statique React ne constitue pas une navigation dans un navigateur.
 
-La compilation de production Next/Webpack et le contrôle des CSS compilées ont
-réussi pendant l’intégration. Le rapport de livraison précise la validation
-effectuée sur le paquet final.
+Les résultats du paquet final sont consignés dans le
+[rapport de validation](homeworld-npc-variants-v84-validation.json), avec
+l’empreinte du manifeste contrôlé, les commandes exécutées et leurs résultats.
+Les journaux correspondants sont inclus dans
+`art-source/v84/npc-variants/verification`.
 
 Trois assertions de tests anciens échouaient déjà sur V83 inchangée : le nombre
 d’ailes fonctionnelles (39 attendu, 47 obtenu), le nombre d’entrées du codex V72

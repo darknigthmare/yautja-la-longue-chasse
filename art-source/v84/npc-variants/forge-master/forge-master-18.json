@@ -1,0 +1,51 @@
+{
+  "id": "forge-master-18",
+  "role": "forge-master",
+  "description": "Very tall lean older master with pale gray-green scales, black speckles and rough aged ridges, small angular head. Thin gray-black dreadlocks gathered in a high narrow folded bun. Faded oxblood leather apron with a square chest pocket and three long hanging front panels, coarse wrapped work trousers. Holds a small punch in one hand and a light forging hammer in other at waist; tools separated.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall lean older master with pale gray-green scales, black speckles and rough aged ridges, small angular head. Thin gray-black dreadlocks gathered in a high narrow folded bun. Faded oxblood leather apron with a square chest pocket and three long hanging front panels, coarse wrapped work trousers. Holds a small punch in one hand and a light forging hammer in other at waist; tools separated.",
+  "status": "validated",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    73,
+    13,
+    938,
+    1512
+  ],
+  "transparent_fraction": 0.6685746510823568,
+  "sha256": "07d44f5ed5d844490d9d7050c73f685c3d4cfb15dc62e26f58f5d42cafe80069",
+  "byte_count": 2071069,
+  "original_bytes_preserved": true,
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-18.png",
+  "githubBlobSha": "562eedfc886c60143cacbe15872ecd0279f08a9b",
+  "blobError": null,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-18.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-17a99b84-6e05-4430-be20-480c4d4e4e81.png",
+  "gitBlobSha1": "562eedfc886c60143cacbe15872ecd0279f08a9b",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-18-before-face-review-420fadcf97cc.png",
+    "sha256": "420fadcf97cc6e5192c1f3a872855e2e1b4d2bac79a5fe6230973222d31a3167"
+  }
+}

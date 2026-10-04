@@ -119,6 +119,14 @@ if (source) {
     await fs.mkdir(destination, { recursive: true });
     const notesFolder = path.join(artRoot, role.id);
     await fs.mkdir(notesFolder, { recursive: true });
+    // Notes mirror the current source family. A corrected or renamed sidecar
+    // must not leave an obsolete production record in the final delivery.
+    const currentNotes = new Set(names.filter(filename => filename.endsWith('.json')));
+    for (const previous of await fs.readdir(notesFolder)) {
+      if (previous.endsWith('.json') && !currentNotes.has(previous)) {
+        await fs.unlink(path.join(notesFolder, previous));
+      }
+    }
     for (const filename of names) {
       if (filename.endsWith('.json')) {
         // Production notes and prompts are outside the runtime image index.
