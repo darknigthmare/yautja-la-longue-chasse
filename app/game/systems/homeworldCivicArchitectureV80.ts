@@ -14,7 +14,7 @@ export const HOMEWORLD_CIVIC_ARCHITECTURE_V80=HOMEWORLD_BUILDINGS_V77.map(buildi
   nativeView:building.art.groundFrame?'MEASURED_NATIVE_OBLIQUE' as const:'EXISTING_NATIVE_FRONTAL' as const,
   interior:{title:room.title,width:room.width,depth:room.depth,spawn:room.spawn,exit:room.exit,
    zones:(room.zones??[]).map(z=>z.label),services:HOMEWORLD_INTERIOR_BINDINGS_V64[building.id]??[],
-   fixtures:[...room.props.map(p=>p.id),...(room.furniture??[]).map(p=>p.id),...(room.orientedDecorV76??[]).map(p=>p.id)]},
+   fixtures:[...room.props.map(p=>p.id),...(room.furniture??[]).map(p=>p.id),...(room.orientedDecorV76??[]).map(p=>p.id),...(room.publicComplexV83?.nativeProps??[]).map(p=>p.id)]},
   civicFrontageIds:HOMEWORLD_CIVIC_PROPS_V80.filter(p=>p.buildingId===building.id).map(p=>p.id),
  };
 });

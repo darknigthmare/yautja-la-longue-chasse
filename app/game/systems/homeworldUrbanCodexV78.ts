@@ -16,12 +16,13 @@ export const HOMEWORLD_URBAN_CODEX_V78:readonly HomeworldElementRecordV64[]=[
   return{...common,id:facade.id,label:facade.label,category:'building' as const,districtId:facade.districtId,
    position:{x:facade.x,y:facade.y,z:measured.elevation},dimensions:{...facade.footprint,height:facade.wallHeight},
    footprint:b,asset:facade.art.src,
-   source:[{label:'Façade native originale conservée',url:facade.art.src,note:'SHA256 '+facade.art.sha256+' ; source '+facade.sourceBuildingId+'.'}],
+   source:[{label:'Architecture native originale réemployée V83',url:facade.art.src,note:'SHA256 '+facade.art.sha256+' ; source '+facade.sourceBuildingId+' ; '+facade.provenance+'.'}],
    constraints:['Façade décorative fermée et solide ; aucune porte active, pièce visitable, visite sauvegardée ou service nouveau.',
-    'Échelle uniforme '+measured.scale+' ; fondation native entière contenue dans la parcelle. PNG frontal sans rotation ni miroir CSS.',
-    'Ouverture peinte '+measured.paintedDoorWidth+'×'+measured.paintedDoorHeight+' ; convention128×80 pour adulte100u conservée.',
-    'Image frontale existante de remplacement. Architecture oblique dédiée V78 encore requise ; cette fiche ne certifie pas sa production.',
-    'Même empreinte SAT pour le dessin, les collisions, les chemins et la reprise de position V78.']};
+    'Échelle uniforme '+measured.scale+' ; parcelle authored autour de la fondation native entière. Ni rotation ni miroir CSS.',
+    'Ouverture native déprojectée '+measured.paintedDoorWidth+'×'+measured.paintedDoorHeight+' ; taille uniforme calculée pour une convention adulte128×80.',
+    facade.placementPurpose,
+    'Huit façades fermées emploient huit dessins natifs distincts. Réemploi original compatible avec le lore ; aucune reproduction canonique1:1 ou variante dédiée produite affirmée.',
+    'Même empreinte SAT pour le dessin, les collisions, les chemins et la reprise de position. Nouveau lot V83 non vérifié : support complet, circulation et qualité visuelle non certifiés.']};
  }),
  ...HOMEWORLD_URBAN_PROPS_V78.map(item=>{
   const measured=homeworldUrbanNativePlacementV78(item),b=bounds(measured.polygon),art=HOMEWORLD_EXTERIOR_ART_V76[item.artId];
@@ -51,12 +52,13 @@ export const HOMEWORLD_URBAN_CODEX_V78:readonly HomeworldElementRecordV64[]=[
     'Pose/horloge natives existantes ; aucune nouvelle planche8directions ou coutume canonique affirmée.']};
  }),
  ...HOMEWORLD_URBAN_LOTS_V78.map(lot=>({
-  ...common,id:lot.id,label:'Art oblique dédié à produire · '+lot.label,category:'panel' as const,districtId:'undercity',
+  ...common,id:lot.id,label:'Parcelle native réimplantée V83 · '+lot.label,category:'panel' as const,districtId:'undercity',
   position:{x:(lot.bounds.left+lot.bounds.right)/2,y:(lot.bounds.top+lot.bounds.bottom)/2,z:homeworldLevelV77(lot.levelId).elevation},
   dimensions:{width:lot.bounds.right-lot.bounds.left,depth:lot.bounds.bottom-lot.bounds.top,height:0},footprint:null,asset:null,
   source:[{label:'Concept fourni par le projet',url:'/game/homeworld/v77/reference/homeworld-macro-layout-latest.png',note:'Carte de conception originale, jamais un fond unique ni une topographie canonique1:1.'}],
-  constraints:['Illustration oblique dédiée encore requise ; façade frontale native visible de remplacement référencée par '+lot.id+':facade.',
+  constraints:['Volume oblique fermé réemployé référencé par '+lot.id+':facade ; variantes de district dédiées restent à produire.',
    'Cette réserve de conception n’ajoute aucune collision distincte ; seule la fondation mesurée de la façade visible est solide.',
-   'Aucune porte interactive ni nouvel intérieur simulé. Le mobilier reste hors de la parcelle réservée.'],
+   'Aucune porte interactive ni nouvel intérieur simulé. Le nouveau décor V83 réserve cette parcelle.',
+   'Implantation V83 non vérifiée ; cette fiche est un contrat runtime et non un résultat QA.'],
  })),
 ];

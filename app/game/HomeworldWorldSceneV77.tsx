@@ -17,7 +17,7 @@ import {HOMEWORLD_GROUND_ART_V64,HOMEWORLD_PROP_ART_V64,HOMEWORLD_TRANSPORT_ART_
 import {HOMEWORLD_FURNITURE_ART_V72} from './systems/homeworldFurnitureV72';
 import {HOMEWORLD_GATEWAY_ART_V72,homeworldGatewayScaleV72} from './systems/homeworldRegionConnectionsV72';
 import {homeworldConnectorArtV82,homeworldConnectorPlacementV82,homeworldConnectorSourceStateV82} from './systems/homeworldConnectorArtV82';
-import {HOMEWORLD_LIFT_CABIN_ART_V82,homeworldLiftCabinPlacementV82} from './systems/homeworldLiftCabinV82';
+import {HOMEWORLD_LIFT_CABIN_ART_V82,homeworldLiftCabinPlacementV82,type HomeworldLiftStationV83} from './systems/homeworldLiftCabinV82';
 import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingCoversPaintV76,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
 import {homeworldBuildingRenderDepthV76,shouldFadeHomeworldBuilding,homeworldBuildingVisibleBoundsV72,shouldFadeHomeworldForeground} from './systems/homeworldCity';
 import styles from './HomeworldCity.module.css';
@@ -31,14 +31,15 @@ import {HOMEWORLD_CIVIC_ART_V80,HOMEWORLD_CIVIC_PROPS_V80} from './systems/homew
 import {HOMEWORLD_COURT_ART_V80} from './systems/homeworldCourtArtV80';
 import {HOMEWORLD_NATURAL_MODULES_V80} from './systems/homeworldNaturalPlacementsV80';
 import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
+import {HOMEWORLD_STREET_DECOR_ART_V83,HOMEWORLD_STREET_DECOR_PROPS_V83} from './systems/homeworldStreetDecorV83';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
 const visible=(box:{left:number;top:number;width:number;height:number},camera:Camera)=>box.left+box.width>=camera.x-160&&box.left<=camera.x+camera.viewWidth+160&&box.top+box.height>=camera.y-160&&box.top<=camera.y+camera.viewHeight+160;
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null}:{
- actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
@@ -75,6 +76,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    const image=homeworldBuildingSpritePlacementV64(building),z=homeworldLevelV77(building.levelId).elevation,box={...image,top:image.top-z};if(!visible(box,camera))return null;
    return <div key={building.id} className={styles.buildingV64} data-building-id={building.id} data-world-level-v77={building.levelId}
     data-building-native-source={building.art.src} data-building-orientation-v76={building.art.groundFrame?.yawDegrees??0}
+    data-native-facade-state-v83={'nativeStatus' in building?building.nativeStatus:undefined}
     data-building-decoration-v78={'interactive' in building&&!building.interactive?'CLOSED_SCENERY_FACADE':undefined}
     data-occluded={building.levelId===levelId&&shouldFadeHomeworldBuilding(building,actor)}
     style={{...box,zIndex:depth(building.levelId,homeworldBuildingRenderDepthV76(building,actor))}}>
@@ -95,6 +97,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CITY_NATIVE_ART_V78[item.artId];return prop(item.id,'city-native-v78:'+item.artId,art,item,item.levelId,art.heightWorld);})}
   {HOMEWORLD_RETAINING_SUPPORTS_V82.filter(support=>painted(support.levelId)).map(support=><HomeworldRetainingSupportV82 key={support.id} support={support} camera={camera}/>)}
   {HOMEWORLD_CIVIC_PROPS_V80.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CIVIC_ART_V80[item.artId];return prop(item.id,'civic-native-v80:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
+  {HOMEWORLD_STREET_DECOR_PROPS_V83.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V83[item.artId];return prop(item.id,'street-native-v83:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{
@@ -120,9 +123,10 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
      data-homeworld-vertical-connector-v77={connector.id} data-native-art-status={homeworldConnectorSourceStateV82(connector.id)}
      data-native-sha256={nativeArt.sha256} data-native-scale-v82={nativeLayout.scale} data-gameplay-qa-v82="NOT_PERFORMED"
      style={{position:'absolute',left:nativeLayout.left,top:nativeLayout.top,width:nativeLayout.width,height:nativeLayout.height,maxWidth:'none',zIndex:HOMEWORLD_CONNECTOR_DRAW_DEPTH_V78,pointerEvents:'none'}}/>
-     {(()=>{const cabin=homeworldLiftCabinPlacementV82(connector,levelId,transit);return cabin&&visible(cabin,camera)?<img src={HOMEWORLD_LIFT_CABIN_ART_V82.src} alt="" draggable={false}
+     {(()=>{const cabin=homeworldLiftCabinPlacementV82(connector,levelId,transit,liftStateV83);return cabin&&visible(cabin,camera)?<img src={HOMEWORLD_LIFT_CABIN_ART_V82.src} alt="" draggable={false}
       data-homeworld-lift-cabin-v82={connector.id} data-native-sha256={HOMEWORLD_LIFT_CABIN_ART_V82.sha256}
       data-travel-fraction-v82={cabin.travelFraction} data-native-scale-v82={cabin.scale} data-authored-motion-clips="0"
+      data-lift-journey-v83={liftStateV83?.journey?.kind??'stationary'} data-lift-station-position-v83={liftStateV83?.position}
       style={{position:'absolute',left:cabin.left,top:cabin.top,width:cabin.width,height:cabin.height,maxWidth:'none',zIndex:cabin.depth,pointerEvents:'none'}}/>:null;})()}
     </span>;
    }

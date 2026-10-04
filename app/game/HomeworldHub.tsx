@@ -40,9 +40,13 @@ import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82} from './systems/homeworldConnectorArtV82';
 import {HOMEWORLD_BACKDROP_SCENE_SOURCES_V82} from './systems/homeworldBackdropArtV82';
 import {HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82} from './systems/homeworldLiftCabinV82';
+import {createHomeworldLiftStationV83,restoreHomeworldLiftStationV83,rememberHomeworldLiftStationV83,
+ callHomeworldLiftV83,stepHomeworldLiftCallV83,homeworldLiftAtSocketV83,homeworldLiftPassengerV83,
+ returnHomeworldLiftAfterRefusalV83,type HomeworldLiftStationV83} from './systems/homeworldLiftStationV83';
 import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacementV77';
 import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
 import {HOMEWORLD_NATIVE_SCENE_SOURCES_V81} from './systems/homeworldNativeArchitectureV81';
+import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83} from './systems/homeworldStreetDecorV83';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
@@ -95,7 +99,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -113,6 +117,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const [elevationV77, setElevationV77] = useState(homeworldLevelV77(levelIdV77).elevation as number);
   const transitRefV77 = useRef<HomeworldTransitV77 | null>(null);
   const [transitV77, setTransitV77] = useState<HomeworldTransitV77 | null>(null);
+  const [liftStateV83, setLiftStateV83] = useState<HomeworldLiftStationV83>(() => createHomeworldLiftStationV83(save.createdAt));
+  const [liftSessionOwnerV83, setLiftSessionOwnerV83] = useState<string | null>(null);
+  const liftRefV83 = useRef(liftStateV83);
+  const liftSessionReadyRefV83 = useRef(false);
   const skiffRefV77 = useRef<HomeworldSkiffV77 | null>(null);
   const [skiffV77, setSkiffV77] = useState<HomeworldSkiffV77 | null>(null);
   const actorRef = useRef(actor);
@@ -168,7 +176,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const reducedMotionV77 = useHomeworldReducedMotionV77();
   const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome, additionalSources:sceneSourcesV77 });
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
-  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready;
+  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready || liftSessionOwnerV83 !== save.createdAt;
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
     if (!arrivalV67 || appliedArrivalV67.current === arrivalV67.requestId) return;
@@ -199,6 +207,21 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
     progressRef.current = save.homeworld; saveRef.current = save;
   }, [save]);
+  useEffect(() => {
+    // This side state belongs to the campaign identity, not its current floor.
+    // Restore only when mounting/changing identity, never after onProgress.
+    const state = restoreHomeworldLiftStationV83(save.createdAt);
+    liftRefV83.current = state; liftSessionReadyRefV83.current = true; setLiftStateV83(state); setLiftSessionOwnerV83(save.createdAt);
+    transitRefV77.current = null; setTransitV77(null);
+    return () => {
+      if (liftRefV83.current.ownerCreatedAt === save.createdAt) rememberHomeworldLiftStationV83(liftRefV83.current, true);
+      liftSessionReadyRefV83.current = false;
+    };
+  }, [save.createdAt]);
+  const updateLiftStationV83 = useCallback((next: HomeworldLiftStationV83) => {
+    if (!liftSessionReadyRefV83.current || next.ownerCreatedAt !== saveRef.current.createdAt) return;
+    liftRefV83.current = next; setLiftStateV83(next); rememberHomeworldLiftStationV83(next);
+  }, []);
   useEffect(() => { suspendedRef.current = suspended; }, [suspended]);
   useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready; }, [paused, inactive, spatialCodexOpen, wayfindingOpenV75, motionAssetsV74.ready]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
@@ -347,8 +370,29 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if (suspendedRef.current || pausedRef.current || dialogStateRef.current || transitRefV77.current || skiffRefV77.current) return;
     const room = interiorRef.current;
     if (!room) {
-      const transit = beginHomeworldTransitV77(levelRefV77.current, actorRef.current);
-      if (transit) { clearInputs(); transitRefV77.current = transit; setTransitV77(transit); setAnnouncement('Passage physique : ' + HOMEWORLD_CONNECTORS_V77.find(c => c.id === transit.connectorId)?.name); return; }
+      const near = nearestHomeworldConnectorV77(levelRefV77.current, actorRef.current);
+      let liftReady = true;
+      if (near?.connector.kind === 'lift') {
+        if (!liftSessionReadyRefV83.current || liftRefV83.current.ownerCreatedAt !== saveRef.current.createdAt) return;
+        liftReady = homeworldLiftAtSocketV83(liftRefV83.current, near.connector.id, near.reverse);
+        if (!liftReady) {
+          clearInputs();
+          const called = callHomeworldLiftV83(liftRefV83.current, near.connector, near.reverse);
+          updateLiftStationV83(called);
+          setAnnouncement(called.journey?.to === (near.reverse ? 1 : 0)
+            ? 'Cabine appelée à ce palier. Attends son arrivée, puis interagis à nouveau pour embarquer.'
+            : 'La cabine termine un appel à l’autre palier. Tu pourras la rappeler après son arrivée.');
+          return;
+        }
+      }
+      const transit = beginHomeworldTransitV77(levelRefV77.current, actorRef.current, liftReady);
+      if (transit) {
+        const connector = near?.connector;
+        clearInputs();
+        if (connector?.kind === 'lift') updateLiftStationV83(homeworldLiftPassengerV83(liftRefV83.current, transit, connector));
+        transitRefV77.current = transit; setTransitV77(transit);
+        setAnnouncement('Passage physique : ' + connector?.name); return;
+      }
     }
     if (room && nearestHomeworldInteriorTargetV64(room, actorRef.current)?.kind === "exit") { exitInterior(); return; }
     const socialHost=homeworldCntlipEligibleV77(saveRef.current)?homeworldCntlipReachedV77(room,actorRef.current):null;
@@ -373,7 +417,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, youthWelcome,openCntlipV77]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, youthWelcome,openCntlipV77,updateLiftStationV83]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -448,6 +492,13 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       // Context-changing actions cannot move the actor in the same frame.
       const handledAction = gamepad.actions.pause || gamepad.actions.confirm || gamepad.actions.cancel;
       if (active && !suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden && !handledAction) {
+        // Empty machinery and passengers share this focus/modal-gated clock.
+        // An empty arrival never boards the hunter or writes a campaign save.
+        if (liftSessionReadyRefV83.current && liftRefV83.current.ownerCreatedAt === saveRef.current.createdAt) {
+          const called = stepHomeworldLiftCallV83(liftRefV83.current, dt);
+          if (called.state !== liftRefV83.current) updateLiftStationV83(called.state);
+          if (called.arrived) setAnnouncement('La cabine est arrivée au palier ' + (called.state.position === 1 ? '+1' : '0') + '. Rejoins son seuil et interagis pour embarquer.');
+        }
         const left = keyboardHeld("hunt.moveLeft") || touch.current.left || gamepad.movement.left;
         const right = keyboardHeld("hunt.moveRight") || touch.current.right || gamepad.movement.right;
         const up = keyboardHeld("hunt.moveUp") || touch.current.up || gamepad.movement.up;
@@ -472,7 +523,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             }
           }
         } else if (transitRefV77.current && !room) {
-          const moving = stepHomeworldTransitV77(transitRefV77.current, before, dt);
+          const ride = transitRefV77.current;
+          const moving = stepHomeworldTransitV77(ride, before, dt);
+          const liftConnector = HOMEWORLD_CONNECTORS_V77.find(connector => connector.id === ride.connectorId && connector.kind === 'lift');
+          if (liftConnector) updateLiftStationV83(moving.error
+            ? returnHomeworldLiftAfterRefusalV83(liftRefV83.current, ride, liftConnector)
+            : homeworldLiftPassengerV83(liftRefV83.current, moving.transit ?? ride, liftConnector, moving.done));
           next = moving.actor; transitRefV77.current = moving.transit; setTransitV77(moving.transit);
           setElevationV77(moving.elevation); levelRefV77.current = moving.levelId; setLevelIdV77(moving.levelId);
           if (moving.error) setAnnouncement(moving.error);
@@ -512,7 +568,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onRegionV68]);
+  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onRegionV68, updateLiftStationV83]);
 
   const onWorldKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== viewportRef.current || blocked || event.altKey || event.ctrlKey || event.metaKey) return;
@@ -652,13 +708,18 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const civicNeighborhoodV80=homeworldCivicNeighborhoodV80(levelIdV77,actor);
   const nearbyConnectorV77 = !interior ? nearestHomeworldConnectorV77(levelIdV77, actor) : null;
   const nearbyCntlipHostV77=homeworldCntlipEligibleV77(save)?homeworldCntlipReachedV77(interior,actor):null;
-  const interactionLabel = nearbyConnectorV77 ? nearbyConnectorV77.connector.name : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : null);
+  const connectorLabelV83 = nearbyConnectorV77?.connector.kind === 'lift'
+    ? homeworldLiftAtSocketV83(liftStateV83, nearbyConnectorV77.connector.id, nearbyConnectorV77.reverse)
+      ? 'Embarquer · Ascenseur des délégations'
+      : liftStateV83.journey ? 'Cabine en déplacement · Ascenseur des délégations' : 'Appeler la cabine · Ascenseur des délégations'
+    : nearbyConnectorV77?.connector.name;
+  const interactionLabel = nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : null);
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
 
   return <section ref={rootRef} className={styles.hub} style={suspended ? { display: "none" } : undefined}
-    aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId} data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-homeworld-transit-v77={transitV77?.connectorId} data-homeworld-skiff-v77={skiffV77?.regionId}>
+    aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId} data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-homeworld-transit-v77={transitV77?.connectorId} data-homeworld-skiff-v77={skiffV77?.regionId} data-homeworld-lift-position-v83={liftStateV83.position.toFixed(4)} data-homeworld-lift-motion-v83={liftStateV83.journey?.kind ?? 'docked'}>
     <header className={styles.header}>
       <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior?.title ?? "La Cité des Premiers Trophées"}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
       <div className={styles.hudActionsV64}><button type="button" disabled={suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready} onClick={() => changeWayfindingOpenV75(true)}>Repères</button>
@@ -668,14 +729,14 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
       data-homeworld-active-door={activeDoorId ?? undefined}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
-      <HomeworldWorldMapV77 key={levelIdV77} actor={interior && currentBuilding ? homeworldBuildingDoorwayV64(currentBuilding).approach : actor} levelId={levelIdV77} open={spatialCodexOpen} targetId={wayfindingRequestV75?.id}
+      <HomeworldWorldMapV77 key={levelIdV77} save={save} actor={interior && currentBuilding ? homeworldBuildingDoorwayV64(currentBuilding).approach : actor} levelId={levelIdV77} open={spatialCodexOpen} targetId={wayfindingRequestV75?.id}
         disabled={suspended || paused || inactive || !!dialog || !!transitV77 || !motionAssetsV74.ready}
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open || !motionAssetsV74.ready; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
-          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} />}
+          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}

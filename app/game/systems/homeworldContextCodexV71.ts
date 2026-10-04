@@ -11,6 +11,7 @@ import {HOMEWORLD_CITY_NATIVE_CODEX_V78} from './homeworldCityNativeCodexV78';
 import {HOMEWORLD_CIVIC_CODEX_V80} from './homeworldCivicDecorV80';
 import {HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80} from './homeworldCivicArchitectureV80';
 import {HOMEWORLD_PORT_SHOULDER_CODEX_V80} from './homeworldPortShouldersV80';
+import {HOMEWORLD_STREET_DECOR_CODEX_V83} from './homeworldStreetDecorCodexV83';
 import {homeworldNaturalRecordPlacementV80} from './homeworldNaturalPlacementsV80';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
@@ -18,6 +19,7 @@ import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
 import { HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74 } from './homeworldSecondaryInteriorCodexV74';
 import { HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81 } from './homeworldMonumentInteriorCodexV81';
 import { HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82 } from './homeworldPublicFittingsCodexV82';
+import { HOMEWORLD_CIVIC_PUBLIC_COMPLEX_CODEX_V83 } from './homeworldCivicPublicComplexCodexV83';
 import { HOMEWORLD_NATIVE_ARCHITECTURE_CODEX_V81 } from './homeworldNativeArchitectureCodexV81';
 import { homeworldBuildingIdentityV81 } from './homeworldNativeArchitectureV81';
 import { HOMEWORLD_POPULATION_CODEX_V74 } from './homeworldPopulationCodexV74';
@@ -46,7 +48,8 @@ const interiorDecorRecordsV76:HomeworldContextRecordV71[]=HOMEWORLD_INTERIORS_V6
     constraints:[`Usage : ${item.purpose}. Orientation native ${item.orientation}, sans rotation ni miroir CSS.`,
       `Pivot source ${item.pivotPixels.x} ; ${item.pivotPixels.y}. Échelle uniforme ${item.uniformScaleWorldPerPixel} u/px.`,
       'Rectangle de collision conservateur autour des appuis natifs, asymétrique par rapport au pivot. Le meuble reste dessiné sous son vrai angle ; sa hauteur ne comprime pas la perspective.',
-      'Zones, stations, sortie et passages existants contrôlés avec le corps entier et quatre unités de marge.',
+      room.publicComplexV83?'Implantation V83 composée dans l’enveloppe existante ; aucun contrôle corporel ou visuel de ce nouveau plan n’est revendiqué.':
+        'Zones, stations, sortie et passages existants contrôlés avec le corps entier et quatre unités de marge.',
       'Décor indépendant : aucun service, soin, récompense ou objet récupérable ajouté.',
       'Mobilier civil original compatible avec la ville du jeu ; aucune pièce officielle reproduite 1:1.']};
 }));
@@ -91,7 +94,7 @@ const nativeArchitectureRecordsV81:HomeworldContextRecordV71[]=HOMEWORLD_NATIVE_
 });
 const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
   const room=homeworldInteriorForBuildingV64(building.id)!,door=homeworldBuildingDoorwayV64(building),footprint=homeworldBuildingFootprintV64(building);
-  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81,...HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`||record.id===`v81-facade:${building.id}`);
+  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81,...HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82,...HOMEWORLD_CIVIC_PUBLIC_COMPLEX_CODEX_V83,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`||record.id===`v81-facade:${building.id}`);
   const exteriorFurniture=[...HOMEWORLD_ELEMENT_CODEX_V64,...architectureRecordsV75,...exteriorDecorRecordsV76].filter(record=>record.category==='prop'&&record.spaceId==='world'
     &&record.districtId===building.districtId&&Math.hypot(record.position.x-building.x,record.position.y-building.y)<building.width);
   const streets=HOMEWORLD_STREETS.filter(street=>street.polygon.some(p=>Math.hypot(p.x-door.approach.x,p.y-door.approach.y)<800));
@@ -107,6 +110,7 @@ const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
       `${room.orientedDecorV76?.length??0} modules orientés V76, avec appuis, usages et volumes individuels dans leurs fiches associées.`,
       ...(room.monumentLayoutV81?[`${room.monumentDecorV81?.length??0} modules natifs supplémentaires et ${room.monumentInhabitantsV81?.length??0} habitants stationnaires non interactifs du complexe public V81, détaillés dans leurs fiches associées.`]:[]),
       ...(room.publicFittingsV82?[`Compléments publics V82 : ${room.publicFittingsV82.furniture.length} meubles et ${room.publicFittingsV82.decor.length} contenants orientés. ${room.publicFittingsV82.purpose} État de ce lot : implémenté, non vérifié.`]:[]),
+      ...(room.publicComplexV83?[`Plan public V83 : ${room.zones?.length??0} espaces distincts et ${room.publicComplexV83.passages.length} traversées de composition. ${room.publicComplexV83.purpose} État : implémenté, non vérifié. Les fiches de mobilier, parois et zones utilisent les placements de ce nouveau plan.`]:[]),
       `Voies proches : ${streets.map(street=>street.label).join(' ; ')||'cour du quartier'}. Les trajets accessibles demeurent calculés par les collisions existantes.`,
       `${exteriorFurniture.length} mobilier(s) extérieur(s) voisin(s) répertorié(s). Les liens ne donnent aucune nouvelle interaction.`,
       'Barrières : seules les façades, volumes et meubles solides déjà présents bloquent le passage. Aucun faux grillage inaccessible ne coupe la rue.',
@@ -139,6 +143,8 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
   ...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`]})),
   ...HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`]})),
+  ...HOMEWORLD_CIVIC_PUBLIC_COMPLEX_CODEX_V83.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`,
+    ...(record.id.startsWith('v83-public-activity:')?[`v72-zone:${record.id.slice('v83-public-activity:'.length).replace(/-activity$/,'')}`]:[])]})),
   ...HOMEWORLD_CIVILIAN_MOTION_CODEX_V74.map(record=>({...record,associatedElementIds:[]})),
   ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONVERSATION_CODEX_V75,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76,...exteriorDecorRecordsV76,...HOMEWORLD_LANDSCAPE_CODEX_V75,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · base de cendre et ceinture V75',category:'floor',districtId:'outskirts',
     position:{x:HOMEWORLD_LANDSCAPE_BOUNDS_V75.left,y:HOMEWORLD_LANDSCAPE_BOUNDS_V75.top,z:0},
@@ -158,4 +164,8 @@ export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64
   ...HOMEWORLD_CIVIC_CODEX_V80,
   ...HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80,
   ...HOMEWORLD_PORT_SHOULDER_CODEX_V80,
+  // V83 active props already own world coordinates and level elevation.
+  // Refused candidates stay in their non-world authoring space; neither kind
+  // is passed through the legacy port/natural relocation mappers.
+  ...HOMEWORLD_STREET_DECOR_CODEX_V83,
 ];
