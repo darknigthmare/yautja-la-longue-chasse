@@ -1,0 +1,187 @@
+{
+  "version": "V82",
+  "authority": "Original lore-compatible city architecture; no canonical universal monarchy or canonical construction plan claimed",
+  "transformPolicy": "One positive uniform scale and translation only; no rotation, mirroring, perspective warp or independent width/height scale",
+  "assets": {
+    "acropolis-stair-native": {
+      "title": "Degré noir-bronze des clans alliés",
+      "kind": "stairs",
+      "material": "Basalte sombre, bronze usé, nervures structurelles et balises ambre sobres",
+      "sourceStatus": "OPENAI_NATIVE_SOURCE_REGISTERED",
+      "art": {
+        "src": "/game/homeworld/v82/acropolis-stair.png",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": { "x": 170, "y": 26, "width": 685, "height": 1481 },
+        "lowerSocket": { "x": 512, "y": 1350 },
+        "upperSocket": { "x": 512, "y": 176 },
+        "lowerSupportPixels": [{ "x": 349, "y": 1266 }, { "x": 674, "y": 1266 }, { "x": 687, "y": 1418 }, { "x": 673, "y": 1440 }, { "x": 349, "y": 1440 }, { "x": 336, "y": 1418 }],
+        "upperSupportPixels": [{ "x": 397, "y": 127 }, { "x": 625, "y": 127 }, { "x": 643, "y": 221 }, { "x": 631, "y": 228 }, { "x": 391, "y": 228 }, { "x": 381, "y": 221 }],
+        "walkBounds": { "left": 380, "right": 644 },
+        "sha256": "70a93d2430919aacb1117ce88adff1dceb1a411fce09774257e3ec2c8757d227"
+      },
+      "provenance": {
+        "toolRequested": "OpenAI built-in image generation",
+        "camera": "Same orthographic north-facing camera as the city; yaw 0 degrees, pitch 35 degrees; front-on lower and upper landing centers on one native vertical axis",
+        "animation": "Static architectural drawing; not an authored action sheet",
+        "socketStatus": "AUTHORED_NATIVE_FLAT_LANDING_CENTERS;NOT_GAMEPLAY_QA",
+        "sourceOriginal": "Publisher-owned OpenAI generation; exact generation receipt id not supplied to this module",
+        "nativeMeasurement": "Flat landing centers selected by viewing the original PNG; alpha envelope at 128 extracted for catalogue authoring; source SHA supplied by publisher; no gameplay QA",
+        "lore": "LORE_COMPATIBLE_ORIGINAL"
+      }
+    },
+    "industrial-ramp-native": {
+      "title": "Rampe de basalte des ateliers",
+      "kind": "ramp",
+      "material": "Basalte porteur, nervures en métal patiné, bronze sobre et repères de maintenance ambre",
+      "sourceStatus": "OPENAI_NATIVE_SOURCE_REGISTERED",
+      "art": {
+        "src": "/game/homeworld/v82/industrial-ramp.png",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": { "x": 24, "y": 8, "width": 976, "height": 1490 },
+        "lowerSocket": { "x": 512, "y": 1290 },
+        "upperSocket": { "x": 512, "y": 210 },
+        "lowerSupportPixels": [{ "x": 147, "y": 1218 }, { "x": 316, "y": 1205 }, { "x": 374, "y": 1203 }, { "x": 650, "y": 1203 }, { "x": 709, "y": 1205 }, { "x": 877, "y": 1218 }, { "x": 922, "y": 1335 }, { "x": 866, "y": 1369 }, { "x": 164, "y": 1369 }, { "x": 102, "y": 1335 }],
+        "upperSupportPixels": [{ "x": 155, "y": 150 }, { "x": 324, "y": 146 }, { "x": 386, "y": 151 }, { "x": 640, "y": 151 }, { "x": 703, "y": 146 }, { "x": 873, "y": 150 }, { "x": 883, "y": 216 }, { "x": 850, "y": 244 }, { "x": 696, "y": 244 }, { "x": 638, "y": 253 }, { "x": 386, "y": 253 }, { "x": 330, "y": 244 }, { "x": 174, "y": 244 }, { "x": 139, "y": 216 }],
+        "walkBounds": { "left": 380, "right": 644 },
+        "sha256": "9276a93df31c3c11104c4f55c07daf1e018ed585e11889502557c15d60222f56"
+      },
+      "provenance": {
+        "toolRequested": "OpenAI built-in image generation",
+        "camera": "Same orthographic north-facing camera as the city; yaw 0 degrees, pitch 35 degrees; front-on lower and upper landing centers on one native vertical axis",
+        "animation": "Static architectural drawing; not a vehicle lift or action sheet",
+        "socketStatus": "AUTHORED_NATIVE_FLAT_LANDING_CENTERS;NOT_GAMEPLAY_QA",
+        "sourceOriginal": "Publisher-owned OpenAI generation; exact generation receipt id not supplied to this module",
+        "nativeMeasurement": "Flat landing centers selected by viewing the original PNG; alpha envelope at 128 extracted for catalogue authoring; source SHA supplied by publisher; no gameplay QA",
+        "lore": "LORE_COMPATIBLE_ORIGINAL"
+      }
+    },
+    "gallery-stair-native": {
+      "title": "Degré large des galeries basses",
+      "kind": "stairs",
+      "material": "Basalte sombre porteur, bronze usé et balises ambre des galeries",
+      "sourceStatus": "OPENAI_NATIVE_SOURCE_REGISTERED",
+      "art": {
+        "src": "/game/homeworld/v82/lower-gallery-stair.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alphaBounds": { "x": 167, "y": 36, "width": 921, "height": 1177 },
+        "lowerSocket": { "x": 627, "y": 1040 },
+        "upperSocket": { "x": 627, "y": 205 },
+        "lowerSupportPixels": [{ "x": 290, "y": 957 }, { "x": 991, "y": 957 }, { "x": 1017, "y": 1093 }, { "x": 988, "y": 1126 }, { "x": 277, "y": 1126 }, { "x": 257, "y": 1093 }],
+        "upperSupportPixels": [{ "x": 371, "y": 140 }, { "x": 877, "y": 140 }, { "x": 891, "y": 257 }, { "x": 877, "y": 281 }, { "x": 363, "y": 281 }, { "x": 351, "y": 257 }],
+        "walkBounds": { "left": 371, "right": 877 },
+        "sha256": "36de6fde67ea08713fa8dfc5b19c0e147d53d0b71d4bf55e5f6b934db3fab2c4"
+      },
+      "provenance": {
+        "toolRequested": "OpenAI built-in image generation",
+        "camera": "Same orthographic north-facing camera as the city; yaw 0 degrees, pitch 35 degrees; shorter broad native stair with two centered flat landings",
+        "animation": "Static dedicated short broad stair; not an authored action sheet",
+        "socketStatus": "AUTHORED_NATIVE_FLAT_LANDING_CENTERS;NOT_GAMEPLAY_QA",
+        "sourceOriginal": "exec-264f71d5-cc73-4aab-b212-c5be0272e4b7.png",
+        "nativeMeasurement": "Flat landing centers and paved support polygons selected by viewing the original PNG; alpha envelope at 128 extracted for catalogue authoring; source SHA supplied by publisher; no gameplay QA",
+        "lore": "LORE_COMPATIBLE_ORIGINAL"
+      }
+    },
+    "clan-lift-native": {
+      "title": "Portique de l’ascenseur des délégations",
+      "kind": "lift",
+      "material": "Portique de métal patiné et basalte, guidage vertical, cabine propre et repères ambre sobres",
+      "sourceStatus": "OPENAI_NATIVE_SOURCE_REGISTERED",
+      "art": {
+        "src": "/game/homeworld/v82/clan-lift-gantry-adult.png",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": { "x": 52, "y": 32, "width": 917, "height": 1444 },
+        "lowerSocket": { "x": 512, "y": 1350 },
+        "upperSocket": { "x": 512, "y": 400 },
+        "lowerSupportPixels": [{ "x": 281, "y": 1264 }, { "x": 406, "y": 1238 }, { "x": 609, "y": 1238 }, { "x": 737, "y": 1264 }, { "x": 849, "y": 1305 }, { "x": 859, "y": 1341 }, { "x": 811, "y": 1372 }, { "x": 694, "y": 1372 }, { "x": 643, "y": 1409 }, { "x": 384, "y": 1409 }, { "x": 328, "y": 1372 }, { "x": 211, "y": 1372 }, { "x": 161, "y": 1341 }, { "x": 171, "y": 1305 }],
+        "upperSupportPixels": [{ "x": 270, "y": 383 }, { "x": 399, "y": 378 }, { "x": 624, "y": 378 }, { "x": 753, "y": 383 }, { "x": 855, "y": 404 }, { "x": 824, "y": 431 }, { "x": 702, "y": 431 }, { "x": 664, "y": 433 }, { "x": 360, "y": 433 }, { "x": 322, "y": 431 }, { "x": 200, "y": 431 }, { "x": 174, "y": 404 }],
+        "walkBounds": { "left": 406, "right": 612 },
+        "sha256": "4b3acd547ddd4fe46cfa1c8a441070c8a7e414db093980d4b6dc12b3a9672a0e"
+      },
+      "previousReference": {
+        "sourceOriginal": "exec-9298cb67-71f3-4db9-99cc-aa259b46c685.png",
+        "sourceWidth": 1024, "sourceHeight": 1536,
+        "sha256": "4beef5304d4a918e7aeb520d8bf4ea0f3411cdd4e114e51a86b1e85563f45042",
+        "purpose": "Preserved native authoring reference only; initial upper portal is being enlarged natively for adult scale; not preloaded or drawn by this catalogue"
+      },
+      "provenance": {
+        "toolRequested": "OpenAI built-in image generation",
+        "camera": "Same orthographic north-facing camera as the city; yaw 0 degrees, pitch 35 degrees; native stationary gantry without baked-in cabin, two vertically aligned floor sockets",
+        "animation": "Final fixed gantry without baked-in cabin; publisher's separate native cabin moves according to the actual five-second transit including its short boarding phase; no new native cabin opening/closing action sheet is certified",
+        "socketStatus": "AUTHORED_NATIVE_FLAT_LANDING_CENTERS;NOT_GAMEPLAY_QA",
+        "sourceOriginal": "exec-1b381de2-29d8-40c7-864d-90f74df0f8aa.png",
+        "nativeMeasurement": "Actual final upper landing selected at y400, not the requested y610; lower landing at y1350. Alpha envelope at128 extracted for catalogue authoring; source SHA supplied by publisher. Native upper portal is about220 pixels high, about120 world units with uniform scale520/950, an untested nominal proportion against the100-unit adult model; no gameplay QA",
+        "lore": "LORE_COMPATIBLE_ORIGINAL"
+      }
+    },
+    "service-ramp-native": {
+      "title": "Rampe oblique des équipes de maintenance",
+      "kind": "ramp",
+      "material": "Basalte porteur et métal industriel patiné, supports obliques et balises ambre",
+      "sourceStatus": "OPENAI_NATIVE_SOURCE_REGISTERED",
+      "art": {
+        "src": "/game/homeworld/v82/diagonal-service-ramp.png",
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "alphaBounds": { "x": 88, "y": 6, "width": 1386, "height": 999 },
+        "lowerSocket": { "x": 358, "y": 860 },
+        "upperSocket": { "x": 1188, "y": 196 },
+        "lowerSupportPixels": [{ "x": 211, "y": 837 }, { "x": 399, "y": 781 }, { "x": 496, "y": 819 }, { "x": 512, "y": 849 }, { "x": 469, "y": 887 }, { "x": 394, "y": 898 }, { "x": 239, "y": 874 }],
+        "upperSupportPixels": [{ "x": 1068, "y": 195 }, { "x": 1151, "y": 157 }, { "x": 1336, "y": 184 }, { "x": 1335, "y": 203 }, { "x": 1266, "y": 254 }, { "x": 1189, "y": 264 }, { "x": 1083, "y": 231 }],
+        "walkBounds": { "left": 300, "right": 420 },
+        "sha256": "8f1987d6cdd27262f2166e4eae77ebe70775a14ed231cf95e435ec689e4d9631"
+      },
+      "provenance": {
+        "toolRequested": "OpenAI built-in image generation",
+        "camera": "Same city orthographic camera; native ascending-right landing vector proportional to screen x=450, y=-360; no renderer rotation or warp",
+        "animation": "Static final steep diagonal source; not the earlier flatter candidate or a new animated vehicle",
+        "socketStatus": "AUTHORED_NATIVE_FLAT_LANDING_CENTERS;NOT_GAMEPLAY_QA",
+        "sourceOriginal": "exec-d026e21c-9fc0-4ff4-919f-52784538d44b.png",
+        "nativeMeasurement": "Two sockets chosen inside the flat native paved landings; native delta x=830,y=-664 is exactly proportional to the unchanged physical projected vector 450,-360; alpha envelope at 128 extracted for catalogue authoring; source SHA supplied by publisher; no gameplay QA",
+        "lore": "LORE_COMPATIBLE_ORIGINAL"
+      }
+    }
+  },
+  "bindings": {
+    "acropolis-stair": {
+      "assetId": "acropolis-stair-native",
+      "role": "Principal ceremonial stair between the Council terrace and the clan audience court",
+      "populationRule": "Keep the walking center free; attendants remain on the existing terraces, never inside the transit line",
+      "decorationRule": "Bronze side structure and restrained amber beacons belong to the native drawing; no extra invisible rail collider is created"
+    },
+    "lower-gallery-stair": {
+      "assetId": "gallery-stair-native",
+      "role": "Dedicated shorter broad stair from the lower service street into the galleries",
+      "populationRule": "No crowd, cage or workshop prop occupies the two existing landing centers",
+      "decorationRule": "Native gallery scale and passage width; never a horizontally stretched acropolis stair"
+    },
+    "clan-lift": {
+      "assetId": "clan-lift-native",
+      "role": "Dedicated delegation lift between the civic level and the Council terrace",
+      "populationRule": "Keep the two level sockets and the cabin approach clear; waiting delegates remain on the existing terraces",
+      "decorationRule": "Dedicated stationary gantry and cabin architecture, never an elevator renamed from a stair; static source is not a native moving-cabin sheet"
+    },
+    "service-ramp": {
+      "assetId": "service-ramp-native",
+      "role": "Native ascending-right maintenance connection from the workshops to the lower galleries",
+      "populationRule": "No crate, service cart or worker blocks either current landing center",
+      "decorationRule": "The diagonal orientation belongs to the native drawing; no screen rotation, mirror, shear or width/height stretch"
+    },
+    "industrial-ramp": {
+      "assetId": "industrial-ramp-native",
+      "role": "Industrial pedestrian ramp between the lower service street and the workshops under the city",
+      "populationRule": "Workshop workers and cargo stay on existing forecourts outside the two landing centers",
+      "decorationRule": "Continuous solid support and side service structure come from the native drawing; no freestanding modern road furniture"
+    },
+    "slum-slope": {
+      "assetId": "industrial-ramp-native",
+      "role": "Reuse of the industrial pedestrian module for the long public descent into the lower service street",
+      "populationRule": "Maintain the two existing landing centers and their walking approach; no cargo stack inside the center passage",
+      "decorationRule": "The shared material belongs to the same city infrastructure; no new district or campaign reward is implied"
+    }
+  },
+  "unresolved": {}
+}

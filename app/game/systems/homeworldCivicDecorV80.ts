@@ -14,6 +14,7 @@ import {HOMEWORLD_FRONTAGE_PLANS_V81} from './homeworldAuthoredLotsV81';
 import {homeworldUsageEnvelopesV81,homeworldEnvelopesOverlapV81} from './homeworldUsageEnvelopesV81';
 import {homeworldCourtPolygonV80} from './homeworldCourtArtV80';
 import {homeworldCityNativePolygonV78} from './homeworldCityNativePlacementV78';
+import {homeworldRetainingJointV82} from './homeworldRetainingAssembliesV82';
 
 export interface HomeworldCivicArtV80 extends HomeworldNativeSpriteCellV64 {
  readonly nativeGroundSupport:readonly HomeworldUrbanPointV78[];
@@ -95,7 +96,7 @@ export function homeworldCivicRefusalV80(item:HomeworldCivicPropV80,accepted:rea
  for(let ix=0;ix<=nx;ix++)for(let iy=0;iy<=ny;iy++){
   const p={x:left+(right-left)*ix/nx,y:top+(bottom-top)*iy/ny};
   if(!homeworldUrbanTerrainV78(item.levelId,p,{halfWidth:0,halfDepth:0}))return'unsupported-contact';
-  const old=homeworldUrbanCollisionV78(item.levelId,p,{halfWidth:12,halfDepth:12});if(old)return'old-volume:'+old.id;
+  const old=homeworldUrbanCollisionV78(item.levelId,p,{halfWidth:12,halfDepth:12});if(old&&!homeworldRetainingJointV82(item.id,old.id))return'old-volume:'+old.id;
  }return null;
 }
 const candidates:HomeworldCivicPropV80[]=[];

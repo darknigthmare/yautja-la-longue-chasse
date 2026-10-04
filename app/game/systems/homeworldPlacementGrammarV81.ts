@@ -14,12 +14,14 @@ import {homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
 import {homeworldExteriorFootprintV76} from './homeworldExteriorDecorV76';
 import {HOMEWORLD_AUTHORED_COURTS_V81,HOMEWORLD_FRONTAGE_PLANS_V81,HOMEWORLD_DISTRICT_GRAMMAR_V81} from './homeworldAuthoredLotsV81';
 import {homeworldUsageEnvelopesV81,homeworldEnvelopesOverlapV81,homeworldEnvelopeBoundsV81,homeworldEnvelopeDistanceV81} from './homeworldUsageEnvelopesV81';
+import {HOMEWORLD_RETAINING_SUPPORTS_V82,homeworldRetainingAssemblyV82,homeworldPointInsideRetainingSupportV82} from './homeworldRetainingAssembliesV82';
 
 type Point={readonly x:number;readonly y:number};
 export type HomeworldRuleSeverityV81='fatal'|'error'|'warning'|'info';
 export interface HomeworldPlacementRuleV81 {readonly id:string;readonly family:string;readonly severity:HomeworldRuleSeverityV81;readonly targetType:string;readonly description:string}
 export interface HomeworldSpatialAssertionV81 {readonly id:string;readonly ruleId:string;readonly objectId:string;readonly conflictId:string|null;readonly levelId:HomeworldLevelV77;readonly passed:boolean;readonly severity:HomeworldRuleSeverityV81;readonly district:string;readonly position:Point;readonly reason:string;readonly actualDistance:number|null;readonly requiredDistance:number|null;readonly suggestedFix:string|null}
 const moved=new Set(['rite-sanctum','residence-terraces-4','residence-enforcers-1','residence-citadel-1','residence-undercity-1','residence-memory-1','residence-arenas-1','residence-market-1','residence-convoy-works-2','residence-forges-1','residence-undercity-2','residence-convoy-works-1','residence-market-2','residence-esplanade-2','residence-clans-1']);
+const intentionalFrontal=new Set(['throne-audience']);
 const blockFamilies:Readonly<Record<string,string>>={port:'îlot des équipages et contrôle',market:'îlot des échanges et alcôves marchandes',forges:'îlot des ateliers et logements artisans',undercity:'îlot du refuge et galeries',esplanade:'îlot du mémorial et promenade',terraces:'îlot des maîtres et logement du cercle',clans:'îlot des délégations',enforcers:'îlot du bastion et de la relève',memory:'îlot du registre et des scribes',arenas:'îlot du cercle de chasse',temple:'îlot du Conseil et annexes',citadel:'îlot royal et annexe d’audience','convoy-works':'îlot des convoyeurs et ateliers','rampart-walk':'îlot des relais du rempart'};
 /** All 43 real stable-ID entrances have an explicit parcel/road/service role.
  * The smaller noninteractive facades have separate lots and cannot become
@@ -33,7 +35,8 @@ export const HOMEWORLD_BUILDING_LOTS_V81=HOMEWORLD_BUILDINGS_V77.map(b=>{
   frontage:frame.angled?'NATIVE_OBLIQUE':'NATIVE_FRONTAL',nativeYaw:b.art.groundFrame?.yawDegrees??0,
   art:b.art.src,footprint:frame.polygon,parcel:{left:bounds.left-40,right:bounds.right+40,top:bounds.top-48,bottom:bounds.bottom+176},
   door,approachPolygon,service,road:grammar?.street??'Voie civique',purpose:HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76[b.id]?.reason??'Entrée reliée à la rue de son district et aux activités déjà présentes.',
-  classification:moved.has(b.id)?'MOVE' as const:frame.angled?'KEEP' as const:'NEW_ART_VARIANT' as const,
+  classification:moved.has(b.id)?'MOVE' as const:frame.angled||intentionalFrontal.has(b.id)?'KEEP' as const:'NEW_ART_VARIANT' as const,
+  orientationPurpose:intentionalFrontal.has(b.id)?'Vue axiale volontaire du palais ; hiérarchie cérémonielle frontale.':frame.angled?'Angle dessiné dans la source native.':'Façade frontale historique ; variante adaptée au rôle restant à produire.',
   furniturePlan:HOMEWORLD_FRONTAGE_PLANS_V81[b.id]??[],interior:{buildingId:b.id,title:room.title,width:room.width,depth:room.depth,zones:(room.zones??[]).map(z=>z.label),services:HOMEWORLD_INTERIOR_BINDINGS_V64[b.id]??[]},
   nearestNeighbors:HOMEWORLD_BUILDINGS_V77.filter(other=>other!==b&&other.levelId===b.levelId).map(other=>({id:other.id,distance:homeworldEnvelopeDistanceV81(bounds,homeworldEnvelopeBoundsV81(homeworldBuildingGroundFrameV76(other).polygon))})).sort((a,c)=>a.distance-c.distance).slice(0,3),
  };
@@ -49,7 +52,17 @@ const props=[
  ...HOMEWORLD_URBAN_PROPS_V78.map(p=>({id:p.id,artId:p.artId,asset:HOMEWORLD_COURT_ART_V80[p.artId].src,levelId:p.levelId,districtId:p.districtId,clusterId:p.groupId,purpose:p.label,x:p.x,y:p.y,polygon:homeworldCourtPolygonV80(p)})),
  ...HOMEWORLD_CITY_GENERATED_PROPS_V78.map(p=>({id:p.id,artId:p.artId,asset:HOMEWORLD_CITY_NATIVE_ART_V78[p.artId].src,levelId:p.levelId,districtId:p.districtId,clusterId:'authored-native:'+p.artId,purpose:HOMEWORLD_CITY_NATIVE_ART_V78[p.artId].id,x:p.x,y:p.y,polygon:homeworldCityNativePolygonV78(p)})),
 ];
-export const HOMEWORLD_USAGE_OBJECTS_V81=props.map(p=>({...p,...homeworldUsageEnvelopesV81(p.artId,p.polygon)}));
+export const HOMEWORLD_NATIVE_RASTER_USAGE_OBJECTS_V81=props.map(p=>({...p,...homeworldUsageEnvelopesV81(p.artId,p.polygon)}));
+/** These four procedural masonry bearings are real solids but not four new
+ * image sources. Their full contacts take part in future access/usage checks,
+ * exactly like the colliders and the renderer. No check has been run for V82. */
+export const HOMEWORLD_STRUCTURAL_USAGE_OBJECTS_V82=HOMEWORLD_RETAINING_SUPPORTS_V82.map(s=>{
+ const bounds=homeworldEnvelopeBoundsV81(s.polygon);
+ return{id:s.id,artId:'structural-masonry-bearing',asset:null,levelId:s.levelId,districtId:'undercity',clusterId:s.assemblyId,purpose:s.label,
+  x:(bounds.left+bounds.right)/2,y:bounds.bottom,polygon:s.polygon,
+  ...homeworldUsageEnvelopesV81('structural-masonry-bearing',s.polygon)};
+});
+export const HOMEWORLD_USAGE_OBJECTS_V81=[...HOMEWORLD_NATIVE_RASTER_USAGE_OBJECTS_V81,...HOMEWORLD_STRUCTURAL_USAGE_OBJECTS_V82];
 export const HOMEWORLD_LEGACY_USAGE_OBJECTS_V81=[
  ...HOMEWORLD_FRONTAGE_V77.map(p=>({id:p.id,artId:p.artId,levelId:p.levelId,x:p.x,y:p.y,physical:homeworldFurnitureFootprintV72(p)})),
  ...HOMEWORLD_EXTERIOR_V77.filter(p=>p.solid).map(p=>({id:p.id,artId:p.artId,levelId:p.levelId,x:p.x,y:p.y,physical:homeworldExteriorFootprintV76(p)})),
@@ -74,7 +87,8 @@ export const HOMEWORLD_RULES_V81:readonly HomeworldPlacementRuleV81[]=[
  {id:'COLLINEAR_CLUSTER_DETECTION',family:'composition',severity:'warning',targetType:'cluster',description:'Trois familles de props ne partagent pas une baseline injustifiée.'},
  {id:'INTERSECTION_SIGHT_CLEAR',family:'access',severity:'error',targetType:'street-node',description:'Le centre des carrefours demeure libre de gros mobilier.'},
  {id:'LANDMARK_VIEW_CORRIDOR_CLEAR',family:'composition',severity:'warning',targetType:'landmark',description:'L’axe public du palais et du Conseil reste lisible.'},
- {id:'BARRIER_CONTINUITY',family:'structure',severity:'warning',targetType:'barrier',description:'Le retour d’un garde-corps doit rencontrer un appui ; un module isolé ne constitue pas une barrière complète.'},
+ {id:'BARRIER_CONTINUITY',family:'structure',severity:'warning',targetType:'barrier',description:'Chaque terminaison native doit rencontrer son appui réel ; la proximité d’un bâtiment ne remplace pas un joint.'},
+ {id:'STRUCTURAL_SUPPORT_SUPPORTED',family:'foundation',severity:'error',targetType:'structural-support',description:'Chaque contact du piédroit réel appartient au terrain de son étage.'},
  {id:'BARRIER_GATE_CLEAR',family:'access',severity:'error',targetType:'connector',description:'Les deux paliers du raccord gardent le corps et son espace de virage.'},
 ];
 
@@ -107,8 +121,20 @@ export function auditHomeworldPlacementV81(){
    for(const other of HOMEWORLD_USAGE_OBJECTS_V81.filter(p=>p!==prop&&p.levelId===prop.levelId))check(rule,prop.id,prop.levelId,prop.districtId,prop,!homeworldEnvelopesOverlapV81(usage,other.physical),'Espace d’usage distinct du contact voisin.',other.id,homeworldEnvelopeDistanceV81(usage,other.physical),0);
    for(const [i,point] of [{x:usage.left+24,y:usage.top+14},{x:usage.right-24,y:usage.top+14},{x:usage.left+24,y:usage.bottom-14},{x:usage.right-24,y:usage.bottom-14},{x:(usage.left+usage.right)/2,y:(usage.top+usage.bottom)/2}].entries())check('USAGE_SUPPORTED',prop.id+':use-'+i,prop.levelId,prop.districtId,point,homeworldUrbanTerrainV78(prop.levelId,point)&&!homeworldCollisionV77(prop.levelId,point),'Corps48×28 posé dans l’espace nécessaire à l’activité.');
   }
-  if(prop.role.family==='barrier')check('BARRIER_CONTINUITY',prop.id,prop.levelId,prop.districtId,prop,HOMEWORLD_BUILDING_LOTS_V81.some(b=>b.levelId===prop.levelId&&homeworldEnvelopeDistanceV81(prop.physical,homeworldEnvelopeBoundsV81(b.footprint))<96),'Module de soutènement proche de son appui ; barrière énergétique complète non affirmée.');
+  if(prop.role.family==='barrier'){
+   const assembly=homeworldRetainingAssemblyV82(prop.id);
+   if(assembly)for(const [index,contact] of assembly.nativeContacts.entries()){
+    const bearing=HOMEWORLD_RETAINING_SUPPORTS_V82.find(s=>s.ownerId===prop.id&&s.levelId===prop.levelId&&homeworldPointInsideRetainingSupportV82(contact,s.polygon));
+    check('BARRIER_CONTINUITY',prop.id+':terminal-'+index,prop.levelId,prop.districtId,contact,
+     !!bearing&&homeworldPointInsideRetainingSupportV82(contact,prop.polygon),
+     'Contact terminal du mur natif contenu dans la coque réelle et dans son piédroit désigné ; aucun enclos complet affirmé.',bearing?.id??null);
+   }
+   else check('BARRIER_CONTINUITY',prop.id,prop.levelId,prop.districtId,prop,false,'Terminaisons structurelles sans assemblage explicite ; ne pas déduire leur continuité de la seule proximité d’un bâtiment.');
+  }
  }
+ for(const support of HOMEWORLD_RETAINING_SUPPORTS_V82)for(const [index,point] of support.polygon.entries())
+  check('STRUCTURAL_SUPPORT_SUPPORTED',support.id+':contact-'+index,support.levelId,'undercity',point,
+   homeworldUrbanTerrainV78(support.levelId,point,{halfWidth:0,halfDepth:0}),'Contact réel du piédroit, sans extension invisible du terrain.',support.ownerId);
  for(const r of [...HOMEWORLD_RESIDENTS_V77,...HOMEWORLD_URBAN_EXTRAS_V78])for(let s=1;s<r.path.length;s++){
   const polygon=homeworldUrbanCorridorV78(r.path[s-1],r.path[s],36,26);
   for(const prop of HOMEWORLD_USAGE_OBJECTS_V81.filter(p=>p.levelId===r.levelId))check('NPC_SOCIAL_ZONE_CLEAR',r.id+':segment-'+s,r.levelId,r.districtId,r.path[s-1],!homeworldUrbanOverlapV78(polygon,prop.polygon),'Région balayée par le corps PNJ complet sur le segment.',prop.id);
@@ -140,9 +166,9 @@ export function auditHomeworldPlacementV81(){
   if(prop.usage){for(const other of [...HOMEWORLD_LEGACY_USAGE_OBJECTS_V81,...HOMEWORLD_USAGE_OBJECTS_V81].filter(p=>p.id!==prop.id&&p.levelId===prop.levelId))check(prop.role.family==='bench'?'BENCH_USE_ZONE_CLEAR':'USAGE_SUPPORTED',prop.id,prop.levelId,'legacy',prop,!homeworldEnvelopesOverlapV81(prop.usage,other.physical),'Enveloppe fonctionnelle historique : orientation native à confirmer avant remplacement.',other.id,homeworldEnvelopeDistanceV81(prop.usage,other.physical),0,'warning');}
  }
  const violations=assertions.filter(a=>!a.passed),errors=violations.filter(a=>a.severity==='error'||a.severity==='fatal');
- return{revision:81,assertionCount:assertions.length,assertions,violations,errors,
-  counts:{buildings:HOMEWORLD_BUILDING_LOTS_V81.length,buildingsMoved:HOMEWORLD_BUILDING_LOTS_V81.filter(b=>b.classification==='MOVE').length,buildingsNeedingArt:HOMEWORLD_BUILDING_LOTS_V81.filter(b=>b.frontage==='NATIVE_FRONTAL').length,
-   props:HOMEWORLD_USAGE_OBJECTS_V81.length+HOMEWORLD_LEGACY_USAGE_OBJECTS_V81.length,recomposedProps:HOMEWORLD_USAGE_OBJECTS_V81.length,legacySolids:HOMEWORLD_LEGACY_USAGE_OBJECTS_V81.length,civicCandidates:HOMEWORLD_CIVIC_PROPS_V80.length+HOMEWORLD_CIVIC_REFUSALS_V80.length,urbanCandidates:HOMEWORLD_URBAN_PROPS_V78.length+HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length,refusedCivic:HOMEWORLD_CIVIC_REFUSALS_V80.length,refusedUrban:HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length,uniqueAssets:new Set(HOMEWORLD_USAGE_OBJECTS_V81.map(p=>p.asset)).size,authoredCourts:HOMEWORLD_AUTHORED_COURTS_V81.length,groundPolygons:HOMEWORLD_GROUND_V77.length,
+ return{revision:81,layoutRevision:82,assertionCount:assertions.length,assertions,violations,errors,
+  counts:{buildings:HOMEWORLD_BUILDING_LOTS_V81.length,buildingsMoved:HOMEWORLD_BUILDING_LOTS_V81.filter(b=>b.classification==='MOVE').length,buildingsNeedingArt:HOMEWORLD_BUILDING_LOTS_V81.filter(b=>b.frontage==='NATIVE_FRONTAL'&&!intentionalFrontal.has(b.buildingId)).length,
+   props:HOMEWORLD_USAGE_OBJECTS_V81.length+HOMEWORLD_LEGACY_USAGE_OBJECTS_V81.length,recomposedProps:HOMEWORLD_NATIVE_RASTER_USAGE_OBJECTS_V81.length,structuralVolumes:HOMEWORLD_STRUCTURAL_USAGE_OBJECTS_V82.length,legacySolids:HOMEWORLD_LEGACY_USAGE_OBJECTS_V81.length,civicCandidates:HOMEWORLD_CIVIC_PROPS_V80.length+HOMEWORLD_CIVIC_REFUSALS_V80.length,urbanCandidates:HOMEWORLD_URBAN_PROPS_V78.length+HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length,refusedCivic:HOMEWORLD_CIVIC_REFUSALS_V80.length,refusedUrban:HOMEWORLD_URBAN_PROP_REJECTIONS_V78.length,uniqueAssets:new Set(HOMEWORLD_NATIVE_RASTER_USAGE_OBJECTS_V81.map(p=>p.asset)).size,authoredCourts:HOMEWORLD_AUTHORED_COURTS_V81.length,groundPolygons:HOMEWORLD_GROUND_V77.length,
    regions:HOMEWORLD_CONNECTIONS_V77.length,regionPoints:HOMEWORLD_POINTS_V77.filter(p=>p.regionId).length,sceneryFacades:HOMEWORLD_URBAN_FACADES_V78.length},
   limitations:['Contraintes évaluées et captures réelles sont des preuves distinctes.','Les anciens meubles V64/V72/V76 restent conservés : le présent audit dur couvre les placements recompilés, les accès et routines ; leur remplacement progressif demeure nécessaire.','Les silhouettes frontales encore présentes sont explicitement classées NEW_ART_VARIANT.','Ce plan local est une adaptation originale compatible avec le lore, pas une carte canonique1:1.']};
 }

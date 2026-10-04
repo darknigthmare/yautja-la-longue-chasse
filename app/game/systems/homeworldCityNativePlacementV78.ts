@@ -8,6 +8,7 @@ import {homeworldUrbanFacadeCollisionV78} from './homeworldUrbanFacadesV78';
 import {homeworldUrbanOverlapV78,homeworldUrbanRectV78,type HomeworldUrbanPointV78} from './homeworldUrbanLayoutV78';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 import {homeworldUsageEnvelopesV81,homeworldEnvelopesOverlapV81} from './homeworldUsageEnvelopesV81';
+import {homeworldRetainingJointV82} from './homeworldRetainingAssembliesV82';
 export interface HomeworldCityNativePlacementV78{
  readonly id:string;readonly artId:HomeworldCityNativeArtIdV78;readonly x:number;readonly y:number;
  readonly levelId:HomeworldLevelV77;readonly districtId:string;readonly interactive:false;readonly solid:true;
@@ -53,7 +54,7 @@ export function homeworldCityNativeRefusalV78(item:HomeworldCityNativePlacementV
  for(let ix=0;ix<=nx;ix++)for(let iy=0;iy<=ny;iy++){
   const p={x:left+(right-left)*ix/nx,y:top+(bottom-top)*iy/ny};
   if(!terrain(item.levelId,p,{halfWidth:0,halfDepth:0}))return 'unsupported-base';
-  const old=homeworldCollisionV77(item.levelId,p,{halfWidth:12,halfDepth:12})??homeworldUrbanFacadeCollisionV78(item.levelId,p,{halfWidth:12,halfDepth:12});if(old)return 'old-volume:'+old.id;
+  const old=homeworldCollisionV77(item.levelId,p,{halfWidth:12,halfDepth:12})??homeworldUrbanFacadeCollisionV78(item.levelId,p,{halfWidth:12,halfDepth:12});if(old&&!homeworldRetainingJointV82(item.id,old.id))return 'old-volume:'+old.id;
  }
  return null;
 }

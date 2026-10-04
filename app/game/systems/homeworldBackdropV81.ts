@@ -1,11 +1,11 @@
-import {HOMEWORLD_GROUND_V77,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,homeworldLevelV77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {HOMEWORLD_URBAN_GROUND_V78} from './homeworldUrbanLayoutV78';
 import {pointInHomeworldPolygon} from './homeworldCity';
 import {HOMEWORLD_GEOMETRY_V64} from './homeworldGeometryV64';
 
 type Point={x:number;y:number};
 type Edge={id:string;levelId:HomeworldLevelV77;a:Point;b:Point};
-const grounds=[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78];
+const grounds=[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78];
 const cross=(a:Point,b:Point)=>a.x*b.y-a.y*b.x;
 const minus=(a:Point,b:Point)=>({x:a.x-b.x,y:a.y-b.y});
 function cuts(a:Point,b:Point,c:Point,d:Point):number[]{

@@ -5,8 +5,10 @@ import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
 import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
 import HomeworldBackdropV81 from './HomeworldBackdropV81';
+import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
+import {HOMEWORLD_RETAINING_SUPPORTS_V82} from './systems/homeworldRetainingAssembliesV82';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
-import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
+import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
  HOMEWORLD_RESIDENTS_V77,homeworldResidentPoseV77,HOMEWORLD_LEVELS_V77,HOMEWORLD_SPACEPORT_V77,HOMEWORLD_CONNECTORS_V77,
  HOMEWORLD_CONNECTIONS_V77,HOMEWORLD_CONNECTION_FURNITURE_V77,HOMEWORLD_POINTS_V77,homeworldLevelV77,type HomeworldLevelV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_INTERIOR_POINT_IDS_V64} from './systems/homeworldInteriorsV64';
@@ -14,7 +16,8 @@ import {HOMEWORLD_OUTSKIRTS_ART_V71,HOMEWORLD_OUTSKIRTS_GROUND_V71} from './syst
 import {HOMEWORLD_GROUND_ART_V64,HOMEWORLD_PROP_ART_V64,HOMEWORLD_TRANSPORT_ART_V64} from './systems/homeworldArtV64';
 import {HOMEWORLD_FURNITURE_ART_V72} from './systems/homeworldFurnitureV72';
 import {HOMEWORLD_GATEWAY_ART_V72,homeworldGatewayScaleV72} from './systems/homeworldRegionConnectionsV72';
-import {HOMEWORLD_COUNCIL_STAIR_ART_V77,homeworldCouncilStairPlacementV77} from './systems/homeworldConnectorArtV77';
+import {homeworldConnectorArtV82,homeworldConnectorPlacementV82,homeworldConnectorSourceStateV82} from './systems/homeworldConnectorArtV82';
+import {HOMEWORLD_LIFT_CABIN_ART_V82,homeworldLiftCabinPlacementV82} from './systems/homeworldLiftCabinV82';
 import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingCoversPaintV76,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
 import {homeworldBuildingRenderDepthV76,shouldFadeHomeworldBuilding,homeworldBuildingVisibleBoundsV72,shouldFadeHomeworldForeground} from './systems/homeworldCity';
 import styles from './HomeworldCity.module.css';
@@ -53,7 +56,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    <defs><pattern id={`${id}-natural`} width="300" height={300*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_OUTSKIRTS_GROUND_V71.src} width="300" height={300*d} preserveAspectRatio="none"/></pattern></defs>
    {/* Local terrace shoulders, not an opaque wallpaper across sky and chasms.
        These narrow painted margins grant no additional walkable surface. */}
-   {painted('0')&&[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId==='0').map(ground=><polygon key={ground.id}
+   {painted('0')&&[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId==='0').map(ground=><polygon key={ground.id}
     points={ground.polygon.map(p=>`${p.x},${p.y*d}`).join(' ')} fill={`url(#${id}-natural)`}
     stroke={`url(#${id}-natural)`} strokeWidth="22" strokeLinejoin="round"/>)}
   </svg>
@@ -66,7 +69,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    {/* One source-aligned opaque union: internal legacy route overlaps must not
        paint rectangular border grids or expose unrelated background floors. */}
    <g className={styles.civicGroundUnionV80} data-homeworld-ground-union-v80={level.id}>
-    {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId===level.id).map(ground=><polygon key={ground.id} data-world-ground-id-v77={ground.id}
+    {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId===level.id).map(ground=><polygon key={ground.id} data-world-ground-id-v77={ground.id}
      points={ground.polygon.map(p=>`${p.x},${p.y*d-level.elevation}`).join(' ')} fill={`url(#${id}-paving-${level.id})`} stroke="none" opacity="1"/>)}</g></svg>)}
   {paintedBuildings.filter(building=>painted(building.levelId)).map(building=>{
    const image=homeworldBuildingSpritePlacementV64(building),z=homeworldLevelV77(building.levelId).elevation,box={...image,top:image.top-z};if(!visible(box,camera))return null;
@@ -90,6 +93,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {[...HOMEWORLD_FRONTAGE_V77,...HOMEWORLD_CONNECTION_FURNITURE_V77].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_FURNITURE_ART_V72[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*(item.scale??1));})}
   {[...HOMEWORLD_EXTERIOR_V77,...HOMEWORLD_URBAN_PROPS_V78].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_COURT_ART_V80[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*item.scale,1,item.elevation??0);})}
   {HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CITY_NATIVE_ART_V78[item.artId];return prop(item.id,'city-native-v78:'+item.artId,art,item,item.levelId,art.heightWorld);})}
+  {HOMEWORLD_RETAINING_SUPPORTS_V82.filter(support=>painted(support.levelId)).map(support=><HomeworldRetainingSupportV82 key={support.id} support={support} camera={camera}/>)}
   {HOMEWORLD_CIVIC_PROPS_V80.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CIVIC_ART_V80[item.artId];return prop(item.id,'civic-native-v80:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
@@ -108,13 +112,22 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    </span>;
   })}
   {HOMEWORLD_CONNECTORS_V77.filter(connector=>painted(connector.from.levelId)||painted(connector.to.levelId)).map(connector=>{
+   const nativeArt=homeworldConnectorArtV82(connector.id),nativeLayout=homeworldConnectorPlacementV82(connector);
+   if(nativeArt&&nativeLayout){
+    if(!visible(nativeLayout,camera))return null;
+    return <span key={connector.id}>
+     <img src={nativeArt.src} alt="" draggable={false}
+     data-homeworld-vertical-connector-v77={connector.id} data-native-art-status={homeworldConnectorSourceStateV82(connector.id)}
+     data-native-sha256={nativeArt.sha256} data-native-scale-v82={nativeLayout.scale} data-gameplay-qa-v82="NOT_PERFORMED"
+     style={{position:'absolute',left:nativeLayout.left,top:nativeLayout.top,width:nativeLayout.width,height:nativeLayout.height,maxWidth:'none',zIndex:HOMEWORLD_CONNECTOR_DRAW_DEPTH_V78,pointerEvents:'none'}}/>
+     {(()=>{const cabin=homeworldLiftCabinPlacementV82(connector,levelId,transit);return cabin&&visible(cabin,camera)?<img src={HOMEWORLD_LIFT_CABIN_ART_V82.src} alt="" draggable={false}
+      data-homeworld-lift-cabin-v82={connector.id} data-native-sha256={HOMEWORLD_LIFT_CABIN_ART_V82.sha256}
+      data-travel-fraction-v82={cabin.travelFraction} data-native-scale-v82={cabin.scale} data-authored-motion-clips="0"
+      style={{position:'absolute',left:cabin.left,top:cabin.top,width:cabin.width,height:cabin.height,maxWidth:'none',zIndex:cabin.depth,pointerEvents:'none'}}/>:null;})()}
+    </span>;
+   }
    const a=homeworldProjectGroundV64(connector.from.point,homeworldLevelV77(connector.from.levelId).elevation),b=homeworldProjectGroundV64(connector.to.point,homeworldLevelV77(connector.to.levelId).elevation);
    if(!visible({left:Math.min(a.x,b.x)-140,top:Math.min(a.y,b.y)-60,width:Math.abs(a.x-b.x)+280,height:Math.abs(a.y-b.y)+120},camera))return null;
-   if(connector.id==='council-stair'){
-    const art=HOMEWORLD_COUNCIL_STAIR_ART_V77,layout=homeworldCouncilStairPlacementV77({...connector.from,elevation:homeworldLevelV77(connector.from.levelId).elevation},{...connector.to,elevation:homeworldLevelV77(connector.to.levelId).elevation});
-    if(!visible(layout,camera))return null;
-    return <img key={connector.id} src={art.src} alt="" draggable={false} data-homeworld-vertical-connector-v77={connector.id} data-native-art-status="NATIVE_ALIGNED" data-native-sha256={art.sha256} style={{position:'absolute',left:layout.left,top:layout.top,width:layout.width,height:layout.height,maxWidth:'none',zIndex:HOMEWORLD_CONNECTOR_DRAW_DEPTH_V78,pointerEvents:'none'}}/>;
-   }
    return <svg key={connector.id} data-homeworld-vertical-connector-v77={connector.id} data-native-art-status={connector.artStatus}
     width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
     style={{position:'absolute',left:camera.x,top:camera.y,zIndex:HOMEWORLD_CONNECTOR_DRAW_DEPTH_V78,pointerEvents:'none'}}>

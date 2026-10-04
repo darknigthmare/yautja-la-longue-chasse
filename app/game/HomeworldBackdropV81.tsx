@@ -7,6 +7,7 @@ import {homeworldLevelV77,type HomeworldLevelV77} from './systems/homeworldWorld
 import {HOMEWORLD_OUTSKIRTS_ART_V71} from './systems/homeworldOutskirtsArtV71';
 import {HOMEWORLD_TRANSPORT_ART_V64} from './systems/homeworldArtV64';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
+import {homeworldBackdropArtV82} from './systems/homeworldBackdropArtV82';
 import styles from './HomeworldBackdropV81.module.css';
 
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
@@ -31,9 +32,10 @@ export default memo(function HomeworldBackdropV81({camera,levelId,paintedLevels,
    style={{left:camera.x-80,top:camera.y+camera.viewHeight*.39,width:camera.viewWidth+160,height:camera.viewHeight*.72,
     backgroundImage:`url('${foundation.src}')`,backgroundSize:'1000px auto',backgroundPosition:`${-camera.x*.2}px top`,opacity:below?.38:.45}}/>
   {HOMEWORLD_DISTANT_BLOCKS_V81.map(item=>{
-    const p=homeworldBackdropPositionV81(item,camera,levelId),height=item.width*city.sourceHeight/city.sourceWidth;
+    const art=homeworldBackdropArtV82(item.id,below)||city;
+    const p=homeworldBackdropPositionV81(item,camera,levelId),height=item.width*art.sourceHeight/art.sourceWidth;
     if(!visible(p.left,p.top,item.width,height,camera))return null;
-    return <img key={item.id} aria-hidden="true" alt="" draggable={false} src={city.src} className={styles.distantBlock}
+    return <img key={item.id} aria-hidden="true" alt="" draggable={false} src={art.src} className={styles.distantBlock}
       data-homeworld-depth-layer-v81={item.layer} data-homeworld-background-block-v81={item.id} data-parallax={HOMEWORLD_DEPTH_LAYERS_V81[item.layer].parallax}
       style={{left:p.left,top:p.top,width:item.width,height,opacity:(item.layer===4?.58:.83)*(below?.35:1),zIndex:item.layer===4?-41000:-33000}}/>;
   })}

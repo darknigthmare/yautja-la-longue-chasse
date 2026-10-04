@@ -17,6 +17,7 @@ import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
 import { HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74 } from './homeworldSecondaryInteriorCodexV74';
 import { HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81 } from './homeworldMonumentInteriorCodexV81';
+import { HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82 } from './homeworldPublicFittingsCodexV82';
 import { HOMEWORLD_NATIVE_ARCHITECTURE_CODEX_V81 } from './homeworldNativeArchitectureCodexV81';
 import { homeworldBuildingIdentityV81 } from './homeworldNativeArchitectureV81';
 import { HOMEWORLD_POPULATION_CODEX_V74 } from './homeworldPopulationCodexV74';
@@ -90,7 +91,7 @@ const nativeArchitectureRecordsV81:HomeworldContextRecordV71[]=HOMEWORLD_NATIVE_
 });
 const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
   const room=homeworldInteriorForBuildingV64(building.id)!,door=homeworldBuildingDoorwayV64(building),footprint=homeworldBuildingFootprintV64(building);
-  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`||record.id===`v81-facade:${building.id}`);
+  const components=[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_IDENTITY_CODEX_V72,...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74,...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81,...HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76].filter(record=>record.id===building.id||record.id===`door:${building.id}`||record.spaceId===building.id||record.id===`v75-facade:${building.id}`||record.id===`v76-facade:${building.id}`||record.id===`v81-facade:${building.id}`);
   const exteriorFurniture=[...HOMEWORLD_ELEMENT_CODEX_V64,...architectureRecordsV75,...exteriorDecorRecordsV76].filter(record=>record.category==='prop'&&record.spaceId==='world'
     &&record.districtId===building.districtId&&Math.hypot(record.position.x-building.x,record.position.y-building.y)<building.width);
   const streets=HOMEWORLD_STREETS.filter(street=>street.polygon.some(p=>Math.hypot(p.x-door.approach.x,p.y-door.approach.y)<800));
@@ -105,6 +106,7 @@ const contexts:HomeworldContextRecordV71[]=HOMEWORLD_BUILDINGS.map(building=>{
       `Mobilier intérieur réel : ${room.props.map(prop=>`${prop.id} (${homeworldInteriorPropArtIdV64(prop.kind)}, ${Math.round(prop.width)} × ${Math.round(prop.height)} peints)`).join(' ; ')}. Les modules natifs et les zones de ce lieu sont détaillés dans les fiches associées.`,
       `${room.orientedDecorV76?.length??0} modules orientés V76, avec appuis, usages et volumes individuels dans leurs fiches associées.`,
       ...(room.monumentLayoutV81?[`${room.monumentDecorV81?.length??0} modules natifs supplémentaires et ${room.monumentInhabitantsV81?.length??0} habitants stationnaires non interactifs du complexe public V81, détaillés dans leurs fiches associées.`]:[]),
+      ...(room.publicFittingsV82?[`Compléments publics V82 : ${room.publicFittingsV82.furniture.length} meubles et ${room.publicFittingsV82.decor.length} contenants orientés. ${room.publicFittingsV82.purpose} État de ce lot : implémenté, non vérifié.`]:[]),
       `Voies proches : ${streets.map(street=>street.label).join(' ; ')||'cour du quartier'}. Les trajets accessibles demeurent calculés par les collisions existantes.`,
       `${exteriorFurniture.length} mobilier(s) extérieur(s) voisin(s) répertorié(s). Les liens ne donnent aucune nouvelle interaction.`,
       'Barrières : seules les façades, volumes et meubles solides déjà présents bloquent le passage. Aucun faux grillage inaccessible ne coupe la rue.',
@@ -136,6 +138,7 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
   ...contexts,...approaches,...outdoors,...HOMEWORLD_IDENTITY_CODEX_V72.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_SECONDARY_INTERIOR_CODEX_V74.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`]})),
   ...HOMEWORLD_MONUMENT_INTERIOR_CODEX_V81.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`]})),
+  ...HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82.map(record=>({...record,associatedElementIds:[`interior:${record.spaceId}`,`exit:${record.spaceId}`]})),
   ...HOMEWORLD_CIVILIAN_MOTION_CODEX_V74.map(record=>({...record,associatedElementIds:[]})),
   ...HOMEWORLD_POPULATION_CODEX_V74,...HOMEWORLD_CONVERSATION_CODEX_V75,...architectureRecordsV75,...angledArchitectureRecordsV76,...nativeArchitectureRecordsV81,...interiorDecorRecordsV76,...exteriorDecorRecordsV76,...HOMEWORLD_LANDSCAPE_CODEX_V75,...HOMEWORLD_CONNECTION_CODEX_V72,{...base,id:'floor:outskirts-v71',label:'Sol naturel · base de cendre et ceinture V75',category:'floor',districtId:'outskirts',
     position:{x:HOMEWORLD_LANDSCAPE_BOUNDS_V75.left,y:HOMEWORLD_LANDSCAPE_BOUNDS_V75.top,z:0},

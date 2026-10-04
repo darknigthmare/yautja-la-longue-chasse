@@ -4,6 +4,8 @@ import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_POINTS_V77,HOMEWO
 import {HOMEWORLD_COUNCIL_STAIR_ART_V77,homeworldCouncilStairPlacementV77,homeworldCouncilStairRailsV77} from './homeworldConnectorArtV77';
 import {HOMEWORLD_DISTRICTS,HOMEWORLD_STREETS} from './homeworldCity';
 import {HOMEWORLD_GROUND_ART_V64} from './homeworldArtV64';
+import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81,HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82,HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82} from './homeworldLegacyPlacementsV81';
+import {HOMEWORLD_RETAINING_SUPPORTS_V82,HOMEWORLD_RETAINING_ASSEMBLIES_V82} from './homeworldRetainingAssembliesV82';
 /** This transforms aggregate records after assembly, without importing the
  * aggregate itself. Local room coordinates and immutable source art survive. */
 export function homeworldRecordPlacementV77<T extends HomeworldElementRecordV64>(record:T):T|null{
@@ -13,7 +15,8 @@ export function homeworldRecordPlacementV77<T extends HomeworldElementRecordV64>
  const district=region?HOMEWORLD_POINTS_V77.find(p=>p.regionId===region)?.districtId??'':record.districtId;
  const sourceGround=HOMEWORLD_GROUND_V77.find(g=>record.id==='street:'+g.id||record.id==='floor:'+g.id);
  const point=HOMEWORLD_POINTS_V77.find(p=>record.id===p.id||record.id==='point:'+p.id||record.id==='station:'+p.id||record.id==='region:'+p.regionId);
- const levelId=point?.levelId??sourceGround?.levelId??homeworldDistrictLevelV77(district),dx=point?point.x-record.position.x:sourceGround?Math.min(...sourceGround.polygon.map(p=>p.x))-record.position.x:district==='port'?6500:0,dy=point?point.y-record.position.y:sourceGround?Math.min(...sourceGround.polygon.map(p=>p.y))-record.position.y:0;
+ const propId=record.id.replace(/^prop:/,''),relocation=HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81[propId]??HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82[propId]??HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82[propId];
+ const levelId=point?.levelId??sourceGround?.levelId??homeworldDistrictLevelV77(district),dx=relocation?relocation.x-record.position.x:point?point.x-record.position.x:sourceGround?Math.min(...sourceGround.polygon.map(p=>p.x))-record.position.x:district==='port'?6500:0,dy=relocation?relocation.y-record.position.y:point?point.y-record.position.y:sourceGround?Math.min(...sourceGround.polygon.map(p=>p.y))-record.position.y:0;
  const move=(p:{x:number;y:number})=>({...p,x:p.x+dx,y:p.y+dy}),box=record.footprint;
  const building=HOMEWORLD_BUILDINGS_V77.find(b=>record.id===b.id||record.id==='door:'+b.id);
  return{...record,position:{...move(record.position),z:record.position.z+homeworldLevelV77(building?.levelId??levelId).elevation},
@@ -22,7 +25,7 @@ export function homeworldRecordPlacementV77<T extends HomeworldElementRecordV64>
   door:record.door?{...record.door,threshold:move(record.door.threshold),approach:move(record.door.approach),groundOpening:record.door.groundOpening?{left:move(record.door.groundOpening.left),right:move(record.door.groundOpening.right)}:undefined}:null,
   ...('associatedElementIds'in record&&Array.isArray(record.associatedElementIds)?{associatedElementIds:record.associatedElementIds.map((id:string)=>{const match=id.match(/^(?:gateway|connection-(?:door|floor)|direction|street:connection)-v72:(leviathan-coast|thermal-caves)(?::.*)?$/);return match?'dock-v77:'+match[1]:id;}).filter((id:string,index:number,ids:string[])=>ids.indexOf(id)===index)}:{}),
   constraints:[...record.constraints,`Implantation V77 au niveau ${building?.levelId??levelId}, Z ${homeworldLevelV77(building?.levelId??levelId).elevation}. Collision et caméra utilisent ce même niveau physique.`,
-   ...(dx?['Spatioport déplacé avec son quai, sa navette, ses portes et ses habitants de +6500 en X ; aucun bitmap modifié ni miroité.']:[])]};
+   ...(relocation?[`Implantation authored V82 : ${relocation.reason} Source, ID, dimensions et collision conservés ; ce nouveau lot n’a pas été vérifié.`]:district==='port'&&dx?['Spatioport déplacé avec son quai, sa navette, ses portes et ses habitants de +6500 en X ; aucun bitmap modifié ni miroité.']:[])]};
 }
 const base={spaceId:'world',districtId:'',dimensions:{width:0,depth:0,height:0},footprint:null,door:null,lore:'original-adaptation' as const,source:[],asset:null};
 type WorldRecordV77=HomeworldElementRecordV64&{associatedElementIds?:readonly string[]};
@@ -58,6 +61,15 @@ export const HOMEWORLD_COUNCIL_SUPPORT_CODEX_V77:readonly WorldRecordV77[]=[
    'Sépare le couloir praticable du bord de palier sans réduire le corps du chasseur.']})),
 ];
 export const HOMEWORLD_WORLD_CODEX_V77:readonly WorldRecordV77[]=[
+ ...HOMEWORLD_RETAINING_SUPPORTS_V82.map(s=>({...base,id:s.id,label:s.label,category:'prop' as const,districtId:'undercity',
+  position:{x:(Math.min(...s.polygon.map(p=>p.x))+Math.max(...s.polygon.map(p=>p.x)))/2,y:Math.max(...s.polygon.map(p=>p.y)),z:homeworldLevelV77(s.levelId).elevation},
+  dimensions:{width:Math.max(...s.polygon.map(p=>p.x))-Math.min(...s.polygon.map(p=>p.x)),depth:Math.max(...s.polygon.map(p=>p.y))-Math.min(...s.polygon.map(p=>p.y)),height:s.height},
+  footprint:{left:Math.min(...s.polygon.map(p=>p.x)),right:Math.max(...s.polygon.map(p=>p.x)),top:Math.min(...s.polygon.map(p=>p.y)),bottom:Math.max(...s.polygon.map(p=>p.y)),polygon:s.polygon},
+  associatedElementIds:[s.ownerId,s.assemblyId],constraints:[s.provenance+' ; '+s.nativeStatus+'. Piédroit maçonné original, pas un nouveau PNG.',
+   HOMEWORLD_RETAINING_ASSEMBLIES_V82.find(a=>a.id===s.assemblyId)!.function,
+   'Le même polygone plein est projeté pour le rendu et utilisé pour la collision sur cet étage.',
+   'Joint uniquement avec son propre mur ; aucune réduction du collider natif ou du corps du joueur.',
+   'Nouveau lot V82 non validé : aucun test, audit, lint ou contrôle visuel exécuté après modification.']})),
  ...HOMEWORLD_LEVELS_V77.map(level=>({...base,id:'floor-level-v77:'+level.id,label:level.name,category:'floor' as const,position:{x:0,y:0,z:level.elevation},constraints:[`Niveau physique ${level.id}. Les interactions et collisions des autres niveaux sont exclues.`,`Zoom de la caméra ${level.zoom}, interpolation continue pendant les raccords.`,`Les cartes ChatGPT sont des concepts d’implantation originaux, jamais des dimensions canoniques.`]})),
  ...HOMEWORLD_CONNECTORS_V77.map(c=>({...base,id:'connector-v77:'+c.id,label:c.name,category:'door' as const,position:{...c.from.point,z:homeworldLevelV77(c.from.levelId).elevation},asset:c.id==='council-stair'?HOMEWORLD_COUNCIL_STAIR_ART_V77.src:null,
   source:c.id==='council-stair'?[{label:'Escalier natif OpenAI · paliers mesurés',url:HOMEWORLD_COUNCIL_STAIR_ART_V77.src,note:'SHA256 '+HOMEWORLD_COUNCIL_STAIR_ART_V77.sha256}]:[],

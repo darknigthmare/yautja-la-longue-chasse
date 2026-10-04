@@ -6,6 +6,7 @@ import {homeworldSecondaryInteriorV74,type HomeworldSecondaryLayoutV74} from './
 import {homeworldDecoratedInteriorV76,homeworldInteriorDecorTouchesV76,type HomeworldInteriorDecorInstanceV76} from './homeworldInteriorDecorV76';
 import {homeworldCntlipInteriorV77,homeworldCntlipHostTouchesV77} from './homeworldCntlipPhysicalV77';
 import {homeworldMonumentInteriorV81,homeworldMonumentInhabitantTouchesV81,type HomeworldMonumentLayoutV81,type HomeworldMonumentInhabitantV81} from './homeworldMonumentInteriorsV81';
+import {homeworldPublicFittingsV82,type HomeworldPublicFittingsV82} from './homeworldPublicFittingsV82';
 
 /** Original civic/domestic interiors for this game; not a canonical map of Yautja Prime.
  * Coordinates are on the unprojected ground plane. The renderer alone applies
@@ -43,6 +44,8 @@ export interface HomeworldInteriorV64 {
   monumentLayoutV81?:HomeworldMonumentLayoutV81;
   monumentDecorV81?:readonly HomeworldInteriorDecorInstanceV76[];
   monumentInhabitantsV81?:readonly HomeworldMonumentInhabitantV81[];
+  /** Additive public furniture; legacy fixtures and service bindings remain intact. */
+  publicFittingsV82?:HomeworldPublicFittingsV82;
 }
 
 // Keep every original narrative/service ID. Entering a room grants no rank,
@@ -156,7 +159,7 @@ export const HOMEWORLD_INTERIORS_V64: readonly HomeworldInteriorV64[] = [...civi
       halfWidth: art.footprintWorld.width * ratio / 2,
       halfDepth: art.footprintWorld.depth * ratio / 2 };
   }),
-})).map(homeworldDecoratedInteriorV76).map(homeworldCntlipInteriorV77).map(homeworldMonumentInteriorV81);
+})).map(homeworldDecoratedInteriorV76).map(homeworldCntlipInteriorV77).map(homeworldMonumentInteriorV81).map(homeworldPublicFittingsV82);
 
 export const homeworldInteriorForBuildingV64 = (id: string) => HOMEWORLD_INTERIORS_V64.find(room => room.buildingId === id) ?? null;
 export const homeworldInteriorForPointV64 = (id: string) => HOMEWORLD_INTERIORS_V64.find(room => room.points.some(point => point.pointId === id)) ?? null;
@@ -191,8 +194,8 @@ export function isHomeworldInteriorWalkableV64(room: HomeworldInteriorV64, point
   if(homeworldInteriorPartitionBlocksV72(room,point,footprint))return false;
   if(homeworldCntlipHostTouchesV77(room,point,footprint))return false;
   if(homeworldMonumentInhabitantTouchesV81(room,point,footprint))return false;
-  if((room.furniture??[]).some(item=>homeworldFurnitureTouchesV72(item,point,footprint)))return false;
-  if([...(room.orientedDecorV76??[]),...(room.monumentDecorV81??[])].some(item=>homeworldInteriorDecorTouchesV76(item,point,footprint)))return false;
+  if([...(room.furniture??[]),...(room.publicFittingsV82?.furniture??[])].some(item=>homeworldFurnitureTouchesV72(item,point,footprint)))return false;
+  if([...(room.orientedDecorV76??[]),...(room.monumentDecorV81??[]),...(room.publicFittingsV82?.decor??[])].some(item=>homeworldInteriorDecorTouchesV76(item,point,footprint)))return false;
   for (const prop of room.props) if (Math.abs(point.x - prop.x) < prop.halfWidth + footprint.halfWidth
     && point.y + footprint.halfDepth > prop.y - prop.halfDepth * 2
     && point.y - footprint.halfDepth < prop.y) return false;

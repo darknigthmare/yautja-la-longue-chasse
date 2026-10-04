@@ -37,7 +37,9 @@ import {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './system
 import {HOMEWORLD_CIVIC_SCENE_SOURCES_V80} from './systems/homeworldCivicDecorV80';
 import {homeworldCivicNeighborhoodV80} from './systems/homeworldCivicNeighborhoodsV80';
 import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
-import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77} from './systems/homeworldConnectorArtV77';
+import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82} from './systems/homeworldConnectorArtV82';
+import {HOMEWORLD_BACKDROP_SCENE_SOURCES_V82} from './systems/homeworldBackdropArtV82';
+import {HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82} from './systems/homeworldLiftCabinV82';
 import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacementV77';
 import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
 import {HOMEWORLD_NATIVE_SCENE_SOURCES_V81} from './systems/homeworldNativeArchitectureV81';
@@ -93,7 +95,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V77,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);

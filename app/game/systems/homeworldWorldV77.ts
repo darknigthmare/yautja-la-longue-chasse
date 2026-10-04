@@ -12,9 +12,12 @@ import {HOMEWORLD_INTERIOR_POINT_IDS_V64} from './homeworldInteriorsV64';
 import {HOMEWORLD_REGION_CONNECTIONS_V72,HOMEWORLD_CONNECTION_STREETS_V72,HOMEWORLD_CONNECTION_FURNITURE_V72,
  homeworldGatewayFootprintsV72} from './homeworldRegionConnectionsV72';
 import {homeworldCouncilStairRailsV77} from './homeworldConnectorArtV77';
+import {homeworldConnectorSupportsV82} from './homeworldConnectorSupportsV82';
 import {HOMEWORLD_LAVA_BASES_V77,homeworldSkiffFootOnDeckV77} from './homeworldLavaPlacementV77';
 import {HOMEWORLD_RESIDENT_PATH_REVISIONS_V81} from './homeworldResidentPlacementsV81';
-import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81} from './homeworldLegacyPlacementsV81';
+import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81,HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82,HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82} from './homeworldLegacyPlacementsV81';
+import {HOMEWORLD_RETAINING_SUPPORTS_V82,homeworldRetainingTouchesV82} from './homeworldRetainingAssembliesV82';
+import {homeworldTransitFractionsV82} from './homeworldTransitJourneyV82';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
  * Vertical coordinates are physical world units, not a CSS transform of actors. */
@@ -37,11 +40,11 @@ const move=(point:HomeworldVec2,districtId:string)=>districtId==='port'
 export const HOMEWORLD_BUILDINGS_V77=HOMEWORLD_BUILDINGS.map(building=>({...building,...move(building,building.districtId),levelId:homeworldDistrictLevelV77(building.districtId)}));
 export const HOMEWORLD_DISTRICTS_V77=HOMEWORLD_DISTRICTS.map(district=>({...district,...move(district,district.id),
  levelId:homeworldDistrictLevelV77(district.id),polygon:district.polygon.map(point=>move(point,district.id))}));
-export const HOMEWORLD_PROPS_V77=HOMEWORLD_PROPS.map(prop=>({...prop,...move(HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81[prop.id]??prop,prop.districtId),levelId:homeworldDistrictLevelV77(prop.districtId)}));
+export const HOMEWORLD_PROPS_V77=HOMEWORLD_PROPS.map(prop=>({...prop,...move(prop,prop.districtId),...HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81[prop.id],levelId:homeworldDistrictLevelV77(prop.districtId)}));
 export const HOMEWORLD_FRONTAGE_V77=HOMEWORLD_FRONTAGE_ITEMS_V75
  .map(item=>{const building=HOMEWORLD_BUILDINGS.find(building=>building.id===item.buildingId)!;
-  return{...item,...move(item,building.districtId),levelId:homeworldDistrictLevelV77(building.districtId)};});
-export const HOMEWORLD_EXTERIOR_V77=HOMEWORLD_EXTERIOR_MODULES_V76.map(item=>({...item,...move(item,item.districtId),levelId:homeworldDistrictLevelV77(item.districtId)}));
+  return{...item,...move(item,building.districtId),...HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82[item.id],levelId:homeworldDistrictLevelV77(building.districtId)};});
+export const HOMEWORLD_EXTERIOR_V77=HOMEWORLD_EXTERIOR_MODULES_V76.map(item=>({...item,...move(item,item.districtId),...HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82[item.id],levelId:homeworldDistrictLevelV77(item.districtId)}));
 export const HOMEWORLD_RESIDENTS_V77=HOMEWORLD_RESIDENTS_V69.map(resident=>({...resident,
  levelId:homeworldDistrictLevelV77(resident.districtId),path:(HOMEWORLD_RESIDENT_PATH_REVISIONS_V81[resident.id]??resident.path).map(point=>move(point,resident.districtId))}));
 export const homeworldResidentPoseV77=homeworldResidentPoseV69;
@@ -133,6 +136,9 @@ export const HOMEWORLD_CONNECTORS_V77:readonly HomeworldConnectorV77[]=[
  {id:'industrial-ramp',name:'Rampe des ateliers',kind:'ramp',from:{levelId:'-1A',point:{x:2960,y:4840}},to:{levelId:'-1C',point:{x:2960,y:5040}},duration:10,artStatus:'NATIVE_REQUIRED'},
  {id:'service-ramp',name:'Rampe de maintenance',kind:'ramp',from:{levelId:'-1C',point:{x:3230,y:3930}},to:{levelId:'-1B',point:{x:3680,y:3930}},duration:6,artStatus:'NATIVE_REQUIRED'},
 ];
+/** Same native flat landing polygons are actual floor support and painted by
+ * the world renderer. The pure helper has no V77 import or invisible rails. */
+export const HOMEWORLD_CONNECTOR_PADS_V82=homeworldConnectorSupportsV82(HOMEWORLD_CONNECTORS_V77,HOMEWORLD_LEVELS_V77);
 export const HOMEWORLD_REGIONAL_DOCKS_V77=[
  {regionId:'leviathan-coast',levelId:'0' as const,point:{x:260,y:2230},kind:'walk' as const,name:'Sentier du rivage · côte occidentale'},
  {regionId:'thermal-caves',levelId:'0' as const,point:{x:460,y:3600},kind:'skiff' as const,name:'Passeur du canyon volcanique · Grottes Thermiques',duration:12,
@@ -143,7 +149,7 @@ export const HOMEWORLD_POINTS_V77=HOMEWORLD_POINTS.map(point=>{
  return{...point,...(dock?dock.point:move(point,point.districtId)),levelId:dock?.levelId??homeworldDistrictLevelV77(point.districtId)};
 });
 const touches=(point:HomeworldVec2,half:HomeworldFootprint,box:{left:number;right:number;top:number;bottom:number})=>point.x+half.halfWidth>box.left&&point.x-half.halfWidth<box.right&&point.y+half.halfDepth>box.top&&point.y-half.halfDepth<box.bottom;
-const groundIndexV77=HOMEWORLD_GROUND_V77.map(g=>({levelId:g.levelId,polygon:g.polygon,left:Math.min(...g.polygon.map(p=>p.x)),right:Math.max(...g.polygon.map(p=>p.x)),top:Math.min(...g.polygon.map(p=>p.y)),bottom:Math.max(...g.polygon.map(p=>p.y))}));
+const groundIndexV77=[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82].map(g=>({levelId:g.levelId,polygon:g.polygon,left:Math.min(...g.polygon.map(p=>p.x)),right:Math.max(...g.polygon.map(p=>p.x)),top:Math.min(...g.polygon.map(p=>p.y)),bottom:Math.max(...g.polygon.map(p=>p.y))}));
 const buildingBoundsV77=new Map(HOMEWORLD_BUILDINGS_V77.map(b=>[b.id,homeworldBuildingFootprintV64(b)]));
 const frontageBoundsV77=HOMEWORLD_FRONTAGE_V77.map(item=>({item,box:homeworldFurnitureFootprintV72(item)}));
 const connectionBoundsV77=HOMEWORLD_CONNECTION_FURNITURE_V77.map(item=>({item,box:homeworldFurnitureFootprintV72(item)}));
@@ -156,6 +162,7 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
  return[[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>{const p={x:point.x+x*Math.max(0,body.halfWidth),y:point.y+y*Math.max(0,body.halfDepth)};return regions.some(g=>p.x>=g.left&&p.x<=g.right&&p.y>=g.top&&p.y<=g.bottom&&pointInHomeworldPolygon(p,g.polygon));});
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
+ for(const support of HOMEWORLD_RETAINING_SUPPORTS_V82)if(support.levelId===levelId&&homeworldRetainingTouchesV82(support,point,body))return{kind:'prop',id:support.id};
  if(levelId==='0')for(const base of HOMEWORLD_LAVA_BASES_V77)if(touches(point,body,base.footprint))return{kind:'prop',id:base.id};
  for(const rail of councilRailsV77)if(rail.levelId===levelId&&touches(point,body,rail))return{kind:'prop',id:rail.id};
  for(const building of HOMEWORLD_BUILDINGS_V77){if(building.levelId!==levelId||!touches(point,body,buildingBoundsV77.get(building.id)!)||!homeworldBuildingTouchesV76(building,point,body))continue;
@@ -209,7 +216,7 @@ export function nearestHomeworldPointV77(levelId:HomeworldLevelV77,point:Homewor
 }
 export function projectHomeworldWorldV77(point:HomeworldVec2,levelId:HomeworldLevelV77,elevation:number=homeworldLevelV77(levelId).elevation){return homeworldProjectGroundV64(point,elevation);}
 export function homeworldCameraWorldV77(point:HomeworldVec2,levelId:HomeworldLevelV77,viewport:{width:number;height:number},elevation:number=homeworldLevelV77(levelId).elevation,transit:HomeworldTransitV77|null=null){
- const c=transit&&HOMEWORLD_CONNECTORS_V77.find(c=>c.id===transit.connectorId),from=c&&(transit!.reverse?c.to:c.from),to=c&&(transit!.reverse?c.from:c.to),t=c?Math.min(1,transit!.elapsed/c.duration):0;
+ const c=transit&&HOMEWORLD_CONNECTORS_V77.find(c=>c.id===transit.connectorId),from=c&&(transit!.reverse?c.to:c.from),to=c&&(transit!.reverse?c.from:c.to),t=c?homeworldTransitFractionsV82(c.kind,transit!.elapsed,c.duration).travel:0;
  const zoom=from&&to?homeworldLevelV77(from.levelId).zoom+(homeworldLevelV77(to.levelId).zoom-homeworldLevelV77(from.levelId).zoom)*t:homeworldLevelV77(levelId).zoom,p=projectHomeworldWorldV77(point,levelId,elevation),viewWidth=Math.max(1,viewport.width)/zoom,viewHeight=Math.max(1,viewport.height)/zoom;
  return{x:Math.max(-480,Math.min(HOMEWORLD_WORLD_V77.width+480-viewWidth,p.x-viewWidth*.5)),y:p.y-viewHeight*.62,zoom,viewWidth,viewHeight,mode:'follow' as const};
 }
@@ -223,10 +230,16 @@ export function beginHomeworldTransitV77(levelId:HomeworldLevelV77,actor:Homewor
 export function stepHomeworldTransitV77(transit:HomeworldTransitV77,actor:HomeworldActor,seconds:number,suspended=false){
  const connector=HOMEWORLD_CONNECTORS_V77.find(connector=>connector.id===transit.connectorId);if(!connector)throw Error('Unknown connector');
  const from=transit.reverse?connector.to:connector.from,to=transit.reverse?connector.from:connector.to;
- const zBefore=homeworldLevelV77(from.levelId).elevation+(homeworldLevelV77(to.levelId).elevation-homeworldLevelV77(from.levelId).elevation)*transit.elapsed/connector.duration;
+ const beforeFraction=homeworldTransitFractionsV82(connector.kind,transit.elapsed,connector.duration).travel;
+ const zBefore=homeworldLevelV77(from.levelId).elevation+(homeworldLevelV77(to.levelId).elevation-homeworldLevelV77(from.levelId).elevation)*beforeFraction;
  if(suspended||!Number.isFinite(seconds)||seconds<=0)return{transit,actor,levelId:transit.sourceLevel,elevation:zBefore,done:false};
- const elapsed=Math.min(connector.duration,transit.elapsed+Math.min(seconds,.1)),t=elapsed/connector.duration;
- const next={...actor,x:transit.source.x+(to.point.x-transit.source.x)*t,y:transit.source.y+(to.point.y-transit.source.y)*t,vx:0,vy:0};
+ const elapsed=Math.min(connector.duration,transit.elapsed+Math.min(seconds,.1));
+ const fractions=homeworldTransitFractionsV82(connector.kind,elapsed,connector.duration),t=fractions.travel;
+ const boarding=connector.kind==='lift'&&fractions.boarding<1;
+ const start=connector.kind==='lift'?from.point:transit.source;
+ const point=boarding?{x:transit.source.x+(from.point.x-transit.source.x)*fractions.boarding,y:transit.source.y+(from.point.y-transit.source.y)*fractions.boarding}
+  :{x:start.x+(to.point.x-start.x)*t,y:start.y+(to.point.y-start.y)*t};
+ const next={...actor,...point,vx:0,vy:0};
  const z=homeworldLevelV77(from.levelId).elevation+(homeworldLevelV77(to.levelId).elevation-homeworldLevelV77(from.levelId).elevation)*t;
  if(t===1&&!homeworldWalkableV77(to.levelId,next))return{transit:null,actor:{...actor,...transit.source,vx:0,vy:0},levelId:from.levelId,elevation:homeworldLevelV77(from.levelId).elevation,done:false,error:'Le palier est obstrué; retour au départ, aucune progression accordée.'};
  return{transit:t===1?null:{...transit,elapsed},actor:next,levelId:t===1?to.levelId:from.levelId,elevation:z,done:t===1};
@@ -250,6 +263,6 @@ export function stepHomeworldSkiffV77(ride:HomeworldSkiffV77,actor:HomeworldActo
  const fraction=lengths[index]?travelled/lengths[index]:1,a=nodes[index],b=nodes[index+1];
  return{ride:t===1?null:{...ride,elapsed},actor:{...actor,x:a.x+(b.x-a.x)*fraction,y:a.y+(b.y-a.y)*fraction,vx:0,vy:0},done:t===1};
 }
-export const HOMEWORLD_ART_GAPS_V77={council:'One native Council stair aligned; dedicated council complex/elder native action sheets not present',palace:'V75 audience building reused; enormous pyramid/royal room suite absent',
- connectors:'Council stair native PNG present; six other connector native stair/lift/ramp/support modules still required',lava:'Two native giant statues and fixed skiff present; ferryman uses existing civilian role, no dedicated action sheet or native skiff movement clips',
- coast:'Dedicated coast-side foreground/background modules required',parallax:'Eight independent native layers not present',mounts:'Mounted motion sheet not yet integrated',fauna:'Cage fauna actions not yet integrated'} as const;
+export const HOMEWORLD_ART_GAPS_V77={council:'V81 native Council hall and public multi-space gallery present; dedicated elder action sheets and ceremonies still required',palace:'V81 native 1100×700 royal pyramid and public multi-space audience wing present; complete private suites and royal cinematics still required',
+ connectors:'V82 native structures for all seven existing connectors and a separate lift cabin translated by real transit; no authored multi-frame machinery sheets, persistent lift-station simulation or V82 gameplay QA',lava:'Two native giant statues and fixed skiff present; ferryman uses existing civilian role, no dedicated action sheet or native skiff movement clips',
+ coast:'Dedicated coast-side foreground/background modules required',parallax:'V81 layered skyline/cliffs/traffic and physical foundations present; not eight newly generated unique raster families',mounts:'Mounted motion sheet not yet integrated',fauna:'Cage fauna actions not yet integrated'} as const;

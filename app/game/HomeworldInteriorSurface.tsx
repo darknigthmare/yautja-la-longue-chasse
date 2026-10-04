@@ -28,6 +28,8 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId}
       data-homeworld-monument-interior-v81={room.monumentLayoutV81?room.buildingId:undefined}
       data-homeworld-monument-spaces-v81={room.monumentLayoutV81?room.zones?.length:undefined}
+      data-homeworld-public-fittings-v82={room.publicFittingsV82?room.buildingId:undefined}
+      data-homeworld-public-fittings-validation-v82={room.publicFittingsV82?.validation}
       data-homeworld-secondary-interior-v74={room.secondaryLayoutV74?room.buildingId:undefined}
       data-homeworld-layout-archetype-v74={room.secondaryLayoutV74?.archetype}
       data-homeworld-layout-spaces-v74={room.secondaryLayoutV74?room.zones?.length:undefined} style={{
@@ -51,6 +53,14 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     {(room.furniture??[]).map(item=><HomeworldFurnitureV72 key={item.id} {...item} actor={actorPosition}/>)}
     {(room.orientedDecorV76??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}
     {(room.monumentDecorV81??[]).map(item=><HomeworldInteriorDecorV76 key={item.id} item={item} actor={actorPosition}/>)}
+    {(room.publicFittingsV82?.furniture??[]).map(item=><span key={item.id} data-homeworld-public-furniture-v82={item.id}
+      data-public-furniture-group-v82={item.group} data-public-furniture-validation-v82={room.publicFittingsV82?.validation} title={`${item.label} · ${item.purpose}`}>
+      <HomeworldFurnitureV72 {...item} actor={actorPosition}/>
+    </span>)}
+    {(room.publicFittingsV82?.decor??[]).map(item=><span key={item.id} data-homeworld-public-decor-v82={item.id}
+      data-public-furniture-validation-v82={room.publicFittingsV82?.validation} title={item.purpose}>
+      <HomeworldInteriorDecorV76 item={item} actor={actorPosition}/>
+    </span>)}
     {(room.zones??[]).map(zone=><span key={zone.id} data-homeworld-interior-zone-v72={zone.id}
       data-homeworld-interior-zone-v74={room.secondaryLayoutV74?zone.id:undefined}
       data-homeworld-floor-caption-v74={zone.id} title={zone.label} style={{position:'absolute',left:zone.x+zone.width/2,

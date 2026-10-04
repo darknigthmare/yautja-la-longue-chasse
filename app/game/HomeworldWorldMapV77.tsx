@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import {createHomeworldGamepadState,stepHomeworldGamepad,nextHomeworldDialogChoice} from './systems/homeworldInput';
-import {HOMEWORLD_LEVELS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,HOMEWORLD_REGIONAL_DOCKS_V77,HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_CONNECTIONS_V77,type HomeworldLevelV77} from './systems/homeworldWorldV77';
+import {HOMEWORLD_LEVELS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,HOMEWORLD_REGIONAL_DOCKS_V77,HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_CONNECTIONS_V77,type HomeworldLevelV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_URBAN_GROUND_V78} from './systems/homeworldUrbanLayoutV78';
 import {HOMEWORLD_URBAN_FACADES_V78,homeworldUrbanFacadePlacementV78} from './systems/homeworldUrbanFacadesV78';
 import {homeworldBuildingGroundFrameV76,homeworldBuildingFootprintV64,homeworldBuildingDoorwayV64} from './systems/homeworldGeometryV64';
@@ -29,7 +29,7 @@ export default function HomeworldWorldMapV77({actor,levelId,open,disabled=false,
    <button type="button" onClick={()=>onOpenChange(false)}>Fermer la carte</button><p>Position réelle : {levelId}. Les onglets consultent la carte ; ils ne changent pas d’étage.</p>{targetId&&<p>Repère demandé : {targetId}. Consulte le quartier et ses raccords physiques dans cet atlas.</p>}
    <nav aria-label="Niveaux de la cité" style={{display:'flex',flexWrap:'wrap',gap:8}}>{HOMEWORLD_LEVELS_V77.map(level=><button key={level.id} type="button" style={{minHeight:44}} aria-pressed={selected===level.id} onClick={()=>{setSelected(level.id);setInspected(null);}}>{level.id} · {level.name}</button>)}</nav>
    <svg viewBox={`0 0 ${HOMEWORLD_WORLD_V77.width} ${HOMEWORLD_WORLD_V77.height}`} style={{width:'100%',maxHeight:'46vh'}} role="img" aria-label={'Plan du niveau '+selected}>
-    {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId===selected).map(g=><polygon key={g.id} points={g.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#39362a" stroke="#706146" strokeWidth="5"><title>{g.id}</title></polygon>)}
+    {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId===selected).map(g=><polygon key={g.id} points={g.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#39362a" stroke="#706146" strokeWidth="5"><title>{g.id}</title></polygon>)}
     {HOMEWORLD_DISTRICTS_V77.filter(d=>d.levelId===selected).map(d=><polygon key={d.id} points={d.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#715d3b55" stroke="#d0b683" strokeWidth="12"><title>{d.name}</title></polygon>)}
     {buildings.map(b=>{const door=homeworldBuildingDoorwayV64(b).threshold,active=b.id===inspected||(targetId&&homeworldInteriorForPointV64(targetId)?.buildingId===b.id);return <g key={b.id} data-map-real-building-v81={b.id}>
      <polygon points={footprint(b).map(p=>`${p.x},${p.y}`).join(' ')} fill={active?'#d4aa54':'#796d56'} stroke={active?'#fff2b8':'#cdb990'} strokeWidth={active?20:8}><title>{b.label} · entrée réelle · {b.entranceKind}</title></polygon>
