@@ -56,16 +56,18 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
     purpose = 'Bureau des amarrages, attente des délégations, réserve fermée et inspection du convoi sont distincts autour de la traverse publique. L’officier et la preuve existante restent aux mêmes points ; aucun nouveau transport ou dossier d’enquête.';
     zones = [zone(0, 'control', 'Bureau des amarrages', 20, 20, 170, 146),
       zone(1, 'inspection', 'Inspection du convoi et expédition', 354, 110, 164, 178),
-      zone(2, 'reserve', 'Réserve fermée des pièces', 354, 20, 164, 82),
+      // Stock and inspection share an open approach in front of their fixtures.
+      // These functional overlays are not additional physical partitions.
+      zone(2, 'reserve', 'Réserve fermée des pièces et approche publique', 354, 20, 164, 196),
       zone(3, 'waiting', 'Attente et préparation des délégations', 20, 186, 170, 102),
       zone(4, 'traverse', 'Traverse publique des quais', 192, 20, 162, 268)];
     partitions = [wall(0, 'control-screen', 180, 20, 12, 76), wall(1, 'lower-screen', 354, 256, 12, 32),
       wall(2, 'reserve-screen', 354, 20, 12, 52)];
-    furniturePoses = { registre: [108, 80], cargaison: [402, 72], contenants: [492, 227], veille: [44, 160] };
+    furniturePoses = { registre: [108, 80], cargaison: [402, 72], contenants: [499, 108], veille: [44, 160] };
     decorPoses = { '0': [44, 230], '1': [512, 264], '2': [472, 56], '3': [503, 178] };
     furnish('delegation-parures', 'clothing-rack', 132, 274, .5);
     furnish('control-standard', 'clan-banner', 172, 116, .35);
-    furnish('inspection-containers', 'sealed-jars', 420, 226, .45);
+    furnish('inspection-containers', 'sealed-jars', 492, 205, .45);
     furnish('departure-lot', 'convoy-crates', 388, 282, .55);
     furnish('inspection-register', 'register-desk', 442, 116, .4);
     oriented('inspection-case', 'chest-diagonal', 371, 116, .5, 'Contenant fermé de l’inspection ; aucune nouvelle preuve ou prise disponible.');
@@ -75,30 +77,30 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
   } else if (prefix === 'convoy-workshop') {
     kind = 'workshop'; title = 'Convois · maintenance et préparation des pièces';
     purpose = 'Deux postes historiques de maintenance restent séparés du stock et de la manutention ; une allée axiale relie la préparation au seuil. Les outils et lots restent du décor, sans véhicule inventé, fabrication gratuite ou nouvelle mission.';
-    zones = [zone(0, 'maintenance', 'Maintenance et inspection', 20, 20, 180, 114),
-      zone(1, 'preparation', 'Préparation des montages', 354, 20, 164, 124),
+    zones = [zone(0, 'maintenance', 'Maintenance, inspection et approche', 20, 20, 180, 142),
+      zone(1, 'preparation', 'Préparation des montages et approche', 354, 20, 164, 154),
       zone(2, 'stock', 'Stock des pièces de relève', 20, 160, 180, 128),
       zone(3, 'handling', 'Manutention et préparation des lots', 354, 174, 164, 114),
       zone(4, 'traverse', 'Allée axiale de maintenance', 200, 20, 154, 268)];
     partitions = [wall(0, 'west-screen', 20, 142, 80, 12), wall(1, 'east-screen', 468, 142, 50, 12)];
     furniturePoses = { 'travail-ouest': [120, 100], 'travail-est': [418, 100], caisse: [88, 276], parures: [450, 260], veille: [506, 146] };
-    decorPoses = { '1': [512, 196], '2': [374, 192] };
+    decorPoses = { '1': [62, 220], '2': [474, 216] };
     native('preparation-console', 'maintenance-console-right', 134, 190, 1, 'Console de préparation des pièces',
       'Console native avec face opérateur sud-est dans la préparation des pièces ; décor non interactif, sans service ou transport supplémentaire disponible.', 'V84');
     furnish('closed-materials', 'sealed-jars', 174, 282, .45);
-    furnish('work-standard', 'clan-banner', 178, 130, .35);
+    furnish('work-standard', 'clan-banner', 214, 112, .35);
     furnish('dispatch-register', 'register-desk', 388, 296, .4);
     furnish('small-containers', 'sealed-jars', 514, 278, .28);
     furnish('preparation-veille', 'resin-lantern', 382, 134, .4);
     oriented('stock-rack', 'rack-lateral', 38, 188, .7, 'Rangement latéral des petites pièces et parures, fermé et non collectable.');
     oriented('assembly-case', 'chest-diagonal', 444, 130, .4, 'Lot fermé du poste de préparation ; aucun modèle de véhicule canonique n’est créé.');
-    passages = [passage(0, 'public-traverse', 277, 154, 154), passage(1, 'maintenance-branch', 172, 154, 144),
-      passage(2, 'handling-branch', 420, 224, 148)];
+    passages = [passage(0, 'public-traverse', 277, 154, 154), passage(1, 'maintenance-branch', 172, 140, 144),
+      passage(2, 'handling-branch', 373, 224, 148)];
   } else {
     kind = 'store'; title = 'Convois · tri, réserve et expédition';
     purpose = 'Trois travées distinguent le tri, la réserve scellée et l’expédition ; une large galerie traverse leur façade intérieure avant la réception des lots. Toutes les cargaisons sont environnementales, sans inventaire ou nouvelle récompense.';
-    zones = [zone(0, 'sorting', 'Tri des retours', 20, 20, 156, 132), zone(1, 'reserve', 'Réserve scellée', 200, 20, 138, 132),
-      zone(2, 'dispatch', 'Expédition et préparation', 362, 20, 156, 132), zone(3, 'aisle', 'Galerie de manutention', 20, 160, 498, 64),
+    zones = [zone(0, 'sorting', 'Tri des retours et approche', 20, 20, 156, 188), zone(1, 'reserve', 'Réserve scellée et approche', 200, 20, 138, 188),
+      zone(2, 'dispatch', 'Expédition, préparation et approche', 362, 20, 156, 188), zone(3, 'aisle', 'Galerie de manutention', 20, 160, 498, 64),
       zone(4, 'receiving', 'Réception des lots fermés', 20, 236, 498, 52)];
     partitions = [wall(0, 'sorting-screen', 176, 20, 12, 82), wall(1, 'dispatch-screen', 350, 20, 12, 82)];
     furniturePoses = { pieces: [90, 80], contenants: [269, 95], chargements: [442, 80], veille: [498, 206] };
@@ -113,8 +115,8 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
     furnish('dispatch-veille', 'resin-lantern', 492, 118, .4);
     oriented('closed-dispatch-case', 'chest-diagonal', 487, 295, .4, 'Lot fermé à l’écart de l’ancre de sortie, sans objet récupérable.');
     oriented('receiving-rack', 'rack-lateral', 38, 286, .5, 'Rangement latéral du registre de réception, sans dossier de quête inventé.');
-    passages = [passage(0, 'sorting-branch', 104, 166, 156), passage(1, 'reserve-branch', 269, 166, 144),
-      passage(2, 'dispatch-branch', 440, 166, 156), passage(3, 'receiving-traverse', 269, 236, 160)];
+    passages = [passage(0, 'sorting-branch', 104, 190, 156), passage(1, 'reserve-branch', 269, 190, 144),
+      passage(2, 'dispatch-branch', 440, 190, 156), passage(3, 'receiving-traverse', 269, 236, 160)];
   }
   const furniture = (room.furniture ?? []).map(item => {
     const pose = furniturePoses[item.id.replace(`${prefix}-v74-`, '')]; return pose ? { ...item, x: pose[0], y: pose[1] } : item;

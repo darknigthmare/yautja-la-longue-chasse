@@ -22,5 +22,5 @@ export const HOMEWORLD_CIVILIAN_ROUTINE_ELEMENT_CODEX_V84: readonly (HomeworldEl
         `Clips sociaux nouveaux : ${routine.socialActionClipsAuthored}. Les haltes utilisent la présentation native existante, pas un nouveau geste de métier.`,
         ...('sourceResidentId' in resident ? [`Figurant urbain déjà monté, persona ${resident.sourceResidentId} ; non interactif, sans visite sauvegardée ni ajout à la recherche de dialogue.`] : []),
         'Fiche de circuit sans empreinte ou habitant dupliqué ; aucune position de rassemblement commune inventée.',
-        'V84 implémentée, non vérifiée : aucun test, audit, compilation locale de validation ou examen navigateur de ces nouvelles temporalités exécuté.'] };
+        'Reprise V85 : tests ciblés aller/retour sur polyline, horloge figée, haltes et98trajets réels exécutés. Aucun clip social, examen navigateur ou comportement de production certifié.'] };
   });

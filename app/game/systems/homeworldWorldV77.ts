@@ -168,6 +168,11 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const streetDecorV84=homeworldStreetDecorCollisionV84(levelId,point,body);if(streetDecorV84)return{kind:'prop',id:streetDecorV84};
+ return homeworldPreservedCollisionV77(levelId,point,body);
+}
+/** Existing world solids without the late V84 mount. Candidate compilation
+ * must stay repeatable instead of rejecting a prop against its own collider. */
+export function homeworldPreservedCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const streetDecor=homeworldStreetDecorCollisionV83(levelId,point,body);if(streetDecor)return{kind:'prop',id:streetDecor};
  for(const support of HOMEWORLD_RETAINING_SUPPORTS_V82)if(support.levelId===levelId&&homeworldRetainingTouchesV82(support,point,body))return{kind:'prop',id:support.id};
  if(levelId==='0')for(const base of HOMEWORLD_LAVA_BASES_V77)if(touches(point,body,base.footprint))return{kind:'prop',id:base.id};
@@ -307,7 +312,7 @@ configureHomeworldStreetDecorV83(homeworldStreetDecorBaseInputV83);
 /** V84 calls this context only after old V78/V80 furniture has compiled.
  * The old V83 initializer stays unchanged. No transit/door/motor is rewritten. */
 export function homeworldStreetDecorWorldInputV84(extra:readonly HomeworldStreetDecorReserveV84[]):HomeworldStreetDecorPlacementInputV84{
- return{...homeworldStreetDecorBaseInputV83,reserves:[...homeworldStreetDecorBaseInputV83.reserves,
+ return{...homeworldStreetDecorBaseInputV83,collision:homeworldPreservedCollisionV77,reserves:[...homeworldStreetDecorBaseInputV83.reserves,
   ...oldRoads.filter(s=>s.kind!=='court'&&!s.id.startsWith('forecourt-v76:')).map(s=>({id:'preserved-road:'+s.id,levelId:s.levelId,polygon:s.polygon})),
   {id:'port-main-throughfare-v84',levelId:'0',polygon:homeworldUrbanCorridorV78({x:3100,y:5400},{x:7800,y:5400},96,96)},
   ...HOMEWORLD_CONNECTOR_PADS_V82.map(p=>({id:'preserved-landing:'+p.id,levelId:p.levelId,polygon:p.polygon})),

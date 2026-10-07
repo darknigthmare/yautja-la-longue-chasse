@@ -4,6 +4,7 @@ import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction, matchingControlActions } from "../app/game/systems/controlBindings.ts";
+import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 async function sourceTree(file) {
   const source = await readFile(new URL(file, import.meta.url), "utf8");
@@ -26,19 +27,18 @@ function runtimeCallback(tree, predicate, environment) {
 }
 function fixture() {
   const events = [];
-  const frames = new Map();
+  const frames = animationFrameFixture();
   const focusedElement = {};
   const pad = { axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
-  let frameId = 0;
   const environment = {
-    gamepadEnabled: true, suspended: false, trainingSession: null,
+    gamepadEnabled: true, suspended: false, trainingSession: null, shipInspectionActive: false,
     embedded: true, safeActionIndex: 0, activeRoomId: "training",
     controlBindings: DEFAULT_CONTROL_BINDINGS, matchingControlActions,
     gamepadStateRef: { current: { previous: Array(6).fill(false), ready: false } },
     rootRef: { current: { contains: (node) => node === focusedElement, focus() {} } },
     document: { hidden: false, hasFocus: () => true, activeElement: focusedElement },
     navigator: { getGamepads: () => [pad] },
-    window: { requestAnimationFrame(fn) { const id = ++frameId; frames.set(id, fn); return id; }, cancelAnimationFrame(id) { frames.delete(id); } },
+    window: { requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame },
     focusAction: (index) => events.push(["focus", index]),
     invokeAction: (index) => events.push(["invoke", index]),
     moveRoom: (direction) => events.push(["move", direction]),
@@ -50,9 +50,8 @@ function fixture() {
   let cleanup;
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = () => {
-    const next = frames.entries().next().value;
-    assert.ok(next, "an active polling frame exists");
-    frames.delete(next[0]); next[1]();
+    assert.ok(frames.size, "an active polling frame exists");
+    frames.tick();
   };
   const keyDown = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === "useCallback" && node.parent.name?.getText(tree) === "handleKeyDown", environment);
   render();
@@ -93,6 +92,20 @@ test("ShipHub pause and focus loss require neutral before a held pad can act aga
   assert.equal(f.events.length, 1);
 });
 
+test("ship archives own input until closed, and a held pad requires release on return", () => {
+  const f = fixture(); f.tick();
+  f.environment.shipInspectionActive = true; f.render();
+  assert.equal(f.frames.size, 0, "archive reading cancels the underlying ship polling frame");
+  f.pad.buttons[0].pressed = true;
+  f.keyDown(keyEvent("Escape", "Escape"));
+  assert.deepEqual(f.events, [], "ship keyboard shortcuts cannot leave or act beneath the reader");
+  f.environment.shipInspectionActive = false; f.render(); f.tick();
+  assert.deepEqual(f.events, [], "the confirm held in archives cannot select a ship action");
+  f.pad.buttons[0].pressed = false; f.tick();
+  f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [["invoke", 0]], "a new deliberate confirm resumes ship controls");
+});
+
 test("B returns an embedded installation to deck and preserves the standalone bridge behavior", () => {
   const f = fixture(); f.tick();
   f.pad.buttons[1].pressed = true; f.tick();
@@ -118,7 +131,7 @@ test("remapped installation return respects a nested drill and suspension", () =
 
 test("a drill notifies the host when it owns input and clears the flag on unmount", () => {
   const states = [];
-  const environment = { trainingSession: { disciplineId: "mobility", seed: 1 }, onTrainingActiveChange: (active) => states.push(active) };
+  const environment = { trainingSession: { disciplineId: "mobility", seed: 1 }, shipInspectionActive: false, onTrainingActiveChange: (active) => states.push(active) };
   const effect = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === "useEffect" && node.arguments[0]?.getText(tree).includes("onTrainingActiveChange"), environment);
   const cleanup = effect(); assert.deepEqual(states, [true]);
   cleanup(); assert.deepEqual(states, [true, false]);

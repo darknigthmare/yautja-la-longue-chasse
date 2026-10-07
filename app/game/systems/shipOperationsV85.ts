@@ -96,6 +96,7 @@ export function evaluateShipDepartureV85(manifest: ShipManifestV85, context: Shi
   const people = manifest.travellers.length;
   const wounded = manifest.travellers.filter(person => person.condition === "wounded").length;
   const cargoUnits = manifest.cargo.reduce((total, item) => total + (nonNegativeInteger(item.units) ? item.units : 0), 0);
+  if (!Number.isSafeInteger(cargoUnits)) missing.push("Le total de chargement dépasse les bornes du manifeste.");
   if (manifest.ownerSaveCreatedAt !== context.ownerSaveCreatedAt) missing.push("Ce manifeste appartient à une autre campagne.");
   if (!identity(manifest.id)) missing.push("Identifiant de départ absent.");
   if (context.availableShipId !== manifest.shipId) missing.push("Acquérir ce vaisseau ou confirmer son contrat de transport.");
@@ -111,6 +112,7 @@ export function evaluateShipDepartureV85(manifest: ShipManifestV85, context: Shi
   if (!people) missing.push("Inscrire au moins un voyageur.");
   const seenPeople = new Set<string>();
   for (const person of manifest.travellers) {
+    if (!identity(person.name) || !["fit", "wounded"].includes(person.condition) || !["hunter", "crew", "escort", "medic", "guest"].includes(person.role)) missing.push("Préciser une identité, une fonction et un état de voyage valides.");
     if (!identity(person.id) || seenPeople.has(person.id)) missing.push("Chaque voyageur doit avoir une identité unique.");
     seenPeople.add(person.id);
     if (!context.availablePersonIds.includes(person.id)) missing.push(`${person.name || "Voyageur"} n’est pas disponible pour ce départ.`);

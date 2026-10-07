@@ -7,6 +7,7 @@ import {
   type WarRulesV6, type WarTeamHypothesisV6,
 } from "./systems/clanWarBibleV6";
 import styles from "./ClanWarPanelV85.module.css";
+import ClanWarExerciseV6 from "./ClanWarExerciseV6";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
@@ -14,24 +15,26 @@ export default function ClanWarBibleV6Panel() {
   const [privateRules, setPrivateRules] = useState<WarRulesV6 | null>(null);
   const [importName, setImportName] = useState(""), [importError, setImportError] = useState(""), [importBusy, setImportBusy] = useState(false);
   const importTicket = useRef(0);
+  const [rulesGeneration, setRulesGeneration] = useState(0);
   const rules = privateRules ?? DEFAULT_WAR_RULES_V6;
   const { metadata: WAR_BIBLE_V6, entries: WAR_BIBLE_ENTRIES_V6, sections: WAR_BIBLE_SECTIONS_V6, parameters: WAR_PARAMETERS_V6, units: WAR_UNITS_V6, specializations: WAR_SPECIALIZATIONS_V6, territories: WAR_TERRITORIES_V6, passages: WAR_PASSAGES_V6 } = rules;
-  const [section, setSection] = useState<"teams" | "routes" | "library">("teams");
+  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "library">("teams");
   const [hypothesis, setHypothesis] = useState<WarTeamHypothesisV6>({ unitId: "W3-U01", xp: 40, fatigue: 20, deployableMembers: 2, availableRav: 6, frontNeedRav: 6, terrainBonus: 10, nextObjectiveXp: 8 });
   const [fromId, setFromId] = useState("W3-K01"), [toId, setToId] = useState("W3-K36");
   const [commandPoints, setCommandPoints] = useState(12), [closed, setClosed] = useState<string[]>([]);
+  const [routeCargo, setRouteCargo] = useState<"none" | "rav">("none");
   const [query, setQuery] = useState(""), [sheet, setSheet] = useState("Toutes les feuilles"), [page, setPage] = useState(0), [entryId, setEntryId] = useState(DEFAULT_WAR_RULES_V6.entries[0] ? `${DEFAULT_WAR_RULES_V6.entries[0].sheet}:${DEFAULT_WAR_RULES_V6.entries[0].id}` : "");
   const calculation = useMemo(() => estimateWarTeamV6(hypothesis, rules), [hypothesis, rules]);
   const unit = calculation.unit;
   const specialty = WAR_SPECIALIZATIONS_V6.find(item => item.unitId === hypothesis.unitId);
-  const route = useMemo(() => planWarRouteV6(fromId, toId, commandPoints, closed, rules), [fromId, toId, commandPoints, closed, rules]);
+  const route = useMemo(() => planWarRouteV6(fromId, toId, commandPoints, closed, rules, routeCargo), [fromId, toId, commandPoints, closed, rules, routeCargo]);
   const filtered = useMemo(() => WAR_BIBLE_ENTRIES_V6.filter(entry => (sheet === "Toutes les feuilles" || entry.sheet === sheet) && (!query || fold(`${entry.id} ${entry.title} ${entry.fields.map(field => field.value).join(" ")}`).includes(fold(query)))), [query, sheet, WAR_BIBLE_ENTRIES_V6]);
   const entry = WAR_BIBLE_ENTRIES_V6.find(item => `${item.sheet}:${item.id}` === entryId);
   function resetForRules(next: WarRulesV6) {
     const unit = next.units.find(item => item.id === "W3-U01") ?? next.units[0];
     if (unit) setHypothesis({ unitId: unit.id, xp: Math.min(40, next.parameters.xp_max), fatigue: Math.min(20, next.parameters.fatigue_max), deployableMembers: unit.fullMembers, availableRav: Math.min(6, next.parameters.rav_cap), frontNeedRav: Math.max(6, unit.upkeepRav), terrainBonus: Math.min(10, next.parameters.terrain_bonus_cap), nextObjectiveXp: next.parameters.xp_battle });
     setFromId(next.territories[0]?.id ?? "W3-K01"); setToId(next.territories.at(-1)?.id ?? "W3-K36");
-    setCommandPoints(next.parameters.pc_cap_1 ?? 12); setClosed([]); setQuery(""); setSheet("Toutes les feuilles"); setPage(0);
+    setCommandPoints(next.parameters.pc_cap_1 ?? 12); setClosed([]); setRouteCargo("none"); setQuery(""); setSheet("Toutes les feuilles"); setPage(0);
     setEntryId(next.entries[0] ? `${next.entries[0].sheet}:${next.entries[0].id}` : "");
   }
   async function loadPrivateRules(file: File) {
@@ -45,7 +48,7 @@ export default function ClanWarBibleV6Panel() {
       const parsed = parsePrivateWarRulesV6(value);
       if (!parsed.rules) throw new Error(parsed.error ?? "Les règles V6 sont invalides.");
       if (ticket !== importTicket.current) return;
-      setPrivateRules(parsed.rules); setImportName(file.name); resetForRules(parsed.rules);
+      setPrivateRules(parsed.rules); setImportName(file.name); setRulesGeneration(current => current + 1); resetForRules(parsed.rules);
     } catch (error) {
       if (ticket === importTicket.current) setImportError(error instanceof Error ? error.message : "Le fichier n’a pas pu être lu.");
     } finally {
@@ -53,14 +56,15 @@ export default function ClanWarBibleV6Panel() {
     }
   }
   function clearPrivateRules() {
-    importTicket.current += 1; setPrivateRules(null); setImportName(""); setImportError(""); setImportBusy(false); resetForRules(DEFAULT_WAR_RULES_V6);
+    importTicket.current += 1; setPrivateRules(null); setImportName(""); setImportError(""); setImportBusy(false); setRulesGeneration(current => current + 1); resetForRules(DEFAULT_WAR_RULES_V6);
   }
   function numberInput(key: keyof Omit<WarTeamHypothesisV6, "unitId">, label: string, max: number) {
     return <label>{label}<input type="number" min={0} max={max} value={hypothesis[key]} onChange={event => setHypothesis(current => ({ ...current, [key]: Math.max(0, Math.min(max, Math.floor(Number(event.target.value) || 0))) }))}/></label>;
   }
   const privateImport = <aside className={styles.notice} aria-label="Import local des règles V6">
     <h4>Utiliser mes règles V6 locales</h4>
-    <p>Choisissez <code>clan-war-v6-source-private.json</code> sur votre ordinateur. Il active ici les calculs, la carte et les fiches. Le fichier reste en mémoire dans ce panneau : aucun envoi, aucun stockage et aucun gain de campagne.</p>
+    <p>La Bible V6 est active par défaut. Vous pouvez aussi choisir <code>clan-war-v6-source-private.json</code> sur votre ordinateur pour utiliser une copie locale. Ce fichier reste en mémoire dans ce panneau : aucun envoi, aucun stockage et aucun gain de campagne.</p>
+    <p>Changer de source remet l’exercice V6 au départ. Fermer la table des mandats efface son exercice en mémoire et le fichier local chargé.</p>
     <label>Fichier JSON des règles de guerre V6<input type="file" accept=".json,application/json" disabled={importBusy} onChange={event => { const file = event.currentTarget.files?.[0]; event.currentTarget.value = ""; if (file) void loadPrivateRules(file); }}/></label>
     {importBusy && <p role="status">Lecture du fichier local…</p>}
     {importError && <p className={styles.warning} role="alert">{importError} Les règles déjà affichées restent inchangées.</p>}
@@ -71,7 +75,8 @@ export default function ClanWarBibleV6Panel() {
     <div className={styles.sectionHeader}><div><h3>Bible V6 · équipes, passages et mandats</h3><p>Source du 7 octobre 2026 · {WAR_BIBLE_ENTRIES_V6.length} fiches de guerre dans {WAR_BIBLE_SECTIONS_V6.length} feuilles.</p></div></div>
     {privateImport}
     <p className={styles.notice}>La version actuelle emploie RAV pour le ravitaillement et PC pour le commandement. L’expérience d’une équipe reste entre {WAR_PARAMETERS_V6.xp_min} et {WAR_PARAMETERS_V6.xp_max}, avec les paliers {WAR_PARAMETERS_V6.xp_tier_2} et {WAR_PARAMETERS_V6.xp_tier_3}. Les fiches V3 du 6 octobre décrivent une version antérieure, accessible dans ses exercices propres.</p>
-    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
+    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
+    <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
     {section === "teams" && <div>
       <h4>Hypothèses de l’équipe</h4><p>Le calcul reprend la feuille « Simuler Une équipe ». Ces valeurs servent à comparer une préparation ; elles ne deviennent pas des guerriers, des compétences ou des ressources dans votre campagne.</p>
       <div className={styles.controlGrid}><label>Type d’équipe<select value={hypothesis.unitId} onChange={event => { const selected = WAR_UNITS_V6.find(item => item.id === event.target.value); if (selected) setHypothesis(current => ({ ...current, unitId: selected.id, deployableMembers: selected.fullMembers, frontNeedRav: Math.max(current.frontNeedRav, selected.upkeepRav) })); }}>{WAR_UNITS_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>{numberInput("xp", `Expérience · 0 à ${WAR_PARAMETERS_V6.xp_max}`, WAR_PARAMETERS_V6.xp_max)}{numberInput("fatigue", `Fatigue · 0 à ${WAR_PARAMETERS_V6.fatigue_max}`, WAR_PARAMETERS_V6.fatigue_max)}{numberInput("deployableMembers", "Membres déployables", unit?.fullMembers ?? 0)}{numberInput("availableRav", "RAV disponibles ce tour", WAR_PARAMETERS_V6.rav_cap)}{numberInput("frontNeedRav", "Besoin RAV du front · équipe incluse une fois", 1000000)}{numberInput("terrainBonus", `Bonus de défense du terrain · plafonné à ${WAR_PARAMETERS_V6.terrain_bonus_cap} %`, 100)}<label>Prochain objectif<select value={hypothesis.nextObjectiveXp} onChange={event => setHypothesis(current => ({ ...current, nextObjectiveXp: Number(event.target.value) }))}><option value={WAR_PARAMETERS_V6.xp_recon}>Reconnaissance nouvelle · {WAR_PARAMETERS_V6.xp_recon} XP</option><option value={WAR_PARAMETERS_V6.xp_hero}>Action héroïque{WAR_PARAMETERS_V6.xp_retreat === WAR_PARAMETERS_V6.xp_hero ? " ou repli" : ""} · {WAR_PARAMETERS_V6.xp_hero} XP</option>{WAR_PARAMETERS_V6.xp_retreat !== WAR_PARAMETERS_V6.xp_hero && <option value={WAR_PARAMETERS_V6.xp_retreat}>Repli organisé · {WAR_PARAMETERS_V6.xp_retreat} XP</option>}<option value={WAR_PARAMETERS_V6.xp_battle}>Objectif de bataille · {WAR_PARAMETERS_V6.xp_battle} XP</option><option value={WAR_PARAMETERS_V6.xp_campaign}>Finale · remplace l’objectif standard · {WAR_PARAMETERS_V6.xp_campaign} XP</option></select></label></div>
@@ -83,6 +88,7 @@ export default function ClanWarBibleV6Panel() {
     {section === "routes" && <div>
       <h4>{WAR_TERRITORIES_V6.length} zones · {WAR_PASSAGES_V6.length} passages documentés</h4><p>Le trajet suit le sens, le coût et la capacité de chaque liaison. Une route trouvée reste un plan : ses contrôles, accords et observations doivent encore être validés avant un déplacement de campagne.</p>
       <div className={styles.controlGrid}><label>Départ<select value={fromId} onChange={event => setFromId(event.target.value)}>{WAR_TERRITORIES_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label><label>Destination<select value={toId} onChange={event => setToId(event.target.value)}>{WAR_TERRITORIES_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label><label>Colonne en PC<input type="number" min={1} max={WAR_PARAMETERS_V6.pc_cap_3} value={commandPoints} onChange={event => setCommandPoints(Math.max(1, Math.min(WAR_PARAMETERS_V6.pc_cap_3, Math.floor(Number(event.target.value) || 1))))}/></label></div>
+      <label className={styles.person}><input type="checkbox" checked={routeCargo === "rav"} onChange={event => setRouteCargo(event.target.checked ? "rav" : "none")}/><span>Transport de RAV<small>Exclure les traverses qui ne permettent pas le ravitaillement.</small></span></label>
       <div className={styles.scrollTable}><div className={`${styles.map} ${styles.v6Map}`} aria-label="Korthas selon la Bible V6">{WAR_TERRITORIES_V6.map(item => <button type="button" key={item.id} className={styles.territory} style={{ gridColumn: item.column, gridRow: item.row }} aria-pressed={item.id === toId} onClick={() => setToId(item.id)}><span>{item.id}</span><strong>{item.name}</strong><small>{item.initialController} · RAV +{item.incomeRav} · garde {item.garrisonPc} PC</small></button>)}</div></div>
       <div className={styles.confirm}>{route ? <><p><strong>Coût de mouvement {route.cost}</strong> · {route.passageIds.length} passage(s) · {commandPoints} PC.</p><p>{route.territoryIds.map(id => WAR_TERRITORIES_V6.find(item => item.id === id)?.name ?? id).join(" → ")}</p><p>{route.passageIds.join(", ") || "Même territoire, aucun passage."}</p></> : <p className={styles.warning}>Aucun trajet admissible avec cette capacité et ces passages fermés. Réduire la colonne ou rouvrir un ouvrage.</p>}</div>
       <details><summary>Fermer un ouvrage dans l’hypothèse de route</summary><fieldset><legend>Passages temporairement fermés</legend>{WAR_PASSAGES_V6.map(item => <label className={styles.person} key={item.id}><input type="checkbox" checked={closed.includes(item.id)} onChange={event => setClosed(current => event.target.checked ? [...current, item.id] : current.filter(id => id !== item.id))}/><span>{item.id} · {item.name}<small>{item.kind} · capacité {item.capacityPc} PC · mouvement {item.movementCost}</small></span></label>)}</fieldset></details>

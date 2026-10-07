@@ -43,11 +43,11 @@ export function estimateWarTeamV6(input: WarTeamHypothesisV6, rules: WarRulesV6 
 }
 export function warTeamTierV6(xp: number, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): "Novice" | "Vétéran" | "Maître" { return xp >= rules.parameters.xp_tier_3 ? "Maître" : xp >= rules.parameters.xp_tier_2 ? "Vétéran" : "Novice"; }
 export interface WarPersonV6 { id: string; name: string; xp: number; status: "fit" | "wounded" | "dead"; assignmentId: string }
-export interface WarTeamStateV6 { version: 1; id: string; context: "free"; unitId: string; members: WarPersonV6[]; fatigue: number; specialization: "A" | "B" | null; resultReceipts: string[] }
+export interface WarTeamStateV6 { version: 1; id: string; context: "free"; unitId: string; members: WarPersonV6[]; fatigue: number; specialization: "A" | "B" | null; resultReceipts: string[]; resolvedResultIds?: string[] }
 export interface WarResultReceiptV6 { operationId: string; resultId: string; mode: "hero" | "rts" | "strategic"; objective: "recon" | "hero" | "battle" | "retreat" | "campaign"; participantIds: string[]; final: true }
 export function createWarTeamV6(unitId: string, id = "free-v6-team", rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): WarTeamStateV6 | null {
   const unit = rules.units.find(item => item.id === unitId); if (!unit) return null;
-  return { version: 1, id, context: "free", unitId, members: Array.from({ length: unit.fullMembers }, (_, index) => ({ id: `${id}-member-${index + 1}`, name: `Membre d’exercice ${index + 1}`, xp: 0, status: "fit", assignmentId: id })), fatigue: 0, specialization: null, resultReceipts: [] };
+  return { version: 1, id, context: "free", unitId, members: Array.from({ length: unit.fullMembers }, (_, index) => ({ id: `${id}-member-${index + 1}`, name: `Membre d’exercice ${index + 1}`, xp: 0, status: "fit", assignmentId: id })), fatigue: 0, specialization: null, resultReceipts: [], resolvedResultIds: [] };
 }
 /** Group mastery follows living members; a deceased person's XP cannot be cloned into their replacement. */
 export function warTeamExperienceV6(team: WarTeamStateV6): number {
@@ -56,12 +56,13 @@ export function warTeamExperienceV6(team: WarTeamStateV6): number {
 }
 /** Trusted completed scenario integration. An operation is credited once across hero, RTS and strategic views. */
 export function applyWarResultV6(team: WarTeamStateV6, receipt: WarResultReceiptV6, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): { state: WarTeamStateV6; accepted: boolean; changed: boolean } {
-  if (team.context !== "free" || !receipt.final || !/^[a-zA-Z0-9:_-]{1,150}$/.test(receipt.operationId) || !/^[a-zA-Z0-9:_-]{1,150}$/.test(receipt.resultId) || !["hero", "rts", "strategic"].includes(receipt.mode) || !["recon", "hero", "battle", "retreat", "campaign"].includes(receipt.objective) || receipt.participantIds.length === 0 || new Set(receipt.participantIds).size !== receipt.participantIds.length || receipt.participantIds.some(id => !team.members.some(member => member.id === id && member.status === "fit" && member.assignmentId === team.id))) return { state: team, accepted: false, changed: false };
-  if (team.resultReceipts.includes(receipt.operationId)) return { state: team, accepted: true, changed: false };
+  if (team.context !== "free" || !receipt.final || !/^[a-zA-Z0-9:_-]{1,150}$/.test(receipt.operationId) || !/^[a-zA-Z0-9:_-]{1,150}$/.test(receipt.resultId) || !["hero", "rts", "strategic"].includes(receipt.mode) || !["recon", "hero", "battle", "retreat", "campaign"].includes(receipt.objective)) return { state: team, accepted: false, changed: false };
+  if (team.resultReceipts.includes(receipt.operationId) || team.resolvedResultIds?.includes(receipt.resultId)) return { state: team, accepted: true, changed: false };
+  if (!Array.isArray(receipt.participantIds) || receipt.participantIds.length === 0 || new Set(receipt.participantIds).size !== receipt.participantIds.length || receipt.participantIds.some(id => !team.members.some(member => member.id === id && member.status === "fit" && member.assignmentId === team.id)) || !Number.isFinite(team.fatigue) || team.fatigue < 0 || team.fatigue > rules.parameters.fatigue_max || team.members.some(member => !Number.isFinite(member.xp) || member.xp < 0 || member.xp > rules.parameters.xp_max)) return { state: team, accepted: false, changed: false };
   const xp = Math.min(rules.parameters.xp_transaction_cap, rules.parameters[`xp_${receipt.objective}`]);
   if (!Number.isFinite(xp)) return { state: team, accepted: false, changed: false };
   const battleFatigue = ["hero", "battle", "retreat", "campaign"].includes(receipt.objective) ? rules.parameters.battle_fatigue : 0;
-  return { state: { ...team, members: team.members.map(member => receipt.participantIds.includes(member.id) ? { ...member, xp: Math.min(rules.parameters.xp_max, member.xp + xp) } : { ...member }), fatigue: Math.min(rules.parameters.fatigue_max, team.fatigue + battleFatigue), resultReceipts: [...team.resultReceipts, receipt.operationId] }, accepted: true, changed: true };
+  return { state: { ...team, members: team.members.map(member => receipt.participantIds.includes(member.id) ? { ...member, xp: Math.min(rules.parameters.xp_max, member.xp + xp) } : { ...member }), fatigue: Math.min(rules.parameters.fatigue_max, team.fatigue + battleFatigue), resultReceipts: [...team.resultReceipts, receipt.operationId], resolvedResultIds: [...(team.resolvedResultIds ?? []), receipt.resultId] }, accepted: true, changed: true };
 }
 export function selectWarSpecializationV6(team: WarTeamStateV6, branch: "A" | "B", rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): WarTeamStateV6 {
   const definition = rules.specializations.find(item => item.unitId === team.unitId);
@@ -163,14 +164,14 @@ export function parsePrivateWarRulesV6(value: unknown): { rules: WarRulesV6 | nu
   }
 }
 /** Route planning uses the documented directed graph, passage capacity and closures. It grants no campaign position. */
-export function planWarRouteV6(fromId: string, toId: string, commandPoints: number, closedPassageIds: string[] = [], rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): { passageIds: string[]; territoryIds: string[]; cost: number } | null {
-  if (!rules.territories.some(item => item.id === fromId) || !rules.territories.some(item => item.id === toId) || !Number.isSafeInteger(commandPoints) || commandPoints < 1 || commandPoints > rules.parameters.pc_cap_3) return null;
+export function planWarRouteV6(fromId: string, toId: string, commandPoints: number, closedPassageIds: string[] = [], rules: WarRulesV6 = DEFAULT_WAR_RULES_V6, cargo: "none" | "rav" = "none"): { passageIds: string[]; territoryIds: string[]; cost: number } | null {
+  if (!rules.territories.some(item => item.id === fromId) || !rules.territories.some(item => item.id === toId) || !Number.isSafeInteger(commandPoints) || commandPoints < 1 || commandPoints > rules.parameters.pc_cap_3 || !["none", "rav"].includes(cargo)) return null;
   const distances = new Map<string, number>([[fromId, 0]]), previous = new Map<string, { id: string; passageId: string }>();
   const pending = new Set(rules.territories.map(item => item.id));
   while (pending.size) {
     const current = [...pending].sort((a, b) => (distances.get(a) ?? Infinity) - (distances.get(b) ?? Infinity))[0];
     const cost = distances.get(current); if (cost === undefined) break; pending.delete(current); if (current === toId) break;
-    for (const passage of rules.passages.filter(item => !closedPassageIds.includes(item.id) && item.capacityPc >= commandPoints && (item.fromId === current || item.bidirectional && item.toId === current))) {
+    for (const passage of rules.passages.filter(item => !closedPassageIds.includes(item.id) && item.capacityPc >= commandPoints && (cargo !== "rav" || item.permitsRav) && (item.fromId === current || item.bidirectional && item.toId === current))) {
       const destination = passage.fromId === current ? passage.toId : passage.fromId;
       const nextCost = cost + passage.movementCost;
       if (pending.has(destination) && nextCost < (distances.get(destination) ?? Infinity)) { distances.set(destination, nextCost); previous.set(destination, { id: current, passageId: passage.id }); }

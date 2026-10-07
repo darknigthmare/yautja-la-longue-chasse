@@ -141,7 +141,7 @@ export interface ShipHubProps {
   progression?: ShipProgressionState;
   /** Acquired spatial contracts supply their actual capacity and return receipts. */
   operation?: ShipOperationPresentationV85;
-  /** Supply only an explicitly approved public corpus; omitted means local review. */
+  /** Override the approved same-origin V6 corpus for a controlled installation. */
   dialogueSource?: DialogueBibleSourceV85;
   initialRoomId?: ShipRoomId;
   /** Embedded installations return to the physical deck instead of the legacy bridge. */
@@ -188,6 +188,12 @@ const STAGE_LABELS: Readonly<
   displayed: "Exposé",
 };
 
+/** Full V6 distribution explicitly authorized by the player on 7 October. */
+export const APPROVED_SHIP_BIBLE_SOURCE_V85: DialogueBibleSourceV85 = {
+  dialoguesUrl: "/game/dialogues/v85/bible-dialogues.json",
+  shipsUrl: "/game/dialogues/v85/bible-ships.json",
+};
+
 const SLOT_ORDER: readonly ShipLoadoutSlotId[] = [
   "hunt-1",
   "hunt-2",
@@ -225,7 +231,7 @@ export default function ShipHub({
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   progression: controlledProgression,
   operation,
-  dialogueSource,
+  dialogueSource = APPROVED_SHIP_BIBLE_SOURCE_V85,
   initialRoomId = "bridge-map",
   embedded = false,
   suspended = false,

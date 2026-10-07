@@ -3,13 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import type { ShipId } from "./shipCatalogue";
 import { SHIP_LEVEL_ROOMS } from "./systems/shipLevelLayout";
-import { bibleCellValueV85, readBibleDocumentV85, type BibleDocumentV85 } from "./systems/bibleSourceV85";
+import { readBibleDocumentV85, readBibleShipExerciseSettingsV85 as settingsFrom, type BibleShipExerciseSettingsV85 as ExerciseSource } from "./systems/bibleSourceV85";
 import { SHIP_SPATIAL_STOPS_V85, shipReturnRoomsV85, type ShipCargoV85, type ShipCommittedDepartureV85,
   type ShipPersonReturnV85, type ShipCargoReturnV85, type ShipReturnReceiptV85, type ShipTravellerV85 } from "./systems/shipOperationsV85";
 import styles from "./ShipManifestExerciseV85.module.css";
+import { createBibleLoadGateV85, fetchBibleDocumentsV85 } from "./systems/bibleResourceV85";
 
 interface ExercisePerson extends ShipTravellerV85 { player: boolean }
-interface ExerciseSource { tiers: { level: number; persons: number }[]; maxPlayers: number; occupants: { name: string; player: boolean; role: ShipTravellerV85["role"] }[] }
 const CONDITION_LABELS = { fit: "Apte", wounded: "Blessé", missing: "Disparu", dead: "Mort" } as const;
 const ROLE_LABELS = { hunter: "Chasseur", crew: "Équipage", escort: "Escorte", medic: "Soins", guest: "Invité" } as const;
 const PURPOSE_LABELS = { "personal-kit": "Kit personnel", delivery: "Livraison", loan: "Prêt", return: "Restitution" } as const;
@@ -21,33 +21,14 @@ const ROOM_USES: Record<string, string> = {
   "training-arena": "Transmettre les observations des voyageurs revenus.", "launch-airlock": "Contrôler les présences et le chargement avant embarquement.",
 };
 
-function settingsFrom(document: BibleDocumentV85): ExerciseSource {
-  const settings = document.sheets.find(sheet => sheet.name === "Réglages des simulateurs");
-  const manifest = document.sheets.find(sheet => sheet.name === "Manifeste du navire");
-  const tiers = (settings?.rows ?? []).flatMap(row => {
-    const level = bibleCellValueV85(settings, `D${row.number}`);
-    const persons = bibleCellValueV85(settings, `E${row.number}`);
-    return typeof level === "number" && typeof persons === "number" && Number.isInteger(level) && Number.isInteger(persons) && level > 0 && persons > 0 && persons <= 100 ? [{ level, persons }] : [];
-  });
-  const maxPlayers = bibleCellValueV85(settings, "E11");
-  if (!tiers.length || typeof maxPlayers !== "number" || !Number.isInteger(maxPlayers) || maxPlayers < 1 || maxPlayers > 100) {
-    throw new Error("Ouvrez bible-ships.json : les réglages du manifeste de clan sont nécessaires.");
-  }
-  const occupants = (manifest?.rows ?? []).filter(row => row.number >= 14 && row.number <= 32 && bibleCellValueV85(manifest, `D${row.number}`) === 1).flatMap(row => {
-    const name = bibleCellValueV85(manifest, `B${row.number}`);
-    const player = bibleCellValueV85(manifest, `C${row.number}`) === "Joueur";
-    const job = String(bibleCellValueV85(manifest, `E${row.number}`) ?? "").toLocaleLowerCase("fr");
-    return typeof name === "string" && name.trim() ? [{ name, player, role: player ? "hunter" as const : job.includes("soin") || job.includes("médic") ? "medic" as const : "crew" as const }] : [];
-  });
-  return { tiers, maxPlayers, occupants };
-}
-
 /** Free exercise state remains in this component; it never reaches campaign saves. */
 export default function ShipManifestExerciseV85({ shipId, hunterName, sourceUrl }: { shipId: ShipId; hunterName: string; sourceUrl?: string }) {
   const [expanded, setExpanded] = useState(false);
-  const [source, setSource] = useState<ExerciseSource | null>(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [cache, setCache] = useState<{ origin: string; settings: ExerciseSource } | null>(null);
+  const [loadMode, setLoadMode] = useState<"remote" | "local">("remote");
+  const [localLoading, setLocalLoading] = useState(false);
+  const [localError, setLocalError] = useState("");
+  const [networkFailure, setNetworkFailure] = useState<{ key: string; message: string } | null>(null);
   const [tier, setTier] = useState("");
   const [people, setPeople] = useState<ExercisePerson[]>([{ id: "exercise-person-1", name: hunterName, player: true, role: "hunter", condition: "fit", branchId: "exercise-origin" }]);
   const [cargo, setCargo] = useState<ShipCargoV85[]>([]);
@@ -64,7 +45,12 @@ export default function ShipManifestExerciseV85({ shipId, hunterName, sourceUrl 
   const [witness, setWitness] = useState("");
   const [receipt, setReceipt] = useState<ShipReturnReceiptV85 | null>(null);
   const nextId = useRef(2);
-  const request = useRef<AbortController | null>(null);
+  const request = useRef(createBibleLoadGateV85());
+  const source = cache && (cache.origin === "local" || cache.origin === sourceUrl) ? cache.settings : null;
+  const networkError = networkFailure && networkFailure.key === sourceUrl ? networkFailure.message : "";
+  const networkNeeded = expanded && loadMode === "remote" && Boolean(sourceUrl) && !source && !networkError;
+  const loading = localLoading || networkNeeded;
+  const error = localError || networkError;
   const currentTier = source?.tiers.find(entry => String(entry.level) === tier);
   const wounded = people.filter(person => person.condition === "wounded").length;
   const players = people.filter(person => person.player).length;
@@ -83,30 +69,29 @@ export default function ShipManifestExerciseV85({ shipId, hunterName, sourceUrl 
   ];
 
   useEffect(() => {
-    if (!expanded || !sourceUrl || source) return;
-    const controller = new AbortController();
-    request.current = controller;
-    setLoading(true); setError("");
-    const url = new URL(sourceUrl, window.location.href);
-    if (url.origin !== window.location.origin) { setError("Le corpus doit être servi par ce site."); setLoading(false); return; }
-    fetch(url, { signal: controller.signal, credentials: "same-origin" }).then(async response => {
-      if (!response.ok) throw new Error("L’extraction navire n’est pas disponible.");
-      const result = settingsFrom(readBibleDocumentV85(await response.json()));
-      if (!controller.signal.aborted) { setSource(result); setTier(String(result.tiers[0].level)); }
-    }).catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "Lecture impossible."); })
-      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
-    return () => { controller.abort(); request.current = null; };
-  }, [expanded, sourceUrl, source]);
+    if (!networkNeeded || !sourceUrl) return;
+    const ticket = request.current.begin();
+    fetchBibleDocumentsV85([sourceUrl], window.location.href, ticket.signal).then(documents => {
+      const result = settingsFrom(documents[0]);
+      if (ticket.isCurrent()) { setCache({ origin: sourceUrl, settings: result }); setTier(String(result.tiers[0].level)); }
+    }).catch(reason => { if (ticket.isCurrent()) setNetworkFailure({ key: sourceUrl, message: reason instanceof Error ? reason.message : "Lecture impossible." }); });
+    return () => ticket.cancel();
+  }, [networkNeeded, sourceUrl]);
+  useEffect(() => { const gate = request.current; return () => gate.cancel(); }, []);
+  const usePublicSource = () => {
+    request.current.cancel(); setLocalLoading(false); setLocalError(""); setNetworkFailure(null); setLoadMode("remote"); setCache(null);
+  };
 
   const importLocal = async (file: File | undefined) => {
     if (!file) return;
-    request.current?.abort(); setLoading(true); setError("");
+    const ticket = request.current.begin();
+    setLoadMode("local"); setLocalLoading(true); setLocalError(""); setNetworkFailure(null);
     try {
       if (file.size > 30 * 1024 * 1024) throw new Error("Ce fichier dépasse la taille admise pour l’extraction V6.");
       const result = settingsFrom(readBibleDocumentV85(JSON.parse(await file.text())));
-      setSource(result); setTier(String(result.tiers[0].level));
-    } catch (reason) { setError(reason instanceof Error ? reason.message : "Lecture impossible."); }
-    finally { setLoading(false); }
+      if (ticket.isCurrent()) { setCache({ origin: "local", settings: result }); setTier(String(result.tiers[0].level)); }
+    } catch (reason) { if (ticket.isCurrent()) setLocalError(reason instanceof Error ? reason.message : "Lecture impossible."); }
+    finally { if (ticket.isCurrent()) setLocalLoading(false); }
   };
   const embark = () => {
     if (missing.length || departure) return;
@@ -126,12 +111,13 @@ export default function ShipManifestExerciseV85({ shipId, hunterName, sourceUrl 
   };
   const rooms = departure && receipt ? shipReturnRoomsV85(departure, receipt) : null;
 
-  return <details className={styles.exercise} onToggle={event => setExpanded(event.currentTarget.open)} onKeyDown={event => event.stopPropagation()}>
+  return <details className={styles.exercise} onToggle={event => { const open = event.currentTarget.open; setExpanded(open); if (!open) { request.current.cancel(); setLocalLoading(false); } }} onKeyDown={event => event.stopPropagation()}>
     <summary>Exercice libre de manifeste et retour</summary>
     <p className={styles.notice}>État séparé en mémoire : aucun départ de campagne, équipage recruté, trophée, carburant consommé ou XP. Les capacités appartiennent au scénario original de navire de clan V6 ; elles ne décrivent pas la coque canonique affichée au hangar.</p>
     <fieldset disabled={departure !== null}><legend>Source et préparation du scénario</legend>
       <label>Extraction V6 locale <input type="file" accept=".json,application/json" onChange={event => { void importLocal(event.currentTarget.files?.[0]); event.currentTarget.value = ""; }} /></label>
       <small>bible-ships.json reste dans ce navigateur, sans upload. Aucune capacité de chargement ou masse canonique n’est inventée.</small>
+      {sourceUrl && <button type="button" onClick={usePublicSource}>Recharger les réglages publics</button>}
       {loading && <p role="status">Lecture des réglages…</p>}{error && <p role="alert">{error}</p>}
       <div className={styles.row}><label>Palier du scénario <select value={tier} onChange={event => setTier(event.currentTarget.value)} disabled={!source}><option value="">Source requise</option>{source?.tiers.map(entry => <option key={entry.level} value={entry.level}>Palier {entry.level} · {entry.persons} places</option>)}</select></label>
         <label>Origine <select value={origin} onChange={event => setOrigin(event.currentTarget.value)}>{SHIP_SPATIAL_STOPS_V85.map(stop => <option key={stop.id} value={stop.id}>{stop.name}</option>)}</select></label>

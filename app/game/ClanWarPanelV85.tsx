@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import type { SaveGame } from "./types";
 import {
   CLAN_WAR_ENTRIES_V85, CLAN_WAR_SECTIONS_V85, CLAN_WAR_WORKBOOK_V85,
@@ -9,29 +10,29 @@ import {
   type ClanWarEntryV85,
 } from "./systems/clanWarV85Data";
 import {
-  WAR_STORAGE_KEY_V85, advanceWarTurnV85, cancelWarOrderV85, createWarSimulationV85,
-  queueWarOrderV85, readWarSimulationV85, warBudgetV85, warFitCombatantsV85,
+  advanceWarTurnV85, cancelWarOrderV85, createWarSimulationV85,
+  queueWarOrderV85, warBudgetV85, warFitCombatantsV85,
   warGarrisonV85, warOrderCostV85, warSuppliedV85, warUpkeepV85, warVeterancyV85,
-  type WarOrderKindV85, type WarSimulationV85,
+  type WarOrderKindV85,
 } from "./systems/clanWarV85";
 import {
-  CANYON_POSTS_V85, CANYON_PRESET_V85, CANYON_STORAGE_KEY_V85, canyonCompositionIssueV85,
+  CANYON_POSTS_V85, CANYON_PRESET_V85, canyonCompositionIssueV85,
   canyonPreparationV85, canyonXpV85, commitCanyonV85, createCanyonV85, engageCanyonV85,
-  orderCanyonFormationV85, readCanyonV85, stepCanyonV85, withdrawCanyonV85,
-  type CanyonOrderKindV85, type CanyonSimulationV85,
+  orderCanyonFormationV85, stepCanyonV85, withdrawCanyonV85,
+  type CanyonOrderKindV85,
 } from "./systems/clanWarCanyonV85";
 import styles from "./ClanWarPanelV85.module.css";
 import ClanWarBibleV6Panel from "./ClanWarBibleV6Panel";
-import { findImportedYautjaArtV85 } from "./systems/recentSpriteLibraryV85";
+import { importedYautjaArtVariantsV85 } from "./systems/recentSpriteLibraryV85";
+import { createWarSessionV85 } from "./systems/clanWarSessionV85";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-const COMPOSITION_STORAGE_KEY_V85 = "yautja.clan-war.v85.composition.free.v1";
 const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers" };
 const tacticalLabels: Record<CanyonOrderKindV85, string> = { hold: "Tenir", move: "Déplacer", observe: "Observer", cover: "Couvrir", secure: "Rétablir l’accès", rescue: "Évacuer le porteur", adopt: "Adopter Lecture récente", extract: "Rejoindre l’extraction" };
 function Budget({ s, m, i }: { s: number; m: number; i: number }) { return <span className={styles.budget}>S <strong>{s}</strong> · M <strong>{m}</strong> · I <strong>{i}</strong></span>; }
 function WarArt({ clanName, role }: { clanName?: string; role?: string }) {
-  const art = findImportedYautjaArtV85({ clanName, role });
-  return art ? <figure className={styles.sourceArt} data-war-art={art.assetId}><img src={art.portraitUrl} alt={`${art.label} · référence originale statique`} loading="lazy" decoding="async"/><figcaption>{art.label} · référence statique du {clanName ? "clan" : "rôle"}</figcaption></figure> : null;
+  const art = importedYautjaArtVariantsV85({ clanName, role })[0];
+  return art ? <figure className={styles.sourceArt} data-war-art={art.id}><Image src={art.src} width={art.width} height={art.height} unoptimized alt={`${art.label} · référence originale statique`} loading="lazy" decoding="async"/><figcaption>{art.label} · référence statique du {clanName ? "clan" : "rôle"}</figcaption></figure> : null;
 }
 const artRoles: Record<string, string> = { "RTS-U01": "patrouille", "RTS-U02": "pisteur", "RTS-U03": "tireur", "RTS-U13": "sapeur", "RTS-U15": "soigneur", "RTS-U18": "porteur" };
 function Entry({ entry }: { entry: ClanWarEntryV85 }) {
@@ -45,13 +46,9 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
 export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onClose: () => void }) {
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("bible");
-  const [simulation, setSimulation] = useState<WarSimulationV85>(() => createWarSimulationV85());
-  const [canyon, setCanyon] = useState<CanyonSimulationV85>(() => createCanyonV85());
-  const [selection, setSelection] = useState<Record<string, number>>({ ...CANYON_PRESET_V85 });
-  const [loaded, setLoaded] = useState(false);
-  const [writableWar, setWritableWar] = useState(true), [writableCanyon, setWritableCanyon] = useState(true);
-  const [writableComposition, setWritableComposition] = useState(true);
-  const [storageMessage, setStorageMessage] = useState("");
+  const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
+  const { simulation, canyon, selection, storageMessage } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
+  const { setSimulation, setCanyon, setSelection } = sessionStore;
   const [message, setMessage] = useState("Choisissez un exercice ou consultez les fiches du mandat.");
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
@@ -66,48 +63,10 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
   const [running, setRunning] = useState(false);
 
   useEffect(() => {
-    try {
-      const rawWar = window.localStorage.getItem(WAR_STORAGE_KEY_V85), rawCanyon = window.localStorage.getItem(CANYON_STORAGE_KEY_V85);
-      if (rawWar !== null) {
-        let parsed: WarSimulationV85 | null = null; try { parsed = readWarSimulationV85(JSON.parse(rawWar)); } catch { /* Preserve the unknown archive. */ }
-        if (parsed) setSimulation(parsed); else { setWritableWar(false); setStorageMessage("L’archive de Korthas est incompatible ou illisible. Ses données sont conservées ; cet exercice reste temporaire."); }
-      }
-      if (rawCanyon !== null) {
-        let parsed: CanyonSimulationV85 | null = null; try { parsed = readCanyonV85(JSON.parse(rawCanyon)); } catch { /* Preserve the unknown archive. */ }
-        if (parsed) { setCanyon(parsed); setSelectedFormation(parsed.formations[0]?.id ?? ""); }
-        else { setWritableCanyon(false); setStorageMessage("L’archive du canyon est incompatible ou illisible. Ses données sont conservées ; cet exercice reste temporaire."); }
-      }
-      const rawComposition = window.localStorage.getItem(COMPOSITION_STORAGE_KEY_V85);
-      if (rawComposition !== null) {
-        try {
-          const parsed = JSON.parse(rawComposition) as { version?: unknown; context?: unknown; selection?: unknown };
-          if (parsed.version !== 1 || parsed.context !== "free" || !parsed.selection || typeof parsed.selection !== "object" || Array.isArray(parsed.selection) || !Object.entries(parsed.selection).every(([id, quantity]) => warUnitV85(id) && typeof quantity === "number" && Number.isSafeInteger(quantity) && quantity >= 0 && quantity <= 12)) throw new Error("Incompatible free composition");
-          setSelection(parsed.selection as Record<string, number>);
-        } catch { setWritableComposition(false); setStorageMessage("La configuration de détachement est incompatible. Elle est conservée et le compositeur reste temporaire."); }
-      }
-    } catch { setWritableWar(false); setWritableCanyon(false); setWritableComposition(false); setStorageMessage("Le stockage local est indisponible. Les exercices restent utilisables pendant cette visite."); }
-    setLoaded(true);
-  }, []);
-  useEffect(() => {
-    if (!loaded || !writableWar) return;
-    try { window.localStorage.setItem(WAR_STORAGE_KEY_V85, JSON.stringify(simulation)); }
-    catch { setWritableWar(false); setStorageMessage("Korthas continue en mémoire : sa sauvegarde locale n’a pas pu être écrite."); }
-  }, [loaded, writableWar, simulation]);
-  useEffect(() => {
-    if (!loaded || !writableCanyon) return;
-    try { window.localStorage.setItem(CANYON_STORAGE_KEY_V85, JSON.stringify(canyon)); }
-    catch { setWritableCanyon(false); setStorageMessage("Le canyon continue en mémoire : sa sauvegarde locale n’a pas pu être écrite."); }
-  }, [loaded, writableCanyon, canyon]);
-  useEffect(() => {
-    if (!loaded || !writableComposition) return;
-    try { window.localStorage.setItem(COMPOSITION_STORAGE_KEY_V85, JSON.stringify({ version: 1, context: "free", selection })); }
-    catch { setWritableComposition(false); setStorageMessage("La composition continue en mémoire : sa configuration n’a pas pu être sauvegardée."); }
-  }, [loaded, writableComposition, selection]);
-  useEffect(() => {
     if (!running || canyon.phase !== "battle" || tab !== "canyon") return;
     const timer = window.setInterval(() => setCanyon(current => stepCanyonV85(current)), 1000);
     return () => window.clearInterval(timer);
-  }, [running, canyon.phase, tab]);
+  }, [running, canyon.phase, tab, setCanyon]);
 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
@@ -134,11 +93,11 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
   }
   function restartWar() {
     if (!window.confirm("Commencer un nouvel exercice de Korthas et remplacer uniquement son archive libre ?")) return;
-    setSimulation(createWarSimulationV85()); setWritableWar(true); setConfirmTurn(false); setSelectedPeople([]); setMessage("Nouvel exercice de Korthas ouvert.");
+    setSimulation(createWarSimulationV85()); sessionStore.unlockWarAfterExplicitReset(); setConfirmTurn(false); setSelectedPeople([]); setMessage("Nouvel exercice de Korthas ouvert.");
   }
   function restartCanyon() {
     if (!window.confirm("Recommencer uniquement l’exercice libre du canyon ?")) return;
-    setCanyon(createCanyonV85(`free-canyon-${Date.now()}`)); setWritableCanyon(true); setRunning(false); setSelectedFormation(""); setMessage("Reconnaissance du canyon recommencée.");
+    setCanyon(createCanyonV85(`free-canyon-${Date.now()}`)); sessionStore.unlockCanyonAfterExplicitReset(); setRunning(false); setSelectedFormation(""); setMessage("Reconnaissance du canyon recommencée.");
   }
   function issueTactical() {
     if (!formation) return;
@@ -147,12 +106,12 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
   }
 
   return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none">
-    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Un conflit, trois échelles</h2><p>Reconnaissance sur le terrain, commandement du détachement et conséquences territoriales.</p></div><button type="button" onClick={onClose}>Retour au vaisseau</button></header>
+    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Un conflit, trois échelles</h2><p>Reconnaissance sur le terrain, commandement du détachement et conséquences territoriales.</p></div><button type="button" onClick={onClose}>Retour</button></header>
     <div className={styles.notice}><strong>Exercices libres</strong><p>Le canyon et Korthas possèdent leurs propres unités et archives. Votre chasse conserve son matériel, ses rites et ses personnes. Un mandat de campagne demande Blooded, une coque acquise et l’arrivée réelle sur le théâtre.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Le mandat de Korthas et son arrivée restent à raccorder au voyage de campagne.</p></div>
     <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["korthas", "Exercice V3 · Korthas"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     {storageMessage && <p className={styles.storage} role="status">{storageMessage}</p>}
-    {tab === "bible" && <ClanWarBibleV6Panel/>}
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel/></div>
 
     {tab === "composition" && <div>
       <div className={styles.sectionHeader}><div><h3>Formations et limites de composition</h3><p>Le commandement compte aussi les réserves et les groupes en transit.</p></div><button type="button" onClick={() => { setSelection({ ...CANYON_PRESET_V85 }); setMessage("Effectif d’exemple du classeur : 12 commandement, 112 matériaux et 60 énergie."); }}>Effectif du classeur</button></div>

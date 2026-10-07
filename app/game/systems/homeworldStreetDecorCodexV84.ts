@@ -30,7 +30,7 @@ export const HOMEWORLD_STREET_DECOR_CODEX_V84:readonly StreetRecordV84[]=[
     'Placement exact sélectionné par la politique runtime après compilation des décors existants ; un candidat refusé ne devient ni solide ni visible.',
     'Un PNG composite reste une seule source indépendante ; accessoires fusionnés et flamme peinte ne constituent pas de sprites ou animations supplémentaires.',
     'Objet environnemental statique et solide, sans nouveau rang, récompense, arme canonique, symbole officiel ou interaction.',
-    'V84 implémentée, non vérifiée : aucun test, audit, compilation locale de validation, examen navigateur ou nombre visible certifié.']};
+    'Reprise V85 : compilation et collision de modèle testées, 10 instances montées et2refusées sur12candidats. Le nombre visible dans un navigateur ou en production, la qualité esthétique et la fidélité1:1 restent non certifiés.']};
  }),
  ...HOMEWORLD_STREET_DECOR_CANDIDATES_V84.filter(item=>!activeIds.has(item.id)).map(item=>{
   const art=HOMEWORLD_STREET_DECOR_ART_V84[item.artId],refusal=HOMEWORLD_STREET_DECOR_REFUSALS_V84.find(record=>record.id===item.id);
@@ -41,7 +41,7 @@ export const HOMEWORLD_STREET_DECOR_CODEX_V84:readonly StreetRecordV84[]=[
    constraints:[item.purpose,
     'Candidat authored exact conservé dans le registre ; aucun dessin, bloqueur, nouveau service ou repère de navigation créé par cette fiche.',
     'Décision runtime : '+(refusal?.reason??'placement non initialisé')+'. Ce résultat est une politique du jeu, pas une QA exécutée.',
-    'Aucun décalage recherché, réduction d’échelle, téléportation ou déplacement d’un meuble historique pour forcer le montage.',
+    'Aucun décalage recherché au runtime, réduction d’échelle, téléportation ou déplacement d’un meuble historique pour forcer le montage. Les positions retenues sont des écritures de sources fixes.',
     'La source peut être utilisée ailleurs et préchargée ; cette fiche ne certifie pas que ce candidat soit visible.']};
  }),
 ];

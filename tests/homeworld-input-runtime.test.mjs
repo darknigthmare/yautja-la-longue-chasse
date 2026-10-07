@@ -6,21 +6,23 @@ import ts from "typescript";
 import { build } from "esbuild";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "../app/game/systems/homeworldInput.ts";
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "../app/game/systems/controlBindings.ts";
+import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
-function pollingEffect(environment) {
+function liveLiftOrPollingCallback(environment, name = 'poll') {
   let implementation;
   const visit = node => {
-    if (ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
-      && node.arguments[0]?.getText(tree).includes("stepHomeworldGamepad")) implementation = node.arguments[0];
+    if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
+      && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
+    else if (name === 'updateLiftStationV83' && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
   visit(tree);
-  assert.ok(implementation, "test executes the live Homeworld polling effect");
+  assert.ok(implementation, "test executes the live Homeworld " + name + " callback");
   const compiled = ts.transpileModule(`const handler = ${implementation.getText(tree)};`, {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
   }).outputText;
@@ -46,14 +48,15 @@ function liveSprintHandler(kind, environment) {
 }
 
 function fixture() {
-  const frames = new Map(), events = [];
+  const frames = animationFrameFixture(), events = [];
+  const owner = "2026-10-07T12:00:00.000Z";
   const pad = { connected: true, id: "virtual-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const world = {}, outside = {}, dialog = {};
   const choices = Array.from({ length: 3 }, (_, index) => ({
     focus() { env.document.activeElement = choices[index]; events.push(["focus", index]); },
     click() { events.push(["choose", index]); },
   }));
-  let sequence = 0, time = 0, cleanup, paused = false, inactive = false;
+  let cleanup, paused = false, inactive = false;
   const env = {
     ...city,
     createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice,
@@ -68,6 +71,9 @@ function fixture() {
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
     actorRef: { current: city.createHomeworldWorldActorV77() }, visitedAttempt: { current: null },
     levelRefV77: {current:'0'}, transitRefV77: {current:null}, skiffRefV77: {current:null}, cntlipMovementRefV77: {current:1},
+    save: { createdAt: owner }, saveRef: { current: { createdAt: owner } },
+    liftRefV83: { current: city.createHomeworldLiftStationV83(owner) }, liftSessionReadyRefV83: { current: false }, liftSessionOwnerV83: null,
+    setLiftStateV83(value) { env.liftStateV83 = value; }, setLiftSessionOwnerV83(value) { env.liftSessionOwnerV83 = value; },
     exteriorAnchorRef: {current:city.createHomeworldWorldActorV77()},
     setSkiffV77() {}, setTransitV77() {}, setElevationV77() {}, setLevelIdV77() {}, setAnnouncement() {},
     recordLocationV77() { throw new Error('No completed connector or skiff in these declared world input cases'); },
@@ -79,8 +85,7 @@ function fixture() {
     dialogRef: { current: { querySelectorAll: () => choices } },
     document: { hidden: false, activeElement: world, hasFocus: () => env.windowFocused }, windowFocused: true,
     navigator: { getGamepads: () => [pad] },
-    requestAnimationFrame(fn) { const id = ++sequence; frames.set(id, fn); return id; },
-    cancelAnimationFrame(id) { frames.delete(id); },
+    requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame,
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
     persistVisit() {}, setActor() {}, setPhase() {},
     setDreadAngles(value) { env.dreadAngles = value; },
@@ -90,11 +95,11 @@ function fixture() {
     interact() { events.push(["interact"]); env.clearInputs(); env.dialogStateRef.current = { point: "nearby" }; env.document.activeElement = dialog; },
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
-  const effect = pollingEffect(env);
+  env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
+  liveLiftOrPollingCallback(env, 'liftHydration')();
+  const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };
-  const tick = (count = 1) => { for (let i = 0; i < count; i += 1) {
-    const next = frames.entries().next().value; assert.ok(next); frames.delete(next[0]); time += 1000 / 60; next[1](time);
-  } };
+  const tick = (count = 1) => { assert.ok(frames.size, 'an active browser frame exists'); frames.tick(count); };
   const release = () => { pad.axes = [0, 0]; for (const button of pad.buttons) button.pressed = false; tick(); };
   render();
   return { env, pad, tick, release, render, events, world, outside, dialog, choices };

@@ -127,7 +127,9 @@ export function homeworldCivicPublicComplexV83(room: HomeworldInteriorV64): Home
     decorPoses = [[126, 318], [512, 48], [40, 358]];
     furnish('visitor-rest', 'treatment-couch', 466, 306, .55);
     furnish('care-containers', 'sealed-jars', 218, 300, .4);
-    furnish('visitor-parures', 'clothing-rack', 399, 198, .55);
+    // Keep the V77 host/table socket reachable from the public traverse.
+    // This rack belongs beside visitor rest, outside the table's approach.
+    furnish('visitor-parures', 'clothing-rack', 400, 341, .55);
     furnish('care-veille', 'resin-lantern', 48, 120, .42);
     oriented('communal-case', 'chest-diagonal', 414, 412, .42,
       'Contenant fermé de la salle commune, sans consommation simulée ou récompense.');

@@ -5,10 +5,11 @@ import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "../app/game/systems/homeworldInput.ts";
+import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export * from './app/game/systems/homeworldLocationV77.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export * from './app/game/systems/homeworldLocationV77.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function walkableDistrictPosition(id) {
@@ -31,6 +32,8 @@ function liveCallback(name, environment) {
       && node.arguments[0]?.getText(tree).includes("stepHomeworldGamepad")) implementation = node.arguments[0];
     if (name === "sync" && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes("progressRef.current = save.homeworld")) implementation = node.arguments[0];
+    if (name === "liftHydration" && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
+      && node.arguments[0]?.getText(tree).includes("restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
     if (ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     ts.forEachChild(node, visit);
   }
@@ -42,7 +45,8 @@ function liveCallback(name, environment) {
 }
 
 function fixture() {
-  let frame, time = 0, cleanup;
+  const frames = animationFrameFixture();
+  let cleanup, liftCleanup;
   // The V77 spaceport spawn is outside the visited Port district. These
   // recovery cases declare an actor already at an actual walkable Port entry.
   const initial = world.defaultHomeworldProgress(), attempts = [], messages = [], actor = {...world.createHomeworldWorldActorV77(),...walkableDistrictPosition('port')};
@@ -54,6 +58,9 @@ function fixture() {
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
     levelRefV77: {current:'0'}, transitRefV77: {current:null}, skiffRefV77: {current:null}, cntlipMovementRefV77: {current:1},
+    liftRefV83: { current: world.createHomeworldLiftStationV83(owner) }, liftSessionReadyRefV83: { current: false },
+    liftSessionOwnerV83: null,
+    setLiftStateV83(value) { env.liftStateV83 = value; }, setLiftSessionOwnerV83(value) { env.liftSessionOwnerV83 = value; },
     exteriorAnchorRef: {current:actor},
     setSkiffV77() {}, setTransitV77() {}, setElevationV77() {}, setLevelIdV77() {},
     interiorRef: { current: null },
@@ -67,7 +74,7 @@ function fixture() {
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
     saveRef: { current: { createdAt: owner, profile: { rankId: "young-blood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },
-    navigator: { getGamepads: () => [pad] }, requestAnimationFrame(fn) { frame = fn; return 1; }, cancelAnimationFrame() {},
+    navigator: { getGamepads: () => [pad] }, requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame,
     setActor() {}, setPhase() {}, setPaused() {}, setInactive() {}, closeDialog() {}, interact() {},
     setDreadAngles(value) { env.dreadAngles = value; },
     clearInputs() { env.held.current.clear(); env.touch.current = {}; env.gamepadStateRef.current = createHomeworldGamepadState(); },
@@ -81,13 +88,34 @@ function fixture() {
   env.save = { ...env.saveRef.current, homeworld: initial };
   env.viewportRef = { current: { focus() { env.document.activeElement = env.viewportRef.current; } } };
   env.dialogRef = { current: { focus() { env.document.activeElement = env.dialogRef.current; }, querySelectorAll: () => [] } };
-  for (const name of ["pointInCurrentSpace", "onProgress", "recordLocationV77", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry"]) env[name] = liveCallback(name, env);
+  for (const name of ["pointInCurrentSpace", "onProgress", "recordLocationV77", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry", "updateLiftStationV83"]) env[name] = liveCallback(name, env);
   const effect = liveCallback("poll", env);
   const render = () => { cleanup?.(); cleanup = effect(); };
-  const tick = (count = 1) => { for (let i = 0; i < count; i++) { time += 1000 / 60; frame(time); } };
+  const hydrate = () => { liftCleanup?.(); liftCleanup = liveCallback("liftHydration", env)(); };
+  const tick = frames.tick;
+  hydrate();
   render();
-  return { env, initial, attempts, messages, tick, render, pad };
+  return { env, initial, attempts, messages, tick, render, hydrate, pad };
 }
+
+test("queued lift hydration never restores a previous owner and replacement hydration shares the polling frame", () => {
+  const f = fixture(), restored = [], nextOwner = "2026-10-07T14:00:00.000Z";
+  f.env.restoreHomeworldLiftStationV83 = owner => { restored.push(owner); return world.restoreHomeworldLiftStationV83(owner); };
+  assert.equal(f.env.liftSessionReadyRefV83.current, false, "the actual hydration effect remains queued");
+  f.env.save = { ...f.env.save, createdAt: nextOwner, homeworld: world.defaultHomeworldProgress() };
+  liveCallback("sync", f.env)();
+  f.tick();
+  assert.deepEqual(restored, [], "an old hydration callback cannot read a station for a changed save");
+  assert.equal(f.env.liftSessionReadyRefV83.current, false);
+  assert.equal(f.env.liftSessionOwnerV83, null);
+  f.hydrate(); f.render(); f.tick();
+  assert.deepEqual(restored, [nextOwner]);
+  assert.equal(f.env.liftSessionReadyRefV83.current, true);
+  assert.equal(f.env.liftSessionOwnerV83, nextOwner);
+  assert.equal(f.env.liftRefV83.current.ownerCreatedAt, nextOwner);
+  assert.equal(f.attempts.length, 1, "hydration and rerender do not repeatedly persist a refused Port visit");
+  assert.deepEqual([...f.env.pendingVisitsRef.current], ["port"]);
+});
 
 test("a refused actual Port entry stays pending without a frame-write loop, then retries in place", () => {
   const f = fixture(), original = structuredClone(f.initial), actor = structuredClone(f.env.actorRef.current);

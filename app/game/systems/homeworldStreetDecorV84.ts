@@ -74,10 +74,9 @@ export function homeworldStreetDecorCollisionV84(level:HomeworldLevelV77,p:Point
 }
 /** Runtime policy, never an executed QA report. Exact candidates are accepted
  * or retained as refusals: no scatter search, doorway move or size reduction. */
-export function configureHomeworldStreetDecorV84(input:HomeworldStreetDecorPlacementInputV84){
- if(initialized)return;initialized=true;
+export function compileHomeworldStreetDecorV84(input:HomeworldStreetDecorPlacementInputV84,candidates:readonly HomeworldStreetDecorPropV84[]=HOMEWORLD_STREET_DECOR_CANDIDATES_V84){
  const accepted:HomeworldStreetDecorPropV84[]=[],refusals:{id:string;reason:string}[]=[];
- for(const item of HOMEWORLD_STREET_DECOR_CANDIDATES_V84){
+ for(const item of candidates){
   const physical=homeworldStreetDecorPolygonV84(item),usage=homeworldStreetDecorUsageV84(item),safety=homeworldStreetDecorSafetyV84(item),zones=[physical,...(usage?[usage]:[]),...(safety?[safety]:[])];
   const reserve=input.reserves.find(r=>r.levelId===item.levelId&&zones.some(poly=>homeworldStreetDecorOverlapV83(poly,r.polygon)));let reason=reserve?'reserved:'+reserve.id:null;
   if(!reason)for(const other of accepted){if(other.levelId!==item.levelId)continue;
@@ -91,5 +90,10 @@ export function configureHomeworldStreetDecorV84(input:HomeworldStreetDecorPlace
   if(!reason&&safety)for(const p of coverage(safety)){const old=input.collision(item.levelId,p,{halfWidth:0,halfDepth:0});if(old){reason='blocked-safety:'+old.id;break;}}
   if(reason)refusals.push({id:item.id,reason});else accepted.push(item);
  }
- HOMEWORLD_STREET_DECOR_PROPS_V84=accepted;HOMEWORLD_STREET_DECOR_REFUSALS_V84=refusals;
+ return{accepted,refusals};
+}
+export function configureHomeworldStreetDecorV84(input:HomeworldStreetDecorPlacementInputV84){
+ if(initialized)return;initialized=true;
+ const compiled=compileHomeworldStreetDecorV84(input);
+ HOMEWORLD_STREET_DECOR_PROPS_V84=compiled.accepted;HOMEWORLD_STREET_DECOR_REFUSALS_V84=compiled.refusals;
 }

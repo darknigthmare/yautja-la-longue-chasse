@@ -12,7 +12,7 @@ export const HOMEWORLD_PORT_PUBLIC_COMPLEX_CODEX_V84: readonly HomeworldElementR
     const layout = room.portComplexV84!, building = HOMEWORLD_BUILDINGS.find(item => item.id === room.buildingId)!;
     const common = { districtId: building.districtId, spaceId: room.buildingId,
       lore: 'original-adaptation' as const, door: null, source: [], asset: null };
-    const validation = 'V84 implémentée, non vérifiée : aucun test, audit, lint, compilation locale de validation, contrôle TypeScript ou examen navigateur exécuté pour ces placements.';
+    const validation = 'Reprise V85 : tests ciblés de modèle exécutés pour les sorties, services, zones et repères avec corps28×18 et parcours depuis spawn ; lint ciblé exécuté. Aspect navigateur, production et fidélité1:1 non certifiés.';
     const records: HomeworldElementRecordV64[] = [{ ...common, id: `v84-port-complex:${room.buildingId}`,
       label: room.title, category: 'interior', position: { x: 0, y: 0, z: 0 },
       dimensions: { width: room.width, depth: room.depth, height: building.wallHeight }, footprint: null,
@@ -23,7 +23,7 @@ export const HOMEWORLD_PORT_PUBLIC_COMPLEX_CODEX_V84: readonly HomeworldElementR
         'Props, services, preuve, points, conditions de progression, spawn, exit et bâtiment sont ceux du système historique ; leurs IDs ne sont pas remplacés.',
         'Les nouveaux noms d’activité décrivent le décor, pas un atelier interactif, un service de transport, un objet récupérable, un soin ou une récompense.',
         ...(layout.kind === 'dock' ? ['Officier dock-officer-point à108/144 et preuve suspect-trophy-point à410/172, inchangés. Le stockage ajouté ne contient pas de nouvelle pièce d’enquête.'] : []),
-        'Les repères de traversée décrivent la composition : aucune largeur libre effective, approche corporelle ou qualité esthétique certifiée sans QA.',
+        'Les repères de traversée sont atteints par le test de flood4unités ; leur largeur affichée décrit la composition, pas une largeur libre intégrale ou une qualité esthétique certifiée.',
         'Aménagement original compatible avec la ville du jeu ; aucun véhicule, plan officiel, dimension canonique ou fidélité1:1 affirmé.'] }];
     for (const item of layout.nativeProps) {
       const art = homeworldPortNativePropArtV84(item), polygon = homeworldPortNativePolygonV84(item), usage = homeworldPortNativeUsageV84(item);

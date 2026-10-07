@@ -4,11 +4,12 @@ import { createRequire } from 'node:module';
 import { build } from 'esbuild';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { homeworldInteriorPointFixture } from './helpers/homeworld-interior-point-fixture.mjs';
 
 const bundle = await build({ stdin: { contents: `
 export * from './app/game/systems/homeworldContractsV68';
 export {HOMEWORLD_REGIONS_V68,HOMEWORLD_REGION_TRACES_V68} from './app/game/systems/homeworldRegionsV68';
-export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64} from './app/game/systems/homeworldInteriorsV64';
+export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64,nearestHomeworldInteriorTargetV64} from './app/game/systems/homeworldInteriorsV64';
 export {default as Panel,HomeworldContractsJournalV68 as Journal} from './app/game/HomeworldContractsV68';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'cjs', platform: 'node',
 external: ['react', 'react/jsx-runtime'], loader: { '.css': 'empty' }, outfile: 'contracts-v68-test.cjs', logLevel: 'silent' });
@@ -18,9 +19,8 @@ const api = evaluated.exports;
 const contract = id => api.HOMEWORLD_CONTRACTS_V68.find(item => item.id === id);
 const where = (definition, overrides = {}) => {
   const room = api.homeworldInteriorForBuildingV64(definition.buildingId);
-  const point = room.points.find(item => item.pointId === definition.pointId);
-  return { eligible: true, interiorId: room.buildingId, pointId: point.pointId, npcId: definition.giverNpcId,
-    actor: { x: point.x, y: point.y + 45 }, suspended: false, ...overrides };
+  return { eligible: true, interiorId: room.buildingId, pointId: definition.pointId, npcId: definition.giverNpcId,
+    actor: homeworldInteriorPointFixture(api, room, definition.pointId), suspended: false, ...overrides };
 };
 const apply = (state, id, kind, context) => api.applyHomeworldContractV68(state, { contractId: id, kind }, context ?? where(contract(id)));
 const fieldActor = (regionId, action) => action === 'survey' ? { x: api.HOMEWORLD_REGION_TRACES_V68[2].x, y: api.HOMEWORLD_REGION_TRACES_V68[2].y }

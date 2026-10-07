@@ -76,9 +76,9 @@ const aliases:Readonly<Record<string,readonly string[]>>={
  patrouille:['patrouille','patrouilleur'],
  pisteur:['pisteur','traqueur','tracker'],
  tireur:['tireur','sniper','gunner','artilleur'],
- sapeur:['sapeur','sapper','demol'],
- soigneur:['soigneur','soin','healer','medic'],
- porteur:['porteur','porter','convoy','ravitail','transport'],
+ sapeur:['sapeur','sapper','demolisseur','demolition'],
+ soigneur:['soigneur','soigneuse','soin','soins','healer','medic'],
+ porteur:['porteur','porteuse','porter','convoyeur','convoyeuse','ravitailleur','ravitaillement','transport'],
 };
 export interface ImportedYautjaArtV85 {
  readonly portraitUrl:string;readonly spriteUrl:string;readonly assetId:string;readonly source:string;
@@ -89,20 +89,29 @@ export interface ImportedYautjaArtV85 {
 /** Match only catalogue identities. A named person needs their documented name;
  * a requested role needs a documented role/occupation in the same exact clan.
  * If absent, return null rather than assign an unrelated portrait or lineage. */
-export function findImportedYautjaArtV85({clanName,role,name}:{clanName?:string;role?:string;name?:string}):ImportedYautjaArtV85|null{
+export interface ImportedYautjaArtQueryV85 {readonly clanName?:string;readonly role?:string;readonly name?:string;readonly identityId?:string;readonly assetId?:string;readonly includeHistorical?:boolean}
+/** Historical choices remain explicit: no older PNG is deleted and a chosen
+ * identity can never fall back to another costume, clan or named person. */
+export function importedYautjaArtVariantsV85({clanName,role,name,identityId,assetId,includeHistorical=false}:ImportedYautjaArtQueryV85):readonly RecentSpriteSourceV85[]{
  const clan=clanName?normalizeRecentSpriteTextV85(clanName):'',person=name?normalizeRecentSpriteTextV85(name):'',requested=role?normalizeRecentSpriteTextV85(role):'';
- if(!clan&&!person&&!requested)return null;
+ if(!clan&&!person&&!requested&&!identityId&&!assetId)return[];
  const roleTerms=aliases[requested]??(requested?[requested]:[]);
- const candidates=RECENT_SPRITE_PREFERRED_V85.filter(asset=>asset.kind==='npc'
+ const candidates=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.kind==='npc'&&(includeHistorical||asset.preferredVersion)
+  &&(!identityId||asset.identityId===identityId)&&(!assetId||asset.id===assetId)
   &&(!clan||normalizeRecentSpriteTextV85(asset.groupLabel)===clan||normalizeRecentSpriteTextV85(asset.groupId)===clan)
   &&(!person||normalizeRecentSpriteTextV85(asset.label)===person));
  const scored=candidates.map(asset=>{
-  const text=normalizeRecentSpriteTextV85(`${asset.role} ${asset.roleLabel} ${asset.label}`),score=roleTerms.reduce((best,term)=>Math.max(best,text.includes(normalizeRecentSpriteTextV85(term))?term===requested?3:2:0),0);
+  // A clan's name or a display label never establishes a person's job.
+  // Whole normalized words also prevent a partial term borrowing another role.
+  const text=` ${normalizeRecentSpriteTextV85(`${asset.role} ${asset.roleLabel}`)} `,score=roleTerms.reduce((best,term)=>Math.max(best,text.includes(` ${normalizeRecentSpriteTextV85(term)} `)?term===requested?3:2:0),0);
   return{asset,score};
  }).filter(row=>!requested||row.score>0).sort((a,b)=>b.score-a.score||b.asset.priority-a.asset.priority||a.asset.id.localeCompare(b.asset.id));
- const asset=scored[0]?.asset;if(!asset)return null;
+ return scored.map(row=>row.asset);
+}
+export function findImportedYautjaArtV85(query:ImportedYautjaArtQueryV85):ImportedYautjaArtV85|null{
+ const asset=importedYautjaArtVariantsV85(query)[0];if(!asset)return null;
  return{portraitUrl:asset.src,spriteUrl:asset.src,assetId:asset.id,source:`${asset.sourceArchive}${asset.insideArchive?' → '+asset.insideArchive:''} · ${asset.sourcePath}`,
-  label:asset.label,groupId:asset.groupId,role:asset.role,match:person?'documented-name':requested?'documented-role':'documented-clan',motionStatus:'single-pose-static'};
+  label:asset.label,groupId:asset.groupId,role:asset.role,match:query.name||query.identityId||query.assetId?'documented-name':query.role?'documented-role':'documented-clan',motionStatus:'single-pose-static'};
 }
 
 /** Exact known Badlands catalogue labels provide additional static references.

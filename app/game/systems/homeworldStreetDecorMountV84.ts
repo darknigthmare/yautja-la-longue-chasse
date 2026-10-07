@@ -26,5 +26,6 @@ const reserves:HomeworldStreetDecorReserveV84[]=[
  }),
  ...HOMEWORLD_URBAN_EXTRAS_V78.flatMap(r=>r.path.slice(1).map((p,index)=>({id:'preserved-extra:'+r.id+':'+index,levelId:r.levelId,polygon:homeworldUrbanCorridorV78(r.path[index],p,48,38)}))),
 ];
-configureHomeworldStreetDecorV84(homeworldStreetDecorWorldInputV84(reserves));
+export const HOMEWORLD_STREET_DECOR_INPUT_V84=homeworldStreetDecorWorldInputV84(reserves);
+configureHomeworldStreetDecorV84(HOMEWORLD_STREET_DECOR_INPUT_V84);
 export {HOMEWORLD_STREET_DECOR_PROPS_V84,HOMEWORLD_STREET_DECOR_REFUSALS_V84} from './homeworldStreetDecorV84';

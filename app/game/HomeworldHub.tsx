@@ -212,11 +212,20 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   useEffect(() => {
     // This side state belongs to the campaign identity, not its current floor.
     // Restore only when mounting/changing identity, never after onProgress.
-    const state = restoreHomeworldLiftStationV83(save.createdAt);
-    liftRefV83.current = state; liftSessionReadyRefV83.current = true; setLiftStateV83(state); setLiftSessionOwnerV83(save.createdAt);
-    transitRefV77.current = null; setTransitV77(null);
+    const owner = save.createdAt;
+    liftSessionReadyRefV83.current = false;
+    const frame = requestAnimationFrame(() => {
+      // The campaign may have changed while browser hydration was queued.
+      // Never read or publish a previous owner's station into this session.
+      if (saveRef.current.createdAt !== owner) return;
+      const state = restoreHomeworldLiftStationV83(owner);
+      liftRefV83.current = state; liftSessionReadyRefV83.current = true;
+      setLiftStateV83(state); setLiftSessionOwnerV83(owner);
+      transitRefV77.current = null; setTransitV77(null);
+    });
     return () => {
-      if (liftRefV83.current.ownerCreatedAt === save.createdAt) rememberHomeworldLiftStationV83(liftRefV83.current, true);
+      cancelAnimationFrame(frame);
+      if (liftSessionReadyRefV83.current && liftRefV83.current.ownerCreatedAt === owner) rememberHomeworldLiftStationV83(liftRefV83.current, true);
       liftSessionReadyRefV83.current = false;
     };
   }, [save.createdAt]);

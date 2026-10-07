@@ -4,11 +4,13 @@ import { HOMEWORLD_PROP_ART_V64 } from './systems/homeworldArtV64';
 import { homeworldModularPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { HOMEWORLD_VILLAGE_LIFE_V69, homeworldVillageResidentPoseV69, homeworldVillageLifeVisibleV69 } from './systems/homeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_ACTIVITIES_V70, villageActivitySceneV70, villageActivityLoadsV70 } from './systems/homeworldVillageActivitiesV70';
-import { HOMEWORLD_REGIONS_V68, type HomeworldRegionIdV68 } from './systems/homeworldRegionsV68';
+import { HOMEWORLD_REGIONS_V68,regionResidentPositionV68, type HomeworldRegionIdV68 } from './systems/homeworldRegionsV68';
+import {homeworldVillagePortraitReferenceV85} from './systems/homeworldVillagePortraitsV85';
 import { villagePaintOccludedV70 } from './systems/homeworldVillageOcclusionV70';
 import type { HomeworldVec2 } from './systems/homeworldCity';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldModularHunter from './HomeworldModularHunter';
+import HomeworldVillagePortraitV85 from './HomeworldVillagePortraitV85';
 import styles from './HomeworldVillageLifeV69.module.css';
 
 /** Direct fragment children retain the common physical feet-depth sort. Static
@@ -20,7 +22,16 @@ export default function HomeworldVillageLifeV69({ regionId, tick, actor, rect, a
   actorHeight?: number;
 }) {
   const life = HOMEWORLD_VILLAGE_LIFE_V69[regionId], d = HOMEWORLD_GEOMETRY_V64.depthScale;
-  const buildings = HOMEWORLD_REGIONS_V68[regionId].buildings;
+  const definition=HOMEWORLD_REGIONS_V68[regionId],buildings = definition.buildings;
+  const portraitSubject=[...life.residents.map(resident=>({resident,pose:homeworldVillageResidentPoseV69(regionId,resident,tick,actor)})),
+    ...definition.residents.map(resident=>({resident,pose:regionResidentPositionV68(resident,tick)}))]
+    .filter(({resident,pose})=>homeworldVillagePortraitReferenceV85(definition.clan,resident)&&Math.hypot(pose.x-actor.x,pose.y-actor.y)<180
+      &&homeworldVillageLifeVisibleV69(pose,rect,d)&&!villagePaintOccludedV70(buildings,pose,actor,{actorHeight}))
+    .sort((a,b)=>Math.hypot(a.pose.x-actor.x,a.pose.y-actor.y)-Math.hypot(b.pose.x-actor.x,b.pose.y-actor.y))[0];
+  // Prefer the side away from the player and keep the complete card in view.
+  // If neither side fits, retain an unobstructed actor rather than cover feet.
+  const portraitX=portraitSubject?[portraitSubject.pose.x+(actor.x>=portraitSubject.pose.x?-400:90),portraitSubject.pose.x+(actor.x>=portraitSubject.pose.x?90:-400)]
+    .find(x=>x>=rect.left+12&&x+310<=rect.right-12&&(x+310<actor.x-64||x>actor.x+64)):undefined;
   return <>
     {life.props.filter(p => homeworldVillageLifeVisibleV69(p, rect, d, 350) && !villagePaintOccludedV70(buildings, p, actor, { depth: p.depth, actorHeight })).map(p => {
       const v = homeworldProjectGroundV64(p);
@@ -34,6 +45,7 @@ export default function HomeworldVillageLifeV69({ regionId, tick, actor, rect, a
         <HomeworldModularHunter morphId={n.morphId} dreadStyleId={n.dreadStyleId} appearance={{ skinId: n.skinId, dreadTintId: n.dreadTintId, headStyleId: 'reference' }} motionPhase={tick / 60 + n.phaseSeconds} speed={pose.moving ? n.speed : 0} style={{ ...placement, position: 'absolute', transform: `scaleX(${pose.facing})`, transformOrigin: `${-placement.left}px ${-placement.top}px` }} />
       </span>;
     })}
+    {portraitSubject&&portraitX!==undefined&&<HomeworldVillagePortraitV85 clanName={definition.clan} resident={portraitSubject.resident} x={portraitX} y={portraitSubject.pose.y*d-160}/>}
     {HOMEWORLD_VILLAGE_ACTIVITIES_V70[regionId].filter(s => homeworldVillageLifeVisibleV69(s.station, rect, d, 120) && !villagePaintOccludedV70(buildings, s.station, actor, { actorHeight })).map(s => {
       const p = homeworldProjectGroundV64(s.approach), station = homeworldProjectGroundV64(s.station), progress = activityProgress[s.id] ?? 0, phase = villageActivitySceneV70(s, tick, progress), near = Math.hypot(s.approach.x - actor.x, s.approach.y - actor.y) < 650;
       return <Fragment key={s.id}>

@@ -5,17 +5,18 @@ import { test } from 'node:test';
 import { build } from 'esbuild';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { homeworldInteriorPointFixture } from './helpers/homeworld-interior-point-fixture.mjs';
 const bundle = await build({ stdin: { contents: `
  export * from './app/game/systems/homeworldContractsV68';
  export {HOMEWORLD_REGIONS_V68,HOMEWORLD_REGION_TRACES_V68} from './app/game/systems/homeworldRegionsV68';
- export {homeworldInteriorForBuildingV64} from './app/game/systems/homeworldInteriorsV64';
+ export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64,nearestHomeworldInteriorTargetV64} from './app/game/systems/homeworldInteriorsV64';
  export {default as Panel,HomeworldContractsJournalV68 as Journal} from './app/game/HomeworldContractsV68';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'cjs', platform: 'node', external: ['react','react/jsx-runtime'], loader: { '.css':'empty' }, outfile:'contracts-chains-v69-test.cjs', logLevel:'silent' });
 const evaluated={exports:{}};
 new Function('require','module','exports',bundle.outputFiles.find(item=>item.path.endsWith('.cjs')).text)(createRequire(import.meta.url),evaluated,evaluated.exports);
 const api=evaluated.exports;
 const definition=id=>api.HOMEWORLD_ALL_CONTRACTS_V69.find(item=>item.id===id);
-const where=id=>{const d=definition(id),room=api.homeworldInteriorForBuildingV64(d.buildingId),point=room.points.find(item=>item.pointId===d.pointId);return {eligible:true,interiorId:room.buildingId,pointId:d.pointId,npcId:d.giverNpcId,actor:{x:point.x,y:point.y+45}};};
+const where=id=>{const d=definition(id),room=api.homeworldInteriorForBuildingV64(d.buildingId);return {eligible:true,interiorId:room.buildingId,pointId:d.pointId,npcId:d.giverNpcId,actor:homeworldInteriorPointFixture(api,room,d.pointId)};};
 const act=(state,id,kind='accept',context=where(id))=>api.applyHomeworldContractV68(state,{kind,contractId:id},context);
 // Declared reducer-model fixtures, not browser play evidence. The physical
 // scene validator still verifies coordinates, counters, site and distance.

@@ -22,4 +22,7 @@ export const HOMEWORLD_RESIDENT_PATH_REVISIONS_V81:Readonly<Record<string,readon
  'resident-v69-market-2':[{x:2785,y:3070},{x:2785,y:3150}],
  'resident-v69-market-3':[{x:2480,y:3290},{x:2680,y:3240}],
  'resident-v69-forges-1':[{x:2640,y:2555},{x:2720,y:2555}],
+ // Stop before the preserved exterior-v76-067 tools bench. The old northern
+ // end entered its footprint; retain this citizen's ID, start, speed and dress.
+ 'resident-v69-forges-2':[{x:2695,y:3032},{x:2695,y:2880}],
 };
