@@ -5,12 +5,13 @@ import {
 } from "./clanWarBibleV6";
 
 export interface WarWorkDefinitionV6 {
-  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair";
+  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair" | "extraction";
   costRav: number; upkeepRav: number; delayTurns: number; operatorUnitId: string;
   effect: string; limit: string; deployment: string; defensePercent: number;
   sourceRow: number; sourceCells: string[]; capacityRav: number;
 }
-const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair" } as const;
+const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair", "W3-S16": "extraction" } as const;
+const legacyWorksAvailable = (definitions: WarWorkDefinitionV6[]) => ["W3-S02", "W3-S05", "W3-S07", "W3-S03", "W3-S04"].every(id => definitions.some(definition => definition.id === id));
 
 /** Source cells remain data. Missing or malformed construction rows never get
  * substitute prices, operators or effects from the historical V3 rules. */
@@ -58,6 +59,16 @@ export interface WarRavTransferV87 {
   purpose: "load" | "deposit" | "withdraw" | "return" | "recruitment" | "kit" | "upkeep";
   steps: WarRavLotV87["steps"];
 }
+export interface WarPatientV88 {
+  memberId: string; teamId: string; declaredTerritoryId: string; declaredTurn: number;
+  territoryId: string; carrierId: string | null; carrierTeamId: string | null;
+  arrival: { workId: string; turn: number } | null;
+  steps: { passageId: string; fromId: string; toId: string; turn: number; carrierId: string; carrierTeamId: string; guardTeamId: string; guardTerritoryId: string }[];
+}
+export interface WarExtractionV88 {
+  version: 1; rulesKey: string; patients: WarPatientV88[];
+  guards: { teamId: string; passageId: string; territoryId: string }[];
+}
 export interface WarWorksSessionV6 {
   version: 2; context: "free-workshop"; rulesKey: string; sourceSha: string;
   supplyMode: "front" | "local"; lots: WarRavLotV87[]; transfers: WarRavTransferV87[];
@@ -68,6 +79,8 @@ export interface WarWorksSessionV6 {
   lastTurnNeed: number; lastTurnPaid: number;
   lastTeamSupply: { teamId: string; territoryId: string; need: number; paid: number }[];
   reports: { turn: number; text: string; sourceIds: string[] }[];
+  /** Optional explicit exercise extension. Old V87 checkpoints have none and are not rewritten. */
+  extraction?: WarExtractionV88;
 }
 export type WarWorksActionV6 =
   | { kind: "recruit"; unitId: string }
@@ -83,7 +96,12 @@ export type WarWorksActionV6 =
   | { kind: "load-rav"; teamId: string; rav: number }
   | { kind: "deposit-rav"; teamId: string; workId: string }
   | { kind: "withdraw-rav"; teamId: string; workId: string; rav: number }
-  | { kind: "return-rav"; teamId: string };
+  | { kind: "return-rav"; teamId: string }
+  | { kind: "declare-patient"; teamId: string; memberId: string }
+  | { kind: "guard-route"; teamId: string; passageId: string }
+  | { kind: "load-patient"; teamId: string; memberId: string; carrierId: string }
+  | { kind: "put-down-patient"; teamId: string; memberId: string }
+  | { kind: "return-patient"; teamId: string; memberId: string; workId: string };
 export interface WarWorksTransitionV6 { state: WarWorksSessionV6; accepted: boolean; changed: boolean; message: string }
 const unitFor = (rules: WarRulesV6, id: string) => rules.units.find(unit => unit.id === id);
 const fitMembers = (group: WarWorksTeamV6) => group.team.members.filter(member => member.status === "fit" && member.assignmentId === group.team.id);
@@ -95,6 +113,26 @@ export const warWorksDepotV87 = (state: WarWorksSessionV6) => state.lots.find(lo
 export const warWorksCarriedRavV87 = (state: WarWorksSessionV6, teamId: string) => state.lots.find(lot => lot.location === "carrier" && lot.teamId === teamId)?.rav ?? 0;
 export const warWorksCacheRavV87 = (state: WarWorksSessionV6, workId: string) => state.lots.find(lot => lot.location === "cache" && lot.workId === workId)?.rav ?? 0;
 const carryingRav = (state: WarWorksSessionV6, group: WarWorksTeamV6) => warWorksCarriedRavV87(state, group.team.id) > 0;
+const carryingPatient = (state: WarWorksSessionV6, teamId: string) => state.extraction?.patients.find(patient => patient.carrierTeamId === teamId);
+export const warWorksGuardV88 = (state: WarWorksSessionV6, teamId: string) => state.extraction?.guards.find(guard => guard.teamId === teamId);
+const extractionRulesKey = (rules: WarRulesV6) => JSON.stringify({ sha: rules.metadata.sha256,
+  entries: ["W3-S16", "W3-U17", "W3-U07", "W3-S11", "W3-U18", "W3-R15", "W3-R20", "W3-OBJ04"].map(id => rules.entries.find(entry => entry.id === id)) });
+const withExtraction = (state: WarWorksSessionV6, rules: WarRulesV6) => state.extraction ?? { version: 1 as const, rulesKey: extractionRulesKey(rules), patients: [], guards: [] };
+export function warExtractionAvailableV88(rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) {
+  const cell = (id: string, column: string) => rules.entries.find(entry => entry.id === id)?.fields.find(field => field.column === column)?.value;
+  return warWorksDefinitionsV6(rules).some(def => def.id === "W3-S16" && def.operatorUnitId === "W3-U17")
+    && unitFor(rules, "W3-U17")?.fullMembers === 3 && unitFor(rules, "W3-U07")?.fullMembers === 3
+    && cell("W3-S11", "G") === "W3-U18" && ["D", "E", "F"].every(column => Number.isSafeInteger(cell("W3-S11", column)))
+    && String(cell("W3-S11", "I")).includes("Consommables") && !!unitFor(rules, "W3-U18")
+    && String(cell("W3-S16", "H")).includes("route gardée") && String(cell("W3-S16", "I")).includes("Aucune résurrection")
+    && ["W3-R15", "W3-R20", "W3-OBJ04"].every(id => rules.entries.some(entry => entry.id === id));
+}
+function passageGuard(state: WarWorksSessionV6, passageId: string, rules: WarRulesV6) {
+  const passage = rules.passages.find(item => item.id === passageId);
+  return passage && state.extraction?.guards.find(guard => guard.passageId === passageId && [passage.fromId, passage.toId].includes(guard.territoryId)
+    && state.teams.some(group => group.team.id === guard.teamId && group.team.unitId === "W3-U07" && group.territoryId === guard.territoryId
+      && fitMembers(group).length === unitFor(rules, group.team.unitId)?.fullMembers && !group.payloadWorkId && !group.dutyWorkId && !group.route));
+}
 function transferRav(state: WarWorksSessionV6, fromId: string, destination: WarRavLotV87 | null, rav: number,
   purpose: WarRavTransferV87["purpose"]): WarWorksSessionV6 {
   const existing = destination && state.lots.find(lot => lot.id === destination.id);
@@ -143,7 +181,9 @@ export function warWorksSupplyPreviewV87(state: WarWorksSessionV6, rules: WarRul
   return supplyTurn(state, state, rules, false).lastTeamSupply;
 }
 const contextKey = (rules: WarRulesV6, definitions = warWorksDefinitionsV6(rules)) => JSON.stringify({ sha: rules.metadata.sha256,
-  parameters: rules.parameters, units: rules.units, territories: rules.territories, passages: rules.passages, definitions });
+  parameters: rules.parameters, units: rules.units, territories: rules.territories, passages: rules.passages,
+  // Preserve the exact published V87 key. S16 and patient/escort data bind separately below.
+  definitions: definitions.filter(definition => definition.id !== "W3-S16") });
 export const warWorksCommandPointsV6 = (state: WarWorksSessionV6, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) =>
   state.teams.reduce((total, group) => total + (unitFor(rules, group.team.unitId)?.commandPoints ?? 0), 0)
   + state.recruits.filter(order => order.status === "pending").reduce((total, order) => total + (unitFor(rules, order.unitId)?.commandPoints ?? 0), 0);
@@ -155,7 +195,7 @@ export const warWorksUpkeepV6 = (state: WarWorksSessionV6, rules: WarRulesV6 = D
  * declared exercise hypotheses. They never allocate real campaign recruits. */
 export function createWarWorksV6(startingRav = 80, startingUnitId = "W3-U17", rules: WarRulesV6 = DEFAULT_WAR_RULES_V6, supplyMode: "front" | "local" = "front"): WarWorksSessionV6 | null {
   const definitions = warWorksDefinitionsV6(rules), unit = unitFor(rules, startingUnitId);
-  if (definitions.length !== 5 || !["front", "local"].includes(supplyMode) || !definitions.some(def => def.operatorUnitId === startingUnitId) || !unit
+  if (!legacyWorksAvailable(definitions) || !["front", "local"].includes(supplyMode) || !definitions.some(def => def.operatorUnitId === startingUnitId) || !unit
     || !Number.isSafeInteger(startingRav) || startingRav < 0 || startingRav > rules.parameters.rav_cap
     || !rules.territories.some(zone => zone.id === "W3-K01") || unit.commandPoints > rules.parameters.pc_cap_1) return null;
   const team = createWarTeamV6(startingUnitId, "v6-works-team-1", rules);
@@ -170,10 +210,10 @@ export function createWarWorksV6(startingRav = 80, startingUnitId = "W3-U17", ru
 
 function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: WarWorkDefinitionV6[]): boolean {
   try {
-    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports"];
+    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports", "extraction"];
     if (!state || Object.keys(state).some(key => !fields.includes(key))) return false;
     if (state.version !== 2 || state.context !== "free-workshop" || state.sourceSha !== rules.metadata.sha256 || state.rulesKey !== contextKey(rules, definitions)
-      || !["front", "local"].includes(state.supplyMode) || definitions.length !== 5 || !Number.isSafeInteger(state.turn) || state.turn < 1 || state.turn >= 10000
+      || !["front", "local"].includes(state.supplyMode) || !legacyWorksAvailable(definitions) || !Number.isSafeInteger(state.turn) || state.turn < 1 || state.turn >= 10000
       || !Number.isSafeInteger(state.nextIdentity) || state.nextIdentity < 2 || state.nextIdentity > 200000
       || !Number.isSafeInteger(state.startingRav) || state.startingRav < 0 || state.startingRav > rules.parameters.rav_cap
       || !Number.isSafeInteger(state.ravStock) || state.ravStock < 0 || state.ravStock > state.startingRav
@@ -225,6 +265,53 @@ function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: 
       if (work.phase === "carried" ? !state.teams.some(group => group.team.id === work.carrierTeamId && group.payloadWorkId === work.id) : work.carrierTeamId !== null) return false;
       if (work.operatorTeamId && !state.teams.some(group => group.team.id === work.operatorTeamId && group.dutyWorkId === work.id
         && group.territoryId === work.territoryId && group.team.unitId === def.operatorUnitId)) return false;
+      if (def.kind === "extraction" && !state.extraction) return false;
+    }
+    if (state.extraction !== undefined) {
+      const extraction = state.extraction;
+      if (!extraction || !warExtractionAvailableV88(rules) || Object.keys(extraction).some(key => !["version", "rulesKey", "patients", "guards"].includes(key))
+        || extraction.version !== 1 || extraction.rulesKey !== extractionRulesKey(rules) || !Array.isArray(extraction.patients)
+        || extraction.patients.length > members.size || !Array.isArray(extraction.guards) || extraction.guards.length > state.teams.length
+        || new Set(extraction.patients.map(patient => patient.memberId)).size !== extraction.patients.length
+        || new Set(extraction.guards.map(guard => guard.teamId)).size !== extraction.guards.length) return false;
+      for (const guard of extraction.guards) {
+        const group = state.teams.find(item => item.team.id === guard.teamId), passage = rules.passages.find(item => item.id === guard.passageId);
+        if (Object.keys(guard).some(key => !["teamId", "passageId", "territoryId"].includes(key)) || !group || group.team.unitId !== "W3-U07"
+          || !passage || ![passage.fromId, passage.toId].includes(guard.territoryId) || group.territoryId !== guard.territoryId
+          || fitMembers(group).length !== unitFor(rules, group.team.unitId)?.fullMembers || group.dutyWorkId || group.payloadWorkId || group.route) return false;
+      }
+      const carriers = new Set<string>();
+      for (const patient of extraction.patients) {
+        const owner = state.teams.find(group => group.team.id === patient.teamId), member = owner?.team.members.find(item => item.id === patient.memberId);
+        if (Object.keys(patient).some(key => !["memberId", "teamId", "declaredTerritoryId", "declaredTurn", "territoryId", "carrierId", "carrierTeamId", "arrival", "steps"].includes(key))
+          || !member || member.status !== "wounded" || !rules.territories.some(zone => zone.id === patient.territoryId)
+          || !rules.territories.some(zone => zone.id === patient.declaredTerritoryId) || !Number.isSafeInteger(patient.declaredTurn)
+          || patient.declaredTurn < 1 || patient.declaredTurn > state.turn || !Array.isArray(patient.steps) || patient.steps.length > 10000) return false;
+        let site = patient.declaredTerritoryId, lastTurn = patient.declaredTurn;
+        for (const step of patient.steps) {
+          const passage = rules.passages.find(item => item.id === step.passageId), porter = state.teams.find(group => group.team.id === step.carrierTeamId);
+          const guard = state.teams.find(group => group.team.id === step.guardTeamId);
+          if (Object.keys(step).some(key => !["passageId", "fromId", "toId", "turn", "carrierId", "carrierTeamId", "guardTeamId", "guardTerritoryId"].includes(key))
+            || !passage || passage.capacityPc < (unitFor(rules, "W3-U17")?.commandPoints ?? Infinity) || step.fromId !== site || !Number.isSafeInteger(step.turn) || step.turn <= lastTurn || step.turn > state.turn
+            || !((passage.fromId === step.fromId && passage.toId === step.toId) || (passage.bidirectional && passage.toId === step.fromId && passage.fromId === step.toId))
+            || !porter || porter.team.unitId !== "W3-U17" || !porter.team.members.some(item => item.id === step.carrierId && item.id !== patient.memberId)
+            || !guard || guard.team.unitId !== "W3-U07" || ![passage.fromId, passage.toId].includes(step.guardTerritoryId)) return false;
+          site = step.toId; lastTurn = step.turn;
+        }
+        if (site !== patient.territoryId || (patient.carrierId === null) !== (patient.carrierTeamId === null)) return false;
+        if (patient.carrierTeamId !== null) {
+          const porter = state.teams.find(group => group.team.id === patient.carrierTeamId);
+          if (!porter || porter.team.unitId !== "W3-U17" || porter.territoryId !== patient.territoryId || porter.payloadWorkId || porter.dutyWorkId
+            || fitMembers(porter).length !== unitFor(rules, porter.team.unitId)?.fullMembers || !fitMembers(porter).some(item => item.id === patient.carrierId)
+            || carriers.has(porter.team.id) || patient.arrival) return false;
+          carriers.add(porter.team.id);
+        }
+        if (patient.arrival !== null) {
+          const depot = state.works.find(work => work.id === patient.arrival?.workId);
+          if (Object.keys(patient.arrival).some(key => !["workId", "turn"].includes(key)) || !depot || depot.structureId !== "W3-S16" || depot.phase !== "ready"
+            || depot.territoryId !== patient.territoryId || !Number.isSafeInteger(patient.arrival.turn) || patient.arrival.turn < lastTurn || patient.arrival.turn > state.turn) return false;
+        }
+      }
     }
     for (const order of state.recruits) {
       const unit = unitFor(rules, order.unitId);
@@ -319,7 +406,7 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   if (action.kind === "wait") return report(turn(state), "Un tour écoulé ; entretien et arrivées comptés, aucun chantier achevé par attente seule.", ["W3-R10", "W3-R18", "W3-R19"]);
   if (action.kind === "recruit") {
     const unit = unitFor(rules, action.unitId);
-    if (!unit || !definitions.some(def => def.operatorUnitId === unit.id)) return deny("Ce lot accueille seulement les opérateurs des cinq ouvrages raccordés.");
+    if (!unit || !definitions.some(def => def.operatorUnitId === unit.id)) return deny("Ce lot accueille seulement les opérateurs des ouvrages effectivement raccordés.");
     if (warWorksDepotV87(state) < unit.recruitmentRav) return deny("RAV insuffisants au dépôt : les lots distants ne paient pas une formation au départ.");
     if (warWorksCommandPointsV6(state, rules) + unit.commandPoints > rules.parameters.pc_cap_1) return deny("Le plafond PC inclut déjà les volontaires en formation.");
     const id = `v6-works-recruit-${state.nextIdentity}`, teamId = `v6-works-team-${state.nextIdentity}`;
@@ -331,13 +418,14 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   if (action.kind === "reserve-kit") {
     const def = definitions.find(item => item.id === action.structureId), zone = rules.territories.find(item => item.id === action.territoryId);
     if (!def || !zone || !state.observed.some(item => item.territoryId === zone.id)) return deny("Reconnaissez réellement le site avant de préparer un ouvrage.");
+    if (def.kind === "extraction" && (state.supplyMode !== "local" || !warExtractionAvailableV88(rules))) return deny("S16 demande les stocks locaux et ses préconditions sources attestées ; aucun dépôt fictif.");
     const passageId = def.kind === "defense" ? action.passageId ?? null : null;
     if (def.kind === "defense" && !rules.passages.some(passage => passage.id === passageId && [passage.fromId, passage.toId].includes(zone.id))) return deny("Le seuil doit protéger un passage documenté adjacent au site.");
     if (state.works.some(work => work.structureId === def.id && work.territoryId === zone.id && work.passageId === passageId)) return unchanged("Cet ouvrage et son kit existent déjà ; aucun second débit.");
     if (warWorksDepotV87(state) < def.costRav) return deny("Le kit manque de moyens au dépôt ; les réserves distantes ne sont pas téléportées.");
     const id = `v6-works-order-${state.nextIdentity}`;
     const paid = transferRav(state, depotLotId, null, def.costRav, "kit");
-    return report({ ...paid, nextIdentity: paid.nextIdentity + 1,
+    return report({ ...paid, nextIdentity: paid.nextIdentity + 1, ...(def.kind === "extraction" ? { extraction: withExtraction(paid, rules) } : {}),
       works: [...state.works, { id, kitId: `kit:${id}`, structureId: def.id, territoryId: zone.id, passageId, phase: "reserved", costRav: def.costRav,
         workedTurns: 0, carrierTeamId: null, operatorTeamId: null }] },
     `Kit ${id} réservé au départ : ${def.costRav} RAV. Il n’est ni arrivé à ${zone.id}, ni installé.`, [def.id, "W3-R19", "W3-OBJ05", "W3-OBJ07"]);
@@ -345,6 +433,55 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   const group = state.teams.find(item => item.team.id === action.teamId);
   if (!group) return deny("Cette équipe n’est pas présente dans l’exercice.");
   const unit = unitFor(rules, group.team.unitId)!;
+  const patientCarried = carryingPatient(state, group.team.id), routeGuard = warWorksGuardV88(state, group.team.id);
+  if (["declare-patient", "guard-route", "load-patient", "put-down-patient", "return-patient"].includes(action.kind)
+    && (state.supplyMode !== "local" || !warExtractionAvailableV88(rules))) return deny("Extraction indisponible : les stocks locaux et fiches sources sont requis.");
+  if (action.kind === "declare-patient") {
+    const member = group.team.members.find(item => item.id === action.memberId);
+    if (state.extraction?.patients.some(patient => patient.memberId === action.memberId)) return unchanged("Ce patient d’exercice est déjà identifié ; aucune nouvelle blessure.");
+    if (!member || !["fit", "wounded"].includes(member.status) || group.dutyWorkId || group.payloadWorkId || group.route || routeGuard || patientCarried || carryingRav(state, group))
+      return deny("Déclarez une blessure de simulation sur un membre apte, réellement présent et libre. Aucun mort, acteur de campagne ou porteur engagé.");
+    const extraction = withExtraction(state, rules);
+    return report({ ...state, teams: replaceTeam({ ...group, team: { ...group.team, members: group.team.members.map(item => item.id === member.id ? { ...item, status: "wounded" } : item) } }),
+      extraction: { ...extraction, patients: [...extraction.patients, { memberId: member.id, teamId: group.team.id, declaredTerritoryId: group.territoryId,
+        declaredTurn: state.turn, territoryId: group.territoryId, carrierId: null, carrierTeamId: null, arrival: null, steps: [] }] } },
+    `Blessure explicitement déclarée pour ${member.id} à ${group.territoryId}. Hypothèse de simulation, aucun combat ni perte de campagne : le membre ne suivra plus automatiquement son équipe.`, ["W3-R15", "W3-OBJ04"]);
+  }
+  if (action.kind === "guard-route") {
+    const passage = rules.passages.find(item => item.id === action.passageId);
+    if (unit.id !== "W3-U07" || fitMembers(group).length !== unit.fullMembers || !passage || ![passage.fromId, passage.toId].includes(group.territoryId)
+      || state.closedPassageIds.includes(passage.id) || group.dutyWorkId || group.payloadWorkId || patientCarried) return deny("Affectez des lanciers complets et libres à un passage ouvert adjacent à leur vraie position.");
+    const extraction = withExtraction(state, rules);
+    return report({ ...state, teams: replaceTeam({ ...group, route: null }), extraction: { ...extraction, guards: [...extraction.guards.filter(guard => guard.teamId !== group.team.id),
+      { teamId: group.team.id, passageId: passage.id, territoryId: group.territoryId }] } },
+    `${group.team.id} garde ${passage.id} depuis ${group.territoryId}. Couverture de graphe déclarée pour cet exercice ; aucun ennemi repoussé ou tir simulé.`, ["W3-U07", "W3-S16", "W3-R20"]);
+  }
+  if (action.kind === "load-patient") {
+    const patient = state.extraction?.patients.find(item => item.memberId === action.memberId);
+    if (!patient || patient.arrival || patient.carrierId || patient.territoryId !== group.territoryId || unit.id !== "W3-U17"
+      || fitMembers(group).length !== unit.fullMembers || !fitMembers(group).some(member => member.id === action.carrierId && member.id !== patient.memberId)
+      || group.dutyWorkId || group.payloadWorkId || routeGuard || patientCarried || carryingRav(state, group)) return deny("Un vrai porteur U17 apte et son équipe complète doivent rejoindre le blessé ; un patient maximum par équipe, sans kit ni autre charge (gabarit d’exercice).");
+    return report({ ...state, teams: replaceTeam({ ...group, route: null }), extraction: { ...state.extraction!, patients: state.extraction!.patients.map(item => item.memberId === patient.memberId
+      ? { ...item, carrierId: action.carrierId, carrierTeamId: group.team.id } : item) } },
+    `${patient.memberId} pris par ${action.carrierId} à ${group.territoryId}. Préparez les traversées gardées ; aucune arrivée au dépôt encore validée.`, ["W3-U17", "W3-R15", "W3-R20"]);
+  }
+  if (action.kind === "put-down-patient") {
+    if (!patientCarried || patientCarried.memberId !== action.memberId) return deny("Cette équipe ne porte pas ce patient.");
+    return report({ ...state, extraction: { ...state.extraction!, patients: state.extraction!.patients.map(item => item.memberId === action.memberId ? { ...item, carrierId: null, carrierTeamId: null } : item) } },
+      `Patient ${action.memberId} déposé à sa position réelle ${group.territoryId}, toujours blessé et non extrait. Ses étapes restent conservées.`, ["W3-R15", "W3-OBJ04"]);
+  }
+  if (action.kind === "return-patient") {
+    const patient = state.extraction?.patients.find(item => item.memberId === action.memberId), depot = state.works.find(item => item.id === action.workId);
+    if (patient?.arrival) return unchanged("Ce patient est déjà arrivé ; aucun deuxième résultat, soin, XP ou crédit.");
+    const lastStep = patient?.steps.at(-1);
+    if (!patientCarried || patientCarried !== patient || !depot || depot.structureId !== "W3-S16" || depot.phase !== "ready" || depot.territoryId !== group.territoryId
+      || (lastStep && !passageGuard(state, lastStep.passageId, rules)) || (depot.operatorTeamId && !warWorkOccupiedV6(state, depot, rules)))
+      return deny("Le blessé et son porteur doivent atteindre un S16 réellement installé, avec opérateurs présents et dernière traversée encore gardée. Un atelier ou poste de soin ne remplace pas ce dépôt.");
+    const occupy = !depot.operatorTeamId;
+    return report({ ...state, ...(occupy ? { teams: replaceTeam({ ...group, dutyWorkId: depot.id, route: null }), works: state.works.map(work => work.id === depot.id ? { ...work, operatorTeamId: group.team.id } : work) } : {}),
+      extraction: { ...state.extraction!, patients: state.extraction!.patients.map(item => item.memberId === patient.memberId ? { ...item, carrierId: null, carrierTeamId: null, arrival: { workId: depot.id, turn: state.turn } } : item) } },
+    `${patient.memberId} réellement arrivé à ${depot.id}, toujours blessé. Les retardataires restent à leur lieu ; aucune guérison, récompense XP, victoire ni ressource de campagne.`, ["W3-S16", "W3-OBJ04", "W3-R20"]);
+  }
   if (action.kind === "load-rav") {
     if (state.supplyMode !== "local" || unit.id !== "W3-U19" || fitMembers(group).length !== unit.fullMembers
       || group.territoryId !== state.originId || group.dutyWorkId || group.payloadWorkId || carryingRav(state, group)
@@ -380,6 +517,7 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
       `${amount} RAV livrés dans ${cache.id} au site ${cache.territoryId}. Reliquat transporté : ${lot.rav - amount} RAV.`, ["W3-S03", "W3-R08", "W3-OBJ05"]);
   }
   if (action.kind === "release") {
+    if (routeGuard) return report({ ...state, extraction: { ...state.extraction!, guards: state.extraction!.guards.filter(guard => guard.teamId !== group.team.id) } }, "Garde libérée ; les prochains transports doivent retrouver une couverture réelle.", ["W3-S16", "W3-R20"]);
     if (!group.dutyWorkId) return unchanged("Cette équipe n’est affectée à aucun ouvrage.");
     return report({ ...state, teams: replaceTeam({ ...group, dutyWorkId: null }), works: state.works.map(work => work.id === group.dutyWorkId ? { ...work, operatorTeamId: null } : work) },
       "Opérateurs libérés ; le chantier garde son avancement et l’ouvrage perd ses effets occupés.", ["W3-R01", "W3-R19"]);
@@ -390,24 +528,30 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   }
   if (!fitMembers(group).length) return deny("Aucun membre apte et affecté à cette équipe ne peut agir.");
   if (action.kind === "plan") {
-    if (group.dutyWorkId) return deny("Libérez d’abord les opérateurs de leur ouvrage.");
+    if (group.dutyWorkId || routeGuard) return deny("Libérez d’abord les opérateurs de leur ouvrage ou les gardes du passage.");
     const route = planWarRouteV6(group.territoryId, action.destinationId, unit.commandPoints, state.closedPassageIds, rules, group.payloadWorkId || carryingRav(state, group) ? "rav" : "none");
     return !route ? deny("Aucune route admissible pour cette équipe et son kit.") : !route.passageIds.length ? unchanged("L’équipe est déjà au site demandé.")
       : report({ ...state, teams: replaceTeam({ ...group, route }) }, "Trajet préparé ; ni l’équipe ni le kit ne sont encore arrivés.", ["W3-R04", "W3-R09"]);
   }
   if (action.kind === "advance") {
     const route = group.route, passage = rules.passages.find(item => item.id === route?.passageIds[0]), destination = route?.territoryIds[1];
-    if (group.dutyWorkId || !route || route.territoryIds[0] !== group.territoryId || !passage || !destination || state.closedPassageIds.includes(passage.id)
+    if (group.dutyWorkId || routeGuard || !route || route.territoryIds[0] !== group.territoryId || !passage || !destination || state.closedPassageIds.includes(passage.id)
       || passage.capacityPc < unit.commandPoints || ((group.payloadWorkId || carryingRav(state, group)) && !passage.permitsRav)
       || !((passage.fromId === group.territoryId && passage.toId === destination) || (passage.bidirectional && passage.toId === group.territoryId && passage.fromId === destination))) return deny("Le prochain passage est fermé, trop étroit ou impropre au kit ; aucune téléportation ni dépense.");
+    const guard = patientCarried ? passageGuard(state, passage.id, rules) : null;
+    if (patientCarried && !guard) return deny("Le prochain passage n’a plus de garde présente : patient, porteur et stocks restent à leur vraie position. Aucun tour consommé.");
     const remaining = route.passageIds.length > 1 ? { passageIds: route.passageIds.slice(1), territoryIds: route.territoryIds.slice(1), cost: route.cost - passage.movementCost } : null;
-    return report(turn({ ...state, lots: state.lots.map(lot => lot.location === "carrier" && lot.teamId === group.team.id && lot.rav > 0
+    return report(turn({ ...state, ...(patientCarried ? { extraction: { ...state.extraction!, patients: state.extraction!.patients.map(patient => patient.memberId === patientCarried.memberId
+      ? { ...patient, territoryId: destination, steps: [...patient.steps, { passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1,
+        carrierId: patient.carrierId!, carrierTeamId: group.team.id, guardTeamId: guard!.teamId, guardTerritoryId: guard!.territoryId }] } : patient) } } : {}),
+      lots: state.lots.map(lot => lot.location === "carrier" && lot.teamId === group.team.id && lot.rav > 0
       ? { ...lot, steps: [...lot.steps, { passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1 }] } : lot),
       teams: replaceTeam({ ...group, territoryId: destination, route: remaining,
       team: { ...group.team, fatigue: Math.min(rules.parameters.fatigue_max, group.team.fatigue + rules.parameters.march_fatigue) } }) }),
     `${group.team.id} a franchi ${passage.id} et atteint ${destination}${group.payloadWorkId ? " avec son kit identifié" : ""}. Aucun contrôle territorial acquis.`, [passage.id, "W3-R04", "W3-R09", "W3-R11"]);
   }
   if (action.kind === "observe") {
+    if (patientCarried || routeGuard) return deny("Le transport du patient ou la garde du passage occupe cette équipe ; libérez-la avant une reconnaissance.");
     if (state.observed.some(item => item.territoryId === group.territoryId)) return unchanged("Ce renseignement est déjà connu du front d’exercice ; aucun gain répété avec une autre équipe.");
     const result = applyWarResultV6(group.team, { operationId: `works:recon:${group.territoryId}`, resultId: `works:intel:${group.territoryId}`,
       mode: "strategic", objective: "recon", participantIds: fitMembers(group).map(member => member.id), final: true }, rules);
@@ -417,6 +561,7 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   }
   const work = state.works.find(item => item.id === action.workId), def = definitions.find(item => item.id === work?.structureId);
   if (!work || !def) return deny("Cet ouvrage n’existe pas dans l’exercice.");
+  if (patientCarried || routeGuard) return deny("Mains et équipe engagées dans l’extraction ou la garde ; aucun kit, chantier ou repos simultané.");
   const replaceWork = (next: WarWorkOrderV6) => state.works.map(item => item.id === next.id ? next : item);
   if (action.kind === "load") {
     if (work.phase !== "reserved" || group.territoryId !== state.originId || group.payloadWorkId || group.dutyWorkId || carryingRav(state, group)) return deny("Chargez ce kit au départ avec une équipe libre sans autre lot ; il ne peut pas être dans deux transports.");

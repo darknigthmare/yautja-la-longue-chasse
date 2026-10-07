@@ -1,5 +1,6 @@
-/** Replace only byte-identical generated static copies with public hardlinks.
- * Original public files, Git, caches and all other Next outputs stay intact.
+/** Replace byte-identical generated static copies with public hardlinks.
+ * Original public files and runtime outputs stay intact. Only the verified,
+ * disposable Vercel build may reclaim its compilation cache and Git clone.
  * CLI mutation is limited to the verified Linux Vercel build at /vercel/path0.
  */
 import * as fs from 'node:fs/promises';
@@ -61,6 +62,67 @@ async function outputFiles(root,directory){
   else throw new Error('Static compaction refuses special filesystem entries');
  }
  return result;
+}
+
+async function availableBytes(root){
+ const info=await fs.statfs(root,{bigint:true});
+ return Number(info.bavail*info.bsize);
+}
+
+/** Remove only a preflighted disposable tree inside this one build root.
+ * Individual unlink/rmdir operations do not follow a junction or symlink.
+ * This never targets source/public/node_modules or generated runtime output. */
+async function removeDisposableTree(root,target){
+ if(![path.join(root,'.next','cache'),path.join(root,'.git','objects')].includes(target))throw new Error('Disposable target is not allowlisted');
+ const first=await checkedPath(root,target,{missing:true});
+ if(!first)return{files:0,bytes:0};
+ if(!first.isDirectory())throw new Error('Disposable target must be a real directory');
+ const rootDevice=(await checkedPath(root,root)).dev;
+ if(first.dev!==rootDevice)throw new Error('Disposable target refuses mounted filesystems');
+ const files=[],directories=[];
+ async function visit(directory){
+  const stat=await checkedPath(root,directory);
+  if(!stat.isDirectory())throw new Error('Disposable ancestor is not a real directory');
+  if(stat.dev!==rootDevice)throw new Error('Disposable tree refuses mounted filesystems');
+  directories.push({path:directory,stat});
+  for(const name of await fs.readdir(directory)){
+   const file=path.join(directory,name),child=await checkedPath(root,file);
+   if(child.dev!==rootDevice)throw new Error('Disposable tree refuses mounted filesystems');
+   if(child.isDirectory())await visit(file);
+   else if(child.isFile())files.push({path:file,stat:child});
+   else throw new Error('Disposable tree refuses special entries');
+  }
+ }
+ await visit(target);
+ // Complete containment/symlink preflight before deleting any file.
+ for(const item of files)if(!sameSnapshot(item.stat,await checkedPath(root,item.path)))throw new Error('Disposable file changed after preflight');
+ for(const item of directories)if(!sameFile(item.stat,await checkedPath(root,item.path)))throw new Error('Disposable directory changed after preflight');
+ for(const item of files){
+  if(!sameSnapshot(item.stat,await checkedPath(root,item.path)))throw new Error('Disposable file changed before unlink');
+  await fs.unlink(item.path);
+ }
+ for(const item of directories.reverse()){
+  if(!sameFile(item.stat,await checkedPath(root,item.path)))throw new Error('Disposable directory changed before removal');
+  await fs.rmdir(item.path);
+ }
+ return{files:files.length,bytes:files.reduce((sum,item)=>sum+Number(item.stat.size),0)};
+}
+
+async function reclaimVerifiedBuild(root,{allowCloneRemoval=false,measure=availableBytes,reserveBytes=512*1024*1024}={}){
+ const staticFiles=await outputFiles(root,path.join(root,'.next','output','static'));
+ let requiredCopyBytes=0;
+ for(const file of staticFiles)requiredCopyBytes+=Number((await checkedPath(root,file)).size);
+ const before=await measure(root);
+ const cache=await removeDisposableTree(root,path.join(root,'.next','cache'));
+ const afterCache=await measure(root);
+ let clone={files:0,bytes:0};
+ // A Git clone is a recoverable build input copy, not the user's repository.
+ // It is removed only after the caller verified its SHA and standalone root,
+ // and only if the generated output still cannot fit beside the inputs.
+ if(afterCache<requiredCopyBytes+reserveBytes&&allowCloneRemoval)clone=await removeDisposableTree(root,path.join(root,'.git','objects'));
+ const after=await measure(root);
+ if(after<requiredCopyBytes+reserveBytes)throw new Error(`Final static copy requires ${requiredCopyBytes+reserveBytes} free bytes; available ${after} after disposable build cleanup`);
+ return{freeBytesBefore:before,freeBytesAfterCache:afterCache,freeBytesAfter:after,requiredCopyBytes,reserveBytes,cache,ephemeralClone:clone};
 }
 
 async function compactVerifiedRoot(root,linkFile=fs.link){
@@ -129,16 +191,45 @@ export async function compactStaticFixtureV87({fixtureRoot,linkFile=fs.link}){
  return compactVerifiedRoot(root,linkFile);
 }
 
+/** Reclamation is testable only within self-created private fixtures. */
+export async function reclaimBuildFixtureV87({fixtureRoot,measure=availableBytes,reserveBytes=0}){
+ const project=await fs.realpath(process.cwd()),base=path.join(project,'work-local','v87'),root=path.resolve(fixtureRoot);
+ if(!inside(base,root)||root===base||!path.basename(root).startsWith('static-compaction-fixture-'))throw new Error('Only private static compaction fixtures are allowed');
+ await checkedPath(project,root);
+ return reclaimVerifiedBuild(root,{allowCloneRemoval:true,measure,reserveBytes});
+}
+
 export async function runVercelStaticCompactionV87(){
  // Do not inspect, hash or mutate local build/caches even with VERCEL spoofed.
  if(process.env.VERCEL!=='1'||process.platform!=='linux'||process.cwd()!==buildRoot
   ||await fs.realpath(process.cwd())!==buildRoot)return{status:'skipped',reason:'not-exact-linux-vercel-build-root'};
  await checkedPath(buildRoot,buildRoot);
+ if(['GIT_DIR','GIT_WORK_TREE','GIT_COMMON_DIR','GIT_OBJECT_DIRECTORY','GIT_ALTERNATE_OBJECT_DIRECTORIES'].some(key=>process.env[key]))throw new Error('External Git environment overrides refused');
  const expected=process.env.VERCEL_GIT_COMMIT_SHA;
  if(!/^[a-f0-9]{40}$/i.test(expected??''))throw new Error('Vercel Git commit SHA is required before static compaction');
- const {stdout}=await runFile('git',['rev-parse','--verify','HEAD'],{cwd:buildRoot});
+ const {stdout}=await runFile('git',['rev-parse','--verify','HEAD^{commit}'],{cwd:buildRoot});
  if(stdout.trim().toLowerCase()!==expected.toLowerCase())throw new Error('Vercel Git commit SHA differs from checked-out HEAD');
- return compactVerifiedRoot(buildRoot);
+ // Refuse linked worktrees/common Git directories. The only eligible clone
+ // is this runner's literal standalone .git directory, never a local repo.
+ const gitPath=path.join(buildRoot,'.git');
+ if(!(await checkedPath(buildRoot,gitPath)).isDirectory())throw new Error('Standalone Vercel clone directory required');
+ const {stdout:gitDir}=await runFile('git',['rev-parse','--absolute-git-dir'],{cwd:buildRoot});
+ const {stdout:commonDir}=await runFile('git',['rev-parse','--git-common-dir'],{cwd:buildRoot});
+ if(path.resolve(gitDir.trim())!==gitPath||path.resolve(buildRoot,commonDir.trim())!==gitPath)throw new Error('Shared or external Git clone metadata refused');
+ for(const entry of ['worktrees','commondir','modules','objects/info/alternates'])if(await checkedPath(buildRoot,path.join(gitPath,entry),{missing:true}))throw new Error('Registered worktrees, submodules or alternate clone object stores refused');
+ // The builder's final destination is outside the checkout. Inspect it only
+ // for disk accounting: no deletion or modification is permitted there.
+ let finalVolumeRoot='/vercel/output';
+ try{await fs.lstat(finalVolumeRoot);}catch(error){if(error.code!=='ENOENT')throw error;finalVolumeRoot='/vercel';}
+ const destination=await fs.lstat(finalVolumeRoot,{bigint:true});
+ if(destination.isSymbolicLink()||!destination.isDirectory()||await fs.realpath(finalVolumeRoot)!==finalVolumeRoot)throw new Error('Final output volume must be a literal directory');
+ if(destination.dev!==(await fs.lstat(buildRoot,{bigint:true})).dev)throw new Error('Final output is on a different volume; source cleanup cannot establish its capacity');
+ const finalVolumeFreeBytesBefore=await availableBytes(finalVolumeRoot);
+ const freeBytesBefore=await availableBytes(buildRoot);
+ const compacted=await compactVerifiedRoot(buildRoot);
+ const freeBytesAfterLinks=await availableBytes(buildRoot);
+ const reclamation=await reclaimVerifiedBuild(buildRoot,{allowCloneRemoval:true,measure:async()=>Math.min(await availableBytes(buildRoot),await availableBytes(finalVolumeRoot))});
+ return{...compacted,freeBytesBefore,freeBytesAfterLinks,finalVolumeRoot,finalVolumeFreeBytesBefore,finalVolumeFreeBytesAfter:await availableBytes(finalVolumeRoot),reclamation};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

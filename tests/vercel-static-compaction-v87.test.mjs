@@ -6,7 +6,7 @@ import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {compactStaticFixtureV87} from '../scripts/compact-vercel-static-v87.mjs';
+import {compactStaticFixtureV87,reclaimBuildFixtureV87} from '../scripts/compact-vercel-static-v87.mjs';
 
 const runFile=promisify(execFile);
 const project=path.resolve(fileURLToPath(new URL('..',import.meta.url)));
@@ -144,4 +144,56 @@ test('mode mismatch preserves output permissions, and arbitrary real project roo
   assert.equal((await fs.stat(files.target)).mode&0o777,0o600);
  }
  await assert.rejects(compactStaticFixtureV87({fixtureRoot:project}),/Only private/);
+});
+
+test('completed-build cleanup removes only compilation cache when free space suffices',async t=>{
+ const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
+ await fs.writeFile(path.join(root,'.git','objects','pack-copy'),'recoverable-clone');
+ await fs.writeFile(path.join(root,'.git','HEAD'),'retained-metadata');
+ const result=await reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>1_000_000});
+ assert.equal(result.cache.files,1);assert.equal(result.ephemeralClone.files,0);
+ await assert.rejects(fs.stat(path.join(root,'.next','cache')),e=>e.code==='ENOENT');
+ assert.equal(await fs.readFile(path.join(root,'.git','objects','pack-copy'),'utf8'),'recoverable-clone');
+ assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
+ assert.equal(await fs.readFile(path.join(root,'.next','output','config.json'),'utf8'),'unmodified-output-manifest');
+});
+
+test('space pressure may reclaim only copied clone objects; HEAD, sources and runtime outputs remain',async t=>{
+ const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects','pack'),{recursive:true});
+ await fs.writeFile(path.join(root,'.git','objects','pack','temporary.pack'),'recoverable-clone-objects');
+ await fs.writeFile(path.join(root,'.git','HEAD'),'preserved-head');await fs.writeFile(path.join(root,'.git','config'),'preserved-config');
+ let call=0;const result=await reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>++call<3?0:1_000_000});
+ assert.equal(result.ephemeralClone.files,1);assert.equal(result.ephemeralClone.bytes,25);
+ await assert.rejects(fs.stat(path.join(root,'.git','objects')),e=>e.code==='ENOENT');
+ assert.equal(await fs.readFile(path.join(root,'.git','HEAD'),'utf8'),'preserved-head');
+ assert.equal(await fs.readFile(path.join(root,'.git','config'),'utf8'),'preserved-config');
+ assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
+});
+
+test('cache escape is refused before any disposable file is removed, and real roots stay forbidden',async t=>{
+ const root=await fixture(t),outside=await fixture(t);await pair(root,'sprite.png',Buffer.from('native'));
+ const cache=path.join(root,'.next','cache'),escape=path.join(cache,'escape');
+ await fs.symlink(path.join(outside,'public'),escape,process.platform==='win32'?'junction':'dir');
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root}),/symlinks|junctions/);
+ assert.equal(await fs.readFile(path.join(cache,'keep.bin'),'utf8'),'cache-not-touched');
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:project}),/Only private/);
+});
+
+test('clone-object symlink escape is refused and never touches external files',async t=>{
+ const root=await fixture(t),outside=await fixture(t);await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
+ await fs.writeFile(path.join(outside,'public','keep.bin'),'external-original');
+ await fs.symlink(path.join(outside,'public'),path.join(root,'.git','objects','escape'),process.platform==='win32'?'junction':'dir');
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>0}),/symlinks|junctions/);
+ assert.equal(await fs.readFile(path.join(outside,'public','keep.bin'),'utf8'),'external-original');
+});
+
+test('insufficient space after disposable cleanup fails before any final static copy',async t=>{
+ const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
+ await fs.writeFile(path.join(root,'.git','objects','pack-copy'),'recoverable-clone');
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>0}),/Final static copy requires/);
+ assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
 });

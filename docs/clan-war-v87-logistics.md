@@ -87,14 +87,21 @@ pour une campagne multijoueur.
   tarif de pièces générique attesté. Les tirs, palans et bruits physiques restent
   à implémenter. W5-EV25 appartient à KR05 et exige plusieurs levages réellement
   accomplis ; son prix de six RAV ne devient pas un prix universel sur Korthas.
-- Treize structures, théâtre RTS 2D, extraction de blessés, soins, annexion,
-  accord de passage, pont vers le navire et persistance de campagne restent ouverts.
+- Le [complément S16](clan-war-s16-extraction-v88.md) raccorde désormais le
+  sixième ouvrage et une extraction déclarée de simulation : patient identifié,
+  porteur/escorte présents, étapes et arrivée au dépôt. Douze structures,
+  théâtre RTS 2D, extraction physique/campagne, soins, annexion, accord de passage,
+  pont vers le navire et persistance de campagne restent ouverts.
 - Les règles occupées S02/S05/S07 et le trajet abri de 80 RAV V86 sont conservés.
 
-## Validation locale
+## Validation locale du lot V87 initial
 
-44 tests ciblés couvrent les anciennes règles, la reconnaissance et les ouvrages,
-ainsi que 12 nouveaux scénarios de conservation des lots, livraison, retrait,
+44 tests ciblés couvraient les anciennes règles, la reconnaissance et les ouvrages,
+dont 12 nouveaux scénarios de conservation des lots, livraison, retrait,
 cache pleine, fermeture en trajet, rationnement par lieu et import incompatible.
 Lint ciblé et vérification TypeScript passent. Ils ne remplacent ni l’inspection
 visuelle du panneau, ni un parcours de campagne, ni une publication vérifiée.
+La régression élargie avec S16 compte désormais 66 tests réussis, dont dix dédiés
+à l’extraction et à la compatibilité de l’ancienne source à cinq ouvrages ;
+les cellules, limites et parcours navigateur à contrôler sont détaillés dans
+le complément S16. Aucun soin ou résultat de campagne n’est validé par ces tests.
