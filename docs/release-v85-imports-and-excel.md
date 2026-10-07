@@ -12,7 +12,7 @@ La base est V83 `9456292f1e60f506b0c982187ca782eefbab2a81`. Les compositions Hom
 | Vaisseaux du pack du 6 octobre | 31 | Galerie du hangar, identités attribuées seulement lorsque documentées |
 | Drive du 7 octobre, PHG et vues de vaisseaux | 54, dont 44 matériaux et 10 vues de navires | Bibliothèque et nouvelles vues du hangar |
 | Drive Badlands, six lots V8–V13 | 41 | Bibliothèque, historique, variantes du bestiaire |
-| Drive PHG, dossier de portraits validés du 7 octobre | 7 | Rhino bleu/orange, Snake, Panther, Night Cougar et Wolf masqué/sans masque ; portraits statiques consultables |
+| Drive PHG, dossier d'images validées du 7 octobre | 7 | Cinq références de créatures xénomorphes Kenner (Rhino bleu/orange, Snake, Panther, Night Cougar) et deux vues statiques du même Wolf masqué/sans masque ; aucune annonce de sept chasseurs nouveaux |
 | Nouveaux meubles Homeworld V84 | 4 | Fournisseurs de placements des intérieurs et rues |
 
 Les 640 variantes déclarées dans `YAUTJA_PNJ_V84_integration.zip` restent **des métadonnées sans PNG**. Le portable V66/V67 contient 126 PNG physiques. Son chiffre producteur de 288 fichiers ne représente pas 288 images présentes. Les versions antérieures sont conservées. Les archives cumulatives Badlands ne sont pas téléchargées à répétition : la base 118 et les 41 ajouts couvrent les 159 visuels documentés.

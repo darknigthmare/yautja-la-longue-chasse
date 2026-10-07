@@ -80,7 +80,7 @@ export function homeworldCivicPublicComplexV83(room: HomeworldInteriorV64): Home
     partitions = [wall(0, 20, 186, 44, 12), wall(1, 332, 20, 12, 64),
       wall(2, 482, 200, 36, 12), wall(3, 20, 30, 12, 24)];
     furniturePoses = { 'role-west': [124, 84], 'role-east': [404, 84],
-      'foyer-light-west': [44, 120], 'foyer-light-east': [505, 230], 'banner-east': [400, 164] };
+      'foyer-light-west': [44, 120], 'foyer-light-east': [505, 241], 'banner-east': [400, 164] };
     propPoses = [[82, 344], [481, 336], [44, 164], [486, 182]];
     decorPoses = [[32, 293], [512, 272], [504, 80]];
     furnish('reception-register', 'register-desk', 134, 230, .55);

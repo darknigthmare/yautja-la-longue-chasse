@@ -63,12 +63,12 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
       zone(4, 'traverse', 'Traverse publique des quais', 192, 20, 162, 268)];
     partitions = [wall(0, 'control-screen', 180, 20, 12, 76), wall(1, 'lower-screen', 354, 256, 12, 32),
       wall(2, 'reserve-screen', 354, 20, 12, 52)];
-    furniturePoses = { registre: [108, 80], cargaison: [402, 72], contenants: [499, 108], veille: [44, 160] };
+    furniturePoses = { registre: [108, 80], cargaison: [407, 72], contenants: [499, 108], veille: [44, 160] };
     decorPoses = { '0': [44, 230], '1': [512, 264], '2': [472, 56], '3': [503, 178] };
     furnish('delegation-parures', 'clothing-rack', 132, 274, .5);
     furnish('control-standard', 'clan-banner', 172, 116, .35);
     furnish('inspection-containers', 'sealed-jars', 492, 205, .45);
-    furnish('departure-lot', 'convoy-crates', 388, 282, .55);
+    furnish('departure-lot', 'convoy-crates', 399, 282, .55);
     furnish('inspection-register', 'register-desk', 442, 116, .4);
     oriented('inspection-case', 'chest-diagonal', 371, 116, .5, 'Contenant fermé de l’inspection ; aucune nouvelle preuve ou prise disponible.');
     oriented('departure-case', 'chest-diagonal', 446, 296, .42, 'Rangement du départ distinct de la pièce du convoi déjà produite, sans butin.');
@@ -83,7 +83,7 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
       zone(3, 'handling', 'Manutention et préparation des lots', 354, 174, 164, 114),
       zone(4, 'traverse', 'Allée axiale de maintenance', 200, 20, 154, 268)];
     partitions = [wall(0, 'west-screen', 20, 142, 80, 12), wall(1, 'east-screen', 468, 142, 50, 12)];
-    furniturePoses = { 'travail-ouest': [120, 100], 'travail-est': [418, 100], caisse: [88, 276], parures: [450, 260], veille: [506, 146] };
+    furniturePoses = { 'travail-ouest': [120, 100], 'travail-est': [418, 100], caisse: [88, 276], parures: [450, 260], veille: [506, 138] };
     decorPoses = { '1': [62, 220], '2': [474, 216] };
     native('preparation-console', 'maintenance-console-right', 134, 190, 1, 'Console de préparation des pièces',
       'Console native avec face opérateur sud-est dans la préparation des pièces ; décor non interactif, sans service ou transport supplémentaire disponible.', 'V84');
