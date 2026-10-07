@@ -3,6 +3,7 @@ docs
 /scripts/*
 !/scripts/build-audio-manifest.mjs
 !/scripts/verify-pit-built-css-v61.mjs
+!/scripts/compact-vercel-static-v87.mjs
 tests
 /private-dlc
 
@@ -13,6 +14,7 @@ tests
 /.wrangler
 /outputs
 /work
+/work-local
 /tmp
 *.tsbuildinfo
 

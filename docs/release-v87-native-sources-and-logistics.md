@@ -112,3 +112,19 @@ Les clips vocaux, batailles de clans, treize autres structures, campagnes
 spatiales et PNG documentés mais absents restent des travaux distincts. Le
 suivi des archives Drive, compilation, tests et publication est consigné
 séparément ; aucun succès de modèle seul n'est présenté comme un parcours public.
+
+## Préparation de la publication
+
+Le premier déploiement `c9c1b6d` a compilé et vérifié son CSS, puis échoué
+par `ENOSPC` dans la copie intermédiaire des fichiers statiques du runner
+Vercel. Le poste Windows et ses sources n'étaient pas en cause.
+Le build conserve ses contrôles puis compacte seulement les copies générées
+dans `.next/output/static` : un fichier identique de `public` sur le même
+volume peut fournir un hardlink après vérification des tailles et SHA256.
+Le lien temporaire est installé par renommage atomique après validation ;
+un échec de création conserve l'ancienne copie. Sept tests de protection
+passent, en plus des 155 tests ciblés du jeu.
+Les originaux, métadonnées et objets Git restent en place. Le CLI est inactif
+hors du checkout Linux Vercel attendu et exige le SHA du commit de déploiement.
+Les tests utilisent uniquement leurs propres fixtures. La réussite publique
+reste conditionnée au statut READY et aux contrôles séparés du site.
