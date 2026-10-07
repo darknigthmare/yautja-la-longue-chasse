@@ -120,7 +120,7 @@ Les rapports et captures sont conservés dans `work-local/v87/qa`.
 
 La compilation Next/webpack finale et le contrôle du CSS compilé passent.
 La passe finale des vingt-deux fichiers de tests ciblés totalise
-**177 succès, zéro échec, dont douze tests de build** ;
+**179 succès, zéro échec, dont quatorze tests de build** ;
 ils vérifient les systèmes touchés, pas l'intégralité de la suite historique.
 Le navigateur du vrai jeu compilé ouvre la bibliothèque V87 et ses nouveaux
 packs. Une planche de 2400 × 21476 reste sans balise image avant demande ;
@@ -158,9 +158,15 @@ l'espace disponible sur les volumes source et destination. Après compilation,
 il retire exclusivement son cache jetable `.next/cache` ; si la copie statique
 et sa marge ne tiennent toujours pas, il retire les objets de son clone Git
 éphémère. SHA, répertoire Git autonome et chemins réels sont vérifiés avant
-cette opération ; les symlinks, worktrees partagés et volumes différents sont
-refusés. Les sources, PNG, sorties runtime et métadonnées HEAD/config restent
-intacts. Le dépôt local et GitHub ne sont jamais nettoyés. Douze tests couvrent
+cette opération ; les symlinks et worktrees partagés sont refusés.
+Le déploiement `0e09615` a ensuite compilé mais révélé deux volumes distincts :
+le contrôle les accepte désormais seulement si la capacité mesurée du volume
+de destination suffit à tous les chemins statiques et à leur marge. Une
+suppression d'objets Git sur le volume source n'est jamais utilisée pour
+justifier la capacité d'un autre volume ; si sa place manque, le build refuse
+avec les tailles disponibles/requises. Les deux volumes sont journalisés
+séparément. Les sources, PNG, sorties runtime et métadonnées HEAD/config restent
+intacts. Le dépôt local et GitHub ne sont jamais nettoyés. Quatorze tests couvrent
 la compaction et la récupération d'espace dans des fixtures privées.
 Le CLI est inactif
 hors du checkout Linux Vercel attendu et exige le SHA du commit de déploiement.

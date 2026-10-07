@@ -108,7 +108,7 @@ async function removeDisposableTree(root,target){
  return{files:files.length,bytes:files.reduce((sum,item)=>sum+Number(item.stat.size),0)};
 }
 
-async function reclaimVerifiedBuild(root,{allowCloneRemoval=false,measure=availableBytes,reserveBytes=512*1024*1024}={}){
+async function reclaimVerifiedBuild(root,{allowCloneRemoval=false,sameVolume=true,measure=availableBytes,reserveBytes=512*1024*1024}={}){
  const staticFiles=await outputFiles(root,path.join(root,'.next','output','static'));
  let requiredCopyBytes=0;
  for(const file of staticFiles)requiredCopyBytes+=Number((await checkedPath(root,file)).size);
@@ -119,10 +119,12 @@ async function reclaimVerifiedBuild(root,{allowCloneRemoval=false,measure=availa
  // A Git clone is a recoverable build input copy, not the user's repository.
  // It is removed only after the caller verified its SHA and standalone root,
  // and only if the generated output still cannot fit beside the inputs.
- if(afterCache<requiredCopyBytes+reserveBytes&&allowCloneRemoval)clone=await removeDisposableTree(root,path.join(root,'.git','objects'));
+ // A separate output mount is legitimate, but deleting source clone objects
+ // cannot be credited toward that mount's capacity. Never reclaim them there.
+ if(afterCache<requiredCopyBytes+reserveBytes&&allowCloneRemoval&&sameVolume)clone=await removeDisposableTree(root,path.join(root,'.git','objects'));
  const after=await measure(root);
  if(after<requiredCopyBytes+reserveBytes)throw new Error(`Final static copy requires ${requiredCopyBytes+reserveBytes} free bytes; available ${after} after disposable build cleanup`);
- return{freeBytesBefore:before,freeBytesAfterCache:afterCache,freeBytesAfter:after,requiredCopyBytes,reserveBytes,cache,ephemeralClone:clone};
+ return{sameVolume,freeBytesBefore:before,freeBytesAfterCache:afterCache,freeBytesAfter:after,requiredCopyBytes,reserveBytes,cache,ephemeralClone:clone};
 }
 
 async function compactVerifiedRoot(root,linkFile=fs.link){
@@ -192,11 +194,11 @@ export async function compactStaticFixtureV87({fixtureRoot,linkFile=fs.link}){
 }
 
 /** Reclamation is testable only within self-created private fixtures. */
-export async function reclaimBuildFixtureV87({fixtureRoot,measure=availableBytes,reserveBytes=0}){
+export async function reclaimBuildFixtureV87({fixtureRoot,measure=availableBytes,reserveBytes=0,sameVolume=true}){
  const project=await fs.realpath(process.cwd()),base=path.join(project,'work-local','v87'),root=path.resolve(fixtureRoot);
  if(!inside(base,root)||root===base||!path.basename(root).startsWith('static-compaction-fixture-'))throw new Error('Only private static compaction fixtures are allowed');
  await checkedPath(project,root);
- return reclaimVerifiedBuild(root,{allowCloneRemoval:true,measure,reserveBytes});
+ return reclaimVerifiedBuild(root,{allowCloneRemoval:true,sameVolume,measure,reserveBytes});
 }
 
 export async function runVercelStaticCompactionV87(){
@@ -223,13 +225,15 @@ export async function runVercelStaticCompactionV87(){
  try{await fs.lstat(finalVolumeRoot);}catch(error){if(error.code!=='ENOENT')throw error;finalVolumeRoot='/vercel';}
  const destination=await fs.lstat(finalVolumeRoot,{bigint:true});
  if(destination.isSymbolicLink()||!destination.isDirectory()||await fs.realpath(finalVolumeRoot)!==finalVolumeRoot)throw new Error('Final output volume must be a literal directory');
- if(destination.dev!==(await fs.lstat(buildRoot,{bigint:true})).dev)throw new Error('Final output is on a different volume; source cleanup cannot establish its capacity');
+ const sourceDevice=(await fs.lstat(buildRoot,{bigint:true})).dev;
+ const sameVolume=destination.dev===sourceDevice;
  const finalVolumeFreeBytesBefore=await availableBytes(finalVolumeRoot);
  const freeBytesBefore=await availableBytes(buildRoot);
+ console.log(JSON.stringify({status:'static-volume-preflight',sameVolume,sourceDevice:String(sourceDevice),destinationDevice:String(destination.dev),finalVolumeRoot,sourceFreeBytes:freeBytesBefore,destinationFreeBytes:finalVolumeFreeBytesBefore}));
  const compacted=await compactVerifiedRoot(buildRoot);
  const freeBytesAfterLinks=await availableBytes(buildRoot);
- const reclamation=await reclaimVerifiedBuild(buildRoot,{allowCloneRemoval:true,measure:async()=>Math.min(await availableBytes(buildRoot),await availableBytes(finalVolumeRoot))});
- return{...compacted,freeBytesBefore,freeBytesAfterLinks,finalVolumeRoot,finalVolumeFreeBytesBefore,finalVolumeFreeBytesAfter:await availableBytes(finalVolumeRoot),reclamation};
+ const reclamation=await reclaimVerifiedBuild(buildRoot,{allowCloneRemoval:sameVolume,sameVolume,measure:async()=>sameVolume?Math.min(await availableBytes(buildRoot),await availableBytes(finalVolumeRoot)):availableBytes(finalVolumeRoot)});
+ return{...compacted,sameVolume,freeBytesBefore,freeBytesAfterLinks,sourceFreeBytesAfter:await availableBytes(buildRoot),finalVolumeRoot,finalVolumeFreeBytesBefore,finalVolumeFreeBytesAfter:await availableBytes(finalVolumeRoot),reclamation};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

@@ -197,3 +197,23 @@ test('insufficient space after disposable cleanup fails before any final static 
  await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>0}),/Final static copy requires/);
  assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
 });
+
+test('a separate output volume with sufficient measured capacity does not reclaim source clone objects',async t=>{
+ const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
+ await fs.writeFile(path.join(root,'.git','objects','pack-copy'),'retained-clone');
+ const result=await reclaimBuildFixtureV87({fixtureRoot:root,sameVolume:false,measure:async()=>1_000_000});
+ assert.equal(result.sameVolume,false);assert.equal(result.ephemeralClone.files,0);
+ assert.equal(result.freeBytesAfter,1_000_000);
+ assert.equal(await fs.readFile(path.join(root,'.git','objects','pack-copy'),'utf8'),'retained-clone');
+ assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
+});
+
+test('an insufficient separate output volume fails without deleting source clone objects or static assets',async t=>{
+ const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
+ await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
+ await fs.writeFile(path.join(root,'.git','objects','pack-copy'),'retained-clone');
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root,sameVolume:false,measure:async()=>0}),/Final static copy requires 6 free bytes; available 0/);
+ assert.equal(await fs.readFile(path.join(root,'.git','objects','pack-copy'),'utf8'),'retained-clone');
+ assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
+});
