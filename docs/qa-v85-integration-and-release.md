@@ -20,7 +20,7 @@ Rapport du 7 octobre 2026, établi à partir des résultats transmis par les age
 
 Les lints ciblés signalés par les agents ont réussi. Ils ne constituent pas un reçu de lint global, de contrôle TypeScript ou de build de production.
 
-La racine a ensuite relancé un groupe commun sur les sources figées : **152/152 tests réussis, zéro échec ou skip, 55,14 secondes**. Il couvre clans, navires, contrats, entrées/récupération, intégration V84/V85, wayfinding, découpage et dix tests de chroniques The Pit. Le journal est `work-local/v85/qa/final-targeted-regression.log`. Ce groupe commun n'est ni additionné aux résultats agents qui se recouvrent, ni présenté comme la suite historique entière.
+La racine a ensuite relancé un groupe commun sur les sources figées, incluant le dernier correctif de support naturel : **154/154 tests réussis, zéro échec ou skip, 53,52 secondes**. Il couvre clans, navires, contrats, entrées/récupération, intégration V84/V85, support naturel, wayfinding, découpage et dix tests de chroniques The Pit. Le journal est `work-local/v85/qa/final-targeted-regression.log`. Ce groupe commun n'est ni additionné aux résultats agents qui se recouvrent, ni présenté comme la suite historique entière.
 
 La fixture The Pit contrôle maintenant les quatre dépendances réelles de restauration, dont le stockage isolé, et exige écriture puis relecture identique du même stockage. Aucun garde de propriétaire, annulation, résultat ou remplacement n'est retiré. Le manifeste V85 corrige aussi un accès possible à `networkFailure.message` lorsque la source optionnelle et l'échec sont absents ; le garde de nullité est explicite.
 
@@ -37,6 +37,8 @@ Les corrections Homeworld dégagent les approches publiques des trois intérieur
 Le trajet `resident-v69-forges-2` était réellement bloqué par le banc historique `exterior-v76-067`. Son arrêt a été ramené à 2695/2880, avant le banc, en conservant le départ 2695/3032, l’identité, la tenue et la vitesse. Le test original des 98 trajets repasse après cette correction.
 
 Les douze placements extérieurs V84 donnent **dix objets montés et deux refus** dans le modèle actuel. Les refus du râtelier des maîtres et du brasero de mémoire restent explicites : ils ne deviennent ni dessinés ni solides. Une compilation répétée conserve le même résultat sans comparer un objet à sa propre collision déjà montée.
+
+Le contrôle visuel de la racine a révélé une autre régression : les racines des décors naturels, placées volontairement hors sol public, n'avaient plus d'appui dessiné après la réduction du sol naturel à une marge de 22 unités. La scène V77 dessine maintenant des promontoires par formation source, ancrés à un bord public existant, avec texture de cendre répétée en coordonnées monde et faces rocheuses natives. Les 392 placements et 374 origines historiques restent inchangés. Ces appuis sont uniquement visuels et n'entrent jamais dans les terrains praticables ou collisions. Deux tests vérifient leur couverture, leur ancrage et leur absence aux autres étages. La comparaison CUA avant/après autour de 3960/5290 confirme que les végétaux et évents ne flottent plus devant le ciel dans cette vue.
 
 Les fixtures de contrats utilisent désormais le point d’approche intérieur existant au lieu d’un décalage fixe de 45 unités devenu bloqué par l’aménagement. Les contrôles de circulation vérifient que les donneurs restent accessibles depuis le spawn ; leurs positions et règles ne sont pas déplacées par les tests.
 
@@ -65,6 +67,9 @@ Le contrôle CUA a été effectué sur une **largeur desktop réelle de 1063 pix
 | Reconnaissance `W3K02` | Résultat observé : RAV 10, fatigue 10, XP 4. |
 | Lecteur de navire | 730 scènes rendues dans un composant serveur isolé. Ce contrôle ne prouve pas une arrivée de navire dans la campagne ni le parcours campagne complet. |
 | Nouvelle partie et reprise locale | Partie QA créée dans le slot 5 alors que les cinq slots étaient vides. Après rechargement du build Next de production, « Continuer » reprend cette partie et affiche réellement « Un jeune du clan » dans le prologue. Aucun slot public utilisateur n'a été modifié. |
+| Checkpoint manuel local | Écriture de la manuelle 1 confirmée. Une seconde activation affiche l'avertissement de remplacement ; Annuler conserve le checkpoint. Sauvegarder et revenir au titre retrouve la partie 5. |
+| Persistance entre outils V6 | Après passage et observation à W3-K02, aller au calculateur puis revenir à la reconnaissance conserve tour 3, stock 10/12 RAV, fatigue 10 et XP 4. |
+| Vue réelle Homeworld isolée | Extérieur des quais et intérieur de contrôle observés avec Hub, géométrie et PNG réels ; 27 images DOM chargées dans l'intérieur, zéro cassée et aucun débordement horizontal. Fixture en mémoire, callbacks sans sauvegarde utilisateur. CSS modules réel ; globals.css brut sans pipeline Next/Tailwind complet : ce n'est pas une arrivée de campagne ni une preuve du Homeworld public entier. |
 
 Le navigateur présente des erreurs `FILE_ERROR_NO_SPACE` dans son stockage Chromium, également remontées par une extension. Le disque C possède pourtant environ 30,9 Gio libres lors du dernier relevé. Cela reste une limite d'environnement non résolue ; ni console sans erreur, ni persistance exhaustive du profil, ni synchronisation mobile/ordinateur ne sont certifiées. Le rechargement réussi ci-dessus est une observation précise, pas une preuve de tous les cas de stockage.
 
@@ -84,10 +89,10 @@ Cette section est réservée aux preuves finales de la racine. Aucun build, PUSH
 | --- | --- |
 | Typecheck global | `tsc --noEmit`, exit 0 ; journal `work-local/v85/qa/typecheck-final.log`. |
 | Lint des fichiers modifiés et nouveaux | Exit 0, comprenant les TS/TSX et fixtures MJS du lot. Ce contrôle n'est pas un lint du dépôt entier ; journal `work-local/v85/qa/lint-final.log`. |
-| Build de production | Next 16.3.5 `build --webpack`, TypeScript, pages et traces terminés, exit 0 ; vérification CSS compilé The Pit PASS ; journal `work-local/v85/qa/next-production-build.log`. Le manifeste audio régénéré est inchangé : 37 slots, 22 fournis. |
-| État final de la régression globale | Non relancée intégralement après gel. 152/152 ciblés finaux PASS ; le baseline historique pré-correction reste distinct. |
-| Commit local | À compléter avec le SHA. |
-| PUSH GitHub | À compléter avec la preuve du SHA distant. |
-| Déploiement Vercel | À compléter avec l’URL, le SHA et le statut vérifié. |
+| Build de production | Next 16.3.5 `build --webpack`, TypeScript, pages et traces terminés, exit 0 ; vérification CSS compilé The Pit PASS, y compris après correctif naturel ; journal `work-local/v85/qa/next-production-build-final.log`. Le manifeste audio régénéré est inchangé : 37 slots, 22 fournis. |
+| État final de la régression globale | Non relancée intégralement après gel. 154/154 ciblés finaux PASS ; le baseline historique pré-correction reste distinct. |
+| Commit de l'intégration V85 | `0cf87a5ff1b339b1fa05949c428f5dbbd034aefd` ; le correctif naturel suit dans le commit portant cette mise à jour du rapport. |
+| PUSH GitHub | Intégration V85 confirmée sur main et la branche de travail au SHA ci-dessus. La livraison suivante sera vérifiée séparément. |
+| Déploiement Vercel | Preview `dpl_7btXGMeuZiteZSg2u5iSffACWPKg` READY sur `0cf87a5`, production de ce même SHA encore BUILDING lors de la rédaction. Cela n'est pas une preuve de publication du correctif naturel. |
 | Contrôle public | À compléter séparément : HTTP/assets, parcours réellement observés et limites restantes. |
 | Contrôle mobile | Non validé dans le contrôle CUA décrit ici ; à compléter après une observation mobile réelle. |
