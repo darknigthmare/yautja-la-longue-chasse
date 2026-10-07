@@ -36,10 +36,10 @@ function completed(structureId = "W3-S02", unitId = "W3-U17", context = rules) {
   return { state, workId };
 }
 
-test("three live workbook rows supply exact construction costs, operators, maintenance and delay", () => {
+test("five live workbook rows supply exact construction costs, operators, maintenance and delay", () => {
   const defs = api.warWorksDefinitionsV6();
   assert.deepEqual(defs.map(def => [def.id, def.costRav, def.upkeepRav, def.delayTurns, def.operatorUnitId]),
-    [["W3-S02", 8, 1, 2, "W3-U17"], ["W3-S05", 4, 1, 2, "W3-U06"], ["W3-S07", 12, 1, 2, "W3-U07"]]);
+    [["W3-S02", 8, 1, 2, "W3-U17"], ["W3-S05", 4, 1, 2, "W3-U06"], ["W3-S07", 12, 1, 2, "W3-U07"], ["W3-S03", 10, 1, 2, "W3-U19"], ["W3-S04", 12, 2, 2, "W3-U20"]]);
   assert.equal(defs[2].defensePercent, 15);
   for (const def of defs) {
     const row = api.workbook.entries.find(entry => entry.id === def.id && entry.sheet === "Structures de guerre");

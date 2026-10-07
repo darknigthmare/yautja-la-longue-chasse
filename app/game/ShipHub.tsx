@@ -269,15 +269,16 @@ export default function ShipHub({
   const [trainingSession, setTrainingSession] =
     useState<TrainingSession | null>(null);
   const [shipInspectionActive, setShipInspectionActive] = useState(false);
+  const [shipFlightActive, setShipFlightActive] = useState(false);
   const rootRef = useRef<HTMLElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
 
   // A nested drill owns focus and input; let the host disable its outer toolbar.
   useEffect(() => {
-    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive);
+    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive || shipFlightActive);
     return () => onTrainingActiveChange?.(false);
-  }, [onTrainingActiveChange, trainingSession, shipInspectionActive]);
+  }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
 
   const progression =
     controlledProgression ?? localProgression;
@@ -864,6 +865,7 @@ export default function ShipHub({
       suspended ||
       trainingSession !== null ||
       shipInspectionActive ||
+      shipFlightActive ||
       typeof navigator === "undefined"
     ) {
       gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
@@ -940,11 +942,12 @@ export default function ShipHub({
     suspended,
     trainingSession,
     shipInspectionActive,
+    shipFlightActive,
   ]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if (suspended || trainingSession !== null || shipInspectionActive) return;
+      if (suspended || trainingSession !== null || shipInspectionActive || shipFlightActive) return;
       if (event.repeat || event.defaultPrevented) return;
       const target = event.target;
       if (
@@ -1013,6 +1016,7 @@ export default function ShipHub({
       suspended,
       trainingSession,
       shipInspectionActive,
+      shipFlightActive,
     ],
   );
 
@@ -1055,6 +1059,7 @@ export default function ShipHub({
 
         <nav
           aria-label="Salles du vaisseau"
+          inert={shipFlightActive}
           style={styles.roomNavigation}
         >
           {SHIP_ROOMS.map((room) => (
@@ -1080,6 +1085,7 @@ export default function ShipHub({
 
         <div style={styles.contentGrid}>
           <div className="hub-room-panel" style={styles.roomPanel}>
+            <div inert={shipFlightActive}>
             <RoomSummary
               roomId={activeRoomId}
               save={save}
@@ -1089,8 +1095,10 @@ export default function ShipHub({
               suspended={suspended}
               onInspectionActiveChange={setShipInspectionActive}
             />
+            </div>
             {(activeRoomId === "bridge-map" || activeRoomId === "hangar") && <ShipOperationsPanelV85
               save={save} shipId={progression.selectedShipId} operation={operation} exerciseSourceUrl={dialogueSource?.shipsUrl} suspended={suspended}
+              onFlightActiveChange={setShipFlightActive}
               onOpenMap={onOpenMap} onOpenArmory={onOpenArmory} onOpenArchives={onOpenArchives} onRoomChange={selectRoom} />}
             {activeRoomId === "archives" && <DialogueBibleReaderV85 source={dialogueSource} suspended={suspended} onActiveChange={setShipInspectionActive} />}
           </div>
@@ -1099,7 +1107,7 @@ export default function ShipHub({
             <p className="hub-message">
               <strong>ACTIONS DE SALLE</strong>
             </p>
-            <div className="hub-nav" aria-label="Actions disponibles">
+            <div className="hub-nav" aria-label="Actions disponibles" inert={shipFlightActive}>
               {actions.map((action, index) => (
                 <button
                   key={action.id}

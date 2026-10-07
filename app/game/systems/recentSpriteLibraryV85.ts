@@ -3,9 +3,11 @@ import driveLatest from '../data/driveLatestSpritesV85.json';
 import badlandsLatest from '../data/badlandsLatestSpritesV85.json';
 import approvedHunters from '../data/recentApprovedHuntersV85.json';
 import driveGarrisons from '../data/driveGarrisonsV86.json';
+import driveCompletion from '../data/driveCompletionSpritesV87.json';
+import driveArchiveAudit from '../data/driveArchiveAuditSpritesV87.json';
 import npcMetadata from '../data/recentNpcSourceMetadataV85.json';
 
-export type RecentSpriteKindV85='npc'|'fauna'|'flora'|'synthetic'|'texture'|'ship'|'equipment';
+export type RecentSpriteKindV85='npc'|'fauna'|'flora'|'synthetic'|'texture'|'ship'|'equipment'|'reference';
 export interface RecentSpriteSourceV85 {
  readonly id:string;readonly identityId:string;readonly label:string;readonly packId:string;readonly packLabel:string;
  readonly version:string;readonly priority:number;readonly preferredVersion:boolean;readonly kind:RecentSpriteKindV85;
@@ -16,6 +18,9 @@ export interface RecentSpriteSourceV85 {
  readonly pose:string;readonly motionStatus:'single-pose-static';readonly canonicalFidelity:'not-certified-1-to-1';readonly sourceNote:string;
  readonly supersedesIdentityId:string;readonly supersededByIdentityId:string;
  readonly canonicalSubject?:string|null;readonly canonicalState?:string|null;readonly fullBody?:boolean|null;
+ readonly bodyComposition?:'single-individual'|'rider-and-mount'|'reference-image';
+ readonly sourceLimits?:readonly string[];
+ readonly nativeNature?:string;
 }
 /** Original imported pixels and their historical versions. This registry never
  * starts a pack script, grants a reward, swaps a costume or synthesizes frames. */
@@ -41,22 +46,26 @@ const approvedHunterEntriesV85=(approvedHunters.assets as readonly DriveLatestSp
 // Complete original records carry documented role, age and morphology fields.
 // Do not normalize these away like an unstructured individual Drive image.
 const garrisonEntriesV86=driveGarrisons.assets as readonly RecentSpriteSourceV85[];
+const completionEntriesV87=driveCompletion.assets as readonly RecentSpriteSourceV85[];
+const archiveAuditEntriesV87=driveArchiveAudit.assets as readonly RecentSpriteSourceV85[];
 const supersededBadlandsV85=new Map<string,string>();
-for(const asset of badlandsEntriesV85)if(asset.supersedesIdentityId)supersededBadlandsV85.set(asset.supersedesIdentityId,asset.identityId);
-for(const note of badlandsLatest.sourceCorrectionNotes as readonly {id:number;fields?:{superseded_by_asset_id?:number;morphology_corrected_by_asset_id?:number}}[]){
+for(const asset of [...badlandsEntriesV85,...completionEntriesV87])if(asset.supersedesIdentityId)supersededBadlandsV85.set(asset.supersedesIdentityId,asset.identityId);
+for(const note of [...badlandsLatest.sourceCorrectionNotes,...driveCompletion.sourceCorrectionNotes] as readonly {id:number;fields?:{superseded_by_asset_id?:number;morphology_corrected_by_asset_id?:number}}[]){
  const replacement=note.fields?.superseded_by_asset_id??note.fields?.morphology_corrected_by_asset_id;
  if(replacement)supersededBadlandsV85.set('badlands-'+note.id,'badlands-'+replacement);
 }
 /** Corrections change only reference preference. Superseded files retain their
  * source ID, pixels and catalogue entry, without a body or animation override. */
-export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86].map(asset=>{
+export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86,...completionEntriesV87,...archiveAuditEntriesV87].map(asset=>{
  const replacement=supersededBadlandsV85.get(asset.identityId);return replacement?{...asset,preferredVersion:false,supersededByIdentityId:replacement}:asset;
 });
 export const RECENT_SPRITE_LIBRARY_V85={...source,assets:RECENT_SPRITE_ASSETS_V85,
  nativeGarrisonFilesV86:driveGarrisons.summary.nativePngFiles,
+ nativeRecoveredFilesV87:driveCompletion.summary.newDistinctPngFiles+driveArchiveAudit.summary.newDistinctPngFiles,
+ uniqueReferencedHashes:new Set(RECENT_SPRITE_ASSETS_V85.map(asset=>asset.sha256)).size,
  packs:[...source.packs,{id:'drive-latest',label:'Derniers fichiers Drive · 7 octobre',version:'2026-10-07',priority:85,archive:'Fichiers Drive reçus individuellement',insideArchive:null,sha256:'',pngEntriesImported:driveEntriesV85.length,recordEntries:0,status:'source-import-authored-no-qa'},
   {id:'badlands-latest',label:'Badlands · ajouts V8 à V13',version:'V8–V13',priority:93,archive:'Six lots d’ajouts Drive',insideArchive:null,sha256:'',pngEntriesImported:badlandsEntriesV85.length,recordEntries:6,status:'source-import-authored-no-qa'},
-  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs]};
+  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs,...driveCompletion.packs,...driveArchiveAudit.packs]};
 export const RECENT_SPRITE_PREFERRED_V85=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.preferredVersion);
 export const RECENT_SPRITE_GROUPS_V85=source.groups;
 export const RECENT_NPC_SOURCE_METADATA_V85=npcMetadata;
@@ -72,6 +81,7 @@ export const RECENT_SPRITE_KINDS_V85:readonly {id:RecentSpriteKindV85;label:stri
  {id:'synthetic',label:'Synthétiques'},{id:'texture',label:'Matériaux Hunting Grounds'},
  {id:'ship',label:'Coques et vaisseaux'},
  {id:'equipment',label:'Équipements et portions isolées'},
+ {id:'reference',label:'Illustrations et références historiques'},
 ];
 export const recentSpriteByIdV85=(id:string)=>RECENT_SPRITE_ASSETS_V85.find(asset=>asset.id===id)??null;
 export const recentSpriteVariantsV85=(identityId:string)=>RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.identityId===identityId);
@@ -103,7 +113,11 @@ export function importedYautjaArtVariantsV85({clanName,role,name,identityId,asse
  const roleTerms=aliases[requested]??(requested?[requested]:[]);
  // The accepted humans remain searchable archive NPCs, but their documented
  // human bodies must never be borrowed by a Yautja-only runtime consumer.
- const candidates=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.kind==='npc'&&asset.groupId!=='human-accepted'&&(includeHistorical||asset.preferredVersion)
+ const nonIndividualRoles=new Set(['monture','montures','monture seule','chevaucheur','chevaucheurs']);
+ // A composed rider needs a dedicated mounted renderer and footprint. It
+ // cannot supply a walking individual's body, even by explicit source ID.
+ const candidates=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.kind==='npc'&&asset.groupId!=='human-accepted'&&asset.bodyComposition!=='rider-and-mount'
+  &&!nonIndividualRoles.has(normalizeRecentSpriteTextV85(asset.role))&&!/--monture-seule-/.test(asset.identityId)&&(includeHistorical||asset.preferredVersion)
   &&(!identityId||asset.identityId===identityId)&&(!assetId||asset.id===assetId)
   &&(!clan||normalizeRecentSpriteTextV85(asset.groupLabel)===clan||normalizeRecentSpriteTextV85(asset.groupId)===clan)
   &&(!person||normalizeRecentSpriteTextV85(asset.label)===person));
@@ -125,11 +139,15 @@ export function findImportedYautjaArtV85(query:ImportedYautjaArtQueryV85):Import
  * An adult, juvenile and a different costume stay separate source identities.
  * No combat collider, spawn, companion ability or animation is changed here. */
 const faunaNames:Readonly<Record<string,readonly string[]>>={
- kalisk:['kalisk adulte'],bud:['bud juvenile'], 'bone-bison':['bone bison'],vulture:['vulture volant'],
- 'luna-bug':['luna bug'], 'spray-snake':['spray snake'],'exploding-worm':['exploding worm'],squirt:['squirt'],
+ kalisk:['kalisk adulte'],bud:['bud juvenile'], 'bone-bison':['bone bison'],vulture:['vulture'],
+ 'luna-bug':['luna bug'], 'spray-snake':['spray snake'],'exploding-worm':['exploding worm','ver explosif'],squirt:['squirt'],
 };
 export function recentFaunaVariantsV85(speciesId:string):readonly RecentSpriteSourceV85[]{
  const names=faunaNames[speciesId];if(!names)return[];
  return RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.packId.startsWith('badlands')&&asset.kind==='fauna'
-  &&names.some(name=>normalizeRecentSpriteTextV85(asset.label).startsWith(name)));
+  &&(names.some(name=>normalizeRecentSpriteTextV85(asset.label).startsWith(name))
+   // V14 labels distinguish folded wings and frontal attack, while the
+   // source manifest names the same species exactly. Do not broaden other
+   // species: Kalisk adult and Bud juvenile still need their own age binding.
+   ||(speciesId==='vulture'&&normalizeRecentSpriteTextV85(asset.canonicalSubject??'')==='vulture')));
 }

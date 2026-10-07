@@ -96,7 +96,9 @@ test('V85 portrait matches cannot borrow a role from a clan label or assign a na
  assert.equal(library.findImportedYautjaArtV85({clanName:'Maisons du Givre',role:'soigneur'}),null,'absence retains the old portrait');
  const approved=library.RECENT_SPRITE_ASSETS_V85.filter(a=>a.packId==='approved-hunters');assert.equal(approved.length,7);assert.equal(new Set(approved.map(a=>a.identityId)).size,7);
  assert(approved.every(a=>a.motionStatus==='single-pose-static'&&a.canonicalFidelity==='not-certified-1-to-1'));
- const historical=library.RECENT_SPRITE_ASSETS_V85.find(a=>a.kind==='npc'&&!a.preferredVersion);assert(historical);
+ // This fixture checks a historical individual, not a composed rider. V87
+ // deliberately refuses mounted art even when historical access is explicit.
+ const historical=library.RECENT_SPRITE_ASSETS_V85.find(a=>a.kind==='npc'&&a.role==='gardes-royaux'&&!a.preferredVersion);assert(historical);
  assert.equal(library.findImportedYautjaArtV85({assetId:historical.id}),null);
  assert.equal(library.findImportedYautjaArtV85({assetId:historical.id,includeHistorical:true})?.assetId,historical.id);
  assert(library.importedYautjaArtVariantsV85({identityId:historical.identityId,includeHistorical:true}).every(a=>a.identityId===historical.identityId));

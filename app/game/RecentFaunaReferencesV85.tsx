@@ -39,7 +39,7 @@ function SpeciesSources({ label, sources }: { label: string; sources: readonly R
 /** These static references are separate from scans, spawns and recruitment. */
 export default function RecentFaunaReferencesV85() {
   return <details className={styles.references} data-recent-fauna-references-v85>
-    <summary>Badlands · nouvelles poses et corrections des packs V7 à V13</summary>
+    <summary>Badlands · nouvelles poses et corrections des packs V7 à V14</summary>
     <p>Les âges, états et poses restent des variantes distinctes. Consulter ces images ne recrute aucun compagnon et ne change ni les animations de marche ni les ennemis de la campagne.</p>
     <div className={styles.grid}>{SPECIES.map(species => <SpeciesSources key={species.id} label={species.label} sources={recentFaunaVariantsV85(species.id)} />)}</div>
   </details>;

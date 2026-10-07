@@ -1,0 +1,160 @@
+{
+  "version": "V87",
+  "summary": {
+    "nativeSourceRecords": 106,
+    "newDistinctPngFiles": 106,
+    "newDistinctPngBytes": 252209592,
+    "v65NativeRecords": 72,
+    "badlandsV14Records": 7,
+    "historicalReferencePngFiles": 27,
+    "historicalReferenceSourceEntries": 28,
+    "v69NativePixels": 0,
+    "sourceArchivesTransferred": 6
+  },
+  "sourceReceipts": [
+    {
+      "id": "1OnTyIl3gog3tvC2H0URFjFKJiIofkjAI",
+      "title": "YAUTJA_V65_A_MATRIARCHES_ET_CAVALIERS_10_GROUPES.zip",
+      "bytes": 101449970,
+      "sha256": "0ae72f543fc540fe1aaef22acef676ce5b409afbcfff067ce31b274d6427bbb2",
+      "transport": "authenticated-file-uri"
+    },
+    {
+      "id": "1J0I2wg_xH6L-q82WvBc0UIpbmxwlQKt6",
+      "title": "YAUTJA_V65_B_MATRIARCHES_ET_CAVALIERS_8_GROUPES.zip",
+      "bytes": 77027896,
+      "sha256": "a44e1d6702935b96214acd31c2aecfe3fbe5d4708443f177e8b926f990682a6e",
+      "transport": "authenticated-file-uri"
+    },
+    {
+      "id": "1WbaYR26vu42ZSlt_a3uos-SEytJcpO6T",
+      "title": "PREDATOR_BADLANDS_LOT14_7_AJOUTS.rar",
+      "bytes": 13979918,
+      "sha256": "b3f80a3ad46c172be9d0e6ea2739ade0aeb19e463da93649f0f4fba8d3712184",
+      "transport": "authenticated-file-uri"
+    },
+    {
+      "id": "13etiHpr4Q1ZbgWM9NswjhFvpq_QIC2TZ",
+      "title": "YAUTJA_LONGUE_CHASSE_IMAGES_CONVERSATION_COMPLET_2026-09-21.zip",
+      "bytes": 99997209,
+      "sha256": "9e19acefda71c5e980e6bb716094074c96368cfc814531371b5464c14515cb55",
+      "transport": "authenticated-file-uri"
+    },
+    {
+      "id": "17jzLP1WAc4IpbuB35lRmXucdAXMkpxs2",
+      "title": "YAUTJA_V65_FICHES_ET_REPRISE.zip",
+      "bytes": 8421844,
+      "sha256": "80ef4e63129128bbea592be7790d787600ea5c0d5d30a0c6c48ca5fd1509a81e",
+      "transport": "authenticated-file-uri"
+    },
+    {
+      "id": "1u6BGTya6-P_coCfXr5-xmjxK7B8jqMxA",
+      "title": "YAUTJA_V69_SUIVI_ET_FICHES_SANS_PNG.zip",
+      "bytes": 6980232,
+      "sha256": "b11c18900aac7ede22ff17e0972fc4eb0c3573709305b79f69ab45a4fa2a3530",
+      "transport": "authenticated-file-uri"
+    }
+  ],
+  "packs": [
+    {
+      "id": "matriarchs-riders-v65-a",
+      "label": "Matriarches et cavaliers · V6.5 A",
+      "version": "V6.5",
+      "priority": 65,
+      "archive": "YAUTJA_V65_A_MATRIARCHES_ET_CAVALIERS_10_GROUPES.zip",
+      "insideArchive": null,
+      "sha256": "0ae72f543fc540fe1aaef22acef676ce5b409afbcfff067ce31b274d6427bbb2",
+      "pngEntriesImported": 40,
+      "recordEntries": 40,
+      "status": "native-source-import-not-animation-or-canon-certification",
+      "driveId": "1OnTyIl3gog3tvC2H0URFjFKJiIofkjAI"
+    },
+    {
+      "id": "matriarchs-riders-v65-b",
+      "label": "Matriarches et cavaliers · V6.5 B",
+      "version": "V6.5",
+      "priority": 65,
+      "archive": "YAUTJA_V65_B_MATRIARCHES_ET_CAVALIERS_8_GROUPES.zip",
+      "insideArchive": null,
+      "sha256": "a44e1d6702935b96214acd31c2aecfe3fbe5d4708443f177e8b926f990682a6e",
+      "pngEntriesImported": 32,
+      "recordEntries": 32,
+      "status": "native-source-import-not-animation-or-canon-certification",
+      "driveId": "1J0I2wg_xH6L-q82WvBc0UIpbmxwlQKt6"
+    },
+    {
+      "id": "badlands-v14",
+      "label": "Badlands · ajouts V14",
+      "version": "V14",
+      "priority": 94,
+      "archive": "PREDATOR_BADLANDS_LOT14_7_AJOUTS.rar",
+      "insideArchive": null,
+      "sha256": "b3f80a3ad46c172be9d0e6ea2739ade0aeb19e463da93649f0f4fba8d3712184",
+      "pngEntriesImported": 7,
+      "recordEntries": 7,
+      "status": "native-source-import-not-animation-or-canon-certification",
+      "driveId": "1WbaYR26vu42ZSlt_a3uos-SEytJcpO6T"
+    },
+    {
+      "id": "historical-20260921",
+      "label": "Illustrations et sources historiques · 21 septembre",
+      "version": "2026-09-21",
+      "priority": 21,
+      "archive": "YAUTJA_LONGUE_CHASSE_IMAGES_CONVERSATION_COMPLET_2026-09-21.zip",
+      "insideArchive": null,
+      "sha256": "9e19acefda71c5e980e6bb716094074c96368cfc814531371b5464c14515cb55",
+      "pngEntriesImported": 27,
+      "recordEntries": 28,
+      "status": "source-illustrations-preserved-not-character-roster",
+      "driveId": "13etiHpr4Q1ZbgWM9NswjhFvpq_QIC2TZ"
+    }
+  ],
+  "sourceCorrectionNotes": [
+    {
+      "id": 4,
+      "note": "Les nº 160 et 161 ajoutent une posture posée reconstituée et une attaque quasi frontale complète. Les vols 4 et 25 restent disponibles ; aucun cycle aligné n’est fourni.",
+      "fields": {
+        "complement_pose_asset_id": 160,
+        "complement_attaque_asset_id": 161
+      }
+    },
+    {
+      "id": 25,
+      "note": "Les nouveaux états 160 et 161 complètent les usages du Vulture, sans remplacer ce vol ni partager un alignement intertrames validé.",
+      "fields": {
+        "complement_pose_asset_id": 160,
+        "complement_attaque_asset_id": 161
+      }
+    },
+    {
+      "id": 99,
+      "note": "Le nº 162 fournit la plante avec toutes les coupes vides pour un état de ressource absente. La disposition et les pivots doivent être harmonisés dans le jeu.",
+      "fields": {
+        "complement_vide_asset_id": 162
+      }
+    },
+    {
+      "id": 130,
+      "note": "Le nº 163 est un état après cueillette reconstitué à partir de cette plante. Il ne représente ni bouton fermé ni phase canonique de floraison.",
+      "fields": {
+        "complement_apres_cueillette_asset_id": 163
+      }
+    },
+    {
+      "id": 124,
+      "note": "Le nº 163 peut servir d’état du végétal après prélèvement de cette fleur dans les règles de récolte du jeu. Cette association ne certifie pas une séquence animée.",
+      "fields": {
+        "complement_plante_cueillie_asset_id": 163
+      }
+    },
+    {
+      "id": 40,
+      "note": "Le nº 166 isole l’ensemble de taille de Kwei : ceinture, tablier et pans rouges. Il complète le plastron 157 et les jambières 159, avec les attaches cachées reconstituées.",
+      "fields": {
+        "complement_ceinture_asset_id": 166
+      }
+    }
+  ],
+  "pixelsModified": false,
+  "archiveCodeExecuted": false
+}

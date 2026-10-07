@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ARMOR_BY_ID, GEAR_BY_ID, WEAPON_BY_ID } from "./data";
 import { shipForId, type ShipId } from "./shipCatalogue";
 import type { SaveGame } from "./types";
@@ -16,6 +16,7 @@ import {
 } from "./systems/shipOperationsV85";
 import styles from "./ShipOperationsPanelV85.module.css";
 import ShipManifestExerciseV85 from "./ShipManifestExerciseV85";
+import ShipFlightDrillV87, { type ShipFlightControlledV87 } from "./ShipFlightDrillV87";
 
 export interface ShipOperationPresentationV85 {
   manifest: ShipManifestV85;
@@ -23,6 +24,8 @@ export interface ShipOperationPresentationV85 {
   /** The mission/contract controller consumes the reservation after this callback. */
   onPrepared?: (departure: ShipCommittedDepartureV85) => void;
   returned?: { departure: ShipCommittedDepartureV85; receipt: ShipReturnReceiptV85 };
+  /** Optional durable controller. Its absence keeps V87 in free practice. */
+  flightV87?: ShipFlightControlledV87;
 }
 interface ShipOperationsPanelPropsV85 {
   save: SaveGame;
@@ -30,6 +33,7 @@ interface ShipOperationsPanelPropsV85 {
   operation?: ShipOperationPresentationV85;
   exerciseSourceUrl?: string;
   suspended?: boolean;
+  onFlightActiveChange?: (active: boolean) => void;
   onOpenMap: () => void;
   onOpenArmory: () => void;
   onOpenArchives: () => void;
@@ -39,9 +43,11 @@ interface ShipOperationsPanelPropsV85 {
 /** The real equipped kit and received trophies remain the preparation baseline.
  * New spatial contracts provide their own capacities, people and return receipts.
  */
-export default function ShipOperationsPanelV85({ save, shipId, operation, exerciseSourceUrl, suspended = false,
+export default function ShipOperationsPanelV85({ save, shipId, operation, exerciseSourceUrl, suspended = false, onFlightActiveChange,
   onOpenMap, onOpenArmory, onOpenArchives, onRoomChange }: ShipOperationsPanelPropsV85) {
   const [prospectiveStopId, setProspectiveStopId] = useState<string>(SHIP_SPATIAL_STOPS_V85[0].id);
+  const [flightActive, setFlightActive] = useState(false);
+  const flightChanged = useCallback((active: boolean) => { setFlightActive(active); onFlightActiveChange?.(active); }, [onFlightActiveChange]);
   const ship = shipForId(shipId);
   const stop = SHIP_SPATIAL_STOPS_V85.find(entry => entry.id === prospectiveStopId)!;
   const ownOperation = operation?.manifest.ownerSaveCreatedAt === save.createdAt && operation.context.ownerSaveCreatedAt === save.createdAt &&
@@ -51,13 +57,14 @@ export default function ShipOperationsPanelV85({ save, shipId, operation, exerci
   const returnRooms = returned ? shipReturnRoomsV85(returned.departure, returned.receipt) : null;
   const recentTrophies = [...save.trophies].sort((a, b) => b.claimedAt.localeCompare(a.claimedAt)).slice(0, 5);
   const prepared = () => {
-    if (!ownOperation?.onPrepared || suspended) return;
+    if (!ownOperation?.onPrepared || suspended || flightActive) return;
     const departure = commitShipDepartureV85(ownOperation.manifest, ownOperation.context);
     if (departure) ownOperation.onPrepared(departure);
   };
 
-  return <section className={styles.panel} aria-labelledby="ship-manifest-title" inert={suspended} data-ship-operations="v85">
+  return <section className={styles.panel} aria-labelledby="ship-manifest-title" data-ship-operations="v85">
     <header><p className="eyebrow">PRÉPARATION ET RETOUR</p><h3 id="ship-manifest-title">Manifeste du {ship.shortName}</h3></header>
+    <div inert={flightActive || suspended}>
     <div className={styles.columns}>
       <article><h4>Voyageur et kit actuel</h4><p><strong>{save.profile.hunterName}</strong> · chasseur</p>
         <ul><li>{ARMOR_BY_ID[save.loadout.armorId].name}</li>
@@ -89,5 +96,8 @@ export default function ShipOperationsPanelV85({ save, shipId, operation, exerci
       {recentTrophies.length > 0 && <ul>{recentTrophies.map(trophy => <li key={trophy.id}>{trophy.targetName} · prise rapportée le {new Date(trophy.claimedAt).toLocaleDateString("fr-FR", { timeZone: "UTC" })}</li>)}</ul>}
     </article>
     <ShipManifestExerciseV85 shipId={shipId} hunterName={save.profile.hunterName} sourceUrl={exerciseSourceUrl} />
+    </div>
+    <ShipFlightDrillV87 key={`${save.createdAt}:${shipId}:${ownOperation?.flightV87?.state.operationId ?? "practice"}`}
+      ownerSaveCreatedAt={save.createdAt} shipId={shipId} suspended={suspended} controlled={ownOperation?.flightV87} onActiveChange={flightChanged} />
   </section>;
 }

@@ -10,6 +10,12 @@ import styles from './RecentSpriteLibraryV85.module.css';
 const PAGE_SIZE=18;
 function SourceImageV85({asset,thumbnail=false}:{asset:RecentSpriteSourceV85;thumbnail?:boolean}){
  const[status,setStatus]=useState<'loading'|'ready'|'error'>('loading');
+ // Very tall source sheets can exceed 50 million pixels. Keep their native
+ // bytes accessible without decoding several of them just by opening a page.
+ const largeReference=asset.kind==='reference'&&asset.width*asset.height>12_000_000;
+ const[requested,setRequested]=useState(!largeReference);
+ if(largeReference&&thumbnail)return<div className={styles.thumbnail}><p className={styles.imageStatus}>Planche originale<br/>{asset.width} × {asset.height}</p></div>;
+ if(!requested)return<div className={styles.imageSurface}><p className={styles.imageStatus}>Source entière de grand format ({asset.width} × {asset.height}). Elle est conservée sans découpage. Son chargement peut demander beaucoup de mémoire.</p><button type="button" onClick={()=>setRequested(true)}>Afficher cette source grand format</button></div>;
  return<div className={thumbnail?styles.thumbnail:styles.imageSurface} data-source-status-v85={status}>
   <img src={asset.src} alt={thumbnail?'':asset.label} width={asset.width||1024} height={asset.height||1536}
    loading={thumbnail?'lazy':'eager'} decoding="async" hidden={status==='error'} onLoad={()=>setStatus('ready')} onError={()=>setStatus('error')}/>
@@ -41,7 +47,7 @@ export default function RecentSpriteLibraryV85({onClose}:{onClose:()=>void}){
  return<div className={styles.overlay}><section ref={panel} className={styles.library} role="dialog" aria-modal="true" aria-labelledby={titleId} data-recent-sprite-library-v85="true">
   <header className={styles.header}><div><p className={styles.eyebrow}>SOURCES FOURNIES · OCTOBRE 2026</p><h2 id={titleId}>Personnages, faune et matériaux</h2></div><button ref={closeButton} type="button" onClick={onClose} aria-label="Fermer la bibliothèque">Fermer</button></header>
   <p>Consultez les variantes documentées par clan, lignée et fonction. Les images sont présentées dans leur orientation d’origine ; les poses fixes et les versions antérieures gardent leur fiche source.</p>
-  <p className={styles.notice}>{RECENT_SPRITE_LIBRARY_V85.summary.uniquePngFiles.toLocaleString('fr')} PNG uniques issus des archives locales, avec les fichiers Drive récents et {RECENT_SPRITE_LIBRARY_V85.nativeGarrisonFilesV86} nouveaux individus de garnison V6.8. Les reconstitutions Hunting Grounds conservent leur statut de matériau ; les sources provisoires restent identifiées dans l’historique.</p>
+  <p className={styles.notice}>{RECENT_SPRITE_LIBRARY_V85.uniqueReferencedHashes.toLocaleString('fr')} empreintes natives distinctes référencées, dont {RECENT_SPRITE_LIBRARY_V85.nativeRecoveredFilesV87} PNG récupérés en V87 et les {RECENT_SPRITE_LIBRARY_V85.nativeGarrisonFilesV86} individus de garnison V6.8. Les poses fixes, cavaliers assemblés, illustrations et reconstitutions restent identifiés comme tels ; aucune nouvelle animation n’est déduite d’un PNG.</p>
   <div className={styles.filters}>
    <label>Rechercher<input type="search" value={query} maxLength={120} placeholder="Clan, rôle, Kalisk, texture…" onChange={event=>{setQuery(event.target.value);resetPage();}}/></label>
    <label>Famille<select value={kind} onChange={event=>{setKind(event.target.value);resetPage();}}><option value="">Toutes les familles</option>{RECENT_SPRITE_KINDS_V85.map(item=><option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
