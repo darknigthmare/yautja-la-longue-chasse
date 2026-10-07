@@ -7,6 +7,7 @@ import { BIBLE_SOURCE_SHA_V85 as SOURCE_SHA, readBibleDocumentV85 as readDocumen
 import styles from "./DialogueBibleReaderV85.module.css";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { createBibleLoadGateV85, fetchBibleDocumentsV85 } from "./systems/bibleResourceV85";
+import { readBibleVoiceProfilesV88, resolveBibleVoiceProfileV88, type BibleVoiceProfileV88 } from "./systems/bibleVoiceProfilesV88";
 
 /** These same-origin endpoints may be supplied only after distribution approval. */
 export interface DialogueBibleSourceV85 {
@@ -55,9 +56,36 @@ function RelatedRecords({ title, table, records }: { title: string; table: Bible
     </article>)}</section>;
 }
 
-function SceneRehearsal({ scene, replies, choices, variants, tables, suspended }: {
+/** A name shared by several source profiles never selects the first row.
+ * This block exposes every candidate and its limits without producing audio. */
+export function BibleVoiceDirectionsV88({ speaker, profiles }: { speaker: string; profiles: readonly BibleVoiceProfileV88[] }) {
+  const resolution = resolveBibleVoiceProfileV88(speaker, profiles);
+  return <section className={styles.related} aria-label={`Profils de voix documentaires pour ${speaker}`} data-bible-voice-resolution={resolution.kind}>
+    <h5>{resolution.kind === "ambiguous" ? `Attribution documentaire à préciser · ${resolution.candidates.length} profils candidats` : "Direction de voix textuelle"}</h5>
+    <p role="status">{resolution.kind === "ambiguous" ? "Ce nom appartient à plusieurs fiches. Aucun profil n’est attribué automatiquement : l’identité et le contexte de cette scène restent à établir." :
+      resolution.kind === "missing" ? "Aucun profil documentaire identifié pour ce locuteur. Aucun autre personnage ne lui prête sa direction de voix." :
+      resolution.kind === "identity" ? "L’identifiant du profil figure explicitement dans la cellule du locuteur." :
+      "Un seul profil porte ce nom exact dans le corpus chargé. Cette liaison est documentaire."}</p>
+    {resolution.candidates.map(profile => <article key={`${profile.id}:${profile.source.row}`} data-voice-profile-id={profile.id}>
+      <h6>{profile.id} · {profile.name}</h6>
+      <p className={styles.sourceLine}>Source : {profile.source.sheet}!{profile.source.range} · contexte C{profile.source.row}</p>
+      <dl className={styles.fields}>
+        <div><dt>Rôle et contexte · C{profile.source.row}</dt><dd>{profile.context || "Non indiqué dans la fiche."}</dd></div>
+        <div><dt>Direction textuelle · D{profile.source.row}</dt><dd>{profile.direction || "Non indiquée dans la fiche."}</dd></div>
+        <div><dt>Vocabulaire · E{profile.source.row}</dt><dd>{profile.vocabulary || "Non indiqué dans la fiche."}</dd></div>
+        <div><dt>Gestes · F{profile.source.row}</dt><dd>{profile.gestures || "Non indiqués dans la fiche."}</dd></div>
+        <div><dt>Connaissances permises · G{profile.source.row}</dt><dd>{profile.knowledge || "Non indiquées dans la fiche."}</dd></div>
+        <div><dt>Limites · H{profile.source.row}</dt><dd>{profile.limits || "Non indiquées dans la fiche."}</dd></div>
+        <div><dt>Provenance · I{profile.source.row}</dt><dd>{profile.provenance || "Non indiquée dans la fiche."}</dd></div>
+      </dl>
+    </article>)}
+    <p className={styles.rehearsalFootnote}>Fiches d’interprétation uniquement. Aucun enregistrement, TTS ou attribution de voix canonique.</p>
+  </section>;
+}
+
+function SceneRehearsal({ scene, replies, choices, variants, tables, voiceProfiles, suspended }: {
   scene: BibleRecord; replies: BibleRecord[]; choices: BibleRecord[]; variants: BibleRecord[];
-  tables: Map<string, BibleTable>; suspended: boolean;
+  tables: Map<string, BibleTable>; voiceProfiles: readonly BibleVoiceProfileV88[]; suspended: boolean;
 }) {
   const [started, setStarted] = useState(false);
   const [position, setPosition] = useState(0);
@@ -68,8 +96,6 @@ function SceneRehearsal({ scene, replies, choices, variants, tables, suspended }
   const finished = started && position >= sequence.length;
   const line = sequence[position];
   const speaker = line ? cellText(line, "F") : "";
-  // Exact source name only: do not infer a voice from rank, silhouette or role.
-  const voice = tables.get("Voix V6")?.records.find(entry => cellText(entry, "B") === speaker);
   return <section className={styles.rehearsal} aria-label={`Répétition documentaire de ${scene.id}`}>
     <header><p className="eyebrow">APERÇU DE SCÉNARIO · TEXTE ET GESTES</p><h4>Répétition dans les archives</h4></header>
     <p className={styles.rehearsalNotice}>Aucune lecture automatique ou voix enregistrée. Les répliques suivent l’ordre du classeur ; branches, phases et conditions sont présentées pour consultation, sans exécuter leurs événements. Cet aperçu ne signifie pas que la scène est implantée dans la campagne.</p>
@@ -81,8 +107,8 @@ function SceneRehearsal({ scene, replies, choices, variants, tables, suspended }
         <div className={styles.spokenText}><YautjaTranslationV67 key={line.id} text={cellText(line, "G")} paused={paused || suspended} showSkip /></div>
         <dl className={styles.rehearsalDirections}><div><dt>Geste / intention de jeu · cellule H{line.row}</dt><dd>{cellText(line, "H") || "Aucune indication dans cette cellule."}</dd></div>
           <div><dt>Condition de cette réplique · cellule I{line.row}</dt><dd>{cellText(line, "I") || "Aucune condition dans cette cellule."}</dd></div>
-          {cellText(line, "D") && <div><dt>Choix lié dans la source</dt><dd>{cellText(line, "D")}</dd></div>}
-          {voice && <div><dt>Direction de voix textuelle · {voice.id}</dt><dd>{cellText(voice, "D")}</dd></div>}</dl>
+          {cellText(line, "D") && <div><dt>Choix lié dans la source</dt><dd>{cellText(line, "D")}</dd></div>}</dl>
+        <BibleVoiceDirectionsV88 speaker={speaker} profiles={voiceProfiles} />
       </article>}
       <div className={styles.rehearsalControls} role="group" aria-label="Commandes de répétition">
         <button type="button" disabled={position === 0} onClick={() => setPosition(current => Math.max(0, current - 1))}>Précédent</button>
@@ -131,6 +157,13 @@ export default function DialogueBibleReaderV85({ source, suspended = false, onAc
     const byName = new Map<string, BibleTable>();
     for (const document of documents) for (const sheet of document.sheets) byName.set(sheet.name, makeTable(sheet));
     return byName;
+  }, [documents]);
+  const voiceProfiles = useMemo(() => {
+    // Match the existing table policy: a later explicitly imported sheet replaces
+    // the earlier sheet, rather than mixing two corpora or silently using first.
+    let sheet: BibleSheet | undefined;
+    for (const document of documents) for (const candidate of document.sheets) if (candidate.name === "Voix V6") sheet = candidate;
+    return readBibleVoiceProfilesV88(sheet);
   }, [documents]);
   const table = tables.get(sheetName) ?? tables.get(SCENES) ?? tables.values().next().value as BibleTable | undefined;
   const domains = useMemo(() => [...new Set((tables.get(SCENES)?.records ?? []).map(entry => cellText(entry, "C")).filter(Boolean))], [tables]);
@@ -221,7 +254,7 @@ export default function DialogueBibleReaderV85({ source, suspended = false, onAc
           {visible.map(entry => <button className={styles.recordButton} key={`${entry.id}-${entry.row}`} type="button" aria-pressed={selected?.row === entry.row} onClick={() => setSelectedId(entry.id)}><strong>{entry.id}</strong><span>{cellText(entry, "B") || `Ligne ${entry.row}`}</span>{table.name === SCENES && <small>{cellText(entry, "C")}</small>}</button>)}
         </aside><article className={styles.detail}>
           {selected ? <><h4>{selected.id} · {cellText(selected, "B")}</h4><p className={styles.sourceLine}>{table.name} · ligne source {selected.row}</p><Fields table={table} entry={selected} />
-            {links && <><SceneRehearsal key={selected.id} scene={selected} replies={links.replies} choices={links.choices} variants={links.variants} tables={tables} suspended={suspended || !opened} />
+            {links && <><SceneRehearsal key={selected.id} scene={selected} replies={links.replies} choices={links.choices} variants={links.variants} tables={tables} voiceProfiles={voiceProfiles} suspended={suspended || !opened} />
               <details className={styles.completeScene}><summary>Consulter toutes les lignes source de cette scène</summary><RelatedRecords title="Répliques et phases" table={tables.get(REPLIES)} records={links.replies} /><RelatedRecords title="Choix, actions et conditions" table={tables.get(CHOICES)} records={links.choices} /><RelatedRecords title="Variantes conditionnelles" table={tables.get(VARIANTS)} records={links.variants} /></details></>}
           </> : <p>Aucune cellule ne correspond à cette recherche.</p>}
         </article></div>

@@ -5,13 +5,14 @@ import {
 } from "./clanWarBibleV6";
 
 export interface WarWorkDefinitionV6 {
-  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair" | "extraction";
+  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair" | "extraction" | "relay" | "hoist";
   costRav: number; upkeepRav: number; delayTurns: number; operatorUnitId: string;
   effect: string; limit: string; deployment: string; defensePercent: number;
   sourceRow: number; sourceCells: string[]; capacityRav: number;
 }
-const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair", "W3-S16": "extraction" } as const;
-const legacyWorksAvailable = (definitions: WarWorkDefinitionV6[]) => ["W3-S02", "W3-S05", "W3-S07", "W3-S03", "W3-S04"].every(id => definitions.some(definition => definition.id === id));
+const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair", "W3-S16": "extraction", "W3-S12": "relay", "W3-S17": "hoist" } as const;
+const legacyWorkIds = ["W3-S02", "W3-S05", "W3-S07", "W3-S03", "W3-S04"];
+const legacyWorksAvailable = (definitions: WarWorkDefinitionV6[]) => legacyWorkIds.every(id => definitions.some(definition => definition.id === id));
 
 /** Source cells remain data. Missing or malformed construction rows never get
  * substitute prices, operators or effects from the historical V3 rules. */
@@ -28,7 +29,10 @@ export function warWorksDefinitionsV6(rules: WarRulesV6 = DEFAULT_WAR_RULES_V6):
       || typeof operatorUnitId !== "string" || !rules.units.some(unit => unit.id === operatorUnitId)
       || typeof effect !== "string" || typeof limit !== "string" || typeof deployment !== "string"
       || (kind === "defense" && !effect.includes("quinze pour cent"))
-      || (kind === "stock" && !effect.includes("vingt RAV identifiées"))) return [];
+      || (kind === "stock" && !effect.includes("vingt RAV identifiées"))
+      || (kind === "relay" && (operatorUnitId !== "W3-U28" || !effect.includes("Relie deux secteurs") || !limit.includes("Relief et sabotage")))
+      || (kind === "hoist" && (operatorUnitId !== "W3-U20" || rules.units.find(unit => unit.id === operatorUnitId)?.fullMembers !== 2
+        || !effect.includes("entre deux plans") || !limit.includes("Deux opérateurs présents")))) return [];
     return [{ id, name: String(row.title), kind, costRav, upkeepRav, delayTurns, operatorUnitId, effect, limit, deployment,
       // W3-S07 expresses its 15% in prose, not in an additional numeric cell.
       defensePercent: kind === "defense" ? 15 : 0, capacityRav: kind === "stock" ? 20 : 0,
@@ -69,6 +73,16 @@ export interface WarExtractionV88 {
   version: 1; rulesKey: string; patients: WarPatientV88[];
   guards: { teamId: string; passageId: string; territoryId: string }[];
 }
+export interface WarInfrastructureV88 {
+  version: 1; rulesKey: string;
+  traversals: { teamId: string; passageId: string; fromId: string; toId: string; turn: number }[];
+  groundKits: { workId: string; territoryId: string;
+    placement: { kind: "drop"; teamId: string; turn: number } | { kind: "lift"; liftId: string } }[];
+  lifts: { id: string; hoistWorkId: string; kitWorkId: string; passageId: string; fromId: string; toId: string;
+    turn: number; operatorTeamId: string; memberIds: string[] }[];
+  relayReceipts: { id: string; relayWorkId: string; senderTeamId: string; recipientTeamId: string; passageId: string;
+    fromId: string; toId: string; turn: number; observations: { territoryId: string; teamId: string; turn: number }[] }[];
+}
 export interface WarWorksSessionV6 {
   version: 2; context: "free-workshop"; rulesKey: string; sourceSha: string;
   supplyMode: "front" | "local"; lots: WarRavLotV87[]; transfers: WarRavTransferV87[];
@@ -81,6 +95,8 @@ export interface WarWorksSessionV6 {
   reports: { turn: number; text: string; sourceIds: string[] }[];
   /** Optional explicit exercise extension. Old V87 checkpoints have none and are not rewritten. */
   extraction?: WarExtractionV88;
+  /** Explicit relay/hoist exercise. Absent in the six-work checkpoints and never inferred on import. */
+  infrastructure?: WarInfrastructureV88;
 }
 export type WarWorksActionV6 =
   | { kind: "recruit"; unitId: string }
@@ -101,7 +117,10 @@ export type WarWorksActionV6 =
   | { kind: "guard-route"; teamId: string; passageId: string }
   | { kind: "load-patient"; teamId: string; memberId: string; carrierId: string }
   | { kind: "put-down-patient"; teamId: string; memberId: string }
-  | { kind: "return-patient"; teamId: string; memberId: string; workId: string };
+  | { kind: "return-patient"; teamId: string; memberId: string; workId: string }
+  | { kind: "put-down-kit"; teamId: string; workId: string }
+  | { kind: "lift-kit"; teamId: string; workId: string; kitWorkId: string }
+  | { kind: "relay-intel"; teamId: string; workId: string; recipientTeamId: string };
 export interface WarWorksTransitionV6 { state: WarWorksSessionV6; accepted: boolean; changed: boolean; message: string }
 const unitFor = (rules: WarRulesV6, id: string) => rules.units.find(unit => unit.id === id);
 const fitMembers = (group: WarWorksTeamV6) => group.team.members.filter(member => member.status === "fit" && member.assignmentId === group.team.id);
@@ -118,6 +137,31 @@ export const warWorksGuardV88 = (state: WarWorksSessionV6, teamId: string) => st
 const extractionRulesKey = (rules: WarRulesV6) => JSON.stringify({ sha: rules.metadata.sha256,
   entries: ["W3-S16", "W3-U17", "W3-U07", "W3-S11", "W3-U18", "W3-R15", "W3-R20", "W3-OBJ04"].map(id => rules.entries.find(entry => entry.id === id)) });
 const withExtraction = (state: WarWorksSessionV6, rules: WarRulesV6) => state.extraction ?? { version: 1 as const, rulesKey: extractionRulesKey(rules), patients: [], guards: [] };
+const infrastructureRulesKey = (rules: WarRulesV6) => JSON.stringify({ sha: rules.metadata.sha256,
+  entries: ["W3-S12", "W3-S17", "W3-U28", "W3-U20", "W3-R05", "W3-R09", "W3-R19"].map(id => rules.entries.find(entry => entry.id === id)) });
+const withInfrastructure = (state: WarWorksSessionV6, rules: WarRulesV6): WarInfrastructureV88 => state.infrastructure ?? {
+  version: 1, rulesKey: infrastructureRulesKey(rules), traversals: [], groundKits: [], lifts: [], relayReceipts: [],
+};
+export const warKitSiteV88 = (state: WarWorksSessionV6, work: WarWorkOrderV6) => work.phase === "reserved"
+  ? state.infrastructure?.groundKits.find(item => item.workId === work.id)?.territoryId ?? state.originId
+  : work.phase === "carried" ? state.teams.find(group => group.team.id === work.carrierTeamId)?.territoryId ?? null : work.territoryId;
+const linkWork = (definition: WarWorkDefinitionV6) => ["defense", "relay", "hoist"].includes(definition.kind);
+const passageDirection = (passage: WarRulesV6["passages"][number], fromId: string, toId: string) =>
+  (passage.fromId === fromId && passage.toId === toId) || (passage.bidirectional && passage.toId === fromId && passage.fromId === toId);
+const oppositeSite = (passage: WarRulesV6["passages"][number], site: string) => passage.fromId === site ? passage.toId : passage.toId === site ? passage.fromId : null;
+const reliefPassage = (passage: WarRulesV6["passages"][number], rules: WarRulesV6) =>
+  rules.entries.find(entry => entry.sheet === "Passages de Korthas" && entry.id === passage.id)?.fields.find(field => field.column === "E")?.value === "Liaison de relief";
+/** Powered operation requires enough existing local lots for this site's teams
+ * and commissioned structures. The normal turn debits them once, not here. */
+function suppliedInfrastructureSite(state: WarWorksSessionV6, territoryId: string, rules: WarRulesV6) {
+  const stock = state.lots.filter(lot => lot.location === "depot" ? territoryId === state.originId
+    : lot.location === "cache" && state.works.some(work => work.id === lot.workId && work.phase === "ready" && work.territoryId === territoryId)).reduce((sum, lot) => sum + lot.rav, 0);
+  const teamsNeed = state.teams.filter(group => group.territoryId === territoryId).reduce((sum, group) =>
+    sum + Math.max(0, (unitFor(rules, group.team.unitId)?.upkeepRav ?? 0) - warWorksCarriedRavV87(state, group.team.id)), 0);
+  const worksNeed = state.works.filter(work => work.phase === "ready" && work.territoryId === territoryId).reduce((sum, work) =>
+    sum + (warWorksDefinitionsV6(rules).find(def => def.id === work.structureId)?.upkeepRav ?? 0), 0);
+  return state.supplyMode === "local" && stock >= teamsNeed + worksNeed;
+}
 export function warExtractionAvailableV88(rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) {
   const cell = (id: string, column: string) => rules.entries.find(entry => entry.id === id)?.fields.find(field => field.column === column)?.value;
   return warWorksDefinitionsV6(rules).some(def => def.id === "W3-S16" && def.operatorUnitId === "W3-U17")
@@ -182,8 +226,8 @@ export function warWorksSupplyPreviewV87(state: WarWorksSessionV6, rules: WarRul
 }
 const contextKey = (rules: WarRulesV6, definitions = warWorksDefinitionsV6(rules)) => JSON.stringify({ sha: rules.metadata.sha256,
   parameters: rules.parameters, units: rules.units, territories: rules.territories, passages: rules.passages,
-  // Preserve the exact published V87 key. S16 and patient/escort data bind separately below.
-  definitions: definitions.filter(definition => definition.id !== "W3-S16") });
+  // Preserve the exact published V87 key; all additional effects bind in optional extensions.
+  definitions: definitions.filter(definition => legacyWorkIds.includes(definition.id)) });
 export const warWorksCommandPointsV6 = (state: WarWorksSessionV6, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) =>
   state.teams.reduce((total, group) => total + (unitFor(rules, group.team.unitId)?.commandPoints ?? 0), 0)
   + state.recruits.filter(order => order.status === "pending").reduce((total, order) => total + (unitFor(rules, order.unitId)?.commandPoints ?? 0), 0);
@@ -210,7 +254,7 @@ export function createWarWorksV6(startingRav = 80, startingUnitId = "W3-U17", ru
 
 function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: WarWorkDefinitionV6[]): boolean {
   try {
-    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports", "extraction"];
+    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports", "extraction", "infrastructure"];
     if (!state || Object.keys(state).some(key => !fields.includes(key))) return false;
     if (state.version !== 2 || state.context !== "free-workshop" || state.sourceSha !== rules.metadata.sha256 || state.rulesKey !== contextKey(rules, definitions)
       || !["front", "local"].includes(state.supplyMode) || !legacyWorksAvailable(definitions) || !Number.isSafeInteger(state.turn) || state.turn < 1 || state.turn >= 10000
@@ -261,11 +305,76 @@ function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: 
         || !["reserved", "carried", "delivered", "building", "ready"].includes(work.phase)
         || (work.phase === "ready") !== (work.workedTurns === def.delayTurns)) return false;
       ids.add(work.id); ids.add(work.kitId); locations.add(key);
-      if (def.kind === "defense" ? !rules.passages.some(passage => passage.id === work.passageId && [passage.fromId, passage.toId].includes(work.territoryId)) : work.passageId !== null) return false;
+      if (linkWork(def) ? !rules.passages.some(passage => passage.id === work.passageId && [passage.fromId, passage.toId].includes(work.territoryId)
+        && (def.kind !== "hoist" || reliefPassage(passage, rules))) : work.passageId !== null) return false;
       if (work.phase === "carried" ? !state.teams.some(group => group.team.id === work.carrierTeamId && group.payloadWorkId === work.id) : work.carrierTeamId !== null) return false;
       if (work.operatorTeamId && !state.teams.some(group => group.team.id === work.operatorTeamId && group.dutyWorkId === work.id
         && group.territoryId === work.territoryId && group.team.unitId === def.operatorUnitId)) return false;
       if (def.kind === "extraction" && !state.extraction) return false;
+      if (["relay", "hoist"].includes(def.kind) && !state.infrastructure) return false;
+    }
+    if (state.infrastructure !== undefined) {
+      const extension = state.infrastructure;
+      if (!extension || Object.keys(extension).some(key => !["version", "rulesKey", "traversals", "groundKits", "lifts", "relayReceipts"].includes(key))
+        || extension.version !== 1 || extension.rulesKey !== infrastructureRulesKey(rules)
+        || !definitions.some(def => ["relay", "hoist"].includes(def.kind))
+        || [extension.traversals, extension.groundKits, extension.lifts, extension.relayReceipts].some(list => !Array.isArray(list) || list.length > 10000)
+        || new Set(extension.groundKits.map(item => item.workId)).size !== extension.groundKits.length) return false;
+      let previousTurn = 1;
+      const lastSites = new Map<string, string>();
+      for (const step of extension.traversals) {
+        const passage = rules.passages.find(item => item.id === step.passageId), group = state.teams.find(item => item.team.id === step.teamId);
+        if (Object.keys(step).some(key => !["teamId", "passageId", "fromId", "toId", "turn"].includes(key)) || !passage || !group
+          || !passageDirection(passage, step.fromId, step.toId) || !Number.isSafeInteger(step.turn) || step.turn < previousTurn || step.turn > state.turn
+          || (lastSites.has(step.teamId) && lastSites.get(step.teamId) !== step.fromId)
+          || passage.capacityPc < (unitFor(rules, group.team.unitId)?.commandPoints ?? Infinity)) return false;
+        previousTurn = step.turn;
+        lastSites.set(step.teamId, step.toId);
+      }
+      if ([...lastSites].some(([teamId, territoryId]) => state.teams.find(group => group.team.id === teamId)?.territoryId !== territoryId)) return false;
+      for (const item of extension.groundKits) {
+        const kit = state.works.find(work => work.id === item.workId);
+        if (Object.keys(item).some(key => !["workId", "territoryId", "placement"].includes(key)) || !kit || kit.phase !== "reserved" || kit.workedTurns !== 0
+          || kit.operatorTeamId !== null || !rules.territories.some(zone => zone.id === item.territoryId) || !item.placement) return false;
+        if (item.placement.kind === "lift") {
+          const placement = item.placement, lift = extension.lifts.find(lift => lift.id === placement.liftId);
+          if (Object.keys(placement).some(key => !["kind", "liftId"].includes(key)) || !lift || lift.kitWorkId !== item.workId || lift.toId !== item.territoryId) return false;
+        } else if (item.placement.kind === "drop") {
+          const placement = item.placement, carrier = state.teams.find(group => group.team.id === placement.teamId);
+          const route = extension.traversals.filter(step => step.teamId === placement.teamId), before = route.filter(step => step.turn <= placement.turn).at(-1);
+          const site = before?.toId ?? route[0]?.fromId ?? carrier?.territoryId;
+          if (Object.keys(placement).some(key => !["kind", "teamId", "turn"].includes(key)) || !carrier || site !== item.territoryId
+            || !Number.isSafeInteger(placement.turn) || placement.turn < 1 || placement.turn > state.turn) return false;
+        } else return false;
+      }
+      for (const movement of extension.lifts) {
+        const work = state.works.find(item => item.id === movement.hoistWorkId), kit = state.works.find(item => item.id === movement.kitWorkId);
+        const passage = rules.passages.find(item => item.id === movement.passageId), group = state.teams.find(item => item.team.id === movement.operatorTeamId);
+        if (Object.keys(movement).some(key => !["id", "hoistWorkId", "kitWorkId", "passageId", "fromId", "toId", "turn", "operatorTeamId", "memberIds"].includes(key))
+          || typeof movement.id !== "string" || !/^infrastructure:\d+$/.test(movement.id) || Number(movement.id.slice(15)) < 2 || Number(movement.id.slice(15)) >= state.nextIdentity || ids.has(movement.id)
+          || !work || work.structureId !== "W3-S17" || work.phase !== "ready" || !kit || kit.id === work.id || !passage || work.passageId !== passage.id
+          || !reliefPassage(passage, rules) || !passage.permitsRav || movement.fromId !== work.territoryId || !passageDirection(passage, movement.fromId, movement.toId)
+          || !group || group.team.unitId !== "W3-U20" || !Array.isArray(movement.memberIds) || movement.memberIds.length !== 2
+          || new Set(movement.memberIds).size !== 2 || movement.memberIds.some(id => !group.team.members.some(member => member.id === id))
+          || !Number.isSafeInteger(movement.turn) || movement.turn < 1 || movement.turn > state.turn) return false;
+        ids.add(movement.id);
+      }
+      for (const receipt of extension.relayReceipts) {
+        const work = state.works.find(item => item.id === receipt.relayWorkId), sender = state.teams.find(item => item.team.id === receipt.senderTeamId);
+        const recipient = state.teams.find(item => item.team.id === receipt.recipientTeamId), passage = rules.passages.find(item => item.id === receipt.passageId);
+        if (Object.keys(receipt).some(key => !["id", "relayWorkId", "senderTeamId", "recipientTeamId", "passageId", "fromId", "toId", "turn", "observations"].includes(key))
+          || typeof receipt.id !== "string" || !/^infrastructure:\d+$/.test(receipt.id) || Number(receipt.id.slice(15)) < 2 || Number(receipt.id.slice(15)) >= state.nextIdentity || ids.has(receipt.id)
+          || !work || work.structureId !== "W3-S12" || work.phase !== "ready" || !sender || sender.team.unitId !== "W3-U28" || !recipient || sender === recipient
+          || !passage || work.passageId !== passage.id || receipt.fromId !== work.territoryId || !passageDirection(passage, receipt.fromId, receipt.toId)
+          || !Number.isSafeInteger(receipt.turn) || receipt.turn < 1 || receipt.turn > state.turn
+          || !extension.traversals.some(step => step.teamId === sender.team.id && step.passageId === passage.id && step.toId === receipt.toId && step.turn <= receipt.turn)
+          || !extension.traversals.some(step => step.teamId === sender.team.id && step.passageId === passage.id && step.toId === receipt.fromId && step.turn <= receipt.turn)
+          || !Array.isArray(receipt.observations) || receipt.observations.length < 1 || receipt.observations.length > rules.territories.length
+          || new Set(receipt.observations.map(item => item.territoryId)).size !== receipt.observations.length
+          || receipt.observations.some(item => Object.keys(item).some(key => !["territoryId", "teamId", "turn"].includes(key))
+            || item.teamId !== sender.team.id || item.turn > receipt.turn || !state.observed.some(observed => observed.territoryId === item.territoryId && observed.teamId === item.teamId && observed.turn === item.turn))) return false;
+        ids.add(receipt.id);
+      }
     }
     if (state.extraction !== undefined) {
       const extraction = state.extraction;
@@ -419,13 +528,18 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     const def = definitions.find(item => item.id === action.structureId), zone = rules.territories.find(item => item.id === action.territoryId);
     if (!def || !zone || !state.observed.some(item => item.territoryId === zone.id)) return deny("Reconnaissez réellement le site avant de préparer un ouvrage.");
     if (def.kind === "extraction" && (state.supplyMode !== "local" || !warExtractionAvailableV88(rules))) return deny("S16 demande les stocks locaux et ses préconditions sources attestées ; aucun dépôt fictif.");
-    const passageId = def.kind === "defense" ? action.passageId ?? null : null;
-    if (def.kind === "defense" && !rules.passages.some(passage => passage.id === passageId && [passage.fromId, passage.toId].includes(zone.id))) return deny("Le seuil doit protéger un passage documenté adjacent au site.");
+    if (["relay", "hoist"].includes(def.kind) && state.supplyMode !== "local") return deny("Relais et treuil demandent un exercice en stocks locaux ; aucune alimentation distante fictive.");
+    const passageId = linkWork(def) ? action.passageId ?? null : null;
+    const passage = rules.passages.find(item => item.id === passageId && [item.fromId, item.toId].includes(zone.id));
+    if (linkWork(def) && !passage) return deny("L’ouvrage doit cibler un passage documenté adjacent au site.");
+    if (def.kind === "hoist" && (!passage || !reliefPassage(passage, rules) || !passage.permitsRav
+      || !state.observed.some(item => item.territoryId === oppositeSite(passage, zone.id)))) return deny("Le treuil exige une liaison de relief compatible RAV et ses deux extrémités réellement reconnues.");
     if (state.works.some(work => work.structureId === def.id && work.territoryId === zone.id && work.passageId === passageId)) return unchanged("Cet ouvrage et son kit existent déjà ; aucun second débit.");
     if (warWorksDepotV87(state) < def.costRav) return deny("Le kit manque de moyens au dépôt ; les réserves distantes ne sont pas téléportées.");
     const id = `v6-works-order-${state.nextIdentity}`;
     const paid = transferRav(state, depotLotId, null, def.costRav, "kit");
     return report({ ...paid, nextIdentity: paid.nextIdentity + 1, ...(def.kind === "extraction" ? { extraction: withExtraction(paid, rules) } : {}),
+      ...(["relay", "hoist"].includes(def.kind) ? { infrastructure: withInfrastructure(paid, rules) } : {}),
       works: [...state.works, { id, kitId: `kit:${id}`, structureId: def.id, territoryId: zone.id, passageId, phase: "reserved", costRav: def.costRav,
         workedTurns: 0, carrierTeamId: null, operatorTeamId: null }] },
     `Kit ${id} réservé au départ : ${def.costRav} RAV. Il n’est ni arrivé à ${zone.id}, ni installé.`, [def.id, "W3-R19", "W3-OBJ05", "W3-OBJ07"]);
@@ -541,7 +655,9 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     const guard = patientCarried ? passageGuard(state, passage.id, rules) : null;
     if (patientCarried && !guard) return deny("Le prochain passage n’a plus de garde présente : patient, porteur et stocks restent à leur vraie position. Aucun tour consommé.");
     const remaining = route.passageIds.length > 1 ? { passageIds: route.passageIds.slice(1), territoryIds: route.territoryIds.slice(1), cost: route.cost - passage.movementCost } : null;
-    return report(turn({ ...state, ...(patientCarried ? { extraction: { ...state.extraction!, patients: state.extraction!.patients.map(patient => patient.memberId === patientCarried.memberId
+    return report(turn({ ...state, ...(state.infrastructure ? { infrastructure: { ...state.infrastructure, traversals: [...state.infrastructure.traversals,
+      { teamId: group.team.id, passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1 }] } } : {}),
+      ...(patientCarried ? { extraction: { ...state.extraction!, patients: state.extraction!.patients.map(patient => patient.memberId === patientCarried.memberId
       ? { ...patient, territoryId: destination, steps: [...patient.steps, { passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1,
         carrierId: patient.carrierId!, carrierTeamId: group.team.id, guardTeamId: guard!.teamId, guardTerritoryId: guard!.territoryId }] } : patient) } } : {}),
       lots: state.lots.map(lot => lot.location === "carrier" && lot.teamId === group.team.id && lot.rav > 0
@@ -563,9 +679,52 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   if (!work || !def) return deny("Cet ouvrage n’existe pas dans l’exercice.");
   if (patientCarried || routeGuard) return deny("Mains et équipe engagées dans l’extraction ou la garde ; aucun kit, chantier ou repos simultané.");
   const replaceWork = (next: WarWorkOrderV6) => state.works.map(item => item.id === next.id ? next : item);
+  if (action.kind === "put-down-kit") {
+    if (!state.infrastructure || work.phase !== "carried" || group.payloadWorkId !== work.id || work.carrierTeamId !== group.team.id || group.dutyWorkId)
+      return deny("Déposer exige le kit réellement porté et un carnet relais/treuil actif. Aucune copie de pièce.");
+    return report({ ...state, teams: replaceTeam({ ...group, payloadWorkId: null, route: null }),
+      works: replaceWork({ ...work, phase: "reserved", carrierTeamId: null }), infrastructure: { ...state.infrastructure,
+        groundKits: [...state.infrastructure.groundKits.filter(item => item.workId !== work.id), { workId: work.id, territoryId: group.territoryId,
+          placement: { kind: "drop", teamId: group.team.id, turn: state.turn } }] } },
+    `${work.kitId} déposé à ${group.territoryId}, sans installation. Un porteur doit réellement le reprendre ici.`, ["W3-S17", "W3-R09", "W3-OBJ05"]);
+  }
+  if (action.kind === "lift-kit") {
+    const kit = state.works.find(item => item.id === action.kitWorkId), passage = rules.passages.find(item => item.id === work.passageId);
+    const destination = passage && oppositeSite(passage, work.territoryId);
+    if (!state.infrastructure || def.kind !== "hoist" || !warWorkOccupiedV6(state, work, rules) || work.operatorTeamId !== group.team.id
+      || !passage || !destination || !passageDirection(passage, work.territoryId, destination) || state.closedPassageIds.includes(passage.id)
+      || !passage.permitsRav || !reliefPassage(passage, rules) || !kit || kit.id === work.id || kit.phase !== "reserved"
+      || warKitSiteV88(state, kit) !== work.territoryId || !state.observed.some(item => item.territoryId === destination)
+      || !suppliedInfrastructureSite(state, work.territoryId, rules)) return deny("Levage refusé : treuil occupé par ses deux artisans, kit au pied, voie ouverte, extrémités reconnues et entretien local requis. Aucune dépense ni mouvement.");
+    const id = `infrastructure:${state.nextIdentity}`;
+    return report(turn({ ...state, nextIdentity: state.nextIdentity + 1, infrastructure: { ...state.infrastructure,
+      groundKits: [...state.infrastructure.groundKits.filter(item => item.workId !== kit.id), { workId: kit.id, territoryId: destination, placement: { kind: "lift", liftId: id } }],
+      lifts: [...state.infrastructure.lifts, { id, hoistWorkId: work.id, kitWorkId: kit.id, passageId: passage.id,
+        fromId: work.territoryId, toId: destination, turn: state.turn + 1, operatorTeamId: group.team.id, memberIds: fitMembers(group).map(member => member.id) }] } }),
+    `${kit.kitId} levé de ${work.territoryId} à ${destination}. Les deux artisans restent au treuil ; le kit n’est pas installé et aucun objet ni XP n’est créé.`, [def.id, "W3-U20", passage.id, "W3-R19"]);
+  }
+  if (action.kind === "relay-intel") {
+    const passage = rules.passages.find(item => item.id === work.passageId), destination = passage && oppositeSite(passage, work.territoryId);
+    const recipient = state.teams.find(item => item.team.id === action.recipientTeamId);
+    const observations = state.observed.filter(item => item.teamId === group.team.id);
+    if (!state.infrastructure || def.kind !== "relay" || !warWorkOccupiedV6(state, work, rules) || work.operatorTeamId !== group.team.id
+      || !passage || !destination || !passageDirection(passage, work.territoryId, destination) || state.closedPassageIds.includes(passage.id)
+      || !recipient || recipient === group || recipient.territoryId !== destination || !fitMembers(recipient).length || !observations.length
+      || !state.infrastructure.traversals.some(step => step.teamId === group.team.id && step.passageId === passage.id && step.toId === destination)
+      || !state.infrastructure.traversals.some(step => step.teamId === group.team.id && step.passageId === passage.id && step.toId === work.territoryId)
+      || !suppliedInfrastructureSite(state, work.territoryId, rules)) return deny("Transmission refusée : relais occupé et alimenté, destinataire à l’autre extrémité, aller-retour réel du messager et relevés personnels requis. Aucune vue à travers le relief.");
+    if (state.infrastructure.relayReceipts.some(receipt => receipt.relayWorkId === work.id && receipt.recipientTeamId === recipient.team.id
+      && JSON.stringify(receipt.observations) === JSON.stringify(observations))) return unchanged("Ces mêmes relevés ont déjà été remis à cette équipe ; aucun tour ni second résultat.");
+    const id = `infrastructure:${state.nextIdentity}`;
+    return report(turn({ ...state, nextIdentity: state.nextIdentity + 1, infrastructure: { ...state.infrastructure, relayReceipts: [...state.infrastructure.relayReceipts,
+      { id, relayWorkId: work.id, senderTeamId: group.team.id, recipientTeamId: recipient.team.id, passageId: passage.id,
+        fromId: work.territoryId, toId: destination, turn: state.turn + 1, observations: observations.map(item => ({ ...item })) }] } }),
+    `${recipient.team.id} reçoit ${observations.length} relevé(s) daté(s) à ${destination}. L’âge et l’observateur d’origine sont conservés ; aucune position cachée, personne, cargaison ou XP transmise.`, [def.id, "W3-U28", "W3-R05", passage.id]);
+  }
   if (action.kind === "load") {
-    if (work.phase !== "reserved" || group.territoryId !== state.originId || group.payloadWorkId || group.dutyWorkId || carryingRav(state, group)) return deny("Chargez ce kit au départ avec une équipe libre sans autre lot ; il ne peut pas être dans deux transports.");
-    return report({ ...state, teams: replaceTeam({ ...group, payloadWorkId: work.id, route: null }), works: replaceWork({ ...work, phase: "carried", carrierTeamId: group.team.id }) },
+    if (work.phase !== "reserved" || group.territoryId !== warKitSiteV88(state, work) || group.payloadWorkId || group.dutyWorkId || carryingRav(state, group)) return deny("Chargez ce kit à son emplacement réel avec une équipe libre sans autre lot ; il ne peut pas être dans deux transports.");
+    return report({ ...state, ...(state.infrastructure ? { infrastructure: { ...state.infrastructure, groundKits: state.infrastructure.groundKits.filter(item => item.workId !== work.id) } } : {}),
+      teams: replaceTeam({ ...group, payloadWorkId: work.id, route: null }), works: replaceWork({ ...work, phase: "carried", carrierTeamId: group.team.id }) },
       `${work.kitId} chargé par ${group.team.id}. Préparez un trajet compatible RAV.`, ["W3-R08", "W3-R09", "W3-OBJ05"]);
   }
   if (action.kind === "unload") {

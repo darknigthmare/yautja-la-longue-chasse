@@ -34,6 +34,7 @@ import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomewo
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, canAdvanceGameReserveV66, type GameReserveV66State } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
+import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
 import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
@@ -45,7 +46,7 @@ import { GAME_CONTENT_VERSION, GAME_CONTENT_LABEL } from "./buildInfo";
 import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
-import { ARCHIVE_TRANSFER_JOURNAL_KEY } from "./systems/archiveTransferGuard";
+import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./systems/archiveTransferGuard";
 import { withArchiveTransferLock } from "./systems/archiveTransaction";
 import { useMenuGamepad } from "./useMenuGamepad";
 import type {
@@ -1979,14 +1980,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTerminalRunRef.current) {
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68 });
+    const updateSerialized = JSON.stringify({ profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2024,6 +2025,33 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  // The observed position comes from the nearby button on the physical deck.
+  // Read the owned fleet without creating or adopting a fallback registration.
+  const shipPreparationContextV88 = (current: SaveGame) => {
+    let fleet: ReturnType<typeof readShipPreparationFleetV88> = null;
+    try { fleet = readShipPreparationFleetV88(current, window.localStorage); } catch { /* Unavailable storage cannot attest a hull. */ }
+    return { save: current, shipId: selectedShipId, selectedMissionId: selectedMission?.id ?? null, fleet,
+      active: deckVisible && screen === 'deck' && current.createdAt === entry.ownerCreatedAt,
+      focused: typeof document !== 'undefined' && document.hasFocus() && document.visibilityState === 'visible',
+      suspended: shipStationOpen || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
+  };
+  const shipPreparationEvaluationV88 = evaluateShipPreparationV88(save.shipPreparationV88, shipPreparationContextV88(save));
+  const onInspectShipPreparationV88 = (observation: ShipPreparationObservationV88): ShipPreparationResultV88 => {
+    const current = saveRef.current;
+    const refused = (message: string): ShipPreparationResultV88 => ({ accepted: false, changed: false, state: current.shipPreparationV88 ?? null, message });
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Storage cannot attest a free archive transaction. */ }
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current) {
+      return refused('Inspection suspendue : la campagne active doit être confirmée.');
+    }
+    const result = inspectShipPreparationV88(current.shipPreparationV88, observation, shipPreparationContextV88(current));
+    if (!result.accepted || !result.changed) return result;
+    if (!persistSocialProgress({ shipPreparationV88: result.state })) {
+      return refused('Inspection non confirmée dans la sauvegarde. Le dernier relevé enregistré reste conservé ; réessaie à ce poste.');
+    }
+    return result;
+  };
 
   const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
     const current = saveRef.current;
@@ -3564,6 +3592,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 trophyDisplays={deckTrophyDisplays}
                 rankLabel={RANK_LABELS[save.profile.rankId]}
                 selectedDestination={selectedMission?.planetName}
+              preflightV88={{ evaluation: shipPreparationEvaluationV88, onInspect: onInspectShipPreparationV88 }}
                 suspended={shipStationOpen || settingsOpen || trophyWorkshop !== null}
                 showShortcuts={quickAccessOpen}
                 highContrast={save.settings.highContrastVision}

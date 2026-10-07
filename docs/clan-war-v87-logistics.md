@@ -105,3 +105,6 @@ La régression élargie avec S16 compte désormais 66 tests réussis, dont dix d
 à l’extraction et à la compatibilité de l’ancienne source à cinq ouvrages ;
 les cellules, limites et parcours navigateur à contrôler sont détaillés dans
 le complément S16. Aucun soin ou résultat de campagne n’est validé par ces tests.
+# Complément V88
+
+Le bilan S16 à six ouvrages ci-dessous décrit le lot précédent. Le complément [relais et treuil V88](clan-war-infrastructure-v88.md) ajoute S12 et S17 avec leurs gestes effectifs : huit constructions raccordées, dix structures restantes. Les limites des soins et de la réparation de liens demeurent explicites. Les reprises V87/S16 sont conservées.

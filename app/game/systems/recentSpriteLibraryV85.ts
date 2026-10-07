@@ -6,6 +6,7 @@ import driveGarrisons from '../data/driveGarrisonsV86.json';
 import driveCompletion from '../data/driveCompletionSpritesV87.json';
 import driveArchiveAudit from '../data/driveArchiveAuditSpritesV87.json';
 import driveNewDeposits from '../data/driveNewDepositsSpritesV87.json';
+import driveHistoricalRecoveryV88 from '../data/driveNewDepositsSpritesV88.json';
 import npcMetadata from '../data/recentNpcSourceMetadataV85.json';
 
 export type RecentSpriteKindV85='npc'|'fauna'|'flora'|'synthetic'|'texture'|'ship'|'equipment'|'reference';
@@ -50,6 +51,7 @@ const garrisonEntriesV86=driveGarrisons.assets as readonly RecentSpriteSourceV85
 const completionEntriesV87=driveCompletion.assets as readonly RecentSpriteSourceV85[];
 const archiveAuditEntriesV87=driveArchiveAudit.assets as readonly RecentSpriteSourceV85[];
 const newDepositsEntriesV87=driveNewDeposits.assets as readonly RecentSpriteSourceV85[];
+const historicalRecoveryEntriesV88=driveHistoricalRecoveryV88.assets as readonly RecentSpriteSourceV85[];
 const supersededBadlandsV85=new Map<string,string>();
 for(const asset of [...badlandsEntriesV85,...completionEntriesV87])if(asset.supersedesIdentityId)supersededBadlandsV85.set(asset.supersedesIdentityId,asset.identityId);
 for(const note of [...badlandsLatest.sourceCorrectionNotes,...driveCompletion.sourceCorrectionNotes] as readonly {id:number;fields?:{superseded_by_asset_id?:number;morphology_corrected_by_asset_id?:number}}[]){
@@ -58,16 +60,17 @@ for(const note of [...badlandsLatest.sourceCorrectionNotes,...driveCompletion.so
 }
 /** Corrections change only reference preference. Superseded files retain their
  * source ID, pixels and catalogue entry, without a body or animation override. */
-export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86,...completionEntriesV87,...archiveAuditEntriesV87,...newDepositsEntriesV87].map(asset=>{
+export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86,...completionEntriesV87,...archiveAuditEntriesV87,...newDepositsEntriesV87,...historicalRecoveryEntriesV88].map(asset=>{
  const replacement=supersededBadlandsV85.get(asset.identityId);return replacement?{...asset,preferredVersion:false,supersededByIdentityId:replacement}:asset;
 });
 export const RECENT_SPRITE_LIBRARY_V85={...source,assets:RECENT_SPRITE_ASSETS_V85,
  nativeGarrisonFilesV86:driveGarrisons.summary.nativePngFiles,
  nativeRecoveredFilesV87:driveCompletion.summary.newDistinctPngFiles+driveArchiveAudit.summary.newDistinctPngFiles+driveNewDeposits.summary.newDistinctPngFiles,
+ nativeRecoveredFilesV88:driveHistoricalRecoveryV88.summary.newDistinctPngFiles,
  uniqueReferencedHashes:new Set(RECENT_SPRITE_ASSETS_V85.map(asset=>asset.sha256)).size,
  packs:[...source.packs,{id:'drive-latest',label:'Derniers fichiers Drive · 7 octobre',version:'2026-10-07',priority:85,archive:'Fichiers Drive reçus individuellement',insideArchive:null,sha256:'',pngEntriesImported:driveEntriesV85.length,recordEntries:0,status:'source-import-authored-no-qa'},
   {id:'badlands-latest',label:'Badlands · ajouts V8 à V13',version:'V8–V13',priority:93,archive:'Six lots d’ajouts Drive',insideArchive:null,sha256:'',pngEntriesImported:badlandsEntriesV85.length,recordEntries:6,status:'source-import-authored-no-qa'},
-  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs,...driveCompletion.packs,...driveArchiveAudit.packs,...driveNewDeposits.packs]};
+  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs,...driveCompletion.packs,...driveArchiveAudit.packs,...driveNewDeposits.packs,...driveHistoricalRecoveryV88.packs]};
 export const RECENT_SPRITE_PREFERRED_V85=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.preferredVersion);
 export const RECENT_SPRITE_GROUPS_V85=source.groups;
 export const RECENT_NPC_SOURCE_METADATA_V85=npcMetadata;

@@ -19,6 +19,7 @@ import type { GameReserveV66State } from "./systems/gameReserveV66";
 import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
 import type { JusticeProgress } from "./systems/justice";
+import type { ShipPreparationStateV88 } from "./systems/shipPreparationV88";
 
 // ---------------------------------------------------------------------------
 // Stable content identifiers
@@ -644,6 +645,8 @@ export interface SaveGame {
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;
   gameReserveV66?: GameReserveV66State | null;
+  /** Physical station inspections only; no hull acquisition or travel credit. */
+  shipPreparationV88?: ShipPreparationStateV88 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

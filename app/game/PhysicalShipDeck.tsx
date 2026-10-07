@@ -19,6 +19,7 @@ import {
 import ShipLevelScene, { ShipLevelMiniMap } from "./ShipLevelScene";
 import "./ship-level.css";
 import type { HunterAppearance, Loadout } from "./types";
+import ShipPreparationPanelV88, { type ShipPreparationControlledV88 } from "./ShipPreparationPanelV88";
 import {
   PHYSICAL_SHIP_STATIONS,
   PHYSICAL_SHIP_LADDERS as LADDERS,
@@ -73,6 +74,9 @@ export interface PhysicalShipDeckProps {
   /** Generic telemetry hook, called in addition to the station callback. */
   onInteract?: (stationId: PhysicalShipStationId) => void;
   onStationProximityChange?: (stationId: PhysicalShipStationId | null) => void;
+  /** The nearby inspection reads this deck's live playerRef. Menu/shortcut
+   * activation never creates preparation evidence. */
+  preflightV88?: ShipPreparationControlledV88;
   onNotify?: (message: string) => void;
 }
 
@@ -134,6 +138,7 @@ export default function PhysicalShipDeck({
   onOpenAirlock,
   onInteract,
   onStationProximityChange,
+  preflightV88,
   onNotify,
 }: PhysicalShipDeckProps) {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -493,6 +498,15 @@ export default function PhysicalShipDeck({
         <div><strong>{nearbyStation?.label ?? "Exploration du vaisseau"}</strong><span>{nearbyStation?.id === "launch-airlock" ? selectedDestination : nearbyStation?.description ?? status}</span></div>
         {nearbyStation ? <button type="button" disabled={suspended} onClick={interactFromAvatar} style={styles.interactButton}>UTILISER · {interactionShortcut}</button> : <span className="ship-level-door-hint">Portes automatiques à proximité</span>}
       </div>
+
+      {preflightV88 && <ShipPreparationPanelV88
+        key={`${preflightV88.evaluation.state?.ownerSaveCreatedAt ?? "pending"}:${nearbyStation?.id ?? "corridor"}`}
+        controlled={preflightV88} stationId={nearbyStation?.id ?? null} suspended={suspended}
+        observe={() => {
+          if (suspendedRef.current) return null;
+          const actual = nearestStationFor(playerRef.current);
+          return actual ? { stationId: actual.id, x: playerRef.current.x, y: playerRef.current.y } : null;
+        }} />}
 
       <details className="ship-level-help"><summary>Commandes du chasseur</summary><p id="physical-deck-help">
         Marcher : {controlActionShortcut("hunt.moveLeft", controlBindings)} / {controlActionShortcut("hunt.moveRight", controlBindings)} / stick · sauter : {controlActionShortcut("hunt.jump", controlBindings)} / A · interagir : {interactionShortcut} / X · échelles : {controlActionShortcut("hunt.moveUp", controlBindings)} / {controlActionShortcut("hunt.moveDown", controlBindings)}.
