@@ -8,6 +8,7 @@ import {
 } from "./systems/clanWarBibleV6";
 import styles from "./ClanWarPanelV85.module.css";
 import ClanWarExerciseV6 from "./ClanWarExerciseV6";
+import ClanWarWorksV6 from "./ClanWarWorksV6";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
@@ -18,7 +19,7 @@ export default function ClanWarBibleV6Panel() {
   const [rulesGeneration, setRulesGeneration] = useState(0);
   const rules = privateRules ?? DEFAULT_WAR_RULES_V6;
   const { metadata: WAR_BIBLE_V6, entries: WAR_BIBLE_ENTRIES_V6, sections: WAR_BIBLE_SECTIONS_V6, parameters: WAR_PARAMETERS_V6, units: WAR_UNITS_V6, specializations: WAR_SPECIALIZATIONS_V6, territories: WAR_TERRITORIES_V6, passages: WAR_PASSAGES_V6 } = rules;
-  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "library">("teams");
+  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "works" | "library">("teams");
   const [hypothesis, setHypothesis] = useState<WarTeamHypothesisV6>({ unitId: "W3-U01", xp: 40, fatigue: 20, deployableMembers: 2, availableRav: 6, frontNeedRav: 6, terrainBonus: 10, nextObjectiveXp: 8 });
   const [fromId, setFromId] = useState("W3-K01"), [toId, setToId] = useState("W3-K36");
   const [commandPoints, setCommandPoints] = useState(12), [closed, setClosed] = useState<string[]>([]);
@@ -75,8 +76,9 @@ export default function ClanWarBibleV6Panel() {
     <div className={styles.sectionHeader}><div><h3>Bible V6 · équipes, passages et mandats</h3><p>Source du 7 octobre 2026 · {WAR_BIBLE_ENTRIES_V6.length} fiches de guerre dans {WAR_BIBLE_SECTIONS_V6.length} feuilles.</p></div></div>
     {privateImport}
     <p className={styles.notice}>La version actuelle emploie RAV pour le ravitaillement et PC pour le commandement. L’expérience d’une équipe reste entre {WAR_PARAMETERS_V6.xp_min} et {WAR_PARAMETERS_V6.xp_max}, avec les paliers {WAR_PARAMETERS_V6.xp_tier_2} et {WAR_PARAMETERS_V6.xp_tier_3}. Les fiches V3 du 6 octobre décrivent une version antérieure, accessible dans ses exercices propres.</p>
-    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
+    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["works", "Logistique et ouvrages"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
     <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
+    <div hidden={section !== "works"}><ClanWarWorksV6 key={rulesGeneration} rules={rules}/></div>
     {section === "teams" && <div>
       <h4>Hypothèses de l’équipe</h4><p>Le calcul reprend la feuille « Simuler Une équipe ». Ces valeurs servent à comparer une préparation ; elles ne deviennent pas des guerriers, des compétences ou des ressources dans votre campagne.</p>
       <div className={styles.controlGrid}><label>Type d’équipe<select value={hypothesis.unitId} onChange={event => { const selected = WAR_UNITS_V6.find(item => item.id === event.target.value); if (selected) setHypothesis(current => ({ ...current, unitId: selected.id, deployableMembers: selected.fullMembers, frontNeedRav: Math.max(current.frontNeedRav, selected.upkeepRav) })); }}>{WAR_UNITS_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>{numberInput("xp", `Expérience · 0 à ${WAR_PARAMETERS_V6.xp_max}`, WAR_PARAMETERS_V6.xp_max)}{numberInput("fatigue", `Fatigue · 0 à ${WAR_PARAMETERS_V6.fatigue_max}`, WAR_PARAMETERS_V6.fatigue_max)}{numberInput("deployableMembers", "Membres déployables", unit?.fullMembers ?? 0)}{numberInput("availableRav", "RAV disponibles ce tour", WAR_PARAMETERS_V6.rav_cap)}{numberInput("frontNeedRav", "Besoin RAV du front · équipe incluse une fois", 1000000)}{numberInput("terrainBonus", `Bonus de défense du terrain · plafonné à ${WAR_PARAMETERS_V6.terrain_bonus_cap} %`, 100)}<label>Prochain objectif<select value={hypothesis.nextObjectiveXp} onChange={event => setHypothesis(current => ({ ...current, nextObjectiveXp: Number(event.target.value) }))}><option value={WAR_PARAMETERS_V6.xp_recon}>Reconnaissance nouvelle · {WAR_PARAMETERS_V6.xp_recon} XP</option><option value={WAR_PARAMETERS_V6.xp_hero}>Action héroïque{WAR_PARAMETERS_V6.xp_retreat === WAR_PARAMETERS_V6.xp_hero ? " ou repli" : ""} · {WAR_PARAMETERS_V6.xp_hero} XP</option>{WAR_PARAMETERS_V6.xp_retreat !== WAR_PARAMETERS_V6.xp_hero && <option value={WAR_PARAMETERS_V6.xp_retreat}>Repli organisé · {WAR_PARAMETERS_V6.xp_retreat} XP</option>}<option value={WAR_PARAMETERS_V6.xp_battle}>Objectif de bataille · {WAR_PARAMETERS_V6.xp_battle} XP</option><option value={WAR_PARAMETERS_V6.xp_campaign}>Finale · remplace l’objectif standard · {WAR_PARAMETERS_V6.xp_campaign} XP</option></select></label></div>

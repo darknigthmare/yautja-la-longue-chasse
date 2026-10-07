@@ -6,3 +6,4 @@
 @media(prefers-reduced-motion:reduce){.panel *{scroll-behavior:auto}}
 .sourceArt{margin:12px 0;background:#0e1812;padding:8px;border:1px solid #3b4f3b}.sourceArt img{display:block;max-height:190px;width:100%;object-fit:contain}.sourceArt figcaption{font-size:.65rem;color:#bac6a8;text-align:center;margin-top:5px}
 .map.v6Map{grid-template-columns:repeat(6,minmax(80px,1fr));min-width:560px}
+.workGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin:20px 0}.workSteps{display:flex;flex-wrap:wrap;gap:12px 30px;padding-left:24px;font-size:.85rem}.workSteps li{flex:1;min-width:180px}.memberId{display:block;font-size:.68rem;color:#b5c4ab;overflow-wrap:anywhere}.workGrid .unit[data-work-phase=ready]{border-color:#98af68}.workGrid .unit>button,.workGrid .unit>label{margin:10px 0}

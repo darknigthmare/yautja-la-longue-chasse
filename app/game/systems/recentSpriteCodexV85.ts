@@ -21,6 +21,6 @@ export const RECENT_SPRITE_CODEX_V85:readonly RecentSpriteCodexRecordV85[]=RECEN
   ...(asset.supersededByIdentityId?[`Version conservée, corrigée par ${asset.supersededByIdentityId}.`]:[]),
   'PNG natif conservé sans modification. Les versions antérieures restent accessibles, même si une version plus récente est préférée pour cette identité.',
   'Rôle, costume, âge, espèce et morphologie ne sont pas interchangeables ; une référence statique ne remplace pas les cellules natives de marche.',
-  'V85 intégré en bibliothèque de sources, sans test, audit, build local ou examen navigateur exécuté ; fidélité canonique 1:1 non certifiée.',
+  'Bibliothèque de références : un contrôle d’intégrité ou d’affichage ne certifie ni une animation, ni la fidélité canonique 1:1, ni un rôle physique dans la scène.',
  ],
 }));

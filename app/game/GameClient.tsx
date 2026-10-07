@@ -28,6 +28,7 @@ import { startSoloV70Campaign, withSoloV70Checkpoint, withSoloV70Progress, soloV
 import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
 import { createHomeworldRegionV68, normalizeHomeworldRegionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
+import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
 import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomeworldPassageV67, canAdvanceHomeworldPassageV67, beginReturnHomeworldPassageV67, type HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
@@ -973,6 +974,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [nurseryChapterError, setNurseryChapterError] = useState<string | null>(null);
   const [nurseryChapterLoadAttempt, setNurseryChapterLoadAttempt] = useState(0);
   const sessionAliveRef = useRef(true);
+  const bibleActionBusyRefV86 = useRef(false);
   const startupResumeRef = useRef(false);
   const menuModeStartedRefV81 = useRef(false);
   const [campaignCatalog, setCampaignCatalog] = useState<CampaignSlotCatalog | null>(null);
@@ -2122,6 +2124,27 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!result.ok) return false;
     return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state} });
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
+    const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
+    const fail=(message:string):BibleSceneResultV86=>({ok:false,changed:false,ledger:previous,message});
+    if(bibleActionBusyRefV86.current)return fail('Une écriture de halte est déjà en cours.');
+    bibleActionBusyRefV86.current=true;
+    const b=BIBLE_CULTURAL_BINDING_V86;
+    const validRegion=()=>sessionAliveRef.current&&saveRef.current.createdAt===entry.ownerCreatedAt&&!!saveRef.current.homeworldRegionV68
+      &&!state.pendingFieldEvent&&canAdvanceHomeworldRegionV68(saveRef.current.homeworldRegionV68,state);
+    const context=()=>bibleCulturalContextV86({save:saveRef.current,ownerSaveCreatedAt:entry.ownerCreatedAt,region:state,
+      sceneActive:screen==='homeworld-region-v68'&&validRegion(),focused:!document.hidden&&document.hasFocus(),
+      suspended:settingsOpen||!!archiveRecoveryIssue||archiveTransferBusy,
+      host:state.regionId===b.regionId&&state.zone==='village'?{id:b.npcId,present:true,alive:true,conscious:true}:null,
+      table:state.regionId===b.regionId&&state.zone==='village'?{id:b.tableId,...b.table}:null});
+    try{
+      if(!validRegion())return fail('Le trajet ou le propriétaire a changé ; aucun reçu remplacé.');
+      return createBibleSceneTransactionV86(()=>saveRef.current.homeworld.bibleScenesV86,context,next=>{
+        if(!validRegion())return false;
+        return persistSocialProgress({homeworldRegionV68:state,homeworld:{...saveRef.current.homeworld,bibleScenesV86:next}});
+      })(action);
+    }finally{bibleActionBusyRefV86.current=false;}
+  },[entry.ownerCreatedAt,screen,settingsOpen,archiveRecoveryIssue,archiveTransferBusy,persistSocialProgress]);
   const reachCityHomeworldRegionV68 = useCallback((arrival?: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current, state = normalizeHomeworldRegionV68(arrival ?? current.homeworldRegionV68);
     // Arrival and clearing the journey form one transaction. A readback failure
@@ -3470,7 +3493,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
-            onFieldEvent={fieldHomeworldRegionV68} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)} />
+            onFieldEvent={fieldHomeworldRegionV68} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)} />
         </Suspense>
       </section>}
       {screen === "homeworld-passage-v67" && hydrated && save.homeworldPassageV67 && <section inert={settingsOpen} data-homeworld-passage-campaign>

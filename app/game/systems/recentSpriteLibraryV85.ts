@@ -2,6 +2,7 @@ import source from '../data/recentSpriteLibraryV85.json';
 import driveLatest from '../data/driveLatestSpritesV85.json';
 import badlandsLatest from '../data/badlandsLatestSpritesV85.json';
 import approvedHunters from '../data/recentApprovedHuntersV85.json';
+import driveGarrisons from '../data/driveGarrisonsV86.json';
 import npcMetadata from '../data/recentNpcSourceMetadataV85.json';
 
 export type RecentSpriteKindV85='npc'|'fauna'|'flora'|'synthetic'|'texture'|'ship'|'equipment';
@@ -37,6 +38,9 @@ const normalizeDriveEntryV85=(asset:DriveLatestSpriteEntryV85):RecentSpriteSourc
 const driveEntriesV85=(driveLatest.assets as readonly DriveLatestSpriteEntryV85[]).map(normalizeDriveEntryV85);
 const badlandsEntriesV85=(badlandsLatest.assets as readonly DriveLatestSpriteEntryV85[]).map(normalizeDriveEntryV85);
 const approvedHunterEntriesV85=(approvedHunters.assets as readonly DriveLatestSpriteEntryV85[]).map(normalizeDriveEntryV85);
+// Complete original records carry documented role, age and morphology fields.
+// Do not normalize these away like an unstructured individual Drive image.
+const garrisonEntriesV86=driveGarrisons.assets as readonly RecentSpriteSourceV85[];
 const supersededBadlandsV85=new Map<string,string>();
 for(const asset of badlandsEntriesV85)if(asset.supersedesIdentityId)supersededBadlandsV85.set(asset.supersedesIdentityId,asset.identityId);
 for(const note of badlandsLatest.sourceCorrectionNotes as readonly {id:number;fields?:{superseded_by_asset_id?:number;morphology_corrected_by_asset_id?:number}}[]){
@@ -45,13 +49,14 @@ for(const note of badlandsLatest.sourceCorrectionNotes as readonly {id:number;fi
 }
 /** Corrections change only reference preference. Superseded files retain their
  * source ID, pixels and catalogue entry, without a body or animation override. */
-export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85].map(asset=>{
+export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86].map(asset=>{
  const replacement=supersededBadlandsV85.get(asset.identityId);return replacement?{...asset,preferredVersion:false,supersededByIdentityId:replacement}:asset;
 });
 export const RECENT_SPRITE_LIBRARY_V85={...source,assets:RECENT_SPRITE_ASSETS_V85,
+ nativeGarrisonFilesV86:driveGarrisons.summary.nativePngFiles,
  packs:[...source.packs,{id:'drive-latest',label:'Derniers fichiers Drive · 7 octobre',version:'2026-10-07',priority:85,archive:'Fichiers Drive reçus individuellement',insideArchive:null,sha256:'',pngEntriesImported:driveEntriesV85.length,recordEntries:0,status:'source-import-authored-no-qa'},
   {id:'badlands-latest',label:'Badlands · ajouts V8 à V13',version:'V8–V13',priority:93,archive:'Six lots d’ajouts Drive',insideArchive:null,sha256:'',pngEntriesImported:badlandsEntriesV85.length,recordEntries:6,status:'source-import-authored-no-qa'},
-  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'}]};
+  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs]};
 export const RECENT_SPRITE_PREFERRED_V85=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.preferredVersion);
 export const RECENT_SPRITE_GROUPS_V85=source.groups;
 export const RECENT_NPC_SOURCE_METADATA_V85=npcMetadata;
@@ -96,7 +101,9 @@ export function importedYautjaArtVariantsV85({clanName,role,name,identityId,asse
  const clan=clanName?normalizeRecentSpriteTextV85(clanName):'',person=name?normalizeRecentSpriteTextV85(name):'',requested=role?normalizeRecentSpriteTextV85(role):'';
  if(!clan&&!person&&!requested&&!identityId&&!assetId)return[];
  const roleTerms=aliases[requested]??(requested?[requested]:[]);
- const candidates=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.kind==='npc'&&(includeHistorical||asset.preferredVersion)
+ // The accepted humans remain searchable archive NPCs, but their documented
+ // human bodies must never be borrowed by a Yautja-only runtime consumer.
+ const candidates=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.kind==='npc'&&asset.groupId!=='human-accepted'&&(includeHistorical||asset.preferredVersion)
   &&(!identityId||asset.identityId===identityId)&&(!assetId||asset.id===assetId)
   &&(!clan||normalizeRecentSpriteTextV85(asset.groupLabel)===clan||normalizeRecentSpriteTextV85(asset.groupId)===clan)
   &&(!person||normalizeRecentSpriteTextV85(asset.label)===person));

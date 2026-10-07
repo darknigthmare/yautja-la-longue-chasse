@@ -17,6 +17,10 @@ import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldFaunaDisplayV77 from './HomeworldFaunaDisplayV77';
 import {homeworldFaunaSourceUrlsV77,homeworldFaunaDimensionsV77} from './systems/homeworldFaunaV77';
 import HomeworldModularHunter from './HomeworldModularHunter';
+import HomeworldRegionalWatchV86 from './HomeworldRegionalWatchV86';
+import HomeworldBibleCultureHostV86 from './HomeworldBibleCultureHostV86';
+import BibleSceneCulturalV86 from './BibleSceneCulturalV86';
+import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,bibleCulturalNearbyV86,defaultBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_ACTIVITIES_V70, createVillageActivitySessionV70, nearestVillageActivityV70, stepVillageActivityV70 } from './systems/homeworldVillageActivitiesV70';
@@ -34,6 +38,7 @@ export interface HomeworldRegionV68Props {
   onCheckpoint(state: HomeworldRegionStateV68): boolean;
   /** Atomically acknowledge this exact field event and store its pending checkpoint. */
   onFieldEvent?(event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean;
+  onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
 }
@@ -52,6 +57,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const [noticeFromGuide, setNoticeFromGuide] = useState(false);
   const [size, setSize] = useState({ width: 1200, height: 720 });
   const [localPanel, setLocalPanel] = useState<string | null>(null);
+  const bibleOpenRef=useRef(false),[bibleMessage,setBibleMessage]=useState(''),[focused,setFocused]=useState(true);
   const [activitySession, setActivitySession] = useState(() => createVillageActivitySessionV70(state?.runId ?? ''));
   const [navigation, setNavigation] = useState<{ id: string; points: { x: number; y: number }[] } | null>(null);
   const [navigationError, setNavigationError] = useState('');
@@ -77,14 +83,24 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     if (!success) { freeze(); setError('Le relevé est conservé ici, mais sa remise n’a pas été enregistrée. Réessaie la même remise.'); return null; }
     setError(''); current.current = acknowledged; setState(acknowledged); return acknowledged;
   }, [freeze, persist]);
-  const pause = useCallback(() => { freeze(); if (current.current?.status === 'walking' && !current.current.pendingFieldEvent) persist(current.current); }, [freeze, persist]);
+  const bibleAction=useCallback((action:BibleSceneActionV86):BibleSceneResultV86=>{
+    const s=current.current,p=latest.current;
+    const result=s&&p.onBibleSceneAction?p.onBibleSceneAction(action,structuredClone(s)):
+      {ok:false,changed:false,ledger:p.save.homeworld.bibleScenesV86??defaultBibleSceneLedgerV86(p.save.createdAt),message:'Cette halte ne peut pas être enregistrée.'};
+    setBibleMessage(result.message);return result;
+  },[]);
+  const pause = useCallback(() => { freeze();
+    if(bibleOpenRef.current){bibleAction({type:'interrupt'});return;}
+    if (current.current?.status === 'walking' && !current.current.pendingFieldEvent) persist(current.current);
+  }, [freeze, persist,bibleAction]);
   const resume = useCallback(() => {
     const s = current.current;
     if (!s || s.status !== 'walking' || !readyRef.current || latest.current.suspended || !canEnterHomeworldRegionV68(latest.current.save, s.regionId).allowed) return;
+    if(bibleOpenRef.current){if(!bibleAction({type:'interrupt'}).ok)return;bibleOpenRef.current=false;}
     const acknowledged = s.pendingFieldEvent ? field(s) : persist(s) ? s : null;
     if (!acknowledged) return;
     clear(); noticeRef.current = ''; setNotice(''); setNoticeFromGuide(false); setLocalPanel(null); setNavigationError(''); pauseRef.current = false; setPaused(false); requestAnimationFrame(() => viewport.current?.focus({ preventScroll: true }));
-  }, [clear, field, persist]);
+  }, [clear, field, persist,bibleAction]);
   const leave = useCallback((s: HomeworldRegionStateV68) => {
     if (exiting.current || latest.current.suspended) return;
     exiting.current = true; freeze();
@@ -104,6 +120,14 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     if (!points) { setNavigationError('Cette approche ne rejoint pas ta position actuelle. Reviens sur le chemin du village.'); return; }
     setNavigation({ id, points }); resume();
   }, [regionId, resume]);
+  const openBible=useCallback(()=>{
+    const s=current.current;
+    if(!s||!bibleCulturalNearbyV86(s)||!latest.current.onBibleSceneAction||latest.current.suspended||!readyRef.current||s.pendingFieldEvent)return;
+    // Freeze both input and physical velocity before taking a durable snapshot.
+    freeze();const stopped={...s,actor:{...s.actor,vx:0,vy:0}};
+    current.current=stopped;setState(stopped);
+    if(persist(stopped)){bibleOpenRef.current=true;noticeRef.current='';setNotice('');setBibleMessage('');setLocalPanel('bible-v86');}
+  },[freeze,persist]);
   useEffect(() => {
     const el = viewport.current; if (!el) return;
     const resize = new ResizeObserver(() => { const b = el.getBoundingClientRect(); if (b.width && b.height) setSize({ width: b.width, height: b.height }); });
@@ -116,9 +140,10 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     return () => { cancelled = true; };
   }, [definition.panorama, youthWelcome, regionId, artAttempt]);
   useEffect(() => {
-    const blur = () => pause(), hidden = () => { if (document.hidden) pause(); };
+    const blur = () => {setFocused(false);pause();}, focus=()=>setFocused(!document.hidden&&document.hasFocus()), hidden = () => { if (document.hidden) blur();else focus(); };
+    focus();window.addEventListener('focus',focus);
     window.addEventListener('blur', blur); window.addEventListener('gamepaddisconnected', blur); document.addEventListener('visibilitychange', hidden);
-    return () => { window.removeEventListener('blur', blur); window.removeEventListener('gamepaddisconnected', blur); document.removeEventListener('visibilitychange', hidden); };
+    return () => { window.removeEventListener('focus',focus);window.removeEventListener('blur', blur); window.removeEventListener('gamepaddisconnected', blur); document.removeEventListener('visibilitychange', hidden); };
   }, [pause]);
   useEffect(() => { if (suspended) { clear(); pauseRef.current = true; const f = requestAnimationFrame(pause); return () => cancelAnimationFrame(f); } }, [suspended, pause, clear]);
   useEffect(() => {
@@ -159,6 +184,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
           const before = current.current, interaction = interact.current || sample.actions.confirm ? homeworldRegionInteractionV68(before) : null;
+          if((interact.current||sample.actions.confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
           const activity = !interaction && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
           const villageResident = !interaction && !activity && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
           const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (interact.current || sample.actions.confirm) });
@@ -178,13 +204,17 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       frame = requestAnimationFrame(loop);
     };
     frame = requestAnimationFrame(loop); return () => cancelAnimationFrame(frame);
-  }, [regionId, freeze, field, leave, persist, pause, resume]);
+  }, [regionId, freeze, field, leave, persist, pause, resume,openBible]);
 
   if (!state || state.regionId !== regionId) return <section className={styles.root}><div className={styles.dialog}><h2>Ce point de reprise ne correspond pas à cette route</h2><p>La sauvegarde est conservée. Reviens à la cité pour choisir ton trajet.</p><button onClick={() => props.onReachCity()}>Retour à la cité</button></div></section>;
   const d = HOMEWORLD_GEOMETRY_V64.depthScale, position = project(state.actor), zoom = Math.min(.98, Math.max(.6, size.height / 720));
   const world = state.zone === 'passage' ? { width: 18700, depth: 3300 } : state.zone === 'interior' ? HOMEWORLD_REGION_INTERIOR_V68 : HOMEWORLD_VILLAGE_WORLD_V68;
   const camera = { x: world.width * zoom < size.width ? -(size.width - world.width * zoom) / 2 : Math.max(0, Math.min(world.width * zoom - size.width, position.x * zoom - size.width / 2)), y: state.zone === 'interior' && world.depth * d * zoom < size.height - 240 ? -(size.height - world.depth * d * zoom) / 2 : Math.max(-180, Math.min(world.depth * d * zoom - size.height + 190, position.y * zoom - size.height * .66)) };
   const interaction = homeworldRegionInteractionV68(state), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
+  const bibleNearby=!!props.onBibleSceneAction&&bibleCulturalNearbyV86(state),b=BIBLE_CULTURAL_BINDING_V86;
+  const bibleContext=bibleCulturalContextV86({save,ownerSaveCreatedAt:save.createdAt,region:state,sceneActive:localPanel==='bible-v86'&&ready&&!error,
+    focused,suspended,host:regionId===b.regionId&&state.zone==='village'?{id:b.npcId,present:true,alive:true,conscious:true}:null,
+    table:regionId===b.regionId&&state.zone==='village'?{id:b.tableId,...b.table}:null});
   const selectedActivity = HOMEWORLD_VILLAGE_ACTIVITIES_V70[regionId].find(a => a.id === localPanel), activityProgress = selectedActivity ? activitySession.progress[selectedActivity.id] ?? 0 : 0;
   const destination = navigation && villageDestinationsV70(regionId).find(d => d.id === navigation.id), routeProgress = navigation && state.zone === 'village' ? villageRouteRemainingV70(navigation.points, state.actor) : null;
   const serviceBuilding = definition.buildings.find(b => b.id === state.buildingId);
@@ -194,10 +224,11 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const interiorShell = state.zone === 'interior' ? homeworldInteriorShellV64({ buildingId: `v68-${regionId}-${state.buildingId}`, width: 710, depth: 650 }) : null;
   const bridge = HOMEWORLD_PASSAGE_BRIDGE_V67, bridgeScale = bridge.width / (bridge.deck.right - bridge.deck.left);
   const pointer = (move: Move, pressed: boolean, e: PointerEvent<HTMLButtonElement>) => { e.preventDefault(); if (pressed && !modal && !suspended) { e.currentTarget.setPointerCapture(e.pointerId); touch.current.add(move); } else touch.current.delete(move); };
-  const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false) => {
+  const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false, resident?: typeof definition.residents[number]) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
-    return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} /><HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} /></span>;
+    const original=<HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} />;
+    return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} />{resident?<HomeworldRegionalWatchV86 query={{regionId,clanName:definition.clan,resident,moving}}>{original}</HomeworldRegionalWatchV86>:original}</span>;
   };
   return <section className={styles.root} data-homeworld-region-v68={regionId} data-zone={state.zone} data-interior-building={state.buildingId ?? undefined} data-state-tick={state.tick} style={{ '--region-accent': definition.accent, '--region-ground': definition.groundColor } as CSSProperties} inert={suspended}>
     <div className={styles.panorama} aria-hidden="true" style={{ backgroundImage: `url("${definition.panorama}")`, transform: `translateX(${-Math.min(90, state.actor.x / 210)}px)` }} />
@@ -224,7 +255,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'village' && <>
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: villageFacadeFadedV70(b, state.actor, youthWelcome ? 82 : 100) ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
           {definition.props.filter(p => !villagePaintOccludedV70(definition.buildings, p, state.actor, { actorHeight: youthWelcome ? 82 : 100 })).map(p => { const ground = project(p); return <HomeworldNativePropV64 key={p.id} id={`${regionId}-${p.id}`} artId={p.artId} art={HOMEWORLD_PROP_ART_V64[p.artId]} x={ground.x} y={ground.y} depth={p.y} />; })}
-          {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1); })}
+          {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {props.onBibleSceneAction&&<HomeworldBibleCultureHostV86 regionId={regionId} tick={state.tick} />}
           <HomeworldVillageLifeV69 regionId={regionId} tick={state.tick} actor={state.actor} actorHeight={youthWelcome ? 82 : 100} activityProgress={activitySession.progress} rect={{ left: camera.x / zoom, top: camera.y / zoom, right: (camera.x + size.width) / zoom, bottom: (camera.y + size.height) / zoom }} />
           {HOMEWORLD_REGION_TRACES_V68.map((p, n) => { const v = project(p); return <span key={p.id} className={`${styles.trace} ${state.traces.includes(p.id) ? styles.collected : ''}`} data-region-trace={p.id} style={{ left: v.x, top: v.y }}><i /><b>{p.label}</b><small>{definition.traceNotes[n]}</small></span>; })}
           {REGION_WARD_IDS_V68.includes(regionId) && REGION_WARD_POSTS_V68.map(p => { const v = project(p); return <span key={p.id} data-region-ward={p.id}><HomeworldNativePropV64 id={`${regionId}-${p.id}`} artId="beacon" art={HOMEWORLD_PROP_ART_V64.beacon} x={v.x} y={v.y} depth={p.y} /><b className={styles.waypoint} style={{ left: v.x, top: v.y + 8 }}>{state.protectedPosts.includes(p.id) ? 'Fixée' : 'À fixer'}</b></span>; })}
@@ -243,13 +275,14 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     </div>
     <aside className={styles.objective} inert={modal}>
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
+      {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
-    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
+    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={`${styles.dialog} ${localPanel === 'atlas' ? styles.atlasDialog : ''}`} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}>
       <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
-      {error ? <p>{error}</p> : localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
+      {error ? <p>{error}</p> : localPanel==='bible-v86'?<BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction} message={bibleMessage} onClose={()=>{bibleOpenRef.current=false;resume();}} />:localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
         <p>{selectedActivity.description}</p><p className={styles.serviceInstruction}>{activityProgress >= 3 ? selectedActivity.completion : `${activityProgress + 1}/3 · ${selectedActivity.steps[activityProgress]}`}</p>
         {activityProgress < 3 && <div className={styles.serviceChoices}>{selectedActivity.choices.map((choice, i) => <button key={choice} data-village-activity-choice-v70={i} disabled={!localAllowed} onClick={() => setActivitySession(previous => stepVillageActivityV70(previous, current.current ?? state, selectedActivity.id, i, localAllowed))}>{choice}</button>)}</div>}
         {activityProgress < 3 && <p role="status">{activitySession.feedback[selectedActivity.id]}</p>}
@@ -263,7 +296,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       </div> : notice ? <><YautjaTranslationV67 text={notice} />{noticeFromGuide && narratives.map(n => <p key={n.id}>{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}</> : <p>{artError || (!gate.allowed ? gate.reason : !ready ? 'Les abords du territoire se dévoilent…' : state.zone === 'passage' ? `Suis les bornes jusqu’au village. La corniche mesure environ ${Math.round(homeworldRegionRouteMetresV68(regionId))} mètres ; tu peux revenir sur tes pas.` : definition.introduction)}</p>}
       {navigationError && <p role="alert">{navigationError}</p>}
       {!ready && artError && <button onClick={() => setArtAttempt(n => n + 1)}>Recharger le décor</button>}
-      {gate.allowed && ready && state.status === 'walking' && <button data-region-resume onClick={resume}>{error ? 'Réessayer la sauvegarde' : notice || localPanel ? 'Poursuivre' : 'Reprendre la marche'}</button>}
+      {gate.allowed && ready && state.status === 'walking' && (localPanel!=='bible-v86'||!!error) && <button data-region-resume onClick={resume}>{error ? 'Réessayer la sauvegarde' : notice || localPanel ? 'Poursuivre' : 'Reprendre la marche'}</button>}
       {state.status === 'at-city' && <button onClick={() => leave(state)}>Entrer dans la cité</button>}{props.onOpenSettings && <button onClick={props.onOpenSettings}>Réglages</button>}{!gate.allowed && <button onClick={() => props.onReachCity()}>Retour à la cité</button>}
     </div></div>}
   </section>;

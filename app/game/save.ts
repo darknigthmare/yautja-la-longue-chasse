@@ -6,6 +6,7 @@ import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
+import {normalizeBibleSceneLedgerV86} from './systems/bibleSceneCulturalV86';
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
@@ -1410,6 +1411,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "future-version" };
   }
   if(isRecord(value.homeworld)){
+    // Optional additive ledger: reject present incompatible bytes rather than
+    // discarding a player's dialogue choices during load/export/cloud sync.
+    if(value.homeworld.bibleScenesV86!==undefined){
+      const raw=value.homeworld.bibleScenesV86;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeBibleSceneLedgerV86(raw);
+      if(!ledger||ledger.ownerSaveCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!isRecord(value.profile))return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!homeworldCntlipEligibleV77({profile:value.profile as unknown as SaveGame['profile'],prologue:normalizeNurseryCampaign(value.prologue),homeworld:normalizeHomeworldProgress(value.homeworld)}))return {save:null,failure:'invalid-save'};
+    }
     const locationStatus=inspectHomeworldCheckpointV77(value.homeworld.locationV77);
     if(locationStatus==='future-version'||locationStatus==='invalid-save')return {save:null,failure:locationStatus};
     if(isRecord(value.homeworld.locationV77)&&value.homeworld.locationV77.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
