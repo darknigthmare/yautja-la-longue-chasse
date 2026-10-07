@@ -4,7 +4,8 @@ import {HOMEWORLD_ACTOR,HOMEWORLD_BUILDINGS,HOMEWORLD_DISTRICTS,HOMEWORLD_STREET
  type HomeworldFootprint} from './homeworldCity';
 import {homeworldBuildingTouchesV76,homeworldBuildingDoorwayV64,homeworldBuildingGroundFrameV76,homeworldBuildingFootprintV64,homeworldProjectGroundV64} from './homeworldGeometryV64';
 import {HOMEWORLD_POINTS,type HomeworldPoint} from './homeworld';
-import {HOMEWORLD_RESIDENTS_V69,homeworldResidentPoseV69} from './homeworldLifeV69';
+import {HOMEWORLD_RESIDENTS_V69} from './homeworldLifeV69';
+import {homeworldCivilianPoseV84} from './homeworldCivilianRoutinesV84';
 import {HOMEWORLD_FRONTAGE_ITEMS_V75} from './homeworldArchitectureV75';
 import {homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
 import {HOMEWORLD_EXTERIOR_MODULES_V76,homeworldExteriorTouchesV76,homeworldExteriorFootprintV76} from './homeworldExteriorDecorV76';
@@ -19,6 +20,7 @@ import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81,HOMEWORLD_LEGACY_EXTERIOR_PLACEMENT
 import {HOMEWORLD_RETAINING_SUPPORTS_V82,homeworldRetainingTouchesV82} from './homeworldRetainingAssembliesV82';
 import {homeworldTransitFractionsV82} from './homeworldTransitJourneyV82';
 import {configureHomeworldStreetDecorV83,homeworldStreetDecorCollisionV83} from './homeworldStreetDecorV83';
+import {homeworldStreetDecorCollisionV84,type HomeworldStreetDecorReserveV84,type HomeworldStreetDecorPlacementInputV84} from './homeworldStreetDecorV84';
 import {HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78} from './homeworldUrbanLayoutV78';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 
@@ -50,7 +52,7 @@ export const HOMEWORLD_FRONTAGE_V77=HOMEWORLD_FRONTAGE_ITEMS_V75
 export const HOMEWORLD_EXTERIOR_V77=HOMEWORLD_EXTERIOR_MODULES_V76.map(item=>({...item,...move(item,item.districtId),...HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82[item.id],levelId:homeworldDistrictLevelV77(item.districtId)}));
 export const HOMEWORLD_RESIDENTS_V77=HOMEWORLD_RESIDENTS_V69.map(resident=>({...resident,
  levelId:homeworldDistrictLevelV77(resident.districtId),path:(HOMEWORLD_RESIDENT_PATH_REVISIONS_V81[resident.id]??resident.path).map(point=>move(point,resident.districtId))}));
-export const homeworldResidentPoseV77=homeworldResidentPoseV69;
+export const homeworldResidentPoseV77=homeworldCivilianPoseV84;
 export function nearestHomeworldResidentV77(levelId:HomeworldLevelV77,actor:HomeworldVec2,seconds:number){
  return HOMEWORLD_RESIDENTS_V77.filter(r=>r.levelId===levelId).map(resident=>({resident,p:homeworldResidentPoseV77(resident,seconds)})).filter(item=>Math.hypot(item.p.x-actor.x,item.p.y-actor.y)<100).sort((a,b)=>Math.hypot(a.p.x-actor.x,a.p.y-actor.y)-Math.hypot(b.p.x-actor.x,b.p.y-actor.y))[0]?.resident??null;
 }
@@ -165,6 +167,7 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
  return[[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>{const p={x:point.x+x*Math.max(0,body.halfWidth),y:point.y+y*Math.max(0,body.halfDepth)};return regions.some(g=>p.x>=g.left&&p.x<=g.right&&p.y>=g.top&&p.y<=g.bottom&&pointInHomeworldPolygon(p,g.polygon));});
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
+ const streetDecorV84=homeworldStreetDecorCollisionV84(levelId,point,body);if(streetDecorV84)return{kind:'prop',id:streetDecorV84};
  const streetDecor=homeworldStreetDecorCollisionV83(levelId,point,body);if(streetDecor)return{kind:'prop',id:streetDecor};
  for(const support of HOMEWORLD_RETAINING_SUPPORTS_V82)if(support.levelId===levelId&&homeworldRetainingTouchesV82(support,point,body))return{kind:'prop',id:support.id};
  if(levelId==='0')for(const base of HOMEWORLD_LAVA_BASES_V77)if(touches(point,body,base.footprint))return{kind:'prop',id:base.id};
@@ -281,7 +284,7 @@ export const HOMEWORLD_ART_GAPS_V77={council:'V81 native Council hall and public
  * supports/volumes are available. Runtime placement policy protects preserved
  * doors, routes, sockets and closed scenery parcels; rejected candidates are
  * retained by the provider. This initialization is not a QA execution. */
-configureHomeworldStreetDecorV83({
+const homeworldStreetDecorBaseInputV83:Parameters<typeof configureHomeworldStreetDecorV83>[0]={
  terrain:(level,point,body)=>[[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>{
   const p={x:point.x+x*body.halfWidth,y:point.y+y*body.halfDepth};
   return homeworldTerrainV77(level,p,{halfWidth:0,halfDepth:0})||HOMEWORLD_URBAN_GROUND_V78.some(g=>g.levelId===level&&pointInHomeworldPolygon(p,g.polygon));
@@ -299,4 +302,16 @@ configureHomeworldStreetDecorV83({
   ...frontageBoundsV77.map(({item,box})=>({id:item.id,levelId:item.levelId,polygon:homeworldUrbanRectV78(box.left,box.top,box.right,box.bottom)})),
   ...exteriorBoundsV77.map(({item,box})=>({id:item.id,levelId:item.levelId,polygon:homeworldUrbanRectV78(box.left,box.top,box.right,box.bottom)})),
  ],
-});
+};
+configureHomeworldStreetDecorV83(homeworldStreetDecorBaseInputV83);
+/** V84 calls this context only after old V78/V80 furniture has compiled.
+ * The old V83 initializer stays unchanged. No transit/door/motor is rewritten. */
+export function homeworldStreetDecorWorldInputV84(extra:readonly HomeworldStreetDecorReserveV84[]):HomeworldStreetDecorPlacementInputV84{
+ return{...homeworldStreetDecorBaseInputV83,reserves:[...homeworldStreetDecorBaseInputV83.reserves,
+  ...oldRoads.filter(s=>s.kind!=='court'&&!s.id.startsWith('forecourt-v76:')).map(s=>({id:'preserved-road:'+s.id,levelId:s.levelId,polygon:s.polygon})),
+  {id:'port-main-throughfare-v84',levelId:'0',polygon:homeworldUrbanCorridorV78({x:3100,y:5400},{x:7800,y:5400},96,96)},
+  ...HOMEWORLD_CONNECTOR_PADS_V82.map(p=>({id:'preserved-landing:'+p.id,levelId:p.levelId,polygon:p.polygon})),
+  ...HOMEWORLD_GROUND_V77.filter(g=>g.id==='council-stair-lower-landing'||g.id.startsWith('council-stair-upper-terrace')).map(g=>({id:'preserved-council-landing:'+g.id,levelId:g.levelId,polygon:g.polygon})),
+  ...extra,
+ ]};
+}

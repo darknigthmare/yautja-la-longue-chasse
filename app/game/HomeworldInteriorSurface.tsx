@@ -14,6 +14,7 @@ import HomeworldInteriorDecorV76 from './HomeworldInteriorDecorV76';
 import HomeworldCntlipHostsV77 from './HomeworldCntlipHostsV77';
 import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import { HOMEWORLD_STREET_DECOR_ART_V83, homeworldStreetDecorPolygonV83 } from './systems/homeworldStreetDecorV83';
+import { homeworldPortNativePropArtV84, homeworldPortNativePolygonV84 } from './systems/homeworldPortPublicComplexV84';
 import styles from './HomeworldCity.module.css';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
@@ -34,6 +35,9 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
       data-homeworld-public-complex-v83={room.publicComplexV83?.kind}
       data-homeworld-public-complex-spaces-v83={room.publicComplexV83?room.zones?.length:undefined}
       data-homeworld-public-complex-validation-v83={room.publicComplexV83?.validation}
+      data-homeworld-port-complex-v84={room.portComplexV84?.kind}
+      data-homeworld-port-complex-spaces-v84={room.portComplexV84?room.zones?.length:undefined}
+      data-homeworld-port-complex-validation-v84={room.portComplexV84?.validation}
       data-homeworld-secondary-interior-v74={room.secondaryLayoutV74?room.buildingId:undefined}
       data-homeworld-layout-archetype-v74={room.secondaryLayoutV74?.archetype}
       data-homeworld-layout-spaces-v74={room.secondaryLayoutV74?room.zones?.length:undefined} style={{
@@ -65,6 +69,18 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
         data-native-interior-facing-v83={art.facing} data-native-interior-validation-v83={room.publicComplexV83?.validation}
         data-native-interior-ground-v83={polygon.map(p=>`${p.x},${p.y}`).join(' ')} title={`${item.label} · ${item.purpose}`}>
         <HomeworldNativePropV64 id={item.id} artId={`interior-v83:${item.artId}`} art={art} x={pivot.x} y={pivot.y}
+          depth={item.y} heightWorld={art.heightWorld*item.scale} style={{opacity:faded?.28:1}}/>
+      </span>;
+    })}
+    {(room.portComplexV84?.nativeProps??[]).map(item=>{
+      const art=homeworldPortNativePropArtV84(item),pivot=homeworldProjectGroundV64(item),polygon=homeworldPortNativePolygonV84(item);
+      const left=Math.min(...polygon.map(p=>p.x)),right=Math.max(...polygon.map(p=>p.x));
+      const faded=actorPosition.y<item.y&&actorPosition.x>left-24&&actorPosition.x<right+24
+        &&(item.y-actorPosition.y)*HOMEWORLD_GEOMETRY_V64.depthScale<art.heightWorld*item.scale+16;
+      return <span key={item.id} data-homeworld-native-interior-prop-v84={item.id}
+        data-native-interior-facing-v84={art.facing} data-native-interior-validation-v84={room.portComplexV84?.validation}
+        data-native-interior-ground-v84={polygon.map(p=>`${p.x},${p.y}`).join(' ')} title={`${item.label} · ${item.purpose}`}>
+        <HomeworldNativePropV64 id={item.id} artId={`interior-v84:${item.artId}`} art={art} x={pivot.x} y={pivot.y}
           depth={item.y} heightWorld={art.heightWorld*item.scale} style={{opacity:faded?.28:1}}/>
       </span>;
     })}

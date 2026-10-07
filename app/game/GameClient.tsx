@@ -255,6 +255,8 @@ const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
+const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
+const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85"));
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
@@ -298,6 +300,8 @@ type Screen =
   | "game-reserve"
   | "title"
   | "clan-chronicle"
+  | "clan-war"
+  | "sprite-library"
   | "ship"
   | "deck"
   | "homeworld"
@@ -1045,6 +1049,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const stationDialogRef = useRef<HTMLDivElement | null>(null);
   const missionSettlementRef = useRef(false);
   const [quickAccessOpen, setQuickAccessOpen] = useState(false);
+  const [archiveReturnV85, setArchiveReturnV85] = useState<"deck" | "homeworld">("homeworld");
   const [briefingAtAirlock, setBriefingAtAirlock] = useState(false);
   const [shipDrillActive, setShipDrillActive] = useState(false);
   const shipStationOpen = screen === "ship" || screen === "map" ||
@@ -1052,7 +1057,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -3141,10 +3146,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); setCompleteImportPlan(null); ++archiveSelectionRef.current; setArchiveTransferBusy(false); }
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
     else if (screen === "clan-chronicle") go(chronicleReturnScreen);
+    else if (screen === "clan-war" || screen === "sprite-library") go(archiveReturnV85);
     else if (newGamePhase === "identity") void returnToMainMenu();
     else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
     else if (screen !== "title") go("deck");
-  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen]);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
   useEffect(() => {
     if (screen !== "clan-chronicle" || settingsOpen) return;
     const onBack = (event: KeyboardEvent) => {
@@ -3247,7 +3253,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       data-campaign-location={campaignLocation}
       data-campaign-owner={entry.ownerCreatedAt}
     >
-      <div hidden={screen === "homeworld"} inert={shipStationOpen || settingsOpen}>{topBar}</div>
+      <div hidden={screen === "homeworld" || screen === "sprite-library"} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
+
+      {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
+        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} /></Suspense>
+      </section>}
+      {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
+        <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
+      </Suspense>}
 
       {screen === "game-reserve" && hydrated && save.gameReserveV66 && <section inert={settingsOpen} data-game-reserve-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
@@ -3435,6 +3448,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
+                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("homeworld"); setScreen("clan-war"); }}>Guerres des clans · exercices</button>
+                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("homeworld"); setScreen("sprite-library"); }}>Archives visuelles</button>
                 </>}
                 welcome={save.prologue?.status === "completed" && <section className="save-transfer" aria-label="Accueil Unblooded" data-unblooded-welcome>
                 <h2>{campaignWelcomeV69(save).title}</h2>
@@ -3514,6 +3529,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={openPit}>
                   THE PIT · combat
                 </button>
+                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("clan-war"); }}>Guerres des clans · exercices</button>
+                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("sprite-library"); }}>Archives visuelles</button>
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
                   Pause / réglages
                 </button>

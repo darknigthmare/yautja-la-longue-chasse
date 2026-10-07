@@ -28,7 +28,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 import HomeworldWorldSceneV77 from './HomeworldWorldSceneV77';
 import HomeworldWorldMapV77 from './HomeworldWorldMapV77';
 import {HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_RESIDENTS_V77,
- nearestHomeworldDoorV77,nearestHomeworldPointV77,nearestHomeworldResidentV77,districtAtHomeworldActorV77,
+ nearestHomeworldDoorV77,nearestHomeworldPointV77,nearestHomeworldResidentV77,homeworldResidentPoseV77,districtAtHomeworldActorV77,
  homeworldLevelV77,projectHomeworldWorldV77,homeworldCameraWorldV77,
  beginHomeworldTransitV77,stepHomeworldTransitV77,nearestHomeworldConnectorV77,homeworldWorldArrivalV77,
  HOMEWORLD_CONNECTORS_V77,beginHomeworldSkiffV77,stepHomeworldSkiffV77,type HomeworldSkiffV77,type HomeworldLevelV77,type HomeworldTransitV77} from './systems/homeworldWorldV77';
@@ -36,6 +36,7 @@ import {resolveHomeworldLocationV77,createHomeworldCheckpointV77} from './system
 import {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './systems/homeworldCivicWorldV80';
 import {HOMEWORLD_CIVIC_SCENE_SOURCES_V80} from './systems/homeworldCivicDecorV80';
 import {homeworldCivicNeighborhoodV80} from './systems/homeworldCivicNeighborhoodsV80';
+import {homeworldCivilianRoutineV84} from './systems/homeworldCivilianRoutinesV84';
 import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82} from './systems/homeworldConnectorArtV82';
 import {HOMEWORLD_BACKDROP_SCENE_SOURCES_V82} from './systems/homeworldBackdropArtV82';
@@ -47,6 +48,7 @@ import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacemen
 import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
 import {HOMEWORLD_NATIVE_SCENE_SOURCES_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83} from './systems/homeworldStreetDecorV83';
+import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84} from './systems/homeworldStreetDecorV84';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
@@ -99,7 +101,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -663,6 +665,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   };
   const selectedPoint = dialog?.point;
   const selectedResidentV68 = HOMEWORLD_RESIDENTS_V77.find(resident => resident.id === dialog?.residentId);
+  const selectedResidentRoutineV84 = selectedResidentV68 ? homeworldCivilianRoutineV84(selectedResidentV68) : null;
+  const selectedResidentPoseV84 = selectedResidentV68 ? homeworldResidentPoseV77(selectedResidentV68, phase) : null;
   const nearbyResidentV68 = !interior ? nearestHomeworldResidentV77(levelIdV77, actor, phase) : null;
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
   const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
@@ -882,7 +886,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
               <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
             </div>)}
           </section>}
-        </> : selectedResidentV68 ? <HomeworldResidentConversationV75 key={selectedResidentV68.id} resident={selectedResidentV68} seconds={phase} paused={suspended || paused || inactive} onLandmark={requestLandmarkV75} /> : youthWelcome ? <>
+        </> : selectedResidentV68 ? <>
+          <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>
+            {selectedResidentPoseV84?.phaseLabel}{selectedResidentRoutineV84?.groupLabel ? ` · ${selectedResidentRoutineV84.groupLabel}` : ''}.
+          </p>
+          <HomeworldResidentConversationV75 key={selectedResidentV68.id} resident={selectedResidentV68} seconds={phase} paused={suspended || paused || inactive} onLandmark={requestLandmarkV75} />
+        </> : youthWelcome ? <>
           <h4>Parcours Unblooded</h4><p>{youthObjective}</p><p>{youthEquipmentSummary(save.youthTraining)}</p>
           <ul><li>{youthChiefMet ? "✓" : "○"} Rencontre du chef à la Citadelle.</li><li>{youthMentorMet ? "✓" : "○"} Rencontre de l’instructeur après l’accueil du chef.</li></ul>
           <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le journal montre uniquement les étapes réellement jouées : aucune formation ni remise d’équipement n’est validée par sa lecture.</p>

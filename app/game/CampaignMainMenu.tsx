@@ -25,8 +25,10 @@ function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onB
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
 }
-export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode}:{
+export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode,onOpenClanWar,onOpenSprites}:{
  onMausoleum?:()=>void;
+ onOpenClanWar?:()=>void;
+ onOpenSprites?:()=>void;
  catalog:CampaignCatalogView|null;busy:boolean;message:string|null;onRefresh:()=>void;
  onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
  onReplace?:(slotId:number,name:string,expectedRevision:number,expectedOwnerCreatedAt:string)=>void;
@@ -37,7 +39,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
 }){
  const [view,setView]=useState<'main'|'new'|'load'>('main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
  const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;recovery?:boolean}|null>(null);
- const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|null>(null);
+ const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|'clan-war'|null>(null);
  const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
  const back=useCallback(()=>{if(busy)return;if(spoilerMode)setSpoilerMode(null);else if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else setView('main');},[busy,confirmation,replacement,spoilerMode]);
  useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation||replacement||spoilerMode)}:${busy}`,back);
@@ -77,6 +79,8 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
       <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="the-pit" data-story-unlocked={modeAccess?.['the-pit']===true} onClick={event=>requestGameMode('the-pit',event.currentTarget)}><span className={styles.actionTitle}>The Pit</span><small>Duels, roster, arènes et chroniques des chasseurs{!modeAccess?.['the-pit']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
       <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="game-reserve" data-story-unlocked={modeAccess?.['game-reserve']===true} onClick={event=>requestGameMode('game-reserve',event.currentTarget)}><span className={styles.actionTitle}>Game Reserve Planet</span><small>Expédition de chasse sur la réserve de Vharuun{!modeAccess?.['game-reserve']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      </>}
+     {onOpenClanWar&&<button className={styles.gameMode} type="button" disabled={busy} onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setSpoilerMode('clan-war');}}><span className={styles.actionTitle}>Guerres des clans</span><small>Exercices libres · formations, canyon et stratégie de Korthas · contient des spoilers</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+     {onOpenSprites&&<button type="button" disabled={busy} onClick={onOpenSprites}><span className={styles.actionTitle}>Archives visuelles</span><small>Clans, personnages, faune, vaisseaux et matériaux importés</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
      <button type="button" disabled={busy} onClick={openCloudAccountV71}><span className={styles.actionTitle}>Compte & sauvegardes</span><small>Synchroniser mobile et ordinateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      {onMausoleum&&<button type="button" disabled={busy} onClick={onMausoleum}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
      <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
@@ -111,10 +115,10 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
    </footer>
   </div>
   {spoilerMode&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="alertdialog" aria-modal="true" aria-labelledby="game-mode-spoiler-title" aria-describedby="game-mode-spoiler-description" data-main-menu-spoiler={spoilerMode} onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>
-   <p className={styles.eyebrow}>Accès anticipé · spoilers</p><h2 id="game-mode-spoiler-title">Entrer dans {MAIN_MENU_MODE_LABELS_V81[spoilerMode]} ?</h2>
-   <p id="game-mode-spoiler-description">Vous n’avez pas encore atteint le palier nécessaire dans votre histoire actuelle. Ce mode peut révéler des chasseurs, des lieux, des armes ou des événements que vous n’avez pas encore découverts.</p>
+   <p className={styles.eyebrow}>Accès anticipé · spoilers</p><h2 id="game-mode-spoiler-title">Entrer dans {spoilerMode==='clan-war'?'Guerres des clans':MAIN_MENU_MODE_LABELS_V81[spoilerMode]} ?</h2>
+   <p id="game-mode-spoiler-description">{spoilerMode==='clan-war'?'Ces exercices sont indépendants des mandats débloqués dans votre histoire.':'Vous n’avez pas encore atteint le palier nécessaire dans votre histoire actuelle.'} Ce mode peut révéler des chasseurs, des lieux, des armes ou des événements que vous n’avez pas encore découverts.</p>
    <p>Voulez-vous continuer malgré les spoilers ? Vous jouerez dans un profil libre local séparé. Votre campagne et ses cinq emplacements restent inchangés ; aucun palier de l’histoire ne sera débloqué.</p>
-   <div className={styles.dialogActions}><button type="button" disabled={busy} data-spoiler-cancel onClick={()=>setSpoilerMode(null)}>Revenir au menu</button><button type="button" disabled={busy} data-spoiler-confirm onClick={()=>{const mode=spoilerMode;setSpoilerMode(null);onOpenGameMode?.(mode,true);}}>Accéder malgré les spoilers</button></div>
+   <div className={styles.dialogActions}><button type="button" disabled={busy} data-spoiler-cancel onClick={()=>setSpoilerMode(null)}>Revenir au menu</button><button type="button" disabled={busy} data-spoiler-confirm onClick={()=>{const mode=spoilerMode;setSpoilerMode(null);if(mode==='clan-war')onOpenClanWar?.();else onOpenGameMode?.(mode,true);}}>Accéder malgré les spoilers</button></div>
   </section></div>}
   {replacement&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="campaign-replace-title" onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>
    <p className={styles.eyebrow}>{replacement.recovery?'Récupération des archives':'Remplacement d’une campagne'}</p><h2 id="campaign-replace-title">{replacement.recovery?`Repartir dans la partie ${replacement.slot.id} ?`:`Remplacer la partie ${replacement.slot.id} ?`}</h2>

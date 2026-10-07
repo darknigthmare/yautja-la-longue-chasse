@@ -32,6 +32,8 @@ import {HOMEWORLD_COURT_ART_V80} from './systems/homeworldCourtArtV80';
 import {HOMEWORLD_NATURAL_MODULES_V80} from './systems/homeworldNaturalPlacementsV80';
 import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_STREET_DECOR_ART_V83,HOMEWORLD_STREET_DECOR_PROPS_V83} from './systems/homeworldStreetDecorV83';
+import {HOMEWORLD_STREET_DECOR_ART_V84} from './systems/homeworldStreetDecorV84';
+import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './systems/homeworldStreetDecorMountV84';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
 const visible=(box:{left:number;top:number;width:number;height:number},camera:Camera)=>box.left+box.width>=camera.x-160&&box.left<=camera.x+camera.viewWidth+160&&box.top+box.height>=camera.y-160&&box.top<=camera.y+camera.viewHeight+160;
@@ -98,6 +100,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {HOMEWORLD_RETAINING_SUPPORTS_V82.filter(support=>painted(support.levelId)).map(support=><HomeworldRetainingSupportV82 key={support.id} support={support} camera={camera}/>)}
   {HOMEWORLD_CIVIC_PROPS_V80.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CIVIC_ART_V80[item.artId];return prop(item.id,'civic-native-v80:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_DECOR_PROPS_V83.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V83[item.artId];return prop(item.id,'street-native-v83:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
+  {HOMEWORLD_STREET_DECOR_PROPS_V84.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V84[item.artId];return prop(item.id,'street-native-v84:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{
@@ -110,8 +113,9 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    if(!visible({left:p.x-100,top:p.y-130,width:200,height:150},camera))return null;
    if(paintedBuildings.some(b=>{if(b.levelId!==resident.levelId||pose.y>=homeworldBuildingRenderDepthV76(b,pose))return false;if(b.art.opaqueRowsV76)return homeworldBuildingCoversPaintV76(b,pose);const bounds=homeworldBuildingVisibleBoundsV72(b),foot=homeworldProjectGroundV64(pose);return foot.x>bounds.left&&foot.x<bounds.left+bounds.width&&foot.y>bounds.top&&foot.y<bounds.top+bounds.height;}))return null;
    return <span key={resident.id} className={styles.residentV68} data-homeworld-resident={resident.id} data-world-level-v77={resident.levelId}
+    data-routine-phase-v84={pose.phase} data-routine-family-v84={pose.routineFamily} data-routine-group-v84={pose.groupId??undefined} data-routine-dwell-v84={pose.dwellRemainingSeconds}
     data-x={pose.x} data-y={pose.y} data-moving={pose.moving} style={{left:p.x,top:p.y,zIndex:depth(resident.levelId,pose.y)}}>
-    <HomeworldCivilianV72 role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={seconds+resident.phaseSeconds} speed={resident.speed}/>
+    <HomeworldCivilianV72 role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={pose.motionSeconds} reducedMotion={reducedMotion} speed={resident.speed}/>
    </span>;
   })}
   {HOMEWORLD_CONNECTORS_V77.filter(connector=>painted(connector.from.levelId)||painted(connector.to.levelId)).map(connector=>{

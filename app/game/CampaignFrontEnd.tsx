@@ -12,6 +12,8 @@ import {withArchiveTransferLock} from './systems/archiveTransaction';
 import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,replaceCampaignSlot,recoverCampaignWorkspace,recoverAsNewCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
 const Mausoleum=lazy(()=>import("./Mausoleum"));
 const BonusModes=lazy(()=>import('./MainMenuBonusModesV81'));
+const ClanWarPanelV85=lazy(()=>import('./ClanWarPanelV85'));
+const RecentSpriteLibraryV85=lazy(()=>import('./RecentSpriteLibraryV85'));
 export interface CampaignSessionEntry {slotId:CampaignSlotId;ownerCreatedAt:string;token:string;location:CampaignResumeLocation;menuMode?:MainMenuGameModeV81}
 function currentModeCampaign(catalog:CampaignSlotCatalog):SaveGame|null{
  const loaded=loadSaveWithStatus();
@@ -21,6 +23,7 @@ function currentModeCampaign(catalog:CampaignSlotCatalog):SaveGame|null{
 export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:ComponentType<{entry:CampaignSessionEntry;onMainMenu:()=>void}>}){
  const [catalog,setCatalog]=useState<CampaignSlotCatalog|null>(null),[entry,setEntry]=useState<CampaignSessionEntry|null>(null),[busy,setBusy]=useState(true),[message,setMessage]=useState<string|null>(null);
  const [mausoleumOpen,setMausoleumOpen]=useState(false);
+ const [clanWarOpen,setClanWarOpen]=useState(false),[spritesOpen,setSpritesOpen]=useState(false);
  const [modeCampaign,setModeCampaign]=useState<SaveGame|null>(null),[bonusMode,setBonusMode]=useState<MainMenuGameModeV81|null>(null);
  const [modeContext,setModeContext]=useState<ChronicleAccessContext>({personalShipAvailable:false});
  const alive=useRef(true),operation=useRef(false),generation=useRef(0);
@@ -64,11 +67,14 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  },[run]);
  const validId=(id:number):id is CampaignSlotId=>CAMPAIGN_SLOT_IDS.includes(id as CampaignSlotId);
  if(bonusMode)return <Suspense fallback={<p role="status">Ouverture du mode libre…</p>}><BonusModes key={bonusMode} mode={bonusMode} settings={modeCampaign?.settings??defaultSave().settings} onExit={showMenu} /></Suspense>;
+ if(clanWarOpen)return <Suspense fallback={<p role="status">Ouverture des exercices des clans…</p>}><ClanWarPanelV85 save={modeCampaign??defaultSave()} onClose={()=>setClanWarOpen(false)} /></Suspense>;
+ if(spritesOpen)return <Suspense fallback={<p role="status">Ouverture des archives visuelles…</p>}><RecentSpriteLibraryV85 onClose={()=>setSpritesOpen(false)} /></Suspense>;
  if(mausoleumOpen)return <Suspense fallback={<p role="status">Ouverture des archives…</p>}><Mausoleum save={null} source="menu" onExit={()=>setMausoleumOpen(false)} /></Suspense>;
  if(entry)return <SessionComponent key={entry.token} entry={entry} onMainMenu={showMenu} />;
  return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh}
   modeAccess={mainMenuModeAccessV81(modeCampaign,modeContext)} onOpenGameMode={openGameMode}
   onMausoleum={()=>setMausoleumOpen(true)}
+  onOpenClanWar={()=>setClanWarOpen(true)} onOpenSprites={()=>setSpritesOpen(true)}
   onCreate={(id,name)=>{if(!validId(id))return;void run(async()=>{const created=await createCampaignSlot(id,name);if(!created.ok||!created.checkpoint)return created;const slot=created.catalog.slots.find(s=>s.id===id)!;return activateCampaignCheckpoint(id,created.checkpoint.id,{expectedRevision:slot.revision});},true);}}
   onContinue={id=>{if(!validId(id))return;const slot=catalog?.slots.find(s=>s.id===id);if(!slot?.lastCheckpointId)return;void run(()=>catalog?.activeSlotId===id?continueCampaignSlot(id,{expectedRevision:slot.revision,location:slot.checkpoints.find(checkpoint=>checkpoint.id===slot.lastCheckpointId)?.resumeLocation}):activateCampaignCheckpoint(id,slot.lastCheckpointId!,{expectedRevision:slot.revision}),true);}}
   onLoad={(id,checkpointId,expectedRevision)=>{if(!validId(id))return;void run(()=>activateCampaignCheckpoint(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}

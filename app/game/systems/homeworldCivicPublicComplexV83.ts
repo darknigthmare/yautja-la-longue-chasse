@@ -17,13 +17,11 @@ type Pose = readonly [x: number, y: number];
 
 /** Local interior contact uses the same native polygon as drawing and codex.
  * Zero-width/depth queries are supported without adding imaginary body size. */
-export function homeworldInteriorNativeTouchesV83(room: HomeworldInteriorV64, point: { x: number; y: number }, body: { halfWidth: number; halfDepth: number }): boolean {
+export function homeworldInteriorNativePolygonTouchesV83(polygon: readonly { x: number; y: number }[], point: { x: number; y: number }, body: { halfWidth: number; halfDepth: number }): boolean {
   const rectangle = [{ x: point.x - body.halfWidth, y: point.y - body.halfDepth },
     { x: point.x + body.halfWidth, y: point.y - body.halfDepth },
     { x: point.x + body.halfWidth, y: point.y + body.halfDepth },
     { x: point.x - body.halfWidth, y: point.y + body.halfDepth }];
-  return (room.publicComplexV83?.nativeProps ?? []).some(item => {
-    const polygon = homeworldStreetDecorPolygonV83(item);
     for (const shape of [polygon, rectangle]) for (let index = 0; index < shape.length; index++) {
       const a = shape[index], b = shape[(index + 1) % shape.length], nx = a.y - b.y, ny = b.x - a.x;
       if (!nx && !ny) continue;
@@ -31,7 +29,9 @@ export function homeworldInteriorNativeTouchesV83(room: HomeworldInteriorV64, po
       if (Math.max(...nativeProjection) <= Math.min(...actorProjection) || Math.max(...actorProjection) <= Math.min(...nativeProjection)) return false;
     }
     return true;
-  });
+}
+export function homeworldInteriorNativeTouchesV83(room: HomeworldInteriorV64, point: { x: number; y: number }, body: { halfWidth: number; halfDepth: number }): boolean {
+  return (room.publicComplexV83?.nativeProps ?? []).some(item => homeworldInteriorNativePolygonTouchesV83(homeworldStreetDecorPolygonV83(item), point, body));
 }
 
 /** Three different public plans within their existing exterior envelopes.

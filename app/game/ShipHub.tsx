@@ -12,6 +12,9 @@ import {
 import { controlActionShortcut } from "./controlBindingLabels";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
+import ShipRecoveredGalleryV85 from "./ShipRecoveredGalleryV85";
+import ShipOperationsPanelV85, { type ShipOperationPresentationV85 } from "./ShipOperationsPanelV85";
+import DialogueBibleReaderV85, { type DialogueBibleSourceV85 } from "./DialogueBibleReaderV85";
 import {
   DEFAULT_SHIP_ID,
   SHIP_CATALOGUE,
@@ -136,11 +139,16 @@ export interface ShipHubProps {
   controlBindings?: ControlBindings;
   /** Omit for a self-persisting sidecar; provide for controlled integration. */
   progression?: ShipProgressionState;
+  /** Acquired spatial contracts supply their actual capacity and return receipts. */
+  operation?: ShipOperationPresentationV85;
+  /** Supply only an explicitly approved public corpus; omitted means local review. */
+  dialogueSource?: DialogueBibleSourceV85;
   initialRoomId?: ShipRoomId;
   /** Embedded installations return to the physical deck instead of the legacy bridge. */
   embedded?: boolean;
   /** Prevent controls from reaching an installation behind settings or another modal. */
   suspended?: boolean;
+  /** A nested drill, source reader or full-size ship inspection owns focus and input. */
   onTrainingActiveChange?: (active: boolean) => void;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
@@ -216,6 +224,8 @@ export default function ShipHub({
   save,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   progression: controlledProgression,
+  operation,
+  dialogueSource,
   initialRoomId = "bridge-map",
   embedded = false,
   suspended = false,
@@ -252,15 +262,16 @@ export default function ShipHub({
   );
   const [trainingSession, setTrainingSession] =
     useState<TrainingSession | null>(null);
+  const [shipInspectionActive, setShipInspectionActive] = useState(false);
   const rootRef = useRef<HTMLElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
 
   // A nested drill owns focus and input; let the host disable its outer toolbar.
   useEffect(() => {
-    onTrainingActiveChange?.(trainingSession !== null);
+    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive);
     return () => onTrainingActiveChange?.(false);
-  }, [onTrainingActiveChange, trainingSession]);
+  }, [onTrainingActiveChange, trainingSession, shipInspectionActive]);
 
   const progression =
     controlledProgression ?? localProgression;
@@ -846,6 +857,7 @@ export default function ShipHub({
       !gamepadEnabled ||
       suspended ||
       trainingSession !== null ||
+      shipInspectionActive ||
       typeof navigator === "undefined"
     ) {
       gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
@@ -921,11 +933,12 @@ export default function ShipHub({
     selectRoom,
     suspended,
     trainingSession,
+    shipInspectionActive,
   ]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if (suspended || trainingSession !== null) return;
+      if (suspended || trainingSession !== null || shipInspectionActive) return;
       if (event.repeat || event.defaultPrevented) return;
       const target = event.target;
       if (
@@ -993,6 +1006,7 @@ export default function ShipHub({
       selectRoom,
       suspended,
       trainingSession,
+      shipInspectionActive,
     ],
   );
 
@@ -1066,7 +1080,13 @@ export default function ShipHub({
               progression={progression}
               clan={clan}
               inspectedShipId={inspectedShipId}
+              suspended={suspended}
+              onInspectionActiveChange={setShipInspectionActive}
             />
+            {(activeRoomId === "bridge-map" || activeRoomId === "hangar") && <ShipOperationsPanelV85
+              save={save} shipId={progression.selectedShipId} operation={operation} exerciseSourceUrl={dialogueSource?.shipsUrl} suspended={suspended}
+              onOpenMap={onOpenMap} onOpenArmory={onOpenArmory} onOpenArchives={onOpenArchives} onRoomChange={selectRoom} />}
+            {activeRoomId === "archives" && <DialogueBibleReaderV85 source={dialogueSource} suspended={suspended} onActiveChange={setShipInspectionActive} />}
           </div>
 
           <div>
@@ -1141,12 +1161,16 @@ function RoomSummary({
   progression,
   clan,
   inspectedShipId,
+  suspended,
+  onInspectionActiveChange,
 }: {
   roomId: ShipRoomId;
   save: SaveGame;
   progression: ShipProgressionState;
   clan: ReturnType<typeof evaluateClanProgression>;
   inspectedShipId: ShipId;
+  suspended: boolean;
+  onInspectionActiveChange: (active: boolean) => void;
 }) {
   if (roomId === "bridge-map") {
     return (
@@ -1302,6 +1326,7 @@ function RoomSummary({
             ["Catalogue", SHIP_CATALOGUE.length.toString()],
           ]}
         />
+        <ShipRecoveredGalleryV85 key={inspectedShip.id} shipId={inspectedShip.id} suspended={suspended} onActiveChange={onInspectionActiveChange} />
       </>
     );
   }
