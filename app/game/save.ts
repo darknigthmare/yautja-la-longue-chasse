@@ -19,6 +19,7 @@ import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
 import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
+import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1283,6 +1284,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.shipPreparationV88 === undefined ? {} : {
       shipPreparationV88: normalizeShipPreparationV88(source.shipPreparationV88, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
+    ...(source.shipAcquisitionV89 === undefined ? {} : {
+      shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
   };
 }
 
@@ -1420,6 +1424,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     const raw = value.shipPreparationV88;
     if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
     if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipPreparationV88(raw, value.createdAt)) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
+  // Refuse incompatible shipyard checkpoints instead of clearing their work
+  // during local import, complete archive export or account synchronization.
+  if (value.shipAcquisitionV89 !== undefined && value.shipAcquisitionV89 !== null) {
+    const raw = value.shipAcquisitionV89;
+    if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipAcquisitionV89(raw, value.createdAt)) {
       return { save: null, failure: "invalid-save" };
     }
   }

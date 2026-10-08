@@ -31,7 +31,7 @@ function fixture() {
   const focusedElement = {};
   const pad = { axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const environment = {
-    gamepadEnabled: true, suspended: false, trainingSession: null, shipInspectionActive: false,
+    gamepadEnabled: true, suspended: false, trainingSession: null, shipInspectionActive: false, shipFlightActive: false,
     embedded: true, safeActionIndex: 0, activeRoomId: "training",
     controlBindings: DEFAULT_CONTROL_BINDINGS, matchingControlActions,
     gamepadStateRef: { current: { previous: Array(6).fill(false), ready: false } },
@@ -106,6 +106,20 @@ test("ship archives own input until closed, and a held pad requires release on r
   assert.deepEqual(f.events, [["invoke", 0]], "a new deliberate confirm resumes ship controls");
 });
 
+test("an active flight owns ship input and its held return cannot leave the hub after closing", () => {
+  const f = fixture(); f.tick();
+  f.environment.shipFlightActive = true; f.render();
+  assert.equal(f.frames.size, 0, "the live flight cancels the underlying ship polling frame");
+  for (const key of ["Escape", "ArrowDown", "Enter"]) f.keyDown(keyEvent(key, key));
+  assert.deepEqual(f.events, [], "flight controls cannot also navigate or leave the underlying ship hub");
+  f.pad.buttons[1].pressed = true;
+  f.environment.shipFlightActive = false; f.render(); f.tick();
+  assert.deepEqual(f.events, [], "return held in the flight cannot leave the hub when it closes");
+  f.pad.buttons[1].pressed = false; f.tick();
+  f.pad.buttons[1].pressed = true; f.tick();
+  assert.deepEqual(f.events, [["deck"]], "release and a new deliberate return restores hub controls");
+});
+
 test("B returns an embedded installation to deck and preserves the standalone bridge behavior", () => {
   const f = fixture(); f.tick();
   f.pad.buttons[1].pressed = true; f.tick();
@@ -129,12 +143,19 @@ test("remapped installation return respects a nested drill and suspension", () =
   assert.equal(f.events.length, 1);
 });
 
-test("a drill notifies the host when it owns input and clears the flag on unmount", () => {
-  const states = [];
-  const environment = { trainingSession: { disciplineId: "mobility", seed: 1 }, shipInspectionActive: false, onTrainingActiveChange: (active) => states.push(active) };
-  const effect = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === "useEffect" && node.arguments[0]?.getText(tree).includes("onTrainingActiveChange"), environment);
-  const cleanup = effect(); assert.deepEqual(states, [true]);
-  cleanup(); assert.deepEqual(states, [true, false]);
+test("each nested ship activity notifies the host when it owns input and clears the flag on unmount", () => {
+  for (const activity of [
+    { trainingSession: { disciplineId: "mobility", seed: 1 } },
+    { shipInspectionActive: true },
+    { shipFlightActive: true },
+  ]) {
+    const states = [];
+    const environment = { trainingSession: null, shipInspectionActive: false, shipFlightActive: false,
+      ...activity, onTrainingActiveChange: (active) => states.push(active) };
+    const effect = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === "useEffect" && node.arguments[0]?.getText(tree).includes("onTrainingActiveChange"), environment);
+    const cleanup = effect(); assert.deepEqual(states, [true]);
+    cleanup(); assert.deepEqual(states, [true, false]);
+  }
 });
 
 test("deck pause follows saved keyboard bindings without repeat activation", () => {

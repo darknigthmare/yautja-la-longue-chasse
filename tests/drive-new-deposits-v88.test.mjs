@@ -143,7 +143,9 @@ test('the connected runtime library and codex expose complete references and all
  const qa=homeworldSceneSsrV78(),library=qa.load('app/game/systems/recentSpriteLibraryV85.ts');
  const codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeRecoveredFilesV88,2);
- assert.equal(library.RECENT_SPRITE_LIBRARY_V85.uniqueReferencedHashes,1871);
+ const referencesV89=JSON.parse(fs.readFileSync('app/game/data/driveNewDepositsSpritesV89.json','utf8'));
+ const oldHashes=new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!referencesV89.assets.some(reference=>reference.id===asset.id)).map(asset=>asset.sha256));
+ assert.equal(oldHashes.size,1871);
  for(const pack of data.packs)assert.equal(library.RECENT_SPRITE_LIBRARY_V85.packs.find(item=>item.id===pack.id)?.pngEntriesImported,1);
  for(const original of data.assets){
   const mounted=library.recentSpriteByIdV85(original.id);assert(mounted);

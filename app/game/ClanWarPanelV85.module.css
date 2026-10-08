@@ -12,3 +12,18 @@
 .infrastructureEffect { margin-top: .75rem; padding: .75rem; border-inline-start: 3px solid #cb9b54; background: rgba(11, 18, 21, .65); }
 .infrastructureEffect button { margin: .25rem .5rem .25rem 0; }
 .infrastructureLedger { margin-block: 1rem; padding: .75rem; border: 1px solid rgba(203, 155, 84, .35); }
+
+.terrainExercise{margin:22px 0;padding:20px;background:#13271f;border:1px solid #687d53}
+.terrainScene{border:1px solid #677258;background:#0d1b16;overflow:hidden;margin:18px 0}
+.terrainScene svg{display:block;width:100%;height:auto;min-height:230px}
+.terrainExercise .sectionHeader{margin-top:0}.terrainExercise>p{font-size:.86rem;color:#d0d6ba}
+.bridgeExercise{margin-top:18px;padding:16px;background:#10241e;border-top:2px solid #92a465}
+.anchorPositions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:14px 0}
+.anchorPositions p{padding:10px;border:1px solid #506245;margin:0;overflow-wrap:anywhere;font-size:.7rem}
+.anchorPositions p[data-anchor-state=placed]{background:#2c4428;border-color:#96ac6a}
+.anchorPositions strong,.anchorPositions small{display:block;margin:5px 0}
+.bridgeTransit{padding:12px;background:#263723;border:1px solid #9d9368;margin-top:12px}
+.bridgeRives{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.bridgeRives>div{padding:12px;border:1px solid #8a956b;background:#16261c;min-width:0}
+.bridgeRives strong,.bridgeRives span{display:block;font-size:.73rem;margin:6px 0;overflow-wrap:anywhere}
+@media(max-width:650px){.terrainExercise{padding:12px}.terrainScene svg{min-height:0}.anchorPositions{grid-template-columns:1fr}.bridgeExercise{padding:12px}.bridgeRives{gap:8px}}

@@ -151,7 +151,7 @@ test("optional extensions round-trip interrupted cargo and dated messages; older
   assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(moved)).state, moved);
   const sent = relay(), delivered = act(sent.state, { kind: "relay-intel", teamId: sent.messengerId, workId: sent.workId, recipientTeamId: sent.recipientId });
   assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(delivered)).state, delivered);
-  const older = structuredClone(rules); older.entries = older.entries.filter(entry => !["W3-S12", "W3-S17"].includes(entry.id)); assert.equal(api.warWorksDefinitionsV6(older).length, 6);
+  const older = structuredClone(rules); older.entries = older.entries.filter(entry => !["W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08"].includes(entry.id)); assert.equal(api.warWorksDefinitionsV6(older).length, 6);
   const legacy = api.createWarWorksV6(120, "W3-U17", older, "local"); assert.equal("infrastructure" in legacy, false);
   assert.deepEqual(api.createWarWorksV6(120, "W3-U17", rules, "local"), legacy); assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(legacy, older)).state, legacy);
   assert.equal(api.importWarWorksV87(api.exportWarWorksV87(moved), older).state, null);

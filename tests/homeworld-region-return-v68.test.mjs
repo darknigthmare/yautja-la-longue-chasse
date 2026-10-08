@@ -80,6 +80,10 @@ function fixture() {
     ...api, structuredClone, current: { current: arrival }, exiting: { current: false },
     held: { current: new Set(['ArrowLeft']) }, touch: { current: new Set(['left']) }, interact: { current: true },
     gamepad: { current: api.createHomeworldGamepadState() }, pauseRef: { current: false },
+    // Terminal-arrival fixtures have no cultural dialog open. The shipped
+    // pause callback reads this React ref before considering a checkpoint.
+    bibleOpenRef: { current: false },
+    bibleAction() { throw new Error('Arrival fixture must not manufacture an open cultural dialog'); },
     setPaused(value) { paused = value; }, setError(value) { error = value; },
     latest: { current: {
       suspended: false,

@@ -9,7 +9,7 @@ import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81, type MainMenuGame
 import type { ChronicleAccessContext } from './systems/clanChronicle';
 import {ARCHIVE_TRANSFER_JOURNAL_KEY} from './systems/archiveTransferGuard';
 import {withArchiveTransferLock} from './systems/archiveTransaction';
-import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,replaceCampaignSlot,recoverCampaignWorkspace,recoverAsNewCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
+import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,replaceCampaignSlot,recoverCampaignWorkspace,recoverAsNewCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,prepareCampaignSlotImport,importCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
 const Mausoleum=lazy(()=>import("./Mausoleum"));
 const BonusModes=lazy(()=>import('./MainMenuBonusModesV81'));
 const ClanWarPanelV85=lazy(()=>import('./ClanWarPanelV85'));
@@ -49,7 +49,7 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  const run=useCallback(async(action:()=>Promise<CampaignSlotResult>,enter:boolean,menuMode?:MainMenuGameModeV81)=>{if(operation.current)return;operation.current=true;setBusy(true);setMessage(null);const request=++generation.current;
   // The old session is removed before any transaction can replace its owner.
   flushSync(()=>setEntry(null));
-  try{const result=await action();if(!alive.current||generation.current!==request)return;setCatalog(result.catalog);setMessage(result.message);if(result.ok&&enter&&result.save&&result.slotId&&result.checkpoint){if(menuMode&&!mainMenuModeAccessV81(result.save,mainMenuBrowserShipContextV81(result.save))[menuMode]){setModeCampaign(result.save);setMessage('Le palier de cette campagne a changé. Choisissez à nouveau le mode pour consulter l’avertissement spoilers.');return;}setEntry({slotId:result.slotId,ownerCreatedAt:result.save.createdAt,location:result.checkpoint.resumeLocation,token:`${result.slotId}:${result.save.createdAt}:${request}`,menuMode});}}
+  try{const result=await action();if(!alive.current||generation.current!==request)return;setCatalog(result.catalog);setMessage(result.message);if(!enter){const campaign=currentModeCampaign(result.catalog);setModeCampaign(campaign);setModeContext(mainMenuBrowserShipContextV81(campaign));}if(result.ok&&enter&&result.save&&result.slotId&&result.checkpoint){if(menuMode&&!mainMenuModeAccessV81(result.save,mainMenuBrowserShipContextV81(result.save))[menuMode]){setModeCampaign(result.save);setMessage('Le palier de cette campagne a changé. Choisissez à nouveau le mode pour consulter l’avertissement spoilers.');return;}setEntry({slotId:result.slotId,ownerCreatedAt:result.save.createdAt,location:result.checkpoint.resumeLocation,token:`${result.slotId}:${result.save.createdAt}:${request}`,menuMode});}}
   catch(error){if(alive.current&&generation.current===request){setCatalog(loadCampaignSlots());setMessage(error instanceof Error?error.message:'Opération non confirmée. Les données existantes restent protégées.');}}
   finally{operation.current=false;if(alive.current&&generation.current===request)setBusy(false);}
  },[]);
@@ -71,7 +71,10 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  if(spritesOpen)return <Suspense fallback={<p role="status">Ouverture des archives visuelles…</p>}><RecentSpriteLibraryV85 onClose={()=>setSpritesOpen(false)} /></Suspense>;
  if(mausoleumOpen)return <Suspense fallback={<p role="status">Ouverture des archives…</p>}><Mausoleum save={null} source="menu" onExit={()=>setMausoleumOpen(false)} /></Suspense>;
  if(entry)return <SessionComponent key={entry.token} entry={entry} onMainMenu={showMenu} />;
+ const menuGeneration=generation.current;
  return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh}
+  onPrepareImport={(id,serialized)=>{if(!validId(id)||operation.current||!alive.current||generation.current!==menuGeneration)return{ok:false,failure:'save-conflict',message:'Cette session de menu a changé. Revenez au menu et relisez le fichier.',preview:null};return prepareCampaignSlotImport(id,serialized);}}
+  onImport={preview=>{if(operation.current||!alive.current||generation.current!==menuGeneration)return;void run(()=>importCampaignSlot(preview),false);}}
   modeAccess={mainMenuModeAccessV81(modeCampaign,modeContext)} onOpenGameMode={openGameMode}
   onMausoleum={()=>setMausoleumOpen(true)}
   onOpenClanWar={()=>setClanWarOpen(true)} onOpenSprites={()=>setSpritesOpen(true)}

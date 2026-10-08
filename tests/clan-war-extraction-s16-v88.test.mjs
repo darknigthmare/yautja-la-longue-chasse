@@ -139,7 +139,7 @@ test("V87 checkpoint shape and key remain exact without extraction; interrupted 
 });
 
 test("older five-work source and checkpoint remain playable without S16, but missing any original work still rejects", () => {
-  const olderRules = structuredClone(rules); olderRules.entries = olderRules.entries.filter(entry => !["W3-S16", "W3-S12", "W3-S17"].includes(entry.id));
+  const olderRules = structuredClone(rules); olderRules.entries = olderRules.entries.filter(entry => !["W3-S16", "W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08"].includes(entry.id));
   assert.equal(api.warWorksDefinitionsV6(olderRules).length, 5); assert(!api.warExtractionAvailableV88(olderRules));
   const original = api.createWarWorksV6(80, "W3-U17", rules, "local"), checkpoint = api.exportWarWorksV87(original, rules);
   assert.deepEqual(api.createWarWorksV6(80, "W3-U17", olderRules, "local"), original);

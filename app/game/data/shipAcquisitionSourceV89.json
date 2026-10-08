@@ -1,0 +1,2099 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "totalWorkbookSheets": 139
+  },
+  "scope": "Original R2-M020/021/022/023 source subset; no acquisition, economics, fuel or voice clip is generated.",
+  "sheets": [
+    {
+      "name": "Campagne commune",
+      "rows": [
+        {
+          "number": 25,
+          "cells": [
+            {
+              "address": "A25",
+              "value": "R2-M020"
+            },
+            {
+              "address": "B25",
+              "value": "Porter la marque Blooded"
+            },
+            {
+              "address": "C25",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D25",
+              "value": "Quatza-Rij triade réussi et retour de reconnaissance validé."
+            },
+            {
+              "address": "E25",
+              "value": "Une cérémonie locale reconnaît le joueur et les participants admissibles. Le personnage accomplit le geste de marquage prévu par le projet, rend les outils de rite et reçoit l’accès aux démarches de vaisseau. Le jeu montre ce qui change dans la cité."
+            },
+            {
+              "address": "F25",
+              "value": "Choisir une célébration de cohorte ou une visite calme nuance le retour sans modifier la condition de rang."
+            },
+            {
+              "address": "G25",
+              "value": "Le rang Blooded est accordé par le parcours commun ; le vaisseau n’apparaît pas encore possédé."
+            },
+            {
+              "address": "H25",
+              "value": "Un retour manquant reporte le marquage et ouvre l’action nécessaire, sans retirer une victoire déjà acquise."
+            },
+            {
+              "address": "I25",
+              "value": "rank.Blooded=true"
+            },
+            {
+              "address": "J25",
+              "value": "La fin de scène écrit resolved ; success exige le critère annoncé. Les objets, blessés, personnes et lieux sont ceux de la sauvegarde. Une activité facultative n’entre pas dans les prérequis de rang suivants."
+            },
+            {
+              "address": "K25",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 26,
+          "cells": [
+            {
+              "address": "A26",
+              "value": "R2-M021"
+            },
+            {
+              "address": "B26",
+              "value": "Une coque vraiment acquise"
+            },
+            {
+              "address": "C26",
+              "value": "Blooded"
+            },
+            {
+              "address": "D26",
+              "value": "Blooded acquis ; moyens et accord d’acquisition réunis dans le parcours prévu."
+            },
+            {
+              "address": "E26",
+              "value": "Le joueur inspecte une coque personnelle, traverse le hangar, teste l’accès au sas et participe à une remise en état. L’acquisition est matérialisée par la remise des droits et l’entrée dans le navire. Une visite de cabine n’équivaut pas à la propriété."
+            },
+            {
+              "address": "F26",
+              "value": "Choisir une coque adaptée à la mobilité ou à l’autonomie change les premiers compromis d’équipement."
+            },
+            {
+              "address": "G26",
+              "value": "Le vaisseau personnel obtient un identifiant unique et un propriétaire ; le voyage reste à préparer."
+            },
+            {
+              "address": "H26",
+              "value": "Un défaut constaté impose une réparation ciblée avant la remise, avec coûts et travaux déjà réalisés conservés."
+            },
+            {
+              "address": "I26",
+              "value": "ship.personalOwned ; ship.personalId"
+            },
+            {
+              "address": "J26",
+              "value": "La fin de scène écrit resolved ; success exige le critère annoncé. Les objets, blessés, personnes et lieux sont ceux de la sauvegarde. Une activité facultative n’entre pas dans les prérequis de rang suivants."
+            },
+            {
+              "address": "K26",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 27,
+          "cells": [
+            {
+              "address": "A27",
+              "value": "R2-M022"
+            },
+            {
+              "address": "B27",
+              "value": "Huit salles pour préparer la route"
+            },
+            {
+              "address": "C27",
+              "value": "Blooded"
+            },
+            {
+              "address": "D27",
+              "value": "Vaisseau personnel réellement acquis dans R2-M021."
+            },
+            {
+              "address": "E27",
+              "value": "Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "F27",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial."
+            },
+            {
+              "address": "G27",
+              "value": "Les huit salles initiales sont introduites avec leur fonction et leurs états séparés."
+            },
+            {
+              "address": "H27",
+              "value": "Une préparation oubliée apparaît au contrôle du sas et peut être corrigée avant départ."
+            },
+            {
+              "address": "I27",
+              "value": "ship.firstInteriorTour ; ship.preflightReady"
+            },
+            {
+              "address": "J27",
+              "value": "La fin de scène écrit resolved ; success exige le critère annoncé. Les objets, blessés, personnes et lieux sont ceux de la sauvegarde. Une activité facultative n’entre pas dans les prérequis de rang suivants."
+            },
+            {
+              "address": "K27",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 28,
+          "cells": [
+            {
+              "address": "A28",
+              "value": "R2-M023"
+            },
+            {
+              "address": "B28",
+              "value": "Le premier trajet entre les mondes"
+            },
+            {
+              "address": "C28",
+              "value": "Blooded"
+            },
+            {
+              "address": "D28",
+              "value": "Blooded, vaisseau possédé, prévol validé et destination accessible."
+            },
+            {
+              "address": "E28",
+              "value": "Le joueur choisit une route connue, traverse le sas, lance le départ et suit une séquence de navigation avec repères. Une approche de base demande orientation, vitesse relative fictive et amarrage. Le personnage sort ensuite sur un quai réellement chargé."
+            },
+            {
+              "address": "F28",
+              "value": "Faire une escale prévue ou prendre une route directe autorisée change temps, ressources et événement possible."
+            },
+            {
+              "address": "G28",
+              "value": "Le premier voyage interstellaire est effectivement joué ; les scènes d’origine hors Homeworld peuvent maintenant vérifier ce trajet."
+            },
+            {
+              "address": "H28",
+              "value": "Un amarrage raté revient à une zone d’attente sûre avec ressources consommées, sans arrivée instantanée dans une pièce intérieure."
+            },
+            {
+              "address": "I28",
+              "value": "travel.firstInterstellarComplete ; visitedDestination"
+            },
+            {
+              "address": "J28",
+              "value": "La fin de scène écrit resolved ; success exige le critère annoncé. Les objets, blessés, personnes et lieux sont ceux de la sauvegarde. Une activité facultative n’entre pas dans les prérequis de rang suivants."
+            },
+            {
+              "address": "K28",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scènes de dialogue V6",
+      "rows": [
+        {
+          "number": 597,
+          "cells": [
+            {
+              "address": "A597",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "B597",
+              "value": "Une coque vraiment acquise"
+            },
+            {
+              "address": "C597",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D597",
+              "value": "core_missions"
+            },
+            {
+              "address": "E597",
+              "value": "R2-M021"
+            },
+            {
+              "address": "F597",
+              "value": "Le joueur inspecte une coque personnelle, traverse le hangar, teste l’accès au sas et participe à une remise en état. L’acquisition est matérialisée par la remise des droits et l’entrée dans le navire. Une visite de cabine n’équivaut pas à la propriété."
+            },
+            {
+              "address": "G597",
+              "value": "Responsable du chantier ; Joueur"
+            },
+            {
+              "address": "H597",
+              "value": "Blooded acquis ; moyens et accord d’acquisition réunis dans le parcours prévu. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I597",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J597",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K597",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            },
+            {
+              "address": "L597",
+              "value": 2
+            },
+            {
+              "address": "M597",
+              "value": 1
+            },
+            {
+              "address": "N597",
+              "value": 1
+            },
+            {
+              "address": "O597",
+              "value": 1
+            },
+            {
+              "address": "P597",
+              "value": 1
+            },
+            {
+              "address": "Q597",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "number": 598,
+          "cells": [
+            {
+              "address": "A598",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "B598",
+              "value": "Huit salles pour préparer la route"
+            },
+            {
+              "address": "C598",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D598",
+              "value": "core_missions"
+            },
+            {
+              "address": "E598",
+              "value": "R2-M022"
+            },
+            {
+              "address": "F598",
+              "value": "Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G598",
+              "value": "Technicienne du chantier ; Joueur"
+            },
+            {
+              "address": "H598",
+              "value": "Vaisseau personnel réellement acquis dans R2-M021. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I598",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J598",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K598",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            },
+            {
+              "address": "L598",
+              "value": 2
+            },
+            {
+              "address": "M598",
+              "value": 1
+            },
+            {
+              "address": "N598",
+              "value": 1
+            },
+            {
+              "address": "O598",
+              "value": 1
+            },
+            {
+              "address": "P598",
+              "value": 1
+            },
+            {
+              "address": "Q598",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "number": 599,
+          "cells": [
+            {
+              "address": "A599",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "B599",
+              "value": "Le premier trajet entre les mondes"
+            },
+            {
+              "address": "C599",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D599",
+              "value": "core_missions"
+            },
+            {
+              "address": "E599",
+              "value": "R2-M023"
+            },
+            {
+              "address": "F599",
+              "value": "Le joueur choisit une route connue, traverse le sas, lance le départ et suit une séquence de navigation avec repères. Une approche de base demande orientation, vitesse relative fictive et amarrage. Le personnage sort ensuite sur un quai réellement chargé."
+            },
+            {
+              "address": "G599",
+              "value": "Contrôle de route ; Joueur"
+            },
+            {
+              "address": "H599",
+              "value": "Blooded, vaisseau possédé, prévol validé et destination accessible. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I599",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J599",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K599",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            },
+            {
+              "address": "L599",
+              "value": 2
+            },
+            {
+              "address": "M599",
+              "value": 1
+            },
+            {
+              "address": "N599",
+              "value": 1
+            },
+            {
+              "address": "O599",
+              "value": 1
+            },
+            {
+              "address": "P599",
+              "value": 1
+            },
+            {
+              "address": "Q599",
+              "value": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Répliques V6",
+      "rows": [
+        {
+          "number": 4923,
+          "cells": [
+            {
+              "address": "A4923",
+              "value": "D6-C-R2-M021-OUV---01"
+            },
+            {
+              "address": "B4923",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4923",
+              "value": "OUV"
+            },
+            {
+              "address": "D4923",
+              "value": "-"
+            },
+            {
+              "address": "E4923",
+              "value": 1
+            },
+            {
+              "address": "F4923",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4923",
+              "value": "Cette coque a servi. Marche jusqu’au sas, écoute les attaches, puis regarde ce qu’elle peut porter."
+            },
+            {
+              "address": "H4923",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4923",
+              "value": "Blooded acquis ; moyens et accord d’acquisition réunis dans le parcours prévu. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "J4923",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4923",
+              "value": 16
+            }
+          ]
+        },
+        {
+          "number": 4924,
+          "cells": [
+            {
+              "address": "A4924",
+              "value": "D6-C-R2-M021-SUCCES---01"
+            },
+            {
+              "address": "B4924",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4924",
+              "value": "SUCCES"
+            },
+            {
+              "address": "D4924",
+              "value": "-"
+            },
+            {
+              "address": "E4924",
+              "value": 1
+            },
+            {
+              "address": "F4924",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4924",
+              "value": "Les droits sont remis. Cette fois, tu entres dans ton vaisseau."
+            },
+            {
+              "address": "H4924",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4924",
+              "value": "Résultat correspondant effectivement constaté ; remplace ou supprime la ligne si choix de refus/différé/observation. Ne jamais jouer une victoire non acquise."
+            },
+            {
+              "address": "J4924",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4924",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "number": 4925,
+          "cells": [
+            {
+              "address": "A4925",
+              "value": "D6-C-R2-M021-ECHEC---01"
+            },
+            {
+              "address": "B4925",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4925",
+              "value": "ECHEC"
+            },
+            {
+              "address": "D4925",
+              "value": "-"
+            },
+            {
+              "address": "E4925",
+              "value": 1
+            },
+            {
+              "address": "F4925",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4925",
+              "value": "Ce verrou ne tient pas encore. La visite n’est pas une remise de coque."
+            },
+            {
+              "address": "H4925",
+              "value": "Retrait de l’appui dangereux ou suspension du geste ; aucun reset de l’état."
+            },
+            {
+              "address": "I4925",
+              "value": "Échec ou blocage correspondant effectivement observé ; les dégâts, objets et positions persistent."
+            },
+            {
+              "address": "J4925",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4925",
+              "value": 14
+            }
+          ]
+        },
+        {
+          "number": 4926,
+          "cells": [
+            {
+              "address": "A4926",
+              "value": "D6-C-R2-M021-REPRISE---01"
+            },
+            {
+              "address": "B4926",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4926",
+              "value": "REPRISE"
+            },
+            {
+              "address": "D4926",
+              "value": "-"
+            },
+            {
+              "address": "E4926",
+              "value": 1
+            },
+            {
+              "address": "F4926",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4926",
+              "value": "Les contrôles déjà faits sont inscrits au chantier. Reprends au sas."
+            },
+            {
+              "address": "H4926",
+              "value": "Regard sur le dernier repère conservé ; attendre la main du joueur."
+            },
+            {
+              "address": "I4926",
+              "value": "Réinteraction volontaire après interruption ; état de l’action conservé."
+            },
+            {
+              "address": "J4926",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4926",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "number": 4927,
+          "cells": [
+            {
+              "address": "A4927",
+              "value": "D6-C-R2-M021-CHOIX-A-01"
+            },
+            {
+              "address": "B4927",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4927",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4927",
+              "value": "A"
+            },
+            {
+              "address": "E4927",
+              "value": 1
+            },
+            {
+              "address": "F4927",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4927",
+              "value": "Je cherche une coque maniable."
+            },
+            {
+              "address": "H4927",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4927",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4927",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4927",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "number": 4928,
+          "cells": [
+            {
+              "address": "A4928",
+              "value": "D6-C-R2-M021-REPONSE-A-01"
+            },
+            {
+              "address": "B4928",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4928",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4928",
+              "value": "A"
+            },
+            {
+              "address": "E4928",
+              "value": 1
+            },
+            {
+              "address": "F4928",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4928",
+              "value": "Son espace est plus serré. Vérifie ce que tu acceptes de laisser au quai."
+            },
+            {
+              "address": "H4928",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4928",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4928",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4928",
+              "value": 14
+            }
+          ]
+        },
+        {
+          "number": 4929,
+          "cells": [
+            {
+              "address": "A4929",
+              "value": "D6-C-R2-M021-CHOIX-B-01"
+            },
+            {
+              "address": "B4929",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4929",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4929",
+              "value": "B"
+            },
+            {
+              "address": "E4929",
+              "value": 1
+            },
+            {
+              "address": "F4929",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4929",
+              "value": "Je veux davantage d’autonomie."
+            },
+            {
+              "address": "H4929",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4929",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4929",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4929",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "number": 4930,
+          "cells": [
+            {
+              "address": "A4930",
+              "value": "D6-C-R2-M021-REPONSE-B-01"
+            },
+            {
+              "address": "B4930",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C4930",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4930",
+              "value": "B"
+            },
+            {
+              "address": "E4930",
+              "value": 1
+            },
+            {
+              "address": "F4930",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "G4930",
+              "value": "Alors examine les réserves et ce que leur charge change à la conduite."
+            },
+            {
+              "address": "H4930",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4930",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4930",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4930",
+              "value": 13
+            }
+          ]
+        },
+        {
+          "number": 4931,
+          "cells": [
+            {
+              "address": "A4931",
+              "value": "D6-C-R2-M022-OUV---01"
+            },
+            {
+              "address": "B4931",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4931",
+              "value": "OUV"
+            },
+            {
+              "address": "D4931",
+              "value": "-"
+            },
+            {
+              "address": "E4931",
+              "value": 1
+            },
+            {
+              "address": "F4931",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4931",
+              "value": "Chaque salle a son usage. Commence par fixer ce qui pourrait se déplacer au départ."
+            },
+            {
+              "address": "H4931",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4931",
+              "value": "Vaisseau personnel réellement acquis dans R2-M021. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "J4931",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4931",
+              "value": 15
+            }
+          ]
+        },
+        {
+          "number": 4932,
+          "cells": [
+            {
+              "address": "A4932",
+              "value": "D6-C-R2-M022-SUCCES---01"
+            },
+            {
+              "address": "B4932",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4932",
+              "value": "SUCCES"
+            },
+            {
+              "address": "D4932",
+              "value": "-"
+            },
+            {
+              "address": "E4932",
+              "value": 1
+            },
+            {
+              "address": "F4932",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4932",
+              "value": "Le parcours entre les salles est libre. Ton chargement est fixé."
+            },
+            {
+              "address": "H4932",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4932",
+              "value": "Résultat correspondant effectivement constaté ; remplace ou supprime la ligne si choix de refus/différé/observation. Ne jamais jouer une victoire non acquise."
+            },
+            {
+              "address": "J4932",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4932",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "number": 4933,
+          "cells": [
+            {
+              "address": "A4933",
+              "value": "D6-C-R2-M022-ECHEC---01"
+            },
+            {
+              "address": "B4933",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4933",
+              "value": "ECHEC"
+            },
+            {
+              "address": "D4933",
+              "value": "-"
+            },
+            {
+              "address": "E4933",
+              "value": 1
+            },
+            {
+              "address": "F4933",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4933",
+              "value": "Cette caisse bloque l’accès aux soins. Change son emplacement."
+            },
+            {
+              "address": "H4933",
+              "value": "Retrait de l’appui dangereux ou suspension du geste ; aucun reset de l’état."
+            },
+            {
+              "address": "I4933",
+              "value": "Échec ou blocage correspondant effectivement observé ; les dégâts, objets et positions persistent."
+            },
+            {
+              "address": "J4933",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4933",
+              "value": 9
+            }
+          ]
+        },
+        {
+          "number": 4934,
+          "cells": [
+            {
+              "address": "A4934",
+              "value": "D6-C-R2-M022-REPRISE---01"
+            },
+            {
+              "address": "B4934",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4934",
+              "value": "REPRISE"
+            },
+            {
+              "address": "D4934",
+              "value": "-"
+            },
+            {
+              "address": "E4934",
+              "value": 1
+            },
+            {
+              "address": "F4934",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4934",
+              "value": "L’armurerie est prête. Il reste la galerie et le sas à vérifier."
+            },
+            {
+              "address": "H4934",
+              "value": "Regard sur le dernier repère conservé ; attendre la main du joueur."
+            },
+            {
+              "address": "I4934",
+              "value": "Réinteraction volontaire après interruption ; état de l’action conservé."
+            },
+            {
+              "address": "J4934",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4934",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "number": 4935,
+          "cells": [
+            {
+              "address": "A4935",
+              "value": "D6-C-R2-M022-CHOIX-A-01"
+            },
+            {
+              "address": "B4935",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4935",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4935",
+              "value": "A"
+            },
+            {
+              "address": "E4935",
+              "value": 1
+            },
+            {
+              "address": "F4935",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4935",
+              "value": "Je prépare une chasse courte."
+            },
+            {
+              "address": "H4935",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4935",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4935",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4935",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "number": 4936,
+          "cells": [
+            {
+              "address": "A4936",
+              "value": "D6-C-R2-M022-REPONSE-A-01"
+            },
+            {
+              "address": "B4936",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4936",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4936",
+              "value": "A"
+            },
+            {
+              "address": "E4936",
+              "value": 1
+            },
+            {
+              "address": "F4936",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4936",
+              "value": "Garde le matériel accessible et libère la circulation vers le sas."
+            },
+            {
+              "address": "H4936",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4936",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4936",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4936",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "number": 4937,
+          "cells": [
+            {
+              "address": "A4937",
+              "value": "D6-C-R2-M022-CHOIX-B-01"
+            },
+            {
+              "address": "B4937",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4937",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4937",
+              "value": "B"
+            },
+            {
+              "address": "E4937",
+              "value": 1
+            },
+            {
+              "address": "F4937",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4937",
+              "value": "Je prépare une escale."
+            },
+            {
+              "address": "H4937",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4937",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4937",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4937",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "number": 4938,
+          "cells": [
+            {
+              "address": "A4938",
+              "value": "D6-C-R2-M022-REPONSE-B-01"
+            },
+            {
+              "address": "B4938",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C4938",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4938",
+              "value": "B"
+            },
+            {
+              "address": "E4938",
+              "value": 1
+            },
+            {
+              "address": "F4938",
+              "value": "Technicienne du chantier"
+            },
+            {
+              "address": "G4938",
+              "value": "Réserve les contenants du retour avant de remplir le reste."
+            },
+            {
+              "address": "H4938",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4938",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4938",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4938",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "number": 4939,
+          "cells": [
+            {
+              "address": "A4939",
+              "value": "D6-C-R2-M023-OUV---01"
+            },
+            {
+              "address": "B4939",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4939",
+              "value": "OUV"
+            },
+            {
+              "address": "D4939",
+              "value": "-"
+            },
+            {
+              "address": "E4939",
+              "value": 1
+            },
+            {
+              "address": "F4939",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4939",
+              "value": "Votre route est affichée depuis le quai. Confirmez votre approche avant de quitter nos balises."
+            },
+            {
+              "address": "H4939",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4939",
+              "value": "Blooded, vaisseau possédé, prévol validé et destination accessible. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "J4939",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4939",
+              "value": 15
+            }
+          ]
+        },
+        {
+          "number": 4940,
+          "cells": [
+            {
+              "address": "A4940",
+              "value": "D6-C-R2-M023-SUCCES---01"
+            },
+            {
+              "address": "B4940",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4940",
+              "value": "SUCCES"
+            },
+            {
+              "address": "D4940",
+              "value": "-"
+            },
+            {
+              "address": "E4940",
+              "value": 1
+            },
+            {
+              "address": "F4940",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4940",
+              "value": "Amarrage constaté à l’arrivée. Vous pouvez ouvrir le sas."
+            },
+            {
+              "address": "H4940",
+              "value": "Le locuteur désigne l’appui ou l’objet présent ; laisse le déplacement se jouer."
+            },
+            {
+              "address": "I4940",
+              "value": "Résultat correspondant effectivement constaté ; remplace ou supprime la ligne si choix de refus/différé/observation. Ne jamais jouer une victoire non acquise."
+            },
+            {
+              "address": "J4940",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4940",
+              "value": 9
+            }
+          ]
+        },
+        {
+          "number": 4941,
+          "cells": [
+            {
+              "address": "A4941",
+              "value": "D6-C-R2-M023-ECHEC---01"
+            },
+            {
+              "address": "B4941",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4941",
+              "value": "ECHEC"
+            },
+            {
+              "address": "D4941",
+              "value": "-"
+            },
+            {
+              "address": "E4941",
+              "value": 1
+            },
+            {
+              "address": "F4941",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4941",
+              "value": "L’axe est décalé. Éloignez-vous du quai et reprenez l’approche."
+            },
+            {
+              "address": "H4941",
+              "value": "Retrait de l’appui dangereux ou suspension du geste ; aucun reset de l’état."
+            },
+            {
+              "address": "I4941",
+              "value": "Échec ou blocage correspondant effectivement observé ; les dégâts, objets et positions persistent."
+            },
+            {
+              "address": "J4941",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4941",
+              "value": 9
+            }
+          ]
+        },
+        {
+          "number": 4942,
+          "cells": [
+            {
+              "address": "A4942",
+              "value": "D6-C-R2-M023-REPRISE---01"
+            },
+            {
+              "address": "B4942",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4942",
+              "value": "REPRISE"
+            },
+            {
+              "address": "D4942",
+              "value": "-"
+            },
+            {
+              "address": "E4942",
+              "value": 1
+            },
+            {
+              "address": "F4942",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4942",
+              "value": "Le dernier repère reçu reste valable. Reprenez depuis la balise extérieure."
+            },
+            {
+              "address": "H4942",
+              "value": "Regard sur le dernier repère conservé ; attendre la main du joueur."
+            },
+            {
+              "address": "I4942",
+              "value": "Réinteraction volontaire après interruption ; état de l’action conservé."
+            },
+            {
+              "address": "J4942",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4942",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "number": 4943,
+          "cells": [
+            {
+              "address": "A4943",
+              "value": "D6-C-R2-M023-CHOIX-A-01"
+            },
+            {
+              "address": "B4943",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4943",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4943",
+              "value": "A"
+            },
+            {
+              "address": "E4943",
+              "value": 1
+            },
+            {
+              "address": "F4943",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4943",
+              "value": "Je prends l’escale prévue."
+            },
+            {
+              "address": "H4943",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4943",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4943",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4943",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "number": 4944,
+          "cells": [
+            {
+              "address": "A4944",
+              "value": "D6-C-R2-M023-REPONSE-A-01"
+            },
+            {
+              "address": "B4944",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4944",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4944",
+              "value": "A"
+            },
+            {
+              "address": "E4944",
+              "value": 1
+            },
+            {
+              "address": "F4944",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4944",
+              "value": "L’amarrage se fera par la face éclairée. Suivez les repères de l’approche."
+            },
+            {
+              "address": "H4944",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4944",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "J4944",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4944",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "number": 4945,
+          "cells": [
+            {
+              "address": "A4945",
+              "value": "D6-C-R2-M023-CHOIX-B-01"
+            },
+            {
+              "address": "B4945",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4945",
+              "value": "CHOIX"
+            },
+            {
+              "address": "D4945",
+              "value": "B"
+            },
+            {
+              "address": "E4945",
+              "value": 1
+            },
+            {
+              "address": "F4945",
+              "value": "Joueur"
+            },
+            {
+              "address": "G4945",
+              "value": "Je choisis la route directe."
+            },
+            {
+              "address": "H4945",
+              "value": "Regarder la personne ou l’appui concerné ; intention, pas résultat."
+            },
+            {
+              "address": "I4945",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4945",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4945",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "number": 4946,
+          "cells": [
+            {
+              "address": "A4946",
+              "value": "D6-C-R2-M023-REPONSE-B-01"
+            },
+            {
+              "address": "B4946",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C4946",
+              "value": "REPONSE"
+            },
+            {
+              "address": "D4946",
+              "value": "B"
+            },
+            {
+              "address": "E4946",
+              "value": 1
+            },
+            {
+              "address": "F4946",
+              "value": "Contrôle de route"
+            },
+            {
+              "address": "G4946",
+              "value": "La route est autorisée. Vérifiez votre réserve avant le départ."
+            },
+            {
+              "address": "H4946",
+              "value": "Réponse au choix retenu ; les autres réponses ne sont pas jouées."
+            },
+            {
+              "address": "I4946",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "J4946",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "K4946",
+              "value": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Choix et actions V6",
+      "rows": [
+        {
+          "number": 1216,
+          "cells": [
+            {
+              "address": "A1216",
+              "value": "D6-C-R2-M021-OPTION-A"
+            },
+            {
+              "address": "B1216",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C1216",
+              "value": "A"
+            },
+            {
+              "address": "D1216",
+              "value": "D6-C-R2-M021-CHOIX-A-01"
+            },
+            {
+              "address": "E1216",
+              "value": "D6-C-R2-M021-REPONSE-A-01"
+            },
+            {
+              "address": "F1216",
+              "value": "Approche A à jouer dans le décor : Le joueur inspecte une coque personnelle, traverse le hangar, teste l’accès au sas et participe à une remise en état. L’acquisition est matérialisée par la remise des droits et l’entrée dans le navire. Une visite de cabine n’équivaut pas à la propriété."
+            },
+            {
+              "address": "G1216",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "H1216",
+              "value": "Choisir une coque adaptée à la mobilité ou à l’autonomie change les premiers compromis d’équipement. Ne rien attribuer avant la résolution réelle ; le choix formule une intention."
+            },
+            {
+              "address": "I1216",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1217,
+          "cells": [
+            {
+              "address": "A1217",
+              "value": "D6-C-R2-M021-OPTION-B"
+            },
+            {
+              "address": "B1217",
+              "value": "D6-C-R2-M021"
+            },
+            {
+              "address": "C1217",
+              "value": "B"
+            },
+            {
+              "address": "D1217",
+              "value": "D6-C-R2-M021-CHOIX-B-01"
+            },
+            {
+              "address": "E1217",
+              "value": "D6-C-R2-M021-REPONSE-B-01"
+            },
+            {
+              "address": "F1217",
+              "value": "Approche B à jouer ou différé explicite : Le joueur inspecte une coque personnelle, traverse le hangar, teste l’accès au sas et participe à une remise en état. L’acquisition est matérialisée par la remise des droits et l’entrée dans le navire. Une visite de cabine n’équivaut pas à la propriété."
+            },
+            {
+              "address": "G1217",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "H1217",
+              "value": "Choisir une coque adaptée à la mobilité ou à l’autonomie change les premiers compromis d’équipement. Si le choix diffère, refuse ou se contente d’observer, ne pas jouer une réussite de tâche non accomplie."
+            },
+            {
+              "address": "I1217",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1218,
+          "cells": [
+            {
+              "address": "A1218",
+              "value": "D6-C-R2-M022-OPTION-A"
+            },
+            {
+              "address": "B1218",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C1218",
+              "value": "A"
+            },
+            {
+              "address": "D1218",
+              "value": "D6-C-R2-M022-CHOIX-A-01"
+            },
+            {
+              "address": "E1218",
+              "value": "D6-C-R2-M022-REPONSE-A-01"
+            },
+            {
+              "address": "F1218",
+              "value": "Approche A à jouer dans le décor : Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G1218",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "H1218",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial. Ne rien attribuer avant la résolution réelle ; le choix formule une intention."
+            },
+            {
+              "address": "I1218",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1219,
+          "cells": [
+            {
+              "address": "A1219",
+              "value": "D6-C-R2-M022-OPTION-B"
+            },
+            {
+              "address": "B1219",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C1219",
+              "value": "B"
+            },
+            {
+              "address": "D1219",
+              "value": "D6-C-R2-M022-CHOIX-B-01"
+            },
+            {
+              "address": "E1219",
+              "value": "D6-C-R2-M022-REPONSE-B-01"
+            },
+            {
+              "address": "F1219",
+              "value": "Approche B à jouer ou différé explicite : Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G1219",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "H1219",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial. Si le choix diffère, refuse ou se contente d’observer, ne pas jouer une réussite de tâche non accomplie."
+            },
+            {
+              "address": "I1219",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1220,
+          "cells": [
+            {
+              "address": "A1220",
+              "value": "D6-C-R2-M023-OPTION-A"
+            },
+            {
+              "address": "B1220",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C1220",
+              "value": "A"
+            },
+            {
+              "address": "D1220",
+              "value": "D6-C-R2-M023-CHOIX-A-01"
+            },
+            {
+              "address": "E1220",
+              "value": "D6-C-R2-M023-REPONSE-A-01"
+            },
+            {
+              "address": "F1220",
+              "value": "Approche A à jouer dans le décor : Le joueur choisit une route connue, traverse le sas, lance le départ et suit une séquence de navigation avec repères. Une approche de base demande orientation, vitesse relative fictive et amarrage. Le personnage sort ensuite sur un quai réellement chargé."
+            },
+            {
+              "address": "G1220",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "H1220",
+              "value": "Faire une escale prévue ou prendre une route directe autorisée change temps, ressources et événement possible. Ne rien attribuer avant la résolution réelle ; le choix formule une intention."
+            },
+            {
+              "address": "I1220",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1221,
+          "cells": [
+            {
+              "address": "A1221",
+              "value": "D6-C-R2-M023-OPTION-B"
+            },
+            {
+              "address": "B1221",
+              "value": "D6-C-R2-M023"
+            },
+            {
+              "address": "C1221",
+              "value": "B"
+            },
+            {
+              "address": "D1221",
+              "value": "D6-C-R2-M023-CHOIX-B-01"
+            },
+            {
+              "address": "E1221",
+              "value": "D6-C-R2-M023-REPONSE-B-01"
+            },
+            {
+              "address": "F1221",
+              "value": "Approche B à jouer ou différé explicite : Le joueur choisit une route connue, traverse le sas, lance le départ et suit une séquence de navigation avec repères. Une approche de base demande orientation, vitesse relative fictive et amarrage. Le personnage sort ensuite sur un quai réellement chargé."
+            },
+            {
+              "address": "G1221",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "H1221",
+              "value": "Faire une escale prévue ou prendre une route directe autorisée change temps, ressources et événement possible. Si le choix diffère, refuse ou se contente d’observer, ne pas jouer une réussite de tâche non accomplie."
+            },
+            {
+              "address": "I1221",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Voix V6",
+      "rows": [
+        {
+          "number": 208,
+          "cells": [
+            {
+              "address": "A208",
+              "value": "D6-V-C-CHANTIER"
+            },
+            {
+              "address": "B208",
+              "value": "Responsable du chantier"
+            },
+            {
+              "address": "C208",
+              "value": "Acquisition et réparation de coques"
+            },
+            {
+              "address": "D208",
+              "value": "Pratique, quelques remarques sèches sur l’usure ; parle de contraintes visibles."
+            },
+            {
+              "address": "E208",
+              "value": "coque, attache, sas, charge"
+            },
+            {
+              "address": "F208",
+              "value": "Fait marcher le joueur jusqu’à la pièce à vérifier."
+            },
+            {
+              "address": "G208",
+              "value": "État du chantier et droits dont il a connaissance."
+            },
+            {
+              "address": "H208",
+              "value": "Vaisseau offert sur une phrase, catalogue infini sans disponibilité"
+            },
+            {
+              "address": "I208",
+              "value": "Personne ou direction originale V6 ; texte français de mise en scène, pas transcription canonique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "V5 États communs",
+      "rows": [
+        {
+          "number": 22,
+          "cells": [
+            {
+              "address": "A22",
+              "value": "STATE5-17"
+            },
+            {
+              "address": "B22",
+              "value": "personalShipOwned"
+            },
+            {
+              "address": "C22",
+              "value": "Vaisseau personnel"
+            },
+            {
+              "address": "D22",
+              "value": "faux, vrai"
+            },
+            {
+              "address": "E22",
+              "value": "Mission d’obtention conclue"
+            },
+            {
+              "address": "F22",
+              "value": "Déverrouiller une carte ne suffit pas"
+            },
+            {
+              "address": "G22",
+              "value": "Voyage et salles"
+            },
+            {
+              "address": "H22",
+              "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+            },
+            {
+              "address": "I22",
+              "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+            },
+            {
+              "address": "J22",
+              "value": "Extension V5"
+            }
+          ]
+        },
+        {
+          "number": 23,
+          "cells": [
+            {
+              "address": "A23",
+              "value": "STATE5-18"
+            },
+            {
+              "address": "B23",
+              "value": "personalShipLocation"
+            },
+            {
+              "address": "C23",
+              "value": "Voyage"
+            },
+            {
+              "address": "D23",
+              "value": "Monde, base et quai connus"
+            },
+            {
+              "address": "E23",
+              "value": "Arrivée ou départ du trajet"
+            },
+            {
+              "address": "F23",
+              "value": "Le navire conserve sa position pendant une sortie au sol"
+            },
+            {
+              "address": "G23",
+              "value": "Retour et inventaire"
+            },
+            {
+              "address": "H23",
+              "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+            },
+            {
+              "address": "I23",
+              "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+            },
+            {
+              "address": "J23",
+              "value": "Extension V5"
+            }
+          ]
+        },
+        {
+          "number": 24,
+          "cells": [
+            {
+              "address": "A24",
+              "value": "STATE5-19"
+            },
+            {
+              "address": "B24",
+              "value": "currentWorldId"
+            },
+            {
+              "address": "C24",
+              "value": "Monde"
+            },
+            {
+              "address": "D24",
+              "value": "PLAN01..24 ou branche dédiée"
+            },
+            {
+              "address": "E24",
+              "value": "Transition physique achevée"
+            },
+            {
+              "address": "F24",
+              "value": "Les profils de guerre réutilisent les mêmes identifiants de monde"
+            },
+            {
+              "address": "G24",
+              "value": "Rencontres et météo"
+            },
+            {
+              "address": "H24",
+              "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+            },
+            {
+              "address": "I24",
+              "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+            },
+            {
+              "address": "J24",
+              "value": "Extension V5"
+            }
+          ]
+        },
+        {
+          "number": 25,
+          "cells": [
+            {
+              "address": "A25",
+              "value": "STATE5-20"
+            },
+            {
+              "address": "B25",
+              "value": "travelManifest"
+            },
+            {
+              "address": "C25",
+              "value": "Voyage"
+            },
+            {
+              "address": "D25",
+              "value": "Personnes, objets et appareils embarqués"
+            },
+            {
+              "address": "E25",
+              "value": "Chargement puis départ"
+            },
+            {
+              "address": "F25",
+              "value": "Vérifier présence et capacité avant de quitter le quai"
+            },
+            {
+              "address": "G25",
+              "value": "MP, trophées et secours"
+            },
+            {
+              "address": "H25",
+              "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+            },
+            {
+              "address": "I25",
+              "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+            },
+            {
+              "address": "J25",
+              "value": "Extension V5"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

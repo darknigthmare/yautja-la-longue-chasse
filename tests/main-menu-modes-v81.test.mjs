@@ -109,7 +109,9 @@ function menuHarness(unlocked = false) {
   } });
   const props = { catalog: { activeSlotId: null, slots: [1, 2, 3, 4, 5].map(id => ({ id, status: 'empty', revision: 0, checkpoints: [], lastCheckpointId: null })) }, busy: false, message: null, modeAccess: { 'the-pit': unlocked, 'game-reserve': unlocked }, onOpenGameMode: (...args) => calls.push(args) };
   const render = () => { stateIndex = 0; refIndex = 0; return exports.default(props); };
-  return { props, calls, render, escape(tree) { refs[0].current = {}; tree.props.onKeyDown({ key: 'Escape', repeat: false, defaultPrevented: false, preventDefault() {} }); }, find: (tree, attr, value = true) => walk(tree).find(node => node.props?.[attr] === value) };
+  // Mount the rendered main ref, not an assumed React hook index: the menu
+  // also owns refs for asynchronous import reads and confirmation focus.
+  return { props, calls, render, escape(tree) { tree.props.ref.current = {}; tree.props.onKeyDown({ key: 'Escape', repeat: false, defaultPrevented: false, preventDefault() {} }); }, find: (tree, attr, value = true) => walk(tree).find(node => node.props?.[attr] === value) };
 }
 test('both real menu buttons warn before callbacks; cancel and Escape are reversible, confirmation is explicit', () => {
   for (const mode of ['the-pit', 'game-reserve']) {

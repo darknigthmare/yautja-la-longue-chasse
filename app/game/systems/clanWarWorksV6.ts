@@ -5,12 +5,12 @@ import {
 } from "./clanWarBibleV6";
 
 export interface WarWorkDefinitionV6 {
-  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair" | "extraction" | "relay" | "hoist";
+  id: string; name: string; kind: "rest" | "navigation" | "defense" | "stock" | "repair" | "extraction" | "relay" | "hoist" | "watch" | "platform" | "bridge";
   costRav: number; upkeepRav: number; delayTurns: number; operatorUnitId: string;
   effect: string; limit: string; deployment: string; defensePercent: number;
   sourceRow: number; sourceCells: string[]; capacityRav: number;
 }
-const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair", "W3-S16": "extraction", "W3-S12": "relay", "W3-S17": "hoist" } as const;
+const supportedWorks = { "W3-S02": "rest", "W3-S05": "navigation", "W3-S07": "defense", "W3-S03": "stock", "W3-S04": "repair", "W3-S16": "extraction", "W3-S12": "relay", "W3-S17": "hoist", "W3-S01": "watch", "W3-S06": "platform", "W3-S08": "bridge" } as const;
 const legacyWorkIds = ["W3-S02", "W3-S05", "W3-S07", "W3-S03", "W3-S04"];
 const legacyWorksAvailable = (definitions: WarWorkDefinitionV6[]) => legacyWorkIds.every(id => definitions.some(definition => definition.id === id));
 
@@ -31,6 +31,9 @@ export function warWorksDefinitionsV6(rules: WarRulesV6 = DEFAULT_WAR_RULES_V6):
       || (kind === "defense" && !effect.includes("quinze pour cent"))
       || (kind === "stock" && !effect.includes("vingt RAV identifiées"))
       || (kind === "relay" && (operatorUnitId !== "W3-U28" || !effect.includes("Relie deux secteurs") || !limit.includes("Relief et sabotage")))
+      || (kind === "watch" && (operatorUnitId !== "W3-U02" || !effect.includes("position haute occupée") || !limit.includes("obstacle opaque")))
+      || (kind === "platform" && (operatorUnitId !== "W3-U13" || !effect.includes("abri directionnel") || !limit.includes("Angle mort sous")))
+      || (kind === "bridge" && (operatorUnitId !== "W3-U12" || delayTurns !== 3 || !effect.includes("trois ancrages") || !limit.includes("groupe entier")))
       || (kind === "hoist" && (operatorUnitId !== "W3-U20" || rules.units.find(unit => unit.id === operatorUnitId)?.fullMembers !== 2
         || !effect.includes("entre deux plans") || !limit.includes("Deux opérateurs présents")))) return [];
     return [{ id, name: String(row.title), kind, costRav, upkeepRav, delayTurns, operatorUnitId, effect, limit, deployment,
@@ -83,6 +86,25 @@ export interface WarInfrastructureV88 {
   relayReceipts: { id: string; relayWorkId: string; senderTeamId: string; recipientTeamId: string; passageId: string;
     fromId: string; toId: string; turn: number; observations: { territoryId: string; teamId: string; turn: number }[] }[];
 }
+export type WarTerrainProfileV89 = "low-screen" | "opaque-rock" | "open";
+export type WarTerrainTargetV89 = "near-approach" | "far-approach" | "rear-approach" | "under-platform";
+export interface WarBridgeTransitV89 {
+  id: string; workId: string; teamId: string; fromId: string; toId: string; startedTurn: number;
+  memberIds: string[]; operatorTeamId: string; operatorMemberIds: string[];
+  steps: { memberId: string; direction: "forward" | "return" }[];
+  completed: "arrived" | "returned" | null; resolvedTurn: number | null;
+}
+/** Shapes, cone and substeps are visible prototype hypotheses, not lore measurements. */
+export interface WarTerrainV89 {
+  version: 1; rulesKey: string; geometryKey: "local-terrain-v89-1";
+  configurations: { workId: string; profile: WarTerrainProfileV89; facing: "east" | "west" }[];
+  traversals: WarInfrastructureV88["traversals"];
+  anchorCargo: { workId: string; slot: number; teamId: string; loadedTurn: number }[];
+  anchors: { workId: string; slot: number; territoryId: string; teamId: string; memberIds: string[]; loadedTurn: number; turn: number }[];
+  sightings: { workId: string; teamId: string; memberIds: string[]; targetId: WarTerrainTargetV89;
+    profile: WarTerrainProfileV89; facing: "east" | "west"; turn: number }[];
+  transits: WarBridgeTransitV89[];
+}
 export interface WarWorksSessionV6 {
   version: 2; context: "free-workshop"; rulesKey: string; sourceSha: string;
   supplyMode: "front" | "local"; lots: WarRavLotV87[]; transfers: WarRavTransferV87[];
@@ -97,6 +119,8 @@ export interface WarWorksSessionV6 {
   extraction?: WarExtractionV88;
   /** Explicit relay/hoist exercise. Absent in the six-work checkpoints and never inferred on import. */
   infrastructure?: WarInfrastructureV88;
+  /** Added only by an explicit S01/S06/S08 reservation; older carnets stay exact. */
+  terrain?: WarTerrainV89;
 }
 export type WarWorksActionV6 =
   | { kind: "recruit"; unitId: string }
@@ -120,7 +144,14 @@ export type WarWorksActionV6 =
   | { kind: "return-patient"; teamId: string; memberId: string; workId: string }
   | { kind: "put-down-kit"; teamId: string; workId: string }
   | { kind: "lift-kit"; teamId: string; workId: string; kitWorkId: string }
-  | { kind: "relay-intel"; teamId: string; workId: string; recipientTeamId: string };
+  | { kind: "relay-intel"; teamId: string; workId: string; recipientTeamId: string }
+  | { kind: "terrain-hypothesis"; workId: string; profile: WarTerrainProfileV89 }
+  | { kind: "orient-platform"; workId: string; teamId: string; facing: "east" | "west" }
+  | { kind: "scan-terrain"; workId: string; teamId: string; targetId: WarTerrainTargetV89 }
+  | { kind: "load-anchor" | "place-anchor"; workId: string; teamId: string }
+  | { kind: "begin-bridge"; workId: string; teamId: string }
+  | { kind: "cross-bridge" | "return-bridge"; transitId: string; teamId: string; memberId: string }
+  | { kind: "cancel-bridge"; transitId: string; teamId: string };
 export interface WarWorksTransitionV6 { state: WarWorksSessionV6; accepted: boolean; changed: boolean; message: string }
 const unitFor = (rules: WarRulesV6, id: string) => rules.units.find(unit => unit.id === id);
 const fitMembers = (group: WarWorksTeamV6) => group.team.members.filter(member => member.status === "fit" && member.assignmentId === group.team.id);
@@ -145,12 +176,66 @@ const withInfrastructure = (state: WarWorksSessionV6, rules: WarRulesV6): WarInf
 export const warKitSiteV88 = (state: WarWorksSessionV6, work: WarWorkOrderV6) => work.phase === "reserved"
   ? state.infrastructure?.groundKits.find(item => item.workId === work.id)?.territoryId ?? state.originId
   : work.phase === "carried" ? state.teams.find(group => group.team.id === work.carrierTeamId)?.territoryId ?? null : work.territoryId;
-const linkWork = (definition: WarWorkDefinitionV6) => ["defense", "relay", "hoist"].includes(definition.kind);
+const linkWork = (definition: WarWorkDefinitionV6) => ["defense", "relay", "hoist", "bridge"].includes(definition.kind);
 const passageDirection = (passage: WarRulesV6["passages"][number], fromId: string, toId: string) =>
   (passage.fromId === fromId && passage.toId === toId) || (passage.bidirectional && passage.toId === fromId && passage.fromId === toId);
 const oppositeSite = (passage: WarRulesV6["passages"][number], site: string) => passage.fromId === site ? passage.toId : passage.toId === site ? passage.fromId : null;
 const reliefPassage = (passage: WarRulesV6["passages"][number], rules: WarRulesV6) =>
   rules.entries.find(entry => entry.sheet === "Passages de Korthas" && entry.id === passage.id)?.fields.find(field => field.column === "E")?.value === "Liaison de relief";
+const preparedPassage = (passage: WarRulesV6["passages"][number]) => passage.kind === "Traverse préparée";
+const terrainKinds = ["watch", "platform", "bridge"];
+const terrainRulesKey = (rules: WarRulesV6) => JSON.stringify({ sha: rules.metadata.sha256,
+  entries: ["W3-S01", "W3-S06", "W3-S08", "W3-U02", "W3-U13", "W3-U12", "W3-R05", "W3-R19"].map(id => rules.entries.find(entry => entry.id === id)) });
+const withTerrain = (state: WarWorksSessionV6, rules: WarRulesV6): WarTerrainV89 => state.terrain ?? {
+  version: 1, rulesKey: terrainRulesKey(rules), geometryKey: "local-terrain-v89-1",
+  configurations: [], traversals: [], anchorCargo: [], anchors: [], sightings: [], transits: [],
+};
+const anchorCargo = (state: WarWorksSessionV6, teamId: string) => state.terrain?.anchorCargo.find(cargo => cargo.teamId === teamId);
+export const warBridgeActiveV89 = (state: WarWorksSessionV6) => state.terrain?.transits.find(transit => transit.completed === null);
+export function warBridgeMemberSiteV89(transit: WarBridgeTransitV89, memberId: string) {
+  const step = transit.steps.filter(step => step.memberId === memberId).at(-1);
+  return step?.direction === "forward" ? transit.toId : transit.fromId;
+}
+/** Fixed drawing units: 100 px/case, a 60-degree arc, one low screen or one
+ * opaque rock. These are exercise inputs, not coordinates from Excel. */
+export const WAR_TERRAIN_GEOMETRY_V89 = {
+  width: 800, height: 340, eye: { watch: { x: 160, y: 140 }, platform: { x: 160, y: 180 }, ground: { x: 160, y: 290 } },
+  targets: { "near-approach": { x: 310, y: 225, name: "Approche proche" }, "far-approach": { x: 600, y: 230, name: "Approche derrière l’obstacle" },
+    "rear-approach": { x: 65, y: 200, name: "Approche arrière" }, "under-platform": { x: 160, y: 290, name: "Sous la plateforme" } },
+  obstacles: { "low-screen": { x: 360, y: 220, width: 65, height: 90 }, "opaque-rock": { x: 360, y: 70, width: 65, height: 240 } },
+};
+/** Slab intersection includes touching an opaque edge; drawing and rules use the same rectangle. */
+export function warTerrainRayBlockedV89(from: { x: number; y: number }, to: { x: number; y: number }, profile: WarTerrainProfileV89) {
+  if (profile === "open") return false;
+  const obstacle = WAR_TERRAIN_GEOMETRY_V89.obstacles[profile];
+  let entry = 0, exit = 1;
+  for (const axis of ["x", "y"] as const) {
+    const delta = to[axis] - from[axis], low = obstacle[axis], high = low + (axis === "x" ? obstacle.width : obstacle.height);
+    if (delta === 0) { if (from[axis] < low || from[axis] > high) return false; }
+    else { const a = (low - from[axis]) / delta, b = (high - from[axis]) / delta; entry = Math.max(entry, Math.min(a, b)); exit = Math.min(exit, Math.max(a, b)); }
+    if (entry > exit) return false;
+  }
+  return true;
+}
+function terrainGeometry(kind: "watch" | "platform", profile: WarTerrainProfileV89, facing: "east" | "west", targetId: WarTerrainTargetV89, range: number) {
+  const point = WAR_TERRAIN_GEOMETRY_V89.eye[kind], target = WAR_TERRAIN_GEOMETRY_V89.targets[targetId];
+  const dx = target.x - point.x, dy = target.y - point.y, distance = Math.hypot(dx, dy);
+  const inRange = distance <= range * 100, blocked = warTerrainRayBlockedV89(point, target, profile);
+  const blindBelow = kind === "platform" && target.x >= 130 && target.x <= 210 && target.y >= 240;
+  const inArc = kind === "watch" || (facing === "east" ? dx : -dx) > 0 && Math.abs(dy) <= Math.abs(dx) * Math.tan(Math.PI / 6);
+  return { point, target, inRange, blocked, blindBelow, inArc, visible: inRange && !blocked && !blindBelow && inArc,
+    protectedFromProbe: kind === "platform" && inArc && !blindBelow && inRange && !blocked };
+}
+export function evaluateWarTerrainV89(state: WarWorksSessionV6, workId: string, targetId: WarTerrainTargetV89, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) {
+  const work = state.works.find(work => work.id === workId), def = warWorksDefinitionsV6(rules).find(def => def.id === work?.structureId);
+  const config = state.terrain?.configurations.find(config => config.workId === workId);
+  if (!work || !def || !config || !["watch", "platform"].includes(def.kind) || !Object.hasOwn(WAR_TERRAIN_GEOMETRY_V89.targets, targetId)) return null;
+  const geometry = terrainGeometry(def.kind as "watch" | "platform", config.profile, config.facing, targetId, unitFor(rules, def.operatorUnitId)?.range ?? 0);
+  const occupied = warWorkOccupiedV6(state, work, rules), supplied = suppliedInfrastructureSite(state, work.territoryId, rules);
+  return { ...geometry, geometricVisible: geometry.visible, visible: occupied && supplied && geometry.visible,
+    protectedFromProbe: occupied && supplied && geometry.protectedFromProbe, occupied, supplied, operational: occupied && supplied, profile: config.profile, facing: config.facing,
+    groundBlocked: warTerrainRayBlockedV89(WAR_TERRAIN_GEOMETRY_V89.eye.ground, geometry.target, config.profile) };
+}
 /** Powered operation requires enough existing local lots for this site's teams
  * and commissioned structures. The normal turn debits them once, not here. */
 function suppliedInfrastructureSite(state: WarWorksSessionV6, territoryId: string, rules: WarRulesV6) {
@@ -252,9 +337,141 @@ export function createWarWorksV6(startingRav = 80, startingUnitId = "W3-U17", ru
     reports: [{ turn: 1, text: "Exercice d’ouvrages : équipe équipée et budget choisis, sans territoire acquis, revenu automatique ou lien à la campagne.", sourceIds: ["W3-R01", "W3-R07", "W3-R19"] }] };
 }
 
+/** Strict additive schema and physical history. This rejects impossible
+ * geometry, copied parts and whole-team bridge jumps; it is not a signature
+ * authenticating a user-editable exercise file or a campaign achievement. */
+function validTerrainV89(state: WarWorksSessionV6, rules: WarRulesV6, definitions: WarWorkDefinitionV6[], ids: Set<string>): boolean {
+  const extension = state.terrain!;
+  const keys = (object: object, fields: string[]) => !!object && Object.keys(object).length === fields.length && Object.keys(object).every(key => fields.includes(key));
+  const integer = (value: number, low: number, high: number) => Number.isSafeInteger(value) && value >= low && value <= high;
+  const profile = (value: string) => ["low-screen", "opaque-rock", "open"].includes(value);
+  const facing = (value: string) => ["east", "west"].includes(value);
+  const fullMembers = (group: WarWorksTeamV6 | undefined, memberIds: string[]) => !!group && Array.isArray(memberIds)
+    && memberIds.length === unitFor(rules, group.team.unitId)?.fullMembers && new Set(memberIds).size === memberIds.length
+    && memberIds.every(id => group.team.members.some(member => member.id === id));
+  if (!keys(extension, ["version", "rulesKey", "geometryKey", "configurations", "traversals", "anchorCargo", "anchors", "sightings", "transits"])
+    || extension.version !== 1 || extension.geometryKey !== "local-terrain-v89-1" || extension.rulesKey !== terrainRulesKey(rules) || state.supplyMode !== "local"
+    || !state.works.some(work => definitions.some(definition => definition.id === work.structureId && terrainKinds.includes(definition.kind)))
+    || [extension.configurations, extension.traversals, extension.anchorCargo, extension.anchors, extension.sightings, extension.transits].some(list => !Array.isArray(list) || list.length > 10000)
+    || new Set(extension.configurations.map(config => config.workId)).size !== extension.configurations.length) return false;
+  let previousTurn = 1;
+  const lastSites = new Map<string, string>();
+  for (const step of extension.traversals) {
+    const passage = rules.passages.find(item => item.id === step.passageId), group = state.teams.find(item => item.team.id === step.teamId);
+    if (!keys(step, ["teamId", "passageId", "fromId", "toId", "turn"]) || !passage || !group
+      || !passageDirection(passage, step.fromId, step.toId) || !integer(step.turn, previousTurn + 1, state.turn)
+      || (lastSites.has(step.teamId) && lastSites.get(step.teamId) !== step.fromId)
+      || passage.capacityPc < (unitFor(rules, group.team.unitId)?.commandPoints ?? Infinity)
+      || preparedPassage(passage) && !extension.transits.some(transit => transit.teamId === step.teamId && transit.completed === "arrived"
+        && transit.fromId === step.fromId && transit.toId === step.toId && transit.resolvedTurn === step.turn
+        && state.works.some(work => work.id === transit.workId && work.passageId === passage.id))) return false;
+    previousTurn = step.turn; lastSites.set(step.teamId, step.toId);
+  }
+  if ([...lastSites].some(([teamId, territoryId]) => state.teams.find(group => group.team.id === teamId)?.territoryId !== territoryId)) return false;
+  const siteAt = (teamId: string, turn: number) => {
+    const route = extension.traversals.filter(step => step.teamId === teamId);
+    return route.filter(step => step.turn <= turn).at(-1)?.toId ?? route[0]?.fromId ?? state.teams.find(group => group.team.id === teamId)?.territoryId;
+  };
+  for (const config of extension.configurations) {
+    const work = state.works.find(work => work.id === config.workId), def = definitions.find(def => def.id === work?.structureId);
+    if (!keys(config, ["workId", "profile", "facing"]) || !work || !def || !["watch", "platform"].includes(def.kind) || !profile(config.profile) || !facing(config.facing)) return false;
+  }
+  const slots = new Set<string>(), cargoTeams = new Set<string>();
+  for (const cargo of extension.anchorCargo) {
+    const work = state.works.find(work => work.id === cargo.workId), group = state.teams.find(group => group.team.id === cargo.teamId);
+    const slot = `${cargo.workId}:${cargo.slot}`;
+    if (!keys(cargo, ["workId", "slot", "teamId", "loadedTurn"]) || !work || work.structureId !== "W3-S08" || !["delivered", "building"].includes(work.phase)
+      || !group || group.team.unitId !== "W3-U12" || fitMembers(group).length !== unitFor(rules, group.team.unitId)?.fullMembers
+      || group.dutyWorkId || group.payloadWorkId || carryingPatient(state, group.team.id) || warWorksGuardV88(state, group.team.id)
+      || !integer(cargo.slot, 1, 3) || slots.has(slot) || cargoTeams.has(cargo.teamId) || !integer(cargo.loadedTurn, 1, state.turn)
+      || siteAt(cargo.teamId, cargo.loadedTurn) !== work.territoryId
+      || extension.traversals.some(step => step.teamId === cargo.teamId && step.turn > cargo.loadedTurn
+        && !rules.passages.find(passage => passage.id === step.passageId)?.permitsRav)) return false;
+    slots.add(slot); cargoTeams.add(cargo.teamId);
+  }
+  previousTurn = 1;
+  const workSlots = new Map<string, number>();
+  for (const anchor of extension.anchors) {
+    const work = state.works.find(work => work.id === anchor.workId), group = state.teams.find(group => group.team.id === anchor.teamId);
+    const passage = rules.passages.find(passage => passage.id === work?.passageId), slot = `${anchor.workId}:${anchor.slot}`;
+    const expectedSite = work && (anchor.slot === 3 && passage ? oppositeSite(passage, work.territoryId) : work.territoryId);
+    if (!keys(anchor, ["workId", "slot", "territoryId", "teamId", "memberIds", "loadedTurn", "turn"]) || !work || work.structureId !== "W3-S08"
+      || !passage || !preparedPassage(passage) || !group || group.team.unitId !== "W3-U12" || !fullMembers(group, anchor.memberIds)
+      || !integer(anchor.slot, 1, 3) || anchor.slot !== (workSlots.get(work.id) ?? 0) + 1 || slots.has(slot)
+      || !integer(anchor.loadedTurn, 1, anchor.turn - 1) || !integer(anchor.turn, previousTurn + 1, state.turn)
+      || anchor.territoryId !== expectedSite || siteAt(anchor.teamId, anchor.loadedTurn) !== work.territoryId
+      || siteAt(anchor.teamId, anchor.turn) !== anchor.territoryId
+      || extension.traversals.some(step => step.teamId === anchor.teamId && step.turn > anchor.loadedTurn && step.turn <= anchor.turn
+        && !rules.passages.find(passage => passage.id === step.passageId)?.permitsRav)
+      || !state.observed.some(item => item.territoryId === anchor.territoryId && item.turn <= anchor.turn)) return false;
+    slots.add(slot); workSlots.set(work.id, anchor.slot); previousTurn = anchor.turn;
+  }
+  for (const work of state.works) {
+    const def = definitions.find(def => def.id === work.structureId);
+    if (["watch", "platform"].includes(def?.kind ?? "") && !extension.configurations.some(config => config.workId === work.id)) return false;
+    if (def?.kind === "bridge" && (work.workedTurns !== (workSlots.get(work.id) ?? 0)
+      || ["delivered", "building"].includes(work.phase) && work.operatorTeamId !== null
+      || work.workedTurns > 0 && !["building", "ready"].includes(work.phase))) return false;
+  }
+  const sightKeys = new Set<string>();
+  previousTurn = 1;
+  for (const sight of extension.sightings) {
+    const work = state.works.find(work => work.id === sight.workId), def = definitions.find(def => def.id === work?.structureId);
+    const group = state.teams.find(group => group.team.id === sight.teamId), key = `${sight.workId}:${sight.targetId}:${sight.profile}:${sight.facing}`;
+    if (!keys(sight, ["workId", "teamId", "memberIds", "targetId", "profile", "facing", "turn"]) || !work || work.phase !== "ready"
+      || !def || !["watch", "platform"].includes(def.kind) || !group || group.team.unitId !== def.operatorUnitId || !fullMembers(group, sight.memberIds)
+      || !Object.hasOwn(WAR_TERRAIN_GEOMETRY_V89.targets, sight.targetId) || !profile(sight.profile) || !facing(sight.facing) || sightKeys.has(key)
+      || !integer(sight.turn, previousTurn, state.turn) || siteAt(sight.teamId, sight.turn) !== work.territoryId
+      || !terrainGeometry(def.kind as "watch" | "platform", sight.profile, sight.facing, sight.targetId, unitFor(rules, def.operatorUnitId)?.range ?? 0).visible) return false;
+    sightKeys.add(key); previousTurn = sight.turn;
+  }
+  let active = 0, previousResolvedTurn = 1;
+  for (const transit of extension.transits) {
+    const work = state.works.find(work => work.id === transit.workId), passage = rules.passages.find(passage => passage.id === work?.passageId);
+    const group = state.teams.find(group => group.team.id === transit.teamId), operator = state.teams.find(group => group.team.id === transit.operatorTeamId);
+    if (!keys(transit, ["id", "workId", "teamId", "fromId", "toId", "startedTurn", "memberIds", "operatorTeamId", "operatorMemberIds", "steps", "completed", "resolvedTurn"])
+      || typeof transit.id !== "string" || !/^terrain:\d+$/.test(transit.id) || !integer(Number(transit.id.slice(8)), 2, state.nextIdentity - 1) || ids.has(transit.id)
+      || !work || work.structureId !== "W3-S08" || work.phase !== "ready" || !passage || !preparedPassage(passage)
+      || !passageDirection(passage, transit.fromId, transit.toId) || !group || !fullMembers(group, transit.memberIds)
+      || !operator || operator === group || operator.team.unitId !== "W3-U12" || !fullMembers(operator, transit.operatorMemberIds)
+      || !integer(transit.startedTurn, previousResolvedTurn, state.turn) || siteAt(group.team.id, transit.startedTurn) !== transit.fromId
+      || siteAt(operator.team.id, transit.startedTurn) !== work.territoryId || !Array.isArray(transit.steps) || transit.steps.length > transit.memberIds.length * 2
+      || passage.capacityPc < (unitFor(rules, group.team.unitId)?.commandPoints ?? Infinity) || ![null, "arrived", "returned"].includes(transit.completed)) return false;
+    ids.add(transit.id);
+    const positions = new Map(transit.memberIds.map(memberId => [memberId, transit.fromId])), passed = new Set<string>();
+    let returning = false;
+    for (const step of transit.steps) {
+      if (!keys(step, ["memberId", "direction"]) || !transit.memberIds.includes(step.memberId)) return false;
+      if (step.direction === "forward") {
+        if (returning || passed.has(step.memberId) || positions.get(step.memberId) !== transit.fromId) return false;
+        positions.set(step.memberId, transit.toId); passed.add(step.memberId);
+      } else if (step.direction === "return") {
+        if (positions.get(step.memberId) !== transit.toId) return false;
+        positions.set(step.memberId, transit.fromId); returning = true;
+      } else return false;
+    }
+    const allArrived = [...positions.values()].every(site => site === transit.toId), allReturned = [...positions.values()].every(site => site === transit.fromId);
+    if (transit.completed === null) {
+      active++;
+      if (transit !== extension.transits.at(-1) || allArrived || allReturned && transit.steps.length > 0 || transit.resolvedTurn !== null || state.turn !== transit.startedTurn
+        || group.territoryId !== transit.fromId || group.route || group.dutyWorkId || group.payloadWorkId || carryingRav(state, group) || anchorCargo(state, group.team.id)
+        || carryingPatient(state, group.team.id) || warWorksGuardV88(state, group.team.id) || fitMembers(group).length !== transit.memberIds.length
+        || work.operatorTeamId !== operator.team.id || !warWorkOccupiedV6(state, work, rules)) return false;
+    } else {
+      if (transit.completed === "arrived" ? !allArrived || returning : !allReturned || transit.steps.length > 0 && !returning) return false;
+      const resolvedTurn = transit.startedTurn + (transit.steps.length ? 1 : 0);
+      if (transit.resolvedTurn !== resolvedTurn || !integer(resolvedTurn, 1, state.turn)
+        || siteAt(group.team.id, resolvedTurn) !== (transit.completed === "arrived" ? transit.toId : transit.fromId)) return false;
+      if (transit.completed === "arrived" && !extension.traversals.some(step => step.teamId === transit.teamId && step.passageId === passage.id
+        && step.fromId === transit.fromId && step.toId === transit.toId && step.turn === resolvedTurn)) return false;
+      previousResolvedTurn = resolvedTurn;
+    }
+  }
+  return active <= 1;
+}
 function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: WarWorkDefinitionV6[]): boolean {
   try {
-    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports", "extraction", "infrastructure"];
+    const fields = ["version", "context", "rulesKey", "sourceSha", "supplyMode", "lots", "transfers", "turn", "nextIdentity", "originId", "startingRav", "ravStock", "teams", "recruits", "works", "observed", "closedPassageIds", "accounts", "lastTurnNeed", "lastTurnPaid", "lastTeamSupply", "reports", "extraction", "infrastructure", "terrain"];
     if (!state || Object.keys(state).some(key => !fields.includes(key))) return false;
     if (state.version !== 2 || state.context !== "free-workshop" || state.sourceSha !== rules.metadata.sha256 || state.rulesKey !== contextKey(rules, definitions)
       || !["front", "local"].includes(state.supplyMode) || !legacyWorksAvailable(definitions) || !Number.isSafeInteger(state.turn) || state.turn < 1 || state.turn >= 10000
@@ -306,13 +523,15 @@ function validSession(state: WarWorksSessionV6, rules: WarRulesV6, definitions: 
         || (work.phase === "ready") !== (work.workedTurns === def.delayTurns)) return false;
       ids.add(work.id); ids.add(work.kitId); locations.add(key);
       if (linkWork(def) ? !rules.passages.some(passage => passage.id === work.passageId && [passage.fromId, passage.toId].includes(work.territoryId)
-        && (def.kind !== "hoist" || reliefPassage(passage, rules))) : work.passageId !== null) return false;
+        && (def.kind !== "hoist" || reliefPassage(passage, rules)) && (def.kind !== "bridge" || preparedPassage(passage))) : work.passageId !== null) return false;
       if (work.phase === "carried" ? !state.teams.some(group => group.team.id === work.carrierTeamId && group.payloadWorkId === work.id) : work.carrierTeamId !== null) return false;
       if (work.operatorTeamId && !state.teams.some(group => group.team.id === work.operatorTeamId && group.dutyWorkId === work.id
         && group.territoryId === work.territoryId && group.team.unitId === def.operatorUnitId)) return false;
       if (def.kind === "extraction" && !state.extraction) return false;
       if (["relay", "hoist"].includes(def.kind) && !state.infrastructure) return false;
+      if (terrainKinds.includes(def.kind) && !state.terrain) return false;
     }
+    if (state.terrain !== undefined && !validTerrainV89(state, rules, definitions, ids)) return false;
     if (state.infrastructure !== undefined) {
       const extension = state.infrastructure;
       if (!extension || Object.keys(extension).some(key => !["version", "rulesKey", "traversals", "groundKits", "lifts", "relayReceipts"].includes(key))
@@ -498,6 +717,9 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   const deny = (message: string): WarWorksTransitionV6 => ({ state, accepted: false, changed: false, message });
   const unchanged = (message: string): WarWorksTransitionV6 => ({ state, accepted: true, changed: false, message });
   if (!validSession(state, rules, definitions)) return deny("État incompatible, identité copiée ou compte RAV incohérent ; aucun ordre appliqué.");
+  const activeBridge = warBridgeActiveV89(state);
+  if (activeBridge && !["close-passages", "cross-bridge", "return-bridge", "cancel-bridge"].includes(action.kind))
+    return deny("Le passage est en cours, membre par membre. Terminez l’arrivée ou le retour individuel avant un autre ordre du front.");
   const report = (next: WarWorksSessionV6, message: string, sourceIds: string[]): WarWorksTransitionV6 => ({
     state: { ...next, reports: [...state.reports, { turn: next.turn, text: message, sourceIds }].slice(-100) }, accepted: true, changed: true, message });
   const replaceTeam = (group: WarWorksTeamV6) => state.teams.map(item => item.team.id === group.team.id ? group : item);
@@ -513,6 +735,14 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     return report({ ...state, closedPassageIds: [...action.ids] }, "Hypothèse de passages mise à jour ; les kits restent à leur emplacement réel.", ["W3-R09"]);
   }
   if (action.kind === "wait") return report(turn(state), "Un tour écoulé ; entretien et arrivées comptés, aucun chantier achevé par attente seule.", ["W3-R10", "W3-R18", "W3-R19"]);
+  if (action.kind === "terrain-hypothesis") {
+    const config = state.terrain?.configurations.find(config => config.workId === action.workId);
+    if (!config || !["low-screen", "opaque-rock", "open"].includes(action.profile)) return deny("Choisissez un obstacle connu du terrain de simulation.");
+    if (config.profile === action.profile) return unchanged("Cette hypothèse de terrain est déjà choisie.");
+    return report({ ...state, terrain: { ...state.terrain!, configurations: state.terrain!.configurations.map(item =>
+      item.workId === action.workId ? { ...item, profile: action.profile } : item) } },
+    "Hypothèse locale d’obstacle modifiée. Les relevés déjà datés gardent leur ancienne géométrie ; aucune position réelle ni ressource n’est modifiée.", ["W3-S01", "W3-S06"]);
+  }
   if (action.kind === "recruit") {
     const unit = unitFor(rules, action.unitId);
     if (!unit || !definitions.some(def => def.operatorUnitId === unit.id)) return deny("Ce lot accueille seulement les opérateurs des ouvrages effectivement raccordés.");
@@ -529,9 +759,12 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     if (!def || !zone || !state.observed.some(item => item.territoryId === zone.id)) return deny("Reconnaissez réellement le site avant de préparer un ouvrage.");
     if (def.kind === "extraction" && (state.supplyMode !== "local" || !warExtractionAvailableV88(rules))) return deny("S16 demande les stocks locaux et ses préconditions sources attestées ; aucun dépôt fictif.");
     if (["relay", "hoist"].includes(def.kind) && state.supplyMode !== "local") return deny("Relais et treuil demandent un exercice en stocks locaux ; aucune alimentation distante fictive.");
+    if (terrainKinds.includes(def.kind) && state.supplyMode !== "local") return deny("Veille, plateforme et pont demandent les stocks locaux de l’exercice.");
     const passageId = linkWork(def) ? action.passageId ?? null : null;
     const passage = rules.passages.find(item => item.id === passageId && [item.fromId, item.toId].includes(zone.id));
     if (linkWork(def) && !passage) return deny("L’ouvrage doit cibler un passage documenté adjacent au site.");
+    if (def.kind === "bridge" && (!passage || !preparedPassage(passage) || !state.observed.some(item => item.territoryId === oppositeSite(passage, zone.id))))
+      return deny("Le pont exige une traverse préparée documentée et ses deux rives réellement reconnues. Il ne répare pas une fermeture.");
     if (def.kind === "hoist" && (!passage || !reliefPassage(passage, rules) || !passage.permitsRav
       || !state.observed.some(item => item.territoryId === oppositeSite(passage, zone.id)))) return deny("Le treuil exige une liaison de relief compatible RAV et ses deux extrémités réellement reconnues.");
     if (state.works.some(work => work.structureId === def.id && work.territoryId === zone.id && work.passageId === passageId)) return unchanged("Cet ouvrage et son kit existent déjà ; aucun second débit.");
@@ -540,6 +773,9 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     const paid = transferRav(state, depotLotId, null, def.costRav, "kit");
     return report({ ...paid, nextIdentity: paid.nextIdentity + 1, ...(def.kind === "extraction" ? { extraction: withExtraction(paid, rules) } : {}),
       ...(["relay", "hoist"].includes(def.kind) ? { infrastructure: withInfrastructure(paid, rules) } : {}),
+      ...(terrainKinds.includes(def.kind) ? { terrain: { ...withTerrain(paid, rules),
+        configurations: [...withTerrain(paid, rules).configurations, ...(["watch", "platform"].includes(def.kind)
+          ? [{ workId: id, profile: "low-screen" as const, facing: "east" as const }] : [])] } } : {}),
       works: [...state.works, { id, kitId: `kit:${id}`, structureId: def.id, territoryId: zone.id, passageId, phase: "reserved", costRav: def.costRav,
         workedTurns: 0, carrierTeamId: null, operatorTeamId: null }] },
     `Kit ${id} réservé au départ : ${def.costRav} RAV. Il n’est ni arrivé à ${zone.id}, ni installé.`, [def.id, "W3-R19", "W3-OBJ05", "W3-OBJ07"]);
@@ -548,6 +784,45 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   if (!group) return deny("Cette équipe n’est pas présente dans l’exercice.");
   const unit = unitFor(rules, group.team.unitId)!;
   const patientCarried = carryingPatient(state, group.team.id), routeGuard = warWorksGuardV88(state, group.team.id);
+  const cargo = anchorCargo(state, group.team.id);
+  if (cargo && !["plan", "advance", "place-anchor", "load-anchor"].includes(action.kind))
+    return deny("Cette équipe porte un ancrage identifié. Acheminer ou poser cette pièce avant un autre kit, poste, patient ou observation. Le ravitaillement doit être disponible sur place.");
+  if (action.kind === "cross-bridge" || action.kind === "return-bridge" || action.kind === "cancel-bridge") {
+    const transit = state.terrain?.transits.find(transit => transit.id === action.transitId);
+    if (!transit || transit.teamId !== group.team.id) return deny("Ce passage individuel n’appartient pas à cette équipe.");
+    if (action.kind !== "cancel-bridge" && !transit.memberIds.includes(action.memberId)) return deny("Ce membre ne figure pas dans le passage préparé.");
+    if (transit.completed !== null) return unchanged("Ce passage individuel est déjà terminé. Aucun déplacement, tour ou débit répété.");
+    if (transit !== activeBridge) return deny("Un autre passage individuel occupe le front.");
+    const bridge = state.works.find(work => work.id === transit.workId), passage = rules.passages.find(passage => passage.id === bridge?.passageId);
+    if (!bridge || !passage || !warWorkOccupiedV6(state, bridge, rules) || !suppliedInfrastructureSite(state, bridge.territoryId, rules))
+      return deny("Le pont doit garder ses vrais opérateurs et son entretien local pendant le passage.");
+    if (action.kind === "cancel-bridge") {
+      if (transit.steps.length) return deny("Des membres ont avancé. Faites revenir chacun physiquement avant de terminer le repli.");
+      return report({ ...state, terrain: { ...state.terrain!, transits: state.terrain!.transits.map(item => item.id === transit.id
+        ? { ...item, completed: "returned", resolvedTurn: state.turn } : item) } }, "Préparation annulée avant le premier franchissement. Tous les membres restent à leur rive.", ["W3-S08"]);
+    }
+    if (state.closedPassageIds.includes(passage.id)) return deny("Le passage est fermé. Les membres restent sur leurs rives actuelles ; aucun tour ou débit n’est appliqué.");
+    const site = warBridgeMemberSiteV89(transit, action.memberId), returning = transit.steps.some(step => step.direction === "return");
+    const direction = action.kind === "cross-bridge" ? "forward" as const : "return" as const;
+    if (direction === "forward" && (returning || transit.steps.some(step => step.memberId === action.memberId))) {
+      return site === transit.toId ? unchanged("Ce membre est déjà sur l’autre rive ; aucun second passage.") : deny("Le repli a commencé. Faites revenir les autres membres avant de préparer un nouveau passage.");
+    }
+    if (direction === "return" && site === transit.fromId) return unchanged("Ce membre est déjà à la rive de départ ; aucun retour répété.");
+    const nextTransit = { ...transit, steps: [...transit.steps, { memberId: action.memberId, direction }] };
+    const destination = direction === "forward" ? transit.toId : transit.fromId;
+    const finished = transit.memberIds.every(memberId => warBridgeMemberSiteV89(nextTransit, memberId) === destination);
+    const next = { ...state, terrain: { ...state.terrain!, transits: state.terrain!.transits.map(item => item.id === transit.id
+      ? { ...nextTransit, completed: finished ? direction === "forward" ? "arrived" as const : "returned" as const : null, resolvedTurn: finished ? state.turn + 1 : null } : item) } };
+    if (!finished) return report(next, `${action.memberId} a ${direction === "forward" ? "atteint l’autre rive" : "rejoint la rive de départ"}. Les positions individuelles sont conservées. Le passage global reste en cours.`, ["W3-S08", passage.id]);
+    const trace = { teamId: group.team.id, passageId: passage.id, fromId: transit.fromId, toId: transit.toId, turn: state.turn + 1 };
+    const arrived = direction === "forward";
+    const completed = turn({ ...next,
+      ...(arrived && state.infrastructure ? { infrastructure: { ...state.infrastructure, traversals: [...state.infrastructure.traversals, trace] } } : {}),
+      terrain: { ...next.terrain, traversals: arrived ? [...next.terrain.traversals, trace] : next.terrain.traversals },
+      teams: replaceTeam({ ...group, territoryId: destination, route: null, team: { ...group.team,
+        fatigue: Math.min(rules.parameters.fatigue_max, group.team.fatigue + rules.parameters.march_fatigue) } }) });
+    return report(completed, `Passage individuel terminé : tous les mêmes membres sont à ${destination}. Un tour global et l’entretien réellement accessible sont comptés, sans kit, lot RAV ou XP transporté.`, ["W3-S08", passage.id, "W3-R09"]);
+  }
   if (["declare-patient", "guard-route", "load-patient", "put-down-patient", "return-patient"].includes(action.kind)
     && (state.supplyMode !== "local" || !warExtractionAvailableV88(rules))) return deny("Extraction indisponible : les stocks locaux et fiches sources sont requis.");
   if (action.kind === "declare-patient") {
@@ -643,20 +918,23 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
   if (!fitMembers(group).length) return deny("Aucun membre apte et affecté à cette équipe ne peut agir.");
   if (action.kind === "plan") {
     if (group.dutyWorkId || routeGuard) return deny("Libérez d’abord les opérateurs de leur ouvrage ou les gardes du passage.");
-    const route = planWarRouteV6(group.territoryId, action.destinationId, unit.commandPoints, state.closedPassageIds, rules, group.payloadWorkId || carryingRav(state, group) ? "rav" : "none");
+    const blocked = state.terrain ? [...new Set([...state.closedPassageIds, ...rules.passages.filter(preparedPassage).map(passage => passage.id)])] : state.closedPassageIds;
+    const route = planWarRouteV6(group.territoryId, action.destinationId, unit.commandPoints, blocked, rules, group.payloadWorkId || carryingRav(state, group) || cargo ? "rav" : "none");
     return !route ? deny("Aucune route admissible pour cette équipe et son kit.") : !route.passageIds.length ? unchanged("L’équipe est déjà au site demandé.")
       : report({ ...state, teams: replaceTeam({ ...group, route }) }, "Trajet préparé ; ni l’équipe ni le kit ne sont encore arrivés.", ["W3-R04", "W3-R09"]);
   }
   if (action.kind === "advance") {
     const route = group.route, passage = rules.passages.find(item => item.id === route?.passageIds[0]), destination = route?.territoryIds[1];
     if (group.dutyWorkId || routeGuard || !route || route.territoryIds[0] !== group.territoryId || !passage || !destination || state.closedPassageIds.includes(passage.id)
-      || passage.capacityPc < unit.commandPoints || ((group.payloadWorkId || carryingRav(state, group)) && !passage.permitsRav)
+      || passage.capacityPc < unit.commandPoints || (state.terrain && preparedPassage(passage)) || ((group.payloadWorkId || carryingRav(state, group) || cargo) && !passage.permitsRav)
       || !((passage.fromId === group.territoryId && passage.toId === destination) || (passage.bidirectional && passage.toId === group.territoryId && passage.fromId === destination))) return deny("Le prochain passage est fermé, trop étroit ou impropre au kit ; aucune téléportation ni dépense.");
     const guard = patientCarried ? passageGuard(state, passage.id, rules) : null;
     if (patientCarried && !guard) return deny("Le prochain passage n’a plus de garde présente : patient, porteur et stocks restent à leur vraie position. Aucun tour consommé.");
     const remaining = route.passageIds.length > 1 ? { passageIds: route.passageIds.slice(1), territoryIds: route.territoryIds.slice(1), cost: route.cost - passage.movementCost } : null;
     return report(turn({ ...state, ...(state.infrastructure ? { infrastructure: { ...state.infrastructure, traversals: [...state.infrastructure.traversals,
       { teamId: group.team.id, passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1 }] } } : {}),
+      ...(state.terrain ? { terrain: { ...state.terrain, traversals: [...state.terrain.traversals,
+        { teamId: group.team.id, passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1 }] } } : {}),
       ...(patientCarried ? { extraction: { ...state.extraction!, patients: state.extraction!.patients.map(patient => patient.memberId === patientCarried.memberId
       ? { ...patient, territoryId: destination, steps: [...patient.steps, { passageId: passage.id, fromId: group.territoryId, toId: destination, turn: state.turn + 1,
         carrierId: patient.carrierId!, carrierTeamId: group.team.id, guardTeamId: guard!.teamId, guardTerritoryId: guard!.territoryId }] } : patient) } } : {}),
@@ -675,10 +953,71 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     return report(turn({ ...state, teams: replaceTeam({ ...group, team: result.state }), observed: [...state.observed, { territoryId: group.territoryId, teamId: group.team.id, turn: state.turn + 1 }] }),
       `Site ${group.territoryId} reconnu au tour ${state.turn + 1} ; ${rules.parameters.xp_recon} XP aux membres présents, sans annexion.`, ["W3-UP04", "W3-R05"]);
   }
-  const work = state.works.find(item => item.id === action.workId), def = definitions.find(item => item.id === work?.structureId);
+  const work = state.works.find(item => item.id === ("workId" in action ? action.workId : "")), def = definitions.find(item => item.id === work?.structureId);
   if (!work || !def) return deny("Cet ouvrage n’existe pas dans l’exercice.");
   if (patientCarried || routeGuard) return deny("Mains et équipe engagées dans l’extraction ou la garde ; aucun kit, chantier ou repos simultané.");
   const replaceWork = (next: WarWorkOrderV6) => state.works.map(item => item.id === next.id ? next : item);
+  if (action.kind === "load-anchor") {
+    if (cargo) return cargo.workId === work.id ? unchanged("Cette équipe porte déjà sa pièce d’ancrage ; aucune copie.") : deny("Une autre pièce occupe cette équipe.");
+    if (!state.terrain || def.kind !== "bridge" || !["delivered", "building"].includes(work.phase) || group.team.unitId !== def.operatorUnitId
+      || group.territoryId !== work.territoryId || group.payloadWorkId || group.dutyWorkId || carryingRav(state, group) || fitMembers(group).length !== unit.fullMembers)
+      return deny("Le kit de pont doit être livré. Ses grimpeurs complets chargent un seul ancrage à sa rive de départ.");
+    const slot = [1, 2, 3].find(slot => !state.terrain!.anchors.some(anchor => anchor.workId === work.id && anchor.slot === slot)
+      && !state.terrain!.anchorCargo.some(piece => piece.workId === work.id && piece.slot === slot));
+    if (!slot) return deny("Les trois pièces du même kit sont déjà posées ou transportées. Aucune quatrième pièce.");
+    return report({ ...state, teams: replaceTeam({ ...group, route: null }), terrain: { ...state.terrain,
+      anchorCargo: [...state.terrain.anchorCargo, { workId: work.id, slot, teamId: group.team.id, loadedTurn: state.turn }] } },
+    `${work.kitId}:anchor:${slot} chargé physiquement à ${work.territoryId}. ${slot === 3 ? "Il doit atteindre l’autre rive par une vraie route compatible RAV, avec une cache alimentée pour le travail." : "Il doit être posé sur cette rive."} Aucun nouveau kit ni débit.`, ["W3-S08", "W3-U12", "W3-R19"]);
+  }
+  if (action.kind === "place-anchor") {
+    const passage = rules.passages.find(passage => passage.id === work.passageId), site = cargo?.slot === 3 && passage ? oppositeSite(passage, work.territoryId) : work.territoryId;
+    const supply = warWorksSupplyPreviewV87(state, rules).find(supply => supply.teamId === group.team.id);
+    if (!state.terrain || def.kind !== "bridge" || !cargo || cargo.workId !== work.id || cargo.slot !== work.workedTurns + 1
+      || !["delivered", "building"].includes(work.phase) || group.team.unitId !== def.operatorUnitId || fitMembers(group).length !== unit.fullMembers
+      || group.territoryId !== site || !state.observed.some(item => item.territoryId === site) || group.dutyWorkId || group.payloadWorkId
+      || !supply || supply.paid < supply.need) return deny("Pose refusée : pièce réelle, ordre des trois appuis, rive reconnue, grimpeurs complets et rations locales requis. U19 doit alimenter une cache sur la rive éloignée.");
+    const workedTurns = work.workedTurns + 1;
+    return report(turn({ ...state, teams: replaceTeam({ ...group, route: null }), works: replaceWork({ ...work, workedTurns,
+      phase: workedTurns === def.delayTurns ? "ready" : "building", operatorTeamId: null }), terrain: { ...state.terrain,
+      anchorCargo: state.terrain.anchorCargo.filter(piece => piece !== cargo), anchors: [...state.terrain.anchors,
+        { workId: work.id, slot: cargo.slot, territoryId: group.territoryId, teamId: group.team.id, memberIds: fitMembers(group).map(member => member.id),
+          loadedTurn: cargo.loadedTurn, turn: state.turn + 1 }] } }),
+    `Ancrage ${cargo.slot}/3 posé à ${site} après un vrai tour de travaux. ${workedTurns === 3 ? "Pont installé, encore sans opérateurs à sa rive de départ." : "Les deux prochains appuis restent à acheminer et poser."} Aucun passage réparé, revenu ou XP accordé.`, ["W3-S08", passage!.id, "W3-R19"]);
+  }
+  if (action.kind === "begin-bridge") {
+    const passage = rules.passages.find(passage => passage.id === work.passageId), destination = passage && oppositeSite(passage, group.territoryId);
+    const supply = warWorksSupplyPreviewV87(state, rules).find(supply => supply.teamId === group.team.id);
+    const operator = state.teams.find(item => item.team.id === work.operatorTeamId);
+    if (!state.terrain || def.kind !== "bridge" || !passage || !destination || !preparedPassage(passage)
+      || !passageDirection(passage, group.territoryId, destination) || state.closedPassageIds.includes(passage.id) || passage.capacityPc < unit.commandPoints
+      || !warWorkOccupiedV6(state, work, rules) || !operator || operator === group || !suppliedInfrastructureSite(state, work.territoryId, rules)
+      || group.dutyWorkId || group.payloadWorkId || group.route || carryingRav(state, group) || cargo || fitMembers(group).length !== unit.fullMembers
+      || !supply || supply.paid < supply.need) return deny("Le pont exige trois ancrages posés, ses deux opérateurs alimentés, une voie ouverte et une équipe complète libre au départ, sans kit ni lot RAV.");
+    const id = `terrain:${state.nextIdentity}`;
+    return report({ ...state, nextIdentity: state.nextIdentity + 1, terrain: { ...state.terrain, transits: [...state.terrain.transits,
+      { id, workId: work.id, teamId: group.team.id, fromId: group.territoryId, toId: destination, startedTurn: state.turn,
+        memberIds: fitMembers(group).map(member => member.id), operatorTeamId: operator.team.id, operatorMemberIds: fitMembers(operator).map(member => member.id),
+        steps: [], completed: null, resolvedTurn: null }] } },
+    "Passage individuel préparé. Chaque membre doit franchir séparément. Les autres ordres attendent la fin de ce passage ; le tour global sera compté une fois après arrivée ou retour de tous.", ["W3-S08", passage.id]);
+  }
+  if (action.kind === "orient-platform" || action.kind === "scan-terrain") {
+    const config = state.terrain?.configurations.find(config => config.workId === work.id);
+    if (!config || !["watch", "platform"].includes(def.kind) || !warWorkOccupiedV6(state, work, rules) || work.operatorTeamId !== group.team.id
+      || !suppliedInfrastructureSite(state, work.territoryId, rules)) return deny("Cette lecture exige l’ouvrage installé, ses vrais opérateurs complets et son entretien local.");
+    if (action.kind === "orient-platform") {
+      if (def.kind !== "platform" || !["east", "west"].includes(action.facing)) return deny("Seule la plateforme oriente son angle d’exercice.");
+      if (config.facing === action.facing) return unchanged("Cette orientation est déjà réglée ; aucun tour répété.");
+      return report(turn({ ...state, terrain: { ...state.terrain!, configurations: state.terrain!.configurations.map(item =>
+        item.workId === work.id ? { ...item, facing: action.facing } : item) } }), "Un tour d’orientation accompli. L’angle de tir et le couvert suivent le côté choisi ; l’angle mort dessous persiste.", ["W3-S06", "W3-U13"]);
+    }
+    const view = evaluateWarTerrainV89(state, work.id, action.targetId, rules);
+    if (!view || !view.visible) return deny("Ce repère d’exercice est occulté, hors portée, hors angle ou sous la plateforme. Aucun relevé ni tour créé.");
+    if (state.terrain!.sightings.some(sight => sight.workId === work.id && sight.targetId === action.targetId && sight.profile === config.profile && sight.facing === config.facing))
+      return unchanged("Ce même repère dans cette même géométrie est déjà daté. Son âge est conservé ; aucune nouvelle XP ni répétition de tour.");
+    return report(turn({ ...state, terrain: { ...state.terrain!, sightings: [...state.terrain!.sightings,
+      { workId: work.id, teamId: group.team.id, memberIds: fitMembers(group).map(member => member.id), targetId: action.targetId, profile: config.profile, facing: config.facing, turn: state.turn + 1 }] } }),
+    `${view.target.name} relevée au tour ${state.turn + 1} depuis ${work.territoryId}. Repère géométrique du terrain de simulation, sans ennemi révélé, tir, annexion ou XP.`, [def.id, "W3-R05", "W3-R19"]);
+  }
   if (action.kind === "put-down-kit") {
     if (!state.infrastructure || work.phase !== "carried" || group.payloadWorkId !== work.id || work.carrierTeamId !== group.team.id || group.dutyWorkId)
       return deny("Déposer exige le kit réellement porté et un carnet relais/treuil actif. Aucune copie de pièce.");
@@ -749,6 +1088,7 @@ export function applyWarWorksV6(state: WarWorksSessionV6, action: WarWorksAction
     return report({ ...state, teams: replaceTeam({ ...group, dutyWorkId: work.id, route: null }), works: replaceWork({ ...work, operatorTeamId: group.team.id }) }, "Opérateurs affectés à leur ouvrage réel, sans copie de garnison.", [def.id, "W3-R19"]);
   }
   if (action.kind === "work") {
+    if (def.kind === "bridge") return deny("Ce pont se construit par ses trois ancrages physiques. Chargez puis posez chaque pièce sur sa vraie rive ; l’attente et le bouton générique ne remplacent pas ces travaux.");
     if (work.phase === "ready") return unchanged("Cet ouvrage est déjà en service ; ni chantier ni récompense répétés.");
     if (!["delivered", "building"].includes(work.phase)) return deny("Les pièces ne sont pas encore livrées sur ce site.");
     const workedTurns = work.workedTurns + 1, ready = workedTurns === def.delayTurns;

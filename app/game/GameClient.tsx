@@ -11,6 +11,7 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
@@ -35,6 +36,7 @@ import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, canAdvanceGameReserveV66, type GameReserveV66State } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
+import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
 import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
@@ -278,6 +280,7 @@ const ShipHub = React.lazy(() => import("./ShipHub"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
+const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
 const CatalogueHunterBrowser = React.lazy(() =>
@@ -300,6 +303,7 @@ type Screen =
   | "homeworld-region-v68"
   | "homeworld-passage-v67"
   | "game-reserve"
+  | "ship-acquisition-v89"
   | "title"
   | "clan-chronicle"
   | "clan-war"
@@ -333,6 +337,21 @@ type StationScreen = Extract<
 type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld">;
 
 const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
+
+/** Focus changes must update native disabled controls as well as action guards.
+ * This store never writes progression when the browser loses or regains focus. */
+function subscribeGameFocusV89(notify: () => void) {
+  window.addEventListener('focus', notify);
+  window.addEventListener('blur', notify);
+  document.addEventListener('visibilitychange', notify);
+  return () => {
+    window.removeEventListener('focus', notify);
+    window.removeEventListener('blur', notify);
+    document.removeEventListener('visibilitychange', notify);
+  };
+}
+const readGameFocusV89 = () => document.hasFocus() && document.visibilityState === 'visible';
+const serverGameFocusV89 = () => false;
 
 interface RewardSummary {
   honor: number;
@@ -963,6 +982,7 @@ export default function GameClient() {
 }
 
 function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMainMenu: () => void }) {
+  const gameFocusedV89 = useSyncExternalStore(subscribeGameFocusV89, readGameFocusV89, serverGameFocusV89);
   const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
   const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
@@ -1053,6 +1073,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const missionSettlementRef = useRef(false);
   const [quickAccessOpen, setQuickAccessOpen] = useState(false);
   const [archiveReturnV85, setArchiveReturnV85] = useState<"deck" | "homeworld">("homeworld");
+  const [shipAcquisitionReturnV89, setShipAcquisitionReturnV89] = useState<"deck" | "homeworld">("homeworld");
   const [briefingAtAirlock, setBriefingAtAirlock] = useState(false);
   const [shipDrillActive, setShipDrillActive] = useState(false);
   const shipStationOpen = screen === "ship" || screen === "map" ||
@@ -1060,7 +1081,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1980,14 +2001,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTerminalRunRef.current) {
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88 });
+    const updateSerialized = JSON.stringify({ profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2033,7 +2054,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     try { fleet = readShipPreparationFleetV88(current, window.localStorage); } catch { /* Unavailable storage cannot attest a hull. */ }
     return { save: current, shipId: selectedShipId, selectedMissionId: selectedMission?.id ?? null, fleet,
       active: deckVisible && screen === 'deck' && current.createdAt === entry.ownerCreatedAt,
-      focused: typeof document !== 'undefined' && document.hasFocus() && document.visibilityState === 'visible',
+      focused: gameFocusedV89 && typeof document !== 'undefined' && readGameFocusV89(),
       suspended: shipStationOpen || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
   };
   const shipPreparationEvaluationV88 = evaluateShipPreparationV88(save.shipPreparationV88, shipPreparationContextV88(save));
@@ -2051,6 +2072,39 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       return refused('Inspection non confirmée dans la sauvegarde. Le dernier relevé enregistré reste conservé ; réessaie à ce poste.');
     }
     return result;
+  };
+
+  const shipAcquisitionContextV89 = (current: SaveGame): ShipAcquisitionContextV89 => {
+    const mounted = screen === 'ship-acquisition-v89' && current.createdAt === entry.ownerCreatedAt;
+    const scene = mounted ? shipAcquisitionSceneFactsV89() : { host: null, candidate: null };
+    return { save: current, active: mounted, ...scene, authority: null,
+      focused: gameFocusedV89 && typeof document !== 'undefined' && readGameFocusV89(),
+      suspended: settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
+  };
+  const openShipAcquisitionV89 = () => {
+    const current = saveRef.current;
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current || pendingTerminalRunRef.current) {
+      setToast('Chantier suspendu : confirme d’abord la campagne et ses sauvegardes.'); return;
+    }
+    if (!shipAcquisitionEligibleV89(current)) { setToast('Le chantier attend le rang Blooded réellement acquis. Aucun rite ni accès de campagne n’est attribué par ce raccourci.'); return; }
+    if (current.shipAcquisitionV89 && !normalizeShipAcquisitionV89(current.shipAcquisitionV89, current.createdAt)) {
+      setToast('Checkpoint du chantier incompatible : ses données sont conservées.'); return;
+    }
+    setShipAcquisitionReturnV89(screen === 'homeworld' || hubLocation === 'homeworld' ? 'homeworld' : 'deck');
+    setScreen('ship-acquisition-v89');
+  };
+  const onShipAcquisitionActionV89 = (action: ShipAcquisitionActionV89): ShipAcquisitionResultV89 => {
+    const current = saveRef.current;
+    const refused = (message: string): ShipAcquisitionResultV89 => ({ accepted: false, changed: false, state: current.shipAcquisitionV89 ?? null, message });
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Preserve work if storage cannot attest the active owner. */ }
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current) return refused('Chantier suspendu : campagne active non confirmée.');
+    const result = actShipAcquisitionV89(current.shipAcquisitionV89, action, shipAcquisitionContextV89(current));
+    if (!result.accepted || !result.changed) return result;
+    if (!persistSocialProgress({ shipAcquisitionV89: result.state })) return refused('Travail non confirmé dans la sauvegarde. Le dernier repère enregistré reste conservé ; réessaie.');
+    return { ...result, state: saveRef.current.shipAcquisitionV89 ?? null };
   };
 
   const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
@@ -3255,7 +3309,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
         onShip={() => go(save.prologue ? "homeworld" : "deck")}
@@ -3499,6 +3553,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
+                <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>Chantier naval · inspection</button>
                 <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("homeworld"); setScreen("clan-war"); }}>Guerres des clans · exercices</button>
                 <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("homeworld"); setScreen("sprite-library"); }}>Archives visuelles</button>
                 </>}
@@ -3516,6 +3571,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       )}
 
       {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} /></Suspense>)}
+      {screen === 'ship-acquisition-v89' && <section inert={settingsOpen} data-ship-acquisition-campaign>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <ShipAcquisitionV89 key={save.createdAt} appearance={save.appearance} loadout={save.loadout}
+            controlled={{ state: save.shipAcquisitionV89 ?? null, context: shipAcquisitionContextV89(save), onAction: onShipAcquisitionActionV89 }}
+            onOpenSettings={() => setSettingsOpen(true)} onExit={() => go(shipAcquisitionReturnV89)} />
+        </Suspense>
+      </section>}
 
       {screen === "homeworld-region-v68" && hydrated && save.homeworldRegionV68 && <section inert={settingsOpen} data-homeworld-region-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
@@ -3579,6 +3641,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 }}>Mandats et alignement</button>
                 <button type="button" className="ghost-button" onClick={openPit}>
                   THE PIT · combat
+                </button>
+                <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>
+                  Chantier naval · inspection
                 </button>
                 <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("clan-war"); }}>Guerres des clans · exercices</button>
                 <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("sprite-library"); }}>Archives visuelles</button>

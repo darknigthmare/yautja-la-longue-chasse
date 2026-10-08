@@ -40,7 +40,9 @@ test('nine actual interactive facades align their threshold and source in one sc
 
 test('exposed native foundations belong to the physical ground union; internal seams never become chasm faces',()=>{
  for(const level of world.HOMEWORLD_LEVELS_V77){
-  const polygons=[...world.HOMEWORLD_GROUND_V77,...urban.HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId===level.id);
+  // V82 native landing sockets are painted and included by the current edge
+  // extractor. Omitting them tests an older, physically incomplete union.
+  const polygons=[...world.HOMEWORLD_GROUND_V77,...world.HOMEWORLD_CONNECTOR_PADS_V82,...urban.HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId===level.id);
   const covered=p=>polygons.some(g=>city.pointInHomeworldPolygon(p,g.polygon));
   for(const e of backdrop.HOMEWORLD_EXPOSED_EDGES_V81[level.id]){
    const dx=e.b.x-e.a.x,dy=e.b.y-e.a.y,len=Math.hypot(dx,dy),m={x:(e.a.x+e.b.x)/2,y:(e.a.y+e.b.y)/2};
@@ -48,6 +50,19 @@ test('exposed native foundations belong to the physical ground union; internal s
    const [a,b]=backdrop.homeworldProjectEdgeV81(e);near(a.x,e.a.x);near(b.y,e.b.y*geo.HOMEWORLD_GEOMETRY_V64.depthScale-level.elevation);
   }
  }
+});
+
+test('the relocated delegation house has an actual paved connector shared by terrain, scene and codex',()=>{
+ const id='forecourt-link-v76:residence-clans-1',ground=world.HOMEWORLD_GROUND_V77.find(g=>g.id===id),street=city.HOMEWORLD_STREETS.find(g=>g.id===id);
+ assert(ground&&street);assert.equal(ground.levelId,'0');assert.deepEqual(ground.polygon,street.polygon);
+ assert(world.homeworldTerrainV77('0',{x:4200,y:2690},{halfWidth:36,halfDepth:26}),'whole guided body must have genuine paved support');
+ const context=load('homeworldContextCodexV71'),record=context.HOMEWORLD_ALL_ELEMENT_CODEX_V71.find(r=>r.id==='street:'+id);
+ assert(record);assert.deepEqual(record.footprint.polygon,ground.polygon);
+ const actor={x:4200,y:2690},camera=world.homeworldCameraWorldV77(actor,'0',{width:1440,height:1000});
+ const html=q.render('app/game/HomeworldWorldSceneV77.tsx',{actor,levelId:'0',camera,seconds:5,activeDoorId:null,activePointId:null});
+ assert(html.includes('data-world-ground-id-v77="'+id+'"'),'physical support must be painted in the actual scene');
+ const projected=ground.polygon.map(p=>`${p.x},${p.y*geo.HOMEWORLD_GEOMETRY_V64.depthScale}`).join(' ');
+ assert(html.includes('points="'+projected+'"'),'renderer must use this exact support polygon without a cosmetic substitute');
 });
 
 test('only distant scenery parallax moves; the floor-facing facade anchor stays in physical world coordinates',()=>{

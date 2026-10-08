@@ -6,9 +6,9 @@ import { soloV69NeedsScene } from "./campaignSoloV69";
 import { soloV70NeedsScene } from "./campaignSoloV70";
 import { createNurseryCampaign } from "./nurseryCampaign";
 import { GAME_CONTENT_VERSION } from "../buildInfo";
-import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION } from "../save";
+import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION, SAVE_MAX_SERIALIZED_BYTES } from "../save";
 import type { SaveGame } from "../types";
-import { archiveTransferPending } from "./archiveTransferGuard";
+import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./archiveTransferGuard";
 import { applyArchiveTransaction, withArchiveTransferLock, type ArchiveStorage, type ArchiveReplacement } from "./archiveTransaction";
 import { createCompleteArchive, importCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, COMPLETE_ARCHIVE_FORMAT, type CompleteArchive } from "./completeArchive";
 import { createDefaultShipProgression, SHIP_PROGRESSION_STORAGE_KEY, SHIP_PROGRESSION_VERSION } from "./progression";
@@ -53,6 +53,21 @@ export interface CampaignSlotResult {
 export interface CampaignCheckpointOptions {
   kind: "manual" | "auto"; index?: number; expectedRevision: number; location?: CampaignResumeLocation;
 }
+export const CAMPAIGN_SLOT_IMPORT_MAX_BYTES = SAVE_MAX_SERIALIZED_BYTES;
+export interface CampaignSlotImportPreview {
+  readonly slotId: CampaignSlotId; readonly ownerCreatedAt: string; readonly hunterName: string;
+  readonly updatedAt: string; readonly playTimeSeconds: number; readonly resumeLocation: CampaignResumeLocation;
+  readonly sourceFormat: "export-save" | "legacy-save"; readonly hasActiveHunt: boolean;
+  readonly warnings: readonly string[];
+}
+export interface CampaignSlotImportPreparation {
+  ok: boolean; failure: CampaignSlotFailure | null; message: string; preview: CampaignSlotImportPreview | null;
+}
+// An import confirmation is ephemeral, bound to this storage object and exact
+// read-only preimages. JSON or a copied preview cannot grant a write capability.
+const campaignImportPlans = new WeakMap<CampaignSlotImportPreview, {
+  storage: ArchiveStorage; serialized: string; preimage: Map<string, string | null>;
+}>();
 const SLOT_PREFIX = "yautja-long-hunt.campaign-slot.";
 // A single setItem commits all 12 references and their full snapshots together.
 // Browsers may refuse earlier at their own quota; no existing data is deleted.
@@ -292,6 +307,122 @@ async function mutation(storage: ArchiveStorage | null, operation: (storage: Arc
     } catch (error) { return refused(error instanceof Refusal ? error.failure : "read-failed", error instanceof Error ? error.message : "La lecture a échoué ; aucune réussite n’est annoncée."); }
   });
   return locked.acquired ? locked.value : refused("lock-unavailable", locked.reason);
+}
+function importedCampaign(serialized: string): { save: SaveGame; sourceFormat: CampaignSlotImportPreview["sourceFormat"] } {
+  const parsed = parseSaveImport(serialized);
+  if (!parsed.save) fail(parsed.failure === "future-version" ? "future-version" : parsed.failure === "too-large" ? "too-large" : "invalid-archive", "JSON de campagne illisible, trop volumineux ou incompatible. Aucune archive locale modifiée.");
+  const value: unknown = JSON.parse(serialized.replace(/^\uFEFF/, ""));
+  const envelope = record(value) && value.format === "yautja-long-hunt.save-export";
+  const payload = envelope ? value.save : value;
+  // normalizeSave can repair a missing owner with the current time. A portable
+  // import must preserve the owner's original identity, never invent one.
+  if (!record(payload) || !iso(payload.createdAt) || parsed.save.createdAt !== payload.createdAt)
+    fail("owner-conflict", "Le fichier ne contient pas une identité de propriétaire valide et conservable. Aucun propriétaire n’est créé.");
+  return { save: parsed.save, sourceFormat: envelope ? "export-save" : "legacy-save" };
+}
+function inspectCampaignImport(data: ArchiveStorage, id: CampaignSlotId, serialized: string) {
+  if (!slotIdValid(id)) fail("invalid-slot", "Choisissez un des cinq emplacements.");
+  requireAvailable(data);
+  const parsed = importedCampaign(serialized), owner = parsed.save.createdAt;
+  const keys = [...CAMPAIGN_SLOT_IDS.flatMap(slotId => [campaignSlotStorageKey(slotId), campaignSlotStorageKey(slotId) + ".backup"]),
+    ARCHIVE_TRANSFER_JOURNAL_KEY, SAVE_STORAGE_KEY, SAVE_STORAGE_KEY + ".backup", ACTIVE_HUNT_STORAGE_KEY, SHIP_PROGRESSION_STORAGE_KEY,
+    PIT_SAVE_STORAGE_KEY, PIT_REPLAY_STORAGE_KEY, pitSaveStorageKey(owner), pitReplayStorageKey(owner)];
+  const preimage = new Map(keys.map(key => [key, data.getItem(key)]));
+  const target = campaignSlotStorageKey(id);
+  if (preimage.get(target) !== null || preimage.get(target + ".backup") !== null)
+    fail("slot-occupied", "L’import exige un emplacement entièrement vide, sans archive ni copie de secours. Aucun remplacement permis.");
+  const owners = new Set<string>();
+  // A valid primary does not validate its backup. Inspect every copy separately
+  // so hidden corruption/future data and a previous owner remain protected.
+  for (const slotId of CAMPAIGN_SLOT_IDS) {
+    for (const key of [campaignSlotStorageKey(slotId), campaignSlotStorageKey(slotId) + ".backup"]) {
+      const raw = preimage.get(key);
+      if (raw !== null && raw !== undefined) {
+        try { owners.add(parseSlot(raw, slotId).ownerCreatedAt); }
+        catch (error) { fail(error instanceof Refusal && error.failure === "future-version" ? "future-version" : "protected-save", "Une partie ou sa copie de secours est protégée. Récupérez-la avant un import."); }
+      }
+    }
+  }
+  for (const key of [SAVE_STORAGE_KEY, SAVE_STORAGE_KEY + ".backup"]) {
+    const raw = preimage.get(key);
+    if (raw !== null && raw !== undefined) {
+      try {
+        const workingOwner = importedCampaign(raw).save.createdAt;
+        owners.add(workingOwner);
+        for (const scopedKey of [pitSaveStorageKey(workingOwner), pitReplayStorageKey(workingOwner)])
+          if (!preimage.has(scopedKey)) preimage.set(scopedKey, data.getItem(scopedKey));
+      }
+      catch (error) { fail(error instanceof Refusal && error.failure === "future-version" ? "future-version" : "protected-save", "La campagne de travail ou sa copie de secours est protégée. Aucun import ne la contourne."); }
+    }
+  }
+  if (owners.has(owner)) fail("owner-conflict", "Ce propriétaire existe déjà dans une partie, une copie de secours ou la campagne de travail. Le clonage est refusé.");
+  const catalog = loadCampaignSlots(data);
+  if (catalog.status !== "ready" || catalog.workspaceRecoveryAvailable)
+    fail(catalog.failure ?? "recovery-required", "Les archives doivent être disponibles sans récupération en attente avant l’import.");
+  if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la campagne non attribuée dans un emplacement.");
+  const campaignRaw = JSON.stringify(parsed.save);
+  const importWarnings: string[] = [];
+  let shipForImport = preimage.get(SHIP_PROGRESSION_STORAGE_KEY) ?? null;
+  if (shipForImport !== null) {
+    let ship: unknown;
+    try { ship = JSON.parse(shipForImport); } catch { fail("invalid-archive", "La progression locale du vaisseau est illisible et reste protégée."); }
+    if (record(ship) && Number(ship.version) > SHIP_PROGRESSION_VERSION)
+      fail("future-version", "La progression locale du vaisseau vient d’une version plus récente et reste protégée.");
+    if (!record(ship) || ![1, 2, SHIP_PROGRESSION_VERSION].includes(ship.version as number) || !iso(ship.updatedAt) ||
+      (ship.ownerSaveCreatedAt !== undefined && !iso(ship.ownerSaveCreatedAt)) ||
+      (ship.version === SHIP_PROGRESSION_VERSION && !iso(ship.ownerSaveCreatedAt)))
+      fail("invalid-archive", "La progression locale du vaisseau est incompatible et reste protégée.");
+    // Historic export can adopt an unowned legacy sidecar using its date. A
+    // foreign campaign import must require explicit ownership instead.
+    if (ship.ownerSaveCreatedAt !== owner) {
+      shipForImport = null;
+      importWarnings.push(ship.ownerSaveCreatedAt === undefined
+        ? "La progression locale ancienne du vaisseau n’a pas de propriétaire explicite : elle reste intacte et n’est pas importée."
+        : "Le vaisseau appartient à une autre campagne et n’est pas importé.");
+    }
+  }
+  // Capture matching local annexes without claiming or migrating anything.
+  // Foreign annexes remain in storage. The complete-archive schema supplies
+  // its existing default progression projection if no matching sidecar exists;
+  // the imported SaveGame, story flags and acquired ships are never changed.
+  const view: ArchiveStorage = { getItem: key => key === SAVE_STORAGE_KEY ? campaignRaw : key === SHIP_PROGRESSION_STORAGE_KEY ? shipForImport : preimage.get(key) ?? null,
+    setItem: () => { throw new Error("read-only import preview"); }, removeItem: () => { throw new Error("read-only import preview"); } };
+  let captured: ReturnType<typeof createCompleteArchive>;
+  try { captured = createCompleteArchive(parsed.save, view, parsed.save.updatedAt); }
+  catch (error) { fail("invalid-archive", error instanceof Error ? error.message : "Une annexe compatible ne peut pas être capturée."); }
+  const archive = checkArchive(captured.serialized);
+  const document = initialDocument(id, archive, parsed.save.profile.hunterName, parsed.save.gameReserveV66 ? "game-reserve" : "deck");
+  if ([...preimage].some(([key, raw]) => data.getItem(key) !== raw)) fail("save-conflict", "Les archives ont changé pendant la prévisualisation. Relisez le fichier.");
+  requireAvailable(data);
+  return { parsed, document, preimage, warnings: [...importWarnings, ...captured.warnings] };
+}
+/** Read-only validation. No slot, active owner, story step or annex is written. */
+export function prepareCampaignSlotImport(id: CampaignSlotId, serialized: string, storage: ArchiveStorage | null = browserStorage()): CampaignSlotImportPreparation {
+  if (!storage) return { ok: false, failure: "storage-unavailable", message: "Le stockage local est indisponible.", preview: null };
+  try {
+    const inspected = inspectCampaignImport(storage, id, serialized), save = inspected.parsed.save, first = inspected.document.checkpoints[0];
+    const preview: CampaignSlotImportPreview = Object.freeze({ slotId: id, ownerCreatedAt: save.createdAt, hunterName: save.profile.hunterName,
+      updatedAt: save.updatedAt, playTimeSeconds: save.profile.playTimeSeconds, resumeLocation: first.resumeLocation,
+      sourceFormat: inspected.parsed.sourceFormat, hasActiveHunt: first.hasActiveHunt, warnings: Object.freeze([...inspected.warnings]) });
+    campaignImportPlans.set(preview, { storage, serialized, preimage: inspected.preimage });
+    return { ok: true, failure: null, message: "Fichier validé en lecture seule. Confirmez son archivage dans cet emplacement vide.", preview };
+  } catch (error) { return { ok: false, failure: error instanceof Refusal ? error.failure : "read-failed", message: error instanceof Error ? error.message : "La lecture a échoué.", preview: null }; }
+}
+/** Explicit confirmation commits one complete slot document atomically under
+ * the existing cross-tab lock. It never runs a workspace archive transfer. */
+export async function importCampaignSlot(preview: CampaignSlotImportPreview, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+  const result = await mutation(storage, data => {
+    const plan = campaignImportPlans.get(preview);
+    if (!plan || plan.storage !== data) fail("save-conflict", "Cette prévisualisation n’appartient pas à cette session de stockage. Relisez le fichier.");
+    if ([...plan.preimage].some(([key, raw]) => data.getItem(key) !== raw)) fail("save-conflict", "Les archives ont changé depuis votre prévisualisation. Aucun import effectué ; relisez le fichier.");
+    const inspected = inspectCampaignImport(data, preview.slotId, plan.serialized);
+    if (inspected.document.ownerCreatedAt !== preview.ownerCreatedAt) fail("owner-conflict", "Le propriétaire du fichier a changé.");
+    if ([...plan.preimage].some(([key, raw]) => data.getItem(key) !== raw)) fail("save-conflict", "Les archives ont changé avant la confirmation.");
+    persistSlot(data, inspected.document, null);
+    campaignImportPlans.delete(preview);
+    return { slotId: preview.slotId, checkpoint: inspected.document.checkpoints[0] };
+  });
+  return result.ok ? { ...result, message: `Campagne archivée dans la partie ${result.slotId}, sans activation. Utilisez Continuer ou Charger une partie pour la reprendre.` } : result;
 }
 /** Copies the old complete party into an empty slot. Original known keys are never deleted or changed. */
 export async function migrateLegacyCampaignSlot(storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {

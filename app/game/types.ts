@@ -20,6 +20,7 @@ import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
 import type { JusticeProgress } from "./systems/justice";
 import type { ShipPreparationStateV88 } from "./systems/shipPreparationV88";
+import type { ShipAcquisitionStateV89 } from "./systems/shipAcquisitionV89";
 
 // ---------------------------------------------------------------------------
 // Stable content identifiers
@@ -647,6 +648,8 @@ export interface SaveGame {
   gameReserveV66?: GameReserveV66State | null;
   /** Physical station inspections only; no hull acquisition or travel credit. */
   shipPreparationV88?: ShipPreparationStateV88 | null;
+  /** Owner-bound physical shipyard work; no ownership without real rights. */
+  shipAcquisitionV89?: ShipAcquisitionStateV89 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

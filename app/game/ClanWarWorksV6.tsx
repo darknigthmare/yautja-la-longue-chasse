@@ -7,10 +7,91 @@ import {
   warWorksCommandPointsV6, warWorksDefinitionsV6, warWorksUpkeepV6,
   warWorksDepotV87, warWorksCarriedRavV87, warWorksCacheRavV87, warWorksSupplyPreviewV87,
   warWorksGuardV88, warExtractionAvailableV88, warKitSiteV88,
+  warBridgeActiveV89, warBridgeMemberSiteV89, evaluateWarTerrainV89, WAR_TERRAIN_GEOMETRY_V89,
   exportWarWorksV87, importWarWorksV87,
-  type WarWorksActionV6, type WarWorksSessionV6,
+  type WarWorksActionV6, type WarWorksSessionV6, type WarWorkOrderV6, type WarTerrainTargetV89, type WarTerrainProfileV89,
 } from "./systems/clanWarWorksV6";
 import styles from "./ClanWarPanelV85.module.css";
+
+
+/** This side view is a declared local fixture. Its rectangles and rays are the
+ * same inputs the model evaluates; it contains probes, not invented enemies. */
+function renderTerrainV89(state: WarWorksSessionV6, work: WarWorkOrderV6 | undefined, teamId: string, rules: WarRulesV6,
+  targetId: WarTerrainTargetV89, act: (action: WarWorksActionV6) => void, setTarget: (targetId: WarTerrainTargetV89) => void) {
+  if (!work) return null;
+  const definition = warWorksDefinitionsV6(rules).find(definition => definition.id === work.structureId);
+  const view = evaluateWarTerrainV89(state, work.id, targetId, rules);
+  if (!definition || !view) return null;
+  const scene = WAR_TERRAIN_GEOMETRY_V89, operator = state.teams.find(group => group.team.id === work.operatorTeamId);
+  const obstacle = view.profile === "open" ? null : scene.obstacles[view.profile];
+  const memberIds = operator?.team.members.filter(member => member.status === "fit").map(member => member.id) ?? [];
+  const rayColor = view.visible ? "#e0d38e" : "#df926e";
+  return <div className={styles.terrainExercise} data-terrain-work={work.id}>
+    <div className={styles.sectionHeader}><div><h4>{definition.name} sur le terrain</h4><p>{work.territoryId} · {work.id} · {view.occupied ? "opérateurs présents" : "poste vide"} · {view.supplied ? "entretien accessible ici" : "stocks locaux insuffisants"}</p></div></div>
+    <p>Terrain local de simulation. Les quatre repères sont des sondes géométriques, sans présence ennemie supposée. Une case vaut ici 100 unités de dessin ; l’angle de plateforme est fixé à 60°. Les dimensions du décor sont des hypothèses du prototype.</p>
+    <div className={styles.terrainScene}><svg viewBox="0 0 800 340" role="img" aria-label={`Terrain de ${definition.name}, obstacle, angle et repère choisi`}>
+      <defs><linearGradient id={`terrain-sky-${work.id}`} x2="0" y2="1"><stop stopColor="#102a30"/><stop offset="1" stopColor="#334431"/></linearGradient></defs>
+      <rect width="800" height="340" fill={`url(#terrain-sky-${work.id})`}/>
+      <path d="M0 310L105 301L242 313L388 305L551 311L800 295V340H0Z" fill="#253522"/>
+      <image href="/game/props/v4/foreground-ferns.png" x="0" y="270" width="800" height="70" opacity=".55" preserveAspectRatio="none"/>
+      {definition.kind === "watch" ? <image href="/game/homeworld/v76/architecture/rampart-watch.png" x="107" y="145" width="105" height="165" preserveAspectRatio="none"/> :
+        <><image href="/game/props/v4/ruin-platform.png" x="90" y="183" width="130" height="44" preserveAspectRatio="none"/><path d="M125 224V310M197 224V310" stroke="#998e64" strokeWidth="10"/>
+          <polygon points={view.facing === "east" ? "160,180 660,-108 660,468" : "160,180 -340,-108 -340,468"} fill="#becd81" opacity=".11"/>
+          <rect x="130" y="240" width="80" height="70" fill="#743a31" opacity=".45"/><text x="223" y="279" fill="#edaa92" fontSize="17">Angle mort</text></>}
+      {obstacle && <><image href="/game/props/v4/tree-trunk.png" x={obstacle.x} y={obstacle.y} width={obstacle.width} height={obstacle.height} preserveAspectRatio="none"/>
+        <rect {...obstacle} fill={view.profile === "opaque-rock" ? "#42463d" : "#64533e"} opacity=".6" stroke="#b4ac88" strokeWidth="2"/><text x={obstacle.x + 76} y={obstacle.y + 23} fill="#e7ddc7" fontSize="17">{view.profile === "opaque-rock" ? "Obstacle opaque" : "Écran bas"}</text></>}
+      {definition.kind === "watch" && <line x1={scene.eye.ground.x} y1={scene.eye.ground.y} x2={view.target.x} y2={view.target.y} stroke={view.groundBlocked ? "#af7358" : "#637b63"} strokeWidth="3" strokeDasharray="7 6"/>}
+      <line x1={view.point.x} y1={view.point.y} x2={view.target.x} y2={view.target.y} stroke={rayColor} strokeWidth="3" strokeDasharray={view.visible ? undefined : "7 6"}/>
+      {memberIds.map((memberId, index) => <g key={memberId} data-terrain-member={memberId}><circle cx={view.point.x + index * 22} cy={view.point.y - 12} r="9" fill="#dbcc88"/><path d={`M${view.point.x + index * 22} ${view.point.y}v22`} stroke="#dbcc88" strokeWidth="8"/></g>)}
+      {!memberIds.length && <circle cx={view.point.x} cy={view.point.y} r="11" fill="none" stroke="#b6c3ab" strokeWidth="2"/>}
+      <circle cx={view.target.x} cy={view.target.y} r="11" fill={rayColor}/><text x={view.target.x + 15} y={view.target.y + 6} fontSize="17" fill="#f0e7cf">Repère choisi</text>
+      <text x="22" y="27" fontSize="19" fill="#dfd3a6">{definition.kind === "watch" ? "Vue élevée et vue au sol en pointillés" : `Angle vers ${view.facing === "east" ? "l’est" : "l’ouest"}`}</text>
+    </svg></div>
+    <div className={styles.controlGrid}>
+      <label>Repère du terrain<select value={targetId} onChange={event => setTarget(event.target.value as WarTerrainTargetV89)}>{Object.entries(scene.targets).map(([id, point]) => <option value={id} key={id}>{point.name}</option>)}</select></label>
+      <label>Obstacle de cette simulation<select value={view.profile} onChange={event => act({ kind: "terrain-hypothesis", workId: work.id, profile: event.target.value as WarTerrainProfileV89 })}>
+        <option value="low-screen">Écran bas</option><option value="opaque-rock">Roche opaque</option><option value="open">Approche dégagée</option>
+      </select></label>
+    </div>
+    <p data-terrain-result={view.visible ? "visible" : "blocked"}>{view.visible ? "Repère visible depuis le poste occupé." : !view.occupied ? "Poste vide : aucun effet de vue ou de couvert." : !view.supplied ? "Entretien local manquant : lecture indisponible." : view.blocked ? "Le rayon rencontre l’obstacle opaque." : view.blindBelow ? "Le repère est dans l’angle mort sous la plateforme." : !view.inArc ? "Le repère est derrière l’angle orienté." : "Le repère est hors portée."}
+      {definition.kind === "watch" && view.groundBlocked && !view.blocked && " La hauteur permet de dépasser l’écran bas ; la vue au sol reste coupée."}
+      {definition.kind === "platform" && ` Couvert directionnel face à ce repère : ${view.protectedFromProbe ? "présent" : "absent"}.`}</p>
+    <div className={styles.actions}><button type="button" onClick={() => act({ kind: "scan-terrain", teamId, workId: work.id, targetId })}>Dater ce relevé de terrain</button>
+      {definition.kind === "platform" && <><button type="button" onClick={() => act({ kind: "orient-platform", teamId, workId: work.id, facing: "west" })}>Orienter la plateforme vers l’ouest</button><button type="button" onClick={() => act({ kind: "orient-platform", teamId, workId: work.id, facing: "east" })}>Orienter la plateforme vers l’est</button></>}
+    </div>
+    {state.terrain?.sightings.filter(sight => sight.workId === work.id).map(sight => <p key={`${sight.targetId}-${sight.profile}-${sight.facing}`} data-terrain-sighting={sight.targetId}>
+      {scene.targets[sight.targetId].name} · relevé au tour {sight.turn} par {sight.teamId} · âge {state.turn - sight.turn} tour(s). Hypothèse conservée : {sight.profile}, {sight.facing}. Situation cachée depuis : inconnue.</p>)}
+    <p className={styles.source}>Sources : Structures de guerre {definition.kind === "watch" ? "D6:J6" : "D11:J11"}, {definition.kind === "watch" ? "U02 D7:H7 et K7" : "U13 D18:H18 et K18"}. Props déjà présents adaptés au décor d’exercice. Le couvert n’ajoute aucun pourcentage de défense absent du classeur. Aucun tir ni munition n’est créé par cette vérification.</p>
+  </div>;
+}
+function renderBridgeV89(state: WarWorksSessionV6, work: WarWorkOrderV6, teamId: string, act: (action: WarWorksActionV6) => void, rules: WarRulesV6) {
+  if (work.structureId !== "W3-S08" || !state.terrain) return null;
+  const anchors = state.terrain.anchors.filter(anchor => anchor.workId === work.id), cargo = state.terrain.anchorCargo.filter(cargo => cargo.workId === work.id);
+  const active = warBridgeActiveV89(state), ownTransit = active?.workId === work.id ? active : null;
+  const passage = rules.passages.find(passage => passage.id === work.passageId), opposite = passage?.fromId === work.territoryId ? passage.toId : passage?.fromId;
+  return <div className={styles.bridgeExercise} data-bridge-work={work.id}>
+    <h5>Trois appuis physiques sur {work.passageId}</h5>
+    <p>Deux ancrages sur la rive du kit, le troisième sur la rive opposée reconnue. Chaque pièce porte l’identité de ce même kit. U12 ne porte pas de RAV : des récupérateurs U19 doivent alimenter une cache sur la rive éloignée avant le travail. Aucune seconde pièce ni kit complet n’est porté en même temps.</p>
+    <div className={styles.terrainScene}><svg viewBox="0 0 600 180" role="img" aria-label="Pont et trois ancrages réellement posés"><rect width="600" height="180" fill="#163333"/><image href="/game/props/v4/root-platform.png" x="0" y="125" width="155" height="50" preserveAspectRatio="none"/><image href="/game/props/v4/root-platform.png" x="445" y="125" width="155" height="50" preserveAspectRatio="none"/><path d="M135 92Q300 140 465 92M135 108Q300 156 465 108" fill="none" stroke={work.phase === "ready" ? "#d7cfa6" : "#5c7366"} strokeWidth="4" strokeDasharray={work.phase === "ready" ? undefined : "8 6"}/>{[1,2,3].map(slot => <g key={slot}><circle cx={slot === 1 ? 115 : slot === 2 ? 140 : 465} cy={slot === 2 ? 112 : 92} r="10" fill={anchors.some(anchor => anchor.slot === slot) ? "#dec589" : "#40564c"}/><text x={slot === 3 ? 483 : slot === 1 ? 92 : 157} y={slot === 2 ? 117 : 96} fill="#eadcc0" fontSize="16">{slot}</text></g>)}<text x="12" y="28" fill="#eadcc0" fontSize="17">{work.territoryId}</text><text x="442" y="28" fill="#eadcc0" fontSize="17">{opposite}</text><text x="205" y="167" fill="#bccbb4" fontSize="15">Décor de simulation</text></svg></div>
+    <div className={styles.anchorPositions}>{[1, 2, 3].map(slot => { const placed = anchors.find(anchor => anchor.slot === slot), carried = cargo.find(piece => piece.slot === slot); return <p key={slot} data-anchor-slot={slot} data-anchor-state={placed ? "placed" : carried ? "carried" : "kit"}>
+      <strong>Ancrage {slot}/3</strong>{placed ? `Posé à ${placed.territoryId}, tour ${placed.turn}` : carried ? `Porté par ${carried.teamId}` : ["reserved", "carried"].includes(work.phase) ? "Dans le kit encore à acheminer" : "Encore dans le kit livré"}
+      <small>{work.kitId}:anchor:{slot}</small></p>; })}</div>
+    <div className={styles.actions}>{["delivered", "building"].includes(work.phase) && <><button type="button" onClick={() => act({ kind: "load-anchor", teamId, workId: work.id })}>Charger un ancrage du kit</button><button type="button" onClick={() => act({ kind: "place-anchor", teamId, workId: work.id })}>Poser l’ancrage porté ici</button></>}
+      {work.phase === "ready" && !active && <button type="button" onClick={() => act({ kind: "begin-bridge", teamId, workId: work.id })}>Préparer le passage individuel par {work.passageId}</button>}</div>
+    {ownTransit && <div className={styles.bridgeTransit} data-bridge-transit={ownTransit.id}>
+      <p>{ownTransit.teamId} : {ownTransit.fromId} → {ownTransit.toId}. Une personne à la fois. Le front attend la fin du passage. {state.closedPassageIds.includes(work.passageId ?? "") ? "Voie fermée : chaque personne conserve sa rive." : "Voie ouverte."}</p>
+      <div className={styles.bridgeRives} aria-label="Positions réelles des membres sur les deux rives"><div><strong>{ownTransit.fromId}</strong>{ownTransit.memberIds.filter(memberId => warBridgeMemberSiteV89(ownTransit, memberId) === ownTransit.fromId).map(memberId => <span key={memberId}>{memberId}</span>)}</div><div><strong>{ownTransit.toId}</strong>{ownTransit.memberIds.filter(memberId => warBridgeMemberSiteV89(ownTransit, memberId) === ownTransit.toId).map(memberId => <span key={memberId}>{memberId}</span>)}</div></div>
+      {ownTransit.memberIds.map(memberId => <div className={styles.actions} key={memberId}>
+        <button type="button" onClick={() => act({ kind: "cross-bridge", teamId: ownTransit.teamId, transitId: ownTransit.id, memberId })}>Franchir avec {memberId}</button>
+        <button type="button" onClick={() => act({ kind: "return-bridge", teamId: ownTransit.teamId, transitId: ownTransit.id, memberId })}>Revenir avec {memberId}</button>
+      </div>)}
+      {!ownTransit.steps.length && <button type="button" onClick={() => act({ kind: "cancel-bridge", teamId: ownTransit.teamId, transitId: ownTransit.id })}>Annuler avant le premier membre</button>}
+    </div>}
+    {state.terrain.transits.filter(transit => transit.workId === work.id && transit.completed !== null).map(transit => <p key={transit.id} data-bridge-completed={transit.id}>
+      {transit.teamId} · {transit.completed === "arrived" ? `arrivée à ${transit.toId}` : `retour à ${transit.fromId}`} au tour {transit.resolvedTurn}. {transit.steps.length} geste(s) individuel(s), mêmes membres et un seul passage global.</p>)}
+    <p className={styles.source}>S08 D13:J13, U12 D17:H17. La capacité du lien en PC vient de sa fiche ; une personne par sous-étape est l’enveloppe du prototype, sans tonnage lore. Les sous-étapes constituent un seul passage global. Le pont ne rouvre pas un lien fermé, ne porte aucun lot RAV et ne donne ni territoire, ni XP, ni stock.</p>
+  </div>;
+}
 
 const phaseNames = { reserved: "Kit au départ", carried: "Kit transporté", delivered: "Pièces livrées", building: "Chantier en cours", ready: "Ouvrage installé" };
 type CheckpointPasteV87 = { draft: string; message: string; exportText: string };
@@ -38,6 +119,7 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
   const [teamId, setTeamId] = useState("v6-works-team-1"), [destinationId, setDestinationId] = useState("W3-K02");
   const [structureId, setStructureId] = useState("W3-S03"), [siteId, setSiteId] = useState("W3-K02"), [passageId, setPassageId] = useState("");
   const [recruitUnitId, setRecruitUnitId] = useState("W3-U20"), [confirmReset, setConfirmReset] = useState(false), [confirmBranch, setConfirmBranch] = useState<"A" | "B" | null>(null);
+  const [terrainWorkId, setTerrainWorkId] = useState(""), [terrainTargetId, setTerrainTargetId] = useState<WarTerrainTargetV89>("far-approach");
   const { state, message } = session;
   if (!state) return <p className={styles.warning} role="status">L’exercice demande les cinq fiches numériques valides W3-S02, S03, S04, S05 et S07 et leurs opérateurs. S16 reste optionnel et exige ses propres sources attestées.</p>;
   const group = state.teams.find(item => item.team.id === teamId) ?? state.teams[0];
@@ -45,6 +127,7 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
   const specialty = rules.specializations.find(item => item.unitId === unit.id), xp = warTeamExperienceV6(group.team);
   const def = definitions.find(item => item.id === structureId) ?? definitions[0];
   const adjacent = rules.passages.filter(item => (item.fromId === siteId || item.toId === siteId)
+    && (def.kind !== "bridge" || item.kind === "Traverse préparée")
     && (def.kind !== "hoist" || rules.entries.find(entry => entry.id === item.id && entry.sheet === "Passages de Korthas")?.fields.find(field => field.column === "E")?.value === "Liaison de relief"));
   const selectedPassageId = adjacent.some(item => item.id === passageId) ? passageId : adjacent[0]?.id;
   const defenseWork = state.works.find(work => work.structureId === "W3-S07" && work.territoryId === group.territoryId);
@@ -93,7 +176,7 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
   };
   return <section data-war-works="V6" aria-label="Exercice de logistique et ouvrages V6">
     <h4>Du kit au poste réellement occupé</h4>
-    <p className={styles.notice}>Exercice indépendant. Une équipe équipée, le budget et les droits de passage sont des hypothèses choisies. {definitions.length} ouvrages du classeur sont raccordés ; extraction, relais et treuil exigent les stocks locaux et leurs sources propres. Mode actuel : {state.supplyMode === "local" ? "stocks locaux et convois identifiés" : "comptabilité globale V86"}. Aucun gain de bataille, maison, armée ou ressource de campagne.</p>
+    <p className={styles.notice}>Exercice indépendant. Une équipe équipée, le budget et les droits de passage sont des hypothèses choisies. {definitions.length} ouvrages du classeur sont raccordés ; extraction, relais, treuil, veille, plateforme et pont exigent les stocks locaux et leurs sources propres. Mode actuel : {state.supplyMode === "local" ? "stocks locaux et convois identifiés" : "comptabilité globale V86"}. Aucun gain de bataille, maison, armée ou ressource de campagne.</p>
     <ol className={styles.workSteps}><li>Traverser et reconnaître le site.</li><li>Réserver les pièces, puis charger le kit au départ.</li><li>Suivre une route autorisée aux RAV et livrer au bon site.</li><li>Travailler chaque tour avec le bon opérateur, puis occuper l’ouvrage.</li></ol>
     <details><summary>Budget et équipe du prochain exercice</summary><div className={styles.controlGrid}>
       <label>Équipe équipée au départ<select value={startingUnitId} onChange={event => setStartingUnitId(event.target.value)}>{operators.map(item => <option key={item.id} value={item.id}>{item.name} · {item.commandPoints} PC</option>)}</select></label>
@@ -126,24 +209,26 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
     <div className={styles.workGrid}><article className={styles.unit}><h4>{unit.name}</h4><p>{group.territoryId} · fatigue {group.team.fatigue} · {xp} XP · {warTeamTierV6(xp, rules)}.</p><p>Estimation : {estimate.attack} attaque, {estimate.defense} défense de terrain.{estimate.defensePercent > 0 ? ` Au passage ${defenseWork?.passageId}, seuil occupé : +${estimate.defensePercent}% sur cette défense estimée, soit ${estimate.protectedDefense}.` : " Aucun seuil occupé ne renforce ce passage."}</p><p>Kit transporté : {group.payloadWorkId ?? "aucun"} · RAV portés : {warWorksCarriedRavV87(state, selectedTeamId)} · poste : {group.dutyWorkId ?? "libre"}.</p>{group.team.members.map(member => <p key={member.id}><strong>{member.name}</strong> · {member.status} · {member.xp} XP<small className={styles.memberId}>{member.id}</small></p>)}
       {specialty && <details><summary>Voie militaire conservée</summary><p>A · {specialty.nameA} : {specialty.effectA}</p><p>B · {specialty.nameB} : {specialty.effectB}</p><p>{specialty.exclusivity} Les gestes tactiques restent descriptifs ici.</p>{group.team.specialization ? <p>Branche {group.team.specialization} verrouillée.</p> : xp >= specialty.threshold && <div className={styles.actions}><button type="button" onClick={() => setConfirmBranch("A")}>Préparer A</button><button type="button" onClick={() => setConfirmBranch("B")}>Préparer B</button></div>}{confirmBranch && <div className={styles.confirm}><p>Confirmer la voie {confirmBranch} pour cette équipe ?</p><button type="button" onClick={() => act({ kind: "specialize", teamId: selectedTeamId, branch: confirmBranch })}>Confirmer {confirmBranch}</button><button type="button" onClick={() => setConfirmBranch(null)}>Conserver le choix ouvert</button></div>}</details>}
     </article><article className={styles.unit}><h4>Volontaires d’exercice</h4><p>Le RAV réserve matériel et formation ; la personne arrive seulement après le délai. Une arrivée n’est jamais une copie des vétérans présents.</p><label>Profil d’opérateur<select value={recruitUnitId} onChange={event => setRecruitUnitId(event.target.value)}>{operators.map(item => <option key={item.id} value={item.id}>{item.name} · {item.recruitmentRav} RAV · {item.delayTurns} tours · {item.commandPoints} PC</option>)}</select></label><button type="button" onClick={() => act({ kind: "recruit", unitId: recruitUnitId })}>Réserver une formation volontaire</button>{state.recruits.map(order => <p key={order.id}>{order.teamId} · {order.status === "arrived" ? "arrivée au départ" : `attendue au tour ${order.readyTurn}`} · {order.costRav} RAV réservés.</p>)}</article></div>
-    <article className={styles.preparation}><h4>Préparer un ouvrage sur un site reconnu</h4><div className={styles.controlGrid}><label>Ouvrage<select value={def.id} onChange={event => setStructureId(event.target.value)}>{definitions.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label><label>Site du chantier<select value={siteId} onChange={event => setSiteId(event.target.value)}>{rules.territories.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}{state.observed.some(known => known.territoryId === item.id) ? " · reconnu" : " · reconnaissance requise"}</option>)}</select></label>{["defense", "relay", "hoist"].includes(def.kind) && <label>Passage précis de l’ouvrage<select value={selectedPassageId} onChange={event => setPassageId(event.target.value)}>{adjacent.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>}</div><p>{def.costRav} RAV pour le kit · {def.delayTurns} tours de travaux · {def.upkeepRav} RAV d’entretien après mise en service.</p><p>Opérateurs requis : {rules.units.find(item => item.id === def.operatorUnitId)?.name} ({def.operatorUnitId}), complets et présents dans cet exercice.</p><p>{def.effect} {def.limit}</p><button type="button" onClick={() => act({ kind: "reserve-kit", structureId: def.id, territoryId: siteId, passageId: selectedPassageId })}>Réserver le kit au départ</button><p className={styles.source}>Structures de guerre · {def.id}, ligne {def.sourceRow} · cellules {def.sourceCells.join(", ")}. Réserver ne construit pas.</p></article>
+    <article className={styles.preparation}><h4>Préparer un ouvrage sur un site reconnu</h4><div className={styles.controlGrid}><label>Ouvrage<select value={def.id} onChange={event => setStructureId(event.target.value)}>{definitions.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label><label>Site du chantier<select value={siteId} onChange={event => setSiteId(event.target.value)}>{rules.territories.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}{state.observed.some(known => known.territoryId === item.id) ? " · reconnu" : " · reconnaissance requise"}</option>)}</select></label>{["defense", "relay", "hoist", "bridge"].includes(def.kind) && <label>Passage précis de l’ouvrage<select value={selectedPassageId} onChange={event => setPassageId(event.target.value)}>{adjacent.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>}</div><p>{def.costRav} RAV pour le kit · {def.delayTurns} tours de travaux · {def.upkeepRav} RAV d’entretien après mise en service.</p><p>Opérateurs requis : {rules.units.find(item => item.id === def.operatorUnitId)?.name} ({def.operatorUnitId}), complets et présents dans cet exercice.</p><p>{def.effect} {def.limit}</p><button type="button" onClick={() => act({ kind: "reserve-kit", structureId: def.id, territoryId: siteId, passageId: selectedPassageId })}>Réserver le kit au départ</button><p className={styles.source}>Structures de guerre · {def.id}, ligne {def.sourceRow} · cellules {def.sourceCells.join(", ")}. Réserver ne construit pas.</p></article>
     <div className={styles.workGrid}>{state.works.map(work => {
       const definition = definitions.find(item => item.id === work.structureId)!;
       const occupied = warWorkOccupiedV6(state, work, rules), kitSite = warKitSiteV88(state, work);
       const passage = rules.passages.find(item => item.id === work.passageId);
       const remote = passage && (passage.fromId === work.territoryId ? passage.toId : passage.fromId);
-      return <article className={styles.unit} key={work.id} data-work-phase={work.phase}>
+      return <article className={styles.unit} key={work.id} data-work-id={work.id} data-work-phase={work.phase}>
         <p className={styles.eyebrow}>{work.id} · {work.kitId}</p><h4>{definition.name} · {work.territoryId}</h4>
         <p>{work.phase === "reserved" && kitSite !== state.originId ? `Kit déposé à ${kitSite}` : phaseNames[work.phase]} · travail {work.workedTurns}/{definition.delayTurns} tours.{work.passageId ? ` Passage ${work.passageId}.` : ""}</p>
-        <p>Emplacement réel du kit : {kitSite}. Transport : {work.carrierTeamId ?? "aucun"} · opérateurs : {work.operatorTeamId ?? "non affectés"} · {occupied ? (["relay", "hoist"].includes(definition.kind) ? "opérateurs présents ; conditions du geste à vérifier" : "effet occupé disponible") : "effet occupé indisponible"}.</p>
+        <p>Emplacement réel du kit : {kitSite}. Transport : {work.carrierTeamId ?? "aucun"} · opérateurs : {work.operatorTeamId ?? "non affectés"} · {occupied ? (["relay", "hoist", "watch", "platform", "bridge"].includes(definition.kind) ? "opérateurs présents ; entretien et conditions du geste à vérifier" : "effet occupé disponible") : "effet occupé indisponible"}.</p>
         <div className={styles.actions}>
           {work.phase === "reserved" && <button type="button" onClick={() => act({ kind: "load", workId: work.id, teamId: selectedTeamId })}>Charger avec l’équipe choisie</button>}
           {work.phase === "carried" && <><button type="button" onClick={() => act({ kind: "unload", workId: work.id, teamId: selectedTeamId })}>Livrer avec le vrai porteur</button>{state.infrastructure && <button type="button" onClick={() => act({ kind: "put-down-kit", workId: work.id, teamId: selectedTeamId })}>Déposer ce kit au sol sans l’installer</button>}</>}
-          {["delivered", "building"].includes(work.phase) && <button type="button" onClick={() => act({ kind: "work", workId: work.id, teamId: selectedTeamId })}>Accomplir un tour de travaux</button>}
+          {["delivered", "building"].includes(work.phase) && definition.kind !== "bridge" && <button type="button" onClick={() => act({ kind: "work", workId: work.id, teamId: selectedTeamId })}>Accomplir un tour de travaux</button>}
           {work.phase === "ready" && !occupied && <button type="button" onClick={() => act({ kind: "assign", workId: work.id, teamId: selectedTeamId })}>Affecter l’équipe choisie</button>}
           {work.phase === "ready" && definition.kind === "rest" && <button type="button" onClick={() => act({ kind: "rest", workId: work.id, teamId: selectedTeamId })}>Reposer l’équipe choisie ici</button>}
         </div>
         {definition.kind === "stock" && work.phase === "ready" && <div className={styles.ravCache}><p>Cache installée : {warWorksCacheRavV87(state, work.id)}/{definition.capacityRav} RAV. Elle ne produit jamais de revenu.</p>{state.supplyMode === "local" ? <div className={styles.actions}><button type="button" onClick={() => act({ kind: "deposit-rav", teamId: selectedTeamId, workId: work.id })}>Livrer le lot RAV dans cette cache</button><button type="button" onClick={() => act({ kind: "withdraw-rav", teamId: selectedTeamId, workId: work.id, rav: ravLoad })}>Retirer {ravLoad} RAV de cette cache</button></div> : <p>Les transferts de ration demandent un nouvel exercice en mode stocks locaux.</p>}</div>}
+        {["watch", "platform"].includes(definition.kind) && <button type="button" onClick={() => setTerrainWorkId(work.id)}>Examiner le terrain de cet ouvrage</button>}
+        {renderBridgeV89(state, work, selectedTeamId, act, rules)}
         {definition.kind === "repair" && work.phase === "ready" && <p className={styles.warning}>Atelier installé. Aucune passerelle réparée par cette mise en service : il manque une fiche de pièces et un chantier de réparation distinct sur le lien réel. Les tirs et le bruit ne sont pas simulés.</p>}
         {definition.kind === "navigation" && occupied && <p className={styles.positive}>Balise occupée au site reconnu ; le repère et l’âge de l’observation restent visibles sur la carte. Elle ne révèle aucun ennemi ni raccourci gratuit.</p>}
         {definition.kind === "relay" && <div className={styles.infrastructureEffect} aria-label={`Relais ${work.id}`}>
@@ -158,6 +243,7 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
         </div>}
       </article>;
     })}</div>
+    {renderTerrainV89(state, state.works.find(work => work.id === terrainWorkId && ["W3-S01", "W3-S06"].includes(work.structureId)) ?? state.works.find(work => ["W3-S01", "W3-S06"].includes(work.structureId)), selectedTeamId, rules, terrainTargetId, act, setTerrainTargetId)}
     {state.infrastructure && <details className={styles.infrastructureLedger} open>
       <summary>Relevés remis et charges levées</summary>
       <p>Le carnet commence à la première réservation d’un relais ou treuil. Les trajets antérieurs ne sont pas inventés. {state.infrastructure.traversals.length} franchissement(s) réellement exécuté(s) enregistré(s).</p>
@@ -172,7 +258,7 @@ export default function ClanWarWorksV6({ rules }: { rules: WarRulesV6 }) {
     <details><summary>Passages fermés dans l’hypothèse</summary><fieldset><legend>Les ordres déjà préparés relisent les fermetures avant exécution</legend>{rules.passages.map(item => <label className={styles.person} key={item.id}><input type="checkbox" checked={state.closedPassageIds.includes(item.id)} onChange={event => act({ kind: "close-passages", ids: event.target.checked ? [...state.closedPassageIds, item.id] : state.closedPassageIds.filter(id => id !== item.id) })}/><span>{item.id} · {item.name}<small>{item.permitsRav ? "RAV autorisés" : "Aucun transport RAV"} · {item.capacityPc} PC</small></span></label>)}</fieldset></details>
     <details><summary>Comptes et journal du front d’exercice</summary><p>{state.accounts.recruitmentReserved} RAV engagés en formation, {state.accounts.kitsReserved} en kits identifiés, {state.accounts.upkeepConsumed} consommés en entretien. Aucun revenu ni restitution automatique.</p>{state.reports.slice(-20).reverse().map((report, index) => <p key={`${report.turn}-${index}`}>Tour {report.turn} · {report.text}<small className={styles.memberId}>{report.sourceIds.join(" · ")}</small></p>)}</details>
     <details><summary>Exporter ou reprendre cet exercice</summary>
-      <p>Point de reprise indépendant, version 2 ; extensions extraction et relais/treuil 1 si utilisées. Personnes, XP, blessures, kits, routes, lots et comptes restent dans ce fichier. Une sauvegarde de campagne ou une autre source ne peut pas être importée ici.</p>
+      <p>Point de reprise indépendant, version 2 ; extensions extraction, relais/treuil et terrain 1 si utilisées. Personnes, XP, blessures, kits, routes, lots et comptes restent dans ce fichier. Une sauvegarde de campagne ou une autre source ne peut pas être importée ici.</p>
       <div className={styles.actions}><button type="button" onClick={downloadCheckpoint}>Exporter le point de reprise</button><button type="button" onClick={showCheckpointJson}>Afficher le JSON de reprise</button><button type="button" onClick={openCheckpointPaste}>Coller un JSON de reprise</button></div>
       {checkpointJsonVisible && <label className={styles.checkpointText}>JSON de reprise copiable<textarea readOnly rows={12} spellCheck={false} value={checkpointExportText}/></label>}
       {checkpointPaste && <div>

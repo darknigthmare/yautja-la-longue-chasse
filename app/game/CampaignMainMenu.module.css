@@ -10,6 +10,15 @@
   font-family: var(--font-body, Arial, sans-serif);
   scrollbar-color: #96714a #17100c;
 }
+.importPanel { max-width: 780px; padding: clamp(18px, 3vw, 32px); border: 1px solid #aa81504f; background: #17110de6; }
+.importPanel h3 { margin-top: 8px; }
+.importPanel label { display: block; margin-bottom: 8px; font-weight: 700; }
+.importPanel input[type=file] { max-width: 100%; min-height: 48px; padding: 10px; color: inherit; border: 1px solid #aa81504f; background: #0d0b09; }
+.importSummary { margin-top: 18px; padding-top: 12px; border-top: 1px solid #aa81504f; }
+.importSummary dl { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr); gap: 10px 16px; }
+.importSummary dt { color: #d6c5af; }
+.importSummary dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 540px) { .importSummary dl { grid-template-columns: 1fr; gap: 5px; } .importSummary dd { margin-bottom: 10px; } }
 .scenery {
   position: fixed;
   z-index: -2;

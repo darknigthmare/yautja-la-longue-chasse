@@ -21,5 +21,5 @@ export const HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76:Readonly<Record<string,{x:
   'residence-convoy-works-1':{x:-150,y:0,reason:'V81 : façade d’entretien contre le quai ouest ; aire de service dégagée devant l’abri sud.'},
   'residence-market-2':{x:200,y:25,reason:'V81 : maison du marchand dans l’alcôve orientale ;138u entre les deux fondations et134u vers la forge.'},
   'residence-esplanade-2':{x:150,y:-65,reason:'V81 : logement de la promenade tourné vers son parvis, éloigné du passage du porteur de prises et du meuble de repos.'},
-  'residence-clans-1':{x:150,y:0,reason:'V81 : maison des délégations dans la cour orientale ; ancienne traverse du coursier libérée.'},
+  'residence-clans-1':{x:50,y:125,reason:'V89 : maison oblique dans la cour des délégations,100u vers l’ouest et125u vers le sud pour séparer entièrement sa silhouette native de l’escalier du Conseil et conserver la traverse du coursier ; appuis et échelle inchangés.'},
 };

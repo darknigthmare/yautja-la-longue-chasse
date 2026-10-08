@@ -15,13 +15,13 @@ import residencesV64 from "../data/homeworldResidencesV64.json";
 import lifeV68 from "../data/homeworldLifeV68.json";
 import lifeV69 from "../data/homeworldLifeV69.json";
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_TRANSPORT_ART_V64 } from "./homeworldArtV64";
-import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
+import { HOMEWORLD_INTERIOR_POINT_IDS_V64,HOMEWORLD_INTERIORS_V64 } from "./homeworldInteriorsV64";
 import { homeworldBuildingIdentityV72 } from "./homeworldIdentityV72";
 import { homeworldBuildingIdentityV75 } from "./homeworldArchitectureArtV75";
 import {homeworldBuildingIdentityV76} from './homeworldArchitectureArtV76';
 import {homeworldBuildingIdentityV81} from './homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76} from './homeworldBuildingPlacementsV76';
-import {HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76,homeworldFrontagePlacementV76,homeworldBeaconPlacementV76,homeworldBenchPlacementV76} from './homeworldFrontagePlacementsV76';
+import {homeworldFrontageRecipeV76,homeworldFrontagePlacementV76,homeworldBeaconPlacementV76,homeworldBenchPlacementV76} from './homeworldFrontagePlacementsV76';
 import {homeworldFurnitureFootprintV72} from './homeworldFurnitureV72';
 import {homeworldExteriorCollisionV76} from './homeworldExteriorDecorV76';
 import {homeworldForecourtsV76,HOMEWORLD_FORECOURT_LINKS_V76} from './homeworldForecourtsV76';
@@ -291,13 +291,13 @@ export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
   ...residencesV64.map((b, index) => nativeBuildingV64({ ...b, label: "Maison du clan · " + String(index + 1).padStart(2, "0"),
     variant: "hall", entranceKind: "domestic", artId: b.artId as keyof typeof HOMEWORLD_BUILDING_ART_V64 })),
 ];
-/** Twelve relocated legacy fixtures will have their own real volumes when
- * their host façades turn. Front-facing historical bays remain unchanged. */
+/** Civic and domestic oblique fixtures own the same real volume as their
+ * rendered recipe. Front-facing historical bays remain unchanged. */
 export const HOMEWORLD_FORECOURTS_V76=homeworldForecourtsV76(HOMEWORLD_BUILDINGS);
 export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [...HOMEWORLD_STREETS_V54.map(street => ({ ...street, polygon: street.polygon.map(expandGroundV64) })), ...extraStreetsV64, ...HOMEWORLD_CONNECTION_STREETS_V72, ...HOMEWORLD_FORECOURTS_V76, ...HOMEWORLD_FORECOURT_LINKS_V76];
 
 export const HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76=HOMEWORLD_BUILDINGS.flatMap(building=>building.art.groundFrame
-  ? (HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76[building.id]??[]).map((arrangement,index)=>({
+  ? homeworldFrontageRecipeV76(building.id,HOMEWORLD_INTERIORS_V64.find(room=>room.buildingId===building.id)!.variant).map((arrangement,index)=>({
     id:`v75-frontage:${building.id}:${index+1}`,artId:arrangement.artId,scale:arrangement.scale,
     ...homeworldFrontagePlacementV76(building,arrangement)})) : []);
 const angledFrontageCollidersV76=HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.map(item=>({id:item.id,...homeworldFurnitureFootprintV72(item)}));
