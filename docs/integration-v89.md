@@ -30,6 +30,16 @@ entièrement terminés.
   deux assemblages de soutènement documentés dans le codex. La compatibilité
   des sept mobiliers obliques domestiques est réparée dans l'ancienne API City ;
   le monde à étages possédait déjà leurs colliders.
+- Proportions et décor actif : la maison des terrasses conserve sa pièce
+  `408×228` et reçoit une instance de façade `440×330`, agrandie uniformément
+  de `11/10` puis décalée de 20 unités sur chaque axe pour dégager la voisine.
+  Le brasier de la citadelle sort du solide du palais et rejoint le vrai sol
+  de la terrasse `+2`. Images sources, IDs et formes de contact sont conservés.
+- Intérieurs du Homeworld : les deux zones corporelles bloquées de la forge
+  sont dégagées, 21 supports sont déplacés dans huit salles et quatre centres
+  d'approche sont recalés, soit neuf salles touchées. Les dimensions, images,
+  échelles, collisions, services et ancrages existants restent présents. Ces
+  rangements n'ajoutent aucun service, récompense ou interaction fictive.
 
 Le chantier ne possède aucun producteur d'accord et de moyens consommés :
 `authority:null` reste explicite. L'inspection seule ne donne donc aucun
@@ -75,6 +85,34 @@ ses fichiers modifiés, TypeScript global sans cache, Next webpack et contrôle 
 CSS réellement compilé passent le 8 octobre à 19:34 UTC. Les intérieurs en cours
 d'audit sont exclus de ce snapshot et restent un lot séparé.
 
+Une seconde exécution ciblée après les corrections compte 304 tests dans
+28 suites : 304 PASS, zéro échec et zéro test ignoré. Les deux exigences de
+preuve locale ci-dessus restent actives. Le journal est conservé hors de Git
+dans `work-local/v89/qa/core-regression-final.log`.
+
+Le lot intérieur séparé passe 212 tests dans huit suites, dont 90 contrôles
+nouveaux sur les 43 pièces actives. Les quinze points de service/histoire,
+sorties et centres de passage sont atteints depuis le spawn avec le corps
+entier puis quatre unités de marge ; chaque unité des arêtes est contrôlée.
+Deux relectures indépendantes ne trouvent aucun P1/P2 dans ce lot. Le helper
+historique n'est utilisé que pour trois empreintes d'auteur, jamais pour les
+collisions ou trajets courants. Lint, TypeScript global, Next webpack et contrôle
+du CSS compilé passent ensuite sur ce snapshot à 19:57 UTC. Le détail avant/après
+et les limites sont dans [homeworld-interior-clearance-v89.md](homeworld-interior-clearance-v89.md).
+Une ancienne position précisément occupée par un objet déplacé peut déclencher
+le repli au port déjà prévu par le résolveur ; la conservation des ancrages ne
+garantit pas chaque ancienne coordonnée locale libre.
+
+Après les deux corrections physiques supplémentaires, neuf suites modernes
+passent 61 tests, dont quatre reproductions des défauts de proportions et du
+brasier. Les 43 portes, dix retours régionaux, sept raccords entre niveaux et
+98 routines civiles restent contrôlés. La revue indépendante du correctif
+ne relève aucun P1/P2. Le snapshot final complet passe lint des 17 fichiers
+TS/tests, TypeScript global sans cache, Next webpack et contrôle du CSS compilé
+à 20:07 UTC. Une nouvelle régression générale est ensuite lancée et son relevé
+complet reste dans `work-local/v89/qa/full-regression-final.log`. Les validations
+ciblées ne remplacent pas son résultat et aucun feu vert général n'est déclaré.
+
 La bibliothèque a été ouverte dans Edge sur le build Next local. Les compteurs,
 les filtres, les packs V89 et la planche du lot 13 ont été observés. Ce PNG se
 décode à 2 400 × 2 028. Capture locale :
@@ -105,6 +143,19 @@ V85, 4 525 autres copies statiques dédupliquées, et zéro mismatch de taille, 
 mode ou échec de lien. La sortie à copier mesure 5 113 145 025 octets. Ce READY
 porte sur le correctif de publication et V88 ; le premier lot fonctionnel V89
 n'est pas assimilé à cette preuve antérieure.
+À 19:38 UTC, l'alias répond en HTTP 200 avec V88. Deux PNG V85 servis par le
+rewrite répondent en `image/png` et correspondent exactement aux SHA et tailles
+des originaux : 2 351 704 et 2 539 391 octets. Cette preuve de transport ne vaut
+pas validation du gameplay. Le premier lot fonctionnel V89 est ensuite commité
+et envoyé sur `main` sous `3d13274387d69ae9ccf80cdc1c74bed223ce299a` ; son
+déploiement propre `dpl_F8NPcxVFe8DrZjo9CeVGjtxkWghN` est ensuite confirmé
+READY. À 19:54 UTC, l'alias public répond en HTTP 200 avec V89. Les deux PNG
+V85 et les six PNG Badlands V89 répondent en `image/png`, ont leur signature PNG
+et correspondent chacun aux SHA et tailles du manifeste et des originaux locaux.
+Les six nouveautés représentent exactement 6 168 549 octets. Le relevé de
+transport est conservé hors de Git dans
+`work-local/v89/qa/feature-public-byte-proof.json`. Cette preuve n'étend pas la
+couverture navigateur ou mobile décrite ci-dessus.
 Une compilation locale, un push GitHub, un état Vercel READY et un contrôle de
 production sont quatre résultats distincts.
 

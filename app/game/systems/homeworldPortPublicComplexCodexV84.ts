@@ -12,7 +12,7 @@ export const HOMEWORLD_PORT_PUBLIC_COMPLEX_CODEX_V84: readonly HomeworldElementR
     const layout = room.portComplexV84!, building = HOMEWORLD_BUILDINGS.find(item => item.id === room.buildingId)!;
     const common = { districtId: building.districtId, spaceId: room.buildingId,
       lore: 'original-adaptation' as const, door: null, source: [], asset: null };
-    const validation = 'Reprise V85 : tests ciblés de modèle exécutés pour les sorties, services, zones et repères avec corps28×18 et parcours depuis spawn ; lint ciblé exécuté. Aspect navigateur, production et fidélité1:1 non certifiés.';
+    const validation = 'Reprise V89 : tests du modèle exécutés sur les 43 intérieurs actifs avec demi-largeur/profondeur 24/14 puis marge 28/18 ; supports, services, sorties et repères contrôlés. Lint, TypeScript et compilation locale passent. Aspect navigateur, mobile, production jouée et fidélité 1:1 non certifiés.';
     const records: HomeworldElementRecordV64[] = [{ ...common, id: `v84-port-complex:${room.buildingId}`,
       label: room.title, category: 'interior', position: { x: 0, y: 0, z: 0 },
       dimensions: { width: room.width, depth: room.depth, height: building.wallHeight }, footprint: null,

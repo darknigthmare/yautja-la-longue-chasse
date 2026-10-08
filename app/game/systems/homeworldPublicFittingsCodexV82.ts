@@ -12,7 +12,7 @@ export const HOMEWORLD_PUBLIC_FITTINGS_CODEX_V82: readonly HomeworldElementRecor
   .flatMap(room => {
     const fittings = room.publicFittingsV82!, building = HOMEWORLD_BUILDINGS.find(candidate => candidate.id === room.buildingId)!;
     const common = { districtId: building.districtId, spaceId: room.buildingId, lore: 'original-adaptation' as const, door: null };
-    const validation = 'Lot implémenté, non vérifié : aucun test, audit, lint, compilation ou examen navigateur de ces nouveaux placements n’a été exécuté.';
+    const validation = 'Reprise V89 : tests du modèle exécutés sur les 43 intérieurs actifs avec demi-largeur/profondeur 24/14 puis marge 28/18 ; supports, services, sorties et repères contrôlés. Lint, TypeScript et compilation locale passent. Aspect navigateur, mobile, production jouée et fidélité 1:1 non certifiés.';
     const records: HomeworldElementRecordV64[] = [{ ...common, id: `v82-public-fittings:${room.buildingId}`,
       label: `Mobilier public · ${room.title}`, category: 'interior', position: { x: 0, y: 0, z: 0 },
       dimensions: { width: room.width, depth: room.depth, height: building.wallHeight }, footprint: null, asset: null,

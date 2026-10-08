@@ -20,8 +20,14 @@ function validatePath(room, path, targetId) {
   else { assert.equal(target?.kind, 'point'); assert.equal(target.pointId, targetId); }
 }
 
-test('dock fixture refuses the locally valid northern island and reaches the actual officer from public spawn', () => {
-  const room = api.homeworldInteriorForBuildingV64('dock-control'), island = { x: 108, y: 108 };
+test('previous exact dock poses retain the negative locally-valid island regression without replacing any collider', () => {
+  const live = api.homeworldInteriorForBuildingV64('dock-control');
+  // This real pre-V89 arrangement is a bounded negative fixture. Its full
+  // dimensions, sources, body and collision predicate remain unchanged.
+  const before = { 'dock-control-v84-control-standard': [172, 116],
+    'dock-control-v84-inspection-register': [442, 116], 'dock-control-v84-inspection-case': [371, 116] };
+  const restore = item => before[item.id] ? { ...item, x: before[item.id][0], y: before[item.id][1] } : item;
+  const room = { ...live, furniture: live.furniture.map(restore), orientedDecorV76: live.orientedDecorV76.map(restore) }, island = { x: 108, y: 108 };
   assert(api.isHomeworldInteriorWalkableV64(room, island, body), 'regression must preserve the locally valid island');
   assert.equal(api.nearestHomeworldInteriorTargetV64(room, island)?.pointId, 'dock-officer-point');
   // Independent reverse component search: a local proximity result alone
@@ -47,6 +53,22 @@ test('dock fixture refuses the locally valid northern island and reaches the act
   const expected = { ...path.at(-1) }, position = homeworldInteriorPointFixture(api, room, 'dock-officer-point');
   position.x = -100; path.at(-1).y = -100;
   assert.deepEqual(homeworldInteriorPointFixture(api, room, 'dock-officer-point'), expected);
+});
+
+test('live V89 dock reconnects the formerly isolated northern approach using the unchanged complete body', () => {
+  const room = api.homeworldInteriorForBuildingV64('dock-control'), north = { x: 108, y: 108 };
+  assert(api.isHomeworldInteriorWalkableV64(room, north, body));
+  assert.equal(api.nearestHomeworldInteriorTargetV64(room, north)?.pointId, 'dock-officer-point');
+  const component = [north], visited = new Set(['108,108']);
+  for (let index = 0; index < component.length; index++) for (const [dx, dy] of [[0, 1], [0, -1], [1, 0], [-1, 0]]) {
+    const current = component[index], next = { x: current.x + dx * 4, y: current.y + dy * 4 }, key = next.x + ',' + next.y;
+    if (visited.has(key)) continue;
+    if (![1, 2, 3, 4].every(unit => api.isHomeworldInteriorWalkableV64(room,
+      { x: current.x + dx * unit, y: current.y + dy * unit }, body))) continue;
+    visited.add(key); component.push(next);
+  }
+  assert(component.some(point => Math.hypot(point.x - room.spawn.x, point.y - room.spawn.y) < 8), 'real northern floor now reconnects to public spawn');
+  validatePath(room, homeworldInteriorPointPathFixture(api, room, 'dock-officer-point'), 'dock-officer-point');
 });
 
 test('all fifteen preserved interior bindings have a constructive full-body route and exact target, without mutating geometry', () => {

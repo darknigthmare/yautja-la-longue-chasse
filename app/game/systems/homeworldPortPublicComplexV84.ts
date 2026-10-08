@@ -66,13 +66,14 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
     furniturePoses = { registre: [108, 80], cargaison: [407, 72], contenants: [499, 108], veille: [44, 160] };
     decorPoses = { '0': [44, 230], '1': [512, 264], '2': [472, 56], '3': [503, 178] };
     furnish('delegation-parures', 'clothing-rack', 132, 274, .5);
-    furnish('control-standard', 'clan-banner', 172, 116, .35);
+    furnish('control-standard', 'clan-banner', 172, 200, .35);
     furnish('inspection-containers', 'sealed-jars', 492, 205, .45);
     furnish('departure-lot', 'convoy-crates', 399, 282, .55);
-    furnish('inspection-register', 'register-desk', 442, 116, .4);
-    oriented('inspection-case', 'chest-diagonal', 371, 116, .5, 'Contenant fermé de l’inspection ; aucune nouvelle preuve ou prise disponible.');
+    // Northern staging leaves the original cargo and control approaches open.
+    furnish('inspection-register', 'register-desk', 224, 40, .4);
+    oriented('inspection-case', 'chest-diagonal', 220, 82, .5, 'Contenant fermé de l’inspection ; aucune nouvelle preuve ou prise disponible.');
     oriented('departure-case', 'chest-diagonal', 446, 296, .42, 'Rangement du départ distinct de la pièce du convoi déjà produite, sans butin.');
-    passages = [passage(0, 'control-branch', 192, 174, 144, 'vertical'), passage(1, 'inspection-branch', 354, 189, 160, 'vertical'),
+    passages = [passage(0, 'control-branch', 204, 156, 144, 'vertical'), passage(1, 'inspection-branch', 354, 189, 160, 'vertical'),
       passage(2, 'south-traverse', 269, 236, 162)];
   } else if (prefix === 'convoy-workshop') {
     kind = 'workshop'; title = 'Convois · maintenance et préparation des pièces';
@@ -84,13 +85,13 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
       zone(4, 'traverse', 'Allée axiale de maintenance', 200, 20, 154, 268)];
     partitions = [wall(0, 'west-screen', 20, 142, 80, 12), wall(1, 'east-screen', 468, 142, 50, 12)];
     furniturePoses = { 'travail-ouest': [120, 100], 'travail-est': [418, 100], caisse: [88, 276], parures: [450, 260], veille: [506, 138] };
-    decorPoses = { '1': [62, 220], '2': [474, 216] };
+    decorPoses = { '1': [88, 212], '2': [474, 216] };
     native('preparation-console', 'maintenance-console-right', 134, 190, 1, 'Console de préparation des pièces',
       'Console native avec face opérateur sud-est dans la préparation des pièces ; décor non interactif, sans service ou transport supplémentaire disponible.', 'V84');
     furnish('closed-materials', 'sealed-jars', 174, 282, .45);
     furnish('work-standard', 'clan-banner', 214, 112, .35);
     furnish('dispatch-register', 'register-desk', 388, 296, .4);
-    furnish('small-containers', 'sealed-jars', 514, 278, .28);
+    furnish('small-containers', 'sealed-jars', 482, 170, .28);
     furnish('preparation-veille', 'resin-lantern', 382, 134, .4);
     oriented('stock-rack', 'rack-lateral', 38, 188, .7, 'Rangement latéral des petites pièces et parures, fermé et non collectable.');
     oriented('assembly-case', 'chest-diagonal', 444, 130, .4, 'Lot fermé du poste de préparation ; aucun modèle de véhicule canonique n’est créé.');
@@ -105,8 +106,8 @@ export function homeworldPortPublicComplexV84(room: HomeworldInteriorV64): Homew
     partitions = [wall(0, 'sorting-screen', 176, 20, 12, 82), wall(1, 'dispatch-screen', 350, 20, 12, 82)];
     furniturePoses = { pieces: [90, 80], contenants: [269, 95], chargements: [442, 80], veille: [498, 206] };
     decorPoses = { '1': [512, 264] };
-    native('sorting-rack', 'cargo-rack-right', 115, 130, .66, 'Rack natif de tri', 'Rack orienté de tri des retours, sans pièce d’artisanat à récupérer.');
-    native('dispatch-counter', 'merchant-counter-left', 428, 134, .66, 'Comptoir natif d’expédition', 'Surface latérale de préparation des lots, sans nouvel achat ou départ de vaisseau.');
+    native('sorting-rack', 'cargo-rack-right', 115, 110, .66, 'Rack natif de tri', 'Rack orienté de tri des retours, sans pièce d’artisanat à récupérer.');
+    native('dispatch-counter', 'merchant-counter-left', 428, 116, .66, 'Comptoir natif d’expédition', 'Surface latérale de préparation des lots, sans nouvel achat ou départ de vaisseau.');
     furnish('receiving-register', 'register-desk', 110, 283, .4);
     furnish('receiving-lot', 'convoy-crates', 172, 281, .5);
     furnish('dispatch-containers', 'sealed-jars', 449, 281, .5);

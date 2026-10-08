@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import { homeworldQaModelV64 } from '../scripts/homeworld-qa-model-v64.mjs';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import { historicalHomeworldInteriorsV81 } from './helpers/homeworld-interior-history-v89.mjs';
 
 const api = homeworldQaModelV64(process.cwd(), ['homeworldInteriorsV64.ts', 'homeworldMonumentInteriorsV81.ts', 'homeworldMonumentInteriorCodexV81.ts', 'homeworldContextCodexV71.ts', 'homeworldFurnitureV72.ts', 'homeworldInteriorDecorV76.ts', 'homeworldCntlipPhysicalV77.ts', 'homeworldIdentityV72.ts']);
 const rooms = api.HOMEWORLD_INTERIORS_V64.filter(room => room.monumentLayoutV81);
@@ -139,8 +140,8 @@ test('the runtime codex links each monument, actual passage, native addition and
   }
 });
 
-test('the five other principal rooms retain their prior fields byte-for-byte', () => {
-  const rooms = api.HOMEWORLD_INTERIORS_V64.filter(room => ['market-armory', 'deep-forge', 'training-hall', 'clan-lodge', 'memory-vault'].includes(room.buildingId));
+test('the five original principal authoring recipes retain their prior fields byte-for-byte before explicit post-V81 composition', async () => {
+  const rooms = (await historicalHomeworldInteriorsV81()).filter(room => ['market-armory', 'deep-forge', 'training-hall', 'clan-lodge', 'memory-vault'].includes(room.buildingId));
   const prior = rooms.map(room => { const copy = { ...room, furniture: room.furniture.filter(item => !item.id.endsWith('-v77-cntlip-table')) }; delete copy.orientedDecorV76; return copy; });
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(prior)).digest('hex'), '1d20d34589a448688f93318a009dde68faa89841df057848804ee5564e6e3be5');
 });
