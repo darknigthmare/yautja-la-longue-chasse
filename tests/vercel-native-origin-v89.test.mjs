@@ -10,6 +10,17 @@ import ts from 'typescript';
 import { nativeOriginFixtureV89, nativeOriginDestinationV89, runNativeOriginV89 } from '../scripts/vercel-native-origin-v89.mjs';
 const run=promisify(execFile);
 const project=process.cwd(),prefix='public/game/imports/v85';
+test('every script actually invoked by the Vercel build is retained by its deployment allowlist',async()=>{
+ const config=JSON.parse(await fs.readFile(path.join(project,'vercel.json'),'utf8'));
+ const ignore=(await fs.readFile(path.join(project,'.vercelignore'),'utf8')).split(/\r?\n/).map(line=>line.trim());
+ assert(ignore.includes('/scripts/*'));
+ const paths=[...config.buildCommand.matchAll(/\bnode\s+(scripts\/[\w.-]+\.mjs)/g)].map(match=>match[1]);
+ assert(paths.includes('scripts/vercel-native-origin-v89.mjs'));
+ for(const script of paths){
+  assert(ignore.includes('!/'+script),'Deployment would omit '+script);
+  assert((await fs.stat(path.join(project,script))).isFile());
+ }
+});
 async function fixture(t){
  const root=path.join(project,'work-local','v89','native-origin-fixture-'+randomUUID());
  await fs.mkdir(path.join(root,prefix),{recursive:true});
