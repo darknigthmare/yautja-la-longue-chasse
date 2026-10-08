@@ -36,6 +36,16 @@ The origin introduces a GitHub availability dependency. It is a bounded
 publication repair, not a promise of an unlimited asset-hosting SLA. A future
 dedicated asset store would need its own access, integrity and cost review.
 
+On 8 October, the first Vercel run compiled but omitted the new script through
+`.vercelignore`; its allowlist and a build-command inclusion test now cover it.
+The following run reached the native-origin script and showed that the official
+adapter mounts generated static output on a separate volume. The filesystem
+boundary is therefore the exact literal `.next/output/static` directory, rather
+than the clone device. Links and mounts below that output boundary remain
+refused. Original PNGs must remain on the Git clone device and match committed
+blob hashes. This change still unlinks only the verified generated PNG copies.
+The real Vercel outcome remains to be observed after this repair.
+
 Routing references:
 - https://vercel.com/docs/routing/rewrites
 - https://vercel.com/docs/environment-variables/system-environment-variables

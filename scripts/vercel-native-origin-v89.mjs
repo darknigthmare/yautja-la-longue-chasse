@@ -64,18 +64,24 @@ async function prune(root,sha) {
   tracked.set(match[2],match[1]);
  }
  if(!tracked.size)throw new Error('No tracked historical native sprites');
- const targetRoot=path.join(root,'.next','output','static',...NATIVE_ORIGIN_PREFIX_V89.split('/').filter(Boolean));
+ const staticRoot=path.join(root,'.next','output','static');
+ const targetRoot=path.join(staticRoot,...NATIVE_ORIGIN_PREFIX_V89.split('/').filter(Boolean));
  const rootStat=await checked(root,root), targetStat=await checked(root,targetRoot,true);
  if(!targetStat)return {status:'not-copied',files:0,bytes:0,sha};
+ // The official Vercel adapter mounts its generated static output separately
+ // from the Git clone. Use that exact, literal output directory as the device
+ // boundary; mounts below it, links and unverified copies remain refused.
+ const staticStat=await checked(root,staticRoot);
+ if(!staticStat.isDirectory())throw new Error('Exact generated static directory required');
  if(!targetStat.isDirectory())throw new Error('Generated sprite root must be a directory');
  const files=[], directories=[];
  async function visit(dir){
   const stat=await checked(root,dir);
-  if(!stat.isDirectory()||stat.dev!==rootStat.dev)throw new Error('Generated tree refuses mounted filesystems');
+  if(!stat.isDirectory()||stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems');
   directories.push({path:dir,stat});
   for(const name of await fs.readdir(dir)){
    const file=path.join(dir,name), stat=await checked(root,file);
-   if(stat.dev!==rootStat.dev)throw new Error('Generated tree refuses mounted filesystems');
+   if(stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems');
    if(stat.isDirectory())await visit(file);
    else if(stat.isFile())files.push({path:file,stat});
    else throw new Error('Special output refused');
@@ -88,7 +94,7 @@ async function prune(root,sha) {
   const relative=path.relative(targetRoot,item.path).split(path.sep).join('/');
   const sourceRel=prefix+relative, original=path.join(root,...sourceRel.split('/'));
   const blob=tracked.get(sourceRel), stat=await checked(root,original);
-  if(!blob||!stat.isFile()||stat.size!==item.stat.size||(stat.mode&0o777n)!==(item.stat.mode&0o777n))throw new Error('Output lacks identical tracked PNG counterpart');
+  if(!blob||!stat.isFile()||stat.dev!==rootStat.dev||stat.size!==item.stat.size||(stat.mode&0o777n)!==(item.stat.mode&0o777n))throw new Error('Output lacks identical tracked PNG counterpart');
   const originalHash=await digest(original,stat), outputHash=await digest(item.path,item.stat);
   if(originalHash.sha256!==outputHash.sha256||originalHash.blob!==blob)throw new Error('Native bytes differ from output or committed origin');
   plan.push({...item,original,originalStat:stat});
