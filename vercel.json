@@ -1,5 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "buildCommand": "node scripts/build-audio-manifest.mjs && next build --webpack && node scripts/verify-pit-built-css-v61.mjs && node scripts/compact-vercel-static-v87.mjs"
+  "buildCommand": "node scripts/build-audio-manifest.mjs && next build --webpack && node scripts/verify-pit-built-css-v61.mjs && node scripts/vercel-native-origin-v89.mjs && node scripts/compact-vercel-static-v87.mjs"
 }

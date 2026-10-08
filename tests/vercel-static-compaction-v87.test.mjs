@@ -146,14 +146,14 @@ test('mode mismatch preserves output permissions, and arbitrary real project roo
  await assert.rejects(compactStaticFixtureV87({fixtureRoot:project}),/Only private/);
 });
 
-test('completed-build cleanup removes only compilation cache when free space suffices',async t=>{
+test('completed-build preserves compilation cache and clone when free space suffices',async t=>{
  const root=await fixture(t),files=await pair(root,'sprite.png',Buffer.from('native'));
  await fs.mkdir(path.join(root,'.git','objects'),{recursive:true});
  await fs.writeFile(path.join(root,'.git','objects','pack-copy'),'recoverable-clone');
  await fs.writeFile(path.join(root,'.git','HEAD'),'retained-metadata');
  const result=await reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>1_000_000});
- assert.equal(result.cache.files,1);assert.equal(result.ephemeralClone.files,0);
- await assert.rejects(fs.stat(path.join(root,'.next','cache')),e=>e.code==='ENOENT');
+ assert.equal(result.cache.files,0);assert.equal(result.ephemeralClone.files,0);
+ assert.equal(await fs.readFile(path.join(root,'.next','cache','keep.bin'),'utf8'),'cache-not-touched');
  assert.equal(await fs.readFile(path.join(root,'.git','objects','pack-copy'),'utf8'),'recoverable-clone');
  assert.equal(await fs.readFile(files.source,'utf8'),'native');assert.equal(await fs.readFile(files.target,'utf8'),'native');
  assert.equal(await fs.readFile(path.join(root,'.next','output','config.json'),'utf8'),'unmodified-output-manifest');
@@ -176,7 +176,7 @@ test('cache escape is refused before any disposable file is removed, and real ro
  const root=await fixture(t),outside=await fixture(t);await pair(root,'sprite.png',Buffer.from('native'));
  const cache=path.join(root,'.next','cache'),escape=path.join(cache,'escape');
  await fs.symlink(path.join(outside,'public'),escape,process.platform==='win32'?'junction':'dir');
- await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root}),/symlinks|junctions/);
+ await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:root,measure:async()=>0}),/symlinks|junctions/);
  assert.equal(await fs.readFile(path.join(cache,'keep.bin'),'utf8'),'cache-not-touched');
  await assert.rejects(reclaimBuildFixtureV87({fixtureRoot:project}),/Only private/);
 });

@@ -113,7 +113,9 @@ async function reclaimVerifiedBuild(root,{allowCloneRemoval=false,sameVolume=tru
  let requiredCopyBytes=0;
  for(const file of staticFiles)requiredCopyBytes+=Number((await checkedPath(root,file)).size);
  const before=await measure(root);
- const cache=await removeDisposableTree(root,path.join(root,'.next','cache'));
+ // Leave source caches alone when capacity suffices, or when cleanup cannot
+ // reclaim space on the separate destination volume. Mount guards remain.
+ const cache=before>=requiredCopyBytes+reserveBytes||!sameVolume?{files:0,bytes:0}:await removeDisposableTree(root,path.join(root,'.next','cache'));
  const afterCache=await measure(root);
  let clone={files:0,bytes:0};
  // A Git clone is a recoverable build input copy, not the user's repository.
