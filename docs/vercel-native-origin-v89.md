@@ -46,7 +46,28 @@ refused. Original PNGs must remain on the Git clone device and match committed
 blob hashes. This change still unlinks only the verified generated PNG copies.
 The real Vercel outcome remains to be observed after this repair.
 
+A peer review identified that equal `st_dev` values alone cannot exclude a
+same-filesystem bind mount. Before traversing and before the first unlink, Linux
+builds now read `/proc/self/mountinfo` and refuse every mount strictly below the
+literal static boundary, including bind mounts. The exact adapter mount remains
+allowed. A source/output pair sharing `(dev, ino)` is also rejected during the
+complete preflight. A real hard-link fixture proves that a late alias leaves
+every ordinary generated copy and original intact; mount-table tests cover the
+exact adapter boundary, siblings, same-volume descendants and escaped names.
+
+The deployment for `74623b1` still refused a different device below the static
+directory; compilation and built-CSS checks passed. No native-original deletion
+was reported. Instead of relaxing that guard, `.vercelignore` now excludes only
+`/public/game/imports/v85` at packaging time. The matching SHA-pinned rewrite
+remains mandatory even when no generated copy exists. Git/public originals are
+unchanged locally and remain available at the same committed public origin.
+Other asset groups are not ignored. This packaging repair still requires an
+observed Vercel run; the script now identifies a rejected relative path and its
+device values if the provider still supplies a mounted generated copy.
+
 Routing references:
 - https://vercel.com/docs/routing/rewrites
 - https://vercel.com/docs/environment-variables/system-environment-variables
 - Local Next guide: `node_modules/next/dist/docs/01-app/03-api-reference/05-config/01-next-config-js/rewrites.md`
+- Linux mount information: https://docs.kernel.org/filesystems/proc.html#proc-pid-mountinfo-information-about-mounts
+- Deployment packaging exclusions: https://vercel.com/docs/deployments/vercel-ignore

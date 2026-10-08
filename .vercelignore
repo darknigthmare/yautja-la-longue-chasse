@@ -33,3 +33,7 @@ tests
 /node_modules
 
 /desktop
+
+# This exact historical group is served by the SHA-pinned beforeFiles rewrite.
+# Exclude it at packaging time instead of mutating mounted generated copies.
+/public/game/imports/v85

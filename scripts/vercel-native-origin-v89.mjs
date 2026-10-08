@@ -21,6 +21,19 @@ const inside = (root, target) => {
  return rel === '' || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
 };
 const same = (a,b) => a.dev===b.dev && a.ino===b.ino && a.size===b.size && a.mode===b.mode && a.mtimeNs===b.mtimeNs;
+// st_dev alone cannot distinguish a bind mount within the same filesystem.
+// The adapter's exact static mount is allowed; every descendant mount is refused.
+export function assertNativeOutputMountsV89(staticRoot, mountinfo) {
+ if(!path.posix.isAbsolute(staticRoot)||path.posix.normalize(staticRoot)!==staticRoot||!mountinfo.trim())throw new Error('Literal output mount boundary required');
+ for(const line of mountinfo.trim().split('\n')){
+  const separator=line.indexOf(' - '), fields=line.slice(0,separator).split(' ');
+  if(separator<0||fields.length<6||!/^\d+$/.test(fields[0])||!/^\d+:\d+$/.test(fields[2]))throw new Error('Malformed output mount information');
+  const point=fields[4].replace(/\\([0-7]{3})/g,(_,octal)=>String.fromCharCode(parseInt(octal,8)));
+  if(!path.posix.isAbsolute(point)||path.posix.normalize(point)!==point)throw new Error('Non-literal mount point refused');
+  const relative=path.posix.relative(staticRoot,point);
+  if(relative!==''&&!path.posix.isAbsolute(relative)&&relative!=='..'&&!relative.startsWith('../'))throw new Error('Generated tree refuses descendant mounts, including same-volume bind mounts');
+ }
+}
 async function checked(root, target, missing=false) {
  if (!inside(root,target)) throw new Error('External native sprite path refused');
  const parts=path.relative(root,target).split(path.sep).filter(Boolean); let current=root, stat;
@@ -74,14 +87,15 @@ async function prune(root,sha) {
  const staticStat=await checked(root,staticRoot);
  if(!staticStat.isDirectory())throw new Error('Exact generated static directory required');
  if(!targetStat.isDirectory())throw new Error('Generated sprite root must be a directory');
+ if(process.platform==='linux')assertNativeOutputMountsV89(staticRoot,await fs.readFile('/proc/self/mountinfo','utf8'));
  const files=[], directories=[];
  async function visit(dir){
   const stat=await checked(root,dir);
-  if(!stat.isDirectory()||stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems');
+  if(!stat.isDirectory()||stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems at '+path.relative(staticRoot,dir)+' (device '+stat.dev+'; static '+staticStat.dev+')');
   directories.push({path:dir,stat});
   for(const name of await fs.readdir(dir)){
    const file=path.join(dir,name), stat=await checked(root,file);
-   if(stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems');
+   if(stat.dev!==staticStat.dev)throw new Error('Generated tree refuses nested mounted filesystems at '+path.relative(staticRoot,file)+' (device '+stat.dev+'; static '+staticStat.dev+')');
    if(stat.isDirectory())await visit(file);
    else if(stat.isFile())files.push({path:file,stat});
    else throw new Error('Special output refused');
@@ -95,11 +109,13 @@ async function prune(root,sha) {
   const sourceRel=prefix+relative, original=path.join(root,...sourceRel.split('/'));
   const blob=tracked.get(sourceRel), stat=await checked(root,original);
   if(!blob||!stat.isFile()||stat.dev!==rootStat.dev||stat.size!==item.stat.size||(stat.mode&0o777n)!==(item.stat.mode&0o777n))throw new Error('Output lacks identical tracked PNG counterpart');
+  if(stat.dev===item.stat.dev&&stat.ino===item.stat.ino)throw new Error('Generated copy aliases its original source');
   const originalHash=await digest(original,stat), outputHash=await digest(item.path,item.stat);
   if(originalHash.sha256!==outputHash.sha256||originalHash.blob!==blob)throw new Error('Native bytes differ from output or committed origin');
   plan.push({...item,original,originalStat:stat});
  }
  for(const item of plan)if(!same(item.stat,await checked(root,item.path))||!same(item.originalStat,await checked(root,item.original)))throw new Error('Sprite changed after complete preflight');
+ if(process.platform==='linux')assertNativeOutputMountsV89(staticRoot,await fs.readFile('/proc/self/mountinfo','utf8'));
  for(const item of plan){
   if(!same(item.stat,await checked(root,item.path))||!same(item.originalStat,await checked(root,item.original)))throw new Error('Sprite changed before removing generated copy');
   await fs.unlink(item.path);
