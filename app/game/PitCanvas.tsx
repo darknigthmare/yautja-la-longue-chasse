@@ -19,6 +19,8 @@ import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRo
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { pitMoveLabelV91 } from './systems/pitFidelityV91';
+import PitFidelityNoticeV91 from './PitFidelityNoticeV91';
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
@@ -457,7 +459,7 @@ function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion:
     if (engineVersion <= 8 && event.fighterId === 'feral-hunter' && event.attack === 'technique') return 'PIÈGE À CARREAUX · REPLAY HISTORIQUE';
     return (
       event.attack === "technique"
-        ? PIT_FIGHTERS[event.fighterId].attacks.technique.label
+        ? pitMoveLabelV91(event.fighterId, 'technique', PIT_FIGHTERS[event.fighterId].attacks.technique.label)
         : ACTION_LABELS[event.attack]
     ).toUpperCase();
   }
@@ -1007,7 +1009,7 @@ export function FighterCard({
       <h3>{fighter.name}</h3>
       {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : userVariant.sourceArchive.startsWith('OpenAI') ? 'illustration OpenAI référencée · pose fixe' : 'image fournie · pose fixe'}</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
-      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : fighter.attacks.technique.label}</small>
+      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</small>
       {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
       {fighterId === 'falconer' && <small className={styles.fighterArtNotice}>Un drone mécanique · reconnaissance sans dégâts · une seconde commande rappelle le même appareil. Deux vues natives fixes : déplacement du capteur, sans cycle de battement inventé.</small>}
       <dl>
@@ -1016,14 +1018,15 @@ export function FighterCard({
         <div><dt>MOBILITÉ</dt><dd>{Math.round(fighter.walkSpeed * 20)}</dd></div>
       </dl>
       <details key={fighterId} className={styles.fighterProfile} data-pit-fighter-profile>
-        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du chasseur</summary>
+        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du combattant</summary>
         <p className={styles.fighterSource}>{profile.sourceWork}</p>
         <p>{profile.arcadeIntro}</p>
         {!unavailableTechnique && <p>
-          <strong>{fighter.attacks.technique.label}</strong>
+          <strong>{pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</strong>
           {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
           {fighter.attacks.technique.startup}{" images"}
         </p>}
+        <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>
         {visibleArt ? (
           <small>
             {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
