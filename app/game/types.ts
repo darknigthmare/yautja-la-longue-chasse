@@ -13,6 +13,7 @@ import type { SoloV67Campaign } from "./systems/campaignSoloV67";
 import type { SoloV68Campaign } from "./systems/campaignSoloV68";
 import type { SoloV69Campaign } from "./systems/campaignSoloV69";
 import type { SoloV70Campaign } from "./systems/campaignSoloV70";
+import type { SoloV90Campaign } from "./systems/campaignSoloV90";
 import type { HomeworldRegionStateV68 } from "./systems/homeworldRegionsV68";
 import type { HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import type { GameReserveV66State } from "./systems/gameReserveV66";
@@ -642,6 +643,8 @@ export interface SaveGame {
   soloV69?: SoloV69Campaign | null;
   /** First act of the original clan temple; independent of the later Blooded rite. */
   soloV70?: SoloV70Campaign | null;
+  /** Local preparation only; never substitutes for a Blooded rite. */
+  soloV90?: SoloV90Campaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;

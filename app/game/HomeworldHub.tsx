@@ -55,6 +55,7 @@ import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/hom
 import { canStartSoloV68 } from "./systems/campaignSoloV68";
 import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
+import { canStartSoloV90 } from "./systems/campaignSoloV90";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
@@ -94,6 +95,7 @@ export interface HomeworldHubProps {
   onSoloV68?(): boolean;
   onSoloV69?(): boolean;
   onSoloV70?(): boolean;
+  onSoloV90?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
   /** A completed connector returns at its physical threshold while its arrival
    * request is pending. Ordinary city reloads use the existing Port spawn. */
@@ -111,7 +113,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveHomeworldLocationV77(save.homeworld.locationV77, save.createdAt));
   const [actor, setActor] = useState(() => initialLocationV77.actor);
   const [levelIdV77, setLevelIdV77] = useState<HomeworldLevelV77>(initialLocationV77.levelId);
@@ -685,13 +687,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
-    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Les salles supérieures sont explorées et le confinement est attesté ; les profondeurs et le rite Blooded restent à accomplir."
+    : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
+    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
     : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
     : youthCampaignObjective(save.youthTraining);
-  const youthProgressTitle = save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
+  const youthProgressTitle = save.soloV90?.status === "completed" ? "Young Blood · Préparation de triade rapportée"
+    : save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
     : save.soloV69?.status === "completed" ? "Young Blood · Seuils maîtrisés"
     : save.soloV68?.status === "completed" ? "Young Blood · Cohorte reconnue"
     : save.soloV67?.status === "completed" ? "Unblooded · Piste rapportée"
@@ -870,6 +874,13 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             if (!onSoloV70()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
           }}>{save.soloV70 ? "Reprendre Le Temple des Trois Ombres · acte I" : "Le Temple des Trois Ombres · acte I"}</button>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
+            if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
+            clearInputs();
+            if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre la préparation de triade." } : current); return; }
+            if (!onSoloV90()) setDialog(current => current ? { ...current, message: "Préparation non enregistrée. Réessaie auprès du maître." } : current);
+          }}>{save.soloV90 ? "Reprendre la préparation de triade" : "Préparation de triade · Combat de seuil"}</button>}
+          {selectedNpc?.id === "terrace-instructor" && save.soloV90?.status === "completed" && <p data-solo-v90-complete>La triade a rapporté son entraînement et ses blessures. Cet exercice ne remplace ni l’épreuve Quatza-Rij, ni le marquage Blooded.</p>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV69?.status === "completed" && <p data-solo-v69-complete>Les douze étapes de préparation sont attestées. Le jeune a rejoint le refuge et tu es revenu au maître. Ton rang reste Young Blood ; le Premier Sang attend sa propre expédition.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.evidenceId ? <YautjaTranslationV67 text={selectedPoint.description} paused={suspended || paused || inactive} /> : selectedPoint.description}</p>

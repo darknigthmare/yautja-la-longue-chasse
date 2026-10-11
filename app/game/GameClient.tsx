@@ -28,6 +28,8 @@ import { startSoloV69Campaign, withSoloV69Checkpoint, withSoloV69Progress, soloV
 import { startSoloV70Campaign, withSoloV70Checkpoint, withSoloV70Progress, soloV70NeedsScene } from "./systems/campaignSoloV70";
 import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
+import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV90NeedsScene } from "./systems/campaignSoloV90";
+import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
 import { createHomeworldRegionV68, normalizeHomeworldRegionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
@@ -46,6 +48,7 @@ import { CampaignSavePanel } from "./CampaignMainMenu";
 import { loadCampaignSlots, saveCampaignCheckpoint, type CampaignSlotCatalog, type CampaignResumeLocation } from "./systems/campaignSlots";
 import { GAME_CONTENT_VERSION, GAME_CONTENT_LABEL } from "./buildInfo";
 import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
+import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -270,6 +273,7 @@ const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
 const FirstHuntSoloV68 = React.lazy(() => import("./FirstHuntSoloV68"));
 const FirstHuntSoloV69 = React.lazy(() => import("./FirstHuntSoloV69"));
 const FirstHuntSoloV70 = React.lazy(() => import("./FirstHuntSoloV70"));
+const FirstHuntSoloV90 = React.lazy(() => import("./FirstHuntSoloV90"));
 const HomeworldRegionV68 = React.lazy(() => import("./HomeworldRegionV68"));
 const HomeworldPassageV67 = React.lazy(() => import("./HomeworldPassageV67"));
 const GameReserveV66 = React.lazy(() => import("./GameReserveV66"));
@@ -300,6 +304,7 @@ type Screen =
   | "solo-v68"
   | "solo-v69"
   | "solo-v70"
+  | "solo-v90"
   | "homeworld-region-v68"
   | "homeworld-passage-v67"
   | "game-reserve"
@@ -983,6 +988,7 @@ export default function GameClient() {
 
 function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMainMenu: () => void }) {
   const gameFocusedV89 = useSyncExternalStore(subscribeGameFocusV89, readGameFocusV89, serverGameFocusV89);
+  const reducedMotionV90 = useHomeworldReducedMotionV77();
   const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
   const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
@@ -1117,6 +1123,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       saveRef.current = loadedSave;
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
+      else if (soloV90NeedsScene(loadedSave.soloV90)) { setScreen("solo-v90"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV70NeedsScene(loadedSave.soloV70)) { setScreen("solo-v70"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV69NeedsScene(loadedSave.soloV69)) { setScreen("solo-v69"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV68NeedsScene(loadedSave.soloV68)) { setScreen("solo-v68"); setNewGamePhase(null); setHubLocation("homeworld"); }
@@ -1288,7 +1295,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, selectedMission, shipStationOpen, hubLocation]);
 
   useEffect(() => {
-    const context: GameMusicContext | null = settingsOpen || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" ? null
+    const context: GameMusicContext | null = settingsOpen || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
@@ -1702,6 +1709,27 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistNursery, reconcileNurseryAttempt]);
   const returnFromSoloV70 = useCallback(async (): Promise<boolean> => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt() || saveRef.current.soloV70?.status !== "completed" || !persistNursery(saveRef.current)) return false;
+    setHubLocation("homeworld"); setScreen("homeworld"); return true;
+  }, [persistNursery, reconcileNurseryAttempt]);
+
+  const enterSoloV90 = useCallback((): boolean => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    const next = startSoloV90Campaign(saveRef.current);
+    if (!next || !persistNursery(next)) return false;
+    setHubLocation("homeworld"); setScreen("solo-v90"); return true;
+  }, [persistNursery, reconcileNurseryAttempt]);
+  const checkpointSoloV90 = useCallback((state: SoloV90State): boolean => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    const next = withSoloV90Checkpoint(saveRef.current, state);
+    return next !== null && persistNursery(next);
+  }, [persistNursery, reconcileNurseryAttempt]);
+  const progressSoloV90 = useCallback(async (receipts: readonly SoloV90Receipt[], state: SoloV90State): Promise<boolean> => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    const next = withSoloV90Progress(saveRef.current, receipts, state);
+    return next !== null && persistNursery(next);
+  }, [persistNursery, reconcileNurseryAttempt]);
+  const returnFromSoloV90 = useCallback(async (): Promise<boolean> => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt() || saveRef.current.soloV90?.status !== "completed" || !persistNursery(saveRef.current)) return false;
     setHubLocation("homeworld"); setScreen("homeworld"); return true;
   }, [persistNursery, reconcileNurseryAttempt]);
 
@@ -3201,13 +3229,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     );
   }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
-  const campaignLocation: CampaignResumeLocation = screen === "game-reserve" ? "game-reserve" : screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || soloV70NeedsScene(save.soloV70) || soloV69NeedsScene(save.soloV69) || soloV68NeedsScene(save.soloV68) || soloV67NeedsScene(save.soloV67) || soloV66NeedsScene(save.soloV66) || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
+  const campaignLocation: CampaignResumeLocation = screen === "game-reserve" ? "game-reserve" : screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" || soloV90NeedsScene(save.soloV90) || soloV70NeedsScene(save.soloV70) || soloV69NeedsScene(save.soloV69) || soloV68NeedsScene(save.soloV68) || soloV67NeedsScene(save.soloV67) || soloV66NeedsScene(save.soloV66) || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
     : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
     : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."
     : screen === "mission" ? "Suspendez la chasse depuis sa pause pour enregistrer un checkpoint manuel ou changer de partie." : null;
   const saveManagedCheckpoint = useCallback(async (kind: "manual" | "auto", index?: number, expectedRevision?: number): Promise<boolean> => {
-    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || (saveFailure && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70") && nurseryPersistenceHealthyRef.current))) return false;
+    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || (saveFailure && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90") && nurseryPersistenceHealthyRef.current))) return false;
     const catalog = kind === "manual" ? campaignCatalog : loadCampaignSlots();
     const slot = catalog?.slots.find(item => item.id === entry.slotId);
     if (!slot || slot.status !== "ready" || slot.ownerCreatedAt !== saveRef.current.createdAt) {
@@ -3233,7 +3261,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [campaignLocation, hydrated]);
   const returnToMainMenu = useCallback(async () => {
     if (!sessionAliveRef.current) { onMainMenu(); return; }
-    if (checkpointBlockedReason && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70") && nurseryPersistenceHealthyRef.current)) { setCampaignSaveMessage(checkpointBlockedReason); return; }
+    if (checkpointBlockedReason && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90") && nurseryPersistenceHealthyRef.current)) { setCampaignSaveMessage(checkpointBlockedReason); return; }
     setSettingsOpen(true);
     if (!(await saveManagedCheckpoint("auto"))) return;
     // Invalidate synchronous and delayed child callbacks BEFORE removing the tree.
@@ -3267,7 +3295,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "map", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "map", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
 
   const primaryWeapon =
@@ -3309,7 +3337,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
         onShip={() => go(save.prologue ? "homeworld" : "deck")}
@@ -3372,6 +3400,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <GameReserveV66 key={save.createdAt + ":" + save.gameReserveV66.seed} checkpoint={save.gameReserveV66} bindings={save.settings.controlBindings}
             externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOpenSettings={() => setSettingsOpen(true)}
             onCheckpoint={checkpointGameReserveV66} onExit={() => { if (entry.menuMode) return returnToMainMenu(); setScreen("clan-chronicle"); }} />
+        </Suspense>
+      </section>}
+
+      {screen === "solo-v90" && hydrated && save.soloV90 && <section inert={settingsOpen} data-solo-v90-campaign>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <FirstHuntSoloV90 key={save.createdAt} checkpoint={save.soloV90.checkpoint} bindings={save.settings.controlBindings}
+            reducedMotion={reducedMotionV90}
+            soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}
+            masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
+            externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} persistenceError={nurseryPersistenceError}
+            onOpenSettings={() => setSettingsOpen(true)} onCheckpoint={checkpointSoloV90} onProgress={progressSoloV90}
+            onExit={returnToMainMenu} onReturnToCity={returnFromSoloV90} />
         </Suspense>
       </section>}
 
@@ -3563,7 +3603,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <p>{campaignWelcomeV69(save).next}</p>
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
-                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onRegionV68={openHomeworldRegionV68}
+                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
             </div>
           </section>

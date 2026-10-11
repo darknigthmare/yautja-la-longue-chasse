@@ -12,6 +12,7 @@ import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaign
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
+import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
 import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
 import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
@@ -1278,6 +1279,7 @@ export function normalizeSave(value: unknown): SaveGame {
     soloV68: normalizeSoloV68Campaign(source.soloV68),
     soloV69: normalizeSoloV69Campaign(source.soloV69),
     soloV70: normalizeSoloV70Campaign(source.soloV70),
+    ...(source.soloV90 === undefined ? {} : { soloV90: normalizeSoloV90Campaign(source.soloV90) }),
     homeworldRegionV68: normalizeHomeworldRegionV68(source.homeworldRegionV68),
     homeworldPassageV67: normalizeHomeworldPassageV67(source.homeworldPassageV67),
     gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
@@ -1498,7 +1500,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       isRecord(value.soloV69.checkpoint) && Number(value.soloV69.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
   if (isRecord(value.soloV70) && (Number(value.soloV70.version) > 1 ||
       isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
-  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
+      isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
   if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
     const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
     if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),

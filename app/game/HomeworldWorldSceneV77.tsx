@@ -6,6 +6,7 @@ import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
 import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
 import HomeworldBackdropV81 from './HomeworldBackdropV81';
 import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
+import HomeworldEcotonesV90 from './HomeworldEcotonesV90';
 import {HOMEWORLD_RETAINING_SUPPORTS_V82} from './systems/homeworldRetainingAssembliesV82';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
@@ -21,7 +22,7 @@ import {HOMEWORLD_LIFT_CABIN_ART_V82,homeworldLiftCabinPlacementV82,type Homewor
 import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingCoversPaintV76,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
 import {homeworldBuildingRenderDepthV76,shouldFadeHomeworldBuilding,homeworldBuildingVisibleBoundsV72,shouldFadeHomeworldForeground} from './systems/homeworldCity';
 import styles from './HomeworldCity.module.css';
-import {HOMEWORLD_URBAN_GROUND_V78,homeworldUrbanHullV78} from './systems/homeworldUrbanLayoutV78';
+import {HOMEWORLD_URBAN_GROUND_V78} from './systems/homeworldUrbanLayoutV78';
 import {HOMEWORLD_URBAN_PROPS_V78,HOMEWORLD_CITY_GENERATED_PROPS_V78} from './systems/homeworldStreetModulesV78';
 import {HOMEWORLD_CITY_NATIVE_ART_V78} from './systems/homeworldCityNativeArtV78';
 import {HOMEWORLD_URBAN_EXTRAS_V78,homeworldUrbanExtraRoleV78} from './systems/homeworldUrbanPopulationV78';
@@ -30,39 +31,15 @@ import {HOMEWORLD_URBAN_FACADES_V78} from './systems/homeworldUrbanFacadesV78';
 import {HOMEWORLD_CIVIC_ART_V80,HOMEWORLD_CIVIC_PROPS_V80} from './systems/homeworldCivicDecorV80';
 import {HOMEWORLD_COURT_ART_V80} from './systems/homeworldCourtArtV80';
 import {HOMEWORLD_NATURAL_MODULES_V80} from './systems/homeworldNaturalPlacementsV80';
-import {homeworldOutskirtsFootprintV71,type HomeworldOutskirtsModuleV71} from './systems/homeworldOutskirtsV71';
+import {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85,HOMEWORLD_NATURAL_PUBLIC_GROUND_V85} from './systems/homeworldNaturalSupportsV85';
 import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_STREET_DECOR_ART_V83,HOMEWORLD_STREET_DECOR_PROPS_V83} from './systems/homeworldStreetDecorV83';
 import {HOMEWORLD_STREET_DECOR_ART_V84} from './systems/homeworldStreetDecorV84';
 import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './systems/homeworldStreetDecorMountV84';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
-const publicNaturalGround=[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(ground=>ground.levelId==='0');
-type NaturalPoint={x:number;y:number};
-/** Render-only shoulders retain the authored formation, not one island per
- * plant or a full-screen floor. Every formation joins an existing public edge.
- * Neither these polygons nor their foundations enter terrain or collision. */
-function naturalSupportTerracesV85(){
- const groups=new Map<string,HomeworldOutskirtsModuleV71[]>();
- for(const item of HOMEWORLD_NATURAL_MODULES_V80){
-  const authored=item as HomeworldOutskirtsModuleV71&{groupId?:string;formation?:string};
-  const formation=item.id.startsWith('landscape-v75-')?'v75:'+authored.groupId:item.id.startsWith('port-shoulder-v80:')?'v80:'+authored.formation:'v71:'+item.districtId;
-  const group=groups.get(formation)??[];group.push(item);groups.set(formation,group);
- }
- return [...groups].map(([id,items])=>{
-  const points=items.flatMap(item=>{const b=homeworldOutskirtsFootprintV71(item);return[{x:b.left-22,y:b.top-22},{x:b.right+22,y:b.top-22},{x:b.right+22,y:b.bottom+22},{x:b.left-22,y:b.bottom+22}];});
-  let nearest:{distance:number;point:NaturalPoint;a:NaturalPoint;b:NaturalPoint;groundId:string}|null=null;
-  for(const point of points)for(const ground of publicNaturalGround)for(let i=0;i<ground.polygon.length;i++){
-   const a=ground.polygon[i],b=ground.polygon[(i+1)%ground.polygon.length],dx=b.x-a.x,dy=b.y-a.y,l2=dx*dx+dy*dy;
-   if(l2<1)continue;
-   const t=Math.max(0,Math.min(1,((point.x-a.x)*dx+(point.y-a.y)*dy)/l2)),p={x:a.x+t*dx,y:a.y+t*dy},distance=Math.hypot(p.x-point.x,p.y-point.y);
-   if(!nearest||distance<nearest.distance){const half=Math.min(.5,80/Math.sqrt(l2)),lo=Math.max(0,t-half),hi=Math.min(1,t+half);nearest={distance,point:p,a:{x:a.x+lo*dx,y:a.y+lo*dy},b:{x:a.x+hi*dx,y:a.y+hi*dy},groundId:ground.id};}
-  }
-  if(!nearest)throw Error('Natural formation without a source ground edge: '+id);
-  return{id,ids:items.map(item=>item.id),anchor:nearest.point,anchorEdge:[nearest.a,nearest.b],groundId:nearest.groundId,polygon:homeworldUrbanHullV78([...points,nearest.a,nearest.b])};
- });
-}
-export const HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85=naturalSupportTerracesV85();
+const publicNaturalGround=HOMEWORLD_NATURAL_PUBLIC_GROUND_V85;
+export {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85};
 const visible=(box:{left:number;top:number;width:number;height:number},camera:Camera)=>box.left+box.width>=camera.x-160&&box.left<=camera.x+camera.viewWidth+160&&box.top+box.height>=camera.y-160&&box.top<=camera.y+camera.viewHeight+160;
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
@@ -100,6 +77,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
     </g>)}
    </g>
   </svg>}
+  {painted('0')&&<HomeworldEcotonesV90 camera={camera}/>}
   {HOMEWORLD_LEVELS_V77.filter(level=>painted(level.id)).map(level=><svg key={level.id} aria-hidden="true" data-homeworld-level-ground-v77={level.id}
    width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
    style={{position:'absolute',left:camera.x,top:camera.y,zIndex:homeworldGroundDepthV78(level.id,levelId,transit),pointerEvents:'none'}}>

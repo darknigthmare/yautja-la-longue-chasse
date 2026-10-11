@@ -16,12 +16,12 @@ export interface CampaignCatalogView {slots:readonly CampaignSlotView[];activeSl
 const time=(seconds:number)=>`${Math.floor(seconds/3600)} h ${Math.floor(seconds%3600/60).toString().padStart(2,'0')}`;
 const date=(value:string)=>new Date(value).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});
 const place=(checkpoint:Pick<CampaignCheckpointView,'hasActiveHunt'|'resumeLocation'>)=>checkpoint.hasActiveHunt?'Chasse suspendue':checkpoint.resumeLocation==='homeworld'?'Yautja Prime':checkpoint.resumeLocation==='prologue'?'Nurserie · prologue':checkpoint.resumeLocation==='youth-training'?'Formation Unblooded':checkpoint.resumeLocation==='game-reserve'?'Réserve de chasse':checkpoint.resumeLocation==='new-game'?'Début de campagne':'Vaisseau';
-const controls=(root:HTMLElement)=>Array.from(root.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),select:not(:disabled),a[href]')).filter(node=>node.getClientRects().length>0&&!node.closest('[inert]'));
+const controls=(root:HTMLElement)=>Array.from(root.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href]')).filter(node=>node.getClientRects().length>0&&!node.closest('[inert]'));
 function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onBack:()=>void){
  if(event.defaultPrevented||event.repeat||!root)return;
  if(event.key==='Escape'){event.preventDefault();onBack();return;}
  const direction=({ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down'} as const)[event.key as 'ArrowLeft'];
- if(!direction||event.target instanceof HTMLInputElement||event.target instanceof HTMLSelectElement)return;
+ if(!direction||event.target instanceof HTMLInputElement||event.target instanceof HTMLSelectElement||event.target instanceof HTMLTextAreaElement)return;
  event.preventDefault();const nodes=controls(root),active=document.activeElement as HTMLElement;
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
@@ -43,13 +43,14 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const [view,setView]=useState<'main'|'new'|'load'|'import'>('main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
  const [importPreview,setImportPreview]=useState<CampaignSlotImportPreview|null>(null),[importConfirmation,setImportConfirmation]=useState<CampaignSlotImportPreview|null>(null);
  const [importFileName,setImportFileName]=useState(''),[importMessage,setImportMessage]=useState<string|null>(null),[importReading,setImportReading]=useState(false);
+ const [importText,setImportText]=useState('');
  const importReadGeneration=useRef(0),importAlive=useRef(true);
  // Remounting also invalidates a pending read from React's development replay.
  useLayoutEffect(()=>{importReadGeneration.current++;importAlive.current=true;return()=>{importAlive.current=false;};},[]);
  const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;recovery?:boolean}|null>(null);
  const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|'clan-war'|null>(null);
  const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
- const back=useCallback(()=>{if(busy)return;if(importConfirmation)setImportConfirmation(null);else if(spoilerMode)setSpoilerMode(null);else if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else{importReadGeneration.current++;setImportReading(false);setImportPreview(null);setView('main');}},[busy,confirmation,replacement,spoilerMode,importConfirmation]);
+ const back=useCallback(()=>{if(busy)return;if(importConfirmation){importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);}else if(spoilerMode)setSpoilerMode(null);else if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else{importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);setView('main');}},[busy,confirmation,replacement,spoilerMode,importConfirmation]);
  useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation||replacement||spoilerMode||importConfirmation)}:${busy}`,back);
  useLayoutEffect(()=>{
   if(busy)return;
@@ -65,11 +66,30 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const slot=catalog?.slots.find(slot=>slot.id===selected);
  const canRecoverNew=Boolean(catalog?.workspaceRecoveryAvailable&&ready.length===0&&slot?.status==='empty'&&onRecoverNew);
  const currentCheckpoint=current?.checkpoints.find(checkpoint=>checkpoint.id===current.lastCheckpointId)??current?.checkpoints.toSorted((a,b)=>Date.parse(b.savedAt)-Date.parse(a.savedAt))[0];
- const open=(target:'new'|'load'|'import')=>{importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
+ const open=(target:'new'|'load'|'import')=>{importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportText('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
  const canImport=Boolean(onPrepareImport&&onImport&&!archivesBlocked&&slot?.status==='empty'&&slot.revision===0);
+ const importAvailable=canImport&&!busy;
+ const [previousImportAvailable,setPreviousImportAvailable]=useState(importAvailable);
+ // A cancelled file read must not leave the picker disabled after unlocking.
+ // Existing protected previews remain visible but cannot be confirmed.
+ if(previousImportAvailable!==importAvailable){setPreviousImportAvailable(importAvailable);setImportReading(false);}
+ // Invalidate the external, uncancellable File.text() read at the same transition.
+ useLayoutEffect(()=>{importReadGeneration.current++;},[busy,canImport]);
+ const editImportText=(value:string)=>{
+  if(busy||!canImport)return;
+  importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportMessage(null);setImportText(value);
+ };
+ const prepareImportText=()=>{
+  if(busy||!canImport||!onPrepareImport)return;
+  importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);setImportFileName('');
+  if(!importText.trim()){setImportMessage('Collez le JSON exporté par le jeu. Aucun stockage modifié.');return;}
+  if(new TextEncoder().encode(importText).byteLength>CAMPAIGN_SLOT_IMPORT_MAX_BYTES){setImportMessage('Texte trop volumineux : maximum 1 Mio UTF-8. Aucun stockage modifié.');return;}
+  try{const result=onPrepareImport(selected,importText);setImportPreview(result.ok?result.preview:null);setImportMessage(result.message);}
+  catch{setImportMessage('Le texte JSON ne peut pas être préparé. Aucun stockage modifié.');}
+ };
  const readImport=async(input:HTMLInputElement)=>{
   const file=input.files?.[0];input.value='';const request=++importReadGeneration.current;
-  setImportPreview(null);setImportConfirmation(null);setImportMessage(null);setImportFileName(file?.name??'');
+  setImportPreview(null);setImportConfirmation(null);setImportMessage(null);setImportReading(false);setImportText('');setImportFileName(file?.name??'');
   if(!file||busy||!canImport||!onPrepareImport)return;
   if(file.size>CAMPAIGN_SLOT_IMPORT_MAX_BYTES){setImportMessage('Fichier trop volumineux : maximum 1 Mio. Aucun stockage modifié.');return;}
   const slotId=selected;setImportReading(true);
@@ -114,7 +134,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
     </aside>
    </div>:<section className={styles.manager} aria-labelledby="campaign-manager-title">
     <div className={styles.managerHeader}><div><p className={styles.eyebrow}>Archives du clan</p><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':view==='import'?'Importer une campagne':'Charger une partie'}</h2></div><button className={styles.backButton} type="button" disabled={busy} onClick={back}>Retour au menu · B</button></div>
-    <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}</small></button>)}</div>
+    <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{importReadGeneration.current++;setImportReading(false);setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
      <figure className={styles.prologuePreview}><img src="/game/prologue/v47/arena.png" alt="" decoding="async" /><figcaption><span>PROLOGUE</span><h3>La nurserie du clan</h3><p>Grandissez sur Yautja Prime : accueil Unblooded, dojo, camp, reconnaissance et patrouille du désert. La petite Fosse propose ensuite un duel de novices facultatif.</p></figcaption></figure>
      <form className={styles.creationPanel} onSubmit={event=>{event.preventDefault();if(busy||archivesBlocked)return;if(slot?.status==='empty')onCreate(slot.id,name.trim());else if(slot?.status==='ready'&&onReplace){confirmationTriggerRef.current=event.currentTarget.querySelector('button[type=submit]');setReplacement({slot,name:name.trim()});}}}>
@@ -129,9 +149,13 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      </form>
     </div>:view==='import'?<section className={styles.importPanel} aria-labelledby="campaign-import-title" data-campaign-import-panel>
      <p className={styles.eyebrow}>Partie {selected} · emplacement vide seulement</p><h3 id="campaign-import-title">Transférer une campagne existante</h3>
-     <p>Fichier JSON exporté par le jeu ou ancienne sauvegarde de campagne, maximum 1 Mio. Le propriétaire et l’histoire du fichier sont conservés. Aucune nouvelle nurserie, acquisition de vaisseau ou campagne active n’est créée.</p>
+     <p>Fichier ou texte JSON exporté par le jeu ou ancienne sauvegarde de campagne, maximum 1 Mio UTF-8. Le propriétaire et l’histoire sont conservés. Aucune nouvelle nurserie, acquisition de vaisseau ou campagne active n’est créée.</p>
      <label htmlFor="campaign-import-file">Fichier JSON de campagne</label><input id="campaign-import-file" type="file" accept=".json,application/json" disabled={busy||importReading||!canImport} onChange={event=>{void readImport(event.currentTarget);}} />
      {importFileName&&<p className={styles.inputHelp}>Fichier sélectionné : {importFileName}</p>}
+     <div className={styles.importText}><label htmlFor="campaign-import-text">Texte JSON de campagne</label><textarea id="campaign-import-text" rows={8} maxLength={CAMPAIGN_SLOT_IMPORT_MAX_BYTES} spellCheck={false} autoComplete="off" aria-describedby="campaign-import-text-help" disabled={busy||!canImport} value={importText} onChange={event=>editImportText(event.target.value)} />
+      <p id="campaign-import-text-help" className={styles.inputHelp}>Vous pouvez coller votre export depuis un autre appareil. Modifier le texte annule tout aperçu ou confirmation ; préparer ne modifie aucune sauvegarde.</p>
+      <button type="button" data-campaign-import-text-prepare disabled={busy||!canImport||!importText.trim()} onClick={prepareImportText}>Préparer le texte JSON</button>
+     </div>
      {(archivesBlocked||!canImport)&&<p className={styles.notice} role="status">Import indisponible : choisissez un emplacement vide et récupérez d’abord les archives protégées. Aucun slot occupé ou futur n’est remplacé.</p>}
      <p role="status" aria-live="polite">{importReading?'Lecture du fichier, sans écriture…':importMessage}</p>
      {importPreview&&<div className={styles.importSummary} data-campaign-import-preview>
