@@ -97,3 +97,62 @@ le treuil reste consigné ; après le second, la même section est consommée un
 fois et le compteur d'usure est remis à zéro. Les captures et traces restent
 dans `work-local/v90/qa`. Cet essai n'est pas une bataille ou une reprise
 historique humaine, et ne modifie pas les campagnes de production.
+
+## Complément : attente des archives et limites visuelles
+
+Le verrou d'archives attend désormais dans la file native du navigateur, avec
+annulation après cinq secondes si l'attribution n'arrive pas. Aucun verrou
+n'est volé, effacé ou remplacé par une imitation. Le délai cesse dès que le
+verrou est attribué, avant l'opération synchrone : une libération tardive ne
+transforme pas une écriture exécutée en faux refus. Les propriétaires et les
+préimages sont toujours revérifiés sous verrou. Douze nouveaux contrôles sont
+inclus dans les 145 tests ciblés archives, slots, transferts et compte réussis ; ces nombres
+ne doivent pas être additionnés.
+
+Dans le navigateur de contrôle, l'import collé puis la création d'une partie
+sur une origine locale distincte restent refusés avant toute écriture. Le
+callback reçoit une valeur falsy alors que la demande compilée emploie `signal`
+seul, sans `ifAvailable`. Le diagnostic ultérieur ne trouve aucun verrou
+d'archives actif ou en attente à cet instant. Cela ne prouve pas l'absence
+d'une concurrence antérieure et n'identifie pas la cause d'exécution. Les cinq
+emplacements demeurent vides. L'import et la création ne sont donc pas déclarés
+validés en navigateur ; aucun garde-fou n'est désactivé pour les faire passer.
+
+Un essai libre de The Pit a parcouru l'avertissement spoilers, le roster,
+la sélection de la Clairière des pièges, l'entrée du chasseur et le combat
+effectif. Les sprites natifs, le sol et le HUD ont été vus. Cette observation
+ne certifie pas les 187 stages, toutes les animations, ni leur fidélité 1:1.
+
+Le déploiement initial V90 `b528e28` est READY. Sa page publique répond en
+HTTP 200 avec V90 ; les onze PNG nommés dans le relevé privé correspondent
+octet pour octet aux originaux locaux. Ce relevé précède le complément de
+verrou et ne certifie ni l'ensemble des assets ni la campagne jouée publique.
+
+Le roster corrigé a été inspecté sur le build local à 320 et 375 pixels en
+portrait, 812 pixels en paysage court et 1280 pixels sur ordinateur. Dans les
+quatre cas, la largeur de défilement du document égale la largeur visible.
+Le libellé long « Jungle Hunter — Unmasked / 30th Anniversary · Visage découvert »
+reste dans son sélecteur ; les deux boutons de variante sont accessibles.
+Les quatorze tests ciblés sélection, portraits et icônes passent. Ce contrôle
+ne transforme pas les nombres du roster en preuve de fidélité ou d'animation.
+
+La route locale `/visual-qa-v90` monte le renderer natif uniquement pour
+inspecter sa composition, sans sauvegarde ni progression. Les vues de côte,
+grottes thermiques, Piliers et alluvions sud ont été vues. Pour les ancrages
+décoratifs, une position non admise reste annoncée : ils ne deviennent pas
+des points d'arrivée de joueur. Voir `local-visual-qa-v90.md` pour le gate
+privé, le statut HTTP vérifié séparément et les limites de ces captures.
+
+La texture des fondations V81 s'ancre désormais par face avec une seule rangée
+verticale native. Le contrôle des grottes thermiques a confirmé la disparition
+de la corniche basse détachée du bord du marché. Le PNG, les quadrilatères,
+la projection et les collisions restent inchangés ; les fortes pentes et les
+formations naturelles V85 ne sont pas déclarées corrigées par ce seul delta.
+Voir `homeworld-foundations-v90.md`.
+
+Après les derniers deltas fondations et proxy, la passe ciblée campagne,
+clans, Homeworld, sauvegardes et origine des sprites compte 216 réussites,
+aucun échec ni test ignoré. Les 145 tests d'archives et les 14 de sélection
+reçoivent leurs rapports séparés ; ces comptes ne constituent pas une nouvelle
+régression exhaustive. Le build Next webpack final compile et le refus QA
+local est réellement HTTP 404, tandis que le menu reste HTTP 200.
