@@ -135,11 +135,11 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 365, "V63 adds four PHG idles and four declared stances to357 V62 entries");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 347);
-  assert.equal(report.pageCount, 139);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 113);
-  assert.equal(report.distinctDrawings, 731);
+  assert.equal(report.readyPhaseClips, 375, "V91 adds eight native idles and two crouch entries to the365 existing phase clips");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 357);
+  assert.equal(report.pageCount, 149);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 123);
+  assert.equal(report.distinctDrawings, 751);
   assert.equal(report.appearances.length, 25);
   assert.equal(report.fighters.length, 18);
   const v63 = report.clips.filter(clip => clip.atlasId.endsWith('-v63'));
