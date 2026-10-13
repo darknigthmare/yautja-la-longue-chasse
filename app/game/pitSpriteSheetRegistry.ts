@@ -4,9 +4,17 @@ import nativeV63 from './data/pitUserAnimationsV63.json';
 import nativeV91 from './data/pitUserAnimationsV91.json';
 import nativeV92 from './data/pitUserAnimationsV92.json';
 import lifecycleV93 from './data/pitLifecycleAnimationsV93.json';
+import lifecycleWolfV94 from './data/pitLifecycleWolfV94.json';
+import lifecycleGreybackV94 from './data/pitLifecycleGreybackV94.json';
+import lifecycleCelticV94 from './data/pitLifecycleCelticV94.json';
+import lifecycleBerserkerV94 from './data/pitLifecycleBerserkerV94.json';
 
 /** V32/V33: reviewed, independently drawn facings; uncovered states retain an honest drawn-pose fallback. */
 export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefinition[] = [
+  ...(lifecycleBerserkerV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
+  ...(lifecycleCelticV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
+  ...(lifecycleWolfV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
+  ...(lifecycleGreybackV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(lifecycleV93 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(nativeV92 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(nativeV91 as unknown as readonly PitSpriteSheetAnimationDefinition[]),

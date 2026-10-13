@@ -1,0 +1,3017 @@
+[
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 353,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-idle-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-idle-v94",
+          "src": "/game/sprites/v94/pit/celtic/001-celtic-masked-idle-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                404
+              ],
+              "pivot": [
+                142.5,
+                402
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                404
+              ],
+              "pivot": [
+                125.5,
+                401
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                0,
+                404,
+                256,
+                366
+              ],
+              "pivot": [
+                143,
+                362
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                256,
+                404,
+                256,
+                366
+              ],
+              "pivot": [
+                126,
+                363
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                0,
+                770,
+                256,
+                381
+              ],
+              "pivot": [
+                141.5,
+                365
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                256,
+                770,
+                256,
+                381
+              ],
+              "pivot": [
+                124,
+                365
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                0,
+                1151,
+                256,
+                385
+              ],
+              "pivot": [
+                142,
+                349
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                256,
+                1151,
+                256,
+                385
+              ],
+              "pivot": [
+                125,
+                349
+              ],
+              "durationTicks": 15
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                404
+              ],
+              "pivot": [
+                128.5,
+                401
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                768,
+                0,
+                256,
+                404
+              ],
+              "pivot": [
+                112.5,
+                401
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                512,
+                404,
+                256,
+                366
+              ],
+              "pivot": [
+                128.5,
+                364
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                768,
+                404,
+                256,
+                366
+              ],
+              "pivot": [
+                112.5,
+                362
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                512,
+                770,
+                256,
+                381
+              ],
+              "pivot": [
+                130,
+                365
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                768,
+                770,
+                256,
+                381
+              ],
+              "pivot": [
+                113.5,
+                365
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                512,
+                1151,
+                256,
+                385
+              ],
+              "pivot": [
+                130,
+                350
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-idle-v94",
+              "rect": [
+                768,
+                1151,
+                256,
+                385
+              ],
+              "pivot": [
+                114,
+                349
+              ],
+              "durationTicks": 15
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          404
+        ],
+        "visibleRect": [
+          38,
+          50,
+          211,
+          353
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          404
+        ],
+        "visibleRect": [
+          280,
+          50,
+          205,
+          352
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          404
+        ],
+        "visibleRect": [
+          539,
+          50,
+          205,
+          352
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          768,
+          0,
+          256,
+          404
+        ],
+        "visibleRect": [
+          775,
+          50,
+          212,
+          352
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          0,
+          404,
+          256,
+          366
+        ],
+        "visibleRect": [
+          38,
+          418,
+          212,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          256,
+          404,
+          256,
+          366
+        ],
+        "visibleRect": [
+          280,
+          416,
+          204,
+          352
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          512,
+          404,
+          256,
+          366
+        ],
+        "visibleRect": [
+          539,
+          416,
+          203,
+          353
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          768,
+          404,
+          256,
+          366
+        ],
+        "visibleRect": [
+          776,
+          418,
+          211,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          0,
+          770,
+          256,
+          381
+        ],
+        "visibleRect": [
+          38,
+          786,
+          206,
+          350
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          256,
+          770,
+          256,
+          381
+        ],
+        "visibleRect": [
+          279,
+          786,
+          203,
+          350
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          512,
+          770,
+          256,
+          381
+        ],
+        "visibleRect": [
+          542,
+          787,
+          202,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          768,
+          770,
+          256,
+          381
+        ],
+        "visibleRect": [
+          779,
+          787,
+          207,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          0,
+          1151,
+          256,
+          385
+        ],
+        "visibleRect": [
+          38,
+          1154,
+          208,
+          347
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          256,
+          1151,
+          256,
+          385
+        ],
+        "visibleRect": [
+          281,
+          1153,
+          200,
+          348
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          512,
+          1151,
+          256,
+          385
+        ],
+        "visibleRect": [
+          542,
+          1153,
+          202,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-idle-v94",
+        "rect": [
+          768,
+          1151,
+          256,
+          385
+        ],
+        "visibleRect": [
+          780,
+          1153,
+          207,
+          348
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 358,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-dizzy-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-dizzy-v94",
+          "src": "/game/sprites/v94/pit/celtic/002-celtic-masked-dizzy-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                387
+              ],
+              "pivot": [
+                145.5,
+                382
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                387
+              ],
+              "pivot": [
+                136.5,
+                382
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                0,
+                387,
+                256,
+                379
+              ],
+              "pivot": [
+                140.5,
+                355
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                256,
+                387,
+                256,
+                379
+              ],
+              "pivot": [
+                136.5,
+                355
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                0,
+                766,
+                256,
+                377
+              ],
+              "pivot": [
+                150,
+                359
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                256,
+                766,
+                256,
+                377
+              ],
+              "pivot": [
+                138,
+                360
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                0,
+                1143,
+                256,
+                393
+              ],
+              "pivot": [
+                143,
+                358
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                256,
+                1143,
+                256,
+                393
+              ],
+              "pivot": [
+                135,
+                358
+              ],
+              "durationTicks": 15
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                387
+              ],
+              "pivot": [
+                126.5,
+                382
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                768,
+                0,
+                256,
+                387
+              ],
+              "pivot": [
+                111.5,
+                385
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                512,
+                387,
+                256,
+                379
+              ],
+              "pivot": [
+                136,
+                355
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                768,
+                387,
+                256,
+                379
+              ],
+              "pivot": [
+                116.5,
+                355
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                512,
+                766,
+                256,
+                377
+              ],
+              "pivot": [
+                129.5,
+                360
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                768,
+                766,
+                256,
+                377
+              ],
+              "pivot": [
+                111,
+                360
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                512,
+                1143,
+                256,
+                393
+              ],
+              "pivot": [
+                124.5,
+                358
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "celtic-masked-dizzy-v94",
+              "rect": [
+                768,
+                1143,
+                256,
+                393
+              ],
+              "pivot": [
+                113.5,
+                358
+              ],
+              "durationTicks": 15
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          387
+        ],
+        "visibleRect": [
+          50,
+          27,
+          189,
+          356
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          387
+        ],
+        "visibleRect": [
+          290,
+          26,
+          193,
+          357
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          387
+        ],
+        "visibleRect": [
+          552,
+          25,
+          183,
+          358
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          768,
+          0,
+          256,
+          387
+        ],
+        "visibleRect": [
+          789,
+          25,
+          184,
+          361
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          0,
+          387,
+          256,
+          379
+        ],
+        "visibleRect": [
+          41,
+          418,
+          198,
+          325
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          256,
+          387,
+          256,
+          379
+        ],
+        "visibleRect": [
+          294,
+          402,
+          191,
+          341
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          512,
+          387,
+          256,
+          379
+        ],
+        "visibleRect": [
+          546,
+          419,
+          192,
+          324
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          768,
+          387,
+          256,
+          379
+        ],
+        "visibleRect": [
+          787,
+          401,
+          193,
+          342
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          0,
+          766,
+          256,
+          377
+        ],
+        "visibleRect": [
+          49,
+          771,
+          203,
+          355
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          256,
+          766,
+          256,
+          377
+        ],
+        "visibleRect": [
+          299,
+          768,
+          189,
+          359
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          512,
+          766,
+          256,
+          377
+        ],
+        "visibleRect": [
+          549,
+          770,
+          188,
+          357
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          768,
+          766,
+          256,
+          377
+        ],
+        "visibleRect": [
+          783,
+          768,
+          195,
+          359
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          0,
+          1143,
+          256,
+          393
+        ],
+        "visibleRect": [
+          48,
+          1145,
+          190,
+          357
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          256,
+          1143,
+          256,
+          393
+        ],
+        "visibleRect": [
+          300,
+          1153,
+          182,
+          349
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          512,
+          1143,
+          256,
+          393
+        ],
+        "visibleRect": [
+          545,
+          1152,
+          189,
+          350
+        ]
+      },
+      {
+        "pageId": "celtic-masked-dizzy-v94",
+        "rect": [
+          768,
+          1143,
+          256,
+          393
+        ],
+        "visibleRect": [
+          792,
+          1153,
+          184,
+          349
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 429,
+    "pageBodyHeightPx": {
+      "celtic-masked-intro-a-v94": 429,
+      "celtic-masked-intro-b-v94": 411
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-intro-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-intro-a-v94",
+          "src": "/game/sprites/v94/pit/celtic/003-celtic-masked-intro-a-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "celtic-masked-intro-b-v94",
+          "src": "/game/sprites/v94/pit/celtic/004-celtic-masked-intro-b-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                512
+              ],
+              "pivot": [
+                143.5,
+                493
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                512
+              ],
+              "pivot": [
+                141,
+                493
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                0,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                144,
+                470
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                256,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                143,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                0,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                145.5,
+                435
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                256,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                136,
+                433
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                518
+              ],
+              "pivot": [
+                138.5,
+                516
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                518
+              ],
+              "pivot": [
+                126.5,
+                514
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                0,
+                518,
+                256,
+                506
+              ],
+              "pivot": [
+                136,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                256,
+                518,
+                256,
+                506
+              ],
+              "pivot": [
+                126,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                0,
+                1024,
+                266,
+                512
+              ],
+              "pivot": [
+                132.5,
+                413
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                266,
+                1024,
+                243,
+                512
+              ],
+              "pivot": [
+                112,
+                413
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                512
+              ],
+              "pivot": [
+                110.5,
+                491
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                768,
+                0,
+                256,
+                512
+              ],
+              "pivot": [
+                114.5,
+                492
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                512,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                127,
+                466
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                768,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                120,
+                468
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                512,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                121.5,
+                434
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-a-v94",
+              "rect": [
+                768,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                123,
+                434
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                518
+              ],
+              "pivot": [
+                128.5,
+                516
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                768,
+                0,
+                256,
+                518
+              ],
+              "pivot": [
+                116,
+                514
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                512,
+                518,
+                256,
+                506
+              ],
+              "pivot": [
+                129.5,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                768,
+                518,
+                256,
+                506
+              ],
+              "pivot": [
+                119,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                509,
+                1024,
+                249,
+                512
+              ],
+              "pivot": [
+                127,
+                413
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-intro-b-v94",
+              "rect": [
+                758,
+                1024,
+                266,
+                512
+              ],
+              "pivot": [
+                132,
+                413
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          512
+        ],
+        "visibleRect": [
+          56,
+          65,
+          176,
+          429
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          512
+        ],
+        "visibleRect": [
+          295,
+          69,
+          185,
+          425
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          512
+        ],
+        "visibleRect": [
+          540,
+          67,
+          172,
+          425
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          768,
+          0,
+          256,
+          512
+        ],
+        "visibleRect": [
+          791,
+          66,
+          185,
+          427
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          0,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          49,
+          566,
+          190,
+          417
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          256,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          303,
+          577,
+          193,
+          407
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          512,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          547,
+          571,
+          185,
+          408
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          768,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          791,
+          571,
+          193,
+          410
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          0,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          46,
+          1051,
+          201,
+          409
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          256,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          293,
+          1057,
+          199,
+          401
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          512,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          535,
+          1055,
+          199,
+          404
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-a-v94",
+        "rect": [
+          768,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          786,
+          1055,
+          210,
+          404
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          518
+        ],
+        "visibleRect": [
+          32,
+          106,
+          214,
+          411
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          518
+        ],
+        "visibleRect": [
+          275,
+          105,
+          215,
+          410
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          518
+        ],
+        "visibleRect": [
+          535,
+          104,
+          213,
+          413
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          768,
+          0,
+          256,
+          518
+        ],
+        "visibleRect": [
+          778,
+          105,
+          212,
+          410
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          0,
+          518,
+          256,
+          506
+        ],
+        "visibleRect": [
+          30,
+          593,
+          213,
+          397
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          256,
+          518,
+          256,
+          506
+        ],
+        "visibleRect": [
+          273,
+          594,
+          216,
+          396
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          512,
+          518,
+          256,
+          506
+        ],
+        "visibleRect": [
+          536,
+          593,
+          214,
+          397
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          768,
+          518,
+          256,
+          506
+        ],
+        "visibleRect": [
+          780,
+          592,
+          214,
+          398
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          0,
+          1024,
+          266,
+          512
+        ],
+        "visibleRect": [
+          23,
+          1080,
+          242,
+          358
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          266,
+          1024,
+          243,
+          512
+        ],
+        "visibleRect": [
+          270,
+          1075,
+          226,
+          363
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          509,
+          1024,
+          249,
+          512
+        ],
+        "visibleRect": [
+          511,
+          1075,
+          236,
+          363
+        ]
+      },
+      {
+        "pageId": "celtic-masked-intro-b-v94",
+        "rect": [
+          758,
+          1024,
+          266,
+          512
+        ],
+        "visibleRect": [
+          760,
+          1075,
+          243,
+          363
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 432,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-victory-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-victory-a-v94",
+          "src": "/game/sprites/v94/pit/celtic/005-celtic-masked-victory-a-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                523
+              ],
+              "pivot": [
+                129,
+                521
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                523
+              ],
+              "pivot": [
+                125,
+                521
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                0,
+                523,
+                256,
+                501
+              ],
+              "pivot": [
+                131,
+                492
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                256,
+                523,
+                256,
+                501
+              ],
+              "pivot": [
+                126,
+                492
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                0,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                140,
+                469
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                256,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                129.5,
+                467
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                523
+              ],
+              "pivot": [
+                135,
+                521
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                512,
+                523,
+                256,
+                501
+              ],
+              "pivot": [
+                131,
+                491
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                768,
+                523,
+                256,
+                501
+              ],
+              "pivot": [
+                126.5,
+                493
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                512,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                124.5,
+                467
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "celtic-masked-victory-a-v94",
+              "rect": [
+                768,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                117.5,
+                469
+              ],
+              "durationTicks": 24
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          523
+        ],
+        "visibleRect": [
+          16,
+          96,
+          227,
+          426
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          523
+        ],
+        "visibleRect": [
+          272,
+          84,
+          222,
+          438
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          523
+        ],
+        "visibleRect": [
+          537,
+          90,
+          218,
+          432
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          0,
+          523,
+          256,
+          501
+        ],
+        "visibleRect": [
+          24,
+          562,
+          214,
+          454
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          256,
+          523,
+          256,
+          501
+        ],
+        "visibleRect": [
+          281,
+          559,
+          203,
+          457
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          512,
+          523,
+          256,
+          501
+        ],
+        "visibleRect": [
+          543,
+          560,
+          201,
+          455
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          768,
+          523,
+          256,
+          501
+        ],
+        "visibleRect": [
+          790,
+          561,
+          209,
+          456
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          0,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          41,
+          1044,
+          197,
+          450
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          256,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          290,
+          1041,
+          190,
+          451
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          512,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          540,
+          1042,
+          194,
+          450
+        ]
+      },
+      {
+        "pageId": "celtic-masked-victory-a-v94",
+        "rect": [
+          768,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          790,
+          1041,
+          192,
+          453
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 449,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-defeat-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-defeat-b-v94",
+          "src": "/game/sprites/v94/pit/celtic/008-celtic-masked-defeat-b-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                0,
+                0,
+                256,
+                534
+              ],
+              "pivot": [
+                139,
+                532
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                256,
+                0,
+                256,
+                534
+              ],
+              "pivot": [
+                125,
+                526
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                0,
+                534,
+                256,
+                490
+              ],
+              "pivot": [
+                136.5,
+                487
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                256,
+                534,
+                256,
+                490
+              ],
+              "pivot": [
+                127,
+                487
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                0,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                137.5,
+                429
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                256,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                128,
+                431
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                512,
+                0,
+                256,
+                534
+              ],
+              "pivot": [
+                129.5,
+                531
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                512,
+                534,
+                256,
+                490
+              ],
+              "pivot": [
+                131,
+                487
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "celtic-masked-defeat-b-v94",
+              "rect": [
+                512,
+                1024,
+                256,
+                512
+              ],
+              "pivot": [
+                131,
+                429
+              ],
+              "durationTicks": 40
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          0,
+          0,
+          256,
+          534
+        ],
+        "visibleRect": [
+          46,
+          84,
+          191,
+          449
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          256,
+          0,
+          256,
+          534
+        ],
+        "visibleRect": [
+          273,
+          146,
+          221,
+          381
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          512,
+          0,
+          256,
+          534
+        ],
+        "visibleRect": [
+          546,
+          76,
+          190,
+          456
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          0,
+          534,
+          256,
+          490
+        ],
+        "visibleRect": [
+          27,
+          662,
+          220,
+          360
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          256,
+          534,
+          256,
+          490
+        ],
+        "visibleRect": [
+          278,
+          699,
+          211,
+          323
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          512,
+          534,
+          256,
+          490
+        ],
+        "visibleRect": [
+          531,
+          650,
+          221,
+          372
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          0,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          27,
+          1146,
+          222,
+          308
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          256,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          280,
+          1172,
+          211,
+          284
+        ]
+      },
+      {
+        "pageId": "celtic-masked-defeat-b-v94",
+        "rect": [
+          512,
+          1024,
+          256,
+          512
+        ],
+        "visibleRect": [
+          532,
+          1144,
+          223,
+          310
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 401,
+    "pageBodyHeightPx": {
+      "celtic-masked-taunt-a-v94": 401,
+      "celtic-masked-taunt-b-v94": 393
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-taunt-v94",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-taunt-a-v94",
+          "src": "/game/sprites/v94/pit/celtic/009-celtic-masked-taunt-a-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "celtic-masked-taunt-b-v94",
+          "src": "/game/sprites/v94/pit/celtic/010-celtic-masked-taunt-b-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                0,
+                0,
+                254,
+                512
+              ],
+              "pivot": [
+                127.5,
+                495
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                254,
+                0,
+                258,
+                512
+              ],
+              "pivot": [
+                120,
+                495
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                0,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                128,
+                477
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                256,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                119,
+                477
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                0,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                127,
+                463
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                256,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                123.5,
+                463
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                0,
+                1024,
+                254,
+                512
+              ],
+              "pivot": [
+                123.5,
+                425
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                254,
+                1024,
+                258,
+                512
+              ],
+              "pivot": [
+                124.5,
+                425
+              ],
+              "durationTicks": 11
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                512,
+                0,
+                257,
+                512
+              ],
+              "pivot": [
+                137.5,
+                495
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                769,
+                0,
+                255,
+                512
+              ],
+              "pivot": [
+                126.5,
+                496
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                512,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                137,
+                477
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-a-v94",
+              "rect": [
+                768,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                128.5,
+                477
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                512,
+                0,
+                258,
+                512
+              ],
+              "pivot": [
+                136,
+                499
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                770,
+                0,
+                254,
+                512
+              ],
+              "pivot": [
+                129,
+                498
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                512,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                134,
+                463
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                768,
+                512,
+                256,
+                512
+              ],
+              "pivot": [
+                131,
+                463
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "celtic-masked-taunt-b-v94",
+              "rect": [
+                512,
+                1024,
+                258,
+                512
+              ],
+              "pivot": [
+                138.5,
+                425
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          0,
+          0,
+          254,
+          512
+        ],
+        "visibleRect": [
+          12,
+          95,
+          236,
+          401
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          254,
+          0,
+          258,
+          512
+        ],
+        "visibleRect": [
+          256,
+          78,
+          240,
+          418
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          512,
+          0,
+          257,
+          512
+        ],
+        "visibleRect": [
+          529,
+          80,
+          239,
+          416
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          769,
+          0,
+          255,
+          512
+        ],
+        "visibleRect": [
+          776,
+          82,
+          235,
+          415
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          0,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          12,
+          579,
+          242,
+          411
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          256,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          258,
+          573,
+          232,
+          417
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          512,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          531,
+          571,
+          233,
+          419
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-a-v94",
+        "rect": [
+          768,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          774,
+          576,
+          239,
+          414
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          512,
+          0,
+          258,
+          512
+        ],
+        "visibleRect": [
+          527,
+          108,
+          242,
+          392
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          770,
+          0,
+          254,
+          512
+        ],
+        "visibleRect": [
+          783,
+          109,
+          237,
+          390
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          0,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          8,
+          581,
+          239,
+          395
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          256,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          264,
+          582,
+          231,
+          394
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          512,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          529,
+          582,
+          237,
+          394
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          768,
+          512,
+          256,
+          512
+        ],
+        "visibleRect": [
+          782,
+          582,
+          236,
+          394
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          0,
+          1024,
+          254,
+          512
+        ],
+        "visibleRect": [
+          7,
+          1064,
+          234,
+          386
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          254,
+          1024,
+          258,
+          512
+        ],
+        "visibleRect": [
+          256,
+          1066,
+          245,
+          384
+        ]
+      },
+      {
+        "pageId": "celtic-masked-taunt-b-v94",
+        "rect": [
+          512,
+          1024,
+          258,
+          512
+        ],
+        "visibleRect": [
+          532,
+          1065,
+          237,
+          385
+        ]
+      }
+    ]
+  }
+]

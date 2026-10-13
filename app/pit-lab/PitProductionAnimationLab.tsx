@@ -19,6 +19,7 @@ export default function PitProductionAnimationLab(){
  const[fighterId,setFighterId]=useState<PitFighterId>('jungle-hunter'),[atlasId,setAtlasId]=useState(''),[clipId,setClipId]=useState('idle'),[facing,setFacing]=useState<'right'|'left'>('right'),[index,setIndex]=useState(0),[playing,setPlaying]=useState(false),[showLegacy,setShowLegacy]=useState(false),[speed,setSpeed]=useState(.5),[message,setMessage]=useState('');
  const[variantId,setVariantId]=useState<string|null>(null);
  const[showLifecycle,setShowLifecycle]=useState(false),[planModule,setPlanModule]=useState<typeof import('../game/systems/pitPresentationPlansV93')|null>(null);
+ const[directionModule,setDirectionModule]=useState<typeof import('../game/systems/pitTribalDirectionV94')|null>(null);
  const[loaded,setLoaded]=useState<{key:string;bank:PitSpriteSheetAnimationBank}|null>(null);
  const selectedVariant=useMemo(()=>getPitLabSelectedVariant(fighterId,variantId),[fighterId,variantId]),appearances=getPitLabAppearances(fighterId);
  const moveset=getPitAuthoredMovesetV92(fighterId,selectedVariant);
@@ -42,7 +43,9 @@ export default function PitProductionAnimationLab(){
  useEffect(()=>{const canvas=canvasRef.current,ctx=canvas?.getContext('2d');if(!canvas||!ctx)return;ctx.clearRect(0,0,960,540);ctx.fillStyle='#0d1818';ctx.fillRect(0,0,960,540);ctx.strokeStyle='#64845d';ctx.beginPath();ctx.moveTo(60,465);ctx.lineTo(900,465);ctx.stroke();if(status==='ready'&&bank&&sample){ctx.save();ctx.translate(480,465);ctx.scale(2.5,2.5);ctx.translate(-480,-465);if(!drawPitSpriteSheetAnimation(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat,presentation}))drawPitSpriteSheetHold(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat});ctx.restore();}else{ctx.fillStyle='#dce8df';ctx.textAlign='center';ctx.font='22px system-ui';ctx.fillText(status==='loading'?'Chargement et vérification des pixels…':status==='missing-atlas'?'Aucun atlas de combat validé':status==='missing-clip'?'Orientation manquante — aucun miroir':'Clip indisponible : chargement ou pixels invalides',480,270);}},[bank,sample,status,presentation]);
  const reset=()=>{setPlaying(false);setIndex(0);setMessage('');};
  const lifecyclePlans=planModule?lifecycleCategories.map(([category])=>planModule.getPitPresentationPlanV93(fighterId,category,selectedVariant)):[];
+ const tribalDirections=directionModule?lifecycleCategories.map(([category])=>directionModule.getPitTribalDirectionV94(fighterId,category,selectedVariant)):[];
  useEffect(()=>{if(!showLifecycle||planModule)return;let current=true;void import('../game/systems/pitPresentationPlansV93').then(module=>{if(current)setPlanModule(module);}).catch(()=>{if(current)setMessage('Le dossier de référence n’a pas pu être chargé. Les sprites et leurs contrôles restent disponibles.');});return()=>{current=false;};},[showLifecycle,planModule]);
+ useEffect(()=>{if(!showLifecycle||directionModule)return;let current=true;void import('../game/systems/pitTribalDirectionV94').then(module=>{if(current)setDirectionModule(module);}).catch(()=>{if(current)setMessage('La direction des gestes reste indisponible ; les contrôles des dessins restent accessibles.');});return()=>{current=false;};},[showLifecycle,directionModule]);
  const exportAtlas=()=>{if(!definition)return;try{const payload={schemaVersion:1,kind:'pit-reviewed-atlas-metadata',coverage,definition},url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='the-pit-'+fighterId+'-atlas.json';document.body.appendChild(a);a.click();a.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('Métadonnées exportées ; aucun état de sauvegarde modifié.');}catch{setMessage('Export impossible dans ce navigateur.');}};
  return <main className={styles.root} data-pit-production-lab data-fighter={fighterId} data-variant={selectedVariant??'default'} data-clip={selectedId??''} data-facing={facing} data-render-status={status} data-frame-index={ceremony?.frame.frameIndex??resolved?.resolved.frame.frameIndex??held?.frame.frameIndex??''} data-held-stance={Boolean(held)} data-lifecycle-preview={presentation?.phase??'gameplay'} data-frame-duration-ticks={clip?getPitLabFrameTicks(fighterId,clip,currentIndex,selectedVariant):''}>
   <header className={styles.header}><div><p className={styles.eyebrow}>THE PIT · REGISTRE DE COMBAT RÉEL</p><h1>Atelier d’animation</h1><p>{PIT_LAB_FIGHTER_IDS.length} combattants sélectionnables. Les dessins et leurs orientations sont lus dans le registre utilisé par les combats.</p></div><Link href="/" className={styles.back}>Retour au jeu</Link></header>
@@ -54,14 +57,23 @@ export default function PitProductionAnimationLab(){
     const target=definitions.find(candidate=>candidate.atlas.clips.some(native=>native.id===clipId&&native.facing===facing&&native.status==='validated'));
     const native=target?.atlas.clips.find(candidate=>candidate.id===clipId&&candidate.facing===facing);
     const coverage=lifecyclePlans.find(plan=>plan?.category.id===category)?.facings.find(candidate=>candidate.facing===facing);
+    const reviewed=directionModule?.getPitLifecycleReviewV94(fighterId,selectedVariant,clipId,facing);
     const drawings=native?new Set(native.frames.map(frame=>frame.pageId+':'+frame.rect.join(','))).size:0;
-    return <button key={category} type="button" disabled={!target} data-lifecycle-category={category} data-lifecycle-state={coverage?.status??(target?'registered-pending-detailed-review':'missing')}
+    return <button key={category} type="button" disabled={!target} data-lifecycle-category={category} data-lifecycle-state={reviewed?.status??coverage?.status??(target?'registered-pending-detailed-review':'missing')}
      onClick={()=>{reset();setAtlasId(target!.atlas.id);setClipId(clipId);}}>
-     {label} · {!target?'à produire':`${drawings} dessins déclarés`}
+     {label} · {!target?'à produire':reviewed?`${reviewed.distinctDrawings} dessins mesurés · ${reviewed.nativeCountTargetReached?'cible de dessins atteinte':'séquence partielle'}`:`${drawings} dessins déclarés`}
     </button>;
    })}</div>
    <details onToggle={event=>setShowLifecycle(event.currentTarget.open)}><summary>Direction du personnage et limites des références</summary>{!planModule?<p>Chargement du dossier de production…</p>:null}<p>{lifecyclePlans[0]?.entry.identityNote}</p>
-    <ul>{lifecyclePlans.filter(plan=>plan!==null).map(plan=><li key={plan.category.id}><strong>{plan.category.label}</strong> : {plan.plan.direction}</li>)}</ul>
+    <ul>{lifecyclePlans.filter(plan=>plan!==null).map(plan=>{
+     const direction=tribalDirections.find(item=>item?.category===plan.category.id);
+     return <li key={plan.category.id}><strong>{plan.category.label}</strong> : {direction?.direction??plan.plan.direction}
+      {direction?<details data-pit-tribal-direction-v94={plan.category.id}><summary>{direction.keyPoses.length} poses cibles par orientation · {direction.durationTicks} ticks · adaptation pour le jeu</summary>
+       <ol>{direction.keyPoses.map((pose,index)=><li key={index}>{pose} · {direction.frameDurations[index]} ticks</li>)}</ol>
+       <p>{direction.species==='unverified'?'Attribution à vérifier : aucune biologie ou cérémonie Yautja ajoutée.':direction.species==='human'?'Anatomie humaine conservée.':direction.species==='non-yautja'?'Ne pas attribuer les rites Yautja à cet adversaire.':'Attitude de chasse adaptée ; aucun geste canonique certifié.'}</p>
+      </details>:null}</li>;
+    })}</ul>
+    {directionModule?<ul>{directionModule.PIT_TRIBAL_RULES_V94.map(rule=><li key={rule}>{rule}</li>)}</ul>:null}
     <p>Les silhouettes, l’équipement et les gestes doivent être revus séparément. Un compte de cellules ne prouve pas une animation fluide ou une anatomie correcte.</p>
    </details>
   </section>

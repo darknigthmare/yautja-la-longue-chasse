@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "dataPath": "app/game/data/pitLifecycleCelticV94.json",
+  "dataSha256": "f000e99af2f9783073adc542150220b3d83e3625cc2161368c632a32d12004db",
+  "admissionSha256": "3bdcef9c878c8bb9f7b0f43256818c419759fa46fce35d5a6d899ee265732b81",
+  "originalPages": 10,
+  "admittedPages": 8,
+  "admittedDrawings": 93,
+  "admittedClips": 12,
+  "targetDrawings": 128,
+  "excludedDrawings": 35,
+  "tests": {
+    "command": "node --test tests/pit-celtic-lifecycle-v94.test.mjs",
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "logPath": "art-source/v94/pit/celtic/targeted-test.log",
+    "logSha256": "f4a5964f11d2b4e4d2cc7e6a5fd717dbf410a4b0e1f0c1816912c29102c6f8c5",
+    "testSha256": "ff46ca9fa0d490175a27a16f030ce21b49271f1eb6166ca559603deb145e89d3",
+    "runner": "esbuild ACL escalation after preserved sandbox failure",
+    "scope": "actual RGBA decode plus production resolver and draw; deterministic headless, not browser"
+  },
+  "lint": {
+    "command": "node node_modules/eslint/bin/eslint.js tests/pit-celtic-lifecycle-v94.test.mjs",
+    "exitCode": 0
+  },
+  "registryIntegrationVerified": false,
+  "browserGameplayVerified": false,
+  "productionVerified": false,
+  "canonicalFidelityCertified": false,
+  "pixelTransformation": "none-byte-identical-copy",
+  "publicChecks": [
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/001-celtic-masked-idle-v94.png",
+      "sha256": "dc90ec17e6b6ad41229b7d26a00725eba1a52cfb7ac604bc6c2bec659e13b7f5",
+      "bytes": 2912389
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/002-celtic-masked-dizzy-v94.png",
+      "sha256": "3d8be0a071a4a6dfb79061a0b50222cf6e01641944ed02e5adc06826f8950a80",
+      "bytes": 2830077
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/003-celtic-masked-intro-a-v94.png",
+      "sha256": "f41d4d87ee121609a467a71eaccaf9cb270f654e5497b32bf0fa5bdef33782a2",
+      "bytes": 2602043
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/004-celtic-masked-intro-b-v94.png",
+      "sha256": "a3ca172bf22395b5974c5407275405b183ee12787edb08bd4199cb98961d0bf4",
+      "bytes": 2648767
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/005-celtic-masked-victory-a-v94.png",
+      "sha256": "cd23945f05997113e6e26dfd38198ea7adde2fe1fd1b3665a005d3e427f67223",
+      "bytes": 2801577
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/008-celtic-masked-defeat-b-v94.png",
+      "sha256": "9868800f96e5bf23441350f599d1b9ee919f661a5714d25ab5d634c2a597d832",
+      "bytes": 2592957
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/009-celtic-masked-taunt-a-v94.png",
+      "sha256": "ab46d8b16292829cb6b7d53a8a9388d37018d96a6ddeb71a44cdea3e43a9e0df",
+      "bytes": 2726538
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v94/pit/celtic/010-celtic-masked-taunt-b-v94.png",
+      "sha256": "698b4230c337d0f049a91d50c809bfb83ed2321f7050d1c4edce9b1f7f410d4a",
+      "bytes": 2631689
+    }
+  ]
+}
