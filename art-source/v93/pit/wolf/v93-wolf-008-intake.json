@@ -1,0 +1,188 @@
+{
+  "id": "v93-wolf-008",
+  "family": "intro-edit",
+  "fighterId": "wolf",
+  "variantId": "wolf-avec-casque-4261aca172",
+  "fileName": "v93-wolf-008-wolf-masked-intro-edit.png",
+  "path": "art-source/v93/pit/wolf/v93-wolf-008-wolf-masked-intro-edit.png",
+  "originalToolPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-0a4b61df-5d6c-4ca2-bee2-e42e05d92185.png",
+  "tool": "builtin-image_gen",
+  "intent": "native-image-edit",
+  "transform": "none-byte-identical-copy",
+  "sha256": "e2e9fc99e8ff8ca4e27c5cf51095ed65821e83ba1960ef976e35d723c76bbe7d",
+  "bytes": 2338508,
+  "width": 1024,
+  "height": 1536,
+  "hasNativeAlpha": true,
+  "alpha": {
+    "zero": 5,
+    "soft": 1572859,
+    "opaque": 0,
+    "edgeMax": 12,
+    "zeroFraction": 0.0000031789143880208335
+  },
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 209707,
+      "borderAlphaMax": 126
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 212752,
+      "borderAlphaMax": 59
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 207856,
+      "borderAlphaMax": 155
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 215363,
+      "borderAlphaMax": 114
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 211337,
+      "borderAlphaMax": 153
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "localBounds": [
+        0,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 214837,
+      "borderAlphaMax": 130
+    }
+  ],
+  "prompt": "Use case: identity-preserve. EDIT the provided transparent six-figure atlas. It is the exact approved masked Wolf appearance and provides the layout. KEEP its same1024x1536canvas, strict2columns×3rows, six SMALL figures and every existing clear transparent gutter; do not enlarge a figure or move any foot closer to a cell border. Left column3poses faceRIGHT, right column3poses faceLEFT. KEEP the biomask design, all armor, dreadlocks and rings, SAME pistol visibly held in SAME hand at hip, wrist blades on SAME other arm, forward shoulder cannon, spear, apron and waist devices. No extra gauntlet, lost pistol, swapped hand, added gun, mask removal, new costume, background, frame, label or effect. Preserve nativeRGBA transparency. Change only the head/neck/upper torso posture to change the lifecycle animation described below. Keep both arms, hands, gun and blade ownership locked to input. Every row needs a clearly different drawing, but all feet and the measured body SCALE remain as in the input. Do not repaint layout or stretch a pose. No mirror transforms.\nREPLACE the previous challenging taunt with a THREE-phase INTRO: row1 head turns a little away from opponent as if finishing surveying arrival; row2 head returns toward opponent and briefly dips in acknowledgement, shoulders relax; row3 head points straight at opponent, upper chest settles into poised readiness with slight confident forward lean. NONE of these gestures is a triumphant chin-high taunt. The arms stay low in all6figures exactly as input, pistol remains clearly visible; never check wrist by raising arm.\n",
+  "referencePaths": [
+    "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png"
+  ],
+  "reviewStatus": "pending-human-and-pixel-review",
+  "canonicalFidelityCertified": false,
+  "references": [
+    {
+      "path": "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+      "sha256": "0bdf5e0909c467b3d5387340b77ff4b5b912e86274aeb90203d7221c08012c71"
+    }
+  ]
+}

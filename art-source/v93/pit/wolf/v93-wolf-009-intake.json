@@ -1,0 +1,188 @@
+{
+  "id": "v93-wolf-009",
+  "family": "victory-edit",
+  "fighterId": "wolf",
+  "variantId": "wolf-avec-casque-4261aca172",
+  "fileName": "v93-wolf-009-wolf-masked-victory-edit.png",
+  "path": "art-source/v93/pit/wolf/v93-wolf-009-wolf-masked-victory-edit.png",
+  "originalToolPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-a95fcf06-9937-4f0e-8799-a29b5e3a6a0a.png",
+  "tool": "builtin-image_gen",
+  "intent": "native-image-edit",
+  "transform": "none-byte-identical-copy",
+  "sha256": "6f249e37e5d847818d715b5a1cbaebb0d06e02756aaa5a153e2b1e4ce1f44060",
+  "bytes": 2300110,
+  "width": 1024,
+  "height": 1536,
+  "hasNativeAlpha": true,
+  "alpha": {
+    "zero": 34455,
+    "soft": 1538409,
+    "opaque": 0,
+    "edgeMax": 6,
+    "zeroFraction": 0.021905899047851562
+  },
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        95,
+        0,
+        391,
+        512
+      ],
+      "localBounds": [
+        95,
+        0,
+        485,
+        511
+      ],
+      "visiblePixels": 168390,
+      "borderAlphaMax": 56
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        543,
+        0,
+        481,
+        512
+      ],
+      "localBounds": [
+        31,
+        0,
+        511,
+        511
+      ],
+      "visiblePixels": 174456,
+      "borderAlphaMax": 42
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        79,
+        512,
+        417,
+        512
+      ],
+      "localBounds": [
+        79,
+        0,
+        495,
+        511
+      ],
+      "visiblePixels": 178790,
+      "borderAlphaMax": 73
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        521,
+        512,
+        435,
+        512
+      ],
+      "localBounds": [
+        9,
+        0,
+        443,
+        511
+      ],
+      "visiblePixels": 180761,
+      "borderAlphaMax": 153
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        81,
+        1024,
+        429,
+        512
+      ],
+      "localBounds": [
+        81,
+        0,
+        509,
+        511
+      ],
+      "visiblePixels": 168258,
+      "borderAlphaMax": 89
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        543,
+        1024,
+        473,
+        512
+      ],
+      "localBounds": [
+        31,
+        0,
+        503,
+        511
+      ],
+      "visiblePixels": 172661,
+      "borderAlphaMax": 159
+    }
+  ],
+  "prompt": "Use case: identity-preserve. EDIT the provided transparent six-figure atlas. It is the exact approved masked Wolf appearance and provides the layout. KEEP its same1024x1536canvas, strict2columns×3rows, six SMALL figures and every existing clear transparent gutter; do not enlarge a figure or move any foot closer to a cell border. Left column3poses faceRIGHT, right column3poses faceLEFT. KEEP the biomask design, all armor, dreadlocks and rings, SAME pistol visibly held in SAME hand at hip, wrist blades on SAME other arm, forward shoulder cannon, spear, apron and waist devices. No extra gauntlet, lost pistol, swapped hand, added gun, mask removal, new costume, background, frame, label or effect. Preserve nativeRGBA transparency. Change only the head/neck/upper torso posture to change the lifecycle animation described below. Keep both arms, hands, gun and blade ownership locked to input. Every row needs a clearly different drawing, but all feet and the measured body SCALE remain as in the input. Do not repaint layout or stretch a pose. No mirror transforms.\nREPLACE the previous challenging taunt with a THREE-phase VICTORY: row1 straighten upper chest and shoulders confidently; row2 lift the mask/chin visibly in a triumphant upward nod, upper chest proudly expands; row3 keep proud straight shoulders and lift chin toward opponent, restrained victory posture. All3steps must look confident rather than dizzy or defeated. The existing low-arm pose remains unchanged in ALL6figures: no fist lift, no salute, no hand or pistol change. Native shoulder cannon still points toward opponent. No opponent, trophy or gore.\n",
+  "referencePaths": [
+    "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png"
+  ],
+  "reviewStatus": "pending-human-and-pixel-review",
+  "canonicalFidelityCertified": false,
+  "references": [
+    {
+      "path": "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+      "sha256": "0bdf5e0909c467b3d5387340b77ff4b5b912e86274aeb90203d7221c08012c71"
+    }
+  ]
+}
