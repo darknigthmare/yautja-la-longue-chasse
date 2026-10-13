@@ -20,6 +20,7 @@ import { compactControlKeyLabel } from "./controlBindingLabels";
 import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { pitMoveLabelV91 } from './systems/pitFidelityV91';
+import { getPitAuthoredMovesetV92 } from './systems/pitAuthoredMovesetsV92';
 import PitFidelityNoticeV91 from './PitFidelityNoticeV91';
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
@@ -37,6 +38,8 @@ import {
   PIT_ARENA_IDS,
   PIT_CLOAK_COST,
   PIT_FIGHTERS,
+  getPitCombatFighterDefinition,
+  getPitCurrentFighterDefinition,
   PIT_MAX_TRAQUE,
   PIT_TICK_RATE,
   PIT_STATE_VERSION,
@@ -115,6 +118,7 @@ import {
 } from "./systems/pitFirstEdition";
 import {
   createPitReplayReader,
+  createPitReplayCombatState,
   stepPitReplayCombat,
   createPitReplayRecorder,
   normalizePitReplay,
@@ -415,6 +419,11 @@ function cpuInput(state: PitCombatState): PitInput {
   const signedDistance = opponent.x - cpu.x;
   const distance = Math.abs(signedDistance);
   const beat = state.frame % 180;
+  const cpuDefinition = getPitCombatFighterDefinition(cpu);
+  // Long contact equipment can contest neutral before entering fist range.
+  // This decision sees actor positions, not the human's pending input.
+  if (cpu.movesetId && distance > 116 && distance < cpuDefinition.attacks.medium.range + 20 &&
+    state.frame % 43 === 0) return { attack: 'medium' };
 
   if (
     PIT_FIGHTERS[cpu.definitionId].canCloak !== false && cpu.traque >= PIT_CLOAK_COST &&
@@ -457,6 +466,8 @@ function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion:
   if (event.type === "attack-start") {
     if (engineVersion <= 6 && event.fighterId === 'tracker' && event.attack === 'technique') return 'CONTRE AU GANTELET · REPLAY HISTORIQUE';
     if (engineVersion <= 8 && event.fighterId === 'feral-hunter' && event.attack === 'technique') return 'PIÈGE À CARREAUX · REPLAY HISTORIQUE';
+    const owner = state.fighters.find(fighter => fighter.definitionId === event.fighterId);
+    if (owner?.movesetId) return getPitCombatFighterDefinition(owner).attacks[event.attack].label.toUpperCase();
     return (
       event.attack === "technique"
         ? pitMoveLabelV91(event.fighterId, 'technique', PIT_FIGHTERS[event.fighterId].attacks.technique.label)
@@ -520,7 +531,15 @@ function drawTechniqueEffect(
   if (effect.phase === "arming") context.setLineDash([5, 5]);
   if (effect.phase === "returning") context.setLineDash([10, 4]);
 
-  if (technique.device === "net" || technique.device === "bow-snare") {
+  if (state.fighters[effect.ownerSlot].movesetId && technique.motion === 'attached') {
+    // Readable contact feedback only: no synthetic weapon or magical projectile.
+    context.shadowBlur = 0;
+    context.globalAlpha *= .5;
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.stroke();
+  } else if (technique.device === "net" || technique.device === "bow-snare") {
     context.strokeRect(x, y, box.width, box.height);
     for (let offset = 8; offset < box.width; offset += 10) {
       context.beginPath();
@@ -735,7 +754,7 @@ function drawArena(
   canvas.dataset.pitFinisherChoice = String(finisher?.choice ?? '');
   canvas.dataset.pitFinisherNativeAnimation = 'false';
   (finisherDrawn ? [] : state.fighters).forEach((fighter) => {
-    const definition = PIT_FIGHTERS[fighter.definitionId];
+    const definition = getPitCombatFighterDefinition(fighter);
     const fighterPalette =
       fighter.slot === 0 && leftCosmeticPalette ? leftCosmeticPalette : definition.palette;
     const boxes = getPitFighterBoxes(fighter);
@@ -958,10 +977,11 @@ export function FighterCard({
   side: "GAUCHE" | "DROITE";
   paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
 }) {
-  const fighter = PIT_FIGHTERS[fighterId];
+  const fighter = getPitCurrentFighterDefinition(fighterId, variantId);
   const profile = getPitFighterProfile(fighterId);
   const palette = paletteOverride ?? fighter.palette;
   const userVariant = getPitUserVariant(fighterId, normalizePitUserVariant(fighterId, variantId));
+  const moveset = getPitAuthoredMovesetV92(fighterId, userVariant?.id);
   const authoredPortrait = isPitExpansionFighterId(fighterId) && !userVariant;
   const keyArt = userVariant ? null : getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
   const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId, variantId);
@@ -1009,7 +1029,7 @@ export function FighterCard({
       <h3>{fighter.name}</h3>
       {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : userVariant.sourceArchive.startsWith('OpenAI') ? 'illustration OpenAI référencée · pose fixe' : 'image fournie · pose fixe'}</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
-      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</small>
+      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</small>
       {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
       {fighterId === 'falconer' && <small className={styles.fighterArtNotice}>Un drone mécanique · reconnaissance sans dégâts · une seconde commande rappelle le même appareil. Deux vues natives fixes : déplacement du capteur, sans cycle de battement inventé.</small>}
       <dl>
@@ -1020,13 +1040,23 @@ export function FighterCard({
       <details key={fighterId} className={styles.fighterProfile} data-pit-fighter-profile>
         <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du combattant</summary>
         <p className={styles.fighterSource}>{profile.sourceWork}</p>
-        <p>{profile.arcadeIntro}</p>
+        <p>{moveset ? moveset.sourceScope + ' ' + moveset.limitation : profile.arcadeIntro}</p>
         {!unavailableTechnique && <p>
-          <strong>{pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</strong>
+          <strong>{moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</strong>
           {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
           {fighter.attacks.technique.startup}{" images"}
         </p>}
-        <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>
+        {moveset ? <section data-pit-authored-moveset={moveset.id} data-pit-moveset-certified="false"
+          aria-label={`Règles de duel adaptées de ${fighter.name}`}>
+          <p><strong>Profil individuel V92 · fidélité 1:1 non certifiée.</strong> Les anciens checkpoints et replays gardent leurs recettes historiques.</p>
+          <a href={moveset.sourceUrl} target="_blank" rel="noopener noreferrer">Référence de l’équipement, sans certification des coups</a>
+          <ul>{(['light', 'medium', 'heavy', 'technique'] as const).map(kind => <li key={kind}>
+            {fighter.attacks[kind].label} · portée {fighter.attacks[kind].range} · préparation/contact/retour {fighter.attacks[kind].startup}/{fighter.attacks[kind].active}/{fighter.attacks[kind].recovery} ticks
+          </li>)}</ul>
+          <details><summary>Audit historique V91 avant spécialisation</summary>
+            <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>
+          </details>
+        </section> : <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>}
         {visibleArt ? (
           <small>
             {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
@@ -2219,12 +2249,7 @@ export default function PitCanvas({
       if (!replay) throw new Error("invalid replay");
       const reader = createPitReplayReader(replay);
       if (!canPitFighterEnterMode(replay.fighters[0], mode)) setMode("cpu");
-      const next = createPitCombatState(replay.fighters[0], replay.fighters[1], {
-        ...replay.rules,
-        arenaId: replay.arenaId,
-        variants: replay.variants,
-        houndVariantId: replay.houndVariantId,
-      });
+      const next = createPitReplayCombatState(replay);
       recorderRef.current = null;
       replayReaderRef.current = reader;
       stageLifeSeedRef.current = replay.seed;
@@ -3550,8 +3575,8 @@ export default function PitCanvas({
   }
 
   const [left, right] = combat.fighters;
-  const leftDefinition = PIT_FIGHTERS[left.definitionId];
-  const rightDefinition = PIT_FIGHTERS[right.definitionId];
+  const leftDefinition = getPitCombatFighterDefinition(left);
+  const rightDefinition = getPitCombatFighterDefinition(right);
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);

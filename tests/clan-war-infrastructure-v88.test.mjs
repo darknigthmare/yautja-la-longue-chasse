@@ -48,14 +48,14 @@ function hoist() {
   return { state, artisanId, workId: installed.workId, kitWorkId: state.works.at(-1).id };
 }
 
-test("S12/S17 source rows bind prices, true operators and effect constraints; unsupported care/energy remains unavailable", () => {
+test("S12/S17 source rows bind prices, true operators and effect constraints; S11 is separate and unsupported energy remains unavailable", () => {
   const defs = api.warWorksDefinitionsV6();
   for (const [id, row, cost, upkeep, delay, unitId] of [["W3-S12", 17, 12, 2, 2, "W3-U28"], ["W3-S17", 22, 16, 2, 3, "W3-U20"]]) {
     const def = defs.find(item => item.id === id); assert.deepEqual([def.sourceRow, def.costRav, def.upkeepRav, def.delayTurns, def.operatorUnitId], [row, cost, upkeep, delay, unitId]);
     assert(def.sourceCells.includes(`H${row}`)); assert(def.sourceCells.includes(`I${row}`));
   }
   assert.deepEqual([rules.units.find(unit => unit.id === "W3-U28").fullMembers, rules.units.find(unit => unit.id === "W3-U20").fullMembers], [2, 2]);
-  assert(!defs.some(def => ["W3-S11", "W3-S13"].includes(def.id)));
+  assert(!defs.some(def => def.id === "W3-S13")); assert(defs.some(def => def.id === "W3-S11"));
   const broken = structuredClone(rules); broken.entries.find(entry => entry.id === "W3-S17").fields.find(field => field.column === "I").value = "missing operators";
   assert(!api.warWorksDefinitionsV6(broken).some(def => def.id === "W3-S17"));
 });
@@ -151,7 +151,7 @@ test("optional extensions round-trip interrupted cargo and dated messages; older
   assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(moved)).state, moved);
   const sent = relay(), delivered = act(sent.state, { kind: "relay-intel", teamId: sent.messengerId, workId: sent.workId, recipientTeamId: sent.recipientId });
   assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(delivered)).state, delivered);
-  const older = structuredClone(rules); older.entries = older.entries.filter(entry => !["W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08"].includes(entry.id)); assert.equal(api.warWorksDefinitionsV6(older).length, 6);
+  const older = structuredClone(rules); older.entries = older.entries.filter(entry => !["W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08", "W3-S11"].includes(entry.id)); assert.equal(api.warWorksDefinitionsV6(older).length, 6);
   const legacy = api.createWarWorksV6(120, "W3-U17", older, "local"); assert.equal("infrastructure" in legacy, false);
   assert.deepEqual(api.createWarWorksV6(120, "W3-U17", rules, "local"), legacy); assert.deepEqual(api.importWarWorksV87(api.exportWarWorksV87(legacy, older)).state, legacy);
   assert.equal(api.importWarWorksV87(api.exportWarWorksV87(moved), older).state, null);

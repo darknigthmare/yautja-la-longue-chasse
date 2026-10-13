@@ -6,18 +6,22 @@ import {HOMEWORLD_ECOTONES_V90,type HomeworldEcotoneV90} from '../game/systems/h
 import {HOMEWORLD_CONNECTIONS_V77,HOMEWORLD_REGIONAL_DOCKS_V77,HOMEWORLD_LEVELS_V77,HOMEWORLD_WORLD_V77,
  homeworldCameraWorldV77,homeworldLevelV77,homeworldWalkableV77,projectHomeworldWorldV77,type HomeworldLevelV77} from '../game/systems/homeworldWorldV77';
 import {HOMEWORLD_GEOMETRY_V64} from '../game/systems/homeworldGeometryV64';
+import {HOMEWORLD_STREET_COMPOSITION_QA_V92} from '../game/systems/homeworldStreetCompositionQaV92';
 import styles from './visual-qa.module.css';
 
-export interface VisualQaFixtureV90 {
- readonly id:string;readonly label:string;readonly patch:HomeworldEcotoneV90;
+export interface VisualQaCoordinatesV90 {
+ readonly id:string;readonly label:string;
  readonly anchor:{x:number;y:number};readonly arrival:{x:number;y:number};readonly levelId:HomeworldLevelV77;
 }
+export interface VisualQaFixtureV90 extends VisualQaCoordinatesV90 {readonly patch:HomeworldEcotoneV90;}
 /** Coordinates come from admitted current V90 records, not fabricated travel. */
 export const VISUAL_QA_FIXTURES_V90:readonly VisualQaFixtureV90[]=HOMEWORLD_ECOTONES_V90.map(patch=>({
  id:patch.id,label:patch.regionId?(HOMEWORLD_CONNECTIONS_V77.find(g=>g.regionId===patch.regionId)?.name??
   HOMEWORLD_REGIONAL_DOCKS_V77.find(d=>d.regionId===patch.regionId)?.name??patch.regionId):`Plateau · ${patch.id.split(':').at(-1)}`,
  patch,anchor:{x:patch.x,y:patch.y},arrival:{...patch.arrival},levelId:patch.levelId,
 }));
+export const VISUAL_QA_FIXTURES_V92=HOMEWORLD_STREET_COMPOSITION_QA_V92;
+const allFixtures=[...VISUAL_QA_FIXTURES_V90,...VISUAL_QA_FIXTURES_V92];
 
 type ActorPointV90='arrival'|'anchor';
 type CameraModeV90='follow'|'panorama'|'detail';
@@ -25,7 +29,7 @@ const magnification:Readonly<Record<CameraModeV90,number>>={follow:1,panorama:.4
 
 /** Same projection and camera function as the Hub. The panorama changes only
  * the observing viewport; no ground, collider, actor or permission is created. */
-export function visualQaSceneViewV90(fixture:VisualQaFixtureV90,actorPoint:ActorPointV90,levelId:HomeworldLevelV77,
+export function visualQaSceneViewV90(fixture:VisualQaCoordinatesV90,actorPoint:ActorPointV90,levelId:HomeworldLevelV77,
  viewport:{width:number;height:number},mode:CameraModeV90,pan:{x:number;y:number}){
  const actor=actorPoint==='arrival'?fixture.arrival:fixture.anchor,factor=magnification[mode];
  const native=homeworldCameraWorldV77(actor,levelId,{width:viewport.width/factor,height:viewport.height/factor});
@@ -46,19 +50,21 @@ export default function VisualQaV90(){
    setViewport(previous=>previous.width===width&&previous.height===height?previous:{width,height});
   });observer.observe(host);return()=>observer.disconnect();
  },[]);
- const fixture=VISUAL_QA_FIXTURES_V90.find(item=>item.id===fixtureId)??VISUAL_QA_FIXTURES_V90[0],levelId=levelOverride??fixture.levelId;
+ const fixture=allFixtures.find(item=>item.id===fixtureId)??VISUAL_QA_FIXTURES_V90[0],levelId=levelOverride??fixture.levelId;
+ const anchorElementId='patch' in fixture?fixture.patch.anchorElementId:fixture.anchorElementId;
  const {actor,projectedActor,camera,supportedByExistingModel}=visualQaSceneViewV90(fixture,actorPoint,levelId,viewport,cameraMode,pan);
- const selectFixture=(id:string)=>{if(!VISUAL_QA_FIXTURES_V90.some(item=>item.id===id))return;setFixtureId(id);setActorPoint('arrival');setLevelOverride(null);setPan({x:0,y:0});};
+ const selectFixture=(id:string)=>{if(!allFixtures.some(item=>item.id===id))return;setFixtureId(id);setActorPoint('arrival');setLevelOverride(null);setPan({x:0,y:0});};
  return <main className={styles.root} data-local-visual-qa-v90="synthetic-readonly">
   <header className={styles.banner}><strong>QA visuelle synthétique · aucune sauvegarde/campagne</strong>
    <p>Vraie scène HomeworldWorldSceneV77 et sprites natifs. Ce cadrage ne prouve ni parcours, ni accès régional, ni intérieur, ni progression.</p></header>
   <section className={styles.controls} aria-label="Contrôles locaux de composition">
-   <label>Ancre V90<select value={fixtureId} onChange={event=>selectFixture(event.target.value)} data-visual-qa-fixture>
+   <label>Composition observée<select value={fixtureId} onChange={event=>selectFixture(event.target.value)} data-visual-qa-fixture>
     <optgroup label="Sept entrées régionales admises">{VISUAL_QA_FIXTURES_V90.filter(item=>item.patch.regionId).map(item=><option key={item.id} value={item.id}>{item.label}</option>)}</optgroup>
     <optgroup label="Quatre écotones de plateau">{VISUAL_QA_FIXTURES_V90.filter(item=>!item.patch.regionId).map(item=><option key={item.id} value={item.id}>{item.label}</option>)}</optgroup>
+    <optgroup label="Seize compositions civiles V92">{VISUAL_QA_FIXTURES_V92.map(item=><option key={item.id} value={item.id}>{item.label}</option>)}</optgroup>
    </select></label>
    <label>Position modèle<select value={actorPoint} onChange={event=>{if(event.target.value==='arrival'||event.target.value==='anchor')setActorPoint(event.target.value);}} data-visual-qa-actor>
-    <option value="arrival">Arrivée existante</option><option value="anchor">Seuil / ancre existante</option></select></label>
+    <option value="arrival">{'patch' in fixture?'Arrivée existante':fixture.observationLabel}</option><option value="anchor">Seuil / ancre existante</option></select></label>
    <label>Étage observé<select value={levelOverride??'anchor'} onChange={event=>{const value=event.target.value;if(value==='anchor')setLevelOverride(null);
     else if(HOMEWORLD_LEVELS_V77.some(item=>item.id===value))setLevelOverride(value as HomeworldLevelV77);}} data-visual-qa-level>
     <option value="anchor">Ancre réelle · {fixture.levelId}</option>{HOMEWORLD_LEVELS_V77.map(item=><option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>
@@ -74,8 +80,8 @@ export default function VisualQaV90(){
     <button type="button" onClick={()=>setPan(previous=>({...previous,x:previous.x+240}))}>→</button>
    </div>
   </section>
-  <p className={styles.record} data-visual-qa-anchor={fixture.patch.anchorElementId} data-visual-qa-supported={supportedByExistingModel}>
-   {fixture.patch.anchorElementId} · modèle ({actor.x}, {actor.y}) · étage {levelId} · élévation {homeworldLevelV77(levelId).elevation} · caméra ({Math.round(camera.x)}, {Math.round(camera.y)})
+  <p className={styles.record} data-visual-qa-anchor={anchorElementId} data-visual-qa-supported={supportedByExistingModel}>
+   {anchorElementId} · modèle ({actor.x}, {actor.y}) · étage {levelId} · élévation {homeworldLevelV77(levelId).elevation} · caméra ({Math.round(camera.x)}, {Math.round(camera.y)})
    <br/>{supportedByExistingModel?'Le modèle existant admet cette position ; cela ne constitue pas un test de traversabilité.':'Position non admise sur cet étage : comparaison visuelle uniquement, sans déplacement de personnage.'}
   </p>
   <div ref={viewportRef} className={styles.viewport} data-visual-qa-viewport data-visual-qa-renderer="HomeworldWorldSceneV77" data-visual-qa-level-id={levelId}>
@@ -86,6 +92,6 @@ export default function VisualQaV90(){
     {showMarker&&<span className={styles.marker} style={{left:projectedActor.x,top:projectedActor.y}}>Position modèle · QA</span>}
    </div>
   </div>
-  <p className={styles.note}>{fixture.patch.note} Matériau : {fixture.patch.materialId}. Variations originales du plateau volcanique ; aucune carte canonique 1:1 affirmée. Les trois candidats refusés ne sont pas réintroduits.</p>
+  <p className={styles.note}>{'patch' in fixture?<>{fixture.patch.note} Matériau : {fixture.patch.materialId}. Variations originales du plateau volcanique ; aucune carte canonique 1:1 affirmée. Les trois candidats refusés ne sont pas réintroduits.</>:<>{fixture.detail} {fixture.memberIds.length} instances admises de PNG natifs. Cette position d’observation n’ajoute aucun point de voyage ni service ; ces décors sont des créations compatibles avec le lore.</>}</p>
  </main>;
 }

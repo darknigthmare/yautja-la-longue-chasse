@@ -1,4 +1,5 @@
 import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type PitUserFighterId } from './pitUserRoster';
+import { applyPitAuthoredMovesetV92, getPitAuthoredMovesetV92, PIT_AUTHORED_MOVESETS_V92, type PitAuthoredMovesetIdV92 } from './pitAuthoredMovesetsV92';
 import { PIT_TRACKER_HOUND, PIT_TRACKER_LEGACY_COUNTER, isPitHoundVariantId, type PitHoundVariantId } from './pitCompanion';
 import { PIT_FALCONER_LEGACY_DRONE, PIT_FALCONER_RECON_DRONE } from './pitFalconerDrone';
 import { PIT_FERAL_GUIDED_BOLTS, PIT_FERAL_LEGACY_TRAP, pitFeralHasTargetingMask, type PitFeralBoltFlight } from './pitFeralBoltsV58';
@@ -27,7 +28,7 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 10;
+export const PIT_STATE_VERSION = 11;
 /** Eight 60Hz reaction ticks after a grounded neutral/guard capture. */
 export const PIT_THROW_TECH_WINDOW_FRAMES = 8;
 export const PIT_THROW_TECH_RECOVERY_FRAMES = 12;
@@ -74,6 +75,8 @@ export interface PitCombatRules {
 }
 
 export interface PitCombatOptions {
+  /** Historical archives must opt out of newer equipment recipes. */
+  movesets?: 'current' | 'legacy';
   houndVariantId?: PitHoundVariantId;
   variants?: readonly [string | null, string | null];
   stageJourney?: PitStageJourneyId;
@@ -200,6 +203,8 @@ export interface PitTechniqueEffectState {
 export interface PitFighterState {
   slot: 0 | 1;
   definitionId: PitFighterId;
+  /** Absent snapshots keep their historical shared recipe, including active actions. */
+  movesetId?: PitAuthoredMovesetIdV92;
   /** Supplied static appearance; omitted for the legacy authored appearance. */
   variantId?: string;
   x: number;
@@ -333,6 +338,23 @@ export const PIT_FIGHTERS: Record<PitFighterId, PitFighterDefinition> =
     ]),
   ) as Record<PitFighterId, PitFighterDefinition>;
 
+const AUTHORED_FIGHTERS_V92 = Object.fromEntries(Object.values(PIT_AUTHORED_MOVESETS_V92).map(profile =>
+  [profile.id, applyPitAuthoredMovesetV92(PIT_FIGHTERS[profile.fighterId], profile.id)])) as Record<PitAuthoredMovesetIdV92, PitFighterDefinition>;
+
+/** Resolve the recipe owned by this snapshot, never a costume or old replay by name alone. */
+export function getPitCombatFighterDefinition(fighter: Pick<PitFighterState, 'definitionId' | 'variantId' | 'movesetId'>): PitFighterDefinition {
+  const profile = fighter.movesetId ? PIT_AUTHORED_MOVESETS_V92[fighter.movesetId] : null;
+  return profile && profile.fighterId === fighter.definitionId && typeof fighter.variantId === 'string' &&
+    profile.variantIds.includes(fighter.variantId) ? AUTHORED_FIGHTERS_V92[profile.id] : PIT_FIGHTERS[fighter.definitionId];
+}
+
+/** Selection uses the recipe a newly created duel would receive. */
+export function getPitCurrentFighterDefinition(fighterId: PitFighterId, variantId?: string | null): PitFighterDefinition {
+  const variant = normalizePitUserVariant(fighterId, variantId);
+  const profile = getPitAuthoredMovesetV92(fighterId, variant);
+  return getPitCombatFighterDefinition({ definitionId: fighterId, variantId: variant, movesetId: profile?.id });
+}
+
 export const PIT_ARENAS: Record<PitArenaId, PitArenaDefinition> =
   Object.fromEntries(
     Object.entries({ ...PIT_FIRST_EDITION_ARENAS, ...PIT_EXTENSION_ARENAS }).map(([id, arena]) => [
@@ -373,11 +395,13 @@ function freshFighter(
   inputLatch: PitInputLatch = latchFromInput(),
   traque = 0,
   variantId?: string | null,
+  movesetId?: PitAuthoredMovesetIdV92,
 ): PitFighterState {
   const definition = PIT_FIGHTERS[id];
   return {
     slot,
     definitionId: id,
+    ...(movesetId ? { movesetId } : {}),
     ...(normalizePitUserVariant(id, variantId) ? { variantId: normalizePitUserVariant(id, variantId) } : {}),
     x: PIT_ARENA.spawnX[slot],
     y: 0,
@@ -424,6 +448,9 @@ export function createPitCombatState(
   if (options.mode !== undefined && options.mode !== "match" && options.mode !== "training") {
     throw new Error("THE PIT requires a valid combat mode.");
   }
+  if (options.movesets !== undefined && options.movesets !== 'current' && options.movesets !== 'legacy') {
+    throw new Error('THE PIT requires a valid moveset version.');
+  }
   const arenaId = options.arenaId ?? PIT_ARENA.id;
   if (!Object.hasOwn(PIT_ARENAS, arenaId)) {
     throw new Error("THE PIT requires a registered arena.");
@@ -446,7 +473,9 @@ export function createPitCombatState(
     rules: { mode: options.mode ?? "match", ...(options.stageJourney ? { stageJourney: options.stageJourney } : {}) },
     ...(options.stageJourney ? { stageJourney: createPitStageJourney(options.stageJourney) } : {}),
     ...(options.houndVariantId ? { houndVariantId: options.houndVariantId } : {}),
-    fighters: [freshFighter(0, leftId, 0, latchFromInput(), 0, options.variants?.[0]), freshFighter(1, rightId, 0, latchFromInput(), 0, options.variants?.[1])],
+    fighters: ([leftId, rightId] as const).map((id, slot) => freshFighter(slot as 0 | 1, id, 0,
+      latchFromInput(), 0, options.variants?.[slot], options.movesets === 'legacy' ? undefined :
+        getPitAuthoredMovesetV92(id, normalizePitUserVariant(id, options.variants?.[slot]))?.id)) as [PitFighterState, PitFighterState],
     techniqueEffects: [],
     pendingThrow: null,
     nextTechniqueEffectId: 1,
@@ -478,19 +507,19 @@ function cloneState(state: PitCombatState): PitCombatState {
   };
 }
 
-function actionDuration(actionState: PitActionState, fighterId: PitFighterId): number {
+function actionDuration(actionState: PitActionState, fighter: Pick<PitFighterState, 'definitionId' | 'variantId' | 'movesetId'>): number {
   if (actionState.kind === "throw") return THROW_STARTUP + THROW_ACTIVE + THROW_RECOVERY;
-  const definition = PIT_FIGHTERS[fighterId].attacks[actionState.attack as PitAttackKind];
+  const definition = getPitCombatFighterDefinition(fighter).attacks[actionState.attack as PitAttackKind];
   return definition.startup + definition.active + definition.recovery;
 }
 
-function phaseForAction(actionState: PitActionState, fighterId: PitFighterId): PitCombatPhase {
+function phaseForAction(actionState: PitActionState, fighter: Pick<PitFighterState, 'definitionId' | 'variantId' | 'movesetId'>): PitCombatPhase {
   if (actionState.kind === "throw") {
     if (actionState.frame < THROW_STARTUP) return "startup";
     if (actionState.frame < THROW_STARTUP + THROW_ACTIVE) return "active";
     return "recovery";
   }
-  const move = PIT_FIGHTERS[fighterId].attacks[actionState.attack as PitAttackKind];
+  const move = getPitCombatFighterDefinition(fighter).attacks[actionState.attack as PitAttackKind];
   if (actionState.frame < move.startup) return "startup";
   if (actionState.frame < move.startup + move.active) return "active";
   return "recovery";
@@ -501,11 +530,11 @@ function isPressed<T>(current: T | undefined, previous: T | null): boolean {
 }
 
 function minFighterX(fighter: PitFighterState): number {
-  return PIT_ARENA.leftWall + PIT_FIGHTERS[fighter.definitionId].bodyWidth / 2;
+  return PIT_ARENA.leftWall + getPitCombatFighterDefinition(fighter).bodyWidth / 2;
 }
 
 function maxFighterX(fighter: PitFighterState): number {
-  return PIT_ARENA.rightWall - PIT_FIGHTERS[fighter.definitionId].bodyWidth / 2;
+  return PIT_ARENA.rightWall - getPitCombatFighterDefinition(fighter).bodyWidth / 2;
 }
 
 function clampFighterX(fighter: PitFighterState, x: number): number {
@@ -532,7 +561,7 @@ function addTraque(
 }
 
 function startCloak(state: PitCombatState, fighter: PitFighterState): void {
-  if (PIT_FIGHTERS[fighter.definitionId].canCloak === false) return;
+  if (getPitCombatFighterDefinition(fighter).canCloak === false) return;
   fighter.traque -= PIT_CLOAK_COST;
   fighter.cloakPhase = "startup";
   fighter.cloakFramesRemaining = PIT_CLOAK_STARTUP_FRAMES;
@@ -607,7 +636,7 @@ function updateFighter(
   opponent: PitFighterState,
   input: PitInput,
 ): void {
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const statusDefinition = techniqueStatusDefinition(fighter);
   const jumpPressed = Boolean(input.jump) && !fighter.inputLatch.jump;
   const throwPressed = Boolean(input.throw) && !fighter.inputLatch.throw;
@@ -671,7 +700,7 @@ function updateFighter(
       if (state.rules.mode === "training" && fighter.health === 0) {
         Object.assign(
           fighter,
-          freshFighter(fighter.slot, fighter.definitionId, 0, latchFromInput(input), 0, fighter.variantId),
+          freshFighter(fighter.slot, fighter.definitionId, 0, latchFromInput(input), 0, fighter.variantId, fighter.movesetId),
         );
       } else {
         fighter.phase = "idle";
@@ -681,11 +710,11 @@ function updateFighter(
     }
   } else if (fighter.action) {
     fighter.action.frame += 1;
-    if (fighter.action.frame >= actionDuration(fighter.action, fighter.definitionId)) {
+    if (fighter.action.frame >= actionDuration(fighter.action, fighter)) {
       fighter.action = null;
       fighter.phase = "idle";
     } else {
-      fighter.phase = phaseForAction(fighter.action, fighter.definitionId);
+      fighter.phase = phaseForAction(fighter.action, fighter);
       // A connected strike may link into a newly pressed attack during its
       // remaining active or recovery frames. Whiffs and throws keep full recovery.
       if (
@@ -780,7 +809,7 @@ function updateFighter(
 }
 
 function bodyHeight(fighter: PitFighterState): number {
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   return fighter.crouching ? definition.crouchHeight : definition.bodyHeight;
 }
 
@@ -797,7 +826,7 @@ function getPitFighterBoxesInternal(
   fighter: PitFighterState,
   worldTechniqueHasHitbox: boolean,
 ): PitFighterBoxes {
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const height = bodyHeight(fighter);
   const pushbox = {
     x: fighter.x - definition.bodyWidth / 2,
@@ -870,18 +899,19 @@ export function getPitTechniqueDefinitionForEffect(
   state: PitCombatState,
   effect: PitTechniqueEffectState,
 ): PitEditionTechniqueDefinition {
-  const ownerId = state.fighters[effect.ownerSlot].definitionId;
+  const owner = state.fighters[effect.ownerSlot];
+  const ownerId = owner.definitionId;
   if (ownerId === 'feral-hunter' && effect.techniqueId === PIT_FERAL_LEGACY_TRAP.id) return PIT_FERAL_LEGACY_TRAP;
   if (ownerId === 'falconer' && effect.techniqueId === PIT_FALCONER_LEGACY_DRONE.id) return PIT_FALCONER_LEGACY_DRONE;
   return ownerId === 'tracker' && effect.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
-    ? PIT_TRACKER_LEGACY_COUNTER : PIT_FIGHTERS[ownerId].technique;
+    ? PIT_TRACKER_LEGACY_COUNTER : getPitCombatFighterDefinition(owner).technique;
 }
 
 function techniqueEffectX(
   fighter: PitFighterState,
   technique: PitEditionTechniqueDefinition,
 ): number {
-  const bodyOffset = PIT_FIGHTERS[fighter.definitionId].bodyWidth * 0.2;
+  const bodyOffset = getPitCombatFighterDefinition(fighter).bodyWidth * 0.2;
   return fighter.facing === 1
     ? fighter.x + bodyOffset
     : fighter.x - technique.width - bodyOffset;
@@ -906,7 +936,7 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
   const launchSweeps = new Map<number, FeralLaunchSweep>();
   for (const fighter of state.fighters) {
     const action = fighter.action;
-    const move = PIT_FIGHTERS[fighter.definitionId].attacks.technique;
+    const move = getPitCombatFighterDefinition(fighter).attacks.technique;
     if (
       action?.kind !== "attack" ||
       action.attack !== "technique" ||
@@ -919,7 +949,7 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
     const technique = !feralBoltsEnabled && fighter.definitionId === 'feral-hunter'
       ? PIT_FERAL_LEGACY_TRAP : !companionsEnabled && fighter.definitionId === 'tracker'
       ? PIT_TRACKER_LEGACY_COUNTER : !recallDroneEnabled && fighter.definitionId === 'falconer'
-        ? PIT_FALCONER_LEGACY_DRONE : PIT_FIGHTERS[fighter.definitionId].technique;
+        ? PIT_FALCONER_LEGACY_DRONE : getPitCombatFighterDefinition(fighter).technique;
     if (technique.device === 'hound' || technique.id === PIT_FALCONER_RECON_DRONE.id) {
       const existing = state.techniqueEffects.find(effect => effect.ownerSlot === fighter.slot && effect.techniqueId === technique.id);
       if (existing) {
@@ -935,13 +965,13 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
       const legacyOriginX = techniqueEffectX(fighter, technique);
       const legacyOriginY = fighter.y + technique.verticalOffset;
       const muzzle = nativeFeralMuzzleEnabled && pitFeralUsesNativeLauncher(fighter)
-        ? getPitFeralNativeMuzzle(fighter, PIT_FIGHTERS[fighter.definitionId].bodyHeight) : null;
+        ? getPitFeralNativeMuzzle(fighter, getPitCombatFighterDefinition(fighter).bodyHeight) : null;
       if (nativeFeralMuzzleEnabled && !fighter.variantId) action.feralLauncherOrigin = muzzle ? 'native' : 'legacy';
       // x/y describe the actual projectile rectangle, centered on the drawn muzzle.
       const originX = muzzle ? muzzle.x - technique.width / 2 : legacyOriginX;
       const originY = muzzle ? muzzle.y - technique.height / 2 : legacyOriginY;
       const targetX = guided ? opponent.x : originX + fighter.facing * PIT_ARENA.width;
-      const body = PIT_FIGHTERS[opponent.definitionId];
+      const body = getPitCombatFighterDefinition(opponent);
       const targetY = guided ? opponent.y + (opponent.crouching ? body.crouchHeight : body.bodyHeight) * .6 : originY;
       for (const index of [0, 1, 2] as const) {
         const y = originY + (index - 1) * (muzzle?.railSpacing ?? 8);
@@ -995,6 +1025,10 @@ function advanceTechniqueEffects(state: PitCombatState, launchSweeps: ReadonlyMa
     const owner = state.fighters[effect.ownerSlot];
     const opponent = state.fighters[effect.ownerSlot === 0 ? 1 : 0];
     const technique = getPitTechniqueDefinitionForEffect(state, effect);
+    // New contact equipment stays owned by the active strike. An interruption
+    // removes its volume instead of leaving a detached spear/counter behind.
+    if (owner.movesetId && technique.motion === 'attached' &&
+      (owner.phase !== 'active' || owner.action?.kind !== 'attack' || owner.action.attack !== 'technique')) continue;
     effect.age += 1;
     effect.rehitFrames = Math.max(0, effect.rehitFrames - 1);
 
@@ -1170,7 +1204,7 @@ function collectImpact(
       blocked: false,
       damage: damageAfterInstinct(
         defender,
-        Math.round(THROW_DAMAGE * PIT_FIGHTERS[attacker.definitionId].power),
+        Math.round(THROW_DAMAGE * getPitCombatFighterDefinition(attacker).power),
       ),
       stun: 42,
       pushback: 42,
@@ -1180,7 +1214,7 @@ function collectImpact(
     };
   }
 
-  const move = PIT_FIGHTERS[attacker.definitionId].attacks[actionState.attack as PitAttackKind];
+  const move = getPitCombatFighterDefinition(attacker).attacks[actionState.attack as PitAttackKind];
   const hitLevel = legacyV2TechniqueHitbox && attacker.definitionId === 'feral-hunter' && actionState.attack === 'technique' ? 'low' : move.hitLevel;
   const blocked = guardBlocks(defender.guard, hitLevel) &&
     (defender.phase === "idle" || defender.phase === "blockstun");
@@ -1190,7 +1224,7 @@ function collectImpact(
     (defender.phase === "hitstun" || defender.phase === "knockdown");
   const combo = blocked ? 0 : continuesCombo ? defender.comboHitsReceived + 1 : 1;
   const scale = blocked ? 1 : Math.max(0.35, 1 - Math.max(0, combo - 1) * 0.12);
-  const comboDamageBase = move.damage * PIT_FIGHTERS[attacker.definitionId].power;
+  const comboDamageBase = move.damage * getPitCombatFighterDefinition(attacker).power;
   return {
     attackerSlot: attacker.slot,
     defenderSlot: defender.slot,
@@ -1285,7 +1319,7 @@ function advancePendingThrow(state: PitCombatState, inputs: readonly [PitInput, 
   applyImpact(state, {
     attackerSlot: pending.attackerSlot, defenderSlot, kind: "throw",
     blocked: false, damage: damageAfterInstinct(defender,
-      Math.round(THROW_DAMAGE * PIT_FIGHTERS[attacker.definitionId].power)),
+      Math.round(THROW_DAMAGE * getPitCombatFighterDefinition(attacker).power)),
     stun: 42, pushback: 42, knockdown: true, launchY: 0, combo: 1,
   });
 }
@@ -1337,7 +1371,7 @@ function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMa
       continue;
     }
 
-    const move = PIT_FIGHTERS[attacker.definitionId].attacks.technique;
+    const move = getPitCombatFighterDefinition(attacker).attacks.technique;
     const marksOnly = technique.contactEffect === "mark";
     const blocked =
       !marksOnly &&
@@ -1362,7 +1396,7 @@ function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMa
       : Math.max(0.35, 1 - Math.max(0, combo - 1) * 0.12);
     const comboDamageBase =
       move.damage *
-      PIT_FIGHTERS[attacker.definitionId].power *
+      getPitCombatFighterDefinition(attacker).power *
       technique.damageScale;
     const rawDamage = marksOnly
       ? 0
@@ -1534,7 +1568,7 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
   addTraque(state, attacker, actualDamage, "damage");
   addTraque(state, defender, Math.ceil(actualDamage / 2), "damage");
 
-  const maxHealth = PIT_FIGHTERS[defender.definitionId].maxHealth;
+  const maxHealth = getPitCombatFighterDefinition(defender).maxHealth;
   if (
     defender.health > 0 &&
     defender.health <= maxHealth * 0.25 &&
@@ -1726,6 +1760,7 @@ function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitIn
       latchFromInput(inputs[0] ?? {}),
       Math.min(left.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
       left.variantId,
+      left.movesetId,
     ),
     freshFighter(
       1,
@@ -1734,6 +1769,7 @@ function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitIn
       latchFromInput(inputs[1] ?? {}),
       Math.min(right.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
       right.variantId,
+      right.movesetId,
     ),
   ];
   state.events.push({ type: "round-start", frame: state.frame, round: state.round });
@@ -1749,6 +1785,7 @@ function stepPitCombatInternal(
   recallDroneEnabled = false,
   feralBoltsEnabled = false,
   nativeFeralMuzzleEnabled = false,
+  authoredMovesetsEnabled = false,
 ): PitCombatState {
   if (current.phase === "match-over") {
     if (current.events.length === 0) return current;
@@ -1756,6 +1793,7 @@ function stepPitCombatInternal(
   }
 
   const state = cloneState(current);
+  if (!authoredMovesetsEnabled) for (const fighter of state.fighters) delete fighter.movesetId;
   state.frame += 1;
 
   if (state.phase === "round-over") {
@@ -1876,6 +1914,11 @@ export function stepPitCombat(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
+  return stepPitCombatInternal(current, inputs, false, true, true, true, true, true, true, true);
+}
+
+/** Published V59–V91 engine V10: native Feral muzzle, shared imported hunters. */
+export function stepPitCombatV10Compatibility(current: PitCombatState, inputs: readonly [PitInput, PitInput] = [{}, {}]): PitCombatState {
   return stepPitCombatInternal(current, inputs, false, true, true, true, true, true, true);
 }
 
@@ -1977,17 +2020,17 @@ function isRoundResult(value: unknown, stateFrame: number, stateRound: number): 
   return reason === "draw" || reason === "double-ko" ? value.winnerId === null : isFighterId(value.winnerId);
 }
 
-function isActionState(value: unknown, fighterId: PitFighterId, phase: PitCombatPhase): value is PitActionState {
+function isActionState(value: unknown, fighter: Pick<PitFighterState, 'definitionId' | 'variantId' | 'movesetId'>, phase: PitCombatPhase): value is PitActionState {
   if (!isRecord(value) || (value.kind !== "attack" && value.kind !== "throw") || typeof value.connected !== "boolean") return false;
   if (value.kind === "throw" && value.attack !== null) return false;
   if (value.kind === "attack" && !isAttackKind(value.attack)) return false;
   if (!Number.isInteger(value.frame) || (value.frame as number) < 0) return false;
   if (value.feralLauncherOrigin !== undefined &&
     ((value.feralLauncherOrigin !== 'native' && value.feralLauncherOrigin !== 'legacy') ||
-      fighterId !== 'feral-hunter' || value.kind !== 'attack' || value.attack !== 'technique' ||
+      fighter.definitionId !== 'feral-hunter' || value.kind !== 'attack' || value.attack !== 'technique' ||
       (phase !== 'active' && phase !== 'recovery'))) return false;
   const action = value as unknown as PitActionState;
-  return action.frame < actionDuration(action, fighterId) && phaseForAction(action, fighterId) === phase;
+  return action.frame < actionDuration(action, fighter) && phaseForAction(action, fighter) === phase;
 }
 
 function isInputLatch(value: unknown): value is PitInputLatch {
@@ -2013,11 +2056,14 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
   if (!isRecord(value) || value.slot !== slot || !isFighterId(value.definitionId)) return false;
   const fighterId = value.definitionId;
   if (value.variantId !== undefined && (typeof value.variantId !== 'string' || !getPitUserVariant(fighterId, value.variantId))) return false;
-  const definition = PIT_FIGHTERS[fighterId];
+  if (value.movesetId !== undefined && (typeof value.movesetId !== 'string' ||
+    getPitAuthoredMovesetV92(fighterId, typeof value.variantId === 'string' ? value.variantId : undefined)?.id !== value.movesetId)) return false;
+  const fighter = value as unknown as PitFighterState;
+  const definition = getPitCombatFighterDefinition(fighter);
   if (definition.canCloak === false && (value.cloakPhase !== 'inactive' || value.cloakFramesRemaining !== 0 || value.cloakCooldownFrames !== 0)) return false;
   if (!PIT_COMBAT_PHASES.includes(value.phase as PitCombatPhase)) return false;
   const phase = value.phase as PitCombatPhase;
-  const actionValid = value.action === null || isActionState(value.action, fighterId, phase);
+  const actionValid = value.action === null || isActionState(value.action, fighter, phase);
   if (isRecord(value.action) && value.action.feralLauncherOrigin !== undefined &&
     (value.variantId !== undefined || (value.action.feralLauncherOrigin === 'native' &&
       (value.grounded !== true || value.crouching !== false || value.guard === 'low')))) return false;
@@ -2076,7 +2122,7 @@ function isTechniqueEffectState(
   const technique = owner.definitionId === 'feral-hunter' && value.techniqueId === PIT_FERAL_LEGACY_TRAP.id
     ? PIT_FERAL_LEGACY_TRAP : owner.definitionId === 'tracker' && value.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
     ? PIT_TRACKER_LEGACY_COUNTER : owner.definitionId === 'falconer' && value.techniqueId === PIT_FALCONER_LEGACY_DRONE.id
-      ? PIT_FALCONER_LEGACY_DRONE : PIT_FIGHTERS[owner.definitionId].technique;
+      ? PIT_FALCONER_LEGACY_DRONE : getPitCombatFighterDefinition(owner).technique;
   if (!pitHasShoulderPlasma(owner.definitionId, owner.variantId)) return false;
   if (value.techniqueId !== technique.id) return false;
   if (!isFiniteBetween(value.x, PIT_ARENA.leftWall - technique.width, PIT_ARENA.rightWall)) return false;
@@ -2170,6 +2216,8 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
 }
 
 function migratePitCombatState(candidate: unknown): unknown {
+  if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 11 &&
+    Array.isArray(candidate.fighters) && candidate.fighters.some(fighter => isRecord(fighter) && fighter.movesetId !== undefined)) return candidate;
   if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 10 &&
     Array.isArray(candidate.fighters) && candidate.fighters.some(fighter => isRecord(fighter) &&
       isRecord(fighter.action) && fighter.action.feralLauncherOrigin !== undefined)) return candidate;
@@ -2178,7 +2226,7 @@ function migratePitCombatState(candidate: unknown): unknown {
     Array.isArray(candidate.techniqueEffects) && candidate.techniqueEffects.some(effect =>
       isRecord(effect) && (effect.techniqueId === PIT_FERAL_GUIDED_BOLTS.id || effect.bolt !== undefined))) return candidate;
   if (!isRecord(candidate) ||
-    ![1, 2, 4, 5, 6, 7, 8, 9, PIT_STATE_VERSION].includes(candidate.version as number) ||
+    ![1, 2, 4, 5, 6, 7, 8, 9, 10, PIT_STATE_VERSION].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }

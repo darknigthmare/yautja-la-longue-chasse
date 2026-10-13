@@ -50,13 +50,13 @@ function ready({ secondPatient = false, guard = true } = {}) {
 }
 const pickUp = scenario => act(scenario.state, { kind: "load-patient", teamId: scenario.porterId, memberId: scenario.patientId, carrierId: scenario.carrierId });
 
-test("S16 and U17 use attested source costs while incomplete S11 care is neither constructed nor invented", () => {
+test("S16 and U17 keep attested source costs; separate S11 care never creates an extracted or fit patient", () => {
   const def = api.warWorksDefinitionsV6().find(item => item.id === "W3-S16"), unit = rules.units.find(item => item.id === "W3-U17");
   assert.equal(rules.metadata.sha256, "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183");
   assert.deepEqual([def.costRav, def.upkeepRav, def.delayTurns, def.operatorUnitId, def.sourceRow], [14, 2, 3, "W3-U17", 21]);
   assert.deepEqual([unit.fullMembers, unit.commandPoints, unit.recruitmentRav, unit.upkeepRav, unit.delayTurns], [3, 3, 12, 2, 2]);
   assert(def.sourceCells.includes("I21")); assert(api.warExtractionAvailableV88());
-  assert(!api.warWorksDefinitionsV6().some(item => item.id === "W3-S11")); denied(fresh(), { kind: "recruit", unitId: "W3-U18" });
+  assert(api.warWorksDefinitionsV6().some(item => item.id === "W3-S11")); assert.equal(fresh().medical, undefined);
   const missing = structuredClone(rules); missing.entries = missing.entries.filter(entry => entry.id !== "W3-S11"); assert(!api.warExtractionAvailableV88(missing));
   const initial = api.createWarWorksV6(120, "W3-U17", rules, "front"); denied(initial, { kind: "declare-patient", teamId: initial.teams[0].team.id, memberId: initial.teams[0].team.members[0].id });
 });
@@ -139,7 +139,7 @@ test("V87 checkpoint shape and key remain exact without extraction; interrupted 
 });
 
 test("older five-work source and checkpoint remain playable without S16, but missing any original work still rejects", () => {
-  const olderRules = structuredClone(rules); olderRules.entries = olderRules.entries.filter(entry => !["W3-S16", "W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08"].includes(entry.id));
+  const olderRules = structuredClone(rules); olderRules.entries = olderRules.entries.filter(entry => !["W3-S16", "W3-S12", "W3-S17", "W3-S01", "W3-S06", "W3-S08", "W3-S11"].includes(entry.id));
   assert.equal(api.warWorksDefinitionsV6(olderRules).length, 5); assert(!api.warExtractionAvailableV88(olderRules));
   const original = api.createWarWorksV6(80, "W3-U17", rules, "local"), checkpoint = api.exportWarWorksV87(original, rules);
   assert.deepEqual(api.createWarWorksV6(80, "W3-U17", olderRules, "local"), original);

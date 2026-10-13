@@ -20,7 +20,7 @@ export default function PitFidelityNoticeV91({ fighterId, variantId, className, 
     data-pit-fidelity-species={entry.species} data-pit-fidelity-moveset={entry.moveset}
     data-pit-fidelity-certified={entry.certifiedOneToOne} data-pit-fidelity-variant={variantId ?? 'default'}>
     {showCoverage ? <p data-pit-fidelity-roster-coverage>
-      Audit des fiches : {coverage.versus}/{coverage.runtime} combattants répertoriés · {coverage.sharedProfiles} profils de duel partagés.
+      Référence d’audit V91 : {coverage.versus}/{coverage.runtime} combattants répertoriés · {coverage.sharedProfiles} profils de duel partagés à cette date.
       {' '}Ce total ne signifie ni autant de Yautja officiels, ni autant de kits personnalisés. Aucune fidélité 1:1 certifiée.
     </p> : null}
     <p><strong>{entry.summary}</strong></p>

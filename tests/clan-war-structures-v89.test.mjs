@@ -102,7 +102,7 @@ function corrupted(state, modify) {
 
 test("S01/S06/S08 read the attested price, upkeep, delays and operators without modifying the original eight definitions", () => {
   const defs = api.warWorksDefinitionsV6(), ids = ["W3-S01", "W3-S06", "W3-S08"];
-  assert.equal(defs.length, 11);
+  assert.equal(defs.length, 12);
   assert.deepEqual(defs.filter(def => ids.includes(def.id)).map(def => [def.id, def.costRav, def.upkeepRav, def.delayTurns, def.operatorUnitId, def.sourceRow]),
     [["W3-S01", 6, 1, 2, "W3-U02", 6], ["W3-S06", 10, 1, 2, "W3-U13", 11], ["W3-S08", 14, 2, 3, "W3-U12", 13]]);
   assert.equal(api.WAR_BIBLE_SOURCE_SHA_V6, "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183");

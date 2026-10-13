@@ -2,7 +2,7 @@ import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { TEMPLE_MODULAR_ATLAS_V70, drawTempleModuleV70 } from './templeModularArtV70';
 import { loadYouthArt, youthClipFrame, type YouthArtBank, type YouthArtPose, type YouthPropSprite } from './youthTrainingRendering';
 import { getSpriteContact, drawActorContactShadow } from './spriteContact';
-import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, soloV90Objective, soloV90ObservationPostReady, type SoloV90State } from './systems/firstHuntSoloV90';
+import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, SOLO_V92_EVASION, soloV90Objective, soloV90ObservationPostReady, type SoloV90State } from './systems/firstHuntSoloV90';
 export const TRAINING_DRONE_V90 = '/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export async function loadTrainingArtV90(): Promise<YouthArtBank> {
   const bank = await loadYouthArt(YOUTH_ART_MANIFEST), images = new Map(bank.images);
@@ -17,6 +17,13 @@ export async function loadTrainingArtV90(): Promise<YouthArtBank> {
 export function soloV90CameraFrame(s: SoloV90State, width: number) {
   const remote = soloV90ObservationPostReady(s);
   return { remote, x: Math.max(0, Math.min(SOLO_V90_WORLD_WIDTH - width, remote ? s.drone.x - width / 2 : s.player.x - width * .45)) };
+}
+/** HUD waypoint projected from the actual objective and camera, not a new
+ * teleport/extraction target. Portrait routes keep a visible direction. */
+export function soloV92RouteMarker(s: SoloV90State, width: number) {
+  const camera = soloV90CameraFrame(s, width), goal = soloV90Objective(s), nativeX = goal.targetX - camera.x;
+  return { x: Math.max(28, Math.min(width - 28, nativeX)), direction: nativeX < 28 ? -1 as const : nativeX > width - 28 ? 1 as const : 0 as const,
+    distance: Math.round(Math.abs(goal.targetX - s.player.x)), title: goal.title, visible: !camera.remote && s.phase !== 'combat' && s.phase !== 'complete' };
 }
 /** Sources remain untouched. Player/partners use the independently authored
  * left/right cells; the drone keeps its native left-facing guard, never flips. */
@@ -49,8 +56,8 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
   const rect = [cell * index, 0, cell, image.height] as const, k = 130 / (image.height - 8), pivot = image.height - 3, contact = getSpriteContact(image, rect, pivot);
   drawActorContactShadow(ctx, d.x, 430, 25, 0); ctx.drawImage(image, ...rect, d.x - cell * k / 2, 430 - (pivot - (contact?.offsetY ?? 0)) * k, cell * k, image.height * k);
   text(d.mode === 'telegraph' ? 'CHARGE ANNONCÉE' : d.mode === 'dead' ? 'DRONE NEUTRALISÉ' : `DRONE ${d.hp}/8`, d.x, 250, d.mode === 'telegraph' ? '#ffa37a' : '#cfd6c5');
-  const actor = (kind: 'player' | 'rival', x: number, y: number, facing: -1 | 1, h: number, pose: YouthArtPose, label?: string) => {
-    const atlas = manifest.actors[kind][facing === 1 ? 'right' : 'left'], frame = youthClipFrame(atlas.clips[pose], reducedMotion && pose === 'idle' ? 0 : s.tick);
+  const actor = (kind: 'player' | 'rival', x: number, y: number, facing: -1 | 1, h: number, pose: YouthArtPose, label?: string, poseTick = s.tick) => {
+    const atlas = manifest.actors[kind][facing === 1 ? 'right' : 'left'], frame = youthClipFrame(atlas.clips[pose], reducedMotion && pose === 'idle' ? 0 : poseTick);
     const source = images.get(atlas.src)!, scale = h / atlas.bodyHeight, contact = getSpriteContact(source, frame.rect, frame.pivot[1]);
     drawActorContactShadow(ctx, x, 430, 15, 430 - y); ctx.drawImage(source, ...frame.rect, x - frame.pivot[0] * scale, y - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale, frame.rect[2] * scale, frame.rect[3] * scale);
     if (label) text(label, x, y - h - 12, '#d0c9b1', 11);
@@ -58,13 +65,26 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
   actor('rival', 160, 430, 1, 145, 'idle', 'VÉTÉRAN');
   s.companions.forEach((c, i) => { const target = s.health === 0 && i === 0 ? s.player.x + 18 : s.roleMode === 'posts' ? SOLO_V90_POSTS[i] : Math.max(65, s.player.x - 65 * (i + 1)); actor('rival', c.x, 430, target < c.x ? -1 : 1, 110, Math.abs(c.x - target) > 3 ? 'walk' : 'idle', i === 0 ? 'SAAR' : 'VEK'); });
   const a = s.player, carried = s.health === 0 && Math.abs(s.companions[0].x - a.x) <= 38;
-  actor('player', a.x, carried ? 370 : a.y, a.facing, 112, s.health === 0 ? 'ko' : s.hurtTimer > 65 ? 'hurt' : s.attackTimer ? 'blade' : a.vy ? 'jump' : a.vx ? 'walk' : 'idle', carried ? 'EXTRACTION AIDÉE' : undefined);
+  actor('player', a.x, carried ? 370 : a.y, a.facing, 112, s.health === 0 ? 'ko' : s.hurtTimer > 65 ? 'hurt' : s.evasion?.ticks ? 'dodge' : s.attackTimer ? 'blade' : a.vy ? 'jump' : a.vx ? 'walk' : 'idle', carried ? 'EXTRACTION AIDÉE' : undefined, s.evasion?.ticks ? SOLO_V92_EVASION.duration - s.evasion.ticks : s.tick);
   const goal = soloV90Objective(s); ctx.strokeStyle = '#e4cf96'; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.moveTo(goal.targetX - 25, 442); ctx.lineTo(goal.targetX + 25, 442); ctx.stroke(); ctx.setLineDash([]);
   if (s.scan) { ctx.fillStyle = '#e4cf96'; ctx.fillRect(goal.targetX - 25, 450, 50 * s.scan / 60, 4); }
   if (frame.remote) {
     ctx.save(); ctx.translate(camera, 0); ctx.fillStyle = '#101820ed'; ctx.fillRect(0, 0, width, 49);
     ctx.textAlign = 'center'; ctx.fillStyle = '#ebd7ac'; ctx.font = 'bold 13px sans-serif'; ctx.fillText('OBSERVATION À DISTANCE', width / 2, 19);
     ctx.font = '11px sans-serif'; ctx.fillText('Joueur au repère · marche pour retrouver sa vue', width / 2, 37, width - 20); ctx.restore();
+  }
+  const marker = soloV92RouteMarker(s, width);
+  if (marker.visible && marker.direction) {
+    // Edge compass stays above the actors and clear of the dialogue/notice
+    // overlays. The existing native ground marker still identifies arrival.
+    ctx.save(); ctx.translate(camera, 0); ctx.fillStyle = '#101820e8'; ctx.beginPath(); ctx.arc(marker.x, 235, 19, 0, Math.PI * 2); ctx.fill();
+    ctx.textAlign = 'center'; ctx.fillStyle = '#e4cf96'; ctx.font = 'bold 23px sans-serif'; ctx.fillText(marker.direction < 0 ? '←' : '→', marker.x, 243);
+    ctx.font = '10px sans-serif'; ctx.fillText('REPÈRE', marker.x, 269); ctx.restore();
+  }
+  if (s.phase === 'combat' && s.evasion) {
+    ctx.save(); ctx.translate(camera, 0); ctx.textAlign = 'left'; ctx.fillStyle = '#101820ed'; ctx.fillRect(10, 63, 160, 35);
+    ctx.font = 'bold 12px sans-serif'; ctx.fillStyle = '#ebd7ac'; ctx.fillText(s.evasion.ticks ? 'ESQUIVE' : s.evasion.cooldown ? 'ESQUIVE · RÉCUPÉRATION' : 'ESQUIVE · PRÊTE', 18, 82);
+    ctx.fillStyle = '#e4cf96'; ctx.fillRect(18, 88, 140 * (1 - s.evasion.cooldown / SOLO_V92_EVASION.recovery), 3); ctx.restore();
   }
   ctx.restore();
 }

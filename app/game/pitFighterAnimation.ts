@@ -1,3 +1,4 @@
+import { getPitCombatFighterDefinition } from './systems/pitCombat';
 /**
  * Deterministic presentation adapter for THE PIT. Poses never change combat
  * positions, hitboxes, action timing, damage, saves or replay inputs.
@@ -11,7 +12,6 @@ import {
   type HunterRigInput,
 } from "./hunterRig";
 import {
-  PIT_FIGHTERS,
   PIT_TICK_RATE,
   type PitFighterState,
 } from "./systems/pitCombat";
@@ -107,7 +107,7 @@ function actionPose(
   fighter: PitFighterState,
 ): { pose: KeyPose; motion: string; bladeExtension: number; aimAngle?: number; recoil?: number } {
   const action = fighter.action!;
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const stage: ActionStage = fighter.phase === "active"
     ? "active"
     : fighter.phase === "recovery" ? "recovery" : "startup";
@@ -197,7 +197,7 @@ export function resolvePitFighterAnimation(
   const tick = Number.isFinite(simulationFrame) ? Math.max(0, Math.floor(simulationFrame)) : 0;
   const cycle = tick / 32 * Math.PI * 2;
   const speed = Math.abs(fighter.velocityX) * PIT_TICK_RATE;
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   let motion = "idle";
   let pose: KeyPose = { joints: { ...READY.joints } };
   let bladeExtension = 0;

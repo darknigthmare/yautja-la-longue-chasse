@@ -49,6 +49,8 @@ const bundled=await build({stdin:{contents:`
  export {default} from './app/visual-qa-v90/client'; export * from './app/visual-qa-v90/client';
  export {default as RealSceneV77} from './app/game/HomeworldWorldSceneV77';
  export * from './app/game/systems/homeworldEcotonesV90';
+ export * from './app/game/systems/homeworldStreetCompositionQaV92';
+ export * from './app/game/systems/homeworldStreetCompositionV92';
  export {HOMEWORLD_LEVELS_V77,HOMEWORLD_CONNECTIONS_V77,HOMEWORLD_REGIONAL_DOCKS_V77,HOMEWORLD_WORLD_V77,homeworldCameraWorldV77,homeworldLevelV77,homeworldWalkableV77,projectHomeworldWorldV77} from './app/game/systems/homeworldWorldV77';
  export {HOMEWORLD_GEOMETRY_V64} from './app/game/systems/homeworldGeometryV64';`,resolveDir:process.cwd()},
  bundle:true,write:false,format:'cjs',platform:'node',external:['react'],logLevel:'silent',plugins:[{name:'test-css-modules',setup(builder){
@@ -85,9 +87,9 @@ test('real proxy next response is local-only and the same module rereads runtime
  assert.equal(proxy.proxy(request).status,404);
 });
 
-test('installed Next proxy matcher applies only to the visual QA route and descendants, never the game or assets',()=>{
- const {config}=proxyGate({});assert.equal(config.matcher,'/visual-qa-v90/:path*');
- for(const url of ['/visual-qa-v90','/visual-qa-v90?YAUTJA_LOCAL_VISUAL_QA_V90=1','/visual-qa-v90/child'])
+test('installed Next proxy matcher applies only to local QA routes and descendants, never the game or assets',()=>{
+ const {config}=proxyGate({});assert.deepEqual(Array.from(config.matcher),['/visual-qa-v90/:path*','/solo-qa-v92/:path*','/clan-war-qa-v92/:path*']);
+ for(const url of ['/visual-qa-v90','/visual-qa-v90?YAUTJA_LOCAL_VISUAL_QA_V90=1','/visual-qa-v90/child','/solo-qa-v92','/solo-qa-v92/child','/clan-war-qa-v92','/clan-war-qa-v92/child'])
   assert.equal(unstable_doesMiddlewareMatch({config,nextConfig:{},url}),true,url);
  for(const url of ['/','/pit-lab','/rig-lab','/api/save','/_next/static/renderer.js','/game/homeworld/native.png','/visual-qa-v90-other','/somewhere/visual-qa-v90'])
   assert.equal(unstable_doesMiddlewareMatch({config,nextConfig:{},url}),false,url);
@@ -123,6 +125,18 @@ test('native camera and projection are retained; panorama rescales only the obse
  }
 });
 
+test('sixteen V92 observational fixtures identify admitted instances and keep native working faces or existing approaches',()=>{
+ assert.equal(api.VISUAL_QA_FIXTURES_V92.length,16);
+ for(const fixture of api.VISUAL_QA_FIXTURES_V92){
+  const members=api.HOMEWORLD_STREET_COMPOSITION_PROPS_V92.filter(item=>'composition-v92:'+item.compositionId===fixture.id);
+  assert(members.length);assert.deepEqual([...fixture.memberIds],Array.from(members,item=>item.id));
+  assert.equal(fixture.anchorElementId,members[0].id);assert.deepEqual({...fixture.anchor},{x:members[0].x,y:members[0].y});
+  assert.equal(fixture.levelId,members[0].levelId);assert(!('patch' in fixture));
+  const view=api.visualQaSceneViewV90(fixture,'arrival',fixture.levelId,{width:1280,height:720},'follow',{x:0,y:0});
+  assert.deepEqual({...view.camera},{...api.homeworldCameraWorldV77(fixture.arrival,fixture.levelId,{width:1280,height:720})});
+ }
+});
+
 test('actual React SSR mounts the real scene and its native ecotone material references without browser storage',()=>{
  const html=renderToStaticMarkup(React.createElement(api.default));
  assert.match(html,/QA visuelle synthétique · aucune sauvegarde\/campagne/);
@@ -151,7 +165,7 @@ function controlsHarness(){
 
 test('real local selectors pass fixture, level, actor, camera and routine time to the exact scene without campaign handlers',()=>{
  const ui=controlsHarness();assert(ui.scene());
- for(const fixture of api.VISUAL_QA_FIXTURES_V90){
+ for(const fixture of [...api.VISUAL_QA_FIXTURES_V90,...api.VISUAL_QA_FIXTURES_V92]){
   ui.find('data-visual-qa-fixture').props.onChange({target:{value:fixture.id}});
   const scene=ui.scene();assert.strictEqual(scene.type,api.RealSceneV77);assert.equal(scene.props.levelId,fixture.levelId);assert.deepEqual({...scene.props.actor},{...fixture.arrival});
   assert.equal(scene.props.activeDoorId,null);assert.equal(scene.props.activePointId,null);assert.equal(scene.props.transit,null);assert.equal(scene.props.liftStateV83,null);

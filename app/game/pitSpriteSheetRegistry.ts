@@ -2,9 +2,11 @@ import type { PitSpriteSheetAnimationDefinition } from "./pitSpriteSheetAnimatio
 import nativeV62 from './data/pitUserAnimationsV62.json';
 import nativeV63 from './data/pitUserAnimationsV63.json';
 import nativeV91 from './data/pitUserAnimationsV91.json';
+import nativeV92 from './data/pitUserAnimationsV92.json';
 
 /** V32/V33: reviewed, independently drawn facings; uncovered states retain an honest drawn-pose fallback. */
 export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefinition[] = [
+  ...(nativeV92 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(nativeV91 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(nativeV63 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(nativeV62 as unknown as readonly PitSpriteSheetAnimationDefinition[]),

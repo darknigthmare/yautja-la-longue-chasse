@@ -13,6 +13,7 @@ import {HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80} from './homeworldCivicArchitectu
 import {HOMEWORLD_PORT_SHOULDER_CODEX_V80} from './homeworldPortShouldersV80';
 import {HOMEWORLD_STREET_DECOR_CODEX_V83} from './homeworldStreetDecorCodexV83';
 import {HOMEWORLD_STREET_DECOR_CODEX_V84} from './homeworldStreetDecorCodexV84';
+import {HOMEWORLD_STREET_COMPOSITION_CODEX_V92} from './homeworldStreetCompositionCodexV92';
 import {homeworldNaturalRecordPlacementV80} from './homeworldNaturalPlacementsV80';
 import {homeworldEcotoneRecordV90} from './homeworldEcotonesV90';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
@@ -179,6 +180,7 @@ export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64
   // V84 mounts after older city props and keeps the same exact world placement
   // for collision/render/codex. Rejected candidates remain authoring panels.
   ...HOMEWORLD_STREET_DECOR_CODEX_V84,
+  ...HOMEWORLD_STREET_COMPOSITION_CODEX_V92,
   // Routine paths are taken directly from transformed V77 residents.
   // They describe the live pose provider without creating a duplicate NPC.
   ...HOMEWORLD_CIVILIAN_ROUTINE_ELEMENT_CODEX_V84,

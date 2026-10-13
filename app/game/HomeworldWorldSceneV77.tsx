@@ -36,6 +36,8 @@ import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_STREET_DECOR_ART_V83,HOMEWORLD_STREET_DECOR_PROPS_V83} from './systems/homeworldStreetDecorV83';
 import {HOMEWORLD_STREET_DECOR_ART_V84} from './systems/homeworldStreetDecorV84';
 import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './systems/homeworldStreetDecorMountV84';
+import {HOMEWORLD_STREET_COMPOSITION_ART_V92,homeworldStreetCompositionOpacityV92,homeworldCityFurnitureOpacityV92} from './systems/homeworldStreetCompositionV92';
+import {HOMEWORLD_STREET_COMPOSITION_PROPS_V92} from './systems/homeworldStreetCompositionMountV92';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
 const publicNaturalGround=HOMEWORLD_NATURAL_PUBLIC_GROUND_V85;
@@ -49,6 +51,8 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
+ const residentPoses=[...HOMEWORLD_RESIDENTS_V77,...HOMEWORLD_URBAN_EXTRAS_V78].filter(resident=>painted(resident.levelId)).map(resident=>({resident,pose:homeworldResidentPoseV77(resident,seconds)}));
+ const furnitureOccupants=[{...actor,levelId},...residentPoses.map(({resident,pose})=>({...pose,levelId:resident.levelId}))];
  const depth=(level:HomeworldLevelV77,y:number,extraElevation=0)=>homeworldSceneDepthV78(y,homeworldLevelV77(level).elevation+extraElevation);
  const prop=(key:string,artId:string,art:Parameters<typeof HomeworldNativePropV64>[0]['art'],point:{x:number;y:number},level:HomeworldLevelV77,heightWorld:number,opacity=1,extraElevation=0)=>{
   const p=homeworldProjectGroundV64(point,homeworldLevelV77(level).elevation+extraElevation),scale=heightWorld/art.alphaBounds.height;
@@ -111,11 +115,12 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {HOMEWORLD_PROPS_V77.filter(item=>painted(item.levelId)).map(item=>item.artId?prop(item.id,item.artId,HOMEWORLD_PROP_ART_V64[item.artId],item,item.levelId,item.height,item.levelId===levelId&&shouldFadeHomeworldForeground(item,actor)?.2:1):null)}
   {[...HOMEWORLD_FRONTAGE_V77,...HOMEWORLD_CONNECTION_FURNITURE_V77].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_FURNITURE_ART_V72[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*(item.scale??1));})}
   {[...HOMEWORLD_EXTERIOR_V77,...HOMEWORLD_URBAN_PROPS_V78].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_COURT_ART_V80[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*item.scale,1,item.elevation??0);})}
-  {HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CITY_NATIVE_ART_V78[item.artId];return prop(item.id,'city-native-v78:'+item.artId,art,item,item.levelId,art.heightWorld);})}
+  {HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CITY_NATIVE_ART_V78[item.artId];return prop(item.id,'city-native-v78:'+item.artId,art,item,item.levelId,art.heightWorld,homeworldCityFurnitureOpacityV92(item,art,furnitureOccupants));})}
   {HOMEWORLD_RETAINING_SUPPORTS_V82.filter(support=>painted(support.levelId)).map(support=><HomeworldRetainingSupportV82 key={support.id} support={support} camera={camera}/>)}
   {HOMEWORLD_CIVIC_PROPS_V80.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_CIVIC_ART_V80[item.artId];return prop(item.id,'civic-native-v80:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_DECOR_PROPS_V83.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V83[item.artId];return prop(item.id,'street-native-v83:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_DECOR_PROPS_V84.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V84[item.artId];return prop(item.id,'street-native-v84:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
+  {HOMEWORLD_STREET_COMPOSITION_PROPS_V92.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_COMPOSITION_ART_V92[item.artId];return prop(item.id,'street-composition-v92:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale,homeworldStreetCompositionOpacityV92(item,actor,levelId));})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{
@@ -123,13 +128,14 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    if(!visible({left:p.x-100,top:p.y-160,width:200,height:190},camera))return null;
    return <div key={point.id} data-world-point-v77={point.id} data-world-level-v77={point.levelId} style={{position:'absolute',inset:0,pointerEvents:'none',transform:`translateY(${-z}px)`,zIndex:depth(point.levelId,point.y)}}><HomeworldPointVisualV64 point={point} active={point.id===activePointId&&point.levelId===levelId} youthWelcome={youthWelcome}/></div>;
   })}
-  {[...HOMEWORLD_RESIDENTS_V77,...HOMEWORLD_URBAN_EXTRAS_V78].filter(resident=>painted(resident.levelId)).map(resident=>{
-   const pose=homeworldResidentPoseV77(resident,seconds),p=homeworldProjectGroundV64(pose,homeworldLevelV77(resident.levelId).elevation);
+  {residentPoses.map(({resident,pose})=>{
+   const p=homeworldProjectGroundV64(pose,homeworldLevelV77(resident.levelId).elevation);
    if(!visible({left:p.x-100,top:p.y-130,width:200,height:150},camera))return null;
    if(paintedBuildings.some(b=>{if(b.levelId!==resident.levelId||pose.y>=homeworldBuildingRenderDepthV76(b,pose))return false;if(b.art.opaqueRowsV76)return homeworldBuildingCoversPaintV76(b,pose);const bounds=homeworldBuildingVisibleBoundsV72(b),foot=homeworldProjectGroundV64(pose);return foot.x>bounds.left&&foot.x<bounds.left+bounds.width&&foot.y>bounds.top&&foot.y<bounds.top+bounds.height;}))return null;
    return <span key={resident.id} className={styles.residentV68} data-homeworld-resident={resident.id} data-world-level-v77={resident.levelId}
     data-routine-phase-v84={pose.phase} data-routine-family-v84={pose.routineFamily} data-routine-group-v84={pose.groupId??undefined} data-routine-dwell-v84={pose.dwellRemainingSeconds}
     data-x={pose.x} data-y={pose.y} data-moving={pose.moving} style={{left:p.x,top:p.y,zIndex:depth(resident.levelId,pose.y)}}>
+    <span className={styles.residentShadowV68} aria-hidden="true" data-homeworld-ground-contact-v92={resident.id}/>
     <HomeworldCivilianV72 role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={pose.motionSeconds} reducedMotion={reducedMotion} speed={resident.speed}/>
    </span>;
   })}

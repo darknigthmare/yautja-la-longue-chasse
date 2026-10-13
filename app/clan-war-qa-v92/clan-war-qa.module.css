@@ -1,0 +1,26 @@
+.page {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  width: 100%;
+  padding: clamp(12px, 2vw, 28px);
+  color: #eee6cf;
+  background: #110f0c;
+}
+
+.header {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  padding: 18px;
+  border: 1px solid #665332;
+  border-radius: 8px;
+  background: #201b13;
+}
+
+.header h1 {
+  margin: 8px 0;
+  font-size: clamp(20px, 3vw, 30px);
+}
+
+.header p {
+  line-height: 1.5;
+}

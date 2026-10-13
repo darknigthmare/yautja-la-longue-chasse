@@ -1,0 +1,260 @@
+[
+  {
+    "id": "arsenal",
+    "label": "Arsenal — outils prêtés",
+    "sourceFile": "campaign-played-arsenal.json",
+    "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "checkpoint": {
+      "version": 1,
+      "phase": "arsenal",
+      "tick": 1,
+      "phaseStartedAt": 1,
+      "walked": 0,
+      "player": {
+        "x": 160,
+        "y": 430,
+        "vx": 0,
+        "vy": 0,
+        "facing": 1
+      },
+      "companions": [
+        {
+          "x": 107
+        },
+        {
+          "x": 65
+        }
+      ],
+      "roleMode": "follow",
+      "contributions": {
+        "player": 0,
+        "saar": 0,
+        "vek": 0
+      },
+      "observedCycles": 0,
+      "drone": {
+        "x": 3130,
+        "hp": 8,
+        "mode": "watch",
+        "age": 0,
+        "cycles": 0
+      },
+      "health": 6,
+      "hurtTimer": 0,
+      "attackTimer": 0,
+      "attackCooldown": 0,
+      "acid": {
+        "x": 3130,
+        "ttl": 0
+      },
+      "scan": 0,
+      "result": null,
+      "inputArmed": false,
+      "previousJump": false,
+      "previousInteract": false,
+      "previousCommand": false,
+      "milestones": {
+        "training-briefed": 1
+      },
+      "replay": []
+    }
+  },
+  {
+    "id": "combat",
+    "label": "Combat — formation et annonce",
+    "sourceFile": "campaign-played-combat.json",
+    "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "checkpoint": {
+      "version": 1,
+      "phase": "combat",
+      "tick": 1634,
+      "phaseStartedAt": 1634,
+      "walked": 2429,
+      "player": {
+        "x": 2589,
+        "y": 430,
+        "vx": 0,
+        "vy": 0,
+        "facing": 1
+      },
+      "companions": [
+        {
+          "x": 2360
+        },
+        {
+          "x": 2798
+        }
+      ],
+      "roleMode": "posts",
+      "contributions": {
+        "player": 0,
+        "saar": 0,
+        "vek": 0
+      },
+      "observedCycles": 3,
+      "drone": {
+        "x": 2985,
+        "hp": 8,
+        "mode": "recover",
+        "age": 0,
+        "cycles": 3
+      },
+      "health": 6,
+      "hurtTimer": 0,
+      "attackTimer": 0,
+      "attackCooldown": 0,
+      "acid": {
+        "x": 3130,
+        "ttl": 0
+      },
+      "scan": 0,
+      "result": null,
+      "inputArmed": false,
+      "previousJump": false,
+      "previousInteract": false,
+      "previousCommand": false,
+      "milestones": {
+        "training-briefed": 1,
+        "loaned-tools-checked": 222,
+        "roles-positioned": 984,
+        "target-observed": 1634
+      },
+      "replay": []
+    }
+  },
+  {
+    "id": "dodge",
+    "label": "Esquive — première frame rejouée",
+    "sourceFile": "campaign-played-dodge.json",
+    "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "checkpoint": {
+      "version": 1,
+      "phase": "combat",
+      "tick": 1635,
+      "phaseStartedAt": 1634,
+      "walked": 2434.2,
+      "player": {
+        "x": 2583.8,
+        "y": 430,
+        "vx": -5.2,
+        "vy": 0,
+        "facing": -1
+      },
+      "companions": [
+        {
+          "x": 2360
+        },
+        {
+          "x": 2798
+        }
+      ],
+      "roleMode": "posts",
+      "contributions": {
+        "player": 0,
+        "saar": 0,
+        "vek": 0
+      },
+      "observedCycles": 3,
+      "drone": {
+        "x": 2990,
+        "hp": 8,
+        "mode": "recover",
+        "age": 1,
+        "cycles": 3
+      },
+      "health": 6,
+      "hurtTimer": 0,
+      "attackTimer": 0,
+      "attackCooldown": 0,
+      "acid": {
+        "x": 3130,
+        "ttl": 0
+      },
+      "scan": 0,
+      "result": null,
+      "inputArmed": true,
+      "previousJump": false,
+      "previousInteract": false,
+      "previousCommand": false,
+      "evasion": {
+        "ticks": 23,
+        "cooldown": 60,
+        "direction": -1,
+        "previousDodge": true
+      },
+      "milestones": {
+        "training-briefed": 1,
+        "loaned-tools-checked": 222,
+        "roles-positioned": 984,
+        "target-observed": 1634
+      },
+      "replay": []
+    }
+  },
+  {
+    "id": "complete",
+    "label": "Débriefing — résultat synthétique",
+    "sourceFile": "campaign-played-complete.json",
+    "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "checkpoint": {
+      "version": 1,
+      "phase": "complete",
+      "tick": 7047,
+      "phaseStartedAt": 7047,
+      "walked": 17545.5,
+      "player": {
+        "x": 163.5,
+        "y": 430,
+        "vx": 0,
+        "vy": 0,
+        "facing": -1
+      },
+      "companions": [
+        {
+          "x": 98
+        },
+        {
+          "x": 98
+        }
+      ],
+      "roleMode": "follow",
+      "contributions": {
+        "player": 8,
+        "saar": 8,
+        "vek": 8
+      },
+      "observedCycles": 3,
+      "drone": {
+        "x": 2590,
+        "hp": 0,
+        "mode": "dead",
+        "age": 0,
+        "cycles": 21
+      },
+      "health": 6,
+      "hurtTimer": 0,
+      "attackTimer": 0,
+      "attackCooldown": 0,
+      "acid": {
+        "x": 2590,
+        "ttl": 0
+      },
+      "scan": 0,
+      "result": "success",
+      "inputArmed": false,
+      "previousJump": false,
+      "previousInteract": false,
+      "previousCommand": false,
+      "milestones": {
+        "training-briefed": 1,
+        "loaned-tools-checked": 222,
+        "roles-positioned": 984,
+        "target-observed": 1634,
+        "training-resolved": 6147,
+        "triad-returned": 6987,
+        "training-reported": 7047
+      },
+      "replay": []
+    }
+  }
+]

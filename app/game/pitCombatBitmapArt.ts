@@ -1,7 +1,7 @@
 import { getPitUserVariant, normalizePitUserVariant } from './systems/pitUserRoster';
 import originalArtV56 from './data/pitOriginalFighterArtV56.json';
 import { isPitOriginalFighterIdV56 } from './systems/pitOriginalFightersV56';
-import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
+import { getPitCombatFighterDefinition, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import {
   drawPitSpriteSheetAnimation, drawPitSpriteSheetHold, drawPitSpriteSheetPresentation, resolvePitSpriteSheetPresentation, loadPitSpriteSheetAnimations, resolvePitSpriteSheetAnimation, resolvePitSpriteSheetHold, getPitSpriteSheetAnimationVisualBounds,
@@ -91,7 +91,7 @@ export function getPitCombatBitmapVisualBounds(
   const art = getPitCombatBitmapArtDefinition(fighter.definitionId, fighter.variantId);
   // Atlas-only duelists still need their full authored silhouette in the camera envelope.
   if (!art) return getPitSpriteSheetAnimationVisualBounds(fighter, groundY, registry);
-  const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / (art.pivot[1] - art.bodyTopY);
+  const scale = getPitCombatFighterDefinition(fighter).bodyHeight / (art.pivot[1] - art.bodyTopY);
   const direction = art.nativeFacing === "neutral" ? 1 : art.nativeFacing === "right" ? fighter.facing : -fighter.facing;
   const bounds = {
     x: fighter.x - (direction === 1 ? art.pivot[0] : art.width - art.pivot[0]) * scale,
@@ -280,7 +280,7 @@ export async function loadPitCombatBitmapArt(
 /** Same selected drawing and scale as the renderer; no collision or fighter writes. */
 export function getPitCombatGroundFootprint(bank: PitCombatBitmapArtBank | null, fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {}): { x: number; halfWidth: number } {
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const fallback = { x: fighter.x, halfWidth: definition.bodyWidth * .72 };
   if (!bank || bank.cancelled) return fallback;
   const presentation = resolvePitSpriteSheetPresentation(bank.spriteSheets, fighter, options);
@@ -327,7 +327,7 @@ export function drawPitCombatBitmapFighter(
     !Number.isFinite(fighter.x) || !Number.isFinite(fighter.y) || !Number.isFinite(groundY) ||
     (fighter.facing !== -1 && fighter.facing !== 1)) return false;
   const art = getPitCombatBitmapArtDefinition(fighter.definitionId, fighter.variantId)!;
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const treatment = cue ? getPitFighterPresentationTreatment(cue) : null;
   const scale = definition.bodyHeight / (art.pivot[1] - art.bodyTopY) * (treatment?.scale ?? 1);
   const direction = art.nativeFacing === "neutral" ? 1 : art.nativeFacing === "right" ? fighter.facing : -fighter.facing;

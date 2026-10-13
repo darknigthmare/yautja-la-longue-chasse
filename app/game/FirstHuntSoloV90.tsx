@@ -8,7 +8,7 @@ import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { drawFirstHuntSoloV90, loadTrainingArtV90 } from "./firstHuntSoloV90Rendering";
-import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, type SoloV90State, type SoloV90Receipt } from "./systems/firstHuntSoloV90";
+import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt } from "./systems/firstHuntSoloV90";
 import styles from "./FirstHuntSoloV90.module.css";
 
 export interface FirstHuntSoloV90Props {
@@ -18,7 +18,7 @@ export interface FirstHuntSoloV90Props {
   onProgress(receipts: readonly SoloV90Receipt[], state: SoloV90State): Promise<boolean>;
   onExit(): void | Promise<void>; onReturnToCity(): Promise<boolean>; onOpenSettings?(): void;
 }
-const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["blade", "Lame / Signal"], ["interact", "Interagir"]] as const;
+const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["dodge", "Esquive"], ["blade", "Lame / Signal"], ["interact", "Interagir"]] as const;
 /** The owner commits every receipt before simulation resumes. A rejected checkpoint stays mounted. */
 export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   const [initial] = useState(() => normalizeSoloV90State(props.checkpoint));
@@ -107,7 +107,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
         accumulated += elapsed; let steps = 0;
         while (accumulated >= 1000 / 60 && steps++ < 6) {
           accumulated -= 1000 / 60; const prior = stateRef.current!;
-          const output = stepSoloV90(stateRef.current!, { move: sample.actions.move, jump: sample.actions.jump, interact: sample.actions.interact, command: sample.actions.blade }, { assetsReady: true, pageVisible: true, paused: false });
+          const output = stepSoloV90(stateRef.current!, { move: sample.actions.move, jump: sample.actions.jump, dodge: sample.actions.dodge, interact: sample.actions.interact, command: sample.actions.blade }, { assetsReady: true, pageVisible: true, paused: false });
           stateRef.current = output.state; changed ||= output.state.phase !== prior.phase;
           // Existing sounds follow physical simulation events; a receipt's
           // objective/victory cue belongs to its durable confirmation above.
@@ -119,6 +119,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
           if (next.roleMode !== prior.roleMode) audio?.ui();
           if (next.drone.mode === "telegraph" && prior.drone.mode !== "telegraph") audio?.enemyAlert();
           if (next.health === 0 && prior.health > 0) audio?.defeat();
+          if (next.evasion?.ticks === SOLO_V92_EVASION.duration && !prior.evasion?.ticks) audio?.ui();
           if (output.receipts.length) { pending.current = output; audio?.setMuted(true); setPendingUi(true); accumulated = 0; clear(); void submit(); break; }
           if (soloV90NeedsImmediateCheckpoint(prior, output.state)) {
             lastSaveTick = output.state.tick;
@@ -149,20 +150,27 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     finally { busy.current = false; if (mounted.current) setSaving(false); }
   };
   const objective = state ? soloV90Objective(state) : null;
-  const spoken = state?.phase === "briefing" ? "Saar prépare l’approche. Vek tient l’ouverture. Tu choisis la frappe, ou le repli. Aucun exercice ne remplace le rite." : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "";
+  const evaluation = state ? soloV92Evaluation(state) : null;
+  const spoken = state?.phase === "briefing" ? "Saar prépare l’approche. Vek tient l’ouverture. Tu choisis la frappe, ou le repli. Aucun exercice ne remplace le rite."
+    : state?.phase === "arsenal" ? "Le vétéran : vérifie chaque outil du prêt. Ces outils restent ceux de cette galerie ; leur contrôle ne devient pas une dotation personnelle."
+    : state?.phase === "assemble" ? "Saar : donne le signal lorsque tu es prêt. Nous allons à nos postes à pied. Attends Vek avant de confirmer la formation."
+    : state?.phase === "observe" ? "Vek : lis l’annonce, la charge puis le retrait. Regarde trois cycles depuis ce repère avant d’engager le combat."
+    : state?.phase === "return" ? state.result === "assisted" ? "Saar : reste là. Je viens à ton côté. Nous rentrons ensemble ; une blessure ne disparaît pas parce que l’exercice est fini." : "Le vétéran attend notre retour. Gardons le même résultat dans le rapport, qu’il s’agisse d’une réussite ou d’un repli."
+    : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "";
   const modal = !state || !!artError || paused || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
-  const notice = state && soloV90ObservationPostReady(state) ? "VUE DE DÉMONSTRATION · Ta position reste au repère. Maintiens Interaction pour lire le cycle ; marcher reprend ta caméra." : state?.phase === "return" && state.result === "assisted" ? "EXTRACTION AIDÉE · Saar doit t’atteindre avant de marcher. Vitalité conservée à zéro." : state?.phase === "combat" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE · saute ou recule, puis frappe pendant le retrait." : "";
+  const notice = state && soloV90ObservationPostReady(state) ? "VUE DE DÉMONSTRATION · Ta position reste au repère. Maintiens Interaction pour lire le cycle ; marcher reprend ta caméra." : state?.phase === "return" && state.result === "assisted" ? "EXTRACTION AIDÉE · Saar doit t’atteindre avant de marcher. Vitalité conservée à zéro." : state?.phase === "combat" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE · saute, recule ou esquive au bon moment ; frappe pendant le retrait." : "";
   return <section className={styles.screen} data-solo-v90 data-solo-step={state?.phase ?? "invalid"}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · PRÉPARATION DE TRIADE · COMBAT DE SEUIL</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
-    <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{state.player.x < 1200 ? "Vestibule du témoin" : state.player.x < 2200 ? "Galerie de préparation" : "Combat de seuil"}</span><span>{state.result ?? "Tentative en cours"}</span><span>Contributions {state.contributions.player} / {state.contributions.saar} / {state.contributions.vek}</span><span>Vitalité {state.health}/6</span>{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{state.player.x < 1200 ? "Vestibule du témoin" : state.player.x < 2200 ? "Galerie de préparation" : "Combat de seuil"}</span><span>{evaluation?.result ?? "Tentative en cours"}</span><span>Contributions {state.contributions.player} / {state.contributions.saar} / {state.contributions.vek}</span><span>Vitalité {state.health}/6</span>{saving && <span role="status">Enregistrement…</span>}</div>}</div>
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Galerie jouable de préparation : marche, saut, postes de triade, lecture du drone, combat, repli et retour réel." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
     {touchUi && <div className={styles.controls} aria-label="Commandes tactiles de la préparation de triade">{BUTTONS.map(([action, label]) => <button type="button" key={action} data-solo-action={action} disabled={!!modal || !!props.externallyPaused || pendingUi} onPointerDown={e => setTouch(action, true, e)} onPointerUp={() => setTouch(action, false)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)} onBlur={() => setTouch(action, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(action, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(action, false); } }}>{label}</button>)}</div>}
-    <p className={styles.keys}>Marcher {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)} · Saut {controlActionShortcut(YOUTH_CONTROL_ACTIONS.jump, props.bindings)} · Lame / Signal {controlActionShortcut(YOUTH_CONTROL_ACTIONS.blade, props.bindings)} · Interagir {controlActionShortcut(YOUTH_CONTROL_ACTIONS.interact, props.bindings)} · Manette : croix/stick, A, Y, LB</p>
+    <p className={styles.keys}>Marcher {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)} · Saut {controlActionShortcut(YOUTH_CONTROL_ACTIONS.jump, props.bindings)} · Esquive {controlActionShortcut(YOUTH_CONTROL_ACTIONS.dodge, props.bindings)} · Lame / Signal {controlActionShortcut(YOUTH_CONTROL_ACTIONS.blade, props.bindings)} · Interagir {controlActionShortcut(YOUTH_CONTROL_ACTIONS.interact, props.bindings)} · Manette : croix/stick, A, B, Y, LB</p>
     {modal && !props.externallyPaused && <div className={styles.overlay}><div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={state?.phase === "complete" ? "Évaluation terminée" : "Pause et sauvegarde"} onKeyDown={e => {
       if (e.key === "Escape" && paused && !pendingUi) { e.preventDefault(); resume(); }
       if (e.key === "Tab") { const nodes = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")); if (!nodes.length) return; const first = nodes[0], last = nodes[nodes.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
     }}><h2>{state?.phase === "complete" ? "Évaluation conservée" : "Préparation de triade · Combat de seuil"}</h2>
       {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <p>Le vétéran reçoit uniquement le résultat observé de cet entraînement, les contributions et les blessures. Tu restes Young Blood : la vraie épreuve Quatza-Rij, le retour de reconnaissance et le marquage Blooded ne sont pas validés ici.</p> : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
+      {evaluation && <dl aria-label="Évaluation factuelle de la triade" data-solo-v92-evaluation><dt>Issue observée</dt><dd>{evaluation.result}</dd><dt>Coups portés par la formation</dt><dd>Jeune {evaluation.contributions.player} · Saar {evaluation.contributions.saar} · Vek {evaluation.contributions.vek}</dd><dt>Vitalité au retour</dt><dd>{evaluation.health}/6 · {evaluation.injury}</dd><dt>Remise au vétéran</dt><dd>{evaluation.reported ? "Rapport enregistré" : "Rapport à remettre en personne"}</dd></dl>}
       {(saveError || props.persistenceError) && <p className={styles.error} role="alert">{saveError || props.persistenceError}</p>}{artError && <p className={styles.error} role="alert">{artError}</p>}
       <nav>{!state ? <button type="button" onClick={() => void props.onExit()}>Retour au menu</button> : <>
         {artError && <button type="button" onClick={() => { setArtError(""); setLoadAttempt(a => a + 1); }}>Recharger les images</button>}

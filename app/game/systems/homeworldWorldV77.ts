@@ -21,6 +21,7 @@ import {HOMEWORLD_RETAINING_SUPPORTS_V82,homeworldRetainingTouchesV82} from './h
 import {homeworldTransitFractionsV82} from './homeworldTransitJourneyV82';
 import {configureHomeworldStreetDecorV83,homeworldStreetDecorCollisionV83} from './homeworldStreetDecorV83';
 import {homeworldStreetDecorCollisionV84,type HomeworldStreetDecorReserveV84,type HomeworldStreetDecorPlacementInputV84} from './homeworldStreetDecorV84';
+import {homeworldStreetCompositionCollisionV92} from './homeworldStreetCompositionV92';
 import {HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78} from './homeworldUrbanLayoutV78';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 
@@ -121,6 +122,10 @@ export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
  ...road('marsh-road-rejoin','0',[{x:6300,y:2080},{x:6540,y:2150}],280),
  ...road('port-marches-road','0',[{x:7600,y:3300},{x:6500,y:3200},{x:6500,y:2400},{x:7000,y:2360}],300),
  ...road('jungle-road-rejoin','0',[{x:2450,y:1200},{x:2900,y:1100},{x:2900,y:250}],280),
+ // The Trois Vents cornice belongs to +1. Its legacy Pillars approach is
+ // ground-floor terrain, so the Council needs its own visible, solid rejoin.
+ // Retain every sanctuary/audience collider instead of cutting through them.
+ ...road('council-storm-rejoin','+1',[{x:4600,y:500},{x:4600,y:120},{x:4200,y:120},{x:4140,y:160}],180),
  ...road('reserve-high-viaduct','+1',[{x:4880,y:2110},{x:5200,y:2700},{x:6000,y:3000},{x:6580,y:3440}],320),
  {id:'council-gallery-ground',label:'Galerie du Conseil',levelId:'+1' as const,polygon:rect(2800,320,5300,2500)},
  {id:'council-stair-lower-landing',label:'Palier de l’escalier du Conseil',levelId:'0' as const,polygon:rect(4162,2792,4838,3008)},
@@ -167,6 +172,7 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
  return[[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>{const p={x:point.x+x*Math.max(0,body.halfWidth),y:point.y+y*Math.max(0,body.halfDepth)};return regions.some(g=>p.x>=g.left&&p.x<=g.right&&p.y>=g.top&&p.y<=g.bottom&&pointInHomeworldPolygon(p,g.polygon));});
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
+ const compositionV92=homeworldStreetCompositionCollisionV92(levelId,point,body);if(compositionV92)return{kind:'prop',id:compositionV92};
  const streetDecorV84=homeworldStreetDecorCollisionV84(levelId,point,body);if(streetDecorV84)return{kind:'prop',id:streetDecorV84};
  return homeworldPreservedCollisionV77(levelId,point,body);
 }

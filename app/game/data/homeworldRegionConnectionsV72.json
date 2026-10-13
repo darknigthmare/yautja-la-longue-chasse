@@ -160,15 +160,27 @@
     "name": "Départ des Trois Vents",
     "artId": "processional",
     "material": "slabs",
-    "clearWidth": 200,
+      "clearWidth": 180,
     "nodes": [
       {
-        "x": 3960,
-        "y": 500
+          "x": 2900,
+          "y": 250
       },
       {
-        "x": 3840,
-        "y": 350
+          "x": 3020,
+          "y": 210
+        },
+        {
+          "x": 3260,
+        "y": 210
+      },
+      {
+        "x": 3340,
+        "y": 120
+      },
+      {
+        "x": 3880,
+        "y": 120
       },
       {
         "x": 4140,
@@ -191,7 +203,7 @@
       "x": 3840,
       "y": 800
     },
-    "note": "Corniche haute vers les cols ; les ponts des crêtes appartiennent au trajet régional existant. Pas de ravin fictif sous la cité.",
+      "note": "Corniche nord depuis le départ des Piliers, contournant les socles du sanctuaire et de l’audience. Le passage de 180 unités reste dégagé du banc des Piliers ; dans la cité à étages, une desserte physique du Conseil rejoint la corniche sur son propre étage. Les ponts des crêtes appartiennent au trajet régional existant. Pas de ravin fictif sous la cité.",
     "lore": "original-adaptation",
     "traversal": "existing-region-action",
     "rewards": false
