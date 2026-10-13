@@ -1,12 +1,14 @@
 import type { PitRoundPresentationView } from "./systems/pitRoundPresentation";
 
-export type PitFighterPresentationKind = "intro" | "victory" | "defeat" | "draw" | "waiting" | "ready";
+export type PitFighterPresentationKind = "intro" | "victory" | "defeat" | "draw" | "waiting" | "ready" | "finisher-ready" | "dizzy" | "taunt";
 export interface PitFighterPresentationCue {
   readonly kind: PitFighterPresentationKind;
   readonly elapsedMs: number;
   readonly elapsedTicks: number;
   readonly progress: number;
   readonly reducedMotion: boolean;
+  /** Round and match use the same family without confusing their outcomes. */
+  readonly sourcePhase: PitRoundPresentationView["phase"];
 }
 export interface PitFighterPresentationOptions {
   readonly presentation?: PitRoundPresentationView;
@@ -26,13 +28,23 @@ export function getPitFighterPresentationCue(
     const active = presentation.fighterSlot ?? (presentation.phase === "intro-left" ? 0 : 1);
     kind = slot === active ? "intro" : presentation.phase === "intro-left" ? "waiting" : "ready";
   } else if (presentation.phase === "countdown") kind = "ready";
+  else if (presentation.phase === "fight" && presentation.fighterTaunts?.[slot]) kind = "taunt";
+  else if (presentation.phase === "finisher-window" || presentation.phase === "taunt") {
+    if ((presentation.winnerSlot !== 0 && presentation.winnerSlot !== 1) ||
+        (presentation.phase === "taunt" && presentation.fighterSlot !== presentation.winnerSlot)) return null;
+    kind = slot !== presentation.winnerSlot ? "dizzy"
+      : presentation.phase === "taunt" ? "taunt" : "finisher-ready";
+  }
   else if (presentation.phase === "round-result" || presentation.phase === "match-result") {
     kind = presentation.winnerSlot === 0 || presentation.winnerSlot === 1
       ? presentation.winnerSlot === slot ? "victory" : "defeat" : "draw";
   } else return null;
-  const elapsedMs = Math.min(presentation.elapsedMs, presentation.durationMs);
+  const durationMs = presentation.fighterDurationMs?.[slot] ?? presentation.durationMs;
+  const slotElapsedMs = presentation.fighterElapsedMs?.[slot] ?? presentation.elapsedMs;
+  if (!Number.isFinite(durationMs) || durationMs <= 0 || !Number.isFinite(slotElapsedMs) || slotElapsedMs < 0) return null;
+  const elapsedMs = Math.min(slotElapsedMs, durationMs);
   return { kind, elapsedMs, elapsedTicks: Math.floor(elapsedMs * 60 / 1000),
-    progress: Math.min(1, elapsedMs / presentation.durationMs), reducedMotion };
+    progress: Math.min(1, elapsedMs / durationMs), reducedMotion, sourcePhase: presentation.phase };
 }
 
 export interface PitFighterPresentationTreatment {
@@ -60,6 +72,8 @@ export function getPitFighterPresentationTreatment(
     filter: "none", glow: "#f6d881", glowBlur: 10 };
   if (cue.kind === "defeat") return { scale: 1 - .08 * eased, alpha: 1,
     filter: "grayscale(.72) brightness(.58)", glow: null, glowBlur: 0 };
+  if (cue.kind === "dizzy") return { scale: 1, alpha: 1,
+    filter: "grayscale(.35) brightness(.78)", glow: null, glowBlur: 0 };
   if (cue.kind === "waiting") return { scale: 1, alpha: .65, filter: "none", glow: null, glowBlur: 0 };
   return { scale: 1, alpha: 1, filter: "none", glow: null, glowBlur: 0 };
 }

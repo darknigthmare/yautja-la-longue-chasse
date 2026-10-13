@@ -2,6 +2,7 @@ import { PIT_VERSUS_FIGHTER_IDS } from '../game/systems/pitRosterExpansion';
 import { createPitCombatState, getPitCombatFighterDefinition, getPitCurrentFighterDefinition, PIT_FIGHTERS, type PitFighterId } from '../game/systems/pitCombat';
 import { PIT_SPRITE_SHEET_REGISTRY } from '../game/pitSpriteSheetRegistry';
 import type { HunterSpriteAtlasClip } from '../game/hunterSpriteAtlas';
+import type { PitRoundPresentationView } from '../game/systems/pitRoundPresentation';
 import { getPitFighterVariants, getPitUserVariant, isPitUserFighterId, normalizePitUserVariant } from '../game/systems/pitUserRoster';
 export const PIT_LAB_FIGHTER_IDS = PIT_VERSUS_FIGHTER_IDS;
 /** Every supplied appearance remains inspectable even before its first atlas exists. */
@@ -51,4 +52,21 @@ export function createPitLabFrame(id:PitFighterId, clip:HunterSpriteAtlasClip, f
  else if(clip.id==='pit.stand.hitstun'){tick=Math.ceil(elapsed/total*40);f.phase='hitstun';f.stunFrames=40-tick;}
  combat.frame=tick;
  return {combat,fighter:f,tick,index};
+}
+
+/** Isolated theatre clock for the real presentation renderer. The combat sample
+ * remains untouched: inspection cannot manufacture a victory or a fatality. */
+export function createPitLabPresentationV93(clip: HunterSpriteAtlasClip, frameIndex: number): PitRoundPresentationView | undefined {
+ const kinds = ['intro', 'victory', 'defeat', 'dizzy', 'taunt'] as const;
+ const kind = kinds.find(candidate => clip.id === 'pit.presentation.' + candidate);
+ if (!kind || !Number.isFinite(clip.ticksPerSecond) || clip.ticksPerSecond <= 0 || !clip.frames.length) return undefined;
+ const index = Math.max(0, Math.min(clip.frames.length - 1, Math.floor(Number.isFinite(frameIndex) ? frameIndex : 0)));
+ const elapsedMs = clip.frames.slice(0, index).reduce((sum, frame) => sum + frame.durationTicks, 0) * 1000 / clip.ticksPerSecond;
+ const durationMs = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0) * 1000 / clip.ticksPerSecond;
+ const base = { elapsedMs, durationMs, round: 1, blocksSimulation: true, resultVisible: false };
+ if (kind === 'intro') return { ...base, phase: 'intro-left', fighterSlot: 0 };
+ if (kind === 'victory' || kind === 'defeat') return { ...base, phase: 'round-result', winnerSlot: kind === 'victory' ? 0 : 1, resultVisible: true };
+ if (kind === 'dizzy') return { ...base, phase: 'finisher-window', winnerSlot: 1 };
+ return { ...base, phase: 'fight', blocksSimulation: false, fighterTaunts: [true, false],
+  fighterElapsedMs: [elapsedMs, 0], fighterDurationMs: [durationMs, durationMs] };
 }

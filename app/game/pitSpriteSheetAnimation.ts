@@ -73,6 +73,12 @@ const selectionKey = (id: PitFighterId, variantId?: string | null) => JSON.strin
 const ownsAppearance = (definition: PitSpriteSheetAnimationDefinition, fighter: PitFighterState) =>
   definition.fighterId === fighter.definitionId && definition.variantId === fighter.variantId;
 const finite = (value: number) => Number.isFinite(value);
+/** Preserve exact native tick boundaries after their ms transport. Only a few
+ * floating-point ULPs are snapped; a genuinely earlier time still floors down. */
+function presentationTick(elapsedMs: number, ticksPerSecond: number): number {
+  const ticks = elapsedMs * ticksPerSecond / 1000, nearest = Math.round(ticks);
+  return Math.floor(Math.abs(ticks - nearest) <= Number.EPSILON * Math.max(1, Math.abs(ticks)) * 8 ? nearest : ticks);
+}
 
 function hasValidVisibleBounds(definition: PitSpriteSheetAnimationDefinition): boolean {
   if (definition.visibleFrameBounds === undefined) return true;
@@ -290,7 +296,7 @@ export function resolvePitSpriteSheetPresentation(
       (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const facing = fighter.facing === 1 ? "right" : "left";
   const choices: { id: string; mode: "play" | "first" | "last"; status: PitSpriteSheetPresentationFrame["status"] }[] = [];
-  if (cue.kind === "intro" || cue.kind === "victory" || cue.kind === "defeat") {
+  if (cue.kind === "intro" || cue.kind === "victory" || cue.kind === "defeat" || cue.kind === "dizzy" || cue.kind === "taunt") {
     choices.push({ id: "pit.presentation." + cue.kind, mode: "play", status: "dedicated-animation" });
   } else if (cue.kind === "waiting" || cue.kind === "ready") {
     // Keep the exact reviewed entrance connected to its waiting/countdown pose.
@@ -298,8 +304,8 @@ export function resolvePitSpriteSheetPresentation(
     choices.push({ id: "pit.presentation.intro", mode: cue.kind === "waiting" ? "first" : "last",
       status: "staged-held-pose" });
   }
-  if (cue.kind === "defeat") {
-    // A crouched or idle drawing is a declared held fallback, not a death clip.
+  if (cue.kind === "defeat" || cue.kind === "dizzy") {
+    // A crouched or idle drawing is a declared held fallback, not a death/dizzy clip.
     choices.push({ id: "crouch", mode: "last", status: "staged-held-pose" },
       { id: "idle", mode: "last", status: "staged-held-pose" });
   } else {
@@ -314,11 +320,11 @@ export function resolvePitSpriteSheetPresentation(
         !animation.readyClips.has(clipKey(choice.id, facing))) continue;
     const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, choice.id, facing, 0);
     if (!first) continue;
-    if (choice.id.startsWith("pit.presentation.") && first.clip.loop) continue;
+    if (choice.id.startsWith("pit.presentation.") && choice.id !== "pit.presentation.dizzy" && first.clip.loop) continue;
     const elapsed = choice.mode === "last" || (cue.reducedMotion && choice.status === "dedicated-animation")
       ? Math.max(0, first.totalTicks - 1)
       : choice.mode === "first" || cue.reducedMotion ? 0
-        : Math.floor(cue.elapsedMs * first.clip.ticksPerSecond / 1000);
+        : presentationTick(cue.elapsedMs, first.clip.ticksPerSecond);
     const frame = resolveHunterSpriteAtlasFrame(animation.definition.atlas, choice.id, facing, elapsed);
     if (!frame) continue;
     const source = animation.pages.get(frame.page.id);
@@ -328,6 +334,16 @@ export function resolvePitSpriteSheetPresentation(
     }
   }
   return null;
+}
+
+/** Capability query from the real decoded bank: fallback poses do not authorize
+ * a voluntary gesture. This temporary view never enters the engine or replay. */
+export function pitNativeTauntDurationV93(bank: PitSpriteSheetAnimationBank | null | undefined, fighter: PitFighterState): number | null {
+  const native = resolvePitSpriteSheetPresentation(bank, fighter, { presentation: { phase: "fight", elapsedMs: 0,
+    durationMs: 1000, round: 1, blocksSimulation: false, resultVisible: false, fighterTaunts: [true, true] } });
+  if (!native || native.status !== "dedicated-animation" || native.frame.clip.id !== "pit.presentation.taunt" || native.frame.clip.loop) return null;
+  const durationMs = native.frame.totalTicks * 1000 / native.frame.clip.ticksPerSecond;
+  return Number.isFinite(durationMs) && durationMs > 0 && durationMs <= 10_000 ? durationMs : null;
 }
 
 export function drawPitSpriteSheetPresentation(

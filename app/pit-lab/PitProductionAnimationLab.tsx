@@ -5,35 +5,66 @@ import PitFidelityNoticeV91 from '../game/PitFidelityNoticeV91';
 import LegacyPitAnimationLab from './PitAnimationLab';
 import {PIT_FIGHTERS,type PitFighterId} from '../game/systems/pitCombat';
 import {getPitAuthoredMovesetV92} from '../game/systems/pitAuthoredMovesetsV92';
-import {loadPitSpriteSheetAnimations,resolvePitSpriteSheetAnimation,drawPitSpriteSheetAnimation,resolvePitSpriteSheetHold,drawPitSpriteSheetHold,type PitSpriteSheetAnimationBank} from '../game/pitSpriteSheetAnimation';
-import {PIT_LAB_FIGHTER_IDS,getPitLabDefinitions,getPitLabCoverage,createPitLabFrame,getPitLabFrameTicks,getPitLabAppearances,getPitLabSelectedVariant} from './pitLabProduction';
+import {loadPitSpriteSheetAnimations,resolvePitSpriteSheetAnimation,drawPitSpriteSheetAnimation,resolvePitSpriteSheetPresentation,resolvePitSpriteSheetHold,drawPitSpriteSheetHold,type PitSpriteSheetAnimationBank} from '../game/pitSpriteSheetAnimation';
+import {PIT_LAB_FIGHTER_IDS,getPitLabDefinitions,getPitLabCoverage,createPitLabFrame,createPitLabPresentationV93,getPitLabFrameTicks,getPitLabAppearances,getPitLabSelectedVariant} from './pitLabProduction';
 import styles from './PitAnimationLab.module.css';
+
+// Tiny runtime taxonomy: the exhaustive3MB reference dossier is loaded only
+// when the production directions are opened, never by the fight renderer.
+const lifecycleCategories=[['idle','idle','Repos / garde'],['intro','pit.presentation.intro','Introduction'],
+ ['round-victory','pit.presentation.victory','Victoire de manche'],['round-defeat','pit.presentation.defeat','Défaite de manche'],
+ ['finisher-stunned','pit.presentation.dizzy','Attente de fatalité'],['taunt','pit.presentation.taunt','Provocation']] as const;
 
 export default function PitProductionAnimationLab(){
  const[fighterId,setFighterId]=useState<PitFighterId>('jungle-hunter'),[atlasId,setAtlasId]=useState(''),[clipId,setClipId]=useState('idle'),[facing,setFacing]=useState<'right'|'left'>('right'),[index,setIndex]=useState(0),[playing,setPlaying]=useState(false),[showLegacy,setShowLegacy]=useState(false),[speed,setSpeed]=useState(.5),[message,setMessage]=useState('');
  const[variantId,setVariantId]=useState<string|null>(null);
+ const[showLifecycle,setShowLifecycle]=useState(false),[planModule,setPlanModule]=useState<typeof import('../game/systems/pitPresentationPlansV93')|null>(null);
  const[loaded,setLoaded]=useState<{key:string;bank:PitSpriteSheetAnimationBank}|null>(null);
  const selectedVariant=useMemo(()=>getPitLabSelectedVariant(fighterId,variantId),[fighterId,variantId]),appearances=getPitLabAppearances(fighterId);
  const moveset=getPitAuthoredMovesetV92(fighterId,selectedVariant);
  const appearanceLabel=appearances.find(appearance=>(appearance.id??undefined)===selectedVariant)?.label??'Apparence de combat';
  const canvasRef=useRef<HTMLCanvasElement>(null), definitions=useMemo(()=>getPitLabDefinitions(fighterId,selectedVariant),[fighterId,selectedVariant]);
- const definition=definitions.find(d=>d.atlas.id===atlasId)??definitions[0],key=JSON.stringify([fighterId,selectedVariant??null,definition?.atlas.id??'none']);
+ // Keep the requested family when a costume splits its lifecycle across pages.
+ // An explicitly chosen atlas still wins, including an honestly missing facing.
+ const definition=definitions.find(d=>d.atlas.id===atlasId)??definitions.find(d=>d.atlas.clips.some(c=>c.id===clipId&&c.status==='validated'))??definitions[0],key=JSON.stringify([fighterId,selectedVariant??null,definition?.atlas.id??'none']);
  const bank=loaded?.key===key?loaded.bank:null,coverage=getPitLabCoverage(fighterId,selectedVariant);
  const clipIds=[...new Set(definition?.atlas.clips.filter(c=>c.status==='validated').map(c=>c.id)??[])];
  const selectedId=clipIds.includes(clipId)?clipId:clipIds[0],clip=definition?.atlas.clips.find(c=>c.id===selectedId&&c.facing===facing&&c.status==='validated');
  const currentIndex=Math.min(index,Math.max(0,(clip?.frames.length??1)-1));
  const sample=useMemo(()=>clip?createPitLabFrame(fighterId,clip,currentIndex,selectedVariant):null,[fighterId,clip,currentIndex,selectedVariant]);
- const resolved=useMemo(()=>{if(!bank||!clip||!sample)return null;const baseline=createPitLabFrame(fighterId,clip,0,selectedVariant);resolvePitSpriteSheetAnimation(bank,baseline.fighter,{simulationFrame:0,combat:baseline.combat});return resolvePitSpriteSheetAnimation(bank,sample.fighter,{simulationFrame:sample.tick,combat:sample.combat});},[bank,clip,sample,fighterId,selectedVariant]);
- const held=useMemo(()=>bank&&sample&&!resolved?resolvePitSpriteSheetHold(bank,sample.fighter,{simulationFrame:sample.tick,combat:sample.combat}):null,[bank,sample,resolved]);
- const status=!definition?'missing-atlas':!clip?'missing-clip':!bank?'loading':(resolved||held)?'ready':'unavailable';
+ const presentation=useMemo(()=>clip?createPitLabPresentationV93(clip,currentIndex):undefined,[clip,currentIndex]);
+ const ceremony=useMemo(()=>bank&&sample&&presentation?resolvePitSpriteSheetPresentation(bank,sample.fighter,{presentation}):null,[bank,sample,presentation]);
+ const resolved=useMemo(()=>{if(!bank||!clip||!sample||presentation)return null;const baseline=createPitLabFrame(fighterId,clip,0,selectedVariant);resolvePitSpriteSheetAnimation(bank,baseline.fighter,{simulationFrame:0,combat:baseline.combat});return resolvePitSpriteSheetAnimation(bank,sample.fighter,{simulationFrame:sample.tick,combat:sample.combat});},[bank,clip,sample,fighterId,selectedVariant,presentation]);
+ const held=useMemo(()=>bank&&sample&&!resolved&&!presentation?resolvePitSpriteSheetHold(bank,sample.fighter,{simulationFrame:sample.tick,combat:sample.combat}):null,[bank,sample,resolved,presentation]);
+ const status=!definition?'missing-atlas':!clip?'missing-clip':!bank?'loading':(resolved||held||ceremony?.status==='dedicated-animation')?'ready':'unavailable';
  useEffect(()=>{if(!definition)return;const abort=new AbortController();void loadPitSpriteSheetAnimations([fighterId],[definition],{signal:abort.signal,variants:[selectedVariant??null]}).then(bank=>{if(!abort.signal.aborted)setLoaded({key,bank});});return()=>abort.abort();},[definition,fighterId,key,selectedVariant]);
  useEffect(()=>{if(!playing||!clip||status!=='ready')return;const delay=Math.max(16,getPitLabFrameTicks(fighterId,clip,currentIndex,selectedVariant)/60*1000/speed);const timer=window.setTimeout(()=>{if(!clip.loop&&currentIndex>=clip.frames.length-1){setPlaying(false);return;}setIndex(n=>clip.loop?(n+1)%clip.frames.length:Math.min(n+1,clip.frames.length-1));},delay);return()=>window.clearTimeout(timer);},[playing,clip,status,currentIndex,speed,fighterId,selectedVariant]);
- useEffect(()=>{const canvas=canvasRef.current,ctx=canvas?.getContext('2d');if(!canvas||!ctx)return;ctx.clearRect(0,0,960,540);ctx.fillStyle='#0d1818';ctx.fillRect(0,0,960,540);ctx.strokeStyle='#64845d';ctx.beginPath();ctx.moveTo(60,465);ctx.lineTo(900,465);ctx.stroke();if(status==='ready'&&bank&&sample){ctx.save();ctx.translate(480,465);ctx.scale(2.5,2.5);ctx.translate(-480,-465);if(!drawPitSpriteSheetAnimation(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat}))drawPitSpriteSheetHold(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat});ctx.restore();}else{ctx.fillStyle='#dce8df';ctx.textAlign='center';ctx.font='22px system-ui';ctx.fillText(status==='loading'?'Chargement et vérification des pixels…':status==='missing-atlas'?'Aucun atlas de combat validé':status==='missing-clip'?'Orientation manquante — aucun miroir':'Clip indisponible : chargement ou pixels invalides',480,270);}},[bank,sample,status]);
+ useEffect(()=>{const canvas=canvasRef.current,ctx=canvas?.getContext('2d');if(!canvas||!ctx)return;ctx.clearRect(0,0,960,540);ctx.fillStyle='#0d1818';ctx.fillRect(0,0,960,540);ctx.strokeStyle='#64845d';ctx.beginPath();ctx.moveTo(60,465);ctx.lineTo(900,465);ctx.stroke();if(status==='ready'&&bank&&sample){ctx.save();ctx.translate(480,465);ctx.scale(2.5,2.5);ctx.translate(-480,-465);if(!drawPitSpriteSheetAnimation(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat,presentation}))drawPitSpriteSheetHold(ctx,bank,sample.fighter,465,{simulationFrame:sample.tick,combat:sample.combat});ctx.restore();}else{ctx.fillStyle='#dce8df';ctx.textAlign='center';ctx.font='22px system-ui';ctx.fillText(status==='loading'?'Chargement et vérification des pixels…':status==='missing-atlas'?'Aucun atlas de combat validé':status==='missing-clip'?'Orientation manquante — aucun miroir':'Clip indisponible : chargement ou pixels invalides',480,270);}},[bank,sample,status,presentation]);
  const reset=()=>{setPlaying(false);setIndex(0);setMessage('');};
+ const lifecyclePlans=planModule?lifecycleCategories.map(([category])=>planModule.getPitPresentationPlanV93(fighterId,category,selectedVariant)):[];
+ useEffect(()=>{if(!showLifecycle||planModule)return;let current=true;void import('../game/systems/pitPresentationPlansV93').then(module=>{if(current)setPlanModule(module);}).catch(()=>{if(current)setMessage('Le dossier de référence n’a pas pu être chargé. Les sprites et leurs contrôles restent disponibles.');});return()=>{current=false;};},[showLifecycle,planModule]);
  const exportAtlas=()=>{if(!definition)return;try{const payload={schemaVersion:1,kind:'pit-reviewed-atlas-metadata',coverage,definition},url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='the-pit-'+fighterId+'-atlas.json';document.body.appendChild(a);a.click();a.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('Métadonnées exportées ; aucun état de sauvegarde modifié.');}catch{setMessage('Export impossible dans ce navigateur.');}};
- return <main className={styles.root} data-pit-production-lab data-fighter={fighterId} data-variant={selectedVariant??'default'} data-clip={selectedId??''} data-facing={facing} data-render-status={status} data-frame-index={resolved?.resolved.frame.frameIndex??held?.frame.frameIndex??''} data-held-stance={Boolean(held)} data-frame-duration-ticks={clip?getPitLabFrameTicks(fighterId,clip,currentIndex,selectedVariant):''}>
+ return <main className={styles.root} data-pit-production-lab data-fighter={fighterId} data-variant={selectedVariant??'default'} data-clip={selectedId??''} data-facing={facing} data-render-status={status} data-frame-index={ceremony?.frame.frameIndex??resolved?.resolved.frame.frameIndex??held?.frame.frameIndex??''} data-held-stance={Boolean(held)} data-lifecycle-preview={presentation?.phase??'gameplay'} data-frame-duration-ticks={clip?getPitLabFrameTicks(fighterId,clip,currentIndex,selectedVariant):''}>
   <header className={styles.header}><div><p className={styles.eyebrow}>THE PIT · REGISTRE DE COMBAT RÉEL</p><h1>Atelier d’animation</h1><p>{PIT_LAB_FIGHTER_IDS.length} combattants sélectionnables. Les dessins et leurs orientations sont lus dans le registre utilisé par les combats.</p></div><Link href="/" className={styles.back}>Retour au jeu</Link></header>
   <p className={styles.notice}>La couverture appartient uniquement à l’apparence sélectionnée. Un clip correspond parfois à une seule phase d’attaque, pas à une animation complète. Une orientation manquante reste vide ; aucun rig ou miroir ne la remplace.</p>
+  <section className={styles.notice} aria-label="Séquences de personnage" data-pit-lifecycle-coverage-v93>
+   <h2>Cycle du combattant · {appearanceLabel}</h2>
+   <p>Les séquences sont inspectées avec le renderer du combat. Le bilan de production distingue les dessins disponibles du cycle détaillé encore à réaliser ; ni une pose tenue, ni une mise en scène créée pour le jeu ne certifie la fidélité1:1.</p>
+   <div className={styles.buttons}>{lifecycleCategories.map(([category,clipId,label])=>{
+    const target=definitions.find(candidate=>candidate.atlas.clips.some(native=>native.id===clipId&&native.facing===facing&&native.status==='validated'));
+    const native=target?.atlas.clips.find(candidate=>candidate.id===clipId&&candidate.facing===facing);
+    const coverage=lifecyclePlans.find(plan=>plan?.category.id===category)?.facings.find(candidate=>candidate.facing===facing);
+    const drawings=native?new Set(native.frames.map(frame=>frame.pageId+':'+frame.rect.join(','))).size:0;
+    return <button key={category} type="button" disabled={!target} data-lifecycle-category={category} data-lifecycle-state={coverage?.status??(target?'registered-pending-detailed-review':'missing')}
+     onClick={()=>{reset();setAtlasId(target!.atlas.id);setClipId(clipId);}}>
+     {label} · {!target?'à produire':`${drawings} dessins déclarés`}
+    </button>;
+   })}</div>
+   <details onToggle={event=>setShowLifecycle(event.currentTarget.open)}><summary>Direction du personnage et limites des références</summary>{!planModule?<p>Chargement du dossier de production…</p>:null}<p>{lifecyclePlans[0]?.entry.identityNote}</p>
+    <ul>{lifecyclePlans.filter(plan=>plan!==null).map(plan=><li key={plan.category.id}><strong>{plan.category.label}</strong> : {plan.plan.direction}</li>)}</ul>
+    <p>Les silhouettes, l’équipement et les gestes doivent être revus séparément. Un compte de cellules ne prouve pas une animation fluide ou une anatomie correcte.</p>
+   </details>
+  </section>
   {moveset?<section className={styles.notice} data-pit-lab-current-moveset={moveset.id}>
    <p><strong>{moveset.title} · profil individuel V92 · fidélité1:1 non certifiée.</strong> Les temps de phase viennent de cette recette d’équipement ; la présence d’un clip ne certifie pas un cycle complet.</p>
    <p>{moveset.limitation}</p><a href={moveset.sourceUrl} target="_blank" rel="noopener noreferrer">Référence d’équipement, sans certification des coups du duel</a>
