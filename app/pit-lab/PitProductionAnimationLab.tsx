@@ -26,7 +26,7 @@ export default function PitProductionAnimationLab(){
  const canvasRef=useRef<HTMLCanvasElement>(null), definitions=useMemo(()=>getPitLabDefinitions(fighterId,selectedVariant),[fighterId,selectedVariant]);
  // Keep the requested family when a costume splits its lifecycle across pages.
  // An explicitly chosen atlas still wins, including an honestly missing facing.
- const definition=definitions.find(d=>d.atlas.id===atlasId)??definitions.find(d=>d.atlas.clips.some(c=>c.id===clipId&&c.status==='validated'))??definitions[0],key=JSON.stringify([fighterId,selectedVariant??null,definition?.atlas.id??'none']);
+ const definition=definitions.find(d=>d.atlas.id===atlasId)??definitions.find(d=>d.atlas.clips.some(c=>c.id===clipId&&c.facing===facing&&c.status==='validated'))??definitions.find(d=>d.atlas.clips.some(c=>c.id===clipId&&c.status==='validated'))??definitions[0],key=JSON.stringify([fighterId,selectedVariant??null,definition?.atlas.id??'none']);
  const bank=loaded?.key===key?loaded.bank:null,coverage=getPitLabCoverage(fighterId,selectedVariant);
  const clipIds=[...new Set(definition?.atlas.clips.filter(c=>c.status==='validated').map(c=>c.id)??[])];
  const selectedId=clipIds.includes(clipId)?clipId:clipIds[0],clip=definition?.atlas.clips.find(c=>c.id===selectedId&&c.facing===facing&&c.status==='validated');
