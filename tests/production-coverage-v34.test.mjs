@@ -37,16 +37,16 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
   const coverage = productionCoverage([], []);
   // V50 adds three identities (Falconer, Scarface, Enforcer). Ahab, Wolf and
   // Celtic already existed; this report counts identities, not appearances.
-  assert.equal(coverage.hunters.runtimeFighters, 18);
+  assert.equal(coverage.hunters.runtimeFighters, 19);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10 - 6 + 12 + 4 + 8,
-    'V63 adds four PHG idles and four declared held entries, never a complete moveset');
+  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10 - 6 + 12 + 4 + 8 + 10 + 12,
+    'V91 adds ten entries and V92 twelve native phase clips; no complete moveset is implied');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
   const registry = readProductionSpriteRegistry();
-  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !entry.atlas.id.endsWith('-v62') && !entry.atlas.id.endsWith('-v63') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses', 'feral-actions-v59'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 309,
-    'Historical/V50 coverage loses only the six superseded Feral heavy phases');
+  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !entry.atlas.id.endsWith('-v62') && !entry.atlas.id.endsWith('-v63') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses', 'feral-actions-v59'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 309 + 10 + 12,
+    'Historical/V50 loses six superseded Feral phases; the same filter also contains ten V91 and twelve V92 clips');
   const movement = registry.filter(entry => entry.atlas.id.endsWith('-v50'));
   assert.deepEqual(movement.map(entry => entry.fighterId).sort(),
     ['user-ahab', 'wolf', 'falconer', 'scarface', 'enforcer', 'celtic'].sort());
@@ -74,9 +74,9 @@ test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hun
     ['intro', 'victory', 'defeat'].flatMap(kind => ['right', 'left'].map(facing =>
       ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
   const coverage = productionCoverage([], []);
-  assert.equal(coverage.hunters.runtimeFighters, 18);
-  assert.equal(coverage.hunters.validatedClips, 365,
-    'The six V51 clips remain unchanged; V62 adds four and V63 eight declared entries');
+  assert.equal(coverage.hunters.runtimeFighters, 19);
+  assert.equal(coverage.hunters.validatedClips, 365 + 10 + 12,
+    'The six V51 ceremonies remain unchanged; current aggregate includes ten V91 and twelve V92 clips');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
 });

@@ -23,14 +23,16 @@ const fighter = (id = "jungle-hunter", patch = {}) => ({
 const point = (frame, bone) => rig.transformPoint(frame.bones[bone], { x: 0, y: 0 });
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 const actionFighter = (id, attack, stage) => {
-  const move = pit.PIT_FIGHTERS[id].attacks[attack];
+  const current = fighter(id);
+  const move = pit.getPitCombatFighterDefinition(current).attacks[attack];
   const frame = stage === "startup" ? Math.floor(move.startup * 0.5)
     : stage === "active" ? move.startup
       : move.startup + move.active + Math.floor(move.recovery * 0.5);
-  return fighter(id, {
+  return {
+    ...current,
     phase: stage,
     action: { kind: "attack", attack, frame, connected: false },
-  });
+  };
 };
 function freezeDeep(value) {
   if (value && typeof value === "object") {
@@ -56,7 +58,7 @@ test("rendering a frozen combat state is deterministic and cannot change replay 
     assert.equal(pit.serializePitCombat(state), serialized);
     assert.deepEqual(state.fighters.map(pit.getPitFighterBoxes), boxes);
   }
-  assert.equal(state.version, 10);
+  assert.equal(state.version, 11);
 });
 
 test("each available melee action has distinct anticipation, contact and recovery poses", () => {

@@ -207,7 +207,7 @@ test('pre-change V9 replay preserves the independently captured checksum and dam
 test('V10 recording and playback retain muzzle salvos without serializing an invisible collision extension',()=>{
   const inputs=Array.from({length:200},(_,i)=>[{right:i<40,attack:i%45===0?'technique':undefined},{left:i<40,guardHigh:i>100}]);
   const replay=p.recordPitReplay(inputs,{fighters:['feral-hunter','jungle-hunter'],rules:{mode:'training'},seed:59});
-  assert.equal(replay.engineVersion,10);
+  assert.equal(replay.engineVersion,11);
   assert.deepEqual(p.playPitReplay(replay),p.playPitReplay(p.deserializePitReplay(p.serializePitReplay(replay))));
   const state=fire(setup());
   assert(!p.serializePitCombat(state).includes('launchSweep'));

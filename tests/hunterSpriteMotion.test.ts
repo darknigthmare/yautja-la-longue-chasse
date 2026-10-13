@@ -110,9 +110,10 @@ test("action mapping distinguishes standing, crouched, aerial and both explicitl
 
 test("all combatants retain their actual dedicated technique identity", () => {
   for (const id of Object.keys(pit.PIT_FIGHTERS) as PitFighterId[]) {
-    const definition = pit.PIT_FIGHTERS[id];
-    const state = fighter({ phase: "active",
-      action: { kind: "attack", attack: "technique", frame: definition.attacks.technique.startup, connected: false } }, id);
+    const state = fighter({}, id);
+    const definition = pit.getPitCombatFighterDefinition(state);
+    Object.assign(state, { phase: "active",
+      action: { kind: "attack", attack: "technique", frame: definition.attacks.technique.startup, connected: false } });
     const motion = api.describePitHunterSpriteMotion(state, 100)!;
     assert.equal(motion.techniqueId, definition.technique.id);
     assert.equal(motion.clipId, "pit.stand.technique." + definition.technique.id + ".active");

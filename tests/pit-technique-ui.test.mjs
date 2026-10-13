@@ -21,7 +21,7 @@ test("PIT technique entities have a visible Canvas layer and training hitboxes",
 
 test("PIT exposes authored technique names and active statuses outside the hidden canvas", () => {
   assert.match(canvas, /data-pit-technique-available=\{!unavailableTechnique\}/);
-  assert.match(canvas, /TECHNIQUE · \{unavailableTechnique \? 'INDISPONIBLE · CANON RETIRÉ' : fighter\.attacks\.technique\.label\}/);
+  assert.match(canvas, /TECHNIQUE · \{unavailableTechnique \? 'INDISPONIBLE · CANON RETIRÉ' : moveset \? fighter\.attacks\.technique\.label : pitMoveLabelV91\(fighterId, 'technique', fighter\.attacks\.technique\.label\)\}/);
   assert.match(canvas, /pitTechniqueUnavailableReason\(fighterId, variantId\)/);
   for (const side of ['left', 'right']) assert.match(canvas, new RegExp('data-pit-plasma-unavailable="' + side + '"'));
   assert.match(canvas, /TECHNIQUE_STATUS_LABELS\[left\.techniqueStatus\.kind\]/);

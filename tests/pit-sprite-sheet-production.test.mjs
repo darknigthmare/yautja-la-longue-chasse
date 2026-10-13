@@ -66,7 +66,7 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert(finalDuel.every(clip => clip.status === 'held-native-stance' && clip.drawnCells === 1));
   assert.deepEqual(new Set(finalDuel.map(clip => clip.facing)), new Set(['left', 'right']));
   const v50Clips = report.clips.filter(clip => clip.atlasId.endsWith("-v50"));
-  const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab" && !clip.atlasId.endsWith("-v50"));
+  const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab" && /-v(?:45|49)$/.test(clip.atlasId));
   const ahabExpected = ["idle", "high-guard", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"];
   assert.deepEqual(ahab.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
     ahabExpected.flatMap(id => ["right", "left"].map(facing => ["ahab-avec-casque-0c8ceb1c95", id, facing, true].join(":"))).sort(),
@@ -80,7 +80,8 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.equal(newAhabPages.length, 3);
   assert.equal(newAhabPages.reduce((count, page) => count + page.distinctDrawings, 0), 12);
   assert(newAhabPages.every(page => page.sourceHasAlpha && page.keyedPixels === 0 && page.cells.every(cell => cell.borderPixels === 0)));
-  const ahabPage = report.pages.find(page => page.fighterId === "user-ahab");
+  const ahabPage = report.pages.find(page => page.fighterId === "user-ahab" && page.pageId === "ahab-masked-idle-guard-right-v45");
+  assert.ok(ahabPage, "the exact historical Ahab page is retained regardless of registry order");
   assert.equal(ahabPage.sourceSha256, "bfe5e04dd61416c611de0d304b7ac74383437075240ed0c766edae3ada5364c7");
   assert.equal(ahabPage.alphaNoisePixels, 36579);
   assert.equal(ahabPage.keyedPixels, 0);
@@ -135,13 +136,28 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 375, "V91 adds eight native idles and two crouch entries to the365 existing phase clips");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 357);
-  assert.equal(report.pageCount, 149);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 123);
-  assert.equal(report.distinctDrawings, 751);
-  assert.equal(report.appearances.length, 25);
-  assert.equal(report.fighters.length, 18);
+  assert.equal(report.readyPhaseClips, 387, "V91 adds ten entries and V92 twelve native equipment phase clips to365");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 369);
+  assert.equal(report.pageCount, 161);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 135);
+  assert.equal(report.distinctDrawings, 775);
+  assert.equal(report.appearances.length, 26);
+  assert.equal(report.fighters.length, 19);
+  const v92 = report.clips.filter(clip => clip.atlasId.endsWith('-v92'));
+  assert.equal(v92.length, 12, 'two equipment gestures, three phases and two native facings');
+  assert(v92.every(clip => clip.ready && clip.drawnCells === 2 && clip.runtimePosture === 'stand'));
+  assert.equal(report.pages.filter(page => page.src.includes('/v92/pit/')).length, 12);
+  for (const [fighterId, variantId, action, durations] of [
+    ['user-ahab', 'ahab-avec-casque-0c8ceb1c95', 'medium', [11, 3, 20]],
+    ['user-samurai', 'samurai-avec-casque-d75f93b15e', 'technique.samurai-katana-contact-v92', [6, 8, 26]],
+  ]) for (const facing of ['right', 'left']) {
+    const owned = v92.filter(clip => clip.fighterId === fighterId && clip.facing === facing);
+    assert.equal(owned.length, 3);
+    assert(owned.every(clip => clip.variantId === variantId));
+    const phases = ['startup', 'active', 'recovery'];
+    assert.deepEqual(owned.map(clip => clip.clipId).sort(), phases.map(phase => 'pit.stand.' + action + '.' + phase).sort());
+    assert.deepEqual(phases.map(phase => owned.find(clip => clip.runtimePhase === phase).runtimePhaseTicks), durations);
+  }
   const v63 = report.clips.filter(clip => clip.atlasId.endsWith('-v63'));
   assert.equal(v63.filter(clip => clip.status === 'held-native-stance').length, 4);
   assert.equal(v63.filter(clip => clip.drawnCells === 6).length, 4);
