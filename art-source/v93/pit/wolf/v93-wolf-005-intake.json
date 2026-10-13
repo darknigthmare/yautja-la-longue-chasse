@@ -1,0 +1,197 @@
+{
+  "id": "v93-wolf-005",
+  "family": "victory",
+  "fighterId": "wolf",
+  "variantId": "wolf-avec-casque-4261aca172",
+  "fileName": "v93-wolf-005-wolf-masked-victory.png",
+  "path": "art-source/v93/pit/wolf/v93-wolf-005-wolf-masked-victory.png",
+  "originalToolPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-a14a2fd7-f8be-4c62-b29e-12b22ead50bf.png",
+  "tool": "builtin-image_gen",
+  "transform": "none-byte-identical-copy",
+  "sha256": "5ff8d70731248babb9b98dcc9f0d980728963ab9ba6fcba0cebbf6662dad7151",
+  "bytes": 2230383,
+  "width": 1024,
+  "height": 1536,
+  "hasNativeAlpha": true,
+  "alpha": {
+    "zero": 1106937,
+    "soft": 465927,
+    "opaque": 0,
+    "edgeMax": 1,
+    "zeroFraction": 0.7037715911865234
+  },
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        130,
+        39,
+        305,
+        464
+      ],
+      "localBounds": [
+        130,
+        39,
+        434,
+        502
+      ],
+      "visiblePixels": 70509,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        589,
+        40,
+        302,
+        466
+      ],
+      "localBounds": [
+        77,
+        40,
+        378,
+        505
+      ],
+      "visiblePixels": 68823,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        131,
+        545,
+        307,
+        467
+      ],
+      "localBounds": [
+        131,
+        33,
+        437,
+        499
+      ],
+      "visiblePixels": 67236,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        588,
+        545,
+        306,
+        467
+      ],
+      "localBounds": [
+        76,
+        33,
+        381,
+        499
+      ],
+      "visiblePixels": 67186,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        130,
+        1046,
+        302,
+        457
+      ],
+      "localBounds": [
+        130,
+        22,
+        431,
+        478
+      ],
+      "visiblePixels": 63424,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        584,
+        1042,
+        310,
+        461
+      ],
+      "localBounds": [
+        72,
+        18,
+        381,
+        478
+      ],
+      "visiblePixels": 67225,
+      "borderAlphaMax": 0
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Production asset: transparent sprite sheet containing exactly SIX SMALL individual masked Wolf figures. The references are IDENTITY AND PAINT STYLE ONLY; do NOT copy their page layout or scale. Use a WIDE-SPACE layout with massive clear gutters. Canvas1024x1536. Two columns, three rows. Exact cell centers:(256,256),(768,256),(256,768),(768,768),(256,1280),(768,1280). The character must be drawn as a SMALL MINIATURE only300px tall and maximum260px wide, centered inside each512x512cell. That means102pixels or more of COMPLETELY EMPTY transparent space above and below every figure; do not fill the cell with a large figure. Feet at cell-local y406. A clean transparent RGBA sprite sheet, no grid lines, no labels, no background, no reference atmosphere, no floor, no shadow, no halo. Full figure with all dreadlocks, hands, feet and weapons clear of cell edges. Left column has THREE distinct temporal poses facing RIGHT; right column has corresponding THREE distinct temporal poses facing LEFT, independently painted views, never apply mirror transform.\nIdentity reference1 is supplied masked Wolf: SAME engraved silver biomask, black dreadlocks with gold bands, tan spotted skin, black body netting, silver plated chest/thigh/shin armor, orange-brown apron and neck skull, original shoulder cannon and spear. Reference2/3 confirm right/left drawn costumes. CRITICAL EQUIPMENT LOCK: ONE pistol always held in the SAME anatomical pistol hand, kept DOWN by hip throughout ALL6poses. The OTHER wrist-blade arm stays low by the other hip throughout ALL6poses. NEVER swap pistol into wrist-blade hand, never add a weapon, never change the harness side. Allow the specific restrained upper-body gesture described below. Never move the pistol or wrist blades onto the other anatomical arm between phases.\nVICTORY: three distinct grounded round-victory poses for masked Wolf, not a death or bloody fatality. Row1 upright planted stance looking toward opponent, pistol safely down, wrist-blade arm at side. Row2 lift ONLY the wrist-blade arm slightly in front of own upper chest in a restrained proud salute, palm curling into fist; SAME pistol hand stays low at hip throughout. Row3 hold proud salute with small chin rise and chest straightening, shoulders settled, pistol safely down in its original hand. Blade gauntlet and blades stay connected to original forearm. Do not swap hands or duplicate weapon; do not include opponent, trophy, text, body parts or effects. Preserve full masked source costume, feet stable, same body reference size, widely separated transparent drawings.\n",
+  "referencePaths": [
+    "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+    "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+    "public/game/sprites/v91/pit/wolf/masked-idle-left.png"
+  ],
+  "reviewStatus": "pending-human-and-pixel-review",
+  "canonicalFidelityCertified": false,
+  "references": [
+    {
+      "path": "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "sha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba"
+    },
+    {
+      "path": "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+      "sha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa"
+    },
+    {
+      "path": "public/game/sprites/v91/pit/wolf/masked-idle-left.png",
+      "sha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "id": "v93-wolf-002",
+  "family": "taunt",
+  "fighterId": "wolf",
+  "variantId": "wolf-avec-casque-4261aca172",
+  "fileName": "v93-wolf-002-wolf-masked-taunt.png",
+  "path": "art-source/v93/pit/wolf/v93-wolf-002-wolf-masked-taunt.png",
+  "originalToolPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-49673b00-9287-438c-8ce0-687d6941eee1.png",
+  "tool": "builtin-image_gen",
+  "transform": "none-byte-identical-copy",
+  "sha256": "37c46be103666d00c8cda3d6ec0c2f251e43363a497f006222848a068d36f14f",
+  "bytes": 2312730,
+  "width": 1024,
+  "height": 1536,
+  "hasNativeAlpha": true,
+  "alpha": {
+    "zero": 1065936,
+    "soft": 506928,
+    "opaque": 0,
+    "edgeMax": 1,
+    "zeroFraction": 0.677703857421875
+  },
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        121,
+        32,
+        332,
+        473
+      ],
+      "localBounds": [
+        121,
+        32,
+        452,
+        504
+      ],
+      "visiblePixels": 71388,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "visibleRect": [
+        571,
+        32,
+        332,
+        472
+      ],
+      "localBounds": [
+        59,
+        32,
+        390,
+        503
+      ],
+      "visiblePixels": 72443,
+      "borderAlphaMax": 1
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        124,
+        535,
+        347,
+        481
+      ],
+      "localBounds": [
+        124,
+        23,
+        470,
+        503
+      ],
+      "visiblePixels": 77276,
+      "borderAlphaMax": 2
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "visibleRect": [
+        554,
+        536,
+        346,
+        488
+      ],
+      "localBounds": [
+        42,
+        24,
+        387,
+        511
+      ],
+      "visiblePixels": 77581,
+      "borderAlphaMax": 3
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "facing": "right",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        122,
+        1025,
+        336,
+        481
+      ],
+      "localBounds": [
+        122,
+        1,
+        457,
+        481
+      ],
+      "visiblePixels": 71097,
+      "borderAlphaMax": 2
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "facing": "left",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "visibleRect": [
+        566,
+        1024,
+        336,
+        482
+      ],
+      "localBounds": [
+        54,
+        0,
+        389,
+        481
+      ],
+      "visiblePixels": 70894,
+      "borderAlphaMax": 72
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: native transparent PNG sprite animation atlas for an existing 2D fighting game. Image1 is the EXACT supplied masked Wolf costume identity reference; Image2 establishes its drawn right facing, Image3 its drawn left facing. Preserve this supplied appearance rather than substituting another Wolf, bare face, cloaking costume, or generic Predator. Match detailed realistic painted game-sprite linework: engraved worn silver elongated biomask with crown ridges, black dreadlocks and small gold rings, tan mottled skin and black mesh bodysuit, layered silver chest/thigh/shin/foot armor, orange-brown cloth apron and small skull neck ornament. Keep its existing shoulder-mounted cannon, pistol held in the same anatomical hand, wrist-blade gauntlet on the other arm, back spear and waist gear consistent. Six independently drawn full-body figures only. Layout EXACT portrait1024x1536 pixels, strict2columns by3rows, six512x512cells. LEFT COLUMN contains three temporal phases all facing RIGHT, RIGHT COLUMN the three corresponding phases all facing LEFT. These are newly drawn native opposing views, not horizontal flips: maintain anatomy and the same equipment ownership across the two views. Within every cell keep all figure pixels within local x100..412,y85..425, at least80pixels genuinely transparent gap to every cell boundary. Feet remain on local baseline y420 and body scale remains fixed from pose to pose. Full head, dread tips, toes, hands and weapons uncut and separate; broad transparent gutters. No lettering, watermark, grid, frames, circles, second characters, silhouettes, terrain, foot platform, cast floor shadow, motion streaks, glow aura, UI or background. Genuine RGBA alpha, fully transparent outside each figure, never a painted checkerboard or dark backdrop. Every hand/arm must have coherent anatomy and real grip; no duplicated or disconnected parts. New gameplay presentation drawings adapted from the supplied reference, no claim of source-film movement.\nSPACING IS A PRODUCTION REQUIREMENT: each body is only335px high within its512px cell; leave very wide EMPTY gutters. Do not enlarge drawings to fill cells. Do not carry any atmosphere or halo from the references.\nFamily: TAUNT / controlled intimidating challenge, three successive clearly different gestures; NOT attack, shooting or mask removal. Row1: planted broad stance, masked head directed to opponent, blade-arm low and relaxed; pistol arm safely at side. Row2: head tips slightly sideways toward opponent while blade forearm rotates outward enough to present the intact two wrist blades, the hand open in a restrained come-on gesture. Row3: blade hand curls into a calm fist near own belt and torso settles proudly into stance, pistol still held downward. Shoulders and dreadlocks follow the small upper-body change coherently, all weapons retain existing mount/hand and no new gear appears. Left orientation separately drawn viewing the opposite side, preserves which anatomical arm owns the pistol versus the wrist blades. Exactly6figures on transparent alpha.\n",
+  "referencePaths": [
+    "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+    "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+    "public/game/sprites/v91/pit/wolf/masked-idle-left.png"
+  ],
+  "reviewStatus": "pending-human-and-pixel-review",
+  "canonicalFidelityCertified": false,
+  "references": [
+    {
+      "path": "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "sha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba"
+    },
+    {
+      "path": "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+      "sha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa"
+    },
+    {
+      "path": "public/game/sprites/v91/pit/wolf/masked-idle-left.png",
+      "sha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00"
+    }
+  ]
+}
