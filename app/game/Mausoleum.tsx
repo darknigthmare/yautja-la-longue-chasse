@@ -80,10 +80,10 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   }, [phase, suspended, selected, saveVisit, close, onSound]);
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (blocked || event.altKey || event.ctrlKey || event.metaKey) return;
-    const left = event.key === "ArrowLeft" || !!save && matchesControlAction("hunt.moveLeft", event.nativeEvent, save.settings.controlBindings);
-    const right = event.key === "ArrowRight" || !!save && matchesControlAction("hunt.moveRight", event.nativeEvent, save.settings.controlBindings);
+    const left = save ? matchesControlAction("hunt.moveLeft", event.nativeEvent, save.settings.controlBindings) : event.key === "ArrowLeft";
+    const right = save ? matchesControlAction("hunt.moveRight", event.nativeEvent, save.settings.controlBindings) : event.key === "ArrowRight";
     if (left || right) { event.preventDefault(); held.current = left ? -1 : 1; setTarget(x); }
-    if (event.key === "Enter" || event.key.toLowerCase() === "e" || !!save && matchesControlAction("hunt.interact", event.nativeEvent, save.settings.controlBindings)) { event.preventDefault(); if (!event.repeat) examine(); }
+    if ((save ? matchesControlAction("hunt.interact", event.nativeEvent, save.settings.controlBindings) : event.key === "Enter")) { event.preventDefault(); if (!event.repeat) examine(); }
   };
   const onDialogKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (suspended) return;
@@ -103,7 +103,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       const allowed = canVisitMausoleumGallery(access, entry.id);
       return <button key={entry.id} type="button" aria-pressed={gallery === entry.id} disabled={!allowed} title={allowed ? entry.description : `Accès requis : ${entry.requiredRank}`} onClick={() => { setGallery(entry.id); setPage(0); setX(90); setTarget(90); }}>{entry.name}{!allowed ? ` · ${entry.requiredRank}` : ""}</button>;
     })}</nav>
-    <div className={styles.scene} ref={scene} tabIndex={0} role="region" aria-label={`Galerie physique · ${galleryLabel}`} data-mausoleum-x={Math.round(x)} onKeyDown={onKeyDown} onKeyUp={() => { held.current = 0; setTarget(x); }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) { held.current = 0; setTarget(xRef.current); } }} inert={!!selected || suspended}>
+    <div className={styles.scene} ref={scene} tabIndex={0} role="region" aria-label={`Galerie physique · ${galleryLabel}`} data-mausoleum-x={Math.round(x)} onKeyDown={onKeyDown} onKeyUp={event => { const released = save ? (matchesControlAction("hunt.moveLeft", event.nativeEvent, save.settings.controlBindings) ? -1 : matchesControlAction("hunt.moveRight", event.nativeEvent, save.settings.controlBindings) ? 1 : 0) : (event.key === "ArrowLeft" ? -1 : event.key === "ArrowRight" ? 1 : 0); if (released !== 0 && held.current === released) { held.current = 0; setTarget(xRef.current); } }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) { held.current = 0; setTarget(xRef.current); } }} inert={!!selected || suspended}>
       <img className={styles.hall} src="/game/homeworld/v56/mausoleum-hall.png" alt="" draggable={false} />
       <div className={styles.wall}><span>LE MUR DES CHASSES</span><p>{entries.map(entry => entry.title).join(" · ") || "Archives temporelles · contenu à produire"}</p></div>
       {visible.map((entry, index) => <button type="button" key={entry.id} className={styles.pedestal} style={{ left: `${positions[index] / 9}%` }} aria-label={`Approcher le piédestal ${entry.title}`} data-mausoleum-pedestal={entry.id} data-mausoleum-dlc={entry.id} data-dlc-state={mausoleumDlcState(entry.id)} onClick={() => { setTarget(positions[index]); scene.current?.focus(); }}>
