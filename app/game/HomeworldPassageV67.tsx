@@ -8,6 +8,7 @@ import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64 } from './systems/hom
 import { HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64 } from './systems/homeworldArtV64';
 import { homeworldModularPlacementV64, homeworldPortraitPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { createHomeworldGamepadState, stepHomeworldGamepad } from './systems/homeworldInput';
+import { preloadSceneImagesV94 } from './systems/nativeImagePreloadV94';
 import { matchesControlAction } from './systems/controlBindings';
 import { controlActionShortcut } from './controlBindingLabels';
 import { HOMEWORLD_PASSAGES_V67, HOMEWORLD_PASSAGE_BRIDGE_V67, canEnterHomeworldPassageV67, createHomeworldPassageV67, normalizeHomeworldPassageV67, stepHomeworldPassageV67, homeworldPassageInteractionV67, homeworldPassageLengthV67, homeworldPassageMetresV67, homeworldPassagePropsV67, type HomeworldPassageDirectionV67, type HomeworldPassageStateV67 } from './systems/homeworldPassageV67';
@@ -53,7 +54,7 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
   const closeCodex = useCallback(() => { codexRef.current = false; setCodex(false); pause(); }, [pause]);
   const resume = useCallback(() => {
     const current = stateRef.current;
-    if (!current || !readyRef.current || latest.current.suspended || !canEnterHomeworldPassageV67(latest.current.save, current.regionId).allowed || !persist(current)) return;
+    if (document.hidden || !document.hasFocus() || !current || !readyRef.current || latest.current.suspended || !canEnterHomeworldPassageV67(latest.current.save, current.regionId).allowed || !persist(current)) return;
     clear(); pausedRef.current = false; setPaused(false); setCodex(false); codexRef.current = false;
     requestAnimationFrame(() => viewport.current?.focus({ preventScroll: true }));
   }, [clear, persist]);
@@ -70,12 +71,15 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
     observer.observe(element); return () => observer.disconnect();
   }, []);
   useEffect(() => {
-    let cancelled = false; readyRef.current = false;
+    readyRef.current = false;
     const urls = [...new Set([definition.panorama, HOMEWORLD_PASSAGE_BRIDGE_V67.src, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_PROP_ART_V64.beacon.src, ...Array.from(scene.current?.querySelectorAll('img') ?? [], image => image.src)])];
-    Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const image = new Image(); image.onload = () => image.naturalWidth > 0 ? resolve() : reject(new Error(src)); image.onerror = () => reject(new Error(src)); image.src = src; })))
-      .then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } })
-      .catch(() => { if (!cancelled) { setReady(false); setArtError('Une image native manque. Le trajet reste en pause : aucun décor de remplacement n’est inventé.'); } });
-    return () => { cancelled = true; };
+    const preload = preloadSceneImagesV94({ urls, reload: artAttempt > 0,
+      onProgress: progress => {
+        readyRef.current = progress.ready;
+        setReady(progress.ready); setArtError(progress.error ?? '');
+      },
+    });
+    return () => { readyRef.current = false; preload.cancel(); };
   }, [definition.panorama, artAttempt]);
   useEffect(() => {
     const blur = () => pause(); const hidden = () => { if (document.hidden) pause(); };
@@ -104,7 +108,7 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
       const bindings = latest.current.save.settings.controlBindings;
-      if (latest.current.suspended || event.target instanceof HTMLElement && event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      if (document.hidden || !document.hasFocus() || latest.current.suspended || event.target instanceof HTMLElement && event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
       if (codexRef.current && (event.key === 'Escape' || matchesControlAction('hunt.pause', event, bindings))) { event.preventDefault(); if (!event.repeat) closeCodex(); return; }
       if (matchesControlAction('hunt.pause', event, bindings)) { event.preventDefault(); if (!event.repeat) { if (pausedRef.current && !codexRef.current) resume(); else pause(); } return; }
       if (event.target instanceof HTMLElement && event.target.closest('button') || pausedRef.current || codexRef.current) return;
@@ -119,7 +123,9 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
     let frame = 0, last = 0, accumulator = 0, renderTick = 0;
     const loop = (time: number) => {
       const elapsed = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
-      const blocked = latest.current.suspended || !readyRef.current || !canEnterHomeworldPassageV67(latest.current.save, regionId).allowed;
+      const inactive = document.hidden || !document.hasFocus();
+      if (inactive && !pausedRef.current) pause();
+      const blocked = inactive || latest.current.suspended || !readyRef.current || !canEnterHomeworldPassageV67(latest.current.save, regionId).allowed;
       let controller: Gamepad | null = null;
       try { controller = navigator.getGamepads?.().find(p => p?.connected) ?? null; }
       catch { /* Preserve keyboard/touch traversal if the browser refuses controller access. */ }

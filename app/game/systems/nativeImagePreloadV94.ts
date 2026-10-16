@@ -13,18 +13,44 @@ export interface NativeImageProgressV94 {
 export const NATIVE_IMAGE_CONCURRENCY_V94 = 6;
 export const NATIVE_IMAGE_TIMEOUT_MS_V94 = 20_000;
 
-/** Bounded, cancellable native PNG verification. No pixels, URLs or saves are rewritten. */
-export function preloadNativeImagesV94({
-  sources, reload = false, onProgress,
-  concurrency = NATIVE_IMAGE_CONCURRENCY_V94,
-  timeoutMs = NATIVE_IMAGE_TIMEOUT_MS_V94,
-}: {
-  sources: readonly NativeImageSourceV94[];
+/** Shared resource budgets; callers retain their own dimension contract. */
+interface ImageBatchOptionsV94 {
   reload?: boolean;
   onProgress: (progress: NativeImageProgressV94) => void;
   concurrency?: number;
   timeoutMs?: number;
+}
+
+/** Native animation/scene atlases require their exact declared dimensions. */
+export function preloadNativeImagesV94(options: ImageBatchOptionsV94 & { sources: readonly NativeImageSourceV94[] }) {
+  return preloadImageBatchV94(options, (source, width, height) => {
+    if (width !== source.sourceWidth || height !== source.sourceHeight) {
+      throw new Error(`Dimensions ${source.kind === 'scene' ? 'de décor' : 'd’animation'} incompatibles : ${source.src}. Attendues ${source.sourceWidth}×${source.sourceHeight}, reçues ${width}×${height}.`);
+    }
+  });
+}
+
+/** Legacy scene images share the bounded decoder without inventing atlas sizes.
+ * Known fauna retain their exact registry validation through validateDimensions.
+ * This never substitutes pixels or changes the URLs used by the renderer. */
+export function preloadSceneImagesV94({ urls, validateDimensions, ...options }: ImageBatchOptionsV94 & {
+  urls: readonly string[];
+  validateDimensions?: (src: string, width: number, height: number) => boolean;
 }) {
+  return preloadImageBatchV94({ ...options, sources: [...new Set(urls)].map(src => ({ src, kind: 'scene' as const })) },
+    (source, width, height) => {
+      if (!(width > 0 && height > 0) || validateDimensions && !validateDimensions(source.src, width, height)) {
+        throw new Error(`Dimensions de décor incompatibles : ${source.src}. Reçues ${width}×${height}. Aucun remplacement autorisé.`);
+      }
+    });
+}
+
+/** Bounded, cancellable native image verification, shared by both contracts. */
+function preloadImageBatchV94<T extends { src: string; kind?: 'scene' }>({
+  sources, reload = false, onProgress,
+  concurrency = NATIVE_IMAGE_CONCURRENCY_V94,
+  timeoutMs = NATIVE_IMAGE_TIMEOUT_MS_V94,
+}: ImageBatchOptionsV94 & { sources: readonly T[] }, validate: (source: T, width: number, height: number) => void) {
   const queue = [...sources];
   const total = queue.length;
   const limit = Number.isFinite(concurrency) ? Math.max(1, Math.min(12, Math.floor(concurrency))) : NATIVE_IMAGE_CONCURRENCY_V94;
@@ -33,7 +59,7 @@ export function preloadNativeImagesV94({
   let alive = true, cursor = 0, loaded = 0, error: string | null = null;
   const report = () => { if (alive) onProgress({ready: loaded === total && error === null, error, loaded, total}); };
 
-  async function load(source: NativeImageSourceV94): Promise<void> {
+  async function load(source: T): Promise<void> {
     const controller = new AbortController();
     let image: HTMLImageElement | null = null, settled = false;
     let rejectStop: (reason: Error) => void = () => {};
@@ -57,9 +83,7 @@ export function preloadNativeImagesV94({
         image = new Image(); image.decoding = 'async'; image.src = source.src;
         await image.decode();
         if (!alive || controller.signal.aborted || settled || !image) return;
-        if (image.naturalWidth !== source.sourceWidth || image.naturalHeight !== source.sourceHeight) {
-          throw new Error(`Dimensions ${source.kind === 'scene' ? 'de décor' : 'd’animation'} incompatibles : ${source.src}. Attendues ${source.sourceWidth}×${source.sourceHeight}, reçues ${image.naturalWidth}×${image.naturalHeight}.`);
-        }
+        validate(source, image.naturalWidth, image.naturalHeight);
       })();
       await Promise.race([work, stop]);
       if (alive && !controller.signal.aborted) { loaded++; report(); }

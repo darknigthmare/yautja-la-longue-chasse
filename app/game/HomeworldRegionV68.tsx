@@ -10,6 +10,7 @@ import { homeworldHeroPlate } from './systems/homeworldCity';
 import { usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from './systems/homeworldAccessV69';
 import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { createHomeworldGamepadState, stepHomeworldGamepad } from './systems/homeworldInput';
+import { preloadSceneImagesV94 } from './systems/nativeImagePreloadV94';
 import { matchesControlAction } from './systems/controlBindings';
 import { controlActionShortcut } from './controlBindingLabels';
 import { HOMEWORLD_REGIONS_V68, HOMEWORLD_REGION_TRAIL_V68, HOMEWORLD_REGION_TRACES_V68, HOMEWORLD_REGION_HAZARD_V68, HOMEWORLD_REGION_INTERIOR_V68, HOMEWORLD_VILLAGE_WORLD_V68, HOMEWORLD_VILLAGE_PERIMETER_V68, HOMEWORLD_REGION_FIELD_PERIMETER_V68, REGION_FAUNA_ART_V68, REGION_WARD_IDS_V68, REGION_WARD_POSTS_V68, canEnterHomeworldRegionV68, createHomeworldRegionV68, normalizeHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, stepHomeworldRegionV68, homeworldRegionInteractionV68, regionInteractionDialogueV68, regionObjectiveV68, regionResidentPositionV68, regionBridgesV68, regionHazardPhaseV68, homeworldRegionRouteMetresV68, homeworldRegionInteriorPropsV68, type HomeworldRegionIdV68, type HomeworldRegionStateV68, type RegionFieldEventV68 } from './systems/homeworldRegionsV68';
@@ -95,7 +96,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, [freeze, persist,bibleAction]);
   const resume = useCallback(() => {
     const s = current.current;
-    if (!s || s.status !== 'walking' || !readyRef.current || latest.current.suspended || !canEnterHomeworldRegionV68(latest.current.save, s.regionId).allowed) return;
+    if (document.hidden || !document.hasFocus() || !s || s.status !== 'walking' || !readyRef.current || latest.current.suspended || !canEnterHomeworldRegionV68(latest.current.save, s.regionId).allowed) return;
     if(bibleOpenRef.current){if(!bibleAction({type:'interrupt'}).ok)return;bibleOpenRef.current=false;}
     const acknowledged = s.pendingFieldEvent ? field(s) : persist(s) ? s : null;
     if (!acknowledged) return;
@@ -134,10 +135,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     resize.observe(el); return () => resize.disconnect();
   }, []);
   useEffect(() => {
-    let cancelled = false; readyRef.current = false;
+    readyRef.current = false;
     const urls = [...new Set([definition.panorama, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.src : undefined, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...homeworldFaunaSourceUrlsV77(regionId), ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
-    Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const img = new Image(); img.onload = () => homeworldFaunaDimensionsV77(src, img.naturalWidth, img.naturalHeight) ? resolve() : reject(new Error(src)); img.onerror = () => reject(new Error(src)); img.src = src; }))).then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } }).catch(() => { if (!cancelled) { setArtError('Un décor ne s’est pas chargé. La traversée reste en pause.'); setReady(false); } });
-    return () => { cancelled = true; };
+    const preload = preloadSceneImagesV94({ urls, reload: artAttempt > 0,
+      validateDimensions: homeworldFaunaDimensionsV77,
+      onProgress: progress => {
+        readyRef.current = progress.ready;
+        setReady(progress.ready); setArtError(progress.error ?? '');
+      },
+    });
+    return () => { readyRef.current = false; preload.cancel(); };
   }, [definition.panorama, youthWelcome, regionId, artAttempt]);
   useEffect(() => {
     const blur = () => {setFocused(false);pause();}, focus=()=>setFocused(!document.hidden&&document.hasFocus()), hidden = () => { if (document.hidden) blur();else focus(); };
@@ -152,17 +159,17 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     const buttons = () => Array.from(dialog.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'));
     const initial = () => (buttons()[0] ?? dialog).focus(); initial();
     const contain = (e: FocusEvent) => { if (!latest.current.suspended && e.target instanceof Node && !dialog.contains(e.target)) initial(); };
-    const tab = (e: KeyboardEvent) => { if (e.key !== 'Tab' || latest.current.suspended) return; e.preventDefault(); const targets = buttons(), index = targets.indexOf(document.activeElement as HTMLButtonElement); (targets[(index + (e.shiftKey ? -1 : 1) + targets.length) % targets.length] ?? dialog).focus(); };
+    const tab = (e: KeyboardEvent) => { if (e.key !== 'Tab' || latest.current.suspended) return; e.preventDefault(); const targets = buttons(), index = targets.indexOf(document.activeElement as HTMLButtonElement); const nextIndex = index < 0 ? e.shiftKey ? targets.length - 1 : 0 : (index + (e.shiftKey ? -1 : 1) + targets.length) % targets.length; (targets[nextIndex] ?? dialog).focus(); };
     document.addEventListener('focusin', contain); document.addEventListener('keydown', tab);
     return () => { document.removeEventListener('focusin', contain); document.removeEventListener('keydown', tab); };
   }, [modal, suspended, ready, error, notice, localPanel]);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (latest.current.suspended || e.target instanceof HTMLElement && e.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      if (document.hidden || !document.hasFocus() || latest.current.suspended || e.target instanceof HTMLElement && e.target.closest('input,textarea,select,[contenteditable="true"]')) return;
       const b = latest.current.save.settings.controlBindings;
       if (matchesControlAction('hunt.pause', e, b)) { e.preventDefault(); if (!e.repeat) { if (pauseRef.current) resume(); else pause(); } return; }
       if (pauseRef.current || e.target instanceof HTMLElement && e.target.closest('button')) return;
-      if (actions.some(a => matchesControlAction(a, e, b))) { e.preventDefault(); held.current.add(e.code); }
+      if (actions.some(a => matchesControlAction(a, e, b))) { e.preventDefault(); if (!e.repeat || held.current.has(e.code)) held.current.add(e.code); }
       if (matchesControlAction('hunt.interact', e, b)) { e.preventDefault(); if (!e.repeat) interact.current = true; }
     };
     const up = (e: KeyboardEvent) => held.current.delete(e.code);
@@ -173,7 +180,9 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     let frame = 0, last = 0, accumulator = 0;
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
-      const blocked = latest.current.suspended || !readyRef.current || !canEnterHomeworldRegionV68(latest.current.save, regionId).allowed;
+      const inactive = document.hidden || !document.hasFocus();
+      if (inactive && !pauseRef.current) pause();
+      const blocked = inactive || latest.current.suspended || !readyRef.current || !canEnterHomeworldRegionV68(latest.current.save, regionId).allowed;
       let controller: Gamepad | null = null;
       try { controller = navigator.getGamepads?.().find(p => p?.connected) ?? null; }
       catch { /* A controller error must not stop the region simulation. */ }

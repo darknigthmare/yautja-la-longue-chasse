@@ -34,6 +34,7 @@ function fixture(kind) {
   const env = {
     createHomeworldGamepadState, stepHomeworldGamepad, regionId: 'ash-marches',
     navigator: { getGamepads: () => [controller] },
+    document: { hidden: false, hasFocus: () => true },
     requestAnimationFrame: cb => { frames.set(++nextId, cb); return nextId; },
     cancelAnimationFrame: id => frames.delete(id),
     latest: { current: { suspended: false, save: { settings: { controlBindings: {} } } } },
@@ -91,4 +92,14 @@ for (const kind of ['passage', 'region']) {
       assert.equal(f.inputs.at(-1).x,1);assert.equal(f.confirms(),1);
     }finally{f.cleanup();}
   });
+}
+for (const kind of ['passage','region']) for (const loss of ['hidden','unfocused']) {
+ test(`${kind}: ${loss} sampling pauses before simulation even if the browser event is delayed`,()=>{
+  const f=fixture(kind);try{
+   f.tick(1);f.env.touch.current.add('right');f.env.interact.current=true;
+   if(loss==='hidden')f.env.document.hidden=true;else f.env.document.hasFocus=()=>false;
+   f.tick(51);assert.equal(f.inputs.length,0);assert.equal(f.env.interact.current,false);assert.equal(f.env.pausedRef.current,true);
+   f.env.document.hidden=false;f.env.document.hasFocus=()=>true;f.tick(101);assert.equal(f.inputs.length,0,'focus return alone does not resume');
+  }finally{f.cleanup();}
+ });
 }

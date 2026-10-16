@@ -128,6 +128,7 @@ jobs:
           tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs
           tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs
           tests/pit-gamepad-assignments.test.mjs
+          tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs
       - name: Exercise historical persistence regressions (not the entire test suite)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -143,6 +144,9 @@ jobs:
       - name: Exercise React image lifecycle and native PNG decoding (1x1 fixtures)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-native-assets-browser-v94.mjs
+      - name: Exercise scene image deadlines and refresh with the native decoder
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-scene-images-browser-v94.mjs
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
