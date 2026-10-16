@@ -77,11 +77,10 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Ouvrir ensuite `http://localhost:3000/`. Pour lancer le serveur de production
-local après compilation :
+Ouvrir ensuite `http://localhost:3000/`. Pour lancer le serveur Next de production local après compilation :
 
 ```powershell
-npm.cmd run build
+npm.cmd run build:production
 npm.cmd start
 ```
 
