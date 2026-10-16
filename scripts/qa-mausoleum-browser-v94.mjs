@@ -78,7 +78,11 @@ try {
   await check('aliases and unrelated key releases preserve movement', async () => {
     await page.keyboard.down('e'); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(120);
     const before = await x(); await page.keyboard.up('ArrowRight'); await page.keyboard.press('z'); await page.waitForTimeout(170);
-    assert.ok(await x() > before); await page.keyboard.up('e'); const stopped = await x(); await page.waitForTimeout(100); assert.equal(await x(), stopped);
+    assert.ok(await x() > before); await page.keyboard.up('e');
+    // The motor stops synchronously, but its final React render may still be
+    // queued. Sample after two paint opportunities, then require exact rest.
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    const stopped = await x(); await page.waitForTimeout(160); assert.equal(await x(), stopped);
   });
   await check('native Enter on a focused pedestal keeps its click action', async () => {
     await page.locator('[data-mausoleum-pedestal="predator"]').focus(); await page.keyboard.press('Enter');
