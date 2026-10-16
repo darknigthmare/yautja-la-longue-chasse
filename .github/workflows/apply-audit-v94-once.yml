@@ -1,0 +1,132 @@
+name: Apply reviewed V94 input patch once
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/apply-audit-v94-once.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: >-
+      github.repository == 'darknigthmare/yautja-la-longue-chasse' &&
+      github.event.pull_request.number == 4 &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'fix/v94-audit-reliability-20261016'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /app/
+            /desktop/
+            /scripts/
+            /tests/
+            /db/
+            /worker/
+            /drizzle/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/game/homeworld/v74/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify every original and resulting blob before writing
+        run: |
+          python3 - <<'PY'
+          import pathlib, hashlib, json
+          raw=pathlib.Path('scripts/audit-v94-input-edits.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest() == 'ac9a31014fbff866c0f40ab4c0e1abeab70b963b065d93783ee6cee92de5a6ae', 'Unexpected edit plan'
+          plan=json.loads(raw)
+          assert len(plan)==18
+          def blob(data):
+              return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          staged=[]
+          for name,change in plan.items():
+              path=pathlib.Path(name)
+              assert not path.is_absolute() and '..' not in path.parts
+              assert name.startswith(('app/game/','tests/')) and path.suffix in {'.tsx','.mjs'}
+              assert not any(p.is_symlink() for p in [path,*path.parents])
+              if change['before'] is None:
+                  assert not path.exists()
+                  content=change['content']
+              else:
+                  original=path.read_bytes()
+                  assert blob(original)==change['before'], 'Changed source: '+name
+                  content=original.decode('utf-8')
+                  for start,end,text in reversed(change['edits']):
+                      assert 0 <= start <= end <= len(content)
+                      content=content[:start]+text+content[end:]
+              encoded=content.encode('utf-8')
+              assert blob(encoded)==change['after'], 'Unexpected output: '+name
+              staged.append((path,encoded))
+          for path,content in staged:
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_bytes(content)
+          print('Verified and applied 18 exact file results; no other application file changed.')
+          PY
+          git diff --check
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run 80 input, assignment and original V74 image regressions
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs
+          tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs
+          tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs
+          tests/pit-gamepad-assignments.test.mjs
+      - name: Typecheck the actual application
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+      - name: Lint the thirteen changed runtime surfaces
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/GalaxyMapPanel.tsx app/game/GlassDesertExpedition.tsx
+          app/game/HomeworldExpedition.tsx app/game/HomeworldHub.tsx
+          app/game/HomeworldPassageV67.tsx app/game/HomeworldRegionV68.tsx
+          app/game/HomeworldSpatialCodex.tsx app/game/HomeworldWayfindingV75.tsx
+          app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
+          app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
+      - name: Commit verified changes to PR branch only and remove temporary transport files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          set -eu
+          branch='fix/v94-audit-reliability-20261016'
+          cat > "$RUNNER_TEMP/audit-askpass" <<'SH'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' 'x-access-token' ;;
+            *) printf '%s\n' "$GH_TOKEN" ;;
+          esac
+          SH
+          chmod 700 "$RUNNER_TEMP/audit-askpass"
+          export GIT_ASKPASS="$RUNNER_TEMP/audit-askpass"
+          trap 'rm -f "$RUNNER_TEMP/audit-askpass"' EXIT
+          git fetch --no-tags origin "refs/heads/$branch"
+          test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_HEAD"
+          python3 - <<'PY'
+          import json,subprocess,pathlib
+          plan=json.loads(pathlib.Path('scripts/audit-v94-input-edits.json').read_text())
+          subprocess.run(['git','add','--',*plan],check=True)
+          PY
+          git rm -- .github/workflows/apply-audit-v94-once.yml .github/workflows/audit-source-v94.yml scripts/audit-v94-input-edits.json
+          git -c core.hooksPath=/dev/null -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix(input): keep gameplay alive after controller denial and consume regional actions exactly once'
+          git push origin "HEAD:refs/heads/$branch"
+          git rev-parse HEAD
