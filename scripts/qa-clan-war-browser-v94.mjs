@@ -25,7 +25,7 @@ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0
 const origin=`http://127.0.0.1:${server.address().port}`,results=[],errors=[];
 let browser;
 try{
- browser=await chromium.launch(process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
+ browser=await chromium.launch({headless:process.env.AUDIT_CHROME_HEADED!=='1',...(process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{})});
  async function check(name,run){const ctx=await browser.newContext({viewport:{width:1200,height:900}});await ctx.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());
   const page=await ctx.newPage();page.setDefaultTimeout(6000);page.on('pageerror',e=>errors.push(e.message));
   try{await page.goto(origin);await page.waitForFunction(()=>window.__warApiV94&&window.__warUiV94);await page.bringToFront();await run(page,ctx);results.push({name,status:'PASS'});console.log('PASS '+name);}
@@ -50,20 +50,20 @@ try{
  });
  await check('focus loss stops the clock before React cleanup; focus return resumes without catch-up',async(page,ctx)=>{
   await prepare(page);await page.getByRole('button',{name:'Reprendre le temps',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds>=1);
-  const other=await ctx.newPage();await other.goto('about:blank');await other.bringToFront();await page.waitForFunction(()=>!document.hasFocus());
+  assert.equal(process.env.AUDIT_CHROME_HEADED,'1','Native focus scenario requires headed Chrome; run under xvfb-run in CI.');const other=await ctx.newPage();await other.goto('about:blank');await other.bringToFront();await page.waitForFunction(()=>!document.hasFocus());
   const stopped=await seconds(page);await page.waitForTimeout(1800);assert.equal(await seconds(page),stopped);
   await page.bringToFront();await page.waitForFunction(()=>document.hasFocus());await page.waitForTimeout(250);assert.equal(await seconds(page),stopped);
   await page.waitForFunction(n=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds===n+1,stopped);
  });
  await check('a returned formation is replaced by an available selection instead of blocking orders',async page=>{
   await page.evaluate(()=>{const a=window.__warApiV94;let c=a.createCanyonV85();for(const act of ['corniche','maintenance','preserve','poste'])c=a.canyonPreparationV85(c,act);c=a.engageCanyonV85(c,a.CANYON_PRESET_V85);c=a.orderCanyonFormationV85(c,c.formations[0].id,'extract',96,0).state;for(let n=0;n<16;n++)c=a.stepCanyonV85(c);if(!c.formations[0].extraction)throw Error('fixture must have extracted first formation');localStorage.setItem(a.CANYON_STORAGE_KEY_V85,JSON.stringify(c));});
-  await page.reload();await page.getByRole('button',{name:'Exercice V3 · canyon',exact:true}).click();assert.equal(await page.getByRole('button',{name:'Transmettre l’ordre',exact:true}).isEnabled(),true);assert.notEqual(await page.getByLabel('Formation',{exact:true}).inputValue(),'');
+  await page.reload();await page.getByRole('button',{name:'Exercice V3 · canyon',exact:true}).click();assert.equal(await page.getByRole('button',{name:'Transmettre l’ordre',exact:true}).isEnabled(),true);const expected=await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).formations.find(f=>!f.extraction).id);assert.equal(await page.getByRole('combobox',{name:/^Formation/}).inputValue(),expected);
  });
  await check('dropped archive writes show an unconfirmed result and retry saves it without duplicate rewards',async page=>{
   await prepare(page);await page.getByRole('button',{name:'Déclarer le repli',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).phase==='debrief');
   await page.evaluate(()=>{window.__originalSetV94=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k!==window.__warApiV94.CANYON_STORAGE_KEY_V85)window.__originalSetV94.call(this,k,v);};});
   await page.getByRole('button',{name:'Archiver le résultat une fois',exact:true}).click();await page.getByRole('button',{name:'Résultat en mémoire · sauvegarde non confirmée',exact:true}).waitFor();assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).committed),false);
-  await page.evaluate(()=>{Storage.prototype.setItem=window.__originalSetV94;});await page.getByRole('button',{name:'Réessayer la sauvegarde des exercices',exact:true}).click();await page.getByRole('button',{name:'Résultat déjà archivé',exact:true}).waitFor();assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).committed),true);
+  const retry=page.getByRole('button',{name:'Réessayer la sauvegarde des exercices',exact:true});await retry.waitFor();assert.equal(await retry.isEnabled(),true);await page.evaluate(()=>{Storage.prototype.setItem=window.__originalSetV94;});await retry.click();await page.getByRole('button',{name:'Résultat déjà archivé',exact:true}).waitFor();assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).committed),true);
  });
  await check('two live stores use native locks and cannot overwrite one another from a stale snapshot',async(page,ctx)=>{
   const second=await ctx.newPage();await second.goto(origin);await second.waitForFunction(()=>window.__warApiV94);

@@ -159,4 +159,6 @@ jobs:
           tests/clan-war-lifecycle-v94.test.mjs tests/clan-war-canyon-validity-v94.test.mjs
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/qa-clan-war-browser-v94.mjs
+        env:
+          AUDIT_CHROME_HEADED: '1'
+        run: xvfb-run -a node scripts/qa-clan-war-browser-v94.mjs
