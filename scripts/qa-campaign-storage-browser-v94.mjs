@@ -12,8 +12,8 @@ const bundle = await build({ stdin: { resolveDir: root, loader: 'ts', contents: 
 import * as slots from './app/game/systems/campaignSlots';
 import * as saves from './app/game/save';
 import * as transaction from './app/game/systems/archiveTransaction';
-import { ARCHIVE_TRANSFER_JOURNAL_KEY } from './app/game/systems/archiveTransferGuard';
-window.__campaignStorageAuditV94 = {...slots,...saves,...transaction,ARCHIVE_TRANSFER_JOURNAL_KEY};
+import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveSessionInvalidated } from './app/game/systems/archiveTransferGuard';
+window.__campaignStorageAuditV94 = {...slots,...saves,...transaction,ARCHIVE_TRANSFER_JOURNAL_KEY,archiveSessionInvalidated};
 ` }, bundle: true, write: false, format: 'esm', platform: 'browser', logLevel: 'silent' });
 const server = http.createServer((req,res) => {
   if(req.url === '/fixture.js') { res.writeHead(200,{'Content-Type':'text/javascript','Cache-Control':'no-store'});res.end(bundle.outputFiles[0].text); }
@@ -39,7 +39,15 @@ try {
   }
   const snapshot = () => page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)])));
   async function check(name,run) {
-    try {const seeded=await seed();assert.equal(seeded.ok,true,seeded.message);await run();results.push({name,status:'PASS'});console.log('PASS '+name);}
+    try {
+      // A prior real transfer correctly invalidates the other document for its
+      // entire lifetime. Start each independent scenario with new documents;
+      // never reset or bypass the production invalidation guard.
+      await Promise.all([page.reload(),other.reload()]);
+      await Promise.all([page.waitForFunction(()=>window.__campaignStorageAuditV94),other.waitForFunction(()=>window.__campaignStorageAuditV94)]);
+      const seeded=await seed();assert.equal(seeded.ok,true,seeded.message);
+      await run();results.push({name,status:'PASS'});console.log('PASS '+name);
+    }
     catch(error){results.push({name,status:'FAIL',error:error.message});console.error('FAIL '+name+': '+error.message);}
   }
   await check('legacy migration preserves original owner and becomes readable in another tab',async()=>{
@@ -90,6 +98,24 @@ try {
       return{imported,unchanged,activated,owner:JSON.parse(localStorage.getItem(a.SAVE_STORAGE_KEY)).createdAt};
     });
     assert.equal(result.imported.ok,true,result.imported.message);assert.equal(result.unchanged,true);assert.equal(result.activated.ok,true,result.activated.message);assert.equal(result.owner,'2026-10-15T00:00:00.000Z');
+  });
+  await check('a real archive transfer invalidates the other tab until reload, even after journal cleanup',async()=>{
+    const transferred=await page.evaluate(async()=>{
+      const a=window.__campaignStorageAuditV94,rev=()=>a.loadCampaignSlots().slots[0].revision;
+      const stored=await a.saveCampaignCheckpoint(1,{kind:'manual',index:1,location:'deck',expectedRevision:rev()});
+      if(!stored.ok)throw new Error(stored.message);
+      return a.activateCampaignCheckpoint(1,'manual-1',{expectedRevision:rev()});
+    });
+    assert.equal(transferred.ok,true,transferred.message);
+    await other.waitForFunction(()=>window.__campaignStorageAuditV94.archiveSessionInvalidated());
+    assert.equal(await page.evaluate(()=>localStorage.getItem(window.__campaignStorageAuditV94.ARCHIVE_TRANSFER_JOURNAL_KEY)),null);
+    const before=await snapshot();
+    const refused=await other.evaluate(()=>{const a=window.__campaignStorageAuditV94;return a.saveCampaignCheckpoint(1,{kind:'manual',index:2,expectedRevision:a.loadCampaignSlots().slots[0].revision});});
+    assert.equal(refused.ok,false);assert.deepEqual(await snapshot(),before);
+    await other.reload();await other.waitForFunction(()=>window.__campaignStorageAuditV94);
+    assert.equal(await other.evaluate(()=>window.__campaignStorageAuditV94.archiveSessionInvalidated()),false);
+    const retried=await other.evaluate(()=>{const a=window.__campaignStorageAuditV94;return a.saveCampaignCheckpoint(1,{kind:'manual',index:2,expectedRevision:a.loadCampaignSlots().slots[0].revision});});
+    assert.equal(retried.ok,true,retried.message);
   });
   await check('native Web Locks prevent a timed-out tab from writing later; retry succeeds after release',async()=>{
     await page.evaluate(()=>{

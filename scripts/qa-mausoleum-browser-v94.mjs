@@ -101,6 +101,23 @@ try {
     await page.evaluate(() => window.__mausoleumAuditV94.suspend(false)); await page.waitForTimeout(100); assert.equal(await phase(), 'take');
     await waitPhase('archive');
   });
+  await check('mask CSS animation pauses with the ritual and continues from the same frame', async () => {
+    await startRitual();
+    await page.evaluate(() => window.__mausoleumAuditV94.suspend(true));
+    const image = page.locator('[data-ritual-pose="take"] img');
+    await page.waitForFunction(() => {
+      const animation = document.querySelector('[data-ritual-pose="take"] img')?.getAnimations()[0];
+      return animation?.playState === 'paused' && !animation.pending;
+    });
+    const before = await image.evaluate(element => Number(element.getAnimations()[0].currentTime));
+    await page.waitForTimeout(800);
+    const after = await image.evaluate(element => Number(element.getAnimations()[0].currentTime));
+    assert.ok(Math.abs(after - before) < 1, `animation advanced during pause: ${before} -> ${after}`);
+    assert.equal(await phase(), 'take');
+    await page.evaluate(() => window.__mausoleumAuditV94.suspend(false));
+    await page.waitForFunction(() => document.querySelector('[data-ritual-pose="take"] img')?.getAnimations()[0]?.playState === 'running');
+    await waitPhase('archive');
+  });
   await check('parent rerenders do not duplicate ritual sounds or stall it', async () => {
     await startRitual();
     for (let i = 0; i < 18; i++) { await page.evaluate(() => window.__mausoleumAuditV94.rerender()); await page.waitForTimeout(100); }
