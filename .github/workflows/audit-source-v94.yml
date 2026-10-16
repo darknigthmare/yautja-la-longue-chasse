@@ -1,0 +1,52 @@
+name: V94 offline audit source
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-source-v94.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /public/**/manifest.json
+      - name: Export tracked source only, no credentials or generated state
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, subprocess, tarfile
+          allowed = {'package.json', 'package-lock.json', 'tsconfig.json', 'next.config.ts', 'eslint.config.mjs', 'vercel.json', 'AGENTS.md'}
+          paths = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          with tarfile.open('audit-source.tar.gz', 'w:gz') as archive:
+              for name in paths:
+                  p = pathlib.Path(name)
+                  if not name or not p.is_file() or p.is_symlink():
+                      continue
+                  if p.name.startswith('.env') or any(part in {'.git', 'node_modules'} for part in p.parts):
+                      continue
+                  if name in allowed or (p.parts[0] in {'app', 'scripts', 'tests', 'desktop', 'build'} and p.suffix in {'.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.json', '.css', '.html'}) or (p.parts[0] == 'public' and p.name == 'manifest.json'):
+                      archive.add(p, arcname=name, recursive=False)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: audit-source-v94
+          path: audit-source.tar.gz
+          if-no-files-found: error
+          retention-days: 1
