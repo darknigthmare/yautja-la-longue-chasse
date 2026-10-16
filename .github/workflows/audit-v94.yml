@@ -1,0 +1,47 @@
+name: V94 regression tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'vercel.json'
+      - '.github/workflows/audit-v94.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Targeted V94 regressions (not full game QA)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout only source required by these tests
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /vercel.json
+            /app/game/Mausoleum.tsx
+            /app/game/useHomeworldMotionAssetsV74.ts
+            /app/game/systems/campaignWorldResumeV70.ts
+            /app/game/systems/*V94.ts
+            /scripts/build-production-v94.mjs
+            /tests/*-v94.test.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Run targeted regression tests (no dependency install)
+        run: npm run test:audit:v94
