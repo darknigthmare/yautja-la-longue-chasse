@@ -1,0 +1,67 @@
+name: V94 ship training persistence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ship-training-v94.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ship-training:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: New score receipts and runtime regressions
+        run: >-
+          node --test --test-reporter=spec
+          tests/ship-training-receipt-v94.test.mjs
+          tests/ship-training-lifecycle-v94.test.mjs
+      - name: Historical ship progression, ownership and training rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/ship-progression.test.mjs tests/ship-progression-owner.test.mjs
+          tests/ship-hub-input-runtime.test.mjs tests/training-drill.test.mjs
+          tests/training-lifecycle-v94.test.mjs
+      - name: Strict lint of changed ship training runtime
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ShipHub.tsx app/game/TrainingDrill.tsx
+          app/game/useShipTrainingV94.ts app/game/systems/shipTrainingReceiptV94.ts
+      - name: Play native ship training and verify score storage in Chrome
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-ship-training-browser-v94.mjs

@@ -12,6 +12,8 @@ import {
 import { controlActionShortcut } from "./controlBindingLabels";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
+import { useShipTrainingV94 } from "./useShipTrainingV94";
+import { useMenuGamepad } from "./useMenuGamepad";
 import ShipRecoveredGalleryV85 from "./ShipRecoveredGalleryV85";
 import ShipOperationsPanelV85, { type ShipOperationPresentationV85 } from "./ShipOperationsPanelV85";
 import DialogueBibleReaderV85, { type DialogueBibleSourceV85 } from "./DialogueBibleReaderV85";
@@ -40,14 +42,13 @@ import {
   isShipUnlocked,
   loadLoadoutPreset,
   loadShipProgression,
-  recordTrainingResult,
   resolveMedbayTreatment,
   saveLoadoutPreset,
   selectShip,
   startMedbayTreatment,
   synchronizeShipProgression,
   unlockAvailableShips,
-  writeShipProgression,
+  writeShipProgressionWithStatus,
   type ShipLoadoutSlotId,
   type ShipProgressionState,
   type ShipRoomId,
@@ -201,11 +202,6 @@ const SLOT_ORDER: readonly ShipLoadoutSlotId[] = [
   "hunt-4",
 ];
 
-interface TrainingSession {
-  disciplineId: TrainingDisciplineId;
-  seed: number;
-}
-
 function roomIndex(roomId: ShipRoomId): number {
   return Math.max(
     0,
@@ -266,19 +262,13 @@ export default function ShipHub({
   const [statusMessage, setStatusMessage] = useState(
     "Console du vaisseau prête.",
   );
-  const [trainingSession, setTrainingSession] =
-    useState<TrainingSession | null>(null);
+  const [hydratedOwner, setHydratedOwner] = useState<string | null>(null);
   const [shipInspectionActive, setShipInspectionActive] = useState(false);
   const [shipFlightActive, setShipFlightActive] = useState(false);
   const rootRef = useRef<HTMLElement | null>(null);
+  const externalTrainingRef = useRef<HTMLDivElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
-
-  // A nested drill owns focus and input; let the host disable its outer toolbar.
-  useEffect(() => {
-    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive || shipFlightActive);
-    return () => onTrainingActiveChange?.(false);
-  }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
 
   const progression =
     controlledProgression ?? localProgression;
@@ -292,43 +282,72 @@ export default function ShipHub({
     [onNotify],
   );
 
+  const callbacksRef = useRef({ onProgressionChange, onSelectedShipChange });
+  useEffect(() => { callbacksRef.current = { onProgressionChange, onSelectedShipChange }; }, [onProgressionChange, onSelectedShipChange]);
+  const sidecarReady = controlledProgression !== undefined || hydratedOwner === save.createdAt;
+  const publishConfirmedProgression = useCallback((state: ShipProgressionState) => {
+    setLocalProgression(state);
+    callbacksRef.current.onProgressionChange?.(state);
+    callbacksRef.current.onSelectedShipChange?.(state.selectedShipId);
+  }, []);
+  const training = useShipTrainingV94({ save, progression, controlled: controlledProgression !== undefined,
+    suspended: suspended || !sidecarReady, rootRef, onConfirmed: publishConfirmedProgression,
+    onDelegated: onProgressionChange, onTrainingRequested, notify });
+  const { trainingSession, requestTraining, completeAutonomousTraining, cancelAutonomousTraining,
+    retryTrainingSave, canRetryTraining, saveIssue: trainingSaveIssue, hasPendingResult: hasPendingTraining } = training;
+
+  useMenuGamepad(externalTrainingRef, !!trainingSession?.external && gamepadEnabled && !suspended,
+    `ship-external:${trainingSession?.id ?? 0}`, cancelAutonomousTraining);
+  useEffect(() => {
+    if (!trainingSession?.external) return;
+    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const frame = window.requestAnimationFrame(() => { if (autoFocus) externalTrainingRef.current?.focus(); });
+    return () => { window.cancelAnimationFrame(frame); previous?.focus({ preventScroll: true }); };
+  }, [autoFocus, trainingSession?.external, trainingSession?.id]);
+
+  // A nested drill owns focus and input; let the host disable its outer toolbar.
+  useEffect(() => {
+    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive || shipFlightActive);
+    return () => onTrainingActiveChange?.(false);
+  }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
+
   const commitProgression = useCallback(
     (candidate: ShipProgressionState) => {
-      const synchronized = synchronizeShipProgression(candidate, save);
-      const snapshot =
-        controlledProgression === undefined
-          ? writeShipProgression(synchronized, save)
-          : synchronized;
-      if (controlledProgression === undefined) {
-        setLocalProgression(snapshot);
+      if (suspended || !sidecarReady || hasPendingTraining()) {
+        notify("Progression non modifiée : terminez la vérification ou la sauvegarde du score en attente.");
+        return null;
       }
-      onProgressionChange?.(snapshot);
-      onSelectedShipChange?.(snapshot.selectedShipId);
-      return snapshot;
+      const synchronized = synchronizeShipProgression(candidate, save);
+      if (controlledProgression !== undefined) {
+        onProgressionChange?.(synchronized);
+        onSelectedShipChange?.(synchronized.selectedShipId);
+        return synchronized;
+      }
+      const result = writeShipProgressionWithStatus(synchronized, save);
+      if (!result.persisted) {
+        notify("Sauvegarde du vaisseau non confirmée. La progression affichée reste inchangée ; réessayez après avoir vérifié le stockage.");
+        return null;
+      }
+      publishConfirmedProgression(result.state);
+      return result.state;
     },
-    [
-      controlledProgression,
-      onProgressionChange,
-      onSelectedShipChange,
-      save,
-    ],
+    [controlledProgression, hasPendingTraining, notify, onProgressionChange,
+      onSelectedShipChange, publishConfirmedProgression, save, sidecarReady, suspended],
   );
 
   useEffect(() => {
     if (controlledProgression !== undefined) return;
     const hydrationTask = window.setTimeout(() => {
+      if (hasPendingTraining()) return;
       const loaded = loadShipProgression(save);
       setLocalProgression(loaded);
-      onProgressionChange?.(loaded);
-      onSelectedShipChange?.(loaded.selectedShipId);
+      setHydratedOwner(save.createdAt);
+      callbacksRef.current.onProgressionChange?.(loaded);
+      callbacksRef.current.onSelectedShipChange?.(loaded.selectedShipId);
     }, 0);
     return () => window.clearTimeout(hydrationTask);
-  }, [
-    controlledProgression,
-    onProgressionChange,
-    onSelectedShipChange,
-    save,
-  ]);
+    // Callback identity changes must not reload an older sidecar over live state.
+  }, [controlledProgression, hasPendingTraining, save]);
 
   useEffect(() => {
     if (!autoFocus || suspended) return;
@@ -352,8 +371,9 @@ export default function ShipHub({
     // Trophy preparation is exclusively resolved by TrophyWorkshop. The hub
     // clock remains useful for the medbay sidecar, but can no longer advance
     // legacy cleaning or mounting timers behind the mini-game.
-    if (progression.medbay.status !== "treating") return;
+    if (progression.medbay.status !== "treating" || hasPendingTraining()) return;
     const timer = window.setInterval(() => {
+      if (hasPendingTraining()) return;
       const tick = Date.now();
       const next = resolveMedbayTreatment(
         progression,
@@ -366,6 +386,7 @@ export default function ShipHub({
     return () => window.clearInterval(timer);
   }, [
     commitProgression,
+    hasPendingTraining,
     progression.medbay.status,
     progression.trophies,
     progression,
@@ -416,79 +437,6 @@ export default function ShipHub({
     },
     [activeRoomId, selectRoom],
   );
-
-  const recordCompletedTraining = useCallback(
-    (disciplineId: TrainingDisciplineId, score: number) => {
-      const next = recordTrainingResult(
-        progression,
-        disciplineId,
-        score,
-      );
-      const recordedScore = next.training[disciplineId].lastScore;
-      commitProgression(next);
-      notify(
-        `${TRAINING_LABELS[disciplineId]} : résultat ${recordedScore}/100 consigné.`,
-      );
-    },
-    [commitProgression, notify, progression],
-  );
-
-  const requestTraining = useCallback(
-    async (disciplineId: TrainingDisciplineId) => {
-      if (!onTrainingRequested) {
-        const record = progression.training[disciplineId];
-        setTrainingSession({
-          disciplineId,
-          seed: record.attempts,
-        });
-        notify(
-          `${TRAINING_LABELS[disciplineId]} : épreuve autonome prête.`,
-        );
-        return;
-      }
-
-      try {
-        const externalScore = await onTrainingRequested(disciplineId);
-        if (
-          typeof externalScore === "number" &&
-          Number.isFinite(externalScore)
-        ) {
-          recordCompletedTraining(disciplineId, externalScore);
-        } else {
-          notify(
-            `${TRAINING_LABELS[disciplineId]} : aucun résultat externe consigné.`,
-          );
-        }
-      } catch {
-        notify(
-          `${TRAINING_LABELS[disciplineId]} : épreuve externe indisponible.`,
-        );
-      }
-    },
-    [
-      notify,
-      onTrainingRequested,
-      progression.training,
-      recordCompletedTraining,
-    ],
-  );
-
-  const completeAutonomousTraining = useCallback(
-    (score: number) => {
-      if (!trainingSession) return;
-      recordCompletedTraining(trainingSession.disciplineId, score);
-      setTrainingSession(null);
-    },
-    [recordCompletedTraining, trainingSession],
-  );
-
-  const cancelAutonomousTraining = useCallback(() => {
-    if (!trainingSession) return;
-    notify(
-      `${TRAINING_LABELS[trainingSession.disciplineId]} : épreuve abandonnée, aucun score consigné.`,
-    );
-    setTrainingSession(null);
-  }, [notify, trainingSession]);
 
   const actions = useMemo<HubActionDefinition[]>(() => {
     const firstEmptyPreset =
@@ -565,7 +513,7 @@ export default function ShipHub({
           label: `Enregistrer dans ${firstEmptyPreset.name}`,
           detail: "Mémoriser ensemble loadout et apparence.",
           run: () => {
-            commitProgression(
+            const committed = commitProgression(
               saveLoadoutPreset(
                 progression,
                 firstEmptyPreset.id,
@@ -574,7 +522,7 @@ export default function ShipHub({
                 save.appearance,
               ),
             );
-            notify(`${firstEmptyPreset.name} enregistré.`);
+            if (committed) notify(`${firstEmptyPreset.name} ${controlledProgression === undefined ? "enregistré" : "transmis au gestionnaire externe"}.`);
           },
         },
         ...presetActions,
@@ -692,8 +640,7 @@ export default function ShipHub({
                 notify(`${ship.name} reste verrouillé ; sa fiche est consultable.`);
                 return;
               }
-              commitProgression(next);
-              notify(`${ship.name} devient le vaisseau actif.`);
+              if (commitProgression(next)) notify(`${ship.name} devient le vaisseau actif${controlledProgression === undefined ? "" : " dans le gestionnaire externe"}.`);
             },
           };
         },
@@ -723,14 +670,14 @@ export default function ShipHub({
             : "Cycle de régénération court · 30 secondes.",
           disabled: treating,
           run: () => {
-            commitProgression(
+            const committed = commitProgression(
               startMedbayTreatment(
                 progression,
                 "minor-wounds",
                 30,
               ),
             );
-            notify("Cycle médical court engagé.");
+            if (committed) notify("Cycle médical court engagé.");
           },
         },
         {
@@ -741,14 +688,14 @@ export default function ShipHub({
             : "Décontamination profonde · 90 secondes.",
           disabled: treating,
           run: () => {
-            commitProgression(
+            const committed = commitProgression(
               startMedbayTreatment(
                 progression,
                 "acid-burn",
                 90,
               ),
             );
-            notify("Décontamination acide engagée.");
+            if (committed) notify("Décontamination acide engagée.");
           },
         },
         {
@@ -759,14 +706,14 @@ export default function ShipHub({
             : "Réparer les interfaces biomask · 60 secondes.",
           disabled: treating,
           run: () => {
-            commitProgression(
+            const committed = commitProgression(
               startMedbayTreatment(
                 progression,
                 "neural-shock",
                 60,
               ),
             );
-            notify("Recalibrage neural engagé.");
+            if (committed) notify("Recalibrage neural engagé.");
           },
         },
       ];
@@ -813,6 +760,7 @@ export default function ShipHub({
     clan.completedRites.length,
     clan.prestige,
     commitProgression,
+    controlledProgression,
     hangarFilteredShips,
     hangarMedia,
     hangarPageCount,
@@ -1043,7 +991,7 @@ export default function ShipHub({
         }
       }}
     >
-      <div className="hub-stage">
+      <div className="hub-stage" inert={trainingSession?.external || undefined}>
         <header style={styles.header}>
           <div>
             <p className="eyebrow">Vaisseau de chasse // Réseau du clan</p>
@@ -1156,13 +1104,44 @@ export default function ShipHub({
           <p role="status" aria-live="polite">
             {statusMessage}
           </p>
+          {!sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
+          {trainingSaveIssue && !trainingSession && <div role="alert">
+            <p>{trainingSaveIssue}</p>
+            {canRetryTraining && <button type="button" onClick={retryTrainingSave} disabled={suspended}>Réessayer la sauvegarde du score</button>}
+          </div>}
         </footer>
       </div>
-      {trainingSession ? (
+      {trainingSession?.external ? (
+        <div ref={externalTrainingRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Épreuve externe"
+          style={styles.externalTraining} inert={suspended} onKeyDown={event => {
+            event.stopPropagation();
+            if (event.repeat || suspended) return;
+            if (matchingControlActions("training", event.nativeEvent, controlBindings).includes("training.cancel")) {
+              event.preventDefault(); cancelAutonomousTraining(); return;
+            }
+            if (event.key === "Tab") {
+              const buttons = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"));
+              const first = buttons[0], last = buttons.at(-1);
+              if (event.shiftKey && (document.activeElement === first || document.activeElement === event.currentTarget)) {
+                event.preventDefault(); last?.focus();
+              } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+            }
+          }}>
+          <h2>Épreuve externe</h2>
+          <p role="status">{trainingSaveIssue ?? "Résultat attendu. Annuler cette attente ne consigne aucun score."}</p>
+          {canRetryTraining && <button type="button" onClick={retryTrainingSave} disabled={suspended}>Réessayer la sauvegarde du score</button>}
+          <button type="button" onClick={cancelAutonomousTraining}>Annuler l’attente</button>
+        </div>
+      ) : trainingSession ? (
         <TrainingDrill
+          key={trainingSession.id}
           disciplineId={trainingSession.disciplineId}
           seed={trainingSession.seed}
           controlBindings={controlBindings}
+          suspended={suspended}
+          gamepadEnabled={gamepadEnabled}
+          saveIssue={trainingSaveIssue}
+          onRetrySave={canRetryTraining ? retryTrainingSave : undefined}
           onComplete={completeAutonomousTraining}
           onCancel={cancelAutonomousTraining}
         />
@@ -1542,6 +1521,10 @@ function StatGrid({
 }
 
 const styles = {
+  externalTraining: {
+    position: "fixed" as const, inset: "20% 12%", zIndex: 110, background: "#09110d",
+    border: "1px solid currentColor", padding: "2rem", overflow: "auto" as const,
+  },
   header: {
     display: "flex",
     justifyContent: "space-between",

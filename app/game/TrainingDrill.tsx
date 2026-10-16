@@ -35,6 +35,9 @@ export interface TrainingDrillProps {
   autoFocus?: boolean;
   suspended?: boolean;
   gamepadEnabled?: boolean;
+  /** Parent persistence status; delivery alone is not confirmation. */
+  saveIssue?: string | null;
+  onRetrySave?: () => void;
   onComplete: (score: number) => void;
   onCancel: () => void;
 }
@@ -75,6 +78,8 @@ function TrainingDrillSession({
   autoFocus = true,
   suspended = false,
   gamepadEnabled = true,
+  saveIssue = null,
+  onRetrySave,
   onComplete,
   onCancel,
 }: TrainingDrillProps) {
@@ -258,6 +263,10 @@ function TrainingDrillSession({
 
         {paused && <p role="status">Épreuve en pause · revenez dans la fenêtre active pour reprendre.</p>}
         {deliveryError && <p role="alert">{deliveryError}</p>}
+        {saveIssue && <div role="alert">
+          <p>{saveIssue}</p>
+          {onRetrySave && <button type="button" onClick={onRetrySave} disabled={paused} className="ghost-button">Réessayer la sauvegarde du score</button>}
+        </div>}
         {game.status === "ready" ? (
           <button
             type="button"
