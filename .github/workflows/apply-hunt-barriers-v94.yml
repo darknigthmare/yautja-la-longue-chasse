@@ -1,0 +1,88 @@
+name: Apply reviewed hunt barriers once
+on:
+  push:
+    branches: [fix/v94-audit-reliability-20261016]
+    paths: [.github/workflows/apply-hunt-barriers-v94.yml]
+permissions:
+  contents: read
+jobs:
+  apply:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/fix/v94-audit-reliability-20261016'
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /db/
+            /worker/
+            /drizzle/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /.github/workflows/apply-hunt-barriers-v94.yml
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Apply only the reviewed preimage and verify the resulting blob
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const plan=JSON.parse(fs.readFileSync('scripts/audit-apply-combat-v94.json','utf8'));
+          if(plan.path!=='app/game/HuntCanvas.tsx')throw Error('Unexpected target');
+          const hash=s=>createHash('sha1').update('blob '+Buffer.byteLength(s)+'\0').update(s).digest('hex');
+          let text=fs.readFileSync(plan.path,'utf8');
+          if(hash(text)!=='1240f07692388cea2a99b32efd264a9bede33aa8'||plan.beforeBlob!==hash(text))throw Error('Source changed; refuse overwrite');
+          for(const edit of plan.edits){
+            if(!edit.before||text.split(edit.before).length!==2)throw Error('Non-unique edit');
+            text=text.replace(edit.before,edit.after);
+          }
+          if(hash(text)!=='8d002485c8e29a9d86db3c7e8ad4aa64f4a2b784'||hash(text)!==plan.afterBlob)throw Error('Result differs from reviewed patch');
+          fs.writeFileSync(plan.path,text);
+          console.log('Verified exact HuntCanvas patch',hash(text));
+          NODE
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run real combat functions and existing hunt regressions
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/hunt-structural-combat-v94.test.mjs tests/hunt-melee-combat.test.mjs
+          tests/hunt-campaign-runtime.test.mjs tests/hunt-exploration-save-runtime.test.mjs
+          tests/hunt-jump-assist-runtime.test.mjs tests/hunt-projectile-runtime.test.mjs
+          tests/hunt-opening-v78.test.mjs tests/hunt-systems.test.mjs
+          tests/mission-mastery.test.mjs tests/mission-honor-rules.test.mjs
+      - name: Typecheck the actual application
+        run: node node_modules/next/dist/bin/next typegen && npm run typecheck
+      - name: Lint the modified combat runtime
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/systems/huntStructuralBarrierV94.ts
+      - name: Commit verified correction to this PR only and remove temporary files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=http.https://github.com/.extraheader
+          export GIT_CONFIG_VALUE_0="AUTHORIZATION: bearer $GH_TOKEN"
+          remote=$(git ls-remote origin refs/heads/fix/v94-audit-reliability-20261016 | cut -f1)
+          test "$remote" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/game/HuntCanvas.tsx
+          git rm .github/workflows/apply-hunt-barriers-v94.yml scripts/audit-apply-combat-v94.json
+          git commit -m 'fix(hunt): prevent ranged melee whiffs and impacts through structural walls'
+          git push origin HEAD:refs/heads/fix/v94-audit-reliability-20261016
