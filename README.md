@@ -4,7 +4,22 @@ Jeu d'action 2D en vue latérale, original et non commercial, inspiré de l'univ
 *Predator*. Le joueur prépare son chasseur dans un vaisseau, choisit son contrat
 et son arsenal, puis traque des proies sur plusieurs planètes.
 
-## Dernier lot documenté — V59
+## Version actuelle du code — V94
+
+Le numéro de contenu visible est défini dans `app/game/buildInfo.ts`. La V94
+ne doit pas être confondue avec les inventaires historiques V31/V59 ci-dessous.
+Les fonctionnalités de campagne, du mausolée et de THE PIT ont des niveaux de
+complétude différents : un catalogue ou une fiche ne constitue pas une campagne
+jouable. Les validations automatisées ne remplacent pas une partie complète.
+
+La [PR de fiabilisation V94](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/4)
+contient les correctifs en cours d'examen ; tant qu'elle n'est pas fusionnée,
+ils ne sont pas présents sur `main` ni nécessairement sur le site public.
+Pour vérifier la compilation applicative, exécuter `npm run typecheck` puis
+`npx next build --webpack`. Pour la chaîne de distribution complète,
+utiliser `npm run build:production` avec les ressources requises disponibles.
+
+## Dernier lot historique détaillé — V59
 
 Le [compte rendu V59](docs/v59-workbook-delivery.md) détaille les quatre planches
 natives de Feral, le départ physique des carreaux, la compatibilité des replays,
