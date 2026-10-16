@@ -7,7 +7,12 @@ on:
       - 'app/**'
       - 'scripts/**'
       - 'tests/**'
+      - 'desktop/**'
       - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - 'next.config.ts'
+      - 'eslint.config.mjs'
       - 'vercel.json'
       - '.github/workflows/audit-v94.yml'
   workflow_dispatch:
@@ -45,3 +50,47 @@ jobs:
           node-version: '22'
       - name: Run targeted regression tests (no dependency install)
         run: npm run test:audit:v94
+
+  application:
+    name: Application types and changed runtime lint (not full asset QA)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout application source without multi-gigabyte artwork
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            app
+            desktop
+            scripts
+            tests
+            db
+            worker
+            drizzle
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install exact locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next route and environment types
+        run: node node_modules/next/dist/bin/next typegen
+      - name: Check application TypeScript
+        run: npm run typecheck
+      - name: Lint changed game runtime
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
+          app/game/systems/campaignWorldResumeV70.ts
+          app/game/systems/campaignResumePriorityV94.ts
+          app/game/systems/heldDirectionV94.ts
+          app/game/systems/nativeImagePreloadV94.ts
+          app/game/systems/pageActivityV94.ts
+          app/game/systems/phaseClockV94.ts
