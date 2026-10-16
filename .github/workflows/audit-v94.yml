@@ -8,6 +8,9 @@ on:
       - 'scripts/**'
       - 'tests/**'
       - 'desktop/**'
+      - 'build/**'
+      - 'public/**/manifest.json'
+      - '.openai/hosting.json'
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
@@ -61,18 +64,24 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=6144
       AUDIT_CHROME_CHANNEL: chrome
     steps:
-      - name: Checkout application source without multi-gigabyte artwork
+      - name: Checkout application source and real manifests without multi-gigabyte artwork
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            app
-            desktop
-            scripts
-            tests
-            db
-            worker
-            drizzle
+            /*
+            !/*/
+            /app/
+            /desktop/
+            /scripts/
+            /tests/
+            /db/
+            /worker/
+            /drizzle/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
