@@ -3,14 +3,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import {
-  useCallback,
   useEffect,
-  useMemo,
   useRef,
-  useState,
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
+import { useTrophyWorkshopRuntimeV94 } from "./useTrophyWorkshopRuntimeV94";
 import { controlActionShortcut } from "./controlBindingLabels";
 import {
   DEFAULT_CONTROL_BINDINGS,
@@ -19,13 +17,8 @@ import {
 } from "./systems/controlBindings";
 import {
   TROPHY_WORKSHOP_ACTIONS,
-  TROPHY_WORKSHOP_INPUTS,
-  createTrophyWorkshopGame,
-  startTrophyWorkshopGame,
-  stepTrophyWorkshopGame,
   trophyWorkshopProgress,
   trophyWorkshopReadyRemaining,
-  trophyWorkshopResult,
   trophyWorkshopTimingPosition,
   type TrophyWorkshopAction,
   type TrophyWorkshopInput,
@@ -41,6 +34,7 @@ export interface TrophyWorkshopProps {
   trophyImageUrl?: string;
   gamepadEnabled?: boolean;
   autoFocus?: boolean;
+  suspended?: boolean;
   onComplete: (result: TrophyWorkshopResult) => void;
   onCancel: () => void;
 }
@@ -73,24 +67,6 @@ const FEEDBACK_LABELS: Readonly<
   missed: "Fenêtre manquée",
 };
 
-function gamepadInputs(gamepad: Gamepad): Set<TrophyWorkshopInput> {
-  const inputs = new Set<TrophyWorkshopInput>();
-  if (gamepad.buttons[14]?.pressed || (gamepad.axes[0] ?? 0) < -0.65) {
-    inputs.add("left");
-  }
-  if (gamepad.buttons[12]?.pressed || (gamepad.axes[1] ?? 0) < -0.65) {
-    inputs.add("up");
-  }
-  if (gamepad.buttons[13]?.pressed || (gamepad.axes[1] ?? 0) > 0.65) {
-    inputs.add("down");
-  }
-  if (gamepad.buttons[15]?.pressed || (gamepad.axes[0] ?? 0) > 0.65) {
-    inputs.add("right");
-  }
-  if (gamepad.buttons[0]?.pressed) inputs.add("confirm");
-  return inputs;
-}
-
 export default function TrophyWorkshop(props: TrophyWorkshopProps) {
   return (
     <TrophyWorkshopSession
@@ -108,18 +84,16 @@ function TrophyWorkshopSession({
   trophyImageUrl,
   gamepadEnabled = true,
   autoFocus = true,
+  suspended = false,
   onComplete,
   onCancel,
 }: TrophyWorkshopProps) {
-  const [game, setGame] = useState(() =>
-    createTrophyWorkshopGame(action, trophyId),
-  );
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
-  const previousFrameRef = useRef<number | null>(null);
-  const previousGamepadInputsRef = useRef(new Set<TrophyWorkshopInput>());
-  const completionSentRef = useRef(false);
+  const { game, result, paused, begin, restart, submitInput, cancel, canAct } = useTrophyWorkshopRuntimeV94({
+    action, trophyId, rootRef, gamepadEnabled, suspended, onComplete, onCancel,
+  });
 
   const config = TROPHY_WORKSHOP_ACTIONS[action];
   const inputShortcuts: Readonly<Record<TrophyWorkshopInput, string>> = {
@@ -130,33 +104,6 @@ function TrophyWorkshopSession({
     confirm: controlActionShortcut("workshop.confirm", controlBindings),
   };
   const currentCue = game.sequence[game.cueIndex] ?? null;
-  const result = useMemo(() => trophyWorkshopResult(game), [game]);
-
-  const restart = useCallback(() => {
-    completionSentRef.current = false;
-    previousFrameRef.current = null;
-    previousGamepadInputsRef.current.clear();
-    setGame(createTrophyWorkshopGame(action, trophyId));
-    window.requestAnimationFrame(() => rootRef.current?.focus());
-  }, [action, trophyId]);
-
-  const begin = useCallback(() => {
-    previousFrameRef.current = null;
-    setGame((previous) => startTrophyWorkshopGame(previous));
-    window.requestAnimationFrame(() => rootRef.current?.focus());
-  }, []);
-
-  const submitInput = useCallback((input: TrophyWorkshopInput) => {
-    setGame((previous) => {
-      if (previous.phase === "ready") {
-        return input === "confirm"
-          ? startTrophyWorkshopGame(previous)
-          : previous;
-      }
-      return stepTrophyWorkshopGame(previous, 0, input).state;
-    });
-  }, []);
-
   useEffect(() => {
     previouslyFocusedRef.current =
       document.activeElement instanceof HTMLElement
@@ -197,48 +144,8 @@ function TrophyWorkshopSession({
     };
   }, [autoFocus]);
 
-  useEffect(() => {
-    if (!result || completionSentRef.current) return;
-    completionSentRef.current = true;
-    const timeout = window.setTimeout(() => onComplete(result), 520);
-    return () => window.clearTimeout(timeout);
-  }, [onComplete, result]);
-
-  useEffect(() => {
-    let animationFrame = 0;
-    const animate = (now: number) => {
-      const previousFrame = previousFrameRef.current ?? now;
-      previousFrameRef.current = now;
-      const deltaSeconds = Math.min(0.1, Math.max(0, (now - previousFrame) / 1000));
-      setGame((previous) =>
-        stepTrophyWorkshopGame(previous, deltaSeconds).state,
-      );
-
-      if (gamepadEnabled && typeof navigator !== "undefined") {
-        let gamepad: Gamepad | null | undefined;
-        try { gamepad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean); }
-        catch { /* Keyboard gestures and the workshop timer remain available. */ }
-        if (gamepad) {
-          const currentInputs = gamepadInputs(gamepad);
-          for (const input of TROPHY_WORKSHOP_INPUTS) {
-            if (
-              currentInputs.has(input) &&
-              !previousGamepadInputsRef.current.has(input)
-            ) {
-              submitInput(input);
-            }
-          }
-          previousGamepadInputsRef.current = currentInputs;
-        } else previousGamepadInputsRef.current.clear();
-      }
-      animationFrame = window.requestAnimationFrame(animate);
-    };
-    animationFrame = window.requestAnimationFrame(animate);
-    return () => window.cancelAnimationFrame(animationFrame);
-  }, [gamepadEnabled, submitInput]);
-
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.repeat) return;
+    if (event.repeat || !canAct() || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.key === "Tab") {
       const focusable = Array.from(
         rootRef.current?.querySelectorAll<HTMLElement>(
@@ -275,7 +182,7 @@ function TrophyWorkshopSession({
     );
     if (actions.includes("workshop.cancel")) {
       event.preventDefault();
-      onCancel();
+      cancel();
       return;
     }
     if (game.status === "failed" && actions.includes("workshop.restart")) {
@@ -337,7 +244,7 @@ function TrophyWorkshopSession({
           </div>
           <button
             type="button"
-            onClick={onCancel}
+            onClick={cancel}
             className="trophy-workshop-cancel"
             style={styles.cancelButton}
             aria-label="Quitter l’atelier"
@@ -348,7 +255,7 @@ function TrophyWorkshopSession({
 
         <p id="trophy-workshop-instructions" style={styles.instructions}>
           {config.instruction} Reproduis uniquement la touche affichée :
-          {inputShortcuts.left}, {inputShortcuts.up}, {inputShortcuts.down} ou {inputShortcuts.right} pour les directions, {inputShortcuts.confirm} seulement lorsque le glyphe A apparaît. Manette : croix directionnelle et A. Les
+          {inputShortcuts.left}, {inputShortcuts.up}, {inputShortcuts.down} ou {inputShortcuts.right} pour les directions, {inputShortcuts.confirm} seulement lorsque le glyphe A apparaît. Manette : croix directionnelle et A ; B pour fermer. Relâche les commandes avant de reprendre. Les
           commandes tactiles restent disponibles sous la jauge.
         </p>
 
@@ -374,6 +281,7 @@ function TrophyWorkshopSession({
             onClick={begin}
             style={styles.retryButton}
             aria-describedby="trophy-workshop-instructions"
+            disabled={paused}
           >
             Commencer la séquence · {inputShortcuts.confirm}
           </button>
@@ -432,7 +340,7 @@ function TrophyWorkshopSession({
             </div>
             <div style={styles.statusRow} aria-live="polite" aria-atomic="true">
               <strong>
-                {game.phase === "ready"
+                {paused ? "Atelier en pause · reviens dans la fenêtre pour poursuivre" : game.phase === "ready"
                   ? "Prêt · lance la séquence quand tu as lu les commandes"
                   : game.phase === "countdown"
                   ? `Observe le premier geste · départ dans ${readyRemaining.toFixed(1)} s`
@@ -466,7 +374,7 @@ function TrophyWorkshopSession({
             <button
               key={input}
               type="button"
-              disabled={game.status !== "playing" || game.phase !== "cue"}
+              disabled={paused || game.status !== "playing" || game.phase !== "cue"}
               aria-label={`Geste ${INPUT_LABELS[input]}`}
               onPointerDown={(event) => {
                 event.preventDefault();

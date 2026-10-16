@@ -110,7 +110,7 @@ jobs:
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
-          app/game/useNativeImageAssetsV94.ts
+          app/game/useNativeImageAssetsV94.ts app/game/useTrophyWorkshopRuntimeV94.ts
           app/game/useMenuGamepad.ts
           app/game/systems/campaignWorldResumeV70.ts
           app/game/systems/campaignResumePriorityV94.ts
@@ -172,3 +172,11 @@ jobs:
         env:
           AUDIT_CHROME_HEADED: '1'
         run: xvfb-run -a node scripts/qa-clan-war-browser-v94.mjs
+      - name: Exercise trophy workshop lifecycle and historical ritual rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/trophy-workshop-lifecycle-v94.test.mjs tests/trophy-workshop.test.mjs tests/trophy-ritual.test.mjs
+      - name: Complete all four workshop sequences in the actual React panel
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-trophy-workshop-browser-v94.mjs
