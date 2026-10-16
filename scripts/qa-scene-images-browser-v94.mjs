@@ -9,8 +9,8 @@ const compiled=await build({entryPoints:['app/game/systems/nativeImagePreloadV94
 let active=0,peak=0;
 const server=createServer((req,res)=>{
  const path=new URL(req.url,'http://localhost').pathname;
- if(path==='/'){res.writeHead(200,{'content-type':'text/html'});res.end('<!doctype html><title>Scene image lifecycle QA</title><script src="/qa.js"></script>');return;}
- if(path==='/qa.js'){res.writeHead(200,{'content-type':'text/javascript'});res.end(compiled.outputFiles[0].text);return;}
+ if(path==='/'){res.writeHead(200,{'content-type':'text/html; charset=utf-8'});res.end('<!doctype html><meta charset="utf-8"><title>Scene image lifecycle QA</title><script src="/qa.js"></script>');return;}
+ if(path==='/qa.js'){res.writeHead(200,{'content-type':'text/javascript; charset=utf-8'});res.end(compiled.outputFiles[0].text);return;}
  if(path==='/stalled.png'){res.writeHead(200,{'content-type':'image/png'});res.write(png.subarray(0,8));return;}
  if(path==='/missing.png'){res.writeHead(503);res.end();return;}
  if(path==='/corrupt.png'){res.writeHead(200,{'content-type':'image/png'});res.end('not a png');return;}

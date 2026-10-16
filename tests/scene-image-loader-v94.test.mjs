@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
 import {preloadSceneImagesV94} from '../app/game/systems/nativeImagePreloadV94.ts';
 async function fixture(run,decode=async()=>{}){
  const oldImage=globalThis.Image,oldFetch=globalThis.fetch,images=[],handles=[];
@@ -39,3 +40,10 @@ test('a separate retry can recover without carrying the previous error',()=>fixt
  const reports=[];await load({urls:['/retry.png'],validateDimensions:()=>false,onProgress:p=>reports.push(p)}).done;assert.equal(reports.at(-1).ready,false);
  await load({urls:['/retry.png'],onProgress:p=>reports.push(p)}).done;assert.equal(reports.at(-1).ready,true);assert.equal(reports.at(-1).error,null);
 }));
+
+test('scene browser fixture serves Unicode diagnostics with explicit UTF-8',async()=>{
+ const script=await readFile(new URL('../scripts/qa-scene-images-browser-v94.mjs',import.meta.url),'utf8');
+ assert.match(script,/'content-type':'text\/html; charset=utf-8'/);
+ assert.match(script,/'content-type':'text\/javascript; charset=utf-8'/);
+ assert.match(script,/<meta charset="utf-8">/);
+});
