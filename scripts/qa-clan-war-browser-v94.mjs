@@ -70,9 +70,9 @@ try{
  });
  await check('two live stores use native locks and cannot overwrite one another from a stale snapshot',async(page,ctx)=>{
   const second=await ctx.newPage();await second.goto(origin);await second.waitForFunction(()=>window.__warApiV94);
-  for(const p of [page,second])await p.evaluate(()=>{const a=window.__warApiV94;window.__sessionV94=a.createWarSessionV85(()=>localStorage);window.__sessionV94.subscribe(()=>{});});
+  for(const p of [page,second])await p.evaluate(()=>{const a=window.__warApiV94;window.__writeTraceV94=[];const trace=(action,key,raw)=>{if(key===a.WAR_STORAGE_KEY_V85)window.__writeTraceV94.push({action,raw,time:Date.now()});};window.__sessionV94=a.createWarSessionV85(()=>({getItem(key){const raw=localStorage.getItem(key);trace('read',key,raw);return raw;},setItem(key,raw){trace('write',key,raw);localStorage.setItem(key,raw);}}));window.__sessionV94.subscribe(()=>{});if(!window.__sessionV94.getSnapshot().loaded)throw Error('Unhydrated test store');});
   const runs=await Promise.all([page.evaluate(async()=>{const s=window.__sessionV94;s.setSimulation(v=>({...v,turn:7}));await s.whenSettled();return s.getSnapshot().persistedWar;}),second.evaluate(async()=>{const s=window.__sessionV94;s.setSimulation(v=>({...v,turn:9}));await s.whenSettled();return s.getSnapshot().persistedWar;})]);
-  assert.equal(runs.filter(Boolean).length,1);assert.ok([7,9].includes(await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.WAR_STORAGE_KEY_V85)).turn)));
+  const traces=await Promise.all([page,second].map(p=>p.evaluate(()=>({trace:window.__writeTraceV94,snapshot:window.__sessionV94.getSnapshot(),disk:localStorage.getItem(window.__warApiV94.WAR_STORAGE_KEY_V85)}))));console.log('CONCURRENCY_TRACE '+JSON.stringify({runs,traces}));assert.equal(runs.filter(Boolean).length,1);assert.ok([7,9].includes(await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.WAR_STORAGE_KEY_V85)).turn)));
  });
  await check('new bytes arriving while a native lock is held are refused before a delayed write',async(page,ctx)=>{
   const second=await ctx.newPage();await second.goto(origin);await second.waitForFunction(()=>window.__warApiV94);
