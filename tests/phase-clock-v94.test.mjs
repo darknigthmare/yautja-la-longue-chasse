@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createPhaseClockV94} from '../app/game/systems/phaseClockV94.ts';
+test('new phase starts with its whole duration and one sound',()=>{assert.deepEqual(createPhaseClockV94().resume('boot',1200,0),{remainingMs:1200,playSound:true});});
+test('time spent inactive does not consume ritual time',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.pause(300);assert.deepEqual(c.resume('boot',1200,50_000),{remainingMs:900,playSound:false});});
+test('multiple pauses preserve the exact remaining duration',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.pause(200);c.resume('boot',1200,5000);c.pause(5400);assert.equal(c.resume('boot',1200,9000).remainingMs,600);});
+test('effect restarts do not replay audio or reset the duration',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.pause(400);assert.deepEqual(c.resume('boot',1200,400),{remainingMs:800,playSound:false});});
+test('late callbacks cannot finish a paused phase',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.pause(300);assert.equal(c.finish('boot'),false);});
+test('late callbacks cannot complete a different phase',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.resume('remove',650,100);assert.equal(c.finish('boot'),false);assert.equal(c.finish('remove'),true);});
+test('the same timer callback can only finish once',()=>{const c=createPhaseClockV94();c.resume('replace',650,0);assert.equal(c.finish('replace'),true);assert.equal(c.finish('replace'),false);});
+test('a new consultation gets a new clock and sound',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.reset();assert.deepEqual(c.resume('boot',1200,5000),{remainingMs:1200,playSound:true});});
+test('reset invalidates a callback left from the previous consultation',()=>{const c=createPhaseClockV94();c.resume('replace',650,0);c.reset();assert.equal(c.finish('replace'),false);});
+test('late timers cannot produce negative delay',()=>{const c=createPhaseClockV94();c.resume('boot',1200,0);c.pause(3000);assert.equal(c.resume('boot',1200,4000).remainingMs,0);});

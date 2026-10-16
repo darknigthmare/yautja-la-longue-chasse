@@ -64,7 +64,10 @@
     "pit-arenas:v33:runtime-check": "node scripts/build-pit-arena-runtime-v33.mjs --check",
     "production-review:v34": "node scripts/build-production-review-v34.mjs",
     "qa:pit:v34": "node scripts/verify-pit-v34.mjs",
-    "qa:review:v34": "node scripts/verify-production-review-v34.mjs"
+    "qa:review:v34": "node scripts/verify-production-review-v34.mjs",
+    "build:production": "node scripts/build-production-v94.mjs",
+    "qa:production": "npm run lint && npm run typecheck && npm run test:audit:v94 && npm run build:production",
+    "test:audit:v94": "node --experimental-strip-types --test --test-concurrency=1 tests/held-direction-v94.test.mjs tests/native-image-preload-v94.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/phase-clock-v94.test.mjs tests/page-activity-v94.test.mjs tests/production-pipeline-v94.test.mjs tests/audit-wiring-v94.test.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
