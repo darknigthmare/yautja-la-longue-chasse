@@ -56,11 +56,26 @@ try{
     await setPad(0,false);await paint();await setPad(0,true);await paint();assert.equal(await progress(),'0');await setPad(0,false);await paint();await setPad(1,true);await paint();assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),0);
   });
   await scenario('View abandons once without leaking a simultaneous A',async()=>{await start();await paint();await setPad(0,true);await setPad(8,true);await paint();await page.waitForTimeout(150);assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);assert.equal(await page.evaluate(()=>window.__trainingQa.completed.length),0);});
-  await scenario('disabled or denied gamepads cannot stop native buttons',async()=>{await page.evaluate(()=>{window.__trainingQa.enablePad(false);window.__trainingQa.deny(true);});await paint();await start();await page.waitForTimeout(100);assert.equal(await progress(),'0');await page.getByRole('button',{name:'Abandonner l’épreuve sans enregistrer de score'}).click();assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);});
+  for(const mode of ['disabled','denied'])await scenario(`${mode} gamepad leaves the clock and native buttons available`,async()=>{
+    await page.evaluate(mode=>{if(mode==='disabled')window.__trainingQa.enablePad(false);else window.__trainingQa.deny(true);},mode);
+    await paint();await start();await page.waitForTimeout(160);
+    assert.equal(await progress(),'0');assert.ok(Number(await page.getByRole('progressbar',{name:'Temps restant pour répondre'}).getAttribute('aria-valuenow'))<100);
+    await page.getByRole('button',{name:'Abandonner l’épreuve sans enregistrer de score'}).click();assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);
+  });
+  await scenario('a receiver exception is explicitly unconfirmed and cannot duplicate a result',async()=>{
+    await start();await finish();await page.evaluate(()=>window.__trainingQa.failReceiver(true));
+    await page.getByRole('button',{name:'Consigner le résultat',exact:true}).click();await paint();
+    assert.match(await page.getByRole('alert').textContent(),/Transmission du score non confirmée/);
+    assert.ok(await page.getByRole('button',{name:'Transmission non confirmée',exact:true}).isDisabled());
+    assert.equal(await page.getByRole('button',{name:'Résultat transmis au vaisseau',exact:true}).count(),0);
+    await page.locator('.training-drill-panel').focus();await page.keyboard.press('h');await page.waitForTimeout(100);
+    assert.equal(await page.evaluate(()=>window.__trainingQa.completed.length),1);
+    await page.getByRole('button',{name:'Fermer l’épreuve',exact:true}).click();assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);
+  });
   await scenario('remapped keyboard cancels without restoring the old shortcut',async()=>{await page.locator('.training-drill-panel').focus();await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),0);await page.keyboard.press('p');assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);});
   await scenario('right pointer button cannot submit a gesture',async()=>{await start();await page.getByRole('group',{name:'Commandes tactiles'}).getByRole('button').first().click({button:'right'});assert.equal(await progress(),'0');});
   await scenario('unmount leaves no delayed result after the final cue',async()=>{await start();await finish();await page.evaluate(()=>window.__trainingQa.unmount());await paint();await page.waitForTimeout(200);assert.equal(await page.evaluate(()=>window.__trainingQa.completed.length),0);});
   await scenario('narrow viewport still permits beginning and abandonment',async()=>{await page.setViewportSize({width:390,height:844});await start();await page.getByRole('button',{name:'Abandonner l’épreuve sans enregistrer de score'}).click();assert.equal(await page.evaluate(()=>window.__trainingQa.cancels),1);});
   console.log(JSON.stringify({scope:'Real TrainingDrill in React StrictMode; five authored sequences, native buttons/remapped keyboard/emulated pad; not campaign persistence or physical hardware QA',results,errors},null,2));
-  assert.equal(results.length,14);assert.equal(results.filter(r=>r.status!=='PASS').length,0);assert.deepEqual(errors,[]);
+  assert.equal(results.length,16);assert.equal(results.filter(r=>r.status!=='PASS').length,0);assert.deepEqual(errors,[]);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

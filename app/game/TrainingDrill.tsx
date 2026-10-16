@@ -246,7 +246,7 @@ function TrainingDrillSession({
             onClick={cancel}
             aria-label={resultSent ? "Fermer l’épreuve" : "Abandonner l’épreuve sans enregistrer de score"}
           >
-            Abandonner · {controlActionShortcut("training.cancel", controlBindings)}
+            {resultSent ? "Fermer" : "Abandonner"} · {controlActionShortcut("training.cancel", controlBindings)}
           </button>
         </header>
 
@@ -409,7 +409,7 @@ function TrainingDrillSession({
                 onClick={recordResult}
                 disabled={paused || resultSent}
               >
-                {resultSent ? "Résultat transmis au vaisseau" : "Consigner le résultat"}
+                {deliveryError ? "Transmission non confirmée" : resultSent ? "Résultat transmis au vaisseau" : "Consigner le résultat"}
               </button>
             </div>
           </section>
