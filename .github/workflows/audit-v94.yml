@@ -17,6 +17,7 @@ on:
       - 'next.config.ts'
       - 'eslint.config.mjs'
       - 'vercel.json'
+      - '.vercelignore'
       - '.github/workflows/audit-v94.yml'
   workflow_dispatch:
 
@@ -41,6 +42,7 @@ jobs:
           sparse-checkout: |
             /package.json
             /vercel.json
+            /.vercelignore
             /app/game/Mausoleum.tsx
             /app/game/useHomeworldMotionAssetsV74.ts
             /app/game/useNativeImageAssetsV94.ts
