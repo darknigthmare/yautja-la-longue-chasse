@@ -105,6 +105,15 @@ jobs:
           app/game/systems/nativeImagePreloadV94.ts
           app/game/systems/pageActivityV94.ts
           app/game/systems/phaseClockV94.ts
+      - name: Exercise historical persistence regressions (not the entire test suite)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/campaign-slots.test.mjs
+          tests/active-hunt-save.test.mjs
+          tests/active-hunt-ownership.test.mjs
+          tests/archive-transfer-guard.test.mjs
+          tests/campaign-import-slot-v89.test.mjs
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
