@@ -20,7 +20,7 @@ jobs:
             app
             scripts
             tests
-      - name: Verify every original and replacement before applying reviewed bytes
+      - name: Verify all original and resulting bytes; only stage game files
         shell: bash
         run: |
           python3 - <<'PY'
@@ -28,7 +28,7 @@ jobs:
           def git(*args):
               return subprocess.check_output(['git', *args], text=True).strip()
           assert git('rev-parse','HEAD') == os.environ['GITHUB_SHA']
-          assert git('rev-parse','HEAD^') == '15e3ab017a87ff7a77ff182de551853a69a76e42', 'Unexpected parent; refuse'
+          assert git('rev-parse','HEAD^') == 'dee1b689c50a69f75a63af0d046d8644f6154fc5', 'Unexpected parent; refuse'
           allowed = {'.github/workflows/audit-v94.yml', 'app/game/ClanWarPanelV85.tsx', 'app/game/systems/clanWarSessionV85.ts', 'app/game/systems/clanWarCanyonV85.ts', 'tests/clan-war-session-v85.test.mjs', 'tests/clan-war-durability-v94.test.mjs', 'tests/clan-war-lifecycle-v94.test.mjs', 'tests/clan-war-canyon-validity-v94.test.mjs', 'tests/browser/clan-war-v94.fixture.tsx', 'scripts/qa-clan-war-browser-v94.mjs'}
           parts = [pathlib.Path(f'scripts/qa-clan-patch-v94/{i:02}.part') for i in range(10)]
           encoded = ''.join(p.read_text() for p in parts)
@@ -55,18 +55,20 @@ jobs:
                   lines[edit['start']:edit['end']] = edit['lines']
               result = ''.join(lines).encode('utf-8')
               assert blob(result) == entry['after'], 'Replacement mismatch: '+str(path)
-              pending.append((path,result))
+              if not str(path).startswith('.github/'):
+                  pending.append((path,result))
+          # This token intentionally does not modify workflow files. Their
+          # update and this temporary workflow's removal use the app connector.
           for path,data in pending:
               path.parent.mkdir(parents=True,exist_ok=True)
               path.write_bytes(data)
-          temporary = parts + [pathlib.Path('.github/workflows/apply-clan-reviewed-v94.yml')]
-          for path in temporary:
+          for path in parts:
               path.unlink()
-          names = sorted(allowed | {str(p) for p in temporary})
+          names = sorted({str(p) for p,d in pending} | {str(p) for p in parts})
           subprocess.run(['git','add','--',*names],check=True)
           changed = set(git('diff','--cached','--name-only').splitlines())
-          assert changed == set(names), changed
-          print('Verified and staged ten reviewed files; temporary transport removed.')
+          assert changed == set(names) and not any(p.startswith('.github/') for p in changed)
+          print('Verified and staged nine reviewed game/test files; transport removed.')
           PY
       - name: Commit to this PR branch only, never force push
         shell: bash
