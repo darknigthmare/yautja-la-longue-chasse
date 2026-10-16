@@ -1,5 +1,5 @@
 import {preloadNativeImagesV94} from './systems/nativeImagePreloadV94';
-import {useCallback,useEffect,useState} from 'react';
+import {useNativeImageAssetsV94} from './useNativeImageAssetsV94';
 import {HOMEWORLD_CIVILIAN_MOTION_V74} from './systems/homeworldCivilianMotionV74';
 import {HOMEWORLD_YOUTH_MOTION_ART_V74} from './systems/homeworldYouthMotionV74';
 
@@ -37,17 +37,7 @@ export function preloadHomeworldMotionAssetsV74({youth,reload=false,additionalSo
 /** The owner must block controls while !ready and keep its existing simulation
  * paused. A new source set or retry is synchronously unready before effects run. */
 export function useHomeworldMotionAssetsV74({youth,additionalSources=noAdditionalSources}:{youth:boolean;additionalSources?:readonly HomeworldMotionSourceV74[]}):HomeworldMotionAssetsV74{
-  const [attempt,setAttempt]=useState(0);
-  const key=`${youth?'youth':'adult'}:${attempt}:${additionalSources.map(source=>`${source.src}:${source.sourceWidth}:${source.sourceHeight}`).join('|')}`,total=resources(youth,additionalSources).length;
-  const [progress,setProgress]=useState<HomeworldMotionAssetsProgressV74&{key:string}>({key:'',ready:false,error:null,loaded:0,total});
-  const retry=useCallback(()=>setAttempt(previous=>previous+1),[]);
-  useEffect(()=>{
-    let alive=true;
-    const preload=preloadHomeworldMotionAssetsV74({youth,reload:attempt>0,additionalSources,onProgress:next=>{if(alive)setProgress({...next,key});}});
-    return()=>{alive=false;preload.cancel();};
-  },[youth,attempt,key,additionalSources]);
-  return progress.key===key?{ready:progress.ready,error:progress.error,loaded:progress.loaded,total,retry}:
-    {ready:false,error:null,loaded:0,total,retry};
+  return useNativeImageAssetsV94(resources(youth,additionalSources));
 }
 
 export default useHomeworldMotionAssetsV74;

@@ -20,10 +20,19 @@ test('movement keys cannot steal native button activation',()=>{
 test('the existing Homeworld loader delegates to the bounded native verifier',()=>{
  const hook=readFileSync(new URL('../app/game/useHomeworldMotionAssetsV74.ts',import.meta.url),'utf8');
  assert.match(hook,/return preloadNativeImagesV94\(\{sources:resources\(youth,additionalSources\),reload,onProgress\}\)/);
- assert.match(hook,/preload\.cancel\(\)/);assert.match(hook,/ready:false,error:null,loaded:0,total,retry/);
+ assert.match(hook,/return useNativeImageAssetsV94\(resources\(youth,additionalSources\)\)/);
+ const shared=readFileSync(new URL('../app/game/useNativeImageAssetsV94.ts',import.meta.url),'utf8');
+ assert.match(shared,/preload\.cancel\(\)/);assert.match(shared,/ready: false, error: null, loaded: 0, total, retry/);
 });
 test('consultation still does not unlock or launch an uninstalled DLC',()=>{
  assert.match(source,/disabled title=\{selected\.unavailableReason\}>Lancer la chronique/);
  assert.match(source,/persisted = onProgress\?\.\(next\) === true/);
  assert.match(source,/saveVisit\(selected\.id, "consulted"\)/);
+});
+
+test('native image hook keys its effect by serialized metadata, not array identity',()=>{
+ const hook=readFileSync(new URL('../app/game/useNativeImageAssetsV94.ts',import.meta.url),'utf8');
+ assert.match(hook,/\[serializedSources, attempt, key\]/);
+ assert.match(hook,/JSON.parse\(serializedSources\)/);
+ assert.match(hook,/progress.key === key/);
 });

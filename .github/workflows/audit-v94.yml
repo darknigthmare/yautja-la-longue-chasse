@@ -43,6 +43,7 @@ jobs:
             /vercel.json
             /app/game/Mausoleum.tsx
             /app/game/useHomeworldMotionAssetsV74.ts
+            /app/game/useNativeImageAssetsV94.ts
             /app/game/systems/campaignWorldResumeV70.ts
             /app/game/systems/*V94.ts
             /scripts/build-production-v94.mjs
@@ -98,6 +99,7 @@ jobs:
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
+          app/game/useNativeImageAssetsV94.ts
           app/game/useMenuGamepad.ts
           app/game/systems/campaignWorldResumeV70.ts
           app/game/systems/campaignResumePriorityV94.ts
@@ -108,12 +110,18 @@ jobs:
       - name: Exercise historical persistence regressions (not the entire test suite)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
-          node --experimental-strip-types --test --test-concurrency=1
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/campaign-slots.test.mjs
           tests/active-hunt-save.test.mjs
           tests/active-hunt-ownership.test.mjs
           tests/archive-transfer-guard.test.mjs
           tests/campaign-import-slot-v89.test.mjs
+      - name: Exercise native storage and cross-tab locks (seeded campaigns)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-campaign-storage-browser-v94.mjs
+      - name: Exercise React image lifecycle and native PNG decoding (1x1 fixtures)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-native-assets-browser-v94.mjs
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
