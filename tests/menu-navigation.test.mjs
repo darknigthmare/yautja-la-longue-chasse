@@ -53,10 +53,12 @@ test("the real menu control adapter clamps sliders and skips locked select optio
     constructor() { this.type = "range"; this.min = "0"; this.max = "1"; this.step = "0.1"; this._value = "0.9"; this.events = []; }
     get value() { return this._value; }
     set value(value) { this._value = value; }
+    matches() { return false; }
+    closest() { return null; }
     dispatchEvent(event) { this.events.push(event.type); }
   }
   class Select extends Input {
-    constructor() { super(); this._value = "easy"; this.options = [{ value: "easy", disabled: false }, { value: "locked", disabled: true }, { value: "hard", disabled: false }]; }
+    constructor() { super(); this._value = "easy"; this.options = [{ value: "easy", disabled: false }, { value: "locked", disabled: true }, { value: "hard", disabled: false }].map(option => ({ ...option, matches: () => option.disabled, closest: () => null })); }
     get value() { return this._value; }
     set value(value) { this._value = value; }
   }
@@ -67,7 +69,7 @@ test("the real menu control adapter clamps sliders and skips locked select optio
   assert.equal(slider.value, "1");
   adjust(slider, "right");
   assert.equal(slider.value, "1");
-  assert.deepEqual(slider.events, ["input", "change", "input", "change"]);
+  assert.deepEqual(slider.events, ["input", "change"], "a bound must not emit an unchanged setting twice");
   const select = new Select();
   select.type = "select";
   adjust(select, "right");
@@ -89,6 +91,7 @@ test("simultaneous navigation and confirm activates the newly focused control", 
   const pad = { connected: true, index: 2, id: "controller", axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   class Control {
     constructor(y) { this.y = y; this.clicks = 0; }
+    matches() { return false; }
     closest() { return null; }
     getClientRects() { return [1]; }
     getAttribute() { return null; }
@@ -101,7 +104,7 @@ test("simultaneous navigation and confirm activates the newly focused control", 
   const root = { closest: () => null, querySelectorAll: selector => selector === "controls" ? [first, second] : [], contains: element => [first, second].includes(element) };
   document.activeElement = first;
   const environment = {
-    useEffect: callback => callback(), freshMenuPadState, menuPadStep, menuFocusIndex,
+    useEffect: callback => callback(), useRef: value => ({ current: value }), freshMenuPadState, menuPadStep, menuFocusIndex,
     FOCUSABLE: "controls", adjustControl: () => false, document, HTMLElement: Control,
     navigator: { getGamepads: () => [null, null, pad] },
     window: { requestAnimationFrame: callback => { frame = callback; return 1; }, cancelAnimationFrame() {} },

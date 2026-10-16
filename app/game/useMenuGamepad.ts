@@ -7,22 +7,25 @@ const FOCUSABLE = 'button:not(:disabled),a[href],input:not(:disabled):not([type=
 
 function adjustControl(element: HTMLElement | null, direction: MenuDirection): boolean {
   if (direction !== "left" && direction !== "right") return false;
+  if (!element || element.matches(":disabled") ||
+      element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]')) return false;
   const sign = direction === "left" ? -1 : 1;
   if (element instanceof HTMLInputElement && element.type === "range") {
     const minimum = Number(element.min || 0);
     const maximum = Number(element.max || 100);
     const step = element.step === "any" ? (maximum - minimum) / 100 : Number(element.step || 1);
     const value = String(Math.min(maximum, Math.max(minimum, Number(element.value) + sign * step)));
+    if (value === element.value) return true;
     Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set?.call(element, value);
     element.dispatchEvent(new Event("input", { bubbles: true }));
     element.dispatchEvent(new Event("change", { bubbles: true }));
     return true;
   }
   if (element instanceof HTMLSelectElement) {
-    const options = Array.from(element.options).filter(option => !option.disabled);
+    const options = Array.from(element.options).filter(option => !option.matches(":disabled") && !option.closest("[hidden]"));
     const index = options.findIndex(option => option.value === element.value);
     const next = options[Math.min(options.length - 1, Math.max(0, index + sign))];
-    if (next) {
+    if (next && next.value !== element.value) {
       Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "value")?.set?.call(element, next.value);
       element.dispatchEvent(new Event("change", { bubbles: true }));
     }
@@ -68,10 +71,11 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
         .filter(element => !element.closest('[inert]') && element.getClientRects().length > 0);
       const scope = dialogs.at(-1) ?? root;
       const controls = Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))
-        .filter(element => !element.closest('[inert],[aria-hidden="true"]') && element.getClientRects().length > 0 && element.getAttribute("aria-disabled") !== "true");
+        .filter(element => !element.matches(":disabled") &&
+          !element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]') && element.getClientRects().length > 0);
       const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       if (result.back) { onBackRef.current(); return; }
-      if (result.direction && !adjustControl(active && scope.contains(active) ? active : null, result.direction)) {
+      if (result.direction && !adjustControl(active && controls.includes(active) ? active : null, result.direction)) {
         const index = menuFocusIndex(controls.map(element => {
           const rect = element.getBoundingClientRect();
           return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };

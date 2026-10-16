@@ -81,8 +81,13 @@ Ouvrir ensuite `http://localhost:3000/`. Pour lancer le serveur Next de producti
 
 ```powershell
 npm.cmd run build:production
-npm.cmd start
+npm.cmd run start:production
 ```
+
+Les commandes historiques `npm.cmd run build` et `npm.cmd start` restent le
+couple Vinext. Elles ne lancent pas le build Next. Après compilation Next,
+`npm.cmd run qa:next-production` contrôle le serveur sur une adresse locale,
+son JavaScript compilé et la fermeture des routes de diagnostic.
 
 Le runtime actuel utilise React et Canvas dans le navigateur. La prise en
 charge de commandes manette ne constitue pas un portage natif PC ou console.

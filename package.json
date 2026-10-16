@@ -66,8 +66,12 @@
     "qa:pit:v34": "node scripts/verify-pit-v34.mjs",
     "qa:review:v34": "node scripts/verify-production-review-v34.mjs",
     "build:production": "node scripts/build-production-v94.mjs",
-    "qa:production": "npm run lint && npm run typecheck && npm run test:audit:v94 && npm run build:production",
-    "test:audit:v94": "node --experimental-strip-types --test --test-concurrency=1 tests/held-direction-v94.test.mjs tests/native-image-preload-v94.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/phase-clock-v94.test.mjs tests/page-activity-v94.test.mjs tests/production-pipeline-v94.test.mjs tests/audit-wiring-v94.test.mjs"
+    "qa:production": "npm run lint && npm run typecheck && npm run test:audit:v94 && npm run build:production && npm run qa:next-production",
+    "test:audit:v94": "node --experimental-strip-types --test --test-concurrency=1 tests/held-direction-v94.test.mjs tests/native-image-preload-v94.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/phase-clock-v94.test.mjs tests/page-activity-v94.test.mjs tests/production-pipeline-v94.test.mjs tests/audit-wiring-v94.test.mjs",
+    "start:production": "next start",
+    "qa:next-production": "node scripts/qa-next-production-v94.mjs",
+    "qa:menu-controls:v94": "node scripts/qa-menu-controls-browser-v94.mjs",
+    "test:menu-controls:v94": "node --experimental-strip-types --test tests/menu-disabled-controls-v94.test.mjs tests/menu-navigation.test.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

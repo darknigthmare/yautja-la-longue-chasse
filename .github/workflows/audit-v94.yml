@@ -99,8 +99,12 @@ jobs:
       - name: Check application TypeScript
         run: npm run typecheck
       - name: Compile Next application source (not full release packaging)
+        id: compile
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node node_modules/next/dist/bin/next build --webpack
+      - name: Smoke the compiled Next HTTP server and protected QA routes
+        if: ${{ !cancelled() && steps.compile.outcome == 'success' }}
+        run: npm run qa:next-production
       - name: Lint changed game runtime
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -130,6 +134,12 @@ jobs:
           tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs
           tests/pit-gamepad-assignments.test.mjs
           tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs
+      - name: Exercise menu control unit regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: npm run test:menu-controls:v94
+      - name: Exercise disabled controls with the real menu gamepad hook
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-menu-controls-browser-v94.mjs
       - name: Exercise historical persistence regressions (not the entire test suite)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
