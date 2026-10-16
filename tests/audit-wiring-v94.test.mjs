@@ -10,7 +10,7 @@ test('mausoleum uses physical-key tracking without target-driven animation resta
 test('focus loss pauses rituals and the gamepad instead of completing an unseen visit',()=>{
  assert.match(source,/const paused = suspended \|\| !pageActive/);
  assert.match(source,/useMenuGamepad\(root, !paused/);
- assert.match(source,/if \(!pageActivitySnapshotV94\(\) \|\| !clock\.finish\(phase\)\) return/);
+ assert.match(source,/if \(!pageActivitySnapshotV94\(\) \|\| !clock\.finish\(phase, timing\.token\)\) return/);
  assert.match(source,/clock\.pause\(performance\.now\(\)\)/);
 });
 test('movement keys cannot steal native button activation',()=>{
@@ -24,6 +24,6 @@ test('the existing Homeworld loader delegates to the bounded native verifier',()
 });
 test('consultation still does not unlock or launch an uninstalled DLC',()=>{
  assert.match(source,/disabled title=\{selected\.unavailableReason\}>Lancer la chronique/);
- assert.match(source,/if \(!onProgress\?\.\(next\)\)/);
+ assert.match(source,/persisted = onProgress\?\.\(next\) === true/);
  assert.match(source,/saveVisit\(selected\.id, "consulted"\)/);
 });

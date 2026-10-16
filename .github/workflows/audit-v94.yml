@@ -52,13 +52,14 @@ jobs:
         run: npm run test:audit:v94
 
   application:
-    name: Application types and changed runtime lint (not full asset QA)
+    name: Application types, runtime lint and React browser integration
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NODE_OPTIONS: --max-old-space-size=6144
+      AUDIT_CHROME_CHANNEL: chrome
     steps:
       - name: Checkout application source without multi-gigabyte artwork
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -88,9 +89,13 @@ jobs:
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
+          app/game/useMenuGamepad.ts
           app/game/systems/campaignWorldResumeV70.ts
           app/game/systems/campaignResumePriorityV94.ts
           app/game/systems/heldDirectionV94.ts
           app/game/systems/nativeImagePreloadV94.ts
           app/game/systems/pageActivityV94.ts
           app/game/systems/phaseClockV94.ts
+      - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-mausoleum-browser-v94.mjs

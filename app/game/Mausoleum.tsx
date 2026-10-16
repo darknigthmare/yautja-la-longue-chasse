@@ -42,11 +42,13 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     if (currentAccess.preview) return true;
     const next = recordMausoleumVisit(progressRef.current, id, kind, currentAccess);
     if (JSON.stringify(next) === JSON.stringify(progressRef.current)) return true;
-    if (!onProgress?.(next)) { setNotice("Consultation non enregistrée : sauvegarde indisponible. Aucun DLC ni trophée n’a été accordé."); return false; }
+    let persisted = false;
+    try { persisted = onProgress?.(next) === true; } catch { /* Preserve the visit for explicit retry. */ }
+    if (!persisted) { setNotice("Consultation non enregistrée : sauvegarde indisponible. Aucun DLC ni trophée n’a été accordé."); return false; }
     progressRef.current = next; return true;
   }, [save, onProgress]);
-  const close = useCallback(() => { resetPosition(returnX.current); setSelected(null); setPhase(null); requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus()); }, [resetPosition]);
-  const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) setPhase("remove"); else close(); }, [phase, close, paused]);
+  const close = useCallback(() => { ritualClock.current.reset(); resetPosition(returnX.current); setSelected(null); setPhase(null); requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus()); }, [resetPosition]);
+  const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) { ritualClock.current.pause(performance.now()); setPhase("remove"); } else close(); }, [phase, close, paused]);
   const examine = () => {
     if (!nearest || blocked) return;
     trigger.current = document.activeElement as HTMLElement; returnX.current = x;
@@ -72,7 +74,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     return () => { cancelAnimationFrame(frame); stopMovement(); };
   }, [blocked, stopMovement]);
   useEffect(() => {
-    const release = stopMovement;
+    const release = () => { stopMovement(); if (!pageActivitySnapshotV94()) ritualClock.current.pause(performance.now()); };
     window.addEventListener("blur", release); document.addEventListener("visibilitychange", release);
     return () => { window.removeEventListener("blur", release); document.removeEventListener("visibilitychange", release); };
   }, [stopMovement]);
@@ -84,7 +86,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     if (timing.playSound && phase === "boot") onSound?.("mask-on");
     if (timing.playSound && phase === "remove") onSound?.("mask-off");
     const timeout = window.setTimeout(() => {
-      if (!pageActivitySnapshotV94() || !clock.finish(phase)) return;
+      if (!pageActivitySnapshotV94() || !clock.finish(phase, timing.token)) return;
       const index = MAUSOLEUM_RITUAL_PHASES.indexOf(phase);
       if (phase === "replace") { if (readArchive.current && selected && !saveVisit(selected.id, "consulted")) { setPhase("archive"); return; } close(); return; }
       const next = MAUSOLEUM_RITUAL_PHASES[index + 1];
@@ -153,7 +155,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       {!phase && selected.masks.length > 1 && <div className={styles.maskChoices}>{selected.masks.map((item, index) => <button type="button" key={item.id} aria-pressed={maskIndex === index} onClick={() => setMaskIndex(index)}>{item.name}</button>)}</div>}
       {(!phase || phase === "archive") && <><p>{selected.summary}</p><ul>{selected.archive.map(value => <li key={value}>{value}</li>)}</ul><p className={styles.lore}>Données tactiques, capteurs, témoignages et scans peuvent servir à une reconstitution. Ton chasseur ne devient pas littéralement la proie. Ce dispositif de consultation est une adaptation du projet, pas une technologie déclarée canonique.</p><p className={styles.unavailable}>{selected.unavailableReason}</p></>}
       <p role="status" aria-live="polite">{notice}</p>{notice && <button type="button" onClick={close}>Quitter sans enregistrer cette consultation</button>}
-      <div className={styles.actions}>{!phase ? <><button type="button" disabled={!displayedMask?.src || !canConsultMausoleum(access, selected.id)} onClick={() => { readArchive.current = false; setPhase("take"); }}>Revêtir une reproduction d’étude</button><button type="button" disabled title={selected.unavailableReason}>Lancer la chronique · non installée</button><button type="button" onClick={close}>Reposer / fermer</button></> : <button type="button" onClick={remove} disabled={phase === "remove" || phase === "replace"}>{phase === "archive" ? "Retirer le masque et revenir" : "Interrompre le rituel"}</button>}</div>
+      <div className={styles.actions}>{!phase ? <><button type="button" disabled={!displayedMask?.src || !canConsultMausoleum(access, selected.id)} onClick={() => { readArchive.current = false; ritualClock.current.reset(); setPhase("take"); }}>Revêtir une reproduction d’étude</button><button type="button" disabled title={selected.unavailableReason}>Lancer la chronique · non installée</button><button type="button" onClick={close}>Reposer / fermer</button></> : <button type="button" onClick={remove} disabled={phase === "remove" || phase === "replace"}>{phase === "archive" ? "Retirer le masque et revenir" : "Interrompre le rituel"}</button>}</div>
       <p className={styles.lore}>Visualisation animée du masque en 2D. La cinématique corporelle de saisie et de port, ainsi que l’examen 3D, restent à produire.</p>
       {!phase && !canConsultMausoleum(access, selected.id) && <p>Étude rituelle : rang Young Blood et galerie autorisée requis. La visite ne change jamais le rang.</p>}
     </div></div>}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type RefObject } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { freshMenuPadState, menuFocusIndex, menuPadStep, type MenuDirection } from "./systems/menuNavigation";
 
 const FOCUSABLE = 'button:not(:disabled),a[href],input:not(:disabled):not([type="hidden"]),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]';
@@ -33,6 +33,10 @@ function adjustControl(element: HTMLElement | null, direction: MenuDirection): b
 
 /** Active only on menus without their own controller loop. No synthetic gameplay keys. */
 export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: boolean, contextKey: string, onBack: () => void) {
+  // A changed callback is not a new menu. Keep repeat/edge state through ordinary
+  // parent renders, but use the latest committed action when Back is pressed.
+  const onBackRef = useRef(onBack);
+  useEffect(() => { onBackRef.current = onBack; }, [onBack]);
   useEffect(() => {
     if (!enabled) return;
     let frameId = 0;
@@ -66,7 +70,7 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const controls = Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))
         .filter(element => !element.closest('[inert],[aria-hidden="true"]') && element.getClientRects().length > 0 && element.getAttribute("aria-disabled") !== "true");
       const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      if (result.back) { onBack(); return; }
+      if (result.back) { onBackRef.current(); return; }
       if (result.direction && !adjustControl(active && scope.contains(active) ? active : null, result.direction)) {
         const index = menuFocusIndex(controls.map(element => {
           const rect = element.getBoundingClientRect();
@@ -83,5 +87,5 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
     };
     frameId = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frameId);
-  }, [enabled, contextKey, onBack, rootRef]);
+  }, [enabled, contextKey, rootRef]);
 }
