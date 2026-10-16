@@ -109,7 +109,9 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
       const elapsed=Math.min(100,Math.max(0,now-last));last=now;
       const context=inputContextRef.current;
       const ownsFocus=!document.hidden&&document.hasFocus()&&!!rootRef.current?.contains(document.activeElement);
-      const pad=Array.from(navigator.getGamepads?.()??[]).find(candidate=>candidate?.connected)??null;
+      let pad:Gamepad|null=null;
+      try{pad=Array.from(navigator.getGamepads?.()??[]).find(candidate=>candidate?.connected)??null;}
+      catch{/* Keyboard/touch and the expedition clock remain usable. */}
       const mode:AshPadContext=!ownsFocus||context.suspended||context.delivery==="saving"?"inactive"
         :context.exitConfirm||context.delivery==="failed"?"dialog":context.paused?"paused":"world";
       const inputPad=stepAshGamepad(gamepadStateRef.current,pad,mode);

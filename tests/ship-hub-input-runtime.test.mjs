@@ -204,3 +204,16 @@ test("holding Escape to open pause does not immediately close its settings dialo
   assert.equal(environment.archiveSelectionRef.current, 1);
   cleanup(); assert.equal(listeners.size, 0);
 });
+
+test('V94 a denied gamepad poll keeps ship keyboard and future frames available', () => {
+  const f = fixture(); f.tick();
+  f.environment.navigator.getGamepads = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.doesNotThrow(() => { f.tick(); f.tick(); });
+  assert(f.frames.size > 0); assert.equal(f.environment.gamepadStateRef.current.ready, false);
+  f.keyDown(keyEvent('ArrowRight')); assert.deepEqual(f.events, [['move', 1]]);
+  f.events.length = 0;
+  f.environment.navigator.getGamepads = () => [f.pad]; f.pad.buttons[0].pressed = true;
+  f.tick(); assert.deepEqual(f.events, []);
+  f.pad.buttons[0].pressed = false; f.tick(); f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['invoke', 0]]);
+});

@@ -1420,7 +1420,10 @@ export default function PitCanvas({
 
   const readAssignedGamepads = useCallback(() => {
     const previous = gamepadAssignmentsRef.current;
-    const resolved = resolvePitGamepadAssignments(previous, navigator.getGamepads?.() ?? []);
+    let pads: (Gamepad | null)[] = [];
+    try { pads = navigator.getGamepads?.() ?? []; }
+    catch { /* Resolve as disconnected so old held inputs cannot survive a policy denial. */ }
+    const resolved = resolvePitGamepadAssignments(previous, pads);
     gamepadAssignmentsRef.current = resolved.assignments;
     for (const player of [0, 1] as const) {
       if (previous[player]?.revision !== resolved.assignments[player]?.revision) {

@@ -25,7 +25,9 @@ export default function HomeworldWorldMapV77({actor,levelId,open,disabled=false,
  useEffect(()=>{if(!open||!requestedId||!requestedLevel)return;const frame=requestAnimationFrame(()=>{setChosenId(requestedId);setSelected(requestedLevel);setInspected(requestedBuilding??null);});return()=>cancelAnimationFrame(frame);},[open,requestedId,requestedLevel,requestedBuilding]);
  useEffect(()=>{if(!open)return;let request=0,state=createHomeworldGamepadState();const frame=()=>{
   if(document.hasFocus()&&ref.current?.contains(document.activeElement)){
-   const pad=[...(navigator.getGamepads?.()??[])].find(p=>p?.connected)??null,result=stepHomeworldGamepad(state,pad,'dialog');state=result.state;
+   let pad:Gamepad|null=null;
+   try{pad=[...(navigator.getGamepads?.()??[])].find(p=>p?.connected)??null;}catch{/* The atlas still accepts keyboard/pointer controls. */}
+   const result=stepHomeworldGamepad(state,pad,'dialog');state=result.state;
    const buttons=[...(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled)')??[])],index=buttons.indexOf(document.activeElement as HTMLElement);
    if(result.actions.cancel){onOpenChange(false);return;}if(result.actions.menuDirection&&buttons.length)buttons[nextHomeworldDialogChoice(index,buttons.length,result.actions.menuDirection)]?.focus();
    if(result.actions.confirm)(buttons.find(b=>b===document.activeElement)??buttons[0])?.click();

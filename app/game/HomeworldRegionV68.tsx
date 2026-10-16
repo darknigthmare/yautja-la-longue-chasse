@@ -174,21 +174,27 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
       const blocked = latest.current.suspended || !readyRef.current || !canEnterHomeworldRegionV68(latest.current.save, regionId).allowed;
-      const controller = navigator.getGamepads?.().find(p => p?.connected) ?? null;
+      let controller: Gamepad | null = null;
+      try { controller = navigator.getGamepads?.().find(p => p?.connected) ?? null; }
+      catch { /* A controller error must not stop the region simulation. */ }
       const sample = stepHomeworldGamepad(gamepad.current, controller, blocked ? 'inactive' : pauseRef.current ? 'paused' : 'world'); gamepad.current = sample.state;
       if (sample.actions.pause) { if (pauseRef.current) resume(); else pause(); }
-      if (blocked || pauseRef.current || !current.current) accumulator = 0;
+      if (blocked || pauseRef.current || !current.current) { accumulator = 0; interact.current = false; }
       else {
+        // A gamepad edge belongs to one simulation step, not one render frame.
+        // Queue it across sub-tick frames; catch-up steps consume it only once.
+        if (sample.actions.confirm) interact.current = true;
         accumulator += delta;
         const active = (action: typeof actions[number]) => [...held.current].some(code => matchesControlAction(action, code, latest.current.save.settings.controlBindings));
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
-          const before = current.current, interaction = interact.current || sample.actions.confirm ? homeworldRegionInteractionV68(before) : null;
-          if((interact.current||sample.actions.confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
-          const activity = !interaction && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
-          const villageResident = !interaction && !activity && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (interact.current || sample.actions.confirm) });
-          interact.current = false; current.current = next;
+          const confirm = interact.current; interact.current = false;
+          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before) : null;
+          if((confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
+          const activity = !interaction && before.zone === 'village' && (confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
+          const villageResident = !interaction && !activity && before.zone === 'village' && (confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (confirm) });
+          current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
           if (next.status === 'at-city') { setState(next); leave(next); break; }

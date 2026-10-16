@@ -46,7 +46,9 @@ export default function HomeworldSpatialCodex({ actor, visitedDistrictIds, youth
     // Reuse the city adapter: held controls and reconnects require a neutral frame.
     const timer = window.setInterval(() => {
       const active = !document.hidden && document.hasFocus() && !!modalRef.current?.contains(document.activeElement);
-      const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(candidate => candidate?.connected) ?? null : null;
+      let pad: Gamepad | null = null;
+      if (active) { try { pad = [...(navigator.getGamepads?.() ?? [])].find(candidate => candidate?.connected) ?? null; }
+        catch { /* Keep the codex usable without controller permission. */ } }
       const input = stepHomeworldGamepad(state, pad, active ? "dialog" : "inactive"); state = input.state;
       if (!active) return;
       if (input.actions.cancel || input.actions.pause) { closeActionRef.current(false); return; }

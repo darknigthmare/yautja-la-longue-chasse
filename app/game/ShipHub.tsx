@@ -880,9 +880,11 @@ export default function ShipHub({
         !document.hidden && document.hasFocus() &&
         document.activeElement !== null &&
         root.contains(document.activeElement);
-      const gamepad = focused
-        ? navigator.getGamepads?.().find(Boolean)
-        : null;
+      let gamepad: Gamepad | null | undefined = null;
+      if (focused) {
+        try { gamepad = navigator.getGamepads?.().find(Boolean); }
+        catch { /* Treat policy denial like disconnection, retaining keyboard navigation. */ }
+      }
       if (gamepad) {
         const current = [
           Boolean(gamepad.buttons[14]?.pressed) ||

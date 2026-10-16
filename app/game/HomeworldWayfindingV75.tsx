@@ -100,7 +100,9 @@ export default function HomeworldWayfindingV75({ save, actor, interiorId, open, 
     let padState = createHomeworldGamepadState();
     const timer = window.setInterval(() => {
       const active = !document.hidden && document.hasFocus() && !!modalRef.current?.contains(document.activeElement);
-      const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(p => p?.connected) ?? null : null;
+      let pad: Gamepad | null = null;
+      if (active) { try { pad = [...(navigator.getGamepads?.() ?? [])].find(p => p?.connected) ?? null; }
+        catch { /* Keyboard and pointer navigation remain available. */ } }
       const input = stepHomeworldGamepad(padState, pad, active ? 'dialog' : 'inactive'); padState = input.state;
       if (!active) return;
       if (input.actions.cancel || input.actions.pause) { live.current.onOpenChange(false); return; }

@@ -120,22 +120,28 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
     const loop = (time: number) => {
       const elapsed = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
       const blocked = latest.current.suspended || !readyRef.current || !canEnterHomeworldPassageV67(latest.current.save, regionId).allowed;
-      const controller = navigator.getGamepads?.().find(p => p?.connected) ?? null;
+      let controller: Gamepad | null = null;
+      try { controller = navigator.getGamepads?.().find(p => p?.connected) ?? null; }
+      catch { /* Preserve keyboard/touch traversal if the browser refuses controller access. */ }
       const sample = stepHomeworldGamepad(pad.current, controller, blocked ? 'inactive' : pausedRef.current || codexRef.current ? 'paused' : 'world'); pad.current = sample.state;
       if (sample.actions.pause) { if (pausedRef.current && !codexRef.current) resume(); else pause(); }
-      if (blocked || pausedRef.current || codexRef.current || !stateRef.current) accumulator = 0;
+      if (blocked || pausedRef.current || codexRef.current || !stateRef.current) { accumulator = 0; interact.current = false; }
       else {
+        // A gamepad edge belongs to one simulation step, not one render frame.
+        // Queue it across sub-tick frames; catch-up steps consume it only once.
+        if (sample.actions.confirm) interact.current = true;
         accumulator += elapsed;
         const active = (action: typeof movementActions[number]) => [...held.current].some(code => matchesControlAction(action, code, latest.current.save.settings.controlBindings));
         while (accumulator >= 1 / 60 && !pausedRef.current) {
           accumulator -= 1 / 60;
+          const confirm = interact.current; interact.current = false;
           const previous = stateRef.current!;
           const next = stepHomeworldPassageV67(previous, {
             x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left),
             y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up),
-            interact: interact.current || sample.actions.confirm,
+            interact: confirm,
           });
-          interact.current = false; stateRef.current = next;
+          stateRef.current = next;
           if (++renderTick % 2 === 0 || next.status !== previous.status) setState(next);
           if (next.status !== 'travelling') { setState(next); leave(next); break; }
           if (next.tick % 180 === 0 && !persist(next)) { setState(next); break; }

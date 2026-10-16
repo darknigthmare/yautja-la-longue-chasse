@@ -215,7 +215,9 @@ function TrophyWorkshopSession({
       );
 
       if (gamepadEnabled && typeof navigator !== "undefined") {
-        const gamepad = Array.from(navigator.getGamepads()).find(Boolean);
+        let gamepad: Gamepad | null | undefined;
+        try { gamepad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean); }
+        catch { /* Keyboard gestures and the workshop timer remain available. */ }
         if (gamepad) {
           const currentInputs = gamepadInputs(gamepad);
           for (const input of TROPHY_WORKSHOP_INPUTS) {
@@ -227,7 +229,7 @@ function TrophyWorkshopSession({
             }
           }
           previousGamepadInputsRef.current = currentInputs;
-        }
+        } else previousGamepadInputsRef.current.clear();
       }
       animationFrame = window.requestAnimationFrame(animate);
     };
