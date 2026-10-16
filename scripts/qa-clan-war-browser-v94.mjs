@@ -49,6 +49,9 @@ try{
   await page.evaluate(()=>window.__warUiV94.overlay(false));await page.waitForFunction(n=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds>n,stopped);
  });
  await check('focus loss stops the clock before React cleanup; focus return resumes without catch-up',async(page,ctx)=>{
+  // Playwright normally forces every target to look focused. Disable that
+  // override; document.hasFocus and focus/blur now come from Chrome itself.
+  const protocol=await ctx.newCDPSession(page);await protocol.send('Emulation.setFocusEmulationEnabled',{enabled:false});
   await prepare(page);await page.getByRole('button',{name:'Reprendre le temps',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds>=1);
   assert.equal(process.env.AUDIT_CHROME_HEADED,'1','Native focus scenario requires headed Chrome; run under xvfb-run in CI.');const other=await ctx.newPage();await other.goto('about:blank');await other.bringToFront();await page.waitForFunction(()=>!document.hasFocus());
   const stopped=await seconds(page);await page.waitForTimeout(1800);assert.equal(await seconds(page),stopped);
