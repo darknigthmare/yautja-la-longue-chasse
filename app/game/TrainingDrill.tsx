@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  useCallback,
   useEffect,
   useRef,
-  useState,
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
+import { useTrainingDrillRuntimeV94 } from "./useTrainingDrillRuntimeV94";
 import { controlActionShortcut } from "./controlBindingLabels";
 import {
   DEFAULT_CONTROL_BINDINGS,
@@ -17,10 +16,6 @@ import {
 import {
   TRAINING_DRILL_ACTIONS,
   TRAINING_DRILL_CONFIGS,
-  createTrainingDrill,
-  startTrainingDrill,
-  stepTrainingDrill,
-  submitTrainingDrillAction,
   trainingDrillAccuracy,
   trainingDrillCueRemaining,
   trainingDrillProgress,
@@ -38,6 +33,8 @@ export interface TrainingDrillProps {
   controlBindings?: ControlBindings;
   seed?: number;
   autoFocus?: boolean;
+  suspended?: boolean;
+  gamepadEnabled?: boolean;
   onComplete: (score: number) => void;
   onCancel: () => void;
 }
@@ -76,16 +73,17 @@ function TrainingDrillSession({
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   seed = 0,
   autoFocus = true,
+  suspended = false,
+  gamepadEnabled = true,
   onComplete,
   onCancel,
 }: TrainingDrillProps) {
-  const [game, setGame] = useState(() =>
-    createTrainingDrill(disciplineId, seed),
-  );
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
-  const previousFrameRef = useRef<number | null>(null);
+  const { game, paused, resultSent, deliveryError, canAct, begin, submitAction, cancel, recordResult } = useTrainingDrillRuntimeV94({
+    disciplineId, seed, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
+  });
   const config = TRAINING_DRILL_CONFIGS[disciplineId];
   const actionShortcuts: Readonly<Record<TrainingDrillAction, string>> = {
     left: controlActionShortcut("training.left", controlBindings),
@@ -93,20 +91,6 @@ function TrainingDrillSession({
     primary: controlActionShortcut("training.primary", controlBindings),
     secondary: controlActionShortcut("training.secondary", controlBindings),
   };
-
-  const begin = useCallback(() => {
-    previousFrameRef.current = null;
-    setGame((previous) => startTrainingDrill(previous));
-    window.requestAnimationFrame(() =>
-      panelRef.current?.focus({ preventScroll: true }),
-    );
-  }, []);
-
-  const submitAction = useCallback((action: TrainingDrillAction) => {
-    setGame((previous) =>
-      submitTrainingDrillAction(previous, action).state,
-    );
-  }, []);
 
   useEffect(() => {
     previouslyFocusedRef.current =
@@ -132,7 +116,7 @@ function TrainingDrillSession({
     }
 
     const focusFrame = window.requestAnimationFrame(() => {
-      if (autoFocus) panelRef.current?.focus({ preventScroll: true });
+      if (autoFocus && canAct()) panelRef.current?.focus({ preventScroll: true });
     });
     return () => {
       window.cancelAnimationFrame(focusFrame);
@@ -149,34 +133,11 @@ function TrainingDrillSession({
       }
       previouslyFocusedRef.current?.focus({ preventScroll: true });
     };
-  }, [autoFocus]);
-
-  useEffect(() => {
-    if (game.status !== "playing") {
-      previousFrameRef.current = null;
-      return;
-    }
-
-    let animationFrame = 0;
-    const animate = (now: number) => {
-      const previousFrame = previousFrameRef.current ?? now;
-      previousFrameRef.current = now;
-      const deltaSeconds = Math.min(
-        0.1,
-        Math.max(0, (now - previousFrame) / 1_000),
-      );
-      setGame((previous) =>
-        stepTrainingDrill(previous, deltaSeconds),
-      );
-      animationFrame = window.requestAnimationFrame(animate);
-    };
-    animationFrame = window.requestAnimationFrame(animate);
-    return () => window.cancelAnimationFrame(animationFrame);
-  }, [game.status]);
+  }, [autoFocus, canAct]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    if (event.repeat) return;
+    if (event.repeat || !canAct()) return;
     if (event.key === "Tab") {
       const focusable = Array.from(
         panelRef.current?.querySelectorAll<HTMLElement>(
@@ -219,12 +180,17 @@ function TrainingDrillSession({
     );
     if (actions.includes("training.cancel")) {
       event.preventDefault();
-      onCancel();
+      cancel();
       return;
     }
     if (game.status === "ready" && actions.includes("training.primary")) {
       event.preventDefault();
       begin();
+      return;
+    }
+    if (game.status === "complete" && actions.includes("training.primary")) {
+      event.preventDefault();
+      recordResult();
       return;
     }
     const action: TrainingDrillAction | null = actions.includes("training.left")
@@ -277,8 +243,8 @@ function TrainingDrillSession({
           <button
             type="button"
             className="ghost-button danger"
-            onClick={onCancel}
-            aria-label="Abandonner l’épreuve sans enregistrer de score"
+            onClick={cancel}
+            aria-label={resultSent ? "Fermer l’épreuve" : "Abandonner l’épreuve sans enregistrer de score"}
           >
             Abandonner · {controlActionShortcut("training.cancel", controlBindings)}
           </button>
@@ -286,15 +252,18 @@ function TrainingDrillSession({
 
         <p id="training-drill-instructions" style={styles.instructions}>
           {config.instruction} Clavier : {actionShortcuts.left}, {actionShortcuts.right}, {actionShortcuts.primary} et {actionShortcuts.secondary}.
-          Les quatre commandes tactiles restent disponibles pendant toute
-          l’épreuve.
+          Manette : croix gauche/droite ou stick, A et B pour les gestes ; View/Retour pour abandonner.
+          A commence puis consigne le résultat après un nouvel appui. Les boutons tactiles restent disponibles.
         </p>
 
+        {paused && <p role="status">Épreuve en pause · revenez dans la fenêtre active pour reprendre.</p>}
+        {deliveryError && <p role="alert">{deliveryError}</p>}
         {game.status === "ready" ? (
           <button
             type="button"
             className="alien-button"
             onClick={begin}
+            disabled={paused}
             aria-describedby="training-drill-instructions"
           >
             Commencer l’épreuve · {actionShortcuts.primary}
@@ -391,9 +360,10 @@ function TrainingDrillSession({
               key={action}
               type="button"
               className="hub-action"
-              disabled={game.status !== "playing"}
+              disabled={paused || game.status !== "playing"}
               aria-label={`${config.actionLabels[action]}. ${actionShortcuts[action]}`}
               onPointerDown={(event) => {
+                if (event.button !== 0 || event.isPrimary === false) return;
                 event.preventDefault();
                 submitAction(action);
               }}
@@ -436,9 +406,10 @@ function TrainingDrillSession({
               <button
                 type="button"
                 className="alien-button"
-                onClick={() => onComplete(score)}
+                onClick={recordResult}
+                disabled={paused || resultSent}
               >
-                Consigner le résultat
+                {resultSent ? "Résultat transmis au vaisseau" : "Consigner le résultat"}
               </button>
             </div>
           </section>

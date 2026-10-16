@@ -111,6 +111,7 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
           app/game/useNativeImageAssetsV94.ts app/game/useTrophyWorkshopRuntimeV94.ts
+          app/game/TrainingDrill.tsx app/game/useTrainingDrillRuntimeV94.ts
           app/game/useMenuGamepad.ts
           app/game/systems/campaignWorldResumeV70.ts
           app/game/systems/campaignResumePriorityV94.ts
@@ -180,3 +181,11 @@ jobs:
       - name: Complete all four workshop sequences in the actual React panel
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-trophy-workshop-browser-v94.mjs
+      - name: Exercise training lifecycle and all existing drill rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/training-lifecycle-v94.test.mjs tests/training-drill.test.mjs
+      - name: Play all five native training sequences and input interruption cases
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-training-browser-v94.mjs
