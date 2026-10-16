@@ -10,6 +10,7 @@ on:
       - 'desktop/**'
       - 'build/**'
       - 'public/**/manifest.json'
+      - 'public/game/homeworld/v74/**'
       - '.openai/hosting.json'
       - 'package.json'
       - 'package-lock.json'
@@ -58,7 +59,7 @@ jobs:
         run: npm run test:audit:v94
 
   application:
-    name: Application types, runtime lint and React browser integration
+    name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -85,6 +86,7 @@ jobs:
             /build/
             /.openai/hosting.json
             /public/**/manifest.json
+            /public/game/homeworld/v74/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -96,6 +98,9 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Compile Next application source (not full release packaging)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node node_modules/next/dist/bin/next build --webpack
       - name: Lint changed game runtime
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -109,6 +114,20 @@ jobs:
           app/game/systems/nativeImagePreloadV94.ts
           app/game/systems/pageActivityV94.ts
           app/game/systems/phaseClockV94.ts
+          app/game/GalaxyMapPanel.tsx app/game/GlassDesertExpedition.tsx
+          app/game/HomeworldExpedition.tsx app/game/HomeworldHub.tsx
+          app/game/HomeworldPassageV67.tsx app/game/HomeworldRegionV68.tsx
+          app/game/HomeworldSpatialCodex.tsx app/game/HomeworldWayfindingV75.tsx
+          app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
+          app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
+      - name: Exercise input resilience, fixed-step edges and original V74 metadata
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs
+          tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs
+          tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs
+          tests/pit-gamepad-assignments.test.mjs
       - name: Exercise historical persistence regressions (not the entire test suite)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
