@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import type { SaveGame } from "./types";
 import {
@@ -25,6 +25,7 @@ import styles from "./ClanWarPanelV85.module.css";
 import ClanWarBibleV6Panel from "./ClanWarBibleV6Panel";
 import { importedYautjaArtVariantsV85 } from "./systems/recentSpriteLibraryV85";
 import { createWarSessionV85 } from "./systems/clanWarSessionV85";
+import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers" };
@@ -44,10 +45,12 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onClose: () => void }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false }: { save: SaveGame; onClose: () => void; suspended?: boolean }) {
+  const root = useRef<HTMLElement>(null);
+  const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("bible");
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
-  const { simulation, canyon, selection, storageMessage } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
+  const { simulation, canyon, selection, storageMessage, persistedCanyon, pendingWrites, canRetryPersistence } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
   const { setSimulation, setCanyon, setSelection } = sessionStore;
   const [message, setMessage] = useState("Choisissez un exercice ou consultez les fiches du mandat.");
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
@@ -63,10 +66,15 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
   const [running, setRunning] = useState(false);
 
   useEffect(() => {
-    if (!running || canyon.phase !== "battle" || tab !== "canyon") return;
-    const timer = window.setInterval(() => setCanyon(current => stepCanyonV85(current)), 1000);
-    return () => window.clearInterval(timer);
-  }, [running, canyon.phase, tab, setCanyon]);
+    if (!running || canyon.phase !== "battle" || tab !== "canyon" || suspended || !pageActive) return;
+    let active = true;
+    const timer = window.setInterval(() => {
+      // Recheck at delivery: focus may change before React cleans this effect.
+      if (!active || !pageActivitySnapshotV94() || !root.current || root.current.closest('[inert],[hidden],[aria-hidden="true"]')) return;
+      setCanyon(current => stepCanyonV85(current));
+    }, 1000);
+    return () => { active = false; window.clearInterval(timer); };
+  }, [running, canyon.phase, tab, setCanyon, suspended, pageActive]);
 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
@@ -81,7 +89,7 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
   }, [query, section]);
   const displayedEntries = filtered.slice(page * 24, page * 24 + 24);
   const currentEntry = clanWarEntryV85(selectedEntryId);
-  const formation = canyon.formations.find(item => item.id === selectedFormation) ?? canyon.formations[0];
+  const formation = canyon.formations.find(item => item.id === selectedFormation && !item.extraction) ?? canyon.formations.find(item => !item.extraction);
   const selectedCost = warOrderCostV85({ kind: orderKind, cargo: { s: cargoS, m: cargoM, i: 0 } });
   function selectTerritory(id: string) {
     setTerritoryId(id); setSelectedPeople([]); setConfirmTurn(false);
@@ -105,12 +113,14 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
     setCanyon(result.state); setMessage(result.message);
   }
 
-  return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none">
+  return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
     <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Un conflit, trois échelles</h2><p>Reconnaissance sur le terrain, commandement du détachement et conséquences territoriales.</p></div><button type="button" onClick={onClose}>Retour</button></header>
     <div className={styles.notice}><strong>Exercices libres</strong><p>Le canyon et Korthas possèdent leurs propres unités et archives. Votre chasse conserve son matériel, ses rites et ses personnes. Un mandat de campagne demande Blooded, une coque acquise et l’arrivée réelle sur le théâtre.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Le mandat de Korthas et son arrivée restent à raccorder au voyage de campagne.</p></div>
     <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["korthas", "Exercice V3 · Korthas"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     {storageMessage && <p className={styles.storage} role="status">{storageMessage}</p>}
+    {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
+    {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={sessionStore.retryPersistence}>Réessayer la sauvegarde des exercices</button>}
     <div hidden={tab !== "bible"}><ClanWarBibleV6Panel/></div>
 
     {tab === "composition" && <div>
@@ -122,6 +132,7 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
     </div>}
 
     {tab === "canyon" && <div>
+      {running && !pageActive && <p role="status">Temps tactique suspendu hors de la fenêtre de jeu.</p>}
       <div className={styles.sectionHeader}><div><h3>Canyon des Deux Balises</h3><p>CON-T09 · territoire F03 · opération de convoyage sans annexion.</p></div><button type="button" onClick={restartCanyon}>Nouvel exercice</button></div>
       {canyon.phase === "preparation" && <div className={styles.preparation}>
         <div className={styles.route}><span data-active={canyon.heroSite === "approche"}>Approche</span><span data-active={canyon.heroSite === "corniche"}>Corniche</span><span data-active={canyon.heroSite === "maintenance"}>Maintenance</span><span data-active={canyon.heroSite === "mezzanine"}>Mezzanine</span><span data-active={canyon.heroSite === "poste"}>Poste RTS</span></div>
@@ -145,13 +156,13 @@ export default function ClanWarPanelV85({ save, onClose }: { save: SaveGame; onC
           </svg>
         </div>
         {canyon.phase === "battle" && <div className={styles.commander}>
-          <div className={styles.actions}><button type="button" onClick={() => setRunning(current => !current)}>{running ? "Pause tactique" : "Reprendre le temps"}</button><button type="button" disabled={running} onClick={() => setCanyon(stepCanyonV85(canyon))}>Avancer d’une seconde</button><button type="button" onClick={() => { setCanyon(withdrawCanyonV85(canyon)); setRunning(false); }}>Déclarer le repli</button></div>
+          <div className={styles.actions}><button type="button" onClick={() => setRunning(current => !current)}>{running ? "Pause tactique" : "Reprendre le temps"}</button><button type="button" disabled={running || !pageActive} onClick={() => setCanyon(stepCanyonV85(canyon))}>Avancer d’une seconde</button><button type="button" onClick={() => { setCanyon(withdrawCanyonV85(canyon)); setRunning(false); }}>Déclarer le repli</button></div>
           <div className={styles.controlGrid}><label>Formation<select value={formation?.id ?? ""} onChange={event => setSelectedFormation(event.target.value)}>{canyon.formations.filter(item => !item.extraction).map((item, index) => <option key={item.id} value={item.id}>{index + 1}. {warUnitV85(item.typeId)?.name}</option>)}</select></label><label>Ordre<select value={tacticalOrder} onChange={event => setTacticalOrder(event.target.value as CanyonOrderKindV85)}>{Object.entries(tacticalLabels).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label><label>Position visée<input type="number" min={6} max={96} value={tacticalX} onChange={event => setTacticalX(Math.max(6, Math.min(96, Number(event.target.value) || 6)))} /></label><label>Niveau<select value={tacticalLevel} onChange={event => setTacticalLevel(Number(event.target.value) as 0 | 1)}><option value={0}>N0 · Fond du canyon</option><option value={1}>N1 · Corniche</option></select></label></div>
           <button type="button" disabled={!formation || formation.extraction} onClick={issueTactical}>Transmettre l’ordre</button>
           {formation && <p>{warUnitV85(formation.typeId)?.name} · position {Math.round(formation.x)}, N{formation.level} · {tacticalLabels[formation.order]} · XP {formation.startingXp + canyonXpV85(formation)} · {formation.adopted ? "Lecture récente adoptée" : `adoption ${Math.floor(formation.adoptionSeconds)}/8 s`}</p>}
           <details><summary>Guide de commandement du canyon</summary><p>Déplacez le pisteur près des postes 34, 52 et 72, puis ordonnez Observer. Une escorte proche recevant Couvrir contient les postes observés et protège le chariot. À 46, un sapeur ou le technicien rétablit l’accès du pont ; les changements d’étage passent par la rampe 18 ou l’escalier 88. À 66, le soigneur ou les porteurs évacuent le blessé en laissant une caisse. L’extraction se trouve à 96.</p><p>Lecture récente demande 100 XP et huit secondes sans exposition. Cette carte exerce les routes et la coordination ; elle ne simule pas encore le combat complet, les munitions ni les blessures de chaque membre.</p></details>
         </div>}
-        {canyon.phase === "debrief" && <div className={styles.debrief}><h4>{canyon.cargoDelivered ? "Convoyage achevé" : "Rapport de repli"}</h4><p>{canyon.porterRescued ? "Le porteur blessé a été évacué ; une caisse reste sur place." : "Le porteur attend encore son équipe d’évacuation."}</p><div className={styles.scrollTable}><table><thead><tr><th>Formation</th><th>Départ</th><th>Tâches</th><th>Objectifs</th><th>Extraction</th><th>Sauvetage</th><th>Menaces</th><th>Gain</th><th>Total</th></tr></thead><tbody>{canyon.formations.map(item => <tr key={item.id}><th>{warUnitV85(item.typeId)?.name}</th><td>{item.startingXp}</td><td>{item.roleEvents.length}</td><td>{item.objectives.length}</td><td>{item.extraction ? "Oui" : "Non"}</td><td>{item.rescued.length}</td><td>{item.threats.length}</td><td>{canyonXpV85(item)}</td><td>{item.startingXp + canyonXpV85(item)}</td></tr>)}</tbody></table></div><button type="button" disabled={canyon.committed} onClick={() => setCanyon(commitCanyonV85(canyon))}>{canyon.committed ? "Résultat déjà archivé" : "Archiver le résultat une fois"}</button><p>{canyon.transitRecognized ? "Transit reconnu dans l’exercice. CON-T09 conserve son drapeau F03." : "Aucun territoire acquis par ce convoyage."}</p></div>}
+        {canyon.phase === "debrief" && <div className={styles.debrief}><h4>{canyon.cargoDelivered ? "Convoyage achevé" : "Rapport de repli"}</h4><p>{canyon.porterRescued ? "Le porteur blessé a été évacué ; une caisse reste sur place." : "Le porteur attend encore son équipe d’évacuation."}</p><div className={styles.scrollTable}><table><thead><tr><th>Formation</th><th>Départ</th><th>Tâches</th><th>Objectifs</th><th>Extraction</th><th>Sauvetage</th><th>Menaces</th><th>Gain</th><th>Total</th></tr></thead><tbody>{canyon.formations.map(item => <tr key={item.id}><th>{warUnitV85(item.typeId)?.name}</th><td>{item.startingXp}</td><td>{item.roleEvents.length}</td><td>{item.objectives.length}</td><td>{item.extraction ? "Oui" : "Non"}</td><td>{item.rescued.length}</td><td>{item.threats.length}</td><td>{canyonXpV85(item)}</td><td>{item.startingXp + canyonXpV85(item)}</td></tr>)}</tbody></table></div><button type="button" disabled={canyon.committed} onClick={() => setCanyon(commitCanyonV85(canyon))}>{canyon.committed ? persistedCanyon ? "Résultat déjà archivé" : "Résultat en mémoire · sauvegarde non confirmée" : "Archiver le résultat une fois"}</button><p>{canyon.transitRecognized ? "Transit reconnu dans l’exercice. CON-T09 conserve son drapeau F03." : "Aucun territoire acquis par ce convoyage."}</p></div>}
       </div>}
       <ol className={styles.log} aria-label="Journal du canyon">{canyon.messages.slice(-9).map((text, index) => <li key={`${index}-${text}`}>{text}</li>)}</ol>
     </div>}
