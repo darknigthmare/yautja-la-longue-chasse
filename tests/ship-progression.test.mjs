@@ -300,7 +300,6 @@ test("secondary enemy identity prevents ice-world trophies from becoming Cryosta
     missionId: "ice-cryostalker",
     sourceEnemyId: "cryostalker-alpha",
     targetName: "Cryostalker Alpha",
-    targetKind: "beast",
   });
 
   assert.equal(speciesForTrophy(iceMarine), "human");
@@ -503,7 +502,16 @@ test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", a
   assert.match(source, /onPointerDown=/);
   assert.match(source, /onOpenCustomization/);
   assert.match(source, /<TrainingDrill/);
-  assert.match(source, /if \(!onTrainingRequested\)/);
+  // The training coordinator owns external/autonomous branching after V94.
+  assert.match(source, /useShipTrainingV94/);
+  const trainingRuntime = await readFile(
+    resolve(projectRoot, "app/game/useShipTrainingV94.ts"),
+    "utf8",
+  );
+  assert.match(trainingRuntime, /if \(!o\.onTrainingRequested\) return/);
+  assert.match(trainingRuntime, /createShipTrainingReceiptV94/);
+  assert.match(source, /saveIssue=\{trainingSaveIssue\}/);
+  assert.match(source, /onRetrySave=\{canRetryTraining \? retryTrainingSave : undefined\}/);
   assert.doesNotMatch(source, /save\.statistics\.totalScans \* 2/);
   assert.match(trainingSource, /role="dialog"/);
   assert.match(trainingSource, /aria-label="Commandes tactiles"/);
