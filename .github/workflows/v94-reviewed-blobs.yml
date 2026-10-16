@@ -1,0 +1,54 @@
+name: V94 reviewed source blobs (temporary)
+on:
+  push:
+    branches: [fix/v94-audit-reliability-20261016]
+    paths: [scripts/v94-workshop-commit.patch, .github/workflows/v94-reviewed-blobs.yml]
+permissions:
+  contents: read
+jobs:
+  reviewed-blobs:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/GameClient.tsx
+            /app/game/TrophyWorkshop.tsx
+            /app/game/systems/archiveTransaction.ts
+            /scripts/v94-workshop-commit.patch
+      - name: Validate exact before/after bytes and create unreachable blobs only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,urllib.request
+          patch=pathlib.Path('scripts/v94-workshop-commit.patch')
+          assert hashlib.sha256(patch.read_bytes()).hexdigest()=='51d26865ad7a47fd66eb585e51d5793b8c4b507439124865d1c8e9a0ba6b2c3e'
+          expected={
+            'app/game/GameClient.tsx':('49659821a8e1987cfc3b7c49d5b987d507e795f1','b9929a4176adf51fbaf94e21b0ff2e93a99dcb0c'),
+            'app/game/TrophyWorkshop.tsx':('1510770c6c567c47e83ae0e5f5bc9acc62d13cfe','bd5dfa0236f14a1d73b2cf7ae4c0eb62f40fe279'),
+            'app/game/systems/archiveTransaction.ts':('7d985998d1e7f1a8a23406954d4134a9acce9f59','2dded10ebc7a3533e90635f2a51fb6c1cb736a94'),
+          }
+          def blob(path):
+            b=pathlib.Path(path).read_bytes()
+            return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+          for path,(before,after) in expected.items(): assert blob(path)==before,path
+          subprocess.run(['git','apply','--check',str(patch)],check=True)
+          subprocess.run(['git','apply',str(patch)],check=True)
+          changed=subprocess.check_output(['git','diff','--name-only']).decode().splitlines()
+          assert set(changed)==set(expected)
+          for path,(before,after) in expected.items(): assert blob(path)==after,path
+          for path,(before,after) in expected.items():
+            payload=json.dumps({'content':pathlib.Path(path).read_text(),'encoding':'utf-8'}).encode()
+            request=urllib.request.Request('https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/git/blobs',data=payload,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},method='POST')
+            with urllib.request.urlopen(request,timeout=30) as response: result=json.load(response)
+            assert result['sha']==after
+            print('PUBLISHED_REVIEWED_BLOB',path,result['sha'])
+          PY
