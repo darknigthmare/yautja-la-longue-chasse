@@ -117,6 +117,7 @@ import type {
   TrophyWorkshopAction,
   TrophyWorkshopResult,
 } from "./systems/trophyWorkshop";
+import { createTrophyWorkshopCommitV94, type TrophyWorkshopCommitV94 } from "./systems/trophyWorkshopCommitV94";
 import {
   V6_ALL_VISUAL_IDS,
   V6_ARMORY_RACK_ORDER,
@@ -1069,6 +1070,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     trophyImageUrl?: string;
     action: TrophyWorkshopAction;
   } | null>(null);
+  const pendingTrophyCommitRef = useRef<TrophyWorkshopCommitV94 | null>(null);
+  const [pendingTrophyCommit, setPendingTrophyCommit] = useState<TrophyWorkshopCommitV94 | null>(null);
   const gameShellRef = useRef<HTMLElement | null>(null);
   const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
@@ -1486,6 +1489,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const persist = useCallback((next: SaveGame) => {
     if (!sessionAliveRef.current) return saveRef.current;
+    if (pendingTrophyCommitRef.current) {
+      setToast("Un résultat d’atelier attend sa confirmation. Réessayez sa sauvegarde ou exportez le résultat avant de modifier la campagne.");
+      return saveRef.current;
+    }
     if (nurseryWriteAttemptRef.current) {
       setNurseryPersistenceError("La précédente écriture de jeunesse attend sa vérification. Reprenez son enregistrement avant de changer les réglages.");
       return saveRef.current;
@@ -2984,36 +2991,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     [persist, playSound, save, selectHunterPreset],
   );
 
-  const completeTrophyWorkshop = useCallback(
-    (result: TrophyWorkshopResult) => {
-      if (!trophyWorkshop) return;
-      const completedAt = new Date().toISOString();
-      const trophies = save.trophies.map((trophy) => {
-        if (trophy.id !== trophyWorkshop.trophyId) return trophy;
-        const completedActions = [
-          ...new Set([
-            ...(trophy.workshop?.completedActions ?? []),
-            trophyWorkshop.action,
-          ]),
-        ];
-        return {
-          ...trophy,
-          workshop: {
-            completedActions,
-            bestScore: Math.max(trophy.workshop?.bestScore ?? 0, result.score),
-            lastCompletedAt: completedAt,
-          },
-        };
-      });
-      persist({ ...save, trophies });
-      setToast(
-        `${trophyWorkshop.trophyName} · ${trophyWorkshop.action} réussi, grade ${result.grade}.`,
-      );
-      setTrophyWorkshop(null);
-      void playSound("trophy");
-    },
-    [persist, playSound, save, trophyWorkshop],
-  );
+  const retryTrophyWorkshopSave = useCallback(() => {
+    const receipt = pendingTrophyCommitRef.current;
+    if (!receipt || !sessionAliveRef.current) return;
+    const allowed = !archiveTransferBusy && !archiveRecoveryIssue && !campaignOperationRef.current &&
+      !nurseryWriteAttemptRef.current && !pendingSocialWriteRef.current &&
+      !pendingTerminalRunRef.current && !activeHuntSessionRef.current;
+    const outcome = receipt.run(saveRef.current, allowed);
+    if (outcome.status === "ignored") return;
+    if (outcome.status === "pending") {
+      setSaveFailure(outcome.failure);
+      setToast("Rite accompli, sauvegarde non confirmée. Le résultat est conservé ; réessayez sans rejouer la séquence.");
+      return;
+    }
+    // Only a confirmed write (or exact readback reconciliation) becomes live.
+    saveRef.current = outcome.save; setSave(outcome.save); setSaveFailure(null);
+    pendingTrophyCommitRef.current = null; setPendingTrophyCommit(null);
+    setTrophyWorkshop(null);
+    setToast(`${receipt.target.trophyName} · ${receipt.target.action} enregistré, grade ${receipt.grade}.`);
+    void playSound("trophy");
+  }, [archiveTransferBusy, archiveRecoveryIssue, playSound]);
+
+  const completeTrophyWorkshop = useCallback((result: TrophyWorkshopResult) => {
+    if (!sessionAliveRef.current || !trophyWorkshop || pendingTrophyCommitRef.current) return;
+    const receipt = createTrophyWorkshopCommitV94(saveRef.current, trophyWorkshop, result);
+    if (!receipt) { setToast("Résultat d’atelier invalide ou prérequis absent. Aucune progression accordée."); return; }
+    // Publish before attempting the write: reentrant completion cannot replay it.
+    pendingTrophyCommitRef.current = receipt; setPendingTrophyCommit(receipt);
+    retryTrophyWorkshopSave();
+  }, [trophyWorkshop, retryTrophyWorkshopSave]);
 
   const resetProgress = useCallback(() => {
     if (!sessionAliveRef.current) return;
@@ -3067,14 +3073,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const exportCampaign = useCallback(() => {
     try {
-      const blob = new Blob([exportSave(save)], { type: "application/json" });
+      const blob = new Blob([exportSave(pendingTrophyCommitRef.current?.candidate() ?? save)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
       link.download = `yautja-campagne-${new Date().toISOString().slice(0, 10)}.json`;
       link.click();
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      setSaveTransferMessage(nurseryWriteAttemptRef.current
+      setSaveTransferMessage(pendingTrophyCommitRef.current
+        ? "Export de la campagne incluant le résultat d’atelier non confirmé préparé. Cet export ne confirme pas son enregistrement local et n’inclut pas les annexes du vaisseau ou THE PIT."
+        : nurseryWriteAttemptRef.current
         ? "Export de la dernière progression confirmée préparé. L’action de jeunesse encore en attente n’y figure pas : gardez la scène ouverte et utilisez Reprendre pour confirmer son enregistrement. La chasse active, les configurations du vaisseau et THE PIT ne sont pas inclus.":
           "Export de la campagne préparé. La chasse active, les configurations du vaisseau et les données THE PIT ne sont pas incluses.");
     } catch { setSaveTransferMessage("Impossible de préparer cet export. Les archives locales restent intactes."); }
@@ -4875,7 +4883,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                               type="button"
                               key={action}
                               className={completed ? "completed" : ""}
-                              disabled={!available}
+                              disabled={!available || pendingTrophyCommit !== null}
                               onClick={() =>
                                 setTrophyWorkshop({
                                   trophyId: trophy.id,
@@ -5207,6 +5215,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             trophyImageUrl={trophyWorkshop.trophyImageUrl}
             controlBindings={save.settings.controlBindings}
             onComplete={completeTrophyWorkshop}
+            suspended={settingsOpen || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+            persistencePending={pendingTrophyCommit !== null}
+            onRetryPersistence={retryTrophyWorkshopSave}
             onCancel={() => setTrophyWorkshop(null)}
           />
         </Suspense>
@@ -5411,14 +5422,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       </div>}
       {saveFailure && !pendingHuntResult && (
         <div className="save-warning" role="alert">
-          {nurseryPersistenceError
+          {pendingTrophyCommit
+            ? "Rite accompli, sauvegarde non confirmée. Le résultat reste disponible même après fermeture de l’atelier. Réessayez sans rejouer, ou exportez la campagne avec ce résultat avant de quitter."
+            : nurseryPersistenceError
             ? "La dernière action de jeunesse attend sa confirmation. Gardez cet écran ouvert et utilisez Reprendre dans la scène de campagne. Cet export contient uniquement la dernière progression confirmée."
             : saveFailure === "save-conflict"
             ? "Une autre session a modifié la campagne. Exportez cette progression avant de recharger. Aucun écrasement automatique."
             : saveFailure === "protected-save"
               ? "Les archives existantes sont illisibles ou plus récentes et restent protégées. Importez une archive valide ou confirmez une réinitialisation."
               : "Progression conservée en mémoire seulement. Libérez le stockage puis réessayez, ou exportez la campagne avant de quitter."}
-          <button type="button" disabled={Boolean(nurseryPersistenceError)} onClick={() => persist(save)}>Réessayer</button>
+          <button type="button" disabled={Boolean(nurseryPersistenceError)} onClick={() => pendingTrophyCommitRef.current ? retryTrophyWorkshopSave() : persist(save)}>Réessayer</button>
           <button type="button" onClick={exportCampaign}>{nurseryPersistenceError ? "Exporter la progression confirmée" : "Exporter"}</button>
         </div>
       )}

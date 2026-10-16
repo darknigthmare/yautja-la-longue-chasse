@@ -2,6 +2,7 @@ import { CANYON_PRESET_V85, CANYON_STORAGE_KEY_V85, createCanyonV85, readCanyonV
 import { WAR_STORAGE_KEY_V85, createWarSimulationV85, readWarSimulationV85, type WarSimulationV85 } from "./clanWarV85";
 import { warUnitV85 } from "./clanWarV85Data";
 import { withArchiveTransferLock } from "./archiveTransaction";
+import { createWarFencePortV94, WarFenceErrorV94, type WarFencePortV94, type WarFenceRecordV94 } from "./clanWarFenceV94";
 
 export const COMPOSITION_STORAGE_KEY_V85 = "yautja.clan-war.v85.composition.free.v1";
 export interface WarSessionStorageV85 { getItem(key: string): string | null; setItem(key: string, value: string): void }
@@ -14,7 +15,7 @@ export interface WarSessionSnapshotV85 {
 type Update<T> = T | ((current: T) => T);
 type Kind = "simulation" | "canyon" | "selection";
 type Failure = "unreadable" | "incompatible" | "conflict" | "write" | "lock";
-export type WarSessionWriteLockV85 = (operation: () => void) => Promise<{ acquired: true; value: void } | { acquired: false; reason: string }>;
+export type WarSessionWriteLockV85 = (operation: () => void | Promise<void>) => Promise<{ acquired: true; value: void | Promise<void> } | { acquired: false; reason: string }>;
 const domains = {
   simulation: { key: WAR_STORAGE_KEY_V85, writable: "writableWar", persisted: "persistedWar", label: "Korthas" },
   canyon: { key: CANYON_STORAGE_KEY_V85, writable: "writableCanyon", persisted: "persistedCanyon", label: "Le canyon" },
@@ -36,21 +37,23 @@ function serialize(kind: Kind, value: WarSessionSnapshotV85[Kind]): string {
   return JSON.stringify(kind === "selection" ? { version: 1, context: "free", selection: value } : value);
 }
 
-/** Per-panel memory, per-domain confirmed preimages. Browser writes share the
- * native archive lock: compare, write and readback happen in its sync callback.
- * No campaign key is written. A test may inject a deterministic lock scheduler.
- * Older, non-cooperating clients cannot be made transactional by this store. */
+/** Browser sessions pin a transactional fence before comparing/writing their
+ * legacy LS mirror. A stale renderer cannot overwrite another fenced session.
+ * Null fences are for server/coherent injected test storage, never a browser
+ * fallback after IDB denial. Older non-cooperating clients remain unsupported. */
 export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | null,
-  lock: WarSessionWriteLockV85 = operation => withArchiveTransferLock(operation)) {
+  lock: WarSessionWriteLockV85 = operation => withArchiveTransferLock(operation),
+  fence: WarFencePortV94 | null = typeof window === "undefined" ? null : createWarFencePortV94()) {
   const initial: WarSessionSnapshotV85 = {
     simulation: createWarSimulationV85(), canyon: createCanyonV85(), selection: { ...CANYON_PRESET_V85 },
     loaded: false, writableWar: true, writableCanyon: true, writableComposition: true, storageMessage: "",
     persistedWar: false, persistedCanyon: false, persistedComposition: false, pendingWrites: 0, canRetryPersistence: false,
   };
-  let snapshot = initial, storage: WarSessionStorageV85 | null = null, tail: Promise<void> = Promise.resolve();
+  let snapshot = initial, storage: WarSessionStorageV85 | null = null, tail: Promise<void> = Promise.resolve(), hydrating = false;
   const listeners = new Set<() => void>();
   const unconfirmed = new Map<Kind, string>();
-  const observed = new Map<Kind, string | null>(); // missing means never successfully read
+  const observed = new Map<Kind, string | null>();
+  const fences = new Map<Kind, WarFenceRecordV94 | null>();
   const failures = new Map<Kind, Failure>(), notices = new Map<Kind, string>();
   const emit = () => { for (const listener of listeners) listener(); };
   const summarize = () => {
@@ -61,8 +64,11 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     failures.set(kind, failure); notices.set(kind, `${domains[kind].label} : ${message}`);
     snapshot = { ...snapshot, [domains[kind].writable]: false, [domains[kind].persisted]: false }; summarize();
   }
+  const conflict = (kind: Kind) => block(kind, "conflict", "archive modifiée dans une autre session. Aucune écriture ; fermez puis rouvrez le panneau pour la relire.");
+  const unacknowledged = (kind: Kind) => block(kind, "write", "sauvegarde non confirmée. L’exercice continue en mémoire ; vous pouvez réessayer sans recommencer.");
   function hydrate() {
-    if (snapshot.loaded) return;
+    if (snapshot.loaded || hydrating) return;
+    hydrating = true;
     try { storage = getStorage(); } catch { storage = null; }
     for (const kind of kinds) {
       let raw: string | null;
@@ -76,14 +82,66 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
       try {
         const parsed = decode(kind, raw);
         if (!parsed) throw new Error("Incompatible archive");
-        snapshot = { ...snapshot, [kind]: parsed, [domains[kind].persisted]: true };
+        snapshot = { ...snapshot, [kind]: parsed, [domains[kind].persisted]: !fence };
       } catch { block(kind, "incompatible", "archive incompatible ou illisible, conservée sans modification. L’exercice reste temporaire."); }
     }
-    snapshot = { ...snapshot, loaded: true }; emit();
+    const finish = () => { hydrating = false; snapshot = { ...snapshot, loaded: true }; emit(); };
+    if (!fence) { finish(); return; }
+    tail = tail.then(async () => {
+      for (const kind of kinds) {
+        if (!observed.has(kind)) continue;
+        try {
+          const record = await fence.read(domains[kind].key);
+          fences.set(kind, record);
+          const raw = observed.get(kind)!;
+          if (!record) {
+            if (!failures.has(kind)) snapshot = { ...snapshot, [domains[kind].persisted]: raw !== null };
+            continue;
+          }
+          if (raw !== record.before && raw !== record.after) { conflict(kind); continue; }
+          const parsed = decode(kind, record.after);
+          if (!parsed) throw new WarFenceErrorV94("incompatible");
+          // A durable intent survives a crash between IDB and the LS mirror.
+          // Recover it read-only, then offer explicit repair; never run a default
+          // exercise over the newer intended state or silently discard it.
+          snapshot = { ...snapshot, [kind]: parsed };
+          failures.delete(kind); notices.delete(kind);
+          if (raw !== record.after || record.phase !== "confirmed") {
+            unconfirmed.set(kind, record.after); unacknowledged(kind);
+          } else snapshot = { ...snapshot, [domains[kind].writable]: true, [domains[kind].persisted]: true };
+          summarize();
+        } catch {
+          block(kind, "unreadable", "vérification transactionnelle indisponible ou incompatible. Archives conservées ; l’exercice reste en mémoire. Fermez puis rouvrez le panneau pour réessayer.");
+        }
+      }
+    }).finally(finish);
   }
   function mayWrite(kind: Kind, reset: boolean, retry: boolean): boolean {
     const reason = failures.get(kind);
     return !reason || (reset && reason === "incompatible") || ((reset || retry) && (reason === "write" || reason === "lock"));
+  }
+  function preflight(kind: Kind, retry: boolean) {
+    if (!storage || !observed.has(kind)) throw new Error("Unobserved archive");
+    const current = storage.getItem(domains[kind].key);
+    if (current !== observed.get(kind) && !(retry && current === unconfirmed.get(kind))) throw new WarFenceErrorV94("conflict");
+    return { current, raw: serialize(kind, snapshot[kind]) };
+  }
+  function writeMirror(kind: Kind, current: string | null, raw: string) {
+    if (!storage || storage.getItem(domains[kind].key) !== current) throw new WarFenceErrorV94("conflict");
+    unconfirmed.set(kind, raw);
+    if (raw !== current) {
+      try { storage.setItem(domains[kind].key, raw); } catch { /* Setter may persist before throwing: verify. */ }
+      if (storage.getItem(domains[kind].key) !== raw) throw new Error("Unconfirmed write");
+    }
+  }
+  function acknowledge(kind: Kind, raw: string) {
+    observed.set(kind, raw); unconfirmed.delete(kind); failures.delete(kind); notices.delete(kind);
+    snapshot = { ...snapshot, [domains[kind].writable]: true, [domains[kind].persisted]: serialize(kind, snapshot[kind]) === raw }; summarize();
+  }
+  function handleError(kind: Kind, error: unknown) {
+    if (error instanceof WarFenceErrorV94 && error.reason === "conflict") conflict(kind);
+    else if (error instanceof WarFenceErrorV94 && error.reason === "incompatible") block(kind, "unreadable", "registre transactionnel incompatible, conservé sans modification. L’exercice reste en mémoire.");
+    else unacknowledged(kind);
   }
   function enqueue(kind: Kind, reset = false, retry = false) {
     if (!mayWrite(kind, reset, retry)) return;
@@ -92,35 +150,29 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
       if (!mayWrite(kind, reset, retry)) return;
       const result = await lock(() => {
         if (!mayWrite(kind, reset, retry)) return;
-        const definition = domains[kind];
-        try {
-          if (!storage || !observed.has(kind)) throw new Error("Unobserved archive");
-          // Confirmation/reset never grants permission to replace a different
-          // archive that appeared since this panel read its original bytes.
-          const current = storage.getItem(definition.key);
-          if (current !== observed.get(kind) && !(retry && current === unconfirmed.get(kind))) {
-            block(kind, "conflict", "archive modifiée dans une autre session. Aucune écriture ; fermez puis rouvrez le panneau pour la relire."); return;
-          }
-          // Coalesce queued updates to the latest validated in-memory state.
-          // An explicit retry must not strand changes made while it waited.
-          const raw = serialize(kind, snapshot[kind]);
-          if (raw !== current) {
-            unconfirmed.set(kind, raw);
-            try { storage.setItem(definition.key, raw); } catch { /* A setter may have persisted before throwing: verify, never guess. */ }
-            if (storage.getItem(definition.key) !== raw) throw new Error("Unconfirmed write");
-          }
-          observed.set(kind, raw); unconfirmed.delete(kind); failures.delete(kind); notices.delete(kind);
-          snapshot = { ...snapshot, [definition.writable]: true,
-            [definition.persisted]: serialize(kind, snapshot[kind]) === raw }; summarize();
-        } catch { block(kind, "write", "sauvegarde non confirmée. L’exercice continue en mémoire ; vous pouvez réessayer sans recommencer."); }
+        if (fence) return (async () => {
+          try {
+            if (!fences.has(kind)) throw new WarFenceErrorV94("unavailable");
+            const { current, raw } = preflight(kind, retry);
+            const reserved = await fence.reserve(domains[kind].key, fences.get(kind)!, current, raw);
+            fences.set(kind, reserved); unconfirmed.set(kind, raw);
+            writeMirror(kind, current, raw);
+            fences.set(kind, await fence.confirm(domains[kind].key, reserved));
+            acknowledge(kind, raw);
+          } catch (error) { handleError(kind, error); }
+        })();
+        try { const { current, raw } = preflight(kind, retry); writeMirror(kind, current, raw); acknowledge(kind, raw); }
+        catch (error) { handleError(kind, error); }
       });
-      if (!result.acquired) block(kind, "lock", "verrou de sauvegarde indisponible. Aucune écriture ; l’exercice reste en mémoire et peut être réessayé.");
+      if (!result.acquired) block(kind, "lock", "verrou de sauvegarde indisponible. Aucune réussite annoncée ; l’exercice reste en mémoire et peut être réessayé.");
+      else await result.value;
     }).catch(() => {
       block(kind, "lock", "verrou de sauvegarde indisponible. Aucune réussite annoncée ; l’exercice reste en mémoire.");
     }).finally(() => { snapshot = { ...snapshot, pendingWrites: snapshot.pendingWrites - 1 }; emit(); });
   }
   function update<K extends Kind>(kind: K, value: Update<WarSessionSnapshotV85[K]>) {
     hydrate();
+    if (!snapshot.loaded) { tail = tail.then(() => { update(kind, value); }); return; }
     const next = typeof value === "function" ? (value as (current: WarSessionSnapshotV85[K]) => WarSessionSnapshotV85[K])(snapshot[kind]) : value;
     if (next === snapshot[kind]) return;
     let raw: string;
@@ -130,7 +182,9 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     enqueue(kind); emit();
   }
   function unlock(kind: "simulation" | "canyon") {
-    hydrate(); enqueue(kind, true); emit();
+    hydrate();
+    if (!snapshot.loaded) { tail = tail.then(() => { unlock(kind); }); return; }
+    enqueue(kind, true); emit();
   }
   return {
     getSnapshot: () => snapshot,
@@ -143,9 +197,9 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     unlockCanyonAfterExplicitReset: () => unlock("canyon"),
     retryPersistence: () => {
       hydrate();
-      for (const kind of kinds) if (["write", "lock"].includes(failures.get(kind) ?? "")) enqueue(kind, false, true);
-      emit();
+      const retry = () => { for (const kind of kinds) if (["write", "lock"].includes(failures.get(kind) ?? "")) enqueue(kind, false, true); emit(); };
+      if (!snapshot.loaded) tail = tail.then(retry); else retry();
     },
-    whenSettled: () => tail,
+    whenSettled: async () => { let pending; do { pending = tail; await pending; } while (pending !== tail); },
   };
 }

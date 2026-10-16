@@ -35,6 +35,8 @@ export interface TrophyWorkshopProps {
   gamepadEnabled?: boolean;
   autoFocus?: boolean;
   suspended?: boolean;
+  persistencePending?: boolean;
+  onRetryPersistence?: () => void;
   onComplete: (result: TrophyWorkshopResult) => void;
   onCancel: () => void;
 }
@@ -85,6 +87,8 @@ function TrophyWorkshopSession({
   gamepadEnabled = true,
   autoFocus = true,
   suspended = false,
+  persistencePending = false,
+  onRetryPersistence,
   onComplete,
   onCancel,
 }: TrophyWorkshopProps) {
@@ -258,6 +262,15 @@ function TrophyWorkshopSession({
           {inputShortcuts.left}, {inputShortcuts.up}, {inputShortcuts.down} ou {inputShortcuts.right} pour les directions, {inputShortcuts.confirm} seulement lorsque le glyphe A apparaît. Manette : croix directionnelle et A ; B pour fermer. Relâche les commandes avant de reprendre. Les
           commandes tactiles restent disponibles sous la jauge.
         </p>
+
+        {persistencePending && (
+          <section role="alert" aria-label="Sauvegarde du rite" style={styles.instructions}>
+            <p>Rite accompli · sauvegarde non confirmée. Le résultat est conservé en mémoire : réessayez sans rejouer la séquence. Fermer l’atelier ne supprime pas cette demande.</p>
+            <button type="button" onClick={onRetryPersistence} disabled={paused || !onRetryPersistence} style={styles.retryButton}>
+              Réessayer la sauvegarde du rite
+            </button>
+          </section>
+        )}
 
         {trophyImageUrl && (
           <figure style={styles.trophyPreview} aria-label={trophyName}>

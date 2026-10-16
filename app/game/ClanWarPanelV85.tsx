@@ -50,7 +50,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("bible");
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
-  const { simulation, canyon, selection, storageMessage, persistedCanyon, pendingWrites, canRetryPersistence } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
+  const { simulation, canyon, selection, storageMessage, persistedCanyon, pendingWrites, canRetryPersistence, loaded } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
   const { setSimulation, setCanyon, setSelection } = sessionStore;
   const [message, setMessage] = useState("Choisissez un exercice ou consultez les fiches du mandat.");
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
@@ -112,6 +112,8 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     const result = orderCanyonFormationV85(canyon, formation.id, tacticalOrder, tacticalX, tacticalLevel);
     setCanyon(result.state); setMessage(result.message);
   }
+
+  if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
   return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
     <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Un conflit, trois échelles</h2><p>Reconnaissance sur le terrain, commandement du détachement et conséquences territoriales.</p></div><button type="button" onClick={onClose}>Retour</button></header>

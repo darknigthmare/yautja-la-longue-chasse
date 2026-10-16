@@ -206,17 +206,19 @@ export function applyArchiveTransaction(
 
 /** Cross-tab imports/recovery require Web Locks; no unsafe lease imitation. */
 export async function withArchiveTransferLock<T>(operation: () => T, timeoutMs = 5000): Promise<
-  { acquired: true; value: T } | { acquired: false; reason: string }
+  { acquired: true; value: Awaited<T> } | { acquired: false; reason: string }
 > {
-  if (typeof navigator === "undefined" || !navigator.locks?.request) {
+  let manager: LockManager | undefined;
+  try { manager = typeof navigator === "undefined" ? undefined : navigator.locks; }
+  catch { return { acquired: false, reason: "L’accès au verrou des archives est refusé. Aucune écriture exécutée." }; }
+  if (!manager || typeof manager.request !== "function") {
     return { acquired: false, reason: "L’import intégral nécessite le verrou navigateur disponible sur HTTPS ou dans l’édition PC. L’export léger reste accessible." };
   }
   if (typeof AbortController === "undefined") {
     return { acquired: false, reason: "Le navigateur ne permet pas d’annuler une attente de verrou en toute sécurité. Aucun import exécuté ; utilisez un navigateur récent ou l’édition PC." };
   }
-  const manager = navigator.locks;
   const lockName = "yautja-full-archive-transfer";
-  let expired = false;
+  let expired = false, started = false;
   let timer: ReturnType<typeof setTimeout> | undefined;
   const refused = (reason: string) => ({ acquired: false as const, reason });
   const expiredResult = () => refused("La demande de verrou des archives a expiré. Aucune écriture tardive ne sera exécutée ; réessayez ou rechargez cet onglet.");
@@ -251,17 +253,21 @@ export async function withArchiveTransferLock<T>(operation: () => T, timeoutMs =
     });
     // A brief legitimate transfer may finish while we wait. The native queue is
     // cancellable; no lease, stolen lock or unlocked fallback authorizes writes.
-    const request = manager.request(lockName, { signal: controller.signal }, (lock) => {
+    const request = manager.request(lockName, { signal: controller.signal }, async (lock) => {
       if (expired) return expiredResult();
       if (!lock) return diagnoseUnavailable();
       // Bound acquisition, not the native release promise after a synchronous
       // operation has already written. Abort cannot revoke a granted lock.
       if (timer !== undefined) { clearTimeout(timer); timer = undefined; }
-      return { acquired: true as const, value: operation() };
+      started = true;
+      // Keep the native lock until an asynchronous operation has settled too.
+      // Returning an object containing a Promise would release it prematurely.
+      return { acquired: true as const, value: await operation() };
     });
     return await Promise.race([request, timeout]);
   } catch {
     return expired ? expiredResult()
+      : started ? { acquired: false, reason: "L’opération sous verrou a échoué. Son écriture n’est pas confirmée ; vérifiez son reçu avant toute nouvelle tentative." }
       : { acquired: false, reason: "Le verrou des archives n’a pas pu être obtenu. Aucune modification demandée." };
   } finally { if(timer !== undefined) clearTimeout(timer); }
 }
