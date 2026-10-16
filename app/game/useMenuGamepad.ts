@@ -51,7 +51,7 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       // A modal can make this menu inert while its controller loop is still mounted.
       // Ignore every action, including Back, so gameplay cannot resume behind it.
       const root = rootRef.current;
-      if (!root || root.closest('[inert],[aria-hidden="true"]')) { state = freshMenuPadState(); return; }
+      if (!root || root.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]')) { state = freshMenuPadState(); return; }
       let pad: Gamepad | null | undefined;
       try { pad = Array.from(navigator.getGamepads?.() ?? []).find(candidate => candidate?.connected); }
       catch { padIdentity = ""; state = freshMenuPadState(); return; }
@@ -70,6 +70,8 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const dialogs = Array.from(root.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'))
         .filter(element => !element.closest('[inert]') && element.getClientRects().length > 0);
       const scope = dialogs.at(-1) ?? root;
+      // A disabled modal still owns input; never send Back to the menu behind it.
+      if (scope.closest('[aria-disabled="true"],[hidden]')) { state = freshMenuPadState(); return; }
       const controls = Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))
         .filter(element => !element.matches(":disabled") &&
           !element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]') && element.getClientRects().length > 0);

@@ -3,6 +3,7 @@ import test from 'node:test';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import ts from 'typescript';
+import {freshMenuPadState, menuPadStep, menuFocusIndex} from '../app/game/systems/menuNavigation.ts';
 const source=readFileSync(new URL('../app/game/useMenuGamepad.ts',import.meta.url),'utf8');
 const tree=ts.createSourceFile('useMenuGamepad.ts',source,ts.ScriptTarget.Latest,true);
 const declaration=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='adjustControl');
@@ -28,3 +29,45 @@ test('hidden options are skipped as well as disabled options',()=>{const select=
 test('disabled optgroup semantics do not depend on the option own disabled field',()=>{const select=new Select();select.options[1].disabled=false;adjust(select,'right');assert.equal(select.value,'three');});
 test('last select option does not emit another save event',()=>{const select=new Select();select.value='three';assert.equal(adjust(select,'right'),true);assert.deepEqual(select.events,[]);});
 test('non-adjustment directions and empty selection remain inert',()=>{const select=new Select();select.options=[];assert.equal(adjust(select,'right'),true);assert.equal(adjust(select,'down'),false);assert.equal(adjust(null,'left'),false);assert.deepEqual(select.events,[]);});
+
+// Exercise the actual hook as well as its control adapter.
+const scopeDeclaration=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='useMenuGamepad');
+const scopeCode=ts.transpileModule(scopeDeclaration.getText(tree).replace(/^export /,''),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None}}).outputText;
+function fixture(where,attribute){
+ const document={hidden:false,hasFocus:()=>true,activeElement:null};let callback,backs=0;
+ const pad={connected:true,index:0,id:'test-pad',axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};
+ class Element {
+  constructor(){this.attribute=null;this.children=[];this.clicks=0;}
+  closest(selector){return this.attribute&&selector.includes(this.attribute)?this:null;}
+  matches(){return false;}getClientRects(){return[1];}
+  getBoundingClientRect(){return{x:0,y:0,width:20,height:20};}
+  querySelectorAll(selector){return selector==='controls'?this.children:[];}
+  focus(){document.activeElement=this;}scrollIntoView(){}click(){this.clicks++;}
+ }
+ const root=new Element(),dialog=new Element(),control=new Element();root.children=[control];dialog.children=[control];
+ if(where==='dialog')root.querySelectorAll=selector=>selector==='controls'?[control]:[dialog];
+ const scope=where==='dialog'?dialog:root;document.activeElement=control;
+ const env={useEffect:fn=>fn(),useRef:value=>({current:value}),freshMenuPadState,menuPadStep,menuFocusIndex,
+  FOCUSABLE:'controls',adjustControl:()=>false,document,HTMLElement:Element,navigator:{getGamepads:()=>[pad]},
+  window:{requestAnimationFrame:fn=>{callback=fn;return 1;},cancelAnimationFrame(){}}};
+ runInNewContext(scopeCode+';useMenuGamepad',env)({current:root},true,'test',()=>backs++);
+ callback(0);scope.attribute=attribute;
+ return{frame:now=>callback(now),pad,scope,control,backCount:()=>backs};
+}
+for(const attribute of ['[aria-disabled="true"]','[hidden]','[inert]','[aria-hidden="true"]']){
+ test(`blocked root ${attribute} refuses Back and requires neutral after reactivation`,()=>{
+  const f=fixture('root',attribute);f.pad.buttons[1].pressed=true;f.frame(16);
+  assert.equal(f.backCount(),0,'Back cannot leave a disabled/hidden menu');
+  f.scope.attribute=null;f.frame(32);assert.equal(f.backCount(),0,'held Back cannot leak on reactivation');
+  f.pad.buttons[1].pressed=false;f.frame(48);f.pad.buttons[1].pressed=true;f.frame(64);assert.equal(f.backCount(),1);
+ });
+}
+for(const button of [0,1]){
+ test(`disabled top modal refuses ${button===0?'Confirm':'Back'} without delegating behind it`,()=>{
+  const f=fixture('dialog','[aria-disabled="true"]');f.pad.buttons[button].pressed=true;f.frame(16);
+  assert.equal(f.backCount(),0);assert.equal(f.control.clicks,0);
+  f.scope.attribute=null;f.frame(32);assert.equal(f.backCount(),0);assert.equal(f.control.clicks,0);
+  f.pad.buttons[button].pressed=false;f.frame(48);f.pad.buttons[button].pressed=true;f.frame(64);
+  assert.equal(button===0?f.control.clicks:f.backCount(),1);
+ });
+}
