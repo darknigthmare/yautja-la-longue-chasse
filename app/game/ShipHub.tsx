@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
+import { SAVE_STORAGE_KEY } from "./save";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
 import { useShipTrainingV94 } from "./useShipTrainingV94";
@@ -34,6 +35,7 @@ import {
 } from "./systems/controlBindings";
 import {
   TRAINING_LABELS,
+  SHIP_PROGRESSION_STORAGE_KEY,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
   createDefaultShipProgression,
@@ -263,6 +265,7 @@ export default function ShipHub({
     "Console du vaisseau prête.",
   );
   const [hydratedOwner, setHydratedOwner] = useState<string | null>(null);
+  const [staleSidecarOwner, setStaleSidecarOwner] = useState<string | null>(null);
   const [shipInspectionActive, setShipInspectionActive] = useState(false);
   const [shipFlightActive, setShipFlightActive] = useState(false);
   const rootRef = useRef<HTMLElement | null>(null);
@@ -284,7 +287,8 @@ export default function ShipHub({
 
   const callbacksRef = useRef({ onProgressionChange, onSelectedShipChange });
   useEffect(() => { callbacksRef.current = { onProgressionChange, onSelectedShipChange }; }, [onProgressionChange, onSelectedShipChange]);
-  const sidecarReady = controlledProgression !== undefined || hydratedOwner === save.createdAt;
+  const sidecarReady = (controlledProgression !== undefined || hydratedOwner === save.createdAt) &&
+    staleSidecarOwner !== save.createdAt;
   const publishConfirmedProgression = useCallback((state: ShipProgressionState) => {
     setLocalProgression(state);
     callbacksRef.current.onProgressionChange?.(state);
@@ -337,6 +341,22 @@ export default function ShipHub({
 
   useEffect(() => {
     if (controlledProgression !== undefined) return;
+    // A different tab may replace the ship or its owning campaign at any time.
+    // Storage events cannot make a synchronous writer atomic, but must stop
+    // this stale console from issuing another write once a conflict is known.
+    const owner = save.createdAt;
+    const onStorage = (event: StorageEvent) => {
+      if (event.storageArea !== window.localStorage ||
+          (event.key !== null && event.key !== SHIP_PROGRESSION_STORAGE_KEY && event.key !== SAVE_STORAGE_KEY)) return;
+      setStaleSidecarOwner(owner);
+      setStatusMessage("Archives modifiées dans un autre onglet. La console est en lecture seule ; vérifiez vos scores en attente et rechargez avant de modifier le vaisseau.");
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [controlledProgression, save.createdAt]);
+
+  useEffect(() => {
+    if (controlledProgression !== undefined || staleSidecarOwner === save.createdAt) return;
     const hydrationTask = window.setTimeout(() => {
       if (hasPendingTraining() && hydratedOwner === save.createdAt) return;
       const loaded = loadShipProgression(save);
@@ -347,7 +367,7 @@ export default function ShipHub({
     }, 0);
     return () => window.clearTimeout(hydrationTask);
     // Callback identity changes must not reload an older sidecar over live state.
-  }, [controlledProgression, hasPendingTraining, hydratedOwner, recoveryReady, save]);
+  }, [controlledProgression, hasPendingTraining, hydratedOwner, recoveryReady, save, staleSidecarOwner]);
 
   useEffect(() => {
     if (!autoFocus || suspended) return;
@@ -1113,7 +1133,8 @@ export default function ShipHub({
           <p role="status" aria-live="polite">
             {statusMessage}
           </p>
-          {!sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
+          {staleSidecarOwner === save.createdAt ? <p role="alert">Une autre session a changé les archives. Les écritures du vaisseau sont suspendues ; terminez ou exportez tout score en attente avant de recharger.</p>
+            : !sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
           {!recoveryReady && <p role="status">Vérification des scores en attente…</p>}
           {recoveryNotice && <p role="status" data-training-recovery>{recoveryNotice}</p>}
           {hasRecoveryCopy && !trainingSession && <div aria-label="Copie du score en attente">
