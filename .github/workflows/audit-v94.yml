@@ -126,6 +126,7 @@ jobs:
           app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
           app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
+          app/game/HuntCanvas.tsx app/game/systems/huntStructuralBarrierV94.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -135,6 +136,14 @@ jobs:
           tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs
           tests/pit-gamepad-assignments.test.mjs
           tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs
+      - name: Verify combat structural barriers and boss whiffs
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/hunt-structural-gates-v94.test.mjs
+          tests/hunt-melee-combat.test.mjs
+          tests/hunt-projectile-runtime.test.mjs
+          tests/platform-collision.test.mjs
       - name: Exercise menu control unit regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: npm run test:menu-controls:v94
