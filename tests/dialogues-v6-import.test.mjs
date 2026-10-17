@@ -1,26 +1,37 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-const data=JSON.parse(readFileSync(new URL("../app/game/data/dialoguesV6-first100.json",import.meta.url),"utf8"));
-test("V6 Excel first-pass corpus contains exactly 100 distinct authored scenes",()=>{
- assert.equal(data.scenes.length,100);
- assert.equal(new Set(data.scenes.map(x=>x.id)).size,100);
- assert.ok(data.scenes.every(x=>x.title&&x.situation&&x.entry));
+import {readFileSync} from "node:fs";
+const read=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),"utf8"));
+const files=["first100","101-200","201-300","301-400","401-500","501-600","601-700","701-733"];
+const chunks=files.map(x=>read("../app/game/data/dialoguesV6-"+x+".json"));
+const index=read("../app/game/data/dialoguesV6-index.json");
+const scenes=chunks.flatMap(x=>x.scenes),lines=chunks.flatMap(x=>x.lines),choices=chunks.flatMap(x=>x.choices);
+test("Excel V6 scene corpus is complete and uniquely keyed",()=>{
+ assert.equal(scenes.length,733);assert.equal(lines.length,6059);assert.equal(choices.length,1494);
+ assert.equal(new Set(scenes.map(x=>x.id)).size,scenes.length);
+ assert.equal(new Set(lines.map(x=>x.id)).size,lines.length);
+ assert.equal(new Set(choices.map(x=>x.id)).size,choices.length);
 });
-test("all imported dialogue lines and options reference real imported scenes",()=>{
- const ids=new Set(data.scenes.map(x=>x.id));
- assert.ok(data.lines.length>500);
- assert.ok(data.choices.length>150);
- assert.ok(data.lines.every(x=>ids.has(x.scene)&&x.id&&x.speaker&&x.text&&Number.isInteger(x.order)));
- assert.ok(data.choices.every(x=>ids.has(x.scene)&&x.id&&x.action));
+test("all dialogue and choice references point to imported scenes",()=>{
+ const ids=new Set(scenes.map(x=>x.id));
+ assert.ok(lines.every(x=>ids.has(x.scene)&&x.speaker&&x.text&&Number.isInteger(x.order)));
+ assert.ok(choices.every(x=>ids.has(x.scene)&&x.action&&x.id));
 });
-test("first authored scene retains its original narrative, not a generic fallback",()=>{
- const s=data.scenes.find(x=>x.id==="D6-O1-M01");
+test("lazy-loading index matches every authored scene and correct chunk",()=>{
+ assert.equal(index.scenes.length,scenes.length);
+ for(let i=0;i<scenes.length;i++){
+  assert.equal(index.scenes[i].id,scenes[i].id);
+  assert.equal(index.scenes[i].title,scenes[i].title);
+  assert.equal(index.scenes[i].chunk,Math.floor(i/100));
+ }
+});
+test("authored first scene is not replaced by a generic fallback",()=>{
+ const s=scenes.find(x=>x.id==="D6-O1-M01");
  assert.equal(s.title,"La marche trop haute");
- assert.ok(data.lines.some(x=>x.scene===s.id&&x.speaker==="Varek"&&x.text.includes("anneau")));
- assert.ok(data.choices.some(x=>x.scene===s.id&&x.action.includes("Ruun")));
+ assert.ok(lines.some(x=>x.scene===s.id&&x.speaker==="Varek"&&x.text.includes("anneau")));
+ assert.ok(choices.some(x=>x.scene===s.id&&x.action.includes("Ruun")));
 });
-test("design choices do not include executable progression or auto-awarded rewards",()=>{
- assert.equal(data.scope,"first-100-scenes-design-only");
- assert.ok(data.choices.every(x=>!Object.hasOwn(x,"grantReward")&&!Object.hasOwn(x,"unlock")));
+test("design records do not grant campaign rewards",()=>{
+ assert.ok(chunks.every(x=>x.scope.includes("design-only")));
+ assert.ok(choices.every(x=>!Object.hasOwn(x,"grantReward")&&!Object.hasOwn(x,"unlock")));
 });
