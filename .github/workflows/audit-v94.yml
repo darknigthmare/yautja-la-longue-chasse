@@ -144,6 +144,9 @@ jobs:
           tests/hunt-melee-combat.test.mjs
           tests/hunt-projectile-runtime.test.mjs
           tests/platform-collision.test.mjs
+      - name: Validate imported V6 dialogue archive references
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --test tests/dialogues-v6-import.test.mjs
       - name: Exercise menu control unit regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: npm run test:menu-controls:v94
