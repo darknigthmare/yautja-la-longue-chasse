@@ -63,7 +63,7 @@ export function useTrophyRecoveryV94(options: Options) {
   const backup = useCallback((receipt: TrophyWorkshopCommitV94) => {
     const context = session.current;
     const copy = receipt.recoveryCopy();
-    if (!context?.active || context.count > 0 || !copy || copy.owner !== context.owner || context.owner !== live.current.owner) return;
+    if (!context?.active || !context.ready || context.count > 0 || !copy || copy.owner !== context.owner || context.owner !== live.current.owner) return;
     // Never replace an incompatible or different recovered rite even when the
     // caller has a fresh in-memory success. Its pre-existing copy is protected.
     if (context.raw !== null && context.id !== copy.id) return;
