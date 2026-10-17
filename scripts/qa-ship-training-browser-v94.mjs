@@ -157,7 +157,9 @@ try{
   await page.getByRole('alert').filter({hasText:'Une autre session a changé les archives'}).waitFor();
   const before=await writes(page);
   await page.getByRole('button',{name:'Armurerie',exact:true}).click();
-  await page.getByRole('button',{name:/Enregistrer dans/}).click();
+  const savePreset=page.getByRole('button',{name:/Enregistrer dans/});
+  assert.equal(await savePreset.isDisabled(),true,'a stale console must disable the save action');
+  await page.waitForTimeout(150);
   assert.equal(await writes(page),before,'a stale console cannot write a loadout after a storage event');
  });
  const report={scope:'Actual ShipHub and TrainingDrill, native localStorage and synthetic profile, substituted art; not full-game or cross-tab training qualification',browser:browser.version(),results,errors};await mkdir(path.join(root,'outputs/qa-audit-v94'),{recursive:true});await writeFile(path.join(root,'outputs/qa-audit-v94/ship-training-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(results.filter(v=>v.status!=='PASS').length,0);assert.deepEqual(errors,[]);
