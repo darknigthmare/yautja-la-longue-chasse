@@ -17,7 +17,7 @@ function fixture(extra={}){
  const data=new Map(),writes=[],confirmed=[],messages=[],fault={drop:false};
  const storage={getItem:k=>data.get(k)??null,setItem(k,v){writes.push([k,v]);if(!fault.drop)data.set(k,v);},removeItem:k=>data.delete(k)};
  const document={visibilityState:'visible',focused:true,hasFocus(){return this.focused;}},root={blocked:false,closest(){return this.blocked?this:null;}};
- const module={exports:{}};runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout,clearTimeout});
+ const module={exports:{}};runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage,confirm:()=>true},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout,clearTimeout});
  const a=module.exports,save=a.defaultSave('2026-10-16T00:00:00.000Z'),base=a.createDefaultShipProgression(save,save.updatedAt);
  data.set(a.SAVE_STORAGE_KEY,JSON.stringify(save));data.set(a.SHIP_PROGRESSION_STORAGE_KEY,JSON.stringify(base));
  let options={save,progression:base,controlled:false,suspended:false,rootRef:{current:root},onConfirmed:s=>{confirmed.push(s);options={...options,progression:s};dirty=true;},notify:m=>messages.push(m),...extra};
@@ -80,4 +80,52 @@ test('a throwing rejection observer does not create an unhandled provider reject
 test('a controlled result stays transmitted when only its success notification throws',async()=>{
  let calls=0;const f=fixture({controlled:true,onDelegated:()=>{calls++;}});await f.start();f.update({notify:()=>{throw Error('HUD unavailable');}});
  f.current.completeAutonomousTraining(80);f.flush();assert.equal(calls,1);assert.equal(f.current.hasPendingResult(),false);assert.equal(f.current.saveIssue,null);assert.equal(f.current.trainingSession,null);
+});
+
+// Async recovery ports emulate IO only; the hook and receipt writer stay real.
+const drainRecovery=async f=>{for(let i=0;i<12;i++){await Promise.resolve();f.flush();}};
+function recoveryPortFixture(){let raw=null;const operations=[];return{operations,get raw(){return raw;},set raw(v){raw=v;},port:{
+ read:async()=>raw,replace:async(owner,before,next)=>{if(raw!==before)throw Error('concurrent recovery');operations.push({owner,before,next});raw=next;},
+}};}
+test('recovery hydration owns the console until its read settles',async()=>{
+ const d=deferred(),port={read:()=>d.promise,replace:async()=>{}};const f=fixture({recoveryPort:port});await f.start();assert.equal(f.current.trainingSession,null);
+ d.resolve(null);await drainRecovery(f);await f.start();assert.equal(f.current.trainingSession.disciplineId,'targeting');
+});
+test('pending score is recovered on a fresh console and is never applied during hydration',async()=>{
+ const p=recoveryPortFixture(),first=fixture({recoveryPort:p.port});await drainRecovery(first);await first.start();first.fault.drop=true;first.current.completeAutonomousTraining(86);first.flush();await drainRecovery(first);
+ assert.ok(p.raw);assert.match(first.current.recoveryNotice,/confirmée/);const date=JSON.parse(p.raw).completedAt;first.unmount();
+ const second=fixture({recoveryPort:p.port});await drainRecovery(second);assert.equal(second.writes.length,0);assert.equal(second.current.trainingSession,null);assert.equal(second.current.canRetryTraining,true);
+ second.current.retryTrainingSave();await drainRecovery(second);assert.equal(second.confirmed.length,1);assert.equal(second.confirmed[0].training.targeting.lastCompletedAt,date);assert.equal(second.confirmed[0].training.targeting.attempts,1);assert.equal(p.raw,null);
+});
+test('unmounting during backup does not cancel the requested copy or revive the old UI',async()=>{
+ const p=recoveryPortFixture(),d=deferred(),write=p.port.replace;p.port.replace=async(...args)=>{await d.promise;return write(...args);};
+ const f=fixture({recoveryPort:p.port});await drainRecovery(f);await f.start();f.fault.drop=true;f.current.completeAutonomousTraining(83);f.flush();f.unmount();const count=f.messages.length;d.resolve();await drainRecovery(f);assert.ok(p.raw);assert.equal(f.messages.length,count);assert.equal(f.confirmed.length,0);
+});
+test('unreadable backup never claims recovery protection and leaves the real score retryable',async()=>{
+ const f=fixture({recoveryPort:{read:async()=>{throw Error('denied');},replace:async()=>{throw Error('must not write');}}});await drainRecovery(f);await f.start();f.fault.drop=true;f.current.completeAutonomousTraining(84);await drainRecovery(f);
+ assert.ok(f.current.canRetryTraining);assert.match(f.current.recoveryNotice,/non confirmée/);f.fault.drop=false;f.current.retryTrainingSave();await drainRecovery(f);assert.equal(f.confirmed.length,1);
+});
+test('incompatible backup remains unchanged and blocks new training instead of replacing it',async()=>{
+ const p=recoveryPortFixture();p.raw='{"version":999}';const f=fixture({recoveryPort:p.port});await drainRecovery(f);await f.start();assert.equal(f.current.trainingSession,null);assert.ok(f.current.hasPendingResult());assert.equal(f.writes.length,0);assert.equal(p.raw,'{"version":999}');assert.ok(f.current.hasRecoveryCopy);
+});
+test('explicit abandonment of an incompatible copy leaves the sidecar intact and unlocks training',async()=>{
+ const p=recoveryPortFixture();p.raw='{"version":999}';const f=fixture({recoveryPort:p.port});await drainRecovery(f);const sidecar=f.data.get(f.a.SHIP_PROGRESSION_STORAGE_KEY);await f.current.discardTrainingRecovery();await drainRecovery(f);
+ assert.equal(p.raw,null);assert.equal(f.data.get(f.a.SHIP_PROGRESSION_STORAGE_KEY),sidecar);assert.equal(f.writes.length,0);await f.start();assert.ok(f.current.trainingSession);
+});
+test('failed abandonment preserves the copy and does not free a conflicting score',async()=>{
+ const p=recoveryPortFixture();p.raw='{"version":999}';const f=fixture({recoveryPort:p.port});await drainRecovery(f);p.raw='foreign-protected-copy';await f.current.discardTrainingRecovery();await drainRecovery(f);
+ assert.equal(p.raw,'foreign-protected-copy');assert.ok(f.current.hasPendingResult());assert.match(f.current.recoveryNotice,/Abandon non confirmé/);assert.equal(f.writes.length,0);
+});
+test('a controlled parent does not open, backup or erase native recovery copies',async()=>{
+ let calls=0;const f=fixture({controlled:true,recoveryPort:{read:async()=>{calls++;return null;},replace:async()=>{calls++;}},onDelegated:()=>{}});await drainRecovery(f);await f.start();f.current.completeAutonomousTraining(81);await drainRecovery(f);assert.equal(calls,0);assert.equal(f.writes.length,0);
+});
+test('a late hydration response cannot inject another owner score into the new campaign',async()=>{
+ const p=recoveryPortFixture(),d=deferred();let reads=0;p.port.read=()=>++reads===1?d.promise:Promise.resolve(null);const f=fixture({recoveryPort:p.port});
+ const save=f.a.defaultSave('2026-10-17T00:00:00.000Z');f.update({save,progression:f.a.createDefaultShipProgression(save,save.updatedAt)});await drainRecovery(f);d.resolve('{"version":999}');await drainRecovery(f);assert.equal(f.current.hasPendingResult(),false);assert.equal(f.current.hasRecoveryCopy,false);assert.equal(f.writes.length,0);
+});
+test('retry while abandonment is awaiting IO cannot recreate the score or wedge the console',async()=>{
+ const p=recoveryPortFixture(),f=fixture({recoveryPort:p.port});await drainRecovery(f);await f.start();f.fault.drop=true;f.current.completeAutonomousTraining(84);await drainRecovery(f);
+ const d=deferred(),write=p.port.replace;p.port.replace=async(...args)=>{await d.promise;return write(...args);};const count=f.writes.length;
+ const abandoned=f.current.discardTrainingRecovery();f.current.retryTrainingSave();f.flush();assert.equal(f.writes.length,count);d.resolve();await abandoned;await drainRecovery(f);
+ assert.equal(p.raw,null);assert.equal(f.current.hasPendingResult(),false);await f.start();assert.ok(f.current.trainingSession);
 });

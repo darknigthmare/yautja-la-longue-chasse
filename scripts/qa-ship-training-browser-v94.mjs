@@ -23,7 +23,7 @@ try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});const origin=`http://127.0.0.1:${server.address().port}`;
  browser=await chromium.launch({...process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{},headless:true});
  async function scenario(name,run){const context=await browser.newContext({viewport:{width:1100,height:1000}});await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const page=await context.newPage();page.setDefaultTimeout(7000);page.on('pageerror',e=>errors.push(e.message));
-  try{await page.goto(origin);await page.bringToFront();await page.waitForFunction(()=>window.__shipQa?.adopted.length>0);await run(page);results.push({name,status:'PASS'});console.log('PASS '+name);}
+  try{await page.goto(origin);await page.bringToFront();await page.waitForFunction(()=>window.__shipQa?.adopted.length>0);await page.getByRole('button',{name:/Ciblage/}).waitFor();await page.waitForFunction(()=>![...document.querySelectorAll("button")].find(b=>b.textContent.includes("Ciblage"))?.disabled);await run(page);results.push({name,status:'PASS'});console.log('PASS '+name);}
   catch(e){results.push({name,status:'FAIL',error:String(e)});console.error('FAIL '+name+': '+e);}
   finally{await context.close();}}
  const paint=page=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
@@ -85,6 +85,71 @@ try{
   assert.equal(await page.locator('.training-drill-panel').count(),0);
   await page.evaluate(()=>{window.__shipPad.buttons[0].pressed=false;});await paint(page);
   await page.evaluate(()=>{window.__shipPad.buttons[0].pressed=true;});await page.waitForSelector('.training-drill-panel');assert.equal(await writes(page),0);
+ });
+
+ const backup=page=>page.evaluate(()=>window.__shipQa.recovery().read(window.__shipQa.owner));
+ const waitBackup=async page=>{await page.locator('[data-training-recovery]').filter({hasText:'Copie de secours du score confirmée'}).waitFor();assert.ok(await backup(page));};
+ await scenario('a played pending score survives a full reload and saves exactly once on explicit recovery',async page=>{
+  await open(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);await waitBackup(page);
+  const saved=JSON.parse(await backup(page));assert.equal((await disk(page)).training.targeting.attempts,0);
+  await page.reload();await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).waitFor();assert.equal(await writes(page),0);assert.equal((await disk(page)).training.targeting.attempts,0);
+  await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();
+  await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training.targeting.attempts===1);assert.equal(await writes(page),1);assert.equal((await disk(page)).training.targeting.lastCompletedAt,saved.completedAt);
+  await page.waitForFunction(async()=>await window.__shipQa.recovery().read(window.__shipQa.owner)===null);
+ });
+ await scenario('closing the browser page and reopening its profile retains the pending authored score',async page=>{
+  await open(page,'Mobilité');await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);await waitBackup(page);const context=page.context();await page.close();
+  const next=await context.newPage();next.on('pageerror',e=>errors.push(e.message));await next.goto(origin);await next.bringToFront();
+  await next.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).waitFor();assert.equal((await disk(next)).training.mobility.attempts,0);assert.equal(await writes(next),0);
+  await next.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();await next.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training.mobility.attempts===1);assert.equal(await writes(next),1);
+ });
+ await scenario('written-before-readback-failure is acknowledged after reload with zero duplicate sidecar writes',async page=>{
+  await open(page);await page.evaluate(()=>window.__shipQa.fault('readback'));await finish(page);await waitBackup(page);assert.equal(await writes(page),1);
+  await page.reload();await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).waitFor();assert.equal(await writes(page),0);
+  await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();await page.waitForFunction(async()=>await window.__shipQa.recovery().read(window.__shipQa.owner)===null);
+  assert.equal((await disk(page)).training.targeting.attempts,1);assert.equal(await writes(page),0);
+ });
+ await scenario('leaving and reopening ShipHub recovers its unconfirmed score without another drill',async page=>{
+  await open(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);await waitBackup(page);
+  await page.evaluate(()=>window.__shipQa.show(false));await paint(page);await page.evaluate(()=>{window.__shipQa.fault('none');window.__shipQa.show(true);});
+  await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).waitFor();assert.equal(await page.locator('.training-drill-panel').count(),0);
+  await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training.targeting.attempts===1);
+ });
+ await scenario('foreign concurrent recovery bytes cannot be overwritten or removed by a stale console',async page=>{
+  const raw=JSON.stringify({version:999,protected:true});await page.evaluate(raw=>window.__shipQa.recovery().replace(window.__shipQa.owner,null,raw),raw);
+  await open(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);
+  await page.locator('[data-training-recovery]').filter({hasText:'non confirmée ou modifiée'}).waitFor();assert.equal(await backup(page),raw);
+  await page.getByRole('button',{name:'Fermer l’épreuve',exact:true}).click();page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Abandonner cette reprise',exact:true}).click();
+  await page.locator('[data-training-recovery]').filter({hasText:'Abandon non confirmé'}).waitFor();assert.equal(await backup(page),raw);
+ });
+ await scenario('incompatible backup can be exported and explicitly abandoned without changing the ship',async page=>{
+  const raw='{"format":"future","version":999}';await page.evaluate(raw=>window.__shipQa.recovery().replace(window.__shipQa.owner,null,raw),raw);await page.reload();
+  await page.getByRole('button',{name:'Exporter la copie du score',exact:true}).waitFor();const before=await disk(page);const download=page.waitForEvent('download');await page.getByRole('button',{name:'Exporter la copie du score',exact:true}).click();const artifact=await download;
+  let bytes='';for await(const chunk of await artifact.createReadStream())bytes+=chunk.toString();assert.equal(bytes,raw);
+  page.once('dialog',d=>d.dismiss());await page.getByRole('button',{name:'Abandonner cette reprise',exact:true}).click();assert.equal(await backup(page),raw);
+  page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Abandonner cette reprise',exact:true}).click();await page.waitForFunction(async()=>await window.__shipQa.recovery().read(window.__shipQa.owner)===null);
+  assert.deepEqual(await disk(page),before);assert.equal(await writes(page),0);await open(page);assert.equal(await page.locator('.training-drill-panel').count(),1);
+ });
+ await scenario('native recovery journal rejects two simultaneous competing backups and stale cleanup',async page=>{
+  const second=await page.context().newPage();await second.goto(origin);await second.waitForFunction(()=>window.__shipQa);
+  const runs=await Promise.all([page.evaluate(()=>window.__shipQa.recovery().replace(window.__shipQa.owner,null,'first').then(()=>true,()=>false)),second.evaluate(()=>window.__shipQa.recovery().replace(window.__shipQa.owner,null,'second').then(()=>true,()=>false))]);
+  assert.equal(runs.filter(Boolean).length,1);const winner=await backup(page);const failed=await page.evaluate(expected=>window.__shipQa.recovery().replace(window.__shipQa.owner,expected,null).then(()=>false,()=>true),winner==='first'?'second':'first');assert.equal(failed,true);assert.equal(await backup(page),winner);
+ });
+
+ await scenario('a denied native recovery API reports memory-only protection and leaves primary retry usable',async page=>{
+  await open(page);await page.evaluate(()=>{window.__shipQa.fault('drop');window.__savedIdbDescriptor=Object.getOwnPropertyDescriptor(globalThis,'indexedDB');Object.defineProperty(globalThis,'indexedDB',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});});await finish(page);
+  await page.locator('[data-training-recovery]').filter({hasText:'non confirmée ou modifiée'}).waitFor();assert.equal((await disk(page)).training.targeting.attempts,0);
+  await page.evaluate(()=>{Object.defineProperty(globalThis,'indexedDB',window.__savedIdbDescriptor);window.__shipQa.fault('none');});
+  await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();await page.waitForSelector('.training-drill-panel',{state:'detached'});assert.equal((await disk(page)).training.targeting.attempts,1);
+ });
+ await scenario('an aborted native journal transaction is not a confirmed backup',async page=>{
+  await open(page);await page.evaluate(()=>{window.__shipQa.fault('drop');window.__originalRecoveryPut=IDBObjectStore.prototype.put;IDBObjectStore.prototype.put=function(...args){if(this.transaction.db.name===window.__shipQa.recoveryDB){this.transaction.abort();throw new DOMException('Abort','AbortError');}return window.__originalRecoveryPut.apply(this,args);};});await finish(page);
+  await page.locator('[data-training-recovery]').filter({hasText:'non confirmée ou modifiée'}).waitFor();assert.equal(await backup(page),null);
+  await page.evaluate(()=>{IDBObjectStore.prototype.put=window.__originalRecoveryPut;window.__shipQa.fault('none');});await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();await page.waitForSelector('.training-drill-panel',{state:'detached'});assert.equal((await disk(page)).training.targeting.attempts,1);
+ });
+ await scenario('a future native journal database is preserved instead of downgraded',async page=>{
+  await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open(window.__shipQa.recoveryDB,2);r.onerror=()=>reject(r.error);r.onupgradeneeded=()=>{r.result.createObjectStore('future-protected').put('untouched','sentinel');};r.onsuccess=()=>{r.result.close();resolve();};}));await page.reload();
+  await page.locator('[data-training-recovery]').filter({hasText:'inaccessible'}).waitFor();const value=await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open(window.__shipQa.recoveryDB);r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('future-protected');const read=tx.objectStore('future-protected').get('sentinel');read.onsuccess=()=>resolve(read.result);tx.oncomplete=()=>db.close();};}));assert.equal(value,'untouched');assert.equal(await writes(page),0);
  });
  const report={scope:'Actual ShipHub and TrainingDrill, native localStorage and synthetic profile, substituted art; not full-game or cross-tab training qualification',browser:browser.version(),results,errors};await mkdir(path.join(root,'outputs/qa-audit-v94'),{recursive:true});await writeFile(path.join(root,'outputs/qa-audit-v94/ship-training-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(results.filter(v=>v.status!=='PASS').length,0);assert.deepEqual(errors,[]);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

@@ -294,7 +294,7 @@ export default function ShipHub({
     suspended: suspended || !sidecarReady, rootRef, onConfirmed: publishConfirmedProgression,
     onDelegated: onProgressionChange, onTrainingRequested, notify });
   const { trainingSession, requestTraining, completeAutonomousTraining, cancelAutonomousTraining,
-    retryTrainingSave, canRetryTraining, saveIssue: trainingSaveIssue, hasPendingResult: hasPendingTraining } = training;
+    retryTrainingSave, canRetryTraining, saveIssue: trainingSaveIssue, hasPendingResult: hasPendingTraining, recoveryReady, recoveryNotice, hasRecoveryCopy, exportTrainingRecovery, discardTrainingRecovery } = training;
 
   useMenuGamepad(externalTrainingRef, !!trainingSession?.external && gamepadEnabled && !suspended,
     `ship-external:${trainingSession?.id ?? 0}`, cancelAutonomousTraining);
@@ -338,7 +338,7 @@ export default function ShipHub({
   useEffect(() => {
     if (controlledProgression !== undefined) return;
     const hydrationTask = window.setTimeout(() => {
-      if (hasPendingTraining()) return;
+      if (hasPendingTraining() && hydratedOwner === save.createdAt) return;
       const loaded = loadShipProgression(save);
       setLocalProgression(loaded);
       setHydratedOwner(save.createdAt);
@@ -347,7 +347,7 @@ export default function ShipHub({
     }, 0);
     return () => window.clearTimeout(hydrationTask);
     // Callback identity changes must not reload an older sidecar over live state.
-  }, [controlledProgression, hasPendingTraining, save]);
+  }, [controlledProgression, hasPendingTraining, hydratedOwner, recoveryReady, save]);
 
   useEffect(() => {
     if (!autoFocus || suspended) return;
@@ -1075,7 +1075,7 @@ export default function ShipHub({
                   }}
                   type="button"
                   className={`hub-action${index === safeActionIndex ? " selected" : ""}`}
-                  disabled={action.disabled}
+                  disabled={action.disabled || !sidecarReady || !recoveryReady}
                   onFocus={() => setActionIndex(index)}
                   onClick={() => invokeAction(index)}
                   style={styles.actionButton}
@@ -1114,6 +1114,12 @@ export default function ShipHub({
             {statusMessage}
           </p>
           {!sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
+          {!recoveryReady && <p role="status">Vérification des scores en attente…</p>}
+          {recoveryNotice && <p role="status" data-training-recovery>{recoveryNotice}</p>}
+          {hasRecoveryCopy && !trainingSession && <div aria-label="Copie du score en attente">
+            <button type="button" disabled={suspended} onClick={exportTrainingRecovery}>Exporter la copie du score</button>
+            <button type="button" disabled={suspended} onClick={() => { void discardTrainingRecovery(); }}>Abandonner cette reprise</button>
+          </div>}
           {trainingSaveIssue && !trainingSession && <div role="alert">
             <p>{trainingSaveIssue}</p>
             {canRetryTraining && <button type="button" onClick={retryTrainingSave} disabled={suspended}>Réessayer la sauvegarde du score</button>}

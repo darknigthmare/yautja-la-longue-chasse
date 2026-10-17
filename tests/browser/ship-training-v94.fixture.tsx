@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import ShipHub from '../../app/game/ShipHub';
 import { defaultSave, SAVE_STORAGE_KEY } from '../../app/game/save';
 import { createDefaultShipProgression, SHIP_PROGRESSION_STORAGE_KEY, type ShipProgressionState } from '../../app/game/systems/progression';
+import {createShipTrainingRecoveryPortV94, SHIP_TRAINING_RECOVERY_DB_V94, SHIP_TRAINING_RECOVERY_STORE_V94} from '../../app/game/systems/shipTrainingRecoveryV94';
 import { DEFAULT_CONTROL_BINDINGS } from '../../app/game/systems/controlBindings';
 const save=defaultSave('2026-10-16T00:00:00.000Z');
 const base=createDefaultShipProgression(save,save.updatedAt);
@@ -10,7 +11,7 @@ const originalSet=Storage.prototype.setItem,originalGet=Storage.prototype.getIte
 let fault='none',failRead=false;
 const api={fault(value:string){fault=value;},writes:[] as string[],notifications:[] as string[],adopted:[] as ShipProgressionState[],
   pause:(_v:boolean)=>{},show:(_v:boolean)=>{},padEnabled:(_v:boolean)=>{},controlled:(_v:boolean)=>{},external:(_v:boolean)=>{},
-  resolve:(_v:number)=>{},reject:()=>{},externalCalls:0,throwNotifications:false,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY};
+  resolve:(_v:number)=>{},reject:()=>{},externalCalls:0,throwNotifications:false,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY,recoveryDB:SHIP_TRAINING_RECOVERY_DB_V94,recoveryStore:SHIP_TRAINING_RECOVERY_STORE_V94,owner:save.createdAt,recovery:()=>createShipTrainingRecoveryPortV94()};
 Storage.prototype.setItem=function(k,v){if(k===SHIP_PROGRESSION_STORAGE_KEY){api.writes.push(v);if(fault==='drop')return;if(fault==='quota')throw new DOMException('Fixture quota','QuotaExceededError');}
  originalSet.call(this,k,v);if(k===SHIP_PROGRESSION_STORAGE_KEY&&fault==='readback'){fault='none';failRead=true;}};
 Storage.prototype.getItem=function(k){if(k===SHIP_PROGRESSION_STORAGE_KEY&&failRead){failRead=false;throw new DOMException('Fixture readback','SecurityError');}return originalGet.call(this,k);};

@@ -49,6 +49,7 @@ jobs:
           node --test --test-reporter=spec
           tests/ship-training-receipt-v94.test.mjs
           tests/ship-training-lifecycle-v94.test.mjs
+          tests/ship-training-recovery-v94.test.mjs
       - name: Historical ship progression, ownership and training rules
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -62,6 +63,7 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/ShipHub.tsx app/game/TrainingDrill.tsx
           app/game/useShipTrainingV94.ts app/game/systems/shipTrainingReceiptV94.ts
+          app/game/systems/shipTrainingRecoveryV94.ts
       - name: Play native ship training and verify score storage in Chrome
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-ship-training-browser-v94.mjs
