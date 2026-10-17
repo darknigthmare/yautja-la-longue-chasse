@@ -49,5 +49,42 @@ try{
  await scenario('an external score received after leaving the actual ShipHub cannot write',async page=>{await page.evaluate(()=>window.__shipQa.external(true));await paint(page);await page.getByRole('button',{name:/Ciblage/}).click();await page.waitForFunction(()=>window.__shipQa.externalCalls===1);await page.evaluate(()=>window.__shipQa.show(false));await paint(page);await page.evaluate(()=>window.__shipQa.resolve(95));await page.waitForTimeout(200);assert.equal(await writes(page),0);});
  await scenario('cancelled external request cannot write or replace the next active exercise',async page=>{await page.evaluate(()=>window.__shipQa.external(true));await paint(page);await page.getByRole('button',{name:/Ciblage/}).click();await page.getByRole('button',{name:'Annuler l’attente',exact:true}).click();await page.evaluate(()=>{window.__shipQa.external(false);window.__shipQa.resolve(99);});await paint(page);assert.equal(await writes(page),0);await open(page,'Mobilité');assert.equal(await page.locator('.training-drill-panel').count(),1);});
  await scenario('failed loadout and medbay writes do not announce successful actions',async page=>{const before=await disk(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await page.getByRole('button',{name:'Armurerie',exact:true}).click();await page.getByRole('button',{name:/Enregistrer dans/}).click();assert.match((await page.evaluate(()=>window.__shipQa.notifications)).at(-1),/non confirmée/);assert.deepEqual((await disk(page)).loadoutPresets,before.loadoutPresets);await page.getByRole('button',{name:'Medbay',exact:true}).click();await page.getByRole('button',{name:/Traitement des blessures/}).click();assert.match((await page.evaluate(()=>window.__shipQa.notifications)).at(-1),/non confirmée/);assert.equal((await disk(page)).medbay.status,'ready');});
+
+ await scenario('a throwing opening and success observer cannot strand an external score',async page=>{
+  await page.evaluate(()=>{window.__shipQa.external(true);window.__shipQa.throwNotifications=true;});await paint(page);
+  await page.getByRole('button',{name:/Ciblage/}).click();await page.waitForFunction(()=>window.__shipQa.externalCalls===1);
+  await page.evaluate(()=>window.__shipQa.resolve(91));await page.waitForSelector('[aria-label="Épreuve externe"]',{state:'detached'});
+  assert.equal((await disk(page)).training.targeting.attempts,1);assert.equal(await writes(page),1);
+  assert.match((await page.evaluate(()=>window.__shipQa.notifications)).at(-1),/sauvegardé/);
+ });
+ await scenario('played score survives a throwing warning observer and explicit save retry',async page=>{
+  await open(page);await page.evaluate(()=>{window.__shipQa.fault('drop');window.__shipQa.throwNotifications=true;});await finish(page);
+  assert.equal((await disk(page)).training.targeting.attempts,0);
+  const retry=page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true});await retry.waitFor();
+  const before=await writes(page);await page.evaluate(()=>window.__shipQa.fault('none'));await retry.click();
+  await page.waitForSelector('.training-drill-panel',{state:'detached'});assert.equal((await disk(page)).training.targeting.attempts,1);assert.equal(await writes(page),before+1);
+ });
+ await scenario('a disconnected controller in an earlier slot cannot hide the live controller',async page=>{
+  await page.locator('[data-ship-room]').focus();await page.evaluate(()=>{
+   const dead={...window.__shipPad,connected:false,index:0},live={...window.__shipPad,index:3,id:'Live QA'};
+   window.__liveShipPad=live;Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>[dead,null,null,live]});
+  });await paint(page);await page.evaluate(()=>{window.__liveShipPad.buttons[1].pressed=true;});await paint(page);
+  assert.equal(await page.locator('[data-ship-room]').getAttribute('data-ship-room'),'bridge-map');assert.equal(await writes(page),0);
+ });
+ await scenario('Back wins over simultaneous room navigation and activation in the actual hub',async page=>{
+  await page.locator('[data-ship-room]').focus();await paint(page);
+  await page.evaluate(()=>{for(const i of [0,1,15])window.__shipPad.buttons[i].pressed=true;});await paint(page);
+  assert.equal(await page.locator('[data-ship-room]').getAttribute('data-ship-room'),'bridge-map');assert.equal(await page.locator('.training-drill-panel').count(),0);
+  assert.equal(await writes(page),0);await page.waitForTimeout(150);assert.equal(await page.locator('.training-drill-panel').count(),0);
+ });
+ await scenario('nonfinite axes and a held replacement controller cannot trigger a room or drill',async page=>{
+  await page.locator('[data-ship-room]').focus();await paint(page);
+  await page.evaluate(()=>{window.__shipPad.axes=[Infinity,-Infinity];});await paint(page);
+  assert.equal(await page.locator('[data-ship-room]').getAttribute('data-ship-room'),'training');
+  await page.evaluate(()=>{window.__shipPad.axes=[0,0];window.__shipPad.id='Replacement QA';window.__shipPad.index=4;window.__shipPad.buttons[0].pressed=true;});await paint(page);
+  assert.equal(await page.locator('.training-drill-panel').count(),0);
+  await page.evaluate(()=>{window.__shipPad.buttons[0].pressed=false;});await paint(page);
+  await page.evaluate(()=>{window.__shipPad.buttons[0].pressed=true;});await page.waitForSelector('.training-drill-panel');assert.equal(await writes(page),0);
+ });
  const report={scope:'Actual ShipHub and TrainingDrill, native localStorage and synthetic profile, substituted art; not full-game or cross-tab training qualification',browser:browser.version(),results,errors};await mkdir(path.join(root,'outputs/qa-audit-v94'),{recursive:true});await writeFile(path.join(root,'outputs/qa-audit-v94/ship-training-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(results.filter(v=>v.status!=='PASS').length,0);assert.deepEqual(errors,[]);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

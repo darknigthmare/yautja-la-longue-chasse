@@ -44,3 +44,40 @@ test('throwing controlled receiver is never automatically retried',async()=>{let
 test('reentrant success notification cannot start a second score request',async()=>{const f=fixture();f.update({onConfirmed:()=>{void f.current.requestTraining('mobility');}});await f.start();f.current.completeAutonomousTraining(80);f.flush();assert.equal(f.current.trainingSession,null);assert.equal(f.writes.length,1);});
 for(const score of [undefined,NaN,101,-1,1.5])test(`invalid external result ${score} is not recorded`,async()=>{const f=fixture({onTrainingRequested:()=>score});await f.start();assert.equal(f.writes.length,0);assert.equal(f.current.trainingSession,null);});
 test('disabled page or overlay cannot start a drill',async()=>{const f=fixture();f.root.blocked=true;await f.start();f.root.blocked=false;f.document.focused=false;await f.start();assert.equal(f.current.trainingSession,null);assert.equal(f.writes.length,0);});
+
+test('a presentation error at opening cannot strand the real external request',async()=>{
+ let calls=0;const f=fixture({onTrainingRequested:()=>{calls++;return 82;},notify:()=>{throw Error('HUD unavailable');}});
+ await f.start();assert.equal(calls,1);assert.equal(f.confirmed.length,1);assert.equal(f.writes.length,1);assert.equal(f.current.trainingSession,null);
+});
+test('cancelling from the opening notification must not invoke an abandoned provider',async()=>{
+ let calls=0;const f=fixture({onTrainingRequested:()=>{calls++;return 99;}});
+ f.update({notify:()=>{f.current.cancelAutonomousTraining();}});await f.start();
+ assert.equal(calls,0);assert.equal(f.writes.length,0);assert.equal(f.current.trainingSession,null);
+});
+test('unmounting from the opening notification must not invoke the provider',async()=>{
+ let calls=0;const f=fixture({onTrainingRequested:()=>{calls++;return 99;}});
+ f.update({notify:()=>f.unmount()});await f.current.requestTraining('targeting');
+ assert.equal(calls,0);assert.equal(f.writes.length,0);
+});
+test('a throwing success notification cannot turn a confirmed score into failure',async()=>{
+ const f=fixture();await f.start();f.update({notify:()=>{throw Error('HUD unavailable');}});
+ assert.doesNotThrow(()=>f.current.completeAutonomousTraining(80));f.flush();
+ assert.equal(f.confirmed.length,1);assert.equal(f.writes.length,1);assert.equal(f.current.trainingSession,null);assert.equal(f.current.hasPendingResult(),false);
+});
+test('a throwing save-warning observer keeps a retryable receipt without escaping',async()=>{
+ const f=fixture();await f.start();f.fault.drop=true;f.update({notify:()=>{throw Error('HUD unavailable');}});
+ assert.doesNotThrow(()=>f.current.completeAutonomousTraining(80));f.flush();assert.ok(f.current.hasPendingResult());assert.ok(f.current.canRetryTraining);
+ f.fault.drop=false;assert.doesNotThrow(()=>f.current.retryTrainingSave());f.flush();assert.equal(f.confirmed.length,1);
+});
+test('a throwing cancellation observer cannot wedge the next drill',async()=>{
+ const f=fixture();await f.start();f.update({notify:()=>{throw Error('HUD unavailable');}});
+ assert.doesNotThrow(()=>f.current.cancelAutonomousTraining());f.flush();await f.start('mobility');assert.equal(f.current.trainingSession.disciplineId,'mobility');
+});
+test('a throwing rejection observer does not create an unhandled provider rejection',async()=>{
+ const d=deferred(),f=fixture({onTrainingRequested:()=>d.promise});const request=f.current.requestTraining('targeting');f.flush();
+ f.update({notify:()=>{throw Error('HUD unavailable');}});d.reject(Error('provider unavailable'));await assert.doesNotReject(request);f.flush();assert.equal(f.current.trainingSession,null);assert.equal(f.writes.length,0);
+});
+test('a controlled result stays transmitted when only its success notification throws',async()=>{
+ let calls=0;const f=fixture({controlled:true,onDelegated:()=>{calls++;}});await f.start();f.update({notify:()=>{throw Error('HUD unavailable');}});
+ f.current.completeAutonomousTraining(80);f.flush();assert.equal(calls,1);assert.equal(f.current.hasPendingResult(),false);assert.equal(f.current.saveIssue,null);assert.equal(f.current.trainingSession,null);
+});

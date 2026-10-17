@@ -268,7 +268,7 @@ export default function ShipHub({
   const rootRef = useRef<HTMLElement | null>(null);
   const externalTrainingRef = useRef<HTMLDivElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
+  const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false, identity: null as string | null });
 
   const progression =
     controlledProgression ?? localProgression;
@@ -816,69 +816,78 @@ export default function ShipHub({
       shipFlightActive ||
       typeof navigator === "undefined"
     ) {
-      gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
+      gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false, identity: null as string | null };
       return;
     }
     let animationFrame = 0;
-
+    let active = true;
+    const resetPad = () => {
+      gamepadStateRef.current = { previous: Array(6).fill(false), ready: false, identity: null };
+    };
+    // A disconnect event can occur between two samples with the same slot/id.
+    window.addEventListener("gamepaddisconnected", resetPad);
     const poll = () => {
+      if (!active) return;
       const root = rootRef.current;
-      const focused =
-        root !== null &&
-        !document.hidden && document.hasFocus() &&
-        document.activeElement !== null &&
-        root.contains(document.activeElement);
+      const focused = root !== null && !document.hidden && document.hasFocus() &&
+        document.activeElement !== null && root.contains(document.activeElement);
       let gamepad: Gamepad | null | undefined = null;
       if (focused) {
-        try { gamepad = navigator.getGamepads?.().find(Boolean); }
-        catch { /* Treat policy denial like disconnection, retaining keyboard navigation. */ }
+        try {
+          gamepad = Array.from(navigator.getGamepads?.() ?? []).find(pad => pad && pad.connected !== false);
+        } catch { /* Policy denial is an absent controller, not a dead keyboard loop. */ }
       }
       if (gamepad) {
+        const axisX = Number.isFinite(gamepad.axes[0]) ? gamepad.axes[0] : 0;
+        const axisY = Number.isFinite(gamepad.axes[1]) ? gamepad.axes[1] : 0;
         const current = [
-          Boolean(gamepad.buttons[14]?.pressed) ||
-            (gamepad.axes[0] ?? 0) < -0.65,
-          Boolean(gamepad.buttons[15]?.pressed) ||
-            (gamepad.axes[0] ?? 0) > 0.65,
-          Boolean(gamepad.buttons[12]?.pressed) ||
-            (gamepad.axes[1] ?? 0) < -0.65,
-          Boolean(gamepad.buttons[13]?.pressed) ||
-            (gamepad.axes[1] ?? 0) > 0.65,
+          Boolean(gamepad.buttons[14]?.pressed) || axisX < -0.65,
+          Boolean(gamepad.buttons[15]?.pressed) || axisX > 0.65,
+          Boolean(gamepad.buttons[12]?.pressed) || axisY < -0.65,
+          Boolean(gamepad.buttons[13]?.pressed) || axisY > 0.65,
           Boolean(gamepad.buttons[0]?.pressed),
           Boolean(gamepad.buttons[1]?.pressed),
         ];
+        const identity = `${gamepad.index ?? -1}:${gamepad.id ?? ""}`;
         const state = gamepadStateRef.current;
-        // Render-driven effect restarts must not turn a held button into a new
-        // press. Regaining focus also requires the pad to return to neutral.
+        if (state.identity !== identity) {
+          state.identity = identity;
+          state.ready = false;
+          state.previous = Array(6).fill(false);
+        }
         if (!state.ready) {
-          state.ready = current.every((pressed) => !pressed);
+          state.ready = current.every(pressed => !pressed);
         } else {
           const previous = state.previous;
-          if (current[0] && !previous[0]) moveRoom(-1);
-          if (current[1] && !previous[1]) moveRoom(1);
-          if (current[2] && !previous[2])
-            focusAction(safeActionIndex - 1);
-          if (current[3] && !previous[3])
-            focusAction(safeActionIndex + 1);
-          if (current[4] && !previous[4])
-            invokeAction(safeActionIndex);
+          // One press cannot leave a room and also activate its previous action.
+          // Back wins, then navigation, then confirm; opposing axes are neutral.
           if (current[5] && !previous[5]) {
-            if (embedded && onOpenDeck) {
-              onOpenDeck();
-            } else if (activeRoomId === "bridge-map") {
-              root?.focus({ preventScroll: true });
-            } else {
-              selectRoom("bridge-map");
-            }
+            state.ready = false;
+            if (embedded && onOpenDeck) onOpenDeck();
+            else if (activeRoomId === "bridge-map") root?.focus({ preventScroll: true });
+            else selectRoom("bridge-map");
+          } else if (current[0] !== current[1] &&
+            ((current[0] && !previous[0]) || (current[1] && !previous[1]))) {
+            state.ready = false;
+            moveRoom(current[0] ? -1 : 1);
+          } else if (current[2] !== current[3] &&
+            ((current[2] && !previous[2]) || (current[3] && !previous[3]))) {
+            focusAction(safeActionIndex + (current[2] ? -1 : 1));
+          } else if (!current.slice(0, 4).some(Boolean) && current[4] && !previous[4]) {
+            state.ready = false;
+            invokeAction(safeActionIndex);
           }
         }
         state.previous = current;
-      } else {
-        gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
-      }
-      animationFrame = window.requestAnimationFrame(poll);
+      } else resetPad();
+      if (active) animationFrame = window.requestAnimationFrame(poll);
     };
     animationFrame = window.requestAnimationFrame(poll);
-    return () => window.cancelAnimationFrame(animationFrame);
+    return () => {
+      active = false;
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("gamepaddisconnected", resetPad);
+    };
   }, [
     activeRoomId,
     embedded,
@@ -1058,7 +1067,7 @@ export default function ShipHub({
               <strong>ACTIONS DE SALLE</strong>
             </p>
             <div className="hub-nav" aria-label="Actions disponibles" inert={shipFlightActive}>
-              {actions.map((action, index) => (
+              {Array.from(actions, (action, index) => (
                 <button
                   key={action.id}
                   ref={(node) => {

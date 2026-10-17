@@ -31,12 +31,18 @@ export function useShipTrainingV94(options: Options) {
   useEffect(() => { live.current = options; });
   useEffect(() => {
     mounted.current = true;
-    return () => { mounted.current = false; session.current = null; nextId.current++; };
+    return () => { mounted.current = false; session.current = null; };
+  }, []);
+  // Notifications are presentation only. Their errors must never cancel a
+  // provider, erase a receipt or change the acknowledgement of a saved score.
+  const notify = useCallback((message: string) => {
+    try { live.current.notify(message); } catch { /* Keep authoritative session state and receipt intact. */ }
   }, []);
   const available = useCallback(() => {
     const o = live.current;
-    return mounted.current && !o.suspended && pageActivitySnapshotV94() && !!o.rootRef.current &&
-      !o.rootRef.current.closest('[inert],[hidden],[aria-hidden="true"],[aria-disabled="true"]');
+    const root = o.rootRef.current;
+    return mounted.current && !o.suspended && pageActivitySnapshotV94() && !!root &&
+      !root.closest('[inert],[hidden],[aria-hidden="true"],[aria-disabled="true"]');
   }, []);
   const hasPendingResult = useCallback(() => receipt.current !== null || controlledUncertain.current, []);
   const retryTrainingSave = useCallback(() => {
@@ -44,21 +50,21 @@ export function useShipTrainingV94(options: Options) {
     if (!mounted.current || !pending) return;
     const result = pending.attempt(o.save, o.progression, available());
     if (result.status === "ignored") return;
-    if (result.status === "pending") { setSaveIssue(result.message); o.notify(result.message); return; }
+    if (result.status === "pending") { setSaveIssue(result.message); notify(result.message); return; }
     // Consume the receipt BEFORE callbacks; a reentrant receiver cannot repeat it.
     finishing.current = true;
     receipt.current = null; session.current = null; setTrainingSession(null); setSaveIssue(null); setCanRetryTraining(false);
     try {
       o.onConfirmed(result.state);
-      o.notify(`${TRAINING_LABELS[pending.disciplineId]} : résultat ${pending.score}/100 sauvegardé.`);
-    } catch { o.notify("Score sauvegardé, mais l’affichage du vaisseau n’a pas pu être actualisé. Rouvrez sa console."); }
+      notify(`${TRAINING_LABELS[pending.disciplineId]} : résultat ${pending.score}/100 sauvegardé.`);
+    } catch { notify("Score sauvegardé, mais l’affichage du vaisseau n’a pas pu être actualisé. Rouvrez sa console."); }
     finally { finishing.current = false; }
-  }, [available]);
+  }, [available, notify]);
   const acceptScore = useCallback((id: number, score: number) => {
     const o = live.current, active = session.current;
     if (!mounted.current || !active || active.id !== id || active.owner !== o.save.createdAt || claimed.current) return;
     if (!Number.isInteger(score) || score < 0 || score > 100) {
-      session.current = null; setTrainingSession(null); o.notify("Résultat d’entraînement invalide : aucun score consigné."); return;
+      session.current = null; setTrainingSession(null); notify("Résultat d’entraînement invalide : aucun score consigné."); return;
     }
     claimed.current = true;
     if (o.controlled) {
@@ -67,7 +73,7 @@ export function useShipTrainingV94(options: Options) {
       try {
         if (!o.onDelegated) throw new Error("No controlled receiver");
         o.onDelegated(recordTrainingResult(o.progression, active.disciplineId, score));
-        o.notify(`${TRAINING_LABELS[active.disciplineId]} : résultat ${score}/100 transmis au gestionnaire externe, sauvegarde non vérifiée.`);
+        notify(`${TRAINING_LABELS[active.disciplineId]} : résultat ${score}/100 transmis au gestionnaire externe, sauvegarde non vérifiée.`);
         session.current = null; setTrainingSession(null);
       } catch {
         controlledUncertain.current = true;
@@ -79,7 +85,7 @@ export function useShipTrainingV94(options: Options) {
     if (!receipt.current) { setSaveIssue("Résultat non consigné : progression incompatible. Aucun déblocage accordé."); return; }
     setCanRetryTraining(true);
     retryTrainingSave();
-  }, [retryTrainingSave]);
+  }, [notify, retryTrainingSave]);
   const requestTraining = useCallback(async (disciplineId: TrainingDisciplineId) => {
     const o = live.current;
     if (!available() || finishing.current || session.current || hasPendingResult() || !Object.hasOwn(TRAINING_LABELS, disciplineId) ||
@@ -87,28 +93,31 @@ export function useShipTrainingV94(options: Options) {
     const active: TrainingSessionV94 = { id: ++nextId.current, owner: o.save.createdAt, disciplineId,
       seed: o.progression.training[disciplineId].attempts, external: !!o.onTrainingRequested };
     session.current = active; claimed.current = false; setSaveIssue(null); setTrainingSession(active);
-    o.notify(`${TRAINING_LABELS[disciplineId]} : ${active.external ? "épreuve externe en attente" : "épreuve autonome prête"}.`);
+    notify(`${TRAINING_LABELS[disciplineId]} : ${active.external ? "épreuve externe en attente" : "épreuve autonome prête"}.`);
     if (!o.onTrainingRequested) return;
+    // An observer can synchronously cancel/unmount while presenting the start.
+    // Do not start an external operation once that generation lost ownership.
+    if (!mounted.current || session.current !== active || live.current.save.createdAt !== active.owner) return;
     try {
       const score = await o.onTrainingRequested(disciplineId);
       if (!mounted.current || session.current?.id !== active.id || live.current.save.createdAt !== active.owner) return;
       if (typeof score === "number") acceptScore(active.id, score);
-      else { session.current = null; setTrainingSession(null); live.current.notify("Épreuve externe terminée sans score ; aucune tentative consignée."); }
+      else { session.current = null; setTrainingSession(null); notify("Épreuve externe terminée sans score ; aucune tentative consignée."); }
     } catch {
       if (!mounted.current || session.current?.id !== active.id || live.current.save.createdAt !== active.owner) return;
-      session.current = null; setTrainingSession(null); live.current.notify("Épreuve externe indisponible ; aucune tentative consignée.");
+      session.current = null; setTrainingSession(null); notify("Épreuve externe indisponible ; aucune tentative consignée.");
     }
-  }, [acceptScore, available, hasPendingResult]);
+  }, [acceptScore, available, hasPendingResult, notify]);
   const completeAutonomousTraining = useCallback((score: number) => {
     if (trainingSession && !trainingSession.external) acceptScore(trainingSession.id, score);
   }, [acceptScore, trainingSession]);
   const cancelAutonomousTraining = useCallback(() => {
     if (!mounted.current || !session.current) return;
     session.current = null; setTrainingSession(null);
-    live.current.notify(hasPendingResult()
+    notify(hasPendingResult()
       ? "Score toujours en mémoire. Réessayez sa sauvegarde avant de quitter le vaisseau."
       : "Épreuve abandonnée ; aucun score consigné.");
-  }, [hasPendingResult]);
+  }, [hasPendingResult, notify]);
   return { trainingSession, saveIssue, canRetryTraining, requestTraining, completeAutonomousTraining,
     cancelAutonomousTraining, retryTrainingSave, hasPendingResult };
 }

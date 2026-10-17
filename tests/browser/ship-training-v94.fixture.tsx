@@ -10,7 +10,7 @@ const originalSet=Storage.prototype.setItem,originalGet=Storage.prototype.getIte
 let fault='none',failRead=false;
 const api={fault(value:string){fault=value;},writes:[] as string[],notifications:[] as string[],adopted:[] as ShipProgressionState[],
   pause:(_v:boolean)=>{},show:(_v:boolean)=>{},padEnabled:(_v:boolean)=>{},controlled:(_v:boolean)=>{},external:(_v:boolean)=>{},
-  resolve:(_v:number)=>{},reject:()=>{},externalCalls:0,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY};
+  resolve:(_v:number)=>{},reject:()=>{},externalCalls:0,throwNotifications:false,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY};
 Storage.prototype.setItem=function(k,v){if(k===SHIP_PROGRESSION_STORAGE_KEY){api.writes.push(v);if(fault==='drop')return;if(fault==='quota')throw new DOMException('Fixture quota','QuotaExceededError');}
  originalSet.call(this,k,v);if(k===SHIP_PROGRESSION_STORAGE_KEY&&fault==='readback'){fault='none';failRead=true;}};
 Storage.prototype.getItem=function(k){if(k===SHIP_PROGRESSION_STORAGE_KEY&&failRead){failRead=false;throw new DOMException('Fixture readback','SecurityError');}return originalGet.call(this,k);};
@@ -26,7 +26,7 @@ function Fixture(){
  return <main><output data-rerenders>{epoch}</output>{shown&&<ShipHub save={save} initialRoomId="training" suspended={paused}
    gamepadEnabled={enabled} dialogueSource={undefined} progression={controlled?progression:undefined}
    controlBindings={{...DEFAULT_CONTROL_BINDINGS,'training.left':['KeyF'],'training.right':['KeyG'],'training.primary':['KeyH'],'training.secondary':['KeyI']}}
-   onProgressionChange={value=>{api.adopted.push(value);if(controlled)setProgression(value);}} onNotify={message=>api.notifications.push(message)}
+   onProgressionChange={value=>{api.adopted.push(value);if(controlled)setProgression(value);}} onNotify={message=>{api.notifications.push(message);if(api.throwNotifications)throw Error('Fixture HUD observer unavailable');}}
    onOpenMap={()=>{}} onOpenArmory={()=>{}} onOpenTrophies={()=>{}} onOpenArchives={()=>{}} onOpenCustomization={()=>{}}
    onTrainingRequested={external?()=>{api.externalCalls++;return new Promise<number>((resolve,reject)=>{api.resolve=resolve;api.reject=()=>reject(Error('late'));});}:undefined}/>}</main>;
 }
