@@ -4,7 +4,7 @@ import {build} from 'esbuild';
 import {webcrypto} from 'node:crypto';
 const b=await build({stdin:{contents:`export * from './app/game/useShipTrainingV94'; export * from './app/game/systems/progression'; export * from './app/game/save';`,resolveDir:process.cwd()},bundle:true,write:false,format:'cjs',platform:'node',external:['react'],logLevel:'silent'});
 const code=b.outputFiles[0].text;
-export function fixture(extra={}){
+export function fixture(extra={},timers={setTimeout,clearTimeout}){
  const slots=[],effects=[],pending=[];let cursor=0,dirty=false,out;
  const eq=(a,b)=>a&&b&&a.length===b.length&&a.every((x,i)=>Object.is(x,b[i]));
  const react={
@@ -16,7 +16,7 @@ export function fixture(extra={}){
  const data=new Map(),writes=[],confirmed=[],messages=[],fault={drop:false};
  const storage={getItem:k=>data.get(k)??null,setItem(k,v){writes.push([k,v]);if(!fault.drop)data.set(k,v);},removeItem:k=>data.delete(k)};
  const document={visibilityState:'visible',focused:true,hasFocus(){return this.focused;}},root={blocked:false,closest(){return this.blocked?this:null;}};
- const module={exports:{}};runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage,confirm:()=>true},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout,clearTimeout});
+ const module={exports:{}};runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage,confirm:()=>true},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout:timers.setTimeout,clearTimeout:timers.clearTimeout});
  const a=module.exports,save=a.defaultSave('2026-10-16T00:00:00.000Z'),base=a.createDefaultShipProgression(save,save.updatedAt);
  data.set(a.SAVE_STORAGE_KEY,JSON.stringify(save));data.set(a.SHIP_PROGRESSION_STORAGE_KEY,JSON.stringify(base));
  let options={save,progression:base,controlled:false,suspended:false,rootRef:{current:root},onConfirmed:s=>{confirmed.push(s);options={...options,progression:s};dirty=true;},notify:m=>messages.push(m),...extra};
@@ -28,3 +28,15 @@ export function fixture(extra={}){
  flush();return{a,data,writes,confirmed,messages,fault,document,root,flush,update,unmount,start,get current(){return out;},get options(){return options;},replay(){for(const e of effects)if(e){e.cleanup?.();e.cleanup=e.fn();}flush();}};
 }
 export const deferred=()=>{let resolve,reject;return{promise:new Promise((r,j)=>{resolve=r;reject=j;}),resolve:v=>resolve(v),reject:e=>reject(e)};};
+
+/** Wall-clock scheduler for acknowledgement waits only; no gameplay clock is altered. */
+export function acknowledgementClock() {
+ let now=0,nextId=0;const tasks=new Map(),scheduled=[];
+ return {
+  setTimeout(callback,delay=0){const id=++nextId;tasks.set(id,{callback,at:now+delay});scheduled.push(callback);return id;},
+  clearTimeout(id){tasks.delete(id);},
+  advance(ms){const end=now+ms;for(;;){const due=[...tasks].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!due)break;tasks.delete(due[0]);now=due[1].at;due[1].callback();}now=end;},
+  get pending(){return tasks.size;},
+  get scheduled(){return scheduled;},
+ };
+}

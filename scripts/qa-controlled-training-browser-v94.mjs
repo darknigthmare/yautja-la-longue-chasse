@@ -74,6 +74,28 @@ try{
   assert.equal(await page.evaluate(()=>window.__ackQa.notifications.length),count);
   assert.equal(await writes(page),1,'the already-requested host write may finish, but there is no fallback second write');
  });
+ for(const mode of ['confirm','reject'])await scenario(`silent host warns after its deadline and safely handles late ${mode}`,async page=>{
+  await open(page);await finish(page);
+  await page.getByText('Le gestionnaire externe ne répond pas.',{exact:false}).waitFor({timeout:22000});
+  assert.equal(await writes(page),0);assert.equal(await page.evaluate(()=>window.__ackQa.calls),1);
+  assert.equal(await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).count(),0);
+  await page.getByRole('button',{name:'Fermer l’épreuve',exact:true}).click();await paint(page);
+  assert.match((await page.evaluate(()=>window.__ackQa.notifications)).at(-1),/gestionnaire externe/);
+  await page.getByRole('button',{name:/Ciblage/}).click();await paint(page);
+  assert.equal(await page.locator('.training-drill-panel').count(),0);
+  assert.equal(await page.evaluate(()=>window.__ackQa.calls),1);
+  await page.evaluate(mode=>window.__ackQa.reply(mode),mode);await paint(page);
+  if(mode==='confirm'){
+   assert.equal(await writes(page),1);assert.equal((await disk(page)).training.targeting.attempts,1);
+   assert.match((await page.evaluate(()=>window.__ackQa.notifications)).at(-1),/confirmée par le gestionnaire externe/);
+   assert.equal(await page.getByText('Le gestionnaire externe ne répond pas.',{exact:false}).count(),0);
+  }else{
+   assert.equal(await writes(page),0);
+   await page.getByText('Transmission externe non confirmée.',{exact:false}).waitFor();
+   await page.getByRole('button',{name:/Ciblage/}).click();await paint(page);
+   assert.equal(await page.locator('.training-drill-panel').count(),0);assert.equal(await page.evaluate(()=>window.__ackQa.calls),1);
+  }
+ });
  const report={scope:'Actual controlled ShipHub and TrainingDrill, real gestures and local writer used by a fixture host; synthetic profile/art, not a remote-account or full-game qualification',results,errors};
  await mkdir(path.join(root,'outputs/qa-v94'),{recursive:true});await writeFile(path.join(root,'outputs/qa-v94/controlled-training.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
  assert.equal(results.filter(r=>r.status==='FAIL').length,0);assert.deepEqual(errors,[]);

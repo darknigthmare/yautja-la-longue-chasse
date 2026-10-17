@@ -6,9 +6,13 @@ import { createShipTrainingReceiptV94, restoreShipTrainingReceiptV94, type ShipT
 import { recordTrainingResult, TRAINING_LABELS, type ShipProgressionState, type TrainingDisciplineId } from "./systems/progression";
 import { createShipTrainingRecoveryPortV94, createShipTrainingRecoveryQueueV94, type ShipTrainingRecoveryPortV94 } from "./systems/shipTrainingRecoveryV94";
 import type { SaveGame } from "./types";
-import { classifyShipTrainingAcknowledgementV94, type ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
+import { classifyShipTrainingAcknowledgementV94, observeShipTrainingAcknowledgementV94, type ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
 
 interface TrainingSessionV94 { id: number; owner: string; disciplineId: TrainingDisciplineId; seed: number; external: boolean }
+interface TrainingDelegationV94 {
+  owner: string; expected: ShipProgressionState; discipline: TrainingDisciplineId; score: number;
+  stopWaiting: (() => void) | null;
+}
 interface Options {
   save: SaveGame;
   progression: ShipProgressionState;
@@ -39,12 +43,12 @@ export function useShipTrainingV94(options: Options) {
   const live = useRef(options), mounted = useRef(false), nextId = useRef(0);
   const session = useRef<TrainingSessionV94 | null>(null);
   const receipt = useRef<ShipTrainingReceiptV94 | null>(null);
-  const delegation = useRef<{ owner: string; expected: ShipProgressionState; discipline: TrainingDisciplineId; score: number } | null>(null);
+  const delegation = useRef<TrainingDelegationV94 | null>(null);
   const claimed = useRef(false), controlledUncertain = useRef(false), finishing = useRef(false);
   useEffect(() => { live.current = options; });
   useEffect(() => {
     mounted.current = true;
-    return () => { mounted.current = false; session.current = null; delegation.current = null; };
+    return () => { mounted.current = false; session.current = null; delegation.current?.stopWaiting?.(); delegation.current = null; };
   }, []);
   // Notifications are presentation only. Their errors must never cancel a
   // provider, erase a receipt or change the acknowledgement of a saved score.
@@ -65,6 +69,7 @@ export function useShipTrainingV94(options: Options) {
     readableRecovery.current = null;
     recoveryBlocked.current = false;
     // Changing owner retires only this UI generation, not queued backup IO.
+    delegation.current?.stopWaiting?.();
     session.current = null; receipt.current = null; delegation.current = null; controlledUncertain.current = false;
     const queue = port ? createShipTrainingRecoveryQueueV94(owner, port) : null;
     journal.current = queue;
@@ -151,8 +156,8 @@ export function useShipTrainingV94(options: Options) {
     claimed.current = true;
     if (o.controlled) {
       const expected = recordTrainingResult(o.progression, active.disciplineId, score);
-      const token = { owner: active.owner, expected: JSON.parse(JSON.stringify(expected)) as ShipProgressionState,
-        discipline: active.disciplineId, score };
+      const token: TrainingDelegationV94 = { owner: active.owner, expected: JSON.parse(JSON.stringify(expected)) as ShipProgressionState,
+        discipline: active.disciplineId, score, stopWaiting: null };
       delegation.current = token;
       controlledUncertain.current = true;
       setCanRetryTraining(false);
@@ -160,6 +165,7 @@ export function useShipTrainingV94(options: Options) {
       const settle = (response: unknown, rejected = false) => {
         const current = live.current;
         if (!mounted.current || delegation.current !== token || !current.controlled || current.save.createdAt !== token.owner) return;
+        token.stopWaiting?.(); token.stopWaiting = null;
         delegation.current = null;
         const status = rejected ? "uncertain" : classifyShipTrainingAcknowledgementV94(response, token.expected, current.save);
         if (status === "uncertain") {
@@ -181,7 +187,17 @@ export function useShipTrainingV94(options: Options) {
         if (response && typeof (response as Promise<unknown>).then === "function") {
           // Attach both handlers immediately, even if the receiver closed this
           // scene synchronously. Late rejections must never escape the owner.
-          void Promise.resolve(response).then(value => settle(value), () => settle(undefined, true));
+          token.stopWaiting = observeShipTrainingAcknowledgementV94(response as Promise<unknown>, {
+            onSettled: settle,
+            onExpired: () => {
+              if (!mounted.current || delegation.current !== token || !live.current.controlled || live.current.save.createdAt !== token.owner) return;
+              setSaveIssue("Le gestionnaire externe ne répond pas. Le résultat reste non confirmé ; fermer l’épreuve n’annule pas une écriture éventuelle. Aucun renvoi automatique.");
+            },
+          });
+          // The receiver may synchronously retire this owner before returning.
+          if (!mounted.current || delegation.current !== token || !live.current.controlled || live.current.save.createdAt !== token.owner) {
+            token.stopWaiting(); token.stopWaiting = null;
+          }
         } else settle(response);
       } catch { settle(undefined, true); }
       return;
@@ -219,9 +235,11 @@ export function useShipTrainingV94(options: Options) {
   const cancelAutonomousTraining = useCallback(() => {
     if (!mounted.current || !session.current) return;
     session.current = null; setTrainingSession(null);
-    notify(hasPendingResult()
-      ? "Score toujours en mémoire. Réessayez sa sauvegarde avant de quitter le vaisseau."
-      : "Épreuve abandonnée ; aucun score consigné.");
+    notify(controlledUncertain.current
+      ? "Résultat transmis au gestionnaire externe, confirmation encore incertaine. Fermer l’épreuve n’annule pas son écriture ; aucun nouvel envoi automatique."
+      : hasPendingResult()
+        ? "Score toujours en mémoire. Réessayez sa sauvegarde avant de quitter le vaisseau."
+        : "Épreuve abandonnée ; aucun score consigné.");
   }, [hasPendingResult, notify]);
   const exportTrainingRecovery = useCallback(() => {
     if (!mounted.current || live.current.suspended || !readableRecovery.current) return;

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { fixture, deferred } from './helpers/ship-training-ack-harness-v94.mjs';
+import { fixture, deferred, acknowledgementClock } from './helpers/ship-training-ack-harness-v94.mjs';
 const drain = async f => { for (let i=0;i<5;i++) { await Promise.resolve(); f.flush(); } };
 function setup() {
   const d=deferred();let candidate,calls=0;
@@ -63,4 +63,87 @@ test('legacy synchronous callbacks still make no durable claim',async()=>{
 test('synchronous matching host acknowledgement is supported',async()=>{
   const f=fixture({controlled:true,onDelegated:state=>({persisted:true,state,failure:null})});await f.start();f.current.completeAutonomousTraining(80);f.flush();
   assert.equal(f.current.trainingSession,null);assert.match(f.messages.at(-1),/confirmée par le gestionnaire externe/);assert.equal(f.writes.length,0);
+});
+
+
+// The deadline qualifies an unknown result; it never authorizes replay or
+// pretends to cancel a write owned by another component.
+function waiting() {
+ const clock=acknowledgementClock(), d=deferred();let candidate,calls=0;
+ const f=fixture({controlled:true,onDelegated:s=>{candidate=s;calls++;return d.promise;}},clock);
+ return {clock,d,f,get candidate(){return candidate;},get calls(){return calls;}};
+}
+async function submitWaiting(x) {await x.f.start();x.f.current.completeAutonomousTraining(83);x.f.flush();}
+const confirmation=x=>({persisted:true,state:x.candidate,failure:null});
+
+test('a silent host produces a bounded warning, never a second submission or local save',async()=>{
+ const x=waiting();await submitWaiting(x);
+ assert.equal(x.clock.pending,1);
+ x.clock.advance(14999);x.f.flush();assert.match(x.f.current.saveIssue,/en cours/);
+ x.clock.advance(1);x.f.flush();assert.match(x.f.current.saveIssue,/ne répond pas/);
+ assert.equal(x.clock.pending,0);assert.ok(x.f.current.hasPendingResult());assert.equal(x.f.current.canRetryTraining,false);
+ x.f.current.retryTrainingSave();x.f.current.completeAutonomousTraining(100);await x.f.start('mobility');
+ assert.equal(x.calls,1);assert.equal(x.f.writes.length,0);x.f.unmount();
+});
+test('a matching late acknowledgement after the warning closes exactly one operation',async()=>{
+ const x=waiting();await submitWaiting(x);x.clock.advance(15000);x.f.flush();
+ x.d.resolve(confirmation(x));await drain(x.f);assert.equal(x.f.current.hasPendingResult(),false);
+ assert.equal(x.f.current.trainingSession,null);assert.equal(x.f.current.saveIssue,null);assert.equal(x.calls,1);
+ assert.equal(x.f.messages.filter(m=>m.includes('confirmée par le gestionnaire externe')).length,1);
+ assert.equal(x.f.writes.length,0);x.f.unmount();
+});
+test('a late rejection after the warning remains uncertain without unhandled rejection or replay',async()=>{
+ const x=waiting();await submitWaiting(x);x.clock.advance(15000);x.f.flush();
+ x.d.reject(Error('May have committed'));await drain(x.f);
+ assert.match(x.f.current.saveIssue,/Transmission externe non confirmée/);
+ assert.equal(x.f.current.canRetryTraining,false);assert.ok(x.f.current.hasPendingResult());
+ assert.equal(x.clock.pending,0);assert.equal(x.f.writes.length,0);x.f.unmount();
+});
+test('closing a delegated result does not incorrectly instruct a local retry',async()=>{
+ const x=waiting();await submitWaiting(x);x.f.current.cancelAutonomousTraining();x.f.flush();
+ assert.equal(x.f.current.trainingSession,null);assert.match(x.f.messages.at(-1),/gestionnaire externe/);
+ assert.doesNotMatch(x.f.messages.at(-1),/Réessayez sa sauvegarde/);
+ x.clock.advance(15000);x.f.flush();assert.match(x.f.current.saveIssue,/ne répond pas/);
+ x.d.resolve(confirmation(x));await drain(x.f);assert.equal(x.f.current.hasPendingResult(),false);x.f.unmount();
+});
+test('early confirmation cancels its deadline and a captured expired callback is inert',async()=>{
+ const x=waiting();await submitWaiting(x);assert.equal(x.clock.pending,1);const old=x.clock.scheduled[0];
+ x.d.resolve(confirmation(x));await drain(x.f);assert.equal(x.clock.pending,0);
+ old();x.clock.advance(30000);x.f.flush();assert.equal(x.f.current.saveIssue,null);assert.equal(x.f.current.hasPendingResult(),false);x.f.unmount();
+});
+test('a rejected acknowledgement retires its timer without losing the uncertain result',async()=>{
+ const x=waiting();await submitWaiting(x);assert.equal(x.clock.pending,1);
+ x.d.resolve({persisted:false,state:x.candidate,failure:'write-failed'});await drain(x.f);
+ const issue=x.f.current.saveIssue;assert.equal(x.clock.pending,0);x.clock.advance(15000);x.f.flush();
+ assert.equal(x.f.current.saveIssue,issue);assert.ok(x.f.current.hasPendingResult());x.f.unmount();
+});
+for(const action of ['unmount','owner','controlled-mode'])test(`${action} cancels the old wait and all its late effects`,async()=>{
+ const x=waiting();await submitWaiting(x);assert.equal(x.clock.pending,1);const timer=x.clock.scheduled[0];
+ if(action==='unmount')x.f.unmount();
+ if(action==='controlled-mode')x.f.update({controlled:false});
+ if(action==='owner'){const save=x.f.a.defaultSave('2026-10-17T12:00:00.000Z');x.f.update({save,progression:x.f.a.createDefaultShipProgression(save,save.updatedAt)});}
+ await Promise.resolve();x.f.flush();assert.equal(x.clock.pending,0);
+ const messages=x.f.messages.length;timer();x.d.reject(Error('late'));await Promise.resolve();await Promise.resolve();
+ assert.equal(x.f.messages.length,messages);assert.equal(x.f.writes.length,0);x.f.unmount();
+});
+test('ordinary parent renders do not restart the acknowledgement deadline',async()=>{
+ const x=waiting();await submitWaiting(x);assert.equal(x.clock.pending,1);x.clock.advance(8000);
+ for(let i=0;i<12;i++)x.f.update({notify:m=>x.f.messages.push(m)});
+ x.clock.advance(7000);x.f.flush();assert.match(x.f.current.saveIssue,/ne répond pas/);
+ assert.equal(x.clock.scheduled.length,1);x.f.unmount();
+});
+test('suspending gameplay does not grant, retry or discard a timed-out host score',async()=>{
+ const x=waiting();await submitWaiting(x);x.f.update({suspended:true});x.clock.advance(15000);x.f.flush();
+ assert.match(x.f.current.saveIssue,/ne répond pas/);assert.ok(x.f.current.hasPendingResult());
+ assert.equal(x.f.writes.length,0);x.f.update({suspended:false});await x.f.start('mobility');assert.equal(x.calls,1);x.f.unmount();
+});
+test('a synchronous receiver needs no acknowledgement timer',async()=>{
+ const clock=acknowledgementClock();const f=fixture({controlled:true,onDelegated:state=>({persisted:true,state,failure:null})},clock);
+ await f.start();f.current.completeAutonomousTraining(83);f.flush();assert.equal(clock.pending,0);assert.equal(f.current.hasPendingResult(),false);f.unmount();
+});
+test('a receiver that unmounts synchronously cannot leave a live deadline behind',async()=>{
+ const x=waiting();x.f.update({onDelegated:()=>{x.f.unmount();return x.d.promise;}});
+ await submitWaiting(x);assert.equal(x.clock.pending,0);
+ const count=x.f.messages.length;x.d.reject(Error('late rejected host'));await Promise.resolve();await Promise.resolve();
+ assert.equal(x.f.messages.length,count);assert.equal(x.f.writes.length,0);
 });
