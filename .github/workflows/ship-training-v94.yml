@@ -51,6 +51,7 @@ jobs:
           tests/ship-training-lifecycle-v94.test.mjs
           tests/ship-training-recovery-v94.test.mjs
           tests/ship-training-ack-v94.test.mjs
+          tests/ship-service-commit-v94.test.mjs
       - name: Historical ship progression, ownership and training rules
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -66,9 +67,13 @@ jobs:
           app/game/useShipTrainingV94.ts app/game/systems/shipTrainingReceiptV94.ts
           app/game/systems/shipTrainingRecoveryV94.ts
           app/game/systems/shipTrainingAcknowledgementV94.ts
+          app/game/useShipServiceCommitV94.ts
       - name: Play native ship training and verify score storage in Chrome
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-ship-training-browser-v94.mjs
       - name: Play controlled drills with explicit asynchronous host acknowledgements
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-controlled-training-browser-v94.mjs
+      - name: Verify non-training service acknowledgements in the real ship panel
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-ship-services-browser-v94.mjs

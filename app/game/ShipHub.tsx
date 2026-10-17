@@ -14,6 +14,8 @@ import { SAVE_STORAGE_KEY } from "./save";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
 import { useShipTrainingV94 } from "./useShipTrainingV94";
+import { useShipServiceCommitV94, observeShipNotificationV94 } from "./useShipServiceCommitV94";
+import type { ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
 import { useMenuGamepad } from "./useMenuGamepad";
 import ShipRecoveredGalleryV85 from "./ShipRecoveredGalleryV85";
 import ShipOperationsPanelV85, { type ShipOperationPresentationV85 } from "./ShipOperationsPanelV85";
@@ -48,9 +50,7 @@ import {
   saveLoadoutPreset,
   selectShip,
   startMedbayTreatment,
-  synchronizeShipProgression,
   unlockAvailableShips,
-  writeShipProgressionWithStatus,
   type ShipLoadoutSlotId,
   type ShipProgressionState,
   type ShipRoomId,
@@ -155,7 +155,7 @@ export interface ShipHubProps {
   onTrainingActiveChange?: (active: boolean) => void;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
-  onProgressionChange?: (state: ShipProgressionState) => void;
+  onProgressionChange?: ShipTrainingReceiverV94;
   onSelectedShipChange?: (shipId: ShipId) => void;
   onRoomChange?: (roomId: ShipRoomId) => void;
   onOpenDeck?: () => void;
@@ -280,7 +280,7 @@ export default function ShipHub({
   const notify = useCallback(
     (message: string) => {
       setStatusMessage(message);
-      onNotify?.(message);
+      observeShipNotificationV94(() => onNotify?.(message));
     },
     [onNotify],
   );
@@ -291,8 +291,8 @@ export default function ShipHub({
     staleSidecarOwner !== save.createdAt;
   const publishConfirmedProgression = useCallback((state: ShipProgressionState) => {
     setLocalProgression(state);
-    callbacksRef.current.onProgressionChange?.(state);
-    callbacksRef.current.onSelectedShipChange?.(state.selectedShipId);
+    observeShipNotificationV94(() => callbacksRef.current.onProgressionChange?.(state));
+    observeShipNotificationV94(() => callbacksRef.current.onSelectedShipChange?.(state.selectedShipId));
   }, []);
   const training = useShipTrainingV94({ save, progression, controlled: controlledProgression !== undefined,
     suspended: suspended || !sidecarReady, rootRef, onConfirmed: publishConfirmedProgression,
@@ -315,29 +315,13 @@ export default function ShipHub({
     return () => onTrainingActiveChange?.(false);
   }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
 
-  const commitProgression = useCallback(
-    (candidate: ShipProgressionState) => {
-      if (suspended || !sidecarReady || hasPendingTraining()) {
-        notify("Progression non modifiée : terminez la vérification ou la sauvegarde du score en attente.");
-        return null;
-      }
-      const synchronized = synchronizeShipProgression(candidate, save);
-      if (controlledProgression !== undefined) {
-        onProgressionChange?.(synchronized);
-        onSelectedShipChange?.(synchronized.selectedShipId);
-        return synchronized;
-      }
-      const result = writeShipProgressionWithStatus(synchronized, save);
-      if (!result.persisted) {
-        notify("Sauvegarde du vaisseau non confirmée. La progression affichée reste inchangée ; réessayez après avoir vérifié le stockage.");
-        return null;
-      }
-      publishConfirmedProgression(result.state);
-      return result.state;
-    },
-    [controlledProgression, hasPendingTraining, notify, onProgressionChange,
-      onSelectedShipChange, publishConfirmedProgression, save, sidecarReady, suspended],
-  );
+  const { commit: commitProgression, hasPending: hasPendingService, issue: serviceIssue } = useShipServiceCommitV94({
+    save, progression, controlled: controlledProgression !== undefined,
+    suspended: suspended || !sidecarReady || !recoveryReady, rootRef,
+    blocked: () => trainingSession !== null || hasPendingTraining(),
+    receive: onProgressionChange, onNativeConfirmed: publishConfirmedProgression,
+    onControlledConfirmed: state => onSelectedShipChange?.(state.selectedShipId), notify,
+  });
 
   useEffect(() => {
     if (controlledProgression !== undefined) return;
@@ -358,16 +342,16 @@ export default function ShipHub({
   useEffect(() => {
     if (controlledProgression !== undefined || staleSidecarOwner === save.createdAt) return;
     const hydrationTask = window.setTimeout(() => {
-      if (hasPendingTraining() && hydratedOwner === save.createdAt) return;
+      if ((hasPendingTraining() || hasPendingService()) && hydratedOwner === save.createdAt) return;
       const loaded = loadShipProgression(save);
       setLocalProgression(loaded);
       setHydratedOwner(save.createdAt);
-      callbacksRef.current.onProgressionChange?.(loaded);
-      callbacksRef.current.onSelectedShipChange?.(loaded.selectedShipId);
+      observeShipNotificationV94(() => callbacksRef.current.onProgressionChange?.(loaded));
+      observeShipNotificationV94(() => callbacksRef.current.onSelectedShipChange?.(loaded.selectedShipId));
     }, 0);
     return () => window.clearTimeout(hydrationTask);
     // Callback identity changes must not reload an older sidecar over live state.
-  }, [controlledProgression, hasPendingTraining, hydratedOwner, recoveryReady, save, staleSidecarOwner]);
+  }, [controlledProgression, hasPendingService, hasPendingTraining, hydratedOwner, recoveryReady, save, staleSidecarOwner]);
 
   useEffect(() => {
     if (!autoFocus || suspended) return;
@@ -393,19 +377,20 @@ export default function ShipHub({
     // legacy cleaning or mounting timers behind the mini-game.
     if (progression.medbay.status !== "treating" || hasPendingTraining()) return;
     const timer = window.setInterval(() => {
-      if (hasPendingTraining()) return;
+      if (hasPendingTraining() || hasPendingService()) return;
       const tick = Date.now();
       const next = resolveMedbayTreatment(
         progression,
         new Date(tick).toISOString(),
       );
       if (next !== progression) {
-        commitProgression(next);
+        commitProgression(next, "Fin du protocole médical");
       }
     }, 1_000);
     return () => window.clearInterval(timer);
   }, [
     commitProgression,
+    hasPendingService,
     hasPendingTraining,
     progression.medbay.status,
     progression.trophies,
@@ -533,7 +518,7 @@ export default function ShipHub({
           label: `Enregistrer dans ${firstEmptyPreset.name}`,
           detail: "Mémoriser ensemble loadout et apparence.",
           run: () => {
-            const committed = commitProgression(
+            commitProgression(
               saveLoadoutPreset(
                 progression,
                 firstEmptyPreset.id,
@@ -541,8 +526,8 @@ export default function ShipHub({
                 save.loadout,
                 save.appearance,
               ),
+              firstEmptyPreset.name,
             );
-            if (committed) notify(`${firstEmptyPreset.name} ${controlledProgression === undefined ? "enregistré" : "transmis au gestionnaire externe"}.`);
           },
         },
         ...presetActions,
@@ -660,7 +645,7 @@ export default function ShipHub({
                 notify(`${ship.name} reste verrouillé ; sa fiche est consultable.`);
                 return;
               }
-              if (commitProgression(next)) notify(`${ship.name} devient le vaisseau actif${controlledProgression === undefined ? "" : " dans le gestionnaire externe"}.`);
+              commitProgression(next, `${ship.name} · vaisseau actif`);
             },
           };
         },
@@ -690,14 +675,10 @@ export default function ShipHub({
             : "Cycle de régénération court · 30 secondes.",
           disabled: treating,
           run: () => {
-            const committed = commitProgression(
-              startMedbayTreatment(
-                progression,
-                "minor-wounds",
-                30,
-              ),
+            commitProgression(
+              startMedbayTreatment(progression, "minor-wounds", 30),
+              "Cycle médical court",
             );
-            if (committed) notify("Cycle médical court engagé.");
           },
         },
         {
@@ -708,14 +689,10 @@ export default function ShipHub({
             : "Décontamination profonde · 90 secondes.",
           disabled: treating,
           run: () => {
-            const committed = commitProgression(
-              startMedbayTreatment(
-                progression,
-                "acid-burn",
-                90,
-              ),
+            commitProgression(
+              startMedbayTreatment(progression, "acid-burn", 90),
+              "Décontamination acide",
             );
-            if (committed) notify("Décontamination acide engagée.");
           },
         },
         {
@@ -726,14 +703,10 @@ export default function ShipHub({
             : "Réparer les interfaces biomask · 60 secondes.",
           disabled: treating,
           run: () => {
-            const committed = commitProgression(
-              startMedbayTreatment(
-                progression,
-                "neural-shock",
-                60,
-              ),
+            commitProgression(
+              startMedbayTreatment(progression, "neural-shock", 60),
+              "Recalibrage neural",
             );
-            if (committed) notify("Recalibrage neural engagé.");
           },
         },
       ];
@@ -746,7 +719,7 @@ export default function ShipHub({
         id: `train-${disciplineId}`,
         label: TRAINING_LABELS[disciplineId],
         detail: `Record ${progression.training[disciplineId].bestScore}/100 · ${progression.training[disciplineId].attempts} essai(s)`,
-        run: () => requestTraining(disciplineId),
+        run: () => { if (!hasPendingService()) return requestTraining(disciplineId); },
       }));
       return [
         ...(onOpenPit
@@ -780,7 +753,7 @@ export default function ShipHub({
     clan.completedRites.length,
     clan.prestige,
     commitProgression,
-    controlledProgression,
+    hasPendingService,
     hangarFilteredShips,
     hangarMedia,
     hangarPageCount,
@@ -822,9 +795,11 @@ export default function ShipHub({
     (index: number) => {
       const action = actions[index];
       if (!action || action.disabled) return;
-      void action.run();
+      try {
+        void Promise.resolve(action.run()).catch(() => notify("Action interrompue. Vérifiez son état avant de recommencer."));
+      } catch { notify("Action interrompue. Vérifiez son état avant de recommencer."); }
     },
-    [actions],
+    [actions, notify],
   );
 
   useEffect(() => {
@@ -1135,6 +1110,7 @@ export default function ShipHub({
           </p>
           {staleSidecarOwner === save.createdAt ? <p role="alert">Une autre session a changé les archives. Les écritures du vaisseau sont suspendues ; terminez ou exportez tout score en attente avant de recharger.</p>
             : !sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
+          {serviceIssue && <p role="alert" data-ship-service-issue>{serviceIssue}</p>}
           {!recoveryReady && <p role="status">Vérification des scores en attente…</p>}
           {recoveryNotice && <p role="status" data-training-recovery>{recoveryNotice}</p>}
           {hasRecoveryCopy && !trainingSession && <div aria-label="Copie du score en attente">
