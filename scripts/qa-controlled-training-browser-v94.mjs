@@ -58,8 +58,13 @@ try{
   assert.equal(await writes(page),mode==='write-then-reject'?1:0);
   assert.equal(await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).count(),0);
   await page.getByRole('button',{name:'Fermer l’épreuve',exact:true}).click();await paint(page);
-  assert.equal(await page.getByRole('button',{name:/Ciblage/}).isDisabled(),true);
+  // The console stays navigable for review. The submission boundary, rather
+  // than every room button, refuses another drill while the host is uncertain.
+  await page.getByRole('button',{name:/Ciblage/}).click();
+  await page.getByRole('button',{name:/Ciblage/}).click();await paint(page);
+  assert.equal(await page.locator('.training-drill-panel').count(),0);
   assert.equal(await page.evaluate(()=>window.__ackQa.calls),1);
+  assert.equal(await writes(page),mode==='write-then-reject'?1:0);
  });
  await scenario('closed component never reopens on a late host acknowledgement',async page=>{
   await open(page);await finish(page);await page.evaluate(()=>window.__ackQa.show(false));await paint(page);
