@@ -100,3 +100,27 @@ test('observer rejections are consumed without invoking a storage fallback',asyn
  f.a.observeShipNotificationV94(()=>{calls++;return Promise.reject(Error('async observer'));});
  await drain(f);assert.equal(calls,2);assert.equal(shipWrites(f).length,0);
 });
+
+for (const controlled of [false, true]) test(`${controlled ? 'controlled' : 'native'} async publication observer cannot escape after confirmation`, async () => {
+  const f = fixture({
+    controlled,
+    ...(controlled ? {
+      receive: state => ({ persisted: true, failure: null, state }),
+      onControlledConfirmed: () => Promise.reject(Error('async selection view failed')),
+    } : {
+      onNativeConfirmed: () => Promise.reject(Error('async native view failed')),
+    }),
+  });
+  f.start(candidate(f), 'Soins');
+  await drain(f);
+  assert.equal(shipWrites(f).length, controlled ? 0 : 1);
+  assert.equal(f.current.issue, null, 'a view failure cannot reclassify an acknowledged write');
+  await new Promise(resolve => setImmediate(resolve));
+});
+
+test('async service notification errors are consumed without relabelling storage', async () => {
+  const f = fixture({ notify: () => Promise.reject(Error('asynchronous toast')) });
+  f.start(candidate(f)); await drain(f);
+  assert.equal(shipWrites(f).length, 1); assert.equal(f.current.issue, null);
+  await new Promise(resolve => setImmediate(resolve));
+});

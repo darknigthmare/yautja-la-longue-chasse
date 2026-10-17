@@ -70,7 +70,7 @@ export function useShipServiceCommitV94(options: Options) {
   }, [options.progression]);
   const hasPending = useCallback(() => operation.current !== null, []);
   const notify = useCallback((message: string) => {
-    try { live.current.notify(message); } catch { /* A display failure is not a failed write. */ }
+    observeShipNotificationV94(() => live.current.notify(message));
   }, []);
   const commit = useCallback((candidate: ShipProgressionState, label = "Progression du vaisseau") => {
     const o = live.current;
@@ -101,7 +101,13 @@ export function useShipServiceCommitV94(options: Options) {
       }
       token.confirmed = true;
       setIssue(null);
-      try { o.onNativeConfirmed(result.state); }
+      try {
+        // A host may return a Promise despite the presentation-only void type.
+        // Observe its failure without replaying or changing the saved result.
+        void Promise.resolve(o.onNativeConfirmed(result.state)).catch(() => {
+          if (owns()) notify(`${label} sauvegardé, mais affichage non actualisé. Rouvrez le vaisseau.`);
+        });
+      }
       catch { notify(`${label} sauvegardé, mais affichage non actualisé. Rouvrez le vaisseau.`); return; }
       if (owns()) notify(`${label} · sauvegarde confirmée.`);
       return;
@@ -121,7 +127,11 @@ export function useShipServiceCommitV94(options: Options) {
         notify(`${label} transmis au gestionnaire externe, sauvegarde non vérifiée.`); return;
       }
       token.confirmed = true; setIssue(null);
-      try { live.current.onControlledConfirmed?.(token.expected); }
+      try {
+        void Promise.resolve(live.current.onControlledConfirmed?.(token.expected)).catch(() => {
+          if (owns()) notify(`${label} confirmé par le gestionnaire, mais affichage non actualisé.`);
+        });
+      }
       catch { notify(`${label} confirmé par le gestionnaire, mais affichage non actualisé.`); return; }
       if (owns()) {
         notify(`${label} · sauvegarde confirmée par le gestionnaire externe.`);
