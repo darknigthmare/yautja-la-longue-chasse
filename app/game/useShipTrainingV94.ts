@@ -6,6 +6,7 @@ import { createShipTrainingReceiptV94, restoreShipTrainingReceiptV94, type ShipT
 import { recordTrainingResult, TRAINING_LABELS, type ShipProgressionState, type TrainingDisciplineId } from "./systems/progression";
 import { createShipTrainingRecoveryPortV94, createShipTrainingRecoveryQueueV94, type ShipTrainingRecoveryPortV94 } from "./systems/shipTrainingRecoveryV94";
 import type { SaveGame } from "./types";
+import { classifyShipTrainingAcknowledgementV94, type ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
 
 interface TrainingSessionV94 { id: number; owner: string; disciplineId: TrainingDisciplineId; seed: number; external: boolean }
 interface Options {
@@ -15,7 +16,7 @@ interface Options {
   suspended: boolean;
   rootRef: { current: HTMLElement | null };
   onConfirmed: (state: ShipProgressionState) => void;
-  onDelegated?: (state: ShipProgressionState) => void;
+  onDelegated?: ShipTrainingReceiverV94;
   onTrainingRequested?: (disciplineId: TrainingDisciplineId) => number | void | Promise<number | void>;
   notify: (message: string) => void;
   /** Optional port is for deterministic tests or a host-owned recovery backend. */
@@ -38,11 +39,12 @@ export function useShipTrainingV94(options: Options) {
   const live = useRef(options), mounted = useRef(false), nextId = useRef(0);
   const session = useRef<TrainingSessionV94 | null>(null);
   const receipt = useRef<ShipTrainingReceiptV94 | null>(null);
+  const delegation = useRef<{ owner: string; expected: ShipProgressionState; discipline: TrainingDisciplineId; score: number } | null>(null);
   const claimed = useRef(false), controlledUncertain = useRef(false), finishing = useRef(false);
   useEffect(() => { live.current = options; });
   useEffect(() => {
     mounted.current = true;
-    return () => { mounted.current = false; session.current = null; };
+    return () => { mounted.current = false; session.current = null; delegation.current = null; };
   }, []);
   // Notifications are presentation only. Their errors must never cancel a
   // provider, erase a receipt or change the acknowledgement of a saved score.
@@ -63,7 +65,7 @@ export function useShipTrainingV94(options: Options) {
     readableRecovery.current = null;
     recoveryBlocked.current = false;
     // Changing owner retires only this UI generation, not queued backup IO.
-    session.current = null; receipt.current = null; controlledUncertain.current = false;
+    session.current = null; receipt.current = null; delegation.current = null; controlledUncertain.current = false;
     const queue = port ? createShipTrainingRecoveryQueueV94(owner, port) : null;
     journal.current = queue;
     void (queue ? queue.read() : Promise.resolve(null)).then(raw => {
@@ -148,17 +150,40 @@ export function useShipTrainingV94(options: Options) {
     }
     claimed.current = true;
     if (o.controlled) {
-      // A void notification is not a durable acknowledgement. Never touch the
-      // local sidecar or retry an external receiver that may already have written.
+      const expected = recordTrainingResult(o.progression, active.disciplineId, score);
+      const token = { owner: active.owner, expected: JSON.parse(JSON.stringify(expected)) as ShipProgressionState,
+        discipline: active.disciplineId, score };
+      delegation.current = token;
+      controlledUncertain.current = true;
+      setCanRetryTraining(false);
+      setSaveIssue("Enregistrement externe en cours de vérification. Aucun renvoi automatique du score.");
+      const settle = (response: unknown, rejected = false) => {
+        const current = live.current;
+        if (!mounted.current || delegation.current !== token || !current.controlled || current.save.createdAt !== token.owner) return;
+        delegation.current = null;
+        const status = rejected ? "uncertain" : classifyShipTrainingAcknowledgementV94(response, token.expected, current.save);
+        if (status === "uncertain") {
+          setSaveIssue("Transmission externe non confirmée. Vérifiez le gestionnaire externe avant de recommencer ; aucun renvoi automatique du score.");
+          return;
+        }
+        finishing.current = true;
+        controlledUncertain.current = false;
+        session.current = null; setTrainingSession(null); setSaveIssue(null);
+        try {
+          notify(status === "confirmed"
+            ? `${TRAINING_LABELS[token.discipline]} : résultat ${token.score}/100, sauvegarde confirmée par le gestionnaire externe.`
+            : `${TRAINING_LABELS[token.discipline]} : résultat ${token.score}/100 transmis au gestionnaire externe, sauvegarde non vérifiée.`);
+        } finally { finishing.current = false; }
+      };
       try {
         if (!o.onDelegated) throw new Error("No controlled receiver");
-        o.onDelegated(recordTrainingResult(o.progression, active.disciplineId, score));
-        notify(`${TRAINING_LABELS[active.disciplineId]} : résultat ${score}/100 transmis au gestionnaire externe, sauvegarde non vérifiée.`);
-        session.current = null; setTrainingSession(null);
-      } catch {
-        controlledUncertain.current = true;
-        setSaveIssue("Transmission externe non confirmée. Aucun renvoi automatique ; le score ne sera pas compté deux fois par ce panneau.");
-      }
+        const response = o.onDelegated(expected);
+        if (response && typeof (response as Promise<unknown>).then === "function") {
+          // Attach both handlers immediately, even if the receiver closed this
+          // scene synchronously. Late rejections must never escape the owner.
+          void Promise.resolve(response).then(value => settle(value), () => settle(undefined, true));
+        } else settle(response);
+      } catch { settle(undefined, true); }
       return;
     }
     receipt.current = createShipTrainingReceiptV94(o.save, o.progression, active.disciplineId, score);
