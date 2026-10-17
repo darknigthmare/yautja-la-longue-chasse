@@ -34,13 +34,16 @@ jobs:
         id: install
       - name: New persistence regressions and existing lock contract
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
-        run: node --test --test-reporter=spec tests/clan-war-fence-v94.test.mjs tests/trophy-workshop-commit-v94.test.mjs tests/archive-lock-async-v94.test.mjs tests/archive-lock-diagnostics-v90.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-fence-v94.test.mjs tests/trophy-workshop-commit-v94.test.mjs tests/archive-lock-async-v94.test.mjs tests/archive-lock-diagnostics-v90.test.mjs tests/trophy-recovery-v94.test.mjs tests/trophy-recovery-lifecycle-v94.test.mjs
       - name: Strict lint for new persistence domain
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/clanWarFenceV94.ts app/game/systems/clanWarSessionV85.ts app/game/systems/trophyWorkshopCommitV94.ts app/game/systems/archiveTransaction.ts
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/clanWarFenceV94.ts app/game/systems/clanWarSessionV85.ts app/game/systems/trophyWorkshopCommitV94.ts app/game/systems/archiveTransaction.ts app/game/systems/trophyWorkshopRecoveryV94.ts app/game/useTrophyRecoveryV94.ts
       - name: Native three-domain race and crash-recovery tests
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: node scripts/qa-clan-fence-browser-v94.mjs
       - name: Played rite and actual parent confirmation handlers
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: node scripts/qa-workshop-save-browser-v94.mjs
+      - name: Native trophy recovery APIs (not wired into GameClient yet)
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: node scripts/qa-trophy-recovery-domain-browser-v94.mjs
