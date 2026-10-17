@@ -2127,6 +2127,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       suspended: settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
   };
   const openShipAcquisitionV89 = () => {
+    if (pendingTrophyCommitRef.current) { setToast("Le rite en attente doit être confirmé avant de rejoindre le chantier naval."); return; }
     const current = saveRef.current;
     let transferPending = true;
     try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
@@ -2342,6 +2343,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistHomeworldProgress]);
 
   const openPit = useCallback(() => {
+    if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite avant de changer d’arène ou de progresser dans THE PIT."); return; }
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
@@ -2383,6 +2385,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
+      if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer de destination."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setMapReturnScreen(returnScreen);
       go("map");
@@ -2392,6 +2395,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen) => {
+      if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setStationReturnScreen(returnScreen);
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
@@ -2401,6 +2405,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
+    if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
     const youth = saveRef.current.prologue;
     if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
         ["armory", "customization", "training", "medbay", "pit"].includes(service)) {

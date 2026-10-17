@@ -82,7 +82,7 @@ test('an ended parent session cannot create or retry a rite write',()=>{const s=
 // Pending rites also own the parent mutation boundary, including the interval
 // before React has published saveFailure and after the workshop has closed.
 const {runInNewContext}=await import('node:vm');
-for(const name of ['persist','persistNursery','persistSocialProgress','go','launchMission','resetProgress','confirmCompleteImport','confirmImport','saveManagedCheckpoint','returnToMainMenu','persistExplorationProgress','completeMission','exportComplete','readArchiveFile'])test(`actual ${name} cannot discard or overwrite an unconfirmed rite`,async()=>{
+for(const name of ['persist','persistNursery','persistSocialProgress','go','launchMission','resetProgress','confirmCompleteImport','confirmImport','saveManagedCheckpoint','returnToMainMenu','persistExplorationProgress','completeMission','exportComplete','readArchiveFile','openPit','openMap','openStationScreen','openHomeworldService'])test(`actual ${name} cannot discard or overwrite an unconfirmed rite`,async()=>{
  const messages=[],pending={current:{}};
  const env={pendingTrophyCommitRef:pending,sessionAliveRef:{current:true},saveRef:{current:{createdAt:owner}},setToast:m=>messages.push(m),setSaveTransferMessage:m=>messages.push(m),setCampaignSaveMessage:m=>messages.push(m)};
  const code=ts.transpileModule(`(${callback(name)})`,{compilerOptions:{module:ts.ModuleKind.None,target:ts.ScriptTarget.ES2022}}).outputText;
@@ -102,4 +102,8 @@ for(const pending of [false,true])test(`actual unload warning follows pending=${
 test('checkpoint and title import affordances explain that a trophy receipt blocks leaving',()=>{
  assert.match(source,/checkpointBlockedReason = pendingTrophyCommit \?/);
  assert.match(source,/if \(pendingTrophyCommitRef\.current\) \{ setSaveTransferMessage\("Rite en attente : confirmez la sauvegarde avant de quitter/);
+});
+
+test('ship acquisition has the same early guard before changing a room',()=>{
+ assert.match(source,/const openShipAcquisitionV89 = \(\) => \{\s*if \(pendingTrophyCommitRef\.current\)/);
 });
