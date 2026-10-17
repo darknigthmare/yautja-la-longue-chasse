@@ -118,6 +118,7 @@ import type {
   TrophyWorkshopResult,
 } from "./systems/trophyWorkshop";
 import { createTrophyWorkshopCommitV94, type TrophyWorkshopCommitV94 } from "./systems/trophyWorkshopCommitV94";
+import { useTrophyRecoveryV94 } from "./useTrophyRecoveryV94";
 import {
   V6_ALL_VISUAL_IDS,
   V6_ARMORY_RACK_ORDER,
@@ -1078,6 +1079,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
   }, [pendingTrophyCommit]);
+  const trophyRecovery = useTrophyRecoveryV94({
+    owner: entry.ownerCreatedAt,
+    enabled: true,
+    saveRef,
+    pendingRef: pendingTrophyCommitRef,
+    setPending: setPendingTrophyCommit,
+    setFailure: setSaveFailure,
+    closeWorkshop: () => setTrophyWorkshop(null),
+  });
   const gameShellRef = useRef<HTMLElement | null>(null);
   const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
@@ -3025,20 +3035,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
     // Only a confirmed write (or exact readback reconciliation) becomes live.
     saveRef.current = outcome.save; setSave(outcome.save); setSaveFailure(null);
+    trophyRecovery.confirmed(receipt);
     pendingTrophyCommitRef.current = null; setPendingTrophyCommit(null);
     setTrophyWorkshop(null);
     setToast(`${receipt.target.trophyName} · ${receipt.target.action} enregistré, grade ${receipt.grade}.`);
     void playSound("trophy");
-  }, [archiveTransferBusy, archiveRecoveryIssue, playSound]);
+  }, [archiveTransferBusy, archiveRecoveryIssue, playSound, trophyRecovery]);
 
   const completeTrophyWorkshop = useCallback((result: TrophyWorkshopResult) => {
-    if (!sessionAliveRef.current || !trophyWorkshop || pendingTrophyCommitRef.current) return;
+    if (!sessionAliveRef.current || !trophyRecovery.isIdle() || !trophyWorkshop || pendingTrophyCommitRef.current) return;
     const receipt = createTrophyWorkshopCommitV94(saveRef.current, trophyWorkshop, result);
     if (!receipt) { setToast("Résultat d’atelier invalide ou prérequis absent. Aucune progression accordée."); return; }
     // Publish before attempting the write: reentrant completion cannot replay it.
     pendingTrophyCommitRef.current = receipt; setPendingTrophyCommit(receipt);
+    trophyRecovery.backup(receipt);
     retryTrophyWorkshopSave();
-  }, [trophyWorkshop, retryTrophyWorkshopSave]);
+  }, [trophyWorkshop, retryTrophyWorkshopSave, trophyRecovery]);
 
   const resetProgress = useCallback(() => {
     if (pendingTrophyCommitRef.current) { setToast("La réinitialisation est bloquée tant que le rite attend sa sauvegarde. Confirmez-le ou exportez le résultat avant de quitter."); return; }
