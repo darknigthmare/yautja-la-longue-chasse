@@ -78,3 +78,28 @@ for(const guard of ['campaignOperationRef','nurseryWriteAttemptRef','pendingSoci
 test('actual parent rejects a changed campaign rather than applying an older pending rite',()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);s.faults.drop=true;p.complete(s.result);s.faults.drop=false;const newer={...s.base,updatedAt:date};p.replace(newer);const n=s.writes.length;p.retry();assert.equal(p.failure,'save-conflict');assert.equal(p.save,newer);assert.equal(s.writes.length,n);});
 test('actual parent lightweight export includes the pending result without claiming persistence',async()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);s.faults.drop=true;p.complete(s.result);p.close();p.export();const exported=JSON.parse(await p.blobs[0].text());assert.ok(JSON.stringify(exported).includes('lastCompletedAt'));assert.ok(p.pending);assert.equal(p.save,s.base);assert.match(p.transfer,/ne confirme pas/);});
 test('an ended parent session cannot create or retry a rite write',()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);p.end();p.complete(s.result);p.retry();assert.equal(s.writes.length,0);assert.deepEqual(p.sounds,[]);});
+
+// Pending rites also own the parent mutation boundary, including the interval
+// before React has published saveFailure and after the workshop has closed.
+const {runInNewContext}=await import('node:vm');
+for(const name of ['persist','persistNursery','persistSocialProgress','go','launchMission','resetProgress','confirmCompleteImport','confirmImport','saveManagedCheckpoint','returnToMainMenu','persistExplorationProgress','completeMission','exportComplete','readArchiveFile'])test(`actual ${name} cannot discard or overwrite an unconfirmed rite`,async()=>{
+ const messages=[],pending={current:{}};
+ const env={pendingTrophyCommitRef:pending,sessionAliveRef:{current:true},saveRef:{current:{createdAt:owner}},setToast:m=>messages.push(m),setSaveTransferMessage:m=>messages.push(m),setCampaignSaveMessage:m=>messages.push(m)};
+ const code=ts.transpileModule(`(${callback(name)})`,{compilerOptions:{module:ts.ModuleKind.None,target:ts.ScriptTarget.ES2022}}).outputText;
+ const fn=runInNewContext(code,env);await fn({createdAt:owner});assert.equal(pending.current!==null,true);
+ // Every other campaign dependency is deliberately absent: reaching it would
+ // throw, making a missing guard visible rather than mocking a successful save.
+});
+let unloadEffect;
+function visitUnload(n){if(ts.isCallExpression(n)&&n.expression.getText(tree)==='useEffect'&&n.arguments[0]?.getText(tree).includes('beforeunload'))unloadEffect=n.arguments[0].getText(tree);ts.forEachChild(n,visitUnload);}visitUnload(tree);assert.ok(unloadEffect);
+for(const pending of [false,true])test(`actual unload warning follows pending=${pending} and removes its exact listener`,()=>{
+ const added=[],removed=[],window={addEventListener:(...args)=>added.push(args),removeEventListener:(...args)=>removed.push(args)};
+ const code=ts.transpileModule(`(${unloadEffect})`,{compilerOptions:{module:ts.ModuleKind.None,target:ts.ScriptTarget.ES2022}}).outputText;
+ const cleanup=runInNewContext(code,{pendingTrophyCommit:pending?{}:null,window})();assert.equal(added.length,pending?1:0);
+ if(pending){let prevented=false;const event={returnValue:null,preventDefault(){prevented=true;}};added[0][1](event);assert.equal(prevented,true);assert.equal(event.returnValue,'');cleanup();assert.deepEqual(removed,added);}else assert.equal(cleanup,undefined);
+});
+
+test('checkpoint and title import affordances explain that a trophy receipt blocks leaving',()=>{
+ assert.match(source,/checkpointBlockedReason = pendingTrophyCommit \?/);
+ assert.match(source,/if \(pendingTrophyCommitRef\.current\) \{ setSaveTransferMessage\("Rite en attente : confirmez la sauvegarde avant de quitter/);
+});

@@ -126,7 +126,7 @@ jobs:
           app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
           app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
-          app/game/HuntCanvas.tsx app/game/systems/huntStructuralBarrierV94.ts
+          app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
