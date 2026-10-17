@@ -151,5 +151,14 @@ try{
   await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open(window.__shipQa.recoveryDB,2);r.onerror=()=>reject(r.error);r.onupgradeneeded=()=>{r.result.createObjectStore('future-protected').put('untouched','sentinel');};r.onsuccess=()=>{r.result.close();resolve();};}));await page.reload();
   await page.locator('[data-training-recovery]').filter({hasText:'inaccessible'}).waitFor();const value=await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open(window.__shipQa.recoveryDB);r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('future-protected');const read=tx.objectStore('future-protected').get('sentinel');read.onsuccess=()=>resolve(read.result);tx.oncomplete=()=>db.close();};}));assert.equal(value,'untouched');assert.equal(await writes(page),0);
  });
+ await scenario('another tab changing the ship archive blocks stale in-hub writes',async page=>{
+  const second=await page.context().newPage();await second.goto(origin);await second.waitForFunction(()=>window.__shipQa);
+  await second.evaluate(()=>{const key=window.__shipQa.sidecarKey;localStorage.setItem(key,localStorage.getItem(key)+' ');});
+  await page.getByRole('alert').filter({hasText:'Une autre session a changé les archives'}).waitFor();
+  const before=await writes(page);
+  await page.getByRole('button',{name:'Armurerie',exact:true}).click();
+  await page.getByRole('button',{name:/Enregistrer dans/}).click();
+  assert.equal(await writes(page),before,'a stale console cannot write a loadout after a storage event');
+ });
  const report={scope:'Actual ShipHub and TrainingDrill, native localStorage and synthetic profile, substituted art; not full-game or cross-tab training qualification',browser:browser.version(),results,errors};await mkdir(path.join(root,'outputs/qa-audit-v94'),{recursive:true});await writeFile(path.join(root,'outputs/qa-audit-v94/ship-training-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(results.filter(v=>v.status!=='PASS').length,0);assert.deepEqual(errors,[]);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
