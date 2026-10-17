@@ -53,7 +53,9 @@ export function useTrophyRecoveryV94(options: Options) {
       }
       setView({ owner, ready: true, busy: false, incompatible, raw, message });
     }).catch(() => {
-      context.ready = true;
+      // A failed read is not evidence of an empty journal. Keep this session
+      // non-writable so a new result cannot erase an unknown existing copy.
+      context.ready = false;
       if (context.active && live.current.owner === owner) setView({ ...emptyView(owner), ready: true,
         message: "Lecture des copies de rites indisponible. Aucun résultat non confirmé ne peut être annoncé récupérable après fermeture." });
     });
