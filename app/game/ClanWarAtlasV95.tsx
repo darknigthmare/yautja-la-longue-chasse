@@ -234,7 +234,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           setSelectionMode(selectionMode === "origin" ? "target" : "origin");
           setAnnouncement(selectionMode === "origin" ? `Choisissez une cible parmi les voisins de ${source.name}.` : "Choisissez un territoire à inspecter ou un nouveau départ.");
         }}>{selectionMode === "origin" ? "Choisir une cible sur la carte →" : "← Revenir au départ / inspection"}</button>
-        {selectionMode === "target" && <p className={styles.hint}>Seuls le départ et ses voisins sont sélectionnables comme cible. Les soins utilisent le territoire de départ.</p>}
+        {selectionMode === "target" && <p className={styles.hint}>Seuls les voisins du départ sont sélectionnables comme cible. Les soins utilisent le territoire de départ.</p>}
         <details className={styles.terrain}><summary>Terrain et sites</summary><p>{inspected.terrain}</p><p>{inspected.sites}</p></details>
         <p className={styles.hint}>Les ordres se préparent dans le panneau stratégique ci-dessous. Les effectifs adverses restent inconnus sans reconnaissance.</p>
         {projection === "globe" && selectedGeo && !projectWarAtlasGlobeV95(selectedGeo.longitude, selectedGeo.latitude, view).visible && <button type="button" className={styles.hiddenSelection} onClick={() => centerOn(inspected.id)}>La sélection est sur l’autre face · la montrer</button>}

@@ -126,6 +126,7 @@ jobs:
           app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
           app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
+          app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -174,12 +175,13 @@ jobs:
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
-      - name: Exercise free clan-war durability and lifecycle regressions
+      - name: Exercise free clan-war durability, lifecycle and planetary atlas regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
           node --test --test-reporter=spec --test-concurrency=1
           tests/clan-war-session-v85.test.mjs tests/clan-war-durability-v94.test.mjs
           tests/clan-war-lifecycle-v94.test.mjs tests/clan-war-canyon-validity-v94.test.mjs
+          tests/clan-war-atlas-v95.test.mjs tests/clan-war-atlas-ui-v95.test.mjs
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
