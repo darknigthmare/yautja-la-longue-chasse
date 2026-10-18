@@ -1,3 +1,4 @@
+import { getPitCombatFighterDefinition } from './systems/pitCombat';
 /**
  * Pure PIT-to-authored-sprite adapter. No Canvas, rig, interpolation, gameplay
  * mutation or hidden clock. Each phase selects an independently drawn clip.
@@ -106,7 +107,7 @@ export function describePitHunterSpriteMotion(
     !phases.has(fighter.phase) ||
     !tick(fighter.stunFrames) || !tick(fighter.knockdownFrames) ||
     !tick(fighter.cloakFramesRemaining)) return null;
-  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const definition = getPitCombatFighterDefinition(fighter);
   const facing = fighter.facing === 1 ? "right" : "left";
   const posture: PitHunterSpritePosture =
     !fighter.grounded ? "air" : fighter.crouching || fighter.guard === "low" ? "crouch" : "stand";

@@ -14,7 +14,9 @@ test('V81 evaluates actual buildings, doors, working faces, civilian segments an
  assert(audit.assertions.every(a=>Number.isFinite(a.position.x)&&Number.isFinite(a.position.y)));
  assert.equal(audit.counts.buildings,43);assert.equal(audit.counts.buildingsMoved,15);
  assert.equal(api.HOMEWORLD_LEGACY_USAGE_OBJECTS_V81.length,audit.counts.legacySolids);
- assert.equal(audit.counts.props,audit.counts.recomposedProps+audit.counts.legacySolids);
+ assert.equal(audit.counts.structuralVolumes,api.HOMEWORLD_STRUCTURAL_USAGE_OBJECTS_V82.length);
+ assert.equal(audit.counts.structuralVolumes,4,'the four actual V82 masonry bearings are audited alongside their native walls');
+ assert.equal(audit.counts.props,audit.counts.recomposedProps+audit.counts.legacySolids+audit.counts.structuralVolumes);
  // Legacy/envelope/art gaps remain explicit; no worldwide aesthetic PASS is
  // inferred from the hard checks of the actually recompiled native set.
  assert(audit.violations.some(a=>a.severity==='warning'));
@@ -37,7 +39,13 @@ test('authored port shoulders have seven distinct geometry/recipes and never imp
  assert(courts.some(c=>c.y>5500));assert(courts.some(c=>c.y<5200));
  for(const c of courts){assert(c.focus&&c.props.every(p=>p.purpose.length>15));}
  assert.equal(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.length,14);
- assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,14);assert.deepEqual(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78,[]);
+ assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,12);
+ assert.deepEqual(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78,[
+  {id:'urban-v78:extra:lower-1',reason:'urban-v78:lower-work-north:pending-facade'},
+  {id:'urban-v78:extra:lower-4',reason:'urban-v78:lower-halt-west:pending-facade'},
+ ],'two candidates stay refused against the installed native facade solids; they must never be silently mounted');
+ const acceptedIds=new Set(api.HOMEWORLD_URBAN_EXTRAS_V78.map(item=>item.id));
+ for(const item of api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78)assert(!acceptedIds.has(item.id));
 });
 
 test('royal inhabitants keep their original IDs and walk outside the new 1100u pyramid foundation',()=>{

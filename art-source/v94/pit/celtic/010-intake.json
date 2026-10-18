@@ -1,0 +1,199 @@
+{
+  "ordinal": 10,
+  "id": "celtic-v94-010-taunt-b",
+  "family": "taunt",
+  "part": "b",
+  "targetDrawings": 12,
+  "targetPerFacing": 6,
+  "grid": {
+    "cols": 4,
+    "rows": 3,
+    "rightColumns": [
+      0,
+      1
+    ],
+    "leftColumns": [
+      2,
+      3
+    ],
+    "chronology": "row-major within native-facing half"
+  },
+  "reference": "public/game/sprites/v44/user-hunters/0764ed4b539cc40c2c3dc91cfca405f0e01ac7a528a3d3412da18552dbbccb4e.png",
+  "prompt": "Use case: identity-preserve. Asset: native RGBA transparent fighting-game sprite animation page. Match ONLY attached exact MASKED CELTIC reference: broad muscular AVP body; unique weathered SILVER domed Celtic biomask with narrow pale eyes, four orange-copper circular fittings and central vertical silver mouth grilles; dark dreadlocks with brass rings; yellow/tan black-mottled skin and black body netting; thick overlapping silver breast and shoulder armor, layered thigh plates, long silver plated loin apron, articulated shin armor and armored clawed feet; small skull necklace. Keep all equipment consistently anatomically attached: TWO jagged extended wrist blades only on CHARACTER RIGHT gauntlet; original single plasma caster visibly mounted above CHARACTER LEFT shoulder, with its original mounting and hose. No shoulder-device omission, opposite-arm weapon swap, pistol, spear, shield, blade on both arms, or new accessory. Opposite facings must be drawn independently with proper original anatomical gear, not mirrored. Match the supplied detailed painted 2D game-art style and neutral lighting, not a plastic action figure. Full bodies in a slight3/4 SIDE VIEW, facing an opponent at screen right or screen left. Same anatomy, costume, mask worn, equipment shape/length and drawing scale in EVERY frame/page. Plain fully TRANSPARENT background only; no ground, shadow, atmosphere, blood, particles, opponent, weapon discharge, captions, grid, frame numbers, backdrop, painted checkerboard or ornaments. Fingers simple and legible, one thumb and four claws, no floating hands/extra arms/fused digits; dreadlocks attached around back of head, draping behind shoulders without crossing chest or changing into blades. All body, cannon, hair and blade tips safely inside each cell, wide completely transparent gutters. Keep figure SMALL, approximately260pixels tall and180pixels wide at1024canvaswidth, at least30px transparent horizontal margins and55px vertical margins in its cell. Never increase figure to fill cell. Feet on a stable per-cell baseline unless a specified small nonlethal knee motion. A coherent restrained GAMEPLAY ADAPTATION, not alleged canon tribal ceremony. No dance, supernatural ritual, roar pose, mask removal, trophy or new power. Every chronological pose is genuinely independently drawn and slightly articulated, not duplicated or shifted copies.\nPORTRAIT1024x1536. Exactly TWELVE separate complete drawings in FOUR COLUMNS by THREE ROWS. Columns1 and2 face SCREEN RIGHT (6 chronological poses read row1col1→row1col2→row2col1→row2col2→row3col1→row3col2). Columns3 and4 face SCREEN LEFT (same6 chronological poses read row1col3→row1col4→row2col3→row2col4→row3col3→row3col4). Four256x512cells in eachrow, hugeempty gutters; do not create2columns or only6figures.\nACTION: TAUNT partB, chronological poses7–12 per face of SAME restrained challenge:7 empty LEFT palm open upward at waist,8 hand curls slightly with five natural digits,9 palm rotates back toward body,10 forearm slowly lowers,11 head returns to ready gaze,12 settles into original balanced low guard. Right bladed gauntlet remains down, cannon attached throughout. No weapon swap, swing, dance, pointing or aggressive finger sign.\nCRITICAL FACING CHECK: the entire RIGHT HALF of the page, BOTH column3 AND column4, MUST face screen LEFT in ALL three rows. Do not put right-facing characters in column4. Six native LEFT-facing figures in the right half; six native RIGHT-facing figures in left half. Keep each half’s mask nose and torso looking toward its specified side. NO shoulder-device or wrist-blade omission in ANY frame.\n",
+  "usedPromptPath": "art-source/v94/pit/celtic/010-used-prompt.txt",
+  "originalPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a134c5-dc8c-74f1-bc35-516803001422\\exec-a6e09eef-1035-4b53-a21e-93ab8ee5caba.png",
+  "sourcePath": "art-source/v94/pit/celtic/010-celtic-masked-taunt-b-v94.png",
+  "fileName": "010-celtic-masked-taunt-b-v94.png",
+  "sha256": "698b4230c337d0f049a91d50c809bfb83ed2321f7050d1c4edce9b1f7f410d4a",
+  "bytes": 2631689,
+  "width": 1024,
+  "height": 1536,
+  "hasAlpha": true,
+  "channels": 4,
+  "zeroAlphaFraction": 0.5767612457275391,
+  "nativeColumnRanges": [
+    {
+      "col": 0,
+      "x0": 0,
+      "x1": 256,
+      "ranges": [
+        [
+          107,
+          499
+        ],
+        [
+          581,
+          975
+        ],
+        [
+          1064,
+          1447
+        ],
+        [
+          1449,
+          1449
+        ]
+      ]
+    },
+    {
+      "col": 1,
+      "x0": 256,
+      "x1": 512,
+      "ranges": [
+        [
+          106,
+          499
+        ],
+        [
+          501,
+          501
+        ],
+        [
+          582,
+          975
+        ],
+        [
+          1066,
+          1447
+        ],
+        [
+          1449,
+          1449
+        ]
+      ]
+    },
+    {
+      "col": 2,
+      "x0": 512,
+      "x1": 768,
+      "ranges": [
+        [
+          108,
+          499
+        ],
+        [
+          582,
+          975
+        ],
+        [
+          1065,
+          1447
+        ],
+        [
+          1449,
+          1449
+        ]
+      ]
+    },
+    {
+      "col": 3,
+      "x0": 768,
+      "x1": 1024,
+      "ranges": [
+        [
+          109,
+          498
+        ],
+        [
+          582,
+          975
+        ],
+        [
+          1066,
+          1450
+        ]
+      ]
+    }
+  ],
+  "status": "accepted-selected-native-cells-only",
+  "pixelTransformation": "none-byte-identical-copy",
+  "review": {
+    "ordinal": 10,
+    "sourcePath": "art-source/v94/pit/celtic/010-celtic-masked-taunt-b-v94.png",
+    "publicPath": "public/game/sprites/v94/pit/celtic/010-celtic-masked-taunt-b-v94.png",
+    "sha256": "698b4230c337d0f049a91d50c809bfb83ed2321f7050d1c4edce9b1f7f410d4a",
+    "bytes": 2631689,
+    "pageId": "celtic-masked-taunt-b-v94",
+    "bodyHeightPx": 393,
+    "zeroAlphaFraction": 0.5767612457275391,
+    "reviewDecision": "accepted-selected-native-cells-only",
+    "acceptedCells": [
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 0,
+        "col": 3
+      },
+      {
+        "row": 1,
+        "col": 0
+      },
+      {
+        "row": 1,
+        "col": 1
+      },
+      {
+        "row": 1,
+        "col": 2
+      },
+      {
+        "row": 1,
+        "col": 3
+      },
+      {
+        "row": 2,
+        "col": 0
+      },
+      {
+        "row": 2,
+        "col": 1
+      },
+      {
+        "row": 2,
+        "col": 2
+      }
+    ],
+    "excludedCells": [
+      {
+        "row": 0,
+        "col": 0,
+        "reason": "missing-native-transparent-vertical-seam"
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "reason": "missing-native-transparent-vertical-seam"
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "reason": "unsafe-native-cell-edge",
+        "borderAlpha": 4
+      }
+    ],
+    "pixelTransformation": "none-byte-identical-copy",
+    "canonicalFidelityCertified": false
+  }
+}

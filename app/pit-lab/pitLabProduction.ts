@@ -1,7 +1,8 @@
 import { PIT_VERSUS_FIGHTER_IDS } from '../game/systems/pitRosterExpansion';
-import { createPitCombatState, PIT_FIGHTERS, type PitFighterId } from '../game/systems/pitCombat';
+import { createPitCombatState, getPitCombatFighterDefinition, getPitCurrentFighterDefinition, PIT_FIGHTERS, type PitFighterId } from '../game/systems/pitCombat';
 import { PIT_SPRITE_SHEET_REGISTRY } from '../game/pitSpriteSheetRegistry';
 import type { HunterSpriteAtlasClip } from '../game/hunterSpriteAtlas';
+import type { PitRoundPresentationView } from '../game/systems/pitRoundPresentation';
 import { getPitFighterVariants, getPitUserVariant, isPitUserFighterId, normalizePitUserVariant } from '../game/systems/pitUserRoster';
 export const PIT_LAB_FIGHTER_IDS = PIT_VERSUS_FIGHTER_IDS;
 /** Every supplied appearance remains inspectable even before its first atlas exists. */
@@ -23,11 +24,14 @@ export function getPitLabCoverage(id: PitFighterId, variantId?: string | null) {
  return { fighterId:id, variantId:getPitLabSelectedVariant(id,variantId)??null, atlasCount:definitions.length, sourcePages:new Set(definitions.flatMap(d=>d.atlas.pages.map(p=>p.src))).size, clips:clips.length, rightClips:clips.filter(c=>c.facing==='right').length, leftClips:clips.filter(c=>c.facing==='left').length, drawings:new Set(definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated').flatMap(c=>c.frames.map(f=>(d.atlas.pages.find(p=>p.id===f.pageId)?.src??f.pageId)+':'+f.rect.join(','))))).size };
 }
 /** The authored phase weights are stretched across the engine's real 60 Hz phase. */
-export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasClip, frameIndex: number): number {
+export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasClip, frameIndex: number, variantId?: string | null): number {
  const index=Math.max(0,Math.min(clip.frames.length-1,Math.floor(frameIndex)));
  const phase=/^pit\.(?:stand|crouch|air)\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
  const kind=phase?.[1].startsWith('technique.')?'technique':phase?.[1] as 'light'|'medium'|'heavy';
- const duration=phase ? PIT_FIGHTERS[id].attacks[kind][phase[2] as 'startup'|'active'|'recovery'] : clip.id==='pit.stand.hitstun' ? 40 : null;
+ // Existing unversioned calls retain the historical recipe. The production
+ // inspector supplies an exact selected appearance to opt into current rules.
+ const definition=variantId===undefined ? PIT_FIGHTERS[id] : getPitCurrentFighterDefinition(id,getPitLabSelectedVariant(id,variantId));
+ const duration=phase ? definition.attacks[kind][phase[2] as 'startup'|'active'|'recovery'] : clip.id==='pit.stand.hitstun' ? 40 : null;
  if(duration===null)return clip.frames[index].durationTicks*60/clip.ticksPerSecond;
  const total=clip.frames.reduce((sum,frame)=>sum+frame.durationTicks,0);
  const before=clip.frames.slice(0,index).reduce((sum,frame)=>sum+frame.durationTicks,0);
@@ -35,12 +39,12 @@ export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasCli
 }
 /** Isolated frame inspection, using the actual engine phase durations. No simulation or save is changed. */
 export function createPitLabFrame(id:PitFighterId, clip:HunterSpriteAtlasClip, frameIndex:number, variantId?:string|null) {
- const combat=createPitCombatState(id,id==='jungle-hunter'?'city-hunter':'jungle-hunter',{variants:[getPitLabSelectedVariant(id,variantId)??null,null]});
+ const combat=createPitCombatState(id,id==='jungle-hunter'?'city-hunter':'jungle-hunter',{movesets:variantId===undefined?'legacy':'current',variants:[getPitLabSelectedVariant(id,variantId)??null,null]});
  const f=combat.fighters[0];f.x=480;f.facing=clip.facing==='right'?1:-1;
  const index=Math.max(0,Math.min(clip.frames.length-1,Math.floor(frameIndex))), total=clip.frames.reduce((n,f)=>n+f.durationTicks,0), elapsed=clip.frames.slice(0,index).reduce((n,f)=>n+f.durationTicks,0);
  let tick=elapsed;
  const attack=/^pit\.(stand|crouch|air)\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
- if(attack){const kind=attack[2].startsWith('technique.')?'technique':attack[2] as 'light'|'medium'|'heavy',phase=attack[3] as 'startup'|'active'|'recovery',timing=PIT_FIGHTERS[id].attacks[kind];tick=Math.min(timing[phase]-1,Math.ceil(elapsed/total*timing[phase]));f.phase=phase;f.action={kind:'attack',attack:kind,frame:(phase==='startup'?0:timing.startup+(phase==='recovery'?timing.active:0))+tick,connected:false};f.crouching=attack[1]==='crouch';if(attack[1]==='air'){f.grounded=false;f.y=20;}}
+ if(attack){const kind=attack[2].startsWith('technique.')?'technique':attack[2] as 'light'|'medium'|'heavy',phase=attack[3] as 'startup'|'active'|'recovery',timing=getPitCombatFighterDefinition(f).attacks[kind];tick=Math.min(timing[phase]-1,Math.ceil(elapsed/total*timing[phase]));f.phase=phase;f.action={kind:'attack',attack:kind,frame:(phase==='startup'?0:timing.startup+(phase==='recovery'?timing.active:0))+tick,connected:false};f.crouching=attack[1]==='crouch';if(attack[1]==='air'){f.grounded=false;f.y=20;}}
  else if(clip.id==='crouch')f.crouching=true;
  else if(clip.id==='high-guard')f.guard='high';
  else if(clip.id==='low-guard'){f.guard='low';f.crouching=true;}
@@ -48,4 +52,21 @@ export function createPitLabFrame(id:PitFighterId, clip:HunterSpriteAtlasClip, f
  else if(clip.id==='pit.stand.hitstun'){tick=Math.ceil(elapsed/total*40);f.phase='hitstun';f.stunFrames=40-tick;}
  combat.frame=tick;
  return {combat,fighter:f,tick,index};
+}
+
+/** Isolated theatre clock for the real presentation renderer. The combat sample
+ * remains untouched: inspection cannot manufacture a victory or a fatality. */
+export function createPitLabPresentationV93(clip: HunterSpriteAtlasClip, frameIndex: number): PitRoundPresentationView | undefined {
+ const kinds = ['intro', 'victory', 'defeat', 'dizzy', 'taunt'] as const;
+ const kind = kinds.find(candidate => clip.id === 'pit.presentation.' + candidate);
+ if (!kind || !Number.isFinite(clip.ticksPerSecond) || clip.ticksPerSecond <= 0 || !clip.frames.length) return undefined;
+ const index = Math.max(0, Math.min(clip.frames.length - 1, Math.floor(Number.isFinite(frameIndex) ? frameIndex : 0)));
+ const elapsedMs = clip.frames.slice(0, index).reduce((sum, frame) => sum + frame.durationTicks, 0) * 1000 / clip.ticksPerSecond;
+ const durationMs = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0) * 1000 / clip.ticksPerSecond;
+ const base = { elapsedMs, durationMs, round: 1, blocksSimulation: true, resultVisible: false };
+ if (kind === 'intro') return { ...base, phase: 'intro-left', fighterSlot: 0 };
+ if (kind === 'victory' || kind === 'defeat') return { ...base, phase: 'round-result', winnerSlot: kind === 'victory' ? 0 : 1, resultVisible: true };
+ if (kind === 'dizzy') return { ...base, phase: 'finisher-window', winnerSlot: 1 };
+ return { ...base, phase: 'fight', blocksSimulation: false, fighterTaunts: [true, false],
+  fighterElapsedMs: [elapsedMs, 0], fighterDurationMs: [durationMs, durationMs] };
 }

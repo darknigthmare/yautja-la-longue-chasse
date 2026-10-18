@@ -3,6 +3,8 @@ docs
 /scripts/*
 !/scripts/build-audio-manifest.mjs
 !/scripts/verify-pit-built-css-v61.mjs
+!/scripts/compact-vercel-static-v87.mjs
+!/scripts/vercel-native-origin-v89.mjs
 tests
 /private-dlc
 
@@ -13,6 +15,7 @@ tests
 /.wrangler
 /outputs
 /work
+/work-local
 /tmp
 *.tsbuildinfo
 
@@ -30,3 +33,7 @@ tests
 /node_modules
 
 /desktop
+
+# This exact historical group is served by the SHA-pinned beforeFiles rewrite.
+# Exclude it at packaging time instead of mutating mounted generated copies.
+/public/game/imports/v85

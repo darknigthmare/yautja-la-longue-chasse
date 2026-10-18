@@ -9,7 +9,7 @@ const art=load('homeworldCityNativeArtV78'),placements=load('homeworldCityNative
 const world=load('homeworldWorldV77'),navigation=load('homeworldUrbanNavigationV78'),codex=load('homeworldCityNativeCodexV78');
 const manifest=JSON.parse(fs.readFileSync('app/game/data/homeworldCityGeneratedProvenanceV78.json','utf8'));
 
-test('all13 installed originals retain SHA and dimensions; V81 separately reports one reviewed source without a safe authored placement',async()=>{
+test('all13 installed originals retain SHA and dimensions; available measured sources remain distinct from accepted authored placements',async()=>{
  assert.equal(manifest.modules.length,13);
  assert.equal(manifest.runtimeIntegration,true);assert.equal(manifest.runtimeMountedCount,7);assert.equal(manifest.runtimeWithheldCount,6);
  for(const source of manifest.modules){
@@ -24,11 +24,20 @@ test('all13 installed originals retain SHA and dimensions; V81 separately report
  }
  assert.equal(Object.keys(art.HOMEWORLD_CITY_NATIVE_ART_V78).length,7);
  assert.equal(art.HOMEWORLD_CITY_NATIVE_WITHHELD_V78.length,6);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.length,6);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78.length,1);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78[0],'archive-shelf-right');
+ const mountedArtIds=['market-stall-right','terrace-retaining-front','port-cargo-sorting-cart','clan-common-table-left'];
+ const unplacedArtIds=['forge-workstation-left','archive-shelf-right','civic-water-cistern-right'];
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.length,mountedArtIds.length);
+ assert.deepEqual(new Set(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.map(p=>p.artId)),new Set(mountedArtIds));
+ assert.deepEqual(urban.HOMEWORLD_CITY_GENERATED_UNPLACED_V78,unplacedArtIds);
+ assert.deepEqual(new Set([...mountedArtIds,...unplacedArtIds]),new Set(Object.keys(art.HOMEWORLD_CITY_NATIVE_ART_V78)),'every measured native source remains accounted for, even when no safe placement exists');
+ for(const artId of unplacedArtIds){
+  const refusal=urban.HOMEWORLD_CITY_GENERATED_REJECTIONS_V78.find(p=>p.id==='city-native-v78:'+artId);
+  assert(refusal?.reason,artId+' must retain its explicit authored placement refusal');
+  assert(placements.homeworldCityNativeRefusalV78({id:refusal.id,artId,x:refusal.x,y:refusal.y,levelId:refusal.levelId},
+   urban.HOMEWORLD_URBAN_RESERVES_V78,urban.HOMEWORLD_URBAN_LEGACY_PROPS_V78,urban.HOMEWORLD_CITY_GENERATED_PROPS_V78,urban.homeworldUrbanTerrainV78),artId+' cannot silently become accepted at its refused anchor');
+ }
  assert(urban.HOMEWORLD_CITY_GENERATED_REJECTIONS_V78.length>0);
- assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(p=>p.levelId==='-1A').length,5);
+ assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.filter(p=>p.levelId==='-1A').length,3);
  assert(!urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.some(p=>p.artId==='archive-shelf-right'),'do not hide the rack behind the mausoleum or move it into unrelated logistics to force seven mounts');
  assert.equal(urban.HOMEWORLD_CITY_GENERATED_PROPS_V78.find(p=>p.artId==='port-cargo-sorting-cart').levelId,'0');
 });

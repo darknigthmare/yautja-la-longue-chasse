@@ -5,13 +5,14 @@ import {createRequire} from 'node:module';
 import {buildSync} from 'esbuild';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
+import {homeworldInteriorPointFixture} from './helpers/homeworld-interior-point-fixture.mjs';
 
 const bundle=buildSync({stdin:{contents:`export * from './app/game/systems/homeworldContractsV68';export * from './app/game/systems/homeworldContractNarrativeV70';
- export * from './app/game/systems/homeworldRegionsV68';export {defaultSave} from './app/game/save';export {homeworldInteriorForBuildingV64} from './app/game/systems/homeworldInteriorsV64';
+ export * from './app/game/systems/homeworldRegionsV68';export {defaultSave} from './app/game/save';export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64,nearestHomeworldInteriorTargetV64} from './app/game/systems/homeworldInteriorsV64';
  export {default as Panel} from './app/game/HomeworldContractsV68';`,resolveDir:process.cwd()},bundle:true,write:false,format:'cjs',platform:'node',external:['react','react/jsx-runtime'],loader:{'.css':'empty'},outfile:'contract-narrative-v70.cjs',logLevel:'silent'});
 const evaluated={exports:{}};new Function('require','module','exports',bundle.outputFiles.find(f=>f.path.endsWith('.cjs')).text)(createRequire(import.meta.url),evaluated,evaluated.exports);const api=evaluated.exports;
 const defs=api.HOMEWORLD_CHAIN_CONTRACTS_V69,d=id=>defs.find(x=>x.id===id),n=(s,id='v69-return-1')=>api.contractChapterNarrativeV70(s,id);
-const where=id=>{const def=d(id),room=api.homeworldInteriorForBuildingV64(def.buildingId),point=room.points.find(p=>p.pointId===def.pointId);return {eligible:true,interiorId:def.buildingId,pointId:def.pointId,npcId:def.giverNpcId,actor:{x:point.x,y:point.y+45}};};
+const where=id=>{const def=d(id),room=api.homeworldInteriorForBuildingV64(def.buildingId);return {eligible:true,interiorId:def.buildingId,pointId:def.pointId,npcId:def.giverNpcId,actor:homeworldInteriorPointFixture(api,room,def.pointId)};};
 const act=(s,id,kind='accept')=>api.applyHomeworldContractV68(s,{kind,contractId:id},where(id));
 // Declared model fixtures, never claimed as browser play. The existing real
 // ground/target/counter validators must accept each event before presentation.

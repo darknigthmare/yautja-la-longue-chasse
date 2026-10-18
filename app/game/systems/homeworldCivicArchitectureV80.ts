@@ -14,7 +14,10 @@ export const HOMEWORLD_CIVIC_ARCHITECTURE_V80=HOMEWORLD_BUILDINGS_V77.map(buildi
   nativeView:building.art.groundFrame?'MEASURED_NATIVE_OBLIQUE' as const:'EXISTING_NATIVE_FRONTAL' as const,
   interior:{title:room.title,width:room.width,depth:room.depth,spawn:room.spawn,exit:room.exit,
    zones:(room.zones??[]).map(z=>z.label),services:HOMEWORLD_INTERIOR_BINDINGS_V64[building.id]??[],
-   fixtures:[...room.props.map(p=>p.id),...(room.furniture??[]).map(p=>p.id),...(room.orientedDecorV76??[]).map(p=>p.id),...(room.publicComplexV83?.nativeProps??[]).map(p=>p.id)]},
+   fixtures:[...room.props.map(p=>p.id),...(room.furniture??[]).map(p=>p.id),...(room.orientedDecorV76??[]).map(p=>p.id),
+    ...(room.monumentDecorV81??[]).map(p=>p.id),...(room.publicFittingsV82?.furniture??[]).map(p=>p.id),...(room.publicFittingsV82?.decor??[]).map(p=>p.id),
+    ...(room.publicComplexV83?.nativeProps??[]).map(p=>p.id),...(room.portComplexV84?.nativeProps??[]).map(p=>p.id)],
+   implementationState:room.portComplexV84?.validation??room.publicComplexV83?.validation??'historical-implementation'},
   civicFrontageIds:HOMEWORLD_CIVIC_PROPS_V80.filter(p=>p.buildingId===building.id).map(p=>p.id),
  };
 });
@@ -25,7 +28,8 @@ export const HOMEWORLD_CIVIC_ARCHITECTURE_CODEX_V80:readonly HomeworldElementRec
   lore:'original-adaptation',asset:building.art.src,source:[{label:'Façade et intérieur réellement montés',url:building.art.src,note:'Plan local original ; correspondance de porte conservée, pas de carte canonique.'}],
   constraints:[`Enveloppe ${plan.exterior.width}×${plan.exterior.depth}; intérieur ${room.width}×${room.depth}; niveau ${plan.levelId}.`,
    `Vue ${plan.nativeView}; seuil réel (${plan.doorway.threshold.x},${plan.doorway.threshold.y}); approche (${plan.doorway.approach.x},${plan.doorway.approach.y}).`,
-   `Espaces existants: ${room.zones.join(' / ')||room.title}; ${room.fixtures.length} éléments intérieurs conservés.`,
+   `Espaces existants: ${room.zones.join(' / ')||room.title}; ${room.fixtures.length} éléments intérieurs montés.`,
+   ...(room.implementationState==='implemented-not-verified'?['Plan public recomposé V83/V84 implémenté, non vérifié : aucun contrôle corporel ou visuel de ses nouveaux placements revendiqué.']:[]),
    `${plan.civicFrontageIds.length} objets V80 de devanture; sols, empreintes et trajectoires restent contrôlés séparément.`,
    'Ce panneau ne crée aucun accès, service, gain ni intérieur supplémentaire.',
    building.id==='throne-audience'?'Palais monumental natif V81 et aile publique visitable ; suites privées complètes et cinématiques royales non produites.':building.id==='rite-sanctum'?'Conseil monumental natif V81 et galerie publique visitable ; seules les zones effectivement montées sont décrites.':'Le plan décrit uniquement la pièce ou les zones actuellement visitables.',

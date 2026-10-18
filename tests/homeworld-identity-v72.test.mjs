@@ -59,17 +59,22 @@ test('six preserved civic identities and the explicit V81 palace replacement ret
   // against the obsolete single-floor V64 overlay would invent cross-floor walls.
   for(const building of worldV81.HOMEWORLD_BUILDINGS_V77)assert(civicV81.homeworldCivicWalkableV80(building.levelId,api.homeworldBuildingDoorwayV64(building).approach),building.id);
 });
-test('six functional wings preserve thirty original furnishings plus the single measured court reception table',()=>{
+test('six functional wings preserve thirty original furnishings, the court table and the explicit V81/V83 additions',()=>{
   const wings=api.HOMEWORLD_INTERIORS_V64.filter(room=>api.homeworldBuildingIdentityV72(room.buildingId)!==null);
   const tableId='throne-audience-v77-cntlip-table';
-  assert.equal(wings.length,6);assert.equal(wings.reduce((n,r)=>n+r.furniture.length,0),39);
+  assert.equal(wings.length,6);assert.equal(wings.reduce((n,r)=>n+r.furniture.length,0),47);
+  assert.deepEqual(wings.flatMap(r=>r.furniture.filter(f=>f.id.includes('-v83-')).map(f=>f.id)).sort(),[
+    'market-armory-v83-reception-register','market-armory-v83-stock-standard','deep-forge-v83-loading-crates','deep-forge-v83-sealed-preparation-stock',
+    'clan-lodge-v83-visitor-rest','clan-lodge-v83-care-containers','clan-lodge-v83-visitor-parures','clan-lodge-v83-care-veille'].sort());
   assert.equal(wings.flatMap(room=>room.furniture).filter(table=>table.id!==tableId&&table.id.includes('-v72-')).length,30,'every original native V72 furniture identity remains');
   assert.deepEqual(wings.find(room=>room.buildingId==='throne-audience').furniture.filter(table=>table.id===tableId),
     [{id:tableId,artId:'meal-table',x:410,y:141,scale:.62}]);
   for(const room of wings){
-    assert.equal(room.zones.length,room.monumentLayoutV81?5:3);assert.equal(room.partitions.length,room.monumentLayoutV81?8:4);
-    const doors=room.monumentLayoutV81?.passages??api.homeworldInteriorPartitionPlanV72(room).doorways;
-    for(const door of doors){assert.equal(door.width,room.monumentLayoutV81?200:112);assert(api.isHomeworldInteriorWalkableV64(room,door),'actual passages remain usable');}
+    assert.equal(room.zones.length,room.monumentLayoutV81||room.publicComplexV83?5:3);assert.equal(room.partitions.length,room.monumentLayoutV81?8:4);
+    const doors=room.publicComplexV83?.passages??room.monumentLayoutV81?.passages??api.homeworldInteriorPartitionPlanV72(room).doorways;
+    const composedWidths={ 'market-armory':[168,144,168], 'deep-forge':[144,144,160], 'clan-lodge':[164,160,148] };
+    if(room.publicComplexV83)assert.deepEqual(doors.map(d=>d.width),composedWidths[room.buildingId]);
+    for(const door of doors){if(!room.publicComplexV83)assert.equal(door.width,room.monumentLayoutV81?200:112);assert(api.isHomeworldInteriorWalkableV64(room,door,{halfWidth:28,halfDepth:18}),'actual passages remain usable');}
     for(const wall of room.partitions)assert(!api.isHomeworldInteriorWalkableV64(room,{x:wall.x+wall.width/2,y:wall.y+wall.depth/2}),'painted partitions are solid');
     for(const furniture of room.furniture){
       const f=api.homeworldFurnitureFootprintV72(furniture);
@@ -77,10 +82,10 @@ test('six functional wings preserve thirty original furnishings plus the single 
       assert(!api.isHomeworldInteriorWalkableV64(room,{x:(f.left+f.right)/2,y:(f.top+f.bottom)/2}),'furniture is not walk-through');
     }
     // Flood the same whole-body collision model and require every zone to be physically accessible.
-    const queue=[room.spawn],seen=new Set(),reached=new Set();
-    for(let i=0;i<queue.length;i++){const p=queue[i],key=p.x+','+p.y;if(seen.has(key)||!api.isHomeworldInteriorWalkableV64(room,p))continue;seen.add(key);
-      for(const z of room.zones)if(p.x>z.x+30&&p.x<z.x+z.width-30&&p.y>z.y+30&&p.y<z.y+z.depth-30)reached.add(z.id);
-      for(const[dx,dy]of [[8,0],[-8,0],[0,8],[0,-8]]){const q={x:p.x+dx,y:p.y+dy};if(!seen.has(q.x+','+q.y)&&api.isHomeworldInteriorWalkableV64(room,q)&&api.isHomeworldInteriorWalkableV64(room,{x:p.x+dx/2,y:p.y+dy/2}))queue.push(q);}
+    const body={halfWidth:28,halfDepth:18},queue=[room.spawn],seen=new Set(),reached=new Set();
+    for(let i=0;i<queue.length;i++){const p=queue[i],key=p.x+','+p.y;if(seen.has(key)||!api.isHomeworldInteriorWalkableV64(room,p,body))continue;seen.add(key);
+      for(const z of room.zones)if(p.x-body.halfWidth>=z.x&&p.x+body.halfWidth<=z.x+z.width&&p.y-body.halfDepth>=z.y&&p.y+body.halfDepth<=z.y+z.depth)reached.add(z.id);
+      for(const[dx,dy]of [[4,0],[-4,0],[0,4],[0,-4]]){const q={x:p.x+dx,y:p.y+dy};if(seen.has(q.x+','+q.y))continue;let clear=true;for(let step=1;step<=4;step++)if(!api.isHomeworldInteriorWalkableV64(room,{x:p.x+dx*step/4,y:p.y+dy*step/4},body)){clear=false;break;}if(clear)queue.push(q);}
     }
     assert.equal(reached.size,room.zones.length,room.buildingId+' every public room reached by walking');
   }
@@ -99,10 +104,10 @@ test('Unblooded movement alternates genuine V48 drawings and native directions w
 test('V72 codex enumerates every real wall, wingzone and furnishing without claiming a full private palace or canonical universal monarchy',()=>{
   // The Pit table belongs to a secondary room, outside these six V72 wings.
   // V81 preserves the old furniture identities and enlarges the court into five public rooms.
-  const records=api.HOMEWORLD_IDENTITY_CODEX_V72;assert.equal(records.length,87);assert.equal(new Set(records.map(r=>r.id)).size,87);
+  const records=api.HOMEWORLD_IDENTITY_CODEX_V72;assert.equal(records.length,101);assert.equal(new Set(records.map(r=>r.id)).size,101);
   const courtId='v72-furniture:throne-audience-v77-cntlip-table';
-  assert.equal(records.filter(r=>r.id!==courtId).length,86);
-  assert.equal(records.filter(r=>r.category==='prop').length,39);assert.equal(records.filter(r=>r.category==='panel').length,28);
+  assert.equal(records.filter(r=>r.id!==courtId).length,100);
+  assert.equal(records.filter(r=>r.category==='prop').length,47);assert.equal(records.filter(r=>r.category==='panel').length,28);
   const reception=records.find(r=>r.id===courtId);assert(reception);assert.equal(reception.spaceId,'throne-audience');
   assert.deepEqual(reception.position,{x:410,y:141,z:0});assert.equal(reception.category,'prop');
   for(const record of records){assert.equal(record.lore,'original-adaptation');assert(record.constraints.length>=3);assert(Object.values(record.dimensions).every(Number.isFinite));}

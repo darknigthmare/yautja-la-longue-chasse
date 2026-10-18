@@ -8,6 +8,7 @@ import {HOMEWORLD_OUTSKIRTS_ART_V71} from './systems/homeworldOutskirtsArtV71';
 import {HOMEWORLD_TRANSPORT_ART_V64} from './systems/homeworldArtV64';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import {homeworldBackdropArtV82} from './systems/homeworldBackdropArtV82';
+import {homeworldFoundationPaintV90} from './systems/homeworldFoundationPaintV90';
 import styles from './HomeworldBackdropV81.module.css';
 
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
@@ -52,12 +53,15 @@ export default memo(function HomeworldBackdropV81({camera,levelId,paintedLevels,
     return <svg key={level} aria-hidden="true" data-homeworld-depth-layer-v81="2" data-homeworld-real-foundations-v81={level}
       width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
       style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-11500+homeworldLevelV77(level).elevation,pointerEvents:'none'}}>
-      <defs><pattern id={uid+'-foundation-'+level} width="1050" height={foundation.sourceHeight*1050/foundation.sourceWidth} patternUnits="userSpaceOnUse">
-       <image href={foundation.src} width="1050" height={foundation.sourceHeight*1050/foundation.sourceWidth} preserveAspectRatio="xMidYMin meet"/>
-      </pattern></defs>
+      <defs>{edges.map(edge=>{const[a,b]=homeworldProjectEdgeV81(edge),paint=homeworldFoundationPaintV90(a,b,drop,foundation);
+       return <pattern key={edge.id} id={`${uid}-foundation-${level}-${edge.id}`} data-homeworld-foundation-paint-v90={edge.id}
+        x="0" y="0" width={paint.width} height={paint.rowHeight} patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse"
+        patternTransform={paint.transform} overflow="hidden" data-native-vertical-rows-v90="1">
+        <image href={foundation.src} x="0" y="0" width={paint.width} height={paint.imageHeight} preserveAspectRatio="xMidYMin meet"/>
+       </pattern>;})}</defs>
       {edges.map(edge=>{const[a,b]=homeworldProjectEdgeV81(edge);return <g key={edge.id} data-homeworld-exposed-ground-edge-v81={edge.id}>
         <polygon points={`${a.x},${a.y} ${b.x},${b.y} ${b.x},${b.y+drop} ${a.x},${a.y+drop}`} fill="#1c1510"/>
-        <polygon points={`${a.x},${a.y} ${b.x},${b.y} ${b.x},${b.y+drop} ${a.x},${a.y+drop}`} fill={`url(#${uid}-foundation-${level})`}/>
+        <polygon points={`${a.x},${a.y} ${b.x},${b.y} ${b.x},${b.y+drop} ${a.x},${a.y+drop}`} fill={`url(#${uid}-foundation-${level}-${edge.id})`}/>
         <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#9b7950" strokeWidth="3" opacity=".65"/>
        </g>;})}
     </svg>;

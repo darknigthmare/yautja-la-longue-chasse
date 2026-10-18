@@ -28,7 +28,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 import HomeworldWorldSceneV77 from './HomeworldWorldSceneV77';
 import HomeworldWorldMapV77 from './HomeworldWorldMapV77';
 import {HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_RESIDENTS_V77,
- nearestHomeworldDoorV77,nearestHomeworldPointV77,nearestHomeworldResidentV77,districtAtHomeworldActorV77,
+ nearestHomeworldDoorV77,nearestHomeworldPointV77,nearestHomeworldResidentV77,homeworldResidentPoseV77,districtAtHomeworldActorV77,
  homeworldLevelV77,projectHomeworldWorldV77,homeworldCameraWorldV77,
  beginHomeworldTransitV77,stepHomeworldTransitV77,nearestHomeworldConnectorV77,homeworldWorldArrivalV77,
  HOMEWORLD_CONNECTORS_V77,beginHomeworldSkiffV77,stepHomeworldSkiffV77,type HomeworldSkiffV77,type HomeworldLevelV77,type HomeworldTransitV77} from './systems/homeworldWorldV77';
@@ -36,6 +36,7 @@ import {resolveHomeworldLocationV77,createHomeworldCheckpointV77} from './system
 import {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './systems/homeworldCivicWorldV80';
 import {HOMEWORLD_CIVIC_SCENE_SOURCES_V80} from './systems/homeworldCivicDecorV80';
 import {homeworldCivicNeighborhoodV80} from './systems/homeworldCivicNeighborhoodsV80';
+import {homeworldCivilianRoutineV84} from './systems/homeworldCivilianRoutinesV84';
 import {homeworldSceneDepthV78} from './systems/homeworldVisualLayersV78';
 import {HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82} from './systems/homeworldConnectorArtV82';
 import {HOMEWORLD_BACKDROP_SCENE_SOURCES_V82} from './systems/homeworldBackdropArtV82';
@@ -47,12 +48,14 @@ import {HOMEWORLD_LAVA_NATIVE_SOURCES_V77} from './systems/homeworldLavaPlacemen
 import {HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78} from './systems/homeworldCityNativeArtV78';
 import {HOMEWORLD_NATIVE_SCENE_SOURCES_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83} from './systems/homeworldStreetDecorV83';
+import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84} from './systems/homeworldStreetDecorV84';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
 import { canStartSoloV68 } from "./systems/campaignSoloV68";
 import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
+import { canStartSoloV90 } from "./systems/campaignSoloV90";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
@@ -92,6 +95,7 @@ export interface HomeworldHubProps {
   onSoloV68?(): boolean;
   onSoloV69?(): boolean;
   onSoloV70?(): boolean;
+  onSoloV90?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
   /** A completed connector returns at its physical threshold while its arrival
    * request is pending. Ordinary city reloads use the existing Port spawn. */
@@ -99,7 +103,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -109,7 +113,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveHomeworldLocationV77(save.homeworld.locationV77, save.createdAt));
   const [actor, setActor] = useState(() => initialLocationV77.actor);
   const [levelIdV77, setLevelIdV77] = useState<HomeworldLevelV77>(initialLocationV77.levelId);
@@ -210,11 +214,20 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   useEffect(() => {
     // This side state belongs to the campaign identity, not its current floor.
     // Restore only when mounting/changing identity, never after onProgress.
-    const state = restoreHomeworldLiftStationV83(save.createdAt);
-    liftRefV83.current = state; liftSessionReadyRefV83.current = true; setLiftStateV83(state); setLiftSessionOwnerV83(save.createdAt);
-    transitRefV77.current = null; setTransitV77(null);
+    const owner = save.createdAt;
+    liftSessionReadyRefV83.current = false;
+    const frame = requestAnimationFrame(() => {
+      // The campaign may have changed while browser hydration was queued.
+      // Never read or publish a previous owner's station into this session.
+      if (saveRef.current.createdAt !== owner) return;
+      const state = restoreHomeworldLiftStationV83(owner);
+      liftRefV83.current = state; liftSessionReadyRefV83.current = true;
+      setLiftStateV83(state); setLiftSessionOwnerV83(owner);
+      transitRefV77.current = null; setTransitV77(null);
+    });
     return () => {
-      if (liftRefV83.current.ownerCreatedAt === save.createdAt) rememberHomeworldLiftStationV83(liftRefV83.current, true);
+      cancelAnimationFrame(frame);
+      if (liftSessionReadyRefV83.current && liftRefV83.current.ownerCreatedAt === owner) rememberHomeworldLiftStationV83(liftRefV83.current, true);
       liftSessionReadyRefV83.current = false;
     };
   }, [save.createdAt]);
@@ -663,6 +676,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   };
   const selectedPoint = dialog?.point;
   const selectedResidentV68 = HOMEWORLD_RESIDENTS_V77.find(resident => resident.id === dialog?.residentId);
+  const selectedResidentRoutineV84 = selectedResidentV68 ? homeworldCivilianRoutineV84(selectedResidentV68) : null;
+  const selectedResidentPoseV84 = selectedResidentV68 ? homeworldResidentPoseV77(selectedResidentV68, phase) : null;
   const nearbyResidentV68 = !interior ? nearestHomeworldResidentV77(levelIdV77, actor, phase) : null;
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
   const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
@@ -672,13 +687,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
-    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Les salles supérieures sont explorées et le confinement est attesté ; les profondeurs et le rite Blooded restent à accomplir."
+    : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
+    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
     : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
     : youthCampaignObjective(save.youthTraining);
-  const youthProgressTitle = save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
+  const youthProgressTitle = save.soloV90?.status === "completed" ? "Young Blood · Préparation de triade rapportée"
+    : save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
     : save.soloV69?.status === "completed" ? "Young Blood · Seuils maîtrisés"
     : save.soloV68?.status === "completed" ? "Young Blood · Cohorte reconnue"
     : save.soloV67?.status === "completed" ? "Unblooded · Piste rapportée"
@@ -857,6 +874,13 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             if (!onSoloV70()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
           }}>{save.soloV70 ? "Reprendre Le Temple des Trois Ombres · acte I" : "Le Temple des Trois Ombres · acte I"}</button>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
+            if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
+            clearInputs();
+            if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre la préparation de triade." } : current); return; }
+            if (!onSoloV90()) setDialog(current => current ? { ...current, message: "Préparation non enregistrée. Réessaie auprès du maître." } : current);
+          }}>{save.soloV90 ? "Reprendre la préparation de triade" : "Préparation de triade · Combat de seuil"}</button>}
+          {selectedNpc?.id === "terrace-instructor" && save.soloV90?.status === "completed" && <p data-solo-v90-complete>La triade a rapporté son entraînement et ses blessures. Cet exercice ne remplace ni l’épreuve Quatza-Rij, ni le marquage Blooded.</p>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV69?.status === "completed" && <p data-solo-v69-complete>Les douze étapes de préparation sont attestées. Le jeune a rejoint le refuge et tu es revenu au maître. Ton rang reste Young Blood ; le Premier Sang attend sa propre expédition.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.evidenceId ? <YautjaTranslationV67 text={selectedPoint.description} paused={suspended || paused || inactive} /> : selectedPoint.description}</p>
@@ -882,7 +906,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
               <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
             </div>)}
           </section>}
-        </> : selectedResidentV68 ? <HomeworldResidentConversationV75 key={selectedResidentV68.id} resident={selectedResidentV68} seconds={phase} paused={suspended || paused || inactive} onLandmark={requestLandmarkV75} /> : youthWelcome ? <>
+        </> : selectedResidentV68 ? <>
+          <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>
+            {selectedResidentPoseV84?.phaseLabel}{selectedResidentRoutineV84?.groupLabel ? ` · ${selectedResidentRoutineV84.groupLabel}` : ''}.
+          </p>
+          <HomeworldResidentConversationV75 key={selectedResidentV68.id} resident={selectedResidentV68} seconds={phase} paused={suspended || paused || inactive} onLandmark={requestLandmarkV75} />
+        </> : youthWelcome ? <>
           <h4>Parcours Unblooded</h4><p>{youthObjective}</p><p>{youthEquipmentSummary(save.youthTraining)}</p>
           <ul><li>{youthChiefMet ? "✓" : "○"} Rencontre du chef à la Citadelle.</li><li>{youthMentorMet ? "✓" : "○"} Rencontre de l’instructeur après l’accueil du chef.</li></ul>
           <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le journal montre uniquement les étapes réellement jouées : aucune formation ni remise d’équipement n’est validée par sa lecture.</p>

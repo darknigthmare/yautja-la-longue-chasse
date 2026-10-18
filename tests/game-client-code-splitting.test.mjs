@@ -74,6 +74,8 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "HomeworldPassageV67",
     "HomeworldRegionV68",
     "GameReserveV66",
+    "ClanWarPanelV85",
+    "RecentSpriteLibraryV85",
   ]) {
     const moduleName = componentName === "PitCanvas" ? "PitExperienceV79" : componentName;
     assert.match(
@@ -99,10 +101,27 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.equal(source.match(/<HuntCanvas/g)?.length, 1);
   assert.equal(source.match(/<PitCanvas/g)?.length, 1);
   assert.equal(source.match(/<PitNarrativeTrials/g)?.length, 1);
-  assert.equal(
-    source.match(/<Suspense fallback=\{<DeferredGameScreen \/>\}>/g)?.length,
-    25,
-  );
+  // Check the actual loading boundary of every asynchronous surface instead
+  // of a historical total that becomes stale when another screen is added.
+  const file = ts.createSourceFile("GameClient.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const lazyNames = new Set(file.statements.filter(ts.isVariableStatement).flatMap(statement =>
+    statement.declarationList.declarations.filter(declaration => declaration.initializer &&
+      ts.isCallExpression(declaration.initializer) && declaration.initializer.expression.getText(file) === "React.lazy")
+      .map(declaration => declaration.name.getText(file))));
+  const renders = new Set();
+  function inspect(node, ancestors = []) {
+    const element = ts.isJsxElement(node) ? node.openingElement : ts.isJsxSelfClosingElement(node) ? node : null;
+    const name = element?.tagName.getText(file);
+    if (lazyNames.has(name)) {
+      renders.add(name);
+      assert(ancestors.some(parent => ts.isJsxElement(parent) &&
+        ["Suspense", "React.Suspense"].includes(parent.openingElement.tagName.getText(file))),
+      `${name} must render inside a Suspense boundary`);
+    }
+    ts.forEachChild(node, child => inspect(child, [...ancestors, node]));
+  }
+  inspect(file);
+  for (const name of lazyNames) assert(renders.has(name), `${name} has a mounted asynchronous screen`);
   assert.match(
     source,
     /className="loading-mark" role="status" aria-live="polite"/,

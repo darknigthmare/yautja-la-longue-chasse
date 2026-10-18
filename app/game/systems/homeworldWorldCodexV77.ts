@@ -61,6 +61,17 @@ export const HOMEWORLD_COUNCIL_SUPPORT_CODEX_V77:readonly WorldRecordV77[]=[
    'Sépare le couloir praticable du bord de palier sans réduire le corps du chasseur.']})),
 ];
 export const HOMEWORLD_WORLD_CODEX_V77:readonly WorldRecordV77[]=[
+ ...HOMEWORLD_RETAINING_ASSEMBLIES_V82.map(assembly=>{
+  const supports=HOMEWORLD_RETAINING_SUPPORTS_V82.filter(s=>s.assemblyId===assembly.id),points=[...assembly.nativeContacts,...supports.flatMap(s=>s.polygon)];
+  const left=Math.min(...points.map(p=>p.x)),right=Math.max(...points.map(p=>p.x)),top=Math.min(...points.map(p=>p.y)),bottom=Math.max(...points.map(p=>p.y));
+  return{...base,id:assembly.id,label:assembly.label,category:'prop' as const,districtId:'undercity',
+   position:{x:(left+right)/2,y:bottom,z:homeworldLevelV77(assembly.levelId).elevation},
+   dimensions:{width:right-left,depth:bottom-top,height:Math.max(...supports.map(s=>s.height))},
+   associatedElementIds:[assembly.ownerId,...supports.map(s=>s.id)],constraints:[assembly.function,
+    'Groupe descriptif du mur natif et de ses deux piédroits déjà présents ; aucune nouvelle surface solide, aucun collider rectangulaire ou PNG ajouté.',
+    'Les dimensions décrivent l’étendue des contacts et des piédroits. Chaque membre conserve son propre polygone physique, sa source et ses mesures.',
+    'Architecture originale compatible avec la ville du jeu ; aucun service, accès ou gain de progression ajouté.']};
+ }),
  ...HOMEWORLD_RETAINING_SUPPORTS_V82.map(s=>({...base,id:s.id,label:s.label,category:'prop' as const,districtId:'undercity',
   position:{x:(Math.min(...s.polygon.map(p=>p.x))+Math.max(...s.polygon.map(p=>p.x)))/2,y:Math.max(...s.polygon.map(p=>p.y)),z:homeworldLevelV77(s.levelId).elevation},
   dimensions:{width:Math.max(...s.polygon.map(p=>p.x))-Math.min(...s.polygon.map(p=>p.x)),depth:Math.max(...s.polygon.map(p=>p.y))-Math.min(...s.polygon.map(p=>p.y)),height:s.height},

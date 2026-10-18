@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-07",
+  "scope": "source-parser-and-ship-manifest-only",
+  "command": "node --test tests/ship-bible-v85.test.mjs",
+  "result": "passed",
+  "tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "originalWorkbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+  "publicCopiesEqualPrivateExtractions": true,
+  "globalBuildRun": false,
+  "globalLintRun": false,
+  "targetedLint": { "result": "passed", "files": ["app/game/DialogueBibleReaderV85.tsx", "app/game/ShipManifestExerciseV85.tsx"] },
+  "globalTypecheckRun": false,
+  "browserRun": false,
+  "productionHttpChecked": false,
+  "audioRecordingsCreated": 0
+}

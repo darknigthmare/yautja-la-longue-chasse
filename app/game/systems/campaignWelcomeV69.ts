@@ -4,6 +4,15 @@ import { canVisitHomeworldVillagesV69 } from './homeworldAccessV69';
 export function campaignWelcomeV69(save: SaveGame) {
   if(!save.prologue) return {title:'Chasseur indépendant — La cité du clan',intro:'Ton parcours antérieur reste conservé.',next:'Les villages, les commanditaires et les archives publiques gardent leurs propres conditions de progression.'};
   const villages=canVisitHomeworldVillagesV69(save);
+  if(save.soloV90?.status==='completed') return {
+    title:'Young Blood — La préparation de triade rapportée',
+    intro:save.soloV90.checkpoint.result==='success'
+      ? 'La triade a observé les charges du drone, combattu ensemble puis rapporté son exercice au vétéran.'
+      : save.soloV90.checkpoint.result==='assisted'
+        ? 'Saar a soutenu ton extraction après la blessure. La triade est rentrée et le vétéran a reçu ce résultat sans le transformer en victoire.'
+        : 'La triade a interrompu le combat et rapporté son repli au vétéran. Ce retour est conservé sans victoire inventée.',
+    next:'Le vrai Quatza-Rij, les profondeurs du temple et le Premier Sang restent à accomplir. Cet exercice local ne donne ni rang Blooded, ni arme personnelle, ni vaisseau.',
+  };
   if(save.soloV70?.status==='completed') return {
     title:'Young Blood — Temple des Trois Ombres, acte I',
     intro:'Le premier acte du temple, les salles supérieures et le confinement local sont rapportés au maître.',

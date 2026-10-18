@@ -6,17 +6,21 @@ import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
+import {normalizeBibleSceneLedgerV86} from './systems/bibleSceneCulturalV86';
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
+import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
 import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
 import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
 import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
 import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
+import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
+import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1275,9 +1279,16 @@ export function normalizeSave(value: unknown): SaveGame {
     soloV68: normalizeSoloV68Campaign(source.soloV68),
     soloV69: normalizeSoloV69Campaign(source.soloV69),
     soloV70: normalizeSoloV70Campaign(source.soloV70),
+    ...(source.soloV90 === undefined ? {} : { soloV90: normalizeSoloV90Campaign(source.soloV90) }),
     homeworldRegionV68: normalizeHomeworldRegionV68(source.homeworldRegionV68),
     homeworldPassageV67: normalizeHomeworldPassageV67(source.homeworldPassageV67),
     gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
+    ...(source.shipPreparationV88 === undefined ? {} : {
+      shipPreparationV88: normalizeShipPreparationV88(source.shipPreparationV88, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    ...(source.shipAcquisitionV89 === undefined ? {} : {
+      shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
   };
 }
 
@@ -1409,7 +1420,35 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
   }
+  // Preserve incompatible inspection bytes instead of silently clearing a
+  // player's checkpoint during import, archive export or account transfer.
+  if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
+    const raw = value.shipPreparationV88;
+    if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipPreparationV88(raw, value.createdAt)) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
+  // Refuse incompatible shipyard checkpoints instead of clearing their work
+  // during local import, complete archive export or account synchronization.
+  if (value.shipAcquisitionV89 !== undefined && value.shipAcquisitionV89 !== null) {
+    const raw = value.shipAcquisitionV89;
+    if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipAcquisitionV89(raw, value.createdAt)) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
   if(isRecord(value.homeworld)){
+    // Optional additive ledger: reject present incompatible bytes rather than
+    // discarding a player's dialogue choices during load/export/cloud sync.
+    if(value.homeworld.bibleScenesV86!==undefined){
+      const raw=value.homeworld.bibleScenesV86;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeBibleSceneLedgerV86(raw);
+      if(!ledger||ledger.ownerSaveCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!isRecord(value.profile))return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!homeworldCntlipEligibleV77({profile:value.profile as unknown as SaveGame['profile'],prologue:normalizeNurseryCampaign(value.prologue),homeworld:normalizeHomeworldProgress(value.homeworld)}))return {save:null,failure:'invalid-save'};
+    }
     const locationStatus=inspectHomeworldCheckpointV77(value.homeworld.locationV77);
     if(locationStatus==='future-version'||locationStatus==='invalid-save')return {save:null,failure:locationStatus};
     if(isRecord(value.homeworld.locationV77)&&value.homeworld.locationV77.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
@@ -1461,7 +1500,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       isRecord(value.soloV69.checkpoint) && Number(value.soloV69.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
   if (isRecord(value.soloV70) && (Number(value.soloV70.version) > 1 ||
       isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
-  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
+      isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
   if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
     const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
     if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),

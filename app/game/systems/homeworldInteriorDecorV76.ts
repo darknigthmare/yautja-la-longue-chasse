@@ -41,7 +41,8 @@ export function homeworldInteriorDecorCodexV76(room:HomeworldInteriorV64){
       groundBounds:homeworldInteriorDecorBoundsV76(item),pivotPixels:art.pivot,sourceRect:art.sourceRect,
       scale:item.scale,uniformScaleWorldPerPixel:art.scaleWorldPerPixel*item.scale,solid:item.solid,
       sha256:art.sha256,src:art.src,camera:art.camera,measurement:art.measurement,
-      clearance:room.publicComplexV83?'V83 authored public-complex placements implemented, not tested or visually reviewed.':
+      clearance:room.portComplexV84?'V84 authored port-complex placements implemented, not tested or visually reviewed.':
+        room.publicComplexV83?'V83 authored public-complex placements implemented, not tested or visually reviewed.':
         'Every existing point, zone, exit and passage validated with full actor footprint plus four units.',
       interaction:'Pure scenery: no reward, collection, healing, rank or service.'};
   });

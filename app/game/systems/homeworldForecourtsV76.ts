@@ -5,6 +5,12 @@ import {homeworldBuildingGroundFrameV76,type HomeworldGeometryBuildingV64} from 
 export const HOMEWORLD_FORECOURT_LINKS_V76=[{
  id:'forecourt-link-v76:trophy-mausoleum',label:'Allée occidentale du mausolée',kind:'passage' as const,accent:'#a29276',
  polygon:[{x:440,y:2070},{x:630,y:2070},{x:630,y:2220},{x:440,y:2220}],
+},{
+ id:'forecourt-link-v76:residence-clans-1',label:'Allée des délégations vers le palier du Conseil',kind:'passage' as const,accent:'#a29276',
+ // V89: a 160u paved band with real end caps joins the relocated domestic
+ // forecourt to the existing lower landing. City, world, renderer and codex
+ // consume this same polygon; no invisible traversal permission is added.
+ polygon:[{x:3889,y:2583},{x:4423,y:2931},{x:4511,y:2797},{x:3977,y:2449}],
 }];
 
 /** Painted and physical paving share these native ground polygons. The

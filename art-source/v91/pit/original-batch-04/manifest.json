@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "kind": "pit-original-preservation-manifest",
+  "release": "V91",
+  "batch": "original-batch-04",
+  "exactOriginalOrdinals": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41
+  ],
+  "exactOriginalCount": 10,
+  "rejected": 3,
+  "pendingReview": 7,
+  "runtimeAccepted": 0,
+  "productionReady": 0,
+  "oneToOneCertified": 0,
+  "runtimeRegistryChanged": false,
+  "limits": [
+    "Historical archive only. No production sprite, canon certification or visual acceptance.",
+    "Parent decisions may supersede old pending journal text, which is retained verbatim.",
+    "Separate image edits preserve both generated outputs; no pixel transformation is performed by this plan."
+  ],
+  "entries": [
+    {
+      "ordinal": 32,
+      "filename": "32-enforcer-idle-right-wide-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/32-enforcer-idle-right-wide-candidate.png",
+      "sourceSha256": "a24d809df42a74a6e52cf748ea2fb1ac8167207fb3dcbf281b8e01c9eb6259ef",
+      "sourceBytes": 2391182,
+      "nativeDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "requestedClip": "idle",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "referenceSha256": "ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494",
+      "referenceBinding": "exact-reference-in-original-generation-journal",
+      "referenceRecordedOnThisAttempt": true,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create TWO genuinely native frames of a subtle BREATHING IDLE loop, not walking or attacking. ALL character figures face RIGHT in constant side/three-quarter view. Keep feet EXACTLY planted same spacing in everyframe, bend no newlegstride. Weapons ALWAYS remain in SAME anatomical hands/location and visible throughout; no vanishing/swapping/extraequipment. Pose1 relaxed combatready natural weight and normalbreath. Pose2 gentle fullinhalation with a clearly but subtly expanded thorax, raised shoulders and slight elbowbend following breaths, same handgrip blade orientation; dreads/clothhavea tiny natural secondary lag. When played pose1→pose2→pose1 this is a simple breathingloop with two authenticdrawings, notfourposes. Native torso/arm changes, not wholeimage translated/scaled/recolored. Camera, torsoanatomicalsize and headwidth are constant; correct twoarms twolegs fivefingers and grips. One1536x1024 transparentRGBA PNG, TWO WIDE columns ONE row, cells768x1024 readlefttoright, eachentirefigure withinlocalx140..628y90..940, bodyheady220 solesy920, at least70pxfullytransparentgaps ALLsides, nothing crossescolumns. Detailed realisticinkedgameart faithful to supplied identity. No background,shadow,gradient,floor,framegrid,text,glow orFX. Lorecompatibleoriginalidle,notcertified1:1officialanimation. Identity/equipment: ENFORCER maskedPredator: silverTHREE-PRONGbiomask withblueglyph, purplecreammottledskin, silverarmor blackloincloth dreads. ONE metal doublespikedCOMBISTICK with EXACTprongedends, heldTWOHANDS acrosscheststableinALLfourposes. Bothgrips attachedsame shaft. Noaddedguns/plasmashots/differentweapon.",
+      "originalJournalStatus": null,
+      "originalJournalReview": "pending independent visual and technical admission",
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/032-enforcer-masked-idle-right-technical-admission.json",
+        "reportSha256": "d97c7fc030b1922f7f6b9764036517af33cef8223d73409a79c356cfcc5c2c4a",
+        "sourceSha256": "a24d809df42a74a6e52cf748ea2fb1ac8167207fb3dcbf281b8e01c9eb6259ef",
+        "contractSha256": "e1b265e417e65a8ba9bbe9c8f8f9b953fa7193b9e20558168131082292b20664",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": {
+        "id": "032-enforcer-masked-idle-right",
+        "draftRelative": "work-local/v91/qa/032-enforcer-masked-idle-right-draft-candidate.json",
+        "draftSha256": "23738d61331269de70e26d7787ee15229316259c4c7caa7f3f24e3798a9463a3",
+        "contractSha256": "e1b265e417e65a8ba9bbe9c8f8f9b953fa7193b9e20558168131082292b20664",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 33,
+      "filename": "33-enforcer-idle-left-wide-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/33-enforcer-idle-left-wide-candidate.png",
+      "sourceSha256": "a67b35fbb35edbb763c841e2f157afc436dca55aa4ca562a58beb16522dc3c06",
+      "sourceBytes": 2411664,
+      "nativeDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "referenceSha256": "ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494",
+      "referenceBinding": "exact-reference-in-original-generation-journal",
+      "referenceRecordedOnThisAttempt": true,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "ABSOLUTELY LEFT-FACING: everyheadnose,arm,staffandstanceaimsSCREENLEFT. Two isolated LEFT-facing ENFORCER Predator combatready breathing poses. Reference is only COSTUME/IDENTITY, ignore itsRIGHTfacingpose. Draw native oppositeangle, not a mirroredbitmap. Create TWO genuinely native frames of a subtle BREATHING IDLE loop, not walking or attacking. ALL character figures face LEFT in constant side/three-quarter view. Keep feet EXACTLY planted same spacing in everyframe, bend no newlegstride. Weapons ALWAYS remain in SAME anatomical hands/location and visible throughout; no vanishing/swapping/extraequipment. Pose1 relaxed combatready natural weight and normalbreath. Pose2 gentle fullinhalation with a clearly but subtly expanded thorax, raised shoulders and slight elbowbend following breaths, same handgrip blade orientation; dreads/clothhavea tiny natural secondary lag. When played pose1→pose2→pose1 this is a simple breathingloop with two authenticdrawings, notfourposes. Native torso/arm changes, not wholeimage translated/scaled/recolored. Camera, torsoanatomicalsize and headwidth are constant; correct twoarms twolegs fivefingers and grips. One1536x1024 transparentRGBA PNG, TWO WIDE columns ONE row, cells768x1024 readlefttoright, eachentirefigure withinlocalx140..628y90..940, bodyheady220 solesy920, at least70pxfullytransparentgaps ALLsides, nothing crossescolumns. Detailed realisticinkedgameart faithful to supplied identity. No background,shadow,gradient,floor,framegrid,text,glow orFX. Lorecompatibleoriginalidle,notcertified1:1officialanimation. Identity/equipment: ENFORCER maskedPredator: silverTHREE-PRONGbiomask withblueglyph, purplecreammottledskin, silverarmor blackloincloth dreads. ONE metal doublespikedCOMBISTICK with EXACTprongedends, heldTWOHANDS acrosscheststableinALLfourposes. Bothgrips attachedsame shaft. Noaddedguns/plasmashots/differentweapon. The staffprojects LEFT and grippedtwohands; NO RIGHT-facingnoses; no right-facingfigures. OPPOSITE BODY ANGLE: body shoulders hips and feet all FACELEFT, not just head. The single shoulder cannon on its anatomical far shoulder should be largely hidden behind the head/dreads in this view. Do NOT show a round red muzzle aimedRIGHT at back ofhead. Any visible barrel aimsLEFT forward. Remain faithful exactidentity/3pronghelmet andblueglyph/dual-pointstaff.",
+      "originalJournalStatus": null,
+      "originalJournalReview": "pending independent visual and technical admission",
+      "decision": "REJECTED",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "preserved-root-refusal",
+          "detail": "REJECTED by the explicit parent preservation directive. No new anatomy/motion certification or measured technical finding is invented by this plan."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": null,
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": null
+    },
+    {
+      "ordinal": 34,
+      "filename": "34-falconer-idle-left-wide-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/34-falconer-idle-left-wide-candidate.png",
+      "sourceSha256": "f3c07d065f330547b43caf7d7d7636ce4ec8186787780ee1db1a30f6738c3302",
+      "sourceBytes": 2246515,
+      "nativeDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "referenceSha256": "f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d",
+      "referenceBinding": "exact-reference-in-original-generation-journal",
+      "referenceRecordedOnThisAttempt": true,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "ABSOLUTELY LEFT-FACING: everyheadnose,arm,wristbladeandstanceaimsSCREENLEFT. Two isolated LEFT-facing FALCONER Predator combatready breathing poses. Reference is only COSTUME/IDENTITY, ignore itsRIGHTfacingpose. Draw native oppositeangle, not a mirroredbitmap. Create TWO genuinely native frames of a subtle BREATHING IDLE loop, not walking or attacking. ALL character figures face LEFT in constant side/three-quarter view. Keep feet EXACTLY planted same spacing in everyframe, bend no newlegstride. Weapons ALWAYS remain in SAME anatomical hands/location and visible throughout; no vanishing/swapping/extraequipment. Pose1 relaxed combatready natural weight and normalbreath. Pose2 gentle fullinhalation with a clearly but subtly expanded thorax, raised shoulders and slight elbowbend following breaths, same handgrip blade orientation LEFTforward; dreads/clothhavea tiny natural secondary lag. When played pose1→pose2→pose1 this is a simple breathingloop with two authenticdrawings, notfourposes. Native torso/arm changes, not wholeimage translated/scaled/recolored. Camera, torsoanatomicalsize and headwidth are constant; correct twoarms twolegs fivefingers and grips. One1536x1024 transparentRGBA PNG, TWO WIDE columns ONE row, cells768x1024 readlefttoright, eachentirefigure withinlocalx140..628y90..940, bodyheady220 solesy920, at least70pxfullytransparentgaps ALLsides, nothing crossescolumns. Detailed realisticinkedgameart faithful to supplied identity. No background,shadow,gradient,floor,framegrid,text,glow orFX. Lorecompatibleoriginalidle,notcertified1:1officialanimation. Identity/equipment: FALCONER masked SuperPredator: longbronze BEAK biomask silhouette, green-yellowmottledskin, bronzearmor andbronzebeaddreads, brownloincloth. ONE long serratedwristblade onits same anatomical forearm, far forearm partlyoccludedifappropriate, heldforward/down consistent through4frames. NO shoulder cannon, gun,plasma, net, bow ornewgear. Otherhandempty low. The wristbladeprojects LEFT; NO RIGHT-facingnoses; no right-facingfigures.",
+      "originalJournalStatus": null,
+      "originalJournalReview": "pending independent visual and technical admission",
+      "decision": "REJECTED",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "preserved-root-refusal",
+          "detail": "REJECTED by the explicit parent preservation directive. No new anatomy/motion certification or measured technical finding is invented by this plan."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": null,
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": null
+    },
+    {
+      "ordinal": 35,
+      "filename": "35-falconer-idle-left-stacked-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/35-falconer-idle-left-stacked-candidate.png",
+      "sourceSha256": "80f08838dbcb3fb31e6b839657d1096ce0fcee39bf52c26327d7c16eb1e7759c",
+      "sourceBytes": 1695706,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "referenceSha256": "f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create a left-facing Falconer Predator breathing idle animation sheet based on the supplied costume reference. The reference identifies his bronze beaked mask, yellow-green mottled skin, bronze armor and single serrated wrist blade. Do not add any shoulder cannon or gun.\n\nDraw two full-body native poses, stacked VERTICALLY in ONE COLUMN: the first complete character in the TOP HALF and the second in the BOTTOM HALF. No side-by-side figures. Canvas1536x1024; each cell1536x512. Both figures face LEFT, noses and blade pointing LEFT. The feet stay planted with the same spacing. Top pose: relaxed combat stance. Bottom pose: gentle inhalation, chest slightly expanded, shoulders raised a little and a slight elbow flex. Keep the same blade on the same forearm, other hand empty, all anatomy and costume dimensions consistent.\n\nUse a distant camera and isolated modest-sized characters centered horizontally. In each cell, the complete figure including blade stays between x450–1100 and y65–440. All four sides of BOTH poses have generous transparent padding. No clipping, no touching between cells. Real RGBA transparency with no scenery, floor, shadows, gradients, text or grid. Detailed inked game art faithful to the supplied reference. This is an original two-pose lore-compatible idle, not a certified existing game animation.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/035-falconer-masked-idle-left-technical-admission.json",
+        "reportSha256": "f4960a1cf6e1e531954d43e61f493aa884853c085cf41eb2fe62da3a3dee9773",
+        "sourceSha256": "80f08838dbcb3fb31e6b839657d1096ce0fcee39bf52c26327d7c16eb1e7759c",
+        "contractSha256": "ee214f142ff54e99aeece01b77a5939cd35af2919294568df6c5b891a2e08e21",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": {
+        "id": "035-falconer-masked-idle-left",
+        "draftRelative": "work-local/v91/qa/035-falconer-masked-idle-left-draft-candidate.json",
+        "draftSha256": "c72c092cd6a3041ba7ab10d42782345a1ea4a0ac92101b773e4ddd547b0e5626",
+        "contractSha256": "ee214f142ff54e99aeece01b77a5939cd35af2919294568df6c5b891a2e08e21",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 36,
+      "filename": "36-enforcer-idle-left-stacked-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/36-enforcer-idle-left-stacked-candidate.png",
+      "sourceSha256": "485cbbe4ce73444a681247882bd43ee381ecc38bfa57056b77a6724dfb4c834e",
+      "sourceBytes": 1754224,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "referenceSha256": "ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create a left-facing Enforcer Predator breathing idle animation sheet based on the supplied costume reference. Preserve the silver three-prong mask with blue glyph, purple and cream mottled skin, silver armor, black loincloth and exact double-ended metal combistick held with BOTH hands. Keep the shoulder cannon on the appropriate shoulder, facing LEFT forward or naturally occluded behind the head and dreads; no backward cannon muzzle.\n\nDraw two full-body native poses stacked VERTICALLY in ONE COLUMN: first character in TOP HALF, second in BOTTOM HALF. No side-by-side figures. Canvas1536x1024; each cell1536x512. Both bodies face LEFT, not just their heads. Feet remain planted, hand grips remain attached to the same staff with no transfer. Top pose relaxed combat stance; bottom pose gentle inhalation, chest slightly expanded, shoulders raised a little and small elbow flex. Same body dimensions and weapon shape.\n\nUse a distant camera, modest-sized isolated characters centered horizontally. In each cell the whole drawing including weapon tips stays inside x450–1100 and y65–440. Generous fully transparent padding around BOTH figures, no clipping or touching between cells. RGBA transparency; no scenery, shadows, floor, gradients, text or grid. Detailed inked game art matching the reference. This is an original two-pose lore-compatible idle, not certified official1:1 animation.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/036-enforcer-masked-idle-left-technical-admission.json",
+        "reportSha256": "8b828e90991de7364fb5873437643910f4bee0044485e3c2f6619fe1839ebeda",
+        "sourceSha256": "485cbbe4ce73444a681247882bd43ee381ecc38bfa57056b77a6724dfb4c834e",
+        "contractSha256": "6005fa6c9b7763bb0ed09e5186216d3d37e827778f11060b2520deb041f3b29b",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": {
+        "id": "036-enforcer-masked-idle-left",
+        "draftRelative": "work-local/v91/qa/036-enforcer-masked-idle-left-draft-candidate.json",
+        "draftSha256": "c3dd015fa7b08b37ce59758239c33ba43473ddf1058299775c3164a6a71c9bf1",
+        "contractSha256": "6005fa6c9b7763bb0ed09e5186216d3d37e827778f11060b2520deb041f3b29b",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 37,
+      "filename": "37-wolf-idle-right-stacked-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/37-wolf-idle-right-stacked-candidate.png",
+      "sourceSha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa",
+      "sourceBytes": 1784167,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "idle",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create a RIGHT-facing Wolf Predator idle breathing sprite sheet based on the supplied reference. Preserve the exact reference identity: silver serrated Wolf biomask, black dreadlocks with brass rings, tan mottled skin and sparse silver armor, one compact pistol in his lowered weapon hand, one extended wrist blade on the OTHER forearm, a single shoulder cannon pointing toward the same side as his face. Belt whip stays coiled. Do not move equipment between sides, no blade on both forearms.\n\nOne COLUMN of two vertically STACKED full-body drawings on a portrait canvas1024x1536. Top figure facing RIGHT in relaxed planted combat stance; bottom figure also facing RIGHT, same stance and same grounded feet, slightly expanded chest and subtle raised shoulders for a gentle inhalation. Native drawings, not a mirrored facing. The complete figure in each half must fit with plenty of transparent padding all around, including weapon tips and feet. The two figures are separated by a broad fully transparent horizontal gap. Keep the same body scale, leg spacing, anatomy, mask and fingers. Transparent RGBA background, no floor, no scenery, no shadows or gradients, no text or grid. Detailed inked game art, faithful to the supplied costume. This is an original lore-compatible two-pose idle, not a certified existing game animation.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/037-wolf-masked-idle-right-technical-admission.json",
+        "reportSha256": "10b5688cdbbecde1a778f734585089418035adab5f73636065adf9add8b7e1d9",
+        "sourceSha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa",
+        "contractSha256": "ed41419417da261ca71979715866664ab20379326708124e012d7677674dbf65",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": {
+        "id": "037-wolf-masked-idle-right",
+        "draftRelative": "work-local/v91/qa/037-wolf-masked-idle-right-draft-candidate.json",
+        "draftSha256": "08d1870c92aa90ba66dbdba03451ca5b37c7fa5cdb38fd6be56d78826f02de89",
+        "contractSha256": "ed41419417da261ca71979715866664ab20379326708124e012d7677674dbf65",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 38,
+      "filename": "38-wolf-idle-left-cannon-rejected.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/38-wolf-idle-left-cannon-rejected.png",
+      "sourceSha256": "3c943d6e9f9487f0770e25bb99d8564dd23e193234ffa03e7f196556203b053d",
+      "sourceBytes": 1782373,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceBinding": "same-explicit-journal-id-as-measured-replacement39; original38 has no per-attempt reference field",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create a LEFT-facing Wolf Predator idle breathing sprite sheet based on the supplied reference. Preserve the exact reference identity: silver serrated Wolf biomask, black dreadlocks with brass rings, tan mottled skin and sparse silver armor, one compact pistol in his lowered weapon hand, one extended wrist blade on the OTHER forearm, a single shoulder cannon pointing toward the same side as his face. Belt whip stays coiled. Do not move equipment between sides, no blade on both forearms.\n\nOne COLUMN of two vertically STACKED full-body drawings on a portrait canvas1024x1536. Top figure facing LEFT in relaxed planted combat stance; bottom figure also facing LEFT, same stance and same grounded feet, slightly expanded chest and subtle raised shoulders for a gentle inhalation. Native drawings, not a mirrored facing. The complete figure in each half must fit with plenty of transparent padding all around, including weapon tips and feet. The two figures are separated by a broad fully transparent horizontal gap. Keep the same body scale, leg spacing, anatomy, mask and fingers. Transparent RGBA background, no floor, no scenery, no shadows or gradients, no text or grid. Detailed inked game art, faithful to the supplied costume. This is an original lore-compatible two-pose idle, not a certified existing game animation.",
+      "originalJournalStatus": "REJECTED",
+      "originalJournalReview": null,
+      "decision": "REJECTED",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "preserved-root-refusal",
+          "detail": "Root rejection and explicit journal reason: shoulder cannon points RIGHT while Wolf faces LEFT. Original retained even though edit39 exists."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": null,
+      "rejectedReviewEvidence": null,
+      "editSource": null,
+      "measuredDraftEvidence": null
+    },
+    {
+      "ordinal": 39,
+      "filename": "39-wolf-idle-left-corrected-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/39-wolf-idle-left-corrected-candidate.png",
+      "sourceSha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00",
+      "sourceBytes": 1801243,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "idle",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Edit this two-pose LEFT-facing Wolf Predator sprite sheet. Correct ONLY the shoulder cannon in BOTH poses: it currently points RIGHT, behind the left-looking hunter, which is wrong. Rotate the shoulder cannon forward so its barrel extends horizontally toward the LEFT side of the image, with its muzzle to the LEFT of his head, aiming the same LEFT direction as his face. Keep one shoulder cannon, its attachment on the same shoulder, no new equipment. Preserve both full-body poses, pistol and single wrist blade, masked identity, same planted feet, proportions, full transparent gaps and padding. Do not flip or mirror the whole sheet. Keep ONE column of TWO vertically stacked complete drawings, native LEFT-facing. Preserve real RGBA transparency with no floor, shadows, text, scenery, checkerboard or background.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/039-wolf-masked-idle-left-technical-admission.json",
+        "reportSha256": "1704aca4e9b489596572b8a2a5834f1c138a4d727c2a97cda247d5adfdc1d4e2",
+        "sourceSha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00",
+        "contractSha256": "00445f82c744ff2908ae03275d2c06c88b39992a318d6f478c2c69b442d565a9",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": {
+        "ordinal": 38,
+        "filename": "38-wolf-idle-left-cannon-rejected.png",
+        "sourceSha256": "3c943d6e9f9487f0770e25bb99d8564dd23e193234ffa03e7f196556203b053d",
+        "relation": "source of an OpenAI image edit; both unchanged generated outputs preserved separately",
+        "originalPixelMutationByThisPlan": false
+      },
+      "measuredDraftEvidence": {
+        "id": "039-wolf-masked-idle-left",
+        "draftRelative": "work-local/v91/qa/039-wolf-masked-idle-left-draft-candidate.json",
+        "draftSha256": "ebdc1c15c3a6bd33f4d73ff3eb2975823e7b6f49449c8fad7826e047c259754d",
+        "contractSha256": "00445f82c744ff2908ae03275d2c06c88b39992a318d6f478c2c69b442d565a9",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 40,
+      "filename": "40-wolf-crouch-right-stacked-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/40-wolf-crouch-right-stacked-candidate.png",
+      "sourceSha256": "3cabac7f29978f764eb0c28403e44363a1176978f7cc7bd9da2e858e11900846",
+      "sourceBytes": 1840770,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "crouch",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Edit this RIGHT-facing two-pose Wolf Predator sheet to create a native CROUCH ENTRY animation. Preserve the complete TOP standing pose exactly as the upright starting pose. Replace ONLY the LOWER figure by the same RIGHT-facing hunter in a deep combat crouch: pelvis lowered, both knees clearly bent, feet stay grounded, torso leaned a little forward. Keep his body proportions and equipment identical, one lowered compact pistol in the SAME hand, one wrist blade on the OTHER forearm, same mask and armor, one shoulder cannon still pointing RIGHT toward his opponent. Both hands grip/mount their own existing equipment coherently; do not add a second wrist blade or extra weapon. The lower pose must depict a clear crouch with lowered head, not a resized standing hunter. Keep the same drawing scale across both poses, unchanged leg lengths, stance footprint and complete feet visible. One column of two vertically stacked full-body native drawings1024x1536, broad transparent horizontal separator and all-side padding. Real RGBA transparency, no floor, shadows, grids, scenery or text. This is an original lore-compatible two-pose entry into crouch, not a complete gait or certified canon motion.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/040-wolf-masked-crouch-right-technical-admission.json",
+        "reportSha256": "00f7e4ae322f330b7d9f8a59a72caa89dad72310b5dc584dbe7f565dbeea5920",
+        "sourceSha256": "3cabac7f29978f764eb0c28403e44363a1176978f7cc7bd9da2e858e11900846",
+        "contractSha256": "a16dbbc8f1c4f83fad70b53e108bc4650fb650801fd4139eae96b112b5919dc0",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": {
+        "ordinal": 37,
+        "filename": "37-wolf-idle-right-stacked-candidate.png",
+        "sourceSha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa",
+        "relation": "source of an OpenAI image edit; both unchanged generated outputs preserved separately",
+        "originalPixelMutationByThisPlan": false
+      },
+      "measuredDraftEvidence": {
+        "id": "040-wolf-masked-crouch-right",
+        "draftRelative": "work-local/v91/qa/040-wolf-masked-crouch-right-draft-candidate.json",
+        "draftSha256": "0e03fadac9bce85d073c38173f637972b618731942df244565e1854ac2ebc1d3",
+        "contractSha256": "a16dbbc8f1c4f83fad70b53e108bc4650fb650801fd4139eae96b112b5919dc0",
+        "noDefinitionOrStatusMutation": true
+      }
+    },
+    {
+      "ordinal": 41,
+      "filename": "41-wolf-crouch-left-stacked-candidate.png",
+      "destinationRelative": "art-source/v91/pit/original-batch-04/41-wolf-crouch-left-stacked-candidate.png",
+      "sourceSha256": "c5458e79e1314d2000a05a24177ce0c889b1dcf80a28eba04afd619e4547c5fc",
+      "sourceBytes": 1797478,
+      "nativeDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "crouch",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceBinding": "existing-appearance-and-earlier-same-variant-journal-reference; see frozen intake provenance",
+      "referenceRecordedOnThisAttempt": false,
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Edit this LEFT-facing two-pose Wolf Predator sheet to create a native CROUCH ENTRY animation. Preserve the complete TOP standing pose exactly as the upright starting pose. Replace ONLY the LOWER figure by the same LEFT-facing hunter in a deep combat crouch: pelvis lowered, both knees clearly bent, feet stay grounded, torso leaned a little forward. Keep his body proportions and equipment identical, one lowered compact pistol in the SAME hand, one wrist blade on the OTHER forearm, same mask and armor, one shoulder cannon still pointing LEFT toward his opponent. Both hands grip/mount their own existing equipment coherently; do not add a second wrist blade or extra weapon. The lower pose must depict a clear crouch with lowered head, not a resized standing hunter. Keep the same drawing scale across both poses, unchanged leg lengths, stance footprint and complete feet visible. One column of two vertically stacked full-body native drawings1024x1536, broad transparent horizontal separator and all-side padding. Real RGBA transparency, no floor, shadows, grids, scenery or text. This is an original lore-compatible two-pose entry into crouch, not a complete gait or certified canon motion.",
+      "originalJournalStatus": "PENDING_TECHNICAL_AND_VISUAL_REVIEW",
+      "originalJournalReview": null,
+      "decision": "PENDING_REVIEW",
+      "decisionSource": "explicit parent preservation directive before final SHA-bound visual reviews",
+      "reasons": [
+        {
+          "code": "visual-review-pending",
+          "detail": "No accept review is created by this plan. A technical PASS is not visual or runtime admission."
+        }
+      ],
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/041-wolf-masked-crouch-left-technical-admission.json",
+        "reportSha256": "690f36969167fa78da5d4870fe49e8f5d03227934cf63dd36f744708618167cb",
+        "sourceSha256": "c5458e79e1314d2000a05a24177ce0c889b1dcf80a28eba04afd619e4547c5fc",
+        "contractSha256": "523890a5e65b8bcb19619f8f611666bc5f1cbd07ac110dfb5daba20bb7a10236",
+        "technicalAccepted": true,
+        "visualStatus": "pending",
+        "runtimeAccepted": false,
+        "notVisualAdmission": true
+      },
+      "rejectedReviewEvidence": null,
+      "editSource": {
+        "ordinal": 39,
+        "filename": "39-wolf-idle-left-corrected-candidate.png",
+        "sourceSha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00",
+        "relation": "source of an OpenAI image edit; both unchanged generated outputs preserved separately",
+        "originalPixelMutationByThisPlan": false
+      },
+      "measuredDraftEvidence": {
+        "id": "041-wolf-masked-crouch-left",
+        "draftRelative": "work-local/v91/qa/041-wolf-masked-crouch-left-draft-candidate.json",
+        "draftSha256": "fc111b57c9728741b4608f73c74c69577d755839f63ec0f86141416b363dbfe5",
+        "contractSha256": "523890a5e65b8bcb19619f8f611666bc5f1cbd07ac110dfb5daba20bb7a10236",
+        "noDefinitionOrStatusMutation": true
+      }
+    }
+  ]
+}

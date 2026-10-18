@@ -230,10 +230,20 @@ test('checkpoint restoration is owner/fighter guarded, cancellable and cannot si
   assert.match(source, /parsePitCharacterChronicleRunV79\(serialized, ownerSaveCreatedAt\)/);
   assert.match(source, /restored\?\.fighterId !== selectedRoute\.fighterId/);
   assert.match(source, /queueMicrotask\(\(\) => \{\s*if \(cancelled\) return;/);
-  assert.match(source, /return \(\) => \{ cancelled = true; \};\s*\}, \[selectedId, ownerSaveCreatedAt, contentVersion\]\)/);
+  const restore = walk(parsed, node => ts.isCallExpression(node) && node.expression.getText(parsed) === 'useEffect'
+    && node.arguments[0]?.getText(parsed).includes('parsePitCharacterChronicleRunV79'))[0];
+  assert.ok(restore, 'checkpoint restoration must have its own lifecycle');
+  assert.match(restore.arguments[0].getText(parsed), /return \(\) => \{ cancelled = true; \};/);
+  assert.ok(ts.isArrayLiteralExpression(restore.arguments[1]));
+  assert.deepEqual(restore.arguments[1].elements.map(node => node.getText(parsed)),
+    ['selectedId', 'ownerSaveCreatedAt', 'contentVersion', 'chronicleStorage'],
+    'a change of fighter, owner, edition or storage must cancel the old hydration');
   assert.match(source, /currentRun \|\| hasCheckpoint \? setConfirmRestart\(true\) : start\(\)/);
   assert.doesNotMatch(source, /localStorage\.(?:clear|removeItem)\(/);
-  assert.match(arrow('store'), /localStorage\.getItem\(key\) !== serialized/);
+  const store = arrow('store');
+  assert.match(store, /const destination = chronicleStorage \?\? localStorage;/);
+  assert.match(store, /destination\.setItem\(key, serialized\);/);
+  assert.match(store, /if \(destination\.getItem\(key\) !== serialized\) throw Error\('Checkpoint non confirmé\.'\)/);
   assert.match(source, /inert=\{confirmRestart\}/);
   assert.match(source, /role="alertdialog" aria-modal="true"/);
   assert.match(source, /if \(confirmRestart\) setConfirmRestart\(false\); else if \(reviewPanel\) setReviewPanel\(null\); else onBack\(\)/);

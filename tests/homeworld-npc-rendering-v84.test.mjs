@@ -62,11 +62,12 @@ test('new court, elder and animal-care staff occupy real supported places and ke
   }
 });
 
-test('actual React civilian rendering keeps identity, whole-image proportions and floor anchor while moving or turning', () => {
+test('stationary React civilian rendering keeps identity, whole-image proportions and floor anchor when turning', () => {
   const actor = cast.find(actor => actor.role === 'artisan' && actor.source === 'city-resident');
   const variant = api.homeworldNpcVariantV84(actor.id);
   assert(variant, 'At least one produced civic family is required for integration QA');
-  for (const moving of [false, true]) for (const facing of [1, -1]) {
+  for (const facing of [1, -1]) {
+    const moving = false;
     const html = qa.render('app/game/HomeworldCivilianV72.tsx', {
       npcId: actor.id, role: 'guard', height: 100, moving, facing, seconds: moving ? 83 : 0,
     });
@@ -83,7 +84,7 @@ test('actual React civilian rendering keeps identity, whole-image proportions an
     assert(nodes[0].node.includes(`top:${-variant.pivot.y * scale}px`));
     assert(nodes[0].node.includes(`width:${variant.sourceWidth * scale}px`));
     assert(nodes[0].node.includes(`height:${variant.sourceHeight * scale}px`));
-    assert(!html.includes('data-motion-version="74"'), 'A moving actor must not switch back to the shared walk atlas');
+    assert(!html.includes('data-motion-version="74"'), 'A stationary variant uses its own complete source drawing');
   }
   for (const [npcId, role] of [['hunt-king', 'chief'], ['terrace-instructor', 'instructor']]) {
     const html = qa.render('app/game/HomeworldCivilianV72.tsx', { npcId, role });
@@ -92,7 +93,7 @@ test('actual React civilian rendering keeps identity, whole-image proportions an
   }
 });
 
-test('real city and village scenes pass persistent NPC IDs through their existing culling and movement', () => {
+test('real city and village scenes retain native mobile actors and mount stationary variants in their supported interiors', () => {
   const world = qa.load('app/game/systems/homeworldWorldV77.ts');
   const seen = new Map();
   let cityCount = 0, villageCount = 0;
@@ -107,17 +108,41 @@ test('real city and village scenes pass persistent NPC IDs through their existin
     return renderedSprites(html).length;
   };
   for (const seconds of [0, 73]) for (const levelId of ['0', '-1A', '+1']) {
-    cityCount += inspect(qa.render('app/game/HomeworldWorldSceneV77.tsx', {
+    const html = qa.render('app/game/HomeworldWorldSceneV77.tsx', {
       actor: world.HOMEWORLD_SPACEPORT_V77.spawn, levelId, seconds,
       camera: { x: -1000, y: -3000, viewWidth: 14000, viewHeight: 11000 },
       activeDoorId: null, activePointId: null,
-    }));
+    });
+    inspect(html);
+    cityCount += (html.match(/data-homeworld-resident=/g) ?? []).length;
+    assert(html.includes('data-motion-version="74"'));
+    assert(html.includes('data-homeworld-ground-contact-v92='));
   }
   for (const regionId of ['glass-desert', 'pillar-jungle', 'thermal-caves']) for (const tick of [0, 4380]) {
-    villageCount += inspect(qa.render('app/game/HomeworldVillageLifeV69.tsx', {
+    const html = qa.render('app/game/HomeworldVillageLifeV69.tsx', {
       regionId, tick, actor: { x: 1000, y: 1500 },
       rect: { left: -1000, top: -3000, right: 14000, bottom: 11000 },
-    }));
+    });
+    inspect(html);
+    villageCount += (html.match(/data-region-village-resident-v69=/g) ?? []).length;
+    assert(html.includes('data-modular-homeworld-character'));
   }
-  assert(cityCount > 0 && villageCount > 0, 'Both active world render paths must actually mount variants');
+  assert(cityCount > 0 && villageCount > 0, 'Both active world render paths must retain native mobile residents');
+  const interiors = qa.load('app/game/systems/homeworldInteriorsV64.ts');
+  const room = interiors.HOMEWORLD_INTERIORS_V64.find(room => room.buildingId === 'throne-audience');
+  const html = qa.render('app/game/HomeworldInteriorSurface.tsx', { room, actorPosition: room.spawn, activePointId: null, trophies: [] });
+  assert(inspect(html) >= 4, 'The real supported court mounts the additional stationary variants');
+});
+
+
+test('an existing walking route keeps its original native frames and idle appearance, including reduced motion', () => {
+  const actor = cast.find(actor => actor.role === 'artisan' && actor.source === 'city-resident');
+  for (const moving of [false, true]) for (const reducedMotion of [false, true]) {
+    const props = { role: 'artisan', height: 100, moving, facing: -1, seconds: 2.1, speed: 34, reducedMotion };
+    const original = qa.render('app/game/HomeworldCivilianV72.tsx', props);
+    const identified = qa.render('app/game/HomeworldCivilianV72.tsx', { ...props, npcId: actor.id });
+    assert.equal(identified, original, 'Registering a static variant must not replace existing motion or switch bodies during a route pause');
+    assert(identified.includes('data-motion-version="74"'));
+    assert.equal(renderedSprites(identified).length, 0);
+  }
 });

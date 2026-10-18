@@ -2,6 +2,7 @@
  * dimensions, colliders and native facing; translated port coordinates must
  * not be translated a second time after an authored world placement. */
 export const HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81:Readonly<Record<string,{x:number;y:number;reason:string}>>={
+ 'life-v69-brazier-citadel':{x:4110,y:1100,reason:'V89 : brasier préservé sur la terrasse réelle de l’acropole,56u après la fondation avant du palais et hors de son axe d’entrée ; la pose source reste archivée, aucun pixel ni volume n’est réduit.'},
  'life-v68-28-1':{x:1400,y:1915,reason:'Halte occidentale de la promenade ; le seuil de la nouvelle maison du clan reste traversable.'},
  'beacon-v64-dock-control':{x:7215,y:3395,reason:'V82 : balise de la traverse des équipages, après la face de chargement du stock scellé.'},
  'beacon-v64-market-armory':{x:1910,y:2900,reason:'V82 : repère à l’angle oriental de la halte, hors du coffre et de la présentation d’équipement.'},

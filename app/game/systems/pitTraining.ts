@@ -1,6 +1,6 @@
+import { getPitCombatFighterDefinition } from './pitCombat';
 import {
   createPitCombatState,
-  PIT_FIGHTERS,
   PIT_TICK_RATE,
   type PitAttackKind,
   type PitCombatPhase,
@@ -329,6 +329,8 @@ function resolveCpuInput(state: PitCombatState, dummySlot: 0 | 1): PitTrainingIn
   const signedDistance = opponent.x - dummy.x;
   const distance = Math.abs(signedDistance);
   const cycle = state.frame % (PIT_TICK_RATE * 3);
+  if (dummy.movesetId && distance > 92 && distance < getPitCombatFighterDefinition(dummy).attacks.medium.range + 20 &&
+    cycle === 140) return { attack: 'medium' };
   if (distance > 92) return directionInput(signedDistance);
   if (cycle < 24) return { guardHigh: true };
   if (cycle < 40) return { down: true, guardLow: true };
@@ -369,11 +371,13 @@ export function resetPitTrainingPositions(state: PitCombatState): PitCombatState
   if (state.rules.mode !== "training") {
     throw new Error("THE PIT positions can only be reset during training.");
   }
-  return createPitCombatState(
+  const reset = createPitCombatState(
     state.fighters[0].definitionId,
     state.fighters[1].definitionId,
-    { ...state.rules, mode: "training", arenaId: state.arenaId, houndVariantId: state.houndVariantId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
+    { ...state.rules, movesets: 'legacy', mode: "training", arenaId: state.arenaId, houndVariantId: state.houndVariantId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
   );
+  for (const fighter of state.fighters) if (fighter.movesetId) reset.fighters[fighter.slot].movesetId = fighter.movesetId;
+  return reset;
 }
 
 export function getPitTrainingFrameReadout(
@@ -393,7 +397,7 @@ export function getPitTrainingFrameReadout(
     actionLabel = state.pendingThrow.attackerSlot === fighterSlot ? "Saisie en attente" : "Fenêtre de déchoppe";
     framesRemaining = state.pendingThrow.framesRemaining;
   } else if (action?.kind === "attack" && action.attack) {
-    const definition = PIT_FIGHTERS[fighter.definitionId].attacks[action.attack];
+    const definition = getPitCombatFighterDefinition(fighter).attacks[action.attack];
     actionLabel = definition.label;
     actionTotalFrames = definition.startup + definition.active + definition.recovery;
     const phaseStart = fighter.phase === "active"

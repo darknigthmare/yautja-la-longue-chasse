@@ -16,12 +16,13 @@ const footprint=(building:typeof HOMEWORLD_BUILDINGS_V77[number])=>{
 export default function HomeworldWorldMapV77({actor,levelId,open,disabled=false,targetId,save,onOpenChange}:{actor:{x:number;y:number};levelId:HomeworldLevelV77;open:boolean;disabled?:boolean;targetId?:string;save?:SaveGame;onOpenChange(open:boolean):void}){
  const [selected,setSelected]=useState(levelId),[inspected,setInspected]=useState<string|null>(null),[query,setQuery]=useState(''),[chosenId,setChosenId]=useState<string|null>(null),ref=useRef<HTMLDivElement>(null);
  const landmarks=useMemo(()=>homeworldAtlasLandmarksV83(save),[save]),requested=homeworldAtlasTargetV83(landmarks,targetId);
+ const requestedId=requested?.id,requestedLevel=requested?.levelId,requestedBuilding=requested?.buildingId;
  const chosen=homeworldAtlasTargetV83(landmarks,chosenId)??requested,filtered=useMemo(()=>homeworldAtlasSearchV83(landmarks,query),[landmarks,query]);
  const links=chosen?homeworldAtlasFloorLinksV83(levelId,chosen.levelId):null;
  const visibleRegionIds=new Set(landmarks.filter(record=>record.regionId).map(record=>record.regionId));
  const buildings=HOMEWORLD_BUILDINGS_V77.filter(b=>b.levelId===selected),detail=buildings.find(b=>b.id===inspected);
  useEffect(()=>{if(open)ref.current?.focus({preventScroll:true});},[open]);
- useEffect(()=>{if(!open||!requested)return;const frame=requestAnimationFrame(()=>{setChosenId(requested.id);setSelected(requested.levelId);setInspected(requested.buildingId);});return()=>cancelAnimationFrame(frame);},[open,requested?.id,requested?.levelId,requested?.buildingId]);
+ useEffect(()=>{if(!open||!requestedId||!requestedLevel)return;const frame=requestAnimationFrame(()=>{setChosenId(requestedId);setSelected(requestedLevel);setInspected(requestedBuilding??null);});return()=>cancelAnimationFrame(frame);},[open,requestedId,requestedLevel,requestedBuilding]);
  useEffect(()=>{if(!open)return;let request=0,state=createHomeworldGamepadState();const frame=()=>{
   if(document.hasFocus()&&ref.current?.contains(document.activeElement)){
    const pad=[...(navigator.getGamepads?.()??[])].find(p=>p?.connected)??null,result=stepHomeworldGamepad(state,pad,'dialog');state=result.state;
@@ -48,17 +49,17 @@ export default function HomeworldWorldMapV77({actor,levelId,open,disabled=false,
     {[...HOMEWORLD_GROUND_V77,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId===selected).map(g=><polygon key={g.id} points={g.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#39362a" stroke="#706146" strokeWidth="5"><title>{g.id}</title></polygon>)}
     {HOMEWORLD_DISTRICTS_V77.filter(d=>d.levelId===selected).map(d=><polygon key={d.id} points={d.polygon.map(p=>`${p.x},${p.y}`).join(' ')} fill="#715d3b55" stroke="#d0b683" strokeWidth="12"><title>{d.name}</title></polygon>)}
     {buildings.map(b=>{const door=homeworldBuildingDoorwayV64(b).threshold,active=b.id===inspected||chosen?.buildingId===b.id||(targetId&&homeworldInteriorForPointV64(targetId)?.buildingId===b.id);return <g key={b.id} data-map-real-building-v81={b.id}>
-     <polygon points={footprint(b).map(p=>`${p.x},${p.y}`).join(' ')} fill={active?'#d4aa54':'#796d56'} stroke={active?'#fff2b8':'#cdb990'} strokeWidth={active?20:8}><title>{b.label} · entrée réelle · {b.entranceKind}</title></polygon>
-     <circle data-map-real-door-v81={b.id} cx={door.x} cy={door.y} r={active?44:30} fill="#df886a"><title>Porte de {b.label}</title></circle>
+     <polygon points={footprint(b).map(p=>`${p.x},${p.y}`).join(' ')} fill={active?'#d4aa54':'#796d56'} stroke={active?'#fff2b8':'#cdb990'} strokeWidth={active?20:8}><title>{`${b.label} · entrée réelle · ${b.entranceKind}`}</title></polygon>
+     <circle data-map-real-door-v81={b.id} cx={door.x} cy={door.y} r={active?44:30} fill="#df886a"><title>{`Porte de ${b.label}`}</title></circle>
     </g>;})}
     {HOMEWORLD_URBAN_FACADES_V78.filter(f=>f.levelId===selected).map(f=><polygon key={f.id} data-map-scenery-facade-v78={f.id} points={homeworldUrbanFacadePlacementV78(f).footprint.map(p=>`${p.x},${p.y}`).join(' ')} fill="#574739" stroke="#b9a385" strokeWidth="8"><title>{`${f.label} · bâtiment fermé, sans service interactif`}</title></polygon>)}
     {HOMEWORLD_CONNECTORS_V77.flatMap(c=>[c.from,c.to].filter(side=>side.levelId===selected).map((side,i)=><circle key={c.id+':'+i} data-map-connector-v77={c.id} cx={side.point.x} cy={side.point.y} r="65" fill="#9fcacd"><title>{`${c.name} · ${c.from.levelId} ↔ ${c.to.levelId}`}</title></circle>))}
     {HOMEWORLD_REGIONAL_DOCKS_V77.filter(dock=>dock.levelId===selected&&visibleRegionIds.has(dock.regionId)).map(dock=><circle key={dock.regionId} cx={dock.point.x} cy={dock.point.y} r="85" fill="#e7a365"><title>{dock.name}</title></circle>)}
     {HOMEWORLD_CONNECTIONS_V77.filter(c=>c.levelId===selected&&visibleRegionIds.has(c.regionId)).map(c=><g key={c.regionId} data-map-geographic-route-v81={c.regionId}>
      <polyline points={c.nodes.map(p=>`${p.x},${p.y}`).join(' ')} fill="none" stroke="#e7a365" strokeWidth="14" strokeDasharray="36 18"/>
-     <circle cx={c.threshold.x} cy={c.threshold.y} r="65" fill="#e7a365"><title>{c.regionId} · chemin physique vers la région</title></circle>
+     <circle cx={c.threshold.x} cy={c.threshold.y} r="65" fill="#e7a365"><title>{`${c.regionId} · chemin physique vers la région`}</title></circle>
     </g>)}
-    {chosen&&chosen.levelId===selected&&<g data-map-chosen-landmark-v83={chosen.id}><circle cx={chosen.position.x} cy={chosen.position.y} r="100" fill="none" stroke="#fff0a4" strokeWidth="14"/><circle cx={chosen.position.x} cy={chosen.position.y} r="32" fill="#fff0a4"><title>{chosen.label} · repère physique, sans déplacement</title></circle></g>}
+    {chosen&&chosen.levelId===selected&&<g data-map-chosen-landmark-v83={chosen.id}><circle cx={chosen.position.x} cy={chosen.position.y} r="100" fill="none" stroke="#fff0a4" strokeWidth="14"/><circle cx={chosen.position.x} cy={chosen.position.y} r="32" fill="#fff0a4"><title>{`${chosen.label} · repère physique, sans déplacement`}</title></circle></g>}
     {selected===levelId&&<circle cx={actor.x} cy={actor.y} r="80" fill="#fff2cf"/>}
    </svg>
    <p style={{fontSize:12}}>Dallage : passages et cours. Bâtiments clairs : lieux visitables, avec leur véritable emprise. Rouge : porte. Brun sombre : façades fermées de décor. Bleu : raccord entre étages. Orange : route régionale. Blanc : ta position.</p>

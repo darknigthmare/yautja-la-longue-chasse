@@ -24,6 +24,15 @@ export const HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76:Readonly<Record<string,readonl
  'rampart-south-lodge':[a('stone-bench',-1,.55,'Halte des patrouilles'),a('resin-lantern',1,.7,'Veilleuse du relais')],
 };
 
+/** Domestic oblique façades need the same physical furnishings as their
+ * renderer. Keep the fallback here so collision never omits a visible module. */
+export function homeworldFrontageRecipeV76(buildingId:string,variant:'civic'|'rest'|'meal'|'storage'):readonly Arrangement[]{
+ return HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76[buildingId]??[variant==='storage'
+  ?a('convoy-crates',1,.38,'Réserves fermées devant le logement')
+  :variant==='meal'?a('sealed-jars',-1,.45,'Contenants fermés du foyer')
+  :a('stone-bench',1,.32,'Banc bas à l’abri de la façade')];
+}
+
 
 /** Legacy modules remain on their measured masonry bay. Angled façades move
  * their two old fixtures onto separate physical forecourts outside the opening.

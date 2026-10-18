@@ -4,11 +4,12 @@
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import { homeworldNpcKeyV84, homeworldNpcVariantV84, type HomeworldNpcVariantRoleV84 } from './systems/homeworldNpcVariantsV84';
 
-/** A single preserved drawing follows the existing actor, never the shared walk
- * atlas of another person. These assets explicitly have no native walk cycle.
+/** Stationary actors may use an individual preserved drawing. Existing native
+ * walking actors retain their full motion source throughout the route and stops.
+ * These individual source assets explicitly have no native walk cycle.
  * Culling remains with the owning scene, so only visible actors request images. */
 export default function HomeworldNpcSpriteV84({
-  npcId, role, regionId, facing = 1, height, moving = false, style, children,
+  npcId, role, regionId, facing = 1, height, moving = false, preserveNativeMotion = false, style, children,
 }: {
   npcId: string;
   role?: HomeworldNpcVariantRoleV84;
@@ -16,13 +17,14 @@ export default function HomeworldNpcSpriteV84({
   facing?: -1 | 1;
   height?: number;
   moving?: boolean;
+  preserveNativeMotion?: boolean;
   style?: CSSProperties;
   children?: ReactNode;
 }) {
   const [failedSource, setFailedSource] = useState<string | null>(null);
   const key = homeworldNpcKeyV84(npcId, regionId);
   const variant = homeworldNpcVariantV84(key, role);
-  if (!variant || failedSource === variant.src) return <>{children}</>;
+  if (preserveNativeMotion || moving || !variant || failedSource === variant.src) return <>{children}</>;
   const scale = (height ?? variant.heightWorld) / variant.alphaBounds.height;
   return <img
     data-homeworld-npc-variant-v84={variant.id}

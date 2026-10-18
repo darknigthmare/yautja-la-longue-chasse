@@ -4,8 +4,7 @@ import {HOMEWORLD_FURNITURE_ART_V72,homeworldFurnitureFootprintV72,type Homeworl
 import {homeworldBuildingDoorwayV64,homeworldBuildingFootprintV64} from './homeworldGeometryV64';
 import {HOMEWORLD_ARCHITECTURE_IDENTITIES_V75,homeworldBuildingIdentityV75} from './homeworldArchitectureArtV75';
 import type {HomeworldElementRecordV64} from './homeworldElementCodexV64';
-import {HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76,homeworldFrontagePlacementV76,type Arrangement} from './homeworldFrontagePlacementsV76';
-const a=(artId:HomeworldFurnitureArtIdV72,side:-1|1,scale:number,purpose:string):Arrangement=>({artId,side,scale,purpose});
+import {homeworldFrontageRecipeV76,homeworldFrontagePlacementV76} from './homeworldFrontagePlacementsV76';
 
 export interface HomeworldFrontageItemV75 {
   id:string; buildingId:string; artId:HomeworldFurnitureArtIdV72;
@@ -15,10 +14,7 @@ export interface HomeworldFrontageItemV75 {
  * angled hosts use measured forecourts with independent physical volumes. */
 export const HOMEWORLD_FRONTAGE_ITEMS_V75:readonly HomeworldFrontageItemV75[]=HOMEWORLD_BUILDINGS.flatMap(building=>{
  const room=HOMEWORLD_INTERIORS_V64.find(candidate=>candidate.buildingId===building.id)!;
- const arrangements=HOMEWORLD_CIVIC_FRONTAGE_RECIPES_V76[building.id]??[room.variant==='storage'
-  ?a('convoy-crates',1,.38,'Réserves fermées devant le logement')
-  :room.variant==='meal'?a('sealed-jars',-1,.45,'Contenants fermés du foyer')
-  :a('stone-bench',1,.32,'Banc bas à l’abri de la façade')];
+ const arrangements=homeworldFrontageRecipeV76(building.id,room.variant);
  return arrangements.map((arrangement,index)=>({id:`v75-frontage:${building.id}:${index+1}`,buildingId:building.id,
   artId:arrangement.artId,scale:arrangement.scale,purpose:arrangement.purpose,
   ...homeworldFrontagePlacementV76(building,arrangement)}));

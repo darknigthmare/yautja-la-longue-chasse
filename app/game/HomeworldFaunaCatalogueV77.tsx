@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {HOMEWORLD_FAUNA_LATEST_V77,HOMEWORLD_FAUNA_REFERENCE_BOARDS_V77,homeworldFaunaVariantsV77,
   homeworldFaunaDimensionsV77,type HomeworldFaunaArtV77} from './systems/homeworldFaunaV77';
 import styles from './HomeworldFaunaCatalogueV77.module.css';
+import RecentFaunaReferencesV85 from './RecentFaunaReferencesV85';
 
 function NativeReference({art}:{art:HomeworldFaunaArtV77}){
   const [failed,setFailed]=useState(false),[attempt,setAttempt]=useState(0);
@@ -43,6 +44,7 @@ export default function HomeworldFaunaCatalogueV77(){
     <header><span>Références visuelles fournies · 3 octobre 2026</span><h3 id="fauna-references-v77-title">Faune corrigée et variantes conservées</h3>
       <p>Cinq illustrations isolées. Ces fiches sont séparées des signatures à découvrir : elles n’offrent aucun scan, contrat, recrutement ou trophée. Les mouvements de placement en décor ne sont pas des animations dessinées.</p></header>
     <div className={styles.grid}>{HOMEWORLD_FAUNA_LATEST_V77.map(art=><SpeciesReference key={art.id} initial={art}/>)}</div>
+    <RecentFaunaReferencesV85 />
     <details className={styles.references}><summary>Quatre planches de conception et une scène de référence, conservées intégralement</summary>
       <p>Ces images contiennent plusieurs sujets ou un décor. Elles restent des références ; elles ne sont ni découpées automatiquement, ni présentées comme des sprite sheets animées.</p>
       <div className={styles.grid}>{HOMEWORLD_FAUNA_REFERENCE_BOARDS_V77.map(art=><article key={art.id} className={styles.card}><h4>{art.label}</h4><NativeReference art={art}/><a href={art.src} target="_blank" rel="noreferrer">Voir la planche source entière</a></article>)}</div>

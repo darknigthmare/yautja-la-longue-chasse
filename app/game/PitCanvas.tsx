@@ -15,10 +15,16 @@ import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
 import { advancePitFinisherV80, createPitFinisherViewV80, observePitFinisherV80, skipPitFinisherV80, triggerPitFinisherV80, pitFinisherIsSceneV80, createPitFinisherPadStateV80, readPitFinisherPadV80, PIT_FINISHER_COUNTS_V80, type PitFinisherChoiceV80, type PitFinisherModeV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
 import { drawPitFinisherActorsV80 } from './pitFinisherRenderingV80';
 import { PitFinisherHudV80 } from './PitFinisherHudV80';
+import { advancePitLifecyclePresentationV93, beginPitCombatTauntV93, beginPitLifecycleTauntV93, createPitLifecyclePresentationV93, observePitCombatTauntsV93, pitLifecyclePresentationViewV93, pitLifecycleWindowWinnerV93 } from './systems/pitLifecyclePresentationV93';
+import { pitNativeTauntDurationV93 } from './pitSpriteSheetAnimation';
+import { getPitFighterPresentationCue } from './pitFighterPresentation';
 import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRoundPresentation, observePitRoundPresentation, type PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { pitMoveLabelV91 } from './systems/pitFidelityV91';
+import { getPitAuthoredMovesetV92 } from './systems/pitAuthoredMovesetsV92';
+import PitFidelityNoticeV91 from './PitFidelityNoticeV91';
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
@@ -35,6 +41,8 @@ import {
   PIT_ARENA_IDS,
   PIT_CLOAK_COST,
   PIT_FIGHTERS,
+  getPitCombatFighterDefinition,
+  getPitCurrentFighterDefinition,
   PIT_MAX_TRAQUE,
   PIT_TICK_RATE,
   PIT_STATE_VERSION,
@@ -113,6 +121,7 @@ import {
 } from "./systems/pitFirstEdition";
 import {
   createPitReplayReader,
+  createPitReplayCombatState,
   stepPitReplayCombat,
   createPitReplayRecorder,
   normalizePitReplay,
@@ -413,6 +422,11 @@ function cpuInput(state: PitCombatState): PitInput {
   const signedDistance = opponent.x - cpu.x;
   const distance = Math.abs(signedDistance);
   const beat = state.frame % 180;
+  const cpuDefinition = getPitCombatFighterDefinition(cpu);
+  // Long contact equipment can contest neutral before entering fist range.
+  // This decision sees actor positions, not the human's pending input.
+  if (cpu.movesetId && distance > 116 && distance < cpuDefinition.attacks.medium.range + 20 &&
+    state.frame % 43 === 0) return { attack: 'medium' };
 
   if (
     PIT_FIGHTERS[cpu.definitionId].canCloak !== false && cpu.traque >= PIT_CLOAK_COST &&
@@ -455,9 +469,11 @@ function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion:
   if (event.type === "attack-start") {
     if (engineVersion <= 6 && event.fighterId === 'tracker' && event.attack === 'technique') return 'CONTRE AU GANTELET · REPLAY HISTORIQUE';
     if (engineVersion <= 8 && event.fighterId === 'feral-hunter' && event.attack === 'technique') return 'PIÈGE À CARREAUX · REPLAY HISTORIQUE';
+    const owner = state.fighters.find(fighter => fighter.definitionId === event.fighterId);
+    if (owner?.movesetId) return getPitCombatFighterDefinition(owner).attacks[event.attack].label.toUpperCase();
     return (
       event.attack === "technique"
-        ? PIT_FIGHTERS[event.fighterId].attacks.technique.label
+        ? pitMoveLabelV91(event.fighterId, 'technique', PIT_FIGHTERS[event.fighterId].attacks.technique.label)
         : ACTION_LABELS[event.attack]
     ).toUpperCase();
   }
@@ -518,7 +534,15 @@ function drawTechniqueEffect(
   if (effect.phase === "arming") context.setLineDash([5, 5]);
   if (effect.phase === "returning") context.setLineDash([10, 4]);
 
-  if (technique.device === "net" || technique.device === "bow-snare") {
+  if (state.fighters[effect.ownerSlot].movesetId && technique.motion === 'attached') {
+    // Readable contact feedback only: no synthetic weapon or magical projectile.
+    context.shadowBlur = 0;
+    context.globalAlpha *= .5;
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.stroke();
+  } else if (technique.device === "net" || technique.device === "bow-snare") {
     context.strokeRect(x, y, box.width, box.height);
     for (let offset = 8; offset < box.width; offset += 10) {
       context.beginPath();
@@ -732,8 +756,10 @@ function drawArena(
   canvas.dataset.pitFinisherFamily = finisher?.profile?.family ?? '';
   canvas.dataset.pitFinisherChoice = String(finisher?.choice ?? '');
   canvas.dataset.pitFinisherNativeAnimation = 'false';
+  canvas.dataset.pitLifecyclePhase = presentation.phase;
+  canvas.dataset.pitLifecycleKinds = state.fighters.map(fighter => getPitFighterPresentationCue(fighter.slot, presentation, reducedCharacterMotion)?.kind ?? 'combat').join(',');
   (finisherDrawn ? [] : state.fighters).forEach((fighter) => {
-    const definition = PIT_FIGHTERS[fighter.definitionId];
+    const definition = getPitCombatFighterDefinition(fighter);
     const fighterPalette =
       fighter.slot === 0 && leftCosmeticPalette ? leftCosmeticPalette : definition.palette;
     const boxes = getPitFighterBoxes(fighter);
@@ -956,10 +982,11 @@ export function FighterCard({
   side: "GAUCHE" | "DROITE";
   paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
 }) {
-  const fighter = PIT_FIGHTERS[fighterId];
+  const fighter = getPitCurrentFighterDefinition(fighterId, variantId);
   const profile = getPitFighterProfile(fighterId);
   const palette = paletteOverride ?? fighter.palette;
   const userVariant = getPitUserVariant(fighterId, normalizePitUserVariant(fighterId, variantId));
+  const moveset = getPitAuthoredMovesetV92(fighterId, userVariant?.id);
   const authoredPortrait = isPitExpansionFighterId(fighterId) && !userVariant;
   const keyArt = userVariant ? null : getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
   const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId, variantId);
@@ -1007,7 +1034,7 @@ export function FighterCard({
       <h3>{fighter.name}</h3>
       {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : userVariant.sourceArchive.startsWith('OpenAI') ? 'illustration OpenAI référencée · pose fixe' : 'image fournie · pose fixe'}</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
-      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : fighter.attacks.technique.label}</small>
+      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</small>
       {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
       {fighterId === 'falconer' && <small className={styles.fighterArtNotice}>Un drone mécanique · reconnaissance sans dégâts · une seconde commande rappelle le même appareil. Deux vues natives fixes : déplacement du capteur, sans cycle de battement inventé.</small>}
       <dl>
@@ -1016,14 +1043,25 @@ export function FighterCard({
         <div><dt>MOBILITÉ</dt><dd>{Math.round(fighter.walkSpeed * 20)}</dd></div>
       </dl>
       <details key={fighterId} className={styles.fighterProfile} data-pit-fighter-profile>
-        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du chasseur</summary>
+        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du combattant</summary>
         <p className={styles.fighterSource}>{profile.sourceWork}</p>
-        <p>{profile.arcadeIntro}</p>
+        <p>{moveset ? moveset.sourceScope + ' ' + moveset.limitation : profile.arcadeIntro}</p>
         {!unavailableTechnique && <p>
-          <strong>{fighter.attacks.technique.label}</strong>
+          <strong>{moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</strong>
           {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
           {fighter.attacks.technique.startup}{" images"}
         </p>}
+        {moveset ? <section data-pit-authored-moveset={moveset.id} data-pit-moveset-certified="false"
+          aria-label={`Règles de duel adaptées de ${fighter.name}`}>
+          <p><strong>Profil individuel V92 · fidélité 1:1 non certifiée.</strong> Les anciens checkpoints et replays gardent leurs recettes historiques.</p>
+          <a href={moveset.sourceUrl} target="_blank" rel="noopener noreferrer">Référence de l’équipement, sans certification des coups</a>
+          <ul>{(['light', 'medium', 'heavy', 'technique'] as const).map(kind => <li key={kind}>
+            {fighter.attacks[kind].label} · portée {fighter.attacks[kind].range} · préparation/contact/retour {fighter.attacks[kind].startup}/{fighter.attacks[kind].active}/{fighter.attacks[kind].recovery} ticks
+          </li>)}</ul>
+          <details><summary>Audit historique V91 avant spécialisation</summary>
+            <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>
+          </details>
+        </section> : <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>}
         {visibleArt ? (
           <small>
             {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
@@ -1100,6 +1138,9 @@ export default function PitCanvas({
   const [finisherModeV80, setFinisherModeV80] = useState<PitFinisherModeV80>('stylized');
   const [finisherV80, setFinisherV80] = useState(createPitFinisherViewV80);
   const finisherRefV80 = useRef(finisherV80);
+  const [lifecycleV93, setLifecycleV93] = useState(createPitLifecyclePresentationV93);
+  const lifecycleRefV93 = useRef(lifecycleV93);
+  const lifecycleInteractionReadyRefV93 = useRef(false);
   const finisherKeyV80 = combat?.phase === 'match-over' ? `${activeMatchResultId}:${combat.frame}:${combat.round}:${combat.matchWinnerId}` : '';
   const terminalPresentationReady = combat?.phase === "match-over" && roundPresentation.resultVisible &&
     finisherV80.key === finisherKeyV80 && finisherV80.phase === 'complete';
@@ -1267,9 +1308,20 @@ export default function PitCanvas({
     return new Set(actionIds.flatMap((actionId) => controlBindings[actionId]));
   }, [controlBindings, mode]);
 
+  const lifecyclePresentationV93 = useMemo(
+    () => pitLifecyclePresentationViewV93(roundPresentation, combat, finisherV80, lifecycleV93),
+    [roundPresentation, combat, finisherV80, lifecycleV93],
+  );
+  const nativeTauntDurationsV93 = useMemo(() => combat?.fighters.map(fighter =>
+    pitNativeTauntDurationV93(fighterArt?.spriteSheets, fighter)) ?? [null, null], [combat, fighterArt]);
+  const tauntKeyCodesV93 = useMemo(() => {
+    // Respect every user binding, including pause/help, rather than stealing T.
+    const occupied = new Set(Object.values(controlBindings).flat());
+    return ['KeyT', 'KeyY', 'KeyG', 'KeyB', 'KeyV', 'KeyN'].filter(code => !occupied.has(code)).slice(0, 2);
+  }, [controlBindings]);
   const fighterArtStatuses = useMemo(
-    () => combatFighterArtStatuses(fighterArt, combat, roundPresentation, prefersReducedMotion, playbackReplay?.engineVersion),
-    [fighterArt, combat, roundPresentation, prefersReducedMotion, playbackReplay?.engineVersion],
+    () => combatFighterArtStatuses(fighterArt, combat, lifecyclePresentationV93, prefersReducedMotion, playbackReplay?.engineVersion),
+    [fighterArt, combat, lifecyclePresentationV93, prefersReducedMotion, playbackReplay?.engineVersion],
   );
   const briefingFighterStates = combat?.fighters.map((fighter, index): PitTrainingAssetState => {
     if (!isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId)) return "loading";
@@ -1298,6 +1350,9 @@ export default function PitCanvas({
     const finisher = createPitFinisherViewV80();
     finisherRefV80.current = finisher;
     setFinisherV80(finisher);
+    const lifecycle = createPitLifecyclePresentationV93();
+    lifecycleRefV93.current = lifecycle;
+    setLifecycleV93(lifecycle);
     const presentation = createPitRoundPresentation(next);
     roundPresentationRef.current = presentation;
     setRoundPresentation(presentation);
@@ -2216,12 +2271,7 @@ export default function PitCanvas({
       if (!replay) throw new Error("invalid replay");
       const reader = createPitReplayReader(replay);
       if (!canPitFighterEnterMode(replay.fighters[0], mode)) setMode("cpu");
-      const next = createPitCombatState(replay.fighters[0], replay.fighters[1], {
-        ...replay.rules,
-        arenaId: replay.arenaId,
-        variants: replay.variants,
-        houndVariantId: replay.houndVariantId,
-      });
+      const next = createPitReplayCombatState(replay);
       recorderRef.current = null;
       replayReaderRef.current = reader;
       stageLifeSeedRef.current = replay.seed;
@@ -2289,6 +2339,29 @@ export default function PitCanvas({
     else entries.delete(token);
   }, [pausedRef]);
 
+  const requestPitTauntV93 = useCallback((slot: 0 | 1) => {
+    const currentCombat = combatRef.current;
+    if (!lifecycleInteractionReadyRefV93.current || pausedRef.current || document.hidden || playbackReplay ||
+        !currentCombat || (slot === 1 && mode !== 'local') || trainingLessonRef.current || trainingActivityRef.current !== 'idle') return;
+    const durationMs = pitNativeTauntDurationV93(fighterArt?.spriteSheets, currentCombat.fighters[slot]);
+    if (durationMs === null) return; // No procedural/reused substitute authorizes a taunt.
+    const current = lifecycleRefV93.current;
+    let next = current;
+    if (finisherRefV80.current.phase === 'window' && roundPresentationRef.current.resultVisible) {
+      next = beginPitLifecycleTauntV93(current, currentCombat, finisherRefV80.current, slot, durationMs, true);
+    } else {
+      const pad = readAssignedGamepads().pads[slot];
+      const input = mergeInputs(mergeInputs(
+        pitInputFromControlCodes(slot === 0 ? 1 : 2, pressedKeysRef.current, controlBindings),
+        pitInputFromControlCodes(slot === 0 ? 1 : 2, touchInputsRef.current[slot], controlBindings)), readGamepad(pad ?? null));
+      next = beginPitCombatTauntV93(current, currentCombat, roundPresentationRef.current, slot, durationMs, true, input);
+    }
+    if (next === current) return;
+    lifecycleRefV93.current = next; setLifecycleV93(next);
+    setAriaAnnouncement(`${PIT_FIGHTERS[currentCombat.fighters[slot].definitionId].name} · provocation${finisherRefV80.current.phase === 'window' ? ' avant la conclusion.' : '. Le combat continue.'}`);
+    rootRef.current?.focus({ preventScroll: true });
+  }, [controlBindings, fighterArt, mode, pausedRef, playbackReplay, readAssignedGamepads]);
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented) return;
@@ -2340,6 +2413,10 @@ export default function PitCanvas({
         target instanceof HTMLElement &&
         target.closest("button, input, select, textarea, a[href]")
       ) return;
+      const tauntSlot = tauntKeyCodesV93.indexOf(event.code);
+      if (!event.repeat && tauntSlot >= 0 && tauntSlot < 2 && !event.ctrlKey && !event.altKey && !event.metaKey) {
+        event.preventDefault(); requestPitTauntV93(tauntSlot as 0 | 1); return;
+      }
       if (finisherRefV80.current.phase === 'window' && !event.repeat) {
         const slot = finisherRefV80.current.winnerSlot;
         const prefix = slot === 0 ? 'pit.p1' : 'pit.p2';
@@ -2371,7 +2448,7 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef]);
+  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93]);
 
   const viewPhase = combat === null
     ? "selection"
@@ -2544,6 +2621,17 @@ export default function PitCanvas({
   );
   const simulationRunning = combat !== null && !menuOpen && !matchAssetsPending && !roundPresentation.blocksSimulation && combat.phase !== "match-over" &&
     (!playbackReplay || !replayEnded);
+  useEffect(() => {
+    lifecycleInteractionReadyRefV93.current = !matchAssetsPending && !menuOpen && !trainingPaused;
+  }, [matchAssetsPending, menuOpen, trainingPaused]);
+  const tauntAvailableV93 = nativeTauntDurationsV93.map((durationMs, index) => {
+    const slot = index as 0 | 1;
+    if (durationMs === null || !combat || playbackReplay || matchAssetsPending || menuOpen || trainingPaused ||
+        trainingLesson || trainingActivity !== 'idle' || (slot === 1 && mode !== 'local')) return false;
+    if (finisherV80.phase === 'window') return roundPresentation.resultVisible && !finisherV80.options.cpuWinner &&
+      pitLifecycleWindowWinnerV93(combat, finisherV80) === slot && !lifecycleV93.taunt;
+    return beginPitCombatTauntV93(lifecycleV93, combat, roundPresentation, slot, durationMs, true) !== lifecycleV93;
+  });
 
   useEffect(() => {
     const presentation = roundPresentationRef.current;
@@ -2594,6 +2682,9 @@ export default function PitCanvas({
       const next = advancePitFinisherV80(finisherRefV80.current, delta, roundPresentationRef.current.resultVisible,
         pausedRef.current || document.hidden);
       if (next !== finisherRefV80.current) { finisherRefV80.current = next; setFinisherV80(next); }
+      const lifecycle = advancePitLifecyclePresentationV93(lifecycleRefV93.current, combatRef.current, next, delta,
+        pausedRef.current || document.hidden);
+      if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
       if (next.phase !== 'complete' && next.phase !== 'idle') requestId = requestAnimationFrame(step);
     };
     requestId = requestAnimationFrame(step);
@@ -2779,6 +2870,8 @@ export default function PitCanvas({
             : stepPitCombat(current, inputs);
         }
         publishRoundPresentation(observePitRoundPresentation(roundPresentationRef.current, current));
+        const lifecycle = observePitCombatTauntsV93(lifecycleRefV93.current, current, inputs);
+        if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
         if (mode === "training" && trainingLessonRef.current) {
           const nextLesson = evaluatePitTrainingLesson(trainingLessonRef.current, previousCombat, current);
           trainingLessonRef.current = nextLesson;
@@ -2840,7 +2933,7 @@ export default function PitCanvas({
       fighterArt,
       arenaArt,
       reducedCameraMotion,
-      roundPresentation,
+      lifecyclePresentationV93,
       // Fixed camera only locks framing; OS reduced-motion also holds ceremonial poses.
       prefersReducedMotion,
       companionArt,
@@ -2850,7 +2943,7 @@ export default function PitCanvas({
       stageLifeSeedRef.current,
       finisherV80,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -3547,8 +3640,8 @@ export default function PitCanvas({
   }
 
   const [left, right] = combat.fighters;
-  const leftDefinition = PIT_FIGHTERS[left.definitionId];
-  const rightDefinition = PIT_FIGHTERS[right.definitionId];
+  const leftDefinition = getPitCombatFighterDefinition(left);
+  const rightDefinition = getPitCombatFighterDefinition(right);
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
@@ -3634,6 +3727,10 @@ export default function PitCanvas({
       data-pit-combat-phase={combat.phase}
       data-pit-timer-frames={combat.roundFramesRemaining}
       data-pit-presentation-phase={roundPresentation.phase}
+      data-pit-lifecycle-phase={lifecyclePresentationV93.phase}
+      data-pit-taunt-key-p1={tauntKeyCodesV93[0] ?? ''}
+      data-pit-taunt-key-p2={mode === 'local' ? tauntKeyCodesV93[1] ?? '' : ''}
+      data-pit-taunt-available={tauntAvailableV93.join(',')}
       data-pit-presentation-elapsed-ms={Math.floor(roundPresentation.elapsedMs)}
       data-pit-presentation-duration-ms={roundPresentation.durationMs}
       data-pit-presentation-countdown={roundPresentation.countdown ?? ""}
@@ -3668,6 +3765,11 @@ export default function PitCanvas({
         <span className={styles.stageLabel}>{playbackReplay ? "RELECTURE · " : ""}{arenaDefinition.name}{combat.stageJourney ? (` · ${combat.stageJourney.sector === "sas" ? activeJourneyDefinition?.entryLabel ?? "SECTEUR 1" : activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"}`) : ""}
           {mode === "descent" && terminalDescentRun ? ` · ÉTAGE ${Math.min(PIT_DESCENT_FLOOR_COUNT, terminalDescentRun.completedFloors + 1)}/${PIT_DESCENT_FLOOR_COUNT} · RUN ${terminalDescentRun.health}/${PIT_DESCENT_MAX_HEALTH}` : ""}</span>
         {trainingRules && !playbackReplay && <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>}
+        {!playbackReplay && combat.phase === 'round' && nativeTauntDurationsV93.map((duration, slot) => duration !== null && (slot === 0 || mode === 'local')
+          ? <button key={slot} type="button" className={styles.utilityButton} style={{ minHeight: 44 }} data-pit-taunt={slot}
+            disabled={!tauntAvailableV93[slot]} onClick={() => requestPitTauntV93(slot as 0 | 1)}
+            aria-label={`Provocation du joueur ${slot + 1}${tauntKeyCodesV93[slot] ? `, touche ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}`}>
+            J{slot + 1} · PROVOCATION{tauntKeyCodesV93[slot] ? ` · ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}</button> : null)}
         <button type="button" className={styles.utilityButton} data-pit-menu-button aria-label="Pause et menu du combat" onClick={() => openMenu()}>Ⅱ <span>MENU</span></button>
       </div>
       <div className={styles.hud} data-pit-hud inert={terminal || menuOpen}>
@@ -3751,7 +3853,12 @@ export default function PitCanvas({
               </div>}
           </div>
         ) : null}
-        {!menuOpen && !matchAssetsPending && <PitFinisherHudV80 view={finisherV80} onChoose={chooseFinisherV80} onSkip={skipFinisherV80} />}
+        {!menuOpen && !matchAssetsPending && <PitFinisherHudV80 view={finisherV80} onChoose={chooseFinisherV80} onSkip={skipFinisherV80}
+          taunt={finisherV80.winnerSlot !== null && nativeTauntDurationsV93[finisherV80.winnerSlot] !== null ? {
+            available: tauntAvailableV93[finisherV80.winnerSlot], active: Boolean(lifecycleV93.taunt),
+            keyLabel: tauntKeyCodesV93[finisherV80.winnerSlot] ? compactControlKeyLabel(tauntKeyCodesV93[finisherV80.winnerSlot]) : undefined,
+            onRequest: () => { if (finisherV80.winnerSlot !== null) requestPitTauntV93(finisherV80.winnerSlot); },
+          } : undefined} />}
         {roundPresentation.phase === "fight" && left.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboLeft}`}>{left.comboHitsReceived}<small>COUPS</small></div> : null}
         {roundPresentation.phase === "fight" && right.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboRight}`}>{right.comboHitsReceived}<small>COUPS</small></div> : null}
         {frameReadouts ? (

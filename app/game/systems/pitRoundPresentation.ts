@@ -1,7 +1,7 @@
 import { PIT_ROUND_TRANSITION_FRAMES, PIT_TICK_RATE, type PitCombatState } from "./pitCombat";
 
 /** Presentation only: never serialized into combat state, saves or replay ticks. */
-export type PitRoundPresentationPhase = "idle" | "intro-left" | "intro-right" | "countdown" | "fight" | "round-result" | "match-result";
+export type PitRoundPresentationPhase = "idle" | "intro-left" | "intro-right" | "countdown" | "fight" | "round-result" | "match-result" | "finisher-window" | "taunt";
 export interface PitRoundPresentationView {
   phase: PitRoundPresentationPhase;
   elapsedMs: number;
@@ -12,6 +12,12 @@ export interface PitRoundPresentationView {
   winnerSlot?: 0 | 1 | null;
   blocksSimulation: boolean;
   resultVisible: boolean;
+  /** Render-only per-slot clocks during a native gesture or finisher window;
+   * neither field belongs to a combat checkpoint. */
+  fighterElapsedMs?: readonly [number, number];
+  fighterDurationMs?: readonly [number, number];
+  /** Optional render gestures during fight: the other side keeps gameplay. */
+  fighterTaunts?: readonly [boolean, boolean];
 }
 export const PIT_PRESENTATION_INTRO_MS = 1_200;
 export const PIT_PRESENTATION_COUNTDOWN_MS = 3_000;

@@ -1,8 +1,9 @@
 import { PIT_FINISHER_CHOICES_V80, type PitFinisherChoiceV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
 import styles from './PitFinishersV80.module.css';
 
-export function PitFinisherHudV80({ view, onChoose, onSkip }: { view: PitFinisherViewV80;
-  onChoose: (choice: PitFinisherChoiceV80) => void; onSkip: () => void }) {
+export function PitFinisherHudV80({ view, onChoose, onSkip, taunt }: { view: PitFinisherViewV80;
+  onChoose: (choice: PitFinisherChoiceV80) => void; onSkip: () => void;
+  taunt?: { available: boolean; active: boolean; keyLabel?: string; onRequest: () => void } }) {
   if (view.phase === 'idle' || view.phase === 'ready' || view.phase === 'complete') return null;
   const choosing = view.phase === 'window';
   return <aside className={styles.hud} data-pit-finisher-hud data-phase={view.phase} data-nonlethal={view.nonlethal}
@@ -15,7 +16,10 @@ export function PitFinisherHudV80({ view, onChoose, onSkip }: { view: PitFinishe
       <small>J{view.winnerSlot === 0 ? 1 : 2} · attaque légère/lourde + neutre / bas / avant / arrière · A/X + direction · Pause : Start/Échap</small>
       <div className={styles.choices}>{PIT_FINISHER_CHOICES_V80.map((label, index) => <button key={label} type="button"
         data-pit-finisher-choice={index} disabled={view.options.cpuWinner}
-        onClick={() => onChoose(index as PitFinisherChoiceV80)}>{index + 1} · {label}</button>)}</div>
+        onClick={() => onChoose(index as PitFinisherChoiceV80)}>{index + 1} · {label}</button>)}
+        {taunt && <button type="button" data-pit-taunt="finisher-window" disabled={!taunt.available || taunt.active || view.options.cpuWinner}
+          style={{ minHeight: 44 }} onClick={taunt.onRequest}>{taunt.active ? 'Provocation en cours' : `Provocation${taunt.keyLabel ? ` · ${taunt.keyLabel}` : ''}`}</button>}
+      </div>
       <small aria-hidden="true">{Math.max(0, Math.ceil((view.durationMs - view.elapsedMs) / 1000))} s</small>
     </> : <small>Conclusion du duel en cours.</small>}
     <button className={styles.skip} type="button" data-pit-finisher-skip onClick={onSkip}>Passer la conclusion</button>

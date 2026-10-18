@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
 import { build } from 'esbuild';
+import { homeworldInteriorPointFixture } from './helpers/homeworld-interior-point-fixture.mjs';
 
 const bundle = await build({ stdin: { contents: `
 export * from './app/game/systems/homeworld';
@@ -63,10 +64,10 @@ function fixture(initialOverrides = {}) {
   for (const name of ['persistSocialProgress', 'persistHomeworldProgress', 'pointInCurrentSpace', 'openHomeworldRegionV68', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'submitContractV68']) environment[name] = callback(name, environment);
   environment.onProgress = environment.persistHomeworldProgress;
   const select = pointId => {
-    const room = api.homeworldInteriorForPointV64(pointId), point = room.points.find(item => item.pointId === pointId);
+    const room = api.homeworldInteriorForPointV64(pointId);
     environment.interiorRef.current = room;
     environment.levelRefV77.current = api.HOMEWORLD_BUILDINGS_V77.find(building => building.id === room.buildingId).levelId;
-    environment.actorRef.current = { ...environment.actorRef.current, x: point.x, y: point.y + 45 };
+    environment.actorRef.current = { ...environment.actorRef.current, ...homeworldInteriorPointFixture(api, room, pointId) };
     const actualPoint = environment.pointInCurrentSpace(environment.actorRef.current, room, environment.levelRefV77.current);
     assert.equal(actualPoint.id, pointId);
     environment.dialogStateRef.current = dialog = { point: actualPoint };

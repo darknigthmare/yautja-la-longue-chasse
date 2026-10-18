@@ -52,7 +52,7 @@ test("server-renders the campaign menu before local archive hydration", async ()
     .replace(/<span\b(?=[^>]*\baria-hidden=["']true["'])[^>]*>[\s\S]*?<\/span>/gi, "")
     .replace(/<[^>]+>/g, "").trim();
   assert.deepEqual(buttons.map(([, , content]) => actionLabel(content)), [
-    "Continuer", "Nouvelle partie", "Compte &amp; sauvegardes", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
+    "Continuer", "Nouvelle partie", "The Pit", "Game Reserve Planet", "Compte &amp; sauvegardes", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
   ]);
   // No local archives are available to SSR: actions stay protected until hydration.
   for (const [, attributes, content] of buttons) {

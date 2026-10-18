@@ -1,0 +1,2444 @@
+[
+  {
+    "fighterId": "jungle-hunter",
+    "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+    "bodyHeightPx": 420,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-masked-idle-v93",
+      "characterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-masked-idle-v93",
+          "src": "/game/sprites/v93/pit/jungle-hunter/004-jungle-hunter-masked-idle-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                560
+              ],
+              "pivot": [
+                269,
+                518
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                0,
+                560,
+                512,
+                480
+              ],
+              "pivot": [
+                269,
+                445
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                0,
+                1040,
+                512,
+                496
+              ],
+              "pivot": [
+                269,
+                433
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                560
+              ],
+              "pivot": [
+                242.5,
+                517
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                512,
+                560,
+                512,
+                480
+              ],
+              "pivot": [
+                246.5,
+                445
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "jungle-hunter-masked-idle-v93",
+              "rect": [
+                512,
+                1040,
+                512,
+                496
+              ],
+              "pivot": [
+                242.5,
+                431
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          560
+        ],
+        "visibleRect": [
+          126,
+          121,
+          288,
+          398
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          560
+        ],
+        "visibleRect": [
+          611,
+          122,
+          289,
+          396
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          0,
+          560,
+          512,
+          480
+        ],
+        "visibleRect": [
+          136,
+          592,
+          279,
+          414
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          512,
+          560,
+          512,
+          480
+        ],
+        "visibleRect": [
+          608,
+          592,
+          293,
+          414
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          0,
+          1040,
+          512,
+          496
+        ],
+        "visibleRect": [
+          125,
+          1084,
+          289,
+          390
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-idle-v93",
+        "rect": [
+          512,
+          1040,
+          512,
+          496
+        ],
+        "visibleRect": [
+          609,
+          1084,
+          290,
+          388
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "jungle-hunter",
+    "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+    "bodyHeightPx": 420,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-masked-dizzy-v93",
+      "characterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-masked-dizzy-v93",
+          "src": "/game/sprites/v93/pit/jungle-hunter/005-jungle-hunter-masked-dizzy-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268,
+                480
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                462
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                274.5,
+                438
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                242.5,
+                480
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                244.5,
+                460
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "jungle-hunter-masked-dizzy-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                236,
+                438
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          184,
+          104,
+          183,
+          377
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          660,
+          101,
+          185,
+          380
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          194,
+          584,
+          219,
+          391
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          627,
+          587,
+          220,
+          386
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          184,
+          1089,
+          187,
+          374
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-dizzy-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          652,
+          1090,
+          193,
+          373
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "jungle-hunter",
+    "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+    "bodyHeightPx": 420,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-masked-taunt-v93",
+      "characterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-masked-taunt-v93",
+          "src": "/game/sprites/v93/pit/jungle-hunter/006-jungle-hunter-masked-taunt-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265.5,
+                481
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                479
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                269,
+                455
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                249.5,
+                480
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                252,
+                478
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "jungle-hunter-masked-taunt-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                245,
+                456
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          133,
+          65,
+          266,
+          417
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          628,
+          65,
+          267,
+          416
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          117,
+          578,
+          315,
+          414
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          610,
+          578,
+          317,
+          413
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          127,
+          1070,
+          286,
+          410
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-taunt-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          619,
+          1074,
+          278,
+          407
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scar",
+    "variantId": "scar-avec-casque-6a0a69930d",
+    "bodyHeightPx": 460,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-masked-dizzy-v93",
+      "characterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-masked-dizzy-v93",
+          "src": "/game/sprites/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                248.5,
+                478
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                247.5,
+                481
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                240.5,
+                483
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                478
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                481
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "scar-masked-dizzy-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                270.5,
+                484
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          142,
+          67,
+          214,
+          412
+        ]
+      },
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          665,
+          70,
+          221,
+          409
+        ]
+      },
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          134,
+          582,
+          282,
+          412
+        ]
+      },
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          603,
+          585,
+          290,
+          409
+        ]
+      },
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          134,
+          1100,
+          216,
+          408
+        ]
+      },
+      {
+        "pageId": "scar-masked-dizzy-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          673,
+          1101,
+          220,
+          408
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scar",
+    "variantId": "scar-avec-casque-6a0a69930d",
+    "bodyHeightPx": 460,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-masked-taunt-v93",
+      "characterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-masked-taunt-v93",
+          "src": "/game/sprites/v93/pit/scar/004-scar-masked-taunt-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                492
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                288.5,
+                486
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                460
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                493
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                222.5,
+                488
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-taunt-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                251.5,
+                460
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          81,
+          34,
+          361,
+          459
+        ]
+      },
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          581,
+          34,
+          361,
+          460
+        ]
+      },
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          126,
+          544,
+          326,
+          455
+        ]
+      },
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          571,
+          544,
+          326,
+          457
+        ]
+      },
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          80,
+          1046,
+          362,
+          439
+        ]
+      },
+      {
+        "pageId": "scar-masked-taunt-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          581,
+          1042,
+          363,
+          443
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scar",
+    "variantId": "scar-avec-casque-6a0a69930d",
+    "bodyHeightPx": 460,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-masked-idle-v93",
+      "characterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-masked-idle-v93",
+          "src": "/game/sprites/v93/pit/scar/006-scar-masked-idle-r2-v93.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                507
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                268,
+                496
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                457
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                251.5,
+                509
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                245,
+                500
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "scar-masked-idle-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                459
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          107,
+          78,
+          308,
+          430
+        ]
+      },
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          609,
+          79,
+          306,
+          431
+        ]
+      },
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          126,
+          563,
+          312,
+          446
+        ]
+      },
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          590,
+          559,
+          313,
+          454
+        ]
+      },
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          112,
+          1058,
+          302,
+          424
+        ]
+      },
+      {
+        "pageId": "scar-masked-idle-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          611,
+          1058,
+          307,
+          426
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 420,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-taunt-v93",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-taunt-v93",
+          "src": "/game/sprites/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                281.5,
+                492
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                289.5,
+                486
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                294.5,
+                467
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                227,
+                493
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                223,
+                491
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "wolf-masked-taunt-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                468
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          149,
+          78,
+          265,
+          415
+        ]
+      },
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          609,
+          77,
+          262,
+          417
+        ]
+      },
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          157,
+          567,
+          268,
+          432
+        ]
+      },
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          602,
+          567,
+          267,
+          437
+        ]
+      },
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          160,
+          1072,
+          270,
+          420
+        ]
+      },
+      {
+        "pageId": "wolf-masked-taunt-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          603,
+          1067,
+          269,
+          426
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 420,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-dizzy-v93",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-dizzy-v93",
+          "src": "/game/sprites/v93/pit/wolf/v93-wolf-006-wolf-masked-dizzy-recovery.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                310,
+                495
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                313,
+                473
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                302,
+                450
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                207,
+                495
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                214.5,
+                474
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "wolf-masked-dizzy-v93",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                215.5,
+                451
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          190,
+          89,
+          226,
+          407
+        ]
+      },
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          609,
+          89,
+          223,
+          407
+        ]
+      },
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          184,
+          568,
+          260,
+          418
+        ]
+      },
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          589,
+          570,
+          254,
+          417
+        ]
+      },
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          195,
+          1053,
+          233,
+          422
+        ]
+      },
+      {
+        "pageId": "wolf-masked-dizzy-v93",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          609,
+          1064,
+          222,
+          412
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "city-hunter",
+    "variantId": "city-hunter-avec-casque-12136078fe",
+    "bodyHeightPx": 473,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-masked-idle-v93",
+      "characterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-masked-idle-v93",
+          "src": "/game/sprites/v93/pit/city-hunter/idle-r2.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                127,
+                20,
+                293,
+                477
+              ],
+              "pivot": [
+                155.5,
+                473
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                143,
+                526,
+                292,
+                486
+              ],
+              "pivot": [
+                144,
+                483
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                135,
+                1053,
+                281,
+                452
+              ],
+              "pivot": [
+                143.5,
+                448
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                602,
+                20,
+                297,
+                478
+              ],
+              "pivot": [
+                134.5,
+                473
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                583,
+                528,
+                305,
+                484
+              ],
+              "pivot": [
+                153,
+                479
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "city-hunter-masked-idle-v93",
+              "rect": [
+                607,
+                1054,
+                277,
+                451
+              ],
+              "pivot": [
+                139,
+                447
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          127,
+          20,
+          293,
+          477
+        ],
+        "visibleRect": [
+          130,
+          22,
+          288,
+          472
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          602,
+          20,
+          297,
+          478
+        ],
+        "visibleRect": [
+          605,
+          22,
+          290,
+          472
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          143,
+          526,
+          292,
+          486
+        ],
+        "visibleRect": [
+          147,
+          529,
+          285,
+          481
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          583,
+          528,
+          305,
+          484
+        ],
+        "visibleRect": [
+          586,
+          531,
+          299,
+          477
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          135,
+          1053,
+          281,
+          452
+        ],
+        "visibleRect": [
+          140,
+          1056,
+          273,
+          446
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-idle-v93",
+        "rect": [
+          607,
+          1054,
+          277,
+          451
+        ],
+        "visibleRect": [
+          611,
+          1057,
+          269,
+          445
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "city-hunter",
+    "variantId": "city-hunter-avec-casque-12136078fe",
+    "bodyHeightPx": 473,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-masked-dizzy-v93",
+      "characterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-masked-dizzy-v93",
+          "src": "/game/sprites/v93/pit/city-hunter/dizzy-r2.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                97,
+                31,
+                343,
+                450
+              ],
+              "pivot": [
+                178.5,
+                447
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                112,
+                519,
+                308,
+                491
+              ],
+              "pivot": [
+                163,
+                488
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                101,
+                1041,
+                324,
+                466
+              ],
+              "pivot": [
+                170,
+                461
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.dizzy",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                596,
+                29,
+                333,
+                452
+              ],
+              "pivot": [
+                159,
+                449
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                602,
+                518,
+                314,
+                492
+              ],
+              "pivot": [
+                151,
+                489
+              ],
+              "durationTicks": 22
+            },
+            {
+              "pageId": "city-hunter-masked-dizzy-v93",
+              "rect": [
+                613,
+                1041,
+                310,
+                465
+              ],
+              "pivot": [
+                153.5,
+                461
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          97,
+          31,
+          343,
+          450
+        ],
+        "visibleRect": [
+          103,
+          34,
+          334,
+          445
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          596,
+          29,
+          333,
+          452
+        ],
+        "visibleRect": [
+          600,
+          32,
+          324,
+          447
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          112,
+          519,
+          308,
+          491
+        ],
+        "visibleRect": [
+          115,
+          521,
+          302,
+          487
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          602,
+          518,
+          314,
+          492
+        ],
+        "visibleRect": [
+          604,
+          521,
+          309,
+          487
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          101,
+          1041,
+          324,
+          466
+        ],
+        "visibleRect": [
+          106,
+          1045,
+          317,
+          458
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-dizzy-v93",
+        "rect": [
+          613,
+          1041,
+          310,
+          465
+        ],
+        "visibleRect": [
+          615,
+          1045,
+          305,
+          458
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "city-hunter",
+    "variantId": "city-hunter-avec-casque-12136078fe",
+    "bodyHeightPx": 473,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-masked-taunt-v93",
+      "characterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-masked-taunt-v93",
+          "src": "/game/sprites/v93/pit/city-hunter/taunt-r2.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                116,
+                51,
+                285,
+                448
+              ],
+              "pivot": [
+                138.5,
+                444
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                112,
+                540,
+                324,
+                461
+              ],
+              "pivot": [
+                155,
+                458
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                111,
+                1043,
+                290,
+                447
+              ],
+              "pivot": [
+                144,
+                443
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                626,
+                49,
+                284,
+                450
+              ],
+              "pivot": [
+                142.5,
+                446
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                604,
+                540,
+                307,
+                461
+              ],
+              "pivot": [
+                153,
+                457
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "city-hunter-masked-taunt-v93",
+              "rect": [
+                623,
+                1038,
+                289,
+                453
+              ],
+              "pivot": [
+                145.5,
+                449
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          116,
+          51,
+          285,
+          448
+        ],
+        "visibleRect": [
+          118,
+          55,
+          280,
+          441
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          626,
+          49,
+          284,
+          450
+        ],
+        "visibleRect": [
+          631,
+          53,
+          275,
+          443
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          112,
+          540,
+          324,
+          461
+        ],
+        "visibleRect": [
+          115,
+          542,
+          319,
+          457
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          604,
+          540,
+          307,
+          461
+        ],
+        "visibleRect": [
+          608,
+          542,
+          301,
+          456
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          111,
+          1043,
+          290,
+          447
+        ],
+        "visibleRect": [
+          114,
+          1047,
+          284,
+          440
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-taunt-v93",
+        "rect": [
+          623,
+          1038,
+          289,
+          453
+        ],
+        "visibleRect": [
+          627,
+          1041,
+          283,
+          447
+        ]
+      }
+    ]
+  }
+]

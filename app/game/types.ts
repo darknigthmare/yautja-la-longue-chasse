@@ -13,12 +13,15 @@ import type { SoloV67Campaign } from "./systems/campaignSoloV67";
 import type { SoloV68Campaign } from "./systems/campaignSoloV68";
 import type { SoloV69Campaign } from "./systems/campaignSoloV69";
 import type { SoloV70Campaign } from "./systems/campaignSoloV70";
+import type { SoloV90Campaign } from "./systems/campaignSoloV90";
 import type { HomeworldRegionStateV68 } from "./systems/homeworldRegionsV68";
 import type { HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import type { GameReserveV66State } from "./systems/gameReserveV66";
 import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
 import type { JusticeProgress } from "./systems/justice";
+import type { ShipPreparationStateV88 } from "./systems/shipPreparationV88";
+import type { ShipAcquisitionStateV89 } from "./systems/shipAcquisitionV89";
 
 // ---------------------------------------------------------------------------
 // Stable content identifiers
@@ -640,10 +643,16 @@ export interface SaveGame {
   soloV69?: SoloV69Campaign | null;
   /** First act of the original clan temple; independent of the later Blooded rite. */
   soloV70?: SoloV70Campaign | null;
+  /** Local preparation only; never substitutes for a Blooded rite. */
+  soloV90?: SoloV90Campaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;
   gameReserveV66?: GameReserveV66State | null;
+  /** Physical station inspections only; no hull acquisition or travel credit. */
+  shipPreparationV88?: ShipPreparationStateV88 | null;
+  /** Owner-bound physical shipyard work; no ownership without real rights. */
+  shipAcquisitionV89?: ShipAcquisitionStateV89 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

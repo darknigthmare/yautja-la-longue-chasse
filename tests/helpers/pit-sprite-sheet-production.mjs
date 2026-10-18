@@ -12,7 +12,7 @@ const hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 export async function auditPitSpriteSheetProduction() {
   const built = await build({ stdin: { contents: `export * from './app/game/pitSpriteSheetRegistry.ts';
     export * from './app/game/pitSpriteSheetAnimation.ts'; export * from './app/game/hunterSpriteAtlas.ts';
-    export { createPitCombatState, PIT_FIGHTERS } from './app/game/systems/pitCombat.ts';`, resolveDir: projectRoot },
+    export { createPitCombatState, getPitCombatFighterDefinition } from './app/game/systems/pitCombat.ts';`, resolveDir: projectRoot },
     bundle: true, platform: "node", format: "esm", write: false, logLevel: "silent" });
   const api = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
   const registry = api.PIT_SPRITE_SHEET_REGISTRY;
@@ -98,7 +98,9 @@ export async function auditPitSpriteSheetProduction() {
     for (const entry of registry) for (const clip of entry.atlas.clips) {
       const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf",
         { variants: [entry.variantId ?? null, null] });
-      const fighter = combat.fighters[0]; fighter.facing = clip.facing === "right" ? 1 : -1;
+      const fighter = combat.fighters[0];
+      const definition = api.getPitCombatFighterDefinition(fighter);
+      fighter.facing = clip.facing === "right" ? 1 : -1;
       if (clip.id === 'idle' && entry.heldPoseClips?.some(pose => pose.id === 'idle' && pose.facing === clip.facing)) {
         // A fighter can also own a separate animated idle. Audit this declared held
         // definition in isolation so that an earlier valid animation cannot mask it.
@@ -171,8 +173,8 @@ export async function auditPitSpriteSheetProduction() {
         const match = /^pit\.stand\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
         assert.ok(match, "Production audit needs a real engine-state fixture for " + clip.id);
         const [, action, phase] = match, attack = action.startsWith('technique.') ? 'technique' : action;
-        if (attack === 'technique') assert.equal(action, 'technique.' + api.PIT_FIGHTERS[entry.fighterId].technique.id);
-        const timing = api.PIT_FIGHTERS[entry.fighterId].attacks[attack];
+        if (attack === 'technique') assert.equal(action, 'technique.' + definition.technique.id);
+        const timing = definition.attacks[attack];
         const frame = phase === "startup" ? 0 : phase === "active" ? timing.startup : timing.startup + timing.active;
         Object.assign(fighter, { phase, action: { kind: "attack", attack, frame, connected: false } });
       }
@@ -193,7 +195,7 @@ export async function auditPitSpriteSheetProduction() {
       let nativeDrawEvidence;
       if (entry.atlas.id === 'feral-actions-v59') {
         assert.equal(resolved.definition.atlas.id, entry.atlas.id, 'V59 cannot resolve the superseded V34 action');
-        const timing = api.PIT_FIGHTERS[entry.fighterId].attacks[fighter.action.attack];
+        const timing = definition.attacks[fighter.action.attack];
         const phaseStart = fighter.phase === 'startup' ? 0 : fighter.phase === 'active' ? timing.startup : timing.startup + timing.active;
         const totalTicks = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0);
         assert.equal(totalTicks, timing[fighter.phase], 'native action intervals match the existing simulation phase exactly');
@@ -216,7 +218,7 @@ export async function auditPitSpriteSheetProduction() {
           assert.equal(api.drawPitSpriteSheetAnimation(context, bank, fighter, 440, options), true);
           assert.equal(calls.length, 1); assert.equal(calls[0][0], sample.source);
           assert.deepEqual(calls[0].slice(1, 5), expected.rect);
-          const expectedScale = api.PIT_FIGHTERS[entry.fighterId].bodyHeight /
+          const expectedScale = definition.bodyHeight /
             (entry.pageBodyHeightPx?.[expected.pageId] ?? entry.bodyHeightPx);
           assert.equal(calls[0][7], expected.rect[2] * expectedScale);
           assert.equal(calls[0][8], expected.rect[3] * expectedScale);

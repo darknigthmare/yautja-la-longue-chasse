@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import {build} from 'esbuild';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {createRequire} from 'node:module';
+import {historicalHomeworldInteriorsV81} from './helpers/homeworld-interior-history-v89.mjs';
 const require=createRequire(import.meta.url);
 const bundle=await build({stdin:{contents:"export * from './app/game/systems/homeworldInteriorsV64.ts';export * from './app/game/systems/homeworldSecondaryInteriorsV74.ts';export * from './app/game/systems/homeworldSecondaryInteriorCodexV74.ts';export * from './app/game/systems/homeworldFurnitureV72.ts';export * from './app/game/systems/homeworldCity.ts';",resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'esm'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
@@ -12,6 +13,7 @@ const rooms=api.HOMEWORLD_INTERIORS_V64.filter(room=>room.secondaryLayoutV74);
 const body={halfWidth:24,halfDepth:14},safeBody={halfWidth:28,halfDepth:18};
 const envelopes=JSON.parse(await fs.readFile('app/game/data/homeworldInteriorEnvelopesV64.json','utf8'));
 const originalMainIds=['market-armory','deep-forge','training-hall','clan-lodge','memory-vault'];
+const historicalV81=await historicalHomeworldInteriorsV81();
 const wholeBodyInsideZone=(point,zone,footprint)=>point.x-footprint.halfWidth>=zone.x&&point.x+footprint.halfWidth<=zone.x+zone.width
   &&point.y-footprint.halfDepth>=zone.y&&point.y+footprint.halfDepth<=zone.y+zone.depth;
 
@@ -47,9 +49,8 @@ test('all 37 secondary plans remain distinct; six original principal plans are p
     zones:r.zones.map(z=>[z.x,z.y,z.width,z.depth]),
     furniture:r.furniture.map(f=>[f.artId,f.x,f.y,f.scale])}))).size,36,'plans differ physically, not only by labels');
   assert.equal(new Set(Object.values(api.HOMEWORLD_SECONDARY_RECIPES_V74).map(r=>r.topology)).size,7);
-  // Preserve the exact historical fingerprint of every original field. Only
-  // independent V76 decor and these two named, measured V77 additions may be
-  // excluded; a changed old table, prop, wall, point or position still fails.
+  // Preserve the exact V81 authoring fingerprint before the explicit V82/V83/
+  // V84 composition layers. Every active geometric check below uses live rooms.
   const additions=[
     {buildingId:'pit-gate',table:{id:'pit-gate-v77-cntlip-table',artId:'meal-table',x:185,y:225,scale:.40}},
     {buildingId:'throne-audience',table:{id:'throne-audience-v77-cntlip-table',artId:'meal-table',x:410,y:141,scale:.62}},
@@ -60,7 +61,7 @@ test('all 37 secondary plans remain distinct; six original principal plans are p
     assert.deepEqual(room.furniture.filter(table=>table.id===addition.table.id),[addition.table]);
   }
   assert.equal(api.HOMEWORLD_INTERIORS_V64.flatMap(room=>room.furniture).filter(table=>table.id.includes('-v77-cntlip-')).length,2);
-  const main=api.HOMEWORLD_INTERIORS_V64.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room,furniture:room.furniture.filter(table=>!addedIds.has(table.id))};delete original.orientedDecorV76;return original;});
+  const main=historicalV81.filter(r=>originalMainIds.includes(r.buildingId)).map(room=>{const original={...room,furniture:room.furniture.filter(table=>!addedIds.has(table.id))};delete original.orientedDecorV76;return original;});
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(main)).digest('hex'),'1d20d34589a448688f93318a009dde68faa89841df057848804ee5564e6e3be5');
   for(const room of api.HOMEWORLD_INTERIORS_V64){
     const envelope=room.monumentLayoutV81?.exteriorEnvelope??envelopes.find(e=>e.buildingId===room.buildingId);

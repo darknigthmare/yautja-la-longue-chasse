@@ -9,6 +9,7 @@ export const HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76:Readonly<Record<string,{x:
   'convoy-workshop':{x:120,y:-40,reason:'Balise de sol QUAIS dégagée avec la marge corporelle du guidage, et routine de manutention libre autour du vrai socle oblique.'},
   'convoy-store':{x:-20,y:-60,reason:'Allée de la messagère des convois libre devant la réserve orientée et ses deux meubles.'},
   'residence-terraces-4':{x:0,y:-50,reason:'V81 : alcôve de la traverse occidentale, rupture de la baseline du cercle et seuil à l’écart de l’entraînement.'},
+  'residence-terraces-1':{x:20,y:-20,reason:'V89 : instance native agrandie uniformément de11/10 pour conserver la pièce de408u et son épaisseur de murs ;20u vers l’est et20u vers le nord séparent la fondation de la maison voisine sans modifier le repère de seuil dans la source, la perspective ni les routes.'},
   'residence-enforcers-1':{x:60,y:15,reason:'V81 : annexe de relève adossée au bastion, dégagement de la galerie des preuves conservé.'},
   'residence-citadel-1':{x:-50,y:65,reason:'V81 : annexe de l’audience en retrait de l’axe cérémoniel et de la future pyramide.'},
   'residence-undercity-1':{x:80,y:45,reason:'V81 : aile orientale de la galerie basse ; la façade suit la poche habitée plutôt que la baseline du refuge.'},
@@ -21,5 +22,5 @@ export const HOMEWORLD_BUILDING_PLACEMENT_OFFSETS_V76:Readonly<Record<string,{x:
   'residence-convoy-works-1':{x:-150,y:0,reason:'V81 : façade d’entretien contre le quai ouest ; aire de service dégagée devant l’abri sud.'},
   'residence-market-2':{x:200,y:25,reason:'V81 : maison du marchand dans l’alcôve orientale ;138u entre les deux fondations et134u vers la forge.'},
   'residence-esplanade-2':{x:150,y:-65,reason:'V81 : logement de la promenade tourné vers son parvis, éloigné du passage du porteur de prises et du meuble de repos.'},
-  'residence-clans-1':{x:150,y:0,reason:'V81 : maison des délégations dans la cour orientale ; ancienne traverse du coursier libérée.'},
+  'residence-clans-1':{x:50,y:125,reason:'V89 : maison oblique dans la cour des délégations,100u vers l’ouest et125u vers le sud pour séparer entièrement sa silhouette native de l’escalier du Conseil et conserver la traverse du coursier ; appuis et échelle inchangés.'},
 };

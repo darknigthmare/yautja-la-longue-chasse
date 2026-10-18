@@ -14,10 +14,10 @@ export interface HomeworldPublicFittingsV82 {
   lore: 'original-local-public-furnishing';
 }
 
-/** Additive authored fittings only. Keep every older native fixture, public
- * floor, partition, service point, collection socket and checkpoint anchor.
+/** Authored fittings with V89 ground-placement clearance corrections. Keep every
+ * native fixture identity, public floor, partition, service point and save anchor.
  * New positions are local unprojected ground coordinates, never CSS offsets.
- * This lot has not been tested, compiled or visually reviewed. */
+ * Model clearance is tested separately; visual review is not asserted here. */
 export function homeworldPublicFittingsV82(room: HomeworldInteriorV64): HomeworldInteriorV64 {
   const furniture: HomeworldPublicFurnitureV82[] = [];
   const decor: HomeworldInteriorDecorInstanceV76[] = [];
@@ -33,7 +33,7 @@ export function homeworldPublicFittingsV82(room: HomeworldInteriorV64): Homeworl
       purpose = 'Éclairage des réserves et contenants de préparation de la galerie ; les huit emplacements muraux continuent de recevoir exclusivement les trophées acquis.';
       addFurniture('register-lamp', 'resin-lantern', 180, 65, .45, 'Veille du registre',
         'Éclairage du mobilier de consultation existant, sans créer un autre registre interactif.', 'consultation');
-      addFurniture('sealed-maintenance-containers', 'sealed-jars', 510, 78, .36, 'Contenants de conservation',
+      addFurniture('sealed-maintenance-containers', 'sealed-jars', 510, 145, .36, 'Contenants de conservation',
         'Réserve locale de conservation. Aucun crâne, relique, dossier de quête ni récompense n’est montré ou accordé.', 'conservation');
       addDecor('west-preparation-case', 'chest-diagonal', 182, 298, .5,
         'Contenant fermé de préparation des supports d’exposition, déposé dans la bande latérale du vestibule ; ce n’est pas un trophée.');
@@ -42,9 +42,9 @@ export function homeworldPublicFittingsV82(room: HomeworldInteriorV64): Homeworl
       break;
     case 'training-hall':
       purpose = 'Réserves des parures, marque de la travée de préparation et contenants du vestibule ; le maître et les exercices existants conservent leurs conditions.';
-      addFurniture('preparation-containers', 'sealed-jars', 226, 136, .5, 'Contenants des exercices',
+      addFurniture('preparation-containers', 'sealed-jars', 226, 224, .5, 'Contenants des exercices',
         'Rangement de préparation derrière la branche occidentale ; aucune arme canonique inventée ou équipement donné.', 'preparation');
-      addFurniture('preparation-standard', 'clan-banner', 508, 100, .28, 'Marque locale de la travée',
+      addFurniture('preparation-standard', 'clan-banner', 344, 224, .28, 'Marque locale de la travée',
         'Tentures du bâtiment local. Les glyphes peints restent des motifs originaux du jeu, pas une langue officielle reconstituée.', 'preparation');
       addDecor('west-vestibule-case', 'chest-diagonal', 201, 316, .42,
         'Contenant fermé des protections et accessoires d’exercice ; laissé sur le côté du vestibule, sans nouveau menu d’équipement.');
@@ -53,11 +53,11 @@ export function homeworldPublicFittingsV82(room: HomeworldInteriorV64): Homeworl
       break;
     case 'memory-vault':
       purpose = 'Réserves scellées, mobilier de consultation et contenants du vestibule ; seuls les dossiers et services déjà produits restent consultables.';
-      addFurniture('west-register-containers', 'sealed-jars', 224, 76, .48, 'Réserve du registre',
+      addFurniture('west-register-containers', 'sealed-jars', 226, 314, .48, 'Réserve du registre',
         'Contenants fermés associés au bureau existant ; aucune nouvelle preuve ou information de quête n’est accordée.', 'registres');
-      addFurniture('east-record-containers', 'sealed-jars', 494, 75, .45, 'Réserve des consultations',
+      addFurniture('east-record-containers', 'sealed-jars', 486, 220, .45, 'Réserve des consultations',
         'Contenants latéraux hors de la console des archives. Leur contenu n’est pas simulé.', 'archives');
-      addFurniture('west-record-standard', 'clan-banner', 224, 196, .45, 'Marque de la travée des registres',
+      addFurniture('west-record-standard', 'clan-banner', 224, 356, .45, 'Marque de la travée des registres',
         'Repère local original, sans attribuer un emblème officiel à un clan connu.', 'registres');
       addFurniture('consultation-desk', 'register-desk', 148, 319, .46, 'Poste de consultation du vestibule',
         'Mobilier non interactif où préparer une consultation ; ne duplique pas le gardien, la console ou les dossiers existants.', 'consultation');
@@ -67,6 +67,11 @@ export function homeworldPublicFittingsV82(room: HomeworldInteriorV64): Homeworl
     default:
       return room;
   }
-  return { ...room, publicFittingsV82: { version: 'V82', purpose, furniture, decor,
+  // Move the original rack, retaining its native image, scale and purpose. Its
+  // old corner pose sealed the whole-body approach beside the west register.
+  const orientedDecorV76 = room.buildingId === 'memory-vault'
+    ? room.orientedDecorV76?.map(item => item.id === 'memory-vault-v76-0' ? { ...item, x: 48, y: 130 } : item)
+    : room.orientedDecorV76;
+  return { ...room, orientedDecorV76, publicFittingsV82: { version: 'V82', purpose, furniture, decor,
     validation: 'implemented-not-verified', lore: 'original-local-public-furnishing' } };
 }

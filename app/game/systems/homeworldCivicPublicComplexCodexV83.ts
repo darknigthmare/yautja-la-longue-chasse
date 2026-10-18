@@ -13,7 +13,7 @@ export const HOMEWORLD_CIVIC_PUBLIC_COMPLEX_CODEX_V83: readonly HomeworldElement
     const complex = room.publicComplexV83!, building = HOMEWORLD_BUILDINGS.find(item => item.id === room.buildingId)!;
     const common = { districtId: building.districtId, spaceId: room.buildingId,
       lore: 'original-adaptation' as const, door: null, asset: null, source: [] };
-    const validation = 'Plan V83 implémenté, non vérifié : aucun test, audit, lint, compilation ou examen navigateur de ces placements n’a été exécuté.';
+    const validation = 'Reprise V89 : tests du modèle exécutés sur les 43 intérieurs actifs avec demi-largeur/profondeur 24/14 puis marge 28/18 ; supports, services, sorties et repères contrôlés. Lint, TypeScript et compilation locale passent. Aspect navigateur, mobile, production jouée et fidélité 1:1 non certifiés.';
     const records: HomeworldElementRecordV64[] = [{ ...common, id: `v83-public-complex:${room.buildingId}`,
       label: room.title, category: 'interior', position: { x: 0, y: 0, z: 0 },
       dimensions: { width: room.width, depth: room.depth, height: building.wallHeight }, footprint: null,
@@ -49,7 +49,7 @@ export const HOMEWORLD_CIVIC_PUBLIC_COMPLEX_CODEX_V83: readonly HomeworldElement
         footprint: null, constraints: [validation,
           `Repère de traversée ${passage.orientation}, largeur de composition ${passage.width} unités. Ce repère n’est ni une porte ni un nouveau plancher physique.`,
           'Aucun bloqueur, téléporteur ou action associé. Les volumes des meubles et parois environnants déterminent le passage réel.',
-          'La desserte est composée dans le modèle ; aucune recette de trajet au corps entier ou mesure de largeur libre effective n’est revendiquée pour ce lot.'] });
+          'Le centre de ce repère est atteint depuis le spawn avec le corps entier et sa marge ; chaque unité des arêtes du parcours est contrôlée. La largeur de composition ne certifie pas une largeur libre intégrale.'] });
     }
     for (const activity of complex.activities) {
       const zone = room.zones!.find(item => item.id === activity.zoneId)!;

@@ -211,17 +211,57 @@ export async function withArchiveTransferLock<T>(operation: () => T, timeoutMs =
   if (typeof navigator === "undefined" || !navigator.locks?.request) {
     return { acquired: false, reason: "L’import intégral nécessite le verrou navigateur disponible sur HTTPS ou dans l’édition PC. L’export léger reste accessible." };
   }
+  if (typeof AbortController === "undefined") {
+    return { acquired: false, reason: "Le navigateur ne permet pas d’annuler une attente de verrou en toute sécurité. Aucun import exécuté ; utilisez un navigateur récent ou l’édition PC." };
+  }
+  const manager = navigator.locks;
+  const lockName = "yautja-full-archive-transfer";
   let expired = false;
   let timer: ReturnType<typeof setTimeout> | undefined;
+  const refused = (reason: string) => ({ acquired: false as const, reason });
+  const expiredResult = () => refused("La demande de verrou des archives a expiré. Aucune écriture tardive ne sera exécutée ; réessayez ou rechargez cet onglet.");
+  const unverifiedResult = () => refused("Le navigateur n’a pas accordé le verrou des archives et son état n’a pas pu être vérifié. Aucune écriture exécutée. Fermez les autres onglets de ce jeu à la même adresse, puis réessayez ou rechargez cet onglet.");
+  const diagnoseUnavailable = async () => {
+    if (expired) return expiredResult();
+    try {
+      if (typeof manager.query !== "function") return unverifiedResult();
+      // This is a later snapshot, not proof of the state when request failed.
+      // Never disclose client IDs or unrelated lock names, or clear/steal a lock.
+      const snapshot = await manager.query();
+      if (expired) return expiredResult();
+      if (snapshot.held?.some(lock => lock.name === lockName)) {
+        return refused("Au moment du diagnostic, une session de ce jeu utilise les archives. Aucune écriture exécutée. Attendez la fin de son import ou export, puis réessayez ; si nécessaire, fermez les autres onglets de ce jeu à la même adresse.");
+      }
+      if (snapshot.pending?.some(lock => lock.name === lockName)) {
+        return refused("Au moment du diagnostic, une demande d’archives de ce jeu est en attente. Aucune écriture exécutée. Attendez la fin des transferts ouverts à la même adresse, puis réessayez ou rechargez cet onglet.");
+      }
+      return refused("Le navigateur n’a pas accordé le verrou des archives. Aucun verrou d’archives actif ou en attente n’a été identifié au moment du diagnostic. Aucune écriture exécutée. Rechargez cet onglet, puis réessayez ; aucune archive ni verrou ne sera effacé.");
+    } catch {
+      return expired ? expiredResult() : unverifiedResult();
+    }
+  };
   try {
+    const controller = new AbortController();
     const timeout = new Promise<{acquired:false;reason:string}>(resolve => {
-      timer = setTimeout(() => { expired = true; resolve({acquired:false,reason:"Le verrou des archives ne répond pas. Aucune écriture tardive ne sera exécutée ; réessayez ou rechargez l’interface."}); }, timeoutMs);
+      timer = setTimeout(() => {
+        expired = true;
+        try { controller.abort(); } catch { /* The expired guard still refuses a late callback. */ }
+        resolve(expiredResult());
+      }, timeoutMs);
     });
-    const request = navigator.locks.request("yautja-full-archive-transfer", { ifAvailable: true }, (lock) =>
-      lock && !expired ? { acquired: true as const, value: operation() }
-        : { acquired: false as const, reason: "Une autre session protège les archives, ou la demande a expiré. Réessayez." });
+    // A brief legitimate transfer may finish while we wait. The native queue is
+    // cancellable; no lease, stolen lock or unlocked fallback authorizes writes.
+    const request = manager.request(lockName, { signal: controller.signal }, (lock) => {
+      if (expired) return expiredResult();
+      if (!lock) return diagnoseUnavailable();
+      // Bound acquisition, not the native release promise after a synchronous
+      // operation has already written. Abort cannot revoke a granted lock.
+      if (timer !== undefined) { clearTimeout(timer); timer = undefined; }
+      return { acquired: true as const, value: operation() };
+    });
     return await Promise.race([request, timeout]);
   } catch {
-    return { acquired: false, reason: "Le verrou des archives n’a pas pu être obtenu. Aucune modification demandée." };
+    return expired ? expiredResult()
+      : { acquired: false, reason: "Le verrou des archives n’a pas pu être obtenu. Aucune modification demandée." };
   } finally { if(timer !== undefined) clearTimeout(timer); }
 }
