@@ -1,0 +1,49 @@
+{
+  "id": "artisan-19",
+  "role": "artisan",
+  "description": "Athletic long-legged adult basket-and-fittings artisan with pale sandstone skin and dark leopard mottles, wide flattened crown. Two large bound dreadlock bundles run down back, no head ornament. Belted half-apron of tan and dark gray leather with one long asymmetrical side panel, sleeveless work tunic, thick forearm cloth wraps. Holds a small tightly woven alien fiber basket at one hip with left hand, modest metal punch upright in right. Shoulder angled back, distinct long shins and clawed feet.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Athletic long-legged adult basket-and-fittings artisan with pale sandstone skin and dark leopard mottles, wide flattened crown. Two large bound dreadlock bundles run down back, no head ornament. Belted half-apron of tan and dark gray leather with one long asymmetrical side panel, sleeveless work tunic, thick forearm cloth wraps. Holds a small tightly woven alien fiber basket at one hip with left hand, modest metal punch upright in right. Shoulder angled back, distinct long shins and clawed feet.",
+  "status": "validated",
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-19.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    13,
+    912,
+    1520
+  ],
+  "transparent_fraction": 0.6631730397542318,
+  "sha256": "3d2e86c1d493449816c0408429d3631e384b8fccbbe139a3670e33ba798a067f",
+  "byte_count": 2148226,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-19.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "githubBlobSha": "5671d2df9e97bccb794ad8aff0cf3ff04c4809fb",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0e27b036-b383-41fc-b78a-43968b93785f.png",
+  "gitBlobSha1": "5671d2df9e97bccb794ad8aff0cf3ff04c4809fb",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-19-before-face-review-3527dcf62651.png",
+    "sha256": "3527dcf62651390ec3a2ee0af60ab99d28399bd2e042ed644dc8a7497cbba840"
+  }
+}

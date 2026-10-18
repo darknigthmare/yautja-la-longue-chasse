@@ -48,8 +48,11 @@ export function auditHomeworldAssetCatalogueV81(records:readonly CatalogueRecord
  const live=records.filter(r=>r.asset&&r.category!=='panel'&&!r.label.startsWith('Ancienne vue conservée'));
  return target.entries.map(entry=>{
   const key=normalize(entry.label),alias=aliases.find(([pattern])=>pattern.test(key))?.[1];
-  const direct=live.filter(r=>normalize(r.label).includes(key)||normalize(r.id).includes(key.replaceAll(' ','-')));
-  const matches=direct.length?direct:alias?live.filter(r=>alias.test(normalize(r.id+' '+r.label+' '+r.asset))):[];
+  // A job/identity such as stable-harness does not provide an independent
+  // equipment sprite. Only the explicit guard target requests a person.
+  const candidates=key==='garde'?live:live.filter(r=>r.category!=='npc');
+  const direct=candidates.filter(r=>normalize(r.label).includes(key)||normalize(r.id).includes(key.replaceAll(' ','-')));
+  const matches=direct.length?direct:alias?candidates.filter(r=>alias.test(normalize(r.id+' '+r.label+' '+r.asset))):[];
   // Limit candidate families: a broad civic-building list is evidence of a
   // related source, never proof that all 22 target buildings are delivered.
   const sourceCandidates=[...new Set(matches.map(r=>r.asset!))];
