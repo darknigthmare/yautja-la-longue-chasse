@@ -163,6 +163,17 @@ jobs:
           tests/active-hunt-ownership.test.mjs
           tests/archive-transfer-guard.test.mjs
           tests/campaign-import-slot-v89.test.mjs
+          tests/campaign-menu-ui.test.mjs
+          tests/game-client-exploration-persistence.test.mjs
+          tests/game-client-ship-flow.test.mjs
+          tests/game-client-solo-v70-integration.test.mjs
+          tests/game-client-solo-v90-integration.test.mjs
+          tests/homeworld-contracts-v68-integration.test.mjs
+          tests/homeworld-region-return-v68.test.mjs
+          tests/save-social-reconciliation.test.mjs
+      - name: Exercise portable chroma processing and complete biome fixtures
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test tests/biome-chroma-v19.test.mjs tests/biome-decor-v19-pipeline.test.mjs
       - name: Exercise native storage and cross-tab locks (seeded campaigns)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-campaign-storage-browser-v94.mjs
