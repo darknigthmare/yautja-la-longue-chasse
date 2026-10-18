@@ -69,8 +69,8 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
     const definition = warTerritoryV85(id);
     if (!definition) return;
     if (selectionMode === "target") {
-      if (id !== source.id && !source.neighbors.includes(id)) {
-        setAnnouncement(`${definition.name} n’est pas relié directement à ${source.name}. Choisissez une route voisine.`);
+      if (!source.neighbors.includes(id)) {
+        setAnnouncement(`${definition.name} n’est pas une destination voisine de ${source.name}. Choisissez une route voisine.`);
         return;
       }
       onSelectTarget(id);
@@ -182,7 +182,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 const isTarget = geography.id === targetTerritoryId;
                 const isNeighbor = source.neighbors.includes(geography.id);
                 const dimmed = Boolean(regionFilter && geography.regionId !== regionFilter);
-                const accessible = geography.id === source.id || isNeighbor;
+                const accessible = isNeighbor;
                 return <g key={geography.id} className={styles.territory} role="button" tabIndex={0}
                   aria-label={`${shortId(geography.id)} · ${definition.name} · ${WAR_FACTIONS_V85[faction]}${statusLabel(geography.id) ? ` · ${statusLabel(geography.id)}` : ""}`}
                   aria-pressed={selectionMode === "origin" ? isSource : isTarget}
