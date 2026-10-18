@@ -16,8 +16,8 @@ export function fixture(extra={},timers={setTimeout,clearTimeout}){
  const data=new Map(),writes=[],confirmed=[],messages=[],fault={drop:false};
  const storage={getItem:k=>data.get(k)??null,setItem(k,v){writes.push([k,v]);if(!fault.drop)data.set(k,v);},removeItem:k=>data.delete(k)};
  const document={visibilityState:'visible',focused:true,hasFocus(){return this.focused;}},root={blocked:false,closest(){return this.blocked?this:null;}};
- const module={exports:{}};runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage,confirm:()=>true},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout:timers.setTimeout,clearTimeout:timers.clearTimeout});
- const a=module.exports,save=a.defaultSave('2026-10-16T00:00:00.000Z'),base=a.createDefaultShipProgression(save,save.updatedAt);
+ const fixtureModule={exports:{}};runInNewContext(code,{module:fixtureModule,exports:fixtureModule.exports,require:name=>{assert.equal(name,'react');return react;},window:{localStorage:storage,confirm:()=>true},document,TextEncoder,TextDecoder,Date,console,crypto:webcrypto,setTimeout:timers.setTimeout,clearTimeout:timers.clearTimeout});
+ const a=fixtureModule.exports,save=a.defaultSave('2026-10-16T00:00:00.000Z'),base=a.createDefaultShipProgression(save,save.updatedAt);
  data.set(a.SAVE_STORAGE_KEY,JSON.stringify(save));data.set(a.SHIP_PROGRESSION_STORAGE_KEY,JSON.stringify(base));
  let options={save,progression:base,controlled:false,suspended:false,rootRef:{current:root},blocked:()=>false,onNativeConfirmed:s=>{confirmed.push(s);options={...options,progression:s};dirty=true;},notify:m=>messages.push(m),...extra};
  function render(){cursor=0;dirty=false;out=a.useShipServiceCommitV94({...options});while(pending.length){const e=pending.shift();effects[e.n]?.cleanup?.();effects[e.n]={...e,cleanup:e.fn()};}}
