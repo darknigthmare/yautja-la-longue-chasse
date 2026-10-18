@@ -56,7 +56,9 @@ const parentCode=await transform(`export function mount(initial,target,api,io,da
  const saveRef={current:initial},sessionAliveRef={current:true},pendingTrophyCommitRef={current:null};
  const campaignOperationRef={current:null},nurseryWriteAttemptRef={current:null},pendingSocialWriteRef={current:null},pendingTerminalRunRef={current:null},activeHuntSessionRef={current:null};
  let archiveTransferBusy=false,archiveRecoveryIssue=null,trophyWorkshop=target,pendingTrophyCommit=null,save=initial,failure=null,toast='',transfer='';
- const sounds=[],blobs=[];const playSound=name=>{sounds.push(name);};
+ const sounds=[],blobs=[],recoveryEvents=[];const playSound=name=>{sounds.push(name);};
+ let recoveryReady=true;
+ const trophyRecovery={isIdle:()=>recoveryReady,backup:receipt=>recoveryEvents.push({kind:'backup',receipt}),confirmed:receipt=>recoveryEvents.push({kind:'confirmed',receipt})};
  const setSave=v=>save=v,setSaveFailure=v=>failure=v,setToast=v=>toast=v,setPendingTrophyCommit=v=>pendingTrophyCommit=v,setTrophyWorkshop=v=>trophyWorkshop=v,setSaveTransferMessage=v=>transfer=v;
  const createTrophyWorkshopCommitV94=(base,t,r)=>api.createTrophyWorkshopCommitV94(base,t,r,io,date);
  const exportSave=api.exportSave,URL={createObjectURL(blob){blobs.push(blob);return 'blob:qa';},revokeObjectURL(){}},document={createElement(){return{click(){}};}},window={setTimeout(){}};
@@ -66,9 +68,21 @@ const parentCode=await transform(`export function mount(initial,target,api,io,da
  return {complete:completeTrophyWorkshop,retry:retryTrophyWorkshopSave,export:exportCampaign,
  close(){trophyWorkshop=null;},end(){sessionAliveRef.current=false;},busy(v){archiveTransferBusy=v;},replace(v){saveRef.current=v;save=v;},
  block(name){({campaignOperationRef,nurseryWriteAttemptRef,pendingSocialWriteRef,pendingTerminalRunRef,activeHuntSessionRef})[name].current={};},
- get save(){return save;},get ref(){return saveRef.current;},get pending(){return pendingTrophyCommit;},get panel(){return trophyWorkshop;},get failure(){return failure;},get toast(){return toast;},get transfer(){return transfer;},sounds,blobs};
+ get save(){return save;},get ref(){return saveRef.current;},get pending(){return pendingTrophyCommit;},get panel(){return trophyWorkshop;},get failure(){return failure;},get toast(){return toast;},get transfer(){return transfer;},sounds,blobs,recoveryEvents,recoveryReady(v){recoveryReady=v;}};
 }`,{loader:'ts',format:'esm',target:'es2022'});
 const {mount}=await import('data:text/javascript;base64,'+Buffer.from(parentCode.code).toString('base64'));
+test('actual parent waits for recovery hydration before accepting a completed rite',()=>{
+ const s=setup(),p=mount(s.base,s.target,a,s.io,date);p.recoveryReady(false);p.complete(s.result);
+ assert.equal(s.writes.length,0);assert.equal(p.pending,null);assert.equal(p.save,s.base);assert.deepEqual(p.sounds,[]);assert.deepEqual(p.recoveryEvents,[]);
+ p.recoveryReady(true);p.complete(s.result);assert.equal(s.writes.length,1);assert.deepEqual(p.recoveryEvents.map(e=>e.kind),['backup','confirmed']);
+ assert.equal(p.recoveryEvents[0].receipt,p.recoveryEvents[1].receipt);
+});
+test('actual parent backs up its pinned result and clears the same copy only after confirmation',()=>{
+ const s=setup(),p=mount(s.base,s.target,a,s.io,date);s.faults.drop=true;p.complete(s.result);
+ const receipt=p.pending;assert.ok(receipt);assert.deepEqual(p.recoveryEvents.map(e=>e.kind),['backup']);assert.equal(p.recoveryEvents[0].receipt,receipt);
+ p.close();s.faults.drop=false;p.retry();assert.deepEqual(p.recoveryEvents.map(e=>e.kind),['backup','confirmed']);assert.equal(p.recoveryEvents[1].receipt,receipt);
+ assert.equal(p.pending,null);assert.equal(s.writes.length,2);assert.deepEqual(p.sounds,['trophy']);
+});
 test('actual parent closes and plays its trophy sound only after a confirmed write',()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);p.complete(s.result);assert.equal(p.panel,null);assert.equal(p.pending,null);assert.equal(p.failure,null);assert.deepEqual(p.sounds,['trophy']);assert.equal(p.save,p.ref);assert.deepEqual(p.save.trophies[0].workshop.completedActions,['clean']);p.complete(s.result);assert.equal(s.writes.length,1);});
 test('actual parent preserves the panel and authoritative campaign when storage drops a write',()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);s.faults.drop=true;p.complete(s.result);assert.ok(p.panel);assert.ok(p.pending);assert.equal(p.save,s.base);assert.deepEqual(p.sounds,[]);assert.match(p.toast,/non confirmée/);});
 test('actual parent retries a closed workshop without replaying or losing its receipt',()=>{const s=setup(),p=mount(s.base,s.target,a,s.io,date);s.faults.quota=true;p.complete(s.result);p.close();s.faults.quota=false;p.retry();assert.equal(p.pending,null);assert.equal(p.save.trophies[0].workshop.lastCompletedAt,date);assert.deepEqual(p.sounds,['trophy']);});
