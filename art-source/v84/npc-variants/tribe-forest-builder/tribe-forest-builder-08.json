@@ -1,0 +1,52 @@
+{
+  "id": "tribe-forest-builder-08",
+  "name": "Tresseuse de soutènement",
+  "description": "Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Small-framed fully adult female, yellow-green finely spotted skin, compact high crest, narrow four mandibles, short dreads tied at nape. Grey short-sleeve wrap tunic, dark leather waist apron and calf wraps. Holds a tightly coiled woven support rope with a partly finished braided end short enough to stay above knee, a small blunt splicing fid clipped to belt. Light poised stance.",
+  "status": "validated",
+  "file": "tribe-forest-builder-08.png",
+  "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-622ae162-863b-4167-be80-16c50889a48d.png",
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "githubBlobSha": "54cabab9f4ddeba9c464fba0153f779e61456c09",
+  "role": "tribe-forest-builder",
+  "sha256": "b8d65d571de26429444e920752f87d3a6e3ece6f8ea39c36d39feebe587f7270",
+  "gitBlobSha1": "54cabab9f4ddeba9c464fba0153f779e61456c09",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-08.png",
+  "byte_count": 2227492,
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/tribe-forest-builder/tribe-forest-builder-08.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png",
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-17ab83d8-0a3c-4064-97aa-147beb1c5e1a.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    45,
+    12,
+    968,
+    1526
+  ],
+  "transparent_fraction": 0.6533641815185547,
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/tribe-forest-builder/tribe-forest-builder-08-before-face-review-9d2927d9d712.png",
+    "sha256": "9d2927d9d712f22f85848a346550cd7debdd4bfb36c769e08359702e9d2f44de"
+  }
+}

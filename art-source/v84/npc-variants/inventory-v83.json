@@ -1,0 +1,4060 @@
+{
+  "baseCommit": "9456292f1e60f506b0c982187ca782eefbab2a81",
+  "version": "V83",
+  "counts": {
+    "cityAmbient": 98,
+    "urbanExtras": 14,
+    "services": 12,
+    "cntlipHosts": 4,
+    "monumentInhabitants": 5,
+    "lavaFerryman": 1,
+    "regionalCore": 120,
+    "regionalAmbient": 180,
+    "runtimeTotal": 434,
+    "tribeCatalogueSpecialists": 10
+  },
+  "existingCivicVisualRoles": [
+    "chief",
+    "artisan",
+    "healer",
+    "archivist",
+    "guard",
+    "courier",
+    "instructor",
+    "apprentice",
+    "dock-officer",
+    "forge-master",
+    "witness",
+    "herald",
+    "arena-steward",
+    "rite-keeper"
+  ],
+  "cityCurrentVisualCounts": {
+    "dock-officer": 8,
+    "courier": 14,
+    "apprentice": 26,
+    "archivist": 28,
+    "artisan": 8,
+    "forge-master": 6,
+    "witness": 5,
+    "herald": 10,
+    "instructor": 5,
+    "healer": 5,
+    "guard": 9,
+    "arena-steward": 3,
+    "rite-keeper": 6,
+    "chief": 1
+  },
+  "cityRawRoleCounts": {
+    "Porteur de cargaisons": 1,
+    "Navigatrice": 1,
+    "Convoyeur": 1,
+    "Éclaireuse des quais": 1,
+    "Artisane": 1,
+    "Courrier de clan": 1,
+    "Acheteur de matériaux": 1,
+    "Tailleur de parures": 1,
+    "Apprenti de forge": 1,
+    "Polisseuse": 1,
+    "Porteur de minerai": 1,
+    "Armurière": 1,
+    "Chasseur de passage": 9,
+    "Garde de patrouille": 9,
+    "Émissaire de clan": 9,
+    "Aspirant": 10,
+    "Émissaire": 1,
+    "Gardienne du foyer": 1,
+    "Ancien du clan": 1,
+    "Lecteur des marques": 1,
+    "Archiviste": 1,
+    "Conservatrice": 1,
+    "Messager des archives": 1,
+    "Inspectrice des amarres": 1,
+    "Porteur du retour": 1,
+    "Apprentie navigatrice": 1,
+    "Tisseuse de liens": 1,
+    "Peseur de matériaux": 1,
+    "Messagère des villages": 1,
+    "Ajusteur de supports": 1,
+    "Gardienne des outils": 1,
+    "Apprentie graveuse": 1,
+    "Réparatrice des conduits": 1,
+    "Voisin des galeries": 1,
+    "Porteur de lampes": 1,
+    "Hôte des retrouvailles": 1,
+    "Aspirante à l’écoute": 1,
+    "Ancien des récits": 1,
+    "Instructrice des appuis": 1,
+    "Aspirant de la cohorte": 1,
+    "Observatrice du parcours": 1,
+    "Hôte des délégations": 1,
+    "Aspirante du foyer": 1,
+    "Porteuse des provisions": 1,
+    "Lectrice des rapports": 1,
+    "Garde du retour": 1,
+    "Courrier des postes": 1,
+    "Copiste des trajets": 1,
+    "Ancienne des retours": 1,
+    "Apprenti archiviste": 1,
+    "Arbitre des démonstrations": 1,
+    "Visiteuse des clans": 1,
+    "Élève du duel": 1,
+    "Gardien des seuils": 1,
+    "Porteuse des braises": 1,
+    "Témoin des rites": 1,
+    "Émissaire des hauts villages": 1,
+    "Porteuse des réponses": 1,
+    "Témoin du conseil": 1,
+    "Vérificateur des scellés": 1,
+    "Porteuse des relais": 1,
+    "Apprenti convoyeur": 1,
+    "Guetteuse des ponts": 1,
+    "Réparateur des balises": 1,
+    "Courrier des corniches": 1
+  },
+  "regions": [
+    {
+      "id": "ash-marches",
+      "name": "Marches de Cendre",
+      "village": "Halte des Porte-Cendres",
+      "clan": "Maisons des Braises",
+      "guideName": "Rha’tek"
+    },
+    {
+      "id": "glass-desert",
+      "name": "Désert de Verre",
+      "village": "Village des Citernes",
+      "clan": "Peuple des Citernes",
+      "guideName": "Vek’shan"
+    },
+    {
+      "id": "pillar-jungle",
+      "name": "Jungle des Piliers",
+      "village": "Terrasses des Hautes Branches",
+      "clan": "Gardiens des Hautes Branches",
+      "guideName": "Sha’ra"
+    },
+    {
+      "id": "luminous-marshes",
+      "name": "Marais Luminescents",
+      "village": "Veillée des Racines",
+      "clan": "Veilleurs des Eaux Calmes",
+      "guideName": "Nesh’ra"
+    },
+    {
+      "id": "storm-chain",
+      "name": "Chaîne des Orages",
+      "village": "Refuge des Trois Vents",
+      "clan": "Veilleurs des Crêtes",
+      "guideName": "Vhar’ko"
+    },
+    {
+      "id": "leviathan-coast",
+      "name": "Côte des Léviathans",
+      "village": "Port des Marées Longues",
+      "clan": "Maisons du Rivage",
+      "guideName": "Tor’na"
+    },
+    {
+      "id": "thermal-caves",
+      "name": "Grottes Thermiques",
+      "village": "Enclave des Forges Basses",
+      "clan": "Artisans de la Roche Chaude",
+      "guideName": "Kha’ru"
+    },
+    {
+      "id": "cold-crown",
+      "name": "Couronne Froide",
+      "village": "Halte des Hautes Neiges",
+      "clan": "Maisons du Givre",
+      "guideName": "Ish’ta"
+    },
+    {
+      "id": "first-city-ruins",
+      "name": "Ruines de la Première Cité",
+      "village": "Camp des Archives Scellées",
+      "clan": "Conservateurs des Anciennes Pierres",
+      "guideName": "Osh’ren"
+    },
+    {
+      "id": "forbidden-reserve",
+      "name": "Réserve Interdite",
+      "village": "Poste des Gardiens de Réserve",
+      "clan": "Gardiens du Confinement",
+      "guideName": "Tha’vek"
+    }
+  ],
+  "cityResidents": [
+    {
+      "id": "resident-port-1",
+      "districtId": "port",
+      "role": "Porteur de cargaisons",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "dock-officer"
+    },
+    {
+      "id": "resident-port-2",
+      "districtId": "port",
+      "role": "Navigatrice",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-port-3",
+      "districtId": "port",
+      "role": "Convoyeur",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-port-4",
+      "districtId": "port",
+      "role": "Éclaireuse des quais",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-market-1",
+      "districtId": "market",
+      "role": "Artisane",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-market-2",
+      "districtId": "market",
+      "role": "Courrier de clan",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-market-3",
+      "districtId": "market",
+      "role": "Acheteur de matériaux",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-market-4",
+      "districtId": "market",
+      "role": "Tailleur de parures",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "artisan"
+    },
+    {
+      "id": "resident-forges-1",
+      "districtId": "forges",
+      "role": "Apprenti de forge",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-forges-2",
+      "districtId": "forges",
+      "role": "Polisseuse",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-forges-3",
+      "districtId": "forges",
+      "role": "Porteur de minerai",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "forge-master"
+    },
+    {
+      "id": "resident-forges-4",
+      "districtId": "forges",
+      "role": "Armurière",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "artisan"
+    },
+    {
+      "id": "resident-undercity-1",
+      "districtId": "undercity",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-undercity-2",
+      "districtId": "undercity",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-undercity-3",
+      "districtId": "undercity",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "witness"
+    },
+    {
+      "id": "resident-undercity-4",
+      "districtId": "undercity",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-esplanade-1",
+      "districtId": "esplanade",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-esplanade-2",
+      "districtId": "esplanade",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-esplanade-3",
+      "districtId": "esplanade",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-esplanade-4",
+      "districtId": "esplanade",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-terraces-1",
+      "districtId": "terraces",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "instructor"
+    },
+    {
+      "id": "resident-terraces-2",
+      "districtId": "terraces",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-terraces-3",
+      "districtId": "terraces",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-terraces-4",
+      "districtId": "terraces",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-clans-1",
+      "districtId": "clans",
+      "role": "Émissaire",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-clans-2",
+      "districtId": "clans",
+      "role": "Gardienne du foyer",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-clans-3",
+      "districtId": "clans",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "healer"
+    },
+    {
+      "id": "resident-clans-4",
+      "districtId": "clans",
+      "role": "Ancien du clan",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-enforcers-1",
+      "districtId": "enforcers",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-enforcers-2",
+      "districtId": "enforcers",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "dock-officer"
+    },
+    {
+      "id": "resident-enforcers-3",
+      "districtId": "enforcers",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-enforcers-4",
+      "districtId": "enforcers",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-memory-1",
+      "districtId": "memory",
+      "role": "Lecteur des marques",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-memory-2",
+      "districtId": "memory",
+      "role": "Archiviste",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-memory-3",
+      "districtId": "memory",
+      "role": "Conservatrice",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-memory-4",
+      "districtId": "memory",
+      "role": "Messager des archives",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-arenas-1",
+      "districtId": "arenas",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "instructor"
+    },
+    {
+      "id": "resident-arenas-2",
+      "districtId": "arenas",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-arenas-3",
+      "districtId": "arenas",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-arenas-4",
+      "districtId": "arenas",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "arena-steward"
+    },
+    {
+      "id": "resident-temple-1",
+      "districtId": "temple",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-temple-2",
+      "districtId": "temple",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "rite-keeper"
+    },
+    {
+      "id": "resident-temple-3",
+      "districtId": "temple",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "rite-keeper"
+    },
+    {
+      "id": "resident-temple-4",
+      "districtId": "temple",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-citadel-1",
+      "districtId": "citadel",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-citadel-2",
+      "districtId": "citadel",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-citadel-3",
+      "districtId": "citadel",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-citadel-4",
+      "districtId": "citadel",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-convoy-works-1",
+      "districtId": "convoy-works",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "forge-master"
+    },
+    {
+      "id": "resident-convoy-works-2",
+      "districtId": "convoy-works",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-convoy-works-3",
+      "districtId": "convoy-works",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-convoy-works-4",
+      "districtId": "convoy-works",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-rampart-walk-1",
+      "districtId": "rampart-walk",
+      "role": "Chasseur de passage",
+      "name": null,
+      "morphId": "huntress",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-rampart-walk-2",
+      "districtId": "rampart-walk",
+      "role": "Garde de patrouille",
+      "name": null,
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-rampart-walk-3",
+      "districtId": "rampart-walk",
+      "role": "Émissaire de clan",
+      "name": null,
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-rampart-walk-4",
+      "districtId": "rampart-walk",
+      "role": "Aspirant",
+      "name": null,
+      "morphId": "classic",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-v69-port-1",
+      "districtId": "port",
+      "role": "Inspectrice des amarres",
+      "name": "Kesh",
+      "morphId": "classic",
+      "currentVisualRole": "dock-officer"
+    },
+    {
+      "id": "resident-v69-port-2",
+      "districtId": "port",
+      "role": "Porteur du retour",
+      "name": "Tha’ra",
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-v69-port-3",
+      "districtId": "port",
+      "role": "Apprentie navigatrice",
+      "name": "Vorak",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-market-1",
+      "districtId": "market",
+      "role": "Tisseuse de liens",
+      "name": "Ish’ren",
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-v69-market-2",
+      "districtId": "market",
+      "role": "Peseur de matériaux",
+      "name": "Sek’ta",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-market-3",
+      "districtId": "market",
+      "role": "Messagère des villages",
+      "name": "Nar’esh",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-forges-1",
+      "districtId": "forges",
+      "role": "Ajusteur de supports",
+      "name": "Kor’na",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-forges-2",
+      "districtId": "forges",
+      "role": "Gardienne des outils",
+      "name": "Kesh",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-forges-3",
+      "districtId": "forges",
+      "role": "Apprentie graveuse",
+      "name": "Tha’ra",
+      "morphId": "classic",
+      "currentVisualRole": "forge-master"
+    },
+    {
+      "id": "resident-v69-undercity-1",
+      "districtId": "undercity",
+      "role": "Réparatrice des conduits",
+      "name": "Vorak",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-undercity-2",
+      "districtId": "undercity",
+      "role": "Voisin des galeries",
+      "name": "Ish’ren",
+      "morphId": "classic",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-v69-undercity-3",
+      "districtId": "undercity",
+      "role": "Porteur de lampes",
+      "name": "Sek’ta",
+      "morphId": "huntress",
+      "currentVisualRole": "witness"
+    },
+    {
+      "id": "resident-v69-esplanade-1",
+      "districtId": "esplanade",
+      "role": "Hôte des retrouvailles",
+      "name": "Nar’esh",
+      "morphId": "classic",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-v69-esplanade-2",
+      "districtId": "esplanade",
+      "role": "Aspirante à l’écoute",
+      "name": "Kor’na",
+      "morphId": "huntress",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-esplanade-3",
+      "districtId": "esplanade",
+      "role": "Ancien des récits",
+      "name": "Kesh",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-terraces-1",
+      "districtId": "terraces",
+      "role": "Instructrice des appuis",
+      "name": "Tha’ra",
+      "morphId": "huntress",
+      "currentVisualRole": "instructor"
+    },
+    {
+      "id": "resident-v69-terraces-2",
+      "districtId": "terraces",
+      "role": "Aspirant de la cohorte",
+      "name": "Vorak",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-terraces-3",
+      "districtId": "terraces",
+      "role": "Observatrice du parcours",
+      "name": "Ish’ren",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-clans-1",
+      "districtId": "clans",
+      "role": "Hôte des délégations",
+      "name": "Sek’ta",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-clans-2",
+      "districtId": "clans",
+      "role": "Aspirante du foyer",
+      "name": "Nar’esh",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-clans-3",
+      "districtId": "clans",
+      "role": "Porteuse des provisions",
+      "name": "Kor’na",
+      "morphId": "classic",
+      "currentVisualRole": "healer"
+    },
+    {
+      "id": "resident-v69-enforcers-1",
+      "districtId": "enforcers",
+      "role": "Lectrice des rapports",
+      "name": "Kesh",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-enforcers-2",
+      "districtId": "enforcers",
+      "role": "Garde du retour",
+      "name": "Tha’ra",
+      "morphId": "classic",
+      "currentVisualRole": "dock-officer"
+    },
+    {
+      "id": "resident-v69-enforcers-3",
+      "districtId": "enforcers",
+      "role": "Courrier des postes",
+      "name": "Vorak",
+      "morphId": "huntress",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-v69-memory-1",
+      "districtId": "memory",
+      "role": "Copiste des trajets",
+      "name": "Ish’ren",
+      "morphId": "classic",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-memory-2",
+      "districtId": "memory",
+      "role": "Ancienne des retours",
+      "name": "Sek’ta",
+      "morphId": "huntress",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-v69-memory-3",
+      "districtId": "memory",
+      "role": "Apprenti archiviste",
+      "name": "Nar’esh",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-arenas-1",
+      "districtId": "arenas",
+      "role": "Arbitre des démonstrations",
+      "name": "Kor’na",
+      "morphId": "huntress",
+      "currentVisualRole": "instructor"
+    },
+    {
+      "id": "resident-v69-arenas-2",
+      "districtId": "arenas",
+      "role": "Visiteuse des clans",
+      "name": "Kesh",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-arenas-3",
+      "districtId": "arenas",
+      "role": "Élève du duel",
+      "name": "Tha’ra",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-temple-1",
+      "districtId": "temple",
+      "role": "Gardien des seuils",
+      "name": "Vorak",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-temple-2",
+      "districtId": "temple",
+      "role": "Porteuse des braises",
+      "name": "Ish’ren",
+      "morphId": "elder",
+      "currentVisualRole": "rite-keeper"
+    },
+    {
+      "id": "resident-v69-temple-3",
+      "districtId": "temple",
+      "role": "Témoin des rites",
+      "name": "Sek’ta",
+      "morphId": "classic",
+      "currentVisualRole": "rite-keeper"
+    },
+    {
+      "id": "resident-v69-citadel-1",
+      "districtId": "citadel",
+      "role": "Émissaire des hauts villages",
+      "name": "Nar’esh",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    },
+    {
+      "id": "resident-v69-citadel-2",
+      "districtId": "citadel",
+      "role": "Porteuse des réponses",
+      "name": "Kor’na",
+      "morphId": "classic",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-v69-citadel-3",
+      "districtId": "citadel",
+      "role": "Témoin du conseil",
+      "name": "Kesh",
+      "morphId": "huntress",
+      "currentVisualRole": "herald"
+    },
+    {
+      "id": "resident-v69-convoy-works-1",
+      "districtId": "convoy-works",
+      "role": "Vérificateur des scellés",
+      "name": "Tha’ra",
+      "morphId": "classic",
+      "currentVisualRole": "forge-master"
+    },
+    {
+      "id": "resident-v69-convoy-works-2",
+      "districtId": "convoy-works",
+      "role": "Porteuse des relais",
+      "name": "Vorak",
+      "morphId": "huntress",
+      "currentVisualRole": "courier"
+    },
+    {
+      "id": "resident-v69-convoy-works-3",
+      "districtId": "convoy-works",
+      "role": "Apprenti convoyeur",
+      "name": "Ish’ren",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-rampart-walk-1",
+      "districtId": "rampart-walk",
+      "role": "Guetteuse des ponts",
+      "name": "Sek’ta",
+      "morphId": "huntress",
+      "currentVisualRole": "guard"
+    },
+    {
+      "id": "resident-v69-rampart-walk-2",
+      "districtId": "rampart-walk",
+      "role": "Réparateur des balises",
+      "name": "Nar’esh",
+      "morphId": "young",
+      "currentVisualRole": "apprentice"
+    },
+    {
+      "id": "resident-v69-rampart-walk-3",
+      "districtId": "rampart-walk",
+      "role": "Courrier des corniches",
+      "name": "Kor’na",
+      "morphId": "elder",
+      "currentVisualRole": "archivist"
+    }
+  ],
+  "services": [
+    {
+      "id": "dock-officer",
+      "name": "Officier des quais",
+      "role": "Amarrage",
+      "organizationId": "star-navigators",
+      "currentVisualRole": "dock-officer",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "market-artisan",
+      "name": "Artisane du marché",
+      "role": "Équipement",
+      "organizationId": "forge-circle",
+      "currentVisualRole": "artisan",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "forge-artisan",
+      "name": "Maîtresse des parures",
+      "role": "Forge",
+      "organizationId": "forge-circle",
+      "currentVisualRole": "forge-master",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "undercity-witness",
+      "name": "Témoin des galeries",
+      "role": "Témoin",
+      "organizationId": "exile-network",
+      "currentVisualRole": "witness",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "trophy-herald",
+      "name": "Héraut des prises",
+      "role": "Reconnaissance",
+      "organizationId": "first-blood-houses",
+      "currentVisualRole": "herald",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "terrace-instructor",
+      "name": "Instructeur des terrasses",
+      "role": "Entraînement",
+      "organizationId": "reserve-keepers",
+      "currentVisualRole": "instructor",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "clan-healer",
+      "name": "Soigneuse des délégations",
+      "role": "Soins",
+      "organizationId": "reserve-keepers",
+      "currentVisualRole": "healer",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "enforcer-captain",
+      "name": "Capitaine des Enforcers",
+      "role": "Preuves",
+      "organizationId": "throne-court",
+      "currentVisualRole": "guard",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "memory-keeper",
+      "name": "Conservatrice des marques",
+      "role": "Archives",
+      "organizationId": "first-blood-houses",
+      "currentVisualRole": "archivist",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "arena-steward",
+      "name": "Intendant des arènes",
+      "role": "THE PIT",
+      "organizationId": "first-blood-houses",
+      "currentVisualRole": "arena-steward",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "rite-keeper",
+      "name": "Gardienne des rites",
+      "role": "Rites",
+      "organizationId": "first-blood-houses",
+      "currentVisualRole": "rite-keeper",
+      "stableNarrativeIdentity": true
+    },
+    {
+      "id": "hunt-king",
+      "name": "Roi de la Chasse",
+      "role": "Souverain de la cité",
+      "organizationId": "throne-court",
+      "currentVisualRole": "chief",
+      "stableNarrativeIdentity": true
+    }
+  ],
+  "urbanExtras": [
+    {
+      "id": "urban-v78:extra:quay-0",
+      "currentVisualRole": "dock-officer",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-1",
+      "currentVisualRole": "courier",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-2",
+      "currentVisualRole": "artisan",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-3",
+      "currentVisualRole": "courier",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-4",
+      "currentVisualRole": "dock-officer",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-5",
+      "currentVisualRole": "courier",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:quay-6",
+      "currentVisualRole": "artisan",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-0",
+      "currentVisualRole": "witness",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-1",
+      "currentVisualRole": "artisan",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-2",
+      "currentVisualRole": "forge-master",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-3",
+      "currentVisualRole": "witness",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-4",
+      "currentVisualRole": "courier",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-5",
+      "currentVisualRole": "artisan",
+      "interactive": false
+    },
+    {
+      "id": "urban-v78:extra:lower-6",
+      "currentVisualRole": "healer",
+      "interactive": false
+    }
+  ],
+  "cntlipHosts": [
+    {
+      "id": "clan-table-healer",
+      "siteId": "clan-common",
+      "buildingId": "clan-lodge",
+      "name": "Soigneuse de relève",
+      "currentVisualRole": "healer"
+    },
+    {
+      "id": "market-table-artisan",
+      "siteId": "market-halt",
+      "buildingId": "market-canopy",
+      "name": "Artisane des délégations",
+      "currentVisualRole": "artisan"
+    },
+    {
+      "id": "pit-table-attendant",
+      "siteId": "pit-rest",
+      "buildingId": "pit-gate",
+      "name": "Préposé à la halte des Chroniques",
+      "currentVisualRole": "arena-steward"
+    },
+    {
+      "id": "court-table-herald",
+      "siteId": "council-gathering",
+      "buildingId": "throne-audience",
+      "name": "Porte-parole de la cour locale",
+      "currentVisualRole": "herald"
+    }
+  ],
+  "monumentInhabitants": [
+    {
+      "id": "palace-v81-guard-west",
+      "currentVisualRole": "guard",
+      "label": "Garde de l’aile publique"
+    },
+    {
+      "id": "palace-v81-guard-east",
+      "currentVisualRole": "guard",
+      "label": "Garde des délégations"
+    },
+    {
+      "id": "council-v81-archivist",
+      "currentVisualRole": "archivist",
+      "label": "Archiviste des registres locaux"
+    },
+    {
+      "id": "council-v81-herald",
+      "currentVisualRole": "herald",
+      "label": "Représentant d’un clan allié"
+    },
+    {
+      "id": "council-v81-rite-observer",
+      "currentVisualRole": "rite-keeper",
+      "label": "Ancien observateur des rites locaux"
+    }
+  ],
+  "lavaFerryman": [
+    {
+      "id": "lava-ferryman-v77",
+      "currentVisualRole": "dock-officer",
+      "label": "Passeur de lave",
+      "interactive": false
+    }
+  ],
+  "regionalCore": [
+    {
+      "id": "ash-marches:guide",
+      "localId": "guide",
+      "regionId": "ash-marches",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:artisan",
+      "localId": "artisan",
+      "regionId": "ash-marches",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:healer",
+      "localId": "healer",
+      "regionId": "ash-marches",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:keeper",
+      "localId": "keeper",
+      "regionId": "ash-marches",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:porter-a",
+      "localId": "porter-a",
+      "regionId": "ash-marches",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:porter-b",
+      "localId": "porter-b",
+      "regionId": "ash-marches",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "ash-marches",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "ash-marches",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "ash-marches",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "ash-marches",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "ash-marches",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "ash-marches",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:guide",
+      "localId": "guide",
+      "regionId": "glass-desert",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:artisan",
+      "localId": "artisan",
+      "regionId": "glass-desert",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:healer",
+      "localId": "healer",
+      "regionId": "glass-desert",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:keeper",
+      "localId": "keeper",
+      "regionId": "glass-desert",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:porter-a",
+      "localId": "porter-a",
+      "regionId": "glass-desert",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:porter-b",
+      "localId": "porter-b",
+      "regionId": "glass-desert",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "glass-desert",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "glass-desert",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "glass-desert",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "glass-desert",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "glass-desert",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "glass-desert",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:guide",
+      "localId": "guide",
+      "regionId": "pillar-jungle",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:artisan",
+      "localId": "artisan",
+      "regionId": "pillar-jungle",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:healer",
+      "localId": "healer",
+      "regionId": "pillar-jungle",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:keeper",
+      "localId": "keeper",
+      "regionId": "pillar-jungle",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:porter-a",
+      "localId": "porter-a",
+      "regionId": "pillar-jungle",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:porter-b",
+      "localId": "porter-b",
+      "regionId": "pillar-jungle",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "pillar-jungle",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "pillar-jungle",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "pillar-jungle",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "pillar-jungle",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "pillar-jungle",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "pillar-jungle",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:guide",
+      "localId": "guide",
+      "regionId": "luminous-marshes",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:artisan",
+      "localId": "artisan",
+      "regionId": "luminous-marshes",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:healer",
+      "localId": "healer",
+      "regionId": "luminous-marshes",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:keeper",
+      "localId": "keeper",
+      "regionId": "luminous-marshes",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:porter-a",
+      "localId": "porter-a",
+      "regionId": "luminous-marshes",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:porter-b",
+      "localId": "porter-b",
+      "regionId": "luminous-marshes",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "luminous-marshes",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "luminous-marshes",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "luminous-marshes",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "luminous-marshes",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "luminous-marshes",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "luminous-marshes",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:guide",
+      "localId": "guide",
+      "regionId": "storm-chain",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:artisan",
+      "localId": "artisan",
+      "regionId": "storm-chain",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:healer",
+      "localId": "healer",
+      "regionId": "storm-chain",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:keeper",
+      "localId": "keeper",
+      "regionId": "storm-chain",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:porter-a",
+      "localId": "porter-a",
+      "regionId": "storm-chain",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:porter-b",
+      "localId": "porter-b",
+      "regionId": "storm-chain",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "storm-chain",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "storm-chain",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "storm-chain",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "storm-chain",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "storm-chain",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "storm-chain",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:guide",
+      "localId": "guide",
+      "regionId": "leviathan-coast",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:artisan",
+      "localId": "artisan",
+      "regionId": "leviathan-coast",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:healer",
+      "localId": "healer",
+      "regionId": "leviathan-coast",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:keeper",
+      "localId": "keeper",
+      "regionId": "leviathan-coast",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:porter-a",
+      "localId": "porter-a",
+      "regionId": "leviathan-coast",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:porter-b",
+      "localId": "porter-b",
+      "regionId": "leviathan-coast",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "leviathan-coast",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "leviathan-coast",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "leviathan-coast",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "leviathan-coast",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "leviathan-coast",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "leviathan-coast",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:guide",
+      "localId": "guide",
+      "regionId": "thermal-caves",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:artisan",
+      "localId": "artisan",
+      "regionId": "thermal-caves",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:healer",
+      "localId": "healer",
+      "regionId": "thermal-caves",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:keeper",
+      "localId": "keeper",
+      "regionId": "thermal-caves",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:porter-a",
+      "localId": "porter-a",
+      "regionId": "thermal-caves",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:porter-b",
+      "localId": "porter-b",
+      "regionId": "thermal-caves",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "thermal-caves",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "thermal-caves",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "thermal-caves",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "thermal-caves",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "thermal-caves",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "thermal-caves",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:guide",
+      "localId": "guide",
+      "regionId": "cold-crown",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:artisan",
+      "localId": "artisan",
+      "regionId": "cold-crown",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:healer",
+      "localId": "healer",
+      "regionId": "cold-crown",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:keeper",
+      "localId": "keeper",
+      "regionId": "cold-crown",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:porter-a",
+      "localId": "porter-a",
+      "regionId": "cold-crown",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:porter-b",
+      "localId": "porter-b",
+      "regionId": "cold-crown",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "cold-crown",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "cold-crown",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "cold-crown",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "cold-crown",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "cold-crown",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "cold-crown",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:guide",
+      "localId": "guide",
+      "regionId": "first-city-ruins",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:artisan",
+      "localId": "artisan",
+      "regionId": "first-city-ruins",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:healer",
+      "localId": "healer",
+      "regionId": "first-city-ruins",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:keeper",
+      "localId": "keeper",
+      "regionId": "first-city-ruins",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:porter-a",
+      "localId": "porter-a",
+      "regionId": "first-city-ruins",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:porter-b",
+      "localId": "porter-b",
+      "regionId": "first-city-ruins",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "first-city-ruins",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "first-city-ruins",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "first-city-ruins",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "first-city-ruins",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "first-city-ruins",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "first-city-ruins",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:guide",
+      "localId": "guide",
+      "regionId": "forbidden-reserve",
+      "role": "Pisteur du clan",
+      "morphId": "elder",
+      "suggestedVisualFamily": "guide",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:artisan",
+      "localId": "artisan",
+      "regionId": "forbidden-reserve",
+      "role": "Artisane des balises",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "artisan",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:healer",
+      "localId": "healer",
+      "regionId": "forbidden-reserve",
+      "role": "Soigneuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "healer",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:keeper",
+      "localId": "keeper",
+      "regionId": "forbidden-reserve",
+      "role": "Gardienne des récits",
+      "morphId": "elder",
+      "suggestedVisualFamily": "archivist",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:porter-a",
+      "localId": "porter-a",
+      "regionId": "forbidden-reserve",
+      "role": "Porteur",
+      "morphId": "classic",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:porter-b",
+      "localId": "porter-b",
+      "regionId": "forbidden-reserve",
+      "role": "Convoyeuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "porter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:hunter-a",
+      "localId": "hunter-a",
+      "regionId": "forbidden-reserve",
+      "role": "Chasseur de retour",
+      "morphId": "classic",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:hunter-b",
+      "localId": "hunter-b",
+      "regionId": "forbidden-reserve",
+      "role": "Chasseuse",
+      "morphId": "huntress",
+      "suggestedVisualFamily": "hunter",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:apprentice-a",
+      "localId": "apprentice-a",
+      "regionId": "forbidden-reserve",
+      "role": "Apprenti accompagné",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:apprentice-b",
+      "localId": "apprentice-b",
+      "regionId": "forbidden-reserve",
+      "role": "Apprentie accompagnée",
+      "morphId": "young",
+      "suggestedVisualFamily": "apprentice",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:watcher-a",
+      "localId": "watcher-a",
+      "regionId": "forbidden-reserve",
+      "role": "Veilleur",
+      "morphId": "super",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve:watcher-b",
+      "localId": "watcher-b",
+      "regionId": "forbidden-reserve",
+      "role": "Veilleuse",
+      "morphId": "classic",
+      "suggestedVisualFamily": "guard",
+      "stableNarrativeIdentity": true,
+      "currentRenderer": "HomeworldModularHunter"
+    }
+  ],
+  "regionalAmbient": [
+    {
+      "id": "ash-marches-life-1",
+      "regionId": "ash-marches",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 1-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-2",
+      "regionId": "ash-marches",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 1-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-3",
+      "regionId": "ash-marches",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 1-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-4",
+      "regionId": "ash-marches",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 1-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-5",
+      "regionId": "ash-marches",
+      "role": "Conservateur local",
+      "name": "Tor’vek 1-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-6",
+      "regionId": "ash-marches",
+      "role": "Conservateur local",
+      "name": "Sha’len 1-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-7",
+      "regionId": "ash-marches",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 1-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-8",
+      "regionId": "ash-marches",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 1-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-9",
+      "regionId": "ash-marches",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 1-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-10",
+      "regionId": "ash-marches",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 1-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-11",
+      "regionId": "ash-marches",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 1-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-12",
+      "regionId": "ash-marches",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 1-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-13",
+      "regionId": "ash-marches",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 1-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-14",
+      "regionId": "ash-marches",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 1-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-15",
+      "regionId": "ash-marches",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 1-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-16",
+      "regionId": "ash-marches",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 1-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-17",
+      "regionId": "ash-marches",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 1-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "ash-marches-life-18",
+      "regionId": "ash-marches",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 1-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-1",
+      "regionId": "glass-desert",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 2-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-2",
+      "regionId": "glass-desert",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 2-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-3",
+      "regionId": "glass-desert",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 2-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-4",
+      "regionId": "glass-desert",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 2-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-5",
+      "regionId": "glass-desert",
+      "role": "Conservateur local",
+      "name": "Tor’vek 2-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-6",
+      "regionId": "glass-desert",
+      "role": "Conservateur local",
+      "name": "Sha’len 2-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-7",
+      "regionId": "glass-desert",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 2-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-8",
+      "regionId": "glass-desert",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 2-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-9",
+      "regionId": "glass-desert",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 2-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-10",
+      "regionId": "glass-desert",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 2-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-11",
+      "regionId": "glass-desert",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 2-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-12",
+      "regionId": "glass-desert",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 2-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-13",
+      "regionId": "glass-desert",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 2-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-14",
+      "regionId": "glass-desert",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 2-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-15",
+      "regionId": "glass-desert",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 2-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-16",
+      "regionId": "glass-desert",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 2-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-17",
+      "regionId": "glass-desert",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 2-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "glass-desert-life-18",
+      "regionId": "glass-desert",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 2-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-1",
+      "regionId": "pillar-jungle",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 3-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-2",
+      "regionId": "pillar-jungle",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 3-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-3",
+      "regionId": "pillar-jungle",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 3-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-4",
+      "regionId": "pillar-jungle",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 3-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-5",
+      "regionId": "pillar-jungle",
+      "role": "Conservateur local",
+      "name": "Tor’vek 3-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-6",
+      "regionId": "pillar-jungle",
+      "role": "Conservateur local",
+      "name": "Sha’len 3-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-7",
+      "regionId": "pillar-jungle",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 3-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-8",
+      "regionId": "pillar-jungle",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 3-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-9",
+      "regionId": "pillar-jungle",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 3-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-10",
+      "regionId": "pillar-jungle",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 3-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-11",
+      "regionId": "pillar-jungle",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 3-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-12",
+      "regionId": "pillar-jungle",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 3-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-13",
+      "regionId": "pillar-jungle",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 3-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-14",
+      "regionId": "pillar-jungle",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 3-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-15",
+      "regionId": "pillar-jungle",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 3-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-16",
+      "regionId": "pillar-jungle",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 3-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-17",
+      "regionId": "pillar-jungle",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 3-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "pillar-jungle-life-18",
+      "regionId": "pillar-jungle",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 3-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-1",
+      "regionId": "luminous-marshes",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 4-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-2",
+      "regionId": "luminous-marshes",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 4-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-3",
+      "regionId": "luminous-marshes",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 4-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-4",
+      "regionId": "luminous-marshes",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 4-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-5",
+      "regionId": "luminous-marshes",
+      "role": "Conservateur local",
+      "name": "Tor’vek 4-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-6",
+      "regionId": "luminous-marshes",
+      "role": "Conservateur local",
+      "name": "Sha’len 4-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-7",
+      "regionId": "luminous-marshes",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 4-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-8",
+      "regionId": "luminous-marshes",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 4-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-9",
+      "regionId": "luminous-marshes",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 4-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-10",
+      "regionId": "luminous-marshes",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 4-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-11",
+      "regionId": "luminous-marshes",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 4-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-12",
+      "regionId": "luminous-marshes",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 4-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-13",
+      "regionId": "luminous-marshes",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 4-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-14",
+      "regionId": "luminous-marshes",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 4-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-15",
+      "regionId": "luminous-marshes",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 4-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-16",
+      "regionId": "luminous-marshes",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 4-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-17",
+      "regionId": "luminous-marshes",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 4-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "luminous-marshes-life-18",
+      "regionId": "luminous-marshes",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 4-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-1",
+      "regionId": "storm-chain",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 5-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-2",
+      "regionId": "storm-chain",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 5-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-3",
+      "regionId": "storm-chain",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 5-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-4",
+      "regionId": "storm-chain",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 5-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-5",
+      "regionId": "storm-chain",
+      "role": "Conservateur local",
+      "name": "Tor’vek 5-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-6",
+      "regionId": "storm-chain",
+      "role": "Conservateur local",
+      "name": "Sha’len 5-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-7",
+      "regionId": "storm-chain",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 5-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-8",
+      "regionId": "storm-chain",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 5-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-9",
+      "regionId": "storm-chain",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 5-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-10",
+      "regionId": "storm-chain",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 5-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-11",
+      "regionId": "storm-chain",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 5-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-12",
+      "regionId": "storm-chain",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 5-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-13",
+      "regionId": "storm-chain",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 5-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-14",
+      "regionId": "storm-chain",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 5-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-15",
+      "regionId": "storm-chain",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 5-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-16",
+      "regionId": "storm-chain",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 5-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-17",
+      "regionId": "storm-chain",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 5-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "storm-chain-life-18",
+      "regionId": "storm-chain",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 5-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-1",
+      "regionId": "leviathan-coast",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 6-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-2",
+      "regionId": "leviathan-coast",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 6-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-3",
+      "regionId": "leviathan-coast",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 6-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-4",
+      "regionId": "leviathan-coast",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 6-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-5",
+      "regionId": "leviathan-coast",
+      "role": "Conservateur local",
+      "name": "Tor’vek 6-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-6",
+      "regionId": "leviathan-coast",
+      "role": "Conservateur local",
+      "name": "Sha’len 6-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-7",
+      "regionId": "leviathan-coast",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 6-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-8",
+      "regionId": "leviathan-coast",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 6-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-9",
+      "regionId": "leviathan-coast",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 6-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-10",
+      "regionId": "leviathan-coast",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 6-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-11",
+      "regionId": "leviathan-coast",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 6-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-12",
+      "regionId": "leviathan-coast",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 6-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-13",
+      "regionId": "leviathan-coast",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 6-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-14",
+      "regionId": "leviathan-coast",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 6-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-15",
+      "regionId": "leviathan-coast",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 6-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-16",
+      "regionId": "leviathan-coast",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 6-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-17",
+      "regionId": "leviathan-coast",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 6-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "leviathan-coast-life-18",
+      "regionId": "leviathan-coast",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 6-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-1",
+      "regionId": "thermal-caves",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 7-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-2",
+      "regionId": "thermal-caves",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 7-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-3",
+      "regionId": "thermal-caves",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 7-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-4",
+      "regionId": "thermal-caves",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 7-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-5",
+      "regionId": "thermal-caves",
+      "role": "Conservateur local",
+      "name": "Tor’vek 7-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-6",
+      "regionId": "thermal-caves",
+      "role": "Conservateur local",
+      "name": "Sha’len 7-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-7",
+      "regionId": "thermal-caves",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 7-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-8",
+      "regionId": "thermal-caves",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 7-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-9",
+      "regionId": "thermal-caves",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 7-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-10",
+      "regionId": "thermal-caves",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 7-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-11",
+      "regionId": "thermal-caves",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 7-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-12",
+      "regionId": "thermal-caves",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 7-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-13",
+      "regionId": "thermal-caves",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 7-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-14",
+      "regionId": "thermal-caves",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 7-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-15",
+      "regionId": "thermal-caves",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 7-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-16",
+      "regionId": "thermal-caves",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 7-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-17",
+      "regionId": "thermal-caves",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 7-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "thermal-caves-life-18",
+      "regionId": "thermal-caves",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 7-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-1",
+      "regionId": "cold-crown",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 8-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-2",
+      "regionId": "cold-crown",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 8-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-3",
+      "regionId": "cold-crown",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 8-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-4",
+      "regionId": "cold-crown",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 8-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-5",
+      "regionId": "cold-crown",
+      "role": "Conservateur local",
+      "name": "Tor’vek 8-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-6",
+      "regionId": "cold-crown",
+      "role": "Conservateur local",
+      "name": "Sha’len 8-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-7",
+      "regionId": "cold-crown",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 8-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-8",
+      "regionId": "cold-crown",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 8-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-9",
+      "regionId": "cold-crown",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 8-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-10",
+      "regionId": "cold-crown",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 8-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-11",
+      "regionId": "cold-crown",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 8-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-12",
+      "regionId": "cold-crown",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 8-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-13",
+      "regionId": "cold-crown",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 8-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-14",
+      "regionId": "cold-crown",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 8-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-15",
+      "regionId": "cold-crown",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 8-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-16",
+      "regionId": "cold-crown",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 8-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-17",
+      "regionId": "cold-crown",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 8-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "cold-crown-life-18",
+      "regionId": "cold-crown",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 8-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-1",
+      "regionId": "first-city-ruins",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 9-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-2",
+      "regionId": "first-city-ruins",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 9-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-3",
+      "regionId": "first-city-ruins",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 9-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-4",
+      "regionId": "first-city-ruins",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 9-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-5",
+      "regionId": "first-city-ruins",
+      "role": "Conservateur local",
+      "name": "Tor’vek 9-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-6",
+      "regionId": "first-city-ruins",
+      "role": "Conservateur local",
+      "name": "Sha’len 9-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-7",
+      "regionId": "first-city-ruins",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 9-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-8",
+      "regionId": "first-city-ruins",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 9-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-9",
+      "regionId": "first-city-ruins",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 9-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-10",
+      "regionId": "first-city-ruins",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 9-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-11",
+      "regionId": "first-city-ruins",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 9-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-12",
+      "regionId": "first-city-ruins",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 9-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-13",
+      "regionId": "first-city-ruins",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 9-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-14",
+      "regionId": "first-city-ruins",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 9-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-15",
+      "regionId": "first-city-ruins",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 9-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-16",
+      "regionId": "first-city-ruins",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 9-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-17",
+      "regionId": "first-city-ruins",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 9-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "first-city-ruins-life-18",
+      "regionId": "first-city-ruins",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 9-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-1",
+      "regionId": "forbidden-reserve",
+      "role": "Porteur des réserves",
+      "name": "Kha’len 10-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-2",
+      "regionId": "forbidden-reserve",
+      "role": "Porteur des réserves",
+      "name": "Nesh’ta 10-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-3",
+      "regionId": "forbidden-reserve",
+      "role": "Artisane des conduits",
+      "name": "Vhar’esh 10-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-4",
+      "regionId": "forbidden-reserve",
+      "role": "Artisane des conduits",
+      "name": "Osh’ra 10-1",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-5",
+      "regionId": "forbidden-reserve",
+      "role": "Conservateur local",
+      "name": "Tor’vek 10-1",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-6",
+      "regionId": "forbidden-reserve",
+      "role": "Conservateur local",
+      "name": "Sha’len 10-1",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-7",
+      "regionId": "forbidden-reserve",
+      "role": "Veilleuse de relève",
+      "name": "Kha’len 10-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-8",
+      "regionId": "forbidden-reserve",
+      "role": "Veilleuse de relève",
+      "name": "Nesh’ta 10-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-9",
+      "regionId": "forbidden-reserve",
+      "role": "Habitant des demeures",
+      "name": "Vhar’esh 10-2",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-10",
+      "regionId": "forbidden-reserve",
+      "role": "Habitant des demeures",
+      "name": "Osh’ra 10-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-11",
+      "regionId": "forbidden-reserve",
+      "role": "Habitant des demeures",
+      "name": "Tor’vek 10-2",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-12",
+      "regionId": "forbidden-reserve",
+      "role": "Habitant des demeures",
+      "name": "Sha’len 10-2",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-13",
+      "regionId": "forbidden-reserve",
+      "role": "Aspirant accompagné",
+      "name": "Kha’len 10-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-14",
+      "regionId": "forbidden-reserve",
+      "role": "Aspirant accompagné",
+      "name": "Nesh’ta 10-3",
+      "morphId": "young",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-15",
+      "regionId": "forbidden-reserve",
+      "role": "Visiteur du clan",
+      "name": "Vhar’esh 10-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-16",
+      "regionId": "forbidden-reserve",
+      "role": "Visiteur du clan",
+      "name": "Osh’ra 10-3",
+      "morphId": "elder",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-17",
+      "regionId": "forbidden-reserve",
+      "role": "Accompagnateur des aspirants",
+      "name": "Tor’vek 10-3",
+      "morphId": "classic",
+      "currentRenderer": "HomeworldModularHunter"
+    },
+    {
+      "id": "forbidden-reserve-life-18",
+      "regionId": "forbidden-reserve",
+      "role": "Accompagnateur des aspirants",
+      "name": "Sha’len 10-3",
+      "morphId": "huntress",
+      "currentRenderer": "HomeworldModularHunter"
+    }
+  ],
+  "tribeSpecialists": [
+    {
+      "id": "v2-pnj-desert-hydrologue-v2",
+      "label": "Pnj Desert Hydrologue",
+      "subject": "Peuple des Citernes",
+      "sourceName": "PNJ_DESERT_HYDROLOGUE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-desert-hydrologue-v2--95371c77d19d1199.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-desert-intendante-v2",
+      "label": "Pnj Desert Intendante",
+      "subject": "Peuple des Citernes",
+      "sourceName": "PNJ_DESERT_INTENDANTE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-desert-intendante-v2--8258ef482fcac74a.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-forest-batieur-v2",
+      "label": "Pnj Forest Batieur",
+      "subject": "Terrasses des Hautes Branches",
+      "sourceName": "PNJ_FOREST_BATIEUR_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-forest-batieur-v2--faecef90fa479888.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-forest-archiviste-v2",
+      "label": "Pnj Forest Archiviste",
+      "subject": "Terrasses des Hautes Branches",
+      "sourceName": "PNJ_FOREST_ARCHIVISTE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-forest-archiviste-v2--1749384781215693.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-slums-mecanicienne-v2",
+      "label": "Pnj Slums Mecanicienne",
+      "subject": "Cour des Forges Basses",
+      "sourceName": "PNJ_SLUMS_MECANICIENNE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-slums-mecanicienne-v2--d5682b4a8136b85a.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-slums-negociant-v2",
+      "label": "Pnj Slums Negociant",
+      "subject": "Cour des Forges Basses",
+      "sourceName": "PNJ_SLUMS_NEGOCIANT_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-slums-negociant-v2--4b98718c9fc4861b.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-lava-fondeur-v2",
+      "label": "Pnj Lava Fondeur",
+      "subject": "Forges de la Caldeira",
+      "sourceName": "PNJ_LAVA_FONDEUR_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-lava-fondeur-v2--bd930342f88b9bf1.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-lava-medecin-v2",
+      "label": "Pnj Lava Medecin",
+      "subject": "Forges de la Caldeira",
+      "sourceName": "PNJ_LAVA_MEDECIN_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-lava-medecin-v2--b7a2e90b5bffd65a.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-darkjungle-botaniste-v2",
+      "label": "Pnj Darkjungle Botaniste",
+      "subject": "Refuge des Veilleurs",
+      "sourceName": "PNJ_DARKJUNGLE_BOTANISTE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-darkjungle-botaniste-v2--c8ab0db26f936ad8.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    },
+    {
+      "id": "v2-pnj-darkjungle-guide-v2",
+      "label": "Pnj Darkjungle Guide",
+      "subject": "Refuge des Veilleurs",
+      "sourceName": "PNJ_DARKJUNGLE_GUIDE_V2.png",
+      "src": "/game/assets/v37/tribes/v2/pnj-darkjungle-guide-v2--dcd7c876e19d6708.webp",
+      "usageNote": "Illustration statique en pied ; aucun cycle animé ni équipement séparé. Orientation et anatomie à valider avant usage en jeu latéral."
+    }
+  ],
+  "rawOccupationCounts": {
+    "Porteur de cargaisons": 1,
+    "Navigatrice": 1,
+    "Convoyeur": 1,
+    "Éclaireuse des quais": 1,
+    "Artisane": 1,
+    "Courrier de clan": 1,
+    "Acheteur de matériaux": 1,
+    "Tailleur de parures": 1,
+    "Apprenti de forge": 1,
+    "Polisseuse": 1,
+    "Porteur de minerai": 1,
+    "Armurière": 1,
+    "Chasseur de passage": 9,
+    "Garde de patrouille": 9,
+    "Émissaire de clan": 9,
+    "Aspirant": 10,
+    "Émissaire": 1,
+    "Gardienne du foyer": 1,
+    "Ancien du clan": 1,
+    "Lecteur des marques": 1,
+    "Archiviste": 1,
+    "Conservatrice": 1,
+    "Messager des archives": 1,
+    "Inspectrice des amarres": 1,
+    "Porteur du retour": 1,
+    "Apprentie navigatrice": 1,
+    "Tisseuse de liens": 1,
+    "Peseur de matériaux": 1,
+    "Messagère des villages": 1,
+    "Ajusteur de supports": 1,
+    "Gardienne des outils": 1,
+    "Apprentie graveuse": 1,
+    "Réparatrice des conduits": 1,
+    "Voisin des galeries": 1,
+    "Porteur de lampes": 1,
+    "Hôte des retrouvailles": 1,
+    "Aspirante à l’écoute": 1,
+    "Ancien des récits": 1,
+    "Instructrice des appuis": 1,
+    "Aspirant de la cohorte": 1,
+    "Observatrice du parcours": 1,
+    "Hôte des délégations": 1,
+    "Aspirante du foyer": 1,
+    "Porteuse des provisions": 1,
+    "Lectrice des rapports": 1,
+    "Garde du retour": 1,
+    "Courrier des postes": 1,
+    "Copiste des trajets": 1,
+    "Ancienne des retours": 1,
+    "Apprenti archiviste": 1,
+    "Arbitre des démonstrations": 1,
+    "Visiteuse des clans": 1,
+    "Élève du duel": 1,
+    "Gardien des seuils": 1,
+    "Porteuse des braises": 1,
+    "Témoin des rites": 1,
+    "Émissaire des hauts villages": 1,
+    "Porteuse des réponses": 1,
+    "Témoin du conseil": 1,
+    "Vérificateur des scellés": 1,
+    "Porteuse des relais": 1,
+    "Apprenti convoyeur": 1,
+    "Guetteuse des ponts": 1,
+    "Réparateur des balises": 1,
+    "Courrier des corniches": 1,
+    "Pisteur du clan": 10,
+    "Artisane des balises": 10,
+    "Soigneuse": 10,
+    "Gardienne des récits": 10,
+    "Porteur": 10,
+    "Convoyeuse": 10,
+    "Chasseur de retour": 10,
+    "Chasseuse": 10,
+    "Apprenti accompagné": 10,
+    "Apprentie accompagnée": 10,
+    "Veilleur": 10,
+    "Veilleuse": 10,
+    "Porteur des réserves": 20,
+    "Artisane des conduits": 20,
+    "Conservateur local": 20,
+    "Veilleuse de relève": 20,
+    "Habitant des demeures": 40,
+    "Aspirant accompagné": 20,
+    "Visiteur du clan": 20,
+    "Accompagnateur des aspirants": 20
+  },
+  "suggestedVisualFamilies": [
+    "chief",
+    "artisan",
+    "healer",
+    "archivist",
+    "guard",
+    "courier",
+    "instructor",
+    "apprentice",
+    "dock-officer",
+    "forge-master",
+    "witness",
+    "herald",
+    "arena-steward",
+    "rite-keeper",
+    "guide",
+    "porter",
+    "hunter",
+    "resident",
+    "tribe-desert-hydrologist",
+    "tribe-desert-quartermaster",
+    "tribe-forest-builder",
+    "tribe-forest-archivist",
+    "tribe-slums-mechanic",
+    "tribe-slums-trader",
+    "tribe-lava-smelter",
+    "tribe-lava-medic",
+    "tribe-darkjungle-botanist",
+    "tribe-darkjungle-guide"
+  ],
+  "scopeNotes": [
+    "434 existing walking-world NPC placements; 10 tribe specialist concepts are a separate catalogue and not delivered five tribal hubs.",
+    "Source V72 roles have exactly one idle cell each and V74 role-only walking clips.",
+    "Use regionId + localId for 120 regional core identities because local IDs repeat across regions.",
+    "Do not duplicate quest/service actors: 20 visual variants are libraries, not 20 quest givers at each point.",
+    "Preserve authored names, greeted IDs, roles, routes, collision footprints and save formats.",
+    "Avoid morphId-derived profession reassignment; age and body type do not change the job.",
+    "Stable appearance must not reroll on movement, UI redraw, loading, entry or save restore."
+  ]
+}

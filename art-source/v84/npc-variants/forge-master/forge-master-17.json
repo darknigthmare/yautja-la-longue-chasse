@@ -1,0 +1,51 @@
+{
+  "id": "forge-master-17",
+  "role": "forge-master",
+  "description": "Average-height athletic master with warm bronze-gray scales and scattered ivory spots, narrow domed crown. Long dreadlocks in a neatly bound high ponytail. Dark brown apron with one broad shoulder strap, leather lower hem folded up at one corner, long side tool pocket. Carries two short differently shaped forming hammers in separate lowered hands; unmistakable workshop tools, never weapons.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Average-height athletic master with warm bronze-gray scales and scattered ivory spots, narrow domed crown. Long dreadlocks in a neatly bound high ponytail. Dark brown apron with one broad shoulder strap, leather lower hem folded up at one corner, long side tool pocket. Carries two short differently shaped forming hammers in separate lowered hands; unmistakable workshop tools, never weapons.",
+  "status": "validated",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    23,
+    942,
+    1501
+  ],
+  "transparent_fraction": 0.6518929799397787,
+  "sha256": "9339499b5523b33dbbc785385db672d406e64490943fb0f18ba872a7c33724b1",
+  "byte_count": 2112017,
+  "original_bytes_preserved": true,
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-17.png",
+  "githubBlobSha": "ad5c2b7222dc2b3d35808984ac1e568e8e9722c1",
+  "blobError": null,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/forge-master/forge-master-17.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f105e6ea-0b3d-407c-b78c-af60f0b1ac78.png",
+  "gitBlobSha1": "ad5c2b7222dc2b3d35808984ac1e568e8e9722c1",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/forge-master/forge-master-17-before-face-review-605af8bc0c22.png",
+    "sha256": "605af8bc0c22e5e5777387638088c92b05426d17e8cd1e7f32f5e940c2356377"
+  }
+}

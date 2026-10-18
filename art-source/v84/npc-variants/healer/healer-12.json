@@ -1,0 +1,34 @@
+{
+  "n": 12,
+  "role": "healer",
+  "name": "Ritual recovery medic",
+  "design": "Tall slender adult female Yautja with deep umber scales and ivory speckles, long narrow alien skull and four unmistakable mandibles, dreadlocks split into a short crown and long central back fall. Cream asymmetric wrap dress over functional brown trousers, narrow teal embroidered borders and overlapping leather medicine belts, triangular medicomp wallet. Left hand holds a small carved bone-handled diagnostic probe and right hand grips a little vial rack, neutral composed posture.",
+  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-a6521efe-aa23-48c2-badb-248bd8075c7e.png",
+  "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-12.png",
+  "filename": "healer-12.png",
+  "status": "generated",
+  "generator": "built-in image_gen",
+  "revision": 2,
+  "faceCorrection": true,
+  "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-12.png",
+  "referencePaths": [
+    "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-12.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "anatomyReference": "stan-winston-predator-test.jpg",
+  "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 12, Ritual recovery medic. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+  "width": 1024,
+  "height": 1536,
+  "transparentPixelRatio": 0.659,
+  "bodyBoundsA128": [
+    279,
+    10,
+    844,
+    1521
+  ],
+  "sha256": "f2a98414ecbf642aa9e1b7a8d4870005200cfb602637f590247fdcbc997f5e5a",
+  "ancestorSha256": "019d130fba098364d90b9955cb8e213bb0238aed405689e94f97e5a3a980564c",
+  "githubBlobSha": "9c4f7ffbf0082d088cbfa14bc2229863437d6cf8",
+  "faceReview": "approved",
+  "face": "visible-four-mandibles"
+}

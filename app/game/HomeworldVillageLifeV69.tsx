@@ -11,6 +11,7 @@ import type { HomeworldVec2 } from './systems/homeworldCity';
 import HomeworldNativePropV64 from './HomeworldNativePropV64';
 import HomeworldModularHunter from './HomeworldModularHunter';
 import HomeworldVillagePortraitV85 from './HomeworldVillagePortraitV85';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import styles from './HomeworldVillageLifeV69.module.css';
 
 /** Direct fragment children retain the common physical feet-depth sort. Static
@@ -42,7 +43,9 @@ export default function HomeworldVillageLifeV69({ regionId, tick, actor, rect, a
       if (!placement) return null;
       return <span key={n.id} className={styles.resident} data-region-village-resident-v69={n.id} data-life-role={n.role} data-life-scene={n.sceneId ?? undefined} data-life-moving={pose.moving} data-life-yielding={pose.yielding} data-life-x={pose.x} data-life-y={pose.y} style={{ left: p.x, top: p.y, zIndex: Math.round(pose.y) }}>
         <i className={styles.shadow} />
-        <HomeworldModularHunter morphId={n.morphId} dreadStyleId={n.dreadStyleId} appearance={{ skinId: n.skinId, dreadTintId: n.dreadTintId, headStyleId: 'reference' }} motionPhase={tick / 60 + n.phaseSeconds} speed={pose.moving ? n.speed : 0} style={{ ...placement, position: 'absolute', transform: `scaleX(${pose.facing})`, transformOrigin: `${-placement.left}px ${-placement.top}px` }} />
+        <HomeworldNpcSpriteV84 npcId={n.id} regionId={regionId} facing={pose.facing} height={n.morphId === 'young' ? 82 : 100} moving={pose.moving} preserveNativeMotion={n.path.length>1&&n.speed>0}>
+          <HomeworldModularHunter morphId={n.morphId} dreadStyleId={n.dreadStyleId} appearance={{ skinId: n.skinId, dreadTintId: n.dreadTintId, headStyleId: 'reference' }} motionPhase={tick / 60 + n.phaseSeconds} speed={pose.moving ? n.speed : 0} style={{ ...placement, position: 'absolute', transform: `scaleX(${pose.facing})`, transformOrigin: `${-placement.left}px ${-placement.top}px` }} />
+        </HomeworldNpcSpriteV84>
       </span>;
     })}
     {portraitSubject&&portraitX!==undefined&&<HomeworldVillagePortraitV85 clanName={definition.clan} resident={portraitSubject.resident} x={portraitX} y={portraitSubject.pose.y*d-160}/>}

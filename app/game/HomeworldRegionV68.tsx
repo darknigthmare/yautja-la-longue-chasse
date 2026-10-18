@@ -22,6 +22,7 @@ import HomeworldRegionalWatchV86 from './HomeworldRegionalWatchV86';
 import HomeworldBibleCultureHostV86 from './HomeworldBibleCultureHostV86';
 import BibleSceneCulturalV86 from './BibleSceneCulturalV86';
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,bibleCulturalNearbyV86,defaultBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_ACTIVITIES_V70, createVillageActivitySessionV70, nearestVillageActivityV70, stepVillageActivityV70 } from './systems/homeworldVillageActivitiesV70';
@@ -242,7 +243,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false, resident?: typeof definition.residents[number]) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
-    const original=<HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} />;
+    const modular=<HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} />;
+    const original=<HomeworldNpcSpriteV84 npcId={id} regionId={regionId} height={morph === 'young' ? 82 : 100} moving={moving} preserveNativeMotion={moving||morph!=='classic'}>{modular}</HomeworldNpcSpriteV84>;
     return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} />{resident?<HomeworldRegionalWatchV86 query={{regionId,clanName:definition.clan,resident,moving}}>{original}</HomeworldRegionalWatchV86>:original}</span>;
   };
   return <section className={styles.root} data-homeworld-region-v68={regionId} data-zone={state.zone} data-interior-building={state.buildingId ?? undefined} data-state-tick={state.tick} style={{ '--region-accent': definition.accent, '--region-ground': definition.groundColor } as CSSProperties} inert={suspended}>
