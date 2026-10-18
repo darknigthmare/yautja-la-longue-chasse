@@ -10,6 +10,7 @@ import { homeworldHeroPlate } from './systems/homeworldCity';
 import { usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from './systems/homeworldAccessV69';
 import { homeworldPortraitPlacementV64, homeworldModularPlacementV64 } from './systems/homeworldCharacterPlacementV64';
 import { createHomeworldGamepadState, stepHomeworldGamepad } from './systems/homeworldInput';
+import { preloadSceneImagesV94 } from './systems/nativeImagePreloadV94';
 import { matchesControlAction } from './systems/controlBindings';
 import { controlActionShortcut } from './controlBindingLabels';
 import { HOMEWORLD_REGIONS_V68, HOMEWORLD_REGION_TRAIL_V68, HOMEWORLD_REGION_TRACES_V68, HOMEWORLD_REGION_HAZARD_V68, HOMEWORLD_REGION_INTERIOR_V68, HOMEWORLD_VILLAGE_WORLD_V68, HOMEWORLD_VILLAGE_PERIMETER_V68, HOMEWORLD_REGION_FIELD_PERIMETER_V68, REGION_FAUNA_ART_V68, REGION_WARD_IDS_V68, REGION_WARD_POSTS_V68, canEnterHomeworldRegionV68, createHomeworldRegionV68, normalizeHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, stepHomeworldRegionV68, homeworldRegionInteractionV68, regionInteractionDialogueV68, regionObjectiveV68, regionResidentPositionV68, regionBridgesV68, regionHazardPhaseV68, homeworldRegionRouteMetresV68, homeworldRegionInteriorPropsV68, type HomeworldRegionIdV68, type HomeworldRegionStateV68, type RegionFieldEventV68 } from './systems/homeworldRegionsV68';
@@ -21,6 +22,7 @@ import HomeworldRegionalWatchV86 from './HomeworldRegionalWatchV86';
 import HomeworldBibleCultureHostV86 from './HomeworldBibleCultureHostV86';
 import BibleSceneCulturalV86 from './BibleSceneCulturalV86';
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,bibleCulturalNearbyV86,defaultBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import HomeworldVillageLifeV69 from './HomeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_LIFE_V69, nearestHomeworldVillageResidentV69 } from './systems/homeworldVillageLifeV69';
 import { HOMEWORLD_VILLAGE_ACTIVITIES_V70, createVillageActivitySessionV70, nearestVillageActivityV70, stepVillageActivityV70 } from './systems/homeworldVillageActivitiesV70';
@@ -95,7 +97,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, [freeze, persist,bibleAction]);
   const resume = useCallback(() => {
     const s = current.current;
-    if (!s || s.status !== 'walking' || !readyRef.current || latest.current.suspended || !canEnterHomeworldRegionV68(latest.current.save, s.regionId).allowed) return;
+    if (document.hidden || !document.hasFocus() || !s || s.status !== 'walking' || !readyRef.current || latest.current.suspended || !canEnterHomeworldRegionV68(latest.current.save, s.regionId).allowed) return;
     if(bibleOpenRef.current){if(!bibleAction({type:'interrupt'}).ok)return;bibleOpenRef.current=false;}
     const acknowledged = s.pendingFieldEvent ? field(s) : persist(s) ? s : null;
     if (!acknowledged) return;
@@ -134,10 +136,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     resize.observe(el); return () => resize.disconnect();
   }, []);
   useEffect(() => {
-    let cancelled = false; readyRef.current = false;
+    readyRef.current = false;
     const urls = [...new Set([definition.panorama, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.src : undefined, HOMEWORLD_GROUND_ART_V64.src, HOMEWORLD_INTERIOR_ART_V64.north.src, HOMEWORLD_PASSAGE_BRIDGE_V67.src, ...Object.values(HOMEWORLD_BUILDING_ART_V64).map(a => a.src), ...Object.values(HOMEWORLD_PROP_ART_V64).map(a => a.src), REGION_FAUNA_ART_V68[regionId]?.src, ...homeworldFaunaSourceUrlsV77(regionId), ...Array.from(scene.current?.querySelectorAll('img') ?? [], img => img.src)].filter((s): s is string => !!s))];
-    Promise.all(urls.map(src => new Promise<void>((resolve, reject) => { const img = new Image(); img.onload = () => homeworldFaunaDimensionsV77(src, img.naturalWidth, img.naturalHeight) ? resolve() : reject(new Error(src)); img.onerror = () => reject(new Error(src)); img.src = src; }))).then(() => { if (!cancelled) { readyRef.current = true; setReady(true); setArtError(''); } }).catch(() => { if (!cancelled) { setArtError('Un décor ne s’est pas chargé. La traversée reste en pause.'); setReady(false); } });
-    return () => { cancelled = true; };
+    const preload = preloadSceneImagesV94({ urls, reload: artAttempt > 0,
+      validateDimensions: homeworldFaunaDimensionsV77,
+      onProgress: progress => {
+        readyRef.current = progress.ready;
+        setReady(progress.ready); setArtError(progress.error ?? '');
+      },
+    });
+    return () => { readyRef.current = false; preload.cancel(); };
   }, [definition.panorama, youthWelcome, regionId, artAttempt]);
   useEffect(() => {
     const blur = () => {setFocused(false);pause();}, focus=()=>setFocused(!document.hidden&&document.hasFocus()), hidden = () => { if (document.hidden) blur();else focus(); };
@@ -152,17 +160,17 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     const buttons = () => Array.from(dialog.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'));
     const initial = () => (buttons()[0] ?? dialog).focus(); initial();
     const contain = (e: FocusEvent) => { if (!latest.current.suspended && e.target instanceof Node && !dialog.contains(e.target)) initial(); };
-    const tab = (e: KeyboardEvent) => { if (e.key !== 'Tab' || latest.current.suspended) return; e.preventDefault(); const targets = buttons(), index = targets.indexOf(document.activeElement as HTMLButtonElement); (targets[(index + (e.shiftKey ? -1 : 1) + targets.length) % targets.length] ?? dialog).focus(); };
+    const tab = (e: KeyboardEvent) => { if (e.key !== 'Tab' || latest.current.suspended) return; e.preventDefault(); const targets = buttons(), index = targets.indexOf(document.activeElement as HTMLButtonElement); const nextIndex = index < 0 ? e.shiftKey ? targets.length - 1 : 0 : (index + (e.shiftKey ? -1 : 1) + targets.length) % targets.length; (targets[nextIndex] ?? dialog).focus(); };
     document.addEventListener('focusin', contain); document.addEventListener('keydown', tab);
     return () => { document.removeEventListener('focusin', contain); document.removeEventListener('keydown', tab); };
   }, [modal, suspended, ready, error, notice, localPanel]);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (latest.current.suspended || e.target instanceof HTMLElement && e.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      if (document.hidden || !document.hasFocus() || latest.current.suspended || e.target instanceof HTMLElement && e.target.closest('input,textarea,select,[contenteditable="true"]')) return;
       const b = latest.current.save.settings.controlBindings;
       if (matchesControlAction('hunt.pause', e, b)) { e.preventDefault(); if (!e.repeat) { if (pauseRef.current) resume(); else pause(); } return; }
       if (pauseRef.current || e.target instanceof HTMLElement && e.target.closest('button')) return;
-      if (actions.some(a => matchesControlAction(a, e, b))) { e.preventDefault(); held.current.add(e.code); }
+      if (actions.some(a => matchesControlAction(a, e, b))) { e.preventDefault(); if (!e.repeat || held.current.has(e.code)) held.current.add(e.code); }
       if (matchesControlAction('hunt.interact', e, b)) { e.preventDefault(); if (!e.repeat) interact.current = true; }
     };
     const up = (e: KeyboardEvent) => held.current.delete(e.code);
@@ -173,22 +181,30 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     let frame = 0, last = 0, accumulator = 0;
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
-      const blocked = latest.current.suspended || !readyRef.current || !canEnterHomeworldRegionV68(latest.current.save, regionId).allowed;
-      const controller = navigator.getGamepads?.().find(p => p?.connected) ?? null;
+      const inactive = document.hidden || !document.hasFocus();
+      if (inactive && !pauseRef.current) pause();
+      const blocked = inactive || latest.current.suspended || !readyRef.current || !canEnterHomeworldRegionV68(latest.current.save, regionId).allowed;
+      let controller: Gamepad | null = null;
+      try { controller = navigator.getGamepads?.().find(p => p?.connected) ?? null; }
+      catch { /* A controller error must not stop the region simulation. */ }
       const sample = stepHomeworldGamepad(gamepad.current, controller, blocked ? 'inactive' : pauseRef.current ? 'paused' : 'world'); gamepad.current = sample.state;
       if (sample.actions.pause) { if (pauseRef.current) resume(); else pause(); }
-      if (blocked || pauseRef.current || !current.current) accumulator = 0;
+      if (blocked || pauseRef.current || !current.current) { accumulator = 0; interact.current = false; }
       else {
+        // A gamepad edge belongs to one simulation step, not one render frame.
+        // Queue it across sub-tick frames; catch-up steps consume it only once.
+        if (sample.actions.confirm) interact.current = true;
         accumulator += delta;
         const active = (action: typeof actions[number]) => [...held.current].some(code => matchesControlAction(action, code, latest.current.save.settings.controlBindings));
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
-          const before = current.current, interaction = interact.current || sample.actions.confirm ? homeworldRegionInteractionV68(before) : null;
-          if((interact.current||sample.actions.confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
-          const activity = !interaction && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
-          const villageResident = !interaction && !activity && before.zone === 'village' && (interact.current || sample.actions.confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (interact.current || sample.actions.confirm) });
-          interact.current = false; current.current = next;
+          const confirm = interact.current; interact.current = false;
+          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before) : null;
+          if((confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
+          const activity = !interaction && before.zone === 'village' && (confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
+          const villageResident = !interaction && !activity && before.zone === 'village' && (confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (confirm) });
+          current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
           if (next.status === 'at-city') { setState(next); leave(next); break; }
@@ -227,7 +243,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false, resident?: typeof definition.residents[number]) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
-    const original=<HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} />;
+    const modular=<HomeworldModularHunter morphId={morph} dreadStyleId={dread} style={placement ?? { width: 100, height: 100, top: -100 }} motionPhase={state.tick / 60} speed={moving ? 38 : 0} />;
+    const original=<HomeworldNpcSpriteV84 npcId={id} regionId={regionId} height={morph === 'young' ? 82 : 100} moving={moving} preserveNativeMotion={moving||morph!=='classic'}>{modular}</HomeworldNpcSpriteV84>;
     return <span key={id} className={styles.actor} data-region-resident={id} style={{ left: p.x, top: p.y, zIndex: Math.round(y) }}><i className={styles.shadow} />{resident?<HomeworldRegionalWatchV86 query={{regionId,clanName:definition.clan,resident,moving}}>{original}</HomeworldRegionalWatchV86>:original}</span>;
   };
   return <section className={styles.root} data-homeworld-region-v68={regionId} data-zone={state.zone} data-interior-building={state.buildingId ?? undefined} data-state-tick={state.tick} style={{ '--region-accent': definition.accent, '--region-ground': definition.groundColor } as CSSProperties} inert={suspended}>

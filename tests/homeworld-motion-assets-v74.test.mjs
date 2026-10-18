@@ -45,8 +45,8 @@ test('SSR is initially blocked and reports the correct total without touching br
 test('ready is published only after every selected image decodes, with monotonic progress and no retained image bank',async()=>{
   await withImages(async images=>{
     const progress=[],loading=api.preloadHomeworldMotionAssetsV74({youth:true,onProgress:state=>progress.push(state)});
-    assert.equal(images.length,24);await loading.done;
-    assert.deepEqual(progress.map(p=>p.loaded),Array.from({length:24},(_,i)=>i+1));
+    assert.equal(images.length,6,'only the bounded batch is started immediately');await loading.done;assert.equal(images.length,24);
+    assert.deepEqual(progress.map(p=>p.loaded),Array.from({length:25},(_,i)=>i));
     assert(progress.slice(0,-1).every(p=>p.ready===false&&p.error===null));assert.deepEqual(progress.at(-1),{ready:true,error:null,loaded:24,total:24});
     assert(images.every(image=>image.decoding==='async'));assert(!('images'in loading),'no retained bank returned');
     loading.cancel();assert(images.every(image=>!image.removed),'completed Images are not retained by cancellation closures');
@@ -83,9 +83,9 @@ test('retry reloads the exact original static URLs then decodes them successfull
 test('unmount cancellation detaches pending Images and ignores later decode resolutions without publishing progress',async()=>{
   await withImages(async images=>{
     const progress=[],loading=api.preloadHomeworldMotionAssetsV74({youth:true,onProgress:p=>progress.push(p)});
-    assert.equal(images.length,24);loading.cancel();await loading.done;
-    assert(images.every(image=>image.removed));assert.deepEqual(progress,[]);
-    for(const image of images)image.finish?.();await Promise.resolve();assert.deepEqual(progress,[]);
+    assert.equal(images.length,6);loading.cancel();await loading.done;
+    assert(images.every(image=>image.removed));assert.deepEqual(progress,[{ready:false,error:null,loaded:0,total:24}]);
+    for(const image of images)image.finish?.();await Promise.resolve();assert.deepEqual(progress,[{ready:false,error:null,loaded:0,total:24}]);
   },{deferred:true});
 });
 
@@ -93,6 +93,6 @@ test('unmount cancellation aborts retry fetches before any Image is made and pro
   const signals=[];
   await withImages(async images=>{
     const progress=[],loading=api.preloadHomeworldMotionAssetsV74({youth:false,reload:true,onProgress:p=>progress.push(p)});
-    loading.cancel();await loading.done;assert.equal(images.length,0);assert.equal(signals.length,8);assert(signals.every(signal=>signal.aborted));assert.deepEqual(progress,[]);
+    loading.cancel();await loading.done;assert.equal(images.length,0);assert.equal(signals.length,6);assert(signals.every(signal=>signal.aborted));assert.deepEqual(progress,[{ready:false,error:null,loaded:0,total:8}]);
   },{fetcher:async(src,{signal})=>{assert(sizes.has(src));signals.push(signal);return new Promise((resolve,reject)=>signal.addEventListener('abort',()=>reject(new Error('Abort')),{once:true}));}});
 });

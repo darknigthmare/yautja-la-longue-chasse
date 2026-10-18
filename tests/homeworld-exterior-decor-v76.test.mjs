@@ -5,18 +5,17 @@ import crypto from 'node:crypto';
 import sharp from 'sharp';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
 const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldGeometryV64.ts','homeworldLifeV69.ts',
-  'homeworldExteriorDecorV76.ts','homeworldRegionConnectionsV72.ts','homeworldSpatialCodex.ts','homeworldFurnitureV72.ts']);
-const scenery=api.HOMEWORLD_EXTERIOR_MODULES_V76,solid=api.HOMEWORLD_EXTERIOR_SOLIDS_V76;
-const overlaps=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
-const expand=(b,x,y=x)=>({left:b.left-x,right:b.right+x,top:b.top-y,bottom:b.bottom+y});
-const crosses=(rect,a,b)=>{
-  let lo=0,hi=1;const dx=b.x-a.x,dy=b.y-a.y;
-  for(const[p,q]of[[-dx,a.x-rect.left],[dx,rect.right-a.x],[-dy,a.y-rect.top],[dy,rect.bottom-a.y]]){
-    if(!p){if(q<0)return false;continue;}const t=q/p;if(p<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return false;
-  }return true;
-};
+  'homeworldExteriorDecorV76.ts','homeworldRegionConnectionsV72.ts','homeworldSpatialCodex.ts','homeworldFurnitureV72.ts',
+  'homeworldWorldV77.ts','homeworldCivicWorldV80.ts','homeworldNavigationV77.ts',
+  'homeworldStreetDecorMountV84.ts','homeworldStreetCompositionMountV92.ts',
+  'homeworldUrbanLayoutV78.ts','homeworldCivicDecorV80.ts','homeworldStreetModulesV78.ts']);
+const scenery=api.HOMEWORLD_EXTERIOR_V77,solid=scenery.filter(item=>item.solid);
+const rectanglePolygon=box=>[{x:box.left,y:box.top},{x:box.right,y:box.top},{x:box.right,y:box.bottom},{x:box.left,y:box.bottom}];
+const expandPolygon=(polygon,margin)=>api.homeworldCivicContactHullV80(polygon.flatMap(point=>[-1,1].flatMap(x=>[-1,1]
+  .map(y=>({x:point.x+x*margin,y:point.y+y*margin})))));
 
 test('70 solid fixtures occupy fourteen functional neighbourhoods rather than one flattened city image',()=>{
+  assert.deepEqual(scenery.map(item=>item.id),api.HOMEWORLD_EXTERIOR_MODULES_V76.map(item=>item.id));
   assert.equal(solid.length,70);assert.equal(new Set(scenery.map(item=>item.id)).size,scenery.length);
   assert.equal(new Set(solid.map(item=>item.districtId)).size,14);
   for(const district of api.HOMEWORLD_DISTRICTS)assert(solid.some(s=>s.districtId===district.id),district.id);
@@ -27,82 +26,99 @@ test('70 solid fixtures occupy fourteen functional neighbourhoods rather than on
     assert(item.scale>=.7&&item.scale<=1.1);assert(api.HOMEWORLD_EXTERIOR_ART_V76[item.artId]);
     assert.equal(item.solid,true);assert(api.homeworldExteriorPolygonV76(item).length>=4);
     const b=api.homeworldExteriorFootprintV76(item);
-    for(const p of b.polygon)assert(api.isHomeworldTerrainWalkable(p,{halfWidth:10,halfDepth:8}),item.id+' supported by real public floor');
+    for(const p of b.polygon)assert(api.homeworldUrbanTerrainV78(item.levelId,p,{halfWidth:10,halfDepth:8}),item.id+' supported by real public floor');
     assert(api.HOMEWORLD_BUILDINGS.some(b=>b.id===item.associatedBuildingId),'real related building');
   }
 });
 
-test('98 existing civil routines retain continuous body clearance along the complete outward/return path',()=>{
-  assert.equal(api.HOMEWORLD_RESIDENTS_V69.length,98);
-  for(const resident of api.HOMEWORLD_RESIDENTS_V69){
-    const first=resident.path[0],last=resident.path.at(-1);
-    for(const item of solid){const box=expand(api.homeworldExteriorFootprintV76(item),32,22);
-      assert(!crosses(box,first,last),resident.id+' would be blocked by '+item.id);
-    }
+test('98 existing civil routines retain continuous body clearance along every current outward/return segment',()=>{
+  assert.equal(api.HOMEWORLD_RESIDENTS_V77.length,98);
+  assert.deepEqual(api.HOMEWORLD_RESIDENTS_V77.map(r=>r.id),api.HOMEWORLD_RESIDENTS_V69.map(r=>r.id));
+  for(const resident of api.HOMEWORLD_RESIDENTS_V77)for(let segment=0;segment<resident.path.length;segment++){
+    const first=resident.path[segment],last=resident.path[segment+1]??first;
     const steps=Math.max(1,Math.ceil(Math.hypot(last.x-first.x,last.y-first.y)/.5));
     for(let n=0;n<=steps;n++){
-      const p={x:first.x+(last.x-first.x)*n/steps,y:first.y+(last.y-first.y)*n/steps};
-      assert(api.isHomeworldWalkable(p),resident.id+' real City continuous body collision '+JSON.stringify(api.homeworldCollisionAt(p)));
+      const point={x:first.x+(last.x-first.x)*n/steps,y:first.y+(last.y-first.y)*n/steps};
+      for(const item of solid.filter(item=>item.levelId===resident.levelId))
+        assert(!api.homeworldExteriorTouchesV76(item,point,{halfWidth:32,halfDepth:22}),resident.id+' would be blocked by '+item.id);
+      assert(api.homeworldCivicWalkableV80(resident.levelId,point),resident.id+' current continuous body collision '+JSON.stringify(api.homeworldCivicCollisionV80(resident.levelId,point)));
     }
   }
 });
 
-test('all ground waymarks, former sign approaches and central regional road segments remain usable in the actual City',()=>{
-  for(const p of api.HOMEWORLD_WAYMARKS){
-    assert(api.isHomeworldWalkable(p,{halfWidth:36,halfDepth:26}),p.id+' public waymark body+12: '+JSON.stringify(api.homeworldCollisionAt(p)));
-    assert.equal(api.homeworldSpatialRoute(api.createHomeworldActor(),p).status,'reachable',p.id+' reachable waymark');
-  }
-  for(const region of api.HOMEWORLD_REGION_CONNECTIONS_V72){
-    const sign={x:region.legacySign.x,y:region.legacySign.y+70};
-    assert(api.isHomeworldWalkable(sign),region.regionId+' former sign approach: '+JSON.stringify(api.homeworldCollisionAt(sign)));
-    assert.equal(api.homeworldSpatialRoute(sign,region.arrival).status,'reachable',region.regionId+' real sign→departure route');
-    for(let i=1;i<region.nodes.length;i++){
-      const from=region.nodes[i-1],to=region.nodes[i],steps=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/4));
-      for(let n=0;n<=steps;n++){
-        const p={x:from.x+(to.x-from.x)*n/steps,y:from.y+(to.y-from.y)*n/steps};
-        assert(api.isHomeworldWalkable(p),region.regionId+' road centre: '+JSON.stringify(api.homeworldCollisionAt(p)));
-      }
+const publicSpawn={levelId:'0',point:api.HOMEWORLD_SPACEPORT_V77.spawn};
+function assertActiveRoute(route,label){
+  assert.equal(route.status,'reachable',label);
+  for(const segment of route.segments)if(segment.points)for(let index=1;index<segment.points.length;index++){
+    const from=segment.points[index-1],to=segment.points[index];
+    assert(api.homeworldRouteSegmentV77(segment.levelId,from,to),label+' full-body navigation segment');
+    const steps=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/4));
+    for(let step=0;step<=steps;step++){
+      const point={x:from.x+(to.x-from.x)*step/steps,y:from.y+(to.y-from.y)*step/steps};
+      for(const item of solid.filter(item=>item.levelId===segment.levelId))
+        assert(!api.homeworldExteriorTouchesV76(item,point,{halfWidth:36,halfDepth:26}),label+' true exterior clearance '+item.id);
     }
   }
+}
+
+test('historical ground waymarks and all ten current regional approaches retain physically clear guidance',()=>{
+  for(const point of api.HOMEWORLD_WAYMARKS){
+    assert(api.isHomeworldWalkable(point,{halfWidth:36,halfDepth:26}),point.id+' preserved public waymark body+12');
+    assert.equal(api.homeworldSpatialRoute(api.createHomeworldActor(),point).status,'reachable',point.id+' preserved reachable waymark');
+  }
+  assert.equal(api.HOMEWORLD_CONNECTIONS_V77.length+api.HOMEWORLD_REGIONAL_DOCKS_V77.length,10);
+  // Original V72 road nodes are authored paving. Current guidance follows the
+  // actual floor and retained native buildings, including V81 route changes.
+  for(const region of api.HOMEWORLD_CONNECTIONS_V77){
+    const route=api.homeworldWorldRouteV77(publicSpawn,{levelId:region.levelId,point:region.arrival});
+    assertActiveRoute(route,region.regionId+' current regional corridor');
+    const walking=route.segments.filter(segment=>segment.points);
+    assert.deepEqual(walking[0].points[0],publicSpawn.point);assert.deepEqual(walking.at(-1).points.at(-1),region.arrival);
+  }
+  for(const dock of api.HOMEWORLD_REGIONAL_DOCKS_V77)
+    assertActiveRoute(api.homeworldWorldRouteV77(publicSpawn,{levelId:dock.levelId,point:dock.point}),dock.regionId+' current dock approach');
 });
 
-test('six oblique façades, all43 thresholds, the shuttle pad and pedestrian lane remain reserved',()=>{
+test('native facades, all43 thresholds, the shuttle pad and pedestrian lane remain reserved on their physical floor',()=>{
   const angled=new Set(['convoy-workshop','dock-control','rite-sanctum','trophy-mausoleum','rampart-watch','convoy-store']);
-  const pad={left:160,right:1160,top:3800,bottom:4560},lane=api.HOMEWORLD_SPACEPORT_V64.pedestrian;
-  assert.equal(api.HOMEWORLD_BUILDINGS.length,43);
-  for(const item of solid){const b=api.homeworldExteriorFootprintV76(item);
-    assert(!overlaps(b,expand(pad,40)));assert(!overlaps(b,expand(lane,30)));
-    for(const building of api.HOMEWORLD_BUILDINGS){
-      const reserved=angled.has(building.id)?{left:building.x-440,right:building.x+440,top:building.y-470,bottom:building.y+170}
-        :api.homeworldBuildingFootprintV64(building);
-      assert(!overlaps(b,expand(reserved,26)),item.id+' obstructs '+building.id);
-      const door=api.homeworldBuildingDoorwayV64(building);
-      assert(!crosses(expand(b,45),door.threshold,{x:door.approach.x,y:door.approach.y+120}),item.id+' occupies door approach');
+  const port=api.HOMEWORLD_SPACEPORT_V77,pad={left:port.pad.x-port.pad.width/2,right:port.pad.x+port.pad.width/2,top:port.pad.y-port.pad.depth,bottom:port.pad.y};
+  const lane=api.HOMEWORLD_SPACEPORT_V64.pedestrian,offset=api.HOMEWORLD_PORT_TRANSLATION_V77.x;
+  const activeLane={left:lane.left+offset,right:lane.right+offset,top:lane.top,bottom:lane.bottom};
+  assert.equal(api.HOMEWORLD_BUILDINGS_V77.length,43);
+  for(const item of solid){const polygon=api.homeworldExteriorPolygonV76(item);
+    if(item.levelId==='0'){
+      assert(!api.homeworldUrbanOverlapV78(expandPolygon(polygon,40),rectanglePolygon(pad)),item.id+' pad reservation');
+      assert(!api.homeworldUrbanOverlapV78(expandPolygon(polygon,30),rectanglePolygon(activeLane)),item.id+' pedestrian reservation');
     }
-    for(const fixture of api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76)
-      assert(!overlaps(b,expand(api.homeworldFurnitureFootprintV72(fixture),18)),item.id+' intersects turned frontage '+fixture.id);
+    for(const building of api.HOMEWORLD_BUILDINGS_V77.filter(building=>building.levelId===item.levelId)){
+      assert(!api.homeworldUrbanOverlapV78(expandPolygon(polygon,26),api.homeworldBuildingGroundFrameV76(building).polygon),item.id+' obstructs '+building.id);
+      const door=api.homeworldBuildingDoorwayV64(building),dx=door.approach.x-door.threshold.x,dy=door.approach.y-door.threshold.y,length=Math.hypot(dx,dy);
+      const far={x:door.approach.x+dx/length*120,y:door.approach.y+dy/length*120},steps=Math.max(1,Math.ceil(Math.hypot(far.x-door.threshold.x,far.y-door.threshold.y)/4));
+      for(let step=0;step<=steps;step++)assert(!api.homeworldExteriorTouchesV76(item,
+        {x:door.threshold.x+(far.x-door.threshold.x)*step/steps,y:door.threshold.y+(far.y-door.threshold.y)*step/steps},
+        {halfWidth:45,halfDepth:45}),item.id+' occupies door approach '+building.id);
+    }
+    for(const fixture of api.HOMEWORLD_FRONTAGE_V77.filter(fixture=>fixture.levelId===item.levelId))
+      assert(!api.homeworldUrbanOverlapV78(expandPolygon(polygon,18),rectanglePolygon(api.homeworldFurnitureFootprintV72(fixture))),item.id+' intersects frontage '+fixture.id);
   }
-  assert.equal(api.HOMEWORLD_BUILDINGS.filter(b=>b.art.groundFrame).length,6,'six native oblique façades actually active');
-  assert.equal(api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.length,12,'twelve existing fittings retain individual solid footprints');
+  for(const id of angled)assert(api.HOMEWORLD_BUILDINGS_V77.find(building=>building.id===id)?.art.groundFrame,id+' original oblique facade retained');
+  assert.equal(api.HOMEWORLD_BUILDINGS_V77.filter(building=>building.art.groundFrame).length,13,'all current measured native facade frames are active');
+  assert.equal(api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76.length,19,'all fittings of the current measured facade frames retain their original identities');
+  for(const fixture of api.HOMEWORLD_ANGLED_FRONTAGE_ITEMS_V76)
+    assert(api.HOMEWORLD_FRONTAGE_V77.some(current=>current.id===fixture.id),'historical fitting remains in current scene: '+fixture.id);
 });
 
-test('all43 door routes and ten regional arrivals stay reachable with true decoration solids integrated',()=>{
-  const targets=[...api.HOMEWORLD_BUILDINGS.map(b=>({id:b.id,p:api.homeworldBuildingDoorwayV64(b).approach})),
-    ...api.HOMEWORLD_REGION_CONNECTIONS_V72.map(r=>({id:r.regionId,p:r.arrival}))];
-  for(const target of targets){
-    const route=api.homeworldSpatialRoute(api.createHomeworldActor(),target.p);
-    assert.equal(route.status,'reachable',target.id);
-    for(let i=1;i<route.points.length;i++){
-      const from=route.points[i-1],to=route.points[i],steps=Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/4);
-      for(let n=0;n<=steps;n++){
-        const p={x:from.x+(to.x-from.x)*n/(steps||1),y:from.y+(to.y-from.y)*n/(steps||1)};
-        assert.equal(api.homeworldExteriorCollisionV76(p,{halfWidth:36,halfDepth:26}),null,target.id+' true route clearance');
-      }
-    }
-  }
-  for(const region of api.HOMEWORLD_REGION_CONNECTIONS_V72){
-    assert(api.isHomeworldWalkable(region.threshold),region.regionId+' true threshold');
-    assert(api.isHomeworldRouteSegmentWalkable(region.arrival,region.threshold),region.regionId+' final approach');
+test('all43 door routes and ten regional arrivals stay reachable with the final decoration solids mounted',()=>{
+  const targets=[...api.HOMEWORLD_BUILDINGS_V77.map(building=>({id:building.id,levelId:building.levelId,point:api.homeworldBuildingDoorwayV64(building).approach})),
+    ...api.HOMEWORLD_REGION_CONNECTIONS_V72.map(region=>{
+      const current=api.homeworldWorldArrivalV77(region.regionId);assert(current,region.regionId+' real supported return');
+      return{id:region.regionId,levelId:current.levelId,point:{x:current.actor.x,y:current.actor.y}};
+    })];
+  assert.equal(targets.length,53);
+  for(const target of targets)assertActiveRoute(api.homeworldWorldRouteV77(publicSpawn,target),target.id);
+  for(const region of api.HOMEWORLD_CONNECTIONS_V77){
+    assert(api.homeworldCivicWalkableV80(region.levelId,region.threshold),region.regionId+' true threshold');
+    assert(api.homeworldRouteSegmentV77(region.levelId,region.arrival,region.threshold),region.regionId+' final approach');
   }
 });
 
@@ -119,7 +135,7 @@ test('measured convex native bases are solid while gutters and elevated wall orn
     'empty corner of an angled planter bbox must not create an invisible solid fence');
   assert.equal(api.homeworldExteriorFootprintV76(angled),bounds,'immutable instance reuses measured bounds cache');
   for(let i=0;i<solid.length;i++)for(let j=i+1;j<solid.length;j++)
-    assert(!overlaps(expand(api.homeworldExteriorFootprintV76(solid[i]),28),api.homeworldExteriorFootprintV76(solid[j])),solid[i].id+' crowds '+solid[j].id);
+    if(solid[i].levelId===solid[j].levelId)assert(!api.homeworldUrbanOverlapV78(expandPolygon(api.homeworldExteriorPolygonV76(solid[i]),28),api.homeworldExteriorPolygonV76(solid[j])),solid[i].id+' crowds '+solid[j].id);
 });
 
 test('four separate original native PNGs retain exact bytes, true alpha contacts and a uniform scale',async()=>{

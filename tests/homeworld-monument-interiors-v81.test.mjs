@@ -5,7 +5,7 @@ import { homeworldQaModelV64 } from '../scripts/homeworld-qa-model-v64.mjs';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 import { historicalHomeworldInteriorsV81 } from './helpers/homeworld-interior-history-v89.mjs';
 
-const api = homeworldQaModelV64(process.cwd(), ['homeworldInteriorsV64.ts', 'homeworldMonumentInteriorsV81.ts', 'homeworldMonumentInteriorCodexV81.ts', 'homeworldContextCodexV71.ts', 'homeworldFurnitureV72.ts', 'homeworldInteriorDecorV76.ts', 'homeworldCntlipPhysicalV77.ts', 'homeworldIdentityV72.ts']);
+const api = homeworldQaModelV64(process.cwd(), ['homeworldInteriorsV64.ts', 'homeworldMonumentInteriorsV81.ts', 'homeworldMonumentInteriorCodexV81.ts', 'homeworldContextCodexV71.ts', 'homeworldFurnitureV72.ts', 'homeworldInteriorDecorV76.ts', 'homeworldCntlipPhysicalV77.ts', 'homeworldIdentityV72.ts', 'homeworldNpcVariantsV84.ts']);
 const rooms = api.HOMEWORLD_INTERIORS_V64.filter(room => room.monumentLayoutV81);
 const body = { halfWidth: 28, halfDepth: 18 };
 const overlaps = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
@@ -94,19 +94,23 @@ test('the actual interior surface mounts both complexes, partitions and independ
     assert(html.includes('data-homeworld-physical-exit'));
     for (const npc of room.monumentInhabitantsV81) {
       assert(html.includes(`data-homeworld-monument-inhabitant-v81="${npc.id}"`));
-      assert(html.includes(`data-homeworld-civilian-v72="${npc.role}"`));
-      assert(html.includes(api.homeworldCivilianArtV72(npc.role).src));
+      const variant = api.homeworldNpcVariantV84(npc.id, npc.role);
+      if (variant) assert(html.includes(`data-homeworld-npc-identity-v84="${npc.id}"`));
+      else assert(html.includes(`data-homeworld-civilian-v72="${npc.role}"`));
+      assert(html.includes(variant?.src ?? api.homeworldCivilianArtV72(npc.role).src));
     }
     assert(html.includes('data-native-animation-status="preserved-native-idle-no-new-gesture-clip"'));
     assert(!html.includes('data-homeworld-civilian-motion-v74'), 'stationary presence does not advertise a new movement clip');
   }
 });
 
-test('five contextual natives remain solid, distinct and safely outside furniture, partitions and the ceremonial circulation', () => {
+test('the five original natives and six court additions stay solid and clear of furnishing, walls and circulation', () => {
   const council = rooms.find(room => room.buildingId === 'rite-sanctum');
   const palace = rooms.find(room => room.buildingId === 'throne-audience');
-  assert.deepEqual(council.monumentInhabitantsV81.map(npc => npc.role), ['archivist', 'herald', 'rite-keeper']);
-  assert.deepEqual(palace.monumentInhabitantsV81.map(npc => npc.role), ['guard', 'guard']);
+  assert.deepEqual(council.monumentInhabitantsV81.filter(npc => npc.id.includes('-v81-')).map(npc => npc.role), ['archivist', 'herald', 'rite-keeper']);
+  assert.deepEqual(palace.monumentInhabitantsV81.filter(npc => npc.id.includes('-v81-')).map(npc => npc.role), ['guard', 'guard']);
+  assert.equal(council.monumentInhabitantsV81.length, 5);
+  assert.equal(palace.monumentInhabitantsV81.length, 6);
   for (const room of rooms) for (const npc of room.monumentInhabitantsV81) {
     const foot = { left: npc.x - 16, right: npc.x + 16, top: npc.y - 10, bottom: npc.y + 10 };
     assert.equal(npc.interactive, false); assert.equal(npc.motion, 'preserved-native-idle-no-new-gesture-clip');
@@ -134,7 +138,7 @@ test('the runtime codex links each monument, actual passage, native addition and
     }
     for (const npc of room.monumentInhabitantsV81) {
       const record = records.find(record => record.id === 'npc:' + npc.id);
-      assert.equal(record.asset, api.homeworldCivilianArtV72(npc.role).src);
+      assert.equal(record.asset, api.homeworldNpcVariantV84(npc.id, npc.role)?.src ?? api.homeworldCivilianArtV72(npc.role).src);
       assert.deepEqual(record.footprint, { left: npc.x - 16, right: npc.x + 16, top: npc.y - 10, bottom: npc.y + 10 });
     }
   }

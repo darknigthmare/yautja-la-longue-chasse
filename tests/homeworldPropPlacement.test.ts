@@ -16,6 +16,7 @@ const [city, v21, v22, v54] = await Promise.all([
 ]) as [typeof import("../app/game/systems/homeworldCity"), typeof import("../app/game/shipInteriorKit"),
   typeof import("../app/game/shipInteriorV22"), typeof import("../app/game/systems/homeworldCityArtV54")];
 const artwork = [v21.SHIP_LEVEL_ART.navigationConsole, v21.SHIP_LEVEL_ART.foregroundRib, ...Object.values(v22.SHIP_LEVEL_ART_V22), v54.HOMEWORLD_CITY_ART_V54.beacon];
+const world = await loadSystem("../app/game/systems/homeworldWorldV77.ts") as typeof import("../app/game/systems/homeworldWorldV77");
 
 function close(actual: number, expected: number, label: string): void {
   assert.ok(Math.abs(actual - expected) < 1e-8, `${label}: ${actual} != ${expected}`);
@@ -76,19 +77,21 @@ test("the gantry regression removes the prior seventy-pixel gap at its unchanged
 });
 
 test("render placement never changes authored colliders, depth planes or foreground fading", () => {
-  const before = JSON.stringify(city.HOMEWORLD_PROPS);
-  for (const prop of city.HOMEWORLD_PROPS) {
+  const before = JSON.stringify(world.HOMEWORLD_PROPS_V77), historicalBefore = JSON.stringify(city.HOMEWORLD_PROPS);
+  assert.deepEqual(world.HOMEWORLD_PROPS_V77.map(prop=>prop.id),city.HOMEWORLD_PROPS.map(prop=>prop.id));
+  for (const prop of world.HOMEWORLD_PROPS_V77) {
     const frozen = Object.freeze({ ...prop });
     const center={x:prop.x,y:prop.y-prop.footprint!.halfDepth};
-    const collision = city.homeworldCollisionAt(center, { halfWidth: 0, halfDepth: 0 });
+    const collision = world.homeworldCollisionV77(prop.levelId, center, { halfWidth: 0, halfDepth: 0 });
     const faded = city.shouldFadeHomeworldForeground(frozen, frozen);
     const first = city.homeworldPropArtPlacement(frozen);
     const again = city.homeworldPropArtPlacement(frozen);
     assert.deepEqual(first, again);
-    assert.deepEqual(city.homeworldCollisionAt(center, { halfWidth: 0, halfDepth: 0 }), collision);
+    assert.deepEqual(world.homeworldCollisionV77(prop.levelId, center, { halfWidth: 0, halfDepth: 0 }), collision);
     assert.equal(city.shouldFadeHomeworldForeground(frozen, frozen), faded);
     if (prop.plane === "ground") assert.deepEqual(collision, { kind: "prop", id: prop.id });
     if (prop.plane === "front") assert.equal(faded, true);
   }
-  assert.equal(JSON.stringify(city.HOMEWORLD_PROPS), before);
+  assert.equal(JSON.stringify(world.HOMEWORLD_PROPS_V77), before);
+  assert.equal(JSON.stringify(city.HOMEWORLD_PROPS), historicalBefore);
 });

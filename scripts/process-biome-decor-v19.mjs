@@ -14,6 +14,7 @@ import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
+import { BIOME_CHROMA_PARAMETERS_V19, removeBiomeChromaV19 } from "./remove-biome-chroma-v19.mjs";
 
 import {
   ENVIRONMENT_PROP_BIOME_IDS,
@@ -56,9 +57,13 @@ Options:
   --id <catalog-id>        Alias for --definition-id
   --art-root <path>       Override art-source output root
   --public-root <path>    Override runtime output root
-  --helper <path>         Override the installed remove_chroma_key.py
+  --helper <path>         Require this chroma helper (or BIOME_DECOR_CHROMA_HELPER)
   --python <command>      Python executable (default: python)
   --force                 Explicitly replace the two V19 destinations
+
+The installed imagegen chroma helper has priority when present. If its default
+path is absent, the project-owned Sharp V19 matte is used and reported. An
+explicit helper override or a failing installed helper never silently falls back.
 
 The input PNG is never deleted by this script.`;
 }
@@ -284,8 +289,17 @@ async function runChromaHelper({
   output,
   helperPath,
   pythonCommand,
+  explicitHelper,
+  keyColor,
 }) {
-  await access(helperPath);
+  try { await access(helperPath); }
+  catch (error) {
+    if (explicitHelper || error.code !== "ENOENT") throw error;
+    const portablePath = fileURLToPath(new URL("./remove-biome-chroma-v19.mjs", import.meta.url));
+    const result = await removeBiomeChromaV19({ input, output, keyColor });
+    return { mode: "portable-sharp-v19", path: portablePath, sha256: sha256(await readFile(portablePath)), ...result };
+  }
+  const helperSha256 = sha256(await readFile(helperPath));
   const candidates = pythonCommand
     ? [pythonCommand]
     : [
@@ -322,6 +336,10 @@ async function runChromaHelper({
         },
       );
       return {
+        mode: "python-helper",
+        path: helperPath,
+        sha256: helperSha256,
+        parameters: { autoKey: "border", softMatte: true, ...BIOME_CHROMA_PARAMETERS_V19 },
         pythonCommand: candidate,
         stdout: stdout.trim(),
         stderr: stderr.trim(),
@@ -331,7 +349,7 @@ async function runChromaHelper({
     }
   }
   throw new Error(
-    `Impossible d'exécuter le helper chroma officiel:\n${failures.join("\n")}`,
+    `Impossible d'exécuter le helper chroma configuré:\n${failures.join("\n")}`,
   );
 }
 
@@ -365,10 +383,12 @@ export async function processBiomeDecorV19(options) {
     definitionId,
     artRoot,
     publicRoot,
-    helperPath = defaultHelperPath(),
+    helperPath = process.env.BIOME_DECOR_CHROMA_HELPER ?? defaultHelperPath(),
     pythonCommand = process.env.PYTHON,
     force = false,
   } = options;
+  const explicitHelper = options.helperPath !== undefined || process.env.BIOME_DECOR_CHROMA_HELPER !== undefined;
+  if (typeof helperPath !== "string" || !helperPath.trim()) throw new Error("Le chemin du helper chroma configuré est vide.");
 
   if (!input) {
     throw new Error("Le chemin --input est requis");
@@ -421,6 +441,8 @@ export async function processBiomeDecorV19(options) {
       output: helperOutput,
       helperPath: path.resolve(helperPath),
       pythonCommand,
+      explicitHelper,
+      keyColor: chromaInspection.sampledKey,
     });
     const helperInspection = await inspectRuntimeAlpha(helperOutput);
     const masterBuffer = await sharp(resolvedInput)

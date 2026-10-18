@@ -4,28 +4,27 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import { build } from 'esbuild';
+import {homeworldHistoricalGroundV75,homeworldHistoricalReservedVolumesV75} from './helpers/homeworld-historical-ground-v75.mjs';
 const load=async path=>{const r=await build({entryPoints:[path],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
 const city=await load('app/game/systems/homeworldCity.ts'),model=await load('app/game/systems/homeworldOutskirtsV71.ts');
 const art=await load('app/game/systems/homeworldOutskirtsArtV71.ts'),codex=await load('app/game/systems/homeworldContextCodexV71.ts');
 const rooms=await load('app/game/systems/homeworldInteriorsV64.ts'),geo=await load('app/game/systems/homeworldGeometryV64.ts');
 const connections=await load('app/game/systems/homeworldRegionConnectionsV72.ts');
 const cityWorld=await load('app/game/systems/homeworldWorldV77.ts');
-test('outskirts preserve every public support with measured clearance and no overlapping terrain footprints',()=>{
+test('immutable outskirts preserve every historical V71/V75 public support with measured clearance and no overlapping terrain footprints',()=>{
   assert.equal(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,162,'V73 preserves measured clearance around every final regional path and its seventy reserved volumes');
   assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.id)).size,162);
   assert.equal(new Set(model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(m=>m.artId)).size,6);
+  const historicalGround=homeworldHistoricalGroundV75(city);
   for(const item of model.HOMEWORLD_OUTSKIRTS_MODULES_V71){
     const r=model.homeworldOutskirtsFootprintV71(item), margin=model.HOMEWORLD_OUTSKIRTS_CLEARANCE_V71;
-    // Sample the actual city terrain implementation independently of the
-    // generator's exact segment/rectangle intersection algorithm.
+    // V76 forecourts and the V92 storm approach postdate this source catalogue.
+    // Sample its original public mesh independently of the placement generator.
     for(let y=r.top-margin;y<=r.bottom+margin;y+=8)for(let x=r.left-margin;x<=r.right+margin;x+=8)
-      assert.equal(city.isHomeworldTerrainWalkable({x,y},{halfWidth:0,halfDepth:0}),false,item.id+' public support overlap');
+      assert.equal(historicalGround.some(s=>city.pointInHomeworldPolygon({x,y},s.polygon)),false,item.id+' historical public support overlap');
   }
   const rects=model.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(model.homeworldOutskirtsFootprintV71);
-  const reserved=[...connections.homeworldConnectionFurnitureFootprintsV72(),
-    ...connections.HOMEWORLD_REGION_CONNECTIONS_V72.flatMap(connections.homeworldGatewayFootprintsV72),
-    ...connections.HOMEWORLD_CONNECTION_DIRECTION_SIGNS_V72.map(sign=>({left:sign.x-sign.footprintWorld.width/2,
-      right:sign.x+sign.footprintWorld.width/2,top:sign.y-sign.footprintWorld.depth,bottom:sign.y}))];
+  const reserved=homeworldHistoricalReservedVolumesV75(connections);
   assert.equal(reserved.length,70,'Forty independent furnishings, twenty lateral gateway bases and ten old direction signs');
   for(const a of rects)for(const b of reserved)
     assert(!(a.left<b.right+30&&a.right>b.left-30&&a.top<b.bottom+30&&a.bottom>b.top-30),'outskirts preserve a real gap around V72 entrance furniture');

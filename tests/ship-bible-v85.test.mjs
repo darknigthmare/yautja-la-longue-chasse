@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
+import {verifyBibleSourceIntegrityV85} from './helpers/bible-source-integrity-v85.mjs';
 
 async function moduleFor(relative) {
   const bundle = await build({ entryPoints: [fileURLToPath(new URL(relative, import.meta.url))], bundle: true,
@@ -15,7 +15,6 @@ const [sourceApi, shipApi, chronicleApi, resourceApi] = await Promise.all([
   moduleFor("../app/game/systems/clanChronicle.ts"), moduleFor("../app/game/systems/bibleResourceV85.ts"),
 ]);
 const publicRoot = new URL("../public/game/dialogues/v85/", import.meta.url);
-const privateRoot = new URL("../work-local/drive-import-20261007/bible-v6-private/", import.meta.url);
 const [dialogueBytes, shipBytes] = await Promise.all([readFile(new URL("bible-dialogues.json", publicRoot)), readFile(new URL("bible-ships.json", publicRoot))]);
 const dialogues = sourceApi.readBibleDocumentV85(JSON.parse(dialogueBytes.toString("utf8")));
 const ships = sourceApi.readBibleDocumentV85(JSON.parse(shipBytes.toString("utf8")));
@@ -26,14 +25,13 @@ function tinyDocument() {
     sheets: [{ name: "Fixture", rows: [{ number: 6, cells: [{ address: "A6", value: "source-id" }] }] }] };
 }
 
-test("the authorized public corpora are complete, byte-identical copies of the private extractions", async () => {
-  const [privateDialogue, privateShips, original] = await Promise.all([
-    readFile(new URL("bible-dialogues.json", privateRoot)), readFile(new URL("bible-ships.json", privateRoot)),
-    readFile(new URL("../work-local/drive-import-20261007/downloads/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx", import.meta.url)),
-  ]);
-  assert.deepEqual(dialogueBytes, privateDialogue);
-  assert.deepEqual(shipBytes, privateShips);
-  assert.equal(createHash("sha256").update(original).digest("hex"), sourceApi.BIBLE_SOURCE_SHA_V85);
+test("the complete authorized public corpora retain their committed byte receipts and historical workbook provenance", async () => {
+  const {provenance,files}=await verifyBibleSourceIntegrityV85(dialogues.source);
+  assert.equal(provenance.source.sha256,sourceApi.BIBLE_SOURCE_SHA_V85);
+  assert.deepEqual(dialogueBytes,files.get('public/game/dialogues/v85/bible-dialogues.json'));
+  assert.deepEqual(shipBytes,files.get('public/game/dialogues/v85/bible-ships.json'));
+  assert.deepEqual(dialogues.sheets.map(sheet=>({name:sheet.name,rows:sheet.rows.length,cells:sheet.rows.reduce((sum,row)=>sum+row.cells.length,0)})),provenance.dialogueSheets);
+  assert.deepEqual(ships.sheets.map(sheet=>({name:sheet.name,rows:sheet.rows.length})),provenance.shipSheets);
   assert.equal(dialogues.sheets.length, 10); assert.equal(ships.sheets.length, 19);
   for (const [name, count] of [["Scènes de dialogue V6", 730], ["Répliques V6", 6059], ["Réactions et gestes V6", 400],
     ["Choix et actions V6", 1494], ["Variantes V6", 150], ["Voix V6", 210]]) assert.equal(rowsOf(dialogues, name).length, count, name);

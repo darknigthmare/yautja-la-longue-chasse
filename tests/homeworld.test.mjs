@@ -4,13 +4,17 @@ import { test } from "node:test";
 import { build } from "esbuild";
 const compiled = await build({ entryPoints: ["app/game/systems/homeworld.ts"], bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent" });
 const hw = await import("data:text/javascript;base64," + Buffer.from(compiled.outputFiles[0].text).toString("base64"));
-const { HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_STREETS, HOMEWORLD_BUILDINGS, HOMEWORLD_PROPS, HOMEWORLD_POINT_POSITIONS, HOMEWORLD_POINT_PROP_COLLIDERS, HOMEWORLD_NPC_COLLIDERS, HOMEWORLD_NPC_PLATES, HOMEWORLD_GENERIC_HUNTER_PLATES, HOMEWORLD_TROPHY_SLOTS, HOMEWORLD_POINTS, HOMEWORLD_REGIONS, HOMEWORLD_NPCS, HOMEWORLD_ORGANIZATIONS, HOMEWORLD_EVIDENCE, HOMEWORLD_WITNESS_CHOICES, defaultHomeworldProgress, normalizeHomeworldProgress, applyHomeworldAction, createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, districtAtHomeworldActor, isHomeworldTerrainWalkable, isHomeworldWalkable, homeworldBuildingCollision, homeworldBuildingDoorPosition, homeworldCollisionAt, homeworldHeroPlate, homeworldNpcPlate, homeworldTrophyDisplays, nearestHomeworldDoor, shouldFadeHomeworldForeground } = hw;
+const { HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_STREETS, HOMEWORLD_BUILDINGS, HOMEWORLD_PROPS, HOMEWORLD_POINT_POSITIONS, HOMEWORLD_POINT_PROP_COLLIDERS, HOMEWORLD_NPC_COLLIDERS, HOMEWORLD_NPC_PLATES, HOMEWORLD_GENERIC_HUNTER_PLATES, HOMEWORLD_TROPHY_SLOTS, HOMEWORLD_POINTS, HOMEWORLD_REGIONS, HOMEWORLD_NPCS, HOMEWORLD_ORGANIZATIONS, HOMEWORLD_EVIDENCE, HOMEWORLD_WITNESS_CHOICES, defaultHomeworldProgress, normalizeHomeworldProgress, applyHomeworldAction, createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, districtAtHomeworldActor, isHomeworldTerrainWalkable, isHomeworldWalkable, homeworldBuildingCollision, homeworldBuildingDoorPosition, homeworldCollisionAt, homeworldHeroPlate, homeworldNpcPlate, homeworldTrophyDisplays, shouldFadeHomeworldForeground } = hw;
 const interiorBundle = await build({entryPoints:['app/game/systems/homeworldInteriorsV64.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const rooms = await import('data:text/javascript;base64,'+Buffer.from(interiorBundle.outputFiles[0].text).toString('base64'));
 const connectionBundle = await build({entryPoints:['app/game/systems/homeworldRegionConnectionsV72.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const connections = await import('data:text/javascript;base64,'+Buffer.from(connectionBundle.outputFiles[0].text).toString('base64'));
 const geometryBundle = await build({entryPoints:['app/game/systems/homeworldGeometryV64.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const geometry = await import('data:text/javascript;base64,'+Buffer.from(geometryBundle.outputFiles[0].text).toString('base64'));
+const worldBundle = await build({entryPoints:['app/game/systems/homeworldWorldV77.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const world = await import('data:text/javascript;base64,'+Buffer.from(worldBundle.outputFiles[0].text).toString('base64'));
+const civicBundle = await build({entryPoints:['app/game/systems/homeworldCivicWorldV80.ts'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const civic = await import('data:text/javascript;base64,'+Buffer.from(civicBundle.outputFiles[0].text).toString('base64'));
 const context = { rankId: "young-blood", ownedTrophyCount: 0 };
 const act = (progress, action, settings = context) => applyHomeworldAction(progress, action, settings);
 const chain = () => HOMEWORLD_EVIDENCE.reduce((p, e) => act(p, { type: "inspect", evidenceId: e.id }).progress, defaultHomeworldProgress());
@@ -102,8 +106,9 @@ test("solid scenery has actor volume while every authored doorway keeps a reacha
     assert.deepEqual(homeworldCollisionAt(npc, { halfWidth: 0, halfDepth: 0 }), { kind: "npc", id: npc.id });
     assert.equal(isHomeworldWalkable(npc), false);
   }
-  for (const prop of HOMEWORLD_PROPS.filter(prop => prop.plane === "ground")) {
-    const collision = homeworldCollisionAt({x:prop.x,y:prop.y-prop.footprint.halfDepth}, { halfWidth: 0, halfDepth: 0 });
+  assert.deepEqual(world.HOMEWORLD_PROPS_V77.map(prop=>prop.id),HOMEWORLD_PROPS.map(prop=>prop.id),'every original prop keeps its actual per-floor placement');
+  for (const prop of world.HOMEWORLD_PROPS_V77.filter(prop => prop.plane === "ground")) {
+    const collision = world.homeworldCollisionV77(prop.levelId,{x:prop.x,y:prop.y-prop.footprint.halfDepth}, { halfWidth: 0, halfDepth: 0 });
     assert.equal(collision?.kind, "prop", prop.id);
     assert.equal(collision?.id, prop.id, prop.id);
   }
@@ -112,17 +117,18 @@ test("solid scenery has actor volume while every authored doorway keeps a reacha
   for (const prop of HOMEWORLD_POINT_PROP_COLLIDERS) {
     assert.equal(isHomeworldWalkable(prop), false, prop.id + " station or portal has no volume");
   }
-  for (const building of HOMEWORLD_BUILDINGS) {
+  assert.deepEqual(world.HOMEWORLD_BUILDINGS_V77.map(building=>building.id),HOMEWORLD_BUILDINGS.map(building=>building.id));
+  for (const building of world.HOMEWORLD_BUILDINGS_V77) {
     const volume = homeworldBuildingCollision(building);
     const wallX = Math.abs(volume.left - homeworldBuildingDoorPosition(building).x) > Math.abs(volume.right - homeworldBuildingDoorPosition(building).x)
       ? volume.left + 8 : volume.right - 8;
     const frame=geometry.homeworldBuildingGroundFrameV76(building);
     const wall = building.art.groundFrame ? {x:building.x+frame.tangent.x*(frame.uMax-20)+frame.normal.x*(frame.vFront-24),
       y:building.y+frame.tangent.y*(frame.uMax-20)+frame.normal.y*(frame.vFront-24)} : { x: wallX, y: building.y - 24 };
-    assert.equal(homeworldCollisionAt(wall, { halfWidth: 0, halfDepth: 0 })?.id, building.id, building.id + " facade is not solid");
+    assert.equal(world.homeworldCollisionV77(building.levelId,wall, { halfWidth: 0, halfDepth: 0 })?.id, building.id, building.id + " facade is not solid on its floor");
     const door = homeworldBuildingDoorPosition(building);
-    assert(isHomeworldWalkable(door), building.id + " door approach is blocked");
-    assert.equal(nearestHomeworldDoor(door)?.id, building.id, building.id + " door cannot activate");
+    assert(civic.homeworldCivicWalkableV80(building.levelId,door), building.id + " full-body door approach is blocked on its floor");
+    assert.equal(world.nearestHomeworldDoorV77(building.levelId,door)?.id, building.id, building.id + " door cannot activate on its floor");
   }
 });
 

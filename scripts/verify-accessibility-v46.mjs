@@ -38,7 +38,9 @@ const server=http.createServer(async(req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const url=`http://127.0.0.1:${server.address().port}`;
-const browser=await chromium.launch({channel:'chrome',headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.AUDIT_CHROME_EXECUTABLE
+ ? {executablePath:process.env.AUDIT_CHROME_EXECUTABLE}
+ : {channel:'chrome'})});
 const checks=[],errors=[];
 const record=(name,passed,details)=>checks.push({name,passed,details});
 let page;

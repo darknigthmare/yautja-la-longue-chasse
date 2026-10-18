@@ -117,6 +117,8 @@ import type {
   TrophyWorkshopAction,
   TrophyWorkshopResult,
 } from "./systems/trophyWorkshop";
+import { createTrophyWorkshopCommitV94, type TrophyWorkshopCommitV94 } from "./systems/trophyWorkshopCommitV94";
+import { useTrophyRecoveryV94 } from "./useTrophyRecoveryV94";
 import {
   V6_ALL_VISUAL_IDS,
   V6_ARMORY_RACK_ORDER,
@@ -1069,6 +1071,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     trophyImageUrl?: string;
     action: TrophyWorkshopAction;
   } | null>(null);
+  const pendingTrophyCommitRef = useRef<TrophyWorkshopCommitV94 | null>(null);
+  const [pendingTrophyCommit, setPendingTrophyCommit] = useState<TrophyWorkshopCommitV94 | null>(null);
+  useEffect(() => {
+    if (!pendingTrophyCommit) return;
+    const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [pendingTrophyCommit]);
+  const trophyRecovery = useTrophyRecoveryV94({
+    owner: entry.ownerCreatedAt,
+    enabled: true,
+    saveRef,
+    pendingRef: pendingTrophyCommitRef,
+    setPending: setPendingTrophyCommit,
+    setFailure: setSaveFailure,
+    closeWorkshop: () => setTrophyWorkshop(null),
+  });
   const gameShellRef = useRef<HTMLElement | null>(null);
   const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
@@ -1486,6 +1505,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const persist = useCallback((next: SaveGame) => {
     if (!sessionAliveRef.current) return saveRef.current;
+    if (pendingTrophyCommitRef.current) {
+      setToast("Un résultat d’atelier attend sa confirmation. Réessayez sa sauvegarde ou exportez le résultat avant de modifier la campagne.");
+      return saveRef.current;
+    }
     if (nurseryWriteAttemptRef.current) {
       setNurseryPersistenceError("La précédente écriture de jeunesse attend sa vérification. Reprenez son enregistrement avant de changer les réglages.");
       return saveRef.current;
@@ -1543,6 +1566,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [entry.ownerCreatedAt]);
   const persistNursery = useCallback((next: SaveGame): boolean => {
+    if (pendingTrophyCommitRef.current) return false;
     if (!sessionAliveRef.current || next.createdAt !== entry.ownerCreatedAt) return false;
     if (JSON.stringify(next) === JSON.stringify(saveRef.current)) {
       // A paused/no-op checkpoint still needs the same durable owner and bytes.
@@ -2032,6 +2056,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
+    if (pendingTrophyCommitRef.current) {
+      setToast("Confirmez la sauvegarde du rite avant de modifier la campagne."); return false;
+    }
     if (pendingTerminalRunRef.current) {
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
@@ -2110,6 +2137,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       suspended: settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
   };
   const openShipAcquisitionV89 = () => {
+    if (pendingTrophyCommitRef.current) { setToast("Le rite en attente doit être confirmé avant de rejoindre le chantier naval."); return; }
     const current = saveRef.current;
     let transferPending = true;
     try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
@@ -2175,6 +2203,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const go = useCallback(
     (next: Screen) => {
+      if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
       const chronicle = saveRef.current.prologue?.chronicle;
       if (chronicle && ["deck", "ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit", "pit-narrative", "game-reserve"].includes(next) &&
           !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(chronicle) ?? "")) {
@@ -2324,6 +2353,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistHomeworldProgress]);
 
   const openPit = useCallback(() => {
+    if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite avant de changer d’arène ou de progresser dans THE PIT."); return; }
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
@@ -2365,6 +2395,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
+      if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer de destination."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setMapReturnScreen(returnScreen);
       go("map");
@@ -2374,6 +2405,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen) => {
+      if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setStationReturnScreen(returnScreen);
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
@@ -2383,6 +2415,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
+    if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
     const youth = saveRef.current.prologue;
     if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
         ["armory", "customization", "training", "medbay", "pit"].includes(service)) {
@@ -2498,6 +2531,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const launchMission = useCallback(() => {
+    if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
     if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
     // A sidecar can only survive a reload when its owning campaign snapshot is
@@ -2681,6 +2715,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [reconcileHuntWrite]);
 
   const persistExplorationProgress = useCallback((progress: ExplorationProgress) => {
+    if (pendingTrophyCommitRef.current) { setToast("Une sauvegarde de trophée attend sa confirmation ; les découvertes ne peuvent pas remplacer cette archive."); return; }
     if (!sessionAliveRef.current) return;
     const session = activeHuntSessionRef.current;
     if (!session || !isExplorationMission(session.missionId) || missionSettlementRef.current || pendingTerminalRunRef.current) return;
@@ -2718,6 +2753,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const completeMission = useCallback(
     (result: MissionResult, returnToDeck = false) => {
+      if (pendingTrophyCommitRef.current) { setToast("Un rite attend sa sauvegarde ; le résultat de chasse ne peut pas remplacer la campagne."); return; }
       // Runtime callbacks can race at a terminal frame. Settle this run once.
       if (!sessionAliveRef.current || missionSettlementRef.current) return;
       if (!checkHuntSessionForSettlement()) {
@@ -2984,38 +3020,40 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     [persist, playSound, save, selectHunterPreset],
   );
 
-  const completeTrophyWorkshop = useCallback(
-    (result: TrophyWorkshopResult) => {
-      if (!trophyWorkshop) return;
-      const completedAt = new Date().toISOString();
-      const trophies = save.trophies.map((trophy) => {
-        if (trophy.id !== trophyWorkshop.trophyId) return trophy;
-        const completedActions = [
-          ...new Set([
-            ...(trophy.workshop?.completedActions ?? []),
-            trophyWorkshop.action,
-          ]),
-        ];
-        return {
-          ...trophy,
-          workshop: {
-            completedActions,
-            bestScore: Math.max(trophy.workshop?.bestScore ?? 0, result.score),
-            lastCompletedAt: completedAt,
-          },
-        };
-      });
-      persist({ ...save, trophies });
-      setToast(
-        `${trophyWorkshop.trophyName} · ${trophyWorkshop.action} réussi, grade ${result.grade}.`,
-      );
-      setTrophyWorkshop(null);
-      void playSound("trophy");
-    },
-    [persist, playSound, save, trophyWorkshop],
-  );
+  const retryTrophyWorkshopSave = useCallback(() => {
+    const receipt = pendingTrophyCommitRef.current;
+    if (!receipt || !sessionAliveRef.current) return;
+    const allowed = !archiveTransferBusy && !archiveRecoveryIssue && !campaignOperationRef.current &&
+      !nurseryWriteAttemptRef.current && !pendingSocialWriteRef.current &&
+      !pendingTerminalRunRef.current && !activeHuntSessionRef.current;
+    const outcome = receipt.run(saveRef.current, allowed);
+    if (outcome.status === "ignored") return;
+    if (outcome.status === "pending") {
+      setSaveFailure(outcome.failure);
+      setToast("Rite accompli, sauvegarde non confirmée. Le résultat est conservé ; réessayez sans rejouer la séquence.");
+      return;
+    }
+    // Only a confirmed write (or exact readback reconciliation) becomes live.
+    saveRef.current = outcome.save; setSave(outcome.save); setSaveFailure(null);
+    trophyRecovery.confirmed(receipt);
+    pendingTrophyCommitRef.current = null; setPendingTrophyCommit(null);
+    setTrophyWorkshop(null);
+    setToast(`${receipt.target.trophyName} · ${receipt.target.action} enregistré, grade ${receipt.grade}.`);
+    void playSound("trophy");
+  }, [archiveTransferBusy, archiveRecoveryIssue, playSound, trophyRecovery]);
+
+  const completeTrophyWorkshop = useCallback((result: TrophyWorkshopResult) => {
+    if (!sessionAliveRef.current || !trophyRecovery.isIdle() || !trophyWorkshop || pendingTrophyCommitRef.current) return;
+    const receipt = createTrophyWorkshopCommitV94(saveRef.current, trophyWorkshop, result);
+    if (!receipt) { setToast("Résultat d’atelier invalide ou prérequis absent. Aucune progression accordée."); return; }
+    // Publish before attempting the write: reentrant completion cannot replay it.
+    pendingTrophyCommitRef.current = receipt; setPendingTrophyCommit(receipt);
+    trophyRecovery.backup(receipt);
+    retryTrophyWorkshopSave();
+  }, [trophyWorkshop, retryTrophyWorkshopSave, trophyRecovery]);
 
   const resetProgress = useCallback(() => {
+    if (pendingTrophyCommitRef.current) { setToast("La réinitialisation est bloquée tant que le rite attend sa sauvegarde. Confirmez-le ou exportez le résultat avant de quitter."); return; }
     if (!sessionAliveRef.current) return;
     if (!resetArmed) {
       setResetArmed(true);
@@ -3067,14 +3105,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const exportCampaign = useCallback(() => {
     try {
-      const blob = new Blob([exportSave(save)], { type: "application/json" });
+      const blob = new Blob([exportSave(pendingTrophyCommitRef.current?.candidate() ?? save)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
       link.download = `yautja-campagne-${new Date().toISOString().slice(0, 10)}.json`;
       link.click();
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      setSaveTransferMessage(nurseryWriteAttemptRef.current
+      setSaveTransferMessage(pendingTrophyCommitRef.current
+        ? "Export de la campagne incluant le résultat d’atelier non confirmé préparé. Cet export ne confirme pas son enregistrement local et n’inclut pas les annexes du vaisseau ou THE PIT."
+        : nurseryWriteAttemptRef.current
         ? "Export de la dernière progression confirmée préparé. L’action de jeunesse encore en attente n’y figure pas : gardez la scène ouverte et utilisez Reprendre pour confirmer son enregistrement. La chasse active, les configurations du vaisseau et THE PIT ne sont pas inclus.":
           "Export de la campagne préparé. La chasse active, les configurations du vaisseau et les données THE PIT ne sont pas incluses.");
     } catch { setSaveTransferMessage("Impossible de préparer cet export. Les archives locales restent intactes."); }
@@ -3088,6 +3128,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, []);
 
   const exportComplete = useCallback(async () => {
+    if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Archive intégrale différée : elle n’inclurait pas le rite non confirmé. Exportez d’abord la campagne légère avec son résultat, puis réessayez la sauvegarde."); return; }
     if (archiveTransferBusy) return;
     setArchiveTransferBusy(true);
     try {
@@ -3106,6 +3147,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveTransferBusy, downloadArchiveFile]);
 
   const readArchiveFile = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Rite en attente : confirmez sa sauvegarde avant de préparer un import."); return; }
     const file = event.currentTarget.files?.[0];
     event.currentTarget.value = "";
     const selection = ++archiveSelectionRef.current;
@@ -3138,6 +3180,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveTransferBusy, screen]);
 
   const confirmCompleteImport = useCallback(async () => {
+    if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Confirmez le rite en attente avant de remplacer les archives."); return; }
     if (!sessionAliveRef.current || !completeImportPlan || screen !== "title" || archiveTransferBusy) return;
     setArchiveTransferBusy(true);
     try {
@@ -3181,6 +3224,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [downloadArchiveFile]);
 
   const confirmImport = useCallback(() => {
+    if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Confirmez le rite en attente avant de remplacer la campagne."); return; }
     if (!sessionAliveRef.current || !importCandidate || screen !== "title" || archiveTransferBusy) return;
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
@@ -3231,11 +3275,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const campaignLocation: CampaignResumeLocation = screen === "game-reserve" ? "game-reserve" : screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" || soloV90NeedsScene(save.soloV90) || soloV70NeedsScene(save.soloV70) || soloV69NeedsScene(save.soloV69) || soloV68NeedsScene(save.soloV68) || soloV67NeedsScene(save.soloV67) || soloV66NeedsScene(save.soloV66) || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
     : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
-  const checkpointBlockedReason = pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
+  const checkpointBlockedReason = pendingTrophyCommit ? "Un rite attend sa sauvegarde : réessayez ou exportez son résultat avant de quitter."
+    : pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
     : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."
     : screen === "mission" ? "Suspendez la chasse depuis sa pause pour enregistrer un checkpoint manuel ou changer de partie." : null;
   const saveManagedCheckpoint = useCallback(async (kind: "manual" | "auto", index?: number, expectedRevision?: number): Promise<boolean> => {
-    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || (saveFailure && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90") && nurseryPersistenceHealthyRef.current))) return false;
+    if (pendingTrophyCommitRef.current || !sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || (saveFailure && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90") && nurseryPersistenceHealthyRef.current))) return false;
     const catalog = kind === "manual" ? campaignCatalog : loadCampaignSlots();
     const slot = catalog?.slots.find(item => item.id === entry.slotId);
     if (!slot || slot.status !== "ready" || slot.ownerCreatedAt !== saveRef.current.createdAt) {
@@ -3260,6 +3305,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => window.clearTimeout(timer);
   }, [campaignLocation, hydrated]);
   const returnToMainMenu = useCallback(async () => {
+    if (pendingTrophyCommitRef.current) { setCampaignSaveMessage("Rite non confirmé : réessayez sa sauvegarde ou exportez son résultat avant de quitter."); return; }
     if (!sessionAliveRef.current) { onMainMenu(); return; }
     if (checkpointBlockedReason && !((screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90") && nurseryPersistenceHealthyRef.current)) { setCampaignSaveMessage(checkpointBlockedReason); return; }
     setSettingsOpen(true);
@@ -4875,7 +4921,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                               type="button"
                               key={action}
                               className={completed ? "completed" : ""}
-                              disabled={!available}
+                              disabled={!available || pendingTrophyCommit !== null}
                               onClick={() =>
                                 setTrophyWorkshop({
                                   trophyId: trophy.id,
@@ -5207,6 +5253,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             trophyImageUrl={trophyWorkshop.trophyImageUrl}
             controlBindings={save.settings.controlBindings}
             onComplete={completeTrophyWorkshop}
+            suspended={settingsOpen || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+            persistencePending={pendingTrophyCommit !== null}
+            onRetryPersistence={retryTrophyWorkshopSave}
             onCancel={() => setTrophyWorkshop(null)}
           />
         </Suspense>
@@ -5343,7 +5392,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <input type="file" accept="application/json,.json" disabled={true} onChange={readArchiveFile} />
               </label>
               {screen !== "title" && <p>Pour remplacer les archives, suspendez la chasse éventuelle puis revenez au titre.
-                {screen !== "mission" && !save.prologue && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
+                {screen !== "mission" && !save.prologue && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Rite en attente : confirmez la sauvegarde avant de quitter."); return; } setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
               </p>}
               {archiveTransferBusy && <p role="status">Vérification des archives…</p>}
               {completeImportPlan && <div className="save-import-confirm" aria-label="Prévisualisation de l’archive intégrale">
@@ -5411,14 +5460,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       </div>}
       {saveFailure && !pendingHuntResult && (
         <div className="save-warning" role="alert">
-          {nurseryPersistenceError
+          {pendingTrophyCommit
+            ? "Rite accompli, sauvegarde non confirmée. Le résultat reste disponible même après fermeture de l’atelier. Réessayez sans rejouer, ou exportez la campagne avec ce résultat avant de quitter."
+            : nurseryPersistenceError
             ? "La dernière action de jeunesse attend sa confirmation. Gardez cet écran ouvert et utilisez Reprendre dans la scène de campagne. Cet export contient uniquement la dernière progression confirmée."
             : saveFailure === "save-conflict"
             ? "Une autre session a modifié la campagne. Exportez cette progression avant de recharger. Aucun écrasement automatique."
             : saveFailure === "protected-save"
               ? "Les archives existantes sont illisibles ou plus récentes et restent protégées. Importez une archive valide ou confirmez une réinitialisation."
               : "Progression conservée en mémoire seulement. Libérez le stockage puis réessayez, ou exportez la campagne avant de quitter."}
-          <button type="button" disabled={Boolean(nurseryPersistenceError)} onClick={() => persist(save)}>Réessayer</button>
+          <button type="button" disabled={Boolean(nurseryPersistenceError)} onClick={() => pendingTrophyCommitRef.current ? retryTrophyWorkshopSave() : persist(save)}>Réessayer</button>
           <button type="button" onClick={exportCampaign}>{nurseryPersistenceError ? "Exporter la progression confirmée" : "Exporter"}</button>
         </div>
       )}

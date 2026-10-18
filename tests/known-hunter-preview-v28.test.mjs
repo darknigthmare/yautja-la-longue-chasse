@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
 import path from "node:path";
+import { tmpdir } from "node:os";
 import crypto from "node:crypto";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
@@ -19,7 +20,7 @@ const sourceFiles = [
 ];
 
 async function fixture(t) {
-  const temporaryRoot = fs.realpathSync(path.join(root, "tmp"));
+  const temporaryRoot = fs.realpathSync(tmpdir());
   const projectRoot = fs.mkdtempSync(path.join(temporaryRoot, "hunter-review-v28-test-"));
   t.after(() => {
     const resolved = fs.realpathSync(projectRoot);

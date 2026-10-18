@@ -348,8 +348,10 @@ export default function PhysicalShipDeck({
       }
 
       let sample = { horizontal: 0, vertical: 0, jump: false, interact: false };
-      if (gamepadEnabled && typeof navigator.getGamepads === "function") {
-        const gamepad = Array.from(navigator.getGamepads()).find(Boolean);
+      if (gamepadEnabled) {
+        let gamepad: Gamepad | null | undefined;
+        try { gamepad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean); }
+        catch { /* The deck motor must keep running without the controller API. */ }
         if (gamepad) {
           const axisX = gamepad.axes[0] ?? 0;
           const axisY = gamepad.axes[1] ?? 0;

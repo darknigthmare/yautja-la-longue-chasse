@@ -4,7 +4,16 @@ import { readFile } from 'node:fs/promises';
 import { auditPitSpriteSheetProduction } from "./helpers/pit-sprite-sheet-production.mjs";
 
 test("real registered PNGs prepare as distinct transparent cells and every registered facing/phase resolves in the combat renderer", async () => {
-  const report = await auditPitSpriteSheetProduction();
+  const complete = await auditPitSpriteSheetProduction();
+  const lifecycleFiles = ['pitLifecycleAnimationsV93', 'pitLifecycleWolfV94', 'pitLifecycleGreybackV94', 'pitLifecycleCelticV94', 'pitLifecycleBerserkerV94'];
+  const lifecycle = (await Promise.all(lifecycleFiles.map(async name => JSON.parse(await readFile(new URL('../app/game/data/' + name + '.json', import.meta.url), 'utf8'))))).flat();
+  const lifecycleIds = new Set(lifecycle.map(entry => entry.atlas.id));
+  const measured = complete.clips.filter(clip => lifecycleIds.has(clip.atlasId));
+  const identify = clip => [clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(':');
+  assert.deepEqual(measured.map(identify).sort(), lifecycle.flatMap(entry => entry.atlas.clips.map(clip => identify({atlasId:entry.atlas.id,clipId:clip.id,facing:clip.facing,drawnCells:clip.frames.length,ready:true}))).sort(), 'every registered V93/V94 lifecycle clip is decoded and drawn, including each native dizzy and taunt frame');
+  assert(measured.filter(clip => clip.clipId.startsWith('pit.presentation.')).every(clip => clip.presentationClockOnly && clip.physicsUnchanged));
+  const report = complete.historicalThroughV92;
+  assert.equal(complete.readyPhaseClips, report.readyPhaseClips + measured.length);
   assert.equal(report.status, "PASS");
   assert.deepEqual(new Set(report.historicalFighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback", "theta", "machiko-noguchi", "valkyrie"]));
   assert.ok(report.pageCount >= 11);

@@ -5,11 +5,17 @@ import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import {build} from 'esbuild';
 import sharp from 'sharp';
+import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
 const load=async path=>{const r=await build({entryPoints:[path],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
 const model=await load('app/game/systems/homeworldRegionConnectionsV72.ts'),furniture=await load('app/game/systems/homeworldFurnitureV72.ts');
-const city=await load('app/game/systems/homeworldCity.ts'),atlas=await load('app/game/systems/homeworldSpatialCodex.ts');
+const city=await load('app/game/systems/homeworldCity.ts');
 const arrivals=await load('app/game/systems/homeworldArrivalV67.ts'),codex=await load('app/game/systems/homeworldConnectionCodexV72.ts');
 const geo=await load('app/game/systems/homeworldGeometryV64.ts');
+const world=homeworldQaModelV64(process.cwd(),['homeworldWorldV77.ts','homeworldNavigationV77.ts','homeworldCivicWorldV80.ts','homeworldContextCodexV71.ts']);
+const assertWalkingRoute=route=>{
+  assert.equal(route.status,'reachable');
+  for(let n=1;n<route.points.length;n++)assert(world.homeworldRouteSegmentV77(route.levelId,route.points[n-1],route.points[n]),'complete actor and navigation clearance');
+};
 const intersects=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
 
 test('ten exterior thresholds replace urban departure pylons but keep all region identities and access actions',()=>{
@@ -29,69 +35,116 @@ test('ten exterior thresholds replace urban departure pylons but keep all region
   assert.equal(model.homeworldConnectionThresholdV72('invented-territory'),null);
 });
 
-test('every actual corridor can be walked with the complete actor and solid shoulder props leave the centre free',()=>{
-  for(const r of model.HOMEWORLD_REGION_CONNECTIONS_V72){
-    assert(city.isHomeworldWalkable(r.nodes[0]),r.regionId+' city anchor');
-    assert(city.isHomeworldWalkable(r.arrival),r.regionId+' return');assert(city.isHomeworldWalkable(r.threshold),r.regionId+' aperture');
-    for(let n=1;n<r.nodes.length;n++){
-      const a=r.nodes[n-1],b=r.nodes[n],length=Math.hypot(b.x-a.x,b.y-a.y);
-      for(let s=0;s<=length;s+=4){const p={x:a.x+(b.x-a.x)*s/length,y:a.y+(b.y-a.y)*s/length};
-        assert(city.isHomeworldWalkable(p),r.regionId+' physical road '+JSON.stringify(p));
-        assert.equal(city.homeworldCollisionAt(p),null);
-      }
-    }
+test('all eight retained corridors guide the complete actor around current native solids on their actual floor',()=>{
+  assert.equal(world.HOMEWORLD_CONNECTIONS_V77.length,8);
+  for(const r of world.HOMEWORLD_CONNECTIONS_V77){
+    assert(world.homeworldCivicWalkableV80(r.levelId,r.nodes[0]),r.regionId+' city anchor');
+    assert(world.homeworldCivicWalkableV80(r.levelId,r.arrival),r.regionId+' return');
+    assert(world.homeworldCivicWalkableV80(r.levelId,r.threshold),r.regionId+' aperture');
+    // V72 nodes describe authored paving, including old alcoves with no
+    // outgoing guidance margin. Route from the actual public spawn and use
+    // current walking segments/connectors around the unchanged native solids.
+    const route=world.homeworldWorldRouteV77({levelId:'0',point:world.HOMEWORLD_SPACEPORT_V77.spawn},{levelId:r.levelId,point:r.arrival});
+    assert.equal(route.status,'reachable',r.regionId);
+    for(const segment of route.segments)if(segment.points)assertWalkingRoute(segment);
+    else assert(world.HOMEWORLD_CONNECTORS_V77.some(c=>c.id===segment.connectorId),'actual public connector');
+    const last=route.segments.at(-1);assert.equal(last.levelId,r.levelId);
+    assert.deepEqual({x:last.points.at(-1).x,y:last.points.at(-1).y},r.arrival);
     assert(model.HOMEWORLD_CONNECTION_STREETS_V72.some(s=>s.id.startsWith('connection-v72:'+r.regionId+':')));
   }
 });
 
-test('both native arch supports are solid while the complete central aperture remains traversable',()=>{
+test('native arch supports stay solid and retained world apertures admit the complete actor on their real floor',()=>{
   for(const r of model.HOMEWORLD_REGION_CONNECTIONS_V72){
     const feet=model.homeworldGatewayFootprintsV72(r);assert.equal(feet.length,2);
     for(const foot of feet){const p={x:(foot.left+foot.right)/2,y:(foot.top+foot.bottom)/2};
-      assert.equal(model.homeworldConnectionCollisionV72(p)?.id,foot.id);assert.equal(city.homeworldCollisionAt(p)?.id,foot.id);
-      assert.equal(city.isHomeworldWalkable(p),false);
+      assert.equal(model.homeworldConnectionCollisionV72(p)?.id,foot.id);
     }
-    for(let y=r.threshold.y-90;y<=r.arrival.y;y+=8)assert(city.isHomeworldWalkable({x:r.threshold.x,y}),r.regionId+' central passage');
+  }
+  for(const r of world.HOMEWORLD_CONNECTIONS_V77){
+    for(const foot of model.homeworldGatewayFootprintsV72(r)){
+      const p={x:(foot.left+foot.right)/2,y:(foot.top+foot.bottom)/2};
+      // An existing shoulder prop may share the same solid support. The
+      // gateway's source footprint is checked above; its world support remains solid.
+      assert(world.homeworldCivicCollisionV80(r.levelId,p),foot.id+' solid support');
+      assert.equal(world.homeworldCivicWalkableV80(r.levelId,p),false);
+    }
+    for(let y=r.threshold.y-90;y<=r.arrival.y;y+=8)assert(world.homeworldCivicWalkableV80(r.levelId,{x:r.threshold.x,y}),r.regionId+' central passage');
   }
   assert.equal(model.homeworldConnectionFloorV72({x:NaN,y:10}),false);
 });
 
-test('forty independent shoulder furnishings never intersect roads or building ground volumes',()=>{
+test('forty source furnishings retain their IDs while thirty-two active shoulders clear same-floor native volumes',()=>{
   assert.equal(model.HOMEWORLD_CONNECTION_FURNITURE_V72.length,40);
-  const props=model.HOMEWORLD_CONNECTION_FURNITURE_V72.map(item=>({item,box:furniture.homeworldFurnitureFootprintV72(item)}));
+  assert.equal(new Set(model.HOMEWORLD_CONNECTION_FURNITURE_V72.map(p=>p.id)).size,40);
+  // The coast and thermal gates became physical docks in V77; their eight
+  // historical furnishings remain in the source catalogue, not the scene.
+  const props=world.HOMEWORLD_CONNECTION_FURNITURE_V77.map(item=>({item,box:furniture.homeworldFurnitureFootprintV72(item)}));
+  assert.equal(props.length,32);
   for(const {item,box}of props){
-    // The whole furnishing rectangle must avoid actual masonry. Angled native
-    // buildings have empty AABB corners; those are not building ground volume.
-    for(const b of city.HOMEWORLD_BUILDINGS)assert(!geo.homeworldBuildingTouchesV76(b,
+    const source=model.HOMEWORLD_CONNECTION_FURNITURE_V72.find(p=>p.id===item.id);assert(source);
+    assert.equal(item.artId,source.artId);assert.equal(item.scale,source.scale);
+    // Compare real oriented masonry on the item's actual physical floor.
+    for(const b of world.HOMEWORLD_BUILDINGS_V77.filter(b=>b.levelId===item.levelId))assert(!geo.homeworldBuildingTouchesV76(b,
       {x:(box.left+box.right)/2,y:(box.top+box.bottom)/2},
       {halfWidth:(box.right-box.left)/2,halfDepth:(box.bottom-box.top)/2}),item.id+' masonry '+b.id);
-    for(const p of city.HOMEWORLD_PROPS){if(p.plane!=='ground')continue;const hw=p.footprint?.halfWidth,hd=p.footprint?.halfDepth;
+    for(const p of world.HOMEWORLD_PROPS_V77){if(p.levelId!==item.levelId||p.plane!=='ground')continue;const hw=p.footprint?.halfWidth,hd=p.footprint?.halfDepth;
       if(hw!==undefined&&hd!==undefined)assert(!intersects(box,{left:p.x-hw,right:p.x+hw,top:p.y-hd*(p.artId?2:1),bottom:p.y+(p.artId?0:hd)}),item.id+' existing prop '+p.id);
     }
+    // Floor zero's port overlay is the only historical coordinate translation.
+    const dx=item.levelId==='0'&&item.regionId==='ash-marches'?world.HOMEWORLD_PORT_TRANSLATION_V77.x:0;
     for(let y=box.top;y<=box.bottom;y+=4)for(let x=box.left;x<=box.right;x+=4)
-      assert.equal(model.homeworldConnectionFloorV72({x,y}),false,item.id+' traversable road overlap');
-    assert.equal(model.homeworldConnectionCollisionV72({x:(box.left+box.right)/2,y:(box.top+box.bottom)/2},{halfWidth:0,halfDepth:0})?.id,item.id);
+      assert.equal(model.homeworldConnectionFloorV72({x:x-dx,y}),false,item.id+' traversable road overlap');
+    assert.equal(world.homeworldCivicCollisionV80(item.levelId,{x:(box.left+box.right)/2,y:(box.top+box.bottom)/2},{halfWidth:0,halfDepth:0})?.id,item.id);
   }
-  for(let n=0;n<props.length;n++)for(let j=n+1;j<props.length;j++)assert(!intersects(props[n].box,props[j].box),props[n].item.id+' furniture overlap '+props[j].item.id);
+  for(let n=0;n<props.length;n++)for(let j=n+1;j<props.length;j++)if(props[n].item.levelId===props[j].item.levelId)
+    assert(!intersects(props[n].box,props[j].box),props[n].item.id+' furniture overlap '+props[j].item.id);
 });
 
-test('real navigation guides all ten former urban landmarks to their physical departure without teleportation',()=>{
-  for(const r of model.HOMEWORLD_REGION_CONNECTIONS_V72){
-    const start={x:r.legacySign.x,y:r.legacySign.y+70};assert(city.isHomeworldWalkable(start),r.regionId+' former sign approach');
-    const route=atlas.homeworldSpatialRoute(start,r.arrival);assert.equal(route.status,'reachable',r.regionId);
-    assert.deepEqual(route.points[0],start);assert.deepEqual(route.points.at(-1),r.arrival);assert(route.distance>200);
-    for(let n=1;n<route.points.length;n++)assert(atlas.isHomeworldRouteSegmentWalkable(route.points[n-1],route.points[n]),r.regionId+' guided segment');
+test('the displaced storm-chain crates retain native identity on a fully supported, accessible Council shoulder',()=>{
+  const id='connection-furniture-v72:storm-chain:3';
+  const source=model.HOMEWORLD_CONNECTION_FURNITURE_V72.find(p=>p.id===id),item=world.HOMEWORLD_CONNECTION_FURNITURE_V77.find(p=>p.id===id);
+  assert.deepEqual({x:source.x,y:source.y},{x:3870,y:720},'historical authored source retained');
+  assert.deepEqual({x:item.x,y:item.y},{x:4100,y:960});assert.equal(item.levelId,'+1');
+  assert.equal(item.artId,source.artId);assert.equal(item.scale,source.scale);
+  const box=furniture.homeworldFurnitureFootprintV72(item),centre={x:(box.left+box.right)/2,y:(box.top+box.bottom)/2};
+  const clearance={halfWidth:(box.right-box.left)/2+36,halfDepth:(box.bottom-box.top)/2+26};
+  assert(world.homeworldTerrainV77(item.levelId,centre,clearance),'whole prop plus actor and guidance margin supported');
+  const ring=[{x:box.left-38,y:box.top-28},{x:box.right+38,y:box.top-28},{x:box.right+38,y:box.bottom+28},{x:box.left-38,y:box.bottom+28}];
+  for(let i=0;i<ring.length;i++)assert(world.homeworldRouteSegmentV77(item.levelId,ring[i],ring[(i+1)%ring.length]),'complete actor can pass every side');
+  for(const resident of world.HOMEWORLD_RESIDENTS_V77.filter(r=>r.levelId===item.levelId))for(let n=1;n<resident.path.length;n++){
+    const a=resident.path[n-1],b=resident.path[n],steps=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/4));
+    for(let i=0;i<=steps;i++)assert(!furniture.homeworldFurnitureTouchesV72(item,{x:a.x+(b.x-a.x)*i/steps,y:a.y+(b.y-a.y)*i/steps},{halfWidth:36,halfDepth:26}),resident.id+' native full-body path');
+  }
+  const record=world.HOMEWORLD_ALL_ELEMENT_CODEX_V71.find(r=>r.id===id);assert(record);
+  assert.deepEqual(record.position,{x:item.x,y:item.y,z:world.homeworldLevelV77(item.levelId).elevation});
+  assert.equal(record.asset,furniture.HOMEWORLD_FURNITURE_ART_V72[item.artId].src);
+  assert.deepEqual(record.footprint,{...box,polygon:undefined});
+});
+
+test('all ten historical regional identities have real departure routes using current floors and public connectors',()=>{
+  const from={levelId:'0',point:world.HOMEWORLD_SPACEPORT_V77.spawn};
+  const points=world.HOMEWORLD_POINTS_V77.filter(p=>p.regionId);
+  assert.deepEqual(points.map(p=>p.regionId).sort(),model.HOMEWORLD_REGION_CONNECTIONS_V72.map(r=>r.regionId).sort());
+  for(const point of points){
+    const arrival=world.homeworldWorldArrivalV77(point.regionId);assert(arrival,point.regionId+' return socket');
+    const route=world.homeworldWorldRouteV77(from,{levelId:arrival.levelId,point:arrival.actor});
+    assert.equal(route.status,'reachable',point.regionId);
+    for(const segment of route.segments)if(segment.points)assertWalkingRoute(segment);
+    else assert(world.HOMEWORLD_CONNECTORS_V77.some(c=>c.id===segment.connectorId),'real connector');
+    const last=route.segments.at(-1);assert.equal(last.levelId,arrival.levelId);
+    assert.deepEqual({x:last.points.at(-1).x,y:last.points.at(-1).y},{x:arrival.actor.x,y:arrival.actor.y});
   }
 });
 
-test('all forty-three existing building entrances remain connected while every new threshold is reachable from the public spawn',()=>{
-  assert.equal(city.HOMEWORLD_BUILDINGS.length,43);
-  const start=city.createHomeworldActor();
-  for(const building of city.HOMEWORLD_BUILDINGS){const goal=city.homeworldBuildingDoorwayV64(building).approach;
-    assert.equal(atlas.homeworldSpatialRoute(start,goal).status,'reachable','existing public doorway '+building.id);
+test('all forty-three existing building entrances and eight retained thresholds remain reachable from the east-port spawn',()=>{
+  assert.equal(world.HOMEWORLD_BUILDINGS_V77.length,43);
+  const from={levelId:'0',point:world.HOMEWORLD_SPACEPORT_V77.spawn};
+  for(const building of world.HOMEWORLD_BUILDINGS_V77){const goal=city.homeworldBuildingDoorwayV64(building).approach;
+    assert.equal(world.homeworldWorldRouteV77(from,{levelId:building.levelId,point:goal}).status,'reachable','existing public doorway '+building.id);
   }
-  for(const connection of model.HOMEWORLD_REGION_CONNECTIONS_V72)
-    assert.equal(atlas.homeworldSpatialRoute(start,connection.arrival).status,'reachable','regional threshold '+connection.regionId);
+  for(const connection of world.HOMEWORLD_CONNECTIONS_V77)
+    assert.equal(world.homeworldWorldRouteV77(from,{levelId:connection.levelId,point:connection.arrival}).status,'reachable','regional threshold '+connection.regionId);
 });
 
 test('native PNGs and every cell stay transparent, unmodified and padded with genuine open apertures',async()=>{

@@ -16,6 +16,9 @@ export async function auditPitSpriteSheetProduction() {
     bundle: true, platform: "node", format: "esm", write: false, logLevel: "silent" });
   const api = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
   const registry = api.PIT_SPRITE_SHEET_REGISTRY;
+  const lifecycleFiles = ['pitLifecycleAnimationsV93', 'pitLifecycleWolfV94', 'pitLifecycleGreybackV94', 'pitLifecycleCelticV94', 'pitLifecycleBerserkerV94'];
+  const lifecycle = (await Promise.all(lifecycleFiles.map(async name => JSON.parse(await readFile(new URL('../../app/game/data/' + name + '.json', import.meta.url), 'utf8'))))).flat();
+  const lifecycleAtlasIds = new Set(lifecycle.map(entry => entry.atlas.id));
   const decoded = new Map(), pages = [], allDrawingHashes = new Set(), clipReports = [];
   for (const entry of registry) {
     const validation = api.validateHunterSpriteAtlas(entry.atlas);
@@ -95,7 +98,13 @@ export async function auditPitSpriteSheetProduction() {
     assert.equal(bank.cancelled, false);
     assert.deepEqual(bank.failedAtlasIds, []);
     assert.equal(bank.readyClipCount, registry.reduce((count, entry) => count + entry.atlas.clips.length, 0));
-    for (const entry of registry) for (const clip of entry.atlas.clips) {
+    for (const entry of registry) {
+      // An overridden historical clip still needs its own real decode/draw audit.
+      // Isolate each definition so a newer idle or ceremony cannot mask its cells.
+      bank = await api.loadPitSpriteSheetAnimations([entry.fighterId], [entry], { variants: [entry.variantId ?? null] });
+      assert.deepEqual(bank.failedAtlasIds, []);
+      assert.equal(bank.readyClipCount, entry.atlas.clips.length);
+      for (const clip of entry.atlas.clips) {
       const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf",
         { variants: [entry.variantId ?? null, null] });
       const fighter = combat.fighters[0];
@@ -120,14 +129,14 @@ export async function auditPitSpriteSheetProduction() {
           runtimePosture: 'stand', runtimePhase: 'hold', runtimePhaseTicks: null, status: 'held-native-stance', ready: true });
         continue;
       }
-      const presentationKind = /^pit\.presentation\.(intro|victory|defeat)$/.exec(clip.id)?.[1];
+      const presentationKind = /^pit\.presentation\.(intro|victory|defeat|dizzy|taunt)$/.exec(clip.id)?.[1];
       if (presentationKind) {
         const before = JSON.stringify(combat);
         const authoredTicks = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0);
-        const presentation = { phase: presentationKind === "intro" ? "intro-left" : "match-result",
+        const presentation = { phase: presentationKind === "intro" ? "intro-left" : presentationKind === "dizzy" ? "finisher-window" : presentationKind === "taunt" ? "fight" : "match-result",
           elapsedMs: 0, durationMs: Math.max(1200, (authoredTicks + 2) * 1000 / clip.ticksPerSecond),
           round: combat.round, fighterSlot: 0,
-          winnerSlot: presentationKind === "defeat" ? 1 : 0, blocksSimulation: true, resultVisible: false };
+          winnerSlot: presentationKind === "defeat" || presentationKind === "dizzy" ? 1 : 0, fighterTaunts: presentationKind === "taunt" ? [true, false] : undefined, blocksSimulation: presentationKind !== "taunt", resultVisible: false };
         let elapsedTicks = 0;
         const drawnFrames = [];
         for (let index = 0; index < clip.frames.length; index++) {
@@ -237,16 +246,29 @@ export async function auditPitSpriteSheetProduction() {
         authoredTicks: clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0),
         runtimePosture: resolved.resolved.motion.posture, runtimePhase: resolved.resolved.motion.phase,
         runtimePhaseTicks: resolved.resolved.motion.durationTicks, ...nativeDrawEvidence, ready: true });
+      }
     }
   } finally { Object.assign(globalThis, previous); }
-  const sequences = new Set(clipReports.map(clip => JSON.stringify([clip.fighterId, clip.variantId, clip.clipId.replace(/\.(startup|active|recovery)$/, ""), clip.facing])));
-  return { schemaVersion: 1, verifiedAt: new Date().toISOString(), status: "PASS", method: "Sharp PNG readback through the real atlas preparation and animation loader",
-    fighters: [...new Set(registry.map(entry => entry.fighterId))],
-    historicalFighters: [...new Set(registry.filter(entry => entry.variantId === undefined).map(entry => entry.fighterId))],
-    appearances: [...new Map(registry.map(entry => [JSON.stringify([entry.fighterId, entry.variantId ?? null]),
-      { fighterId: entry.fighterId, variantId: entry.variantId ?? null }])).values()], pageCount: pages.length, sourceRequests: requests,
-    distinctDrawings: allDrawingHashes.size, readyPhaseClips: bank.readyClipCount, actionSequencesIncludingFacings: sequences.size,
-    pages, clips: clipReports, limits: ["Pixel validation does not replace the separate visual anatomy review.",
-      "Phase clips are not complete fighter animation libraries.", "The 264 historical production entries are not 264 animation clips or distinct canonical individuals.",
-      "No complete character, synchronized throw, victim library or finisher is claimed."] };
+  function summarize(entries, selectedPages, selectedClips) {
+    const selectedUrls = new Set(selectedPages.map(page => page.src));
+    const sequences = new Set(selectedClips.map(clip => JSON.stringify([clip.fighterId, clip.variantId, clip.clipId.replace(/\.(startup|active|recovery)$/, ""), clip.facing])));
+    return { schemaVersion: 1, verifiedAt: new Date().toISOString(), status: "PASS", method: "Sharp PNG readback through the real atlas preparation and animation loader; each registered definition resolves independently of newer overrides",
+      fighters: [...new Set(entries.map(entry => entry.fighterId))],
+      historicalFighters: [...new Set(entries.filter(entry => entry.variantId === undefined).map(entry => entry.fighterId))],
+      appearances: [...new Map(entries.map(entry => [JSON.stringify([entry.fighterId, entry.variantId ?? null]),
+        { fighterId: entry.fighterId, variantId: entry.variantId ?? null }])).values()], pageCount: selectedPages.length, sourceRequests: requests.filter(src => selectedUrls.has(src)),
+      distinctDrawings: new Set(selectedPages.flatMap(page => page.cells.map(cell => cell.sha256))).size,
+      readyPhaseClips: selectedClips.length, actionSequencesIncludingFacings: sequences.size,
+      pages: selectedPages, clips: selectedClips, limits: ["Pixel validation does not replace the separate visual anatomy review.",
+        "Phase clips are not complete fighter animation libraries.", "The 264 historical production entries are not 264 animation clips or distinct canonical individuals.",
+        "No complete character, synchronized throw, victim library or finisher is claimed."] };
+  }
+  const complete = summarize(registry, pages, clipReports);
+  assert.equal(complete.distinctDrawings, allDrawingHashes.size);
+  assert.equal(complete.readyPhaseClips, registry.reduce((count, entry) => count + entry.atlas.clips.length, 0));
+  const legacy = registry.filter(entry => !lifecycleAtlasIds.has(entry.atlas.id));
+  const legacyIds = new Set(legacy.map(entry => entry.atlas.id));
+  const legacyPages = pages.filter(page => legacy.some(entry => entry.fighterId === page.fighterId && (entry.variantId ?? null) === page.variantId && entry.atlas.pages.some(candidate => candidate.id === page.pageId)));
+  return { ...complete, lifecycleAtlasIds: [...lifecycleAtlasIds],
+    historicalThroughV92: summarize(legacy, legacyPages, clipReports.filter(clip => legacyIds.has(clip.atlasId))) };
 }

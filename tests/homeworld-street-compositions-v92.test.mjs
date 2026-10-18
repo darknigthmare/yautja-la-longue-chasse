@@ -119,9 +119,9 @@ test('the repaired Trois Vents corridor is actual supported terrain around retai
  for(const segment of portRoute.segments)if(segment.points)for(let index=1;index<segment.points.length;index++)assert(nav.homeworldRouteSegmentV77(segment.levelId,segment.points[index-1],segment.points[index]));
 });
 
-test('all 110 resident/extra trajectories retain their real body clearance and V92 respects a further four-unit margin',()=>{
+test('all 114 resident/extra trajectories retain their real body clearance and V92 respects a further four-unit margin',()=>{
  const population=load('homeworldUrbanPopulationV78'),residents=[...world.HOMEWORLD_RESIDENTS_V77,...population.HOMEWORLD_URBAN_EXTRAS_V78];
- assert.equal(world.HOMEWORLD_RESIDENTS_V77.length,98);assert.equal(population.HOMEWORLD_URBAN_EXTRAS_V78.length,12);assert.equal(residents.length,110);
+ assert.equal(world.HOMEWORLD_RESIDENTS_V77.length,98);assert.equal(population.HOMEWORLD_URBAN_EXTRAS_V78.length,16);assert.equal(residents.length,114);
  for(const resident of residents)for(let index=0;index<resident.path.length;index++){
   const a=resident.path[index],b=resident.path[index+1]??a,steps=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)));
   for(let step=0;step<=steps;step++){const point={x:a.x+(b.x-a.x)*step/steps,y:a.y+(b.y-a.y)*step/steps};

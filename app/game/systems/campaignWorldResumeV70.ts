@@ -1,3 +1,4 @@
+import { campaignResumePriorityV94 } from './campaignResumePriorityV94';
 import type { SaveGame } from '../types';
 import type { CampaignResumeLocation } from './campaignSlots';
 import { youthCampaignNeedsScene } from './youthCampaign';
@@ -16,12 +17,10 @@ export function campaignWorldResumeV70(save: SaveGame, location: CampaignResumeL
   if (save.prologue?.status === 'active' || youthCampaignNeedsScene(save.youthTraining) ||
     soloV66NeedsScene(save.soloV66) || soloV67NeedsScene(save.soloV67) || soloV68NeedsScene(save.soloV68) ||
     soloV69NeedsScene(save.soloV69) || soloV70NeedsScene(save.soloV70) || soloV90NeedsScene(save.soloV90)) return null;
-  if (save.homeworldRegionV68 && save.homeworldRegionV68.status !== 'at-city') return 'homeworld-region-v68';
-  const passage = save.homeworldPassageV67;
-  if (passage && passage.status !== 'at-city') return passage.status === 'at-biome'
-    ? passage.regionId === 'ash-marches' ? 'homeworld-expedition' : 'glass-desert-expedition'
-    : 'homeworld-passage-v67';
-  if (location === 'game-reserve' && save.gameReserveV66 && !save.prologue) return 'game-reserve';
-  if (save.homeworldRegionV68?.status === 'at-city' || passage?.status === 'at-city') return 'homeworld';
-  return null;
+  return campaignResumePriorityV94({
+    location,
+    region: save.homeworldRegionV68,
+    passage: save.homeworldPassageV67,
+    reserveAvailable: Boolean(save.gameReserveV66 && !save.prologue),
+  });
 }

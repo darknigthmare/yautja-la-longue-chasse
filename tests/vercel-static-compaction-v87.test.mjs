@@ -138,6 +138,9 @@ test('failed hardlink creation keeps the original generated copy intact with no 
 test('mode mismatch preserves output permissions, and arbitrary real project roots are refused',async t=>{
  const root=await fixture(t),files=await pair(root,'mode.png',Buffer.from('same-content'));
  if(process.platform!=='win32'){
+  // Establish distinct modes explicitly; a restrictive cloud umask may create
+  // both files as 0600 before this permission-preservation scenario begins.
+  await fs.chmod(files.source,0o644);
   await fs.chmod(files.target,0o600);
   const report=await compactStaticFixtureV87({fixtureRoot:root});
   assert.equal(report.modeMismatches,1);assert.equal(report.linkedFiles,0);

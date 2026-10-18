@@ -1,8 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
-const api=homeworldQaModelV64(process.cwd(),['homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldUrbanLayoutV78.ts','homeworldStreetModulesV78.ts','homeworldUrbanPopulationV78.ts','homeworldUrbanNavigationV78.ts','homeworldUrbanFacadesV78.ts','homeworldUrbanCodexV78.ts','homeworldAuthoredLotsV81.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldIdentityV72.ts','homeworldUrbanLayoutV78.ts','homeworldStreetModulesV78.ts','homeworldUrbanPopulationV78.ts','homeworldUrbanNavigationV78.ts','homeworldUrbanFacadesV78.ts','homeworldUrbanCodexV78.ts','homeworldAuthoredLotsV81.ts','homeworldCity.ts']);
 const body={halfWidth:24,halfDepth:14};
+const npcAdditions=JSON.parse(readFileSync('app/game/data/homeworldNpcAdditionsV84.json','utf8'));
 test('authored V81 court density preserves whole native assets and every refused candidate',()=>{
  assert.equal(api.HOMEWORLD_BUILDINGS_V77.length,43);assert.equal(api.HOMEWORLD_RESIDENTS_V77.length,98);
  assert.equal(api.HOMEWORLD_URBAN_PROP_CANDIDATES_V78.length,api.HOMEWORLD_AUTHORED_COURTS_V81.reduce((n,c)=>n+c.props.length,0));
@@ -46,8 +48,29 @@ test('same legacy motor walks continuously into genuinely added port court suppo
  assert.equal(api.homeworldUrbanTerrainV78('0',actor,body),true);
  const stopped=api.stepHomeworldUrbanActorV78(actor,{moveX:1,climb:1,jumpPressed:false},0,'0');assert.equal(stopped,actor);
 });
-test('14 decorative residents use old personas, preserve all old IDs and never become services or saved visits',()=>{
- assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,14);assert.deepEqual(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78,[]);
+test('all 18 original courtyard and V84 attendant candidates retain their personas, with 16 safe routines and both explicit refusals',()=>{
+ assert.equal(npcAdditions.urban.length,4);
+ assert.equal(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.filter(r=>r.id.startsWith('urban-v78:extra:')).length,14);
+ assert.equal(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.length,14+npcAdditions.urban.length);
+ assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,16);
+ assert.deepEqual(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78,[
+  {id:'urban-v78:extra:lower-1',reason:'urban-v78:lower-work-north:pending-facade'},
+  {id:'urban-v78:extra:lower-4',reason:'urban-v78:lower-halt-west:pending-facade'},
+ ]);
+ const admitted=new Set(api.HOMEWORLD_URBAN_EXTRAS_V78.map(r=>r.id)),refused=new Set(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78.map(r=>r.id));
+ assert.equal(admitted.size+refused.size,api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.length);
+ for(const candidate of api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78)assert(admitted.has(candidate.id)!==refused.has(candidate.id),candidate.id+' must be admitted or explicitly refused');
+ for(const rejection of api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78){
+  const candidate=api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.find(r=>r.id===rejection.id),reserve=api.HOMEWORLD_URBAN_RESERVES_V78.find(r=>r.id===rejection.reason);
+  assert(candidate&&reserve);assert.equal(candidate.levelId,reserve.levelId);
+  assert(api.homeworldUrbanOverlapV78(api.homeworldUrbanCorridorV78(candidate.path[0],candidate.path.at(-1),36,26),reserve.polygon),rejection.id+' refusal protects its actual occupied native parcel');
+ }
+ for(const seed of npcAdditions.urban){
+  const resident=api.HOMEWORLD_URBAN_EXTRAS_V78.find(r=>r.id===seed.id);
+  assert(resident,seed.id+' source attendant remains present');
+  assert.equal(resident.levelId,seed.levelId);assert.deepEqual(resident.path,seed.path);
+  assert.equal(api.homeworldUrbanExtraRoleV78(resident),seed.fallbackRole);
+ }
  const oldIds=new Set(api.HOMEWORLD_RESIDENTS_V77.map(r=>r.id));
  for(const r of api.HOMEWORLD_URBAN_EXTRAS_V78){
   assert(oldIds.has(r.sourceResidentId));assert(!oldIds.has(r.id));
@@ -57,20 +80,29 @@ test('14 decorative residents use old personas, preserve all old IDs and never b
   for(let t=0;t<=60;t+=.25){const p=api.homeworldResidentPoseV77(r,t);assert(api.homeworldUrbanWalkableV78(r.levelId,p,{halfWidth:36,halfDepth:26}));}
  }
  assert.equal(api.HOMEWORLD_RESIDENTS_V77.length,98);
- assert.equal(new Set(api.HOMEWORLD_URBAN_EXTRAS_V78.filter(r=>r.levelId==='-1A').map(r=>api.homeworldUrbanExtraRoleV78(r))).size,5);
+ assert.equal(new Set(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.filter(r=>r.levelId==='-1A').map(r=>api.homeworldUrbanExtraRoleV78(r))).size,5);
  for(const r of api.HOMEWORLD_RESIDENTS_V77)assert.equal(api.homeworldUrbanExtraRoleV78(r),api.homeworldResidentRoleV72(r));
 });
-test('eight original native facade placeholders fit their lots and an adult; no fake interactive door is added',()=>{
+test('eight measured native oblique facades fit their lots and an adult; no fake interactive door is added',()=>{
  assert.equal(api.HOMEWORLD_URBAN_LOTS_V78.length,8);
  assert.equal(api.HOMEWORLD_URBAN_FACADES_V78.length,8);
  for(const [i,lot] of api.HOMEWORLD_URBAN_LOTS_V78.entries()){
-  assert.equal(lot.interactive,false);assert.equal(lot.artStatus,'NATIVE_LAYOUT_REQUIRED');
+  assert.equal(lot.interactive,false);assert.equal(lot.artStatus,'MEASURED_NATIVE_OBLIQUE_REUSE_V83');
   const facade=api.HOMEWORLD_URBAN_FACADES_V78[i],placement=api.homeworldUrbanFacadePlacementV78(facade);
-  assert.equal(facade.interactive,false);assert.equal(facade.nativeStatus,'EXISTING_FRONTAL_NATIVE_PLACEHOLDER');
+  assert.equal(facade.interactive,false);assert.equal(facade.nativeStatus,'MEASURED_NATIVE_OBLIQUE_REUSE_V83');
+  assert.equal(facade.targetNativeStatus,'DEDICATED_DISTRICT_VARIANTS_STILL_REQUIRED');
+  assert.equal(facade.provenance,'LORE_COMPATIBLE_ORIGINAL');assert(facade.art.groundFrame,'measured oblique source required');
   assert(placement.paintedDoorHeight>=128);assert(placement.paintedDoorWidth>=80);
   assert(Math.abs(placement.width/placement.sourceWidth-placement.height/placement.sourceHeight)<1e-12);
   assert(placement.footprint.every(p=>p.x>=lot.bounds.left&&p.x<=lot.bounds.right&&p.y>=lot.bounds.top&&p.y<=lot.bounds.bottom));
-  const point={x:facade.x,y:facade.y-facade.footprint.depth/2};
+  for(let side=0;side<placement.footprint.length;side++){
+   const from=placement.footprint[side],to=placement.footprint[(side+1)%placement.footprint.length],samples=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/8));
+   for(let i=0;i<=samples;i++)assert(api.homeworldUrbanTerrainV78(facade.levelId,{x:from.x+(to.x-from.x)*i/samples,y:from.y+(to.y-from.y)*i/samples},{halfWidth:0,halfDepth:0}),facade.id+' full native foundation edge stays supported on its floor');
+  }
+  for(let x=lot.bounds.left;x<=lot.bounds.right;x+=16)for(let y=lot.bounds.top;y<=lot.bounds.bottom;y+=16){
+   const point={x,y};if(api.pointInHomeworldPolygon(point,placement.footprint))assert(api.homeworldUrbanTerrainV78(facade.levelId,point,{halfWidth:0,halfDepth:0}),facade.id+' full foundation interior stays supported');
+  }
+  const point={x:placement.footprint.reduce((sum,p)=>sum+p.x,0)/placement.footprint.length,y:placement.footprint.reduce((sum,p)=>sum+p.y,0)/placement.footprint.length};
   assert.equal(api.homeworldUrbanCollisionV78(lot.levelId,point,body)?.id,facade.id);
   assert.equal(api.nearestHomeworldDoorV77(lot.levelId,point),null);
   for(const reserve of api.HOMEWORLD_URBAN_RESERVES_V78.filter(r=>r.levelId===facade.levelId&&!r.id.endsWith(':pending-facade')))
@@ -87,12 +119,15 @@ test('urban codex records cover every actual floor, measured solid and honestly 
   assert.deepEqual(record.footprint.polygon,paint.footprint);assert.equal(record.position.z,paint.elevation);
   assert.equal(record.dimensions.width,facade.footprint.width);assert.equal(record.dimensions.depth,facade.footprint.depth);
   assert.equal(record.dimensions.height,facade.wallHeight);assert(record.source[0].note.includes(facade.art.sha256));
-  assert(record.constraints.some(c=>c.includes('encore requise')));
+  assert(record.source[0].note.includes(facade.sourceBuildingId));
+  assert(record.constraints.some(c=>c.includes('aucune reproduction canonique1:1 ou variante dédiée produite affirmée')));
+  assert(record.constraints.some(c=>c.includes('non vérifié')));
  }
  for(const lot of api.HOMEWORLD_URBAN_LOTS_V78){
   const record=records.find(r=>r.id===lot.id);
   assert.equal(record.asset,null);assert.equal(record.footprint,null);assert.equal(record.category,'panel');
   assert(record.constraints.some(c=>c.includes(lot.id+':facade')));
+  assert(record.constraints.some(c=>c.includes('variantes de district dédiées restent à produire')));
  }
  for(const item of api.HOMEWORLD_URBAN_PROPS_V78){
   const record=records.find(r=>r.id===item.id),paint=api.homeworldUrbanNativePlacementV78(item);

@@ -24,3 +24,16 @@ test('an installed source alone is recorded without fabricating a runtime consum
  assert.deepEqual(entry.installedOnlyCandidates,['/game/homeworld/future/elevator-native.png']);
  assert.equal(entry.status,'EXISTING_NEEDS_VARIANT');
 });
+
+test('an equipment job cannot supply a prop sprite while explicit equipment and guard sources retain their provenance',()=>{
+ const attendant={id:'urban-v84:stable-harness',label:'Palefrenier des montures',category:'npc',asset:'/game/homeworld/v72/civilian-roles-atlas.png'};
+ const guard={id:'npc:royal-guard',label:'Garde',category:'npc',asset:'/game/homeworld/v84/npcs/guard/01.png'};
+ const harness={id:'prop:mount-harness',label:'Harnais',category:'prop',asset:'/game/homeworld/future/harness-native.png'};
+ const missing=api.auditHomeworldAssetCatalogueV81([attendant,guard]).find(e=>e.label==='harnais');
+ assert.equal(missing.status,'MISSING');assert.equal(missing.consumerCount,0);assert.deepEqual(missing.sourceCandidates,[]);
+ const supplied=api.auditHomeworldAssetCatalogueV81([attendant,guard,harness]);
+ const equipment=supplied.find(e=>e.label==='harnais');
+ assert.equal(equipment.status,'EXISTING_NEEDS_VARIANT');assert.deepEqual(equipment.consumerIds,[harness.id]);assert.deepEqual(equipment.sourceCandidates,[harness.asset]);
+ const person=supplied.find(e=>e.label==='garde');
+ assert.equal(person.status,'EXISTING_NEEDS_VARIANT');assert.deepEqual(person.consumerIds,[guard.id]);assert.deepEqual(person.sourceCandidates,[guard.asset]);
+});

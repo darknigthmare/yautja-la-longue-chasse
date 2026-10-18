@@ -13,7 +13,7 @@ function implementation(name,environment){const decl=find(name),fn=decl.initiali
 let route;const played=()=>route??=formationCampaignRoute();let n=0;
 function fixture(save){const key='solo-runtime-v90-'+n++,values=new Map([[key,JSON.stringify(save)]]),screens=[],notices=[];let quota=false,afterWrite=false,badRead=false;
  const store={getItem(k){if(k===key&&badRead){badRead=false;throw Error('readback interrupted');}return values.get(k)??null;},setItem(k,v){if(k===key&&quota)throw new DOMException('quota','QuotaExceededError');values.set(k,v);if(k===key&&afterWrite){afterWrite=false;badRead=true;}},removeItem:k=>values.delete(k)};
- const initial=p.loadSaveWithStatus(store,key).save,env={...p,...formationModel,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
+ const initial=p.loadSaveWithStatus(store,key).save,env={...p,...formationModel,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},pendingTrophyCommitRef:{current:null},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
   setSave(s){env.save=s;},setSaveFailure(v){env.failure=v;},setNurseryPersistenceError(v){notices.push(v);},setHubLocation(){},setScreen(s){screens.push(s);},
   writeSaveWithStatus(s){return p.writeSaveWithStatus(s,store,key);},reconcileSaveWrite(a,o){return p.reconcileSaveWrite(a,o,store,key);}};
  for(const name of ['reconcileNurseryAttempt','persistNursery','enterSoloV90','checkpointSoloV90','progressSoloV90','returnFromSoloV90'])env[name]=implementation(name,env);
@@ -35,4 +35,14 @@ test('hydration keeps a valid active triad preparation ahead of a terminal at-ci
  const terminal=extras.stepHomeworldRegionV68(extras.createHomeworldRegionV68('ash-marches','hydration-audit'),{interact:true});assert.equal(terminal.status,'at-city');const active=formationModel.startSoloV90Campaign({...played().origin,homeworldRegionV68:terminal});assert(active);const parsed=p.parseSaveImport(JSON.stringify(active));assert.equal(parsed.failure,null);
  const screens=[],env={...extras,...formationModel,ARCHIVE_TRANSFER_JOURNAL_KEY:'not-present',hydrationCancelled:false,entry:{ownerCreatedAt:active.createdAt,location:'youth-training'},sessionAliveRef:{current:true},expeditionOwnerRef:{current:null},saveRef:{current:null},window:{localStorage:{getItem:()=>null}},loadSaveWithStatus:()=>({save:parsed.save,loaded:true,failure:null}),setSave(){},setScreen(s){screens.push(s);},setNewGamePhase(){},setHubLocation(){},setSaveLoadIssue(){},setSelectedShipId(){},loadShipProgression:()=>({selectedShipId:'none'}),hydratePitReplayForOwner:()=>({replay:null,diagnostic:null}),setLastPitReplay(){},loadActiveHuntSave:()=>({save:null}),setCampaignCatalog(){},loadCampaignSlots:()=>null,setHydrated(){}};
  await implementation('hydrationTask',env)();assert.equal(screens.at(-1),'solo-v90','terminal region must not replace the active chapter selected during hydration');
+});
+
+
+test('actual V90 progression preserves a pending trophy receipt and resumes only after resolution',async()=>{
+ const commit=played().commits.find(c=>c.receipts.length),f=fixture(commit.before),receipt={},before=f.values.get(f.key),initial=f.env.saveRef.current;
+ f.env.pendingTrophyCommitRef.current=receipt;
+ assert.equal(await f.env.progressSoloV90(commit.receipts,commit.state),false);
+ assert.equal(f.values.get(f.key),before);assert.equal(f.env.saveRef.current,initial);assert.equal(f.env.pendingTrophyCommitRef.current,receipt);assert.deepEqual(f.screens,[]);
+ f.env.pendingTrophyCommitRef.current=null;
+ assert.equal(await f.env.progressSoloV90(commit.receipts,commit.state),true);assert.equal(f.env.saveRef.current.soloV90.receipts.length,1);
 });

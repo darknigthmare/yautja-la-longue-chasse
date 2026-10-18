@@ -10,8 +10,13 @@ import {
   useState,
 } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
+import { SAVE_STORAGE_KEY } from "./save";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
+import { useShipTrainingV94 } from "./useShipTrainingV94";
+import { useShipServiceCommitV94, observeShipNotificationV94 } from "./useShipServiceCommitV94";
+import type { ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
+import { useMenuGamepad } from "./useMenuGamepad";
 import ShipRecoveredGalleryV85 from "./ShipRecoveredGalleryV85";
 import ShipOperationsPanelV85, { type ShipOperationPresentationV85 } from "./ShipOperationsPanelV85";
 import DialogueBibleReaderV85, { type DialogueBibleSourceV85 } from "./DialogueBibleReaderV85";
@@ -32,6 +37,7 @@ import {
 } from "./systems/controlBindings";
 import {
   TRAINING_LABELS,
+  SHIP_PROGRESSION_STORAGE_KEY,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
   createDefaultShipProgression,
@@ -40,14 +46,11 @@ import {
   isShipUnlocked,
   loadLoadoutPreset,
   loadShipProgression,
-  recordTrainingResult,
   resolveMedbayTreatment,
   saveLoadoutPreset,
   selectShip,
   startMedbayTreatment,
-  synchronizeShipProgression,
   unlockAvailableShips,
-  writeShipProgression,
   type ShipLoadoutSlotId,
   type ShipProgressionState,
   type ShipRoomId,
@@ -152,7 +155,7 @@ export interface ShipHubProps {
   onTrainingActiveChange?: (active: boolean) => void;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
-  onProgressionChange?: (state: ShipProgressionState) => void;
+  onProgressionChange?: ShipTrainingReceiverV94;
   onSelectedShipChange?: (shipId: ShipId) => void;
   onRoomChange?: (roomId: ShipRoomId) => void;
   onOpenDeck?: () => void;
@@ -200,11 +203,6 @@ const SLOT_ORDER: readonly ShipLoadoutSlotId[] = [
   "hunt-3",
   "hunt-4",
 ];
-
-interface TrainingSession {
-  disciplineId: TrainingDisciplineId;
-  seed: number;
-}
 
 function roomIndex(roomId: ShipRoomId): number {
   return Math.max(
@@ -266,19 +264,14 @@ export default function ShipHub({
   const [statusMessage, setStatusMessage] = useState(
     "Console du vaisseau prête.",
   );
-  const [trainingSession, setTrainingSession] =
-    useState<TrainingSession | null>(null);
+  const [hydratedOwner, setHydratedOwner] = useState<string | null>(null);
+  const [staleSidecarOwner, setStaleSidecarOwner] = useState<string | null>(null);
   const [shipInspectionActive, setShipInspectionActive] = useState(false);
   const [shipFlightActive, setShipFlightActive] = useState(false);
   const rootRef = useRef<HTMLElement | null>(null);
+  const externalTrainingRef = useRef<HTMLDivElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
-
-  // A nested drill owns focus and input; let the host disable its outer toolbar.
-  useEffect(() => {
-    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive || shipFlightActive);
-    return () => onTrainingActiveChange?.(false);
-  }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
+  const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false, identity: null as string | null });
 
   const progression =
     controlledProgression ?? localProgression;
@@ -287,48 +280,78 @@ export default function ShipHub({
   const notify = useCallback(
     (message: string) => {
       setStatusMessage(message);
-      onNotify?.(message);
+      observeShipNotificationV94(() => onNotify?.(message));
     },
     [onNotify],
   );
 
-  const commitProgression = useCallback(
-    (candidate: ShipProgressionState) => {
-      const synchronized = synchronizeShipProgression(candidate, save);
-      const snapshot =
-        controlledProgression === undefined
-          ? writeShipProgression(synchronized, save)
-          : synchronized;
-      if (controlledProgression === undefined) {
-        setLocalProgression(snapshot);
-      }
-      onProgressionChange?.(snapshot);
-      onSelectedShipChange?.(snapshot.selectedShipId);
-      return snapshot;
-    },
-    [
-      controlledProgression,
-      onProgressionChange,
-      onSelectedShipChange,
-      save,
-    ],
-  );
+  const callbacksRef = useRef({ onProgressionChange, onSelectedShipChange });
+  useEffect(() => { callbacksRef.current = { onProgressionChange, onSelectedShipChange }; }, [onProgressionChange, onSelectedShipChange]);
+  const sidecarReady = (controlledProgression !== undefined || hydratedOwner === save.createdAt) &&
+    staleSidecarOwner !== save.createdAt;
+  const publishConfirmedProgression = useCallback((state: ShipProgressionState) => {
+    setLocalProgression(state);
+    observeShipNotificationV94(() => callbacksRef.current.onProgressionChange?.(state));
+    observeShipNotificationV94(() => callbacksRef.current.onSelectedShipChange?.(state.selectedShipId));
+  }, []);
+  const training = useShipTrainingV94({ save, progression, controlled: controlledProgression !== undefined,
+    suspended: suspended || !sidecarReady, rootRef, onConfirmed: publishConfirmedProgression,
+    onDelegated: onProgressionChange, onTrainingRequested, notify });
+  const { trainingSession, requestTraining, completeAutonomousTraining, cancelAutonomousTraining,
+    retryTrainingSave, canRetryTraining, saveIssue: trainingSaveIssue, hasPendingResult: hasPendingTraining, recoveryReady, recoveryNotice, hasRecoveryCopy, exportTrainingRecovery, discardTrainingRecovery } = training;
+
+  useMenuGamepad(externalTrainingRef, !!trainingSession?.external && gamepadEnabled && !suspended,
+    `ship-external:${trainingSession?.id ?? 0}`, cancelAutonomousTraining);
+  useEffect(() => {
+    if (!trainingSession?.external) return;
+    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const frame = window.requestAnimationFrame(() => { if (autoFocus) externalTrainingRef.current?.focus(); });
+    return () => { window.cancelAnimationFrame(frame); previous?.focus({ preventScroll: true }); };
+  }, [autoFocus, trainingSession?.external, trainingSession?.id]);
+
+  // A nested drill owns focus and input; let the host disable its outer toolbar.
+  useEffect(() => {
+    onTrainingActiveChange?.(trainingSession !== null || shipInspectionActive || shipFlightActive);
+    return () => onTrainingActiveChange?.(false);
+  }, [onTrainingActiveChange, trainingSession, shipInspectionActive, shipFlightActive]);
+
+  const { commit: commitProgression, hasPending: hasPendingService, issue: serviceIssue } = useShipServiceCommitV94({
+    save, progression, controlled: controlledProgression !== undefined,
+    suspended: suspended || !sidecarReady || !recoveryReady, rootRef,
+    blocked: () => trainingSession !== null || hasPendingTraining(),
+    receive: onProgressionChange, onNativeConfirmed: publishConfirmedProgression,
+    onControlledConfirmed: state => onSelectedShipChange?.(state.selectedShipId), notify,
+  });
 
   useEffect(() => {
     if (controlledProgression !== undefined) return;
+    // A different tab may replace the ship or its owning campaign at any time.
+    // Storage events cannot make a synchronous writer atomic, but must stop
+    // this stale console from issuing another write once a conflict is known.
+    const owner = save.createdAt;
+    const onStorage = (event: StorageEvent) => {
+      if (event.storageArea !== window.localStorage ||
+          (event.key !== null && event.key !== SHIP_PROGRESSION_STORAGE_KEY && event.key !== SAVE_STORAGE_KEY)) return;
+      setStaleSidecarOwner(owner);
+      setStatusMessage("Archives modifiées dans un autre onglet. La console est en lecture seule ; vérifiez vos scores en attente et rechargez avant de modifier le vaisseau.");
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [controlledProgression, save.createdAt]);
+
+  useEffect(() => {
+    if (controlledProgression !== undefined || staleSidecarOwner === save.createdAt) return;
     const hydrationTask = window.setTimeout(() => {
+      if ((hasPendingTraining() || hasPendingService()) && hydratedOwner === save.createdAt) return;
       const loaded = loadShipProgression(save);
       setLocalProgression(loaded);
-      onProgressionChange?.(loaded);
-      onSelectedShipChange?.(loaded.selectedShipId);
+      setHydratedOwner(save.createdAt);
+      observeShipNotificationV94(() => callbacksRef.current.onProgressionChange?.(loaded));
+      observeShipNotificationV94(() => callbacksRef.current.onSelectedShipChange?.(loaded.selectedShipId));
     }, 0);
     return () => window.clearTimeout(hydrationTask);
-  }, [
-    controlledProgression,
-    onProgressionChange,
-    onSelectedShipChange,
-    save,
-  ]);
+    // Callback identity changes must not reload an older sidecar over live state.
+  }, [controlledProgression, hasPendingService, hasPendingTraining, hydratedOwner, recoveryReady, save, staleSidecarOwner]);
 
   useEffect(() => {
     if (!autoFocus || suspended) return;
@@ -352,20 +375,23 @@ export default function ShipHub({
     // Trophy preparation is exclusively resolved by TrophyWorkshop. The hub
     // clock remains useful for the medbay sidecar, but can no longer advance
     // legacy cleaning or mounting timers behind the mini-game.
-    if (progression.medbay.status !== "treating") return;
+    if (progression.medbay.status !== "treating" || hasPendingTraining()) return;
     const timer = window.setInterval(() => {
+      if (hasPendingTraining() || hasPendingService()) return;
       const tick = Date.now();
       const next = resolveMedbayTreatment(
         progression,
         new Date(tick).toISOString(),
       );
       if (next !== progression) {
-        commitProgression(next);
+        commitProgression(next, "Fin du protocole médical");
       }
     }, 1_000);
     return () => window.clearInterval(timer);
   }, [
     commitProgression,
+    hasPendingService,
+    hasPendingTraining,
     progression.medbay.status,
     progression.trophies,
     progression,
@@ -416,79 +442,6 @@ export default function ShipHub({
     },
     [activeRoomId, selectRoom],
   );
-
-  const recordCompletedTraining = useCallback(
-    (disciplineId: TrainingDisciplineId, score: number) => {
-      const next = recordTrainingResult(
-        progression,
-        disciplineId,
-        score,
-      );
-      const recordedScore = next.training[disciplineId].lastScore;
-      commitProgression(next);
-      notify(
-        `${TRAINING_LABELS[disciplineId]} : résultat ${recordedScore}/100 consigné.`,
-      );
-    },
-    [commitProgression, notify, progression],
-  );
-
-  const requestTraining = useCallback(
-    async (disciplineId: TrainingDisciplineId) => {
-      if (!onTrainingRequested) {
-        const record = progression.training[disciplineId];
-        setTrainingSession({
-          disciplineId,
-          seed: record.attempts,
-        });
-        notify(
-          `${TRAINING_LABELS[disciplineId]} : épreuve autonome prête.`,
-        );
-        return;
-      }
-
-      try {
-        const externalScore = await onTrainingRequested(disciplineId);
-        if (
-          typeof externalScore === "number" &&
-          Number.isFinite(externalScore)
-        ) {
-          recordCompletedTraining(disciplineId, externalScore);
-        } else {
-          notify(
-            `${TRAINING_LABELS[disciplineId]} : aucun résultat externe consigné.`,
-          );
-        }
-      } catch {
-        notify(
-          `${TRAINING_LABELS[disciplineId]} : épreuve externe indisponible.`,
-        );
-      }
-    },
-    [
-      notify,
-      onTrainingRequested,
-      progression.training,
-      recordCompletedTraining,
-    ],
-  );
-
-  const completeAutonomousTraining = useCallback(
-    (score: number) => {
-      if (!trainingSession) return;
-      recordCompletedTraining(trainingSession.disciplineId, score);
-      setTrainingSession(null);
-    },
-    [recordCompletedTraining, trainingSession],
-  );
-
-  const cancelAutonomousTraining = useCallback(() => {
-    if (!trainingSession) return;
-    notify(
-      `${TRAINING_LABELS[trainingSession.disciplineId]} : épreuve abandonnée, aucun score consigné.`,
-    );
-    setTrainingSession(null);
-  }, [notify, trainingSession]);
 
   const actions = useMemo<HubActionDefinition[]>(() => {
     const firstEmptyPreset =
@@ -573,8 +526,8 @@ export default function ShipHub({
                 save.loadout,
                 save.appearance,
               ),
+              firstEmptyPreset.name,
             );
-            notify(`${firstEmptyPreset.name} enregistré.`);
           },
         },
         ...presetActions,
@@ -692,8 +645,7 @@ export default function ShipHub({
                 notify(`${ship.name} reste verrouillé ; sa fiche est consultable.`);
                 return;
               }
-              commitProgression(next);
-              notify(`${ship.name} devient le vaisseau actif.`);
+              commitProgression(next, `${ship.name} · vaisseau actif`);
             },
           };
         },
@@ -724,13 +676,9 @@ export default function ShipHub({
           disabled: treating,
           run: () => {
             commitProgression(
-              startMedbayTreatment(
-                progression,
-                "minor-wounds",
-                30,
-              ),
+              startMedbayTreatment(progression, "minor-wounds", 30),
+              "Cycle médical court",
             );
-            notify("Cycle médical court engagé.");
           },
         },
         {
@@ -742,13 +690,9 @@ export default function ShipHub({
           disabled: treating,
           run: () => {
             commitProgression(
-              startMedbayTreatment(
-                progression,
-                "acid-burn",
-                90,
-              ),
+              startMedbayTreatment(progression, "acid-burn", 90),
+              "Décontamination acide",
             );
-            notify("Décontamination acide engagée.");
           },
         },
         {
@@ -760,13 +704,9 @@ export default function ShipHub({
           disabled: treating,
           run: () => {
             commitProgression(
-              startMedbayTreatment(
-                progression,
-                "neural-shock",
-                60,
-              ),
+              startMedbayTreatment(progression, "neural-shock", 60),
+              "Recalibrage neural",
             );
-            notify("Recalibrage neural engagé.");
           },
         },
       ];
@@ -779,7 +719,7 @@ export default function ShipHub({
         id: `train-${disciplineId}`,
         label: TRAINING_LABELS[disciplineId],
         detail: `Record ${progression.training[disciplineId].bestScore}/100 · ${progression.training[disciplineId].attempts} essai(s)`,
-        run: () => requestTraining(disciplineId),
+        run: () => { if (!hasPendingService()) return requestTraining(disciplineId); },
       }));
       return [
         ...(onOpenPit
@@ -813,6 +753,7 @@ export default function ShipHub({
     clan.completedRites.length,
     clan.prestige,
     commitProgression,
+    hasPendingService,
     hangarFilteredShips,
     hangarMedia,
     hangarPageCount,
@@ -854,9 +795,11 @@ export default function ShipHub({
     (index: number) => {
       const action = actions[index];
       if (!action || action.disabled) return;
-      void action.run();
+      try {
+        void Promise.resolve(action.run()).catch(() => notify("Action interrompue. Vérifiez son état avant de recommencer."));
+      } catch { notify("Action interrompue. Vérifiez son état avant de recommencer."); }
     },
-    [actions],
+    [actions, notify],
   );
 
   useEffect(() => {
@@ -868,67 +811,78 @@ export default function ShipHub({
       shipFlightActive ||
       typeof navigator === "undefined"
     ) {
-      gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
+      gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false, identity: null as string | null };
       return;
     }
     let animationFrame = 0;
-
+    let active = true;
+    const resetPad = () => {
+      gamepadStateRef.current = { previous: Array(6).fill(false), ready: false, identity: null };
+    };
+    // A disconnect event can occur between two samples with the same slot/id.
+    window.addEventListener("gamepaddisconnected", resetPad);
     const poll = () => {
+      if (!active) return;
       const root = rootRef.current;
-      const focused =
-        root !== null &&
-        !document.hidden && document.hasFocus() &&
-        document.activeElement !== null &&
-        root.contains(document.activeElement);
-      const gamepad = focused
-        ? navigator.getGamepads?.().find(Boolean)
-        : null;
+      const focused = root !== null && !document.hidden && document.hasFocus() &&
+        document.activeElement !== null && root.contains(document.activeElement);
+      let gamepad: Gamepad | null | undefined = null;
+      if (focused) {
+        try {
+          gamepad = Array.from(navigator.getGamepads?.() ?? []).find(pad => pad && pad.connected !== false);
+        } catch { /* Policy denial is an absent controller, not a dead keyboard loop. */ }
+      }
       if (gamepad) {
+        const axisX = Number.isFinite(gamepad.axes[0]) ? gamepad.axes[0] : 0;
+        const axisY = Number.isFinite(gamepad.axes[1]) ? gamepad.axes[1] : 0;
         const current = [
-          Boolean(gamepad.buttons[14]?.pressed) ||
-            (gamepad.axes[0] ?? 0) < -0.65,
-          Boolean(gamepad.buttons[15]?.pressed) ||
-            (gamepad.axes[0] ?? 0) > 0.65,
-          Boolean(gamepad.buttons[12]?.pressed) ||
-            (gamepad.axes[1] ?? 0) < -0.65,
-          Boolean(gamepad.buttons[13]?.pressed) ||
-            (gamepad.axes[1] ?? 0) > 0.65,
+          Boolean(gamepad.buttons[14]?.pressed) || axisX < -0.65,
+          Boolean(gamepad.buttons[15]?.pressed) || axisX > 0.65,
+          Boolean(gamepad.buttons[12]?.pressed) || axisY < -0.65,
+          Boolean(gamepad.buttons[13]?.pressed) || axisY > 0.65,
           Boolean(gamepad.buttons[0]?.pressed),
           Boolean(gamepad.buttons[1]?.pressed),
         ];
+        const identity = `${gamepad.index ?? -1}:${gamepad.id ?? ""}`;
         const state = gamepadStateRef.current;
-        // Render-driven effect restarts must not turn a held button into a new
-        // press. Regaining focus also requires the pad to return to neutral.
+        if (state.identity !== identity) {
+          state.identity = identity;
+          state.ready = false;
+          state.previous = Array(6).fill(false);
+        }
         if (!state.ready) {
-          state.ready = current.every((pressed) => !pressed);
+          state.ready = current.every(pressed => !pressed);
         } else {
           const previous = state.previous;
-          if (current[0] && !previous[0]) moveRoom(-1);
-          if (current[1] && !previous[1]) moveRoom(1);
-          if (current[2] && !previous[2])
-            focusAction(safeActionIndex - 1);
-          if (current[3] && !previous[3])
-            focusAction(safeActionIndex + 1);
-          if (current[4] && !previous[4])
-            invokeAction(safeActionIndex);
+          // One press cannot leave a room and also activate its previous action.
+          // Back wins, then navigation, then confirm; opposing axes are neutral.
           if (current[5] && !previous[5]) {
-            if (embedded && onOpenDeck) {
-              onOpenDeck();
-            } else if (activeRoomId === "bridge-map") {
-              root?.focus({ preventScroll: true });
-            } else {
-              selectRoom("bridge-map");
-            }
+            state.ready = false;
+            if (embedded && onOpenDeck) onOpenDeck();
+            else if (activeRoomId === "bridge-map") root?.focus({ preventScroll: true });
+            else selectRoom("bridge-map");
+          } else if (current[0] !== current[1] &&
+            ((current[0] && !previous[0]) || (current[1] && !previous[1]))) {
+            state.ready = false;
+            moveRoom(current[0] ? -1 : 1);
+          } else if (current[2] !== current[3] &&
+            ((current[2] && !previous[2]) || (current[3] && !previous[3]))) {
+            focusAction(safeActionIndex + (current[2] ? -1 : 1));
+          } else if (!current.slice(0, 4).some(Boolean) && current[4] && !previous[4]) {
+            state.ready = false;
+            invokeAction(safeActionIndex);
           }
         }
         state.previous = current;
-      } else {
-        gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
-      }
-      animationFrame = window.requestAnimationFrame(poll);
+      } else resetPad();
+      if (active) animationFrame = window.requestAnimationFrame(poll);
     };
     animationFrame = window.requestAnimationFrame(poll);
-    return () => window.cancelAnimationFrame(animationFrame);
+    return () => {
+      active = false;
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("gamepaddisconnected", resetPad);
+    };
   }, [
     activeRoomId,
     embedded,
@@ -1041,7 +995,7 @@ export default function ShipHub({
         }
       }}
     >
-      <div className="hub-stage">
+      <div className="hub-stage" inert={trainingSession?.external || undefined}>
         <header style={styles.header}>
           <div>
             <p className="eyebrow">Vaisseau de chasse // Réseau du clan</p>
@@ -1108,7 +1062,7 @@ export default function ShipHub({
               <strong>ACTIONS DE SALLE</strong>
             </p>
             <div className="hub-nav" aria-label="Actions disponibles" inert={shipFlightActive}>
-              {actions.map((action, index) => (
+              {Array.from(actions, (action, index) => (
                 <button
                   key={action.id}
                   ref={(node) => {
@@ -1116,7 +1070,7 @@ export default function ShipHub({
                   }}
                   type="button"
                   className={`hub-action${index === safeActionIndex ? " selected" : ""}`}
-                  disabled={action.disabled}
+                  disabled={action.disabled || !sidecarReady || !recoveryReady}
                   onFocus={() => setActionIndex(index)}
                   onClick={() => invokeAction(index)}
                   style={styles.actionButton}
@@ -1154,13 +1108,52 @@ export default function ShipHub({
           <p role="status" aria-live="polite">
             {statusMessage}
           </p>
+          {staleSidecarOwner === save.createdAt ? <p role="alert">Une autre session a changé les archives. Les écritures du vaisseau sont suspendues ; terminez ou exportez tout score en attente avant de recharger.</p>
+            : !sidecarReady && <p role="status">Vérification de la progression du vaisseau…</p>}
+          {serviceIssue && <p role="alert" data-ship-service-issue>{serviceIssue}</p>}
+          {!recoveryReady && <p role="status">Vérification des scores en attente…</p>}
+          {recoveryNotice && <p role="status" data-training-recovery>{recoveryNotice}</p>}
+          {hasRecoveryCopy && !trainingSession && <div aria-label="Copie du score en attente">
+            <button type="button" disabled={suspended} onClick={exportTrainingRecovery}>Exporter la copie du score</button>
+            <button type="button" disabled={suspended} onClick={() => { void discardTrainingRecovery(); }}>Abandonner cette reprise</button>
+          </div>}
+          {trainingSaveIssue && !trainingSession && <div role="alert">
+            <p>{trainingSaveIssue}</p>
+            {canRetryTraining && <button type="button" onClick={retryTrainingSave} disabled={suspended}>Réessayer la sauvegarde du score</button>}
+          </div>}
         </footer>
       </div>
-      {trainingSession ? (
+      {trainingSession?.external ? (
+        <div ref={externalTrainingRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Épreuve externe"
+          style={styles.externalTraining} inert={suspended} onKeyDown={event => {
+            event.stopPropagation();
+            if (event.repeat || suspended) return;
+            if (matchingControlActions("training", event.nativeEvent, controlBindings).includes("training.cancel")) {
+              event.preventDefault(); cancelAutonomousTraining(); return;
+            }
+            if (event.key === "Tab") {
+              const buttons = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"));
+              const first = buttons[0], last = buttons.at(-1);
+              if (event.shiftKey && (document.activeElement === first || document.activeElement === event.currentTarget)) {
+                event.preventDefault(); last?.focus();
+              } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+            }
+          }}>
+          <h2>Épreuve externe</h2>
+          <p role="status">{trainingSaveIssue ?? "Résultat attendu. Annuler cette attente ne consigne aucun score."}</p>
+          {canRetryTraining && <button type="button" onClick={retryTrainingSave} disabled={suspended}>Réessayer la sauvegarde du score</button>}
+          <button type="button" onClick={cancelAutonomousTraining}>Annuler l’attente</button>
+        </div>
+      ) : trainingSession ? (
         <TrainingDrill
+          key={trainingSession.id}
           disciplineId={trainingSession.disciplineId}
           seed={trainingSession.seed}
           controlBindings={controlBindings}
+          suspended={suspended}
+          gamepadEnabled={gamepadEnabled}
+          saveIssue={trainingSaveIssue}
+          onRetrySave={canRetryTraining ? retryTrainingSave : undefined}
           onComplete={completeAutonomousTraining}
           onCancel={cancelAutonomousTraining}
         />
@@ -1540,6 +1533,10 @@ function StatGrid({
 }
 
 const styles = {
+  externalTraining: {
+    position: "fixed" as const, inset: "20% 12%", zIndex: 110, background: "#09110d",
+    border: "1px solid currentColor", padding: "2rem", overflow: "auto" as const,
+  },
   header: {
     display: "flex",
     justifyContent: "space-between",

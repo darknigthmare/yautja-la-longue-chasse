@@ -13,7 +13,7 @@ function implementation(name,environment){const decl=find(name),fn=decl.initiali
 let route;const played=()=>route??=templeCampaignRoute();let n=0;
 function fixture(save){const key='solo-runtime-v70-'+n++,values=new Map([[key,JSON.stringify(save)]]),screens=[],notices=[];let quota=false,afterWrite=false,badRead=false;
  const store={getItem(k){if(k===key&&badRead){badRead=false;throw Error('readback interrupted');}return values.get(k)??null;},setItem(k,v){if(k===key&&quota)throw new DOMException('quota','QuotaExceededError');values.set(k,v);if(k===key&&afterWrite){afterWrite=false;badRead=true;}},removeItem:k=>values.delete(k)};
- const initial=p.loadSaveWithStatus(store,key).save,env={...p,...thresholdsTemple,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
+ const initial=p.loadSaveWithStatus(store,key).save,env={...p,...thresholdsTemple,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},pendingTrophyCommitRef:{current:null},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
   setSave(s){env.save=s;},setSaveFailure(v){env.failure=v;},setNurseryPersistenceError(v){notices.push(v);},setHubLocation(){},setScreen(s){screens.push(s);},
   writeSaveWithStatus(s){return p.writeSaveWithStatus(s,store,key);},reconcileSaveWrite(a,o){return p.reconcileSaveWrite(a,o,store,key);}};
  for(const name of ['reconcileNurseryAttempt','persistNursery','enterSoloV70','checkpointSoloV70','progressSoloV70','returnFromSoloV70'])env[name]=implementation(name,env);
@@ -48,4 +48,14 @@ test('the real world-resume helper preserves live region/passage screens and sen
   // any archive; chapter prerequisite validation belongs to the save parser.
   const active=thresholdsTemple.startSoloV70Campaign(youth);assert(active);assert.equal(q.campaignWorldResumeV70({...active,[key]:ended},'youth-training'),null);
  }
+});
+
+
+test('actual V70 progression preserves a pending trophy receipt and resumes only after resolution',async()=>{
+ const commit=played().commits[0],f=fixture(commit.before),receipt={},before=f.values.get(f.key),initial=f.env.saveRef.current;
+ f.env.pendingTrophyCommitRef.current=receipt;
+ assert.equal(await f.env.progressSoloV70(commit.receipts,commit.state),false);
+ assert.equal(f.values.get(f.key),before);assert.equal(f.env.saveRef.current,initial);assert.equal(f.env.pendingTrophyCommitRef.current,receipt);assert.deepEqual(f.screens,[]);
+ f.env.pendingTrophyCommitRef.current=null;
+ assert.equal(await f.env.progressSoloV70(commit.receipts,commit.state),true);assert.equal(f.env.saveRef.current.soloV70.receipts.length,1);
 });

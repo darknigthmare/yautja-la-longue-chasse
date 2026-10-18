@@ -1,0 +1,56 @@
+name: V94 campaign routes and bounded cloud transport
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['app/**', 'tests/**', 'scripts/**', 'package*.json', '.github/workflows/gameplay-cloud-v94.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gameplay-cloud:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /public/**/manifest.json
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Simulated full youth routes and native hunt helpers (not whole-game QA)
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=4
+          tests/campaign-solo-v*.test.mjs tests/first-hunt-solo-v*.test.mjs
+          tests/nursery-campaign.test.mjs tests/youth-campaign.test.mjs
+          tests/metroidvania-pilot*.test.mjs tests/campaign-training-v90.test.mjs
+          tests/hunt-campaign-runtime.test.mjs tests/hunt-exploration-save-runtime.test.mjs
+          tests/hunt-jump-assist-runtime.test.mjs
+      - name: Cloud account, archive, controller and response bounds (offline fixtures)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --test --test-reporter=spec tests/cloud*.test.mjs
+      - name: Lint bounded transport
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/systems/cloudAccountRestV71.ts app/game/systems/cloudResponseV94.ts

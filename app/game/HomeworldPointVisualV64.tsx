@@ -26,7 +26,7 @@ export default function HomeworldPointVisualV64({ point, active, youthWelcome = 
   return <div className={styles.pointV64} data-point-id={point.id} data-kind={point.kind}
     data-point-ground-x={point.x} data-point-ground-y={point.y}
     style={{ left: p.x, top: p.y, zIndex: Math.round(point.y) }}>
-    {civilianRole ? <HomeworldCivilianV72 role={civilianRole} /> : modules && <HomeworldModularHunter {...modules} className={styles.npcV64}
+    {civilianRole ? <HomeworldCivilianV72 npcId={npc?.id} role={civilianRole} /> : modules && <HomeworldModularHunter {...modules} className={styles.npcV64}
       style={{ position: 'absolute', ...(placement ?? { left: -36, top: -105, width: 70, height: 105 }) }} />}
     {!npc && (point.evidenceId === 'suspect-trophy'
       ? <img src="/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp" alt="" draggable={false}

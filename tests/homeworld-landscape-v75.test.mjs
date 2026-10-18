@@ -5,38 +5,46 @@ import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import {build} from 'esbuild';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
-const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldGeometryV64.ts','homeworldCameraV72.ts','homeworldSpatialCodex.ts','homeworldOutskirtsV71.ts','homeworldOutskirtsArtV71.ts','homeworldLandscapeV75.ts','homeworldRegionConnectionsV72.ts']);
+import {homeworldHistoricalGroundV75,homeworldHistoricalReservedVolumesV75} from './helpers/homeworld-historical-ground-v75.mjs';
+const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldGeometryV64.ts','homeworldCameraV72.ts','homeworldSpatialCodex.ts','homeworldOutskirtsV71.ts','homeworldOutskirtsArtV71.ts','homeworldLandscapeV75.ts','homeworldRegionConnectionsV72.ts','homeworldWorldV77.ts','homeworldUrbanNavigationV78.ts']);
 const modules=api.HOMEWORLD_LANDSCAPE_MODULES_V75;
+const historicalGround=homeworldHistoricalGroundV75(api);
 const overlaps=(a,b,margin=0)=>a.left<b.right+margin&&a.right>b.left-margin&&a.top<b.bottom+margin&&a.bottom>b.top-margin;
 
-test('212 independent V75 natural supports preserve all 162 historical supports and public terrain with real clearance',()=>{
+test('212 immutable V75 natural supports preserve all 162 historical supports and the original V75 public terrain clearance',()=>{
   assert.equal(modules.length,212);assert.equal(api.HOMEWORLD_OUTSKIRTS_MODULES_V71.length,162);
   assert.equal(new Set([...modules,...api.HOMEWORLD_OUTSKIRTS_MODULES_V71].map(m=>m.id)).size,374);
-  const reserved=[...api.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(api.homeworldOutskirtsFootprintV71),
-    ...api.homeworldConnectionFurnitureFootprintsV72(),...api.HOMEWORLD_REGION_CONNECTIONS_V72.flatMap(api.homeworldGatewayFootprintsV72),
-    ...api.HOMEWORLD_CONNECTION_DIRECTION_SIGNS_V72.map(s=>({left:s.x-s.footprintWorld.width/2,right:s.x+s.footprintWorld.width/2,top:s.y-s.footprintWorld.depth,bottom:s.y}))];
+  const reserved=[...api.HOMEWORLD_OUTSKIRTS_MODULES_V71.map(api.homeworldOutskirtsFootprintV71),...homeworldHistoricalReservedVolumesV75(api)];
   assert.equal(reserved.length,232);const boxes=[];
   for(const scenery of modules){const r=api.homeworldLandscapeFootprintV75(scenery),margin=42;
     for(let x=r.left-margin;x<=r.right+margin;x+=8)for(let y=r.top-margin;y<=r.bottom+margin;y+=8)
-      assert.equal(api.isHomeworldTerrainWalkable({x,y},{halfWidth:0,halfDepth:0}),false,scenery.id+' must not occupy the route or door support');
+      assert.equal(historicalGround.some(s=>api.pointInHomeworldPolygon({x,y},s.polygon)),false,scenery.id+' must not occupy the historical V75 route support');
     for(const other of reserved)assert(!overlaps(r,other,30),scenery.id+' must preserve old shoulder furnishings');
     for(const other of boxes)assert(!overlaps(r,other,18),scenery.id+' independent natural support');boxes.push(r);
   }
 });
 
-test('every one of the ten real regional outlets has a local ecotone without changing its existing physical approach',()=>{
+test('all ten source ecotones retain their catalogued anchors and every current regional outlet and door has a real route on its own floor',()=>{
   assert.equal(api.HOMEWORLD_LANDSCAPE_PATCHES_V75.length,14);
   for(const route of api.HOMEWORLD_REGION_CONNECTIONS_V72){
     const support=modules.filter(m=>m.regionId===route.regionId);assert(support.length>=8);
     const patch=api.HOMEWORLD_LANDSCAPE_PATCHES_V75.find(p=>p.regionId===route.regionId);assert(patch);
     assert.deepEqual({x:patch.x,y:patch.y},route.threshold);
-    assert.equal(api.homeworldSpatialRoute(api.createHomeworldActor(),route.arrival).status,'reachable',route.regionId);
     const camera=api.homeworldCameraV72({actor:route.arrival,viewport:{width:1440,height:850},width:7200,depth:5900,interior:false});
     const visible=modules.filter(scenery=>{const r=api.homeworldLandscapePaintV75(scenery);return r.left+r.width>camera.x&&r.left<camera.x+camera.viewWidth&&r.top+r.height>camera.y&&r.top<camera.y+camera.viewHeight;});
-    assert(visible.length>=3,route.regionId+' actual camera must reveal natural silhouettes, not only records outside the view');
+    assert(visible.length>=3,route.regionId+' source V75 camera must reveal natural silhouettes, not only records outside the view');
   }
-  for(const building of api.HOMEWORLD_BUILDINGS){const door=api.homeworldBuildingDoorwayV64(building);
-    assert.equal(api.homeworldSpatialRoute(api.createHomeworldActor(),door.approach).status,'reachable',building.id+' unchanged door approach');
+  const from={levelId:'0',point:api.HOMEWORLD_SPACEPORT_V77.spawn};
+  const outlets=[...api.HOMEWORLD_CONNECTIONS_V77.map(r=>({regionId:r.regionId,levelId:r.levelId,point:r.arrival})),...api.HOMEWORLD_REGIONAL_DOCKS_V77];
+  assert.equal(outlets.length,10);
+  for(const outlet of outlets){const route=api.homeworldUrbanWorldRouteV78(from,{levelId:outlet.levelId,point:outlet.point});
+    assert.equal(route.status,'reachable',outlet.regionId+' actual regional approach');
+    for(const segment of route.segments.filter(s=>s.points))for(let i=1;i<segment.points.length;i++)assert(api.homeworldUrbanRouteSegmentV78(segment.levelId,segment.points[i-1],segment.points[i]),outlet.regionId+' full-body route');
+  }
+  for(const building of api.HOMEWORLD_BUILDINGS_V77){const door=api.homeworldBuildingDoorwayV64(building);
+    const route=api.homeworldUrbanWorldRouteV78(from,{levelId:building.levelId,point:door.approach});
+    assert.equal(route.status,'reachable',building.id+' real door approach');
+    for(const segment of route.segments.filter(s=>s.points))for(let i=1;i<segment.points.length;i++)assert(api.homeworldUrbanRouteSegmentV78(segment.levelId,segment.points[i-1],segment.points[i]),building.id+' full-body route');
   }
 });
 
@@ -83,7 +91,7 @@ test('actual landscape JSX retains every public union mask and mounts separate n
   const masks=[...html.matchAll(/<mask[^>]+id="[^\"]+-(?:outside|public)"[^>]*>([\s\S]*?)<\/mask>/g)];
   assert.equal(masks.length,2,'both real terrain masks');
   for(const mask of masks)assert.equal((mask[1].match(/<polygon /g)??[]).length,api.HOMEWORLD_DISTRICTS.length+api.HOMEWORLD_STREETS.length,'ALL public surfaces remain in each terrain union mask');
-  assert.equal((html.match(/data-homeworld-approach-oriented-v76="true"/g)??[]).length,6,'six independent angled doorway floors do not alter the terrain mask');
+  assert.equal((html.match(/data-homeworld-approach-oriented-v76="true"/g)??[]).length,api.HOMEWORLD_BUILDING_APPROACHES_V71.filter(p=>p.polygon).length,'every current oriented doorway floor remains outside the terrain union masks');
   assert.equal((html.match(/data-homeworld-landscape-native-material=/g)??[]).length,6);
   assert((html.match(/data-homeworld-prop-id="landscape-v75-/g)??[]).length>0);
   assert((html.match(/data-homeworld-landscape-patch-v75=/g)??[]).length>0);

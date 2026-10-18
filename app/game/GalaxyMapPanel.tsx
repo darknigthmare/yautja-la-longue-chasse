@@ -515,7 +515,9 @@ export default function GalaxyMapPanel({
         frame = window.requestAnimationFrame(tick);
         return;
       }
-      let pad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean);
+      let pad: Gamepad | null | undefined;
+      try { pad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean); }
+      catch { /* The flight still accepts keyboard/touch when gamepad access is denied. */ }
       if (!pad) {
         gamepadReadyRef.current = false;
       } else if (!gamepadReadyRef.current) {

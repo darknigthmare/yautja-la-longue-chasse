@@ -82,7 +82,7 @@ export const HOMEWORLD_CONNECTIONS_V77=HOMEWORLD_REGION_CONNECTIONS_V72.filter(c
  .map(connection=>{const district=regionDistrict(connection.regionId);return{...connection,levelId:homeworldDistrictLevelV77(district),
   nodes:connection.nodes.map(point=>move(point,district)),threshold:move(connection.threshold,district),arrival:move(connection.arrival,district),legacySign:move(connection.legacySign,district)};});
 export const HOMEWORLD_CONNECTION_FURNITURE_V77=HOMEWORLD_CONNECTION_FURNITURE_V72.filter(item=>!redesignedRegionalIds.has(item.regionId))
- .map(item=>({...item,...move(item,regionDistrict(item.regionId)),levelId:homeworldDistrictLevelV77(regionDistrict(item.regionId))}));
+ .map(item=>({...item,...move(item,regionDistrict(item.regionId)),...HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81[item.id],levelId:homeworldDistrictLevelV77(regionDistrict(item.regionId))}));
 const oldRoads=HOMEWORLD_STREETS.filter(street=>!street.id.startsWith('connection-v72:')).map(street=>{
  const host=street.id.match(/^forecourt(?:-link)?-v76:(.+)$/)?.[1],building=HOMEWORLD_BUILDINGS.find(building=>building.id===host);
  const district=building?.districtId??(portRoads.has(street.id)?'port':'');

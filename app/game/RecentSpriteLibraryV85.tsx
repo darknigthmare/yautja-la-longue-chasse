@@ -70,6 +70,6 @@ export default function RecentSpriteLibraryV85({onClose}:{onClose:()=>void}){
   </button>)}</div>
   {!results.length&&<p>Aucune source ne correspond à ces filtres. <button type="button" onClick={()=>{setQuery('');setKind('');setPack('');setGroup('');resetPage();}}>Réinitialiser</button></p>}
   {results.length>PAGE_SIZE&&<nav className={styles.pagination} aria-label="Pages de la bibliothèque"><button type="button" disabled={currentPage===0} onClick={()=>{setPage(currentPage-1);setSelectedId('');}}>Page précédente</button><button type="button" disabled={(currentPage+1)*PAGE_SIZE>=results.length} onClick={()=>{setPage(currentPage+1);setSelectedId('');}}>Page suivante</button></nav>}
-  <footer className={styles.footer}>Le pack PNJ V84 fournit {RECENT_SPRITE_LIBRARY_V85.summary.metadataOnlyNpcVariants} fiches de variantes dont les PNG sont absents de cette archive locale. Leur import documentaire est conservé. Les nouveaux gestes sociaux, cycles de marche et variantes jouables restent décrits séparément par leurs systèmes.</footer>
+  <footer className={styles.footer}>L’archive V85 conserve les {RECENT_SPRITE_LIBRARY_V85.summary.metadataOnlyNpcVariants} fiches documentaires du pack PNJ V84. Les 640 PNG originaux restaurés sont consultables dans la galerie des variantes V84. Ces dessins sont des poses fixes ; les cycles natifs de marche et les autres animations conservent leurs systèmes dédiés.</footer>
  </section></div>;
 }

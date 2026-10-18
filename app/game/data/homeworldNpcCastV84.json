@@ -1,0 +1,3854 @@
+{
+  "version": "V84",
+  "baseCommit": "9456292f1e60f506b0c982187ca782eefbab2a81",
+  "cast": [
+    {
+      "id": "resident-port-1",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteur de cargaisons",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-port-2",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "Navigatrice",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-port-3",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Convoyeur",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-port-4",
+      "role": "guide",
+      "groupId": "city",
+      "occupation": "Éclaireuse des quais",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-market-1",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Artisane",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-market-2",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "Courrier de clan",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-market-3",
+      "role": "resident",
+      "groupId": "city",
+      "occupation": "Acheteur de matériaux",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-market-4",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Tailleur de parures",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-forges-1",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Apprenti de forge",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-forges-2",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Polisseuse",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-forges-3",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteur de minerai",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-forges-4",
+      "role": "forge-master",
+      "groupId": "city",
+      "occupation": "Armurière",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-undercity-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-undercity-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-undercity-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-undercity-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-esplanade-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-esplanade-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-esplanade-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-esplanade-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-terraces-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-terraces-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-terraces-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-terraces-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-clans-1",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-clans-2",
+      "role": "resident",
+      "groupId": "city",
+      "occupation": "Gardienne du foyer",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-clans-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-clans-4",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Ancien du clan",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-enforcers-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-enforcers-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-enforcers-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-enforcers-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-memory-1",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Lecteur des marques",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-memory-2",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Archiviste",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-memory-3",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Conservatrice",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-memory-4",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "Messager des archives",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-arenas-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-arenas-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-arenas-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-arenas-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-temple-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-temple-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-temple-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-temple-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-citadel-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-citadel-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-citadel-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-citadel-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-convoy-works-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-convoy-works-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-convoy-works-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-convoy-works-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-rampart-walk-1",
+      "role": "hunter",
+      "groupId": "city",
+      "occupation": "Chasseur de passage",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-rampart-walk-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de patrouille",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-rampart-walk-3",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire de clan",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-rampart-walk-4",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-port-1",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "Inspectrice des amarres",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-port-2",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteur du retour",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-port-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Apprentie navigatrice",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-market-1",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Tisseuse de liens",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-market-2",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Peseur de matériaux",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-market-3",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "Messagère des villages",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-forges-1",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Ajusteur de supports",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-forges-2",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Gardienne des outils",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-forges-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Apprentie graveuse",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-undercity-1",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Réparatrice des conduits",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-undercity-2",
+      "role": "witness",
+      "groupId": "city",
+      "occupation": "Voisin des galeries",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-undercity-3",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteur de lampes",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-esplanade-1",
+      "role": "resident",
+      "groupId": "city",
+      "occupation": "Hôte des retrouvailles",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-esplanade-2",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirante à l’écoute",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-esplanade-3",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Ancien des récits",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-terraces-1",
+      "role": "instructor",
+      "groupId": "city",
+      "occupation": "Instructrice des appuis",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-terraces-2",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirant de la cohorte",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-terraces-3",
+      "role": "instructor",
+      "groupId": "city",
+      "occupation": "Observatrice du parcours",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-clans-1",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Hôte des délégations",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-clans-2",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Aspirante du foyer",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-clans-3",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteuse des provisions",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-enforcers-1",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Lectrice des rapports",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-enforcers-2",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde du retour",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-enforcers-3",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "Courrier des postes",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-memory-1",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Copiste des trajets",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-memory-2",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Ancienne des retours",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-memory-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Apprenti archiviste",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-arenas-1",
+      "role": "arena-steward",
+      "groupId": "city",
+      "occupation": "Arbitre des démonstrations",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-arenas-2",
+      "role": "resident",
+      "groupId": "city",
+      "occupation": "Visiteuse des clans",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-arenas-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Élève du duel",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-temple-1",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Gardien des seuils",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-temple-2",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteuse des braises",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-temple-3",
+      "role": "rite-keeper",
+      "groupId": "city",
+      "occupation": "Témoin des rites",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-citadel-1",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Émissaire des hauts villages",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "resident-v69-citadel-2",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteuse des réponses",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-citadel-3",
+      "role": "witness",
+      "groupId": "city",
+      "occupation": "Témoin du conseil",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-convoy-works-1",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "Vérificateur des scellés",
+      "source": "city-resident",
+      "morphId": "classic"
+    },
+    {
+      "id": "resident-v69-convoy-works-2",
+      "role": "porter",
+      "groupId": "city",
+      "occupation": "Porteuse des relais",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-convoy-works-3",
+      "role": "apprentice",
+      "groupId": "city",
+      "occupation": "Apprenti convoyeur",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-rampart-walk-1",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Guetteuse des ponts",
+      "source": "city-resident",
+      "morphId": "huntress"
+    },
+    {
+      "id": "resident-v69-rampart-walk-2",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Réparateur des balises",
+      "source": "city-resident",
+      "morphId": "young"
+    },
+    {
+      "id": "resident-v69-rampart-walk-3",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "Courrier des corniches",
+      "source": "city-resident",
+      "morphId": "elder"
+    },
+    {
+      "id": "dock-officer",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "Amarrage",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "market-artisan",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Équipement",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "forge-artisan",
+      "role": "forge-master",
+      "groupId": "city",
+      "occupation": "Forge",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "undercity-witness",
+      "role": "witness",
+      "groupId": "city",
+      "occupation": "Témoin",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "trophy-herald",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Reconnaissance",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "terrace-instructor",
+      "role": "instructor",
+      "groupId": "city",
+      "occupation": "Entraînement",
+      "source": "services",
+      "preserveOriginal": true
+    },
+    {
+      "id": "clan-healer",
+      "role": "healer",
+      "groupId": "city",
+      "occupation": "Soins",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "enforcer-captain",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Preuves",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "memory-keeper",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Archives",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "arena-steward",
+      "role": "arena-steward",
+      "groupId": "city",
+      "occupation": "THE PIT",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "rite-keeper",
+      "role": "rite-keeper",
+      "groupId": "city",
+      "occupation": "Rites",
+      "source": "services",
+      "preserveOriginal": false
+    },
+    {
+      "id": "hunt-king",
+      "role": "chief",
+      "groupId": "city",
+      "occupation": "Souverain de la cité",
+      "source": "services",
+      "preserveOriginal": true
+    },
+    {
+      "id": "urban-v78:extra:quay-0",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "dock-officer",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-1",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "courier",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-2",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "artisan",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-3",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "courier",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-4",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "dock-officer",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-5",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "courier",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:quay-6",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "artisan",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-0",
+      "role": "witness",
+      "groupId": "city",
+      "occupation": "witness",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-1",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "artisan",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-2",
+      "role": "forge-master",
+      "groupId": "city",
+      "occupation": "forge-master",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-3",
+      "role": "witness",
+      "groupId": "city",
+      "occupation": "witness",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-4",
+      "role": "courier",
+      "groupId": "city",
+      "occupation": "courier",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-5",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "artisan",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "urban-v78:extra:lower-6",
+      "role": "healer",
+      "groupId": "city",
+      "occupation": "healer",
+      "source": "urbanExtras",
+      "preserveOriginal": false
+    },
+    {
+      "id": "clan-table-healer",
+      "role": "healer",
+      "groupId": "city",
+      "occupation": "Soigneuse de relève",
+      "source": "cntlipHosts",
+      "preserveOriginal": false
+    },
+    {
+      "id": "market-table-artisan",
+      "role": "artisan",
+      "groupId": "city",
+      "occupation": "Artisane des délégations",
+      "source": "cntlipHosts",
+      "preserveOriginal": false
+    },
+    {
+      "id": "pit-table-attendant",
+      "role": "arena-steward",
+      "groupId": "city",
+      "occupation": "Préposé à la halte des Chroniques",
+      "source": "cntlipHosts",
+      "preserveOriginal": false
+    },
+    {
+      "id": "court-table-herald",
+      "role": "royal-court",
+      "groupId": "city",
+      "occupation": "Porte-parole de la cour locale",
+      "source": "cntlipHosts",
+      "preserveOriginal": false
+    },
+    {
+      "id": "palace-v81-guard-west",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde de l’aile publique",
+      "source": "monumentInhabitants",
+      "preserveOriginal": false
+    },
+    {
+      "id": "palace-v81-guard-east",
+      "role": "guard",
+      "groupId": "city",
+      "occupation": "Garde des délégations",
+      "source": "monumentInhabitants",
+      "preserveOriginal": false
+    },
+    {
+      "id": "council-v81-archivist",
+      "role": "archivist",
+      "groupId": "city",
+      "occupation": "Archiviste des registres locaux",
+      "source": "monumentInhabitants",
+      "preserveOriginal": false
+    },
+    {
+      "id": "council-v81-herald",
+      "role": "herald",
+      "groupId": "city",
+      "occupation": "Représentant d’un clan allié",
+      "source": "monumentInhabitants",
+      "preserveOriginal": false
+    },
+    {
+      "id": "council-v81-rite-observer",
+      "role": "elder-council",
+      "groupId": "city",
+      "occupation": "Ancien observateur des rites locaux",
+      "source": "monumentInhabitants",
+      "preserveOriginal": false
+    },
+    {
+      "id": "lava-ferryman-v77",
+      "role": "dock-officer",
+      "groupId": "city",
+      "occupation": "Passeur de lave",
+      "source": "lavaFerryman",
+      "preserveOriginal": false
+    },
+    {
+      "id": "ash-marches:guide",
+      "role": "guide",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches:artisan",
+      "role": "artisan",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches:healer",
+      "role": "healer",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches:keeper",
+      "role": "archivist",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches:porter-a",
+      "role": "porter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches:porter-b",
+      "role": "porter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches:hunter-a",
+      "role": "hunter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches:hunter-b",
+      "role": "hunter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "ash-marches:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "ash-marches:watcher-a",
+      "role": "guard",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "ash-marches:watcher-b",
+      "role": "guard",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert:guide",
+      "role": "guide",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert:artisan",
+      "role": "artisan",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert:healer",
+      "role": "healer",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert:keeper",
+      "role": "archivist",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert:porter-a",
+      "role": "porter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert:porter-b",
+      "role": "porter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert:hunter-a",
+      "role": "hunter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert:hunter-b",
+      "role": "hunter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "glass-desert:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "glass-desert:watcher-a",
+      "role": "guard",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "glass-desert:watcher-b",
+      "role": "guard",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle:guide",
+      "role": "guide",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle:artisan",
+      "role": "artisan",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle:healer",
+      "role": "healer",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle:keeper",
+      "role": "archivist",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle:porter-a",
+      "role": "porter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle:porter-b",
+      "role": "porter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle:hunter-a",
+      "role": "hunter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle:hunter-b",
+      "role": "hunter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "pillar-jungle:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "pillar-jungle:watcher-a",
+      "role": "guard",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "pillar-jungle:watcher-b",
+      "role": "guard",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes:guide",
+      "role": "guide",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes:artisan",
+      "role": "artisan",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes:healer",
+      "role": "healer",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes:keeper",
+      "role": "archivist",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes:porter-a",
+      "role": "porter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes:porter-b",
+      "role": "porter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes:hunter-a",
+      "role": "hunter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes:hunter-b",
+      "role": "hunter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "luminous-marshes:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "luminous-marshes:watcher-a",
+      "role": "guard",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "luminous-marshes:watcher-b",
+      "role": "guard",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain:guide",
+      "role": "guide",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain:artisan",
+      "role": "artisan",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain:healer",
+      "role": "healer",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain:keeper",
+      "role": "archivist",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain:porter-a",
+      "role": "porter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain:porter-b",
+      "role": "porter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain:hunter-a",
+      "role": "hunter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain:hunter-b",
+      "role": "hunter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "storm-chain:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "storm-chain:watcher-a",
+      "role": "guard",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "storm-chain:watcher-b",
+      "role": "guard",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast:guide",
+      "role": "guide",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast:artisan",
+      "role": "artisan",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast:healer",
+      "role": "healer",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast:keeper",
+      "role": "archivist",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast:porter-a",
+      "role": "porter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast:porter-b",
+      "role": "porter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast:hunter-a",
+      "role": "hunter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast:hunter-b",
+      "role": "hunter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "leviathan-coast:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "leviathan-coast:watcher-a",
+      "role": "guard",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "leviathan-coast:watcher-b",
+      "role": "guard",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves:guide",
+      "role": "guide",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves:artisan",
+      "role": "artisan",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves:healer",
+      "role": "healer",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves:keeper",
+      "role": "archivist",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves:porter-a",
+      "role": "porter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves:porter-b",
+      "role": "porter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves:hunter-a",
+      "role": "hunter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves:hunter-b",
+      "role": "hunter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "thermal-caves:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "thermal-caves:watcher-a",
+      "role": "guard",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "thermal-caves:watcher-b",
+      "role": "guard",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown:guide",
+      "role": "guide",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown:artisan",
+      "role": "artisan",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown:healer",
+      "role": "healer",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown:keeper",
+      "role": "archivist",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown:porter-a",
+      "role": "porter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown:porter-b",
+      "role": "porter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown:hunter-a",
+      "role": "hunter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown:hunter-b",
+      "role": "hunter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "cold-crown:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "cold-crown:watcher-a",
+      "role": "guard",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "cold-crown:watcher-b",
+      "role": "guard",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins:guide",
+      "role": "guide",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins:artisan",
+      "role": "artisan",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins:healer",
+      "role": "healer",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins:keeper",
+      "role": "archivist",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins:porter-a",
+      "role": "porter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins:porter-b",
+      "role": "porter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins:hunter-a",
+      "role": "hunter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins:hunter-b",
+      "role": "hunter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "first-city-ruins:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "first-city-ruins:watcher-a",
+      "role": "guard",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "first-city-ruins:watcher-b",
+      "role": "guard",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve:guide",
+      "role": "guide",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Pisteur du clan",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve:artisan",
+      "role": "artisan",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Artisane des balises",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve:healer",
+      "role": "healer",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Soigneuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve:keeper",
+      "role": "archivist",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Gardienne des récits",
+      "source": "regional-core",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve:porter-a",
+      "role": "porter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Porteur",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve:porter-b",
+      "role": "porter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Convoyeuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve:hunter-a",
+      "role": "hunter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Chasseur de retour",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve:hunter-b",
+      "role": "hunter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Chasseuse",
+      "source": "regional-core",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve:apprentice-a",
+      "role": "apprentice",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Apprenti accompagné",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "forbidden-reserve:apprentice-b",
+      "role": "apprentice",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Apprentie accompagnée",
+      "source": "regional-core",
+      "morphId": "young"
+    },
+    {
+      "id": "forbidden-reserve:watcher-a",
+      "role": "guard",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Veilleur",
+      "source": "regional-core",
+      "morphId": "super"
+    },
+    {
+      "id": "forbidden-reserve:watcher-b",
+      "role": "guard",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Veilleuse",
+      "source": "regional-core",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-1",
+      "role": "porter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches-life-2",
+      "role": "porter",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches-life-3",
+      "role": "artisan",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-4",
+      "role": "artisan",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches-life-5",
+      "role": "archivist",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-6",
+      "role": "archivist",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches-life-7",
+      "role": "guard",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-8",
+      "role": "guard",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches-life-9",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-10",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches-life-11",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches-life-12",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "ash-marches-life-13",
+      "role": "apprentice",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "ash-marches-life-14",
+      "role": "apprentice",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "ash-marches-life-15",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-16",
+      "role": "resident",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "ash-marches-life-17",
+      "role": "instructor",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "ash-marches-life-18",
+      "role": "instructor",
+      "groupId": "region:ash-marches",
+      "regionId": "ash-marches",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-1",
+      "role": "porter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert-life-2",
+      "role": "porter",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-3",
+      "role": "artisan",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-4",
+      "role": "artisan",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-5",
+      "role": "archivist",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-6",
+      "role": "archivist",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert-life-7",
+      "role": "guard",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-8",
+      "role": "guard",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-9",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-10",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-11",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert-life-12",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "glass-desert-life-13",
+      "role": "apprentice",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "glass-desert-life-14",
+      "role": "apprentice",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "glass-desert-life-15",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-16",
+      "role": "resident",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "glass-desert-life-17",
+      "role": "instructor",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "glass-desert-life-18",
+      "role": "instructor",
+      "groupId": "region:glass-desert",
+      "regionId": "glass-desert",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-1",
+      "role": "porter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle-life-2",
+      "role": "porter",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-3",
+      "role": "artisan",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-4",
+      "role": "artisan",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-5",
+      "role": "archivist",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-6",
+      "role": "archivist",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle-life-7",
+      "role": "guard",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-8",
+      "role": "guard",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-9",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-10",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-11",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle-life-12",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "pillar-jungle-life-13",
+      "role": "apprentice",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "pillar-jungle-life-14",
+      "role": "apprentice",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "pillar-jungle-life-15",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-16",
+      "role": "resident",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "pillar-jungle-life-17",
+      "role": "instructor",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "pillar-jungle-life-18",
+      "role": "instructor",
+      "groupId": "region:pillar-jungle",
+      "regionId": "pillar-jungle",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-1",
+      "role": "porter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes-life-2",
+      "role": "porter",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-3",
+      "role": "artisan",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-4",
+      "role": "artisan",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-5",
+      "role": "archivist",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-6",
+      "role": "archivist",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes-life-7",
+      "role": "guard",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-8",
+      "role": "guard",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-9",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-10",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-11",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes-life-12",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "luminous-marshes-life-13",
+      "role": "apprentice",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "luminous-marshes-life-14",
+      "role": "apprentice",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "luminous-marshes-life-15",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-16",
+      "role": "resident",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "luminous-marshes-life-17",
+      "role": "instructor",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "luminous-marshes-life-18",
+      "role": "instructor",
+      "groupId": "region:luminous-marshes",
+      "regionId": "luminous-marshes",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-1",
+      "role": "porter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain-life-2",
+      "role": "porter",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-3",
+      "role": "artisan",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-4",
+      "role": "artisan",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-5",
+      "role": "archivist",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-6",
+      "role": "archivist",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain-life-7",
+      "role": "guard",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-8",
+      "role": "guard",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-9",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-10",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-11",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain-life-12",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "storm-chain-life-13",
+      "role": "apprentice",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "storm-chain-life-14",
+      "role": "apprentice",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "storm-chain-life-15",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-16",
+      "role": "resident",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "storm-chain-life-17",
+      "role": "instructor",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "storm-chain-life-18",
+      "role": "instructor",
+      "groupId": "region:storm-chain",
+      "regionId": "storm-chain",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-1",
+      "role": "porter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast-life-2",
+      "role": "porter",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-3",
+      "role": "artisan",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-4",
+      "role": "artisan",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-5",
+      "role": "archivist",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-6",
+      "role": "archivist",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast-life-7",
+      "role": "guard",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-8",
+      "role": "guard",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-9",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-10",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-11",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast-life-12",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "leviathan-coast-life-13",
+      "role": "apprentice",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "leviathan-coast-life-14",
+      "role": "apprentice",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "leviathan-coast-life-15",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-16",
+      "role": "resident",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "leviathan-coast-life-17",
+      "role": "instructor",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "leviathan-coast-life-18",
+      "role": "instructor",
+      "groupId": "region:leviathan-coast",
+      "regionId": "leviathan-coast",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-1",
+      "role": "porter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves-life-2",
+      "role": "porter",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-3",
+      "role": "artisan",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-4",
+      "role": "artisan",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-5",
+      "role": "archivist",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-6",
+      "role": "archivist",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves-life-7",
+      "role": "guard",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-8",
+      "role": "guard",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-9",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-10",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-11",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves-life-12",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "thermal-caves-life-13",
+      "role": "apprentice",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "thermal-caves-life-14",
+      "role": "apprentice",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "thermal-caves-life-15",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-16",
+      "role": "resident",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "thermal-caves-life-17",
+      "role": "instructor",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "thermal-caves-life-18",
+      "role": "instructor",
+      "groupId": "region:thermal-caves",
+      "regionId": "thermal-caves",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-1",
+      "role": "porter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown-life-2",
+      "role": "porter",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-3",
+      "role": "artisan",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-4",
+      "role": "artisan",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-5",
+      "role": "archivist",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-6",
+      "role": "archivist",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown-life-7",
+      "role": "guard",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-8",
+      "role": "guard",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-9",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-10",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-11",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown-life-12",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "cold-crown-life-13",
+      "role": "apprentice",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "cold-crown-life-14",
+      "role": "apprentice",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "cold-crown-life-15",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-16",
+      "role": "resident",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "cold-crown-life-17",
+      "role": "instructor",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "cold-crown-life-18",
+      "role": "instructor",
+      "groupId": "region:cold-crown",
+      "regionId": "cold-crown",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-1",
+      "role": "porter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins-life-2",
+      "role": "porter",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-3",
+      "role": "artisan",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-4",
+      "role": "artisan",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-5",
+      "role": "archivist",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-6",
+      "role": "archivist",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins-life-7",
+      "role": "guard",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-8",
+      "role": "guard",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-9",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-10",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-11",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins-life-12",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "first-city-ruins-life-13",
+      "role": "apprentice",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "first-city-ruins-life-14",
+      "role": "apprentice",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "first-city-ruins-life-15",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-16",
+      "role": "resident",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "first-city-ruins-life-17",
+      "role": "instructor",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "first-city-ruins-life-18",
+      "role": "instructor",
+      "groupId": "region:first-city-ruins",
+      "regionId": "first-city-ruins",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-1",
+      "role": "porter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve-life-2",
+      "role": "porter",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Porteur des réserves",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-3",
+      "role": "artisan",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-4",
+      "role": "artisan",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Artisane des conduits",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-5",
+      "role": "archivist",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-6",
+      "role": "archivist",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Conservateur local",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve-life-7",
+      "role": "guard",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-8",
+      "role": "guard",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Veilleuse de relève",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-9",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-10",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-11",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve-life-12",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Habitant des demeures",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "forbidden-reserve-life-13",
+      "role": "apprentice",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "forbidden-reserve-life-14",
+      "role": "apprentice",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Aspirant accompagné",
+      "source": "regional-ambient",
+      "morphId": "young"
+    },
+    {
+      "id": "forbidden-reserve-life-15",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-16",
+      "role": "resident",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Visiteur du clan",
+      "source": "regional-ambient",
+      "morphId": "elder"
+    },
+    {
+      "id": "forbidden-reserve-life-17",
+      "role": "instructor",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "classic"
+    },
+    {
+      "id": "forbidden-reserve-life-18",
+      "role": "instructor",
+      "groupId": "region:forbidden-reserve",
+      "regionId": "forbidden-reserve",
+      "occupation": "Accompagnateur des aspirants",
+      "source": "regional-ambient",
+      "morphId": "huntress"
+    },
+    {
+      "id": "palace-v84-court-registrar",
+      "role": "royal-court",
+      "groupId": "city",
+      "occupation": "Officier des audiences du Roi",
+      "source": "additional-v84",
+      "buildingId": "throne-audience"
+    },
+    {
+      "id": "palace-v84-court-envoy",
+      "role": "royal-court",
+      "groupId": "city",
+      "occupation": "Déléguée de la cour des clans",
+      "source": "additional-v84",
+      "buildingId": "throne-audience"
+    },
+    {
+      "id": "palace-v84-court-attendant",
+      "role": "royal-court",
+      "groupId": "city",
+      "occupation": "Intendant de la chambre d’audience",
+      "source": "additional-v84",
+      "buildingId": "throne-audience"
+    },
+    {
+      "id": "palace-v84-court-seals",
+      "role": "royal-court",
+      "groupId": "city",
+      "occupation": "Gardienne des sceaux de la cour",
+      "source": "additional-v84",
+      "buildingId": "throne-audience"
+    },
+    {
+      "id": "council-v84-elder-west",
+      "role": "elder-council",
+      "groupId": "city",
+      "occupation": "Ancien de la chambre des représentants",
+      "source": "additional-v84",
+      "buildingId": "rite-sanctum"
+    },
+    {
+      "id": "council-v84-elder-east",
+      "role": "elder-council",
+      "groupId": "city",
+      "occupation": "Ancienne des délibérations",
+      "source": "additional-v84",
+      "buildingId": "rite-sanctum"
+    },
+    {
+      "id": "urban-v84:stable-supplies",
+      "role": "stable-keeper",
+      "groupId": "city",
+      "occupation": "Palefrenier des montures",
+      "source": "additional-v84"
+    },
+    {
+      "id": "urban-v84:stable-harness",
+      "role": "stable-keeper",
+      "groupId": "city",
+      "occupation": "Soigneuse des écuries",
+      "source": "additional-v84"
+    },
+    {
+      "id": "urban-v84:kennel-return",
+      "role": "kennel-handler",
+      "groupId": "city",
+      "occupation": "Maître du chenil des chasses",
+      "source": "additional-v84"
+    },
+    {
+      "id": "urban-v84:kennel-care",
+      "role": "kennel-handler",
+      "groupId": "city",
+      "occupation": "Soigneuse des chiens de chasse",
+      "source": "additional-v84"
+    }
+  ]
+}

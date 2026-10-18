@@ -52,7 +52,7 @@ function fixture() {
   const initial = api.writeSaveWithStatus(api.defaultSave('2026-10-01T00:00:00.000Z'), storage, key).save;
   const root = {
     ...api, structuredClone, crypto: { randomUUID: () => 'region-return-run' }, save: initial, saveRef: { current: initial },
-    entry: { ownerCreatedAt: initial.createdAt }, sessionAliveRef: { current: true }, pendingTerminalRunRef: { current: null },
+    entry: { ownerCreatedAt: initial.createdAt }, sessionAliveRef: { current: true }, pendingTrophyCommitRef: { current: null }, pendingTerminalRunRef: { current: null },
     pendingSocialWriteRef: { current: null }, nurseryWriteAttemptRef: { current: null }, activeHuntSessionRef: { current: null },
     setToast(message) { notices.push(message); }, setSaveFailure() {}, setNurseryPersistenceError() {},
     setSave(save) { root.save = save; transitions.push(['save', save.homeworldRegionV68 === null]); },

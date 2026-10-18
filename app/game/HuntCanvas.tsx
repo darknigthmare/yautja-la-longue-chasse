@@ -1,5 +1,7 @@
 "use client";
 
+import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";
+
 import {
   useCallback,
   useEffect,
@@ -6273,7 +6275,12 @@ function nearestHuntMeleeTarget(
       ({ enemy, forwardDistance, horizontalGap, verticalDistance }) =>
         forwardDistance >= -Math.min(18, enemy.width * 0.18) &&
         horizontalGap <= maximumGapPx &&
-        verticalDistance <= (player.height + enemy.height) * 0.62,
+        verticalDistance <= (player.height + enemy.height) * 0.62 &&
+        !huntStructuralBarrierV94(
+          { x: playerCenterX, y: playerCenterY },
+          { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 },
+          state.world.platforms,
+        ),
     )
     .sort((left, right) => {
       if (left.horizontalGap !== right.horizontalGap) {
@@ -6507,7 +6514,12 @@ function updatePlayerMeleeCombat(
     .filter(
       (enemy) =>
         canHuntMeleeHitTarget(player.melee, enemy.id) &&
-        huntMeleeHitboxOverlaps(hitbox, enemy),
+        huntMeleeHitboxOverlaps(hitbox, enemy) &&
+        !huntStructuralBarrierV94(
+          { x: playerCenterX, y: player.y + player.height / 2 },
+          { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 },
+          state.world.platforms,
+        ),
     )
     .sort((left, right) => {
       const leftDistance = Math.abs(left.x + left.width / 2 - playerCenterX);
@@ -8185,7 +8197,8 @@ function updateRegularEnemy(
   } else if (
     attackStep.executedAttackId === REGULAR_MELEE_ATTACK_ID
   ) {
-    if (targetDistance < meleeRange) {
+    if (targetDistance < meleeRange &&
+        !huntStructuralBarrierV94(selfPosition, targetPosition, state.world.platforms)) {
       if (!resolvePlayerMeleeParry(state, enemy)) {
         hurtPlayer(state, enemy.damage, mission);
       }
@@ -8325,17 +8338,16 @@ function executeBossAttack(
     boss.id,
   );
 
-  if (
-    attack.behavior === "melee" &&
-    Math.abs(dx) < 165 &&
-    Math.abs(dy) < 135
-  ) {
-    if (!resolvePlayerMeleeParry(state, boss)) {
+  const structuralBarrier = huntStructuralBarrierV94(bossCenter, playerCenter, state.world.platforms);
+  // A missed melee telegraph must whiff, never fall through to a ranged attack.
+  if (attack.behavior === "melee") {
+    if (Math.abs(dx) < 165 && Math.abs(dy) < 135 && !structuralBarrier &&
+        !resolvePlayerMeleeParry(state, boss)) {
       hurtPlayer(state, damage, mission);
     }
   } else if (attack.behavior === "charge") {
     boss.velocityX = boss.facing * 760;
-    if (Math.abs(dx) < 230 && Math.abs(dy) < 150) {
+    if (Math.abs(dx) < 230 && Math.abs(dy) < 150 && !structuralBarrier) {
       hurtPlayer(state, damage, mission);
     }
   } else if (attack.behavior === "area") {
@@ -8346,6 +8358,7 @@ function executeBossAttack(
     if (
       Math.abs(dx) < attack.rangePx &&
       Math.abs(dy) < verticalReach &&
+      !structuralBarrier &&
       coverOcclusion < 0.8
     ) {
       hurtPlayer(
@@ -9080,7 +9093,8 @@ function updateProjectiles(
               };
               if (
                 distance(impact, nearbyCenter) <=
-                (projectile.splashRadius ?? 0)
+                (projectile.splashRadius ?? 0) &&
+                !huntStructuralBarrierV94(impact, nearbyCenter, state.world.platforms)
               ) {
                 const splashOcclusion = calculateLineOfSightOcclusion(
                   impact,

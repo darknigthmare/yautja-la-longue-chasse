@@ -109,7 +109,8 @@ export default function GlassDesertExpedition({save,suspended=false,onComplete,o
     const tick=(now:number)=>{
       const elapsed=Math.min(100,Math.max(0,now-last));last=now;
       const ownsFocus=!!rootRef.current?.contains(document.activeElement);
-      const pad=ownsFocus&&!document.hidden?Array.from(navigator.getGamepads?.()??[]).find(p=>p?.connected):null;
+      let pad:Gamepad|null|undefined=null;
+      if(ownsFocus&&!document.hidden){try{pad=Array.from(navigator.getGamepads?.()??[]).find(p=>p?.connected);}catch{/* Keyboard/touch remain usable when controller access is denied. */}}
       const buttons=[Boolean(pad?.buttons[0]?.pressed),Boolean(pad?.buttons[2]?.pressed),Boolean(pad?.buttons[3]?.pressed),Boolean(pad?.buttons[1]?.pressed),Boolean(pad?.buttons[9]?.pressed)];
       if(buttons[4]&&!previousPad[4]&&!suspended&&!exitConfirm&&delivery.status==="idle")setPaused(value=>!value);
       const menuButtons=ownsFocus?Array.from(rootRef.current?.querySelectorAll<HTMLButtonElement>("[data-glass-choices] button:not(:disabled), [role=dialog] button:not(:disabled)")??[]):[];

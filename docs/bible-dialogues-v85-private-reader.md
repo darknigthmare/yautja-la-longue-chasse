@@ -1,5 +1,13 @@
 # V85 — Bible V6 et lecteur de sources
 
+## Validation portable en environnement cloud
+
+Les originaux et extractions privés de `work-local` restent exclus de Git. Les tests cloud vérifient les fichiers publiés contre `docs/bible-dialogues-v85-integrity-receipt.json` : SHA256 et tailles recalculés sur les blobs Git historiques inchangés, métadonnées du classeur, inventaire complet des 29 feuilles, cellules des sept lignes V87 et onze lignes V88 partagées. La douzième ligne V88, `Campagne commune!A27:K27`, n’existe pas dans ces corpus publics ; son extraction suivie est protégée par le SHA du fichier V88 complet. Aucun contenu n’est reconstruit ou inventé.
+
+Le reçu historique `bible-dialogues-v85-targeted-tests.json` atteste la vérification du classeur et l’identité public/privé effectuées le 7 octobre. Sans les octets privés, une exécution cloud actuelle vérifie cette provenance et l’intégrité des extractions suivies ; elle ne recalcule pas le SHA du XLSX et ne constitue pas une nouvelle extraction depuis ses 139 feuilles.
+
+Fournir `YAUTJA_V6_SOURCE_PATH` au lancement des tests rend le classeur original obligatoire et vérifie directement son SHA inchangé. Un chemin manquant ou un fichier différent fait échouer le contrôle. Les copies privées présentes à leur emplacement historique sont aussi comparées octet par octet aux fichiers publics. Ces vérifications complémentaires n’autorisent aucune publication supplémentaire et ne changent aucun corpus.
+
 Source récupérée : `Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx`, Drive ID `1kBa26-IY91k3uKughLaanIzUa57ZYAU3`, 2 101 543 octets, SHA-256 `87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183`. Le classeur original contient 139 onglets et reste inchangé dans `work-local/drive-import-20261007/downloads/`.
 
 `scripts/import-bible-dialogues-v85.py` lit le XML du XLSX et conserve toutes les cellules des dix feuilles de dialogues V6 et des dix-neuf feuilles de navire retenues, avec adresses et formules littérales non exécutées. L’extraction dialogue comprend 730 scènes, 6 059 répliques, 400 réactions et gestes, 1 494 choix et actions, 150 variantes et 210 profils de voix. Les 6 459 textes annoncés réunissent répliques et réactions ; ce ne sont ni 6 459 clips ni 6 459 seuls dialogues. La source Excel prévaut sur l’annonce du README. Aucun audio ou TTS n’est créé.

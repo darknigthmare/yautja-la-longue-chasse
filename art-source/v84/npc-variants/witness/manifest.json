@@ -1,0 +1,691 @@
+{
+  "role": "witness",
+  "requested": 20,
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civic-specialists-spaced-atlas.png",
+  "referenceCell": 2,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "promptCommon": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.",
+  "variants": [
+    {
+      "id": "witness-01",
+      "slot": 1,
+      "designId": "temoin-bras-croises",
+      "design": "A sturdy adult male Yautja gallery resident, thick neck and broad compact torso, mottled warm olive hide, heavy rounded brow and thick black scalp tendrils held in one short low bundle. Clean charcoal knee-length cloth wrap tunic with a broad rust sash, a simple plain bronze chest clasp, practical dark trousers and short leather ankle wraps. He stands at ease with both arms loosely folded low over his abdomen, watching something off to the right. No armour, weapons or professional tools.",
+      "status": "generated",
+      "file": "witness-01.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA sturdy adult male Yautja gallery resident, thick neck and broad compact torso, mottled warm olive hide, heavy rounded brow and thick black scalp tendrils held in one short low bundle. Clean charcoal knee-length cloth wrap tunic with a broad rust sash, a simple plain bronze chest clasp, practical dark trousers and short leather ankle wraps. He stands at ease with both arms loosely folded low over his abdomen, watching something off to the right. No armour, weapons or professional tools.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e236a178-991e-4f3c-9f29-e8ead0651064.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-01.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 33,
+        "width": 1012,
+        "height": 1481
+      },
+      "sha256": "c99e0f8af418e73b6d03e856ce337e285772b326556094e892cdad59daa20c74",
+      "byteCount": 2118801,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.01171875,
+        "top": 0.021484375,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6629288991292318,
+      "githubBlobSha": "9e625e08d4db6e0c268bbcaeccfb0d6a05d6ebb0"
+    },
+    {
+      "id": "witness-02",
+      "slot": 2,
+      "designId": "temoin-panier-tissu",
+      "design": "A very tall lean adult female Yautja civilian, long limbs and narrow shoulders, pale gold-grey mottled hide, a long broad domed skull and thick scalp tendrils looped high behind the crown with a plain woven cord. Wears a pale flax long-sleeved wrap blouse, a dark indigo sleeveless overcoat, calf-length divided skirt and plain ankle bands. Holds a small woven household basket with folded cloth inside in her left hand; the right hand rests naturally on the basket handle. Relaxed neighbourly stance, no uniform.",
+      "status": "generated",
+      "file": "witness-02.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA very tall lean adult female Yautja civilian, long limbs and narrow shoulders, pale gold-grey mottled hide, a long broad domed skull and thick scalp tendrils looped high behind the crown with a plain woven cord. Wears a pale flax long-sleeved wrap blouse, a dark indigo sleeveless overcoat, calf-length divided skirt and plain ankle bands. Holds a small woven household basket with folded cloth inside in her left hand; the right hand rests naturally on the basket handle. Relaxed neighbourly stance, no uniform.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-78a2f12b-bd56-4156-acbb-881bbdf63493.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-02.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 0,
+        "width": 945,
+        "height": 1514
+      },
+      "sha256": "e07da5998039037dcf0cdd88d282f870d5e803198889c35873e95134df8e302d",
+      "byteCount": 2054361,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.0,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6876258850097656,
+      "githubBlobSha": "47ffaaa41d7753edcf2326a547ba4c8e2b85df84"
+    },
+    {
+      "id": "witness-03",
+      "slot": 3,
+      "designId": "temoin-ancien-canne",
+      "design": "A short broad elderly male Yautja resident with a gently stooped back, substantial abdomen, wrinkled grey-brown hide, deep broad orbital ridges, and sparse thick silver-and-black scalp tendrils tied at the nape. Wears a warm ochre hooded woollen shoulder mantle with hood DOWN, a dark long tunic with a repaired but tidy hem and soft cloth calf bindings. Both hands rest one above the other on a simple rounded wooden cane in front of his body. Calm contemplative bystander, both feet and complete cane tip visible.",
+      "status": "generated",
+      "file": "witness-03.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA short broad elderly male Yautja resident with a gently stooped back, substantial abdomen, wrinkled grey-brown hide, deep broad orbital ridges, and sparse thick silver-and-black scalp tendrils tied at the nape. Wears a warm ochre hooded woollen shoulder mantle with hood DOWN, a dark long tunic with a repaired but tidy hem and soft cloth calf bindings. Both hands rest one above the other on a simple rounded wooden cane in front of his body. Calm contemplative bystander, both feet and complete cane tip visible.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d7cd970a-8be3-430d-9c2f-662d52d0e22d.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-03.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1012,
+        "height": 1525
+      },
+      "sha256": "f249804c652dd7b158a3e0863da58181d68de2375c37275bfdeeb5b6040ef761",
+      "byteCount": 2425943,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.01171875,
+        "top": 0.0,
+        "bottom": 0.007161458333333333
+      },
+      "fullyTransparentFraction": 0.5733547210693359,
+      "githubBlobSha": "332e1bc316a0e8b5a983aaf813adae24fcce3bfe"
+    },
+    {
+      "id": "witness-04",
+      "slot": 4,
+      "designId": "temoin-lectrice-folio",
+      "design": "A petite adult female Yautja civilian, compact lithe body, red-brown spotted hide, wide high dome and closely arranged short thick scalp tendrils held with small bone-coloured plain ties. Wears a clean muted teal fitted over-vest, long cream wrap tunic with broad rectangular hem, a leather waist sash and soft ankle guards. Holds a CLOSED leather-bound personal folio under one forearm while the free hand rests on its cover. Attentive poised standing pose, no pages or readable lettering, no weapons.",
+      "status": "generated",
+      "file": "witness-04.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA petite adult female Yautja civilian, compact lithe body, red-brown spotted hide, wide high dome and closely arranged short thick scalp tendrils held with small bone-coloured plain ties. Wears a clean muted teal fitted over-vest, long cream wrap tunic with broad rectangular hem, a leather waist sash and soft ankle guards. Holds a CLOSED leather-bound personal folio under one forearm while the free hand rests on its cover. Attentive poised standing pose, no pages or readable lettering, no weapons.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-01885a6a-4a6e-43fe-9e64-608baaa5a81c.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-04.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 16,
+        "width": 945,
+        "height": 1488
+      },
+      "sha256": "a897cc6575e95a4b120e0a14c596c6c3a292952b58eca97a48a70d4adbdb6e28",
+      "byteCount": 1976436,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.010416666666666666,
+        "bottom": 0.020833333333333332
+      },
+      "fullyTransparentFraction": 0.7011114756266276,
+      "githubBlobSha": "de6658cab8015c7b498305f7ed03176f774569ea"
+    },
+    {
+      "id": "witness-05",
+      "slot": 5,
+      "designId": "temoin-gobelet",
+      "design": "A heavyset tall adult male Yautja onlooker with very broad torso, thick forearms, tawny skin with large dark spots, a broad flattened alien crown, and thick black tendrils gathered loosely behind his head. Wears a sleeveless faded plum robe over tan trousers, a broad plain ochre cloth belt and a small worn leather purse. Holds an ordinary small dark ceramic drinking cup carefully at lower chest height in one hand, other hand open at the hip. Quiet everyday expression, no drink spilling, no military gear.",
+      "status": "generated",
+      "file": "witness-05.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA heavyset tall adult male Yautja onlooker with very broad torso, thick forearms, tawny skin with large dark spots, a broad flattened alien crown, and thick black tendrils gathered loosely behind his head. Wears a sleeveless faded plum robe over tan trousers, a broad plain ochre cloth belt and a small worn leather purse. Holds an ordinary small dark ceramic drinking cup carefully at lower chest height in one hand, other hand open at the hip. Quiet everyday expression, no drink spilling, no military gear.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b80feb63-de97-4d84-99a7-c0953499ef21.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-05.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 20,
+        "width": 988,
+        "height": 1484
+      },
+      "sha256": "4988dec9a927b0bf740cd8eed1e1a6f04aca51f568ab77f3bed983d94ec29c4c",
+      "byteCount": 2320383,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.03515625,
+        "top": 0.013020833333333334,
+        "bottom": 0.020833333333333332
+      },
+      "fullyTransparentFraction": 0.6097075144449869,
+      "githubBlobSha": "8a1df206fb793f937035ac2a80afd60be01c7880"
+    },
+    {
+      "id": "witness-06",
+      "slot": 6,
+      "designId": "temoin-cordon-souvenir",
+      "design": "An older adult female Yautja gallery neighbour with stocky shoulders and a narrow waist, slate-grey speckled hide, a broad rounded cranium, and medium length thick grey-black scalp tendrils secured into two low bunches. Wears a layered deep moss shawl with a simple woven cream edge, a rust-brown long-sleeved under-tunic and a dark split skirt over leggings. Both hands gently hold a small personal cord with three smooth oval beads at waist height, considering a memory. Entire cord contained close to hands, no ritual regalia.",
+      "status": "generated",
+      "file": "witness-06.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nAn older adult female Yautja gallery neighbour with stocky shoulders and a narrow waist, slate-grey speckled hide, a broad rounded cranium, and medium length thick grey-black scalp tendrils secured into two low bunches. Wears a layered deep moss shawl with a simple woven cream edge, a rust-brown long-sleeved under-tunic and a dark split skirt over leggings. Both hands gently hold a small personal cord with three smooth oval beads at waist height, considering a memory. Entire cord contained close to hands, no ritual regalia.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4fe73305-e33e-421c-902d-2a370c4d08ad.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-06.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 19,
+        "width": 947,
+        "height": 1497
+      },
+      "sha256": "b7ecf5482390c36f9c27e55bc340da685005731b9d66cbc5a868d30bfe7f4d03",
+      "byteCount": 2187628,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.01171875,
+        "top": 0.012369791666666666,
+        "bottom": 0.013020833333333334
+      },
+      "fullyTransparentFraction": 0.6371885935465494,
+      "githubBlobSha": "eb0d2c754f77efb8b00fc31d097945a266ad821d"
+    },
+    {
+      "id": "witness-07",
+      "slot": 7,
+      "designId": "temoin-sacoche-simple",
+      "design": "A lanky young adult male Yautja resident, fully grown, long legs and slim shoulders, warm bronze mottled skin, a domed forehead slightly longer than average, thick short black scalp tendrils angled backward in a bound tuft. Plain rust and charcoal panelled short tunic with fabric lacing, loose brown trousers and cloth ankle bindings. Wears a small soft leather shoulder satchel used for personal belongings, one hand holding its strap while the other hangs relaxed. Neutral curious gaze, not a courier uniform, no parcels.",
+      "status": "generated",
+      "file": "witness-07.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA lanky young adult male Yautja resident, fully grown, long legs and slim shoulders, warm bronze mottled skin, a domed forehead slightly longer than average, thick short black scalp tendrils angled backward in a bound tuft. Plain rust and charcoal panelled short tunic with fabric lacing, loose brown trousers and cloth ankle bindings. Wears a small soft leather shoulder satchel used for personal belongings, one hand holding its strap while the other hangs relaxed. Neutral curious gaze, not a courier uniform, no parcels.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d66c6ba1-bb1e-4d44-9c74-88c24c043ac8.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-07.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 49,
+        "y": 16,
+        "width": 961,
+        "height": 1506
+      },
+      "sha256": "9578acc399a9bdce7f15c6a873112c47860eb7813eef6f75b8804904463d07b4",
+      "byteCount": 2120386,
+      "clearMarginsFraction": {
+        "left": 0.0478515625,
+        "right": 0.013671875,
+        "top": 0.010416666666666666,
+        "bottom": 0.009114583333333334
+      },
+      "fullyTransparentFraction": 0.6532497406005859,
+      "githubBlobSha": "a79a087e0df8756645ea8150f73414d67d9e29cd"
+    },
+    {
+      "id": "witness-08",
+      "slot": 8,
+      "designId": "temoin-clefs-maison",
+      "design": "A broad-hipped powerful adult female Yautja civilian with a short thick neck, dark olive hide with pale scattered spots, broad alien brow and dense thick scalp tendrils arranged in a compact low knot. Wears a simple sand-coloured sleeveless house apron over a long dark green tunic, no blacksmith tools, a braided cloth belt and simple leg wraps. She holds two plain bronze household keys on a small ring loosely at the waist; other hand rests against her side. Patient waiting pose, clean cared-for clothes, no armour.",
+      "status": "generated",
+      "file": "witness-08.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA broad-hipped powerful adult female Yautja civilian with a short thick neck, dark olive hide with pale scattered spots, broad alien brow and dense thick scalp tendrils arranged in a compact low knot. Wears a simple sand-coloured sleeveless house apron over a long dark green tunic, no blacksmith tools, a braided cloth belt and simple leg wraps. She holds two plain bronze household keys on a small ring loosely at the waist; other hand rests against her side. Patient waiting pose, clean cared-for clothes, no armour.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b3a3a767-34aa-477f-b52c-f9dc329ff467.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-08.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 15,
+        "width": 1010,
+        "height": 1511
+      },
+      "sha256": "47912226cd3418ab7abf0289c8c85c924634f7d7f45b226e7d5f48fbbcbc3042",
+      "byteCount": 2188258,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.013671875,
+        "top": 0.009765625,
+        "bottom": 0.006510416666666667
+      },
+      "fullyTransparentFraction": 0.64776611328125,
+      "githubBlobSha": "206ae83a02086192e4f0217ff2169c52009f65db"
+    },
+    {
+      "id": "witness-09",
+      "slot": 9,
+      "designId": "temoin-capuche-grise",
+      "design": "A slim tall adult male Yautja gallery onlooker with a narrow body and high rounded cranium, red and grey mottled hide, deep low orbital ridges, and a few thick scalp tendrils partly visible under a loose cloth hood. Wears a charcoal-grey hooded shoulder wrap with hood UP but face entirely exposed, a knee-length taupe sleeveless tunic with broad intact hem and dark trousers. Holds a small folded cloth cap between his hands at abdomen height. Watchful calm stance with weight on one leg, no ragged beggar costume, no mask.",
+      "status": "generated",
+      "file": "witness-09.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA slim tall adult male Yautja gallery onlooker with a narrow body and high rounded cranium, red and grey mottled hide, deep low orbital ridges, and a few thick scalp tendrils partly visible under a loose cloth hood. Wears a charcoal-grey hooded shoulder wrap with hood UP but face entirely exposed, a knee-length taupe sleeveless tunic with broad intact hem and dark trousers. Holds a small folded cloth cap between his hands at abdomen height. Watchful calm stance with weight on one leg, no ragged beggar costume, no mask.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4f3ac209-d33e-4760-943c-bb50dcefbe20.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-09.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 59,
+        "y": 16,
+        "width": 953,
+        "height": 1503
+      },
+      "sha256": "4fe616a7bbc410255eede470735f08c302272b55a31db4c28f91a0cbf7d842a2",
+      "byteCount": 2033643,
+      "clearMarginsFraction": {
+        "left": 0.0576171875,
+        "right": 0.01171875,
+        "top": 0.010416666666666666,
+        "bottom": 0.011067708333333334
+      },
+      "fullyTransparentFraction": 0.6813138326009115,
+      "githubBlobSha": "da23e48e14fd05bbaff292f846af70b5d524224a"
+    },
+    {
+      "id": "witness-10",
+      "slot": 10,
+      "designId": "temoin-conversation",
+      "design": "A short muscular adult male Yautja neighbour with a wide chest, thick olive-gold spotted arms, low broad cranium and eight thick scalp tendrils cut blunt around shoulder level with plain wooden cuffs. Wears a neat ochre long wrap shirt, a dark brown crossed waist sash, open sleeveless leather waistcoat and plain calf bindings. His right forearm is bent with an open relaxed palm at chest level in a restrained conversational gesture; left hand remains at his belt. Five believable clawed fingers, no second speaker, no speech bubble.",
+      "status": "generated",
+      "file": "witness-10.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA short muscular adult male Yautja neighbour with a wide chest, thick olive-gold spotted arms, low broad cranium and eight thick scalp tendrils cut blunt around shoulder level with plain wooden cuffs. Wears a neat ochre long wrap shirt, a dark brown crossed waist sash, open sleeveless leather waistcoat and plain calf bindings. His right forearm is bent with an open relaxed palm at chest level in a restrained conversational gesture; left hand remains at his belt. Five believable clawed fingers, no second speaker, no speech bubble.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-293e6ef9-a242-45f1-8186-077eeefe9a3f.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-10.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 39,
+        "y": 19,
+        "width": 973,
+        "height": 1497
+      },
+      "sha256": "269511f1864000949048a8513b1c3edb902fe69c646079b8fb028ce122d538fc",
+      "byteCount": 2236866,
+      "clearMarginsFraction": {
+        "left": 0.0380859375,
+        "right": 0.01171875,
+        "top": 0.012369791666666666,
+        "bottom": 0.013020833333333334
+      },
+      "fullyTransparentFraction": 0.6286678314208984,
+      "githubBlobSha": "df47eec254a9c6e893a5256167ec4dd3275c8058"
+    },
+    {
+      "id": "witness-11",
+      "slot": 11,
+      "designId": "temoin-chale-plie",
+      "design": "A very tall broad adult female Yautja pedestrian with large hands, long legs, pale silver-green freckled hide and a high domed skull, thick scalp tendrils secured into a single high loop. Wears a warm grey sleeveless long coat with straight clean edges over a dark umber fitted tunic and split cloth skirt. Holds a folded burgundy shawl across both forearms at waist height. Modest personal jewellery of two plain bronze bands, no carried freight or armour. Quiet attentive resident.",
+      "status": "generated",
+      "file": "witness-11.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA very tall broad adult female Yautja pedestrian with large hands, long legs, pale silver-green freckled hide and a high domed skull, thick scalp tendrils secured into a single high loop. Wears a warm grey sleeveless long coat with straight clean edges over a dark umber fitted tunic and split cloth skirt. Holds a folded burgundy shawl across both forearms at waist height. Modest personal jewellery of two plain bronze bands, no carried freight or armour. Quiet attentive resident.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ec8bff4f-b459-402e-8adb-8a5ce9fc6832.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-11.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 17,
+        "width": 945,
+        "height": 1497
+      },
+      "sha256": "03cfc355b35cb4d0d3bc053b846f0811142634a8bd1e4c1d0cfadef2d78850b0",
+      "byteCount": 1965771,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.011067708333333334,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6833572387695312,
+      "githubBlobSha": "15af6a23f4c8ed80ba073cae7d49a54f385a1aff"
+    },
+    {
+      "id": "witness-12",
+      "slot": 12,
+      "designId": "temoin-medaille-familiale",
+      "design": "An elderly adult male Yautja resident with medium height and lean slightly stooped build, ash-brown speckled hide, deeply sculpted alien brow and a few long thick white-grey scalp tendrils gathered over one shoulder. Wears a clean cream wrap robe with a short dark brown shoulder vest, a simple fabric waist sash and soft strapped ankle coverings. His hands are held loosely behind his back with believable shoulders; a single small plain family medallion hangs at his chest. Calm thoughtful full-body pose, no royal insignia, no weapon.",
+      "status": "generated",
+      "file": "witness-12.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nAn elderly adult male Yautja resident with medium height and lean slightly stooped build, ash-brown speckled hide, deeply sculpted alien brow and a few long thick white-grey scalp tendrils gathered over one shoulder. Wears a clean cream wrap robe with a short dark brown shoulder vest, a simple fabric waist sash and soft strapped ankle coverings. His hands are held loosely behind his back with believable shoulders; a single small plain family medallion hangs at his chest. Calm thoughtful full-body pose, no royal insignia, no weapon.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ac3ef65e-5d8c-441a-a709-1873102101d2.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-12.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 16,
+        "width": 1010,
+        "height": 1503
+      },
+      "sha256": "ef4affe29151dc1c0ce8173c679475d19742637e82379d74989ce76f982933bc",
+      "byteCount": 2097176,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.013671875,
+        "top": 0.010416666666666666,
+        "bottom": 0.011067708333333334
+      },
+      "fullyTransparentFraction": 0.6685428619384766,
+      "githubBlobSha": "734768f4ebdead3e7bf7c0cea480d5196b467983"
+    },
+    {
+      "id": "witness-13",
+      "slot": 13,
+      "designId": "temoin-sac-quotidien",
+      "design": "A medium-height athletic adult female Yautja civilian with strong thighs, rust-ochre spotted hide, a wide dome tapering slightly above heavy orbital ridges, and thick dark scalp tendrils braided only by an outer woven retaining cord, never human hair. Wears a simple dark brown short vest over a sage-grey long-sleeved wrap top and divided cream knee-length skirt. A small soft cloth shopping bag hangs from the crook of her left elbow; right hand holds the bag's upper edge. Patient waiting stance, modest everyday garment construction.",
+      "status": "generated",
+      "file": "witness-13.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA medium-height athletic adult female Yautja civilian with strong thighs, rust-ochre spotted hide, a wide dome tapering slightly above heavy orbital ridges, and thick dark scalp tendrils braided only by an outer woven retaining cord, never human hair. Wears a simple dark brown short vest over a sage-grey long-sleeved wrap top and divided cream knee-length skirt. A small soft cloth shopping bag hangs from the crook of her left elbow; right hand holds the bag's upper edge. Patient waiting stance, modest everyday garment construction.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a162b5c5-e42a-43a8-86db-d2a1e615f804.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-13.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 14,
+        "width": 978,
+        "height": 1497
+      },
+      "sha256": "4ec0646a8bc2569d5ffcdbab3e5c177a5e2cbbf27d09c84c30b88d042b0f5d15",
+      "byteCount": 2094050,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.044921875,
+        "top": 0.009114583333333334,
+        "bottom": 0.016276041666666668
+      },
+      "fullyTransparentFraction": 0.6708532969156901,
+      "githubBlobSha": "2e11660e68f9491d22d871a1fd668f4813e9d6ff"
+    },
+    {
+      "id": "witness-14",
+      "slot": 14,
+      "designId": "temoin-gilet-clair",
+      "design": "A short very heavyset adult male Yautja bystander with rounded abdomen and broad upper arms, pale yellow-brown mottled hide, broad domed skull and thick black scalp tendrils tied into two low compact loops behind the head. Wears a well kept cream embroidered short overcoat with minimal geometric stitching over a deep brown plain tunic, an olive cloth sash and loose calf-length trousers. Both hands rest relaxed in front at the edge of the sash. Civilian clothing with no metal breastplate, no helmet, no weapons.",
+      "status": "generated",
+      "file": "witness-14.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA short very heavyset adult male Yautja bystander with rounded abdomen and broad upper arms, pale yellow-brown mottled hide, broad domed skull and thick black scalp tendrils tied into two low compact loops behind the head. Wears a well kept cream embroidered short overcoat with minimal geometric stitching over a deep brown plain tunic, an olive cloth sash and loose calf-length trousers. Both hands rest relaxed in front at the edge of the sash. Civilian clothing with no metal breastplate, no helmet, no weapons.",
+      "githubBlobSha": "e0c689f61228598467156d1da6c34a7c9252c097",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-294b8674-3639-4032-aa33-9d6ff5189142.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-14.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 33,
+        "width": 1012,
+        "height": 1477
+      },
+      "sha256": "1b36a51d6e6286b003f6deb7644d51879511e0cb0cf8fcc240ce25c1a7a4863d",
+      "byteCount": 2467306,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.01171875,
+        "top": 0.021484375,
+        "bottom": 0.016927083333333332
+      },
+      "fullyTransparentFraction": 0.5623162587483724
+    },
+    {
+      "id": "witness-15",
+      "slot": 15,
+      "designId": "temoin-livre-ferme",
+      "design": "An older tall slender adult female Yautja gallery resident with long neck and softly stooped shoulders, dark slate hide with silver speckles, a gently rounded large alien dome and thick pale grey tendrils falling in a single loose low bound group. Wears a muted violet shawl over a light taupe sleeveless ankle-short robe split over dark trousers. She supports a small CLOSED worn book with both hands at her waist, warm attentive gaze aimed toward the viewer's right. A simple woven belt, no institutional or ritual symbols, no writing.",
+      "status": "generated",
+      "file": "witness-15.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nAn older tall slender adult female Yautja gallery resident with long neck and softly stooped shoulders, dark slate hide with silver speckles, a gently rounded large alien dome and thick pale grey tendrils falling in a single loose low bound group. Wears a muted violet shawl over a light taupe sleeveless ankle-short robe split over dark trousers. She supports a small CLOSED worn book with both hands at her waist, warm attentive gaze aimed toward the viewer's right. A simple woven belt, no institutional or ritual symbols, no writing.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-520ad890-c821-4a56-8c40-27682f868320.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-15.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 15,
+        "width": 947,
+        "height": 1506
+      },
+      "sha256": "1a3d03ff43b4c74b30f5d4cdcfe3e42bd90a143a035794cf4b7ea780dc654e96",
+      "byteCount": 2122732,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.01171875,
+        "top": 0.009765625,
+        "bottom": 0.009765625
+      },
+      "fullyTransparentFraction": 0.6502978006998698,
+      "githubBlobSha": "37ac49cdf9c5ad00059717586165dae8b3443c7f"
+    },
+    {
+      "id": "witness-16",
+      "slot": 16,
+      "designId": "temoin-gourde-personnelle",
+      "design": "A very tall slender adult male Yautja civilian with long arms, narrow hips, deep umber-green hide with light patches, broad flattened dome and several short thick scalp tendrils swept to one side and bound. Wears a plain ochre short-sleeved tunic, charcoal long cloth vest, dark fitted trousers and modest leather ankle bands. Holds a small personal capped drinking flask casually in his right hand beside the hip, left thumb hooked under the fabric waist sash. Still relaxed observer, no camping pack, no expedition equipment.",
+      "status": "generated",
+      "file": "witness-16.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA very tall slender adult male Yautja civilian with long arms, narrow hips, deep umber-green hide with light patches, broad flattened dome and several short thick scalp tendrils swept to one side and bound. Wears a plain ochre short-sleeved tunic, charcoal long cloth vest, dark fitted trousers and modest leather ankle bands. Holds a small personal capped drinking flask casually in his right hand beside the hip, left thumb hooked under the fabric waist sash. Still relaxed observer, no camping pack, no expedition equipment.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7f12b3e6-cc98-432f-9608-87560f1da26a.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-16.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 25,
+        "y": 1,
+        "width": 987,
+        "height": 1511
+      },
+      "sha256": "cea82e3b2cf280205ffc3968ff5ce6bed4974419e24eb76cb95e1932784c8307",
+      "byteCount": 2004487,
+      "clearMarginsFraction": {
+        "left": 0.0244140625,
+        "right": 0.01171875,
+        "top": 0.0006510416666666666,
+        "bottom": 0.015625
+      },
+      "fullyTransparentFraction": 0.6865107218424479,
+      "githubBlobSha": "3b4c4f5f1152477328ed57a4465a96b10fb593ef"
+    },
+    {
+      "id": "witness-17",
+      "slot": 17,
+      "designId": "temoin-chale-rabat",
+      "design": "A petite rounded adult female Yautja gallery neighbour with stout legs, copper-red spotted hide, broad high crown and a cluster of thick black scalp tendrils tucked low beneath a shoulder wrap. Wears a faded terracotta hooded wrap with hood DOWN and wide soft collar, a cream full-sleeved tunic and dark brown calf-length divided skirt. Each hand lightly holds one front edge of the shawl near the lower chest, as if settling it comfortably around her shoulders. Ordinary dignified civilian, exposed face, no mask, no ragged hems.",
+      "status": "generated",
+      "file": "witness-17.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA petite rounded adult female Yautja gallery neighbour with stout legs, copper-red spotted hide, broad high crown and a cluster of thick black scalp tendrils tucked low beneath a shoulder wrap. Wears a faded terracotta hooded wrap with hood DOWN and wide soft collar, a cream full-sleeved tunic and dark brown calf-length divided skirt. Each hand lightly holds one front edge of the shawl near the lower chest, as if settling it comfortably around her shoulders. Ordinary dignified civilian, exposed face, no mask, no ragged hems.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f9f972d3-cc3f-4114-9439-eda48cad4337.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-17.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 968,
+        "height": 1522
+      },
+      "sha256": "7ef2746319b39437b0b24e8e5aee7fcd39895f9eb8ab33c9092baa13aebd7907",
+      "byteCount": 2231746,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.0546875,
+        "top": 0.0026041666666666665,
+        "bottom": 0.006510416666666667
+      },
+      "fullyTransparentFraction": 0.6392726898193359,
+      "githubBlobSha": "6594c52892a4cc5a704a2b1709ecae487fa20392"
+    },
+    {
+      "id": "witness-18",
+      "slot": 18,
+      "designId": "temoin-attente-gilet",
+      "design": "A tall athletic adult male Yautja gallery resident with wide shoulders and tapered waist, grey-olive hide with bold dark mottling and an old healed small brow scar, large cranium and long thick scalp tendrils gathered into a close high tail. Wears a plain navy sleeveless cloth vest over a sand underwrap, broad rust sash, dark loose trousers and cloth knee wraps. Arms loosely crossed at chest height with hands visibly resting against opposite upper arms, a mild attentive head tilt. Entirely civilian clothing, no shoulder armour or weapon.",
+      "status": "generated",
+      "file": "witness-18.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA tall athletic adult male Yautja gallery resident with wide shoulders and tapered waist, grey-olive hide with bold dark mottling and an old healed small brow scar, large cranium and long thick scalp tendrils gathered into a close high tail. Wears a plain navy sleeveless cloth vest over a sand underwrap, broad rust sash, dark loose trousers and cloth knee wraps. Arms loosely crossed at chest height with hands visibly resting against opposite upper arms, a mild attentive head tilt. Entirely civilian clothing, no shoulder armour or weapon.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-eb0438be-3a1c-4406-86db-cc0444e98a0a.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-18.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 16,
+        "width": 947,
+        "height": 1498
+      },
+      "sha256": "fcdf94b050d46d8b381f507642eaea0dbb22173787d0333ad71de7477e7b3547",
+      "byteCount": 2010419,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.01171875,
+        "top": 0.010416666666666666,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6932462056477865,
+      "githubBlobSha": "be3099444d5eca72b36b14d9c9eebe4536f9263b"
+    },
+    {
+      "id": "witness-19",
+      "slot": 19,
+      "designId": "temoin-jeton-souvenir",
+      "design": "A medium-height graceful adult female Yautja civilian with lean limbs, warm light olive hide and pale freckles, broad deep domed skull and heavy orbital ridges, thick dark scalp tendrils arranged in a neat crown bundle behind the head. Wears a pale sandy long-sleeved robe with an asymmetric chest fold, a narrow teal cloth sash and simple brown ankle wraps. Holds a small plain oval bronze keepsake token between both hands just below her chest, looking thoughtfully toward the right. No text or readable engraving, no priest or royal outfit.",
+      "status": "generated",
+      "file": "witness-19.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA medium-height graceful adult female Yautja civilian with lean limbs, warm light olive hide and pale freckles, broad deep domed skull and heavy orbital ridges, thick dark scalp tendrils arranged in a neat crown bundle behind the head. Wears a pale sandy long-sleeved robe with an asymmetric chest fold, a narrow teal cloth sash and simple brown ankle wraps. Holds a small plain oval bronze keepsake token between both hands just below her chest, looking thoughtfully toward the right. No text or readable engraving, no priest or royal outfit.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e7384ffe-a666-4ba4-b43b-c70162e7312b.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-19.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 55,
+        "y": 32,
+        "width": 955,
+        "height": 1487
+      },
+      "sha256": "8bf6aa8c7572d852e741a9cc59f0a17f3a1e8c473633311c061649969025fbe4",
+      "byteCount": 2021647,
+      "clearMarginsFraction": {
+        "left": 0.0537109375,
+        "right": 0.013671875,
+        "top": 0.020833333333333332,
+        "bottom": 0.011067708333333334
+      },
+      "fullyTransparentFraction": 0.6716060638427734,
+      "githubBlobSha": "aa1954407f5f044b420baaf911e8ea5e7f5a54fa"
+    },
+    {
+      "id": "witness-20",
+      "slot": 20,
+      "designId": "temoin-attention-calme",
+      "design": "A medium-height older adult male Yautja neighbourhood witness with sturdy build and broad hands, dark grey-brown age-speckled skin, thick cranial dome, heavy expressive orbital ridges and several thick white-streaked scalp tendrils loosely tied behind his neck. Wears a simple indigo shoulder cape with a light flax lining, a charcoal long tunic over brown trousers and a leather belt with one small personal pouch. One hand rests against his chest clasp and the other remains open at his side. Gentle alert body language, dignified civilian, no tools or weapon.",
+      "status": "generated",
+      "file": "witness-20.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original full-body adult Yautja civilian WITNESS of the Homeworld galleries as a 2D static game sprite. TWO references: image1 is the official Stan Winston 1987 Predator head and has ABSOLUTE PRIORITY for face/species anatomy; image2 is the game's civic atlas and sets only realistic painterly finish, full-body scale and civilian world style. Do not copy either reference composition or existing person. STRICT CINEMA YAUTJA ANATOMY: broad alien domed cranium, heavy alien orbital ridges, deep-set small eyes, speckled reptilian hide. FOUR DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES around a SEPARATE INNER TOOTHED MOUTH: two upper cheek mandibles with outward ivory tusks AND two substantial lower mandibles with long tusks curving upward. Clearly readable four-part structure in a calm partly open position, not roaring. These are fleshy articulated mouthparts, not two nasal tubes or two hanging fangs. NO human nose, no human lips, no human chin, no human face, no elf/orc face. Thick segmented SCALP TENDRILS, not human hair or ordinary braids. Clawed hands, full reptilian clawed feet. Body in three-quarter view facing RIGHT, face slightly turned back toward viewer so all four mandibles can be read, mildly elevated camera. One quiet standing civilian pose. Unique build and garment architecture in the subject design; ordinary bystander, no uniform, military armour, weapon, skull, royal regalia or poverty caricature. Detailed realistic painted fabric/leather/skin and believable joints/contact where hands hold objects. Full body with all feet and props completely inside portrait, centered with generous clear alpha above head and below toes, aim 8 percent margin. Actual transparent alpha background. NO ground, floor, cast shadow, brown vignette, scenery, extra person, inset, atlas, sheet, text, readable letters, label, border, logo or watermark; omit watermark from the source reference. Native contact shading on body and clothing only. ONE single-pose static sprite.\n\nSUBJECT DESIGN:\nA medium-height older adult male Yautja neighbourhood witness with sturdy build and broad hands, dark grey-brown age-speckled skin, thick cranial dome, heavy expressive orbital ridges and several thick white-streaked scalp tendrils loosely tied behind his neck. Wears a simple indigo shoulder cape with a light flax lining, a charcoal long tunic over brown trousers and a leather belt with one small personal pouch. One hand rests against his chest clasp and the other remains open at his side. Gentle alert body language, dignified civilian, no tools or weapon.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7d94b83c-503c-4b65-ac09-9be20b06a6cc.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/witness/witness-20.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 16,
+        "width": 998,
+        "height": 1504
+      },
+      "sha256": "1f8a5a6673b208b6a8f14350fb00bbc748ab03b4d63016525406359512628006",
+      "byteCount": 2440399,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.025390625,
+        "top": 0.010416666666666666,
+        "bottom": 0.010416666666666666
+      },
+      "fullyTransparentFraction": 0.580163319905599,
+      "githubBlobSha": "a5303fa2c730680b7c6398bdf18cccf5f4c0a22c"
+    }
+  ]
+}

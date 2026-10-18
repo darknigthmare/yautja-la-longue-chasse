@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-04T19:59:58.192Z",
+  "nextDir": "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/.next",
+  "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+  "files": [
+    {
+      "path": "static/css/da7a866f22f7ee19.css",
+      "bytes": 124276,
+      "sha256": "009533398115f5c387bb289edd20e534dc326772759946badc9531f1fd8a6108"
+    },
+    {
+      "path": "static/css/b3cd3ff457c8b3fa.css",
+      "bytes": 16931,
+      "sha256": "baf38d2b36e78804ace193984f556713fc85394b4a493e2b68f325a4558760a4"
+    }
+  ],
+  "checks": [
+    {
+      "id": "toast-does-not-intercept-hud",
+      "selector": "toast",
+      "property": "pointer-events",
+      "expected": "none",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/da7a866f22f7ee19.css",
+          "selector": ".toast",
+          "value": "none",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "immersive-toast-above-desktop-menu",
+      "selector": "desktop",
+      "property": "bottom",
+      "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/da7a866f22f7ee19.css",
+          "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+          "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-below-health-hud",
+      "selector": "touch",
+      "property": "top",
+      "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/da7a866f22f7ee19.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-releases-bottom",
+      "selector": "touch",
+      "property": "bottom",
+      "expected": "auto",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/da7a866f22f7ee19.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "auto",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+    "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+    "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+  ]
+}
