@@ -21,7 +21,7 @@ test('fourteen new physical-scene PNGs and the shared furniture kit use unique U
 });
 test('controls become ready only after cold animation and solid scenery decode, including one deduplicated URL',async()=>{
  await images(async created=>{const progress=[],load=api.preloadHomeworldMotionAssetsV74({youth:true,additionalSources:[...sources,sources[0]],onProgress:p=>progress.push(p)});await load.done;
-  assert.equal(created.length,39);assert.equal(progress.length,39);assert(progress.slice(0,-1).every(p=>!p.ready));assert.deepEqual(progress.at(-1),{ready:true,error:null,loaded:39,total:39});load.cancel();});
+  assert.equal(created.length,39);assert.equal(new Set(created.map(image=>image.src)).size,39);assert.equal(progress.length,40);assert.deepEqual(progress[0],{ready:false,error:null,loaded:0,total:39});assert.deepEqual(progress.map(p=>p.loaded),Array.from({length:40},(_,loaded)=>loaded));assert(progress.slice(0,-1).every(p=>!p.ready));assert.deepEqual(progress.at(-1),{ready:true,error:null,loaded:39,total:39});load.cancel();});
 });
 test('a missing solid shelf freezes readiness with a decor-specific error and retries the identical URLs',async()=>{
  const missing=sources.find(s=>s.src.endsWith('/interior/rack-lateral.png')).src,progress=[];

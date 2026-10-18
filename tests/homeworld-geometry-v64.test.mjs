@@ -2,10 +2,14 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
 import {readFileSync} from 'node:fs';
-const load=async path=>{const r=await build({entryPoints:[path],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
+const load=async (...paths)=>{const r=await build({stdin:{contents:paths.map(path=>`export * from './${path}';`).join('\n'),resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
 const city=await load('app/game/systems/homeworldCity.ts'), codex=await load('app/game/systems/homeworldElementCodexV64.ts');
 const geo=await load('app/game/systems/homeworldGeometryV64.ts'), rooms=await load('app/game/systems/homeworldInteriorsV64.ts');
 const hw=await load('app/game/systems/homeworld.ts'), art=await load('app/game/systems/homeworldArtV64.ts');
+// Mount the same late solid collections as the real scene in one module graph.
+const world=await load('app/game/systems/homeworldWorldV77.ts','app/game/systems/homeworldCivicWorldV80.ts',
+  'app/game/systems/homeworldStreetDecorMountV84.ts','app/game/systems/homeworldStreetCompositionMountV92.ts');
+const runtime=world;
 const newDecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v68-')).map(p=>p.id);
 const v69DecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v69-')).map(p=>p.id);
 const close=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
@@ -17,19 +21,24 @@ test('one35-degree camera preserves vertical adult/door scale, including inverse
     close(r.x,p.x);close(r.y,p.y);close(geo.homeworldProjectGroundV64(p).y-q.y,z);
   }
 });
-test('43 actual solid envelopes never overlap, every door accepts only its accessible front passage',()=>{
-  assert.equal(city.HOMEWORLD_BUILDINGS.length,43);
-  for(let i=0;i<city.HOMEWORLD_BUILDINGS.length;i++)for(let j=i+1;j<city.HOMEWORLD_BUILDINGS.length;j++){
-    assert(!geo.homeworldBuildingFootprintsOverlapV76(city.HOMEWORLD_BUILDINGS[i],city.HOMEWORLD_BUILDINGS[j]),`${i}/${j}`);
+test('43 actual solid envelopes never overlap on their physical floor, every door accepts only its accessible front passage',()=>{
+  const buildings=world.HOMEWORLD_BUILDINGS_V77;
+  assert.equal(buildings.length,43);
+  assert.deepEqual(buildings.map(b=>b.id),city.HOMEWORLD_BUILDINGS.map(b=>b.id));
+  for(let i=0;i<buildings.length;i++)for(let j=i+1;j<buildings.length;j++){
+    if(buildings[i].levelId!==buildings[j].levelId)continue;
+    assert(!geo.homeworldBuildingFootprintsOverlapV76(buildings[i],buildings[j]),`${buildings[i].id}/${buildings[j].id}`);
   }
-  for(const building of city.HOMEWORLD_BUILDINGS){
+  for(const building of buildings){
     const door=geo.homeworldBuildingDoorwayV64(building);
-    assert.equal(city.nearestHomeworldDoor(door.approach)?.id,building.id);
+    assert.equal(world.nearestHomeworldDoorV77(building.levelId,door.approach)?.id,building.id);
+    for(const level of world.HOMEWORLD_LEVELS_V77.filter(level=>level.id!==building.levelId))
+      assert.notEqual(world.nearestHomeworldDoorV77(level.id,door.approach)?.id,building.id,'a different physical floor cannot open '+building.id);
     const frame=geo.homeworldBuildingGroundFrameV76(building);
-    const world=(u,v)=>({x:building.x+u*frame.tangent.x+v*frame.normal.x,y:building.y+u*frame.tangent.y+v*frame.normal.y});
-    for(const p of [world(0,-20),world(building.width/2,25),world(0,130)])
-      assert.notEqual(city.nearestHomeworldDoor(p)?.id,building.id,`cannot enter ${building.id} through back/side/from afar`);
-    assert.equal(city.isHomeworldWalkable(world(0,-70)),false,'front wall remains solid');
+    const worldPoint=(u,v)=>({x:building.x+u*frame.tangent.x+v*frame.normal.x,y:building.y+u*frame.tangent.y+v*frame.normal.y});
+    for(const p of [worldPoint(0,-20),worldPoint(building.width/2,25),worldPoint(0,130)])
+      assert.notEqual(world.nearestHomeworldDoorV77(building.levelId,p)?.id,building.id,`cannot enter ${building.id} through back/side/from afar`);
+    assert.equal(runtime.homeworldCivicWalkableV80(building.levelId,worldPoint(0,-70)),false,'front wall remains solid');
   }
 });
 test('painted forward prop pivots and station volumes share the exact native width and depth',()=>{
@@ -46,13 +55,14 @@ test('painted forward prop pivots and station volumes share the exact native wid
   assert.equal(city.isHomeworldTerrainWalkable(originalCorner,{halfWidth:0,halfDepth:0}),false,'the former unsupported ground corner remains outside terrain');
   assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+11},{halfWidth:0,halfDepth:0}),false,'eleven whole ground units are insufficient');
   assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+12},{halfWidth:0,halfDepth:0}),true,'the minimum twelve-unit shift places the same support on real ground');
-  for(const prop of city.HOMEWORLD_PROPS){
+  assert.deepEqual(world.HOMEWORLD_PROPS_V77.map(p=>p.id),city.HOMEWORLD_PROPS.map(p=>p.id));
+  for(const prop of world.HOMEWORLD_PROPS_V77){
     const source=art.HOMEWORLD_PROP_ART_V64[prop.artId],p=city.homeworldPropArtPlacement(prop);
     const sx=p.width/source.sourceRect.width,sy=p.height/source.sourceRect.height;
     close(sx,sy);close(p.left+source.pivot.x*sx,prop.x);close(p.top+source.pivot.y*sy,geo.homeworldProjectGroundV64(prop).y);
     const center={x:prop.x,y:prop.y-prop.footprint.halfDepth};
-    assert.equal(city.homeworldCollisionAt(center,{halfWidth:0,halfDepth:0})?.id,prop.id);
-    assert(city.isHomeworldTerrainWalkable(center,prop.footprint),prop.id);
+    assert.equal(runtime.homeworldCivicCollisionV80(prop.levelId,center,{halfWidth:0,halfDepth:0})?.id,prop.id);
+    assert(world.homeworldTerrainV77(prop.levelId,center,prop.footprint),prop.id);
   }
   for(const point of city.HOMEWORLD_OUTDOOR_POINT_ART_V64){
     const source=art.HOMEWORLD_PROP_ART_V64[point.artId],solid=city.HOMEWORLD_POINT_PROP_COLLIDERS.find(p=>p.id===point.id);

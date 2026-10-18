@@ -26,6 +26,7 @@ function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
     sessionAliveRef: { current: true },
+    pendingTrophyCommitRef: { current: null },
     // Adult campaign fixture has no uncertain nursery transaction.
     nurseryWriteAttemptRef: { current: null },
     pendingSocialWriteRef: { current: null },
@@ -300,4 +301,27 @@ test("unmounted campaign callbacks cannot launch, autosave, settle or clear a re
   assert.equal(environment.clearHuntSession(), false);
   callback("persist", environment)(environment.save);
   assert.equal(JSON.stringify(observations), before);
+});
+
+
+test("a pending rite blocks hunt launch and terminal rewards until its receipt is resolved", () => {
+  const { environment, observations, launch, finish } = fixture(), receipt = {};
+  environment.pendingTrophyCommitRef.current = receipt;
+  launch();
+  assert.equal(observations.writes, 0);
+  assert.equal(observations.clears, 0);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  environment.pendingTrophyCommitRef.current = null;
+  launch();
+  const session = environment.activeHuntSessionRef.current, writes = observations.writes, clears = observations.clears;
+  environment.pendingTrophyCommitRef.current = receipt;
+  finish({ outcome: "success" });
+  assert.equal(observations.writes, writes);
+  assert.equal(observations.clears, clears);
+  assert.equal(observations.rewards, 0);
+  assert.equal(environment.activeHuntSessionRef.current, session);
+  assert.equal(environment.pendingTrophyCommitRef.current, receipt);
+  environment.pendingTrophyCommitRef.current = null;
+  finish({ outcome: "success" });
+  assert.equal(observations.rewards, 1);
 });

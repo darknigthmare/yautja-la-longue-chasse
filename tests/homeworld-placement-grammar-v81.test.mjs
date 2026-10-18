@@ -38,8 +38,11 @@ test('authored port shoulders have seven distinct geometry/recipes and never imp
  assert(new Set(courts.map(c=>c.props.length)).size>=3);
  assert(courts.some(c=>c.y>5500));assert(courts.some(c=>c.y<5200));
  for(const c of courts){assert(c.focus&&c.props.every(p=>p.purpose.length>15));}
- assert.equal(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.length,14);
- assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,12);
+ assert.equal(api.HOMEWORLD_URBAN_EXTRA_CANDIDATES_V78.length,18,'four V84 stable/kennel circuits extend the fourteen original candidates');
+ assert.equal(api.HOMEWORLD_URBAN_EXTRAS_V78.length,16);
+ assert.deepEqual(api.HOMEWORLD_URBAN_EXTRAS_V78.filter(item=>item.id.startsWith('urban-v84:')).map(item=>item.id),[
+  'urban-v84:stable-supplies','urban-v84:stable-harness','urban-v84:kennel-return','urban-v84:kennel-care',
+ ]);
  assert.deepEqual(api.HOMEWORLD_URBAN_EXTRA_REJECTIONS_V78,[
   {id:'urban-v78:extra:lower-1',reason:'urban-v78:lower-work-north:pending-facade'},
   {id:'urban-v78:extra:lower-4',reason:'urban-v78:lower-halt-west:pending-facade'},

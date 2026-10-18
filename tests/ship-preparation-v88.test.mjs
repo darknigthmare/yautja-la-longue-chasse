@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import {verifyBibleSourceIntegrityV85} from './helpers/bible-source-integrity-v85.mjs';
 
 const bundle = await build({ stdin: { contents: `export * from './app/game/systems/shipPreparationV88';
   export {defaultSave} from './app/game/save'; export {createDefaultShipProgression,SHIP_PROGRESSION_STORAGE_KEY,SHIP_PROGRESSION_VERSION} from './app/game/systems/progression';
@@ -22,14 +22,13 @@ function inspect(state, id, context) { const result = api.inspectShipPreparation
 function seven(context, state = null) { for (const id of api.SHIP_LEVEL_STATIONS.map(station => station.id).filter(id => id !== 'launch-airlock')) state = inspect(state, id, context); return state; }
 function complete(context) { return inspect(seven(context), 'launch-airlock', context); }
 
-test('twelve source rows retain the original V6 SHA and eleven shared corpus rows match exact cells', async () => {
-  const [book, ships, dialogues] = await Promise.all([
-    readFile(new URL('../work-local/drive-import-20261007/downloads/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx', import.meta.url)),
+test('twelve source rows retain their committed extraction receipt and eleven shared corpus rows match exact cells', async () => {
+  const [ships, dialogues] = await Promise.all([
     readFile(new URL('../public/game/dialogues/v85/bible-ships.json', import.meta.url), 'utf8'),
     readFile(new URL('../public/game/dialogues/v85/bible-dialogues.json', import.meta.url), 'utf8'),
   ]);
   const source = api.SHIP_PREPARATION_SOURCE_V88, documents = [JSON.parse(ships), JSON.parse(dialogues)];
-  assert.equal(createHash('sha256').update(book).digest('hex'), source.source.sha256);
+  await verifyBibleSourceIntegrityV85(source.source);
   assert.equal(source.source.totalWorkbookSheets, 139);
   assert.equal(source.sheets.reduce((sum, sheet) => sum + sheet.rows.length, 0), 12);
   let checked = 0;

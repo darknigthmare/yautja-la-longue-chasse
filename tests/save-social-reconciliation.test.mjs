@@ -184,6 +184,7 @@ export function mount(initial, api, storage, key) {
   let rendered = initial, failure = null, toast = "";
   const useRef = current => ({ current });
   const useCallback = callback => callback;
+  const pendingTrophyCommitRef = { current: null };
   const pendingTerminalRunRef = { current: null };
   const activeHuntSessionRef = { current: null };
   const isExplorationMission = () => false;
@@ -199,6 +200,8 @@ export function mount(initial, api, storage, key) {
   return {
     act: persistSocialProgress,
     endSession() { sessionAliveRef.current = false; },
+    setPendingTrophy(receipt) { pendingTrophyCommitRef.current = receipt; },
+    get pendingTrophy() { return pendingTrophyCommitRef.current; },
     get save() { return saveRef.current; }, get rendered() { return rendered; },
     get failure() { return failure; }, get toast() { return toast; },
     replaceLocal(next) { saveRef.current = next; rendered = next; },
@@ -301,4 +304,20 @@ test("a detached campaign cannot commit a queued social decision", () => {
   assert.equal(component.act({homeworld:scenario.next.homeworld}), false);
   assert.equal(scenario.storage.getItem(key), before);
   assert.deepEqual(component.save.homeworld.evidenceIds, []);
+});
+
+
+test("GameClient refuses social writes while preserving a pending trophy receipt, then resumes", () => {
+  const scenario = setup(), component = mount(scenario.initial, api, scenario.storage, key), receipt = {};
+  const writes = scenario.storage.primaryWrites, bytes = scenario.storage.values.get(key);
+  component.setPendingTrophy(receipt);
+  assert.equal(component.act({ homeworld: scenario.next.homeworld }), false);
+  assert.equal(scenario.storage.primaryWrites, writes);
+  assert.equal(scenario.storage.values.get(key), bytes);
+  assert.equal(component.save, scenario.initial);
+  assert.equal(component.pendingTrophy, receipt);
+  assert.match(component.toast, /sauvegarde du rite/);
+  component.setPendingTrophy(null);
+  assert.equal(component.act({ homeworld: scenario.next.homeworld }), true);
+  assert.deepEqual(component.save.homeworld.evidenceIds, ["suspect-trophy"]);
 });

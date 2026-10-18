@@ -47,7 +47,7 @@ function fixture(initialOverrides = {}) {
   const initial = api.writeSaveWithStatus({ ...api.defaultSave('2026-10-01T00:00:00.000Z'), ...initialOverrides }, storage, key).save;
   const environment = { ...api, structuredClone, crypto: { randomUUID: () => 'v68-new-run' },
     save: initial, saveRef: { current: initial }, entry: { ownerCreatedAt: initial.createdAt }, progressRef: { current: initial.homeworld },
-    sessionAliveRef: { current: true }, pendingTerminalRunRef: { current: null }, pendingSocialWriteRef: { current: null }, activeHuntSessionRef: { current: null },
+    sessionAliveRef: { current: true }, pendingTrophyCommitRef: { current: null }, pendingTerminalRunRef: { current: null }, pendingSocialWriteRef: { current: null }, activeHuntSessionRef: { current: null },
     actorRef: { current: api.createHomeworldWorldActorV77() }, interiorRef: { current: null }, dialogStateRef: { current: null }, levelRefV77: { current: '0' },
     suspendedRef: { current: false }, pausedRef: { current: false }, youthWelcome: false,
     clearInputs() {}, setAnnouncement() {}, setSaveFailure() {}, setHubLocation() {},

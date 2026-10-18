@@ -86,7 +86,7 @@ async function writeImageGenFixture(filePath, biomeIndex) {
     .toFile(filePath);
 }
 
-test("V19 processes ImageGen PNGs through the official chroma helper without deleting inputs", async (t) => {
+test("V19 processes ImageGen PNGs through the installed helper or portable matte without deleting inputs", async (t) => {
   const temporaryRoot = await mkdtemp(
     path.join(os.tmpdir(), "yautja-v19-process-test-"),
   );
@@ -122,6 +122,9 @@ test("V19 processes ImageGen PNGs through the official chroma helper without del
   assert.notEqual(result.master.sha256, result.runtime.sha256);
   assert.equal(result.runtimeInspection.alpha, true);
   assert.ok(result.runtimeInspection.transparentRatio >= 0.25);
+  assert.ok(["python-helper", "portable-sharp-v19"].includes(result.helper.mode));
+  assert.ok(path.isAbsolute(result.helper.path));
+  assert.match(result.helper.sha256, /^[a-f0-9]{64}$/);
 
   const masterMetadata = await sharp(result.master.path).metadata();
   const runtimeMetadata = await sharp(result.runtime.path).metadata();

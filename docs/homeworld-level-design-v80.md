@@ -1,5 +1,13 @@
 # Homeworld V80 — cours, appuis et circulation
 
+## État des contrats vérifiés en V95
+
+Les comptes et captures V80 ci-dessous sont des preuves historiques. La composition V81 active comporte désormais 43 propositions civiques, dont 19 acceptées et 24 refusées ; le pupitre du mausolée est `civic-v81:trophy-mausoleum:0`. Son placement suit le vrai repère de devanture V81 et sa peinture reste dégagée. L’ancienne correction V80 à (180,2000) est conservée comme provenance, avec son contrôle d’appui, sans être présentée comme l’ancre active.
+
+Les 374 origines naturelles V71/V75 sont conservées, avec les onze révisions V80 et 18 épaules actuellement acceptées, soit 392 instances. Les anciens tests de retrait mesurent explicitement le réseau public historique : ils excluent les parvis V76 et utilisent la corniche des Trois Vents antérieure à sa révision V92. La géométrie gelée de cette corniche porte le commit et le SHA de sa source dans `tests/fixtures/homeworld-storm-chain-v72-before-v92.json` ; elle n’entre jamais dans le moteur du jeu.
+
+Ces retraits historiques ne garantissent pas le dégagement visuel de toutes les racines face aux chaussées ajoutées depuis V77. Certaines racines décoratives recoupent aujourd’hui la chaussée du port ou des remparts ; ce comportement existe déjà sur la branche principale avant les PR3/PR4. Les sprites naturels restent sans collider et ne donnent aucun support praticable. Les tests actuels contrôlent chacune des 392 instances, son montage unique au niveau0, son absence des cinq autres étages et l’invariance du terrain et des collisions avant/après rendu. Les dix sorties et les 43 portes sont contrôlées séparément par les vraies routes multiétages, avec vérification de chaque segment pour le corps complet. Aucune nouvelle certification esthétique globale n’en découle.
+
 Passe du 3 octobre 2026, base publiée V79 conservée. Ce lot corrige la composition et monte des objets séparés ; il ne certifie pas une ville commerciale terminée ni un plan canonique de Yautja Prime. Les noms de cours, meubles civils et motifs nouveaux sont des créations locales du jeu.
 
 ## Références et méthode

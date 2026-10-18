@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import {verifyBibleSourceIntegrityV85} from './helpers/bible-source-integrity-v85.mjs';
 
 async function moduleFor(relative) {
   const bundle = await build({ entryPoints: [fileURLToPath(new URL(relative, import.meta.url))], bundle: true,
@@ -26,11 +26,10 @@ function berth(state) {
   return state;
 }
 
-test('the seven V87 source rows preserve exact cells and pin the unchanged supplied workbook', async () => {
+test('the seven V87 source rows preserve exact public cells and the committed workbook provenance', async () => {
   const source = flight.SHIP_FLIGHT_SOURCE_V87;
-  const [publicCorpus, workbook] = await Promise.all([readFile(new URL('../public/game/dialogues/v85/bible-ships.json', import.meta.url), 'utf8'),
-    readFile(new URL('../work-local/drive-import-20261007/downloads/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx', import.meta.url))]);
-  assert.equal(createHash('sha256').update(workbook).digest('hex'), source.source.sha256);
+  await verifyBibleSourceIntegrityV85(source.source);
+  const publicCorpus=await readFile(new URL('../public/game/dialogues/v85/bible-ships.json', import.meta.url),'utf8');
   const corpus = JSON.parse(publicCorpus);
   let count = 0;
   for (const sheet of source.sheets) for (const row of sheet.rows) {

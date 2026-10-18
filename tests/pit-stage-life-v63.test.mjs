@@ -29,7 +29,7 @@ test('the selected bank requests only active V63/retained V62 sprites and preser
  assert.equal(api.getPitArenaArtPaths('arena-187-golgotha-uscm-airlock').filter(p=>p.includes('/v62/pit-life/')).length,3);
 });
 test('seven native files remain byte identical to their receipts; six new sheets contain36 distinct cells',async()=>{
- const receipts=[];for(const file of (await fs.readdir('docs/v63-generation')).filter(f=>f.startsWith('arena-'))){const r=JSON.parse(await fs.readFile('docs/v63-generation/'+file,'utf8'));receipts.push(r);assert.equal(sha(await fs.readFile(r.workspacePath)),r.sha256);}
+ const receipts=[];for(const file of (await fs.readdir('docs/v63-generation')).filter(f=>f.startsWith('arena-'))){const r=JSON.parse(await fs.readFile('docs/v63-generation/'+file,'utf8'));receipts.push(r);const event=r.frames?stages.find(s=>s.stageId===r.stageId)?.events.find(e=>e.id===r.id):null;assert(!r.frames||event,'receipt must identify its installed native event');const installed=event?'public'+event.src:r.workspacePath;assert(installed.startsWith('public/'),'verify the retained runtime PNG, not a workstation extraction');assert.equal(sha(await fs.readFile(installed)),r.sha256);}
  assert.equal(receipts.length,7);const sheets=receipts.filter(r=>r.frames);assert.equal(sheets.length,6);assert.equal(sheets.flatMap(r=>r.frames).length,36);
  for(const r of sheets){assert.equal(new Set(r.frames.map(f=>f.contentSha256)).size,6);assert(r.frames.every(f=>f.borderSolidPixels===0));}
 });

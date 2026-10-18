@@ -9,7 +9,54 @@ const city = await load("app/game/systems/homeworldCity.ts");
 const codex = await load("app/game/systems/homeworldSpatialCodex.ts");
 const hw = await load("app/game/systems/homeworld.ts");
 const art = (await load("app/game/systems/homeworldCityArtV54.ts")).HOMEWORLD_CITY_ART_V54;
+const world = await load("app/game/systems/homeworldWorldV77.ts");
+const civic = await load("app/game/systems/homeworldCivicWorldV80.ts");
+const navigation = await load("app/game/systems/homeworldNavigationV77.ts");
 const regionConnections = JSON.parse(readFileSync("app/game/data/homeworldRegionConnectionsV72.json", "utf8"));
+
+function playWorldRoute(route, label) {
+  let actor = world.createHomeworldWorldActorV77(), levelId = "0";
+  for (const segment of route.segments) {
+    if (segment.points) {
+      assert.equal(segment.levelId, levelId, label + " walking cannot switch floors");
+      assert(Math.hypot(actor.x - segment.points[0].x, actor.y - segment.points[0].y) < 1e-5);
+      for (const goal of segment.points.slice(1)) {
+        const dx = goal.x - actor.x, dy = goal.y - actor.y;
+        const duration = Math.hypot(dx / city.HOMEWORLD_ACTOR.walkSpeed, dy / city.HOMEWORLD_ACTOR.depthSpeed);
+        if (!duration) continue;
+        const frames = Math.max(1, Math.ceil(duration * 30)), seconds = duration / frames;
+        const input = { moveX: dx / city.HOMEWORLD_ACTOR.walkSpeed / duration, climb: dy / city.HOMEWORLD_ACTOR.depthSpeed / duration, jumpPressed: false };
+        for (let frame = 0; frame < frames; frame++) {
+          const previous = actor;
+          actor = civic.stepHomeworldCivicActorV80(actor, input, seconds, levelId);
+          assert(civic.homeworldCivicWalkableV80(levelId, actor), label + " whole body stays supported");
+          assert(Math.hypot(actor.x - previous.x, actor.y - previous.y) <= city.HOMEWORLD_ACTOR.walkSpeed * seconds + 1e-6, label + " no fallback teleport");
+        }
+        assert(Math.hypot(actor.x - goal.x, actor.y - goal.y) < 1e-5, label + " real motor reaches each waypoint");
+      }
+    } else {
+      const connector = world.HOMEWORLD_CONNECTORS_V77.find(item => item.id === segment.connectorId);
+      assert(connector, label + " declared connector required");
+      const from = segment.reverse ? connector.to : connector.from, to = segment.reverse ? connector.from : connector.to;
+      assert.equal(levelId, from.levelId);
+      let transit = world.beginHomeworldTransitV77(levelId, actor);
+      assert.equal(transit?.connectorId, connector.id, label + " must board from the real landing");
+      assert.equal(transit.reverse, segment.reverse);
+      let result;
+      for (let frame = 0; transit && frame <= connector.duration * 30 + 2; frame++) {
+        const previous = actor;
+        result = world.stepHomeworldTransitV77(transit, actor, 1 / 30);
+        actor = result.actor; transit = result.transit;
+        assert(Math.hypot(actor.x - previous.x, actor.y - previous.y) <= Math.max(1, Math.hypot(to.point.x - from.point.x, to.point.y - from.point.y) / 4), label + " connector moves continuously");
+      }
+      assert.equal(result?.done, true, label + " connector reaches its destination");
+      levelId = result.levelId;
+      assert.equal(levelId, to.levelId);
+      assert.deepEqual({ x: actor.x, y: actor.y }, to.point);
+    }
+  }
+  return { actor, levelId };
+}
 
 test("V64 extends the ground plan while preserving all V54 IDs and narrative/service bindings", () => {
   assert.deepEqual(city.HOMEWORLD_WORLD, { width: 7200, height: 5900 });
@@ -20,11 +67,12 @@ test("V64 extends the ground plan while preserving all V54 IDs and narrative/ser
     ...connection.nodes.slice(1).map((_, index) => `connection-v72:${connection.regionId}:${index}`),
     `connection-v72:${connection.regionId}:aperture`,
   ]);
-  const nativeForecourtIds = ['dock-control', 'trophy-mausoleum', 'rite-sanctum', 'convoy-workshop', 'convoy-store', 'rampart-watch']
+  const nativeForecourtIds = ['dock-control', 'trophy-mausoleum', 'rite-sanctum', 'convoy-workshop', 'convoy-store', 'rampart-watch',
+    'residence-market-2', 'residence-forges-1', 'residence-undercity-2', 'residence-esplanade-2', 'residence-terraces-1', 'residence-clans-1', 'residence-convoy-works-1']
     .map(buildingId => 'forecourt-v76:' + buildingId);
-  const nativeLinkIds = ['forecourt-link-v76:trophy-mausoleum'];
+  const nativeLinkIds = ['forecourt-link-v76:trophy-mausoleum', 'forecourt-link-v76:residence-clans-1'];
   assert.equal(city.HOMEWORLD_STREETS.length, 18 + connectionPolygonIds.length + nativeForecourtIds.length + nativeLinkIds.length,
-    'eighteen preserved city roads, each authored connection polygon, six native V76 forecourts and the western mausoleum link');
+    'eighteen preserved city roads, each authored connection polygon, thirteen native forecourts and both authored links');
   assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('forecourt-v76:')).map(street => street.id), nativeForecourtIds);
   assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('forecourt-link-v76:')).map(street => street.id), nativeLinkIds);
   assert.deepEqual(city.HOMEWORLD_STREETS.filter(street => street.id.startsWith('connection-v72:')).map(street => street.id), connectionPolygonIds);
@@ -38,16 +86,26 @@ test("V64 extends the ground plan while preserving all V54 IDs and narrative/ser
   assert.deepEqual(Object.keys(city.HOMEWORLD_POINT_POSITIONS),Object.keys(city.HOMEWORLD_POINT_POSITIONS_V54));
 });
 
-test("all fourteen codex destinations are reachable with the full hunter footprint; no shortcut crosses scenery", () => {
-  const start = city.createHomeworldActor();
+test("all fourteen preserved codex destinations are played with the full hunter footprint on their actual floors", () => {
+  const start = { levelId: "0", point: world.HOMEWORLD_SPACEPORT_V77.spawn };
+  assert.equal(codex.HOMEWORLD_SPATIAL_SITES.length, 14);
   for (const site of codex.HOMEWORLD_SPATIAL_SITES) {
-    assert(city.isHomeworldWalkable(site.approach), site.id + " approach must remain free");
-    const route = codex.homeworldSpatialRoute(start, site.approach);
+    const building = world.HOMEWORLD_BUILDINGS_V77.find(item => item.id === site.buildingId);
+    assert(building, site.id + " keeps its original destination building");
+    const approach = city.homeworldBuildingDoorwayV64(building).approach;
+    assert(civic.homeworldCivicWalkableV80(building.levelId, approach), site.id + " approach must remain free on its own floor");
+    const route = navigation.homeworldWorldRouteV77(start, { levelId: building.levelId, point: approach });
     assert.equal(route.status, "reachable", site.id);
-    assert.deepEqual(route.points[0], { x: start.x, y: start.y });
-    assert.deepEqual(route.points.at(-1), site.approach);
-    assert(route.distance > 0);
-    for (let i = 1; i < route.points.length; i++) assert(codex.isHomeworldRouteSegmentWalkable(route.points[i - 1], route.points[i]), site.id + " segment " + i);
+    assert.deepEqual(route.segments[0].points[0], start.point);
+    assert.deepEqual(route.segments.at(-1).points.at(-1), approach);
+    assert(route.segments.filter(segment => segment.points).reduce((distance, segment) => distance + segment.distance, 0) > 0);
+    for (const segment of route.segments.filter(segment => segment.points)) for (let i = 1; i < segment.points.length; i++) {
+      assert(navigation.homeworldRouteSegmentV77(segment.levelId, segment.points[i - 1], segment.points[i]), site.id + " whole-body segment " + i);
+    }
+    const played = playWorldRoute(route, site.id);
+    assert.equal(played.levelId, building.levelId);
+    assert(Math.hypot(played.actor.x - approach.x, played.actor.y - approach.y) < 1e-5);
+    assert.equal(world.nearestHomeworldDoorV77(played.levelId, played.actor)?.id, building.id);
   }
 });
 
@@ -155,8 +213,9 @@ test("three source PNGs retain exact bytes; native building and beacon have audi
   }
 });
 
-test("all43 native buildings share a measured socket, uniform pixels and traversable approach", () => {
-  const native=city.HOMEWORLD_BUILDINGS; assert.equal(native.length,43);
+test("all43 native buildings share a measured socket, uniform pixels and a traversable approach on their actual floor", () => {
+  const native=world.HOMEWORLD_BUILDINGS_V77; assert.equal(native.length,43);
+  assert.deepEqual(native.map(building => building.id), city.HOMEWORLD_BUILDINGS.map(building => building.id));
   for(const building of native){
     const placed=city.homeworldBuildingSpritePlacementV64(building),source=building.art;
     const sx=placed.width/(source.sourceRect?.width??source.sourceWidth),sy=placed.height/(source.sourceRect?.height??source.sourceHeight);
@@ -166,7 +225,8 @@ test("all43 native buildings share a measured socket, uniform pixels and travers
     assert(Math.abs(placed.top+source.threshold.y*sy-threshold.y)<1e-8);
     const door=city.homeworldBuildingDoorwayV64(building);
     assert(door.clearWidth>=80 && door.clearHeight>=128,building.id+' measured opening');
-    assert(city.isHomeworldWalkable(door.approach));
+    assert(civic.homeworldCivicWalkableV80(building.levelId, door.approach), building.id + ' full-body approach at ' + building.levelId);
+    assert.equal(world.nearestHomeworldDoorV77(building.levelId, door.approach)?.id, building.id);
   }
   assert.equal(city.HOMEWORLD_LEGACY_PROPS_V54.filter(p=>p.asset===art.beacon.src).length,16);
   assert(city.HOMEWORLD_PROPS.every(p=>p.asset!==art.beacon.src),'legacy art retained but not rendered');

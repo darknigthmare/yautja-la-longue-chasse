@@ -7,6 +7,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import vm from 'node:vm';
 import ts from 'typescript';
+import { productionBuildStepsV94 } from '../scripts/build-production-v94.mjs';
 import { nativeOriginFixtureV89, nativeOriginDestinationV89, runNativeOriginV89, assertNativeOutputMountsV89 } from '../scripts/vercel-native-origin-v89.mjs';
 const run=promisify(execFile);
 const project=process.cwd(),prefix='public/game/imports/v85';
@@ -16,7 +17,12 @@ test('every script actually invoked by the Vercel build is retained by its deplo
  assert(ignore.includes('/scripts/*'));
  assert(ignore.includes('/public/game/imports/v85'),'Only the rewritten historical group is omitted at packaging time');
  assert(!ignore.some(line=>/^\/?public(?:\/game(?:\/imports(?:\/v(?:86|87|88|89))?)?)?$/.test(line)),'Other native groups stay included');
- const paths=[...config.buildCommand.matchAll(/\bnode\s+(scripts\/[\w.-]+\.mjs)/g)].map(match=>match[1]);
+ assert.equal(config.buildCommand,'node scripts/build-production-v94.mjs');
+ const paths=[
+  'scripts/build-production-v94.mjs',
+  ...productionBuildStepsV94(project,path.join(project,'node_modules/next/dist/bin/next'))
+   .filter(step=>step.id!=='next').map(step=>path.relative(project,step.args[0]).split(path.sep).join('/')),
+ ];
  assert(paths.includes('scripts/vercel-native-origin-v89.mjs'));
  for(const script of paths){
   assert(ignore.includes('!/'+script),'Deployment would omit '+script);

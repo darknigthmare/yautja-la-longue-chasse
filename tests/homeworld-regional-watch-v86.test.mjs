@@ -45,10 +45,13 @@ test('a walking-route pause, mismatched role/clan/morphology and foreign variant
 });
 
 test('installed native PNGs retain exact bytes, RGBA transparency, full figure margins and the documented sole socket',async()=>{
- const manifest=JSON.parse(fs.readFileSync('.work-local/recent-sprites-v85/source-metadata/guards-v4/YAUTJA_CLANS_V4_100_GARDES/MANIFESTE.json','utf8'));
+ // Installed imports and the documented sole baseline are tracked; the producer ZIP's workstation extraction is not.
+ const catalogue=JSON.parse(fs.readFileSync('app/game/data/recentSpriteLibraryV85.json','utf8'));
+ const soles=JSON.parse(fs.readFileSync('tests/fixtures/regional-watch-sole-v86.json','utf8'));
+ assert.equal(soles.profiles.length,source.profiles.length);
  for(const profile of source.profiles){
-  const bytes=fs.readFileSync('public'+profile.src),original=manifest.sprites.find(p=>p.id===profile.identityId);
-  assert(original);assert.equal(createHash('sha256').update(bytes).digest('hex'),profile.sha256);assert.equal(profile.sha256,original.sha256);
+  const bytes=fs.readFileSync('public'+profile.src),original=catalogue.assets.find(p=>p.packId==='guards-v4'&&p.identityId===profile.identityId),sole=soles.profiles.find(p=>p.identityId===profile.identityId);
+  assert(original);assert(sole);assert.equal(original.src,profile.src);assert.deepEqual([original.width,original.height],[profile.width,profile.height]);assert.equal(createHash('sha256').update(bytes).digest('hex'),profile.sha256);assert.equal(profile.sha256,original.sha256);
   const {data,info}=await sharp(bytes).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   assert.equal(info.width,profile.width);assert.equal(info.height,profile.height);assert.equal(info.channels,4);
   let left=info.width,top=info.height,right=0,bottom=0,transparent=0,min=255,max=0;
@@ -59,7 +62,7 @@ test('installed native PNGs retain exact bytes, RGBA transparency, full figure m
   assert.deepEqual({left,top,right,bottom},profile.boundsAlpha16);assert.deepEqual([min,max],profile.alphaRange);assert.equal(min,0);
   assert(left>0&&top>0&&right<info.width&&bottom<info.height,'no significant figure pixel clipped at a canvas edge: '+profile.assetId);
   assert.equal(Number((transparent/(info.width*info.height)).toFixed(6)),profile.fullyTransparentFraction);
-  assert.deepEqual(profile.pivotPixels,original.pivotPixels);assert.equal(profile.bodyHeightPixels,original.soleY-original.bodyTopY);
+  assert.deepEqual(profile.pivotPixels,sole.pivotPixels);assert.equal(profile.bodyTopY,sole.bodyTopY);assert.equal(profile.soleY,sole.soleY);assert.equal(profile.bodyHeightPixels,sole.soleY-sole.bodyTopY);
  }
 });
 

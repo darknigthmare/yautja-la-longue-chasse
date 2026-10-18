@@ -67,6 +67,7 @@ function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
   };
   const environment = {
     sessionAliveRef: { current: true },
+    pendingTrophyCommitRef: { current: null },
     // Adult campaign fixture has no uncertain nursery transaction.
     nurseryWriteAttemptRef: { current: null },
     pendingSocialWriteRef: { current: null },
@@ -360,4 +361,19 @@ test("unmounted campaign rejects queued exploration and active hunt writes", () 
   f.discover(ability);
   assert.equal(f.checkpoint(), null);
   assert.equal(JSON.stringify([...f.storage.values]), before);
+});
+
+
+test("a pending rite blocks discovery and retry writes without discarding its receipt", () => {
+  const f = fixture(), receipt = {};
+  const before = JSON.stringify([...f.storage.values]), current = f.environment.saveRef.current;
+  f.environment.pendingTrophyCommitRef.current = receipt;
+  f.discover(ability);
+  f.environment.persist({ ...current, exploration: real.mergeExplorationProgress(ability) });
+  assert.equal(JSON.stringify([...f.storage.values]), before);
+  assert.equal(f.environment.saveRef.current, current);
+  assert.equal(f.environment.pendingTrophyCommitRef.current, receipt);
+  f.environment.pendingTrophyCommitRef.current = null;
+  f.discover(ability);
+  assert.deepEqual(f.readCampaign().exploration.abilityIds, ["aerial-boost"]);
 });

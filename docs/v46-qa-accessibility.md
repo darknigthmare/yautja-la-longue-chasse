@@ -22,6 +22,8 @@ Les seuils 44 px et 16 px sont ici des choix ergonomiques : une cible de moins d
 - `node --test tests/accessibility-v46.test.mjs tests/campaign-menu-ui.test.mjs` : test navigateur reproductible plus contrôles des révisions et transitions de sauvegarde.
 - ESLint ciblé sur les composants et scripts modifiés.
 
+La recette utilise Chrome par défaut. Sur une machine équipée de Chromium, `AUDIT_CHROME_EXECUTABLE=/usr/bin/chromium node scripts/verify-accessibility-v46.mjs` choisit ce binaire ; la variable est aussi transmise au navigateur par `tests/accessibility-v46.test.mjs`.
+
 Preuves locales conservées sous `work/v46/accessibility/` : rapports avant/après, captures dialogue paysage, roster tactile et menu avec texte agrandi. Le premier rapport exploratoire contient aussi un faux échec `filtered-roster-keyboard-entry` : le test avait oublié le bouton Effacer dans l'ordre de tabulation. Son parcours a été corrigé (deux Tab) ; aucune correction produit n'a été attribuée à ce faux positif.
 
 ## Limites
