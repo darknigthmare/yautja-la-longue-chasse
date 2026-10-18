@@ -36,7 +36,7 @@ export const HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82:Readonly<Record<string,{x:
  'exterior-v76-058':{x:4805,y:2339,reason:'Lanterne du bastion décalée de trente unités vers le bord oriental de sa desserte, avec le dégagement complet de la maison ; art, échelle et collision conservés.'},
  'exterior-v76-062':{x:5120,y:448,reason:'Seconde lanterne de l’audience sur le même pavement oriental de l’acropole, distincte de la première et hors de la fondation royale ; fixture native entière conservée.'},
  'exterior-v76-067':{x:2690,y:2815,reason:'Jarres à l’angle du foyer, après l’aire frontale d’usage du banc marchand.'},
- 'exterior-v76-069':{x:1835,y:1826,reason:'Jarres des terrasses dans la poche méridionale entre les îlots, hors de la maison de l’esplanade et de son couloir de porte ; ID, art, échelle et volume inchangés.'},
+ 'exterior-v76-069':{x:1840,y:1826,reason:'Jarres des terrasses dans la poche méridionale entre les îlots, avec cinq unités supplémentaires vers l’est pour dégager tout le corps sur la diagonale du guidage vers l’esplanade ; ID, art, échelle et volume inchangés.'},
  'exterior-v76-070':{x:4660,y:2600,reason:'Jarres sur le revers de la terrasse haute, après le seuil de la relève et avant le palier monumental.'},
 };
 export const HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82:Readonly<Record<string,{x:number;y:number;reason:string}>>={
