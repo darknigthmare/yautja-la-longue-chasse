@@ -148,3 +148,16 @@ test("live keyboard callback honors remapped pause on modal buttons, ignores rep
   environment.suspended = false; environment.exitConfirm = true; key("KeyP"); assert.equal(events.length, 1);
   environment.exitConfirm = false; environment.delivery.status = "saving"; key("KeyP"); assert.equal(events.length, 1);
 });
+
+test('V94 denied gamepad access does not kill the ash expedition simulation or retain old pad input', () => {
+  const f = fixture(); f.release();
+  f.env.navigator.getGamepads = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.doesNotThrow(() => f.tick(4));
+  assert.deepEqual(f.events, []);
+  f.env.navigator.getGamepads = () => [f.pad];
+  f.pad.buttons[0].pressed = true;
+  const before = f.env.stateRef.current.actor.y;
+  f.tick(3); assert.equal(f.env.stateRef.current.actor.y, before);
+  f.release(); f.pad.axes[0] = 1; const x = f.env.stateRef.current.actor.x; f.tick(3);
+  assert(f.env.stateRef.current.actor.x > x);
+});

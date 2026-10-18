@@ -1,0 +1,1129 @@
+{
+  "role": "porter",
+  "requested": 20,
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civilian-roles-atlas.png",
+  "promptCommon": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.",
+  "variants": [
+    {
+      "id": "porter-01",
+      "slot": 1,
+      "designId": "porteur-caisse-sanglee",
+      "design": "A stocky adult male Yautja dock porter with a broad low domed forehead, blunt dark ivory mandibles, dense short dreadlocks tied behind the neck, amber reptilian hide heavily flecked black. Dark sleeveless leather tunic and a thick crossed shoulder harness with wide padding; asymmetrical patched thigh wraps. He supports a heavy waist-wide ribbed metal cargo chest in BOTH hands in front of his abdomen, fingers firmly hooked beneath the handles; bent elbows, slightly flexed knees and a broad balanced stance clearly take the weight. The chest has two cloth retaining straps and no markings.",
+      "status": "generated",
+      "file": "porter-01.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f378db5b-6d28-4485-a7d7-ba133ee7837f.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-01.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 21,
+        "width": 975,
+        "height": 1505
+      },
+      "sha256": "4be04e2ee18d89558eb384c966849c57bd9e99fcca07062c321674d7f9f7a6db",
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.0478515625,
+        "top": 0.013671875,
+        "bottom": 0.006510416666666667
+      },
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4df3e059-4fcf-449e-9b08-1f9f3b444a37.png",
+          "sha256": "79b17a0e4e2e0e8a45bfe782ed18b30c36937facaedaee764dd85ba73ba46c74",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nSubject design: A stocky adult male Yautja dock porter with a broad low domed forehead, blunt dark ivory mandibles, dense short dreadlocks tied behind the neck, amber reptilian hide heavily flecked black. Dark sleeveless leather tunic and a thick crossed shoulder harness with wide padding; asymmetrical patched thigh wraps. He supports a heavy waist-wide ribbed metal cargo chest in BOTH hands in front of his abdomen, fingers firmly hooked beneath the handles; bent elbows, slightly flexed knees and a broad balanced stance clearly take the weight. The chest has two cloth retaining straps and no markings.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 55,
+            "y": 35,
+            "width": 933,
+            "height": 1483
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-01.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-01.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "byteCount": 2325988,
+      "fullyTransparentFraction": 0.579443613688151,
+      "githubBlobSha": "648db87aac179cbf415def42ec645c7938628d12"
+    },
+    {
+      "id": "porter-02",
+      "slot": 2,
+      "designId": "convoyeuse-sacoches",
+      "design": "A tall long-limbed adult female Yautja convoy carrier, angular high brow, fine curved ivory mandibular tusks, tightly braided dreadlocks swept into a compact high knot, pale olive mottled hide. She wears a split dark indigo work tunic, woven shoulder collar and two broad crossed leather belts. A lightweight arched bronze shoulder frame supports TWO large closed leather panniers at her hips, evenly weighted. Both hands grasp the frame straps at chest level, shoulders slightly forward, knees relaxed; the full body silhouette is tall and narrow. Panniers visibly hang from real attachment buckles.",
+      "status": "generated",
+      "file": "porter-02.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9d231589-7147-44a7-8ea0-56d40e067316.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-02.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 49,
+        "y": 13,
+        "width": 895,
+        "height": 1484
+      },
+      "sha256": "28e7ce9333eb9891661468c8dd0b6a7d8c3752c03eef5107655f436f910b39c5",
+      "clearMarginsFraction": {
+        "left": 0.0478515625,
+        "right": 0.078125,
+        "top": 0.008463541666666666,
+        "bottom": 0.025390625
+      },
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c80a91b4-96be-42ec-8b01-0b8d4a6e9630.png",
+          "sha256": "6ba2490fa2c4d03033b894ab367603c8cbbcda53fb7b48e943e81d200b765c18",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nSubject design: A tall long-limbed adult female Yautja convoy carrier, angular high brow, fine curved ivory mandibular tusks, tightly braided dreadlocks swept into a compact high knot, pale olive mottled hide. She wears a split dark indigo work tunic, woven shoulder collar and two broad crossed leather belts. A lightweight arched bronze shoulder frame supports TWO large closed leather panniers at her hips, evenly weighted. Both hands grasp the frame straps at chest level, shoulders slightly forward, knees relaxed; the full body silhouette is tall and narrow. Panniers visibly hang from real attachment buckles.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 17,
+            "y": 16,
+            "width": 993,
+            "height": 1500
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-02.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-02.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "byteCount": 2169567,
+      "fullyTransparentFraction": 0.6458358764648438,
+      "githubBlobSha": "d2db712694e2d083412401b58e90e9fbfcc945d4"
+    },
+    {
+      "id": "porter-03",
+      "slot": 3,
+      "designId": "transporteur-minerai",
+      "design": "A massive barrel-chested adult Yautja ore porter with broad jaw mandibles, a flattened scarred brow and six thick dreadlocks secured in a short fan. Charcoal hide with small ochre speckles, bare upper arms, reinforced tawny apron, padded waist belt and sturdy open-toed claw wraps. A stout low BACKPACK BASKET of dark hammered metal mesh is filled with small contained chunks of dull iron ore, secured by a closed cross net. He leans mildly forward to balance the load, one hand firmly holds the left strap, the other braces the lower side of the pack; no stones spilling or floating.",
+      "status": "generated",
+      "file": "porter-03.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7b8f20fe-eb73-4742-99ae-8dbc10a09194.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-03.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 21,
+        "width": 950,
+        "height": 1500
+      },
+      "sha256": "649d432af1ae8d35cd52c76e92423a0b413e268ee35cea4e68078f44888201ac",
+      "byteCount": 2473638,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.072265625,
+        "top": 0.013671875,
+        "bottom": 0.009765625
+      },
+      "fullyTransparentFraction": 0.5664100646972656,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-84337587-9dd3-49e7-bed3-6f24e0ec7351.png",
+          "sha256": "c19e0e8a8043d38853b32c61c18396bb1b397e5fa3bf8ba64c957c79c6318f39",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A massive barrel-chested adult Yautja ore porter with broad jaw mandibles, a flattened scarred brow and six thick dreadlocks secured in a short fan. Charcoal hide with small ochre speckles, bare upper arms, reinforced tawny apron, padded waist belt and sturdy open-toed claw wraps. A stout low BACKPACK BASKET of dark hammered metal mesh is filled with small contained chunks of dull iron ore, secured by a closed cross net. He leans mildly forward to balance the load, one hand firmly holds the left strap, the other braces the lower side of the pack; no stones spilling or floating.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 25,
+            "y": 8,
+            "width": 998,
+            "height": 1528
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-03.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-03.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "2ac0bd441cd34e8aaf14e49d0b392af44d76302b"
+    },
+    {
+      "id": "porter-04",
+      "slot": 4,
+      "designId": "convoyeur-tubes",
+      "design": "A wiry older adult Yautja porter with a narrow face, weathered grey-green skin, long silver-speckled dreadlocks bound in three low rings and four small visible mandibles. A sleeveless slate work coat, crisscrossed chest webbing, knee wraps and a wide waist sash. He carries a compact bundle of FIVE short hollow metal conduit tubes tied together with two bands across his right shoulder. The right hand cups the bundle from below at shoulder height; the left hand holds a low retaining strap. The bundle slopes gently upward behind him, entirely within the image, and his body counterbalances its weight.",
+      "status": "generated",
+      "file": "porter-04.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b26b8789-159b-4242-8a69-55c368e96df2.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-04.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 80,
+        "width": 945,
+        "height": 1410
+      },
+      "sha256": "9b750d3a6e65b6132e7aa4bc256584026b9c187c9c9cc764a7f6efe2436b11d6",
+      "byteCount": 2197783,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.052083333333333336,
+        "bottom": 0.029947916666666668
+      },
+      "fullyTransparentFraction": 0.6399358113606771,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-339c2147-0379-4e93-b38c-6a0f73291fa7.png",
+          "sha256": "75aa07f648095ecdcba87f1e704ee0f558b31b4c207476ace78652d94268a62a",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A wiry older adult Yautja porter with a narrow face, weathered grey-green skin, long silver-speckled dreadlocks bound in three low rings and four small visible mandibles. A sleeveless slate work coat, crisscrossed chest webbing, knee wraps and a wide waist sash. He carries a compact bundle of FIVE short hollow metal conduit tubes tied together with two bands across his right shoulder. The right hand cups the bundle from below at shoulder height; the left hand holds a low retaining strap. The bundle slopes gently upward behind him, entirely within the image, and his body counterbalances its weight.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 87,
+            "width": 1012,
+            "height": 1433
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-04.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-04.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "614ef113a9ece2e8184b6ed2ebf599455cb424b0"
+    },
+    {
+      "id": "porter-05",
+      "slot": 5,
+      "designId": "porteuse-jarre-protegee",
+      "design": "A broad powerful adult female Yautja provision porter with a round heavy brow, speckled russet hide, stout pale mandibular tusks and thick dreadlocks gathered in a low side braid. Quilted shoulder pads over a dark sleeveless wrap jacket, heavy cloth apron, broad laced belt and work leg wraps. She hugs a single large sealed ovoid ceramic storage vessel protected in a basketlike leather cage against her chest; the two hands grip its opposite leather handles, forearms touching its sides. Slight crouch and close elbows demonstrate weight. No exposed contents, no human facial features.",
+      "status": "generated",
+      "file": "porter-05.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-680af3cd-120f-4f47-964f-5909b02af710.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-05.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 49,
+        "y": 61,
+        "width": 923,
+        "height": 1459
+      },
+      "sha256": "1f602649e0725b377ae7e8a15338c27b8fe9d79c6ef3f4f749d757c27966fe69",
+      "byteCount": 2194322,
+      "clearMarginsFraction": {
+        "left": 0.0478515625,
+        "right": 0.05078125,
+        "top": 0.039713541666666664,
+        "bottom": 0.010416666666666666
+      },
+      "fullyTransparentFraction": 0.6270484924316406,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1a8165c1-41f1-4e91-b974-266a6c673de0.png",
+          "sha256": "daf197ed033f353b30ad6d62e75a32de389411fefd8e5ee5b895b9d7e24c293a",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A broad powerful adult female Yautja provision porter with a round heavy brow, speckled russet hide, stout pale mandibular tusks and thick dreadlocks gathered in a low side braid. Quilted shoulder pads over a dark sleeveless wrap jacket, heavy cloth apron, broad laced belt and work leg wraps. She hugs a single large sealed ovoid ceramic storage vessel protected in a basketlike leather cage against her chest; the two hands grip its opposite leather handles, forearms touching its sides. Slight crouch and close elbows demonstrate weight. No exposed contents, no human facial features.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1012,
+            "height": 1513
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-05.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-05.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "88d743bf0f9b22f5fc8d5672a5b91d8286b9e46b"
+    },
+    {
+      "id": "porter-06",
+      "slot": 6,
+      "designId": "porteur-dalles-cristallines",
+      "design": "A lean athletic adult male Yautja carrier with long limbs, a prominent angular cranial crest, dark green hide with cream throat mottling, narrow white mandibles and thin dreadlocks tightly looped at the back. A charcoal cloth vest and a broad diagonal padded sling support three heavy flat slate-like mineral slabs wrapped individually in coarse brown cloth, held upright against his left hip. Both hands visibly brace the wrapped slab edges, knees bent subtly to the left; a compact empty utility pouch hangs on the other hip. Distinct narrow silhouette and practical asymmetric straps.",
+      "status": "generated",
+      "file": "porter-06.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1ff81bee-c102-417f-86a9-0a2587a387ea.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-06.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 49,
+        "y": 41,
+        "width": 893,
+        "height": 1473
+      },
+      "sha256": "1b6b796c0e48b0e11fe7e414e3e47f25b5faf651a4afb9f5b9a8c0c0d3a6027a",
+      "byteCount": 2241375,
+      "clearMarginsFraction": {
+        "left": 0.0478515625,
+        "right": 0.080078125,
+        "top": 0.026692708333333332,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6351369222005209,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5e75fef2-7a1d-4b3b-b51a-c2e125fe58f3.png",
+          "sha256": "c612424c390141c01e66bc04de45f9b9b34adb36558fbfe7b0ebe234f29f91d9",
+          "githubBlobSha": null,
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A lean athletic adult male Yautja carrier with long limbs, a prominent angular cranial crest, dark green hide with cream throat mottling, narrow white mandibles and thin dreadlocks tightly looped at the back. A charcoal cloth vest and a broad diagonal padded sling support three heavy flat slate-like mineral slabs wrapped individually in coarse brown cloth, held upright against his left hip. Both hands visibly brace the wrapped slab edges, knees bent subtly to the left; a compact empty utility pouch hangs on the other hip. Distinct narrow silhouette and practical asymmetric straps.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 63,
+            "y": 70,
+            "width": 889,
+            "height": 1449
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-06.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-06.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "c7110182ff9be1e63a460162c99c0d61fab36fa3"
+    },
+    {
+      "id": "porter-07",
+      "slot": 7,
+      "designId": "porteur-cadres-empiles",
+      "design": "A thick-necked adult Yautja freight handler with broad shoulders and strong calves, mustard hide with dense small charcoal rosettes, a blunt asymmetrical brow scar and short dreadlocks tucked under a plain leather headband. Wears a heavy sleeveless work surcoat and reinforced chest yoke. His low metal back frame carries THREE small square sealed supply cases stacked vertically below head height, secured by one horizontal and two vertical straps. He grasps both front harness loops while leaning forward, head turned three-quarter right; every case is physically connected to the rack.",
+      "status": "generated",
+      "file": "porter-07.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c02710e4-f1b1-4c6c-9897-dac2894c81f2.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-07.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 55,
+        "width": 947,
+        "height": 1463
+      },
+      "sha256": "c8a483754d9d469dc2d682fa57809007146fc4ba8ff92772d97aafd51242a688",
+      "byteCount": 2154812,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.01171875,
+        "top": 0.035807291666666664,
+        "bottom": 0.01171875
+      },
+      "fullyTransparentFraction": 0.6303838094075521,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e26fee43-5e17-407b-9d35-cfe6a63df365.png",
+          "sha256": "d4f72b140a431ffc884e089dfaa12e8d228c51a1624e7992c941cae306dd6fa9",
+          "githubBlobSha": "2cda259a9af34842b57cd3cb66c4403c3fba98ed",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A thick-necked adult Yautja freight handler with broad shoulders and strong calves, mustard hide with dense small charcoal rosettes, a blunt asymmetrical brow scar and short dreadlocks tucked under a plain leather headband. Wears a heavy sleeveless work surcoat and reinforced chest yoke. His low metal back frame carries THREE small square sealed supply cases stacked vertically below head height, secured by one horizontal and two vertical straps. He grasps both front harness loops while leaning forward, head turned three-quarter right; every case is physically connected to the rack.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 49,
+            "y": 53,
+            "width": 951,
+            "height": 1467
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-07.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-07.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "a9c0d6c77debc08143546908ea46ae01b67e215e"
+    },
+    {
+      "id": "porter-08",
+      "slot": 8,
+      "designId": "convoyeuse-rouleau-outils",
+      "design": "An older slender adult female Yautja craft courier with a long ridged cranium, dark grey mottled skin, uneven worn ivory mandible tips and fine shoulder-length dreadlocks bundled into two low ropes. A faded ochre split apron over narrow dark trousers, broad padded forearm cuffs and a soft crossbody harness. She cradles a VERY LARGE tightly rolled leather tool bundle horizontally across both forearms, with carved rigid end caps and two buckled straps; no tools exposed like weapons. Elbows close to torso, one leg planted forward, expression composed and hardworking.",
+      "status": "generated",
+      "file": "porter-08.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f2fb7073-5034-4dd2-8148-0d588cd84a55.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-08.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 964,
+        "height": 1514
+      },
+      "sha256": "0c3b08b1d7fa7dc11f4108477b8d2e13a1446987159c0bf84ebf091de46ecef5",
+      "byteCount": 2241339,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.05859375,
+        "top": 0.0,
+        "bottom": 0.014322916666666666
+      },
+      "fullyTransparentFraction": 0.6261450449625651,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d32d0c57-a6e2-4156-ad99-c320be1aa6b8.png",
+          "sha256": "3c9fa262aac48b76e75d2a4275dd4816dd3b0d7895140eda9d02d59c046c633a",
+          "githubBlobSha": "bad2d370a748c38fa4d19211a1c5f55ce1dfa95e",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: An older slender adult female Yautja craft courier with a long ridged cranium, dark grey mottled skin, uneven worn ivory mandible tips and fine shoulder-length dreadlocks bundled into two low ropes. A faded ochre split apron over narrow dark trousers, broad padded forearm cuffs and a soft crossbody harness. She cradles a VERY LARGE tightly rolled leather tool bundle horizontally across both forearms, with carved rigid end caps and two buckled straps; no tools exposed like weapons. Elbows close to torso, one leg planted forward, expression composed and hardworking.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 63,
+            "width": 1010,
+            "height": 1455
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-08.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-08.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "637d82eb11248028b81f1eee0cd60fc329a95456"
+    },
+    {
+      "id": "porter-09",
+      "slot": 9,
+      "designId": "porteuse-bidons-equilibres",
+      "design": "A compact athletic adult female Yautja logistics carrier with a wide domed forehead, cream-and-olive mottled skin, short four mandibles and numerous small dreadlocks bound into a cropped crown. Sleeveless bronze-edged leather work vest, thick woven waist belt, fitted knee guards and ankle wraps with clawed toes exposed. She holds TWO equal heavy sealed ribbed fluid canisters, one in each hand at her sides, grasping their integrated top handles. Arms hang under believable load, shoulders level, feet separated; canisters do not touch the legs. No logos or labels.",
+      "status": "generated",
+      "file": "porter-09.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-63fb0371-f61f-4593-9d8f-55bab9f97d39.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-09.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 12,
+        "width": 939,
+        "height": 1492
+      },
+      "sha256": "9aeae088b5d800e9a95588856cba01096a3e9e03bf02d624825ca8f7e930542e",
+      "byteCount": 2292400,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.01953125,
+        "top": 0.0078125,
+        "bottom": 0.020833333333333332
+      },
+      "fullyTransparentFraction": 0.5812594095865885,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7d05d049-0aa7-46ed-956b-c7527b2848aa.png",
+          "sha256": "a443b81b69dfa48b91ec4d6ac66fc44706a2fb68b46816d7253db7b472900116",
+          "githubBlobSha": "2556e73f6f122cc8a13411e0c38545a40e984af1",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A compact athletic adult female Yautja logistics carrier with a wide domed forehead, cream-and-olive mottled skin, short four mandibles and numerous small dreadlocks bound into a cropped crown. Sleeveless bronze-edged leather work vest, thick woven waist belt, fitted knee guards and ankle wraps with clawed toes exposed. She holds TWO equal heavy sealed ribbed fluid canisters, one in each hand at her sides, grasping their integrated top handles. Arms hang under believable load, shoulders level, feet separated; canisters do not touch the legs. No logos or labels.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 17,
+            "width": 1010,
+            "height": 1505
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-09.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-09.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "d7682828bce1b77ff3282abbd72a78485d5aa94f"
+    },
+    {
+      "id": "porter-10",
+      "slot": 10,
+      "designId": "convoyeur-sac-lateral",
+      "design": "A tall broad-backed adult male Yautja carrier with a narrow stern face, black-and-tan speckled hide, swept-back long dreadlocks held with several plain bone rings, four broad pale mandibles. A reinforced dark wine work tabard, a broad shoulder pad only on the left side and an asymmetrical chest belt. He carries one huge closed coarse woven freight sack along his left side, suspended from a thick visible strap over the opposite shoulder. Left hand firmly cups the bottom of the sack, right hand pulls the upper strap. The torso leans to the right to balance the clearly heavy load.",
+      "status": "generated",
+      "file": "porter-10.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b5a6c7dd-6f77-44d1-b59a-e76407a12368.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-10.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 51,
+        "y": 0,
+        "width": 925,
+        "height": 1516
+      },
+      "sha256": "bbb44cff9af21786cfaa1643ea6b1802675cf53cb1ecce06b83a82213fa21a29",
+      "byteCount": 2415058,
+      "clearMarginsFraction": {
+        "left": 0.0498046875,
+        "right": 0.046875,
+        "top": 0.0,
+        "bottom": 0.013020833333333334
+      },
+      "fullyTransparentFraction": 0.5864760080973307,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f8f488e5-dd3a-4ca0-ba69-56fbef270597.png",
+          "sha256": "7f4a749ed8ca7f581a2efa473bf39d15c24861747d57f199b37018f5cbb3502c",
+          "githubBlobSha": "db5d3943605c129679f607f2ab26144f165ed6da",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A tall broad-backed adult male Yautja carrier with a narrow stern face, black-and-tan speckled hide, swept-back long dreadlocks held with several plain bone rings, four broad pale mandibles. A reinforced dark wine work tabard, a broad shoulder pad only on the left side and an asymmetrical chest belt. He carries one huge closed coarse woven freight sack along his left side, suspended from a thick visible strap over the opposite shoulder. Left hand firmly cups the bottom of the sack, right hand pulls the upper strap. The torso leans to the right to balance the clearly heavy load.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 65,
+            "y": 37,
+            "width": 945,
+            "height": 1479
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-10.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-10.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "9b477a9bf258747c38cd5c6837d8bc8315f74a77"
+    },
+    {
+      "id": "porter-11",
+      "slot": 11,
+      "designId": "porteur-panneaux-metalliques",
+      "design": "A short very muscular adult male Yautja porter with a thick low brow, small deep-set eyes, compact dark ivory mandibles, ochre hide striped with small dark bands and thick chin-length dreadlocks. He wears a padded black chest harness, stout leather apron and broad shin wraps. He grips THREE stacked short curved metal hull panels upright in front of him inside a protective felt sling; edges are rounded and banded together. Both palms support the lower corners at waist height, chest lightly behind the stack, knees flexed. Industrial transport equipment rather than armour or weapons.",
+      "status": "generated",
+      "file": "porter-11.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-15208c0e-28de-4028-8b60-05aab80ffbbc.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-11.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 49,
+        "y": 26,
+        "width": 919,
+        "height": 1492
+      },
+      "sha256": "c9293350eee9624c14463f0ab28205c8243258e9f0c2e57c3443ddeaba1cbd2b",
+      "byteCount": 2276062,
+      "clearMarginsFraction": {
+        "left": 0.0478515625,
+        "right": 0.0546875,
+        "top": 0.016927083333333332,
+        "bottom": 0.01171875
+      },
+      "fullyTransparentFraction": 0.5993315378824869,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0a116fb8-fe49-41d4-9a6f-87e7a529e3cf.png",
+          "sha256": "dc97981c3f2754ee3bea75a4fd20f95a3ca0f564a06c25d0844a87bd1241ccfa",
+          "githubBlobSha": "4cae9246f8021f4d0a2b8132ea251d825fa0d290",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A short very muscular adult male Yautja porter with a thick low brow, small deep-set eyes, compact dark ivory mandibles, ochre hide striped with small dark bands and thick chin-length dreadlocks. He wears a padded black chest harness, stout leather apron and broad shin wraps. He grips THREE stacked short curved metal hull panels upright in front of him inside a protective felt sling; edges are rounded and banded together. Both palms support the lower corners at waist height, chest lightly behind the stack, knees flexed. Industrial transport equipment rather than armour or weapons.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 59,
+            "y": 55,
+            "width": 953,
+            "height": 1465
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-11.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-11.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "90d33574b17a8ff8080a553b2b455ab968c68ffa"
+    },
+    {
+      "id": "porter-12",
+      "slot": 12,
+      "designId": "convoyeuse-caisses-longues",
+      "design": "A long-legged adult female Yautja transporter with a gently sloping ridged brow, narrow mandibles, deep blue-grey spotted hide and thin dreadlocks braided into a long compact tail. A high-neck sleeveless dark green tunic, double padded shoulder straps and a short split work skirt. Two long slender CLOSED cylindrical equipment cases are fastened vertically to a narrow backpack frame on either side of the spine, with bottoms near her thighs and tops below her head. Both hands grasp front harness buckles; balanced upright rest pose with one clawed foot slightly ahead. Cylinders are visibly travel cases, not guns.",
+      "status": "generated",
+      "file": "porter-12.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7d99337e-984e-4303-96b8-e81c70a45ff1.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-12.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 48,
+        "width": 945,
+        "height": 1448
+      },
+      "sha256": "e672a66da64dd60876dd5ba40073fde75b72004f5e839ed0d5e0a4d49708c4f4",
+      "byteCount": 2004101,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.03125,
+        "bottom": 0.026041666666666668
+      },
+      "fullyTransparentFraction": 0.685431162516276,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3fe2bf86-10b4-4612-925f-618543e5a940.png",
+          "sha256": "8b40ec0c20470c30ed81e162384e98c8617d66a53a9da2bd999f8bf4db959db7",
+          "githubBlobSha": "d8dc4249a11446c6ff70fc8ecc4cf33bab3b912f",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A long-legged adult female Yautja transporter with a gently sloping ridged brow, narrow mandibles, deep blue-grey spotted hide and thin dreadlocks braided into a long compact tail. A high-neck sleeveless dark green tunic, double padded shoulder straps and a short split work skirt. Two long slender CLOSED cylindrical equipment cases are fastened vertically to a narrow backpack frame on either side of the spine, with bottoms near her thighs and tops below her head. Both hands grasp front harness buckles; balanced upright rest pose with one clawed foot slightly ahead. Cylinders are visibly travel cases, not guns.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 65,
+            "y": 49,
+            "width": 947,
+            "height": 1471
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-12.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-12.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "3e61d1e63ebfece422395249d9c11337e53740e9"
+    },
+    {
+      "id": "porter-13",
+      "slot": 13,
+      "designId": "porteur-bobines-cable",
+      "design": "A stout adult female Yautja dock worker with a wide squared brow, mottled rust-brown hide, thick rounded ivory mandibles and long dreadlocks gathered into two short braided bunches. Worn charcoal coverall with sleeves removed, thick leather rib belt and padded shoulder yoke. A compact broad cable spool is mounted horizontally in a real carrier rack on her back below the shoulders; dark insulated cable stays wound within the spool flanges. She holds a second SMALL closed coil with both hands at belly height. Legs brace the load, all loops neatly contained; no wires floating free.",
+      "status": "generated",
+      "file": "porter-13.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d9490e5d-981a-402a-91b4-6b4d07e5b07b.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-13.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 65,
+        "y": 30,
+        "width": 945,
+        "height": 1490
+      },
+      "sha256": "5dc8a682daa853d2312109398a703016f978909a478cb57b89e634a00e81d612",
+      "byteCount": 2177665,
+      "clearMarginsFraction": {
+        "left": 0.0634765625,
+        "right": 0.013671875,
+        "top": 0.01953125,
+        "bottom": 0.010416666666666666
+      },
+      "fullyTransparentFraction": 0.6290887196858724,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4812cd2d-5a60-4370-bf9d-2b4af6575cba.png",
+          "sha256": "453c60a85c9196d6e4fb18eae74f3f3bbaee3a4da0a718d605724dec9df00d8b",
+          "githubBlobSha": "dc2deee4b99a224d8dd24c2568676ac12ad7e9d8",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A stout adult female Yautja dock worker with a wide squared brow, mottled rust-brown hide, thick rounded ivory mandibles and long dreadlocks gathered into two short braided bunches. Worn charcoal coverall with sleeves removed, thick leather rib belt and padded shoulder yoke. A compact broad cable spool is mounted horizontally in a real carrier rack on her back below the shoulders; dark insulated cable stays wound within the spool flanges. She holds a second SMALL closed coil with both hands at belly height. Legs brace the load, all loops neatly contained; no wires floating free.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 19,
+            "y": 10,
+            "width": 993,
+            "height": 1526
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-13.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-13.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "fd20ac71ed34615075228a108949c59b3fd144d6"
+    },
+    {
+      "id": "porter-14",
+      "slot": 14,
+      "designId": "convoyeur-fioles-scellees",
+      "design": "A slender adult male Yautja careful cargo carrier with a high elongated brow, forest-green spotted hide, delicate pale mandibles and medium dreadlocks combed into a smooth bound fall. Wears a sand-coloured padded sleeveless jacket over a black under-tunic, rectangular hip pouches and soft wrist wraps. He carries a rigid bronze transport cage in both hands at sternum level; inside sit FOUR sealed opaque dark ceramic sample vessels held in individual padded sockets. Forearms visibly support the cage handles, shoulders gently raised, body balanced. Nothing spills and no medical symbols or text appear.",
+      "status": "generated",
+      "file": "porter-14.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f0b27749-3a5d-4532-9b2a-a86bc807f616.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-14.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1010,
+        "height": 1505
+      },
+      "sha256": "051a5c01d9b5ed077b862b07517f73d6ffe519edcc91801810bef1d6925cc5e1",
+      "byteCount": 2184719,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.013671875,
+        "top": 0.0,
+        "bottom": 0.020182291666666668
+      },
+      "fullyTransparentFraction": 0.6398131052652994,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-593b5cb5-d36a-4a1e-a9ae-88068ce22de9.png",
+          "sha256": "ce4ce9c8aee7b317e4cd5d9b65b04882cfa2c78d2fbcd0651cfbec852bb83cfd",
+          "githubBlobSha": "7dc58a2b24cf0282f64cd4a5172563984330712f",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A slender adult male Yautja careful cargo carrier with a high elongated brow, forest-green spotted hide, delicate pale mandibles and medium dreadlocks combed into a smooth bound fall. Wears a sand-coloured padded sleeveless jacket over a black under-tunic, rectangular hip pouches and soft wrist wraps. He carries a rigid bronze transport cage in both hands at sternum level; inside sit FOUR sealed opaque dark ceramic sample vessels held in individual padded sockets. Forearms visibly support the cage handles, shoulders gently raised, body balanced. Nothing spills and no medical symbols or text appear.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 65,
+            "y": 40,
+            "width": 947,
+            "height": 1460
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-14.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-14.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "2fc311a86a792eb140250a27f0fc951412738f51"
+    },
+    {
+      "id": "porter-15",
+      "slot": 15,
+      "designId": "porteuse-instrument-fragile",
+      "design": "An older adult female Yautja specialist porter with weathered black-grey hide, a broad asymmetric brow, one naturally shorter upper mandibular tusk and long silver-tipped dreadlocks twisted into a thick low knot. Wears a quilted dark ochre wrap coat, braided chest cord and reinforced knee wraps. A small but dense instrument chest hangs in a visibly suspended padded cradle from her chest harness. Both hands hold its sides steady, chest at waist height, elbows close, deliberate careful posture with staggered feet. The closed chest has recessed metal corners and nonluminous geometric detailing only.",
+      "status": "generated",
+      "file": "porter-15.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-971b344a-913f-41b6-9bab-edfe736c1268.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-15.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 968,
+        "height": 1512
+      },
+      "sha256": "ecbe71a0e76373c4c8406b557fb7ab748e19861ae477eb8b8ead8df44c8c0518",
+      "byteCount": 2232998,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.0546875,
+        "top": 0.0,
+        "bottom": 0.015625
+      },
+      "fullyTransparentFraction": 0.6264514923095703,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b924d281-be7b-4a0c-bc71-9745c9ddf9fd.png",
+          "sha256": "a3f2bd890e64d1bd4b7b2cca9f7f49d98fd160bc006a9ee05a9f8bd92fa9fe6d",
+          "githubBlobSha": "7c2505967bdad47de7cb20672a6770a69d1be5ab",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: An older adult female Yautja specialist porter with weathered black-grey hide, a broad asymmetric brow, one naturally shorter upper mandibular tusk and long silver-tipped dreadlocks twisted into a thick low knot. Wears a quilted dark ochre wrap coat, braided chest cord and reinforced knee wraps. A small but dense instrument chest hangs in a visibly suspended padded cradle from her chest harness. Both hands hold its sides steady, chest at waist height, elbows close, deliberate careful posture with staggered feet. The closed chest has recessed metal corners and nonluminous geometric detailing only.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 51,
+            "y": 29,
+            "width": 959,
+            "height": 1507
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-15.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-15.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "fc836ff83342f102a7fea035f4d382fbafb74982"
+    },
+    {
+      "id": "porter-16",
+      "slot": 16,
+      "designId": "porteur-charge-hanche",
+      "design": "A towering heavy adult male Yautja carrier with a prominent forehead ridge, pale sand hide with broad dark mottling, four stout cream mandibles and very thick shoulder-length dreadlocks tied with leather cuffs. Dark sleeveless long work tabard, layered waist cinch and a single large right shoulder pad. He carries ONE heavy squat cargo crate against his right hip, right forearm braced underneath, left hand gripping its top handle across the torso. Upper body leans left in credible counterbalance; muscular legs planted apart. The crate's corners and every finger are fully visible.",
+      "status": "generated",
+      "file": "porter-16.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a2c24c6a-4c91-4577-ae96-7af395d7bf90.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-16.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 23,
+        "y": 36,
+        "width": 987,
+        "height": 1482
+      },
+      "sha256": "9b8b0d5c101d2ddcd982614523ff5b621179280aa78f8b1c28cdc50232326d06",
+      "byteCount": 2245832,
+      "clearMarginsFraction": {
+        "left": 0.0224609375,
+        "right": 0.013671875,
+        "top": 0.0234375,
+        "bottom": 0.01171875
+      },
+      "fullyTransparentFraction": 0.6245193481445312,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0c1e4d09-c0f8-40f3-baba-65fe5fdac1f5.png",
+          "sha256": "37367bc0918c794b0b429d0487a7cacc850aeb5c2c8646d55c3cc14aac816e38",
+          "githubBlobSha": "18a7af2d50aac3ea5f84a80d3c3162b63f249926",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A towering heavy adult male Yautja carrier with a prominent forehead ridge, pale sand hide with broad dark mottling, four stout cream mandibles and very thick shoulder-length dreadlocks tied with leather cuffs. Dark sleeveless long work tabard, layered waist cinch and a single large right shoulder pad. He carries ONE heavy squat cargo crate against his right hip, right forearm braced underneath, left hand gripping its top handle across the torso. Upper body leans left in credible counterbalance; muscular legs planted apart. The crate's corners and every finger are fully visible.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1012,
+            "height": 1497
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-16.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-16.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "e5871f969f53a4728531f43b8d4e7a78e02877be"
+    },
+    {
+      "id": "porter-17",
+      "slot": 17,
+      "designId": "convoyeuse-harnais-hanches",
+      "design": "An adult Yautja female convoy labourer of medium height with a broad trapezoid cranial silhouette, fine olive-and-brown freckles, narrow ivory mandibles and many small dreadlocks arranged into a close woven crown. A short charcoal vest, heavy tan hip harness and layered leather skirt panels over wrapped thighs. TWO flat rectangular sealed supply cassettes hang from the hips on short rigid articulated supports, fully attached to the belt; a wide back strap distributes their weight. One hand adjusts a visible lower buckle, the other braces a cassette, torso slightly twisted and knees flexed. Clothing and rig unlike previous porters.",
+      "status": "generated",
+      "file": "porter-17.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-660ab638-849b-4344-a696-1cf906ff8efc.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-17.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 29,
+        "y": 48,
+        "width": 959,
+        "height": 1472
+      },
+      "sha256": "4ebf47a9731969cedec0db0db417e8dfcb32519c47e7688ef57dc17792c79398",
+      "byteCount": 2210148,
+      "clearMarginsFraction": {
+        "left": 0.0283203125,
+        "right": 0.03515625,
+        "top": 0.03125,
+        "bottom": 0.010416666666666666
+      },
+      "fullyTransparentFraction": 0.627325693766276,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0c286941-a769-46d8-8692-19b5d59f1a35.png",
+          "sha256": "40afa4d8c3cda75fac6f3b55e244b428c0ff8db84054f2389ae366f3391e05cf",
+          "githubBlobSha": "d9962e7d08c006ef1eccf08fe5f5f5ab0dcc88a8",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: An adult Yautja female convoy labourer of medium height with a broad trapezoid cranial silhouette, fine olive-and-brown freckles, narrow ivory mandibles and many small dreadlocks arranged into a close woven crown. A short charcoal vest, heavy tan hip harness and layered leather skirt panels over wrapped thighs. TWO flat rectangular sealed supply cassettes hang from the hips on short rigid articulated supports, fully attached to the belt; a wide back strap distributes their weight. One hand adjusts a visible lower buckle, the other braces a cassette, torso slightly twisted and knees flexed. Clothing and rig unlike previous porters.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 0,
+            "y": 25,
+            "width": 1006,
+            "height": 1511
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-17.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-17.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "6b44e321ec3d5e7a7c3a16f5556baab4f3a173bb"
+    },
+    {
+      "id": "porter-18",
+      "slot": 18,
+      "designId": "porteur-contenants-retour",
+      "design": "A short broad adult male Yautja return-convoy worker with a flattened domed cranium, deep tawny spotted hide, thick outward-curving mandibles and sparse chunky dreadlocks tied close to the nape. He wears a plain pale heavy cloth apron with a dark leather border, broad shoulder bands and knee pads. He carries THREE nesting empty shallow metal storage bins, neatly stacked and bound together horizontally across his forearms. One hand grips the far lower handle, the other supports the stack near the abdomen. Sturdy relaxed stance, realistic hand-to-load contact; bins are unmistakably empty.",
+      "status": "generated",
+      "file": "porter-18.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-adb208a3-6a5d-41cb-963e-354900d44e68.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-18.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 53,
+        "y": 16,
+        "width": 937,
+        "height": 1507
+      },
+      "sha256": "100a22d18610c7b497f4b24ee4c13503a0ad67f416c6f49d76d56b41b8ae5a13",
+      "byteCount": 2374810,
+      "clearMarginsFraction": {
+        "left": 0.0517578125,
+        "right": 0.033203125,
+        "top": 0.010416666666666666,
+        "bottom": 0.008463541666666666
+      },
+      "fullyTransparentFraction": 0.5699214935302734,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2040d171-a0a3-47b4-9ae2-f04a05e867cc.png",
+          "sha256": "81f79d1226f893993aff91a66f07ea82966aa3819875bfa20763cea7d8fa9d8a",
+          "githubBlobSha": "b83d4472194315d3f9ced002b10f59ac5808b665",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A short broad adult male Yautja return-convoy worker with a flattened domed cranium, deep tawny spotted hide, thick outward-curving mandibles and sparse chunky dreadlocks tied close to the nape. He wears a plain pale heavy cloth apron with a dark leather border, broad shoulder bands and knee pads. He carries THREE nesting empty shallow metal storage bins, neatly stacked and bound together horizontally across his forearms. One hand grips the far lower handle, the other supports the stack near the abdomen. Sturdy relaxed stance, realistic hand-to-load contact; bins are unmistakably empty.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 39,
+            "y": 25,
+            "width": 933,
+            "height": 1511
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-18.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-18.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "c9001d46cd9b14edbe7d4034199940a916992799"
+    },
+    {
+      "id": "porter-19",
+      "slot": 19,
+      "designId": "convoyeuse-cassette-botanique",
+      "design": "A tall slender adult female Yautja ecological supplies carrier with a high smooth brow, muted green-grey hide patterned with dense small speckles, fine ivory mandibles and long narrow dreadlocks threaded through a simple wooden clasp. Padded dark brown work vest, long split moss-coloured tabard, thick ankle wraps. A rectangular ventilated transport case sits in a low back harness; a few robust curled alien fern fronds are visible ONLY through its upper cage slots, rooted inside and not floating. She steadies the shoulder straps with both hands, leaning forward moderately under the weight. It is equipment, not a pet or additional character.",
+      "status": "generated",
+      "file": "porter-19.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6a44a851-a204-44be-8b98-80979b903ff6.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-19.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 0,
+        "y": 67,
+        "width": 1012,
+        "height": 1453
+      },
+      "sha256": "7f3a6f7c644673817552098240892d1514b82ef8818535567c427ccb660a47f8",
+      "byteCount": 2167485,
+      "clearMarginsFraction": {
+        "left": 0.0,
+        "right": 0.01171875,
+        "top": 0.043619791666666664,
+        "bottom": 0.010416666666666666
+      },
+      "fullyTransparentFraction": 0.6504529317220052,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-025399f1-8937-4217-8817-60ceaf359444.png",
+          "sha256": "8f42b9ceb5e98d2d2ef5d98dfc6f9f7c5c40377bc63c90dda5019dec56147bf6",
+          "githubBlobSha": "97dee0765b66b8f37314ba3d187ddbf33b9ce9e5",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A tall slender adult female Yautja ecological supplies carrier with a high smooth brow, muted green-grey hide patterned with dense small speckles, fine ivory mandibles and long narrow dreadlocks threaded through a simple wooden clasp. Padded dark brown work vest, long split moss-coloured tabard, thick ankle wraps. A rectangular ventilated transport case sits in a low back harness; a few robust curled alien fern fronds are visible ONLY through its upper cage slots, rooted inside and not floating. She steadies the shoulder straps with both hands, leaning forward moderately under the weight. It is equipment, not a pet or additional character.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 49,
+            "y": 3,
+            "width": 961,
+            "height": 1533
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-19.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-19.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "5f0f9e28b79348f1c8177eef15c3b2dc976da563"
+    },
+    {
+      "id": "porter-20",
+      "slot": 20,
+      "designId": "porteur-matieres-chitineuses",
+      "design": "A seasoned broad-shouldered adult male Yautja material transporter with a narrow angular brow, scarred ochre-and-grey hide, stout ivory mandibles and long rope-thick dreadlocks gathered over one shoulder. He wears a dark sleeveless padded tunic, a wide double waist belt and heavy mismatched cloth leg wraps. A low wooden-and-metal carrying frame on his back holds several clean cured chitin plates packed in thick folded cloth, fully tied with crossing straps and ending well below the head. Right hand grips a shoulder strap, left hand supports a small closed supply satchel at the hip, broad stable stance. No skulls, gore, weapons, or trophy decorations.",
+      "status": "generated",
+      "file": "porter-20.png",
+      "prompt": "Use case: precise image editing for a videogame character asset. Edit image1, the existing FULL-BODY Yautja sprite. Image2 is the official Stan Winston 1987 Predator head used only for accurate alien anatomy. Keep this SAME individual: preserve the entire body silhouette, body pose, all clothes, harness architecture, carried objects, tool grips, hands, legs, feet, skin colour scheme, scalp-tendril arrangement, camera, painterly material style, existing margins and full portrait canvas. Change ONLY the HEAD/FACE anatomy at its existing neck attachment. Replace the simplified two downward tube-like mouthparts with a CINEMA-FAITHFUL YAUTJA HEAD matching the anatomy of image2 while matching this individual's body colour. Broad alien domed cranium, sculpted heavy orbital ridges, deep-set alien eyes, speckled leathery reptilian skin. FOUR SEPARATE EXTERNAL FLESHY MANDIBULAR LOBES surround a distinct INNER TOOTHED MOUTH: TWO upper cheek lobes with outward ivory tusks; TWO substantial lower lobes with long ivory tusks curving UPWARD. Keep the four articulated lobes visibly distinct and naturally partly spread in a calm expression, not a roar. No human nose, lips, ears, chin or face; no nasal tubes, no mere two hanging fangs. Face turns slightly back toward viewer while BODY remains in its original right-facing three-quarter pose, so all four mandibles read clearly. Thick scalp tendrils retain the original individual's arrangement and colour, never human hair. Match the painting style of image1; no photographic pasted-on head. Keep head naturally proportional, firmly attached to the neck, and entirely inside original canvas. Do NOT redesign clothes, props, armour, cargo, character build, hand poses or feet. Return the COMPLETE full-body sprite, not a head portrait. Preserve actual transparent alpha background. NO ground, floor, cast shadow, vignette, backdrop, text, reference watermark, logo, second person, inset or character sheet. One edited individual sprite only.",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0c2c0f1b-d493-4f8d-ab78-6137a99f46a6.png",
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/porter/porter-20.png",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": {
+        "x": 57,
+        "y": 22,
+        "width": 948,
+        "height": 1491
+      },
+      "sha256": "64a0b4cf0cab329658445bbd02332f3c53959156aa7f631b7906f1d116a7e541",
+      "byteCount": 2392523,
+      "clearMarginsFraction": {
+        "left": 0.0556640625,
+        "right": 0.0185546875,
+        "top": 0.014322916666666666,
+        "bottom": 0.014973958333333334
+      },
+      "fullyTransparentFraction": 0.5706971486409506,
+      "sourceHistory": [
+        {
+          "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8e9b43f9-f77a-4b1e-90cc-79cbc06a6229.png",
+          "sha256": "64cdf3124e1ae60fdf2d016f684730adb4089400166e36dc2508ec27c4aa5ec4",
+          "githubBlobSha": "f1b50405b4af40da94e70c8ac97d4ae33ef2a9e1",
+          "prompt": "Use case: stylized-concept. Asset type: ONE individual full-body 2D videogame NPC sprite for Yautja The Long Hunt. The supplied atlas is a STYLE AND SPECIES REFERENCE ONLY: reproduce its realistic detailed painterly finish, readable work clothing, reptilian hide and convincing anatomy, but create ONE NEW porter individual described below, never copy the atlas composition or its people. Adult Yautja / Predator species, clearly alien domed cranium, four facial mandibles rather than a human mouth, dreadlocks, strong hands and fully visible clawed feet. Three-quarter body view facing RIGHT, slightly elevated camera matching reference. Quiet load-bearing standing posture. Every transported object must be physically supported by hands or harness attachment points; shoulders, arms and knees react credibly to its weight. Full body centered in a portrait image with a MINIMUM 8 percent completely transparent empty margin above the highest part and beneath the lowest toe and generous side margins around the entire load. Actual transparent alpha background. NO floor, NO ground plane, NO cast shadow, NO scenery, NO extra person, NO companion, NO inset, NO atlas or sheet, NO text, NO labels, NO logo, NO border, NO watermark, NO glow. ONE sprite only, all fingers, dreadlocks, feet, straps and load entirely inside canvas. Native contact shading on the body and equipment only. \nFraming priority: zoom out. Put the complete figure AND cargo within the middle 76 percent of the portrait canvas height. Keep broad clean transparent breathing room above and below; do not import the atlas's brown vignette or paint any background.\nSubject design: A seasoned broad-shouldered adult male Yautja material transporter with a narrow angular brow, scarred ochre-and-grey hide, stout ivory mandibles and long rope-thick dreadlocks gathered over one shoulder. He wears a dark sleeveless padded tunic, a wide double waist belt and heavy mismatched cloth leg wraps. A low wooden-and-metal carrying frame on his back holds several clean cured chitin plates packed in thick folded cloth, fully tied with crossing straps and ending well below the head. Right hand grips a shoulder strap, left hand supports a small closed supply satchel at the hip, broad stable stance. No skulls, gore, weapons, or trophy decorations.",
+          "width": 1024,
+          "height": 1536,
+          "alphaBounds": {
+            "x": 49,
+            "y": 71,
+            "width": 961,
+            "height": 1465
+          },
+          "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-20.png",
+          "revision": 1
+        }
+      ],
+      "revision": 2,
+      "revisionReason": "cinema-four-mandible-face",
+      "editInput": "/workspace/scratch/41fc0564188e/npc-generation-revisions/porter/before-cinema-face/porter-20.png",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "githubBlobSha": "c5aefb184ba45f317e2acd9b5114de255a8fbf18"
+    }
+  ]
+}

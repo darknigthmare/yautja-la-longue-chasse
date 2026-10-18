@@ -27,6 +27,8 @@ function runtimeCallback(tree, predicate, environment) {
 }
 function fixture() {
   const events = [];
+  const listeners = new Map();
+  let capturedFrame;
   const frames = animationFrameFixture();
   const focusedElement = {};
   const pad = { axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
@@ -38,7 +40,8 @@ function fixture() {
     rootRef: { current: { contains: (node) => node === focusedElement, focus() {} } },
     document: { hidden: false, hasFocus: () => true, activeElement: focusedElement },
     navigator: { getGamepads: () => [pad] },
-    window: { requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame },
+    window: { requestAnimationFrame: cb => { capturedFrame = cb; return frames.requestAnimationFrame(cb); }, cancelAnimationFrame: frames.cancelAnimationFrame,
+      addEventListener: (name, cb) => listeners.set(name, cb), removeEventListener: name => listeners.delete(name) },
     focusAction: (index) => events.push(["focus", index]),
     invokeAction: (index) => events.push(["invoke", index]),
     moveRoom: (direction) => events.push(["move", direction]),
@@ -55,7 +58,8 @@ function fixture() {
   };
   const keyDown = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === "useCallback" && node.parent.name?.getText(tree) === "handleKeyDown", environment);
   render();
-  return { events, frames, environment, pad, render, tick, keyDown };
+  return { events, frames, environment, pad, render, tick, keyDown, listeners,
+    capture: () => capturedFrame, cleanup: () => cleanup?.() };
 }
 function keyEvent(code, key = code, extra = {}) {
   return { code, key, nativeEvent: { code, key }, repeat: false, defaultPrevented: false, target: {},
@@ -203,4 +207,93 @@ test("holding Escape to open pause does not immediately close its settings dialo
   assert.deepEqual(cleared, [["light", null], ["complete", null]]);
   assert.equal(environment.archiveSelectionRef.current, 1);
   cleanup(); assert.equal(listeners.size, 0);
+});
+
+test('V94 a denied gamepad poll keeps ship keyboard and future frames available', () => {
+  const f = fixture(); f.tick();
+  f.environment.navigator.getGamepads = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.doesNotThrow(() => { f.tick(); f.tick(); });
+  assert(f.frames.size > 0); assert.equal(f.environment.gamepadStateRef.current.ready, false);
+  f.keyDown(keyEvent('ArrowRight')); assert.deepEqual(f.events, [['move', 1]]);
+  f.events.length = 0;
+  f.environment.navigator.getGamepads = () => [f.pad]; f.pad.buttons[0].pressed = true;
+  f.tick(); assert.deepEqual(f.events, []);
+  f.pad.buttons[0].pressed = false; f.tick(); f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['invoke', 0]]);
+});
+
+test('ship console ignores disconnected pads instead of hiding a later live controller', () => {
+  const f = fixture(); f.pad.connected = false;
+  const live = { id: 'live', index: 3, connected: true, axes: [0, 0], buttons: Array.from({length:16},()=>({pressed:false})) };
+  f.environment.navigator.getGamepads = () => [f.pad, null, null, live];
+  f.tick(); live.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['invoke', 0]]);
+});
+for (const value of [NaN, Infinity, -Infinity]) test(`ship console rejects nonfinite axis ${value}`, () => {
+  const f = fixture(); f.tick(); f.pad.axes = [value, value]; f.tick();
+  assert.deepEqual(f.events, []); assert.ok(f.frames.size);
+});
+test('ship console needs neutral when the active controller is replaced', () => {
+  const f = fixture(); f.pad.id = 'first'; f.pad.index = 0; f.tick();
+  const replacement = {...f.pad, id:'second', buttons:f.pad.buttons.map(b=>({...b}))}; replacement.buttons[0].pressed = true;
+  f.environment.navigator.getGamepads = () => [replacement]; f.tick(); assert.deepEqual(f.events, []);
+  replacement.buttons[0].pressed = false; f.tick(); replacement.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['invoke', 0]]);
+});
+test('a disconnect between polls requires neutral even for the same model and slot', () => {
+  const f = fixture(); f.tick(); assert.equal(typeof f.listeners.get('gamepaddisconnected'), 'function');
+  f.listeners.get('gamepaddisconnected')({gamepad:f.pad}); f.pad.buttons[0].pressed = true; f.tick(); assert.deepEqual(f.events, []);
+  f.pad.buttons[0].pressed = false; f.tick(); f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['invoke', 0]]); f.cleanup(); assert.equal(f.listeners.size, 0);
+});
+test('ship Back takes priority over simultaneous room changes and confirm', () => {
+  const f = fixture(); f.tick(); for (const i of [0,1,15]) f.pad.buttons[i].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['deck']]);
+});
+test('changing room cannot also activate the previous room action on the same press', () => {
+  const f = fixture(); f.tick(); f.pad.buttons[15].pressed = true; f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['move', 1]]); f.tick(); assert.equal(f.events.length, 1);
+});
+test('opposite room or action directions are neutral rather than two navigation actions', () => {
+  const f = fixture(); f.tick(); for (const i of [12,13,14,15]) f.pad.buttons[i].pressed = true; f.tick();
+  assert.deepEqual(f.events, []);
+});
+test('a retired ship polling callback cannot navigate or schedule another frame', () => {
+  const f = fixture(); f.tick(); const late = f.capture(); f.cleanup();
+  f.pad.buttons[0].pressed = true; late(); assert.deepEqual(f.events, []); assert.equal(f.frames.size, 0);
+});
+
+test('a foreign ship/campaign storage change immediately retires a stale local ship console', () => {
+  const store = {}, listeners = new Map(), changes = [], status = [];
+  const env = {
+    controlledProgression: undefined,
+    save: { createdAt: '2026-10-17T00:00:00.000Z' },
+    SHIP_PROGRESSION_STORAGE_KEY: 'yautja-long-hunt.ship-progress',
+    SAVE_STORAGE_KEY: 'yautja-long-hunt.save',
+    setStaleSidecarOwner: owner => changes.push(owner),
+    setStatusMessage: value => status.push(value),
+    window: { localStorage: store, addEventListener: (key, fn) => listeners.set(key, fn), removeEventListener: key => listeners.delete(key) },
+  };
+  const effect = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === 'useEffect' && node.arguments[0]?.getText(tree).includes('SHIP_PROGRESSION_STORAGE_KEY'), env);
+  const cleanup = effect();
+  assert.ok(listeners.has('storage'));
+  const dispatch = (key, storageArea = store) => listeners.get('storage')({ key, storageArea });
+  dispatch('unrelated-key');
+  dispatch('yautja-long-hunt.save', {});
+  assert.equal(changes.length, 0, 'unrelated keys or storage areas cannot disable the console');
+  dispatch(env.SHIP_PROGRESSION_STORAGE_KEY);
+  dispatch(env.SAVE_STORAGE_KEY);
+  dispatch(null);
+  assert.deepEqual(changes, Array(3).fill(env.save.createdAt));
+  assert.ok(status.every(message => message.includes('lecture seule')));
+  cleanup();
+  assert.equal(listeners.has('storage'), false);
+});
+
+test('controlled ship progress must not subscribe to local storage conflict warnings', () => {
+  const listeners = new Map();
+  const env = { controlledProgression: {}, save: { createdAt: '2026-10-17T00:00:00.000Z' }, window: { addEventListener: (k,f)=>listeners.set(k,f) } };
+  const effect = runtimeCallback(hub, (node, tree) => node.expression.getText(tree) === 'useEffect' && node.arguments[0]?.getText(tree).includes('SHIP_PROGRESSION_STORAGE_KEY'), env);
+  assert.equal(effect(), undefined);
+  assert.equal(listeners.size, 0);
 });

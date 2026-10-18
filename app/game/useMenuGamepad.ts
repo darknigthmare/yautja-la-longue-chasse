@@ -1,28 +1,31 @@
 "use client";
 
-import { useEffect, type RefObject } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { freshMenuPadState, menuFocusIndex, menuPadStep, type MenuDirection } from "./systems/menuNavigation";
 
 const FOCUSABLE = 'button:not(:disabled),a[href],input:not(:disabled):not([type="hidden"]),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]';
 
 function adjustControl(element: HTMLElement | null, direction: MenuDirection): boolean {
   if (direction !== "left" && direction !== "right") return false;
+  if (!element || element.matches(":disabled") ||
+      element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]')) return false;
   const sign = direction === "left" ? -1 : 1;
   if (element instanceof HTMLInputElement && element.type === "range") {
     const minimum = Number(element.min || 0);
     const maximum = Number(element.max || 100);
     const step = element.step === "any" ? (maximum - minimum) / 100 : Number(element.step || 1);
     const value = String(Math.min(maximum, Math.max(minimum, Number(element.value) + sign * step)));
+    if (value === element.value) return true;
     Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set?.call(element, value);
     element.dispatchEvent(new Event("input", { bubbles: true }));
     element.dispatchEvent(new Event("change", { bubbles: true }));
     return true;
   }
   if (element instanceof HTMLSelectElement) {
-    const options = Array.from(element.options).filter(option => !option.disabled);
+    const options = Array.from(element.options).filter(option => !option.matches(":disabled") && !option.closest("[hidden]"));
     const index = options.findIndex(option => option.value === element.value);
     const next = options[Math.min(options.length - 1, Math.max(0, index + sign))];
-    if (next) {
+    if (next && next.value !== element.value) {
       Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "value")?.set?.call(element, next.value);
       element.dispatchEvent(new Event("change", { bubbles: true }));
     }
@@ -33,6 +36,10 @@ function adjustControl(element: HTMLElement | null, direction: MenuDirection): b
 
 /** Active only on menus without their own controller loop. No synthetic gameplay keys. */
 export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: boolean, contextKey: string, onBack: () => void) {
+  // A changed callback is not a new menu. Keep repeat/edge state through ordinary
+  // parent renders, but use the latest committed action when Back is pressed.
+  const onBackRef = useRef(onBack);
+  useEffect(() => { onBackRef.current = onBack; }, [onBack]);
   useEffect(() => {
     if (!enabled) return;
     let frameId = 0;
@@ -44,7 +51,7 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       // A modal can make this menu inert while its controller loop is still mounted.
       // Ignore every action, including Back, so gameplay cannot resume behind it.
       const root = rootRef.current;
-      if (!root || root.closest('[inert],[aria-hidden="true"]')) { state = freshMenuPadState(); return; }
+      if (!root || root.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]')) { state = freshMenuPadState(); return; }
       let pad: Gamepad | null | undefined;
       try { pad = Array.from(navigator.getGamepads?.() ?? []).find(candidate => candidate?.connected); }
       catch { padIdentity = ""; state = freshMenuPadState(); return; }
@@ -63,11 +70,14 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const dialogs = Array.from(root.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'))
         .filter(element => !element.closest('[inert]') && element.getClientRects().length > 0);
       const scope = dialogs.at(-1) ?? root;
+      // A disabled modal still owns input; never send Back to the menu behind it.
+      if (scope.closest('[aria-disabled="true"],[hidden]')) { state = freshMenuPadState(); return; }
       const controls = Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))
-        .filter(element => !element.closest('[inert],[aria-hidden="true"]') && element.getClientRects().length > 0 && element.getAttribute("aria-disabled") !== "true");
+        .filter(element => !element.matches(":disabled") &&
+          !element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]') && element.getClientRects().length > 0);
       const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      if (result.back) { onBack(); return; }
-      if (result.direction && !adjustControl(active && scope.contains(active) ? active : null, result.direction)) {
+      if (result.back) { onBackRef.current(); return; }
+      if (result.direction && !adjustControl(active && controls.includes(active) ? active : null, result.direction)) {
         const index = menuFocusIndex(controls.map(element => {
           const rect = element.getBoundingClientRect();
           return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
@@ -83,5 +93,5 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
     };
     frameId = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frameId);
-  }, [enabled, contextKey, onBack, rootRef]);
+  }, [enabled, contextKey, rootRef]);
 }

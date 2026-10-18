@@ -131,19 +131,43 @@ test("atlas intelligence reveals own fit people, hides unobserved opponents and 
   assert.equal(api.warAtlasIntelV95(state, "CON-T08").turn, 3, "a future report is not current intelligence");
 });
 
-test("played reconnaissance then a reserved assault capture a territory, update atlas control and survive a real session reload", () => {
+test("played reconnaissance then a reserved assault capture a territory, update atlas control and survive a real session reload", async () => {
   const disk = new Map(), writes = [];
   const storage = { getItem: key => disk.get(key) ?? null, setItem: (key, value) => { writes.push(key); disk.set(key, value); } };
   disk.set("campaign", "original-campaign-bytes");
-  const session = api.createWarSessionV85(() => storage);
+  // Use the actual asynchronous store with its browser fence contract. This
+  // injected port is an in-memory transactional test dependency, not a bypass
+  // of a browser failure or a replacement for native IndexedDB integration QA.
+  const records = new Map();
+  let sequence = 0;
+  const lock = async operation => ({ acquired: true, value: await operation() });
+  const fence = {
+    async read(key) { return clone(records.get(key) ?? null); },
+    async reserve(key, expected, before, after) {
+      assert.deepEqual(records.get(key) ?? null, expected);
+      const record = { version: 1, token: String(++sequence), before, after, phase: "intent" };
+      records.set(key, record); return clone(record);
+    },
+    async confirm(key, expected) {
+      assert.deepEqual(records.get(key), expected);
+      const record = { ...expected, phase: "confirmed" };
+      records.set(key, record); return clone(record);
+    },
+  };
+  const session = api.createWarSessionV85(() => storage, lock, fence);
   session.subscribe(() => {});
+  assert.equal(session.getSnapshot().loaded, false);
+  await session.whenSettled();
+  assert.equal(session.getSnapshot().loaded, true);
   const original = session.getSnapshot().simulation;
   assert.equal(api.warAtlasIntelV95(original, "CON-T08").kind, "unknown");
   const recon = api.queueWarOrderV85(original, { kind: "recon", fromId: "CON-T02", targetId: "CON-T08", combatantIds: ["P08"], cargo: { s: 0, m: 0, i: 0 } });
   assert.equal(recon.accepted, true, recon.message);
   assert.equal(original.orders.length, 0);
   session.setSimulation(recon.state);
+  await session.whenSettled();
   session.setSimulation(api.advanceWarTurnV85(session.getSnapshot().simulation).state);
+  await session.whenSettled();
   const prepared = session.getSnapshot().simulation;
   const report = api.warAtlasIntelV95(prepared, "CON-T08");
   assert.equal(report.kind, "observed"); assert.equal(report.count, null); assert.equal(report.turn, 1);
@@ -162,8 +186,16 @@ test("played reconnaissance then a reserved assault capture a territory, update 
   const countBefore = api.warAtlasFactionMetricsV95(original).find(item => item.id === "CON-F01").territoryCount;
   assert.equal(api.warAtlasFactionMetricsV95(resolution.state).find(item => item.id === "CON-F01").territoryCount, countBefore + 1);
   session.setSimulation(resolution.state);
-  const reloaded = api.createWarSessionV85(() => storage);
+  assert.equal(session.getSnapshot().persistedWar, false);
+  assert(session.getSnapshot().pendingWrites > 0);
+  await session.whenSettled();
+  assert.equal(session.getSnapshot().persistedWar, true);
+  assert.equal(session.getSnapshot().pendingWrites, 0);
+  const reloaded = api.createWarSessionV85(() => storage, lock, fence);
   reloaded.subscribe(() => {});
+  await reloaded.whenSettled();
+  assert.equal(reloaded.getSnapshot().loaded, true);
+  assert.equal(reloaded.getSnapshot().persistedWar, true);
   assert.equal(reloaded.getSnapshot().simulation.territories["CON-T08"].controller, "CON-F01");
   assert.deepEqual(api.warAtlasFactionMetricsV95(reloaded.getSnapshot().simulation), api.warAtlasFactionMetricsV95(resolution.state));
   assert.deepEqual(reloaded.getSnapshot().simulation.combatants, resolution.state.combatants);

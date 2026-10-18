@@ -482,7 +482,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
       const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current && !wayfindingOpenRefV75.current;
       const context = !active ? "inactive" : dialogStateRef.current ? "dialog" : pausedRef.current ? "paused" : "world";
-      const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null : null;
+      let pad: Gamepad | null = null;
+      if (active) {
+        try { pad = [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null; }
+        catch { /* A denied controller API must not stop keyboard/touch or the city clock. */ }
+      }
       const gamepad = stepHomeworldGamepad(gamepadStateRef.current, pad, context);
       gamepadStateRef.current = gamepad.state;
       if (gamepad.actions.pause) {

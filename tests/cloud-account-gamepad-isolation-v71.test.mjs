@@ -17,7 +17,7 @@ function run(inert) {
     freshMenuPadState: () => { resets++; return { armed: false }; },
     menuPadStep: () => ({ state: { armed: true }, direction: null, confirm: false, back: true }),
     rootRef: { current: { closest: () => inert ? {} : null, querySelectorAll: () => [] } },
-    HTMLElement: class {}, FOCUSABLE: "button", onBack: () => { backed++; },
+    HTMLElement: class {}, FOCUSABLE: "button", onBackRef: { current: () => { backed++; } },
   };
   const exports = {}, actual = Function(...Object.keys(env), "exports", code + ";return exports.default;")(...Object.values(env), exports);
   actual(100); return { backed, resets };

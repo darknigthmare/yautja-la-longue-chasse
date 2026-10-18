@@ -1,4 +1,5 @@
 import config from '../data/cloudAccountConfigV71.json';
+import {fetchCloudJsonV94,CloudResponseErrorV94,CLOUD_AUTH_RESPONSE_BYTES_V94,CLOUD_ARCHIVE_RESPONSE_BYTES_V94} from './cloudResponseV94';
 
 /** Only a publishable key ships to the client. Supabase verifies JWTs and RLS. */
 export const CLOUD_SESSION_KEY_V71 = 'yautja-long-hunt.cloud.session-v71';
@@ -20,17 +21,23 @@ function sessionFromResponse(data:unknown):CloudSessionV71|null {
 }
 export function createCloudRestV71(fetcher:CloudFetchV71=fetch) {
  async function request(path:string,options:RequestInit={},session:CloudSessionV71|null=null):Promise<unknown>{
-  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),15000);
   try{
-   const res=await fetcher(config.url+path,{...options,signal:controller.signal,cache:'no-store',headers:{apikey:config.publishableKey,...(session?{Authorization:`Bearer ${session.accessToken}`} : {}),'Content-Type':'application/json',...options.headers}});
-   const body=await res.text();let data:unknown=null;try{data=body?JSON.parse(body):null;}catch{throw new CloudNetworkErrorV71('Réponse du service de compte illisible. Aucune archive remplacée.',res.status);}
+   const res=await fetchCloudJsonV94(fetcher,config.url+path,{...options,cache:'no-store',headers:{apikey:config.publishableKey,...(session?{Authorization:`Bearer ${session.accessToken}`} : {}),'Content-Type':'application/json',...options.headers}},path.startsWith('/auth/')?CLOUD_AUTH_RESPONSE_BYTES_V94:CLOUD_ARCHIVE_RESPONSE_BYTES_V94);
+   const data=res.data;
    if(!res.ok){
     // Never display raw provider messages, tokens or submitted credentials.
     const message=res.status===429?'Trop de tentatives. Réessayez dans quelques minutes.':res.status===401||res.status===400?'Connexion refusée : vérifiez votre adresse, votre mot de passe et la confirmation du compte.':res.status===403?'Le compte ne permet pas cette opération.':`Service de compte indisponible (${res.status}). Votre progression locale reste protégée.`;
     throw new CloudNetworkErrorV71(message,res.status);
    }
    return data;
-  }catch(error){if(error instanceof CloudNetworkErrorV71)throw error;throw new CloudNetworkErrorV71('Connexion au compte interrompue. Votre progression reste sur cet appareil.');}finally{clearTimeout(timeout);}
+  }catch(error){
+   if(error instanceof CloudNetworkErrorV71)throw error;
+   if(error instanceof CloudResponseErrorV94){
+    const message=error.reason==='oversized'?'Réponse du compte trop volumineuse. Transfert non confirmé ; progression locale conservée.':error.reason==='deadline'?'Le compte ne répond plus. Transfert non confirmé ; vérifiez la synchronisation avant de réessayer.':'Réponse du service de compte illisible. Transfert non confirmé ; progression locale conservée.';
+    throw new CloudNetworkErrorV71(message,error.status);
+   }
+   throw new CloudNetworkErrorV71('Connexion au compte interrompue. Votre progression reste sur cet appareil.');
+  }
  }
  return {
   async signIn(email:string,password:string){const data=await request('/auth/v1/token?grant_type=password',{method:'POST',body:JSON.stringify({email:email.trim(),password})});const session=sessionFromResponse(data);if(!session)throw new CloudNetworkErrorV71('Session de compte invalide.');return session;},

@@ -369,3 +369,28 @@ test('the actual tactile Course button toggles the input without movement, annou
   assert(Math.abs(f.env.actorRef.current.vx - city.HOMEWORLD_ACTOR.walkSpeed) < 1e-8);
   f.env.blocked = true; click(); assert.equal(f.env.touch.current.sprint, false);
 });
+
+for (const mode of ['method-throws', 'getter-throws']) test(`V94 gamepad policy ${mode} cannot stop the live city clock or keyboard movement`, () => {
+  const f = fixture(); f.release();
+  f.env.matchesControlAction = matchesControlAction;
+  f.env.bindings = DEFAULT_CONTROL_BINDINGS;
+  f.env.held.current.add('ArrowRight');
+  const before = f.env.actorRef.current.x, clock = f.env.cityClockV68.current;
+  const deny = () => { throw new DOMException('Gamepad policy denied', 'SecurityError'); };
+  f.env.navigator = mode === 'getter-throws' ? Object.defineProperty({}, 'getGamepads', { get: deny }) : { getGamepads: deny };
+  assert.doesNotThrow(() => f.tick(6));
+  assert(f.env.actorRef.current.x > before, 'keyboard still moves the actual city actor');
+  assert(f.env.cityClockV68.current > clock, 'the motor reschedules its frames');
+  assert.equal(f.env.gamepadStateRef.current.ready, false);
+  assert.deepEqual(f.events, []);
+});
+
+test('V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction', () => {
+  const f = fixture(); f.release();
+  f.env.navigator.getGamepads = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.doesNotThrow(() => f.tick());
+  f.env.navigator.getGamepads = () => [f.pad];
+  f.pad.buttons[0].pressed = true; f.tick(3); assert.deepEqual(f.events, []);
+  f.release(); f.pad.buttons[0].pressed = true; f.tick();
+  assert.deepEqual(f.events, [['interact']]);
+});

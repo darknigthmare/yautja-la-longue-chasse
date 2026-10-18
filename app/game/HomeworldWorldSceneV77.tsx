@@ -136,7 +136,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
     data-routine-phase-v84={pose.phase} data-routine-family-v84={pose.routineFamily} data-routine-group-v84={pose.groupId??undefined} data-routine-dwell-v84={pose.dwellRemainingSeconds}
     data-x={pose.x} data-y={pose.y} data-moving={pose.moving} style={{left:p.x,top:p.y,zIndex:depth(resident.levelId,pose.y)}}>
     <span className={styles.residentShadowV68} aria-hidden="true" data-homeworld-ground-contact-v92={resident.id}/>
-    <HomeworldCivilianV72 role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={pose.motionSeconds} reducedMotion={reducedMotion} speed={resident.speed}/>
+    <HomeworldCivilianV72 npcId={resident.id} role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={pose.motionSeconds} reducedMotion={reducedMotion} speed={resident.speed}/>
    </span>;
   })}
   {HOMEWORLD_CONNECTORS_V77.filter(connector=>painted(connector.from.levelId)||painted(connector.to.levelId)).map(connector=>{

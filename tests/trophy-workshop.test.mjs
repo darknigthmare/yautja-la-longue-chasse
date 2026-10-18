@@ -169,18 +169,20 @@ test("component exposes keyboard, gamepad, touch and accessible live feedback", 
   );
 
   assert.match(source, /onKeyDown={handleKeyDown}/);
-  assert.match(source, /navigator\.getGamepads/);
+  const runtime = await readFile(resolve(projectRoot, "app/game/useTrophyWorkshopRuntimeV94.ts"), "utf8");
+  assert.match(source, /useTrophyWorkshopRuntimeV94/);
+  assert.match(runtime, /navigator\.getGamepads/);
   assert.match(source, /onPointerDown/);
   assert.match(source, /role="dialog"/);
   assert.match(source, /aria-modal="true"/);
   assert.match(source, /aria-live="polite"/);
   assert.match(source, /role="progressbar"/);
-  assert.match(source, /onComplete\(result\)/);
+  assert.match(runtime, /callbacks\.current\.onComplete\(completed\)/);
   assert.match(source, /game\.status === "failed"/);
   assert.match(source, /game\.phase === "ready"/);
   assert.match(source, /trophyWorkshopReadyRemaining/);
   assert.match(source, /Commencer la séquence · \{inputShortcuts\.confirm\}/);
-  assert.match(source, /startTrophyWorkshopGame/);
+  assert.match(runtime, /startTrophyWorkshopGame/);
   assert.match(source, /matchingControlActions\([\s\S]*"workshop"/);
 });
 

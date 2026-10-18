@@ -1,0 +1,26 @@
+name: V94 storage coherence diagnostic
+on:
+  pull_request:
+    paths:
+      - scripts/qa-storage-coherence-v94.mjs
+      - .github/workflows/storage-coherence-v94.yml
+permissions:
+  contents: read
+jobs:
+  native-storage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /scripts/qa-storage-coherence-v94.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/qa-storage-coherence-v94.mjs

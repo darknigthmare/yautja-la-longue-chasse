@@ -22,6 +22,7 @@ export function createCanyonV85(id = "free-canyon-1"): CanyonSimulationV85 {
   return { version: 1, context: "free", id, phase: "preparation", approach: "unselected", battery: "unselected", heroSite: "approche", seconds: 0, formations: [], observedPosts: [], suppressedPosts: [], bridgeSecured: false, porterRescued: false, cargoDelivered: false, abandonedCrates: 0, transitRecognized: false, committed: false, messages: ["Exercice EX-CANYON. Rejoindre la maintenance, préparer le refuge puis gagner le poste de transition."] };
 }
 const copy = (state: CanyonSimulationV85): CanyonSimulationV85 => JSON.parse(JSON.stringify(state)) as CanyonSimulationV85;
+const capMessages = (state: CanyonSimulationV85): CanyonSimulationV85 => { state.messages = state.messages.slice(-100); return state; };
 const add = (ids: string[], id: string) => { if (!ids.includes(id)) ids.push(id); };
 export function canyonPreparationV85(state: CanyonSimulationV85, action: "corniche" | "fond" | "maintenance" | "borrow" | "preserve" | "poste"): CanyonSimulationV85 {
   if (state.phase !== "preparation") return state;
@@ -39,7 +40,7 @@ export function canyonPreparationV85(state: CanyonSimulationV85, action: "cornic
   } else if (action === "poste" && state.heroSite === "mezzanine") {
     next.heroSite = "poste"; next.messages.push("Poste rejoint. Le passage au commandement retire le contrôle de l’acteur d’action.");
   } else return state;
-  return next;
+  return capMessages(next);
 }
 export function canyonCompositionIssueV85(selection: Record<string, number>): string | null {
   if (!warCompositionV85(selection).allowed) return "Le manifeste dépasse les limites de composition ou ne contient aucune formation.";
@@ -56,7 +57,7 @@ export function engageCanyonV85(state: CanyonSimulationV85, selection: Record<st
     for (let index = 0; index < quantity; index++) next.formations.push({ id: `${next.id}-${typeId}-${index + 1}`, typeId, x: insertionX, level: 0, order: "hold", targetX: insertionX, startingXp: typeId === "RTS-U02" ? 90 : 0, roleEvents: [], objectives: [], rescued: [], threats: [], extraction: false, adopted: false, adoptionSeconds: 0 });
   }
   next.messages.push(next.battery === "borrow" ? "Manifeste scellé : insertion avancée par la balise active ; la batterie demeure due au refuge." : "Manifeste scellé : insertion par le trajet long avec la réserve propre ; le refuge reste protégé.");
-  return next;
+  return capMessages(next);
 }
 export function canyonOrderIssueV85(state: CanyonSimulationV85, formation: CanyonFormationV85, order: CanyonOrderKindV85, level: 0 | 1): string | null {
   if (state.phase !== "battle" || formation.extraction) return "Cette formation n’est plus commandable dans la bataille.";
@@ -70,6 +71,7 @@ export function canyonOrderIssueV85(state: CanyonSimulationV85, formation: Canyo
   return null;
 }
 export function orderCanyonFormationV85(state: CanyonSimulationV85, id: string, order: CanyonOrderKindV85, targetX: number, level: 0 | 1): { state: CanyonSimulationV85; message: string } {
+  if (!Number.isFinite(targetX) || (level !== 0 && level !== 1)) return { state, message: "Position ou niveau de commandement invalide." };
   const current = state.formations.find(formation => formation.id === id);
   if (!current) return { state, message: "Formation absente du manifeste." };
   const issue = canyonOrderIssueV85(state, current, order, level);
@@ -87,7 +89,7 @@ export function canyonXpV85(formation: CanyonFormationV85): number {
   return warXpGainV85({ roleActions: formation.roleEvents, objectives: formation.objectives, extracted: formation.extraction, rescued: formation.rescued, threats: formation.threats });
 }
 export function stepCanyonV85(state: CanyonSimulationV85, seconds = 1): CanyonSimulationV85 {
-  if (state.phase !== "battle") return state;
+  if (state.phase !== "battle" || !Number.isFinite(seconds) || seconds <= 0) return state;
   const next = copy(state), elapsed = Math.max(0, Math.min(1, seconds)); next.seconds += elapsed;
   for (const formation of next.formations) {
     if (formation.extraction) continue;
@@ -136,13 +138,13 @@ export function stepCanyonV85(state: CanyonSimulationV85, seconds = 1): CanyonSi
     next.phase = "debrief"; next.messages.push("Tous les groupes présents ont rejoint l’extraction. Lire le rapport avant de reconnaître le transit.");
   }
   next.messages = next.messages.slice(-100);
-  return next;
+  return capMessages(next);
 }
 export function withdrawCanyonV85(state: CanyonSimulationV85): CanyonSimulationV85 {
   if (state.phase !== "battle") return state;
   const next = copy(state); next.phase = "debrief";
   next.messages.push("Repli déclaré : seuls les groupes déjà extraits conservent leur bonus d’extraction. Aucune livraison supplémentaire ni annexion.");
-  return next;
+  return capMessages(next);
 }
 /** Single result receipt inside the free profile. It never receives or mutates SaveGame. */
 export function commitCanyonV85(state: CanyonSimulationV85): CanyonSimulationV85 {
@@ -150,7 +152,7 @@ export function commitCanyonV85(state: CanyonSimulationV85): CanyonSimulationV85
   const next = copy(state); next.committed = true; next.transitRecognized = state.cargoDelivered;
   next.messages.push(state.cargoDelivered ? "Convoyage confirmé une fois. CON-T09 reste F03 ; droit de transit reconnu dans l’exercice, compteur de conquête inchangé." : "Repli archivé une fois. Les routes alternatives restent ouvertes pour une autre opération.");
   if (state.battery === "borrow") next.messages.push("La restitution de la batterie reste une obligation du refuge ; le bilan ne la considère pas rendue automatiquement.");
-  return next;
+  return capMessages(next);
 }
 export function readCanyonV85(value: unknown): CanyonSimulationV85 | null {
   if (!value || typeof value !== "object") return null;
