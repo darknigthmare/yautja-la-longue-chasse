@@ -1,5 +1,7 @@
 # V75 — Repères pratiques de la cité
 
+> Statut depuis V98 : la cité jouable utilise `HomeworldWorldMapV77` et ses coordonnées à six étages. L’ancien composant `HomeworldWayfindingV75` ci-dessous décrit le parcours historique à un seul étage ; il n’est plus monté dans `HomeworldHub`. Les descriptions, permissions, recherche et BFS intérieur V75 restent partagés. Le guidage actuel est décrit dans [V98 — Itinéraires physiques du Homeworld](homeworld-wayfinding-v98.md).
+
 Le bouton **Repères** du HUD ouvre un registre des destinations physiques. Il complète l’Atlas des quartiers et son codex : 43 bâtiments, 16 interlocuteurs/postes et les départs régionaux actuellement visibles. Les coordonnées proviennent des modèles de bâtiment, de pièce et de seuil utilisés par le jeu, sans catalogue parallèle.
 
 Les recherches acceptent les accents français, plusieurs mots et les fonctions courantes des services : soins, dojo, armurerie, archives, amarrage. Une catégorie ou une recherche sans résultat ne laisse pas une ancienne destination activable. Les détails expliquent la différence entre une entrée visitable et une activité encore réservée.

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
 import ts from 'typescript';
+import {pathToFileURL} from 'node:url';
 
 /** Execute the actual React scene without a bundler or disk output. Only CSS
  * module names are substituted; no gameplay or component function is mocked.
@@ -18,7 +19,7 @@ export function homeworldSceneSsrV78(root=process.cwd()){
   if(resolved.endsWith('.json'))return loadedModule.exports=JSON.parse(fs.readFileSync(resolved,'utf8'));
   const code=ts.transpileModule(fs.readFileSync(resolved,'utf8'),{fileName:resolved,compilerOptions:{
    target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true,
-  }}).outputText;
+  }}).outputText.replace(/\bimport\.meta\.url\b/g,JSON.stringify(pathToFileURL(resolved).href));
   const localRequire=specifier=>{
    if(specifier==='react'||specifier==='react/jsx-runtime')return requirePackage(specifier);
    if(!specifier.startsWith('.'))throw Error('Unsupported SSR dependency: '+specifier);

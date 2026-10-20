@@ -1,4 +1,5 @@
-import { CLAN_WAR_PARAMETERS_V85 as P, WAR_TERRITORIES_V85, warTerritoryV85, type WarFactionIdV85 } from "./clanWarV85Data";
+import { CLAN_WAR_PARAMETERS_V85 as P, type WarFactionIdV85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
+import { WAR_PLANETS_V96, warPlanetV96 } from "./clanWarPlanetsV96";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
 export interface WarCombatantV85 {
@@ -14,7 +15,7 @@ export interface WarOrderV85 {
 export interface WarObservationV85 { territoryId: string; turn: number; lower: number; upper: number; sourceId: string }
 export interface WarReportV85 { id: string; turn: number; text: string; sourceIds: string[] }
 export interface WarSimulationV85 {
-  version: 1; context: "free"; turn: number; seed: number; revision: number;
+  version: 1; context: "free"; planetId?: string; turn: number; seed: number; revision: number;
   combatants: WarCombatantV85[]; territories: Record<string, WarTerritoryStateV85>;
   stocks: Record<string, WarBudgetV85>; orders: WarOrderV85[]; observations: WarObservationV85[];
   appliedResultIds: string[]; reports: WarReportV85[]; totalStability: number; regionStability: number;
@@ -24,6 +25,30 @@ export interface WarSimulationV85 {
 }
 export interface WarUpdateV85 { state: WarSimulationV85; accepted: boolean; message: string }
 export const WAR_STORAGE_KEY_V85 = "yautja.clan-war.v85.free.v1";
+/** Missing IDs are the original Korthas archive; every other theatre owns its own graph. */
+export function warTerritoriesForSimulationV96(state: Pick<WarSimulationV85, "planetId">): WarTerritoryDefinitionV85[] {
+  return warPlanetV96(state.planetId)?.definitions ?? [];
+}
+export function warTerritoryForSimulationV96(state: Pick<WarSimulationV85, "planetId">, id: string): WarTerritoryDefinitionV85 | undefined {
+  return warTerritoriesForSimulationV96(state).find(territory => territory.id === id);
+}
+export function warPlanetStorageKeyV96(planetId = "korthas"): string {
+  if (!warPlanetV96(planetId)) throw new RangeError("Unknown war planet");
+  return planetId === "korthas" ? WAR_STORAGE_KEY_V85 : `yautja.clan-war.v96.planet.${planetId}.free.v1`;
+}
+export const WAR_PLANET_STORAGE_KEYS_V96: readonly string[] = Object.freeze(WAR_PLANETS_V96.map(planet => warPlanetStorageKeyV96(planet.id)));
+export function warPlanetIdForStorageKeyV96(key: string): string | undefined {
+  const index = WAR_PLANET_STORAGE_KEYS_V96.indexOf(key);
+  return index < 0 ? undefined : WAR_PLANETS_V96[index].id;
+}
+/** Validation reads without changing or serializing a backup's original bytes. */
+export function validWarPlanetArchiveRawV96(raw: string, planetId: string): boolean {
+  if (!warPlanetV96(planetId)) return false;
+  try {
+    const simulation = readWarSimulationV85(JSON.parse(raw));
+    return simulation !== null && (simulation.planetId ?? "korthas") === planetId;
+  } catch { return false; }
+}
 const PLAYER: WarFactionIdV85 = "CON-F01";
 const ENEMY: WarFactionIdV85 = "CON-F02";
 const NEUTRAL: WarFactionIdV85 = "CON-F03";
@@ -37,7 +62,7 @@ function sum(a: WarBudgetV85, b: WarBudgetV85): WarBudgetV85 { return { s: a.s +
 function fits(available: WarBudgetV85, cost: WarBudgetV85): boolean { return available.s >= cost.s && available.m >= cost.m && available.i >= cost.i; }
 function debit(available: WarBudgetV85, cost: WarBudgetV85): void { available.s -= cost.s; available.m -= cost.m; available.i -= cost.i; }
 export function warBudgetV85(state: WarSimulationV85, factionId: WarFactionIdV85 = PLAYER): WarBudgetV85 {
-  return WAR_TERRITORIES_V85.filter(territory => state.territories[territory.id].controller === factionId)
+  return warTerritoriesForSimulationV96(state).filter(territory => state.territories[territory.id].controller === factionId)
     .reduce((budget, territory) => sum(budget, state.stocks[territory.id]), emptyBudget());
 }
 export function warFitCombatantsV85(state: WarSimulationV85, factionId: WarFactionIdV85 = PLAYER): WarCombatantV85[] {
@@ -45,6 +70,35 @@ export function warFitCombatantsV85(state: WarSimulationV85, factionId: WarFacti
 }
 export function warGarrisonV85(state: WarSimulationV85, territoryId: string): WarCombatantV85[] {
   return state.combatants.filter(actor => actor.territoryId === territoryId && actor.factionId === state.territories[territoryId].controller && actor.status === "fit" && actor.garrison && actor.trainingUntilTurn === null);
+}
+export interface WarGarrisonDraftV99 {
+  territoryId: string; combatantId: string; garrison: boolean; confirmLastGuard?: boolean;
+}
+/** A local reassignment consumes the same person, never a second roster slot.
+ * Orders already sealed for this preparation own their people until cancelled. */
+export function warGarrisonIssueV99(state: WarSimulationV85, draft: WarGarrisonDraftV99): string | null {
+  if (!warPlanetV96(state.planetId) || !warTerritoryForSimulationV96(state, draft.territoryId)) return "Site absent du théâtre.";
+  if (typeof draft.garrison !== "boolean" || draft.confirmLastGuard !== undefined && typeof draft.confirmLastGuard !== "boolean") return "Affectation de garde invalide.";
+  if (state.territories[draft.territoryId]?.controller !== PLAYER) return "La relève exige un site sous votre commandement.";
+  const actor = state.combatants.find(person => person.id === draft.combatantId);
+  if (!actor || actor.factionId !== PLAYER || actor.territoryId !== draft.territoryId) return "Cette personne n’est pas présente dans votre détachement sur ce site.";
+  if (actor.status !== "fit" || actor.trainingUntilTurn !== null) return "La garde exige une personne apte, hors soins ou formation.";
+  if (state.orders.some(order => order.combatantIds.includes(actor.id))) return "Cette personne possède déjà un ordre réservé. Retirez cet ordre avant une relève.";
+  if (actor.garrison === draft.garrison) return draft.garrison ? "Cette personne assure déjà la garde." : "Cette personne fait déjà partie des mobiles.";
+  if (state.revision >= 1000000 || state.reports.length >= 100000) return "La limite de cette archive est atteinte. Aucune relève ajoutée.";
+  if (!draft.garrison && warGarrisonV85(state, draft.territoryId).length === 1 && !draft.confirmLastGuard) return "Ce retrait laisse le site sans garde apte. Confirmez le retrait du dernier garde.";
+  return null;
+}
+/** CON-R08/R12: reassign an identified person on site. Stocks, time, objectives
+ * and income remain untouched; production is still evaluated at turn change. */
+export function changeWarGarrisonV99(state: WarSimulationV85, draft: WarGarrisonDraftV99): WarUpdateV85 {
+  const issue = warGarrisonIssueV99(state, draft);
+  if (issue) return { state, accepted: false, message: issue };
+  const next = copy(state), actor = next.combatants.find(person => person.id === draft.combatantId)!;
+  actor.garrison = draft.garrison; next.revision++;
+  const message = `${actor.id} · ${draft.territoryId} : ${draft.garrison ? "affecté à la garde sur place" : "remis dans le détachement mobile sur place"}. Aucun déplacement ni revenu immédiat.`;
+  report(next, message, ["CON-R08", "CON-R12"], `garrison-${next.seed}-t${next.turn}-r${next.revision}`);
+  return { state: next, accepted: true, message };
 }
 /** Transit is an access right. It never changes the sovereign flag or pays its income. */
 export function warSuppliedV85(state: WarSimulationV85, factionId: WarFactionIdV85 = PLAYER): Set<string> {
@@ -55,7 +109,7 @@ export function warSuppliedV85(state: WarSimulationV85, factionId: WarFactionIdV
   const frontier = [...reached];
   while (frontier.length) {
     const id = frontier.shift()!;
-    for (const neighbor of warTerritoryV85(id)!.neighbors) {
+    for (const neighbor of warTerritoryForSimulationV96(state, id)!.neighbors) {
       if (!reached.has(neighbor) && accessible(neighbor)) { reached.add(neighbor); frontier.push(neighbor); }
     }
   }
@@ -72,7 +126,7 @@ function production(state: WarSimulationV85) {
   for (const factionId of [PLAYER, ENEMY]) {
     const supplied = warSuppliedV85(state, factionId);
     const income = emptyBudget();
-    for (const definition of WAR_TERRITORIES_V85) {
+    for (const definition of warTerritoriesForSimulationV96(state)) {
       const territory = state.territories[definition.id];
       if (territory.controller !== factionId || !territory.installationIntact || !supplied.has(definition.id) || warGarrisonV85(state, definition.id).length === 0) continue;
       state.stocks[definition.id] = sum(state.stocks[definition.id], definition.income);
@@ -82,13 +136,16 @@ function production(state: WarSimulationV85) {
   }
 }
 /** Independent training scenario. The Pxx positions follow CON-TURN01; generated F/N identities are exercise actors. */
-export function createWarSimulationV85(seed = 8507): WarSimulationV85 {
+export function createWarSimulationV85(seed?: number, planetId?: string): WarSimulationV85 {
+  const planet = warPlanetV96(planetId);
+  if (!planet) throw new RangeError("Unknown war planet");
+  const simulationSeed = seed ?? (planet.id === "korthas" ? 8507 : planet.seed);
   const state: WarSimulationV85 = {
-    version: 1, context: "free", turn: 1, seed, revision: 0,
+    version: 1, context: "free", ...(planet.id === "korthas" ? {} : { planetId: planet.id }), turn: 1, seed: simulationSeed, revision: 0,
     combatants: [], territories: {}, stocks: {}, orders: [], observations: [], appliedResultIds: [], reports: [],
     totalStability: 0, regionStability: 0, corridorStability: 0, completedObjectives: [], stableRegionId: null, heldStocks: [],
   };
-  for (const territory of WAR_TERRITORIES_V85) {
+  for (const territory of warTerritoriesForSimulationV96(state)) {
     state.territories[territory.id] = { controller: territory.initialController, installationIntact: true, transitUntilTurn: null };
     state.stocks[territory.id] = emptyBudget();
   }
@@ -101,7 +158,7 @@ export function createWarSimulationV85(seed = 8507): WarSimulationV85 {
   for (const [territoryId, count] of Object.entries(enemyCounts)) {
     for (let index = 0; index < count; index++) state.combatants.push({ id: `F${String(++enemyNumber).padStart(2, "0")}`, unitTypeId: "RTS-U01", factionId: ENEMY, territoryId, status: "fit", xp: 0, garrison: index === 0, trainingUntilTurn: null });
   }
-  for (const territory of WAR_TERRITORIES_V85.filter(item => item.initialController === NEUTRAL)) {
+  for (const territory of warTerritoriesForSimulationV96(state).filter(item => item.initialController === NEUTRAL)) {
     state.combatants.push({ id: `N-${territory.id}`, unitTypeId: "RTS-U01", factionId: NEUTRAL, territoryId: territory.id, status: "fit", xp: 0, garrison: true, trainingUntilTurn: null });
   }
   // Initial allocations are a declared implementation choice, not additional workbook numbers.
@@ -111,7 +168,9 @@ export function createWarSimulationV85(seed = 8507): WarSimulationV85 {
   state.stocks["CON-T08"] = { s: 16, m: 4, i: 2 };
   state.stocks["CON-T14"] = { s: 12, m: 3, i: 1 };
   state.stocks["CON-T25"] = { s: 12, m: 3, i: 1 };
-  report(state, "Exercice autonome de Korthas. Les 24 Pxx suivent les positions de la feuille Récit des douze tours ; ils ne sont pas des recrues de votre campagne.", ["CON-TURN01", "WAR-R02"]);
+  report(state, planet.id === "korthas"
+    ? "Exercice autonome de Korthas. Les 24 Pxx suivent les positions de la feuille Récit des douze tours ; ils ne sont pas des recrues de votre campagne."
+    : `Exercice autonome de ${planet.name}. Les 24 Pxx sont des acteurs de ce théâtre ; ils ne sont pas des recrues de votre campagne.`, ["CON-TURN01", "WAR-R02"]);
   production(state);
   return state;
 }
@@ -141,7 +200,7 @@ export function warOrderSlotV85(kind: WarOrderKindV85): "operation" | "logistics
 }
 export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): string | null {
   if (order.factionId !== PLAYER || order.mode !== "auto") return "Cet exercice attend un ordre de l’Expédition des Haltes.";
-  const origin = warTerritoryV85(order.fromId), target = warTerritoryV85(order.targetId);
+  const origin = warTerritoryForSimulationV96(state, order.fromId), target = warTerritoryForSimulationV96(state, order.targetId);
   if (!origin || !target || !state.territories[order.fromId] || !state.territories[order.targetId]) return "Territoire absent du théâtre.";
   if (!validBudget(order.cargo)) return "Chargement invalide.";
   if (state.territories[order.fromId].controller !== PLAYER) return "Le départ exige un site sous votre commandement.";
@@ -181,7 +240,7 @@ function factionCharge(state: WarSimulationV85, faction: WarFactionIdV85, cost: 
   if (!fits(warBudgetV85(state, faction), cost)) return false;
   for (const resource of ["s", "m", "i"] as const) {
     let remaining = cost[resource];
-    for (const territory of WAR_TERRITORIES_V85.filter(item => state.territories[item.id].controller === faction)) {
+    for (const territory of warTerritoriesForSimulationV96(state).filter(item => state.territories[item.id].controller === faction)) {
       const amount = Math.min(remaining, state.stocks[territory.id][resource]); state.stocks[territory.id][resource] -= amount; remaining -= amount;
     }
   }
@@ -200,7 +259,7 @@ function battle(state: WarSimulationV85, order: WarOrderV85, defendersOverride?:
   }
   for (const actor of attackers.filter(item => item.status === "fit")) actor.xp += warXpGainV85({ roleActions: [`${order.id}-engagement`], objectives: won ? [order.targetId] : [], extracted: true, rescued: [], threats: won && defenders.length ? [`${order.id}-threat`] : [] });
   if (won && !defendersOverride) {
-    const retreatId = warTerritoryV85(order.targetId)!.neighbors.find(id => id !== order.fromId && state.territories[id].controller === state.territories[order.targetId].controller);
+    const retreatId = warTerritoryForSimulationV96(state, order.targetId)!.neighbors.find(id => id !== order.fromId && state.territories[id].controller === state.territories[order.targetId].controller);
     defenders.forEach((actor, index) => {
       if (index === 0 || !retreatId) { actor.status = "wounded"; actor.garrison = false; }
       else { actor.territoryId = retreatId; actor.garrison = false; }
@@ -227,7 +286,7 @@ function battle(state: WarSimulationV85, order: WarOrderV85, defendersOverride?:
 }
 function planEnemy(state: WarSimulationV85): WarOrderV85[] {
   const result: WarOrderV85[] = [];
-  const origins = WAR_TERRITORIES_V85.filter(item => state.territories[item.id].controller === ENEMY)
+  const origins = warTerritoriesForSimulationV96(state).filter(item => state.territories[item.id].controller === ENEMY)
     .sort((a, b) => hash(a.id + state.turn, state.seed) - hash(b.id + state.turn, state.seed));
   for (const origin of origins) {
     const target = origin.neighbors.find(id => state.territories[id].controller === PLAYER);
@@ -278,15 +337,36 @@ function applyOrder(state: WarSimulationV85, order: WarOrderV85) {
   }
   state.appliedResultIds.push(order.id);
 }
+/** On new theatres the corridor objective follows real roads between the two bases. */
+export function warObjectiveCorridorV96(state: Pick<WarSimulationV85, "planetId">): string[] {
+  const queue: string[][] = [["CON-T01"]], reached = new Set(["CON-T01"]);
+  while (queue.length) {
+    const route = queue.shift()!;
+    const id = route[route.length - 1];
+    if (id === "CON-T25") return route;
+    for (const neighbor of warTerritoryForSimulationV96(state, id)?.neighbors ?? []) {
+      if (!reached.has(neighbor)) { reached.add(neighbor); queue.push([...route, neighbor]); }
+    }
+  }
+  return [];
+}
 function evaluateObjectives(state: WarSimulationV85, upkeepPaid: boolean) {
   const supplied = warSuppliedV85(state);
   const ready = (id: string) => state.territories[id].controller === PLAYER && supplied.has(id) && warGarrisonV85(state, id).length > 0 && state.territories[id].installationIntact;
-  const total = WAR_TERRITORIES_V85.every(territory => ready(territory.id));
-  const regions = [...new Set(WAR_TERRITORIES_V85.map(territory => territory.region))];
-  const region = regions.find(id => WAR_TERRITORIES_V85.filter(territory => territory.region === id).every(territory => ready(territory.id))) ?? null;
-  const corridor = ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"].every(ready) &&
-    ["CON-T01", "CON-T02", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"].every(id => supplied.has(id)) &&
-    WAR_TERRITORIES_V85.some(territory => state.territories[territory.id].controller === NEUTRAL && (state.territories[territory.id].transitUntilTurn ?? -1) >= state.turn);
+  const definitions = warTerritoriesForSimulationV96(state);
+  const regions = [...new Set(definitions.map(territory => territory.region))];
+  // V96 balances the free exercise with regional occupation: the original 24
+  // people can secure 36 connected sites with one fit garrison per region.
+  // The imported V3 design proposal remains unchanged in the source dossier;
+  // this creates no recruits and waives neither supply, intact sites nor upkeep.
+  const total = definitions.every(territory => state.territories[territory.id].controller === PLAYER && supplied.has(territory.id) && state.territories[territory.id].installationIntact) &&
+    regions.every(regionId => definitions.some(territory => territory.region === regionId && warGarrisonV85(state, territory.id).length > 0));
+  const region = regions.find(id => warTerritoriesForSimulationV96(state).filter(territory => territory.region === id).every(territory => ready(territory.id))) ?? null;
+  const corridorIds = state.planetId && state.planetId !== "korthas"
+    ? warObjectiveCorridorV96(state) : ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"];
+  const corridor = corridorIds.length > 1 && corridorIds.every(ready) &&
+    (state.planetId && state.planetId !== "korthas" ? corridorIds : ["CON-T01", "CON-T02", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"]).every(id => supplied.has(id)) &&
+    warTerritoriesForSimulationV96(state).some(territory => state.territories[territory.id].controller === NEUTRAL && (state.territories[territory.id].transitUntilTurn ?? -1) >= state.turn);
   state.totalStability = total && upkeepPaid ? state.totalStability + 1 : 0;
   state.regionStability = region && upkeepPaid ? region === state.stableRegionId ? state.regionStability + 1 : 1 : 0;
   state.stableRegionId = region && upkeepPaid ? region : null;
@@ -297,6 +377,7 @@ function evaluateObjectives(state: WarSimulationV85, upkeepPaid: boolean) {
 }
 /** Seals both sides before revealing any report. One immutable snapshot is returned for one storage write. */
 export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
+  if (!warPlanetV96(state.planetId)) return { state, accepted: false, message: "Planète absente du catalogue de cet exercice." };
   if (state.turn >= 5000) return { state, accepted: false, message: "La limite de cette archive d’exercice est atteinte." };
   const next = copy(state);
   const enemyOrders = planEnemy(state);
@@ -332,22 +413,37 @@ export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
 /** Reject future/corrupt archives. The caller preserves their bytes and disables writes until an explicit new exercise. */
 export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
   if (!record(value) || value.version !== 1 || value.context !== "free" || !integer(value.turn, 5000) || value.turn < 1 || !integer(value.seed, 0xffffffff) || !integer(value.revision) || !record(value.territories) || !record(value.stocks) || !Array.isArray(value.combatants) || value.combatants.length > 300 || !Array.isArray(value.orders) || value.orders.length > 4 || !Array.isArray(value.observations) || !Array.isArray(value.reports) || value.reports.length > 100000 || !Array.isArray(value.appliedResultIds) || !Array.isArray(value.completedObjectives) || !integer(value.totalStability) || !integer(value.regionStability) || !integer(value.corridorStability)) return null;
-  for (const territory of WAR_TERRITORIES_V85) {
+  if (!(value.planetId === undefined || typeof value.planetId === "string")) return null;
+  const planet = warPlanetV96(value.planetId);
+  if (!planet) return null;
+  const definitions = planet.definitions;
+  const territoryById = (id: string) => definitions.find(territory => territory.id === id);
+  const territoryIds = new Set(definitions.map(territory => territory.id));
+  if (Object.keys(value.territories).some(id => !territoryIds.has(id)) || Object.keys(value.stocks).some(id => !territoryIds.has(id))) return null;
+  for (const territory of definitions) {
     const item = value.territories[territory.id];
     if (!record(item) || !factions.includes(item.controller as WarFactionIdV85) || typeof item.installationIntact !== "boolean" || !(item.transitUntilTurn === null || integer(item.transitUntilTurn)) || !validBudget(value.stocks[territory.id])) return null;
   }
   const ids = new Set<string>();
   for (const actor of value.combatants) {
-    if (!record(actor) || typeof actor.id !== "string" || actor.id.length > 80 || ids.has(actor.id) || typeof actor.unitTypeId !== "string" || !/^RTS-U\d{2}$/.test(actor.unitTypeId) || !factions.includes(actor.factionId as WarFactionIdV85) || !warTerritoryV85(String(actor.territoryId)) || !["fit", "wounded", "dead"].includes(String(actor.status)) || !integer(actor.xp) || typeof actor.garrison !== "boolean" || !(actor.trainingUntilTurn === null || integer(actor.trainingUntilTurn))) return null;
+    if (!record(actor) || typeof actor.id !== "string" || actor.id.length > 80 || ids.has(actor.id) || typeof actor.unitTypeId !== "string" || !/^RTS-U\d{2}$/.test(actor.unitTypeId) || !factions.includes(actor.factionId as WarFactionIdV85) || !territoryById(String(actor.territoryId)) || !["fit", "wounded", "dead"].includes(String(actor.status)) || !integer(actor.xp) || typeof actor.garrison !== "boolean" || !(actor.trainingUntilTurn === null || integer(actor.trainingUntilTurn))) return null;
     ids.add(actor.id);
   }
   if (!value.appliedResultIds.every(id => typeof id === "string" && id.length < 180) || !value.completedObjectives.every(id => ["CON-O01", "CON-O02", "CON-O03"].includes(String(id)))) return null;
-  if (!value.reports.every(item => record(item) && typeof item.id === "string" && integer(item.turn) && typeof item.text === "string" && item.text.length < 4000 && Array.isArray(item.sourceIds) && item.sourceIds.every(id => typeof id === "string")) || !value.observations.every(item => record(item) && typeof item.sourceId === "string" && warTerritoryV85(String(item.territoryId)) && integer(item.turn) && integer(item.lower, 300) && integer(item.upper, 300) && Number(item.lower) <= Number(item.upper))) return null;
+  if (!value.reports.every(item => record(item) && typeof item.id === "string" && integer(item.turn) && typeof item.text === "string" && item.text.length < 4000 && Array.isArray(item.sourceIds) && item.sourceIds.every(id => typeof id === "string")) || !value.observations.every(item => record(item) && typeof item.sourceId === "string" && territoryById(String(item.territoryId)) && integer(item.turn) && integer(item.lower, 300) && integer(item.upper, 300) && Number(item.lower) <= Number(item.upper))) return null;
   for (const order of value.orders) {
-    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || !["move", "attack", "recon", "cession", "transit", "logistics", "heal"].includes(String(order.kind)) || !warTerritoryV85(String(order.fromId)) || !warTerritoryV85(String(order.targetId)) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
+    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || !["move", "attack", "recon", "cession", "transit", "logistics", "heal"].includes(String(order.kind)) || !territoryById(String(order.fromId)) || !territoryById(String(order.targetId)) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
   }
-  if (!(value.stableRegionId === undefined || value.stableRegionId === null || typeof value.stableRegionId === "string" && WAR_TERRITORIES_V85.some(territory => territory.region === value.stableRegionId)) || !(value.heldStocks === undefined || Array.isArray(value.heldStocks) && value.heldStocks.length <= 10000 && value.heldStocks.every(item => record(item) && warTerritoryV85(String(item.territoryId)) && factions.includes(item.owner as WarFactionIdV85) && validBudget(item.budget)))) return null;
+  if (!(value.stableRegionId === undefined || value.stableRegionId === null || typeof value.stableRegionId === "string" && definitions.some(territory => territory.region === value.stableRegionId)) || !(value.heldStocks === undefined || Array.isArray(value.heldStocks) && value.heldStocks.length <= 10000 && value.heldStocks.every(item => record(item) && territoryById(String(item.territoryId)) && factions.includes(item.owner as WarFactionIdV85) && validBudget(item.budget)))) return null;
   const result = copy(value as unknown as WarSimulationV85);
   result.stableRegionId ??= null; result.heldStocks ??= [];
+  // An archive cannot smuggle a route from another world's graph or bypass
+  // reservations by storing orders the live command path would refuse.
+  const orders = result.orders;
+  result.orders = [];
+  for (const order of orders) {
+    if (warOrderIssueV85(result, order)) return null;
+    result.orders.push(order);
+  }
   return result;
 }

@@ -1,5 +1,5 @@
 import { drawActorContactShadow } from "./spriteContact";
-import { GAME_RESERVE_V66_COVER, GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_PLATFORMS, GAME_RESERVE_V66_SHIPS, GAME_RESERVE_V66_SUPPLIES, gameReserveV66Interaction, gameReserveV66Sector, type GameReserveV66State } from "./systems/gameReserveV66";
+import { GAME_RESERVE_V66_COVER, GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_PLATFORMS, GAME_RESERVE_V66_SHIPS, GAME_RESERVE_V66_SUPPLIES, GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, type GameReserveV66State } from "./systems/gameReserveV66";
 
 /** Reused native art. The original hunter is a held drawing, not an invented animation sheet. */
 export const GAME_RESERVE_V66_ART = {
@@ -60,7 +60,10 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     ctx.globalAlpha = Math.max(.15, 1 - (s.tick - track.tick) / 2400); ctx.fillStyle = "#c6bb83";
     ctx.beginPath(); ctx.ellipse(track.x - 3, 444, 4, 1.7, -.3 * track.direction, 0, Math.PI * 2); ctx.ellipse(track.x + 5, 448, 4, 1.7, -.3 * track.direction, 0, Math.PI * 2); ctx.fill();
   } ctx.globalAlpha = 1;
-  s.supplies.forEach((count, n) => { if (count) componentMarker(ctx, GAME_RESERVE_V66_SUPPLIES[n], 437, count); });
+  s.supplies.forEach((count, n) => {
+    if (count) componentMarker(ctx, GAME_RESERVE_V66_SUPPLIES[n], 437, count);
+    if (s.deniedSupplies?.[n]) label(ctx, s.deniedSupplies[n] + " lot(s) neutralisé(s)", GAME_RESERVE_V66_SUPPLIES[n], 477, "#d9bd9d");
+  });
   for (let n = 0; n < s.ships.length; n++) {
     const ship = s.ships[n], definition = GAME_RESERVE_V66_SHIPS[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
     if (elapsed < 150) {
@@ -70,7 +73,7 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     }
     const status = ship.departedAt !== null ? "Parti" : ship.launch !== null ? "Départ " + Math.max(0, 15 - Math.floor((s.tick - ship.launch) / 60)) + " s" : "Pièces " + Math.min(3, ship.parts) + "/3 · réparation " + Math.floor(ship.repair / 36) + " %";
     label(ctx, definition.name, definition.x, 242); label(ctx, status, definition.x, 266, ship.launch !== null ? "#ffc276" : "#b8d3c2");
-    if (ship.departedAt === null) { ctx.strokeStyle = "#7cbcaf"; ctx.strokeRect(definition.x - 25, 399, 50, 39); label(ctx, "Accès", definition.x, 459); }
+    if (ship.departedAt === null) { ctx.strokeStyle = ship.launch !== null ? "#ffc276" : "#7cbcaf"; ctx.lineWidth = ship.launch !== null ? 3 : 1; ctx.strokeRect(definition.x - 25, 399, 50, 39); label(ctx, ship.launch !== null ? "RAMPE · SABOTAGE POSSIBLE" : "Accès", definition.x, 459, ship.launch !== null ? "#ffc276" : "#e9efd4"); }
   }
   for (let n = 0; n < s.humans.length; n++) {
     const h = s.humans[n]; if (h.status === "boarded" || h.status === "escaped") continue;
@@ -84,6 +87,10 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
       label(ctx, h.identified ? definition.name : "Combattant armé", h.x, 329, h.alertUntil > s.tick ? "#f8b495" : "#e9efd4");
       if (h.windup > 0) { ctx.fillStyle = "#ffab69"; ctx.beginPath(); ctx.moveTo(h.x, 292); ctx.lineTo(h.x - 7, 307); ctx.lineTo(h.x + 7, 307); ctx.closePath(); ctx.fill(); }
       if (h.scan > 0 && !h.identified) { ctx.fillStyle = "#76e2d0"; ctx.fillRect(h.x - 25, 311, h.scan / 90 * 50, 3); }
+      if (h.recovering && Math.abs(h.x - s.player.x) < 330 && gameReserveV66LineClear(s.player.x, s.player.y - 55, h.x, 385)) {
+        label(ctx, h.recovering.ticks ? "Récupération en cours" : "Rejoint un porteur abattu", h.x, 354, "#b2e9dc");
+        if (h.recovering.ticks) { ctx.fillStyle = "#b2e9dc"; ctx.fillRect(h.x - 25, 360, h.recovering.ticks / GAME_RESERVE_V99_RECOVERY_TICKS * 50, 3); }
+      }
     } else label(ctx, h.secured ? "Prise sécurisée" : "Prélèvement possible", h.x, 404, "#dac29f");
   }
   const p = s.player, floor = GAME_RESERVE_V66_PLATFORMS.find(a => p.x >= a.x && p.x <= a.x + a.w && a.y >= p.y)?.y ?? 438;
@@ -95,8 +102,8 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   label(ctx, "EXTRACTION · maintenir Interagir", 150, 294, "#b9e5c0");
   ctx.strokeStyle = "#b9e5c0"; ctx.setLineDash([7, 4]); ctx.beginPath(); ctx.moveTo(65, 441); ctx.lineTo(165, 441); ctx.stroke(); ctx.setLineDash([]);
   const interaction = gameReserveV66Interaction(s);
-  if (interaction.kind !== "none") label(ctx, interaction.kind === "return" ? "Maintenir : rentrer" : interaction.kind === "trophy" ? "Maintenir : prélever (3 s)" : "Maintenir : saboter (1,5 s)", p.x, Math.min(p.y + 29, 483), "#f8d793");
-  if (s.channel.ticks) { ctx.fillStyle = "#13261ee8"; ctx.fillRect(p.x - 42, p.y - 143, 84, 8); ctx.fillStyle = "#cfdd94"; ctx.fillRect(p.x - 42, p.y - 143, 84 * s.channel.ticks / (s.channel.kind === "return" ? 60 : s.channel.kind === "trophy" ? 180 : 90), 8); }
+  if (interaction.kind !== "none") label(ctx, interaction.kind === "return" ? "Maintenir : rentrer" : interaction.kind === "trophy" ? "Maintenir : prélever (3 s)" : interaction.kind === "cache" ? "Maintenir : neutraliser un lot (2 s)" : s.ships[interaction.target].launch !== null ? "Maintenir : interrompre le décollage (1,5 s)" : "Maintenir : saboter (1,5 s)", p.x, Math.min(p.y + 29, 483), "#f8d793");
+  if (s.channel.ticks) { ctx.fillStyle = "#13261ee8"; ctx.fillRect(p.x - 42, p.y - 143, 84, 8); ctx.fillStyle = "#cfdd94"; ctx.fillRect(p.x - 42, p.y - 143, 84 * s.channel.ticks / gameReserveV66InteractionDuration(s.channel.kind), 8); }
   ctx.restore();
   // Topographic line shows geography and the player's position only, never unseen prey positions.
   const mapWidth = Math.min(380, viewportWidth - 36), mapLeft = (viewportWidth - mapWidth) / 2;

@@ -5,10 +5,17 @@ import {runInNewContext} from 'node:vm';
 import ts from 'typescript';
 const source=readFileSync(new URL('../app/game/ClanWarPanelV85.tsx',import.meta.url),'utf8');
 const ast=ts.createSourceFile('ClanWarPanelV85.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
-let effect,selection;
+let effect,selection,retryHandler,retryDisabled;
 function visit(n){
  if(ts.isCallExpression(n)&&n.expression.getText(ast)==='useEffect'&&n.arguments[0]?.getText(ast).includes('stepCanyonV85'))effect=n.arguments[0].getText(ast);
  if(ts.isVariableDeclaration(n)&&n.name.getText(ast)==='formation')selection=n.initializer.getText(ast);
+ if(ts.isJsxElement(n)&&n.openingElement.tagName.getText(ast)==='button'&&n.children.some(child=>ts.isJsxText(child)&&child.getText(ast).includes('Réessayer la sauvegarde des exercices'))){
+  for(const attribute of n.openingElement.attributes.properties){
+   if(!ts.isJsxAttribute(attribute)||!attribute.initializer||!ts.isJsxExpression(attribute.initializer))continue;
+   if(attribute.name.getText(ast)==='onClick')retryHandler=attribute.initializer.expression.getText(ast);
+   if(attribute.name.getText(ast)==='disabled')retryDisabled=attribute.initializer.expression.getText(ast);
+  }
+ }
  ts.forEachChild(n,visit);
 }
 visit(ast);assert.ok(effect);assert.ok(selection);
@@ -38,5 +45,13 @@ test('no field formation means no order recipient; extracted actors are never su
 });
 test('the durable result label and retry action are wired to confirmed storage state',()=>{
  assert.match(source,/persistedCanyon \? "Résultat déjà archivé"/);assert.match(source,/Résultat en mémoire · sauvegarde non confirmée/);
- assert.match(source,/onClick=\{sessionStore.retryPersistence\}/);assert.match(source,/disabled=\{pendingWrites > 0\}/);
+ assert.ok(retryHandler);assert.ok(retryDisabled);
+ for(const sameStore of [true,false]){
+  let sharedRetries=0,planetRetries=0;
+  const sessionStore={retryPersistence(){sharedRetries++;}},planetSession=sameStore?sessionStore:{retryPersistence(){planetRetries++;}};
+  expression(retryHandler,{sessionStore,planetSession})();
+  assert.equal(sharedRetries,1);assert.equal(planetRetries,sameStore?0:1);
+ }
+ assert.equal(expression(retryDisabled,{pendingWrites:0}),false);
+ assert.equal(expression(retryDisabled,{pendingWrites:1}),true);
 });

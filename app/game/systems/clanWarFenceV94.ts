@@ -1,4 +1,6 @@
-/** A tiny transactional write-ahead fence for the three FREE clan exercises.
+import { WAR_PLANETS_V96 } from "./clanWarPlanetsV96";
+
+/** A transactional write-ahead fence for free planetary fronts and shared exercises.
  * localStorage stays the readable legacy mirror. No campaign/slot is migrated.
  * Web Locks alone do not guarantee visibility of another renderer's LS cache.
  * An IDB compare-and-swap commits before a mirror write can be attempted. */
@@ -8,6 +10,7 @@ const allowedKeys = new Set([
   "yautja.clan-war.v85.free.v1",
   "yautja.clan-war.v85.canyon.free.v1",
   "yautja.clan-war.v85.composition.free.v1",
+  ...WAR_PLANETS_V96.filter(planet => planet.id !== "korthas").map(planet => `yautja.clan-war.v96.planet.${planet.id}.free.v1`),
 ]);
 export interface WarFenceRecordV94 {
   version: 1; token: string; before: string | null; after: string; phase: "intent" | "confirmed";

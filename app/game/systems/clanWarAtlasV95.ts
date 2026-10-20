@@ -19,6 +19,7 @@ export interface WarAtlasRegionV95 {
 export interface WarAtlasTerritoryV95 {
   id: string;
   regionId: string;
+  landmassId?: string;
   longitude: number;
   latitude: number;
   points: WarAtlasPointV95[];
@@ -187,15 +188,16 @@ export function warAtlasGlobePathV95(points: readonly WarAtlasPointV95[], view: 
   return `M${round(visible[0].x)},${round(visible[0].y)} ` + visible.slice(1).map((point, index) => edge(visible[index], point)).join(" ") + ` ${edge(visible[visible.length - 1], visible[0])} Z`;
 }
 
-export function warAtlasFactionMetricsV95(simulation: WarSimulationV85) {
+export function warAtlasFactionMetricsV95(simulation: WarSimulationV85, regions: readonly WarAtlasRegionV95[] = WAR_ATLAS_REGIONS_V95) {
+  const territoryIds = regions.flatMap(region => region.territoryIds);
   return factionIds.map(id => {
-    const territoryCount = WAR_TERRITORIES_V85.filter(territory => simulation.territories[territory.id].controller === id).length;
-    const regionCount = WAR_ATLAS_REGIONS_V95.filter(region => region.territoryIds.every(territoryId => simulation.territories[territoryId].controller === id)).length;
-    return { ...WAR_ATLAS_FACTIONS_V95[id], territoryCount, share: territoryCount / WAR_TERRITORIES_V85.length, regionCount };
+    const territoryCount = territoryIds.filter(territoryId => simulation.territories[territoryId]?.controller === id).length;
+    const regionCount = regions.filter(region => region.territoryIds.every(territoryId => simulation.territories[territoryId]?.controller === id)).length;
+    return { ...WAR_ATLAS_FACTIONS_V95[id], territoryCount, share: territoryCount / Math.max(1, territoryIds.length), regionCount };
   });
 }
-export function warAtlasRegionMetricsV95(simulation: WarSimulationV85) {
-  return WAR_ATLAS_REGIONS_V95.map(region => {
+export function warAtlasRegionMetricsV95(simulation: WarSimulationV85, regions: readonly WarAtlasRegionV95[] = WAR_ATLAS_REGIONS_V95) {
+  return regions.map(region => {
     const factions: Record<WarFactionIdV85, number> = { "CON-F01": 0, "CON-F02": 0, "CON-F03": 0 };
     for (const id of region.territoryIds) factions[simulation.territories[id].controller]++;
     return { id: region.id, name: region.name, territoryCount: region.territoryIds.length, playerCount: factions["CON-F01"], controller: factionIds.find(id => factions[id] === region.territoryIds.length) ?? null, factions };

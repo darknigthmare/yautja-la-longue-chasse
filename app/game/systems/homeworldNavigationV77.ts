@@ -1,6 +1,9 @@
 import {HOMEWORLD_WORLD_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {homeworldCivicWalkableV80 as homeworldWalkableV77} from './homeworldCivicWorldV80';
 import type {HomeworldVec2} from './homeworldCity';
+import {HOMEWORLD_STREET_DECOR_PROPS_V83} from './homeworldStreetDecorV83';
+import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './homeworldStreetDecorV84';
+import {HOMEWORLD_STREET_COMPOSITION_PROPS_V92} from './homeworldStreetCompositionV92';
 export interface HomeworldWalkRouteV77 {levelId:HomeworldLevelV77;status:'reachable'|'unavailable';points:HomeworldVec2[];distance:number;}
 const step=32,cols=Math.ceil(HOMEWORLD_WORLD_V77.width/step),rows=Math.ceil(HOMEWORLD_WORLD_V77.height/step);
 const grid=new Map<string,boolean>();
@@ -23,7 +26,17 @@ const anchors=(level:HomeworldLevelV77,p:HomeworldVec2)=>{
  return candidates.sort((a,b)=>a.d-b.d).filter(candidate=>isNode(level,candidate.key)&&homeworldRouteSegmentV77(level,p,position(candidate.key)));
 };
 const routes=new Map<string,HomeworldWalkRouteV77>();
+let registries=[HOMEWORLD_STREET_DECOR_PROPS_V83,HOMEWORLD_STREET_DECOR_PROPS_V84,HOMEWORLD_STREET_COMPOSITION_PROPS_V92];
+let revision=0;
+/** Late street mounting replaces these immutable collections. Both navigation
+ * grids must discard all positive and negative answers after that replacement. */
+export function homeworldNavigationRevisionV77(){
+ const current=[HOMEWORLD_STREET_DECOR_PROPS_V83,HOMEWORLD_STREET_DECOR_PROPS_V84,HOMEWORLD_STREET_COMPOSITION_PROPS_V92];
+ if(current.some((collection,index)=>collection!==registries[index])){registries=current;grid.clear();edges.clear();routes.clear();revision++;}
+ return revision;
+}
 export function homeworldWalkRouteV77(level:HomeworldLevelV77,a:HomeworldVec2,b:HomeworldVec2):HomeworldWalkRouteV77{
+ homeworldNavigationRevisionV77();
  const key=[level,a.x,a.y,b.x,b.y].join(':');if(routes.has(key))return routes.get(key)!;
  const result=walkRoute(level,a,b);routes.set(key,result);return result;
 }

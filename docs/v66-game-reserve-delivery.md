@@ -27,7 +27,7 @@ Le joueur utilise le dessin original `hunter.webp` en pose tenue ; une nouvelle 
 
 Les neuf autres réserves, les cinq autres secteurs de Vharuun, les biographies/200 PNG des cent combattants, les rivaux Yautja, les contrats de clans, la coopération multijoueur, les trophées persistants dans la collection et la durée cible de 20–35 minutes restent hors du périmètre livré. La réserve actuelle est une sortie compacte dont la durée dépend des interceptions ; cette durée cible n’est pas certifiée.
 
-Limite d’interception actuelle : le sabotage concerne les circuits **avant** le lancement des moteurs. Une fois celui-ci commencé, les humains déjà au pied de l’appareil embarquent rapidement ; l’alerte de quinze secondes permet surtout d’intercepter les retardataires. Les passagers embarqués ne sont plus des cibles extérieures et un appareil rempli ne peut pas être stoppé dans ce premier lot. Un futur passage doit développer la défense de la rampe, le sabotage pendant l’embarquement et un débarquement physique cohérent, sans régression artificielle des issues enregistrées.
+Le premier lot V66 limitait le sabotage aux circuits avant le démarrage des moteurs. L’évolution [V98 — interception et carnet de traque](v98-preserve-hunt-interceptions.md) rend également jouable le sabotage pendant les quinze secondes d’embarquement, avec sortie physique des passagers à la rampe, défense de l’appareil et preuves de progression persistantes. Les passagers embarqués restent protégés du tir extérieur et un appareil déjà parti ne peut pas être rappelé.
 
 ## Validation
 
