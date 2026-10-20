@@ -4,20 +4,50 @@ Jeu d'action 2D en vue latérale, original et non commercial, inspiré de l'univ
 *Predator*. Le joueur prépare son chasseur dans un vaisseau, choisit son contrat
 et son arsenal, puis traque des proies sur plusieurs planètes.
 
-## Version actuelle du code — V94
+## Version actuelle du code — V99
 
-Le numéro de contenu visible est défini dans `app/game/buildInfo.ts`. La V94
+Le numéro de contenu visible est défini dans `app/game/buildInfo.ts`. La V99
 ne doit pas être confondue avec les inventaires historiques V31/V59 ci-dessous.
 Les fonctionnalités de campagne, du mausolée et de THE PIT ont des niveaux de
 complétude différents : un catalogue ou une fiche ne constitue pas une campagne
 jouable. Les validations automatisées ne remplacent pas une partie complète.
 
 La [PR de fiabilisation V94](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/4)
-contient les correctifs en cours d'examen ; tant qu'elle n'est pas fusionnée,
-ils ne sont pas présents sur `main` ni nécessairement sur le site public.
+et la [correction du catalogue de PNJ](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/3)
+sont fusionnées dans `main`. Une fusion ne confirme pas à elle seule la mise
+en ligne du site public.
 Pour vérifier la compilation applicative, exécuter `npm run typecheck` puis
 `npx next build --webpack`. Pour la chaîne de distribution complète,
 utiliser `npm run build:production` avec les ressources requises disponibles.
+
+Le [lot V98 des trois modes](docs/integration-v98.md) ajoute un poste de
+commandement territorial, l'interception d'un embarquement dans Preserve Hunt
+et un guidage à pied dans les étages actuels de Homeworld. Ces parcours
+complètent les systèmes existants et conservent leurs conditions d'accès.
+
+Le [lot V99](docs/integration-v99.md) poursuit ces parcours : affectation des
+gardes réellement présents dans les territoires, neutralisation des dépôts et
+récupération physique du ravitaillement dans Preserve Hunt, calcul et suivi
+des itinéraires Homeworld. Le [classeur consolidé de suivi](docs/YAUTJA_V99_SUIVI.xlsx)
+distingue les sources disponibles, les fonctions vérifiées et les chantiers
+encore ouverts ; `node scripts/build-excel-followup-v99.mjs --check` vérifie sa
+reproductibilité.
+
+## Guerres territoriales — lot V96
+
+Le mode **Guerres des clans** propose désormais 30 fronts indépendants :
+16 planètes classiques (jungles, neige, mers, désert, toundra…) et 14 exotiques.
+Chaque planète possède six régions, 36 territoires, des continents rapprochés
+et ses propres routes. Le globe et le planisphère montrent les couleurs de
+contrôle ; dix familles de textures distinguent les surfaces non jouables.
+Le catalogue permet de chercher et filtrer les mondes, chacun conservant sa
+partie locale. Voir [le fonctionnement, les biomes et les vérifications V96](docs/clan-war-planets-v96.md).
+
+La refonte des côtes V97 distingue les continents physiques des six régions
+administratives : grandes masses asymétriques, golfes, caps et péninsules
+s'inspirent de silhouettes terrestres de Natural Earth et de références de
+cartographie fictive. Les routes et les archives existantes sont conservées.
+Voir [les références consultées et leur provenance](docs/planet-coastline-references-v97.md).
 
 ## Dernier lot historique détaillé — V59
 

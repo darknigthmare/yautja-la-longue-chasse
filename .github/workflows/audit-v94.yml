@@ -11,6 +11,13 @@ on:
       - 'build/**'
       - 'public/**/manifest.json'
       - 'public/game/homeworld/v74/**'
+      - 'public/game/dialogues/v85/*.json'
+      - 'art-source/v6/catalogue/*.xlsx'
+      - 'docs/THE_PIT*.xlsx'
+      - 'docs/YAUTJA_V99_SUIVI.xlsx'
+      - 'docs/v99-*'
+      - 'docs/v63-stage-open-work.json'
+      - 'docs/v63-workbook-roster-audit.json'
       - '.openai/hosting.json'
       - 'package.json'
       - 'package-lock.json'
@@ -87,6 +94,28 @@ jobs:
             /.openai/hosting.json
             /public/**/manifest.json
             /public/game/homeworld/v74/
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/dialogues/v85/bible-ships.json
+            /art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx
+            /docs/THE_PIT_STAGES_V60_SUIVI.xlsx
+            /docs/THE_PIT_STAGES_V61_SUIVI.xlsx
+            /docs/THE_PIT_V62_SUIVI.xlsx
+            /docs/THE_PIT_V63_SUIVI.xlsx
+            /docs/v63-stage-open-work.json
+            /docs/v63-workbook-roster-audit.json
+            /docs/v99-workstreams-source.json
+            /docs/v99-workstreams.json
+            /docs/YAUTJA_V99_SUIVI.xlsx
+            /public/game/assets/v2/environments/jungle/layers/far-lake.webp
+            /public/game/props/v4/root-platform.png
+            /public/game/props/v4/expedition-platform.png
+            /public/game/props/v4/foreground-ferns.png
+            /public/game/ship-interior/v21/wall-machinery.webp
+            /public/game/sprites/hunter.webp
+            /public/game/ships/v14/game-preserve-ship.webp
+            /public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png
+            /public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png
+            /public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -127,6 +156,16 @@ jobs:
           app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
+          app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
+          app/game/systems/clanWarCoastlinesV97.ts
+          app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
+          app/game/ClanWarGarrisonV99.tsx
+          app/game/GameReserveV66.tsx app/game/GameReserveTacticalV98.tsx
+          app/game/gameReserveV66Rendering.ts
+          app/game/systems/gameReserveV66.ts app/game/systems/gameReserveTacticalV98.ts
+          app/game/HomeworldRouteGuideV98.tsx app/game/systems/homeworldWayfindingV98.ts
+          app/game/systems/homeworldNavigationV77.ts app/game/systems/homeworldNavigationV99.ts
+          app/game/homeworldRouteWorkerV98.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -193,6 +232,15 @@ jobs:
           tests/clan-war-session-v85.test.mjs tests/clan-war-durability-v94.test.mjs
           tests/clan-war-lifecycle-v94.test.mjs tests/clan-war-canyon-validity-v94.test.mjs
           tests/clan-war-atlas-v95.test.mjs tests/clan-war-atlas-ui-v95.test.mjs
+          tests/clan-war-planets-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
+          tests/clan-war-coastlines-v97.test.mjs
+          tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs
+      - name: Exercise V99 garrisons, Preserve supply and Homeworld routes with V98 regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: npm run test:worlds:v99
+      - name: Verify reproducible V99 Excel follow-up from the real historical workbooks
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v99.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

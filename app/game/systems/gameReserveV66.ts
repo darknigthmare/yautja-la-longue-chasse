@@ -28,6 +28,8 @@ export const GAME_RESERVE_V66_PEOPLE = [
   { id: "reserve-ira", name: "Ira", role: "veteran", description: "Mercenaire adulte aguerrie, fusil. Peut terminer seule une réparation.", art: "marine" },
 ] as const satisfies readonly { id: string; name: string; role: GameReserveV66Role; description: string; art: string }[];
 export const GAME_RESERVE_V66_SUPPLIES = [720, 1060, 1490, 1920, 2810, 3360, 3760, 4250] as const;
+export const GAME_RESERVE_V99_RECOVERY_RANGE = 180;
+export const GAME_RESERVE_V99_RECOVERY_TICKS = 90;
 export const GAME_RESERVE_V66_SHIPS = [
   { id: "drill-transport", name: "Transport abandonné", x: 2360 },
   { id: "camp-shuttle", name: "Navette du camp", x: 4540 },
@@ -40,15 +42,23 @@ export interface GameReserveV66Human {
   carrying: boolean; targetSupply: number; work: number; lastSeenX: number | null; lastSeenY: number;
   alertUntil: number; shotCooldown: number; windup: number; moving: boolean; identified: boolean;
   scan: number; secured: boolean; downAt: number | null;
+  /** A witnessed ramp exit is the only permitted reversal of boarding. Absent in legacy saves. */
+  disembarkation?: { tick: number; ship: 0 | 1; launchTick: number };
+  /** Local, interruptible work on a fallen carrier; never a remote inventory transfer. */
+  recovering?: { bodyId: string; ticks: number };
 }
 export interface GameReserveV66State {
   version: 1; reserveId: "vharuun-first-expedition"; seed: number; tick: number; status: GameReserveV66Status;
   player: { x: number; y: number; vy: number; facing: -1 | 1; hp: number; energy: number; cloak: boolean; cooldown: number; moving: boolean };
   humans: GameReserveV66Human[];
-  ships: { parts: number; repair: number; launch: number | null; departedAt: number | null; sabotages: number }[];
-  supplies: number[]; tracks: { x: number; tick: number; direction: -1 | 1 }[];
+  ships: { parts: number; repair: number; launch: number | null; departedAt: number | null; sabotages: number;
+    interception?: { tick: number; launchTick: number; hunterX: number } }[];
+  supplies: number[];
+  /** Physical cache lots neutralized by the hunter. Absent in untouched legacy expeditions. */
+  deniedSupplies?: number[];
+  tracks: { x: number; tick: number; direction: -1 | 1 }[];
   projectiles: { x: number; y: number; vx: number; vy: number; owner: "hunter" | "human"; life: number }[];
-  channel: { kind: "none" | "trophy" | "sabotage" | "return"; target: number; ticks: number };
+  channel: { kind: "none" | "trophy" | "sabotage" | "cache" | "return"; target: number; ticks: number };
   visited: number[]; log: { tick: number; message: string }[]; terminalTick: number | null;
   inputArmed: boolean; previous: { jump: boolean; attack: boolean; melee: boolean; cloak: boolean };
 }
@@ -87,6 +97,9 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
     !number(p.energy, 0, 100) || !bool(p.cloak) || !integer(p.cooldown, 0, 60) || !bool(p.moving) ||
     !["jump", "attack", "melee", "cloak"].every(k => bool((value.previous as Record<string, unknown>)[k]))) return null;
   const tick = value.tick;
+  if (value.deniedSupplies !== undefined && (!Array.isArray(value.deniedSupplies) || value.deniedSupplies.length !== 8 ||
+    !value.deniedSupplies.every((count, index) => integer(count, 0, 2) && count + (value.supplies as number[])[index] <= 2))) return null;
+  const claimedBodies = new Set<string>();
   for (let n = 0; n < 8; n++) {
     const h = value.humans[n];
     if (!record(h) || h.id !== GAME_RESERVE_V66_PEOPLE[n].id || !number(h.x, 40, 4760) || !facing(h.facing) || !number(h.hp, 0, 70) ||
@@ -99,33 +112,75 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
     const ship = value.ships[h.team];
     if (!record(ship) || h.status === "escaped" && ship.departedAt === null || h.status === "boarded" && (ship.launch === null || ship.departedAt !== null) ||
       ["boarded", "escaped"].includes(h.status) && Math.abs(h.x - GAME_RESERVE_V66_SHIPS[h.team].x) > 26) return null;
+    if (h.disembarkation !== undefined) {
+      const exit = h.disembarkation;
+      if (!record(exit) || !integer(exit.tick, 1, tick) || !integer(exit.ship, 0, 1) || !integer(exit.launchTick, 0, exit.tick - 1) || exit.tick - exit.launchTick >= 900) return null;
+      const interrupted = value.ships[exit.ship];
+      if (!record(interrupted) || !record(interrupted.interception) || !integer(interrupted.interception.tick, exit.tick, tick) ||
+        !integer(interrupted.interception.launchTick, exit.launchTick, tick)) return null;
+    }
+    if (h.recovering !== undefined) {
+      const job = h.recovering;
+      if (!record(job) || typeof job.bodyId !== "string" || !integer(job.ticks, 0, GAME_RESERVE_V99_RECOVERY_TICKS - 1) || h.status !== "active" || h.carrying ||
+        h.lastSeenX !== null && h.alertUntil > tick || claimedBodies.has(job.bodyId)) return null;
+      const body = value.humans.find(candidate => record(candidate) && candidate.id === job.bodyId);
+      if (!record(body) || body === h || body.status !== "down" || body.carrying !== true || body.team !== h.team || !number(body.x, 40, 4760) ||
+        Math.abs(h.x - body.x) > GAME_RESERVE_V99_RECOVERY_RANGE || job.ticks > 0 && Math.abs(h.x - body.x) > 12 ||
+        !gameReserveV66LineClear(h.x, 387, body.x, 410)) return null;
+      claimedBodies.add(job.bodyId);
+    }
   }
   for (const ship of value.ships) if (!record(ship) || !integer(ship.parts, 0, 4) || !number(ship.repair, 0, 3600) ||
     ship.launch !== null && !integer(ship.launch, 0, tick) || ship.departedAt !== null && !integer(ship.departedAt, 0, tick) ||
     !integer(ship.sabotages, 0, 100000) || ship.launch !== null && (ship.parts < 3 || ship.repair !== 3600) ||
     ship.departedAt !== null && (ship.launch === null || ship.departedAt < (ship.launch as number) + 900)) return null;
+  for (const ship of value.ships) if (ship.interception !== undefined) {
+    const stopped = ship.interception;
+    if (!record(stopped) || !integer(stopped.tick, 1, tick) || !integer(stopped.launchTick, 0, stopped.tick) || stopped.tick - stopped.launchTick >= 900 ||
+      !number(stopped.hunterX, 40, 4760) || Math.abs(stopped.hunterX - GAME_RESERVE_V66_SHIPS[value.ships.indexOf(ship)].x) >= 75 ||
+      ship.sabotages < 1 || ship.launch !== null && ship.launch <= stopped.tick) return null;
+  }
   if (!value.tracks.every(t => record(t) && number(t.x, 40, 4760) && integer(t.tick, 0, tick) && facing(t.direction)) ||
     !value.projectiles.every(b => record(b) && number(b.x, 0, 4800) && number(b.y, 0, 540) && number(b.vx, -14, 14) && number(b.vy, -14, 14) &&
       typeof b.owner === "string" && ["hunter", "human"].includes(b.owner) && integer(b.life, 1, 90)) ||
     !value.log.every(e => record(e) && integer(e.tick, 0, tick) && typeof e.message === "string" && e.message.length <= 250)) return null;
   const c = value.channel;
-  if (typeof c.kind !== "string" || !["none", "trophy", "sabotage", "return"].includes(c.kind) || !integer(c.target, -1, 7) || !integer(c.ticks, 0, 179) ||
+  if (typeof c.kind !== "string" || !["none", "trophy", "sabotage", "cache", "return"].includes(c.kind) || !integer(c.target, -1, 7) || !integer(c.ticks, 0, 179) ||
     c.kind === "none" && (c.target !== -1 || c.ticks !== 0) || c.kind === "sabotage" && !integer(c.target, 0, 1) ||
-    c.kind === "trophy" && !integer(c.target, 0, 7) || c.kind === "return" && c.target !== -1) return null;
+    c.kind === "trophy" && !integer(c.target, 0, 7) || c.kind === "cache" && (!integer(c.target, 0, 7) || c.ticks >= 120) || c.kind === "return" && c.target !== -1) return null;
   if (value.status === "active" ? value.terminalTick !== null || p.hp === 0 : !integer(value.terminalTick, 0, tick) ||
     value.status === "incapacitated" && p.hp !== 0 || value.status === "returned" && (p.hp === 0 || Math.abs(p.x - 115) > 55)) return null;
   return structuredClone(value) as unknown as GameReserveV66State;
 }
 export const gameReserveV66Supported = (value: unknown) => value === undefined || value === null || normalizeGameReserveV66(value) !== null;
+/** Legacy saves may already have fewer than sixteen lots; future steps must preserve their own total. */
+export function gameReserveV66MaterialTotal(s: GameReserveV66State): number {
+  return s.supplies.reduce((sum, count) => sum + count, 0) + s.humans.filter(human => human.carrying).length +
+    s.ships.reduce((sum, ship) => sum + ship.parts, 0) + (s.deniedSupplies?.reduce((sum, count) => sum + count, 0) ?? 0);
+}
 /** The host uses this for periodic writes. Terminal events, prey outcomes and inspected identities cannot roll back. */
 export function canAdvanceGameReserveV66(previous: unknown, next: unknown): boolean {
   const a = normalizeGameReserveV66(previous), b = normalizeGameReserveV66(next);
   if (!a || !b || a.seed !== b.seed || b.tick < a.tick || a.status !== "active" && JSON.stringify(a) !== JSON.stringify(b)) return false;
   if (!a.visited.every(v => b.visited.includes(v)) || b.player.hp > a.player.hp || a.supplies.some((count, i) => b.supplies[i] > count)) return false;
-  return a.humans.every((h, i) => { const n = b.humans[i]; return !(h.identified && !n.identified || h.secured && !n.secured ||
+  if (gameReserveV66MaterialTotal(a) !== gameReserveV66MaterialTotal(b) || a.supplies.some((count, index) => {
+    const deniedBefore = a.deniedSupplies?.[index] ?? 0, deniedAfter = b.deniedSupplies?.[index] ?? 0;
+    return deniedAfter < deniedBefore || deniedAfter - deniedBefore > count - b.supplies[index];
+  })) return false;
+  return a.humans.every((h, i) => { const n = b.humans[i], exit = n.disembarkation;
+    const rampExit = !!exit && exit.tick > a.tick && exit.ship === h.team && a.ships[h.team].launch !== null &&
+      exit.launchTick >= a.ships[h.team].launch! && b.ships[h.team].sabotages > a.ships[h.team].sabotages;
+    if (h.disembarkation && (!exit || exit.tick < h.disembarkation.tick || exit.tick === h.disembarkation.tick && (exit.ship !== h.disembarkation.ship || exit.launchTick !== h.disembarkation.launchTick))) return false;
+    return !(h.identified && !n.identified || h.secured && !n.secured ||
     h.status === "down" && (n.status !== "down" || h.downAt !== n.downAt) || h.status === "escaped" && n.status !== "escaped" ||
-    h.status === "boarded" && !["boarded", "escaped"].includes(n.status) || n.hp > h.hp); }) &&
-    a.ships.every((s, i) => (s.departedAt === null || b.ships[i].departedAt === s.departedAt) && b.ships[i].sabotages >= s.sabotages && b.ships[i].parts >= s.parts);
+    h.status === "boarded" && !["boarded", "escaped"].includes(n.status) && !rampExit || n.hp > h.hp); }) &&
+    a.ships.every((s, i) => {
+      const n = b.ships[i], interrupted = n.interception;
+      if (s.interception && (!interrupted || interrupted.tick < s.interception.tick || interrupted.tick === s.interception.tick && (interrupted.launchTick !== s.interception.launchTick || interrupted.hunterX !== s.interception.hunterX))) return false;
+      if (interrupted && interrupted.tick > a.tick && (n.sabotages <= s.sabotages || s.launch !== null && interrupted.launchTick < s.launch)) return false;
+      if (s.launch !== null && (n.launch === null || n.launch !== s.launch) && !(interrupted && interrupted.tick > a.tick && interrupted.launchTick >= s.launch && n.sabotages > s.sabotages)) return false;
+      return (s.departedAt === null || n.departedAt === s.departedAt) && n.sabotages >= s.sabotages && n.parts >= s.parts;
+    });
 }
 export function gameReserveV66LineClear(x1: number, y1: number, x2: number, y2: number): boolean {
   return !GAME_RESERVE_V66_COVER.some(c => {
@@ -143,12 +198,21 @@ export function gameReserveV66Summary(s: GameReserveV66State) {
 export function gameReserveV66Interaction(s: GameReserveV66State): GameReserveV66State["channel"] {
   const p = s.player; if (p.y < 433) return { kind: "none", target: -1, ticks: 0 };
   if (Math.abs(p.x - 115) < 55) return { kind: "return", target: -1, ticks: 0 };
+  // A body at the ramp must not mask the last opportunity to stop an active launch.
+  const launching = s.ships.findIndex((a, n) => a.departedAt === null && a.launch !== null && Math.abs(GAME_RESERVE_V66_SHIPS[n].x - p.x) < 75);
+  if (launching >= 0) return { kind: "sabotage", target: launching, ticks: 0 };
   const trophy = s.humans.findIndex(h => h.status === "down" && !h.secured && Math.abs(h.x - p.x) < 45);
   if (trophy >= 0) return { kind: "trophy", target: trophy, ticks: 0 };
-  const ship = s.ships.findIndex((a, n) => a.departedAt === null && a.launch === null && a.repair > 0 && Math.abs(GAME_RESERVE_V66_SHIPS[n].x - p.x) < 75);
-  return ship >= 0 ? { kind: "sabotage", target: ship, ticks: 0 } : { kind: "none", target: -1, ticks: 0 };
+  const ship = s.ships.findIndex((a, n) => a.departedAt === null && a.repair > 0 && Math.abs(GAME_RESERVE_V66_SHIPS[n].x - p.x) < 75);
+  if (ship >= 0) return { kind: "sabotage", target: ship, ticks: 0 };
+  const cache = GAME_RESERVE_V66_SUPPLIES.findIndex((x, index) => s.supplies[index] > 0 && Math.abs(x - p.x) < 45);
+  return cache >= 0 ? { kind: "cache", target: cache, ticks: 0 } : { kind: "none", target: -1, ticks: 0 };
+}
+export function gameReserveV66InteractionDuration(kind: GameReserveV66State["channel"]["kind"]): number {
+  return kind === "return" ? 60 : kind === "trophy" ? 180 : kind === "sabotage" ? 90 : kind === "cache" ? 120 : 0;
 }
 function downHuman(s: GameReserveV66State, h: GameReserveV66Human) {
+  delete h.recovering;
   h.hp = Math.max(0, h.hp); if (h.hp > 0) return;
   h.status = "down"; h.downAt = s.tick; h.windup = 0; h.moving = false;
   // A fallen carrier keeps its physical component at the body. Other caches contain spare parts;
@@ -201,8 +265,13 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
       h.scan = Math.min(90, h.scan + 1); if (h.scan === 90 && !h.identified) { h.identified = true; log(s, GAME_RESERVE_V66_PEOPLE[index].name + " : " + GAME_RESERVE_V66_PEOPLE[index].description); }
     } else if (!h.identified) h.scan = 0;
     if (h.lastSeenX !== null && h.alertUntil > s.tick) {
+      delete h.recovering;
       const delta = h.lastSeenX - h.x; h.facing = delta >= 0 ? 1 : -1;
-      if (Math.abs(delta) > 240) { h.x += h.facing * .7; h.moving = true; }
+      if (h.disembarkation && s.tick - h.disembarkation.tick < 90 && Math.abs(delta) < 95) {
+        // Leave a crowded ramp on foot before defending it; no stacked instant relocation.
+        const retreat = delta === 0 ? index % 2 ? -1 : 1 : delta > 0 ? -1 : 1;
+        h.x = clamp(h.x + retreat * .7, 40, 4760); h.moving = true;
+      } else if (Math.abs(delta) > 240) { h.x += h.facing * .7; h.moving = true; }
       if (h.windup === 0 && h.shotCooldown === 0 && Math.abs(delta) < 470 && gameReserveV66LineClear(h.x, 385, h.lastSeenX, h.lastSeenY)) h.windup = 24;
       if (h.windup > 0 && --h.windup === 0) {
         const dx = h.lastSeenX - h.x, dy = h.lastSeenY - 385, length = Math.max(1, Math.hypot(dx, dy));
@@ -212,8 +281,25 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
     }
     h.windup = 0;
     let ship = s.ships[h.team];
-    if (ship.departedAt !== null) { const other = h.team === 0 ? 1 : 0; if (s.ships[other].departedAt === null) { h.team = other; ship = s.ships[other]; } else continue; }
+    if (ship.departedAt !== null) { const other = h.team === 0 ? 1 : 0; delete h.recovering; if (s.ships[other].departedAt === null) { h.team = other; ship = s.ships[other]; } else continue; }
     const shipX = GAME_RESERVE_V66_SHIPS[h.team].x;
+    const reachableBody = (body: GameReserveV66Human) => body !== h && body.status === "down" && body.carrying && body.team === h.team &&
+      Math.abs(body.x - h.x) <= GAME_RESERVE_V99_RECOVERY_RANGE && gameReserveV66LineClear(h.x, 387, body.x, 410);
+    let body = h.recovering ? s.humans.find(candidate => candidate.id === h.recovering!.bodyId && reachableBody(candidate)) : undefined;
+    if (h.carrying || !body) delete h.recovering;
+    if (!h.carrying && !h.recovering && ship.parts < 3) {
+      body = s.humans.filter(candidate => reachableBody(candidate) && !s.humans.some(ally => ally.status === "active" && ally.recovering?.bodyId === candidate.id))
+        .sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
+      if (body) { h.recovering = { bodyId: body.id, ticks: 0 }; h.work = 0; }
+    }
+    if (h.recovering && body) {
+      const delta = body.x - h.x;
+      if (Math.abs(delta) > 12) { h.facing = delta >= 0 ? 1 : -1; h.x += h.facing * (role === "veteran" ? .8 : .95); h.moving = true; h.recovering.ticks = 0; }
+      else h.recovering.ticks++;
+      // Completion follows projectile resolution, so even a last-frame injury interrupts the work.
+      if (h.moving && (s.tick + index * 17) % 90 === 0) s.tracks.push({ x: h.x, tick: s.tick, direction: h.facing });
+      continue;
+    }
     let destination: number = shipX;
     if (ship.parts < 3 && !h.carrying) {
       if (s.supplies[h.targetSupply] === 0) {
@@ -225,7 +311,7 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
     const delta = destination - h.x;
     if (Math.abs(delta) > 12) { h.facing = delta >= 0 ? 1 : -1; h.x += h.facing * (h.carrying ? .65 : role === "veteran" ? .8 : .95); h.moving = true; h.work = 0; }
     else if (ship.parts < 3 && !h.carrying && s.supplies[h.targetSupply] > 0) { if (++h.work >= 150) { s.supplies[h.targetSupply]--; h.carrying = true; h.work = 0; } }
-    else if (h.carrying) { ship.parts = Math.min(4, ship.parts + 1); h.carrying = false; h.work = 0; log(s, "Un composant a été apporté au " + GAME_RESERVE_V66_SHIPS[h.team].name.toLocaleLowerCase("fr") + "."); }
+    else if (h.carrying && ship.parts < 4) { ship.parts++; h.carrying = false; h.work = 0; log(s, "Un composant a été apporté au " + GAME_RESERVE_V66_SHIPS[h.team].name.toLocaleLowerCase("fr") + "."); }
     else if (ship.parts >= 3 && ship.repair < 3600) ship.repair = Math.min(3600, ship.repair + (role === "technician" ? 2 : .45));
     else if (ship.launch !== null && Math.abs(h.x - shipX) < 26) { h.status = "boarded"; h.moving = false; log(s, "Un combattant embarque dans le " + GAME_RESERVE_V66_SHIPS[h.team].name.toLocaleLowerCase("fr") + "."); }
     if (h.moving && (s.tick + index * 17) % 90 === 0) s.tracks.push({ x: h.x, tick: s.tick, direction: h.facing });
@@ -244,13 +330,42 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
     if (b.owner === "hunter") { const hit = s.humans.find(h => h.status === "active" && Math.abs(b.x - h.x) < 22 && b.y > 345 && b.y < 438); if (hit) { hit.hp -= 36; downHuman(s, hit); return false; } }
     return true;
   }).slice(-40);
+  for (const human of s.humans) if (human.recovering) {
+    const body = s.humans.find(candidate => candidate.id === human.recovering!.bodyId);
+    if (human.status !== "active" || human.carrying || human.lastSeenX !== null && human.alertUntil > s.tick || !body || body.status !== "down" ||
+      !body.carrying || body.team !== human.team || Math.abs(body.x - human.x) > GAME_RESERVE_V99_RECOVERY_RANGE || !gameReserveV66LineClear(human.x, 387, body.x, 410)) delete human.recovering;
+    else if (human.recovering.ticks >= GAME_RESERVE_V99_RECOVERY_TICKS) {
+      body.carrying = false; human.carrying = true; human.work = 0;
+      for (const ally of s.humans) if (ally.recovering?.bodyId === body.id) delete ally.recovering;
+      log(s, "Un survivant a récupéré le composant d’un porteur abattu. Il doit encore le rapporter à son appareil.");
+    }
+  }
   const action = gameReserveV66Interaction(s);
   if (input.interact && !move && p.hp === healthBefore && action.kind !== "none") {
     p.cloak = false;
     s.channel = { ...action, ticks: s.channel.kind === action.kind && s.channel.target === action.target ? s.channel.ticks + 1 : 1 };
-    if (s.channel.ticks >= (action.kind === "return" ? 60 : action.kind === "sabotage" ? 90 : 180)) {
+    if (s.channel.ticks >= gameReserveV66InteractionDuration(action.kind)) {
       if (action.kind === "trophy") { s.humans[action.target].secured = true; log(s, "Prise sécurisée. Elle reste au bilan de cette expédition, sans ajout automatique à la collection."); }
-      if (action.kind === "sabotage") { const ship = s.ships[action.target]; ship.repair = Math.max(0, ship.repair - 2000); ship.sabotages++; log(s, "Circuit endommagé. Les humains encore présents peuvent le réparer."); }
+      if (action.kind === "sabotage") {
+        const ship = s.ships[action.target], launchTick = ship.launch;
+        ship.repair = Math.max(0, ship.repair - 2000); ship.sabotages++;
+        if (launchTick !== null) {
+          ship.interception = { tick: s.tick, launchTick, hunterX: p.x }; ship.launch = null;
+          for (const human of s.humans) if (human.team === action.target && human.status === "boarded") {
+            // Boarding happens at the ramp's ground coordinate. Exiting does not relocate or heal anyone.
+            human.status = "active"; human.moving = false; human.work = 0;
+            human.disembarkation = { tick: s.tick, ship: action.target as 0 | 1, launchTick };
+            human.lastSeenX = p.x; human.lastSeenY = p.y - 45; human.alertUntil = s.tick + 300; human.shotCooldown = Math.max(45, human.shotCooldown);
+          }
+          log(s, "Décollage interrompu : les passagers ressortent à la rampe et défendent leur appareil. Le circuit reste réparable.");
+        } else log(s, "Circuit endommagé. Les humains encore présents peuvent le réparer.");
+      }
+      if (action.kind === "cache") {
+        s.supplies[action.target]--;
+        s.deniedSupplies ??= GAME_RESERVE_V66_SUPPLIES.map(() => 0);
+        s.deniedSupplies[action.target]++;
+        log(s, "Un lot de composants neutralisé au dépôt. Les pièces déjà emportées restent utilisables par les survivants.");
+      }
       if (action.kind === "return") { s.status = "returned"; s.terminalTick = s.tick; log(s, "Retour au point d'extraction. Fin de cette expédition."); }
       s.channel = { kind: "none", target: -1, ticks: 0 };
     }

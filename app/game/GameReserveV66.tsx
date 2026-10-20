@@ -5,6 +5,8 @@ import type { ControlActionId, ControlBindings } from "./systems/controlBindings
 import { controlActionShortcut } from "./controlBindingLabels";
 import { GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_SHIPS, gameReserveV66Sector, gameReserveV66Summary, normalizeGameReserveV66, stepGameReserveV66, type GameReserveV66Input, type GameReserveV66State } from "./systems/gameReserveV66";
 import { drawGameReserveV66, loadGameReserveV66Art, type GameReserveV66Art } from "./gameReserveV66Rendering";
+import { gameReserveTacticalV98 } from "./systems/gameReserveTacticalV98";
+import GameReserveTacticalV98 from "./GameReserveTacticalV98";
 import styles from "./GameReserveV66.module.css";
 
 export interface GameReserveV66Props {
@@ -24,6 +26,7 @@ export default function GameReserveV66(props: GameReserveV66Props) {
   const pausedRef = useRef(true), mounted = useRef(false), busy = useRef(false);
   const [state, setState] = useState(initial), [paused, setPaused] = useState(true), [bank, setBank] = useState<GameReserveV66Art | null>(null);
   const [artError, setArtError] = useState(""), [saveError, setSaveError] = useState(""), [retry, setRetry] = useState(0), [touchShown, setTouchShown] = useState(false), [leaving, setLeaving] = useState(false);
+  const [notebookShown, setNotebookShown] = useState(false);
   useEffect(() => { latest.current = props; }, [props]);
   const clear = useCallback(() => { for (const k of keys.current) blockedKeys.current.add(k); keys.current.clear(); touch.current.clear(); }, []);
   const checkpoint = useCallback(() => {
@@ -63,13 +66,18 @@ export default function GameReserveV66(props: GameReserveV66Props) {
     if (stateRef.current?.status === "active") stateRef.current = { ...stateRef.current, inputArmed: false, previous: { jump: false, attack: false, melee: false, cloak: false } };
   } }, [props.externallyPaused, clear]);
   useEffect(() => {
-    if (paused || state?.status !== "active" || artError) panel.current?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus();
-  }, [paused, state?.status, artError]);
+    if (paused || state?.status !== "active" || artError) {
+      const summary = panel.current?.querySelector<HTMLElement>("[data-reserve-notebook-summary]");
+      // Closing the native disclosure must keep its keyboard focus, so Space can reopen it.
+      if (!notebookShown && document.activeElement === summary) return;
+      panel.current?.querySelector<HTMLElement>(notebookShown ? "[data-reserve-notebook-summary]" : "button:not(:disabled)")?.focus();
+    }
+  }, [paused, state?.status, artError, notebookShown]);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (latest.current.externallyPaused || e.target instanceof HTMLElement && e.target.closest("input,textarea,select,[contenteditable=true]")) return;
       if (latest.current.bindings[ACTIONS.pause].includes(e.code)) { e.preventDefault(); if (!e.repeat) { if (pausedRef.current) resume(); else pause(); } return; }
-      if (e.target instanceof HTMLElement && e.target.closest("button")) return;
+      if (e.target instanceof HTMLElement && e.target.closest("button,summary,a,[role=button]")) return;
       if (Object.values(ACTIONS).some(a => latest.current.bindings[a].includes(e.code))) { e.preventDefault();
         // A key released in another tab may not dispatch keyup here. Never let its OS autorepeat re-arm input.
         if (!blockedKeys.current.has(e.code) && (!e.repeat || keys.current.has(e.code))) keys.current.add(e.code);
@@ -108,7 +116,8 @@ export default function GameReserveV66(props: GameReserveV66Props) {
       const current = stateRef.current!;
       drawGameReserveV66(ctx, current, bank, latest.current.reducedMotion);
       Object.assign(element.dataset, { reserveStatus: current.status, reserveTick: String(current.tick), reserveX: String(Math.round(current.player.x)), reserveY: String(Math.round(current.player.y)), reserveSector: gameReserveV66Sector(current.player.x).id,
-        reserveHealth: String(current.player.hp), reservePaused: String(!!blocked), reserveAssets: String(!!bank), reserveSecured: String(gameReserveV66Summary(current).secured), reserveEscaped: String(gameReserveV66Summary(current).escaped), reserveShipParts: current.ships.map(s => s.parts).join(",") });
+        reserveHealth: String(current.player.hp), reservePaused: String(!!blocked), reserveAssets: String(!!bank), reserveSecured: String(gameReserveV66Summary(current).secured), reserveEscaped: String(gameReserveV66Summary(current).escaped), reserveShipParts: current.ships.map(s => s.parts).join(","),
+        reserveShipLaunches: current.ships.map(s => s.launch ?? "none").join(","), reserveInterceptions: String(current.ships.filter(s => s.interception).length), reserveChannel: current.channel.kind, reserveChannelTicks: String(current.channel.ticks), reserveAboard: String(gameReserveV66Summary(current).aboard) });
       if (!blocked && (terminal || current.tick - lastSave >= 120)) { lastSave = current.tick; checkpoint(); }
       if (terminal || time - lastUi > 100) { lastUi = time; setState(current); }
       raf = requestAnimationFrame(frame);
@@ -125,24 +134,30 @@ export default function GameReserveV66(props: GameReserveV66Props) {
     try { await latest.current.onExit(); } catch { setSaveError("Le retour au dossier a échoué. La réserve reste ouverte."); }
     finally { busy.current = false; if (mounted.current) setLeaving(false); }
   };
-  const result = state && gameReserveV66Summary(state), terminal = !!state && state.status !== "active";
+  const result = state && gameReserveV66Summary(state), terminal = !!state && state.status !== "active", tactical = state && gameReserveTacticalV98(state);
   const modal = paused || !state || terminal || !!artError;
   const shortcut = (a: keyof typeof ACTIONS) => controlActionShortcut(ACTIONS[a], props.bindings);
   return <section className={styles.screen} data-game-reserve-v66 data-reserve-state={state?.status ?? "unsupported"}>
-    <header className={styles.header}><div><p>LA LONGUE CHASSE · GAME RESERVE</p><strong>Vharuun — première expédition</strong></div><div><button type="button" onClick={pause} disabled={!state || terminal}>Pause</button><button type="button" onClick={() => setTouchShown(v => !v)} aria-pressed={touchShown}>Tactile</button></div></header>
+    <header className={styles.header}><div><p>LA LONGUE CHASSE · GAME RESERVE</p><strong>Vharuun — première expédition</strong></div><div><button type="button" onClick={pause} disabled={!state || terminal}>Pause</button><button type="button" onClick={() => { setNotebookShown(true); pause(); }} disabled={!state || terminal} aria-label="Ouvrir le carnet de traque et suspendre la chasse">Carnet</button><button type="button" onClick={() => setTouchShown(v => !v)} aria-pressed={touchShown}>Tactile</button></div></header>
     <div className={styles.viewport}><canvas ref={canvas} width={960} height={540} tabIndex={0} aria-label="Réserve Vharuun jouable. Trois secteurs reliés, huit humains armés, deux évasions physiques." />
       {state && <div className={styles.hud} aria-label="État du chasseur"><div><span>Vitalité {Math.ceil(state.player.hp)}</span><meter min={0} max={100} value={state.player.hp} aria-label="Vitalité" /></div><div><span>Énergie {Math.floor(state.player.energy)} · {state.player.cloak ? "Camouflé" : "Visible"}</span><meter min={0} max={100} value={state.player.energy} aria-label="Énergie" /></div><span>{result!.secured} prises · {result!.escaped} évadés · {minute(result!.seconds)}</span></div>}
       {!modal && state && <p className={styles.notice} role="status">{state.log.at(-1)?.message}</p>}
+      {!modal && tactical && <div className={styles.fieldStatus} aria-label="Repères de traque" data-reserve-field-status>
+        <span>{tactical.sectors.find(sector => sector.current)?.name} · {state!.visited.length}/3 secteurs</span>
+        {tactical.ships.filter(ship => ship.phase === "boarding").map(ship => <strong key={ship.id} className={styles.launchAlert} data-reserve-launch-alert>{ship.name} · départ {ship.countdown} s</strong>)}
+        {tactical.action.kind !== "none" && <div data-reserve-interaction={tactical.action.kind}><strong>{tactical.action.title}</strong><span>Maintenir {shortcut("interact")} · {tactical.action.remaining.toFixed(1)} s</span><progress max={1} value={tactical.action.progress} aria-label={tactical.action.title} /></div>}
+      </div>}
     </div>
     {!modal && <p className={styles.hint}>Suivre les traces · observer les rôles · intercepter les pièces · revenir à gauche pour terminer</p>}
     {touchShown && <div className={styles.touch} aria-label="Commandes tactiles de la réserve">{TOUCH.map(([a, label, short]) => <button type="button" key={a} aria-label={label} data-reserve-action={a} disabled={modal || !!props.externallyPaused} onPointerDown={e => setTouch(a, true, e)} onPointerUp={() => setTouch(a, false)} onPointerCancel={() => setTouch(a, false)} onLostPointerCapture={() => setTouch(a, false)} onBlur={() => setTouch(a, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(a, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(a, false); } }}><span className={styles.longLabel}>{label}</span><span className={styles.shortLabel}>{short}</span></button>)}</div>}
     {modal && <div className={styles.overlay}><div className={styles.panel} ref={panel} role="dialog" aria-modal="true" aria-labelledby="reserve-title">
       <p className={styles.eyebrow}>RÉSERVE ORIGINALE · SOLO</p><h1 id="reserve-title">{!state ? "Checkpoint non pris en charge" : terminal ? state.status === "returned" ? "Retour d’expédition" : "Chasseur hors combat" : state.tick === 0 ? "La proie prépare sa fuite" : "Chasse suspendue"}</h1>
       {!state ? <p>Cette sauvegarde ne peut pas être interprétée par cette version. Elle est conservée ; aucune expédition neuve ne la remplace.</p> : <>
-        {!terminal && <p>Huit combattants adultes armés traversent la Jungle des Parachutes, la lisière de la Foreuse et le Camp des Trophées. Ils récupèrent des composants, réparent deux appareils puis embarquent réellement. Observe leurs rôles ; une prise exige trois secondes d’exposition. Les moteurs annoncent le départ quinze secondes avant le décollage.</p>}
+        {!terminal && <p>Huit combattants adultes armés traversent la Jungle des Parachutes, la lisière de la Foreuse et le Camp des Trophées. Ils récupèrent des composants, réparent deux appareils puis embarquent réellement. Neutralise les lots aux dépôts pour ralentir leur fuite ; les survivants peuvent récupérer les pièces d’un porteur abattu à proximité. Observe leurs rôles ; une prise exige trois secondes d’exposition. Les moteurs annoncent le départ quinze secondes avant le décollage : rejoins la rampe et sabote le circuit pour interrompre le départ.</p>}
         {result && <div className={styles.results}><span><b>{result.secured}</b> prises sécurisées</span><span><b>{result.abandoned}</b> prises laissées</span><span><b>{result.escaped}</b> évadés</span><span><b>{result.remaining + result.aboard}</b> encore dans la réserve</span></div>}
+        <details open={notebookShown} onToggle={event => setNotebookShown(event.currentTarget.open)}><summary data-reserve-notebook-summary>Carnet de traque · secteurs, contacts et évasions</summary><GameReserveTacticalV98 state={state} /></details>
         <p className={styles.scope}>Première sortie jouable : 3 secteurs sur les 80 proposés. Personnages originaux d’essai ; les 100 fiches H001–H100 et leurs 200 images ne sont pas intégrées ici. Aucun rang, honneur, équipement ou trophée de campagne n’est accordé par ce mode.</p>
-        {!terminal && <details><summary>Commandes et règles</summary><ul><li>Déplacement {shortcut("left")} / {shortcut("right")} · Saut {shortcut("jump")}.</li><li>Lames {shortcut("melee")} · Plasma {shortcut("attack")} : le tir consomme de l’énergie et révèle les témoins proches.</li><li>Camouflage {shortcut("cloak")} · Maintenir Observer {shortcut("scan")} pour identifier les rôles visibles.</li><li>Maintenir Interagir {shortcut("interact")} près d’un corps, d’un circuit en réparation ou du point d’extraction à gauche.</li><li>Les fougères bloquent les vues et les projectiles. Les branches permettent un autre itinéraire. Un témoin transmet sa dernière observation aux alliés proches seulement.</li><li>Manette standard : stick/croix, A saut, X lames, RT plasma, B camouflage, LT observation, LB interaction, Start pause.</li><li>Le joueur utilise un dessin natif original tenu. Les humains utilisent six dessins natifs existants par archétype ; aucune nouvelle animation complète du chasseur n’est annoncée.</li></ul></details>}
+        {!terminal && <details><summary>Commandes et règles</summary><ul><li>Déplacement {shortcut("left")} / {shortcut("right")} · Saut {shortcut("jump")}.</li><li>Lames {shortcut("melee")} · Plasma {shortcut("attack")} : le tir consomme de l’énergie et révèle les témoins proches.</li><li>Camouflage {shortcut("cloak")} · Maintenir Observer {shortcut("scan")} pour identifier les rôles visibles.</li><li>Maintenir Interagir {shortcut("interact")} près d’un corps, d’un dépôt, d’un circuit en réparation ou du point d’extraction à gauche.</li><li>Dépôt : reste au sol 2 s, sans bouger ni subir de blessure, pour neutraliser un lot. Les pièces déjà emportées restent sur leur porteur, même abattu ; un allié qui le découvre à proximité peut récupérer son lot après 1,5 s sans menace ni blessure.</li><li>Sabotage : reste au sol à la rampe 1,5 s, sans bouger ni subir de blessure. Pendant l’embarquement, il coupe les moteurs ; les passagers ressortent à leur position et défendent l’appareil. Après le départ, ils ne peuvent plus être rattrapés.</li><li>Les fougères bloquent les vues et les projectiles. Les branches permettent un autre itinéraire. Un témoin transmet sa dernière observation aux alliés proches seulement.</li><li>Manette standard : stick/croix, A saut, X lames, RT plasma, B camouflage, LT observation, LB interaction, Start pause.</li><li>Le joueur utilise un dessin natif original tenu. Les humains utilisent six dessins natifs existants par archétype ; aucune nouvelle animation complète du chasseur n’est annoncée.</li></ul></details>}
         <details><summary>Renseignements observés ({result!.observed}/8)</summary><ul>{state.humans.filter(h => h.identified).map(h => <li key={h.id}><strong>{GAME_RESERVE_V66_PEOPLE.find(p => p.id === h.id)!.name}</strong> — {GAME_RESERVE_V66_PEOPLE.find(p => p.id === h.id)!.description}</li>)}{!result!.observed && <li>Aucun rôle identifié. Maintiens Observer face à un combattant visible.</li>}</ul></details>
         <details><summary>Journal de l’expédition</summary><ol>{state.log.map((entry, n) => <li key={n}>{minute(Math.floor(entry.tick / 60))} — {entry.message}</li>)}</ol><ul>{state.ships.map((s, n) => <li key={n}>{GAME_RESERVE_V66_SHIPS[n].name} : {s.departedAt !== null ? "parti" : s.launch !== null ? "embarquement en cours" : "préparation"}.</li>)}</ul></details>
       </>}

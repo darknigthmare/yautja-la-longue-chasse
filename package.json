@@ -68,6 +68,8 @@
     "build:production": "node scripts/build-production-v94.mjs",
     "qa:production": "npm run lint && npm run typecheck && npm run test:audit:v94 && npm run build:production && npm run qa:next-production",
     "test:audit:v94": "node --experimental-strip-types --test --test-concurrency=1 tests/held-direction-v94.test.mjs tests/native-image-preload-v94.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/phase-clock-v94.test.mjs tests/page-activity-v94.test.mjs tests/production-pipeline-v94.test.mjs tests/audit-wiring-v94.test.mjs",
+    "test:worlds:v98": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v98.test.mjs tests/game-reserve-v66.test.mjs tests/game-reserve-campaign-slots-v66.test.mjs tests/homeworld-wayfinding-v75.test.mjs tests/clan-war-planets-engine-v96.test.mjs",
+    "test:worlds:v99": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v99.test.mjs tests/*-v98.test.mjs tests/game-reserve-v66.test.mjs tests/game-reserve-campaign-slots-v66.test.mjs tests/homeworld-wayfinding-v75.test.mjs tests/clan-war-planets-engine-v96.test.mjs",
     "start:production": "next start",
     "qa:next-production": "node scripts/qa-next-production-v94.mjs",
     "qa:menu-controls:v94": "node scripts/qa-menu-controls-browser-v94.mjs",

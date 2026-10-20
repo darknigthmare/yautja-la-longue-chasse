@@ -750,7 +750,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label={interior ? `Intérieur parcourable · ${interior.title}` : "Cité jouable en perspective 2.5D"} aria-describedby="homeworld-controls" data-homeworld-viewport="true" data-homeworld-space={interior ? "interior" : "city"} data-city-seconds={phase.toFixed(2)}
       data-homeworld-active-door={activeDoorId ?? undefined}
       onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
-      <HomeworldWorldMapV77 key={levelIdV77} save={save} actor={interior && currentBuilding ? homeworldBuildingDoorwayV64(currentBuilding).approach : actor} levelId={levelIdV77} open={spatialCodexOpen} targetId={wayfindingRequestV75?.id}
+      <HomeworldWorldMapV77 save={save} actor={actor} interiorId={interiorId} levelId={levelIdV77} open={spatialCodexOpen} targetId={wayfindingRequestV75?.id} targetNonce={wayfindingRequestV75?.nonce}
+        interactionShortcut={controlActionShortcut('hunt.interact', bindings)}
+        routeSuspended={suspended || paused || inactive || !!dialog || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready}
         disabled={suspended || paused || inactive || !!dialog || !!transitV77 || !motionAssetsV74.ready}
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open || !motionAssetsV74.ready; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />

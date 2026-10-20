@@ -5,15 +5,16 @@ import Image from "next/image";
 import type { SaveGame } from "./types";
 import {
   CLAN_WAR_ENTRIES_V85, CLAN_WAR_SECTIONS_V85, CLAN_WAR_WORKBOOK_V85,
-  WAR_FACTIONS_V85, WAR_TERRITORIES_V85, WAR_UNITS_V85,
-  clanWarEntryV85, warCompositionV85, warTerritoryV85, warUnitV85,
+  WAR_FACTIONS_V85, WAR_UNITS_V85,
+  clanWarEntryV85, warCompositionV85, warUnitV85,
   type ClanWarEntryV85,
 } from "./systems/clanWarV85Data";
 import {
-  advanceWarTurnV85, cancelWarOrderV85, createWarSimulationV85,
+  advanceWarTurnV85, cancelWarOrderV85, changeWarGarrisonV99, createWarSimulationV85,
   queueWarOrderV85, warBudgetV85, warFitCombatantsV85,
   warGarrisonV85, warOrderCostV85, warSuppliedV85, warUpkeepV85, warVeterancyV85,
-  type WarOrderKindV85,
+  warTerritoriesForSimulationV96, warTerritoryForSimulationV96, warObjectiveCorridorV96,
+  type WarGarrisonDraftV99, type WarOrderKindV85,
 } from "./systems/clanWarV85";
 import {
   CANYON_POSTS_V85, CANYON_PRESET_V85, canyonCompositionIssueV85,
@@ -26,6 +27,11 @@ import ClanWarBibleV6Panel from "./ClanWarBibleV6Panel";
 import { importedYautjaArtVariantsV85 } from "./systems/recentSpriteLibraryV85";
 import { createWarSessionV85 } from "./systems/clanWarSessionV85";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
+import ClanWarPlanetsV96, { WAR_PLANET_SELECTION_KEY_V96 } from "./ClanWarPlanetsV96";
+import ClanWarCommandV98, { ClanWarOrderPreviewV98 } from "./ClanWarCommandV98";
+import ClanWarGarrisonV99 from "./ClanWarGarrisonV99";
+import { warOrderPreviewV98, type WarOrderDraftV98 } from "./systems/clanWarCommandV98";
+import { DEFAULT_WAR_PLANET_ID_V96, warPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { warAtlasIntelV95 } from "./systems/clanWarAtlasV95";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 
@@ -38,6 +44,12 @@ function WarArt({ clanName, role }: { clanName?: string; role?: string }) {
   return art ? <figure className={styles.sourceArt} data-war-art={art.id}><Image src={art.src} width={art.width} height={art.height} unoptimized alt={`${art.label} · référence originale statique`} loading="lazy" decoding="async"/><figcaption>{art.label} · référence statique du {clanName ? "clan" : "rôle"}</figcaption></figure> : null;
 }
 const artRoles: Record<string, string> = { "RTS-U01": "patrouille", "RTS-U02": "pisteur", "RTS-U03": "tireur", "RTS-U13": "sapeur", "RTS-U15": "soigneur", "RTS-U18": "porteur" };
+function preferredWarPlanetV96() {
+  try {
+    if (typeof window !== "undefined") return warPlanetV96(window.localStorage.getItem(WAR_PLANET_SELECTION_KEY_V96) ?? undefined)?.id ?? DEFAULT_WAR_PLANET_ID_V96;
+  } catch { /* A denied preference store does not prevent a local game. */ }
+  return DEFAULT_WAR_PLANET_ID_V96;
+}
 function Entry({ entry }: { entry: ClanWarEntryV85 }) {
   return <article className={styles.entry} data-war-source-id={entry.id}>
     <p className={styles.eyebrow}>{entry.id} · {entry.sheet} · ligne {entry.row}</p><h3>{entry.title}</h3>
@@ -49,16 +61,33 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
 export default function ClanWarPanelV85({ save, onClose, suspended = false }: { save: SaveGame; onClose: () => void; suspended?: boolean }) {
   const root = useRef<HTMLElement>(null);
+  const focusPlanetSelection = useRef(false);
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("korthas");
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
-  const { simulation, canyon, selection, storageMessage, persistedWar, persistedCanyon, pendingWrites, canRetryPersistence, loaded } = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
-  const { setSimulation, setCanyon, setSelection } = sessionStore;
-  const [message, setMessage] = useState("Votre front de Korthas est ouvert. Choisissez un départ, une destination voisine et les personnes affectées à l’ordre.");
+  const [activePlanetId, setActivePlanetId] = useState(preferredWarPlanetV96);
+  const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
+    korthas: sessionStore,
+    ...(activePlanetId === "korthas" ? {} : { [activePlanetId]: createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: activePlanetId }) }),
+  }));
+  const planetSession = planetSessions[activePlanetId];
+  const shared = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
+  const strategic = useSyncExternalStore(planetSession.subscribe, planetSession.getSnapshot, planetSession.getServerSnapshot);
+  const { simulation, persistedWar } = strategic;
+  const { canyon, selection, persistedCanyon } = shared;
+  const loaded = shared.loaded && strategic.loaded;
+  const pendingWrites = shared.pendingWrites + (planetSession === sessionStore ? 0 : strategic.pendingWrites);
+  const storageMessage = [...new Set([shared.storageMessage, strategic.storageMessage].filter(Boolean))].join(" ");
+  const canRetryPersistence = shared.canRetryPersistence || strategic.canRetryPersistence;
+  const { setCanyon, setSelection } = sessionStore;
+  const { setSimulation } = planetSession;
+  const planet = warPlanetV96(activePlanetId)!;
+  const corridorIds = planet.id === "korthas" ? ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"] : warObjectiveCorridorV96(simulation);
+  const [message, setMessage] = useState("Choisissez une planète, un départ et une destination voisine pour préparer votre front.");
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
-  const [territoryId, setTerritoryId] = useState("CON-T02"), [targetId, setTargetId] = useState("CON-T08");
-  const [orderKind, setOrderKind] = useState<WarOrderKindV85>("attack");
+  const [territoryChoice, setTerritoryId] = useState<string | null>(null), [targetChoice, setTargetId] = useState<string | null>(null);
+  const [requestedOrderKind, setOrderKind] = useState<WarOrderKindV85 | null>(null);
   const [selectedPeople, setSelectedPeople] = useState<string[]>([]);
   const [cargoS, setCargoS] = useState(0), [cargoM, setCargoM] = useState(0);
   const [confirmTurn, setConfirmTurn] = useState(false);
@@ -66,6 +95,12 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const [tacticalOrder, setTacticalOrder] = useState<CanyonOrderKindV85>("move");
   const [tacticalX, setTacticalX] = useState(28), [tacticalLevel, setTacticalLevel] = useState<0 | 1>(0);
   const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    if (!loaded || !focusPlanetSelection.current) return;
+    root.current?.querySelector<HTMLSelectElement>('[data-testid="war-planet-selector-v96"] select')?.focus({ preventScroll: true });
+    focusPlanetSelection.current = false;
+  }, [loaded, activePlanetId]);
 
   useEffect(() => {
     if (!running || canyon.phase !== "battle" || tab !== "canyon" || suspended || !pageActive) return;
@@ -81,9 +116,17 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
   const budget = useMemo(() => warBudgetV85(simulation), [simulation]);
-  const territory = warTerritoryV85(territoryId)!;
+  // Derive defaults from the hydrated front. A newly opened world may already
+  // have lost its original departure, and its routes need not include T02–T08.
+  const definitions = warTerritoriesForSimulationV96(simulation);
+  const controlled = definitions.filter(item => simulation.territories[item.id].controller === "CON-F01");
+  const territory = (territoryChoice ? warTerritoryForSimulationV96(simulation, territoryChoice) : undefined)
+    ?? controlled.find(item => item.id === "CON-T02") ?? controlled[0] ?? definitions[0];
+  const territoryId = territory.id;
+  const targetId = targetChoice && territory.neighbors.includes(targetChoice) ? targetChoice
+    : territory.neighbors.find(id => simulation.territories[id].controller === "CON-F02") ?? territory.neighbors[0];
+  const orderKind = requestedOrderKind ?? (simulation.territories[targetId].controller === "CON-F02" ? "attack" : simulation.territories[targetId].controller === "CON-F03" ? "cession" : "move");
   const candidates = simulation.combatants.filter(actor => actor.factionId === "CON-F01" && actor.territoryId === territoryId && actor.status === (orderKind === "heal" ? "wounded" : "fit") && actor.trainingUntilTurn === null);
-  const controlled = WAR_TERRITORIES_V85.filter(item => simulation.territories[item.id].controller === "CON-F01");
   const filtered = useMemo(() => {
     const search = fold(query);
     return CLAN_WAR_ENTRIES_V85.filter(entry => (section === "Toutes les feuilles" || entry.sheet === section) &&
@@ -93,8 +136,24 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const currentEntry = clanWarEntryV85(selectedEntryId);
   const formation = canyon.formations.find(item => item.id === selectedFormation && !item.extraction) ?? canyon.formations.find(item => !item.extraction);
   const selectedCost = warOrderCostV85({ kind: orderKind, cargo: { s: cargoS, m: cargoM, i: 0 } });
+  const reservedPeople = new Set(simulation.orders.flatMap(order => order.combatantIds));
+  const draft: WarOrderDraftV98 = { kind: orderKind, fromId: territoryId, targetId: orderKind === "heal" ? territoryId : targetId, combatantIds: selectedPeople, cargo: { s: orderKind === "logistics" ? cargoS : 0, m: orderKind === "logistics" ? cargoM : 0, i: 0 } };
+  const orderIssue = warOrderPreviewV98(simulation, draft).issue;
+  function selectPlanet(id: string) {
+    const nextPlanet = warPlanetV96(id);
+    const liveWrites = sessionStore.getSnapshot().pendingWrites + (planetSession === sessionStore ? 0 : planetSession.getSnapshot().pendingWrites);
+    if (!nextPlanet || id === activePlanetId || liveWrites > 0) return;
+    const nextSession = planetSessions[id] ?? createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: id });
+    if (!planetSessions[id]) setPlanetSessions(current => ({ ...current, [id]: nextSession }));
+    focusPlanetSelection.current = true;
+    setActivePlanetId(id); setTerritoryId(null); setTargetId(null);
+    setSelectedPeople([]); setConfirmTurn(false); setRunning(false); setCargoS(0); setCargoM(0);
+    setOrderKind(null);
+    setMessage(`${nextPlanet.name} · front ouvert. Chaque planète conserve sa progression locale indépendante.`);
+    try { window.localStorage.setItem(WAR_PLANET_SELECTION_KEY_V96, id); } catch { /* The selected front still remains available in memory. */ }
+  }
   function selectTerritory(id: string) {
-    const definition = warTerritoryV85(id);
+    const definition = warTerritoryForSimulationV96(simulation, id);
     if (!definition) return;
     setTerritoryId(id); setSelectedPeople([]); setConfirmTurn(false);
     const nextTarget = definition.neighbors.includes(targetId) ? targetId : definition.neighbors.find(neighbor => simulation.territories[neighbor].controller === "CON-F02") ?? definition.neighbors[0] ?? id;
@@ -108,15 +167,42 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     }
     setTargetId(id); setConfirmTurn(false);
     if (["attack", "move", "cession"].includes(orderKind)) setOrderKind(simulation.territories[id].controller === "CON-F02" ? "attack" : simulation.territories[id].controller === "CON-F03" ? "cession" : "move");
-    setMessage(`Destination : ${warTerritoryV85(id)!.name}. L’ordre prendra effet après confirmation du tour.`);
+    setMessage(`Destination : ${warTerritoryForSimulationV96(simulation, id)!.name}. L’ordre prendra effet après confirmation du tour.`);
   }
   function queue() {
-    const result = queueWarOrderV85(simulation, { kind: orderKind, fromId: territoryId, targetId: orderKind === "heal" ? territoryId : targetId, combatantIds: selectedPeople, cargo: { s: orderKind === "logistics" ? cargoS : 0, m: orderKind === "logistics" ? cargoM : 0, i: 0 } });
+    const result = queueWarOrderV85(simulation, draft);
     setMessage(result.message); if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
   }
+  function prepareSite(fromId: string, destination?: string, kind?: WarOrderKindV85) {
+    selectTerritory(fromId);
+    if (destination && kind !== "heal") setTargetId(destination);
+    if (kind) setOrderKind(kind);
+    setMessage(`${warTerritoryForSimulationV96(simulation, fromId)?.name} · préparez votre détachement et vérifiez l’ordre avant réservation.`);
+    window.requestAnimationFrame(() => {
+      root.current?.querySelector<HTMLElement>('[data-testid="war-order-panel-v98"]')?.scrollIntoView({ block: "start", behavior: "auto" });
+      root.current?.querySelector<HTMLSelectElement>('[data-war-order-kind-v98]')?.focus({ preventScroll: true });
+    });
+  }
+  function manageGarrisonSite(fromId: string) {
+    selectTerritory(fromId);
+    window.requestAnimationFrame(() => {
+      const details = root.current?.querySelector<HTMLDetailsElement>('[data-testid="war-garrison-v99"]');
+      if (!details) return;
+      details.open = true; details.scrollIntoView({ block: "center", behavior: "auto" });
+      details.querySelector<HTMLElement>("summary")?.focus({ preventScroll: true });
+    });
+  }
+  function changeGarrison(draft: WarGarrisonDraftV99) {
+    const live = planetSession.getSnapshot();
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return false;
+    const result = changeWarGarrisonV99(live.simulation, draft);
+    setMessage(result.message);
+    if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
+    return result.accepted;
+  }
   function restartWar() {
-    if (!window.confirm("Commencer un nouvel exercice de Korthas et remplacer uniquement son archive libre ?")) return;
-    setSimulation(createWarSimulationV85()); sessionStore.unlockWarAfterExplicitReset(); setConfirmTurn(false); setSelectedPeople([]); setMessage("Nouvel exercice de Korthas ouvert.");
+    if (!window.confirm(`Recommencer le front de ${planet.name} et remplacer uniquement son archive locale ? Les autres planètes seront conservées.`)) return;
+    setSimulation(createWarSimulationV85(undefined, planet.id)); planetSession.unlockWarAfterExplicitReset(); setTerritoryId(null); setTargetId(null); setOrderKind(null); setConfirmTurn(false); setSelectedPeople([]); setCargoS(0); setCargoM(0); setMessage(`Nouveau front de ${planet.name} ouvert.`);
   }
   function restartCanyon() {
     if (!window.confirm("Recommencer uniquement l’exercice libre du canyon ?")) return;
@@ -131,13 +217,13 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
   return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
-    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Une planète, six régions et trois factions. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
-    <div className={styles.notice}><strong>Exercices libres</strong><p>Le canyon et Korthas possèdent leurs propres unités et archives. Votre chasse conserve son matériel, ses rites et ses personnes. Un mandat de campagne demande Blooded, une coque acquise et l’arrivée réelle sur le théâtre.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Le mandat de Korthas et son arrivée restent à raccorder au voyage de campagne.</p></div>
-    <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["korthas", "Korthas · carte planétaire"], ["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
+    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente planètes, des terres proches et trois factions. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
+    <div className={styles.notice}><strong>Fronts libres · archives locales indépendantes</strong><p>Chaque planète et le canyon possèdent leurs propres unités et archives sur cet appareil. Votre chasse conserve son matériel, ses rites et ses personnes.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Ces exercices de conquête restent séparés du voyage et des récompenses de la campagne.</p></div>
+    <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["korthas", "Planètes · conquête"], ["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     {storageMessage && <p className={styles.storage} role="status">{storageMessage}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
-    {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={sessionStore.retryPersistence}>Réessayer la sauvegarde des exercices</button>}
+    {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
     <div hidden={tab !== "bible"}><ClanWarBibleV6Panel/></div>
 
     {tab === "composition" && <div>
@@ -185,28 +271,34 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     </div>}
 
     {tab === "korthas" && <div>
-      <div className={styles.sectionHeader}><div><h3>Korthas · tour {simulation.turn}</h3><p>Carte entière de conception, détachements de l’exercice et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
+      <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} onSelect={selectPlanet}/>
+      <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/36</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
       <div className={styles.objectives}><p>Région tenue : <strong>{Math.min(2, simulation.regionStability)}/2</strong> fins de tour.</p><p>Corridor des Haltes : <strong>{Math.min(2, simulation.corridorStability)}/2</strong>.</p><p>Contrôle total : <strong>{Math.min(2, simulation.totalStability)}/2</strong>.</p></div>
-      <ClanWarAtlasV95 simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
+      <p>Domination : contrôlez les 36 sites intacts et ravitaillés, avec au moins une garnison apte dans chacune des six régions, pendant deux fins de tour avec entretien payé.</p>
+      <details><summary>Conditions de la région et du corridor</summary><p>Pour tenir une région, chaque territoire de cette région doit rester intact, ravitaillé et occupé par une garnison apte pendant deux fins de tour avec entretien payé.</p><p>Sites du corridor à contrôler et garnir : {corridorIds.map(id => id.replace("CON-", "")).join(" · ")}. Maintenez leurs liaisons de ravitaillement et au moins un droit de transit actif auprès des Passes autonomes pendant deux fins de tour avec entretien payé.{planet.id === "korthas" ? " T02 doit également rester relié au ravitaillement." : ""}</p></details>
+      {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
+      <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
+      <ClanWarCommandV98 key={`command:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} onPrepare={prepareSite} onManageGarrison={manageGarrisonSite}/>
       <div className={styles.strategicCommand}>
-        <aside className={styles.orderPanel} aria-label="Commandement du territoire"><p className={styles.eyebrow}>{territory.id} · {territory.region}</p><h4>{territory.name}</h4><p>{WAR_FACTIONS_V85[simulation.territories[territoryId].controller]}</p>{simulation.territories[territoryId].controller === "CON-F01" && <><p>Stock sur place <Budget {...simulation.stocks[territoryId]}/></p><p>{warGarrisonV85(simulation, territoryId).length} garde(s) · {supplied.has(territoryId) ? "liaison ouverte" : "liaison absente"}.</p></>}<p>{territory.terrain}</p>
+        <aside className={styles.orderPanel} aria-label="Commandement du territoire" data-testid="war-order-panel-v98"><p className={styles.eyebrow}>{territory.id} · {territory.region}</p><h4>{territory.name}</h4><p>{WAR_FACTIONS_V85[simulation.territories[territoryId].controller]}</p>{simulation.territories[territoryId].controller === "CON-F01" && <><p>Stock sur place <Budget {...simulation.stocks[territoryId]}/></p><p>{warGarrisonV85(simulation, territoryId).length} garde(s) · {supplied.has(territoryId) ? "liaison ouverte" : "liaison absente"}.</p></>}<p>{territory.terrain}</p>
           {simulation.territories[territoryId].controller === "CON-F01" ? <div>
-            <label>Ordre<select value={orderKind} onChange={event => { setOrderKind(event.target.value as WarOrderKindV85); setSelectedPeople([]); }}>{Object.entries(orderLabels).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
-            {orderKind !== "heal" && <label>Route voisine<select value={targetId} onChange={event => { setTargetId(event.target.value); setConfirmTurn(false); }}>{territory.neighbors.map(id => <option value={id} key={id}>{id.replace("CON-", "")} · {warTerritoryV85(id)?.name}</option>)}</select></label>}
-            <fieldset><legend>Personnes au départ · huit maximum</legend>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" checked={selectedPeople.includes(actor.id)} onChange={event => setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id))}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.garrison ? "garde" : "mobile"}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
+            <ClanWarGarrisonV99 key={`garrison:${planet.id}:${territoryId}`} simulation={simulation} territoryId={territoryId} disabled={suspended || !pageActive || pendingWrites > 0} onChange={changeGarrison}/>
+            <label>Ordre<select data-war-order-kind-v98 value={orderKind} onChange={event => { setOrderKind(event.target.value as WarOrderKindV85); setSelectedPeople([]); setConfirmTurn(false); }}>{Object.entries(orderLabels).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
+            {orderKind !== "heal" && <label>Route voisine<select value={targetId} onChange={event => selectTarget(event.target.value)}>{territory.neighbors.map(id => <option value={id} key={id}>{id.replace("CON-", "")} · {warTerritoryForSimulationV96(simulation, id)?.name}</option>)}</select></label>}
+            <fieldset><legend>Personnes au départ · huit maximum</legend><div className={styles.actions}><button type="button" onClick={() => { setSelectedPeople(candidates.filter(actor => !reservedPeople.has(actor.id) && (orderKind === "heal" || !actor.garrison)).slice(0, 8).map(actor => actor.id)); setConfirmTurn(false); }}>{orderKind === "heal" ? "Sélectionner les blessés" : "Sélectionner les mobiles"}</button><button type="button" disabled={selectedPeople.length === 0} onClick={() => { setSelectedPeople([]); setConfirmTurn(false); }}>Tout effacer</button></div>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" disabled={reservedPeople.has(actor.id) || selectedPeople.length >= 8 && !selectedPeople.includes(actor.id)} checked={selectedPeople.includes(actor.id)} onChange={event => { setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id)); setConfirmTurn(false); }}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.garrison ? "garde" : "mobile"}{reservedPeople.has(actor.id) ? " · déjà affecté à un ordre" : ""}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
             {orderKind === "logistics" && <div className={styles.controlGrid}><label>Lots S<input type="number" min={0} max={1000} value={cargoS} onChange={event => setCargoS(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label><label>Lots M<input type="number" min={0} max={1000} value={cargoM} onChange={event => setCargoM(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label></div>}
-            <p>Réservation locale <Budget {...selectedCost}/></p><button type="button" onClick={queue}>Réserver l’ordre</button>
+            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/><button type="button" disabled={!!orderIssue || pendingWrites > 0} onClick={queue}>Réserver l’ordre</button>
           </div> : <p>{warAtlasIntelV95(simulation, territoryId).label}. Envoyez une reconnaissance depuis un territoire voisin pour actualiser le renseignement.</p>}
           <details><summary>Sites, capture et risques</summary><p>{territory.sites}</p><p>{territory.capture}</p><p>{territory.effect}</p><p>{territory.risk}</p></details>
         </aside>
-        <aside className={styles.frontGuide} aria-label="Préparer le tour"><p className={styles.eyebrow}>COMMANDER LE FRONT</p><h4>Reconnaître, engager, tenir</h4><ol><li>Sélectionnez un territoire des Haltes comme départ, puis une destination reliée par une route.</li><li>Choisissez l’ordre et jusqu’à huit personnes présentes. Les réservations utilisent le stock local.</li><li>Relisez les ordres et confirmez le tour : les Forges agissent aussi, les positions et les couleurs évoluent.</li></ol><p>Les Passes autonomes se négocient. Un droit de transit donne accès à leurs routes sans en changer le drapeau.</p><p>Conservez une garnison et une liaison de ravitaillement pour que vos sites produisent. Les personnes gardent leurs blessures et leur expérience.</p><p className={persistedWar ? styles.positive : styles.storage} role="status">{persistedWar ? "Le front libre est archivé sur cet appareil. Fermer la table des mandats conserve la partie de Korthas." : pendingWrites > 0 ? "Enregistrement du front de Korthas en cours…" : "Le front de Korthas est conservé en mémoire. La sauvegarde sur cet appareil reste à confirmer."}</p></aside>
+        <aside className={styles.frontGuide} aria-label="Préparer le tour"><p className={styles.eyebrow}>COMMANDER LE FRONT</p><h4>Reconnaître, engager, tenir</h4><ol><li>Sélectionnez un territoire des Haltes comme départ, puis une destination reliée par une route.</li><li>Choisissez l’ordre et jusqu’à huit personnes présentes. Les réservations utilisent le stock local.</li><li>Relisez les ordres et confirmez le tour : les Forges agissent aussi, les positions et les couleurs évoluent.</li></ol><p>Les Passes autonomes se négocient. Un droit de transit donne accès à leurs routes sans en changer le drapeau.</p><p>Conservez une garnison et une liaison de ravitaillement pour que vos sites produisent. Les personnes gardent leurs blessures et leur expérience.</p><p className={persistedWar ? styles.positive : styles.storage} role="status">{persistedWar ? `Le front de ${planet.name} est archivé sur cet appareil. Changer de planète conserve cette partie.` : pendingWrites > 0 ? `Enregistrement du front de ${planet.name} en cours…` : `Le front de ${planet.name} est conservé en mémoire. La sauvegarde sur cet appareil reste à confirmer.`}</p></aside>
       </div>
       <div className={styles.orderQueue}><h4>Ordres réservés</h4><p>Deux opérationnels, un logistique et un diplomatique par tour. Le mode de résolution de cet exercice est automatique.</p>{simulation.orders.length === 0 && <p>Aucun ordre. Passer un tour fera agir les Forges et paiera l’entretien.</p>}{simulation.orders.map(order => <div key={order.id}><span>{orderLabels[order.kind]} · {order.fromId.replace("CON-", "")} → {order.targetId.replace("CON-", "")} · {order.combatantIds.join(", ") || "mandat local"}</span><button type="button" onClick={() => { setSimulation(cancelWarOrderV85(simulation, order.id)); setConfirmTurn(false); }}>Retirer</button></div>)}</div>
       {!confirmTurn ? <button type="button" onClick={() => setConfirmTurn(true)}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm}><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" onClick={() => { const result = advanceWarTurnV85(simulation); setMessage(result.message); if (result.accepted) setSimulation(result.state); setConfirmTurn(false); setSelectedPeople([]); }}>Confirmer et résoudre le tour</button><button type="button" onClick={() => setConfirmTurn(false)}>Revenir aux ordres</button></div></div>}
       <details className={styles.roster}><summary>Registre individuel · aptes, blessés et mémorial</summary><div className={styles.scrollTable}><table><thead><tr><th>Personne</th><th>Lieu</th><th>État</th><th>Affectation</th><th>XP</th><th>Vétérance</th></tr></thead><tbody>{simulation.combatants.filter(actor => actor.factionId === "CON-F01").map(actor => <tr key={actor.id}><th>{actor.id}</th><td>{actor.territoryId.replace("CON-", "")}</td><td>{actor.status === "fit" ? "Apte" : actor.status === "wounded" ? "Blessé" : "Mort"}{actor.trainingUntilTurn !== null ? ` · soins jusqu’au tour ${actor.trainingUntilTurn}` : ""}</td><td>{actor.garrison ? "Garnison" : "Détachement"}</td><td>{actor.xp}</td><td>{warVeterancyV85(actor.xp).label}</td></tr>)}</tbody></table></div></details>
       <ol className={styles.log} aria-label="Journal stratégique">{simulation.reports.slice(-12).map(item => <li key={item.id}><strong>Tour {item.turn}</strong> · {item.text}</li>)}</ol>
-      <details><summary>Règles de cet exercice stratégique</summary><p>La carte, ses routes, ressources, effectifs Pxx de départ, entretien, plafonds d’XP et objectifs viennent du classeur. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>
+      <details><summary>Règles de cet exercice stratégique</summary><p>Les ressources, effectifs Pxx de départ, entretien et plafonds d’XP reprennent l’exercice de Korthas. Pour rendre la domination possible avec ses 24 personnes, les 30 fronts utilisent une garnison apte par région : cette adaptation de l’exercice ne modifie pas la fiche source du classeur. Les autres planètes sont des théâtres du projet avec leurs propres terres, noms et routes. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>
     </div>}
 
     {tab === "dossier" && <div>
