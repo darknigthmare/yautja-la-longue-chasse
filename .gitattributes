@@ -1,2 +1,5 @@
 # Preserve the two user-provided source briefs without newline conversion.
 docs/specifications/homeworld-v81/*.txt -text
+
+# Keep this archived image-generation prompt byte-identical, including its final space.
+art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-left.prompt.txt -text -whitespace

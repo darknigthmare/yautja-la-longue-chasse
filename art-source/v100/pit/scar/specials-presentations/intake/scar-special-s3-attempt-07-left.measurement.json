@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-07-left.png",
+  "sourceSha256": "a851cb6d4e5a22dcc9f5db4f2c0f25508abf74ee0f8823d7843e467c7c06c2a4",
+  "bytes": 1891246,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 3,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 358,
+      "end": 392,
+      "cut": 375
+    },
+    {
+      "axis": "y",
+      "row": 2,
+      "start": 687,
+      "end": 689,
+      "cut": 688
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 500,
+      "end": 940,
+      "cut": 720
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 595,
+      "end": 916,
+      "cut": 755
+    },
+    {
+      "axis": "x",
+      "row": 2,
+      "column": 1,
+      "start": 575,
+      "end": 1036,
+      "cut": 805
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        721,
+        376
+      ],
+      "visibleRect": [
+        273,
+        7,
+        226,
+        350
+      ],
+      "alphaPixels": 46183,
+      "borderPixels": 0,
+      "visiblePixelSha256": "b1c7fd6ee921169c120303ffdf3a0ee10fbf6a83d23c05fa9fc135a3d1e2b587",
+      "pivotCandidate": [
+        459,
+        357
+      ],
+      "visibleHeightCandidate": 350
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        720,
+        0,
+        816,
+        376
+      ],
+      "visibleRect": [
+        941,
+        44,
+        388,
+        314
+      ],
+      "alphaPixels": 51535,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d806788e0e9821303bf3e1070ddd823f2b1e96ec80fa428329244d0855e36353",
+      "pivotCandidate": [
+        585.5,
+        358
+      ],
+      "visibleHeightCandidate": 314
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        375,
+        756,
+        314
+      ],
+      "visibleRect": [
+        106,
+        393,
+        489,
+        294
+      ],
+      "alphaPixels": 54408,
+      "borderPixels": 0,
+      "visiblePixelSha256": "41a74e9c27a47551e88fd8382c28ce05716da05f9cfcc4417f7501324e036431",
+      "pivotCandidate": [
+        567,
+        312
+      ],
+      "visibleHeightCandidate": 294
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        755,
+        375,
+        781,
+        314
+      ],
+      "visibleRect": [
+        917,
+        400,
+        417,
+        285
+      ],
+      "alphaPixels": 49617,
+      "borderPixels": 0,
+      "visiblePixelSha256": "bd3c7e4d8de008e0d7f0e0efdbf5114aadd5cce5b16b31eb5d08d9f99f88bcca",
+      "pivotCandidate": [
+        550,
+        310
+      ],
+      "visibleHeightCandidate": 285
+    },
+    {
+      "index": 4,
+      "row": 2,
+      "column": 0,
+      "rect": [
+        0,
+        688,
+        806,
+        336
+      ],
+      "visibleRect": [
+        159,
+        721,
+        416,
+        303
+      ],
+      "alphaPixels": 49579,
+      "borderPixels": 15,
+      "visiblePixelSha256": "956e168b3d637375b6633a8772849b91b8662668081acb8165c725676582f18b",
+      "pivotCandidate": [
+        552,
+        336
+      ],
+      "visibleHeightCandidate": 303
+    },
+    {
+      "index": 5,
+      "row": 2,
+      "column": 1,
+      "rect": [
+        805,
+        688,
+        731,
+        336
+      ],
+      "visibleRect": [
+        1043,
+        690,
+        223,
+        334
+      ],
+      "alphaPixels": 44194,
+      "borderPixels": 1,
+      "visiblePixelSha256": "7108cec57b971390739e4e9109aaaa544fb6dafbc91408c358a7417a91a7cdfc",
+      "pivotCandidate": [
+        431,
+        336
+      ],
+      "visibleHeightCandidate": 334
+    }
+  ],
+  "issues": [
+    "Visible pixels touch the crop border in cell 3/1",
+    "Visible pixels touch the crop border in cell 3/2"
+  ]
+}

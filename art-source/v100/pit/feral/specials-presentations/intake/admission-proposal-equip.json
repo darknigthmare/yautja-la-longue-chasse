@@ -1,0 +1,489 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "M_F006_EQUIP",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-equip-v100",
+  "clipIds": [
+    "workbook.M_F006_EQUIP"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 372,
+    "pageBodyHeightPx": {
+      "feral-special-equip-a-v100": 372,
+      "feral-special-equip-b-v100": 302
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          0,
+          0,
+          520,
+          401
+        ],
+        "visibleRect": [
+          165,
+          24,
+          216,
+          372
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          519,
+          0,
+          505,
+          401
+        ],
+        "visibleRect": [
+          658,
+          26,
+          221,
+          368
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          0,
+          400,
+          527,
+          369
+        ],
+        "visibleRect": [
+          141,
+          410,
+          255,
+          357
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          526,
+          400,
+          498,
+          369
+        ],
+        "visibleRect": [
+          657,
+          405,
+          253,
+          356
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          0,
+          768,
+          513,
+          368
+        ],
+        "visibleRect": [
+          82,
+          772,
+          400,
+          361
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          512,
+          768,
+          512,
+          368
+        ],
+        "visibleRect": [
+          543,
+          771,
+          408,
+          357
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          0,
+          1135,
+          529,
+          401
+        ],
+        "visibleRect": [
+          84,
+          1138,
+          429,
+          365
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-a-v100",
+        "rect": [
+          528,
+          1135,
+          496,
+          401
+        ],
+        "visibleRect": [
+          544,
+          1138,
+          435,
+          364
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          0,
+          0,
+          520,
+          476
+        ],
+        "visibleRect": [
+          171,
+          152,
+          215,
+          302
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          519,
+          0,
+          505,
+          476
+        ],
+        "visibleRect": [
+          653,
+          150,
+          220,
+          304
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          0,
+          475,
+          533,
+          345
+        ],
+        "visibleRect": [
+          154,
+          498,
+          310,
+          311
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          532,
+          475,
+          492,
+          345
+        ],
+        "visibleRect": [
+          601,
+          503,
+          293,
+          303
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          0,
+          819,
+          531,
+          320
+        ],
+        "visibleRect": [
+          156,
+          830,
+          273,
+          294
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          530,
+          819,
+          494,
+          320
+        ],
+        "visibleRect": [
+          633,
+          835,
+          256,
+          286
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          0,
+          1138,
+          518,
+          398
+        ],
+        "visibleRect": [
+          162,
+          1153,
+          231,
+          317
+        ]
+      },
+      {
+        "pageId": "feral-special-equip-b-v100",
+        "rect": [
+          517,
+          1138,
+          507,
+          398
+        ],
+        "visibleRect": [
+          642,
+          1157,
+          233,
+          312
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-equip-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-equip-a-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-equip-b-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F006_EQUIP",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                0,
+                400,
+                527,
+                369
+              ],
+              "pivot": [
+                271,
+                367
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                0,
+                768,
+                513,
+                368
+              ],
+              "pivot": [
+                251,
+                365
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                0,
+                1135,
+                529,
+                401
+              ],
+              "pivot": [
+                253,
+                368
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                0,
+                475,
+                533,
+                345
+              ],
+              "pivot": [
+                279,
+                334
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                0,
+                819,
+                531,
+                320
+              ],
+              "pivot": [
+                277,
+                305
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                0,
+                1138,
+                518,
+                398
+              ],
+              "pivot": [
+                279,
+                332
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F006_EQUIP",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                526,
+                400,
+                498,
+                369
+              ],
+              "pivot": [
+                258,
+                361
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                512,
+                768,
+                512,
+                368
+              ],
+              "pivot": [
+                293,
+                360
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-a-v100",
+              "rect": [
+                528,
+                1135,
+                496,
+                401
+              ],
+              "pivot": [
+                278,
+                367
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                532,
+                475,
+                492,
+                345
+              ],
+              "pivot": [
+                240,
+                331
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                530,
+                819,
+                494,
+                320
+              ],
+              "pivot": [
+                233,
+                302
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "feral-special-equip-b-v100",
+              "rect": [
+                517,
+                1138,
+                507,
+                398
+              ],
+              "pivot": [
+                243,
+                331
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-action-native-draw-two-halves-connect-split-guide-stow-inspection-only",
+    "sourceSha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+      "/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0"
+    },
+    "notes": "U10. Six actual action drawings per direction, preserving the left forearm shield, fully retracted right wrist blades, two physically drawn spear halves and their hip holders. No intact third spear while halves are held. Fixed standing body references A372px/B302px and manually reviewed feet midpoint pivots. No inventory, damage, equipment state or duel binding is added. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

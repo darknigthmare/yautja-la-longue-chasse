@@ -13,7 +13,14 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.deepEqual(measured.map(identify).sort(), lifecycle.flatMap(entry => entry.atlas.clips.map(clip => identify({atlasId:entry.atlas.id,clipId:clip.id,facing:clip.facing,drawnCells:clip.frames.length,ready:true}))).sort(), 'every registered V93/V94 lifecycle clip is decoded and drawn, including each native dizzy and taunt frame');
   assert(measured.filter(clip => clip.clipId.startsWith('pit.presentation.')).every(clip => clip.presentationClockOnly && clip.physicsUnchanged));
   const report = complete.historicalThroughV92;
-  assert.equal(complete.readyPhaseClips, report.readyPhaseClips + measured.length);
+  const workbook = JSON.parse(await readFile(new URL('../app/game/data/pitWorkbookAnimationsV100.json', import.meta.url), 'utf8'));
+  const workbookIds = new Set(complete.workbookAtlasIds);
+  const workbookClips = complete.clips.filter(clip => workbookIds.has(clip.atlasId));
+  assert.deepEqual(workbookClips.map(identify).sort(), workbook.filter(entry => entry.definition && entry.combatClipIds?.length)
+    .flatMap(entry => entry.definition.atlas.clips.filter(clip => entry.combatClipIds.includes(clip.id))
+      .map(clip => identify({ atlasId: entry.atlasId, clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length, ready: true }))).sort(),
+  'every explicitly admitted V100 combat phase is decoded independently; inspection-only gestures stay outside combat');
+  assert.equal(complete.readyPhaseClips, report.readyPhaseClips + measured.length + workbookClips.length);
   assert.equal(report.status, "PASS");
   assert.deepEqual(new Set(report.historicalFighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback", "theta", "machiko-noguchi", "valkyrie"]));
   assert.ok(report.pageCount >= 11);

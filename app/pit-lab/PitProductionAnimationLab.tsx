@@ -3,6 +3,7 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
 import PitFidelityNoticeV91 from '../game/PitFidelityNoticeV91';
 import LegacyPitAnimationLab from './PitAnimationLab';
+import PitWorkbookAnimationLabV100 from './PitWorkbookAnimationLabV100';
 import {PIT_FIGHTERS,type PitFighterId} from '../game/systems/pitCombat';
 import {getPitAuthoredMovesetV92} from '../game/systems/pitAuthoredMovesetsV92';
 import {loadPitSpriteSheetAnimations,resolvePitSpriteSheetAnimation,drawPitSpriteSheetAnimation,resolvePitSpriteSheetPresentation,resolvePitSpriteSheetHold,drawPitSpriteSheetHold,type PitSpriteSheetAnimationBank} from '../game/pitSpriteSheetAnimation';
@@ -50,6 +51,7 @@ export default function PitProductionAnimationLab(){
  return <main className={styles.root} data-pit-production-lab data-fighter={fighterId} data-variant={selectedVariant??'default'} data-clip={selectedId??''} data-facing={facing} data-render-status={status} data-frame-index={ceremony?.frame.frameIndex??resolved?.resolved.frame.frameIndex??held?.frame.frameIndex??''} data-held-stance={Boolean(held)} data-lifecycle-preview={presentation?.phase??'gameplay'} data-frame-duration-ticks={clip?getPitLabFrameTicks(fighterId,clip,currentIndex,selectedVariant):''}>
   <header className={styles.header}><div><p className={styles.eyebrow}>THE PIT · REGISTRE DE COMBAT RÉEL</p><h1>Atelier d’animation</h1><p>{PIT_LAB_FIGHTER_IDS.length} combattants sélectionnables. Les dessins et leurs orientations sont lus dans le registre utilisé par les combats.</p></div><Link href="/" className={styles.back}>Retour au jeu</Link></header>
   <p className={styles.notice}>La couverture appartient uniquement à l’apparence sélectionnée. Un clip correspond parfois à une seule phase d’attaque, pas à une animation complète. Une orientation manquante reste vide ; aucun rig ou miroir ne la remplace.</p>
+  <PitWorkbookAnimationLabV100 />
   <section className={styles.notice} aria-label="Séquences de personnage" data-pit-lifecycle-coverage-v93>
    <h2>Cycle du combattant · {appearanceLabel}</h2>
    <p>Les séquences sont inspectées avec le renderer du combat. Le bilan de production distingue les dessins disponibles du cycle détaillé encore à réaliser ; ni une pose tenue, ni une mise en scène créée pour le jeu ne certifie la fidélité1:1.</p>

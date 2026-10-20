@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-s4-attempt-01b",
+  "key": "S4",
+  "part": "B",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: This is an explicitly original gameplay-derived mine-placement body study. One small flat bronze mechanical hunting device, not a canonical power. Shield folded left, wrist blades retracted, no launcher or spear.\n\nROW1: Neutral standing guard, empty hands, folded bracers; the single small device is still secured at the hip. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral straightens his knees and steps a little backward from the same device still on the ground, left hand lifting empty.\nROW3: He brings both empty hands back toward guard and looks down at the stationary device; tiny indicator is now red but no blast, no damage.\nROW4: Feral settles into a grounded guard, leaning away from the stationary armed device with both hands free; one device only.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-5f6732cc-d871-4534-a2b4-003f2e677304.png",
+  "originalSha256": "92c73e69f9aef32863fe8a60f376253bf9075439d33e5e2701ad9127d5b5d773",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

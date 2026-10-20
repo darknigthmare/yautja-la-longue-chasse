@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-clemence-attempt-01b",
+  "key": "CLEMENCE",
+  "part": "B",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Nonlethal source mercy choreography study with a neutral articulated gray training mannequin/partner stand-in. Feral holds one whole spear. The stand-in has one simple training blade; one small sealed mission case lies nearby. No injury, blood, execution or anatomical trophy. This is a scene study, not a combat sprite with a duplicated real opponent.\n\nROW1: Feral alone in neutral full-body guard with spear lowered, bracer blades retracted and left shield folded. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral bends to collect the same small sealed mission case from the ground with his free LEFT hand, spear held down in the RIGHT; stand-in stays unharmed at a distance.\nROW3: He straightens holding the sealed case and the lowered spear, looking once toward the stand-in rather than taking an anatomical trophy.\nROW4: He turns his torso slightly to leave with that case, spear safely lowered and an open space between him and the upright recovering stand-in.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-eff60c55-5085-4e9c-a4e5-dcf457b33a0a.png",
+  "originalSha256": "a282f734e18b8515df74e52af5826f2159ce084209d632f8f1a3a6362d3a27e5",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

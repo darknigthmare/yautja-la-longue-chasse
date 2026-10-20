@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/intake/009-air-jm.png",
+  "sourceSha256": "308b4ae670b553d17e3e4656a6ed408aca7094550a65dde5c96e9036165ab320",
+  "bytes": 1791007,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 4,
+  "strategy": "column-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "x",
+      "row": 1,
+      "start": 721,
+      "end": 825,
+      "cut": 773,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 0,
+      "column": 3,
+      "start": 762,
+      "end": 766,
+      "cut": 764,
+      "primaryColumn": 0
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 1,
+      "start": 310,
+      "end": 314,
+      "cut": 312,
+      "primaryColumn": 1
+    }
+  ],
+  "frames": [
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        773,
+        0,
+        763,
+        313
+      ],
+      "visibleRect": [
+        915,
+        11,
+        235,
+        299
+      ],
+      "alphaPixels": 38510,
+      "borderPixels": 0,
+      "visiblePixelSha256": "dd8719e501d483abb05818e8e924d9a9e3ec857b808e3a5b3adf433d504dd48e",
+      "pivotCandidate": [
+        183,
+        310
+      ],
+      "visibleHeightCandidate": 299
+    },
+    {
+      "index": 6,
+      "row": 3,
+      "column": 0,
+      "rect": [
+        0,
+        764,
+        774,
+        260
+      ],
+      "visibleRect": [
+        457,
+        767,
+        201,
+        245
+      ],
+      "alphaPixels": 31901,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d55e2b07c5385346ec77b553bb4697332eabdaea81a02223d4eefb8f123849db",
+      "pivotCandidate": [
+        516.5,
+        248
+      ],
+      "visibleHeightCandidate": 245
+    }
+  ],
+  "issues": [
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 2",
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 3",
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 3",
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 4"
+  ]
+}

@@ -19,6 +19,8 @@ export async function auditPitSpriteSheetProduction() {
   const lifecycleFiles = ['pitLifecycleAnimationsV93', 'pitLifecycleWolfV94', 'pitLifecycleGreybackV94', 'pitLifecycleCelticV94', 'pitLifecycleBerserkerV94'];
   const lifecycle = (await Promise.all(lifecycleFiles.map(async name => JSON.parse(await readFile(new URL('../../app/game/data/' + name + '.json', import.meta.url), 'utf8'))))).flat();
   const lifecycleAtlasIds = new Set(lifecycle.map(entry => entry.atlas.id));
+  const workbookAdmissions = JSON.parse(await readFile(new URL('../../app/game/data/pitWorkbookAnimationsV100.json', import.meta.url), 'utf8'));
+  const workbookAtlasIds = new Set(workbookAdmissions.filter(entry => entry.definition && entry.combatClipIds?.length).map(entry => entry.atlasId));
   const decoded = new Map(), pages = [], allDrawingHashes = new Set(), clipReports = [];
   for (const entry of registry) {
     const validation = api.validateHunterSpriteAtlas(entry.atlas);
@@ -179,13 +181,15 @@ export async function auditPitSpriteSheetProduction() {
           velocityY: jumpPhase === "rise" ? 6 : jumpPhase === "fall" ? -6 : 0 });
       }
       else if (clip.id !== "idle") {
-        const match = /^pit\.stand\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
+        const match = /^pit\.(stand|crouch|air)\.(light|medium|heavy|technique\.[a-z0-9-]+)\.(startup|active|recovery)$/.exec(clip.id);
         assert.ok(match, "Production audit needs a real engine-state fixture for " + clip.id);
-        const [, action, phase] = match, attack = action.startsWith('technique.') ? 'technique' : action;
+        const [, posture, action, phase] = match, attack = action.startsWith('technique.') ? 'technique' : action;
         if (attack === 'technique') assert.equal(action, 'technique.' + definition.technique.id);
         const timing = definition.attacks[attack];
         const frame = phase === "startup" ? 0 : phase === "active" ? timing.startup : timing.startup + timing.active;
-        Object.assign(fighter, { phase, action: { kind: "attack", attack, frame, connected: false } });
+        Object.assign(fighter, { crouching: posture === 'crouch', grounded: posture !== 'air',
+          y: posture === 'air' ? 40 : 0, velocityY: posture === 'air' ? 1 : 0,
+          phase, action: { kind: "attack", attack, frame, connected: false } });
       }
       const resolved = api.resolvePitSpriteSheetAnimation(bank, fighter, { simulationFrame: 0, combat });
       assert.ok(resolved, entry.fighterId + " " + clip.id + " " + clip.facing);
@@ -266,9 +270,11 @@ export async function auditPitSpriteSheetProduction() {
   const complete = summarize(registry, pages, clipReports);
   assert.equal(complete.distinctDrawings, allDrawingHashes.size);
   assert.equal(complete.readyPhaseClips, registry.reduce((count, entry) => count + entry.atlas.clips.length, 0));
-  const legacy = registry.filter(entry => !lifecycleAtlasIds.has(entry.atlas.id));
+  // Freeze the explicitly named historical baseline at V92. The complete
+  // audit above still decodes and draws every later production definition.
+  const legacy = registry.filter(entry => !lifecycleAtlasIds.has(entry.atlas.id) && !workbookAtlasIds.has(entry.atlas.id));
   const legacyIds = new Set(legacy.map(entry => entry.atlas.id));
   const legacyPages = pages.filter(page => legacy.some(entry => entry.fighterId === page.fighterId && (entry.variantId ?? null) === page.variantId && entry.atlas.pages.some(candidate => candidate.id === page.pageId)));
-  return { ...complete, lifecycleAtlasIds: [...lifecycleAtlasIds],
+  return { ...complete, lifecycleAtlasIds: [...lifecycleAtlasIds], workbookAtlasIds: [...workbookAtlasIds],
     historicalThroughV92: summarize(legacy, legacyPages, clipReports.filter(clip => legacyIds.has(clip.atlasId))) };
 }

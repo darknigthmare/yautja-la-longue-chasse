@@ -1,0 +1,12 @@
+{
+  "actionId": "M_F006_S2",
+  "attempt": 5,
+  "part": "A",
+  "prompt": "Produce ONE sparse PORTRAIT RGBA sprite-sheet page1024x1536, strictly TWO COLUMNS and FOUR ROWS, exactly EIGHT small full-body Feral Hunter drawings. Use the attached images only for his identity, anatomy and gear design; ignore their backgrounds. New hand-drawn articulated frames, NOT horizontal mirrors. Accurate lean spotted ochre Feral Predator, black dreads, ivory bone mask, dark segmented loincloth, bronze forearm bracers and wrapped ankles. No shoulder cannon.\n\nGRID: 2columns×4rows. Every invisible cell512px wide×384px high. Draw each body only180px tall, with its feet near the center-lower area of its own cell. Leave at least80px EMPTY alpha0 above and below each body. Total silhouette width including shield below300px. Huge entirely transparent cross-shaped gutters separate every figure. Each figure should occupy only about a quarter of its cell. Do not fill the canvas with large characters.\n\nLEFT COLUMN is Feral facing RIGHT with front/right-side view. RIGHT COLUMN independently shows Feral facing LEFT with back/left-side view; same stage on each row, gear on correct anatomical limbs rather than a mirror. The mechanical segmented folding shield is attached to the anatomical LEFT forearm only; right forearm has blades retracted throughout. Preserve asymmetric source costume.\n\nROW1: neutral full-body calibration guard, shield fully folded into left bracer, hands and complete feet visible.\nROW2: lift the left forearm and deploy the fan segments halfway, clearly different bent arm and knee.\nROW3: shield fully open in front of the left forearm in directional guard; lowered center of gravity.\nROW4: short forward shield-edge bash, hips and shoulder extending, supporting knee bent, right arm naturally recoiling.\n\nOnly actual skin, dreadlocks, mask, clothing, bracers and shield pixels. Transparent ALPHA ZERO background: NO brown wash, NO painted panel, NO aura, NO glow, NO shadow, NO floor, NO smoke, no light emission outside the character. Crisp unblurred contours. No text, no grid lines or captions. Each of the8figures must be completely isolated with generous truly empty space.",
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png"
+  ],
+  "transparent_background": true
+}

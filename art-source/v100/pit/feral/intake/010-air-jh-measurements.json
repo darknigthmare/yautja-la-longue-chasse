@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/intake/010-air-jh.png",
+  "sourceSha256": "a414a4d345a7bd8af40a9ce1557c2d5f036aa44502c9d961fba076d4fadeaf1e",
+  "bytes": 1756811,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 4,
+  "strategy": "column-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "x",
+      "row": 1,
+      "start": 652,
+      "end": 920,
+      "cut": 786,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 1,
+      "start": 299,
+      "end": 303,
+      "cut": 301,
+      "primaryColumn": 1
+    }
+  ],
+  "frames": [
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        786,
+        0,
+        750,
+        302
+      ],
+      "visibleRect": [
+        961,
+        10,
+        237,
+        289
+      ],
+      "alphaPixels": 37790,
+      "borderPixels": 0,
+      "visiblePixelSha256": "0cd749349859ef82d8fd6df01f7a1b5cecbae6295611934b36f2c3fd9f7e461d",
+      "pivotCandidate": [
+        221.5,
+        299
+      ],
+      "visibleHeightCandidate": 289
+    }
+  ],
+  "issues": [
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 2",
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 3",
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 4",
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 3",
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 4"
+  ]
+}

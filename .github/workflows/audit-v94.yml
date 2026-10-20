@@ -16,6 +16,11 @@ on:
       - 'docs/THE_PIT*.xlsx'
       - 'docs/YAUTJA_V99_SUIVI.xlsx'
       - 'docs/v99-*'
+      - 'docs/YAUTJA_V100_SUIVI.xlsx'
+      - 'docs/v100-*'
+      - 'docs/v56-excel-priorities.json'
+      - 'art-source/v100/**'
+      - 'public/game/sprites/v100/**'
       - 'docs/v63-stage-open-work.json'
       - 'docs/v63-workbook-roster-audit.json'
       - '.openai/hosting.json'
@@ -106,6 +111,13 @@ jobs:
             /docs/v99-workstreams-source.json
             /docs/v99-workstreams.json
             /docs/YAUTJA_V99_SUIVI.xlsx
+            /docs/YAUTJA_V100_SUIVI.xlsx
+            /docs/v100-*
+            /docs/v56-excel-priorities.json
+            /art-source/v100/
+            /public/game/sprites/v100/pit/
+            /public/game/sprites/v59/pit/feral/
+            /public/game/sprites/v34/pit/scar/scar-heavy-v34.png
             /public/game/assets/v2/environments/jungle/layers/far-lake.webp
             /public/game/props/v4/root-platform.png
             /public/game/props/v4/expedition-platform.png
@@ -153,13 +165,20 @@ jobs:
           app/game/HomeworldPassageV67.tsx app/game/HomeworldRegionV68.tsx
           app/game/HomeworldSpatialCodex.tsx app/game/HomeworldWayfindingV75.tsx
           app/game/HomeworldWorldMapV77.tsx app/game/PhysicalShipDeck.tsx
+          app/game/HomeworldWorldSceneV77.tsx app/game/HomeworldStreetConversationV100.tsx
+          app/game/systems/homeworldStreetContactsV100.ts app/game/systems/homeworldResidentVisibilityV100.ts
           app/game/PitCanvas.tsx app/game/ShipHub.tsx app/game/TrophyWorkshop.tsx
+          app/game/PitSelectionFlow.tsx app/game/PitWorkbookAnimationViewerV100.tsx
+          app/game/pitWorkbookAnimationV100.ts app/game/pitWorkbookCombatRegistryV100.ts
+          app/game/pitSpriteSheetAnimation.ts app/game/pitSpriteSheetRegistry.ts
+          app/pit-lab/PitWorkbookAnimationLabV100.tsx app/pit-lab/PitProductionAnimationLab.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
           app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
           app/game/systems/clanWarCoastlinesV97.ts
           app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
           app/game/ClanWarGarrisonV99.tsx
+          app/game/ClanWarEvacuationV100.tsx app/game/systems/clanWarEvacuationV100.ts
           app/game/GameReserveV66.tsx app/game/GameReserveTacticalV98.tsx
           app/game/gameReserveV66Rendering.ts
           app/game/systems/gameReserveV66.ts app/game/systems/gameReserveTacticalV98.ts
@@ -235,12 +254,12 @@ jobs:
           tests/clan-war-planets-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
           tests/clan-war-coastlines-v97.test.mjs
           tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs
-      - name: Exercise V99 garrisons, Preserve supply and Homeworld routes with V98 regressions
+      - name: Exercise V100 native animation studies, local conversations and evacuation with V98-V99 regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: npm run test:worlds:v99
-      - name: Verify reproducible V99 Excel follow-up from the real historical workbooks
+        run: npm run test:worlds:v100
+      - name: Verify reproducible V100 follow-up while preserving the historical V99 workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v99.mjs --check
+        run: node scripts/build-excel-followup-v100.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

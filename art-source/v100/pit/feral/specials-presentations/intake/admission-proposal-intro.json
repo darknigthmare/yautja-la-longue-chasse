@@ -1,0 +1,515 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_INTRO",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-intro-v100",
+  "clipIds": [
+    "workbook.CIN_F006_INTRO"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 472,
+    "pageBodyHeightPx": {
+      "feral-special-intro-a-right-v100": 472,
+      "feral-special-intro-a-left-v100": 484,
+      "feral-special-intro-b-right-v100": 500,
+      "feral-special-intro-b-left-v100": 463
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-intro-a-right-v100",
+        "rect": [
+          0,
+          0,
+          522,
+          789
+        ],
+        "visibleRect": [
+          69,
+          173,
+          383,
+          475
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-right-v100",
+        "rect": [
+          521,
+          0,
+          503,
+          789
+        ],
+        "visibleRect": [
+          591,
+          222,
+          371,
+          425
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-right-v100",
+        "rect": [
+          0,
+          788,
+          521,
+          748
+        ],
+        "visibleRect": [
+          67,
+          930,
+          412,
+          426
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-right-v100",
+        "rect": [
+          520,
+          788,
+          504,
+          748
+        ],
+        "visibleRect": [
+          562,
+          946,
+          416,
+          410
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-left-v100",
+        "rect": [
+          0,
+          0,
+          519,
+          790
+        ],
+        "visibleRect": [
+          64,
+          179,
+          405,
+          492
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-left-v100",
+        "rect": [
+          518,
+          0,
+          506,
+          790
+        ],
+        "visibleRect": [
+          569,
+          207,
+          402,
+          464
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-left-v100",
+        "rect": [
+          0,
+          789,
+          523,
+          747
+        ],
+        "visibleRect": [
+          57,
+          909,
+          424,
+          459
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-a-left-v100",
+        "rect": [
+          522,
+          789,
+          502,
+          747
+        ],
+        "visibleRect": [
+          564,
+          914,
+          420,
+          457
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-right-v100",
+        "rect": [
+          0,
+          0,
+          541,
+          791
+        ],
+        "visibleRect": [
+          99,
+          151,
+          390,
+          505
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-right-v100",
+        "rect": [
+          540,
+          0,
+          484,
+          791
+        ],
+        "visibleRect": [
+          592,
+          206,
+          394,
+          449
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-right-v100",
+        "rect": [
+          0,
+          790,
+          561,
+          746
+        ],
+        "visibleRect": [
+          82,
+          926,
+          437,
+          456
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-right-v100",
+        "rect": [
+          560,
+          790,
+          464,
+          746
+        ],
+        "visibleRect": [
+          602,
+          930,
+          384,
+          453
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-left-v100",
+        "rect": [
+          0,
+          0,
+          497,
+          779
+        ],
+        "visibleRect": [
+          48,
+          178,
+          384,
+          469
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-left-v100",
+        "rect": [
+          496,
+          0,
+          528,
+          779
+        ],
+        "visibleRect": [
+          562,
+          209,
+          408,
+          437
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-left-v100",
+        "rect": [
+          0,
+          778,
+          519,
+          758
+        ],
+        "visibleRect": [
+          48,
+          914,
+          426,
+          442
+        ]
+      },
+      {
+        "pageId": "feral-special-intro-b-left-v100",
+        "rect": [
+          518,
+          778,
+          506,
+          758
+        ],
+        "visibleRect": [
+          563,
+          911,
+          416,
+          443
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-intro-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-intro-a-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-intro-a-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-intro-b-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-intro-b-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_INTRO",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-intro-a-right-v100",
+              "rect": [
+                521,
+                0,
+                503,
+                789
+              ],
+              "pivot": [
+                234,
+                647
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-a-right-v100",
+              "rect": [
+                0,
+                788,
+                521,
+                748
+              ],
+              "pivot": [
+                241,
+                568
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-a-right-v100",
+              "rect": [
+                520,
+                788,
+                504,
+                748
+              ],
+              "pivot": [
+                225,
+                568
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-intro-b-right-v100",
+              "rect": [
+                540,
+                0,
+                484,
+                791
+              ],
+              "pivot": [
+                218,
+                655
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-b-right-v100",
+              "rect": [
+                0,
+                790,
+                561,
+                746
+              ],
+              "pivot": [
+                277,
+                592
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-b-right-v100",
+              "rect": [
+                560,
+                790,
+                464,
+                746
+              ],
+              "pivot": [
+                184,
+                593
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_INTRO",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-intro-a-left-v100",
+              "rect": [
+                518,
+                0,
+                506,
+                790
+              ],
+              "pivot": [
+                304,
+                671
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-a-left-v100",
+              "rect": [
+                0,
+                789,
+                523,
+                747
+              ],
+              "pivot": [
+                317,
+                579
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-a-left-v100",
+              "rect": [
+                522,
+                789,
+                502,
+                747
+              ],
+              "pivot": [
+                288,
+                582
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-intro-b-left-v100",
+              "rect": [
+                496,
+                0,
+                528,
+                779
+              ],
+              "pivot": [
+                330,
+                646
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-b-left-v100",
+              "rect": [
+                0,
+                778,
+                519,
+                758
+              ],
+              "pivot": [
+                316,
+                578
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-intro-b-left-v100",
+              "rect": [
+                518,
+                778,
+                506,
+                758
+              ],
+              "pivot": [
+                290,
+                576
+              ],
+              "durationTicks": 40
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-shield-deploy-mask-aim-spear-split-body-study-only",
+    "sourceSha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+      "/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+      "/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+      "/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0"
+    },
+    "notes": "C10. Six actual authored action stages each facing: left shield starts deployment, full guard opens, mask fixes a point, two-hand grip, torsion, complete spear separation. Independent final QA opened all four originals and approved actual1..3; left B2 and B3 preserve two distinct sections, no rejoined third staff. Shield remains anatomical LEFT; intact spear begins RIGHT. Fixed mask-crown-to-Feral-soles references exclude hair and weapon tips. Native spacing edits preserve complete poses and true transparent gutters. No intro collision, three-plan staging, equipment inventory or sound mechanic is certified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

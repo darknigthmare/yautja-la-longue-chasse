@@ -1,0 +1,44 @@
+{
+  "id": "scar-5h-right-alpha",
+  "row": "TOP",
+  "facing": "RIGHT",
+  "poseorder": "upper-left: the original TOP row first pose, preparatory right wrist drawn back; upper-right: the original TOP row second pose, right wrist blades heavy forward strike; lower-left: the original TOP row third pose, blades lowered recovery; lower-right: the original TOP row fourth pose, settled guard.",
+  "prompt": "Native transparent alpha reconstruction of the supplied Scar sprite reference, ONLY the TOP row (character facing RIGHT). Remove the bright magenta background and every purple/magenta fringe, create a genuinely transparent background with clean dark natural antialiased contours. Preserve the exact same Scar film armour, silver biomask with red forehead stripe, speckled yellow skin, black dreadlocks with gold rings, right forearm wrist blades, combistick always held in the LEFT hand, shoulder cannon, hip disc holstered because this action never draws it. Preserve the original pose silhouettes and its physical hand ownership. Do not mirror, swap arms, add equipment, create effects, or add limbs. Produce exactly FOUR complete original anatomical figures in an evenly spaced TWO columns by TWO rows sheet. Every figure faces RIGHT. Reorder only the selected source row as follows: upper-left: the original TOP row first pose, preparatory right wrist drawn back; upper-right: the original TOP row second pose, right wrist blades heavy forward strike; lower-left: the original TOP row third pose, blades lowered recovery; lower-right: the original TOP row fourth pose, settled guard. This source action is step forward then heavy contact wrist blade strike and recover. Keep consistent figure scale, actual body from mask to soles 330-370px on this 1536x1024 sheet, generous transparent cell gutters at least 55 pixels around ALL weapons including spear tip, feet, elbow and dreadlocks, complete figures with no cutoffs or touching cell borders. No text, no labels, no grid, no shadows, no glow, no magenta. This is the SAME supplied character and SAME four poses only, now clean native alpha, not a redesigned outfit. The other source row must not appear. Transparent background.",
+  "sourcePath": "/workspace/generated_images/exec-376ab264-c9bc-49fb-ae71-38a60a3b5ae4.png",
+  "references": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/scar/scar-heavy-v34.png"
+  ],
+  "tool": "image_gen",
+  "cpuPixelEditing": false,
+  "decision": "PENDING_CROP_AND_ALPHA_REVIEW",
+  "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+  "bytes": 1868855,
+  "width": 1536,
+  "height": 1024,
+  "alphaReview": {
+    "noiseFloor": 2,
+    "visiblePixels": 310537,
+    "borderPixels": 0,
+    "magentaPixels": 0
+  },
+  "independentDecision": "FAVORABLE_VISUAL_REVIEW_PENDING_ADMISSION",
+  "sourceCell": "05_MOVES_PROPOSES!F7",
+  "actionId": "M_F003_5H",
+  "scope": "BODY_STUDY_ONLY",
+  "measurement": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha-measurement.json",
+  "independentVisualReviews": [
+    "root: favorable",
+    "release_review_v100: favorable",
+    "animation_engine_v100: favorable"
+  ],
+  "bodyReferenceCandidate": {
+    "frameIndex": 3,
+    "headTopY": 550,
+    "soleY": 997,
+    "bodyHeightPx": 447,
+    "status": "ENGINE_MANUAL_APPROXIMATE_REQUIRES_FINAL_ROI"
+  },
+  "original": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha-original.png",
+  "sourceSha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+  "promptRecord": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha.prompt.json"
+}

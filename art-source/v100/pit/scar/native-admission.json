@@ -1,0 +1,4346 @@
+{
+  "schemaVersion": 1,
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "scope": "Only source gestures listed below. No new mechanics or full workbook completion inferred.",
+  "pages": [
+    {
+      "id": "scar-workbook-5L-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!D7",
+      "sourceId": "M_F003_5L",
+      "original": "art-source/v100/pit/scar/intake/002-scar-5L-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 422,
+      "bodyReference": {
+        "frameIndex": 2,
+        "headRoi": [
+          1230,
+          50,
+          170,
+          120
+        ],
+        "headTopY": 68,
+        "soleY": 490,
+        "meaning": "Standing recovery guard in the same page; excludes spear tip"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/002-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            474,
+            503
+          ],
+          "pivot": [
+            238,
+            490
+          ],
+          "visibleRect": [
+            84,
+            14,
+            313,
+            476
+          ],
+          "visiblePixelSha256": "13a4d2724845c51e7dfdc95cb92b110f3c434c8cdcc9f0191bbaff92aa305fdf",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              87,
+              389
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            474,
+            0,
+            600,
+            503
+          ],
+          "pivot": [
+            255.5,
+            490
+          ],
+          "visibleRect": [
+            552,
+            19,
+            458,
+            471
+          ],
+          "visiblePixelSha256": "f4ba5f6b35c03ea81794e0eb0124e825035e69e72691249c6b75a07291439700",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              555,
+              904
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            1074,
+            0,
+            462,
+            503
+          ],
+          "pivot": [
+            221.5,
+            490
+          ],
+          "visibleRect": [
+            1139,
+            11,
+            315,
+            479
+          ],
+          "visiblePixelSha256": "24fe47748abf934bd09adaf00c479acfc751b89b0e7264108d886e15e7078661",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1141,
+              1450
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            503,
+            490,
+            521
+          ],
+          "pivot": [
+            262.5,
+            479
+          ],
+          "visibleRect": [
+            86,
+            537,
+            346,
+            445
+          ],
+          "visiblePixelSha256": "6ecb12e32fda01aca381f525346f1f1fbdecd6f54fb5733c0beb047eb6d7d2c6",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              95,
+              430
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            490,
+            503,
+            616,
+            521
+          ],
+          "pivot": [
+            359,
+            477
+          ],
+          "visibleRect": [
+            549,
+            533,
+            478,
+            447
+          ],
+          "visiblePixelSha256": "9a384a1359ceb885255852408e1e78d9dc60fff38d9005c8c6d50f09360f4da4",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              674,
+              1024
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 5,
+          "rect": [
+            1106,
+            503,
+            430,
+            521
+          ],
+          "pivot": [
+            234.5,
+            477
+          ],
+          "visibleRect": [
+            1185,
+            516,
+            314,
+            464
+          ],
+          "visiblePixelSha256": "5f4dd23e42e542342581ae1edcb5e835bf8ea7aefc3d002d18d90d15a1fcaa56",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1186,
+              1495
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "phaseFrames": {
+            "startup": [
+              0
+            ],
+            "active": [
+              1
+            ],
+            "recovery": [
+              2
+            ]
+          }
+        },
+        {
+          "facing": "left",
+          "frames": [
+            3,
+            4,
+            5
+          ],
+          "phaseFrames": {
+            "startup": [
+              3
+            ],
+            "active": [
+              4
+            ],
+            "recovery": [
+              5
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Actual short jab, complete feet, continuous left-hand staff and right forearm blades, distinct recovery"
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json",
+      "rendererReview": {
+        "reviewer": "animation_engine_v100",
+        "status": "reported-pass",
+        "scope": "Native rendering and real historical phase timing; source-side record of engine report, not final frozen-build QA"
+      }
+    },
+    {
+      "id": "scar-workbook-2L-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!G7",
+      "sourceId": "M_F003_2L",
+      "original": "art-source/v100/pit/scar/intake/005-scar-2L-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 258,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          350,
+          20,
+          115,
+          110
+        ],
+        "headTopY": 32,
+        "soleY": 290,
+        "meaning": "Explicit standing guard reference row, never magnify the crouched poses"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/005-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            768,
+            295
+          ],
+          "pivot": [
+            396,
+            290
+          ],
+          "visibleRect": [
+            310,
+            6,
+            188,
+            284
+          ],
+          "visiblePixelSha256": "6eb8a0e42773ba28f1ab4e0fd490ab53cbd8712efa382bbd598d6d27d6427301",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              313,
+              479
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            767,
+            0,
+            769,
+            295
+          ],
+          "pivot": [
+            369.5,
+            289
+          ],
+          "visibleRect": [
+            1035,
+            3,
+            194,
+            286
+          ],
+          "visiblePixelSha256": "34b71498d86cd498542a783c05c0f1ca16e6b72e90bc6c8b4109f814884defe8",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1048,
+              1225
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            294,
+            770,
+            243
+          ],
+          "pivot": [
+            406,
+            236
+          ],
+          "visibleRect": [
+            311,
+            299,
+            214,
+            231
+          ],
+          "visiblePixelSha256": "53973e808559d3012c43215eed250246ad97f7e9e5a261fbd090ec1a0d7d2fa7",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              314,
+              498
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            769,
+            294,
+            767,
+            243
+          ],
+          "pivot": [
+            362.5,
+            236
+          ],
+          "visibleRect": [
+            1015,
+            304,
+            214,
+            226
+          ],
+          "visiblePixelSha256": "82420ce7a9dc8fed32dc211e4d1f8946e44e9659936d579ed015a574657a9d6d",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1037,
+              1226
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            0,
+            536,
+            783,
+            242
+          ],
+          "pivot": [
+            402.5,
+            233
+          ],
+          "visibleRect": [
+            295,
+            545,
+            377,
+            224
+          ],
+          "visiblePixelSha256": "e410e17b10319a78832e439062f163465f4f76b84a1aebf49462f8a2b8f8dbfa",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              298,
+              507
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 5,
+          "rect": [
+            782,
+            536,
+            754,
+            242
+          ],
+          "pivot": [
+            352.5,
+            234
+          ],
+          "visibleRect": [
+            893,
+            544,
+            350,
+            226
+          ],
+          "visiblePixelSha256": "b1aacb3b36ffbeb62099ac37a95c93a8b121d73ee96bede4c43d3113e073e2e5",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1030,
+              1239
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 6,
+          "rect": [
+            0,
+            777,
+            763,
+            247
+          ],
+          "pivot": [
+            411.5,
+            228
+          ],
+          "visibleRect": [
+            317,
+            785,
+            208,
+            220
+          ],
+          "visiblePixelSha256": "5eed71e20f86fb2fb902763836133b96dea84742afe511427904104d3deb1a39",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              319,
+              504
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 7,
+          "rect": [
+            762,
+            777,
+            774,
+            247
+          ],
+          "pivot": [
+            363,
+            228
+          ],
+          "visibleRect": [
+            1000,
+            785,
+            223,
+            220
+          ],
+          "visiblePixelSha256": "b6bb23b3f10c5f9f97a7d0d9e948132db9498508ae94ebdb1ea0a35767485312",
+          "pivotReview": {
+            "method": "Both foot silhouettes in the last36source rows, alpha>=128; sole at last alpha>2 plus1",
+            "footSpan": [
+              1030,
+              1220
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            2,
+            4,
+            6
+          ],
+          "phaseFrames": {
+            "startup": [
+              2
+            ],
+            "active": [
+              4
+            ],
+            "recovery": [
+              6
+            ]
+          }
+        },
+        {
+          "facing": "left",
+          "frames": [
+            3,
+            5,
+            7
+          ],
+          "phaseFrames": {
+            "startup": [
+              3
+            ],
+            "active": [
+              5
+            ],
+            "recovery": [
+              7
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0,
+        1
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Actual crouching low strike, distinct lowering/contact/crouched return, standing body scale preserved"
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json",
+      "rendererReview": {
+        "reviewer": "animation_engine_v100",
+        "status": "reported-pass",
+        "scope": "Native rendering and real historical phase timing; source-side record of engine report, not final frozen-build QA"
+      }
+    },
+    {
+      "id": "scar-workbook-5M-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!E7",
+      "sourceId": "M_F003_5M",
+      "original": "art-source/v100/pit/scar/intake/009-scar-5M-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 423,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          430,
+          40,
+          125,
+          145
+        ],
+        "headTopY": 64,
+        "soleY": 487,
+        "meaning": "Upright same-page BODY reference only; facing reference is not counted as an action drawing"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/009-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            777,
+            503
+          ],
+          "pivot": [
+            488.5,
+            487
+          ],
+          "visibleRect": [
+            353,
+            28,
+            270,
+            459
+          ],
+          "visiblePixelSha256": "d31e123afbb687cf83ba89fc004d80b606d66291930d9ed9c7730a6579736a67",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              371,
+              606
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            776,
+            0,
+            760,
+            503
+          ],
+          "pivot": [
+            319.0,
+            486
+          ],
+          "visibleRect": [
+            931,
+            46,
+            341,
+            440
+          ],
+          "visiblePixelSha256": "80ee20040d7c5b7463938aad6e254b78ee30e206219633db10628cc12adcfbc9",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              934,
+              1256
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            502,
+            883,
+            522
+          ],
+          "pivot": [
+            581.5,
+            466
+          ],
+          "visibleRect": [
+            390,
+            533,
+            435,
+            435
+          ],
+          "visiblePixelSha256": "9fe71cdd13af6a89eec6f79ea9cdf69c4f4787ad7f8f444e8053eb356f2f5fb4",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              393,
+              770
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            882,
+            502,
+            654,
+            522
+          ],
+          "pivot": [
+            224.0,
+            468
+          ],
+          "visibleRect": [
+            941,
+            519,
+            331,
+            451
+          ],
+          "visiblePixelSha256": "879b0e14aa06fbaa71c6eade6a7b4c0ad7c1f89715079787f965d71699977479",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              944,
+              1268
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Distinct torso rotation and gauntlet backhand; no projectile. Left-page neutral reference faces right and is excluded from the clip."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-5M-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!E7",
+      "sourceId": "M_F003_5M",
+      "original": "art-source/v100/pit/scar/intake/010-scar-5M-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 424,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          390,
+          40,
+          125,
+          145
+        ],
+        "headTopY": 68,
+        "soleY": 492,
+        "meaning": "Upright same-page BODY reference only; facing reference is not counted as an action drawing"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/010-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            760,
+            506
+          ],
+          "pivot": [
+            435.0,
+            492
+          ],
+          "visibleRect": [
+            301,
+            18,
+            261,
+            474
+          ],
+          "visiblePixelSha256": "e68c9b9c79a4b2532b9380a54b6ea010edc2e13a69347442424ff7af7b745356",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              317,
+              553
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            759,
+            0,
+            777,
+            506
+          ],
+          "pivot": [
+            358.5,
+            494
+          ],
+          "visibleRect": [
+            957,
+            30,
+            322,
+            464
+          ],
+          "visiblePixelSha256": "e1c1e21b0cad265bd627fb1db44c1c148a9d0138b2872457faa814a1b4bee79f",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              958,
+              1277
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            505,
+            793,
+            519
+          ],
+          "pivot": [
+            447.0,
+            479
+          ],
+          "visibleRect": [
+            185,
+            517,
+            438,
+            467
+          ],
+          "visiblePixelSha256": "47ccefb285be7cc36df0e4385713b0d104463c5bf43be9191aab121283560a42",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              274,
+              620
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            792,
+            505,
+            744,
+            519
+          ],
+          "pivot": [
+            321.0,
+            480
+          ],
+          "visibleRect": [
+            963,
+            518,
+            300,
+            467
+          ],
+          "visiblePixelSha256": "93dbb21ebf3a235426c297694ce591d950718658584111532339adbcfa45db1c",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              965,
+              1261
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Distinct torso rotation and gauntlet backhand; no projectile. Left-page neutral reference faces right and is excluded from the clip."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-2M-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!H7",
+      "sourceId": "M_F003_2M",
+      "original": "art-source/v100/pit/scar/intake/011-scar-2M-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 432,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          445,
+          40,
+          120,
+          150
+        ],
+        "headTopY": 71,
+        "soleY": 503,
+        "meaning": "Upright same-page BODY reference only; facing reference is not counted as an action drawing"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/011-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            807,
+            525
+          ],
+          "pivot": [
+            478.5,
+            503
+          ],
+          "visibleRect": [
+            342,
+            34,
+            280,
+            469
+          ],
+          "visiblePixelSha256": "b0592cb59d28b072b68095d6bcfeb00261377ba1d3783132234dfe8e458f0f02",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              362,
+              595
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            806,
+            0,
+            730,
+            525
+          ],
+          "pivot": [
+            301.0,
+            510
+          ],
+          "visibleRect": [
+            992,
+            91,
+            317,
+            419
+          ],
+          "visiblePixelSha256": "53f3f0829e981bee31b76208ba69c8f2b1040fd93bcfa4cd841d558ad7df0619",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              994,
+              1220
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            524,
+            912,
+            500
+          ],
+          "pivot": [
+            385,
+            428
+          ],
+          "visibleRect": [
+            315,
+            552,
+            484,
+            400
+          ],
+          "visiblePixelSha256": "5d45b267278877639389d1caaaaa52d3c9b0db13a8222415bf867118bcf4fe17",
+          "pivotReview": {
+            "method": "Supporting foot only, last 8 sole rows alpha>=128; excludes sweeping raised foot",
+            "supportGlobalX": 385,
+            "proof": "art-source/v100/pit/scar/2m-support-pivot-review.json",
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            911,
+            524,
+            625,
+            500
+          ],
+          "pivot": [
+            213.5,
+            436
+          ],
+          "visibleRect": [
+            1025,
+            539,
+            300,
+            421
+          ],
+          "visiblePixelSha256": "5da9177434608811541b26d8d5a2e105548dc978435a7ddf018c42f1c113387f",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              1028,
+              1221
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Distinct low leg sweep, braced crouched support and return; no axial staff thrust."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-2M-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!H7",
+      "sourceId": "M_F003_2M",
+      "original": "art-source/v100/pit/scar/intake/012-scar-2M-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 445,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          440,
+          35,
+          140,
+          155
+        ],
+        "headTopY": 51,
+        "soleY": 496,
+        "meaning": "Upright same-page BODY reference only; facing reference is not counted as an action drawing"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/012-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            831,
+            519
+          ],
+          "pivot": [
+            498.0,
+            496
+          ],
+          "visibleRect": [
+            354,
+            20,
+            305,
+            476
+          ],
+          "visiblePixelSha256": "bb420278a05b84560e4ceae01501becf7a79fbedd5d825a903e27b36c2f1b1b5",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              365,
+              631
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            830,
+            0,
+            706,
+            519
+          ],
+          "pivot": [
+            323.0,
+            491
+          ],
+          "visibleRect": [
+            1002,
+            66,
+            302,
+            425
+          ],
+          "visiblePixelSha256": "9f0d6b70b403f402d404c94ec2b332ae1b4bfa903185cd5b1c36c7519cb08285",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              1037,
+              1269
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            518,
+            843,
+            506
+          ],
+          "pivot": [
+            629.5,
+            438
+          ],
+          "visibleRect": [
+            131,
+            541,
+            538,
+            415
+          ],
+          "visiblePixelSha256": "608c1ac43a8a66c9ae1c82df5904815d63a209cd1b497e2bd5aebfadd5193a7b",
+          "pivotReview": {
+            "method": "Supporting foot only, last 8 sole rows alpha>=128; excludes sweeping raised foot",
+            "supportGlobalX": 629.5,
+            "proof": "art-source/v100/pit/scar/2m-support-pivot-review.json",
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            842,
+            518,
+            694,
+            506
+          ],
+          "pivot": [
+            330.0,
+            441
+          ],
+          "visibleRect": [
+            1017,
+            542,
+            307,
+            417
+          ],
+          "visiblePixelSha256": "1db2d23626d6764e170a9b8ba2fed30c565260675b2326eb431590b1eb39f606",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              1051,
+              1293
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Distinct low leg sweep, braced crouched support and return; no axial staff thrust."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-2H-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!I7",
+      "sourceId": "M_F003_2H",
+      "original": "art-source/v100/pit/scar/intake/013-scar-2H-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 413,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          395,
+          40,
+          130,
+          150
+        ],
+        "headTopY": 65,
+        "soleY": 478,
+        "meaning": "Upright same-page BODY reference only; facing reference is not counted as an action drawing"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/013-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            747,
+            491
+          ],
+          "pivot": [
+            438.5,
+            478
+          ],
+          "visibleRect": [
+            305,
+            29,
+            257,
+            449
+          ],
+          "visiblePixelSha256": "98a5e1f47fde0376446bcd6fe6e6fd72db994fda67b0efa687c55d86cb29ff30",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              325,
+              552
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            746,
+            0,
+            790,
+            491
+          ],
+          "pivot": [
+            340.0,
+            479
+          ],
+          "visibleRect": [
+            931,
+            70,
+            323,
+            409
+          ],
+          "visiblePixelSha256": "5e47dac108c5acf5d4ee0c1bf34fc1b53f60619ef4552318d149ff397d545cb1",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              956,
+              1216
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            490,
+            780,
+            534
+          ],
+          "pivot": [
+            424.0,
+            498
+          ],
+          "visibleRect": [
+            286,
+            502,
+            304,
+            486
+          ],
+          "visiblePixelSha256": "18979213c33fa535d45b1274807e888cd801b6c6407b0e0219d90c1c8bfc23e2",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              288,
+              560
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            779,
+            490,
+            757,
+            534
+          ],
+          "pivot": [
+            321.0,
+            494
+          ],
+          "visibleRect": [
+            970,
+            544,
+            285,
+            440
+          ],
+          "visiblePixelSha256": "f656809f3125cae5e1d0f0758a12e0e30ee89e03eed3d3ee89853fd695a9705a",
+          "pivotReview": {
+            "method": "Both foot silhouettes in last 36 source rows, alpha >=128; sole at last alpha >2 plus 1",
+            "footSpan": [
+              976,
+              1224
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Low guard, visibly rising wrist-blade arm and recovery; feet stay grounded."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-2H-left-partial-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!I7",
+      "sourceId": "M_F003_2H",
+      "original": "art-source/v100/pit/scar/intake/014-scar-2H-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 419,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          380,
+          40,
+          135,
+          145
+        ],
+        "headTopY": 59,
+        "soleY": 478,
+        "meaning": "Upright same-page BODY scale reference, faces right and never used as left action frame"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/014-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            739,
+            495
+          ],
+          "pivot": [
+            427.0,
+            478
+          ],
+          "visibleRect": [
+            291,
+            21,
+            255,
+            457
+          ],
+          "visiblePixelSha256": "8d685e928a529d2326e38054b0c472fda9d0372620dac342f1c6dfe9ff7921c2",
+          "pivotReview": {
+            "method": "Both planted foot silhouettes in last 36 source rows, alpha>=128",
+            "footSpan": [
+              310,
+              544
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            494,
+            748,
+            530
+          ],
+          "pivot": [
+            417.0,
+            485
+          ],
+          "visibleRect": [
+            242,
+            508,
+            317,
+            471
+          ],
+          "visiblePixelSha256": "2de2060d7dffbee29addb7b8a68e1d018f0545cdb615b46db65b3c98ecffe2dd",
+          "pivotReview": {
+            "method": "Both planted foot silhouettes in last 36 source rows, alpha>=128",
+            "footSpan": [
+              279,
+              555
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            747,
+            494,
+            789,
+            530
+          ],
+          "pivot": [
+            334.0,
+            486
+          ],
+          "visibleRect": [
+            937,
+            537,
+            282,
+            443
+          ],
+          "visiblePixelSha256": "d4d98604377747fb394b7e657c5ea7bbb8341269d83710f4e117cf85f8d1a745",
+          "pivotReview": {
+            "method": "Both planted foot silhouettes in last 36 source rows, alpha>=128",
+            "footSpan": [
+              946,
+              1216
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [],
+      "referenceFrameIndices": [
+        0
+      ],
+      "excludedFrameIndices": [
+        1
+      ],
+      "suggestedSharedSequences": [
+        {
+          "facing": "left",
+          "frames": [
+            {
+              "pageId": "scar-workbook-2L-v100",
+              "frameIndex": 3,
+              "phase": "startup",
+              "reuse": "One already admitted low guard posture; no additional unique drawing"
+            },
+            {
+              "pageId": "scar-workbook-2H-left-partial-v100",
+              "frameIndex": 2,
+              "phase": "active"
+            },
+            {
+              "pageId": "scar-workbook-2H-left-partial-v100",
+              "frameIndex": 3,
+              "phase": "recovery"
+            }
+          ]
+        }
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Contact and recovery face left. Wrong-facing anticipation1 excluded. Low guard005/index3 independently approved as shared compatible startup, with its own fixed page scale."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jL-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!J7",
+      "sourceId": "M_F003_jL",
+      "original": "art-source/v100/pit/scar/intake/015-scar-jL-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 416,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          375,
+          40,
+          130,
+          140
+        ],
+        "headTopY": 56,
+        "soleY": 472,
+        "upperPelvisPoint": [
+          402,
+          239
+        ],
+        "upperPelvisToSolePx": 233,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/015-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            766,
+            496
+          ],
+          "pivot": [
+            405.5,
+            472
+          ],
+          "visibleRect": [
+            274,
+            18,
+            264,
+            454
+          ],
+          "visiblePixelSha256": "5a852d4e0116477c5d5b310e33b9b2a8f27887376031778fa7169bb211e3034b",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              296,
+              515
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            765,
+            0,
+            771,
+            496
+          ],
+          "pivot": [
+            355,
+            494
+          ],
+          "visibleRect": [
+            994,
+            13,
+            264,
+            428
+          ],
+          "visiblePixelSha256": "cdcef149559fb0dc949c43970f93b27cd72c818c0c935c101cf6e02e41bd3585",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1120,
+              261
+            ],
+            "standingPelvisSourcePoint": [
+              402,
+              239
+            ],
+            "standingPelvisToSolePx": 233,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            495,
+            787,
+            529
+          ],
+          "pivot": [
+            409,
+            468
+          ],
+          "visibleRect": [
+            307,
+            519,
+            250,
+            399
+          ],
+          "visiblePixelSha256": "8c53a8810339a04b5868d2eb0dd45d0ac1006e6f1c4c50c5d9708ef94cb6186c",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              409,
+              730
+            ],
+            "standingPelvisSourcePoint": [
+              402,
+              239
+            ],
+            "standingPelvisToSolePx": 233,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            786,
+            495,
+            750,
+            529
+          ],
+          "pivot": [
+            364,
+            479
+          ],
+          "visibleRect": [
+            1017,
+            534,
+            270,
+            445
+          ],
+          "visiblePixelSha256": "8025f389437b6b0e9e7ba1fa0ca0c8ffbea74f8a48e380720482b01d71270759",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1150,
+              741
+            ],
+            "standingPelvisSourcePoint": [
+              402,
+              239
+            ],
+            "standingPelvisToSolePx": 233,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Short raised-knee airborne contact and return to falling posture."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jH-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!L7",
+      "sourceId": "M_F003_jH",
+      "original": "art-source/v100/pit/scar/intake/019-scar-jH-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 434,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          400,
+          60,
+          95,
+          120
+        ],
+        "headTopY": 80,
+        "soleY": 514,
+        "upperPelvisPoint": [
+          404,
+          271
+        ],
+        "upperPelvisToSolePx": 243,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/019-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            763,
+            522
+          ],
+          "pivot": [
+            422.0,
+            514
+          ],
+          "visibleRect": [
+            290,
+            34,
+            250,
+            480
+          ],
+          "visiblePixelSha256": "22209f3e0d939008123bdead54293b9db356ccad8f311476885e894060421acc",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              308,
+              536
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            762,
+            0,
+            774,
+            522
+          ],
+          "pivot": [
+            363,
+            505
+          ],
+          "visibleRect": [
+            985,
+            43,
+            336,
+            442
+          ],
+          "visiblePixelSha256": "1a01c218c12d0f49bfe47d2184de47ee06008221070610238db87a724df7825d",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1125,
+              262
+            ],
+            "standingPelvisSourcePoint": [
+              404,
+              271
+            ],
+            "standingPelvisToSolePx": 243,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            521,
+            817,
+            503
+          ],
+          "pivot": [
+            421,
+            502
+          ],
+          "visibleRect": [
+            224,
+            530,
+            469,
+            406
+          ],
+          "visiblePixelSha256": "847ee78c0dcc277e3dc6d8da12530d28b2f24925d9d43fac98669e05218a7ead",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              421,
+              780
+            ],
+            "standingPelvisSourcePoint": [
+              404,
+              271
+            ],
+            "standingPelvisToSolePx": 243,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            816,
+            521,
+            720,
+            503
+          ],
+          "pivot": [
+            331.0,
+            454
+          ],
+          "visibleRect": [
+            941,
+            578,
+            412,
+            397
+          ],
+          "visiblePixelSha256": "079460928692e8a6ad77d6b3190e3c3824df8bdfc2d2471c14d40cc0f2643b8b",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              944,
+              1350
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "High airborne anticipation, descending committed strike and distinct grounded landing recovery."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-6M-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!O7",
+      "sourceId": "M_F003_6M",
+      "original": "art-source/v100/pit/scar/intake/022-scar-6M-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-6M-right-native.png",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 423,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          440,
+          45,
+          80,
+          135
+        ],
+        "headTopY": 66,
+        "soleY": 489,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/022-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            780,
+            507
+          ],
+          "pivot": [
+            462.0,
+            489
+          ],
+          "visibleRect": [
+            332,
+            31,
+            251,
+            458
+          ],
+          "visiblePixelSha256": "7a288a7f6e79d716846473d5424ac23577a6ca50c3bf157885b451a4d9177f13",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              344,
+              580
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            779,
+            0,
+            757,
+            507
+          ],
+          "pivot": [
+            347.0,
+            489
+          ],
+          "visibleRect": [
+            976,
+            41,
+            302,
+            448
+          ],
+          "visiblePixelSha256": "cbeac8d1073f6d7e00a9d958cac21a8fb95210fc432d0207308546fb5dc9b231",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              978,
+              1274
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            506,
+            825,
+            518
+          ],
+          "pivot": [
+            479.5,
+            476
+          ],
+          "visibleRect": [
+            276,
+            543,
+            408,
+            439
+          ],
+          "visiblePixelSha256": "1e099f989ef3c6a81c026f835a96ee2aad1842792a5f3176d5865b5b4cdc9ff3",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              278,
+              681
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            824,
+            506,
+            712,
+            518
+          ],
+          "pivot": [
+            296.5,
+            476
+          ],
+          "visibleRect": [
+            965,
+            524,
+            312,
+            458
+          ],
+          "visiblePixelSha256": "b352285c5ec9a4f014bf2507d4d2ddb8969faeeaa7dd055ecbe635f83a75cae8",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing; last36 source rows alpha>=128",
+            "footSpan": [
+              967,
+              1274
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Loaded approach, shoulder/body engagement with armed arm held compact, recovered guard."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jL-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!J7",
+      "sourceId": "M_F003_jL",
+      "original": "art-source/v100/pit/scar/intake/025-scar-jL-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 460,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          365,
+          30,
+          130,
+          145
+        ],
+        "headTopY": 47,
+        "soleY": 507,
+        "upperPelvisPoint": [
+          423,
+          245
+        ],
+        "upperPelvisToSolePx": 262,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/025-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            746,
+            510
+          ],
+          "pivot": [
+            430.5,
+            507
+          ],
+          "visibleRect": [
+            299,
+            7,
+            273,
+            500
+          ],
+          "visiblePixelSha256": "5654970202ce2b7c129622e922ba323f7f7225db120229b14eee7437c3a424a4",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              301,
+              560
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            745,
+            0,
+            791,
+            465
+          ],
+          "pivot": [
+            381,
+            516
+          ],
+          "visibleRect": [
+            901,
+            15,
+            408,
+            435
+          ],
+          "visiblePixelSha256": "8060b9501c7a4b1a80b45b25cd5de58fe24ba1741f5afa38d352363354827876",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1126,
+              254
+            ],
+            "standingPelvisSourcePoint": [
+              423,
+              245
+            ],
+            "standingPelvisToSolePx": 262,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            509,
+            746,
+            515
+          ],
+          "pivot": [
+            439,
+            489
+          ],
+          "visibleRect": [
+            203,
+            513,
+            387,
+            413
+          ],
+          "visiblePixelSha256": "ca601c618bf0a6141cb04f567aba0843d55ed99e128a6e1ac0bef48f864a4de2",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              439,
+              736
+            ],
+            "standingPelvisSourcePoint": [
+              423,
+              245
+            ],
+            "standingPelvisToSolePx": 262,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            745,
+            464,
+            791,
+            560
+          ],
+          "pivot": [
+            366,
+            530
+          ],
+          "visibleRect": [
+            924,
+            479,
+            373,
+            518
+          ],
+          "visiblePixelSha256": "03589e32acd041deda649d0694cd5cab2233c200bda78728cfe1660ad15502b9",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1111,
+              732
+            ],
+            "standingPelvisSourcePoint": [
+              423,
+              245
+            ],
+            "standingPelvisToSolePx": 262,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Correct left-facing short airborne knee contact and falling recovery."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jM-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!K7",
+      "sourceId": "M_F003_jM",
+      "original": "art-source/v100/pit/scar/intake/026-scar-jM-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 467,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          380,
+          30,
+          130,
+          145
+        ],
+        "headTopY": 49,
+        "soleY": 516,
+        "upperPelvisPoint": [
+          414,
+          264
+        ],
+        "upperPelvisToSolePx": 252,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/026-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            786,
+            518
+          ],
+          "pivot": [
+            438.5,
+            516
+          ],
+          "visibleRect": [
+            306,
+            12,
+            283,
+            504
+          ],
+          "visiblePixelSha256": "6e403c74dc46668487b94b9305108f768219e8bb30b040c6239412a2e6544878",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              308,
+              569
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            785,
+            0,
+            751,
+            476
+          ],
+          "pivot": [
+            318,
+            524
+          ],
+          "visibleRect": [
+            929,
+            14,
+            352,
+            447
+          ],
+          "visiblePixelSha256": "f7402fdfcb633b3898c5e43fffaef4e723fc4e11fbd90d9b661cbdcb917632e3",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1103,
+              272
+            ],
+            "standingPelvisSourcePoint": [
+              414,
+              264
+            ],
+            "standingPelvisToSolePx": 252,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            517,
+            786,
+            507
+          ],
+          "pivot": [
+            460,
+            487
+          ],
+          "visibleRect": [
+            120,
+            519,
+            522,
+            452
+          ],
+          "visiblePixelSha256": "ed3d93c8190e07cb6577a45d58e9d8c3f911957d1345750cc78b392db6f4b5ee",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              460,
+              752
+            ],
+            "standingPelvisSourcePoint": [
+              414,
+              264
+            ],
+            "standingPelvisToSolePx": 252,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            785,
+            475,
+            751,
+            549
+          ],
+          "pivot": [
+            327,
+            515
+          ],
+          "visibleRect": [
+            937,
+            491,
+            393,
+            527
+          ],
+          "visiblePixelSha256": "0f5cc5468de35b57dcec9b6bb70737173d21877d5991c5308ca2fb8562b2956a",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1112,
+              738
+            ],
+            "standingPelvisSourcePoint": [
+              414,
+              264
+            ],
+            "standingPelvisToSolePx": 252,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Correct target-facing midair torso rotation/backhand cut and fall recovery."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jH-left-partial-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!L7",
+      "sourceId": "M_F003_jH",
+      "original": "art-source/v100/pit/scar/intake/027-scar-jH-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 468,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          330,
+          40,
+          130,
+          150
+        ],
+        "headTopY": 62,
+        "soleY": 530,
+        "upperPelvisPoint": [
+          386,
+          264
+        ],
+        "upperPelvisToSolePx": 266,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/027-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            754,
+            540
+          ],
+          "pivot": [
+            393.5,
+            530
+          ],
+          "visibleRect": [
+            256,
+            9,
+            303,
+            521
+          ],
+          "visiblePixelSha256": "19f3d16380a23ff57e66f89bcd04ee8714bbff1bbc556a031a21e90a6b4378b7",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              258,
+              529
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            539,
+            832,
+            485
+          ],
+          "pivot": [
+            419,
+            520
+          ],
+          "visibleRect": [
+            89,
+            549,
+            633,
+            421
+          ],
+          "visiblePixelSha256": "fd978f4667aab0cc76ffa4818f919b694e9f1f7f4e16988eefb1c19ac7265c3b",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              419,
+              793
+            ],
+            "standingPelvisSourcePoint": [
+              386,
+              264
+            ],
+            "standingPelvisToSolePx": 266,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            831,
+            539,
+            705,
+            485
+          ],
+          "pivot": [
+            302.5,
+            441
+          ],
+          "visibleRect": [
+            941,
+            576,
+            551,
+            404
+          ],
+          "visiblePixelSha256": "d86f053a158d1471a4851cf8cf975fc53039d052cace069a023a1bf1c78d09f1",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              943,
+              1324
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Contact and landing face left. Anticipation1 touches canvas edge and is excluded; awaits separate same-body left startup page."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "excludedFrameIndices": [
+        1
+      ],
+      "suggestedSharedSequences": [
+        {
+          "facing": "left",
+          "frames": [
+            {
+              "pageId": "scar-workbook-jH-left-startup-v100",
+              "frameIndex": 1,
+              "phase": "startup"
+            },
+            {
+              "pageId": "scar-workbook-jH-left-partial-v100",
+              "frameIndex": 2,
+              "phase": "active"
+            },
+            {
+              "pageId": "scar-workbook-jH-left-partial-v100",
+              "frameIndex": 3,
+              "phase": "recovery"
+            }
+          ]
+        }
+      ],
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-6M-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!O7",
+      "sourceId": "M_F003_6M",
+      "original": "art-source/v100/pit/scar/intake/028-scar-6M-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-6M-left-native.png",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 454,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          310,
+          30,
+          125,
+          145
+        ],
+        "headTopY": 41,
+        "soleY": 495,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/028-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            785,
+            500
+          ],
+          "pivot": [
+            390.0,
+            495
+          ],
+          "visibleRect": [
+            249,
+            7,
+            293,
+            488
+          ],
+          "visiblePixelSha256": "b6e083ea6d093792be0a92a84953bf7bf3210b790bfa9c36e96ef764e1ec9c00",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              251,
+              529
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            784,
+            0,
+            752,
+            500
+          ],
+          "pivot": [
+            436.5,
+            497
+          ],
+          "visibleRect": [
+            1027,
+            16,
+            366,
+            481
+          ],
+          "visiblePixelSha256": "79a8f9c7854d68e3ab7c58c325f23bb57889a445e5008718c65a1e00d7934917",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              1058,
+              1383
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            499,
+            853,
+            525
+          ],
+          "pivot": [
+            484.0,
+            493
+          ],
+          "visibleRect": [
+            218,
+            503,
+            450,
+            489
+          ],
+          "visiblePixelSha256": "88999ed391814f7edb31c506bbb1c94683a15f1f64bd9212af1f7d2b6e0037c5",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              309,
+              659
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            852,
+            499,
+            684,
+            525
+          ],
+          "pivot": [
+            370.0,
+            497
+          ],
+          "visibleRect": [
+            1043,
+            520,
+            359,
+            476
+          ],
+          "visiblePixelSha256": "7aa27a8d8e1736386c322ea1fac9ace25ecf6a8c3bab10ef5fd8ec5f77cace07",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              1045,
+              1399
+            ],
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Forward step with shoulder/body engagement and compact armed arm, then guard."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jM-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!K7",
+      "sourceId": "M_F003_jM",
+      "original": "art-source/v100/pit/scar/intake/029-scar-jM-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 442,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          455,
+          35,
+          125,
+          145
+        ],
+        "headTopY": 56,
+        "soleY": 498,
+        "upperPelvisPoint": [
+          481,
+          257
+        ],
+        "upperPelvisToSolePx": 241,
+        "meaning": "Upright same-page body calibration only, excluded from action sequence"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/029-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            882,
+            511
+          ],
+          "pivot": [
+            489.5,
+            498
+          ],
+          "visibleRect": [
+            344,
+            10,
+            288,
+            488
+          ],
+          "visiblePixelSha256": "572233c23b3749d72a0416ebd93b14ccae661271372ac0ec88ceb49f9eb5210c",
+          "pivotReview": {
+            "method": "Both planted feet for standing reference or landing, alpha>=128 in last36 source rows",
+            "footSpan": [
+              360,
+              619
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            881,
+            0,
+            655,
+            470
+          ],
+          "pivot": [
+            236,
+            491
+          ],
+          "visibleRect": [
+            979,
+            15,
+            300,
+            430
+          ],
+          "visiblePixelSha256": "6c5c38c97f58ec1563c2778b8eb070a57288b226c867adc33609e8fc8c64f3ae",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1117,
+              250
+            ],
+            "standingPelvisSourcePoint": [
+              481,
+              257
+            ],
+            "standingPelvisToSolePx": 241,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            510,
+            882,
+            514
+          ],
+          "pivot": [
+            513,
+            475
+          ],
+          "visibleRect": [
+            362,
+            523,
+            422,
+            411
+          ],
+          "visiblePixelSha256": "4448b447f4794139a37cb020ddaf19e50b47957c10319b410a4a29db33807400",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              513,
+              744
+            ],
+            "standingPelvisSourcePoint": [
+              481,
+              257
+            ],
+            "standingPelvisToSolePx": 241,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            881,
+            469,
+            655,
+            555
+          ],
+          "pivot": [
+            262,
+            524
+          ],
+          "visibleRect": [
+            1003,
+            494,
+            278,
+            499
+          ],
+          "visiblePixelSha256": "d5898309e5c1ed6bf341591f0a8944b3603c96b6d5422e09d934f79b6ea92c4a",
+          "pivotReview": {
+            "method": "Virtual support plane: upper pelvis at belt + standing same-page upper-pelvis-to-sole distance; never lowest airborne toe",
+            "pelvisSourcePoint": [
+              1143,
+              752
+            ],
+            "standingPelvisSourcePoint": [
+              481,
+              257
+            ],
+            "standingPelvisToSolePx": 241,
+            "reviewed": true,
+            "runtimeJumpProvidesWorldAltitude": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            1,
+            2,
+            3
+          ],
+          "phaseFrames": {
+            "startup": [
+              1
+            ],
+            "active": [
+              2
+            ],
+            "recovery": [
+              3
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Correct target-facing midair torso rotation/backhand cut and fall recovery."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-TH_F-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!M7",
+      "sourceId": "M_F003_TH_F",
+      "original": "art-source/v100/pit/scar/intake/023-scar-TH_F-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+      "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 299,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          345,
+          35,
+          100,
+          110
+        ],
+        "headTopY": 51,
+        "soleY": 350,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page attacker BODY calibration excludes mannequin. First scene also belongs to throw action."
+      },
+      "measurement": "art-source/v100/pit/scar/intake/023-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            797,
+            359
+          ],
+          "pivot": [
+            351.5,
+            350
+          ],
+          "visibleRect": [
+            241,
+            17,
+            376,
+            335
+          ],
+          "visiblePixelSha256": "1ee4183dd714a1fa4e184d5b008af1e49644c13d338f7b2c4ffe17d7780e2019",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              240,
+              298,
+              225,
+              52
+            ],
+            "footSpan": [
+              243,
+              460
+            ],
+            "soleY": 350,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            796,
+            0,
+            740,
+            359
+          ],
+          "pivot": [
+            290.0,
+            350
+          ],
+          "visibleRect": [
+            977,
+            15,
+            334,
+            335
+          ],
+          "visiblePixelSha256": "5024f5c62066e8333c2ebff01997f34e98a0fdf2fb3ac191aa1ad07c4e3d7e2a",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              975,
+              298,
+              220,
+              55
+            ],
+            "footSpan": [
+              978,
+              1194
+            ],
+            "soleY": 350,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            358,
+            756,
+            324
+          ],
+          "pivot": [
+            387.5,
+            316
+          ],
+          "visibleRect": [
+            263,
+            369,
+            350,
+            305
+          ],
+          "visiblePixelSha256": "1de1afad916345a9106f1523f0bf418fa945aee493199a10717c820f57036fdc",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              260,
+              620,
+              250,
+              60
+            ],
+            "footSpan": [
+              266,
+              509
+            ],
+            "soleY": 674,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            755,
+            358,
+            781,
+            324
+          ],
+          "pivot": [
+            279.5,
+            314
+          ],
+          "visibleRect": [
+            899,
+            366,
+            475,
+            306
+          ],
+          "visiblePixelSha256": "97138b6cd964574299da33b791fba2b00d5f6ffb7a75013b9a7e10a4e0d2ec7a",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              900,
+              620,
+              270,
+              60
+            ],
+            "footSpan": [
+              902,
+              1167
+            ],
+            "soleY": 672,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            0,
+            681,
+            843,
+            343
+          ],
+          "pivot": [
+            289.5,
+            323
+          ],
+          "visibleRect": [
+            176,
+            691,
+            574,
+            313
+          ],
+          "visiblePixelSha256": "665d095ef5ef2eb6777f19b5768ab6f801923e9e5e2035c226a6de7291b98220",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              175,
+              950,
+              235,
+              65
+            ],
+            "footSpan": [
+              178,
+              401
+            ],
+            "soleY": 1004,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 5,
+          "rect": [
+            842,
+            681,
+            694,
+            343
+          ],
+          "pivot": [
+            192.0,
+            323
+          ],
+          "visibleRect": [
+            935,
+            689,
+            464,
+            315
+          ],
+          "visiblePixelSha256": "e1227e6c19fea4453a8446cfe26e5350d20fbc1bd790da257271154b839c100d",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              935,
+              950,
+              195,
+              65
+            ],
+            "footSpan": [
+              939,
+              1129
+            ],
+            "soleY": 1004,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phaseFrames": {
+            "startup": [
+              0,
+              1
+            ],
+            "active": [
+              2,
+              3
+            ],
+            "recovery": [
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Forward hip throw trajectory and recovery approved as mannequin study. At grab1 staff is occluded behind back without visible grip; no weapon manipulation or stowing is certified."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "studyPartner": {
+        "type": "neutral-gray-training-mannequin",
+        "scope": "Baked visual study partner only; no real independently synchronized opponent"
+      },
+      "combatBindings": [],
+      "gameplayStatus": "study-only-no-synchronized-independent-opponent",
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-TH_B-right-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!N7",
+      "sourceId": "M_F003_TH_B",
+      "original": "art-source/v100/pit/scar/intake/024-scar-TH_B-right-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-TH_B-right-native.png",
+      "sha256": "45b253ef506a41b6a2555eb747a6e299dfc0b8617b22a0a28c3cd92adc6ddc9b",
+      "width": 1881,
+      "height": 836,
+      "bodyHeightPx": 350,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          220,
+          25,
+          90,
+          120
+        ],
+        "headTopY": 44,
+        "soleY": 394,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page attacker BODY calibration excludes mannequin. First scene also belongs to throw action."
+      },
+      "measurement": "art-source/v100/pit/scar/intake/024-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            664,
+            409
+          ],
+          "pivot": [
+            227.0,
+            394
+          ],
+          "visibleRect": [
+            112,
+            12,
+            436,
+            382
+          ],
+          "visiblePixelSha256": "4e32a24a38e8c97d0c262f8aa4ea995a49d0bb9fb1f8596da12c6cc236a97085",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              100,
+              335,
+              250,
+              65
+            ],
+            "footSpan": [
+              115,
+              339
+            ],
+            "soleY": 394,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            663,
+            0,
+            643,
+            409
+          ],
+          "pivot": [
+            238.5,
+            394
+          ],
+          "visibleRect": [
+            780,
+            13,
+            378,
+            381
+          ],
+          "visiblePixelSha256": "795fa491cf6a516ca8888fb3320efb2a3298f763e9baf3b5b04dc3eff2a451e3",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              775,
+              330,
+              245,
+              70
+            ],
+            "footSpan": [
+              784,
+              1019
+            ],
+            "soleY": 394,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            1305,
+            0,
+            576,
+            409
+          ],
+          "pivot": [
+            296.5,
+            384
+          ],
+          "visibleRect": [
+            1454,
+            20,
+            394,
+            364
+          ],
+          "visiblePixelSha256": "43fbe9187733a2a79e19e73eff5bb7eb7e02d9dbbfe96a5310f399bf13c9a046",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              1470,
+              330,
+              265,
+              70
+            ],
+            "footSpan": [
+              1479,
+              1724
+            ],
+            "soleY": 384,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            408,
+            603,
+            428
+          ],
+          "pivot": [
+            250.5,
+            395
+          ],
+          "visibleRect": [
+            107,
+            432,
+            424,
+            371
+          ],
+          "visiblePixelSha256": "f6fa0d75a3ca9268882bd66e557a9c7007234be835c6b162e379305be94db317",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              105,
+              745,
+              295,
+              70
+            ],
+            "footSpan": [
+              110,
+              391
+            ],
+            "soleY": 803,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            602,
+            408,
+            613,
+            428
+          ],
+          "pivot": [
+            401.0,
+            391
+          ],
+          "visibleRect": [
+            675,
+            430,
+            489,
+            369
+          ],
+          "visiblePixelSha256": "6468163a866550e21cb2d74e371e4d84edd01632575b79d45799146b5d9b13fb",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              870,
+              745,
+              270,
+              70
+            ],
+            "footSpan": [
+              872,
+              1134
+            ],
+            "soleY": 799,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 5,
+          "rect": [
+            1214,
+            408,
+            667,
+            428
+          ],
+          "pivot": [
+            494.0,
+            395
+          ],
+          "visibleRect": [
+            1266,
+            424,
+            560,
+            379
+          ],
+          "visiblePixelSha256": "46a8ba59fd8d65954b851ee4ff85908a2a00c58caa2c17a9cb143132a93899ec",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              1590,
+              745,
+              270,
+              70
+            ],
+            "footSpan": [
+              1594,
+              1822
+            ],
+            "soleY": 803,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "right",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phaseFrames": {
+            "startup": [
+              0,
+              1
+            ],
+            "active": [
+              2,
+              3
+            ],
+            "recovery": [
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Continuous turn and rejection behind original position approved as mannequin study."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "studyPartner": {
+        "type": "neutral-gray-training-mannequin",
+        "scope": "Baked visual study partner only; no real independently synchronized opponent"
+      },
+      "combatBindings": [],
+      "gameplayStatus": "study-only-no-synchronized-independent-opponent",
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-TH_F-left-partial-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!M7",
+      "sourceId": "M_F003_TH_F",
+      "original": "art-source/v100/pit/scar/intake/030-scar-TH_F-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-TH_F-left-partial-native.png",
+      "sha256": "c1bfbe0edd26d99d63a0e6fb97a78e9f341578337f6888c766f13a86194890b4",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 398,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          270,
+          65,
+          115,
+          115
+        ],
+        "headTopY": 83,
+        "soleY": 481,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page attacker BODY calibration excludes mannequin. First scene also belongs to throw action."
+      },
+      "measurement": "art-source/v100/pit/scar/intake/030-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            548,
+            505
+          ],
+          "pivot": [
+            362.5,
+            481
+          ],
+          "visibleRect": [
+            77,
+            15,
+            426,
+            466
+          ],
+          "visiblePixelSha256": "f7d5c5ec00a4fdfc59de87510a201fcf22dbefedac267c27ac6a448ffbfeb1e2",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              220,
+              430,
+              290,
+              60
+            ],
+            "footSpan": [
+              226,
+              499
+            ],
+            "soleY": 481,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            547,
+            0,
+            506,
+            505
+          ],
+          "pivot": [
+            319.5,
+            480
+          ],
+          "visibleRect": [
+            593,
+            15,
+            409,
+            465
+          ],
+          "visiblePixelSha256": "6e59434c4a70cdf5825e6bb5d6cf171ed56e03090b9e60547b0f8f171e39021a",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              735,
+              430,
+              270,
+              60
+            ],
+            "footSpan": [
+              735,
+              998
+            ],
+            "soleY": 480,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            1052,
+            0,
+            484,
+            505
+          ],
+          "pivot": [
+            293.5,
+            483
+          ],
+          "visibleRect": [
+            1104,
+            16,
+            376,
+            467
+          ],
+          "visiblePixelSha256": "0eb6d8ce363663ac046a6942b557109c9f8d2d72162befd0e9b6bd78b12108b4",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              1230,
+              430,
+              230,
+              65
+            ],
+            "footSpan": [
+              1241,
+              1450
+            ],
+            "soleY": 483,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            504,
+            581,
+            520
+          ],
+          "pivot": [
+            414.5,
+            456
+          ],
+          "visibleRect": [
+            33,
+            529,
+            541,
+            431
+          ],
+          "visiblePixelSha256": "096ef504145b9a0b427ca9253849e8c824336780b042c6094374e6573de61efb",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              255,
+              910,
+              320,
+              65
+            ],
+            "footSpan": [
+              259,
+              570
+            ],
+            "soleY": 960,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            580,
+            504,
+            502,
+            520
+          ],
+          "pivot": [
+            368.5,
+            461
+          ],
+          "visibleRect": [
+            588,
+            527,
+            482,
+            472
+          ],
+          "visiblePixelSha256": "429c29d26b4e716ea6baf8d00b69f631696924ed901f3548bc2bae28ff7427aa",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              830,
+              910,
+              245,
+              55
+            ],
+            "footSpan": [
+              830,
+              1067
+            ],
+            "soleY": 965,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "First five left forward-throw stages approved; original ending5 touches canvas border and is excluded."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "studyPartner": {
+        "type": "neutral-gray-training-mannequin",
+        "scope": "Baked visual study partner only; no real independently synchronized opponent"
+      },
+      "combatBindings": [],
+      "gameplayStatus": "study-only-no-synchronized-independent-opponent",
+      "excludedFrameIndices": [
+        5
+      ],
+      "suggestedSharedSequences": [
+        {
+          "facing": "left",
+          "frames": [
+            {
+              "pageId": "scar-workbook-TH_F-left-partial-v100",
+              "frameIndex": 0,
+              "phase": "startup"
+            },
+            {
+              "pageId": "scar-workbook-TH_F-left-partial-v100",
+              "frameIndex": 1,
+              "phase": "startup"
+            },
+            {
+              "pageId": "scar-workbook-TH_F-left-partial-v100",
+              "frameIndex": 2,
+              "phase": "active"
+            },
+            {
+              "pageId": "scar-workbook-TH_F-left-partial-v100",
+              "frameIndex": 3,
+              "phase": "active"
+            },
+            {
+              "pageId": "scar-workbook-TH_F-left-partial-v100",
+              "frameIndex": 4,
+              "phase": "recovery"
+            },
+            {
+              "pageId": "scar-workbook-TH_F-left-recovery-v100",
+              "frameIndex": 0,
+              "phase": "recovery"
+            }
+          ]
+        }
+      ],
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-TH_B-left-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!N7",
+      "sourceId": "M_F003_TH_B",
+      "original": "art-source/v100/pit/scar/intake/031-scar-TH_B-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-TH_B-left-native.png",
+      "sha256": "9fae9be652c52c4739eef1d7fb1b99fbe2fc57bff222eed93b915669a610aaf2",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 314,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          375,
+          20,
+          95,
+          100
+        ],
+        "headTopY": 26,
+        "soleY": 340,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page attacker BODY calibration excludes mannequin. First scene also belongs to throw action."
+      },
+      "measurement": "art-source/v100/pit/scar/intake/031-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            726,
+            346
+          ],
+          "pivot": [
+            421.5,
+            340
+          ],
+          "visibleRect": [
+            213,
+            1,
+            297,
+            339
+          ],
+          "visiblePixelSha256": "9a43705fecdf646d1c006c36311a6168f86f1cf9cdb9a457cf9c6cd9f93b1259",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              335,
+              298,
+              180,
+              50
+            ],
+            "footSpan": [
+              339,
+              504
+            ],
+            "soleY": 340,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            725,
+            0,
+            811,
+            346
+          ],
+          "pivot": [
+            470.0,
+            339
+          ],
+          "visibleRect": [
+            941,
+            8,
+            377,
+            331
+          ],
+          "visiblePixelSha256": "db3663921ed6b107b47b47988695d8aeb951142468401c078a663d3d3afc6926",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              1075,
+              298,
+              250,
+              52
+            ],
+            "footSpan": [
+              1076,
+              1314
+            ],
+            "soleY": 339,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 2,
+          "rect": [
+            0,
+            345,
+            762,
+            331
+          ],
+          "pivot": [
+            352.0,
+            328
+          ],
+          "visibleRect": [
+            231,
+            362,
+            323,
+            311
+          ],
+          "visiblePixelSha256": "2180c0b9e518da6c2931c8087e04ecd572575e3729bb822745199ec39808595b",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              235,
+              625,
+              235,
+              55
+            ],
+            "footSpan": [
+              235,
+              469
+            ],
+            "soleY": 673,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 3,
+          "rect": [
+            761,
+            345,
+            775,
+            331
+          ],
+          "pivot": [
+            334.5,
+            328
+          ],
+          "visibleRect": [
+            970,
+            352,
+            314,
+            321
+          ],
+          "visiblePixelSha256": "e1760795b2db4467ef8ef0218353bfa747e86a59cd7d1d03f3c077b5aeec544a",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              968,
+              625,
+              255,
+              55
+            ],
+            "footSpan": [
+              972,
+              1219
+            ],
+            "soleY": 673,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 4,
+          "rect": [
+            0,
+            675,
+            836,
+            349
+          ],
+          "pivot": [
+            319.5,
+            329
+          ],
+          "visibleRect": [
+            191,
+            681,
+            568,
+            323
+          ],
+          "visiblePixelSha256": "027426e704e5b514e7b60e98dd033e8b3811a3444df96b6df13a0c5e00233e52",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              200,
+              950,
+              245,
+              65
+            ],
+            "footSpan": [
+              200,
+              439
+            ],
+            "soleY": 1004,
+            "reviewed": true
+          }
+        },
+        {
+          "index": 5,
+          "rect": [
+            835,
+            675,
+            701,
+            349
+          ],
+          "pivot": [
+            168.0,
+            332
+          ],
+          "visibleRect": [
+            912,
+            679,
+            484,
+            328
+          ],
+          "visiblePixelSha256": "39ded01070e5d3257eeb07e0efcec0f0d82b46749a9bb4855359c250cfc55280",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              912,
+              955,
+              180,
+              60
+            ],
+            "footSpan": [
+              915,
+              1091
+            ],
+            "soleY": 1007,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [
+        {
+          "facing": "left",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phaseFrames": {
+            "startup": [
+              0,
+              1
+            ],
+            "active": [
+              2,
+              3
+            ],
+            "recovery": [
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Continuous left-origin turning throw and rejection behind original position approved as mannequin study."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "studyPartner": {
+        "type": "neutral-gray-training-mannequin",
+        "scope": "Baked visual study partner only; no real independently synchronized opponent"
+      },
+      "combatBindings": [],
+      "gameplayStatus": "study-only-no-synchronized-independent-opponent",
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-jH-left-startup-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!L7",
+      "sourceId": "M_F003_jH",
+      "original": "art-source/v100/pit/scar/intake/032-scar-jH-startup-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 759,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          325,
+          150,
+          145,
+          180
+        ],
+        "headTopY": 195,
+        "soleY": 954,
+        "upperPelvisPoint": [
+          391,
+          524
+        ],
+        "upperPelvisToSolePx": 430,
+        "meaning": "Upright same-page BODY reference only, excluded from action"
+      },
+      "measurement": "art-source/v100/pit/scar/intake/032-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            744,
+            1024
+          ],
+          "pivot": [
+            415.0,
+            954
+          ],
+          "visibleRect": [
+            187,
+            128,
+            449,
+            826
+          ],
+          "visiblePixelSha256": "ba79c1865913b41f9786bc4f2273d09e43e6968ac790dc5d0966cac65e9ddffa",
+          "pivotReview": {
+            "method": "Both planted feet of upright reference",
+            "footSpan": [
+              213,
+              617
+            ],
+            "reviewed": true
+          }
+        },
+        {
+          "index": 1,
+          "rect": [
+            743,
+            0,
+            793,
+            1024
+          ],
+          "pivot": [
+            340,
+            970
+          ],
+          "visibleRect": [
+            852,
+            90,
+            601,
+            808
+          ],
+          "visiblePixelSha256": "3faceda570dc93676c310a6f66e6dac4d07221ddb309997e1ab1f661801995b4",
+          "pivotReview": {
+            "method": "Virtual upper-pelvis support plane from same-page standing calibration, not lowest airborne toe",
+            "pelvisSourcePoint": [
+              1083,
+              540
+            ],
+            "standingPelvisSourcePoint": [
+              391,
+              524
+            ],
+            "standingPelvisToSolePx": 430,
+            "runtimeJumpProvidesWorldAltitude": true,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [],
+      "referenceFrameIndices": [
+        0
+      ],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Complete true left-facing airborne high anticipation approved; joins page027 contact/recovery."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    },
+    {
+      "id": "scar-workbook-TH_F-left-recovery-v100",
+      "fighterId": "scar",
+      "appearanceId": "runtime-default",
+      "sourceCell": "05_MOVES_PROPOSES!M7",
+      "sourceId": "M_F003_TH_F",
+      "original": "art-source/v100/pit/scar/intake/033-scar-TH_F-recovery-left-original.png",
+      "src": "/game/sprites/v100/pit/scar/scar-TH_F-left-recovery-native.png",
+      "sha256": "ca683a3f009676f097fc842c9f265cfb1402865fef4646d73f4b3da19f7b2e91",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeightPx": 813,
+      "bodyReference": {
+        "frameIndex": 0,
+        "headRoi": [
+          1000,
+          90,
+          150,
+          180
+        ],
+        "headTopY": 111,
+        "soleY": 924,
+        "upperPelvisPoint": null,
+        "upperPelvisToSolePx": null,
+        "meaning": "Upright same-page attacker BODY calibration excludes mannequin. First scene also belongs to throw action."
+      },
+      "measurement": "art-source/v100/pit/scar/intake/033-measurement.json",
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "pivot": [
+            1264.5,
+            924
+          ],
+          "visibleRect": [
+            96,
+            49,
+            1237,
+            885
+          ],
+          "visiblePixelSha256": "146aa6fc9baaf1809b86824edb92d6856775f613eae2e5f0d1a99b8bb5392ab5",
+          "pivotReview": {
+            "method": "Visually isolated attacker-foot ROI, excludes training mannequin; last36 rows alpha>=128, sole at last alpha>2 plus1",
+            "attackerFootRoi": [
+              888,
+              810,
+              448,
+              125
+            ],
+            "footSpan": [
+              1212,
+              1317
+            ],
+            "soleY": 924,
+            "reviewed": true
+          }
+        }
+      ],
+      "sequences": [],
+      "referenceFrameIndices": [],
+      "visualReview": {
+        "reviewer": "qa_v100",
+        "status": "accepted-art-only",
+        "notes": "Complete left-facing guard with same gray mannequin lying in front on left, approved as final recovery for page030."
+      },
+      "status": "admitted-native-art-awaiting-renderer-qa",
+      "byteIdenticalPublicCopy": true,
+      "studyPartner": {
+        "type": "neutral-gray-training-mannequin",
+        "scope": "Baked visual study partner only; no real independently synchronized opponent"
+      },
+      "combatBindings": [],
+      "gameplayStatus": "study-only-no-synchronized-independent-opponent",
+      "runtimeAdmissionAuthority": "app/game/data/pitWorkbookAnimationsV100.json"
+    }
+  ]
+}

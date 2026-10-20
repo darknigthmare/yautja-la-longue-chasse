@@ -1,0 +1,768 @@
+{
+  "schemaVersion": 1,
+  "fighterId": "feral-hunter",
+  "source": {
+    "extractionPath": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "workbookName": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "workbookSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "originalAvailable": false
+  },
+  "counts": {
+    "originalAttempts": 89,
+    "originalCopiesVerified": 89,
+    "admittedActions": 13,
+    "proposedActions": 13,
+    "admittedOrientations": 26,
+    "admittedActionDrawings": 156,
+    "admittedOriginalPages": 41,
+    "reviewedPagesAwaitingAdmission": 0,
+    "archivedUnplayedAttempts": 48
+  },
+  "ledger": "art-source/v100/pit/feral/specials-presentations/intake/intake-review-ledger.json",
+  "actions": [
+    {
+      "actionId": "CIN_F006_CLEMENCE",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "J10",
+        "label": "Le duel suffit",
+        "text": "CIN_F006_CLEMENCE · Le duel suffit\nFeral désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_CLEMENCE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-disarm-breathing-space-case-recovery-exit-mannequin-scene-study-only",
+        "sourceSha256": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png": "0fb80d6ec9d03dae0e60f6aeefc2e2da42ee1445bad681084b7e1f32635c5c98",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png": "45748db10aa0aa3da3467b02a954349d03f15b1a562103332b6743172c9bcdcd",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png": "fc9bb0f88e7a8b18cfbd1daed0dbeb171c534a8fcb383720c205b0c470f9ef7e"
+        },
+        "notes": "J10. Six actual action stages each facing: hook/disarm intact training blade, step back, open left palm allowing unharmed partner to breathe, take existing sealed mission case by handle, rise holding case, real departure step. Independent final QA opened all four originals and confirmed case present from A1 onward, not spawned at pickup; same two-latch closed case remains identifiable despite minor native proportions/trim variation. Shield stays anatomical LEFT, intact spear RIGHT and blades retracted. Final exit turns intentionally away from the partner and is not an erroneous mirrored facing. Gray articulated adult-sized neutral mannequin, dropped blade and case are baked scene-study props; no narrative victim, synchronized real opponent, campaign mission object/reward or inventory/disarm mechanic is implemented. Fixed MASK-crown-to-Feral-soles scale and manually reviewed Feral feet exclude mannequin, blade and case ground pixels. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-clemence-attempt-02a-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png",
+          "sha256": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+          "byteIdentical": true,
+          "bodyHeightPx": 396
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-clemence-attempt-02b-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png",
+          "sha256": "0fb80d6ec9d03dae0e60f6aeefc2e2da42ee1445bad681084b7e1f32635c5c98",
+          "byteIdentical": true,
+          "bodyHeightPx": 404
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-clemence-attempt-04a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png",
+          "sha256": "45748db10aa0aa3da3467b02a954349d03f15b1a562103332b6743172c9bcdcd",
+          "byteIdentical": true,
+          "bodyHeightPx": 371
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-clemence-attempt-03b-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png",
+          "sha256": "fc9bb0f88e7a8b18cfbd1daed0dbeb171c534a8fcb383720c205b0c470f9ef7e",
+          "byteIdentical": true,
+          "bodyHeightPx": 416
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_DEFAITE",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "E10",
+        "label": "La garde cède",
+        "text": "CIN_F006_DEFAITE · La garde cède\nLe bouclier se replie de travers ; il cherche sa visée et chute dans la boue. Aucun canon plasma ne surgit.\nDéclenchement : Après KO ; toutes les entités offensives sont coupées avant la scène.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_DEFAITE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-after-ko-shield-collapse-mask-search-fall-study-only",
+        "sourceSha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+          "/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+          "/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c"
+        },
+        "notes": "E10. Six actual source stages per direction: crooked left shield, loss of support, right hand seeks mask, knees ground, side fall, final collapse in a small local mud trace. Anatomical left shield/right wrist blades stay on their limbs. QA independent review approved the replacement A pages and complete final left B7. Right A reaches two knees earlier than left, allowed by the exact source. No offensive projectile/plasma, death entity, opponent or campaign state is added. Ground anchors manually reviewed on support feet/knees and collapsed ground-contact baseline. Fixed body references A-right645/A-left624/B336, never per-pose flattened height. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened all three originals; public copies verified byte-identical and SHA-checked."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-defaite-attempt-02a-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+          "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+          "byteIdentical": true,
+          "bodyHeightPx": 645
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-defaite-attempt-02a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+          "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+          "byteIdentical": true,
+          "bodyHeightPx": 624
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-defaite-attempt-02b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+          "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
+          "byteIdentical": true,
+          "bodyHeightPx": 336
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        }
+      ]
+    },
+    {
+      "actionId": "M_F006_EQUIP",
+      "source": {
+        "sheet": "05_MOVES_PROPOSES",
+        "cell": "U10",
+        "label": "Préparer / ranger l'arme",
+        "text": "M_F006_EQUIP · Préparer / ranger l'arme\nCommande S+H · Sans dégâts · Équipement\nArme : Lance scindée ; bouclier ; lance-carreaux\nAnimation lisible de sortie ou rangement ; attaques d'arme interdites jusqu'à la fin de l'action. Les armes perdues ne réapparaissent pas.\nPréparation / actif / récupération : 20 / 0 / 20 images · dégâts 0 · coût 0 %\nContre-jeu : Punir le changement de prise ; on ne s'équipe pas pendant une saisie, un hitstun ou un saut.\nAnatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_EQUIP\nEntité : Aucune · équipement : Voir feuille 06_ARMES\nAdaptation originale sourcée · Transition proposée ; inventaire à intégrer"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-draw-two-halves-connect-split-guide-stow-inspection-only",
+        "sourceSha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+          "/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0"
+        },
+        "notes": "U10. Six actual action drawings per direction, preserving the left forearm shield, fully retracted right wrist blades, two physically drawn spear halves and their hip holders. No intact third spear while halves are held. Fixed standing body references A372px/B302px and manually reviewed feet midpoint pivots. No inventory, damage, equipment state or duel binding is added. Independent engine review approved the exact original pages; public copies are byte-identical and SHA-verified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-equip-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
+          "sha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+          "byteIdentical": true,
+          "bodyHeightPx": 372
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-equip-attempt-02b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
+          "sha256": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0",
+          "byteIdentical": true,
+          "bodyHeightPx": 302
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 40
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 40
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_FATALITE_1",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "H10",
+        "label": "À portée de lame",
+        "text": "CIN_F006_FATALITE_1 · À portée de lame\nLa lance plaque la cible contre un relief ; le bouclier ferme le cadre avant le coup final. Un projectile de carreau n'est ajouté que si son masque est encore fonctionnel.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-full-choreography-gray-mannequin-basalt-scene-study-only",
+        "sourceSha256": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png": "8a5cdeb3eb3cbb42241af92f5e537ae1f3a334fcc1ad9d55386784259ebdc313",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png": "9fe4b4071699e2bd32713604f0a8131d85607dcc595a39d9455321e1f6f2ff34",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png": "1327b6fa5647ae4c4660877deb9d2b02fae5241f82d0eb9c00b4357d7d1da292",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png": "9c269b662f03f47c832b44e5603abaa00cedc8b85afce798922ccd551ac31573"
+        },
+        "notes": "H10. Six actual stages each facing: prepare, whole spear pin against small basalt support, anatomical LEFT shield screen, final contact truly hidden by opaque shield, effortful withdrawal, threat check and fold. QA independently approved all selected steps. Cropped right03b3 and unsafe originalA lower rows excluded. One spear, left shield stable, no projectile/gore or victory substitution. Gray articulated adult-sized mannequin and basalt are explicit scene-study stand-ins baked into these images: no real narrative victim, independent opponent synchronization, fatality input, lifecycle or duel binding implemented. Native spear-head detail varies between independently authored views; exact canon set/victim not certified. Fixed reviewed Feral body references and manually reviewed Feral-foot baselines exclude mannequin/slab feet. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened every selected original; public PNG copies are byte-identical and SHA-verified."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-1-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png",
+          "sha256": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+          "byteIdentical": true,
+          "bodyHeightPx": 240
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-1-attempt-02a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png",
+          "sha256": "8a5cdeb3eb3cbb42241af92f5e537ae1f3a334fcc1ad9d55386784259ebdc313",
+          "byteIdentical": true,
+          "bodyHeightPx": 450
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-1-attempt-03b-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png",
+          "sha256": "9fe4b4071699e2bd32713604f0a8131d85607dcc595a39d9455321e1f6f2ff34",
+          "byteIdentical": true,
+          "bodyHeightPx": 422
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-1-attempt-02b-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png",
+          "sha256": "1327b6fa5647ae4c4660877deb9d2b02fae5241f82d0eb9c00b4357d7d1da292",
+          "byteIdentical": true,
+          "bodyHeightPx": 422
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-1-attempt-03b-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png",
+          "sha256": "9c269b662f03f47c832b44e5603abaa00cedc8b85afce798922ccd551ac31573",
+          "byteIdentical": true,
+          "bodyHeightPx": 441
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 300
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_FATALITE_2",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "I10",
+        "label": "Autre issue — À portée de lame",
+        "text": "CIN_F006_FATALITE_2 · Autre issue — À portée de lame\nLa première coupe dévie l'arme. Le chasseur entre au contact et termine avec la seconde lame. Il vérifie la fin de la menace puis rentre l'arme. Adapter les prises à Feral.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-parry-second-blade-withdraw-check-stow-gray-mannequin-study-only",
+        "sourceSha256": "30a744e2c827b0edfbb24a61f1a43d41bb10243ccf918cb0eadd3c72b921d690",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-right-v100.png": "30a744e2c827b0edfbb24a61f1a43d41bb10243ccf918cb0eadd3c72b921d690",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-a-left-v100.png": "bb9756a2698a1511120c3b8fb2f2ae1c9eff63974cb59c225bfa841174934cfc",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-b-left-v100.png": "e702f0780bf8bf85c4af1bdb5620fce77665822f05ec8afeb92e80ce1bbaa3a2",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-stow-left-v100.png": "e2f8eb39d63dc8d2413faba512bba3d0647d0688128b98fbf95f7a77336df3d2"
+        },
+        "notes": "I10. Seven actual stages each facing: parry first training blade, close step, second blade contact, withdrawal and mannequin blade drops, threat check, join/control weapon, genuine final STOW with both compact halves at hips and hands released. Source does not prescribe first/second hand: left parry then right strike is valid. Corrected left shield stays on near anatomical LEFT arm. QA approved final left stow3; unsafe upper0/1 never counted or played. Packing from joined staff to compact hips is an endpoint ellipse, no new equipment/inventory mechanic. Gray articulated mannequin is an explicit scene-study stand-in: no real opponent duplicated in combat, independent victim/lifecycle synchronization absent. No gore/projectile or renamed victory pose. One fixed Feral body reference per page, reviewed Feral-feet anchors exclude mannequin feet. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened every selected original; public PNG copies are byte-identical and SHA-verified."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-2-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-2-right-v100.png",
+          "sha256": "30a744e2c827b0edfbb24a61f1a43d41bb10243ccf918cb0eadd3c72b921d690",
+          "byteIdentical": true,
+          "bodyHeightPx": 228
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-2-attempt-02a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-2-a-left-v100.png",
+          "sha256": "bb9756a2698a1511120c3b8fb2f2ae1c9eff63974cb59c225bfa841174934cfc",
+          "byteIdentical": true,
+          "bodyHeightPx": 428
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-2-attempt-02b-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-2-b-left-v100.png",
+          "sha256": "e702f0780bf8bf85c4af1bdb5620fce77665822f05ec8afeb92e80ce1bbaa3a2",
+          "byteIdentical": true,
+          "bodyHeightPx": 441
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-fatalite-2-stow-attempt-03-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-fatalite-2-stow-left-v100.png",
+          "sha256": "e2f8eb39d63dc8d2413faba512bba3d0647d0688128b98fbf95f7a77336df3d2",
+          "byteIdentical": true,
+          "bodyHeightPx": 474
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 7,
+          "inspectionTicks": 300
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 7,
+          "inspectionTicks": 300
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_INTRO",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "C10",
+        "label": "Entrée — La visée retournée",
+        "text": "CIN_F006_INTRO · Entrée — La visée retournée\nLe bouclier se déploie dans un cliquetis d'os et de métal. Le masque fixe un point puis la lance se sépare.\nDéclenchement : Avant le premier round ; 3 plans puis retour sans déplacement des collisions.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_INTRO · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-shield-deploy-mask-aim-spear-split-body-study-only",
+        "sourceSha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+          "/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+          "/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+          "/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0"
+        },
+        "notes": "C10. Six actual authored action stages each facing: left shield starts deployment, full guard opens, mask fixes a point, two-hand grip, torsion, complete spear separation. Independent final QA opened all four originals and approved actual1..3; left B2 and B3 preserve two distinct sections, no rejoined third staff. Shield remains anatomical LEFT; intact spear begins RIGHT. Fixed mask-crown-to-Feral-soles references exclude hair and weapon tips. Native spacing edits preserve complete poses and true transparent gutters. No intro collision, three-plan staging, equipment inventory or sound mechanic is certified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-intro-attempt-04a-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+          "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+          "byteIdentical": true,
+          "bodyHeightPx": 472
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-intro-attempt-04a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+          "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+          "byteIdentical": true,
+          "bodyHeightPx": 484
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-intro-attempt-03b-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+          "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+          "byteIdentical": true,
+          "bodyHeightPx": 500
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-intro-attempt-03b-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+          "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0",
+          "byteIdentical": true,
+          "bodyHeightPx": 463
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 200
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 200
+        }
+      ]
+    },
+    {
+      "actionId": "M_F006_S2",
+      "source": {
+        "sheet": "05_MOVES_PROPOSES",
+        "cell": "Q10",
+        "label": "Déploiement du bouclier",
+        "text": "M_F006_S2 · Déploiement du bouclier\nCommande 214+S · Selon trajectoire / prototype · Spécial\nArme : Bouclier de poignet\nLes segments s'ouvrent devant l'avant-bras ; garde directionnelle puis coup de bord à courte portée.\nPréparation / actif / récupération : 9 / 18 / 25 images · dégâts 70 · coût 15 %\nContre-jeu : Projection, frappe arrière ou attente ; la garde n'est pas permanente.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S2\nEntité : E_F006_shield · équipement : W_F006_bouclier-poignet\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-shield-deployment-guard-edge-bash-recoil-fold-return-inspection-only",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+          "/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce"
+        },
+        "notes": "Six vrais dessins du geste par côté, sur deux originaux inchangés ; calibrations debout exclues. Références fixes329/336px et pivots d’appui revus par page. Double revue producteur/moteur : déploiement des segments, garde directionnelle, coup de bord, recul, repli et retour. La lecture52ticks est une étude indépendante deQ10 ; aucune mécanique de garde/contre, entité de bouclier, durée de duel ou inventaire ajouté."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s2-attempt-05a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+          "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+          "byteIdentical": true,
+          "bodyHeightPx": 329
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s2-attempt-05b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+          "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+          "byteIdentical": true,
+          "bodyHeightPx": 336
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 52
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 52
+        }
+      ]
+    },
+    {
+      "actionId": "M_F006_S3",
+      "source": {
+        "sheet": "05_MOVES_PROPOSES",
+        "cell": "R10",
+        "label": "Lance scindée",
+        "text": "M_F006_S3 · Lance scindée\nCommande 623+S · Selon trajectoire / prototype · Spécial\nArme : Lance séparable\nDissociation mécanique de la lance en deux armes ; courte chaîne alternée, puis remise en place.\nPréparation / actif / récupération : 16 / 7 / 24 images · dégâts 110 · coût 10 %\nContre-jeu : Punir le changement de prise ; ne pas afficher simultanément lance entière et moitiés.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S3\nEntité : Aucune · équipement : W_F006_lance-scindee\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-whole-spear-twist-separate-left-strike-right-counter-align-rejoin-inspection-only",
+        "sourceSha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+          "/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+          "/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+          "/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74"
+        },
+        "notes": "R10. Six actual action drawings per facing, independently redrawn. Whole spear twists and separates into exactly two halves; left-hand strike then genuine right-hand counter (shield stays on left), alignment and rejoined whole. QA independent review approved the alternation and source sequence. Old B2/B3 same-left counter is EXCLUDED; unsafe A6/A7 are EXCLUDED. No third intact spear appears with halves. Slight drawing/design variation remains a visual-study scope, no new spear entity or duel mechanic. Fixed reviewed page body references and manually reviewed feet anchors. Independent engine review approved all four exact original pages; public copies are byte-identical and SHA-verified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s3-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
+          "sha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+          "byteIdentical": true,
+          "bodyHeightPx": 363
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s3-strike-attempt-02.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
+          "sha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+          "byteIdentical": true,
+          "bodyHeightPx": 478
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s3-counter-attempt-03.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
+          "sha256": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+          "byteIdentical": true,
+          "bodyHeightPx": 421
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s3-attempt-01b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
+          "sha256": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74",
+          "byteIdentical": true,
+          "bodyHeightPx": 362
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 47
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 47
+        }
+      ]
+    },
+    {
+      "actionId": "M_F006_S4",
+      "source": {
+        "sheet": "05_MOVES_PROPOSES",
+        "cell": "S10",
+        "label": "Mine d'interdiction",
+        "text": "M_F006_S4 · Mine d'interdiction\nCommande 22+S · Selon trajectoire / prototype · Spécial\nArme : Mine de chasse\nPose visible, clignotement d'armement puis activation de proximité ; armer n'inflige pas déjà des dégâts.\nPréparation / actif / récupération : 34 / 90 / 30 images · dégâts 105 · coût 35 %\nContre-jeu : Frapper la mine, sauter son rayon ou provoquer l'activation à distance.\nDispositif seulement si documenté pour le costume ; sinon option de gameplay explicitement dérivée. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S4\nEntité : E_F006_mine · équipement : W_F006_mine\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-body-inspection-only-s4",
+        "sourceSha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+          "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830"
+        },
+        "notes": "S10. Six genuine BODY stages each facing: retrieve one device, crouch/place, release, step back, watch OFF and settle armed RED, with AMBER/OFF/RED states. One circular openwork crown only; no hip duplicate. Explicit bounded root review accepts remaining native drawing variation: mine normalized width is about19–21% larger on pageB than pageA (about3–4 display pixels at BODY128); stable physical scale or complete E_F006_mine is NOT certified. The source does not specify an exact device dimension. This is a free gameplay-derived study, not canon certification. Proximity activation, entity ownership, damage, explosion and duel binding remain UNIMPLEMENTED by this art. QA approved anatomy, actual alpha gutters and body movement; fixed body references A388/B314 with manually reviewed feet pivots. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened the exact originals and public copies were verified byte-identical against declared SHA-256."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s4-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+          "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+          "byteIdentical": true,
+          "bodyHeightPx": 388
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s4-attempt-05b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+          "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+          "byteIdentical": true,
+          "bodyHeightPx": 314
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 154
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 154
+        }
+      ]
+    },
+    {
+      "actionId": "M_F006_SUPER",
+      "source": {
+        "sheet": "05_MOVES_PROPOSES",
+        "cell": "T10",
+        "label": "La signature — Pression et bouclier",
+        "text": "M_F006_SUPER · La signature — Pression et bouclier\nCommande 236236+S · Ouverture bloquable · Super\nArme : Lance-carreaux\nConfirme un contact court, puis prolonge « Carreaux guidés » dans une séquence à caméra bornée. Si le premier contact est gardé, la scène ne se déclenche pas.\nPréparation / actif / récupération : 24 / 8 / 48 images · dégâts 280 · coût 100 %\nContre-jeu : Garder l'amorce ou sortir de portée ; récupération longue si manqué.\nPas de nouveaux pouvoirs. Réutilise uniquement armes/entités autorisées pour le costume ; la cinématique n'efface pas les blessures.\nCorps : F006_ACT_SUPER\nEntité : E_F006_bolt · équipement : W_F006_lance-carreaux\nAdaptation originale sourcée · Super original non implémenté"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-shield-opener-draw-left-launcher-aim-recoil-recover-body-study-only",
+        "sourceSha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+          "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+          "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+          "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b"
+        },
+        "notes": "T10. Six actual stages each facing. Physically explicit staging keeps existing launcher secured low on LEFT side during LEFT shield bash, then LEFT fingers visibly draw it while that forearm shield folds, then raise/aim, mechanical recoil and recovery. Empty attachment during rightA2 is not a second launcher: no red receiver there. LEFT launcher and LEFT shield remain on their anatomical side; right wrist blades retracted. Independent QA review approved new03A pages and selected oldB complements. Right01b LEFT5 with missing launcher is excluded; old incorrect03/02 bash cells are excluded. No hit-confirm, super resource, actual bolt entity, inventory state, damage or duel binding is added. Fixed standing references and reviewed feet midpoint anchors. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened all four originals; public copies are byte-identical and SHA-verified."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-super-attempt-03a-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+          "byteIdentical": true,
+          "bodyHeightPx": 494
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-super-attempt-03a-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+          "byteIdentical": true,
+          "bodyHeightPx": 480
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-super-attempt-01b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+          "byteIdentical": true,
+          "bodyHeightPx": 372
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-super-attempt-02-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+          "byteIdentical": true,
+          "bodyHeightPx": 234
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 80
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 80
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_TAUNT_1",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "F10",
+        "label": "Le défi",
+        "text": "CIN_F006_TAUNT_1 · Le défi\nIl fait claquer le bord du bouclier contre sa lame, puis laisse volontairement une ouverture.\nDéclenchement : En garde neutre ; interrompable ; aucune invulnérabilité ni bonus caché.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_TAUNT_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-right-blades-left-shield-rim-clack-voluntary-open-guard-body-study-only",
+        "sourceSha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+          "/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177"
+        },
+        "notes": "F10. Six actual action stages each facing: approach right wrist blades to left shield, contact the shield seen in thin metallic edge profile, clack/compress, separate, deliberately expose/open guard with the same two blades, return. Root and producer review accept contact on the visible metal thickness of the rim, rather than imposing a particular orange paint pixel. The roots of the right blades are occluded by the open right palm in the exposed pose, remain aligned with the same gauntlet and are visible before/after; no extra hand or detached weapon is introduced. Correct anatomical LEFT shield and RIGHT blades persist. Native alpha2 gutters and all selected cells are safe. This is authored BODY choreography only: no sound event, taunt AI effect or combat opening mechanic implemented. Fixed reviewed MASK-crown-to-soles reference excludes hair and weapons. Independent final QA agreed with this contact/occlusion reading and approved both complete pages; contradictory earlier concerns are preserved in the intake ledger. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-03a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+          "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+          "byteIdentical": true,
+          "bodyHeightPx": 348
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-05b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+          "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177",
+          "byteIdentical": true,
+          "bodyHeightPx": 264
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 60
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 60
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_TAUNT_2",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "G10",
+        "label": "Vérifier l'arme",
+        "text": "CIN_F006_TAUNT_2 · Vérifier l'arme\nFeral interrompt un instant sa garde pour vérifier lance-carreaux. La caméra reste fixe ; le geste utilise un accessoire réellement équipé.\nDéclenchement : Variation seulement ; aucune arme nouvelle ne peut apparaître pour le taunt.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_TAUNT_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-action-native-body-inspection-only-taunt-2",
+        "sourceSha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+          "/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f"
+        },
+        "notes": "G10. Six genuine action drawings per direction: raise existing LEFT-hand three-rail launcher, rotate/inspect, RIGHT hand checks housing, release inspection, lower, settle. Same red receiver and rails, no extra ammo, reload, shoulder cannon or projectile. Left-hand grip and folded bracer side are stable; right wrist blades retracted. Independent QA review favorable. Fixed body references A272/B373 and manually reviewed feet anchors. Presentation study only, no new combat or equipment mechanic. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened the exact originals and public copies were verified byte-identical against declared SHA-256."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-2-attempt-02a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+          "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+          "byteIdentical": true,
+          "bodyHeightPx": 272
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-2-attempt-01b.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+          "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f",
+          "byteIdentical": true,
+          "bodyHeightPx": 373
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 6,
+          "inspectionTicks": 60
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 6,
+          "inspectionTicks": 60
+        }
+      ]
+    },
+    {
+      "actionId": "CIN_F006_VICTOIRE",
+      "source": {
+        "sheet": "07_PRESENTATIONS",
+        "cell": "D10",
+        "label": "Garder la preuve",
+        "text": "CIN_F006_VICTOIRE · Garder la preuve\nIl récupère les parties de sa lance, contrôle les carreaux restants et écoute les bois plutôt que saluer des spectateurs.\nDéclenchement : Victoire de match ; ne pas déclencher de récompense de campagne depuis un duel libre.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_VICTOIRE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+      },
+      "status": "ADMITTED_NATIVE_BODY_STUDY",
+      "review": {
+        "status": "validated",
+        "scope": "source-presentation-native-recover-rejoin-bolt-check-listening-body-study-only",
+        "sourceSha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+        "sourceHashes": {
+          "/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+          "/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+          "/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53"
+        },
+        "notes": "D10. Five actual action drawings each facing: recover first dropped spear part, recover second, rejoin mechanical spear, inspect remaining bolts in existing LEFT launcher, listen alertly without salute. QA opened final B08 in both directions and approved the mechanical two-ended red-core spear held RIGHT and short launcher LEFT, with correct two-arm grips. Drawing A carries a source ellipse between the assembled weapon and later launcher already in hand: no continuous launcher draw or inventory transition is claimed. Final B calibration0 and unneeded intermediate1 excluded, with genuine check2/listen3 retained. Native spear detail/shaft angle varies between independently authored sheets; no exact prop scale, forest decor, sound, ammunition counter or campaign victory lifecycle certified. Fixed body references use MASK crown and Feral feet, excluding spear tips and ground parts. Right final B08 abdomen is noticeably redder than page A; this native color variation is recorded, not claimed as a coherent skin-color transition. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+      },
+      "pages": [
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-victoire-attempt-01a.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+          "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+          "byteIdentical": true,
+          "bodyHeightPx": 363
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-victoire-attempt-08b-right.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+          "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+          "byteIdentical": true,
+          "bodyHeightPx": 459
+        },
+        {
+          "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-victoire-attempt-08b-left.png",
+          "public": "/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+          "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53",
+          "byteIdentical": true,
+          "bodyHeightPx": 438
+        }
+      ],
+      "clips": [
+        {
+          "facing": "right",
+          "actionDrawings": 5,
+          "inspectionTicks": 300
+        },
+        {
+          "facing": "left",
+          "actionDrawings": 5,
+          "inspectionTicks": 300
+        }
+      ]
+    }
+  ]
+}

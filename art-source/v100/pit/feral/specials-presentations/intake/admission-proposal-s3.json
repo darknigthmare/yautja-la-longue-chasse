@@ -1,0 +1,575 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "M_F006_S3",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-s3-v100",
+  "clipIds": [
+    "workbook.M_F006_S3"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 363,
+    "pageBodyHeightPx": {
+      "feral-special-s3-a-v100": 363,
+      "feral-special-s3-strike-v100": 478,
+      "feral-special-s3-counter-v100": 421,
+      "feral-special-s3-b-v100": 362
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          0,
+          0,
+          516,
+          405
+        ],
+        "visibleRect": [
+          50,
+          35,
+          451,
+          363
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          515,
+          0,
+          509,
+          405
+        ],
+        "visibleRect": [
+          531,
+          34,
+          448,
+          358
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          0,
+          404,
+          512,
+          373
+        ],
+        "visibleRect": [
+          109,
+          415,
+          348,
+          361
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          511,
+          404,
+          513,
+          373
+        ],
+        "visibleRect": [
+          566,
+          411,
+          370,
+          355
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          0,
+          776,
+          517,
+          384
+        ],
+        "visibleRect": [
+          40,
+          777,
+          465,
+          369
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-a-v100",
+        "rect": [
+          516,
+          776,
+          508,
+          384
+        ],
+        "visibleRect": [
+          529,
+          787,
+          456,
+          363
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-strike-v100",
+        "rect": [
+          0,
+          0,
+          768,
+          539
+        ],
+        "visibleRect": [
+          82,
+          50,
+          620,
+          478
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-strike-v100",
+        "rect": [
+          767,
+          0,
+          769,
+          539
+        ],
+        "visibleRect": [
+          833,
+          47,
+          624,
+          479
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-strike-v100",
+        "rect": [
+          0,
+          538,
+          780,
+          486
+        ],
+        "visibleRect": [
+          82,
+          549,
+          660,
+          430
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-strike-v100",
+        "rect": [
+          779,
+          538,
+          757,
+          486
+        ],
+        "visibleRect": [
+          818,
+          552,
+          649,
+          423
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-counter-v100",
+        "rect": [
+          0,
+          0,
+          761,
+          527
+        ],
+        "visibleRect": [
+          232,
+          58,
+          306,
+          421
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-counter-v100",
+        "rect": [
+          760,
+          0,
+          776,
+          527
+        ],
+        "visibleRect": [
+          984,
+          73,
+          326,
+          399
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-counter-v100",
+        "rect": [
+          0,
+          526,
+          797,
+          498
+        ],
+        "visibleRect": [
+          196,
+          580,
+          513,
+          388
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-counter-v100",
+        "rect": [
+          796,
+          526,
+          740,
+          498
+        ],
+        "visibleRect": [
+          885,
+          575,
+          466,
+          389
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          0,
+          0,
+          520,
+          404
+        ],
+        "visibleRect": [
+          47,
+          32,
+          459,
+          362
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          519,
+          0,
+          505,
+          404
+        ],
+        "visibleRect": [
+          534,
+          32,
+          456,
+          356
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          0,
+          762,
+          515,
+          369
+        ],
+        "visibleRect": [
+          82,
+          771,
+          388,
+          353
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          514,
+          762,
+          510,
+          369
+        ],
+        "visibleRect": [
+          560,
+          769,
+          406,
+          348
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          0,
+          1130,
+          524,
+          406
+        ],
+        "visibleRect": [
+          41,
+          1137,
+          470,
+          363
+        ]
+      },
+      {
+        "pageId": "feral-special-s3-b-v100",
+        "rect": [
+          523,
+          1130,
+          501,
+          406
+        ],
+        "visibleRect": [
+          536,
+          1139,
+          456,
+          355
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-s3-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-s3-a-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-s3-strike-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-s3-counter-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-s3-b-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F006_S3",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-s3-a-v100",
+              "rect": [
+                0,
+                404,
+                512,
+                373
+              ],
+              "pivot": [
+                255,
+                372
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-s3-a-v100",
+              "rect": [
+                0,
+                776,
+                517,
+                384
+              ],
+              "pivot": [
+                251,
+                370
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-s3-strike-v100",
+              "rect": [
+                0,
+                538,
+                780,
+                486
+              ],
+              "pivot": [
+                310,
+                441
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-special-s3-counter-v100",
+              "rect": [
+                0,
+                526,
+                797,
+                498
+              ],
+              "pivot": [
+                374,
+                442
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-special-s3-b-v100",
+              "rect": [
+                0,
+                762,
+                515,
+                369
+              ],
+              "pivot": [
+                250,
+                362
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "feral-special-s3-b-v100",
+              "rect": [
+                0,
+                1130,
+                524,
+                406
+              ],
+              "pivot": [
+                267,
+                370
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F006_S3",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-s3-a-v100",
+              "rect": [
+                511,
+                404,
+                513,
+                373
+              ],
+              "pivot": [
+                269,
+                362
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-s3-a-v100",
+              "rect": [
+                516,
+                776,
+                508,
+                384
+              ],
+              "pivot": [
+                261,
+                374
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-s3-strike-v100",
+              "rect": [
+                779,
+                538,
+                757,
+                486
+              ],
+              "pivot": [
+                471,
+                437
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-special-s3-counter-v100",
+              "rect": [
+                796,
+                526,
+                740,
+                498
+              ],
+              "pivot": [
+                406,
+                438
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-special-s3-b-v100",
+              "rect": [
+                514,
+                762,
+                510,
+                369
+              ],
+              "pivot": [
+                262,
+                355
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "feral-special-s3-b-v100",
+              "rect": [
+                523,
+                1130,
+                501,
+                406
+              ],
+              "pivot": [
+                246,
+                364
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-action-native-whole-spear-twist-separate-left-strike-right-counter-align-rejoin-inspection-only",
+    "sourceSha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+      "/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+      "/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+      "/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74"
+    },
+    "notes": "R10. Six actual action drawings per facing, independently redrawn. Whole spear twists and separates into exactly two halves; left-hand strike then genuine right-hand counter (shield stays on left), alignment and rejoined whole. QA independent review approved the alternation and source sequence. Old B2/B3 same-left counter is EXCLUDED; unsafe A6/A7 are EXCLUDED. No third intact spear appears with halves. Slight drawing/design variation remains a visual-study scope, no new spear entity or duel mechanic. Fixed reviewed page body references and manually reviewed feet anchors. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

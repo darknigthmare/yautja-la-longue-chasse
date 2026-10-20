@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-intro-attempt-03a-right.png",
+  "sourceSha256": "45680158a64b909327f5dc38408392dd16a85dd6a5f0b3430fc26b92343e9b21",
+  "bytes": 2419669,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 727,
+      "end": 885,
+      "cut": 806
+    }
+  ],
+  "frames": [],
+  "issues": [
+    "No safe vertical alpha gutter in row 1, before column 2",
+    "No safe vertical alpha gutter in row 2, before column 2",
+    "Column-first: No safe horizontal alpha gutter before row 2"
+  ]
+}

@@ -1,0 +1,2158 @@
+[
+  {
+    "key": "equip",
+    "actionId": "M_F006_EQUIP",
+    "scope": "source-action-native-draw-two-halves-connect-split-guide-stow-inspection-only",
+    "notes": "U10. Six actual action drawings per direction, preserving the left forearm shield, fully retracted right wrist blades, two physically drawn spear halves and their hip holders. No intact third spear while halves are held. Fixed standing body references A372px/B302px and manually reviewed feet midpoint pivots. No inventory, damage, equipment state or duel binding is added.",
+    "pages": [
+      {
+        "source": "feral-special-equip-attempt-01a",
+        "id": "feral-special-equip-a-v100",
+        "publicName": "feral-special-equip-a-v100.png",
+        "bodyHeightPx": 372,
+        "bodyReference": "Frame0 mask crown y24 to planted feet baseline396; shared fixed body scale for this complete page.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            275,
+            396
+          ],
+          "1": [
+            250,
+            394
+          ],
+          "2": [
+            271,
+            367
+          ],
+          "3": [
+            258,
+            361
+          ],
+          "4": [
+            251,
+            365
+          ],
+          "5": [
+            293,
+            360
+          ],
+          "6": [
+            253,
+            368
+          ],
+          "7": [
+            278,
+            367
+          ]
+        }
+      },
+      {
+        "source": "feral-special-equip-attempt-02b",
+        "id": "feral-special-equip-b-v100",
+        "publicName": "feral-special-equip-b-v100.png",
+        "bodyHeightPx": 302,
+        "bodyReference": "Frame0 mask crown y152 to planted feet baseline454; shared fixed body scale for this complete page.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            280,
+            454
+          ],
+          "1": [
+            244,
+            454
+          ],
+          "2": [
+            279,
+            334
+          ],
+          "3": [
+            240,
+            331
+          ],
+          "4": [
+            277,
+            305
+          ],
+          "5": [
+            233,
+            302
+          ],
+          "6": [
+            279,
+            332
+          ],
+          "7": [
+            243,
+            331
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-equip-attempt-01a",
+          2,
+          6
+        ],
+        [
+          "feral-special-equip-attempt-01a",
+          4,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-01a",
+          6,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          2,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          4,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          6,
+          6
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-equip-attempt-01a",
+          3,
+          6
+        ],
+        [
+          "feral-special-equip-attempt-01a",
+          5,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-01a",
+          7,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          3,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          5,
+          7
+        ],
+        [
+          "feral-special-equip-attempt-02b",
+          7,
+          6
+        ]
+      ]
+    }
+  },
+  {
+    "key": "s3",
+    "actionId": "M_F006_S3",
+    "scope": "source-action-native-whole-spear-twist-separate-left-strike-right-counter-align-rejoin-inspection-only",
+    "notes": "R10. Six actual action drawings per facing, independently redrawn. Whole spear twists and separates into exactly two halves; left-hand strike then genuine right-hand counter (shield stays on left), alignment and rejoined whole. QA independent review approved the alternation and source sequence. Old B2/B3 same-left counter is EXCLUDED; unsafe A6/A7 are EXCLUDED. No third intact spear appears with halves. Slight drawing/design variation remains a visual-study scope, no new spear entity or duel mechanic. Fixed reviewed page body references and manually reviewed feet anchors.",
+    "pages": [
+      {
+        "source": "feral-special-s3-attempt-01a",
+        "id": "feral-special-s3-a-v100",
+        "publicName": "feral-special-s3-a-v100.png",
+        "bodyHeightPx": 363,
+        "bodyReference": "Frame0 crown35 to feet398. Frame6/7 are UNSAFE and excluded; only measured safe twist/split source frames2..5 are used.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            270,
+            398
+          ],
+          "1": [
+            253,
+            392
+          ],
+          "2": [
+            255,
+            372
+          ],
+          "3": [
+            269,
+            362
+          ],
+          "4": [
+            251,
+            370
+          ],
+          "5": [
+            261,
+            374
+          ]
+        }
+      },
+      {
+        "source": "feral-special-s3-strike-attempt-02",
+        "id": "feral-special-s3-strike-v100",
+        "publicName": "feral-special-s3-strike-v100.png",
+        "bodyHeightPx": 478,
+        "bodyReference": "Frame0 crown50 to feet528, one standing fixed body reference for both independent facings.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            374,
+            528
+          ],
+          "1": [
+            384,
+            526
+          ],
+          "2": [
+            310,
+            441
+          ],
+          "3": [
+            471,
+            437
+          ]
+        }
+      },
+      {
+        "source": "feral-special-s3-counter-attempt-03",
+        "id": "feral-special-s3-counter-v100",
+        "publicName": "feral-special-s3-counter-v100.png",
+        "bodyHeightPx": 421,
+        "bodyReference": "Frame0 crown58 to feet479, fixed body reference; right-arm counter only, no left-arm repeat.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            385,
+            479
+          ],
+          "1": [
+            390,
+            472
+          ],
+          "2": [
+            374,
+            442
+          ],
+          "3": [
+            406,
+            438
+          ]
+        }
+      },
+      {
+        "source": "feral-special-s3-attempt-01b",
+        "id": "feral-special-s3-b-v100",
+        "publicName": "feral-special-s3-b-v100.png",
+        "bodyHeightPx": 362,
+        "bodyReference": "Frame0 crown32 to feet394. Old left-arm counter frames2/3 excluded; alignment and whole rejoin4..7 only.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            273,
+            394
+          ],
+          "1": [
+            250,
+            388
+          ],
+          "4": [
+            250,
+            362
+          ],
+          "5": [
+            262,
+            355
+          ],
+          "6": [
+            267,
+            370
+          ],
+          "7": [
+            246,
+            364
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-s3-attempt-01a",
+          2,
+          8
+        ],
+        [
+          "feral-special-s3-attempt-01a",
+          4,
+          8
+        ],
+        [
+          "feral-special-s3-strike-attempt-02",
+          2,
+          4
+        ],
+        [
+          "feral-special-s3-counter-attempt-03",
+          2,
+          3
+        ],
+        [
+          "feral-special-s3-attempt-01b",
+          4,
+          12
+        ],
+        [
+          "feral-special-s3-attempt-01b",
+          6,
+          12
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-s3-attempt-01a",
+          3,
+          8
+        ],
+        [
+          "feral-special-s3-attempt-01a",
+          5,
+          8
+        ],
+        [
+          "feral-special-s3-strike-attempt-02",
+          3,
+          4
+        ],
+        [
+          "feral-special-s3-counter-attempt-03",
+          3,
+          3
+        ],
+        [
+          "feral-special-s3-attempt-01b",
+          5,
+          12
+        ],
+        [
+          "feral-special-s3-attempt-01b",
+          7,
+          12
+        ]
+      ]
+    }
+  },
+  {
+    "key": "s4",
+    "actionId": "M_F006_S4",
+    "scope": "source-action-native-body-inspection-only-s4",
+    "notes": "S10. Six genuine BODY stages each facing: retrieve one device, crouch/place, release, step back, watch OFF and settle armed RED, with AMBER/OFF/RED states. One circular openwork crown only; no hip duplicate. Explicit bounded root review accepts remaining native drawing variation: mine normalized width is about19\u201321% larger on pageB than pageA (about3\u20134 display pixels at BODY128); stable physical scale or complete E_F006_mine is NOT certified. The source does not specify an exact device dimension. This is a free gameplay-derived study, not canon certification. Proximity activation, entity ownership, damage, explosion and duel binding remain UNIMPLEMENTED by this art. QA approved anatomy, actual alpha gutters and body movement; fixed body references A388/B314 with manually reviewed feet pivots.",
+    "pages": [
+      {
+        "source": "feral-special-s4-attempt-01a",
+        "id": "feral-special-s4-a-v100",
+        "publicName": "feral-special-s4-a-v100.png",
+        "bodyHeightPx": 388,
+        "bodyReference": "Frame0 mask crown24 to planted feet412; fixed body reference excludes separate mine.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            280,
+            412
+          ],
+          "1": [
+            247,
+            403
+          ],
+          "2": [
+            265,
+            358
+          ],
+          "3": [
+            258,
+            351
+          ],
+          "4": [
+            255,
+            303
+          ],
+          "5": [
+            270,
+            289
+          ],
+          "6": [
+            274,
+            376
+          ],
+          "7": [
+            260,
+            375
+          ]
+        }
+      },
+      {
+        "source": "feral-special-s4-attempt-05b",
+        "id": "feral-special-s4-b-v100",
+        "publicName": "feral-special-s4-b-v100.png",
+        "bodyHeightPx": 314,
+        "bodyReference": "Frame0 mask crown101 to planted feet415; same fixed scale for the entire page, not per-pose silhouette height.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            272,
+            415
+          ],
+          "1": [
+            240,
+            414
+          ],
+          "2": [
+            265,
+            331
+          ],
+          "3": [
+            255,
+            328
+          ],
+          "4": [
+            259,
+            316
+          ],
+          "5": [
+            270,
+            316
+          ],
+          "6": [
+            256,
+            314
+          ],
+          "7": [
+            271,
+            314
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-s4-attempt-01a",
+          2,
+          10
+        ],
+        [
+          "feral-special-s4-attempt-01a",
+          4,
+          10
+        ],
+        [
+          "feral-special-s4-attempt-01a",
+          6,
+          14
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          2,
+          30
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          4,
+          30
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          6,
+          60
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-s4-attempt-01a",
+          3,
+          10
+        ],
+        [
+          "feral-special-s4-attempt-01a",
+          5,
+          10
+        ],
+        [
+          "feral-special-s4-attempt-01a",
+          7,
+          14
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          3,
+          30
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          5,
+          30
+        ],
+        [
+          "feral-special-s4-attempt-05b",
+          7,
+          60
+        ]
+      ]
+    }
+  },
+  {
+    "key": "taunt-2",
+    "actionId": "CIN_F006_TAUNT_2",
+    "scope": "source-action-native-body-inspection-only-taunt-2",
+    "notes": "G10. Six genuine action drawings per direction: raise existing LEFT-hand three-rail launcher, rotate/inspect, RIGHT hand checks housing, release inspection, lower, settle. Same red receiver and rails, no extra ammo, reload, shoulder cannon or projectile. Left-hand grip and folded bracer side are stable; right wrist blades retracted. Independent QA review favorable. Fixed body references A272/B373 and manually reviewed feet anchors. Presentation study only, no new combat or equipment mechanic.",
+    "pages": [
+      {
+        "source": "feral-special-taunt-2-attempt-02a",
+        "id": "feral-special-taunt-2-a-v100",
+        "publicName": "feral-special-taunt-2-a-v100.png",
+        "bodyHeightPx": 272,
+        "bodyReference": "Frame0 mask crown114 to planted feet386; launcher tip may extend beyond body in action and never determines scale.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            310,
+            386
+          ],
+          "1": [
+            215,
+            383
+          ],
+          "2": [
+            305,
+            330
+          ],
+          "3": [
+            218,
+            328
+          ],
+          "4": [
+            305,
+            319
+          ],
+          "5": [
+            214,
+            315
+          ],
+          "6": [
+            309,
+            302
+          ],
+          "7": [
+            219,
+            297
+          ]
+        }
+      },
+      {
+        "source": "feral-special-taunt-2-attempt-01b",
+        "id": "feral-special-taunt-2-b-v100",
+        "publicName": "feral-special-taunt-2-b-v100.png",
+        "bodyHeightPx": 373,
+        "bodyReference": "Frame0 mask crown26 to planted feet399; one fixed reference shared by this page.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            256,
+            399
+          ],
+          "1": [
+            284,
+            394
+          ],
+          "2": [
+            249,
+            354
+          ],
+          "3": [
+            302,
+            350
+          ],
+          "4": [
+            255,
+            365
+          ],
+          "5": [
+            302,
+            359
+          ],
+          "6": [
+            274,
+            391
+          ],
+          "7": [
+            284,
+            384
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-taunt-2-attempt-02a",
+          2,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-02a",
+          4,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-02a",
+          6,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          2,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          4,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          6,
+          10
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-taunt-2-attempt-02a",
+          3,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-02a",
+          5,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-02a",
+          7,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          3,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          5,
+          10
+        ],
+        [
+          "feral-special-taunt-2-attempt-01b",
+          7,
+          10
+        ]
+      ]
+    }
+  },
+  {
+    "key": "defaite",
+    "actionId": "CIN_F006_DEFAITE",
+    "scope": "source-presentation-native-after-ko-shield-collapse-mask-search-fall-study-only",
+    "notes": "E10. Six actual source stages per direction: crooked left shield, loss of support, right hand seeks mask, knees ground, side fall, final collapse in a small local mud trace. Anatomical left shield/right wrist blades stay on their limbs. QA independent review approved the replacement A pages and complete final left B7. Right A reaches two knees earlier than left, allowed by the exact source. No offensive projectile/plasma, death entity, opponent or campaign state is added. Ground anchors manually reviewed on support feet/knees and collapsed ground-contact baseline. Fixed body references A-right645/A-left624/B336, never per-pose flattened height.",
+    "pages": [
+      {
+        "source": "feral-special-defaite-attempt-02a-right",
+        "id": "feral-special-defaite-a-right-v100",
+        "publicName": "feral-special-defaite-a-right-v100.png",
+        "bodyHeightPx": 645,
+        "bodyReference": "Fixed standing calibration0 reviewed by QA: body crown/feet approximately82..727. No low KO-pose height is ever used as body scale.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            285,
+            727
+          ],
+          "1": [
+            248,
+            740
+          ],
+          "2": [
+            381,
+            646
+          ],
+          "3": [
+            315,
+            635
+          ]
+        }
+      },
+      {
+        "source": "feral-special-defaite-attempt-02a-left",
+        "id": "feral-special-defaite-a-left-v100",
+        "publicName": "feral-special-defaite-a-left-v100.png",
+        "bodyHeightPx": 624,
+        "bodyReference": "Fixed standing calibration0 reviewed by QA: body approximately95..719. Supporting-foot anchor in stagger, grounded knee/ankle reference in kneel.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            281,
+            719
+          ],
+          "1": [
+            255,
+            720
+          ],
+          "2": [
+            209,
+            627
+          ],
+          "3": [
+            245,
+            635
+          ]
+        }
+      },
+      {
+        "source": "feral-special-defaite-attempt-02b",
+        "id": "feral-special-defaite-b-v100",
+        "publicName": "feral-special-defaite-b-v100.png",
+        "bodyHeightPx": 336,
+        "bodyReference": "Fixed upright calibration0: crown134 to planted feet470. Ground-contact baselines continue through side fall and collapsed poses; not rescaled by flattened silhouettes.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            280,
+            470
+          ],
+          "1": [
+            252,
+            464
+          ],
+          "2": [
+            245,
+            350
+          ],
+          "3": [
+            310,
+            362
+          ],
+          "4": [
+            112,
+            275
+          ],
+          "5": [
+            420,
+            288
+          ],
+          "6": [
+            474,
+            195
+          ],
+          "7": [
+            419,
+            211
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-defaite-attempt-02a-right",
+          1,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02a-right",
+          2,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02a-right",
+          3,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          2,
+          60
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          4,
+          60
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          6,
+          60
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-defaite-attempt-02a-left",
+          1,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02a-left",
+          2,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02a-left",
+          3,
+          40
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          3,
+          60
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          5,
+          60
+        ],
+        [
+          "feral-special-defaite-attempt-02b",
+          7,
+          60
+        ]
+      ]
+    }
+  },
+  {
+    "key": "super",
+    "actionId": "M_F006_SUPER",
+    "scope": "source-action-native-shield-opener-draw-left-launcher-aim-recoil-recover-body-study-only",
+    "notes": "T10. Six actual stages each facing. Physically explicit staging keeps existing launcher secured low on LEFT side during LEFT shield bash, then LEFT fingers visibly draw it while that forearm shield folds, then raise/aim, mechanical recoil and recovery. Empty attachment during rightA2 is not a second launcher: no red receiver there. LEFT launcher and LEFT shield remain on their anatomical side; right wrist blades retracted. Independent QA review approved new03A pages and selected oldB complements. Right01b LEFT5 with missing launcher is excluded; old incorrect03/02 bash cells are excluded. No hit-confirm, super resource, actual bolt entity, inventory state, damage or duel binding is added. Fixed standing references and reviewed feet midpoint anchors.",
+    "pages": [
+      {
+        "source": "feral-special-super-attempt-03a-right",
+        "id": "feral-special-super-a-right-v100",
+        "publicName": "feral-special-super-a-right-v100.png",
+        "bodyHeightPx": 494,
+        "bodyReference": "Standing calib0 reviewed: gold mask crown about(478,16), planted feet510. Left-waist launcher and empty holder never determine body scale.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            384,
+            510
+          ],
+          "1": [
+            325,
+            498
+          ],
+          "2": [
+            391,
+            471
+          ],
+          "3": [
+            279,
+            473
+          ]
+        }
+      },
+      {
+        "source": "feral-special-super-attempt-03a-left",
+        "id": "feral-special-super-a-left-v100",
+        "publicName": "feral-special-super-a-left-v100.png",
+        "bodyHeightPx": 480,
+        "bodyReference": "Standing calib0: gold mask crown about(342,19), planted feet499. One fixed body scale for all source poses.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            439,
+            499
+          ],
+          "1": [
+            449,
+            496
+          ],
+          "2": [
+            501,
+            486
+          ],
+          "3": [
+            524,
+            485
+          ]
+        }
+      },
+      {
+        "source": "feral-special-super-attempt-01b",
+        "id": "feral-special-super-b-right-v100",
+        "publicName": "feral-special-super-b-right-v100.png",
+        "bodyHeightPx": 372,
+        "bodyReference": "Standing calib0: gold mask crown approximately(306,28), feet400. Only RIGHT-facing frames2/4/6 selected; disappearing launcher in LEFT5 excluded.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            275,
+            400
+          ],
+          "2": [
+            238,
+            341
+          ],
+          "4": [
+            248,
+            346
+          ],
+          "6": [
+            291,
+            392
+          ]
+        }
+      },
+      {
+        "source": "feral-special-super-attempt-02-left",
+        "id": "feral-special-super-b-left-v100",
+        "publicName": "feral-special-super-b-left-v100.png",
+        "bodyHeightPx": 234,
+        "bodyReference": "Standing calib0: gold mask crown about(397,19), feet253. Only actual aim4/recoil5/settle7 selected; earlier old bash is excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            445,
+            253
+          ],
+          "4": [
+            502,
+            236
+          ],
+          "5": [
+            410,
+            236
+          ],
+          "7": [
+            373,
+            257
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-super-attempt-03a-right",
+          1,
+          10
+        ],
+        [
+          "feral-special-super-attempt-03a-right",
+          2,
+          10
+        ],
+        [
+          "feral-special-super-attempt-03a-right",
+          3,
+          4
+        ],
+        [
+          "feral-special-super-attempt-01b",
+          2,
+          8
+        ],
+        [
+          "feral-special-super-attempt-01b",
+          4,
+          24
+        ],
+        [
+          "feral-special-super-attempt-01b",
+          6,
+          24
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-super-attempt-03a-left",
+          1,
+          10
+        ],
+        [
+          "feral-special-super-attempt-03a-left",
+          2,
+          10
+        ],
+        [
+          "feral-special-super-attempt-03a-left",
+          3,
+          4
+        ],
+        [
+          "feral-special-super-attempt-02-left",
+          4,
+          8
+        ],
+        [
+          "feral-special-super-attempt-02-left",
+          5,
+          24
+        ],
+        [
+          "feral-special-super-attempt-02-left",
+          7,
+          24
+        ]
+      ]
+    }
+  },
+  {
+    "key": "fatalite-1",
+    "actionId": "CIN_F006_FATALITE_1",
+    "scope": "source-presentation-native-full-choreography-gray-mannequin-basalt-scene-study-only",
+    "notes": "H10. Six actual stages each facing: prepare, whole spear pin against small basalt support, anatomical LEFT shield screen, final contact truly hidden by opaque shield, effortful withdrawal, threat check and fold. QA independently approved all selected steps. Cropped right03b3 and unsafe originalA lower rows excluded. One spear, left shield stable, no projectile/gore or victory substitution. Gray articulated adult-sized mannequin and basalt are explicit scene-study stand-ins baked into these images: no real narrative victim, independent opponent synchronization, fatality input, lifecycle or duel binding implemented. Native spear-head detail varies between independently authored views; exact canon set/victim not certified. Fixed reviewed Feral body references and manually reviewed Feral-foot baselines exclude mannequin/slab feet.",
+    "pages": [
+      {
+        "source": "feral-special-fatalite-1-attempt-01a",
+        "id": "feral-special-fatalite-1-a-right-v100",
+        "publicName": "feral-special-fatalite-1-a-right-v100.png",
+        "bodyHeightPx": 240,
+        "bodyReference": "Standing calibration0 crown15 to Feral soles255, reviewed BODY240; unsafe lower rows excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            359,
+            255
+          ],
+          "1": [
+            311,
+            252
+          ],
+          "2": [
+            399,
+            237
+          ],
+          "3": [
+            295,
+            238
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-1-attempt-02a-left",
+        "id": "feral-special-fatalite-1-a-left-v100",
+        "publicName": "feral-special-fatalite-1-a-left-v100.png",
+        "bodyHeightPx": 450,
+        "bodyReference": "Standing calibration0 crown46 to Feral soles496; only Feral feet set anchors, never mannequin.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            476,
+            496
+          ],
+          "1": [
+            636,
+            493
+          ],
+          "2": [
+            543,
+            434
+          ],
+          "3": [
+            412,
+            441
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-1-attempt-03b-right",
+        "id": "feral-special-fatalite-1-final-right-v100",
+        "publicName": "feral-special-fatalite-1-final-right-v100.png",
+        "bodyHeightPx": 422,
+        "bodyReference": "Original422px standing reference unchanged by contact-only native edit. Cropped cell3 excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            307,
+            480
+          ],
+          "1": [
+            316,
+            477
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-1-attempt-02b-right",
+        "id": "feral-special-fatalite-1-return-right-v100",
+        "publicName": "feral-special-fatalite-1-return-right-v100.png",
+        "bodyHeightPx": 422,
+        "bodyReference": "Standing0 crown58 to soles480; mannequin and slab never determine body scale.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            307,
+            480
+          ],
+          "2": [
+            246,
+            437
+          ],
+          "3": [
+            191,
+            450
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-1-attempt-03b-left",
+        "id": "feral-special-fatalite-1-b-left-v100",
+        "publicName": "feral-special-fatalite-1-b-left-v100.png",
+        "bodyHeightPx": 441,
+        "bodyReference": "Standing0 mask crown near408/53 to Feral soles494 =441; staff/gray prop excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            488,
+            494
+          ],
+          "1": [
+            528,
+            491
+          ],
+          "2": [
+            587,
+            435
+          ],
+          "3": [
+            508,
+            439
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-fatalite-1-attempt-01a",
+          1,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-01a",
+          2,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-01a",
+          3,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-03b-right",
+          1,
+          60
+        ],
+        [
+          "feral-special-fatalite-1-attempt-02b-right",
+          2,
+          60
+        ],
+        [
+          "feral-special-fatalite-1-attempt-02b-right",
+          3,
+          60
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-fatalite-1-attempt-02a-left",
+          1,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-02a-left",
+          2,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-02a-left",
+          3,
+          40
+        ],
+        [
+          "feral-special-fatalite-1-attempt-03b-left",
+          1,
+          60
+        ],
+        [
+          "feral-special-fatalite-1-attempt-03b-left",
+          2,
+          60
+        ],
+        [
+          "feral-special-fatalite-1-attempt-03b-left",
+          3,
+          60
+        ]
+      ]
+    }
+  },
+  {
+    "key": "fatalite-2",
+    "actionId": "CIN_F006_FATALITE_2",
+    "scope": "source-presentation-native-parry-second-blade-withdraw-check-stow-gray-mannequin-study-only",
+    "notes": "I10. Seven actual stages each facing: parry first training blade, close step, second blade contact, withdrawal and mannequin blade drops, threat check, join/control weapon, genuine final STOW with both compact halves at hips and hands released. Source does not prescribe first/second hand: left parry then right strike is valid. Corrected left shield stays on near anatomical LEFT arm. QA approved final left stow3; unsafe upper0/1 never counted or played. Packing from joined staff to compact hips is an endpoint ellipse, no new equipment/inventory mechanic. Gray articulated mannequin is an explicit scene-study stand-in: no real opponent duplicated in combat, independent victim/lifecycle synchronization absent. No gore/projectile or renamed victory pose. One fixed Feral body reference per page, reviewed Feral-feet anchors exclude mannequin feet.",
+    "pages": [
+      {
+        "source": "feral-special-fatalite-2-attempt-01a",
+        "id": "feral-special-fatalite-2-right-v100",
+        "publicName": "feral-special-fatalite-2-right-v100.png",
+        "bodyHeightPx": 228,
+        "bodyReference": "Standing0 reviewed BODY228, crown39 to soles267. Props do not set scale.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            368,
+            267
+          ],
+          "1": [
+            345,
+            267
+          ],
+          "2": [
+            323,
+            241
+          ],
+          "3": [
+            293,
+            242
+          ],
+          "4": [
+            327,
+            222
+          ],
+          "5": [
+            285,
+            222
+          ],
+          "6": [
+            358,
+            217
+          ],
+          "7": [
+            288,
+            215
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-2-attempt-02a-left",
+        "id": "feral-special-fatalite-2-a-left-v100",
+        "publicName": "feral-special-fatalite-2-a-left-v100.png",
+        "bodyHeightPx": 428,
+        "bodyReference": "Standing0 mask crown near373/46 to Feral soles474 =428; dummy/raised blades excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            495,
+            474
+          ],
+          "1": [
+            605,
+            465
+          ],
+          "2": [
+            582,
+            457
+          ],
+          "3": [
+            500,
+            467
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-2-attempt-02b-left",
+        "id": "feral-special-fatalite-2-b-left-v100",
+        "publicName": "feral-special-fatalite-2-b-left-v100.png",
+        "bodyHeightPx": 441,
+        "bodyReference": "Standing0 mask crown near404/38 to Feral soles479 =441; fixed across withdrawal/check/join.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            490,
+            479
+          ],
+          "1": [
+            546,
+            473
+          ],
+          "2": [
+            570,
+            455
+          ],
+          "3": [
+            547,
+            463
+          ]
+        }
+      },
+      {
+        "source": "feral-special-fatalite-2-stow-attempt-03-left",
+        "id": "feral-special-fatalite-2-stow-left-v100",
+        "publicName": "feral-special-fatalite-2-stow-left-v100.png",
+        "bodyHeightPx": 474,
+        "bodyReference": "Reviewed actual standing final3: MASK crown1259/514 to Feral soles988 =474. Dreadlock top500 is not crown. Unsafe upper0/1 completely excluded; only safe final3 played.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "3": [
+            570,
+            499
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          1,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          2,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          3,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          4,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          5,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          6,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-01a",
+          7,
+          60
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-fatalite-2-attempt-02a-left",
+          1,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-02a-left",
+          2,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-02a-left",
+          3,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-02b-left",
+          1,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-02b-left",
+          2,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-attempt-02b-left",
+          3,
+          40
+        ],
+        [
+          "feral-special-fatalite-2-stow-attempt-03-left",
+          3,
+          60
+        ]
+      ]
+    }
+  },
+  {
+    "key": "intro",
+    "actionId": "CIN_F006_INTRO",
+    "scope": "source-presentation-native-shield-deploy-mask-aim-spear-split-body-study-only",
+    "notes": "C10. Six actual authored action stages each facing: left shield starts deployment, full guard opens, mask fixes a point, two-hand grip, torsion, complete spear separation. Independent final QA opened all four originals and approved actual1..3; left B2 and B3 preserve two distinct sections, no rejoined third staff. Shield remains anatomical LEFT; intact spear begins RIGHT. Fixed mask-crown-to-Feral-soles references exclude hair and weapon tips. Native spacing edits preserve complete poses and true transparent gutters. No intro collision, three-plan staging, equipment inventory or sound mechanic is certified.",
+    "pages": [
+      {
+        "source": "feral-special-intro-attempt-04a-right",
+        "id": "feral-special-intro-a-right-v100",
+        "publicName": "feral-special-intro-a-right-v100.png",
+        "bodyHeightPx": 472,
+        "bodyReference": "Standing calibration0 MASK crown near271/176 to soles648 =472, not spear/hair height.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            240,
+            648
+          ],
+          "1": [
+            234,
+            647
+          ],
+          "2": [
+            241,
+            568
+          ],
+          "3": [
+            225,
+            568
+          ]
+        }
+      },
+      {
+        "source": "feral-special-intro-attempt-04a-left",
+        "id": "feral-special-intro-a-left-v100",
+        "publicName": "feral-special-intro-a-left-v100.png",
+        "bodyHeightPx": 484,
+        "bodyReference": "Standing calibration0 MASK crown near236/187 to soles671 =484; spear and dreadlocks excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            310,
+            671
+          ],
+          "1": [
+            304,
+            671
+          ],
+          "2": [
+            317,
+            579
+          ],
+          "3": [
+            288,
+            582
+          ]
+        }
+      },
+      {
+        "source": "feral-special-intro-attempt-03b-right",
+        "id": "feral-special-intro-b-right-v100",
+        "publicName": "feral-special-intro-b-right-v100.png",
+        "bodyHeightPx": 500,
+        "bodyReference": "Standing calibration0 MASK crown near314/156 to soles656 =500; fixed through torsion/split.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            273,
+            656
+          ],
+          "1": [
+            218,
+            655
+          ],
+          "2": [
+            277,
+            592
+          ],
+          "3": [
+            184,
+            593
+          ]
+        }
+      },
+      {
+        "source": "feral-special-intro-attempt-03b-left",
+        "id": "feral-special-intro-b-left-v100",
+        "publicName": "feral-special-intro-b-left-v100.png",
+        "bodyHeightPx": 463,
+        "bodyReference": "Standing calibration0 MASK crown near216/184 to soles647 =463; folded shield remains visible.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            293,
+            647
+          ],
+          "1": [
+            330,
+            646
+          ],
+          "2": [
+            316,
+            578
+          ],
+          "3": [
+            290,
+            576
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-intro-attempt-04a-right",
+          1,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-04a-right",
+          2,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-04a-right",
+          3,
+          40
+        ],
+        [
+          "feral-special-intro-attempt-03b-right",
+          1,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-03b-right",
+          2,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-03b-right",
+          3,
+          40
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-intro-attempt-04a-left",
+          1,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-04a-left",
+          2,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-04a-left",
+          3,
+          40
+        ],
+        [
+          "feral-special-intro-attempt-03b-left",
+          1,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-03b-left",
+          2,
+          30
+        ],
+        [
+          "feral-special-intro-attempt-03b-left",
+          3,
+          40
+        ]
+      ]
+    }
+  },
+  {
+    "key": "victoire",
+    "actionId": "CIN_F006_VICTOIRE",
+    "scope": "source-presentation-native-recover-rejoin-bolt-check-listening-body-study-only",
+    "notes": "D10. Five actual action drawings each facing: recover first dropped spear part, recover second, rejoin mechanical spear, inspect remaining bolts in existing LEFT launcher, listen alertly without salute. QA opened final B08 in both directions and approved the mechanical two-ended red-core spear held RIGHT and short launcher LEFT, with correct two-arm grips. Drawing A carries a source ellipse between the assembled weapon and later launcher already in hand: no continuous launcher draw or inventory transition is claimed. Final B calibration0 and unneeded intermediate1 excluded, with genuine check2/listen3 retained. Native spear detail/shaft angle varies between independently authored sheets; no exact prop scale, forest decor, sound, ammunition counter or campaign victory lifecycle certified. Fixed body references use MASK crown and Feral feet, excluding spear tips and ground parts. Right final B08 abdomen is noticeably redder than page A; this native color variation is recorded, not claimed as a coherent skin-color transition.",
+    "pages": [
+      {
+        "source": "feral-special-victoire-attempt-01a",
+        "id": "feral-special-victoire-a-v100",
+        "publicName": "feral-special-victoire-a-v100.png",
+        "bodyHeightPx": 363,
+        "bodyReference": "Standing right calibration0 MASK crown near278/36 to Feral soles399 =363. Ground spear parts at415 do NOT set body height; left calibration is independently drawn slightly shorter.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            247,
+            400
+          ],
+          "1": [
+            271,
+            388
+          ],
+          "2": [
+            234,
+            300
+          ],
+          "3": [
+            294,
+            295
+          ],
+          "4": [
+            236,
+            308
+          ],
+          "5": [
+            280,
+            303
+          ],
+          "6": [
+            264,
+            414
+          ],
+          "7": [
+            246,
+            404
+          ]
+        }
+      },
+      {
+        "source": "feral-special-victoire-attempt-08b-right",
+        "id": "feral-special-victoire-b-right-v100",
+        "publicName": "feral-special-victoire-b-right-v100.png",
+        "bodyHeightPx": 459,
+        "bodyReference": "Standing calibration0 MASK crown near328/163 to Feral soles622 =459; shaft/dreads excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            274,
+            622
+          ],
+          "2": [
+            274,
+            590
+          ],
+          "3": [
+            265,
+            587
+          ]
+        }
+      },
+      {
+        "source": "feral-special-victoire-attempt-08b-left",
+        "id": "feral-special-victoire-b-left-v100",
+        "publicName": "feral-special-victoire-b-left-v100.png",
+        "bodyHeightPx": 438,
+        "bodyReference": "Standing calibration0 MASK crown near214/180 to Feral soles618 =438; upper spear tip117 is not body.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            268,
+            618
+          ],
+          "2": [
+            260,
+            625
+          ],
+          "3": [
+            271,
+            628
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-victoire-attempt-01a",
+          2,
+          40
+        ],
+        [
+          "feral-special-victoire-attempt-01a",
+          4,
+          40
+        ],
+        [
+          "feral-special-victoire-attempt-01a",
+          6,
+          50
+        ],
+        [
+          "feral-special-victoire-attempt-08b-right",
+          2,
+          80
+        ],
+        [
+          "feral-special-victoire-attempt-08b-right",
+          3,
+          90
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-victoire-attempt-01a",
+          3,
+          40
+        ],
+        [
+          "feral-special-victoire-attempt-01a",
+          5,
+          40
+        ],
+        [
+          "feral-special-victoire-attempt-01a",
+          7,
+          50
+        ],
+        [
+          "feral-special-victoire-attempt-08b-left",
+          2,
+          80
+        ],
+        [
+          "feral-special-victoire-attempt-08b-left",
+          3,
+          90
+        ]
+      ]
+    }
+  },
+  {
+    "key": "clemence",
+    "actionId": "CIN_F006_CLEMENCE",
+    "scope": "source-presentation-native-disarm-breathing-space-case-recovery-exit-mannequin-scene-study-only",
+    "notes": "J10. Six actual action stages each facing: hook/disarm intact training blade, step back, open left palm allowing unharmed partner to breathe, take existing sealed mission case by handle, rise holding case, real departure step. Independent final QA opened all four originals and confirmed case present from A1 onward, not spawned at pickup; same two-latch closed case remains identifiable despite minor native proportions/trim variation. Shield stays anatomical LEFT, intact spear RIGHT and blades retracted. Final exit turns intentionally away from the partner and is not an erroneous mirrored facing. Gray articulated adult-sized neutral mannequin, dropped blade and case are baked scene-study props; no narrative victim, synchronized real opponent, campaign mission object/reward or inventory/disarm mechanic is implemented. Fixed MASK-crown-to-Feral-soles scale and manually reviewed Feral feet exclude mannequin, blade and case ground pixels.",
+    "pages": [
+      {
+        "source": "feral-special-clemence-attempt-02a-right",
+        "id": "feral-special-clemence-a-right-v100",
+        "publicName": "feral-special-clemence-a-right-v100.png",
+        "bodyHeightPx": 396,
+        "bodyReference": "Standing calibration0 MASK crown near384/100 to Feral soles496 =396; fixed through lowered actions.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            356,
+            496
+          ],
+          "1": [
+            290,
+            496
+          ],
+          "2": [
+            205,
+            398
+          ],
+          "3": [
+            165,
+            408
+          ]
+        }
+      },
+      {
+        "source": "feral-special-clemence-attempt-02b-right",
+        "id": "feral-special-clemence-b-right-v100",
+        "publicName": "feral-special-clemence-b-right-v100.png",
+        "bodyHeightPx": 404,
+        "bodyReference": "Standing calibration0 MASK crown near313/64 to Feral soles468 =404; lowered spear/case excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            276,
+            468
+          ],
+          "1": [
+            278,
+            466
+          ],
+          "2": [
+            256,
+            435
+          ],
+          "3": [
+            224,
+            429
+          ]
+        }
+      },
+      {
+        "source": "feral-special-clemence-attempt-04a-left",
+        "id": "feral-special-clemence-a-left-v100",
+        "publicName": "feral-special-clemence-a-left-v100.png",
+        "bodyHeightPx": 371,
+        "bodyReference": "Standing calibration0 MASK crown near295/96 to Feral soles467 =371; dreadlock top86 excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            338,
+            467
+          ],
+          "1": [
+            678,
+            463
+          ],
+          "2": [
+            570,
+            401
+          ],
+          "3": [
+            581,
+            409
+          ]
+        }
+      },
+      {
+        "source": "feral-special-clemence-attempt-03b-left",
+        "id": "feral-special-clemence-b-left-v100",
+        "publicName": "feral-special-clemence-b-left-v100.png",
+        "bodyHeightPx": 416,
+        "bodyReference": "Standing calibration0 MASK crown near384/80 to Feral soles496 =416; hair69 and dropped blade excluded.",
+        "calibrationFrames": [
+          0
+        ],
+        "pivots": {
+          "0": [
+            441,
+            496
+          ],
+          "1": [
+            579,
+            492
+          ],
+          "2": [
+            531,
+            432
+          ],
+          "3": [
+            521,
+            434
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-clemence-attempt-02a-right",
+          1,
+          40
+        ],
+        [
+          "feral-special-clemence-attempt-02a-right",
+          2,
+          40
+        ],
+        [
+          "feral-special-clemence-attempt-02a-right",
+          3,
+          60
+        ],
+        [
+          "feral-special-clemence-attempt-02b-right",
+          1,
+          50
+        ],
+        [
+          "feral-special-clemence-attempt-02b-right",
+          2,
+          50
+        ],
+        [
+          "feral-special-clemence-attempt-02b-right",
+          3,
+          60
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-clemence-attempt-04a-left",
+          1,
+          40
+        ],
+        [
+          "feral-special-clemence-attempt-04a-left",
+          2,
+          40
+        ],
+        [
+          "feral-special-clemence-attempt-04a-left",
+          3,
+          60
+        ],
+        [
+          "feral-special-clemence-attempt-03b-left",
+          1,
+          50
+        ],
+        [
+          "feral-special-clemence-attempt-03b-left",
+          2,
+          50
+        ],
+        [
+          "feral-special-clemence-attempt-03b-left",
+          3,
+          60
+        ]
+      ]
+    }
+  },
+  {
+    "key": "taunt-1",
+    "actionId": "CIN_F006_TAUNT_1",
+    "scope": "source-presentation-native-right-blades-left-shield-rim-clack-voluntary-open-guard-body-study-only",
+    "notes": "F10. Six actual action stages each facing: approach right wrist blades to left shield, contact the shield seen in thin metallic edge profile, clack/compress, separate, deliberately expose/open guard with the same two blades, return. Root and producer review accept contact on the visible metal thickness of the rim, rather than imposing a particular orange paint pixel. The roots of the right blades are occluded by the open right palm in the exposed pose, remain aligned with the same gauntlet and are visible before/after; no extra hand or detached weapon is introduced. Correct anatomical LEFT shield and RIGHT blades persist. Native alpha2 gutters and all selected cells are safe. This is authored BODY choreography only: no sound event, taunt AI effect or combat opening mechanic implemented. Fixed reviewed MASK-crown-to-soles reference excludes hair and weapons. Independent final QA agreed with this contact/occlusion reading and approved both complete pages; contradictory earlier concerns are preserved in the intake ledger.",
+    "pages": [
+      {
+        "source": "feral-special-taunt-1-attempt-03a",
+        "id": "feral-special-taunt-1-a-v100",
+        "publicName": "feral-special-taunt-1-a-v100.png",
+        "bodyHeightPx": 348,
+        "bodyReference": "Standing right calibration0 MASK crown near298/26 to soles374 =348, fixed across both independently authored facings.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            255,
+            374
+          ],
+          "1": [
+            264,
+            371
+          ],
+          "2": [
+            254,
+            371
+          ],
+          "3": [
+            278,
+            366
+          ],
+          "4": [
+            245,
+            351
+          ],
+          "5": [
+            286,
+            345
+          ],
+          "6": [
+            244,
+            356
+          ],
+          "7": [
+            282,
+            345
+          ]
+        }
+      },
+      {
+        "source": "feral-special-taunt-1-attempt-05b",
+        "id": "feral-special-taunt-1-b-v100",
+        "publicName": "feral-special-taunt-1-b-v100.png",
+        "bodyHeightPx": 264,
+        "bodyReference": "Standing right calibration0 MASK crown near300/110 to soles374 =264; dreadlocks101 excluded, fixed for all actions.",
+        "calibrationFrames": [
+          0,
+          1
+        ],
+        "pivots": {
+          "0": [
+            268,
+            374
+          ],
+          "1": [
+            249,
+            372
+          ],
+          "2": [
+            267,
+            319
+          ],
+          "3": [
+            247,
+            318
+          ],
+          "4": [
+            274,
+            322
+          ],
+          "5": [
+            232,
+            319
+          ],
+          "6": [
+            269,
+            315
+          ],
+          "7": [
+            240,
+            313
+          ]
+        }
+      }
+    ],
+    "clips": {
+      "right": [
+        [
+          "feral-special-taunt-1-attempt-03a",
+          2,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-03a",
+          4,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-03a",
+          6,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          2,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          4,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          6,
+          10
+        ]
+      ],
+      "left": [
+        [
+          "feral-special-taunt-1-attempt-03a",
+          3,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-03a",
+          5,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-03a",
+          7,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          3,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          5,
+          10
+        ],
+        [
+          "feral-special-taunt-1-attempt-05b",
+          7,
+          10
+        ]
+      ]
+    }
+  }
+]

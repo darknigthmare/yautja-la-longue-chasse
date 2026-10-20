@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s2-attempt-03.png",
+  "sourceSha256": "4b21cb0a633279170ad1e60743b1290bd0707ff1b4111c995563df0808278906",
+  "bytes": 2665937,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 3,
+  "rows": 4,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [],
+  "frames": [],
+  "issues": [
+    "No safe horizontal alpha gutter before row 2",
+    "No safe horizontal alpha gutter before row 3",
+    "No safe horizontal alpha gutter before row 4",
+    "Column-first: No safe horizontal alpha gutter before row 2",
+    "Column-first: No safe horizontal alpha gutter before row 3"
+  ]
+}

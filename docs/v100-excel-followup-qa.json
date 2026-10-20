@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "release": "V100",
+  "result": "PASS_STRUCTURE",
+  "scope": "Génération et contrôles structurels réels ZIP/XML, préservation historique, cellules/formules/caches et intégrité des admissions ; ne déclare aucun test modèle ou navigateur exécuté par ce générateur.",
+  "workbook": "docs/YAUTJA_V100_SUIVI.xlsx",
+  "sha256": "78789d0d8ee7a32f52d645dd2e948c3da1a3bbc3ea92ae5e2d137c57f1b0c71b",
+  "bytes": 1857176,
+  "inputFingerprintsVerified": 319,
+  "assetsVerified": 111,
+  "facts": {
+    "planets": 30,
+    "classicPlanets": 16,
+    "exoticPlanets": 14,
+    "sourceStructures": 18,
+    "runtimeStructures": 12,
+    "openStructures": 6,
+    "warV3Sheets": 32,
+    "warV3Entries": 679,
+    "warV6Sheets": 33,
+    "warV6Entries": 975,
+    "dialogueSheets": 10,
+    "shipSheets": 19,
+    "dialogueScenes": 730,
+    "dialogueLines": 6059,
+    "dialogueChoices": 1494,
+    "dialogueVariants": 150,
+    "dialogueReactions": 400,
+    "voiceProfiles": 210,
+    "distinctVoiceNames": 202,
+    "ambiguousVoiceNames": 8,
+    "currentPitFighterIds": 201,
+    "currentPitRuntimeArenas": 187,
+    "historicalPitDossiers": 205,
+    "historicalPitOpenDossiers": 6,
+    "historicalStageDossiers": 174,
+    "historicalStageEvents": 522,
+    "historicalLiteralStageDossiersCertified": 0,
+    "requestedActions": 52,
+    "requestedOrientations": 104,
+    "admittedActions": 52,
+    "admittedOrientations": 104,
+    "timelineFrames": 508,
+    "distinctDrawingsByOrientation": 504,
+    "newCombatActions": 8,
+    "historicalCombatActions": 2,
+    "studyOnlyActions": 42,
+    "missingActions": 0,
+    "homeworldContacts": 16,
+    "evacuationEscortsPerPatient": 2,
+    "evacuationSupplyCost": 1
+  },
+  "delivery": {
+    "status": "BODY_ADMIS_PREUVE_A_VALIDER",
+    "all52BodyStudiesAdmitted": true,
+    "all52GesturesDelivered": true,
+    "all52BodyStudiesProven": false,
+    "gestureDeliveryScope": "Études BODY natives admises dans les deux sens uniquement ; ne signifie pas personnages ou mécaniques complets.",
+    "browser": "A_VALIDER",
+    "characters": "OUVERT",
+    "mechanics": "NON_CERTIFIE_CLASSEUR",
+    "entities": "OUVERT",
+    "variants": "OUVERT",
+    "scope": "Catalogue de 52 cellules, complétude art calculée et raccords existants seulement ; preuves, mécaniques, personnages, entités et variantes ont des états séparés."
+  },
+  "sheetNames": [
+    "LotV62",
+    "CombattantsV54",
+    "Resteclasseur",
+    "LotV63",
+    "StagesV54",
+    "SyntheseV99",
+    "ChantiersV99",
+    "SourcesV99",
+    "PlanetesV99",
+    "OuvragesV6",
+    "PitOuvertV99",
+    "StagesOuvertsV99",
+    "ValidationsV99",
+    "EntreesV99",
+    "JournalV99",
+    "SyntheseV100",
+    "ChantiersV100",
+    "AnimationsV100",
+    "OrientationsV100",
+    "ContactsV100",
+    "PlanetesV100",
+    "OuvragesV100",
+    "PitOuvertV100",
+    "SourcesV100",
+    "ValidationsV100",
+    "EntreesV100",
+    "JournalV100"
+  ],
+  "originalSheetValuesFormulasTablesPreserved": true,
+  "originalStylePrefixPreserved": true,
+  "originalZipPartsByteIdentical": 28,
+  "xmlPartsParsed": 44,
+  "formulas": [
+    {
+      "cell": "B5",
+      "formula": "COUNTA('AnimationsV100'!B5:B56)",
+      "cached": 52
+    },
+    {
+      "cell": "B6",
+      "formula": "COUNTA('OrientationsV100'!B5:B108)",
+      "cached": 104
+    },
+    {
+      "cell": "B7",
+      "formula": "COUNTIF('AnimationsV100'!G5:G56,\"ADMIS_DEUX_SENS\")",
+      "cached": 52
+    },
+    {
+      "cell": "B8",
+      "formula": "COUNTIF('OrientationsV100'!E5:E108,\"ADMIS_ETUDE\")",
+      "cached": 104
+    },
+    {
+      "cell": "B11",
+      "formula": "COUNTIF('AnimationsV100'!L5:L56,\"RACCORDE_VISUEL\")",
+      "cached": 8
+    },
+    {
+      "cell": "B12",
+      "formula": "COUNTIF('AnimationsV100'!L5:L56,\"HISTORIQUE_LIE\")",
+      "cached": 2
+    },
+    {
+      "cell": "B13",
+      "formula": "COUNTIF('AnimationsV100'!L5:L56,\"ETUDE_SEULE\")",
+      "cached": 42
+    },
+    {
+      "cell": "B17",
+      "formula": "COUNTA('ContactsV100'!A5:A20)",
+      "cached": 16
+    },
+    {
+      "cell": "B20",
+      "formula": "COUNTA('PlanetesV100'!A5:A34)",
+      "cached": 30
+    },
+    {
+      "cell": "B21",
+      "formula": "COUNTIF('OuvragesV100'!F5:F22,\"OUVERT\")",
+      "cached": 6
+    },
+    {
+      "cell": "B22",
+      "formula": "COUNTA('PitOuvertV100'!A5:A10)",
+      "cached": 6
+    },
+    {
+      "cell": "B23",
+      "formula": "COUNTIF('ChantiersV100'!F5:F10,\"EN_COURS\")",
+      "cached": 0
+    },
+    {
+      "cell": "B24",
+      "formula": "COUNTIF('ChantiersV100'!F5:F10,\"A_VALIDER\")",
+      "cached": 1
+    },
+    {
+      "cell": "B25",
+      "formula": "COUNTIF('ChantiersV100'!F5:F10,\"OUVERT\")",
+      "cached": 1
+    },
+    {
+      "cell": "B26",
+      "formula": "COUNTIF('ChantiersV100'!F5:F10,\"LIVRE_PARTIEL\")",
+      "cached": 2
+    },
+    {
+      "cell": "B27",
+      "formula": "COUNTIF('ChantiersV100'!F5:F10,\"VALIDE_CIBLE\")",
+      "cached": 2
+    }
+  ],
+  "activeSheet": "SyntheseV100",
+  "originalSheetsPreserved": 15,
+  "nativeExcelApplicationVerified": false,
+  "nativeExcelCalculationEngineExecuted": false
+}

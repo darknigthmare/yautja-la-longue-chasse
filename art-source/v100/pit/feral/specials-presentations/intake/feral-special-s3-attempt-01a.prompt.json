@@ -1,0 +1,19 @@
+{
+  "actionId": "M_F006_S3",
+  "key": "S3",
+  "attempt": 1,
+  "part": "A",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Only ONE mechanically separable spear; do not draw a whole spear on the back while two halves are in the hands. Shield folded on anatomical LEFT bracer, right wrist blades retracted. No launcher.\n\nROW1: Feral in neutral guard holding one intact double-ended separable spear horizontally at waist height, no weapon above his head. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Both hands shift to the spear central coupling, elbows bend and right knee supports the twist.\nROW3: The coupling separates into exactly TWO spear halves, one held in each hand; no intact spear remains.\nROW4: A short forward strike with the right-hand spear half while the left-hand half stays in close guard; hips turn distinctly.",
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "transparent_background": true,
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "status": "GENERATED_ORIGINAL_PNG_PRESERVED",
+  "historicalStatus": "PENDING_GENERATION",
+  "finalReview": "intake-review-ledger.json"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "scar-v100-017",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/017-scar-jM-right-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-88b358d3-ca20-4647-b80f-08a82bfddc49.png",
+  "prompt": "017-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!K7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "right",
+  "transparentBackgroundRequested": true,
+  "sha256": "0e31d8b56401a98e4da22ecf667b2a6e9999e01531e20335b5bdc5969230afa5",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1737001,
+  "status": "rejected-full-cycle-continuity",
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "referenceFrameIndices": [
+      0
+    ],
+    "actionFrames": [
+      1,
+      2,
+      3
+    ]
+  },
+  "decision": "Independent qa_v100 visual review: Air cut contact attacks behind toward left while fighter targets right.",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- existing local bitmap portraits and stage panoramas */
 import { forwardRef, memo, useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState, type ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { PIT_ARENAS, PIT_ARENA_IDS, PIT_FIGHTERS, type PitArenaId, type PitFighterId } from "./systems/pitCombat";
 import { getPitFighterVariants, getPitUserVariant } from "./systems/pitUserRoster";
 import { PIT_VERSUS_FIGHTER_IDS, canPitFighterEnterMode, isPitExpansionFighterId, type PitVersusFighterId } from "./systems/pitRosterExpansion";
@@ -35,6 +36,7 @@ interface Props {
 }
 
 const ROSTER_PAGE_SIZE = 24;
+const PitWorkbookAnimationViewerV100 = dynamic(() => import('./PitWorkbookAnimationViewerV100'));
 const searchText = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
 const stageThumbnail = (id: PitArenaId) => resolvePitArenaProductionKit(id)?.planes.find(plane => plane.id === "P0")?.assets[0]?.frames[0]?.path ?? PIT_ARENA_ART_DEFINITIONS[id]?.backdrop;
@@ -58,6 +60,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const [preview, setPreview] = useState<{ id: PitArenaId; status: PitStagePreviewStatus } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null), gridRef = useRef<HTMLDivElement>(null), confirmRef = useRef<HTMLButtonElement>(null);
   const [rosterQuery, setRosterQuery] = useState("");
+  const [animationViewer, setAnimationViewer] = useState<string | null>(null);
   const [requestedRosterPage, setRequestedRosterPage] = useState(() => Math.floor(Math.max(0, PIT_VERSUS_FIGHTER_IDS.indexOf(playerId)) / ROSTER_PAGE_SIZE));
   const rosterSelected = state.slot === "player" ? playerId : opponentId;
   const suppliedVariants = getPitFighterVariants(rosterSelected);
@@ -254,6 +257,12 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
           </div>
           <p className={styles.variantNote}>Les variantes conservent le profil du combattant. Un équipement explicitement retiré peut rendre sa technique indisponible.</p>
         </section>
+        {rosterSelected === 'feral-hunter' || rosterSelected === 'scar' ? <details key={rosterSelected}
+          className={styles.commandHelp} data-pit-animation-entry-v100={rosterSelected}
+          onToggle={event => setAnimationViewer(event.currentTarget.open ? rosterSelected : null)}>
+          <summary>Voir les animations de {PIT_FIGHTERS[rosterSelected].name} · apparence d’origine</summary>
+          {animationViewer === rosterSelected ? <PitWorkbookAnimationViewerV100 key={rosterSelected} fighterId={rosterSelected} /> : null}
+        </details> : null}
       </>}
         </section>
         <aside className={styles.contender} data-selection-side="opponent" data-active={state.slot === "opponent"} data-confirmed={state.confirmedOpponent === opponentId} aria-label={mode === "local" ? "Combattant joueur 2" : "Adversaire"}>

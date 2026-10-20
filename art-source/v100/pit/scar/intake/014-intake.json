@@ -1,0 +1,38 @@
+{
+  "id": "scar-v100-014",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/014-scar-2H-left-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-0ee7d23b-89cd-4d08-a316-2c56ba77041d.png",
+  "prompt": "014-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!I7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "left",
+  "transparentBackgroundRequested": true,
+  "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1644642,
+  "status": "partial-art-admitted-wrong-facing-startup-excluded",
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "referenceFrameIndices": [
+      0
+    ],
+    "actionFrames": [
+      1,
+      2,
+      3
+    ]
+  },
+  "decision": "Only frames2/3 admitted; source2H left startup shares already drawn005/index3 low guard with independent QA approval.",
+  "publicCopy": "/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+  "bodyHeightPx": 419,
+  "admission": "../native-admission.json",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ]
+}

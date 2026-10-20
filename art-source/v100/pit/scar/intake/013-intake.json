@@ -1,0 +1,37 @@
+{
+  "id": "scar-v100-013",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/013-scar-2H-right-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-8710e844-d150-4a54-b317-aa0ea53d8b95.png",
+  "prompt": "013-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!I7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "right",
+  "transparentBackgroundRequested": true,
+  "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1664701,
+  "status": "admitted-native-art-awaiting-renderer-qa",
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "referenceFrameIndices": [
+      0
+    ],
+    "actionFrames": [
+      1,
+      2,
+      3
+    ]
+  },
+  "publicCopy": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+  "bodyHeightPx": 413,
+  "admission": "../native-admission.json",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ]
+}
