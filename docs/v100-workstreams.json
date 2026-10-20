@@ -162,12 +162,12 @@
     "evacuationSupplyCost": 1
   },
   "delivery": {
-    "status": "BODY_ADMIS_PREUVE_A_VALIDER",
+    "status": "VALIDE_CIBLE_BODY",
     "all52BodyStudiesAdmitted": true,
     "all52GesturesDelivered": true,
-    "all52BodyStudiesProven": false,
+    "all52BodyStudiesProven": true,
     "gestureDeliveryScope": "Études BODY natives admises dans les deux sens uniquement ; ne signifie pas personnages ou mécaniques complets.",
-    "browser": "A_VALIDER",
+    "browser": "PASS_CIBLE_BODY",
     "characters": "OUVERT",
     "mechanics": "NON_CERTIFIE_CLASSEUR",
     "entities": "OUVERT",
@@ -185,17 +185,20 @@
         "app/game/data/pitWorkbookAnimationsV100.json",
         "app/game/pitWorkbookCombatRegistryV100.ts"
       ],
-      "status": "LIVRE_PARTIEL",
+      "status": "VALIDE_CIBLE",
       "runtime": "Le nombre de gestes admis, de dessins distincts et de raccordements visuels est recalculé depuis le runtime. Une étude ne crée pas les mécaniques du classeur.",
-      "tests": "A_VALIDER : preuve globale du personnage non produite",
-      "browser": "A_VALIDER : recette finale du lecteur et du duel en cours",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
       "proof": [
         "tests/pit-workbook-animation-v100.test.mjs",
         "scripts/qa-pit-workbook-v100.mjs",
-        "scripts/qa-pit-combat-v100.mjs"
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
       ],
-      "remaining": "Produire et revoir tout geste encore absent selon les compteurs calculés ; finir accessoires, entités, victimes synchronisées et variantes ; tester leurs entrées et mécaniques distinctes. Une complétude BODY ne certifie pas le personnage complet.",
-      "owner": "animation_engine_v100"
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "animation_engine_v100",
+      "validationScope": "BODY_STUDIES_ONLY",
+      "bodyStudyFighterId": "feral-hunter"
     },
     {
       "id": "PIT-V100-SCAR",
@@ -206,17 +209,20 @@
         "app/game/data/pitWorkbookAnimationPlanV100.json",
         "app/game/data/pitWorkbookAnimationsV100.json"
       ],
-      "status": "LIVRE_PARTIEL",
+      "status": "VALIDE_CIBLE",
       "runtime": "Les admissions concernent l’apparence BODY d’origine et les orientations réellement dessinées. Les costumes fournis ne sont pas implicitement animés.",
-      "tests": "A_VALIDER : preuve globale du personnage non produite",
-      "browser": "A_VALIDER : recette finale du lecteur et du duel en cours",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
       "proof": [
         "tests/pit-workbook-animation-v100.test.mjs",
         "scripts/qa-pit-workbook-v100.mjs",
-        "scripts/qa-pit-combat-v100.mjs"
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
       ],
-      "remaining": "Revoir les planches contre leurs cellules exactes, compléter les éventuels gestes ou sens encore absents d’après les compteurs, puis prouver leur consultation et les raccordements distincts en duel. La complétude BODY ne certifie pas le personnage ou le lore 1:1.",
-      "owner": "animation_source_v100"
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "animation_source_v100",
+      "validationScope": "BODY_STUDIES_ONLY",
+      "bodyStudyFighterId": "scar"
     },
     {
       "id": "PIT-V100-LECTURE",
@@ -229,16 +235,18 @@
         "app/game/PitSelectionFlow.tsx",
         "app/game/pitWorkbookAnimationV100.ts"
       ],
-      "status": "A_VALIDER",
+      "status": "VALIDE_CIBLE",
       "runtime": "Lecture, curseur, pause et orientations natives ; absence visible pour les gestes sans dessins. L’atelier historique /pit-lab reste public ; les trois routes QA locales gardent leur protection distincte.",
-      "tests": "A_VALIDER : régressions finales après gel des admissions",
-      "browser": "A_VALIDER : ne pas transformer le préflight en preuve de production",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
       "proof": [
         "scripts/qa-pit-workbook-v100.mjs",
-        "scripts/qa-pit-combat-v100.mjs"
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
       ],
-      "remaining": "Figer les admissions, exécuter et inspecter les recettes production, conserver PASS_WITH_OPEN_ART tant que des orientations manquent ; distinguer étude et combat.",
-      "owner": "qa_v100"
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "qa_v100",
+      "validationScope": "BODY_STUDIES_ONLY"
     },
     {
       "id": "HOMEWORLD-V100-CONTACTS",
@@ -255,12 +263,13 @@
       "status": "VALIDE_CIBLE",
       "runtime": "Approche réelle à moins de96 unités, même étage et sol praticable, sans traverser le décor ; trois sujets locaux et repères déjà visités, sans déplacement ni récompense de campagne.",
       "tests": "PASS 43 tests ciblés modèle/SSR/callback et régressions ; déclaration explicite du lot",
-      "browser": "PASS_DEVELOPPEMENT 14 contrôles ; production A_VALIDER",
+      "browser": "PASS_PRODUCTION : 14 contrôles Homeworld dans la recette combinée de 37 ; captures desktop/mobile inspectées. Étage 0 au navigateur, autres contextes vérifiés au modèle.",
       "proof": [
         "tests/homeworld-street-contacts-v100.test.mjs",
         "scripts/qa-worlds-v100.mjs",
         "outputs/qa-v100/dev-final/result.json",
-        "docs/homeworld-street-contacts-v100.md"
+        "docs/homeworld-street-contacts-v100.md",
+        "docs/v100-validation-summary.json"
       ],
       "remaining": "Valider le build final production. Les seize habitants existaient déjà ; la recette navigateur cible un contact avec marche clavier réelle depuis une fixture explicite, pas une campagne jouée ni seize conversations parcourues en navigateur. Les refus de mauvais étage, propriétaire ou visibilité sont prouvés par modèle/SSR/callback ; cette recette V100 ne prétend pas jouer un changement d’étage.",
       "owner": "homeworld_v100"
@@ -279,12 +288,13 @@
       "status": "VALIDE_CIBLE",
       "runtime": "Route voisine amie, deux escortes aptes par patient, huit personnes maximum et S1 local à la résolution ; confirmation du dernier garde, blessés conservés et soins séparés.",
       "tests": "PASS 114 tests ciblés, dont 17 nouveaux, parmi lesquels 8 de revue indépendante ; déclaration explicite du lot",
-      "browser": "PASS_DEVELOPPEMENT 19 contrôles ; production A_VALIDER",
+      "browser": "PASS_PRODUCTION : 22 contrôles Clans dans la recette combinée de 37, dont archive après changement réel de planète ; captures inspectées, aucune guérison automatique.",
       "proof": [
         "tests/clan-war-evacuation-v100.test.mjs",
         "tests/clan-war-evacuation-review-v100.test.mjs",
         "scripts/qa-worlds-v100.mjs",
-        "outputs/qa-v100/dev-final/result.json"
+        "outputs/qa-v100/dev-final/result.json",
+        "docs/v100-validation-summary.json"
       ],
       "remaining": "Valider le build final production. Le convoi P08/P02/P07 part d’une fixture explicite ; cette preuve ne clôt ni les règles V3/V6 globales, ni les six ouvrages encore ouverts, ni le raccord campagne.",
       "owner": "clans_v100"
@@ -345,7 +355,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Seules les six premières cellules 5L du prototype001 sont admises ; E10/5M reste refusé. Référence BODY fixe246px approuvée depuis tête≈13 et vraies soles≈258 de la première pose. Pivots placés entre les pieds au support alpha128 revu visuellement ; quelques pixels alpha3 détachés sont conservés et ne définissent pas les pieds. Deux côtés natifs, aucun miroir. Les durées Excel5/3/10 servent à l’inspection ; le vrai coup conserve4/3/9."
     },
@@ -379,7 +389,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact E10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Étude de revers source distincte de la percée à la lance actuelle ; aucune nouvelle liaison au coup moyen debout."
     },
@@ -421,7 +431,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Réemploi des originaux BODY V59 déjà présents : pas d’engagement, frappe de bouclier au contact puis retrait,4dessins distincts par côté. Correspondance sourceF10/5H approuvée ; ne représente pas le déploiement/contre distinct deQ10/S2. La lecture conserve les durées natives13/5/22 du coup lourd actuel, ses effets et replays ; la cible Excel16/5/26 n’est pas appliquée."
     },
@@ -463,7 +473,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact G10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
     },
@@ -505,7 +515,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Original PNG inchangé ; rangée debout de calibration exclue du geste. Trois vrais dessins par côté : garde basse, balayage de jambe vers l’avant, retour. Double revue anatomique root/QA ; référence fixe388px depuis la tête aux semelles debout, pivots manuels entre appuis ou sur le pied porteur du balayage. La lecture suit les durées proposées11/4/21 ; le raccordement natif conserve les règles et durées actuelles du coup moyen accroupi, sans imposer les dégâts/hauteurs/cancels Excel."
     },
@@ -547,7 +557,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact I10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
     },
@@ -589,7 +599,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Genou court en vol puis reprise de chute, compatible avec les phases de light réellement aérien ; altitude, trajectoire, durées et dégâts historiques restent ceux du moteur."
     },
@@ -623,7 +633,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Revers aérien suivi de rotation/retrait, deux sens natifs indépendants ; pivots virtuels issus du bassin et de la distance debout vers les semelles, jamais des orteils en vol. Étude indépendante : aucune identité du medium actuel à la lance scindée empruntée pour certifier ce revers. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
     },
@@ -657,7 +667,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Lourde descendante avec réception distincte accroupie ; étude seule, aucun atterrissage, anti-air ou raccord de récupération encore aérienne imposé au moteur."
     },
@@ -691,7 +701,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
     },
@@ -725,7 +735,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. La séquence initialement gauche039A+040B rejette derrière vers la droite, puis garde orientée vers cette nouvelle cible ; le texte N10 ne prescrit pas le retour au sens initial. Essai043 coupé exclu. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
     },
@@ -759,7 +769,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Deux originaux inchangés, trois dessins du geste par côté, référence debout0 exclue. Double revue root/QA deO10 : pas d’approche, heurt d’épaule avant avec bras en retrait, retour en garde. Références debout fixes570/572px par page ; pivots entre appuis relus sur les vraies semelles, pas sur les lames. Étude indépendante : aucun6M, déplacement, choc, dégât ou cancel ajouté au duel."
     },
@@ -801,7 +811,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Réutilisation des originaux V59 déjà revus et joués, quatre dessins distincts par orientation. La bouche physique et les anciens replays restent inchangés. Ce cycle ne certifie ni sortie/rangement du lanceur ni la cible de timings Excel."
     },
@@ -835,7 +845,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six vrais dessins du geste par côté, sur deux originaux inchangés ; calibrations debout exclues. Références fixes329/336px et pivots d’appui revus par page. Double revue producteur/moteur : déploiement des segments, garde directionnelle, coup de bord, recul, repli et retour. La lecture52ticks est une étude indépendante deQ10 ; aucune mécanique de garde/contre, entité de bouclier, durée de duel ou inventaire ajouté."
     },
@@ -869,7 +879,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. R10. Six actual action drawings per facing, independently redrawn. Whole spear twists and separates into exactly two halves; left-hand strike then genuine right-hand counter (shield stays on left), alignment and rejoined whole. QA independent review approved the alternation and source sequence. Old B2/B3 same-left counter is EXCLUDED; unsafe A6/A7 are EXCLUDED. No third intact spear appears with halves. Slight drawing/design variation remains a visual-study scope, no new spear entity or duel mechanic. Fixed reviewed page body references and manually reviewed feet anchors. Independent engine review approved all four exact original pages; public copies are byte-identical and SHA-verified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -903,7 +913,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. S10. Six genuine BODY stages each facing: retrieve one device, crouch/place, release, step back, watch OFF and settle armed RED, with AMBER/OFF/RED states. One circular openwork crown only; no hip duplicate. Explicit bounded root review accepts remaining native drawing variation: mine normalized width is about19–21% larger on pageB than pageA (about3–4 display pixels at BODY128); stable physical scale or complete E_F006_mine is NOT certified. The source does not specify an exact device dimension. This is a free gameplay-derived study, not canon certification. Proximity activation, entity ownership, damage, explosion and duel binding remain UNIMPLEMENTED by this art. QA approved anatomy, actual alpha gutters and body movement; fixed body references A388/B314 with manually reviewed feet pivots. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened the exact originals and public copies were verified byte-identical against declared SHA-256."
     },
@@ -937,7 +947,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. T10. Six actual stages each facing. Physically explicit staging keeps existing launcher secured low on LEFT side during LEFT shield bash, then LEFT fingers visibly draw it while that forearm shield folds, then raise/aim, mechanical recoil and recovery. Empty attachment during rightA2 is not a second launcher: no red receiver there. LEFT launcher and LEFT shield remain on their anatomical side; right wrist blades retracted. Independent QA review approved new03A pages and selected oldB complements. Right01b LEFT5 with missing launcher is excluded; old incorrect03/02 bash cells are excluded. No hit-confirm, super resource, actual bolt entity, inventory state, damage or duel binding is added. Fixed standing references and reviewed feet midpoint anchors. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened all four originals; public copies are byte-identical and SHA-verified."
     },
@@ -971,7 +981,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. U10. Six actual action drawings per direction, preserving the left forearm shield, fully retracted right wrist blades, two physically drawn spear halves and their hip holders. No intact third spear while halves are held. Fixed standing body references A372px/B302px and manually reviewed feet midpoint pivots. No inventory, damage, equipment state or duel binding is added. Independent engine review approved the exact original pages; public copies are byte-identical and SHA-verified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -1001,7 +1011,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. C10. Six actual authored action stages each facing: left shield starts deployment, full guard opens, mask fixes a point, two-hand grip, torsion, complete spear separation. Independent final QA opened all four originals and approved actual1..3; left B2 and B3 preserve two distinct sections, no rejoined third staff. Shield remains anatomical LEFT; intact spear begins RIGHT. Fixed mask-crown-to-Feral-soles references exclude hair and weapon tips. Native spacing edits preserve complete poses and true transparent gutters. No intro collision, three-plan staging, equipment inventory or sound mechanic is certified. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -1031,7 +1041,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. D10. Five actual action drawings each facing: recover first dropped spear part, recover second, rejoin mechanical spear, inspect remaining bolts in existing LEFT launcher, listen alertly without salute. QA opened final B08 in both directions and approved the mechanical two-ended red-core spear held RIGHT and short launcher LEFT, with correct two-arm grips. Drawing A carries a source ellipse between the assembled weapon and later launcher already in hand: no continuous launcher draw or inventory transition is claimed. Final B calibration0 and unneeded intermediate1 excluded, with genuine check2/listen3 retained. Native spear detail/shaft angle varies between independently authored sheets; no exact prop scale, forest decor, sound, ammunition counter or campaign victory lifecycle certified. Fixed body references use MASK crown and Feral feet, excluding spear tips and ground parts. Right final B08 abdomen is noticeably redder than page A; this native color variation is recorded, not claimed as a coherent skin-color transition. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -1061,7 +1071,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. E10. Six actual source stages per direction: crooked left shield, loss of support, right hand seeks mask, knees ground, side fall, final collapse in a small local mud trace. Anatomical left shield/right wrist blades stay on their limbs. QA independent review approved the replacement A pages and complete final left B7. Right A reaches two knees earlier than left, allowed by the exact source. No offensive projectile/plasma, death entity, opponent or campaign state is added. Ground anchors manually reviewed on support feet/knees and collapsed ground-contact baseline. Fixed body references A-right645/A-left624/B336, never per-pose flattened height. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened all three originals; public copies verified byte-identical and SHA-checked."
     },
@@ -1091,7 +1101,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. F10. Six actual action stages each facing: approach right wrist blades to left shield, contact the shield seen in thin metallic edge profile, clack/compress, separate, deliberately expose/open guard with the same two blades, return. Root and producer review accept contact on the visible metal thickness of the rim, rather than imposing a particular orange paint pixel. The roots of the right blades are occluded by the open right palm in the exposed pose, remain aligned with the same gauntlet and are visible before/after; no extra hand or detached weapon is introduced. Correct anatomical LEFT shield and RIGHT blades persist. Native alpha2 gutters and all selected cells are safe. This is authored BODY choreography only: no sound event, taunt AI effect or combat opening mechanic implemented. Fixed reviewed MASK-crown-to-soles reference excludes hair and weapons. Independent final QA agreed with this contact/occlusion reading and approved both complete pages; contradictory earlier concerns are preserved in the intake ledger. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -1121,7 +1131,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. G10. Six genuine action drawings per direction: raise existing LEFT-hand three-rail launcher, rotate/inspect, RIGHT hand checks housing, release inspection, lower, settle. Same red receiver and rails, no extra ammo, reload, shoulder cannon or projectile. Left-hand grip and folded bracer side are stable; right wrist blades retracted. Independent QA review favorable. Fixed body references A272/B373 and manually reviewed feet anchors. Presentation study only, no new combat or equipment mechanic. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened the exact originals and public copies were verified byte-identical against declared SHA-256."
     },
@@ -1151,7 +1161,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. H10. Six actual stages each facing: prepare, whole spear pin against small basalt support, anatomical LEFT shield screen, final contact truly hidden by opaque shield, effortful withdrawal, threat check and fold. QA independently approved all selected steps. Cropped right03b3 and unsafe originalA lower rows excluded. One spear, left shield stable, no projectile/gore or victory substitution. Gray articulated adult-sized mannequin and basalt are explicit scene-study stand-ins baked into these images: no real narrative victim, independent opponent synchronization, fatality input, lifecycle or duel binding implemented. Native spear-head detail varies between independently authored views; exact canon set/victim not certified. Fixed reviewed Feral body references and manually reviewed Feral-foot baselines exclude mannequin/slab feet. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened every selected original; public PNG copies are byte-identical and SHA-verified."
     },
@@ -1181,7 +1191,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. I10. Seven actual stages each facing: parry first training blade, close step, second blade contact, withdrawal and mannequin blade drops, threat check, join/control weapon, genuine final STOW with both compact halves at hips and hands released. Source does not prescribe first/second hand: left parry then right strike is valid. Corrected left shield stays on near anatomical LEFT arm. QA approved final left stow3; unsafe upper0/1 never counted or played. Packing from joined staff to compact hips is an endpoint ellipse, no new equipment/inventory mechanic. Gray articulated mannequin is an explicit scene-study stand-in: no real opponent duplicated in combat, independent victim/lifecycle synchronization absent. No gore/projectile or renamed victory pose. One fixed Feral body reference per page, reviewed Feral-feet anchors exclude mannequin feet. Calibrations are excluded; playback durations are for visual inspection, not source mechanics. Independent engine review opened every selected original; public PNG copies are byte-identical and SHA-verified."
     },
@@ -1211,7 +1221,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. J10. Six actual action stages each facing: hook/disarm intact training blade, step back, open left palm allowing unharmed partner to breathe, take existing sealed mission case by handle, rise holding case, real departure step. Independent final QA opened all four originals and confirmed case present from A1 onward, not spawned at pickup; same two-latch closed case remains identifiable despite minor native proportions/trim variation. Shield stays anatomical LEFT, intact spear RIGHT and blades retracted. Final exit turns intentionally away from the partner and is not an erroneous mirrored facing. Gray articulated adult-sized neutral mannequin, dropped blade and case are baked scene-study props; no narrative victim, synchronized real opponent, campaign mission object/reward or inventory/disarm mechanic is implemented. Fixed MASK-crown-to-Feral-soles scale and manually reviewed Feral feet exclude mannequin, blade and case ground pixels. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
     },
@@ -1253,7 +1263,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Original PNG inchangé ; trois dessins distincts par orientation et accessoires BODY conservés. Double revue anatomique producteur/QA, pieds et référence debout fixes relus ; références de calibration exclues. Les cibles Excel servent uniquement à la lecture de cette étude ; le coup léger existant conserve ses durées, ses dégâts et ses règles actuelles."
     },
@@ -1287,7 +1297,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux inchangés ; références debout de chaque page exclues, trois dessins articulés par côté et échelle corporelle fixe par page. Double revue producteur/QA, cellule E7 relue. Vrai revers au gantelet, distinct de la percée au combistick actuelle ; étude indépendante sans nouveau raccord au coup moyen debout."
     },
@@ -1321,7 +1331,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Deux nouvelles pages alpha natives, quatre gestes indépendants par sens : pas/engagement, lourde des lames anatomiques droites, retrait puis garde. Combistick continuellement dans la main anatomique gauche. Originaux imagegen inchangés et copies byte-identiques ; revues root/producteur, moteur et QA favorables, gouttières réelles, aucun magenta mesuré. Référence fixe masque→ligne des semelles alpha128 sur le vrai retour debout de chaque page : droite447, gauche385 ; pointe de lance et dreads exclues. Les pivots horizontaux sont les milieux des deux vrais pieds, jamais la pointe ou le seul pied le plus bas ; ROIs conservées dans reference-and-foot-review.json. La lecture source16/5/13/13 est indépendante de toute simulation. Remplace uniquement le recours historique V34 du lecteur ; page originale V34, son SHA et ses clips heavy de duel inchangés. Aucune nouvelle liaison mécanique au heavy actuel nommé Ascension au plasma."
     },
@@ -1363,7 +1373,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Original PNG inchangé ; trois dessins distincts par orientation et accessoires BODY conservés. Double revue anatomique producteur/QA, pieds et référence debout fixes relus ; références de calibration exclues. Les cibles Excel servent uniquement à la lecture de cette étude ; le coup léger existant conserve ses durées, ses dégâts et ses règles actuelles."
     },
@@ -1405,7 +1415,7 @@
         "active",
         "recovery"
       ],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux inchangés ; références debout de chaque page exclues, trois dessins articulés par côté et échelle corporelle fixe par page. Double revue producteur/QA, cellule H7 relue. Contact de balayage ancré sur le pied porteur : X385 droite et629,5 gauche (semelles alpha128, bande8px), pas au milieu de la jambe étendue et de l’appui. Phases du coup moyen accroupi actuel conservées ; hauteurs, dégâts et cancels Excel ne sont pas implémentés."
     },
@@ -1439,7 +1449,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Étude native BODY sourceI7 ; garde basse puis montée réelle des lames, pieds au sol, retour. À gauche, une garde basse déjà admise005/index3 est explicitement partagée puis contact/reprise014/index2/3 ; la préparation014/index1 tournée à droite reste exclue. Cinq nouveaux dessins et une posture partagée, pas six nouveaux dessins. Les références debout fixes413/419/258px et les pivots de chaque page restent conservés. Double revue producteur/QA. Aucun raccord supplémentaire au profil lourd actuellement nommé Ascension au plasma ; propriétés anti-air/hauteur/dégâts Excel non implémentées."
     },
@@ -1473,7 +1483,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceJ7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Pivots virtuels depuis le haut de ceinture/bassin et distance debout aux semelles, repères conservés dans leDTO. Gestes en vol et reprise de chute conservés sans agrandir les membres repliés. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1507,7 +1517,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceK7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Pivots virtuels depuis le haut de ceinture/bassin et distance debout aux semelles, repères conservés dans leDTO. Gestes en vol et reprise de chute conservés sans agrandir les membres repliés. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1541,7 +1551,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceL7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Pivots virtuels depuis le haut de ceinture/bassin et distance debout aux semelles, repères conservés dans leDTO. Préparation gauche32/index1 reliée au contact/réception27/index2/3 ; ancienne préparation27/index1 touchant le bord reste exclue. Réception réellement au sol, aucune phase aérienne/atterrissage du duel forcée. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1575,7 +1585,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceM7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Étude avec mannequin gris, prise/bascule/rejet/suivi/retour dessinés ; pivot isolé sur les appuis du chasseur, jamais sur le mannequin. Aucune victime de duel synchronisée ni projection mécanique ajoutée. À gauche, finale30/index5 coupée exclue, remplacée par33/index0 ; prise de lance23/index1 occluse, manipulation/rangement non certifiés. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1609,7 +1619,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceN7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Étude avec mannequin gris, prise/bascule/rejet/suivi/retour dessinés ; pivot isolé sur les appuis du chasseur, jamais sur le mannequin. Aucune victime de duel synchronisée ni projection mécanique ajoutée. Rotation du corps et destination du mannequin derrière l’orientation initiale conservées. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1643,7 +1653,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Originaux PNG inchangés et copies vérifiées ; deux orientations indépendantes, texte sourceO7 et anatomie revus par producteur/QA. Référence corporelle fixe propre à chaque page, calibrations exclues quand distinctes du geste. Pas, heurt d’épaule avec bras compact, retour en garde ; aucune nouvelle commande6M ni translation de duel ajoutée. Lecture indépendante des règles, dégâts, coûts et cancels du classeur."
     },
@@ -1677,7 +1687,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Source-P7 admise comme étude BODY indépendante ; aucune nouvelle commande, entité, arme d’inventaire ou règle de duel n’est raccordée."
     },
@@ -1711,7 +1721,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Corrected replacement for suspended S2 admission: ONE shuriken only. After extraction, hip slots are plain empty straps in every postdraw pose including left release and both returns. Actual hand opening, throwing, followthrough and reset remain six native drawings per facing. No restocking at belt, invented second device/holster explanation, inventory or projectile mechanic. First left reach is partly occluded by its hand; later half-open to fully-open weapon stages remain visible. This candidate uses a new public filename so the previously admitted PNG is preserved byte-identically. Independent engine and QA continuity review opened the corrected native source; the public copy is byte-identical and SHA-verified. Source cell is Q7."
     },
@@ -1745,7 +1755,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. One fixed body reference per native page, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. BODY-only aimed-shoulder posture, bracing, recoil absorption and same-facing return, with exactly one caster on continuous pedestal bolted to pauldron. Turret starts already aligned; body alignment is shown through stance/shoulder changes. Charge/muzzle flash/plasma projectile are deliberately absent from BODY and require separate entity/effect integration. These drawings do not implement an attack, projectile, cost or guarantee. Right recoil was redrawn with horizontal head and visible mount, avoiding the prior hidden turret. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Independent engine and QA source/anatomy review approved as BODY study only; public PNG copies byte-identical and SHA-verified."
     },
@@ -1779,7 +1789,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Wrist blades retracted; outward bent-forearm deflection then sharply bent protruding elbow counter, hand tucked against torso. No jab, projectile reflection or mechanical invulnerability claimed. Admission indépendante BODY après seconde revue. Aucune mécanique de super/contre, scène complète, gravure/ombre, Lex, récompense ou état de victime n’est créée par ce lecteur."
     },
@@ -1813,7 +1823,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Short butt opening, telescopic extension, full thrust, withdrawal and reset. Hit-confirm/cost/collision mechanics are source targets, not implemented by this BODY atlas. Admission indépendante BODY après seconde revue. Aucune mécanique de super/contre, scène complète, gravure/ombre, Lex, récompense ou état de victime n’est créée par ce lecteur."
     },
@@ -1847,7 +1857,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Draw/inspect/stow of the existing compact combistick; does not implement or validate inventory mutation. Source-U7 admise comme étude BODY indépendante ; aucune nouvelle commande, entité, arme d’inventaire ou règle de duel n’est raccordée."
     },
@@ -1877,7 +1887,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Default masked branch with no premature initiation mark. Engraving/pyramid, shadows and camera are separate scene dependencies; no collision displacement is claimed. Admission indépendante BODY après seconde revue. Aucune mécanique de super/contre, scène complète, gravure/ombre, Lex, récompense ou état de victime n’est créée par ce lecteur."
     },
@@ -1907,7 +1917,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Threat check, lowered weapon and open route gesture only. Lex is an offscreen narrative scene dependency, not painted into BODY or synchronized by this atlas. Admission indépendante BODY après seconde revue. Aucune mécanique de super/contre, scène complète, gravure/ombre, Lex, récompense ou état de victime n’est créée par ce lecteur."
     },
@@ -1937,7 +1947,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Exhaustion to kneel, staff slips then rests beside defeated body; no return to guard. Weapon is owned BODY prop and not a spawned combat entity. Ground pivots manually use supporting feet/knee, not the dropped spear tip. Lex/KO entity cuts are separate scene mechanics. Admission indépendante BODY après seconde revue. Aucune mécanique de super/contre, scène complète, gravure/ombre, Lex, récompense ou état de victime n’est créée par ce lecteur."
     },
@@ -1967,7 +1977,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed body reference per native page, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. POST-INITIATION ONLY. Same half-lowered biomask physically covers the entire lowerface and mandibles, while the small red forehead initiation mark is visible and actually touched; actual wristblade challenge then same-mask replacement and return. Root-approved BODY staging adaptation of F7; no full unmasked facial anatomy certification. Exactly two arms/hands, no duplicate masks or staff, and no story/inventory state transition. Do not play automatically in a pre-initiation introduction. Independent engine and QA source/anatomy review approved as BODY study only; public PNG copies byte-identical and SHA-verified."
     },
@@ -1997,7 +2007,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Inspect the actually held combistick: look down, rotate collars, test a telescopic segment, retract and restore guard. Same staff and actual grips throughout, no new accessory. Exactly six stages per facing within the source taunt duration target of0.8–1.2seconds; rendered as60ticks. Inventory/equipment state transitions are not inferred from this BODY study. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Each page has one fixed manually reviewed mask-crown to sole-ground reference in definition.pageBodyHeightPx; no per-pose fitting. Explicit landmark evidence is in bodyReferenceReview. Independent engine and QA source/anatomy review approved as BODY study only; fixed mask-to-soles references recorded separately for each native page."
     },
@@ -2027,7 +2037,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. One fixed body reference per native page, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Real pin, retrieve closedshuriken, unfold, cut, withdraw/retract and exit; ONEshuriken only. Hip belt is empty after retrieval while opened weapon is held, without inventing a second device or holster lore. Xenomorph, acid and contact geometry are external scene dependencies; no partner is painted and no duel execution synchronized. Fixed per-page body references exclude spear/star extents. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Independent engine and QA source/anatomy review approved as BODY study only; fixed mask-to-soles references per native page, public copies byte-identical and SHA-verified."
     },
@@ -2057,7 +2067,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Each page has one fixed manually reviewed mask-crown to sole-ground reference in definition.pageBodyHeightPx; no per-pose fitting. Explicit landmark evidence is in bodyReferenceReview. Independent engine and QA source/anatomy review approved as BODY study only; fixed mask-to-soles references recorded separately for each native page."
     },
@@ -2087,7 +2097,7 @@
       "combatStatus": "ETUDE_SEULE",
       "combatClipIds": [],
       "combatPhases": [],
-      "browserStatus": "A_VALIDER",
+      "browserStatus": "PASS_CIBLE_BODY",
       "mechanicsStatus": "NON_CERTIFIE_CLASSEUR",
       "remaining": "Admission visuelle de portée limitée. Entités, accessoires, variantes, mécanique source et preuve finale restent distincts. Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. One fixed body reference per native page, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Controlled lateral spear action, open stop hand, step back, ground reach and neutral missiontoken retrieval, calm exit. Spear keeps ONE frontpoint and a blunt rearend throughout; no secondtip appears after the stopgesture. Exactly two arms and continuous ownedweapon grip. Opponent, targetweapon and actual missionobject provenance remain scene dependencies; BODY grants no disarm mechanic, inventoryreward or anatomicaltrophy. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Independent engine and QA source/anatomy review approved as BODY study only; fixed mask-to-soles references per native page, public copies byte-identical and SHA-verified."
     }
@@ -15096,14 +15106,26 @@
     },
     {
       "id": "PIT-V100-LECTEUR-ET-DUEL",
-      "status": "A_VALIDER",
-      "scope": "Catalogue52 cellules et104 orientations ; animations admises, lecture native, raccordements duel, phases, pause et costumes restent des périmètres séparés.",
+      "status": "PASS_CIBLE_BODY",
+      "scope": "52 études BODY et 104 sens ; lecteur : 2 182 contrôles, duel : 191 contrôles ; 191 captures inspectées. Huit nouveaux raccords visuels, 12 apparences et 24 orientations exclues du fallback BODY.",
       "command": "node scripts/qa-pit-workbook-v100.mjs ; node scripts/qa-pit-combat-v100.mjs",
       "evidence": [
+        "docs/v100-validation-summary.json",
         "scripts/qa-pit-workbook-v100.mjs",
         "scripts/qa-pit-combat-v100.mjs"
       ],
-      "limit": "Recettes finales en cours ; aucune preuve globale des52 gestes ni nouveau résultat production déclaré par ce classeur."
+      "limit": "Études BODY et phases existantes seulement ; mécaniques source, entités, variantes et personnages complets restent ouverts. Captures statiques et tests de pixels ont des portées distinctes."
+    },
+    {
+      "id": "MONDES-V100-CHROMIUM-PRODUCTION",
+      "status": "PASS_CIBLE",
+      "scope": "37 contrôles combinés : 22 Clans, 14 Homeworld et absence d’erreurs ; 9 captures réellement ouvertes, sources gelées.",
+      "command": "npm run build:production ; npm run qa:next-production ; node scripts/qa-worlds-v100.mjs sur serveur local 3100 opt-in QA",
+      "evidence": [
+        "docs/v100-validation-summary.json",
+        "scripts/qa-worlds-v100.mjs"
+      ],
+      "limit": "Build local compilé, fixtures normalisées déclarées. Homeworld navigateur étage 0 ; pas de nouvelle qualification Preserve ou de progression campagne."
     }
   ],
   "inputs": [
@@ -15893,7 +15915,7 @@
     },
     {
       "path": "docs/v100-workstreams-source.json",
-      "sha256": "b5253d0e372f8188cce375e47c9a54bd8c9e6ccd220640ac9268a43516cb2d60"
+      "sha256": "d6ff17874df1bc9763ac8eeac4fc7902c0843cb01a858fb8db8b9afcb00b5e72"
     },
     {
       "path": "docs/v56-excel-priorities.json",

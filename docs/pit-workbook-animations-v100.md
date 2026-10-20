@@ -2,6 +2,8 @@
 
 La source versionnée est `docs/v56-excel-priorities.json` (SHA-256 `fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4`). Le classeur privé original n’est pas disponible dans le dépôt. `app/game/data/pitWorkbookAnimationPlanV100.json` conserve le texte de chaque cellule : Feral ligne 10, Scar ligne 7 ; 18 actions D:U et 8 présentations C:J par personnage. Les durées Excel restent des propositions indépendantes des valeurs actuelles du duel.
 
+Les 52 études BODY disposent de leurs 104 orientations natives consultables. Huit nouveaux gestes sont raccordés aux phases existantes du duel, deux réemplois historiques sont conservés et 42 restent des études seules. Les [preuves de production](v100-validation-summary.json) distinguent la lecture, les vrais contrôles de combat, les costumes statiques et les mécaniques encore ouvertes.
+
 ## Accès aux images
 
 Dans THE PIT, choisir Feral ou Scar puis ouvrir **Voir les animations · apparence d’origine** sous le choix d’apparence. Le lecteur présente les mouvements historiques, les deux directions et une lecture lente avec pause et image suivante. Les gestes dont la mécanique manque sont désignés comme études de mouvement consultables. La fermeture démonte le lecteur et interrompt sa lecture ; seules les pages de la séquence choisie sont décodées. Le costume choisi pour le duel reste inchangé ; ses animations ne sont pas remplacées par le BODY historique consulté.

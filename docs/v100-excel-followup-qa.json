@@ -4,8 +4,8 @@
   "result": "PASS_STRUCTURE",
   "scope": "Génération et contrôles structurels réels ZIP/XML, préservation historique, cellules/formules/caches et intégrité des admissions ; ne déclare aucun test modèle ou navigateur exécuté par ce générateur.",
   "workbook": "docs/YAUTJA_V100_SUIVI.xlsx",
-  "sha256": "78789d0d8ee7a32f52d645dd2e948c3da1a3bbc3ea92ae5e2d137c57f1b0c71b",
-  "bytes": 1857176,
+  "sha256": "236fa1af1ccdbc5f1bd80a804d86561a1c2aab85262a4c914a5776d327b896f9",
+  "bytes": 1859240,
   "inputFingerprintsVerified": 319,
   "assetsVerified": 111,
   "facts": {
@@ -51,12 +51,12 @@
     "evacuationSupplyCost": 1
   },
   "delivery": {
-    "status": "BODY_ADMIS_PREUVE_A_VALIDER",
+    "status": "VALIDE_CIBLE_BODY",
     "all52BodyStudiesAdmitted": true,
     "all52GesturesDelivered": true,
-    "all52BodyStudiesProven": false,
+    "all52BodyStudiesProven": true,
     "gestureDeliveryScope": "Études BODY natives admises dans les deux sens uniquement ; ne signifie pas personnages ou mécaniques complets.",
-    "browser": "A_VALIDER",
+    "browser": "PASS_CIBLE_BODY",
     "characters": "OUVERT",
     "mechanics": "NON_CERTIFIE_CLASSEUR",
     "entities": "OUVERT",
@@ -160,7 +160,7 @@
     {
       "cell": "B24",
       "formula": "COUNTIF('ChantiersV100'!F5:F10,\"A_VALIDER\")",
-      "cached": 1
+      "cached": 0
     },
     {
       "cell": "B25",
@@ -170,12 +170,12 @@
     {
       "cell": "B26",
       "formula": "COUNTIF('ChantiersV100'!F5:F10,\"LIVRE_PARTIEL\")",
-      "cached": 2
+      "cached": 0
     },
     {
       "cell": "B27",
       "formula": "COUNTIF('ChantiersV100'!F5:F10,\"VALIDE_CIBLE\")",
-      "cached": 2
+      "cached": 5
     }
   ],
   "activeSheet": "SyntheseV100",

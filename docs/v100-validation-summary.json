@@ -1,0 +1,1632 @@
+{
+  "schemaVersion": 1,
+  "release": "V100",
+  "asOf": "2026-10-20",
+  "status": "PASS_CIBLE_BODY_AND_WORLDS",
+  "scope": "52 études BODY, lecteur public, huit nouveaux raccords visuels de duel, contacts locaux Homeworld et évacuation du mode libre. Aucun achèvement global du jeu ou des mécaniques du classeur.",
+  "build": {
+    "id": "MBnsxa_XGjmq41ykRJPYK",
+    "command": "npm run build:production",
+    "nextWebpackCompiled": true,
+    "typeScriptPassed": true,
+    "compiledCssAuditPassed": true,
+    "normalProductionSmokeChecks": 5,
+    "protectedLocalQaRoutesClosedWithoutOptIn": true,
+    "exactVercelNativeOriginAndStaticOutputSteps": "Skipped by their existing exact /vercel/path0 gate; no deployed/CDN result inferred."
+  },
+  "nativeAnimationFacts": {
+    "requestedActions": 52,
+    "requestedOrientations": 104,
+    "admittedActions": 52,
+    "admittedOrientations": 104,
+    "timelineFrames": 508,
+    "distinctDrawingsByOrientation": 504,
+    "newCombatActions": 8,
+    "historicalCombatActions": 2,
+    "studyOnlyActions": 42,
+    "missingActions": 0
+  },
+  "admissionsSha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956",
+  "sourceIntegrity": {
+    "verifiedInputFingerprints": 319,
+    "selectedPngPages": 111,
+    "newNativeV100Pages": 107,
+    "newNativeCopiesMatchArchivedOriginals": true
+  },
+  "unitRuns": [
+    {
+      "command": "npm run test:audit:v94",
+      "tests": 93,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "89bf895d8656e0282239124c7389dbe9e4936fec580d4f3df56be234d3e5a2d8"
+    },
+    {
+      "command": "Node: 22 fichiers entrées/persistance ciblés de CI",
+      "tests": 299,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "7cac1b2057f0c3a70282b4ad47da3ffad646d25288b111a2a3b3a07d04ffd122"
+    },
+    {
+      "command": "Node: 11 fichiers cartes/archives de clans ciblés de CI",
+      "tests": 188,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "aff1dbc90924141014cde10c61d529eb72751d118ce85651a5a58bc209b9c37b"
+    },
+    {
+      "command": "npm run test:worlds:v100",
+      "tests": 195,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "9f1594ce8e06adb5a2b2e822466f4a4c03e039746d2e783de7634271e931d66f"
+    },
+    {
+      "command": "Node: tests/pit-workbook-animation-v100.test.mjs + tests/pit-workbook-measure-v100.test.mjs",
+      "tests": 15,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "f8f237be154398d7844e79639cf76f0c66e1110a43a8a08f456dbc4746bb03bd"
+    }
+  ],
+  "unitCountLimit": "Les groupes se recoupent ; aucun total de tests uniques n’est déduit.",
+  "strictLint": {
+    "changedFiles": 34,
+    "warnings": 0,
+    "status": "PASS"
+  },
+  "runtimeSnapshot": {
+    "files": 2671,
+    "bytes": 3175284070,
+    "unchangedThroughBuildAndFinalRecipes": true,
+    "finalSnapshotSha256": "c3e33be3e2c5761f6118dec6d23e0da950a668ab0dae30fdbb9d97576ca672e3"
+  },
+  "browserRuns": [
+    {
+      "directory": "outputs/qa-v100/worlds-production",
+      "resultSha256": "b65bce2ff8d2137dfb99ad80d4478b6ac92d008e124fa17d161c23ec47273660",
+      "status": "PASS",
+      "checks": 37,
+      "browserErrors": 0,
+      "captures": 9,
+      "allCapturesActuallyOpenedAndHashesVerified": true,
+      "sourceUnchanged": true,
+      "completedAt": "2026-10-20T12:50:00.864Z",
+      "coverage": {},
+      "scope": "Actual local game UI and public controls after explicitly normalized fixtures. Homeworld movement uses a controlled browser clock; no private actor setter or campaign reward qualification."
+    },
+    {
+      "directory": "outputs/qa-v100/workbook-production-final",
+      "resultSha256": "51a2d4635981d6bc60b876aa093754840497588107df4312583c97f1b204005e",
+      "status": "PASS",
+      "checks": 2182,
+      "browserErrors": 0,
+      "captures": 127,
+      "allCapturesActuallyOpenedAndHashesVerified": true,
+      "sourceUnchanged": true,
+      "completedAt": "2026-10-20T13:10:10.024Z",
+      "coverage": {
+        "requestedActions": 52,
+        "requestedOrientations": 104,
+        "actionsWithArt": 52,
+        "admittedActions": 52,
+        "admittedOrientations": 104,
+        "complete": true,
+        "totalTimelineFrames": 508,
+        "distinctSourceDrawings": 503,
+        "newSourceDrawings": 487,
+        "historicalSourceDrawings": 16,
+        "drawingCountBasis": "Distinct served PNG path and source rectangle; held timeline frames and shared rectangles are counted once."
+      },
+      "scope": "Actual local workbook reader with native Canvas observation and served PNG comparison. Passing UI checks does not complete missing art or add absent move mechanics."
+    },
+    {
+      "directory": "outputs/qa-v100/combat-production-final",
+      "resultSha256": "0ed307c71d4bc034d69531cf2b75ee5ab10e9eb50bef83fa17484b8206f98469",
+      "status": "PASS",
+      "checks": 191,
+      "browserErrors": 0,
+      "captures": 64,
+      "allCapturesActuallyOpenedAndHashesVerified": true,
+      "sourceUnchanged": true,
+      "completedAt": "2026-10-20T13:10:32.789Z",
+      "coverage": {
+        "nativeOrientations": 16,
+        "suppliedAppearances": 12,
+        "testedCostumeOrientations": 24
+      },
+      "scope": "Only the 8 newly linked V100 gestures, 16 requested native orientations. Genuine public local-versus controls and Canvas source provenance; no campaign save or actor injection. Costume exclusion observes exact supplied image identity after public inputs; it does not certify new animation for those static costumes. Other workbook gestures and their proposed mechanics remain outside this combat recipe."
+    }
+  ],
+  "visualInspection": {
+    "reviewedCaptureFiles": 200,
+    "reports": [
+      {
+        "path": "outputs/qa-v100/worlds-production/inspection.json",
+        "sha256": "8cb2bff5b8558334bbf7b0e83dec5749d66bc123684f279c7d3261193c9b95ae",
+        "reviewer": "qa_v100",
+        "status": "VISUALLY_INSPECTED_PRODUCTION",
+        "reviewedFiles": 9
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/inspection-feral.json",
+        "sha256": "6a86d3151a5d93ad4a5dfc828304f1ee6d73524d6c6a5a9c757e83d69db5a14c",
+        "reviewer": "release_review_v100",
+        "status": "REVIEWED_NO_CERTAIN_VISUAL_DEFECT_IN_52_CAPTURED_STATES",
+        "reviewedFiles": 52
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/inspection-public.json",
+        "sha256": "d27891b106fd2c210cf25656195f6a28ae5d218a281bb34234626ec0363cfa49",
+        "reviewer": "/root/qa_v100/qa_recipe_review",
+        "status": "PASS_STATIC_VISUAL_WITH_SCOPE_LIMITS",
+        "reviewedFiles": 23
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/inspection-scar.json",
+        "sha256": "8d2b043011f41a8555807fbce01db3f759ef8d0b091470bf22cffb71e7976942",
+        "reviewer": "/root/animation_source_v100",
+        "status": "PASS_STATIC_REVIEW",
+        "reviewedFiles": 52
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/inspection-body-match-1.json",
+        "sha256": "6255d78a9beeed3ea6fea481aa2f00feccc8f603d68c1074f6351f70da16e0f6",
+        "reviewer": "Codex /root/combat_phase_one_v100 — inspection visuelle directe avec view_image des 24 PNG originaux",
+        "status": "PASS",
+        "reviewedFiles": 24
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/inspection-body-match-2.json",
+        "sha256": "fd25c9de7f582887d430754f60db966e669835134d633dab5882d1028d971091",
+        "reviewer": "Codex /root/combat_phase_two_v100 — inspection visuelle directe avec view_image",
+        "status": "PASS",
+        "reviewedFiles": 24
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json",
+        "sha256": "24590ccfd1114d3d5a7bc2ba7fb716eab48eefe00e6e9ec8772ff41b868f3e16",
+        "reviewer": "",
+        "status": "PASS",
+        "reviewedFiles": 16
+      }
+    ],
+    "receipts": [
+      {
+        "path": "outputs/qa-v100/worlds-production/clans-evacuated-patient-desktop.png",
+        "sha256": "fa4eb7a1f064ca4b69c4e82d8ee3e67d8dc412f316ead91adf0cb012e28f7e60",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/clans-evacuated-patient-mobile.png",
+        "sha256": "47c4fd55ae40efada555d0005b9380d186d68ec6f27a5a18d8f8acb5b6b566d2",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/clans-evacuation-archive-mobile.png",
+        "sha256": "91214e68ca314731f4d797a474a2452f56ca81b7e2d9beca5aa108e8d7510479",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/clans-evacuation-warning-desktop.png",
+        "sha256": "925c478fb057d104b0b907287bf69bac6102a5def94d5732fd140af35a9eca1a",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/clans-evacuation-warning-mobile.png",
+        "sha256": "5f5defbc1eced8e704b8fe3790e55a2110d1c7ec97eed685402cecac10a5e306",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/homeworld-resident-landmark-mobile.png",
+        "sha256": "6856a6456a4e66c1c5f2853df4be9db149eb51e436404e97714dce22ab167719",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/homeworld-street-conversation-desktop.png",
+        "sha256": "ad86f6d80da03398b1bbb296ee55aac0a5c71f34530498e4ee818aaaa881a4c1",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/homeworld-street-conversation-mobile.png",
+        "sha256": "dc7f6c8aa2e04da505ead0ff12a2294eb5187b4ab55c3b78292b8795489203e8",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/worlds-production/homeworld-street-prompt-desktop.png",
+        "sha256": "f7f070fe0d44f628601b2c3f03adbc9bc1bba357e3fecfe7af99353786e5146c",
+        "inspections": [
+          "outputs/qa-v100/worlds-production/inspection.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2H-left-native.png",
+        "sha256": "668c29b4cc3dd9cb1134797c252baeffc60009738f63dc9a0d154d8e081a5b64",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2H-right-native.png",
+        "sha256": "c6f192a78ebd001caee848a8ed50d77dc95750f6f06babeb2a6b2d5b5ec09c76",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2L-left-native.png",
+        "sha256": "2734d2639111a05f4bae555e64019895c6b3980f4bc84182c1a237597a07d9c0",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2L-right-native.png",
+        "sha256": "f430ba99531a76d858b2fcc53cbcc4acabb6e3810089c14438f596cf60d912fb",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2M-left-native.png",
+        "sha256": "6ca3bc3656106c7da5d4a78901f6e4e96e964bfffa8004557e707758898d22e3",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-2M-right-native.png",
+        "sha256": "91f35d7d2963879ad928d47667359ad8175c31a96c817cc0580e18838d56e2ed",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5H-left-native.png",
+        "sha256": "f6519081effb9b0a37c932d3774e3822941a98259006ff7dd269f08c4e443938",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5H-right-native.png",
+        "sha256": "19a716f5639a9bb3bd67894a3cdabba37644e414605f9d87383fc51dab8bb9cc",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5L-left-native.png",
+        "sha256": "b7111791499e9c20f7c018c4975f013a5e787839650a746eaae71d487b17c48a",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5L-right-native.png",
+        "sha256": "9aa1e51b2e7143eb5dad272619b0279c0e8de1a920a937f0b4a7353565678398",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5M-left-native.png",
+        "sha256": "b7082c95db276c497686ca57a59a049ddd68ca07fa30303ac36bcbb48c3c3da4",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-5M-right-native.png",
+        "sha256": "adea72cd5b3e5a528b9c38f612805bf1a354062db22e44966a31ef5c247429da",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-6M-left-native.png",
+        "sha256": "2494a878cdde608c36d09bdf19562a399c15ba922d73f2cf2848c9da91c2edb2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-6M-right-native.png",
+        "sha256": "e053bee708893f8ae1d86a74040c038894ebe71f1bb982b82fb431c127219823",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-CLEMENCE-left-native.png",
+        "sha256": "4a739c277bebd3781b00ce00b28b3fcbe5bb58ca5fd5164a977e20b9a2967c81",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-CLEMENCE-right-native.png",
+        "sha256": "3e53989f9107053d79d0db8c7b1a56a70c9ae65341ea417796647ca0de7f43f9",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-DEFAITE-left-native.png",
+        "sha256": "5b9a5e38154b6b8e6bf428ad9ec85a4b1c3afc31ff7f06597032ef527cb03a30",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-DEFAITE-right-native.png",
+        "sha256": "196d1a23748e407020edc2715c662e81872f6185e9281be9c0189c2891431abe",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-EQUIP-left-native.png",
+        "sha256": "d5aa83b985790003de82cff5563b09427f9b4c5fb05ada1c6cf3fbb11e36a289",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-EQUIP-right-native.png",
+        "sha256": "57f29c1d2e49bde5974a9f9ed171881fd121c6964354731ae9095af9bece43c9",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-FATALITE_1-left-native.png",
+        "sha256": "1d52583e1ec97a230d06fb7fb2f59a182962e3e69b33b773eee85b32c5d642dd",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-FATALITE_1-right-native.png",
+        "sha256": "659ad21631bdd2dd06c8f787423c5cee8037dcd490f756b591c0cac8f0cca773",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-FATALITE_2-left-native.png",
+        "sha256": "ae83cebe6db349833cf27821c5b129b78a6f4c97baf615e1a86e043adf319462",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-FATALITE_2-right-native.png",
+        "sha256": "a26d687abea0670a3c42ac3979492740378573d36e016b22bea57cb4e25a147c",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-INTRO-left-native.png",
+        "sha256": "383af00efe4ec3ca3145b7fd42f1d4848b66cf616f12b811eedb9c9a38d8f297",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-INTRO-right-native.png",
+        "sha256": "9d1baefbe66e49da0d30800001e666b9c224646f6275d51effc15b42f0c726cf",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S1-left-native.png",
+        "sha256": "6c8884292bebf7b229cb0fc4ba74a5daff3a6118629f9752de5c04c2ccd2a50e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S1-right-native.png",
+        "sha256": "2698eeae7028824c57f99628f41a988ea85cf2ad0749f1a7794b12e723c3c8e2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S2-left-native.png",
+        "sha256": "d35b2805a7f3cbdea99898cf34618a982e2146f12e23b2b3f455607e3a579fab",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S2-right-native.png",
+        "sha256": "62863c6db7a15f45139416a2f58cff28612ddef56dce24cd1bc7417fe03f0c0f",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S3-left-native.png",
+        "sha256": "683c10ce63be7f057d10d81e1c93f01aceab4d70c276bab08fb21b1cdd728ba2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S3-right-native.png",
+        "sha256": "95c9f8e57c1f904e58707ecd1c42dae581eab6974445b0349185f74eaee937eb",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S4-left-native.png",
+        "sha256": "26560013d7fc6503e93ec453abd578c1775b86666f93bdf18be8fe0d66bf5daf",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-S4-right-native.png",
+        "sha256": "7b3a3a3430780ab35c27cc920f2f922b7bf2d9725b94a464ab08f3f4588ce6dc",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-SUPER-left-native.png",
+        "sha256": "34f874743325e56fc900eee5378f1ad2dec2cd3a3aa264bb4214e234d2c8503e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-SUPER-right-native.png",
+        "sha256": "d97b72e3b68e090fd7044515aa208ac4f636390bdf5345081a6bade4f15e61f1",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TAUNT_1-left-native.png",
+        "sha256": "18dd60cfc3cb25b75979ae023b6596fdfad249891bdbf6729147fa7b3d649ae2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TAUNT_1-right-native.png",
+        "sha256": "1608ca013a2dcb8b0b0c875f83b37e33baaec028989a876a3876eb77e5051780",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TAUNT_2-left-native.png",
+        "sha256": "7fd813ab690972c36b6b05850185be437bb98782b77c124c536931f1c37df816",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TAUNT_2-right-native.png",
+        "sha256": "54e870101172ae669b7b20bec613d441e12545fcea4a0499172d437a9e1360bc",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_B-left-native.png",
+        "sha256": "05aed3e7a8feea3c84ca04fc79e2070e1e84d855f7e067b50ba6bdc6fb08729f",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_B-left-public-scene.png",
+        "sha256": "cadfb5c8de6dbae295509d386c6af08653dd2d18203d752faea57d8cd02e0a61",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_B-right-native.png",
+        "sha256": "0c05dea5760b1dd0042daa65318ec5caa99015493c8db7fc6f5b1c2fd3e14598",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_B-right-public-scene.png",
+        "sha256": "e566959af945161a9c0e84e21a1325520b491b8847e54571fda9c0e5d2369b93",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_F-left-native.png",
+        "sha256": "1e292b12e678f08636862f5c65e870e7305a140e108afba65d8af00cfe192f37",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_F-left-public-scene.png",
+        "sha256": "56195f2dc7a3dc471e356e3d080a84e945c5e6a39c067250d9e22a148e1f373c",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_F-right-native.png",
+        "sha256": "ceeeceaf38a01c94f8e84c2ef53216fd527b5ff41ffbd3d9c838cff01994394b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-TH_F-right-public-scene.png",
+        "sha256": "330bfbaff51461c4f5cc324ec4a20733bbf968a12320be58a160036065fb1ecd",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-VICTOIRE-left-native.png",
+        "sha256": "2f39d51ce995f3de1aceba677c57b1822bac59fe232896b9950fb8019a4bc7aa",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-VICTOIRE-right-native.png",
+        "sha256": "55e1b6a0efdca0edebb44b11efc4fe05f84299a7c319780aa5ce5a470e3aa384",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jH-left-native.png",
+        "sha256": "a35dd7deea22f93202ef447b2cd0e3fee65e25768c0501f8b5dfab230ebe5b1f",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jH-left-public-scene.png",
+        "sha256": "6fc131d76c72694133840b1d7073111d97631bd81784410c79e3a3b4a5eada1c",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jH-right-native.png",
+        "sha256": "20df5e8cd261108d376e26b84b25ede76686eecb5f1b7bb1b4126ecff2d4cdc4",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jH-right-public-scene.png",
+        "sha256": "596bd46ff01d5b78c472c6072663d6f1fbcbc81e9cff2c38e9f0ceaca635409a",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jL-left-native.png",
+        "sha256": "815110de2b26a78cca1f0e1cada1c40b8e67d8e56d09a1351a813988d1f74334",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jL-right-native.png",
+        "sha256": "fe73912f66ae7fe02733b85c122ee3a9812dc6c540f649b10972efbd61fbaad9",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jM-left-native.png",
+        "sha256": "ba82f9b2b039ec4129d977b3dc238915e104ccf5504e16d6c9dcc59a32b64bcf",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-jM-right-native.png",
+        "sha256": "73918035a3e2e0e3f98d4b4ea6eb69d1e2443cc2ea0b23fdaf576bd0fe66ad91",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-feral.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-left-public-desktop.png",
+        "sha256": "f21307a090de410c2e408623e9834a0a4557ebfb85514f5a300cf9f94ddec7f9",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-public-mobile-canvas.png",
+        "sha256": "b79036823b0123cf88a2aa73fb0b6e917b54362b8556eaaab6858617badbe473",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-public-mobile.png",
+        "sha256": "9880d8972416c594f037cc37859a97c637a42a737d7cac3dc1798c80364a4085",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/feral-hunter-right-public-desktop.png",
+        "sha256": "5c10939483f3243b44ca971ef3d6a2ea8c316ea95f5dfb6a2d6fdcc742b4f5f1",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2H-left-native.png",
+        "sha256": "013552de6833053489683557165a0feb1837d85acf60bf1a513597db9995e097",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2H-right-native.png",
+        "sha256": "494b24d1c5f2827157b4111028b4e6c5ebf4785488f64cce0796318a92961db2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2L-left-native.png",
+        "sha256": "b7bf82dd1e9f2b11240a8c0f0bce1e638ac496554e3f92d18a27d1fbbc020b4e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2L-right-native.png",
+        "sha256": "bfce142abfc5c7a1ccb3d39200f8bbf0a67b9ed704b234ad890578af64c09089",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2M-left-native.png",
+        "sha256": "a2ed73b60c34f692e33c75639fac7ae2d0ad30ab801503885f6bfadc8098dbcc",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-2M-right-native.png",
+        "sha256": "8001c53409d6c9c746bd82a1299fa4568c3c51f828e155a79328c3dd8e25527b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5H-left-native.png",
+        "sha256": "01fd2483c7d6b22d273aea99e4c263720884bbfab8a935e351125be74dee310e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5H-right-native.png",
+        "sha256": "a4505ed5d7b5e9c1c6d0327e9893967a94378524bfb4f20822bb68f368568f5a",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5L-left-native.png",
+        "sha256": "ac110bf8c1525f99008577b012f7bb9ea372303a414ba80d03f528f829e76a30",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5L-right-native.png",
+        "sha256": "a774feed82da71a2b439760c11bcd80a41f7ddeb1e54874e37f18187495e1720",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5M-left-native.png",
+        "sha256": "eccaea0dacb2ae6ec35beadc54c4a31dbf683f7f314fe6e74cc2abea059183ed",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-5M-right-native.png",
+        "sha256": "93996e14debb2e19a99d2983e9f9640c52a7e70e62065ea370d1bb9a2b5aacad",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-6M-left-native.png",
+        "sha256": "4da1b8ff31783605a56a719ff429e20c7e4cf4488ddabe43de61ba085fe99cbe",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-6M-right-native.png",
+        "sha256": "594f508186891cf0395b1d1a42a9cc19f8d4949bd37ff287f2f372a70586c87f",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-CLEMENCE-left-native.png",
+        "sha256": "b263f1912b8619fe01c4429037887c23a2961d325ce5ebe9218c8dcc507474d8",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-CLEMENCE-right-native.png",
+        "sha256": "fab464e7c9ed024ebb1208fcf2d69e8821e1ac62151a10ca1468ce91f01d9c59",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-DEFAITE-left-native.png",
+        "sha256": "ef68a59a0ed0121e7a71c02997271969107b96708cfb59fac1e5e54a9034bb24",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-DEFAITE-right-native.png",
+        "sha256": "bb116f86c8c2241d9556136a174432841bcb409d992172fbaa4bc25e8ffbac9e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-EQUIP-left-native.png",
+        "sha256": "92ef13a9ed2ba9e01c57cdbf59e23a75a72fa4c12b823ec65acf8acfd93534d0",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-EQUIP-right-native.png",
+        "sha256": "1f22c96d1fdc143d72b0076fc04063314558339b3f15e13769f7d39351734f1b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-FATALITE_1-left-native.png",
+        "sha256": "16752dc51adb8f2f5a58d4467f4fcc66973ab520aab8c6ee57481beed66c4e0b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-FATALITE_1-right-native.png",
+        "sha256": "11e54bf13dc4b2097993694a9afefd43761e18d6b2985124af7df823a05f8548",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-FATALITE_2-left-native.png",
+        "sha256": "868b1cc242599282a96c7deb7dd81627bdc0a30cfd70ab9fb362a9905db5e897",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-FATALITE_2-right-native.png",
+        "sha256": "0262ca193f239ec1df416fbaaf7117f6eae5e8eca735a8f45b8316780c684580",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-INTRO-left-native.png",
+        "sha256": "2d3629909dc7579b7ffdbbb3d14adc7c88784c121f0eed8ff7fad1f93dd30c97",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-INTRO-right-native.png",
+        "sha256": "a53094e91997be373420771f09f75af75ac3356c8ceb5f84efa50734b0c82660",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S1-left-native.png",
+        "sha256": "4c2cb70b8f99189832a2c829c378bb87e5b4eb21edce4602df028f0e51da87be",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S1-right-native.png",
+        "sha256": "d181eb9a289e2b0ca4d46406e1f0c5d74ce3e9bb2d9faf832c6e6a530c4b422c",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S2-left-native.png",
+        "sha256": "d0d0e2f68a4d89e846efd9bd8c24f1f2ec029967640ef102975130c7aff23413",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S2-right-native.png",
+        "sha256": "b4a4c1818da14eab788acaca789c83d30906c5d84b906961cc19001d5cd548c0",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S3-left-native.png",
+        "sha256": "eedfe65297d7d3f8bf921bb449570d9b391dda23efe91f4eb098605c655bb9b2",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S3-right-native.png",
+        "sha256": "8cdea7e21d54bb3d4ce32902944b548e262ee194b805cbedce36b1c9f0edbeb4",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S4-left-native.png",
+        "sha256": "80bbd7b72e4c2288baddd9c21a8e7f2f24d4977fe135b1b25f8f9d3a07db520b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-S4-right-native.png",
+        "sha256": "9a2f3b2c44e67841f5f8d41234aa088f838c7c7dd1529e6431bba7b0df17b9c9",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-SUPER-left-native.png",
+        "sha256": "fa2a73684b6f8cbf4953d5784d37745a3d76014c4cb4b469fcb5f88ebeab34cb",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-SUPER-right-native.png",
+        "sha256": "5ae77748e199295def5541cbd0775e9163f2e4cf365668020a440de456ed47dd",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_1-left-native.png",
+        "sha256": "0e946b6fd3592ead976f1819f14134a3023004176e7e078a50b23e6c81111766",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_1-left-public-scene.png",
+        "sha256": "6543a2a74926532ac21d7a0259eee23cd4ecf7ba74c822627c95078d170ce31e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_1-right-native.png",
+        "sha256": "38a4943df53c8449f5e92541263096c99423e6a5407c3e01241b7439572a847d",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_1-right-public-scene.png",
+        "sha256": "fa013afc199b4482d0bc1cb8eb6fab5079a55efa1124652fdee28c4d4b769460",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_2-left-native.png",
+        "sha256": "3e26dda41b68bbad11717b8a12e0a35e40f27d4e67fd603cfd92b05dbe5c46e5",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TAUNT_2-right-native.png",
+        "sha256": "23c687eabca3f319be69a27effdfafeace11227ea34d611bb57928fb5325584a",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_B-left-native.png",
+        "sha256": "d2d99b47e6f791763689b147ad76c652b3480e4433587cb34d332f5c900377a7",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_B-left-public-scene.png",
+        "sha256": "723048febd4eafd37e3c2b0482b5f87ab1e17eff0ad2378f576e5a95675631b6",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_B-right-native.png",
+        "sha256": "683d8fa4f48c7ff522fbfbbb367e710d90454c919039207423a650e349b1d3e5",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_B-right-public-scene.png",
+        "sha256": "0d227dd99d21f1d3ed786b4efd1f02be106a2a6f45e0477a6c5bc73e68876eed",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_F-left-native.png",
+        "sha256": "c13bf88a9b413ec3161a790331c7d2345757ffe8e05e2c997ebc2f22cd4a086c",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_F-left-public-scene.png",
+        "sha256": "199df06a17357d63c9a80a484880bbd18327fd90fb356e0184da5a056ea3cb06",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_F-right-native.png",
+        "sha256": "c9f2157a93391f86488eac4ef70cdc761a3c193e86f019f2c5585466eb0e67e3",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-TH_F-right-public-scene.png",
+        "sha256": "6bfde7957b0377eab7b9d3659b243036bcebf8f45e501ff5844969fdcd3924da",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-VICTOIRE-left-native.png",
+        "sha256": "96f8e1237c88a9648b3f0f2743ab9f6c5e67061ef9ed3d22c857915ddbbcb6aa",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-VICTOIRE-right-native.png",
+        "sha256": "a1b7adc492bc01070204670331b357ae8885163764af936d43067d074c3457de",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jH-left-native.png",
+        "sha256": "20a2d6929a3658fda257b4c15ddbc06f7d68e4630aadc71ecda9013c5e764f5e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jH-left-public-scene.png",
+        "sha256": "c202623e8a7f2531cae271bfee3fead7d9bebfa798acfe41d4cd259591f24fb8",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jH-right-native.png",
+        "sha256": "021639d2aa46b42571acaf283bef0cb8069009bdc465f326d73ea4b5ae26d9cd",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jH-right-public-scene.png",
+        "sha256": "057fd7d90ac174141cbfa88c03109c3e2b1a1373b9a29e649875b46619522682",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jL-left-native.png",
+        "sha256": "8318a468e6770c4d57cc4f209bd9f3153a63da67f7c8c25dd026d4d10d5e6fd6",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jL-right-native.png",
+        "sha256": "d23a584ae2e654d5ce3d2f6cc41a860fba790a6bc8bfebeb97bb0a5e0b603375",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jM-left-native.png",
+        "sha256": "21da93f9f04f2b383843517980743b68c3b2f5679372ca0f720b6ec14a09ab0e",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-jM-right-native.png",
+        "sha256": "84212c2053fcbcbc4cc6c3bfbd6a2284bde35df4065752485ca03d687cfd3b5b",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-scar.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-left-public-desktop.png",
+        "sha256": "ae375cd7f676482bbed15aa3fc8086566a484a0f6bfe3ceafc29372a501d1079",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-public-mobile-canvas.png",
+        "sha256": "731cd63005c64363bf55499730382789be53fc02561c575e06b934a1f57065a7",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-public-mobile.png",
+        "sha256": "5d0d5288105fe160b03a6168a58414aeb58a4da0a299ee1c4f41cb4baadd4b45",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/scar-right-public-desktop.png",
+        "sha256": "a32ec461aca84a8478eb6031e01f066842186c8149eaf26d06c0d2f1453497c5",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/workbook-production-final/workbook-mobile.png",
+        "sha256": "0f39fc4b63dfdf0122010cca5da2bc07f66a60901a3bb74f89dc9666ac94da97",
+        "inspections": [
+          "outputs/qa-v100/workbook-production-final/inspection-public.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2L-left-active.png",
+        "sha256": "60598fbf614e389d88e3a71ce5a8f2528548a1238dd8625dcc01d632a789ed87",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2L-left-recovery.png",
+        "sha256": "39fec5e650272754765e9e4fa985458e09000e844ac4a750fa46b30467fbd66e",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2L-left-startup.png",
+        "sha256": "8e70fd73859bdef47574d5f8f3e5caacc5ea011cee9d1a45d09b0a1f2bb6cf3f",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2M-left-active.png",
+        "sha256": "170c7aaebfdc9286e6424587e80c858bf3ce24857baa18252ad6279ebb18238f",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2M-left-recovery.png",
+        "sha256": "f45fd6630d3913e1c7beedeeba00f7eab0e5f145f003ea7110dd4056d6afa68f",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_2M-left-startup.png",
+        "sha256": "ffbf34ee68f1d7b236ecd3361d59f485652fffc53fca54d0163e0ccdc4219a63",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_5L-left-active.png",
+        "sha256": "3da51b3f64b3f8a229c189daea518901feff2b73e5e10dc58a7042cc26d8e3fb",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_5L-left-recovery.png",
+        "sha256": "797bc1a24ebf57c00ecfb739a1efd53e6c9209a155af49d1cfe98209f6f87592",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F003_5L-left-startup.png",
+        "sha256": "50c22c58e28c9a65ad55ca2a9e24b3ed12fb8d29649feb3021b81dcfd6a08b8c",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2H-right-active.png",
+        "sha256": "56ab6b68ea860297d3dca8347e58839aae4634af68cc1d77d5fd2c3177cf4e76",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2H-right-recovery.png",
+        "sha256": "99cc79dbf9b599835d2937a308f8cf112ff56b945ddd67c010db684c80239bc9",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2H-right-startup.png",
+        "sha256": "678bb2d459c6efcdb6b9ab5bd3a52d3beda7078a48e7a2cf12d1b0838f1695ab",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2L-right-active.png",
+        "sha256": "b77c31fb739d9935335c780d98cfd5e116676db49806955387ead05f09aeaf1a",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2L-right-recovery.png",
+        "sha256": "177dcf9145b7be8aac977aa82760aa413a184f570c56e5cb5c618d0d88ea9718",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2L-right-startup.png",
+        "sha256": "f71df2741879d1721e1be34ae65220c3771ade54f79d4b21551d7e2767d0eadd",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2M-right-active.png",
+        "sha256": "c8ef888d168dff2bcec40c364cb086cdfc2f3c48f3e49ce2bf7fceda3b497c7c",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2M-right-recovery.png",
+        "sha256": "541378568cc32240fb90d3770b872f09ec4514edf315e0933dc770f3435cb382",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_2M-right-startup.png",
+        "sha256": "6efbba9c8a61be1e081ffdca541e94cb7256b3656b44599123110fbc1b38730e",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_5L-right-active.png",
+        "sha256": "31ed9f361846a0c48df763090e75c940fa3b2953b294ce0c5e27e2f968ececfe",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_5L-right-recovery.png",
+        "sha256": "bbef9218391a7ed666d1a7ce3cd1483a76cbcfbc586d38ec4aa554099239e128",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_5L-right-startup.png",
+        "sha256": "014c9b50eb78d00682ea1d6561eb672bd2063c43c98757ee9ec57fafb6beaa6c",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_jL-right-active.png",
+        "sha256": "dd03b1519e47aed4ebcd34206120a732d23011ae2af3fd989d47f3d2dad6f714",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_jL-right-recovery.png",
+        "sha256": "c750e63700de56c9b4eba9759571ca3a862a0e07ad528237f7524483f272fd72",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-1-M_F006_jL-right-startup.png",
+        "sha256": "3170b2c22419adbf17201467351b0781d26c5a9913ff8481c363a1653d82e0ab",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-1.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2L-right-active.png",
+        "sha256": "bf2435460d28389b65483ca74165cb3bf9e90b08534cc0201a3d6bda3262b3bb",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2L-right-recovery.png",
+        "sha256": "9a1f1b4c11ef2f50ffd8da51995cdc796fc9d8dddb4b9c714cd5226879a0a968",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2L-right-startup.png",
+        "sha256": "00ab0ee02c1366c17554c0c22a50559bd3aadbc00a0f29201d11c30d2f9aa075",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2M-right-active.png",
+        "sha256": "f94bae73a360a48b192e3820eeeb7e538344230570de757782965ff105caddd3",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2M-right-recovery.png",
+        "sha256": "e16fcd845874f305e8025c999cecec36d5451bedcc2b97ed3eab1e68df8771ca",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_2M-right-startup.png",
+        "sha256": "9a26569baea448b822f5fb42c03596b1aece0219ccbe79981d66aa9326606fbb",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_5L-right-active.png",
+        "sha256": "54f8d1b560cef9fdc7a1b28cd4463981617fc68182c06bd8176ca57c4e1d30b9",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_5L-right-recovery.png",
+        "sha256": "1ed63ee587aaeb5ed45928df22afedadd4a14d94983c260a5f97741f9b621c02",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F003_5L-right-startup.png",
+        "sha256": "c3792e18f8ebd952438fa174fc4de192b9097783435158229f2755b099ecd259",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2H-left-active.png",
+        "sha256": "18c7ddaf06e7e44e1d6248d6f70fdae9a38f363c2243cfcd28c5b5aac3996de9",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2H-left-recovery.png",
+        "sha256": "09fb564a280a48bb2265672d9a223c9065feeda8f5b02853fdae35a1abd8b673",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2H-left-startup.png",
+        "sha256": "a5f918438a448c90ff071f378ecf70573c3d94df0e505ffbe7ca9b580346e7f1",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2L-left-active.png",
+        "sha256": "3c964e999974c9283c874d94e9d3c0d3f2d0a7595155d87d6edf1d1db918aaf0",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2L-left-recovery.png",
+        "sha256": "6e6c88002172f58e2feda97f7e8c2d32b1cdc9f81e1c1638e77122de1e105ff4",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2L-left-startup.png",
+        "sha256": "d4beebeb9859e34072948613b5a5f2140414aedfc257b1e27a77b6878e01a821",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2M-left-active.png",
+        "sha256": "45fe2856f96525bee2342055d8d6ff7486c8d6e4d63459d8a0ea7371d9da133a",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2M-left-recovery.png",
+        "sha256": "734ba1c9acc7d51e3a070746a9259ee9b537604291ab68fea3070f9352e2d64c",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_2M-left-startup.png",
+        "sha256": "7bf2db4f4d48468ec57405494fc382e6b34c721777b1f9471cd7a1adfe641130",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_5L-left-active.png",
+        "sha256": "efa99048b3d38a31dca1e41b2b92d2736e4567213d91d5e05dc7dcc8aa0b2ad2",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_5L-left-recovery.png",
+        "sha256": "11bb744eb7dcf3bbb957963f65f2d54a0cf533ab52d040f32688195be3044894",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_5L-left-startup.png",
+        "sha256": "231defc043852d9e1e7a3a5269ec18418f4a27279caf3881f7aa9f218707b06d",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_jL-left-active.png",
+        "sha256": "c8b600ec2143e6490ca094283f33d3d30157b4bacb52a7c2d2d23c232eac67be",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_jL-left-recovery.png",
+        "sha256": "14ed18ac3f87daea8c77fe7de54479a9d4ef13b74458c7c8ce1941043911003f",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/body-match-2-M_F006_jL-left-startup.png",
+        "sha256": "cbbd16f40bd4612918cc395d78cb3f623af294a6415b54b3e45e3f0d4d520a5b",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-body-match-2.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/native-duel-mobile-pause.png",
+        "sha256": "23324b49f29f180e4dbbafc43aaf7e46021c95f06c2d2659b7ab6fc76dba8ec5",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/native-duel-mobile.png",
+        "sha256": "52e4eb0ba075cc3288f19c3e0bcef49551f92828d83cbd6fbd9318281ef60961",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-1-feral-hunter.png",
+        "sha256": "919c1f35de2987849770ca77624e9848d54074627ed9bb4348793b8a31274f35",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-1-scar.png",
+        "sha256": "66b1bbe5669e9ae5a7f4bbdefc5de4cad6e2bb34cb958cf11ed31f54b37573fa",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-2-feral-hunter.png",
+        "sha256": "c316eea33dd00b02b28511edb852879dc54707b2fb8157931e7ce11dbccb0bde",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-2-scar.png",
+        "sha256": "f98c8d5dc80f787620ec03ddb3faa522488f66431d0ec526ef970ac7c6ea0a9c",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-3-feral-hunter.png",
+        "sha256": "bad418ad3e7738c461dc985d1757442520895f308aee79b2b496fdd01b36ac14",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-3-scar.png",
+        "sha256": "63da8914f07ee464d2fb26f356ec3d1a6326f0349877bac76e2781791825e417",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-4-feral-hunter.png",
+        "sha256": "01ef9951ccf3d46be7d3aeb92178fa1568b51d68202c5c3770dcbd34e810912b",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-4-scar.png",
+        "sha256": "d540405247801224883142c4ed700616839a1488552c15205e74e3984918ce2f",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-5-feral-hunter.png",
+        "sha256": "e05a43df7cae16a67390a444f3e0cfe4261cfd4294f21393dbde5ac5c5bbced8",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-5-scar.png",
+        "sha256": "ba98ddea5c71dfcc341382af02bad1229203e7647802b08e2ed4afa764494f35",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-6-feral-hunter.png",
+        "sha256": "ab01a7aa36c0984f13c0e4c6fffc9338a9ebc64ab3ed656311f063ecde374be6",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-6-scar.png",
+        "sha256": "0a4bc6384031ad4f860b9309b9b32006a44a473658915b31fee6d0cd303f4bb1",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-7-feral-hunter.png",
+        "sha256": "c99e87ddaea6b813e3686d1cc4f456c0af10634636df8448480c52ea705cb3f1",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      },
+      {
+        "path": "outputs/qa-v100/combat-production-final/supplied-7-scar.png",
+        "sha256": "10bf633d4bcf2661d5905ff43eb4339b3d37167f9fbb940d5dbf10c5323ff3a2",
+        "inspections": [
+          "outputs/qa-v100/combat-production-final/inspection-costumes-mobile.json"
+        ]
+      }
+    ]
+  },
+  "workbookHistory": {
+    "baseline": "docs/YAUTJA_V99_SUIVI.xlsx",
+    "baselineSha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+    "historicalSheetsPreserved": 15,
+    "historicalZipPartsByteIdentical": 28,
+    "v100TotalSheets": 27,
+    "nativeExcelApplicationVerified": false
+  },
+  "limits": [
+    "Les 42 études sans raccord et les valeurs Excel restent séparées des mécaniques actuelles ; entités, variantes, victimes synchronisées et personnages complets restent ouverts.",
+    "Les 12 apparences fournies sont vérifiées contre un emprunt des nouvelles pages BODY ; leurs propres animations ne sont pas certifiées.",
+    "Les captures statiques ne certifient ni toutes les images ni la fidélité canonique 1:1 ; les cycles/source/pixels ont leurs tests et revues distincts.",
+    "Homeworld : parcours navigateur ciblé à l’étage 0 ; les autres étages, propriétaires et occultations sont vérifiés par le modèle, pas par 16 parcours joués.",
+    "Clans : fixture normalisée déclarée pour isoler l’évacuation ; règles locales du mode libre, sans guérison automatique ni progression campagne.",
+    "Les détails fins restent petits en portrait 390 px et une étiquette de palefrenier passe sous une arche ; aucun défaut bloquant d’interaction observé.",
+    "Les anciens runs interrompus sans result.json sont exclus de ces résultats.",
+    "La publication Vercel et ses routes CDN ne sont pas qualifiées par les seules recettes locales."
+  ],
+  "excelFinalVerification": {
+    "status": "PASS",
+    "tests": 9,
+    "failed": 0,
+    "skipped": 0,
+    "testsLogSha256": "9736d6193e0cc122e031385e0561ca936877144a559ba68fd9c5c03b62d0edf0",
+    "reproducibilityCheck": "node scripts/build-excel-followup-v100.mjs --check: PASS",
+    "workbookSha256": "236fa1af1ccdbc5f1bd80a804d86561a1c2aab85262a4c914a5776d327b896f9",
+    "workbookBytes": 1859240,
+    "sheets": 27,
+    "historicalSheetsPreserved": 15,
+    "historicalZipPartsByteIdentical": 28,
+    "all52BodyStudiesProven": true,
+    "nativeExcelApplicationVerified": false,
+    "nativeExcelCalculationEngineExecuted": false
+  }
+}
