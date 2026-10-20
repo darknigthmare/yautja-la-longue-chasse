@@ -1,0 +1,1274 @@
+{
+  "schemaVersion": 1,
+  "fighterId": "feral-hunter",
+  "appearanceId": "runtime-default",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "records": [
+    {
+      "id": "001-normals-5l-5m",
+      "source": "/workspace/generated_images/exec-276e5c3d-e246-44f5-ad0c-524677ac772c.png",
+      "target": "art-source/v100/pit/feral/intake/001-normals-5l-5m.png",
+      "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
+      "bytes": 2018648,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "prompt": "Create a production raster fighting-game sprite atlas of the SAME masked Feral Predator as the reference images, with real transparent alpha. Reference1 is the existing game design; reference2 gives the correct anatomical LEFT forearm shield and RIGHT wrist blades; reference3 is the independent LEFT-facing rear-three-quarter view. Keep bone skull mask, exposed ochre speckled skin, black dreads, ribbed pelvic armour, ankle wraps and bare clawed feet. No shoulder cannon. The shield is FOLDED flat on the LEFT forearm in ALL sprites. The two curved wrist blades remain on the anatomical RIGHT wrist; do not swap arms.\n\nEXACTLY TWELVE separate full-body drawings, THREE COLUMNS by FOUR ROWS on a wide 1536x1024 canvas. No text or cell borders. Every sprite wholly within its own cell with at least30px transparent padding; very broad empty transparent gutters between rows. Constant body scale (standing about180px high); every complete foot, dreadlock, hand and blade tip visible. Grid is only layout, do not draw lines. Three columns are chronological preparation, impact, recovery, all three visibly articulated and different.\n\nROW1: right-facing FRONT three-quarter, standing short jab. Col1 right fist/blades pulled beside chest, knees flexed. Col2 anatomical RIGHT arm makes a compact straight jab toward RIGHT at shoulder level, left folded shield arm guards ribs, body weight onto front foot. Col3 arm retracts and body returns to guard.\nROW2: LEFT-facing REAR three-quarter, show back muscles/dreads like reference3; independently redraw the SAME short jab toward LEFT. Anatomical RIGHT blade arm is the near trailing arm that extends toward left for the jab; anatomical LEFT folded shield arm is on the far side. Do not mirror row1.\nROW3: RIGHT-facing front three-quarter, distinct standing backhand opening strike with right gauntlet. Col1 load torso rotation and fold RIGHT forearm across chest. Col2 torso rotates and RIGHT gauntlet sweeps outward in a horizontal BACKHAND, not a straight jab; knees and hips pivot, left shield arm stays near body. Col3 withdraw into balanced guard.\nROW4: LEFT-facing rear three-quarter independent backhand counterpart, the same anatomical RIGHT arm and LEFT folded shield equipment. Different torso/arm positions for preparation, broad backhand contact and return.\n\nExactly two arms, two hands, two legs per sprite. Keep coherent armour, mask and proportions throughout. Clean detailed illustrated game sprite style, readable anatomy and weapon grip, no duplicated unchanged poses. No spear or gun in hands for these unarmed gauntlet strikes. No projectiles, effects, victim, lettering, checkerboard, coloured backdrop, floor, cast shadow, glow, motion trail or blur. Real alpha outside the silhouettes.",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "actions": [
+        "M_F006_5L",
+        "M_F006_5M"
+      ],
+      "status": "PARTIALLY_ADMITTED_ACTION_FRAMES",
+      "notes": "Twelve drawn poses; three columns by four rows, orientations independently drawn. Review backhand distinction and pivots before admission.",
+      "review": {
+        "actionIds": [
+          "M_F006_5L"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Seules les six premières cellules 5L du prototype001 sont admises ; E10/5M reste refusé. Référence BODY fixe246px approuvée depuis tête≈13 et vraies soles≈258 de la première pose. Pivots placés entre les pieds au support alpha128 revu visuellement ; quelques pixels alpha3 détachés sont conservés et ne définissent pas les pieds. Deux côtés natifs, aucun miroir. Les durées Excel5/3/10 servent à l’inspection ; le vrai coup conserve4/3/9."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "002-crouch-2l",
+      "source": "/workspace/generated_images/exec-c57a9c64-f572-41c0-9c1f-9cc7b80f3047.png",
+      "prompt": "Production animation sheet for the SAME masked Feral Predator BODY game appearance in the reference images. New native illustrated sprites, genuine transparent alpha. Ochre spotted lean muscular skin, bone skull mask with narrow projecting snout, black dreadlocks, ribbed pelvic armour, ankle wraps, bare clawed feet; folded shield ONLY on anatomical LEFT forearm, two curved wrist blades ONLY on anatomical RIGHT forearm. No shoulder gun. Reference1 governs style and clothing, reference2 right-facing anatomy and reference3 the independent LEFT-facing BACK three-quarter anatomy.\n\nEXACTLY EIGHT full-body drawings on a wide1536x1024 canvas in FOUR COLUMNS and TWO ROWS. Draw nothing between sprites: generous fully transparent gutters. Body scale constant, upright reference about260px tall within each512px-high row; margins at least40px on every side and all toes, blades, dreads inside their own cell. Never duplicate/mirror pixels. No labels, borders, background, gradient, floor, shadows, glow, effects, trails or checkerboard.\n\nThis is one crouching LOW SHORT STRIKE ('2L / ankle stop') in two independently drawn directions. Do NOT turn it into a standing stab or a long lunge. Arms, hips and legs must articulate naturally.\nROW1 all look and attack RIGHT, front three-quarter:\ncol1 UPRIGHT relaxed guard, used only to calibrate the exact body scale.\ncol2 crouching PREPARATION, knees deeply flexed, pelvis lowered, right fist/blades beside ribs and LEFT folded shield close to torso.\ncol3 LOW CONTACT, stay crouched with same short body scale, extend right fist at an opponent's shin/ankle height, free left hand guards torso, feet stay grounded, no stretching limbs.\ncol4 RECOVERY, withdraw right fist and return to the same crouching guard without standing.\nROW2 all look and attack LEFT, rear three-quarter BACK view with shoulder blades and dreads like reference3, independently drawn opposite side:\ncol1 matching upright calibration guard.\ncol2 same low preparation.\ncol3 same short low right-arm strike toward LEFT.\ncol4 retract into the low crouching guard.\nThe anatomical RIGHT blade arm stays the right arm when direction changes; folded shield stays on anatomical LEFT arm, never an open disk. Exactly two arms/hands/legs. Keep mask, gauntlets and proportions perfectly consistent. Clear distinct crouch/strike/retract drawings; no victim or painted attack effects.",
+      "actions": [
+        "M_F006_2L"
+      ],
+      "columns": 4,
+      "rows": 2,
+      "notes": "Columns1 are upright body-reference drawings only, not crouch animation. Columns2/3/4 are low preparation/contact/recovery. Both orientations independently drawn.",
+      "target": "art-source/v100/pit/feral/intake/002-crouch-2l.png",
+      "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+      "bytes": 2248775,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "PARTIALLY_ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_2L"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact G10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "003-crouch-2l-layout",
+      "actions": [
+        "M_F006_2L"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "prompt": "Re-layout this exact transparent Feral animation sheet into TWO WIDE COLUMNS and FOUR ROWS on1536x1024. Preserve its eight complete distinct drawings, anatomy, gear and relative standing/crouching body scale. Do not crop, stretch, recolour, mirror or merge sprites. This is a spacing correction: the existing8cells crowd their wrist blades horizontally. Use cell width768px to separate them with huge transparent margins. Row1: RIGHT upright calibration at left, LEFT upright calibration at right. Row2: RIGHT crouching preparation at left, LEFT crouching preparation at right. Row3: RIGHT low shin-height jab contact at left, LEFT low jab at right. Row4: RIGHT crouched recovery at left, LEFT crouched recovery at right. Keep each complete figure entirely inside its own cell, generous real-alpha vertical AND horizontal gaps. Keep body scale constant across all8, standing refs about190px tall; low poses naturally shorter, never inflated. The final PNG must be genuinely transparent with no floor, brown haze, drop shadow, lettering or borders. The supplied figures are the exact target; only arrange them more spaciously, full anatomy and weapon tips preserved.",
+      "source": "/workspace/generated_images/exec-66d246fa-6f6b-41b9-a22e-2451560fe378.png",
+      "notes": "Layout edit of rejected002; row4 left cell appears LEFT-facing instead of RIGHT. Review each cell separately.",
+      "target": "art-source/v100/pit/feral/intake/003-crouch-2l-layout.png",
+      "sha256": "532478c4ad5e75656ac493f62358f10c25976f9d736f960aaedf98faf5965fe6",
+      "bytes": 1794314,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Sens erroné dans une reprise et gouttières incomplètes."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "004-stand-5m",
+      "actions": [
+        "M_F006_5M"
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nEXACTLY SIX drawings in THREE COLUMNS by TWO ROWS, landscape1536x1024. Row1 faces RIGHT, front three-quarter. Row2 faces LEFT, rear three-quarter back view. All columns form a standing BACKHAND GAUNTLET SWEEP, deliberately different from a straight jab. Col1: rotate torso away from opponent, bend RIGHT elbow and draw right forearm across chest with knuckles toward opposite shoulder. Col2: uncoil hips/torso, RIGHT forearm sweeps OUTWARD SIDEWAYS in an unmistakable BACKHAND ARC, elbow bent about90degrees and palm facing toward the fighter's chest; don't fully straighten into a forward jab/stab. The anatomical RIGHT gauntlet/back of hand delivers the strike, blades follow the wrist. Show the body rotated compared to preparation and the left folded shield arm held tight behind the motion. Col3: retract elbow and settle into balanced guard with feet planted. On the LEFT-facing row keep the same right arm, show dorsal back/dreads and the correct opposite anatomical side. Three genuinely different poses per row, no duplicated impact. Standing about300px tall in each512px-high row with at least50px gaps and full weapon tips.",
+      "source": "/workspace/generated_images/exec-446dd615-3822-4f38-80d8-80070ef5f29e.png",
+      "notes": "Review all anatomy, gesture and cells before admission.",
+      "target": "art-source/v100/pit/feral/intake/004-stand-5m.png",
+      "sha256": "29b1ec422e7ba947fb1307e1bf85985f0e5672879b8b52539cb484f23b6f73da",
+      "bytes": 2285236,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Contact 5M dirigé derrière le combattant au lieu de devant."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "005-crouch-2m",
+      "actions": [
+        "M_F006_2M"
+      ],
+      "columns": 3,
+      "rows": 3,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nEXACTLY NINE drawings, THREE COLUMNS by THREE ROWS, landscape1536x1024. Each341px-high row has plenty of transparent space; standing body about220px, lower crouches genuinely shorter at the SAME body scale. Row1 contains ONLY three UPRIGHT CALIBRATION references: RIGHT guard / LEFT rear-three-quarter guard / RIGHT relaxed stance. These are body-scale references, not crouching attack frames. Row2 is a RIGHT-facing low sweeping kick in3phases: col1 crouch and load rear hip, hands guarding; col2 deeply lower hips and extend the front leg straight toward RIGHT at ankle height in a clear low SWEEP KICK, support leg bends under body and torso leans away, both right wristblades remain withdrawn near chest rather than becoming the striking weapon; col3 retract the leg and return to low crouching guard. Row3 independently draws the same3phases toward LEFT, back three-quarter anatomy, correct right wristblades and left folded shield. Do not stretch legs, jump, roll, show a standing punch, or restore standing before recovery. Distinct preparation/contact/return with grounded feet and full limb tips.",
+      "source": "/workspace/generated_images/exec-5144e938-1fd2-4a22-b7d7-8586f65ca494.png",
+      "notes": "Review all anatomy, gesture and cells before admission.",
+      "target": "art-source/v100/pit/feral/intake/005-crouch-2m.png",
+      "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
+      "bytes": 2166671,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_2M"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Original PNG inchangé ; rangée debout de calibration exclue du geste. Trois vrais dessins par côté : garde basse, balayage de jambe vers l’avant, retour. Double revue anatomique root/QA ; référence fixe388px depuis la tête aux semelles debout, pivots manuels entre appuis ou sur le pied porteur du balayage. La lecture suit les durées proposées11/4/21 ; le raccordement natif conserve les règles et durées actuelles du coup moyen accroupi, sans imposer les dégâts/hauteurs/cancels Excel."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "006-crouch-2h",
+      "actions": [
+        "M_F006_2H"
+      ],
+      "columns": 3,
+      "rows": 3,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nEXACTLY NINE drawings, THREE COLUMNS by THREE ROWS, landscape1536x1024. Standing reference about220px in each341px-high row, same anatomical scale in all9cells; broad transparent gaps. Row1 consists of three UPRIGHT BODY REFERENCES: RIGHT guard / LEFT rear-three-quarter guard / RIGHT relaxed stance. Row2 is a RIGHT-facing rising anti-air gauntlet strike: col1 low crouching loaded guard with right fist beside lower ribs; col2 drive hips upward without jumping, feet planted, raise the anatomical RIGHT arm in a clearly bent-elbow UPPERCUT, knuckles/short wristblades travel upward in front of chest toward upper-right, left folded shield arm guards ribs; col3 withdraw the right hand and lower back into crouched recovery. Row3 independently depicts the same3phases toward LEFT from rear three-quarter back view, correct anatomical arms. Keep feet on the same local ground baseline; no extra aerial hop, spear, projectile or weapon trail. Preparation and recovery clearly low, active pose can rise naturally, never rescale the body to fill each cell.",
+      "source": "/workspace/generated_images/exec-a217d7c2-8fde-47a8-afc3-274b27948de6.png",
+      "notes": "Review all anatomy, gesture and cells before admission.",
+      "target": "art-source/v100/pit/feral/intake/006-crouch-2h.png",
+      "sha256": "447f9bf0c29d98e6a9682f0ad6fc36f10afa27d38afe12cdbfc4fa54aa9c814c",
+      "bytes": 2144604,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Deux contacts uppercut touchent la zone de pose voisine."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "007-stand-5m-forward",
+      "actions": [
+        "M_F006_5M"
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "Correct only the attack DIRECTION in this six-frame Feral backhand animation atlas, preserve character, gear, scale, six-cell layout and all full limbs. Real transparent alpha, empty gutters, no shadows or effects. Three columns×two rows. Top row character faces RIGHT; lower row faces LEFT with back visible. The current middle-column active drawings incorrectly punch BEHIND the fighter. REDRAW those two contact poses: top-middle back-fist must hit an opponent in FRONT on the RIGHT, with the hand positioned to the RIGHT of the torso and face; lower-middle back-fist must hit FRONT on the LEFT, with the hand to the LEFT of torso and face. Never attack behind the fighter. This is a twisting BACKHAND opening strike: right forearm starts across chest, hips/torso uncoil and back of RIGHT fist/gauntlet drives FORWARD toward the opponent, elbow still slightly bent. Right wrist blades remain on right arm, folded left shield remains on left arm, no weapon or arm swapping. Body rotation and knuckle orientation make it a back-fist, not a straight jab or thrust. Keep first column preparation and last column guard recovery, all masks still face their row's opponent. Six distinct complete full-body native sprites with generous transparent margins and no cropping.",
+      "source": "/workspace/generated_images/exec-2b8e7af2-996c-42d3-aa1a-1e4448ec2b00.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/007-stand-5m-forward.png",
+      "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+      "bytes": 2351936,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_5M"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact E10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Étude de revers source distincte de la percée à la lance actuelle ; aucune nouvelle liaison au coup moyen debout."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "008-air-jl",
+      "actions": [
+        "M_F006_jL"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nWide1536x1024 sheet with EXACTLY EIGHT full-body sprites, TWO COLUMNS by FOUR ROWS. ALL FOUR in LEFT column face/attack RIGHT; ALL FOUR in RIGHT column face/attack LEFT from an independently drawn REAR three-quarter back view. This includes the final row; never reverse the recovery's direction. Row1 are UPRIGHT calibration guards, same anatomical body scale as all action drawings, about190px standing tall. Row2 preparation, row3 impact, row4 recovery. For these AERIAL action rows both feet are tucked/off the ground, no standing feet or walking poses; never enlarge shortened airborne poses. Transparent space generously surrounds every sprite; extremely wide cell width768 for weapons.  Aerial SHORT KNEE contact. Row2: jump-tucked guard, elbows close, right knee drawing toward chest, both feet airborne. Row3: drive the leading knee toward the opponent at close chest height (RIGHT in left column, LEFT in right column), hips curl slightly, other leg folded behind; hands/gauntlets remain defensive and not the striking weapon. Row4: retract the knee and curl back into compact airborne guard for the same gravity-driven descent. Three clearly different airborne poses, no flying leap forward or new lift in recovery. Correct anatomical right blades and left folded shield stay on their own arms.",
+      "source": "/workspace/generated_images/exec-75ffa59c-dd10-49e4-b5cc-c7e9de23b9ef.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/008-air-jl.png",
+      "sha256": "33ebbec1528de77e0b1580f55230659acd7dc0ec4b3f63f53997b69edbe4a008",
+      "bytes": 1595745,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Découpes aériennes non séparables sans voisin."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "009-air-jm",
+      "actions": [
+        "M_F006_jM"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nWide1536x1024 sheet with EXACTLY EIGHT full-body sprites, TWO COLUMNS by FOUR ROWS. ALL FOUR in LEFT column face/attack RIGHT; ALL FOUR in RIGHT column face/attack LEFT from an independently drawn REAR three-quarter back view. This includes the final row; never reverse the recovery's direction. Row1 are UPRIGHT calibration guards, same anatomical body scale as all action drawings, about190px standing tall. Row2 preparation, row3 impact, row4 recovery. For these AERIAL action rows both feet are tucked/off the ground, no standing feet or walking poses; never enlarge shortened airborne poses. Transparent space generously surrounds every sprite; extremely wide cell width768 for weapons.  Aerial WRIST-BLADE BACKHAND CUT. Row2: knees tucked in the air, right blade forearm loaded across chest, torso twisted away. Row3: twist hips/torso and sweep anatomical RIGHT forearm outward FORWARD to the opponent: toward RIGHT in left column, toward LEFT in right column, wrist blades cutting diagonally forward-down, never swinging behind. Right elbow bent naturally, left folded-shield arm stays guarding the body. Row4: withdraw blades and curl both knees beneath the body to continue the SAME descent, not a new jump or standing pose. Full body and blade tips visible; no spear, beam or effect.",
+      "source": "/workspace/generated_images/exec-bf4865c0-e388-4000-89d1-fdd689fff4de.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/009-air-jm.png",
+      "sha256": "308b4ae670b553d17e3e4656a6ed408aca7094550a65dde5c96e9036165ab320",
+      "bytes": 1791007,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Découpes aériennes non séparables sans voisin."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "010-air-jh",
+      "actions": [
+        "M_F006_jH"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nWide1536x1024 sheet with EXACTLY EIGHT full-body sprites, TWO COLUMNS by FOUR ROWS. ALL FOUR in LEFT column face/attack RIGHT; ALL FOUR in RIGHT column face/attack LEFT from an independently drawn REAR three-quarter back view. This includes the final row; never reverse the recovery's direction. Row1 are UPRIGHT calibration guards, same anatomical body scale as all action drawings, about190px standing tall. Row2 preparation, row3 impact, row4 recovery. For these AERIAL action rows both feet are tucked/off the ground, no standing feet or walking poses; never enlarge shortened airborne poses. Transparent space generously surrounds every sprite; extremely wide cell width768 for weapons.  Aerial HEAVY DESCENDING GAUNTLET strike. Row2: knees folded while falling, right fist raised behind and above the right shoulder, left folded-shield arm guards chest. Row3: commit body weight downward/forward and swing the RIGHT fist/blades sharply down toward the opponent (down-right in left column, down-left in right column), torso leans with the strike, legs stay naturally bent airborne. Row4: arm retracts and knees/hips flex into a low, compact landing-ready recovery, feet below hips; there is NO drawn floor and no claimed new jump. Make preparation, downward contact and landing-ready recovery genuinely distinct. Anatomical arms never swap between columns.",
+      "source": "/workspace/generated_images/exec-df85f02f-d95c-43a5-960c-f81b07996230.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/010-air-jh.png",
+      "sha256": "a414a4d345a7bd8af40a9ce1557c2d5f036aa44502c9d961fba076d4fadeaf1e",
+      "bytes": 1756811,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Découpes aériennes non séparables sans voisin."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "011-crouch-2h-right",
+      "actions": [
+        "M_F006_2H"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPORTRAIT1024x1536, EXACTLY FOUR drawings in TWO COLUMNS by TWO ROWS. ALL FOUR face RIGHT. Front three-quarter anatomy like reference2. Top-left is an UPRIGHT BODY CALIBRATION guard. Top-right is loaded preparation; bottom-left is the strike; bottom-right is recovery. The upright ref is the same body scale, about420px tall in each768px-high cell; lower poses naturally shorter. No figure, fist, blades or dreads may enter a neighboring quadrant. At least70px fully transparent padding, no shadows.  Rising anti-air UPPERCUT from crouch: top-right bends both knees deeply and loads anatomical RIGHT fist beside hip. Bottom-left drives hips upward WITHOUT jumping, feet firmly planted, right elbow rises and right fist/wristblades point UP AND FORWARD toward upper-RIGHT. Show the bend at elbow and rising torso, left folded-shield arm protects ribs. Bottom-right retracts right fist and settles back into low crouched guard. Whole upward fist has huge transparent headroom, do not crop it. Same body proportions and equipment in all4.",
+      "source": "/workspace/generated_images/exec-4b0caf0b-a6fe-43c2-b865-82f0e1a9b768.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/011-crouch-2h-right.png",
+      "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
+      "bytes": 2214051,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_2H"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact I10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "012-crouch-2h-left",
+      "actions": [
+        "M_F006_2H"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPORTRAIT1024x1536, EXACTLY FOUR drawings in TWO COLUMNS by TWO ROWS. ALL FOUR face LEFT. Always show the independent rear three-quarter BACK anatomy, shoulder blades and dorsal dreads, like reference3. Top-left is an UPRIGHT BODY CALIBRATION guard. Top-right is loaded preparation; bottom-left is the strike; bottom-right is recovery. The upright ref is the same body scale, about420px tall in each768px-high cell; lower poses naturally shorter. No figure, fist, blades or dreads may enter a neighboring quadrant. At least70px fully transparent padding, no shadows.  Rising anti-air UPPERCUT from crouch toward LEFT. Top-right bends knees deeply, right blade fist loaded near the trailing hip. Bottom-left drives hips upward WITHOUT jumping and raises anatomical RIGHT fist UP AND FORWARD toward upper-LEFT, feet planted, bent right elbow visible; left folded-shield arm guards ribs on the far side. Bottom-right retracts fist and settles into crouched guard. Keep the BACK visible in every pose, not a reflected front torso. Whole rising fist and all toes inside the quadrant, generous empty headroom.",
+      "source": "/workspace/generated_images/exec-bdf39816-80e0-40a5-8cff-fa6dd7d5738a.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/012-crouch-2h-left.png",
+      "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
+      "bytes": 2154824,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_2H"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact I10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "013-crouch-2l-left",
+      "actions": [
+        "M_F006_2L"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPORTRAIT1024x1536, EXACTLY FOUR drawings in TWO COLUMNS by TWO ROWS. ALL FOUR face LEFT. Always show the independent rear three-quarter BACK anatomy, shoulder blades and dorsal dreads, like reference3. Top-left is an UPRIGHT BODY CALIBRATION guard. Top-right is loaded preparation; bottom-left is the strike; bottom-right is recovery. The upright ref is the same body scale, about420px tall in each768px-high cell; lower poses naturally shorter. No figure, fist, blades or dreads may enter a neighboring quadrant. At least70px fully transparent padding, no shadows.  Short LOW JAB toward LEFT, independent rear-three-quarter anatomy. Top-right: deep crouching guard with right fist beside ribs. Bottom-left: remain deeply crouched and extend RIGHT fist/wrist blades a SHORT distance down-left at an opponent's shin/ankle, left folded-shield arm guards torso. Do not stand, lunge far or swap weapon arms. Bottom-right: retract the same right fist back into crouched guard, BOTH knees bent and head still facing LEFT. The forearm/knuckles and full blade tips have huge empty width inside their own quadrant. No new shield disk or weapon effect.",
+      "source": "/workspace/generated_images/exec-619ac7d4-1239-4b94-90ac-be77e7a2be15.png",
+      "notes": "Original tool output retained, exact pixels; semantic and crop review required. Calibration poses are excluded from clips.",
+      "target": "art-source/v100/pit/feral/intake/013-crouch-2l-left.png",
+      "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
+      "bytes": 2145770,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_2L"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact G10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "014-air-jl-right",
+      "actions": [
+        "M_F006_jL"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack RIGHT, consistent FRONT three-quarter view. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL short KNEE. Preparation airborne with front knee drawing up and both feet tucked; contact front knee drives forward at chest height while other leg folded behind, arms defensive; recovery retracts knee into compact airborne guard. Three clearly different airborne poses; arms do not strike.",
+      "side": "right",
+      "source": "/workspace/generated_images/exec-23af1828-402f-4a9b-9174-874599926650.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/014-air-jl-right.png",
+      "sha256": "73bd7a61ac621eeedc81d2a6051e17c0257dcf1cba82f4c9ce0d4d87d320228a",
+      "bytes": 1846449,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne au lieu de debout ; contact étend le tibia au lieu du genou bref."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "015-air-jl-left",
+      "actions": [
+        "M_F006_jL"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack LEFT, consistent independent REAR three-quarter BACK view, including preparation and recovery. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL short KNEE. Preparation airborne with front knee drawing up and both feet tucked; contact front knee drives forward at chest height while other leg folded behind, arms defensive; recovery retracts knee into compact airborne guard. Three clearly different airborne poses; arms do not strike.",
+      "side": "left",
+      "source": "/workspace/generated_images/exec-ec6ebb81-50f1-45f6-8a25-633ba80fd5d3.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/015-air-jl-left.png",
+      "sha256": "860894d960098076a26b04b43031ac7efca7ecc32d0a3c17fa0e121fac255801",
+      "bytes": 2053848,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne au lieu de debout ; contact à corriger en genou bref."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "016-air-jm-right",
+      "actions": [
+        "M_F006_jM"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack RIGHT, consistent FRONT three-quarter view. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL backhand WRIST BLADE cut. Preparation airborne, anatomical right elbow bent across chest; contact torso rotates and RIGHT bladed forearm sweeps FORWARD and downward toward opponent in the facing direction, never behind; recovery tucks right arm back toward ribs. Both feet stay bent and airborne, no shoulder cannon, left shield stays on left.",
+      "side": "right",
+      "source": "/workspace/generated_images/exec-4e86877d-7617-4cce-acf2-f4f08c31d71e.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/016-air-jm-right.png",
+      "sha256": "86a551d87d8f012c2a69448ed8344dba7ff368f34bb9c9e04ddfb43176daacc7",
+      "bytes": 2146715,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne au lieu de debout ; remplacée par reprise calibrée et espacée."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "017-air-jm-left",
+      "actions": [
+        "M_F006_jM"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack LEFT, consistent independent REAR three-quarter BACK view, including preparation and recovery. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL backhand WRIST BLADE cut. Preparation airborne, anatomical right elbow bent across chest; contact torso rotates and RIGHT bladed forearm sweeps FORWARD and downward toward opponent in the facing direction, never behind; recovery tucks right arm back toward ribs. Both feet stay bent and airborne, no shoulder cannon, left shield stays on left.",
+      "side": "left",
+      "source": "/workspace/generated_images/exec-dc424172-ff1a-4599-a14d-af7bd4f9d390.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/017-air-jm-left.png",
+      "sha256": "fff78ca1f1445eb74d2c9e4de4c5c9906388438e8c5461710e5de5d9023c02d9",
+      "bytes": 2078906,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne au lieu de debout ; remplacée par reprise calibrée et espacée."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "018-air-jh-right",
+      "actions": [
+        "M_F006_jH"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack RIGHT, consistent FRONT three-quarter view. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL heavy DESCENDING gauntlet strike. Preparation airborne with RIGHT wrist gauntlet raised above head; contact anatomical RIGHT bladed gauntlet drives diagonally DOWN AND FORWARD toward opponent, torso curls strongly; recovery brings gauntlet close and folds both knees ready for descent. Both feet remain airborne; left arm protects with folded shield.",
+      "side": "right",
+      "source": "/workspace/generated_images/exec-ceda65b3-18e9-4bf6-bb91-7808318aa725.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/018-air-jh-right.png",
+      "sha256": "69796ee61c055f17e2f45eb9875a2c0ee983af7c0478e3179333a701e6de50d8",
+      "bytes": 2010122,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne et réception encore en vol ; remplacée par cycle avec réception."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "019-air-jh-left",
+      "actions": [
+        "M_F006_jH"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack LEFT, consistent independent REAR three-quarter BACK view, including preparation and recovery. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nAERIAL heavy DESCENDING gauntlet strike. Preparation airborne with RIGHT wrist gauntlet raised above head; contact anatomical RIGHT bladed gauntlet drives diagonally DOWN AND FORWARD toward opponent, torso curls strongly; recovery brings gauntlet close and folds both knees ready for descent. Both feet remain airborne; left arm protects with folded shield.",
+      "side": "left",
+      "source": "/workspace/generated_images/exec-a28ce3c5-68e3-4cb3-86c6-4418a1c11dbc.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/019-air-jh-left.png",
+      "sha256": "1fce97de5483c2a5111687182e7bc63b1ba42c1ada4c532db76ce16882a7351c",
+      "bytes": 2070650,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Calibration aérienne et réception encore en vol ; remplacée par cycle avec réception."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "020-command-6m-right",
+      "actions": [
+        "M_F006_6M"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack RIGHT, consistent FRONT three-quarter view. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nGROUNDED advancing SHOULDER check, no weapon in hand. Preparation shifts weight back with rear knee loaded; contact takes a clear stride FORWARD, shoulder drives toward opponent at chest height while both elbows remain tucked, spine braced and supporting feet on same floor; recovery brings rear foot through and returns to balanced guard. Show actual displacement within cell, not merely leaning idle.",
+      "side": "right",
+      "source": "/workspace/generated_images/exec-b2b87549-872c-4ad5-ac86-2217af4e0053.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/020-command-6m-right.png",
+      "sha256": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
+      "bytes": 2107336,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_6M"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Deux originaux inchangés, trois dessins du geste par côté, référence debout0 exclue. Double revue root/QA deO10 : pas d’approche, heurt d’épaule avant avec bras en retrait, retour en garde. Références debout fixes570/572px par page ; pivots entre appuis relus sur les vraies semelles, pas sur les lames. Étude indépendante : aucun6M, déplacement, choc, dégât ou cancel ajouté au duel."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "021-command-6m-left",
+      "actions": [
+        "M_F006_6M"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No victim, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nPortrait1024x1536 EXACTLY FOUR full-body drawings in TWO COLUMNS TWO ROWS. Upper-left=UPRIGHT calibration guard, upper-right=preparation, lower-left=contact, lower-right=recovery. ALL FOUR figures face/attack LEFT, consistent independent REAR three-quarter BACK view, including preparation and recovery. One figure per huge 512x768 cell. Standing calibration ONLY350px tall; same anatomical scale everywhere. Keep at least100px FULLY TRANSPARENT whitespace between rows and at least60px between columns. Every entire silhouette separated into a safe rectangle, NO OTHER pose may intrude. Make sprites smaller rather than filling the canvas. No headings, captions or row labels.\nGROUNDED advancing SHOULDER check, no weapon in hand. Preparation shifts weight back with rear knee loaded; contact takes a clear stride FORWARD, shoulder drives toward opponent at chest height while both elbows remain tucked, spine braced and supporting feet on same floor; recovery brings rear foot through and returns to balanced guard. Show actual displacement within cell, not merely leaning idle.",
+      "side": "left",
+      "source": "/workspace/generated_images/exec-07ad2640-7e5c-43de-9891-4e98dada47a6.png",
+      "notes": "Original tool PNG. Air pages require real upright calibration repair; never use tucked pose height as body reference.",
+      "target": "art-source/v100/pit/feral/intake/021-command-6m-left.png",
+      "sha256": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc",
+      "bytes": 2098102,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_6M"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Deux originaux inchangés, trois dessins du geste par côté, référence debout0 exclue. Double revue root/QA deO10 : pas d’approche, heurt d’épaule avant avec bras en retrait, retour en garde. Références debout fixes570/572px par page ; pivots entre appuis relus sur les vraies semelles, pas sur les lames. Étude indépendante : aucun6M, déplacement, choc, dégât ou cancel ajouté au duel."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "022-throw-forward-right-a",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "page": "a",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nRIGHT-facing frontal three-quarter Feral, mannequin starts to his RIGHT. Original front means imageRIGHT and behind means imageLEFT.\nFeral maintains original facing and the final rejection is FORWARD, toward his original front. Source: close grab, hip pivot then throw in front, no strike or blood.\nCell2: Feral steps close and grips a smooth neutral grey jointed training mannequin by upper arm and torso using his two hands; blades point safely away. Mannequin full body upright next to him. Cell3: Feral lowers hips, bends knees, pulls mannequin off balance onto his hip; both figures visibly change balance. Cell4: Feral pivots hips and shoulders, mannequin now lifted with feet clearly off floor, its torso arcing over the hip toward the intended rejection side. Show a believable hold with TWO Feral arms, no merged extra limbs.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-675679f8-fe4c-44f5-b148-c97a268ee6c3.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/022-throw-forward-right-a.png",
+      "sha256": "05efda7d52febc378376665c14e92af6a4dd97cf0926c0d4f49efa25d8a575f2",
+      "bytes": 1879201,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_F"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "023-throw-forward-right-b",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "page": "b",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nRIGHT-facing frontal three-quarter Feral, mannequin starts to his RIGHT. Original front means imageRIGHT and behind means imageLEFT.\nFeral maintains original facing and the final rejection is FORWARD, toward his original front. Source: close grab, hip pivot then throw in front, no strike or blood.\nThis is continuation pageB after the hip lift. Cell2: Feral fully extends the throwing motion and RELEASES the same full grey mannequin into air toward the intended rejection side; open hands show actual release and mannequin clearly separated by empty space. Cell3: mannequin has landed on its side on that rejection side, Feral completes follow-through with torso still turned and arms low, no violence or blood. Cell4: mannequin remains lying motionless at that same destination, Feral returns to ORIGINAL facing balanced guard, arms withdrawn. All3 steps are different and complete the motion. Do not substitute standing idle for release.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-a35612cf-0272-4c79-9d72-0b29b9a31683.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/023-throw-forward-right-b.png",
+      "sha256": "c66026d3c77787d6d3b16926fa5b9386046a02e369c9c8edba31dd131cbbec5e",
+      "bytes": 1800607,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_F"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "024-throw-forward-left-a",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "page": "a",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nLEFT-facing REAR three-quarter BACK view Feral, mannequin starts to his LEFT. Original front means imageLEFT and behind means imageRIGHT. Independent redraw, never mirror.\nFeral maintains original facing and the final rejection is FORWARD, toward his original front. Source: close grab, hip pivot then throw in front, no strike or blood.\nCell2: Feral steps close and grips a smooth neutral grey jointed training mannequin by upper arm and torso using his two hands; blades point safely away. Mannequin full body upright next to him. Cell3: Feral lowers hips, bends knees, pulls mannequin off balance onto his hip; both figures visibly change balance. Cell4: Feral pivots hips and shoulders, mannequin now lifted with feet clearly off floor, its torso arcing over the hip toward the intended rejection side. Show a believable hold with TWO Feral arms, no merged extra limbs.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-57a533d8-0a6c-48fd-ba3b-d9936d49bb39.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/024-throw-forward-left-a.png",
+      "sha256": "6dff5b1c928be9f8ceab1fca5424fc6c165dba05e9f278944c9c174501a3c3c6",
+      "bytes": 1873244,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "La séquence annoncée gauche regarde encore à droite."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "025-throw-forward-left-b",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "page": "b",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nLEFT-facing REAR three-quarter BACK view Feral, mannequin starts to his LEFT. Original front means imageLEFT and behind means imageRIGHT. Independent redraw, never mirror.\nFeral maintains original facing and the final rejection is FORWARD, toward his original front. Source: close grab, hip pivot then throw in front, no strike or blood.\nThis is continuation pageB after the hip lift. Cell2: Feral fully extends the throwing motion and RELEASES the same full grey mannequin into air toward the intended rejection side; open hands show actual release and mannequin clearly separated by empty space. Cell3: mannequin has landed on its side on that rejection side, Feral completes follow-through with torso still turned and arms low, no violence or blood. Cell4: mannequin remains lying motionless at that same destination, Feral returns to ORIGINAL facing balanced guard, arms withdrawn. All3 steps are different and complete the motion. Do not substitute standing idle for release.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-2fdc3f28-e9ce-43a8-b879-1b84d9a92763.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/025-throw-forward-left-b.png",
+      "sha256": "cdc86260aef34d7cd91ff8e904ce08a83fa22f3ba4952cdf5a9ca799eb69baa8",
+      "bytes": 1857164,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "La séquence annoncée gauche regarde encore à droite."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "026-throw-back-right-a",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "page": "a",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nRIGHT-facing frontal three-quarter Feral, mannequin starts to his RIGHT. Original front means imageRIGHT and behind means imageLEFT.\nFeral deliberately TURNS HIS ENTIRE BODY continuously through a half-turn and sends the target BEHIND his original position; never teleport the target or Feral. The intermediate torso orientation must visibly rotate. He recovers to the ORIGINAL guard orientation afterwards. Source: body turns then rejects behind, no strike or blood.\nCell2: Feral steps close and grips a smooth neutral grey jointed training mannequin by upper arm and torso using his two hands; blades point safely away. Mannequin full body upright next to him. Cell3: Feral lowers hips, bends knees, pulls mannequin off balance onto his hip; both figures visibly change balance. Cell4: Feral pivots hips and shoulders, mannequin now lifted with feet clearly off floor, its torso arcing over the hip toward the intended rejection side. Show a believable hold with TWO Feral arms, no merged extra limbs.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-3fdae367-a6fa-4f57-8f87-8c093a33ec24.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/026-throw-back-right-a.png",
+      "sha256": "c4c77a912ca14fea15805310cd3476ae6d9153f237607cf8a40c29d21f521485",
+      "bytes": 1769432,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_B"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. La séquence initialement gauche039A+040B rejette derrière vers la droite, puis garde orientée vers cette nouvelle cible ; le texte N10 ne prescrit pas le retour au sens initial. Essai043 coupé exclu. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "027-throw-back-right-b",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "page": "b",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nRIGHT-facing frontal three-quarter Feral, mannequin starts to his RIGHT. Original front means imageRIGHT and behind means imageLEFT.\nFeral deliberately TURNS HIS ENTIRE BODY continuously through a half-turn and sends the target BEHIND his original position; never teleport the target or Feral. The intermediate torso orientation must visibly rotate. He recovers to the ORIGINAL guard orientation afterwards. Source: body turns then rejects behind, no strike or blood.\nThis is continuation pageB after the hip lift. Cell2: Feral fully extends the throwing motion and RELEASES the same full grey mannequin into air toward the intended rejection side; open hands show actual release and mannequin clearly separated by empty space. Cell3: mannequin has landed on its side on that rejection side, Feral completes follow-through with torso still turned and arms low, no violence or blood. Cell4: mannequin remains lying motionless at that same destination, Feral returns to ORIGINAL facing balanced guard, arms withdrawn. All3 steps are different and complete the motion. Do not substitute standing idle for release.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-5361e545-55a4-48f9-b70f-c53240c7973a.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/027-throw-back-right-b.png",
+      "sha256": "e64da7d8e9031fa59932b660e787403a9825861e002a99b02170266312710704",
+      "bytes": 1902904,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Rejet vers le devant au lieu du derrière après demi-tour."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "028-throw-back-left-a",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "page": "a",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nLEFT-facing REAR three-quarter BACK view Feral, mannequin starts to his LEFT. Original front means imageLEFT and behind means imageRIGHT. Independent redraw, never mirror.\nFeral deliberately TURNS HIS ENTIRE BODY continuously through a half-turn and sends the target BEHIND his original position; never teleport the target or Feral. The intermediate torso orientation must visibly rotate. He recovers to the ORIGINAL guard orientation afterwards. Source: body turns then rejects behind, no strike or blood.\nCell2: Feral steps close and grips a smooth neutral grey jointed training mannequin by upper arm and torso using his two hands; blades point safely away. Mannequin full body upright next to him. Cell3: Feral lowers hips, bends knees, pulls mannequin off balance onto his hip; both figures visibly change balance. Cell4: Feral pivots hips and shoulders, mannequin now lifted with feet clearly off floor, its torso arcing over the hip toward the intended rejection side. Show a believable hold with TWO Feral arms, no merged extra limbs.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-f903ef40-9fdd-4198-8f6b-56e0a1a1e675.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/028-throw-back-left-a.png",
+      "sha256": "cc05a620687846d4916abadce575462112479138c0c4bb7cd9f1ba9fe2b03afc",
+      "bytes": 1788070,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Le début annoncé gauche regarde encore à droite."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "029-throw-back-left-b",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "page": "b",
+      "prompt": "Production illustrated fighting-game atlas of the SAME masked FERAL PREDATOR BODY as the references. Real transparent alpha, no background or shadow or glow; transparent gutters are mandatory, not a brown/magenta backdrop. Bone skull mask with projecting snout, lean ochre speckled exposed skin, black dreads, ribbed pelvic armour, ankle wraps, bare clawed feet. Shield FOLDED flat on anatomical LEFT forearm; twin curved wrist blades ONLY on RIGHT forearm. No shoulder cannon, no spear or gun in hands for these normal attacks. Two arms/two hands/two legs, coherent joints and unchanged body scale in every cell. Reference1 gives body/style; reference2 correct right-facing equipment; reference3 independent LEFT-facing REAR three-quarter BACK view. LEFT-facing is redrawn from the opposite side, never a pixel mirror or swapped arms. Detailed clean raster sprites with crisp readable anatomy. Entire toes, blades and dreads inside their cell. No blood or damage, lettering, grid lines, projectiles, particles, floor, cast shadows, trails, blur or checkerboard. Draw SMALL sprites with broad fully empty gutters and at least45px breathing space around every silhouette.\nLandscape1536x1024 EXACTLY FOUR isolated full-body groups, TWO COLUMNS TWO ROWS. Draw SMALL Feral standing only260px tall, unchanged anatomical scale all four groups. At least70px completely transparent empty space on every cell boundary and120px empty gap between rows. Cell1 upper-left is ALWAYS an UPRIGHT RESTING calibration Feral, both feet on ground, alone, no partner. Cell2 upper-right, cell3 lower-left, cell4 lower-right show action. Keep EVERY claw, mannequin limb and lifted body inside its OWN cell. No captions or text. \nLEFT-facing REAR three-quarter BACK view Feral, mannequin starts to his LEFT. Original front means imageLEFT and behind means imageRIGHT. Independent redraw, never mirror.\nFeral deliberately TURNS HIS ENTIRE BODY continuously through a half-turn and sends the target BEHIND his original position; never teleport the target or Feral. The intermediate torso orientation must visibly rotate. He recovers to the ORIGINAL guard orientation afterwards. Source: body turns then rejects behind, no strike or blood.\nThis is continuation pageB after the hip lift. Cell2: Feral fully extends the throwing motion and RELEASES the same full grey mannequin into air toward the intended rejection side; open hands show actual release and mannequin clearly separated by empty space. Cell3: mannequin has landed on its side on that rejection side, Feral completes follow-through with torso still turned and arms low, no violence or blood. Cell4: mannequin remains lying motionless at that same destination, Feral returns to ORIGINAL facing balanced guard, arms withdrawn. All3 steps are different and complete the motion. Do not substitute standing idle for release.\nThe mannequin is an unadorned faceless GREY TRAINING dummy, not a canon opponent. This is a pre-composed animation study. Feral keeps skull mask, loin armour, left folded shield and right twin wrist blades, never shoulder cannon. Calm transparent anatomical study, no floor or shadow.",
+      "source": "/workspace/generated_images/exec-c90968a2-6a08-4ac0-a528-6136a8da47eb.png",
+      "notes": "Original PNG; neutral training mannequin is part of this study, never a synchronized combat opponent. Facing and full rotation still require review.",
+      "target": "art-source/v100/pit/feral/intake/029-throw-back-left-b.png",
+      "sha256": "21f3194f8071066f59363cdfaf3bb148ac0e389c0ad5e42a0043c58d696ca1bc",
+      "bytes": 1790533,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Le début annoncé gauche regarde encore à droite."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "030-air-jl-right-calibrated",
+      "actions": [
+        "M_F006_jL"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face RIGHT. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Also correct ONLY the LOWER LEFT contact to a SHORT KNEE STRIKE toward the opponent, leading knee90degrees bent at chest height, striking with KNEECAP, foot folds BACK UNDER hip. No extended shin, no kick, no kicking foot leading forward. Upper-right and lower-right remain compact airborne knee guards, both feet off floor. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "014-air-jl-right",
+      "source": "/workspace/generated_images/exec-ed81fd59-8a87-4fb9-b420-c9268d39b262.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/030-air-jl-right-calibrated.png",
+      "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+      "bytes": 2062492,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jL"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Genou court en vol puis reprise de chute, compatible avec les phases de light réellement aérien ; altitude, trajectoire, durées et dégâts historiques restent ceux du moteur."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "031-air-jl-left-calibrated",
+      "actions": [
+        "M_F006_jL"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face LEFT from independent BACK three-quarter view. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Also correct ONLY the LOWER LEFT contact to a SHORT KNEE STRIKE toward the opponent, leading knee90degrees bent at chest height, striking with KNEECAP, foot folds BACK UNDER hip. No extended shin, no kick, no kicking foot leading forward. Upper-right and lower-right remain compact airborne knee guards, both feet off floor. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "015-air-jl-left",
+      "source": "/workspace/generated_images/exec-c4bd2d45-576c-4d78-aa2c-569f5fa9b3e0.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/031-air-jl-left-calibrated.png",
+      "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
+      "bytes": 2145482,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jL"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Genou court en vol puis reprise de chute, compatible avec les phases de light réellement aérien ; altitude, trajectoire, durées et dégâts historiques restent ceux du moteur."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "032-air-jm-right-calibrated",
+      "actions": [
+        "M_F006_jM"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face RIGHT. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Other three action drawings remain airborne: strong forearm backhand toward front, then fold back for the same descent; keep both feet off ground. Do not alter their gesture. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "016-air-jm-right",
+      "source": "/workspace/generated_images/exec-4aa449e0-fccb-487c-8b74-4ecdcc473319.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/032-air-jm-right-calibrated.png",
+      "sha256": "d83b4d10f8c8fd229218f4c4efa9461419fa306a6bd759b7b2d57f003f8cfe00",
+      "bytes": 2154215,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Contact/reprise du bas sans gouttière verticale sûre."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "033-air-jm-left-calibrated",
+      "actions": [
+        "M_F006_jM"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face LEFT from independent BACK three-quarter view. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Other three action drawings remain airborne: strong forearm backhand toward front, then fold back for the same descent; keep both feet off ground. Do not alter their gesture. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "017-air-jm-left",
+      "source": "/workspace/generated_images/exec-97357b15-e23c-43c2-8cce-2f6e2218e737.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/033-air-jm-left-calibrated.png",
+      "sha256": "d25032686020a1397e9747ea77a265492b81e6125ca57ddf9e9ac46089231cee",
+      "bytes": 2163316,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Contact/reprise du bas sans gouttière verticale sûre."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "034-air-jh-right-calibrated",
+      "actions": [
+        "M_F006_jH"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "right",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face RIGHT. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Also correct LOWER RIGHT recovery into an actual GROUNDED landing after the descending heavy: knees bent absorbing weight, BOTH soles now on the same imaginary ground, torso low, right blade forearm returning close to ribs. Upper-right and lower-left remain truly airborne. No painted ground/shadow. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "018-air-jh-right",
+      "source": "/workspace/generated_images/exec-84858ba2-0ddc-4905-bee5-eff26dd4ea94.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/034-air-jh-right-calibrated.png",
+      "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+      "bytes": 2119746,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jH"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Lourde descendante avec réception distincte accroupie ; étude seule, aucun atterrissage, anti-air ou raccord de récupération encore aérienne imposé au moteur."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "035-air-jh-left-calibrated",
+      "actions": [
+        "M_F006_jH"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "prompt": "Edit this existing native atlas with exact same transparent1024x1536 2by2 layout and the SAME FERAL skull mask, skin, proportions, right twin wrist blades and left folded shield. Preserve true alpha and untouched gutters. CRITICAL change ONLY cell0 UPPER LEFT into a STANDING reference: extend BOTH LEGS, BOTH CLAWED FEET flat on an imaginary common ground, spine upright, relaxed guard. This upper-left drawing is NOT jumping: it is an anatomical body-height reference for the other three poses. Its torso/head/limbs must keep exactly the same natural anatomical SCALE as the existing action sprites. Do NOT scale shorter poses up. Preserve the facing of the entire sheet: ALL figures face LEFT from independent BACK three-quarter view. Keep upper-right preparation and lower-left contact and lower-right recovery in their cells, whole silhouettes. Also correct LOWER RIGHT recovery into an actual GROUNDED landing after the descending heavy: knees bent absorbing weight, BOTH soles now on the same imaginary ground, torso low, right blade forearm returning close to ribs. Upper-right and lower-left remain truly airborne. No painted ground/shadow. Maintain generous transparent margins and large separation, do not add color panels, shadow, glow, floor, motion trails, text, weapons or extra limbs.",
+      "sourceId": "019-air-jh-left",
+      "source": "/workspace/generated_images/exec-8fe7bceb-1469-4d03-9595-210b0554ee27.png",
+      "notes": "Imagegen edit: actual standing calibration replaces airborne reference; jL contact knee corrected, jH actual grounded landing. Original prior attempt retained. BODY study requires native review.",
+      "target": "art-source/v100/pit/feral/intake/035-air-jh-left-calibrated.png",
+      "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
+      "bytes": 2088633,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jH"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Lourde descendante avec réception distincte accroupie ; étude seule, aucun atterrissage, anti-air ou raccord de récupération encore aérienne imposé au moteur."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "036-throw-forward-left-a-corrected",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "side": "left",
+      "page": "a",
+      "prompt": "The SAME lean FERAL Predator in this reference: bone skull mask snout, red mandibles, ochre speckled skin, black dreads, ribbed loin armour, bare clawed feet. Anatomical RIGHT arm has twin wrist blades, anatomical LEFT forearm has a small folded shield. No cannon, no gun/spear in hands. Real transparent alpha, absolutely no floor/shadow/text/glow. TWO COLUMNS TWO ROWS on landscape1536x1024, exactly FOUR isolated groups. Draw SMALL body only270px upright tall, wide70px margins and120px transparent gap between rows. Calibration upper-left is Feral ALONE in STANDING guard, both feet flat, same body scale. Upper-right/lower-left/lower-right are three action groups, each wholly within its own rectangle, no touching neighbor. Grey faceless jointed training mannequin, no blood or violence detail. No pixel mirrors: independent rear camera and correct arms.\nALL FOUR Feral faces LEFT as the reference, BACK THREE-QUARTER camera. His opponent is ALWAYS to his LEFT. Upper-right: reaches LEFT and grips the grey mannequin close on upper arm and trunk. Lower-left: lowers hips and pulls mannequin onto his hip, mannequin leaning toward him. Lower-right: pivots while STILL directed LEFT and lifts mannequin in an arc with both mannequin feet airborne; mannequin is carried toward imageLEFT ready to be thrown forward. Remain facing LEFT in every drawing, including calibration. Do not draw frontal right-facing bodies.",
+      "columns": 2,
+      "rows": 2,
+      "source": "/workspace/generated_images/exec-f3d1b759-6a36-438c-9246-231027ca58d3.png",
+      "notes": "Correction from a unique true LEFT-facing reference; partner mannequin for study only. Full directional rotation requires source review.",
+      "target": "art-source/v100/pit/feral/intake/036-throw-forward-left-a-corrected.png",
+      "sha256": "38db19ddd67f164d36390061f8f75e5e2c92f1987fe04422fd23425c90260a16",
+      "bytes": 1979763,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_F"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "037-throw-forward-left-b-corrected",
+      "actions": [
+        "M_F006_TH_F"
+      ],
+      "side": "left",
+      "page": "b",
+      "prompt": "The SAME lean FERAL Predator in this reference: bone skull mask snout, red mandibles, ochre speckled skin, black dreads, ribbed loin armour, bare clawed feet. Anatomical RIGHT arm has twin wrist blades, anatomical LEFT forearm has a small folded shield. No cannon, no gun/spear in hands. Real transparent alpha, absolutely no floor/shadow/text/glow. TWO COLUMNS TWO ROWS on landscape1536x1024, exactly FOUR isolated groups. Draw SMALL body only270px upright tall, wide70px margins and120px transparent gap between rows. Calibration upper-left is Feral ALONE in STANDING guard, both feet flat, same body scale. Upper-right/lower-left/lower-right are three action groups, each wholly within its own rectangle, no touching neighbor. Grey faceless jointed training mannequin, no blood or violence detail. No pixel mirrors: independent rear camera and correct arms.\nALL FOUR Feral faces LEFT, BACK THREE-QUARTER view as reference. Upper-right: both hands extend toward imageLEFT and release grey mannequin into air to imageLEFT; clear empty space between his hands and dummy. Lower-left: hands retract, weight completes follow-through facing LEFT; dummy has landed on its side to his LEFT, not right. Lower-right: returns LEFT-facing original guard with hands close, dummy lies motionless at the same LEFT destination. Every dummy is on LEFT side of Feral, never to the right. Each drawing fully in cell.",
+      "columns": 2,
+      "rows": 2,
+      "source": "/workspace/generated_images/exec-14e2f85b-c3e2-4715-99c9-a18e99c333eb.png",
+      "notes": "Correction from a unique true LEFT-facing reference; partner mannequin for study only. Full directional rotation requires source review.",
+      "target": "art-source/v100/pit/feral/intake/037-throw-forward-left-b-corrected.png",
+      "sha256": "5e8759f9b38556cbd639807b35f2ff42b836ed249873f4c6c6322a0c034ab645",
+      "bytes": 2009623,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_F"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "038-throw-back-right-b-corrected",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "side": "right",
+      "page": "b",
+      "prompt": "The SAME lean FERAL Predator in this reference: bone skull mask snout, red mandibles, ochre speckled skin, black dreads, ribbed loin armour, bare clawed feet. Anatomical RIGHT arm has twin wrist blades, anatomical LEFT forearm has a small folded shield. No cannon, no gun/spear in hands. Real transparent alpha, absolutely no floor/shadow/text/glow. TWO COLUMNS TWO ROWS on landscape1536x1024, exactly FOUR isolated groups. Draw SMALL body only270px upright tall, wide70px margins and120px transparent gap between rows. Calibration upper-left is Feral ALONE in STANDING guard, both feet flat, same body scale. Upper-right/lower-left/lower-right are three action groups, each wholly within its own rectangle, no touching neighbor. Grey faceless jointed training mannequin, no blood or violence detail. No pixel mirrors: independent rear camera and correct arms.\nThis is SECOND HALF of a backward throw that STARTED facing RIGHT. Feral has already turned his hips HALF-TURN and now faces LEFT like the reference; original BEHIND is imageLEFT. Calibration upper-left can face LEFT. Upper-right: Feral rotates and releases grey mannequin out to imageLEFT behind his original right-facing position; hands open toward LEFT, dummy airborne to his LEFT. Lower-left: finishes follow-through looking LEFT with bent knees, mannequin has landed on LEFT side. Lower-right: Feral unwinds torso half-way back toward front, shoulders rotate smoothly, mannequin STILL on LEFT. Do not send mannequin right. A separate existing guard frame later completes the return to original RIGHT guard.",
+      "columns": 2,
+      "rows": 2,
+      "source": "/workspace/generated_images/exec-2a347d66-66dc-4f1d-9c2a-b797a1eb0020.png",
+      "notes": "Correction from a unique true LEFT-facing reference; partner mannequin for study only. Full directional rotation requires source review.",
+      "target": "art-source/v100/pit/feral/intake/038-throw-back-right-b-corrected.png",
+      "sha256": "74b2065794e277cdb89146de3d10876c21d1d85392d546f8a9f708b01b9338d8",
+      "bytes": 2032640,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_B"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. La séquence initialement gauche039A+040B rejette derrière vers la droite, puis garde orientée vers cette nouvelle cible ; le texte N10 ne prescrit pas le retour au sens initial. Essai043 coupé exclu. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "039-throw-back-left-a-corrected",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "side": "left",
+      "page": "a",
+      "prompt": "The SAME lean FERAL Predator in this reference: bone skull mask snout, red mandibles, ochre speckled skin, black dreads, ribbed loin armour, bare clawed feet. Anatomical RIGHT arm has twin wrist blades, anatomical LEFT forearm has a small folded shield. No cannon, no gun/spear in hands. Real transparent alpha, absolutely no floor/shadow/text/glow. TWO COLUMNS TWO ROWS on landscape1536x1024, exactly FOUR isolated groups. Draw SMALL body only270px upright tall, wide70px margins and120px transparent gap between rows. Calibration upper-left is Feral ALONE in STANDING guard, both feet flat, same body scale. Upper-right/lower-left/lower-right are three action groups, each wholly within its own rectangle, no touching neighbor. Grey faceless jointed training mannequin, no blood or violence detail. No pixel mirrors: independent rear camera and correct arms.\nA BACKWARD throw begins facing LEFT and rejects opponent behind to imageRIGHT. Calibration upper-left faces LEFT from rear three-quarter. Upper-right: Feral faces LEFT and reaches LEFT to grab mannequin upper arm and torso close. Lower-left: knees bend and hips turn toward camera, chest rotating continuously, mannequin off-balance lifted onto hip, no teleport. Lower-right: Feral completes a HALF-TURN toward RIGHT, showing a different FRONT three-quarter torso orientation, pulls mannequin over hip toward imageRIGHT with both mannequin feet lifted. The visible rotation LEFT→front→RIGHT is essential; do not keep the same idle torso. Both figures whole in each cell.",
+      "columns": 2,
+      "rows": 2,
+      "source": "/workspace/generated_images/exec-2d0fa566-dd20-4926-a002-92b2fed9fc55.png",
+      "notes": "Correction from a unique true LEFT-facing reference; partner mannequin for study only. Full directional rotation requires source review.",
+      "target": "art-source/v100/pit/feral/intake/039-throw-back-left-a-corrected.png",
+      "sha256": "0846987ec7f914e692ada8c9a3aebc97f63fc13ce8021c62ad21be57234ebedd",
+      "bytes": 2029629,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_B"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. La séquence initialement gauche039A+040B rejette derrière vers la droite, puis garde orientée vers cette nouvelle cible ; le texte N10 ne prescrit pas le retour au sens initial. Essai043 coupé exclu. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "040-throw-back-left-b-corrected",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "side": "left",
+      "page": "b",
+      "prompt": "The SAME lean FERAL Predator in this reference: bone skull mask snout, red mandibles, ochre speckled skin, black dreads, ribbed loin armour, bare clawed feet. Anatomical RIGHT arm has twin wrist blades, anatomical LEFT forearm has a small folded shield. No cannon, no gun/spear in hands. Real transparent alpha, absolutely no floor/shadow/text/glow. TWO COLUMNS TWO ROWS on landscape1536x1024, exactly FOUR isolated groups. Draw SMALL body only270px upright tall, wide70px margins and120px transparent gap between rows. Calibration upper-left is Feral ALONE in STANDING guard, both feet flat, same body scale. Upper-right/lower-left/lower-right are three action groups, each wholly within its own rectangle, no touching neighbor. Grey faceless jointed training mannequin, no blood or violence detail. No pixel mirrors: independent rear camera and correct arms.\nThis is SECOND HALF of BACKWARD throw that STARTED facing LEFT. After a half-turn Feral is now facing RIGHT, original behind is imageRIGHT. Calibration upper-left faces RIGHT. Upper-right: Feral faces RIGHT, extends both hands to imageRIGHT releasing mannequin in air to RIGHT, clear separation. Lower-left: follow-through facing RIGHT, mannequin has landed on side to RIGHT. Lower-right: unwinds torso half-way back toward rear view, prepares to return original LEFT guard, mannequin remains to RIGHT. A separate existing LEFT guard frame later completes the return. Correct anatomical left folded shield, right twin blades; torso turning changes which arm is closer to camera.",
+      "columns": 2,
+      "rows": 2,
+      "source": "/workspace/generated_images/exec-4912ad3a-f1de-4a29-ac79-4b7b209bf8ab.png",
+      "notes": "Correction from a unique true LEFT-facing reference; partner mannequin for study only. Full directional rotation requires source review.",
+      "target": "art-source/v100/pit/feral/intake/040-throw-back-left-b-corrected.png",
+      "sha256": "ac8ec0383f8a265c20c9963f59f3c8e53829d4d207809757a89108e242836c44",
+      "bytes": 1925915,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_TH_B"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. La séquence initialement gauche039A+040B rejette derrière vers la droite, puis garde orientée vers cette nouvelle cible ; le texte N10 ne prescrit pas le retour au sens initial. Essai043 coupé exclu. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": false
+    },
+    {
+      "id": "041-air-jm-right-spaced",
+      "sourceId": "032-air-jm-right-calibrated",
+      "side": "right",
+      "columns": 2,
+      "rows": 2,
+      "actions": [
+        "M_F006_jM"
+      ],
+      "prompt": "Repair ONLY the layout/spacing of this existing four-pose Feral aerial backhand atlas. Native redraw on same transparent1024x1536, TWO COLUMNS TWO ROWS with exactly4 figures. Preserve each actual pose, skullmask/body/equipment and right facing. REDRAW ALL FOUR FIGURES MUCH SMALLER, about60% of their present size, standing reference height350px maximum instead of620px. All4 anatomy scales remain consistent. Each512x768 cell has at least100px empty fully alpha0 margin ALL AROUND the whole silhouette, especially extended blade tips and toes. There must be a wide EMPTY transparent vertical corridor between the bottom two drawings; currently weapon overlaps neighbor's rectangular crop. Do not leave any stray alpha pixels outside each figure. Top-left upright STANDING twofeetflat calibration, top-right airborne preparation with right arm across chest, lower-left true forward/down airborne right-wristblade backhand contact, lower-right airborne guarded recovery. Anatomical left shield and right twin blades unchanged, independent backthreequarter LEFT view ifleft, no pixelmirror. No background/floor/shadow/glow/text, no extra weapons or rigs.",
+      "source": "/workspace/generated_images/exec-f5bfa620-6b35-47b4-9625-c5cf1aa04f9b.png",
+      "notes": "Original imagegen re-spacing edit; no CPU pixel changes, real source remains immutable.",
+      "target": "art-source/v100/pit/feral/intake/041-air-jm-right-spaced.png",
+      "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
+      "bytes": 1739401,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jM"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Revers aérien suivi de rotation/retrait, deux sens natifs indépendants ; pivots virtuels issus du bassin et de la distance debout vers les semelles, jamais des orteils en vol. Étude indépendante : aucune identité du medium actuel à la lance scindée empruntée pour certifier ce revers. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "042-air-jm-left-spaced",
+      "sourceId": "033-air-jm-left-calibrated",
+      "side": "left",
+      "columns": 2,
+      "rows": 2,
+      "actions": [
+        "M_F006_jM"
+      ],
+      "prompt": "Repair ONLY the layout/spacing of this existing four-pose Feral aerial backhand atlas. Native redraw on same transparent1024x1536, TWO COLUMNS TWO ROWS with exactly4 figures. Preserve each actual pose, skullmask/body/equipment and left facing. REDRAW ALL FOUR FIGURES MUCH SMALLER, about60% of their present size, standing reference height350px maximum instead of620px. All4 anatomy scales remain consistent. Each512x768 cell has at least100px empty fully alpha0 margin ALL AROUND the whole silhouette, especially extended blade tips and toes. There must be a wide EMPTY transparent vertical corridor between the bottom two drawings; currently weapon overlaps neighbor's rectangular crop. Do not leave any stray alpha pixels outside each figure. Top-left upright STANDING twofeetflat calibration, top-right airborne preparation with right arm across chest, lower-left true forward/down airborne right-wristblade backhand contact, lower-right airborne guarded recovery. Anatomical left shield and right twin blades unchanged, independent backthreequarter LEFT view ifleft, no pixelmirror. No background/floor/shadow/glow/text, no extra weapons or rigs.",
+      "source": "/workspace/generated_images/exec-002c6768-5854-4b9a-b69b-be4496b4d963.png",
+      "notes": "Original imagegen re-spacing edit; no CPU pixel changes, real source remains immutable.",
+      "target": "art-source/v100/pit/feral/intake/042-air-jm-left-spaced.png",
+      "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
+      "bytes": 1957052,
+      "width": 1024,
+      "height": 1536,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "ADMITTED_ACTION_FRAMES",
+      "review": {
+        "actionIds": [
+          "M_F006_jM"
+        ],
+        "scope": "Seulement les dessins explicitement référencés dans les admissions ; calibrations exclues des séquences.",
+        "notes": [
+          "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Revers aérien suivi de rotation/retrait, deux sens natifs indépendants ; pivots virtuels issus du bassin et de la distance debout vers les semelles, jamais des orteils en vol. Étude indépendante : aucune identité du medium actuel à la lance scindée empruntée pour certifier ce revers. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+        ]
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    },
+    {
+      "id": "043-throw-back-left-b-return",
+      "sourceId": "040-throw-back-left-b-corrected",
+      "actions": [
+        "M_F006_TH_B"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "side": "left",
+      "page": "b",
+      "prompt": "Edit this existing transparent Feral backward-throw study, preserve1024? IMPORTANT preserve original1536x1024 landscape2columns2rows and all existing alpha gutters. Change ONLY the FERAL FIGURE in the LOWER-RIGHT cell: after throwing mannequin BEHIND to imageRIGHT, he must RETURN TO ORIGINAL LEFT-facing guard. Turn his skullmask/nose/toes toward imageLEFT and show independent REAR THREE-QUARTER BACK view, like the original leftward guard in the second reference. Keep anatomical RIGHT twin wristblades on right arm and folded shield on LEFT, no flipped arms or mirror. Lower-right GREY MANNEQUIN stays lying on ground to imageRIGHT, exact same location and whole body as it is, do not move/erase mannequin. Feral relaxed guarded hands, two feet planted. All other three cells remain their original poses: upper-left standingRIGHT calibration, upper-right release mannequinRIGHT, lower-left follow-throughRIGHT. Body returns LEFT only in FINAL lower-right pose, showing actual halfturn completion. Do not add cannon, extra arms, shadows, floor, panels, text or crop.",
+      "source": "/workspace/generated_images/exec-e16e8b6e-08da-411d-8d70-92b4a3af076b.png",
+      "notes": "Imagegen edit did not return the mask to original facing. Source N10 does not require original facing; a guard toward the relocated mannequin is reviewed separately against the actual source. No duel binding.",
+      "target": "art-source/v100/pit/feral/intake/043-throw-back-left-b-return.png",
+      "sha256": "30de718199f0a8b941a159b4882f8d3e4bc1a073ef3a0600d5458f75f166e97c",
+      "bytes": 2266702,
+      "width": 1536,
+      "height": 1024,
+      "tool": "OpenAI built-in image_gen",
+      "transparentBackground": true,
+      "pixelEditing": false,
+      "status": "NOT_ADMITTED",
+      "review": {
+        "reason": "Gouttière refusée ; essai superflu car N10 ne demande pas un retour au sens de départ."
+      },
+      "cpuPixelEditing": false,
+      "imagegenEdit": true
+    }
+  ],
+  "reviewMethod": "Dessins originaux image_gen archivés byte-identiques ; éventuelles éditions exclusivement image_gen. Mesures alpha en lecture seule, seuil2, poses entières et côtés revus séparément. Le statut ADMITTED_ACTION_FRAMES ne certifie pas toute la page ni une mécanique."
+}

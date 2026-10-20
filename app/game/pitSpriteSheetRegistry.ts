@@ -8,9 +8,11 @@ import lifecycleWolfV94 from './data/pitLifecycleWolfV94.json';
 import lifecycleGreybackV94 from './data/pitLifecycleGreybackV94.json';
 import lifecycleCelticV94 from './data/pitLifecycleCelticV94.json';
 import lifecycleBerserkerV94 from './data/pitLifecycleBerserkerV94.json';
+import { PIT_WORKBOOK_COMBAT_REGISTRY_V100 } from './pitWorkbookCombatRegistryV100';
 
 /** V32/V33: reviewed, independently drawn facings; uncovered states retain an honest drawn-pose fallback. */
 export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefinition[] = [
+  ...PIT_WORKBOOK_COMBAT_REGISTRY_V100,
   ...(lifecycleBerserkerV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(lifecycleCelticV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   ...(lifecycleWolfV94 as unknown as readonly PitSpriteSheetAnimationDefinition[]),

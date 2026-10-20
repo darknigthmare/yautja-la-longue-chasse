@@ -1,0 +1,327 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_S3",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-s3-body-v100",
+  "clipIds": [
+    "workbook.M_F003_S3"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "R7",
+    "sourceText": "M_F003_S3 · Tir de plasma\nCommande 623+S · Selon trajectoire / prototype · Spécial\nArme : Canon d'épaule\nLe canon s'aligne ; la bouche s'illumine puis libère un trait rectiligne. Le corps peut être puni durant la visée.\nPréparation / actif / récupération : 20 / 3 / 28 images · dégâts 105 · coût 25 %\nContre-jeu : Baisser la tête sous le tir haut, sauter ou punir la récupération.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S3\nEntité : E_F003_plasma · équipement : W_F003_canon-epaule\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+    "mechanics": "Independent BODY study only; scene actors, collisions and duel/victim synchronization are not implemented by this atlas.",
+    "phaseTicks": {
+      "startup": 20,
+      "active": 3,
+      "recovery": 28
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.png",
+    "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.prompt.txt",
+    "references": [
+      {
+        "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-right.png",
+        "sha256": "37543c975d3bc7972ac87861e2c57775e4c1073f8c6974987b93931282f448d4"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 300,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-s3-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-s3-right-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-special-s3-left-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_S3",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                0,
+                0,
+                770,
+                362
+              ],
+              "pivot": [
+                451,
+                334
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                769,
+                0,
+                767,
+                362
+              ],
+              "pivot": [
+                341,
+                329
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                0,
+                361,
+                813,
+                306
+              ],
+              "pivot": [
+                459,
+                293
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                812,
+                361,
+                724,
+                306
+              ],
+              "pivot": [
+                322,
+                292
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                0,
+                666,
+                807,
+                358
+              ],
+              "pivot": [
+                449,
+                309
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s3-right-page-01",
+              "rect": [
+                806,
+                666,
+                730,
+                358
+              ],
+              "pivot": [
+                322,
+                316
+              ],
+              "durationTicks": 14
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_S3",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                0,
+                0,
+                760,
+                354
+              ],
+              "pivot": [
+                409,
+                322
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                759,
+                0,
+                777,
+                354
+              ],
+              "pivot": [
+                363,
+                315
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                0,
+                353,
+                771,
+                309
+              ],
+              "pivot": [
+                407,
+                279
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                770,
+                353,
+                766,
+                309
+              ],
+              "pivot": [
+                349,
+                281
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                0,
+                661,
+                791,
+                363
+              ],
+              "pivot": [
+                424,
+                292
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s3-left-page-01",
+              "rect": [
+                790,
+                661,
+                746,
+                363
+              ],
+              "pivot": [
+                334,
+                298
+              ],
+              "durationTicks": 14
+            }
+          ]
+        }
+      ]
+    },
+    "pageBodyHeightPx": {
+      "scar-special-s3-right-page-01": 300,
+      "scar-special-s3-left-page-01": 261
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels.",
+      "One fixed body reference per native page, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate.",
+      "BODY-only aimed-shoulder posture, bracing, recoil absorption and same-facing return, with exactly one caster on continuous pedestal bolted to pauldron. Turret starts already aligned; body alignment is shown through stance/shoulder changes. Charge/muzzle flash/plasma projectile are deliberately absent from BODY and require separate entity/effect integration. These drawings do not implement an attack, projectile, cost or guarantee. Right recoil was redrawn with horizontal head and visible mount, avoiding the prior hidden turret.",
+      "Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output."
+    ]
+  },
+  "intakePages": [
+    {
+      "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.measurement.json",
+      "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-12-right.prompt.txt",
+      "references": [
+        {
+          "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-right.png",
+          "sha256": "37543c975d3bc7972ac87861e2c57775e4c1073f8c6974987b93931282f448d4"
+        }
+      ]
+    },
+    {
+      "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-left.measurement.json",
+      "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-left.prompt.txt",
+      "references": [
+        {
+          "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-10-left.png",
+          "sha256": "ff1654f407bbf5cf491867c8ee172727a0a44ab18ced41e96e4c3d813ea387d7"
+        }
+      ]
+    }
+  ],
+  "bodyReferenceReview": [
+    {
+      "pageId": "scar-special-s3-right-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        442,
+        34
+      ],
+      "soleGroundAbsoluteY": 334,
+      "bodyHeightPx": 300,
+      "method": "Fixed per-page neutral crown/sole landmarks; no per-pose fitting."
+    },
+    {
+      "pageId": "scar-special-s3-left-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        404,
+        61
+      ],
+      "soleGroundAbsoluteY": 322,
+      "bodyHeightPx": 261,
+      "method": "Fixed per-page neutral crown/sole landmarks; no per-pose fitting."
+    }
+  ]
+}

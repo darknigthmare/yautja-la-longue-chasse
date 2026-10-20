@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-s4-attempt-04b.png",
+  "sourceSha256": "63878c101f4716d61f70c0d787e6053c61f32698a41400a4059a03580dfdad82",
+  "bytes": 2283324,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 4,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 399,
+      "end": 417,
+      "cut": 408
+    },
+    {
+      "axis": "y",
+      "row": 2,
+      "start": 783,
+      "end": 784,
+      "cut": 783
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 394,
+      "end": 633,
+      "cut": 513
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 446,
+      "end": 582,
+      "cut": 514
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        514,
+        409
+      ],
+      "visibleRect": [
+        154,
+        20,
+        240,
+        379
+      ],
+      "alphaPixels": 50831,
+      "borderPixels": 0,
+      "visiblePixelSha256": "7d19fd9be31d15aa5a94cdf3f8953a19b5e566c4c8ff87e31906bdb58e9e3189",
+      "pivotCandidate": [
+        182,
+        399
+      ],
+      "visibleHeightCandidate": 379
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        513,
+        0,
+        511,
+        409
+      ],
+      "visibleRect": [
+        634,
+        19,
+        245,
+        379
+      ],
+      "alphaPixels": 51449,
+      "borderPixels": 0,
+      "visiblePixelSha256": "002cb9650ec9a2f5b6b35e209b47016f642c753569ff714ec70a7cf7695d4822",
+      "pivotCandidate": [
+        343.5,
+        398
+      ],
+      "visibleHeightCandidate": 379
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        408,
+        515,
+        376
+      ],
+      "visibleRect": [
+        115,
+        419,
+        331,
+        364
+      ],
+      "alphaPixels": 57513,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d861943492c7efb71093d76cbeeafc84e7c2475dc053543909cfd2ad3b82936b",
+      "pivotCandidate": [
+        147,
+        375
+      ],
+      "visibleHeightCandidate": 364
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        514,
+        408,
+        510,
+        376
+      ],
+      "visibleRect": [
+        583,
+        418,
+        333,
+        363
+      ],
+      "alphaPixels": 57471,
+      "borderPixels": 0,
+      "visiblePixelSha256": "f89e3a469b241902a9bc2975a67892ccd27ab27e83e4c59775d7a6e295d050be",
+      "pivotCandidate": [
+        380.5,
+        373
+      ],
+      "visibleHeightCandidate": 363
+    }
+  ],
+  "issues": [
+    "No safe horizontal alpha gutter before row 4",
+    "Column-first: No safe vertical alpha gutter in row 1, before column 4",
+    "Column-first: No safe vertical alpha gutter in row 2, before column 4"
+  ]
+}

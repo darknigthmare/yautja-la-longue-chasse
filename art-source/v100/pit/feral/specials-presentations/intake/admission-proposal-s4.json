@@ -1,0 +1,489 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "M_F006_S4",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-s4-v100",
+  "clipIds": [
+    "workbook.M_F006_S4"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 388,
+    "pageBodyHeightPx": {
+      "feral-special-s4-a-v100": 388,
+      "feral-special-s4-b-v100": 314
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          0,
+          0,
+          522,
+          426
+        ],
+        "visibleRect": [
+          163,
+          24,
+          237,
+          388
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          521,
+          0,
+          503,
+          426
+        ],
+        "visibleRect": [
+          644,
+          21,
+          236,
+          382
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          0,
+          425,
+          529,
+          380
+        ],
+        "visibleRect": [
+          133,
+          440,
+          305,
+          343
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          528,
+          425,
+          496,
+          380
+        ],
+        "visibleRect": [
+          619,
+          441,
+          293,
+          335
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          0,
+          804,
+          529,
+          311
+        ],
+        "visibleRect": [
+          131,
+          839,
+          332,
+          268
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          528,
+          804,
+          496,
+          311
+        ],
+        "visibleRect": [
+          594,
+          827,
+          335,
+          266
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          0,
+          1114,
+          544,
+          422
+        ],
+        "visibleRect": [
+          136,
+          1123,
+          342,
+          367
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-a-v100",
+        "rect": [
+          543,
+          1114,
+          481,
+          422
+        ],
+        "visibleRect": [
+          610,
+          1126,
+          332,
+          363
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          0,
+          0,
+          511,
+          437
+        ],
+        "visibleRect": [
+          163,
+          101,
+          219,
+          314
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          510,
+          0,
+          514,
+          437
+        ],
+        "visibleRect": [
+          640,
+          100,
+          222,
+          314
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          0,
+          436,
+          512,
+          355
+        ],
+        "visibleRect": [
+          152,
+          462,
+          287,
+          305
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          511,
+          436,
+          513,
+          355
+        ],
+        "visibleRect": [
+          584,
+          459,
+          290,
+          305
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          0,
+          790,
+          513,
+          333
+        ],
+        "visibleRect": [
+          138,
+          819,
+          297,
+          287
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          512,
+          790,
+          512,
+          333
+        ],
+        "visibleRect": [
+          591,
+          814,
+          309,
+          292
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          0,
+          1122,
+          512,
+          414
+        ],
+        "visibleRect": [
+          123,
+          1140,
+          314,
+          296
+        ]
+      },
+      {
+        "pageId": "feral-special-s4-b-v100",
+        "rect": [
+          511,
+          1122,
+          513,
+          414
+        ],
+        "visibleRect": [
+          587,
+          1139,
+          317,
+          297
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-s4-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-s4-a-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-s4-b-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F006_S4",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                0,
+                425,
+                529,
+                380
+              ],
+              "pivot": [
+                265,
+                358
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                0,
+                804,
+                529,
+                311
+              ],
+              "pivot": [
+                255,
+                303
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                0,
+                1114,
+                544,
+                422
+              ],
+              "pivot": [
+                274,
+                376
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                0,
+                436,
+                512,
+                355
+              ],
+              "pivot": [
+                265,
+                331
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                0,
+                790,
+                513,
+                333
+              ],
+              "pivot": [
+                259,
+                316
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                0,
+                1122,
+                512,
+                414
+              ],
+              "pivot": [
+                256,
+                314
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F006_S4",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                528,
+                425,
+                496,
+                380
+              ],
+              "pivot": [
+                258,
+                351
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                528,
+                804,
+                496,
+                311
+              ],
+              "pivot": [
+                270,
+                289
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-s4-a-v100",
+              "rect": [
+                543,
+                1114,
+                481,
+                422
+              ],
+              "pivot": [
+                260,
+                375
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                511,
+                436,
+                513,
+                355
+              ],
+              "pivot": [
+                255,
+                328
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                512,
+                790,
+                512,
+                333
+              ],
+              "pivot": [
+                270,
+                316
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "feral-special-s4-b-v100",
+              "rect": [
+                511,
+                1122,
+                513,
+                414
+              ],
+              "pivot": [
+                271,
+                314
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-action-native-body-inspection-only-s4",
+    "sourceSha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830"
+    },
+    "notes": "S10. Six genuine BODY stages each facing: retrieve one device, crouch/place, release, step back, watch OFF and settle armed RED, with AMBER/OFF/RED states. One circular openwork crown only; no hip duplicate. Explicit bounded root review accepts remaining native drawing variation: mine normalized width is about19–21% larger on pageB than pageA (about3–4 display pixels at BODY128); stable physical scale or complete E_F006_mine is NOT certified. The source does not specify an exact device dimension. This is a free gameplay-derived study, not canon certification. Proximity activation, entity ownership, damage, explosion and duel binding remain UNIMPLEMENTED by this art. QA approved anatomy, actual alpha gutters and body movement; fixed body references A388/B314 with manually reviewed feet pivots. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

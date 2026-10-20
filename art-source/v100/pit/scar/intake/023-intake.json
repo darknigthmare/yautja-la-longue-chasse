@@ -1,0 +1,33 @@
+{
+  "id": "scar-v100-023",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/023-scar-TH_F-right-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-0060dff5-2e9b-4e8b-b08f-20746d61e5b5.png",
+  "prompt": "023-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!M7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "right",
+  "transparentBackgroundRequested": true,
+  "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1906763,
+  "status": "admitted-native-art-awaiting-renderer-qa",
+  "layout": {
+    "columns": 2,
+    "rows": 3
+  },
+  "studyPartner": {
+    "type": "neutral-gray-training-mannequin",
+    "scope": "Baked visual study partner only; no real independently synchronized opponent and no combat binding"
+  },
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ],
+  "publicCopy": "/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+  "bodyHeightPx": 299,
+  "admission": "../native-admission.json"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "feral-special-clemence-attempt-03b-left",
+  "actionId": "CIN_F006_CLEMENCE",
+  "sourceCell": "07_PRESENTATIONS!J10",
+  "part": "B",
+  "side": "left",
+  "columns": 2,
+  "rows": 2,
+  "referenced_image_paths": [
+    "/workspace/generated_images/exec-a846a04a-6fab-4c6a-ba23-0f354aaf9206.png"
+  ],
+  "prompt": "Correct exactly ONE anatomical continuity error in this EXISTING transparent1536x1024 2by2 Feral mercy atlas. Keep every other pose, spear, mannequin, case, dropped blade, exact original layout and transparent margins unchanged. In the UPPER-RIGHT pickup scene ONLY: the SHIELD is wrongly drawn on Feral's BACK/TRAILING RIGHT arm beside his right shoulder around image(1315,280). REMOVE that wrong shield entirely from that RIGHT arm; the RIGHT hand/arm still holds the long spear behind him and must have NO shield. Put the SAME SINGLE round ribbed SHIELD securely mounted on the OUTER anatomical LEFT FOREARM that reaches DOWN TO THE CASE HANDLE. This LEFT arm is the visible forward-reaching arm from left shoulder/elbow to the hand gripping the case around image(1110,420). Place its shield on that forearm between elbow and wrist, roughly centered(1135,365), angled with that forearm and facing camera, keeping fingers and case handle visible underneath. Shield belongs ONLY to the case-gripping LEFT arm in ALL4 drawings; the right spear arm never carries any shield. There must be exactly ONE shield, not a second disk or shield on his back. Keep the LEFT fingers actually grasping the original case handle, case base still touches ground, no extra hand or detached object. Do NOT change original standing/raised-case/departure scenes in the other3cells; they already have correct shield ownership. Do not mirror, flip, crop, make a new character, add blades, injuries, plasma, shadow, glow, background, text or new props. This is an original native image edit only, preserve real transparent alpha.",
+  "source": "/workspace/generated_images/exec-b138575d-a43c-4273-b42b-dd8c46ccd37f.png",
+  "sha256": "fc9bb0f88e7a8b18cfbd1daed0dbeb171c534a8fcb383720c205b0c470f9ef7e",
+  "bytes": 1883997,
+  "width": 1536,
+  "height": 1024,
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "transparent_background": true,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "status": "PENDING_NATIVE_MEASUREMENT_AND_SECOND_REVIEW",
+  "producerReview": "Targeted native correction now keeps pickup shield on the box-gripping LEFT forearm; RIGHT spear arm is free of shield. Other stages and props visually coherent; independent measurement/review required."
+}

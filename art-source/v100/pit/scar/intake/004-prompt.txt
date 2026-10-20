@@ -1,0 +1,19 @@
+Create a NEW production sprite sheet of exactly the SCAR historical/default BODY shown in the supplied reference. Same silver helmet with red ridge, black/gold dreadlocks, spotted yellow skin, net undersuit, dark silver armor, skirt and skull necklace. Blades stay on anatomical RIGHT forearm, combistick in LEFT hand unless an explicitly two-handed staff move requires a second grip. Shoulder cannon remains stowed on its same shoulder. Two arms/two legs and complete hands/feet; no duplicates. Independent left-facing drawings, never a global mirror. No new costume, no skin/armor recoloring.
+
+OUTPUT landscape1536x1024 transparent-alpha PNG, exactly EIGHT complete figures,4columns by2rows. Each cell384x512. Figure body height about240pixels, with head-to-sole scale identical in all8cells; weapon tips must fit too. Figure+weapon total bounds must leave at least32pixels EMPTY alpha0 gutter on every cell edge. No contact shadows, gray haze, translucent aura, floor, colored backdrop, checkerboard, text, labels, numbers, panel borders, motion trails or hit sparks. Crisp independently painted cutout figures, only silhouette antialiasing. Reference background must disappear.
+
+Top row faces RIGHT, bottom row independently faces LEFT, with the same anatomical equipment (use back-three-quarter left views when needed). In each row, column1 is the SAME upright standing guard reference, full-body at the page body scale, for measurement only. Columns2/3/4 are anticipation / actual gesture / recovery. They are distinct articulated drawings, not a posed sprite moved or tilted. Body is never enlarged to fill a crouching or airborne cell. Hands retain real grips, feet stay complete. Keep the three animation poses at exactly the same anatomical size as the neutral reference in column1.
+
+ACTION: committed heavy melee strike with the existing combistick. Anticipation steps the front foot and brings the single combistick into a two-handed preparation. Contact drives a heavy downward diagonal staff strike toward chest level, led by hips and shoulders, within actual staff length. Recovery pulls that same staff back into the left-hand guard, releasing only the extra right-hand grip. Wrist blades stay attached and safely clear of both grips. No plasma, projectile, blast, target, or new weapon. All action poses remain grounded and standing.
+
+Exact workbook action (design specification; draw its movement, not UI text):
+M_F003_5H · Frappe d'engagement
+Commande H · Milieu · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Avance du pied puis frappe lourde au contact avec l'arme de mêlée réellement portée.
+Préparation / actif / récupération : 16 / 5 / 26 images · dégâts 110 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_5H
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

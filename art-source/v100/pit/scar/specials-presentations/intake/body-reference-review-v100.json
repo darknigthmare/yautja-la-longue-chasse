@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "noiseFloor": 2,
+  "perPoseFit": false,
+  "references": [
+    {
+      "actionId": "M_F003_S1",
+      "pageId": "scar-special-s1-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 35,
+      "soleGroundAbsoluteY": 266,
+      "bodyHeightPx": 231,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "M_F003_S2",
+      "pageId": "scar-special-s2-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        183,
+        155
+      ],
+      "soleGroundAbsoluteY": 388,
+      "bodyHeightPx": 233,
+      "method": "Fixed neutral crown/sole reference checked by read-only alpha ROI; no per-pose fit."
+    },
+    {
+      "actionId": "M_F003_S3",
+      "pageId": "scar-special-s3-right-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        442,
+        34
+      ],
+      "soleGroundAbsoluteY": 334,
+      "bodyHeightPx": 300,
+      "method": "Fixed per-page neutral crown/sole landmarks; no per-pose fitting."
+    },
+    {
+      "actionId": "M_F003_S3",
+      "pageId": "scar-special-s3-left-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        404,
+        61
+      ],
+      "soleGroundAbsoluteY": 322,
+      "bodyHeightPx": 261,
+      "method": "Fixed per-page neutral crown/sole landmarks; no per-pose fitting."
+    },
+    {
+      "actionId": "M_F003_S4",
+      "pageId": "scar-special-s4-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 55,
+      "soleGroundAbsoluteY": 388,
+      "bodyHeightPx": 333,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "M_F003_SUPER",
+      "pageId": "scar-special-super-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 50,
+      "soleGroundAbsoluteY": 255,
+      "bodyHeightPx": 205,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "M_F003_EQUIP",
+      "pageId": "scar-special-equip-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 43,
+      "soleGroundAbsoluteY": 378,
+      "bodyHeightPx": 335,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "CIN_F003_INTRO",
+      "pageId": "scar-special-intro-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 104,
+      "soleGroundAbsoluteY": 398,
+      "bodyHeightPx": 294,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "CIN_F003_VICTOIRE",
+      "pageId": "scar-special-victoire-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 88,
+      "soleGroundAbsoluteY": 404,
+      "bodyHeightPx": 316,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "CIN_F003_DEFAITE",
+      "pageId": "scar-special-defaite-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 28,
+      "soleGroundAbsoluteY": 291,
+      "bodyHeightPx": 263,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    },
+    {
+      "actionId": "CIN_F003_TAUNT_1",
+      "pageId": "scar-special-taunt-1-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        209,
+        98
+      ],
+      "soleGroundAbsoluteY": 340,
+      "bodyHeightPx": 242,
+      "method": "Fixed first neutral crown/sole reference, not per-pose fit."
+    },
+    {
+      "actionId": "CIN_F003_TAUNT_2",
+      "pageId": "scar-special-taunt-2-right-page-01",
+      "facing": "right",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "maskCrownAbsolute": [
+        361,
+        78
+      ],
+      "soleGroundAbsoluteY": 322,
+      "bodyHeightPx": 244,
+      "method": "Visual crown/sole review with read-only alpha>2 ROI verification; spear/caster extents excluded. Fixed for every pose on this page."
+    },
+    {
+      "actionId": "CIN_F003_TAUNT_2",
+      "pageId": "scar-special-taunt-2-left-page-01",
+      "facing": "left",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "maskCrownAbsolute": [
+        453,
+        87
+      ],
+      "soleGroundAbsoluteY": 336,
+      "bodyHeightPx": 249,
+      "method": "Visual crown/sole review with read-only alpha>2 ROI verification; spear/caster extents excluded. Fixed for every pose on this page."
+    },
+    {
+      "actionId": "CIN_F003_FATALITE_1",
+      "pageId": "scar-special-fatalite-1-right-page-01",
+      "facing": "right",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        379,
+        65
+      ],
+      "soleGroundAbsoluteY": 330,
+      "bodyHeightPx": 265,
+      "method": "Visual neutral crown/sole landmarks checked with read-only alpha>2 ROI; fixed per native page, no per-pose fit, weaponextents excluded."
+    },
+    {
+      "actionId": "CIN_F003_FATALITE_1",
+      "pageId": "scar-special-fatalite-1-left-page-01",
+      "facing": "left",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        415,
+        32
+      ],
+      "soleGroundAbsoluteY": 328,
+      "bodyHeightPx": 296,
+      "method": "Visual neutral crown/sole landmarks checked with read-only alpha>2 ROI; fixed per native page, no per-pose fit, weaponextents excluded."
+    },
+    {
+      "actionId": "CIN_F003_FATALITE_2",
+      "pageId": "scar-special-fatalite-2-right-page-01",
+      "facing": "right",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "maskCrownAbsolute": [
+        404,
+        72
+      ],
+      "soleGroundAbsoluteY": 294,
+      "bodyHeightPx": 222,
+      "method": "Visual crown/sole review with read-only alpha>2 ROI verification; spear/caster extents excluded. Fixed for every pose on this page."
+    },
+    {
+      "actionId": "CIN_F003_FATALITE_2",
+      "pageId": "scar-special-fatalite-2-left-page-01",
+      "facing": "left",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "maskCrownAbsolute": [
+        385,
+        82
+      ],
+      "soleGroundAbsoluteY": 335,
+      "bodyHeightPx": 253,
+      "method": "Visual crown/sole review with read-only alpha>2 ROI verification; spear/caster extents excluded. Fixed for every pose on this page."
+    },
+    {
+      "actionId": "CIN_F003_CLEMENCE",
+      "pageId": "scar-special-clemence-right-page-01",
+      "facing": "right",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        412,
+        54
+      ],
+      "soleGroundAbsoluteY": 356,
+      "bodyHeightPx": 302,
+      "method": "Visual neutral crown/sole landmarks checked with read-only alpha>2 ROI; fixed per native page, no per-pose fit, weaponextents excluded."
+    },
+    {
+      "actionId": "CIN_F003_CLEMENCE",
+      "pageId": "scar-special-clemence-left-page-01",
+      "facing": "left",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        416,
+        112
+      ],
+      "soleGroundAbsoluteY": 315,
+      "bodyHeightPx": 203,
+      "method": "Visual neutral crown/sole landmarks checked with read-only alpha>2 ROI; fixed per native page, no per-pose fit, weaponextents excluded."
+    }
+  ]
+}

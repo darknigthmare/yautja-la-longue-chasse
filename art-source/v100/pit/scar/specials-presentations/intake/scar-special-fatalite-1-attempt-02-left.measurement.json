@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "source": "/workspace/yautja-la-longue-chasse/art-source/v100/pit/scar/specials-presentations/intake/scar-special-fatalite-1-attempt-02-left.png",
+  "sourceSha256": "b46db8a7f42364993956a2de60bc2fbe50ab7739f2cdbd756669bef924f9ef69",
+  "bytes": 1957286,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 3,
+  "strategy": "column-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "x",
+      "row": 1,
+      "start": 662,
+      "end": 793,
+      "cut": 727,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 0,
+      "column": 1,
+      "start": 357,
+      "end": 381,
+      "cut": 369,
+      "primaryColumn": 0
+    },
+    {
+      "axis": "y",
+      "row": 0,
+      "column": 2,
+      "start": 690,
+      "end": 705,
+      "cut": 697,
+      "primaryColumn": 0
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 1,
+      "start": 350,
+      "end": 381,
+      "cut": 365,
+      "primaryColumn": 1
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        728,
+        370
+      ],
+      "visibleRect": [
+        77,
+        28,
+        534,
+        329
+      ],
+      "alphaPixels": 48847,
+      "borderPixels": 0,
+      "visiblePixelSha256": "f6bd0c370c6b6283bf5dd8ab63c0c82b86edca665fa97de3e1db4f53edb47749",
+      "pivotCandidate": [
+        581.5,
+        357
+      ],
+      "visibleHeightCandidate": 329
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        727,
+        0,
+        809,
+        366
+      ],
+      "visibleRect": [
+        794,
+        48,
+        607,
+        302
+      ],
+      "alphaPixels": 48389,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d91e38eccc22d7720a7d538ea77e93ec172fa34d0c54390db12da9ce745e540a",
+      "pivotCandidate": [
+        641,
+        350
+      ],
+      "visibleHeightCandidate": 302
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        369,
+        728,
+        329
+      ],
+      "visibleRect": [
+        74,
+        382,
+        573,
+        308
+      ],
+      "alphaPixels": 50974,
+      "borderPixels": 0,
+      "visiblePixelSha256": "df9bb5cb9eb105dfa501ac6eeb79f0a3fa524cf05be2e07a7f1f04b50c7dd5a8",
+      "pivotCandidate": [
+        617,
+        321
+      ],
+      "visibleHeightCandidate": 308
+    },
+    {
+      "index": 4,
+      "row": 2,
+      "column": 0,
+      "rect": [
+        0,
+        697,
+        728,
+        327
+      ],
+      "visibleRect": [
+        74,
+        706,
+        588,
+        301
+      ],
+      "alphaPixels": 52177,
+      "borderPixels": 0,
+      "visiblePixelSha256": "c95797b5427d2b9c9cb59fbb945fe45152f43b3255c6616b912ea3add47d15ce",
+      "pivotCandidate": [
+        627.5,
+        310
+      ],
+      "visibleHeightCandidate": 301
+    }
+  ],
+  "issues": [
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 3"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/intake/008-scar-5H-original.png",
+  "sourceSha256": "82ff25e83540262041ebab6657d2795066c02abf3b5a3bcd7141485c84c5dfd9",
+  "bytes": 1521845,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 4,
+  "strategy": "column-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "x",
+      "row": 1,
+      "start": 688,
+      "end": 845,
+      "cut": 766,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 0,
+      "column": 2,
+      "start": 518,
+      "end": 530,
+      "cut": 524,
+      "primaryColumn": 0
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 2,
+      "start": 518,
+      "end": 537,
+      "cut": 527,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 3,
+      "start": 742,
+      "end": 742,
+      "cut": 742,
+      "primaryColumn": 1
+    }
+  ],
+  "frames": [
+    {
+      "index": 5,
+      "row": 2,
+      "column": 1,
+      "rect": [
+        766,
+        527,
+        770,
+        216
+      ],
+      "visibleRect": [
+        846,
+        538,
+        347,
+        204
+      ],
+      "alphaPixels": 23764,
+      "borderPixels": 0,
+      "visiblePixelSha256": "c58265be1818ad8184ca4261d836896ff2a36a1d0519f46512f7e5ee9b59b7bd",
+      "pivotCandidate": [
+        335.5,
+        215
+      ],
+      "visibleHeightCandidate": 204
+    },
+    {
+      "index": 7,
+      "row": 3,
+      "column": 1,
+      "rect": [
+        766,
+        742,
+        770,
+        282
+      ],
+      "visibleRect": [
+        955,
+        743,
+        186,
+        261
+      ],
+      "alphaPixels": 24212,
+      "borderPixels": 0,
+      "visiblePixelSha256": "9e07dcd17d23daac16932e82a1f00cf3fa63e84f8d4d642427d5a26c0f46a8f7",
+      "pivotCandidate": [
+        354,
+        262
+      ],
+      "visibleHeightCandidate": 261
+    }
+  ],
+  "issues": [
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 2",
+    "Column-first: No safe horizontal alpha gutter in column 1, before row 4",
+    "Column-first: No safe horizontal alpha gutter in column 2, before row 2"
+  ]
+}

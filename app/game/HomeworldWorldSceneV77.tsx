@@ -19,9 +19,11 @@ import {HOMEWORLD_FURNITURE_ART_V72} from './systems/homeworldFurnitureV72';
 import {HOMEWORLD_GATEWAY_ART_V72,homeworldGatewayScaleV72} from './systems/homeworldRegionConnectionsV72';
 import {homeworldConnectorArtV82,homeworldConnectorPlacementV82,homeworldConnectorSourceStateV82} from './systems/homeworldConnectorArtV82';
 import {HOMEWORLD_LIFT_CABIN_ART_V82,homeworldLiftCabinPlacementV82,type HomeworldLiftStationV83} from './systems/homeworldLiftCabinV82';
-import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingCoversPaintV76,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
-import {homeworldBuildingRenderDepthV76,shouldFadeHomeworldBuilding,homeworldBuildingVisibleBoundsV72,shouldFadeHomeworldForeground} from './systems/homeworldCity';
+import {homeworldBuildingSpritePlacementV64,homeworldProjectGroundV64,homeworldBuildingDoorwayV64,HOMEWORLD_GEOMETRY_V64} from './systems/homeworldGeometryV64';
+import {homeworldBuildingRenderDepthV76,shouldFadeHomeworldBuilding,shouldFadeHomeworldForeground} from './systems/homeworldCity';
 import styles from './HomeworldCity.module.css';
+import streetContactStylesV100 from './HomeworldStreetConversationV100.module.css';
+import {homeworldResidentOccludedV100} from './systems/homeworldResidentVisibilityV100';
 import {HOMEWORLD_URBAN_GROUND_V78} from './systems/homeworldUrbanLayoutV78';
 import {HOMEWORLD_URBAN_PROPS_V78,HOMEWORLD_CITY_GENERATED_PROPS_V78} from './systems/homeworldStreetModulesV78';
 import {HOMEWORLD_CITY_NATIVE_ART_V78} from './systems/homeworldCityNativeArtV78';
@@ -46,8 +48,8 @@ const visible=(box:{left:number;top:number;width:number;height:number},camera:Ca
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
- actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,activeStreetContactV100=null,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
@@ -131,11 +133,12 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {residentPoses.map(({resident,pose})=>{
    const p=homeworldProjectGroundV64(pose,homeworldLevelV77(resident.levelId).elevation);
    if(!visible({left:p.x-100,top:p.y-130,width:200,height:150},camera))return null;
-   if(paintedBuildings.some(b=>{if(b.levelId!==resident.levelId||pose.y>=homeworldBuildingRenderDepthV76(b,pose))return false;if(b.art.opaqueRowsV76)return homeworldBuildingCoversPaintV76(b,pose);const bounds=homeworldBuildingVisibleBoundsV72(b),foot=homeworldProjectGroundV64(pose);return foot.x>bounds.left&&foot.x<bounds.left+bounds.width&&foot.y>bounds.top&&foot.y<bounds.top+bounds.height;}))return null;
+   if(homeworldResidentOccludedV100(resident.levelId,pose))return null;
    return <span key={resident.id} className={styles.residentV68} data-homeworld-resident={resident.id} data-world-level-v77={resident.levelId}
     data-routine-phase-v84={pose.phase} data-routine-family-v84={pose.routineFamily} data-routine-group-v84={pose.groupId??undefined} data-routine-dwell-v84={pose.dwellRemainingSeconds}
     data-x={pose.x} data-y={pose.y} data-moving={pose.moving} style={{left:p.x,top:p.y,zIndex:depth(resident.levelId,pose.y)}}>
     <span className={styles.residentShadowV68} aria-hidden="true" data-homeworld-ground-contact-v92={resident.id}/>
+    {resident.id===activeStreetContactV100&&<><span className={streetContactStylesV100.ring} aria-hidden="true"/><span className={streetContactStylesV100.label} aria-hidden="true" data-homeworld-street-label-v100={resident.id}>{resident.role}</span></>}
     <HomeworldCivilianV72 npcId={resident.id} role={homeworldUrbanExtraRoleV78(resident)} facing={pose.facing} height={resident.morphId==='young'?82:100} moving={pose.moving} seconds={pose.motionSeconds} reducedMotion={reducedMotion} speed={resident.speed}/>
    </span>;
   })}

@@ -1,0 +1,279 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_EQUIP",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-equip-body-v100",
+  "clipIds": [
+    "workbook.M_F003_EQUIP"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "U7",
+    "sourceText": "M_F003_EQUIP · Préparer / ranger l'arme\nCommande S+H · Sans dégâts · Équipement\nArme : Lames ; combistick ; shuriken ; canon\nAnimation lisible de sortie ou rangement ; attaques d'arme interdites jusqu'à la fin de l'action. Les armes perdues ne réapparaissent pas.\nPréparation / actif / récupération : 20 / 0 / 20 images · dégâts 0 · coût 0 %\nContre-jeu : Punir le changement de prise ; on ne s'équipe pas pendant une saisie, un hitstun ou un saut.\nNe pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_EQUIP\nEntité : Aucune · équipement : Voir feuille 06_ARMES\nAdaptation originale sourcée · Transition proposée ; inventaire à intégrer",
+    "phaseTicks": {
+      "startup": 20,
+      "active": 0,
+      "recovery": 20
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-equip-attempt-01.png",
+    "sha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-equip-attempt-01.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-equip-attempt-01.prompt.txt",
+    "references": [
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 335,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-equip-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-equip-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-equip.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_EQUIP",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                0,
+                0,
+                351,
+                406
+              ],
+              "pivot": [
+                183,
+                378
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                350,
+                0,
+                346,
+                406
+              ],
+              "pivot": [
+                174,
+                382
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                695,
+                0,
+                329,
+                406
+              ],
+              "pivot": [
+                177,
+                382
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                0,
+                405,
+                351,
+                378
+              ],
+              "pivot": [
+                180,
+                356
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                350,
+                405,
+                347,
+                378
+              ],
+              "pivot": [
+                172,
+                355
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                696,
+                405,
+                328,
+                378
+              ],
+              "pivot": [
+                175,
+                354
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_EQUIP",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                0,
+                782,
+                348,
+                374
+              ],
+              "pivot": [
+                174,
+                355
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                347,
+                782,
+                355,
+                374
+              ],
+              "pivot": [
+                182,
+                356
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                701,
+                782,
+                323,
+                374
+              ],
+              "pivot": [
+                176,
+                354
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                0,
+                1155,
+                361,
+                381
+              ],
+              "pivot": [
+                189,
+                341
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                360,
+                1155,
+                342,
+                381
+              ],
+              "pivot": [
+                178,
+                340
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-equip-page-01",
+              "rect": [
+                701,
+                1155,
+                323,
+                381
+              ],
+              "pivot": [
+                172,
+                345
+              ],
+              "durationTicks": 7
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels.",
+      "One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate.",
+      "Draw/inspect/stow of the existing compact combistick; does not implement or validate inventory mutation."
+    ]
+  },
+  "bodyReferenceReview": [
+    {
+      "pageId": "scar-special-equip-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 43,
+      "soleGroundAbsoluteY": 378,
+      "bodyHeightPx": 335,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    }
+  ]
+}

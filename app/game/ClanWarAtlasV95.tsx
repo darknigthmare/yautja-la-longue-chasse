@@ -22,7 +22,7 @@ interface ClanWarAtlasV95Props {
 
 const PLAYER: WarFactionIdV85 = "CON-F01";
 const factionGlyph: Record<WarFactionIdV85, string> = { "CON-F01": "●", "CON-F02": "▲", "CON-F03": "◆" };
-const orderNames: Record<WarOrderKindV85, string> = { move: "Déplacement", attack: "Assaut", recon: "Reconnaissance", cession: "Cession", transit: "Transit", logistics: "Ravitaillement", heal: "Soins" };
+const orderNames: Record<WarOrderKindV85, string> = { move: "Déplacement", attack: "Assaut", recon: "Reconnaissance", cession: "Cession", transit: "Transit", logistics: "Ravitaillement", heal: "Soins", evacuate: "Évacuation des blessés" };
 const shortId = (id: string) => id.replace("CON-", "");
 const wrapLongitude = (value: number) => ((value + 540) % 360) - 180;
 const biomeNames: Record<string, string> = {

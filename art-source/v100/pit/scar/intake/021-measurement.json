@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/intake/021-scar-left-reference-left-original.png",
+  "sourceSha256": "afda5ebad65ed340201456786529962cdf1c7d97a1152f039d910cc537618d2c",
+  "bytes": 1972634,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 1,
+  "rows": 1,
+  "strategy": "row-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "visibleRect": [
+        192,
+        85,
+        668,
+        1311
+      ],
+      "alphaPixels": 450898,
+      "borderPixels": 0,
+      "visiblePixelSha256": "a8291c3783734e7c4b1d179dc47fce9e433cb9328f9b7307f3afef8445162e80",
+      "pivotCandidate": [
+        735,
+        1396
+      ],
+      "visibleHeightCandidate": 1311
+    }
+  ],
+  "issues": []
+}

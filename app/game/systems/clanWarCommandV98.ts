@@ -77,8 +77,8 @@ export function warOrderPreviewV98(state: WarSimulationV85, draft: WarOrderDraft
   const reserved = ownOrigin ? state.orders.filter(item => item.fromId === draft.fromId).reduce((total, item) => add(total, warOrderCostV85(item)), empty()) : empty();
   const available = stock ? subtract(stock, reserved) : null;
   const warnings: string[] = [];
-  const moves = ["move", "attack", "cession", "logistics"].includes(draft.kind);
-  const leaving = new Set([...state.orders.filter(item => item.fromId === draft.fromId && ["move", "attack", "cession", "logistics"].includes(item.kind)).flatMap(item => item.combatantIds), ...(moves ? draft.combatantIds : [])]);
+  const moves = ["move", "attack", "cession", "logistics", "evacuate"].includes(draft.kind);
+  const leaving = new Set([...state.orders.filter(item => item.fromId === draft.fromId && ["move", "attack", "cession", "logistics", "evacuate"].includes(item.kind)).flatMap(item => item.combatantIds), ...(moves ? draft.combatantIds : [])]);
   if (ownOrigin && moves && draft.combatantIds.length && warGarrisonV85(state, draft.fromId).length > 0 &&
     warGarrisonV85(state, draft.fromId).every(actor => leaving.has(actor.id))) warnings.push("Tous les gardes du départ sont engagés : si ces déplacements aboutissent, ce site perdra sa production jusqu’à une nouvelle garnison.");
   if (ownOrigin && ["attack", "cession"].includes(draft.kind) && !warSuppliedV85(state).has(draft.fromId)) warnings.push(draft.kind === "attack"

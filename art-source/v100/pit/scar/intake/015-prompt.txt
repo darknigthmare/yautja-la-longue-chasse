@@ -1,0 +1,23 @@
+Create a native transparent-alpha production sprite page of the exact historical SCAR BODY in the reference. Preserve silver helmet/red ridge, spotted yellow skin, net undersuit, dark silver armor, skirt, necklace and black/gold dreadlocks. The anatomical RIGHT forearm has wrist blades; LEFT hand holds one long combistick; stowed shoulder cannon. Keep weapons on those anatomical sides even in the left-facing rear-three-quarter view. Two arms and two legs, complete feet and hands. No new costume. Render four independently articulated drawings of this same character, not copies shifted or rotated.
+
+Landscape 1536x1024 PNG with transparent background. Exactly FOUR complete drawings arranged in TWO COLUMNS and TWO ROWS. Each cell 768x512 pixels. Leave very wide, genuinely alpha0 gutters: at least80pixels of completely empty transparent space between rows and columns; at least50pixels alpha0 around the outer page edges. Whole figures AND every weapon tip stay entirely inside cells. The body from helmet to soles is about300pixels when standing, total including spear no more380pixels. All poses share exactly that anatomical scale. Low poses remain shorter; never enlarge them. Plain isolated small game sprites. No floor, shadows, glows, gray haze, background, border, checkerboard, labels, text, numbers, motion streaks or sparks. No loose weapon effects. Transparent background is mandatory.
+
+Read row-major: top-left is an upright neutral guard used ONLY for scale reference. Top-right is anticipation; bottom-left is contact; bottom-right is recovery. The three action drawings have visibly different joint angles and actual movement through hips/torso/limbs. Keep grips and weapon ownership consistent.
+
+ALL FOUR figures face RIGHT. Front-three-quarter right-facing view as in the upper half of the reference.
+
+ACTION: A short AIRBORNE KNEE STRIKE, no flight and no extra jump. Anticipation is in midair with both feet tucked upward and hips preparing. Contact raises the forward RIGHT knee sharply toward an opponent's chest; RIGHT knee and elbow bent in a compact silhouette, left leg folded behind, both feet visibly off the virtual floor. Recovery lowers that knee and extends the legs partly downward into the SAME falling cycle. The LEFT hand retains the combistick upright and the bladed arm stays in guard; no weapon thrust. Three action poses must clearly be airborne with changing hips/knee angles; the scale reference alone is standing.
+
+The standing reference in the first cell defines the SAME head size, limb lengths and body scale as the three airborne/landing poses. Airborne poses never become giant to fill cells. Keep all silhouette and weapon tips at least50pixels from every cell edge.
+
+Exact source specification:
+M_F003_jL · Contact aérien court
+Commande Air+L · Haut · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Genou ou coude bref en vol, sans nouveau saut ou vol permanent.
+Préparation / actif / récupération : 6 / 3 / 12 images · dégâts 35 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_jL
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

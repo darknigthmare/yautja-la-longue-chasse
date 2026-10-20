@@ -1,0 +1,21 @@
+Create a native transparent-alpha production sprite page of the exact historical SCAR BODY in the reference. Preserve silver helmet/red ridge, spotted yellow skin, net undersuit, dark silver armor, skirt, necklace and black/gold dreadlocks. The anatomical RIGHT forearm has wrist blades; LEFT hand holds one long combistick; stowed shoulder cannon. Keep weapons on those anatomical sides even in the left-facing rear-three-quarter view. Two arms and two legs, complete feet and hands. No new costume. Render four independently articulated drawings of this same character, not copies shifted or rotated.
+
+Landscape 1536x1024 PNG with transparent background. Exactly FOUR complete drawings arranged in TWO COLUMNS and TWO ROWS. Each cell 768x512 pixels. Leave very wide, genuinely alpha0 gutters: at least80pixels of completely empty transparent space between rows and columns; at least50pixels alpha0 around the outer page edges. Whole figures AND every weapon tip stay entirely inside cells. The body from helmet to soles is about300pixels when standing, total including spear no more380pixels. All poses share exactly that anatomical scale. Low poses remain shorter; never enlarge them. Plain isolated small game sprites. No floor, shadows, glows, gray haze, background, border, checkerboard, labels, text, numbers, motion streaks or sparks. No loose weapon effects. Transparent background is mandatory.
+
+Read row-major: top-left is an upright neutral guard used ONLY for scale reference. Top-right is anticipation; bottom-left is contact; bottom-right is recovery. The three action drawings have visibly different joint angles and actual movement through hips/torso/limbs. Keep grips and weapon ownership consistent.
+
+Every one of the FOUR figures faces RIGHT, including its helmet, body, knees, toes and attack direction. Use the front-three-quarter view as in the upper half of the reference.
+
+ACTION: A true rising RIGHT-ARM UPPERCUT from a low guard. Anticipation crouches deeply, RIGHT fist and wrist blades held low beside the hip. Contact extends the knees partway and drives the bent RIGHT arm upward to head height; bladed wrist clearly above Scar's own helmet, elbow underneath it. Recovery settles back into guard with arm returning. Do not jump or leap, feet stay grounded. LEFT hand retains the combistick vertical at the other side, no spear attack.
+
+Exact source specification:
+M_F003_2H · Interception montante
+Commande 2+H · Milieu / anti-air · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Montée du bras depuis la garde basse, zone de frappe limitée au geste.
+Préparation / actif / récupération : 14 / 5 / 29 images · dégâts 90 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_2H
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

@@ -1,0 +1,21 @@
+Create a native transparent-alpha production sprite page of the exact historical SCAR BODY in the reference. Preserve silver helmet/red ridge, spotted yellow skin, net undersuit, dark silver armor, skirt, necklace and black/gold dreadlocks. The anatomical RIGHT forearm has wrist blades; LEFT hand holds one long combistick; stowed shoulder cannon. Keep weapons on those anatomical sides even in the left-facing rear-three-quarter view. Two arms and two legs, complete feet and hands. No new costume. Render four independently articulated drawings of this same character, not copies shifted or rotated.
+
+Landscape 1536x1024 PNG with transparent background. Exactly FOUR complete drawings arranged in TWO COLUMNS and TWO ROWS. Each cell 768x512 pixels. Leave very wide, genuinely alpha0 gutters: at least80pixels of completely empty transparent space between rows and columns; at least50pixels alpha0 around the outer page edges. Whole figures AND every weapon tip stay entirely inside cells. The body from helmet to soles is about300pixels when standing, total including spear no more380pixels. All poses share exactly that anatomical scale. Low poses remain shorter; never enlarge them. Plain isolated small game sprites. No floor, shadows, glows, gray haze, background, border, checkerboard, labels, text, numbers, motion streaks or sparks. No loose weapon effects. Transparent background is mandatory.
+
+Read row-major: top-left is an upright neutral guard used ONLY for scale reference. Top-right is anticipation; bottom-left is contact; bottom-right is recovery. The three action drawings have visibly different joint angles and actual movement through hips/torso/limbs. Keep grips and weapon ownership consistent.
+
+Every one of the FOUR figures faces RIGHT, including its helmet, body, knees, toes and attack direction. Use the front-three-quarter view as in the upper half of the reference.
+
+ACTION: A true BACKHAND of the RIGHT gauntlet. Anticipation rotates the torso away and folds the RIGHT elbow so the bladed wrist crosses in front of the chest. Contact rotates the hips and shoulders back while the bent RIGHT elbow swings the BACK of that gauntlet across to the opponent at chest height; it is a lateral sweeping backhand, NOT a straight punch or spear thrust. Recovery recoils that same arm into guard. LEFT hand retains the combistick vertically behind the action, never thrusts it. Elbow remains visibly bent at contact, forearm crosses the torso. No projectile.
+
+Exact source specification:
+M_F003_5M · Revers d'ouverture
+Commande M · Milieu · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Rotation du buste et revers du gantelet ; pas de projectile associé à un simple coup.
+Préparation / actif / récupération : 9 / 4 / 16 images · dégâts 70 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_5M
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

@@ -1,0 +1,19 @@
+Create a NEW production sprite sheet of exactly the SCAR historical/default BODY shown in the supplied reference. Same silver helmet with red ridge, black/gold dreadlocks, spotted yellow skin, net undersuit, dark silver armor, skirt and skull necklace. Blades stay on anatomical RIGHT forearm, combistick in LEFT hand unless an explicitly two-handed staff move requires a second grip. Shoulder cannon remains stowed on its same shoulder. Two arms/two legs and complete hands/feet; no duplicates. Independent left-facing drawings, never a global mirror. No new costume, no skin/armor recoloring.
+
+OUTPUT landscape1536x1024 transparent-alpha PNG, exactly EIGHT complete figures in TWO COLUMNS and FOUR ROWS. Each cell is768wide x256high. The left column faces RIGHT; the right column independently faces LEFT. Body height is approximately150pixels, never over175pixels tall, at ONE FIXED anatomical scale on the entire page. Even upright spear tips must fit completely within each256-high cell. Preserve a minimum24pixels of EMPTY alpha0 above and below EVERY full figure and weapon, and at least60pixels of empty lateral spacing. Crisp, small game sprites with clear poses, not large illustrations that fill the page. NO shadow, gray haze, translucent aura, floor, backdrop, checkerboard, text, labels, numbers, borders, motion trails or hit sparks. Outside character silhouettes must be truly alpha0.
+
+ROW1 has the two upright neutral standing guards for body-scale measurement only: leftcell facesRIGHT, rightcell facesLEFT. ROW2 has anticipation poses in those same two orientations. ROW3 has the actual contact poses. ROW4 has the recovery poses. Thus each action is read DOWN its column. Every figure remains fully within its own cell. Both facings are independently drawn with the same anatomical weapon ownership (use rear-three-quarter views for the left-facing column). Low/air action poses NEVER get enlarged to fill their cell; their heads, hands and limbs remain the same physical size as the upright references in ROW1. Hands retain actual grips and feet stay complete. Distinct articulation through hips, shoulders, elbows and knees; not a repeated still translated or tilted.
+
+ACTION: low sweeping control strike with the existing combistick shaft. Anticipation crouches and takes a second RIGHT-hand grip on the single combistick while the LEFT hand retains it. Contact performs a grounded horizontal sweep of the lower shaft just above the floor, below knee height, without lengthening the staff or body. Recovery returns the same staff to a close low guard, both knees still bent. Wrist blades remain attached and clear of grips. No ground wave, target or projectile. Row1 is upright reference; other columns stay genuinely lower, never enlarged.
+
+Exact workbook action (design specification; draw its movement, not UI text):
+M_F003_2M · Balayage de contrôle
+Commande 2+M · Bas · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Jambe ou manche balaie au ras du sol sans allonger artificiellement les membres.
+Préparation / actif / récupération : 11 / 4 / 21 images · dégâts 65 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_2M
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

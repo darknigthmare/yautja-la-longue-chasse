@@ -1,0 +1,268 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_S3",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-s3-body-v100",
+  "clipIds": [
+    "workbook.M_F003_S3"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "R7",
+    "sourceText": "M_F003_S3 · Tir de plasma\nCommande 623+S · Selon trajectoire / prototype · Spécial\nArme : Canon d'épaule\nLe canon s'aligne ; la bouche s'illumine puis libère un trait rectiligne. Le corps peut être puni durant la visée.\nPréparation / actif / récupération : 20 / 3 / 28 images · dégâts 105 · coût 25 %\nContre-jeu : Baisser la tête sous le tir haut, sauter ou punir la récupération.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S3\nEntité : E_F003_plasma · équipement : W_F003_canon-epaule\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+    "phaseTicks": {
+      "startup": 20,
+      "active": 3,
+      "recovery": 28
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-04.png",
+    "sha256": "661acf29bd1e04b07f51452c2a2cae22365f0c719b3a0d085e0f6bae094a6bcd",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-04.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-04.prompt.txt",
+    "references": [
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 236,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-s3-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-s3-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-s3.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_S3",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                0,
+                0,
+                541,
+                268
+              ],
+              "pivot": [
+                327,
+                262
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                540,
+                0,
+                438,
+                268
+              ],
+              "pivot": [
+                220,
+                262
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                977,
+                0,
+                559,
+                268
+              ],
+              "pivot": [
+                210,
+                262
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                0,
+                267,
+                551,
+                247
+              ],
+              "pivot": [
+                313,
+                237
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                550,
+                267,
+                444,
+                247
+              ],
+              "pivot": [
+                210,
+                239
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                993,
+                267,
+                543,
+                247
+              ],
+              "pivot": [
+                201,
+                239
+              ],
+              "durationTicks": 14
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_S3",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                0,
+                513,
+                556,
+                239
+              ],
+              "pivot": [
+                337,
+                238
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                555,
+                513,
+                441,
+                239
+              ],
+              "pivot": [
+                239,
+                238
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                995,
+                513,
+                541,
+                239
+              ],
+              "pivot": [
+                244,
+                238
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                0,
+                751,
+                573,
+                273
+              ],
+              "pivot": [
+                346,
+                226
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                572,
+                751,
+                455,
+                273
+              ],
+              "pivot": [
+                223,
+                227
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s3-page-01",
+              "rect": [
+                1026,
+                751,
+                510,
+                273
+              ],
+              "pivot": [
+                219,
+                228
+              ],
+              "durationTicks": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "661acf29bd1e04b07f51452c2a2cae22365f0c719b3a0d085e0f6bae094a6bcd",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels.",
+      "One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate.",
+      "One articulated shoulder cannon with flat rear status light; aim, recoil and return. No projectile baked into BODY. Engine must independently review the shoulder bracket instead of treating a helmet gun as acceptable."
+    ]
+  }
+}

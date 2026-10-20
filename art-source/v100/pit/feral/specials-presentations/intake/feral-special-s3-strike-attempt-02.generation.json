@@ -1,0 +1,18 @@
+{
+  "name": "feral-special-s3-strike-attempt-02",
+  "key": "S3",
+  "part": "strike-patch",
+  "columns": 2,
+  "rows": 2,
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/specials-presentations/intake/feral-special-s3-attempt-01a.png"
+  ],
+  "prompt": "Create a NEW original native RGBA Feral sprite sheet, LANDSCAPE 1536x1024, TWO columns by TWO rows, only FOUR full bodies, enormous transparent gaps. Reference1 gives exact Feral outfit and double-ended separable spear. Do not mirror either facing. Left column faces RIGHT in front/right view (mask nose toward right); right column faces LEFT in back/left view (mask nose toward left). Row1 TWO neutral standing body calibrations holding the one WHOLE separable spear horizontally low. Row2 actual new RIGHT-HAND spear-half forward strike: exactly TWO HALVES held separately, right anatomical hand strikes toward the facing direction, left hand half stays near waist. Thus left column striking hand points right; right column striking hand points left. The shield stays FOLDED on anatomical LEFT forearm and right wrist blades remain FULLY RETRACTED, no spikes from bracers. No whole third staff on back or floor while two halves held. Entire body is 240px high maximum in a768x512cell, lots of empty alpha around complete spear tips/feet. Native pixels outside figures exactly alpha0, no floor, shadow, halo, glow, gradients or text. Draw four bodies independently with actual hip/shoulder twist in action. Keep all bone mask, dreadlocks, spotted ochre skin, dark loincloth, bone ornaments, bronze bracers and clawed feet from inspected reference.",
+  "taskStore": "feralSpecialRetryTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-7f0f55b6-a4ec-4df8-b537-b24dd6dc56cf.png",
+  "originalSha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

@@ -1,5 +1,6 @@
 import { CLAN_WAR_PARAMETERS_V85 as P, type WarFactionIdV85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
 import { WAR_PLANETS_V96, warPlanetV96 } from "./clanWarPlanetsV96";
+import { WAR_EVACUATION_COST_V100, warEvacuationIssueV100, warEvacuationManifestV100 } from "./clanWarEvacuationV100";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
 export interface WarCombatantV85 {
@@ -7,7 +8,7 @@ export interface WarCombatantV85 {
   status: "fit" | "wounded" | "dead"; xp: number; garrison: boolean; trainingUntilTurn: number | null;
 }
 export interface WarTerritoryStateV85 { controller: WarFactionIdV85; installationIntact: boolean; transitUntilTurn: number | null }
-export type WarOrderKindV85 = "move" | "attack" | "recon" | "cession" | "transit" | "logistics" | "heal";
+export type WarOrderKindV85 = "move" | "attack" | "recon" | "cession" | "transit" | "logistics" | "heal" | "evacuate";
 export interface WarOrderV85 {
   id: string; kind: WarOrderKindV85; fromId: string; targetId: string; combatantIds: string[];
   cargo: WarBudgetV85; mode: "auto"; factionId: WarFactionIdV85;
@@ -192,11 +193,12 @@ export function warOrderCostV85(order: Pick<WarOrderV85, "kind" | "cargo">): War
   if (order.kind === "cession") return { s: 0, m: 0, i: 3 };
   if (order.kind === "transit") return { s: 0, m: 0, i: 1 };
   if (order.kind === "heal") return { s: 1, m: 0, i: 0 };
+  if (order.kind === "evacuate") return { ...WAR_EVACUATION_COST_V100 };
   if (order.kind === "logistics") return order.cargo;
   return emptyBudget();
 }
 export function warOrderSlotV85(kind: WarOrderKindV85): "operation" | "logistics" | "diplomacy" {
-  return kind === "logistics" || kind === "heal" ? "logistics" : kind === "cession" || kind === "transit" ? "diplomacy" : "operation";
+  return kind === "logistics" || kind === "heal" || kind === "evacuate" ? "logistics" : kind === "cession" || kind === "transit" ? "diplomacy" : "operation";
 }
 export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): string | null {
   if (order.factionId !== PLAYER || order.mode !== "auto") return "Cet exercice attend un ordre de l’Expédition des Haltes.";
@@ -211,7 +213,10 @@ export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): s
   if (state.orders.filter(item => warOrderSlotV85(item.kind) === slot).length >= (slot === "operation" ? 2 : 1)) return `Créneaux ${slot === "operation" ? "opérationnels" : slot === "logistics" ? "logistiques" : "diplomatiques"} déjà réservés.`;
   if (new Set(order.combatantIds).size !== order.combatantIds.length || order.combatantIds.length > 8) return "La colonne doit contenir au plus huit personnes distinctes.";
   const actors = order.combatantIds.map(id => state.combatants.find(actor => actor.id === id));
-  if (actors.some(actor => !actor || actor.factionId !== PLAYER || actor.territoryId !== order.fromId || actor.status !== (order.kind === "heal" ? "wounded" : "fit") || actor.trainingUntilTurn !== null)) return "Une personne n’est pas disponible à ce point de départ.";
+  if (order.kind === "evacuate") {
+    const issue = warEvacuationIssueV100(state, order);
+    if (issue) return issue;
+  } else if (actors.some(actor => !actor || actor.factionId !== PLAYER || actor.territoryId !== order.fromId || actor.status !== (order.kind === "heal" ? "wounded" : "fit") || actor.trainingUntilTurn !== null)) return "Une personne n’est pas disponible à ce point de départ.";
   if (state.orders.some(item => item.combatantIds.some(id => order.combatantIds.includes(id)))) return "Une personne possède déjà un ordre pour ce tour.";
   if (["move", "attack", "recon", "cession", "heal"].includes(order.kind) && actors.length === 0) return "Affectez une personne présente.";
   if (order.kind === "attack" && state.territories[order.targetId].controller !== ENEMY) return "Cet exercice réserve l’assaut aux positions de F02 ; F03 conserve ses possibilités de négociation.";
@@ -225,6 +230,7 @@ export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): s
   return null;
 }
 export function queueWarOrderV85(state: WarSimulationV85, draft: Omit<WarOrderV85, "id" | "factionId" | "mode">): WarUpdateV85 {
+  if (state.revision >= 1000000 || draft.kind === "evacuate" && state.revision >= 999999) return { state, accepted: false, message: "La limite de révision de cette archive ne laisse plus la marge nécessaire à cet ordre. Aucun ordre ajouté." };
   const order: WarOrderV85 = { ...draft, combatantIds: [...draft.combatantIds], cargo: { ...draft.cargo }, id: `free-${state.seed}-t${state.turn}-r${state.revision + 1}`, factionId: PLAYER, mode: "auto" };
   const issue = warOrderIssueV85(state, order);
   if (issue) return { state, accepted: false, message: issue };
@@ -232,6 +238,7 @@ export function queueWarOrderV85(state: WarSimulationV85, draft: Omit<WarOrderV8
   return { state: next, accepted: true, message: "Ordre réservé. Le temps avancera lors de la validation du tour." };
 }
 export function cancelWarOrderV85(state: WarSimulationV85, id: string): WarSimulationV85 {
+  if (state.revision >= 1000000) return state;
   const next = copy(state); next.orders = next.orders.filter(order => order.id !== id); next.revision++; return next;
 }
 function hash(value: string, seed: number): number { let result = seed >>> 0; for (const char of value) result = Math.imul(result ^ char.charCodeAt(0), 16777619) >>> 0; return result; }
@@ -305,9 +312,21 @@ function applyOrder(state: WarSimulationV85, order: WarOrderV85) {
     report(state, `${order.id} : ordre annulé après rupture du départ ou du stock ; aucun renfort créé.`, ["CON-R07"]);
     state.appliedResultIds.push(order.id); return;
   }
+  if (order.kind === "evacuate") {
+    const issue = warEvacuationIssueV100(state, order);
+    if (issue) {
+      report(state, `${order.id} : évacuation annulée avant dépense : ${issue} Les personnes restent sur place.`, ["CON-R08", "EVOL-R14"], order.id);
+      state.appliedResultIds.push(order.id); return;
+    }
+  }
   debit(state.stocks[order.fromId], cost);
   const actors = currentActors(state, order);
   if (order.kind === "attack") battle(state, order);
+  else if (order.kind === "evacuate") {
+    const manifest = warEvacuationManifestV100(state, order);
+    for (const person of [...manifest.escorts, ...manifest.patients]) { person.territoryId = order.targetId; person.garrison = false; }
+    report(state, `${order.fromId} → ${order.targetId} : ${manifest.patients.map(person => person.id).join(", ")} évacué(s), avec ${manifest.escorts.map(person => person.id).join(", ")} en escorte. Les blessés restent blessés ; les soins demandent un autre ordre et un autre créneau.`, ["CON-R08", "CON-R10", "EVOL-R14", "EVOL-R15"], order.id);
+  }
   else if (order.kind === "recon") {
     const count = state.combatants.filter(actor => actor.territoryId === order.targetId && actor.status === "fit" && actor.factionId === state.territories[order.targetId].controller).length;
     state.observations = state.observations.filter(item => item.territoryId !== order.targetId);
@@ -378,6 +397,7 @@ function evaluateObjectives(state: WarSimulationV85, upkeepPaid: boolean) {
 /** Seals both sides before revealing any report. One immutable snapshot is returned for one storage write. */
 export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
   if (!warPlanetV96(state.planetId)) return { state, accepted: false, message: "Planète absente du catalogue de cet exercice." };
+  if (state.revision >= 1000000) return { state, accepted: false, message: "La limite de révision de cette archive est atteinte. Aucun tour résolu." };
   if (state.turn >= 5000) return { state, accepted: false, message: "La limite de cette archive d’exercice est atteinte." };
   const next = copy(state);
   const enemyOrders = planEnemy(state);
@@ -408,6 +428,9 @@ export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
   next.turn++; next.revision++; next.orders = [];
   for (const actor of next.combatants) if (actor.status === "wounded" && actor.trainingUntilTurn !== null && actor.trainingUntilTurn < next.turn) { actor.status = "fit"; actor.trainingUntilTurn = null; actor.garrison = false; }
   production(next);
+  // Keep the whole previous snapshot if a full resolution would overflow its
+  // journal, XP or resource bounds. Never publish a result the archive refuses.
+  if (!readWarSimulationV85(next)) return { state, accepted: false, message: "La résolution dépasserait les limites de cette archive. Aucun tour, dépense ou déplacement appliqué." };
   return { state: next, accepted: true, message: `Tour ${next.turn} ouvert. Les nouveaux revenus proviennent des sites contrôlés à la fin du tour précédent.` };
 }
 /** Reject future/corrupt archives. The caller preserves their bytes and disables writes until an explicit new exercise. */
@@ -432,7 +455,7 @@ export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
   if (!value.appliedResultIds.every(id => typeof id === "string" && id.length < 180) || !value.completedObjectives.every(id => ["CON-O01", "CON-O02", "CON-O03"].includes(String(id)))) return null;
   if (!value.reports.every(item => record(item) && typeof item.id === "string" && integer(item.turn) && typeof item.text === "string" && item.text.length < 4000 && Array.isArray(item.sourceIds) && item.sourceIds.every(id => typeof id === "string")) || !value.observations.every(item => record(item) && typeof item.sourceId === "string" && territoryById(String(item.territoryId)) && integer(item.turn) && integer(item.lower, 300) && integer(item.upper, 300) && Number(item.lower) <= Number(item.upper))) return null;
   for (const order of value.orders) {
-    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || !["move", "attack", "recon", "cession", "transit", "logistics", "heal"].includes(String(order.kind)) || !territoryById(String(order.fromId)) || !territoryById(String(order.targetId)) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
+    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || !["move", "attack", "recon", "cession", "transit", "logistics", "heal", "evacuate"].includes(String(order.kind)) || !territoryById(String(order.fromId)) || !territoryById(String(order.targetId)) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
   }
   if (!(value.stableRegionId === undefined || value.stableRegionId === null || typeof value.stableRegionId === "string" && definitions.some(territory => territory.region === value.stableRegionId)) || !(value.heldStocks === undefined || Array.isArray(value.heldStocks) && value.heldStocks.length <= 10000 && value.heldStocks.every(item => record(item) && territoryById(String(item.territoryId)) && factions.includes(item.owner as WarFactionIdV85) && validBudget(item.budget)))) return null;
   const result = copy(value as unknown as WarSimulationV85);

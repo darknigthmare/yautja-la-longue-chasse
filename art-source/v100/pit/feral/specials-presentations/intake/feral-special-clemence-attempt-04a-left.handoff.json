@@ -1,0 +1,33 @@
+{
+  "id": "feral-special-clemence-attempt-04a-left",
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_CLEMENCE",
+  "sourceCell": "07_PRESENTATIONS!J10",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "part": "A",
+  "side": "left",
+  "columns": 2,
+  "rows": 2,
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "/workspace/generated_images/exec-07c439ed-441b-498f-b08c-7b0a0144bc3d.png"
+  ],
+  "prompt": "Native transparent-alpha redraw/edit of this supplied Feral mercy four-cell study. The pose anatomy and equipment ownership are now CORRECT and must be preserved. Fix the failed page separation ONLY by making all characters/props/scenes much SMALLER with wide genuinely empty transparent alpha-zero gutters, and remove EVERY existing gray/brown halo or cloudy background.\n\nOutput landscape1536x1024 with exactly FOUR separate scene groups in TWO columns by TWO rows. Redraw each complete scene at approximately SIXTY PERCENT of its current linear size, including mannequin, spear, shield and case. Each Feral body mask-to-soles should now be only230\u2013270pixels tall; not the current huge450pixels. All scenes fit entirely within their cell. Each full scene including spear tips has at least70pixels of completely EMPTY ALPHA0 on all four sides. Across the ENTIRE WIDTH, the horizontal band y470 through550 must be completely EMPTY TRANSPARENT ALPHA0. Across the ENTIRE HEIGHT, the vertical band x710 through825 must be completely EMPTY TRANSPARENT ALPHA0. No figure, weapon, detached dropped blade, alpha haze, shadow or pixel can enter those bands or the page edges. Do not preserve a giant bounding box; draw the actual anatomy and props smaller, in consistent proportion.\n\nSOURCE07_PRESENTATIONS!J10 CIN_F006_CLEMENCE, Le duel suffit: Feral d\u00e9sarme l\u2019adversaire, recule d\u2019un pas et lui laisse reprendre son souffle. Il reprend l\u2019objet de la mission sans pr\u00e9lever de troph\u00e9e anatomique. This page is the first three movements plus excluded calibration; the box pickup itself belongs to a different page. Neutral gray faceless articulated training mannequin, unharmed, no injuries, blood, trophies or execution. BODYSCENE study only, no gameplay claim.\n\nKEEP EXACT SAME CHARACTER: lean ochre spotted Feral, ivory animal-skull mask with red mandible details, long black dreadlocks, bone/ribbed loincloth, ankle wraps and complete clawed feet, bronze forearm equipment. Faces LEFT in all fourcells, with same rear-three-quarter view as reference.\nFIXED ANATOMICAL OWNERSHIP ALL FOURCELLS: the round bronze-rimmed radially-ribbed shield is securely attached to Feral's anatomical LEFT forearm; it remains clearly visible in every pose, including the final open-palm pose. The anatomical RIGHT hand holds one intact continuous long pronged spear. Right wrist-blade tips are fully retracted. NO shield on right arm, no dropping or disappearance of shield, no arm swap, no mirror, no additional limb.\nPreserve exactly ONE identical sealed charcoal rigid case per ACTION scene: roundedcorners, two silverlatches, black top handle. The box is already sitting on the ground BEFORE the disarm and remains on the ground for all three ACTION scenes; no pickup yet, no appearing box or duplicated box. The mannequin's training blade drops and remains separately on the ground afterward.\n\nREADING ORDER:\nUPPER-LEFT calibration0: same standing Feral alone facing LEFT with whole skull mask, shield LEFT, spear RIGHT and complete feet, now much smaller; no action scene. This calibration is explicitly excluded from the clip.\nUPPER-RIGHT action1: preserve the successful hook/disarm pose from reference. Feral on sceneRIGHT facesLEFT and uses his complete RIGHT-hand spear to hook the blade held by neutral mannequin on sceneLEFT. LEFT shield visible and attached. One sealed case already visible on the ground between them. No impalement/contact with mannequin body.\nLOWER-LEFT action2: same unharmed mannequin on sceneLEFT with empty open hands, its disarmed blade now lying on ground. Feral has stepped back on sceneRIGHT, facingLEFT, intact spear still RIGHT hand and shield still LEFT forearm. Same sealed case sits on ground between them.\nLOWER-RIGHT action3: Feral on sceneRIGHT facesLEFT and holds his anatomical LEFT PALM open toward mannequin to allow breathing space; the round ribbed shield remains mounted visibly behind/above that open palm on the LEFT forearm, just as the reference correction now shows. His RIGHT hand carries the complete spear behind him, shield never goes onto that arm. The unhurt mannequin has raised empty hands and ample space. The dropped blade and sealed case remain on ground in the same scene. No pickup, no second case, no weapon exchange.\n\nTrue EMPTY TRANSPARENT ALPHA background, not a drawn black or gray backdrop and not an alpha haze. Remove ALL brown/gray ambient halos around figures, no floor, no grounding shadows, no smoke, no glow, no vignettes, no white outline, no checkerboard drawn into pixels. The silhouettes and all props alone are visible, with crisp natural dark antialiased contours. Nothing touches a crop edge, transparent page edge, or central gutter. Preserve the visual costume, existing poses, correct left shield and right spear; do not redesign or change the choreography. No text, cell labels, gridlines or captions. Native image tool redraw only, no mirroring/cropping/compositing tricks.",
+  "source": "/workspace/generated_images/exec-d1ccef20-8405-4f0c-8234-5a640aecc515.png",
+  "sha256": "45748db10aa0aa3da3467b02a954349d03f15b1a562103332b6743172c9bcdcd",
+  "bytes": 1847263,
+  "width": 1536,
+  "height": 1024,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "measurement": "/tmp/feral-special-clemence-attempt-04a-left-measurement.json",
+  "status": "FAVORABLE_PRODUCER_AND_PIXEL_MEASUREMENT_REQUIRES_SECOND_VISUAL_REVIEW",
+  "pixelMeasurement": {
+    "safeRectangles": 4,
+    "issues": [],
+    "edgePixels": 0,
+    "minimumRowAlphaInRequestedGutter": 0,
+    "minimumColumnAlphaInRequestedGutter": 0
+  },
+  "producerReview": "The four scene groups preserve the previous correct anatomy and sequence. Feral faces left, LEFT shield remains attached and visibly present during the final open-palm pose, RIGHT hand keeps the intact spear. One sealed case is already on the ground in all three action cells and the mannequin blade remains on the ground after disarm. Neutral mannequin remains unharmed. The native redraw restores four safe alpha rectangles with zero border contact and fully transparent separating rows/columns. Calibration0 excluded. Independent second visual review is required before admission."
+}

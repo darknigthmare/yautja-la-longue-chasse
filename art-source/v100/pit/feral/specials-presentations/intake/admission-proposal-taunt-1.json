@@ -1,0 +1,489 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_TAUNT_1",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-taunt-1-v100",
+  "clipIds": [
+    "workbook.CIN_F006_TAUNT_1"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 348,
+    "pageBodyHeightPx": {
+      "feral-special-taunt-1-a-v100": 348,
+      "feral-special-taunt-1-b-v100": 264
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          0,
+          0,
+          517,
+          388
+        ],
+        "visibleRect": [
+          134,
+          17,
+          258,
+          357
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          516,
+          0,
+          508,
+          388
+        ],
+        "visibleRect": [
+          641,
+          17,
+          268,
+          354
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          0,
+          387,
+          513,
+          385
+        ],
+        "visibleRect": [
+          99,
+          403,
+          302,
+          355
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          512,
+          387,
+          512,
+          385
+        ],
+        "visibleRect": [
+          625,
+          401,
+          307,
+          352
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          0,
+          771,
+          520,
+          371
+        ],
+        "visibleRect": [
+          77,
+          785,
+          338,
+          337
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          519,
+          771,
+          505,
+          371
+        ],
+        "visibleRect": [
+          625,
+          785,
+          334,
+          331
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          0,
+          1141,
+          520,
+          395
+        ],
+        "visibleRect": [
+          72,
+          1162,
+          327,
+          335
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-a-v100",
+        "rect": [
+          519,
+          1141,
+          505,
+          395
+        ],
+        "visibleRect": [
+          641,
+          1162,
+          316,
+          324
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          0,
+          0,
+          510,
+          420
+        ],
+        "visibleRect": [
+          158,
+          101,
+          227,
+          273
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          509,
+          0,
+          515,
+          420
+        ],
+        "visibleRect": [
+          635,
+          104,
+          239,
+          268
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          0,
+          419,
+          513,
+          353
+        ],
+        "visibleRect": [
+          149,
+          466,
+          281,
+          272
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          512,
+          419,
+          512,
+          353
+        ],
+        "visibleRect": [
+          595,
+          466,
+          283,
+          271
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          0,
+          771,
+          513,
+          362
+        ],
+        "visibleRect": [
+          72,
+          815,
+          349,
+          278
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          512,
+          771,
+          512,
+          362
+        ],
+        "visibleRect": [
+          604,
+          805,
+          352,
+          285
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          0,
+          1132,
+          513,
+          404
+        ],
+        "visibleRect": [
+          162,
+          1172,
+          235,
+          275
+        ]
+      },
+      {
+        "pageId": "feral-special-taunt-1-b-v100",
+        "rect": [
+          512,
+          1132,
+          512,
+          404
+        ],
+        "visibleRect": [
+          629,
+          1172,
+          239,
+          273
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-taunt-1-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-taunt-1-a-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-taunt-1-b-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_TAUNT_1",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                0,
+                387,
+                513,
+                385
+              ],
+              "pivot": [
+                254,
+                371
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                0,
+                771,
+                520,
+                371
+              ],
+              "pivot": [
+                245,
+                351
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                0,
+                1141,
+                520,
+                395
+              ],
+              "pivot": [
+                244,
+                356
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                0,
+                419,
+                513,
+                353
+              ],
+              "pivot": [
+                267,
+                319
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                0,
+                771,
+                513,
+                362
+              ],
+              "pivot": [
+                274,
+                322
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                0,
+                1132,
+                513,
+                404
+              ],
+              "pivot": [
+                269,
+                315
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_TAUNT_1",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                512,
+                387,
+                512,
+                385
+              ],
+              "pivot": [
+                278,
+                366
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                519,
+                771,
+                505,
+                371
+              ],
+              "pivot": [
+                286,
+                345
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-a-v100",
+              "rect": [
+                519,
+                1141,
+                505,
+                395
+              ],
+              "pivot": [
+                282,
+                345
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                512,
+                419,
+                512,
+                353
+              ],
+              "pivot": [
+                247,
+                318
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                512,
+                771,
+                512,
+                362
+              ],
+              "pivot": [
+                232,
+                319
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-taunt-1-b-v100",
+              "rect": [
+                512,
+                1132,
+                512,
+                404
+              ],
+              "pivot": [
+                240,
+                313
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-right-blades-left-shield-rim-clack-voluntary-open-guard-body-study-only",
+    "sourceSha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+      "/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177"
+    },
+    "notes": "F10. Six actual action stages each facing: approach right wrist blades to left shield, contact the shield seen in thin metallic edge profile, clack/compress, separate, deliberately expose/open guard with the same two blades, return. Root and producer review accept contact on the visible metal thickness of the rim, rather than imposing a particular orange paint pixel. The roots of the right blades are occluded by the open right palm in the exposed pose, remain aligned with the same gauntlet and are visible before/after; no extra hand or detached weapon is introduced. Correct anatomical LEFT shield and RIGHT blades persist. Native alpha2 gutters and all selected cells are safe. This is authored BODY choreography only: no sound event, taunt AI effect or combat opening mechanic implemented. Fixed reviewed MASK-crown-to-soles reference excludes hair and weapons. Independent final QA agreed with this contact/occlusion reading and approved both complete pages; contradictory earlier concerns are preserved in the intake ledger. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

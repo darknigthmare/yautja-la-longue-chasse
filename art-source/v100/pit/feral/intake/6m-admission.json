@@ -1,0 +1,457 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!O10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/020-command-6m-right.png",
+      "publicPath": "public/game/sprites/v100/pit/feral/020-command-6m-right.png",
+      "bodyHeightPx": 570,
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            493,
+            0,
+            531,
+            741
+          ],
+          "visibleRect": [
+            564,
+            144,
+            411,
+            490
+          ],
+          "alphaPixels": 107132,
+          "borderPixels": 0,
+          "visiblePixelSha256": "28ebc6325a05c868c38af467e5e8190756d55768e206a1d305f26ac913134d71",
+          "pivotCandidate": [
+            108.5,
+            634
+          ],
+          "visibleHeightCandidate": 490,
+          "pivot": [
+            266,
+            632
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            740,
+            599,
+            796
+          ],
+          "visibleRect": [
+            51,
+            916,
+            524,
+            490
+          ],
+          "alphaPixels": 114163,
+          "borderPixels": 0,
+          "visiblePixelSha256": "130199e24929034ba5d6c5c2a9167817c26799ff53269cb4d158542948e78e51",
+          "pivotCandidate": [
+            94,
+            666
+          ],
+          "visibleHeightCandidate": 490,
+          "pivot": [
+            299,
+            663
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            598,
+            740,
+            426,
+            796
+          ],
+          "visibleRect": [
+            623,
+            842,
+            338,
+            569
+          ],
+          "alphaPixels": 95187,
+          "borderPixels": 0,
+          "visiblePixelSha256": "453cd27f0efb06fe0146b7876075b82bc5a62ef99783e10ab38ca664306edb8d",
+          "pivotCandidate": [
+            60.5,
+            671
+          ],
+          "visibleHeightCandidate": 569,
+          "pivot": [
+            195.5,
+            670
+          ]
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/021-command-6m-left.png",
+      "publicPath": "public/game/sprites/v100/pit/feral/021-command-6m-left.png",
+      "bodyHeightPx": 572,
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            530,
+            0,
+            494,
+            769
+          ],
+          "visibleRect": [
+            623,
+            192,
+            354,
+            488
+          ],
+          "alphaPixels": 98638,
+          "borderPixels": 0,
+          "visiblePixelSha256": "eafa1954a09b7ad54c146b7f52e0cd722b9844b56a7683fa19c342b1dbf532d9",
+          "pivotCandidate": [
+            143,
+            680
+          ],
+          "visibleHeightCandidate": 488,
+          "pivot": [
+            275.5,
+            677
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            768,
+            610,
+            768
+          ],
+          "visibleRect": [
+            62,
+            910,
+            503,
+            490
+          ],
+          "alphaPixels": 113394,
+          "borderPixels": 0,
+          "visiblePixelSha256": "0e6d73fc4bc42f5aaab0a0437867f7ebffa0f794de3d3e2064968a3608f05f98",
+          "pivotCandidate": [
+            513,
+            632
+          ],
+          "visibleHeightCandidate": 490,
+          "pivot": [
+            315.5,
+            629
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            609,
+            768,
+            415,
+            768
+          ],
+          "visibleRect": [
+            654,
+            851,
+            335,
+            565
+          ],
+          "alphaPixels": 98578,
+          "borderPixels": 0,
+          "visiblePixelSha256": "022bca586a24ec20f04dd9d7440d2ccd5ff62d78b7df3f2458331083fead3012",
+          "pivotCandidate": [
+            114.5,
+            648
+          ],
+          "visibleHeightCandidate": 565,
+          "pivot": [
+            210.5,
+            645
+          ]
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_6M",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-6m-v100",
+    "clipIds": [
+      "workbook.M_F006_6M"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 570,
+      "pageBodyHeightPx": {
+        "feral-source-6m-right-v100": 570,
+        "feral-source-6m-left-v100": 572
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-6m-right-v100",
+          "rect": [
+            493,
+            0,
+            531,
+            741
+          ],
+          "visibleRect": [
+            564,
+            144,
+            411,
+            490
+          ]
+        },
+        {
+          "pageId": "feral-source-6m-right-v100",
+          "rect": [
+            0,
+            740,
+            599,
+            796
+          ],
+          "visibleRect": [
+            51,
+            916,
+            524,
+            490
+          ]
+        },
+        {
+          "pageId": "feral-source-6m-right-v100",
+          "rect": [
+            598,
+            740,
+            426,
+            796
+          ],
+          "visibleRect": [
+            623,
+            842,
+            338,
+            569
+          ]
+        },
+        {
+          "pageId": "feral-source-6m-left-v100",
+          "rect": [
+            530,
+            0,
+            494,
+            769
+          ],
+          "visibleRect": [
+            623,
+            192,
+            354,
+            488
+          ]
+        },
+        {
+          "pageId": "feral-source-6m-left-v100",
+          "rect": [
+            0,
+            768,
+            610,
+            768
+          ],
+          "visibleRect": [
+            62,
+            910,
+            503,
+            490
+          ]
+        },
+        {
+          "pageId": "feral-source-6m-left-v100",
+          "rect": [
+            609,
+            768,
+            415,
+            768
+          ],
+          "visibleRect": [
+            654,
+            851,
+            335,
+            565
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-6m-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-6m-right-v100",
+            "src": "/game/sprites/v100/pit/feral/020-command-6m-right.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-6m-left-v100",
+            "src": "/game/sprites/v100/pit/feral/021-command-6m-left.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_6M",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-6m-right-v100",
+                "rect": [
+                  493,
+                  0,
+                  531,
+                  741
+                ],
+                "pivot": [
+                  266,
+                  632
+                ],
+                "durationTicks": 17
+              },
+              {
+                "pageId": "feral-source-6m-right-v100",
+                "rect": [
+                  0,
+                  740,
+                  599,
+                  796
+                ],
+                "pivot": [
+                  299,
+                  663
+                ],
+                "durationTicks": 5
+              },
+              {
+                "pageId": "feral-source-6m-right-v100",
+                "rect": [
+                  598,
+                  740,
+                  426,
+                  796
+                ],
+                "pivot": [
+                  195.5,
+                  670
+                ],
+                "durationTicks": 26
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_6M",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-6m-left-v100",
+                "rect": [
+                  530,
+                  0,
+                  494,
+                  769
+                ],
+                "pivot": [
+                  275.5,
+                  677
+                ],
+                "durationTicks": 17
+              },
+              {
+                "pageId": "feral-source-6m-left-v100",
+                "rect": [
+                  0,
+                  768,
+                  610,
+                  768
+                ],
+                "pivot": [
+                  315.5,
+                  629
+                ],
+                "durationTicks": 5
+              },
+              {
+                "pageId": "feral-source-6m-left-v100",
+                "rect": [
+                  609,
+                  768,
+                  415,
+                  768
+                ],
+                "pivot": [
+                  210.5,
+                  645
+                ],
+                "durationTicks": 26
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-O10-approach-shoulder-contact-return-study",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/020-command-6m-right.png": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
+        "/game/sprites/v100/pit/feral/021-command-6m-left.png": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc"
+      },
+      "notes": "Deux originaux inchangés, trois dessins du geste par côté, référence debout0 exclue. Double revue root/QA deO10 : pas d’approche, heurt d’épaule avant avec bras en retrait, retour en garde. Références debout fixes570/572px par page ; pivots entre appuis relus sur les vraies semelles, pas sur les lames. Étude indépendante : aucun6M, déplacement, choc, dégât ou cancel ajouté au duel."
+    }
+  }
+}

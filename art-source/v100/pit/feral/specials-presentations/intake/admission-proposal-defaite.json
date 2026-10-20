@@ -1,0 +1,502 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_DEFAITE",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-defaite-v100",
+  "clipIds": [
+    "workbook.CIN_F006_DEFAITE"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 645,
+    "pageBodyHeightPx": {
+      "feral-special-defaite-a-right-v100": 645,
+      "feral-special-defaite-a-left-v100": 624,
+      "feral-special-defaite-b-v100": 336
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-defaite-a-right-v100",
+        "rect": [
+          0,
+          0,
+          526,
+          802
+        ],
+        "visibleRect": [
+          93,
+          82,
+          353,
+          645
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-right-v100",
+        "rect": [
+          525,
+          0,
+          499,
+          802
+        ],
+        "visibleRect": [
+          606,
+          251,
+          336,
+          489
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-right-v100",
+        "rect": [
+          0,
+          801,
+          546,
+          735
+        ],
+        "visibleRect": [
+          72,
+          863,
+          409,
+          584
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-right-v100",
+        "rect": [
+          545,
+          801,
+          479,
+          735
+        ],
+        "visibleRect": [
+          611,
+          1037,
+          364,
+          399
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-left-v100",
+        "rect": [
+          0,
+          0,
+          539,
+          795
+        ],
+        "visibleRect": [
+          113,
+          95,
+          371,
+          624
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-left-v100",
+        "rect": [
+          538,
+          0,
+          486,
+          795
+        ],
+        "visibleRect": [
+          594,
+          225,
+          359,
+          495
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-left-v100",
+        "rect": [
+          0,
+          794,
+          557,
+          742
+        ],
+        "visibleRect": [
+          82,
+          869,
+          439,
+          552
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-a-left-v100",
+        "rect": [
+          556,
+          794,
+          468,
+          742
+        ],
+        "visibleRect": [
+          592,
+          976,
+          391,
+          453
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          0,
+          0,
+          518,
+          495
+        ],
+        "visibleRect": [
+          164,
+          134,
+          234,
+          336
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          517,
+          0,
+          507,
+          495
+        ],
+        "visibleRect": [
+          638,
+          136,
+          250,
+          328
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          0,
+          494,
+          521,
+          386
+        ],
+        "visibleRect": [
+          114,
+          616,
+          317,
+          228
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          520,
+          494,
+          504,
+          386
+        ],
+        "visibleRect": [
+          610,
+          618,
+          316,
+          238
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          0,
+          879,
+          529,
+          348
+        ],
+        "visibleRect": [
+          68,
+          990,
+          400,
+          164
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          528,
+          879,
+          496,
+          348
+        ],
+        "visibleRect": [
+          590,
+          994,
+          378,
+          173
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          0,
+          1226,
+          529,
+          310
+        ],
+        "visibleRect": [
+          72,
+          1293,
+          424,
+          128
+        ]
+      },
+      {
+        "pageId": "feral-special-defaite-b-v100",
+        "rect": [
+          528,
+          1226,
+          496,
+          310
+        ],
+        "visibleRect": [
+          562,
+          1293,
+          411,
+          144
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-defaite-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-defaite-a-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-defaite-a-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-defaite-b-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_DEFAITE",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-defaite-a-right-v100",
+              "rect": [
+                525,
+                0,
+                499,
+                802
+              ],
+              "pivot": [
+                248,
+                740
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-a-right-v100",
+              "rect": [
+                0,
+                801,
+                546,
+                735
+              ],
+              "pivot": [
+                381,
+                646
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-a-right-v100",
+              "rect": [
+                545,
+                801,
+                479,
+                735
+              ],
+              "pivot": [
+                315,
+                635
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                0,
+                494,
+                521,
+                386
+              ],
+              "pivot": [
+                245,
+                350
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                0,
+                879,
+                529,
+                348
+              ],
+              "pivot": [
+                112,
+                275
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                0,
+                1226,
+                529,
+                310
+              ],
+              "pivot": [
+                474,
+                195
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_DEFAITE",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-defaite-a-left-v100",
+              "rect": [
+                538,
+                0,
+                486,
+                795
+              ],
+              "pivot": [
+                255,
+                720
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-a-left-v100",
+              "rect": [
+                0,
+                794,
+                557,
+                742
+              ],
+              "pivot": [
+                209,
+                627
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-a-left-v100",
+              "rect": [
+                556,
+                794,
+                468,
+                742
+              ],
+              "pivot": [
+                245,
+                635
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                520,
+                494,
+                504,
+                386
+              ],
+              "pivot": [
+                310,
+                362
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                528,
+                879,
+                496,
+                348
+              ],
+              "pivot": [
+                420,
+                288
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-defaite-b-v100",
+              "rect": [
+                528,
+                1226,
+                496,
+                310
+              ],
+              "pivot": [
+                419,
+                211
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-after-ko-shield-collapse-mask-search-fall-study-only",
+    "sourceSha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+      "/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+      "/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c"
+    },
+    "notes": "E10. Six actual source stages per direction: crooked left shield, loss of support, right hand seeks mask, knees ground, side fall, final collapse in a small local mud trace. Anatomical left shield/right wrist blades stay on their limbs. QA independent review approved the replacement A pages and complete final left B7. Right A reaches two knees earlier than left, allowed by the exact source. No offensive projectile/plasma, death entity, opponent or campaign state is added. Ground anchors manually reviewed on support feet/knees and collapsed ground-contact baseline. Fixed body references A-right645/A-left624/B336, never per-pose flattened height. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

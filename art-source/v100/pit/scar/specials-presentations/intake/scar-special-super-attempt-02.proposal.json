@@ -1,0 +1,279 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_SUPER",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-super-body-v100",
+  "clipIds": [
+    "workbook.M_F003_SUPER"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "T7",
+    "sourceText": "M_F003_SUPER · La signature — Duel à portée moyenne\nCommande 236236+S · Ouverture bloquable · Super\nArme : Combistick\nConfirme un contact court, puis prolonge « Allonge télescopique » dans une séquence à caméra bornée. Si le premier contact est gardé, la scène ne se déclenche pas.\nPréparation / actif / récupération : 24 / 8 / 48 images · dégâts 280 · coût 100 %\nContre-jeu : Garder l'amorce ou sortir de portée ; récupération longue si manqué.\nPas de nouveaux pouvoirs. Réutilise uniquement armes/entités autorisées pour le costume ; la cinématique n'efface pas les blessures.\nCorps : F003_ACT_SUPER\nEntité : Aucune · équipement : W_F003_combistick\nAdaptation originale sourcée · Super original non implémenté",
+    "phaseTicks": {
+      "startup": 24,
+      "active": 8,
+      "recovery": 48
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-super-attempt-02.png",
+    "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-super-attempt-02.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-super-attempt-02.prompt.txt",
+    "references": [
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 205,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-super-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-super-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_SUPER",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                0,
+                0,
+                534,
+                279
+              ],
+              "pivot": [
+                274,
+                255
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                533,
+                0,
+                500,
+                279
+              ],
+              "pivot": [
+                226,
+                255
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                1032,
+                0,
+                504,
+                279
+              ],
+              "pivot": [
+                213,
+                255
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                0,
+                278,
+                651,
+                239
+              ],
+              "pivot": [
+                255,
+                220
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                650,
+                278,
+                409,
+                239
+              ],
+              "pivot": [
+                128,
+                221
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                1058,
+                278,
+                478,
+                239
+              ],
+              "pivot": [
+                186,
+                220
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_SUPER",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                0,
+                516,
+                510,
+                234
+              ],
+              "pivot": [
+                292,
+                218
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                509,
+                516,
+                455,
+                234
+              ],
+              "pivot": [
+                288,
+                218
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                963,
+                516,
+                573,
+                234
+              ],
+              "pivot": [
+                331,
+                218
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                0,
+                749,
+                554,
+                275
+              ],
+              "pivot": [
+                365,
+                213
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                553,
+                749,
+                493,
+                275
+              ],
+              "pivot": [
+                261,
+                213
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-special-super-page-01",
+              "rect": [
+                1045,
+                749,
+                491,
+                275
+              ],
+              "pivot": [
+                243,
+                214
+              ],
+              "durationTicks": 24
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels.",
+      "One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate.",
+      "Short butt opening, telescopic extension, full thrust, withdrawal and reset. Hit-confirm/cost/collision mechanics are source targets, not implemented by this BODY atlas."
+    ]
+  },
+  "bodyReferenceReview": [
+    {
+      "pageId": "scar-special-super-page-01",
+      "frameIndex": 0,
+      "referencePose": "first upright neutral stance",
+      "referenceTopAbsoluteY": 50,
+      "soleGroundAbsoluteY": 255,
+      "bodyHeightPx": 205,
+      "method": "Original fixed bodyHeightPx manually reviewed before engine admission; top is expressed from ground minus that reviewed height, not a per-pose or weapon-bbox fit."
+    }
+  ]
+}

@@ -67,12 +67,36 @@ export interface PitSpriteSheetAnimationFrame {
   readonly resolved: PitHunterSpriteFrame;
   readonly source: HTMLCanvasElement;
 }
+export interface PitSpriteSheetInspectionFrameV100 {
+  readonly definition: PitSpriteSheetAnimationDefinition;
+  readonly frame: HunterSpriteAtlasFrameLookup;
+  readonly source: HTMLCanvasElement;
+}
 const evidence = new WeakMap<PitSpriteSheetAnimationBank, BankEvidence>();
 const clipKey = (id: string, facing: string) => JSON.stringify([id, facing]);
 const selectionKey = (id: PitFighterId, variantId?: string | null) => JSON.stringify([id, variantId ?? null]);
 const ownsAppearance = (definition: PitSpriteSheetAnimationDefinition, fighter: PitFighterState) =>
   definition.fighterId === fighter.definitionId && definition.variantId === fighter.variantId;
 const finite = (value: number) => Number.isFinite(value);
+
+/** Inspect an actual admitted drawing without inventing a combat action. This
+ * read-only path never advances the combat observation cursor or a replay. */
+export function resolvePitSpriteSheetInspectionV100(
+  bank: PitSpriteSheetAnimationBank | null | undefined,
+  selection: { readonly fighterId: PitFighterId; readonly variantId?: string | null; readonly atlasId: string;
+    readonly clipId: string; readonly facing: "left" | "right"; readonly elapsedTicks: number },
+): PitSpriteSheetInspectionFrameV100 | null {
+  const proof = bank && evidence.get(bank);
+  if (!proof || bank.cancelled || proof.signal?.aborted || !Number.isSafeInteger(selection.elapsedTicks) || selection.elapsedTicks < 0 ||
+    (selection.facing !== "left" && selection.facing !== "right") || !proof.selections.has(selectionKey(selection.fighterId, selection.variantId))) return null;
+  const animation = proof.animations.find(candidate => candidate.definition.fighterId === selection.fighterId &&
+    (candidate.definition.variantId ?? null) === (selection.variantId ?? null) && candidate.definition.atlas.id === selection.atlasId);
+  if (!animation || !animation.readyClips.has(clipKey(selection.clipId, selection.facing))) return null;
+  const frame = resolveHunterSpriteAtlasFrame(animation.definition.atlas, selection.clipId, selection.facing, selection.elapsedTicks);
+  const source = frame && animation.pages.get(frame.page.id);
+  return frame && source && source.width === frame.page.width && source.height === frame.page.height
+    ? { definition: animation.definition, frame, source } : null;
+}
 /** Preserve exact native tick boundaries after their ms transport. Only a few
  * floating-point ULPs are snapped; a genuinely earlier time still floors down. */
 function presentationTick(elapsedMs: number, ticksPerSecond: number): number {

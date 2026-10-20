@@ -1,0 +1,234 @@
+{
+  "actionId": "M_F003_S2",
+  "sourceCell": "05_MOVES_PROPOSES!Q7",
+  "status": "held-for-native-accessory-continuity",
+  "reason": "Independent screenshot review and reopening the original show the opened handheld shuriken while the red circular hip device remains visible. No source proof distinguishes a separate holder or equipped spare; do not invent that explanation. Same correction requirement as FATALITE_1: one visibly drawn shuriken, empty hip after retrieval. Keep original/public bytes unchanged until new native artwork receives review.",
+  "previousAdmission": {
+    "fighterId": "scar",
+    "actionId": "M_F003_S2",
+    "appearanceId": "runtime-default",
+    "atlasId": "scar-special-s2-body-v100",
+    "clipIds": [
+      "workbook.M_F003_S2"
+    ],
+    "definition": {
+      "fighterId": "scar",
+      "bodyHeightPx": 331,
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "scar-special-s2-body-v100",
+        "characterId": "scar",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "scar-special-s2-page-01",
+            "src": "/game/sprites/v100/pit/scar/scar-special-s2.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F003_S2",
+            "facing": "right",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  0,
+                  0,
+                  353,
+                  421
+                ],
+                "pivot": [
+                  180,
+                  396
+                ],
+                "durationTicks": 11
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  352,
+                  0,
+                  331,
+                  421
+                ],
+                "pivot": [
+                  158,
+                  398
+                ],
+                "durationTicks": 12
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  682,
+                  0,
+                  342,
+                  421
+                ],
+                "pivot": [
+                  182,
+                  399
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  0,
+                  420,
+                  385,
+                  367
+                ],
+                "pivot": [
+                  173,
+                  340
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  384,
+                  420,
+                  342,
+                  367
+                ],
+                "pivot": [
+                  128,
+                  338
+                ],
+                "durationTicks": 14
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  725,
+                  420,
+                  299,
+                  367
+                ],
+                "pivot": [
+                  133,
+                  346
+                ],
+                "durationTicks": 15
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F003_S2",
+            "facing": "left",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  0,
+                  786,
+                  366,
+                  382
+                ],
+                "pivot": [
+                  182,
+                  364
+                ],
+                "durationTicks": 11
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  365,
+                  786,
+                  330,
+                  382
+                ],
+                "pivot": [
+                  189,
+                  364
+                ],
+                "durationTicks": 12
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  694,
+                  786,
+                  330,
+                  382
+                ],
+                "pivot": [
+                  184,
+                  365
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  0,
+                  1167,
+                  387,
+                  369
+                ],
+                "pivot": [
+                  246,
+                  335
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  386,
+                  1167,
+                  338,
+                  369
+                ],
+                "pivot": [
+                  178,
+                  330
+                ],
+                "durationTicks": 14
+              },
+              {
+                "pageId": "scar-special-s2-page-01",
+                "rect": [
+                  723,
+                  1167,
+                  301,
+                  369
+                ],
+                "pivot": [
+                  152,
+                  335
+                ],
+                "durationTicks": 15
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+      "sourceSha256": "d2aa200dca21c0f4d712a70eea33b110502832f341a4315df8490fa1da05ed35",
+      "notes": "Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels. One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Source-Q7 admise comme étude BODY indépendante ; aucune nouvelle commande, entité, arme d’inventaire ou règle de duel n’est raccordée."
+    }
+  }
+}

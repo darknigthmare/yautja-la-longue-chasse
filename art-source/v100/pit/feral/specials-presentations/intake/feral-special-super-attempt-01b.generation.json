@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-super-attempt-01b",
+  "key": "SUPER",
+  "part": "B",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: BODY-ONLY study of a proposed super, not a confirmed gameplay hit. A handheld three-bolt launcher stays in anatomical LEFT hand as in the launcher references. Shield is on the same left forearm and must fold before aiming. Right wrist blades retracted. No shoulder/plasma cannon, no energy beam.\n\nROW1: Neutral standing guard, left hand holds the mechanical bolt launcher low, left shield folded, right hand open. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral fully extends the left launcher arm to a precise aim with a forward bent knee and mask aligned; no target tracking beam.\nROW3: A clear firing recoil pose: left elbow and shoulder absorb a mechanical bolt shot, torso tightens, no plasma and no new weapon appears.\nROW4: The launcher lowers still held in the LEFT hand, Feral steps weight back into recovery and lowers his guard to settle.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-2e0c5c1d-cf90-4024-81af-c94dcbab626f.png",
+  "originalSha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

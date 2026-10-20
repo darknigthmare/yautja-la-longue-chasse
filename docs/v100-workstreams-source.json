@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "release": "V100",
+  "asOf": "2026-10-20",
+  "baseline": {
+    "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+    "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15"
+  },
+  "workstreams": [
+    {
+      "id": "PIT-V100-FERAL",
+      "domain": "The Pit",
+      "title": "Feral : dix-huit gestes et huit présentations source",
+      "source": "V54 : 05_MOVES_PROPOSES!D10:U10 ; 07_PRESENTATIONS!C10:J10",
+      "implementation": [
+        "app/game/data/pitWorkbookAnimationPlanV100.json",
+        "app/game/data/pitWorkbookAnimationsV100.json",
+        "app/game/pitWorkbookCombatRegistryV100.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Le nombre de gestes admis, de dessins distincts et de raccordements visuels est recalculé depuis le runtime. Une étude ne crée pas les mécaniques du classeur.",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
+      "proof": [
+        "tests/pit-workbook-animation-v100.test.mjs",
+        "scripts/qa-pit-workbook-v100.mjs",
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
+      ],
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "animation_engine_v100",
+      "validationScope": "BODY_STUDIES_ONLY",
+      "bodyStudyFighterId": "feral-hunter"
+    },
+    {
+      "id": "PIT-V100-SCAR",
+      "domain": "The Pit",
+      "title": "Scar : dix-huit gestes et huit présentations source",
+      "source": "V54 : 05_MOVES_PROPOSES!D7:U7 ; 07_PRESENTATIONS!C7:J7",
+      "implementation": [
+        "app/game/data/pitWorkbookAnimationPlanV100.json",
+        "app/game/data/pitWorkbookAnimationsV100.json"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Les admissions concernent l’apparence BODY d’origine et les orientations réellement dessinées. Les costumes fournis ne sont pas implicitement animés.",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
+      "proof": [
+        "tests/pit-workbook-animation-v100.test.mjs",
+        "scripts/qa-pit-workbook-v100.mjs",
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
+      ],
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "animation_source_v100",
+      "validationScope": "BODY_STUDIES_ONLY",
+      "bodyStudyFighterId": "scar"
+    },
+    {
+      "id": "PIT-V100-LECTURE",
+      "domain": "The Pit",
+      "title": "Lecteurs publics et laboratoire des gestes du classeur",
+      "source": "52 cellules V54 identifiées ; matrice V100 et admissions natives explicites",
+      "implementation": [
+        "app/game/PitWorkbookAnimationViewerV100.tsx",
+        "app/pit-lab/PitWorkbookAnimationLabV100.tsx",
+        "app/game/PitSelectionFlow.tsx",
+        "app/game/pitWorkbookAnimationV100.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Lecture, curseur, pause et orientations natives ; absence visible pour les gestes sans dessins. L’atelier historique /pit-lab reste public ; les trois routes QA locales gardent leur protection distincte.",
+      "tests": "PASS 195 tests V100 et régressions V98/V99, dont les 15 tests animation/mesure ; zéro cas ignoré.",
+      "browser": "PASS_PRODUCTION : 2 182 contrôles lecteur, 191 duel, 127 + 64 captures inspectées ; 52 études BODY et 104 sens, huit nouveaux raccords visuels.",
+      "proof": [
+        "scripts/qa-pit-workbook-v100.mjs",
+        "scripts/qa-pit-combat-v100.mjs",
+        "docs/v100-validation-summary.json"
+      ],
+      "remaining": "Implémenter séparément les mécaniques source, entités/accessoires, victimes synchronisées et variantes encore ouvertes. La validation présente couvre les études BODY consultables et les raccords visuels existants.",
+      "owner": "qa_v100",
+      "validationScope": "BODY_STUDIES_ONLY"
+    },
+    {
+      "id": "HOMEWORLD-V100-CONTACTS",
+      "domain": "Homeworld",
+      "title": "Aborder seize habitants urbains existants",
+      "source": "Composition native V78/V84/V92 ; routines, étages et repères déjà connus",
+      "implementation": [
+        "app/game/systems/homeworldStreetContactsV100.ts",
+        "app/game/systems/homeworldResidentVisibilityV100.ts",
+        "app/game/HomeworldStreetConversationV100.tsx",
+        "app/game/HomeworldHub.tsx",
+        "app/game/HomeworldWorldSceneV77.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Approche réelle à moins de96 unités, même étage et sol praticable, sans traverser le décor ; trois sujets locaux et repères déjà visités, sans déplacement ni récompense de campagne.",
+      "tests": "PASS 43 tests ciblés modèle/SSR/callback et régressions ; déclaration explicite du lot",
+      "browser": "PASS_PRODUCTION : 14 contrôles Homeworld dans la recette combinée de 37 ; captures desktop/mobile inspectées. Étage 0 au navigateur, autres contextes vérifiés au modèle.",
+      "proof": [
+        "tests/homeworld-street-contacts-v100.test.mjs",
+        "scripts/qa-worlds-v100.mjs",
+        "outputs/qa-v100/dev-final/result.json",
+        "docs/homeworld-street-contacts-v100.md",
+        "docs/v100-validation-summary.json"
+      ],
+      "remaining": "Valider le build final production. Les seize habitants existaient déjà ; la recette navigateur cible un contact avec marche clavier réelle depuis une fixture explicite, pas une campagne jouée ni seize conversations parcourues en navigateur. Les refus de mauvais étage, propriétaire ou visibilité sont prouvés par modèle/SSR/callback ; cette recette V100 ne prétend pas jouer un changement d’étage.",
+      "owner": "homeworld_v100"
+    },
+    {
+      "id": "CLANS-V100-EVACUATION",
+      "domain": "Guerre de clans",
+      "title": "Évacuer des blessés existants avec escortes réelles",
+      "source": "CON-R08/CON-R10 et EVOL-R14/EVOL-R15 ; adaptation logistique libre déclarée",
+      "implementation": [
+        "app/game/systems/clanWarEvacuationV100.ts",
+        "app/game/systems/clanWarV85.ts",
+        "app/game/ClanWarEvacuationV100.tsx",
+        "app/game/ClanWarCommandV98.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Route voisine amie, deux escortes aptes par patient, huit personnes maximum et S1 local à la résolution ; confirmation du dernier garde, blessés conservés et soins séparés.",
+      "tests": "PASS 114 tests ciblés, dont 17 nouveaux, parmi lesquels 8 de revue indépendante ; déclaration explicite du lot",
+      "browser": "PASS_PRODUCTION : 22 contrôles Clans dans la recette combinée de 37, dont archive après changement réel de planète ; captures inspectées, aucune guérison automatique.",
+      "proof": [
+        "tests/clan-war-evacuation-v100.test.mjs",
+        "tests/clan-war-evacuation-review-v100.test.mjs",
+        "scripts/qa-worlds-v100.mjs",
+        "outputs/qa-v100/dev-final/result.json",
+        "docs/v100-validation-summary.json"
+      ],
+      "remaining": "Valider le build final production. Le convoi P08/P02/P07 part d’une fixture explicite ; cette preuve ne clôt ni les règles V3/V6 globales, ni les six ouvrages encore ouverts, ni le raccord campagne.",
+      "owner": "clans_v100"
+    },
+    {
+      "id": "PRESERVE-V100-HERITAGE",
+      "domain": "Preserve Hunt",
+      "title": "Conserver les travaux V99 sans nouvelle clôture V100",
+      "source": "SyntheseV99/ChantiersV99 et registre historique V99 préservés",
+      "implementation": [],
+      "status": "OUVERT",
+      "runtime": "Le lot V100 ne recertifie pas les missions, animations et secteurs restants de Preserve Hunt.",
+      "tests": "HISTORIQUE : voir les feuilles V99 inchangées",
+      "browser": "HISTORIQUE : aucune nouvelle recette Preserve V100 déclarée",
+      "proof": [
+        "docs/YAUTJA_V99_SUIVI.xlsx"
+      ],
+      "remaining": "Les limites historiques restent ouvertes : terrain3/80 secteurs,8/100 combattants, animations et missions à poursuivre ; une validation V99 n’est pas une nouvelle livraison V100.",
+      "owner": "suivi_v100"
+    }
+  ],
+  "validations": [
+    {
+      "id": "HOMEWORLD-V100-MODELE",
+      "status": "PASS_CIBLE",
+      "scope": "43 tests ciblés et régressions déclarés : habitants existants, approches, propriétaire, visibilité, dialogue, callbacks et continuité des entrées.",
+      "command": "Voir tests/homeworld-street-contacts-v100.test.mjs et régressions du lot Homeworld",
+      "evidence": [
+        "tests/homeworld-street-contacts-v100.test.mjs"
+      ],
+      "limit": "Déclaration explicite de l’agent du lot ; le générateur ne lance pas ces tests et n’infère aucun PASS de leur présence."
+    },
+    {
+      "id": "CLANS-V100-MODELE",
+      "status": "PASS_CIBLE",
+      "scope": "114 tests ciblés déclarés ; 17 nouveaux, dont 8 de revue : personnes, stocks, garde, invalidations et import/reprise.",
+      "command": "Voir tests/clan-war-evacuation-v100.test.mjs, tests/clan-war-evacuation-review-v100.test.mjs et régressions du lot",
+      "evidence": [
+        "tests/clan-war-evacuation-v100.test.mjs",
+        "tests/clan-war-evacuation-review-v100.test.mjs"
+      ],
+      "limit": "Règles locales d’évacuation du mode libre, pas achèvement de la guerre de clans ou du classeur V6."
+    },
+    {
+      "id": "MONDES-V100-CHROMIUM-DEV",
+      "status": "PASS_CIBLE",
+      "scope": "34 contrôles navigateur déclarés :19 Clans,14 Homeworld,1 absence d’erreurs ; captures desktop/mobile inspectées.",
+      "command": "node scripts/qa-worlds-v100.mjs",
+      "evidence": [
+        "scripts/qa-worlds-v100.mjs",
+        "outputs/qa-v100/dev-final/result.json"
+      ],
+      "limit": "Build de développement, fixtures normalisées déclarées et horloge contrôlée pendant la vraie marche ; preuve production encore A_VALIDER. Fichiers outputs ignorés, cités sans être requis pour la génération CI."
+    },
+    {
+      "id": "PIT-V100-LECTEUR-ET-DUEL",
+      "status": "PASS_CIBLE_BODY",
+      "scope": "52 études BODY et 104 sens ; lecteur : 2 182 contrôles, duel : 191 contrôles ; 191 captures inspectées. Huit nouveaux raccords visuels, 12 apparences et 24 orientations exclues du fallback BODY.",
+      "command": "node scripts/qa-pit-workbook-v100.mjs ; node scripts/qa-pit-combat-v100.mjs",
+      "evidence": [
+        "docs/v100-validation-summary.json",
+        "scripts/qa-pit-workbook-v100.mjs",
+        "scripts/qa-pit-combat-v100.mjs"
+      ],
+      "limit": "Études BODY et phases existantes seulement ; mécaniques source, entités, variantes et personnages complets restent ouverts. Captures statiques et tests de pixels ont des portées distinctes."
+    },
+    {
+      "id": "MONDES-V100-CHROMIUM-PRODUCTION",
+      "status": "PASS_CIBLE",
+      "scope": "37 contrôles combinés : 22 Clans, 14 Homeworld et absence d’erreurs ; 9 captures réellement ouvertes, sources gelées.",
+      "command": "npm run build:production ; npm run qa:next-production ; node scripts/qa-worlds-v100.mjs sur serveur local 3100 opt-in QA",
+      "evidence": [
+        "docs/v100-validation-summary.json",
+        "scripts/qa-worlds-v100.mjs"
+      ],
+      "limit": "Build local compilé, fixtures normalisées déclarées. Homeworld navigateur étage 0 ; pas de nouvelle qualification Preserve ou de progression campagne."
+    }
+  ],
+  "limits": [
+    "Les15 feuilles V99 sont conservées avec leurs données, formules, tables et chaînes partagées ; seules les métadonnées nécessaires à l’ajout de feuilles et les styles étendus changent.",
+    "52 gestes prévus ne signifient ni52animations produites ni52mécaniques jouables. Chaque geste absent et chacune de ses orientations restent visibles.",
+    "Dessins distincts : empreintes des pixels visibles natifs après la transparence du runtime ; frames référencées et répétitions de tenue sont comptées séparément.",
+    "Un raccordement visuel de phases existantes ne remplace pas les chiffres, entités, règles et accessoires proposés dans le classeur source.",
+    "Les six dossiers personnages Pit et six ouvrages de guerre restant ouverts ne sont jamais fermés par les nouvelles animations ou l’évacuation.",
+    "Les validations sont des déclarations explicites de portée donnée ; le générateur vérifie les sources et les archives, il ne rejoue pas les recettes navigateur ou la campagne.",
+    "Les originaux privés V3/V6/V54 restent absents ; leurs empreintes et extractions sont conservées sans recréer de faux originaux ni recopier un chemin personnel.",
+    "ZIP/XML et caches des formules sont vérifiés ; application Excel native et moteur de calcul Excel non exécutés."
+  ]
+}

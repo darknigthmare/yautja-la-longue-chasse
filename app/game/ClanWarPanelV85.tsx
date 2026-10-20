@@ -30,13 +30,15 @@ import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import ClanWarPlanetsV96, { WAR_PLANET_SELECTION_KEY_V96 } from "./ClanWarPlanetsV96";
 import ClanWarCommandV98, { ClanWarOrderPreviewV98 } from "./ClanWarCommandV98";
 import ClanWarGarrisonV99 from "./ClanWarGarrisonV99";
+import ClanWarEvacuationV100 from "./ClanWarEvacuationV100";
+import { warEvacuationLeavesUnguardedV100, warEvacuationSelectionV100 } from "./systems/clanWarEvacuationV100";
 import { warOrderPreviewV98, type WarOrderDraftV98 } from "./systems/clanWarCommandV98";
 import { DEFAULT_WAR_PLANET_ID_V96, warPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { warAtlasIntelV95 } from "./systems/clanWarAtlasV95";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers" };
+const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers", evacuate: "Évacuer les blessés" };
 const tacticalLabels: Record<CanyonOrderKindV85, string> = { hold: "Tenir", move: "Déplacer", observe: "Observer", cover: "Couvrir", secure: "Rétablir l’accès", rescue: "Évacuer le porteur", adopt: "Adopter Lecture récente", extract: "Rejoindre l’extraction" };
 function Budget({ s, m, i }: { s: number; m: number; i: number }) { return <span className={styles.budget}>S <strong>{s}</strong> · M <strong>{m}</strong> · I <strong>{i}</strong></span>; }
 function WarArt({ clanName, role }: { clanName?: string; role?: string }) {
@@ -91,6 +93,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const [selectedPeople, setSelectedPeople] = useState<string[]>([]);
   const [cargoS, setCargoS] = useState(0), [cargoM, setCargoM] = useState(0);
   const [confirmTurn, setConfirmTurn] = useState(false);
+  const [evacuationConfirmation, setEvacuationConfirmation] = useState<string | null>(null);
   const [selectedFormation, setSelectedFormation] = useState("");
   const [tacticalOrder, setTacticalOrder] = useState<CanyonOrderKindV85>("move");
   const [tacticalX, setTacticalX] = useState(28), [tacticalLevel, setTacticalLevel] = useState<0 | 1>(0);
@@ -126,7 +129,8 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const targetId = targetChoice && territory.neighbors.includes(targetChoice) ? targetChoice
     : territory.neighbors.find(id => simulation.territories[id].controller === "CON-F02") ?? territory.neighbors[0];
   const orderKind = requestedOrderKind ?? (simulation.territories[targetId].controller === "CON-F02" ? "attack" : simulation.territories[targetId].controller === "CON-F03" ? "cession" : "move");
-  const candidates = simulation.combatants.filter(actor => actor.factionId === "CON-F01" && actor.territoryId === territoryId && actor.status === (orderKind === "heal" ? "wounded" : "fit") && actor.trainingUntilTurn === null);
+  const candidates = simulation.combatants.filter(actor => actor.factionId === "CON-F01" && actor.territoryId === territoryId && (orderKind === "evacuate" ? actor.status === "fit" || actor.status === "wounded" : actor.status === (orderKind === "heal" ? "wounded" : "fit")) && actor.trainingUntilTurn === null);
+  const evacuationConfirmationKey = JSON.stringify([planet.id, simulation.revision, territoryId, targetId, selectedPeople]);
   const filtered = useMemo(() => {
     const search = fold(query);
     return CLAN_WAR_ENTRIES_V85.filter(entry => (section === "Toutes les feuilles" || entry.sheet === section) &&
@@ -169,9 +173,30 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     if (["attack", "move", "cession"].includes(orderKind)) setOrderKind(simulation.territories[id].controller === "CON-F02" ? "attack" : simulation.territories[id].controller === "CON-F03" ? "cession" : "move");
     setMessage(`Destination : ${warTerritoryForSimulationV96(simulation, id)!.name}. L’ordre prendra effet après confirmation du tour.`);
   }
-  function queue() {
-    const result = queueWarOrderV85(simulation, draft);
-    setMessage(result.message); if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
+  function queue(confirmEvacuation = false) {
+    const live = planetSession.getSnapshot();
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return;
+    const result = queueWarOrderV85(live.simulation, draft);
+    if (!result.accepted) { setMessage(result.message); return; }
+    const liveKey = JSON.stringify([planet.id, live.simulation.revision, draft.fromId, draft.targetId, draft.combatantIds]);
+    if (draft.kind === "evacuate" && warEvacuationLeavesUnguardedV100(live.simulation, draft) && (!confirmEvacuation || evacuationConfirmation !== liveKey)) {
+      setEvacuationConfirmation(liveKey);
+      setMessage("Cette évacuation engage le dernier garde apte du départ. Confirmez avant de réserver le détachement.");
+      window.requestAnimationFrame(() => {
+        if (pageActivitySnapshotV94() && root.current && !root.current.closest('[inert],[hidden]')) root.current.querySelector<HTMLButtonElement>('[data-testid="war-evacuation-warning-v100"] button')?.focus({ preventScroll: true });
+      });
+      return;
+    }
+    setMessage(result.message); setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); setEvacuationConfirmation(null);
+    if (confirmEvacuation) restoreOrderFocus();
+  }
+  function restoreOrderFocus() {
+    window.requestAnimationFrame(() => {
+      if (!pageActivitySnapshotV94() || !root.current || root.current.closest('[inert],[hidden]')) return;
+      const button = root.current?.querySelector<HTMLButtonElement>('[data-war-reserve-order-v100]');
+      if (button && !button.disabled) button.focus({ preventScroll: true });
+      else root.current?.querySelector<HTMLSelectElement>('[data-war-order-kind-v98]')?.focus({ preventScroll: true });
+    });
   }
   function prepareSite(fromId: string, destination?: string, kind?: WarOrderKindV85) {
     selectTerritory(fromId);
@@ -286,9 +311,11 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
             <ClanWarGarrisonV99 key={`garrison:${planet.id}:${territoryId}`} simulation={simulation} territoryId={territoryId} disabled={suspended || !pageActive || pendingWrites > 0} onChange={changeGarrison}/>
             <label>Ordre<select data-war-order-kind-v98 value={orderKind} onChange={event => { setOrderKind(event.target.value as WarOrderKindV85); setSelectedPeople([]); setConfirmTurn(false); }}>{Object.entries(orderLabels).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
             {orderKind !== "heal" && <label>Route voisine<select value={targetId} onChange={event => selectTarget(event.target.value)}>{territory.neighbors.map(id => <option value={id} key={id}>{id.replace("CON-", "")} · {warTerritoryForSimulationV96(simulation, id)?.name}</option>)}</select></label>}
-            <fieldset><legend>Personnes au départ · huit maximum</legend><div className={styles.actions}><button type="button" onClick={() => { setSelectedPeople(candidates.filter(actor => !reservedPeople.has(actor.id) && (orderKind === "heal" || !actor.garrison)).slice(0, 8).map(actor => actor.id)); setConfirmTurn(false); }}>{orderKind === "heal" ? "Sélectionner les blessés" : "Sélectionner les mobiles"}</button><button type="button" disabled={selectedPeople.length === 0} onClick={() => { setSelectedPeople([]); setConfirmTurn(false); }}>Tout effacer</button></div>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" disabled={reservedPeople.has(actor.id) || selectedPeople.length >= 8 && !selectedPeople.includes(actor.id)} checked={selectedPeople.includes(actor.id)} onChange={event => { setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id)); setConfirmTurn(false); }}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.garrison ? "garde" : "mobile"}{reservedPeople.has(actor.id) ? " · déjà affecté à un ordre" : ""}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
+            <fieldset><legend>Personnes au départ · huit maximum</legend><div className={styles.actions}><button type="button" onClick={() => { setSelectedPeople(orderKind === "evacuate" ? warEvacuationSelectionV100(simulation, territoryId) : candidates.filter(actor => !reservedPeople.has(actor.id) && (orderKind === "heal" || !actor.garrison)).slice(0, 8).map(actor => actor.id)); setConfirmTurn(false); }}>{orderKind === "evacuate" ? "Préparer une évacuation sans dégarnir" : orderKind === "heal" ? "Sélectionner les blessés" : "Sélectionner les mobiles"}</button><button type="button" disabled={selectedPeople.length === 0} onClick={() => { setSelectedPeople([]); setConfirmTurn(false); }}>Tout effacer</button></div>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" disabled={reservedPeople.has(actor.id) || selectedPeople.length >= 8 && !selectedPeople.includes(actor.id)} checked={selectedPeople.includes(actor.id)} onChange={event => { setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id)); setConfirmTurn(false); }}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.status === "wounded" ? "blessé · patient" : orderKind === "evacuate" ? `apte · escorte${actor.garrison ? " · garde" : ""}` : actor.garrison ? "garde" : "mobile"}{reservedPeople.has(actor.id) ? " · déjà affecté à un ordre" : ""}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
+            {orderKind === "evacuate" && <ClanWarEvacuationV100 simulation={simulation} draft={draft}/>}
             {orderKind === "logistics" && <div className={styles.controlGrid}><label>Lots S<input type="number" min={0} max={1000} value={cargoS} onChange={event => setCargoS(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label><label>Lots M<input type="number" min={0} max={1000} value={cargoM} onChange={event => setCargoM(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label></div>}
-            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/><button type="button" disabled={!!orderIssue || pendingWrites > 0} onClick={queue}>Réserver l’ordre</button>
+            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/><button type="button" data-war-reserve-order-v100 disabled={!!orderIssue || pendingWrites > 0 || suspended || !pageActive} onClick={() => queue()}>Réserver l’ordre</button>
+            {orderKind === "evacuate" && evacuationConfirmation === evacuationConfirmationKey && <div className={styles.confirm} role="group" aria-label="Confirmer une évacuation sans garde" data-testid="war-evacuation-warning-v100"><p>Cette évacuation engage le dernier garde apte du départ. Si le déplacement aboutit, le site reste contrôlé mais perd sa production jusqu’à une nouvelle garde. Réserver n’avance pas le tour.</p><div className={styles.actions}><button type="button" disabled={pendingWrites > 0 || suspended || !pageActive} onClick={() => queue(true)}>Confirmer l’évacuation sans garde</button><button type="button" onClick={() => { setEvacuationConfirmation(null); setMessage("Évacuation non réservée ; les personnes conservent leurs affectations."); restoreOrderFocus(); }}>Conserver la garde</button></div></div>}
           </div> : <p>{warAtlasIntelV95(simulation, territoryId).label}. Envoyez une reconnaissance depuis un territoire voisin pour actualiser le renseignement.</p>}
           <details><summary>Sites, capture et risques</summary><p>{territory.sites}</p><p>{territory.capture}</p><p>{territory.effect}</p><p>{territory.risk}</p></details>
         </aside>

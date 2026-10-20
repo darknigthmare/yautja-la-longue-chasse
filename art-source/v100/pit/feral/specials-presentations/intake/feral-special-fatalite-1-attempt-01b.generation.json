@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-fatalite-1-attempt-01b",
+  "key": "FATALITE_1",
+  "part": "B",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Choreography study with a neutral jointed adult-sized training mannequin, not a real victim and NOT a combat sprite. Feral's whole spear and LEFT forearm shield; no projectiles or gore. Keep Feral on one side of the cell and the gray mannequin against one small basalt support on the other, entirely inside each cell. A real narrative victim and independent synchronization remain separate dependencies.\n\nROW1: Feral alone in neutral full-body guard with one spear lowered and left shield folded; this row is a body-scale reference only. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral draws the shield fully across the frame and makes a short final controlled spear thrust behind its silhouette; impact is obscured, no blood or visible wound.\nROW3: He withdraws the spear with visible effort as the neutral mannequin slumps down along the basalt support, shield still held near the left forearm.\nROW4: Feral lowers and folds his shield and watches the slumped mannequin, spear held safely low; no celebration, no projectile or anatomical trophy.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-4725023b-f9e4-46fe-a9fa-729a07c6e2a8.png",
+  "originalSha256": "783008aaf651431ffebbd2a943b3319e725288982d286306c2be4a9c2fd460ab",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

@@ -1,0 +1,515 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "M_F006_SUPER",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-super-v100",
+  "clipIds": [
+    "workbook.M_F006_SUPER"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 494,
+    "pageBodyHeightPx": {
+      "feral-special-super-a-right-v100": 494,
+      "feral-special-super-a-left-v100": 480,
+      "feral-special-super-b-right-v100": 372,
+      "feral-special-super-b-left-v100": 234
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-super-a-right-v100",
+        "rect": [
+          0,
+          0,
+          691,
+          521
+        ],
+        "visibleRect": [
+          207,
+          13,
+          374,
+          497
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-right-v100",
+        "rect": [
+          690,
+          0,
+          846,
+          521
+        ],
+        "visibleRect": [
+          800,
+          49,
+          535,
+          449
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-right-v100",
+        "rect": [
+          0,
+          520,
+          776,
+          504
+        ],
+        "visibleRect": [
+          167,
+          531,
+          562,
+          460
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-right-v100",
+        "rect": [
+          775,
+          520,
+          761,
+          504
+        ],
+        "visibleRect": [
+          823,
+          531,
+          679,
+          462
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-left-v100",
+        "rect": [
+          0,
+          0,
+          764,
+          511
+        ],
+        "visibleRect": [
+          249,
+          10,
+          379,
+          489
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-left-v100",
+        "rect": [
+          763,
+          0,
+          773,
+          511
+        ],
+        "visibleRect": [
+          899,
+          17,
+          525,
+          479
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-left-v100",
+        "rect": [
+          0,
+          510,
+          748,
+          514
+        ],
+        "visibleRect": [
+          163,
+          523,
+          537,
+          473
+        ]
+      },
+      {
+        "pageId": "feral-special-super-a-left-v100",
+        "rect": [
+          747,
+          510,
+          789,
+          514
+        ],
+        "visibleRect": [
+          795,
+          523,
+          689,
+          472
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-right-v100",
+        "rect": [
+          0,
+          0,
+          544,
+          415
+        ],
+        "visibleRect": [
+          153,
+          25,
+          277,
+          375
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-right-v100",
+        "rect": [
+          0,
+          414,
+          543,
+          349
+        ],
+        "visibleRect": [
+          50,
+          429,
+          469,
+          326
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-right-v100",
+        "rect": [
+          0,
+          762,
+          578,
+          353
+        ],
+        "visibleRect": [
+          70,
+          784,
+          442,
+          324
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-right-v100",
+        "rect": [
+          0,
+          1114,
+          532,
+          422
+        ],
+        "visibleRect": [
+          149,
+          1121,
+          283,
+          385
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-left-v100",
+        "rect": [
+          0,
+          0,
+          784,
+          259
+        ],
+        "visibleRect": [
+          276,
+          7,
+          266,
+          246
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-left-v100",
+        "rect": [
+          0,
+          514,
+          786,
+          242
+        ],
+        "visibleRect": [
+          179,
+          522,
+          459,
+          228
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-left-v100",
+        "rect": [
+          785,
+          514,
+          751,
+          242
+        ],
+        "visibleRect": [
+          934,
+          520,
+          356,
+          230
+        ]
+      },
+      {
+        "pageId": "feral-special-super-b-left-v100",
+        "rect": [
+          785,
+          755,
+          751,
+          269
+        ],
+        "visibleRect": [
+          981,
+          766,
+          311,
+          246
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-super-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-super-a-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-super-a-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-super-b-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-super-b-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F006_SUPER",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-super-a-right-v100",
+              "rect": [
+                690,
+                0,
+                846,
+                521
+              ],
+              "pivot": [
+                325,
+                498
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-super-a-right-v100",
+              "rect": [
+                0,
+                520,
+                776,
+                504
+              ],
+              "pivot": [
+                391,
+                471
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-super-a-right-v100",
+              "rect": [
+                775,
+                520,
+                761,
+                504
+              ],
+              "pivot": [
+                279,
+                473
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-special-super-b-right-v100",
+              "rect": [
+                0,
+                414,
+                543,
+                349
+              ],
+              "pivot": [
+                238,
+                341
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-super-b-right-v100",
+              "rect": [
+                0,
+                762,
+                578,
+                353
+              ],
+              "pivot": [
+                248,
+                346
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "feral-special-super-b-right-v100",
+              "rect": [
+                0,
+                1114,
+                532,
+                422
+              ],
+              "pivot": [
+                291,
+                392
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F006_SUPER",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-super-a-left-v100",
+              "rect": [
+                763,
+                0,
+                773,
+                511
+              ],
+              "pivot": [
+                449,
+                496
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-super-a-left-v100",
+              "rect": [
+                0,
+                510,
+                748,
+                514
+              ],
+              "pivot": [
+                501,
+                486
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-special-super-a-left-v100",
+              "rect": [
+                747,
+                510,
+                789,
+                514
+              ],
+              "pivot": [
+                524,
+                485
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-special-super-b-left-v100",
+              "rect": [
+                0,
+                514,
+                786,
+                242
+              ],
+              "pivot": [
+                502,
+                236
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-special-super-b-left-v100",
+              "rect": [
+                785,
+                514,
+                751,
+                242
+              ],
+              "pivot": [
+                410,
+                236
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "feral-special-super-b-left-v100",
+              "rect": [
+                785,
+                755,
+                751,
+                269
+              ],
+              "pivot": [
+                373,
+                257
+              ],
+              "durationTicks": 24
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-action-native-shield-opener-draw-left-launcher-aim-recoil-recover-body-study-only",
+    "sourceSha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b"
+    },
+    "notes": "T10. Six actual stages each facing. Physically explicit staging keeps existing launcher secured low on LEFT side during LEFT shield bash, then LEFT fingers visibly draw it while that forearm shield folds, then raise/aim, mechanical recoil and recovery. Empty attachment during rightA2 is not a second launcher: no red receiver there. LEFT launcher and LEFT shield remain on their anatomical side; right wrist blades retracted. Independent QA review approved new03A pages and selected oldB complements. Right01b LEFT5 with missing launcher is excluded; old incorrect03/02 bash cells are excluded. No hit-confirm, super resource, actual bolt entity, inventory state, damage or duel binding is added. Fixed standing references and reviewed feet midpoint anchors. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}
