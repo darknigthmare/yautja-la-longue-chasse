@@ -1,10 +1,10 @@
 {
   "schemaVersion": "yautja-v612-native-checkpoint-1",
-  "verifiedAtUtc": "2026-10-21T14:39:33.187Z",
+  "verifiedAtUtc": "2026-10-21T14:44:36.726Z",
   "sourceBranchCommit": "ac2bc04d0bb65f6f8b725aefa982a503f01a74e1",
   "sourceMainCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
   "expectedCount": 36,
-  "acceptedCount": 11,
+  "acceptedCount": 18,
   "completionState": "native-images-in-progress",
   "noteFR": "Sauvegarde des PNG acceptés et de leurs reçus. Les compteurs Excel et le raccordement du lot complet sont vérifiés séparément à la finalisation.",
   "assets": [
@@ -247,6 +247,235 @@
           ],
           "reasonFR": "Retouche native inspectée : la peau est maintenant clairement olive charbon mouchetée, sans les grandes plages cuivrées de la première sortie. Silhouette longue et athlétique, biomask Enforcer argent porté avec rainures longitudinales, capteur du poignet droit visible et main gauche en signal calme à cinq doigts distincts. La marge autour de la main et au-dessus du biomask est élargie. Les deux bras, les deux jambes plantigrades et les pieds sont complets dans le cadre ; pose et équipement restent cohérents.",
           "inputNativeSourceName": "exec-ecee1e5b-6ac3-43a2-b90c-61329ab293fc.png"
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "feral--enforcers-comics-06",
+      "groupId": "feral",
+      "variant": 6,
+      "nameFR": "Porte-liens",
+      "repoPngPath": "public/game/production/enforcers-v612/feral/enforcers-comics-06.png",
+      "nativeSourceName": "exec-fe43700f-6125-4de9-b060-8b952e27c76b.png",
+      "sha256": "f26140da82543d296a312ba1dee1cabab9c6b6da7f256b9074d7bb74f6aa44d1",
+      "bytes": 2144559,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        41,
+        0,
+        1008,
+        1520
+      ],
+      "contentBoundsAlpha20": [
+        199,
+        10,
+        892,
+        1518
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaZeroPixels": 1065103,
+      "generatedAtUtc": "2026-10-21T14:41:01.582Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:41:26.767Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin ocre brun; armor argent patiné; accents ocre. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : liens de capture fermés nettement lisibles à la ceinture, deux pointes métalliques latérales effilées sur le biomask et épaulières dissymétriques. Bras près du corps sans cacher les liens. Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 06 — Porte-liens. individu dont le sexe n’a pas besoin d’être visuellement souligné; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : pigmentation plus claire autour des yeux; pigmentation ocre brun. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques. Références de tenue à suivre : Traqueur du front fendu. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : ocre.  Pose : bras tenus près du corps sans masquer les accessoires. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. FERAL : crâne reculé et allongé selon la référence de lignée ; le biomask est une pièce portable adaptée au volume réel de ce crâne.\n",
+      "references": [
+        {
+          "id": "feral--enforcers-comics-01",
+          "groupId": "feral",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda.png",
+          "sha256": "39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda",
+          "bytes": 2211102,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "d41fb177098569bda0f4e719c254b3cc2c44ac1a",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:feral-enforcers-comics-01:39c26dd05453",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "feral--blooded-01",
+          "groupId": "feral",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "sha256": "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762",
+          "bytes": 2161194,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "8d008eb0a7db3c02f28490f81469169695210b26",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:feral-blooded-01:ee3659fcd33c",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Feral adulte entier, corps élancé, peau ocre brune mouchetée et filet visible. Biomask Enforcer porté distinct du crâne, pointe centrale et deux pointes latérales, plaques argent patiné et accents ocre. Liens de capture fermés en boucles bien séparées à la ceinture, épaulières dissymétriques, mains près du corps sans cacher les liens. Deux bras, deux jambes plantigrades, pieds griffus complets et raccordés ; aucun membre supplémentaire ni décor.",
+        "limitationsFR": [
+          "Crâne en partie masqué et doigts repliés ; fidélité anatomique 1:1 non certifiée.",
+          "Marges présentes mais inférieures à la cible indicative de 8 % en hauteur."
+        ],
+        "inspectedFrom": "native-output-rendered-inline-and-native-alpha-facts"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-fe43700f-6125-4de9-b060-8b952e27c76b.png",
+          "sha256": "f26140da82543d296a312ba1dee1cabab9c6b6da7f256b9074d7bb74f6aa44d1",
+          "bytes": 2144559,
+          "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin ocre brun; armor argent patiné; accents ocre. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : liens de capture fermés nettement lisibles à la ceinture, deux pointes métalliques latérales effilées sur le biomask et épaulières dissymétriques. Bras près du corps sans cacher les liens. Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 06 — Porte-liens. individu dont le sexe n’a pas besoin d’être visuellement souligné; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : pigmentation plus claire autour des yeux; pigmentation ocre brun. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques. Références de tenue à suivre : Traqueur du front fendu. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : ocre.  Pose : bras tenus près du corps sans masquer les accessoires. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. FERAL : crâne reculé et allongé selon la référence de lignée ; le biomask est une pièce portable adaptée au volume réel de ce crâne.\n",
+          "generatedAtUtc": "2026-10-21T14:41:01.582Z",
+          "attemptedAtUtc": "2026-10-21T14:41:26.767Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "feral--enforcers-comics-01.png",
+            "feral--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda",
+            "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762"
+          ],
+          "reasonFR": "Feral adulte entier, corps élancé, peau ocre brune mouchetée et filet visible. Biomask Enforcer porté distinct du crâne, pointe centrale et deux pointes latérales, plaques argent patiné et accents ocre. Liens de capture fermés en boucles bien séparées à la ceinture, épaulières dissymétriques, mains près du corps sans cacher les liens. Deux bras, deux jambes plantigrades, pieds griffus complets et raccordés ; aucun membre supplémentaire ni décor."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "feral--enforcers-comics-07",
+      "groupId": "feral",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/feral/enforcers-comics-07.png",
+      "nativeSourceName": "exec-198e2b3d-31fb-44d0-bbbf-210a53b4906e.png",
+      "sha256": "6cb893ab251d81a57addd95eb1ad80b43003005418199384518411fc464f157b",
+      "bytes": 2269848,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        25,
+        19,
+        1008,
+        1514
+      ],
+      "contentBoundsAlpha20": [
+        105,
+        23,
+        1001,
+        1496
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 0,
+      "alphaZeroPixels": 1038166,
+      "generatedAtUtc": "2026-10-21T14:42:56.704Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:43:42.371Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin cuivre terre; armor argent patiné; accents noir mat. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : reliefs superficiels plus usés; pigmentation cuivre terre. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. FERAL : crâne reculé et allongé selon la référence de lignée ; le biomask est une pièce portable adaptée au volume réel de ce crâne.\n",
+      "references": [
+        {
+          "id": "feral--enforcers-comics-01",
+          "groupId": "feral",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda.png",
+          "sha256": "39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda",
+          "bytes": 2211102,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "d41fb177098569bda0f4e719c254b3cc2c44ac1a",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:feral-enforcers-comics-01:39c26dd05453",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "feral--blooded-01",
+          "groupId": "feral",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "sha256": "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762",
+          "bytes": 2161194,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "8d008eb0a7db3c02f28490f81469169695210b26",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:feral-blooded-01:ee3659fcd33c",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Feral adulte entier, peau cuivre terre mouchetée, silhouette élancée et crâne reculé sous un biomask Enforcer portable. Face métallique rainurée, capteur lumineux de poignet lisible et main ouverte en signal calme à cinq doigts distincts. Une lance de traque est portée verticalement dans l’autre main comme accessoire secondaire de production ; elle est séparée du corps et reste complète dans le cadre. Deux bras, deux jambes plantigrades et pieds griffus entièrement visibles ; aucun membre supplémentaire.",
+        "limitationsFR": [
+          "Le biomask cache le visage biologique ; fidélité anatomique 1:1 non certifiée.",
+          "Des accents ocre issus de la continuité de tenue restent présents en plus du noir mat prévu.",
+          "Les marges sont présentes mais la cible indicative de 8 % n’est pas uniforme."
+        ],
+        "inspectedFrom": "native-output-rendered-inline-and-native-alpha-facts"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-198e2b3d-31fb-44d0-bbbf-210a53b4906e.png",
+          "sha256": "6cb893ab251d81a57addd95eb1ad80b43003005418199384518411fc464f157b",
+          "bytes": 2269848,
+          "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin cuivre terre; armor argent patiné; accents noir mat. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : reliefs superficiels plus usés; pigmentation cuivre terre. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. FERAL : crâne reculé et allongé selon la référence de lignée ; le biomask est une pièce portable adaptée au volume réel de ce crâne.\n",
+          "generatedAtUtc": "2026-10-21T14:42:56.704Z",
+          "attemptedAtUtc": "2026-10-21T14:43:42.371Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "feral--enforcers-comics-01.png",
+            "feral--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "39c26dd0545324fe8cdec3ac7e0c229439720b01fc75502f1ccc73018c09bfda",
+            "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762"
+          ],
+          "reasonFR": "Feral adulte entier, peau cuivre terre mouchetée, silhouette élancée et crâne reculé sous un biomask Enforcer portable. Face métallique rainurée, capteur lumineux de poignet lisible et main ouverte en signal calme à cinq doigts distincts. Une lance de traque est portée verticalement dans l’autre main comme accessoire secondaire de production ; elle est séparée du corps et reste complète dans le cadre. Deux bras, deux jambes plantigrades et pieds griffus entièrement visibles ; aucun membre supplémentaire."
         }
       ],
       "nativeBytesMatch": true,
@@ -832,6 +1061,351 @@
       "nativeCopyVerified": true
     },
     {
+      "id": "kaal-or--enforcers-comics-07",
+      "groupId": "kaal-or",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/kaal-or/enforcers-comics-07.png",
+      "nativeSourceName": "exec-d13f57b4-b1f6-4866-8518-7c1a8fd2cfee.png",
+      "sha256": "98f7c173c5103e52bfebad47dc6a085437c68f4dc599825f674abec57c6c5c0b",
+      "bytes": 2659072,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        65,
+        33,
+        1004,
+        1520
+      ],
+      "contentBoundsAlpha20": [
+        83,
+        35,
+        980,
+        1514
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 0,
+      "alphaZeroPixels": 837463,
+      "generatedAtUtc": "2026-10-21T14:40:06.745Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:40:26.399Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Palette prioritaire de ce nouvel individu : peau crème cendrée pâle mouchetée de gris, appendices crâniens courts gris brun, armure argent patiné et accents noir mat.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne court à voûte haute arrondie, joues épaisses, mandibules courtes recourbées ; thorax ample, membres courts et très larges pieds. An original endemic Yautja morphotype: HIGH rounded short cranial vault with a heavy brow and thick padded cheek mass, exactly four COMPACT HOOKED external mandibles curving tightly around a separate small inner toothed mouth. Large rounded ribcage, very short neck, stocky short limbs and extremely broad low plantigrade feet with four main front toes and a small lateral digit; powerful five-finger hands. Dense short thick organic cranial dreadlocks, grey-brown and muted ivory mottled skin. Organic insulation and rounded body proportions, no fur, no bear/cat nose, no ice crystals, no Viking costume. The rounded high skull and curved compact jaw must strongly differ from the low angular Ul-Khar head. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : reliefs superficiels plus usés; pigmentation crème cendrée. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+      "references": [
+        {
+          "id": "kaal-or--enforcers-comics-01",
+          "groupId": "kaal-or",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/7fa9428f1135f35fc9f27087903f0f9fe1f66fcc1e5cc009a0c7e662b24072f7.png",
+          "sha256": "7fa9428f1135f35fc9f27087903f0f9fe1f66fcc1e5cc009a0c7e662b24072f7",
+          "bytes": 2833577,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "627723374e3a7fffb20d1efaf0f3f2fdb86f876b",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:kaal-or-enforcers-comics-01:7fa9428f1135",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/7fa9428f1135f35fc9f27087903f0f9fe1f66fcc1e5cc009a0c7e662b24072f7.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "kaal-or--blooded-01",
+          "groupId": "kaal-or",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2.png",
+          "sha256": "2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2",
+          "bytes": 2578636,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "54a95846c06c0006d0d6a4a2c7a820d09f5b0736",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:kaal-or-blooded-01:2148839994bd",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Inspecteur Kaal-Or à tête haute arrondie sous masque, thorax ample, cou court et membres compacts. Peau crème cendrée mouchetée, équipements argent patiné et sangles noires. Masque à rainures longitudinales, capteur rouge de poignet nettement lisible et paume ouverte avec cinq doigts distincts. Pieds larges et silhouette entièrement raccordée.",
+        "limitationsFR": [
+          "Mandibules cachées par le biomask ; détails du visage non contrôlables directement.",
+          "Les doigts du pied opposé se recouvrent en perspective.",
+          "Pose fixe unique ; morphologie endémique de projet sans certification canonique."
+        ],
+        "inspectedFrom": "native-output-imagegen-preview"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-d13f57b4-b1f6-4866-8518-7c1a8fd2cfee.png",
+          "sha256": "98f7c173c5103e52bfebad47dc6a085437c68f4dc599825f674abec57c6c5c0b",
+          "bytes": 2659072,
+          "promptExact": "Palette prioritaire de ce nouvel individu : peau crème cendrée pâle mouchetée de gris, appendices crâniens courts gris brun, armure argent patiné et accents noir mat.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne court à voûte haute arrondie, joues épaisses, mandibules courtes recourbées ; thorax ample, membres courts et très larges pieds. An original endemic Yautja morphotype: HIGH rounded short cranial vault with a heavy brow and thick padded cheek mass, exactly four COMPACT HOOKED external mandibles curving tightly around a separate small inner toothed mouth. Large rounded ribcage, very short neck, stocky short limbs and extremely broad low plantigrade feet with four main front toes and a small lateral digit; powerful five-finger hands. Dense short thick organic cranial dreadlocks, grey-brown and muted ivory mottled skin. Organic insulation and rounded body proportions, no fur, no bear/cat nose, no ice crystals, no Viking costume. The rounded high skull and curved compact jaw must strongly differ from the low angular Ul-Khar head. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : reliefs superficiels plus usés; pigmentation crème cendrée. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+          "generatedAtUtc": "2026-10-21T14:40:06.745Z",
+          "attemptedAtUtc": "2026-10-21T14:40:26.399Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "kaal-or--enforcers-comics-01.png",
+            "kaal-or--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "7fa9428f1135f35fc9f27087903f0f9fe1f66fcc1e5cc009a0c7e662b24072f7",
+            "2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2"
+          ],
+          "reasonFR": "Inspecteur Kaal-Or à tête haute arrondie sous masque, thorax ample, cou court et membres compacts. Peau crème cendrée mouchetée, équipements argent patiné et sangles noires. Masque à rainures longitudinales, capteur rouge de poignet nettement lisible et paume ouverte avec cinq doigts distincts. Pieds larges et silhouette entièrement raccordée."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-06",
+      "groupId": "vaal-tir",
+      "variant": 6,
+      "nameFR": "Porte-liens",
+      "repoPngPath": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-06.png",
+      "nativeSourceName": "exec-371c9f56-6998-4627-b3db-36534a7b27ea.png",
+      "sha256": "5ccc1c80680f339e6a1f61cf5b001fba625e31fd03414180d1396045cc51bbfb",
+      "bytes": 2140790,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        17,
+        14,
+        1010,
+        1522
+      ],
+      "contentBoundsAlpha20": [
+        161,
+        16,
+        892,
+        1520
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 0,
+      "alphaZeroPixels": 1077110,
+      "generatedAtUtc": "2026-10-21T14:41:47.155Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:42:17.250Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Palette prioritaire : peau olive écorce naturelle mouchetée, appendices longs brun olive sombre, armure argent patiné et accents ocre. Garder visible derrière le biomask une seule carène sagittale biologique recouverte de peau, distincte de la crête métallique portée.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : liens de capture fermés nettement lisibles à la ceinture, deux pointes métalliques latérales effilées sur le biomask et épaulières dissymétriques. Bras près du corps sans cacher les liens. Créer un unique sprite indépendant du groupe Vaal-Tir — Grimpeurs des piliers, rôle Enforcers du comic, variante 06 — Porte-liens. individu dont le sexe n’a pas besoin d’être visuellement souligné; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps élancé, avant-bras longs, unique carène osseuse sagittale sur le crâne, mandibules longues fines et doigt de pied opposable pour la prise. An original endemic Yautja morphotype: tall very gracile body with elongated forearms, relatively narrow shoulders and waist. A SINGLE biological sagittal bony keel rises from the forehead along the top of the rearward skull, plainly part of the living skin-covered skull, NOT a helmet fin. Compact inner face with small deeply recessed eyes and exactly four LONG THIN external mandibles around a separate toothed inner mouth. Long climbing fingers with one opposing thumb, strong laterally opposable foot digit plus four elongated front toes on flexible climbing feet. Long thin organic cranial dreadlocks stream backward. Natural dark bronze-brown and olive mottled skin, no plant growth, wings, extra arms, tail, insect antennae or human elf face. Corps, tête et longs appendices Vaal-Tir selon la référence ; le cavalier n’a aucune queue, même si sa monture en a une. Individualisation : pigmentation plus claire autour des yeux; pigmentation olive écorce. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques. Références de tenue à suivre : Traqueur du front fendu. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : ocre.  Pose : bras tenus près du corps sans masquer les accessoires. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. ACCESSOIRE 06 PRIORITAIRE : exactement deux liens de capture fermés visibles à la ceinture, deux anneaux rigides métalliques ovales creux avec ouverture centrale évidente et fermoir, suspendus côte à côte par leurs attaches. Ce sont des bracelets de retenue rangés ; pas des boules, grenades ou disques pleins. Aucun captif ni victime. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+      "references": [
+        {
+          "id": "vaal-tir--enforcers-comics-01",
+          "groupId": "vaal-tir",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530.png",
+          "sha256": "b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530",
+          "bytes": 2212642,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "da2754337381d6982b986b0200957490ccc8f8cf",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:vaal-tir-enforcers-comics-01:b4894eddf7f0",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "vaal-tir--blooded-01",
+          "groupId": "vaal-tir",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e.png",
+          "sha256": "c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e",
+          "bytes": 1973155,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "5a9b36881dd6c4c9aa430e81a961f60a3ba5e298",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:vaal-tir-blooded-01:c38a0d3714d2",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Vaal-Tir très élancé, avant-bras longs, appendices crâniens fins et carène sagittale couverte de peau visible derrière le biomask amovible. Pieds de prise avec doigt latéral opposable, deux bras et longues mains. Deux liens métalliques ovales fermés suspendus à la ceinture ; armure argent patiné partielle, filet et épaulières dissymétriques. Silhouette complète, sans queue ni aile.",
+        "limitationsFR": [
+          "Peau rendue bronze olive chaud, plus brune que la direction olive écorce du brief.",
+          "Le biomask masque une partie des articulations mandibulaires ; les quatre mandibules ne sont pas toutes vérifiables séparément.",
+          "Pose fixe unique ; adaptation anatomique endémique du projet."
+        ],
+        "inspectedFrom": "native-output-imagegen-preview"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-371c9f56-6998-4627-b3db-36534a7b27ea.png",
+          "sha256": "5ccc1c80680f339e6a1f61cf5b001fba625e31fd03414180d1396045cc51bbfb",
+          "bytes": 2140790,
+          "promptExact": "Palette prioritaire : peau olive écorce naturelle mouchetée, appendices longs brun olive sombre, armure argent patiné et accents ocre. Garder visible derrière le biomask une seule carène sagittale biologique recouverte de peau, distincte de la crête métallique portée.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : liens de capture fermés nettement lisibles à la ceinture, deux pointes métalliques latérales effilées sur le biomask et épaulières dissymétriques. Bras près du corps sans cacher les liens. Créer un unique sprite indépendant du groupe Vaal-Tir — Grimpeurs des piliers, rôle Enforcers du comic, variante 06 — Porte-liens. individu dont le sexe n’a pas besoin d’être visuellement souligné; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps élancé, avant-bras longs, unique carène osseuse sagittale sur le crâne, mandibules longues fines et doigt de pied opposable pour la prise. An original endemic Yautja morphotype: tall very gracile body with elongated forearms, relatively narrow shoulders and waist. A SINGLE biological sagittal bony keel rises from the forehead along the top of the rearward skull, plainly part of the living skin-covered skull, NOT a helmet fin. Compact inner face with small deeply recessed eyes and exactly four LONG THIN external mandibles around a separate toothed inner mouth. Long climbing fingers with one opposing thumb, strong laterally opposable foot digit plus four elongated front toes on flexible climbing feet. Long thin organic cranial dreadlocks stream backward. Natural dark bronze-brown and olive mottled skin, no plant growth, wings, extra arms, tail, insect antennae or human elf face. Corps, tête et longs appendices Vaal-Tir selon la référence ; le cavalier n’a aucune queue, même si sa monture en a une. Individualisation : pigmentation plus claire autour des yeux; pigmentation olive écorce. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques. Références de tenue à suivre : Traqueur du front fendu. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : ocre.  Pose : bras tenus près du corps sans masquer les accessoires. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. ACCESSOIRE 06 PRIORITAIRE : exactement deux liens de capture fermés visibles à la ceinture, deux anneaux rigides métalliques ovales creux avec ouverture centrale évidente et fermoir, suspendus côte à côte par leurs attaches. Ce sont des bracelets de retenue rangés ; pas des boules, grenades ou disques pleins. Aucun captif ni victime. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+          "generatedAtUtc": "2026-10-21T14:41:47.155Z",
+          "attemptedAtUtc": "2026-10-21T14:42:17.250Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "vaal-tir--enforcers-comics-01.png",
+            "vaal-tir--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530",
+            "c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e"
+          ],
+          "reasonFR": "Vaal-Tir très élancé, avant-bras longs, appendices crâniens fins et carène sagittale couverte de peau visible derrière le biomask amovible. Pieds de prise avec doigt latéral opposable, deux bras et longues mains. Deux liens métalliques ovales fermés suspendus à la ceinture ; armure argent patiné partielle, filet et épaulières dissymétriques. Silhouette complète, sans queue ni aile."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-07",
+      "groupId": "vaal-tir",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-07.png",
+      "nativeSourceName": "exec-30b0c749-c378-45d7-9d92-8c89acc91a6a.png",
+      "sha256": "ed03d8c7770cd15f17e30e877e4acfd21019d0bba19adb20f8cd6adf9845b203",
+      "bytes": 2127796,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        21,
+        10,
+        1000,
+        1526
+      ],
+      "contentBoundsAlpha20": [
+        157,
+        13,
+        902,
+        1524
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 0,
+      "alphaZeroPixels": 1064113,
+      "generatedAtUtc": "2026-10-21T14:42:57.820Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:43:30.499Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Palette prioritaire de ce nouvel individu : peau brun feuillage foncé avec taches olive sombre, appendices crâniens brun noir, armure argent patiné et accents noir mat. Une carène sagittale biologique couverte de peau reste visible derrière le biomask porté.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Vaal-Tir — Grimpeurs des piliers, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps élancé, avant-bras longs, unique carène osseuse sagittale sur le crâne, mandibules longues fines et doigt de pied opposable pour la prise. An original endemic Yautja morphotype: tall very gracile body with elongated forearms, relatively narrow shoulders and waist. A SINGLE biological sagittal bony keel rises from the forehead along the top of the rearward skull, plainly part of the living skin-covered skull, NOT a helmet fin. Compact inner face with small deeply recessed eyes and exactly four LONG THIN external mandibles around a separate toothed inner mouth. Long climbing fingers with one opposing thumb, strong laterally opposable foot digit plus four elongated front toes on flexible climbing feet. Long thin organic cranial dreadlocks stream backward. Natural dark bronze-brown and olive mottled skin, no plant growth, wings, extra arms, tail, insect antennae or human elf face. Corps, tête et longs appendices Vaal-Tir selon la référence ; le cavalier n’a aucune queue, même si sa monture en a une. Individualisation : reliefs superficiels plus usés; pigmentation brun feuillage. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+      "references": [
+        {
+          "id": "vaal-tir--enforcers-comics-01",
+          "groupId": "vaal-tir",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530.png",
+          "sha256": "b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530",
+          "bytes": 2212642,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "da2754337381d6982b986b0200957490ccc8f8cf",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:vaal-tir-enforcers-comics-01:b4894eddf7f0",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "vaal-tir--blooded-01",
+          "groupId": "vaal-tir",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e.png",
+          "sha256": "c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e",
+          "bytes": 1973155,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "5a9b36881dd6c4c9aa430e81a961f60a3ba5e298",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:vaal-tir-blooded-01:c38a0d3714d2",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Inspecteur Vaal-Tir très élancé à longues mains et avant-bras, pieds de prise avec doigt opposable latéral. Carène sagittale biologique en partie visible derrière le biomask amovible, longs appendices crâniens. Main libre levée avec cinq doigts en signal calme, grand capteur de l’autre poignet lisible. Peau brun feuillage mouchetée, armure argent patiné partielle avec filet.",
+        "limitationsFR": [
+          "La carène est partiellement couverte par le masque et sa crête métallique ; tous les contours biologiques ne sont pas visibles.",
+          "Quelques accents vert patiné de la référence restent présents dans l’armure malgré la direction noir mat.",
+          "Pose fixe unique ; adaptation endémique de projet, sans certification canonique 1:1."
+        ],
+        "inspectedFrom": "native-output-imagegen-preview"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-30b0c749-c378-45d7-9d92-8c89acc91a6a.png",
+          "sha256": "ed03d8c7770cd15f17e30e877e4acfd21019d0bba19adb20f8cd6adf9845b203",
+          "bytes": 2127796,
+          "promptExact": "Palette prioritaire de ce nouvel individu : peau brun feuillage foncé avec taches olive sombre, appendices crâniens brun noir, armure argent patiné et accents noir mat. Une carène sagittale biologique couverte de peau reste visible derrière le biomask porté.\nUse case: stylized-concept. Asset type: sprite de jeu indépendant.\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Vaal-Tir — Grimpeurs des piliers, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps élancé, avant-bras longs, unique carène osseuse sagittale sur le crâne, mandibules longues fines et doigt de pied opposable pour la prise. An original endemic Yautja morphotype: tall very gracile body with elongated forearms, relatively narrow shoulders and waist. A SINGLE biological sagittal bony keel rises from the forehead along the top of the rearward skull, plainly part of the living skin-covered skull, NOT a helmet fin. Compact inner face with small deeply recessed eyes and exactly four LONG THIN external mandibles around a separate toothed inner mouth. Long climbing fingers with one opposing thumb, strong laterally opposable foot digit plus four elongated front toes on flexible climbing feet. Long thin organic cranial dreadlocks stream backward. Natural dark bronze-brown and olive mottled skin, no plant growth, wings, extra arms, tail, insect antennae or human elf face. Corps, tête et longs appendices Vaal-Tir selon la référence ; le cavalier n’a aucune queue, même si sa monture en a une. Individualisation : reliefs superficiels plus usés; pigmentation brun feuillage. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre. CADRAGE PRIORITAIRE : cadrage plus large que les images de référence. Toute la figure, du plus haut appendice au bas des pieds, occupe environ 82 % de la hauteur et au plus 80 % de la largeur ; laisser une marge vide confortable de chaque côté. Ne pas agrandir le sujet jusqu’au bord.",
+          "generatedAtUtc": "2026-10-21T14:42:57.820Z",
+          "attemptedAtUtc": "2026-10-21T14:43:30.499Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "vaal-tir--enforcers-comics-01.png",
+            "vaal-tir--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "b4894eddf7f04b7e165cb82fedf30187629777f7606af37092f4b33f1f1bd530",
+            "c38a0d3714d214b7ff94167443cddf3c72fd67cb3ad364fd5de4c6eeddcadf5e"
+          ],
+          "reasonFR": "Inspecteur Vaal-Tir très élancé à longues mains et avant-bras, pieds de prise avec doigt opposable latéral. Carène sagittale biologique en partie visible derrière le biomask amovible, longs appendices crâniens. Main libre levée avec cinq doigts en signal calme, grand capteur de l’autre poignet lisible. Peau brun feuillage mouchetée, armure argent patiné partielle avec filet."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
       "id": "oni-kok--enforcers-comics-06",
       "groupId": "oni-kok",
       "variant": 6,
@@ -1285,6 +1859,236 @@
             "f1bd46c3d2c00c776a689b9bc688a00c55a607e676faec1b6b3e3eec0b0dbd27"
           ],
           "reasonFR": "Grendel massif à thorax large, épaules très bombées et tête compacte, deux bras organiques et deux appuis plantigrades. Quatre mandibules apparentes sous le biomask métallique. Main gauche levée en signal de coordination calme, module de poignet et sceau de contrôle à la ceinture. Armure argentée partielle, filet, textiles opaques et dreadlocks sombres. Figure complète."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "alpha--enforcers-comics-06",
+      "groupId": "alpha",
+      "variant": 6,
+      "nameFR": "Porte-liens",
+      "repoPngPath": "public/game/production/enforcers-v612/alpha/enforcers-comics-06.png",
+      "nativeSourceName": "exec-8bc8ddeb-bd63-4278-ab69-d272c6625403.png",
+      "sha256": "3fb8a38ad99eed340f4ed88a5a160c1b586fc21f801370234743b86732455038",
+      "bytes": 2517004,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        0,
+        1010,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        163,
+        6,
+        931,
+        1521
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaZeroPixels": 935409,
+      "generatedAtUtc": "2026-10-21T14:40:47.814Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:41:10.788Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: stylized-concept. Asset type: a single native game character cutout, realistic high-detail creature and costume concept rendering.\nPrimary request: one entirely new adult individual, Lignée héritière de l’Alpha, Enforcer 06 — Porte-liens.\nInput image 1 is the same-lineage Enforcer costume and rendering reference. Image 2 is the same-lineage anatomy reference. Use references for consistency, but the written lineage and individual constraints below override any conflicting reference anatomy, equipment, pose or coloration. Do not duplicate the reference individual.\nScene: fully transparent alpha background, no scenery, no floor, no backdrop, no contact shadow, no vignette, no text, no watermark. Native output exactly 1024 × 1536 pixels RGBA.\nComposition: full-body single subject from head crest to both complete feet, standing calm, slight three-quarter front view. Entire figure and all accessories inside the frame, at least 8% clear margin around extremities. Balanced centered framing.\nLife stage / individual: adulte du groupe, proportions matures; individu dont le sexe n’a pas besoin d’être visuellement souligné; pigmentation plus claire autour des yeux.\nRequired lineage anatomy: Yautja pâle à deux bras, deux jambes plantigrades ; peau ridée claire et proportions musclées. Crâne haut allongé, reliefs courts dentelés sur les côtés et sommet ; quatre mandibules étirées. Dreadlocks blancs ou très pâles ; aucun œil d’insecte sur le vrai visage. Les grands yeux jaunes et le museau insectoïde appartiennent au masque Amengi amovible. Les éléments de carapace et d’os sont portés. Peau et appendices pâles, crâne biologique Yautja et quatre longues mandibules. Le masque insectoïde Amengi est un objet porté, pas le vrai visage.\nCostume: Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques.\nMaterials/palette: ivoire os skin; argent patiné metal with ocre accents. Distinguish living skin, worn metal, cloth and mesh. Functional opaque pelvic cloth; no exposed genitals. No full military breastplate replacing the partial comic Enforcer armor.\nPose: bras tenus près du corps sans masquer les accessoires.\nVery pale wrinkled Yautja skin, white or very pale organic tendrils. Two organic arms, two plantigrade legs. All cranial ornament here is a removable Enforcer biomask; do not give the biological animal insect eyes or insect limbs.\nNo prosthetic limbs.\nKey readable accessories: TWO EMPTY CLOSED CAPTURE LOOPS resting unused on belt hooks. They must be thin hollow metal rings with a clearly open central hole and a short connecting link, not balls, grenades or solid discs. Arms held close but never hide the belt equipment. Asymmetrical shoulder plates; two slender metallic side points on removable silver biomask.\nLighting: soft neutral studio illumination, controlled edge highlights, lifelike texture and sculptural volume. Original individual and original biomask details, consistent family style. Single static pose, no weapon action, no other characters.\n",
+      "references": [
+        {
+          "id": "alpha--enforcers-comics-01",
+          "groupId": "alpha",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea.png",
+          "sha256": "5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea",
+          "bytes": 2473056,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "78f87dfc6ebb7c12a1f398c95c80531bf37b96c2",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:alpha-enforcers-comics-01:5d6643b496e7",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "alpha--blooded-01",
+          "groupId": "alpha",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59.png",
+          "sha256": "84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59",
+          "bytes": 2374354,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "88c5c5d2d716715c4d9b4efe8b120b380467e55d",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:alpha-blooded-01:84d123372d13",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Alpha pâle, peau ivoire ridée et veinée, appendices crâniens blancs rosés, deux bras organiques et deux jambes plantigrades. Biomask Enforcer argenté amovible, aucune transformation insectoïde du corps. Deux anneaux de capture creux et fermés suspendus à la ceinture ; filet, pièces d’os portées et protections partielles aux épaules dissymétriques. Figure complète dans le cadre.",
+        "limitationsFR": [
+          "Le visage biologique et les mandibules sont couverts par le masque et ne sont pas directement vérifiables.",
+          "Adaptation de lignée propre au projet ; fidélité canonique 1:1 non certifiée.",
+          "Marge vide inférieure aux 8 % demandés, sans contour visible coupé."
+        ],
+        "inspectedFrom": "native-output-view_image"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-8bc8ddeb-bd63-4278-ab69-d272c6625403.png",
+          "sha256": "3fb8a38ad99eed340f4ed88a5a160c1b586fc21f801370234743b86732455038",
+          "bytes": 2517004,
+          "promptExact": "Use case: stylized-concept. Asset type: a single native game character cutout, realistic high-detail creature and costume concept rendering.\nPrimary request: one entirely new adult individual, Lignée héritière de l’Alpha, Enforcer 06 — Porte-liens.\nInput image 1 is the same-lineage Enforcer costume and rendering reference. Image 2 is the same-lineage anatomy reference. Use references for consistency, but the written lineage and individual constraints below override any conflicting reference anatomy, equipment, pose or coloration. Do not duplicate the reference individual.\nScene: fully transparent alpha background, no scenery, no floor, no backdrop, no contact shadow, no vignette, no text, no watermark. Native output exactly 1024 × 1536 pixels RGBA.\nComposition: full-body single subject from head crest to both complete feet, standing calm, slight three-quarter front view. Entire figure and all accessories inside the frame, at least 8% clear margin around extremities. Balanced centered framing.\nLife stage / individual: adulte du groupe, proportions matures; individu dont le sexe n’a pas besoin d’être visuellement souligné; pigmentation plus claire autour des yeux.\nRequired lineage anatomy: Yautja pâle à deux bras, deux jambes plantigrades ; peau ridée claire et proportions musclées. Crâne haut allongé, reliefs courts dentelés sur les côtés et sommet ; quatre mandibules étirées. Dreadlocks blancs ou très pâles ; aucun œil d’insecte sur le vrai visage. Les grands yeux jaunes et le museau insectoïde appartiennent au masque Amengi amovible. Les éléments de carapace et d’os sont portés. Peau et appendices pâles, crâne biologique Yautja et quatre longues mandibules. Le masque insectoïde Amengi est un objet porté, pas le vrai visage.\nCostume: Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Deux pointes latérales effilées en métal, liens de capture fermés à la ceinture, épaulières dissymétriques.\nMaterials/palette: ivoire os skin; argent patiné metal with ocre accents. Distinguish living skin, worn metal, cloth and mesh. Functional opaque pelvic cloth; no exposed genitals. No full military breastplate replacing the partial comic Enforcer armor.\nPose: bras tenus près du corps sans masquer les accessoires.\nVery pale wrinkled Yautja skin, white or very pale organic tendrils. Two organic arms, two plantigrade legs. All cranial ornament here is a removable Enforcer biomask; do not give the biological animal insect eyes or insect limbs.\nNo prosthetic limbs.\nKey readable accessories: TWO EMPTY CLOSED CAPTURE LOOPS resting unused on belt hooks. They must be thin hollow metal rings with a clearly open central hole and a short connecting link, not balls, grenades or solid discs. Arms held close but never hide the belt equipment. Asymmetrical shoulder plates; two slender metallic side points on removable silver biomask.\nLighting: soft neutral studio illumination, controlled edge highlights, lifelike texture and sculptural volume. Original individual and original biomask details, consistent family style. Single static pose, no weapon action, no other characters.\n",
+          "generatedAtUtc": "2026-10-21T14:40:47.814Z",
+          "attemptedAtUtc": "2026-10-21T14:41:10.788Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "alpha--enforcers-comics-01.png",
+            "alpha--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea",
+            "84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59"
+          ],
+          "reasonFR": "Alpha pâle, peau ivoire ridée et veinée, appendices crâniens blancs rosés, deux bras organiques et deux jambes plantigrades. Biomask Enforcer argenté amovible, aucune transformation insectoïde du corps. Deux anneaux de capture creux et fermés suspendus à la ceinture ; filet, pièces d’os portées et protections partielles aux épaules dissymétriques. Figure complète dans le cadre."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "alpha--enforcers-comics-07",
+      "groupId": "alpha",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/alpha/enforcers-comics-07.png",
+      "nativeSourceName": "exec-3112a923-7ac6-4570-a18c-958b184fa099.png",
+      "sha256": "3241277a8e10833eb0b229c4f02a327404d7fa2fc55ecaadd2b0bfd9aefe2315",
+      "bytes": 2489941,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        65,
+        0,
+        990,
+        1523
+      ],
+      "contentBoundsAlpha20": [
+        141,
+        7,
+        957,
+        1521
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaZeroPixels": 955047,
+      "generatedAtUtc": "2026-10-21T14:42:18.363Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:42:54.542Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: stylized-concept. Asset type: a single native game character cutout, realistic high-detail creature and costume concept rendering.\nPrimary request: one entirely new adult individual, Lignée héritière de l’Alpha, Enforcer 07 — Inspecteur des passages.\nInput image 1 is the same-lineage Enforcer costume and rendering reference. Image 2 is the same-lineage anatomy reference. Use references for consistency, but the written lineage and individual constraints below override any conflicting reference anatomy, equipment, pose or coloration. Do not duplicate the reference individual.\nScene: fully transparent alpha background, no scenery, no floor, no backdrop, no contact shadow, no vignette, no text, no watermark. Native output exactly 1024 × 1536 pixels RGBA.\nComposition: full-body single subject from head crest to both complete feet, standing calm, slight three-quarter front view. Entire figure and all accessories inside the frame, at least 8% clear margin around extremities. Balanced centered framing.\nLife stage / individual: adulte du groupe, proportions matures; individu masculin; reliefs superficiels plus usés.\nRequired lineage anatomy: Yautja pâle à deux bras, deux jambes plantigrades ; peau ridée claire et proportions musclées. Crâne haut allongé, reliefs courts dentelés sur les côtés et sommet ; quatre mandibules étirées. Dreadlocks blancs ou très pâles ; aucun œil d’insecte sur le vrai visage. Les grands yeux jaunes et le museau insectoïde appartiennent au masque Amengi amovible. Les éléments de carapace et d’os sont portés. Peau et appendices pâles, crâne biologique Yautja et quatre longues mandibules. Le masque insectoïde Amengi est un objet porté, pas le vrai visage.\nCostume: Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme.\nMaterials/palette: crème pâle skin; argent patiné metal with noir mat accents. Distinguish living skin, worn metal, cloth and mesh. Functional opaque pelvic cloth; no exposed genitals. No full military breastplate replacing the partial comic Enforcer armor.\nPose: geste discret de coordination.\nVery pale wrinkled Yautja skin, white or very pale organic tendrils. Two organic arms, two plantigrade legs. All cranial ornament here is a removable Enforcer biomask; do not give the biological animal insect eyes or insect limbs.\nNo prosthetic limbs.\nKey readable accessories: longitudinal grooves on the silver Enforcer mask, compact inspection sensor on wrist with small readable device surfaces but no lettering; small inspection sigil at belt. One free hand raised only slightly in a calm coordination signal. Other hand remains fully visible.\nLighting: soft neutral studio illumination, controlled edge highlights, lifelike texture and sculptural volume. Original individual and original biomask details, consistent family style. Single static pose, no weapon action, no other characters.\n",
+      "references": [
+        {
+          "id": "alpha--enforcers-comics-01",
+          "groupId": "alpha",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea.png",
+          "sha256": "5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea",
+          "bytes": 2473056,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "78f87dfc6ebb7c12a1f398c95c80531bf37b96c2",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:alpha-enforcers-comics-01:5d6643b496e7",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "alpha--blooded-01",
+          "groupId": "alpha",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59.png",
+          "sha256": "84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59",
+          "bytes": 2374354,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "88c5c5d2d716715c4d9b4efe8b120b380467e55d",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:alpha-blooded-01:84d123372d13",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Alpha à peau crème très pâle et appendices crâniens blancs rosés, deux bras organiques et deux jambes plantigrades. Biomask Enforcer porté, aucune anatomie insectoïde ajoutée. Main libre ouverte en signal calme, capteur de poignet lisible et sceau de contrôle à la ceinture ; costume argent patiné partiel et filet. Corps et accessoires entiers.",
+        "limitationsFR": [
+          "Le masque couvre le vrai visage et les mandibules ; ces éléments ne sont pas directement vérifiables.",
+          "Adaptation de lignée propre au projet ; fidélité canonique 1:1 non certifiée.",
+          "Marge vide inférieure aux 8 % demandés, sans contour visible coupé."
+        ],
+        "inspectedFrom": "native-output-view_image"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-3112a923-7ac6-4570-a18c-958b184fa099.png",
+          "sha256": "3241277a8e10833eb0b229c4f02a327404d7fa2fc55ecaadd2b0bfd9aefe2315",
+          "bytes": 2489941,
+          "promptExact": "Use case: stylized-concept. Asset type: a single native game character cutout, realistic high-detail creature and costume concept rendering.\nPrimary request: one entirely new adult individual, Lignée héritière de l’Alpha, Enforcer 07 — Inspecteur des passages.\nInput image 1 is the same-lineage Enforcer costume and rendering reference. Image 2 is the same-lineage anatomy reference. Use references for consistency, but the written lineage and individual constraints below override any conflicting reference anatomy, equipment, pose or coloration. Do not duplicate the reference individual.\nScene: fully transparent alpha background, no scenery, no floor, no backdrop, no contact shadow, no vignette, no text, no watermark. Native output exactly 1024 × 1536 pixels RGBA.\nComposition: full-body single subject from head crest to both complete feet, standing calm, slight three-quarter front view. Entire figure and all accessories inside the frame, at least 8% clear margin around extremities. Balanced centered framing.\nLife stage / individual: adulte du groupe, proportions matures; individu masculin; reliefs superficiels plus usés.\nRequired lineage anatomy: Yautja pâle à deux bras, deux jambes plantigrades ; peau ridée claire et proportions musclées. Crâne haut allongé, reliefs courts dentelés sur les côtés et sommet ; quatre mandibules étirées. Dreadlocks blancs ou très pâles ; aucun œil d’insecte sur le vrai visage. Les grands yeux jaunes et le museau insectoïde appartiennent au masque Amengi amovible. Les éléments de carapace et d’os sont portés. Peau et appendices pâles, crâne biologique Yautja et quatre longues mandibules. Le masque insectoïde Amengi est un objet porté, pas le vrai visage.\nCostume: Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme.\nMaterials/palette: crème pâle skin; argent patiné metal with noir mat accents. Distinguish living skin, worn metal, cloth and mesh. Functional opaque pelvic cloth; no exposed genitals. No full military breastplate replacing the partial comic Enforcer armor.\nPose: geste discret de coordination.\nVery pale wrinkled Yautja skin, white or very pale organic tendrils. Two organic arms, two plantigrade legs. All cranial ornament here is a removable Enforcer biomask; do not give the biological animal insect eyes or insect limbs.\nNo prosthetic limbs.\nKey readable accessories: longitudinal grooves on the silver Enforcer mask, compact inspection sensor on wrist with small readable device surfaces but no lettering; small inspection sigil at belt. One free hand raised only slightly in a calm coordination signal. Other hand remains fully visible.\nLighting: soft neutral studio illumination, controlled edge highlights, lifelike texture and sculptural volume. Original individual and original biomask details, consistent family style. Single static pose, no weapon action, no other characters.\n",
+          "generatedAtUtc": "2026-10-21T14:42:18.363Z",
+          "attemptedAtUtc": "2026-10-21T14:42:54.542Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "alpha--enforcers-comics-01.png",
+            "alpha--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "5d6643b496e72838fdf5b0b89666a0e9b09c055eddeeee8e29fc1cc0aa3332ea",
+            "84d123372d13623bbab6135fdf5d53dfa2a505572bd197dea62ca29fc977cb59"
+          ],
+          "reasonFR": "Alpha à peau crème très pâle et appendices crâniens blancs rosés, deux bras organiques et deux jambes plantigrades. Biomask Enforcer porté, aucune anatomie insectoïde ajoutée. Main libre ouverte en signal calme, capteur de poignet lisible et sceau de contrôle à la ceinture ; costume argent patiné partiel et filet. Corps et accessoires entiers."
         }
       ],
       "nativeBytesMatch": true,
