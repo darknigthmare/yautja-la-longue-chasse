@@ -1,10 +1,10 @@
 {
   "schemaVersion": "yautja-v612-native-checkpoint-1",
-  "verifiedAtUtc": "2026-10-21T14:55:42.673Z",
+  "verifiedAtUtc": "2026-10-21T14:58:21.627Z",
   "sourceBranchCommit": "ac2bc04d0bb65f6f8b725aefa982a503f01a74e1",
   "sourceMainCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
   "expectedCount": 36,
-  "acceptedCount": 32,
+  "acceptedCount": 34,
   "completionState": "native-images-in-progress",
   "noteFR": "Sauvegarde des PNG acceptés et de leurs reçus. Les compteurs Excel et le raccordement du lot complet sont vérifiés séparément à la finalisation.",
   "assets": [
@@ -1278,6 +1278,120 @@
             "51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee"
           ],
           "reasonFR": "Saar-Keth adulte entier à peau crème sable mouchetée, crâne ample sous biomask Enforcer porté et appendices crâniens courts. Métal argent patiné, accents ocre, textile clair du désert et épaulières dissymétriques. Deux liens de capture fermés pendent clairement au devant de la ceinture ; des cordages de capture sont tenus sans cacher ces liens. Deux bras, deux jambes plantigrades et pieds larges griffus complets dans le cadre. Les ornements de l’épaulière restent attachés à l’armure, sans anatomie ajoutée."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "saar-keth--enforcers-comics-07",
+      "groupId": "saar-keth",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/saar-keth/enforcers-comics-07.png",
+      "nativeSourceName": "exec-36d51505-266a-45bd-a2f6-ae2438975b6c.png",
+      "sha256": "83367687200eebc427e78ccc18d6513dfd79e2c80f225c2c307b83ddbe405233",
+      "bytes": 2266054,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        7,
+        1004,
+        1518
+      ],
+      "contentBoundsAlpha20": [
+        129,
+        41,
+        960,
+        1484
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaZeroPixels": 1053301,
+      "generatedAtUtc": "2026-10-21T14:55:21.087Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:56:03.964Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin ocre minéral pâle; armor argent patiné; accents noir mat. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Saar-Keth — Veilleurs des dunes, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Voûte crânienne haute et lisse, arcades osseuses en auvent, quatre mandibules courtes latérales ; cage thoracique ample, jambes longues, pieds larges et appendices courts épais. An original endemic Yautja morphotype: high smoothly domed cranial vault and paired thick bony orbital hoods, very small deeply horizontally recessed eyes; exactly four SHORT STOUT external mandibles splaying sideways from heavy cheek scales around a separate small inner toothed mouth. Broad barrel ribcage above long lower legs, relatively narrow pelvis, broad low plantigrade feet with four strong front toes and a smaller lateral gripping digit, five-finger hands. Short thick organic dreadlocks sweep backward as a compact fan. Cream/earth mottled scaly skin, physical flesh and keratin, no glass/crystal skin. Clearly a different head silhouette from the classic long-jawed Yautja, but not an orc, turtle or human. Quatre mandibules courtes latérales, tête haute à arcades en auvent, pieds larges avec quatre doigts antérieurs et un latéral. Peau vivante, pas de cristal. Individualisation : reliefs superficiels plus usés; pigmentation ocre minéral pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre.\n",
+      "references": [
+        {
+          "id": "saar-keth--enforcers-comics-01",
+          "groupId": "saar-keth",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/d20f95b1e4c5aaa33a2b989ba55109e77524accc3bb999776512507538ef0dcd.png",
+          "sha256": "d20f95b1e4c5aaa33a2b989ba55109e77524accc3bb999776512507538ef0dcd",
+          "bytes": 2190907,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "a806a04ccc0552c177923f05b1f22f140259e73f",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:saar-keth-enforcers-comics-01:d20f95b1e4c5",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/d20f95b1e4c5aaa33a2b989ba55109e77524accc3bb999776512507538ef0dcd.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "saar-keth--blooded-01",
+          "groupId": "saar-keth",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee.png",
+          "sha256": "51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee",
+          "bytes": 2030411,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "6e87146522da33fba2b592cca7384bf4bef309a7",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-baseline:saar-keth-blooded-01:51010b102b66",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Saar-Keth Inspecteur entier, peau ocre minéral pâle mouchetée, crâne ample adapté au biomask Enforcer et appendices crâniens courts. Masque argent à rainures longitudinales ; capteur lumineux au poignet clairement exposé et main levée en signal calme avec cinq doigts distincts. Une lame de traque portée basse dans l’autre main sert d’accessoire secondaire, sans geste d’attaque. Deux bras, deux jambes plantigrades et pieds larges griffus complets dans le cadre. Métal patiné et textile désert clair cohérents avec la lignée.",
+        "limitationsFR": [
+          "Le masque et la main occupée cachent certains détails ; fidélité anatomique 1:1 non certifiée.",
+          "Marges présentes mais inférieures à la cible indicative de 8 % sur certaines extrémités."
+        ],
+        "inspectedFrom": "native-output-rendered-inline-and-native-alpha-facts"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-36d51505-266a-45bd-a2f6-ae2438975b6c.png",
+          "sha256": "83367687200eebc427e78ccc18d6513dfd79e2c80f225c2c307b83ddbe405233",
+          "bytes": 2266054,
+          "promptExact": "Use case: stylized-concept. New independent full-body game character asset. PALETTE PRIORITY FOR THIS INDIVIDUAL: skin ocre minéral pâle; armor argent patiné; accents noir mat. Apply this skin palette even if the two reference individuals have different colors. Composition: pull back the camera and keep generous transparent margins around the entire subject, including mask tips, hands and all toes. The reference images establish lineage anatomy and outfit family; this is a new individual, not a copy of their exact pose.\n\nACCESSOIRES DISTINCTIFS VISIBLES : masque argent à rainures longitudinales, capteur de poignet lisible et main libre en signal calme. Le geste laisse lire le capteur et les doigts sans membre supplémentaire. Créer un unique sprite indépendant du groupe Saar-Keth — Veilleurs des dunes, rôle Enforcers du comic, variante 07 — Inspecteur des passages. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Voûte crânienne haute et lisse, arcades osseuses en auvent, quatre mandibules courtes latérales ; cage thoracique ample, jambes longues, pieds larges et appendices courts épais. An original endemic Yautja morphotype: high smoothly domed cranial vault and paired thick bony orbital hoods, very small deeply horizontally recessed eyes; exactly four SHORT STOUT external mandibles splaying sideways from heavy cheek scales around a separate small inner toothed mouth. Broad barrel ribcage above long lower legs, relatively narrow pelvis, broad low plantigrade feet with four strong front toes and a smaller lateral gripping digit, five-finger hands. Short thick organic dreadlocks sweep backward as a compact fan. Cream/earth mottled scaly skin, physical flesh and keratin, no glass/crystal skin. Clearly a different head silhouette from the classic long-jawed Yautja, but not an orc, turtle or human. Quatre mandibules courtes latérales, tête haute à arcades en auvent, pieds larges avec quatre doigts antérieurs et un latéral. Peau vivante, pas de cristal. Individualisation : reliefs superficiels plus usés; pigmentation ocre minéral pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme. Références de tenue à suivre : Enforcer du cercle d'os. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : noir mat.  Pose : geste discret de coordination. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Une seule figure adulte indépendante, entière, 1024 × 1536, PNG RGBA natif à fond réellement transparent. Conserver environ 8 % de marge vide autour de toute la silhouette et de ses accessoires. Aucun décor, socle, ombre portée, halo, texte, logo, vignette ou personnage supplémentaire. Rendu réaliste de figurine de jeu, modelé précis, matières lisibles et éclairage studio doux. Image 1 : Enforcer01 du même groupe, continuité de rendu et famille de tenue. Image 2 : Blooded01 du même groupe, morphologie. Produire un nouvel individu et de nouveaux détails, sans copier ni recolorier une pose existante. Le biomask est une pièce portée et amovible, distincte du crâne biologique. Les pieds, les membres et les équipements restent raccordés, complets et à l’intérieur du cadre.\n",
+          "generatedAtUtc": "2026-10-21T14:55:21.087Z",
+          "attemptedAtUtc": "2026-10-21T14:56:03.964Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "saar-keth--enforcers-comics-01.png",
+            "saar-keth--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "d20f95b1e4c5aaa33a2b989ba55109e77524accc3bb999776512507538ef0dcd",
+            "51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee"
+          ],
+          "reasonFR": "Saar-Keth Inspecteur entier, peau ocre minéral pâle mouchetée, crâne ample adapté au biomask Enforcer et appendices crâniens courts. Masque argent à rainures longitudinales ; capteur lumineux au poignet clairement exposé et main levée en signal calme avec cinq doigts distincts. Une lame de traque portée basse dans l’autre main sert d’accessoire secondaire, sans geste d’attaque. Deux bras, deux jambes plantigrades et pieds larges griffus complets dans le cadre. Métal patiné et textile désert clair cohérents avec la lignée."
         }
       ],
       "nativeBytesMatch": true,
@@ -3718,6 +3832,142 @@
             "54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122"
           ],
           "reasonFR": "Exactement quatre bras organiques, quatre mains séparées et quatre raccords au thorax élargi ; une tête, un bassin et deux jambes. Les bras restent bas sans masquer les deux anneaux fermés creux à la ceinture. Peau brun rosé à taches violettes sombres, biomask argent patiné et protections Enforcer partielles. Extrémités complètes et lisibles."
+        }
+      ],
+      "nativeBytesMatch": true,
+      "generationMethod": "builtin-imagegen",
+      "canonicalFidelityCertified": false,
+      "animated": false,
+      "mapPlacementVerified": false,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "four-armed--enforcers-comics-07",
+      "groupId": "four-armed",
+      "variant": 7,
+      "nameFR": "Inspecteur des passages",
+      "repoPngPath": "public/game/production/enforcers-v612/four-armed/enforcers-comics-07.png",
+      "nativeSourceName": "exec-438b08c1-74fc-42e4-964d-8ddf39dced0b.png",
+      "sha256": "2aa01f3efc4e8d9b5fcc01a1ed5847d4a01b7316658ce5cf825cc3b31e008d2a",
+      "bytes": 2494584,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        62,
+        5,
+        1022,
+        1530
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "edgeAlphaMax": 7,
+      "alphaZeroPixels": 892314,
+      "generatedAtUtc": "2026-10-21T14:55:34.700Z",
+      "receiptCreatedAtUtc": "2026-10-21T14:56:39.411Z",
+      "timestampEvidenceFR": "Horodatage de modification du fichier natif relevé lors de la sauvegarde du reçu ; heure exacte du service de génération non fournie.",
+      "promptExact": "Use case: precise-object-edit. Correct ONLY the two hands and forearms on the RIGHT SIDE OF THE IMAGE of this four-armed Yautja. Remove the circular disc they are gripping. Keep exactly FOUR organic arms, FOUR clearly separated complete organic hands, TWO legs, one head and one pelvis. On the right side of the image, lower the LOWER ARM's hand toward the thigh, and position the UPPER ARM's hand a little higher and outward; the two hands must have clear empty space between their complete silhouettes. Both hands are relaxed, empty, anatomically connected to their own wrist, forearm, elbow and distinct torso insertion. Do not create, hide, merge or remove any arm or hand.\nPreserve the other two arms on the LEFT side of the image, including the upper raised calm coordination hand, exactly. Preserve the mask, full-body proportions, biological skin and cranial tendrils, silver partial Enforcer armor, mesh, waistband sigil, wrist sensor, stance, feet, and the disc already hanging on the LEFT hip. Preserve native transparent alpha background and exact 1024 × 1536 dimensions. All four hands and all extremities must fit fully inside the frame. No scenery, no floor, no text, no additional characters.\n",
+      "references": [
+        {
+          "id": "four-armed--enforcers-comics-01",
+          "groupId": "four-armed",
+          "familyId": "enforcers-comics",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/imports/v85/library/6a7de42e6d844407eeb061f069e1ef0e6b2ee2578377a442bdad2fb6a0455944.png",
+          "sha256": "6a7de42e6d844407eeb061f069e1ef0e6b2ee2578377a442bdad2fb6a0455944",
+          "bytes": 2628914,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "2ae4c6b47130ea18b331278a4a4c16cb684e5ae2",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:four-armed-enforcers-comics-01:6a7de42e6d84",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/6a7de42e6d844407eeb061f069e1ef0e6b2ee2578377a442bdad2fb6a0455944.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        },
+        {
+          "id": "four-armed--blooded-01",
+          "groupId": "four-armed",
+          "familyId": "blooded",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122.png",
+          "sha256": "54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122",
+          "bytes": 2703951,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "b92749ac763ec983fba202ac509788ae1e4c83c8",
+          "sourceRegistry": "app/game/data/recentSpriteLibraryV85.json",
+          "sourceRegistryId": "import-v85:v6-cp01:four-armed-blooded-01:54a48d2a1d41",
+          "sourceCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+          "bytesVerifiedLocally": true,
+          "sha256Evidence": "Native reference restored from its pinned rawUrl and verified against SHA-256, byte count, PNG dimensions and Git blob SHA-1.",
+          "rawUrl": "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/536ac53335e440747f6eccedd2cd757d1f817a99/public/game/imports/v85/library/54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122.png",
+          "verifiedAtUtc": "2026-10-21T14:29:19.197Z"
+        }
+      ],
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Après séparation ciblée des mains : quatre bras organiques nettement raccordés, quatre mains distinctes entièrement visibles, une tête, un bassin et deux jambes. Main supérieure droite en signal calme, capteur et sceau de ceinture présents. Biomask Enforcer argenté, filet et protections partielles. Aucune main fusionnée ou supplémentaire.",
+        "limitationsFR": [
+          "La peau reste brun rosé, plus claire que la teinte terre chocolat prévue.",
+          "La marge droite est très réduite (deux pixels pour le contour d’alpha supérieur à 20) ; aucun contour visible n’est coupé.",
+          "Le visage biologique est couvert par le biomask.",
+          "L’appui plantigrade est une décision du projet ; fidélité canonique 1:1 non certifiée."
+        ],
+        "inspectedFrom": "native-output-view_image"
+      },
+      "attempts": [
+        {
+          "attemptIndex": 1,
+          "accepted": false,
+          "status": "native-output-rejected",
+          "nativeSourceName": "exec-9aba39e3-ae1a-49ce-94c5-b211e19daa58.png",
+          "sha256": "314e32cfbaaa76890523c6646595ebb5330bdfad692d7b3472c93db1f91d25e2",
+          "bytes": 2615067,
+          "promptExact": "Use case: stylized-concept. Asset type: a single native game character cutout, realistic high-detail creature and costume concept rendering.\nPrimary request: one entirely new adult individual, Lignée des Quatre-Bras, Enforcer 07 — Inspecteur des passages.\nInput image 1 is the same-lineage Enforcer costume and rendering reference. Image 2 is the same-lineage anatomy reference. Use references for consistency, but the written lineage and individual constraints below override any conflicting reference anatomy, equipment, pose or coloration. Do not duplicate the reference individual.\nScene: fully transparent alpha background, no scenery, no floor, no backdrop, no contact shadow, no vignette, no text, no watermark. Native output exactly 1024 × 1536 pixels RGBA.\nComposition: full-body single subject from head crest to both complete feet, standing calm, slight three-quarter front view. Entire figure and all accessories inside the frame, at least 8% clear margin around extremities. Balanced centered framing.\nLife stage / individual: adulte du groupe, proportions matures; individu masculin; reliefs superficiels plus usés.\nRequired lineage anatomy: Quatre bras organiques : deux paires, avec des implantations distinctes sur un thorax élargi ; un seul cou et une seule tête. Visage large à front bosselé et rainure centrale, quatre mandibules puissantes autour d’une bouche dentée ; dreadlocks sombres. Masse musculaire importante, peau claire brun rosé mouchetée ; plaques simples portées aux épaules et avant-bras. Deux jambes dans le projet. Les pieds ne sont pas entièrement visibles dans les panels retenus : l’appui plantigrade choisi est une hypothèse de design, pas une certitude tirée de ces images. Exactement quatre bras organiques, quatre implantations et quatre mains visibles ou clairement raccordées, un seul bassin et deux jambes. Ne pas cacher la seconde paire derrière une cape.\nCostume: Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Masque argent à rainures longitudinales, capteur de poignet lisible, main libre en signal calme.\nMaterials/palette: terre chocolat skin; argent patiné metal with noir mat accents. Distinguish living skin, worn metal, cloth and mesh. Functional opaque pelvic cloth; no exposed genitals. No full military breastplate replacing the partial comic Enforcer armor.\nPose: geste discret de coordination.\nExactly FOUR ORGANIC ARMS, two distinct shoulder-girdle insertion pairs on one wide thorax; show four connected upper arms, four elbows, four wrists, four hands. Keep all four hands clearly separated and visible. One head, one pelvis, TWO plantigrade legs. No cape hiding lower arms. No mechanical arm additions.\nNo prosthetic limbs.\nKey readable accessories: longitudinal grooves on the silver Enforcer mask, compact inspection sensor on wrist with small readable device surfaces but no lettering; small inspection sigil at belt. One free hand raised only slightly in a calm coordination signal. Other hand remains fully visible.\nLighting: soft neutral studio illumination, controlled edge highlights, lifelike texture and sculptural volume. Original individual and original biomask details, consistent family style. Single static pose, no weapon action, no other characters.\n",
+          "generatedAtUtc": "2026-10-21T14:53:12.141Z",
+          "attemptedAtUtc": "2026-10-21T14:54:01.994Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "four-armed--enforcers-comics-01.png",
+            "four-armed--blooded-01.png"
+          ],
+          "inputReferenceSha256": [
+            "6a7de42e6d844407eeb061f069e1ef0e6b2ee2578377a442bdad2fb6a0455944",
+            "54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122"
+          ],
+          "reasonFR": "Les quatre bras sont raccordés, mais les deux mains à droite de l’image se superposent sur un même disque et leur décompte manque de lisibilité. Édition ciblée pour libérer et séparer ces deux mains, sans changer le reste du personnage."
+        },
+        {
+          "attemptIndex": 2,
+          "accepted": true,
+          "status": "native-output-accepted",
+          "nativeSourceName": "exec-438b08c1-74fc-42e4-964d-8ddf39dced0b.png",
+          "sha256": "2aa01f3efc4e8d9b5fcc01a1ed5847d4a01b7316658ce5cf825cc3b31e008d2a",
+          "bytes": 2494584,
+          "promptExact": "Use case: precise-object-edit. Correct ONLY the two hands and forearms on the RIGHT SIDE OF THE IMAGE of this four-armed Yautja. Remove the circular disc they are gripping. Keep exactly FOUR organic arms, FOUR clearly separated complete organic hands, TWO legs, one head and one pelvis. On the right side of the image, lower the LOWER ARM's hand toward the thigh, and position the UPPER ARM's hand a little higher and outward; the two hands must have clear empty space between their complete silhouettes. Both hands are relaxed, empty, anatomically connected to their own wrist, forearm, elbow and distinct torso insertion. Do not create, hide, merge or remove any arm or hand.\nPreserve the other two arms on the LEFT side of the image, including the upper raised calm coordination hand, exactly. Preserve the mask, full-body proportions, biological skin and cranial tendrils, silver partial Enforcer armor, mesh, waistband sigil, wrist sensor, stance, feet, and the disc already hanging on the LEFT hip. Preserve native transparent alpha background and exact 1024 × 1536 dimensions. All four hands and all extremities must fit fully inside the frame. No scenery, no floor, no text, no additional characters.\n",
+          "generatedAtUtc": "2026-10-21T14:55:34.700Z",
+          "attemptedAtUtc": "2026-10-21T14:56:39.411Z",
+          "timestampEvidence": "Horodatage de modification du fichier natif observé à la sauvegarde ; heure exacte du service non fournie.",
+          "inputReferenceNames": [
+            "exec-9aba39e3-ae1a-49ce-94c5-b211e19daa58.png"
+          ],
+          "inputReferenceSha256": [
+            "314e32cfbaaa76890523c6646595ebb5330bdfad692d7b3472c93db1f91d25e2"
+          ],
+          "reasonFR": "Après séparation ciblée des mains : quatre bras organiques nettement raccordés, quatre mains distinctes entièrement visibles, une tête, un bassin et deux jambes. Main supérieure droite en signal calme, capteur et sceau de ceinture présents. Biomask Enforcer argenté, filet et protections partielles. Aucune main fusionnée ou supplémentaire.",
+          "inputNativeSourceName": "exec-9aba39e3-ae1a-49ce-94c5-b211e19daa58.png"
         }
       ],
       "nativeBytesMatch": true,
