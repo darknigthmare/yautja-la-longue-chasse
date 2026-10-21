@@ -1,0 +1,5641 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-21T10:10:47.601Z",
+  "sourceFingerprint": "6b2c9d1050e1681a8965daff41f65b769e41f7b34d6ef7ba41abcbc28eb0e1c5",
+  "generator": "Game WebGL renderer via Chromium canvas PNG export",
+  "sourceTextureSize": 1024,
+  "map": {
+    "width": 1024,
+    "height": 512,
+    "projection": "equirectangular",
+    "longitudeRange": [
+      -180,
+      180
+    ],
+    "latitudeRange": [
+      90,
+      -90
+    ]
+  },
+  "globe": {
+    "width": 512,
+    "height": 512,
+    "longitude": -25,
+    "latitude": 15,
+    "radiusFraction": 0.43
+  },
+  "alphaConvention": "PNG straight alpha; effects and land are independent RGBA layers. The surface map is the opaque underlay.",
+  "compositionOrder": [
+    "surface",
+    "land",
+    "night",
+    "emissive",
+    "clouds",
+    "weather",
+    "aurora",
+    "atmosphere"
+  ],
+  "notes": [
+    "Maps and globe effects have different projections and cannot be superimposed without reprojection.",
+    "The downloadable globe is the complete reference composition. Albedo excludes lighting and atmospheric layers.",
+    "Atmospheric scattering is an artistic approximation. No physical height, normal or roughness maps are inferred.",
+    "Some identical night or atmosphere files are intentionally reusable between planets with the same illumination or atmosphere palette."
+  ],
+  "complete": true,
+  "planets": [
+    {
+      "id": "korthas",
+      "name": "Korthas",
+      "biome": "temperate",
+      "recipe": {
+        "id": "korthas",
+        "land": "/game/planets/v101/runtime/land-temperate.webp",
+        "surface": "/game/planets/v101/runtime/surface-water.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#67734b",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 8507,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/korthas/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "620a760825daed19efdd7952244cc0ed3cf82ffb8c78e2dc737aef71ab4cdd90",
+          "bytes": 955219,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/korthas/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c73bfefe7b941f54a41eec6d96b4a03ab33f55745473ab965600bbf0acffb896",
+          "bytes": 583193,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 269523,
+            "translucentPixels": 4992,
+            "opaquePixels": 249773
+          }
+        },
+        {
+          "path": "planets/korthas/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "fa00d985d1ca35ac31e291239dbc2748ba9e7ea946e33c03c439108f85a4e7ce",
+          "bytes": 759181,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/korthas/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7438879f4a18014dc1c9559fb1cabd86f2a229724ca65ebaa588b2ebd5266e9f",
+          "bytes": 1130442,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 28102,
+            "translucentPixels": 496186,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/korthas/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ce3b3dee0e1c68e79b9ad0db357e079f9b06e1d52b41f3b0e33bbaf02b051153",
+          "bytes": 710434,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 165745,
+            "translucentPixels": 358543,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/korthas/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9dd4548d7ec0b143aa44eb5d7c7710136d2455a4679e26400fe35dd32c03911b",
+          "bytes": 29338,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/korthas/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "14122561f9b5fc630dbe26b4bcc6c6ed5a7f99ad56aea21c7be8b392a8b3a62f",
+          "bytes": 375413,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31305,
+            "opaquePixels": 150197
+          }
+        },
+        {
+          "path": "planets/korthas/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/korthas/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "thalassa",
+      "name": "Thalassa",
+      "biome": "jungle",
+      "recipe": {
+        "id": "thalassa",
+        "land": "/game/planets/v101/runtime/land-jungle.webp",
+        "surface": "/game/planets/v101/runtime/surface-water.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#315e3b",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 103924,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/thalassa/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0d0eea1964b89fcdbe2432864b05153c7cb2cf6ecd77d4c26d6f7ec1b1cd0f98",
+          "bytes": 937044,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/thalassa/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "de1596c00b079a655ca1c2f4ccf93f95f878b93965f34a7226a7f1ada27fba69",
+          "bytes": 533883,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 286685,
+            "translucentPixels": 4116,
+            "opaquePixels": 233487
+          }
+        },
+        {
+          "path": "planets/thalassa/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e2825b1623681b659c6b04d1ff33ce2094647c345950421ea15fb731a8c71c48",
+          "bytes": 763926,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/thalassa/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7572d4e7fdfc19fde46851fd030e355ee8fb6c30e949943ead320e8719261722",
+          "bytes": 1168499,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 7874,
+            "translucentPixels": 516414,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/thalassa/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "163f3f508e230bed4f81181cd8f943cc0c6b1834b7e16e5d4f022a781098714e",
+          "bytes": 707838,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 161791,
+            "translucentPixels": 362497,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/thalassa/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5820aef2f772b76e2ed636d112fabeaaa4037a377672ff790707c0c93f41a123",
+          "bytes": 27292,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/thalassa/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "ae3935e1ec0a1c747617c7762be218595f80a6cbe5c20bff6b5bff1bfd8b0bec",
+          "bytes": 386505,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31273,
+            "opaquePixels": 150229
+          }
+        },
+        {
+          "path": "planets/thalassa/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/thalassa/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "vitriol",
+      "name": "Vitriol",
+      "biome": "swamp",
+      "recipe": {
+        "id": "vitriol",
+        "land": "/game/planets/v101/runtime/land-swamp.webp",
+        "surface": "/game/planets/v101/runtime/surface-acid.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#54634a",
+        "atmosphereColor": "#c6ef43",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 111831,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/vitriol/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "63c563569d0f4631857643032e56f3d2c95d9571968e797c640029450074dae3",
+          "bytes": 1009487,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/vitriol/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0e479adcf851b7d816bef882201db274136a0c2a8139d7f321add89c2ce2a29b",
+          "bytes": 566626,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 275134,
+            "translucentPixels": 4592,
+            "opaquePixels": 244562
+          }
+        },
+        {
+          "path": "planets/vitriol/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8eeedb17297c7598d39dc69babd2ef4cb2dcd8d26f00be9e0a080e9b245ef73a",
+          "bytes": 843348,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/vitriol/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f1508e19966b57e4ee171b34305126002cbc9ac267dccdb72eb3aac7215ae7aa",
+          "bytes": 1174983,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 5613,
+            "translucentPixels": 518675,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/vitriol/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "36c4a64964c47894890a5372eb3b8e6f12afa5fe88044e6043e4a700bc938012",
+          "bytes": 1156768,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 11050,
+            "translucentPixels": 513238,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/vitriol/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8137e74850cb5f7c9dce64dc579dd9c3af009f386dc9d301e0fd5a0883d8502a",
+          "bytes": 28496,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/vitriol/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "7c12ad3b6a1b902c15989f557e0a59c1a36c5db8efaa21e91189f30cabb2b165",
+          "bytes": 393283,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31268,
+            "opaquePixels": 150234
+          }
+        },
+        {
+          "path": "planets/vitriol/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "ec7de48c287fef4c8e9e12726dc6e13ea66594277bcdb242c6ecc1d67df6f88a",
+          "bytes": 80291,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/vitriol/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "nivalis",
+      "name": "Nivalis",
+      "biome": "snow",
+      "recipe": {
+        "id": "nivalis",
+        "land": "/game/planets/v101/runtime/land-snow.webp",
+        "surface": "/game/planets/v101/runtime/surface-ice.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-low.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#d4e0df",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.28,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0.42,
+        "emission": 0,
+        "seed": 119738,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/nivalis/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f947e98c93b71d5de910734a2857d304ededf49e01594a16f71f566652beec04",
+          "bytes": 1118488,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nivalis/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "751d76388ff0aa009f0cb31acf5501c0f6a4a0161333a58f3036c922b2af16ba",
+          "bytes": 522786,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 312428,
+            "translucentPixels": 5423,
+            "opaquePixels": 206437
+          }
+        },
+        {
+          "path": "planets/nivalis/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "33babc14d691354366a46c4ecaeac2fee55dac32ec2d997a9d0e002255739a87",
+          "bytes": 1020355,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nivalis/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7cfd97c5fe4dc545c69b57b471ae731900340595f47dd41a6713b0a92758ef6e",
+          "bytes": 885995,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 120524,
+            "translucentPixels": 403764,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nivalis/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8f79741cfda5f2348b37ef8e5ea5e7d53295c5143148193b9ed6c929b82452de",
+          "bytes": 704685,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 160596,
+            "translucentPixels": 363692,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nivalis/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "32fa13e27d93e50daf92218078178414d186f7348572b460f1378413bd6904e5",
+          "bytes": 31332,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nivalis/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "209c8319c35e630d337903290e09285e144d814f4e98c69752914e9a00a7b945",
+          "bytes": 371861,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31297,
+            "opaquePixels": 150205
+          }
+        },
+        {
+          "path": "planets/nivalis/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nivalis/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nivalis/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4948e85cf6646772aadca37bbda45102c6dc4419e33a395a8784a20b9f067fc5",
+          "bytes": 464628,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 105,
+            "transparentPixels": 324529,
+            "translucentPixels": 199759,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "serak",
+      "name": "Serak",
+      "biome": "desert",
+      "recipe": {
+        "id": "serak",
+        "land": "/game/planets/v101/runtime/land-desert.webp",
+        "surface": "/game/planets/v101/runtime/surface-sand.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#b79568",
+        "atmosphereColor": "#d7bb8a",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 127645,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/serak/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "28a1f607e03112a4fe0ad4d1596cda7ec003de424b3cd2796dcc5163908e7289",
+          "bytes": 968324,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/serak/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c0ebf98d88cf5c41b67765749cbf2b1d415c832f71a66820c4c0221f92f2c124",
+          "bytes": 611621,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 264127,
+            "translucentPixels": 3186,
+            "opaquePixels": 256975
+          }
+        },
+        {
+          "path": "planets/serak/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "d1fc2e28663f925b58d1c0ef26a864480fe06d0e1c5bfe0b72cb2c3520b004af",
+          "bytes": 748789,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/serak/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7d0534fd0287bdd83784dc9dc37d4f21cd63d915e4baddaf020901bcda12b928",
+          "bytes": 966350,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 64796,
+            "translucentPixels": 459492,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/serak/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4ac6a8fd5420d0cb7db41f08905c1e0ac06d17f5c14da8f6e95fa916225caa39",
+          "bytes": 1139998,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 15474,
+            "translucentPixels": 508814,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/serak/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e5dd7db0838ff2a9d065d66ff42b9559388acbedda6188f5c1cdaa60b13dfa25",
+          "bytes": 24751,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/serak/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "76efc5d9a710538473caeb9a4a2a0a55f0cf1e33951edc8e77803b5de920207a",
+          "bytes": 350732,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31302,
+            "opaquePixels": 150200
+          }
+        },
+        {
+          "path": "planets/serak/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1062ae787c829c0f4bcec1a412d9c373a37169584030019c9f2c393e969591c4",
+          "bytes": 78974,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/serak/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "pyroclaste",
+      "name": "Pyroclaste",
+      "biome": "volcanic",
+      "recipe": {
+        "id": "pyroclaste",
+        "land": "/game/planets/v101/runtime/land-volcanic.webp",
+        "surface": "/game/planets/v101/runtime/surface-lava.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-ash.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#403a3d",
+        "atmosphereColor": "#d18a68",
+        "cloudOpacity": 0.16,
+        "weatherOpacity": 0.22,
+        "auroraOpacity": 0,
+        "emission": 0.5,
+        "seed": 135552,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/pyroclaste/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8afbac4ec872bb6d040e1e4e19deb52db84499f46688c196571bce757ee8c953",
+          "bytes": 879391,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/pyroclaste/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4df8d6757810e044242541fb9f36d6bb2f8cf8df9752a407eb248b1e3aaa4e6b",
+          "bytes": 564604,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 251674,
+            "translucentPixels": 3798,
+            "opaquePixels": 268816
+          }
+        },
+        {
+          "path": "planets/pyroclaste/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "946466dcaec9d9d1eb3ac5449adee3fe52bec0a3b2fe35e1286820da01111805",
+          "bytes": 660675,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/pyroclaste/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "031796bdd7650eba2a4881672e7b9ed9df9be617dcb80de959568e90e50a5388",
+          "bytes": 1047684,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 40,
+            "transparentPixels": 43729,
+            "translucentPixels": 480559,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/pyroclaste/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e320f55a062dd2f2c43434c3f8d27680aec5631002cb0f57e31061147eb48230",
+          "bytes": 815482,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 56,
+            "transparentPixels": 199288,
+            "translucentPixels": 325000,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/pyroclaste/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "081b6798429225a3f7eeaec157838e843542e84520901e3faa281cf96cbc4ac9",
+          "bytes": 26178,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/pyroclaste/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "ed86451a84e68659748d52224ed587dd018e58b9729be758fc6b20812a3aa077",
+          "bytes": 353154,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31301,
+            "opaquePixels": 150201
+          }
+        },
+        {
+          "path": "planets/pyroclaste/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "2379839587685744708420e3624c632c0e8b84216a37c6d8a31506dccb59019f",
+          "bytes": 75836,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/pyroclaste/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/pyroclaste/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "af1b50ae0fa0ba9026ddb63368c885d7548adb4e31b092bf65d7d5b23f25c96c",
+          "bytes": 48103,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 69,
+            "transparentPixels": 268816,
+            "translucentPixels": 255472,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "halycon",
+      "name": "Halycon",
+      "biome": "salt",
+      "recipe": {
+        "id": "halycon",
+        "land": "/game/planets/v101/runtime/land-salt.webp",
+        "surface": "/game/planets/v101/runtime/surface-brine.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#c5bdaa",
+        "atmosphereColor": "#d7bb8a",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 143459,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/halycon/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e664926edb981327eb246e49e8bcd5ae0e243e36ecef56c840b1bb451c881313",
+          "bytes": 947776,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/halycon/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "d95ff8186e1f29e01ca9bc1ba6b70962ce86823e04a6dbd2370fe2e4235780b8",
+          "bytes": 471925,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 311228,
+            "translucentPixels": 4356,
+            "opaquePixels": 208704
+          }
+        },
+        {
+          "path": "planets/halycon/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9a068cb0a41dd9cc320928e2c224cb5885656ce80a6855fb40ff199a2f477d11",
+          "bytes": 824866,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/halycon/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5259673cb531e5c8740ab01123475fe00dffa5b8b88bac360a75a708fc9d5f85",
+          "bytes": 973771,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 57073,
+            "translucentPixels": 467215,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/halycon/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "eca9236187cce9bff72812b3515695c290c435ced12d0771bd1dc0eb26deac51",
+          "bytes": 1142579,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 14128,
+            "translucentPixels": 510160,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/halycon/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5b058ba1d25bcbd46c9c671a143623f91aa99c828fd41d0e09fcaecf06a847ab",
+          "bytes": 27833,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/halycon/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "2c185fb1a2619930e957a7da9a2c038f36ce4edbf55155e755de393e5d5afee0",
+          "bytes": 345652,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31303,
+            "opaquePixels": 150199
+          }
+        },
+        {
+          "path": "planets/halycon/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1062ae787c829c0f4bcec1a412d9c373a37169584030019c9f2c393e969591c4",
+          "bytes": 78974,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/halycon/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "uranth",
+      "name": "Uranth",
+      "biome": "irradiated",
+      "recipe": {
+        "id": "uranth",
+        "land": "/game/planets/v101/runtime/land-irradiated.webp",
+        "surface": "/game/planets/v101/runtime/surface-radioactive.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#a7ff38",
+        "atmosphereColor": "#a7ff38",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.12,
+        "auroraOpacity": 0.28,
+        "emission": 0.28,
+        "seed": 151366,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/uranth/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0a62e26b95c3130bc9e6d88fddd8566c4c9cfba85aa991dbb4d2b72c3d55c90d",
+          "bytes": 1000220,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/uranth/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "cef08f37cd8f4eb47f3bda9fb52c53e9d54da834306fa0167519470fd9723e5e",
+          "bytes": 601624,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 269260,
+            "translucentPixels": 4545,
+            "opaquePixels": 250483
+          }
+        },
+        {
+          "path": "planets/uranth/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7c0ecca917ca0146735b5c56b8d2266a3a22d0f93460c12fdc4dbbfe1acf2c10",
+          "bytes": 765853,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/uranth/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b5ec0945e6c3e0c2a75fafce4e5d66df90206433e5685b1ca6fdc9f2f2f8ed85",
+          "bytes": 1128770,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 26686,
+            "translucentPixels": 497602,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/uranth/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4858b53d02e2bbd1cd042dc5ea133bc90bec902cf31e11fc766ef4b4b9c22c49",
+          "bytes": 1084215,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 18694,
+            "translucentPixels": 505594,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/uranth/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "07d44c72ac6e62df52490b9c6f4e2f5f2a847f5544fc78a2584372306a0e5df2",
+          "bytes": 27951,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/uranth/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "14f809f86c1cb1ff7d8a52c8cdcdd536b657ba094f0e27b080a652c33c7e21a3",
+          "bytes": 389936,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31295,
+            "opaquePixels": 150207
+          }
+        },
+        {
+          "path": "planets/uranth/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "bf4dccad441a83df20fd5e2f8258dcc84172d895fd71d44767ce8df0a97b66ed",
+          "bytes": 81629,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/uranth/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/uranth/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0916b2a47a4c7e5ab72a3f359d0a9bab8e7b7924240c144184ce172368fb3863",
+          "bytes": 83140,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 48,
+            "transparentPixels": 250483,
+            "translucentPixels": 273805,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/uranth/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a105345b3c2e3006a112188ae088ba1a39ffbcc072b678867265adbdffae10b3",
+          "bytes": 411703,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 70,
+            "transparentPixels": 341005,
+            "translucentPixels": 183283,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "amethys",
+      "name": "Améthys",
+      "biome": "crystal",
+      "recipe": {
+        "id": "amethys",
+        "land": "/game/planets/v101/runtime/land-crystal.webp",
+        "surface": "/game/planets/v101/runtime/surface-crystal.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#be90ec",
+        "atmosphereColor": "#be90ec",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0.06,
+        "seed": 159273,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/amethys/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "678d6f8384de4ac404cc7e3176164141cb2842b15db3aca0651a088eb0cdd302",
+          "bytes": 1066471,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/amethys/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7359c7d4f2644380c31f62fcd49454c64c80ad9e377397cc2ecdc566b8a2e3ad",
+          "bytes": 583917,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 278103,
+            "translucentPixels": 4854,
+            "opaquePixels": 241331
+          }
+        },
+        {
+          "path": "planets/amethys/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e423c7d401cce4c5069857762aa9afc4f93f16e5470c7c26f182d81277ed7d8e",
+          "bytes": 939904,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/amethys/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "fcaec12221542f1186e89107860b42942adc3144c1defbb3799c87e358cd72e7",
+          "bytes": 1125337,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 19303,
+            "translucentPixels": 504985,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/amethys/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "809832e90899d7a0ba33b747412aca96e9df9e5ff848b0a97d5c52c6fa532ccd",
+          "bytes": 695914,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 160186,
+            "translucentPixels": 364102,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/amethys/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "980fb8bcd6cfee446229fd3b49e5365e5fa871328a0eacf5f6a205d8c29b5249",
+          "bytes": 30000,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/amethys/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "416c2cdb5a0c028c286507e56009140dc2ce0ae904f098b500e3cef238421ed0",
+          "bytes": 383895,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31303,
+            "opaquePixels": 150199
+          }
+        },
+        {
+          "path": "planets/amethys/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "cfe72ad3715c4d2edd81b5f7e3b43b1e9dbe1f854b3341e6589d7edc9879d11a",
+          "bytes": 81233,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/amethys/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/amethys/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "19f8009bb195e8503bc7be2156231bb0a9b67a9e2c965ec0a45cb00aff1b75e0",
+          "bytes": 80628,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 15,
+            "transparentPixels": 242251,
+            "translucentPixels": 282037,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "mycelia",
+      "name": "Mycélia",
+      "biome": "fungal",
+      "recipe": {
+        "id": "mycelia",
+        "land": "/game/planets/v101/runtime/land-fungal.webp",
+        "surface": "/game/planets/v101/runtime/surface-spores.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/particles-spores.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#597969",
+        "atmosphereColor": "#b9d788",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.19,
+        "auroraOpacity": 0,
+        "emission": 0.13,
+        "seed": 167180,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/mycelia/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f52119e6d2060708ea16c56b16e3fe6fe9dc8bb6ee111c41983fbc5ce86652e9",
+          "bytes": 1005859,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/mycelia/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7e7c1c4efed4d987b55b0bf2e0b625442927d213c106d2d618f52e21ec7ff19a",
+          "bytes": 610394,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 265182,
+            "translucentPixels": 4552,
+            "opaquePixels": 254554
+          }
+        },
+        {
+          "path": "planets/mycelia/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "cd773286b433a20f1e8e8e133dd2b5bb067e747ea72a33a7e6c8d7241261365f",
+          "bytes": 841317,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/mycelia/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "1ac0a4b681d444fe9858401dd0f83a10be77022e382d073fc83ba48e14d4f509",
+          "bytes": 1127781,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 22960,
+            "translucentPixels": 501328,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/mycelia/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "dfcaab7407d6ebc84f76cb6ad3a96f2eb53b16820818edbcde321c0e8c6f7b75",
+          "bytes": 861302,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 51404,
+            "translucentPixels": 472884,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/mycelia/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "33432add3f06af788f34bd5ff0c1c6c83de7641d8b0eeb905a51012600f0a116",
+          "bytes": 28689,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/mycelia/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "d892239e9912441465df332a6f8317715589bed653e90ce1fbfba3962f340410",
+          "bytes": 367036,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31303,
+            "opaquePixels": 150199
+          }
+        },
+        {
+          "path": "planets/mycelia/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "d9f46eb71ac4b32eec8b72c13014f7fca826999f47f9dd5bfb895a7874515d6a",
+          "bytes": 81383,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/mycelia/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/mycelia/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4d78ae7c4e128f702f9e2fa903570f2bff0c06ed8f3ff8e553f9c9b7b3a41d07",
+          "bytes": 88354,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 17,
+            "transparentPixels": 254891,
+            "translucentPixels": 269397,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "nebulis",
+      "name": "Nébulis",
+      "biome": "mountain",
+      "recipe": {
+        "id": "nebulis",
+        "land": "/game/planets/v101/runtime/land-mountain.webp",
+        "surface": "/game/planets/v101/runtime/surface-mist.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-low.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#828a82",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.28,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 175087,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/nebulis/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "75228b9c48b7b27726dbbf71bc6a0148f153d1e45126022c4774b85d8ff860af",
+          "bytes": 1019677,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nebulis/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "3941d314bbe46cab16f7c9a885b9229abcf2bd236d1ed747ea15ef7c6bfce3f9",
+          "bytes": 625380,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 263584,
+            "translucentPixels": 4355,
+            "opaquePixels": 256349
+          }
+        },
+        {
+          "path": "planets/nebulis/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f82d12f86cf456198cafd92940276b911a858a98355ad5456072b2453ce798d8",
+          "bytes": 847438,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nebulis/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4888c0988f51496a09c4b22ce3da61d51d34b5fb31bccd34e32baf652947e8fe",
+          "bytes": 859640,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 61,
+            "transparentPixels": 134388,
+            "translucentPixels": 389900,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nebulis/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "2b4cb49f4f7fa9031480252083e124d9e4bc7c11ecad2a4811054e116d86902a",
+          "bytes": 1021744,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 108019,
+            "translucentPixels": 416269,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nebulis/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0e23cc62cc620b916c9f8c71432cbca2247cb9966f102a698812d8b39ee7fb0d",
+          "bytes": 27017,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nebulis/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "33a5e6b51debe34027e17f48c6e8f4e83919027b928484e986c6b014be805429",
+          "bytes": 359650,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31296,
+            "opaquePixels": 150206
+          }
+        },
+        {
+          "path": "planets/nebulis/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nebulis/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "abyssia",
+      "name": "Abyssia",
+      "biome": "ocean",
+      "recipe": {
+        "id": "abyssia",
+        "land": "/game/planets/v101/runtime/land-ocean.webp",
+        "surface": "/game/planets/v101/runtime/surface-water.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#9caa90",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 182994,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/abyssia/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "be539f4ef09376adbe8ec042d85e796275ec511c474930f53974295ad95be5ad",
+          "bytes": 995717,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/abyssia/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "2ad49d9383de407dc05f62a8bd77356de4756d86f7ee9ce3e669d83b0b7f2fdc",
+          "bytes": 562147,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 294765,
+            "translucentPixels": 4984,
+            "opaquePixels": 224539
+          }
+        },
+        {
+          "path": "planets/abyssia/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b833da612943bab46732fc6787a70af587ac8cc04861ab25e21f42e7cae190c2",
+          "bytes": 783461,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/abyssia/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "304751da5930e43e8e0a255c2bbb664c809973f44439a16da6241a6def90fab3",
+          "bytes": 1155022,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 5437,
+            "translucentPixels": 518851,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/abyssia/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "3f91b2896b66d95933c606e8a3e8578d25cd69df8eb6f8b7288b13e05a20f0c6",
+          "bytes": 677806,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 161730,
+            "translucentPixels": 362558,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/abyssia/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "517dfece9569ac68aea47ee0b3d4846c946ee9dda891bbfdc4f30f6d77371436",
+          "bytes": 30369,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/abyssia/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "6e67af2daf07a41d09d9e1e5278fd191eb67adaf0879ada90c0aafc447eddfb3",
+          "bytes": 379888,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31282,
+            "opaquePixels": 150220
+          }
+        },
+        {
+          "path": "planets/abyssia/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/abyssia/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "chloris",
+      "name": "Chloris",
+      "biome": "swamp",
+      "recipe": {
+        "id": "chloris",
+        "land": "/game/planets/v101/runtime/land-swamp.webp",
+        "surface": "/game/planets/v101/runtime/surface-water.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#54634a",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 190901,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/chloris/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "98d5fe2bb8d8a0eb794319609d90f5bf40f228f8790ceb939e45ed935d83ff6a",
+          "bytes": 910687,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/chloris/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "2692121163d52d375d32edfdb60ef9a626f60c9725fc221c88ba469049f3f266",
+          "bytes": 544802,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 285136,
+            "translucentPixels": 4590,
+            "opaquePixels": 234562
+          }
+        },
+        {
+          "path": "planets/chloris/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a6d77b427f8bd681b50212b99e79681d01e28e83149ca361880c1e608043d8fe",
+          "bytes": 716263,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/chloris/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "aaa65b855ff8daaa586c6ee3b6e2915a92c5900c49f5eeaf00f371f2aec77eee",
+          "bytes": 1158858,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 11754,
+            "translucentPixels": 512534,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/chloris/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "d699d65fbe1c36285168fa0e05a0552744a6fee240c784eb0050a8dabdbad3be",
+          "bytes": 692447,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 162539,
+            "translucentPixels": 361749,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/chloris/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "196d15aaf188149d5a8502f0357713d92dfc5c8d0fcde8eeea6ea98ced5c88b0",
+          "bytes": 28844,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/chloris/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "0cf724313dfe9b689caff0f4e30588aedb4f63df681a7dee55543944c5fc88f1",
+          "bytes": 378065,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31279,
+            "opaquePixels": 150223
+          }
+        },
+        {
+          "path": "planets/chloris/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/chloris/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "cryovant",
+      "name": "Cryovant",
+      "biome": "tundra",
+      "recipe": {
+        "id": "cryovant",
+        "land": "/game/planets/v101/runtime/land-tundra.webp",
+        "surface": "/game/planets/v101/runtime/surface-ice.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-low.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#838772",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.28,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0.42,
+        "emission": 0,
+        "seed": 198808,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/cryovant/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7ac1754ed85fb212ea23638caa4089938eb6a106601fee705a47da24b4637053",
+          "bytes": 1068176,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/cryovant/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "15fecb2c7b5f41c059a57356530cde9be6da850dcd257b5866c307ec280288db",
+          "bytes": 562033,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 287155,
+            "translucentPixels": 5354,
+            "opaquePixels": 231779
+          }
+        },
+        {
+          "path": "planets/cryovant/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5521ff6ecc1e434dd52fafb57aa52af4d839154093c8d89ec86efddfe8938bee",
+          "bytes": 973066,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/cryovant/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7aa2bb146637e766bf2c7bc20fa0c3750f8bb35918ff800e6deaa3fce9aaac49",
+          "bytes": 870492,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 139301,
+            "translucentPixels": 384987,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/cryovant/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "cf78c4bfbbc8fd43ae3aca04745b3ee49ba71512433207542b3902b894c4f457",
+          "bytes": 697291,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 165366,
+            "translucentPixels": 358922,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/cryovant/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b1ce3d97b69eee47ea6664c8000df3023cf3d3f119b1844558801e938c1b93e8",
+          "bytes": 30970,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/cryovant/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "377586d9b6f6b63a75fdf68365a0e464aeec9c12d5daae497ed5afd4544d473a",
+          "bytes": 360331,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31299,
+            "opaquePixels": 150203
+          }
+        },
+        {
+          "path": "planets/cryovant/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/cryovant/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/cryovant/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "6a5fea802c5ae2fe250e03d14c9b1cf6031d0a340defce97ee82694d868bac96",
+          "bytes": 459162,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 105,
+            "transparentPixels": 327905,
+            "translucentPixels": 196383,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "ochria",
+      "name": "Ochria",
+      "biome": "desert",
+      "recipe": {
+        "id": "ochria",
+        "land": "/game/planets/v101/runtime/land-desert.webp",
+        "surface": "/game/planets/v101/runtime/surface-sand.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#b79568",
+        "atmosphereColor": "#d7bb8a",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 206715,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/ochria/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8290154f53edd534bb5854e9b219c581738357ada11bc4c6bc7956436cb34753",
+          "bytes": 957143,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ochria/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "6b4e222b20e8e4f0e4aa2d1a1ce7f9e0451788f23692593666ed74f433b99535",
+          "bytes": 548163,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 298103,
+            "translucentPixels": 5036,
+            "opaquePixels": 221149
+          }
+        },
+        {
+          "path": "planets/ochria/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b0b981003c12001ccc56dd161a47c6d3c6757d2245f6588028a7b3fae1df257a",
+          "bytes": 772917,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ochria/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "67e77acdc9a83b6fcc2d2d7d3947bd9cff029e90af35bc9ff31491d94eab5d26",
+          "bytes": 971618,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 58608,
+            "translucentPixels": 465680,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ochria/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "76d84b782e2b986bea746d7a78e874175303b81daea5ee8b4f621b3d8c673927",
+          "bytes": 1148015,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 14206,
+            "translucentPixels": 510082,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ochria/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9bfb6dc7c8fc54bd47402e2649deb8ecb932f42ae91b8b706ea5d24a07192c8d",
+          "bytes": 31138,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ochria/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "59c5b3d5c7fcddb759a4875fba1fbfde59c3d21ec22ec35569f25cd8c82259e9",
+          "bytes": 351592,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31303,
+            "opaquePixels": 150199
+          }
+        },
+        {
+          "path": "planets/ochria/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1062ae787c829c0f4bcec1a412d9c373a37169584030019c9f2c393e969591c4",
+          "bytes": 78974,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ochria/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "obsidra",
+      "name": "Obsidra",
+      "biome": "volcanic",
+      "recipe": {
+        "id": "obsidra",
+        "land": "/game/planets/v101/runtime/land-volcanic.webp",
+        "surface": "/game/planets/v101/runtime/surface-lava.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-ash.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#403a3d",
+        "atmosphereColor": "#50baff",
+        "cloudOpacity": 0.16,
+        "weatherOpacity": 0.22,
+        "auroraOpacity": 0,
+        "emission": 0.5,
+        "seed": 214622,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/obsidra/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "3940571cee9f077fb92f2fb06d361996edf95d28179a91990654e7d75eeab2ba",
+          "bytes": 942698,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/obsidra/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9dedfc2c2a3c8efff7e3618642ebce94953a1badea3fef07db4c388bf17b7dda",
+          "bytes": 509795,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 286329,
+            "translucentPixels": 5091,
+            "opaquePixels": 232868
+          }
+        },
+        {
+          "path": "planets/obsidra/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ac7b60f7dcae65b4efcb915361e77104a0a27ca0b44d18cc6df2c973449252f9",
+          "bytes": 834469,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/obsidra/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4eaa0376e854c9e428620c278dfd0f98be3e0e107384411286ea7f022a7887d5",
+          "bytes": 1037269,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 40,
+            "transparentPixels": 57813,
+            "translucentPixels": 466475,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/obsidra/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "1e59e4e8d66b012a626786ed7364acf48e9727521d3db69773332ea1fc6b11f8",
+          "bytes": 828395,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 56,
+            "transparentPixels": 190356,
+            "translucentPixels": 333932,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/obsidra/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "cd3842c0a7bc6131f4d9b2f2fd6b4a3545c3eb7a0946ad00a521575fcaa3583f",
+          "bytes": 30475,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/obsidra/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "bcc754adb15d3c10e07b6b7d3f97ef79cddffe2ab6c1412af35b443bf5975cbf",
+          "bytes": 355301,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31300,
+            "opaquePixels": 150202
+          }
+        },
+        {
+          "path": "planets/obsidra/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1335aceec7afee28d162b49d412a214209bcc46ed4d2e407ca1ea15c0b353e8c",
+          "bytes": 85167,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/obsidra/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/obsidra/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9fabca8cc0cbf241940b40d3ca42333207f53b54370f5615a611f45971a1004d",
+          "bytes": 55151,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 232868,
+            "translucentPixels": 291420,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "salarka",
+      "name": "Salarka",
+      "biome": "salt",
+      "recipe": {
+        "id": "salarka",
+        "land": "/game/planets/v101/runtime/land-salt.webp",
+        "surface": "/game/planets/v101/runtime/surface-brine.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#c5bdaa",
+        "atmosphereColor": "#d7bb8a",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 222529,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/salarka/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "13205632f509f7e4557a4f91b937527f78b8f53980dc414f16ff44c1abdea29d",
+          "bytes": 949033,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/salarka/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a3ae93af2a4f2eba6de64a03925369bc802f57d4dad8948a92765aedd3adfcea",
+          "bytes": 555618,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 268968,
+            "translucentPixels": 3706,
+            "opaquePixels": 251614
+          }
+        },
+        {
+          "path": "planets/salarka/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b810c2096b0a63560add776dc0d6ffb182cb04a13b683e931da07f66b1c3d6f2",
+          "bytes": 771966,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/salarka/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "18de6053a758fdd085e2f23f29f512ab7a8132e2913311650ea9b954e30c750a",
+          "bytes": 969125,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 57952,
+            "translucentPixels": 466336,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/salarka/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "18639dbaceb67bfaa8479e667a62694476001d33c566186fcd98bc31535530fb",
+          "bytes": 1132226,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 29486,
+            "translucentPixels": 494802,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/salarka/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "84d27897da1ff3c589f4d17cd6f7c17229e4d787f97b8ffe4392f3a6e128cf54",
+          "bytes": 25670,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/salarka/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "eca5dcb9c01aa845a7557ad2ab75eab45a9bec3b958352fa9751e7d2d4ce53a2",
+          "bytes": 347592,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31304,
+            "opaquePixels": 150198
+          }
+        },
+        {
+          "path": "planets/salarka/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1062ae787c829c0f4bcec1a412d9c373a37169584030019c9f2c393e969591c4",
+          "bytes": 78974,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/salarka/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "radixa",
+      "name": "Radixa",
+      "biome": "irradiated",
+      "recipe": {
+        "id": "radixa",
+        "land": "/game/planets/v101/runtime/land-irradiated.webp",
+        "surface": "/game/planets/v101/runtime/surface-radioactive.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#63ffe1",
+        "atmosphereColor": "#63ffe1",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.12,
+        "auroraOpacity": 0.28,
+        "emission": 0.28,
+        "seed": 230436,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/radixa/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "50b19039c1bbbc06d8c84079eaec3fd3d680e2b9c0f6bedf9858a122b6297c13",
+          "bytes": 983358,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/radixa/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a2898ede0c5785cf97b2e81dd2160baf348c19febde9d2b1c04a30abb49694b7",
+          "bytes": 524331,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 303299,
+            "translucentPixels": 4284,
+            "opaquePixels": 216705
+          }
+        },
+        {
+          "path": "planets/radixa/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "1f03741f1576cd2623b8d94afbdfccbd6e3e50d5714a80a8ee4d71fbd0112525",
+          "bytes": 813697,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/radixa/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "de42b650f23b37464ee1384532359068d5a94c755a5b6dca4be13818f234b4e8",
+          "bytes": 1121611,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 29424,
+            "translucentPixels": 494864,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/radixa/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c67f98f7c20ef1b96aa2d3f87f750cacc1ad0800017ddfac310190ca215c7780",
+          "bytes": 1060441,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 18768,
+            "translucentPixels": 505520,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/radixa/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4f1af9010b409b514c233fede4da63a5e6aae9999aec939c2c07ed263841a2d4",
+          "bytes": 28047,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/radixa/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "30372f564de61d17d7d8b7ce979337bbefde74d744355e792295c55515dc7e4e",
+          "bytes": 375705,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31298,
+            "opaquePixels": 150204
+          }
+        },
+        {
+          "path": "planets/radixa/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "6cb5422f9b16003ed5df7cb92ae27680afd8a93357d7e314a5874163c9f5b6cb",
+          "bytes": 86303,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/radixa/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/radixa/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "08d73272a2d378dcfa8a1b2ae84e07dbcef81ccacb5103d49537c9ea472f24f9",
+          "bytes": 92127,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 47,
+            "transparentPixels": 216705,
+            "translucentPixels": 307583,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/radixa/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "76dc660f4cfe4b01731ab2243db7fac1a5633f307f2035d5a768c47711a6add5",
+          "bytes": 409496,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 339439,
+            "translucentPixels": 184849,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "prismara",
+      "name": "Prismara",
+      "biome": "crystal",
+      "recipe": {
+        "id": "prismara",
+        "land": "/game/planets/v101/runtime/land-crystal.webp",
+        "surface": "/game/planets/v101/runtime/surface-crystal.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#d7b2ef",
+        "atmosphereColor": "#d7b2ef",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0.06,
+        "seed": 238343,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/prismara/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8541e171861ccd0503d327a5b837ab2cfe9aa25c3111c79b3900ca7b22ab4cb7",
+          "bytes": 1005677,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/prismara/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5b0754a0a87d2e708e8b290ba255d5f0aef4c5ccf7826d7425f1f2a349fe31e9",
+          "bytes": 595782,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 270654,
+            "translucentPixels": 4451,
+            "opaquePixels": 249183
+          }
+        },
+        {
+          "path": "planets/prismara/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "71baadc2c729c3251cc44f8b5f52e2fee093fec068da91d254dc7f8508519570",
+          "bytes": 757880,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/prismara/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0429462cb66cee41d61db8a1c47b80f25e667299bead91ba788f97c35400e93d",
+          "bytes": 1133342,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 24227,
+            "translucentPixels": 500061,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/prismara/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "04aaa5d67d99588827017f85b758af2f5944266bf076cf10abf08d52532a1923",
+          "bytes": 704882,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 162683,
+            "translucentPixels": 361605,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/prismara/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ec9cc18d17f6422997730c34ab0454bf64deb7a8551089f017e57642803e1fd6",
+          "bytes": 27626,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/prismara/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "3965f90ca972561ed18363946e0d32f8c1558241b4c9966ab45618861cb0ea66",
+          "bytes": 379241,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31300,
+            "opaquePixels": 150202
+          }
+        },
+        {
+          "path": "planets/prismara/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "ff87f9ae1688d164f03e5cb79b3ce36539a331af6abf664eb4b71eb359d9f667",
+          "bytes": 81374,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/prismara/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/prismara/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "1d2bfc879d368f23ca03c2f3062ad262cf3aac51eaa2b66d1450e123bebe6ec7",
+          "bytes": 81336,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 15,
+            "transparentPixels": 249996,
+            "translucentPixels": 274292,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sporion",
+      "name": "Sporion",
+      "biome": "fungal",
+      "recipe": {
+        "id": "sporion",
+        "land": "/game/planets/v101/runtime/land-fungal.webp",
+        "surface": "/game/planets/v101/runtime/surface-spores.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/particles-spores.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#597969",
+        "atmosphereColor": "#d9d77b",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.19,
+        "auroraOpacity": 0,
+        "emission": 0.13,
+        "seed": 246250,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/sporion/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "38093aacf33c744d2201e1b1027a17bc98fb447e0402253903212defc57977fa",
+          "bytes": 1000041,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/sporion/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f8b64da2a00ae4a5b8a8eb1f01d1330822d96e9276fde85a990a3f62a88f7e6e",
+          "bytes": 556942,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 287895,
+            "translucentPixels": 3325,
+            "opaquePixels": 233068
+          }
+        },
+        {
+          "path": "planets/sporion/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "6165bca312eaf4863caa0bd017cc687cbca4a5a7a6eb33722a05680d3147852f",
+          "bytes": 833983,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/sporion/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ca302fdfeba59fdde5805da5069f9f96ccc244242ee4285f5ca92101ac8e8c56",
+          "bytes": 1126196,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 20153,
+            "translucentPixels": 504135,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/sporion/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4419ba3efaa1b27c788c571b8bab218d5b445bc28187eec3d04752806924819d",
+          "bytes": 855034,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 51463,
+            "translucentPixels": 472825,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/sporion/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "eef0ed80bb870b8e9135a11f6a88bb195d8eddcb2d83e1b813c33f564d2808af",
+          "bytes": 25222,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/sporion/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "bd021458a8ff2acc3e1121712093f4e3fa41613433065c3b94d698856a34278d",
+          "bytes": 380518,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31302,
+            "opaquePixels": 150200
+          }
+        },
+        {
+          "path": "planets/sporion/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "d2a93acddc7c7956df84e42d60a455b695dc627ec3a915d4142f8c59c75c9bc4",
+          "bytes": 80014,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/sporion/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/sporion/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "648542caa3deba0ba5e3cdfd2a13dca3be33e93f80280b7c47771282cb4f6a4d",
+          "bytes": 86009,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 21,
+            "transparentPixels": 233330,
+            "translucentPixels": 290958,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "aerune",
+      "name": "Aérune",
+      "biome": "temperate",
+      "recipe": {
+        "id": "aerune",
+        "land": "/game/planets/v101/runtime/land-temperate.webp",
+        "surface": "/game/planets/v101/runtime/surface-mist.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-low.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#67734b",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.28,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 254157,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/aerune/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "fa5ce77e9fbdcef3ec1ca9da3a67a04b7b0ee24b50633a703d092924276203da",
+          "bytes": 1002574,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/aerune/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8c401369931c69a8bc1e8fc4ff9cc247f1095588520f1c6bfbfda2fba2d18ac0",
+          "bytes": 559927,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 282425,
+            "translucentPixels": 4899,
+            "opaquePixels": 236964
+          }
+        },
+        {
+          "path": "planets/aerune/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "8586791993b2a22dbbca693ef5d08fecfb5312f321c9be48d2cfc032a085b300",
+          "bytes": 865792,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/aerune/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f491eb6c42da4a880557acda6463da36c18a753209fdf514b2c167603b872cbb",
+          "bytes": 847945,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 61,
+            "transparentPixels": 128406,
+            "translucentPixels": 395882,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/aerune/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5147598cca1f1b237eb35730d77936ae23e20a361ed5bbf8b4b16004d88e5e5d",
+          "bytes": 1029150,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 103533,
+            "translucentPixels": 420755,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/aerune/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "69e0b3cf56de348a8358510b95e0991257c139c2904a36b3bdba3e75096f692a",
+          "bytes": 30050,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/aerune/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5f590995d283d6c46031ad7953401909cb645dbaa0a15ec2c98e7aeaa921b374",
+          "bytes": 366562,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31294,
+            "opaquePixels": 150208
+          }
+        },
+        {
+          "path": "planets/aerune/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/aerune/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "azurielle",
+      "name": "Azurielle",
+      "biome": "ocean",
+      "recipe": {
+        "id": "azurielle",
+        "land": "/game/planets/v101/runtime/land-ocean.webp",
+        "surface": "/game/planets/v101/runtime/surface-water.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#9caa90",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 262064,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/azurielle/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ba1721963ce7cf1560bde21f50ae8966457ca577d9a026414690eeba5edc7a2d",
+          "bytes": 1013159,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/azurielle/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "058c5cfc3f387cffa2db22ca9ea07291cbe3b8ab0a6ddbeb6dbb82ce75ece117",
+          "bytes": 589870,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 280607,
+            "translucentPixels": 5230,
+            "opaquePixels": 238451
+          }
+        },
+        {
+          "path": "planets/azurielle/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a661cb2e98a64b5dd55c25ba1fe2280c5fac81cd71c3c5055a747d3e5b5ad591",
+          "bytes": 819585,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/azurielle/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "33a372a32c983c4e489475638b869e756201fe350fc74aad0caab61c5f22f937",
+          "bytes": 1164237,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 7986,
+            "translucentPixels": 516302,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/azurielle/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c05c67139843a9f69e0760991f2e90e4d98ab69eec938668472b56d3cefa368f",
+          "bytes": 662975,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 159882,
+            "translucentPixels": 364406,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/azurielle/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "369bbd1b3c226f9707fa0defb49589f00eaca59e901625520d65e3c9f5d75d05",
+          "bytes": 30930,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/azurielle/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "16c0ce12de9cc2e64116b49f713bdc3c283764b5560b612eafda49afe8fb6619",
+          "bytes": 365921,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31281,
+            "opaquePixels": 150221
+          }
+        },
+        {
+          "path": "planets/azurielle/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/azurielle/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "venefra",
+      "name": "Vénéfra",
+      "biome": "swamp",
+      "recipe": {
+        "id": "venefra",
+        "land": "/game/planets/v101/runtime/land-swamp.webp",
+        "surface": "/game/planets/v101/runtime/surface-acid.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-storm.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#54634a",
+        "atmosphereColor": "#f28dc7",
+        "cloudOpacity": 0.39,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 269971,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/venefra/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b91bf142a279f372e8fa3c682deee0cb6bf5197afd5dd6b6d3735cc41e332874",
+          "bytes": 1037602,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/venefra/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "510142275cf34b4afb61feab546bc5cbd5af53bbd6a3da9c51134f1f579e8267",
+          "bytes": 656239,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 222928,
+            "translucentPixels": 3151,
+            "opaquePixels": 298209
+          }
+        },
+        {
+          "path": "planets/venefra/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "86f4d566f99307bc0b1fa9d3c906f8c0d652aacc8762256f7153d4918051d1ee",
+          "bytes": 937269,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/venefra/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "21f2719eb80c49309dd7404b466eeef340b91ef884279677904cc94c5ab22b61",
+          "bytes": 1168204,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 98,
+            "transparentPixels": 5891,
+            "translucentPixels": 518397,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/venefra/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "14b0da19a674809d9d28019a2043323f0e0046bd5a2b8a9c24fc46f302368412",
+          "bytes": 1132276,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 8777,
+            "translucentPixels": 515511,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/venefra/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9277308bc77ea5b860c2a8204f76d6e1615f828d4aef293ed47856a2e09651e5",
+          "bytes": 22790,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/venefra/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "e756ef929b91590491ff2e85bc6d4e605748d760e9836a27bf2ef3e3509dec2b",
+          "bytes": 386642,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31269,
+            "opaquePixels": 150233
+          }
+        },
+        {
+          "path": "planets/venefra/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "aecb6bf9b0ceaab0908c58d234a3f21056efb3feb851ba8763715e4ed38ec3bd",
+          "bytes": 78991,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/venefra/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "boralis",
+      "name": "Boralis",
+      "biome": "snow",
+      "recipe": {
+        "id": "boralis",
+        "land": "/game/planets/v101/runtime/land-snow.webp",
+        "surface": "/game/planets/v101/runtime/surface-ice.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-low.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#d4e0df",
+        "atmosphereColor": "#82b8e2",
+        "cloudOpacity": 0.28,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0.42,
+        "emission": 0,
+        "seed": 277878,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/boralis/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "2e91635bbef0f36ec5fd2335e2f75cbf84c202c04d6600126b2ba16699bbb419",
+          "bytes": 1077988,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/boralis/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9308511cee36e88c9015c0a09c2c6389dde0e89f315bf434bf37957d3a5903c8",
+          "bytes": 569723,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 286511,
+            "translucentPixels": 3758,
+            "opaquePixels": 234019
+          }
+        },
+        {
+          "path": "planets/boralis/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "15c6edb87617b1a90fe80cec9b585425f9080bbf8b7227ef583df60d96b8e610",
+          "bytes": 958108,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/boralis/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "fec1f52465e85d3eeeeb8085c813ca54b7b397c79378483f4ff3c7d521db6f50",
+          "bytes": 878912,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 71,
+            "transparentPixels": 130408,
+            "translucentPixels": 393880,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/boralis/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "45a9d3019f688a7b92cec296b39d139a6b8cebca0e7b36868ccce178cd3041ba",
+          "bytes": 674780,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 167152,
+            "translucentPixels": 357136,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/boralis/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "29655091d6338165194c148595db5ed83ea851ac2c7fe94e8ca4e49e6381353d",
+          "bytes": 25564,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/boralis/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "23f4fb06870cbeea6d53cfbe74e8db681399c115c955f085678ad9a9e8eca4fa",
+          "bytes": 367797,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31300,
+            "opaquePixels": 150202
+          }
+        },
+        {
+          "path": "planets/boralis/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+          "bytes": 83580,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/boralis/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/boralis/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "bbdb91543d67fbe2de93c89546b3234b74669ed8580784bd392bae5065600e96",
+          "bytes": 450503,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 105,
+            "transparentPixels": 332051,
+            "translucentPixels": 192237,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "dunara",
+      "name": "Dunara",
+      "biome": "desert",
+      "recipe": {
+        "id": "dunara",
+        "land": "/game/planets/v101/runtime/land-desert.webp",
+        "surface": "/game/planets/v101/runtime/surface-sand.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#b79568",
+        "atmosphereColor": "#d7bb8a",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 285785,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/dunara/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9cc64663c4173e709641b0b49ed8306480f53a0f3442665eae4ef5d1141c54d8",
+          "bytes": 977450,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/dunara/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c572c095f34a41cc5a4795cbb5121ecaecbd5953fce094871b2ee7d6df34608f",
+          "bytes": 616141,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 267078,
+            "translucentPixels": 5014,
+            "opaquePixels": 252196
+          }
+        },
+        {
+          "path": "planets/dunara/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c8ee10320479cb641943c6afb639fb627da70d540c5996d98d9e7127f57c161c",
+          "bytes": 760405,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/dunara/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "192918f1d91f4db57ca28dbcad2a24e2e61a946bfee448422d6b8f06b7558456",
+          "bytes": 962768,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 55824,
+            "translucentPixels": 468464,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/dunara/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "dc78f1715212bc09c83b5478b0ef033637bd3bf0f744f9d7726b73884e6eb8f5",
+          "bytes": 1149566,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 12049,
+            "translucentPixels": 512239,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/dunara/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7c0d931a4fca13236e194b0cac686edd5286d77c6540c5e2e66970987f3d8ae7",
+          "bytes": 30665,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/dunara/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "29a3b0cef8eb9ff016b96b0ac54ea8eb854dbfbd555ee54d7a239b136e3f7f2d",
+          "bytes": 351245,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31302,
+            "opaquePixels": 150200
+          }
+        },
+        {
+          "path": "planets/dunara/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "1062ae787c829c0f4bcec1a412d9c373a37169584030019c9f2c393e969591c4",
+          "bytes": 78974,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/dunara/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "ignara",
+      "name": "Ignara",
+      "biome": "volcanic",
+      "recipe": {
+        "id": "ignara",
+        "land": "/game/planets/v101/runtime/land-volcanic.webp",
+        "surface": "/game/planets/v101/runtime/surface-lava.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-ash.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#403a3d",
+        "atmosphereColor": "#b785ed",
+        "cloudOpacity": 0.16,
+        "weatherOpacity": 0.22,
+        "auroraOpacity": 0,
+        "emission": 0.5,
+        "seed": 293692,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/ignara/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c019ccf8bbfb29eaa97c1ac4ec33e812104ade7d47ab75889156ccde0d62104c",
+          "bytes": 960317,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ignara/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "105fa8b136e58c13ee7f42dbc52ca4ea34c07225b97bc71810e36e8d9b490eb5",
+          "bytes": 556594,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 260887,
+            "translucentPixels": 4687,
+            "opaquePixels": 258714
+          }
+        },
+        {
+          "path": "planets/ignara/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "06816fd6d993cea4b5e50375e6c223b0fd283313acd19fdeb9abed9b9038adb1",
+          "bytes": 871788,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ignara/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "19e3d18b8fa6f96195d1001e776a90787368f72830c0f6b0e5667d444fcff204",
+          "bytes": 1045881,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 40,
+            "transparentPixels": 46303,
+            "translucentPixels": 477985,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ignara/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "52031f9ad3678ca50a9aa1ee06e172f2ffe0d5a5679dbc92c04f208334b763b4",
+          "bytes": 846567,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 56,
+            "transparentPixels": 176033,
+            "translucentPixels": 348255,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ignara/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a81b5e26d75dd217d7967df117d960a7404b0a1fe7f63c313e59829f73a7cf10",
+          "bytes": 28985,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/ignara/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "b80758e36b5f7f2da363ced1a64526167bdba6fa802a1681ef472a41322a74f0",
+          "bytes": 355689,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31302,
+            "opaquePixels": 150200
+          }
+        },
+        {
+          "path": "planets/ignara/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "2df6b8da42709361b0bf3a1491ae5e77332aa319d10dc879ac3d49c73788703c",
+          "bytes": 80779,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ignara/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/ignara/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "46e9648866c36ac01d455515b0de3bcd2c5f27c7631ee4731d1234a361250945",
+          "bytes": 50931,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 74,
+            "transparentPixels": 258714,
+            "translucentPixels": 265574,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "rosalith",
+      "name": "Rosalith",
+      "biome": "salt",
+      "recipe": {
+        "id": "rosalith",
+        "land": "/game/planets/v101/runtime/land-salt.webp",
+        "surface": "/game/planets/v101/runtime/surface-brine.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#c5bdaa",
+        "atmosphereColor": "#f0b095",
+        "cloudOpacity": 0.12,
+        "weatherOpacity": 0.18,
+        "auroraOpacity": 0,
+        "emission": 0,
+        "seed": 301599,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/rosalith/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "bb4b6d8f63f5831f926a47062446127fe1c96d10d41f03897a445bd5afdb5963",
+          "bytes": 968123,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/rosalith/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "fad9e2b2a2c91db24c602e8fd025e3dbdb730d1e8cef1e2784fbd8ae9f59b400",
+          "bytes": 549065,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 276001,
+            "translucentPixels": 4834,
+            "opaquePixels": 243453
+          }
+        },
+        {
+          "path": "planets/rosalith/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "b4c1a291ea977b9563ac8bcefaf1e770b9528590d4bdd546969254333af6fa25",
+          "bytes": 817755,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/rosalith/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "0c668334a5b28bfa488ab1cd8895efd6af1fd3705fb2049cc3f2ba43db71374c",
+          "bytes": 968604,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 61985,
+            "translucentPixels": 462303,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/rosalith/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "200c1484689780003fba75f6548783fa86f818bc1830192c4621f7b846828d3c",
+          "bytes": 1130505,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 45,
+            "transparentPixels": 16532,
+            "translucentPixels": 507756,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/rosalith/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "2db98686af15e9cba1b3a657991715044d5fee7837a33c8b4df1584da866f084",
+          "bytes": 29316,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/rosalith/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "611d72b9a9ee6ef901e85cf1bd8e08f1e60900d5bafa0b05cd469ceed3d4e932",
+          "bytes": 341209,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31301,
+            "opaquePixels": 150201
+          }
+        },
+        {
+          "path": "planets/rosalith/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "43108a9e140cd11c63baa2ee274a74805ab318c07590e186aec80f8bd77080b8",
+          "bytes": 78847,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/rosalith/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "viridia",
+      "name": "Viridia",
+      "biome": "irradiated",
+      "recipe": {
+        "id": "viridia",
+        "land": "/game/planets/v101/runtime/land-irradiated.webp",
+        "surface": "/game/planets/v101/runtime/surface-radioactive.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/haze-dust.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#e0ff3d",
+        "atmosphereColor": "#e0ff3d",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.12,
+        "auroraOpacity": 0.28,
+        "emission": 0.28,
+        "seed": 309506,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/viridia/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "972bb00af45cc5631a4d1944b956b5149936d0eea76a856253924674f07e2659",
+          "bytes": 1005427,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/viridia/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "da6e14d92f156c21f2df90769284af0c533777e4e1f31565f9cfc2052c527592",
+          "bytes": 603612,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 263301,
+            "translucentPixels": 2935,
+            "opaquePixels": 258052
+          }
+        },
+        {
+          "path": "planets/viridia/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "37d5aff19428c5053acff902775eb5ff4d64f00085498c4e2276ad3472dd3abd",
+          "bytes": 787011,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/viridia/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4fbefa27b090def276b2fb45bf5d9156b29d5024b4d9e222f1ce5a6d1d109ae1",
+          "bytes": 1129918,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 28166,
+            "translucentPixels": 496122,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/viridia/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "f5c94e76e2c9cf8e1940ea1cb6346c03adb723595e4b3cbbc7f130813d435c50",
+          "bytes": 1058748,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 30,
+            "transparentPixels": 29019,
+            "translucentPixels": 495269,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/viridia/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "4d73f7e2cde1f778b357bc742aea722a567ad6b603779a71fbd5fe7c1c554ab2",
+          "bytes": 22709,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/viridia/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "8e217f0b585b7c023ec1a3cf5cd395a6b80bc1d8e54bf705b3041288379fc405",
+          "bytes": 386929,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31300,
+            "opaquePixels": 150202
+          }
+        },
+        {
+          "path": "planets/viridia/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "8441ec77de4324b39663e42a8ee747bc9f2432e3cb8a106608392f589f3d17da",
+          "bytes": 80210,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/viridia/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/viridia/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "64002c1ce99eec9574b5cf9bd51ced68771d43f6cfed98a9d5f356939cead442",
+          "bytes": 76073,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 47,
+            "transparentPixels": 258052,
+            "translucentPixels": 266236,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/viridia/aurora.png",
+          "layer": "aurora",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7bd0d63b87518bee9fbc78644461b111cbfab7805dc3bbd4696460734a3fcc2b",
+          "bytes": 415757,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 70,
+            "transparentPixels": 338589,
+            "translucentPixels": 185699,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "iolexia",
+      "name": "Iolexia",
+      "biome": "crystal",
+      "recipe": {
+        "id": "iolexia",
+        "land": "/game/planets/v101/runtime/land-crystal.webp",
+        "surface": "/game/planets/v101/runtime/surface-crystal.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/clouds-low.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#9edcf3",
+        "atmosphereColor": "#9edcf3",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.07,
+        "auroraOpacity": 0,
+        "emission": 0.06,
+        "seed": 317413,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/iolexia/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9ab7923fc3fea8511a567cd66b8651715df4d7faf715e65337760732829ea642",
+          "bytes": 1071924,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/iolexia/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "c37fbcb57139b439f8767c9b01076a1e18e775917c51a808bb6cf79aa3690216",
+          "bytes": 583560,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 279149,
+            "translucentPixels": 4505,
+            "opaquePixels": 240634
+          }
+        },
+        {
+          "path": "planets/iolexia/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "01de7664b5dff1e0a249514e70f14b28600eb64de1560fb22d79ce851a259818",
+          "bytes": 955729,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/iolexia/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "d97e867c9071e5a2fa522472999dff412c7a7183b71b48b5d21a3620fee7a3a2",
+          "bytes": 1119478,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 30688,
+            "translucentPixels": 493600,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/iolexia/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "9fdc187e76fb3118d7d550682dbe0dbc36c629cc0469c07ea15205f7f29a73ac",
+          "bytes": 707360,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 18,
+            "transparentPixels": 157232,
+            "translucentPixels": 367056,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/iolexia/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a872c756cfd38797698526c7d45c0c085bc314d090de8d6330bd91f21300c7a6",
+          "bytes": 28696,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/iolexia/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "7ea2813429c9e54eeb09dce416c9b60b97c28cce8ce623e1c7cbe04da050b4e4",
+          "bytes": 379047,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31302,
+            "opaquePixels": 150200
+          }
+        },
+        {
+          "path": "planets/iolexia/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "49278dc949de4285b10173d57b97e8e599086e2911b533057a91198ed480bc2b",
+          "bytes": 84027,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/iolexia/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/iolexia/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a209ee7899d443e2630b19c140e7e4a6dd9e238884669d1e8abde646fba8a813",
+          "bytes": 80403,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 15,
+            "transparentPixels": 241412,
+            "translucentPixels": 282876,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "nyctera",
+      "name": "Nyctéra",
+      "biome": "fungal",
+      "recipe": {
+        "id": "nyctera",
+        "land": "/game/planets/v101/runtime/land-fungal.webp",
+        "surface": "/game/planets/v101/runtime/surface-spores.webp",
+        "clouds": "/game/planets/v101/runtime/clouds-cirrus.webp",
+        "weather": "/game/planets/v101/runtime/particles-spores.webp",
+        "aurora": "/game/planets/v101/runtime/aurora.webp",
+        "landColor": "#597969",
+        "atmosphereColor": "#b39ed6",
+        "cloudOpacity": 0.24,
+        "weatherOpacity": 0.19,
+        "auroraOpacity": 0,
+        "emission": 0.13,
+        "seed": 325320,
+        "mapping": "world-space-triplanar-mirrored"
+      },
+      "files": [
+        {
+          "path": "planets/nyctera/albedo.png",
+          "layer": "albedo",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "33bab11cde36a2a20e1c5df553e6388b45fe9d869602b0881539b89eb27b6c15",
+          "bytes": 1030888,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nyctera/land.png",
+          "layer": "land",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "ddec70d7d2c6fba6061cebe085a2805215af2a2c0351c96f3c6731f434a510b3",
+          "bytes": 584043,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 281900,
+            "translucentPixels": 5611,
+            "opaquePixels": 236777
+          }
+        },
+        {
+          "path": "planets/nyctera/surface.png",
+          "layer": "surface",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "583440c3ae9edbdb1908f22ba5818fe7ff61492d8238dc1feac624f0a699eecb",
+          "bytes": 882597,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nyctera/clouds.png",
+          "layer": "clouds",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "e1b2cd1a12ce34c07387364132641ecf5194de8d3c4453ddc9b335eb5763f1e8",
+          "bytes": 1127491,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 60,
+            "transparentPixels": 25856,
+            "translucentPixels": 498432,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nyctera/weather.png",
+          "layer": "weather",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "7c9a4d4e61f5d7fd0d58add5829190243326859e2b8a0d7f2a73a51c1328038b",
+          "bytes": 866585,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 46,
+            "transparentPixels": 51440,
+            "translucentPixels": 472848,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nyctera/mask.png",
+          "layer": "mask",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "a93f86f5d1c46309bff0b54e0d3dfa8641e0818da49ef5ead09b6aa89719a944",
+          "bytes": 31901,
+          "channels": 4,
+          "alpha": {
+            "min": 255,
+            "max": 255,
+            "transparentPixels": 0,
+            "translucentPixels": 0,
+            "opaquePixels": 524288
+          }
+        },
+        {
+          "path": "planets/nyctera/globe.png",
+          "layer": "composite",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "b9cb6c38cbba9aa240e21ef7e5cd40430348ddf60647c298bc57a01624407ca1",
+          "bytes": 375720,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 255,
+            "transparentPixels": 80642,
+            "translucentPixels": 31305,
+            "opaquePixels": 150197
+          }
+        },
+        {
+          "path": "planets/nyctera/atmosphere.png",
+          "layer": "atmosphere",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "8d8e6907fa21288524ff46a7d65a46b89e47cf2016326b17ddba3d9d7317a7b1",
+          "bytes": 81637,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 73,
+            "transparentPixels": 80642,
+            "translucentPixels": 181502,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nyctera/night.png",
+          "layer": "night",
+          "projection": "globe",
+          "width": 512,
+          "height": 512,
+          "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+          "bytes": 90397,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 122,
+            "transparentPixels": 110145,
+            "translucentPixels": 151999,
+            "opaquePixels": 0
+          }
+        },
+        {
+          "path": "planets/nyctera/emissive.png",
+          "layer": "emissive",
+          "projection": "map",
+          "width": 1024,
+          "height": 512,
+          "sha256": "5e5e22a2b27cb96cbbb304f630322c755154af1b93e5c33e122c3ac1a501432a",
+          "bytes": 94933,
+          "channels": 4,
+          "alpha": {
+            "min": 0,
+            "max": 17,
+            "transparentPixels": 237195,
+            "translucentPixels": 287093,
+            "opaquePixels": 0
+          }
+        }
+      ]
+    }
+  ],
+  "totalFiles": 288,
+  "totalBytes": 151141595,
+  "validation": {
+    "browserErrors": [],
+    "uniqueAlbedoLandMaskAndGlobe": true,
+    "alphaAndDimensionsVerified": true,
+    "sourceFingerprintStable": true
+  }
+}
