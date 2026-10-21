@@ -1,0 +1,58 @@
+{
+  "fixture": "Unmodified ClanWarAtlasV95 component and CSS, Korthas simulation",
+  "renderer": "Chromium / software WebGL",
+  "checks": [
+    {
+      "name": "desktop globe: no horizontal overflow",
+      "viewport": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "desktop: globe territory click",
+      "territory": "CON-T01"
+    },
+    {
+      "name": "desktop: map neighbor click",
+      "source": "CON-T01",
+      "target": "CON-T02",
+      "territoryCount": 36
+    },
+    {
+      "name": "desktop: natural/control colors",
+      "terrainOpacity": 0.08,
+      "controlOpacity": 0.6
+    },
+    {
+      "name": "desktop map: no horizontal overflow",
+      "viewport": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "mobile globe: no horizontal overflow",
+      "viewport": 390,
+      "scroll": 390
+    },
+    {
+      "name": "mobile: globe territory click",
+      "territory": "CON-T01"
+    },
+    {
+      "name": "mobile: map neighbor click",
+      "source": "CON-T01",
+      "target": "CON-T02",
+      "territoryCount": 36
+    },
+    {
+      "name": "mobile: natural/control colors",
+      "terrainOpacity": 0.08,
+      "controlOpacity": 0.6
+    },
+    {
+      "name": "mobile map: no horizontal overflow",
+      "viewport": 390,
+      "scroll": 390
+    }
+  ],
+  "errors": [],
+  "ok": true
+}

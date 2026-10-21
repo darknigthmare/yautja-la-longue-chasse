@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState, type KeyboardEvent } from "react";
+import { useId, useMemo, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { warSuppliedV85, type WarOrderKindV85, type WarSimulationV85 } from "./systems/clanWarV85";
 import { WAR_FACTIONS_V85, type WarFactionIdV85 } from "./systems/clanWarV85Data";
 import { warPlanetV96, type WarPlanetV96 } from "./systems/clanWarPlanetsV96";
@@ -11,6 +11,8 @@ import {
   type WarAtlasPointV95,
 } from "./systems/clanWarAtlasV95";
 import styles from "./ClanWarAtlasV95.module.css";
+import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
+import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101 } from "./systems/planetMaterialV101";
 
 interface ClanWarAtlasV95Props {
   simulation: WarSimulationV85;
@@ -125,6 +127,9 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const [selectionMode, setSelectionMode] = useState<"origin" | "target">("origin");
   const [showRoutes, setShowRoutes] = useState(true);
   const [showNames, setShowNames] = useState(false);
+  const [materialReady, setMaterialReady] = useState(false);
+  const [mapColors, setMapColors] = useState<"terrain" | "control">("terrain");
+  const [materialSettings, setMaterialSettings] = useState({ ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101 });
   const [regionFilter, setRegionFilter] = useState("");
   const [announcement, setAnnouncement] = useState("");
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -250,7 +255,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           <button type="button" className={styles.centerButton} onClick={() => centerOn(inspected.id)}>Centrer la sélection</button>
         </div>
         <div className={styles.viewport} data-projection={projection}>
-          <svg className={styles.world} viewBox="0 0 960 620" role="group" aria-labelledby={`${unique}-map-title ${unique}-map-description`}>
+          <svg className={styles.world} viewBox="0 0 960 620" role="group" aria-labelledby={`${unique}-map-title ${unique}-map-description`} data-material-ready={materialReady} data-map-colors={mapColors}>
             <title id={`${unique}-map-title`}>{`${planet.name}, ${projection === "globe" ? "globe interactif" : `carte des ${territories.length} territoires`}`}</title>
             <desc id={`${unique}-map-description`}>{`Chaque zone porte la couleur et le symbole de sa faction. ${planet.surface.name} : surface non jouable entre les territoires. Les routes relient les voisins accessibles, y compris à travers les détroits. Entrée ou Espace sélectionne une zone. Les boutons sous la carte et la liste des territoires donnent accès à la face cachée du globe.`}</desc>
             <defs>
@@ -264,10 +269,15 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
             </defs>
             <g aria-hidden="true" className={styles.stars}>{Array.from({ length: 36 }, (_, index) => <circle key={index} cx={(index * 149 + 43) % 945} cy={(index * 83 + 37) % 600} r={index % 4 === 0 ? 1.5 : .8} opacity={index % 3 === 0 ? .55 : .24}/>)}</g>
             <g aria-hidden="true" className={styles.chartLabels}><text x="26" y="34">{planet.name.toLocaleUpperCase("fr")} / SURFACE</text><text x="26" y="55">{projection === "globe" ? `LON ${Math.round(longitude)}° · LAT ${Math.round(latitude)}°` : "PROJECTION PLANÉTAIRE"}</text><text x="934" y="34" textAnchor="end">CON / {territories.length} SECTEURS</text></g>
-            {projection === "globe" ? <g aria-hidden="true"><ellipse cx="480" cy="306" rx={view.radius + 84} ry={view.radius * .33} transform="rotate(-23 480 306)" fill="none" stroke={planet.surface.accent} strokeOpacity=".2" strokeDasharray="3 10"/><circle cx="480" cy="306" r={view.radius + 29} fill={`url(#${unique}-halo)`}/><circle cx="480" cy="306" r={view.radius} fill={`url(#${unique}-ocean)`} stroke={planet.surface.accent} strokeWidth="1.5" strokeOpacity=".6"/></g> : <rect x="0" y="70" width="960" height="480" fill={`url(#${unique}-ocean)`} stroke={planet.surface.accent} strokeOpacity=".5" aria-hidden="true"/>}
-            <g className={styles.surfaceTexture} clipPath={`url(#${unique}-surface-clip)`} aria-hidden="true" data-testid="war-planet-surface-texture" data-surface-kind={planet.surface.kind}>
+            <g data-material-fallback="true">{projection === "globe" ? <g aria-hidden="true"><ellipse cx="480" cy="306" rx={view.radius + 84} ry={view.radius * .33} transform="rotate(-23 480 306)" fill="none" stroke={planet.surface.accent} strokeOpacity=".2" strokeDasharray="3 10"/><circle cx="480" cy="306" r={view.radius + 29} fill={`url(#${unique}-halo)`}/><circle cx="480" cy="306" r={view.radius} fill={`url(#${unique}-ocean)`} stroke={planet.surface.accent} strokeWidth="1.5" strokeOpacity=".6"/></g> : <rect x="0" y="70" width="960" height="480" fill={`url(#${unique}-ocean)`} stroke={planet.surface.accent} strokeOpacity=".5" aria-hidden="true"/>}</g>
+            <g className={styles.surfaceTexture} clipPath={`url(#${unique}-surface-clip)`} aria-hidden="true" data-testid="war-planet-surface-texture" data-surface-kind={planet.surface.kind} data-material-fallback="true">
               <rect x="0" y="0" width="960" height="620" fill={`url(#${unique}-surface)`}/>
             </g>
+            <foreignObject x="0" y="0" width="960" height="620" pointerEvents="none" aria-hidden="true">
+              <PlanetMaterialCanvasV101 planet={planet} projection={projection} width={960} height={620} longitude={longitude} latitude={latitude}
+                radius={view.radius} centerX={480} centerY={306} mapTop={70} mapHeight={480} resolution={960}
+                settings={materialSettings} onReady={setMaterialReady}/>
+            </foreignObject>
             <g transform={projection === "map" ? "translate(0 70)" : undefined}>
               <g aria-hidden="true" className={styles.graticule}>{graticules.map((points, index) => <path key={index} d={linePath(points)}/>)}</g>
               {territories.map(geography => {
@@ -281,7 +291,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 const isNeighbor = source.neighbors.includes(geography.id);
                 const dimmed = Boolean(regionFilter && geography.regionId !== regionFilter);
                 const accessible = isNeighbor;
-                return <g key={geography.id} className={styles.territory} role="button" tabIndex={0}
+                return <g key={geography.id} className={styles.territory} role="button" tabIndex={0} style={{ "--planet-faction-color": WAR_ATLAS_FACTIONS_V95[faction].color } as CSSProperties}
                   aria-label={`${shortId(geography.id)} · ${definition.name} · ${WAR_FACTIONS_V85[faction]}${statusLabel(geography.id) ? ` · ${statusLabel(geography.id)}` : ""}`}
                   aria-pressed={selectionMode === "origin" ? isSource : isTarget}
                   aria-disabled={selectionMode === "target" && !accessible ? true : undefined}
@@ -291,7 +301,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                   onFocus={() => setHoveredId(geography.id)} onBlur={() => setHoveredId(null)}>
                   <title>{`${definition.name} · ${WAR_FACTIONS_V85[faction]}`}</title>
                   <path className={styles.land} d={d} fill={WAR_ATLAS_FACTIONS_V95[faction].color}/>
-                  <path d={d} fill={`url(#${unique}-relief)`} className={styles.landPattern} aria-hidden="true"/>
+                  <path d={d} fill={`url(#${unique}-relief)`} className={styles.landPattern} aria-hidden="true" data-material-fallback="true"/>
                   <path d={d} fill={`url(#${unique}-${faction})`} className={styles.landPattern} aria-hidden="true"/>
                   {position.visible && position.depth > .12 && <g className={styles.zoneLabel} aria-hidden="true"><text x={position.x} y={position.y - 4} textAnchor="middle">{factionGlyph[faction]} {shortId(geography.id)}</text>{showNames && <text className={styles.zoneName} x={position.x} y={position.y + 11} textAnchor="middle">{definition.name.length > 23 ? `${definition.name.slice(0, 21)}…` : definition.name}</text>}{(isSource || isTarget) && <text x={position.x} y={position.y + (showNames ? 26 : 12)} textAnchor="middle" className={styles.selectionLabel}>{isSource ? "DÉPART" : "CIBLE"}</text>}</g>}
                 </g>;
@@ -307,7 +317,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 return position.visible && position.depth > .12 && <text key={region.id} x={position.x} y={position.y - 4} textAnchor="middle" data-dimmed={Boolean(regionFilter && region.id !== regionFilter)}>{region.name.toLocaleUpperCase("fr")}</text>;
               })}</g>
             </g>
-            {projection === "globe" && <circle cx="480" cy="306" r={view.radius} fill={`url(#${unique}-shade)`} pointerEvents="none" aria-hidden="true"/>}
+            {projection === "globe" && <circle cx="480" cy="306" r={view.radius} fill={`url(#${unique}-shade)`} pointerEvents="none" aria-hidden="true" data-material-fallback="true"/>}
             <g className={styles.chartLabels} aria-hidden="true"><text x="26" y="592">{hovered ? `${shortId(hovered.id)} / ${hovered.name.toLocaleUpperCase("fr")}` : "SÉLECTIONNEZ UN TERRITOIRE"}</text><text x="934" y="592" textAnchor="end">{projection === "globe" ? "HÉMISPHÈRE VISIBLE" : "ENSEMBLE DU THÉÂTRE"}</text></g>
           </svg>
         </div>
@@ -315,7 +325,14 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           {projection === "globe" && <><div className={styles.rotationButtons} aria-label="Rotation de la planète"><button type="button" aria-label="Tourner vers l’ouest" onClick={() => setLongitude(value => wrapLongitude(value - 30))}>←</button><button type="button" aria-label="Incliner vers le nord" onClick={() => setLatitude(value => Math.min(65, value + 15))}>↑</button><button type="button" aria-label="Incliner vers le sud" onClick={() => setLatitude(value => Math.max(-65, value - 15))}>↓</button><button type="button" aria-label="Tourner vers l’est" onClick={() => setLongitude(value => wrapLongitude(value + 30))}>→</button></div><label className={styles.rotationSlider}>Rotation<input aria-label="Longitude du globe" type="range" min="-180" max="180" value={longitude} onChange={event => setLongitude(Number(event.target.value))}/></label><label className={styles.zoomControl}>Zoom<select aria-label="Zoom du globe" value={zoom} onChange={event => setZoom(Number(event.target.value))}><option value="1">100 %</option><option value="1.1">110 %</option><option value="1.2">120 %</option></select></label></>}
           <label className={styles.toggle}><input type="checkbox" checked={showRoutes} onChange={event => setShowRoutes(event.target.checked)}/>Routes</label>
           <label className={styles.toggle}><input type="checkbox" checked={showNames} onChange={event => setShowNames(event.target.checked)}/>Noms</label>
+          <label className={styles.zoomControl}>Couleurs<select aria-label="Couleurs de la carte" value={mapColors} disabled={!materialReady} onChange={event => setMapColors(event.target.value as "terrain" | "control")}><option value="terrain">Relief naturel</option><option value="control">Contrôle des clans</option></select></label>
         </div>
+        <fieldset className={styles.appearanceControls} disabled={!materialReady}><legend>Affichage planétaire</legend>
+          <label><input type="checkbox" checked={materialSettings.atmosphere} onChange={event => setMaterialSettings(value => ({ ...value, atmosphere: event.target.checked }))}/>Atmosphère</label>
+          <label><input type="checkbox" checked={materialSettings.clouds} onChange={event => setMaterialSettings(value => ({ ...value, clouds: event.target.checked }))}/>Nuages</label>
+          <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et aurores</label>
+          <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
+        </fieldset>
         <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ, détroits franchissables inclus. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.</p>
       </div>
 

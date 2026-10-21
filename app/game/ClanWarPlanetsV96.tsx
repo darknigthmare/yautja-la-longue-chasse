@@ -3,6 +3,7 @@
 import { useId, useMemo, useRef, useState } from "react";
 import { WAR_PLANETS_V96, type WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { warAtlasGlobePathV95 } from "./systems/clanWarAtlasV95";
+import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import styles from "./ClanWarPlanetsV96.module.css";
 
 export const WAR_PLANET_SELECTION_KEY_V96 = "yautja.clan-war.v96.selected-planet";
@@ -19,6 +20,7 @@ export const WAR_BIOME_LABELS_V96: Record<WarPlanetV96["landBiome"], string> = {
 
 function PlanetPortrait({ planet, large = false }: { planet: WarPlanetV96; large?: boolean }) {
   const unique = `planet-portrait-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const [materialReady, setMaterialReady] = useState(false);
   const paths = useMemo(() => {
     const view = { longitude: -25, latitude: 15, radius: 43, centerX: 50, centerY: 50 };
     return planet.landmasses.map(landmass => warAtlasGlobePathV95(landmass.points, view));
@@ -29,6 +31,7 @@ function PlanetPortrait({ planet, large = false }: { planet: WarPlanetV96; large
       <radialGradient id={`${unique}-light`} cx="30%" cy="25%" r="78%"><stop offset=".3" stopColor="#fff" stopOpacity=".14"/><stop offset=".7" stopColor="#000" stopOpacity="0"/><stop offset="1" stopColor="#000" stopOpacity=".75"/></radialGradient>
       <clipPath id={`${unique}-clip`}><circle cx="50" cy="50" r="43"/></clipPath>
     </defs>
+    <g opacity={materialReady ? 0 : 1} data-material-fallback="true">
     <circle cx="50" cy="50" r="47" fill={planet.surface.accent} opacity=".08"/>
     <circle cx="50" cy="50" r="43" fill={`url(#${unique}-sea)`}/>
     <g clipPath={`url(#${unique}-clip)`}>
@@ -36,6 +39,10 @@ function PlanetPortrait({ planet, large = false }: { planet: WarPlanetV96; large
       {paths.map((path, index) => path ? <path key={index} d={path} fill={planet.surface.accent} fillOpacity={.65 + index % 3 * .1} stroke={planet.surface.deep} strokeWidth=".55"/> : null)}
     </g>
     <circle cx="50" cy="50" r="43" fill={`url(#${unique}-light)`} stroke={planet.surface.detail} strokeWidth=".6"/>
+    </g>
+    <foreignObject x="0" y="0" width="100" height="100" pointerEvents="none" aria-hidden="true">
+      <PlanetMaterialCanvasV101 planet={planet} resolution={large ? 256 : 128} onReady={setMaterialReady}/>
+    </foreignObject>
   </svg>;
 }
 
