@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "file": "Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+  "bytes": 1672140,
+  "sourceSha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+  "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+  "sheets": [
+    "Synthèse",
+    "Variantes",
+    "Production PR",
+    "Sources jeu",
+    "Classeurs",
+    "Contrôles"
+  ],
+  "uniqueVariantIds": 5120,
+  "statusCounts": {
+    "Présente dans main": 2125,
+    "Produite — à vérifier": 205,
+    "Conservée hors main": 36,
+    "Pas faite": 2754
+  },
+  "productionRows": 108,
+  "historicalProductionRowsPreserved": 72,
+  "historicalStatusTransitionsToMain": 36,
+  "historicalPreservationRule": "Only the existing F43:F78 status formula caches change to Présente dans main after PR 7 merged; all other old production values and all formulas are preserved.",
+  "newProductionRows": 36,
+  "sourceSheetDataRowsPreserved": [
+    "Sources jeu",
+    "Classeurs"
+  ],
+  "sourceSheetSubtitleChangesAllowed": {
+    "Sources jeu": [
+      "A3"
+    ],
+    "Classeurs": [
+      "A3"
+    ]
+  },
+  "nativeTables": 6,
+  "nativeAutoFiltersVerified": 6,
+  "activeSolidConditionalFormats": 21,
+  "formulaErrors": [],
+  "exactExportedFormulas": 595,
+  "conditionalRuleIdentitiesVerified": 21,
+  "newProductionEvidenceRowsVerified": 36,
+  "newTypedProductionDatesVerified": 36,
+  "newTypedVerificationDatesVerified": 36,
+  "formulaNormalization": "Only one optional leading = is removed; no whitespace, case or reference rewriting.",
+  "dateNormalization": "Historical timestamps remain exact. New N/Y timestamps may differ only by -1 ms when the Excel-epoch double roundtrip reproduces the exported value exactly; date types and display formats are checked separately.",
+  "dateQuantizationExceptions": [
+    {
+      "cell": "N83",
+      "id": "augmentes-assassin--enforcers-comics-06",
+      "manifestTimestamp": "2026-10-21T14:45:32.403Z",
+      "expectedUtcMs": "2026-10-21T14:45:32.403+00:00",
+      "exportedUtcMs": "2026-10-21T14:45:32.402+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N84",
+      "id": "augmentes-assassin--enforcers-comics-07",
+      "manifestTimestamp": "2026-10-21T14:46:56.837Z",
+      "expectedUtcMs": "2026-10-21T14:46:56.837+00:00",
+      "exportedUtcMs": "2026-10-21T14:46:56.836+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N86",
+      "id": "spiked-tail--enforcers-comics-07",
+      "manifestTimestamp": "2026-10-21T14:50:50.542Z",
+      "expectedUtcMs": "2026-10-21T14:50:50.542+00:00",
+      "exportedUtcMs": "2026-10-21T14:50:50.541+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N91",
+      "id": "ul-khar--enforcers-comics-06",
+      "manifestTimestamp": "2026-10-21T14:30:26.012Z",
+      "expectedUtcMs": "2026-10-21T14:30:26.012+00:00",
+      "exportedUtcMs": "2026-10-21T14:30:26.011+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N108",
+      "id": "alpha--enforcers-comics-07",
+      "manifestTimestamp": "2026-10-21T14:42:18.363Z",
+      "expectedUtcMs": "2026-10-21T14:42:18.363+00:00",
+      "exportedUtcMs": "2026-10-21T14:42:18.362+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N110",
+      "id": "bionic--enforcers-comics-07",
+      "manifestTimestamp": "2026-10-21T14:48:51.447Z",
+      "expectedUtcMs": "2026-10-21T14:48:51.447+00:00",
+      "exportedUtcMs": "2026-10-21T14:48:51.446+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N111",
+      "id": "four-armed--enforcers-comics-06",
+      "manifestTimestamp": "2026-10-21T14:50:52.554Z",
+      "expectedUtcMs": "2026-10-21T14:50:52.554+00:00",
+      "exportedUtcMs": "2026-10-21T14:50:52.553+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    }
+  ],
+  "mergedRangesPreservedBySheet": {
+    "Synthèse": 27,
+    "Variantes": 2,
+    "Production PR": 2,
+    "Sources jeu": 2,
+    "Classeurs": 2,
+    "Contrôles": 17
+  },
+  "originalFontAndFillCellsVerifiedBySheet": {
+    "Synthèse": 1000,
+    "Variantes": 184536,
+    "Production PR": 1950,
+    "Sources jeu": 63536,
+    "Classeurs": 300,
+    "Contrôles": 570
+  },
+  "allOriginalFontsFillsAndColorsPreserved": true,
+  "originalBordersAlignmentsNumberFormatsAndProtectionPreserved": true,
+  "originalRowAndColumnDimensionsPreservedExceptIntentionalAutofit": true,
+  "intentionalAutofitRows": {
+    "Contrôles": [
+      11,
+      14,
+      43
+    ]
+  },
+  "tableStylesAndFilterCriteriaPreserved": true,
+  "freezePanesPreserved": true,
+  "statusValidationPreserved": true,
+  "scope": "OpenXML data, formulas, caches, tables, panes, validation and conditional styles; not a live Excel application session."
+}

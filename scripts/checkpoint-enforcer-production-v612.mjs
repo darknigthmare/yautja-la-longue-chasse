@@ -34,12 +34,13 @@ for(const item of plan.records){
  const meta=await sharp(bytes).metadata();
  if(meta.format!=='png'||meta.width!==1024||meta.height!==1536||meta.channels!==4||!meta.hasAlpha)throw Error('Invalid native format: '+item.id);
  const {data,info}=await sharp(bytes).raw().toBuffer({resolveWithObject:true});
- let transparent=0;const bounds=[1024,1536,0,0];
+ let transparent=0;const bounds=[info.width,info.height,0,0];
  for(let y=0;y<info.height;y++)for(let x=0;x<info.width;x++){
   const a=data[(y*info.width+x)*4+3];if(a===0)transparent++;
   if(a>20){bounds[0]=Math.min(bounds[0],x);bounds[1]=Math.min(bounds[1],y);bounds[2]=Math.max(bounds[2],x+1);bounds[3]=Math.max(bounds[3],y+1);}
  }
- if(transparent<info.width*info.height*.1||bounds[0]<=0||bounds[1]<=0||bounds[2]>=1024||bounds[3]>=1536)throw Error('Transparency or framing failed: '+item.id);
+ const hasContent=bounds[2]>bounds[0]&&bounds[3]>bounds[1];
+ if(!hasContent||transparent<info.width*info.height*.1||bounds[0]<=0||bounds[1]<=0||bounds[2]>=info.width||bounds[3]>=info.height)throw Error('Transparency or framing failed: '+item.id);
  assets.push({...sanitize(r),nativeCopyVerified:true,alphaZeroPixels:transparent,contentBoundsAlpha20:bounds});
 }
 if(new Set(assets.map(a=>a.sha256)).size!==assets.length)throw Error('Duplicate image bytes');
