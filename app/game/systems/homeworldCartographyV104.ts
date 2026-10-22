@@ -50,7 +50,7 @@ export function applyCartographyActionV104(raw: unknown, action: CartographyActi
     if (action === 'choose-b') {
       if (receipt) return fail('Cette liaison possède déjà un relevé. Reprenez-le sans effacer ses repères.');
       ledger.receipt = { sceneId: b.sceneId, routeId: b.routeId, sourceSha256: source.source.sha256, sourceCorpusSha256: source.sourceCorpusSha256,
-        phase: 'choice', nextWaypoint: 0, walked: 0, legWalked: 0, last: { x:context.actor.x,y:context.actor.y }, trail: [{ x:context.actor.x,y:context.actor.y }], trailBreaks:[], interruptedCount: 0 };
+        phase: 'choice', nextWaypoint: 0, walked: 0, legWalked: 0, last: { x:context.actor.x,y:context.actor.y }, trail: [{ x:context.actor.x,y:context.actor.y }], trailBreaks:[], trimmedCount:0, interruptedCount: 0 };
     } else if (action === 'reply') {
       if (!receipt || receipt.phase !== 'choice') return fail('Choisissez d’abord la liaison entre les repères connus.');
       receipt.phase = 'ready';
@@ -81,14 +81,27 @@ export function sampleCartographyWalkV104(ledger: HomeworldCartographyLedgerV104
     || !homeworldRouteSegmentV77(b.levelId, before, after)) return { ledger, checkpoint: false, invalid: true };
   if (travelled < .001) return { ledger, checkpoint: false, invalid: false };
   const next = structuredClone(ledger), r = next.receipt!;
-  r.last = { x: after.x, y: after.y }; r.walked += travelled; r.legWalked += travelled;
+  r.last = { x: after.x, y: after.y }; r.walked = Math.min(1_000_000_000,r.walked+travelled); r.legWalked = Math.min(1_000_000_000,r.legWalked+travelled);
   if (distance(r.trail.at(-1)!, after) >= 20) r.trail.push({ ...r.last });
   let checkpoint = false;
   if (r.phase === 'walking' && r.legWalked >= 40 && distance(after, b.waypoints[r.nextWaypoint]) <= b.waypointRadius) {
     r.trail.push({ ...r.last }); r.nextWaypoint++; r.legWalked = 0; checkpoint = true;
     if (r.nextWaypoint === 2) r.phase = 'return';
   }
-  if (r.trail.length >= 500 || r.walked >= 99_000) return { ledger, checkpoint: false, invalid: true };
+  // The map is bounded without capping the playable walk. Preserve the
+  // origin and earned approaches, then the latest 200 sampled points. Any
+  // omitted interval becomes a visible break, never a fabricated shortcut.
+  if(r.trail.length>=480){
+    const kept=new Set<number>([0]);let previous=-1;
+    for(let waypoint=0;waypoint<r.nextWaypoint;waypoint++){
+      const index=r.trail.findIndex((p,i)=>i>previous&&distance(p,b.waypoints[waypoint])<=b.waypointRadius+1);
+      if(index<0)return {ledger,checkpoint:false,invalid:true};kept.add(index);previous=index;
+    }
+    for(let i=Math.max(1,r.trail.length-200);i<r.trail.length;i++)kept.add(i);
+    const indices=[...kept].sort((a,c)=>a-c),oldBreaks=r.trailBreaks;
+    r.trailBreaks=indices.flatMap((oldIndex,newIndex)=>newIndex>0&&(oldIndex>indices[newIndex-1]+1||oldBreaks.includes(oldIndex))?[newIndex]:[]);
+    r.trail=indices.map(i=>r.trail[i]);r.trimmedCount=Math.min(1_000_000_000,r.trimmedCount+1);
+  }
   return { ledger: next, checkpoint, invalid: false };
 }
 

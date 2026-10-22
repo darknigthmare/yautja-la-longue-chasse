@@ -14,7 +14,7 @@ function KnownMap({ ledger }: { ledger: HomeworldCartographyLedgerV104 | undefin
     {parts.map((part,index)=><polyline key={index} points={part.map(p => `${p.x},${p.y}`).join(' ')} />)}
     <circle cx={b.post.x} cy={b.post.y} r="11"/><text x={b.post.x - 135} y={b.post.y + 65}>Pupitre</text>
     {b.waypoints.map((p, index) => <g key={p.id}><circle cx={p.x} cy={p.y} r="11" data-reached={(r?.nextWaypoint ?? 0) > index}/><text x={p.x - 60} y={p.y - 35}>{index + 1} · {index === 0 ? 'Bac' : 'Lampe'}</text></g>)}
-  </svg><p className={styles.note}>Les zones non observées restent hors du relevé.</p></>;
+  </svg><p className={styles.note}>Les zones non observées restent hors du relevé.</p>{!!r?.trimmedCount&&<p className={styles.note}>Les segments les plus anciens ont été retirés du dessin. Tes repères atteints restent consignés.</p>}</>;
 }
 
 export default function HomeworldCartographyV104({ ledger, disabled, message, onAction, onClose, reducedMotion = false }: {

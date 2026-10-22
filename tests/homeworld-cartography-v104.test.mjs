@@ -101,6 +101,20 @@ test('V104 the return leg also interrupts safely and resumes as return without l
  assert.equal(advance(resumed,'report',context(actor)).receipt.phase,'completed');
 });
 
+test('V104 long real walks compact the drawn trace without locking progress, inventing shortcuts or losing the earned approaches',()=>{
+ let ledger=started(),actor={...b.post,vx:0,vy:0,grounded:true,facing:1};
+ for(let i=0;i<300;i++)({ledger,actor}=walkTo(ledger,actor,{x:i%2===0?6000:5920,y:5190}));
+ assert(ledger.receipt.trimmedCount>0);assert(ledger.receipt.trail.length<480);assert.equal(ledger.receipt.nextWaypoint,0);
+ assert(schema.normalizeHomeworldCartographyV104(ledger));
+ const paused=advance(ledger,'interrupt',context(actor));ledger=advance(paused,'resume',context(actor));
+ for(const point of[...b.waypoints,b.post])({ledger,actor}=walkTo(ledger,actor,point));
+ assert.equal(advance(ledger,'report',context(actor)).receipt.phase,'completed');
+ // Reaching the numeric distance ceiling is inert for progression, too.
+ const capped=started();capped.receipt.walked=1_000_000_000;capped.receipt.legWalked=1_000_000_000;
+ const next=civic.stepHomeworldCivicActorV80({...b.post,vx:0,vy:0,grounded:true,facing:1},{moveX:1,climb:0,jumpPressed:false},1/60,'0');
+ const out=api.sampleCartographyWalkV104(capped,b.post,next,1/60,context(next));assert.equal(out.invalid,false);assert.equal(out.ledger.receipt.walked,1_000_000_000);assert(schema.normalizeHomeworldCartographyV104(out.ledger));
+});
+
 test('V104 the actual city transaction cannot publish a choice after a refused write or a stale callback',()=>{
  let ledger,allowed=false,writes=0,ctx=context();
  const transact=api.createCartographyTransactionV104(()=>ledger,()=>ctx,next=>{writes++;if(!allowed)return false;ledger=next;return true;});

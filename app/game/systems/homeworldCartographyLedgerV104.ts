@@ -7,7 +7,7 @@ export interface HomeworldCartographyLedgerV104 {
   receipt: null | {
     sceneId: 'D6-W-PNJ-ROLE-12'; routeId: 'port-known-lectern-v104'; sourceSha256: string; sourceCorpusSha256: string;
     phase: CartographyPhaseV104; nextWaypoint: number; walked: number; legWalked: number; last: CartographyPointV104;
-    trail: CartographyPointV104[]; trailBreaks:number[]; interruptedCount: number;
+    trail: CartographyPointV104[]; trailBreaks:number[]; trimmedCount:number; interruptedCount: number;
   };
 }
 const record = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -30,19 +30,20 @@ export function normalizeHomeworldCartographyV104(value: unknown): HomeworldCart
     || new Date(value.ownerCreatedAt).toISOString() !== value.ownerCreatedAt || !integer(value.revision, 1_000_000)) return null;
   if (value.receipt === null) return value.revision === 0 ? structuredClone(value) as unknown as HomeworldCartographyLedgerV104 : null;
   const r = value.receipt;
-  if (!record(r) || !keys(r, ['sceneId', 'routeId', 'sourceSha256', 'sourceCorpusSha256', 'phase', 'nextWaypoint', 'walked', 'legWalked', 'last', 'trail', 'trailBreaks', 'interruptedCount'])
+  if (!record(r) || !keys(r, ['sceneId', 'routeId', 'sourceSha256', 'sourceCorpusSha256', 'phase', 'nextWaypoint', 'walked', 'legWalked', 'last', 'trail', 'trailBreaks', 'trimmedCount', 'interruptedCount'])
     || value.revision === 0 || r.sceneId !== binding.sceneId || r.routeId !== binding.routeId || r.sourceSha256 !== source.source.sha256 || r.sourceCorpusSha256 !== source.sourceCorpusSha256
     || !['choice', 'ready', 'walking', 'interrupted', 'return', 'completed'].includes(String(r.phase)) || !integer(r.nextWaypoint, 2)
-    || typeof r.walked !== 'number' || !Number.isFinite(r.walked) || r.walked < 0 || r.walked > 100_000
+    || typeof r.walked !== 'number' || !Number.isFinite(r.walked) || r.walked < 0 || r.walked > 1_000_000_000
     || typeof r.legWalked !== 'number' || !Number.isFinite(r.legWalked) || r.legWalked < 0 || r.legWalked > r.walked
-    || !cartographyPointV104(r.last) || !integer(r.interruptedCount, 10000) || !Array.isArray(r.trail) || !r.trail.length || r.trail.length > 512
+    || !cartographyPointV104(r.last) || !integer(r.interruptedCount, 10000) || !integer(r.trimmedCount,1_000_000_000) || !Array.isArray(r.trail) || !r.trail.length || r.trail.length > 512
     || !r.trail.every(cartographyPointV104)) return null;
   const trail = r.trail as CartographyPointV104[];
   if(!Array.isArray(r.trailBreaks))return null;
   const breaks=r.trailBreaks as number[];
-  if(breaks.length>r.interruptedCount||breaks.some((i,n)=>!integer(i,trail.length-1)||i===0||n>0&&i<=breaks[n-1]))return null;
+  if(breaks.length>r.interruptedCount+r.trimmedCount*3||breaks.some((i,n)=>!integer(i,trail.length-1)||i===0||n>0&&i<=breaks[n-1]))return null;
   if(distance(trail[0],binding.post)>binding.radius||distance(trail[0],binding.host)>160)return null;
-  if (distance(trail.at(-1)!, r.last) > 32 || trail.some((p, i) => i > 0 && distance(p, trail[i - 1]) > (breaks.includes(i)?96:72))) return null;
+  const omittedLimit=Math.hypot(binding.envelope.right-binding.envelope.left,binding.envelope.bottom-binding.envelope.top);
+  if (distance(trail.at(-1)!, r.last) > 32 || trail.some((p, i) => i > 0 && distance(p, trail[i - 1]) > (breaks.includes(i)?r.trimmedCount>0?omittedLimit:96:72))) return null;
   const measured=trail.reduce((sum,p,i)=>sum+(i&&!breaks.includes(i)?distance(p,trail[i-1]):0),0);
   if(measured>r.walked+.01)return null;
   if (['choice', 'ready'].includes(String(r.phase)) && (r.nextWaypoint !== 0 || r.walked !== 0 || trail.length !== 1)) return null;
