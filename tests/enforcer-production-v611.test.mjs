@@ -49,7 +49,7 @@ test('every installed PNG has the accepted native bytes, a real alpha channel an
 test('gallery and codex include the new identities while existing default selections and human body separation are preserved',()=>{
  const qa=homeworldSceneSsrV78(),library=qa.load('app/game/systems/recentSpriteLibraryV85.ts'),codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeEnforcerFilesV611,36);
- assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.packId!=='enforcers-v612').map(asset=>asset.sha256)).size,1913);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!['enforcers-v612','enforcers-v613'].includes(asset.packId)).map(asset=>asset.sha256)).size,1913);
  const defaults=read(`${base}/data/default-selections-before.json`);
  for(const r of defaults.queries)assert.equal(library.findImportedYautjaArtV85(r.query)?.assetId??null,r.assetId,JSON.stringify(r.query));
  for(const a of registry.assets){

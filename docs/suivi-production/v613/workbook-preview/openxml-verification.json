@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "file": "Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+  "bytes": 1698239,
+  "sourceSha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+  "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+  "sheets": [
+    "Synthèse",
+    "Variantes",
+    "Production PR",
+    "Sources jeu",
+    "Classeurs",
+    "Contrôles"
+  ],
+  "uniqueVariantIds": 5120,
+  "statusCounts": {
+    "Présente dans main": 2161,
+    "Produite — à vérifier": 205,
+    "Conservée hors main": 36,
+    "Pas faite": 2718
+  },
+  "productionRows": 144,
+  "auditedVariantCellsChanged": 720,
+  "auditedVariantRowsChanged": 108,
+  "historicalProductionRowsPreserved": 108,
+  "historicalStatusTransitionsToMain": 36,
+  "historicalPreservationRule": "Only the existing F79:F114 status formula caches change to Présente dans main after PR 9 merged; all other old production values and all formulas are preserved.",
+  "newProductionRows": 36,
+  "sourceSheetDataRowsPreserved": [
+    "Sources jeu",
+    "Classeurs"
+  ],
+  "sourceSheetSubtitleChangesAllowed": {
+    "Sources jeu": [
+      "A3"
+    ]
+  },
+  "nativeTables": 6,
+  "nativeAutoFiltersVerified": 6,
+  "activeSolidConditionalFormats": 21,
+  "formulaErrors": [],
+  "exactExportedFormulas": 631,
+  "conditionalRuleIdentitiesVerified": 21,
+  "newProductionEvidenceRowsVerified": 36,
+  "newTypedProductionDatesVerified": 15,
+  "unrecoveredProductionDatesLeftBlank": 21,
+  "newTypedVerificationDatesVerified": 36,
+  "formulaNormalization": "Only one optional leading = is removed; no whitespace, case or reference rewriting.",
+  "dateNormalization": "Historical timestamps remain exact. New N/Y timestamps may differ only by -1 ms when the Excel-epoch double roundtrip reproduces the exported value exactly; date types and display formats are checked separately.",
+  "dateQuantizationExceptions": [
+    {
+      "cell": "N128",
+      "id": "ul-khar--enforcers-comics-09",
+      "manifestTimestamp": "2026-10-22T09:57:22.990083+00:00",
+      "expectedUtcMs": "2026-10-22T09:57:22.990+00:00",
+      "exportedUtcMs": "2026-10-22T09:57:22.989+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N143",
+      "id": "alpha--enforcers-comics-08",
+      "manifestTimestamp": "2026-10-22T10:09:13.878Z",
+      "expectedUtcMs": "2026-10-22T10:09:13.878+00:00",
+      "exportedUtcMs": "2026-10-22T10:09:13.877+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    }
+  ],
+  "mergedRangesPreservedBySheet": {
+    "Synthèse": 27,
+    "Variantes": 2,
+    "Production PR": 2,
+    "Sources jeu": 2,
+    "Classeurs": 2,
+    "Contrôles": 17
+  },
+  "originalFontAndFillCellsVerifiedBySheet": {
+    "Synthèse": 1000,
+    "Variantes": 184536,
+    "Production PR": 2850,
+    "Sources jeu": 63536,
+    "Classeurs": 300,
+    "Contrôles": 570
+  },
+  "allOriginalFontsFillsAndColorsPreserved": true,
+  "originalBordersAlignmentsNumberFormatsAndProtectionPreserved": true,
+  "originalRowAndColumnDimensionsPreservedExceptIntentionalAutofit": true,
+  "intentionalAutofitRows": {
+    "Contrôles": [
+      11,
+      14,
+      43
+    ]
+  },
+  "tableStylesAndFilterCriteriaPreserved": true,
+  "freezePanesPreserved": true,
+  "statusValidationPreserved": true,
+  "scope": "OpenXML data, formulas, caches, tables, panes, validation and conditional styles; not a live Excel application session."
+}
