@@ -79,6 +79,6 @@ export default function PlanetMaterialCanvasV101({
 
   return <canvas ref={canvasRef} width={resolution} height={Math.round(resolution * height / width)}
     aria-hidden="true" data-testid="planet-material-v101" data-planet-id={planet.id} data-projection={projection}
-    data-layer={layer} data-render-status={status} data-mapping="world-space-triplanar-mirrored"
+    data-layer={layer} data-render-status={status} data-mapping={planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" : "world-space-triplanar-mirrored"}
     style={{ display: "block", width: "100%", height: "100%", pointerEvents: "none" }}/>;
 }

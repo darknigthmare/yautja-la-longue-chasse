@@ -46,7 +46,8 @@ function WarArt({ clanName, role }: { clanName?: string; role?: string }) {
   return art ? <figure className={styles.sourceArt} data-war-art={art.id}><Image src={art.src} width={art.width} height={art.height} unoptimized alt={`${art.label} · référence originale statique`} loading="lazy" decoding="async"/><figcaption>{art.label} · référence statique du {clanName ? "clan" : "rôle"}</figcaption></figure> : null;
 }
 const artRoles: Record<string, string> = { "RTS-U01": "patrouille", "RTS-U02": "pisteur", "RTS-U03": "tireur", "RTS-U13": "sapeur", "RTS-U15": "soigneur", "RTS-U18": "porteur" };
-function preferredWarPlanetV96() {
+function preferredWarPlanetV96(initialPlanetId?: string) {
+  if (initialPlanetId && warPlanetV96(initialPlanetId)) return initialPlanetId;
   try {
     if (typeof window !== "undefined") return warPlanetV96(window.localStorage.getItem(WAR_PLANET_SELECTION_KEY_V96) ?? undefined)?.id ?? DEFAULT_WAR_PLANET_ID_V96;
   } catch { /* A denied preference store does not prevent a local game. */ }
@@ -61,17 +62,18 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false }: { save: SaveGame; onClose: () => void; suspended?: boolean }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string }) {
   const root = useRef<HTMLElement>(null);
-  const focusPlanetSelection = useRef(false);
+  const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("korthas");
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
-  const [activePlanetId, setActivePlanetId] = useState(preferredWarPlanetV96);
+  const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
     korthas: sessionStore,
     ...(activePlanetId === "korthas" ? {} : { [activePlanetId]: createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: activePlanetId }) }),
   }));
+  const retainedPlanetIds = useMemo(() => Object.keys(planetSessions), [planetSessions]);
   const planetSession = planetSessions[activePlanetId];
   const shared = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
   const strategic = useSyncExternalStore(planetSession.subscribe, planetSession.getSnapshot, planetSession.getServerSnapshot);
@@ -146,15 +148,37 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   function selectPlanet(id: string) {
     const nextPlanet = warPlanetV96(id);
     const liveWrites = sessionStore.getSnapshot().pendingWrites + (planetSession === sessionStore ? 0 : planetSession.getSnapshot().pendingWrites);
-    if (!nextPlanet || id === activePlanetId || liveWrites > 0) return;
+    if (!nextPlanet || liveWrites > 0) return false;
+    if (id === activePlanetId) return true;
+    let releasedId: string | undefined;
+    if (!planetSessions[id] && Object.keys(planetSessions).filter(key => key !== "korthas").length >= 24) {
+      // Keep the shared Korthas exercise, and bound other live sessions. A code
+      // can rebuild an archived front; modified unsaved progress cannot.
+      const candidates = Object.entries(planetSessions).filter(([key]) => key !== "korthas");
+      candidates.sort(([left], [right]) => Number(left === activePlanetId) - Number(right === activePlanetId));
+      releasedId = candidates.find(([, session]) => {
+        const snapshot = session.getSnapshot();
+        const pristine = snapshot.simulation.turn === 1 && snapshot.simulation.revision === 0 && snapshot.simulation.orders.length === 0;
+        return snapshot.pendingWrites === 0 && (snapshot.persistedWar || pristine);
+      })?.[0];
+      if (!releasedId) {
+        setMessage("Les fronts gardés en mémoire contiennent des progrès non enregistrés. Réessayez leur enregistrement avant d’ouvrir un autre front. Vous pouvez continuer à explorer et exporter de nouveaux mondes.");
+        return false;
+      }
+    }
     const nextSession = planetSessions[id] ?? createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: id });
-    if (!planetSessions[id]) setPlanetSessions(current => ({ ...current, [id]: nextSession }));
+    if (!planetSessions[id]) setPlanetSessions(current => {
+      const next = { ...current, [id]: nextSession };
+      if (releasedId) delete next[releasedId];
+      return next;
+    });
     focusPlanetSelection.current = true;
     setActivePlanetId(id); setTerritoryId(null); setTargetId(null);
     setSelectedPeople([]); setConfirmTurn(false); setRunning(false); setCargoS(0); setCargoM(0);
     setOrderKind(null);
     setMessage(`${nextPlanet.name} · front ouvert. Chaque planète conserve sa progression locale indépendante.`);
     try { window.localStorage.setItem(WAR_PLANET_SELECTION_KEY_V96, id); } catch { /* The selected front still remains available in memory. */ }
+    return true;
   }
   function selectTerritory(id: string) {
     const definition = warTerritoryForSimulationV96(simulation, id);
@@ -242,7 +266,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
   return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
-    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente planètes, des terres proches et trois factions. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
+    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente mondes répertoriés et vos nouvelles découvertes. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
     <div className={styles.notice}><strong>Fronts libres · archives locales indépendantes</strong><p>Chaque planète et le canyon possèdent leurs propres unités et archives sur cet appareil. Votre chasse conserve son matériel, ses rites et ses personnes.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Ces exercices de conquête restent séparés du voyage et des récompenses de la campagne.</p></div>
     <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["korthas", "Planètes · conquête"], ["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
@@ -296,7 +320,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     </div>}
 
     {tab === "korthas" && <div>
-      <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} onSelect={selectPlanet}/>
+      <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/36</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
       <div className={styles.objectives}><p>Région tenue : <strong>{Math.min(2, simulation.regionStability)}/2</strong> fins de tour.</p><p>Corridor des Haltes : <strong>{Math.min(2, simulation.corridorStability)}/2</strong>.</p><p>Contrôle total : <strong>{Math.min(2, simulation.totalStability)}/2</strong>.</p></div>

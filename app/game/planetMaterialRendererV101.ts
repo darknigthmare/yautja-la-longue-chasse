@@ -1,5 +1,9 @@
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
+  createPlanetRegionMaskV102, loadPlanetRegionalAtlasV102, planetRegionalMaterialStatusV102,
+  PLANET_REGIONAL_ATLAS_LIMIT_V102,
+} from "./planetRegionalMaterialsV102";
+import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
 } from "./systems/planetMaterialV101";
@@ -117,10 +121,10 @@ precision mediump float;
 const float ALPHA_EPSILON = .0001;
 #endif
 uniform vec2 uResolution, uLogical, uCenter, uCamera, uMap;
-uniform float uRadius, uProjection, uLayer, uSeed;
-uniform vec3 uBase, uDeep, uAccent, uDetail, uLandColor, uSky;
+uniform float uRadius, uProjection, uLayer, uSeed, uRegionalLand, uRegionalInset;
+uniform vec3 uBase, uDeep, uAccent, uDetail, uLandColor, uSky, uWeatherColor;
 uniform vec4 uSettings, uEffects;
-uniform sampler2D uMask, uLand, uSurface, uClouds, uWeather, uAurora;
+uniform sampler2D uMask, uLand, uSurface, uClouds, uWeather, uAurora, uRegions;
 const float PI = 3.141592653589793;
 
 vec2 mirrorUV(vec2 uv) { return 1.0 - abs(mod(uv, 2.0) - 1.0); }
@@ -132,6 +136,26 @@ vec4 triplanar(sampler2D image, vec3 world, float scale, float offset) {
        + texture2D(image, mirrorUV(p.xz)) * weight.y
        + texture2D(image, mirrorUV(p.xy)) * weight.z;
   return vec4(premultiplied.rgb / max(premultiplied.a, ALPHA_EPSILON), premultiplied.a);
+}
+vec4 regionalSample(vec2 uv, float region) {
+  vec2 cell = vec2(mod(region, 4.0), floor(region / 4.0));
+  // Clamp to the interior of this cell. Adjacent atlas cells are independent
+  // biomes and must never bleed into the mirrored material's edge samples.
+  // A half-texel margin alone can round onto a cell boundary when mediump
+  // adds a small fraction to column 2 or 3. Keep two half-float ULPs there.
+  #ifdef GL_FRAGMENT_PRECISION_HIGH
+    float inset = uRegionalInset;
+  #else
+    float inset = max(uRegionalInset, .004);
+  #endif
+  vec2 local = clamp(mirrorUV(uv), vec2(inset), vec2(1.0 - inset));
+  return texture2D(uLand, (cell + local) / vec2(4.0, 2.0));
+}
+vec4 regionalTriplanar(vec3 world, float region) {
+  vec3 weight = pow(abs(world), vec3(4.0));
+  weight /= max(.001, weight.x + weight.y + weight.z);
+  vec3 p = world * 3.1 + vec3(uSeed, uSeed * .71, uSeed * .37);
+  return regionalSample(p.yz, region) * weight.x + regionalSample(p.xz, region) * weight.y + regionalSample(p.xy, region) * weight.z;
 }
 vec4 over(vec4 under, vec4 top) {
   float alpha = top.a + under.a * (1.0 - top.a);
@@ -169,14 +193,15 @@ void main() {
   vec3 world = vec3(cos(lat) * cos(lon), sin(lat), cos(lat) * sin(lon));
   vec2 mapUV = vec2(fract(lon / (2.0 * PI) + .5), .5 - lat / PI);
   float land = texture2D(uMask, mapUV).r;
-  vec4 terrainTex = triplanar(uLand, world, 3.1, uSeed);
+  float region = clamp(floor(texture2D(uRegions, mapUV).r * 255.0 + .5), 0.0, 5.0);
+  vec4 terrainTex = uRegionalLand > .5 ? regionalTriplanar(world, region) : triplanar(uLand, world, 3.1, uSeed);
   vec4 seaTex = triplanar(uSurface, world, 2.4, uSeed + 4.0);
   float seaValue = brightness(seaTex.rgb);
   vec3 sea = mix(uDeep, uBase, clamp(seaValue * 1.6, .0, 1.0));
   sea = mix(sea, uDetail, smoothstep(.6, .98, seaValue) * .36);
   float landValue = brightness(terrainTex.rgb);
   vec3 tint = uLandColor * (.43 + landValue * 1.25);
-  vec3 terrain = mix(terrainTex.rgb, tint, .4);
+  vec3 terrain = uRegionalLand > .5 ? terrainTex.rgb : mix(terrainTex.rgb, tint, .4);
   vec3 albedo = mix(sea, terrain, land);
 
   vec3 sun = normalize(vec3(.67101, .57358, -.46985));
@@ -191,7 +216,7 @@ void main() {
   vec4 cloudLayer = vec4(cloudColor * (.8 + .2 * brightness(cloudTex.rgb)), cloudAlpha);
 
   vec4 weatherTex = triplanar(uWeather, world, 1.8, uSeed * .57 + 8.0);
-  vec4 weatherLayer = vec4(mix(weatherTex.rgb, uAccent, .37), weatherTex.a * uEffects.y * inside);
+  vec4 weatherLayer = vec4(mix(weatherTex.rgb, uWeatherColor, .37), weatherTex.a * uEffects.y * inside);
   vec4 auroraTex = triplanar(uAurora, world, 1.12, uSeed * .11);
   float polarBand = smoothstep(.5, .72, abs(world.y)) * (1.0 - smoothstep(.88, .99, abs(world.y)));
   vec4 auroraLayer = vec4(mix(auroraTex.rgb, uSky, .15), auroraTex.a * polarBand * uEffects.z * inside);
@@ -290,7 +315,7 @@ function rgb(hex: string): [number, number, number] {
   return [parseInt(hex.slice(1, 3), 16) / 255, parseInt(hex.slice(3, 5), 16) / 255, parseInt(hex.slice(5, 7), 16) / 255];
 }
 
-function bindTexture(state: SharedRenderer, slot: number, name: string, key: string, source: HTMLCanvasElement | null) {
+function bindTexture(state: SharedRenderer, slot: number, name: string, key: string, source: HTMLCanvasElement | null, nearest = false) {
   const { gl, textures } = state;
   gl.activeTexture(gl.TEXTURE0 + slot);
   let texture = textures.get(key);
@@ -307,11 +332,16 @@ function bindTexture(state: SharedRenderer, slot: number, name: string, key: str
     else gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    const mipmaps = source && !key.startsWith("mask:") && (source.width & (source.width - 1)) === 0 && (source.height & (source.height - 1)) === 0;
+    const mipmaps = source && !nearest && !key.startsWith("mask:") && !key.startsWith("regional-land:") && (source.width & (source.width - 1)) === 0 && (source.height & (source.height - 1)) === 0;
     if (mipmaps) gl.generateMipmap(gl.TEXTURE_2D);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, mipmaps ? gl.LINEAR_MIPMAP_LINEAR : gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, nearest ? gl.NEAREST : mipmaps ? gl.LINEAR_MIPMAP_LINEAR : gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, nearest ? gl.NEAREST : gl.LINEAR);
     trim(textures, TEXTURE_LIMIT, item => gl.deleteTexture(item));
+    const regional = [...textures.keys()].filter(item => item.startsWith("regional-land:"));
+    while (regional.length > PLANET_REGIONAL_ATLAS_LIMIT_V102) {
+      const oldest = regional.shift()!;
+      gl.deleteTexture(textures.get(oldest)!); textures.delete(oldest);
+    }
   }
   gl.activeTexture(gl.TEXTURE0 + slot); gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.uniform1i(uniform(state, name), slot);
@@ -326,13 +356,19 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   const layer = request.layer ?? "composite", settings = request.settings ?? DEFAULT_PLANET_MATERIAL_SETTINGS_V101;
   const recipe = planetMaterialRecipeV101(request.planet), size = request.textureSize ?? 512;
   const useLand = ["composite", "albedo", "land"].includes(layer);
+  const regionalLand = useLand && recipe.mapping === "world-space-triplanar-regional";
+  const regionalSourceSize = Math.min(size, 1024);
+  const regionalTileSize = 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, Number(state.gl.getParameter(state.gl.MAX_TEXTURE_SIZE)) / 4))));
+  const regionalKey = `regional-land:${request.planet.id}:${regionalSourceSize}:${regionalTileSize}`;
   const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
   const useAurora = recipe.auroraOpacity > 0 && (layer === "aurora" || layer === "composite" && settings.weather);
-  const urls = [useLand ? recipe.land : null, useSurface ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
+  const urls = [useLand && !regionalLand ? recipe.land : null, useSurface ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
   try {
-    const images = await Promise.all(urls.map(url => url ? loadMaterial(url, size) : null));
+    const images = await Promise.all(urls.map((url, index) => index === 0 && regionalLand
+      ? loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
+      : url ? loadMaterial(url, size) : null));
     if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
     const { gl, canvas } = state;
     const max = Math.min(4096, Number(gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)));
@@ -343,7 +379,9 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     const maskWidth = size > 512 ? 2048 : 1024;
     bindTexture(state, 0, "uMask", `mask:${request.planet.id}:${maskWidth}`, createPlanetLandMaskV101(request.planet, maskWidth));
-    ["uLand", "uSurface", "uClouds", "uWeather", "uAurora"].forEach((name, index) => bindTexture(state, index + 1, name, urls[index] ? `${size}:${urls[index]}` : "empty", images[index]));
+    ["uLand", "uSurface", "uClouds", "uWeather", "uAurora"].forEach((name, index) => bindTexture(state, index + 1, name, index === 0 && regionalLand ? regionalKey : urls[index] ? `${size}:${urls[index]}` : "empty", images[index]));
+    bindTexture(state, 6, "uRegions", regionalLand ? `regions:${request.planet.id}:${maskWidth}` : "empty",
+      regionalLand ? createPlanetRegionMaskV102(request.planet, maskWidth) : null, true);
     gl.uniform2f(uniform(state, "uResolution"), width, height);
     gl.uniform2f(uniform(state, "uLogical"), request.width, request.height);
     gl.uniform2f(uniform(state, "uCenter"), request.centerX, request.centerY);
@@ -355,9 +393,11 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.uniform1f(uniform(state, "uProjection"), request.projection === "map" ? 1 : 0);
     gl.uniform1f(uniform(state, "uLayer"), PLANET_MATERIAL_LAYERS_V101.indexOf(layer));
     gl.uniform1f(uniform(state, "uSeed"), (recipe.seed % 1000) / 113);
-    gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere), Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
+    gl.uniform1f(uniform(state, "uRegionalLand"), Number(regionalLand));
+    gl.uniform1f(uniform(state, "uRegionalInset"), .5 / regionalTileSize);
+    gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere) * recipe.atmosphereDensity, Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
     gl.uniform4f(uniform(state, "uEffects"), recipe.cloudOpacity, recipe.weatherOpacity, recipe.auroraOpacity, recipe.emission);
-    for (const [name, color] of Object.entries({ uBase: request.planet.surface.base, uDeep: request.planet.surface.deep, uAccent: request.planet.surface.accent, uDetail: request.planet.surface.detail, uLandColor: recipe.landColor, uSky: recipe.atmosphereColor })) gl.uniform3f(uniform(state, name), ...rgb(color));
+    for (const [name, color] of Object.entries({ uBase: request.planet.surface.base, uDeep: request.planet.surface.deep, uAccent: request.planet.surface.accent, uDetail: request.planet.surface.detail, uLandColor: recipe.landColor, uSky: recipe.atmosphereColor, uWeatherColor: recipe.weatherColor })) gl.uniform3f(uniform(state, name), ...rgb(color));
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     const context = target.getContext("2d");
     if (!context) return false;
@@ -369,5 +409,5 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
 }
 
 export function planetMaterialRendererStatusV101() {
-  return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0 };
+  return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, ...planetRegionalMaterialStatusV102() };
 }

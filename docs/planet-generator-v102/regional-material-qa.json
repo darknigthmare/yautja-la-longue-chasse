@@ -1,0 +1,73 @@
+{
+  "base": "http://127.0.0.1:3101",
+  "renderer": "Chromium / software WebGL",
+  "checks": [
+    {
+      "name": "generated land alpha follows the actual geographic coast",
+      "compared": 56491,
+      "mismatches": 0
+    },
+    {
+      "name": "real bitmap regional materials and transparent globe render",
+      "planet": "proc-v102-m1ln-1110010-7kkvz",
+      "biomes": [
+        "temperate",
+        "tundra",
+        "mountain",
+        "jungle",
+        "swamp",
+        "tundra"
+      ]
+    },
+    {
+      "name": "surface, regional biomes and atmosphere are pixel-independent modules",
+      "surfaceChecks": 5,
+      "biomeChecks": 4,
+      "atmosphereChecks": 4
+    },
+    {
+      "name": "uniform exotic land tint remains independent of surface palette"
+    },
+    {
+      "name": "successive generated planets retain bounded CPU and GPU caches",
+      "available": true,
+      "error": "",
+      "decodedSources": 14,
+      "pendingSources": 0,
+      "activeLoads": 0,
+      "masks": 6,
+      "gpuTextures": 22,
+      "contexts": 1,
+      "regionalAtlases": 3,
+      "regionalMasks": 6,
+      "pendingRegionalAtlases": 0,
+      "actualContexts": 1
+    },
+    {
+      "name": "regional atlas and categorical mask recover after WebGL context restoration"
+    },
+    {
+      "name": "native categorical regional atlas agrees with territory definitions in both projections",
+      "mapPoints": 36,
+      "globeRegions": 6,
+      "diagnosticAssets": true
+    },
+    {
+      "name": "forced-mediump categorical regional atlas agrees with territory definitions in both projections",
+      "mapPoints": 36,
+      "globeRegions": 6,
+      "diagnosticAssets": true
+    },
+    {
+      "name": "a missing regional bitmap fails its land layer while surface remains exportable",
+      "blocked": 2,
+      "message": "Error: Error: Texture unavailable: /game/planets/v101/runtime/land-temperate.webp"
+    }
+  ],
+  "errors": [],
+  "ok": true,
+  "limitations": [
+    "Software WebGL validates both precision branches; it does not certify every physical mobile GPU."
+  ],
+  "checkedAt": "2026-10-22"
+}

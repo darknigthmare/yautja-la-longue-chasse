@@ -102,7 +102,9 @@ async function exportFixture(t) {
   const directory = await temporaryDirectory(t);
   const sourceFiles = [
     "app/game/planetMaterialRendererV101.ts", "app/game/systems/planetMaterialV101.ts",
+    "app/game/planetRegionalMaterialsV102.ts",
     "app/game/systems/clanWarPlanetsV96.ts", "app/game/systems/clanWarCoastlinesV97.ts",
+    "app/game/systems/clanWarPlanetGeneratorV102.ts", "app/game/systems/clanWarPlanetGeographyV102.ts",
     "app/planet-materials-v101/review.tsx",
   ];
   for (const file of sourceFiles) {

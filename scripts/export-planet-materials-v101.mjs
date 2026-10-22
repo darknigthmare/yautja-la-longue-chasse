@@ -23,7 +23,9 @@ const hash = bytes => createHash("sha256").update(bytes).digest("hex");
 const nativeManifest = JSON.parse(await fs.readFile(path.join(root, "public/game/planets/v101/manifest.json"), "utf8"));
 const sourcePaths = [
   "app/game/planetMaterialRendererV101.ts", "app/game/systems/planetMaterialV101.ts",
+  "app/game/planetRegionalMaterialsV102.ts",
   "app/game/systems/clanWarPlanetsV96.ts", "app/game/systems/clanWarCoastlinesV97.ts",
+  "app/game/systems/clanWarPlanetGeneratorV102.ts", "app/game/systems/clanWarPlanetGeographyV102.ts",
   "app/planet-materials-v101/review.tsx",
 ];
 async function fingerprint() {

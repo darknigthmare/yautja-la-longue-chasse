@@ -1,6 +1,7 @@
 import type { WarAtlasPointV95, WarAtlasRegionV95, WarAtlasTerritoryV95 } from "./clanWarAtlasV95";
 import { WAR_TERRITORIES_V85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
 import { coastGeographyV97, type WarLandmassV97 } from "./clanWarCoastlinesV97";
+import { generatedWarPlanetV102, type WarPlanetProceduralV102 } from "./clanWarPlanetGeneratorV102";
 
 export type WarPlanetSurfaceKindV96 = "water" | "acid" | "ice" | "sand" | "lava" | "brine" | "radioactive" | "crystal" | "spores" | "mist";
 export type WarPlanetLandBiomeV96 = "temperate" | "jungle" | "tundra" | "snow" | "desert" | "volcanic" | "salt" | "mountain" | "ocean" | "swamp" | "crystal" | "fungal" | "irradiated";
@@ -27,6 +28,7 @@ export interface WarPlanetV96 {
   territories: WarAtlasTerritoryV95[];
   landmasses: WarLandmassV97[];
   definitions: WarTerritoryDefinitionV85[];
+  procedural?: WarPlanetProceduralV102;
 }
 
 type Layout = "meridians" | "basins" | "plates" | "belts";
@@ -263,5 +265,6 @@ export const DEFAULT_WAR_PLANET_ID_V96 = "korthas";
 export const WAR_PLANETS_V96: readonly WarPlanetV96[] = designs.map(buildPlanet);
 const planetsById = new Map(WAR_PLANETS_V96.map(planet => [planet.id, planet]));
 export function warPlanetV96(id?: string): WarPlanetV96 | undefined {
-  return planetsById.get(id === undefined ? DEFAULT_WAR_PLANET_ID_V96 : id);
+  const key = id === undefined ? DEFAULT_WAR_PLANET_ID_V96 : id;
+  return planetsById.get(key) ?? (typeof key === "string" ? generatedWarPlanetV102(key) : undefined);
 }

@@ -1,5 +1,6 @@
 import { CLAN_WAR_PARAMETERS_V85 as P, type WarFactionIdV85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
 import { WAR_PLANETS_V96, warPlanetV96 } from "./clanWarPlanetsV96";
+import { parseWarPlanetV102 } from "./clanWarPlanetGeneratorV102";
 import { WAR_EVACUATION_COST_V100, warEvacuationIssueV100, warEvacuationManifestV100 } from "./clanWarEvacuationV100";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
@@ -40,7 +41,13 @@ export function warPlanetStorageKeyV96(planetId = "korthas"): string {
 export const WAR_PLANET_STORAGE_KEYS_V96: readonly string[] = Object.freeze(WAR_PLANETS_V96.map(planet => warPlanetStorageKeyV96(planet.id)));
 export function warPlanetIdForStorageKeyV96(key: string): string | undefined {
   const index = WAR_PLANET_STORAGE_KEYS_V96.indexOf(key);
-  return index < 0 ? undefined : WAR_PLANETS_V96[index].id;
+  if (index >= 0) return WAR_PLANETS_V96[index].id;
+  const prefix = "yautja.clan-war.v96.planet.", suffix = ".free.v1";
+  if (typeof key !== "string" || key.length > 200 || !key.startsWith(prefix) || !key.endsWith(suffix)) return undefined;
+  const id = key.slice(prefix.length, -suffix.length);
+  // The compact recipe is the identity. Validate canonical syntax without
+  // generating a world while inspecting an arbitrary storage key.
+  return parseWarPlanetV102(id) ? id : undefined;
 }
 /** Validation reads without changing or serializing a backup's original bytes. */
 export function validWarPlanetArchiveRawV96(raw: string, planetId: string): boolean {

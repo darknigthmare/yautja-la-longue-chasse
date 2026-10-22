@@ -1,4 +1,4 @@
-import { WAR_PLANETS_V96 } from "./clanWarPlanetsV96";
+import { warPlanetIdForStorageKeyV96 } from "./clanWarV85";
 
 /** A transactional write-ahead fence for free planetary fronts and shared exercises.
  * localStorage stays the readable legacy mirror. No campaign/slot is migrated.
@@ -10,7 +10,6 @@ const allowedKeys = new Set([
   "yautja.clan-war.v85.free.v1",
   "yautja.clan-war.v85.canyon.free.v1",
   "yautja.clan-war.v85.composition.free.v1",
-  ...WAR_PLANETS_V96.filter(planet => planet.id !== "korthas").map(planet => `yautja.clan-war.v96.planet.${planet.id}.free.v1`),
 ]);
 export interface WarFenceRecordV94 {
   version: 1; token: string; before: string | null; after: string; phase: "intent" | "confirmed";
@@ -42,7 +41,7 @@ export function createWarFencePortV94(factory?: IDBFactory, timeoutMs = 2500): W
   function execute<T>(key: string, mode: IDBTransactionMode,
     operation: (current: WarFenceRecordV94 | null, store: IDBObjectStore) => T): Promise<T> {
     return new Promise((resolve, reject) => {
-      if (!allowedKeys.has(key)) { reject(new WarFenceErrorV94("incompatible")); return; }
+      if (!allowedKeys.has(key) && !warPlanetIdForStorageKeyV96(key)) { reject(new WarFenceErrorV94("incompatible")); return; }
       let done = false, db: IDBDatabase | undefined, tx: IDBTransaction | undefined, result: T;
       const fail = (error: unknown = new WarFenceErrorV94("unavailable")) => {
         if (done) return;

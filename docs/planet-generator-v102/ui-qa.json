@@ -1,0 +1,70 @@
+{
+  "route": "/planet-generator-v102",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "checkedAt": "2026-10-22T11:28:05.327Z",
+  "worldA": "proc-v102-11gyrh2-2021113-yuqlv",
+  "worldB": "proc-v102-jdly-0223010-4o0mk",
+  "checks": [
+    "editing modular controls keeps the applied preview unchanged",
+    "explicit keyboard generation applies a new self-contained world code",
+    "the atlas, six regional dossiers and landmass descriptions use the applied world",
+    "the applied archipelago exposes all 36 keyboard territories",
+    "downloaded JSON contains the applied code, modular recipe and actual descriptions",
+    "copy shares the applied world code",
+    "denied clipboard selects the code and exposes a manual copy message",
+    "remember stores the canonical world code",
+    "another recipe creates genuinely different rendered geography",
+    "an invalid code leaves the last valid world intact",
+    "a mismatched JSON recipe is rejected without changing the preview",
+    "JSON import is bounded and preserves the preview on failure",
+    "a JSON round trip recreates the exact applied world and coastline geometry",
+    "code round trips preserve geography independently of local shortcuts",
+    "downloaded land PNG has the advertised dimensions and a nonempty transparent sea",
+    "opening uses the applied preview even when the draft has ungenerated changes",
+    "the active picker separates thirty historical worlds from two discoveries",
+    "a generated front accepts a real reconnaissance order, resolves it and saves turn two",
+    "a second generated front begins with its independent turn",
+    "playing a second world preserves the first world's exact archive bytes",
+    "next-world navigation uses the full dynamic catalogue and restores keyboard focus",
+    "the in-game generator previews a new world without switching the active war",
+    "both discovered world shortcuts survive a full browser-page reload",
+    "reopening a generated code after reload restores the played front unchanged",
+    "quota refusal never opens silently or claims that the catalogue was saved",
+    "an explicit memory-only opening still opens the exact preview code",
+    "a malformed existing catalogue remains byte-for-byte intact",
+    "a phone-sized form supports keyboard submission",
+    "mobile keyboard territory selection updates the real atlas",
+    "390px layout has no horizontal page overflow",
+    "another-world action creates a fresh preview without opening a war",
+    "the session cap keeps the unopenable preview, its code and the reason visible",
+    "all unsaved fronts remain discoverable after the oldest shortcut leaves the bounded catalogue",
+    "reselecting an evicted shortcut resumes its actual unsaved progress",
+    "all exercised browser journeys are free from runtime and hydration errors"
+  ],
+  "pngResult": {
+    "file": "outputs/qa-planet-generator-v102/proc-v102-11gyrh2-2021113-yuqlv-land-map.png",
+    "width": 1024,
+    "height": 512,
+    "channels": 4,
+    "hasAlpha": true,
+    "transparent": 442854,
+    "opaque": 77978
+  },
+  "errors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "passed": true
+}

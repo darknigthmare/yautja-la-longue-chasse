@@ -34,9 +34,13 @@ export function planetMaterialRecipeV101(planet: WarPlanetV96) {
   const fungal = biome === "fungal";
   const volcanic = biome === "volcanic";
   const irradiated = biome === "irradiated";
-  const cloud = wet ? "clouds-storm" : cold || kind === "mist" ? "clouds-low" : "clouds-cirrus";
-  const weather = volcanic ? "haze-ash" : fungal ? "particles-spores" : dry || kind === "acid" || irradiated ? "haze-dust" : "clouds-low";
-  const sky = planet.style === "exotic" ? planet.surface.accent : dry ? "#d7bb8a" : volcanic ? "#d18a68" : "#82b8e2";
+  const profile = planet.procedural?.recipe.atmosphere;
+  const cloud = profile === "storm" ? "clouds-storm" : profile === "haze" ? "clouds-low" : profile ? "clouds-cirrus"
+    : wet ? "clouds-storm" : cold || kind === "mist" ? "clouds-low" : "clouds-cirrus";
+  const weather = profile === "storm" ? "clouds-storm" : profile === "aurora" ? "clouds-low" : profile ? "haze-dust"
+    : volcanic ? "haze-ash" : fungal ? "particles-spores" : dry || kind === "acid" || irradiated ? "haze-dust" : "clouds-low";
+  const sky = profile ? { clear: "#82b8e2", haze: "#c4b599", storm: "#a4b3d2", aurora: "#80dace" }[profile]
+    : planet.style === "exotic" ? planet.surface.accent : dry ? "#d7bb8a" : volcanic ? "#d18a68" : "#82b8e2";
   return {
     id: planet.id,
     land: `${PLANET_MATERIAL_ROOT_V101}land-${biome}.webp`,
@@ -44,14 +48,18 @@ export function planetMaterialRecipeV101(planet: WarPlanetV96) {
     clouds: `${PLANET_MATERIAL_ROOT_V101}${cloud}.webp`,
     weather: `${PLANET_MATERIAL_ROOT_V101}${weather}.webp`,
     aurora: `${PLANET_MATERIAL_ROOT_V101}aurora.webp`,
-    landColor: biome === "crystal" || irradiated ? planet.surface.accent : landColors[biome],
+    landColor: !profile && (biome === "crystal" || irradiated) ? planet.surface.accent : landColors[biome],
     atmosphereColor: sky,
-    cloudOpacity: dry ? .12 : volcanic ? .16 : wet ? .39 : cold ? .28 : .24,
-    weatherOpacity: volcanic ? .22 : fungal ? .19 : kind === "mist" ? .28 : dry || kind === "acid" ? .18 : irradiated ? .12 : .07,
-    auroraOpacity: cold ? .42 : irradiated ? .28 : 0,
+    weatherColor: profile ? sky : planet.surface.accent,
+    cloudOpacity: profile === "clear" ? .06 : profile === "haze" ? .14 : profile === "storm" ? .58 : profile === "aurora" ? .18
+      : dry ? .12 : volcanic ? .16 : wet ? .39 : cold ? .28 : .24,
+    weatherOpacity: profile === "clear" ? .025 : profile === "haze" ? .34 : profile === "storm" ? .24 : profile === "aurora" ? .06
+      : volcanic ? .22 : fungal ? .19 : kind === "mist" ? .28 : dry || kind === "acid" ? .18 : irradiated ? .12 : .07,
+    auroraOpacity: profile ? profile === "aurora" ? .62 : 0 : cold ? .42 : irradiated ? .28 : 0,
+    atmosphereDensity: profile === "clear" ? .38 : profile === "haze" ? 1.45 : profile === "storm" ? 1.2 : profile === "aurora" ? .9 : 1,
     emission: kind === "lava" ? .5 : kind === "radioactive" ? .28 : kind === "spores" ? .13 : kind === "crystal" ? .06 : 0,
     seed: planet.seed,
-    mapping: "world-space-triplanar-mirrored" as const,
+    mapping: planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" as const : "world-space-triplanar-mirrored" as const,
   };
 }
 

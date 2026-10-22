@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-22",
+  "runtime": {
+    "node": "24.19.0",
+    "next": "16.3.5",
+    "browser": "Chromium / SwiftShader"
+  },
+  "nodeRegressionGroup": {
+    "passed": 101,
+    "failed": 0,
+    "command": "node --test --test-isolation=none tests/planet-generator-v102.test.mjs tests/planet-generator-persistence-v102.test.mjs tests/planet-regional-material-v102.test.mjs tests/planet-material-v101.test.mjs tests/planet-material-export-v101.test.mjs tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs",
+    "durationMs": 49326.604959
+  },
+  "additionalFrozenV102Contract": {
+    "passed": 1,
+    "failed": 0,
+    "command": "node --test --test-isolation=none --test-name-pattern='published V102' tests/planet-generator-v102.test.mjs",
+    "note": "Added after the grouped run; freezes three canonical worlds, including their routes and distances."
+  },
+  "auditWiring": {
+    "passed": 6,
+    "failed": 0
+  },
+  "typecheck": {
+    "passed": true,
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false"
+  },
+  "eslint": {
+    "passed": true,
+    "warnings": 0,
+    "scope": "All changed TypeScript/TSX and regression scripts, plus final UI changes."
+  },
+  "browser": {
+    "ui": {
+      "passed": 35,
+      "report": "ui-qa.json"
+    },
+    "regionalMaterials": {
+      "passed": 9,
+      "report": "regional-material-qa.json"
+    },
+    "existingRenderer": {
+      "passed": 12,
+      "report": "renderer-regression-qa.json"
+    }
+  },
+  "workflow": {
+    "yamlParsed": true,
+    "nodeRegressionAndLintWired": true,
+    "realBrowserJourneysWired": true
+  },
+  "limits": [
+    "Focused regression tests; not a complete game or release QA.",
+    "Local validation uses Node 24 and software WebGL; CI uses Node 22.",
+    "Full production build and remote deployment checks are reported separately by GitHub."
+  ],
+  "localFixtureNotes": [
+    {
+      "url": "/game/backgrounds/ship.webp",
+      "status": 404,
+      "origin": "Existing global CSS refers to artwork omitted from the local sparse checkout; every new planet material required by the generator loaded successfully."
+    }
+  ]
+}

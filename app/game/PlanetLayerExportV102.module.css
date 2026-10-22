@@ -1,0 +1,12 @@
+.export { border: 1px solid rgba(147, 180, 162, .25); border-radius: 12px; background: rgba(8, 20, 20, .65); padding: 14px 16px; color: #d9e6dc; min-width: 0; }
+.export summary { cursor: pointer; font-weight: 700; color: #d4e4b0; padding: 3px 0; }
+.export p { font-size: .8rem; line-height: 1.6; color: #a9bdb3; margin: 12px 0; }
+.controls { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
+.controls label { display: grid; gap: 7px; flex: 1 1 190px; min-width: 0; font-size: .76rem; color: #c0d3c7; }
+.controls select { width: 100%; min-width: 0; border: 1px solid #40594d; border-radius: 7px; background: #10231e; color: #e7efdf; font: inherit; font-size: .8rem; min-height: 42px; padding: 8px; }
+.controls button { min-height: 42px; padding: 9px 15px; border: 1px solid #829b50; border-radius: 7px; background: #263b22; color: #e7efcf; font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; }
+.controls :disabled { opacity: .6; cursor: wait; }
+.controls select:disabled { cursor: default; }
+.export :focus-visible { outline: 2px solid #e7cc82; outline-offset: 4px; }
+.status { min-height: 1.6em; margin-bottom: 0 !important; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .controls { display: grid; grid-template-columns: minmax(0, 1fr); } .export { padding: 12px; } }

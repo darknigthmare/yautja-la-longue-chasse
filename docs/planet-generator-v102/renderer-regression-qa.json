@@ -1,0 +1,169 @@
+{
+  "base": "http://127.0.0.1:3101",
+  "renderer": "Chromium / software WebGL",
+  "checks": [
+    {
+      "name": "visible-only runtime sources",
+      "waitingPortraits": 30,
+      "requested": [
+        "http://127.0.0.1:3101/game/planets/v101/runtime/land-temperate.webp",
+        "http://127.0.0.1:3101/game/planets/v101/runtime/surface-water.webp",
+        "http://127.0.0.1:3101/game/planets/v101/runtime/clouds-cirrus.webp",
+        "http://127.0.0.1:3101/game/planets/v101/runtime/clouds-low.webp"
+      ]
+    },
+    {
+      "name": "independent clouds",
+      "visible": 147411,
+      "transparent": 114733
+    },
+    {
+      "name": "independent weather",
+      "visible": 112750,
+      "transparent": 149394
+    },
+    {
+      "name": "independent atmosphere",
+      "visible": 181502,
+      "transparent": 80642
+    },
+    {
+      "name": "independent night",
+      "visible": 151999,
+      "transparent": 110145
+    },
+    {
+      "name": "real shader compositing and reversible settings",
+      "changedPixels": 174989
+    },
+    {
+      "name": "geographic alpha matches coast mask",
+      "compared": 13019,
+      "differences": 0
+    },
+    {
+      "name": "one context and bounded caches",
+      "available": true,
+      "error": "",
+      "decodedSources": 16,
+      "pendingSources": 5,
+      "activeLoads": 4,
+      "masks": 6,
+      "gpuTextures": 22,
+      "contexts": 1,
+      "regionalAtlases": 0,
+      "regionalMasks": 0,
+      "pendingRegionalAtlases": 0,
+      "actualContexts": 1,
+      "peakLoads": 4
+    },
+    {
+      "name": "context loss and restoration",
+      "restored": true
+    },
+    {
+      "name": "forced mediump shader compilation and rendered modules",
+      "fragments": [
+        {
+          "forcedBranches": 3,
+          "rangeMin": 15,
+          "rangeMax": 15,
+          "precision": 10
+        }
+      ],
+      "glError": 0,
+      "status": {
+        "available": true,
+        "error": "",
+        "decodedSources": 6,
+        "pendingSources": 0,
+        "activeLoads": 0,
+        "masks": 3,
+        "gpuTextures": 10,
+        "contexts": 1,
+        "regionalAtlases": 0,
+        "regionalMasks": 0,
+        "pendingRegionalAtlases": 0
+      },
+      "changedPixels": 174984,
+      "maximumDisabledDifference": 0,
+      "effects": [
+        {
+          "layer": "clouds",
+          "visible": 147412,
+          "transparent": 114732
+        },
+        {
+          "layer": "weather",
+          "visible": 112751,
+          "transparent": 149393
+        },
+        {
+          "layer": "atmosphere",
+          "visible": 181502,
+          "transparent": 80642
+        },
+        {
+          "layer": "night",
+          "visible": 151999,
+          "transparent": 110145
+        },
+        {
+          "layer": "aurora",
+          "visible": 44378,
+          "transparent": 217766
+        },
+        {
+          "layer": "emissive",
+          "visible": 52461,
+          "transparent": 209683
+        }
+      ],
+      "maximumWidthMap": {
+        "width": 4096,
+        "height": 64,
+        "opaque": 262144,
+        "colored": 262144
+      },
+      "longitudeWrap": true,
+      "limitation": "Software WebGL exercises the mediump branch; hardware may use different rounding and texture precision."
+    },
+    {
+      "name": "independent layers with unavailable land source",
+      "successful": [
+        {
+          "layer": "surface",
+          "visible": 38528
+        },
+        {
+          "layer": "emissive",
+          "visible": 13142
+        }
+      ],
+      "failed": [
+        "land",
+        "albedo",
+        "composite"
+      ],
+      "blockedRequests": 4
+    },
+    {
+      "name": "independent layers with unavailable surface source",
+      "successful": [
+        {
+          "layer": "land",
+          "visible": 25946
+        }
+      ],
+      "failed": [
+        "surface",
+        "albedo",
+        "composite"
+      ],
+      "blockedRequests": 4
+    }
+  ],
+  "errors": [],
+  "ok": true,
+  "checkedAt": "2026-10-22"
+}
