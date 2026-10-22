@@ -2,30 +2,33 @@
   "schemaVersion": 1,
   "release": "V104",
   "status": "PASS_CIBLE",
-  "verifiedAtUtc": "2026-10-22T20:33:49.953338+00:00",
-  "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
-  "productionBuildId": "KfYVJdIUFim-1m9MRRQ6_",
-  "runtimeUnchangedAfterBuildAndThreeRecipes": true,
+  "verifiedAtUtc": "2026-10-22T21:09:37.906988+00:00",
+  "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+  "productionBuildId": "1A5Wam-CqjuERBETVRmSh",
   "sourceFreeze": {
     "scope": "All app sources, production configuration and public assets consumed by the V100 follow-up. Other historical art is outside this snapshot.",
     "files": 897,
-    "bytes": 258609494,
+    "bytes": 258609927,
     "snapshots": [
       {
-        "path": "outputs/qa-v104/source-before-build.json",
-        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "path": "outputs/qa-v104/source-before-retry-build.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
         "bytes": 158403
       },
       {
-        "path": "outputs/qa-v104/source-after-build.json",
-        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "path": "outputs/qa-v104/source-after-retry-build.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
         "bytes": 158403
       },
       {
-        "path": "outputs/qa-v104/source-after-production-recipes.json",
-        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "path": "outputs/qa-v104/source-after-retry-recipes.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
         "bytes": 158403
       }
+    ],
+    "changesSinceOriginal897FileFreeze": [
+      "app/game/HomeworldCartographyV104.tsx",
+      "app/game/HomeworldHub.tsx"
     ]
   },
   "validationGroups": [
@@ -33,9 +36,9 @@
       "name": "productionBuild",
       "status": "PASS",
       "localLog": {
-        "path": "/tmp/v104-build-production-frozen.log",
-        "sha256": "4026e7be8762e574048952686731741cc97ab768dd47bdb10206dc6e4bd67654",
-        "bytes": 4540
+        "path": "/tmp/v104-build-production-retry.log",
+        "sha256": "80575ec7ce02bee33190a4f5e461dc8c11243aa14ce7aeaccee807cfb34bf994",
+        "bytes": 4542
       },
       "passedWithinThisGroup": null,
       "uniqueAcrossGroups": false
@@ -44,18 +47,18 @@
       "name": "compiledHttpSmoke",
       "status": "PASS",
       "localLog": {
-        "path": "/tmp/v104-production-smoke.log",
-        "sha256": "0bbdede5fead88af8211f3dac82b033b41ea5c7ca54a7b51c68f14da07ecfdc4",
+        "path": "/tmp/v104-production-smoke-retry.log",
+        "sha256": "e0a4117d68cb61f341b7a429a64ded48649f9690335c476e02b065b45f549e09",
         "bytes": 278
       },
       "passedWithinThisGroup": 5,
       "uniqueAcrossGroups": false
     },
     {
-      "name": "strictLint35Files",
+      "name": "strictLint37Files",
       "status": "PASS",
       "localLog": {
-        "path": "/tmp/v104-lint-final.log",
+        "path": "/tmp/v104-lint-retry-final.log",
         "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "bytes": 0
       },
@@ -127,13 +130,43 @@
       },
       "passedWithinThisGroup": 90,
       "uniqueAcrossGroups": false
+    },
+    {
+      "name": "cartographyAfterWriteRecoveryFix",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/homeworld-v104-pr12-tests.log",
+        "sha256": "65fa69096bc0484dbf28505afa130427d38a95bf8fe10d39ceed2274683e58c9",
+        "bytes": 4139
+      },
+      "passedWithinThisGroup": 31,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "homeworldInputFixtureAfterV104Wiring",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-ci-input-reproduction.log",
+        "sha256": "c96daedf47bfe19df7dd679966b0cc06a6ec478211761f35931ec1f5ab937322",
+        "bytes": 1503
+      },
+      "passedFilesAfterCorrection": 9,
+      "detailLocalLog": {
+        "path": "/tmp/v104-ci-homeworld-input-detail.log",
+        "sha256": "f5ec50b80c74b9679dbce887e7fea23082a9145ef6150fdc47a6207c3b57ebd0",
+        "bytes": 6348
+      },
+      "homeworldCases": 25,
+      "uniqueAcrossGroups": false
     }
   ],
-  "countingRule": "Test groups overlap. Counts are never summed as unique tests. Development and production recipes repeat their checks. The 6 preview copies are included within the 63 inspected production frames, not additional frames.",
+  "countingRule": "Test groups overlap and are never summed as unique tests. The selected current scoped evidence has48 Pit+8 latest Homeworld+10 Preserve=66 inspected frames. Five earlier Homeworld production frames are historical, excluded from66. Six preview copies are included within66, not additional captures.",
   "production": [
     {
       "domain": "Pit",
       "status": "PASS_CIBLE",
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
       "controls": 312,
       "capturesActuallyOpened": 48,
       "portable": {
@@ -146,6 +179,7 @@
         "sha256": "f9ec9e05ef5102067dc4dd3f78f89d36a386879eb9ee2d0541152e37f5577afd",
         "bytes": 1423356
       },
+      "currentSourcesMatchRecipeFingerprintCount": 60,
       "captures": [
         {
           "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_2H-left-active.png",
@@ -435,59 +469,84 @@
           "opened": true,
           "inspection": "PASS_CIBLE_STATIQUE"
         }
-      ]
+      ],
+      "scopeNote": "Original compiled build; every exact source fingerprint consumed by this recipe is unchanged in the final tree. No new execution or recapture is claimed."
     },
     {
       "domain": "Homeworld",
       "status": "PASS_CIBLE",
-      "controls": 18,
-      "capturesActuallyOpened": 5,
+      "buildId": "1A5Wam-CqjuERBETVRmSh",
+      "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+      "controls": 29,
+      "capturesActuallyOpened": 8,
       "portable": {
         "path": "docs/homeworld-cartography-v104-validation.json",
-        "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de",
-        "bytes": 17605
+        "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18",
+        "bytes": 29841
       },
       "rawReport": {
-        "path": "outputs/qa-v104/homeworld-cartography-production/result.json",
-        "sha256": "4a768696ccd9289df7a84cc72f55ffd8864be584c07bfc703e8a328b9b715153",
-        "bytes": 8078
+        "path": "outputs/qa-v104/homeworld-cartography-production-retry/result.json",
+        "sha256": "38fb5b73f7450f012297b6677a4a1563eedf039d5917fe62fb5645b13437858c",
+        "bytes": 10030
       },
+      "currentSourcesMatchRecipeFingerprintCount": 11,
       "captures": [
         {
-          "path": "outputs/qa-v104/homeworld-cartography-production/cartographer-post-desktop.png",
-          "sha256": "69565d15991367a557a67d431d286667dcefadfd4303eb9a24bf06e2f778b156",
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-post-desktop.png",
+          "sha256": "0e3440d7660d36bcb3756a00119acec1680de8ee689567ac0154b040dd67630c",
           "opened": true,
           "inspection": "PASS_CIBLE"
         },
         {
-          "path": "outputs/qa-v104/homeworld-cartography-production/cartographer-briefing-desktop.png",
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-offer-desktop.png",
+          "sha256": "d1207b3836b0b96a618f70376aa9a6292fcaf6a65177970ba8e9ed80502e4147",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-choice-desktop.png",
+          "sha256": "a967f15a9a6fd521a1196672e4fb6797ae15edcaf618e80053241ca8d439ad9f",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-briefing-desktop.png",
           "sha256": "c418fb562fc99fd928e7cda705821827fd62df5cf157f87022b68f1fb4ff070f",
           "opened": true,
           "inspection": "PASS_CIBLE"
         },
         {
-          "path": "outputs/qa-v104/homeworld-cartography-production/cartographer-return-notebook-desktop.png",
-          "sha256": "7b1d3fee7bec96558f0b10061874706c7c71d07d3d3bbe424f1a2f049a279f30",
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-ready-desktop.png",
+          "sha256": "baba801829b4a64510705f6d53a85a18cced0cc65103ee1db3cefdb8c51c1ee3",
           "opened": true,
           "inspection": "PASS_CIBLE"
         },
         {
-          "path": "outputs/qa-v104/homeworld-cartography-production/cartographer-complete-desktop.png",
-          "sha256": "8fdc736aa8d475a5c90141e59576631a227a6846ec5ceec95f02b9539b71519d",
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-return-notebook-desktop.png",
+          "sha256": "acb123a6e355f9e4d7b92c08ba3a5f274a3f216edc50d2681ba2e87a74293ea0",
           "opened": true,
           "inspection": "PASS_CIBLE"
         },
         {
-          "path": "outputs/qa-v104/homeworld-cartography-production/cartographer-complete-mobile.png",
-          "sha256": "87ca39294023ec525086bdf2da70ef005e5115db5bb31ad9aacf9c5d10e99152",
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-complete-desktop.png",
+          "sha256": "1edae48c0ef7635b432d79095f74171fd6af15c71d0c9dcf5771210507b52cbe",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-complete-mobile.png",
+          "sha256": "30aeb410c037c231b1cb9b13723ba22595cafaa1809cc1083d3776da21062a0a",
           "opened": true,
           "inspection": "PASS_CIBLE"
         }
-      ]
+      ],
+      "scopeNote": "Latest compiled build and three pre-walk write-refusal recovery cases."
     },
     {
       "domain": "Preserve Hunt",
       "status": "PASS_CIBLE",
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
       "controls": 25,
       "capturesActuallyOpened": 10,
       "portable": {
@@ -500,6 +559,7 @@
         "sha256": "aa480a5151b2bffee47886aeb1feb224ba1fd29d7f24a94ceaf733732e42d882",
         "bytes": 61671
       },
+      "currentSourcesMatchRecipeFingerprintCount": 10,
       "captures": [
         {
           "path": "outputs/qa-v104/preserve-production/choice-v2-desktop.png",
@@ -561,22 +621,28 @@
           "opened": true,
           "inspection": "PASS_CIBLE_STATIC_FRAME"
         }
-      ]
+      ],
+      "scopeNote": "Original compiled build; every exact source fingerprint consumed by this recipe is unchanged in the final tree. No new execution or recapture is claimed."
     }
   ],
   "independentCompatibilityReview": {
     "path": "docs/v104-compatibility-review.json",
     "sha256": "af0c464ee01026709ce41cde869e2cc5482d98ac5104108a905d37bd02693b95",
-    "bytes": 14202
+    "bytes": 14202,
+    "scopeNote": "Historical version-boundary/model review. Its two UI source fingerprints changed in the subsequent write-recovery patch; they are re-reviewed separately below. The other22 fingerprints remain exact.",
+    "changedUiFingerprints": [
+      "app/game/HomeworldHub.tsx",
+      "app/game/HomeworldCartographyV104.tsx"
+    ]
   },
   "reviewPreviews": {
     "path": "docs/v104-preview/provenance.json",
-    "sha256": "865e3d52423203227e905e7e41f461192b6a8d2e59f6bca6ba99549ec232317b",
-    "bytes": 2434
+    "sha256": "8600df54340be30da2535fbc8f3d291f71b8639989df60eb270212d24af8232c",
+    "bytes": 2700
   },
   "v100FrozenBaseline": {
     "path": "docs/YAUTJA_V100_SUIVI.xlsx",
-    "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1",
+    "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
     "bytes": 1862541
   },
   "priorPullRequests": [
@@ -610,5 +676,43 @@
     "Software Chromium static captures do not certify a physical touch device, controller, mobile GPU, full campaign, all art or canon1:1.",
     "Local compiled build is not public/CDN/Vercel deployment certification. Exact Vercel-origin and static-output build gates are locally skipped.",
     "OOXML, preserved worksheet bytes and cached formulas do not execute a native Excel application."
-  ]
+  ],
+  "runtimeUnchangedAcrossLatestBuildAndHomeworldRecipe": true,
+  "productionBuildCounting": "Homeworld is re-executed on latest build1A5Wam-CqjuERBETVRmSh after its retry fix. Pit/Preserve retain original buildKfYVJdIUFim-1m9MRRQ6_ evidence, with every source fingerprint revalidated unchanged against the final tree. The three modes are not claimed newly executed on one shared latest build.",
+  "historicalSourceFreeze": {
+    "scope": "All app sources, production configuration and public assets consumed by the V100 follow-up. Other historical art is outside this snapshot.",
+    "files": 897,
+    "bytes": 258609494,
+    "snapshots": [
+      {
+        "path": "outputs/qa-v104/source-before-build.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-build.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-production-recipes.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      }
+    ]
+  },
+  "cartographyWriteRecoveryReview": {
+    "path": "docs/v104-cartography-retry-review.json",
+    "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1",
+    "bytes": 7169
+  },
+  "writeRecoveryFix": {
+    "finding": "PR12 discussion4353451109",
+    "reproducedBeforeFix": {
+      "path": "outputs/qa-v104/homeworld-cartography-review-repro/result.json",
+      "sha256": "a2beb4da347204b221b288940a977dfc9f77c5e0f0db3907087e9e8f8c255a28",
+      "bytes": 6136
+    },
+    "scope": "A refused choose-b/reply/start write cannot strand the actor after closing the source dialog. Retry remains available before walking, never replays the refused source action and grants no free distance/waypoint."
+  }
 }

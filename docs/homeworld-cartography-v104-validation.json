@@ -13,27 +13,28 @@
   "tests": {
     "command": "node --test --test-reporter=spec tests/homeworld-cartography-v104.test.mjs tests/homeworld-street-contacts-v100.test.mjs tests/bible-cultural-save-v86.test.mjs",
     "status": "PASS",
-    "passed": 13,
+    "passed": 14,
     "failed": 0,
     "skipped": 0,
-    "logSha256": "2a74674375271c31b9288d29144a1542e6875f079de6e9849c7f133223555223",
+    "logSha256": "65fa69096bc0484dbf28505afa130427d38a95bf8fe10d39ceed2274683e58c9",
     "selectedFile": "tests/homeworld-cartography-v104.test.mjs",
-    "totalPassedInCommand": 30
+    "totalPassedInCommand": 31
   },
   "regressions": {
     "command": "node --test --test-reporter=spec tests/homeworld-cartography-v104.test.mjs tests/homeworld-street-contacts-v100.test.mjs tests/bible-cultural-save-v86.test.mjs",
     "status": "PASS",
-    "passed": 30,
+    "passed": 31,
     "failed": 0,
     "skipped": 0,
     "countsOverlap": true,
-    "logSha256": "2a74674375271c31b9288d29144a1542e6875f079de6e9849c7f133223555223"
+    "logSha256": "65fa69096bc0484dbf28505afa130427d38a95bf8fe10d39ceed2274683e58c9"
   },
   "lint": {
     "status": "PASS",
     "maxWarnings": 0,
-    "files": 11,
-    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    "files": 4,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "Changed runtime component and Hub callback, dedicated test and browser recipe; zero warnings."
   },
   "browserDevelopment": {
     "status": "PASS",
@@ -209,6 +210,311 @@
   "production": {
     "status": "PASS_CIBLE",
     "scope": "Real local game UI and keyboard after one explicit accepted Homeworld fixture. Controlled browser clock. Software Chromium; no full-campaign, physical-controller or canon-art certification.",
+    "buildId": "1A5Wam-CqjuERBETVRmSh",
+    "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+    "baseUrl": "http://127.0.0.1:3100",
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_CARTOGRAPHY_QA_OUTPUT=outputs/qa-v104/homeworld-cartography-production-retry node scripts/qa-homeworld-cartography-v104.mjs",
+    "completedAt": "2026-10-22T21:07:07.956Z",
+    "checks": [
+      {
+        "name": "Existing Homeworld checkpoint restores the actor on the supported port approach",
+        "status": "PASS"
+      },
+      {
+        "name": "Dedicated source speaker and the existing native lectern are physically rendered",
+        "status": "PASS"
+      },
+      {
+        "name": "Real interaction key opens the local cartographer dialog with focus",
+        "status": "PASS"
+      },
+      {
+        "name": "Only the known port courtyard appears in the functional survey map",
+        "status": "PASS"
+      },
+      {
+        "name": "Refused offer action leaves its durable receipt and phase unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Closing the offer dialog keeps a visible storage failure and retry control",
+        "status": "PASS"
+      },
+      {
+        "name": "A second refused offer write remains retryable and cannot move or advance the receipt",
+        "status": "PASS"
+      },
+      {
+        "name": "Successful offer storage retry restores actual movement without replaying the refused action",
+        "status": "PASS"
+      },
+      {
+        "name": "Retry records the exact source B choice once",
+        "status": "PASS"
+      },
+      {
+        "name": "Refused choice action leaves its durable receipt and phase unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Closing the choice dialog keeps a visible storage failure and retry control",
+        "status": "PASS"
+      },
+      {
+        "name": "A second refused choice write remains retryable and cannot move or advance the receipt",
+        "status": "PASS"
+      },
+      {
+        "name": "Successful choice storage retry restores actual movement without replaying the refused action",
+        "status": "PASS"
+      },
+      {
+        "name": "Present source speaker gives the B response without playing the unavailable high-point branch",
+        "status": "PASS"
+      },
+      {
+        "name": "World movement remains stopped behind the actual dialog",
+        "status": "PASS"
+      },
+      {
+        "name": "Refused ready action leaves its durable receipt and phase unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Closing the ready dialog keeps a visible storage failure and retry control",
+        "status": "PASS"
+      },
+      {
+        "name": "A second refused ready write remains retryable and cannot move or advance the receipt",
+        "status": "PASS"
+      },
+      {
+        "name": "Successful ready storage retry restores actual movement without replaying the refused action",
+        "status": "PASS"
+      },
+      {
+        "name": "Pausing midway preserves a real walked prefix and records interruption without a waypoint",
+        "status": "PASS"
+      },
+      {
+        "name": "Real keyboard approach records the first existing courtyard marker",
+        "status": "PASS"
+      },
+      {
+        "name": "Ordinary Continue restores the saved first-marker position and keeps its receipt",
+        "status": "PASS"
+      },
+      {
+        "name": "Second marker is earned by native walking and asks for a physical return",
+        "status": "PASS"
+      },
+      {
+        "name": "Distant marker has no cartographer interaction prompt",
+        "status": "PASS"
+      },
+      {
+        "name": "Only a walked return to the source speaker completes the survey",
+        "status": "PASS"
+      },
+      {
+        "name": "Survey completion grants no marks, trophies, inventory or previously unknown districts",
+        "status": "PASS"
+      },
+      {
+        "name": "Mobile source dialog and map fit 390px with usable controls",
+        "status": "PASS"
+      },
+      {
+        "name": "Completed survey survives ordinary reload without restarting or repeating its choice",
+        "status": "PASS"
+      },
+      {
+        "name": "Journey has no browser exceptions",
+        "status": "PASS",
+        "detail": []
+      }
+    ],
+    "captureCount": 8,
+    "inspectedCount": 8,
+    "captures": [
+      {
+        "file": "cartographer-post-desktop.png",
+        "sha256": "0e3440d7660d36bcb3756a00119acec1680de8ee689567ac0154b040dd67630c",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Interlocuteur ochre distinct du joueur, auprès du pupitre existant; pieds au sol et accès lisible."
+      },
+      {
+        "file": "cartographer-write-paused-offer-desktop.png",
+        "sha256": "d1207b3836b0b96a618f70376aa9a6292fcaf6a65177970ba8e9ed80502e4147",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Dialogue fermé après choix refusé; panneau dédié, message d’échec et réessai entièrement visibles, sans prochain repère annoncé."
+      },
+      {
+        "file": "cartographer-write-paused-choice-desktop.png",
+        "sha256": "a967f15a9a6fd521a1196672e4fb6797ae15edcaf618e80053241ca8d439ad9f",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Dialogue fermé après réponse refusée; panneau dédié et réessai visibles malgré le blocage des déplacements."
+      },
+      {
+        "file": "cartographer-briefing-desktop.png",
+        "sha256": "c418fb562fc99fd928e7cda705821827fd62df5cf157f87022b68f1fb4ff070f",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Carte connue et réponse source lisibles, contrôles séparés; aucune branche du point haut jouée."
+      },
+      {
+        "file": "cartographer-write-paused-ready-desktop.png",
+        "sha256": "baba801829b4a64510705f6d53a85a18cced0cc65103ee1db3cefdb8c51c1ee3",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Dialogue fermé après départ refusé; panneau dédié, message et réessai entièrement visibles, sans bouton de reprise de marche anticipé."
+      },
+      {
+        "file": "cartographer-return-notebook-desktop.png",
+        "sha256": "acb123a6e355f9e4d7b92c08ba3a5f274a3f216edc50d2681ba2e87a74293ea0",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Acteur arrivé auprès de la lampe, deux repères consignés et retour physique explicitement demandé."
+      },
+      {
+        "file": "cartographer-complete-desktop.png",
+        "sha256": "1edae48c0ef7635b432d79095f74171fd6af15c71d0c9dcf5771210507b52cbe",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Deux repères atteints et relevé lisibles; segments observés dessinés avec leurs coupures, texte de réussite source affiché."
+      },
+      {
+        "file": "cartographer-complete-mobile.png",
+        "sha256": "30aeb410c037c231b1cb9b13723ba22595cafaa1809cc1083d3776da21062a0a",
+        "inspection": "PASS_CIBLE",
+        "openedWith": "view_image",
+        "notes": "Carte et contrôle de retour lisibles à 390 px; dialogue verticalement défilable et aucune largeur débordante."
+      }
+    ],
+    "errors": [],
+    "sourceUnchanged": true,
+    "sourceSnapshot": [
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "edf9202e33b0821047f9c43b2fccee33aa7c0b21f1ff8fc557951b5691085d76"
+      },
+      {
+        "file": "app/game/HomeworldWorldSceneV77.tsx",
+        "sha256": "921a890b4ca119877a1265e210910a15fb7c7e3a9fd18dbc223fcf4e9b445da0"
+      },
+      {
+        "file": "app/game/HomeworldCartographerV104.tsx",
+        "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.tsx",
+        "sha256": "0bdd68a99046e9c3d5218c239b9b16d0a5d2c99dcab8f3c4cc32b5ba3c53b15c"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.module.css",
+        "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+        "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+        "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyV104.ts",
+        "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+      },
+      {
+        "file": "app/game/data/bibleCartographySceneV104.json",
+        "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+      },
+      {
+        "file": "app/game/systems/homeworld.ts",
+        "sha256": "ef0d4b893fdfd3ac7d7026b3f5ee8f719ca5237784225964925cd89a97c3671c"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "32fb66f9859703e6ab5c55cd72126d719843fc19ffeac7ed1ece0ffc8fd9959d"
+      }
+    ],
+    "reportPath": "outputs/qa-v104/homeworld-cartography-production-retry/result.json",
+    "reportSha256": "38fb5b73f7450f012297b6677a4a1563eedf039d5917fe62fb5645b13437858c",
+    "fixtureDescription": "Authored cage/first-tracks model route, explicit accepted city checkpoint at the existing port lectern. Not a campaign played in this browser.",
+    "browserClock": "controlled",
+    "privateActorSetterAfterEntry": false,
+    "appliesToCurrentSources": true
+  },
+  "limits": [
+    "Existing modular static native body, lectern, planter and lamp. No new native animation, cartography bitmap or recorded voice.",
+    "One source scene and one branch only; high-point optionA and730-scene corpus completion remain open.",
+    "Fixture enters an accepted Homeworld checkpoint; the full campaign is not played in this browser.",
+    "Model tests cover owner/floor/stale revisions/import corruption/return interruption; browser uses floor0 and software Chromium.",
+    "No physical-controller, physical-GPU, published deployment or CDN qualification."
+  ],
+  "currentSourceSnapshot": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "edf9202e33b0821047f9c43b2fccee33aa7c0b21f1ff8fc557951b5691085d76"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "921a890b4ca119877a1265e210910a15fb7c7e3a9fd18dbc223fcf4e9b445da0"
+    },
+    {
+      "file": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "0bdd68a99046e9c3d5218c239b9b16d0a5d2c99dcab8f3c4cc32b5ba3c53b15c"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.module.css",
+      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "file": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "ef0d4b893fdfd3ac7d7026b3f5ee8f719ca5237784225964925cd89a97c3671c"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "32fb66f9859703e6ab5c55cd72126d719843fc19ffeac7ed1ece0ffc8fd9959d"
+    }
+  ],
+  "traceCompaction": {
+    "threshold": 480,
+    "retainedTail": 200,
+    "retainedOrigin": true,
+    "retainedEarnedApproaches": true,
+    "omissionsPaintedAsShortcuts": false,
+    "distanceCeiling": 1000000000,
+    "ceilingStopsProgress": false,
+    "independentReviewRealSteps": 5370
+  },
+  "productionBeforeRetryFix": {
+    "status": "PASS_CIBLE",
+    "scope": "Real local game UI and keyboard after one explicit accepted Homeworld fixture. Controlled browser clock. Software Chromium; no full-campaign, physical-controller or canon-art certification.",
     "buildId": "KfYVJdIUFim-1m9MRRQ6_",
     "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
     "baseUrl": "http://127.0.0.1:3100",
@@ -381,69 +687,55 @@
     "fixtureDescription": "Authored cage/first-tracks model route, explicit accepted city checkpoint at the existing port lectern. Not a campaign played in this browser.",
     "browserClock": "controlled",
     "privateActorSetterAfterEntry": false,
-    "appliesToCurrentSources": true
+    "appliesToCurrentSources": false,
+    "stage": "Historical compiled recipe before the PR12 write-failure recovery fix. Its five inspected captures are retained unchanged."
   },
-  "limits": [
-    "Existing modular static native body, lectern, planter and lamp. No new native animation, cartography bitmap or recorded voice.",
-    "One source scene and one branch only; high-point optionA and730-scene corpus completion remain open.",
-    "Fixture enters an accepted Homeworld checkpoint; the full campaign is not played in this browser.",
-    "Model tests cover owner/floor/stale revisions/import corruption/return interruption; browser uses floor0 and software Chromium.",
-    "No physical-controller, physical-GPU, published deployment or CDN qualification."
-  ],
-  "currentSourceSnapshot": [
-    {
-      "file": "app/game/HomeworldHub.tsx",
-      "sha256": "0b7363c0018dceb8a9a256d3f41e279cfc211ac20f12f3126c7a5475dda38146"
+  "writeFailureRecovery": {
+    "review": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/12#discussion_r4353451109",
+    "preFixReproduction": {
+      "status": "REPRODUCED",
+      "baseUrl": "http://127.0.0.1:3000",
+      "reportPath": "outputs/qa-v104/homeworld-cartography-review-repro/result.json",
+      "reportSha256": "a2beb4da347204b221b288940a977dfc9f77c5e0f0db3907087e9e8f8c255a28",
+      "failureCheck": "Closing the offer dialog keeps a visible storage failure and retry control",
+      "sourceUnchanged": true,
+      "outcome": "With old runtime, choose-b write fails and closing the dialog removes the specific retry control while movement remains paused."
     },
-    {
-      "file": "app/game/HomeworldWorldSceneV77.tsx",
-      "sha256": "921a890b4ca119877a1265e210910a15fb7c7e3a9fd18dbc223fcf4e9b445da0"
+    "coveredPreWalkStates": [
+      {
+        "phase": "offer",
+        "refusedAction": "choose-b",
+        "durableReceipt": "absent"
+      },
+      {
+        "phase": "choice",
+        "refusedAction": "reply",
+        "durableReceipt": "choice"
+      },
+      {
+        "phase": "ready",
+        "refusedAction": "start",
+        "durableReceipt": "ready"
+      }
+    ],
+    "checksPerState": [
+      "Refused action leaves the complete durable ledger unchanged.",
+      "Closing the dialog exposes the dedicated failure message and retry control.",
+      "Another refused retry keeps the control available, the real actor immobile and the complete ledger unchanged.",
+      "Successful storage retry restores real keyboard movement without replaying the refused action; the player reopens the source dialog to perform it."
+    ],
+    "developmentAfterFix": {
+      "status": "PASS",
+      "baseUrl": "http://127.0.0.1:3000",
+      "checks": 29,
+      "captureCount": 8,
+      "reportPath": "outputs/qa-v104/homeworld-cartography-review-retry/result.json",
+      "reportSha256": "f0b81c8e60d97a648c5558e18859411da84e2dabd4a45203a62672790e1c325d",
+      "sourceUnchanged": true
     },
-    {
-      "file": "app/game/HomeworldCartographerV104.tsx",
-      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
-    },
-    {
-      "file": "app/game/HomeworldCartographyV104.tsx",
-      "sha256": "9fa88febe6d9e15bbd69ed044bf21ff98d52bd8bc574a0d2ecc9ee6297980215"
-    },
-    {
-      "file": "app/game/HomeworldCartographyV104.module.css",
-      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
-    },
-    {
-      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
-      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
-    },
-    {
-      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
-      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
-    },
-    {
-      "file": "app/game/systems/homeworldCartographyV104.ts",
-      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
-    },
-    {
-      "file": "app/game/data/bibleCartographySceneV104.json",
-      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
-    },
-    {
-      "file": "app/game/systems/homeworld.ts",
-      "sha256": "ef0d4b893fdfd3ac7d7026b3f5ee8f719ca5237784225964925cd89a97c3671c"
-    },
-    {
-      "file": "app/game/save.ts",
-      "sha256": "32fb66f9859703e6ab5c55cd72126d719843fc19ffeac7ed1ece0ffc8fd9959d"
-    }
-  ],
-  "traceCompaction": {
-    "threshold": 480,
-    "retainedTail": 200,
-    "retainedOrigin": true,
-    "retainedEarnedApproaches": true,
-    "omissionsPaintedAsShortcuts": false,
-    "distanceCeiling": 1000000000,
-    "ceilingStopsProgress": false,
-    "independentReviewRealSteps": 5370
+    "productionStatus": "PASS_CIBLE",
+    "productionEvidence": "production",
+    "retriesRequireReload": false,
+    "retryAwardsProgression": false
   }
 }

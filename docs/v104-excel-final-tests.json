@@ -2,36 +2,36 @@
   "schemaVersion": 1,
   "release": "V104",
   "status": "PASS_EXCEL_CIBLE",
-  "verifiedAtUtc": "2026-10-22T20:39:17.171Z",
-  "scope": "Final workbook generation, byte-reproducible check, ten actual targeted tests, historical ZIP/XML preservation and actual CI sparse inclusion. No additional game/browser or native Excel run in this step.",
-  "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+  "verifiedAtUtc": "2026-10-22T21:13:04.203Z",
+  "scope": "Final V104 workbook generation and ten actual targeted tests after Homeworld pre-walk write-recovery correction. Runtime proof is mode-specific: renewed Homeworld build; unchanged Pit/Preserve retain their original builds. No additional game/browser or native Excel application executed by this step.",
+  "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
   "runtimeChangedByThisStep": false,
   "priorWorkbooksRewrittenByThisStep": false,
   "runtimeValidationProof": {
     "path": "docs/v104-validation-summary.json",
-    "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059",
-    "bytes": 26294
+    "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04",
+    "bytes": 31533
   },
   "baseline": {
     "path": "docs/YAUTJA_V100_SUIVI.xlsx",
-    "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1",
+    "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
     "bytes": 1862541
   },
   "baselineFreeze": "FROZEN",
   "workbook": {
     "path": "docs/YAUTJA_V104_SUIVI.xlsx",
-    "sha256": "24b12215808e90fbe3141b2893bf4e96d0561842ebff685d50a3b8020073ab41",
-    "bytes": 2410920
+    "sha256": "44b2651bdfb500a0f8052163c478bb089ce716114b4e50c0fbb7d9ea9aa13ef5",
+    "bytes": 2411658
   },
   "products": [
     {
       "path": "docs/v104-workstreams.json",
-      "sha256": "8c99354475c690b20fbc3459d594cf0a181fb1c671859b9b9b073c6362d6ae04",
-      "bytes": 249795
+      "sha256": "d58cdfd6bbb6dac29d07196e5ebb3ff3a081efaece039f3364e149f41872b43d",
+      "bytes": 250445
     },
     {
       "path": "docs/v104-excel-followup-qa.json",
-      "sha256": "a5e1bcc61db5ae9c8c1522c840afa3450ef52012b187c499b1741058186779b8",
+      "sha256": "44f051f424516262c47e4f9f8320af135443f693f1c39fdddcea8699651e451b",
       "bytes": 4046
     }
   ],
@@ -53,13 +53,13 @@
     },
     {
       "path": "docs/v104-workstreams-source.json",
-      "sha256": "dec4ee5efed72fc1a5521c59804f79247d38fe1d0a030d2bc4724bb46ab02d83",
-      "bytes": 16265
+      "sha256": "7ce3a7e827b9933ccb654c22e8f2ebf8917ffdef6bad945b6af1862b6bbf49e8",
+      "bytes": 16762
     },
     {
       "path": "docs/excel-followup-v104.md",
-      "sha256": "5ccee16f75752426aac866c3c5981dfad0aba6d1e7d3aac63cbfb2339722fb8f",
-      "bytes": 8943
+      "sha256": "282a0efb8685bd57964e0aaccc103c5599d2c78c68e80793528fe3a31d86ac10",
+      "bytes": 9300
     }
   ],
   "commands": [
@@ -68,8 +68,8 @@
       "status": "PASS",
       "exitCode": 0,
       "log": {
-        "path": "/tmp/excel-v104-final-generation.log",
-        "sha256": "51c2a23c8c3bb3791ff0a488d896027cdf61484f3f330aeafccc17d9ff16198e",
+        "path": "/tmp/excel-v104-retry-final-generation.log",
+        "sha256": "5e0d1bf33b49b47cea03850855c89533e25c91ee47d5e84d44230fde9b672acd",
         "bytes": 681
       }
     },
@@ -78,8 +78,8 @@
       "status": "PASS",
       "exitCode": 0,
       "log": {
-        "path": "/tmp/excel-v104-final-check.log",
-        "sha256": "261c8431681709e873162c81e7ea180ab6b1e3ecc30b5a89bac8558f37662138",
+        "path": "/tmp/excel-v104-retry-final-check.log",
+        "sha256": "4102665e653046816e77082f1f373bf4c64e3fa9f08d64ce19d9d75e956c106e",
         "bytes": 678
       }
     },
@@ -92,23 +92,23 @@
       "passed": 10,
       "failed": 0,
       "skipped": 0,
-      "durationMs": 9440.076628,
+      "durationMs": 12281.785842,
       "actualSubtests": [
-        "✔ V104 rejects false closure, unnamed proof, missing browser validation and enlarged scope (8.90471ms)",
-        "✔ a changed final report cannot keep a validated proof, and an unvalidated filename creates no proof (4.375786ms)",
-        "✔ a changed V100 baseline pin is refused before collecting runtime or touching history (11.641163ms)",
-        "✔ cartography scenes, both source options and eight replicas retain the exact V6 corpus cells (239.90947ms)",
-        "✔ source timings, damage, height and D:L cells are independently compared to V100 and V56 (2435.11129ms)",
-        "✔ actual exports retain bounded coverage and separate static poses, BODY, mechanics and historic recipes (0.59464ms)",
-        "✔ the 27 historical sheets, ZIP payloads and all original style definitions survive byte-identically (48.559249ms)",
-        "✔ summary formula caches and all new navigation links are independently readable (159.983648ms)",
-        "✔ source operators remain text and forged caches or historical bytes are refused (478.072199ms)",
-        "✔ generation is reproducible and check rejects every stale output without rewriting it (5870.110858ms)"
+        "✔ V104 rejects false closure, unnamed proof, missing browser validation and enlarged scope (9.025535ms)",
+        "✔ a changed final report cannot keep a validated proof, and an unvalidated filename creates no proof (11.762998ms)",
+        "✔ a changed V100 baseline pin is refused before collecting runtime or touching history (8.551628ms)",
+        "✔ cartography scenes, both source options and eight replicas retain the exact V6 corpus cells (221.611392ms)",
+        "✔ source timings, damage, height and D:L cells are independently compared to V100 and V56 (3191.34074ms)",
+        "✔ actual exports retain bounded coverage and separate static poses, BODY, mechanics and historic recipes (1.276237ms)",
+        "✔ the 27 historical sheets, ZIP payloads and all original style definitions survive byte-identically (74.019551ms)",
+        "✔ summary formula caches and all new navigation links are independently readable (181.102488ms)",
+        "✔ source operators remain text and forged caches or historical bytes are refused (646.977818ms)",
+        "✔ generation is reproducible and check rejects every stale output without rewriting it (7731.358403ms)"
       ],
       "log": {
-        "path": "/tmp/excel-v104-final-tests.log",
-        "sha256": "caa4bdcd60d74e1e45757c10df35b9d4a4e4afc310d375fd965431c05fde92ee",
-        "bytes": 1196
+        "path": "/tmp/excel-v104-retry-final-tests.log",
+        "sha256": "87a39b37d2d4dfcf4995330770544b5310cb447c3a7cd417cbd536e23f0d536e",
+        "bytes": 1200
       }
     }
   ],
@@ -120,7 +120,7 @@
     "originalStylePrefixPreserved": true,
     "xmlPartsParsed": 56,
     "formulaCachesChecked": 12,
-    "inputFingerprintsVerified": 231,
+    "inputFingerprintsVerified": 232,
     "assetsVerified": 140
   },
   "delivery": {
@@ -131,7 +131,7 @@
         "proof": [
           {
             "path": "docs/v104-validation-summary.json",
-            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+            "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
           },
           {
             "path": "docs/v104-pit-normals-validation.json",
@@ -145,11 +145,15 @@
         "proof": [
           {
             "path": "docs/v104-validation-summary.json",
-            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+            "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
           },
           {
             "path": "docs/homeworld-cartography-v104-validation.json",
-            "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+            "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18"
+          },
+          {
+            "path": "docs/v104-cartography-retry-review.json",
+            "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1"
           }
         ]
       },
@@ -159,7 +163,7 @@
         "proof": [
           {
             "path": "docs/v104-validation-summary.json",
-            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+            "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
           },
           {
             "path": "docs/v104-preserve-hunt-validation.json",
@@ -173,7 +177,7 @@
         "proof": [
           {
             "path": "docs/v104-validation-summary.json",
-            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+            "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
           },
           {
             "path": "docs/planet-generator-v103/review-fixes-20261022.json",
@@ -187,7 +191,7 @@
         "proof": [
           {
             "path": "docs/v104-validation-summary.json",
-            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+            "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
           },
           {
             "path": "docs/suivi-production/v613/validation.json",
@@ -205,14 +209,14 @@
   },
   "ciSparse": {
     "status": "PASS",
-    "method": "git sparse-checkout check-rules -z --no-cone --rules-file with actual application job patterns and file-backed stdin",
+    "method": "git sparse-checkout check-rules -z --no-cone --rules-file using current application patterns and file-backed stdin",
     "workflow": {
       "path": ".github/workflows/audit-v94.yml",
       "sha256": "87a1e3cd3e3c788ba52cdd77df0fbb45fe09f20f0c4ac2b5827d486c714ce43b",
       "bytes": 19540
     },
-    "required": 236,
-    "included": 236,
+    "required": 237,
+    "included": 237,
     "missing": []
   },
   "excludedFromGenerationInputs": true,
@@ -222,6 +226,62 @@
     "Ten workbook tests are a separate targeted group; do not aggregate them with overlapping game test groups.",
     "Five validated workstreams keep limited scopes. Full characters, entities, costumes, Cartographer option A, remaining Preserve coverage, six Pit dossiers, six war structures and eighteen Enforcer10 variants remain open.",
     "The 5120-identity main reconciliation is an explicit merge attestation. The collector verifies only108 Enforcer PNG and32 BODY page files as native available bytes.",
-    "The frozen global report and runtime files were not edited by final Excel promotion. This attestation stays outside generation inputs to avoid a workbook/report hash cycle."
-  ]
+    "The frozen global report and runtime files were not edited by final Excel promotion. This attestation stays outside generation inputs to avoid a workbook/report hash cycle.",
+    "Homeworld29 controls/8 captures renew only that mode after the retry fix; its18-control/5-capture prior run stays historical. Pit312/48 and Preserve25/10 retain their earlier build and unchanged source evidence."
+  ],
+  "productionEvidenceByDomain": [
+    {
+      "domain": "Pit",
+      "status": "PASS_CIBLE",
+      "controls": 312,
+      "capturesActuallyOpened": 48,
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+      "portable": {
+        "path": "docs/v104-pit-normals-validation.json",
+        "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d",
+        "bytes": 179827
+      }
+    },
+    {
+      "domain": "Homeworld",
+      "status": "PASS_CIBLE",
+      "controls": 29,
+      "capturesActuallyOpened": 8,
+      "buildId": "1A5Wam-CqjuERBETVRmSh",
+      "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+      "portable": {
+        "path": "docs/homeworld-cartography-v104-validation.json",
+        "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18",
+        "bytes": 29841
+      }
+    },
+    {
+      "domain": "Preserve Hunt",
+      "status": "PASS_CIBLE",
+      "controls": 25,
+      "capturesActuallyOpened": 10,
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+      "portable": {
+        "path": "docs/v104-preserve-hunt-validation.json",
+        "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615",
+        "bytes": 31339
+      }
+    }
+  ],
+  "historicalHomeworldEvidence": {
+    "status": "HISTORIQUE_AVANT_CORRECTION",
+    "portablePath": "docs/homeworld-cartography-v104-validation.json",
+    "field": "productionBeforeRetryFix",
+    "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+    "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+    "controls": 18,
+    "captures": 5
+  },
+  "homeworldWriteRecoveryReview": {
+    "path": "docs/v104-cartography-retry-review.json",
+    "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1",
+    "bytes": 7169
+  }
 }

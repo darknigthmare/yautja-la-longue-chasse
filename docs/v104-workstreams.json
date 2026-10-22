@@ -4,7 +4,7 @@
   "asOf": "2026-10-22",
   "baseline": {
     "path": "docs/YAUTJA_V100_SUIVI.xlsx",
-    "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1"
+    "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf"
   },
   "baselineFreeze": "FROZEN",
   "method": "Exports runtime compilés et comparés aux extractions épinglées ; SHA des fichiers réellement lus. Les statuts de preuve sont déclarés explicitement, aucun test exécuté par ce collecteur.",
@@ -58,7 +58,7 @@
       "proof": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/v104-pit-normals-validation.json",
@@ -83,16 +83,20 @@
       "status": "VALIDE_CIBLE",
       "validationScope": "OPTION_B_KNOWN_ROUTE",
       "runtime": "Option B uniquement : interlocuteur, pupitre et marche physique dans le port ; repères connus, propriétaire et reprise explicites. Aucun dévoilement de zone inconnue ni récompense inventée.",
-      "tests": "PASS : 13 nouveaux tests Cartographe ; 30 avec régressions V100/V86. Treize cas rejoués après le raffinement de type final ; groupes recoupés.",
-      "browser": "PASS_CIBLE_PRODUCTION : 18 contrôles, 5 captures réellement ouvertes ; sources inchangées depuis a974424b.",
+      "tests": "PASS : 14 tests dédiés et 31 avec régressions V100/V86 ; comptes recoupés. Refus de sauvegarde avant marche et reprise après fermeture vérifiés.",
+      "browser": "PASS_CIBLE_PRODUCTION : 29 contrôles, 8 captures réellement ouvertes ; build1A5Wam-CqjuERBETVRmSh et runtime4fecb68b. Ancienne preuve18/5 conservée comme historique dans le rapport.",
       "proof": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/homeworld-cartography-v104-validation.json",
-          "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+          "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18"
+        },
+        {
+          "path": "docs/v104-cartography-retry-review.json",
+          "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1"
         }
       ],
       "remaining": "L’option A du point haut reste ouverte. Une scène partiellement incarnée ne clôt ni ses autres options ni les 730 scènes documentaires."
@@ -116,7 +120,7 @@
       "proof": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/v104-preserve-hunt-validation.json",
@@ -144,7 +148,7 @@
       "proof": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/planet-generator-v103/review-fixes-20261022.json",
@@ -172,7 +176,7 @@
       "proof": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/suivi-production/v613/validation.json",
@@ -4439,7 +4443,7 @@
       "evidence": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/v104-pit-normals-validation.json",
@@ -4451,16 +4455,20 @@
     {
       "id": "HOMEWORLD-V104-CARTOGRAPHY-PREUVE-FINALE",
       "status": "PASS_CIBLE",
-      "scope": "Une scène V6 et son option B physiquement incarnée, repères connus, marche, trace bornée, interruptions et reprise.",
-      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_CARTOGRAPHY_QA_OUTPUT=outputs/qa-v104/homeworld-cartography-production node scripts/qa-homeworld-cartography-v104.mjs",
+      "scope": "Une scène V6 et son option B physiquement incarnée ; marche connue, trace bornée, interruptions/reprise et refus d’écriture choose-b/reply/start avec reprise accessible après fermeture.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_CARTOGRAPHY_QA_OUTPUT=outputs/qa-v104/homeworld-cartography-production-retry node scripts/qa-homeworld-cartography-v104.mjs",
       "evidence": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/homeworld-cartography-v104-validation.json",
-          "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+          "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18"
+        },
+        {
+          "path": "docs/v104-cartography-retry-review.json",
+          "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1"
         }
       ],
       "limit": "Option A du point haut ouverte ; aucune révélation de zone inconnue, récompense de campagne ou certification du corpus complet."
@@ -4473,7 +4481,7 @@
       "evidence": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/v104-preserve-hunt-validation.json",
@@ -4490,7 +4498,7 @@
       "evidence": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/planet-generator-v103/review-fixes-20261022.json",
@@ -4507,7 +4515,7 @@
       "evidence": [
         {
           "path": "docs/v104-validation-summary.json",
-          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
         },
         {
           "path": "docs/suivi-production/v613/validation.json",
@@ -4524,7 +4532,7 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "sha256": "0b7363c0018dceb8a9a256d3f41e279cfc211ac20f12f3126c7a5475dda38146"
+      "sha256": "edf9202e33b0821047f9c43b2fccee33aa7c0b21f1ff8fc557951b5691085d76"
     },
     {
       "path": "app/game/HomeworldWorldSceneV77.tsx",
@@ -4792,7 +4800,7 @@
     },
     {
       "path": "docs/YAUTJA_V100_SUIVI.xlsx",
-      "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1"
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf"
     },
     {
       "path": "docs/YAUTJA_V99_SUIVI.xlsx",
@@ -4800,7 +4808,7 @@
     },
     {
       "path": "docs/homeworld-cartography-v104-validation.json",
-      "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+      "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18"
     },
     {
       "path": "docs/planet-generator-v103/review-fixes-20261022.json",
@@ -4828,7 +4836,11 @@
     },
     {
       "path": "docs/v100-workstreams.json",
-      "sha256": "c7ce92a066a1d7b40cc81f990b83ef30670e3ddb9d43ac8cd3a9b96366567996"
+      "sha256": "1acfdc43ca7fd8adeeb29ce18e6e94f053b146c4b34d4d6d861e67970772d42b"
+    },
+    {
+      "path": "docs/v104-cartography-retry-review.json",
+      "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1"
     },
     {
       "path": "docs/v104-pit-normals-validation.json",
@@ -4840,11 +4852,11 @@
     },
     {
       "path": "docs/v104-validation-summary.json",
-      "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+      "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04"
     },
     {
       "path": "docs/v104-workstreams-source.json",
-      "sha256": "dec4ee5efed72fc1a5521c59804f79247d38fe1d0a030d2bc4724bb46ab02d83"
+      "sha256": "7ce3a7e827b9933ccb654c22e8f2ebf8917ffdef6bad945b6af1862b6bbf49e8"
     },
     {
       "path": "docs/v56-excel-priorities.json",
