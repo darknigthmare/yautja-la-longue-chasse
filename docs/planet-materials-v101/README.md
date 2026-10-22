@@ -104,7 +104,7 @@ Les cartes exportées sont des **1 024 × 512**. Les globes et leurs calques atm
 ```sh
 node scripts/build-planet-material-assets-v101.mjs
 npm run typecheck
-node --test --test-isolation=none tests/planet-material-v101.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
+node --test --test-concurrency=1 tests/planet-material-v101.test.mjs tests/planet-material-export-v101.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
 ```
 
 Avec le serveur Next démarré sur le port 3101 et un navigateur Chromium disponible :
@@ -117,7 +117,37 @@ CHROMIUM_EXECUTABLE_PATH=/chemin/vers/chromium node scripts/export-planet-materi
 
 Les scripts de rendu et d'export acceptent l'URL du serveur dans `YAUTJA_PLANET_MATERIAL_URL`. Le contrôle de l'atlas crée son propre serveur temporaire avec le composant réel. Le script de construction ne régénère pas les images : il vérifie les originaux, encode les WebP et reconstruit les inventaires. Les prompts complets et observations visuelles sont dans `land-generation.json`, `surface-generation.json` et `atmosphere-generation.json`.
 
-## Vérifications effectuées
+## Suivi de fiabilité — 22 octobre 2026
+
+Le pack initial a été intégré par la [PR #8](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/8). Le suivi part de `main` au commit `017f3bd8d37457ee56d0cfeb78da9835c6388b8f`.
+
+### Compatibilité graphique et indépendance des calques
+
+Le shader conserve la précision `highp` lorsque le GPU la propose et utilise `mediump` sinon. Dans ce second chemin, les coordonnées sont normalisées avant multiplication par les dimensions de sortie et les divisions par alpha emploient un seuil adapté à cette précision. Les longitudes sont également ramenées dans un tour avant leur transmission au shader.
+
+Les calques `surface` et `emissive` chargent seulement leur matière de surface ; `land` charge seulement sa matière terrestre. Une texture étrangère au calque peut donc être indisponible sans empêcher son export. Les assemblages `albedo` et `composite` requièrent toujours les deux matières, et les sources réellement nécessaires restent contrôlées.
+
+Le [rapport du renderer après correction](renderer-followup-qa.json) contient **12 contrôles réussis**, sans erreur JavaScript ou WebGL : compilation et rendu de la branche `mediump`, six effets transparents, désactivation réversible des modules, carte de 4 096 × 64 pixels, rotations sur plusieurs tours, réponses HTTP 404 sur chaque famille de matières, caches bornés et restauration du contexte. Les 13 019 échantillons de masque géographique restent conformes. Les deux captures du renderer ont été inspectées. La branche `mediump` est forcée dans Chromium/SwiftShader pour le test ; les arrondis d'un GPU mobile physique peuvent différer.
+
+### Reprise des exports
+
+Les PNG, `exports.json` et `index.html` sont écrits dans un fichier temporaire du même répertoire, synchronisés puis remplacés par renommage. Un PNG n'est publié qu'après validation de ses dimensions et de son alpha. Une erreur d'écriture ou de renommage préserve le fichier de destination précédent ; une interruption brutale peut laisser un fichier temporaire inutilisé. Cette garantie porte sur chaque fichier, pas sur une transaction unique du pack entier ni sur une coupure matérielle de stockage.
+
+L'option `--resume` vérifie toujours l'empreinte des sources et les empreintes des fichiers réutilisés. Un manifeste JSON invalide donne maintenant une erreur explicite invitant à relancer sans `--resume`. Sans cette option, la régénération n'analyse pas l'ancien manifeste et peut donc réparer cet état. Le marqueur final du manifeste n'est écrit qu'après le remplacement réussi du catalogue HTML.
+
+Les tests de projection, de recettes et de fiabilité des exports sont désormais inclus dans le workflow GitHub existant `V94 regression tests`.
+
+Validation locale de ce suivi : **TypeScript et ESLint ciblé réussis ; 18 tests Node réussis**, dont les huit nouveaux scénarios de publication et de reprise. Les tests couvrent notamment un arrêt réel par `SIGKILL` pendant l'écriture, une erreur après un premier fragment, un échec de renommage, un manifeste tronqué, une empreinte périmée et un PNG invalide qui doit laisser l'image précédente intacte. Le groupe a été exécuté sous Node 24 avec `--test-isolation=none` ; la CI conserve son exécution standard sous Node 22.
+
+Un [export réel de Korthas suivi de sa reprise](export-followup-qa.json) a également réussi : neuf PNG, 4 717 197 octets, manifeste et galerie valides. La reprise a conservé les neuf empreintes SHA256 **et** les dates de modification des PNG ; aucun fichier temporaire ne subsiste. Le statut `complete: false` est attendu pour cette sortie de vérification limitée à une planète sur trente, conservée séparément du pack publié.
+
+### Provenance et taille du pack publié
+
+Les **288 PNG exportés et leur empreinte `sourceFingerprint` conservent la provenance de la génération initiale du 21 octobre**. Ils ne sont pas présentés comme régénérés avec ce correctif. Puisque le renderer a changé, une reprise de cette archive avec `--resume` est refusée normalement ; une nouvelle génération doit commencer sans cette option, de préférence dans un répertoire distinct avec `YAUTJA_PLANET_MATERIAL_EXPORT_OUTPUT`.
+
+Les originaux et les exports restent dans le pack pour permettre les téléchargements indépendants, la galerie statique et les exports haute résolution. Leur présence augmente la taille du dépôt et du déploiement. Le jeu continue à charger à la demande uniquement les WebP de `runtime/` ; les 3,39 Mio indiqués plus haut décrivent cette bibliothèque optimisée, pas la taille totale du pack distribué.
+
+## Vérifications du pack initial — 21 octobre 2026
 
 - TypeScript et ESLint ciblé : succès.
 - Tests Node : 10 réussites, dont 5 pour les matières et 5 pour l'atlas existant.

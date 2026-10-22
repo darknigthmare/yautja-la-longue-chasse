@@ -1,6 +1,6 @@
 import {
   warBudgetV85, warGarrisonV85, warOrderCostV85, warOrderIssueV85, warOrderSlotV85,
-  warObjectiveCorridorV96, warSuppliedV85, warTerritoriesForSimulationV96, warUpkeepV85,
+  warHeadquartersV103, warObjectiveCorridorV96, warSuppliedV85, warTerritoriesForSimulationV96, warUpkeepV85,
   type WarBudgetV85, type WarOrderV85, type WarSimulationV85,
 } from "./clanWarV85";
 import { warAtlasIntelV95 } from "./clanWarAtlasV95";
@@ -61,7 +61,7 @@ export function warCommandV98(state: WarSimulationV85) {
   return {
     sites, regions, corridor, transits, income, reserved, upkeep: warUpkeepV85(state),
     upkeepAvailable: warBudgetV85(state).s - state.orders.reduce((total, order) => total + consumed(order).s, 0),
-    corridorBaseLinked: supplied.has("CON-T02"),
+    corridorBaseLinked: supplied.has(state.planetId?.startsWith("proc-v103-") ? warHeadquartersV103(state)! : "CON-T02"),
     slots: (["operation", "logistics", "diplomacy"] as const).map(kind => ({ kind, used: state.orders.filter(order => warOrderSlotV85(order.kind) === kind).length, limit: kind === "operation" ? 2 : 1 })),
   };
 }

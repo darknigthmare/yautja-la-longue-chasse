@@ -7,6 +7,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
+import {reportGithubActionsFailure} from './lib/github-actions-annotation.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const compiled=await build({entryPoints:[path.join(root,'tests/browser/clan-war-v94.fixture.tsx')],bundle:true,write:false,outdir:path.join(root,'outputs/qa-clan-war-v94-build'),format:'esm',platform:'browser',jsx:'automatic',logLevel:'silent',define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'test-static-next-image',setup(b){
  b.onResolve({filter:/^next\/image$/},()=>({path:'image',namespace:'static-test-image'}));
@@ -29,7 +30,10 @@ try{
  async function check(name,run){const ctx=await browser.newContext({viewport:{width:1200,height:900}});await ctx.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());
   const page=await ctx.newPage();page.setDefaultTimeout(6000);page.on('pageerror',e=>errors.push(e.message));
   try{await page.goto(origin);await page.waitForFunction(()=>window.__warApiV94&&window.__warUiV94);await page.bringToFront();await run(page,ctx);results.push({name,status:'PASS'});console.log('PASS '+name);}
-  catch(e){results.push({name,status:'FAIL',error:e.message});console.error('FAIL '+name+': '+e.message);}
+  catch(e){
+   results.push({name,status:'FAIL',error:e.message});console.error('FAIL '+name+': '+e.message);
+   reportGithubActionsFailure(name,e);
+  }
   finally{await ctx.close();}
  }
  async function prepare(page){

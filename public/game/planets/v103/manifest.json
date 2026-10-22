@@ -1,0 +1,66 @@
+{
+  "version": 103,
+  "created": "2026-10-22",
+  "title": "Independent terrestrial and extraterrestrial material details",
+  "generation": "OpenAI built-in image_gen; one distinct generation per source; opaque original PNGs preserved.",
+  "sourceColorSpace": "sRGB",
+  "sourcePolicy": "Original generated PNGs retained without cropping, recoloring or procedural replacement. Mirrored triplanar UV sampling avoids assuming seamless input.",
+  "runtimePolicy": "512x512 WebP derivatives, Lanczos3 downsampling, quality 86; source PNG used by larger exports.",
+  "composition": "Neutral material details are soft-light blended over existing V101 biome or surface albedo, independently per module. Scale, contrast and palette are applied by the shader.",
+  "materials": [
+    {
+      "id": "land-earthlike",
+      "source": "materials/land-earthlike.png",
+      "runtime": "runtime/land-earthlike.webp",
+      "generationArtifact": "exec-526a2438-e752-430c-a206-cb48ee441304.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: square opaque albedo detail bitmap for an Earthlike planet terrain material in a strategy game.\nPrimary request: a seamless-feeling overhead mineral ground texture with irregular alluvial silt, fine gravel beds, softly eroded sedimentary strata and small branching dry erosion channels, filling the entire image.\nComposition: strictly orthographic top-down, uniform scale over the entire square, no horizon and no scene, a dense detailed natural material rather than a picture of a landscape. Fine and medium grain across the image, no dominant central subject.\nLighting: flat diffuse neutral illumination, no cast shadows, no directional highlights, no baked ambient occlusion.\nPalette: restrained neutral stone grey and warm grey, usable as a luminance detail overlay onto any biome color. Broad tonal range but mostly midtones; recognizable mineral layering and scattered grit.\nConstraints: a single continuous material, opaque full-bleed image, square 1024x1024, no grid, no border, no labels, no text, no water, no vegetation, no buildings, no planet globe, no separate panels.",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 4483178,
+      "runtimeBytes": 113106,
+      "sha256": "574ab97edc4f6c3af37bed52f446f051b37512a1e3e0fb03663803dd39102810",
+      "runtimeSha256": "96dc967346b880f2b48abbd6b610a9e9ff862f27a87fccbaac52a3f5ecd93c6f"
+    },
+    {
+      "id": "land-alien",
+      "source": "materials/land-alien.png",
+      "runtime": "runtime/land-alien.webp",
+      "generationArtifact": "exec-86e139ef-3da5-486a-98b9-fb1c85ce49ed.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: square opaque albedo detail bitmap for an extraterrestrial planet terrain material in a strategy game.\nPrimary request: a dense overhead alien mineral substrate of irregular fused basalt cells and branching dendritic vein networks. Organic-looking geological cellular boundaries and fine granular interiors; irregular rounded polygonal plates, hairline veins, small porous microstructure. A coherent extraterrestrial material, visibly unlike Earth sediment.\nComposition: strictly orthographic top-down, uniform scale over the entire square, full-bleed continuous texture with many small cells and medium vein networks; no horizon and no landscape scene.\nLighting: flat diffuse illumination, minimal relief, no cast shadows, no directional lighting or specular highlights.\nPalette: neutral charcoal, pearl grey and silvery grey, predominantly midtone with narrow dark fissures and pale veins; designed as a luminance detail overlay compatible with any biome color.\nConstraints: single square 1024x1024 opaque material, no grid, no panel dividers, no text, no symbols, no plants, no animals, no buildings, no water, no planet globe, no central feature, no baked illumination, no colored glow.",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 4632410,
+      "runtimeBytes": 118262,
+      "sha256": "4501c9b6eb75613bbc11c26743ff4fe7a69be2b0d5e92a3039391fc39e5466bb",
+      "runtimeSha256": "cbd25f9c3de3d4668e7765b83e2b3da674d606ebb067a059bad459af6af94a19"
+    },
+    {
+      "id": "surface-earthlike",
+      "source": "materials/surface-earthlike.png",
+      "runtime": "runtime/surface-earthlike.webp",
+      "generationArtifact": "exec-68384e5b-f9aa-4267-b4be-6097554acb05.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: square opaque albedo detail bitmap for a terrestrial ocean surface material in a strategy game.\nPrimary request: a continuous top-down ocean microtexture with many fine irregular intersecting wavelets, a few larger gentle turbulent whorls and sparse very thin discontinuous foam lace. The entire image is water surface with a varied natural ripple field, no coast.\nComposition: strictly orthographic overhead, uniform scale, full-bleed square 1024x1024 texture, no horizon or scene perspective. Mostly fine and medium detail, not a few huge waves.\nLighting: flat diffuse neutral illumination, no sun reflection, no directional highlights, no cast shadows, no lighting gradient.\nPalette: neutral greys, dark-grey water midtones and restrained lighter ripple crests, sparse pearl-grey foam, intended as luminance-only material detail to be recolored in a shader.\nConstraints: opaque continuous material, no islands, no land, no boats, no objects, no text, no border, no multiple panels, no globe, no dramatic white froth, no blue tint.",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 3649465,
+      "runtimeBytes": 87636,
+      "sha256": "dd946b0dfa6577e5310486b7e5e1c8f2fd53036b5b6cf3dc2a633e4e4240f5e3",
+      "runtimeSha256": "3876d3417ec4c883fb6f08c0cd6f95b209621df89c97ae870ddcdab7e61f31d5"
+    },
+    {
+      "id": "surface-alien",
+      "source": "materials/surface-alien.png",
+      "runtime": "runtime/surface-alien.webp",
+      "generationArtifact": "exec-dc0025d0-0ef8-46ad-aa55-d58e4d4e9606.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: square opaque albedo detail bitmap for an alien planetary liquid material in a strategy game.\nPrimary request: a continuous top-down extraterrestrial viscous fluid pattern with interwoven sinuous pale filaments, marbled laminar currents, tiny cellular eddies and smooth pools between the currents. Broad winding currents carry many fine branching strands and small swirling loops. Distinct from ordinary water ripples.\nComposition: strictly orthographic overhead, uniform scale, a dense full-bleed square 1024x1024 material texture, no coast or horizon, no central focal point. Fine and medium flowing detail evenly across the image.\nLighting: flat neutral diffuse illumination, no sun reflection, no cast shadows, no directional highlights.\nPalette: charcoal-grey fluid midtones, silvery-grey strands and sparse pearl highlights. This is a neutral luminance detail source for colored alien fluids; apparent luminous threads must be plain pale albedo, no baked colored glow.\nConstraints: opaque continuous material, no islands, no planets, no buildings, no text, no grid, no border, no panels, no foam waves, no nebula or space scene.",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 3321494,
+      "runtimeBytes": 78168,
+      "sha256": "be43b7618278eb6c4574dbf4dd09de47e1201e33ec5656ff77ed30bf250290fe",
+      "runtimeSha256": "a5e382524f675ba8279cc834fe1fa1c4012dac524a95e160c908e79a8175f7f7"
+    }
+  ],
+  "sourceBytes": 16086547,
+  "runtimeBytes": 397172
+}

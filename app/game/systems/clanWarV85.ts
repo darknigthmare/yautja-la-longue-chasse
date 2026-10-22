@@ -1,5 +1,7 @@
 import { CLAN_WAR_PARAMETERS_V85 as P, type WarFactionIdV85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
 import { WAR_PLANETS_V96, warPlanetV96 } from "./clanWarPlanetsV96";
+import { parseWarPlanetRecipeCodeV103 } from "./clanWarProceduralV103";
+import { warDeploymentV103 } from "./clanWarDeploymentV103";
 import { WAR_EVACUATION_COST_V100, warEvacuationIssueV100, warEvacuationManifestV100 } from "./clanWarEvacuationV100";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
@@ -40,7 +42,13 @@ export function warPlanetStorageKeyV96(planetId = "korthas"): string {
 export const WAR_PLANET_STORAGE_KEYS_V96: readonly string[] = Object.freeze(WAR_PLANETS_V96.map(planet => warPlanetStorageKeyV96(planet.id)));
 export function warPlanetIdForStorageKeyV96(key: string): string | undefined {
   const index = WAR_PLANET_STORAGE_KEYS_V96.indexOf(key);
-  return index < 0 ? undefined : WAR_PLANETS_V96[index].id;
+  if (index >= 0) return WAR_PLANETS_V96[index].id;
+  const prefix = "yautja.clan-war.v96.planet.", suffix = ".free.v1";
+  if (typeof key !== "string" || key.length > 200 || !key.startsWith(prefix) || !key.endsWith(suffix)) return undefined;
+  const id = key.slice(prefix.length, -suffix.length);
+  // The compact recipe is the identity. Validate canonical syntax without
+  // generating a world while inspecting an arbitrary storage key.
+  return parseWarPlanetRecipeCodeV103(id) ? id : undefined;
 }
 /** Validation reads without changing or serializing a backup's original bytes. */
 export function validWarPlanetArchiveRawV96(raw: string, planetId: string): boolean {
@@ -101,11 +109,17 @@ export function changeWarGarrisonV99(state: WarSimulationV85, draft: WarGarrison
   report(next, message, ["CON-R08", "CON-R12"], `garrison-${next.seed}-t${next.turn}-r${next.revision}`);
   return { state: next, accepted: true, message };
 }
+/** Supply roots are part of V103 world strategy; older fronts retain their bases. */
+export function warHeadquartersV103(state: Pick<WarSimulationV85, "planetId">, factionId: WarFactionIdV85 = PLAYER): string | undefined {
+  if (factionId !== "CON-F01" && factionId !== "CON-F02") return undefined;
+  const procedural = warPlanetV96(state.planetId)?.procedural;
+  return procedural && "strategy" in procedural ? procedural.strategy.headquarters[factionId] : factionId === PLAYER ? "CON-T01" : "CON-T25";
+}
 /** Transit is an access right. It never changes the sovereign flag or pays its income. */
 export function warSuppliedV85(state: WarSimulationV85, factionId: WarFactionIdV85 = PLAYER): Set<string> {
-  const roots = factionId === PLAYER ? ["CON-T01"] : factionId === ENEMY ? ["CON-T25"] : [];
-  const accessible = (id: string) => state.territories[id].controller === factionId ||
-    (factionId === PLAYER && state.territories[id].controller === NEUTRAL && (state.territories[id].transitUntilTurn ?? -1) >= state.turn);
+  const headquarters = warHeadquartersV103(state, factionId), roots = headquarters ? [headquarters] : [];
+  const accessible = (id: string) => !!state.territories[id] && (state.territories[id].controller === factionId ||
+    (factionId === PLAYER && state.territories[id].controller === NEUTRAL && (state.territories[id].transitUntilTurn ?? -1) >= state.turn));
   const reached = new Set(roots.filter(id => accessible(id) && state.territories[id].installationIntact));
   const frontier = [...reached];
   while (frontier.length) {
@@ -149,6 +163,14 @@ export function createWarSimulationV85(seed?: number, planetId?: string): WarSim
   for (const territory of warTerritoriesForSimulationV96(state)) {
     state.territories[territory.id] = { controller: territory.initialController, installationIntact: true, transitUntilTurn: null };
     state.stocks[territory.id] = emptyBudget();
+  }
+  if (planet.procedural && "strategy" in planet.procedural) {
+    const deployment = warDeploymentV103({ ...planet, procedural: planet.procedural });
+    state.combatants = deployment.combatants;
+    Object.assign(state.stocks, deployment.stocks);
+    report(state, `Exercice autonome de ${planet.name} · ${planet.territories.length} territoires, ${planet.regions.length} régions. ${deployment.forceCount} personnes par force principale, réparties sur des positions reliées à leur base. Les effectifs et réserves sont adaptés à ce format ; ce sont des acteurs de l’exercice, sans recrutement dans votre campagne.`, ["WAR-GEN103"]);
+    production(state);
+    return state;
   }
   for (let index = 1; index <= P.START_A; index++) {
     const territoryId = index <= 6 ? `CON-T0${index}` : index <= 17 ? "CON-T02" : index <= 23 ? "CON-T03" : "CON-T01";
@@ -358,6 +380,8 @@ function applyOrder(state: WarSimulationV85, order: WarOrderV85) {
 }
 /** On new theatres the corridor objective follows real roads between the two bases. */
 export function warObjectiveCorridorV96(state: Pick<WarSimulationV85, "planetId">): string[] {
+  const procedural = warPlanetV96(state.planetId)?.procedural;
+  if (procedural && "strategy" in procedural) return [...procedural.strategy.objectiveCorridor];
   const queue: string[][] = [["CON-T01"]], reached = new Set(["CON-T01"]);
   while (queue.length) {
     const route = queue.shift()!;

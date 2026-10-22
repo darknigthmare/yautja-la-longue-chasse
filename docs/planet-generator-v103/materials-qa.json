@@ -1,0 +1,973 @@
+{
+  "renderer": "Chromium / software WebGL",
+  "baselineCommit": "6bd43c7c0185077783bfb9d6f2eb2929c469a03d",
+  "baselineFiles": [
+    {
+      "source": "app/game/planetMaterialRendererV101.ts",
+      "fixture": "planetMaterialRendererV101.ts.txt",
+      "sha256": "0c85dd77255a140c62fc43d1894182debb115d7423351b29d3b14281154bfd26"
+    },
+    {
+      "source": "app/game/planetRegionalMaterialsV102.ts",
+      "fixture": "planetRegionalMaterialsV102.ts.txt",
+      "sha256": "aeadf441cab63bfefc60bf0cebc27264ebb386410e547fed1d50d16f78906fba"
+    },
+    {
+      "source": "app/game/systems/planetMaterialV101.ts",
+      "fixture": "planetMaterialV101.ts.txt",
+      "sha256": "c0bddbc279f4084e09d3c591a01041d6cdb0a2b4140bf64198e42bf93c3db939"
+    }
+  ],
+  "checks": [
+    {
+      "name": "all 30 historical planets and three V102 worlds retain identical published pixels",
+      "comparisons": 132,
+      "fingerprints": [
+        {
+          "planet": "korthas",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "67e5ae27025d4709f5da23906016e5a898b6e135714ce954282ae4681955b69f"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "fd380dd1b8c1ec183aab91efabb15017998c8103dc8129f5cd56a6d91a31cf63"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "a376b7c1cb31221126d31c01ba0788f473dfffc9593a139481d527aca28f6b0b"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "8197be3adeae183070e1ac9e7d6f1973a965abd1a6ad7dea7ffdeb6a8b4341c1"
+            }
+          ]
+        },
+        {
+          "planet": "thalassa",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "58e5c14b0a95feb05bfcec12ba2bf832e5766aaf00c69e63014d617953250e11"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "f914006cafb35e55310e448391b0a45400707910c7af5176d6bf1391fdb20c37"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "5f55d32b59a2d94fbaa02bd37fa4c21be032157a359ce5fc9aff735b77278aee"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "37968e631684277d626399da627c5d61447c85fb9858d8555fce6a76baf98db6"
+            }
+          ]
+        },
+        {
+          "planet": "vitriol",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "a6bd8fd5d75323f57d6d7c3d134fc9179fa3e75d1df34e5124f0717d21e8800e"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "9cf2bebcb48a6124ac26a837395f45d0f39e5134d01736964911e38ba677edde"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "1689e7e42a08515b4e6e5127c6c8df1f52ccada16ef383e5506fe0bb29dbd5e3"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "3bca2f4a8adcb3a86f5d8790e3e0102ecd31f95923ac3df5c1873e7ee5c5f13e"
+            }
+          ]
+        },
+        {
+          "planet": "nivalis",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "9425fb4a62fc25001885f0b95a94fa43ef655ef13a922790d5bc8d652757b76c"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "fa1fd998cc9155d586f4f55433c52ecdcae3b4b31717dde47480953f95fb67e1"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "b5ee50d655c6336880f0607e05c34eaf44059727459756c15b8c9b6ef7af5107"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "f88bc15b3c86e870028e295033fbf5ab626dcf28ac87cc2d04c942136b357524"
+            }
+          ]
+        },
+        {
+          "planet": "serak",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "44ad2c631374ecbc926ebc05a7fdc96fcdb9e0b12f9df02ab33100547e467945"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "178297e0be3d5a1308292a7086d30b3b0cd62a52131b8ad8e2030bfd490d08ba"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "20d7850e7ed25dc0b43f46c842c08e83eefaea888060880377c51a83f02afb89"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "f31b917972ee05140d962740e173cd0adbcdb5d5617acfb2732b11656c5f4ed7"
+            }
+          ]
+        },
+        {
+          "planet": "pyroclaste",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "ae2dd7751838e4ffa6b5f0eb786915621c94e6e78ec4d27682ae041a28f4b648"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "bbde802f647fb9b55f7d25970da59e251f552ef016d8d968a931d18201139bfe"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "e742eb12d7fe0b490525647ce51bbd37f7c24c1d5f3a4d9250d0dd4f9ff6be4f"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "1076a64c7f185121eca8e9efc2ce05bc3408caec30d403d4d91baa2c937250e8"
+            }
+          ]
+        },
+        {
+          "planet": "halycon",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "dafa896b114d1325fd2ac9229c1367eefd3db8eeb9da64cda44bd3ca2184aee3"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "238854215d70dcef87b9e19a301ae11f53309590e50b0dc3c00d3f2cac0cd2c9"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "3e1863fbc5da73d1ec17509113ee41e01670c68aa8ae10d8307d2ac2b9229418"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "01d9e5f564704abda22e1beff878054ee02b4c3d58d89c5d015cfe92d03474a7"
+            }
+          ]
+        },
+        {
+          "planet": "uranth",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "f85529735e0105382890b2e8ccf673bc0a489004e939ca5368dc15491a2bd93b"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "c00d835921b26bb054e2ea16cb6b18bdad0f4092f22971b757e3f964b8f61b67"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "333c13d6753e068eb9cea538f8856bf443bca59f421939e088643a98f576627b"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "b8a1163ba8d8dd6d5f07f2a69f8b816e2e5e42b1c86ab8189563d5a78b15f68f"
+            }
+          ]
+        },
+        {
+          "planet": "amethys",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "15325f7293860b54af96298901b97be35bc6f86b9c0fe827841003cc3b5e457c"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "8606a61a7fd6cf847c18bf8d6cdc780235cf4cfb4606e247d09e7e4cc517b09c"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "12facb9604e243000242f23791ea36b39acbb8d0f8e222db1e61b36e7e1c5a4c"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "b58d6de5e6064b974111382f02a8fba79a38a332940056c0c855c8478f3e5d7e"
+            }
+          ]
+        },
+        {
+          "planet": "mycelia",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "bce393cecc18f69f9f7bcf2ce5244f265f92037741fb9bf57866c9f460052bbc"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "4701440286d71f035bc3290f44b5f1ba1e49107416ecb4b207457b83b8a7c7ff"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "6ed791472022fb15a54b834aa1bc026ba3edac749cbb73bf5776374205e7273a"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "b087ec4d4d5ad19cf70b189f15fedbcb9374fc9102f5f96f72830bc5eacccff8"
+            }
+          ]
+        },
+        {
+          "planet": "nebulis",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "03958da5db21a4f511f510ed419fb80f0ce7d38e763af963f927f7f091b85eba"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "6f6a7f509dd7ff1f9e13c1d4ed9719cff72605973ccc86db6072641f875dfc7a"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "d8cf4da10f4e96ca8798bef9f76ede8e746b5d3793f1237bdaeceb428aae2755"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "03c4d25cb671da84de470e73e32ef9677728fb892de98c25e1505d6d24a87b9d"
+            }
+          ]
+        },
+        {
+          "planet": "abyssia",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "fed1766bcc4dfd577bb6263cc1cf4da928041d6711cd5700fb04546df0b91553"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "3ba97fa8acfcafbb738e6a7a069964326649fe5b28a6ffa298a6dcf7c0ea6156"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "09809ed9c72f0f070c3d85f435c4d57f4b17829aaec9c7e9f0c28e27f4829f5f"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "13ca6ab5d41b45ac12dbe6fe9f54846bf45b0aeeeee2c29ad05cda965e26ea3d"
+            }
+          ]
+        },
+        {
+          "planet": "chloris",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "2be0166a45197400a688163fddc20f3a41b9574e3444787d0ee6288a089e12a2"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "028428cd310c9d8e70c9173b9d5ef6977a2a18ccc99803517ef0cb47b4d864af"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "e391601f1974016d0baf98d60a90ed311b68c62155d9113bacb37551f6290f0e"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "2cf30ced48a99ced39e226302badc7689b76ff57f70e6776228ae3cd8e7dfc4f"
+            }
+          ]
+        },
+        {
+          "planet": "cryovant",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "1117e1244b751acd3587a5c55ad81958f343228be3f488e4f4ddfc971b932552"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "e2dedf1db2217e830aa4325083a5f5594631e5fb32cbd289ce13dfe3070165e7"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "6e839f298b292f572ca4073abfa8e49b931a5061de1a1f06f90bb2ae9e09521f"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "2f85b2294d0629b05e74bcf72c166e02eb02fd7274bef35578b13171eb90777d"
+            }
+          ]
+        },
+        {
+          "planet": "ochria",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "4c7ea687c746ccdb002d0bbacb21dffe408f06ed0eac672cca30a5e5e3d5bb70"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "50dd30894dbfe7b6c62679c347f820f7795f8ecf06c8129d3c3ff14ac5bb0139"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "73618ddace9feaad9e021bb2c5bd794663143ef6b18d91f6be934b20e6b7d5eb"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "934af644d7fa40009f26bbf50818408a067fc6556873dcd53d2e93d057496f8c"
+            }
+          ]
+        },
+        {
+          "planet": "obsidra",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "fd890925020f46ab39662d7677421a21e23d7570dd47630851d36a8ab40f8b21"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "9c70dea096e72db957745815b3e97d2dbab6e6d36b2c481ef4dd4d83a648086e"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "b836d073e4673367d1b56b7e859245a1d89bc67c8a6ef0784275805085752e60"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "707051e3a81030f1c2b5111b8d6ec3eba91a00a4b1b8173580ae4821e911174a"
+            }
+          ]
+        },
+        {
+          "planet": "salarka",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "a729e09b2e4e39daf7f2658e146ecafa39fd00b1f4d9d23a1c63b26ce624ffd1"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "8fed51540c0d55c76ad6ff24f785850d4b4057aaa526c09cd9f200963ee071f0"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "ca13fdaa6bd45c3c36a6f57a3ad0e967103eafc287c09763ee5cf77a17142af9"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "85ab41c1391cfeae52845765ed2c0695c4cf4a7aa35a532572078b680af3fba2"
+            }
+          ]
+        },
+        {
+          "planet": "radixa",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "5bcd58a5a32aa9c1900d230e469b99bdbe4169be5dcbe4fb4f3f4a8df5766778"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "fb007d5b2001d3349dcc213ee2692f9904dd3443989a78544b5ccd3f332cce93"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "1abf29ac52bec207218449a6f703f2df03d57c6a125f780e893722a6e2e16564"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "178c28fedd2995a0619cd79334ddfd9c1574517014d10990a7f92e03ebaf9df4"
+            }
+          ]
+        },
+        {
+          "planet": "prismara",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "f3b2e37ffb99d5e8a3092ffdf46641470b80e9ef18878150e8adbb5d90d6b5d2"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "aaae84a216b207a6cca9d99e6968381e48dfa2706a1d77a2c3756efb91d4bd8c"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "2f0f2f142d5208124762ac6b14e478d2c8726ca2946c3ef0b18c28d1ea5703d1"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "caded992e8760efe2ea076936619ffc329e584200f6e5b4423bf6f4eac7d143c"
+            }
+          ]
+        },
+        {
+          "planet": "sporion",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "3b3918011c36e23876d7bf4e9b5bdc5bf16442e29e917c3e4af737eee5e10bb4"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "a5d1e654c43db1a5f2adcfd14b8a296c2ed9a3b9a82ad4544f0d70b7b3188900"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "105344722d3896884319f3204c4cd3d368d631aa284b4be46d16506c9c9b3fbb"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "0ddd554cd01ad590fcac2288ea183372a6542a2e3f49a466bc9eaf712dbfe50a"
+            }
+          ]
+        },
+        {
+          "planet": "aerune",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "1deaeaa589ff956f1cb26c584998ac321b70abcd51b0da64b41aad58c1079b1d"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "2f7a370a3b113c81e1a769b5ff484722b621ded305c319e73e1a4b1d449f211b"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "9a92203068e801d0f44f2eaaa6a07bfd2c893c42c0a155bf294ffc369e714267"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "c28f770bbcb54b09ef9909f0c9b10712f9af42a359022264961e9fa30a2e9d48"
+            }
+          ]
+        },
+        {
+          "planet": "azurielle",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "0123ec847c60c061c7d1d3c09634dcb2ccaf97110a9ae630651bfbe8e3bab37e"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "ee1b99189c8942b898a619a41dc9a4357e50c40a195ad5d9e5dfbc6d6916b139"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "fbabe4fec61186f57944af39455f859586977715ebf34b9886da02336039c513"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "471bde7ebbcacee7ae4711a2cfdfba250d3e5973aa7b36e84d8098705b076723"
+            }
+          ]
+        },
+        {
+          "planet": "venefra",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "4499e43a31a8f1b85044ee4a5d0bcc7db46311b99de64e2400785fd250005004"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "a605975c8443070b33905461b7aa3e23a5fb7a8cc98c63010c9578ac766bd55c"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "94f36e95006d03f4d045e358d0217624b99ddfd424a8c54aadec9d4da1a96980"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "bfd1e8f9fc55e6a9bf3beab50c84cb7c84f733a8b910599b7af92fc3f19df497"
+            }
+          ]
+        },
+        {
+          "planet": "boralis",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "336b1d3b1ca296fc9c1f7c3544e1781d76044f8bd1a3f18c6d9392b12d04dbb9"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "2bb649884291b9d38f9c8a1df3e0098e511284ea838a73ed9400ede2d3deaa22"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "9f27b22c6d3305e7966a76b3529ebcf580783eebbfa7387b634de5c15e714835"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "1732ac33c35d39bd8acc89457b9dd5aa19b9c1be098b5d1f5a77b6ddb85f6b6a"
+            }
+          ]
+        },
+        {
+          "planet": "dunara",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "e4ed8eeed6ab1040425fe9153b680b1c866dd5df173ab59bc1bdb13088a2c5c0"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "315913df025f90ff74ca22e51afa31c89e87c96d3d8805fbfc29b9abb72fa2f7"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "5a7e76e1535e9410632cfb8a9d50d998586bc07aa5de6a1e006535180f9f77f3"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "5cf04feb1f053c0368d409a4b5ceeee6e93847b5f1503d00c5585a8ce7617fb8"
+            }
+          ]
+        },
+        {
+          "planet": "ignara",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "341278a9f449d13e62e3d9863e06fad17e005aa759b16ee04de32d97d7288bb1"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "eae7892248a3e33c07a9b4dfd3e3ebee14e114b7bb230617844523f4556a4ede"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "ced85a585ef8cc341e90e53c9497152d39319dc55c5ee388a96a27a229dfdf4f"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "dc1ad9e2397c9cff2a3e28fe60142b02b858d5ecb932c0c49498d6820a23cbdb"
+            }
+          ]
+        },
+        {
+          "planet": "rosalith",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "74a861e18bce0ae2f02c28fb37b4f400064f73b09b116f5efb6de4cd302a4abb"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "e98f643868da89bd1dddbe3dd5e38158c2bd7ec9fc161557e8660576d967a4a8"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "dc334175fd3f52cbb742780dc0748cdc05d37d0ba5eba30a336b421681d14090"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "156e6d442e318923b1067466ba038874fc2da5d50c1fe143726b6a1576d1c0fa"
+            }
+          ]
+        },
+        {
+          "planet": "viridia",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "576a27908f57bfcac5ceb123efaedb99eee3b1e3def69ebdafb13fd1265c4428"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "08ea5406dec785a2266db9537ae697d014f0f50f75f49168b60f856eb69bf913"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "16f6a5b9f2fd59ee518409cb8a9d5075b9c34ca2369e581419c0aba519187aa1"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "2e76de2a1d271dd8081a350ee7acd9c0329adb290518dcc6791da77b14801f1d"
+            }
+          ]
+        },
+        {
+          "planet": "iolexia",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "5048bd53e23be56e737f4362e90098ef2d22519cca44a6bc80470872e48ea04f"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "1e2de770bb26f720b75f0c33b8dee742bcec4af0b0fea54e185b583afbb570b1"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "9d22dbdcc372de95e621490e5120c6a229cc721ccada9058db71cd784eca7570"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "4b98846453e27273f86221d3f61985952784c2cd611923ee1e620b143df0955f"
+            }
+          ]
+        },
+        {
+          "planet": "nyctera",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "15b08203dfd067fe3430067ff37e558285341b3942be80193535905e95b757cc"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "4739c8f4359ca5bfe1f555e0bb0f84497f7c8a0f56ff203c26833ea2ab935f75"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "c626bd7dde9481abeca851b434e6666689b130260ad91f3c18d7ef3f3cb8fec8"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "941d65df6f169e7a20c4d3aae0348440d97b536e2a0cd975542cecb8b7d73c07"
+            }
+          ]
+        },
+        {
+          "planet": "proc-v102-m1ln-1110011-xkz70",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "6a79cdf4c31bb64a519a1fddcf7e10d617bbc95bcd9ea779cae0edfb01267641"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "1c51d3bac77045877336751f64df05ab543e33e2914c34f2a2a4b2d0fb9cb765"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "21a01f8bd91abae6757acc9ad03c7728e64cf9e545a8db0e84042e5be5c6c60d"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "20a76645e500f4c6f154c3dc90d1e64fb289de1d51c6feebfc64c6c6ecfbadec"
+            }
+          ]
+        },
+        {
+          "planet": "proc-v102-ph-111a601-eeage",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "3cd49758652c5ccb7d53123b2e8a8f2960984f43408213af8401fc2c5cc0040e"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "e68e13d3c4258c23946b1c67c038506da1d6d2db5da84c66b98aebf3df9309e6"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "a34979db0b5cec0350c18cd4942875dd88706ae8ef8d13f25dfd8d37d16ad20c"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "47f7f2233c14758f07133cf1844cc045d6370b5d7cc4a9fc61f7c7641b2ba90b"
+            }
+          ]
+        },
+        {
+          "planet": "proc-v102-2zu-2110013-krios",
+          "proofs": [
+            {
+              "projection": "map",
+              "layer": "land",
+              "sha256": "4b482eb7e68c49150ad3ea82d8f1690b9d91f5ba851fcc7c19fcb10f8883799a"
+            },
+            {
+              "projection": "map",
+              "layer": "composite",
+              "sha256": "c0219289d3a4db03d20b78ec4834b38d9ae0a73ce84e37e85673bae615a99ac0"
+            },
+            {
+              "projection": "globe",
+              "layer": "land",
+              "sha256": "a30d2a747de8ebdead6d5484b7c6e50307d7cd6552bdab79f608b56558eab269"
+            },
+            {
+              "projection": "globe",
+              "layer": "composite",
+              "sha256": "4e9675208a4784a629009ae20ba70fb11ec7bd9565d5ce3db5c8181df28d250f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "all eight controls produce visible changes confined to their own material",
+      "changesMeasured": [
+        {
+          "patch": {
+            "landVariant": "earthlike"
+          },
+          "changedPixels": 17628
+        },
+        {
+          "patch": {
+            "landVariant": "alien"
+          },
+          "changedPixels": 21295
+        },
+        {
+          "patch": {
+            "landScale": "fine"
+          },
+          "changedPixels": 22636
+        },
+        {
+          "patch": {
+            "landContrast": "strong"
+          },
+          "changedPixels": 22126
+        },
+        {
+          "patch": {
+            "landPalette": "violet"
+          },
+          "changedPixels": 23809
+        },
+        {
+          "patch": {
+            "surfaceVariant": "earthlike"
+          },
+          "changedPixels": 123108
+        },
+        {
+          "patch": {
+            "surfaceVariant": "alien"
+          },
+          "changedPixels": 40822
+        },
+        {
+          "patch": {
+            "surfaceScale": "broad"
+          },
+          "changedPixels": 70629
+        },
+        {
+          "patch": {
+            "surfaceContrast": "soft"
+          },
+          "changedPixels": 131070
+        },
+        {
+          "patch": {
+            "surfacePalette": "amber"
+          },
+          "changedPixels": 131072
+        }
+      ],
+      "atmosphericAndMaskChecks": 4
+    },
+    {
+      "name": "hydrology cuts the land layer and exposes the selected sea without altering it",
+      "features": 24,
+      "holes": 243,
+      "compared": 56529
+    },
+    {
+      "name": "source PNG exports render a twelve-region NPOT atlas and preserve transparent globe corners"
+    },
+    {
+      "name": "26 successive worlds keep source, detail, mask, atlas and GPU caches bounded",
+      "available": true,
+      "error": "",
+      "decodedSources": 16,
+      "pendingSources": 0,
+      "activeLoads": 0,
+      "masks": 6,
+      "gpuTextures": 22,
+      "contexts": 1,
+      "programs": 2,
+      "regionalAtlases": 3,
+      "regionalMasks": 6,
+      "pendingRegionalAtlases": 0,
+      "detailedMaterials": 6,
+      "pendingDetailedMaterials": 0
+    },
+    {
+      "name": "V103 shader, atlas and materials recover after context restoration"
+    },
+    {
+      "name": "native: every 3/4/6/8/12-region atlas cell matches territory and globe coordinates",
+      "markers": 240,
+      "regions": 33,
+      "diagnosticAssets": true
+    },
+    {
+      "name": "forced-mediump: every 3/4/6/8/12-region atlas cell matches territory and globe coordinates",
+      "markers": 240,
+      "regions": 33,
+      "diagnosticAssets": true
+    },
+    {
+      "name": "an unavailable detail source rejects only its own layer and leaves no pending composition"
+    },
+    {
+      "name": "pre-cancelled and in-flight cancelled renders leave their target untouched and a later render succeeds"
+    }
+  ],
+  "errors": [],
+  "ok": true,
+  "limitations": [
+    "Software WebGL exercises both precision branches; arithmetic binary16 tests additionally cover the atlas border margin. Physical mobile GPU certification is outside this check.",
+    "The new images are albedo detail maps; no normal maps, fluid simulation or physically computed scattering are claimed."
+  ]
+}

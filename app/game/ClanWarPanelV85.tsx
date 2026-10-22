@@ -13,7 +13,7 @@ import {
   advanceWarTurnV85, cancelWarOrderV85, changeWarGarrisonV99, createWarSimulationV85,
   queueWarOrderV85, warBudgetV85, warFitCombatantsV85,
   warGarrisonV85, warOrderCostV85, warSuppliedV85, warUpkeepV85, warVeterancyV85,
-  warTerritoriesForSimulationV96, warTerritoryForSimulationV96, warObjectiveCorridorV96,
+  warTerritoriesForSimulationV96, warTerritoryForSimulationV96, warObjectiveCorridorV96, warHeadquartersV103,
   type WarGarrisonDraftV99, type WarOrderKindV85,
 } from "./systems/clanWarV85";
 import {
@@ -46,7 +46,8 @@ function WarArt({ clanName, role }: { clanName?: string; role?: string }) {
   return art ? <figure className={styles.sourceArt} data-war-art={art.id}><Image src={art.src} width={art.width} height={art.height} unoptimized alt={`${art.label} · référence originale statique`} loading="lazy" decoding="async"/><figcaption>{art.label} · référence statique du {clanName ? "clan" : "rôle"}</figcaption></figure> : null;
 }
 const artRoles: Record<string, string> = { "RTS-U01": "patrouille", "RTS-U02": "pisteur", "RTS-U03": "tireur", "RTS-U13": "sapeur", "RTS-U15": "soigneur", "RTS-U18": "porteur" };
-function preferredWarPlanetV96() {
+function preferredWarPlanetV96(initialPlanetId?: string) {
+  if (initialPlanetId && warPlanetV96(initialPlanetId)) return initialPlanetId;
   try {
     if (typeof window !== "undefined") return warPlanetV96(window.localStorage.getItem(WAR_PLANET_SELECTION_KEY_V96) ?? undefined)?.id ?? DEFAULT_WAR_PLANET_ID_V96;
   } catch { /* A denied preference store does not prevent a local game. */ }
@@ -61,17 +62,18 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false }: { save: SaveGame; onClose: () => void; suspended?: boolean }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string }) {
   const root = useRef<HTMLElement>(null);
-  const focusPlanetSelection = useRef(false);
+  const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("korthas");
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
-  const [activePlanetId, setActivePlanetId] = useState(preferredWarPlanetV96);
+  const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
     korthas: sessionStore,
     ...(activePlanetId === "korthas" ? {} : { [activePlanetId]: createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: activePlanetId }) }),
   }));
+  const retainedPlanetIds = useMemo(() => Object.keys(planetSessions), [planetSessions]);
   const planetSession = planetSessions[activePlanetId];
   const shared = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
   const strategic = useSyncExternalStore(planetSession.subscribe, planetSession.getSnapshot, planetSession.getServerSnapshot);
@@ -84,6 +86,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const { setCanyon, setSelection } = sessionStore;
   const { setSimulation } = planetSession;
   const planet = warPlanetV96(activePlanetId)!;
+  const modularStrategy = planet.procedural && "strategy" in planet.procedural ? planet.procedural.strategy : null;
   const corridorIds = planet.id === "korthas" ? ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"] : warObjectiveCorridorV96(simulation);
   const [message, setMessage] = useState("Choisissez une planète, un départ et une destination voisine pour préparer votre front.");
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
@@ -124,7 +127,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   const definitions = warTerritoriesForSimulationV96(simulation);
   const controlled = definitions.filter(item => simulation.territories[item.id].controller === "CON-F01");
   const territory = (territoryChoice ? warTerritoryForSimulationV96(simulation, territoryChoice) : undefined)
-    ?? controlled.find(item => item.id === "CON-T02") ?? controlled[0] ?? definitions[0];
+    ?? controlled.find(item => item.id === (modularStrategy ? warHeadquartersV103(simulation) : "CON-T02")) ?? controlled[0] ?? definitions[0];
   const territoryId = territory.id;
   const targetId = targetChoice && territory.neighbors.includes(targetChoice) ? targetChoice
     : territory.neighbors.find(id => simulation.territories[id].controller === "CON-F02") ?? territory.neighbors[0];
@@ -146,15 +149,37 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   function selectPlanet(id: string) {
     const nextPlanet = warPlanetV96(id);
     const liveWrites = sessionStore.getSnapshot().pendingWrites + (planetSession === sessionStore ? 0 : planetSession.getSnapshot().pendingWrites);
-    if (!nextPlanet || id === activePlanetId || liveWrites > 0) return;
+    if (!nextPlanet || liveWrites > 0) return false;
+    if (id === activePlanetId) return true;
+    let releasedId: string | undefined;
+    if (!planetSessions[id] && Object.keys(planetSessions).filter(key => key !== "korthas").length >= 24) {
+      // Keep the shared Korthas exercise, and bound other live sessions. A code
+      // can rebuild an archived front; modified unsaved progress cannot.
+      const candidates = Object.entries(planetSessions).filter(([key]) => key !== "korthas");
+      candidates.sort(([left], [right]) => Number(left === activePlanetId) - Number(right === activePlanetId));
+      releasedId = candidates.find(([, session]) => {
+        const snapshot = session.getSnapshot();
+        const pristine = snapshot.simulation.turn === 1 && snapshot.simulation.revision === 0 && snapshot.simulation.orders.length === 0;
+        return snapshot.pendingWrites === 0 && (snapshot.persistedWar || pristine);
+      })?.[0];
+      if (!releasedId) {
+        setMessage("Les fronts gardés en mémoire contiennent des progrès non enregistrés. Réessayez leur enregistrement avant d’ouvrir un autre front. Vous pouvez continuer à explorer et exporter de nouveaux mondes.");
+        return false;
+      }
+    }
     const nextSession = planetSessions[id] ?? createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage, undefined, undefined, { planetId: id });
-    if (!planetSessions[id]) setPlanetSessions(current => ({ ...current, [id]: nextSession }));
+    if (!planetSessions[id]) setPlanetSessions(current => {
+      const next = { ...current, [id]: nextSession };
+      if (releasedId) delete next[releasedId];
+      return next;
+    });
     focusPlanetSelection.current = true;
     setActivePlanetId(id); setTerritoryId(null); setTargetId(null);
     setSelectedPeople([]); setConfirmTurn(false); setRunning(false); setCargoS(0); setCargoM(0);
     setOrderKind(null);
     setMessage(`${nextPlanet.name} · front ouvert. Chaque planète conserve sa progression locale indépendante.`);
     try { window.localStorage.setItem(WAR_PLANET_SELECTION_KEY_V96, id); } catch { /* The selected front still remains available in memory. */ }
+    return true;
   }
   function selectTerritory(id: string) {
     const definition = warTerritoryForSimulationV96(simulation, id);
@@ -242,7 +267,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
   if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
   return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
-    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente planètes, des terres proches et trois factions. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
+    <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente mondes répertoriés et vos nouvelles découvertes. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
     <div className={styles.notice}><strong>Fronts libres · archives locales indépendantes</strong><p>Chaque planète et le canyon possèdent leurs propres unités et archives sur cet appareil. Votre chasse conserve son matériel, ses rites et ses personnes.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Ces exercices de conquête restent séparés du voyage et des récompenses de la campagne.</p></div>
     <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["korthas", "Planètes · conquête"], ["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
@@ -296,11 +321,11 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
     </div>}
 
     {tab === "korthas" && <div>
-      <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} onSelect={selectPlanet}/>
+      <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
-      <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/36</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
+      <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
       <div className={styles.objectives}><p>Région tenue : <strong>{Math.min(2, simulation.regionStability)}/2</strong> fins de tour.</p><p>Corridor des Haltes : <strong>{Math.min(2, simulation.corridorStability)}/2</strong>.</p><p>Contrôle total : <strong>{Math.min(2, simulation.totalStability)}/2</strong>.</p></div>
-      <p>Domination : contrôlez les 36 sites intacts et ravitaillés, avec au moins une garnison apte dans chacune des six régions, pendant deux fins de tour avec entretien payé.</p>
+      <p>Domination : contrôlez les {definitions.length} sites intacts et ravitaillés, avec au moins une garnison apte dans chacune des {planet.regions.length} régions, pendant deux fins de tour avec entretien payé.</p>
       <details><summary>Conditions de la région et du corridor</summary><p>Pour tenir une région, chaque territoire de cette région doit rester intact, ravitaillé et occupé par une garnison apte pendant deux fins de tour avec entretien payé.</p><p>Sites du corridor à contrôler et garnir : {corridorIds.map(id => id.replace("CON-", "")).join(" · ")}. Maintenez leurs liaisons de ravitaillement et au moins un droit de transit actif auprès des Passes autonomes pendant deux fins de tour avec entretien payé.{planet.id === "korthas" ? " T02 doit également rester relié au ravitaillement." : ""}</p></details>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
       <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
@@ -325,7 +350,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false }: { 
       {!confirmTurn ? <button type="button" onClick={() => setConfirmTurn(true)}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm}><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" onClick={() => { const result = advanceWarTurnV85(simulation); setMessage(result.message); if (result.accepted) setSimulation(result.state); setConfirmTurn(false); setSelectedPeople([]); }}>Confirmer et résoudre le tour</button><button type="button" onClick={() => setConfirmTurn(false)}>Revenir aux ordres</button></div></div>}
       <details className={styles.roster}><summary>Registre individuel · aptes, blessés et mémorial</summary><div className={styles.scrollTable}><table><thead><tr><th>Personne</th><th>Lieu</th><th>État</th><th>Affectation</th><th>XP</th><th>Vétérance</th></tr></thead><tbody>{simulation.combatants.filter(actor => actor.factionId === "CON-F01").map(actor => <tr key={actor.id}><th>{actor.id}</th><td>{actor.territoryId.replace("CON-", "")}</td><td>{actor.status === "fit" ? "Apte" : actor.status === "wounded" ? "Blessé" : "Mort"}{actor.trainingUntilTurn !== null ? ` · soins jusqu’au tour ${actor.trainingUntilTurn}` : ""}</td><td>{actor.garrison ? "Garnison" : "Détachement"}</td><td>{actor.xp}</td><td>{warVeterancyV85(actor.xp).label}</td></tr>)}</tbody></table></div></details>
       <ol className={styles.log} aria-label="Journal stratégique">{simulation.reports.slice(-12).map(item => <li key={item.id}><strong>Tour {item.turn}</strong> · {item.text}</li>)}</ol>
-      <details><summary>Règles de cet exercice stratégique</summary><p>Les ressources, effectifs Pxx de départ, entretien et plafonds d’XP reprennent l’exercice de Korthas. Pour rendre la domination possible avec ses 24 personnes, les 30 fronts utilisent une garnison apte par région : cette adaptation de l’exercice ne modifie pas la fiche source du classeur. Les autres planètes sont des théâtres du projet avec leurs propres terres, noms et routes. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>
+      <details><summary>Règles de cet exercice stratégique</summary><p>{modularStrategy ? `Ce front V103 comporte ${definitions.length} territoires et ${planet.regions.length} régions. Ses deux forces commencent dans des poches contiguës, chacune avec une base et des sites S/M/I. Les effectifs initiaux couvrent la plus grande région ou le corridor avec une réserve mobile ; les stocks sont dimensionnés pour ce format. La domination exige une garnison apte par région et la liaison à votre base ${modularStrategy.headquarters["CON-F01"].replace("CON-", "")}. L’entretien et les plafonds d’XP suivent les règles communes.` : "Les ressources, effectifs Pxx de départ, entretien et plafonds d’XP reprennent l’exercice de Korthas. Pour rendre la domination possible avec ses 24 personnes, les fronts historiques et V102 utilisent une garnison apte par région : cette adaptation de l’exercice ne modifie pas la fiche source du classeur."} Les autres planètes sont des théâtres du projet avec leurs propres terres, noms et routes. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>
     </div>}
 
     {tab === "dossier" && <div>

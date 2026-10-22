@@ -1,0 +1,74 @@
+{
+  "route": "/planet-generator-v103",
+  "capturedAt": "2026-10-22T15:29:56.333Z",
+  "code": "proc-v103-7kbn6-543013110011311101031-hprk9",
+  "name": "Rhaek-7KBN6",
+  "seedAlias": "Les cent veilleurs",
+  "recipe": {
+    "version": 103,
+    "seed": 12705522,
+    "territoryCount": 96,
+    "regionCount": 12,
+    "landform": "shattered",
+    "arrangement": "scattered",
+    "landCoverage": "balanced",
+    "coast": "peninsulas",
+    "territoryStyle": "organic",
+    "regionBalance": "uneven",
+    "landBiome": "temperate",
+    "surface": "water",
+    "biomeDiversity": "varied",
+    "atmosphere": "haze",
+    "hydrology": "mixed",
+    "landVariant": "earthlike",
+    "surfaceVariant": "earthlike",
+    "landScale": "medium",
+    "surfaceScale": "broad",
+    "landContrast": "balanced",
+    "surfaceContrast": "soft",
+    "landPalette": "violet",
+    "surfacePalette": "azure"
+  },
+  "renderer": "Chromium headless, WebGL SwiftShader, deviceScaleFactor 1, reduced motion",
+  "captures": [
+    {
+      "file": "desktop-generator.png",
+      "caption": "Générateur appliqué : Rhaek-7KBN6, graine « Les cent veilleurs », 96 territoires, 12 régions de tailles variées, îles fragmentées, matières terrestres et sols violets. La graine et le format sont verrouillés pour les tirages suivants.",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "width": 1440,
+      "height": 1080,
+      "bytes": 408598,
+      "sha256": "90b4aa2b0e14bc232197d8c26d57a79e4eacf1ddefccc4869ecd74e72ec3f2c3",
+      "selectedTerritory": "CON-T02"
+    },
+    {
+      "file": "desktop-atlas.png",
+      "caption": "Planisphère du même monde : 96 territoires, 32 îles et 12 régions. Les contours, les routes et les milieux intérieurs proviennent du code partagé.",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "width": 1366,
+      "height": 1649,
+      "bytes": 972966,
+      "sha256": "337bedfa361560616f0fff052913f02a2f6bcc9bd537fadbe647e65d58a1bf7d",
+      "selectedTerritory": "CON-T02"
+    },
+    {
+      "file": "mobile-atlas.png",
+      "caption": "Même planisphère dans une fenêtre de 390 × 844 px. Le territoire T96 a été choisi au clavier dans la liste complète des territoires ; son inspection et les 12 régions restent accessibles.",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 352,
+      "height": 2283,
+      "bytes": 328360,
+      "sha256": "06bf800a783ebf3bcbc96f85ce05e96d0daa345713db14885747601b6b274ffe",
+      "selectedTerritory": "CON-T96"
+    }
+  ]
+}

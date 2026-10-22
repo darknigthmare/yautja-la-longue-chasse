@@ -11,6 +11,7 @@ on:
       - 'build/**'
       - 'public/**/manifest.json'
       - 'public/game/homeworld/v74/**'
+      - 'public/game/planets/v103/**'
       - 'public/game/dialogues/v85/*.json'
       - 'art-source/v6/catalogue/*.xlsx'
       - 'docs/THE_PIT*.xlsx'
@@ -73,7 +74,7 @@ jobs:
   application:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -101,6 +102,9 @@ jobs:
             /public/game/homeworld/v74/
             /public/game/dialogues/v85/bible-dialogues.json
             /public/game/dialogues/v85/bible-ships.json
+            /public/game/planets/v101/runtime/
+            /public/game/planets/v101/materials/
+            /public/game/planets/v103/
             /art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx
             /docs/THE_PIT_STAGES_V60_SUIVI.xlsx
             /docs/THE_PIT_STAGES_V61_SUIVI.xlsx
@@ -176,6 +180,19 @@ jobs:
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
           app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
           app/game/systems/clanWarCoastlinesV97.ts
+          app/game/PlanetGeneratorV102.tsx app/game/PlanetLayerExportV102.tsx
+          app/game/PlanetMaterialCanvasV101.tsx app/game/planetMaterialRendererV101.ts
+          app/game/planetRegionalMaterialsV102.ts app/game/useGeneratedWarCatalogV102.ts
+          app/game/systems/clanWarGeneratedCatalogV102.ts app/game/systems/clanWarPlanetGeneratorV102.ts
+          app/game/systems/clanWarPlanetGeographyV102.ts app/game/systems/clanWarPlanetLabelsV102.ts
+          app/game/systems/planetMaterialV101.ts app/planet-generator-v102/page.tsx app/planet-generator-v102/review.tsx
+          app/game/PlanetGeneratorV103.tsx app/game/useGeneratedWarCatalogV103.ts
+          app/game/planetGeneratorControlsV103.ts app/game/planetDetailMaterialsV103.ts
+          app/game/systems/clanWarPlanetDraftV103.ts app/game/systems/clanWarProceduralV103.ts
+          app/game/systems/clanWarPlanetGeneratorV103.ts app/game/systems/clanWarPlanetGeographyV103.ts
+          app/game/systems/clanWarDeploymentV103.ts app/game/systems/clanWarGeneratedCatalogV103.ts
+          app/game/systems/planetMaterialProfilesV103.ts
+          app/planet-generator-v103/page.tsx app/planet-generator-v103/review.tsx
           app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
           app/game/ClanWarGarrisonV99.tsx
           app/game/ClanWarEvacuationV100.tsx app/game/systems/clanWarEvacuationV100.ts
@@ -254,6 +271,28 @@ jobs:
           tests/clan-war-planets-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
           tests/clan-war-coastlines-v97.test.mjs
           tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs
+          tests/planet-material-v101.test.mjs tests/planet-material-export-v101.test.mjs
+          tests/planet-generator-v102.test.mjs tests/planet-generator-persistence-v102.test.mjs
+          tests/planet-regional-material-v102.test.mjs
+          tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs
+          tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
+      - name: Exercise generated planets, independent bitmap layers and real saved fronts
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3101 > /tmp/yautja-planet-generator-next.log 2>&1 &
+          PLANET_QA_SERVER_PID=$!
+          trap 'kill "$PLANET_QA_SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3101/planet-generator-v102 > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3101/planet-generator-v102 > /dev/null
+          node scripts/qa-planet-regional-materials-v102.mjs
+          node scripts/qa-planet-generator-v102.mjs
+          node scripts/qa-planet-generator-v103.mjs
+      - name: Compare historical WebGL pixels and verify modular V103 materials
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-planet-materials-v103.mjs
       - name: Exercise V100 native animation studies, local conversations and evacuation with V98-V99 regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: npm run test:worlds:v100

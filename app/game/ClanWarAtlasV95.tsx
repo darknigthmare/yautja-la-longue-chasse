@@ -91,7 +91,7 @@ function PlanetSurfaceDefinitions({ planet, unique }: { planet: WarPlanetV96; un
       {kind === "mist" && <>
         {[20, 86, 152].map(y => <g key={y} transform={`translate(0 ${y})`}><path d="M-24 0C15-49 60 54 108 8S165-29 217-3" fill="none" stroke={accent} strokeOpacity=".22" strokeWidth="28"/><path d="M-24 1C15-48 60 55 108 9S165-28 217-2" fill="none" stroke={detail} strokeOpacity=".24" strokeWidth="3"/><path d="M-24 17C15-32 60 71 108 25S165-12 217 14" fill="none" stroke={accent} strokeOpacity=".2" strokeWidth="8"/></g>)}
       </>}
-      <g fill={detail} opacity={kind === "sand" || kind === "spores" ? ".35" : ".19"}>{grain.map((point, index) => <circle key={index} cx={point.x} cy={point.y} r={point.r}/>)}</g>
+      <g fill={detail} opacity={kind === "sand" || kind === "spores" ? ".35" : ".19"}>{grain.map((point, index) => <circle key={index} cx={point.x.toFixed(3)} cy={point.y.toFixed(3)} r={point.r.toFixed(3)}/>)}</g>
     </pattern>
     <pattern id={`${unique}-relief`} width="60" height="56" patternUnits="userSpaceOnUse" data-testid="war-planet-land-texture" data-land-biome={planet.landBiome}>
       {planet.landBiome === "temperate" && <g fill="#102a24" fillOpacity=".36" stroke="#eff9db" strokeOpacity=".2" strokeWidth=".7"><path d="M7 6L1 20H5L0 28H17L12 20H16ZM38 26L31 39H35L30 48H47L42 39H46Z"/><path d="M21 10q-5-9-10-1q-8 1-4 8q5 6 11 2q9 1 7-6Z"/><path d="M25 35l3-5 3 5m16-20 3-5 3 5" fill="none"/></g>}
@@ -136,6 +136,14 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const source = territory(selectedTerritoryId) ?? definitions[0];
   const target = territory(targetTerritoryId);
   const inspected = selectionMode === "target" && target ? target : source;
+  const inspectedRegion = regions.find(region => region.territoryIds.includes(inspected.id));
+  const regionalDescription = planet.procedural?.regions.find(region => region.regionId === inspectedRegion?.id);
+  const hydrology = planet.procedural && "hydrology" in planet.procedural ? planet.procedural.hydrology.features : [];
+  const inspectedHydrology = hydrology.filter(feature => feature.regionIds.includes(inspectedRegion?.id ?? ""));
+  const continents = planet.procedural?.landmasses.filter(item => item.kind === "continent").length;
+  const islands = planet.procedural?.landmasses.filter(item => item.kind === "island").length;
+  const landmassLabel = continents === undefined ? `${landmasses.length} continents`
+    : [`${continents} continent${continents > 1 ? "s" : ""}`, `${islands} île${islands !== 1 ? "s" : ""}`].join(" · ");
   const inspectedState = simulation.territories[inspected.id];
   const intel = warAtlasIntelV95(simulation, inspected.id);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
@@ -151,6 +159,9 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
     : { ...projectWarAtlasMapV95(point[0], point[1], 960, 480), visible: true, depth: 1 };
   const territoryPath = (points: WarAtlasPointV95[]) => projection === "globe"
     ? warAtlasGlobePathV95(points, view) : warAtlasMapPathV95(points, 960, 480);
+  const waterPaths = hydrology.map(feature => ({ ...feature, d: territoryPath(feature.points) })).filter(feature => feature.d);
+  const routeDescription = (fromId: string, toId: string) => planet.procedural?.routes.find(route =>
+    route.fromId === fromId && route.toId === toId || route.fromId === toId && route.toId === fromId);
   const centerOn = (id: string) => {
     const geography = territories.find(item => item.id === id);
     if (geography) { setLongitude(geography.longitude); setLatitude(geography.latitude); }
@@ -199,6 +210,13 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
     }).join(" ");
   };
   const connectionPath = (fromId: string, toId: string) => {
+    const route = planet.procedural && "strategy" in planet.procedural
+      ? planet.procedural.routes.find(candidate => candidate.fromId === fromId && candidate.toId === toId || candidate.fromId === toId && candidate.toId === fromId)
+      : undefined;
+    if (route) {
+      const points = route.fromId === fromId ? route.points : [...route.points].reverse();
+      return linePath(points.map(point => [wrapLongitude(point[0]), point[1]]));
+    }
     const from = territories.find(item => item.id === fromId);
     const to = territories.find(item => item.id === toId);
     if (!from || !to) return "";
@@ -218,7 +236,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}>
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>THÉÂTRE PLANÉTAIRE / {planet.subtitle}</p><h4 id={`${unique}-heading`}>{planet.name}<span>Atlas des territoires</span></h4></div>
-      <div className={styles.turn}><span className={styles.signal} aria-hidden="true"/>Tour <strong>{String(simulation.turn).padStart(2, "0")}</strong><small>{territories.length} territoires · {regions.length} régions</small><small>{landmasses.length} continents</small></div>
+      <div className={styles.turn}><span className={styles.signal} aria-hidden="true"/>Tour <strong>{String(simulation.turn).padStart(2, "0")}</strong><small>{territories.length} territoires · {regions.length} régions</small><small>{landmassLabel}</small></div>
     </header>
     <div className={styles.surfaceBrief}>
       <span className={styles.surfaceSwatch} style={{ background: `linear-gradient(135deg, ${planet.surface.base}, ${planet.surface.deep})`, borderColor: planet.surface.accent }} aria-hidden="true"/>
@@ -260,6 +278,10 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
             <desc id={`${unique}-map-description`}>{`Chaque zone porte la couleur et le symbole de sa faction. ${planet.surface.name} : surface non jouable entre les territoires. Les routes relient les voisins accessibles, y compris à travers les détroits. Entrée ou Espace sélectionne une zone. Les boutons sous la carte et la liste des territoires donnent accès à la face cachée du globe.`}</desc>
             <defs>
               <PlanetSurfaceDefinitions planet={planet} unique={unique}/>
+              {waterPaths.length > 0 && <mask id={`${unique}-inland-surface`} maskUnits="userSpaceOnUse" x="0" y="0" width="960" height="620">
+                <rect width="960" height="620" fill="white"/>
+                {waterPaths.map(feature => <path key={feature.id} d={feature.d} fill="black"/>)}
+              </mask>}
               <radialGradient id={`${unique}-shade`} cx="32%" cy="26%" r="78%"><stop offset=".45" stopColor="#020b13" stopOpacity="0"/><stop offset=".85" stopColor="#020b13" stopOpacity=".12"/><stop offset="1" stopColor="#020b13" stopOpacity=".7"/></radialGradient>
               <clipPath id={`${unique}-surface-clip`}>{projection === "globe" ? <circle cx="480" cy="306" r={view.radius}/> : <rect x="0" y="70" width="960" height="480"/>}</clipPath>
               <pattern id={`${unique}-CON-F01`} width="11" height="11" patternUnits="userSpaceOnUse"><path d="M-3 3L3-3M0 11L11 0M8 14L14 8" stroke="#fff" strokeOpacity=".15" strokeWidth="1"/></pattern>
@@ -280,6 +302,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
             </foreignObject>
             <g transform={projection === "map" ? "translate(0 70)" : undefined}>
               <g aria-hidden="true" className={styles.graticule}>{graticules.map((points, index) => <path key={index} d={linePath(points)}/>)}</g>
+              <g mask={waterPaths.length ? `url(#${unique}-inland-surface)` : undefined}>
               {territories.map(geography => {
                 const d = territoryPath(geography.points);
                 if (!d) return null;
@@ -291,6 +314,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 const isNeighbor = source.neighbors.includes(geography.id);
                 const dimmed = Boolean(regionFilter && geography.regionId !== regionFilter);
                 const accessible = isNeighbor;
+                const showLabel = territories.length <= 48 || regionFilter === geography.regionId || isSource || isTarget || isNeighbor || hoveredId === geography.id;
                 return <g key={geography.id} className={styles.territory} role="button" tabIndex={0} style={{ "--planet-faction-color": WAR_ATLAS_FACTIONS_V95[faction].color } as CSSProperties}
                   aria-label={`${shortId(geography.id)} · ${definition.name} · ${WAR_FACTIONS_V85[faction]}${statusLabel(geography.id) ? ` · ${statusLabel(geography.id)}` : ""}`}
                   aria-pressed={selectionMode === "origin" ? isSource : isTarget}
@@ -303,18 +327,22 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                   <path className={styles.land} d={d} fill={WAR_ATLAS_FACTIONS_V95[faction].color}/>
                   <path d={d} fill={`url(#${unique}-relief)`} className={styles.landPattern} aria-hidden="true" data-material-fallback="true"/>
                   <path d={d} fill={`url(#${unique}-${faction})`} className={styles.landPattern} aria-hidden="true"/>
-                  {position.visible && position.depth > .12 && <g className={styles.zoneLabel} aria-hidden="true"><text x={position.x} y={position.y - 4} textAnchor="middle">{factionGlyph[faction]} {shortId(geography.id)}</text>{showNames && <text className={styles.zoneName} x={position.x} y={position.y + 11} textAnchor="middle">{definition.name.length > 23 ? `${definition.name.slice(0, 21)}…` : definition.name}</text>}{(isSource || isTarget) && <text x={position.x} y={position.y + (showNames ? 26 : 12)} textAnchor="middle" className={styles.selectionLabel}>{isSource ? "DÉPART" : "CIBLE"}</text>}</g>}
+                  {showLabel && position.visible && position.depth > .12 && <g className={styles.zoneLabel} aria-hidden="true"><text x={position.x.toFixed(3)} y={(position.y - 4).toFixed(3)} textAnchor="middle">{factionGlyph[faction]} {shortId(geography.id)}</text>{showNames && <text className={styles.zoneName} x={position.x.toFixed(3)} y={(position.y + 11).toFixed(3)} textAnchor="middle">{definition.name.length > 23 ? `${definition.name.slice(0, 21)}…` : definition.name}</text>}{(isSource || isTarget) && <text x={position.x.toFixed(3)} y={(position.y + (showNames ? 26 : 12)).toFixed(3)} textAnchor="middle" className={styles.selectionLabel}>{isSource ? "DÉPART" : "CIBLE"}</text>}</g>}
                 </g>;
               })}
+              </g>
               <g className={styles.coastlines} aria-hidden="true" pointerEvents="none" data-testid="war-planet-coastlines">
                 {landmasses.map(landmass => <path key={landmass.id} d={territoryPath(landmass.points)} data-landmass-id={landmass.id} data-dimmed={Boolean(regionFilter && !landmass.territoryIds.some(id => filteredTerritories.some(item => item.id === id)))}/>)}
               </g>
-              {showRoutes && <g className={styles.routes} aria-hidden="true" data-testid="war-planet-neighbor-routes">{connections.map(route => <path key={`${route.fromId}-${route.targetId}`} d={connectionPath(route.fromId, route.targetId)} data-from={route.fromId} data-target={route.targetId} data-active={route.fromId === source.id || route.targetId === source.id}/>)}</g>}
+              <g data-testid="war-planet-inland-surfaces">{waterPaths.map(feature => <path key={feature.id} d={feature.d}
+                fill="transparent" stroke={planet.surface.accent} strokeOpacity=".8" strokeWidth="1" vectorEffect="non-scaling-stroke" pointerEvents="all"
+                data-hydrology-id={feature.id} data-hydrology-kind={feature.kind}><title>{`${feature.name} · ${planet.surface.name} · surface non jouable`}</title></path>)}</g>
+              {showRoutes && <g className={styles.routes} aria-hidden="true" data-testid="war-planet-neighbor-routes">{connections.map(route => <path key={`${route.fromId}-${route.targetId}`} d={connectionPath(route.fromId, route.targetId)} data-from={route.fromId} data-target={route.targetId} data-kind={routeDescription(route.fromId, route.targetId)?.kind} strokeDasharray={routeDescription(route.fromId, route.targetId)?.kind === "crossing" ? "3 4" : undefined} data-active={route.fromId === source.id || route.targetId === source.id}/>)}</g>}
               <g className={styles.orderRoutes} aria-hidden="true">{playerOrders.filter(order => order.fromId !== order.targetId).map(order => <path key={order.id} d={connectionPath(order.fromId, order.targetId)} markerEnd={`url(#${unique}-arrow)`}/>)}</g>
               <g className={styles.regionNames} aria-hidden="true">{regions.map(region => {
                 const northernCoast = Math.max(...territories.filter(item => item.regionId === region.id).flatMap(item => item.points.map(point => point[1])));
                 const position = projected([region.longitude, Math.min(87, northernCoast + 4)]);
-                return position.visible && position.depth > .12 && <text key={region.id} x={position.x} y={position.y - 4} textAnchor="middle" data-dimmed={Boolean(regionFilter && region.id !== regionFilter)}>{region.name.toLocaleUpperCase("fr")}</text>;
+                return position.visible && position.depth > .12 && <text key={region.id} x={position.x.toFixed(3)} y={(position.y - 4).toFixed(3)} textAnchor="middle" data-dimmed={Boolean(regionFilter && region.id !== regionFilter)}>{region.name.toLocaleUpperCase("fr")}</text>;
               })}</g>
             </g>
             {projection === "globe" && <circle cx="480" cy="306" r={view.radius} fill={`url(#${unique}-shade)`} pointerEvents="none" aria-hidden="true" data-material-fallback="true"/>}
@@ -333,13 +361,13 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et aurores</label>
           <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
         </fieldset>
-        <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ, détroits franchissables inclus. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.</p>
+        <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
       </div>
 
       <aside className={styles.intelPanel} aria-label="Renseignement territorial">
         <p className={styles.eyebrow}>TERRITOIRE {shortId(inspected.id)}<span>{selectionMode === "target" ? "CIBLE" : "SÉLECTION"}</span></p>
         <h5>{inspected.name}</h5>
-        <p className={styles.regionCaption}>{regions.find(region => region.territoryIds.includes(inspected.id))?.name}</p>
+        <p className={styles.regionCaption}>{inspectedRegion?.name}</p>
         <div className={styles.controller}><FactionSymbol faction={inspectedState.controller}/><span>{WAR_FACTIONS_V85[inspectedState.controller]}<small>Contrôle territorial</small></span></div>
         <dl className={styles.intelFacts}>
           <div><dt>Ravitaillement</dt><dd>{inspectedState.controller === PLAYER ? supplied.has(inspected.id) ? "Relié au réseau" : "Isolé du réseau" : "Liaison non observée"}</dd></div>
@@ -349,19 +377,21 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           <div><dt>Routes voisines</dt><dd>{inspected.neighbors.length}</dd></div>
         </dl>
         <div className={styles.routeSelection}><div><span>01 / DÉPART</span><strong>{shortId(source.id)} · {source.name}</strong></div><span className={styles.routeArrow} aria-hidden="true">↓</span><div><span>02 / CIBLE</span><strong>{target ? `${shortId(target.id)} · ${target.name}` : "À choisir"}</strong></div></div>
-        <details className={styles.neighborDirectory}><summary>{source.neighbors.length} destinations accessibles du départ</summary><div>{source.neighbors.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("target"); onSelectTarget(id); centerOn(id); setAnnouncement(`Cible : ${territory(id)?.name}. Destination voisine de ${source.name}.`); }} aria-pressed={targetTerritoryId === id}>{shortId(id)} · {territory(id)?.name}</button>)}</div></details>
+        <details className={styles.neighborDirectory}><summary>{source.neighbors.length} destinations accessibles du départ</summary><div>{source.neighbors.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("target"); onSelectTarget(id); centerOn(id); setAnnouncement(`Cible : ${territory(id)?.name}. Destination voisine de ${source.name}.`); }} aria-pressed={targetTerritoryId === id}>{shortId(id)} · {territory(id)?.name}{routeDescription(source.id, id)?.kind === "crossing" && " · traversée balisée"}</button>)}</div></details>
         <button type="button" className={styles.targetAction} onClick={() => {
           setSelectionMode(selectionMode === "origin" ? "target" : "origin");
           setAnnouncement(selectionMode === "origin" ? `Choisissez une cible parmi les voisins de ${source.name}.` : "Choisissez un territoire à inspecter ou un nouveau départ.");
         }}>{selectionMode === "origin" ? "Choisir une cible sur la carte →" : "← Revenir au départ / inspection"}</button>
         {selectionMode === "target" && <p className={styles.hint}>Seuls les voisins du départ sont sélectionnables comme cible. Les soins utilisent le territoire de départ.</p>}
         <details className={styles.terrain}><summary>Terrain et sites</summary><p>{inspected.terrain}</p><p>{inspected.sites}</p></details>
+        {regionalDescription && <details className={styles.terrain}><summary>Particularités de la région</summary><p>{regionalDescription.description}</p><p>{regionalDescription.climate}</p><ul>{regionalDescription.features.map(feature => <li key={feature}>{feature}</li>)}</ul></details>}
+        {inspectedHydrology.length > 0 && <details className={styles.terrain}><summary>Bassins et chenaux de la région</summary>{inspectedHydrology.map(feature => <p key={feature.id}><strong>{feature.name}</strong> · {feature.description}</p>)}</details>}
         <p className={styles.hint}>Les ordres se préparent dans le panneau stratégique ci-dessous. Les effectifs adverses restent inconnus sans reconnaissance.</p>
         {projection === "globe" && selectedGeo && !projectWarAtlasGlobeV95(selectedGeo.longitude, selectedGeo.latitude, view).visible && <button type="button" className={styles.hiddenSelection} onClick={() => centerOn(inspected.id)}>La sélection est sur l’autre face · la montrer</button>}
       </aside>
     </div>
 
-    <div className={styles.regionStrip} aria-label={`Contrôle des ${regions.length} régions`}>{regionMetrics.map(region => <button type="button" key={region.id} aria-pressed={regionFilter === region.id} onClick={() => {
+    <div className={styles.regionStrip} style={{ "--atlas-region-columns": Math.min(6, regions.length) } as CSSProperties} aria-label={`Contrôle des ${regions.length} régions`}>{regionMetrics.map(region => <button type="button" key={region.id} aria-pressed={regionFilter === region.id} onClick={() => {
       const geography = regions.find(item => item.id === region.id)!;
       setRegionFilter(regionFilter === region.id ? "" : region.id); setLongitude(geography.longitude); setLatitude(geography.latitude);
     }}><span>{region.name}</span><strong>{region.playerCount}<small>/{region.territoryCount} Haltes</small></strong><span className={styles.regionTrack} aria-hidden="true">{factionMetrics.map(faction => <i key={faction.id} style={{ width: `${region.factions[faction.id] / region.territoryCount * 100}%`, background: faction.color }}/>)}</span></button>)}</div>
@@ -374,6 +404,6 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
 
     {playerOrders.length > 0 && <div className={styles.pendingOrders}><p className={styles.eyebrow}>TRAJECTOIRES RÉSERVÉES / {playerOrders.length}</p><ul>{playerOrders.map(order => <li key={order.id}><span aria-hidden="true">↗</span><strong>{orderNames[order.kind]}</strong><span>{shortId(order.fromId)} → {shortId(order.targetId)}</span><button type="button" onClick={() => { centerOn(order.targetId); setAnnouncement(`${orderNames[order.kind]} : ${territory(order.fromId)?.name} vers ${territory(order.targetId)?.name}.`); }}>Localiser<span className={styles.srOnly}> l’ordre {order.id}</span></button></li>)}</ul></div>}
     <p className={styles.announcement} role="status" aria-live="polite">{announcement || (selectionMode === "origin" ? "Sélectionnez un territoire pour l’inspecter et préparer votre départ." : `Sélectionnez une cible voisine de ${source.name}.`)}</p>
-    <p className={styles.provenance}>{planet.name} · {landmasses.length} continents · {regions.length} régions administratives · {Math.round(planet.landFraction * 100)} % de terres cartographiées. Les liaisons indiquées permettent de franchir les détroits ; les surfaces entre les territoires sont non jouables.</p>
+    <p className={styles.provenance}>{planet.name} · {landmassLabel} · {regions.length} régions administratives · {Math.round(planet.landFraction * 100)} % de terres cartographiées. Les liaisons indiquées permettent de franchir les détroits ; les surfaces entre les territoires sont non jouables.</p>
   </section>;
 }
