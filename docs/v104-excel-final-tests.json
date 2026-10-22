@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "release": "V104",
   "status": "PASS_EXCEL_CIBLE",
-  "verifiedAtUtc": "2026-10-22T21:13:04.203Z",
+  "verifiedAtUtc": "2026-10-22T21:18:23.122Z",
   "scope": "Final V104 workbook generation and ten actual targeted tests after Homeworld pre-walk write-recovery correction. Runtime proof is mode-specific: renewed Homeworld build; unchanged Pit/Preserve retain their original builds. No additional game/browser or native Excel application executed by this step.",
   "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
   "runtimeChangedByThisStep": false,
@@ -20,18 +20,18 @@
   "baselineFreeze": "FROZEN",
   "workbook": {
     "path": "docs/YAUTJA_V104_SUIVI.xlsx",
-    "sha256": "44b2651bdfb500a0f8052163c478bb089ce716114b4e50c0fbb7d9ea9aa13ef5",
+    "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
     "bytes": 2411658
   },
   "products": [
     {
       "path": "docs/v104-workstreams.json",
-      "sha256": "d58cdfd6bbb6dac29d07196e5ebb3ff3a081efaece039f3364e149f41872b43d",
+      "sha256": "c2293f49855484ca63cba024064296851502fe6fa90ddfda2729d28a11a0b68f",
       "bytes": 250445
     },
     {
       "path": "docs/v104-excel-followup-qa.json",
-      "sha256": "44f051f424516262c47e4f9f8320af135443f693f1c39fdddcea8699651e451b",
+      "sha256": "a4f353ef1d207931be477070f5ad9b76ac2fa6ee97940ee29243192ed0683927",
       "bytes": 4046
     }
   ],
@@ -43,8 +43,8 @@
     },
     {
       "path": "scripts/build-excel-followup-v104.py",
-      "sha256": "125d92ab513cd98334ff69e75b766725ea77f411c3c46512a83dda386db7763e",
-      "bytes": 10377
+      "sha256": "84d1d1cadaca8e71584da306183237aaa1ab745953f5682ef5570d76622a622b",
+      "bytes": 10393
     },
     {
       "path": "tests/excel-followup-v104.test.mjs",
@@ -58,7 +58,7 @@
     },
     {
       "path": "docs/excel-followup-v104.md",
-      "sha256": "282a0efb8685bd57964e0aaccc103c5599d2c78c68e80793528fe3a31d86ac10",
+      "sha256": "08b2175c14667b8bbd3df93a3735720a1d829adc4af5ad6b2cc31d1614030dd5",
       "bytes": 9300
     }
   ],
@@ -68,8 +68,8 @@
       "status": "PASS",
       "exitCode": 0,
       "log": {
-        "path": "/tmp/excel-v104-retry-final-generation.log",
-        "sha256": "5e0d1bf33b49b47cea03850855c89533e25c91ee47d5e84d44230fde9b672acd",
+        "path": "/tmp/excel-v104-utf8-final-generation.log",
+        "sha256": "6b54fd3f77b5655cef9bafd9578c865889ab07d8ead830b50b9c65c307e5fac6",
         "bytes": 681
       }
     },
@@ -78,8 +78,8 @@
       "status": "PASS",
       "exitCode": 0,
       "log": {
-        "path": "/tmp/excel-v104-retry-final-check.log",
-        "sha256": "4102665e653046816e77082f1f373bf4c64e3fa9f08d64ce19d9d75e956c106e",
+        "path": "/tmp/excel-v104-utf8-final-check.log",
+        "sha256": "69b183e7002d69f4188f9ffafc995bebe0e990242f2ad7128ade42b41e580ffe",
         "bytes": 678
       }
     },
@@ -92,23 +92,23 @@
       "passed": 10,
       "failed": 0,
       "skipped": 0,
-      "durationMs": 12281.785842,
+      "durationMs": 9244.692564,
       "actualSubtests": [
-        "✔ V104 rejects false closure, unnamed proof, missing browser validation and enlarged scope (9.025535ms)",
-        "✔ a changed final report cannot keep a validated proof, and an unvalidated filename creates no proof (11.762998ms)",
-        "✔ a changed V100 baseline pin is refused before collecting runtime or touching history (8.551628ms)",
-        "✔ cartography scenes, both source options and eight replicas retain the exact V6 corpus cells (221.611392ms)",
-        "✔ source timings, damage, height and D:L cells are independently compared to V100 and V56 (3191.34074ms)",
-        "✔ actual exports retain bounded coverage and separate static poses, BODY, mechanics and historic recipes (1.276237ms)",
-        "✔ the 27 historical sheets, ZIP payloads and all original style definitions survive byte-identically (74.019551ms)",
-        "✔ summary formula caches and all new navigation links are independently readable (181.102488ms)",
-        "✔ source operators remain text and forged caches or historical bytes are refused (646.977818ms)",
-        "✔ generation is reproducible and check rejects every stale output without rewriting it (7731.358403ms)"
+        "✔ V104 rejects false closure, unnamed proof, missing browser validation and enlarged scope (8.504133ms)",
+        "✔ a changed final report cannot keep a validated proof, and an unvalidated filename creates no proof (3.035887ms)",
+        "✔ a changed V100 baseline pin is refused before collecting runtime or touching history (7.722109ms)",
+        "✔ cartography scenes, both source options and eight replicas retain the exact V6 corpus cells (215.156672ms)",
+        "✔ source timings, damage, height and D:L cells are independently compared to V100 and V56 (2404.587059ms)",
+        "✔ actual exports retain bounded coverage and separate static poses, BODY, mechanics and historic recipes (0.630193ms)",
+        "✔ the 27 historical sheets, ZIP payloads and all original style definitions survive byte-identically (47.444817ms)",
+        "✔ summary formula caches and all new navigation links are independently readable (152.004398ms)",
+        "✔ source operators remain text and forged caches or historical bytes are refused (492.200518ms)",
+        "✔ generation is reproducible and check rejects every stale output without rewriting it (5758.831225ms)"
       ],
       "log": {
-        "path": "/tmp/excel-v104-retry-final-tests.log",
-        "sha256": "87a39b37d2d4dfcf4995330770544b5310cb447c3a7cd417cbd536e23f0d536e",
-        "bytes": 1200
+        "path": "/tmp/excel-v104-utf8-final-tests.log",
+        "sha256": "7a81af58311f108bebd79c8128c7fce2ab50d8169513d9d4ed5037ae6b981b07",
+        "bytes": 1199
       }
     }
   ],
@@ -283,5 +283,24 @@
     "path": "docs/v104-cartography-retry-review.json",
     "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1",
     "bytes": 7169
+  },
+  "utf8RequestReadCheck": {
+    "status": "PASS_CIBLE",
+    "change": "Explicit encoding=\"utf-8\" for the request JSON only.",
+    "command": "LC_ALL=C PYTHONUTF8=0 PYTHONCOERCECLOCALE=0 python3 scripts/build-excel-followup-v104.py --request /tmp/excel-v104-utf8-request.json",
+    "defaultLocaleEncoding": "ANSI_X3.4-1968",
+    "request": {
+      "path": "/tmp/excel-v104-utf8-request.json",
+      "sha256": "c8deef0c4b223b1e50961a8b839a5b17779779c2f06b71b7013efee8e1b4dcd1",
+      "bytes": 441
+    },
+    "output": {
+      "path": "/tmp/excel-v104-utf8-request.xlsx",
+      "sha256": "d159f2ac9a7801da5c270e7b9e04f1f3c5266f3a5ffd3b3642ebd261b6888dbd",
+      "bytes": 1866645
+    },
+    "verifiedCell": "xl/worksheets/v104-sheet-28.xml!A5",
+    "expectedText": "Été — forêt, rivière et lumière",
+    "limit": "One accented UTF-8 JSON fixture under an ASCII-default C locale; not a general operating-system, locale or native Excel portability certification."
   }
 }

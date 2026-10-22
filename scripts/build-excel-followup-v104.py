@@ -171,7 +171,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if "--request" not in args:
         raise SystemExit("Usage: build-excel-followup-v104.py [--inventory|--verify] --request file.json")
-    at = args.index("--request"); payload = json.loads(Path(args[at + 1]).read_text()); del args[at:at + 2]
+    at = args.index("--request"); payload = json.loads(Path(args[at + 1]).read_text(encoding="utf-8")); del args[at:at + 2]
     if args == ["--inventory"]:
         json.dump(old.inventory(payload), sys.stdout, ensure_ascii=False)
     elif args == ["--verify"]:
