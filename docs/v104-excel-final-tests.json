@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "status": "PASS_EXCEL_CIBLE",
+  "verifiedAtUtc": "2026-10-22T20:39:17.171Z",
+  "scope": "Final workbook generation, byte-reproducible check, ten actual targeted tests, historical ZIP/XML preservation and actual CI sparse inclusion. No additional game/browser or native Excel run in this step.",
+  "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+  "runtimeChangedByThisStep": false,
+  "priorWorkbooksRewrittenByThisStep": false,
+  "runtimeValidationProof": {
+    "path": "docs/v104-validation-summary.json",
+    "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059",
+    "bytes": 26294
+  },
+  "baseline": {
+    "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+    "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1",
+    "bytes": 1862541
+  },
+  "baselineFreeze": "FROZEN",
+  "workbook": {
+    "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+    "sha256": "24b12215808e90fbe3141b2893bf4e96d0561842ebff685d50a3b8020073ab41",
+    "bytes": 2410920
+  },
+  "products": [
+    {
+      "path": "docs/v104-workstreams.json",
+      "sha256": "8c99354475c690b20fbc3459d594cf0a181fb1c671859b9b9b073c6362d6ae04",
+      "bytes": 249795
+    },
+    {
+      "path": "docs/v104-excel-followup-qa.json",
+      "sha256": "a5e1bcc61db5ae9c8c1522c840afa3450ef52012b187c499b1741058186779b8",
+      "bytes": 4046
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "scripts/build-excel-followup-v104.mjs",
+      "sha256": "7cf552bfa92817577b4165b48db2bf1775ce30ef1f64070089bfa55bb46b53a2",
+      "bytes": 34973
+    },
+    {
+      "path": "scripts/build-excel-followup-v104.py",
+      "sha256": "125d92ab513cd98334ff69e75b766725ea77f411c3c46512a83dda386db7763e",
+      "bytes": 10377
+    },
+    {
+      "path": "tests/excel-followup-v104.test.mjs",
+      "sha256": "5e8f79dc3ceb6d9df513966a61cb033c6acb37028523d8035cb548fea5744028",
+      "bytes": 15120
+    },
+    {
+      "path": "docs/v104-workstreams-source.json",
+      "sha256": "dec4ee5efed72fc1a5521c59804f79247d38fe1d0a030d2bc4724bb46ab02d83",
+      "bytes": 16265
+    },
+    {
+      "path": "docs/excel-followup-v104.md",
+      "sha256": "5ccee16f75752426aac866c3c5981dfad0aba6d1e7d3aac63cbfb2339722fb8f",
+      "bytes": 8943
+    }
+  ],
+  "commands": [
+    {
+      "command": "node scripts/build-excel-followup-v104.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "/tmp/excel-v104-final-generation.log",
+        "sha256": "51c2a23c8c3bb3791ff0a488d896027cdf61484f3f330aeafccc17d9ff16198e",
+        "bytes": 681
+      }
+    },
+    {
+      "command": "node scripts/build-excel-followup-v104.mjs --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "/tmp/excel-v104-final-check.log",
+        "sha256": "261c8431681709e873162c81e7ea180ab6b1e3ecc30b5a89bac8558f37662138",
+        "bytes": 678
+      }
+    },
+    {
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-followup-v104.test.mjs",
+      "node": "22.23.3",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 9440.076628,
+      "actualSubtests": [
+        "✔ V104 rejects false closure, unnamed proof, missing browser validation and enlarged scope (8.90471ms)",
+        "✔ a changed final report cannot keep a validated proof, and an unvalidated filename creates no proof (4.375786ms)",
+        "✔ a changed V100 baseline pin is refused before collecting runtime or touching history (11.641163ms)",
+        "✔ cartography scenes, both source options and eight replicas retain the exact V6 corpus cells (239.90947ms)",
+        "✔ source timings, damage, height and D:L cells are independently compared to V100 and V56 (2435.11129ms)",
+        "✔ actual exports retain bounded coverage and separate static poses, BODY, mechanics and historic recipes (0.59464ms)",
+        "✔ the 27 historical sheets, ZIP payloads and all original style definitions survive byte-identically (48.559249ms)",
+        "✔ summary formula caches and all new navigation links are independently readable (159.983648ms)",
+        "✔ source operators remain text and forged caches or historical bytes are refused (478.072199ms)",
+        "✔ generation is reproducible and check rejects every stale output without rewriting it (5870.110858ms)"
+      ],
+      "log": {
+        "path": "/tmp/excel-v104-final-tests.log",
+        "sha256": "caa4bdcd60d74e1e45757c10df35b9d4a4e4afc310d375fd965431c05fde92ee",
+        "bytes": 1196
+      }
+    }
+  ],
+  "structure": {
+    "sheetCount": 39,
+    "activeSheet": "SyntheseV104",
+    "originalSheetsPreserved": 27,
+    "originalZipPartsByteIdentical": 40,
+    "originalStylePrefixPreserved": true,
+    "xmlPartsParsed": 56,
+    "formulaCachesChecked": 12,
+    "inputFingerprintsVerified": 231,
+    "assetsVerified": 140
+  },
+  "delivery": {
+    "validatedTargetWorkstreams": [
+      {
+        "id": "PIT-V104-NORMALS",
+        "scope": "NORMALS_SOURCE_OPT_IN",
+        "proof": [
+          {
+            "path": "docs/v104-validation-summary.json",
+            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          },
+          {
+            "path": "docs/v104-pit-normals-validation.json",
+            "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d"
+          }
+        ]
+      },
+      {
+        "id": "HOMEWORLD-V104-CARTOGRAPHY",
+        "scope": "OPTION_B_KNOWN_ROUTE",
+        "proof": [
+          {
+            "path": "docs/v104-validation-summary.json",
+            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          },
+          {
+            "path": "docs/homeworld-cartography-v104-validation.json",
+            "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+          }
+        ]
+      },
+      {
+        "id": "PRESERVE-V104-LOOKOUT",
+        "scope": "V2_FOUR_SECTORS",
+        "proof": [
+          {
+            "path": "docs/v104-validation-summary.json",
+            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          },
+          {
+            "path": "docs/v104-preserve-hunt-validation.json",
+            "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615"
+          }
+        ]
+      },
+      {
+        "id": "CLANS-V103-GENERATOR",
+        "scope": "PROCEDURAL_V103_FORMATS",
+        "proof": [
+          {
+            "path": "docs/v104-validation-summary.json",
+            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          },
+          {
+            "path": "docs/planet-generator-v103/review-fixes-20261022.json",
+            "sha256": "c761b12695319d1a1abc08170c5c520ee82349b8d4f626fc3316f45ea3f7230d"
+          }
+        ]
+      },
+      {
+        "id": "ENFORCERS-V613-CUMULATIVE",
+        "scope": "STATIC_POSES_ONLY",
+        "proof": [
+          {
+            "path": "docs/v104-validation-summary.json",
+            "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+          },
+          {
+            "path": "docs/suivi-production/v613/validation.json",
+            "sha256": "1e8438a93cea6244668e7297b519cd8d2742fa943693436b8f3eac160cba085f"
+          }
+        ]
+      }
+    ],
+    "openWorkstreams": [
+      "ENFORCERS-10-REMAINING"
+    ],
+    "characters": "OUVERT",
+    "entities": "OUVERT",
+    "variantAnimations": "OUVERT"
+  },
+  "ciSparse": {
+    "status": "PASS",
+    "method": "git sparse-checkout check-rules -z --no-cone --rules-file with actual application job patterns and file-backed stdin",
+    "workflow": {
+      "path": ".github/workflows/audit-v94.yml",
+      "sha256": "87a1e3cd3e3c788ba52cdd77df0fbb45fe09f20f0c4ac2b5827d486c714ce43b",
+      "bytes": 19540
+    },
+    "required": 236,
+    "included": 236,
+    "missing": []
+  },
+  "excludedFromGenerationInputs": true,
+  "nativeExcelApplicationVerified": false,
+  "nativeExcelCalculationEngineExecuted": false,
+  "limits": [
+    "Ten workbook tests are a separate targeted group; do not aggregate them with overlapping game test groups.",
+    "Five validated workstreams keep limited scopes. Full characters, entities, costumes, Cartographer option A, remaining Preserve coverage, six Pit dossiers, six war structures and eighteen Enforcer10 variants remain open.",
+    "The 5120-identity main reconciliation is an explicit merge attestation. The collector verifies only108 Enforcer PNG and32 BODY page files as native available bytes.",
+    "The frozen global report and runtime files were not edited by final Excel promotion. This attestation stays outside generation inputs to avoid a workbook/report hash cycle."
+  ]
+}

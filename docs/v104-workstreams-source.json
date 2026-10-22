@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "asOf": "2026-10-22",
+  "baseline": {
+    "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+    "sha256": "25b5c258d90300bc35204fa0850f24a44b95e9d07276966ae357dadd2c29f2b1"
+  },
+  "baselineFreeze": "FROZEN",
+  "enforcerMainReconciliation": {
+    "kind": "EXPLICIT_MERGE_ATTESTATION",
+    "attestedBy": "root",
+    "mergeCommit": "d71e995ae886df69c4165a1a153291449e8f22f6",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/10",
+    "cohortManifest": "docs/suivi-production/v613/data/production-manifest.json",
+    "cohortCount": 36,
+    "claimedCounts": {
+      "Présente dans main": 2197,
+      "Produite — à vérifier": 205,
+      "Conservée hors main": 0,
+      "Pas faite": 2718
+    },
+    "unrecoveredV610TraceRecords": 36,
+    "scope": "Réconciliation déclarée du lineage cumulatif de 5 120 identifiants après la fusion de la cohorte V6.13. Seuls les 108 PNG V6.11–V6.13 sont contrôlés en octets ici ; aucun autre PNG, animation, placement ou canon n’est certifié. Les 36 traces V6.10 sans PNG restent historiques."
+  },
+  "workstreams": [
+    {
+      "id": "PIT-V104-NORMALS",
+      "domain": "The Pit",
+      "title": "Dix-huit attaques normales sourcées Feral et Scar",
+      "source": "05_MOVES_PROPOSES!D10:L10 et D7:L7 ; extraction V56 épinglée par le plan V100",
+      "implementation": [
+        "app/game/systems/pitWorkbookNormalsV104.ts",
+        "app/game/pitWorkbookNormalRegistryV104.ts",
+        "app/game/systems/pitCombat.ts",
+        "app/game/systems/pitFirstEdition.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "NORMALS_SOURCE_OPT_IN",
+      "runtime": "Recette workbook-v104 explicite ; timings, dégâts de base et hauteurs des neuf normales par personnage. Atlas natifs BODY existants, aucune nouvelle image.",
+      "tests": "PASS : 11 nouveaux cas dans le groupe moteur/replay 86 PASS ; groupe équipements 90 PASS. Comptes recoupés, aucun total unique additionné.",
+      "browser": "PASS_CIBLE_PRODUCTION : 312 contrôles, 36 orientations natives, 48 captures réellement ouvertes sur le build KfYVJdIUFim-1m9MRRQ6_.",
+      "proof": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/v104-pit-normals-validation.json",
+          "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d"
+        }
+      ],
+      "remaining": "Spéciaux, projections, entités, finishers, victimes synchronisées et costumes restent ouverts. Les anciennes simulations et replays gardent leur recette historique."
+    },
+    {
+      "id": "HOMEWORLD-V104-CARTOGRAPHY",
+      "domain": "Homeworld",
+      "title": "Cartographe V6 : parcourir une liaison entre repères connus",
+      "source": "D6-W-PNJ-ROLE-12 ; Scènes de dialogue V6!A392:Q392 ; Répliques V6!A3255:K3262 ; Choix et actions V6!A806:H807",
+      "implementation": [
+        "app/game/systems/homeworldCartographyDefinitionV104.ts",
+        "app/game/systems/homeworldCartographyLedgerV104.ts",
+        "app/game/systems/homeworldCartographyV104.ts",
+        "app/game/data/bibleCartographySceneV104.json",
+        "app/game/HomeworldHub.tsx",
+        "app/game/HomeworldWorldSceneV77.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "OPTION_B_KNOWN_ROUTE",
+      "runtime": "Option B uniquement : interlocuteur, pupitre et marche physique dans le port ; repères connus, propriétaire et reprise explicites. Aucun dévoilement de zone inconnue ni récompense inventée.",
+      "tests": "PASS : 13 nouveaux tests Cartographe ; 30 avec régressions V100/V86. Treize cas rejoués après le raffinement de type final ; groupes recoupés.",
+      "browser": "PASS_CIBLE_PRODUCTION : 18 contrôles, 5 captures réellement ouvertes ; sources inchangées depuis a974424b.",
+      "proof": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/homeworld-cartography-v104-validation.json",
+          "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+        }
+      ],
+      "remaining": "L’option A du point haut reste ouverte. Une scène partiellement incarnée ne clôt ni ses autres options ni les 730 scènes documentaires."
+    },
+    {
+      "id": "PRESERVE-V104-LOOKOUT",
+      "domain": "Preserve Hunt",
+      "title": "Quatrième secteur de Vharuun : Crête des Balises",
+      "source": "PRESERVE-EXPANSION-80 ; docs/v66-game-reserve-delivery.md ; docs/v98-preserve-hunt-interceptions.md ; extension originale V104 déclarée",
+      "implementation": [
+        "app/game/systems/gameReserveV66.ts",
+        "app/game/systems/gameReserveLookoutV104.ts",
+        "app/game/GameReserveV66.tsx",
+        "app/game/gameReserveV66Rendering.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "V2_FOUR_SECTORS",
+      "runtime": "Expédition V2 explicitement choisie, 6 400 unités et quatre secteurs ; l’ancienne V1 conserve ses 4 800 unités, trois secteurs et son identité de sauvegarde.",
+      "tests": "PASS : 51 cas Preserve, dont 11 nouveaux V104 et 40 historiques ; zéro cas ignoré.",
+      "browser": "PASS_CIBLE_PRODUCTION : 25 contrôles, 10 captures réellement ouvertes ; parcours du quatrième secteur, relevé et extraction conservés.",
+      "proof": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/v104-preserve-hunt-validation.json",
+          "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615"
+        }
+      ],
+      "remaining": "4/80 secteurs et 8/100 combattants seulement ; animations, missions et autres terrains restent ouverts. La Crête est une création originale du projet."
+    },
+    {
+      "id": "CLANS-V103-GENERATOR",
+      "domain": "Guerre de clans",
+      "title": "Formats et matières du générateur planétaire V103",
+      "source": "PR 11 ; recettes V102/V103 versionnées et trente mondes historiques conservés",
+      "implementation": [
+        "app/game/systems/clanWarPlanetGeneratorV103.ts",
+        "app/game/systems/clanWarPlanetGeographyV103.ts",
+        "app/game/PlanetGeneratorV103.tsx",
+        "app/game/systems/clanWarPlanetsV96.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "PROCEDURAL_V103_FORMATS",
+      "runtime": "Les formats compatibles sont comptés depuis les recettes valides, séparément des trente mondes historiques. Aucune infinité de planètes ni nouveau territoire naval n’est déclarée.",
+      "tests": "PASS : 31 cas ciblés générateur/domaine/intégration et contrôles GitHub de la PR11 tête6827c8ce avant fusion18aba1b9 ; recoupement avec les groupes historiques conservé.",
+      "browser": "PASS_CIBLE : recettes Next de développement V102/V103 35/36 contrôles et matières9 ; contrôle clans natif9 groupes. La CI de la PR11 est verte ; aucune nouvelle recette Clans production V104 déclarée.",
+      "proof": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/planet-generator-v103/review-fixes-20261022.json",
+          "sha256": "c761b12695319d1a1abc08170c5c520ee82349b8d4f626fc3316f45ea3f7230d"
+        }
+      ],
+      "remaining": "Six ouvrages historiques restent ouverts. Hydrologie géométrique, sans simulation de débit ; GPU mobiles physiques et canon 1:1 non certifiés."
+    },
+    {
+      "id": "ENFORCERS-V613-CUMULATIVE",
+      "domain": "Production des variantes",
+      "title": "Enforcers 08–09 et galerie cumulative V6.11–V6.13",
+      "source": "PR 10 ; master cumulatif de 5 120 identifiants et manifestes natifs V6.11–V6.13",
+      "implementation": [
+        "app/game/data/enforcerProductionV611.json",
+        "app/game/data/enforcerProductionV612.json",
+        "app/game/data/enforcerProductionV613.json",
+        "app/game/systems/recentSpriteLibraryV85.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "STATIC_POSES_ONLY",
+      "runtime": "Les fichiers PNG et leur raccord au catalogue sont contrôlés séparément des poses, animations, placements et preuves de génération.",
+      "tests": "PASS : 16 tests production et 1 référence historique déclarés par V6.13 ; typecheck/lint/diff PASS, PR10 fusionnée d71e995a.",
+      "browser": "PASS_CIBLE_HISTORIQUE : galerie V6.13 cumulative108 images chargées,114 liens locaux contrôlés,390px mobile et zéro erreur ; octets des108 PNG revérifiés par le collecteur V104.",
+      "proof": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/suivi-production/v613/validation.json",
+          "sha256": "1e8438a93cea6244668e7297b519cd8d2742fa943693436b8f3eac160cba085f"
+        }
+      ],
+      "remaining": "108 poses cumulatives ne signifient pas 108 personnages animés ou placés. Les reçus finaux V6.13 manquants restent signalés par leur manifeste."
+    },
+    {
+      "id": "ENFORCERS-10-REMAINING",
+      "domain": "Production des variantes",
+      "title": "Dix-huit Enforcers 10 encore sans PNG accepté",
+      "source": "docs/suivi-production/v613/data/current-master.json.gz ; variante 10 des dix-huit groupes",
+      "implementation": [],
+      "status": "OUVERT",
+      "validationScope": "PRODUCTION_PENDING",
+      "runtime": "Chaque identité et ligne source est exportée depuis le master cumulatif ; aucun prompt planifié ne vaut image produite.",
+      "tests": "A_VALIDER",
+      "browser": "A_VALIDER",
+      "proof": [],
+      "remaining": "Produire et inspecter les dix-huit PNG natifs indépendants conformément aux fiches, puis vérifier leur intégration."
+    }
+  ],
+  "validations": [
+    {
+      "id": "PIT-V104-NORMALS-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Dix-huit normales BODY sourcées et recette de simulation/replay version12 explicite ; compatibilité historique version11.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_PIT_NORMALS_QA_OUTPUT=outputs/qa-v104/pit-normals-production node scripts/qa-pit-normals-v104.mjs",
+      "evidence": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/v104-pit-normals-validation.json",
+          "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d"
+        }
+      ],
+      "limit": "Portée, puissance, stuns, pushback et combos hérités. Personnages complets, spéciaux, projections, entités, finishers et autres apparences restent ouverts."
+    },
+    {
+      "id": "HOMEWORLD-V104-CARTOGRAPHY-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Une scène V6 et son option B physiquement incarnée, repères connus, marche, trace bornée, interruptions et reprise.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_CARTOGRAPHY_QA_OUTPUT=outputs/qa-v104/homeworld-cartography-production node scripts/qa-homeworld-cartography-v104.mjs",
+      "evidence": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/homeworld-cartography-v104-validation.json",
+          "sha256": "c5c07508c03aab6092737f650f90ab2cbacca62c770af619337d0be45cc876de"
+        }
+      ],
+      "limit": "Option A du point haut ouverte ; aucune révélation de zone inconnue, récompense de campagne ou certification du corpus complet."
+    },
+    {
+      "id": "PRESERVE-V104-LOOKOUT-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "V2 explicite à quatre secteurs et 6 400 unités ; V1 historique à trois secteurs et 4 800 unités préservée.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_PRESERVE_V104_OUTPUT=outputs/qa-v104/preserve-production node scripts/qa-preserve-lookout-v104.mjs",
+      "evidence": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/v104-preserve-hunt-validation.json",
+          "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615"
+        }
+      ],
+      "limit": "4/80 secteurs, 8/100 combattants ; terrain original déclaré, sans nouveau PNG de combattant ni récompense de rang/inventaire inventée."
+    },
+    {
+      "id": "CLANS-V103-GENERATOR-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Trente mondes historiques, vingt-sept formats V103 compatibles, cache et parcours de fronts sauvegardés ; validation ciblée de la PR11 fusionnée.",
+      "command": "node scripts/qa-planet-regional-materials-v102.mjs ; node scripts/qa-planet-generator-v102.mjs ; node scripts/qa-planet-generator-v103.mjs ; recette native clans sous Xvfb.",
+      "evidence": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/planet-generator-v103/review-fixes-20261022.json",
+          "sha256": "c761b12695319d1a1abc08170c5c520ee82349b8d4f626fc3316f45ea3f7230d"
+        }
+      ],
+      "limit": "Recettes visuelles locales de développement et GPU logiciel ; six ouvrages ouverts, hydrologie géométrique sans simulation de débit et GPU mobiles physiques non certifiés."
+    },
+    {
+      "id": "ENFORCERS-V613-CUMULATIVE-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Trente-six nouvelles poses statiques V6.13 et108 poses cumulatives V6.11–V6.13 ; réconciliation main explicitement attestée sur la cohorte36.",
+      "command": "Commandes de production/runtime, galerie et classeur V6.13 consignées dans son rapport ; collecte V104 des trois manifestes et108 PNG réels.",
+      "evidence": [
+        {
+          "path": "docs/v104-validation-summary.json",
+          "sha256": "eb596f93b1d9e484190b96c8c69bac44c85a8fcfbdf21c2ef88182f074100059"
+        },
+        {
+          "path": "docs/suivi-production/v613/validation.json",
+          "sha256": "1e8438a93cea6244668e7297b519cd8d2742fa943693436b8f3eac160cba085f"
+        }
+      ],
+      "limit": "Aucune nouvelle animation ou placement ni fidélité canonique1:1 certifiée. Vingt-et-un reçus finaux manquants,36 traces V6.10 sans PNG et18 variantes10 encore ouvertes."
+    }
+  ],
+  "limits": [
+    "Les 27 feuilles V100, dont les 15 feuilles historiques V99, conservent leurs parties worksheet, tables, chaînes partagées, formules et caches octet par octet. Seules quatre métadonnées d’assemblage sont étendues.",
+    "Les statuts de livraison sont des déclarations de portée explicite. La présence d’un fichier de test ou d’une preuve ne fait jamais exécuter le test et ne crée aucun PASS.",
+    "Les dix-huit normales V104 sont une recette de simulation explicite ; personnages complets, spéciaux, entités et variantes ne sont pas clos.",
+    "L’option B du cartographe reste distincte de l’option A non incarnée et de la couverture globale de la Bible V6.",
+    "La Preserve V1 reste historique. La V2 est un choix de terrain distinct, pas une réinterprétation silencieuse d’anciennes coordonnées.",
+    "Les poses Enforcers, fichiers disponibles, raccords galerie, placements en scène, animations et fidélité canonique sont des états distincts.",
+    "Les originaux privés V3/V6/V54 restent absents. Leurs extractions et empreintes conservées ne recréent aucun original privé.",
+    "Les vérifications ZIP/XML et caches de formules n’exécutent ni application Excel native ni moteur de calcul Excel."
+  ]
+}

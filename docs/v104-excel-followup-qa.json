@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "result": "PASS_STRUCTURE",
+  "scope": "Contrôles exécutés : SHA des sources/images, cellules source, formats runtime, ZIP/XML, préservation des 27 feuilles et caches de formules. Aucun test de jeu ou navigateur n’est exécuté par le générateur.",
+  "workbook": "docs/YAUTJA_V104_SUIVI.xlsx",
+  "sha256": "24b12215808e90fbe3141b2893bf4e96d0561842ebff685d50a3b8020073ab41",
+  "bytes": 2410920,
+  "inputFingerprintsVerified": 231,
+  "assetsVerified": 140,
+  "facts": {
+    "normalMoves": 18,
+    "normalOrientations": 36,
+    "nativeNormalPhases": 108,
+    "historicalBodyStudies": 52,
+    "historicalBodyOrientations": 104,
+    "cartographyImplementedOptions": 1,
+    "cartographyOpenOptions": 1,
+    "preserveHistoricalSectors": 3,
+    "preserveSectors": 4,
+    "preserveSectorTarget": 80,
+    "preserveFighters": 8,
+    "preserveFighterTarget": 100,
+    "historicalPlanets": 30,
+    "proceduralFormatsV103": 27,
+    "enforcerNativeV613": 36,
+    "enforcerNativeCumulative": 108,
+    "enforcerVariant10Missing": 18,
+    "variantMasterIdentities": 5120,
+    "openPitDossiers": 6,
+    "openWarStructures": 6
+  },
+  "delivery": {
+    "characters": "OUVERT",
+    "completeKits": "OUVERT",
+    "entities": "OUVERT",
+    "variantAnimations": "OUVERT",
+    "canonicalFidelity": "NON_CERTIFIE",
+    "scope": "18 normales opt-in, option B du cartographe, quatrième secteur V2, générateur V103 et poses natives : périmètres distincts."
+  },
+  "sheetNames": [
+    "LotV62",
+    "CombattantsV54",
+    "Resteclasseur",
+    "LotV63",
+    "StagesV54",
+    "SyntheseV99",
+    "ChantiersV99",
+    "SourcesV99",
+    "PlanetesV99",
+    "OuvragesV6",
+    "PitOuvertV99",
+    "StagesOuvertsV99",
+    "ValidationsV99",
+    "EntreesV99",
+    "JournalV99",
+    "SyntheseV100",
+    "ChantiersV100",
+    "AnimationsV100",
+    "OrientationsV100",
+    "ContactsV100",
+    "PlanetesV100",
+    "OuvragesV100",
+    "PitOuvertV100",
+    "SourcesV100",
+    "ValidationsV100",
+    "EntreesV100",
+    "JournalV100",
+    "SyntheseV104",
+    "ChantiersV104",
+    "NormalesV104",
+    "CartographieV104",
+    "PreserveV104",
+    "PlanetesV104",
+    "VariantesV104",
+    "ManquantsV104",
+    "SourcesV104",
+    "ValidationsV104",
+    "EntreesV104",
+    "JournalV104"
+  ],
+  "originalSheetValuesFormulasTablesPreserved": true,
+  "originalStylePrefixPreserved": true,
+  "originalZipPartsByteIdentical": 40,
+  "xmlPartsParsed": 56,
+  "formulas": [
+    {
+      "cell": "B5",
+      "formula": "COUNTA('NormalesV104'!B5:B22)",
+      "cached": 18
+    },
+    {
+      "cell": "B13",
+      "formula": "COUNTIF('CartographieV104'!A5:A6,\"B\")",
+      "cached": 1
+    },
+    {
+      "cell": "B14",
+      "formula": "COUNTIF('CartographieV104'!B5:B6,\"OUVERT\")",
+      "cached": 1
+    },
+    {
+      "cell": "B17",
+      "formula": "COUNTIF('PlanetesV104'!A5:A61,\"HISTORIQUE\")",
+      "cached": 30
+    },
+    {
+      "cell": "B18",
+      "formula": "COUNTIF('PlanetesV104'!A5:A61,\"FORMAT_PROC_V103\")",
+      "cached": 27
+    },
+    {
+      "cell": "B19",
+      "formula": "COUNTIF('VariantesV104'!G5:G130,\"PNG_DISPONIBLE\")",
+      "cached": 108
+    },
+    {
+      "cell": "B20",
+      "formula": "COUNTIF('VariantesV104'!G5:G130,\"MANQUANT_PNG\")",
+      "cached": 18
+    },
+    {
+      "cell": "B29",
+      "formula": "COUNTIF('ChantiersV104'!E5:E10,\"EN_COURS\")",
+      "cached": 0
+    },
+    {
+      "cell": "B30",
+      "formula": "COUNTIF('ChantiersV104'!E5:E10,\"A_VALIDER\")",
+      "cached": 0
+    },
+    {
+      "cell": "B31",
+      "formula": "COUNTIF('ChantiersV104'!E5:E10,\"OUVERT\")",
+      "cached": 1
+    },
+    {
+      "cell": "B32",
+      "formula": "COUNTIF('ChantiersV104'!E5:E10,\"LIVRE_PARTIEL\")",
+      "cached": 0
+    },
+    {
+      "cell": "B33",
+      "formula": "COUNTIF('ChantiersV104'!E5:E10,\"VALIDE_CIBLE\")",
+      "cached": 5
+    }
+  ],
+  "activeSheet": "SyntheseV104",
+  "originalSheetsPreserved": 27,
+  "nativeExcelApplicationVerified": false,
+  "nativeExcelCalculationEngineExecuted": false
+}
