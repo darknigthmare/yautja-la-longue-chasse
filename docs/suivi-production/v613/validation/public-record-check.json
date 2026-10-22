@@ -1,0 +1,23 @@
+{
+  "verifiedAtUtc": "2026-10-22T10:00:36.914081+00:00",
+  "passed": true,
+  "scope": "Only the new public V613 plan and checkpoint payloads; existing published historical artifacts are unchanged.",
+  "checks": [
+    "No absolute workspace/native image paths",
+    "No private Drive identifiers or transfer URLs",
+    "No authentication token or signature parameters"
+  ],
+  "files": [
+    {
+      "repoPath": "docs/suivi-production/v613/references/production-plan-v613.json",
+      "bytes": 503271,
+      "sha256": "d0c8f48033044df722f742e5767e18fef7dc0ef2a6a2b90d53df8a18eccdfdad"
+    },
+    {
+      "repoPath": "docs/suivi-production/v613/recovery/native-checkpoint.json",
+      "bytes": 516,
+      "sha256": "caaa22b867a96f3af7d15a72a4052d325e68a0fab8279e499b3e202accaebe32"
+    }
+  ],
+  "violations": []
+}

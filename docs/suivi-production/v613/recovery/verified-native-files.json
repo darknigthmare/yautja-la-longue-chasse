@@ -1,0 +1,661 @@
+{
+  "schemaVersion": "yautja-v613-recovered-native-files-1",
+  "verifiedAtUtc": "2026-10-22T14:33:15.491Z",
+  "recoveryCommit": "fe58028cb1afe0a9bbbd555f476b05e4afd85773",
+  "checkpointPath": "docs/suivi-production/v613/recovery/native-checkpoint.json",
+  "historicalCheckpointSha256": "be12a3a49b0ed199a0d66887d6774d163828a4df6f9ad729d0b435fd6ee25f6d",
+  "nativePngFiles": 36,
+  "matchingFinalReceiptsRecovered": 15,
+  "finalReceiptsNotRecovered": 21,
+  "regeneratedDuringRecovery": false,
+  "assets": [
+    {
+      "id": "super-predators--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/super-predators/enforcers-comics-08.png",
+      "sha256": "a0c8ae1f4bea5e7bb4b56369e95c4be5e2a27f33dff8b1fea995ad3c028fa73e",
+      "bytes": 2229121,
+      "gitBlobSha": "b19f55bf93b70a5da700f4641b4f3211285939e7",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1032786,
+      "contentBoundsAlpha20": [
+        177,
+        32,
+        915,
+        1488
+      ]
+    },
+    {
+      "id": "super-predators--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/super-predators/enforcers-comics-09.png",
+      "sha256": "8d3595066db427753acf4affd5a87e024a743a38690c9895c46947b90292977c",
+      "bytes": 2307900,
+      "gitBlobSha": "b2b08ea336f1dc282691a9a95d0025f511161a7d",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1006637,
+      "contentBoundsAlpha20": [
+        163,
+        32,
+        912,
+        1522
+      ]
+    },
+    {
+      "id": "feral--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/feral/enforcers-comics-08.png",
+      "sha256": "761a236047960a5ea0360a21f062265145cdac1c542c721548d07a39eaebb3e6",
+      "bytes": 2147055,
+      "gitBlobSha": "5beceef6875d3b291ba02ea40d4635f4d8436f44",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1053912,
+      "contentBoundsAlpha20": [
+        217,
+        20,
+        881,
+        1516
+      ]
+    },
+    {
+      "id": "feral--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/feral/enforcers-comics-09.png",
+      "sha256": "ffb3bd05e15c454a721cbab6b33ed02b46f3e71ec9e6d362de399f7dffacbb8c",
+      "bytes": 2266058,
+      "gitBlobSha": "70348e55b6d68344ce1399b7d9873a6b6203495f",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1015856,
+      "contentBoundsAlpha20": [
+        190,
+        3,
+        920,
+        1504
+      ]
+    },
+    {
+      "id": "augmentes-assassin--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-08.png",
+      "sha256": "43e6a6b00bd64c6efdd7046c291a0f9d6156bb33bf172ed9b92379381ec686fc",
+      "bytes": 2368896,
+      "gitBlobSha": "301c5ae8062c2908957546ab23107f878deb1f11",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 959599,
+      "contentBoundsAlpha20": [
+        120,
+        6,
+        943,
+        1529
+      ]
+    },
+    {
+      "id": "augmentes-assassin--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-09.png",
+      "sha256": "e849500eed6fd461b53df9ac6ba3edf2c1c510a1a562fc514400fadf9023cfd8",
+      "bytes": 2627627,
+      "gitBlobSha": "a9fe0bbb60424eae9b85106c165e3b5d04f7689c",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 856026,
+      "contentBoundsAlpha20": [
+        78,
+        9,
+        976,
+        1528
+      ]
+    },
+    {
+      "id": "spiked-tail--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-08.png",
+      "sha256": "69abba043ed1746ef92e64a4db0579d72719ca4cad2d62543405e1322fe61b3e",
+      "bytes": 2443004,
+      "gitBlobSha": "07da211903baddab30235fe837227834e33ed12f",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 968581,
+      "contentBoundsAlpha20": [
+        99,
+        9,
+        944,
+        1517
+      ]
+    },
+    {
+      "id": "spiked-tail--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-09.png",
+      "sha256": "d0759796b5d2afa158ea20a274e2eb2c61f6fd00a88ffe3e56d851452dd10a88",
+      "bytes": 2610473,
+      "gitBlobSha": "563c43ee9e5b2e60f4c9bf882ddbbde050bea561",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 900911,
+      "contentBoundsAlpha20": [
+        58,
+        18,
+        998,
+        1520
+      ]
+    },
+    {
+      "id": "hornhead--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/hornhead/enforcers-comics-08.png",
+      "sha256": "989d9f09d3ab45af6729e15080913fc812fd85c0acf4753a0cbf43ea02ada432",
+      "bytes": 2366839,
+      "gitBlobSha": "5c415ba61dbf96f775ab8cb6da4b72ba496c0834",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 997464,
+      "contentBoundsAlpha20": [
+        146,
+        25,
+        929,
+        1515
+      ]
+    },
+    {
+      "id": "hornhead--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/hornhead/enforcers-comics-09.png",
+      "sha256": "07e78a15e23233f5d4a42b3f78b3a6bea8077037dd3288312ea6cee1ab145dd2",
+      "bytes": 2570084,
+      "gitBlobSha": "3a583587a67cffa9e2192cfb3e26f64db0235872",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 917494,
+      "contentBoundsAlpha20": [
+        68,
+        33,
+        976,
+        1526
+      ]
+    },
+    {
+      "id": "saar-keth--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-08.png",
+      "sha256": "fa178ec7bacd4438be0e336a7f9c8499bb3babd53979880ba4b3256637c6304f",
+      "bytes": 2209167,
+      "gitBlobSha": "84deb78b42a3d085ca8a7f2c787ddbf95a293371",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1046575,
+      "contentBoundsAlpha20": [
+        200,
+        15,
+        896,
+        1496
+      ]
+    },
+    {
+      "id": "saar-keth--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-09.png",
+      "sha256": "2fc449e952db8eacf7a34b707ad5020dbcc75667ddc77e3ccfcb1c639e923206",
+      "bytes": 2377001,
+      "gitBlobSha": "3ea34e7b4f3f2632605d2b4bf0b11e53f775ba41",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1005284,
+      "contentBoundsAlpha20": [
+        116,
+        62,
+        919,
+        1489
+      ]
+    },
+    {
+      "id": "ul-khar--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-08.png",
+      "sha256": "9b5f0c1d273d2a02ed43be4b0b5c96b572f6e56f9aaa0b54b00b17be287ddfca",
+      "bytes": 2455245,
+      "gitBlobSha": "c4a6b1781166bf602a0989382b60935429a6ce35",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 917018,
+      "contentBoundsAlpha20": [
+        76,
+        75,
+        993,
+        1460
+      ]
+    },
+    {
+      "id": "ul-khar--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-09.png",
+      "sha256": "1e4baa4533d80540416149bc8d35af74ab92c03da58df185af83174bd77a545d",
+      "bytes": 2606760,
+      "gitBlobSha": "c25b43cb29718ef6d7c2643a8799f1aa59da5dbe",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 857445,
+      "contentBoundsAlpha20": [
+        94,
+        76,
+        953,
+        1458
+      ]
+    },
+    {
+      "id": "sha-rhess--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-08.png",
+      "sha256": "0619c3fe88bfb4fffcaf09fb9509fcbd9a5db1172409b3efd692dcd95d52374e",
+      "bytes": 1726947,
+      "gitBlobSha": "89fce2f877c021e7797bcab4131a41c0d85c9470",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1251195,
+      "contentBoundsAlpha20": [
+        245,
+        224,
+        815,
+        1312
+      ]
+    },
+    {
+      "id": "sha-rhess--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-09.png",
+      "sha256": "c2e0ce9ff66ad111c48666c848daeca8320531670e8cfe3e72b86b462e9136f4",
+      "bytes": 2100297,
+      "gitBlobSha": "e170900d9462e31068644a793b17419c9139e0ad",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1087381,
+      "contentBoundsAlpha20": [
+        178,
+        103,
+        876,
+        1450
+      ]
+    },
+    {
+      "id": "kaal-or--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-08.png",
+      "sha256": "6ebbe944199aa85d8a582b935bcd93d741d5b2f89c3bb24b75aa4957e566b56c",
+      "bytes": 2520464,
+      "gitBlobSha": "255ab799b957d3f044d03d98d8a0981656b51788",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 884345,
+      "contentBoundsAlpha20": [
+        104,
+        82,
+        927,
+        1447
+      ]
+    },
+    {
+      "id": "kaal-or--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-09.png",
+      "sha256": "84b4497f1ce61948d5a521eee8345b35dee484f5389c4ed414c48445104964eb",
+      "bytes": 2397058,
+      "gitBlobSha": "f33bf7cff18e4f897723bd59bbd20a23ee8d4360",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 939616,
+      "contentBoundsAlpha20": [
+        149,
+        160,
+        927,
+        1435
+      ]
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-08.png",
+      "sha256": "e2720dbabbf9d298926ce4c04165ef156f2bf45f17e5dc7d9efa2128c7d8d724",
+      "bytes": 1997681,
+      "gitBlobSha": "2a684839370d7a83731468f65e59e22a8e5b0b7c",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1107344,
+      "contentBoundsAlpha20": [
+        188,
+        61,
+        886,
+        1483
+      ]
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-09.png",
+      "sha256": "e705eed7f47db19587979662189e0b40c9b2a0cfd54ffbe260dd94423233526b",
+      "bytes": 1986948,
+      "gitBlobSha": "cda0b38b8cb822b64e33a261a7251305d78f9832",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1129124,
+      "contentBoundsAlpha20": [
+        236,
+        66,
+        871,
+        1459
+      ]
+    },
+    {
+      "id": "city-hunter--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-08.png",
+      "sha256": "8b5a32ec77bd114f7556f469a7cc99a0147523a217d90c26a0be7d923fbf0e8f",
+      "bytes": 1707470,
+      "gitBlobSha": "79d521f66c43bb307b83d661d499b903b26d645d",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1238660,
+      "contentBoundsAlpha20": [
+        256,
+        158,
+        821,
+        1336
+      ]
+    },
+    {
+      "id": "city-hunter--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-09.png",
+      "sha256": "ceb9d116c24e6ff466dae9a99f998c8c7357d8b18a5110bdbb58e91d82e38a9d",
+      "bytes": 2119856,
+      "gitBlobSha": "79b1e26e2e2712ad78a932dffd9215e1d47e058b",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1082115,
+      "contentBoundsAlpha20": [
+        195,
+        80,
+        875,
+        1456
+      ]
+    },
+    {
+      "id": "pilot-kok--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-08.png",
+      "sha256": "64a9e46cb3282809a038348fc51f42fbd39c5c97c24975a4bc7c53ae46e53340",
+      "bytes": 1782639,
+      "gitBlobSha": "513346b9ade778946da5eecea2e6ca7591d134fb",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1229749,
+      "contentBoundsAlpha20": [
+        227,
+        194,
+        811,
+        1340
+      ]
+    },
+    {
+      "id": "pilot-kok--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-09.png",
+      "sha256": "9e6f04b2688886189f236d0d233e12638d914193d0745eface2877155e63d9cc",
+      "bytes": 2339187,
+      "gitBlobSha": "6fea169d1fdf145785785193513ccbc213faf616",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 951312,
+      "contentBoundsAlpha20": [
+        121,
+        12,
+        929,
+        1498
+      ]
+    },
+    {
+      "id": "oni-kok--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-08.png",
+      "sha256": "2762445ffdf51f87ec334df48f30d025cfa5b41a9b2d7db6f41ca42227b5c312",
+      "bytes": 2129522,
+      "gitBlobSha": "3625854379d1292bd964c03844ac68e9d6b52d85",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1061761,
+      "contentBoundsAlpha20": [
+        189,
+        53,
+        910,
+        1489
+      ]
+    },
+    {
+      "id": "oni-kok--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-09.png",
+      "sha256": "fe46f1356617ec287773b6d8a815dd2e19d09c7b325c8b98107da9e07da05dd1",
+      "bytes": 2075780,
+      "gitBlobSha": "cd15b50b119fbd30134c82ec05b8f41375390747",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1096119,
+      "contentBoundsAlpha20": [
+        189,
+        109,
+        869,
+        1455
+      ]
+    },
+    {
+      "id": "grendel-kok--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-08.png",
+      "sha256": "98b24734e16d0ebe6edb58f344cae7192f3bb2a0ae10d742ca46a0377301e842",
+      "bytes": 2337752,
+      "gitBlobSha": "20240744504a919f931d4a5dcae4b941c7331f07",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 944880,
+      "contentBoundsAlpha20": [
+        99,
+        25,
+        936,
+        1461
+      ]
+    },
+    {
+      "id": "grendel-kok--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-09.png",
+      "sha256": "ea88c2062df52b06db63cfc62f86dadfe0154d2124fb523f443b3f7d5d77b935",
+      "bytes": 2501171,
+      "gitBlobSha": "2024bb8190c453b0b2fdc88492a2c44dc40cbc69",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 915613,
+      "contentBoundsAlpha20": [
+        120,
+        95,
+        938,
+        1473
+      ]
+    },
+    {
+      "id": "alpha--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/alpha/enforcers-comics-08.png",
+      "sha256": "f5322142951b86a8cb5fdfe1701b769925d40c97d692086bd684db2d2ba78f52",
+      "bytes": 2170593,
+      "gitBlobSha": "c13f04e61d5e3dc18ab535082d58740f16855cf8",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1073267,
+      "contentBoundsAlpha20": [
+        191,
+        26,
+        906,
+        1438
+      ]
+    },
+    {
+      "id": "alpha--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/alpha/enforcers-comics-09.png",
+      "sha256": "40a8f3b415b9de34ed07ac6a2bfd512b144c852829a942dbcbb27252f2889e43",
+      "bytes": 2541047,
+      "gitBlobSha": "80f827685df23d768d07d82d4958eedc715ec6e8",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 949421,
+      "contentBoundsAlpha20": [
+        149,
+        10,
+        916,
+        1524
+      ]
+    },
+    {
+      "id": "bionic--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/bionic/enforcers-comics-08.png",
+      "sha256": "86adc6526cbd4ee51592d4d7abcb6b1e3c21dfb2a9d223fe7612150167bf3805",
+      "bytes": 2231396,
+      "gitBlobSha": "6afec4f52cbf85acb23f2d35e29bd792de06f71d",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1042776,
+      "contentBoundsAlpha20": [
+        194,
+        12,
+        877,
+        1513
+      ]
+    },
+    {
+      "id": "bionic--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/bionic/enforcers-comics-09.png",
+      "sha256": "42c8874595ea5bac2126d436b085a968b2da3b95a1d8f4a2efc6d8fa7ef2c77a",
+      "bytes": 2079087,
+      "gitBlobSha": "68d54abccd837f571139a7d1012b8a95b0d7933e",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": true,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1097490,
+      "contentBoundsAlpha20": [
+        213,
+        108,
+        871,
+        1445
+      ]
+    },
+    {
+      "id": "four-armed--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/four-armed/enforcers-comics-08.png",
+      "sha256": "f5b57aba4470ba90b8f8c5f12dfd3076095971593469ff1113ab25f139259dc7",
+      "bytes": 2451924,
+      "gitBlobSha": "622233c5aa9be32841c3159bba2e49564d945f09",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 918506,
+      "contentBoundsAlpha20": [
+        36,
+        14,
+        1010,
+        1482
+      ]
+    },
+    {
+      "id": "four-armed--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/four-armed/enforcers-comics-09.png",
+      "sha256": "9f682b253215dab9cc6ff0da7f31fe5a1c3be45c3d4c190044511b4b75493bce",
+      "bytes": 2511670,
+      "gitBlobSha": "a85a254f3456be7ed9609b84e6e0f1f91a8e3f2c",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 919066,
+      "contentBoundsAlpha20": [
+        44,
+        64,
+        1001,
+        1501
+      ]
+    },
+    {
+      "id": "human-accepted--enforcers-comics-08",
+      "repoPngPath": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-08.png",
+      "sha256": "032f5e30b5a955b06b3e57fe1e05c1ef236d1c01c632eea7d7a8aa11d258214f",
+      "bytes": 2111662,
+      "gitBlobSha": "2b648e7a6b58f328527b619e42b7e4cefd01ed90",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1063152,
+      "contentBoundsAlpha20": [
+        217,
+        6,
+        836,
+        1494
+      ]
+    },
+    {
+      "id": "human-accepted--enforcers-comics-09",
+      "repoPngPath": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-09.png",
+      "sha256": "c1cc00cedb372dd738537225fcb13e15ee5938325a47e02adea8b9ee08b7eb6c",
+      "bytes": 2032335,
+      "gitBlobSha": "83b364f14d6d11417c909bd641abdf3ee18aa8c0",
+      "recoveredByteIdenticalToGitBlob": true,
+      "receiptMatchesFinal": false,
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroPixels": 1091311,
+      "contentBoundsAlpha20": [
+        211,
+        91,
+        816,
+        1480
+      ]
+    }
+  ]
+}
