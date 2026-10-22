@@ -11,6 +11,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { chromium } from "playwright-core";
 import sharp from "sharp";
+import { writeFileAtomic } from "./lib/atomic-write.mjs";
 
 const root = process.cwd();
 const base = (process.env.YAUTJA_PLANET_MATERIAL_URL || "http://127.0.0.1:3101").replace(/\/$/, "");
@@ -34,8 +35,13 @@ async function fingerprint() {
 }
 const sourceFingerprint = await fingerprint();
 let previous;
-try { previous = JSON.parse(await fs.readFile(manifestPath, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
-if (resume && previous) assert.equal(previous.sourceFingerprint, sourceFingerprint, "Source files changed; rerun without --resume to regenerate affected exports.");
+if (resume) {
+  try { previous = JSON.parse(await fs.readFile(manifestPath, "utf8")); } catch (error) {
+    if (error instanceof SyntaxError) throw new Error(`Cannot resume from invalid ${manifestPath}; rerun without --resume to regenerate exports.`, { cause: error });
+    if (error.code !== "ENOENT") throw error;
+  }
+  if (previous) assert.equal(previous.sourceFingerprint, sourceFingerprint, "Source files changed; rerun without --resume to regenerate affected exports.");
+}
 
 await fs.mkdir(output, { recursive: true });
 const manifest = {
@@ -53,7 +59,7 @@ const manifest = {
   ],
   complete: false, planets: resume && previous ? previous.planets : [],
 };
-const save = async () => fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+const save = async () => writeFileAtomic(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 const executablePath = process.env.CHROMIUM_EXECUTABLE_PATH || chromium.executablePath();
 const browser = await chromium.launch({ executablePath, headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage", "--enable-unsafe-swiftshader", "--use-gl=angle", "--use-angle=swiftshader"] });
 const errors = [];
@@ -87,7 +93,8 @@ try {
       if (resume && prior) {
         try { const bytes = await fs.readFile(destination); if (hash(bytes) === prior.sha256) png = bytes; } catch (error) { if (error.code !== "ENOENT") throw error; }
       }
-      if (!png) {
+      const needsWrite = !png;
+      if (needsWrite) {
         // The renderer owns one shared GPU canvas, so export every layer sequentially.
         const data = await page.evaluate(options => window.__YAUTJA_PLANET_MATERIALS_V101__.export(options), {
           planetId: recipe.id, projection: spec.projection, layer: spec.layer, width: spec.width, height: spec.height,
@@ -95,7 +102,6 @@ try {
         });
         assert.ok(data.startsWith("data:image/png;base64,"), `${recipe.id}/${spec.file}: not PNG`);
         png = Buffer.from(data.slice(data.indexOf(",") + 1), "base64");
-        await fs.writeFile(destination, png);
       }
       const metadata = await sharp(png).metadata();
       const { data: pixels, info } = await sharp(png).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -110,6 +116,7 @@ try {
         assert.ok(alphaMin < 255, `${recipe.id}/${spec.file}: alpha layer is unexpectedly opaque`);
       }
       if (spec.layer === "land" || spec.projection === "globe") assert.ok(transparentPixels > 100, `${recipe.id}/${spec.file}: missing transparent area`);
+      if (needsWrite) await writeFileAtomic(destination, png);
       planet.files.push({ path: relativePath, layer: spec.layer, projection: spec.projection, width: spec.width, height: spec.height,
         sha256: hash(png), bytes: png.length, channels: metadata.channels, alpha: { min: alphaMin, max: alphaMax, transparentPixels, translucentPixels, opaquePixels } });
     }
@@ -127,9 +134,10 @@ try {
   manifest.totalFiles = manifest.planets.reduce((sum, planet) => sum + planet.files.length, 0);
   manifest.totalBytes = manifest.planets.reduce((sum, planet) => sum + planet.files.reduce((n, file) => n + file.bytes, 0), 0);
   manifest.validation = { browserErrors: errors, uniqueAlbedoLandMaskAndGlobe: true, alphaAndDimensionsVerified: true, sourceFingerprintStable: true };
-  await save();
   const escape = value => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
   const cards = manifest.planets.map(planet => `<article><a href="planets/${planet.id}/globe.png"><img src="planets/${planet.id}/globe.png" width="256" height="256" loading="lazy" alt="Globe de ${escape(planet.name)}"></a><h2>${escape(planet.name)}</h2><p>${escape(planet.id)}</p><nav aria-label="Calques de ${escape(planet.name)}">${planet.files.map(file => `<a href="${file.path}" download>${escape(file.path.split("/").pop())}</a>`).join("")}</nav></article>`).join("\n");
-  await fs.writeFile(path.join(output, "index.html"), `<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yautja — 30 planètes modulaires</title><style>body{margin:0;background:#081219;color:#dae2d9;font:15px/1.6 system-ui,sans-serif}header,main,footer{max-width:1380px;margin:auto;padding:30px}h1{font-size:clamp(28px,4vw,48px);line-height:1.15;color:#e3d7b7}header p{max-width:900px}a{color:#b3d9d4}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}article{background:#11232b;border:1px solid #34505c;border-radius:12px;padding:18px}article img{width:100%;height:auto;background:radial-gradient(#1a303d,#071017);border-radius:8px}article h2{margin:12px 0 0;color:#eadbbe}article p{margin:2px 0 14px;color:#9dafb5;font-size:12px}nav{display:flex;flex-wrap:wrap;gap:6px}nav a{border:1px solid #45616a;border-radius:4px;padding:4px 7px;font:11px/1.4 monospace;text-decoration:none}nav a:hover{background:#26444c}footer{color:#9eb2b8;font-size:13px}</style><header><p>YAUTJA / GUERRES DES CLANS / V101</p><h1>Les trente mondes<br>Textures et atmosphères modulaires</h1><p>Chaque planète conserve ses continents issus du jeu. Téléchargez séparément les terres, le fond de surface, les nuages, les brumes, le masque et les effets. Les cartes font 1 024 × 512 ; les globes et leurs effets font 512 × 512.</p><p><a href="exports.json">Manifeste des exports</a> · <a href="manifest.json">Sources et recettes</a></p></header><main>${cards}</main><footer>Créations du projet. Diffusion atmosphérique artistique. Les cartes planes et les calques de globe ont des projections différentes : reprojeter avant assemblage. Les PNG natifs de matière restent disponibles dans materials/.</footer></html>\n`);
+  await writeFileAtomic(path.join(output, "index.html"), `<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yautja — 30 planètes modulaires</title><style>body{margin:0;background:#081219;color:#dae2d9;font:15px/1.6 system-ui,sans-serif}header,main,footer{max-width:1380px;margin:auto;padding:30px}h1{font-size:clamp(28px,4vw,48px);line-height:1.15;color:#e3d7b7}header p{max-width:900px}a{color:#b3d9d4}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}article{background:#11232b;border:1px solid #34505c;border-radius:12px;padding:18px}article img{width:100%;height:auto;background:radial-gradient(#1a303d,#071017);border-radius:8px}article h2{margin:12px 0 0;color:#eadbbe}article p{margin:2px 0 14px;color:#9dafb5;font-size:12px}nav{display:flex;flex-wrap:wrap;gap:6px}nav a{border:1px solid #45616a;border-radius:4px;padding:4px 7px;font:11px/1.4 monospace;text-decoration:none}nav a:hover{background:#26444c}footer{color:#9eb2b8;font-size:13px}</style><header><p>YAUTJA / GUERRES DES CLANS / V101</p><h1>Les trente mondes<br>Textures et atmosphères modulaires</h1><p>Chaque planète conserve ses continents issus du jeu. Téléchargez séparément les terres, le fond de surface, les nuages, les brumes, le masque et les effets. Les cartes font 1 024 × 512 ; les globes et leurs effets font 512 × 512.</p><p><a href="exports.json">Manifeste des exports</a> · <a href="manifest.json">Sources et recettes</a></p></header><main>${cards}</main><footer>Créations du projet. Diffusion atmosphérique artistique. Les cartes planes et les calques de globe ont des projections différentes : reprojeter avant assemblage. Les PNG natifs de matière restent disponibles dans materials/.</footer></html>\n`);
+  // Mark the checkpoint complete only after its gallery has been published.
+  await save();
   console.log(JSON.stringify({ complete: manifest.complete, planets: manifest.planets.length, files: manifest.totalFiles, bytes: manifest.totalBytes, manifest: manifestPath }));
 } finally { await browser.close(); }

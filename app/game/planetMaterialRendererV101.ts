@@ -1,7 +1,7 @@
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
-  unwrapPlanetPolygonV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
+  unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
 } from "./systems/planetMaterialV101";
 
 export interface PlanetMaterialRenderRequestV101 extends PlanetMaterialViewV101 {
@@ -107,7 +107,15 @@ void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }
  * solver. Triplanar sampling uses world coordinates and mirrored periodic UVs:
  * the native rasters need neither seamless edges nor a special pole texture. */
 const fragmentSource = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
+const float ALPHA_EPSILON = .00001;
+#else
+precision mediump float;
+// ESSL 1.00 only guarantees nonzero mediump values down to 2^-14.
+// Transparent samples must never turn alpha unpremultiplication into 0 / 0.
+const float ALPHA_EPSILON = .0001;
+#endif
 uniform vec2 uResolution, uLogical, uCenter, uCamera, uMap;
 uniform float uRadius, uProjection, uLayer, uSeed;
 uniform vec3 uBase, uDeep, uAccent, uDetail, uLandColor, uSky;
@@ -123,16 +131,23 @@ vec4 triplanar(sampler2D image, vec3 world, float scale, float offset) {
   vec4 premultiplied = texture2D(image, mirrorUV(p.yz)) * weight.x
        + texture2D(image, mirrorUV(p.xz)) * weight.y
        + texture2D(image, mirrorUV(p.xy)) * weight.z;
-  return vec4(premultiplied.rgb / max(premultiplied.a, .00001), premultiplied.a);
+  return vec4(premultiplied.rgb / max(premultiplied.a, ALPHA_EPSILON), premultiplied.a);
 }
 vec4 over(vec4 under, vec4 top) {
   float alpha = top.a + under.a * (1.0 - top.a);
-  return vec4((top.rgb * top.a + under.rgb * under.a * (1.0 - top.a)) / max(alpha, .00001), alpha);
+  return vec4((top.rgb * top.a + under.rgb * under.a * (1.0 - top.a)) / max(alpha, ALPHA_EPSILON), alpha);
 }
 float brightness(vec3 color) { return dot(color, vec3(.2126, .7152, .0722)); }
 
 void main() {
+#ifdef GL_FRAGMENT_PRECISION_HIGH
   vec2 pixel = vec2(gl_FragCoord.x, uResolution.y - gl_FragCoord.y) * uLogical / uResolution;
+#else
+  // Normalize before multiplying: a 4096px export otherwise creates
+  // intermediates near 2^24, beyond mediump's guaranteed +/-2^14 range.
+  // Keep the established highp evaluation above for the published exports.
+  vec2 pixel = (vec2(gl_FragCoord.x, uResolution.y - gl_FragCoord.y) / uResolution) * uLogical;
+#endif
   vec2 sphere = (pixel - uCenter) / uRadius;
   sphere.y *= -1.0;
   float radius2 = dot(sphere, sphere);
@@ -310,11 +325,12 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   if (!state) return false;
   const layer = request.layer ?? "composite", settings = request.settings ?? DEFAULT_PLANET_MATERIAL_SETTINGS_V101;
   const recipe = planetMaterialRecipeV101(request.planet), size = request.textureSize ?? 512;
-  const materials = ["composite", "albedo", "surface", "land", "emissive"].includes(layer);
+  const useLand = ["composite", "albedo", "land"].includes(layer);
+  const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
   const useAurora = recipe.auroraOpacity > 0 && (layer === "aurora" || layer === "composite" && settings.weather);
-  const urls = [materials ? recipe.land : null, materials ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
+  const urls = [useLand ? recipe.land : null, useSurface ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
   try {
     const images = await Promise.all(urls.map(url => url ? loadMaterial(url, size) : null));
     if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
@@ -331,7 +347,9 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.uniform2f(uniform(state, "uResolution"), width, height);
     gl.uniform2f(uniform(state, "uLogical"), request.width, request.height);
     gl.uniform2f(uniform(state, "uCenter"), request.centerX, request.centerY);
-    gl.uniform2f(uniform(state, "uCamera"), request.longitude * Math.PI / 180, request.latitude * Math.PI / 180);
+    // Export callers may rotate through multiple turns. Keep trig arguments
+    // bounded even on GPUs whose fragment shader only supports mediump.
+    gl.uniform2f(uniform(state, "uCamera"), wrapPlanetLongitudeV101(request.longitude) * Math.PI / 180, request.latitude * Math.PI / 180);
     gl.uniform2f(uniform(state, "uMap"), request.mapTop, request.mapHeight);
     gl.uniform1f(uniform(state, "uRadius"), request.radius);
     gl.uniform1f(uniform(state, "uProjection"), request.projection === "map" ? 1 : 0);

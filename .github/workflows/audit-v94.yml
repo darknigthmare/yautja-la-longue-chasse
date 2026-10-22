@@ -254,6 +254,7 @@ jobs:
           tests/clan-war-planets-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs
           tests/clan-war-coastlines-v97.test.mjs
           tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs
+          tests/planet-material-v101.test.mjs tests/planet-material-export-v101.test.mjs
       - name: Exercise V100 native animation studies, local conversations and evacuation with V98-V99 regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: npm run test:worlds:v100

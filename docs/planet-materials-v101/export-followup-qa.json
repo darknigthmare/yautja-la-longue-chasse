@@ -1,0 +1,130 @@
+{
+  "result": "PASS",
+  "checkedAt": "2026-10-22T10:02:02.932Z",
+  "planet": "korthas",
+  "testedCommands": [
+    "node scripts/export-planet-materials-v101.mjs --planet=korthas",
+    "node scripts/export-planet-materials-v101.mjs --resume --planet=korthas"
+  ],
+  "sourceFingerprint": "6047e970051b3cc693049d3fd1bc71892cdb2f6b0035aa16de233caf9093a926",
+  "completedPlanets": 1,
+  "totalPlanets": 30,
+  "files": 9,
+  "bytes": 4717197,
+  "complete": false,
+  "expectedPartialExport": true,
+  "dimensions": [
+    {
+      "path": "planets/korthas/albedo.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/land.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/surface.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/clouds.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/weather.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/mask.png",
+      "width": 1024,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/globe.png",
+      "width": 512,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/atmosphere.png",
+      "width": 512,
+      "height": 512,
+      "channels": 4
+    },
+    {
+      "path": "planets/korthas/night.png",
+      "width": 512,
+      "height": 512,
+      "channels": 4
+    }
+  ],
+  "alphaAndDimensionsVerified": true,
+  "browserErrors": [],
+  "galleryValid": true,
+  "pngHashesPreservedOnResume": true,
+  "pngModificationTimesPreservedOnResume": true,
+  "temporaryFilesRemaining": 0,
+  "environment": {
+    "YAUTJA_PLANET_MATERIAL_EXPORT_OUTPUT": "outputs/qa-planet-export-followup-v101",
+    "YAUTJA_PLANET_MATERIAL_URL": "http://127.0.0.1:3101",
+    "browser": "Chromium / software WebGL"
+  },
+  "verifiedFiles": [
+    {
+      "path": "planets/korthas/albedo.png",
+      "sha256": "620a760825daed19efdd7952244cc0ed3cf82ffb8c78e2dc737aef71ab4cdd90",
+      "mtimeNs": "1792663214841651562"
+    },
+    {
+      "path": "planets/korthas/land.png",
+      "sha256": "c73bfefe7b941f54a41eec6d96b4a03ab33f55745473ab965600bbf0acffb896",
+      "mtimeNs": "1792663215025655427"
+    },
+    {
+      "path": "planets/korthas/surface.png",
+      "sha256": "fa00d985d1ca35ac31e291239dbc2748ba9e7ea946e33c03c439108f85a4e7ce",
+      "mtimeNs": "1792663215269660551"
+    },
+    {
+      "path": "planets/korthas/clouds.png",
+      "sha256": "7438879f4a18014dc1c9559fb1cabd86f2a229724ca65ebaa588b2ebd5266e9f",
+      "mtimeNs": "1792663215729670213"
+    },
+    {
+      "path": "planets/korthas/weather.png",
+      "sha256": "ce3b3dee0e1c68e79b9ad0db357e079f9b06e1d52b41f3b0e33bbaf02b051153",
+      "mtimeNs": "1792663216085677692"
+    },
+    {
+      "path": "planets/korthas/mask.png",
+      "sha256": "9dd4548d7ec0b143aa44eb5d7c7710136d2455a4679e26400fe35dd32c03911b",
+      "mtimeNs": "1792663216145678951"
+    },
+    {
+      "path": "planets/korthas/globe.png",
+      "sha256": "14122561f9b5fc630dbe26b4bcc6c6ed5a7f99ad56aea21c7be8b392a8b3a62f",
+      "mtimeNs": "1792663216257681304"
+    },
+    {
+      "path": "planets/korthas/atmosphere.png",
+      "sha256": "5e63881d29b55829778b3aa97c49e0beee602341483c425a7663c3f655a92623",
+      "mtimeNs": "1792663216313682481"
+    },
+    {
+      "path": "planets/korthas/night.png",
+      "sha256": "126585b0b79f0251ed109b52af6c60678c2fc0a9c2be6c2baf9b78023ad810b6",
+      "mtimeNs": "1792663216373683740"
+    }
+  ]
+}

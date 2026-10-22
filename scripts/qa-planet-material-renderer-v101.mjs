@@ -106,6 +106,122 @@ try {
   assert.equal(await page.evaluate(() => window.__planetQaGl.length), 1, "restoration reuses the original context");
   report.checks.push({ name: "context loss and restoration", restored: true });
   await page.screenshot({ path: path.join(output, "renderer-desktop.png"), fullPage: false });
+
+  // Exercise the production fallback branch in a separate browser context.
+  // SwiftShader may evaluate mediump with greater precision than required by
+  // ESSL; this proves compilation and rendered behavior, not physical GPU parity.
+  const mediumContext = await browser.newContext({ viewport: { width: 1400, height: 1000 }, reducedMotion: "reduce" });
+  try {
+    await mediumContext.addInitScript(() => {
+      const original = WebGLRenderingContext.prototype.shaderSource;
+      window.__planetQaPrecision = { fragments: [], gl: null };
+      WebGLRenderingContext.prototype.shaderSource = function(shader, source) {
+        if (this.getShaderParameter(shader, this.SHADER_TYPE) === this.FRAGMENT_SHADER && source.includes("uniform vec2 uResolution, uLogical")) {
+          const branches = source.match(/#ifdef GL_FRAGMENT_PRECISION_HIGH/g) ?? [];
+          const precision = this.getShaderPrecisionFormat(this.FRAGMENT_SHADER, this.MEDIUM_FLOAT);
+          window.__planetQaPrecision.fragments.push({ forcedBranches: branches.length, rangeMin: precision.rangeMin, rangeMax: precision.rangeMax, precision: precision.precision });
+          window.__planetQaPrecision.gl = this;
+          // Do not redefine the reserved GL_ macro. Select the same #else
+          // branches that a WebGL1 implementation without highp compiles.
+          source = source.replaceAll("#ifdef GL_FRAGMENT_PRECISION_HIGH", "#if 0");
+        }
+        return original.call(this, shader, source);
+      };
+    });
+    const mediumPage = await mediumContext.newPage();
+    mediumPage.on("pageerror", error => report.errors.push(`mediump: ${error.message}`));
+    await mediumPage.goto(`${base}/planet-materials-v101`, { waitUntil: "domcontentloaded", timeout: 120000 });
+    await mediumPage.locator('[data-preview-projection] canvas[data-render-status="ready"]').waitFor({ timeout: 90000 });
+    const exportMedium = async options => decode(await mediumPage.evaluate(options => window.__YAUTJA_PLANET_MATERIALS_V101__.export(options), {
+      planetId: "korthas", projection: "globe", layer: "albedo", width: 512, height: 512, textureSize: 512, ...options,
+    }));
+    const mediumPlain = await exportMedium({});
+    const mediumComposite = await exportMedium({ layer: "composite" });
+    const mediumDisabled = await exportMedium({ layer: "composite", settings: { atmosphere: false, clouds: false, weather: false, lighting: false } });
+    assert.equal(mediumPlain.data[3], 0);
+    assert.ok(mediumPlain.data[(256 * 512 + 256) * 4 + 3] > 250);
+    let mediumChanged = 0, mediumMaximumDifference = 0;
+    for (let i = 0; i < mediumPlain.data.length; i += 4) {
+      if (Math.abs(mediumPlain.data[i] - mediumComposite.data[i]) + Math.abs(mediumPlain.data[i + 1] - mediumComposite.data[i + 1]) + Math.abs(mediumPlain.data[i + 2] - mediumComposite.data[i + 2]) > 8) mediumChanged++;
+      for (let channel = 0; channel < 4; channel++) mediumMaximumDifference = Math.max(mediumMaximumDifference, Math.abs(mediumPlain.data[i + channel] - mediumDisabled.data[i + channel]));
+    }
+    assert.ok(mediumChanged > 10000, "mediump composite effects change actual pixels");
+    assert.ok(mediumMaximumDifference <= 1, "mediump modules remain reversible");
+    const effects = [];
+    for (const [layer, planetId] of [["clouds", "korthas"], ["weather", "korthas"], ["atmosphere", "korthas"], ["night", "korthas"], ["aurora", "nivalis"], ["emissive", "pyroclaste"]]) {
+      const image = await exportMedium({ layer, planetId });
+      let visible = 0, transparent = 0;
+      for (let i = 3; i < image.data.length; i += 4) { if (image.data[i] > 0) visible++; if (image.data[i] === 0) transparent++; }
+      assert.ok(visible > 500 && transparent > 500, `mediump ${layer} remains an independent transparent effect`);
+      effects.push({ layer, visible, transparent });
+    }
+    // The maximum supported width and a narrow map cover the problematic
+    // coordinate products without generating a 4096-square test artifact.
+    const wideMap = await exportMedium({ projection: "map", width: 4096, height: 64 });
+    let opaque = 0, colored = 0;
+    for (let i = 0; i < wideMap.data.length; i += 4) {
+      if (wideMap.data[i + 3] === 255) opaque++;
+      if (wideMap.data[i] + wideMap.data[i + 1] + wideMap.data[i + 2] > 24) colored++;
+    }
+    assert.equal(opaque, 4096 * 64, "mediump maximum-width map is fully covered");
+    assert.ok(colored > opaque * .99, "mediump map remains colored across its full width");
+    const rotated = await exportMedium({ longitude: 35 });
+    const manyTurns = await exportMedium({ longitude: 360000035 });
+    assert.deepEqual(manyTurns.data, rotated.data, "large finite longitude is reduced before entering the mediump shader");
+    const precision = await mediumPage.evaluate(() => ({
+      fragments: window.__planetQaPrecision.fragments,
+      glError: window.__planetQaPrecision.gl.getError(),
+      status: window.__YAUTJA_PLANET_MATERIALS_V101__.status(),
+    }));
+    assert.ok(precision.fragments.length > 0 && precision.fragments.every(fragment => fragment.forcedBranches > 0), "the production shader must expose and compile a mediump fallback branch");
+    assert.equal(precision.glError, 0);
+    assert.ok(precision.status.available);
+    report.checks.push({ name: "forced mediump shader compilation and rendered modules", ...precision, changedPixels: mediumChanged, maximumDisabledDifference: mediumMaximumDifference, effects, maximumWidthMap: { width: 4096, height: 64, opaque, colored }, longitudeWrap: true, limitation: "Software WebGL exercises the mediump branch; hardware may use different rounding and texture precision." });
+    await mediumPage.screenshot({ path: path.join(output, "renderer-mediump.png"), fullPage: false });
+  } finally { await mediumContext.close(); }
+
+  // Real 404 responses must affect only layers that consume the missing source.
+  // Fresh contexts prevent a previously cached source from hiding a dependency.
+  for (const missing of ["land", "surface"]) {
+    const isolatedContext = await browser.newContext({ viewport: { width: 1400, height: 1000 }, reducedMotion: "reduce" });
+    const blocked = [];
+    try {
+      await isolatedContext.route(`**/game/planets/v101/runtime/${missing}-*.webp`, async route => {
+        blocked.push(route.request().url());
+        await route.fulfill({ status: 404, body: "Missing texture for renderer regression", contentType: "text/plain" });
+      });
+      const isolatedPage = await isolatedContext.newPage();
+      isolatedPage.on("pageerror", error => report.errors.push(`missing ${missing}: ${error.message}`));
+      await isolatedPage.goto(`${base}/planet-materials-v101`, { waitUntil: "domcontentloaded", timeout: 120000 });
+      await isolatedPage.waitForFunction(() => Boolean(window.__YAUTJA_PLANET_MATERIALS_V101__));
+      await isolatedPage.locator('[data-preview-projection] canvas[data-render-status="fallback"]').waitFor({ timeout: 90000 });
+      assert.ok(blocked.length > 0, "the missing source must actually return 404");
+      const successful = [];
+      for (const layer of missing === "land" ? ["surface", "emissive"] : ["land"]) {
+        const attempts = blocked.length;
+        const image = await decode(await isolatedPage.evaluate(options => window.__YAUTJA_PLANET_MATERIALS_V101__.export(options), {
+          planetId: "pyroclaste", projection: "globe", layer, width: 256, height: 256, textureSize: 512,
+        }));
+        let visible = 0;
+        for (let i = 3; i < image.data.length; i += 4) if (image.data[i] > 0) visible++;
+        assert.ok(visible > 500, `${layer} draws without the unrelated ${missing} texture`);
+        assert.equal(blocked.length, attempts, `${layer} must not request the unrelated ${missing} source`);
+        successful.push({ layer, visible });
+      }
+      const failed = [];
+      for (const layer of [missing, "albedo", "composite"]) {
+        const result = await isolatedPage.evaluate(async options => {
+          try { await window.__YAUTJA_PLANET_MATERIALS_V101__.export(options); return { ok: true }; }
+          catch (error) { return { ok: false, message: String(error) }; }
+        }, { planetId: "pyroclaste", projection: "globe", layer, width: 256, height: 256, textureSize: 512 });
+        assert.equal(result.ok, false, `${layer} must report its required ${missing} source failure`);
+        assert.ok(result.message.includes("Texture unavailable:"));
+        failed.push(layer);
+      }
+      assert.equal(await isolatedPage.evaluate(() => window.__YAUTJA_PLANET_MATERIALS_V101__.status().available), true, "a missing image does not disable the GPU renderer");
+      report.checks.push({ name: `independent layers with unavailable ${missing} source`, successful, failed, blockedRequests: blocked.length });
+    } finally { await isolatedContext.close(); }
+  }
   assert.deepEqual(report.errors, []);
   report.ok = true;
 } catch (error) { report.ok = false; report.failure = error.stack; process.exitCode = 1; }
