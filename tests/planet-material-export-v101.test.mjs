@@ -103,8 +103,11 @@ async function exportFixture(t) {
   const sourceFiles = [
     "app/game/planetMaterialRendererV101.ts", "app/game/systems/planetMaterialV101.ts",
     "app/game/planetRegionalMaterialsV102.ts",
+    "app/game/planetDetailMaterialsV103.ts", "app/game/systems/planetMaterialProfilesV103.ts",
     "app/game/systems/clanWarPlanetsV96.ts", "app/game/systems/clanWarCoastlinesV97.ts",
     "app/game/systems/clanWarPlanetGeneratorV102.ts", "app/game/systems/clanWarPlanetGeographyV102.ts",
+    "app/game/systems/clanWarProceduralV103.ts", "app/game/systems/clanWarPlanetGeneratorV103.ts",
+    "app/game/systems/clanWarPlanetGeographyV103.ts",
     "app/planet-materials-v101/review.tsx",
   ];
   for (const file of sourceFiles) {

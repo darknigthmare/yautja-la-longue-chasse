@@ -160,6 +160,16 @@ function names(seed: number) {
   const endings = ["atha", "ion", "ek", "ora", "ys", "uun", "ara", "oth", "ir", "essa", "aal", "eth"];
   return `${beginnings[Math.floor(planetRandomV102(seed, 80) * beginnings.length)]}${endings[Math.floor(planetRandomV102(seed, 81) * endings.length)]}-${seed.toString(36).toUpperCase()}`;
 }
+/** Catalog labels must not generate or evict the geometry of saved fronts. */
+export function describeWarPlanetV102(id: string) {
+  const recipe = parseWarPlanetV102(id);
+  if (!recipe) return undefined;
+  const surface = generatedSurface(recipe);
+  return { id, name: names(recipe.seed), subtitle: `36 territoires · 6 régions · ${surface.name}`,
+    landBiome: recipe.landBiome, surface,
+    style: (["water", "ice", "sand"].includes(recipe.surface) && !["crystal", "fungal", "irradiated"].includes(recipe.landBiome) ? "classic" : "exotic") as WarPlanetV96["style"],
+    territoryCount: 36, regionCount: 6, version: 102 as const };
+}
 const regionKinds = ["Marches", "Dorsale", "Terrasses", "Caps", "Plateaux", "Vallées"];
 const regionEpithets = ["des Veilleurs", "du Levant", "des Échos", "de la Longue Veille", "des Ombres", "du Crépuscule", "des Brasiers", "des Balises", "des Refuges", "des Horizons", "des Roches", "des Brumes"];
 function deepFreeze<T>(value: T): T {

@@ -15,7 +15,8 @@ const archiveKey = id => `yautja.clan-war.v96.planet.${id}.free.v1`;
 const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const checks = [], errors = [], consoleErrors = [], contexts = [];
 const check = (name, condition) => { assert.ok(condition, name); checks.push(name); };
-const generator = page => page.getByTestId("planet-generator-v102").filter({ visible: true });
+// The legacy review keeps its V102 editor; the in-game picker now opens V103.
+const generator = page => page.locator('[data-testid="planet-generator-v102"], [data-testid="planet-generator-v103"]').filter({ visible: true });
 const preview = page => generator(page).getByTestId("clan-war-atlas-v95");
 const panel = page => page.locator('[data-clan-war-v85="free-profile"]');
 const selector = page => panel(page).getByTestId("war-planet-selector-v96");
@@ -42,10 +43,13 @@ async function newPage(viewport = { width: 1440, height: 1080 }) {
 async function visit(page) {
   await page.goto(`${baseUrl}/planet-generator-v102`, { waitUntil: "domcontentloaded", timeout: 90000 });
   await generator(page).waitFor();
+  const canvas = generator(page).locator("canvas").first();
+  await canvas.scrollIntoViewIfNeeded();
+  await canvas.locator('xpath=self::*[@data-render-status="ready" or @data-render-status="fallback"]').waitFor({ timeout: 90000 });
 }
 async function apply(page) {
   await generator(page).getByRole("button", { name: "Générer l’aperçu", exact: true }).press("Enter");
-  await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="planet-generator-v102"]')].find(element => !element.closest("[hidden]"))?.getAttribute("data-draft-modified") === "false");
+  await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="planet-generator-v102"], [data-testid="planet-generator-v103"]')].find(element => !element.closest("[hidden]"))?.getAttribute("data-draft-modified") === "false");
 }
 async function importCode(page, code) {
   await generator(page).getByRole("textbox", { name: "Importer un code de monde", exact: true }).fill(code);
@@ -170,13 +174,16 @@ try {
   check("next-world navigation uses the full dynamic catalogue and restores keyboard focus", await activePicker.evaluate(element => document.activeElement === element));
   await choose(page, worldA);
   await selector(page).getByRole("button", { name: "Générer un monde", exact: true }).press("Enter");
-  const embeddedGenerator = panel(page).getByTestId("planet-generator-v102");
+  const embeddedGenerator = panel(page).getByTestId("planet-generator-v103");
+  await embeddedGenerator.getByRole("button", { name: "Préparer une variante", exact: true }).press("Enter");
   await embeddedGenerator.getByRole("textbox", { name: "Graine du monde", exact: true }).fill("12345678");
   await embeddedGenerator.getByRole("button", { name: "Générer l’aperçu", exact: true }).press("Enter");
   check("the in-game generator previews a new world without switching the active war", await embeddedGenerator.getAttribute("data-preview-planet-code") !== worldA && await selector(page).getAttribute("data-active-planet") === worldA && await rawArchive(page, worldA) === rawA);
   await selector(page).getByRole("button", { name: "Fermer le générateur", exact: true }).press("Enter");
   await page.screenshot({ path: path.join(output, "desktop-generated-front.png"), fullPage: false });
   await page.reload({ waitUntil: "domcontentloaded" }); await generator(page).waitFor();
+  await generator(page).locator("canvas").first().scrollIntoViewIfNeeded();
+  await generator(page).locator('canvas[data-render-status="ready"], canvas[data-render-status="fallback"]').first().waitFor({ timeout: 90000 });
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-generator-v102"] [aria-label="Mondes retrouvés"]')?.querySelectorAll("button").length === 2);
   check("both discovered world shortcuts survive a full browser-page reload", await generator(page).getByRole("region", { name: "Mondes retrouvés", exact: true }).getByRole("button").count() === 2);
   await importCode(page, worldA);
@@ -234,6 +241,8 @@ try {
   const retainedCodes = [];
   for (let index = 0; index < 24; index++) {
     if (index > 0) await selector(retained).getByRole("button", { name: "Générer un monde", exact: true }).click();
+    const variant = generator(retained).getByRole("button", { name: "Préparer une variante", exact: true });
+    if (await variant.count()) await variant.click();
     await generator(retained).getByRole("textbox", { name: "Graine du monde", exact: true }).fill(String(900000 + index));
     await apply(retained); retainedCodes.push(await previewCode(retained));
     await generator(retained).getByRole("button", { name: "Ouvrir ce front", exact: true }).click();
@@ -251,10 +260,10 @@ try {
   await apply(retained);
   const blockedCode = await previewCode(retained);
   await generator(retained).getByRole("button", { name: "Ouvrir ce front", exact: true }).click();
-  await generator(retained).getByText("Ce front n’a pas été ouvert. Enregistrez les progrès des autres fronts avant d’en ouvrir un nouveau. Le code, la fiche et les textures de ce monde restent disponibles ici.", { exact: true }).waitFor();
+  await generator(retained).getByText(/^Ce front n’a pas été ouvert\. Enregistrez les progrès/).waitFor();
   check("the session cap keeps the unopenable preview, its code and the reason visible", await previewCode(retained) === blockedCode && await selector(retained).getAttribute("data-active-planet") === retainedCodes[23]);
   const retainedOptions = await selector(retained).getByRole("combobox", { name: "Planète active", exact: true }).locator("option").evaluateAll(items => items.map(item => item.value));
-  const shortcutIds = await retained.evaluate(key => JSON.parse(localStorage.getItem(key)).ids, catalogueKey);
+  const shortcutIds = await retained.evaluate(key => JSON.parse(localStorage.getItem(key)).ids, "yautja.clan-war.v103.generated-catalog");
   check("all unsaved fronts remain discoverable after the oldest shortcut leaves the bounded catalogue", retainedCodes.every(id => retainedOptions.includes(id)) && shortcutIds.length === 24 && !shortcutIds.includes(retainedCodes[0]));
   await choose(retained, retainedCodes[0]);
   check("reselecting an evicted shortcut resumes its actual unsaved progress", /Tour 02/.test((await selector(retained).innerText()).replace(/\s+/g, " ")) && await rawArchive(retained, retainedCodes[0]) === null);

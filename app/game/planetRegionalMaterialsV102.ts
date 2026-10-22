@@ -1,8 +1,10 @@
 import type { WarPlanetLandBiomeV96, WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { PLANET_MATERIAL_ROOT_V101, planetMaterialSourceV101, unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
+import { planetLandProfileV103, planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
+import { loadPlanetDetailedMaterialV103 } from "./planetDetailMaterialsV103";
 
-// A single six-cell atlas keeps the renderer within WebGL1's texture-unit
-// budget. It samples each biome in world space, independently of the camera.
+// A single atlas keeps the renderer within WebGL1's texture-unit budget.
+// V102 keeps its original six cells; V103 fits 3–12 into a bounded grid.
 const atlases = new Map<string, HTMLCanvasElement>();
 const pending = new Map<string, Promise<HTMLCanvasElement>>();
 const masks = new Map<string, HTMLCanvasElement>();
@@ -19,28 +21,44 @@ export function planetRegionalBiomesV102(planet: WarPlanetV96): WarPlanetLandBio
   return planet.regions.map(region => planet.procedural?.regions.find(item => item.regionId === region.id)?.biome ?? planet.landBiome);
 }
 
+export function planetRegionalAtlasKeyV102(planet: WarPlanetV96, tileSize: number, sourceSize: number) {
+  const recipe = planet.procedural?.recipe;
+  // Only bitmap selection is baked into a V103 atlas. Other visual controls
+  // are uniforms and geography lives in separate masks, so neither duplicates it.
+  return recipe?.version === 103
+    ? `v103:${planetRegionalBiomesV102(planet).join(",")}:${recipe.landVariant}:${sourceSize}:${tileSize}`
+    : `${planet.id}:${sourceSize}:${tileSize}`;
+}
+
 export async function loadPlanetRegionalAtlasV102(
   planet: WarPlanetV96,
   tileSize: number,
   sourceSize: number,
   load: (url: string, size: number) => Promise<HTMLCanvasElement>,
 ): Promise<HTMLCanvasElement> {
-  const key = `${planet.id}:${sourceSize}:${tileSize}`;
+  const key = planetRegionalAtlasKeyV102(planet, tileSize, sourceSize);
   const cached = atlases.get(key);
   if (cached) return remember(atlases, key, cached, PLANET_REGIONAL_ATLAS_LIMIT_V102);
   const loading = pending.get(key);
   if (loading) return loading;
   const task = (async () => {
-    if (planet.regions.length !== 6) throw new Error("Regional materials require the six-region planet schema");
+    const recipe = planet.procedural?.recipe;
+    const profile = recipe?.version === 103 ? planetLandProfileV103(recipe) : null;
+    const layout = profile ? planetRegionalLayoutV103(planet.regions.length, tileSize, Number.MAX_SAFE_INTEGER) : null;
+    if (layout && layout.tileSize !== tileSize) throw new RangeError("Regional material atlas exceeds its pixel budget");
+    if (!profile && planet.regions.length !== 6) throw new Error("Regional materials require the six-region planet schema");
+    const columns = layout?.columns ?? 4, rows = layout?.rows ?? 2;
+    const detail = profile?.detail ? sourceSize > 512 ? planetMaterialSourceV103(profile.detail) : profile.detail : null;
     const sources = await Promise.all(planetRegionalBiomesV102(planet).map(biome => {
       const runtime = `${PLANET_MATERIAL_ROOT_V101}land-${biome}.webp`;
-      return load(sourceSize > 512 ? planetMaterialSourceV101(runtime) : runtime, sourceSize);
+      const url = sourceSize > 512 ? planetMaterialSourceV101(runtime) : runtime;
+      return detail ? loadPlanetDetailedMaterialV103(url, detail, sourceSize, load) : load(url, sourceSize);
     }));
     const canvas = document.createElement("canvas");
-    canvas.width = tileSize * 4; canvas.height = tileSize * 2;
+    canvas.width = tileSize * columns; canvas.height = tileSize * rows;
     const context = canvas.getContext("2d");
     if (!context) throw new Error("Regional material atlas unavailable");
-    sources.forEach((source, index) => context.drawImage(source, index % 4 * tileSize, Math.floor(index / 4) * tileSize, tileSize, tileSize));
+    sources.forEach((source, index) => context.drawImage(source, index % columns * tileSize, Math.floor(index / columns) * tileSize, tileSize, tileSize));
     return remember(atlases, key, canvas, PLANET_REGIONAL_ATLAS_LIMIT_V102);
   })();
   pending.set(key, task);
@@ -95,5 +113,5 @@ export function createPlanetRegionMaskV102(planet: WarPlanetV96, width: number):
 }
 
 export function planetRegionalMaterialStatusV102() {
-  return { regionalAtlases: atlases.size, regionalMasks: masks.size, pendingRegionalAtlases: pending.size };
+  return { regionalAtlases: atlases.size, regionalAtlasPixels: [...atlases.values()].reduce((sum, canvas) => sum + canvas.width * canvas.height, 0), regionalMasks: masks.size, pendingRegionalAtlases: pending.size };
 }

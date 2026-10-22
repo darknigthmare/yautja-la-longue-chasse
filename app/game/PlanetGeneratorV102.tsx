@@ -62,7 +62,7 @@ interface PlanetGeneratorV102Props {
 /** A draft never changes the active front. Generating, remembering and opening
  * are separate user actions; the same world code always resolves the same map. */
 export default function PlanetGeneratorV102({ activePlanet, pending = false, onOpen }: PlanetGeneratorV102Props) {
-  const initialRecipe = activePlanet?.procedural?.recipe ?? DEFAULT_WAR_PLANET_RECIPE_V102;
+  const initialRecipe = activePlanet?.procedural?.recipe.version === 102 ? activePlanet.procedural.recipe : DEFAULT_WAR_PLANET_RECIPE_V102;
   const [draft, setDraft] = useState<WarPlanetRecipeV102>(() => ({ ...initialRecipe }));
   const [seedText, setSeedText] = useState(() => String(initialRecipe.seed));
   const [planet, setPlanet] = useState(() => worldForRecipe(initialRecipe));

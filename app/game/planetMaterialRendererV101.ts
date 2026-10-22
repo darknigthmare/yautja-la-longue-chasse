@@ -1,8 +1,10 @@
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
   createPlanetRegionMaskV102, loadPlanetRegionalAtlasV102, planetRegionalMaterialStatusV102,
-  PLANET_REGIONAL_ATLAS_LIMIT_V102,
+  PLANET_REGIONAL_ATLAS_LIMIT_V102, planetRegionalAtlasKeyV102,
 } from "./planetRegionalMaterialsV102";
+import { loadPlanetDetailedMaterialV103, planetDetailedMaterialKeyV103, planetDetailedMaterialStatusV103 } from "./planetDetailMaterialsV103";
+import { planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
@@ -98,6 +100,21 @@ export function createPlanetLandMaskV101(planet: WarPlanetV96, width = 1024): HT
       context.closePath(); context.fill();
     }
   }
+  const procedural = planet.procedural;
+  if (procedural?.recipe.version === 103 && "hydrology" in procedural) {
+    context.fillStyle = "#000";
+    for (const feature of procedural.hydrology.features) {
+      const points = unwrapPlanetPolygonV101(feature.points);
+      for (const offset of [-360, 0, 360]) {
+        context.beginPath();
+        points.forEach(([longitude, latitude], index) => {
+          const x = (longitude + offset + 180) / 360 * width, y = (90 - latitude) / 180 * canvas.height;
+          if (index === 0) context.moveTo(x, y); else context.lineTo(x, y);
+        });
+        context.closePath(); context.fill();
+      }
+    }
+  }
   maskCache.set(key, canvas); trim(maskCache, MASK_LIMIT);
   return canvas;
 }
@@ -125,6 +142,10 @@ uniform float uRadius, uProjection, uLayer, uSeed, uRegionalLand, uRegionalInset
 uniform vec3 uBase, uDeep, uAccent, uDetail, uLandColor, uSky, uWeatherColor;
 uniform vec4 uSettings, uEffects;
 uniform sampler2D uMask, uLand, uSurface, uClouds, uWeather, uAurora, uRegions;
+#ifdef PLANET_MATERIAL_V103
+uniform vec3 uRegionalGrid;
+uniform vec4 uMaterialScaleContrast, uLandPalette;
+#endif
 const float PI = 3.141592653589793;
 
 vec2 mirrorUV(vec2 uv) { return 1.0 - abs(mod(uv, 2.0) - 1.0); }
@@ -138,7 +159,11 @@ vec4 triplanar(sampler2D image, vec3 world, float scale, float offset) {
   return vec4(premultiplied.rgb / max(premultiplied.a, ALPHA_EPSILON), premultiplied.a);
 }
 vec4 regionalSample(vec2 uv, float region) {
+#ifdef PLANET_MATERIAL_V103
+  vec2 cell = vec2(mod(region, uRegionalGrid.x), floor(region / uRegionalGrid.x));
+#else
   vec2 cell = vec2(mod(region, 4.0), floor(region / 4.0));
+#endif
   // Clamp to the interior of this cell. Adjacent atlas cells are independent
   // biomes and must never bleed into the mirrored material's edge samples.
   // A half-texel margin alone can round onto a cell boundary when mediump
@@ -146,15 +171,29 @@ vec4 regionalSample(vec2 uv, float region) {
   #ifdef GL_FRAGMENT_PRECISION_HIGH
     float inset = uRegionalInset;
   #else
-    float inset = max(uRegionalInset, .004);
+    #ifdef PLANET_MATERIAL_V103
+      // Three atlas rows introduce a non-power-of-two division. One extra
+      // half-float ULP before it preserves a half-texel margin in every row.
+      float inset = max(uRegionalInset + .002, .004);
+    #else
+      float inset = max(uRegionalInset, .004);
+    #endif
   #endif
   vec2 local = clamp(mirrorUV(uv), vec2(inset), vec2(1.0 - inset));
+#ifdef PLANET_MATERIAL_V103
+  return texture2D(uLand, (cell + local) / uRegionalGrid.xy);
+#else
   return texture2D(uLand, (cell + local) / vec2(4.0, 2.0));
+#endif
 }
 vec4 regionalTriplanar(vec3 world, float region) {
   vec3 weight = pow(abs(world), vec3(4.0));
   weight /= max(.001, weight.x + weight.y + weight.z);
+#ifdef PLANET_MATERIAL_V103
+  vec3 p = world * (3.1 * uMaterialScaleContrast.x) + vec3(uSeed, uSeed * .71, uSeed * .37);
+#else
   vec3 p = world * 3.1 + vec3(uSeed, uSeed * .71, uSeed * .37);
+#endif
   return regionalSample(p.yz, region) * weight.x + regionalSample(p.xz, region) * weight.y + regionalSample(p.xy, region) * weight.z;
 }
 vec4 over(vec4 under, vec4 top) {
@@ -193,15 +232,26 @@ void main() {
   vec3 world = vec3(cos(lat) * cos(lon), sin(lat), cos(lat) * sin(lon));
   vec2 mapUV = vec2(fract(lon / (2.0 * PI) + .5), .5 - lat / PI);
   float land = texture2D(uMask, mapUV).r;
+#ifdef PLANET_MATERIAL_V103
+  float region = clamp(floor(texture2D(uRegions, mapUV).r * 255.0 + .5), 0.0, uRegionalGrid.z);
+  vec4 terrainTex = uRegionalLand > .5 ? regionalTriplanar(world, region) : triplanar(uLand, world, 3.1 * uMaterialScaleContrast.x, uSeed);
+  vec4 seaTex = triplanar(uSurface, world, 2.4 * uMaterialScaleContrast.y, uSeed + 4.0);
+  if (uMaterialScaleContrast.z != 1.0) terrainTex.rgb = clamp((terrainTex.rgb - .5) * uMaterialScaleContrast.z + .5, 0.0, 1.0);
+  if (uMaterialScaleContrast.w != 1.0) seaTex.rgb = clamp((seaTex.rgb - .5) * uMaterialScaleContrast.w + .5, 0.0, 1.0);
+#else
   float region = clamp(floor(texture2D(uRegions, mapUV).r * 255.0 + .5), 0.0, 5.0);
   vec4 terrainTex = uRegionalLand > .5 ? regionalTriplanar(world, region) : triplanar(uLand, world, 3.1, uSeed);
   vec4 seaTex = triplanar(uSurface, world, 2.4, uSeed + 4.0);
+#endif
   float seaValue = brightness(seaTex.rgb);
   vec3 sea = mix(uDeep, uBase, clamp(seaValue * 1.6, .0, 1.0));
   sea = mix(sea, uDetail, smoothstep(.6, .98, seaValue) * .36);
   float landValue = brightness(terrainTex.rgb);
   vec3 tint = uLandColor * (.43 + landValue * 1.25);
   vec3 terrain = uRegionalLand > .5 ? terrainTex.rgb : mix(terrainTex.rgb, tint, .4);
+#ifdef PLANET_MATERIAL_V103
+  if (uLandPalette.a > 0.0) terrain = mix(terrain, uLandPalette.rgb * (.43 + brightness(terrain) * 1.25), uLandPalette.a);
+#endif
   vec3 albedo = mix(sea, terrain, land);
 
   vec3 sun = normalize(vec3(.67101, .57358, -.46985));
@@ -257,6 +307,7 @@ interface SharedRenderer {
   program: WebGLProgram;
   uniforms: Map<string, WebGLUniformLocation | null>;
   textures: Map<string, WebGLTexture>;
+  programs: Map<number, { program: WebGLProgram; uniforms: Map<string, WebGLUniformLocation | null> }>;
 }
 let shared: SharedRenderer | null | undefined;
 let rendererError = "";
@@ -272,21 +323,38 @@ function shader(gl: WebGLRenderingContext, type: number, source: string) {
   return result;
 }
 
+function createProgram(gl: WebGLRenderingContext, version: 102 | 103) {
+  // Two small programs share one context and texture pool. Preprocessing keeps
+  // the published V101/V102 arithmetic intact when the V103 define is absent.
+  const vertex = shader(gl, gl.VERTEX_SHADER, vertexSource), fragment = shader(gl, gl.FRAGMENT_SHADER, (version === 103 ? "#define PLANET_MATERIAL_V103\n" : "") + fragmentSource);
+  const program = gl.createProgram();
+  if (!program) throw new Error("Planet program allocation failed");
+  gl.attachShader(program, vertex); gl.attachShader(program, fragment);
+  gl.bindAttribLocation(program, 0, "aPosition"); gl.linkProgram(program);
+  gl.deleteShader(vertex); gl.deleteShader(fragment);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program) || "Planet shader link failed");
+  return program;
+}
+
 function initializeRenderer(canvas: HTMLCanvasElement): SharedRenderer {
   const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: false, powerPreference: "low-power" });
   if (!gl) throw new Error("WebGL unavailable");
-  const vertex = shader(gl, gl.VERTEX_SHADER, vertexSource), fragment = shader(gl, gl.FRAGMENT_SHADER, fragmentSource);
-  const program = gl.createProgram();
-  if (!program) throw new Error("Planet program allocation failed");
-  gl.attachShader(program, vertex); gl.attachShader(program, fragment); gl.linkProgram(program);
-  gl.deleteShader(vertex); gl.deleteShader(fragment);
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program) || "Planet shader link failed");
+  const program = createProgram(gl, 102), uniforms = new Map<string, WebGLUniformLocation | null>();
   gl.useProgram(program);
   const buffer = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
   const position = gl.getAttribLocation(program, "aPosition");
   gl.enableVertexAttribArray(position); gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-  return { canvas, gl, program, uniforms: new Map(), textures: new Map() };
+  return { canvas, gl, program, uniforms, textures: new Map(), programs: new Map([[102, { program, uniforms }]]) };
+}
+
+function selectProgram(state: SharedRenderer, version: 102 | 103) {
+  let selected = state.programs.get(version);
+  if (!selected) {
+    selected = { program: createProgram(state.gl, version), uniforms: new Map() };
+    state.programs.set(version, selected);
+  }
+  state.program = selected.program; state.uniforms = selected.uniforms;
 }
 
 function renderer(): SharedRenderer | null {
@@ -351,6 +419,7 @@ function bindTexture(state: SharedRenderer, slot: number, name: string, key: str
  * The canvas dimensions choose output resolution; width/height choose the SVG
  * coordinate space. A false result keeps the existing accessible SVG fallback. */
 export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request: PlanetMaterialRenderRequestV101): Promise<boolean> {
+  if (request.signal?.aborted) return false;
   const state = renderer();
   if (!state) return false;
   const layer = request.layer ?? "composite", settings = request.settings ?? DEFAULT_PLANET_MATERIAL_SETTINGS_V101;
@@ -358,18 +427,27 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   const useLand = ["composite", "albedo", "land"].includes(layer);
   const regionalLand = useLand && recipe.mapping === "world-space-triplanar-regional";
   const regionalSourceSize = Math.min(size, 1024);
-  const regionalTileSize = 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, Number(state.gl.getParameter(state.gl.MAX_TEXTURE_SIZE)) / 4))));
-  const regionalKey = `regional-land:${request.planet.id}:${regionalSourceSize}:${regionalTileSize}`;
+  const maxTextureSize = Number(state.gl.getParameter(state.gl.MAX_TEXTURE_SIZE));
+  const regionalLayout = recipe.materials ? planetRegionalLayoutV103(request.planet.regions.length, regionalSourceSize, maxTextureSize) : null;
+  const regionalTileSize = regionalLayout?.tileSize ?? 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, maxTextureSize / 4))));
+  const regionalKey = `regional-land:${planetRegionalAtlasKeyV102(request.planet, regionalTileSize, regionalSourceSize)}`;
   const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
   const useAurora = recipe.auroraOpacity > 0 && (layer === "aurora" || layer === "composite" && settings.weather);
   const urls = [useLand && !regionalLand ? recipe.land : null, useSurface ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
+  const details = [recipe.materials?.land.detail, recipe.materials?.surface.detail].map(url => url && size > 512 ? planetMaterialSourceV103(url) : url);
+  // Composition canvases stay <=1024 even for a 4096px output. The native
+  // detail source is 1254px; output resolution does not multiply cache memory.
+  const imageSizes = urls.map((url, index) => url && details[index] ? Math.min(size, 1024) : size);
+  const imageKeys = urls.map((url, index) => index === 0 && regionalLand ? regionalKey : url
+    ? details[index] ? planetDetailedMaterialKeyV103(url, details[index]!, imageSizes[index]) : `${size}:${url}` : "empty");
   try {
     const images = await Promise.all(urls.map((url, index) => index === 0 && regionalLand
       ? loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
-      : url ? loadMaterial(url, size) : null));
+      : url ? details[index] ? loadPlanetDetailedMaterialV103(url, details[index]!, imageSizes[index], loadMaterial) : loadMaterial(url, size) : null));
     if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
+    selectProgram(state, recipe.materials ? 103 : 102);
     const { gl, canvas } = state;
     const max = Math.min(4096, Number(gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)));
     const width = Math.max(1, Math.min(max, Math.round(target.width))), height = Math.max(1, Math.min(max, Math.round(target.height)));
@@ -379,7 +457,7 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     const maskWidth = size > 512 ? 2048 : 1024;
     bindTexture(state, 0, "uMask", `mask:${request.planet.id}:${maskWidth}`, createPlanetLandMaskV101(request.planet, maskWidth));
-    ["uLand", "uSurface", "uClouds", "uWeather", "uAurora"].forEach((name, index) => bindTexture(state, index + 1, name, index === 0 && regionalLand ? regionalKey : urls[index] ? `${size}:${urls[index]}` : "empty", images[index]));
+    ["uLand", "uSurface", "uClouds", "uWeather", "uAurora"].forEach((name, index) => bindTexture(state, index + 1, name, imageKeys[index], images[index]));
     bindTexture(state, 6, "uRegions", regionalLand ? `regions:${request.planet.id}:${maskWidth}` : "empty",
       regionalLand ? createPlanetRegionMaskV102(request.planet, maskWidth) : null, true);
     gl.uniform2f(uniform(state, "uResolution"), width, height);
@@ -395,9 +473,15 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.uniform1f(uniform(state, "uSeed"), (recipe.seed % 1000) / 113);
     gl.uniform1f(uniform(state, "uRegionalLand"), Number(regionalLand));
     gl.uniform1f(uniform(state, "uRegionalInset"), .5 / regionalTileSize);
+    if (recipe.materials) {
+      gl.uniform3f(uniform(state, "uRegionalGrid"), regionalLayout!.columns, regionalLayout!.rows, request.planet.regions.length - 1);
+      gl.uniform4f(uniform(state, "uMaterialScaleContrast"), recipe.materials.land.scale, recipe.materials.surface.scale, recipe.materials.land.contrast, recipe.materials.surface.contrast);
+      gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials.land.palette ?? "#000000"), recipe.materials.land.palette ? .72 : 0);
+    }
     gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere) * recipe.atmosphereDensity, Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
     gl.uniform4f(uniform(state, "uEffects"), recipe.cloudOpacity, recipe.weatherOpacity, recipe.auroraOpacity, recipe.emission);
-    for (const [name, color] of Object.entries({ uBase: request.planet.surface.base, uDeep: request.planet.surface.deep, uAccent: request.planet.surface.accent, uDetail: request.planet.surface.detail, uLandColor: recipe.landColor, uSky: recipe.atmosphereColor, uWeatherColor: recipe.weatherColor })) gl.uniform3f(uniform(state, name), ...rgb(color));
+    const surfaceColors = recipe.materials?.surface.palette ?? request.planet.surface;
+    for (const [name, color] of Object.entries({ uBase: surfaceColors.base, uDeep: surfaceColors.deep, uAccent: surfaceColors.accent, uDetail: surfaceColors.detail, uLandColor: recipe.landColor, uSky: recipe.atmosphereColor, uWeatherColor: recipe.weatherColor })) gl.uniform3f(uniform(state, name), ...rgb(color));
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     const context = target.getContext("2d");
     if (!context) return false;
@@ -409,5 +493,5 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
 }
 
 export function planetMaterialRendererStatusV101() {
-  return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, ...planetRegionalMaterialStatusV102() };
+  return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, programs: shared?.programs.size ?? 0, ...planetRegionalMaterialStatusV102(), ...planetDetailedMaterialStatusV103() };
 }

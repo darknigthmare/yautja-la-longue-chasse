@@ -38,9 +38,14 @@
       "masks": 6,
       "gpuTextures": 22,
       "contexts": 1,
+      "programs": 1,
       "regionalAtlases": 3,
+      "regionalAtlasPixels": 6291456,
       "regionalMasks": 6,
       "pendingRegionalAtlases": 0,
+      "detailedMaterials": 0,
+      "detailedMaterialPixels": 0,
+      "pendingDetailedMaterials": 0,
       "actualContexts": 1
     },
     {
@@ -68,6 +73,5 @@
   "ok": true,
   "limitations": [
     "Software WebGL validates both precision branches; it does not certify every physical mobile GPU."
-  ],
-  "checkedAt": "2026-10-22"
+  ]
 }

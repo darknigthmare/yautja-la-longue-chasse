@@ -1,13 +1,13 @@
 "use client";
 
-import { useId, useMemo, useRef, useState } from "react";
+import { useId, useMemo, useRef, useState, type CSSProperties } from "react";
 import { WAR_PLANETS_V96, type WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { warAtlasGlobePathV95 } from "./systems/clanWarAtlasV95";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
-import PlanetGeneratorV102 from "./PlanetGeneratorV102";
-import { generatedWarPlanetV102, type GeneratedWarPlanetV102 } from "./systems/clanWarPlanetGeneratorV102";
+import PlanetGeneratorV103 from "./PlanetGeneratorV103";
+import { describeProceduralWarPlanetV103, type WarPlanetSummaryV103 } from "./systems/clanWarProceduralV103";
 import { WAR_BIOME_LABELS_V96, WAR_SURFACE_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
-import { useGeneratedWarCatalogV102 } from "./useGeneratedWarCatalogV102";
+import { useGeneratedWarCatalogV103 } from "./useGeneratedWarCatalogV103";
 import styles from "./ClanWarPlanetsV96.module.css";
 
 export const WAR_PLANET_SELECTION_KEY_V96 = "yautja.clan-war.v96.selected-planet";
@@ -58,12 +58,12 @@ export default function ClanWarPlanetsV96({ planet, turn, persisted, pending, re
   const [worldStyle, setWorldStyle] = useState("");
   const selectionRef = useRef<HTMLSelectElement>(null);
   const unique = `planet-browser-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
-  const catalogue = useGeneratedWarCatalogV102();
-  const catalogueWorlds = useMemo(() => catalogue.ids.map(generatedWarPlanetV102).filter((item): item is GeneratedWarPlanetV102 => Boolean(item)), [catalogue.ids]);
-  const retainedWorlds = useMemo(() => (retainedPlanetIds ?? []).filter(id => !catalogue.ids.includes(id)).map(generatedWarPlanetV102).filter((item): item is GeneratedWarPlanetV102 => Boolean(item)), [retainedPlanetIds, catalogue.ids]);
+  const catalogue = useGeneratedWarCatalogV103();
+  const catalogueWorlds = useMemo(() => catalogue.ids.map(describeProceduralWarPlanetV103).filter((item): item is WarPlanetSummaryV103 => Boolean(item)), [catalogue.ids]);
+  const retainedWorlds = useMemo(() => (retainedPlanetIds ?? []).filter(id => !catalogue.ids.includes(id)).map(describeProceduralWarPlanetV103).filter((item): item is WarPlanetSummaryV103 => Boolean(item)), [retainedPlanetIds, catalogue.ids]);
   const rememberedWorlds = [...catalogueWorlds, ...retainedWorlds];
   const discovered = planet.procedural && !rememberedWorlds.some(item => item.id === planet.id)
-    ? [planet as GeneratedWarPlanetV102, ...rememberedWorlds] : rememberedWorlds;
+    ? [{ id: planet.id, name: planet.name, subtitle: planet.subtitle, landBiome: planet.landBiome, surface: planet.surface, style: planet.style, territoryCount: planet.territories.length, regionCount: planet.regions.length, version: planet.procedural.recipe.version }, ...rememberedWorlds] : rememberedWorlds;
   const available = [...WAR_PLANETS_V96, ...discovered];
   const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
   const filtered = WAR_PLANETS_V96.filter(item => (!surface || item.surface.kind === surface) && (!worldStyle || item.style === worldStyle)
@@ -86,7 +86,7 @@ export default function ClanWarPlanetsV96({ planet, turn, persisted, pending, re
     <div className={styles.navigation}>
       <label htmlFor={`${unique}-selection`}>Planète active<select ref={selectionRef} id={`${unique}-selection`} value={planet.id} disabled={pending} onChange={event => select(event.target.value)}>
         <optgroup label="Les 30 mondes répertoriés">{WAR_PLANETS_V96.map(item => <option key={item.id} value={item.id}>{item.name} · {WAR_BIOME_LABELS_V96[item.landBiome]} · {WAR_SURFACE_LABELS_V96[item.surface.kind]}</option>)}</optgroup>
-        {discovered.length > 0 && <optgroup label="Mondes découverts">{discovered.map(item => <option key={item.id} value={item.id}>{item.name} · {WAR_BIOME_LABELS_V96[item.landBiome]} · {WAR_SURFACE_LABELS_V96[item.surface.kind]}</option>)}</optgroup>}
+        {discovered.length > 0 && <optgroup label="Mondes découverts">{discovered.map(item => <option key={item.id} value={item.id}>{item.name} · {item.territoryCount} territoires / {item.regionCount} régions · {WAR_SURFACE_LABELS_V96[item.surface.kind]}</option>)}</optgroup>}
       </select></label>
       <div className={styles.cycle}><button type="button" disabled={pending} aria-label="Planète précédente" onClick={() => select(available[(activeIndex + available.length - 1) % available.length].id)}>←</button><button type="button" disabled={pending} aria-label="Planète suivante" onClick={() => select(available[(activeIndex + 1) % available.length].id)}>→</button></div>
       <button type="button" className={styles.browseButton} aria-expanded={expanded} aria-controls={`${unique}-catalogue`} onClick={() => setExpanded(value => !value)}>{expanded ? "Fermer le catalogue" : "Explorer les 30 planètes"}</button>
@@ -101,9 +101,9 @@ export default function ClanWarPlanetsV96({ planet, turn, persisted, pending, re
         </button>)}
       </div>
       {filtered.length === 0 && <p className={styles.empty}>Aucune planète ne correspond à ces filtres.</p>}
-      {discovered.length > 0 && <section className={styles.discovered} aria-label="Mondes découverts"><h4>Mondes découverts <span>{discovered.length}</span></h4><p>Vos créations et mondes partagés. Les fronts gardés en mémoire restent accessibles même lorsqu’un raccourci sort du catalogue.</p><div className={styles.cards}>{discovered.map(item => <button key={item.id} type="button" className={styles.card} aria-pressed={item.id === planet.id} disabled={pending} onClick={() => select(item.id)} aria-label={`Ouvrir ${item.name}`} data-generated-planet-card={item.id}><PlanetPortrait planet={item}/><span><strong>{item.name}</strong><small>{item.subtitle}</small><em>{WAR_BIOME_LABELS_V96[item.landBiome]} · {WAR_SURFACE_LABELS_V96[item.surface.kind]}</em></span></button>)}</div>{catalogue.issue && <p role="status">{catalogue.issue}</p>}</section>}
+      {discovered.length > 0 && <section className={styles.discovered} aria-label="Mondes découverts"><h4>Mondes découverts <span>{discovered.length}</span></h4><p>Vos créations et mondes partagés. Les fronts gardés en mémoire restent accessibles même lorsqu’un raccourci sort du catalogue.</p><div className={styles.cards}>{discovered.map(item => <button key={item.id} type="button" className={styles.card} aria-pressed={item.id === planet.id} disabled={pending} onClick={() => select(item.id)} aria-label={`Ouvrir ${item.name}`} data-generated-planet-card={item.id}><span className={styles.generatedPortrait} aria-hidden="true" style={{ "--world-light": item.surface.accent, "--world-base": item.surface.base, "--world-shadow": item.surface.deep } as CSSProperties}/><span><strong>{item.name}</strong><small>{item.subtitle}</small><em>{item.territoryCount} territoires · {item.regionCount} régions · {WAR_SURFACE_LABELS_V96[item.surface.kind]}</em></span></button>)}</div>{catalogue.issue && <p role="status">{catalogue.issue}</p>}</section>}
     </div>
     <p className={styles.help}>Chaque planète conserve sa partie locale. Les surfaces entre les terres ne sont pas des territoires : empruntez les liaisons affichées pour franchir leurs détroits.</p>
     <p className={styles.provenance}>Théâtres originaux du projet dans l’univers Yautja : géographie et routes propres à ce mode.</p>
-  </section><div id={`${unique}-generator`} hidden={!generatorOpen}>{generatorOpen && <PlanetGeneratorV102 activePlanet={planet} pending={pending} onOpen={id => { const opened = select(id); if (opened) setGeneratorOpen(false); return opened; }}/>}</div></>;
+  </section><div id={`${unique}-generator`} hidden={!generatorOpen}>{generatorOpen && <PlanetGeneratorV103 activePlanet={planet} pending={pending} onOpen={id => { const opened = select(id); if (opened) setGeneratorOpen(false); return opened; }}/>}</div></>;
 }
