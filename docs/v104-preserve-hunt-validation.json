@@ -1,0 +1,925 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "scope": "Preserve Hunt original Vharuun extension; model, local development and frozen compiled local production evidence. No publication/CDN or complete-game qualification.",
+  "model": {
+    "status": "PASS",
+    "tests": 51,
+    "historicalCases": 40,
+    "newV104Cases": 11,
+    "skipped": 0,
+    "logSha256": "1e78ef1632eb4f5e438dc930508169564c33e2bb003ee6d0f0624b7f03e853d3",
+    "files": [
+      "tests/game-reserve-v66.test.mjs",
+      "tests/game-reserve-campaign-slots-v66.test.mjs",
+      "tests/game-reserve-tactical-v98.test.mjs",
+      "tests/game-reserve-interception-review-v98.test.mjs",
+      "tests/game-reserve-supply-denial-v99.test.mjs",
+      "tests/game-reserve-logistics-review-v99.test.mjs",
+      "tests/game-reserve-lookout-v104.test.mjs",
+      "tests/game-reserve-lookout-persistence-v104.test.mjs"
+    ]
+  },
+  "eslint": {
+    "status": "PASS",
+    "files": 11,
+    "warnings": 0
+  },
+  "browserDevelopment": {
+    "status": "PASS",
+    "resultPath": "outputs/qa-preserve-v104/dev-complete-final/result.json",
+    "resultSha256": "19504acf326ff7570b572b482e2b9c468167fee7ab3f407a9fdc66ac0c024ff0",
+    "controls": 25,
+    "checks": [
+      {
+        "name": "The ordinary free-menu choice defaults to the historical three-sector expedition",
+        "status": "PASS"
+      },
+      {
+        "name": "Explicit V2 selection creates the four-sector expedition with the eight original living combatants",
+        "status": "PASS"
+      },
+      {
+        "name": "Normal keyboard input moves the V2 actor",
+        "status": "PASS"
+      },
+      {
+        "name": "The real V2 touch-control pointer path moves the hunter",
+        "status": "PASS"
+      },
+      {
+        "name": "All eight touch targets fit the landscape viewport and are at least44px",
+        "status": "PASS"
+      },
+      {
+        "name": "The played V2 checkpoint returns to its independent free profile",
+        "status": "PASS"
+      },
+      {
+        "name": "Cancelling an explicit V2 replacement preserves the V1 document byte for byte",
+        "status": "PASS"
+      },
+      {
+        "name": "Resuming V1 retains the4800-unit world and three sectors",
+        "status": "PASS"
+      },
+      {
+        "name": "The ordinary campaign dossier also defaults a new expedition to V1",
+        "status": "PASS"
+      },
+      {
+        "name": "The dossier selection reaches the real campaign callback and stores an explicit V2 checkpoint",
+        "status": "PASS"
+      },
+      {
+        "name": "Campaign launch does not mint or overwrite an independent free profile",
+        "status": "PASS"
+      },
+      {
+        "name": "A future expedition remains protected and cannot be overwritten by the new choice",
+        "status": "PASS"
+      },
+      {
+        "name": "The actor physically traverses all four sectors and jumps onto the280-unit lookout",
+        "status": "PASS"
+      },
+      {
+        "name": "Survey work is a real unfinished channel after one second",
+        "status": "PASS"
+      },
+      {
+        "name": "Holding the physical upper interaction completes the survey",
+        "status": "PASS"
+      },
+      {
+        "name": "The notebook checkpoints the exact local survey and four physical visits",
+        "status": "PASS"
+      },
+      {
+        "name": "The notebook uses four sectors and keeps distant ship inventories uninspected",
+        "status": "PASS"
+      },
+      {
+        "name": "Reading the notebook pauses the real expedition",
+        "status": "PASS"
+      },
+      {
+        "name": "The four-sector notebook fits a390px viewport",
+        "status": "PASS"
+      },
+      {
+        "name": "Reload restores the exact V2 checkpoint and its recorded observation",
+        "status": "PASS"
+      },
+      {
+        "name": "The survey returns to extraction through real leftward movement and its final channel",
+        "status": "PASS"
+      },
+      {
+        "name": "The durable outcome contains no campaign inventory, rank or honor reward",
+        "status": "PASS"
+      },
+      {
+        "name": "The closed expedition reports its completed survey without offering field actions",
+        "status": "PASS"
+      },
+      {
+        "name": "No JavaScript error occurred in the isolated browser journeys",
+        "status": "PASS"
+      },
+      {
+        "name": "Preserve runtime sources remained unchanged during the recipe",
+        "status": "PASS"
+      }
+    ],
+    "captures": [
+      {
+        "file": "choice-v2-desktop.png",
+        "sha256": "54bcacd3269753a84851467c1b9fbdcaa155ad92b891acdce836c0d385c3aa1f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "v2-landscape-touch.png",
+        "sha256": "b31873cc573ce2970d838b13da1593e0ae49150fa694e0ea12ce7ca82a699f7c",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "legacy-v1-preserved.png",
+        "sha256": "7ee5a32adccb98ff5a1b014a960f6a2a9a32a8220ef207fa6387e150f22cdfb7",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "campaign-v2-entry.png",
+        "sha256": "f38205f929f36519794f5f7916651316ce7e1bf1708f53b4f683e653bc9b9821",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "ridge-before-survey.png",
+        "sha256": "c1b1f87c0fcb8a46b6d5c909bce647197a277e9befaec3f6e51f2c15a9f92aaf",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "ridge-survey-in-progress.png",
+        "sha256": "3674c2e79149835dce75ea4fef80317299102c1bfce4450a812ff0bc465a4ad9",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "ridge-survey-recorded.png",
+        "sha256": "40a65a5b5c07456f1525eff0750d7c7ab6797889bde0d5a13139eccc3c6dcf29",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "survey-notebook-desktop.png",
+        "sha256": "d38e3f58d68573aced802dd898ec4830efa042ed830105ffcef0edda70ceba9f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "survey-notebook-mobile.png",
+        "sha256": "830fa99be56f036874adeb5b0a49af3ad03446373e379b6b5c85d6e8e469c61d",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      },
+      {
+        "file": "survey-returned-outcome.png",
+        "sha256": "eef112e5e2cca6eacf85a295fa1890580fef3558b90981d18c445ffa236781b5",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "inspection": "PASS_SCOPE_STATIC_FRAME"
+      }
+    ],
+    "allCapturesActuallyOpened": true,
+    "routeSamples": 425,
+    "physicallyVisitedSectors": [
+      "parachutes",
+      "drill",
+      "camp",
+      "beacon-ridge"
+    ],
+    "fixtures": [
+      {
+        "kind": "legacy",
+        "version": 1,
+        "reserveId": "vharuun-first-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 0
+      },
+      {
+        "kind": "legacy-adult-campaign-entry",
+        "description": "Isolated legacy adult defaultSave fixture, not a campaign rite played in this browser",
+        "owner": "2026-09-20T00:00:00.000Z"
+      },
+      {
+        "kind": "future",
+        "version": 3,
+        "reserveId": "vharuun-lookout-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 0
+      },
+      {
+        "kind": "quiet",
+        "version": 2,
+        "reserveId": "vharuun-lookout-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 8
+      }
+    ],
+    "outcomes": {
+      "surveyed": {
+        "tick": 1703,
+        "player": {
+          "x": 5841.600000000164,
+          "y": 280,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lookout": {
+          "recordedAt": 1687,
+          "hunterX": 5841.600000000164,
+          "hunterY": 280
+        }
+      },
+      "returned": {
+        "tick": 3278,
+        "status": "returned",
+        "player": {
+          "x": 114.99999999999977,
+          "y": 438,
+          "vy": 0,
+          "facing": -1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lookout": {
+          "recordedAt": 1687,
+          "hunterX": 5841.600000000164,
+          "hunterY": 280
+        }
+      }
+    },
+    "errors": [],
+    "sourceBefore": [
+      {
+        "file": "app/game/systems/gameReserveV66.ts",
+        "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33"
+      },
+      {
+        "file": "app/game/systems/gameReserveLookoutV104.ts",
+        "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+      },
+      {
+        "file": "app/game/systems/gameReserveTacticalV98.ts",
+        "sha256": "2f2eb87266c0f4f3852fe653333d3ecd0d2fccda1c77b9170fe0ed2ba0f6a9d2"
+      },
+      {
+        "file": "app/game/GameReserveV66.tsx",
+        "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b"
+      },
+      {
+        "file": "app/game/GameReserveEntryV66.tsx",
+        "sha256": "22e412758caac974df5b9cd3ef71869f8b1a842653e14018b9db0eab46504b85"
+      },
+      {
+        "file": "app/game/GameReserveEntryV104.module.css",
+        "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+      },
+      {
+        "file": "app/game/GameReserveV66.module.css",
+        "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+      },
+      {
+        "file": "app/game/GameReserveTacticalV98.tsx",
+        "sha256": "580309bcfff506d7d16849a20af7b9664a067b6963dfe3d1d980714b441e3184"
+      },
+      {
+        "file": "app/game/gameReserveV66Rendering.ts",
+        "sha256": "af36eb1bc6e8588f2d53b815e9a4af7ad55d08ae0ec7713d823c3a6efe3d22f8"
+      },
+      {
+        "file": "app/game/MainMenuBonusModesV81.tsx",
+        "sha256": "d1794c0afdf2bae3af6ed557c762b12f93b84b1c5735b4c8e33ab557e6ec8344"
+      }
+    ],
+    "sourceAfter": [
+      {
+        "file": "app/game/systems/gameReserveV66.ts",
+        "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33"
+      },
+      {
+        "file": "app/game/systems/gameReserveLookoutV104.ts",
+        "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+      },
+      {
+        "file": "app/game/systems/gameReserveTacticalV98.ts",
+        "sha256": "2f2eb87266c0f4f3852fe653333d3ecd0d2fccda1c77b9170fe0ed2ba0f6a9d2"
+      },
+      {
+        "file": "app/game/GameReserveV66.tsx",
+        "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b"
+      },
+      {
+        "file": "app/game/GameReserveEntryV66.tsx",
+        "sha256": "22e412758caac974df5b9cd3ef71869f8b1a842653e14018b9db0eab46504b85"
+      },
+      {
+        "file": "app/game/GameReserveEntryV104.module.css",
+        "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+      },
+      {
+        "file": "app/game/GameReserveV66.module.css",
+        "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+      },
+      {
+        "file": "app/game/GameReserveTacticalV98.tsx",
+        "sha256": "580309bcfff506d7d16849a20af7b9664a067b6963dfe3d1d980714b441e3184"
+      },
+      {
+        "file": "app/game/gameReserveV66Rendering.ts",
+        "sha256": "af36eb1bc6e8588f2d53b815e9a4af7ad55d08ae0ec7713d823c3a6efe3d22f8"
+      },
+      {
+        "file": "app/game/MainMenuBonusModesV81.tsx",
+        "sha256": "d1794c0afdf2bae3af6ed557c762b12f93b84b1c5735b4c8e33ab557e6ec8344"
+      }
+    ]
+  },
+  "production": {
+    "status": "PASS_CIBLE",
+    "recipeStatus": "PASS",
+    "verifiedAtUtc": "2026-10-22T20:20:40.788040+00:00",
+    "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+    "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_PRESERVE_V104_OUTPUT=outputs/qa-v104/preserve-production node scripts/qa-preserve-lookout-v104.mjs",
+    "resultPath": "outputs/qa-v104/preserve-production/result.json",
+    "resultSha256": "aa480a5151b2bffee47886aeb1feb224ba1fd29d7f24a94ceaf733732e42d882",
+    "controls": 25,
+    "checks": [
+      {
+        "name": "The ordinary free-menu choice defaults to the historical three-sector expedition",
+        "status": "PASS"
+      },
+      {
+        "name": "Explicit V2 selection creates the four-sector expedition with the eight original living combatants",
+        "status": "PASS"
+      },
+      {
+        "name": "Normal keyboard input moves the V2 actor",
+        "status": "PASS"
+      },
+      {
+        "name": "The real V2 touch-control pointer path moves the hunter",
+        "status": "PASS"
+      },
+      {
+        "name": "All eight touch targets fit the landscape viewport and are at least44px",
+        "status": "PASS"
+      },
+      {
+        "name": "The played V2 checkpoint returns to its independent free profile",
+        "status": "PASS"
+      },
+      {
+        "name": "Cancelling an explicit V2 replacement preserves the V1 document byte for byte",
+        "status": "PASS"
+      },
+      {
+        "name": "Resuming V1 retains the4800-unit world and three sectors",
+        "status": "PASS"
+      },
+      {
+        "name": "The ordinary campaign dossier also defaults a new expedition to V1",
+        "status": "PASS"
+      },
+      {
+        "name": "The dossier selection reaches the real campaign callback and stores an explicit V2 checkpoint",
+        "status": "PASS"
+      },
+      {
+        "name": "Campaign launch does not mint or overwrite an independent free profile",
+        "status": "PASS"
+      },
+      {
+        "name": "A future expedition remains protected and cannot be overwritten by the new choice",
+        "status": "PASS"
+      },
+      {
+        "name": "The actor physically traverses all four sectors and jumps onto the280-unit lookout",
+        "status": "PASS"
+      },
+      {
+        "name": "Survey work is a real unfinished channel after one second",
+        "status": "PASS"
+      },
+      {
+        "name": "Holding the physical upper interaction completes the survey",
+        "status": "PASS"
+      },
+      {
+        "name": "The notebook checkpoints the exact local survey and four physical visits",
+        "status": "PASS"
+      },
+      {
+        "name": "The notebook uses four sectors and keeps distant ship inventories uninspected",
+        "status": "PASS"
+      },
+      {
+        "name": "Reading the notebook pauses the real expedition",
+        "status": "PASS"
+      },
+      {
+        "name": "The four-sector notebook fits a390px viewport",
+        "status": "PASS"
+      },
+      {
+        "name": "Reload restores the exact V2 checkpoint and its recorded observation",
+        "status": "PASS"
+      },
+      {
+        "name": "The survey returns to extraction through real leftward movement and its final channel",
+        "status": "PASS"
+      },
+      {
+        "name": "The durable outcome contains no campaign inventory, rank or honor reward",
+        "status": "PASS"
+      },
+      {
+        "name": "The closed expedition reports its completed survey without offering field actions",
+        "status": "PASS"
+      },
+      {
+        "name": "No JavaScript error occurred in the isolated browser journeys",
+        "status": "PASS"
+      },
+      {
+        "name": "Preserve runtime sources remained unchanged during the recipe",
+        "status": "PASS"
+      }
+    ],
+    "captures": [
+      {
+        "file": "choice-v2-desktop.png",
+        "sha256": "f85d08c27b8be45e2f004d5203f76fe5ed9df8ddad55bd0e335c17107c56e5d6",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Choix explicite Balises lisible, descriptif des huit combattants et deux appareils cohérent, lancement accessible."
+      },
+      {
+        "file": "v2-landscape-touch.png",
+        "sha256": "fe907550c9f584fd1855089e5bd1fedea7a1df4d4faa777f80d582330264d4fd",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Huit commandes tactiles dans le paysage ; monde natif visible et HUD quatre secteurs cohérent."
+      },
+      {
+        "file": "legacy-v1-preserved.png",
+        "sha256": "c5bd29e5c578aa0477054aba4c9d26de9dcc7feee4871720e98cf1a4cb69effb",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Briefing de la première expédition et portée trois secteurs conservés, sans mélange avec le relevé V2."
+      },
+      {
+        "file": "campaign-v2-entry.png",
+        "sha256": "b3203ca999fb305b637a05d6658ef1401d3d1f3fe6afb5da1440afdf771e74ab",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Briefing de quatre secteurs dans la scène de campagne, réglages et retour au dossier visibles."
+      },
+      {
+        "file": "ridge-before-survey.png",
+        "sha256": "78db7904ce0e3c97d8fc2bcf97bf9c2aee7df9153923a7aee52e13d3ad490095",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Chasseur posé sur la plateforme haute, poste mécanique réemployé déclaré et cible de relevé lisible."
+      },
+      {
+        "file": "ridge-survey-in-progress.png",
+        "sha256": "a8b7463388a17639d872c7b3c7d813d8439f1267a90b36bbd9d22d6467be132f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Canal inachevé visible dans le HUD et au-dessus du chasseur, pieds toujours sur la plateforme."
+      },
+      {
+        "file": "ridge-survey-recorded.png",
+        "sha256": "7a6a65a362662b4160505b30874c8e649bd6da8f8e5bf82c7034437625f6c9c9",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Repères consignés et retour à l’ouest affichés ; aucun canal de travail maintenu après la réussite."
+      },
+      {
+        "file": "survey-notebook-desktop.png",
+        "sha256": "d38e3f58d68573aced802dd898ec4830efa042ed830105ffcef0edda70ceba9f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Quatre secteurs, position dans la Crête des Balises et circuits distants non inspectés lisibles."
+      },
+      {
+        "file": "survey-notebook-mobile.png",
+        "sha256": "34a36cdea3e7b5547247e3e1cff2e115060707100c9f9dad90dbdce1dea142fc",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Colonnes des quatre secteurs adaptées au viewport390 ; panneau verticalement défilable, aucune largeur débordante visible."
+      },
+      {
+        "file": "survey-returned-outcome.png",
+        "sha256": "eef112e5e2cca6eacf85a295fa1890580fef3558b90981d18c445ffa236781b5",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "openedByReviewer": true,
+        "reviewer": "/root/pr10_enforcer_review_oct22",
+        "inspectionMethod": "view_image, actual production capture opened",
+        "inspection": "PASS_CIBLE_STATIC_FRAME",
+        "observationFR": "Retour d’expédition, relevé rapporté à l’extraction et absence d’action de terrain après clôture lisibles."
+      }
+    ],
+    "allCapturesActuallyOpened": true,
+    "routeSamples": 428,
+    "physicallyVisitedSectors": [
+      "parachutes",
+      "drill",
+      "camp",
+      "beacon-ridge"
+    ],
+    "fixtures": [
+      {
+        "kind": "legacy",
+        "version": 1,
+        "reserveId": "vharuun-first-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 0
+      },
+      {
+        "kind": "legacy-adult-campaign-entry",
+        "description": "Isolated legacy adult defaultSave fixture, not a campaign rite played in this browser",
+        "owner": "2026-09-20T00:00:00.000Z"
+      },
+      {
+        "kind": "future",
+        "version": 3,
+        "reserveId": "vharuun-lookout-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 0
+      },
+      {
+        "kind": "quiet",
+        "version": 2,
+        "reserveId": "vharuun-lookout-expedition",
+        "start": {
+          "x": 115,
+          "y": 438,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0
+        ],
+        "humansAlreadyDown": 8
+      }
+    ],
+    "outcomes": {
+      "surveyed": {
+        "tick": 1705,
+        "player": {
+          "x": 5841.600000000164,
+          "y": 280,
+          "vy": 0,
+          "facing": 1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lookout": {
+          "recordedAt": 1688,
+          "hunterX": 5841.600000000164,
+          "hunterY": 280
+        }
+      },
+      "returned": {
+        "tick": 3281,
+        "status": "returned",
+        "player": {
+          "x": 114.99999999999977,
+          "y": 438,
+          "vy": 0,
+          "facing": -1,
+          "hp": 100,
+          "energy": 100,
+          "cloak": false,
+          "cooldown": 0,
+          "moving": false
+        },
+        "visited": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lookout": {
+          "recordedAt": 1688,
+          "hunterX": 5841.600000000164,
+          "hunterY": 280
+        }
+      }
+    },
+    "errors": [],
+    "sourceBefore": [
+      {
+        "file": "app/game/systems/gameReserveV66.ts",
+        "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33"
+      },
+      {
+        "file": "app/game/systems/gameReserveLookoutV104.ts",
+        "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+      },
+      {
+        "file": "app/game/systems/gameReserveTacticalV98.ts",
+        "sha256": "2f2eb87266c0f4f3852fe653333d3ecd0d2fccda1c77b9170fe0ed2ba0f6a9d2"
+      },
+      {
+        "file": "app/game/GameReserveV66.tsx",
+        "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b"
+      },
+      {
+        "file": "app/game/GameReserveEntryV66.tsx",
+        "sha256": "22e412758caac974df5b9cd3ef71869f8b1a842653e14018b9db0eab46504b85"
+      },
+      {
+        "file": "app/game/GameReserveEntryV104.module.css",
+        "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+      },
+      {
+        "file": "app/game/GameReserveV66.module.css",
+        "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+      },
+      {
+        "file": "app/game/GameReserveTacticalV98.tsx",
+        "sha256": "580309bcfff506d7d16849a20af7b9664a067b6963dfe3d1d980714b441e3184"
+      },
+      {
+        "file": "app/game/gameReserveV66Rendering.ts",
+        "sha256": "af36eb1bc6e8588f2d53b815e9a4af7ad55d08ae0ec7713d823c3a6efe3d22f8"
+      },
+      {
+        "file": "app/game/MainMenuBonusModesV81.tsx",
+        "sha256": "d1794c0afdf2bae3af6ed557c762b12f93b84b1c5735b4c8e33ab557e6ec8344"
+      }
+    ],
+    "sourceAfter": [
+      {
+        "file": "app/game/systems/gameReserveV66.ts",
+        "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33"
+      },
+      {
+        "file": "app/game/systems/gameReserveLookoutV104.ts",
+        "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+      },
+      {
+        "file": "app/game/systems/gameReserveTacticalV98.ts",
+        "sha256": "2f2eb87266c0f4f3852fe653333d3ecd0d2fccda1c77b9170fe0ed2ba0f6a9d2"
+      },
+      {
+        "file": "app/game/GameReserveV66.tsx",
+        "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b"
+      },
+      {
+        "file": "app/game/GameReserveEntryV66.tsx",
+        "sha256": "22e412758caac974df5b9cd3ef71869f8b1a842653e14018b9db0eab46504b85"
+      },
+      {
+        "file": "app/game/GameReserveEntryV104.module.css",
+        "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+      },
+      {
+        "file": "app/game/GameReserveV66.module.css",
+        "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+      },
+      {
+        "file": "app/game/GameReserveTacticalV98.tsx",
+        "sha256": "580309bcfff506d7d16849a20af7b9664a067b6963dfe3d1d980714b441e3184"
+      },
+      {
+        "file": "app/game/gameReserveV66Rendering.ts",
+        "sha256": "af36eb1bc6e8588f2d53b815e9a4af7ad55d08ae0ec7713d823c3a6efe3d22f8"
+      },
+      {
+        "file": "app/game/MainMenuBonusModesV81.tsx",
+        "sha256": "d1794c0afdf2bae3af6ed557c762b12f93b84b1c5735b4c8e33ab557e6ec8344"
+      }
+    ],
+    "fixtureScopes": {
+      "ordinaryFreeMenu": "V2 selected through the real menu; eight original humans active. Real keyboard and pointer movement verified.",
+      "physicalSurveyJourney": "Normalized explicit fixture at extraction with eight humans already down. Player movement, jumps, four sector visits,120tick survey, reload and physical return use real browser controls. No combat victory is claimed.",
+      "campaignEntry": "Separate legacy adult defaultSave fixture. Three browser checks prove the dossier V1 default, explicit V2 callback/owner and no independent free-profile write. No played Blooded rite is claimed.",
+      "persistenceTests": "The three model integration cases are separate from the three campaign-entry browser checks; no new test count is inferred from screenshots."
+    },
+    "countingRule": "Development and production repeat the same25browser checks; they are not50unique checks. Model tests are a separate51-case group, which can overlap broader release suites.",
+    "limit": "Local compiled Next build and static capture inspection; no public deployment/CDN, physical gamepad or all-GPU qualification."
+  },
+  "limits": [
+    "Four of80 proposed sectors; eight of100 proposed combatants. No new native art or actor animations.",
+    "The complete geometry journey begins at extraction with eight humans already down in a declared valid fixture. Player movement, jumps, survey and return are real browser inputs; no coordinate/visit/result assignment occurs during traversal.",
+    "Campaign-entry proof uses a declared legacy adult defaultSave fixture, not a played Blooded rite.",
+    "Software Chromium and static screenshots do not certify physical gamepads, all mobile GPUs or canonical1:1 anatomy.",
+    "The lookout machinery is an existing rectangular native wall reuse, explicitly declared; the survey marker is functional HUD.",
+    "LegacyV1 retains its actual4800-unit terrain and cannot adopt the V2 lookout record. Versions are separate expeditions, selected explicitly."
+  ]
+}

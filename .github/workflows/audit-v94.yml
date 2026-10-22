@@ -19,6 +19,8 @@ on:
       - 'docs/v99-*'
       - 'docs/YAUTJA_V100_SUIVI.xlsx'
       - 'docs/v100-*'
+      - 'docs/YAUTJA_V104_SUIVI.xlsx'
+      - 'docs/*v104*'
       - 'docs/v56-excel-priorities.json'
       - 'art-source/v100/**'
       - 'public/game/sprites/v100/**'
@@ -117,6 +119,16 @@ jobs:
             /docs/YAUTJA_V99_SUIVI.xlsx
             /docs/YAUTJA_V100_SUIVI.xlsx
             /docs/v100-*
+            /docs/YAUTJA_V104_SUIVI.xlsx
+            /docs/*v104*
+            /docs/planet-generator-v103/review-fixes-20261022.json
+            /docs/suivi-production/v611/data/production-manifest.json
+            /docs/suivi-production/v612/data/production-manifest.json
+            /docs/suivi-production/v613/data/production-manifest.json
+            /docs/suivi-production/v613/data/current-master.json.gz
+            /public/game/production/enforcers-v611/
+            /public/game/production/enforcers-v612/
+            /public/game/production/enforcers-v613/
             /docs/v56-excel-priorities.json
             /art-source/v100/
             /public/game/sprites/v100/pit/
@@ -203,6 +215,14 @@ jobs:
           app/game/systems/homeworldNavigationV77.ts app/game/systems/homeworldNavigationV99.ts
           app/game/homeworldRouteWorkerV98.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
+          app/game/ClanChroniclePanel.tsx app/game/GameReserveEntryV66.tsx app/game/MainMenuBonusModesV81.tsx
+          app/game/HomeworldCartographerV104.tsx app/game/HomeworldCartographyV104.tsx
+          app/game/systems/homeworldCartographyDefinitionV104.ts app/game/systems/homeworldCartographyLedgerV104.ts
+          app/game/systems/homeworldCartographyV104.ts app/game/systems/homeworld.ts app/game/save.ts app/game/buildInfo.ts
+          app/game/systems/gameReserveLookoutV104.ts app/game/systems/pitCombat.ts
+          app/game/systems/pitReplay.ts app/game/systems/pitReplayStorage.ts app/game/systems/pitTraining.ts
+          app/game/systems/pitWorkbookNormalsV104.ts app/game/pitWorkbookNormalRegistryV104.ts
+          app/game/hunterSpriteMotion.ts app/game/pitCombatBitmapArt.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -299,6 +319,12 @@ jobs:
       - name: Verify reproducible V100 follow-up while preserving the historical V99 workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/build-excel-followup-v100.mjs --check
+      - name: Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs
+      - name: Verify reproducible V104 follow-up and preserved historical workbook parts
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v104.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
