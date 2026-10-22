@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "yautja-v613-delivery-validation-1",
+  "version": "V6.13",
+  "verifiedAtUtc": "2026-10-22T14:43:25Z",
+  "passed": true,
+  "scopeFR": "Contrôles locaux du lot de PNG, du suivi Excel, du raccordement galerie/codex et de la galerie hors ligne. L’emballage depuis le commit publié produit ensuite son rapport séparé.",
+  "sourceMainCommit": "017f3bd8d37457ee56d0cfeb78da9835c6388b8f",
+  "nativeRecoveryCommit": "fe58028cb1afe0a9bbbd555f476b05e4afd85773",
+  "pullRequestUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/10",
+  "mergePerformed": false,
+  "images": {
+    "newNativePngs": 36,
+    "cumulativeNativePngs": 108,
+    "groups": 18,
+    "newVariants": [
+      8,
+      9
+    ],
+    "width": 1024,
+    "height": 1536,
+    "rgba": true,
+    "allNewNativeGitBlobsVerified": true,
+    "finalReceiptsRecovered": 15,
+    "finalReceiptsNotRecovered": 21,
+    "plannedPromptsAreSubmissionEvidence": false,
+    "report": "recovery/verified-native-files.json"
+  },
+  "tracking": {
+    "stableIds": 5120,
+    "changedCells": 720,
+    "changedRows": 108,
+    "statusCounts": {
+      "Présente dans main": 2161,
+      "Produite — à vérifier": 205,
+      "Conservée hors main": 36,
+      "Pas faite": 2718,
+      "Perdue — à recréer": 0
+    },
+    "remainingEnforcerVariant10Count": 18,
+    "historicalV610PngsRecovered": 0,
+    "report": "validation/master-changes.json"
+  },
+  "runtime": {
+    "productionTestsPassed": 16,
+    "historicalReferenceTestsPassed": 1,
+    "failed": 0,
+    "automaticChoicesUnchanged": 973,
+    "uniqueReferencedHashes": 1985,
+    "humanBodySelectorBoundaryPreserved": true,
+    "report": "validation/runtime-validation.json"
+  },
+  "workbook": {
+    "file": "Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+    "bytes": 1698239,
+    "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+    "productionRows": 144,
+    "formulas": 631,
+    "tables": 6,
+    "conditionalFormatRules": 21,
+    "formulaErrors": 0,
+    "historicalValuesDatesStylesPreserved": true,
+    "liveInputRecalculationVerifiedAndRestored": true,
+    "staleCheckpointRejected": true,
+    "renderedViewsInspected": [
+      "Synthèse",
+      "Production PR",
+      "Contrôles"
+    ],
+    "nativeExcelApplicationSessionPerformed": false,
+    "reports": [
+      "workbook-preview/openxml-verification.json",
+      "workbook-preview/recalculation-check.json",
+      "workbook-preview/checkpoint-input-validation.json"
+    ]
+  },
+  "gallery": {
+    "nativeImagesLoaded": 108,
+    "localLinksChecked": 114,
+    "offline": true,
+    "withoutJavascriptCards": 108,
+    "withoutJavascriptDownloads": 108,
+    "mobileWidth": 390,
+    "mobileDocumentWidth": 390,
+    "pageErrors": 0,
+    "externalNetworkRequests": 0,
+    "report": "gallery-preview/browser-verification.json"
+  },
+  "codeChecks": {
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    "eslint": {
+      "scope": "All new or modified V6.13 JavaScript/TypeScript scripts, runtime files and test files",
+      "exitCode": 0
+    },
+    "gitDiffCheck": {
+      "exitCode": 0
+    },
+    "fullGameBuildPerformed": false
+  },
+  "sourceHashes": {
+    "data/production-manifest.json": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde",
+    "data/current-master.json.gz": "26723ff875d97548d62440b8062aae5e395a9048c3e9d4b1618fbcf87ae85513"
+  },
+  "publicRecordAudit": "validation/public-record-final-check.json",
+  "limitationsFR": [
+    "21 reçus finaux et prompts exacts non récupérés ; aucune date de génération manquante inventée.",
+    "Les marges de 8 % ne sont pas atteintes sur tous les fichiers ; les silhouettes visibles restent entièrement dans le cadre.",
+    "Poses fixes, sans nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+    "Les 36 traces V6.10 sont préservées, leurs PNG restent à retrouver."
+  ]
+}
