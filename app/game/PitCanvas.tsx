@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 
+import { PIT_WORKBOOK_NORMALS_V104, PIT_WORKBOOK_NORMALS_RECIPE_V104, ownsPitWorkbookNormalsV104 } from './systems/pitWorkbookNormalsV104';
 import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
 import { advancePitFinisherV80, createPitFinisherViewV80, observePitFinisherV80, skipPitFinisherV80, triggerPitFinisherV80, pitFinisherIsSceneV80, createPitFinisherPadStateV80, readPitFinisherPadV80, PIT_FINISHER_COUNTS_V80, type PitFinisherChoiceV80, type PitFinisherModeV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
 import { drawPitFinisherActorsV80 } from './pitFinisherRenderingV80';
@@ -42,6 +43,7 @@ import {
   PIT_CLOAK_COST,
   PIT_FIGHTERS,
   getPitCombatFighterDefinition,
+  getPitCombatAttackDefinition,
   getPitCurrentFighterDefinition,
   PIT_MAX_TRAQUE,
   PIT_TICK_RATE,
@@ -460,7 +462,7 @@ function cpuInput(state: PitCombatState): PitInput {
   return EMPTY_INPUT;
 }
 
-function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion: number = PIT_STATE_VERSION): string {
+function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion: number = state.version): string {
   if (event.type === "stage-transfer") {
     const destination = getPitStageJourneyDefinition(state.rules.stageJourney)?.destinationLabel;
     return destination ? `PASSAGE CONFIRMÉ · ${destination}` : "PASSAGE CONFIRMÉ";
@@ -470,7 +472,7 @@ function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion:
     if (engineVersion <= 6 && event.fighterId === 'tracker' && event.attack === 'technique') return 'CONTRE AU GANTELET · REPLAY HISTORIQUE';
     if (engineVersion <= 8 && event.fighterId === 'feral-hunter' && event.attack === 'technique') return 'PIÈGE À CARREAUX · REPLAY HISTORIQUE';
     const owner = state.fighters.find(fighter => fighter.definitionId === event.fighterId);
-    if (owner?.movesetId) return getPitCombatFighterDefinition(owner).attacks[event.attack].label.toUpperCase();
+    if (owner?.normalMovesRecipe || owner?.movesetId) return getPitCombatAttackDefinition(owner, event.attack).label.toUpperCase();
     return (
       event.attack === "technique"
         ? pitMoveLabelV91(event.fighterId, 'technique', PIT_FIGHTERS[event.fighterId].attacks.technique.label)
@@ -710,6 +712,7 @@ function drawArena(
   canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";
   canvas.dataset.pitStageTransferFrame = String(state.stageJourney?.transferFrame ?? "");
   canvas.dataset.pitFighterPositions = JSON.stringify(state.fighters.map(fighter => ({ x: Number(fighter.x.toFixed(2)), y: Number(fighter.y.toFixed(2)) })));
+  canvas.dataset.pitFighterActions = JSON.stringify(state.fighters.map(fighter => ({phase: fighter.phase, normalMove: fighter.action?.normalMove ?? null, actionFrame: fighter.action?.frame ?? null})));
   canvas.dataset.pitArenaLoadedImages = String(arenaArt?.images.size ?? 0);
   canvas.dataset.pitArenaSubplans = String(arenaArt?.productionKit?.planes.reduce((sum, plane) => sum + plane.assets.length, 0) ?? 0);
   context.save();
@@ -1148,6 +1151,8 @@ export default function PitCanvas({
   const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
   const [fighterArtRetry, setFighterArtRetry] = useState(0);
   const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
+  const [workbookNormalsEnabled, setWorkbookNormalsEnabled] = useState(false);
+  const workbookNormalsAvailable = ownsPitWorkbookNormalsV104(leftId, leftVariantId) || ownsPitWorkbookNormalsV104(rightId, rightVariantId);
   const [houndVariantId, setHoundVariantId] = useState<PitHoundVariantId>('tracker-hound');
   const [companionArt, setCompanionArt] = useState<PitCompanionArtBank | null>(null);
   const [companionArtRetry, setCompanionArtRetry] = useState(0);
@@ -1179,12 +1184,14 @@ export default function PitCanvas({
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
   const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
   const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
+  const renderedNormalMoves = combat ? combat.rules.normalMoves : workbookNormalsEnabled && workbookNormalsAvailable &&
+    (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined;
   useEffect(() => {
     const controller = new AbortController();
-    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant] })
+    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant], normalMoves: renderedNormalMoves })
       .then((bank) => { if (!controller.signal.aborted) setFighterArt(bank); });
     return () => controller.abort();
-  }, [renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, fighterArtRetry]);
+  }, [renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, renderedNormalMoves, fighterArtRetry]);
 
   const [combatNotice, setCombatNotice] = useState({ label: "CHOISIS LE RITUEL", frame: 0 });
   const announcement = combatNotice.label;
@@ -1687,6 +1694,10 @@ export default function PitCanvas({
     }
     let next = createPitCombatState(playerId, opponentId, {
       mode: nextMode === "training" ? "training" : "match",
+      ...(workbookNormalsEnabled && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
+        (ownsPitWorkbookNormalsV104(playerId, playerId === leftId ? leftVariantId : null) ||
+          ownsPitWorkbookNormalsV104(opponentId, opponentId === rightId ? rightVariantId : null))
+        ? {normalMoves: PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}),
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
       ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
@@ -1753,7 +1764,7 @@ export default function PitCanvas({
               : "Manche 1. Combat.",
     );
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId]);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -2941,7 +2952,7 @@ export default function PitCanvas({
       prefersReducedMotion,
       companionArt,
       falconerArt,
-      playbackReplay?.engineVersion ?? PIT_STATE_VERSION,
+      playbackReplay?.engineVersion ?? combat.version,
       !playbackReplay && narrativeEncounter?.id === narrativeStageCues?.encounterId ? narrativeStageCues : undefined,
       stageLifeSeedRef.current,
       finisherV80,
@@ -3336,6 +3347,12 @@ export default function PitCanvas({
               </select></label>
               <p>Quatre choix par combattant, {PIT_FINISHER_COUNTS_V80.playableSequences} séquences de présentation. {PIT_FINISHER_COUNTS_V80.attestedEquipment} arsenaux attestés, {PIT_FINISHER_COUNTS_V80.identityDerived} identités documentées, {PIT_FINISHER_COUNTS_V80.originalContact} compositions corporelles originales. Pas 201 planches de finition inédites. Gore réduit et chroniques : neutralisation obligatoire ; relectures et entraînement : désactivé.</p>
             </aside>
+            {(mode === 'cpu' || mode === 'local' || mode === 'training') && workbookNormalsAvailable && <aside className={styles.journeyChoice} aria-label="Gestes Feral et Scar du classeur">
+              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => setWorkbookNormalsEnabled(event.target.checked)} /> Gestes du classeur · Feral et Scar</label>
+              <p>Neuf attaques par combattant dans leur apparence BODY d’origine : L / M / H debout, accroupi ou en saut. Préparation, contact, récupération, dégâts de base et hauteur de garde suivent le classeur. Les portées, les réactions et les limites de combo conservent les règles du duel. Cette recette est enregistrée dans les relectures.</p>
+              {workbookNormalsEnabled && [{id: leftId, variant: leftVariantId}, {id: rightId, variant: rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id, selection.variant)).map((selection, slot) => <div key={selection.id + slot}><strong>{PIT_FIGHTERS[selection.id].name} · apparence BODY</strong><ul>{PIT_WORKBOOK_NORMALS_V104.filter(move => move.fighterId === selection.id).map(move => <li key={move.key}>{move.key} · {move.startup}/{move.active}/{move.recovery} images · base {move.damage} · {move.hitLevel === 'high' ? 'haut' : move.hitLevel === 'low' ? 'bas' : 'milieu'}{move.antiAir ? ' / anti-air' : ''}</li>)}</ul></div>)}
+              <small>Spéciaux, projections et autres apparences gardent leur fonctionnement actuel. Les règles complètes du kit restent suivies séparément.</small>
+            </aside>}
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
             {(leftId === 'tracker' || rightId === 'tracker') && <aside className={styles.journeyChoice} aria-label="Chien de chasse de Tracker">
               <label>Variante visuelle du chien de chasse
@@ -3726,6 +3743,8 @@ export default function PitCanvas({
       tabIndex={-1}
       data-screen-focus
       data-pit-immersive="true"
+      data-pit-normal-recipe={combat.rules.normalMoves ?? "historical"}
+      data-pit-normal-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.normalMove ?? null))}
       data-pit-paused={menuOpen}
       data-pit-combat-phase={combat.phase}
       data-pit-timer-frames={combat.roundFramesRemaining}

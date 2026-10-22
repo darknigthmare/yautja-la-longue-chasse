@@ -10,7 +10,7 @@ import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -18,7 +18,8 @@ function liveLiftOrPollingCallback(environment, name = 'poll') {
   const visit = node => {
     if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
-    else if (name === 'updateLiftStationV83' && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
+    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104'].includes(name)
+      && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
   visit(tree);
@@ -48,7 +49,7 @@ function liveSprintHandler(kind, environment) {
 }
 
 function fixture() {
-  const frames = animationFrameFixture(), events = [];
+  const frames = animationFrameFixture(), events = [], cartographySamples = [];
   const owner = "2026-10-07T12:00:00.000Z";
   const pad = { connected: true, id: "virtual-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const world = {}, outside = {}, dialog = {};
@@ -66,6 +67,17 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
+    cartographyWritePausedRefV104: { current: false },
+    cartographyDraftRefV104: { current: city.defaultHomeworldCartographyV104(owner) },
+    progressRef: { current: { visitedDistrictIds: [] } },
+    sampleCartographyWalkV104(ledger, before, after, seconds, context) {
+      cartographySamples.push({ before: { ...before }, after: { ...after }, seconds });
+      return city.sampleCartographyWalkV104(ledger, before, after, seconds, context);
+    },
+    submitCartographyV104() { throw new Error('No active cartography receipt in these declared world input cases'); },
+    onProgress() { throw new Error('A dormant cartography receipt cannot write campaign progress'); },
+    setCartographyMessageV104() { throw new Error('A dormant cartography receipt cannot award a checkpoint'); },
+    cartographyWriteRefusedV104() { throw new Error('A dormant cartography receipt cannot attempt a durable write'); },
     cityClockV68: { current: 0 },
     HOMEWORLD_ACTOR: city.HOMEWORLD_ACTOR, homeworldYouthDirectionV74: city.homeworldYouthDirectionV74,
     youthMotionRefV74: { current: { direction: 's', distanceWorld: 0 } }, setYouthMotionV74() {},
@@ -96,14 +108,30 @@ function fixture() {
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
   env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
+  for (const name of ['cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104']) env[name] = liveLiftOrPollingCallback(env, name);
   liveLiftOrPollingCallback(env, 'liftHydration')();
   const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = (count = 1) => { assert.ok(frames.size, 'an active browser frame exists'); frames.tick(count); };
   const release = () => { pad.axes = [0, 0]; for (const button of pad.buttons) button.pressed = false; tick(); };
   render();
-  return { env, pad, tick, release, render, events, world, outside, dialog, choices };
+  return { env, pad, tick, release, render, events, world, outside, dialog, choices, cartographySamples };
 }
+
+test('the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock', () => {
+  const f = fixture(), ledger = f.env.cartographyDraftRefV104.current;
+  f.release(); f.pad.axes[0] = 1; f.tick(3);
+  assert(f.cartographySamples.some(({ before, after }) => after.x > before.x), 'the live callback receives real integrated travel');
+  assert.equal(f.env.cartographyDraftRefV104.current, ledger, 'the real dormant sampler preserves the ledger without awarding progress');
+  assert.equal(ledger.receipt, null);
+  const before = { ...f.env.actorRef.current }, clock = f.env.cityClockV68.current, samples = f.cartographySamples.length;
+  f.env.cartographyWritePausedRefV104.current = true; f.tick(12);
+  assert.deepEqual(f.env.actorRef.current, before, 'held direction cannot advance an actor after a refused cartography write');
+  assert.equal(f.env.cityClockV68.current, clock);
+  assert.equal(f.cartographySamples.length, samples, 'the blocked motor cannot sample movement');
+  f.env.cartographyWritePausedRefV104.current = false; f.tick(3);
+  assert(f.env.actorRef.current.x > before.x, 'successful write recovery restores the existing motor');
+});
 
 test("held stick and A on first focus cannot move or open a dialogue until a neutral frame", () => {
   const f = fixture(), start = { ...f.env.actorRef.current };

@@ -187,8 +187,8 @@ test("tech separation respects either arena wall and keeps the two pushboxes apa
     assert.doesNotThrow(()=>p.deserializePitCombat(p.serializePitCombat(s)));
   }
 });
-test("the playback stepper fails closed for unknown engine versions", () => {
-  for(const version of [0,2,3,p.PIT_STATE_VERSION+1,undefined]){
+test("the playback stepper fails closed for unknown engines and incompatible state recipes", () => {
+  for(const version of [0,2,3,p.PIT_STATE_VERSION+1,p.PIT_REPLAY_MAX_ENGINE_VERSION+1,undefined]){
     assert.throws(()=>p.stepPitReplayCombat(close(),neutral,version),e=>e.code==="incompatible-engine");
   }
 });

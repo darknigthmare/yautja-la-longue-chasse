@@ -1,3 +1,4 @@
+import { PIT_WORKBOOK_NORMALS_RECIPE_V104, PIT_WORKBOOK_NORMALS_STATE_VERSION_V104, ownsPitWorkbookNormalsV104 } from './pitWorkbookNormalsV104';
 import { getPitUserVariant, normalizePitUserVariant } from './pitUserRoster';
 import { PIT_JUNGLE_FINAL_DUEL_VARIANT } from './pitEquipmentV57';
 import { isPitHoundVariantId, type PitHoundVariantId } from './pitCompanion';
@@ -29,6 +30,7 @@ import {
 } from "./pitCombat";
 
 export const PIT_REPLAY_VERSION = 3;
+export const PIT_REPLAY_MAX_ENGINE_VERSION = PIT_WORKBOOK_NORMALS_STATE_VERSION_V104;
 export const PIT_REPLAY_ENCODING = "input-rle-v3";
 export const PIT_REPLAY_MAX_SERIALIZED_BYTES = 64 * 1024;
 export const PIT_REPLAY_MAX_TICKS = PIT_TICK_RATE * 60 * 10;
@@ -125,7 +127,7 @@ export interface PitReplayMetadata {
 export interface PitReplay {
   houndVariantId?: PitHoundVariantId;
   version: typeof PIT_REPLAY_VERSION;
-  engineVersion: 4 | 5 | 6 | 7 | 8 | 9 | 10 | typeof PIT_STATE_VERSION;
+  engineVersion: 4 | 5 | 6 | 7 | 8 | 9 | 10 | typeof PIT_STATE_VERSION | typeof PIT_WORKBOOK_NORMALS_STATE_VERSION_V104;
   tickRate: typeof PIT_TICK_RATE;
   arenaId: PitArenaId;
   encoding: typeof PIT_REPLAY_ENCODING;
@@ -243,7 +245,7 @@ function replayRejectionCode(value: unknown): PitReplayRejectionCode {
   }
   if (value.version === PIT_REPLAY_VERSION &&
     value.engineVersion !== undefined &&
-    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION) {
+    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) {
     return "incompatible-engine";
   }
   return "invalid-replay";
@@ -378,7 +380,7 @@ function checksumCombatStateForV10(state: PitCombatState): string {
   return checksumSerializedCombat(JSON.stringify(canonical));
 }
 
-function metadataFor(state: PitCombatState, ticks: number, engineVersion: PitReplay['engineVersion'] = PIT_STATE_VERSION): PitReplayMetadata {
+function metadataFor(state: PitCombatState, ticks: number, engineVersion: PitReplay['engineVersion'] = state.version): PitReplayMetadata {
   return {
     ticks,
     durationMs: Math.round((ticks * 1_000) / PIT_TICK_RATE),
@@ -417,7 +419,9 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   if (variants === false) throw replayError();
   if (options.houndVariantId !== undefined && (!isPitHoundVariantId(options.houndVariantId) || !fighters.includes('tracker'))) throw replayError();
   const rules = options.rules ?? { mode: "match" };
-  if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode", "stageJourney"]) || !isCombatMode(rules.mode)) throw replayError();
+  if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode", "stageJourney", "normalMoves"]) || !isCombatMode(rules.mode)) throw replayError();
+  if (rules.normalMoves !== undefined && (rules.normalMoves !== PIT_WORKBOOK_NORMALS_RECIPE_V104 ||
+    !fighters.some((id, slot) => ownsPitWorkbookNormalsV104(id, variants?.[slot])))) throw replayError();
   const arenaId = options.arenaId ?? "the-pit";
   if (!isArenaId(arenaId)) throw replayError();
   if (rules.stageJourney !== undefined && !isPitStageJourneyForArena(rules.stageJourney, arenaId)) throw replayError();
@@ -427,7 +431,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
     fighters: [fighters[0], fighters[1]],
     ...(variants ? { variants } : {}),
     ...(options.houndVariantId ? { houndVariantId: options.houndVariantId } : {}),
-    rules: { mode: rules.mode, ...(isPitStageJourneyForArena(rules.stageJourney, arenaId) ? { stageJourney: rules.stageJourney } : {}) },
+    rules: { mode: rules.mode, ...(isPitStageJourneyForArena(rules.stageJourney, arenaId) ? { stageJourney: rules.stageJourney } : {}), ...(rules.normalMoves ? {normalMoves: PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}) },
     arenaId,
     seed,
   };
@@ -436,7 +440,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
 function structuralReplay(value: unknown): PitReplay | null {
   if (!isRecord(value) || !hasOnlyKeys(value, REPLAY_KEYS) ||
     value.version !== PIT_REPLAY_VERSION ||
-    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION) ||
+    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) ||
     value.tickRate !== PIT_TICK_RATE ||
     !isArenaId(value.arenaId) ||
     value.encoding !== PIT_REPLAY_ENCODING ||
@@ -444,7 +448,8 @@ function structuralReplay(value: unknown): PitReplay | null {
     return null;
   }
 
-  if (!isRecord(value.rules) || !hasOnlyKeys(value.rules, value.engineVersion >= 6 ? ["mode", "stageJourney"] : ["mode"]) || !isCombatMode(value.rules.mode)) return null;
+  if (!isRecord(value.rules) || !hasOnlyKeys(value.rules, value.engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 ? ["mode", "stageJourney", "normalMoves"] : value.engineVersion >= 6 ? ["mode", "stageJourney"] : ["mode"]) || !isCombatMode(value.rules.mode)) return null;
+  if ((value.engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) !== (value.rules.normalMoves === PIT_WORKBOOK_NORMALS_RECIPE_V104)) return null;
   if (value.rules.stageJourney !== undefined && !isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId)) return null;
   if (!Array.isArray(value.fighters) || value.fighters.length !== 2 ||
     !isFighterId(value.fighters[0]) || !isFighterId(value.fighters[1]) ||
@@ -453,6 +458,8 @@ function structuralReplay(value: unknown): PitReplay | null {
   }
   const variants = replayVariants(value.fighters, value.variants);
   if (variants === false || (variants && value.engineVersion < 6)) return null;
+  if (value.rules.normalMoves !== undefined && (value.rules.normalMoves !== PIT_WORKBOOK_NORMALS_RECIPE_V104 ||
+    !value.fighters.some((id, slot) => ownsPitWorkbookNormalsV104(id, variants?.[slot])))) return null;
   if (value.engineVersion < 8 && variants?.includes(PIT_JUNGLE_FINAL_DUEL_VARIANT)) return null;
   if (value.houndVariantId !== undefined && (value.engineVersion < 7 || !isPitHoundVariantId(value.houndVariantId) || !value.fighters.includes('tracker'))) return null;
   if (!Array.isArray(value.segments) || value.segments.length > PIT_REPLAY_MAX_SEGMENTS) return null;
@@ -498,7 +505,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     arenaId: value.arenaId,
     encoding: PIT_REPLAY_ENCODING,
     seed: value.seed,
-    rules: { mode: value.rules.mode, ...(isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId) ? { stageJourney: value.rules.stageJourney } : {}) },
+    rules: { mode: value.rules.mode, ...(isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId) ? { stageJourney: value.rules.stageJourney } : {}), ...(value.rules.normalMoves ? {normalMoves: PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}) },
     fighters: [value.fighters[0], value.fighters[1]],
     ...(variants ? { variants } : {}),
     ...(isPitHoundVariantId(value.houndVariantId) ? { houndVariantId: value.houndVariantId } : {}),
@@ -671,7 +678,7 @@ class ReplayRecorder implements PitReplayRecorder {
     if (this.sealedReplay) return this.sealedReplay;
     const replay: PitReplay = {
       version: PIT_REPLAY_VERSION,
-      engineVersion: PIT_STATE_VERSION,
+      engineVersion: this.state.version,
       tickRate: PIT_TICK_RATE,
       arenaId: this.options.arenaId,
       encoding: PIT_REPLAY_ENCODING,
@@ -753,6 +760,8 @@ export function createPitReplayReader(value: unknown): PitReplayReader {
 export function stepPitReplayCombat(
   state: PitCombatState, inputs: readonly [PitInput, PitInput], engineVersion: PitReplay["engineVersion"],
 ): PitCombatState {
+  if ((state.version === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) !== (engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) ||
+    (state.version === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && state.rules.normalMoves !== PIT_WORKBOOK_NORMALS_RECIPE_V104)) throw replayError('incompatible-engine');
   if (engineVersion === 4) return stepPitCombatV4Compatibility(state, inputs);
   if (engineVersion === 5) return stepPitCombatV5Compatibility(state, inputs);
   if (engineVersion === 6) return stepPitCombatV6Compatibility(state, inputs);
@@ -760,7 +769,7 @@ export function stepPitReplayCombat(
   if (engineVersion === 8) return stepPitCombatV8Compatibility(state, inputs);
   if (engineVersion === 9) return stepPitCombatV9Compatibility(state, inputs);
   if (engineVersion === 10) return stepPitCombatV10Compatibility(state, inputs);
-  if (engineVersion === PIT_STATE_VERSION) return stepPitCombat(state, inputs);
+  if (engineVersion === PIT_STATE_VERSION || engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) return stepPitCombat(state, inputs);
   throw replayError("incompatible-engine");
 }
 

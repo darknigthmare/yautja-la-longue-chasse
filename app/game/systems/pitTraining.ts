@@ -1,4 +1,4 @@
-import { getPitCombatFighterDefinition } from './pitCombat';
+import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './pitCombat';
 import {
   createPitCombatState,
   PIT_TICK_RATE,
@@ -397,7 +397,7 @@ export function getPitTrainingFrameReadout(
     actionLabel = state.pendingThrow.attackerSlot === fighterSlot ? "Saisie en attente" : "Fenêtre de déchoppe";
     framesRemaining = state.pendingThrow.framesRemaining;
   } else if (action?.kind === "attack" && action.attack) {
-    const definition = getPitCombatFighterDefinition(fighter).attacks[action.attack];
+    const definition = getPitCombatAttackDefinition(fighter, action.attack);
     actionLabel = definition.label;
     actionTotalFrames = definition.startup + definition.active + definition.recovery;
     const phaseStart = fighter.phase === "active"

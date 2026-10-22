@@ -220,7 +220,7 @@ export async function loadPitSpriteSheetAnimations(
       // has all three phases and at least three actually distinct pixel drawings.
       const attackGroups = new Map<string, typeof atlas.clips[number][]>();
       for (const clip of atlas.clips) {
-        const match = /^(pit\.(?:stand|crouch|air)\.(?:light|medium|heavy|technique\..+))\.(startup|active|recovery)$/.exec(clip.id);
+        const match = /^(pit\.(?:stand|crouch|air)\.(?:light|medium|heavy|technique\..+|workbook-v104\.[52j][LMH]))\.(startup|active|recovery)$/.exec(clip.id);
         if (!match || clip.loop || clip.status !== "validated") continue;
         const key = clipKey(match[1], clip.facing);
         attackGroups.set(key, [...(attackGroups.get(key) ?? []), clip]);

@@ -14,7 +14,7 @@ const reportPath = path.resolve(process.env.YAUTJA_GENERATOR_V103_QA_REPORT ?? "
 const catalogueKey = "yautja.clan-war.v103.generated-catalog", legacyKey = "yautja.clan-war.v102.generated-catalog";
 const archiveKey = id => `yautja.clan-war.v96.planet.${id}.free.v1`;
 const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
-const checks = [], errors = [], consoleErrors = [], contexts = [];
+const checks = [], errors = [], consoleErrors = [], contexts = [], restoredFrontChecks = [];
 const check = (name, condition) => { assert.ok(condition, name); checks.push(name); };
 const generator = page => page.getByTestId("planet-generator-v103").filter({ visible: true });
 const preview = page => generator(page).getByTestId("clan-war-atlas-v95");
@@ -37,11 +37,26 @@ async function newPage(viewport = { width: 1440, height: 1080 }) {
   page.on("console", message => { if (message.type() === "error") consoleErrors.push(message.text()); });
   return page;
 }
+async function readyGenerator(page) {
+  await generator(page).waitFor();
+  // Reload can restore a nested scroll position after the SSR form is visible.
+  // Keep the visible-only canvas in view until its real effect has completed.
+  await page.waitForFunction(() => {
+    const root = [...document.querySelectorAll('[data-testid="planet-generator-v103"]')].find(item => !item.closest("[hidden]"));
+    const quicklook = root?.querySelector('[data-testid="planet-generator-quicklook-v103"]');
+    const canvas = quicklook?.querySelector("canvas");
+    if (!quicklook || !canvas) return false;
+    const bounds = quicklook.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return false;
+    if (bounds.top < 0 || bounds.bottom > innerHeight || bounds.left < 0 || bounds.right > innerWidth) {
+      quicklook.scrollIntoView({ block: "center", inline: "nearest", behavior: "instant" });
+    }
+    return canvas.getAttribute("data-render-status") === "ready" || canvas.getAttribute("data-render-status") === "fallback";
+  }, undefined, { timeout: 90000 });
+}
 async function visit(page) {
   await page.goto(`${baseUrl}/planet-generator-v103`, { waitUntil: "domcontentloaded", timeout: 90000 });
-  await generator(page).waitFor();
-  await generator(page).getByTestId("planet-generator-quicklook-v103").scrollIntoViewIfNeeded();
-  await generator(page).getByTestId("planet-generator-quicklook-v103").locator('canvas[data-render-status="ready"], canvas[data-render-status="fallback"]').waitFor({ timeout: 90000 });
+  await readyGenerator(page);
 }
 async function section(page, id) {
   const details = generator(page).locator(`[data-generator-section="${id}"]`);
@@ -54,8 +69,11 @@ async function apply(page) {
   await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="planet-generator-v103"]')].find(item => !item.closest("[hidden]"))?.getAttribute("data-draft-modified") === "false");
 }
 async function importCode(page, value) {
+  // The SSR form can be visible before its controlled inputs are interactive.
+  await readyGenerator(page);
   await generator(page).getByRole("textbox", { name: "Importer un code de monde", exact: true }).fill(value);
   await generator(page).getByRole("button", { name: "Retrouver le monde", exact: true }).press("Enter");
+  await page.waitForFunction(value => [...document.querySelectorAll('[data-testid="planet-generator-v103"]')].some(item => !item.closest("[hidden]") && item.getAttribute("data-preview-planet-code") === value), value);
 }
 async function map(atlas) {
   await atlas.getByRole("button", { name: "▱ Planisphère", exact: true }).press("Enter");
@@ -82,6 +100,23 @@ async function resolveTurn(page, id, turn) {
 async function choose(page, id) {
   await selector(page).getByRole("combobox", { name: "Planète active", exact: true }).selectOption(id);
   await page.waitForFunction(value => document.querySelector('[data-clan-war-v85="free-profile"] [data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet") === value, id);
+}
+async function restoredFront(page, id, raw) {
+  const expected = JSON.parse(raw);
+  assert.equal(expected.planetId, id, "the expected archive owns the requested generated world");
+  const territories = Object.keys(expected.territories).length;
+  await page.waitForFunction(({ id, key, raw, turn, territories }) => {
+    const panel = document.querySelector('[data-clan-war-v85="free-profile"]');
+    const selector = panel?.querySelector('[data-testid="war-planet-selector-v96"]');
+    const atlas = panel?.querySelector('[data-testid="clan-war-atlas-v95"]');
+    const directory = [...atlas?.querySelectorAll("details") ?? []].find(item => item.firstElementChild?.textContent?.startsWith("Liste des territoires"));
+    return selector?.getAttribute("data-active-planet") === id && atlas?.getAttribute("data-planet-id") === id &&
+      localStorage.getItem(key) === raw && selector.textContent.includes("Archive locale confirmée") &&
+      new RegExp(`Tour ${String(turn).padStart(2, "0")}`).test(selector.textContent.replace(/\s+/g, " ")) &&
+      directory?.querySelectorAll("button").length === territories;
+  }, { id, key: archiveKey(id), raw, turn: expected.turn, territories });
+  restoredFrontChecks.push({ planetId: id, turn: expected.turn, seed: expected.seed, territories,
+    archiveSha256: createHash("sha256").update(raw).digest("hex"), exactArchiveAndLiveAtlas: true });
 }
 async function checkWaterHit(page, atlas) {
   await atlas.locator('svg[viewBox="0 0 960 620"]').scrollIntoViewIfNeeded();
@@ -203,10 +238,12 @@ try {
   const largeRaw = await rawArchive(page, worldLarge), largeState = JSON.parse(largeRaw);
   check("the live 96-territory front has its own exact archive and leaves the small campaign unchanged", Object.keys(largeState.territories).length === 96 && largeState.turn === 2 && await rawArchive(page, worldSmall) === smallRaw);
   check("the picker keeps thirty historical worlds separate from both variable-size discoveries", await selector(page).locator('optgroup[label="Les 30 mondes répertoriés"] option').count() === 30 && await selector(page).locator('optgroup[label="Mondes découverts"] option').count() === 2);
-  await page.reload({ waitUntil: "domcontentloaded" }); await generator(page).waitFor(); await importCode(page, worldLarge);
+  await page.reload({ waitUntil: "domcontentloaded" }); await importCode(page, worldLarge);
   await generator(page).getByRole("button", { name: "Ouvrir ce front", exact: true }).click(); await selector(page).waitFor();
+  await restoredFront(page, worldLarge, largeRaw);
   check("reopening the large world after reload resumes its original saved state", await rawArchive(page, worldLarge) === largeRaw && /Tour 02/.test((await selector(page).innerText()).replace(/\s+/g, " ")));
   await choose(page, worldSmall);
+  await restoredFront(page, worldSmall, smallRaw);
   check("switching back restores the independently advanced small front", await rawArchive(page, worldSmall) === smallRaw && /Tour 03/.test((await selector(page).innerText()).replace(/\s+/g, " ")));
 
   console.log("QA V103: exact legacy world, archive and explicit variant action");
@@ -268,7 +305,7 @@ try {
   reportGithubActionsFailure("Planet generator V103 browser journey", error);
   if (page) await page.screenshot({ path: path.join(output, "failure.png"), fullPage: false }).catch(() => {});
 } finally {
-  await fs.writeFile(reportPath, JSON.stringify({ route: "/planet-generator-v103", checkedAt: new Date().toISOString(), viewport: [1440, 1080], mobileViewport: [390, 844], worldSmall, worldLarge, worldLegacy, pngResult, hydrologyHit, checks, errors, consoleErrors, passed: !failure, ...(failure ? { failure } : {}) }, null, 2) + "\n");
+  await fs.writeFile(reportPath, JSON.stringify({ route: "/planet-generator-v103", checkedAt: new Date().toISOString(), viewport: [1440, 1080], mobileViewport: [390, 844], worldSmall, worldLarge, worldLegacy, pngResult, hydrologyHit, checks, restoredFrontChecks, errors, consoleErrors, passed: !failure, ...(failure ? { failure } : {}) }, null, 2) + "\n");
   await Promise.all(contexts.map(context => context.close())); await browser.close();
 }
 if (failure) throw new Error(failure);

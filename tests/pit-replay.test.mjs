@@ -238,7 +238,7 @@ test("normalization rejects future, corrupt, non-canonical and reward-bearing pa
   ]);
   const corruptions = [
     { ...plain(replay), version: replay.version + 1 },
-    { ...plain(replay), engineVersion: replay.engineVersion + 1 },
+    { ...plain(replay), engineVersion: pit.PIT_REPLAY_MAX_ENGINE_VERSION + 1 },
     { ...plain(replay), encoding: "input-rle-v99" },
     { ...plain(replay), campaignReward: { honor: 9_999 } },
     { ...plain(replay), arenaId: "constructor" },
@@ -413,7 +413,7 @@ test("legacy V1 and future replay envelopes are rejected with explicit compatibi
   };
   const incompatibleEngine = {
     ...replay,
-    engineVersion: replay.engineVersion + 1,
+    engineVersion: pit.PIT_REPLAY_MAX_ENGINE_VERSION + 1,
   };
 
   assert.equal(pit.normalizePitReplay(legacy), null);

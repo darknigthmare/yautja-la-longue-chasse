@@ -225,7 +225,7 @@ test("corrupt, oversized and future archives have distinct safe failures", () =>
 
   storage.setItem(key, JSON.stringify({
     ...archiveWithReplay(),
-    latestReplay: { ...replay, engineVersion: replay.engineVersion + 1 },
+    latestReplay: { ...replay, engineVersion: replayApi.PIT_REPLAY_MAX_ENGINE_VERSION + 1 },
   }));
   assert.equal(storageApi.loadPitReplayArchive({
     ownerSaveCreatedAt: OWNER,
@@ -359,4 +359,16 @@ test("published V4 replay bytes remain owned, readable and exportable without a 
   assert.equal(loaded.archive.latestReplay.engineVersion, 4);
   assert.equal(replayApi.serializePitReplay(loaded.archive.latestReplay), JSON.stringify(historical.replay));
   assert.deepEqual([...storage.values.entries()], before);
+});
+
+test('version12 source-normal recordings remain campaign-owned and reload without degrading to engine11',()=>{
+ const replay=replayApi.recordPitReplay([[{attack:'medium',down:true},{}],[{},{}]],{fighters:['feral-hunter','scar'],rules:{mode:'match',normalMoves:'workbook-v104'}});
+ const archive=storageApi.withLatestPitReplay(storageApi.createPitReplayArchive(OWNER),replay,UPDATED);
+ const storage=memoryStorage();const written=storageApi.writePitReplayArchive(archive,{ownerSaveCreatedAt:OWNER,storage});
+ assert.equal(written.persisted,true);
+ const loaded=storageApi.loadPitReplayArchive({ownerSaveCreatedAt:OWNER,storage});
+ assert.equal(loaded.loaded,true);assert.equal(loaded.archive.latestReplay.engineVersion,12);
+ assert.equal(loaded.archive.latestReplay.rules.normalMoves,'workbook-v104');
+ assert.equal(loaded.archive.latestReplay.metadata.checksum,replay.metadata.checksum);
+ assert.equal(storageApi.loadPitReplayArchive({ownerSaveCreatedAt:OTHER_OWNER,storage,key:storageApi.pitReplayStorageKey(OWNER)}).failure,'owner-conflict');
 });

@@ -5,12 +5,13 @@ import type { PitMatchCompleteResult, PitMatchPersistenceAck, PitRunTransition }
 import { applyPitResult, createPitSave, loadPitSave, pitSaveStorageKey, persistPitCircuitRun, persistPitDescentRun, replacePitCircuitRun, replacePitDescentRun, writePitSave, type PitSaveV5 } from './systems/pitSave';
 import type { PitCircuitRun } from './systems/pitCircuit';
 import { normalizePitReplay, type PitReplay } from './systems/pitReplay';
-import { createGameReserveV66, canAdvanceGameReserveV66, normalizeGameReserveV66, type GameReserveV66State } from './systems/gameReserveV66';
+import { createGameReserveV66, createGameReserveV104, canAdvanceGameReserveV66, normalizeGameReserveV66, type GameReserveV66State } from './systems/gameReserveV66';
 import { MAIN_MENU_BONUS_OWNER_V81, MAIN_MENU_MODE_LABELS_V81, mainMenuBonusStorageV81, type MainMenuBonusStorageV81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
 import { useMenuGamepad } from './useMenuGamepad';
 import { GAME_CONTENT_VERSION } from './buildInfo';
 import { GameAudio } from './sound';
 import styles from './MainMenuBonusModesV81.module.css';
+import reserveStyles from './GameReserveEntryV104.module.css';
 
 const Pit = lazy(() => import('./PitExperienceV79'));
 const Narrative = lazy(() => import('./PitNarrativeTrials'));
@@ -32,6 +33,7 @@ export default function MainMenuBonusModesV81({ mode, settings, onExit }: {
   const [loaded, setLoaded] = useState(false), [message, setMessage] = useState('');
   const [chronicleStorage, setChronicleStorage] = useState<Pick<MainMenuBonusStorageV81, 'getItem' | 'setItem'>>(UNAVAILABLE_STORAGE);
   const [reserveProtected, setReserveProtected] = useState(false), [replaceReserve, setReplaceReserve] = useState(false);
+  const [reserveVersion, setReserveVersion] = useState<1|2>(1);
   const storage = useRef<MainMenuBonusStorageV81 | null>(null), alive = useRef(true);
   const audio = useRef<GameAudio | null>(null);
   const reserveRef = useRef<GameReserveV66State | null>(null), reserveRaw = useRef<string | null>(null);
@@ -135,7 +137,7 @@ export default function MainMenuBonusModesV81({ mode, settings, onExit }: {
     if (!fresh && reserveRef.current) { setView('playing'); return; }
     const previous = reserveRef.current;
     const random = new Uint32Array(1); crypto.getRandomValues(random);
-    const state = createGameReserveV66(random[0]); reserveRef.current = null;
+    const state = reserveVersion === 2 ? createGameReserveV104(random[0]) : createGameReserveV66(random[0]); reserveRef.current = null;
     if (commitReserve(state)) { setReplaceReserve(false); setView('playing'); }
     else reserveRef.current = previous;
   };
@@ -157,7 +159,12 @@ export default function MainMenuBonusModesV81({ mode, settings, onExit }: {
     <section className={styles.panel}><p className={styles.eyebrow}>ACCÈS LIBRE · HORS CAMPAGNE</p><h1>{MAIN_MENU_MODE_LABELS_V81[mode]}</h1>
       <p>Votre histoire reste à son checkpoint actuel. Cet accès ne débloque ni rang, ni rite, ni arme, ni vaisseau dans la campagne.</p>
       <p>Les routes et chroniques de cet accès libre ont leur propre profil local sur cet appareil, séparé des cinq parties. Elles ne sont pas synchronisées avec le compte.</p>
-      {mode === 'game-reserve' && <p>Vharuun : trois secteurs reliés, huit combattants humains adultes armés et deux appareils qu’ils peuvent réparer pour s’évader. Cette réserve est une création du jeu.</p>}
+      {mode === 'game-reserve' && <p>Vharuun : huit combattants humains adultes armés et deux appareils qu’ils peuvent réparer pour s’évader. Les terrains reliés de cette réserve sont des créations du jeu.</p>}
+      {mode === 'game-reserve' && reserve && <p>Sortie enregistrée : {reserve.version === 2 ? 'expédition des Balises · quatre secteurs' : 'première expédition · trois secteurs'}. Reprendre conserve son terrain et son bilan.</p>}
+      {mode === 'game-reserve' && (!reserve || replaceReserve) && <label className={reserveStyles.choice}>Terrain de la nouvelle sortie <select aria-label="Terrain de la nouvelle expédition libre" value={reserveVersion} disabled={!loaded || reserveProtected} onChange={event=>setReserveVersion(event.target.value==='2'?2:1)} data-reserve-expedition-choice>
+        <option value="1">Première expédition · trois secteurs</option><option value="2">Expédition des Balises · quatre secteurs et relevé du poste haut</option>
+      </select></label>}
+      {mode === 'game-reserve' && (!reserve || replaceReserve) && reserveVersion === 2 && <p>La Crête des Balises prolonge ce terrain original. Rejoins le poste haut, relève ses repères en restant exposé deux secondes et retourne à l’extraction. Les huit combattants existants restent présents.</p>}
       {message && <p role="alert">{message}</p>}
       <div className={styles.actions}>
         <button type="button" disabled={!loaded || (mode === 'game-reserve' && reserveProtected)} data-bonus-start onClick={() => mode === 'the-pit' ? setView('playing') : launchReserve(false)}>{mode === 'the-pit' ? 'Entrer dans The Pit' : reserve ? reserve.status === 'active' ? 'Reprendre l’expédition libre' : 'Voir le bilan de l’expédition libre' : 'Commencer l’expédition libre'}</button>

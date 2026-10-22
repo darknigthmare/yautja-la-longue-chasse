@@ -1,11 +1,11 @@
 import { archiveTransferPending } from "./archiveTransferGuard";
 import {
   PIT_REPLAY_VERSION,
+  PIT_REPLAY_MAX_ENGINE_VERSION,
   normalizePitReplay,
   serializePitReplay,
   type PitReplay,
 } from "./pitReplay";
-import { PIT_STATE_VERSION } from "./pitCombat";
 
 /**
  * Campaign-owned persistence for the latest THE PIT replay.
@@ -133,7 +133,7 @@ function hasFutureVersion(value: unknown): boolean {
       value.latestReplay.version > PIT_REPLAY_VERSION) ||
     (typeof value.latestReplay.engineVersion === "number" &&
       Number.isFinite(value.latestReplay.engineVersion) &&
-      value.latestReplay.engineVersion > PIT_STATE_VERSION)
+      value.latestReplay.engineVersion > PIT_REPLAY_MAX_ENGINE_VERSION)
   );
 }
 
