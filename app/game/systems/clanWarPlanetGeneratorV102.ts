@@ -238,10 +238,10 @@ export function generateWarPlanetV102(input: WarPlanetRecipeV102): GeneratedWarP
 const generatedCache = new Map<string, GeneratedWarPlanetV102>();
 export const WAR_GENERATED_PLANET_CACHE_LIMIT_V102 = 24;
 export function generatedWarPlanetV102(id: string): GeneratedWarPlanetV102 | undefined {
-  const recipe = parseWarPlanetV102(id);
-  if (!recipe) return undefined;
   const existing = generatedCache.get(id);
   if (existing) { generatedCache.delete(id); generatedCache.set(id, existing); return existing; }
+  const recipe = parseWarPlanetV102(id);
+  if (!recipe) return undefined;
   const planet = generateWarPlanetV102(recipe);
   generatedCache.set(id, planet);
   while (generatedCache.size > WAR_GENERATED_PLANET_CACHE_LIMIT_V102) generatedCache.delete(generatedCache.keys().next().value!);

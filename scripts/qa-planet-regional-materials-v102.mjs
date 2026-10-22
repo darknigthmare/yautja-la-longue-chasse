@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright-core";
 import sharp from "sharp";
+import { reportGithubActionsFailure } from "./lib/github-actions-annotation.mjs";
 import { homeworldSceneSsrV78 } from "../tests/helpers/homeworld-scene-ssr-v78.mjs";
 
 const base = process.env.YAUTJA_PLANET_MATERIAL_URL ?? "http://127.0.0.1:3101";
@@ -168,7 +169,10 @@ try {
   assert.deepEqual(report.errors, []);
   report.ok = true;
   report.limitations = ["Software WebGL validates both precision branches; it does not certify every physical mobile GPU."];
-} catch (error) { report.ok = false; report.failure = error.stack; process.exitCode = 1; }
+} catch (error) {
+  report.ok = false; report.failure = error.stack; process.exitCode = 1;
+  reportGithubActionsFailure("Planet regional materials V102 browser journey", error);
+}
 finally {
   await fs.writeFile(path.join(output, "regional-material-checks.json"), JSON.stringify(report, null, 2) + "\n");
   await browser.close();

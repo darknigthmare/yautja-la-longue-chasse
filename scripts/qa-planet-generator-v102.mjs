@@ -4,12 +4,13 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { chromium } from "playwright-core";
 import sharp from "sharp";
+import { reportGithubActionsFailure } from "./lib/github-actions-annotation.mjs";
 
 // This journey uses the production generator and strategic panel. Only storage
 // and clipboard failure fixtures are injected, in isolated browser contexts.
 const baseUrl = process.env.YAUTJA_QA_BASE_URL ?? "http://127.0.0.1:3101";
 const output = path.resolve(process.env.YAUTJA_GENERATOR_QA_OUTPUT ?? "outputs/qa-planet-generator-v102");
-const reportPath = path.resolve("docs/planet-generator-v102/ui-qa.json");
+const reportPath = path.resolve(process.env.YAUTJA_GENERATOR_QA_REPORT ?? "docs/planet-generator-v102/ui-qa.json");
 const catalogueKey = "yautja.clan-war.v102.generated-catalog";
 const archiveKey = id => `yautja.clan-war.v96.planet.${id}.free.v1`;
 const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
@@ -270,6 +271,7 @@ try {
   check("all exercised browser journeys are free from runtime and hydration errors", errors.length === 0 && !consoleErrors.some(error => /hydration|hydrating|uncaught|react error/i.test(error)));
 } catch (error) {
   failure = error instanceof Error ? error.stack : String(error);
+  reportGithubActionsFailure("Planet generator V102 browser journey", error);
   if (page) await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true }).catch(() => {});
 } finally {
   await fs.writeFile(reportPath, JSON.stringify({

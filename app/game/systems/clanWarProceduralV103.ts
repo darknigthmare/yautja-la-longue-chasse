@@ -41,6 +41,8 @@ export function encodeWarPlanetRecipeCodeV103(recipe: WarPlanetRecipeAnyV103): s
 }
 
 export function resolveProceduralWarPlanetV103(id: string): GeneratedWarPlanetAnyV103 | undefined {
-  const recipe = parseWarPlanetRecipeCodeV103(id);
-  return recipe?.version === 102 ? generatedWarPlanetV102(id) : recipe?.version === 103 ? generatedWarPlanetV103(id) : undefined;
+  if (typeof id !== "string") return undefined;
+  // The versioned caches contain only fully validated, canonical identifiers.
+  // Dispatch here without decoding again on every visited supply-route node.
+  return id.startsWith("proc-v102-") ? generatedWarPlanetV102(id) : id.startsWith("proc-v103-") ? generatedWarPlanetV103(id) : undefined;
 }

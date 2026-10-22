@@ -4,6 +4,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { chromium } from "playwright-core";
 import sharp from "sharp";
+import { reportGithubActionsFailure } from "./lib/github-actions-annotation.mjs";
 
 // Uses the real editor, atlas and strategic panel. Storage failures are injected
 // only in an isolated context; no game state or rendering is mocked.
@@ -264,6 +265,7 @@ try {
   check("all journeys are free from browser runtime and hydration errors", errors.length === 0 && !consoleErrors.some(error => /hydration|hydrating|uncaught|react error/i.test(error)));
 } catch (error) {
   failure = error instanceof Error ? error.stack : String(error);
+  reportGithubActionsFailure("Planet generator V103 browser journey", error);
   if (page) await page.screenshot({ path: path.join(output, "failure.png"), fullPage: false }).catch(() => {});
 } finally {
   await fs.writeFile(reportPath, JSON.stringify({ route: "/planet-generator-v103", checkedAt: new Date().toISOString(), viewport: [1440, 1080], mobileViewport: [390, 844], worldSmall, worldLarge, worldLegacy, pngResult, hydrologyHit, checks, errors, consoleErrors, passed: !failure, ...(failure ? { failure } : {}) }, null, 2) + "\n");
