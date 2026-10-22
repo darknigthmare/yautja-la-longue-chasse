@@ -1,5 +1,6 @@
 import { drawActorContactShadow } from "./spriteContact";
-import { GAME_RESERVE_V66_COVER, GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_PLATFORMS, GAME_RESERVE_V66_SHIPS, GAME_RESERVE_V66_SUPPLIES, GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, type GameReserveV66State } from "./systems/gameReserveV66";
+import { GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_SHIPS, GAME_RESERVE_V66_SUPPLIES, GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
+import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
 
 /** Reused native art. The original hunter is a held drawing, not an invented animation sheet. */
 export const GAME_RESERVE_V66_ART = {
@@ -34,24 +35,31 @@ function componentMarker(ctx: CanvasRenderingContext2D, x: number, y: number, co
   if (count !== undefined) label(ctx, "Pièces × " + count, x, y - 31, "#b2e9dc"); ctx.restore();
 }
 export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserveV66State, bank: GameReserveV66Art | null, reducedMotion = false) {
-  const viewportWidth = ctx.canvas.width;
+  const viewportWidth = ctx.canvas.width, worldWidth = gameReserveV66World(s).width, platforms = gameReserveV66Platforms(s), sectors = gameReserveV66Sectors(s);
   ctx.save(); ctx.clearRect(0, 0, viewportWidth, 540); ctx.fillStyle = "#07100e"; ctx.fillRect(0, 0, viewportWidth, 540);
   if (!bank) { ctx.restore(); return; }
   // Expand the visible horizontal world for short screens instead of shrinking a fixed 16:9 postcard.
   // Vertical gameplay coordinates, floor contact, actor proportions and collision geometry stay unchanged.
-  const camera = Math.max(0, Math.min(Math.max(0, 4800 - viewportWidth), s.player.x - viewportWidth * .4));
+  const camera = Math.max(0, Math.min(Math.max(0, worldWidth - viewportWidth), s.player.x - viewportWidth * .4));
   // One cover panorama keeps the moon and skyline unique; only its bounded overscan can scroll.
   // A high focal point retains the sky on wide screens. The ground strip remains independently tiled.
   const bg = bank.background, overscan = Math.min(160, viewportWidth * .12);
   const scale = Math.max((viewportWidth + overscan) / bg.naturalWidth, 438 / 770);
   const width = bg.naturalWidth * scale, height = 770 * scale;
-  const travel = camera / Math.max(1, 4800 - viewportWidth);
+  const travel = camera / Math.max(1, worldWidth - viewportWidth);
   ctx.drawImage(bg, 0, 0, bg.naturalWidth, 770, -(width - viewportWidth) * travel, -(height - 438) * .15, width, height);
   for (let x = -camera % 700 - 700; x < viewportWidth; x += 700) ctx.drawImage(bg, 0, 770, bg.naturalWidth, bg.naturalHeight - 770, x, 438, 700, 102);
   ctx.translate(-camera, 0);
   // Derelict machine walls stay behind the walkable strip. Native hulls never sit on the canopy route.
   ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);
-  for (const platform of GAME_RESERVE_V66_PLATFORMS) {
+  if (s.version === 2) {
+    // Existing native machinery marks the lookout; the survey icon is functional HUD, not a new prop asset.
+    const site = GAME_RESERVE_LOOKOUT_V104_SURVEY;
+    ctx.drawImage(bank.machinery, site.x - 120, 146, 240, 132);
+    label(ctx, s.lookout.recordedAt === null ? "POSTE HAUT · RELEVÉ (2 s)" : "REPÈRES CONSIGNÉS · RETOUR À L’OUEST", site.x, 118, "#c4e3dc");
+    ctx.strokeStyle = "#c4e3dc"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
+  }
+  for (const platform of platforms) {
     const image = platform.x >= 1700 && platform.x < 3000 ? bank.industrialPlatform : bank.branch;
     ctx.drawImage(image, platform.x, platform.y - 3, platform.w, Math.min(115, platform.w * image.naturalHeight / image.naturalWidth));
     ctx.strokeStyle = "#a9c68988"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(platform.x + 8, platform.y); ctx.lineTo(platform.x + platform.w - 8, platform.y); ctx.stroke();
@@ -87,27 +95,27 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
       label(ctx, h.identified ? definition.name : "Combattant armé", h.x, 329, h.alertUntil > s.tick ? "#f8b495" : "#e9efd4");
       if (h.windup > 0) { ctx.fillStyle = "#ffab69"; ctx.beginPath(); ctx.moveTo(h.x, 292); ctx.lineTo(h.x - 7, 307); ctx.lineTo(h.x + 7, 307); ctx.closePath(); ctx.fill(); }
       if (h.scan > 0 && !h.identified) { ctx.fillStyle = "#76e2d0"; ctx.fillRect(h.x - 25, 311, h.scan / 90 * 50, 3); }
-      if (h.recovering && Math.abs(h.x - s.player.x) < 330 && gameReserveV66LineClear(s.player.x, s.player.y - 55, h.x, 385)) {
+      if (h.recovering && Math.abs(h.x - s.player.x) < 330 && gameReserveV66LineClear(s.player.x, s.player.y - 55, h.x, 385, s)) {
         label(ctx, h.recovering.ticks ? "Récupération en cours" : "Rejoint un porteur abattu", h.x, 354, "#b2e9dc");
         if (h.recovering.ticks) { ctx.fillStyle = "#b2e9dc"; ctx.fillRect(h.x - 25, 360, h.recovering.ticks / GAME_RESERVE_V99_RECOVERY_TICKS * 50, 3); }
       }
     } else label(ctx, h.secured ? "Prise sécurisée" : "Prélèvement possible", h.x, 404, "#dac29f");
   }
-  const p = s.player, floor = GAME_RESERVE_V66_PLATFORMS.find(a => p.x >= a.x && p.x <= a.x + a.w && a.y >= p.y)?.y ?? 438;
+  const p = s.player, floor = platforms.find(a => p.x >= a.x && p.x <= a.x + a.w && a.y >= p.y)?.y ?? 438;
   drawActorContactShadow(ctx, p.x, floor, 18, floor - p.y);
   ctx.save(); ctx.translate(p.x, p.y); ctx.scale(p.facing, 1); ctx.globalAlpha = p.cloak ? .34 : 1;
   ctx.drawImage(bank.hunter, 308, 56, 667, 1013, -41, -124, 82, 124); ctx.restore();
   for (const b of s.projectiles) { ctx.strokeStyle = b.owner === "hunter" ? "#8ee9ff" : "#ffd990"; ctx.lineWidth = b.owner === "hunter" ? 4 : 2; ctx.beginPath(); ctx.moveTo(b.x - b.vx * 1.6, b.y - b.vy * 1.6); ctx.lineTo(b.x, b.y); ctx.stroke(); }
-  for (const cover of GAME_RESERVE_V66_COVER) { ctx.globalAlpha = p.x > cover.x - 30 && p.x < cover.x + cover.w + 30 ? .5 : .85; ctx.drawImage(bank.ferns, cover.x - 12, cover.top, cover.w + 24, 438 - cover.top + 7); } ctx.globalAlpha = 1;
+  for (const cover of gameReserveV66Cover(s)) { ctx.globalAlpha = p.x > cover.x - 30 && p.x < cover.x + cover.w + 30 ? .5 : .85; ctx.drawImage(bank.ferns, cover.x - 12, cover.top, cover.w + 24, 438 - cover.top + 7); } ctx.globalAlpha = 1;
   label(ctx, "EXTRACTION · maintenir Interagir", 150, 294, "#b9e5c0");
   ctx.strokeStyle = "#b9e5c0"; ctx.setLineDash([7, 4]); ctx.beginPath(); ctx.moveTo(65, 441); ctx.lineTo(165, 441); ctx.stroke(); ctx.setLineDash([]);
   const interaction = gameReserveV66Interaction(s);
-  if (interaction.kind !== "none") label(ctx, interaction.kind === "return" ? "Maintenir : rentrer" : interaction.kind === "trophy" ? "Maintenir : prélever (3 s)" : interaction.kind === "cache" ? "Maintenir : neutraliser un lot (2 s)" : s.ships[interaction.target].launch !== null ? "Maintenir : interrompre le décollage (1,5 s)" : "Maintenir : saboter (1,5 s)", p.x, Math.min(p.y + 29, 483), "#f8d793");
+  if (interaction.kind !== "none") label(ctx, interaction.kind === "return" ? "Maintenir : rentrer" : interaction.kind === "trophy" ? "Maintenir : prélever (3 s)" : interaction.kind === "cache" ? "Maintenir : neutraliser un lot (2 s)" : interaction.kind === "survey" ? "Maintenir : relever les repères (2 s)" : s.ships[interaction.target].launch !== null ? "Maintenir : interrompre le décollage (1,5 s)" : "Maintenir : saboter (1,5 s)", p.x, Math.min(p.y + 29, 483), "#f8d793");
   if (s.channel.ticks) { ctx.fillStyle = "#13261ee8"; ctx.fillRect(p.x - 42, p.y - 143, 84, 8); ctx.fillStyle = "#cfdd94"; ctx.fillRect(p.x - 42, p.y - 143, 84 * s.channel.ticks / gameReserveV66InteractionDuration(s.channel.kind), 8); }
   ctx.restore();
   // Topographic line shows geography and the player's position only, never unseen prey positions.
   const mapWidth = Math.min(380, viewportWidth - 36), mapLeft = (viewportWidth - mapWidth) / 2;
   ctx.save(); ctx.fillStyle = "#071713d9"; ctx.fillRect(mapLeft - 12, 505, mapWidth + 24, 29); ctx.strokeStyle = "#769384"; ctx.beginPath(); ctx.moveTo(mapLeft, 520); ctx.lineTo(mapLeft + mapWidth, 520); ctx.stroke();
-  for (let n = 0; n < 4; n++) { ctx.beginPath(); ctx.moveTo(mapLeft + n * mapWidth / 3, 515); ctx.lineTo(mapLeft + n * mapWidth / 3, 525); ctx.stroke(); }
-  ctx.fillStyle = "#dddfad"; ctx.beginPath(); ctx.arc(mapLeft + p.x / 4800 * mapWidth, 520, 4, 0, Math.PI * 2); ctx.fill(); ctx.font = "12px sans-serif"; ctx.textAlign = "center"; ctx.fillText(gameReserveV66Sector(p.x).name, viewportWidth / 2, 496); ctx.restore();
+  for (let n = 0; n <= sectors.length; n++) { ctx.beginPath(); ctx.moveTo(mapLeft + n * mapWidth / sectors.length, 515); ctx.lineTo(mapLeft + n * mapWidth / sectors.length, 525); ctx.stroke(); }
+  ctx.fillStyle = "#dddfad"; ctx.beginPath(); ctx.arc(mapLeft + p.x / worldWidth * mapWidth, 520, 4, 0, Math.PI * 2); ctx.fill(); ctx.font = "12px sans-serif"; ctx.textAlign = "center"; ctx.fillText(gameReserveV66Sector(p.x, s).name, viewportWidth / 2, 496); ctx.restore();
 }

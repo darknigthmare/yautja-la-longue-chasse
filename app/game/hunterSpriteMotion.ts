@@ -1,4 +1,5 @@
-import { getPitCombatFighterDefinition } from './systems/pitCombat';
+import { getPitWorkbookNormalV104 } from './systems/pitWorkbookNormalsV104';
+import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './systems/pitCombat';
 /**
  * Pure PIT-to-authored-sprite adapter. No Canvas, rig, interpolation, gameplay
  * mutation or hidden clock. Each phase selects an independently drawn clip.
@@ -109,8 +110,10 @@ export function describePitHunterSpriteMotion(
     !tick(fighter.cloakFramesRemaining)) return null;
   const definition = getPitCombatFighterDefinition(fighter);
   const facing = fighter.facing === 1 ? "right" : "left";
-  const posture: PitHunterSpritePosture =
-    !fighter.grounded ? "air" : fighter.crouching || fighter.guard === "low" ? "crouch" : "stand";
+  const normal = fighter.normalMovesRecipe === 'workbook-v104' && fighter.action?.normalMove
+    ? getPitWorkbookNormalV104(fighter.definitionId, fighter.action.normalMove) : undefined;
+  const posture: PitHunterSpritePosture = normal?.posture ?? (
+    !fighter.grounded ? "air" : fighter.crouching || fighter.guard === "low" ? "crouch" : "stand");
   const prefix = "pit." + posture + ".";
   let clipId = "idle";
   let phase: PitHunterSpritePhase = "hold";
@@ -189,7 +192,7 @@ export function describePitHunterSpriteMotion(
       (current.kind !== "throw" && current.kind !== "attack") ||
       (current.kind === "attack" && (!current.attack || !attackKinds.has(current.attack)))) return null;
     action = current.kind === "throw" ? "throw" : current.attack!;
-    const timing = current.kind === "throw" ? PIT_HUNTER_SPRITE_THROW_TIMING : definition.attacks[current.attack!];
+    const timing = current.kind === "throw" ? PIT_HUNTER_SPRITE_THROW_TIMING : getPitCombatAttackDefinition(fighter, current.attack!);
     const total = timing.startup + timing.active + timing.recovery;
     if (current.frame >= total) return null;
     phase = current.frame < timing.startup ? "startup" :
@@ -201,7 +204,7 @@ export function describePitHunterSpriteMotion(
     durationTicks = timing[phase];
     clock = "action-phase";
     techniqueId = action === "technique" ? definition.technique.id : null;
-    const actionId = techniqueId ? "technique." + techniqueId : action;
+    const actionId = normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
     clipId = prefix + actionId + "." + phase;
     if (action === "throw") {
       throwOutcome = phase === "recovery" ? current.connected ? "connected" : "whiff" : "pending";

@@ -7,6 +7,7 @@ import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
 import HomeworldBackdropV81 from './HomeworldBackdropV81';
 import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
 import HomeworldEcotonesV90 from './HomeworldEcotonesV90';
+import HomeworldCartographerV104 from './HomeworldCartographerV104';
 import {HOMEWORLD_RETAINING_SUPPORTS_V82} from './systems/homeworldRetainingAssembliesV82';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
@@ -48,8 +49,8 @@ const visible=(box:{left:number;top:number;width:number;height:number},camera:Ca
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,activeStreetContactV100=null,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
- actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
@@ -63,6 +64,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   return <HomeworldNativePropV64 key={key} id={key} artId={artId} art={art} x={p.x} y={p.y} depth={depth(level,point.y,extraElevation)} heightWorld={heightWorld} style={{opacity}}/>;
  };
  return <>
+  <HomeworldCartographerV104 levelId={levelId} seconds={seconds} active={activeCartographyV104}/>
   <HomeworldBackdropV81 camera={camera} levelId={levelId} paintedLevels={paintedLevels} seconds={seconds} reducedMotion={reducedMotion}/>
   <HomeworldLavaSceneV77 actor={actor} skiffActive={skiffActive} skiffPoint={actor} floor={levelId} camera={camera} seconds={seconds} reducedMotion={reducedMotion}/>
   {painted('0')&&<svg aria-hidden="true" data-homeworld-natural-ground-v77="true" data-natural-support-solid-v85="false" width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`} style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-11001,pointerEvents:'none'}}>

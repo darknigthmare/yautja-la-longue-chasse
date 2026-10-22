@@ -60,6 +60,10 @@ import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORL
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
 import HomeworldStreetConversationV100 from "./HomeworldStreetConversationV100";
+import HomeworldCartographyV104, {HomeworldCartographyJournalV104} from './HomeworldCartographyV104';
+import {HOMEWORLD_CARTOGRAPHY_V104} from './systems/homeworldCartographyDefinitionV104';
+import {defaultHomeworldCartographyV104,normalizeHomeworldCartographyV104} from './systems/homeworldCartographyLedgerV104';
+import {createCartographyTransactionV104,cartographyPostReachedV104,sampleCartographyWalkV104,type CartographyActionV104} from './systems/homeworldCartographyV104';
 import {homeworldStreetContactReachedV100,nearestHomeworldStreetContactV100,homeworldStreetPlacesV100} from './systems/homeworldStreetContactsV100';
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
@@ -146,7 +150,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const [wayfindingOpenV75, setWayfindingOpenV75] = useState(false);
   const wayfindingOpenRefV75 = useRef(false);
   const [wayfindingRequestV75, setWayfindingRequestV75] = useState<{ id: string; nonce: number } | null>(null);
-  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentId?: string; streetContactV100?:{id:string;owner:string}; cntlipSiteId?:CntlipSiteIdV77 } | null>(null);
+  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentId?: string; streetContactV100?:{id:string;owner:string}; cartographyV104?:{owner:string}; cntlipSiteId?:CntlipSiteIdV77 } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const viewportRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
@@ -155,6 +159,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const touch = useRef({ left: false, right: false, up: false, down: false, jump: false, sprint: false });
   const [touchRunningV81, setTouchRunningV81] = useState(false);
   const progressRef = useRef(save.homeworld);
+  const cartographyDraftRefV104=useRef(normalizeHomeworldCartographyV104(save.homeworld.cartographyV104)??defaultHomeworldCartographyV104(save.createdAt));
+  const cartographyWritePausedRefV104=useRef(false);
+  const [cartographyWritePausedV104,setCartographyWritePausedV104]=useState(false);
+  const [cartographyMessageV104,setCartographyMessageV104]=useState('');
   const saveRef = useRef(save);
   const suspendedRef = useRef(suspended);
   const pausedRef = useRef(paused || inactive || spatialCodexOpen || wayfindingOpenV75);
@@ -182,7 +190,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const reducedMotionV77 = useHomeworldReducedMotionV77();
   const motionAssetsV74 = useHomeworldMotionAssetsV74({ youth: youthWelcome, additionalSources:sceneSourcesV77 });
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
-  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready || liftSessionOwnerV83 !== save.createdAt;
+  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready || liftSessionOwnerV83 !== save.createdAt || cartographyWritePausedV104;
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
     if (!arrivalV67 || appliedArrivalV67.current === arrivalV67.requestId) return;
@@ -212,6 +220,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       wayfindingOpenRefV75.current = false; setWayfindingOpenV75(false); setWayfindingRequestV75(null);
     }
     progressRef.current = save.homeworld; saveRef.current = save;
+    const incoming=normalizeHomeworldCartographyV104(save.homeworld.cartographyV104)??defaultHomeworldCartographyV104(save.createdAt);
+    if(cartographyDraftRefV104.current.ownerCreatedAt!==save.createdAt){cartographyWritePausedRefV104.current=false;setCartographyWritePausedV104(false);setCartographyMessageV104('');}
+    if(cartographyDraftRefV104.current.ownerCreatedAt!==save.createdAt||incoming.revision>cartographyDraftRefV104.current.revision)cartographyDraftRefV104.current=incoming;
   }, [save]);
   useEffect(() => {
     // This side state belongs to the campaign identity, not its current floor.
@@ -244,9 +255,21 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const onProgress = useCallback((next: HomeworldProgress) => {
     if (saveRef.current.createdAt !== save.createdAt || transitRefV77.current || skiffRefV77.current) return false;
     const locationV77 = createHomeworldCheckpointV77(save.createdAt, levelRefV77.current, actorRef.current, interiorRef.current?.buildingId ?? null, exteriorAnchorRef.current);
-    const durable = { ...next, locationV77 };
+    // Carry the sampled walk into every ordinary city save, including visit
+    // and location checkpoints. A reload never pairs a newer position with
+    // an older walk endpoint. Explicit dialogue actions supply their own ledger.
+    let cartographyV104=next.cartographyV104;
+    const draft=cartographyDraftRefV104.current;
+    if((cartographyV104?.revision??0)<(progressRef.current.cartographyV104?.revision??0))return false;
+    if((cartographyV104?.revision??0)===(progressRef.current.cartographyV104?.revision??0)&&draft.ownerCreatedAt===save.createdAt&&draft.receipt&&JSON.stringify(draft)!==JSON.stringify(cartographyV104)){
+      cartographyV104={...draft,revision:draft.revision+1};
+    }
+    if(cartographyV104&&(!normalizeHomeworldCartographyV104(cartographyV104)||cartographyV104.ownerCreatedAt!==save.createdAt))return false;
+    const durable = { ...next, locationV77,...(cartographyV104?{cartographyV104}:{}) };
     if (!persistProgress(durable)) return false;
     progressRef.current = durable;
+    if(cartographyV104)cartographyDraftRefV104.current=cartographyV104;
+    cartographyWritePausedRefV104.current=false;setCartographyWritePausedV104(false);
     return true;
   }, [persistProgress, save.createdAt]);
   const recordLocationV77 = useCallback(() => {
@@ -261,6 +284,38 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     touch.current = { left: false, right: false, up: false, down: false, jump: false, sprint: false };
     setTouchRunningV81(false);
   }, []);
+  const cartographyContextV104=useCallback((active=true)=>({
+    ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:saveRef.current.createdAt,actor:{x:actorRef.current.x,y:actorRef.current.y},levelId:levelRefV77.current,
+    visitedDistrictIds:progressRef.current.visitedDistrictIds,interiorId:interiorRef.current?.buildingId,inTransit:!!transitRefV77.current||!!skiffRefV77.current,
+    active:active&&!suspendedRef.current&&!pausedRef.current&&!document.hidden&&document.hasFocus(),
+  }),[save.createdAt]);
+  const cartographyWriteRefusedV104=useCallback((message:string)=>{
+    cartographyWritePausedRefV104.current=true;setCartographyWritePausedV104(true);setCartographyMessageV104(message);clearInputs();
+  },[clearInputs]);
+  const submitCartographyV104=useCallback((action:CartographyActionV104,expectedRevision:number)=>{
+    const transaction=createCartographyTransactionV104(()=>cartographyDraftRefV104.current,cartographyContextV104,next=>onProgress({...progressRef.current,cartographyV104:next}));
+    const result=transaction(action,expectedRevision);
+    if(!result.ok){if(result.message.startsWith('Le relevé n’a pas été enregistré'))cartographyWriteRefusedV104(result.message);else setCartographyMessageV104(result.message);return false;}
+    setCartographyMessageV104(result.message);return true;
+  },[cartographyContextV104,onProgress,cartographyWriteRefusedV104]);
+  const interruptCartographyV104=useCallback(()=>{
+    const draft=cartographyDraftRefV104.current;
+    return !draft.receipt||!['walking','return'].includes(draft.receipt.phase)||submitCartographyV104('interrupt',draft.revision);
+  },[submitCartographyV104]);
+  const sampleCartographyV104=useCallback((before:{x:number;y:number},after:{x:number;y:number},seconds:number)=>{
+    if(cartographyWritePausedRefV104.current)return;
+    const result=sampleCartographyWalkV104(cartographyDraftRefV104.current,before,after,seconds,cartographyContextV104());
+    if(result.invalid){interruptCartographyV104();return;}
+    cartographyDraftRefV104.current=result.ledger;
+    if(result.checkpoint){
+      if(onProgress(progressRef.current))setCartographyMessageV104(result.ledger.receipt?.nextWaypoint===2?'Les deux repères sont enregistrés. Reviens à pied au pupitre.':'Premier repère enregistré. Rejoins maintenant la lampe de la cour.');
+      else cartographyWriteRefusedV104('Le repère parcouru n’a pas été enregistré. Réessaie ici avant de poursuivre.');
+    }
+  },[cartographyContextV104,interruptCartographyV104,onProgress,cartographyWriteRefusedV104]);
+  const retryCartographyV104=()=>{
+    if(onProgress(progressRef.current))setCartographyMessageV104('Le relevé est enregistré. Tu peux reprendre la marche.');
+    else cartographyWriteRefusedV104('L’enregistrement reste indisponible ; le relevé est conservé ici.');
+  };
   const cntlipV77=useHomeworldCntlipV77({save,actor,room:interior,sceneReady:!suspended&&!paused&&!inactive&&!transitV77&&!skiffV77&&motionAssetsV74.ready,saveRef,progressRef,actorRef,interiorRef,onProgress,clearInputs,onNotify,
     sceneAvailable:()=>!suspendedRef.current&&!pausedRef.current&&!transitRefV77.current&&!skiffRefV77.current&&!document.hidden});
   const {open:openCntlipV77,leave:leaveCntlipV77}=cntlipV77;
@@ -376,6 +431,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
 
   const closeDialog = useCallback(() => {
     leaveCntlipV77();
+    dialogStateRef.current=null;
     setDialog(null);
     clearInputs();
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
@@ -384,6 +440,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const interact = useCallback(() => {
     if (suspendedRef.current || pausedRef.current || dialogStateRef.current || transitRefV77.current || skiffRefV77.current) return;
     const room = interiorRef.current;
+    if(cartographyWritePausedRefV104.current)return;
+    const reportingAtPost=!room&&cartographyDraftRefV104.current.receipt?.phase==='return'&&cartographyPostReachedV104(cartographyContextV104());
+    if(!reportingAtPost&&!interruptCartographyV104())return;
     if (!room) {
       const near = nearestHomeworldConnectorV77(levelRefV77.current, actorRef.current);
       let liftReady = true;
@@ -414,6 +473,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if(socialHost&&openCntlipV77(socialHost.siteId)){
       setActor(actorRef.current);const next={point:null,cntlipSiteId:socialHost.siteId};dialogStateRef.current=next;setDialog(next);return;
     }
+    if(!room&&cartographyPostReachedV104(cartographyContextV104())){
+      clearInputs();const stopped={...actorRef.current,vx:0,vy:0};actorRef.current=stopped;setActor(stopped);
+      const next={point:null,cartographyV104:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);return;
+    }
     const door = room ? null : nearestHomeworldDoorV77(levelRefV77.current, actorRef.current);
     if (door) { enterInterior(door.id); return; }
     const point = pointInCurrentSpace(actorRef.current, room, levelRefV77.current);
@@ -439,7 +502,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, youthWelcome,openCntlipV77,updateLiftStationV83]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, youthWelcome,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -517,7 +580,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       }
       // Context-changing actions cannot move the actor in the same frame.
       const handledAction = gamepad.actions.pause || gamepad.actions.confirm || gamepad.actions.cancel;
-      if (active && !suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden && !handledAction) {
+      if (active && !suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden && !handledAction && !cartographyWritePausedRefV104.current) {
         // Empty machinery and passengers share this focus/modal-gated clock.
         // An empty arrival never boards the hunter or writes a campaign save.
         if (liftSessionReadyRefV83.current && liftRefV83.current.ownerCreatedAt === saveRef.current.createdAt) {
@@ -564,6 +627,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           : stepHomeworldWorldActorV77(before, controls, dt, levelRefV77.current);
         jumpWasPressed = jump;
         actorRef.current = next;
+        sampleCartographyV104(before,next,dt);
         // Advance native walk poses only by real travel, never by a doorway
         // teleport or a separate animation clock. Collision stops the cycle.
         const travelled = Math.hypot(next.x - before.x, next.y - before.y);
@@ -589,12 +653,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           persistVisit(entered.id);
         }
         if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); setYouthMotionV74(youthMotionRefV74.current); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
-      } else jumpWasPressed = false;
+      } else {
+        jumpWasPressed = false;
+        if(!cartographyWritePausedRefV104.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.cartographyV104||document.hidden)&&['walking','return'].includes(cartographyDraftRefV104.current.receipt?.phase??''))interruptCartographyV104();
+      }
       request = requestAnimationFrame(frame);
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onRegionV68, updateLiftStationV83]);
+  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onRegionV68, updateLiftStationV83,sampleCartographyV104,interruptCartographyV104]);
 
   const onWorldKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== viewportRef.current || blocked || event.altKey || event.ctrlKey || event.metaKey) return;
@@ -696,6 +763,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const selectedStreetContactV100=dialog?.streetContactV100?.owner===save.createdAt
     ?homeworldStreetContactReachedV100(dialog.streetContactV100.id,streetContextV100):null;
   const nearbyStreetContactV100=!nearbyResidentV68&&!interior?nearestHomeworldStreetContactV100(streetContextV100):null;
+  const nearbyCartographerV104=cartographyPostReachedV104({ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,
+    visitedDistrictIds:progress.visitedDistrictIds,interiorId,inTransit:!!transitV77||!!skiffV77,active:true});
+  const cartographyDialogV104=dialog?.cartographyV104?.owner===save.createdAt&&nearbyCartographerV104;
   const streetDialogueInvalidV100=!!dialog?.streetContactV100&&!selectedStreetContactV100;
   useEffect(()=>{
     if(!streetDialogueInvalidV100)return;
@@ -752,7 +822,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     "arena-steward": "Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur.",
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
-  const title = dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
+  const title = dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
   const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const youthSpeedV74 = Math.hypot(youthMotionV74.velocity.x, youthMotionV74.velocity.y);
@@ -766,7 +836,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       ? 'Embarquer · Ascenseur des délégations'
       : liftStateV83.journey ? 'Cabine en déplacement · Ascenseur des délégations' : 'Appeler la cabine · Ascenseur des délégations'
     : nearbyConnectorV77?.connector.name;
-  const interactionLabel = nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null);
+  const interactionLabel = nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null);
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
@@ -791,7 +861,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
-          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
+          : <HomeworldWorldSceneV77 actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
@@ -849,11 +919,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     </div>}
     <div id="homeworld-controls" className={styles.srOnly}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Course en maintenant <kbd>{controlActionShortcut("hunt.aim", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, maintenir L3 pour courir, A interaction, B fermer. Sur écran tactile, active Course puis une direction ; désactive Course pour marcher. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les dix routes rejoignent des villages de clan. Reçois les contrats à l’armurerie du marché et auprès des commanditaires ; consigne les preuves sur le terrain avant de les remettre."}</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
+    {!dialog&&<HomeworldCartographyJournalV104 ledger={progress.cartographyV104} blocked={suspended||paused||inactive||!motionAssetsV74.ready||cartographyWritePausedV104} message={cartographyMessageV104} writePaused={cartographyWritePausedV104}
+      onRetry={retryCartographyV104} onResume={()=>{if(submitCartographyV104('resume',cartographyDraftRefV104.current.revision))requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}}/>}
     {dialog && <div className={styles.backdrop}>
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
         <div className={styles.eyebrow}>{selectedNpc?.role ?? (selectedPoint?.kind === "region" ? selectedRegion?.status === "playable-introduction" ? selectedRegion.name + " · enquête régionale" : "Route vers le village de clan" : "La Couronne de Cendres")}</div>
         <h3 id="homeworld-dialog-title">{title}</h3>
-        {dialog.cntlipSiteId&&cntlipV77.siteId===dialog.cntlipSiteId ? <HomeworldCntlipV77 state={cntlipV77.ledger.state} context={cntlipV77.context}
+        {dialog.cartographyV104 ? cartographyDialogV104 ? <HomeworldCartographyV104 ledger={progress.cartographyV104} disabled={suspended||paused||inactive||!motionAssetsV74.ready} message={cartographyMessageV104} onAction={submitCartographyV104} onClose={closeDialog} reducedMotion={reducedMotionV77}/>
+          : <><p role="status">Rejoins le cartographe et son pupitre pour reprendre cette conversation.</p><button type="button" onClick={closeDialog}>Revenir à la cité</button></>
+        : dialog.cntlipSiteId&&cntlipV77.siteId===dialog.cntlipSiteId ? <HomeworldCntlipV77 state={cntlipV77.ledger.state} context={cntlipV77.context}
           invited={dialog.cntlipSiteId!=='ship-mess'&&cntlipV77.ledger.invitedSiteIds.includes(dialog.cntlipSiteId)}
           writePaused={cntlipV77.writePaused} message={cntlipV77.message} onAction={cntlipV77.submit} onSit={cntlipV77.install} onLeave={closeDialog}
           canResumeScene={!suspended} onResumeScene={()=>{setPaused(false);setInactive(false);requestAnimationFrame(()=>dialogRef.current?.focus({preventScroll:true}));}}/>

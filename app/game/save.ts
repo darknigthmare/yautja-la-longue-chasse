@@ -7,6 +7,7 @@ import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
 import {normalizeBibleSceneLedgerV86} from './systems/bibleSceneCulturalV86';
+import {normalizeHomeworldCartographyV104} from './systems/homeworldCartographyLedgerV104';
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
@@ -1439,6 +1440,13 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     }
   }
   if(isRecord(value.homeworld)){
+    if(value.homeworld.cartographyV104!==undefined){
+      const raw=value.homeworld.cartographyV104;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldCartographyV104(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt&&(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port')))return {save:null,failure:'invalid-save'};
+    }
     // Optional additive ledger: reject present incompatible bytes rather than
     // discarding a player's dialogue choices during load/export/cloud sync.
     if(value.homeworld.bibleScenesV86!==undefined){
@@ -1517,7 +1525,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
     }, passage.regionId).allowed) return { save: null, failure: "invalid-save" };
   }
-  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 1) return { save: null, failure: "future-version" };
+  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 2) return { save: null, failure: "future-version" };
   if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
   if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
       value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||
