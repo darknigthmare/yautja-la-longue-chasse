@@ -50,11 +50,13 @@ export function HomeworldCartographyJournalV104({ ledger, blocked, message, writ
   ledger: HomeworldCartographyLedgerV104 | undefined; blocked: boolean; message: string; writePaused: boolean; onResume(): void; onRetry(): void;
 }) {
   const r = ledger?.receipt;
-  if (!r || r.phase === 'completed' || r.phase === 'choice' || r.phase === 'ready') return null;
-  return <aside className={styles.journal} aria-label="Carnet de la liaison du port" data-cartography-journal-v104 data-cartography-waypoints={r.nextWaypoint} data-cartography-status={r.phase}>
-    <strong>{r.phase === 'interrupted' ? 'Marche interrompue' : r.phase === 'return' ? 'Retour au cartographe' : 'Liaison du port'} · {r.nextWaypoint}/2 repères</strong>
-    <span>{r.nextWaypoint===2 ? 'Reviens au pupitre du registre pour présenter ta liaison.' : `Prochaine approche : ${b.waypoints[r.nextWaypoint].label}.`}</span>
-    {r.phase === 'interrupted' && <button type="button" disabled={blocked} onClick={onResume}>Reprendre au dernier point sûr</button>}
+  const walkingReceipt = r && ['walking', 'return', 'interrupted'].includes(r.phase) ? r : null;
+  if (!walkingReceipt && !writePaused) return null;
+  return <aside className={styles.journal} aria-label="Carnet de la liaison du port" data-cartography-journal-v104 data-cartography-waypoints={r?.nextWaypoint ?? 0} data-cartography-status={r?.phase ?? 'offer'}>
+    {walkingReceipt ? <><strong>{walkingReceipt.phase === 'interrupted' ? 'Marche interrompue' : walkingReceipt.phase === 'return' ? 'Retour au cartographe' : 'Liaison du port'} · {walkingReceipt.nextWaypoint}/2 repères</strong>
+      <span>{walkingReceipt.nextWaypoint===2 ? 'Reviens au pupitre du registre pour présenter ta liaison.' : `Prochaine approche : ${b.waypoints[walkingReceipt.nextWaypoint].label}.`}</span></>
+      : <strong>Enregistrement du relevé suspendu</strong>}
+    {walkingReceipt?.phase === 'interrupted' && <button type="button" disabled={blocked} onClick={onResume}>Reprendre au dernier point sûr</button>}
     {writePaused && <button type="button" onClick={onRetry}>Réessayer l’enregistrement du relevé</button>}
     {message && <span role="status">{message}</span>}
   </aside>;

@@ -59,16 +59,33 @@ try{
  const scene=page.locator('[data-cartography-scene-v104]'),dialog=page.getByRole('dialog',{name:'Cartographe du poste rencontré',exact:true});await scene.waitFor();
  check('Real interaction key opens the local cartographer dialog with focus',await dialog.evaluate(e=>e.contains(document.activeElement)));
  check('Only the known port courtyard appears in the functional survey map',await scene.getByRole('img').count()===1&&/Les zones non observées restent hors du relevé/.test(await scene.innerText()));
- await page.evaluate(()=>{window.__cartoSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='yautja-long-hunt.save')throw new DOMException('QA quota','QuotaExceededError');return window.__cartoSetItem.call(this,k,v);};});
- await scene.getByRole('button',{name:'Tracer une route entre les points connus',exact:true}).click();await page.clock.runFor(80);
- check('Refused durable write leaves the choice absent in the real campaign save',!(await disk()).homeworld.cartographyV104&&await scene.getAttribute('data-cartography-phase')==='offer');
- await page.evaluate(()=>{Storage.prototype.setItem=window.__cartoSetItem;delete window.__cartoSetItem;});
+ async function refusedBeforeWalking(action,phase){
+  const previous=JSON.stringify((await disk()).homeworld.cartographyV104??null);
+  await page.evaluate(()=>{window.__cartoSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='yautja-long-hunt.save')throw new DOMException('QA quota','QuotaExceededError');return window.__cartoSetItem.call(this,k,v);};});
+  await scene.getByRole('button',{name:action,exact:true}).click();await page.clock.runFor(80);
+  check(`Refused ${phase} action leaves its durable receipt and phase unchanged`,JSON.stringify((await disk()).homeworld.cartographyV104??null)===previous&&await scene.getAttribute('data-cartography-phase')===phase);
+  await scene.getByRole('button',{name:'Revenir à la cour',exact:true}).click();await page.clock.runFor(80);
+  const retry=page.getByRole('button',{name:'Réessayer l’enregistrement du relevé',exact:true}),journal=page.locator('[data-cartography-journal-v104]');
+  check(`Closing the ${phase} dialog keeps a visible storage failure and retry control`,await retry.count()===1&&await journal.getByRole('status').count()===1);
+  await retry.click();await page.clock.runFor(80);
+  const stopped=await actor();await page.locator('[data-homeworld-viewport]').focus();await page.keyboard.down('ArrowRight');await page.clock.runFor(180);await page.keyboard.up('ArrowRight');await page.clock.runFor(50);
+  check(`A second refused ${phase} write remains retryable and cannot move or advance the receipt`,await retry.count()===1&&JSON.stringify(await actor())===JSON.stringify(stopped)&&JSON.stringify((await disk()).homeworld.cartographyV104??null)===previous);
+  await capture(`cartographer-write-paused-${phase}-desktop.png`);
+  await page.evaluate(()=>{Storage.prototype.setItem=window.__cartoSetItem;delete window.__cartoSetItem;});
+  await retry.click();await page.clock.runFor(80);
+  const recovered=await actor();await move('ArrowRight','x',recovered.x+40);
+  check(`Successful ${phase} storage retry restores actual movement without replaying the refused action`,(await actor()).x>recovered.x+20&&await retry.count()===0&&JSON.stringify((await disk()).homeworld.cartographyV104??null)===previous);
+  await move('ArrowLeft','x',5920);await page.keyboard.press('KeyE');await page.clock.runFor(80);await scene.waitFor();
+ }
+ await refusedBeforeWalking('Tracer une route entre les points connus','offer');
  await scene.getByRole('button',{name:'Tracer une route entre les points connus',exact:true}).click();await page.clock.runFor(80);
  check('Retry records the exact source B choice once',await scene.getAttribute('data-cartography-phase')==='choice'&&await scene.locator('[data-cartography-source-line="D6-W-PNJ-ROLE-12-CHOIX-B-01"]').count()===1);
+ await refusedBeforeWalking('Écouter le cartographe','choice');
  await scene.getByRole('button',{name:'Écouter le cartographe',exact:true}).click();await page.clock.runFor(80);
  check('Present source speaker gives the B response without playing the unavailable high-point branch',await scene.locator('[data-cartography-source-line="D6-W-PNJ-ROLE-12-REPONSE-B-01"]').count()===1&&await scene.locator('[data-cartography-source-line*="CHOIX-A"]').count()===0);
  const stopped=await actor();await page.keyboard.down('ArrowRight');await page.clock.runFor(250);await page.keyboard.up('ArrowRight');check('World movement remains stopped behind the actual dialog',JSON.stringify(await actor())===JSON.stringify(stopped));
  await capture('cartographer-briefing-desktop.png',dialog);
+ await refusedBeforeWalking('Partir à pied vers le bac','ready');
  await scene.getByRole('button',{name:'Partir à pied vers le bac',exact:true}).click();await page.clock.runFor(80);
  await page.locator('[data-cartography-journal-v104]').waitFor();
  await move('ArrowRight','x',6020);

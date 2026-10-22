@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+import {createElement} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
 import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 
 const qa=homeworldSceneSsrV78(),api=qa.load('app/game/systems/homeworldCartographyV104.ts');
@@ -156,4 +158,19 @@ test('V104 actual React source host, conversation, recorded map and interruption
  const html=qa.render('app/game/HomeworldCartographyV104.tsx',{ledger:started(),disabled:true,message:'',onAction(){throw Error('SSR must not dispatch');},onClose(){}});
  assert(html.includes('D6-W-PNJ-ROLE-12-REPONSE-B-01'));assert(html.includes('Les zones non observées restent hors du relevé'));assert(!html.includes('D6-W-PNJ-ROLE-12-CHOIX-A-01'));
  const paused=advance(started(),'interrupt');const journal=qa.render('app/game/HomeworldCartographyV104.tsx',{ledger:paused,disabled:false,message:'',onAction(){},onClose(){}});assert(journal.includes('dernier point enregistré'));
+});
+
+test('V104 storage retry stays available after closing every pre-walk phase without advertising an earned waypoint or resume',()=>{
+ const Journal=qa.load('app/game/HomeworldCartographyV104.tsx').HomeworldCartographyJournalV104;
+ const choice=advance(undefined,'choose-b'),ready=advance(choice,'reply');
+ for(const ledger of[undefined,choice,ready]){
+  const props={ledger,blocked:true,message:'L’enregistrement reste indisponible ; le relevé est conservé ici.',writePaused:true,onResume(){throw Error('pre-walk resume must remain unavailable');},onRetry(){}};
+  const html=renderToStaticMarkup(createElement(Journal,props));
+  assert(html.includes('Réessayer l’enregistrement du relevé'));
+  assert(html.includes('role="status"'));
+  assert(!html.includes('disabled=""'),'writePaused blocks movement, not its own recovery action');
+  assert(!html.includes('Prochaine approche'));
+  assert(!html.includes('Reprendre au dernier point sûr'));
+  assert.equal(renderToStaticMarkup(createElement(Journal,{...props,writePaused:false})), '');
+ }
 });

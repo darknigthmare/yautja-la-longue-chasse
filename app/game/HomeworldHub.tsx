@@ -313,7 +313,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
   },[cartographyContextV104,interruptCartographyV104,onProgress,cartographyWriteRefusedV104]);
   const retryCartographyV104=()=>{
-    if(onProgress(progressRef.current))setCartographyMessageV104('Le relevé est enregistré. Tu peux reprendre la marche.');
+    if(onProgress(progressRef.current))setCartographyMessageV104(!cartographyDraftRefV104.current.receipt||['choice','ready'].includes(cartographyDraftRefV104.current.receipt.phase)?'L’enregistrement est disponible. Reprends ta demande auprès du cartographe.':'Le relevé est enregistré. Tu peux reprendre la marche.');
     else cartographyWriteRefusedV104('L’enregistrement reste indisponible ; le relevé est conservé ici.');
   };
   const cntlipV77=useHomeworldCntlipV77({save,actor,room:interior,sceneReady:!suspended&&!paused&&!inactive&&!transitV77&&!skiffV77&&motionAssetsV74.ready,saveRef,progressRef,actorRef,interiorRef,onProgress,clearInputs,onNotify,
