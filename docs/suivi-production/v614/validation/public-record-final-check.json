@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "yautja-v614-public-record-final-check-1",
+  "passed": true,
+  "scopeFR": "Textes, JSON, NDJSON et JSON gzip du dossier V6.14. Les valeurs détectées ne sont pas recopiées dans le rapport.",
+  "checkedFiles": [
+    {
+      "path": "docs/suivi-production/v614/README.md",
+      "sha256": "5993a3c4272eb9b49c851cfe16caaaea0e23e21e1e6f7725279772cdcd4de4ba"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/base-workbooks.json",
+      "sha256": "389e628ec7d674ac657c87a5980ee7507cc2f91d59e11cc8276a056adf7c965b"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/current-counts.json",
+      "sha256": "15e22c5fddcfda88bd229ace7bcc1fbe6ee4285cb6791b7083e3b81a31a7ced4"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/current-master.json.gz",
+      "sha256": "5dbee4602207a98eb73fa94a877d6e2d0b78e9f062eabb2c8b5c7fcf087ff60c"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/default-selections-before.json",
+      "sha256": "221822aa4b2ddd8947ebe5fdc79db083f06e45d638e4fc1c0912ee2cdcf0ed21"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/main-reconciliation.json",
+      "sha256": "b5fb10d7d2ee7f3a58c54b2b02acce370946080ded0b9dd846493c31bc58698d"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/production-manifest.json",
+      "sha256": "c5bb571b38f02d76526de2c98634abcda46fee15541f6ef21b10dc03e223fbcd"
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/browser-verification.json",
+      "sha256": "0777fbb698d9c70aa22a2886e6e1b3160c7bcb9a4e6e181f6c5616ae77e4f1a3"
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/visual-review.json",
+      "sha256": "dc3440ad17c3a7f72912e381e1154c7b828f9388446f109aa2a4e55add29cd2f"
+    },
+    {
+      "path": "docs/suivi-production/v614/index.html",
+      "sha256": "f644f54aedebaa29a88caa21541f5752a46b8b7a130799a7a7391c7db5e919d4"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/alpha--enforcers-comics-10.json",
+      "sha256": "e1b07b298411202d3ef63ac75b0f2390224111705be15fa6b6be22644e559da0"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "sha256": "60127ecca8d7794c1fb2eaa67afad3cae98784d143b69bd1fe8c0b236e56f808"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/bionic--enforcers-comics-10.json",
+      "sha256": "a3c1feaa6ba96afb16af05400fa3704cb65dcbc212cbbc90181cf71960a8c963"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/city-hunter--enforcers-comics-10.json",
+      "sha256": "b8ff78154b58369e297c998b5704616c31ab297f6d3f0e287ea8d7bf8ef98efe"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json",
+      "sha256": "9818d8e1323a20db84e41bf2cb4004f97ed1d082a6fa16c4315902e3a2355341"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/four-armed--enforcers-comics-10.json",
+      "sha256": "876209573865b745342b6fc198407b735a4bc002425b47590ca48e58cfc75706"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json",
+      "sha256": "1092253655cae8700f6ac1d0f359a010e8095e2a4e24d00aa18c7e67894b7296"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/hornhead--enforcers-comics-10.json",
+      "sha256": "a6e95940cf7d505abe8aadc7e52a6414ddd9ab50919b074d468a9c417be805bd"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/human-accepted--enforcers-comics-10.json",
+      "sha256": "497fa61c4efcc5bf292b5918cd1001f4ec202631c2b84a0b4d228486a6e7320b"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/kaal-or--enforcers-comics-10.json",
+      "sha256": "323cced5ba7370bd78183b319c201de6195b77b8a1c0059ef42a0c1a1a67e2e8"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json",
+      "sha256": "e9ea69eaf7a129986b24f505a2e6cf5d64ddafde67b5005f8ae77ae24e521aad"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/pilot-kok--enforcers-comics-10.json",
+      "sha256": "9305e1cd174da16e5a3962918dc04c18e9f871f9c576e336e62845ffd5000f4f"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/saar-keth--enforcers-comics-10.json",
+      "sha256": "da9bd58b449f6defbe7a337739679a66958c47c1ac9e941f8b52dfbe7744ffa9"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/sha-rhess--enforcers-comics-10.json",
+      "sha256": "3c346301b5b092bf17db5b5b871d32d950f4b603b2878b792be049f761874823"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/spiked-tail--enforcers-comics-10.json",
+      "sha256": "d4d1d6beb2e7acec9499b1eea1a8a1464cb747699145faaeca09c9bc50f1d425"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json",
+      "sha256": "b764a6f88f1850c32d6449b5bccd6a6d32030ce90b6702390a8e0d3ee18fae78"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json",
+      "sha256": "d81d9255b6f8efc3b31d5d1c9a8da4ca9e93bbf3034a25bb2ebfe7f7ec5a2ba8"
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/vaal-tir--enforcers-comics-10.json",
+      "sha256": "dc2d15b7b1575d750e094f921043925505265f134d82bd5d22d0a6394c914a6a"
+    },
+    {
+      "path": "docs/suivi-production/v614/recovery/native-checkpoint.json",
+      "sha256": "0c01aa457ce689d264057b6ec438cb9e711ff9b1d4ce3d8ac17bf7932571fba5"
+    },
+    {
+      "path": "docs/suivi-production/v614/references/production-plan-v614.json",
+      "sha256": "1a2d3e28044dd6a83efa1b4ee0f26397e61b8ac4c11dfbc9daaeaf49c9573202"
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/historical-runtime-check.json",
+      "sha256": "e1aca36244f67c0606cd28d488a413733e6aabcf86a24281675ee11173e71f92"
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/historical-runtime-review.json",
+      "sha256": "03b7bea009ab72fa503dc86dea4f753a23bd32f75871432c44744366755d858f"
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/integration-checks.json",
+      "sha256": "1d99159c83c91055203ffcb716225d31e63013ec2ed94d38f4a38a67d3ac6d2d"
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/local-quality.json",
+      "sha256": "1fa46dc618fbd9f1210cce879f1044e94e10b566c58234d3c22c31142e3bbca0"
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/master-changes.json",
+      "sha256": "948d730842d1b25fd033c072071bfcb8273b3e1da215f1e0a0d91bea084a0023"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/additional-workbooks.json",
+      "sha256": "f727f0625b7711b4b58630e50415c5e1d7ff3c26657b8835a561bf6fb5830764"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/applied-master-changes.json",
+      "sha256": "eb8f2ed866a29c3c2e53e4e3b2d249f01638bcaa8f291030f0e348a045ae0b95"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/export-inspection.ndjson",
+      "sha256": "c423616729d7ab6ecd1e6a62c2dbf4174d35e68b04497b6176d0f1ecec30cddf"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/formula-scan.ndjson",
+      "sha256": "acc0111e19cf44d2753fc9ecd164bf1b27fbd65597463a25cf48bd1c65e90146"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/openxml-verification.json",
+      "sha256": "9658c59ed0abf7a4d3e61a1dc33512893c4e4293bc598679a079e94e64161188"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/recalculation-check.json",
+      "sha256": "43a89c936ebe8f71cde3d01b444d116f156b538c0f05198ace972baaab1cb119"
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/visual-review.json",
+      "sha256": "3adeb027e454af33eb1f97556a2682972f4fa20b72a466053cc6e28aa3598e98"
+    }
+  ],
+  "failures": []
+}

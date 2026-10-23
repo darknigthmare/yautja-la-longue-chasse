@@ -94,6 +94,11 @@ def main():
     files.update(p for p in tree if re.fullmatch(r'scripts/(?:build|verify|checkpoint|package|prepare|reconcile|audit)-enforcer-[a-z-]+-v61[1-4]\.(?:mjs|py)',p))
     files.update({'app/game/RecentSpriteLibraryV85.tsx','app/game/systems/recentSpriteLibraryV85.ts',
                   'scripts/lib/sanitize-enforcer-public-record.mjs','tests/drive-new-deposits-v89.test.mjs','package.json','package-lock.json','.github/workflows/audit-v94.yml'})
+    # Include every added/modified file of this PR, including its historical
+    # proof adapter; the delivery still does not replace a full game checkout.
+    files.update(git('diff','--name-only','--diff-filter=AM',BASE,commit).decode().splitlines())
+    if files&WRAPPERS:
+        raise ValueError('A repository file would be replaced by a delivery wrapper')
     packaged_native={p for p in files if re.fullmatch(r'public/game/production/enforcers-v61[1-4]/.+\.png',p)}
     if packaged_native!=native_paths or {p for p in files if p.endswith('.xlsx')}!=expected_workbooks:
         raise ValueError('Native PNG or workbook membership mismatch')

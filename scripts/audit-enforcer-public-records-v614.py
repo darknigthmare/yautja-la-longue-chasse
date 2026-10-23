@@ -35,6 +35,9 @@ def main():
             records = strings(json.loads(gzip.decompress(file.read_bytes())))
         elif file.suffix == '.json':
             records = strings(json.loads(file.read_text()))
+        elif file.suffix == '.ndjson':
+            records = ((location, value) for number, line in enumerate(file.read_text().splitlines(), 1)
+                       if line.strip() for location, value in strings(json.loads(line), f'$line[{number}]'))
         elif file.suffix in {'.md', '.html'}:
             records = [('$text', file.read_text())]
         else:
@@ -46,7 +49,7 @@ def main():
                     failures.append({'file': relative, 'location': location, 'category': category})
         checked.append({'path': relative, 'sha256': hashlib.sha256(file.read_bytes()).hexdigest()})
     report = {'schemaVersion': 'yautja-v614-public-record-final-check-1',
-              'passed': not failures, 'scopeFR': 'Textes, JSON et JSON gzip du dossier V6.14. Les valeurs détectées ne sont pas recopiées dans le rapport.',
+              'passed': not failures, 'scopeFR': 'Textes, JSON, NDJSON et JSON gzip du dossier V6.14. Les valeurs détectées ne sont pas recopiées dans le rapport.',
               'checkedFiles': checked, 'failures': failures}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')

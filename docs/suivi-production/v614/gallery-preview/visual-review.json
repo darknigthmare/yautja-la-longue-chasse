@@ -1,0 +1,60 @@
+{
+  "reviewedAtUtc": "2026-10-23T13:16:06.621618Z",
+  "accepted": true,
+  "galleryHtmlSha256": "f644f54aedebaa29a88caa21541f5752a46b8b7a130799a7a7391c7db5e919d4",
+  "browserReportSha256": "0777fbb698d9c70aa22a2886e6e1b3160c7bcb9a4e6e181f6c5616ae77e4f1a3",
+  "screenshotsReviewed": [
+    {
+      "file": "gallery-desktop.png",
+      "sha256": "84884aa5b26a6871faecb818607301c85c9bb81ccd15e54e057188a9d96f2e26",
+      "bytes": 149911
+    },
+    {
+      "file": "human-accepted.png",
+      "sha256": "9c4aa39c42f7f29e5d1d684580beba126a691d4226f8ca6c6551f443cdbd079e",
+      "bytes": 181720
+    },
+    {
+      "file": "four-armed.png",
+      "sha256": "bb4880b662f404b9edb86cad06b52e19ef2458b75347622499b42174767e7441",
+      "bytes": 227470
+    },
+    {
+      "file": "bionic.png",
+      "sha256": "f948bb9aacda3b95117d37be46929fb8cd048b0b8e6e41b4c4b306d09e09ec70",
+      "bytes": 213685
+    },
+    {
+      "file": "pilot-kok.png",
+      "sha256": "6c4e3cf14f6725badaeee4fbc37fe789e729b67424a591b24763da2edd128458",
+      "bytes": 218910
+    },
+    {
+      "file": "gallery-mobile.png",
+      "sha256": "303aad6330d5edb38bc8fbffe71014556756ab63312717d72e030e10141e4359",
+      "bytes": 60911
+    },
+    {
+      "file": "gallery-mobile-controls.png",
+      "sha256": "c86d91e1b45b5b4100fb99c88bb84c5ab4da0bd7e53e448b8b5c1754201fca04",
+      "bytes": 18623
+    },
+    {
+      "file": "gallery-mobile-card.png",
+      "sha256": "7a2e3be876ebb1f855e68f6f91e5910f4845c5bbadc557635f69f1d74b2c3241",
+      "bytes": 162072
+    }
+  ],
+  "observationsFR": [
+    "Ordinateur : titre, liens de livraison, cinq compteurs, explication des 108 PNG présents dans main et des 18 PNG de la PR nº 15, puis contrôles de filtrage lisibles et alignés. Aucun chevauchement visible.",
+    "Les captures dédiées Humain, Quatre-Bras, Bionic et Pilot montrent des silhouettes entières, leurs lances et leurs pieds, sur le fond clair de contrôle. Les textes des cartes, les détails repliables et les liens de téléchargement restent lisibles.",
+    "Mobile à 390 pixels : titres et paragraphes reviennent correctement à la ligne ; liens et compteurs tiennent dans la largeur. Les filtres restent utilisables sur plusieurs lignes.",
+    "La capture mobile de la carte humaine montre le personnage entier et une lance complète, une description sans texte coupé, les détails repliables et un bouton de téléchargement entièrement visible.",
+    "Les particularités prioritaires sont visibles dans les captures dédiées : visage et proportions humains, quatre bras et quatre mains distincts, coude droit de Bionic avec deux mains et jambes organiques, crâne biologique chauve de Pilot sans optique implantée."
+  ],
+  "browserExecutionNoteFR": "Le premier essai lançait 126 décodages natifs simultanément et produisait des EncodingError malgré les dimensions naturelles présentes et aucune requête échouée. Le vérificateur décode désormais chaque PNG successivement ; les 126 fichiers identiques ont tous été décodés avec succès, sans contourner un résultat individuel ni modifier leurs pixels.",
+  "limitsFR": [
+    "Les captures montrent des poses fixes ; elles ne valident ni animation ni placement en scène.",
+    "Les libellés longs des options de sélection mobile peuvent être visuellement abrégés dans les menus fermés ; la sélection et le filtrage restent vérifiés. Le corps de page ne déborde pas horizontalement."
+  ]
+}
