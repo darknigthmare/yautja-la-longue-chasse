@@ -1,0 +1,109 @@
+{
+  "id": "four-armed--sucklings-02",
+  "repoPngPath": "public/game/production/sucklings-v615/four-armed/sucklings-02.png",
+  "promptExact": "Corriger uniquement le cadrage de ce sprite de tout-petit à QUATRE bras, entièrement habillé. Conserver exactement les quatre bras organiques et les quatre mains visibles, les quatre manches longues, les deux mains supérieures tenant la bande de tissu bleu et les deux mains inférieures posées sur les genoux. Conserver un seul bassin, deux jambes, deux pieds, le grand crâne juvénile, les quatre petites mandibules, la peau, les textures et les vêtements opaques. Réduire fortement la place de toute la silhouette : placer tout le personnage et tout le tissu dans le rectangle central x=230 à 794, y=320 à 1216 d’un canevas portrait1024×1536. Laisser une grande marge ALPHA VIDE d’au moins20% autour, y compris sous le tissu et à droite des doigts et du pied. Ne rien couper. PNG RGBA réellement transparent, sans décor, fond, sol, halo ou ombre portée. Aucun changement anatomique ; uniquement davantage d’espace vide autour du personnage.",
+  "acceptedOutputPromptExact": "Corriger uniquement le cadrage de ce sprite de tout-petit à QUATRE bras, entièrement habillé. Conserver exactement les quatre bras organiques et les quatre mains visibles, les quatre manches longues, les deux mains supérieures tenant la bande de tissu bleu et les deux mains inférieures posées sur les genoux. Conserver un seul bassin, deux jambes, deux pieds, le grand crâne juvénile, les quatre petites mandibules, la peau, les textures et les vêtements opaques. Réduire fortement la place de toute la silhouette : placer tout le personnage et tout le tissu dans le rectangle central x=230 à 794, y=320 à 1216 d’un canevas portrait1024×1536. Laisser une grande marge ALPHA VIDE d’au moins20% autour, y compris sous le tissu et à droite des doigts et du pied. Ne rien couper. PNG RGBA réellement transparent, sans décor, fond, sol, halo ou ombre portée. Aucun changement anatomique ; uniquement davantage d’espace vide autour du personnage.",
+  "receiptCreatedAtUtc": "2026-10-23T17:17:25.891827+00:00",
+  "status": "accepted",
+  "references": [
+    {
+      "id": "four-armed--sucklings-01",
+      "groupId": "four-armed",
+      "role": "infant-stage-and-rendering",
+      "repoPath": "public/game/imports/v85/library/58d1288dc4fb50aef9a89c6419ca6609ca6385d1aa362f6289f53e6ca4adaf1d.png",
+      "sha256": "58d1288dc4fb50aef9a89c6419ca6609ca6385d1aa362f6289f53e6ca4adaf1d",
+      "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+      "bytes": 2527584,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "8b8013231bf084d739b3c11659dd934f63d1661e",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    },
+    {
+      "id": "four-armed--blooded-01",
+      "groupId": "four-armed",
+      "role": "lineage-morphology",
+      "repoPath": "public/game/imports/v85/library/54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122.png",
+      "sha256": "54a48d2a1d41fa74488d7bf327d9a3175a9feed60f7e253b68d6626de976b122",
+      "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+      "bytes": 2703951,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "b92749ac763ec983fba202ac509788ae1e4c83c8",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée des Quatre-Bras, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Quatre bras organiques immatures, quatre insertions distinctes au thorax et quatre mains lisibles, un seul bassin et deux jambes. Crâne juvénile large à deux lobes et sillon central discret, quatre mandibules en croissance autour de la petite bouche interne. Appendices crâniens courts. Musculature immature naturelle, aucune armure adulte. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation terre chocolat. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. PRIORITÉ QUATRE BRAS : exactement quatre bras organiques immatures issus de quatre insertions distinctes au thorax et quatre mains bien séparées et lisibles, un bassin et deux jambes. Deux mains tiennent le textile ; les deux autres restent visibles. Vêtement civil à quatre manches opaques, crâne juvénile à deux lobes et quatre mandibules en croissance.\nLes deux références ont été inspectées : elles possèdent exactement quatre bras et quatre mains raccordés au même thorax, deux de chaque côté ; ne pas reprendre les muscles, la taille ni l’armure de l’adulte. Le nouveau tout-petit est assis, peau terre chocolat, tête juvénile large à deux lobes et sillon central, quatre petites mandibules. EXACTEMENT QUATRE BRAS ORGANIQUES COURTS ET QUATRE MAINS CLAIREMENT SÉPARÉES : paire supérieure sortant de deux manches à hauteur des épaules, tenant une large bande de tissu bleu terne devant le torse ; paire inférieure sortant de deux autres manches à mi-thorax, mains ouvertes reposant chacune sur un genou, de chaque côté du tissu. Quatre manches longues distinctes, tunique ample opaque couvrant tout le torse et le bassin, pantalon opaque, exactement deux jambes et deux pieds visibles. Aucun bras derrière le corps, aucune main fusionnée au tissu. Musculature immature. Cadrage dézoomé : tout le corps et le tissu doivent rester dans le rectangle central x=200 à 824 et y=280 à 1256 sur la toile1024×1536. Marge alpha entièrement transparente généreuse, au moins15% sur les quatre côtés. Pas d’ombre portée ni de sol.",
+      "inputReferenceNames": [
+        "four-armed--sucklings-01",
+        "four-armed--blooded-01"
+      ],
+      "accepted": false,
+      "acceptedForCurrentOutput": false,
+      "nativeOutputName": "exec-4fd247ae-ab91-4563-ba5c-7b0987bd0267.png",
+      "sha256": "510003331b5d208ddf5f7226d5d6e10e5bb89507569a723ed0ad7ac36655787f",
+      "bytes": 2675364,
+      "generatedAtUtc": "2026-10-23T17:15:45.974Z",
+      "rejectionReasonFR": "Anatomie et quatre mains lisibles, mais marges droite 5,27 % et basse 6,05 % sous l’objectif de 8 %."
+    },
+    {
+      "attempt": 2,
+      "promptExact": "Corriger uniquement le cadrage de ce sprite de tout-petit à QUATRE bras, entièrement habillé. Conserver exactement les quatre bras organiques et les quatre mains visibles, les quatre manches longues, les deux mains supérieures tenant la bande de tissu bleu et les deux mains inférieures posées sur les genoux. Conserver un seul bassin, deux jambes, deux pieds, le grand crâne juvénile, les quatre petites mandibules, la peau, les textures et les vêtements opaques. Réduire fortement la place de toute la silhouette : placer tout le personnage et tout le tissu dans le rectangle central x=230 à 794, y=320 à 1216 d’un canevas portrait1024×1536. Laisser une grande marge ALPHA VIDE d’au moins20% autour, y compris sous le tissu et à droite des doigts et du pied. Ne rien couper. PNG RGBA réellement transparent, sans décor, fond, sol, halo ou ombre portée. Aucun changement anatomique ; uniquement davantage d’espace vide autour du personnage.",
+      "inputReferenceNames": [
+        "four-armed--sucklings-02:attempt-1"
+      ],
+      "accepted": true,
+      "acceptedForCurrentOutput": true,
+      "nativeOutputName": "exec-c8d89b91-f5b1-47be-b08d-13719022c63b.png",
+      "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+      "bytes": 1622499,
+      "generatedAtUtc": "2026-10-23T17:17:06.097Z"
+    }
+  ],
+  "visualInspection": {
+    "accepted": true,
+    "notesFR": "Quatre bras organiques courts issus de quatre manches distinctes et quatre mains visibles : la paire supérieure tient la bande textile bleue, la paire inférieure repose sur les genoux. Un seul bassin, deux jambes et deux pieds entiers. Crâne juvénile large avec sillon central, quatre mandibules en croissance, peau brune mouchetée, appendices courts ; tunique et pantalon amples opaques sans musculature ni équipement adultes. Le second appel a dégagé les marges du personnage et du tissu ; le PNG natif accepté est copié sans retouche.",
+    "referenceReviewFR": "Les deux références du groupe ont été inspectées. Elles confirment les deux paires de bras et le crâne à sillon central ; la musculature, le torse dénudé, les lames et l’armure de l’adulte sont exclus de cette création infant. Les épaules sont couvertes par quatre manches longues conformément à la fiche02.",
+    "limitationsFR": [
+      "Pose fixe ; aucune animation ni nouveau placement en scène.",
+      "Jeune âge inventé pour le projet à partir du groupe ; aucune certification canonique 1:1 ni preuve de sexe par le rendu seul."
+    ]
+  },
+  "generatedAtUtc": "2026-10-23T17:17:06.097Z",
+  "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+  "verifiedAtUtc": "2026-10-23T17:17:25.891827+00:00",
+  "nativeOutputName": "exec-c8d89b91-f5b1-47be-b08d-13719022c63b.png",
+  "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+  "bytes": 1622499,
+  "copiedByteIdentical": true,
+  "generationMethod": "builtin-imagegen",
+  "width": 1024,
+  "height": 1536,
+  "mode": "RGBA",
+  "transparentBackground": true,
+  "alphaZeroPixels": 1206002,
+  "alphaSolidPixels": 338738,
+  "edgeAlphaMax": 0,
+  "contentBoundsAlpha20": [
+    267,
+    331,
+    790,
+    1245
+  ],
+  "marginsFraction": [
+    0.2607421875,
+    0.21549479166666666,
+    0.228515625,
+    0.189453125
+  ],
+  "targetEightPercentMarginMet": true
+}
