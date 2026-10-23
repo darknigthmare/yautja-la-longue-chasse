@@ -10,6 +10,7 @@ const built = await build({stdin: {contents: [
   "export * from './app/game/systems/pitFinishersV80';",
   "export * from './app/game/systems/pitWorkbookConclusionsV107';",
   "export * from './app/game/pitWorkbookRegistryV107';",
+  "export * from './app/game/pitWorkbookDeviceRenderingV107';",
   "export * from './app/game/pitWorkbookRegistryV106';",
   "export * from './app/game/pitWorkbookRegistryV105';",
   "export * from './app/game/pitWorkbookConclusionRenderingV107';",
@@ -31,12 +32,24 @@ const guardDefinition = {...originalFeral,
   atlas: {...originalFeral.atlas, pages: originalFeral.atlas.pages.filter(page => keptPages.has(page.id)), clips: keptClips}};
 const defeatDefinition = p.PIT_WORKBOOK_PRESENTATION_REGISTRY_V105.find(d => d.fighterId === 'feral-hunter' && d.atlas.clips.some(c => c.id.endsWith('.defeat')));
 const victimDefinitions = [guardDefinition, defeatDefinition];
-const pages = [...new Map([...sourceDefinitions, ...victimDefinitions].flatMap(d => d.atlas.pages).map(page => [page.src, page])).values()];
+function keepActorClips(definition,ids) {
+ const clips=definition.atlas.clips.filter(c=>ids.includes(c.id)),pages=new Set(clips.flatMap(c=>c.frames.map(f=>f.pageId)));
+ return {...definition,visibleFrameBounds:definition.visibleFrameBounds?.filter(b=>clips.some(c=>c.frames.some(f=>f.pageId===b.pageId&&JSON.stringify(f.rect)===JSON.stringify(b.rect)))),
+  heldPoseClips:definition.heldPoseClips?.filter(p=>ids.includes(p.id)),pageBodyHeightPx:definition.pageBodyHeightPx&&Object.fromEntries(Object.entries(definition.pageBodyHeightPx).filter(([id])=>pages.has(id))),
+  atlas:{...definition.atlas,clips,pages:definition.atlas.pages.filter(p=>pages.has(p.id))}};
+}
+const readinessDefinitions=[keepActorClips(originalFeral,['idle','walk','walk-backward','high-guard','pit.stand.hitstun']),
+ keepActorClips(p.PIT_SPRITE_SHEET_REGISTRY.find(d=>d.atlas.id==='scar-pit-v34'),['idle','walk-backward']),
+ keepActorClips(p.PIT_SPRITE_SHEET_REGISTRY.find(d=>d.atlas.id==='scar-walk-forward-v40'),['walk']),defeatDefinition];
+const pages = [...new Map([...sourceDefinitions, ...victimDefinitions, ...readinessDefinitions, ...p.PIT_WORKBOOK_DEVICE_REGISTRY_V107].flatMap(d => d.atlas.pages).map(page => [page.src, page])).values()];
 const decoded = new Map();
 for (const page of pages) {
   const {data, info} = await sharp('public' + page.src).ensureAlpha().raw().toBuffer({resolveWithObject: true});
   decoded.set(page.src, {pixels: new Uint8ClampedArray(data), width: info.width, height: info.height, sourceUrl: page.src});
 }
+const starPath = '/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png';
+{const {data,info} = await sharp('public'+starPath).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  decoded.set(starPath,{pixels:new Uint8ClampedArray(data),width:info.width,height:info.height,sourceUrl:starPath});}
 const previousGlobals = {Image: globalThis.Image, document: globalThis.document};
 globalThis.Image = class {set src(value) {
   if (!value) return;
@@ -177,4 +190,57 @@ test('the ground beacon is rendered at frame zero and its native final hand is n
   assert.equal(pending.clipTick, 239); assert.equal(pending.frameIndex, 4); assert.equal(running.session.missionObject.state, 'ground');
   running = p.advancePitWorkbookConclusionV107(running, 1000 / 60);
   assert.equal(running.session.missionObject.state, 'recovered'); assert.equal(p.samplePitWorkbookConclusionV107(running).frameIndex, 5);
+});
+
+
+test('the two independent devices use their real source phases and physical ownership in both orientations', async () => {
+  const bank = await p.loadPitSpriteSheetAnimations(['feral-hunter','scar'], p.PIT_WORKBOOK_DEVICE_REGISTRY_V107);
+  assert.equal(bank.failedAtlasIds.length,0); assert.equal(bank.readyClipCount,12);
+  const art = await p.loadPitWorkbookDeviceArtV107(); assert.equal(art.ready,true);
+  const renderBank = {spriteSheets:bank,cancelled:false};
+  for (const reversed of [false,true]) for (const fighterId of ['feral-hunter','scar']) {
+    let state = p.createPitCombatState(reversed ? 'scar' : 'feral-hunter',reversed ? 'feral-hunter' : 'scar',{mode:'match',normalMoves:'workbook-v107'});
+    const slot = state.fighters.findIndex(f => f.definitionId === fighterId);
+    state.fighters[0].x=280; state.fighters[1].x=760; state.fighters[slot].traque=1000;
+    const input = {workbookAction:fighterId === 'scar' ? 'shuriken' : 'mine'};
+    state=p.stepPitCombat(state,[slot===0?input:{},slot===1?input:{}]);
+    let seen = new Set(), released = false;
+    for(let tick=0;tick<160;tick++) {
+      const fighter=state.fighters[slot], ctx=context();
+      if(fighter.action?.workbookMove === (fighterId === 'scar' ? 'S2' : 'S4')) {
+        const frame=p.resolvePitSpriteSheetAnimation(bank,fighter,{combat:state,simulationFrame:state.frame});
+        assert.ok(frame,'native phase exists'); seen.add(frame.resolved.frame.frame.rect.join(','));
+        if(fighterId === 'feral-hunter') assert.equal(p.drawPitWorkbookDeviceBodyV107(ctx,renderBank,fighter,600,{combat:state,simulationFrame:state.frame}),fighter.action.frame>=20);
+      }
+      for(const device of state.workbookDevicesV107) {
+        const paint=context(); assert.equal(p.drawPitWorkbookDeviceV107(paint,art,device,600),true);
+        assert.equal(paint.calls.filter(c=>c.method==='drawImage').length,1,'one independent object');
+        assert.equal(state.fighters[device.ownerSlot].workbookDeviceV107.status,'deployed'); released=true;
+      }
+      state=p.stepPitCombat(state,[{},{}]);
+    }
+    assert.equal(seen.size,6,'six real native drawings'); assert.equal(released,true);
+    assert.equal(state.fighters[slot].workbookDeviceV107.status,'spent');
+    assert.equal(state.workbookDevicesV107.length,0);
+  }
+});
+
+test('new five-bladed art is the unchanged generated original and never an inherited smart-disc asset', async () => {
+ const receipt=JSON.parse(await fs.readFile('docs/v107-shuriken-art-source.json','utf8'));
+ const bytes=await fs.readFile('public'+starPath);
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),receipt.sha256);
+ assert.equal(receipt.generationTimestamp,null); assert.equal(receipt.review.bladeCount,5);
+ assert.equal(receipt.reference.sha256,createHash('sha256').update(await fs.readFile(receipt.reference.file)).digest('hex'));
+ const meta=await sharp(bytes).metadata();assert.equal(meta.width,1254);assert.equal(meta.height,1254);
+ const sprite=decoded.get(starPath);let visible=0,border=0;
+ for(let y=0;y<1254;y++)for(let x=0;x<1254;x++){if(sprite.pixels[(y*1254+x)*4+3]>2){visible++;if(!x||!y||x===1253||y===1253)border++;}}
+ assert.equal(visible,392203);assert.equal(border,0);
+});
+
+
+test('the preparation gate accepts the real mixed V34/V40 actor bank and refuses a genuinely missing Scar walk',async()=>{
+ const full=await p.loadPitSpriteSheetAnimations(['feral-hunter','scar'],readinessDefinitions);assert.deepEqual(full.failedAtlasIds,[]);
+ assert.equal(p.pitWorkbookConclusionActorsReadyV107({spriteSheets:full,cancelled:false}),true);
+ const absent=await p.loadPitSpriteSheetAnimations(['feral-hunter','scar'],readinessDefinitions.filter(d=>d.atlas.id!=='scar-walk-forward-v40'));
+ assert.equal(p.pitWorkbookConclusionActorsReadyV107({spriteSheets:absent,cancelled:false}),false);
 });

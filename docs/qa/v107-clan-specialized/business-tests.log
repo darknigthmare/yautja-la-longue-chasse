@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: six contracts extract exact source costs, operator, cells and finite real members
+ok 1 - six contracts extract exact source costs, operator, cells and finite real members
+  ---
+  duration_ms: 98.063913
+  type: 'test'
+  ...
+# Subtest: reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+ok 2 - reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+  ---
+  duration_ms: 152.409745
+  type: 'test'
+  ...
+# Subtest: all six can actually be built, supplied and staffed without campaign or historical changes
+ok 3 - all six can actually be built, supplied and staffed without campaign or historical changes
+  ---
+  duration_ms: 699.519916
+  type: 'test'
+  ...
+# Subtest: local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+ok 4 - local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+  ---
+  duration_ms: 142.492996
+  type: 'test'
+  ...
+# Subtest: dock traverses real positions with unique pilot, current window and identical passenger IDs
+ok 5 - dock traverses real positions with unique pilot, current window and identical passenger IDs
+  ---
+  duration_ms: 68.297785
+  type: 'test'
+  ...
+# Subtest: mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+ok 6 - mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+  ---
+  duration_ms: 133.162053
+  type: 'test'
+  ...
+# Subtest: releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+ok 7 - releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+  ---
+  duration_ms: 115.757231
+  type: 'test'
+  ...
+# Subtest: confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+ok 8 - confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+  ---
+  duration_ms: 338.128973
+  type: 'test'
+  ...
+# Subtest: accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+ok 9 - accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+  ---
+  duration_ms: 91.237215
+  type: 'test'
+  ...
+# Subtest: a non-signatory remains movable and actually interrupts a duel when entering its space
+ok 10 - a non-signatory remains movable and actually interrupts a duel when entering its space
+  ---
+  duration_ms: 87.102538
+  type: 'test'
+  ...
+# Subtest: listening uses two real located WAVs, enforces range and wall, compares only on return to station
+ok 11 - listening uses two real located WAVs, enforces range and wall, compares only on return to station
+  ---
+  duration_ms: 177.849417
+  type: 'test'
+  ...
+# Subtest: orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+ok 12 - orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+  ---
+  duration_ms: 270.66092
+  type: 'test'
+  ...
+# Subtest: surface U26 and U19 cannot walk to the projected orbital layer before boarding
+ok 13 - surface U26 and U19 cannot walk to the projected orbital layer before boarding
+  ---
+  duration_ms: 229.140499
+  type: 'test'
+  ...
+# Subtest: future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+ok 14 - future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+  ---
+  duration_ms: 449.227782
+  type: 'test'
+  ...
+# Subtest: the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+ok 15 - the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+  ---
+  duration_ms: 1.97358
+  type: 'test'
+  ...
+# Subtest: retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+ok 16 - retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+  ---
+  duration_ms: 46.114446
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3818.871283

@@ -2,7 +2,9 @@
 
 Base : V106 au commit `92e7c824fd80d6b8152855b3d66560448f8c48c0`. Les **77 lignes ouvertes** sont toutes répertoriées dans le [registre détaillé](v107-open-workstreams-audit.json). L’audit ne promeut aucune validation V107.
 
-| Famille | Lignes | Travail restant | Preuves minimales |
+Cette matrice conserve le point de départ. L’état courant, les fermetures ciblées et les limites sont dans [le suivi V107](v107-workstreams.json) et son [classeur](YAUTJA_V107_SUIVI.xlsx). Les 18 PNG Enforcers ont depuis été réconciliés avec la production V6.14 de PR15 ; les 18 poses alternatives V107 réemploient ces identités et ne les doublent pas.
+
+| Famille | Lignes V106 | Travail restant au départ | Preuves minimales |
 | --- | ---: | --- | --- |
 | The Pit : quatre identités/visuels à établir, deux références partielles et les kits | 7 | 4 dossiers avec visuel/incarnation encore à établir ; 2 références V79 déjà présentes mais une seule pose native droite ; 1 agrégat kits recouvrant actions/campagnes/variantes. | Références V79 et SHA existants ; une pose droite et une icône dérivée ne prouvent ni vue gauche native, ni animations, ni kit terminé. |
 | Guerre de clans : six ouvrages physiques | 6 | Quai, montures, confinement, duel consenti, sons situés et navire orbital. | Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre. Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés. |

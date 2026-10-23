@@ -11,7 +11,7 @@ import {getHistoricalExcelContextV107,verifyHistoricalExcelContextV107,EXCEL_HIS
 const REPOSITORY=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const PRODUCTION_HISTORY_COMMIT_PR15_V107='d99604e18d4b185b57cc59cfbde0420b95acd0fd';
 const MANIFEST='tests/fixtures/production-history-pr15-v107.json';
-const MANIFEST_SHA='d18ab5a2c4c7c78bec845016d9f39ffe5cddfd35650084211894b8650e7a2964';
+const MANIFEST_SHA='e8b408beceeb801baf0dc1b63e9d3597561f1fff218cc19a861c38c1862e6d7b';
 const ARCHIVE_SHA='4524f083f69335aadeab9c647980f4113afc565da29476ef7f2301009ce7e614';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const local=file=>typeof file==='string'&&file.length&&!path.isAbsolute(file)&&!file.includes('\\')&&!file.includes('\0')&&file.split('/').every(part=>part&&part!=='.'&&part!=='..');
@@ -54,7 +54,12 @@ export async function verifyHistoricalProductionPr15V107(){const context=await g
 export async function runHistoricalProductionPr15V107(files){
  const context=await getHistoricalProductionPr15V107();assert.ok(Array.isArray(files)&&files.length>0&&new Set(files).size===files.length);
  for(const file of files)assert.ok(context.manifest.historicalTests.includes(file),'Unreviewed historical test requested');
- const output=execFileSync(process.execPath,['--test',...files],{cwd:context.root,encoding:'utf8',timeout:90000,maxBuffer:2*1024*1024});
+ // Node propagates its internal child-runner marker; a separate --test run
+ // must start a fresh runner instead of silently skipping the original files.
+ const childEnvironment={...process.env};delete childEnvironment.NODE_TEST_CONTEXT;
+ let output;
+ try{output=execFileSync(process.execPath,['--test',...files],{cwd:context.root,env:childEnvironment,encoding:'utf8',timeout:90000,maxBuffer:2*1024*1024});}
+ catch(error){throw new Error('Original PR15 assertions failed:\n'+String(error.stdout??'')+String(error.stderr??''),{cause:error});}
  assert.match(output,/# fail 0(?:\r?\n|$)/);await verifyHistoricalProductionPr15V107();
  return {sourceCommit:context.manifest.sourceCommit,files,output,currentRuntimeCovered:false};
 }

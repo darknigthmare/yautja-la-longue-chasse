@@ -11,7 +11,7 @@ await build({stdin:{contents:["export * from './app/game/systems/pitWorkbookConc
 const p=await import(pathToFileURL(path.join(directory,'model.mjs')));
 const copy=x=>JSON.parse(JSON.stringify(x));
 const options={mode:'stylized',reducedGore:false,reducedMotion:false,narrative:false,replay:false,cpuWinner:false};
-function objective(combat,scarSlot=0,patch={}){return p.createPitWorkbookConclusionSessionV107(combat,{sessionId:'real-prematch-objective-'+scarSlot,targetSlot:1-scarSlot,sourceWeaponAvailable:true,targetWeapon:{id:'physical-adverse-device',sourceId:'explicit-native-source-S10',poseId:'declared-victim-pose',offensiveMechanicId:null,disarmedPoseAdmitted:false,attachment:{offsetX:30,offsetY:85,width:55,height:15}},missionObject:{id:'existing-session-beacon',sourceId:'public-objective-choice-before-match',appearance:'scar-red-beacon-v100',x:600,y:0},...patch});}
+function objective(combat,scarSlot=0,patch={}){return p.createPitWorkbookConclusionSessionV107(combat,{sessionId:'real-prematch-objective-'+scarSlot,targetSlot:1-scarSlot,sourceWeaponAvailable:true,targetWeapon:{id:'physical-adverse-device',sourceId:'explicit-native-source-S10',poseId:'declared-victim-pose',offensiveMechanicId:null,disarmedPoseAdmitted:false,attachment:{offsetX:16,offsetY:90,width:20,height:13}},missionObject:{id:'existing-session-beacon',sourceId:'public-objective-choice-before-match',appearance:'scar-red-beacon-v100',x:600,y:0},...patch});}
 const terminals=new Map();
 function won(scarSlot=0){if(terminals.has(scarSlot))return copy(terminals.get(scarSlot));const identities=scarSlot===0?['scar','feral-hunter']:['feral-hunter','scar'];let combat=p.createPitCombatState(...identities,{normalMoves:'workbook-v106'});const session=objective(combat,scarSlot);let attacks=0;
  for(let tick=0;tick<12000&&combat.phase!=='match-over';tick++){const hero=combat.fighters[scarSlot],enemy=combat.fighters[1-scarSlot],inputs=[{},{}];if(combat.phase==='round'&&hero.phase==='idle'){const distance=enemy.x-hero.x;if(Math.abs(distance)>80)inputs[scarSlot]={right:distance>0,left:distance<0};else{inputs[scarSlot]={attack:'heavy'};attacks++;}}combat=p.stepPitCombat(combat,inputs);}
@@ -33,6 +33,37 @@ test('the recoverable beacon and physical target are introduced before the duel,
 test('a real earned final Scar victory triggers physical native staff contact against the actual independent opponent in both facings',()=>{
  for(const slot of [0,1]){const{state,combat}=window(slot),snapshot=p.serializePitCombat(combat);assert.equal(state.available.FATALITE_2,true);let firstSequence;const ended=run(p.triggerPitWorkbookConclusionV107(state,'FATALITE_2'),s=>{roundtrip(s);if(s.phase==='sequence'){firstSequence??=copy(s);const scene=p.samplePitWorkbookConclusionV107(s);assert.equal(scene.actors[slot].definitionId,'scar');assert.equal(scene.actors[1-slot].definitionId,'feral-hunter');assert.equal(scene.actors[1-slot].health,combat.fighters[1-slot].health);assert.ok(scene.actors.every((actor,index)=>actor.health===combat.fighters[index].health));}});
   assert.ok(firstSequence);assert.equal(ended.clipTick,300);assert.equal(ended.outcome,'finished');assert.equal(ended.contacts.filter(c=>c.type==='guard-contact').length,1);assert.equal(ended.contacts.filter(c=>c.type==='thrust-contact').length,1);assert.ok(p.getPitWorkbookConclusionQualificationV107(ended).sourceActionComplete);assert.equal(p.serializePitCombat(combat),snapshot,'the earned combat result, wounds and archive remain unchanged');assert.equal(p.samplePitWorkbookConclusionV107(ended).clipTick,299);assert.equal(p.pitWorkbookConclusionBlocksResultV107(ended),false);
+ }
+});
+test('the real fatal thrust drops the unique inert alternative-duel prop, which falls to the floor without disarm, recovery or gain in both facings',()=>{
+ for(const slot of [0,1]){
+  const{state:windowState,combat}=window(slot),originalCombat=p.serializePitCombat(combat),originalObject=copy(windowState.session.missionObject);
+  let state=p.triggerPitWorkbookConclusionV107(windowState,'FATALITE_2');
+  while(state.phase!=='sequence'||state.clipTick<60)state=p.advancePitWorkbookConclusionV107(state,1000/60);
+  assert.equal(state.session.targetWeapon.state,'held');assert.equal(state.contacts.some(event=>event.type==='thrust-contact'),false);
+  state=p.advancePitWorkbookConclusionV107(state,1000/60);assert.equal(state.clipTick,61);assert.equal(state.session.targetWeapon.state,'flying');assert.ok(state.session.targetWeapon.y>0);roundtrip(state);
+  const airborne=copy(state),pauseSnapshot=p.serializePitWorkbookConclusionV107(state);
+  assert.equal(p.advancePitWorkbookConclusionV107(state,1000,{frozen:true}),state);assert.equal(p.serializePitWorkbookConclusionV107(state),pauseSnapshot);
+  let restored=p.deserializePitWorkbookConclusionV107(pauseSnapshot),falling=false,previousY=state.session.targetWeapon.y,landed=false;
+  while(state.phase!=='complete'){
+   state=p.advancePitWorkbookConclusionV107(state,1000/60);restored=p.advancePitWorkbookConclusionV107(restored,1000/60);assert.deepEqual(restored,state);roundtrip(state);
+   const weapon=state.session.targetWeapon,scene=p.samplePitWorkbookConclusionV107(state);
+   if(weapon.y<previousY)falling=true;previousY=weapon.y;if(weapon.state==='ground'){landed=true;assert.equal(weapon.y,0);assert.equal(weapon.velocityX,0);assert.equal(weapon.velocityY,0);}
+   assert.equal(weapon.id,airborne.session.targetWeapon.id);assert.equal(scene.props.targetWeapon.id,weapon.id);assert.equal(scene.props.targetWeapon.y,weapon.y);
+   assert.deepEqual(state.session.missionObject,originalObject);assert.equal(state.session.receiptId,null);assert.deepEqual(state.contacts.map(event=>event.type),['guard-contact','thrust-contact']);
+   assert.equal(state.combatSnapshot,originalCombat);for(const[index,actor]of state.actors.entries()){assert.equal(actor.health,combat.fighters[index].health);assert.equal(actor.traque,combat.fighters[index].traque);assert.equal(actor.roundsWon,combat.fighters[index].roundsWon);}
+  }
+  assert.ok(falling&&landed);assert.equal(state.outcome,'finished');assert.deepEqual(p.getPitWorkbookConclusionQualificationV107(state),{sourceActionComplete:true,missing:[]});
+  assert.equal(p.samplePitWorkbookConclusionV107(state).props.targetWeapon.state,'ground');assert.equal(p.advancePitWorkbookConclusionV107(state,1000),state);assert.equal(p.serializePitCombat(combat),originalCombat);
+  assert.deepEqual(p.deserializePitWorkbookConclusionSessionV107(p.serializePitWorkbookConclusionSessionV107(airborne.session)),airborne.session);
+ }
+});
+test('fatal-prop snapshots require the true thrust cause and its exact resumed trajectory, without a fabricated disarm event',()=>{
+ for(const slot of [0,1]){
+  let state=p.triggerPitWorkbookConclusionV107(window(slot).state,'FATALITE_2');while(state.phase!=='sequence'||state.clipTick<61)state=p.advancePitWorkbookConclusionV107(state,1000/60);roundtrip(state);
+  for(const mutate of [s=>s.contacts=s.contacts.filter(event=>event.type!=='thrust-contact'),s=>s.session.targetWeapon.state='held',s=>s.session.targetWeapon.x++,s=>s.session.targetWeapon.y++,s=>s.session.targetWeapon.velocityX=0,s=>s.session.targetWeapon.velocityY=0,s=>{Object.assign(s.session.targetWeapon,{state:'ground',y:0,velocityX:0,velocityY:0});},s=>{const contact=copy(s.contacts[1]);contact.type='device-detached';contact.objectId=s.session.targetWeapon.id;s.contacts.push(contact);}]){
+   const forged=copy(state);mutate(forged);assert.throws(()=>p.deserializePitWorkbookConclusionV107(JSON.stringify(forged)));
+  }
  }
 });
 test('final victory, exact source BODY and hostile adult equipment context are required; safer contexts never start the lethal branch',()=>{

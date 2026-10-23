@@ -209,7 +209,7 @@ try {
   await capture(played, "route-notebook-desktop.png", played.getByRole("dialog"));
   await played.evaluate(key => { window.__preserveOriginalSetItem = Storage.prototype.setItem; Storage.prototype.setItem = function(k,v){ if(k===key) throw new DOMException('QA quota','QuotaExceededError'); return window.__preserveOriginalSetItem.call(this,k,v); }; },reserveKey);
   await played.getByRole('button',{name:'Reprendre la chasse',exact:true}).click({force:true}); await played.clock.runFor(96);
-  check("A real storage refusal blocks resumption and preserves the durable V3 document", (await view(played)).reservePaused === "true" && await diskRaw(played) === surveyedRaw && await played.getByRole('alert').innerText().then(text=>text.includes('sauvegarde')));
+  check("A real storage refusal blocks resumption and preserves the durable V3 document", (await view(played)).reservePaused === "true" && await diskRaw(played) === surveyedRaw && await played.getByRole('alert').filter({hasText:'sauvegarde'}).innerText().then(text=>text.includes('sauvegarde')));
   await played.evaluate(()=>{Storage.prototype.setItem=window.__preserveOriginalSetItem;delete window.__preserveOriginalSetItem;});
   await played.getByRole('button',{name:'Réessayer la sauvegarde et reprendre',exact:true}).click({force:true}); await played.clock.runFor(96);
   check("Storage retry resumes the same physical V3 position and four records", (await view(played)).reservePaused === "false" && (await view(played)).reserveRouteRecorded === "4" && Math.abs(Number((await view(played)).reserveX)-surveyed.player.x)<2);

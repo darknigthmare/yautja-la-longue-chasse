@@ -33,6 +33,8 @@ node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
   tests/game-reserve-expedition-v107.test.mjs tests/game-reserve-expedition-persistence-v107.test.mjs
 ```
 
-La recette compilée préparée est `scripts/qa-preserve-expedition-v107.mjs`. Sa validation navigateur et ses captures restent **à exécuter après gel du build commun** ; les tests moteur ne la remplacent pas.
+La recette compilée `scripts/qa-preserve-expedition-v107.mjs` a passé **31 contrôles**, sans erreur JavaScript, sur le build commun `lKBwtp6LAjSerAzSZQEOM` du runtime `d148ebc21004b87e3c6ce435d74e1c120856afba`. Ses **14 captures finales ont toutes été ouvertes et inspectées** : sélection libre et campagne, clavier et tactile paysage, V1 préservée, quatre postes, parcours des corniches, carnet desktop/mobile et retour fermé. Les quatre relevés ont été obtenus par les déplacements et interactions montés, puis conservés après refus/réessai d’écriture et rechargement. La fixture de ce parcours déclare toujours les seize combattants déjà neutralisés ; aucune victoire de combat jouée n’est revendiquée.
+
+Le [rapport portable](v107-preserve-expedition-validation.json) conserve l’identité compilée, les huit réponses HTML vérifiées, les contrôles, les empreintes des sources avant/après identiques et les SHA256/tailles de toutes les preuves dans `docs/qa/v107-preserve-expedition/`. Les captures et le journal moteur détaillé sont complémentaires ; ils ne remplacent pas les tests de simulation.
 
 Le chantier global reste partiel : **8/80 secteurs jouables**, **16/100 combattants originaux effectifs**, neuf autres réserves encore absentes. Les cent identités visuelles H001–H100, portraits, animations complètes, rivaux Yautja, coopération et trophées de campagne persistants restent des livraisons distinctes. Aucune durée officielle, fidélité canonique 1:1 ou publication publique n’est déduite de ce lot.

@@ -1,0 +1,317 @@
+{
+  "status": "PASS",
+  "scope": {
+    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+    "description": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification."
+  },
+  "production": {
+    "buildId": "lKBwtp6LAjSerAzSZQEOM",
+    "mode": "compiled-app",
+    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+    "checksPassed": 67,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "foundInHtml": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "file": "docs/qa/v107-homeworld-comparison/01-a-source-and-limits.png",
+      "sha256": "697677166691caf12d0d8b2c0478eff372690a98172ad9305332d15ad7095440",
+      "bytes": 168376
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/02-discovery-provenance.png",
+      "sha256": "01e1dc8b4625e6016945aedb78347e737e3f61d3acb4c01e2bf7c1777cade899",
+      "bytes": 159950
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/03-c-native-carry.png",
+      "sha256": "b0000e5d0245b38118a81e0577c904c4652dd7ba4f51b08bd60e0470f894f5d8",
+      "bytes": 731386
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/04-parked-c-original-provenance.png",
+      "sha256": "a571e4aabad426bd1bbb8a1b44e52e6113ec5e99ada3ac0da8c8adef83a8cc97",
+      "bytes": 836856
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/05-c-on-third-lectern.png",
+      "sha256": "09cd05c467432d74d299e3dfcce61ba33ac6603031058f93c09ab8bfe452974b",
+      "bytes": 806338
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/06-two-support-observations.png",
+      "sha256": "931f692fceda4ec8db98b3a13f0d20f901c0cd88a96eadcf6c5157a454defe26",
+      "bytes": 823471
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/07-comparison-interface.png",
+      "sha256": "c1ccd0570e19874e8536d38b69062c271f34c7ea4ddb4fcc27f80ee83aaea501",
+      "bytes": 195558
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/08-completed-desktop.png",
+      "sha256": "55edbf0451c75681d631a0783dfe5fa9e71dc370b785209b5926e4a3c8eeac28",
+      "bytes": 170918
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/09-completed-mobile.png",
+      "sha256": "a54bb06851dbdc2b45abf1d4c4a75b2d4b54ee817993639cb9310ddb30c040f1",
+      "bytes": 110253
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/10-local-map-mobile.png",
+      "sha256": "e80476471d93cc3a83ee0675bcb2204f6b46c507dd5d1f6443b6867aef283e8f",
+      "bytes": 72716
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/result.json",
+      "sha256": "35fd90e9983a6c399ad6964ca329b23996e4eef65fbf637c1a3b215f9383eed5",
+      "bytes": 20897
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/test.log",
+      "sha256": "2a71e94cc208848a31a4fa6f92738a81120de8e5a82356820a17b7cc42202496",
+      "bytes": 21524
+    },
+    {
+      "file": "docs/qa/v107-homeworld-comparison/lint.log",
+      "sha256": "a088b5daf0181385b93c3a264bcfd03e3ac600513bcb7a6923b5995d8ee3fd43",
+      "bytes": 608
+    }
+  ],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.tsx",
+      "sha256": "04e333dfbf3146b289c4f575bc8357f081b83080f5804fa382a2641366e8dc41"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonWorldV107.tsx",
+      "sha256": "c76dbc53f1e2bc2c13bf11098ff6265b69fe90fd4a09109f8361d8ae33d8d3f8"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.module.css",
+      "sha256": "91824a07eb09962adb00722ee3c5fcf74de89108ca46edf7fcda04859c5f4c90"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonDefinitionV107.ts",
+      "sha256": "c23c654897fc91f43054615d88ce8ded3bab40e0242bf0c4b07722c3733e7342"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonLedgerV107.ts",
+      "sha256": "c0a5a799fe951cf4850eff4a61136222b396a7030e73f1042491ea301daf6b1e"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonSolidsV107.ts",
+      "sha256": "11f514cffdf685a756b052369543267371174887e56a86890e3e0d908a025a40"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonV107.ts",
+      "sha256": "db46038550659353cf93bc82016f1f0779d130bf19b3cfd2aa7ff0e2a93f5424"
+    },
+    {
+      "file": "tests/helpers/archive-comparison-v107-route.mjs",
+      "sha256": "f4e54075088092b35e1c317a05c2b754809b2809554384714846d04449c52a54"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "b489de4256a6f966c1ee3aab6f5d5ed9d627806744fe30dcb6e61c996df1b2d4"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "7d06b04538ab05d7a359fff7bad76ec0beb5cf7322ef4f49aa29ea9f4b466261"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "2dea22888be4f28db64e7e2c2784ef2d92978de7c9b68e75309c43416e98dc8e"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "936edef7b270913c84e61729ba1dca6b293d9219dd317251211d3265edda98af"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "c21dd22e37b0654657c6c5fae3463972d2cbb404a869713c3afb1bd509d96c66"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-comparison-v107.mjs",
+      "sha256": "d5cc05e5f735a22d752651846b6e5ba3eed82683410d038fee626027b0d7bfb4"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.tsx",
+      "sha256": "04e333dfbf3146b289c4f575bc8357f081b83080f5804fa382a2641366e8dc41"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonWorldV107.tsx",
+      "sha256": "c76dbc53f1e2bc2c13bf11098ff6265b69fe90fd4a09109f8361d8ae33d8d3f8"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.module.css",
+      "sha256": "91824a07eb09962adb00722ee3c5fcf74de89108ca46edf7fcda04859c5f4c90"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonDefinitionV107.ts",
+      "sha256": "c23c654897fc91f43054615d88ce8ded3bab40e0242bf0c4b07722c3733e7342"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonLedgerV107.ts",
+      "sha256": "c0a5a799fe951cf4850eff4a61136222b396a7030e73f1042491ea301daf6b1e"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonSolidsV107.ts",
+      "sha256": "11f514cffdf685a756b052369543267371174887e56a86890e3e0d908a025a40"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonV107.ts",
+      "sha256": "db46038550659353cf93bc82016f1f0779d130bf19b3cfd2aa7ff0e2a93f5424"
+    },
+    {
+      "file": "tests/helpers/archive-comparison-v107-route.mjs",
+      "sha256": "f4e54075088092b35e1c317a05c2b754809b2809554384714846d04449c52a54"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "b489de4256a6f966c1ee3aab6f5d5ed9d627806744fe30dcb6e61c996df1b2d4"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "7d06b04538ab05d7a359fff7bad76ec0beb5cf7322ef4f49aa29ea9f4b466261"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "2dea22888be4f28db64e7e2c2784ef2d92978de7c9b68e75309c43416e98dc8e"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "936edef7b270913c84e61729ba1dca6b293d9219dd317251211d3265edda98af"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "c21dd22e37b0654657c6c5fae3463972d2cbb404a869713c3afb1bd509d96c66"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-comparison-v107.mjs",
+      "sha256": "d5cc05e5f735a22d752651846b6e5ba3eed82683410d038fee626027b0d7bfb4"
+    }
+  ],
+  "capturesOpened": [
+    "01-a-source-and-limits.png",
+    "02-discovery-provenance.png",
+    "03-c-native-carry.png",
+    "04-parked-c-original-provenance.png",
+    "05-c-on-third-lectern.png",
+    "06-two-support-observations.png",
+    "07-comparison-interface.png",
+    "08-completed-desktop.png",
+    "09-completed-mobile.png",
+    "10-local-map-mobile.png"
+  ],
+  "completedAt": "2026-10-23T22:03:57.193Z"
+}

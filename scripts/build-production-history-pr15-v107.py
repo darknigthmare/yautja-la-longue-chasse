@@ -51,6 +51,7 @@ def build():
         manifest_path = 'docs/suivi-production/' + version + '/data/production-manifest.json'
         shared.add(manifest_path)
         shared.update(row['repoPngPath'] for row in json.loads(git(manifest_path))['assets'])
+    shared.add('docs/suivi-production/v612/data/current-master.json.gz')
     book_index = json.loads(git('docs/suivi-production/v615/data/base-workbooks.json'))
     shared.update(row['repoPath'] for row in book_index['workbooks'])
     shared = shared - {row['path'] for row in base['shared']}

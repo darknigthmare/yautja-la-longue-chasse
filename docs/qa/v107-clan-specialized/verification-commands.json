@@ -1,0 +1,14 @@
+{
+  "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+  "business": {
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs > outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log",
+    "exitCode": 0,
+    "passed": 16,
+    "failed": 0,
+    "logCopiedFrom": "outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log"
+  },
+  "lint": {
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx > outputs/qa-v107/clan-specialized-production-d148ebc/lint.log",
+    "exitCode": 0
+  }
+}

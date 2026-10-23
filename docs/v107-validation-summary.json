@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "release": "V107",
+  "status": "PASS_CIBLE",
+  "recordedAt": "2026-10-23T22:42:23.951Z",
+  "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+  "productionBuildId": "lKBwtp6LAjSerAzSZQEOM",
+  "scope": "Four targeted journeys on one local compiled Next production build: native Feral/Scar devices and Scar conclusions, persistent alternative exercise, Homeworld comparison, six separate clan workshops and an eight-sector Preserve expedition. Historical/static art is reconciled separately. Complete kits, original source campaigns, campaign acquisitions,80sectors/100fighters and canonical fidelity are not certified.",
+  "sourceFreeze": {
+    "path": "docs/v107-runtime-freeze.json",
+    "sha256": "e5c1e0607338e6293a2f306d6de3e8f236082fbe78ee9c6ff3f85ca496bb3693",
+    "bytes": 221954
+  },
+  "freezeCoverage": {
+    "files": 1213,
+    "bytes": 728533352,
+    "scope": "All app sources, production configuration/build scripts, the frozen V106 public input set and the collected V107 public assets. Other historical art and generated build files are outside this snapshot."
+  },
+  "production": [
+    {
+      "domain": "Pit",
+      "status": "PASS_CIBLE",
+      "buildId": "lKBwtp6LAjSerAzSZQEOM",
+      "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+      "browserChecksPassed": 114,
+      "capturesInspected": 17,
+      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-d148-r7 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
+      "report": {
+        "path": "docs/v107-pit-workbook-validation.json",
+        "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
+        "bytes": 63060
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v107-pit-workbook/browser-result.json.gz",
+          "sha256": "b0187cf00d2bde423c9a18d217d8521f199c937f6ec3fe1feccef5cec90828c4",
+          "bytes": 3369289,
+          "encoding": "gzip",
+          "decodedSha256": "1d15a07d5c0d8ff2c44e929bcfcc71e3e9482363a4d208eeaa105577400fa295",
+          "decodedBytes": 80632194
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/served-production.html",
+          "sha256": "4fbc4cca8b9167cb41095780e49c513accd2e0477c1d46bd2750c15215908e64",
+          "bytes": 13834
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-device-flight.png",
+          "sha256": "76673258186d2f5a71256f52c33f347480d378255d9f453626514146802bface",
+          "bytes": 1122966
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-contact.png",
+          "sha256": "c491d11e8b303ac4791b6ddb186e887183d9c1586b45ed28bdec808dc75e2f19",
+          "bytes": 1113558
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-result.png",
+          "sha256": "a501f7955eea23086b1b22d653f738456d5972203bb4713e3877ee945bb8b3be",
+          "bytes": 326956
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-left-contact.png",
+          "sha256": "99f17bcdfb13e87be6db2ca9cc5a8f0818a11ed844fcecf50944ae435f305b05",
+          "bytes": 1114251
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-right-contact.png",
+          "sha256": "65a085bb505859f883e4578923cd7235616b62266d86ee6a8eac6e2c5eb9d54d",
+          "bytes": 1122794
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-right-result.png",
+          "sha256": "36d82bacd71fa0fb35567748d202b0a81730202111fa9b4ff99c769bf4947dda",
+          "bytes": 80029
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-left-contact.png",
+          "sha256": "0301a9e13b0141e8643fa727fb61db3db5dd770d21fb52c8f342dff1437ec73a",
+          "bytes": 1125197
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-right-star-release.png",
+          "sha256": "806442f8142646cbfd32049d36742c35eef5bc2759a183c389a3d573c74b1281",
+          "bytes": 1198422
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-right-mine-placement.png",
+          "sha256": "9857385c2ff111479d7680674d7c84868203dbc699aadb03f5e706cfc83a809e",
+          "bytes": 1205392
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-right-mine-armed.png",
+          "sha256": "d383051ac951f7674e4f71de7446e4baf0c3f0c68758d911c3f1b883cf7ce816",
+          "bytes": 1208772
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-left-star-release.png",
+          "sha256": "165bd9fad001203ea8b503d3d69cf30becce539041be4c93f68ae716592aa0d7",
+          "bytes": 1219730
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-left-mine-placement.png",
+          "sha256": "d4d4311d90f99585b87843f9058559aed4e1b50b07065f50d068bf808059d808",
+          "bytes": 1221597
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/devices-left-mine-armed.png",
+          "sha256": "b3f8b05a7dbf36efb2c16c52cbcc8461cf28e918355de805db5209769be10bc9",
+          "bytes": 1226297
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/mine-real-destruction.png",
+          "sha256": "103b5d4b6058b17457c6112feb7eb822857d3106a72eae7d11d70d3647390e82",
+          "bytes": 1342704
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/01-masked-capabilities.png",
+          "sha256": "8e8b34e974113a170ab5a5167787c471bc4060d1d0712c973adcd3b1a85f8272",
+          "bytes": 11548
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/02-feral-hunter-field-receipt.png",
+          "sha256": "cebedca13f14ebcaf2ffa0e5be7f5e9105bddc3a8b0a4db9349f73c8f7576de5",
+          "bytes": 89007
+        },
+        {
+          "file": "docs/qa/v107-pit-workbook/03-scar-field-receipt.png",
+          "sha256": "655a7ec72a2cdc81815df77812571adb605e2543cd4a25c037e48db9c8fda743",
+          "bytes": 90689
+        }
+      ]
+    },
+    {
+      "domain": "Homeworld",
+      "status": "PASS_CIBLE",
+      "buildId": "lKBwtp6LAjSerAzSZQEOM",
+      "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+      "browserChecksPassed": 67,
+      "capturesInspected": 10,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-final.log 2>&1",
+      "report": {
+        "path": "docs/v107-homeworld-comparison-validation.json",
+        "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+        "bytes": 11883
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v107-homeworld-comparison/01-a-source-and-limits.png",
+          "sha256": "697677166691caf12d0d8b2c0478eff372690a98172ad9305332d15ad7095440",
+          "bytes": 168376
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/02-discovery-provenance.png",
+          "sha256": "01e1dc8b4625e6016945aedb78347e737e3f61d3acb4c01e2bf7c1777cade899",
+          "bytes": 159950
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/03-c-native-carry.png",
+          "sha256": "b0000e5d0245b38118a81e0577c904c4652dd7ba4f51b08bd60e0470f894f5d8",
+          "bytes": 731386
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/04-parked-c-original-provenance.png",
+          "sha256": "a571e4aabad426bd1bbb8a1b44e52e6113ec5e99ada3ac0da8c8adef83a8cc97",
+          "bytes": 836856
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/05-c-on-third-lectern.png",
+          "sha256": "09cd05c467432d74d299e3dfcce61ba33ac6603031058f93c09ab8bfe452974b",
+          "bytes": 806338
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/06-two-support-observations.png",
+          "sha256": "931f692fceda4ec8db98b3a13f0d20f901c0cd88a96eadcf6c5157a454defe26",
+          "bytes": 823471
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/07-comparison-interface.png",
+          "sha256": "c1ccd0570e19874e8536d38b69062c271f34c7ea4ddb4fcc27f80ee83aaea501",
+          "bytes": 195558
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/08-completed-desktop.png",
+          "sha256": "55edbf0451c75681d631a0783dfe5fa9e71dc370b785209b5926e4a3c8eeac28",
+          "bytes": 170918
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/09-completed-mobile.png",
+          "sha256": "a54bb06851dbdc2b45abf1d4c4a75b2d4b54ee817993639cb9310ddb30c040f1",
+          "bytes": 110253
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/10-local-map-mobile.png",
+          "sha256": "e80476471d93cc3a83ee0675bcb2204f6b46c507dd5d1f6443b6867aef283e8f",
+          "bytes": 72716
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/result.json",
+          "sha256": "35fd90e9983a6c399ad6964ca329b23996e4eef65fbf637c1a3b215f9383eed5",
+          "bytes": 20897
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/test.log",
+          "sha256": "2a71e94cc208848a31a4fa6f92738a81120de8e5a82356820a17b7cc42202496",
+          "bytes": 21524
+        },
+        {
+          "file": "docs/qa/v107-homeworld-comparison/lint.log",
+          "sha256": "a088b5daf0181385b93c3a264bcfd03e3ac600513bcb7a6923b5995d8ee3fd43",
+          "bytes": 608
+        }
+      ]
+    },
+    {
+      "domain": "Clans",
+      "status": "PASS_CIBLE",
+      "buildId": "lKBwtp6LAjSerAzSZQEOM",
+      "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+      "browserChecksPassed": 43,
+      "capturesInspected": 7,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-d148ebc-r2 node scripts/qa-clan-specialized-v107.mjs",
+      "report": {
+        "path": "docs/v107-clan-specialized-validation.json",
+        "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
+        "bytes": 18901
+      },
+      "portableFiles": [
+        {
+          "file": "docs/v107-clan-specialized-validation.json",
+          "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
+          "bytes": 18901
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/01-dock-arrival.png",
+          "sha256": "7195a4611d86242ef5b46a2195fc104b579c9d85447a051743fb3a3efb3d5dc4",
+          "bytes": 248752
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/02-mount-care.png",
+          "sha256": "ed164d1e74e530febf7ccfd79984dc30c8806a64f53dd69cd0221f1828fe01c3",
+          "bytes": 263292
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/03-confinement-two-routes.png",
+          "sha256": "b75941f6275a60846c8632e318bf2e52d71a743708c4eaf7b764b4395cb17418",
+          "bytes": 242407
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/04-duel-objective.png",
+          "sha256": "54c9e489d04a4fdfa8d1ae080632d33fe15b2201b1139165d2530b10392ed679",
+          "bytes": 260087
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
+          "sha256": "c396a8e5cae601fd17e4bde01f1ca4743cb09fcfd53c44f862b9e5fb6806efa3",
+          "bytes": 262588
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
+          "sha256": "d0221f9b6bf85ae1b9525444763702f67f368175edfe20562fbc049d33092042",
+          "bytes": 258682
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/07-mobile-dock.png",
+          "sha256": "75aba6e2be87704e7501a6cd0140399f10d801c32d2ad7dcbe1e5ef5bb0fb2ba",
+          "bytes": 190151
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/raw-validation.json",
+          "sha256": "88ee71a35007d8c5c1bd2dd03e04634d9248f7fb7423029e3289907f99d77c9b",
+          "bytes": 12112
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/source-before-after.json",
+          "sha256": "51d3dff00676ce76e0ba7efafc93cc2cb98add7f0520b94d749bc34dc14a6a0f",
+          "bytes": 4591
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/business-tests.log",
+          "sha256": "189130d62f6fbb8a64b07ded7cb367b242db5834a15334e8966aa0c85b60db3b",
+          "bytes": 4219
+        },
+        {
+          "file": "docs/qa/v107-clan-specialized/verification-commands.json",
+          "sha256": "cd54211dde6abf19e512d1d7a3ef45a3243c54390c6e77af51e8b28971d6d418",
+          "bytes": 807
+        },
+        {
+          "file": "docs/v107-clan-specialized-contract.md",
+          "sha256": "c0930ebb20212ff621bdbfdaa000791b293ba2450af61fd242973cd72f5bd868",
+          "bytes": 10900
+        }
+      ]
+    },
+    {
+      "domain": "Preserve",
+      "status": "PASS_CIBLE",
+      "buildId": "lKBwtp6LAjSerAzSZQEOM",
+      "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+      "browserChecksPassed": 31,
+      "capturesInspected": 14,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+      "report": {
+        "path": "docs/v107-preserve-expedition-validation.json",
+        "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+        "bytes": 32161
+      },
+      "portableFiles": [
+        {
+          "file": "docs/v107-preserve-expedition-validation.json",
+          "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+          "bytes": 32161
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/browser.log",
+          "sha256": "4d499d603bbeb62055d56db4676605c9dab9a5afd1fab8f0d200b6cc1570fea2",
+          "bytes": 3239
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+          "sha256": "ba319045f43295e53e24c686d8ef502606c997c492e9dc3bfb3d60f6fab3b8f7",
+          "bytes": 348661
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+          "sha256": "95cc082280ccfd99bce840f769c2d7a2e4480237ddfbcfc20e4d3b4d344b426f",
+          "bytes": 341856
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+          "sha256": "5ad59c2b86ffa6d4a43a663985013b409a122676fc3fb677e22b953644243e87",
+          "bytes": 1534029
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+          "sha256": "0b8b43b165df948002ed7822cd370c064493443add605e58cec038fcabb328e0",
+          "bytes": 1591669
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+          "sha256": "dd392084a29e2c79932de7868357d593d366c28c8412c9e6a386cfb84306e3b0",
+          "bytes": 580919
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/lint.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+          "sha256": "1b9e983170eac2dc2fff031d078c55d84e1c7e0837436bdf1543b1646a3f889c",
+          "bytes": 1490695
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/result.json",
+          "sha256": "d5dc9f07d391cbc871b73fa0ba913a483bf4fb76479efee8591787ee945911d3",
+          "bytes": 150996
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+          "sha256": "b4c9f326ccb5a84370fb84d987a10394e098f45e1cfed3c9f6aa837c95f40bd9",
+          "bytes": 1571943
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+          "sha256": "64391d0eeff2a37de7bd8d45ea6f13e84cbe711bba9b4d58f59b3db1eb6ecb73",
+          "bytes": 1570781
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+          "sha256": "8c0422668413988695b0a832ea7b5eeeb2768c30418324b95b6afce18b8dd4f2",
+          "bytes": 1588414
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+          "sha256": "fdcc2723ab67808999b817091c9317f446a10ca64e17037d365e4df981315b18",
+          "bytes": 1492333
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+          "sha256": "e3aae023c37dee2bf35b15a2c929588dc16581da5b8248bc875d7f788721ed51",
+          "bytes": 311571
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+          "sha256": "d1d513b06f7318c672934c22c581e4b11abdddeb355dca6e0dedbb4b89e5377e",
+          "bytes": 130397
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/survey-returned-outcome.png",
+          "sha256": "a7b7fb8880603229424da0f48344fbe0685ee589ec6f178d22dca559e099abe3",
+          "bytes": 191966
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/tests.log",
+          "sha256": "bd253762445cdd2070fe7931c192dadb3d1bc13abfa32bfecfba46a5b1910cf8",
+          "bytes": 7512
+        },
+        {
+          "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
+          "sha256": "48a241d1538bd2aab0086f11a80f85d85f08d7112012799b49effec5e53472ab",
+          "bytes": 395468
+        }
+      ]
+    }
+  ]
+}

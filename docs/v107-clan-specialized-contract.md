@@ -1,6 +1,6 @@
 # V107 · les six ateliers physiques V6
 
-État : implémentation d’exercice, tests métier 16/16 PASS. La validation navigateur compilée est à exécuter après le gel global. Ce document ne clôt aucune ligne de campagne ni ne remplace une preuve de production.
+État : exercice jouable, tests métier 16/16 PASS. La validation compilée finale du runtime `d148ebc21004b87e3c6ce435d74e1c120856afba` passe 43 contrôles, sans erreur navigateur ; les sept captures desktop/mobile ont été ouvertes. Voir [la preuve finale](v107-clan-specialized-validation.json). Ce contrat ne clôt aucune ligne de campagne et ne remplace pas ce rapport de production.
 
 ## Contrat exact
 

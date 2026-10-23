@@ -11,10 +11,10 @@ test('the pre-freeze inventory covers all four domains and keeps proof/master do
  for(const row of inventory.assets){assert.match(row.sha256,/^[a-f0-9]{64}$/);assert.ok(row.bytes>0);assert.equal(inventory.inputs.find(input=>input.path===row.path).sha256,row.sha256);}
 });
 
-test('root-pinned extra art can be added without overwriting a historical identity or modifying its file',async()=>{
+test('root-pinned art deduplicates safely without overwriting a historical identity or modifying its file',async()=>{
  const source=JSON.parse(await fs.readFile('docs/suivi-production/v613/data/production-manifest.json'));
  const asset=source.assets[0],row={path:asset.repoPngPath,sha256:asset.sha256,bytes:asset.bytes,scope:'Existing static historical art, no new identity/animation.'};
- const bytes=await fs.readFile(row.path),result=await collectRuntimeInputsV107({additionalAssets:[row,row]});assert.equal(result.assets.length,inventory.assets.length+1);assert.equal(result.assets.find(input=>input.path===row.path).sha256,row.sha256);assert.deepEqual(await fs.readFile(row.path),bytes);
+ const bytes=await fs.readFile(row.path),result=await collectRuntimeInputsV107({additionalAssets:[row,row]});assert.equal(result.assets.length,inventory.assets.length+(inventory.assets.some(input=>input.path===row.path)?0:1));assert.equal(result.assets.find(input=>input.path===row.path).sha256,row.sha256);assert.deepEqual(await fs.readFile(row.path),bytes);
 });
 
 test('unbounded public paths, unpinned additions and contradictory hashes are rejected',async()=>{
