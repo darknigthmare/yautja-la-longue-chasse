@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "file": "Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+  "bytes": 1731753,
+  "sourceSha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+  "sha256": "90f03e170a07d4867f8f8bc588e486d3055c11a826a496ce50790d6a35e3a2f8",
+  "sheets": [
+    "Synthèse",
+    "Variantes",
+    "Production PR",
+    "Sources jeu",
+    "Classeurs",
+    "Contrôles"
+  ],
+  "uniqueVariantIds": 5120,
+  "statusCounts": {
+    "Présente dans main": 2197,
+    "Produite — à vérifier": 205,
+    "Conservée hors main": 36,
+    "Pas faite": 2682
+  },
+  "productionRows": 180,
+  "auditedVariantCellsChanged": 144,
+  "auditedVariantRowsChanged": 18,
+  "historicalProductionRowsPreserved": 162,
+  "historicalStatusTransitionsToMain": 0,
+  "historicalPreservationRule": "All 162 historical production records, their formula caches and all historical dates are preserved; PR 15 remains unmerged.",
+  "newProductionRows": 18,
+  "sourceSheetDataRowsPreserved": [
+    "Sources jeu",
+    "Classeurs"
+  ],
+  "additionalSourceWorkbooks": [],
+  "priorWorkbooksPreservedByteIdentical": 17,
+  "distinctOriginalWorkbooksVerifiedInMain": 12,
+  "historicalWorkbookStatesPreservedWithExplicitProvenanceNote": true,
+  "sourceSheetSubtitleChangesAllowed": {},
+  "nativeTables": 6,
+  "nativeAutoFiltersVerified": 6,
+  "activeSolidConditionalFormats": 21,
+  "formulaErrors": [],
+  "exactExportedFormulas": 667,
+  "conditionalRuleIdentitiesVerified": 21,
+  "newProductionEvidenceRowsVerified": 18,
+  "newTypedProductionDatesVerified": 18,
+  "unrecoveredProductionDatesLeftBlank": 0,
+  "newTypedVerificationDatesVerified": 18,
+  "formulaNormalization": "Only one optional leading = is removed; no whitespace, case or reference rewriting.",
+  "dateNormalization": "Historical timestamps remain exact. New N/Y timestamps may differ only by -1 ms when the Excel-epoch double roundtrip reproduces the exported value exactly; date types and display formats are checked separately.",
+  "dateQuantizationExceptions": [
+    {
+      "cell": "N172",
+      "id": "spiked-tail--sucklings-02",
+      "manifestTimestamp": "2026-10-23T17:10:36.209Z",
+      "expectedUtcMs": "2026-10-23T17:10:36.209+00:00",
+      "exportedUtcMs": "2026-10-23T17:10:36.208+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    }
+  ],
+  "mergedRangesPreservedBySheet": {
+    "Synthèse": 27,
+    "Variantes": 2,
+    "Production PR": 2,
+    "Sources jeu": 2,
+    "Classeurs": 2,
+    "Contrôles": 17
+  },
+  "originalFontAndFillCellsVerifiedBySheet": {
+    "Synthèse": 1000,
+    "Variantes": 184536,
+    "Production PR": 4200,
+    "Sources jeu": 63536,
+    "Classeurs": 336,
+    "Contrôles": 570
+  },
+  "allOriginalFontsFillsAndColorsPreserved": true,
+  "originalBordersAlignmentsNumberFormatsAndProtectionPreserved": true,
+  "originalRowAndColumnDimensionsPreservedExceptIntentionalAutofit": true,
+  "intentionalAutofitRows": {
+    "Contrôles": [
+      11,
+      14,
+      43
+    ]
+  },
+  "tableStylesAndFilterCriteriaPreserved": true,
+  "freezePanesPreserved": true,
+  "statusValidationPreserved": true,
+  "scope": "OpenXML data, formulas, caches, tables, panes, validation and conditional styles; not a live Excel application session."
+}

@@ -79,8 +79,8 @@ test('all 18 final outputs retain the submitted prompt and a matching accepted r
 test('gallery and codex expose V6.14 while the 973 default choices and human body boundary stay unchanged',()=>{
  const qa=homeworldSceneSsrV78(),library=qa.load('app/game/systems/recentSpriteLibraryV85.ts'),codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeEnforcerFilesV614,18);
- assert.equal(library.RECENT_SPRITE_LIBRARY_V85.uniqueReferencedHashes,2003);
- assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(a=>a.packId!=='enforcers-v614').map(a=>a.sha256)).size,1985);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(a=>a.packId!=='npc-v615').map(a=>a.sha256)).size,2003);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(a=>!['enforcers-v614','npc-v615'].includes(a.packId)).map(a=>a.sha256)).size,1985);
  const defaults=read(`${base}/data/default-selections-before.json`);
  assert.equal(defaults.commit,main);assert.equal(defaults.queries.length,973);
  for(const r of defaults.queries)assert.equal(library.findImportedYautjaArtV85(r.query)?.assetId??null,r.assetId,JSON.stringify(r.query));

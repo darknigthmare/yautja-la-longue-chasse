@@ -12,6 +12,7 @@ import enforcerProductionV611 from '../data/enforcerProductionV611.json';
 import enforcerProductionV612 from '../data/enforcerProductionV612.json';
 import enforcerProductionV613 from '../data/enforcerProductionV613.json';
 import enforcerProductionV614 from '../data/enforcerProductionV614.json';
+import npcProductionV615 from '../data/npcProductionV615.json';
 import npcMetadata from '../data/recentNpcSourceMetadataV85.json';
 
 export type RecentSpriteKindV85='npc'|'fauna'|'flora'|'synthetic'|'texture'|'ship'|'equipment'|'reference';
@@ -62,6 +63,7 @@ const enforcerEntriesV611=enforcerProductionV611.assets as readonly RecentSprite
 const enforcerEntriesV612=enforcerProductionV612.assets as readonly RecentSpriteSourceV85[];
 const enforcerEntriesV613=enforcerProductionV613.assets as readonly RecentSpriteSourceV85[];
 const enforcerEntriesV614=enforcerProductionV614.assets as readonly RecentSpriteSourceV85[];
+const npcEntriesV615=npcProductionV615.assets as readonly RecentSpriteSourceV85[];
 const supersededBadlandsV85=new Map<string,string>();
 for(const asset of [...badlandsEntriesV85,...completionEntriesV87])if(asset.supersedesIdentityId)supersededBadlandsV85.set(asset.supersedesIdentityId,asset.identityId);
 for(const note of [...badlandsLatest.sourceCorrectionNotes,...driveCompletion.sourceCorrectionNotes] as readonly {id:number;fields?:{superseded_by_asset_id?:number;morphology_corrected_by_asset_id?:number}}[]){
@@ -70,7 +72,7 @@ for(const note of [...badlandsLatest.sourceCorrectionNotes,...driveCompletion.so
 }
 /** Corrections change only reference preference. Superseded files retain their
  * source ID, pixels and catalogue entry, without a body or animation override. */
-export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86,...completionEntriesV87,...archiveAuditEntriesV87,...newDepositsEntriesV87,...historicalRecoveryEntriesV88,...referenceRecoveryEntriesV89,...enforcerEntriesV611,...enforcerEntriesV612,...enforcerEntriesV613,...enforcerEntriesV614].map(asset=>{
+export const RECENT_SPRITE_ASSETS_V85:readonly RecentSpriteSourceV85[]=[...source.assets as readonly RecentSpriteSourceV85[],...driveEntriesV85,...badlandsEntriesV85,...approvedHunterEntriesV85,...garrisonEntriesV86,...completionEntriesV87,...archiveAuditEntriesV87,...newDepositsEntriesV87,...historicalRecoveryEntriesV88,...referenceRecoveryEntriesV89,...enforcerEntriesV611,...enforcerEntriesV612,...enforcerEntriesV613,...enforcerEntriesV614,...npcEntriesV615].map(asset=>{
  const replacement=supersededBadlandsV85.get(asset.identityId);return replacement?{...asset,preferredVersion:false,supersededByIdentityId:replacement}:asset;
 });
 export const RECENT_SPRITE_LIBRARY_V85={...source,assets:RECENT_SPRITE_ASSETS_V85,
@@ -82,10 +84,11 @@ export const RECENT_SPRITE_LIBRARY_V85={...source,assets:RECENT_SPRITE_ASSETS_V8
  nativeEnforcerFilesV612:enforcerProductionV612.summary.nativePngFiles,
  nativeEnforcerFilesV613:enforcerProductionV613.summary.nativePngFiles,
  nativeEnforcerFilesV614:enforcerProductionV614.summary.nativePngFiles,
+ nativeNpcFilesV615:npcProductionV615.summary.nativePngFiles,
  uniqueReferencedHashes:new Set(RECENT_SPRITE_ASSETS_V85.map(asset=>asset.sha256)).size,
  packs:[...source.packs,{id:'drive-latest',label:'Derniers fichiers Drive · 7 octobre',version:'2026-10-07',priority:85,archive:'Fichiers Drive reçus individuellement',insideArchive:null,sha256:'',pngEntriesImported:driveEntriesV85.length,recordEntries:0,status:'source-import-authored-no-qa'},
   {id:'badlands-latest',label:'Badlands · ajouts V8 à V13',version:'V8–V13',priority:93,archive:'Six lots d’ajouts Drive',insideArchive:null,sha256:'',pngEntriesImported:badlandsEntriesV85.length,recordEntries:6,status:'source-import-authored-no-qa'},
-  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs,...driveCompletion.packs,...driveArchiveAudit.packs,...driveNewDeposits.packs,...driveHistoricalRecoveryV88.packs,...driveReferenceRecoveryV89.packs,...enforcerProductionV611.packs,...enforcerProductionV612.packs,...enforcerProductionV613.packs,...enforcerProductionV614.packs]};
+  {id:'approved-hunters',label:'Portraits et créatures · sources récentes',version:'V14 / Wolf V1 profil V2',priority:94,archive:'Drive · dossier images validées PHG',insideArchive:null,sha256:'',pngEntriesImported:approvedHunterEntriesV85.length,recordEntries:7,status:'source-import-authored-no-qa'},...driveGarrisons.packs,...driveCompletion.packs,...driveArchiveAudit.packs,...driveNewDeposits.packs,...driveHistoricalRecoveryV88.packs,...driveReferenceRecoveryV89.packs,...enforcerProductionV611.packs,...enforcerProductionV612.packs,...enforcerProductionV613.packs,...enforcerProductionV614.packs,...npcProductionV615.packs]};
 export const RECENT_SPRITE_PREFERRED_V85=RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.preferredVersion);
 export const RECENT_SPRITE_GROUPS_V85=source.groups;
 export const RECENT_NPC_SOURCE_METADATA_V85=npcMetadata;

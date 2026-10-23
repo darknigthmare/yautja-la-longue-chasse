@@ -68,7 +68,7 @@ test('all 108 PNG hashes remain intact and the 36 recovered files are native RGB
 test('gallery and codex expose all new identities, with the 973 automatic choices and human body boundary unchanged',()=>{
  const qa=homeworldSceneSsrV78(),library=qa.load('app/game/systems/recentSpriteLibraryV85.ts'),codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeEnforcerFilesV613,36);
- assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.packId!=='enforcers-v614').map(asset=>asset.sha256)).size,1985);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!['enforcers-v614','npc-v615'].includes(asset.packId)).map(asset=>asset.sha256)).size,1985);
  const defaults=read(`${base}/data/default-selections-before.json`);
  assert.equal(defaults.commit,main);assert.equal(defaults.queries.length,973);
  for(const r of defaults.queries)assert.equal(library.findImportedYautjaArtV85(r.query)?.assetId??null,r.assetId,JSON.stringify(r.query));
