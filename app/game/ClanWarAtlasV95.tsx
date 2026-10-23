@@ -14,6 +14,7 @@ import styles from "./ClanWarAtlasV95.module.css";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101 } from "./systems/planetMaterialV101";
 import { warConvoyRouteIssueV105 } from "./systems/clanWarConvoyRouteV105";
+import { warIntelMarkerV106, warSupplyPathV106 } from "./systems/clanWarAssaultV106";
 
 interface ClanWarAtlasV95Props {
   simulation: WarSimulationV85;
@@ -128,6 +129,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const [selectionMode, setSelectionMode] = useState<"origin" | "target">("origin");
   const [showRoutes, setShowRoutes] = useState(true);
   const [showNames, setShowNames] = useState(false);
+  const [showIntelligence, setShowIntelligence] = useState(false);
   const [materialReady, setMaterialReady] = useState(false);
   const [mapColors, setMapColors] = useState<"terrain" | "control">("terrain");
   const [materialSettings, setMaterialSettings] = useState({ ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101 });
@@ -147,6 +149,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
     : [`${continents} continent${continents > 1 ? "s" : ""}`, `${islands} île${islands !== 1 ? "s" : ""}`].join(" · ");
   const inspectedState = simulation.territories[inspected.id];
   const intel = warAtlasIntelV95(simulation, inspected.id);
+  const supplyPath = warSupplyPathV106(simulation, inspected.id);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
   const factionMetrics = warAtlasFactionMetricsV95(simulation, regions);
   const regionMetrics = warAtlasRegionMetricsV95(simulation, regions);
@@ -318,8 +321,9 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 const dimmed = Boolean(regionFilter && geography.regionId !== regionFilter);
                 const accessible = isNeighbor;
                 const showLabel = territories.length <= 48 || regionFilter === geography.regionId || isSource || isTarget || isNeighbor || hoveredId === geography.id;
+                const information = showIntelligence ? warIntelMarkerV106(simulation, geography.id) : null;
                 return <g key={geography.id} className={styles.territory} role="button" tabIndex={0} style={{ "--planet-faction-color": WAR_ATLAS_FACTIONS_V95[faction].color } as CSSProperties}
-                  aria-label={`${shortId(geography.id)} · ${definition.name} · ${WAR_FACTIONS_V85[faction]}${statusLabel(geography.id) ? ` · ${statusLabel(geography.id)}` : ""}`}
+                  aria-label={`${shortId(geography.id)} · ${definition.name} · ${WAR_FACTIONS_V85[faction]}${statusLabel(geography.id) ? ` · ${statusLabel(geography.id)}` : ""}${information ? ` · ${information.label}` : ""}`}
                   aria-pressed={selectionMode === "origin" ? isSource : isTarget}
                   aria-disabled={selectionMode === "target" && !accessible ? true : undefined}
                   data-territory-id={geography.id} data-landmass-id={geography.landmassId} data-source={isSource} data-target={isTarget} data-neighbor={isNeighbor} data-dimmed={dimmed}
@@ -331,6 +335,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                   <path d={d} fill={`url(#${unique}-relief)`} className={styles.landPattern} aria-hidden="true" data-material-fallback="true"/>
                   <path d={d} fill={`url(#${unique}-${faction})`} className={styles.landPattern} aria-hidden="true"/>
                   {showLabel && position.visible && position.depth > .12 && <g className={styles.zoneLabel} aria-hidden="true"><text x={position.x.toFixed(3)} y={(position.y - 4).toFixed(3)} textAnchor="middle">{factionGlyph[faction]} {shortId(geography.id)}</text>{showNames && <text className={styles.zoneName} x={position.x.toFixed(3)} y={(position.y + 11).toFixed(3)} textAnchor="middle">{definition.name.length > 23 ? `${definition.name.slice(0, 21)}…` : definition.name}</text>}{(isSource || isTarget) && <text x={position.x.toFixed(3)} y={(position.y + (showNames ? 26 : 12)).toFixed(3)} textAnchor="middle" className={styles.selectionLabel}>{isSource ? "DÉPART" : "CIBLE"}</text>}</g>}
+                  {information && showLabel && position.visible && position.depth > .12 && <g className={styles.intelligenceMarker} pointerEvents="none" aria-hidden="true" data-testid="war-intel-map-v106" data-kind={information.kind} data-stale={information.stale} data-intel-territory={geography.id}><rect x={(position.x - 44).toFixed(3)} y={(position.y - 38).toFixed(3)} width="88" height="18" rx="5"/><text x={position.x.toFixed(3)} y={(position.y - 25).toFixed(3)} textAnchor="middle">{information.short}</text></g>}
                 </g>;
               })}
               </g>
@@ -362,6 +367,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           {projection === "globe" && <><div className={styles.rotationButtons} aria-label="Rotation de la planète"><button type="button" aria-label="Tourner vers l’ouest" onClick={() => setLongitude(value => wrapLongitude(value - 30))}>←</button><button type="button" aria-label="Incliner vers le nord" onClick={() => setLatitude(value => Math.min(65, value + 15))}>↑</button><button type="button" aria-label="Incliner vers le sud" onClick={() => setLatitude(value => Math.max(-65, value - 15))}>↓</button><button type="button" aria-label="Tourner vers l’est" onClick={() => setLongitude(value => wrapLongitude(value + 30))}>→</button></div><label className={styles.rotationSlider}>Rotation<input aria-label="Longitude du globe" type="range" min="-180" max="180" value={longitude} onChange={event => setLongitude(Number(event.target.value))}/></label><label className={styles.zoomControl}>Zoom<select aria-label="Zoom du globe" value={zoom} onChange={event => setZoom(Number(event.target.value))}><option value="1">100 %</option><option value="1.1">110 %</option><option value="1.2">120 %</option></select></label></>}
           <label className={styles.toggle}><input type="checkbox" checked={showRoutes} onChange={event => setShowRoutes(event.target.checked)}/>Routes</label>
           <label className={styles.toggle}><input type="checkbox" checked={showNames} onChange={event => setShowNames(event.target.checked)}/>Noms</label>
+          <label className={styles.toggle}><input type="checkbox" checked={showIntelligence} onChange={event => setShowIntelligence(event.target.checked)}/>Renseignement daté</label>
           <label className={styles.zoomControl}>Couleurs<select aria-label="Couleurs de la carte" value={mapColors} disabled={!materialReady} onChange={event => setMapColors(event.target.value as "terrain" | "control")}><option value="terrain">Relief naturel</option><option value="control">Contrôle des clans</option></select></label>
         </div>
         <fieldset className={styles.appearanceControls} disabled={!materialReady}><legend>Affichage planétaire</legend>
@@ -371,6 +377,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
         </fieldset>
         <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
+        {showIntelligence && <p className={styles.intelligenceLegend} data-testid="war-intel-legend-v106"><span>● Aptes : personnes connues de votre détachement</span><span>◷ Intervalle et tour : dernier rapport, pas un effectif en direct</span><span>? Effectif inconnu</span><span>Ambre : rapport ancien, à renouveler</span>Les couleurs de contrôle et les surfaces naturelles restent visibles.</p>}
         {convoy && <p className={styles.convoyLegend} data-testid="war-convoy-atlas-legend-v105"><span data-stage="delivered">━ Étapes livrées</span><span data-stage="next">┅ Prochaine étape</span><span data-stage="planned">┄ Trajet prévu</span><span data-stage="blocked">┅ Liaison bloquée</span>Les étapes détaillées et leur inspection sont disponibles dans « Acheminer un convoi ».</p>}
       </div>
 
@@ -386,6 +393,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           {inspectedState.controller === PLAYER && <><div><dt>Installation</dt><dd>{inspectedState.installationIntact ? "Opérationnelle" : "Endommagée"}</dd></div><div><dt>Stocks locaux</dt><dd>S {simulation.stocks[inspected.id].s} · M {simulation.stocks[inspected.id].m} · I {simulation.stocks[inspected.id].i}</dd></div></>}
           <div><dt>Routes voisines</dt><dd>{inspected.neighbors.length}</dd></div>
         </dl>
+        {inspectedState.controller === PLAYER && <section className={styles.supplyTrace} aria-label="Liaison du territoire" data-testid="war-supply-path-v106"><strong>Liaison depuis la base</strong>{supplyPath ? <><p>{supplyPath.length - 1} route{supplyPath.length > 2 ? "s" : ""} praticable{supplyPath.length > 2 ? "s" : ""} dans le réseau actuel.</p><div>{supplyPath.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("origin"); onSelectTerritory(id); centerOn(id); setAnnouncement(`Inspection du maillon ${territory(id)?.name}.`); }}>{shortId(id)} · {territory(id)?.name}</button>)}</div><small>Cette liaison décrit l’accès au réseau. Le transit ne donne pas la propriété d’un dépôt ; les convois ne déposent que dans vos magasins.</small></> : <p>Pas de liaison praticable depuis une base intacte. Inspectez les contrôles et les transits des routes voisines.</p>}</section>}
         <div className={styles.routeSelection}><div><span>01 / DÉPART</span><strong>{shortId(source.id)} · {source.name}</strong></div><span className={styles.routeArrow} aria-hidden="true">↓</span><div><span>02 / CIBLE</span><strong>{target ? `${shortId(target.id)} · ${target.name}` : "À choisir"}</strong></div></div>
         <details className={styles.neighborDirectory}><summary>{source.neighbors.length} destinations accessibles du départ</summary><div>{source.neighbors.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("target"); onSelectTarget(id); centerOn(id); setAnnouncement(`Cible : ${territory(id)?.name}. Destination voisine de ${source.name}.`); }} aria-pressed={targetTerritoryId === id}>{shortId(id)} · {territory(id)?.name}{routeDescription(source.id, id)?.kind === "crossing" && " · traversée balisée"}</button>)}</div></details>
         <button type="button" className={styles.targetAction} onClick={() => {

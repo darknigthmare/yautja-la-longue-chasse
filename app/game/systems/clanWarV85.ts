@@ -4,6 +4,7 @@ import { parseWarPlanetRecipeCodeV103 } from "./clanWarProceduralV103";
 import { warDeploymentV103 } from "./clanWarDeploymentV103";
 import { WAR_EVACUATION_COST_V100, warEvacuationIssueV100, warEvacuationManifestV100 } from "./clanWarEvacuationV100";
 import { completeWarConvoyLegV105, matchesWarConvoyLegV105, validWarConvoyStateV105, type WarConvoyRouteV105 } from "./clanWarConvoyStateV105";
+import { warBattleModelV106 } from "./clanWarBattleModelV106";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
 export interface WarCombatantV85 {
@@ -254,8 +255,13 @@ export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): s
   if (!fits(state.stocks[order.fromId], sum(reserved, warOrderCostV85(order)))) return "Le stock local ne couvre pas les ordres réservés. Un convoi doit apporter le matériel avant l’offensive.";
   return null;
 }
+export function warOrderRevisionIssueV106(state: WarSimulationV85, kind: WarOrderKindV85): string | null {
+  return state.revision >= 1000000 || state.convoyRouteV105 && state.revision >= (state.convoyRouteV105.pendingOrderId ? 999998 : 999999) || kind === "evacuate" && state.revision >= 999999
+    ? "La limite de révision de cette archive ne laisse plus la marge nécessaire à cet ordre. Aucun ordre ajouté." : null;
+}
 export function queueWarOrderV85(state: WarSimulationV85, draft: Omit<WarOrderV85, "id" | "factionId" | "mode">): WarUpdateV85 {
-  if (state.revision >= 1000000 || state.convoyRouteV105 && state.revision >= (state.convoyRouteV105.pendingOrderId ? 999998 : 999999) || draft.kind === "evacuate" && state.revision >= 999999) return { state, accepted: false, message: "La limite de révision de cette archive ne laisse plus la marge nécessaire à cet ordre. Aucun ordre ajouté." };
+  const revisionIssue = warOrderRevisionIssueV106(state, draft.kind);
+  if (revisionIssue) return { state, accepted: false, message: revisionIssue };
   const order: WarOrderV85 = { ...draft, combatantIds: [...draft.combatantIds], cargo: { ...draft.cargo }, id: `free-${state.seed}-t${state.turn}-r${state.revision + 1}`, factionId: PLAYER, mode: "auto" };
   const issue = warOrderIssueV85(state, order);
   if (issue) return { state, accepted: false, message: issue };
@@ -285,8 +291,7 @@ function battle(state: WarSimulationV85, order: WarOrderV85, defendersOverride?:
   const attackers = currentActors(state, order);
   const defenders = defendersOverride ?? state.combatants.filter(actor => actor.factionId === state.territories[order.targetId].controller && actor.territoryId === order.targetId && actor.status === "fit" && actor.trainingUntilTurn === null);
   const roll = hash(order.id, state.seed) % 3;
-  const won = attackers.length >= Math.max(1, defenders.length + (roll === 0 ? 1 : 0));
-  const losses = won ? Math.min(attackers.length - 1, Math.floor(defenders.length / 3)) : Math.min(attackers.length, Math.max(1, Math.floor(defenders.length / 3)));
+  const { won, losses } = warBattleModelV106(attackers.length, defenders.length, roll);
   for (const [index, actor] of attackers.slice(-losses || attackers.length).entries()) {
     if (losses === 0) break;
     actor.status = index === 0 && !won && roll === 0 ? "dead" : "wounded"; actor.garrison = false;

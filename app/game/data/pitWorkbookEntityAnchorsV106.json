@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "release": "V106",
+  "status": "SOURCE_COORDINATES_REVIEWED_RUNTIME_SEPARATE",
+  "source": {
+    "extractionPath": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "workbook": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "workbookSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "originalWorkbookAvailable": false,
+    "admissionsPath": "app/game/data/pitWorkbookAnimationsV100.json",
+    "admissionsSha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956"
+  },
+  "scope": "Three source targets and native spatial anchors only. Runtime bindings, gameplay, visual browser results and full-kit completion require their independent proof.",
+  "entries": [
+    {
+      "fighterId": "feral-hunter",
+      "actionId": "M_F006_S1",
+      "key": "S1",
+      "bodyId": "F006_ACT_S1",
+      "entityId": "E_F006_bolt",
+      "sourceSheet": "05_MOVES_PROPOSES",
+      "sourceCell": "P10",
+      "sourceTargets": {
+        "startup": 23,
+        "active": 6,
+        "recovery": 30,
+        "damage": 115,
+        "costPercent": 30
+      },
+      "atlasId": "feral-actions-v59",
+      "newNativeDrawings": 0,
+      "visualReuse": "Historical V59 four drawings per facing, already admitted under M_F006_S1. V106 retimes its existing two startup, one active and two recovery references; the active frame is deliberately shared with early recovery. This is an explicit visual reuse, not a new independently authored F006_ACT_S1 BODY.",
+      "historicalTiming": [
+        9,
+        5,
+        18
+      ],
+      "v106FrameDurations": {
+        "startup": [
+          10,
+          13
+        ],
+        "active": [
+          6
+        ],
+        "recovery": [
+          10,
+          20
+        ]
+      },
+      "anchors": [
+        {
+          "facing": "right",
+          "activeFrameIndex": 0,
+          "pageId": "feral-launcher-v59-right",
+          "path": "/game/sprites/v59/pit/feral/launcher-right.png",
+          "rect": [
+            0,
+            520,
+            880,
+            504
+          ],
+          "pivot": [
+            365,
+            463
+          ],
+          "point": [
+            848,
+            174
+          ],
+          "bodyHeightPx": 470,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "railSpacingPx": 6,
+          "anchorKind": "open-rail-emission-gap",
+          "contactOffsetPx": 0
+        },
+        {
+          "facing": "left",
+          "activeFrameIndex": 0,
+          "pageId": "feral-launcher-v59-left",
+          "path": "/game/sprites/v59/pit/feral/launcher-left.png",
+          "rect": [
+            0,
+            512,
+            815,
+            512
+          ],
+          "pivot": [
+            559,
+            471
+          ],
+          "point": [
+            33,
+            156
+          ],
+          "bodyHeightPx": 470,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "railSpacingPx": 6,
+          "anchorKind": "rail-aperture",
+          "contactOffsetPx": 0
+        }
+      ],
+      "measurement": "Existing PIT_FERAL_NATIVE_MUZZLES in pitFeralMuzzleV59.ts; measured native active cell, not alpha-edge inference. Parent renderer reviewed exact existing active rectangles and pivots. The right center is the open gap between native rails (alpha2 at848,694 absolute, nearest opaque rail2px away), not a painted disk; its historical emitter is preserved rather than shifted to an alpha silhouette.",
+      "sourceHashes": {
+        "/game/sprites/v59/pit/feral/launcher-left.png": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+        "/game/sprites/v59/pit/feral/launcher-right.png": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca"
+      }
+    },
+    {
+      "fighterId": "scar",
+      "actionId": "M_F003_S3",
+      "key": "S3",
+      "bodyId": "F003_ACT_S3",
+      "entityId": "E_F003_plasma",
+      "sourceSheet": "05_MOVES_PROPOSES",
+      "sourceCell": "R7",
+      "sourceTargets": {
+        "startup": 20,
+        "active": 3,
+        "recovery": 28,
+        "damage": 105,
+        "costPercent": 25
+      },
+      "atlasId": "scar-special-s3-body-v100",
+      "newNativeDrawings": 0,
+      "visualReuse": "The six admitted V100 BODY drawings per facing retain their exact20/3/28 source clock. No new cannon, charge or plasma pixels are admitted here.",
+      "anchors": [
+        {
+          "facing": "right",
+          "activeFrameIndex": 0,
+          "pageId": "scar-special-s3-right-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+          "rect": [
+            0,
+            361,
+            813,
+            306
+          ],
+          "pivot": [
+            459,
+            293
+          ],
+          "point": [
+            448,
+            59
+          ],
+          "bodyHeightPx": 300,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 5
+        },
+        {
+          "facing": "right",
+          "activeFrameIndex": 1,
+          "pageId": "scar-special-s3-right-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+          "rect": [
+            812,
+            361,
+            724,
+            306
+          ],
+          "pivot": [
+            322,
+            292
+          ],
+          "point": [
+            247,
+            61
+          ],
+          "bodyHeightPx": 300,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 4
+        },
+        {
+          "facing": "left",
+          "activeFrameIndex": 0,
+          "pageId": "scar-special-s3-left-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+          "rect": [
+            0,
+            353,
+            771,
+            309
+          ],
+          "pivot": [
+            407,
+            279
+          ],
+          "point": [
+            425,
+            79
+          ],
+          "bodyHeightPx": 261,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 3
+        },
+        {
+          "facing": "left",
+          "activeFrameIndex": 1,
+          "pageId": "scar-special-s3-left-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+          "rect": [
+            770,
+            353,
+            766,
+            309
+          ],
+          "pivot": [
+            349,
+            281
+          ],
+          "point": [
+            413,
+            79
+          ],
+          "bodyHeightPx": 261,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 4
+        }
+      ],
+      "measurement": "Manual opening of both unchanged pages, then diagnostic nearest-neighbor zoom of the two real active apertures per facing. Right absolute front apertures448,420 and1059,422; left425,432 and1183,432. The large red disks at right412,415/1020,418 and left459,429/1220,444 are REAR caps and are excluded. Right front mouth is partly occluded by dreads; left has a visible dark forward aperture. Entity/effect must draw before BODY so native dreads/head occlude it; do not move a flash to the rear cap or invent a forward cannon on top of the mask.",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-special-s3-left.png": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+        "/game/sprites/v100/pit/scar/scar-special-s3-right.png": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f"
+      },
+      "chargeAnchors": [
+        {
+          "facing": "right",
+          "startupFrameIndex": 1,
+          "pageId": "scar-special-s3-right-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+          "rect": [
+            769,
+            0,
+            767,
+            362
+          ],
+          "pivot": [
+            341,
+            329
+          ],
+          "point": [
+            338,
+            109
+          ],
+          "bodyHeightPx": 300,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 2
+        },
+        {
+          "facing": "left",
+          "startupFrameIndex": 1,
+          "pageId": "scar-special-s3-left-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+          "rect": [
+            759,
+            0,
+            777,
+            354
+          ],
+          "pivot": [
+            363,
+            315
+          ],
+          "point": [
+            348,
+            126
+          ],
+          "bodyHeightPx": 261,
+          "uncertaintyPx": 2,
+          "bodyOcclusion": true,
+          "contactOffsetPx": 3
+        }
+      ],
+      "chargeInterpretation": "The second native startup pose exposes the same forward tube aperture. Absolute mouth centers1107,109 right and1107,126 left are distinct from rear caps1072,105 and1139,115. An optional six-tick pre-release charge drawn behind BODY is a cosmetic adaptation only, not native painted effect art, a projectile, damage, or early contact."
+    },
+    {
+      "fighterId": "feral-hunter",
+      "actionId": "M_F006_S2",
+      "key": "S2",
+      "bodyId": "F006_ACT_S2",
+      "entityId": "E_F006_shield",
+      "sourceSheet": "05_MOVES_PROPOSES",
+      "sourceCell": "Q10",
+      "sourceTargets": {
+        "startup": 9,
+        "active": 18,
+        "recovery": 25,
+        "damage": 70,
+        "costPercent": 15
+      },
+      "atlasId": "feral-workbook-s2-v100",
+      "newNativeDrawings": 0,
+      "visualReuse": "Six V100 drawings per facing: deploy9, guard9, edge9, recoil8, fold8, return9. Native shield is already painted on anatomical left wrist and stays attached to BODY; no independent shield sprite is cut from the page.",
+      "guardWindowActiveTicks": [
+        0,
+        8
+      ],
+      "edgeWindowActiveTicks": [
+        9,
+        17
+      ],
+      "windowInterpretation": "18 source active ticks are split into9 guarding ticks and9 edge-contact ticks to match the two native drawings. This conservative guard-then-edge split is the declared engine adaptation, not an extra timing cell from Excel; no guard is promised during the edge pose.",
+      "geometry": [
+        {
+          "facing": "right",
+          "activeFrameIndex": 0,
+          "pageId": "feral-special-s2-a-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+          "rect": [
+            0,
+            794,
+            509,
+            358
+          ],
+          "pivot": [
+            227,
+            328
+          ],
+          "bounds": [
+            346,
+            53,
+            82,
+            153
+          ],
+          "bodyHeightPx": 329,
+          "uncertaintyPx": 4,
+          "contactOffsetPx": 1
+        },
+        {
+          "facing": "right",
+          "activeFrameIndex": 1,
+          "pageId": "feral-special-s2-a-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+          "rect": [
+            0,
+            1151,
+            527,
+            385
+          ],
+          "pivot": [
+            238,
+            329
+          ],
+          "bounds": [
+            400,
+            33,
+            76,
+            143
+          ],
+          "bodyHeightPx": 329,
+          "uncertaintyPx": 4,
+          "contactOffsetPx": 3
+        },
+        {
+          "facing": "left",
+          "activeFrameIndex": 0,
+          "pageId": "feral-special-s2-a-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+          "rect": [
+            508,
+            794,
+            516,
+            358
+          ],
+          "pivot": [
+            302,
+            330
+          ],
+          "bounds": [
+            82,
+            48,
+            98,
+            155
+          ],
+          "bodyHeightPx": 329,
+          "uncertaintyPx": 4,
+          "contactOffsetPx": 3
+        },
+        {
+          "facing": "left",
+          "activeFrameIndex": 1,
+          "pageId": "feral-special-s2-a-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+          "rect": [
+            526,
+            1151,
+            498,
+            385
+          ],
+          "pivot": [
+            282,
+            333
+          ],
+          "bounds": [
+            50,
+            40,
+            84,
+            136
+          ],
+          "bodyHeightPx": 329,
+          "uncertaintyPx": 4,
+          "contactOffsetPx": 3
+        }
+      ],
+      "measurement": "Both original V100 pages opened. Bounding rectangles encompass only the visible forward shield in the native guard and edge poses, with up to four source pixels uncertainty. These are local visual geometry bounds, not source-authored damage boxes; actual front/throw/projectile rules require separate engine tests.",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+        "/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce"
+      }
+    }
+  ],
+  "remaining": {
+    "openAtV105": 17,
+    "candidateSourceActions": 3,
+    "openIfAllThreeGameplayBindingsValidated": 14,
+    "stillOpen": [
+      "M_F006_TH_F",
+      "M_F006_TH_B",
+      "M_F003_TH_F",
+      "M_F003_TH_B",
+      "M_F006_S4",
+      "M_F003_S2",
+      "M_F006_SUPER",
+      "M_F003_SUPER",
+      "CIN_F006_FATALITE_1",
+      "CIN_F006_FATALITE_2",
+      "CIN_F006_CLEMENCE",
+      "CIN_F003_FATALITE_1",
+      "CIN_F003_FATALITE_2",
+      "CIN_F003_CLEMENCE"
+    ],
+    "campaignStages": 16,
+    "variantConstraints": 14
+  }
+}

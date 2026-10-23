@@ -1,3 +1,4 @@
+import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -1441,6 +1442,24 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     }
   }
   if(isRecord(value.homeworld)){
+    if(value.homeworld.archiveV106!==undefined){
+      const raw=value.homeworld.archiveV106;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldArchiveV106(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(ledger.receipt.phase!=='completed'){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          if(a?.receipt&&a.receipt.phase!=='completed'||b?.receipt&&b.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.carrier){
+          const location=value.homeworld.locationV77;
+          if(!isRecord(location)||!isRecord(location.exterior)||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||!Number.isFinite(location.exterior.x)||!Number.isFinite(location.exterior.y)||Math.hypot(Number(location.exterior.x)-ledger.receipt.last.x,Number(location.exterior.y)-ledger.receipt.last.y)>.01)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+
     if(value.homeworld.cartographyV105!==undefined){
       const raw=value.homeworld.cartographyV105;
       if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
