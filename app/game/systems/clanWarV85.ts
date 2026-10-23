@@ -3,6 +3,7 @@ import { WAR_PLANETS_V96, warPlanetV96 } from "./clanWarPlanetsV96";
 import { parseWarPlanetRecipeCodeV103 } from "./clanWarProceduralV103";
 import { warDeploymentV103 } from "./clanWarDeploymentV103";
 import { WAR_EVACUATION_COST_V100, warEvacuationIssueV100, warEvacuationManifestV100 } from "./clanWarEvacuationV100";
+import { completeWarConvoyLegV105, matchesWarConvoyLegV105, validWarConvoyStateV105, type WarConvoyRouteV105 } from "./clanWarConvoyStateV105";
 
 export interface WarBudgetV85 { s: number; m: number; i: number }
 export interface WarCombatantV85 {
@@ -18,7 +19,8 @@ export interface WarOrderV85 {
 export interface WarObservationV85 { territoryId: string; turn: number; lower: number; upper: number; sourceId: string }
 export interface WarReportV85 { id: string; turn: number; text: string; sourceIds: string[] }
 export interface WarSimulationV85 {
-  version: 1; context: "free"; planetId?: string; turn: number; seed: number; revision: number;
+  version: 1 | 2; context: "free"; planetId?: string; turn: number; seed: number; revision: number;
+  convoyRouteV105?: WarConvoyRouteV105 | null;
   combatants: WarCombatantV85[]; territories: Record<string, WarTerritoryStateV85>;
   stocks: Record<string, WarBudgetV85>; orders: WarOrderV85[]; observations: WarObservationV85[];
   appliedResultIds: string[]; reports: WarReportV85[]; totalStability: number; regionStability: number;
@@ -95,6 +97,7 @@ export function warGarrisonIssueV99(state: WarSimulationV85, draft: WarGarrisonD
   if (state.orders.some(order => order.combatantIds.includes(actor.id))) return "Cette personne possède déjà un ordre réservé. Retirez cet ordre avant une relève.";
   if (actor.garrison === draft.garrison) return draft.garrison ? "Cette personne assure déjà la garde." : "Cette personne fait déjà partie des mobiles.";
   if (state.revision >= 1000000 || state.reports.length >= 100000) return "La limite de cette archive est atteinte. Aucune relève ajoutée.";
+  if (state.convoyRouteV105 && state.revision >= (state.convoyRouteV105.pendingOrderId ? 999998 : 999999)) return "Les dernières révisions sont réservées à la résolution éventuelle et au retrait du convoi. Résolvez ou retirez le trajet avant une relève.";
   if (!draft.garrison && warGarrisonV85(state, draft.territoryId).length === 1 && !draft.confirmLastGuard) return "Ce retrait laisse le site sans garde apte. Confirmez le retrait du dernier garde.";
   return null;
 }
@@ -252,7 +255,7 @@ export function warOrderIssueV85(state: WarSimulationV85, order: WarOrderV85): s
   return null;
 }
 export function queueWarOrderV85(state: WarSimulationV85, draft: Omit<WarOrderV85, "id" | "factionId" | "mode">): WarUpdateV85 {
-  if (state.revision >= 1000000 || draft.kind === "evacuate" && state.revision >= 999999) return { state, accepted: false, message: "La limite de révision de cette archive ne laisse plus la marge nécessaire à cet ordre. Aucun ordre ajouté." };
+  if (state.revision >= 1000000 || state.convoyRouteV105 && state.revision >= (state.convoyRouteV105.pendingOrderId ? 999998 : 999999) || draft.kind === "evacuate" && state.revision >= 999999) return { state, accepted: false, message: "La limite de révision de cette archive ne laisse plus la marge nécessaire à cet ordre. Aucun ordre ajouté." };
   const order: WarOrderV85 = { ...draft, combatantIds: [...draft.combatantIds], cargo: { ...draft.cargo }, id: `free-${state.seed}-t${state.turn}-r${state.revision + 1}`, factionId: PLAYER, mode: "auto" };
   const issue = warOrderIssueV85(state, order);
   if (issue) return { state, accepted: false, message: issue };
@@ -260,8 +263,10 @@ export function queueWarOrderV85(state: WarSimulationV85, draft: Omit<WarOrderV8
   return { state: next, accepted: true, message: "Ordre réservé. Le temps avancera lors de la validation du tour." };
 }
 export function cancelWarOrderV85(state: WarSimulationV85, id: string): WarSimulationV85 {
-  if (state.revision >= 1000000) return state;
-  const next = copy(state); next.orders = next.orders.filter(order => order.id !== id); next.revision++; return next;
+  if (state.revision >= 1000000 || state.convoyRouteV105 && state.convoyRouteV105.pendingOrderId !== id && state.revision >= (state.convoyRouteV105.pendingOrderId ? 999998 : 999999)) return state;
+  const next = copy(state); next.orders = next.orders.filter(order => order.id !== id);
+  if (next.convoyRouteV105?.pendingOrderId === id) next.convoyRouteV105.pendingOrderId = null;
+  next.revision++; return next;
 }
 function hash(value: string, seed: number): number { let result = seed >>> 0; for (const char of value) result = Math.imul(result ^ char.charCodeAt(0), 16777619) >>> 0; return result; }
 function currentActors(state: WarSimulationV85, order: WarOrderV85) { return state.combatants.filter(actor => order.combatantIds.includes(actor.id) && actor.status === "fit" && actor.territoryId === order.fromId && actor.trainingUntilTurn === null); }
@@ -330,6 +335,13 @@ function planEnemy(state: WarSimulationV85): WarOrderV85[] {
 function applyOrder(state: WarSimulationV85, order: WarOrderV85) {
   if (state.appliedResultIds.includes(order.id)) return;
   const cost = warOrderCostV85(order);
+  // A planned delivery keeps the same physical manifest. A failed leg cannot
+  // debit a depot or advance the checkpoint with absent/wounded porters.
+  if (state.convoyRouteV105 && matchesWarConvoyLegV105(state.convoyRouteV105, order) &&
+    (currentActors(state, order).length !== order.combatantIds.length || state.territories[order.targetId].controller !== PLAYER)) {
+    report(state, `${order.id} : étape de convoi suspendue ; porteurs indisponibles ou dépôt d’arrivée perdu. Aucun lot dépensé, aucune étape validée.`, ["CON-R04", "CON-R10"], order.id);
+    state.appliedResultIds.push(order.id); return;
+  }
   if (state.territories[order.fromId].controller !== order.factionId || !fits(state.stocks[order.fromId], cost)) {
     report(state, `${order.id} : ordre annulé après rupture du départ ou du stock ; aucun renfort créé.`, ["CON-R07"]);
     state.appliedResultIds.push(order.id); return;
@@ -372,7 +384,10 @@ function applyOrder(state: WarSimulationV85, order: WarOrderV85) {
     report(state, `${order.fromId} : ${order.combatantIds.length} blessé(s) en soins légers pour un tour. Les morts restent dans le registre.`, ["EVOL-R14", "EVOL-R15"], order.id);
   } else {
     actors.forEach(actor => { actor.territoryId = order.targetId; actor.garrison = false; });
-    if (order.kind === "logistics") state.stocks[order.targetId] = sum(state.stocks[order.targetId], order.cargo);
+    if (order.kind === "logistics") {
+      state.stocks[order.targetId] = sum(state.stocks[order.targetId], order.cargo);
+      completeWarConvoyLegV105(state, order);
+    }
     if (state.territories[order.targetId].controller === order.factionId && warGarrisonV85(state, order.targetId).length === 0 && actors[0]) actors[0].garrison = true;
     report(state, `${order.fromId} → ${order.targetId} : ${actors.length} personne(s) déplacée(s)${order.kind === "logistics" ? `, livraison S${order.cargo.s}/M${order.cargo.m}/I${order.cargo.i}` : ""}.`, ["CON-R04", "CON-R10"], order.id);
   }
@@ -422,6 +437,7 @@ function evaluateObjectives(state: WarSimulationV85, upkeepPaid: boolean) {
 export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
   if (!warPlanetV96(state.planetId)) return { state, accepted: false, message: "Planète absente du catalogue de cet exercice." };
   if (state.revision >= 1000000) return { state, accepted: false, message: "La limite de révision de cette archive est atteinte. Aucun tour résolu." };
+  if (state.convoyRouteV105 && state.revision >= 999999) return { state, accepted: false, message: "La dernière révision de cette archive reste disponible pour retirer le trajet de convoi. Aucun tour résolu." };
   if (state.turn >= 5000) return { state, accepted: false, message: "La limite de cette archive d’exercice est atteinte." };
   const next = copy(state);
   const enemyOrders = planEnemy(state);
@@ -450,6 +466,7 @@ export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
   }
   evaluateObjectives(next, paid);
   next.turn++; next.revision++; next.orders = [];
+  if (next.convoyRouteV105) next.convoyRouteV105.pendingOrderId = null;
   for (const actor of next.combatants) if (actor.status === "wounded" && actor.trainingUntilTurn !== null && actor.trainingUntilTurn < next.turn) { actor.status = "fit"; actor.trainingUntilTurn = null; actor.garrison = false; }
   production(next);
   // Keep the whole previous snapshot if a full resolution would overflow its
@@ -459,7 +476,7 @@ export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
 }
 /** Reject future/corrupt archives. The caller preserves their bytes and disables writes until an explicit new exercise. */
 export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
-  if (!record(value) || value.version !== 1 || value.context !== "free" || !integer(value.turn, 5000) || value.turn < 1 || !integer(value.seed, 0xffffffff) || !integer(value.revision) || !record(value.territories) || !record(value.stocks) || !Array.isArray(value.combatants) || value.combatants.length > 300 || !Array.isArray(value.orders) || value.orders.length > 4 || !Array.isArray(value.observations) || !Array.isArray(value.reports) || value.reports.length > 100000 || !Array.isArray(value.appliedResultIds) || !Array.isArray(value.completedObjectives) || !integer(value.totalStability) || !integer(value.regionStability) || !integer(value.corridorStability)) return null;
+  if (!record(value) || ![1, 2].includes(Number(value.version)) || typeof value.version !== "number" || value.context !== "free" || !integer(value.turn, 5000) || value.turn < 1 || !integer(value.seed, 0xffffffff) || !integer(value.revision) || !record(value.territories) || !record(value.stocks) || !Array.isArray(value.combatants) || value.combatants.length > 300 || !Array.isArray(value.orders) || value.orders.length > 4 || !Array.isArray(value.observations) || !Array.isArray(value.reports) || value.reports.length > 100000 || !Array.isArray(value.appliedResultIds) || !Array.isArray(value.completedObjectives) || !integer(value.totalStability) || !integer(value.regionStability) || !integer(value.corridorStability)) return null;
   if (!(value.planetId === undefined || typeof value.planetId === "string")) return null;
   const planet = warPlanetV96(value.planetId);
   if (!planet) return null;
@@ -492,5 +509,6 @@ export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
     if (warOrderIssueV85(result, order)) return null;
     result.orders.push(order);
   }
+  if (!validWarConvoyStateV105(result, definitions)) return null;
   return result;
 }

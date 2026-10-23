@@ -14,7 +14,7 @@ import {
   queueWarOrderV85, warBudgetV85, warFitCombatantsV85,
   warGarrisonV85, warOrderCostV85, warSuppliedV85, warUpkeepV85, warVeterancyV85,
   warTerritoriesForSimulationV96, warTerritoryForSimulationV96, warObjectiveCorridorV96, warHeadquartersV103,
-  type WarGarrisonDraftV99, type WarOrderKindV85,
+  type WarGarrisonDraftV99, type WarOrderKindV85, type WarSimulationV85, type WarUpdateV85,
 } from "./systems/clanWarV85";
 import {
   CANYON_POSTS_V85, CANYON_PRESET_V85, canyonCompositionIssueV85,
@@ -36,6 +36,7 @@ import { warOrderPreviewV98, type WarOrderDraftV98 } from "./systems/clanWarComm
 import { DEFAULT_WAR_PLANET_ID_V96, warPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { warAtlasIntelV95 } from "./systems/clanWarAtlasV95";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
+import ClanWarConvoyRouteV105 from "./ClanWarConvoyRouteV105";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers", evacuate: "Évacuer les blessés" };
@@ -250,6 +251,17 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
     return result.accepted;
   }
+  function updateConvoy(operation: (current: WarSimulationV85) => WarUpdateV85, expectedRevision?: number) {
+    const live = planetSession.getSnapshot();
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || !live.writableWar || live.pendingWrites > 0) return false;
+    if (expectedRevision !== undefined && live.simulation.revision !== expectedRevision) {
+      setMessage("Le front a changé depuis la vérification du fichier. Relisez le fichier avant le remplacement."); return false;
+    }
+    const result = operation(live.simulation);
+    setMessage(result.message);
+    if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
+    return result.accepted;
+  }
   function restartWar() {
     if (!window.confirm(`Recommencer le front de ${planet.name} et remplacer uniquement son archive locale ? Les autres planètes seront conservées.`)) return;
     setSimulation(createWarSimulationV85(undefined, planet.id)); planetSession.unlockWarAfterExplicitReset(); setTerritoryId(null); setTargetId(null); setOrderKind(null); setConfirmTurn(false); setSelectedPeople([]); setCargoS(0); setCargoM(0); setMessage(`Nouveau front de ${planet.name} ouvert.`);
@@ -329,6 +341,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       <details><summary>Conditions de la région et du corridor</summary><p>Pour tenir une région, chaque territoire de cette région doit rester intact, ravitaillé et occupé par une garnison apte pendant deux fins de tour avec entretien payé.</p><p>Sites du corridor à contrôler et garnir : {corridorIds.map(id => id.replace("CON-", "")).join(" · ")}. Maintenez leurs liaisons de ravitaillement et au moins un droit de transit actif auprès des Passes autonomes pendant deux fins de tour avec entretien payé.{planet.id === "korthas" ? " T02 doit également rester relié au ravitaillement." : ""}</p></details>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
       <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
+      <ClanWarConvoyRouteV105 key={`convoy:${planet.id}`} simulation={simulation} fromId={territoryId} disabled={suspended || !pageActive || !loaded || !strategic.writableWar || pendingWrites > 0} onUpdate={updateConvoy} onInspect={selectTerritory}/>
       <ClanWarCommandV98 key={`command:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} onPrepare={prepareSite} onManageGarrison={manageGarrisonSite}/>
       <div className={styles.strategicCommand}>
         <aside className={styles.orderPanel} aria-label="Commandement du territoire" data-testid="war-order-panel-v98"><p className={styles.eyebrow}>{territory.id} · {territory.region}</p><h4>{territory.name}</h4><p>{WAR_FACTIONS_V85[simulation.territories[territoryId].controller]}</p>{simulation.territories[territoryId].controller === "CON-F01" && <><p>Stock sur place <Budget {...simulation.stocks[territoryId]}/></p><p>{warGarrisonV85(simulation, territoryId).length} garde(s) · {supplied.has(territoryId) ? "liaison ouverte" : "liaison absente"}.</p></>}<p>{territory.terrain}</p>

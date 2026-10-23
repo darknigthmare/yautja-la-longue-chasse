@@ -1,5 +1,5 @@
 import { getPitWorkbookNormalV104 } from './systems/pitWorkbookNormalsV104';
-import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './systems/pitCombat';
+import { getPitCombatActionTimingV105, getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './systems/pitCombat';
 /**
  * Pure PIT-to-authored-sprite adapter. No Canvas, rig, interpolation, gameplay
  * mutation or hidden clock. Each phase selects an independently drawn clip.
@@ -50,7 +50,7 @@ export interface PitHunterSpriteMotion {
   readonly facing: HunterSpriteFacing;
   readonly posture: PitHunterSpritePosture;
   readonly phase: PitHunterSpritePhase;
-  readonly action: PitAttackKind | "throw" | null;
+  readonly action: PitAttackKind | "throw" | "equipment" | null;
   readonly techniqueId: string | null;
   readonly throwOutcome: "pending" | "connected" | "whiff" | "teched" | null;
   readonly clock: PitHunterSpriteClock;
@@ -110,9 +110,10 @@ export function describePitHunterSpriteMotion(
     !tick(fighter.cloakFramesRemaining)) return null;
   const definition = getPitCombatFighterDefinition(fighter);
   const facing = fighter.facing === 1 ? "right" : "left";
-  const normal = fighter.normalMovesRecipe === 'workbook-v104' && fighter.action?.normalMove
+  const normal = (fighter.normalMovesRecipe === 'workbook-v104' || fighter.normalMovesRecipe === 'workbook-v105') && fighter.action?.normalMove
     ? getPitWorkbookNormalV104(fighter.definitionId, fighter.action.normalMove) : undefined;
-  const posture: PitHunterSpritePosture = normal?.posture ?? (
+  const workbookTimingV105 = getPitCombatActionTimingV105(fighter);
+  const posture: PitHunterSpritePosture = normal?.posture ?? (workbookTimingV105 ? 'stand' :
     !fighter.grounded ? "air" : fighter.crouching || fighter.guard === "low" ? "crouch" : "stand");
   const prefix = "pit." + posture + ".";
   let clipId = "idle";
@@ -188,11 +189,16 @@ export function describePitHunterSpriteMotion(
     }
   } else if (fighter.action) {
     const current = fighter.action;
+    const workbookTiming = workbookTimingV105;
+    if (current.workbookMove !== undefined && (!workbookTiming || fighter.variantId !== undefined || current.normalMove !== undefined ||
+      (current.workbookMove === 'EQUIP' ? current.kind !== 'equipment' || current.attack !== null :
+        current.kind !== 'attack' || current.attack !== (current.workbookMove === '6M' ? 'medium' : 'technique')))) return null;
     if (!tick(current.frame) ||
-      (current.kind !== "throw" && current.kind !== "attack") ||
+      (current.kind !== "throw" && current.kind !== "attack" && current.kind !== "equipment") ||
+      (current.kind === 'equipment' && (!workbookTiming || current.workbookMove !== 'EQUIP' || current.attack !== null || current.connected)) ||
       (current.kind === "attack" && (!current.attack || !attackKinds.has(current.attack)))) return null;
-    action = current.kind === "throw" ? "throw" : current.attack!;
-    const timing = current.kind === "throw" ? PIT_HUNTER_SPRITE_THROW_TIMING : getPitCombatAttackDefinition(fighter, current.attack!);
+    action = current.kind === "throw" ? "throw" : current.kind === 'equipment' ? 'equipment' : current.attack!;
+    const timing = workbookTiming ?? (current.kind === "throw" ? PIT_HUNTER_SPRITE_THROW_TIMING : getPitCombatAttackDefinition(fighter, current.attack!));
     const total = timing.startup + timing.active + timing.recovery;
     if (current.frame >= total) return null;
     phase = current.frame < timing.startup ? "startup" :
@@ -203,8 +209,8 @@ export function describePitHunterSpriteMotion(
     elapsedTicks = current.frame - start;
     durationTicks = timing[phase];
     clock = "action-phase";
-    techniqueId = action === "technique" ? definition.technique.id : null;
-    const actionId = normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
+    techniqueId = action === "technique" && !workbookTiming ? definition.technique.id : null;
+    const actionId = workbookTiming ? 'workbook-v105.' + current.workbookMove : normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
     clipId = prefix + actionId + "." + phase;
     if (action === "throw") {
       throwOutcome = phase === "recovery" ? current.connected ? "connected" : "whiff" : "pending";

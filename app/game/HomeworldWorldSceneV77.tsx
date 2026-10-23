@@ -8,6 +8,7 @@ import HomeworldBackdropV81 from './HomeworldBackdropV81';
 import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
 import HomeworldEcotonesV90 from './HomeworldEcotonesV90';
 import HomeworldCartographerV104 from './HomeworldCartographerV104';
+import {HOMEWORLD_CARTOGRAPHY_V105} from './systems/homeworldCartographyDefinitionV105';
 import {HOMEWORLD_RETAINING_SUPPORTS_V82} from './systems/homeworldRetainingAssembliesV82';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,HOMEWORLD_PROPS_V77,HOMEWORLD_FRONTAGE_V77,HOMEWORLD_EXTERIOR_V77,
@@ -49,8 +50,8 @@ const visible=(box:{left:number;top:number;width:number;height:number},camera:Ca
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
- actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,cartographyHighPointV105=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;cartographyHighPointV105?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
@@ -65,6 +66,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
  };
  return <>
   <HomeworldCartographerV104 levelId={levelId} seconds={seconds} active={activeCartographyV104}/>
+  {cartographyHighPointV105&&levelId==='+1'&&(()=>{const p=homeworldProjectGroundV64(HOMEWORLD_CARTOGRAPHY_V105.highPoint,homeworldLevelV77('+1').elevation);return <span data-homeworld-high-point-v105 style={{position:'absolute',left:p.x-64,top:p.y-30,width:128,height:60,border:'2px dashed #dcc68d',borderRadius:'50%',background:'#dcc68d18',pointerEvents:'none',zIndex:depth('+1',HOMEWORLD_CARTOGRAPHY_V105.highPoint.y)}}><span style={{position:'absolute',left:-48,top:-48,width:220,textAlign:'center',color:'#f4e1b3',background:'#12211fe8',padding:8,borderRadius:5,fontSize:13}}>Point d’observation du viaduc</span></span>;})()}
   <HomeworldBackdropV81 camera={camera} levelId={levelId} paintedLevels={paintedLevels} seconds={seconds} reducedMotion={reducedMotion}/>
   <HomeworldLavaSceneV77 actor={actor} skiffActive={skiffActive} skiffPoint={actor} floor={levelId} camera={camera} seconds={seconds} reducedMotion={reducedMotion}/>
   {painted('0')&&<svg aria-hidden="true" data-homeworld-natural-ground-v77="true" data-natural-support-solid-v85="false" width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`} style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-11001,pointerEvents:'none'}}>

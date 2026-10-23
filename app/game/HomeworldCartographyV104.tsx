@@ -17,9 +17,9 @@ function KnownMap({ ledger }: { ledger: HomeworldCartographyLedgerV104 | undefin
   </svg><p className={styles.note}>Les zones non observées restent hors du relevé.</p>{!!r?.trimmedCount&&<p className={styles.note}>Les segments les plus anciens ont été retirés du dessin. Tes repères atteints restent consignés.</p>}</>;
 }
 
-export default function HomeworldCartographyV104({ ledger, disabled, message, onAction, onClose, reducedMotion = false }: {
+export default function HomeworldCartographyV104({ ledger, disabled, message, onAction, onClose, reducedMotion = false, highPointCompleted = false }: {
   ledger: HomeworldCartographyLedgerV104 | undefined; disabled: boolean; message: string;
-  onAction(action: CartographyActionV104, expectedRevision: number): boolean; onClose(): void; reducedMotion?: boolean;
+  onAction(action: CartographyActionV104, expectedRevision: number): boolean; onClose(): void; reducedMotion?: boolean; highPointCompleted?: boolean;
 }) {
   const [showSource, setShowSource] = useState(false), r = ledger?.receipt;
   const line = r ? lines.find(l => l.kind === (r.phase === 'choice' ? 'CHOIX' : r.phase === 'completed' ? 'SUCCES' : 'REPONSE') && (l.option === 'B' || l.kind === 'SUCCES')) : null;
@@ -40,7 +40,7 @@ export default function HomeworldCartographyV104({ ledger, disabled, message, on
     </div>
     {message && <p className={styles.feedback} role="status">{message}</p>}
     {r?.phase === 'completed' && <p>Les deux repères et le retour au pupitre sont consignés. Le relevé reste consultable ici.</p>}
-    <p className={styles.note}>Le point haut reste à explorer dans un autre parcours. Cette liaison ne révèle aucun quartier et ne remet aucun équipement.</p>
+    <p className={styles.note}>{highPointCompleted ? 'Ton observation datée depuis le point haut reste conservée dans son relevé.' : 'Le point haut reste à explorer dans un autre parcours.'} Cette liaison ne révèle aucun quartier et ne remet aucun équipement.</p>
     <button type="button" aria-expanded={showSource} onClick={() => setShowSource(v => !v)}>Origine de cette demande</button>
     {showSource && <aside className={styles.source}><strong>{scene.title}</strong><p>{option.action}</p><p>Texte original du projet V6, présenté en traduction française. Poste, pupitre de lecture et apparence neutre adaptés localement ; aucun doublage enregistré ni nouvel accessoire peint.</p><p>La branche du point haut et son ouverture évoquant une crête ne sont pas jouées dans cette cour.</p><small>{scene.address} · {option.address}</small></aside>}
   </section>;

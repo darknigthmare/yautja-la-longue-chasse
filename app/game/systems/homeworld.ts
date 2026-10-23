@@ -6,6 +6,7 @@ import {defaultCntlipLedgerV77,normalizeCntlipLedgerV77,type CntlipLedgerV77} fr
 import {normalizeHomeworldCheckpointV77,type HomeworldCheckpointV77} from './homeworldCheckpointV77';
 import {normalizeBibleSceneLedgerV86,type BibleSceneLedgerV86} from './bibleSceneCulturalV86';
 import {normalizeHomeworldCartographyV104,type HomeworldCartographyLedgerV104} from './homeworldCartographyLedgerV104';
+import {normalizeHomeworldCartographyV105,type HomeworldCartographyLedgerV105} from './homeworldCartographyLedgerV105';
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
 import { defaultMausoleumProgress, normalizeMausoleumProgress, type MausoleumProgress } from "./mausoleum";
 import type { RankId } from "../types";
@@ -150,7 +151,7 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; cartographyV104?:HomeworldCartographyLedgerV104; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
@@ -166,6 +167,7 @@ export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   if(value.locationV77!==undefined)clean.locationV77=normalizeHomeworldCheckpointV77(value.locationV77);
   if(value.bibleScenesV86!==undefined){const ledger=normalizeBibleSceneLedgerV86(value.bibleScenesV86);if(ledger)clean.bibleScenesV86=ledger;}
   if(value.cartographyV104!==undefined){const ledger=normalizeHomeworldCartographyV104(value.cartographyV104);if(ledger)clean.cartographyV104=ledger;}
+  if(value.cartographyV105!==undefined){const ledger=normalizeHomeworldCartographyV105(value.cartographyV105);if(ledger)clean.cartographyV105=ledger;}
   clean.contractsV68 = normalizeHomeworldContractsV68(value.contractsV68);
   clean.mausoleum = normalizeMausoleumProgress(value.mausoleum);
   if (record(value.expeditions)) {

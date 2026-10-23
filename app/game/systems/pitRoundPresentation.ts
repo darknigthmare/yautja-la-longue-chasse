@@ -18,6 +18,8 @@ export interface PitRoundPresentationView {
   fighterDurationMs?: readonly [number, number];
   /** Optional render gestures during fight: the other side keeps gameplay. */
   fighterTaunts?: readonly [boolean, boolean];
+  /** Source taunt choice belongs only to this presentation clock, never replay state. */
+  fighterTauntVariants?: readonly [1 | 2, 1 | 2];
 }
 export const PIT_PRESENTATION_INTRO_MS = 1_200;
 export const PIT_PRESENTATION_COUNTDOWN_MS = 3_000;

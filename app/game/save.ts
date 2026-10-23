@@ -8,6 +8,7 @@ import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
 import {normalizeBibleSceneLedgerV86} from './systems/bibleSceneCulturalV86';
 import {normalizeHomeworldCartographyV104} from './systems/homeworldCartographyLedgerV104';
+import {normalizeHomeworldCartographyV105} from './systems/homeworldCartographyLedgerV105';
 import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
 import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
@@ -1440,6 +1441,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     }
   }
   if(isRecord(value.homeworld)){
+    if(value.homeworld.cartographyV105!==undefined){
+      const raw=value.homeworld.cartographyV105;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldCartographyV105(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt&&(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port')))return {save:null,failure:'invalid-save'};
+      const legacy=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104);
+      if(ledger.receipt&&ledger.receipt.phase!=='completed'&&legacy?.receipt&&legacy.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+    }
     if(value.homeworld.cartographyV104!==undefined){
       const raw=value.homeworld.cartographyV104;
       if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
