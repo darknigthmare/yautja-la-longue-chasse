@@ -356,10 +356,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if(result.invalid){interruptCartographyV105();return false;}
     cartographyDraftRefV105.current=result.ledger;return true;
   },[cartographyContextV105,interruptCartographyV105]);
-  const retryCartographyV105=()=>{if(onProgress(progressRef.current)){setCartographyMessageV105('Enregistrement disponible. Reprends la demande ou le parcours depuis son dernier point confirmé.');requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}else cartographyWriteRefusedV105('L’enregistrement du point haut reste indisponible. Le relevé est conservé ici.');};
+  const retryCartographyV105=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current)){setCartographyMessageV105('Enregistrement disponible. Reprends la demande ou le parcours depuis son dernier point confirmé.');requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}else cartographyWriteRefusedV105('L’enregistrement du point haut reste indisponible. Le relevé est conservé ici.');};
   const openObservationV105=useCallback(()=>{
     if(cartographyWritePausedRefV105.current||!cartographyHighPointReachedV105(cartographyContextV105())||cartographyDraftRefV105.current.receipt?.phase!=='observing')return false;
-    clearInputs();if(!onProgress(progressRef.current)){cartographyWriteRefusedV105('La position d’observation n’a pas été enregistrée. Réessaie ici.');return false;}
+    clearInputs();viewportRef.current?.focus({preventScroll:true});if(!onProgress(progressRef.current)){cartographyWriteRefusedV105('La position d’observation n’a pas été enregistrée. Réessaie ici.');return false;}
     const next={point:null,cartographyObservationV105:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);return true;
   },[cartographyContextV105,clearInputs,onProgress,cartographyWriteRefusedV105]);
   const cntlipV77=useHomeworldCntlipV77({save,actor,room:interior,sceneReady:!suspended&&!paused&&!inactive&&!transitV77&&!skiffV77&&motionAssetsV74.ready,saveRef,progressRef,actorRef,interiorRef,onProgress,clearInputs,onNotify,
@@ -480,11 +480,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     dialogStateRef.current=null;
     setDialog(null);
     clearInputs();
+    // Hand input back before React removes the focused dialog control. The
+    // next city frame must not mistake that DOM replacement for window blur.
+    viewportRef.current?.focus({ preventScroll: true });
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
   }, [clearInputs,leaveCntlipV77]);
 
   const interact = useCallback(() => {
     if (suspendedRef.current || pausedRef.current || dialogStateRef.current || transitRefV77.current || skiffRefV77.current) return;
+    viewportRef.current?.focus({preventScroll:true});
     const room = interiorRef.current;
     if(cartographyWritePausedRefV104.current||cartographyWritePausedRefV105.current)return;
     const reportingAtPost=!room&&cartographyDraftRefV104.current.receipt?.phase==='return'&&cartographyPostReachedV104(cartographyContextV104());
@@ -977,7 +981,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       onRetry={retryCartographyV104} onResume={()=>{if(submitCartographyV104('resume',cartographyDraftRefV104.current.revision))requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}}/>}
     {!dialog&&<HomeworldCartographyJournalV105 ledger={progress.cartographyV105} blocked={suspended||paused||inactive||!motionAssetsV74.ready||cartographyWritePausedV105} message={cartographyMessageV105} writePaused={cartographyWritePausedV105}
       canObserve={highPointAvailableV105} onObserve={openObservationV105} onRetry={retryCartographyV105}
-      onResume={()=>{if(submitCartographyV105('resume',cartographyDraftRefV105.current.revision))requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}}/>}
+      onResume={()=>{viewportRef.current?.focus({preventScroll:true});if(submitCartographyV105('resume',cartographyDraftRefV105.current.revision))requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}}/>}
     {dialog && <div className={styles.backdrop}>
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
         <div className={styles.eyebrow}>{selectedNpc?.role ?? (selectedPoint?.kind === "region" ? selectedRegion?.status === "playable-introduction" ? selectedRegion.name + " · enquête régionale" : "Route vers le village de clan" : "La Couronne de Cendres")}</div>

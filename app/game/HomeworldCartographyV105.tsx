@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {useRef,useState} from 'react';
 import HomeworldCartographyV104 from './HomeworldCartographyV104';
 import YautjaTranslationV67 from './YautjaTranslationV67';
 import {HOMEWORLD_CARTOGRAPHY_V105 as b,HOMEWORLD_CARTOGRAPHY_LINES_V105 as lines,HOMEWORLD_CARTOGRAPHY_OPTION_V105 as option,cartographyBearingsV105} from './systems/homeworldCartographyDefinitionV105';
@@ -10,9 +10,14 @@ import type {CartographyActionV105} from './systems/homeworldCartographyV105';
 import styles from './HomeworldCartographyV104.module.css';
 
 export function HomeworldCartographyObservationV105({ledger,disabled,message,onAction,onClose,reducedMotion=false}:{ledger:HomeworldCartographyLedgerV105|undefined;disabled:boolean;message:string;onAction(action:CartographyActionV105,revision:number):boolean;onClose():void;reducedMotion?:boolean}){
- const r=ledger?.receipt,submit=(action:CartographyActionV105)=>onAction(action,ledger?.revision??0);
+ const focusRef=useRef<HTMLElement>(null),r=ledger?.receipt;
+ const submit=(action:CartographyActionV105)=>{
+  // A compared marker removes its button. Keep focus inside this same modal
+  // before React replaces that control, so the city does not infer a blur.
+  focusRef.current?.focus({preventScroll:true});return onAction(action,ledger?.revision??0);
+ };
  const bearings=cartographyBearingsV105();
- return <section className={styles.scene} data-cartography-observation-v105 data-cartography-phase={r?.phase??'absent'}>
+ return <section ref={focusRef} tabIndex={-1} className={styles.scene} data-cartography-observation-v105 data-cartography-phase={r?.phase??'absent'}>
   <p className={styles.eyebrow}>Point haut du viaduc · Terrasse +1</p>
   <p>Compare les positions des deux objets déjà connus de la cour du registre. Ce schéma mesure leur direction et leur distance depuis ta position d’observation.</p>
   <svg className={styles.map} viewBox="5950 3330 780 2050" role="img" aria-label="Schéma des deux repères connus depuis le viaduc. Aucun terrain inconnu n’est représenté.">
@@ -42,10 +47,10 @@ export default function HomeworldCartographyV105({ledger,legacy,disabled,message
  ledger:HomeworldCartographyLedgerV105|undefined;legacy:HomeworldCartographyLedgerV104|undefined;disabled:boolean;message:string;legacyMessage:string;
  onAction(action:CartographyActionV105,revision:number):boolean;onLegacyAction(action:CartographyActionV104,revision:number):boolean;onClose():void;reducedMotion?:boolean;
 }){
- const[showSource,setShowSource]=useState(false),r=ledger?.receipt;
+ const[showSource,setShowSource]=useState(false),focusRef=useRef<HTMLElement>(null),r=ledger?.receipt;
  if((!r||r.phase==='completed')&&legacy?.receipt&&legacy.receipt.phase!=='completed')return <HomeworldCartographyV104 ledger={legacy} disabled={disabled} message={legacyMessage} onAction={onLegacyAction} onClose={onClose} reducedMotion={reducedMotion} highPointCompleted={r?.phase==='completed'}/>;
- const submit=(action:CartographyActionV105)=>onAction(action,ledger?.revision??0);
- return <section className={styles.scene} data-cartography-scene-v105={b.sceneId} data-cartography-phase={r?.phase??'offer'}>
+ const submit=(action:CartographyActionV105)=>{focusRef.current?.focus({preventScroll:true});return onAction(action,ledger?.revision??0);};
+ return <section ref={focusRef} tabIndex={-1} className={styles.scene} data-cartography-scene-v105={b.sceneId} data-cartography-phase={r?.phase??'offer'}>
   <p className={styles.eyebrow}>Cartographe du registre · Relevé depuis le point haut</p>
   <p>Le viaduc public de la terrasse surplombe les deux repères connus du registre. Rejoins l’escalier du Conseil, traverse le viaduc, compare le bac et la lampe au point haut, puis date l’observation avant de revenir au pupitre.</p>
   {r&&<SourceLine kind={r.phase==='choice'?'CHOIX':r.phase==='completed'?'SUCCES':r.phase==='interrupted'?'REPRISE':'REPONSE'} disabled={disabled} reducedMotion={reducedMotion}/>}
