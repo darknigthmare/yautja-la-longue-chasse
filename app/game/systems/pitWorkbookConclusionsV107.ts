@@ -7,7 +7,7 @@ export const PIT_WORKBOOK_CONCLUSION_DURATION_V107=300;
 export const PIT_WORKBOOK_CONCLUSION_SESSION_VERSION_V107=1;
 type Slot=0|1;
 export interface PitWorkbookSessionWeaponV107 {
-  id:string;sourceId:string;poseId:string;offensiveMechanicId:string|null;disarmedPoseAdmitted:boolean;ownerSlot:Slot;state:'held'|'ground';
+  id:string;sourceId:string;poseId:string;offensiveMechanicId:string|null;disarmedPoseAdmitted:boolean;ownerSlot:Slot;state:'held'|'flying'|'ground';
   attachment:{offsetX:number;offsetY:number;width:number;height:number};
   x:number;y:number;velocityX:number;velocityY:number;
 }
@@ -110,6 +110,19 @@ export function triggerPitWorkbookConclusionV107(current:PitWorkbookConclusionSt
   return state;
 }
 export function skipPitWorkbookConclusionV107(state:PitWorkbookConclusionStateV107):PitWorkbookConclusionStateV107 {return state.phase==='idle'||state.phase==='complete'?state:{...state,phase:'complete',outcome:'skipped'};}
+function dropInertDeviceAtThrust(state:PitWorkbookConclusionStateV107):void {
+  if(!state.session||!state.actors||state.winnerSlot===null)return;
+  const weapon=state.session.targetWeapon;
+  if(weapon.state!=='held'||weapon.offensiveMechanicId!==null||weapon.ownerSlot!==other(state.winnerSlot))return;
+  const actual=weaponBox(state.session,state.actors);
+  weapon.state='flying';weapon.x=actual.x+actual.width/2;weapon.y=actual.y;
+  weapon.velocityX=state.actors[state.winnerSlot].facing*1.2;weapon.velocityY=2.4;
+}
+function advanceDroppedDevice(weapon:PitWorkbookSessionWeaponV107):void {
+  if((weapon.state!=='ground'&&weapon.state!=='flying')||(weapon.y===0&&weapon.velocityY===0))return;
+  weapon.velocityY-=.4;weapon.x+=weapon.velocityX;weapon.y=Math.max(0,weapon.y+weapon.velocityY);
+  if(weapon.y===0){weapon.state='ground';weapon.velocityY=0;weapon.velocityX=0;}
+}
 function sequenceTick(state:PitWorkbookConclusionStateV107):void {
   if(!state.actors||state.winnerSlot===null||!state.actionKey)return;
   const winner=state.actors[state.winnerSlot],victim=state.actors[other(state.winnerSlot)],tick=state.clipTick;
@@ -117,14 +130,14 @@ function sequenceTick(state:PitWorkbookConclusionStateV107):void {
   const contact=(kind:'guard'|'thrust'|'thrustExtended'|'disarm')=>projectPitWorkbookConclusionContactV107(state.actionKey!,winner.facing,kind,winner.x,winner.y,getPitCombatFighterDefinition(winner).bodyHeight);
   if(state.actionKey==='FATALITE_2') {
     if(tick>=30&&tick<60&&!once('guard-contact')){const box=contact('guard');if(box&&victim.guard==='high'&&overlap(box,getPitFighterBoxes(victim).hurtbox)){state.contacts.push({type:'guard-contact',tick,actorSlot:winner.slot,targetSlot:victim.slot,box});victim.guard=null;victim.phase='hitstun';victim.stunFrames=24;}}
-    if(tick>=60&&tick<180&&!once('thrust-contact')){const box=contact(tick<120?'thrust':'thrustExtended');if(box&&overlap(box,getPitFighterBoxes(victim).hurtbox)){state.contacts.push({type:'thrust-contact',tick,actorSlot:winner.slot,targetSlot:victim.slot,box});victim.phase='hitstun';victim.stunFrames=48;victim.action=null;victim.guard=null;}}
+    if(tick>=60&&tick<180&&!once('thrust-contact')){const box=contact(tick<120?'thrust':'thrustExtended');if(box&&overlap(box,getPitFighterBoxes(victim).hurtbox)){state.contacts.push({type:'thrust-contact',tick,actorSlot:winner.slot,targetSlot:victim.slot,box});victim.phase='hitstun';victim.stunFrames=48;victim.action=null;victim.guard=null;dropInertDeviceAtThrust(state);}}
   } else if(state.session) {
     const session=state.session,weapon=session.targetWeapon,object=session.missionObject;
     if(tick>=30&&tick<60&&!once('disarm')&&!once('device-detached')){const box=contact('disarm');if(box&&weapon.state==='held'&&overlap(box,weaponBox(session,state.actors))){const actual=weaponBox(session,state.actors);weapon.state='ground';weapon.x=actual.x+actual.width/2;weapon.y=actual.y;weapon.velocityX=winner.facing*1.2;weapon.velocityY=2.4;victim.action=null;victim.guard=null;victim.phase='hitstun';victim.stunFrames=24;const offensive=weapon.offensiveMechanicId===getPitCombatFighterDefinition(victim).technique.id&&weapon.disarmedPoseAdmitted&&PIT_WORKBOOK_CONCLUSION_DISARM_ADMISSIONS_V107.some(admission=>admission.fighterId===victim.definitionId&&admission.mechanicId===weapon.offensiveMechanicId&&admission.sourceId===weapon.sourceId&&admission.poseId===weapon.poseId);state.contacts.push({type:offensive?'disarm':'device-detached',tick,actorSlot:winner.slot,targetSlot:victim.slot,box,objectId:weapon.id});}}
     if(tick>=240&&!once('object-recovered')&&(once('disarm')||once('device-detached'))){const pickup=point(winner,'pickup');if(pickup&&object.state==='ground'&&Math.abs(pickup.x-object.x)<=12&&Math.abs(pickup.y-object.y)<=12){object.state='recovered';object.ownerSlot=winner.slot;session.receiptId=session.id+':recover:'+object.id;state.contacts.push({type:'object-recovered',tick,actorSlot:winner.slot,targetSlot:victim.slot,box:{x:pickup.x-6,y:pickup.y-6,width:12,height:12},objectId:object.id,receiptId:session.receiptId});}}
-    if(weapon.state==='ground'&&(weapon.y>0||weapon.velocityY!==0)){weapon.velocityY-=.4;weapon.x+=weapon.velocityX;weapon.y=Math.max(0,weapon.y+weapon.velocityY);if(weapon.y===0){weapon.velocityY=0;weapon.velocityX=0;}}
     if(object.state==='recovered'){const hand=point(winner,'heldObject');if(hand){object.x=hand.x;object.y=hand.y;}}
   }
+  if(state.session)advanceDroppedDevice(state.session.targetWeapon);
   if(victim.stunFrames>0)victim.stunFrames-=1;
   if(victim.stunFrames===0&&victim.phase==='hitstun')victim.phase='idle';
 }
@@ -149,7 +162,7 @@ export function samplePitWorkbookConclusionV107(state:PitWorkbookConclusionState
 }
 function validSession(value:unknown):value is PitWorkbookConclusionSessionV107 {
   if(!value||typeof value!=='object')return false;const s=value as PitWorkbookConclusionSessionV107,w=s.targetWeapon,o=s.missionObject;
-  return s.version===1&&id(s.id)&&s.provenance==='public-alternative-duel-v107'&&s.createdAtFrame===0&&Array.isArray(s.fighterIds)&&s.fighterIds.length===2&&s.fighterIds.every(id)&&Object.hasOwn(PIT_ARENAS,s.arenaId)&&typeof s.sourceWeaponAvailable==='boolean'&&!!w&&id(w.id)&&id(w.sourceId)&&id(w.poseId)&&(w.offensiveMechanicId===null||id(w.offensiveMechanicId))&&typeof w.disarmedPoseAdmitted==='boolean'&&(w.ownerSlot===0||w.ownerSlot===1)&&(w.state==='held'||w.state==='ground')&&!!w.attachment&&Object.values(w.attachment).length===4&&Object.values(w.attachment).every(v=>finite(v,-300,300))&&w.attachment.width>0&&w.attachment.height>0&&[w.x,w.y,w.velocityX,w.velocityY].every(v=>finite(v))&&!!o&&id(o.id)&&id(o.sourceId)&&o.id!==w.id&&o.appearance==='scar-red-beacon-v100'&&(o.ownerSlot===null||o.ownerSlot===0||o.ownerSlot===1)&&(o.state==='ground'?o.ownerSlot===null:o.state==='recovered'&&o.ownerSlot!==null)&&finite(o.x)&&finite(o.y,0)&&((o.state==='ground'&&s.receiptId===null)||(o.state==='recovered'&&s.receiptId===s.id+':recover:'+o.id));
+  return s.version===1&&id(s.id)&&s.provenance==='public-alternative-duel-v107'&&s.createdAtFrame===0&&Array.isArray(s.fighterIds)&&s.fighterIds.length===2&&s.fighterIds.every(id)&&Object.hasOwn(PIT_ARENAS,s.arenaId)&&typeof s.sourceWeaponAvailable==='boolean'&&!!w&&id(w.id)&&id(w.sourceId)&&id(w.poseId)&&(w.offensiveMechanicId===null||id(w.offensiveMechanicId))&&typeof w.disarmedPoseAdmitted==='boolean'&&(w.ownerSlot===0||w.ownerSlot===1)&&(w.state==='held'||w.state==='ground'||w.state==='flying'&&finite(w.y,Number.MIN_VALUE))&&!!w.attachment&&Object.values(w.attachment).length===4&&Object.values(w.attachment).every(v=>finite(v,-300,300))&&w.attachment.width>0&&w.attachment.height>0&&[w.x,w.y,w.velocityX,w.velocityY].every(v=>finite(v))&&!!o&&id(o.id)&&id(o.sourceId)&&o.id!==w.id&&o.appearance==='scar-red-beacon-v100'&&(o.ownerSlot===null||o.ownerSlot===0||o.ownerSlot===1)&&(o.state==='ground'?o.ownerSlot===null:o.state==='recovered'&&o.ownerSlot!==null)&&finite(o.x)&&finite(o.y,0)&&((o.state==='ground'&&s.receiptId===null)||(o.state==='recovered'&&s.receiptId===s.id+':recover:'+o.id));
 }
 export function serializePitWorkbookConclusionSessionV107(session:PitWorkbookConclusionSessionV107):string{if(!validSession(session))throw new Error('Invalid V107 objective session.');return JSON.stringify(session);}
 export function deserializePitWorkbookConclusionSessionV107(text:string):PitWorkbookConclusionSessionV107{const value:unknown=JSON.parse(text);if(!validSession(value))throw new Error('Invalid V107 objective session.');return value;}
@@ -186,7 +199,21 @@ export function deserializePitWorkbookConclusionV107(text:string):PitWorkbookCon
   }
   if(!expected||JSON.stringify(event.box)!==JSON.stringify(expected))reject();
  }
- if(s.session&&((s.session.targetWeapon.state==='ground')!==(seen.has('disarm')||seen.has('device-detached'))||(s.session.missionObject.state==='recovered')!==seen.has('object-recovered')))reject();
+ if(s.session){
+  const weapon=s.session.targetWeapon,before=s.context!.session!.targetWeapon;
+  const thrust=s.contacts.find(event=>event.type==='thrust-contact');
+  const fatalDrop=s.actionKey==='FATALITE_2'&&weapon.offensiveMechanicId===null&&weapon.ownerSlot===other(s.winnerSlot!)&&!!thrust;
+  if(fatalDrop){
+   // The existing true thrust is the only cause: no disarm or mission event is
+   // invented for this inert alternative-duel prop. Reconstruct its full flight
+   // to reject floating, teleporting, duplicate or prematurely grounded saves.
+   if(before.state!=='held'||seen.has('disarm')||seen.has('device-detached')||seen.has('object-recovered'))reject();
+   const expected=clone(s);expected.session!.targetWeapon=clone(before);dropInertDeviceAtThrust(expected);
+   for(let tick=thrust!.tick;tick<s.clipTick;tick++)advanceDroppedDevice(expected.session!.targetWeapon);
+   for(const key of ['state','x','y','velocityX','velocityY'] as const)if(weapon[key]!==expected.session!.targetWeapon[key])reject();
+  }else if((weapon.state==='ground')!==(seen.has('disarm')||seen.has('device-detached'))||weapon.state==='flying')reject();
+  if((s.session.missionObject.state==='recovered')!==seen.has('object-recovered'))reject();
+ }
  if(s.outcome==='finished'&&(s.actionKey==='FATALITE_2'?!seen.has('guard-contact')||!seen.has('thrust-contact'):!seen.has('disarm')||!seen.has('object-recovered'))||s.outcome==='partial-source'&&(s.actionKey!=='CLEMENCE'||!seen.has('device-detached')||!seen.has('object-recovered')))reject();
  return s;
 }

@@ -27,7 +27,8 @@ export function pitWorkbookConclusionActorsReadyV107(bank: PitCombatBitmapArtBan
   if (!bank || bank.cancelled) return false;
   const required = [
     {fighterId: 'feral-hunter' as const, atlasId: 'feral-hunter-pit-v34', ids: ['idle', 'walk', 'walk-backward', 'high-guard', 'pit.stand.hitstun']},
-    {fighterId: 'scar' as const, atlasId: 'scar-pit-v34', ids: ['idle', 'walk', 'walk-backward']},
+    {fighterId: 'scar' as const, atlasId: 'scar-pit-v34', ids: ['idle', 'walk-backward']},
+    {fighterId: 'scar' as const, atlasId: 'scar-walk-forward-v40', ids: ['walk']},
     {fighterId: 'feral-hunter' as const, atlasId: 'feral-workbook-defaite-v100-presentation-v105-DEFAITE', ids: ['pit.presentation.workbook-v105.defeat']},
   ];
   return required.every(entry => entry.ids.every(clipId => (['left', 'right'] as const).every(facing =>
