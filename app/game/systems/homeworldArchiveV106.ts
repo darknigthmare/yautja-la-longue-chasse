@@ -11,8 +11,11 @@ export type ArchiveActionV106='choose-b'|'reply'|'start'|'take-a'|'take-b'|'depo
 export interface ArchiveResultV106 {ok:boolean;changed:boolean;ledger:HomeworldArchiveLedgerV106;message:string;writeRefused?:boolean}
 const distance=(a:ArchivePointV106,c:ArchivePointV106)=>Math.hypot(a.x-c.x,a.y-c.y);
 export const archiveActiveV106=(ledger:HomeworldArchiveLedgerV106|undefined)=>!!ledger?.receipt&&ledger.receipt.phase!=='completed';
-export const archiveGroundV106=(c:ArchiveContextV106)=>c.ownerCreatedAt===c.currentOwnerCreatedAt&&c.active&&c.levelId==='0'&&!c.interiorId&&!c.inTransit&&c.visitedDistrictIds.includes('port')
-  &&[c.actor.x,c.actor.y].every(Number.isFinite)&&homeworldCivicWalkableV80('0',c.actor)&&!homeworldResidentOccludedV100('0',c.actor);
+/** Physics records every supported native step, including beneath foreground paint. */
+export const archiveWalkableV106=(c:ArchiveContextV106)=>c.ownerCreatedAt===c.currentOwnerCreatedAt&&c.active&&c.levelId==='0'&&!c.interiorId&&!c.inTransit&&c.visitedDistrictIds.includes('port')
+  &&[c.actor.x,c.actor.y].every(Number.isFinite)&&homeworldCivicWalkableV80('0',c.actor);
+/** Object and speaker interactions still require an unobscured approach. */
+export const archiveGroundV106=(c:ArchiveContextV106)=>archiveWalkableV106(c)&&!homeworldResidentOccludedV100('0',c.actor);
 export const archivePostReachedV106=(c:ArchiveContextV106)=>archiveGroundV106(c)&&c.hostPresent!==false&&distance(c.actor,b.post)<=b.radius&&homeworldCivicWalkableV80('0',b.host)&&!homeworldResidentOccludedV100('0',b.host)&&homeworldRouteSegmentV77('0',c.actor,b.host);
 export function stepHomeworldArchiveActorV106(actor:HomeworldActor,input:HomeworldInput,seconds:number,level:HomeworldLevelV77){return stepHomeworldCivicActorV80(actor,input,seconds,level);}
 export function archiveNearbyActionV106(ledger:HomeworldArchiveLedgerV106|undefined,c:ArchiveContextV106):{action:ArchiveActionV106;label:string}|null {
@@ -21,7 +24,7 @@ export function archiveNearbyActionV106(ledger:HomeworldArchiveLedgerV106|undefi
   if(distance(r.last,c.actor)>2)return null;
   for(let i=0;i<2;i++){
     const item=r.cases[i],target=b.supports[i];
-    if(item.place==='ground'&&!r.carrier&&distance(c.actor,item)<=66&&homeworldRouteSegmentV77('0',c.actor,item))return {action:i===0?'take-a':'take-b',label:`Prendre le dossier ${item.id}`};
+    if(item.place==='ground'&&!r.carrier&&!homeworldResidentOccludedV100('0',item)&&distance(c.actor,item)<=66&&homeworldRouteSegmentV77('0',c.actor,item))return {action:i===0?'take-a':'take-b',label:`Prendre le dossier ${item.id}`};
     if(r.carrier===item.id&&distance(c.actor,target.stand)<=36)return {action:i===0?'deposit-a':'deposit-b',label:`Déposer le dossier ${item.id} sur le support ${item.id}`};
   }return null;
 }
@@ -37,7 +40,7 @@ export function applyArchiveActionV106(raw:unknown,action:ArchiveActionV106,expe
     if(!r||!['working','return'].includes(r.phase))return {ok:true,changed:false,ledger,message:'Les dossiers restent à leur place.'};
     r.resumePhase=r.phase as 'working'|'return';r.phase='interrupted';r.interruptedCount++;
   }else if(action==='resume'){
-    if(!r||r.phase!=='interrupted'||!archiveGroundV106(c)||distance(r.last,c.actor)>4)return fail('Rejoins le dernier point confirmé pour reprendre les dossiers.');
+    if(!r||r.phase!=='interrupted'||!archiveWalkableV106(c)||distance(r.last,c.actor)>4)return fail('Rejoins le dernier point confirmé pour reprendre les dossiers.');
     r.phase=r.resumePhase!;r.resumePhase=null;r.last=foot;
   }else if(action==='park'){
     if(!r||r.phase!=='interrupted'||!r.carrier||!archiveGroundV106(c)||distance(r.last,c.actor)>2)return fail('Le dossier porté ne peut être posé qu’au dernier point confirmé.');
@@ -70,7 +73,7 @@ export function applyArchiveActionV106(raw:unknown,action:ArchiveActionV106,expe
 export function sampleArchiveWalkV106(ledger:HomeworldArchiveLedgerV106,before:ArchivePointV106,after:ArchivePointV106,seconds:number,c:ArchiveContextV106){
   const r=ledger.receipt;if(!r||!['working','return'].includes(r.phase))return {ledger,invalid:false};
   const moved=distance(before,after);if(seconds===0&&moved===0)return {ledger,invalid:false};
-  if(ledger.ownerCreatedAt!==c.ownerCreatedAt||c.otherOperationActive||!archiveGroundV106({...c,actor:after})||distance(r.last,before)>1||!Number.isFinite(seconds)||seconds<=0||seconds>1/30+1e-6
+  if(ledger.ownerCreatedAt!==c.ownerCreatedAt||c.otherOperationActive||!archiveWalkableV106({...c,actor:after})||distance(r.last,before)>1||!Number.isFinite(seconds)||seconds<=0||seconds>1/30+1e-6
     ||moved>Math.max(HOMEWORLD_ACTOR.walkSpeed,HOMEWORLD_ACTOR.depthSpeed)*seconds*2+.1||!homeworldRouteSegmentV77('0',before,after))return {ledger,invalid:true};
   if(moved<.001)return {ledger,invalid:false};
   const next=structuredClone(ledger),n=next.receipt!;n.last={x:after.x,y:after.y};n.walked=Math.min(1e9,n.walked+moved);

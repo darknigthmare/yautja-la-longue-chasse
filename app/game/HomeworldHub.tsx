@@ -25,7 +25,7 @@ import {
   HOMEWORLD_NPCS, HOMEWORLD_EVIDENCE, HOMEWORLD_REGIONS, HOMEWORLD_WITNESS_CHOICES,
   createHomeworldActor, stepHomeworldActorOnFloor,
   applyHomeworldAction, homeworldInquiryJournal, homeworldInquiryDialogue,
-  type HomeworldAction, type HomeworldPoint, type HomeworldProgress, type HomeworldInquiryAction,
+  type HomeworldActor, type HomeworldAction, type HomeworldPoint, type HomeworldProgress, type HomeworldInquiryAction,
   type HomeworldService, type HomeworldWitnessChoice, type HomeworldPlayableRegionId,
 } from "./systems/homeworld";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
@@ -392,12 +392,17 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     setArchiveMessageV106(result.message);return true;
   },[archiveContextV106,onProgress,archiveWriteRefusedV106]);
   const interruptArchiveV106=useCallback(()=>{const r=archiveDraftRefV106.current;return !r.receipt||!['working','return'].includes(r.receipt.phase)||submitArchiveV106('interrupt',r.revision);},[submitArchiveV106]);
-  const sampleArchiveV106=useCallback((before:{x:number;y:number},after:{x:number;y:number},seconds:number)=>{
-    if(archiveWritePausedRefV106.current)return;
+  const sampleArchiveV106=useCallback((before:HomeworldActor,after:HomeworldActor,seconds:number)=>{
+    if(archiveWritePausedRefV106.current)return false;
     const result=sampleArchiveWalkV106(archiveDraftRefV106.current,before,after,seconds,archiveContextV106());
-    if(result.invalid){interruptArchiveV106();return;}
-    archiveDraftRefV106.current=result.ledger;
-  },[archiveContextV106,interruptArchiveV106]);
+    if(result.invalid){
+      // The motor proposal is not yet accepted: restore the complete prior
+      // actor before an interruption/checkpoint can persist its carried case.
+      const stopped={...before,vx:0,vy:0};actorRef.current=stopped;setActor(stopped);clearInputs();
+      interruptArchiveV106();return false;
+    }
+    archiveDraftRefV106.current=result.ledger;return true;
+  },[archiveContextV106,interruptArchiveV106,clearInputs]);
   const retryArchiveV106=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current))setArchiveMessageV106('Dossiers et dernier point enregistrés. Reprends l’action ici.');else archiveWriteRefusedV106('L’enregistrement reste indisponible. Les dossiers sont conservés ici.');};
   const actArchiveFromWorldV106=(action:ArchiveActionV106,revision:number)=>{viewportRef.current?.focus({preventScroll:true});clearInputs();return submitArchiveV106(action,revision);};
   const cntlipV77=useHomeworldCntlipV77({save,actor,room:interior,sceneReady:!suspended&&!paused&&!inactive&&!transitV77&&!skiffV77&&motionAssetsV74.ready,saveRef,progressRef,actorRef,interiorRef,onProgress,clearInputs,onNotify,
@@ -730,7 +735,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           : stepHomeworldWorldActorV77(before, controls, dt, levelRefV77.current);
         jumpWasPressed = jump;
         actorRef.current = next;
-        sampleArchiveV106(before,next,dt);
+        if(!sampleArchiveV106(before,next,dt))next=actorRef.current;
         sampleCartographyV104(before,next,dt);
         if(!walkingTransitV77&&!skiffRefV77.current)sampleCartographyV105(before,next,dt);
         // Advance native walk poses only by real travel, never by a doorway
