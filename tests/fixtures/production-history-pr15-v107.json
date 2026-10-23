@@ -1,0 +1,1783 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "d99604e18d4b185b57cc59cfbde0420b95acd0fd",
+  "baseCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "scope": "Exact historical PR15 state. Its original production/delta/static asset assertions remain unchanged, executed in a separate private source root. This grants no V107 runtime coverage.",
+  "base": {
+    "path": "tests/fixtures/excel-history-v106-v107.json",
+    "sha256": "5461c2282b2efc3306d53a802f47dd0c245e1bc1b8062c4efa6fa72b90776d3a"
+  },
+  "archive": {
+    "path": "tests/fixtures/production-history-pr15-v107.json.gz",
+    "sha256": "4524f083f69335aadeab9c647980f4113afc565da29476ef7f2301009ce7e614",
+    "bytes": 206901,
+    "uncompressedBytes": 665105
+  },
+  "sources": [
+    {
+      "path": "app/game/RecentSpriteLibraryV85.tsx",
+      "sha256": "d04e3583c7968087cb233083d2efd30e37f2899627870ffaf85d09fa058cf584",
+      "bytes": 10237
+    },
+    {
+      "path": "app/game/data/enforcerProductionV614.json",
+      "sha256": "721bf64fce4b7c88e98b139b690123f70e05e402c853e50032cca8ff43ad412a",
+      "bytes": 49256
+    },
+    {
+      "path": "app/game/data/npcProductionV615.json",
+      "sha256": "3d3c2a15d29f9877ad5ceb8ff7cf135c6dbca4bf9235f3f922179b7eb18e0733",
+      "bytes": 52512
+    },
+    {
+      "path": "app/game/systems/recentSpriteLibraryV85.ts",
+      "sha256": "ec2fa03e97cb5508a6c5fa002d265d791abe5d2e27f17d21defebb3c3ca799b5",
+      "bytes": 16362
+    },
+    {
+      "path": "scripts/audit-enforcer-public-records-v614.py",
+      "sha256": "895638a8e00145aa91cb33d907ba837d07dfe804a4b95f8ba67b549d26298840",
+      "bytes": 2969
+    },
+    {
+      "path": "scripts/audit-npc-public-records-v615.py",
+      "sha256": "9c7bd9b2319e4ee6ddfcf72580d556d578c4774b2754ace6c27902b87bacf904",
+      "bytes": 2903
+    },
+    {
+      "path": "scripts/build-enforcer-gallery-v614.mjs",
+      "sha256": "046e96d67838de0378edc509d92ac29508c8eae94b428f6bbae5f367579f7dee",
+      "bytes": 18405
+    },
+    {
+      "path": "scripts/build-enforcer-production-v614.mjs",
+      "sha256": "bd36d676a479992f1fc2baefbaae29106d79ce34c00d17455624c18438b3ef0e",
+      "bytes": 13381
+    },
+    {
+      "path": "scripts/build-enforcer-workbook-v614.mjs",
+      "sha256": "d421d1bc589a1d37eb4c87a5dea459e95ae98102b2af4f5d91626736e235030b",
+      "bytes": 20198
+    },
+    {
+      "path": "scripts/build-npc-gallery-v615.mjs",
+      "sha256": "4e445e87cf070f595110c47397f7269431c3f153a980f0dfe713cd755d902866",
+      "bytes": 19478
+    },
+    {
+      "path": "scripts/build-npc-production-v615.mjs",
+      "sha256": "c1ee57715f02f5f9626d1d4a752f1e0a5fa7046ca160ebb5cbe9df56b3d16ce1",
+      "bytes": 12776
+    },
+    {
+      "path": "scripts/build-npc-workbook-v615.mjs",
+      "sha256": "39bc4fa5ddff6b29c007e7af90860b4a2da39cc7d4fe66877d1c46e4da4f9b97",
+      "bytes": 17608
+    },
+    {
+      "path": "scripts/historical-runtime-context-v614.mjs",
+      "sha256": "44efbe68d00e8c613ed25b75ec42535718712a7d4f933a1650c80bc4cb30460d",
+      "bytes": 11804
+    },
+    {
+      "path": "scripts/historical-runtime-context-v615.mjs",
+      "sha256": "b167d358178059d2afa7a7c62f5689fd7f9fad3af3a3624f5fbaf33ecfa08a34",
+      "bytes": 12769
+    },
+    {
+      "path": "scripts/package-enforcer-production-v614.py",
+      "sha256": "47e8b30566e6d653f6cdfe40902f5af213914645457b8316c8403bf7598e71e3",
+      "bytes": 14988
+    },
+    {
+      "path": "scripts/package-npc-production-v615.py",
+      "sha256": "68f6c5e93d415126697ee43080dd8bae6ce937623a79e8f77f1aac40dde83157",
+      "bytes": 15518
+    },
+    {
+      "path": "scripts/prepare-enforcer-plan-v614.mjs",
+      "sha256": "ce4d81838e61e8db556ce5bd61d821ada0e44dac7c49f88dac57cd7ffc301973",
+      "bytes": 9063
+    },
+    {
+      "path": "scripts/prepare-npc-plan-v615.mjs",
+      "sha256": "bd14d91bced7abc197d14da2d9e0b02abcc305bce9fefc7010813c731c0990e7",
+      "bytes": 11634
+    },
+    {
+      "path": "scripts/reconcile-enforcer-main-v614.mjs",
+      "sha256": "44336a0b0263642097aa7d85bd2122f2e9a7e11bbf89684f386a8b928b535b87",
+      "bytes": 5583
+    },
+    {
+      "path": "scripts/reconcile-npc-main-v615.mjs",
+      "sha256": "1ebb70b6f9624ee31058987f36a8f30403447c0d2f71a6c572aa1bc9b535c569",
+      "bytes": 4175
+    },
+    {
+      "path": "scripts/verify-enforcer-gallery-v614.mjs",
+      "sha256": "0e7cb4dcb6f158929f1a126a7839ea0c44a2bfa1eb01de92a872dd8b837f5d4c",
+      "bytes": 8830
+    },
+    {
+      "path": "scripts/verify-enforcer-workbook-v614.py",
+      "sha256": "62203251904628267400c7e3d6dd4656ec384a3f8ec6a87686534fa2dd3f6245",
+      "bytes": 26383
+    },
+    {
+      "path": "scripts/verify-npc-gallery-v615.mjs",
+      "sha256": "7d92bef86a62be6e4f1ff56c103f965e1a4bbd55e2dcd9d2aaa6787c812f9dda",
+      "bytes": 10517
+    },
+    {
+      "path": "scripts/verify-npc-workbook-v615.py",
+      "sha256": "d1ac15aabc3c1e8964fc6e4d1b690568e5fe180653af762dda83e897ed80f0c9",
+      "bytes": 23633
+    },
+    {
+      "path": "tests/enforcer-production-v613.test.mjs",
+      "sha256": "9a6395990b993c9b2c09eca801266b25939811b24980d3ae94a9a1b1563582b2",
+      "bytes": 12565
+    },
+    {
+      "path": "tests/enforcer-production-v614.test.mjs",
+      "sha256": "61dfcbf91518324b41519af2f0723e12f61c2aa93b5312b758a2e41f29ed93a5",
+      "bytes": 10606
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v614.json",
+      "sha256": "674c2ce278f937a6aa52d041c4071a1a5f93bfac418266a3e7b404d3e9615b5c",
+      "bytes": 29563
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v615.json",
+      "sha256": "df29bc7520ee3437cb53f26cd4c638567204588c91464cf9907dc032f04d0f22",
+      "bytes": 31378
+    },
+    {
+      "path": "tests/helpers/homeworld-scene-ssr-v78.mjs",
+      "sha256": "3f584f4c7d49d5e39abc99488db144091b61d4c54ee6bde0b00c16e613ea935a",
+      "bytes": 2288
+    },
+    {
+      "path": "tests/npc-production-v615.test.mjs",
+      "sha256": "b648083f380eff4b25b7564ea8cf8f63730fa002043d1af1a518c081e4302b24",
+      "bytes": 9810
+    },
+    {
+      "path": "tests/production-proofs-v106.test.mjs",
+      "sha256": "52312d32bbbe36cc3794c94ca37389bf942e0bbfc9eac82be7556691bc0e52e6",
+      "bytes": 7988
+    }
+  ],
+  "shared": [
+    {
+      "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "bytes": 62111
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+      "sha256": "d1ef8866b4cd94e5e90130efe8ed62a6c099dc0093215bd17348ff25c946ef04",
+      "bytes": 35380
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+      "sha256": "5dd113dfb7cb40f3517ba4f1081bd1ece977a9fba3e9cedc01de87835effd2e6",
+      "bytes": 14262
+    },
+    {
+      "path": "docs/THE_PIT_V62_SUIVI.xlsx",
+      "sha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb",
+      "bytes": 29389
+    },
+    {
+      "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+      "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+      "bytes": 56229
+    },
+    {
+      "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+      "bytes": 1862541
+    },
+    {
+      "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
+      "bytes": 2411658
+    },
+    {
+      "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+      "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+      "bytes": 1130515
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+      "sha256": "f4f604a407cff43be6b2e96896dc18fd8d8a0e5f901fc634e8d777f65818c71f",
+      "bytes": 1107914
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "bytes": 2101543
+    },
+    {
+      "path": "docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx",
+      "sha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+      "bytes": 1642587
+    },
+    {
+      "path": "docs/suivi-production/v611/data/production-manifest.json",
+      "sha256": "16caef3fcd50707a2c451e3dcedbb035aa1fca9e5b99b0e199437a72785f94ea",
+      "bytes": 739978
+    },
+    {
+      "path": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+      "sha256": "76fe0e138a2ee2c901b491c48edea9e8d3777f1babeb9c480b932c82ffca0d6e",
+      "bytes": 1624759
+    },
+    {
+      "path": "docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+      "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+      "bytes": 1672140
+    },
+    {
+      "path": "docs/suivi-production/v612/data/production-manifest.json",
+      "sha256": "20736f64468c35bcb655168a19e3a7922580b8de744d28ba92b7eb84af3a8748",
+      "bytes": 756233
+    },
+    {
+      "path": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+      "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+      "bytes": 1698239
+    },
+    {
+      "path": "docs/suivi-production/v613/data/current-master.json.gz",
+      "sha256": "26723ff875d97548d62440b8062aae5e395a9048c3e9d4b1618fbcf87ae85513",
+      "bytes": 396359
+    },
+    {
+      "path": "docs/suivi-production/v613/data/default-selections-before.json",
+      "sha256": "a1069f595f84def55ec2c7d37b96d5418144c6b6d161fc212d97a49996ee8ccd",
+      "bytes": 182038
+    },
+    {
+      "path": "docs/suivi-production/v613/data/main-reconciliation.json",
+      "sha256": "8d2b45b478ae8620adbfb1609cdf7643637bc1db054ad58f998a6c4839725c6f",
+      "bytes": 29532
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "sha256": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde",
+      "bytes": 622188
+    },
+    {
+      "path": "docs/suivi-production/v613/recovery/native-checkpoint.json",
+      "sha256": "be12a3a49b0ed199a0d66887d6774d163828a4df6f9ad729d0b435fd6ee25f6d",
+      "bytes": 175986
+    },
+    {
+      "path": "docs/suivi-production/v613/recovery/verified-native-files.json",
+      "sha256": "51e4ee6e56b46a4af1398569d43e825b241e8d6124df3ad096ecb19734b0909e",
+      "bytes": 21314
+    },
+    {
+      "path": "docs/suivi-production/v613/references/production-plan-v613.json",
+      "sha256": "d0c8f48033044df722f742e5767e18fef7dc0ef2a6a2b90d53df8a18eccdfdad",
+      "bytes": 503271
+    },
+    {
+      "path": "docs/suivi-production/v614/README.md",
+      "sha256": "5993a3c4272eb9b49c851cfe16caaaea0e23e21e1e6f7725279772cdcd4de4ba",
+      "bytes": 6753
+    },
+    {
+      "path": "docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+      "sha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+      "bytes": 1715728
+    },
+    {
+      "path": "docs/suivi-production/v614/data/base-workbooks.json",
+      "sha256": "389e628ec7d674ac657c87a5980ee7507cc2f91d59e11cc8276a056adf7c965b",
+      "bytes": 5847
+    },
+    {
+      "path": "docs/suivi-production/v614/data/current-counts.json",
+      "sha256": "15e22c5fddcfda88bd229ace7bcc1fbe6ee4285cb6791b7083e3b81a31a7ced4",
+      "bytes": 812
+    },
+    {
+      "path": "docs/suivi-production/v614/data/current-master.json.gz",
+      "sha256": "5dbee4602207a98eb73fa94a877d6e2d0b78e9f062eabb2c8b5c7fcf087ff60c",
+      "bytes": 399465
+    },
+    {
+      "path": "docs/suivi-production/v614/data/default-selections-before.json",
+      "sha256": "221822aa4b2ddd8947ebe5fdc79db083f06e45d638e4fc1c0912ee2cdcf0ed21",
+      "bytes": 182038
+    },
+    {
+      "path": "docs/suivi-production/v614/data/main-reconciliation.json",
+      "sha256": "b5fb10d7d2ee7f3a58c54b2b02acce370946080ded0b9dd846493c31bc58698d",
+      "bytes": 43281
+    },
+    {
+      "path": "docs/suivi-production/v614/data/production-manifest.json",
+      "sha256": "c5bb571b38f02d76526de2c98634abcda46fee15541f6ef21b10dc03e223fbcd",
+      "bytes": 424809
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/bionic.png",
+      "sha256": "f948bb9aacda3b95117d37be46929fb8cd048b0b8e6e41b4c4b306d09e09ec70",
+      "bytes": 213685
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/browser-verification.json",
+      "sha256": "0777fbb698d9c70aa22a2886e6e1b3160c7bcb9a4e6e181f6c5616ae77e4f1a3",
+      "bytes": 1219
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/four-armed.png",
+      "sha256": "bb4880b662f404b9edb86cad06b52e19ef2458b75347622499b42174767e7441",
+      "bytes": 227470
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/gallery-desktop.png",
+      "sha256": "84884aa5b26a6871faecb818607301c85c9bb81ccd15e54e057188a9d96f2e26",
+      "bytes": 149911
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/gallery-mobile-card.png",
+      "sha256": "7a2e3be876ebb1f855e68f6f91e5910f4845c5bbadc557635f69f1d74b2c3241",
+      "bytes": 162072
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/gallery-mobile-controls.png",
+      "sha256": "c86d91e1b45b5b4100fb99c88bb84c5ab4da0bd7e53e448b8b5c1754201fca04",
+      "bytes": 18623
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/gallery-mobile.png",
+      "sha256": "303aad6330d5edb38bc8fbffe71014556756ab63312717d72e030e10141e4359",
+      "bytes": 60911
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/human-accepted.png",
+      "sha256": "9c4aa39c42f7f29e5d1d684580beba126a691d4226f8ca6c6551f443cdbd079e",
+      "bytes": 181720
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/pilot-kok.png",
+      "sha256": "6c4e3cf14f6725badaeee4fbc37fe789e729b67424a591b24763da2edd128458",
+      "bytes": 218910
+    },
+    {
+      "path": "docs/suivi-production/v614/gallery-preview/visual-review.json",
+      "sha256": "dc3440ad17c3a7f72912e381e1154c7b828f9388446f109aa2a4e55add29cd2f",
+      "bytes": 3443
+    },
+    {
+      "path": "docs/suivi-production/v614/index.html",
+      "sha256": "f644f54aedebaa29a88caa21541f5752a46b8b7a130799a7a7391c7db5e919d4",
+      "bytes": 448279
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/alpha--enforcers-comics-10.json",
+      "sha256": "e1b07b298411202d3ef63ac75b0f2390224111705be15fa6b6be22644e559da0",
+      "bytes": 13881
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "sha256": "60127ecca8d7794c1fb2eaa67afad3cae98784d143b69bd1fe8c0b236e56f808",
+      "bytes": 16751
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/bionic--enforcers-comics-10.json",
+      "sha256": "a3c1feaa6ba96afb16af05400fa3704cb65dcbc212cbbc90181cf71960a8c963",
+      "bytes": 16959
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/city-hunter--enforcers-comics-10.json",
+      "sha256": "b8ff78154b58369e297c998b5704616c31ab297f6d3f0e287ea8d7bf8ef98efe",
+      "bytes": 16284
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json",
+      "sha256": "9818d8e1323a20db84e41bf2cb4004f97ed1d082a6fa16c4315902e3a2355341",
+      "bytes": 15020
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/four-armed--enforcers-comics-10.json",
+      "sha256": "876209573865b745342b6fc198407b735a4bc002425b47590ca48e58cfc75706",
+      "bytes": 15697
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json",
+      "sha256": "1092253655cae8700f6ac1d0f359a010e8095e2a4e24d00aa18c7e67894b7296",
+      "bytes": 15303
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/hornhead--enforcers-comics-10.json",
+      "sha256": "a6e95940cf7d505abe8aadc7e52a6414ddd9ab50919b074d468a9c417be805bd",
+      "bytes": 15597
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/human-accepted--enforcers-comics-10.json",
+      "sha256": "497fa61c4efcc5bf292b5918cd1001f4ec202631c2b84a0b4d228486a6e7320b",
+      "bytes": 14126
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/kaal-or--enforcers-comics-10.json",
+      "sha256": "323cced5ba7370bd78183b319c201de6195b77b8a1c0059ef42a0c1a1a67e2e8",
+      "bytes": 15304
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json",
+      "sha256": "e9ea69eaf7a129986b24f505a2e6cf5d64ddafde67b5005f8ae77ae24e521aad",
+      "bytes": 15302
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/pilot-kok--enforcers-comics-10.json",
+      "sha256": "9305e1cd174da16e5a3962918dc04c18e9f871f9c576e336e62845ffd5000f4f",
+      "bytes": 16257
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/saar-keth--enforcers-comics-10.json",
+      "sha256": "da9bd58b449f6defbe7a337739679a66958c47c1ac9e941f8b52dfbe7744ffa9",
+      "bytes": 14909
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/sha-rhess--enforcers-comics-10.json",
+      "sha256": "3c346301b5b092bf17db5b5b871d32d950f4b603b2878b792be049f761874823",
+      "bytes": 15436
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/spiked-tail--enforcers-comics-10.json",
+      "sha256": "d4d1d6beb2e7acec9499b1eea1a8a1464cb747699145faaeca09c9bc50f1d425",
+      "bytes": 16533
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json",
+      "sha256": "b764a6f88f1850c32d6449b5bccd6a6d32030ce90b6702390a8e0d3ee18fae78",
+      "bytes": 15266
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json",
+      "sha256": "d81d9255b6f8efc3b31d5d1c9a8da4ca9e93bbf3034a25bb2ebfe7f7ec5a2ba8",
+      "bytes": 15538
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/vaal-tir--enforcers-comics-10.json",
+      "sha256": "dc2d15b7b1575d750e094f921043925505265f134d82bd5d22d0a6394c914a6a",
+      "bytes": 15464
+    },
+    {
+      "path": "docs/suivi-production/v614/recovery/native-checkpoint.json",
+      "sha256": "0c01aa457ce689d264057b6ec438cb9e711ff9b1d4ce3d8ac17bf7932571fba5",
+      "bytes": 423680
+    },
+    {
+      "path": "docs/suivi-production/v614/references/production-plan-v614.json",
+      "sha256": "1a2d3e28044dd6a83efa1b4ee0f26397e61b8ac4c11dfbc9daaeaf49c9573202",
+      "bytes": 231222
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/historical-runtime-check.json",
+      "sha256": "e1aca36244f67c0606cd28d488a413733e6aabcf86a24281675ee11173e71f92",
+      "bytes": 4894
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/historical-runtime-review.json",
+      "sha256": "03b7bea009ab72fa503dc86dea4f753a23bd32f75871432c44744366755d858f",
+      "bytes": 5817
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/integration-checks.json",
+      "sha256": "1d99159c83c91055203ffcb716225d31e63013ec2ed94d38f4a38a67d3ac6d2d",
+      "bytes": 9607
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/local-quality.json",
+      "sha256": "1fa46dc618fbd9f1210cce879f1044e94e10b566c58234d3c22c31142e3bbca0",
+      "bytes": 1927
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/master-changes.json",
+      "sha256": "948d730842d1b25fd033c072071bfcb8273b3e1da215f1e0a0d91bea084a0023",
+      "bytes": 144950
+    },
+    {
+      "path": "docs/suivi-production/v614/validation/public-record-final-check.json",
+      "sha256": "6ba5d7a85e3834e28d6c694458fba3d7d785a3c4cca4a790976dfcd15f837f4f",
+      "bytes": 7763
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/additional-workbooks.json",
+      "sha256": "f727f0625b7711b4b58630e50415c5e1d7ff3c26657b8835a561bf6fb5830764",
+      "bytes": 4293
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/after-checks.png",
+      "sha256": "a82ce9f50b5cd4683f8b716bb9e3fb5c383a83a602b3905d08287de6b4720b3a",
+      "bytes": 89017
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/after-production.png",
+      "sha256": "7cfddb2f140f9e8f32360c9fb0c7c30626d2571f7752caebcb192e444d46ab1d",
+      "bytes": 92464
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/after-summary.png",
+      "sha256": "0b6db3f3d58cd9862cd634447a74fb6ca1a8029428c3bb60221b7535630f5018",
+      "bytes": 278294
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/after-workbooks.png",
+      "sha256": "d5220891ee31091c1d2e54f79bbff8f697eb96def76fd54b5b04d9bda4dacbf3",
+      "bytes": 53692
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/applied-master-changes.json",
+      "sha256": "eb8f2ed866a29c3c2e53e4e3b2d249f01638bcaa8f291030f0e348a045ae0b95",
+      "bytes": 75128
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/before-production.png",
+      "sha256": "1a76a4824c2c3e5c3a94def6a6363a97733e55ae0c5a30e45a3cfe530e9f4ee6",
+      "bytes": 69755
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/before-summary.png",
+      "sha256": "77637a6c5b5b9acde7f1c32f0b8f7ada59e37dc0f0092a28c736e1f77667f8bf",
+      "bytes": 275855
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/before-workbooks.png",
+      "sha256": "65cf9ad244f40c45f144df81b4a58fbc6a15c7da12463abab7599e0c2f3a54e5",
+      "bytes": 52294
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/export-inspection.ndjson",
+      "sha256": "c423616729d7ab6ecd1e6a62c2dbf4174d35e68b04497b6176d0f1ecec30cddf",
+      "bytes": 979
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/formula-scan.ndjson",
+      "sha256": "acc0111e19cf44d2753fc9ecd164bf1b27fbd65597463a25cf48bd1c65e90146",
+      "bytes": 60
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/openxml-verification.json",
+      "sha256": "9658c59ed0abf7a4d3e61a1dc33512893c4e4293bc598679a079e94e64161188",
+      "bytes": 3558
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/recalculation-check.json",
+      "sha256": "43a89c936ebe8f71cde3d01b444d116f156b538c0f05198ace972baaab1cb119",
+      "bytes": 310
+    },
+    {
+      "path": "docs/suivi-production/v614/workbook-preview/visual-review.json",
+      "sha256": "3adeb027e454af33eb1f97556a2682972f4fa20b72a466053cc6e28aa3598e98",
+      "bytes": 2043
+    },
+    {
+      "path": "docs/suivi-production/v615/README.md",
+      "sha256": "fb7acd2c6e447ef8ce995499eae02ea7d9ca8f594a9ea044e36ed0f52756bc99",
+      "bytes": 13188
+    },
+    {
+      "path": "docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+      "sha256": "90f03e170a07d4867f8f8bc588e486d3055c11a826a496ce50790d6a35e3a2f8",
+      "bytes": 1731753
+    },
+    {
+      "path": "docs/suivi-production/v615/data/base-workbooks.json",
+      "sha256": "d85ea6f363e85935753079f3e467cc4f7a37dc7c77f44a7f63afca4abc48507f",
+      "bytes": 7678
+    },
+    {
+      "path": "docs/suivi-production/v615/data/current-counts.json",
+      "sha256": "a3ebeb70090ed0d22c3e4b079811d3f054ea7bdf528d3f5b8b2a1ec430cf7a34",
+      "bytes": 927
+    },
+    {
+      "path": "docs/suivi-production/v615/data/current-master.json.gz",
+      "sha256": "b05413e6241b32c6d7bd38d8945eb3e0c084a645a2aee3e152e19d62b7dc4302",
+      "bytes": 402731
+    },
+    {
+      "path": "docs/suivi-production/v615/data/main-reconciliation.json",
+      "sha256": "a805eed1ae9f40486d32b9239109575806d1222ce62f78df2088b96ecc339249",
+      "bytes": 57754
+    },
+    {
+      "path": "docs/suivi-production/v615/data/production-manifest.json",
+      "sha256": "7dea91603f6842f38a892d0a3aac1655facd89e59dcdf39159379941191ff356",
+      "bytes": 438830
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/bionic.png",
+      "sha256": "b03d3d38a4050e7510f56c425ab9ae6dc3685892547c39084d4a1d8d25a5ad9c",
+      "bytes": 195410
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/browser-verification.json",
+      "sha256": "2288d8b3f20555beb392d8cdc2fb3b01700e23b8edb07d39140c65546aaf1041",
+      "bytes": 2135
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/current-lot-light-1.png",
+      "sha256": "5a0c30c43fc8204c1996a2ad5d0858d40d22a218c5cbf78e46a368ec118eefcc",
+      "bytes": 1230734
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/current-lot-light-2.png",
+      "sha256": "691bed9cb4befee62d4e0508dcd0c4689bdc0f600d9ceec1ad84fb3da7ea06a6",
+      "bytes": 1030591
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/current-lot-light-3.png",
+      "sha256": "134f3f81a46accf6d401b2f46c5e85436a951baa0a6584ed5685a35662d09c7f",
+      "bytes": 781980
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/four-armed.png",
+      "sha256": "e247e009efadbb19c453999a48ecb2551f189a8c46bff7001fc2afedac61ca36",
+      "bytes": 137960
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/gallery-desktop.png",
+      "sha256": "4b7bf6794d1b10b92eded1ac76cd34dcf7984db56404362b5e70733b811be5b3",
+      "bytes": 158720
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/gallery-mobile-card.png",
+      "sha256": "66b9bdf49d8e1df4a71135fa51b89ccb2ab7d10ad90008f38806480781a85ae5",
+      "bytes": 174178
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/gallery-mobile-controls.png",
+      "sha256": "b39782ca6e893eac3f0814c3de1c9ed67ea8b52228ffe320e328cca86586e548",
+      "bytes": 20599
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/gallery-mobile.png",
+      "sha256": "bae66609f8d83bcbf3d0d8bce5028af61204bc83e623e349b2ec0de96238ce89",
+      "bytes": 66136
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/human-accepted.png",
+      "sha256": "87cb331d0c76da3b39cf20bd2a98370ea7608505efcd3683a8f960e0d5e32bcc",
+      "bytes": 192498
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/pilot-kok.png",
+      "sha256": "c4836f6a7f4ead72433157b43ec28055fae44c9c83ee8698883a08e73a9f2096",
+      "bytes": 235273
+    },
+    {
+      "path": "docs/suivi-production/v615/gallery-preview/visual-review.json",
+      "sha256": "2eac04267253a01aa055428e696bb797f98b0e0330e102940cdc9306e8bf565c",
+      "bytes": 4751
+    },
+    {
+      "path": "docs/suivi-production/v615/index.html",
+      "sha256": "145b960c3b869133e57ccd722432f36f69be3e50fa7a4775842fa091ef4b467f",
+      "bytes": 619178
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/alpha--sucklings-02.json",
+      "sha256": "e818dc9cb1df74e93dc7ad6a48f39ae4331a13633dffb232866e55cbc473d6ef",
+      "bytes": 12499
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/augmentes-assassin--sucklings-02.json",
+      "sha256": "2ed3421ee4ec417d66d1d32981026daabb345304d4aa1d1f0cabb78a8fcb4dd4",
+      "bytes": 15771
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/bionic--sucklings-02.json",
+      "sha256": "31bbf252442d61cc48033e0c04dabc7de41f210f9da5c1b23e30fe81ba9a4f9c",
+      "bytes": 19172
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/city-hunter--sucklings-02.json",
+      "sha256": "d22002555bf9b8db5923963889de2dabd6b0e40218469aff1e6dc8a6848f1060",
+      "bytes": 18936
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+      "sha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb",
+      "bytes": 15451
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/four-armed--sucklings-02.json",
+      "sha256": "93d87b194b69bc644d9cc9da85c1963d11fd12059543a9dc1e70daeeec05615d",
+      "bytes": 13196
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/grendel-kok--sucklings-02.json",
+      "sha256": "7c84d075db1dd7272a137b200e099aa4f1a4560814082e05b7e400a8d71d0ede",
+      "bytes": 17475
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/hornhead--sucklings-02.json",
+      "sha256": "e06637484c04bed7bdef4450783b2d5bcc6434a2fa3bae317bac43c5e24a74aa",
+      "bytes": 16092
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/human-accepted--sucklings-02.json",
+      "sha256": "35c17c088803ae9b0333f39d82f686d8ef6ac96207cf9be4a293440861828f86",
+      "bytes": 13390
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/kaal-or--sucklings-02.json",
+      "sha256": "1004425d305d8753e39f513ebb94a6360559f328121794427f133b90f8ec33eb",
+      "bytes": 18488
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/oni-kok--sucklings-02.json",
+      "sha256": "38f97fe80879e61c301e5994ae2272c0d18142bf25402481980f7b87f1f1f985",
+      "bytes": 12009
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/pilot-kok--sucklings-02.json",
+      "sha256": "e08588e296274ba7351aba3378992660a35c783374d6f7e7cb1dfe48d6fb36a0",
+      "bytes": 20506
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/saar-keth--sucklings-02.json",
+      "sha256": "6c3217aec07e399c8e3f44e595ca60aeebecbfcf63b7fab0bf1dfdbdbf8011c6",
+      "bytes": 16429
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/sha-rhess--sucklings-02.json",
+      "sha256": "5cefcb7160139cc2bc7bf786582cb9ccfbc8629b00f72cadc3183c32b18ad95d",
+      "bytes": 18659
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/spiked-tail--sucklings-02.json",
+      "sha256": "50bd7cae790e9bb72ead11c5dbed066398cf9077b2ddfca1014b2db04d65c471",
+      "bytes": 17089
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+      "sha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1",
+      "bytes": 15483
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/ul-khar--sucklings-02.json",
+      "sha256": "4803a1b6ea54519a3102d73f27c3e2dd26a0601f76c460837d906db9b7638a44",
+      "bytes": 18745
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/vaal-tir--sucklings-02.json",
+      "sha256": "cd83736b0c1aa38f0eac4accd02c725543ee753f81976d32a076a75bc283c6c5",
+      "bytes": 18833
+    },
+    {
+      "path": "docs/suivi-production/v615/recovery/native-checkpoint.json",
+      "sha256": "64adcc180808cf2fb42db35ea99ca010d03aa329bb15991b299aa32005ff2f37",
+      "bytes": 437707
+    },
+    {
+      "path": "docs/suivi-production/v615/references/production-plan-v615.json",
+      "sha256": "2f45b50d571a95fdb57ec605a9b5f91c360f733be77039b63616c23225028f9b",
+      "bytes": 238827
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/independent-review.json",
+      "sha256": "c6645262ac13f664dfa8d1df02ed71a7ab691dff73a443ec394f520f369468a9",
+      "bytes": 25633
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/local-quality.json",
+      "sha256": "68746c7f7ac4a62686449f3597213b396c5d4bb94aa27173bd33b6cb7856e04d",
+      "bytes": 5333
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/master-changes.json",
+      "sha256": "768d304bd6dc2ee66ddbaa4557c3339adb8702cf2a88cda93bcfdf62b9e91e4d",
+      "bytes": 36153
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/native-provenance.json",
+      "sha256": "2d79bf85b92d5463b8c4b59b00e55028202a29b7a06b2375b81e447282187975",
+      "bytes": 14319
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/public-record-final-check.json",
+      "sha256": "57ae99b37615e871abb163686881fb138993723e5b48d63237861b4c3b67cda5",
+      "bytes": 7265
+    },
+    {
+      "path": "docs/suivi-production/v615/validation/runtime-integration.json",
+      "sha256": "ea45d0eb84ede559a9611d33bfd066677435ed23be108dfc8fd8bbf9b0295bca",
+      "bytes": 4308
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/after-checks.png",
+      "sha256": "8b402fcd819b566154cebc4e24852f95262cb0557d60c096903c6d73520b6e56",
+      "bytes": 89965
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/after-production.png",
+      "sha256": "73d841d1749b4e3b48c7bee2e5b9d7e48aac69c5c3fec02745f1383d386da97a",
+      "bytes": 87816
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/after-summary.png",
+      "sha256": "5870b27839e59e667b6f0a876849cc02538889a4b1ec2cfbe73a6296c532b9ab",
+      "bytes": 280716
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/after-workbooks.png",
+      "sha256": "d5220891ee31091c1d2e54f79bbff8f697eb96def76fd54b5b04d9bda4dacbf3",
+      "bytes": 53692
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/applied-master-changes.json",
+      "sha256": "1168216882144a5b96db15d5406938f008aac4a0f9761b3b34ea211b71c1103a",
+      "bytes": 22296
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/before-production.png",
+      "sha256": "8c17a6d656b2644ad1b4453a29580a8c94e39e0711e62cd7fa4bfb7a1baa8ac2",
+      "bytes": 68699
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/before-summary.png",
+      "sha256": "0b6db3f3d58cd9862cd634447a74fb6ca1a8029428c3bb60221b7535630f5018",
+      "bytes": 278294
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/before-workbooks.png",
+      "sha256": "d5220891ee31091c1d2e54f79bbff8f697eb96def76fd54b5b04d9bda4dacbf3",
+      "bytes": 53692
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/export-inspection.ndjson",
+      "sha256": "16ae0a4bb30f5530798ab9a1447baf59637c830e68fbecf10cab89a610271e9c",
+      "bytes": 979
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/formula-scan.ndjson",
+      "sha256": "acc0111e19cf44d2753fc9ecd164bf1b27fbd65597463a25cf48bd1c65e90146",
+      "bytes": 60
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/openxml-verification.json",
+      "sha256": "1a4f523d7b89224aa1db4231ec58813613aa6d7e3a8a0beb3a050f54f548e901",
+      "bytes": 3352
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/recalculation-check.json",
+      "sha256": "f32d9a5b18e0eb18ed52dc6c645e79659d77ba738ae658e637bb171414f9c218",
+      "bytes": 310
+    },
+    {
+      "path": "docs/suivi-production/v615/workbook-preview/visual-review.json",
+      "sha256": "a7405afa2d2209cc84cecfadefacc2ca602fc1b935679beb11116565f8b6c16a",
+      "bytes": 2545
+    },
+    {
+      "path": "public/game/production/enforcers-v611/alpha/enforcers-comics-04.png",
+      "sha256": "3599b11ec91b7d0df3a7f6fe2f87bb687d0af4b9a802dff8a652d4f60483966f",
+      "bytes": 2065842
+    },
+    {
+      "path": "public/game/production/enforcers-v611/alpha/enforcers-comics-05.png",
+      "sha256": "f79d06897f9d6c7df258b20ee256359413a8a1b47c433740d892f2b4de945218",
+      "bytes": 2379307
+    },
+    {
+      "path": "public/game/production/enforcers-v611/augmentes-assassin/enforcers-comics-04.png",
+      "sha256": "8fdf97380d6d6dd85aaed032b9a29ad8f3e1b9e4db70a741b10e955a504da5e5",
+      "bytes": 2625726
+    },
+    {
+      "path": "public/game/production/enforcers-v611/augmentes-assassin/enforcers-comics-05.png",
+      "sha256": "8b8c1fe598cb61b9fc59446a9d00bc6dbf60b538a9c2432710be15b5cbe6a307",
+      "bytes": 2558353
+    },
+    {
+      "path": "public/game/production/enforcers-v611/bionic/enforcers-comics-04.png",
+      "sha256": "b645f722a242ee70d84bd1f43db8bf048b8a176bf8d132c6410ae9c12cd6972e",
+      "bytes": 2269766
+    },
+    {
+      "path": "public/game/production/enforcers-v611/bionic/enforcers-comics-05.png",
+      "sha256": "fa2243832b2767d21ee9853a3cd044c44ecb678432f0af0ccf49cbcab33f0bfc",
+      "bytes": 2193774
+    },
+    {
+      "path": "public/game/production/enforcers-v611/city-hunter/enforcers-comics-04.png",
+      "sha256": "08ed5dd5b4e21f7b8b2dc05bd0c43ea21d3a8caabe17c1ed0f7660e976706eda",
+      "bytes": 2191775
+    },
+    {
+      "path": "public/game/production/enforcers-v611/city-hunter/enforcers-comics-05.png",
+      "sha256": "ee206df9c57259fad466ecea59929a4c7bda4a33a071d4facbc29cf01a7814d8",
+      "bytes": 2275955
+    },
+    {
+      "path": "public/game/production/enforcers-v611/feral/enforcers-comics-04.png",
+      "sha256": "862fe9d07ac4e754d6892adb8d097b2fbc26283065003291ef9184998531d7e7",
+      "bytes": 2108310
+    },
+    {
+      "path": "public/game/production/enforcers-v611/feral/enforcers-comics-05.png",
+      "sha256": "237f1dc6df1f6ce8236a5bc2b551caa539d63ce10180c14b1ec86c483ad3e3f6",
+      "bytes": 2042147
+    },
+    {
+      "path": "public/game/production/enforcers-v611/four-armed/enforcers-comics-04.png",
+      "sha256": "a1e5d20e1d2b7b4c06a234d9af4439df65abf5b9f0fecae2b82e52104a7c4282",
+      "bytes": 2676547
+    },
+    {
+      "path": "public/game/production/enforcers-v611/four-armed/enforcers-comics-05.png",
+      "sha256": "39f6a8476532d660ad7565674cf4220e1f1926799811c9e7d9b6e6546aaabbae",
+      "bytes": 2491644
+    },
+    {
+      "path": "public/game/production/enforcers-v611/grendel-kok/enforcers-comics-04.png",
+      "sha256": "ddaa2bd38ece68801dce05855579012152ba1f508282484a16e712c72bd4afca",
+      "bytes": 1948496
+    },
+    {
+      "path": "public/game/production/enforcers-v611/grendel-kok/enforcers-comics-05.png",
+      "sha256": "7162c90333dd5109bea325732e024de8fcf8b4c33f8447e4b83707eaa8320529",
+      "bytes": 2233467
+    },
+    {
+      "path": "public/game/production/enforcers-v611/hornhead/enforcers-comics-04.png",
+      "sha256": "f3af9ff92adbce9b02ab39dff415ad2949e3c352cfbd7131620c832573b14c9e",
+      "bytes": 2595053
+    },
+    {
+      "path": "public/game/production/enforcers-v611/hornhead/enforcers-comics-05.png",
+      "sha256": "52275ed70b65d737559326dfafdceca6678ec54eab3e45fc98b6293445f08251",
+      "bytes": 2424838
+    },
+    {
+      "path": "public/game/production/enforcers-v611/human-accepted/enforcers-comics-04.png",
+      "sha256": "6678ddb0a8725de0f9de3b754d8d36a2d1049dd6c3a64c07fead54550a7fa2ff",
+      "bytes": 1896868
+    },
+    {
+      "path": "public/game/production/enforcers-v611/human-accepted/enforcers-comics-05.png",
+      "sha256": "939b84db24cc916daafb73a8b92bf686ab18a010febd3eb4c3b0c7561a317c98",
+      "bytes": 2003630
+    },
+    {
+      "path": "public/game/production/enforcers-v611/kaal-or/enforcers-comics-04.png",
+      "sha256": "002857aee5c061629994b05897c597d4a4560f6d2df1b14ad4e0b0d84376a6c1",
+      "bytes": 2644437
+    },
+    {
+      "path": "public/game/production/enforcers-v611/kaal-or/enforcers-comics-05.png",
+      "sha256": "30236df71a2c9f1c7356bcc198c46016c7c22df376a8a508c85717f05dada636",
+      "bytes": 2728509
+    },
+    {
+      "path": "public/game/production/enforcers-v611/oni-kok/enforcers-comics-04.png",
+      "sha256": "cb0a30e28d3292d99ae51152bec3e208e9c511e29734053fbec3b1dd3ccdd1e5",
+      "bytes": 1910947
+    },
+    {
+      "path": "public/game/production/enforcers-v611/oni-kok/enforcers-comics-05.png",
+      "sha256": "78aaae9b939ed4c0750c3225c0f233af77884d6687d6772476bc7baf5e82ed1b",
+      "bytes": 1856169
+    },
+    {
+      "path": "public/game/production/enforcers-v611/pilot-kok/enforcers-comics-04.png",
+      "sha256": "8148a0b2dc96c657495095dbc11d759b643cbe64cb8ca0e07b9bbc17c07be84a",
+      "bytes": 2323598
+    },
+    {
+      "path": "public/game/production/enforcers-v611/pilot-kok/enforcers-comics-05.png",
+      "sha256": "7f5cfaa5d188ea4858f162dcfc55e249a5cc04af4c01544640391fd66d3c975e",
+      "bytes": 2232633
+    },
+    {
+      "path": "public/game/production/enforcers-v611/saar-keth/enforcers-comics-04.png",
+      "sha256": "87f89799086b42a9f1b7f4975323091b3a8acc711da7fde7f65637f0b606bea6",
+      "bytes": 2254398
+    },
+    {
+      "path": "public/game/production/enforcers-v611/saar-keth/enforcers-comics-05.png",
+      "sha256": "3df6be11366f821b346df5e39a50da4fdd50b1ccf16f55d6c6e313a9000dacb8",
+      "bytes": 2163792
+    },
+    {
+      "path": "public/game/production/enforcers-v611/sha-rhess/enforcers-comics-04.png",
+      "sha256": "e1ccafd22380c09a4f3c6c9aca5b41a59c5f3950b06d3fdc3f982b088777f34f",
+      "bytes": 2467089
+    },
+    {
+      "path": "public/game/production/enforcers-v611/sha-rhess/enforcers-comics-05.png",
+      "sha256": "3a8f4418d197fe34f86b194c9ce43f1a214866d8d4b74e00c828e137d21d94b6",
+      "bytes": 2274087
+    },
+    {
+      "path": "public/game/production/enforcers-v611/spiked-tail/enforcers-comics-04.png",
+      "sha256": "e420759f92bc92ba13ec9b2b29c93fccf5fab2837cdc0984f194cdfcb2d37bc9",
+      "bytes": 2661892
+    },
+    {
+      "path": "public/game/production/enforcers-v611/spiked-tail/enforcers-comics-05.png",
+      "sha256": "a0d1b36777eb04e25ea8478cd2e362b4798c594702850f0e2afa6c4ca6a0b304",
+      "bytes": 2534717
+    },
+    {
+      "path": "public/game/production/enforcers-v611/super-predators/enforcers-comics-04.png",
+      "sha256": "7dc67bd0913a007a7805a00118596deb1a90c260ae11367bfe867146eda504ca",
+      "bytes": 2088822
+    },
+    {
+      "path": "public/game/production/enforcers-v611/super-predators/enforcers-comics-05.png",
+      "sha256": "da62e29203266e54f674768d9d4ec595ec98cd03fbaa82e6ef29b4365275330a",
+      "bytes": 2265825
+    },
+    {
+      "path": "public/game/production/enforcers-v611/ul-khar/enforcers-comics-04.png",
+      "sha256": "8e0caf6ac49cc63219e041fd512fe07c8513a9bad2fbd8bd753d437d9d2a3e27",
+      "bytes": 2697300
+    },
+    {
+      "path": "public/game/production/enforcers-v611/ul-khar/enforcers-comics-05.png",
+      "sha256": "fbdaf21f06e99e8ef4d27c7cfc443b21c0cea8c4b6e91c0d0fa69ce0d4c8f98e",
+      "bytes": 2484327
+    },
+    {
+      "path": "public/game/production/enforcers-v611/vaal-tir/enforcers-comics-04.png",
+      "sha256": "989844eaf8ada95284ec01c5f92078e31b9a994e78cc24e06ed3f088058d0fe7",
+      "bytes": 2208895
+    },
+    {
+      "path": "public/game/production/enforcers-v611/vaal-tir/enforcers-comics-05.png",
+      "sha256": "4daa2204d45db7df7ce3fcc1ede0d80ea1b4ffc0e4f364508a39eee31c3fffb7",
+      "bytes": 2170706
+    },
+    {
+      "path": "public/game/production/enforcers-v612/alpha/enforcers-comics-06.png",
+      "sha256": "3fb8a38ad99eed340f4ed88a5a160c1b586fc21f801370234743b86732455038",
+      "bytes": 2517004
+    },
+    {
+      "path": "public/game/production/enforcers-v612/alpha/enforcers-comics-07.png",
+      "sha256": "3241277a8e10833eb0b229c4f02a327404d7fa2fc55ecaadd2b0bfd9aefe2315",
+      "bytes": 2489941
+    },
+    {
+      "path": "public/game/production/enforcers-v612/augmentes-assassin/enforcers-comics-06.png",
+      "sha256": "1af83482667ee40f37a86a319f5556d0ab38ee615197e8c826b28503f44768a3",
+      "bytes": 2583744
+    },
+    {
+      "path": "public/game/production/enforcers-v612/augmentes-assassin/enforcers-comics-07.png",
+      "sha256": "9f0d95aa2420d4d76ea338a5b3b61faaeffe95654a7afdac4ad05f12a31f559a",
+      "bytes": 2429678
+    },
+    {
+      "path": "public/game/production/enforcers-v612/bionic/enforcers-comics-06.png",
+      "sha256": "489af01f9024d7fcd0589192efa606e035b427a8191c034e39b9e723c64addba",
+      "bytes": 2215542
+    },
+    {
+      "path": "public/game/production/enforcers-v612/bionic/enforcers-comics-07.png",
+      "sha256": "53472f9243ab65c286276fe6373f814f09e7cc6bfb1d9ec02a83364a8ba069b2",
+      "bytes": 2318250
+    },
+    {
+      "path": "public/game/production/enforcers-v612/city-hunter/enforcers-comics-06.png",
+      "sha256": "0402dead77a84c5a5e08baff5ba2cee078dde540c3719cae1140da1a5e4894b9",
+      "bytes": 2284778
+    },
+    {
+      "path": "public/game/production/enforcers-v612/city-hunter/enforcers-comics-07.png",
+      "sha256": "361fd9ee463b42457c34b032a421a632694112d7d072ef7e78b441b832f7f009",
+      "bytes": 2217581
+    },
+    {
+      "path": "public/game/production/enforcers-v612/feral/enforcers-comics-06.png",
+      "sha256": "f26140da82543d296a312ba1dee1cabab9c6b6da7f256b9074d7bb74f6aa44d1",
+      "bytes": 2144559
+    },
+    {
+      "path": "public/game/production/enforcers-v612/feral/enforcers-comics-07.png",
+      "sha256": "6cb893ab251d81a57addd95eb1ad80b43003005418199384518411fc464f157b",
+      "bytes": 2269848
+    },
+    {
+      "path": "public/game/production/enforcers-v612/four-armed/enforcers-comics-06.png",
+      "sha256": "0c26700d613b9a9a04854bfe8bda6cc118d43a57e0e1cb9a6d0a40a90e98d4a2",
+      "bytes": 2592769
+    },
+    {
+      "path": "public/game/production/enforcers-v612/four-armed/enforcers-comics-07.png",
+      "sha256": "2aa01f3efc4e8d9b5fcc01a1ed5847d4a01b7316658ce5cf825cc3b31e008d2a",
+      "bytes": 2494584
+    },
+    {
+      "path": "public/game/production/enforcers-v612/grendel-kok/enforcers-comics-06.png",
+      "sha256": "67ce293dabc54c0157053d3c97994fc3380a73d389ff08095354d69c4f07c7e9",
+      "bytes": 2816378
+    },
+    {
+      "path": "public/game/production/enforcers-v612/grendel-kok/enforcers-comics-07.png",
+      "sha256": "6bd16f25d7050b12d4f674b66f0429f7fd80e0763dce76c949dc095b74411119",
+      "bytes": 2705567
+    },
+    {
+      "path": "public/game/production/enforcers-v612/hornhead/enforcers-comics-06.png",
+      "sha256": "2298477a2f79587c9788a26390b574fcdbf6ad82c1455616681828314445a51a",
+      "bytes": 2608693
+    },
+    {
+      "path": "public/game/production/enforcers-v612/hornhead/enforcers-comics-07.png",
+      "sha256": "629b681e3530038125cd27d1d75ef806d8a9dba70dce21d06d6f78b37798cc74",
+      "bytes": 2581265
+    },
+    {
+      "path": "public/game/production/enforcers-v612/human-accepted/enforcers-comics-06.png",
+      "sha256": "8abfa2cdb60598981f2e611d1ee04d42d71f1cfe8de62c37bbefbdcff75eb2e5",
+      "bytes": 2094585
+    },
+    {
+      "path": "public/game/production/enforcers-v612/human-accepted/enforcers-comics-07.png",
+      "sha256": "f7d8a48333fa3d580deaf8af2bb38e42d9fa6e1e69199f104ed0b0ae1cafa2fd",
+      "bytes": 2137052
+    },
+    {
+      "path": "public/game/production/enforcers-v612/kaal-or/enforcers-comics-06.png",
+      "sha256": "43125f64ddb29dfccba07389e89ba6ad6241f3e25e7a7063bc55ad11b8966aac",
+      "bytes": 2752309
+    },
+    {
+      "path": "public/game/production/enforcers-v612/kaal-or/enforcers-comics-07.png",
+      "sha256": "98f7c173c5103e52bfebad47dc6a085437c68f4dc599825f674abec57c6c5c0b",
+      "bytes": 2659072
+    },
+    {
+      "path": "public/game/production/enforcers-v612/oni-kok/enforcers-comics-06.png",
+      "sha256": "431a6e83c08ac3df52773158a74636af67849cf5c114c6d2fbdbb621eb78ec7e",
+      "bytes": 2237128
+    },
+    {
+      "path": "public/game/production/enforcers-v612/oni-kok/enforcers-comics-07.png",
+      "sha256": "035f8966364a300925ee5b6901218af53b1f549a096a9aaa6b2bbe785ffa6e7c",
+      "bytes": 2289390
+    },
+    {
+      "path": "public/game/production/enforcers-v612/pilot-kok/enforcers-comics-06.png",
+      "sha256": "02bcc3d283540d2840154d0d1ebd2e9e82c45dc5f52b4060b51f37a8166772ee",
+      "bytes": 2405893
+    },
+    {
+      "path": "public/game/production/enforcers-v612/pilot-kok/enforcers-comics-07.png",
+      "sha256": "bfebee822fc22285941607bc577d783ed5691ea9c6e4c1b6d79257aac6e1a53a",
+      "bytes": 2271343
+    },
+    {
+      "path": "public/game/production/enforcers-v612/saar-keth/enforcers-comics-06.png",
+      "sha256": "df82b4c9a39cdc0e39191f56866fb46e7d8c54b60a7403f8d9fdca7213d48fae",
+      "bytes": 2353227
+    },
+    {
+      "path": "public/game/production/enforcers-v612/saar-keth/enforcers-comics-07.png",
+      "sha256": "83367687200eebc427e78ccc18d6513dfd79e2c80f225c2c307b83ddbe405233",
+      "bytes": 2266054
+    },
+    {
+      "path": "public/game/production/enforcers-v612/sha-rhess/enforcers-comics-06.png",
+      "sha256": "d6461082c476eed78757e697a7ee794547cbd39b8fef73a04ca8f5329ecbe526",
+      "bytes": 2264861
+    },
+    {
+      "path": "public/game/production/enforcers-v612/sha-rhess/enforcers-comics-07.png",
+      "sha256": "5f03c9b9c4705ff3db020fc12c56d7ab35725e6e6df51026fbf2c85444cab38e",
+      "bytes": 2421687
+    },
+    {
+      "path": "public/game/production/enforcers-v612/spiked-tail/enforcers-comics-06.png",
+      "sha256": "a05365dee6964af6edb9289ce8373b9ab474fee472b96cb40836479c2a9f9031",
+      "bytes": 2678515
+    },
+    {
+      "path": "public/game/production/enforcers-v612/spiked-tail/enforcers-comics-07.png",
+      "sha256": "cdcc31198e4fd4bab5e3bcb9051f278f4858318ee79c42a39d06131e4ee942b9",
+      "bytes": 2540650
+    },
+    {
+      "path": "public/game/production/enforcers-v612/super-predators/enforcers-comics-06.png",
+      "sha256": "e89225ccce7dc038c87403491b89b3f70221994438ceddceaff2342254beb63a",
+      "bytes": 2356142
+    },
+    {
+      "path": "public/game/production/enforcers-v612/super-predators/enforcers-comics-07.png",
+      "sha256": "e9484bf7abdc68fa911a10080735cd3d96b2ccee7c46c2e6c1efc290818ef099",
+      "bytes": 2228362
+    },
+    {
+      "path": "public/game/production/enforcers-v612/ul-khar/enforcers-comics-06.png",
+      "sha256": "f1bbce16cd61c986e9a700c6e753c9b182e035a67de2e38c0f3a366e14c19b63",
+      "bytes": 2796919
+    },
+    {
+      "path": "public/game/production/enforcers-v612/ul-khar/enforcers-comics-07.png",
+      "sha256": "f0da61e27a3d26c94ac447919bb738648c25c644593a5ee4763084037b87a981",
+      "bytes": 2788350
+    },
+    {
+      "path": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-06.png",
+      "sha256": "5ccc1c80680f339e6a1f61cf5b001fba625e31fd03414180d1396045cc51bbfb",
+      "bytes": 2140790
+    },
+    {
+      "path": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-07.png",
+      "sha256": "ed03d8c7770cd15f17e30e877e4acfd21019d0bba19adb20f8cd6adf9845b203",
+      "bytes": 2127796
+    },
+    {
+      "path": "public/game/production/enforcers-v613/alpha/enforcers-comics-08.png",
+      "sha256": "f5322142951b86a8cb5fdfe1701b769925d40c97d692086bd684db2d2ba78f52",
+      "bytes": 2170593
+    },
+    {
+      "path": "public/game/production/enforcers-v613/alpha/enforcers-comics-09.png",
+      "sha256": "40a8f3b415b9de34ed07ac6a2bfd512b144c852829a942dbcbb27252f2889e43",
+      "bytes": 2541047
+    },
+    {
+      "path": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-08.png",
+      "sha256": "43e6a6b00bd64c6efdd7046c291a0f9d6156bb33bf172ed9b92379381ec686fc",
+      "bytes": 2368896
+    },
+    {
+      "path": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-09.png",
+      "sha256": "e849500eed6fd461b53df9ac6ba3edf2c1c510a1a562fc514400fadf9023cfd8",
+      "bytes": 2627627
+    },
+    {
+      "path": "public/game/production/enforcers-v613/bionic/enforcers-comics-08.png",
+      "sha256": "86adc6526cbd4ee51592d4d7abcb6b1e3c21dfb2a9d223fe7612150167bf3805",
+      "bytes": 2231396
+    },
+    {
+      "path": "public/game/production/enforcers-v613/bionic/enforcers-comics-09.png",
+      "sha256": "42c8874595ea5bac2126d436b085a968b2da3b95a1d8f4a2efc6d8fa7ef2c77a",
+      "bytes": 2079087
+    },
+    {
+      "path": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-08.png",
+      "sha256": "8b5a32ec77bd114f7556f469a7cc99a0147523a217d90c26a0be7d923fbf0e8f",
+      "bytes": 1707470
+    },
+    {
+      "path": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-09.png",
+      "sha256": "ceb9d116c24e6ff466dae9a99f998c8c7357d8b18a5110bdbb58e91d82e38a9d",
+      "bytes": 2119856
+    },
+    {
+      "path": "public/game/production/enforcers-v613/feral/enforcers-comics-08.png",
+      "sha256": "761a236047960a5ea0360a21f062265145cdac1c542c721548d07a39eaebb3e6",
+      "bytes": 2147055
+    },
+    {
+      "path": "public/game/production/enforcers-v613/feral/enforcers-comics-09.png",
+      "sha256": "ffb3bd05e15c454a721cbab6b33ed02b46f3e71ec9e6d362de399f7dffacbb8c",
+      "bytes": 2266058
+    },
+    {
+      "path": "public/game/production/enforcers-v613/four-armed/enforcers-comics-08.png",
+      "sha256": "f5b57aba4470ba90b8f8c5f12dfd3076095971593469ff1113ab25f139259dc7",
+      "bytes": 2451924
+    },
+    {
+      "path": "public/game/production/enforcers-v613/four-armed/enforcers-comics-09.png",
+      "sha256": "9f682b253215dab9cc6ff0da7f31fe5a1c3be45c3d4c190044511b4b75493bce",
+      "bytes": 2511670
+    },
+    {
+      "path": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-08.png",
+      "sha256": "98b24734e16d0ebe6edb58f344cae7192f3bb2a0ae10d742ca46a0377301e842",
+      "bytes": 2337752
+    },
+    {
+      "path": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-09.png",
+      "sha256": "ea88c2062df52b06db63cfc62f86dadfe0154d2124fb523f443b3f7d5d77b935",
+      "bytes": 2501171
+    },
+    {
+      "path": "public/game/production/enforcers-v613/hornhead/enforcers-comics-08.png",
+      "sha256": "989d9f09d3ab45af6729e15080913fc812fd85c0acf4753a0cbf43ea02ada432",
+      "bytes": 2366839
+    },
+    {
+      "path": "public/game/production/enforcers-v613/hornhead/enforcers-comics-09.png",
+      "sha256": "07e78a15e23233f5d4a42b3f78b3a6bea8077037dd3288312ea6cee1ab145dd2",
+      "bytes": 2570084
+    },
+    {
+      "path": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-08.png",
+      "sha256": "032f5e30b5a955b06b3e57fe1e05c1ef236d1c01c632eea7d7a8aa11d258214f",
+      "bytes": 2111662
+    },
+    {
+      "path": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-09.png",
+      "sha256": "c1cc00cedb372dd738537225fcb13e15ee5938325a47e02adea8b9ee08b7eb6c",
+      "bytes": 2032335
+    },
+    {
+      "path": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-08.png",
+      "sha256": "6ebbe944199aa85d8a582b935bcd93d741d5b2f89c3bb24b75aa4957e566b56c",
+      "bytes": 2520464
+    },
+    {
+      "path": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-09.png",
+      "sha256": "84b4497f1ce61948d5a521eee8345b35dee484f5389c4ed414c48445104964eb",
+      "bytes": 2397058
+    },
+    {
+      "path": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-08.png",
+      "sha256": "2762445ffdf51f87ec334df48f30d025cfa5b41a9b2d7db6f41ca42227b5c312",
+      "bytes": 2129522
+    },
+    {
+      "path": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-09.png",
+      "sha256": "fe46f1356617ec287773b6d8a815dd2e19d09c7b325c8b98107da9e07da05dd1",
+      "bytes": 2075780
+    },
+    {
+      "path": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-08.png",
+      "sha256": "64a9e46cb3282809a038348fc51f42fbd39c5c97c24975a4bc7c53ae46e53340",
+      "bytes": 1782639
+    },
+    {
+      "path": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-09.png",
+      "sha256": "9e6f04b2688886189f236d0d233e12638d914193d0745eface2877155e63d9cc",
+      "bytes": 2339187
+    },
+    {
+      "path": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-08.png",
+      "sha256": "fa178ec7bacd4438be0e336a7f9c8499bb3babd53979880ba4b3256637c6304f",
+      "bytes": 2209167
+    },
+    {
+      "path": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-09.png",
+      "sha256": "2fc449e952db8eacf7a34b707ad5020dbcc75667ddc77e3ccfcb1c639e923206",
+      "bytes": 2377001
+    },
+    {
+      "path": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-08.png",
+      "sha256": "0619c3fe88bfb4fffcaf09fb9509fcbd9a5db1172409b3efd692dcd95d52374e",
+      "bytes": 1726947
+    },
+    {
+      "path": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-09.png",
+      "sha256": "c2e0ce9ff66ad111c48666c848daeca8320531670e8cfe3e72b86b462e9136f4",
+      "bytes": 2100297
+    },
+    {
+      "path": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-08.png",
+      "sha256": "69abba043ed1746ef92e64a4db0579d72719ca4cad2d62543405e1322fe61b3e",
+      "bytes": 2443004
+    },
+    {
+      "path": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-09.png",
+      "sha256": "d0759796b5d2afa158ea20a274e2eb2c61f6fd00a88ffe3e56d851452dd10a88",
+      "bytes": 2610473
+    },
+    {
+      "path": "public/game/production/enforcers-v613/super-predators/enforcers-comics-08.png",
+      "sha256": "a0c8ae1f4bea5e7bb4b56369e95c4be5e2a27f33dff8b1fea995ad3c028fa73e",
+      "bytes": 2229121
+    },
+    {
+      "path": "public/game/production/enforcers-v613/super-predators/enforcers-comics-09.png",
+      "sha256": "8d3595066db427753acf4affd5a87e024a743a38690c9895c46947b90292977c",
+      "bytes": 2307900
+    },
+    {
+      "path": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-08.png",
+      "sha256": "9b5f0c1d273d2a02ed43be4b0b5c96b572f6e56f9aaa0b54b00b17be287ddfca",
+      "bytes": 2455245
+    },
+    {
+      "path": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-09.png",
+      "sha256": "1e4baa4533d80540416149bc8d35af74ab92c03da58df185af83174bd77a545d",
+      "bytes": 2606760
+    },
+    {
+      "path": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-08.png",
+      "sha256": "e2720dbabbf9d298926ce4c04165ef156f2bf45f17e5dc7d9efa2128c7d8d724",
+      "bytes": 1997681
+    },
+    {
+      "path": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-09.png",
+      "sha256": "e705eed7f47db19587979662189e0b40c9b2a0cfd54ffbe260dd94423233526b",
+      "bytes": 1986948
+    },
+    {
+      "path": "public/game/production/enforcers-v614/alpha/enforcers-comics-10.png",
+      "sha256": "0d5b13729fd51384d82996482e1d9d6864fda7054790d55857fc18afdb021338",
+      "bytes": 2641158
+    },
+    {
+      "path": "public/game/production/enforcers-v614/augmentes-assassin/enforcers-comics-10.png",
+      "sha256": "d2d5d931f620ce8ebc6caae4b60b4b470bbc6d7caaa17819707c949b755ee0b0",
+      "bytes": 2642412
+    },
+    {
+      "path": "public/game/production/enforcers-v614/bionic/enforcers-comics-10.png",
+      "sha256": "42aa084be55359bb9004e185c5bf265cebf3d30e002b5614040478374f4c23a1",
+      "bytes": 2381604
+    },
+    {
+      "path": "public/game/production/enforcers-v614/city-hunter/enforcers-comics-10.png",
+      "sha256": "7a20ef4dd3eba9a18d593e38838f0e463342463c28e0ea9f6ac3267692d8f7de",
+      "bytes": 2295942
+    },
+    {
+      "path": "public/game/production/enforcers-v614/feral/enforcers-comics-10.png",
+      "sha256": "963d12d600d361cc91c58b26341e5a3475bd7d6eacd127214136dfc6ac7a9a51",
+      "bytes": 2300062
+    },
+    {
+      "path": "public/game/production/enforcers-v614/four-armed/enforcers-comics-10.png",
+      "sha256": "926013b4e17ef7192bc90fe33ae5300ee5057061372b63c11ab106beec0f8e93",
+      "bytes": 2643448
+    },
+    {
+      "path": "public/game/production/enforcers-v614/grendel-kok/enforcers-comics-10.png",
+      "sha256": "a435e8a0a5f35f8056c13d7c9d3d1fce3b7478c5ebb9d800d60484f564eda4d1",
+      "bytes": 2715180
+    },
+    {
+      "path": "public/game/production/enforcers-v614/hornhead/enforcers-comics-10.png",
+      "sha256": "2d823ba6a7441fb1a18a0db6a5133f74a4c4844e0b6244e077c2f5e041219d6b",
+      "bytes": 2583178
+    },
+    {
+      "path": "public/game/production/enforcers-v614/human-accepted/enforcers-comics-10.png",
+      "sha256": "eec79ea7d34bdf6ce15e993739d28d2ecbc204489746bc54c5ef068a229c8026",
+      "bytes": 2207675
+    },
+    {
+      "path": "public/game/production/enforcers-v614/kaal-or/enforcers-comics-10.png",
+      "sha256": "8a0fcb05e18737ce93e044503bb3ce6b174338c1ffbb3657e9ccb9edb5ff382e",
+      "bytes": 2674201
+    },
+    {
+      "path": "public/game/production/enforcers-v614/oni-kok/enforcers-comics-10.png",
+      "sha256": "7b79fd3d2823f6d9adfb0e9e9c6b3802dfcf719e815d5186c50181565679a9a7",
+      "bytes": 2322966
+    },
+    {
+      "path": "public/game/production/enforcers-v614/pilot-kok/enforcers-comics-10.png",
+      "sha256": "95bbabb980d30b4f67aaee2da17e077a15013c3ad2383e69420a58e248b64a3b",
+      "bytes": 2462529
+    },
+    {
+      "path": "public/game/production/enforcers-v614/saar-keth/enforcers-comics-10.png",
+      "sha256": "f87731360352cc221e08b8a5a4cfd30892d849c71e1f93db46b6fa2dd50a7bb8",
+      "bytes": 2402781
+    },
+    {
+      "path": "public/game/production/enforcers-v614/sha-rhess/enforcers-comics-10.png",
+      "sha256": "33482a17f2c03cdf794e33cc8a3accdcc41f85098fce0fdd20d27d6d199290d9",
+      "bytes": 2512711
+    },
+    {
+      "path": "public/game/production/enforcers-v614/spiked-tail/enforcers-comics-10.png",
+      "sha256": "5c1a1b85b126758c287dcf7621db4f19ca252fdc8d5f5beef8825d752552ceef",
+      "bytes": 2711634
+    },
+    {
+      "path": "public/game/production/enforcers-v614/super-predators/enforcers-comics-10.png",
+      "sha256": "e4864991813c696073af6ff99827a09674f44fd7e33b45d43c983fdac351bbde",
+      "bytes": 2426915
+    },
+    {
+      "path": "public/game/production/enforcers-v614/ul-khar/enforcers-comics-10.png",
+      "sha256": "59489e2908804e1f766209bc3973dd0baac56016b9ad23b6e02ebcd5bf857893",
+      "bytes": 2758416
+    },
+    {
+      "path": "public/game/production/enforcers-v614/vaal-tir/enforcers-comics-10.png",
+      "sha256": "9f712c1abd4ffeb4bbbd784edb0e9d2ff31095319625365a018ec47f2206ec01",
+      "bytes": 2200233
+    },
+    {
+      "path": "public/game/production/sucklings-v615/alpha/sucklings-02.png",
+      "sha256": "ed0c033b711b7082f09f6706ccd7489bba5e9d3d194250dd6f97e9884dd110c8",
+      "bytes": 1571127
+    },
+    {
+      "path": "public/game/production/sucklings-v615/augmentes-assassin/sucklings-02.png",
+      "sha256": "722ef2fc2f6221db3209fd2c2efe78329d9328f383bbf7c4d7f2924a22e20f20",
+      "bytes": 2841140
+    },
+    {
+      "path": "public/game/production/sucklings-v615/bionic/sucklings-02.png",
+      "sha256": "e434a2befbad3ea3dd45b960bba197b5024c9e66cf079fce7a913b30b73485a9",
+      "bytes": 2259428
+    },
+    {
+      "path": "public/game/production/sucklings-v615/city-hunter/sucklings-02.png",
+      "sha256": "817ba64cadb8e9416458214bd71a5fb0d7c747f2d6060f0d9b7da111b14f74ca",
+      "bytes": 2231875
+    },
+    {
+      "path": "public/game/production/sucklings-v615/feral/sucklings-02.png",
+      "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+      "bytes": 2635249
+    },
+    {
+      "path": "public/game/production/sucklings-v615/four-armed/sucklings-02.png",
+      "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+      "bytes": 1622499
+    },
+    {
+      "path": "public/game/production/sucklings-v615/grendel-kok/sucklings-02.png",
+      "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+      "bytes": 2154315
+    },
+    {
+      "path": "public/game/production/sucklings-v615/hornhead/sucklings-02.png",
+      "sha256": "cc31013695a22c31bbfd1bfa7032d04cf029bba66e64ff8428269e5b18ad1198",
+      "bytes": 2427570
+    },
+    {
+      "path": "public/game/production/sucklings-v615/human-accepted/sucklings-02.png",
+      "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+      "bytes": 2234289
+    },
+    {
+      "path": "public/game/production/sucklings-v615/kaal-or/sucklings-02.png",
+      "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+      "bytes": 2412433
+    },
+    {
+      "path": "public/game/production/sucklings-v615/oni-kok/sucklings-02.png",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "bytes": 2063719
+    },
+    {
+      "path": "public/game/production/sucklings-v615/pilot-kok/sucklings-02.png",
+      "sha256": "260019f33943e2c799a9dd393cde124d97cb6bbb78c91dc6945159eb480e5c3f",
+      "bytes": 2556983
+    },
+    {
+      "path": "public/game/production/sucklings-v615/saar-keth/sucklings-02.png",
+      "sha256": "88787cdf5daeb77c019c991ba063be23c3abb2f587e5c768e187c8e68d74196a",
+      "bytes": 2676828
+    },
+    {
+      "path": "public/game/production/sucklings-v615/sha-rhess/sucklings-02.png",
+      "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+      "bytes": 2054398
+    },
+    {
+      "path": "public/game/production/sucklings-v615/spiked-tail/sucklings-02.png",
+      "sha256": "d1be198957c5a93bfd5233bbadd148a5e943b6768be7a8dfcbab114897f41c60",
+      "bytes": 2768799
+    },
+    {
+      "path": "public/game/production/sucklings-v615/super-predators/sucklings-02.png",
+      "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+      "bytes": 2800726
+    },
+    {
+      "path": "public/game/production/sucklings-v615/ul-khar/sucklings-02.png",
+      "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+      "bytes": 2719776
+    },
+    {
+      "path": "public/game/production/sucklings-v615/vaal-tir/sucklings-02.png",
+      "sha256": "d51b18017512fd9df4e7568f5ffba96a67bac68929492f4e9d0f4d28fc4d495e",
+      "bytes": 2569110
+    }
+  ],
+  "historicalTests": [
+    "tests/production-proofs-v106.test.mjs",
+    "tests/enforcer-production-v613.test.mjs",
+    "tests/enforcer-production-v614.test.mjs",
+    "tests/npc-production-v615.test.mjs"
+  ],
+  "originalWorkbooksPreserved": [
+    {
+      "repoPath": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "bytes": 62111,
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "gitBlobSha": "7d0ba92afcffe3f3cc1b54c26c5a47178214c196",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+      "bytes": 35380,
+      "sha256": "d1ef8866b4cd94e5e90130efe8ed62a6c099dc0093215bd17348ff25c946ef04",
+      "gitBlobSha": "43e91a4a4a21aec381d9b28288be4fbe1f8c6434",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+      "bytes": 14262,
+      "sha256": "5dd113dfb7cb40f3517ba4f1081bd1ece977a9fba3e9cedc01de87835effd2e6",
+      "gitBlobSha": "72ffaac37e93cabcbb2e927a13723c2df0255091",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/THE_PIT_V62_SUIVI.xlsx",
+      "bytes": 29389,
+      "sha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb",
+      "gitBlobSha": "eb69e2b18925e1f1d568662368b731036b75fb71",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/THE_PIT_V63_SUIVI.xlsx",
+      "bytes": 56229,
+      "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+      "gitBlobSha": "ec69b3e85be87aa5068296666336fd13b204ef07",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/YAUTJA_V100_SUIVI.xlsx",
+      "bytes": 1862541,
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+      "gitBlobSha": "7a424d518a446aef18e76284b2976143a84bdea6",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/YAUTJA_V104_SUIVI.xlsx",
+      "bytes": 2411658,
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
+      "gitBlobSha": "99290d91b35aca5955e47975ff8614d6c5cd6beb",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/YAUTJA_V105_SUIVI.xlsx",
+      "bytes": 2973530,
+      "sha256": "b0a317b339736d44bcf5b7dc11708749091740e2d9636e67beaa7751118f10bc",
+      "gitBlobSha": "9a153f8e8bf9c040b7ee60b3250ad2ef7332a4d0",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/YAUTJA_V106_SUIVI.xlsx",
+      "bytes": 3529434,
+      "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e",
+      "gitBlobSha": "759467562ba2fe2255517f72aff70a0058f54cdb",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/YAUTJA_V99_SUIVI.xlsx",
+      "bytes": 1130515,
+      "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+      "gitBlobSha": "43c30b9a73a11566f48e77c36c543e746fc872b1",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+      "bytes": 1107914,
+      "sha256": "f4f604a407cff43be6b2e96896dc18fd8d8a0e5f901fc634e8d777f65818c71f",
+      "gitBlobSha": "17b81d3e9ad87ea20052bce2f4697d2c629ee262",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "bytes": 2101543,
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "gitBlobSha": "c0ce09f644f44fad77de9ee6af33fb9101cc49a2",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx",
+      "bytes": 1642587,
+      "sha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+      "gitBlobSha": "c63714acd4d0dd969f500c7c664a4f5da6592752",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+      "bytes": 1624759,
+      "sha256": "76fe0e138a2ee2c901b491c48edea9e8d3777f1babeb9c480b932c82ffca0d6e",
+      "gitBlobSha": "f6d6d1eb80edb5db3e239986dd75c13a8a853c32",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+      "bytes": 1672140,
+      "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+      "gitBlobSha": "d5ce95e0abf70bbd5d89bc23c7c95ec5c84a6f65",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+      "bytes": 1698239,
+      "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+      "gitBlobSha": "680e89a00da372f0fb145268e867196445180b3c",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "presentInMain": true,
+      "sourceStateFR": "Déjà dans main V106",
+      "preservedByteIdentical": true
+    },
+    {
+      "repoPath": "docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+      "bytes": 1715728,
+      "sha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+      "gitBlobSha": "c2a27e1eca2ca14dd11affe76e6470705503cc54",
+      "sourceCommit": "4a1b437eb60fa9d511722bf4930fd49ff7fb8f86",
+      "presentInMain": false,
+      "sourceStateFR": "Classeur V6.14 dans la PR nº 15 non fusionnée",
+      "preservedByteIdentical": true
+    }
+  ]
+}

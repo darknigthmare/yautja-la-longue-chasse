@@ -8,10 +8,11 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "../app/game/systems/controlBindings.ts";
 import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
+import {archiveComparisonRouteV107} from './helpers/archive-comparison-v107-route.mjs';
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts'; export * from './app/game/systems/homeworldArchiveDefinitionV106.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts'; export * from './app/game/systems/homeworldArchiveDefinitionV106.ts'; export * from './app/game/systems/homeworldArchiveComparisonLedgerV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonDefinitionV107.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -19,7 +20,7 @@ function liveLiftOrPollingCallback(environment, name = 'poll') {
   const visit = node => {
     if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
-    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105','archiveContextV106','sampleArchiveV106','interruptArchiveV106'].includes(name)
+    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105','archiveContextV106','sampleArchiveV106','interruptArchiveV106','comparisonContextV107','sampleComparisonV107','interruptComparisonV107'].includes(name)
       && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
@@ -68,6 +69,9 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
+    comparisonWritePausedRefV107:{current:false},
+    comparisonDraftRefV107:{current:city.defaultHomeworldArchiveComparisonV107(owner)},
+    submitComparisonV107(){throw new Error('No active V107 comparison in these declared input cases');},
     archiveWritePausedRefV106: {current:false},
     archiveDraftRefV106: {current:city.defaultHomeworldArchiveV106(owner)},
     submitArchiveV106(){throw new Error('No active V106 archive receipt in these declared world input cases');},
@@ -112,7 +116,7 @@ function fixture() {
     navigator: { getGamepads: () => [pad] },
     requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame,
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
-    persistVisit() {}, setActor() {}, setPhase() {}, setArchiveViewV106() {},
+    persistVisit() {}, setActor() {}, setPhase() {}, setArchiveViewV106() {}, setComparisonViewV107() {},
     setDreadAngles(value) { env.dreadAngles = value; },
     setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; },
     setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; events.push(["paused", paused]); },
@@ -121,7 +125,7 @@ function fixture() {
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
   env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
-  for (const name of ['archiveContextV106','sampleArchiveV106','interruptArchiveV106','cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
+  for (const name of ['comparisonContextV107','sampleComparisonV107','interruptComparisonV107','archiveContextV106','sampleArchiveV106','interruptArchiveV106','cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
   liveLiftOrPollingCallback(env, 'liftHydration')();
   const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };
@@ -475,4 +479,17 @@ test('the live V106 archive callback rolls an invalid proposed step back before 
  assert.equal(f.env.sampleArchiveV106(before,proposal,1/60),false);assert(interrupted);assert.equal(f.env.actorRef.current.x,before.x);assert.equal(f.env.actorRef.current.vx,0);assert.equal(f.env.actorRef.current.vy,0);
  const qa=homeworldSceneSsrV78(),saves=qa.load('app/game/save.ts'),location=qa.load('app/game/systems/homeworldLocationV77.ts'),save=saves.normalizeSave({});save.createdAt=owner;save.homeworld.visitedDistrictIds=['port'];save.homeworld.archiveV106=f.env.archiveDraftRefV106.current;save.homeworld.locationV77=location.createHomeworldCheckpointV77(owner,'0',f.env.actorRef.current,null,f.env.actorRef.current);
  assert(saves.parseSaveImport(JSON.stringify(save)).save,'interruption and Retry can persist the restored actor/dossier pair');
+});
+
+test('the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock',()=>{
+ const f=fixture(),ledger=f.env.comparisonDraftRefV107.current;f.release();f.pad.axes[0]=1;f.tick(3);assert.equal(f.env.comparisonDraftRefV107.current,ledger);assert.equal(ledger.receipt,null);
+ const before={...f.env.actorRef.current},clock=f.env.cityClockV68.current;f.env.comparisonWritePausedRefV107.current=true;f.tick(12);assert.deepEqual(f.env.actorRef.current,before);assert.equal(f.env.cityClockV68.current,clock);f.env.comparisonWritePausedRefV107.current=false;f.tick(3);assert(f.env.actorRef.current.x>before.x);assert(f.env.cityClockV68.current>clock);
+});
+
+test('the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair',()=>{
+ const f=fixture(),route=archiveComparisonRouteV107(f.env.save.createdAt),state=route.carried(),before={...state.actor},proposal={...state.actor,x:state.actor.x+300};
+ f.env.progressRef.current.visitedDistrictIds=['port'];f.env.archiveDraftRefV106.current=state.legacyArchive;f.env.comparisonDraftRefV107.current=state.ledger;f.env.actorRef.current=proposal;let interrupted=false;
+ f.env.submitComparisonV107=(action,revision)=>{assert.equal(action,'interrupt');assert.equal(f.env.actorRef.current.x,before.x,'rollback precedes the durable comparison transaction');const out=city.applyArchiveComparisonV107(f.env.comparisonDraftRefV107.current,action,revision,route.context(f.env.actorRef.current));assert(out.ok);f.env.comparisonDraftRefV107.current=out.ledger;interrupted=true;return true;};
+ assert.equal(f.env.sampleComparisonV107(before,proposal,1/60),false);assert(interrupted);assert.equal(f.env.actorRef.current.x,before.x);assert.equal(f.env.actorRef.current.vx,0);assert.equal(f.env.actorRef.current.vy,0);
+ const saves=route.qa.load('app/game/save.ts'),location=route.qa.load('app/game/systems/homeworldLocationV77.ts'),save=saves.normalizeSave({});save.createdAt=route.owner;save.homeworld.visitedDistrictIds=['port'];save.homeworld.archiveV106=state.legacyArchive;save.homeworld.archiveComparisonV107=f.env.comparisonDraftRefV107.current;save.homeworld.locationV77=location.createHomeworldCheckpointV77(route.owner,'0',f.env.actorRef.current,null,f.env.actorRef.current);assert(saves.parseSaveImport(JSON.stringify(save)).save,'rollback restores the complete actor/object pair before Retry can persist it');
 });

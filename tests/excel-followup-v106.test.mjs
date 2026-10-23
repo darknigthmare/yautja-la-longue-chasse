@@ -5,15 +5,16 @@ import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {ROOT,REGISTRY,OUTPUTS,verifyRegistryV106,verifyArchiveSourceV106,verifyAssaultSourceV106,collectFollowupV106,generateFollowupV106,buildSheetsV106,writeWorkbookV106,verifyWorkbookV106} from '../scripts/build-excel-followup-v106.mjs';
-import {collectRuntimeInputsV106} from '../scripts/collect-v106-runtime-inputs.mjs';
+import {loadHistoricalExcelV107,loadHistoricalRuntimeInputsV107,verifyHistoricalExcelContextV107} from '../scripts/historical-excel-context-v107.mjs';
+const {ROOT,REGISTRY,OUTPUTS,verifyRegistryV106,verifyArchiveSourceV106,verifyAssaultSourceV106,collectFollowupV106,generateFollowupV106,buildSheetsV106,writeWorkbookV106,verifyWorkbookV106}=await loadHistoricalExcelV107('V106');
+const {collectRuntimeInputsV106}=await loadHistoricalRuntimeInputsV107();
 
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const json=async file=>JSON.parse(await fs.readFile(path.join(ROOT,file),'utf8'));
 const directory=await fs.mkdtemp(path.join(os.tmpdir(),'yautja-v106-tests-'));
 let result;
 const generated=()=>result??=generateFollowupV106({outputDir:directory});
-after(async()=>{await fs.rm(directory,{recursive:true,force:true});});
+after(async()=>{try{await fs.rm(directory,{recursive:true,force:true});}finally{await verifyHistoricalExcelContextV107();}});
 const python=(script,args)=>execFileSync('python3',['-c',script,...args],{maxBuffer:40*1024*1024});
 
 test('V106 cannot promote without all production recipes, a freeze and pinned portable proofs',async()=>{

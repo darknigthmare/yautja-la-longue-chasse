@@ -1,0 +1,1625 @@
+{
+  "schemaVersion": 1,
+  "release": "V107",
+  "status": "AUDIT_ONLY_NO_DELIVERY_PROMOTION",
+  "baseCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "method": "Toutes les77 lignes openItems de V106 sont classées sans modification ; sources originales disponibles séparées des extractions, couverture et preuve d’exécution séparées. Aucun test runtime ou navigateur V107 exécuté par cet audit.",
+  "trackedOpenItems": 77,
+  "families": [
+    {
+      "id": "pit-roster-kits",
+      "label": "The Pit : quatre identités/visuels à établir, deux références partielles et les kits",
+      "expected": 7,
+      "target": "4 dossiers avec visuel/incarnation encore à établir ; 2 références V79 déjà présentes mais une seule pose native droite ; 1 agrégat kits recouvrant actions/campagnes/variantes.",
+      "next": "Ne pas recréer Last Hunt ou Classic 2000 : compléter leurs vues et animations natives et leur kit. Consolider les quatre autres identités et les deux kits Feral/Scar.",
+      "proofs": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ],
+      "itemIds": [
+        "add-bloodshed",
+        "add-last-hunt-super",
+        "add-jaguar",
+        "add-avp-classic",
+        "add-blood-ties-father",
+        "add-blood-ties-son",
+        "PIT-KITS-COMPLETS"
+      ],
+      "count": 7,
+      "existingStaticReferencedIdentities": 2,
+      "unresolvedIdentityAndArtFiles": 4,
+      "aggregateFullKitRecord": 1
+    },
+    {
+      "id": "war-structures",
+      "label": "Guerre de clans : six ouvrages physiques",
+      "expected": 6,
+      "target": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
+      "next": "Choisir pour chaque ouvrage les acteurs/objets/énergie réellement présents et écrire le contrat physique ; conserver le front Risk séparé du RTS et du récit2D.",
+      "proofs": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ],
+      "itemIds": [
+        "W3-S09",
+        "W3-S10",
+        "W3-S13",
+        "W3-S14",
+        "W3-S15",
+        "W3-S18"
+      ],
+      "count": 6
+    },
+    {
+      "id": "enforcer-pngs",
+      "label": "Enforcers : dixième variante de18 groupes",
+      "expected": 18,
+      "target": "18 PNG de variante10 réellement absents de la ligne suivie ; une fiche n’est pas une soumission image.",
+      "next": "Générer ou récupérer les vrais PNG à partir des fiches source du master V6.13, avec identité de groupe conservée.",
+      "proofs": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ],
+      "itemIds": [
+        "super-predators--enforcers-comics-10",
+        "feral--enforcers-comics-10",
+        "augmentes-assassin--enforcers-comics-10",
+        "spiked-tail--enforcers-comics-10",
+        "hornhead--enforcers-comics-10",
+        "saar-keth--enforcers-comics-10",
+        "ul-khar--enforcers-comics-10",
+        "sha-rhess--enforcers-comics-10",
+        "kaal-or--enforcers-comics-10",
+        "vaal-tir--enforcers-comics-10",
+        "city-hunter--enforcers-comics-10",
+        "pilot-kok--enforcers-comics-10",
+        "oni-kok--enforcers-comics-10",
+        "grendel-kok--enforcers-comics-10",
+        "alpha--enforcers-comics-10",
+        "bionic--enforcers-comics-10",
+        "four-armed--enforcers-comics-10",
+        "human-accepted--enforcers-comics-10"
+      ],
+      "count": 18
+    },
+    {
+      "id": "preserve-expansion",
+      "label": "Preserve : secteurs et combattants",
+      "expected": 2,
+      "target": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
+      "next": "Ajouter des lots de secteurs traversables raccordés et de personnes réellement simulées, avec objectifs et ressources persistants.",
+      "proofs": [
+        "Contrat de terrain, raccords, collisions, couvertures, objectifs et retour à l’extraction réellement jouables.",
+        "Chaque combattant possède identité, rôle, comportement, combat et visuels ; un compteur ou clone renommé ne suffit pas.",
+        "Sauvegarde/reprise, mort/blessures, pause et refus d’écriture ; parcours clavier et mobile sur build production.",
+        "Recensement des secteurs et personnes effectivement actifs ; séparer le terrain initial des nouveaux profils opt-in."
+      ],
+      "itemIds": [
+        "PRESERVE-SECTEURS",
+        "PRESERVE-COMBATTANTS"
+      ],
+      "count": 2
+    },
+    {
+      "id": "enforcer-provenance",
+      "label": "Provenance Enforcers : reçus et traces",
+      "expected": 2,
+      "target": "21 reçus finaux V6.13 non retrouvés ;36 traces V6.10 sans PNG récupéré.",
+      "next": "Rechercher les artefacts originaux et comparer leurs SHA aux manifests ; conserver la distinction planification/soumission/résultat.",
+      "proofs": [
+        "Reçu natif réellement récupéré, identifiant de génération et paramètres effectivement soumis.",
+        "Correspondance vérifiée entre reçu, fichier image et SHA ; attribution nominative sans déduire une soumission du seul prompt planifié.",
+        "Une trace historique sans PNG ne crée aucun nouvel asset ni livraison runtime."
+      ],
+      "itemIds": [
+        "ENFORCERS-V613-RECEIPTS",
+        "ENFORCERS-V610-TRACES"
+      ],
+      "count": 2
+    },
+    {
+      "id": "pit-actions",
+      "label": "Feral/Scar : douze actions sans liaison",
+      "expected": 12,
+      "target": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
+      "next": "Réutiliser les admissions BODY uniquement quand leur acteur/partenaire correspond au runtime ; réaliser les deux entités et les contrats de saisie/conclusion.",
+      "proofs": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ],
+      "itemIds": [
+        "M_F006_TH_F",
+        "M_F006_TH_B",
+        "M_F006_S4",
+        "CIN_F006_FATALITE_1",
+        "CIN_F006_FATALITE_2",
+        "CIN_F006_CLEMENCE",
+        "M_F003_TH_F",
+        "M_F003_TH_B",
+        "M_F003_S2",
+        "CIN_F003_FATALITE_1",
+        "CIN_F003_FATALITE_2",
+        "CIN_F003_CLEMENCE"
+      ],
+      "count": 12
+    },
+    {
+      "id": "pit-campaigns",
+      "label": "Feral/Scar : seize étapes de campagne",
+      "expected": 16,
+      "target": "Deux routes de8 étapes, avec alliés/opposants, blessures, choix et fin alternative distincts.",
+      "next": "Construire une progression persistante de8 étapes par route, en reliant les vrais acteurs/stages et les conditions source.",
+      "proofs": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ],
+      "itemIds": [
+        "CAM-feral-hunter.01",
+        "CAM-feral-hunter.02",
+        "CAM-feral-hunter.03",
+        "CAM-feral-hunter.04",
+        "CAM-feral-hunter.05",
+        "CAM-feral-hunter.06",
+        "CAM-feral-hunter.07",
+        "CAM-feral-hunter.08",
+        "CAM-scar.01",
+        "CAM-scar.02",
+        "CAM-scar.03",
+        "CAM-scar.04",
+        "CAM-scar.05",
+        "CAM-scar.06",
+        "CAM-scar.07",
+        "CAM-scar.08"
+      ],
+      "count": 16
+    },
+    {
+      "id": "pit-variants",
+      "label": "Feral/Scar : quatorze contraintes de variantes",
+      "expected": 14,
+      "target": "7 contraintes par personnage : incarnation, masque/visage, équipement, dommages, directions et camouflage.",
+      "next": "Raccorder les états physiques d’équipement et les apparences effectivement dessinées ; contrôler les restrictions d’incarnation.",
+      "proofs": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ],
+      "itemIds": [
+        "VAR-feral-hunter.pilot-outfit",
+        "VAR-feral-hunter.masked",
+        "VAR-feral-hunter.unmasked",
+        "VAR-feral-hunter.lost-or-stowed-equipment",
+        "VAR-feral-hunter.damage-and-armor",
+        "VAR-feral-hunter.native-directions",
+        "VAR-feral-hunter.cloak",
+        "VAR-scar.pilot-outfit",
+        "VAR-scar.masked",
+        "VAR-scar.unmasked",
+        "VAR-scar.lost-or-stowed-equipment",
+        "VAR-scar.damage-and-armor",
+        "VAR-scar.native-directions",
+        "VAR-scar.cloak"
+      ],
+      "count": 14
+    }
+  ],
+  "items": [
+    {
+      "id": "add-bloodshed",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A200:V200",
+      "status": "OUVERT",
+      "remaining": "Identité du tournoi attestée par Marvel ; apparence native et kit jouable manquants. Les dessins anonymes fournis ne permettent pas une attribution certaine.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ]
+    },
+    {
+      "id": "add-last-hunt-super",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A201:V201",
+      "status": "OUVERT",
+      "remaining": "Dossier distinct de Mr. Black. Référence de tenue et arsenal à verrouiller ; aucun ajout par simple renommage.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ],
+      "assessmentV107": {
+        "status": "PARTIAL_REFERENCE_PRESENT_KIT_OPEN",
+        "fighterId": "user-last-hunt-super",
+        "variantId": "last-hunt-super-referenced-stance-v79",
+        "nativePages": [
+          {
+            "path": "public/game/sprites/v79/fighters/last-hunt-super/stance-right.png",
+            "sha256": "a3a6bae74c1c6609bb4f29ba7a3a46ed5ed0b64b633e6ba4812fe003bc46b603",
+            "bytes": 2526979,
+            "width": 1024,
+            "height": 1536,
+            "nativeFacing": "right",
+            "frames": 1
+          }
+        ],
+        "nativeFacings": [
+          "right"
+        ],
+        "leftDisplay": "PROVISIONAL_MIRROR_NOT_NATIVE",
+        "animated": false,
+        "canonicalFidelityCertified": false,
+        "sourceMetadata": "app/game/data/pitUserHuntersV79.json",
+        "sourceDocument": "docs/v79-reference-hunters-art.md",
+        "sourceUrls": [
+          "https://www.marvel.com/comics/collection/110461/",
+          "https://aiptcomics.com/2024/04/19/marvel-preview-predator-the-last-hunt-3/"
+        ],
+        "sourceNotes": [
+          "Only the large foreground spiked hunter is the identity reference; the two inset hunters are excluded.",
+          "Helmet, pauldrons, mottled skin and crescent wrist blades reviewed against the issue preview. Unseen surfaces and guard stance are conservative reconstructions, not certified 1:1.",
+          "One native right-facing stance only. Left-facing display is a provisional mirror, not separately authored canon art. No drawn movement, attack, victory or defeat animation is delivered."
+        ],
+        "derivedIcon": {
+          "path": "public/game/sprites/v79/fighters/last-hunt-super/roster-icon.webp",
+          "sha256": "94f0502d89298eaf2523d754973022669b00689e4fa0c944a6d819b69e11a099",
+          "width": 128,
+          "height": 192,
+          "derivedFrom": "/game/sprites/v79/fighters/last-hunt-super/stance-right.png"
+        },
+        "remaining": "Référence/incarnation déjà présente : compléter les dessins gauches indépendants, cycles natifs, équipement et kit spécifique. Le profil de duel partagé et le miroir provisoire ne terminent pas le personnage."
+      }
+    },
+    {
+      "id": "add-jaguar",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A202:V202",
+      "status": "OUVERT",
+      "remaining": "Incarnation AVP Jaguar absente ; ne pas substituer Dark, Prince ou Jungle Hunter.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ]
+    },
+    {
+      "id": "add-avp-classic",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A203:V203",
+      "status": "OUVERT",
+      "remaining": "Incarnation AVP Classic 2000 absente ; user-classic-2010 appartient au film Predators.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ],
+      "assessmentV107": {
+        "status": "PARTIAL_REFERENCE_PRESENT_KIT_OPEN",
+        "fighterId": "user-avp-classic-2000",
+        "variantId": "avp-classic-2000-referenced-stance-v79",
+        "nativePages": [
+          {
+            "path": "public/game/sprites/v79/fighters/avp-classic-2000/stance-right.png",
+            "sha256": "04a93516a65155301eeb0ea8484cde6a7da349b582598965920806c8cee5a227",
+            "bytes": 1256180,
+            "width": 1145,
+            "height": 1374,
+            "nativeFacing": "right",
+            "frames": 1
+          }
+        ],
+        "nativeFacings": [
+          "right"
+        ],
+        "leftDisplay": "PROVISIONAL_MIRROR_NOT_NATIVE",
+        "animated": false,
+        "canonicalFidelityCertified": false,
+        "sourceMetadata": "app/game/data/pitUserHuntersV79.json",
+        "sourceDocument": "docs/v79-reference-hunters-art.md",
+        "sourceUrls": [
+          "https://store.steampowered.com/app/3730/",
+          "https://store.steampowered.com/manual/3730"
+        ],
+        "sourceNotes": [
+          "The model from the official Classic 2000 screenshots is distinct from the 2010 AVP hunters. No personal name is invented.",
+          "Bronze/olive broad mask, dark blue locks with gold rings, green angular armor and rectangular gauntlets reviewed against the actual game model. Small hidden surfaces are reconstructed.",
+          "No combi-stick is assigned: the Classic 2000 manual lists wrist blades, plasma pistol, speargun, shoulder cannon and disc.",
+          "One native right-facing stance only; no complete animation sheet or certified 1:1 fidelity. The shared duel profile does not create exclusive canonical techniques."
+        ],
+        "derivedIcon": {
+          "path": "public/game/sprites/v79/fighters/avp-classic-2000/roster-icon.webp",
+          "sha256": "0a2d1fbe42b94f5ad57948fcbfd63131dd7375dd3de595261b71a33bdd4c2573",
+          "width": 128,
+          "height": 192,
+          "derivedFrom": "/game/sprites/v79/fighters/avp-classic-2000/stance-right.png"
+        },
+        "remaining": "Référence/incarnation déjà présente : compléter les dessins gauches indépendants, cycles natifs, équipement et kit spécifique. Le profil de duel partagé et le miroir provisoire ne terminent pas le personnage."
+      }
+    },
+    {
+      "id": "add-blood-ties-father",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A204:V204",
+      "status": "OUVERT",
+      "remaining": "Père de Blood Ties : attribution visuelle à établir avant création ou réaffectation.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ]
+    },
+    {
+      "id": "add-blood-ties-son",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A205:V205",
+      "status": "OUVERT",
+      "remaining": "Fils de Blood Ties : identité distincte à établir, sans fusion avec les cycles I et II.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ]
+    },
+    {
+      "id": "W3-S09",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14",
+      "status": "OUVERT",
+      "remaining": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "W3-S10",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15",
+      "status": "OUVERT",
+      "remaining": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "W3-S13",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18",
+      "status": "OUVERT",
+      "remaining": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "W3-S14",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19",
+      "status": "OUVERT",
+      "remaining": "Raccorder un duel accepté par ses participants et son résultat réel ; pas de victoire automatique.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "W3-S15",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20",
+      "status": "OUVERT",
+      "remaining": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "W3-S18",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
+      "status": "OUVERT",
+      "remaining": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage.",
+      "familyId": "war-structures",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V6 C:K exactes ; modèle séparant portée source et adaptation de la simulation libre.",
+        "Existence et déplacement réels de la cargaison, monture, navire ou participants ; stocks, capacités et énergie vérifiés.",
+        "Refus sans prérequis, annulation et reprise persistantes ; aucun transfert ou résultat obtenu par simple compteur.",
+        "Recette production sur la vraie géométrie et l’état, avec sources et captures épinglées. Pour les sons : vrais fichiers audio et portée/occultation, pas un texte de voix."
+      ]
+    },
+    {
+      "id": "super-predators--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 16",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "feral--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 216",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "augmentes-assassin--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 416",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "spiked-tail--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 616",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "hornhead--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 816",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "saar-keth--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 1016",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "ul-khar--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 1216",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "sha-rhess--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 1416",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "kaal-or--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 1616",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 1816",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "city-hunter--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 2016",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "pilot-kok--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 2216",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "oni-kok--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 2416",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "grendel-kok--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 2616",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "alpha--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 2816",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "bionic--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 3016",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "four-armed--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 3216",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "human-accepted--enforcers-comics-10",
+      "domain": "Enforcers",
+      "source": "Master V6.13 ligne 3416",
+      "status": "MANQUANT_PNG",
+      "remaining": "Produire le PNG à partir de la fiche, puis sauvegarder et intégrer",
+      "familyId": "enforcer-pngs",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Ligne et fiche du master V6.13 exactes ; prompt soumis et reçu de génération reliés au fichier réel.",
+        "PNG natif, transparence et silhouette vérifiées, SHA/dimensions et emplacement public concordants.",
+        "Galerie/codex réellement consommateurs ; portait ou placement seulement s’ils sont explicitement livrés et contrôlés.",
+        "Une seule image ne clôt aucune animation, classe jouable ou fidélité canonique1:1."
+      ]
+    },
+    {
+      "id": "PRESERVE-SECTEURS",
+      "domain": "Preserve Hunt",
+      "source": "PRESERVE-EXPANSION-80",
+      "status": "LIVRE_PARTIEL",
+      "remaining": "4/80 secteurs ; 76 encore à produire.",
+      "familyId": "preserve-expansion",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Contrat de terrain, raccords, collisions, couvertures, objectifs et retour à l’extraction réellement jouables.",
+        "Chaque combattant possède identité, rôle, comportement, combat et visuels ; un compteur ou clone renommé ne suffit pas.",
+        "Sauvegarde/reprise, mort/blessures, pause et refus d’écriture ; parcours clavier et mobile sur build production.",
+        "Recensement des secteurs et personnes effectivement actifs ; séparer le terrain initial des nouveaux profils opt-in."
+      ]
+    },
+    {
+      "id": "PRESERVE-COMBATTANTS",
+      "domain": "Preserve Hunt",
+      "source": "PRESERVE-EXPANSION-80",
+      "status": "LIVRE_PARTIEL",
+      "remaining": "8/100 combattants ; 92 encore à produire.",
+      "familyId": "preserve-expansion",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Contrat de terrain, raccords, collisions, couvertures, objectifs et retour à l’extraction réellement jouables.",
+        "Chaque combattant possède identité, rôle, comportement, combat et visuels ; un compteur ou clone renommé ne suffit pas.",
+        "Sauvegarde/reprise, mort/blessures, pause et refus d’écriture ; parcours clavier et mobile sur build production.",
+        "Recensement des secteurs et personnes effectivement actifs ; séparer le terrain initial des nouveaux profils opt-in."
+      ]
+    },
+    {
+      "id": "PIT-KITS-COMPLETS",
+      "domain": "The Pit",
+      "source": "05_MOVES_PROPOSES et 07_PRESENTATIONS, lignes Feral/Scar",
+      "status": "OUVERT",
+      "remaining": "Personnages complets, spéciaux, projections, entités, finishers et costumes non clos.",
+      "familyId": "pit-roster-kits",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Référence nominative et incarnation vérifiées ; archives et SHA des dessins effectivement produits.",
+        "Admissions natives droite/gauche, alpha, pivots, équipement et anatomie ; aucune substitution par renommage.",
+        "Raccords réels aux entrées, états, collisions, sauvegarde et coût ; parcours production par personnage et apparence autorisée.",
+        "Aucune déclaration de kit complet avant inventaire, toutes les actions, partenaires, campagnes et contraintes effectivement satisfaits."
+      ]
+    },
+    {
+      "id": "ENFORCERS-V613-RECEIPTS",
+      "domain": "Provenance Enforcers",
+      "source": "V6.13 production-manifest.json / summary",
+      "status": "OUVERT",
+      "remaining": "21 prompts/reçus finaux non récupérés ; 15 retrouvés. Les prompts planifiés ne sont pas des soumissions attestées.",
+      "familyId": "enforcer-provenance",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Reçu natif réellement récupéré, identifiant de génération et paramètres effectivement soumis.",
+        "Correspondance vérifiée entre reçu, fichier image et SHA ; attribution nominative sans déduire une soumission du seul prompt planifié.",
+        "Une trace historique sans PNG ne crée aucun nouvel asset ni livraison runtime."
+      ]
+    },
+    {
+      "id": "ENFORCERS-V610-TRACES",
+      "domain": "Provenance Enforcers",
+      "source": "Attestation de réconciliation d71e995ae886df69c4165a1a153291449e8f22f6",
+      "status": "OUVERT",
+      "remaining": "36 traces historiques V6.10 sans PNG récupéré ; zéro fichier produit ajouté à ce titre.",
+      "familyId": "enforcer-provenance",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Reçu natif réellement récupéré, identifiant de génération et paramètres effectivement soumis.",
+        "Correspondance vérifiée entre reçu, fichier image et SHA ; attribution nominative sans déduire une soumission du seul prompt planifié.",
+        "Une trace historique sans PNG ne crée aucun nouvel asset ni livraison runtime."
+      ]
+    },
+    {
+      "id": "M_F006_TH_F",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!M10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F006_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "M_F006_TH_B",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!N10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F006_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "M_F006_S4",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!S10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F006_S4 · Mine d'interdiction\nCommande 22+S · Selon trajectoire / prototype · Spécial\nArme : Mine de chasse\nPose visible, clignotement d'armement puis activation de proximité ; armer n'inflige pas déjà des dégâts.\nPréparation / actif / récupération : 34 / 90 / 30 images · dégâts 105 · coût 35 %\nContre-jeu : Frapper la mine, sauter son rayon ou provoquer l'activation à distance.\nDispositif seulement si documenté pour le costume ; sinon option de gameplay explicitement dérivée. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S4\nEntité : E_F006_mine · équipement : W_F006_mine\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F006_FATALITE_1",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!H10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_FATALITE_1 · À portée de lame\nLa lance plaque la cible contre un relief ; le bouclier ferme le cadre avant le coup final. Un projectile de carreau n'est ajouté que si son masque est encore fonctionnel.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F006_FATALITE_2",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!I10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_FATALITE_2 · Autre issue — À portée de lame\nLa première coupe dévie l'arme. Le chasseur entre au contact et termine avec la seconde lame. Il vérifie la fin de la menace puis rentre l'arme. Adapter les prises à Feral.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F006_CLEMENCE",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!J10",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_CLEMENCE · Le duel suffit\nFeral désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_CLEMENCE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "M_F003_TH_F",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!M7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F003_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "M_F003_TH_B",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!N7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F003_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "M_F003_S2",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!Q7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F003_S2 · Étoile déployée\nCommande 214+S · Selon trajectoire / prototype · Spécial\nArme : Shuriken\nOuverture mécanique des branches dans la main ; lancer et rotation lisible. Ne pas substituer le disque circulaire.\nPréparation / actif / récupération : 23 / 4 / 29 images · dégâts 90 · coût 25 %\nContre-jeu : Esquiver la ligne ; projectile dissipé après contact selon les règles du duel.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S2\nEntité : E_F003_shuriken · équipement : W_F003_shuriken\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F003_FATALITE_1",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!H7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F003_FATALITE_1 · La pointe et le silence\nIl fixe un xénomorphe avec la lance puis tranche au shuriken ; la géométrie et les éclaboussures acides utilisent le module de victime xéno.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_1 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F003_FATALITE_2",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!I7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F003_FATALITE_2 · Autre issue — La pointe et le silence\nUn revers du manche ouvre la garde. La pointe arrête l'adversaire sur un seul appui, coup final en silhouette. L'arme est retirée puis rétractée. Adapter les prises à Scar.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_2 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CIN_F003_CLEMENCE",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!J7",
+      "status": "OUVERT",
+      "remaining": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F003_CLEMENCE · Le duel suffit\nScar désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_CLEMENCE · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+      "familyId": "pit-actions",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules V54 et cibles exactes ; dessins natifs droite/gauche admis, sans miroir ni victime peinte doublant une victime autonome.",
+        "Vraies entités, saisies ou séquences synchronisées ; hit-confirm, garde, esquive/rupture, interruptions, coût et issue vérifiés.",
+        "Snapshots, replays et entraînement conservent les versions historiques ; aucune activation sur les variantes non admises.",
+        "Recette production par sens et par issue ; images source et adaptations mécaniques qualifiées."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.01",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!D10",
+      "status": "OUVERT",
+      "remaining": "1 — Cinématique · L'indice\nStage : arena-114-prey-2022-bear-river\nAdversaire : Aucun\nUne série de traces révèle une proie qui observe les habitudes du chasseur.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F006_STORY_01\n\nBesoins visuels restant à livrer :\nTraces de la proie et observation du chasseur, dans le lieu référencé ; objets séparés du BODY.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.02",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!E10",
+      "status": "OUVERT",
+      "remaining": "2 — Combat 1 · L'approche\nStage : arena-114-prey-2022-bear-river\nAdversaire : npc-bear\nRencontre de transition proposée pour Feral. Une première opposition teste la distance de carreaux guidés. Adversaire de cette version : Ours de la rencontre de Prey.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F006_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.03",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!F10",
+      "status": "OUVERT",
+      "remaining": "3 — Combat 2 · Le contretemps\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : npc-trapper\nLe chemin vers « Traquer une proie qui apprend à retourner la visée contre le chasseur » se resserre. Un adversaire change la distance d'engagement et force l'usage de lance scindée. Adversaire de cette version : Trappeur armé — rôle de rencontre.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F006_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.04",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!G10",
+      "status": "OUVERT",
+      "remaining": "4 — Cinématique · La trace du rival\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Naru. Feral vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F006_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Naru. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.05",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!H10",
+      "status": "OUVERT",
+      "remaining": "5 — Cinématique rival · Face-à-face\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nLe bouclier se déploie dans un cliquetis d'os et de métal. Le masque fixe un point puis la lance se sépare. Contrechamp sur Naru : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F006_STORY_05\n\nBesoins visuels restant à livrer :\nBouclier déployé, acquisition du point par le masque et séparation de la lance.\nContrechamp de garde spécifique de Naru, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.06",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!I10",
+      "status": "OUVERT",
+      "remaining": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-bear\nVariante narrative de Bourbier : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F006_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.07",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!J10",
+      "status": "OUVERT",
+      "remaining": "7 — Combat rival · Le choix à portée\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nAffronter Naru. Le duel utilise les ressources réellement conservées ; Feral doit accomplir : traquer une proie qui apprend à retourner la visée contre le chasseur.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F006_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-feral-hunter.08",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!K10",
+      "status": "OUVERT",
+      "remaining": "8 — Cinématique outro · La preuve du retour\nStage : arena-115-prey-2022-mud-pit\nAdversaire : Aucun\nLe chasseur vainqueur récupère le masque hors de la boue ; un dernier plan montre la ligne de tir qui a failli le condamner. Issue alternative annoncée.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F006_STORY_08\n\nBesoins visuels restant à livrer :\nRécupération du masque hors de la boue, puis plan distinct sur la ligne de tir.\nIssue alternative annoncée ; récompense cosmétique distincte d’une nouvelle technique canonique.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.pilot-outfit",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!C10",
+      "status": "OUVERT",
+      "remaining": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.masked",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!D10",
+      "status": "OUVERT",
+      "remaining": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.unmasked",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!E10",
+      "status": "OUVERT",
+      "remaining": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.lost-or-stowed-equipment",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!F10",
+      "status": "OUVERT",
+      "remaining": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.damage-and-armor",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!G10",
+      "status": "OUVERT",
+      "remaining": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.native-directions",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!H10",
+      "status": "OUVERT",
+      "remaining": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-feral-hunter.cloak",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!I10",
+      "status": "OUVERT",
+      "remaining": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "CAM-scar.01",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!D7",
+      "status": "OUVERT",
+      "remaining": "1 — Cinématique · L'indice\nStage : arena-123-avp-2004-whaling-station\nAdversaire : Aucun\nL'initiation est interrompue ; récupérer l'équipement devient aussi urgent que survivre au temple.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F003_STORY_01\n\nBesoins visuels restant à livrer :\nIndice ou passage du temple et équipement à récupérer ; l'initiation est interrompue, sans marque anticipée.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.02",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!E7",
+      "status": "OUVERT",
+      "remaining": "2 — Combat 1 · L'approche\nStage : arena-123-avp-2004-whaling-station\nAdversaire : npc-xeno-drone\nRencontre de transition proposée pour Scar. Une première opposition teste la distance de allonge télescopique. Adversaire de cette version : Drone xénomorphe — incarnation à fixer.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F003_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.03",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!F7",
+      "status": "OUVERT",
+      "remaining": "3 — Combat 2 · Le contretemps\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : npc-grid\nLe chemin vers « Passer l'épreuve de la pyramide puis contenir la reine avec Lex » se resserre. Un adversaire change la distance d'engagement et force l'usage de tir de plasma. Adversaire de cette version : Grid.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F003_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.04",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!G7",
+      "status": "OUVERT",
+      "remaining": "4 — Cinématique · La trace du rival\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Grid. Scar vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F003_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Grid. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.05",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!H7",
+      "status": "OUVERT",
+      "remaining": "5 — Cinématique rival · Face-à-face\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nIl inspecte une gravure de la pyramide puis pose le pied hors de l'ombre. La marque n'est visible que dans la version déjà initiée. Contrechamp sur Grid : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F003_STORY_05\n\nBesoins visuels restant à livrer :\nInspection de la gravure puis sortie de l’ombre ; marque seulement pour la version déjà initiée.\nContrechamp de garde spécifique de Grid, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.06",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!I7",
+      "status": "OUVERT",
+      "remaining": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-xeno-drone\nVariante narrative de Avp 2004 queen chamber : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F003_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.07",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!J7",
+      "status": "OUVERT",
+      "remaining": "7 — Combat rival · Le choix à portée\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nAffronter Grid. Le duel utilise les ressources réellement conservées ; Scar doit accomplir : passer l'épreuve de la pyramide puis contenir la reine avec lex.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F003_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "CAM-scar.08",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!K7",
+      "status": "OUVERT",
+      "remaining": "8 — Cinématique outro · La preuve du retour\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : Aucun\nBranche alternative : Scar et Lex rouvrent une sortie ensemble. Un épilogue distinct rappelle l'issue connue de l'œuvre sans la modifier.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F003_STORY_08\n\nBesoins visuels restant à livrer :\nScar et Lex rouvrant une sortie ensemble : acteurs indépendants et équipement cohérent.\nÉpilogue distinct rappelant l’issue connue ; la fin jouée est annoncée comme branche alternative.",
+      "familyId": "pit-campaigns",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules D:K exactes de08_CAMPAGNES ; acteurs, équipement, connaissance et stages réellement disponibles.",
+        "Entrées, transitions, refus, échecs/reprises et sortie jouables ; aucun objet/allié recréé pour jouer une scène.",
+        "Séparer les propositions narratives et fins alternatives des faits canoniques connus.",
+        "Parcours production complet de chaque branche livrée, sauvegarde au milieu et aux frontières des étapes."
+      ]
+    },
+    {
+      "id": "VAR-scar.pilot-outfit",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!C7",
+      "status": "OUVERT",
+      "remaining": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.masked",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!D7",
+      "status": "OUVERT",
+      "remaining": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.unmasked",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!E7",
+      "status": "OUVERT",
+      "remaining": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.lost-or-stowed-equipment",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!F7",
+      "status": "OUVERT",
+      "remaining": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.damage-and-armor",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!G7",
+      "status": "OUVERT",
+      "remaining": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.native-directions",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!H7",
+      "status": "OUVERT",
+      "remaining": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    },
+    {
+      "id": "VAR-scar.cloak",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!I7",
+      "status": "OUVERT",
+      "remaining": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "familyId": "pit-variants",
+      "auditStatus": "OUVERT_NON_PROMU",
+      "evidenceRequired": [
+        "Cellules C:I exactes de14_VARIANTES ; source d’incarnation et armes autorisées par chapitre.",
+        "Vraies vues natives des deux sens et états masque/arme/armure ; aucune tête inventée ou transformation pixel attestée comme1:1.",
+        "Perte, rangement, ramassage/rééquipement, casse et camouflage persistent sans duplication et désactivent les coups impossibles.",
+        "Recette par état et sens autorisés ; disponibilité des silhouettes séparée de la validation de mécanique."
+      ]
+    }
+  ],
+  "supplementalHomeworld": {
+    "status": "OUTSIDE_THE_77_TRACKED_ROWS_NOT_COMPLETE",
+    "sourceWorkbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sourceWorkbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "sourceWorkbookAvailable": true,
+    "sourceDesignCounts": {
+      "allDomainsScenes": 730,
+      "allDomainsLines": 6059,
+      "allDomainsOptions": 1494,
+      "worldPrefixedSceneIds": 177
+    },
+    "countLimit": "Les730 scènes sont transversales et les177 IDs D6-W ne sont pas un taux de livraison Homeworld. Les trois tables comportent aussi des lignes de titre/en-tête non comptées ici.",
+    "artTarget": {
+      "entries": 354,
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "historicalV81Assessment": {
+        "EXISTING_NEEDS_VARIANT": 313,
+        "MISSING": 40,
+        "MISSING_ANIMATION": 1
+      },
+      "limit": "Évaluation V81 historique, pas un recomptage du runtime V107. Chaque cible exige une réconciliation avec les sources plus récentes et un examen réel."
+    },
+    "familiesStillToReconcile": [
+      "Scènes et options V6 avec préconditions physiques, consentement, confidentialité et connaissance bornée.",
+      "Gestes de travail, manutention, conversation, faune et routines avec vraies animations multiframe.",
+      "Variantes architecturales, mobilier orienté et diversité des354 cibles artistiques.",
+      "Quartiers/régions, accès privés, montures, voyages et services avec objets/conditions réellement présents.",
+      "Navigation, occlusion, charge, collision, persistance et contrôles publics cohérents, y compris les pas derrière façades."
+    ],
+    "evidenceRequired": [
+      "Comparer le sous-ensemble extrait aux cellules du véritable XLSX au SHA imposé ; lecture ZIP/XML sans exécuter de formules.",
+      "Contrat source/adaptation par opération ; interactions, positions, acteurs et objets effectivement disponibles.",
+      "Préconditions/refus, interruption, consentement, mémoire des choix, sauvegarde/reprise et refus d’écriture contrôlés.",
+      "Source art native et métriques ; les avatars modulaires et PNG statiques ne terminent pas les gestes manquants.",
+      "Recette production sur build commun, avec sourceBefore/After, HTML200/BUILD_ID et pièces SHA/bytes."
+    ]
+  },
+  "sourceRecovery": [
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "status": "ORIGINAL_AVAILABLE_EXACT_EXPECTED_HASH",
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "effect": "Les nouvelles preuves V107 peuvent citer le classeur original. Les anciennes déclarations historiques d’absence ne sont pas réécrites."
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "status": "LOCAL_MANIFEST_AVAILABLE_NOT_MISSING_RECEIPTS_RECOVERED",
+      "declaredNativePngFiles": 36,
+      "declaredReceiptsRecovered": 15,
+      "declaredReceiptsNotRecovered": 21,
+      "declaredV610PngRecovered": 0,
+      "effect": "Le fichier existe réellement, mais ses mentions de reçus manquants ne deviennent pas des reçus récupérés."
+    },
+    {
+      "status": "ORIGINAL_NOT_FOUND_IN_LOCAL_WORKSPACE_SCAN",
+      "effect": "Les extractions épinglées demeurent les sources locales de travail ; ne pas inventer un original.",
+      "sourceNames": [
+        "Yautja_V3_Guerres_de_Clans_Trois_Modes.xlsx",
+        "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/v106-workstreams.json",
+      "sha256": "5b53f62f7e5b643c1cbd679f0c7177f35ca8e91f5d27e828963329d53463bfe2",
+      "bytes": 345489
+    },
+    {
+      "path": "docs/YAUTJA_V106_SUIVI.xlsx",
+      "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e",
+      "bytes": 3529434
+    },
+    {
+      "path": "docs/v106-validation-summary.json",
+      "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+      "bytes": 12554
+    },
+    {
+      "path": "docs/war-clans-v3-workbook-source.json",
+      "sha256": "1a889f3a61078d8fb377326f383d0a34a25f11523e89a93c485e1b7cec720f0d",
+      "bytes": 2756118
+    },
+    {
+      "path": "docs/v56-excel-priorities.json",
+      "sha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+      "bytes": 776044
+    },
+    {
+      "path": "public/game/dialogues/v85/bible-dialogues.json",
+      "sha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+      "bytes": 8625812
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "bytes": 2101543
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+      "sha256": "f4f604a407cff43be6b2e96896dc18fd8d8a0e5f901fc634e8d777f65818c71f",
+      "bytes": 1107914
+    },
+    {
+      "path": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+      "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+      "bytes": 1698239
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "sha256": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde",
+      "bytes": 622188
+    },
+    {
+      "path": "docs/suivi-production/v613/data/main-reconciliation.json",
+      "sha256": "8d2b45b478ae8620adbfb1609cdf7643637bc1db054ad58f998a6c4839725c6f",
+      "bytes": 29532
+    },
+    {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "sha256": "9f3fe5bb48ae4bbc7284006c15b17788e721f67822db3893fd1e142efc294e24",
+      "bytes": 61893
+    },
+    {
+      "path": "docs/homeworld-asset-gap-v81.md",
+      "sha256": "3e0f709e2a66e0e7e71679997c00e25ec42ccde45500ac23dfb96302f8fed7d1",
+      "bytes": 95891
+    },
+    {
+      "path": "docs/v104-preserve-hunt-lookout.md",
+      "sha256": "4f9d17babb666b2b3a12ff9a5e6edf04fec4d37e3bc1270ab87f3e683941dbdc",
+      "bytes": 7774
+    },
+    {
+      "path": "public/game/sprites/v79/fighters/last-hunt-super/stance-right.png",
+      "sha256": "a3a6bae74c1c6609bb4f29ba7a3a46ed5ed0b64b633e6ba4812fe003bc46b603",
+      "bytes": 2526979
+    },
+    {
+      "path": "public/game/sprites/v79/fighters/last-hunt-super/roster-icon.webp",
+      "sha256": "94f0502d89298eaf2523d754973022669b00689e4fa0c944a6d819b69e11a099",
+      "bytes": 14362
+    },
+    {
+      "path": "public/game/sprites/v79/fighters/avp-classic-2000/stance-right.png",
+      "sha256": "04a93516a65155301eeb0ea8484cde6a7da349b582598965920806c8cee5a227",
+      "bytes": 1256180
+    },
+    {
+      "path": "public/game/sprites/v79/fighters/avp-classic-2000/roster-icon.webp",
+      "sha256": "0a2d1fbe42b94f5ad57948fcbfd63131dd7375dd3de595261b71a33bdd4c2573",
+      "bytes": 10420
+    },
+    {
+      "path": "app/game/data/pitUserHuntersV79.json",
+      "sha256": "dd16fed6bbcf2227281e20b62214731347bdb4a4dbd7a5739e7f5bc7eca88247",
+      "bytes": 4895
+    },
+    {
+      "path": "docs/v79-reference-hunters-art.md",
+      "sha256": "ac24b6407381ae7cc9763dd663d7f0e55a779b729077f57f306b41184f1a2556",
+      "bytes": 3075
+    }
+  ],
+  "limits": [
+    "Les77 lignes comprennent des agrégats et des contraintes : elles ne se somment pas en77 actions ou77 personnages.",
+    "L’absence de ligne Homeworld dans openItems ne signifie pas que Homeworld est terminé. Les354 cibles et le corpus V6 forment un suivi complémentaire à réconcilier.",
+    "Aucun statut VALIDE_CIBLE, complet ou terminé V107 n’est créé par cet audit.",
+    "Les produits et60 feuilles V106, ainsi que V100/V104/V105 et leurs capsules, restent immuables."
+  ]
+}

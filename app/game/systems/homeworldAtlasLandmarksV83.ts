@@ -1,3 +1,4 @@
+import {HOMEWORLD_ARCHIVE_COMPARISON_V107} from './homeworldArchiveComparisonDefinitionV107';
 import {HOMEWORLD_ARCHIVE_V106} from './homeworldArchiveDefinitionV106';
 import type {SaveGame} from '../types';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_POINTS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
@@ -47,7 +48,10 @@ export function homeworldAtlasLandmarksV83(save?:SaveGame):readonly HomeworldAtl
   district:district('port'),category:'person',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_ARCHIVE_V106.post,
   access:'open',reason:'Rejoins l’archiviste à pied. Le guide ne déplace aucun dossier et ne consigne aucune conclusion.',keywords:['archives','traces','dossiers','supports','incertitude']
  }]:[];
- return[...points,...buildings,...archive];
+ const comparison:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')&&save.homeworld.archiveV106?.receipt?.phase==='completed'?[{
+  id:'archive-study-zone-v107',label:'Zone d’étude du quai',detail:'Objet C et lieu à relever sur place avant déplacement.',levelId:'0',district:district('port'),category:'evidence',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_ARCHIVE_COMPARISON_V107.evidence.origin,access:'open',reason:'Étude locale dans le quai connu ; aucune origine de lignée ni zone inconnue révélée.',keywords:['archives','preuve','provenance','étude']
+ },{id:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.id,label:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.label,detail:'Déposer C avec son relevé puis confronter les observations.',levelId:'0',district:district('port'),category:'service',buildingId:null,pointId:null,regionId:null,position:{x:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.x,y:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.y},access:'open',reason:'Pupitre physique ; aucun dossier déplacé par le guide.',keywords:['archives','comparaison']},...HOMEWORLD_ARCHIVE_COMPARISON_V107.references.map(s=>({id:s.caseId==='A'?'archive-reference-a-v107':'archive-reference-b-v107',label:`Support ${s.caseId} · dossier conservé`,detail:'Observation à effectuer physiquement auprès du dépôt séparé.',levelId:'0' as const,district:district('port'),category:'evidence' as const,buildingId:null,pointId:null,regionId:null,position:{x:s.x,y:s.y},access:'open' as const,reason:'Rejoins le support à pied ; le guide ne valide pas son observation.',keywords:['archives','support','observation']}))]:[];
+ return[...points,...buildings,...archive,...comparison];
 }
 
 /** Accept IDs from old NPC advice, direct points and the current register.

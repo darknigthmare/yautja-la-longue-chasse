@@ -1,15 +1,20 @@
-import test from 'node:test';
+import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {snapshotRuntimeV106} from '../scripts/snapshot-runtime-v106.mjs';
+import path from 'node:path';
+import {getHistoricalExcelContextV107,loadHistoricalRuntimeSnapshotV107,verifyHistoricalExcelContextV107} from '../scripts/historical-excel-context-v107.mjs';
+const {root:ROOT}=await getHistoricalExcelContextV107();
+const {snapshotRuntimeV106}=await loadHistoricalRuntimeSnapshotV107();
+const read=file=>fs.readFile(path.join(ROOT,file));
+after(()=>verifyHistoricalExcelContextV107());
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const json = async file => JSON.parse(await fs.readFile(file, 'utf8'));
+const json = async file => JSON.parse(await read(file));
 async function verifyFile(entry) {
   const file = entry.path ?? entry.file;
   assert.ok(typeof file === 'string' && file.startsWith('docs/') && !file.split(/[\\/]/).includes('..'), 'Portable local evidence required');
-  const bytes = await fs.readFile(file);
+  const bytes = await read(file);
   assert.equal(bytes.length, entry.bytes, file + ': evidence size changed');
   assert.equal(sha(bytes), entry.sha256, file + ': evidence changed');
   return bytes;
@@ -51,7 +56,7 @@ test('all three production journeys share the same build and preserve their port
       const file = source.file ?? source.path;
       assert.ok(typeof file === 'string' && !file.startsWith('/') && !file.split(/[\\/]/).includes('..'));
       if (file.startsWith('public/')) assert.ok(frozenPublic.has(file), file + ': observed public input missing from the runtime freeze');
-      assert.equal(sha(await fs.readFile(file)), source.sha256, file + ': source changed after QA');
+      assert.equal(sha(await read(file)), source.sha256, file + ': source changed after QA');
     }
     assert.equal(item.buildId, report.productionBuildId);
     assert.equal(item.runtimeCommit, report.runtimeCommit);

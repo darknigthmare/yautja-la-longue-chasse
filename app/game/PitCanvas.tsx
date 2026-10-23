@@ -20,8 +20,17 @@ import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
 import { advancePitFinisherV80, createPitFinisherViewV80, observePitFinisherV80, skipPitFinisherV80, triggerPitFinisherV80, pitFinisherIsSceneV80, createPitFinisherPadStateV80, readPitFinisherPadV80, PIT_FINISHER_COUNTS_V80, type PitFinisherChoiceV80, type PitFinisherModeV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
 import { drawPitFinisherActorsV80 } from './pitFinisherRenderingV80';
 import { PitFinisherHudV80 } from './PitFinisherHudV80';
+import {advancePitWorkbookConclusionSessionV107, advancePitWorkbookConclusionV107, createPitWorkbookConclusionV107,
+  getPitWorkbookConclusionQualificationV107, observePitWorkbookConclusionV107, pitWorkbookConclusionBlocksResultV107,
+  samplePitWorkbookConclusionV107, skipPitWorkbookConclusionV107, triggerPitWorkbookConclusionV107,
+  type PitWorkbookConclusionSessionV107, type PitWorkbookConclusionKeyV107} from './systems/pitWorkbookConclusionsV107';
+import {PIT_WORKBOOK_CONCLUSION_SCENE_REGISTRY_V107} from './pitWorkbookRegistryV107';
+import {drawPitWorkbookConclusionActorsV107, getPitWorkbookConclusionCameraV107, pitWorkbookConclusionActorsReadyV107} from './pitWorkbookConclusionRenderingV107';
+import {drawPitWorkbookObjectivePropsV107} from './pitWorkbookObjectiveRenderingV107';
+import {createPitWorkbookObjectiveSessionV107, ownsPitWorkbookObjectiveV107} from './pitWorkbookObjectiveSessionV107';
+import {PitWorkbookConclusionHudV107} from './PitWorkbookConclusionHudV107';
 import { advancePitLifecyclePresentationV93, beginPitCombatTauntV93, beginPitLifecycleTauntV93, createPitLifecyclePresentationV93, observePitCombatTauntsV93, pitLifecyclePresentationViewV93, pitLifecycleWindowWinnerV93 } from './systems/pitLifecyclePresentationV93';
-import { pitNativeTauntDurationV93, pitNativePresentationDurationV105 } from './pitSpriteSheetAnimation';
+import { pitNativeTauntDurationV93, pitNativePresentationDurationV105, loadPitSpriteSheetAnimations, type PitSpriteSheetAnimationBank } from './pitSpriteSheetAnimation';
 import { getPitFighterPresentationCue } from './pitFighterPresentation';
 import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRoundPresentation, observePitRoundPresentation, type PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { compactControlKeyLabel } from "./controlBindingLabels";
@@ -277,7 +286,8 @@ interface PitCanvasProps {
   /** Restore the visited hero only; this is not a durable versus checkpoint. */
   initialLeftId?: PitVersusFighterId;
   /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
-  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId };
+  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId; readonly normalMoves?: 'workbook-v106' };
+  onWorkbookExerciseFrameV107?: (frame: Readonly<PitCombatState>) => void;
   /** Reserved for an actual scenario controller; current workbook extracts emit no V61 story cue. */
   narrativeStageCues?: PitStageNarrativeCuesV61;
   onNarrativeComplete?: (result: PitNarrativeResultInput) => void | Promise<void>;
@@ -677,6 +687,9 @@ function drawArena(
   narrativeCuesV61?: PitStageNarrativeCuesV61,
   stageLifeSeed = 0,
   finisher?: PitFinisherViewV80,
+  workbookConclusionV107?: ReturnType<typeof createPitWorkbookConclusionV107>,
+  workbookConclusionArtV107: PitSpriteSheetAnimationBank | null = null,
+  objectiveSessionV107: PitWorkbookConclusionSessionV107 | null = null,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -778,14 +791,25 @@ function drawArena(
 
   const fighterArtOptions = { simulationFrame: state.frame, combat: state, presentation,
     reducedMotion: reducedCharacterMotion, engineVersion };
+  const sourceSceneV107 = workbookConclusionV107 ? samplePitWorkbookConclusionV107(workbookConclusionV107) : null;
+  canvas.dataset.pitWorkbookConclusionPhaseV107 = workbookConclusionV107?.phase ?? 'idle';
+  canvas.dataset.pitWorkbookConclusionKeyV107 = sourceSceneV107?.actionKey ?? '';
+  canvas.dataset.pitWorkbookConclusionTickV107 = String(sourceSceneV107?.clipTick ?? '');
+  canvas.dataset.pitWorkbookConclusionFrameV107 = String(sourceSceneV107?.frameIndex ?? '');
+  canvas.dataset.pitWorkbookConclusionContactsV107 = JSON.stringify(workbookConclusionV107?.contacts ?? []);
+  canvas.dataset.pitWorkbookConclusionActorsV107 = JSON.stringify(sourceSceneV107?.actors.map(actor => ({id:actor.definitionId,slot:actor.slot,x:actor.x,y:actor.y,phase:actor.phase,health:actor.health,facing:actor.facing})) ?? []);
+  canvas.dataset.pitWorkbookConclusionQualificationV107 = JSON.stringify(sourceSceneV107?.qualification ?? null);
+  canvas.dataset.pitWorkbookObjectiveV107 = JSON.stringify(workbookConclusionV107?.session ?? objectiveSessionV107);
+  const sourceDrawnV107 = workbookConclusionV107 ? drawPitWorkbookConclusionActorsV107(context, state, workbookConclusionV107, workbookConclusionArtV107, fighterArt, highContrast) : false;
   const finisherDrawn = finisher ? drawPitFinisherActorsV80(context, state, finisher, fighterArt, highContrast, engineVersion, companionArt, falconerArt) : false;
   canvas.dataset.pitFinisherPhase = finisher?.phase ?? 'idle';
   canvas.dataset.pitFinisherFamily = finisher?.profile?.family ?? '';
   canvas.dataset.pitFinisherChoice = String(finisher?.choice ?? '');
-  canvas.dataset.pitFinisherNativeAnimation = 'false';
+  canvas.dataset.pitFinisherNativeAnimation = String(sourceDrawnV107);
   canvas.dataset.pitLifecyclePhase = presentation.phase;
   canvas.dataset.pitLifecycleKinds = state.fighters.map(fighter => getPitFighterPresentationCue(fighter.slot, presentation, reducedCharacterMotion)?.kind ?? 'combat').join(',');
   (finisherDrawn ? [] : state.fighters).forEach((fighter) => {
+    if (sourceDrawnV107) return;
     const definition = getPitCombatFighterDefinition(fighter);
     const fighterPalette =
       fighter.slot === 0 && leftCosmeticPalette ? leftCosmeticPalette : definition.palette;
@@ -941,6 +965,12 @@ function drawArena(
       if (boxes.hitbox) paintBox(boxes.hitbox, "#ff4d69");
     }
   });
+
+  const retainedSessionV107 = workbookConclusionV107?.session ?? objectiveSessionV107;
+  const paintedPropsV107 = drawPitWorkbookObjectivePropsV107(context, workbookConclusionArtV107, retainedSessionV107,
+    sourceSceneV107?.actors ?? state.fighters, groundY,
+    {highContrast, nativeObjectInHand: sourceDrawnV107 && sourceSceneV107?.actionKey === 'CLEMENCE' && sourceSceneV107.frameIndex === 5 && retainedSessionV107?.missionObject.state === 'recovered'});
+  canvas.dataset.pitWorkbookObjectivePaintedV107 = String(paintedPropsV107);
 
   if (combatEffectsVisible && impact && state.frame - impact.frame < 14) {
     const age = state.frame - impact.frame;
@@ -1133,6 +1163,7 @@ export default function PitCanvas({
   initialLeftId,
   narrativeEncounter,
   narrativeStageCues,
+  onWorkbookExerciseFrameV107,
   onNarrativeComplete,
   onOpenNarrativeTrials,
   onOpenCharacterChronicle,
@@ -1178,19 +1209,33 @@ export default function PitCanvas({
   const [finisherModeV80, setFinisherModeV80] = useState<PitFinisherModeV80>('stylized');
   const [finisherV80, setFinisherV80] = useState(createPitFinisherViewV80);
   const finisherRefV80 = useRef(finisherV80);
+  const [workbookConclusionV107, setWorkbookConclusionV107] = useState(createPitWorkbookConclusionV107);
+  const workbookConclusionRefV107 = useRef(workbookConclusionV107);
+  const [objectiveSessionV107, setObjectiveSessionV107] = useState<PitWorkbookConclusionSessionV107 | null>(null);
+  const objectiveSessionRefV107 = useRef<PitWorkbookConclusionSessionV107 | null>(null);
+  const objectiveRelationRefV107 = useRef<'ally' | 'hostile-adult'>('ally');
   const [lifecycleV93, setLifecycleV93] = useState(createPitLifecyclePresentationV93);
   const lifecycleRefV93 = useRef(lifecycleV93);
   const lifecycleInteractionReadyRefV93 = useRef(false);
   const finisherKeyV80 = combat?.phase === 'match-over' ? `${activeMatchResultId}:${combat.frame}:${combat.round}:${combat.matchWinnerId}` : '';
   const terminalPresentationReady = combat?.phase === "match-over" && roundPresentation.resultVisible &&
-    finisherV80.key === finisherKeyV80 && finisherV80.phase === 'complete';
+    finisherV80.key === finisherKeyV80 && finisherV80.phase === 'complete' && !pitWorkbookConclusionBlocksResultV107(workbookConclusionV107);
   const combatPresent = combat !== null;
   const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
+  const workbookConclusionActorsReadyV107 = pitWorkbookConclusionActorsReadyV107(fighterArt);
   const [fighterArtRetry, setFighterArtRetry] = useState(0);
   const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
   const [workbookNormalsEnabled, setWorkbookNormalsEnabled] = useState(false);
   const [workbookCombatEnabledV105, setWorkbookCombatEnabledV105] = useState(false);
   const [workbookCombatEnabledV106, setWorkbookCombatEnabledV106] = useState(false);
+  const [workbookConclusionsEnabledV107, setWorkbookConclusionsEnabledV107] = useState(false);
+  const [workbookConclusionRelationV107, setWorkbookConclusionRelationV107] = useState<'ally' | 'hostile-adult'>('ally');
+  const [workbookConclusionArtV107, setWorkbookConclusionArtV107] = useState<PitSpriteSheetAnimationBank | null>(null);
+  const [workbookConclusionRetryV107, setWorkbookConclusionRetryV107] = useState(0);
+  const workbookConclusionArtReadyV107 = !!workbookConclusionArtV107 && !workbookConclusionArtV107.cancelled &&
+    workbookConclusionArtV107.failedAtlasIds.length === 0 && workbookConclusionArtV107.readyClipCount === 6;
+  const workbookConclusionArtFailedV107 = !!workbookConclusionArtV107 && workbookConclusionArtV107.failedAtlasIds.length > 0;
+  const workbookObjectiveAvailableV107 = ownsPitWorkbookObjectiveV107(leftId, rightId, leftVariantId, rightVariantId) && (mode === 'cpu' || mode === 'local');
   const workbookCommandsRefV105 = useRef<[PitInput['workbookAction'], PitInput['workbookAction']]>([undefined, undefined]);
   const [tauntVariantsV105, setTauntVariantsV105] = useState<[1 | 2, 1 | 2]>([1, 1]);
   const nextTauntVariantsRefV105 = useRef<[1 | 2, 1 | 2]>([1, 1]);
@@ -1226,14 +1271,21 @@ export default function PitCanvas({
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
   const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
   const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
-  const renderedNormalMoves = combat ? combat.rules.normalMoves : (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106) && workbookNormalsAvailable &&
-    (mode === 'cpu' || mode === 'local' || mode === 'training') ? workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined;
+  const renderedNormalMoves = combat ? combat.rules.normalMoves : narrativeEncounter?.normalMoves ?? ((workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106) && workbookNormalsAvailable &&
+    (mode === 'cpu' || mode === 'local' || mode === 'training') ? workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined);
   useEffect(() => {
     const controller = new AbortController();
     void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant], normalMoves: renderedNormalMoves })
       .then((bank) => { if (!controller.signal.aborted) setFighterArt(bank); });
     return () => controller.abort();
   }, [renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, renderedNormalMoves, fighterArtRetry]);
+  useEffect(() => {
+    if (!workbookConclusionsEnabledV107 || !ownsPitWorkbookObjectiveV107(renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant)) return;
+    const controller = new AbortController();
+    void loadPitSpriteSheetAnimations(['scar', 'feral-hunter'], PIT_WORKBOOK_CONCLUSION_SCENE_REGISTRY_V107, {signal: controller.signal})
+      .then(bank => {if (!controller.signal.aborted) setWorkbookConclusionArtV107(bank);});
+    return () => controller.abort();
+  }, [workbookConclusionsEnabledV107, renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, workbookConclusionRetryV107]);
 
   const [combatNotice, setCombatNotice] = useState({ label: "CHOISIS LE RITUEL", frame: 0 });
   const announcement = combatNotice.label;
@@ -1281,6 +1333,8 @@ export default function PitCanvas({
       (navigator.maxTouchPoints > 0 || window.matchMedia("(any-pointer: coarse)").matches),
   );
   const combatRef = useRef<PitCombatState | null>(null);
+  const workbookExerciseObserverRefV107 = useRef(onWorkbookExerciseFrameV107);
+  useEffect(() => {workbookExerciseObserverRefV107.current = onWorkbookExerciseFrameV107;}, [onWorkbookExerciseFrameV107]);
   const setAnnouncement = useCallback((label: string) => {
     setCombatNotice({ label, frame: combatRef.current?.frame ?? 0 });
   }, []);
@@ -1402,6 +1456,9 @@ export default function PitCanvas({
     const finisher = createPitFinisherViewV80();
     finisherRefV80.current = finisher;
     setFinisherV80(finisher);
+    const sourceConclusion = createPitWorkbookConclusionV107();
+    workbookConclusionRefV107.current = sourceConclusion; setWorkbookConclusionV107(sourceConclusion);
+    objectiveSessionRefV107.current = null; setObjectiveSessionV107(null);
     workbookCommandsRefV105.current = [undefined, undefined];
     setTauntVariantsV105([1, 1]);
     nextTauntVariantsRefV105.current = [1, 1];
@@ -1415,6 +1472,13 @@ export default function PitCanvas({
     if (label) setAriaAnnouncement(label);
     setCombat(next);
   }, []);
+
+  const launchWorkbookObjectiveV107 = useCallback((next: PitCombatState) => {
+    if (!workbookConclusionsEnabledV107 || (mode !== 'cpu' && mode !== 'local') || narrativeEncounter || !workbookConclusionArtReadyV107) return;
+    const session = createPitWorkbookObjectiveSessionV107(next, 'objective:' + matchResultIdRef.current);
+    objectiveRelationRefV107.current = workbookConclusionRelationV107;
+    objectiveSessionRefV107.current = session; setObjectiveSessionV107(session);
+  }, [workbookConclusionsEnabledV107, workbookConclusionRelationV107, workbookConclusionArtReadyV107, mode, narrativeEncounter]);
 
   const changePitMode = useCallback((nextMode: PitMode) => {
     if (narrativeEncounter || runTransitionSelectionLocked) return;
@@ -1736,6 +1800,11 @@ export default function PitCanvas({
     descentRunState?: PitDescentRun,
     descentNode?: PitDescentNode,
   ) => {
+    if (!narrativeEncounter && (nextMode === 'cpu' || nextMode === 'local') && workbookConclusionsEnabledV107 &&
+      ownsPitWorkbookObjectiveV107(playerId, opponentId, playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null) && !workbookConclusionArtReadyV107) {
+      setAriaAnnouncement('Les images de la conclusion sont encore en chargement.');
+      return;
+    }
     if (playerId === opponentId) {
       const message = "Choisissez deux combattants différents pour entrer dans l’arène.";
       setReplayNotice(message);
@@ -1748,6 +1817,7 @@ export default function PitCanvas({
         (ownsPitWorkbookNormalsV104(playerId, playerId === leftId ? leftVariantId : null) ||
           ownsPitWorkbookNormalsV104(opponentId, opponentId === rightId ? rightVariantId : null))
         ? {normalMoves: workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}),
+      ...(narrativeEncounter?.normalMoves ? {normalMoves: narrativeEncounter.normalMoves} : {}),
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
       ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
@@ -1814,7 +1884,8 @@ export default function PitCanvas({
               : "Manche 1. Combat.",
     );
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105, workbookCombatEnabledV106]);
+    launchWorkbookObjectiveV107(next);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105, workbookCombatEnabledV106, launchWorkbookObjectiveV107, narrativeEncounter, workbookConclusionsEnabledV107, workbookConclusionArtReadyV107]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -2395,7 +2466,20 @@ export default function PitCanvas({
     setAnnouncement(next.rules.mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
     setAriaAnnouncement(next.rules.mode === "training" ? "Entraînement libre recommencé." : "Revanche. Manche 1. Combat.");
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, narrativeEncounter, onExit]);
+    launchWorkbookObjectiveV107(next);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, narrativeEncounter, onExit, launchWorkbookObjectiveV107]);
+
+  const chooseWorkbookConclusionV107 = useCallback((key: PitWorkbookConclusionKeyV107) => {
+    const current = workbookConclusionRefV107.current;
+    if (pausedRef.current || document.hidden || finisherRefV80.current.phase !== 'window' ||
+      finisherRefV80.current.options.cpuWinner || !workbookConclusionArtReadyV107) return;
+    const next = triggerPitWorkbookConclusionV107(current, key);
+    if (next === current) return;
+    workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);
+    const legacy = skipPitFinisherV80(finisherRefV80.current);
+    finisherRefV80.current = legacy; setFinisherV80(legacy);
+    rootRef.current?.focus({preventScroll: true});
+  }, [pausedRef, workbookConclusionArtReadyV107]);
 
   const setTouchToken = useCallback((slot: 0 | 1, token: string, pressed: boolean) => {
     const entries = touchInputsRef.current[slot];
@@ -2458,7 +2542,7 @@ export default function PitCanvas({
         event.preventDefault();
         if (event.repeat) return;
         if (!combatRef.current) selectionFlowRef.current?.command("back");
-        else if (combatRef.current.phase === "match-over" && roundPresentationRef.current.resultVisible && finisherRefV80.current.phase === 'complete') onExit();
+        else if (combatRef.current.phase === "match-over" && roundPresentationRef.current.resultVisible && finisherRefV80.current.phase === 'complete' && !pitWorkbookConclusionBlocksResultV107(workbookConclusionRefV107.current)) onExit();
         else if (pausedRef.current) resume();
         else openMenu();
         return;
@@ -2494,6 +2578,11 @@ export default function PitCanvas({
           event.preventDefault();
           const input = pitInputFromControlCodes(slot === 0 ? 1 : 2, new Set([event.code, ...pressedKeysRef.current]), controlBindings);
           const choice: PitFinisherChoiceV80 = input.down ? 1 : input.left ? combatRef.current?.fighters[slot].facing === -1 ? 2 : 3 : input.right ? combatRef.current?.fighters[slot].facing === 1 ? 2 : 3 : 0;
+          const source = workbookConclusionRefV107.current;
+          if (source.phase === 'window' && (source.available.FATALITE_2 || source.available.CLEMENCE)) {
+            chooseWorkbookConclusionV107(choice === 1 || !source.available.FATALITE_2 ? 'CLEMENCE' : 'FATALITE_2');
+            return;
+          }
           const next = triggerPitFinisherV80(finisherRefV80.current, slot!, choice);
           finisherRefV80.current = next; setFinisherV80(next);
           return;
@@ -2516,7 +2605,7 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93]);
+  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93, chooseWorkbookConclusionV107]);
 
   const viewPhase = combat === null
     ? "selection"
@@ -2680,7 +2769,7 @@ export default function PitCanvas({
     ? 'loading' : feralNativeArtStatuses.includes('ready') ? 'ready' : 'not-required';
   const matchAssetsPending = combat !== null && (
     houndArtPending || falconerArtPending || feralNativeArtPending ||
-    suppliedFighterArtFailed ||
+    suppliedFighterArtFailed || (objectiveSessionV107 !== null && (!workbookConclusionArtReadyV107 || !workbookConclusionActorsReadyV107)) ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
     !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
     arenaArt.requestedPaths.size === 0 || arenaArt.images.size !== arenaArt.requestedPaths.size ||
@@ -2731,16 +2820,61 @@ export default function PitCanvas({
     if (next !== finisherRefV80.current) { finisherRefV80.current = next; setFinisherV80(next); }
   }, [combat, finisherKeyV80, finisherModeV80, reducedGore, prefersReducedMotion, narrativeEncounter, playbackReplay, mode]);
 
+  useEffect(() => {
+    if (!combat) return;
+    const current = objectiveSessionRefV107.current;
+    if (!current || workbookConclusionRefV107.current.phase === 'approach' || workbookConclusionRefV107.current.phase === 'sequence') return;
+    const next = advancePitWorkbookConclusionSessionV107(current, combat);
+    if (next !== current) {objectiveSessionRefV107.current = next; setObjectiveSessionV107(next);}
+  }, [combat]);
+
+  useEffect(() => {
+    if (!combat) return;
+    const current = workbookConclusionRefV107.current;
+    let next = observePitWorkbookConclusionV107(current, combat, finisherV80, {
+      enabled: objectiveSessionRefV107.current !== null, relation: objectiveRelationRefV107.current,
+      reducedGore, reducedMotion: prefersReducedMotion, narrative: Boolean(narrativeEncounter),
+      replay: Boolean(playbackReplay), session: objectiveSessionRefV107.current,
+    });
+    if (finisherV80.phase === 'complete' && next.phase === 'window') next = skipPitWorkbookConclusionV107(next);
+    if (next !== current) {workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);}
+  }, [combat, finisherV80, reducedGore, prefersReducedMotion, narrativeEncounter, playbackReplay]);
+
+  useEffect(() => {
+    if (!combatPresent || menuOpen || matchAssetsPending ||
+      (workbookConclusionV107.phase !== 'approach' && workbookConclusionV107.phase !== 'sequence')) return;
+    let requestId = 0, previous = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - previous; previous = now;
+      const next = advancePitWorkbookConclusionV107(workbookConclusionRefV107.current, elapsed,
+        {frozen: pausedRef.current || document.hidden, reducedMotion: prefersReducedMotion, reducedGore});
+      if (next !== workbookConclusionRefV107.current) {
+        workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);
+        if (next.session) {objectiveSessionRefV107.current = next.session; setObjectiveSessionV107(next.session);}
+      }
+      if (next.phase === 'approach' || next.phase === 'sequence') requestId = requestAnimationFrame(step);
+    };
+    requestId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(requestId);
+  }, [combatPresent, menuOpen, matchAssetsPending, workbookConclusionV107.phase, pausedRef, prefersReducedMotion, reducedGore]);
+
   const chooseFinisherV80 = useCallback((choice: PitFinisherChoiceV80) => {
     const current = finisherRefV80.current;
     if (pausedRef.current || document.hidden || current.winnerSlot === null || current.options.cpuWinner) return;
+    const source = workbookConclusionRefV107.current;
+    if (source.phase === 'window' && (source.available.FATALITE_2 || source.available.CLEMENCE)) {
+      chooseWorkbookConclusionV107(choice === 1 || !source.available.FATALITE_2 ? 'CLEMENCE' : 'FATALITE_2');
+      return;
+    }
     const next = triggerPitFinisherV80(current, current.winnerSlot, choice);
     if (next !== current) { finisherRefV80.current = next; setFinisherV80(next); }
-  }, [pausedRef]);
+  }, [pausedRef, chooseWorkbookConclusionV107]);
   const skipFinisherV80 = useCallback(() => {
     if (pausedRef.current || document.hidden) return;
     const next = skipPitFinisherV80(finisherRefV80.current);
     finisherRefV80.current = next; setFinisherV80(next);
+    const source = skipPitWorkbookConclusionV107(workbookConclusionRefV107.current);
+    workbookConclusionRefV107.current = source; setWorkbookConclusionV107(source);
   }, [pausedRef]);
 
   useEffect(() => {
@@ -2748,7 +2882,14 @@ export default function PitCanvas({
     let requestId = 0, previous = performance.now();
     const step = (now: number) => {
       const delta = now - previous; previous = now;
-      const next = advancePitFinisherV80(finisherRefV80.current, delta, roundPresentationRef.current.resultVisible,
+      const source = workbookConclusionRefV107.current, legacy = finisherRefV80.current;
+      const automaticSource = !pausedRef.current && !document.hidden && legacy.phase === 'window' && legacy.options.cpuWinner && legacy.elapsedMs + delta >= 800 &&
+        source.phase === 'window' && workbookConclusionArtReadyV107 && (source.available.FATALITE_2 || source.available.CLEMENCE);
+      if (automaticSource) {
+        const chosen = triggerPitWorkbookConclusionV107(source, source.available.FATALITE_2 ? 'FATALITE_2' : 'CLEMENCE');
+        workbookConclusionRefV107.current = chosen; setWorkbookConclusionV107(chosen);
+      }
+      const next = automaticSource ? skipPitFinisherV80(legacy) : advancePitFinisherV80(finisherRefV80.current, delta, roundPresentationRef.current.resultVisible,
         pausedRef.current || document.hidden);
       if (next !== finisherRefV80.current) { finisherRefV80.current = next; setFinisherV80(next); }
       const lifecycle = advancePitLifecyclePresentationV93(lifecycleRefV93.current, combatRef.current, next, delta,
@@ -2758,7 +2899,7 @@ export default function PitCanvas({
     };
     requestId = requestAnimationFrame(step);
     return () => cancelAnimationFrame(requestId);
-  }, [combatPresent, menuOpen, matchAssetsPending, finisherV80.phase, pausedRef]);
+  }, [combatPresent, menuOpen, matchAssetsPending, finisherV80.phase, pausedRef, workbookConclusionArtReadyV107]);
 
   useEffect(() => {
     if (finisherV80.phase !== 'window' && finisherV80.phase !== 'approach' && finisherV80.phase !== 'signature' && finisherV80.phase !== 'settle') return;
@@ -2954,6 +3095,7 @@ export default function PitCanvas({
             ? stepPitReplayCombat(current, inputs, playbackReplay.engineVersion)
             : stepPitCombat(current, inputs);
         }
+        if (!playbackReplay && workbookExerciseObserverRefV107.current) workbookExerciseObserverRefV107.current(structuredClone(current));
         publishRoundPresentation(observePitRoundPresentation(roundPresentationRef.current, current), current);
         const lifecycle = observePitCombatTauntsV93(lifecycleRefV93.current, current, inputs);
         if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
@@ -3002,9 +3144,10 @@ export default function PitCanvas({
     if (!combat || !canvasRef.current) return;
     // Finishing movement uses the existing safe full-arena framing. The frozen
     // engine frame must never be incremented just to advance a camera/animation.
-    const camera = pitFinisherIsSceneV80(finisherV80)
+    const ordinaryCamera = pitFinisherIsSceneV80(finisherV80)
       ? advancePitPresentationCamera(null, combat, { reducedMotion: true })
       : advancePitWorkbookCameraV106(cameraRef.current, combat, reducedCameraMotion);
+    const camera = samplePitWorkbookConclusionV107(workbookConclusionV107) ? getPitWorkbookConclusionCameraV107(combat) : ordinaryCamera;
     cameraRef.current = camera;
     drawArena(
       canvasRef.current,
@@ -3027,8 +3170,11 @@ export default function PitCanvas({
       !playbackReplay && narrativeEncounter?.id === narrativeStageCues?.encounterId ? narrativeStageCues : undefined,
       stageLifeSeedRef.current,
       finisherV80,
+      workbookConclusionV107,
+      workbookConclusionArtV107,
+      objectiveSessionV107,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80, workbookConclusionV107, workbookConclusionArtV107, objectiveSessionV107]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -3386,7 +3532,7 @@ export default function PitCanvas({
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
           onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
           onExit={onExit} launchLabel={selectionLaunchLabel}
-          launchDisabled={Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId)}
+          launchDisabled={Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
           reducedMotion={reducedCameraMotion} highContrast={highContrast}
         />
 
@@ -3418,6 +3564,23 @@ export default function PitCanvas({
               </select></label>
               <p>Quatre choix par combattant, {PIT_FINISHER_COUNTS_V80.playableSequences} séquences de présentation. {PIT_FINISHER_COUNTS_V80.attestedEquipment} arsenaux attestés, {PIT_FINISHER_COUNTS_V80.identityDerived} identités documentées, {PIT_FINISHER_COUNTS_V80.originalContact} compositions corporelles originales. Pas 201 planches de finition inédites. Gore réduit et chroniques : neutralisation obligatoire ; relectures et entraînement : désactivé.</p>
             </aside>
+            {(mode === 'cpu' || mode === 'local') && <aside className={styles.journeyChoice} aria-label="Objectif alternatif de Scar">
+              <label><input type="checkbox" data-pit-workbook-objective-v107 checked={workbookConclusionsEnabledV107}
+                disabled={!workbookObjectiveAvailableV107 || Boolean(selectedJourney)} onChange={event => {
+                  setWorkbookConclusionsEnabledV107(event.target.checked);
+                  if (event.target.checked) {setWorkbookCombatEnabledV106(true); setWorkbookCombatEnabledV105(false); setWorkbookNormalsEnabled(false);}
+                }} /> Duel alternatif de Scar · récupérer la balise</label>
+              <p>Scar et Feral, apparences d’origine : une balise rouge est placée au sol avant les entrées. Scar peut conclure avec sa lance ou retirer le dispositif d’épreuve puis récupérer la balise. L’objet et son propriétaire restent visibles au bilan ; aucun gain de campagne.</p>
+              {!workbookObjectiveAvailableV107 && <small>Choisissez Scar et Feral dans leurs apparences d’origine pour cet objectif.</small>}
+              {workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && <>
+                <label>Contexte de l’épreuve <select data-pit-workbook-relation-v107 value={workbookConclusionRelationV107} onChange={event => setWorkbookConclusionRelationV107(event.target.value as 'ally' | 'hostile-adult')}>
+                  <option value="ally">Épreuve entre alliés · non létale</option><option value="hostile-adult">Branche alternative · menace hostile adulte</option>
+                </select></label>
+                <p>La pointe et le silence demande une victoire finale, une menace hostile adulte et la violence réduite désactivée. Le duel suffit conserve une limite : retirer le dispositif inerte ne réalise pas encore le désarmement d’une arme offensive prévu par le classeur.</p>
+                <small>Harnais et balise : adaptations de ce duel. Le dispositif n’est ni une nouvelle arme de Feral ni une mine offensive jouable.</small>
+                {!workbookConclusionArtReadyV107 && <p role={workbookConclusionArtFailedV107 ? 'alert' : 'status'}>{workbookConclusionArtFailedV107 ? 'Une image de la conclusion manque.' : 'Chargement des conclusions et de l’objectif…'}{workbookConclusionArtFailedV107 && <button type="button" onClick={() => {setWorkbookConclusionArtV107(null); setWorkbookConclusionRetryV107(value => value + 1);}}>Réessayer les images</button>}</p>}
+              </>}
+            </aside>}
             {(mode === 'cpu' || mode === 'local' || mode === 'training') && workbookNormalsAvailable && <aside className={styles.journeyChoice} aria-label="Gestes Feral et Scar du classeur">
               <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => {setWorkbookNormalsEnabled(event.target.checked); if(event.target.checked) {setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false);}}} /> Gestes du classeur · Feral et Scar</label>
               <p>Neuf attaques par combattant dans leur apparence BODY d’origine : L / M / H debout, accroupi ou en saut. Préparation, contact, récupération, dégâts de base et hauteur de garde suivent le classeur. Les portées, les réactions et les limites de combo conservent les règles du duel. Cette recette est enregistrée dans les relectures.</p>
@@ -3824,6 +3987,8 @@ export default function PitCanvas({
       data-pit-workbook-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.workbookMove ?? null))}
       data-pit-paused={menuOpen}
       data-pit-combat-phase={combat.phase}
+      data-pit-workbook-conclusion-v107={workbookConclusionV107.phase}
+      data-pit-workbook-objective-state-v107={objectiveSessionV107?.missionObject.state ?? 'none'}
       data-pit-timer-frames={combat.roundFramesRemaining}
       data-pit-presentation-phase={roundPresentation.phase}
       data-pit-taunt-variants={JSON.stringify(lifecyclePresentationV93.fighterTauntVariants ?? [1,1])}
@@ -3854,6 +4019,8 @@ export default function PitCanvas({
         {houndArtFailed && <button type="button" data-pit-hound-retry onClick={() => setCompanionArtRetry(value => value + 1)}>Réessayer le Hellhound</button>}
         {falconerArtFailed && <button type="button" data-pit-falconer-retry onClick={() => { setFalconerArt(null); setFalconerArtRetry(value => value + 1); }}>Réessayer le capteur</button>}
         {feralNativeArtFailed && <button type="button" data-pit-feral-art-retry onClick={() => { setFighterArt(null); setFighterArtRetry(value => value + 1); }}>Réessayer les animations de Feral</button>}
+        {objectiveSessionV107 && workbookConclusionArtFailedV107 && <button type="button" onClick={() => {setWorkbookConclusionArtV107(null); setWorkbookConclusionRetryV107(value => value + 1);}}>Réessayer les conclusions</button>}
+        {objectiveSessionV107 && !workbookConclusionActorsReadyV107 && <button type="button" onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les deux acteurs</button>}
         {suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}
         {journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}
       </div> : null}
@@ -3866,6 +4033,9 @@ export default function PitCanvas({
       <div className={styles.combatActions} inert={terminal || menuOpen}>
         <span className={styles.stageLabel}>{playbackReplay ? "RELECTURE · " : ""}{arenaDefinition.name}{combat.stageJourney ? (` · ${combat.stageJourney.sector === "sas" ? activeJourneyDefinition?.entryLabel ?? "SECTEUR 1" : activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"}`) : ""}
           {mode === "descent" && terminalDescentRun ? ` · ÉTAGE ${Math.min(PIT_DESCENT_FLOOR_COUNT, terminalDescentRun.completedFloors + 1)}/${PIT_DESCENT_FLOOR_COUNT} · RUN ${terminalDescentRun.health}/${PIT_DESCENT_MAX_HEALTH}` : ""}</span>
+        {objectiveSessionV107 && <span data-pit-workbook-objective-status-v107 className={styles.stageLabel}>
+          BALISE · {objectiveSessionV107.missionObject.state === 'ground' ? 'AU SOL' : 'RÉCUPÉRÉE PAR SCAR'} · DUEL ALTERNATIF
+        </span>}
         {trainingRules && !playbackReplay && <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>}
         {!playbackReplay && combat.phase === 'round' && nativeTauntDurationsV93.map((duration, slot) => duration !== null && (slot === 0 || mode === 'local')
           ? <button key={slot} type="button" className={styles.utilityButton} style={{ minHeight: 44 }} data-pit-taunt={slot}
@@ -3964,7 +4134,9 @@ export default function PitCanvas({
               </div>}
           </div>
         ) : null}
-        {!menuOpen && !matchAssetsPending && <PitFinisherHudV80 view={finisherV80} onChoose={chooseFinisherV80} onSkip={skipFinisherV80}
+        {!menuOpen && !matchAssetsPending && (workbookConclusionV107.available.FATALITE_2 || workbookConclusionV107.available.CLEMENCE) ?
+          <PitWorkbookConclusionHudV107 state={workbookConclusionV107} legacy={finisherV80} ready={workbookConclusionArtReadyV107} onChoose={chooseWorkbookConclusionV107} onSkip={skipFinisherV80} /> :
+          !menuOpen && !matchAssetsPending && <PitFinisherHudV80 view={finisherV80} onChoose={chooseFinisherV80} onSkip={skipFinisherV80}
           taunt={finisherV80.winnerSlot !== null && nativeTauntDurationsV93[finisherV80.winnerSlot] !== null ? {
             available: tauntAvailableV93[finisherV80.winnerSlot], active: Boolean(lifecycleV93.taunt),
             keyLabel: tauntKeyCodesV93[finisherV80.winnerSlot] ? compactControlKeyLabel(tauntKeyCodesV93[finisherV80.winnerSlot]) : undefined,
@@ -4070,6 +4242,13 @@ export default function PitCanvas({
                                         ? winner.name + " l’emporte"
                                         : "Égalité"}
             </h3>
+            {objectiveSessionV107 && <p data-pit-workbook-objective-result-v107
+              data-source-complete={getPitWorkbookConclusionQualificationV107(workbookConclusionV107).sourceActionComplete}>
+              {objectiveSessionV107.missionObject.state === 'recovered' ? 'Balise récupérée par Scar pour ce duel.' : 'La balise reste au sol.'}
+              {objectiveSessionV107.targetWeapon.state === 'ground' ? ' Le dispositif d’épreuve est au sol.' : ' Le dispositif reste attaché à Feral.'}
+              {workbookConclusionV107.outcome === 'partial-source' ? ' Le désarmement d’une arme offensive reste à réaliser.' : ''}
+              {' Aucun objet de campagne attribué.'}
+            </p>}
             <p>
               {playbackReplay
                 ? "A ou Y pour revoir · B pour revenir au vaisseau."

@@ -1,6 +1,7 @@
 import { drawActorContactShadow } from "./spriteContact";
-import { GAME_RESERVE_V66_PEOPLE, GAME_RESERVE_V66_SHIPS, GAME_RESERVE_V66_SUPPLIES, GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
+import { GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
+import { GAME_RESERVE_EXPEDITION_V107_SECTORS, GAME_RESERVE_EXPEDITION_V107_SITES } from "./systems/gameReserveExpeditionV107";
 
 /** Reused native art. The original hunter is a held drawing, not an invented animation sheet. */
 export const GAME_RESERVE_V66_ART = {
@@ -36,6 +37,7 @@ function componentMarker(ctx: CanvasRenderingContext2D, x: number, y: number, co
 }
 export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserveV66State, bank: GameReserveV66Art | null, reducedMotion = false) {
   const viewportWidth = ctx.canvas.width, worldWidth = gameReserveV66World(s).width, platforms = gameReserveV66Platforms(s), sectors = gameReserveV66Sectors(s);
+  const people = gameReserveV66People(s), ships = gameReserveV66Ships(s), supplies = gameReserveV66Supplies(s);
   ctx.save(); ctx.clearRect(0, 0, viewportWidth, 540); ctx.fillStyle = "#07100e"; ctx.fillRect(0, 0, viewportWidth, 540);
   if (!bank) { ctx.restore(); return; }
   // Expand the visible horizontal world for short screens instead of shrinking a fixed 16:9 postcard.
@@ -50,6 +52,15 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   ctx.drawImage(bg, 0, 0, bg.naturalWidth, 770, -(width - viewportWidth) * travel, -(height - 438) * .15, width, height);
   for (let x = -camera % 700 - 700; x < viewportWidth; x += 700) ctx.drawImage(bg, 0, 770, bg.naturalWidth, bg.naturalHeight - 770, x, 438, 700, 102);
   ctx.translate(-camera, 0);
+  if (s.version === 3) {
+    for (const sector of GAME_RESERVE_EXPEDITION_V107_SECTORS) {
+      const atmosphere = ctx.createLinearGradient(0, 120, 0, 540); atmosphere.addColorStop(0, sector.atmosphere + "16"); atmosphere.addColorStop(1, sector.atmosphere + "66");
+      ctx.fillStyle = atmosphere; ctx.fillRect(sector.left, 0, sector.right - sector.left, 540);
+    }
+    ctx.drawImage(bank.machinery, 8560, 105, 570, 330);
+    ctx.drawImage(bank.machinery, 10020, 310, 220, 125);
+    ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
+  }
   // Derelict machine walls stay behind the walkable strip. Native hulls never sit on the canopy route.
   ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);
   if (s.version === 2) {
@@ -59,8 +70,14 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     label(ctx, s.lookout.recordedAt === null ? "POSTE HAUT · RELEVÉ (2 s)" : "REPÈRES CONSIGNÉS · RETOUR À L’OUEST", site.x, 118, "#c4e3dc");
     ctx.strokeStyle = "#c4e3dc"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
   }
+  if (s.version === 3) for (const [index, site] of GAME_RESERVE_EXPEDITION_V107_SITES.entries()) {
+    const recorded = s.routeV107.siteRecords[index].recordedAt !== null;
+    if (index === 0) ctx.drawImage(bank.machinery, site.x - 120, 146, 240, 132);
+    ctx.strokeStyle = recorded ? "#8dcbb8" : "#e9ce94"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
+    label(ctx, recorded ? site.name + " · CONSIGNÉ" : site.name + " · RELEVÉ (2 s)", site.x, site.y - 70, recorded ? "#a1dac3" : "#e9ce94");
+  }
   for (const platform of platforms) {
-    const image = platform.x >= 1700 && platform.x < 3000 ? bank.industrialPlatform : bank.branch;
+    const image = platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
     ctx.drawImage(image, platform.x, platform.y - 3, platform.w, Math.min(115, platform.w * image.naturalHeight / image.naturalWidth));
     ctx.strokeStyle = "#a9c68988"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(platform.x + 8, platform.y); ctx.lineTo(platform.x + platform.w - 8, platform.y); ctx.stroke();
   }
@@ -69,11 +86,11 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     ctx.beginPath(); ctx.ellipse(track.x - 3, 444, 4, 1.7, -.3 * track.direction, 0, Math.PI * 2); ctx.ellipse(track.x + 5, 448, 4, 1.7, -.3 * track.direction, 0, Math.PI * 2); ctx.fill();
   } ctx.globalAlpha = 1;
   s.supplies.forEach((count, n) => {
-    if (count) componentMarker(ctx, GAME_RESERVE_V66_SUPPLIES[n], 437, count);
-    if (s.deniedSupplies?.[n]) label(ctx, s.deniedSupplies[n] + " lot(s) neutralisé(s)", GAME_RESERVE_V66_SUPPLIES[n], 477, "#d9bd9d");
+    if (count) componentMarker(ctx, supplies[n], 437, count);
+    if (s.deniedSupplies?.[n]) label(ctx, s.deniedSupplies[n] + " lot(s) neutralisé(s)", supplies[n], 477, "#d9bd9d");
   });
   for (let n = 0; n < s.ships.length; n++) {
-    const ship = s.ships[n], definition = GAME_RESERVE_V66_SHIPS[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
+    const ship = s.ships[n], definition = ships[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
     if (elapsed < 150) {
       const lift = ship.departedAt !== null ? Math.min(600, elapsed * 3.5) : ship.launch !== null && !reducedMotion ? Math.sin(s.tick / 8) * 1.4 : 0;
       // Measured native alpha rectangle; a 3/4 side cutout is retained without distorting its perspective.
@@ -85,7 +102,7 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   }
   for (let n = 0; n < s.humans.length; n++) {
     const h = s.humans[n]; if (h.status === "boarded" || h.status === "escaped") continue;
-    const definition = GAME_RESERVE_V66_PEOPLE[n], source = bank[definition.art];
+    const definition = people[n], source = bank[definition.art];
     const cell = h.status === "down" ? 5 : h.windup > 0 ? 3 : h.moving ? 1 + Math.floor(s.tick / 10) % 2 : 0;
     drawActorContactShadow(ctx, h.x, 438, h.status === "down" ? 34 : 13, 0, .85);
     ctx.save(); ctx.translate(h.x, 438); ctx.scale(h.facing, 1); ctx.globalAlpha = h.secured ? .52 : 1;

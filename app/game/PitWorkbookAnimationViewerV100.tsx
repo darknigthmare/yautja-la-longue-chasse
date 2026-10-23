@@ -7,6 +7,7 @@ import { drawPitWorkbookFrameV100, getPitWorkbookCameraV100, getPitWorkbookFight
 import styles from './PitWorkbookAnimationViewerV100.module.css';
 import { getPitWorkbookRuntimeBindingV105 } from './pitWorkbookRegistryV105';
 import { getPitWorkbookRuntimeBindingV106 } from './pitWorkbookRegistryV106';
+import {getPitWorkbookConclusionSupportV107} from './pitWorkbookRegistryV107';
 
 /** Public viewer of admitted body artwork. The clock belongs to this viewer,
  * never to a match, training recording, inventory or replay. */
@@ -29,8 +30,13 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
   const status = !native ? 'unavailable' : !timeline.length ? 'missing-facing' : !bank ? 'loading' : inspected ? 'ready' : 'failed';
   const activeInCombat = !!native && (native.admission.combatClipIds?.length || native.admission.atlasId === 'feral-actions-v59');
   const sourceBinding = getPitWorkbookRuntimeBindingV106(fighterId, action.id);
-  const partnerStudy = ['TH_F', 'TH_B', 'FATALITE_1', 'FATALITE_2', 'CLEMENCE'].includes(action.key);
-  const availability = sourceBinding === 'presentation'
+  const conclusionSupportV107 = getPitWorkbookConclusionSupportV107(fighterId, action.id);
+  const partnerStudy = ['TH_F', 'TH_B', 'FATALITE_1', 'FATALITE_2', 'CLEMENCE'].includes(action.key) && !conclusionSupportV107;
+  const availability = conclusionSupportV107 === 'conditional-scene'
+    ? 'Cette conclusion anime Scar face au véritable adversaire après sa victoire finale, dans le duel alternatif avec balise. Le contexte hostile adulte, l’équipement et les réglages de violence doivent l’autoriser.'
+    : conclusionSupportV107 === 'partial-scene'
+      ? 'Le duel alternatif synchronise le véritable adversaire, le retrait du dispositif et la récupération de sa balise. Le désarmement d’une arme offensive prévu par le classeur reste à réaliser.'
+      : sourceBinding === 'presentation'
     ? 'Cette présentation accompagne les entrées, résultats ou provocations du duel avec les règles du classeur.'
     : sourceBinding === 'normal' || sourceBinding === 'move'
       ? 'Ce mouvement accompagne une action disponible en duel avec les règles du classeur.'
@@ -75,7 +81,8 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
   const reset = () => { setPlaying(false); setIndex(0); };
   return <section className={styles.root} aria-label={`Animations de ${PIT_FIGHTERS[fighterId].name}`} data-pit-animation-viewer-v100
     data-fighter={fighterId} data-action={action.id} data-facing={facing} data-status={status} data-drawing-index={current}
-    data-runtime-binding-v105={getPitWorkbookRuntimeBindingV105(fighterId, action.id) ?? 'study'} data-runtime-binding-v106={sourceBinding ?? 'study'}>
+    data-runtime-binding-v105={getPitWorkbookRuntimeBindingV105(fighterId, action.id) ?? 'study'} data-runtime-binding-v106={sourceBinding ?? 'study'}
+    data-runtime-binding-v107={conclusionSupportV107 ?? sourceBinding ?? 'study'}>
     <h4>Animations de {PIT_FIGHTERS[fighterId].name}</h4>
     <p>Observez ses mouvements et ses présentations dans son apparence d’origine.</p>
     {native?.admission.contextLabel ? <p className={styles.note}>{native.admission.contextLabel}</p> : null}
