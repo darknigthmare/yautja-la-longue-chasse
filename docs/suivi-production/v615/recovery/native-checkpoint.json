@@ -1,0 +1,1102 @@
+{
+  "schemaVersion": "yautja-v615-native-checkpoint-1",
+  "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "expectedCount": 18,
+  "acceptedCount": 7,
+  "completionState": "native-images-in-progress",
+  "noteFR": "Les PNG acceptés et leurs reçus sont sauvegardés ; le suivi du lot complet est construit séparément.",
+  "assets": [
+    {
+      "id": "super-predators--sucklings-02",
+      "groupId": "super-predators",
+      "groupFR": "Lignée des Super Predators",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 28,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "olive charbon",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/super-predators/sucklings-02.png",
+      "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+      "bytes": 2800726,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        1,
+        1010,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        58,
+        131,
+        974,
+        1479
+      ],
+      "alphaZeroPixels": 738314,
+      "alphaSolidPixels": 775685,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.056640625,
+        0.08528645833333333,
+        0.048828125,
+        0.037109375
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-e129ec1d-6c3b-473e-ad52-2c1410d4e3eb.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "8befa8d99a44f6ca90d3fc895a631184d7ae474f",
+      "generatedAtUtc": "2026-10-23T17:01:02.451Z",
+      "receiptCreatedAtUtc": "2026-10-23T16:59:49.533Z",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "L’heure generatedAtUtc est l’observation du retour de l’outil ; elle ne constitue pas un horodatage serveur certifié.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation olive charbon. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation olive charbon. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation olive charbon. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "super-predators--sucklings-01",
+          "groupId": "super-predators",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/491191cab73f7c29d523dfc7c98cbcee12cc74bd684cbca2e3b938d85960b051.png",
+          "sha256": "491191cab73f7c29d523dfc7c98cbcee12cc74bd684cbca2e3b938d85960b051",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2612412,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "bc76e3e899f29a5b3a319395c61b1e4e4bc8df69",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "super-predators--blooded-01",
+          "groupId": "super-predators",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12.png",
+          "sha256": "fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2423314,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "3c99dda7bd52bb863f498520b0e75f677b515ebc",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation olive charbon. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+          "inputReferenceNames": [
+            "491191cab73f7c29d523dfc7c98cbcee12cc74bd684cbca2e3b938d85960b051.png",
+            "fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12.png"
+          ],
+          "nativeOutputName": "exec-e129ec1d-6c3b-473e-ad52-2c1410d4e3eb.png",
+          "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+          "generatedAtUtc": "2026-10-23T17:01:02.451Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+      "receiptSha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": [
+          "Références infant01 et morphologie adulte du même groupe inspectées avant soumission. Nouveau tout-petit assis, tête proportionnellement grande et membres courts ; aucune musculature adulte.",
+          "Quatre mandibules biologiques en développement, reliefs crâniens allongés et appendices crâniens courts. Tunique ample à manches longues et pantalon opaques ; deux mains tiennent la large bande de tissu bleu terne.",
+          "Mains et pieds entiers dans le cadre, aucun armement ni prothèse. PNG natif copié à l’identique sans correction des pixels."
+        ],
+        "limitationsFR": [
+          "La peau présente un fond beige olive clair et un fort moucheté sombre ; l’éclairage donne un rendu plus clair que l’intitulé olive charbon prévu.",
+          "Le textile occulte une partie des doigts ; le nombre exact de doigts ne peut pas être certifié sur ce rendu. Fidélité canonique 1:1 non certifiée.",
+          "Marges visibles au seuil alpha >20 : left 5.66 %, top 8.53 %, right 4.88 %, bottom 3.71 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "feral--sucklings-02",
+      "groupId": "feral",
+      "groupFR": "Lignée Feral",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 228,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "cuivre terre",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/feral/sucklings-02.png",
+      "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+      "bytes": 2635249,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        3,
+        1012,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        51,
+        169,
+        1008,
+        1420
+      ],
+      "alphaZeroPixels": 811187,
+      "alphaSolidPixels": 711734,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.0498046875,
+        0.11002604166666667,
+        0.015625,
+        0.07552083333333333
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-e4e5fe1b-2730-4e89-9cc3-bd5a8560f551.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "43c2e78da82711581780d238e1aedba0e199717f",
+      "generatedAtUtc": "2026-10-23T17:04:06.948Z",
+      "receiptCreatedAtUtc": "2026-10-23T17:02:51.283Z",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "L’heure generatedAtUtc est l’observation du retour de l’outil ; elle ne constitue pas un horodatage serveur certifié.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation cuivre terre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation cuivre terre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation cuivre terre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "feral--sucklings-01",
+          "groupId": "feral",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/181b54d9c6d9f2709d4a233cb7243618864a6d77373c6e7a9bf151f1a6eafaad.png",
+          "sha256": "181b54d9c6d9f2709d4a233cb7243618864a6d77373c6e7a9bf151f1a6eafaad",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2524593,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "b28d38930d742f225f995cd76151072bb5768b6e",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "feral--blooded-01",
+          "groupId": "feral",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "sha256": "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2161194,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "8d008eb0a7db3c02f28490f81469169695210b26",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation cuivre terre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+          "inputReferenceNames": [
+            "181b54d9c6d9f2709d4a233cb7243618864a6d77373c6e7a9bf151f1a6eafaad.png",
+            "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png"
+          ],
+          "nativeOutputName": "exec-e4e5fe1b-2730-4e89-9cc3-bd5a8560f551.png",
+          "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+          "generatedAtUtc": "2026-10-23T17:04:06.948Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+      "receiptSha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": [
+          "Références infant01 et morphologie adulte Feral inspectées avant soumission. Tout-petit aux proportions immatures, assis de manière stable avec une grande tête au crâne bas prolongé vers l’arrière.",
+          "Quatre petites mandibules biologiques, visage découvert, peau cuivrée mouchetée et appendices crâniens courts. Tunique ample à manches longues et pantalon entièrement opaques ; bande textile bleu terne tenue à deux mains.",
+          "Deux pieds complets et deux mains visibles, sans armement, armure adulte ni implant. PNG natif copié à l’identique."
+        ],
+        "limitationsFR": [
+          "La bande textile et la pose des mains occultent certains doigts ; aucun nombre anatomique exhaustif n’est certifié.",
+          "Création infantile du projet à partir des références historiques ; fidélité canonique 1:1 non certifiée.",
+          "Marges visibles au seuil alpha >20 : left 4.98 %, top 11.00 %, right 1.56 %, bottom 7.55 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "ul-khar--sucklings-02",
+      "groupId": "ul-khar",
+      "groupFR": "Ul-Khar — Habitants des forges profondes",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 1228,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "gris chaud moucheté",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/ul-khar/sucklings-02.png",
+      "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+      "bytes": 2719776,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        9,
+        1023,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        68,
+        212,
+        982,
+        1430
+      ],
+      "alphaZeroPixels": 772944,
+      "alphaSolidPixels": 758595,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.06640625,
+        0.13802083333333334,
+        0.041015625,
+        0.06901041666666667
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-aaf032d3-c5ff-40ee-a29d-872e5e4f8213.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "36266fb62baaafc0f21a329c3f5618e83e1b191c",
+      "generatedAtUtc": "2026-10-23T17:00:37.430Z",
+      "receiptCreatedAtUtc": "2026-10-23T16:59:46.830619Z",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "generatedAtUtc désigne l’observation du retour de l’outil, pas une heure exacte de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris chaud moucheté. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection des références : reprendre le crâne large et aplati avec front en surplomb arrondi, les quatre petites mandibules, les ponctuations épaisses de peau et les courts appendices crâniens des Ul-Khar ; ces parties sont de la peau vivante, jamais de la roche. Le nouvel enfant est assis, avec une tête proportionnellement grande et un petit corps doux immature ; ne pas recopier la pose debout de l’ancienne référence. Petits chaussons souples entièrement fermés pour garder les deux pieds entiers lisibles. Tunique et pantalon civils amples en tissu opaque, pas de filet, de cuirasse ni d’attaches métalliques. La large bande de tissu bleu terne passe entre deux mains clairement visibles devant le ventre. Réserver généreusement 12 % de vide transparent autour de la silhouette, en haut, en bas et sur les côtés. Vue de trois quarts douce, proportions réellement infantiles, rendu réaliste cohérent avec le jeu.\n",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris chaud moucheté. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection des références : reprendre le crâne large et aplati avec front en surplomb arrondi, les quatre petites mandibules, les ponctuations épaisses de peau et les courts appendices crâniens des Ul-Khar ; ces parties sont de la peau vivante, jamais de la roche. Le nouvel enfant est assis, avec une tête proportionnellement grande et un petit corps doux immature ; ne pas recopier la pose debout de l’ancienne référence. Petits chaussons souples entièrement fermés pour garder les deux pieds entiers lisibles. Tunique et pantalon civils amples en tissu opaque, pas de filet, de cuirasse ni d’attaches métalliques. La large bande de tissu bleu terne passe entre deux mains clairement visibles devant le ventre. Réserver généreusement 12 % de vide transparent autour de la silhouette, en haut, en bas et sur les côtés. Vue de trois quarts douce, proportions réellement infantiles, rendu réaliste cohérent avec le jeu.\n",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris chaud moucheté. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "ul-khar--sucklings-01",
+          "groupId": "ul-khar",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/2a0e300cd7f39cd2d52111ec5a2bc2273b4734b1681313f4726de9cdd081b6b6.png",
+          "sha256": "2a0e300cd7f39cd2d52111ec5a2bc2273b4734b1681313f4726de9cdd081b6b6",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2540016,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "331cee15bf44c2ee906d58d716b4a15b385b4bb9",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "ul-khar--blooded-01",
+          "groupId": "ul-khar",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b.png",
+          "sha256": "949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2594444,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "83b6e8a51c479536a3f98950aca7932333f66d08",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris chaud moucheté. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection des références : reprendre le crâne large et aplati avec front en surplomb arrondi, les quatre petites mandibules, les ponctuations épaisses de peau et les courts appendices crâniens des Ul-Khar ; ces parties sont de la peau vivante, jamais de la roche. Le nouvel enfant est assis, avec une tête proportionnellement grande et un petit corps doux immature ; ne pas recopier la pose debout de l’ancienne référence. Petits chaussons souples entièrement fermés pour garder les deux pieds entiers lisibles. Tunique et pantalon civils amples en tissu opaque, pas de filet, de cuirasse ni d’attaches métalliques. La large bande de tissu bleu terne passe entre deux mains clairement visibles devant le ventre. Réserver généreusement 12 % de vide transparent autour de la silhouette, en haut, en bas et sur les côtés. Vue de trois quarts douce, proportions réellement infantiles, rendu réaliste cohérent avec le jeu.\n",
+          "inputReferenceNames": [
+            "2a0e300cd7f39cd2d52111ec5a2bc2273b4734b1681313f4726de9cdd081b6b6.png",
+            "949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b.png"
+          ],
+          "nativeOutputName": "exec-aaf032d3-c5ff-40ee-a29d-872e5e4f8213.png",
+          "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+          "bytes": 2719776,
+          "generatedAtUtc": "2026-10-23T17:00:37.430Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/ul-khar--sucklings-02.json",
+      "receiptSha256": "bb991f76317e31834e9fde89bdf42b86ce93d39386c660c23772d3cf225e6c3a",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Tout-petit assis avec tête large aplatie en surplomb, quatre mandibules organiques, arcades épaisses et peau vivante chaude mouchetée. Proportions immatures avec tête relativement grande, membres courts et absence de musculature adulte. Deux mains séparées saisissent une grande bande textile bleu terne. Tunique ample opaque à manches longues, pantalon opaque et deux chaussons complets ; torse, abdomen et bassin entièrement couverts. Aucun implant, armement, armure adulte ou autre personnage. Le teint est chaud gris-beige, plus beige que le gris froid ; aucune lave, pierre ou machinerie. La posture assise et les vêtements distinguent la variante de la référence debout. Toutes les extrémités visibles restent dans le cadre ; les marges réelles sont mesurées séparément.\n",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène. Variante infantile inventée pour le projet, fidélité canonique 1:1 non certifiée.",
+          "La cible de 8 % de marge vide n’est pas atteinte sur tous les côtés ; la silhouette visible au seuil alpha > 20 reste entièrement dans le cadre.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "sha-rhess--sucklings-02",
+      "groupId": "sha-rhess",
+      "groupFR": "Sha-Rhess — Riverains des racines",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 1428,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "vert gris",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Reprendre les proportions et le visage Sha-Rhess approuvés. Les adaptations au marais sont du projet ; aucune branchie ajoutée automatiquement au Yautja.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/sha-rhess/sucklings-02.png",
+      "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+      "bytes": 2054398,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        31,
+        1024,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        212,
+        291,
+        939,
+        1351
+      ],
+      "alphaZeroPixels": 1056741,
+      "alphaSolidPixels": 477434,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.20703125,
+        0.189453125,
+        0.0830078125,
+        0.12044270833333333
+      ],
+      "targetEightPercentMarginMet": true,
+      "nativeOutputName": "exec-c89814e6-4c36-4659-affa-ea9887fe3cef.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "64e8907958eb00356ce8519ea7cfab369e7cc937",
+      "generatedAtUtc": "2026-10-23T17:02:52.806Z",
+      "receiptCreatedAtUtc": "2026-10-23T17:01:46.794005Z",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "generatedAtUtc désigne l’observation du retour de l’outil, pas une heure exacte de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Sha-Rhess — Riverains des racines, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Reprendre les proportions et le visage Sha-Rhess approuvés. Les adaptations au marais sont du projet ; aucune branchie ajoutée automatiquement au Yautja. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation vert gris. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : la référence infantile debout paraît déjà plus grande que le stade demandé ; représenter ici un véritable tout-petit assis, tête proportionnellement grande, membres courts, doigts immatures et muscles doux. Garder le crâne Sha-Rhess allongé et fuselé avec reliefs longitudinaux, les quatre petites mandibules et les appendices crâniens fins en début de développement. Peau VERT GRIS, pas ocre jaune. Aucune branchie ni aileron. Deux mains tiennent une grande bande de tissu bleu terne devant le ventre ; la tunique ample à manches longues et le pantalon sont opaques. Les deux pieds entiers reposent tranquillement devant le bassin, sans croiser ou masquer les mains. Aucun bijou métallique ni équipement adulte. Réduire la silhouette pour qu’elle occupe au plus 70 % du cadre entier : large espace transparent visible tout autour, au moins 12 % de vide sur les quatre côtés. Aucun halo lumineux ou brouillard coloré autour de la découpe.\n",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Sha-Rhess — Riverains des racines, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Reprendre les proportions et le visage Sha-Rhess approuvés. Les adaptations au marais sont du projet ; aucune branchie ajoutée automatiquement au Yautja. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation vert gris. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : la référence infantile debout paraît déjà plus grande que le stade demandé ; représenter ici un véritable tout-petit assis, tête proportionnellement grande, membres courts, doigts immatures et muscles doux. Garder le crâne Sha-Rhess allongé et fuselé avec reliefs longitudinaux, les quatre petites mandibules et les appendices crâniens fins en début de développement. Peau VERT GRIS, pas ocre jaune. Aucune branchie ni aileron. Deux mains tiennent une grande bande de tissu bleu terne devant le ventre ; la tunique ample à manches longues et le pantalon sont opaques. Les deux pieds entiers reposent tranquillement devant le bassin, sans croiser ou masquer les mains. Aucun bijou métallique ni équipement adulte. Réduire la silhouette pour qu’elle occupe au plus 70 % du cadre entier : large espace transparent visible tout autour, au moins 12 % de vide sur les quatre côtés. Aucun halo lumineux ou brouillard coloré autour de la découpe.\n",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Sha-Rhess — Riverains des racines, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Reprendre les proportions et le visage Sha-Rhess approuvés. Les adaptations au marais sont du projet ; aucune branchie ajoutée automatiquement au Yautja. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation vert gris. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "sha-rhess--sucklings-01",
+          "groupId": "sha-rhess",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/96b716d4124aa44f476b7e0116de07ec3e462f55089878413e9f4300635c028d.png",
+          "sha256": "96b716d4124aa44f476b7e0116de07ec3e462f55089878413e9f4300635c028d",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2217860,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "5705a4f07937123bee3332a252df4adfb19a56db",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "sha-rhess--blooded-01",
+          "groupId": "sha-rhess",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/56b26a95ec905f1484fc7b72f6090357c36007c62d30bc8640b9af9701b6c777.png",
+          "sha256": "56b26a95ec905f1484fc7b72f6090357c36007c62d30bc8640b9af9701b6c777",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2194344,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "fd36672c7fb9df98118099797354f28fc62849e5",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Sha-Rhess — Riverains des racines, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Reprendre les proportions et le visage Sha-Rhess approuvés. Les adaptations au marais sont du projet ; aucune branchie ajoutée automatiquement au Yautja. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation vert gris. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : la référence infantile debout paraît déjà plus grande que le stade demandé ; représenter ici un véritable tout-petit assis, tête proportionnellement grande, membres courts, doigts immatures et muscles doux. Garder le crâne Sha-Rhess allongé et fuselé avec reliefs longitudinaux, les quatre petites mandibules et les appendices crâniens fins en début de développement. Peau VERT GRIS, pas ocre jaune. Aucune branchie ni aileron. Deux mains tiennent une grande bande de tissu bleu terne devant le ventre ; la tunique ample à manches longues et le pantalon sont opaques. Les deux pieds entiers reposent tranquillement devant le bassin, sans croiser ou masquer les mains. Aucun bijou métallique ni équipement adulte. Réduire la silhouette pour qu’elle occupe au plus 70 % du cadre entier : large espace transparent visible tout autour, au moins 12 % de vide sur les quatre côtés. Aucun halo lumineux ou brouillard coloré autour de la découpe.\n",
+          "inputReferenceNames": [
+            "96b716d4124aa44f476b7e0116de07ec3e462f55089878413e9f4300635c028d.png",
+            "56b26a95ec905f1484fc7b72f6090357c36007c62d30bc8640b9af9701b6c777.png"
+          ],
+          "nativeOutputName": "exec-c89814e6-4c36-4659-affa-ea9887fe3cef.png",
+          "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+          "bytes": 2054398,
+          "generatedAtUtc": "2026-10-23T17:02:52.806Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/sha-rhess--sucklings-02.json",
+      "receiptSha256": "41ae87656d6b7e67aef93afac7ebe3774ca0b872da3804ab06fc65359b77eb58",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Tout-petit Sha-Rhess assis, tête proportionnellement grande avec crâne fuselé et reliefs longitudinaux, quatre branches mandibulaires en développement et appendices crâniens fins. Deux bras et deux jambes immatures sans musculature adulte. Deux mains saisissent la grande bande textile ; une partie des doigts est naturellement occultée par la prise du tissu. Tunique ample à manches longues et pantalon opaques couvrant torse, abdomen et bassin ; pieds entiers visibles. Peau organique mouchetée vert olive grisé avec éclairage chaud, non uniformément grise. Aucune branchie ni aileron, aucun implant, armement, casque ou autre personnage. Les ornements de tissu sont cousus ; aucun équipement de combat. Les extrémités visibles restent entièrement dans le cadre.\n",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène. Variante infantile inventée pour le projet, fidélité canonique 1:1 non certifiée.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "kaal-or--sucklings-02",
+      "groupId": "kaal-or",
+      "groupFR": "Kaal-Or — Gens de la haute neige",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 1628,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "crème cendrée",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/kaal-or/sucklings-02.png",
+      "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+      "bytes": 2412433,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        23,
+        1004,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        120,
+        212,
+        993,
+        1442
+      ],
+      "alphaZeroPixels": 923423,
+      "alphaSolidPixels": 615356,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.1171875,
+        0.13802083333333334,
+        0.0302734375,
+        0.061197916666666664
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-22211be5-8753-4a84-80c2-4a885e51b4d9.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "355041650ee41a15e56c00644a5ad72854a1419b",
+      "generatedAtUtc": "2026-10-23T17:05:06.052Z",
+      "receiptCreatedAtUtc": "2026-10-23T17:03:57.544137Z",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "generatedAtUtc désigne l’observation du retour de l’outil, pas une heure exacte de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation crème cendrée. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : garder le visage Kaal-Or ROND, le crâne bombé à arcades épaisses, les quatre petites mandibules crochues et les courts appendices crâniens épais. Le corps est compact, doux et réellement immature ; tête très grande par rapport au torse, membres courts. Peau crème cendrée mouchetée, pas de museau allongé ni de cornes. Contrairement à la pose debout des références, le nouvel enfant est calmement assis, deux jambes courtes devant lui, deux mains tenant une grande bande de tissu bleu terne. Tunique ample à manches longues et pantalon entièrement opaques ; deux chaussons souples fermés et entiers. Aucun plastron, cuirasse ou insigne militaire. Réduire le personnage et le textile au centre du cadre, au plus 70 % de sa largeur et de sa hauteur ; laisser une vraie bordure vide transparente d’au moins 12 % sur chaque côté. Aucun halo, brouillard, décor ou sol autour de lui.\n",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation crème cendrée. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : garder le visage Kaal-Or ROND, le crâne bombé à arcades épaisses, les quatre petites mandibules crochues et les courts appendices crâniens épais. Le corps est compact, doux et réellement immature ; tête très grande par rapport au torse, membres courts. Peau crème cendrée mouchetée, pas de museau allongé ni de cornes. Contrairement à la pose debout des références, le nouvel enfant est calmement assis, deux jambes courtes devant lui, deux mains tenant une grande bande de tissu bleu terne. Tunique ample à manches longues et pantalon entièrement opaques ; deux chaussons souples fermés et entiers. Aucun plastron, cuirasse ou insigne militaire. Réduire le personnage et le textile au centre du cadre, au plus 70 % de sa largeur et de sa hauteur ; laisser une vraie bordure vide transparente d’au moins 12 % sur chaque côté. Aucun halo, brouillard, décor ou sol autour de lui.\n",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation crème cendrée. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "kaal-or--sucklings-01",
+          "groupId": "kaal-or",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/795884882f9061aa6fee3aa55b950ee38057518648f79e979c92d03d8a6cf5cc.png",
+          "sha256": "795884882f9061aa6fee3aa55b950ee38057518648f79e979c92d03d8a6cf5cc",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2609702,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "ac02843d8c84b5942ec6178e7ded2f355c08f40a",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "kaal-or--blooded-01",
+          "groupId": "kaal-or",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2.png",
+          "sha256": "2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2578636,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "54a95846c06c0006d0d6a4a2c7a820d09f5b0736",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Kaal-Or — Gens de la haute neige, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Corps compact et visage rond aux mandibules crochues selon la référence. Aucun visage classique allongé, pas de cornes ajoutées. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation crème cendrée. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.\nClarifications après inspection : garder le visage Kaal-Or ROND, le crâne bombé à arcades épaisses, les quatre petites mandibules crochues et les courts appendices crâniens épais. Le corps est compact, doux et réellement immature ; tête très grande par rapport au torse, membres courts. Peau crème cendrée mouchetée, pas de museau allongé ni de cornes. Contrairement à la pose debout des références, le nouvel enfant est calmement assis, deux jambes courtes devant lui, deux mains tenant une grande bande de tissu bleu terne. Tunique ample à manches longues et pantalon entièrement opaques ; deux chaussons souples fermés et entiers. Aucun plastron, cuirasse ou insigne militaire. Réduire le personnage et le textile au centre du cadre, au plus 70 % de sa largeur et de sa hauteur ; laisser une vraie bordure vide transparente d’au moins 12 % sur chaque côté. Aucun halo, brouillard, décor ou sol autour de lui.\n",
+          "inputReferenceNames": [
+            "795884882f9061aa6fee3aa55b950ee38057518648f79e979c92d03d8a6cf5cc.png",
+            "2148839994bd66549a9b3169b35168eb29be49728a56add07262d2444e5c6ce2.png"
+          ],
+          "nativeOutputName": "exec-22211be5-8753-4a84-80c2-4a885e51b4d9.png",
+          "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+          "bytes": 2412433,
+          "generatedAtUtc": "2026-10-23T17:05:06.052Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/kaal-or--sucklings-02.json",
+      "receiptSha256": "6627750ffe16c7cbe8f7b35c1570067805d8e9ba67477522d8d0f04d6d6cc4a7",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Tout-petit Kaal-Or compact assis, tête bombée proportionnellement grande, visage rond et quatre petites mandibules crochues. Peau crème cendrée mouchetée, appendices crâniens courts et épais, aucune corne ni museau classique allongé. Deux mains organiques tiennent la grande bande textile bleu terne ; certains doigts sont occultés par la prise. Tunique ample à manches longues, pantalon opaque et deux chaussons souples complets ; torse, abdomen et bassin entièrement couverts. Membres courts, corps doux et aucune musculature adulte. Aucun implant, équipement militaire, armement ou autre figure. La silhouette, les mains, les chaussons et le tissu restent entièrement cadrés.\n",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène. Variante infantile inventée pour le projet, fidélité canonique 1:1 non certifiée.",
+          "La cible de 8 % de marge vide n’est pas atteinte sur tous les côtés ; la silhouette visible au seuil alpha > 20 reste entièrement dans le cadre.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "oni-kok--sucklings-02",
+      "groupId": "oni-kok",
+      "groupFR": "Lignée Oni — chasseur du chapitre ninja de Killer of Killers",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 2428,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "gris ocre",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/oni-kok/sucklings-02.png",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "bytes": 2063719,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        143,
+        90,
+        990,
+        1518
+      ],
+      "contentBoundsAlpha20": [
+        164,
+        229,
+        923,
+        1318
+      ],
+      "alphaZeroPixels": 1062353,
+      "alphaSolidPixels": 485527,
+      "edgeAlphaMax": 0,
+      "marginsFraction": [
+        0.16015625,
+        0.14908854166666666,
+        0.0986328125,
+        0.14192708333333334
+      ],
+      "targetEightPercentMarginMet": true,
+      "nativeOutputName": "exec-62c53038-d562-49de-a268-0b85c522ed7a.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "bbb8ea5c8fc72d40dd2f21171a584f2a2d614d2d",
+      "generatedAtUtc": "2026-10-23T17:02:41.861Z",
+      "receiptCreatedAtUtc": "2026-10-23T17:03:23.031921+00:00",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+      "promptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+      "acceptedOutputPromptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris ocre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. PRIORITÉ ONI : exactement deux mandibules inférieures recourbées en développement et aucune paire supérieure. Crâne étroit avec reliefs fins naissants. Adapter les proportions à un tout-petit sans transformer le visage en Yautja classique à quatre mandibules.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "oni-kok--sucklings-01",
+          "groupId": "oni-kok",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/72d12b1c597d51b798c09c8d535e56805419a297a32c4d2b9ba5b76276dd25f3.png",
+          "sha256": "72d12b1c597d51b798c09c8d535e56805419a297a32c4d2b9ba5b76276dd25f3",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2699603,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "b996b6ae9b641f47f17a9a683ca9d7db6fa2283b",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "oni-kok--blooded-01",
+          "groupId": "oni-kok",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c.png",
+          "sha256": "92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2040097,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "1fd1e29857b82235533ddd96f2cc17ba18f38e76",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris ocre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. PRIORITÉ ONI : exactement deux mandibules inférieures recourbées en développement et aucune paire supérieure. Crâne étroit avec reliefs fins naissants. Adapter les proportions à un tout-petit sans transformer le visage en Yautja classique à quatre mandibules. La référence infantile a été inspectée : garder son nombre de mandibules, mais créer un nouvel individu avec vêtement civil gris chaud et bordures bleu terne. Conserver la tête entière à distance des bords et toutes les mains et chaussures visibles. Fond alpha vide propre, sans halo coloré de la référence.",
+          "inputReferenceNames": [
+            "oni-kok--sucklings-01",
+            "oni-kok--blooded-01"
+          ],
+          "accepted": false,
+          "acceptedForCurrentOutput": false,
+          "nativeOutputName": "exec-eaafbaaa-fe2c-471f-ab8c-b38cdb9bccde.png",
+          "sha256": "786c301c499bea48d3b9d46e2a2649f87fc1e5c6b08aefd945adb701473133a0",
+          "bytes": 2796599,
+          "generatedAtUtc": "2026-10-23T17:01:01.475Z",
+          "rejectionReasonFR": "Cadrage trop proche du bord droit ; marge cible de 8 % non atteinte."
+        },
+        {
+          "attempt": 2,
+          "promptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+          "inputReferenceNames": [
+            "oni-kok--sucklings-02--attempt-1"
+          ],
+          "accepted": true,
+          "acceptedForCurrentOutput": true,
+          "nativeOutputName": "exec-62c53038-d562-49de-a268-0b85c522ed7a.png",
+          "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+          "bytes": 2063719,
+          "generatedAtUtc": "2026-10-23T17:02:41.861Z"
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/oni-kok--sucklings-02.json",
+      "receiptSha256": "38f97fe80879e61c301e5994ae2272c0d18142bf25402481980f7b87f1f1f985",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Jeune Oni assis en tunique ample et pantalon opaques, deux mandibules inférieures distinctes, front sillonné immature et visage biologique découvert. Les deux mains tiennent la bande textile bleue ; deux jambes courtes et chaussures civiles entières. La deuxième génération élargit le cadre autour de la silhouette et du tissu.",
+        "referenceReviewFR": "La référence infantile présente déjà les deux seules mandibules inférieures et une pose civile ; l’adulte est utilisé uniquement pour le sillon frontal et la topologie. Leurs équipements et le halo apparent ne sont pas des éléments à importer.",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène.",
+          "Jeune âge inventé pour le projet à partir du groupe ; aucune certification canonique 1:1 ni preuve de sexe par le rendu seul.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "grendel-kok--sucklings-02",
+      "groupId": "grendel-kok",
+      "groupFR": "Lignée Grendel / Jotun — chasseur viking de Killer of Killers",
+      "familyId": "sucklings",
+      "familyFR": "Sucklings",
+      "variant": 2,
+      "nameFR": "Veilleur du tissu",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 2628,
+      "plannedAppearance": {
+        "plannedNameFR": "Veilleur du tissu",
+        "lifeStage": "infant",
+        "ageDirectionFR": "proportions réellement infantiles, tête relativement grande, membres courts et musculature immature",
+        "individualDirectionFR": "arcades un peu plus épaisses dans les limites du groupe",
+        "sexDirectionFR": "individu féminin",
+        "skinDirectionFR": "brun cendré",
+        "armorDirectionFR": "aucune armure adulte",
+        "accentDirectionFR": "bleu terne",
+        "faceState": "unmasked",
+        "poseFR": "assis de manière stable, membres entiers et vêtement opaque",
+        "morphologyFR": "Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population.",
+        "equipmentFR": "Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/sucklings-v615/grendel-kok/sucklings-02.png",
+      "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+      "bytes": 2154315,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        48,
+        984,
+        1504
+      ],
+      "contentBoundsAlpha20": [
+        161,
+        277,
+        933,
+        1304
+      ],
+      "alphaZeroPixels": 1039727,
+      "alphaSolidPixels": 497758,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.1572265625,
+        0.18033854166666666,
+        0.0888671875,
+        0.15104166666666666
+      ],
+      "targetEightPercentMarginMet": true,
+      "nativeOutputName": "exec-1ae5a172-50b2-4ec0-b9dd-28b32190dacc.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "cb26d0403af8fd0d79301779829bac990bc17ec7",
+      "generatedAtUtc": "2026-10-23T17:05:17.867Z",
+      "receiptCreatedAtUtc": "2026-10-23T17:05:39.797565+00:00",
+      "verifiedAtUtc": "2026-10-23T17:06:33.992Z",
+      "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation brun cendré. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. Les références ont été inspectées : l’adulte sert uniquement à la forme crânienne, ses muscles et son thorax ne sont pas à copier. Garder deux bras organiques immatures, quatre petites mandibules et les membres courts d’un enfant. Cadrer volontairement petit : toute la silhouette et le tissu sont contenus au centre dans x=170 à 854 et y=250 à 1286, laissant une grande zone transparente autour. Vêtement civil à manches longues couvrant aussi les épaules, pantalon opaque ; aucune épaule dénudée copiée de la référence. La bande de tissu bleu terne est clairement tenue entre les deux mains et séparée du vêtement.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation brun cendré. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. Les références ont été inspectées : l’adulte sert uniquement à la forme crânienne, ses muscles et son thorax ne sont pas à copier. Garder deux bras organiques immatures, quatre petites mandibules et les membres courts d’un enfant. Cadrer volontairement petit : toute la silhouette et le tissu sont contenus au centre dans x=170 à 854 et y=250 à 1286, laissant une grande zone transparente autour. Vêtement civil à manches longues couvrant aussi les épaules, pantalon opaque ; aucune épaule dénudée copiée de la référence. La bande de tissu bleu terne est clairement tenue entre les deux mains et séparée du vêtement.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation brun cendré. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "grendel-kok--sucklings-01",
+          "groupId": "grendel-kok",
+          "role": "infant-stage-and-rendering",
+          "repoPath": "public/game/imports/v85/library/00d47f25b12d0085bc68f7c4a47afe38f99cf0def45873beb2a554adfed3efe3.png",
+          "sha256": "00d47f25b12d0085bc68f7c4a47afe38f99cf0def45873beb2a554adfed3efe3",
+          "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+          "bytes": 2818697,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "9e42e25fc06469c5b7e2874344e2c481ae3fbf9a",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        },
+        {
+          "id": "grendel-kok--blooded-01",
+          "groupId": "grendel-kok",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/f1bd46c3d2c00c776a689b9bc688a00c55a607e676faec1b6b3e3eec0b0dbd27.png",
+          "sha256": "f1bd46c3d2c00c776a689b9bc688a00c55a607e676faec1b6b3e3eec0b0dbd27",
+          "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+          "bytes": 2687406,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "a31c254eef7ad993fce516b9d723ed36e805a590",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "visualReviewRequiredBeforeGeneration": true,
+          "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation brun cendré. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. Les références ont été inspectées : l’adulte sert uniquement à la forme crânienne, ses muscles et son thorax ne sont pas à copier. Garder deux bras organiques immatures, quatre petites mandibules et les membres courts d’un enfant. Cadrer volontairement petit : toute la silhouette et le tissu sont contenus au centre dans x=170 à 854 et y=250 à 1286, laissant une grande zone transparente autour. Vêtement civil à manches longues couvrant aussi les épaules, pantalon opaque ; aucune épaule dénudée copiée de la référence. La bande de tissu bleu terne est clairement tenue entre les deux mains et séparée du vêtement.",
+          "inputReferenceNames": [
+            "grendel-kok--sucklings-01",
+            "grendel-kok--blooded-01"
+          ],
+          "accepted": true,
+          "acceptedForCurrentOutput": true,
+          "nativeOutputName": "exec-1ae5a172-50b2-4ec0-b9dd-28b32190dacc.png",
+          "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+          "bytes": 2154315,
+          "generatedAtUtc": "2026-10-23T17:05:17.867Z"
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v615/receipts/grendel-kok--sucklings-02.json",
+      "receiptSha256": "7c84d075db1dd7272a137b200e099aa4f1a4560814082e05b7e400a8d71d0ede",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Jeune Grendel trapu assis, crâne large et quatre petites mandibules, deux bras organiques complets. Tunique ample à manches longues et pantalon opaques ; bande textile bleue tenue à deux hauteurs entre les mains. Les deux jambes courtes et les pieds sont entièrement visibles, sans armure ni amputation adulte.",
+        "referenceReviewFR": "La référence infantile est assise et immature ; ses épaules découvertes ne sont pas reprises. La référence adulte fournit seulement la largeur crânienne et la topologie, sans transférer musculature massive, équipement ni amputation.",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène.",
+          "Jeune âge inventé pour le projet à partir du groupe ; aucune certification canonique 1:1 ni preuve de sexe par le rendu seul.",
+          "Variante de jeune âge fictive du projet, adaptée à la fiche historique ; aucune anatomie infantile canonique 1:1 n’est certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    }
+  ]
+}

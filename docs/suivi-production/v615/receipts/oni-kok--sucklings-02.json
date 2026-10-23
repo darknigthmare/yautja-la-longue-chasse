@@ -1,0 +1,109 @@
+{
+  "id": "oni-kok--sucklings-02",
+  "repoPngPath": "public/game/production/sucklings-v615/oni-kok/sucklings-02.png",
+  "promptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+  "acceptedOutputPromptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+  "receiptCreatedAtUtc": "2026-10-23T17:03:23.031921+00:00",
+  "status": "accepted",
+  "references": [
+    {
+      "id": "oni-kok--sucklings-01",
+      "groupId": "oni-kok",
+      "role": "infant-stage-and-rendering",
+      "repoPath": "public/game/imports/v85/library/72d12b1c597d51b798c09c8d535e56805419a297a32c4d2b9ba5b76276dd25f3.png",
+      "sha256": "72d12b1c597d51b798c09c8d535e56805419a297a32c4d2b9ba5b76276dd25f3",
+      "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+      "bytes": 2699603,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "b996b6ae9b641f47f17a9a683ca9d7db6fa2283b",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    },
+    {
+      "id": "oni-kok--blooded-01",
+      "groupId": "oni-kok",
+      "role": "lineage-morphology",
+      "repoPath": "public/game/imports/v85/library/92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c.png",
+      "sha256": "92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c",
+      "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+      "bytes": 2040097,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "1fd1e29857b82235533ddd96f2cc17ba18f38e76",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; proportions réellement infantiles, tête relativement grande, membres courts et musculature immature. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Version en croissance du groupe, crâne proportionnellement plus grand, membres courts ou fins selon l’âge, musculature immature et appendices crâniens en développement uniquement si ce groupe en possède. Reprendre les caractères crâniens et les implantations des membres de la référence sans ses proportions ou muscles adultes. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : arcades un peu plus épaisses dans les limites du groupe; pigmentation gris ocre. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Tout-petit Yautja : proportions réellement juvéniles de la lignée, tête proportionnellement plus grande, membres courts, appendices en début de développement, musculature douce. Vêtement de nurserie simple entièrement opaque ; pose calme et stable. Aucun armement ni armure d'adulte. Ni adulte réduit ni bébé humain déguisé. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. PRIORITÉ ONI : exactement deux mandibules inférieures recourbées en développement et aucune paire supérieure. Crâne étroit avec reliefs fins naissants. Adapter les proportions à un tout-petit sans transformer le visage en Yautja classique à quatre mandibules. La référence infantile a été inspectée : garder son nombre de mandibules, mais créer un nouvel individu avec vêtement civil gris chaud et bordures bleu terne. Conserver la tête entière à distance des bords et toutes les mains et chaussures visibles. Fond alpha vide propre, sans halo coloré de la référence.",
+      "inputReferenceNames": [
+        "oni-kok--sucklings-01",
+        "oni-kok--blooded-01"
+      ],
+      "accepted": false,
+      "acceptedForCurrentOutput": false,
+      "nativeOutputName": "exec-eaafbaaa-fe2c-471f-ab8c-b38cdb9bccde.png",
+      "sha256": "786c301c499bea48d3b9d46e2a2649f87fc1e5c6b08aefd945adb701473133a0",
+      "bytes": 2796599,
+      "generatedAtUtc": "2026-10-23T17:01:01.475Z",
+      "rejectionReasonFR": "Cadrage trop proche du bord droit ; marge cible de 8 % non atteinte."
+    },
+    {
+      "attempt": 2,
+      "promptExact": "Corriger uniquement le cadrage de ce sprite d’enfant Oni déjà habillé, en conservant son visage avec exactement deux mandibules inférieures, ses proportions de tout-petit, sa pose assise paisible, sa tunique et son pantalon opaques, ses mains tenant le tissu bleu, ses chaussures et toutes ses textures. DÉZOOMER fortement : l’intégralité de l’enfant et de la bande textile doit tenir dans le rectangle central x=190 à 834 et y=280 à 1256 d’un canevas portrait 1024×1536. Laisser une grande marge alpha entièrement vide autour, au moins 15 % de chaque côté. Le bord du tissu à droite doit être entièrement à l’intérieur de ce rectangle. Pas de sol ni ombre portée ni halo, aucun décor, aucun autre élément. Conserver une transparence alpha réelle en PNG RGBA natif. Ne rien découper ; ne modifier que l’espace disponible autour du personnage, aucune retouche anatomique ni de vêtement.",
+      "inputReferenceNames": [
+        "oni-kok--sucklings-02--attempt-1"
+      ],
+      "accepted": true,
+      "acceptedForCurrentOutput": true,
+      "nativeOutputName": "exec-62c53038-d562-49de-a268-0b85c522ed7a.png",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "bytes": 2063719,
+      "generatedAtUtc": "2026-10-23T17:02:41.861Z"
+    }
+  ],
+  "visualInspection": {
+    "accepted": true,
+    "notesFR": "Jeune Oni assis en tunique ample et pantalon opaques, deux mandibules inférieures distinctes, front sillonné immature et visage biologique découvert. Les deux mains tiennent la bande textile bleue ; deux jambes courtes et chaussures civiles entières. La deuxième génération élargit le cadre autour de la silhouette et du tissu.",
+    "referenceReviewFR": "La référence infantile présente déjà les deux seules mandibules inférieures et une pose civile ; l’adulte est utilisé uniquement pour le sillon frontal et la topologie. Leurs équipements et le halo apparent ne sont pas des éléments à importer.",
+    "limitationsFR": [
+      "Pose fixe ; aucune animation ni nouveau placement en scène.",
+      "Jeune âge inventé pour le projet à partir du groupe ; aucune certification canonique 1:1 ni preuve de sexe par le rendu seul."
+    ]
+  },
+  "generatedAtUtc": "2026-10-23T17:02:41.861Z",
+  "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+  "verifiedAtUtc": "2026-10-23T17:03:23.031921+00:00",
+  "nativeOutputName": "exec-62c53038-d562-49de-a268-0b85c522ed7a.png",
+  "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+  "bytes": 2063719,
+  "copiedByteIdentical": true,
+  "generationMethod": "builtin-imagegen",
+  "width": 1024,
+  "height": 1536,
+  "mode": "RGBA",
+  "transparentBackground": true,
+  "alphaZeroPixels": 1062353,
+  "alphaSolidPixels": 485527,
+  "edgeAlphaMax": 0,
+  "contentBoundsAlpha20": [
+    164,
+    229,
+    923,
+    1318
+  ],
+  "marginsFraction": [
+    0.16015625,
+    0.14908854166666666,
+    0.0986328125,
+    0.14192708333333334
+  ],
+  "targetEightPercentMarginMet": true
+}
