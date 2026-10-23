@@ -48,6 +48,14 @@ on:
       - 'docs/*v106*'
       - 'docs/qa/v106*/**'
       - 'docs/v56-excel-priorities.json'
+      - 'docs/suivi-production/v614/data/**'
+      - 'docs/suivi-production/v614/references/production-plan-v614.json'
+      - 'docs/suivi-production/v615/data/**'
+      - 'docs/suivi-production/v615/references/production-plan-v615.json'
+      - 'docs/suivi-production/v615/receipts/**'
+      - 'docs/suivi-production/**/*.xlsx'
+      - 'public/game/production/sucklings-v615/**'
+      - 'public/game/production/enforcers-v61*/**'
       - 'art-source/v100/**'
       - 'public/game/sprites/v100/**'
       - 'public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png'
@@ -183,9 +191,23 @@ jobs:
             /docs/suivi-production/v613/data/production-manifest.json
             /docs/suivi-production/v613/data/current-master.json.gz
             /docs/suivi-production/v613/validation.json
+            /docs/suivi-production/v614/data/
+            /docs/suivi-production/v614/references/production-plan-v614.json
+            /docs/suivi-production/v615/data/
+            /docs/suivi-production/v615/references/production-plan-v615.json
+            /docs/suivi-production/v615/receipts/
+            /public/game/production/sucklings-v615/
+            /docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx
+            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+            /docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx
+            /docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx
+            /docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx
+            /docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx
+            /docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx
             /public/game/production/enforcers-v611/
             /public/game/production/enforcers-v612/
             /public/game/production/enforcers-v613/
+            /public/game/production/enforcers-v614/
             /docs/v56-excel-priorities.json
             /docs/war-clans-v3-workbook-source.json
             /art-source/v100/
@@ -215,6 +237,12 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Verify V6.14 native images, cumulative history and unchanged sprite defaults
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test tests/enforcer-production-v614.test.mjs
+      - name: Verify V6.15 infants, all 144 native PNGs and all 17 prior workbooks
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test tests/npc-production-v615.test.mjs
       - name: Compile Next application source (not full release packaging)
         id: compile
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}

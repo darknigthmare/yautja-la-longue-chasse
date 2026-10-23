@@ -134,7 +134,7 @@ test('all six full references are connected to the runtime viewer and codex with
  const codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeReferenceFilesV89,6);
  // V89's audited history remains intact when a later production pack is added.
- assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!['enforcers-v611','enforcers-v612','enforcers-v613'].includes(asset.packId)).map(asset=>asset.sha256)).size,1877);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!['enforcers-v611','enforcers-v612','enforcers-v613','enforcers-v614','npc-v615'].includes(asset.packId)).map(asset=>asset.sha256)).size,1877);
  for(const source of data.assets){
   assert.deepEqual(library.recentSpriteByIdV85(source.id),source);
   const record=codex.RECENT_SPRITE_CODEX_V85.find(row=>row.source.id===source.id);assert(record);

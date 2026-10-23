@@ -67,7 +67,7 @@ test('gallery and codex expose V6.12 while all 973 defaults and the human body b
  const library=qa.load('app/game/systems/recentSpriteLibraryV85.ts');
  const codex=qa.load('app/game/systems/recentSpriteCodexV85.ts');
  assert.equal(library.RECENT_SPRITE_LIBRARY_V85.nativeEnforcerFilesV612,36);
- assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>asset.packId!=='enforcers-v613').map(asset=>asset.sha256)).size,1949);
+ assert.equal(new Set(library.RECENT_SPRITE_ASSETS_V85.filter(asset=>!['enforcers-v613','enforcers-v614','npc-v615'].includes(asset.packId)).map(asset=>asset.sha256)).size,1949);
  const defaults=read(`${base}/data/default-selections-before.json`);
  assert.equal(defaults.commit,sourceBranch);assert.equal(defaults.queries.length,973);
  for(const r of defaults.queries)assert.equal(library.findImportedYautjaArtV85(r.query)?.assetId??null,r.assetId,JSON.stringify(r.query));

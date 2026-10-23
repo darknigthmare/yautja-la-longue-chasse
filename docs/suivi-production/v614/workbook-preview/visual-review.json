@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "yautja-workbook-visual-review-v614-1",
+  "reviewedAtUtc": "2026-10-23T13:18:09.456+00:00",
+  "accepted": true,
+  "workbook": "Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+  "workbookSha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+  "previews": [
+    {
+      "path": "after-summary.png",
+      "sheet": "Synthèse",
+      "range": "A1:J23",
+      "sha256": "0b6db3f3d58cd9862cd634447a74fb6ca1a8029428c3bb60221b7535630f5018",
+      "accepted": true,
+      "notesFR": "Titres et notes lisibles ; compteurs finaux corrects ; 12 originaux dans main et sous-compte V5/V6 explicite ; couleurs et alignements de la source conservés."
+    },
+    {
+      "path": "after-production.png",
+      "sheet": "Production PR",
+      "range": "A150:J153",
+      "sha256": "7cfddb2f140f9e8f32360c9fb0c7c30626d2571f7752caebcb192e444d46ab1d",
+      "accepted": true,
+      "notesFR": "Transition lisible entre la dernière ligne V6.13 désormais dans main et les premières lignes V6.14 conservées hors main ; identifiants et statuts sans chevauchement."
+    },
+    {
+      "path": "after-checks.png",
+      "sheet": "Contrôles",
+      "range": "A31:D41",
+      "sha256": "a82ce9f50b5cd4683f8b716bb9e3fb5c383a83a602b3905d08287de6b4720b3a",
+      "accepted": true,
+      "notesFR": "Dix contrôles visibles à OK ; valeurs attendues et calculées cohérentes."
+    },
+    {
+      "path": "after-workbooks.png",
+      "sheet": "Classeurs",
+      "range": "A26:F28",
+      "sha256": "d5220891ee31091c1d2e54f79bbff8f697eb96def76fd54b5b04d9bda4dacbf3",
+      "accepted": true,
+      "notesFR": "Les trois nouvelles références V104, V105 et V106 sont lisibles, avec nombre d’onglets, taille et chemin ; état actuel dans main visible."
+    }
+  ],
+  "limitationsFR": [
+    "Contrôle visuel des quatre plages rendues ; contrôle programmatique OpenXML de l’ensemble du classeur.",
+    "Pas de session Excel native interactive ; recalcul et mutation temporaire/restauration vérifiés avec Artifact Tool."
+  ]
+}
