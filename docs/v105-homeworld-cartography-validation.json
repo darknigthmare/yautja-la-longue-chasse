@@ -2,20 +2,20 @@
   "schemaVersion": 1,
   "contentVersion": "V105",
   "status": "PASS",
-  "validatedAt": "2026-10-23T01:46:40.842692+00:00",
+  "validatedAt": "2026-10-23T02:31:46.685006+00:00",
   "scope": {
     "id": "HOMEWORLD-CARTOGRAPHER-A-V105",
     "delivered": "Option A physique de D6-W-PNJ-ROLE-12 : marche réelle du pupitre au viaduc, escalier public de huit secondes, deux repères comparés sur place, date conservée, descente et rapport au même cartographe. Les reçus A et B restent distincts et les deux ordres séquentiels sont possibles.",
-    "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
     "runtimeSourceUnchanged": true
   },
   "production": {
     "status": "PASS",
-    "buildId": "p-YXoE3t9Mm35taH6ftqf",
-    "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b",
+    "buildId": "Pq220rJsmklF7dV4DeXEz",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
     "baseUrl": "http://127.0.0.1:3101",
     "mode": "compiled-app",
-    "completedAt": "2026-10-23T01:44:47.099Z",
+    "completedAt": "2026-10-23T02:31:25.860Z",
     "checksPassed": 52,
     "checksFailed": 0,
     "browserErrors": 0,
@@ -23,25 +23,25 @@
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       }
     ],
@@ -60,7 +60,7 @@
       },
       {
         "file": "app/game/HomeworldCartographyV104.tsx",
-        "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+        "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
       },
       {
         "file": "app/game/HomeworldCartographyV105.tsx",
@@ -126,7 +126,7 @@
       },
       {
         "file": "app/game/HomeworldCartographyV104.tsx",
-        "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+        "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
       },
       {
         "file": "app/game/HomeworldCartographyV105.tsx",
@@ -218,7 +218,8 @@
       }
     ],
     "log": "docs/qa/v105-homeworld-cartography/unit-tests.log",
-    "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b"
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+    "execution": "Three fresh direct Node22 executions after the text correction: 14 V104 + 10 V105 + 26 live input cases; each detailed TAP log is preserved."
   },
   "lint": {
     "status": "PASS",
@@ -241,14 +242,7 @@
       "resume preserves active phase and interruptedCount",
       "choice/date/report retry preserves phase and interruptedCount"
     ],
-    "qaFocusAfterTheseActions": false,
-    "preproductionFixture": {
-      "status": "PASS",
-      "mode": "isolated-current-HomeworldHub",
-      "checksPassed": 42,
-      "report": "docs/qa/v105-homeworld-cartography/focus-fixture-report.json",
-      "compiledApplicationEvidence": false
-    }
+    "qaFocusAfterTheseActions": false
   },
   "fixture": {
     "description": "Model first-tracks campaign plus explicit accepted initial city checkpoint at the existing port lectern. All subsequent positions and survey receipts are earned through UI and keyboard.",
@@ -260,72 +254,72 @@
   "captures": [
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-choice.png",
-      "sha256": "a262bb50af32207b5c820fa365c404431878f29096ef3864fb4fedb324bd12fc",
-      "bytes": 1497927,
+      "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631",
+      "bytes": 1510697,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Au pupitre natif, le refus reste visible après fermeture et son réessai dédié demeure accessible ; aucun choix A n’est annoncé comme acquis."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/source-a-briefing.png",
-      "sha256": "4cd0dd22ee0c7e293d4cec544807bc022b3328b33829d14212052d903b3aeba7",
-      "bytes": 128384,
+      "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196",
+      "bytes": 128422,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Réponse A exacte et consigne de marche lisibles, boutons de départ et de retour distincts."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/council-stair-lower.png",
-      "sha256": "b8e0b1022f05c1277370582cda9cdfd74b066d4253658d0479a3bc1d1d9fc9fc",
-      "bytes": 1645146,
+      "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75",
+      "bytes": 1633260,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Joueur au vrai palier inférieur, escalier natif et interaction physique visibles ; aucun étage changé par la carte."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/viaduct-high-point.png",
-      "sha256": "0ae530e87c8a2d4a26dc2f3edcbff6d6b5d956d59e9f5e69b6d1867730981d58",
-      "bytes": 1592549,
+      "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb",
+      "bytes": 1584489,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Joueur sur le viaduc existant à +1, marqueur fonctionnel au sol et carnet d’observation visibles."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/two-landmarks-compared.png",
-      "sha256": "d1e522679ccb5153fd1ac02e8d22e22461eb5a67695ebe882b5d90d8025937df",
-      "bytes": 147234,
+      "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed",
+      "bytes": 147195,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Deux seuls repères connus, schéma numéroté lisible et bouton de datation disponible ; la comparaison n’a plus interrompu le modal."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-date.png",
-      "sha256": "a1f2a5c1a2106553c0e07a1b627dda44e92501f287577b71c4fc0b2c16021c40",
-      "bytes": 1482903,
+      "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b",
+      "bytes": 1467497,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Deux comparaisons conservées à +1 ; après refus de datation, le carnet présente le réessai et n’annonce aucune date fictive."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-report.png",
-      "sha256": "8f3fe0b7afd78048af1b69b10c4057280eb45097f665d829de31feb6b262035d",
-      "bytes": 1299392,
+      "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c",
+      "bytes": 1281427,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Joueur réellement revenu auprès du cartographe ; refus du rapport visible et réessai accessible, sans succès anticipé."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/releve-completed-desktop.png",
-      "sha256": "371c5db937b111fff260a7f9bd3c9b5b0dc83dbce53e6489b9a34bf2197b5bb7",
-      "bytes": 213452,
+      "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96",
+      "bytes": 213506,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "Date, succès A et relevé B historique sont lisibles dans le dialogue défilable ; les parties non vues restent exclues."
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/releve-completed-mobile.png",
-      "sha256": "c6f8fd31c43d7e5272de7fcd7316902a1b47fcf3752f74ff170162724fe3c9dc",
-      "bytes": 172770,
+      "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450",
+      "bytes": 172653,
       "inspection": "PASS_CIBLE",
       "openedWith": "view_image",
       "notes": "À390px, nom, date et succès A restent lisibles sans débordement horizontal ; le dialogue conserve son défilement vertical."
@@ -335,24 +329,19 @@
   "inspectedCount": 9,
   "recipe": {
     "file": "scripts/qa-homeworld-cartography-v105.mjs",
-    "sha256": "e735c76e6b188a1dd19c3648f626d8d0124562e8a618dac1e4a13a9f1029206d",
-    "bytes": 24425
+    "sha256": "df56c7d2a83cfa01dc907ecb4dd6e45f187dd228c6afeb146544db10cdd06723",
+    "bytes": 24623
   },
   "evidence": [
     {
       "file": "docs/qa/v105-homeworld-cartography/browser-console.log",
-      "sha256": "566cb49b6efafc8d806a1731d042b64e1a3ba18e98fa6a2dc3718d949163956d",
-      "bytes": 3785
+      "sha256": "62802a908692ba7fa7bf184a6132b172f51a6484b5dd2424f52ae0788e0e800d",
+      "bytes": 3830
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/council-stair-lower.png",
-      "sha256": "b8e0b1022f05c1277370582cda9cdfd74b066d4253658d0479a3bc1d1d9fc9fc",
-      "bytes": 1645146
-    },
-    {
-      "file": "docs/qa/v105-homeworld-cartography/focus-fixture-report.json",
-      "sha256": "963fe3e8e73bbd66aba3a202944e99a52112938205cc874c3740708fc1866bea",
-      "bytes": 12641
+      "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75",
+      "bytes": 1633260
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/lint.log",
@@ -361,58 +350,65 @@
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/releve-completed-desktop.png",
-      "sha256": "371c5db937b111fff260a7f9bd3c9b5b0dc83dbce53e6489b9a34bf2197b5bb7",
-      "bytes": 213452
+      "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96",
+      "bytes": 213506
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/releve-completed-mobile.png",
-      "sha256": "c6f8fd31c43d7e5272de7fcd7316902a1b47fcf3752f74ff170162724fe3c9dc",
-      "bytes": 172770
+      "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450",
+      "bytes": 172653
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/report.json",
-      "sha256": "420995ee7dbdcc0550a990646738958fcff6cdaa081edffc294fb688ed35d7b3",
-      "bytes": 14478
+      "sha256": "08dfdeddda6753e0b1f177b899e993c4d939f947519d0a128cf2e558d1ddcc79",
+      "bytes": 14516
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/source-a-briefing.png",
-      "sha256": "4cd0dd22ee0c7e293d4cec544807bc022b3328b33829d14212052d903b3aeba7",
-      "bytes": 128384
+      "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196",
+      "bytes": 128422
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/two-landmarks-compared.png",
-      "sha256": "d1e522679ccb5153fd1ac02e8d22e22461eb5a67695ebe882b5d90d8025937df",
-      "bytes": 147234
+      "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed",
+      "bytes": 147195
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/unit-tests.log",
-      "sha256": "27804d3ace8c7e95c5df2f6fb40e26e54d57c204c84342899ade44242f342911",
-      "bytes": 6059
+      "sha256": "27b99bfda2c71a2448fa165a78333d9687f216d8f19c1392aa122ce800070a79",
+      "bytes": 14205
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/viaduct-high-point.png",
-      "sha256": "0ae530e87c8a2d4a26dc2f3edcbff6d6b5d956d59e9f5e69b6d1867730981d58",
-      "bytes": 1592549
+      "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb",
+      "bytes": 1584489
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-choice.png",
-      "sha256": "a262bb50af32207b5c820fa365c404431878f29096ef3864fb4fedb324bd12fc",
-      "bytes": 1497927
+      "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631",
+      "bytes": 1510697
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-date.png",
-      "sha256": "a1f2a5c1a2106553c0e07a1b627dda44e92501f287577b71c4fc0b2c16021c40",
-      "bytes": 1482903
+      "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b",
+      "bytes": 1467497
     },
     {
       "file": "docs/qa/v105-homeworld-cartography/write-paused-report.png",
-      "sha256": "8f3fe0b7afd78048af1b69b10c4057280eb45097f665d829de31feb6b262035d",
-      "bytes": 1299392
+      "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c",
+      "bytes": 1281427
     }
   ],
   "limits": [
     "L’ouverture V6 évoquant une crête demeure non jouée : le parcours adapte le point haut sur le viaduc existant.",
     "Le schéma ne consigne que les deux objets déjà connus ; aucun quartier non observé ni récompense n’est octroyé par la parole.",
     "Cette preuve locale ne certifie pas une campagne entière depuis la nurserie, une manette physique, un nouveau doublage ou toutes les scènes V6."
-  ]
+  ],
+  "proofPolicy": {
+    "authority": "compiled-app production recipe",
+    "retiredPreflight": {
+      "reason": "Le préflight isolé de 42 contrôles précédait les dernières assertions de la recette ; il est retiré des preuves et n’est pas régénéré. Seuls les contrôles sur l’application compilée étayent la recette navigateur."
+    },
+    "neutralNote": "The first compiled-app control asserts visibility of the corrected neutral high-point note in the initial B offer."
+  }
 }

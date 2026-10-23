@@ -2,16 +2,16 @@
   "schemaVersion": 1,
   "contentVersion": "V105",
   "status": "PASS",
-  "validatedAt": "2026-10-23T01:39:10.021Z",
+  "validatedAt": "2026-10-23T02:24:46.138Z",
   "scope": {
     "id": "CONVOY-ROUTE-V105",
     "mode": "free-clan-war",
     "delivered": "Planification et exécution manuelle d’un convoi multi-étapes sur les vraies routes, avec porteurs identifiés, stocks locaux, pauses, atlas et transfert du front.",
-    "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
     "runtimeSourceUnchanged": true
   },
   "production": {
-    "buildId": "p-YXoE3t9Mm35taH6ftqf",
+    "buildId": "Pq220rJsmklF7dV4DeXEz",
     "baseUrl": "http://127.0.0.1:3101",
     "checksPassed": 33,
     "checksFailed": 0,
@@ -20,19 +20,19 @@
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
         "foundInHtml": true
       }
     ],
@@ -145,7 +145,7 @@
     },
     "lastExecutedAgainstRuntimeCommit": "79199a5fb2a0119fb8a2eaf9b1808a6709bfa402",
     "runtimeSourceHashesMatchFinalBuild": true,
-    "reuseBasis": "Les seize tests ciblés portent sur les mêmes sources Clans, dont les SHA256 sont identiques dans les deux builds de production. La recette navigateur complète et les cinq captures ont été rejouées sur le build final."
+    "reuseBasis": "Les seize tests ciblés ont été exécutés au commit 79199a5fb2a0119fb8a2eaf9b1808a6709bfa402. Les SHA256 des sources Clans sont inchangés depuis cette exécution. La recette navigateur complète et les cinq captures ont été rejouées sur le build final Pq220rJsmklF7dV4DeXEz."
   },
   "browserCoverage": [
     "native-three-edge-planning-and-three-manual-resolutions",
@@ -188,7 +188,7 @@
   ],
   "visualReview": {
     "allFiveCapturesOpened": true,
-    "reviewedAt": "2026-10-23T01:39:10.024Z",
+    "reviewedAt": "2026-10-23T02:24:46.138Z",
     "selectedPreview": "docs/qa/v105-clan-convoy/convoy-planned-desktop.png",
     "captures": [
       {
@@ -249,12 +249,12 @@
     },
     {
       "file": "docs/qa/v105-clan-convoy/convoy-generated-96.png",
-      "sha256": "5270d8609eda2d36c4d55c21610ba5b77d6d6f47fb64179992f20133b4337b80",
-      "bytes": 199381
+      "sha256": "aef1b8a8dfd793b311b43c9ad5bab9d81818929f9a0e0143b93c330b272ce8eb",
+      "bytes": 199382
     },
     {
       "file": "docs/qa/v105-clan-convoy/report.json",
-      "sha256": "998fec586d2578cce24000cca4d9c42f9ace142e04156e184ff989350ce23eff",
+      "sha256": "728327a1a5b477909c87ca2633b42fdf3f3a4fcbdf18340bb28af6fa9cc2ed6c",
       "bytes": 71973
     },
     {

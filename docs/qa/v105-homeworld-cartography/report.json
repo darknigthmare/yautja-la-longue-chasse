@@ -4,36 +4,36 @@
   "baseUrl": "http://127.0.0.1:3101",
   "mode": "compiled-app",
   "contentVersion": "V105",
-  "buildId": "p-YXoE3t9Mm35taH6ftqf",
+  "buildId": "Pq220rJsmklF7dV4DeXEz",
   "servedBuilds": [
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true
     }
   ],
   "checks": [
     {
-      "name": "Accepted initial checkpoint restores actual port actor",
+      "name": "Accepted initial checkpoint restores actual port actor and shows the neutral high-point note",
       "status": "PASS"
     },
     {
@@ -245,39 +245,39 @@
   "captures": [
     {
       "file": "write-paused-choice.png",
-      "sha256": "a262bb50af32207b5c820fa365c404431878f29096ef3864fb4fedb324bd12fc"
+      "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631"
     },
     {
       "file": "source-a-briefing.png",
-      "sha256": "4cd0dd22ee0c7e293d4cec544807bc022b3328b33829d14212052d903b3aeba7"
+      "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196"
     },
     {
       "file": "council-stair-lower.png",
-      "sha256": "b8e0b1022f05c1277370582cda9cdfd74b066d4253658d0479a3bc1d1d9fc9fc"
+      "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75"
     },
     {
       "file": "viaduct-high-point.png",
-      "sha256": "0ae530e87c8a2d4a26dc2f3edcbff6d6b5d956d59e9f5e69b6d1867730981d58"
+      "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb"
     },
     {
       "file": "two-landmarks-compared.png",
-      "sha256": "d1e522679ccb5153fd1ac02e8d22e22461eb5a67695ebe882b5d90d8025937df"
+      "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed"
     },
     {
       "file": "write-paused-date.png",
-      "sha256": "a1f2a5c1a2106553c0e07a1b627dda44e92501f287577b71c4fc0b2c16021c40"
+      "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b"
     },
     {
       "file": "write-paused-report.png",
-      "sha256": "8f3fe0b7afd78048af1b69b10c4057280eb45097f665d829de31feb6b262035d"
+      "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c"
     },
     {
       "file": "releve-completed-desktop.png",
-      "sha256": "371c5db937b111fff260a7f9bd3c9b5b0dc83dbce53e6489b9a34bf2197b5bb7"
+      "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96"
     },
     {
       "file": "releve-completed-mobile.png",
-      "sha256": "c6f8fd31c43d7e5272de7fcd7316902a1b47fcf3752f74ff170162724fe3c9dc"
+      "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450"
     }
   ],
   "fixture": {
@@ -340,7 +340,7 @@
     },
     {
       "file": "app/game/HomeworldCartographyV104.tsx",
-      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+      "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
     },
     {
       "file": "app/game/HomeworldCartographyV105.tsx",
@@ -406,7 +406,7 @@
     },
     {
       "file": "app/game/HomeworldCartographyV104.tsx",
-      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+      "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
     },
     {
       "file": "app/game/HomeworldCartographyV105.tsx",
@@ -458,5 +458,5 @@
     }
   ],
   "sourceUnchanged": true,
-  "completedAt": "2026-10-23T01:44:47.099Z"
+  "completedAt": "2026-10-23T02:31:25.860Z"
 }

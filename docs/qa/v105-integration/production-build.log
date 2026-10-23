@@ -6,18 +6,18 @@
 [audio] 37 slots, 22 supplied, 0 ignored
 [production] next
 ▲ Next.js 16.3.5 (webpack)
-✓ Running next.config.ts took 35ms
+✓ Running next.config.ts took 33ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 10.0s
+✓ Compiled successfully in 12.2s
   Running TypeScript ...
-  Finished TypeScript in 15.1s ...
+  Finished TypeScript in 6.0s ...
   Collecting page data using 4 workers ...
   Generating static pages using 4 workers (0/9) ...
   Generating static pages using 4 workers (2/9) 
   Generating static pages using 4 workers (4/9) 
   Generating static pages using 4 workers (6/9) 
-✓ Generating static pages using 4 workers (9/9) in 1868ms
+✓ Generating static pages using 4 workers (9/9) in 1803ms
   Finalizing page optimization ...
   Collecting build traces ...
 
@@ -42,7 +42,7 @@ Route (app)
 [production] pit-css
 {
   "status": "PASS",
-  "checkedAt": "2026-10-23T01:36:43.572Z",
+  "checkedAt": "2026-10-23T02:22:09.634Z",
   "nextDir": "/workspace/yautja-la-longue-chasse/.next",
   "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
   "files": [

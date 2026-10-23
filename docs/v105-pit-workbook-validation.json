@@ -1,11 +1,11 @@
 {
   "version": 105,
   "status": "PASS",
-  "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b",
-  "buildId": "p-YXoE3t9Mm35taH6ftqf",
+  "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+  "buildId": "Pq220rJsmklF7dV4DeXEz",
   "mode": "production",
   "production": {
-    "buildId": "p-YXoE3t9Mm35taH6ftqf",
+    "buildId": "Pq220rJsmklF7dV4DeXEz",
     "baseUrl": "http://127.0.0.1:3101",
     "mode": "production",
     "servedHtmlResponses": 8,
@@ -46,7 +46,7 @@
     ]
   },
   "reproduce": {
-    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=p-YXoE3t9Mm35taH6ftqf YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=outputs/qa-v105/pit-workbook-production-final node scripts/qa-pit-workbook-v105.mjs",
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=Pq220rJsmklF7dV4DeXEz YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=outputs/qa-v105/pit-workbook-production-review-final node scripts/qa-pit-workbook-v105.mjs",
     "node": "22.23.3",
     "browser": "/usr/bin/chromium"
   },
@@ -1147,7 +1147,7 @@
       "name": "body-3/CIN_F006_DEFAITE/right/round-result: this outcome independently completes every source drawing",
       "status": "PASS",
       "detail": {
-        "draws": 421
+        "draws": 422
       }
     },
     {
@@ -1208,7 +1208,7 @@
       "name": "body-3/CIN_F003_VICTOIRE/left/round-result: this outcome independently completes every source drawing",
       "status": "PASS",
       "detail": {
-        "draws": 421
+        "draws": 422
       }
     },
     {
@@ -1285,7 +1285,7 @@
       "name": "body-4/CIN_F003_DEFAITE/right/round-result: this outcome independently completes every source drawing",
       "status": "PASS",
       "detail": {
-        "draws": 422
+        "draws": 421
       }
     },
     {
@@ -1346,7 +1346,7 @@
       "name": "body-4/CIN_F006_VICTOIRE/left/round-result: this outcome independently completes every source drawing",
       "status": "PASS",
       "detail": {
-        "draws": 422
+        "draws": 421
       }
     },
     {
@@ -1496,8 +1496,8 @@
       "facing": "right",
       "phase": "intro-left",
       "nativeDurationMs": 3333.3333333333335,
-      "maxObservedElapsedMs": 3333,
-      "endGapMs": 0.3333333333334849,
+      "maxObservedElapsedMs": 3324,
+      "endGapMs": 9.333333333333485,
       "completionEvidence": "Every native drawing observed, including its final drawing within one 60Hz tick of the endpoint",
       "status": "PASS"
     },
@@ -1616,8 +1616,8 @@
       "facing": "right",
       "phase": "intro-left",
       "nativeDurationMs": 5000,
-      "maxObservedElapsedMs": 4990,
-      "endGapMs": 10,
+      "maxObservedElapsedMs": 4992,
+      "endGapMs": 8,
       "completionEvidence": "Every native drawing observed, including its final drawing within one 60Hz tick of the endpoint",
       "status": "PASS"
     },
@@ -1736,8 +1736,8 @@
       "facing": "right",
       "phase": "intro-left",
       "nativeDurationMs": 3333.3333333333335,
-      "maxObservedElapsedMs": 3322,
-      "endGapMs": 11.333333333333485,
+      "maxObservedElapsedMs": 3320,
+      "endGapMs": 13.333333333333485,
       "completionEvidence": "Every native drawing observed, including its final drawing within one 60Hz tick of the endpoint",
       "status": "PASS"
     },
@@ -1808,8 +1808,8 @@
       "facing": "right",
       "phase": "intro-left",
       "nativeDurationMs": 5000,
-      "maxObservedElapsedMs": 4993,
-      "endGapMs": 7,
+      "maxObservedElapsedMs": 4994,
+      "endGapMs": 6,
       "completionEvidence": "Every native drawing observed, including its final drawing within one 60Hz tick of the endpoint",
       "status": "PASS"
     },
@@ -2007,7 +2007,7 @@
       "facing": "right",
       "nativeDurationMs": 3333.3333333333335,
       "nativeDrawings": 6,
-      "nativeDrawCalls": 899
+      "nativeDrawCalls": 898
     },
     {
       "kind": "native-presentation",
@@ -2047,7 +2047,7 @@
       "facing": "left",
       "nativeDurationMs": 5000,
       "nativeDrawings": 6,
-      "nativeDrawCalls": 899
+      "nativeDrawCalls": 898
     },
     {
       "kind": "native-presentation",
@@ -2301,7 +2301,7 @@
       "facing": "right",
       "nativeDurationMs": 5000,
       "nativeDrawings": 6,
-      "nativeDrawCalls": 737
+      "nativeDrawCalls": 738
     },
     {
       "kind": "native-presentation",
@@ -2321,7 +2321,7 @@
       "facing": "left",
       "nativeDurationMs": 5000,
       "nativeDrawings": 6,
-      "nativeDrawCalls": 737
+      "nativeDrawCalls": 738
     },
     {
       "kind": "native-presentation",
@@ -2341,7 +2341,7 @@
       "facing": "right",
       "nativeDurationMs": 5000,
       "nativeDrawings": 6,
-      "nativeDrawCalls": 738
+      "nativeDrawCalls": 737
     },
     {
       "kind": "native-presentation",
@@ -2361,7 +2361,7 @@
       "facing": "left",
       "nativeDurationMs": 5000,
       "nativeDrawings": 5,
-      "nativeDrawCalls": 738
+      "nativeDrawCalls": 737
     },
     {
       "kind": "costume-exclusion",
@@ -2870,90 +2870,90 @@
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "body-1-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "body-2-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "body-3-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-3-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-3-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "body-4-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-4-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-4-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "mixed-costume-0-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-0-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-0-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "mixed-costume-1-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-1-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-1-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "legacy-historical-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/legacy-historical-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/legacy-historical-served.html"
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
       "foundInHtml": true,
       "htmlFile": "legacy-workbook-v104-served.html",
-      "htmlSha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "htmlSha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840,
       "contentType": "text/html; charset=utf-8",
-      "file": "outputs/qa-v105/pit-workbook-production-final/legacy-workbook-v104-served.html"
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/legacy-workbook-v104-served.html"
     }
   ],
   "servedSourcePngs": [
@@ -3158,259 +3158,259 @@
   ],
   "captureManifest": [
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-source-options.png",
-      "sha256": "f367a71d1979f482b97bdfb5ce28093b1e0d514b408a0268f2ff673338f22c44",
-      "bytes": 272952,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-source-options.png",
+      "sha256": "c1c022a5c55a9b36b8a768c99356f7cf14b3acd9fc606a1d34461eb1f339595a",
+      "bytes": 272585,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F006_6M.png",
-      "sha256": "f0c42dddea181d55bb67a1dafd8782f1b2b64b615d134241a0cf0799770fd472",
-      "bytes": 1195294,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F006_6M.png",
+      "sha256": "96d5d8a7aa787c36646c4d74de95952c92aeff7be9690269f6c98707502f4bbc",
+      "bytes": 1194837,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F006_S3.png",
-      "sha256": "cf4a5b2004d100a08ed7601c47985a8dfaf566d2062bce8536c7173acb936d70",
-      "bytes": 1198784,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F006_S3.png",
+      "sha256": "ee448fb7b7efdae8d01b18ec0a39d8dbcfa3e77dbc26606579d6b614e58ebdd1",
+      "bytes": 1199067,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F006_EQUIP.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F006_EQUIP.png",
       "sha256": "e541e5513d47ace54fcc1d43a4a9c768b164122b44c4df0a63eefd0687370c90",
       "bytes": 1200128,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F003_6M.png",
-      "sha256": "ef3b0bf2a40172d4c4656345eadb988fb39b639564705cd6e30819d6168201e6",
-      "bytes": 1196354,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F003_6M.png",
+      "sha256": "a2ded4c8f3468a46888175b8fdd114606fc910af5bf46e315bc9d56a5bea1661",
+      "bytes": 1196527,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F003_S1.png",
-      "sha256": "f84843ccfae173c970c80aa9dc8ff8a0a5dd8afa5ab281a5167597d18830d753",
-      "bytes": 1197144,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F003_S1.png",
+      "sha256": "542880db2252e70be5ff5719e926e375b53d5f94ee40e3d2593673e0dfd6e373",
+      "bytes": 1197317,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F003_S4.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F003_S4.png",
       "sha256": "478c488a9417a38600c05def059ed237317728b17c720fe2bf20e448b082f214",
       "bytes": 1195532,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-M_F003_EQUIP.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-M_F003_EQUIP.png",
       "sha256": "27f0d0b0f2c3fe677f17fbc2cd0d8ef8ae635f4986513eac8e6acb8aaab7096f",
       "bytes": 1193452,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-feral-hunter-taunt-1.png",
-      "sha256": "d50cd7642b5d303212ba52cf08b6873cd86cce32f03cc272eddc2c1297076da3",
-      "bytes": 1195887,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-feral-hunter-taunt-1.png",
+      "sha256": "9c8a016c39ad87d2d0e62713b92f57399f7db021548cbee3ca5a923ac5f8b920",
+      "bytes": 1196258,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-feral-hunter-taunt-2.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-feral-hunter-taunt-2.png",
       "sha256": "a906fb0c573414869dec1c656cff74a934ed93fd3ab298933e7a9d4311d54dec",
       "bytes": 1195598,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-scar-taunt-1.png",
-      "sha256": "3035bcd88e3792ed64d30fe525946de58b8a8b0c07dc4f59683ce7168fba4322",
-      "bytes": 1193980,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-scar-taunt-1.png",
+      "sha256": "c1a9888a188e3802a5f86bc7baf5cd8f7dbe01bfd660be2227f20962e8df2d54",
+      "bytes": 1194428,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-scar-taunt-2.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-scar-taunt-2.png",
       "sha256": "c85b765ed4c88109abfd5534ee7400858e11432f1bb6707ec7bea4934a2003b1",
       "bytes": 1198207,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-1-result.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-1-result.png",
       "sha256": "b58a7a5993bc0dba7cdd1bb07a295435ec013e0391665f4e032f034d86ba90aa",
       "bytes": 1185345,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-source-options.png",
-      "sha256": "0e023793bff30addb240c17bb4565e12a6b21627545e08ad747c8df35d0aa14e",
-      "bytes": 273153,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-source-options.png",
+      "sha256": "862b047864860ec28a7824c86e026380600655f2944dbca5cd816754f5d7e904",
+      "bytes": 273077,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F003_6M.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F003_6M.png",
       "sha256": "bb1c3a22f827109d8e5073d19224ad591867bcf73d42b47a891700319207acff",
       "bytes": 1213465,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F003_S1.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F003_S1.png",
       "sha256": "406be6d402bbfabeaf31b6c8b2cc1d7c985125398728f7398ac151bff783c534",
       "bytes": 1220977,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F003_S4.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F003_S4.png",
       "sha256": "5bd7087d716b588b7513d4a45b9a89177664748890e6491b3de18d1d284caa42",
       "bytes": 1215070,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F003_EQUIP.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F003_EQUIP.png",
       "sha256": "4e2f848fa636f9c5e83c6ae3d0a08beb4316294f68402cd25e928bc32139cd8b",
       "bytes": 1214423,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F006_6M.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F006_6M.png",
       "sha256": "e3b305a296eebc6fefe4001f13eafb38836951875d6e3b4365de01aaf968f3a2",
       "bytes": 1213869,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F006_S3.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F006_S3.png",
       "sha256": "210c57d0cd2686aba9db3b3d7cd6b0f986e979acdee063a2b9f8d42d27dd4abe",
       "bytes": 1217193,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-M_F006_EQUIP.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-M_F006_EQUIP.png",
       "sha256": "a9331040cc18f9474bd690b540b667809e59bf2dd0d625d38d348d7ec49f657e",
       "bytes": 1219305,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-scar-taunt-1.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-scar-taunt-1.png",
       "sha256": "e0ab5b22c9222ad7717ae6540d1942649477762b16c67df43d8ef129aa6eb58a",
       "bytes": 1214905,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-scar-taunt-2.png",
-      "sha256": "129165d9712dc857e5d428154baf16af1558f6bd2a5c84e11c9793f203833a2f",
-      "bytes": 1216662,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-scar-taunt-2.png",
+      "sha256": "012ccaacccfdb4e789bb2ba894c7f32da60ff2929351dcb9edea20afc2ec5850",
+      "bytes": 1218189,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-feral-hunter-taunt-1.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-feral-hunter-taunt-1.png",
       "sha256": "43b417317a8432529d6474df2ae05b482c423f75fee39a57bc8b84865694070e",
       "bytes": 1215039,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-feral-hunter-taunt-2.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-feral-hunter-taunt-2.png",
       "sha256": "604a11ac5a5fe153080d6944d11f00a8bbfb649cf5a06d804fb600c9df234d5e",
       "bytes": 1214370,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-2-result.png",
-      "sha256": "68a80f2d39e027c17bf8805b7a1f12efd3b847f183911352c611723c446a7139",
-      "bytes": 1191890,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-2-result.png",
+      "sha256": "8dd50be1d2d74823ea82c0f2fd1b7dc925b172e54f440b6040cf7b7715dd78ac",
+      "bytes": 1191047,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-3-source-options.png",
-      "sha256": "faca64253873adfeaee61ccbf59850e5a98a646bfeed949d37738786b5884bf1",
-      "bytes": 272884,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-3-source-options.png",
+      "sha256": "3300f4c94b103db287dc5b4ba37d7ff00f0b5c874ecd4053c93a12e2b03edaf7",
+      "bytes": 272707,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-3-result.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-3-result.png",
       "sha256": "a9481ed83e4ca4c01b89c378719af7722dbba4632fb0187d8e37d6bbb8c844b4",
       "bytes": 1190727,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-4-source-options.png",
-      "sha256": "8cb4d6f1a6e3af8212ab36fd4cc95d9d9c3c1fce54b4b9bddf59964bca8b34d5",
-      "bytes": 272966,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-4-source-options.png",
+      "sha256": "8417df08893030977f51000adaaad7ce58bd73e8986de0e7d296084813d6064e",
+      "bytes": 273168,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/body-4-result.png",
-      "sha256": "fe0f3232df1e0632ec4ec9b94ea4ea3c65623de0e2906c92a695f7ade67ad1b9",
-      "bytes": 1192653,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/body-4-result.png",
+      "sha256": "c3df734fe2952b9926006ef35d857721b8efc5badda5ae347248eae82e71e7ea",
+      "bytes": 1193076,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-0-source-options.png",
-      "sha256": "423a65a3f123575b6923e923af8e614cad0772b58260eb621ddeeb89a0be5d3d",
-      "bytes": 268946,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-0-source-options.png",
+      "sha256": "d9ae2dd50d40d09b3c753278abf35b30678e3ea22b199f3de28d0d9c0bbf3b21",
+      "bytes": 269261,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-0.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-0.png",
       "sha256": "6eb53b172b943cef842c97b832ffed3a9b004aaf86583c13c7a82c6927bc5c50",
       "bytes": 1305729,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-1-source-options.png",
-      "sha256": "27704eeecc3d424c94e6b685f1364f90b572d5384d6d2e2eef70bc9025ce82e6",
-      "bytes": 267347,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-1-source-options.png",
+      "sha256": "01101ad94c0facb33c53791a0d805e05cfeb7da195fa897ac8a2885fb637b4b2",
+      "bytes": 267683,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/mixed-costume-1.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/mixed-costume-1.png",
       "sha256": "fbd798eed7eb14d98f864281ed2a768e3c30117a4479569dc051fdfa68ea9751",
       "bytes": 1312651,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/legacy-historical.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/legacy-historical.png",
       "sha256": "05b83bd28ef9b290c33963403499668698d3c0fdf96420e2abf563b721fe3401",
       "bytes": 1307780,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/legacy-workbook-v104-source-options.png",
-      "sha256": "147286ecb3a0c28c88bf9189eb9ae3ad6efdd44c869f1806834a61ef6466c831",
-      "bytes": 245332,
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/legacy-workbook-v104-source-options.png",
+      "sha256": "40d9824f77e3626fd99c9e675020ba2d10662860ae545854b4d740371987b7c4",
+      "bytes": 245932,
       "inspectionStatus": "PASS",
       "visuallyInspected": true
     },
     {
-      "file": "outputs/qa-v105/pit-workbook-production-final/legacy-workbook-v104.png",
+      "file": "outputs/qa-v105/pit-workbook-production-review-final/legacy-workbook-v104.png",
       "sha256": "f07a933174344a7018b8a60307b40c954a5690b8847365466414186cda5aa9d8",
       "bytes": 1311129,
       "inspectionStatus": "PASS",
@@ -3419,7 +3419,7 @@
   ],
   "visualInspection": {
     "status": "PASS",
-    "reviewedAt": "2026-10-23T01:47:34.760Z",
+    "reviewedAt": "2026-10-23T02:32:54.800Z",
     "method": "Every produced PNG was opened with view_image. Review covers visible readability, silhouettes, complete weapon tips, feet and overlay placement in these screenshots; it does not certify every intermediate drawing or full canon fidelity.",
     "files": [
       "body-1-M_F003_6M.png",
@@ -3463,16 +3463,16 @@
     "inspectedCaptures": 37
   },
   "rawEvidence": {
-    "file": "outputs/qa-v105/pit-workbook-production-final/result.json",
-    "sha256": "9a5c4ce98cc40514066ded8eca09b9d46f2ffae1594f4aa35c3a59e049a40b8f",
-    "bytes": 19987554,
+    "file": "outputs/qa-v105/pit-workbook-production-review-final/result.json",
+    "sha256": "07bd91ff12e5d006efaaf1e0baa0d20961c04f2a7ae93bc4f56e7ecc8a485d30",
+    "bytes": 19982916,
     "retainedOutsideGit": true
   },
   "evidence": [
     {
       "file": "docs/qa/v105-pit-workbook/body-1-M_F006_S3.png",
-      "sha256": "cf4a5b2004d100a08ed7601c47985a8dfaf566d2062bce8536c7173acb936d70",
-      "bytes": 1198784
+      "sha256": "ee448fb7b7efdae8d01b18ec0a39d8dbcfa3e77dbc26606579d6b614e58ebdd1",
+      "bytes": 1199067
     },
     {
       "file": "docs/qa/v105-pit-workbook/body-1-M_F003_S4.png",
@@ -3491,10 +3491,10 @@
     },
     {
       "file": "docs/qa/v105-pit-workbook/body-1-served.html",
-      "sha256": "7a846d69d425dd63e91232238f2b52f2b64a9404e62cf722085f4756232031ff",
+      "sha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
       "bytes": 13840
     }
   ],
-  "completedAt": "2026-10-23T01:46:20.960Z",
-  "promotedAt": "2026-10-23T01:47:35.756Z"
+  "completedAt": "2026-10-23T02:31:06.147Z",
+  "promotedAt": "2026-10-23T02:33:20.347Z"
 }

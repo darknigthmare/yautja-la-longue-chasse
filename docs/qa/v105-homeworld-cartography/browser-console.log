@@ -1,4 +1,4 @@
-PASS Accepted initial checkpoint restores actual port actor
+PASS Accepted initial checkpoint restores actual port actor and shows the neutral high-point note
 PASS Existing option B is still completed by real native courtyard walking
 PASS Refused choice keeps durable observation and revision unchanged
 PASS Refused choice exposes its own retry after closing
@@ -13,7 +13,7 @@ PASS Starting A returns focus to the real viewport without interrupting the walk
 PASS Actual early walk can interrupt without earning altitude or an observation
 PASS Resume hands focus to the viewport before the next city frame
 PASS The first resumed city frame keeps the active phase without a new interruption
-WALK 0 6048 units 40 real route bends
+WALK 0 6052 units 40 real route bends
 PASS Council stair has no premature floor completion from 0
 PASS Council stair physically reaches the other landing from 0
 PASS Real ascent is recorded before upper-world walking
@@ -36,7 +36,7 @@ PASS Retry after date restores writes without replaying its action
 PASS Date refusal keeps two comparisons but no fictitious timestamp
 PASS Only the explicit on-site date action preserves a valid observation time
 PASS Dating closes the observation with viewport focus and keeps the return active
-WALK +1 2776 units 39 real route bends
+WALK +1 2785 units 39 real route bends
 PASS Council stair has no premature floor completion from +1
 PASS Council stair physically reaches the other landing from +1
 WALK 0 6033 units 38 real route bends
@@ -54,4 +54,4 @@ PASS No profile, inventory or trophy reward is granted by cartographer words
 PASS Source dialog fits a mobile viewport with usable controls
 PASS Completed A remains stored after ordinary mobile Continue
 PASS The local journey raises no browser exception
-{"status":"PASS","checks":52,"captures":9,"output":"/workspace/yautja-la-longue-chasse/outputs/qa-v105/homeworld-cartography-production-final"}
+{"status":"PASS","checks":52,"captures":9,"output":"/workspace/yautja-la-longue-chasse/outputs/qa-v105/homeworld-cartography-production-review-final"}
