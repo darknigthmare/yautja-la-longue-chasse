@@ -34,12 +34,12 @@ def main():
         if file.name.endswith('.json.gz'):
             records = strings(json.loads(gzip.decompress(file.read_bytes())))
         elif file.suffix == '.json':
-            records = strings(json.loads(file.read_text()))
+            records = strings(json.loads(file.read_text(encoding='utf-8')))
         elif file.suffix == '.ndjson':
-            records = ((location, value) for number, line in enumerate(file.read_text().splitlines(), 1)
+            records = ((location, value) for number, line in enumerate(file.read_text(encoding='utf-8').splitlines(), 1)
                        if line.strip() for location, value in strings(json.loads(line), f'$line[{number}]'))
         elif file.suffix in {'.md', '.html'}:
-            records = [('$text', file.read_text())]
+            records = [('$text', file.read_text(encoding='utf-8'))]
         else:
             continue
         relative = file.relative_to(ROOT).as_posix()
@@ -52,7 +52,7 @@ def main():
               'passed': not failures, 'scopeFR': 'Textes, JSON, NDJSON et JSON gzip du dossier V6.14. Les valeurs détectées ne sont pas recopiées dans le rapport.',
               'checkedFiles': checked, 'failures': failures}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    OUTPUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': report['passed'], 'checkedFiles': len(checked), 'failures': failures}, ensure_ascii=False))
     if failures:
         raise SystemExit(1)
