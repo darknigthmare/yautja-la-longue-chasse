@@ -1,0 +1,760 @@
+{
+  "schemaVersion": "yautja-v614-native-checkpoint-1",
+  "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "expectedCount": 18,
+  "acceptedCount": 5,
+  "completionState": "native-images-in-progress",
+  "noteFR": "Les PNG acceptés et leurs reçus sont sauvegardés ; le suivi du lot complet est construit séparément.",
+  "assets": [
+    {
+      "id": "super-predators--enforcers-comics-10",
+      "groupId": "super-predators",
+      "groupFR": "Lignée des Super Predators",
+      "familyId": "enforcers-comics",
+      "variant": 10,
+      "nameFR": "Chef de poursuite",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 16,
+      "plannedAppearance": {
+        "plannedNameFR": "Chef de poursuite",
+        "lifeStage": "adult",
+        "ageDirectionFR": "adulte du groupe, proportions matures",
+        "individualDirectionFR": "motifs de pigmentation en plages diffuses",
+        "sexDirectionFR": "individu masculin",
+        "skinDirectionFR": "brun ardoise",
+        "armorDirectionFR": "argent patiné",
+        "accentDirectionFR": "bleu profond",
+        "faceState": "masked",
+        "poseFR": "présence assurée, légère rotation du thorax",
+        "morphologyFR": "Grand corps longiligne, face allongée, appendices balayés vers l’arrière, quatre mandibules et membranes latérales charnues, reliefs sinueux du crâne. Super Predator morphology from Predators (2010): taller and LEANER than the classic Yautja, long athletic limbs and close-fitting silhouette, elongated bare face, cranial dreadlocks swept tightly rearward rather than a wide lateral halo. Four strong external mandibles with long lower jaws and broad fleshy lateral membranes around a small inner toothed mouth. Wormlike ridges across the long skull, small recessed predatory eyes, living mottled skin. Five-finger hands. Do not import the Upgrade digitigrade canine legs, do not make a squat bodybuilder, no human face. Use broad closed continuous-toebox footwear when feet are covered; never invent a universal toe count from an unseen foot. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin.",
+        "equipmentFR": "Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [
+          "enforcers-comics:enforcers-comics-10"
+        ],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/enforcers-v614/super-predators/enforcers-comics-10.png",
+      "sha256": "e4864991813c696073af6ff99827a09674f44fd7e33b45d43c983fdac351bbde",
+      "bytes": 2426915,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        0,
+        998,
+        1518
+      ],
+      "contentBoundsAlpha20": [
+        143,
+        6,
+        933,
+        1513
+      ],
+      "alphaZeroPixels": 984954,
+      "alphaSolidPixels": 496884,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.1396484375,
+        0.00390625,
+        0.0888671875,
+        0.014973958333333334
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-ddceddcb-95d2-4f2e-aa9b-5cdd9f807407.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "08b0efc00a26f20a5238aafc1f77896b82c08e94",
+      "generatedAtUtc": "2026-10-23T12:31:59.724157+00:00",
+      "receiptCreatedAtUtc": "2026-10-23T12:30:34.354599+00:00",
+      "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+      "timestampEvidenceFR": "L’heure generatedAtUtc, lorsqu’elle est renseignée, est l’observation du retour de l’outil ; elle n’est pas une heure de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Grand corps longiligne, face allongée, appendices balayés vers l’arrière, quatre mandibules et membranes latérales charnues, reliefs sinueux du crâne. Super Predator morphology from Predators (2010): taller and LEANER than the classic Yautja, long athletic limbs and close-fitting silhouette, elongated bare face, cranial dreadlocks swept tightly rearward rather than a wide lateral halo. Four strong external mandibles with long lower jaws and broad fleshy lateral membranes around a small inner toothed mouth. Wormlike ridges across the long skull, small recessed predatory eyes, living mottled skin. Five-finger hands. Do not import the Upgrade digitigrade canine legs, do not make a squat bodybuilder, no human face. Use broad closed continuous-toebox footwear when feet are covered; never invent a universal toe count from an unseen foot. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : motifs de pigmentation en plages diffuses; pigmentation brun ardoise. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Grand corps longiligne, face allongée, appendices balayés vers l’arrière, quatre mandibules et membranes latérales charnues, reliefs sinueux du crâne. Super Predator morphology from Predators (2010): taller and LEANER than the classic Yautja, long athletic limbs and close-fitting silhouette, elongated bare face, cranial dreadlocks swept tightly rearward rather than a wide lateral halo. Four strong external mandibles with long lower jaws and broad fleshy lateral membranes around a small inner toothed mouth. Wormlike ridges across the long skull, small recessed predatory eyes, living mottled skin. Five-finger hands. Do not import the Upgrade digitigrade canine legs, do not make a squat bodybuilder, no human face. Use broad closed continuous-toebox footwear when feet are covered; never invent a universal toe count from an unseen foot. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : motifs de pigmentation en plages diffuses; pigmentation brun ardoise. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Grand corps longiligne, face allongée, appendices balayés vers l’arrière, quatre mandibules et membranes latérales charnues, reliefs sinueux du crâne. Super Predator morphology from Predators (2010): taller and LEANER than the classic Yautja, long athletic limbs and close-fitting silhouette, elongated bare face, cranial dreadlocks swept tightly rearward rather than a wide lateral halo. Four strong external mandibles with long lower jaws and broad fleshy lateral membranes around a small inner toothed mouth. Wormlike ridges across the long skull, small recessed predatory eyes, living mottled skin. Five-finger hands. Do not import the Upgrade digitigrade canine legs, do not make a squat bodybuilder, no human face. Use broad closed continuous-toebox footwear when feet are covered; never invent a universal toe count from an unseen foot. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : motifs de pigmentation en plages diffuses; pigmentation brun ardoise. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "super-predators--enforcers-comics-09",
+          "groupId": "super-predators",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/production/enforcers-v613/super-predators/enforcers-comics-09.png",
+          "sha256": "8d3595066db427753acf4affd5a87e024a743a38690c9895c46947b90292977c",
+          "bytes": 2307900,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "b2b08ea336f1dc282691a9a95d0025f511161a7d",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        },
+        {
+          "id": "super-predators--blooded-01",
+          "groupId": "super-predators",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12.png",
+          "sha256": "fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12",
+          "bytes": 2423314,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "3c99dda7bd52bb863f498520b0e75f677b515ebc",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée des Super Predators, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Grand corps longiligne, face allongée, appendices balayés vers l’arrière, quatre mandibules et membranes latérales charnues, reliefs sinueux du crâne. Super Predator morphology from Predators (2010): taller and LEANER than the classic Yautja, long athletic limbs and close-fitting silhouette, elongated bare face, cranial dreadlocks swept tightly rearward rather than a wide lateral halo. Four strong external mandibles with long lower jaws and broad fleshy lateral membranes around a small inner toothed mouth. Wormlike ridges across the long skull, small recessed predatory eyes, living mottled skin. Five-finger hands. Do not import the Upgrade digitigrade canine legs, do not make a squat bodybuilder, no human face. Use broad closed continuous-toebox footwear when feet are covered; never invent a universal toe count from an unseen foot. Crâne allongé et membranes latérales ; quatre mandibules. Jambes plantigrades. Aucun jarret Assassin. Individualisation : motifs de pigmentation en plages diffuses; pigmentation brun ardoise. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+          "inputReferenceNames": [
+            "enforcers-comics-09.png",
+            "fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12.png"
+          ],
+          "nativeOutputName": "exec-ddceddcb-95d2-4f2e-aa9b-5cdd9f807407.png",
+          "sha256": "e4864991813c696073af6ff99827a09674f44fd7e33b45d43c983fdac351bbde",
+          "generatedAtUtc": "2026-10-23T12:31:59.724157+00:00",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json",
+      "receiptSha256": "b764a6f88f1850c32d6449b5bccd6a6d32030ce90b6702390a8e0d3ee18fae78",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": [
+          "Inspection de la sortie affichée puis de son aperçu QA sur fond clair : silhouette longiligne, deux bras et deux jambes plantigrades continus, bottes complètes, dreadlocks arrière, masque argent à haute crête et pointes latérales.",
+          "Lance entière tenue par une main à côté du corps, filet sur vêtement opaque, protections partielles argent et liaison compacte à la ceinture ; accents bleu profond lisibles.",
+          "PNG natif copié à l’identique ; aperçu QA séparé non livré comme PNG natif."
+        ],
+        "limitationsFR": [
+          "Marges visibles réelles : gauche13,96 %, haut0,39 %, droite8,89 %, bas1,50 % ; objectif8 % non atteint en haut et en bas. Le contour visible reste dans le cadre.",
+          "Le masque et les bottes cachent les détails du visage et des pieds ; fidélité anatomique canonique1:1 non certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "feral--enforcers-comics-10",
+      "groupId": "feral",
+      "groupFR": "Lignée Feral",
+      "familyId": "enforcers-comics",
+      "variant": 10,
+      "nameFR": "Chef de poursuite",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 216,
+      "plannedAppearance": {
+        "plannedNameFR": "Chef de poursuite",
+        "lifeStage": "adult",
+        "ageDirectionFR": "adulte du groupe, proportions matures",
+        "individualDirectionFR": "motifs de pigmentation en plages diffuses",
+        "sexDirectionFR": "individu masculin",
+        "skinDirectionFR": "beige ocre moucheté",
+        "armorDirectionFR": "argent patiné",
+        "accentDirectionFR": "bleu profond",
+        "faceState": "masked",
+        "poseFR": "présence assurée, légère rotation du thorax",
+        "morphologyFR": "Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu.",
+        "equipmentFR": "Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [
+          "enforcers-comics:enforcers-comics-10"
+        ],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/enforcers-v614/feral/enforcers-comics-10.png",
+      "sha256": "963d12d600d361cc91c58b26341e5a3475bd7d6eacd127214136dfc6ac7a9a51",
+      "bytes": 2300062,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        5,
+        984,
+        1511
+      ],
+      "contentBoundsAlpha20": [
+        187,
+        7,
+        926,
+        1509
+      ],
+      "alphaZeroPixels": 1012531,
+      "alphaSolidPixels": 464368,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.1826171875,
+        0.004557291666666667,
+        0.095703125,
+        0.017578125
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-a0f36075-1e86-4f1b-be62-6683165b2b4c.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "466f0e46caf4e6f32bcf7f12ec846e0602caa935",
+      "generatedAtUtc": "2026-10-23T12:35:13.258801+00:00",
+      "receiptCreatedAtUtc": "2026-10-23T12:33:46.623672+00:00",
+      "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+      "timestampEvidenceFR": "L’heure generatedAtUtc, lorsqu’elle est renseignée, est l’observation du retour de l’outil ; elle n’est pas une heure de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige ocre moucheté. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige ocre moucheté. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige ocre moucheté. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "feral--enforcers-comics-09",
+          "groupId": "feral",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/production/enforcers-v613/feral/enforcers-comics-09.png",
+          "sha256": "ffb3bd05e15c454a721cbab6b33ed02b46f3e71ec9e6d362de399f7dffacbb8c",
+          "bytes": 2266058,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "70348e55b6d68344ce1399b7d9873a6b6203495f",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        },
+        {
+          "id": "feral--blooded-01",
+          "groupId": "feral",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "sha256": "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762",
+          "bytes": 2161194,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "8d008eb0a7db3c02f28490f81469169695210b26",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Feral, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Corps athlétique fin, crâne bas prolongé vers l’arrière, yeux écartés, quatre mandibules fines et anguleuses, appendices longs et fins. Feral Predator morphology from Prey: athletic lean tall body rather than thick classic bodybuilder, elongated low receding skull extending toward the rear, widely spaced deeply set small eyes under bony orbital ridges, narrow central inner face with four long slender angular external mandibles. Longer thinner organic cranial dreadlocks, warm ochre-brown mottled skin, five-finger hands, broad low-set feet as in the Feral reference. Preserve Feral head anatomy; no generic classic broad face. Not the Upgrade canine digitigrade leg. The skull biomask is wearable equipment made from alien prey bone, not this creature’s own bare skull. Crâne bas fuyant prolongé vers l’arrière ; quatre mandibules fines anguleuses. Le masque osseux est amovible, il ne remplace pas le crâne nu. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige ocre moucheté. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+          "inputReferenceNames": [
+            "enforcers-comics-09.png",
+            "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png"
+          ],
+          "nativeOutputName": "exec-a0f36075-1e86-4f1b-be62-6683165b2b4c.png",
+          "sha256": "963d12d600d361cc91c58b26341e5a3475bd7d6eacd127214136dfc6ac7a9a51",
+          "generatedAtUtc": "2026-10-23T12:35:13.258801+00:00",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json",
+      "receiptSha256": "9818d8e1323a20db84e41bf2cb4004f97ed1d082a6fa16c4315902e3a2355341",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": [
+          "Inspection de la sortie et de son aperçu QA clair : corps long et athlétique, deux bras et deux jambes plantigrades, longs appendices fins, pieds complets à griffes et lance entière dans le cadre.",
+          "Masque adapté au volume bas allongé avec haute crête métallique, deux marques bleues, armure argent partielle et filet sur vêtement opaque ; petit boîtier de liaison à la ceinture."
+        ],
+        "limitationsFR": [
+          "Marges visibles : gauche18,26 %, haut0,46 %, droite9,57 %, bas1,76 % ; objectif8 % non atteint verticalement, mais aucun contour visible coupé.",
+          "Le biomask cache les yeux et les mandibules ; leur conformité sous le masque ne peut pas être inspectée. Pose fixe, aucune animation ni fidélité canonique1:1 certifiée.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "ul-khar--enforcers-comics-10",
+      "groupId": "ul-khar",
+      "groupFR": "Ul-Khar — Habitants des forges profondes",
+      "familyId": "enforcers-comics",
+      "variant": 10,
+      "nameFR": "Chef de poursuite",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 1216,
+      "plannedAppearance": {
+        "plannedNameFR": "Chef de poursuite",
+        "lifeStage": "adult",
+        "ageDirectionFR": "adulte du groupe, proportions matures",
+        "individualDirectionFR": "motifs de pigmentation en plages diffuses",
+        "sexDirectionFR": "individu masculin",
+        "skinDirectionFR": "cuivre désaturé",
+        "armorDirectionFR": "argent patiné",
+        "accentDirectionFR": "bleu profond",
+        "faceState": "masked",
+        "poseFR": "présence assurée, légère rotation du thorax",
+        "morphologyFR": "Crâne très bas, large et aplati, articulations mandibulaires anguleuses, corps trapu à cou court, avant-bras puissants et plaques dermiques naturelles. An original endemic Yautja morphotype: unusually LOW FLAT very wide cranium, angular widely spaced jaw hinges, small deep-set eyes, exactly four short THICK ANGULAR external mandibles folding outward and downward around a separate inner toothed mouth. Squat powerfully built body with very short thick neck, compact limbs, huge forearms; natural dark dermal scutes on forearms and upper back plus subtle vascular neck folds, not armor plates fused as rock. Short wide organic dreadlocks lying back. Five-finger hands, broad plantigrade feet with four strong front toes and a smaller lateral digit. Warm dark brown/grey mottled skin. No lava, no fire, no stone golem, no human face. Low flat head and squared jaw distinguish this lineage from the high round-headed cold lineage. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau.",
+        "equipmentFR": "Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [
+          "enforcers-comics:enforcers-comics-10"
+        ],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/enforcers-v614/ul-khar/enforcers-comics-10.png",
+      "sha256": "59489e2908804e1f766209bc3973dd0baac56016b9ad23b6e02ebcd5bf857893",
+      "bytes": 2758416,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        0,
+        992,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        46,
+        2,
+        984,
+        1508
+      ],
+      "alphaZeroPixels": 773624,
+      "alphaSolidPixels": 711145,
+      "edgeAlphaMax": 3,
+      "marginsFraction": [
+        0.044921875,
+        0.0013020833333333333,
+        0.0390625,
+        0.018229166666666668
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-e361baee-a7b3-44b4-b5e3-eb4c271ba6c4.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "2583a5bda53049c068aaf45296b53f97b0d804ec",
+      "generatedAtUtc": "2026-10-23T12:33:13.502Z",
+      "receiptCreatedAtUtc": "2026-10-23T12:31:43.038Z",
+      "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+      "timestampEvidenceFR": "generatedAtUtc désigne l’observation du retour de l’outil, pas une heure exacte de génération certifiée par le service.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne très bas, large et aplati, articulations mandibulaires anguleuses, corps trapu à cou court, avant-bras puissants et plaques dermiques naturelles. An original endemic Yautja morphotype: unusually LOW FLAT very wide cranium, angular widely spaced jaw hinges, small deep-set eyes, exactly four short THICK ANGULAR external mandibles folding outward and downward around a separate inner toothed mouth. Squat powerfully built body with very short thick neck, compact limbs, huge forearms; natural dark dermal scutes on forearms and upper back plus subtle vascular neck folds, not armor plates fused as rock. Short wide organic dreadlocks lying back. Five-finger hands, broad plantigrade feet with four strong front toes and a smaller lateral digit. Warm dark brown/grey mottled skin. No lava, no fire, no stone golem, no human face. Low flat head and squared jaw distinguish this lineage from the high round-headed cold lineage. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : motifs de pigmentation en plages diffuses; pigmentation cuivre désaturé. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne très bas, large et aplati, articulations mandibulaires anguleuses, corps trapu à cou court, avant-bras puissants et plaques dermiques naturelles. An original endemic Yautja morphotype: unusually LOW FLAT very wide cranium, angular widely spaced jaw hinges, small deep-set eyes, exactly four short THICK ANGULAR external mandibles folding outward and downward around a separate inner toothed mouth. Squat powerfully built body with very short thick neck, compact limbs, huge forearms; natural dark dermal scutes on forearms and upper back plus subtle vascular neck folds, not armor plates fused as rock. Short wide organic dreadlocks lying back. Five-finger hands, broad plantigrade feet with four strong front toes and a smaller lateral digit. Warm dark brown/grey mottled skin. No lava, no fire, no stone golem, no human face. Low flat head and squared jaw distinguish this lineage from the high round-headed cold lineage. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : motifs de pigmentation en plages diffuses; pigmentation cuivre désaturé. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne très bas, large et aplati, articulations mandibulaires anguleuses, corps trapu à cou court, avant-bras puissants et plaques dermiques naturelles. An original endemic Yautja morphotype: unusually LOW FLAT very wide cranium, angular widely spaced jaw hinges, small deep-set eyes, exactly four short THICK ANGULAR external mandibles folding outward and downward around a separate inner toothed mouth. Squat powerfully built body with very short thick neck, compact limbs, huge forearms; natural dark dermal scutes on forearms and upper back plus subtle vascular neck folds, not armor plates fused as rock. Short wide organic dreadlocks lying back. Five-finger hands, broad plantigrade feet with four strong front toes and a smaller lateral digit. Warm dark brown/grey mottled skin. No lava, no fire, no stone golem, no human face. Low flat head and squared jaw distinguish this lineage from the high round-headed cold lineage. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : motifs de pigmentation en plages diffuses; pigmentation cuivre désaturé. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "ul-khar--enforcers-comics-09",
+          "groupId": "ul-khar",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-09.png",
+          "sha256": "1e4baa4533d80540416149bc8d35af74ab92c03da58df185af83174bd77a545d",
+          "bytes": 2606760,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "c25b43cb29718ef6d7c2643a8799f1aa59da5dbe",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        },
+        {
+          "id": "ul-khar--blooded-01",
+          "groupId": "ul-khar",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b.png",
+          "sha256": "949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b",
+          "bytes": 2594444,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "83b6e8a51c479536a3f98950aca7932333f66d08",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Ul-Khar — Habitants des forges profondes, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Crâne très bas, large et aplati, articulations mandibulaires anguleuses, corps trapu à cou court, avant-bras puissants et plaques dermiques naturelles. An original endemic Yautja morphotype: unusually LOW FLAT very wide cranium, angular widely spaced jaw hinges, small deep-set eyes, exactly four short THICK ANGULAR external mandibles folding outward and downward around a separate inner toothed mouth. Squat powerfully built body with very short thick neck, compact limbs, huge forearms; natural dark dermal scutes on forearms and upper back plus subtle vascular neck folds, not armor plates fused as rock. Short wide organic dreadlocks lying back. Five-finger hands, broad plantigrade feet with four strong front toes and a smaller lateral digit. Warm dark brown/grey mottled skin. No lava, no fire, no stone golem, no human face. Low flat head and squared jaw distinguish this lineage from the high round-headed cold lineage. Respecter le crâne, les pieds et les proportions Ul-Khar des références approuvées ; aucune lave, pierre ou machinerie à la place de la peau. Individualisation : motifs de pigmentation en plages diffuses; pigmentation cuivre désaturé. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+          "inputReferenceNames": [
+            "enforcers-comics-09.png",
+            "949ab0c45d0fd795420203c4b3c72abce0b2c1a56be7f7b317d4a9986bc2050b.png"
+          ],
+          "nativeOutputName": "exec-e361baee-a7b3-44b4-b5e3-eb4c271ba6c4.png",
+          "sha256": "59489e2908804e1f766209bc3973dd0baac56016b9ad23b6e02ebcd5bf857893",
+          "generatedAtUtc": "2026-10-23T12:33:13.502Z",
+          "accepted": true,
+          "acceptedForCurrentOutput": true
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json",
+      "receiptSha256": "d81d9255b6f8efc3b31d5d1c9a8da4ca9e93bbf3034a25bb2ebfe7f7ec5a2ba8",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Individu complet à deux bras et deux jambes, crâne bas et large sous le masque, cou court, silhouette trapue et avant-bras puissants avec scutes naturelles. Armures courtes argent patiné, filet sur vêtement opaque, deux accents bleus de coordination, lance entière et boîtier compact visibles. Aucun défaut anatomique évident ; les pointes restent dans le cadre avec une marge faible documentée.",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène. Fidélité canonique 1:1 non certifiée.",
+          "La cible de 8 % de marge vide n’est pas atteinte de tous les côtés ; la silhouette visible alpha > 20 reste entièrement dans le cadre.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "oni-kok--enforcers-comics-10",
+      "groupId": "oni-kok",
+      "groupFR": "Lignée Oni — chasseur du chapitre ninja de Killer of Killers",
+      "familyId": "enforcers-comics",
+      "variant": 10,
+      "nameFR": "Chef de poursuite",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 2416,
+      "plannedAppearance": {
+        "plannedNameFR": "Chef de poursuite",
+        "lifeStage": "adult",
+        "ageDirectionFR": "adulte du groupe, proportions matures",
+        "individualDirectionFR": "motifs de pigmentation en plages diffuses",
+        "sexDirectionFR": "individu masculin",
+        "skinDirectionFR": "beige marbré",
+        "armorDirectionFR": "argent patiné",
+        "accentDirectionFR": "bleu profond",
+        "faceState": "masked",
+        "poseFR": "présence assurée, légère rotation du thorax",
+        "morphologyFR": "Front haut, étroit, divisé par un sillon médian profond ; deux reliefs frontaux allongés en amande descendant vers les yeux. Deux mandibules externes inférieures seulement, longues, épaisses à la base, se recourbant vers le haut et terminées par de longues défenses. Aucune paire supérieure complète à réintroduire. La bouche interne possède ses propres dents ; de petites pointes sur joues et menton ne doivent pas être confondues avec une seconde paire de mandibules articulées. Silhouette mince et nerveuse, bras relativement longs, taille étroite, jambes de bipède agile. Longues dreadlocks noires attachées à l'arrière du crâne, parfois rabattues devant les épaules. Peau brun beige/terre dans les plans neutres ; zones plissées autour des yeux et mâchoires. Ne pas produire un visage humain maquillé en ninja. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet.",
+        "equipmentFR": "Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [
+          "enforcers-comics:enforcers-comics-10"
+        ],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/enforcers-v614/oni-kok/enforcers-comics-10.png",
+      "sha256": "7b79fd3d2823f6d9adfb0e9e9c6b3802dfcf719e815d5186c50181565679a9a7",
+      "bytes": 2322966,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        0,
+        1010,
+        1536
+      ],
+      "contentBoundsAlpha20": [
+        164,
+        1,
+        896,
+        1516
+      ],
+      "alphaZeroPixels": 1010843,
+      "alphaSolidPixels": 468220,
+      "edgeAlphaMax": 4,
+      "marginsFraction": [
+        0.16015625,
+        0.0006510416666666666,
+        0.125,
+        0.013020833333333334
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-3db99792-661a-4821-9575-a9122bf77b66.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "4ff37074ae59ff6ed367ce95d8f3d666cd7a752b",
+      "generatedAtUtc": "2026-10-23T12:31:43.891Z",
+      "receiptCreatedAtUtc": "2026-10-23T12:30:41.995Z",
+      "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+      "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Front haut, étroit, divisé par un sillon médian profond ; deux reliefs frontaux allongés en amande descendant vers les yeux. Deux mandibules externes inférieures seulement, longues, épaisses à la base, se recourbant vers le haut et terminées par de longues défenses. Aucune paire supérieure complète à réintroduire. La bouche interne possède ses propres dents ; de petites pointes sur joues et menton ne doivent pas être confondues avec une seconde paire de mandibules articulées. Silhouette mince et nerveuse, bras relativement longs, taille étroite, jambes de bipède agile. Longues dreadlocks noires attachées à l'arrière du crâne, parfois rabattues devant les épaules. Peau brun beige/terre dans les plans neutres ; zones plissées autour des yeux et mâchoires. Ne pas produire un visage humain maquillé en ninja. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige marbré. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Front haut, étroit, divisé par un sillon médian profond ; deux reliefs frontaux allongés en amande descendant vers les yeux. Deux mandibules externes inférieures seulement, longues, épaisses à la base, se recourbant vers le haut et terminées par de longues défenses. Aucune paire supérieure complète à réintroduire. La bouche interne possède ses propres dents ; de petites pointes sur joues et menton ne doivent pas être confondues avec une seconde paire de mandibules articulées. Silhouette mince et nerveuse, bras relativement longs, taille étroite, jambes de bipède agile. Longues dreadlocks noires attachées à l'arrière du crâne, parfois rabattues devant les épaules. Peau brun beige/terre dans les plans neutres ; zones plissées autour des yeux et mâchoires. Ne pas produire un visage humain maquillé en ninja. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige marbré. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Front haut, étroit, divisé par un sillon médian profond ; deux reliefs frontaux allongés en amande descendant vers les yeux. Deux mandibules externes inférieures seulement, longues, épaisses à la base, se recourbant vers le haut et terminées par de longues défenses. Aucune paire supérieure complète à réintroduire. La bouche interne possède ses propres dents ; de petites pointes sur joues et menton ne doivent pas être confondues avec une seconde paire de mandibules articulées. Silhouette mince et nerveuse, bras relativement longs, taille étroite, jambes de bipède agile. Longues dreadlocks noires attachées à l'arrière du crâne, parfois rabattues devant les épaules. Peau brun beige/terre dans les plans neutres ; zones plissées autour des yeux et mâchoires. Ne pas produire un visage humain maquillé en ninja. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige marbré. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "oni-kok--enforcers-comics-09",
+          "groupId": "oni-kok",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-09.png",
+          "sha256": "fe46f1356617ec287773b6d8a815dd2e19d09c7b325c8b98107da9e07da05dd1",
+          "bytes": 2075780,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "cd15b50b119fbd30134c82ec05b8f41375390747",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        },
+        {
+          "id": "oni-kok--blooded-01",
+          "groupId": "oni-kok",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c.png",
+          "sha256": "92dafcb144117cb13dc94aebe3b2b083acb55de94bcec52c98be2145f3b8418c",
+          "bytes": 2040097,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "1fd1e29857b82235533ddd96f2cc17ba18f38e76",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Oni — chasseur du chapitre ninja de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Front haut, étroit, divisé par un sillon médian profond ; deux reliefs frontaux allongés en amande descendant vers les yeux. Deux mandibules externes inférieures seulement, longues, épaisses à la base, se recourbant vers le haut et terminées par de longues défenses. Aucune paire supérieure complète à réintroduire. La bouche interne possède ses propres dents ; de petites pointes sur joues et menton ne doivent pas être confondues avec une seconde paire de mandibules articulées. Silhouette mince et nerveuse, bras relativement longs, taille étroite, jambes de bipède agile. Longues dreadlocks noires attachées à l'arrière du crâne, parfois rabattues devant les épaules. Peau brun beige/terre dans les plans neutres ; zones plissées autour des yeux et mâchoires. Ne pas produire un visage humain maquillé en ninja. Exactement deux mandibules inférieures longues recourbées, aucune paire supérieure. Haut crâne étroit sillonné et corps élancé. Ce trait dérivé de l’individu du film est une règle de la lignée fictive du projet. Individualisation : motifs de pigmentation en plages diffuses; pigmentation beige marbré. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+          "inputReferenceNames": [
+            "oni-kok--enforcers-comics-09",
+            "oni-kok--blooded-01"
+          ],
+          "accepted": true,
+          "acceptedForCurrentOutput": true,
+          "nativeOutputName": "exec-3db99792-661a-4821-9575-a9122bf77b66.png",
+          "sha256": "7b79fd3d2823f6d9adfb0e9e9c6b3802dfcf719e815d5186c50181565679a9a7",
+          "bytes": 2322966,
+          "generatedAtUtc": "2026-10-23T12:31:43.891Z"
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json",
+      "receiptSha256": "e9ea69eaf7a129986b24f505a2e6cf5d64ddafde67b5005f8ae77ae24e521aad",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Oni adulte élancé en armure Enforcer argentée et filet, deux mandibules inférieures visibles, longue chevelure organique sombre, lance entière à côté du corps et liaison compacte à la ceinture. Deux bras et deux pieds raccordés ; touches bleu profond.",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "Marge vide cible de 8 % non atteinte sur tous les côtés ; mesures réelles consignées, contenu visible alpha > 20 entièrement dans le cadre.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "grendel-kok--enforcers-comics-10",
+      "groupId": "grendel-kok",
+      "groupFR": "Lignée Grendel / Jotun — chasseur viking de Killer of Killers",
+      "familyId": "enforcers-comics",
+      "variant": 10,
+      "nameFR": "Chef de poursuite",
+      "priorStatusFR": "Pas faite",
+      "statusFR": "Conservée hors main",
+      "sourceWorkbookRow": 2616,
+      "plannedAppearance": {
+        "plannedNameFR": "Chef de poursuite",
+        "lifeStage": "adult",
+        "ageDirectionFR": "adulte du groupe, proportions matures",
+        "individualDirectionFR": "motifs de pigmentation en plages diffuses",
+        "sexDirectionFR": "individu masculin",
+        "skinDirectionFR": "ardoise pâle",
+        "armorDirectionFR": "argent patiné",
+        "accentDirectionFR": "bleu profond",
+        "faceState": "masked",
+        "poseFR": "présence assurée, légère rotation du thorax",
+        "morphologyFR": "Torse extrêmement large et épais, trapèzes et épaules bombés, bras massifs ; conserver la disproportion imposante entre la grande largeur d'épaules et la tête plus compacte. Crâne large à reliefs frontaux épais, petits yeux rouges profondément enfoncés dans les plans officiels, quatre mandibules externes avec crocs ; front moins haut et étroit que celui d'Oni. Peau gris vert sombre et épaisse, plages d'écailles sur les épaules et bras ; petites pointes locales sur le relief des épaules, sans cuirasse de piques géantes. Nombreuses longues dreadlocks noires plutôt fines, implantées à l'arrière et aux côtés du crâne, descendant sur le torse et pouvant s'étaler au mouvement. Aucun trait d'Assassin digitigrade ajouté ; il n'est pas automatiquement un Super Predator de Predators (2010). Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population.",
+        "equipmentFR": "Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact.",
+        "cyberneticsFR": null,
+        "mount": null,
+        "dependencyAssetIds": [],
+        "sourceStyleIds": [
+          "enforcers-comics:enforcers-comics-10"
+        ],
+        "renderSpec": {
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "transparentBackground": true,
+          "independentAsset": true,
+          "nativePixelsRequired": true
+        }
+      },
+      "userOverrides": [],
+      "repoPngPath": "public/game/production/enforcers-v614/grendel-kok/enforcers-comics-10.png",
+      "sha256": "a435e8a0a5f35f8056c13d7c9d3d1fce3b7478c5ebb9d800d60484f564eda4d1",
+      "bytes": 2715180,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds": [
+        0,
+        8,
+        979,
+        1514
+      ],
+      "contentBoundsAlpha20": [
+        86,
+        10,
+        977,
+        1508
+      ],
+      "alphaZeroPixels": 822032,
+      "alphaSolidPixels": 661590,
+      "edgeAlphaMax": 1,
+      "marginsFraction": [
+        0.083984375,
+        0.006510416666666667,
+        0.0458984375,
+        0.018229166666666668
+      ],
+      "targetEightPercentMarginMet": false,
+      "nativeOutputName": "exec-640474f8-4f8e-4d48-b41e-2304b21c604c.png",
+      "generationMethod": "builtin-imagegen",
+      "copiedByteIdentical": true,
+      "nativeGitBlobSha": "4dc2d7867a6ea35a547ed9ddc9ecc0f40893b4da",
+      "generatedAtUtc": "2026-10-23T12:34:08.687Z",
+      "receiptCreatedAtUtc": "2026-10-23T12:32:59.855Z",
+      "verifiedAtUtc": "2026-10-23T12:36:20.139Z",
+      "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+      "promptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Torse extrêmement large et épais, trapèzes et épaules bombés, bras massifs ; conserver la disproportion imposante entre la grande largeur d'épaules et la tête plus compacte. Crâne large à reliefs frontaux épais, petits yeux rouges profondément enfoncés dans les plans officiels, quatre mandibules externes avec crocs ; front moins haut et étroit que celui d'Oni. Peau gris vert sombre et épaisse, plages d'écailles sur les épaules et bras ; petites pointes locales sur le relief des épaules, sans cuirasse de piques géantes. Nombreuses longues dreadlocks noires plutôt fines, implantées à l'arrière et aux côtés du crâne, descendant sur le torse et pouvant s'étaler au mouvement. Aucun trait d'Assassin digitigrade ajouté ; il n'est pas automatiquement un Super Predator de Predators (2010). Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : motifs de pigmentation en plages diffuses; pigmentation ardoise pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "acceptedOutputPromptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Torse extrêmement large et épais, trapèzes et épaules bombés, bras massifs ; conserver la disproportion imposante entre la grande largeur d'épaules et la tête plus compacte. Crâne large à reliefs frontaux épais, petits yeux rouges profondément enfoncés dans les plans officiels, quatre mandibules externes avec crocs ; front moins haut et étroit que celui d'Oni. Peau gris vert sombre et épaisse, plages d'écailles sur les épaules et bras ; petites pointes locales sur le relief des épaules, sans cuirasse de piques géantes. Nombreuses longues dreadlocks noires plutôt fines, implantées à l'arrière et aux côtés du crâne, descendant sur le torse et pouvant s'étaler au mouvement. Aucun trait d'Assassin digitigrade ajouté ; il n'est pas automatiquement un Super Predator de Predators (2010). Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : motifs de pigmentation en plages diffuses; pigmentation ardoise pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Torse extrêmement large et épais, trapèzes et épaules bombés, bras massifs ; conserver la disproportion imposante entre la grande largeur d'épaules et la tête plus compacte. Crâne large à reliefs frontaux épais, petits yeux rouges profondément enfoncés dans les plans officiels, quatre mandibules externes avec crocs ; front moins haut et étroit que celui d'Oni. Peau gris vert sombre et épaisse, plages d'écailles sur les épaules et bras ; petites pointes locales sur le relief des épaules, sans cuirasse de piques géantes. Nombreuses longues dreadlocks noires plutôt fines, implantées à l'arrière et aux côtés du crâne, descendant sur le torse et pouvant s'étaler au mouvement. Aucun trait d'Assassin digitigrade ajouté ; il n'est pas automatiquement un Super Predator de Predators (2010). Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : motifs de pigmentation en plages diffuses; pigmentation ardoise pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+      "plannedPromptIsSubmissionEvidence": false,
+      "references": [
+        {
+          "id": "grendel-kok--enforcers-comics-09",
+          "groupId": "grendel-kok",
+          "role": "costume-and-rendering",
+          "repoPath": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-09.png",
+          "sha256": "ea88c2062df52b06db63cfc62f86dadfe0154d2124fb523f443b3f7d5d77b935",
+          "bytes": 2501171,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "2024bb8190c453b0b2fdc88492a2c44dc40cbc69",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        },
+        {
+          "id": "grendel-kok--blooded-01",
+          "groupId": "grendel-kok",
+          "role": "lineage-morphology",
+          "repoPath": "public/game/imports/v85/library/f1bd46c3d2c00c776a689b9bc688a00c55a607e676faec1b6b3e3eec0b0dbd27.png",
+          "sha256": "f1bd46c3d2c00c776a689b9bc688a00c55a607e676faec1b6b3e3eec0b0dbd27",
+          "bytes": 2687406,
+          "width": 1024,
+          "height": 1536,
+          "gitBlobSha1": "a31c254eef7ad993fce516b9d723ed36e805a590",
+          "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+          "bytesVerifiedLocally": true,
+          "verifiedAtUtc": "2026-10-23T12:29:31.217Z"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "promptExact": "Créer un unique sprite indépendant du groupe Lignée Grendel / Jotun — chasseur viking de Killer of Killers, rôle Enforcers du comic, variante 10 — Chef de poursuite. individu masculin; adulte du groupe, proportions matures. Les proportions du groupe priment sur celles des anciens modèles de tenue. Anatomie à préserver : Torse extrêmement large et épais, trapèzes et épaules bombés, bras massifs ; conserver la disproportion imposante entre la grande largeur d'épaules et la tête plus compacte. Crâne large à reliefs frontaux épais, petits yeux rouges profondément enfoncés dans les plans officiels, quatre mandibules externes avec crocs ; front moins haut et étroit que celui d'Oni. Peau gris vert sombre et épaisse, plages d'écailles sur les épaules et bras ; petites pointes locales sur le relief des épaules, sans cuirasse de piques géantes. Nombreuses longues dreadlocks noires plutôt fines, implantées à l'arrière et aux côtés du crâne, descendant sur le torse et pouvant s'étaler au mouvement. Aucun trait d'Assassin digitigrade ajouté ; il n'est pas automatiquement un Super Predator de Predators (2010). Thorax colossal, épaules énormes, cou enfoui, tête relativement compacte, quatre mandibules. Deux bras organiques par défaut. Ne pas recopier son amputation individuelle sur toute la population. Individualisation : motifs de pigmentation en plages diffuses; pigmentation ardoise pâle. Biomask original amovible adapté au volume réel du crâne ; aucun appendice de masque ne devient un organe biologique. Tenue : Enforcer du comic : biomask argenté à haute pointe centrale et pointes latérales, filet visible, protections métalliques partielles, gantelets techniques et matériel de traque. Conserver cette tenue spécifique ; aucun plastron militaire intégral de garde V4. Adapter le masque au crâne de la lignée. La famille définit la tenue et la fonction ; le morphotype du groupe définit le corps, adapté au stade de vie indiqué. Ne pas imposer l'anatomie classique des références aux lignées. Biomask argent à haute crête conservée, deux marques de coordination sobres, lance et boîtier de liaison compact. Références de tenue à suivre : Enforcer aux trois cicatrices. Leur corps, leur peau et leur tête ne remplacent jamais l’anatomie de ce groupe. Métaux dominants : argent patiné; accents : bleu profond.  Pose : présence assurée, légère rotation du thorax. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Un seul personnage adulte entier, sans autre figure. Cadrage portrait natif 1024 × 1536, PNG RGBA réellement transparent. Le personnage, la lance, les pieds et tous les appendices occupent environ 80 % du cadre, avec au moins 8 % de vide sur chacun des quatre côtés. Rendu réaliste détaillé cohérent avec les références. Image 1 : référence de costume Enforcer et de rendu du même groupe, pas le nouvel individu ni sa prothèse. Image 2 : référence de morphologie du groupe. Créer un nouveau Chef de poursuite, pas une recoloration des références. Masque argenté à haute crête et pointes latérales, deux petits traits bleu profond de coordination, armures courtes partielles argent patiné, filet visible sur vêtement de combat opaque, lance entière tenue presque verticale à côté du corps et boîtier de liaison compact à la ceinture. Aucun torse cuirassé intégral, aucune cape cachant les membres. Présence assurée, légère rotation du thorax. Aucun sol, socle, ombre de contact, décor, texte, logo ou planche.",
+          "inputReferenceNames": [
+            "grendel-kok--enforcers-comics-09",
+            "grendel-kok--blooded-01"
+          ],
+          "accepted": true,
+          "acceptedForCurrentOutput": true,
+          "nativeOutputName": "exec-640474f8-4f8e-4d48-b41e-2304b21c604c.png",
+          "sha256": "a435e8a0a5f35f8056c13d7c9d3d1fce3b7478c5ebb9d800d60484f564eda4d1",
+          "bytes": 2715180,
+          "generatedAtUtc": "2026-10-23T12:34:08.687Z"
+        }
+      ],
+      "receiptPath": "docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json",
+      "receiptSha256": "1092253655cae8700f6ac1d0f359a010e8095e2a4e24d00aa18c7e67894b7296",
+      "provenanceRecovery": {
+        "status": "complete-current-final-receipt",
+        "historicalAttemptsAreCompleteForFinalOutput": true
+      },
+      "visualInspection": {
+        "accepted": true,
+        "notesFR": "Grendel adulte au thorax colossal, épaules massives et tête relativement compacte ; deux bras organiques complets et deux jambes plantigrades. Quatre mandibules, armure partielle argent patiné, filet, lance tenue de côté et boîtier de liaison à la ceinture. Marques bleu profond et peau ardoise marbrée.",
+        "limitationsFR": [
+          "Pose fixe ; aucune animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "Marge vide cible de 8 % non atteinte sur tous les côtés ; mesures réelles consignées, contenu visible alpha > 20 entièrement dans le cadre.",
+          "Pose fixe ; aucune nouvelle animation ni nouveau placement en scène ; fidélité canonique 1:1 non certifiée.",
+          "La marge vide cible de 8 % n’est pas atteinte sur tous les côtés ; le contenu visible alpha > 20 reste entièrement dans le cadre."
+        ]
+      },
+      "availabilityNow": "verified-in-working-branch",
+      "galleryInBranch": true,
+      "codexInBranch": true,
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    }
+  ]
+}
