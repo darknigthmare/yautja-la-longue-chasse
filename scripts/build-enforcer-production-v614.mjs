@@ -117,7 +117,7 @@ const registryAssets=assets.map(a=>({id:'production-v614:'+a.id+':'+a.sha256.sli
  masked:a.groupId==='human-accepted'?'half-mask':a.groupId==='pilot-kok'?'open-face-helmet':'masked',src:a.repoPngPath.replace(/^public/,''),
  width:a.width,height:a.height,bytes:a.bytes,sha256:a.sha256,sourceArchive:'Production native Enforcers V6.14 · 23 octobre 2026',insideArchive:null,
  sourcePath:a.repoPngPath,sourceStatus:'native-produced-visual-reviewed',producerStatus:'verified-in-working-branch',pose:a.plannedAppearance.poseFR,
- motionStatus:'single-pose-static',canonicalFidelity:'not-certified-1-to-1',sourceNote:a.visualInspection.notesFR,sourceLimits:a.visualInspection.limitationsFR,
+ motionStatus:'single-pose-static',canonicalFidelity:'not-certified-1-to-1',sourceNote:Array.isArray(a.visualInspection.notesFR)?a.visualInspection.notesFR.join(' '):a.visualInspection.notesFR,sourceLimits:a.visualInspection.limitationsFR,
  supersedesIdentityId:'',supersededByIdentityId:'',fullBody:true,bodyComposition:'single-individual',nativeNature:'native-generated-project-sprite'}));
 write('app/game/data/enforcerProductionV614.json',{version:'V6.14',summary:{nativePngFiles:18},packs:[{id:'enforcers-v614',label:'Enforcers V6.14 · variante 10',
  version:'V6.14',priority:47,archive:'Production native · 23 octobre 2026',insideArchive:null,sha256:'',pngEntriesImported:18,recordEntries:18,status:'native-produced-visual-reviewed'}],assets:registryAssets});
