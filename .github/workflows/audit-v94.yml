@@ -54,6 +54,22 @@ on:
       - 'art-source/v107/**'
       - 'public/game/production/enforcer-alternatives-v107/**'
       - 'public/game/sprites/v107/**'
+      - 'public/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-medium-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-idle-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-hurt-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-heavy-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-guard-v34.png'
+      - 'public/game/sprites/v34/pit/scar/scar-crouch-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png'
+      - 'public/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png'
       - 'public/audio/ambience/ship/v54.wav'
       - 'public/audio/sfx/scan/v54.wav'
       - 'public/game/homeworld/v64/clan-shuttle.png'
@@ -359,6 +375,21 @@ jobs:
             /public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png
+            /public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png
+            /public/game/sprites/v34/pit/scar/scar-crouch-v34.png
+            /public/game/sprites/v34/pit/scar/scar-guard-v34.png
+            /public/game/sprites/v34/pit/scar/scar-hurt-v34.png
+            /public/game/sprites/v34/pit/scar/scar-idle-v34.png
+            /public/game/sprites/v34/pit/scar/scar-medium-v34.png
+            /public/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png
+            /public/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png
             # Bounded V107 union: runtime inputs, six native catalogues and shuriken.
             /public/audio/ambience/ship/v54.wav
             /public/audio/sfx/scan/v54.wav
