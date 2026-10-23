@@ -40,7 +40,7 @@ export default function HomeworldCartographyV104({ ledger, disabled, message, on
     </div>
     {message && <p className={styles.feedback} role="status">{message}</p>}
     {r?.phase === 'completed' && <p>Les deux repères et le retour au pupitre sont consignés. Le relevé reste consultable ici.</p>}
-    <p className={styles.note}>{highPointCompleted ? 'Ton observation datée depuis le point haut reste conservée dans son relevé.' : 'Le point haut reste à explorer dans un autre parcours.'} Cette liaison ne révèle aucun quartier et ne remet aucun équipement.</p>
+    <p className={styles.note}>{highPointCompleted ? 'Ton observation datée depuis le point haut reste conservée dans son relevé.' : 'Le relevé depuis le point haut est une opération distincte de cette liaison.'} Cette liaison ne révèle aucun quartier et ne remet aucun équipement.</p>
     <button type="button" aria-expanded={showSource} onClick={() => setShowSource(v => !v)}>Origine de cette demande</button>
     {showSource && <aside className={styles.source}><strong>{scene.title}</strong><p>{option.action}</p><p>Texte original du projet V6, présenté en traduction française. Poste, pupitre de lecture et apparence neutre adaptés localement ; aucun doublage enregistré ni nouvel accessoire peint.</p><p>La branche du point haut et son ouverture évoquant une crête ne sont pas jouées dans cette cour.</p><small>{scene.address} · {option.address}</small></aside>}
   </section>;
