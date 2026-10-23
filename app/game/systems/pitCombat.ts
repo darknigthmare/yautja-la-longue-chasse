@@ -1,4 +1,8 @@
-import { PIT_WORKBOOK_COMBAT_RECIPE_V105, PIT_WORKBOOK_COMBAT_STATE_VERSION_V105, isPitWorkbookRecipe, isPitWorkbookCombatMoveV105, getPitWorkbookCombatMoveV105, type PitWorkbookRecipe, type PitWorkbookCombatMoveKeyV105, type PitWorkbookActionInputV105 } from './pitWorkbookCombatV105';
+import {getPitWorkbookSuperContactGeometryV106, getPitWorkbookSuperProjectileAnchorV106} from './pitWorkbookSuperSourceV106';
+import {getPitWorkbookProjectileAnchorV106, projectPitWorkbookAnchorV106, getPitWorkbookShieldGeometryV106, projectPitWorkbookShieldV106} from './pitWorkbookProjectileSourceV106';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V106, PIT_WORKBOOK_COMBAT_STATE_VERSION_V106, isPitWorkbookRecipeV106 as isPitWorkbookRecipe, isPitWorkbookCombatMoveV106, getPitWorkbookCombatMoveV106, isPitWorkbookProjectileV106, isPitWorkbookActionInputV106, type PitWorkbookRecipeV106 as PitWorkbookRecipe, type PitWorkbookCombatMoveKeyV106, type PitWorkbookActionInputV106} from './pitWorkbookCombatV106';
+import {freshPitWorkbookMotionV106, samplePitWorkbookMotionV106, resolvePitWorkbookMotionV106, validPitWorkbookMotionV106, type PitWorkbookMotionStateV106} from './pitWorkbookMotionV106';
+import { PIT_WORKBOOK_COMBAT_RECIPE_V105, PIT_WORKBOOK_COMBAT_STATE_VERSION_V105, isPitWorkbookCombatMoveV105, getPitWorkbookCombatMoveV105 } from './pitWorkbookCombatV105';
 import { PIT_WORKBOOK_NORMALS_RECIPE_V104, PIT_WORKBOOK_NORMALS_STATE_VERSION_V104, ownsPitWorkbookNormalsV104, isPitWorkbookNormalKeyV104, pitWorkbookNormalKeyV104, getPitWorkbookNormalV104, applyPitWorkbookNormalV104, type PitWorkbookNormalKeyV104 } from './pitWorkbookNormalsV104';
 import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type PitUserFighterId } from './pitUserRoster';
 import { applyPitAuthoredMovesetV92, getPitAuthoredMovesetV92, PIT_AUTHORED_MOVESETS_V92, type PitAuthoredMovesetIdV92 } from './pitAuthoredMovesetsV92';
@@ -164,11 +168,11 @@ export interface PitInput {
   throw?: boolean;
   resource?: boolean;
   /** Explicit accessible source command; reserved to the opt-in V105 recipe. */
-  workbookAction?: PitWorkbookActionInputV105;
+  workbookAction?: PitWorkbookActionInputV106;
 }
 
 interface PitInputLatch {
-  workbookAction?: PitWorkbookActionInputV105 | null;
+  workbookAction?: PitWorkbookActionInputV106 | null;
   jump: boolean;
   attack: PitAttackKind | null;
   throw: boolean;
@@ -178,7 +182,7 @@ interface PitInputLatch {
 export interface PitActionState {
   /** Source posture is owned by the action through landing and input changes. */
   normalMove?: PitWorkbookNormalKeyV104;
-  workbookMove?: PitWorkbookCombatMoveKeyV105;
+  workbookMove?: PitWorkbookCombatMoveKeyV106;
   kind: "attack" | "throw" | "equipment";
   attack: PitAttackKind | null;
   frame: number;
@@ -186,6 +190,10 @@ export interface PitActionState {
   /** V10 default Feral: origin chosen when firing, held even after landing.
    * Absent before launch and in historical replay steppers. */
   feralLauncherOrigin?: 'native' | 'legacy';
+  /** V14 source salve: one fixed acquisition, reserved IDs for23/25/27 releases. */
+  /** A true unguarded opening owns its bounded follow-up; interruption deletes it. */
+  workbookSuperV106?: {confirmedFrame: number; followupConnected: boolean};
+  workbookVolleyV106?: {volleyId: number; targetX: number; targetY: number};
 }
 
 export interface PitTechniqueStatusState {
@@ -209,10 +217,13 @@ export interface PitTechniqueEffectState {
   rehitFrames: number;
   /** Feral's V9+ bolts carry immutable acquisition/flight data. */
   bolt?: PitFeralBoltFlight;
+  /** Source attack retained after its BODY action completes; V14 only. */
+  workbookMove?: 'S1' | 'S3' | 'SUPER';
 }
 
 export interface PitFighterState {
   normalMovesRecipe?: PitWorkbookRecipe;
+  workbookMotion?: PitWorkbookMotionStateV106;
   slot: 0 | 1;
   definitionId: PitFighterId;
   /** Absent snapshots keep their historical shared recipe, including active actions. */
@@ -280,7 +291,7 @@ export interface PitPendingThrow {
 }
 
 export interface PitCombatState {
-  version: typeof PIT_STATE_VERSION | typeof PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V105;
+  version: typeof PIT_STATE_VERSION | typeof PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V106;
   tickRate: typeof PIT_TICK_RATE;
   frame: number;
   phase: PitMatchPhase;
@@ -367,14 +378,15 @@ export function getPitCombatAttackDefinition(
   action: PitActionState | null = fighter.action,
 ): PitAttackDefinition {
   const base = getPitCombatFighterDefinition(fighter).attacks[attack];
-  const workbook = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 && action?.attack === attack
-    ? getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove) : undefined;
+  const workbook = action?.attack === attack ? fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106
+    ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105
+    ? getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove) : undefined : undefined;
   if (workbook && workbook.key !== 'EQUIP') return {
     ...base, label: workbook.label, startup: workbook.startup, active: workbook.active, recovery: workbook.recovery,
-    damage: workbook.damage, chipDamage: 0, hitLevel: 'mid', antiAir: false, knockdown: false, launchY: 0,
+    damage: workbook.key === 'SUPER' ? fighter.definitionId === 'feral-hunter' ? 40 : action?.frame !== undefined && action.frame >= 40 ? 200 : 80 : workbook.damage, chipDamage: 0, hitLevel: fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && fighter.definitionId === 'scar' && workbook.key === 'S3' ? 'high' : 'mid', antiAir: false, knockdown: false, launchY: 0,
     // Contact geometry/stun are explicit Pit adaptations, not pixel data from the workbook.
     range: workbook.key === 'S1' ? 146 : workbook.key === 'S3' ? 112 : 92,
-    height: 66, hitstun: 27, blockstun: 18, pushback: 24,
+    height: 66, hitstun: workbook.key === 'SUPER' ? 48 : 27, blockstun: 18, pushback: workbook.key === 'SUPER' ? 0 : 24,
   };
   const source = isPitWorkbookRecipe(fighter.normalMovesRecipe) &&
     ownsPitWorkbookNormalsV104(fighter.definitionId, fighter.variantId) && action?.attack === attack
@@ -384,7 +396,7 @@ export function getPitCombatAttackDefinition(
 function beginPitAttack(fighter: PitFighterState, attack: PitAttackKind, input: PitInput): PitActionState {
   if (isPitWorkbookRecipe(fighter.normalMovesRecipe)) fighter.crouching = fighter.grounded && Boolean(input.down);
   const forward = fighter.facing === 1 ? input.right && !input.left : input.left && !input.right;
-  if (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 && fighter.grounded && !fighter.crouching && attack === 'medium' && forward) {
+  if ((fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106) && fighter.grounded && !fighter.crouching && attack === 'medium' && forward) {
     return { kind: 'attack', attack, frame: 0, connected: false, workbookMove: '6M' };
   }
   const key = isPitWorkbookRecipe(fighter.normalMovesRecipe)
@@ -394,10 +406,12 @@ function beginPitAttack(fighter: PitFighterState, attack: PitAttackKind, input: 
 
 /** A zero-active equipment action uses source deadlines without creating an attack. */
 export function getPitCombatActionTimingV105(fighter: PitFighterState, action = fighter.action): {startup: number; active: number; recovery: number} | null {
-  if (fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 || !action?.workbookMove) return null;
-  const move = getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
+  if (!action?.workbookMove) return null;
+  const move = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove) : undefined;
   return move ? {startup: move.startup, active: move.active, recovery: move.recovery} : null;
 }
+
+export const getPitCombatActionTimingV106 = getPitCombatActionTimingV105;
 
 /** Selection uses the recipe a newly created duel would receive. */
 export function getPitCurrentFighterDefinition(fighterId: PitFighterId, variantId?: string | null): PitFighterDefinition {
@@ -436,7 +450,7 @@ function latchFromInput(input: PitInput = {}, recipe?: PitWorkbookRecipe): PitIn
     attack: input.attack ?? null,
     throw: Boolean(input.throw),
     resource: Boolean(input.resource),
-    ...(recipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? {workbookAction: input.workbookAction ?? null} : {}),
+    ...((recipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || recipe === PIT_WORKBOOK_COMBAT_RECIPE_V106) ? {workbookAction: input.workbookAction ?? null} : {}),
   };
 }
 
@@ -454,6 +468,7 @@ function freshFighter(
   const ownedRecipe = ownsPitWorkbookNormalsV104(id, normalizePitUserVariant(id, variantId)) ? normalMovesRecipe : undefined;
   return {
     slot,
+    ...(ownedRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? {workbookMotion: freshPitWorkbookMotionV106(slot === 0 ? 1 : -1)} : {}),
     definitionId: id,
     ...(movesetId ? { movesetId } : {}),
     ...(normalMovesRecipe && ownsPitWorkbookNormalsV104(id, normalizePitUserVariant(id, variantId)) ? {normalMovesRecipe} : {}),
@@ -484,7 +499,7 @@ function freshFighter(
     cloakFramesRemaining: 0,
     cloakCooldownFrames: 0,
     techniqueStatus: null,
-    inputLatch: { ...inputLatch, ...(ownedRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? {workbookAction: inputLatch.workbookAction ?? null} : {}) },
+    inputLatch: { ...inputLatch, ...((ownedRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || ownedRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106) ? {workbookAction: inputLatch.workbookAction ?? null} : {}) },
   };
 }
 
@@ -521,7 +536,7 @@ export function createPitCombatState(
     throw new Error('THE PIT requires a registered Tracker hound appearance.');
   }
   return {
-    version: options.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 : options.normalMoves ? PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 : PIT_STATE_VERSION,
+    version: options.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 : options.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 : options.normalMoves ? PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 : PIT_STATE_VERSION,
     tickRate: PIT_TICK_RATE,
     frame: 0,
     phase: "round",
@@ -547,7 +562,8 @@ export function createPitCombatState(
 function cloneFighter(fighter: PitFighterState): PitFighterState {
   return {
     ...fighter,
-    action: fighter.action ? { ...fighter.action } : null,
+    action: fighter.action ? { ...fighter.action, ...(fighter.action.workbookSuperV106 ? {workbookSuperV106: {...fighter.action.workbookSuperV106}} : {}), ...(fighter.action.workbookVolleyV106 ? {workbookVolleyV106: {...fighter.action.workbookVolleyV106}} : {}) } : null,
+    ...(fighter.workbookMotion ? {workbookMotion: {facing: fighter.workbookMotion.facing, held: fighter.workbookMotion.held, steps: fighter.workbookMotion.steps.map(step => ({...step}))}} : {}),
     techniqueStatus: fighter.techniqueStatus ? { ...fighter.techniqueStatus } : null,
     inputLatch: { ...fighter.inputLatch },
   };
@@ -697,13 +713,21 @@ function updateFighter(
 ): void {
   const definition = getPitCombatFighterDefinition(fighter);
   const statusDefinition = techniqueStatusDefinition(fighter);
+  const v106 = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106;
+  if (v106) fighter.workbookMotion = samplePitWorkbookMotionV106(fighter.workbookMotion ?? freshPitWorkbookMotionV106(fighter.facing), input, fighter.facing, state.frame,
+    fighter.grounded && fighter.health > 0 && fighter.phase === 'idle' && fighter.action === null && !input.guardHigh && !input.guardLow && !input.jump);
+  const motion = v106 && input.attack === 'technique' && fighter.inputLatch.attack !== 'technique' && fighter.workbookMotion
+    ? resolvePitWorkbookMotionV106(fighter.workbookMotion, state.frame) : null;
+  const motionAction = motion === '236236' ? 'super' : motion === '236' ? (fighter.definitionId === 'scar' ? 'contact' : 'projectile') : motion === '623' ? (fighter.definitionId === 'scar' ? 'projectile' : 'contact') : motion === '214' && fighter.definitionId === 'feral-hunter' ? 'shield' : motion === '22' && fighter.definitionId === 'scar' ? 'counter' : undefined;
+  const requestedWorkbookAction = v106 ? input.workbookAction ?? motionAction : input.workbookAction;
+  if (v106 && (input.workbookAction || input.attack)) fighter.workbookMotion = freshPitWorkbookMotionV106(fighter.facing);
   const jumpPressed = Boolean(input.jump) && !fighter.inputLatch.jump;
   const throwPressed = Boolean(input.throw) && !fighter.inputLatch.throw;
   const attackPressed = isPressed(input.attack, fighter.inputLatch.attack) &&
-    (input.attack !== 'technique' || pitHasShoulderPlasma(fighter.definitionId, fighter.variantId));
-  const workbookPressed = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 &&
-    (input.workbookAction === 'equipment' || input.workbookAction === 'contact' || input.workbookAction === 'counter') &&
-    input.workbookAction !== fighter.inputLatch.workbookAction;
+    (input.attack !== 'technique' || !v106 && pitHasShoulderPlasma(fighter.definitionId, fighter.variantId));
+  const workbookPressed = (v106 ? isPitWorkbookActionInputV106(requestedWorkbookAction) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 &&
+    (requestedWorkbookAction === 'equipment' || requestedWorkbookAction === 'contact' || requestedWorkbookAction === 'counter')) &&
+    (motionAction !== undefined || requestedWorkbookAction !== fighter.inputLatch.workbookAction);
   const resourcePressed = Boolean(input.resource) && !fighter.inputLatch.resource;
 
   advanceCloakTimer(state, fighter);
@@ -784,6 +808,7 @@ function updateFighter(
         (fighter.phase === "active" || fighter.phase === "recovery") &&
         fighter.action.kind === "attack" &&
         fighter.action.connected &&
+        fighter.action.workbookMove !== 'SUPER' &&
         attackPressed &&
         input.attack
       ) {
@@ -830,12 +855,13 @@ function updateFighter(
       fighter.velocityY = definition.jumpSpeed;
     }
 
-    if (fighter.guard === null && workbookPressed && fighter.grounded && !fighter.crouching) {
-      const key = input.workbookAction === 'equipment' ? 'EQUIP' : input.workbookAction === 'counter' ? 'S4' : fighter.definitionId === 'scar' ? 'S1' : 'S3';
-      const move = getPitWorkbookCombatMoveV105(fighter.definitionId, key);
+    if (fighter.guard === null && workbookPressed && fighter.grounded && (!fighter.crouching || motionAction !== undefined)) {
+      const key = requestedWorkbookAction === 'super' ? 'SUPER' : requestedWorkbookAction === 'equipment' ? 'EQUIP' : requestedWorkbookAction === 'counter' ? 'S4' : requestedWorkbookAction === 'shield' ? 'S2' : requestedWorkbookAction === 'projectile' ? (fighter.definitionId === 'scar' ? 'S3' : 'S1') : fighter.definitionId === 'scar' ? 'S1' : 'S3';
+      const move = v106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, key) : getPitWorkbookCombatMoveV105(fighter.definitionId, key);
       const cost = move ? move.costPercent * PIT_MAX_TRAQUE / 100 : Infinity;
       if (move && fighter.traque >= cost) {
         fighter.traque -= cost;
+        fighter.crouching = false;
         fighter.action = {kind: key === 'EQUIP' ? 'equipment' : 'attack', attack: key === 'EQUIP' ? null : 'technique', workbookMove: key, frame: 0, connected: false};
         fighter.phase = 'startup';
         fighter.velocityX = 0;
@@ -882,6 +908,18 @@ function bodyHeight(fighter: PitFighterState): number {
   return fighter.crouching ? definition.crouchHeight : definition.bodyHeight;
 }
 
+/** The source shield exists in BODY drawings; its admitted rectangle is the
+ * guard surface for the first9 active ticks, then the edge strike for9 ticks. */
+export function getPitWorkbookShieldBoxV106(fighter: PitFighterState): PitBox | null {
+  if (fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 || fighter.definitionId !== 'feral-hunter' || fighter.variantId || !fighter.grounded || fighter.phase !== 'active' || fighter.action?.workbookMove !== 'S2' || fighter.action.frame < 9 || fighter.action.frame >= 18) return null;
+  const source = getPitWorkbookShieldGeometryV106(fighter.facing, 0);
+  return source ? projectPitWorkbookShieldV106(source, fighter.x, fighter.y, getPitCombatFighterDefinition(fighter).bodyHeight) : null;
+}
+function shieldBlocksV106(defender: PitFighterState, incomingX: number, hitbox: PitBox): boolean {
+  const shield = getPitWorkbookShieldBoxV106(defender);
+  return shield !== null && (incomingX - defender.x) * defender.facing > 0 && boxesOverlap(hitbox, shield);
+}
+
 function boxesOverlap(left: PitBox, right: PitBox): boolean {
   return (
     left.x < right.x + right.width &&
@@ -905,7 +943,7 @@ function getPitFighterBoxesInternal(
   };
   let hitbox: PitBox | null = null;
   const worldTechnique =
-    fighter.action?.kind === "attack" && fighter.action.attack === "technique" && (!fighter.action.workbookMove || fighter.action.workbookMove === 'S4');
+    fighter.action?.kind === "attack" && fighter.action.attack === "technique" && (!fighter.action.workbookMove || fighter.action.workbookMove === 'S4' || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && isPitWorkbookProjectileV106(fighter.definitionId, fighter.action.workbookMove));
   if (
     fighter.action &&
     fighter.phase === "active" &&
@@ -926,7 +964,33 @@ function getPitFighterBoxesInternal(
       height: attackHeight,
     };
   }
+  if (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && fighter.action?.workbookMove === 'S2') {
+    const edge = fighter.phase === 'active' && fighter.action.frame >= 18 ? getPitWorkbookShieldGeometryV106(fighter.facing, 1) : null;
+    hitbox = edge ? projectPitWorkbookShieldV106(edge, fighter.x, fighter.y, definition.bodyHeight) : null;
+  }
+  if (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && fighter.action?.workbookMove === 'SUPER') {
+    const opening = fighter.phase === 'active' && !fighter.action.connected;
+    const extension = fighter.definitionId === 'scar' && fighter.action.workbookSuperV106 && !fighter.action.workbookSuperV106.followupConnected && fighter.action.frame >= 40 && fighter.action.frame < 48;
+    const geometry = opening || extension ? getPitWorkbookSuperContactGeometryV106(fighter.definitionId, fighter.facing, extension ? 'extension' : 'opening') : null;
+    hitbox = geometry ? projectPitWorkbookShieldV106(geometry, fighter.x, fighter.y, definition.bodyHeight) : null;
+  }
   return { pushbox, hurtbox: { ...pushbox }, hitbox };
+}
+
+/** Read-only bounded focus. It follows the two autonomous actors and disappears
+ * as soon as the confirmed owner is interrupted, KO'd, or leaves this round. */
+export function getPitSuperCameraV106(state: PitCombatState): {x:number; y:number; zoom:number; progress:number} | null {
+  if (state.version !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 || state.phase !== 'round' || state.fighters.some(fighter => fighter.health <= 0)) return null;
+  const owner=state.fighters.find(fighter => fighter.action?.workbookMove === 'SUPER' && fighter.action.workbookSuperV106);
+  const confirmed=owner?.action?.workbookSuperV106;
+  if (!owner || !confirmed) return null;
+  const age=state.frame-confirmed.confirmedFrame;
+  if (age < 0 || age >= 48) return null;
+  const [a,b]=state.fighters;
+  const zoom=Math.max(1,Math.min(1.08,PIT_ARENA.width/(Math.abs(a.x-b.x)+280)));
+  const halfWidth=PIT_ARENA.width/(2*zoom);
+  const x=Math.max(halfWidth,Math.min(PIT_ARENA.width-halfWidth,(a.x+b.x)/2));
+  return {x,y:Math.max(0,Math.min(PIT_ARENA.height,Math.max(a.y,b.y)+70)),zoom,progress:age/48};
 }
 
 export function getPitFighterBoxes(fighter: PitFighterState): PitFighterBoxes {
@@ -970,6 +1034,7 @@ export function getPitTechniqueDefinitionForEffect(
 ): PitEditionTechniqueDefinition {
   const owner = state.fighters[effect.ownerSlot];
   const ownerId = owner.definitionId;
+  if (owner.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && effect.workbookMove && (isPitWorkbookProjectileV106(ownerId, effect.workbookMove) || ownerId === 'feral-hunter' && effect.workbookMove === 'SUPER')) return { ...getPitCombatFighterDefinition(owner).technique, damageScale: 1, chipScale: 0, ...(ownerId === 'scar' ? {guardBreak: false, knockdown: false, status: null, statusFrames: 0, movementScale: 1, hitstunBonus: 0} : {}) };
   if (ownerId === 'feral-hunter' && effect.techniqueId === PIT_FERAL_LEGACY_TRAP.id) return PIT_FERAL_LEGACY_TRAP;
   if (ownerId === 'falconer' && effect.techniqueId === PIT_FALCONER_LEGACY_DRONE.id) return PIT_FALCONER_LEGACY_DRONE;
   return ownerId === 'tracker' && effect.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
@@ -999,19 +1064,31 @@ export function getPitTechniqueBox(
   };
 }
 
+/** The native40px plasma glow remains visible. Its V106 collision core is
+ * inset8 horizontally and14 vertically (24×12), preserving a real high shot
+ * above the tallest crouching hurtbox, rather than shrinking/repainting art. */
+export function getPitTechniqueCollisionBoxV106(state: PitCombatState, effect: PitTechniqueEffectState): PitBox {
+  const box=getPitTechniqueBox(state,effect);
+  return effect.workbookMove === 'S3' && state.fighters[effect.ownerSlot].normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && state.fighters[effect.ownerSlot].definitionId === 'scar'
+    ? {x: box.x+8, y: box.y+14, width: box.width-16, height: box.height-28} : box;
+}
+
 interface FeralLaunchSweep { origin: PitBox; muzzle: PitBox }
 
 function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean, recallDroneEnabled: boolean, feralBoltsEnabled: boolean, nativeFeralMuzzleEnabled: boolean): Map<number, FeralLaunchSweep> {
   const launchSweeps = new Map<number, FeralLaunchSweep>();
   for (const fighter of state.fighters) {
     const action = fighter.action;
-    const move = getPitCombatFighterDefinition(fighter).attacks.technique;
+    const superProjectile = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && fighter.definitionId === 'feral-hunter' && action?.workbookMove === 'SUPER' && !!action.workbookSuperV106;
+    const sourceProjectile = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && (isPitWorkbookProjectileV106(fighter.definitionId, action?.workbookMove) || superProjectile);
+    const releaseFrame = superProjectile ? 48 : fighter.definitionId === 'feral-hunter' ? 23 : 20;
+    const move = sourceProjectile ? getPitCombatAttackDefinition(fighter, 'technique') : getPitCombatFighterDefinition(fighter).attacks.technique;
     if (
       action?.kind !== "attack" ||
       action.attack !== "technique" ||
-      action.workbookMove !== undefined ||
-      fighter.phase !== "active" ||
-      action.frame !== move.startup ||
+      (action.workbookMove !== undefined && !sourceProjectile) ||
+      (superProjectile ? fighter.phase !== "recovery" : fighter.phase !== "active") ||
+      (sourceProjectile && fighter.definitionId === 'feral-hunter' ? action.frame < releaseFrame || action.frame > releaseFrame + 4 || (action.frame - releaseFrame) % 2 !== 0 : action.frame !== move.startup) ||
       !pitHasShoulderPlasma(fighter.definitionId, fighter.variantId)
     ) {
       continue;
@@ -1031,19 +1108,27 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
     if (technique.id === PIT_FERAL_GUIDED_BOLTS.id) {
       const opponent = state.fighters[fighter.slot === 0 ? 1 : 0];
       const guided = pitFeralHasTargetingMask(fighter.variantId);
-      const volleyId = state.nextTechniqueEffectId;
+      const volleyId = sourceProjectile && action.workbookVolleyV106 ? action.workbookVolleyV106.volleyId : state.nextTechniqueEffectId;
       const legacyOriginX = techniqueEffectX(fighter, technique);
       const legacyOriginY = fighter.y + technique.verticalOffset;
-      const muzzle = nativeFeralMuzzleEnabled && pitFeralUsesNativeLauncher(fighter)
+      const sourceAnchor = sourceProjectile ? superProjectile ? getPitWorkbookSuperProjectileAnchorV106(fighter.definitionId, fighter.facing) : getPitWorkbookProjectileAnchorV106(fighter.definitionId, fighter.facing) : undefined;
+      const muzzle = sourceProjectile ? sourceAnchor && projectPitWorkbookAnchorV106(sourceAnchor, fighter.x, fighter.y, getPitCombatFighterDefinition(fighter).bodyHeight) : nativeFeralMuzzleEnabled && pitFeralUsesNativeLauncher(fighter)
         ? getPitFeralNativeMuzzle(fighter, getPitCombatFighterDefinition(fighter).bodyHeight) : null;
+      if (sourceProjectile && !muzzle) continue;
       if (nativeFeralMuzzleEnabled && !fighter.variantId) action.feralLauncherOrigin = muzzle ? 'native' : 'legacy';
       // x/y describe the actual projectile rectangle, centered on the drawn muzzle.
       const originX = muzzle ? muzzle.x - technique.width / 2 : legacyOriginX;
       const originY = muzzle ? muzzle.y - technique.height / 2 : legacyOriginY;
-      const targetX = guided ? opponent.x : originX + fighter.facing * PIT_ARENA.width;
       const body = getPitCombatFighterDefinition(opponent);
-      const targetY = guided ? opponent.y + (opponent.crouching ? body.crouchHeight : body.bodyHeight) * .6 : originY;
-      for (const index of [0, 1, 2] as const) {
+      if (sourceProjectile && !action.workbookVolleyV106) {
+        action.workbookVolleyV106 = {volleyId, targetX: opponent.x, targetY: opponent.y + (opponent.crouching ? body.crouchHeight : body.bodyHeight) * .6};
+        state.nextTechniqueEffectId += 3;
+      }
+      const targetX = action.workbookVolleyV106?.targetX ?? (guided ? opponent.x : originX + fighter.facing * PIT_ARENA.width);
+      const targetY = action.workbookVolleyV106?.targetY ?? (guided ? opponent.y + (opponent.crouching ? body.crouchHeight : body.bodyHeight) * .6 : originY);
+      const indices = sourceProjectile ? [(action.frame - releaseFrame) / 2 as 0 | 1 | 2] : [0,1,2] as const;
+      for (const index of indices) {
+        const effectId = sourceProjectile ? volleyId + index : state.nextTechniqueEffectId++;
         const y = originY + (index - 1) * (muzzle?.railSpacing ?? 8);
         const acquiredDx = targetX - (originX + technique.width / 2);
         // A target overlapping the long barrel is resolved by the launch sweep.
@@ -1052,13 +1137,14 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
         const dx = behindMuzzle ? fighter.facing * technique.speed : acquiredDx;
         const dy = guided && !behindMuzzle ? targetY - (y + technique.height / 2) : 0;
         const distance = Math.hypot(dx, dy) || 1;
-        if (muzzle) launchSweeps.set(state.nextTechniqueEffectId, {
+        if (muzzle) launchSweeps.set(effectId, {
           origin: { x: legacyOriginX, y: legacyOriginY + (index - 1) * 8,
             width: technique.width, height: technique.height },
           muzzle: { x: originX, y, width: technique.width, height: technique.height },
         });
         state.techniqueEffects.push({
-          id: state.nextTechniqueEffectId++, ownerSlot: fighter.slot, techniqueId: technique.id,
+          ...(sourceProjectile ? {workbookMove: superProjectile ? 'SUPER' as const : 'S1' as const} : {}),
+          id: effectId, ownerSlot: fighter.slot, techniqueId: technique.id,
           x: originX, y, direction: guided ? (dx >= 0 ? 1 : -1) : fighter.facing, age: 0, phase: 'active', hitCount: 0, rehitFrames: 0,
           bolt: { volleyId, index, guided, targetX, targetY,
             velocityX: guided ? dx / distance * technique.speed : fighter.facing * technique.speed,
@@ -1069,6 +1155,7 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
       continue;
     }
     const effect: PitTechniqueEffectState = {
+      ...(sourceProjectile ? {workbookMove: 'S3' as const} : {}),
       id: state.nextTechniqueEffectId,
       ownerSlot: fighter.slot,
       techniqueId: technique.id,
@@ -1080,6 +1167,15 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
       hitCount: 0,
       rehitFrames: 0,
     };
+    if (sourceProjectile) {
+      const anchor = getPitWorkbookProjectileAnchorV106(fighter.definitionId, fighter.facing);
+      const muzzle = anchor && projectPitWorkbookAnchorV106(anchor, fighter.x, fighter.y, getPitCombatFighterDefinition(fighter).bodyHeight);
+      if (!muzzle) continue;
+      effect.x = muzzle.x - technique.width / 2;
+      effect.y = muzzle.y - technique.height / 2;
+      const core=getPitTechniqueCollisionBoxV106(state,effect);
+      launchSweeps.set(effect.id, {origin: {x: fighter.x - core.width/2, y: core.y, width: core.width, height: core.height}, muzzle: core});
+    }
     state.nextTechniqueEffectId += 1;
     if (state.techniqueEffects.length >= PIT_MAX_TECHNIQUE_EFFECTS) {
       state.techniqueEffects.shift();
@@ -1236,6 +1332,8 @@ interface PendingImpact {
   effectId?: number;
   technique?: PitEditionTechniqueDefinition;
   impactDirection?: -1 | 1;
+  sourceShield?: boolean;
+  superFollowup?: boolean;
   /** Damage before combo and survival-instinct scaling. */
   comboDamageBase?: number;
 }
@@ -1257,13 +1355,15 @@ function collectImpact(
   legacyV2TechniqueHitbox = false,
 ): PendingImpact | null {
   const actionState = attacker.action;
-  if (!actionState || attacker.phase !== "active" || actionState.connected) return null;
+  const superFollowup = attacker.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && attacker.definitionId === 'scar' && actionState?.workbookMove === 'SUPER' && !!actionState.workbookSuperV106 && !actionState.workbookSuperV106.followupConnected && actionState.frame >= 40 && actionState.frame < 48;
+  if (!actionState || !superFollowup && (attacker.phase !== "active" || actionState.connected)) return null;
   if (defender.health <= 0 || defender.wakeInvulnerabilityFrames > 0) return null;
   const hitbox = getPitFighterBoxesInternal(
     attacker,
     legacyV2TechniqueHitbox,
   ).hitbox;
-  if (!hitbox || !boxesOverlap(hitbox, getPitFighterBoxes(defender).hurtbox)) return null;
+  const sourceShield = actionState.kind !== 'throw' && hitbox !== null && shieldBlocksV106(defender, attacker.x, hitbox);
+  if (!hitbox || !sourceShield && !boxesOverlap(hitbox, getPitFighterBoxes(defender).hurtbox)) return null;
 
   if (actionState.kind === "throw") {
     if (!defender.grounded || defender.phase === "knockdown") return null;
@@ -1286,7 +1386,7 @@ function collectImpact(
 
   const move = getPitCombatAttackDefinition(attacker, actionState.attack as PitAttackKind, actionState);
   const hitLevel = legacyV2TechniqueHitbox && attacker.definitionId === 'feral-hunter' && actionState.attack === 'technique' ? 'low' : move.hitLevel;
-  const blocked = guardBlocks(defender.guard, hitLevel) &&
+  const blocked = sourceShield || guardBlocks(defender.guard, hitLevel) &&
     (defender.phase === "idle" || defender.phase === "blockstun");
   const antiAir = move.antiAir && !defender.grounded;
   const continuesCombo = !blocked &&
@@ -1300,10 +1400,12 @@ function collectImpact(
     defenderSlot: defender.slot,
     kind: move.kind,
     blocked,
+    ...(sourceShield ? {sourceShield: true} : {}),
+    ...(superFollowup ? {superFollowup: true} : {}),
     damage: damageAfterInstinct(
       defender,
       blocked
-        ? move.chipDamage
+        ? sourceShield ? 0 : move.chipDamage
         : Math.max(1, Math.round(comboDamageBase * scale)),
     ),
     stun: blocked ? move.blockstun : move.hitstun,
@@ -1432,18 +1534,23 @@ function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMa
         continue;
       }
     }
-    const effectBox = getPitTechniqueBox(state, effect);
+    const effectBox = getPitTechniqueCollisionBoxV106(state, effect);
     const hurtbox = getPitFighterBoxes(defender).hurtbox;
     const launchStart = launchSweeps.get(effect.id);
-    if (!(launchStart
+    const shieldBox = getPitWorkbookShieldBoxV106(defender);
+    const sourceShield = technique.trigger !== 'counter' && (shieldBlocksV106(defender, attacker.x, effectBox) || !!(launchStart && shieldBox && (attacker.x-defender.x)*defender.facing > 0 && (pitFeralLaunchSweepTouches(launchStart.origin,launchStart.muzzle,shieldBox) || pitFeralLaunchSweepTouches(launchStart.muzzle,effectBox,shieldBox))));
+    if (!sourceShield && !(launchStart
       ? pitFeralLaunchSweepTouches(launchStart.origin, launchStart.muzzle, hurtbox) || pitFeralLaunchSweepTouches(launchStart.muzzle, effectBox, hurtbox)
       : boxesOverlap(effectBox, hurtbox))) {
       continue;
     }
 
-    const move = getPitCombatFighterDefinition(attacker).attacks.technique;
+    let move = effect.workbookMove ? getPitCombatAttackDefinition(attacker, 'technique', {kind: 'attack', attack: 'technique', workbookMove: effect.workbookMove, frame: 0, connected: false}) : getPitCombatFighterDefinition(attacker).attacks.technique;
+    if (effect.workbookMove === 'SUPER') move = {...move, damage: 80};
+    //115 is the salve's base budget, not115 per bolt. Integer distribution39/38/38 precedes ordinary power/combo scaling.
+    if (effect.workbookMove === 'S1' && attacker.definitionId === 'feral-hunter' && effect.bolt) move = {...move, damage: Math.floor(move.damage / 3) + (effect.bolt.index < move.damage % 3 ? 1 : 0)};
     const marksOnly = technique.contactEffect === "mark";
-    const blocked =
+    const blocked = sourceShield ||
       !marksOnly &&
       !technique.guardBreak &&
       guardBlocks(defender.guard, technique.id === PIT_FERAL_LEGACY_TRAP.id ? 'low' : move.hitLevel) &&
@@ -1468,7 +1575,7 @@ function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMa
       move.damage *
       getPitCombatFighterDefinition(attacker).power *
       technique.damageScale;
-    const rawDamage = marksOnly
+    const rawDamage = marksOnly || sourceShield
       ? 0
       : blocked
         ? Math.round(move.chipDamage * technique.chipScale)
@@ -1478,6 +1585,7 @@ function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMa
       defenderSlot,
       kind: "technique",
       blocked,
+      ...(sourceShield ? {sourceShield: true} : {}),
       damage: damageAfterInstinct(defender, rawDamage),
       stun: marksOnly
         ? 0
@@ -1528,8 +1636,12 @@ function sequenceImpact(
 function applyImpact(state: PitCombatState, impact: PendingImpact): void {
   const attacker = state.fighters[impact.attackerSlot];
   const defender = state.fighters[impact.defenderSlot];
+  if (impact.superFollowup && attacker.action?.workbookSuperV106) attacker.action.workbookSuperV106.followupConnected = true;
+  if (!impact.blocked && impact.effectId === undefined && attacker.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && attacker.action?.workbookMove === 'SUPER' && !attacker.action.workbookSuperV106) attacker.action.workbookSuperV106 = {confirmedFrame: state.frame, followupConnected: false};
+  const sourceEffect = impact.effectId === undefined ? null : state.techniqueEffects.find(effect => effect.id === impact.effectId);
   if (
     attacker.action &&
+    (attacker.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 || impact.effectId === undefined || sourceEffect?.workbookMove === attacker.action.workbookMove) &&
     (impact.effectId === undefined ||
       (attacker.action.kind === "attack" && attacker.action.attack === "technique"))
   ) {
@@ -1562,6 +1674,11 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
       };
       endCloak(state, defender, "tracked", false);
     }
+    return;
+  }
+  if (impact.sourceShield && impact.blocked) {
+    state.events.push({type: 'block', frame: state.frame, attackerId: attacker.definitionId, defenderId: defender.definitionId, attack: impact.kind as PitAttackKind, damage: 0});
+    addTraque(state, defender, impact.kind === 'heavy' || impact.kind === 'technique' ? 12 : 6, 'guard');
     return;
   }
   const healthBefore = defender.health;
@@ -1939,7 +2056,7 @@ function stepPitCombatInternal(
   for (const incoming of directImpacts) {
     const defender = state.fighters[incoming.defenderSlot];
     const attacker = state.fighters[incoming.attackerSlot];
-    if (incoming.kind === 'throw' || defender.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 ||
+    if (incoming.kind === 'throw' || (defender.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && defender.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106) ||
       defender.action?.workbookMove !== 'S4' || defender.action.connected || defender.phase !== 'active' ||
       (attacker.x - defender.x) * defender.facing <= 0) continue;
     const move = getPitCombatAttackDefinition(defender, 'technique');
@@ -2109,7 +2226,7 @@ function isRoundResult(value: unknown, stateFrame: number, stateRound: number): 
   return reason === "draw" || reason === "double-ko" ? value.winnerId === null : isFighterId(value.winnerId);
 }
 
-function isActionState(value: unknown, fighter: PitFighterState, phase: PitCombatPhase): value is PitActionState {
+function isActionState(value: unknown, fighter: PitFighterState, phase: PitCombatPhase, stateFrame: number): value is PitActionState {
   if (!isRecord(value) || (value.kind !== "attack" && value.kind !== "throw" && value.kind !== "equipment") || typeof value.connected !== "boolean") return false;
   if ((value.kind === "throw" || value.kind === "equipment") && value.attack !== null) return false;
   if (value.kind === "attack" && !isAttackKind(value.attack)) return false;
@@ -2117,16 +2234,26 @@ function isActionState(value: unknown, fighter: PitFighterState, phase: PitComba
   if (value.normalMove !== undefined && (!isPitWorkbookNormalKeyV104(value.normalMove) ||
     !isPitWorkbookRecipe(fighter.normalMovesRecipe) || value.kind !== 'attack' ||
     getPitWorkbookNormalV104(fighter.definitionId, value.normalMove)?.attack !== value.attack)) return false;
-  if (value.workbookMove !== undefined && (fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 ||
-    !isPitWorkbookCombatMoveV105(fighter.definitionId, value.workbookMove) || value.normalMove !== undefined ||
+  if (value.workbookMove !== undefined && ((fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106) ||
+    !(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? isPitWorkbookCombatMoveV106(fighter.definitionId, value.workbookMove) : isPitWorkbookCombatMoveV105(fighter.definitionId, value.workbookMove)) || value.normalMove !== undefined ||
     (value.workbookMove === 'EQUIP' ? value.kind !== 'equipment' || value.attack !== null || value.connected :
       value.kind !== 'attack' || value.attack !== (value.workbookMove === '6M' ? 'medium' : 'technique')))) return false;
   if (value.kind === 'equipment' && value.workbookMove !== 'EQUIP') return false;
   if (fighter.normalMovesRecipe && value.kind === 'attack' && value.attack !== 'technique' && value.normalMove === undefined && value.workbookMove !== '6M') return false;
   if (value.feralLauncherOrigin !== undefined &&
-    ((value.workbookMove !== undefined || (value.feralLauncherOrigin !== 'native' && value.feralLauncherOrigin !== 'legacy')) ||
+    (((value.workbookMove !== undefined && !(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && (value.workbookMove === 'S1' || value.workbookMove === 'SUPER'))) || (value.feralLauncherOrigin !== 'native' && value.feralLauncherOrigin !== 'legacy')) ||
       fighter.definitionId !== 'feral-hunter' || value.kind !== 'attack' || value.attack !== 'technique' ||
       (phase !== 'active' && phase !== 'recovery'))) return false;
+  const sourceSalve = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 && fighter.definitionId === 'feral-hunter' && (value.workbookMove === 'S1' || value.workbookMove === 'SUPER' && value.workbookSuperV106 !== undefined);
+  const salveStart = value.workbookMove === 'SUPER' ? 48 : 23;
+  if (sourceSalve && (value.frame as number) >= salveStart) {
+    const volley=value.workbookVolleyV106;
+    if (!isRecord(volley) || Object.keys(volley).length !== 3 || !isIntegerBetween(volley.volleyId,1,Number.MAX_SAFE_INTEGER-2) || !isFiniteBetween(volley.targetX,-PIT_ARENA.width,PIT_ARENA.width*2) || !isFiniteBetween(volley.targetY,0,PIT_ARENA.height)) return false;
+  } else if (value.workbookVolleyV106 !== undefined) return false;
+  if (value.workbookSuperV106 !== undefined) {
+    const confirmed=value.workbookSuperV106;
+    if (fighter.normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 || value.workbookMove !== 'SUPER' || !value.connected || !isRecord(confirmed) || Object.keys(confirmed).length !== 2 || !isIntegerBetween(confirmed.confirmedFrame, Math.max(1,stateFrame-(value.frame as number)+24), Math.min(stateFrame,stateFrame-(value.frame as number)+31)) || typeof confirmed.followupConnected !== 'boolean' || (value.frame as number) < 24 || confirmed.followupConnected && (fighter.definitionId !== 'scar' || (value.frame as number) < 40)) return false;
+  }
   const action = value as unknown as PitActionState;
   return action.frame < actionDuration(action, fighter) && phaseForAction(action, fighter) === phase;
 }
@@ -2158,7 +2285,10 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
     getPitAuthoredMovesetV92(fighterId, typeof value.variantId === 'string' ? value.variantId : undefined)?.id !== value.movesetId)) return false;
   if (value.normalMovesRecipe !== undefined && (!isPitWorkbookRecipe(value.normalMovesRecipe) ||
     !ownsPitWorkbookNormalsV104(fighterId, typeof value.variantId === 'string' ? value.variantId : undefined))) return false;
-  if (isRecord(value.inputLatch) && (value.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105
+  if (value.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? !validPitWorkbookMotionV106(value.workbookMotion, stateFrame) : value.workbookMotion !== undefined) return false;
+  if (isRecord(value.inputLatch) && (value.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106
+    ? value.inputLatch.workbookAction !== null && !isPitWorkbookActionInputV106(value.inputLatch.workbookAction)
+    : value.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105
     ? value.inputLatch.workbookAction !== null && value.inputLatch.workbookAction !== 'equipment' && value.inputLatch.workbookAction !== 'contact' && value.inputLatch.workbookAction !== 'counter'
     : value.inputLatch.workbookAction !== undefined)) return false;
   const fighter = value as unknown as PitFighterState;
@@ -2166,7 +2296,7 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
   if (definition.canCloak === false && (value.cloakPhase !== 'inactive' || value.cloakFramesRemaining !== 0 || value.cloakCooldownFrames !== 0)) return false;
   if (!PIT_COMBAT_PHASES.includes(value.phase as PitCombatPhase)) return false;
   const phase = value.phase as PitCombatPhase;
-  const actionValid = value.action === null || isActionState(value.action, fighter, phase);
+  const actionValid = value.action === null || isActionState(value.action, fighter, phase, stateFrame);
   if (isRecord(value.action) && value.action.feralLauncherOrigin !== undefined &&
     (value.variantId !== undefined || (value.action.feralLauncherOrigin === 'native' &&
       (value.grounded !== true || value.crouching !== false || value.guard === 'low')))) return false;
@@ -2222,6 +2352,7 @@ function isTechniqueEffectState(
   if (!isRecord(value) || !isIntegerBetween(value.id, 1, Number.MAX_SAFE_INTEGER)) return false;
   if (value.ownerSlot !== 0 && value.ownerSlot !== 1) return false;
   const owner = fighters[value.ownerSlot];
+  if (owner.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? !(isPitWorkbookProjectileV106(owner.definitionId, value.workbookMove) || owner.definitionId === 'feral-hunter' && value.workbookMove === 'SUPER') : value.workbookMove !== undefined) return false;
   const technique = owner.definitionId === 'feral-hunter' && value.techniqueId === PIT_FERAL_LEGACY_TRAP.id
     ? PIT_FERAL_LEGACY_TRAP : owner.definitionId === 'tracker' && value.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
     ? PIT_TRACKER_LEGACY_COUNTER : owner.definitionId === 'falconer' && value.techniqueId === PIT_FALCONER_LEGACY_DRONE.id
@@ -2333,7 +2464,7 @@ function migratePitCombatState(candidate: unknown): unknown {
     Array.isArray(candidate.techniqueEffects) && candidate.techniqueEffects.some(effect =>
       isRecord(effect) && (effect.techniqueId === PIT_FERAL_GUIDED_BOLTS.id || effect.bolt !== undefined))) return candidate;
   if (!isRecord(candidate) ||
-    ![1, 2, 4, 5, 6, 7, 8, 9, 10, PIT_STATE_VERSION, PIT_WORKBOOK_NORMALS_STATE_VERSION_V104, PIT_WORKBOOK_COMBAT_STATE_VERSION_V105].includes(candidate.version as number) ||
+    ![1, 2, 4, 5, 6, 7, 8, 9, 10, PIT_STATE_VERSION, PIT_WORKBOOK_NORMALS_STATE_VERSION_V104, PIT_WORKBOOK_COMBAT_STATE_VERSION_V105, PIT_WORKBOOK_COMBAT_STATE_VERSION_V106].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }
@@ -2351,7 +2482,7 @@ function migratePitCombatState(candidate: unknown): unknown {
     }) : candidate.techniqueEffects ?? [];
   return {
     ...candidate,
-    version: candidate.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 : candidate.version === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 ? PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 : PIT_STATE_VERSION,
+    version: candidate.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 : candidate.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ? PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 : candidate.version === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 ? PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 : PIT_STATE_VERSION,
     ...([1, 2, 4].includes(candidate.version as number) ? { pendingThrow: null } : {}),
     techniqueEffects,
     nextTechniqueEffectId: candidate.nextTechniqueEffectId ?? 1,
@@ -2406,7 +2537,7 @@ export function deserializePitCombat(serialized: string): PitCombatState {
         fighter.health as number > 0 && fighter.phase === "blockstun" && fighter.action === null &&
         fighter.stunFrames === 1 && fighter.velocityX === 0 && fighter.velocityY === 0)
     )) ||
-    (candidate.version !== PIT_STATE_VERSION && candidate.version !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && candidate.version !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105) ||
+    (candidate.version !== PIT_STATE_VERSION && candidate.version !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && candidate.version !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 && candidate.version !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106) ||
     candidate.tickRate !== PIT_TICK_RATE ||
     !isArenaId(candidate.arenaId) ||
     !isRecord(candidate.rules) ||
@@ -2414,6 +2545,7 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     (candidate.rules.normalMoves !== undefined && !isPitWorkbookRecipe(candidate.rules.normalMoves)) ||
     ((candidate.version === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) !== (candidate.rules.normalMoves === PIT_WORKBOOK_NORMALS_RECIPE_V104)) ||
     ((candidate.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105) !== (candidate.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105)) ||
+    ((candidate.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106) !== (candidate.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106)) ||
     !validPitStageJourney(candidate.stageJourney, candidate.rules.stageJourney, candidate.arenaId, candidate.frame as number) ||
     !isIntegerBetween(candidate.frame, 0, Number.MAX_SAFE_INTEGER) ||
     !PIT_MATCH_PHASES.includes(candidate.phase as PitMatchPhase) ||
@@ -2440,6 +2572,7 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     (normalMoves !== undefined && !fighters.some(fighter => fighter.normalMovesRecipe))) {
     throw new Error('Invalid or incompatible THE PIT normal recipe.');
   }
+  if (fighters.some(fighter => fighter.action?.workbookVolleyV106 && fighter.action.workbookVolleyV106.volleyId + 2 >= (candidate.nextTechniqueEffectId as number))) throw new Error('Invalid THE PIT reserved salve IDs.');
   const fighterIds = [fighters[0].definitionId, fighters[1].definitionId] as const;
   if (candidate.houndVariantId !== undefined && (!isPitHoundVariantId(candidate.houndVariantId) || !fighterIds.includes('tracker'))) {
     throw new Error('Invalid or incompatible THE PIT combat state.');
@@ -2461,6 +2594,8 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     if (effectIds.has(effect.id) || effect.id >= (candidate.nextTechniqueEffectId as number)) {
       return false;
     }
+    const volley=typedFighters[effect.ownerSlot].action?.workbookVolleyV106;
+    if ((effect.workbookMove === 'S1' || effect.workbookMove === 'SUPER') && effect.bolt && volley?.volleyId === effect.bolt.volleyId && (effect.bolt.targetX !== volley.targetX || effect.bolt.targetY !== volley.targetY)) return false;
     effectIds.add(effect.id);
     if (effect.techniqueId === PIT_TRACKER_HOUND.id) {
       if (houndOwners.has(effect.ownerSlot) || typedFighters[effect.ownerSlot].health <= 0) return false;

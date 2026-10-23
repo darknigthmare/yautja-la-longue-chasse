@@ -6,6 +6,7 @@ import { drawPitWorkbookFrameV100, getPitWorkbookCameraV100, getPitWorkbookFight
   type PitWorkbookFighterV100 } from './pitWorkbookAnimationV100';
 import styles from './PitWorkbookAnimationViewerV100.module.css';
 import { getPitWorkbookRuntimeBindingV105 } from './pitWorkbookRegistryV105';
+import { getPitWorkbookRuntimeBindingV106 } from './pitWorkbookRegistryV106';
 
 /** Public viewer of admitted body artwork. The clock belongs to this viewer,
  * never to a match, training recording, inventory or replay. */
@@ -27,7 +28,7 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
     atlasId: native.definition.atlas.id, clipId: selected.clipId, facing, elapsedTicks: selected.nativeTick }) : null;
   const status = !native ? 'unavailable' : !timeline.length ? 'missing-facing' : !bank ? 'loading' : inspected ? 'ready' : 'failed';
   const activeInCombat = !!native && (native.admission.combatClipIds?.length || native.admission.atlasId === 'feral-actions-v59');
-  const sourceBinding = getPitWorkbookRuntimeBindingV105(fighterId, action.id);
+  const sourceBinding = getPitWorkbookRuntimeBindingV106(fighterId, action.id);
   const partnerStudy = ['TH_F', 'TH_B', 'FATALITE_1', 'FATALITE_2', 'CLEMENCE'].includes(action.key);
   const availability = sourceBinding === 'presentation'
     ? 'Cette présentation accompagne les entrées, résultats ou provocations du duel avec les règles du classeur.'
@@ -74,7 +75,7 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
   const reset = () => { setPlaying(false); setIndex(0); };
   return <section className={styles.root} aria-label={`Animations de ${PIT_FIGHTERS[fighterId].name}`} data-pit-animation-viewer-v100
     data-fighter={fighterId} data-action={action.id} data-facing={facing} data-status={status} data-drawing-index={current}
-    data-runtime-binding-v105={sourceBinding ?? 'study'}>
+    data-runtime-binding-v105={getPitWorkbookRuntimeBindingV105(fighterId, action.id) ?? 'study'} data-runtime-binding-v106={sourceBinding ?? 'study'}>
     <h4>Animations de {PIT_FIGHTERS[fighterId].name}</h4>
     <p>Observez ses mouvements et ses présentations dans son apparence d’origine.</p>
     {native?.admission.contextLabel ? <p className={styles.note}>{native.admission.contextLabel}</p> : null}

@@ -1,0 +1,29 @@
+✔ CQC ground baseline stays fixed through retreats and interpolated zooms (30.761694ms)
+✔ close fighters receive a stronger presentation zoom without changing combat state (1.187285ms)
+✔ spacing and high jumps pull back to include the visual border outside collision walls (0.630432ms)
+✔ large technique effects participate in framing (0.492347ms)
+✔ camera interpolation is bounded and dead zones prevent pumping (0.742918ms)
+✔ a redraw at the same frame preserves an interpolating camera, while backward seek and arena change reset (0.909154ms)
+✔ all fighters retain full visual bounds at either wall, crouching and airborne (11244.93499ms)
+✔ interpolation never clips a suddenly extended weapon or high jump (0.549703ms)
+✔ reduced motion uses a stable wide frame independent of movement, frame gaps and repeated renders (3.898022ms)
+✔ camera observation cannot change combat or replay serialization in either motion mode (44.595844ms)
+✔ the constant reduced-motion frame contains every delivered plate at both walls and normal jump heights (73.654078ms)
+✔ screen shake can be disabled without disabling dynamic framing; reduced motion remains authoritative (0.247897ms)
+✔ a single fighter retreat changes framing visibly, then approaching restores a close view (20.600553ms)
+✔ camera pans continuously as airborne fighters cross instead of locking to a player slot (6.360803ms)
+✔ outward zoom reacts faster than inward zoom without bypassing visual containment (0.379241ms)
+✔ Ahab keeps a constant reduced-motion envelope for both walls, native sides, attacks and normal jumps in every arena (1338.296987ms)
+✔ fixed framing recomputes native bounds when the same appearances switch from historical rules to V106 (22.710182ms)
+✔ V106 adds exactly five BODY actions, keeps inherited bindings and leaves partner composites as studies (1.1661ms)
+✔ production decoder admits 34 new clips and every simulated tick keeps the exact native drawing, pivot and facing (1512.396098ms)
+✔ new BODY bindings reject forged identities and supplied costumes (0.956395ms)
+✔ Scar charge uses the measured forward startup aperture for exactly six cosmetic ticks and never changes combat state (3.063015ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16007.951925

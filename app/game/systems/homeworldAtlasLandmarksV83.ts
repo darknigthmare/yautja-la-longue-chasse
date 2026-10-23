@@ -1,3 +1,4 @@
+import {HOMEWORLD_ARCHIVE_V106} from './homeworldArchiveDefinitionV106';
 import type {SaveGame} from '../types';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_POINTS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {homeworldBuildingDoorwayV64} from './homeworldGeometryV64';
@@ -41,7 +42,12 @@ export function homeworldAtlasLandmarksV83(save?:SaveGame):readonly HomeworldAtl
    access:meta?.access??(region?'locked':'open'),reason:meta?.reason??(region?'Consulte les conditions de ce départ sur place.':'Rejoins le lieu et interagis ; consulter ce repère ne valide aucune action.'),
    keywords:meta?.keywords??[]}];
  });
- return[...points,...buildings];
+ const archive:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')?[{
+  id:HOMEWORLD_ARCHIVE_V106.npcId,label:HOMEWORLD_ARCHIVE_V106.npcName,detail:'Quai oriental : deux dossiers d’étude à porter séparément vers leurs supports.',levelId:'0',
+  district:district('port'),category:'person',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_ARCHIVE_V106.post,
+  access:'open',reason:'Rejoins l’archiviste à pied. Le guide ne déplace aucun dossier et ne consigne aucune conclusion.',keywords:['archives','traces','dossiers','supports','incertitude']
+ }]:[];
+ return[...points,...buildings,...archive];
 }
 
 /** Accept IDs from old NPC advice, direct points and the current register.

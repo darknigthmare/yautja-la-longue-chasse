@@ -1,0 +1,30 @@
+✔ V106 archive source extraction is byte-exact to the pinned V6 corpus and uses only represented B lines (131.60651ms)
+✔ V106 native lectern hulls are shared by motor and route planner and leave every interaction point walkable (121.261634ms)
+✔ V106 requires two actual one-at-a-time native carries and a walked return before recording uncertainty (247.879267ms)
+✔ V106 refuses remote pickup, wrong support, two carried cases, a verbal completion, stale owner and revisions (14.802537ms)
+✔ V106 carry interruption, explicit ground parking and reload conserve both distinct dossiers (0.998444ms)
+✔ V106 refused durable actions remain atomic and expose recoverable refusal without fabricating placements (0.353031ms)
+✔ V106 optional save field stays absent on legacy saves and strictly rejects incompatible or foreign carried data (7.748822ms)
+✔ V106 archivist is discoverable only after visiting the port and the existing guide uses a real obstacle-aware walk (100.231051ms)
+✔ review: a real dock doorway without any safe coarse anchor retains the exact fine-grid escape in both directions (73.529492ms)
+✔ review: guidance uses the actual closest segment when a different later vertex is nearer than either endpoint (36.506644ms)
+✔ review: consolidating repeated endpoint samples preserves the protected dock corner and caller-owned coordinates (5.588109ms)
+✔ V99: fractional connector departures preserve exact endpoints and full live collision margins (15.898502ms)
+✔ V99: consolidated port-to-audience route keeps every real connector and immutable cached points (3814.111619ms)
+✔ V99: every consolidated exterior segment guides its interior positions with decreasing distance (133.657367ms)
+✔ V99: replacing a live street registry invalidates both cached grids and routes (1348.70556ms)
+✔ review: every accessible live destination has continuous physical stages and an actual interaction endpoint (58314.538384ms)
+✔ review: origins on both sides of every public connector keep continuous physical transitions (2528.276651ms)
+✔ review: leaving a real room joins its own doorway and enters a different room on the correct floor (1173.764252ms)
+✔ review: non-finite, solid, unknown and wrong-floor origins never produce a usable route (4.834761ms)
+✔ review: guidance follows intermediate route positions and never announces an arrival in another room or floor (43.634654ms)
+✔ review: a long clear two-point route remains useful between endpoints with a decreasing walking distance (8588.247272ms)
+✔ review: an isolated wayfinding import mounts the same late solid scenery as the visible scene (1670.528849ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87314.559265

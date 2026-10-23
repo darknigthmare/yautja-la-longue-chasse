@@ -110,7 +110,7 @@ export function describePitHunterSpriteMotion(
     !tick(fighter.cloakFramesRemaining)) return null;
   const definition = getPitCombatFighterDefinition(fighter);
   const facing = fighter.facing === 1 ? "right" : "left";
-  const normal = (fighter.normalMovesRecipe === 'workbook-v104' || fighter.normalMovesRecipe === 'workbook-v105') && fighter.action?.normalMove
+  const normal = (fighter.normalMovesRecipe === 'workbook-v104' || fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106') && fighter.action?.normalMove
     ? getPitWorkbookNormalV104(fighter.definitionId, fighter.action.normalMove) : undefined;
   const workbookTimingV105 = getPitCombatActionTimingV105(fighter);
   const posture: PitHunterSpritePosture = normal?.posture ?? (workbookTimingV105 ? 'stand' :
@@ -210,8 +210,12 @@ export function describePitHunterSpriteMotion(
     durationTicks = timing[phase];
     clock = "action-phase";
     techniqueId = action === "technique" && !workbookTiming ? definition.technique.id : null;
-    const actionId = workbookTiming ? 'workbook-v105.' + current.workbookMove : normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
+    const additionalV106 = fighter.normalMovesRecipe === 'workbook-v106' &&
+      (current.workbookMove === 'SUPER' || fighter.definitionId === 'feral-hunter' && (current.workbookMove === 'S1' || current.workbookMove === 'S2') ||
+        fighter.definitionId === 'scar' && current.workbookMove === 'S3');
+    const actionId = workbookTiming ? (additionalV106 ? 'workbook-v106.' : 'workbook-v105.') + current.workbookMove : normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
     clipId = prefix + actionId + "." + phase;
+    if (additionalV106 && current.workbookMove === 'SUPER' && phase === 'recovery' && current.workbookSuperV106) clipId += '.confirmed';
     if (action === "throw") {
       throwOutcome = phase === "recovery" ? current.connected ? "connected" : "whiff" : "pending";
       if (phase === "recovery") clipId += "." + throwOutcome;

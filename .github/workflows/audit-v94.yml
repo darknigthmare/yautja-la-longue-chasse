@@ -11,6 +11,26 @@ on:
       - 'build/**'
       - 'public/**/manifest.json'
       - 'public/game/homeworld/v74/**'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp'
+      - 'public/game/homeworld/v80/clan-lectern-right.png'
+      - 'public/game/homeworld/v80/sealed-cargo-case-left.png'
+      - 'public/game/sprites/v62/heads/classic-head.png'
       - 'public/game/planets/v103/**'
       - 'public/game/dialogues/v85/*.json'
       - 'art-source/v6/catalogue/*.xlsx'
@@ -24,9 +44,16 @@ on:
       - 'docs/YAUTJA_V105_SUIVI.xlsx'
       - 'docs/*v105*'
       - 'docs/qa/v105*/**'
+      - 'docs/YAUTJA_V106_SUIVI.xlsx'
+      - 'docs/*v106*'
+      - 'docs/qa/v106*/**'
       - 'docs/v56-excel-priorities.json'
       - 'art-source/v100/**'
       - 'public/game/sprites/v100/**'
+      - 'public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png'
+      - 'public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png'
+      - 'public/game/sprites/v59/pit/feral/launcher-left.png'
+      - 'public/game/sprites/v59/pit/feral/launcher-right.png'
       - 'docs/v63-stage-open-work.json'
       - 'docs/v63-workbook-roster-audit.json'
       - '.openai/hosting.json'
@@ -105,6 +132,26 @@ jobs:
             /.openai/hosting.json
             /public/**/manifest.json
             /public/game/homeworld/v74/
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp
+            /public/game/homeworld/v80/clan-lectern-right.png
+            /public/game/homeworld/v80/sealed-cargo-case-left.png
+            /public/game/sprites/v62/heads/classic-head.png
             /public/game/dialogues/v85/bible-dialogues.json
             /public/game/dialogues/v85/bible-ships.json
             /public/game/planets/v101/runtime/
@@ -127,6 +174,9 @@ jobs:
             /docs/YAUTJA_V105_SUIVI.xlsx
             /docs/*v105*
             /docs/qa/v105*/
+            /docs/YAUTJA_V106_SUIVI.xlsx
+            /docs/*v106*
+            /docs/qa/v106*/
             /docs/planet-generator-v103/review-fixes-20261022.json
             /docs/suivi-production/v611/data/production-manifest.json
             /docs/suivi-production/v612/data/production-manifest.json
@@ -141,6 +191,8 @@ jobs:
             /art-source/v100/
             /public/game/sprites/v100/pit/
             /public/game/sprites/v59/pit/feral/
+            /public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png
+            /public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png
             /public/game/sprites/v34/pit/scar/scar-heavy-v34.png
             /public/game/assets/v2/environments/jungle/layers/far-lake.webp
             /public/game/props/v4/root-platform.png
@@ -221,6 +273,8 @@ jobs:
           app/game/systems/gameReserveV66.ts app/game/systems/gameReserveTacticalV98.ts
           app/game/HomeworldRouteGuideV98.tsx app/game/systems/homeworldWayfindingV98.ts
           app/game/systems/homeworldNavigationV77.ts app/game/systems/homeworldNavigationV99.ts
+          app/game/systems/homeworldCivicWorldV80.ts
+          app/game/systems/homeworldAtlasLandmarksV83.ts
           app/game/homeworldRouteWorkerV98.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
           app/game/ClanChroniclePanel.tsx app/game/GameReserveEntryV66.tsx app/game/MainMenuBonusModesV81.tsx
@@ -229,6 +283,7 @@ jobs:
           app/game/systems/homeworldCartographyV104.ts app/game/systems/homeworld.ts app/game/save.ts app/game/buildInfo.ts
           app/game/systems/gameReserveLookoutV104.ts app/game/systems/pitCombat.ts
           app/game/systems/pitReplay.ts app/game/systems/pitReplayStorage.ts app/game/systems/pitTraining.ts
+          app/game/systems/pitCamera.ts
           app/game/systems/pitWorkbookNormalsV104.ts app/game/pitWorkbookNormalRegistryV104.ts
           app/game/hunterSpriteMotion.ts app/game/pitCombatBitmapArt.ts
           app/game/pitWorkbookRegistryV105.ts app/game/systems/pitWorkbookMovesV105.ts
@@ -240,6 +295,7 @@ jobs:
           app/game/systems/homeworldCartographyLedgerV105.ts app/game/systems/homeworldCartographyV105.ts
           app/game/ClanWarConvoyRouteV105.tsx app/game/systems/clanWarConvoyRouteV105.ts
           app/game/systems/clanWarConvoyStateV105.ts
+          app/game/*V106.ts app/game/*V106.tsx app/game/systems/*V106.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -347,7 +403,13 @@ jobs:
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs
       - name: Verify reproducible V105 follow-up and the 39 frozen historical sheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v105.mjs --check
+        run: node scripts/check-excel-history-v106.mjs --check
+      - name: Exercise V106 source specials, directional inputs, archival handling and assault planning
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v106.test.mjs
+      - name: Verify reproducible V106 follow-up and the 49 preserved historical sheets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v106.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

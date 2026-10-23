@@ -37,6 +37,8 @@ import { DEFAULT_WAR_PLANET_ID_V96, warPlanetV96 } from "./systems/clanWarPlanet
 import { warAtlasIntelV95 } from "./systems/clanWarAtlasV95";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 import ClanWarConvoyRouteV105 from "./ClanWarConvoyRouteV105";
+import ClanWarAssaultV106 from "./ClanWarAssaultV106";
+import { queuePreparedWarAssaultV106, type WarAssaultPlanV106 } from "./systems/clanWarAssaultV106";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers", evacuate: "Évacuer les blessés" };
@@ -199,11 +201,11 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     if (["attack", "move", "cession"].includes(orderKind)) setOrderKind(simulation.territories[id].controller === "CON-F02" ? "attack" : simulation.territories[id].controller === "CON-F03" ? "cession" : "move");
     setMessage(`Destination : ${warTerritoryForSimulationV96(simulation, id)!.name}. L’ordre prendra effet après confirmation du tour.`);
   }
-  function queue(confirmEvacuation = false) {
+  function queue(confirmEvacuation = false, assaultPlan: WarAssaultPlanV106 | null = null): boolean {
     const live = planetSession.getSnapshot();
-    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return;
-    const result = queueWarOrderV85(live.simulation, draft);
-    if (!result.accepted) { setMessage(result.message); return; }
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return false;
+    const result = draft.kind === "attack" ? queuePreparedWarAssaultV106(live.simulation, draft, assaultPlan) : queueWarOrderV85(live.simulation, draft);
+    if (!result.accepted) { setMessage(result.message); return false; }
     const liveKey = JSON.stringify([planet.id, live.simulation.revision, draft.fromId, draft.targetId, draft.combatantIds]);
     if (draft.kind === "evacuate" && warEvacuationLeavesUnguardedV100(live.simulation, draft) && (!confirmEvacuation || evacuationConfirmation !== liveKey)) {
       setEvacuationConfirmation(liveKey);
@@ -211,10 +213,11 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       window.requestAnimationFrame(() => {
         if (pageActivitySnapshotV94() && root.current && !root.current.closest('[inert],[hidden]')) root.current.querySelector<HTMLButtonElement>('[data-testid="war-evacuation-warning-v100"] button')?.focus({ preventScroll: true });
       });
-      return;
+      return false;
     }
     setMessage(result.message); setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); setEvacuationConfirmation(null);
     if (confirmEvacuation) restoreOrderFocus();
+    return true;
   }
   function restoreOrderFocus() {
     window.requestAnimationFrame(() => {
@@ -352,7 +355,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
             <fieldset><legend>Personnes au départ · huit maximum</legend><div className={styles.actions}><button type="button" onClick={() => { setSelectedPeople(orderKind === "evacuate" ? warEvacuationSelectionV100(simulation, territoryId) : candidates.filter(actor => !reservedPeople.has(actor.id) && (orderKind === "heal" || !actor.garrison)).slice(0, 8).map(actor => actor.id)); setConfirmTurn(false); }}>{orderKind === "evacuate" ? "Préparer une évacuation sans dégarnir" : orderKind === "heal" ? "Sélectionner les blessés" : "Sélectionner les mobiles"}</button><button type="button" disabled={selectedPeople.length === 0} onClick={() => { setSelectedPeople([]); setConfirmTurn(false); }}>Tout effacer</button></div>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" disabled={reservedPeople.has(actor.id) || selectedPeople.length >= 8 && !selectedPeople.includes(actor.id)} checked={selectedPeople.includes(actor.id)} onChange={event => { setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id)); setConfirmTurn(false); }}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.status === "wounded" ? "blessé · patient" : orderKind === "evacuate" ? `apte · escorte${actor.garrison ? " · garde" : ""}` : actor.garrison ? "garde" : "mobile"}{reservedPeople.has(actor.id) ? " · déjà affecté à un ordre" : ""}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
             {orderKind === "evacuate" && <ClanWarEvacuationV100 simulation={simulation} draft={draft}/>}
             {orderKind === "logistics" && <div className={styles.controlGrid}><label>Lots S<input type="number" min={0} max={1000} value={cargoS} onChange={event => setCargoS(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label><label>Lots M<input type="number" min={0} max={1000} value={cargoM} onChange={event => setCargoM(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label></div>}
-            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/><button type="button" data-war-reserve-order-v100 disabled={!!orderIssue || pendingWrites > 0 || suspended || !pageActive} onClick={() => queue()}>Réserver l’ordre</button>
+            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/>{orderKind === "attack" ? <ClanWarAssaultV106 key={planet.id} simulation={simulation} draft={draft} disabled={pendingWrites > 0 || suspended || !pageActive} onReserve={plan => queue(false, plan)} onRecon={() => prepareSite(territoryId, targetId, "recon")}/> : <button type="button" data-war-reserve-order-v100 disabled={!!orderIssue || pendingWrites > 0 || suspended || !pageActive} onClick={() => queue()}>Réserver l’ordre</button>}
             {orderKind === "evacuate" && evacuationConfirmation === evacuationConfirmationKey && <div className={styles.confirm} role="group" aria-label="Confirmer une évacuation sans garde" data-testid="war-evacuation-warning-v100"><p>Cette évacuation engage le dernier garde apte du départ. Si le déplacement aboutit, le site reste contrôlé mais perd sa production jusqu’à une nouvelle garde. Réserver n’avance pas le tour.</p><div className={styles.actions}><button type="button" disabled={pendingWrites > 0 || suspended || !pageActive} onClick={() => queue(true)}>Confirmer l’évacuation sans garde</button><button type="button" onClick={() => { setEvacuationConfirmation(null); setMessage("Évacuation non réservée ; les personnes conservent leurs affectations."); restoreOrderFocus(); }}>Conserver la garde</button></div></div>}
           </div> : <p>{warAtlasIntelV95(simulation, territoryId).label}. Envoyez une reconnaissance depuis un territoire voisin pour actualiser le renseignement.</p>}
           <details><summary>Sites, capture et risques</summary><p>{territory.sites}</p><p>{territory.capture}</p><p>{territory.effect}</p><p>{territory.risk}</p></details>

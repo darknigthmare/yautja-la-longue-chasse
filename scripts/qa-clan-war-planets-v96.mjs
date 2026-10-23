@@ -256,7 +256,8 @@ try {
   await targetCell().press("Enter");
   await command(conquestPage).getByRole("combobox", { name: /^Ordre/ }).selectOption("attack");
   for (const id of convoyPeople) await command(conquestPage).getByRole("checkbox", { name: new RegExp(`^${id} ·`) }).check();
-  await command(conquestPage).getByRole("button", { name: "Réserver l’ordre", exact: true }).click();
+  await command(conquestPage).getByRole("button", { name: "Étudier l’assaut", exact: true }).click();
+  await command(conquestPage).getByRole("button", { name: "Confirmer l’assaut", exact: true }).click();
   await conquestPage.waitForFunction(key => JSON.parse(localStorage.getItem(key) ?? "null")?.orders.length === 1, api.warPlanetStorageKeyV96(conquestWorld.id));
   check("an assault reservation alone never grants a conquest", (await readState(conquestPage, conquestWorld.id)).territories[conquestTarget].controller === "CON-F02");
   await resolveTurn(conquestPage, conquestWorld.id, 3);
