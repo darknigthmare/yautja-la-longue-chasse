@@ -1,15 +1,19 @@
-import test from 'node:test';
+import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {snapshotRuntimeV105} from '../scripts/snapshot-runtime-v105.mjs';
+import path from 'node:path';
+import {getHistoricalExcelContextV106,loadHistoricalRuntimeSnapshotV106,verifyHistoricalExcelContextV106} from '../scripts/historical-excel-context-v106.mjs';
+const {root:ROOT}=await getHistoricalExcelContextV106();
+const {snapshotRuntimeV105}=await loadHistoricalRuntimeSnapshotV106();
+after(verifyHistoricalExcelContextV106);
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const json = async file => JSON.parse(await fs.readFile(file, 'utf8'));
+const json = async file => JSON.parse(await fs.readFile(path.join(ROOT,file), 'utf8'));
 async function verifyFile(entry) {
   const file = entry.path ?? entry.file;
   assert.ok(typeof file === 'string' && file.startsWith('docs/') && !file.split(/[\\/]/).includes('..'), 'Portable local evidence required');
-  const bytes = await fs.readFile(file);
+  const bytes = await fs.readFile(path.join(ROOT,file));
   assert.equal(bytes.length, entry.bytes, file + ': evidence size changed');
   assert.equal(sha(bytes), entry.sha256, file + ': evidence changed');
   return bytes;

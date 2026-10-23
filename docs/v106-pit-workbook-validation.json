@@ -1,0 +1,2643 @@
+{
+  "release": "V106",
+  "status": "PASS",
+  "scope": {
+    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+    "sourceActions": [
+      "M_F006_S1",
+      "M_F006_S2",
+      "M_F003_S3",
+      "M_F006_SUPER",
+      "M_F003_SUPER"
+    ],
+    "runtimeBindings": 40,
+    "sourceTargets": 52,
+    "remainingUnbound": 12,
+    "description": "Public local duels, explicit source recipe, real pressure costs, public commands and directional motions and genuine outcomes. Canvas and DOM observers are passive. Five additional BODY actions: Feral S1/S2/SUPER and Scar S3/SUPER. Existing source pixels, explicitly retimed Feral launcher, attached shield geometry and existing procedural projectile effects; no new standalone entity art. Historical V11/V12/V13 remain independently selectable. A genuine V14 outcome checks inherited source theatre; other presentations retain their V105 evidence. Partner composites and twelve unbound actions remain studies.",
+    "limits": [
+      "Existing native BODY pages only; no new native drawing or isolated projectile sprite.",
+      "Feral launcher and hit-confirmed SUPER BODY phases use explicitly declared source retiming.",
+      "Projectile effects use existing procedural visuals. The source plasma has a separate high collision core.",
+      "Shield guard 9 ticks and edge 9 ticks follow their own source drawings. SUPER continuation needs an unguarded physical opening.",
+      "Partner composites, remaining unbound actions, durable inventory and costume work remain open.",
+      "One genuine V14 outcome and V11/V12/V13 compatibility are replayed here; unchanged V105 presentations retain their earlier exhaustive evidence."
+    ]
+  },
+  "production": {
+    "mode": "production",
+    "buildId": "KlZy6p2FCQDouFqIgys2f",
+    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+    "checksPassed": 198,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "body-1-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "body-2-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "supers-1-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "supers-2-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "supers-3-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "legacy-historical-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "legacy-workbook-v104-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "foundInHtml": true,
+        "htmlFile": "legacy-workbook-v105-served.html",
+        "htmlSha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+        "bytes": 13840,
+        "contentType": "text/html; charset=utf-8"
+      }
+    ]
+  },
+  "sourceBefore": [
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "app/game/PitCanvas.tsx",
+      "sha256": "c6b931f3a9089225bf41ae414248ae8133570b98beff2f981d16d916ea4d02c7"
+    },
+    {
+      "file": "app/game/PitCanvas.module.css",
+      "sha256": "5ea804a94df33a54d32edca63bc205a92e5df44522d01ae47639f687c4d29389"
+    },
+    {
+      "file": "app/game/hunterSpriteMotion.ts",
+      "sha256": "a6b03db0c5b6f1ce8916c850d1ce65e81096dde05207084b68820f95af3ec613"
+    },
+    {
+      "file": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "2efb179a95253c913cabf54357b46f0a5a46dd0af9a0a383273ef84b4fe2830c"
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV105.ts",
+      "sha256": "d78e10da3d70317effc267644e01854f5dd193b11440870751c2dd800524e5d6"
+    },
+    {
+      "file": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "d3f812a900aa03cf34b17e822606c65aa62659388e2edf5d7043afb7fb197bdd"
+    },
+    {
+      "file": "app/game/systems/pitCombat.ts",
+      "sha256": "1bc290fbd62f824d309189ee89788a38c61a6b1c598bd605a65f73ae92f16a85"
+    },
+    {
+      "file": "app/game/pitFighterPresentation.ts",
+      "sha256": "b060f231cb63384657e47072ee17c9ab9caf718d4b216b18413dc4c3fa475b59"
+    },
+    {
+      "file": "app/game/systems/pitCamera.ts",
+      "sha256": "cf58681c97fec2eca33cefc7b8c1bb071536aa8d58c7e6a2d3a753f42d5d8068"
+    },
+    {
+      "file": "app/game/pitSpriteSheetRegistry.ts",
+      "sha256": "ccf79d56ec0399e417b57b2406e8de1a785f585054e10b5c50d72e5cb96a5433"
+    },
+    {
+      "file": "app/game/hunterSpriteAtlas.ts",
+      "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e"
+    },
+    {
+      "file": "app/game/spriteContact.ts",
+      "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10"
+    },
+    {
+      "file": "app/game/pitWorkbookAnimationV100.ts",
+      "sha256": "d1120ca77376b54a3f38a958520e23f58d1f93879fff13cb32161cae4956af6a"
+    },
+    {
+      "file": "app/game/pitWorkbookNormalRegistryV104.ts",
+      "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookNormalsV104.ts",
+      "sha256": "d4a79c3a6654cbf9864f6afb7b9a921557cc8f91fccbda6366ca037503b5177e"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV105.ts",
+      "sha256": "c388d8f253cd19882fa5da55f2031c853a17dabb875cd4b3f4fa64496b31e1b1"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookMovesV105.ts",
+      "sha256": "13ed45fac972e76e6491348c2753854c9c3f25f8b5f5f9cefd5d21522440826b"
+    },
+    {
+      "file": "app/game/data/pitWorkbookAnimationsV100.json",
+      "sha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956"
+    },
+    {
+      "file": "app/game/data/pitWorkbookAnimationPlanV100.json",
+      "sha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141"
+    },
+    {
+      "file": "app/game/systems/pitRoundPresentation.ts",
+      "sha256": "438df1efddd3d76dd23c41a9c25a3cd5fbda5f3c6eac86f1c875a2ac64e96ec9"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookPresentationClockV105.ts",
+      "sha256": "0c1a01c5cb3f12df1bded69af0ac9fe0f686283be8f8e63501c43e0e9a2eabd7"
+    },
+    {
+      "file": "scripts/qa-pit-workbook-v106.mjs",
+      "sha256": "779f39258ab369d5048e49fae658cd191358c0abc1a3eeb99b9ff1e0dfac4ce5"
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV106.ts",
+      "sha256": "e47244e587d7c4d2b7802cd7c6869060b2e7a6031f29fefd2a5dc51eec31d330"
+    },
+    {
+      "file": "app/game/pitWorkbookEffectsV106.ts",
+      "sha256": "39ce58fc7111f8dc3ef272d0aef0a2b7519fe4597fdee588aa8e48ca2bd05676"
+    },
+    {
+      "file": "app/game/pitWorkbookCameraV106.ts",
+      "sha256": "721480a89a565436861b3d57ecd74ed8b916cdad05cc8359612760a17e025022"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookSuperSourceV106.ts",
+      "sha256": "062bce6f0615036d68690761452a9205eb8f0ef6570330db6bbbb11cb1122147"
+    },
+    {
+      "file": "app/game/data/pitWorkbookSuperAnchorsV106.json",
+      "sha256": "bcebc17f8c25a37f504bf80761a577648088b7314976ed1c16cf23b2512d3921"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV106.ts",
+      "sha256": "2d56285fc1a3ec70077adda49e599ad2564235f89858fa39a7d3120239552bbb"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookMotionV106.ts",
+      "sha256": "480c8d892090cc2f84bd5042ddd1f986d94de11da1e0a7aea554b2302982da7d"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookProjectileSourceV106.ts",
+      "sha256": "7966090dc4e86739c943ca63c3a7f84be09cf38389163f5270c776c0e8aa20c3"
+    },
+    {
+      "file": "app/game/data/pitWorkbookEntityAnchorsV106.json",
+      "sha256": "3bc39ef4742cc9a818cdcb43c2b90bf3d6abefd4b985af059236e61c8715c65c"
+    },
+    {
+      "file": "scripts/pit-selection-browser-helpers.mjs",
+      "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430"
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca"
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
+      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
+      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
+      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
+      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
+      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
+      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8"
+    },
+    {
+      "file": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855"
+    },
+    {
+      "file": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "app/game/PitCanvas.tsx",
+      "sha256": "c6b931f3a9089225bf41ae414248ae8133570b98beff2f981d16d916ea4d02c7"
+    },
+    {
+      "file": "app/game/PitCanvas.module.css",
+      "sha256": "5ea804a94df33a54d32edca63bc205a92e5df44522d01ae47639f687c4d29389"
+    },
+    {
+      "file": "app/game/hunterSpriteMotion.ts",
+      "sha256": "a6b03db0c5b6f1ce8916c850d1ce65e81096dde05207084b68820f95af3ec613"
+    },
+    {
+      "file": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "2efb179a95253c913cabf54357b46f0a5a46dd0af9a0a383273ef84b4fe2830c"
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV105.ts",
+      "sha256": "d78e10da3d70317effc267644e01854f5dd193b11440870751c2dd800524e5d6"
+    },
+    {
+      "file": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "d3f812a900aa03cf34b17e822606c65aa62659388e2edf5d7043afb7fb197bdd"
+    },
+    {
+      "file": "app/game/systems/pitCombat.ts",
+      "sha256": "1bc290fbd62f824d309189ee89788a38c61a6b1c598bd605a65f73ae92f16a85"
+    },
+    {
+      "file": "app/game/pitFighterPresentation.ts",
+      "sha256": "b060f231cb63384657e47072ee17c9ab9caf718d4b216b18413dc4c3fa475b59"
+    },
+    {
+      "file": "app/game/systems/pitCamera.ts",
+      "sha256": "cf58681c97fec2eca33cefc7b8c1bb071536aa8d58c7e6a2d3a753f42d5d8068"
+    },
+    {
+      "file": "app/game/pitSpriteSheetRegistry.ts",
+      "sha256": "ccf79d56ec0399e417b57b2406e8de1a785f585054e10b5c50d72e5cb96a5433"
+    },
+    {
+      "file": "app/game/hunterSpriteAtlas.ts",
+      "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e"
+    },
+    {
+      "file": "app/game/spriteContact.ts",
+      "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10"
+    },
+    {
+      "file": "app/game/pitWorkbookAnimationV100.ts",
+      "sha256": "d1120ca77376b54a3f38a958520e23f58d1f93879fff13cb32161cae4956af6a"
+    },
+    {
+      "file": "app/game/pitWorkbookNormalRegistryV104.ts",
+      "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookNormalsV104.ts",
+      "sha256": "d4a79c3a6654cbf9864f6afb7b9a921557cc8f91fccbda6366ca037503b5177e"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV105.ts",
+      "sha256": "c388d8f253cd19882fa5da55f2031c853a17dabb875cd4b3f4fa64496b31e1b1"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookMovesV105.ts",
+      "sha256": "13ed45fac972e76e6491348c2753854c9c3f25f8b5f5f9cefd5d21522440826b"
+    },
+    {
+      "file": "app/game/data/pitWorkbookAnimationsV100.json",
+      "sha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956"
+    },
+    {
+      "file": "app/game/data/pitWorkbookAnimationPlanV100.json",
+      "sha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141"
+    },
+    {
+      "file": "app/game/systems/pitRoundPresentation.ts",
+      "sha256": "438df1efddd3d76dd23c41a9c25a3cd5fbda5f3c6eac86f1c875a2ac64e96ec9"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookPresentationClockV105.ts",
+      "sha256": "0c1a01c5cb3f12df1bded69af0ac9fe0f686283be8f8e63501c43e0e9a2eabd7"
+    },
+    {
+      "file": "scripts/qa-pit-workbook-v106.mjs",
+      "sha256": "779f39258ab369d5048e49fae658cd191358c0abc1a3eeb99b9ff1e0dfac4ce5"
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV106.ts",
+      "sha256": "e47244e587d7c4d2b7802cd7c6869060b2e7a6031f29fefd2a5dc51eec31d330"
+    },
+    {
+      "file": "app/game/pitWorkbookEffectsV106.ts",
+      "sha256": "39ce58fc7111f8dc3ef272d0aef0a2b7519fe4597fdee588aa8e48ca2bd05676"
+    },
+    {
+      "file": "app/game/pitWorkbookCameraV106.ts",
+      "sha256": "721480a89a565436861b3d57ecd74ed8b916cdad05cc8359612760a17e025022"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookSuperSourceV106.ts",
+      "sha256": "062bce6f0615036d68690761452a9205eb8f0ef6570330db6bbbb11cb1122147"
+    },
+    {
+      "file": "app/game/data/pitWorkbookSuperAnchorsV106.json",
+      "sha256": "bcebc17f8c25a37f504bf80761a577648088b7314976ed1c16cf23b2512d3921"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV106.ts",
+      "sha256": "2d56285fc1a3ec70077adda49e599ad2564235f89858fa39a7d3120239552bbb"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookMotionV106.ts",
+      "sha256": "480c8d892090cc2f84bd5042ddd1f986d94de11da1e0a7aea554b2302982da7d"
+    },
+    {
+      "file": "app/game/systems/pitWorkbookProjectileSourceV106.ts",
+      "sha256": "7966090dc4e86739c943ca63c3a7f84be09cf38389163f5270c776c0e8aa20c3"
+    },
+    {
+      "file": "app/game/data/pitWorkbookEntityAnchorsV106.json",
+      "sha256": "3bc39ef4742cc9a818cdcb43c2b90bf3d6abefd4b985af059236e61c8715c65c"
+    },
+    {
+      "file": "scripts/pit-selection-browser-helpers.mjs",
+      "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430"
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca"
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
+      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
+      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
+      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
+      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
+      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550"
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
+      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8"
+    },
+    {
+      "file": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855"
+    },
+    {
+      "file": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+    }
+  ],
+  "recipe": {
+    "command": "node scripts/qa-pit-workbook-v106.mjs",
+    "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "nodeVersion": "v22.23.3",
+    "environment": {
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_BUILD_ID": "KlZy6p2FCQDouFqIgys2f",
+      "YAUTJA_QA_RUNTIME_COMMIT": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "YAUTJA_PIT_WORKBOOK_QA_MODE": "production",
+      "YAUTJA_PIT_WORKBOOK_QA_OUTPUT": "/tmp/v106-pit-production-3",
+      "YAUTJA_PIT_WORKBOOK_QA_DOMAINS": "native,supers,legacy,outcome",
+      "YAUTJA_QA_REQUIRE_FROZEN": "1"
+    }
+  },
+  "coverage": {
+    "actionOrientations": 6,
+    "superHitOrientations": 4,
+    "superFailures": [
+      "guard",
+      "miss"
+    ],
+    "presentationOrientations": 4
+  },
+  "evidenceAnalysis": {
+    "status": "PASS",
+    "method": "Read only analysis of the recorded browser samples, without a new simulation or state mutation. Infer owner from the initial passive workbookMove SUPER, then count strictly decreasing consecutive opponent health values. Repeated display samples are ignored. Feral requires opening plus three bolts (4); Scar requires opening plus physical extension (2). Guard/miss require zero health drops and the browser already verifies absent confirmation/continuation/camera. Every post-opening damage drop has confirmed BODY metadata.",
+    "timingLimit": "DOM health and Canvas metadata commit in adjacent React effects, so a sampled opener may carry the previous Canvas action tick. Counts and observed health transitions are exact; engine fixed-clock tests certify phase timing.",
+    "damageLimit": "These are effective combat damages after the retained combo/instinct rules, not the source base 280 total.",
+    "checks": [
+      {
+        "actionId": "M_F006_SUPER",
+        "facing": "right",
+        "outcome": "hit",
+        "slotInferredFromInitialPassiveAction": 0,
+        "expectedImpacts": 4,
+        "observedImpacts": 4,
+        "damageTransitions": [
+          {
+            "simulationFrameObserved": 1111,
+            "canvasActionFrameObserved": 24,
+            "damage": 40,
+            "before": 350,
+            "after": 310,
+            "canvasConfirmedObserved": true
+          },
+          {
+            "simulationFrameObserved": 1135,
+            "canvasActionFrameObserved": 48,
+            "damage": 70,
+            "before": 310,
+            "after": 240,
+            "canvasConfirmedObserved": true
+          },
+          {
+            "simulationFrameObserved": 1137,
+            "canvasActionFrameObserved": 50,
+            "damage": 55,
+            "before": 240,
+            "after": 185,
+            "canvasConfirmedObserved": true
+          },
+          {
+            "simulationFrameObserved": 1139,
+            "canvasActionFrameObserved": 52,
+            "damage": 46,
+            "before": 185,
+            "after": 139,
+            "canvasConfirmedObserved": true
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "actionId": "M_F003_SUPER",
+        "facing": "left",
+        "outcome": "hit",
+        "slotInferredFromInitialPassiveAction": 1,
+        "expectedImpacts": 2,
+        "observedImpacts": 2,
+        "damageTransitions": [
+          {
+            "simulationFrameObserved": 1292,
+            "canvasActionFrameObserved": 23,
+            "damage": 81,
+            "before": 294,
+            "after": 213,
+            "canvasConfirmedObserved": false
+          },
+          {
+            "simulationFrameObserved": 1308,
+            "canvasActionFrameObserved": 39,
+            "damage": 161,
+            "before": 213,
+            "after": 52,
+            "canvasConfirmedObserved": true
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "actionId": "M_F003_SUPER",
+        "facing": "right",
+        "outcome": "hit",
+        "slotInferredFromInitialPassiveAction": 0,
+        "expectedImpacts": 2,
+        "observedImpacts": 2,
+        "damageTransitions": [
+          {
+            "simulationFrameObserved": 943,
+            "canvasActionFrameObserved": 23,
+            "damage": 81,
+            "before": 294,
+            "after": 213,
+            "canvasConfirmedObserved": false
+          },
+          {
+            "simulationFrameObserved": 959,
+            "canvasActionFrameObserved": 39,
+            "damage": 161,
+            "before": 213,
+            "after": 52,
+            "canvasConfirmedObserved": true
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "actionId": "M_F006_SUPER",
+        "facing": "left",
+        "outcome": "hit",
+        "slotInferredFromInitialPassiveAction": 1,
+        "expectedImpacts": 4,
+        "observedImpacts": 4,
+        "damageTransitions": [
+          {
+            "simulationFrameObserved": 1133,
+            "canvasActionFrameObserved": 23,
+            "damage": 40,
+            "before": 350,
+            "after": 310,
+            "canvasConfirmedObserved": false
+          },
+          {
+            "simulationFrameObserved": 1157,
+            "canvasActionFrameObserved": 48,
+            "damage": 70,
+            "before": 310,
+            "after": 240,
+            "canvasConfirmedObserved": true
+          },
+          {
+            "simulationFrameObserved": 1159,
+            "canvasActionFrameObserved": 50,
+            "damage": 55,
+            "before": 240,
+            "after": 185,
+            "canvasConfirmedObserved": true
+          },
+          {
+            "simulationFrameObserved": 1161,
+            "canvasActionFrameObserved": 52,
+            "damage": 46,
+            "before": 185,
+            "after": 139,
+            "canvasConfirmedObserved": true
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "actionId": "M_F006_SUPER",
+        "facing": "right",
+        "outcome": "guard",
+        "slotInferredFromInitialPassiveAction": 0,
+        "expectedImpacts": 0,
+        "observedImpacts": 0,
+        "damageTransitions": [],
+        "status": "PASS"
+      },
+      {
+        "actionId": "M_F003_SUPER",
+        "facing": "left",
+        "outcome": "miss",
+        "slotInferredFromInitialPassiveAction": 1,
+        "expectedImpacts": 0,
+        "observedImpacts": 0,
+        "damageTransitions": [],
+        "status": "PASS"
+      }
+    ],
+    "observationPrecision": {
+      "fighterPositionsWorldDecimals": 2,
+      "maximumRoundingError": 0.005,
+      "projectileOriginToleranceWorld": 0.011,
+      "priorDriverResidualExample": {
+        "fighterXObserved": 233.87,
+        "anchorXFromRoundedActor": 229.54333333333335,
+        "birthXFromRealProjectileAgeAndVelocity": 229.54833333333332,
+        "absoluteResidual": 0.005,
+        "cause": "Actor position is intentionally rounded to0.01 in the passive DOM witness. Projectile coordinates retain full precision."
+      }
+    }
+  },
+  "visualInspection": {
+    "status": "INSPECTED",
+    "images": [
+      {
+        "file": "body-1-source-options.png",
+        "sha256": "e957223765db6e8174fc6ace38a4ede65fad374c080cfeee5eeb8a87b7d3129b",
+        "bytes": 271605,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-M_F006_S1-active.png",
+        "sha256": "040f8a7cce6d79fa24069027521ae90bc562e4ae11f195f382c5fe284c552449",
+        "bytes": 1205234,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-M_F006_S2-active.png",
+        "sha256": "bd7600a807faafe448dcd3282bb0bc8dac9a9e483c1a96be718756aba8d8d7ae",
+        "bytes": 1208269,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-M_F006_S2-edge.png",
+        "sha256": "ecaae2d06c3370e7af724d71b62d081f5dc9de3e4b83eb7a30cf1799c1347703",
+        "bytes": 1207177,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-M_F003_S3-charge.png",
+        "sha256": "64edb1f16ef2914b2a7fb3039fed06e1ed0f58e62cad956671217e47dfd4e9e0",
+        "bytes": 1199375,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-M_F003_S3-active.png",
+        "sha256": "9916f322844608415b7a0575594544f15f651d810d626f8fbc69c8719014a034",
+        "bytes": 1203549,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-1-result.png",
+        "sha256": "0be74ade2bfe44b38598eba3863fefcd8250f2867595e204cdc185e4d5fa9b47",
+        "bytes": 1180517,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-source-options.png",
+        "sha256": "6c74ad88e56c8fc29ba8ca8f23506f6b332bafa0dd35bab9045f03504eda95a1",
+        "bytes": 272102,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-M_F003_S3-charge.png",
+        "sha256": "65b80754c6a2eb36124a7eba42e0e7943202447243460aa9dcca0bf54851855c",
+        "bytes": 1219173,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-M_F003_S3-active.png",
+        "sha256": "b4be6327996b044d814bad49b9529f693dc3ce659a56a2f7e6c02997460d2788",
+        "bytes": 1220849,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-M_F006_S1-active.png",
+        "sha256": "6ba75fdd358f8b554c7833a5a7236ce18d22a3837714a76dc06db2e67b0523d8",
+        "bytes": 1227222,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-M_F006_S2-active.png",
+        "sha256": "eb0a36fc527f8fc343626632478b094fc878eff1928e30de7d0c77376540357b",
+        "bytes": 1219352,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "body-2-M_F006_S2-edge.png",
+        "sha256": "ea8756134bc6361eefd1706114dd6d2f05d55b3b07abe05f014abca25a44809c",
+        "bytes": 1219718,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-1-source-options.png",
+        "sha256": "df801ccf4faa672401263203f4e90f01bb457905eee9b82ed246254ebc4dc336",
+        "bytes": 271814,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-1-M_F006_SUPER-hit.png",
+        "sha256": "ac66247e6f6284c85300ecdf5d80c3aa127a2520eb7a6748874f8ab51c32f427",
+        "bytes": 1313338,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-1-M_F003_SUPER-hit.png",
+        "sha256": "9c8e0be48b499666d64afdfbc88d91e0119ce70223365b2fa46fb5b33bae74b6",
+        "bytes": 1300139,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-2-source-options.png",
+        "sha256": "0bb25141afea8fc05b2864eab8c3273f51f69db532c3a5e33f8c008094455eb4",
+        "bytes": 271535,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-2-M_F003_SUPER-hit.png",
+        "sha256": "bee717ae905f24454efab6b1f93f62134cdfbc828636330cc47bf7313e7c3f2e",
+        "bytes": 1326583,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-2-M_F006_SUPER-hit.png",
+        "sha256": "f13ee0755aadcfd679ff56e197c2a76b5a55b37a87bbd46a31214deaec2f6de3",
+        "bytes": 1338201,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-3-source-options.png",
+        "sha256": "29347a05069a2e819b872fe8a3d4acd12a46058138f20094b60524486ee20913",
+        "bytes": 271795,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-3-M_F006_SUPER-guard.png",
+        "sha256": "9026331db36b14bce0741d2b3bd50e195f99fd27315242256788309ad2bf878e",
+        "bytes": 1320891,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "supers-3-M_F003_SUPER-miss.png",
+        "sha256": "92697c096e956cc0549d1bc5b9871284b3b469c992e5b3a5511eb920c1bc46f6",
+        "bytes": 1192615,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "legacy-historical.png",
+        "sha256": "05b83bd28ef9b290c33963403499668698d3c0fdf96420e2abf563b721fe3401",
+        "bytes": 1307780,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "legacy-workbook-v104-source-options.png",
+        "sha256": "7fdd06c438030dfe7e5ecbe19b2c47a3350702a6cb7cbca053d1bbede30bb168",
+        "bytes": 247251,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "legacy-workbook-v104.png",
+        "sha256": "f07a933174344a7018b8a60307b40c954a5690b8847365466414186cda5aa9d8",
+        "bytes": 1311129,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "legacy-workbook-v105-source-options.png",
+        "sha256": "e46ba705c2f2cc1604aed267382eb3a352b8e0cbe9128955a1681bda07b67be5",
+        "bytes": 275553,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      },
+      {
+        "file": "legacy-workbook-v105.png",
+        "sha256": "2dcf18efe4e4665f0bde8e3c40f03525b9737a2b229b463f33f11a19dbc93faf",
+        "bytes": 1261157,
+        "width": 1440,
+        "height": 1050,
+        "status": "INSPECTED"
+      }
+    ],
+    "method": "All 27 original browser PNGs were individually opened with view_image. Source selection, original BODY facings, floor contact, visible weapon/projectile directions, guard/edge poses, confirmed SUPER continuations, bounded camera, guarded/missed branches and the genuine result were inspected. Five representative original PNGs are copied portably; the full produced inventory is retained here.",
+    "limits": "Visual review checks these delivered frames and composition, not new lore certification or independently authored entity sprites."
+  },
+  "captureInventory": [
+    {
+      "file": "body-1-source-options.png",
+      "sha256": "e957223765db6e8174fc6ace38a4ede65fad374c080cfeee5eeb8a87b7d3129b",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "body-1-M_F006_S1-active.png",
+      "sha256": "040f8a7cce6d79fa24069027521ae90bc562e4ae11f195f382c5fe284c552449",
+      "state": {
+        "frame": 1175,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,true",
+        "positions": [
+          {
+            "x": 221.83,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S1",
+            "actionFrame": 23,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.8753,
+        "entities": [
+          {
+            "id": 1,
+            "ownerSlot": 0,
+            "techniqueId": "feral-guided-bolts-v58",
+            "phase": "active",
+            "age": 1,
+            "hitCount": 0,
+            "x": 347.116471518034,
+            "y": 69.130839254704,
+            "bolt": {
+              "volleyId": 1,
+              "index": 0,
+              "guided": true,
+              "targetX": 878.5,
+              "targetY": 70.8,
+              "velocityX": 13.999982156331694,
+              "velocityY": -0.022352234657709708
+            },
+            "workbookMove": "S1",
+            "direction": 1,
+            "collision": {
+              "x": 347.116471518034,
+              "y": 69.130839254704,
+              "width": 22,
+              "height": 5
+            }
+          }
+        ],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          350
+        ],
+        "meter": [
+          700,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-1-M_F006_S2-active.png",
+      "sha256": "bd7600a807faafe448dcd3282bb0bc8dac9a9e483c1a96be718756aba8d8d7ae",
+      "state": {
+        "frame": 1297,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,true",
+        "positions": [
+          {
+            "x": 221.83,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S2",
+            "actionFrame": 9,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.8753,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          {
+            "x": 264.8675531914896,
+            "y": 43.765957446808514,
+            "width": 29.659574468085108,
+            "height": 55.340425531914896
+          },
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          249
+        ],
+        "meter": [
+          651,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-1-M_F006_S2-edge.png",
+      "sha256": "ecaae2d06c3370e7af724d71b62d081f5dc9de3e4b83eb7a30cf1799c1347703",
+      "state": {
+        "frame": 1306,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,true",
+        "positions": [
+          {
+            "x": 221.83,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S2",
+            "actionFrame": 18,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.8753,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          249
+        ],
+        "meter": [
+          651,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-1-M_F003_S3-charge.png",
+      "sha256": "64edb1f16ef2914b2a7fb3039fed06e1ed0f58e62cad956671217e47dfd4e9e0",
+      "state": {
+        "frame": 1431,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 221.83,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "startup",
+            "normalMove": null,
+            "workbookMove": "S3",
+            "actionFrame": 14,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.8753,
+        "entities": [],
+        "charge": 1,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          249
+        ],
+        "meter": [
+          651,
+          750
+        ]
+      }
+    },
+    {
+      "file": "body-1-M_F003_S3-active.png",
+      "sha256": "9916f322844608415b7a0575594544f15f651d810d626f8fbc69c8719014a034",
+      "state": {
+        "frame": 1438,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 221.83,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S3",
+            "actionFrame": 21,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.8753,
+        "entities": [
+          {
+            "id": 4,
+            "ownerSlot": 1,
+            "techniqueId": "scar-plasma-riposte",
+            "phase": "active",
+            "age": 2,
+            "hitCount": 0,
+            "x": 836.6379310344828,
+            "y": 69.06513409961686,
+            "workbookMove": "S3",
+            "direction": -1,
+            "collision": {
+              "x": 844.6379310344828,
+              "y": 83.06513409961686,
+              "width": 24,
+              "height": 12
+            }
+          }
+        ],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          249
+        ],
+        "meter": [
+          651,
+          750
+        ]
+      }
+    },
+    {
+      "file": "body-1-result.png",
+      "sha256": "0be74ade2bfe44b38598eba3863fefcd8250f2867595e204cdc185e4d5fa9b47",
+      "state": {
+        "frame": 2497,
+        "phase": "match-result",
+        "elapsedMs": 5000,
+        "durationMs": 5000,
+        "paused": "false",
+        "blocked": "true",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 823.75,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "active",
+            "normalMove": "5H",
+            "workbookMove": null,
+            "actionFrame": 16,
+            "superConfirmed": null
+          },
+          {
+            "phase": "knockdown",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 1.6356,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          960,
+          0
+        ],
+        "meter": [
+          1000,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-2-source-options.png",
+      "sha256": "6c74ad88e56c8fc29ba8ca8f23506f6b332bafa0dd35bab9045f03504eda95a1",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "body-2-M_F003_S3-charge.png",
+      "sha256": "65b80754c6a2eb36124a7eba42e0e7943202447243460aa9dcca0bf54851855c",
+      "state": {
+        "frame": 998,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,true",
+        "positions": [
+          {
+            "x": 233.93,
+            "y": 0
+          },
+          {
+            "x": 879.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "startup",
+            "normalMove": null,
+            "workbookMove": "S3",
+            "actionFrame": 14,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.9213,
+        "entities": [],
+        "charge": 1,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          350,
+          294
+        ],
+        "meter": [
+          750,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-2-M_F003_S3-active.png",
+      "sha256": "b4be6327996b044d814bad49b9529f693dc3ce659a56a2f7e6c02997460d2788",
+      "state": {
+        "frame": 1005,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,true",
+        "positions": [
+          {
+            "x": 233.93,
+            "y": 0
+          },
+          {
+            "x": 879.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S3",
+            "actionFrame": 21,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.9213,
+        "entities": [
+          {
+            "id": 1,
+            "ownerSlot": 0,
+            "techniqueId": "scar-plasma-riposte",
+            "phase": "active",
+            "age": 2,
+            "hitCount": 0,
+            "x": 239.5983333333334,
+            "y": 70.07333333333332,
+            "workbookMove": "S3",
+            "direction": 1,
+            "collision": {
+              "x": 247.5983333333334,
+              "y": 84.07333333333332,
+              "width": 24,
+              "height": 12
+            }
+          }
+        ],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          350,
+          294
+        ],
+        "meter": [
+          750,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "body-2-M_F006_S1-active.png",
+      "sha256": "6ba75fdd358f8b554c7833a5a7236ce18d22a3837714a76dc06db2e67b0523d8",
+      "state": {
+        "frame": 1139,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 233.93,
+            "y": 0
+          },
+          {
+            "x": 875.22,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S1",
+            "actionFrame": 23,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.9213,
+        "entities": [
+          {
+            "id": 2,
+            "ownerSlot": 1,
+            "techniqueId": "feral-guided-bolts-v58",
+            "phase": "active",
+            "age": 1,
+            "hitCount": 0,
+            "x": 717.0387756161751,
+            "y": 75.53130360984687,
+            "bolt": {
+              "volleyId": 2,
+              "index": 0,
+              "guided": true,
+              "targetX": 233.92500000000004,
+              "targetY": 70.8,
+              "velocityX": -13.998500979569506,
+              "velocityY": -0.2048666029190794
+            },
+            "workbookMove": "S1",
+            "direction": -1,
+            "collision": {
+              "x": 717.0387756161751,
+              "y": 75.53130360984687,
+              "width": 22,
+              "height": 5
+            }
+          }
+        ],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          350,
+          294
+        ],
+        "meter": [
+          750,
+          700
+        ]
+      }
+    },
+    {
+      "file": "body-2-M_F006_S2-active.png",
+      "sha256": "eb0a36fc527f8fc343626632478b094fc878eff1928e30de7d0c77376540357b",
+      "state": {
+        "frame": 1264,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 208.73,
+            "y": 0
+          },
+          {
+            "x": 879.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S2",
+            "actionFrame": 9,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.9065,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          {
+            "x": 799.9255319148936,
+            "y": 44.851063829787236,
+            "width": 35.4468085106383,
+            "height": 56.06382978723405
+          }
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          249,
+          294
+        ],
+        "meter": [
+          1000,
+          651
+        ]
+      }
+    },
+    {
+      "file": "body-2-M_F006_S2-edge.png",
+      "sha256": "ea8756134bc6361eefd1706114dd6d2f05d55b3b07abe05f014abca25a44809c",
+      "state": {
+        "frame": 1273,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 208.73,
+            "y": 0
+          },
+          {
+            "x": 879.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "active",
+            "normalMove": null,
+            "workbookMove": "S2",
+            "actionFrame": 18,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.9065,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          249,
+          294
+        ],
+        "meter": [
+          1000,
+          651
+        ]
+      }
+    },
+    {
+      "file": "supers-1-source-options.png",
+      "sha256": "df801ccf4faa672401263203f4e90f01bb457905eee9b82ed246254ebc4dc336",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "supers-1-M_F006_SUPER-hit.png",
+      "sha256": "ac66247e6f6284c85300ecdf5d80c3aa127a2520eb7a6748874f8ab51c32f427",
+      "state": {
+        "frame": 1136,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 824.5,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 49,
+            "superConfirmed": {
+              "confirmedFrame": 1111,
+              "followupConnected": false
+            }
+          },
+          {
+            "phase": "hitstun",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "true",
+        "cameraZoom": 1.08,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          240
+        ],
+        "meter": [
+          110,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "supers-1-M_F003_SUPER-hit.png",
+      "sha256": "9c8e0be48b499666d64afdfbc88d91e0119ce70223365b2fa46fb5b33bae74b6",
+      "state": {
+        "frame": 1309,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 824.5,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "hitstun",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 41,
+            "superConfirmed": {
+              "confirmedFrame": 1292,
+              "followupConnected": true
+            }
+          }
+        ],
+        "superCamera": "true",
+        "cameraZoom": 1.08,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          52,
+          139
+        ],
+        "meter": [
+          533,
+          242
+        ]
+      }
+    },
+    {
+      "file": "supers-2-source-options.png",
+      "sha256": "0bb25141afea8fc05b2864eab8c3273f51f69db532c3a5e33f8c008094455eb4",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "supers-2-M_F003_SUPER-hit.png",
+      "sha256": "bee717ae905f24454efab6b1f93f62134cdfbc828636330cc47bf7313e7c3f2e",
+      "state": {
+        "frame": 960,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 621.98,
+            "y": 0
+          },
+          {
+            "x": 675.98,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 41,
+            "superConfirmed": {
+              "confirmedFrame": 943,
+              "followupConnected": true
+            }
+          },
+          {
+            "phase": "hitstun",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "true",
+        "cameraZoom": 1.08,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          350,
+          52
+        ],
+        "meter": [
+          242,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "supers-2-M_F006_SUPER-hit.png",
+      "sha256": "f13ee0755aadcfd679ff56e197c2a76b5a55b37a87bbd46a31214deaec2f6de3",
+      "state": {
+        "frame": 1159,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 611.84,
+            "y": 0
+          },
+          {
+            "x": 665.84,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "hitstun",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 50,
+            "superConfirmed": {
+              "confirmedFrame": 1133,
+              "followupConnected": false
+            }
+          }
+        ],
+        "superCamera": "true",
+        "cameraZoom": 1.08,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          185,
+          52
+        ],
+        "meter": [
+          525,
+          165
+        ]
+      }
+    },
+    {
+      "file": "supers-3-source-options.png",
+      "sha256": "29347a05069a2e819b872fe8a3d4acd12a46058138f20094b60524486ee20913",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "supers-3-M_F006_SUPER-guard.png",
+      "sha256": "9026331db36b14bce0741d2b3bd50e195f99fd27315242256788309ad2bf878e",
+      "state": {
+        "frame": 1119,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 824.5,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 32,
+            "superConfirmed": null
+          },
+          {
+            "phase": "blockstun",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 1.6339,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          350
+        ],
+        "meter": [
+          0,
+          1000
+        ]
+      }
+    },
+    {
+      "file": "supers-3-M_F003_SUPER-miss.png",
+      "sha256": "92697c096e956cc0549d1bc5b9871284b3b469c992e5b3a5511eb920c1bc46f6",
+      "state": {
+        "frame": 1419,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v106",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,false",
+        "positions": [
+          {
+            "x": 227.8,
+            "y": 0
+          },
+          {
+            "x": 878.5,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "recovery",
+            "normalMove": null,
+            "workbookMove": "SUPER",
+            "actionFrame": 33,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 0.876,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          294,
+          350
+        ],
+        "meter": [
+          3,
+          0
+        ]
+      }
+    },
+    {
+      "file": "legacy-historical.png",
+      "sha256": "05b83bd28ef9b290c33963403499668698d3c0fdf96420e2abf563b721fe3401",
+      "state": {
+        "frame": 59,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "historical",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 1.5261,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          960,
+          1010
+        ],
+        "meter": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "file": "legacy-workbook-v104-source-options.png",
+      "sha256": "7fdd06c438030dfe7e5ecbe19b2c47a3350702a6cb7cbca053d1bbede30bb168",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "legacy-workbook-v104.png",
+      "sha256": "f07a933174344a7018b8a60307b40c954a5690b8847365466414186cda5aa9d8",
+      "state": {
+        "frame": 59,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v104",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "false,false",
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 1.4399,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          960,
+          1010
+        ],
+        "meter": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "file": "legacy-workbook-v105-source-options.png",
+      "sha256": "e46ba705c2f2cc1604aed267382eb3a352b8e0cbe9128955a1681bda07b67be5",
+      "state": {
+        "frame": null,
+        "elapsedMs": null,
+        "durationMs": null,
+        "tauntVariants": [],
+        "positions": [],
+        "actions": [],
+        "cameraZoom": null,
+        "entities": [],
+        "charge": null,
+        "shieldBoxes": [],
+        "variants": [],
+        "life": [],
+        "meter": []
+      }
+    },
+    {
+      "file": "legacy-workbook-v105.png",
+      "sha256": "2dcf18efe4e4665f0bde8e3c40f03525b9737a2b229b463f33f11a19dbc93faf",
+      "state": {
+        "frame": 56,
+        "phase": "fight",
+        "elapsedMs": 650,
+        "durationMs": 650,
+        "paused": "false",
+        "blocked": "false",
+        "recipe": "workbook-v105",
+        "tauntVariants": [
+          1,
+          1
+        ],
+        "taunts": "true,true",
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "actions": [
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          },
+          {
+            "phase": "idle",
+            "normalMove": null,
+            "workbookMove": null,
+            "actionFrame": null,
+            "superConfirmed": null
+          }
+        ],
+        "superCamera": "false",
+        "cameraZoom": 1.1472,
+        "entities": [],
+        "charge": 0,
+        "shieldBoxes": [
+          null,
+          null
+        ],
+        "variants": [
+          "default",
+          "default"
+        ],
+        "life": [
+          960,
+          1010
+        ],
+        "meter": [
+          4,
+          4
+        ]
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "docs/qa/v106-pit-workbook/feral-guided-bolts-right.png",
+      "sha256": "040f8a7cce6d79fa24069027521ae90bc562e4ae11f195f382c5fe284c552449",
+      "bytes": 1205234
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/scar-plasma-left.png",
+      "sha256": "9916f322844608415b7a0575594544f15f651d810d626f8fbc69c8719014a034",
+      "bytes": 1203549
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/feral-shield-edge-left.png",
+      "sha256": "ea8756134bc6361eefd1706114dd6d2f05d55b3b07abe05f014abca25a44809c",
+      "bytes": 1219718
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/feral-signature-left.png",
+      "sha256": "f13ee0755aadcfd679ff56e197c2a76b5a55b37a87bbd46a31214deaec2f6de3",
+      "bytes": 1338201
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/scar-signature-left.png",
+      "sha256": "9c8e0be48b499666d64afdfbc88d91e0119ce70223365b2fa46fb5b33bae74b6",
+      "bytes": 1300139
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/browser-report.json",
+      "sha256": "18cc0b26c764bca523579120ae05692bd1b12fc3fa701be95ec7410fe1ae03c5",
+      "bytes": 8712859
+    },
+    {
+      "file": "docs/qa/v106-pit-workbook/served-production.html",
+      "sha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+      "bytes": 13840
+    }
+  ],
+  "completedAt": "2026-10-23T04:40:47.902Z"
+}

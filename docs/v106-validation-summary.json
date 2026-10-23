@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "release": "V106",
+  "status": "PASS_CIBLE",
+  "recordedAt": "2026-10-23T04:45:17.182125+00:00",
+  "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+  "productionBuildId": "KlZy6p2FCQDouFqIgys2f",
+  "scope": "Cinq actions Feral/Scar, archivage physique B du Homeworld et préparation d’assaut vérifiés sur une même compilation Next locale de production. Validation ciblée ; aucun déploiement public ni certification de tout le jeu.",
+  "sourceFreeze": {
+    "path": "docs/v106-runtime-freeze.json",
+    "sha256": "cc687705084641486c37cae28ffdd80b89da587316d3599254aa378ed972bb77",
+    "bytes": 170254
+  },
+  "freezeCoverage": {
+    "files": 961,
+    "bytes": 263703035,
+    "scope": "All app sources, production configuration/build scripts, the frozen V105 public input set and the collected V106 public assets. Other historical art and generated build files are outside this snapshot."
+  },
+  "production": [
+    {
+      "domain": "Pit",
+      "buildId": "KlZy6p2FCQDouFqIgys2f",
+      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 198,
+      "capturesInspected": 27,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v106-pit-production-3 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=native,supers,legacy,outcome YAUTJA_QA_REQUIRE_FROZEN=1 node scripts/qa-pit-workbook-v106.mjs",
+      "report": {
+        "path": "docs/v106-pit-workbook-validation.json",
+        "sha256": "56dbe92defb7d61e7da4b990a766cc7a9c3e91d64acbd3896f2361a2a8b1a9db",
+        "bytes": 77331
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v106-pit-workbook/feral-guided-bolts-right.png",
+          "sha256": "040f8a7cce6d79fa24069027521ae90bc562e4ae11f195f382c5fe284c552449",
+          "bytes": 1205234
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/scar-plasma-left.png",
+          "sha256": "9916f322844608415b7a0575594544f15f651d810d626f8fbc69c8719014a034",
+          "bytes": 1203549
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/feral-shield-edge-left.png",
+          "sha256": "ea8756134bc6361eefd1706114dd6d2f05d55b3b07abe05f014abca25a44809c",
+          "bytes": 1219718
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/feral-signature-left.png",
+          "sha256": "f13ee0755aadcfd679ff56e197c2a76b5a55b37a87bbd46a31214deaec2f6de3",
+          "bytes": 1338201
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/scar-signature-left.png",
+          "sha256": "9c8e0be48b499666d64afdfbc88d91e0119ce70223365b2fa46fb5b33bae74b6",
+          "bytes": 1300139
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/browser-report.json",
+          "sha256": "18cc0b26c764bca523579120ae05692bd1b12fc3fa701be95ec7410fe1ae03c5",
+          "bytes": 8712859
+        },
+        {
+          "file": "docs/qa/v106-pit-workbook/served-production.html",
+          "sha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+          "bytes": 13840
+        }
+      ]
+    },
+    {
+      "domain": "Homeworld",
+      "buildId": "KlZy6p2FCQDouFqIgys2f",
+      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 48,
+      "capturesInspected": 9,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ARCHIVE_QA_OUTPUT=outputs/qa-v106/homeworld-archive node scripts/qa-homeworld-archive-v106.mjs > /tmp/v106-homeworld-production.log 2>&1",
+      "report": {
+        "path": "docs/v106-homeworld-archive-validation.json",
+        "sha256": "eedaac5ef341a099ba290c874352d80d792a6ba428eac29ca9519b4af3b985d5",
+        "bytes": 8806
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v106-homeworld-archive/01-source-and-adaptation.png",
+          "sha256": "ef8e4ccc340ade3ae16afbfb61dc7032b6128599cddb8dc783fb49cf64d992a9",
+          "bytes": 244496
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/02-native-carry-a.png",
+          "sha256": "19220739cfb4ad1296e98b2183e5ca0f0f53d81260a19066e5aa6facefaee1bf",
+          "bytes": 1120225
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/03-interrupted-load.png",
+          "sha256": "3955fe566da9dbaafc7eb5c21de63be00814d0878a2333185f40599b3b275f90",
+          "bytes": 1059981
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/04-parked-dossier.png",
+          "sha256": "e6f60d3b1ee1d38efb0e6494cbc68109af4dbe426049ad1dcbe2881903b469e1",
+          "bytes": 1107685
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/05-first-support.png",
+          "sha256": "cb5403057f2802f55e0ada0db10b6d6e90c75275e77dc243a07af7ff6b42e7aa",
+          "bytes": 1151233
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/06-two-separate-supports.png",
+          "sha256": "ac4caeffd5a4e2a162f4ca0fd0e0b78921098a4e4ea942ff46fcbae843ccc597",
+          "bytes": 1258384
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/07-completed-desktop.png",
+          "sha256": "fe0419b007cf4a8f316b55d8846368e3496ed1e179582248920689576fb24d88",
+          "bytes": 188855
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/08-completed-mobile.png",
+          "sha256": "e367ba78326c740b46b6bade89afc60744ee988c12e40a1526c4a0a9677c98d5",
+          "bytes": 137887
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/09-local-map-mobile.png",
+          "sha256": "680dcc2f6befd4f8cd56ea4b86e1550b0061a76703b869e1a9fdf8b44f7851d4",
+          "bytes": 35949
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/result.json",
+          "sha256": "3d2094b870d64a67b5d4c4f266c1a1a5e9ce1cd44533c5066e54f03eadd8edf1",
+          "bytes": 13827
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/test.log",
+          "sha256": "f4a84073e94316cc691d55adc2717008c18d74891d2c0b4ac1214ad911c083e8",
+          "bytes": 9823
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/lint.log",
+          "sha256": "6ca9eaa6c8402ffa59fbb6184c6c819acab62e9127cef8612e903bc61099a785",
+          "bytes": 510
+        }
+      ]
+    },
+    {
+      "domain": "Clans",
+      "buildId": "KlZy6p2FCQDouFqIgys2f",
+      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 31,
+      "capturesInspected": 6,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production node scripts/qa-clan-assault-v106.mjs",
+      "report": {
+        "path": "docs/v106-clan-assault-validation.json",
+        "sha256": "a0c8d93964c6e4620f586e9a0de4ca52034f4b6d034b8dd652a62d58954606f5",
+        "bytes": 13829
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v106-clan-assault/desktop-dated-assault-review.png",
+          "sha256": "d0444a5e5726346efc40dd80a72dcb5524fa2e81ff98e786c4deb9831ae0d37d",
+          "bytes": 341975
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/desktop-intelligence-atlas.png",
+          "sha256": "a641ce6a99d9465c71a4dcef9989cdba48fe9fe6df81ea7e0267ce1e0746ae89",
+          "bytes": 793722
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/desktop-stale-review.png",
+          "sha256": "4fd77e1beb4611d998d77fcc92f096201fd0b8a16a60c80f5efe97a16d17db29",
+          "bytes": 217992
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/desktop-conquest-supply-route.png",
+          "sha256": "7335635b4b86a37437871b5620d6d58bdfeb2ec544a05cfa436931c6e8f94f8d",
+          "bytes": 798348
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/mobile-assault-review.png",
+          "sha256": "d32d69006f30c89bd903e9ffc620f65788c19327817e0de64cfee71f1c6d4b0d",
+          "bytes": 155791
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/mobile-intelligence-atlas.png",
+          "sha256": "8e6c04e2197528a9e4ced89a1622dc45089df4cb9d246c61e3e2b9490d8d360a",
+          "bytes": 328975
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/browser-report.json",
+          "sha256": "3466c8c2f18bc05dfe0efd08468c0a6134342448cda56251d6ca469e5cf8ed74",
+          "bytes": 38293
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/unit-and-convoy-tests.txt",
+          "sha256": "9bc1c88d78e6ebfc3933b5250a91a88b2741aeeec62c6ca611f0d5773b1822ed",
+          "bytes": 2886
+        },
+        {
+          "file": "docs/qa/v106-clan-assault/atlas-ssr-tests.txt",
+          "sha256": "d59b9aea15f9d9f0ab4e6ac892c9c0985bbccb5567bcc434c4a4f949228f5934",
+          "bytes": 1035
+        }
+      ]
+    }
+  ],
+  "integration": {
+    "status": "PASS_CIBLE",
+    "typecheck": "PASS",
+    "runtimeLint": {
+      "status": "PASS",
+      "files": 36,
+      "maxWarnings": 0
+    },
+    "nextProductionSmoke": {
+      "status": "PASS",
+      "checks": 5
+    },
+    "targetedRegressions": [
+      {
+        "scope": "Homeworld civic/navigation/save/cartography",
+        "passed": 60
+      },
+      {
+        "scope": "Guide/archive/navigation",
+        "passed": 22
+      },
+      {
+        "scope": "Camera and V106 rendering",
+        "passed": 21
+      },
+      {
+        "scope": "Combat/replay/training/source/render before final presentation fixes",
+        "passed": 139
+      }
+    ],
+    "evidence": [
+      {
+        "path": "docs/qa/v106-integration/camera-regressions.log",
+        "sha256": "2bc6c9ad6500eef4b9afc0e7941672dc5978b35beaf96e96fc2bf9954215a1f8",
+        "bytes": 2348
+      },
+      {
+        "path": "docs/qa/v106-integration/homeworld-regressions.log",
+        "sha256": "ad9e6612debf55580d5de0c3e39e111c92f96c5580c422fde8b69efde37712b8",
+        "bytes": 7005
+      },
+      {
+        "path": "docs/qa/v106-integration/navigation-regressions.log",
+        "sha256": "15a0341498dd787c535254339387f8a341e9aa70d1ffbc61f08c17633a16babf",
+        "bytes": 2772
+      },
+      {
+        "path": "docs/qa/v106-integration/pit-regressions.log",
+        "sha256": "98ba0f146e4fdc42972e9098b04b47974c61820dbfb6de05ed30988b21a6d5a4",
+        "bytes": 13989
+      },
+      {
+        "path": "docs/qa/v106-integration/production-build.log",
+        "sha256": "1f0d1b8f017f04d7a54111df9288f428faec3676c7b25b6247fc54db41851536",
+        "bytes": 4541
+      },
+      {
+        "path": "docs/qa/v106-integration/production-smoke.log",
+        "sha256": "7b3c0377f02988ab80f23e55888312605ae0f48168f185d6e46c53ebea47fd78",
+        "bytes": 278
+      },
+      {
+        "path": "docs/qa/v106-integration/runtime-lint.json",
+        "sha256": "f517ac650fa7e4a9017a8babf16c34ef9975a606d78d5a1249ea96dbd2064a37",
+        "bytes": 5539
+      },
+      {
+        "path": "docs/qa/v106-integration/typecheck.log",
+        "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
+        "bytes": 59
+      }
+    ]
+  },
+  "remaining": [
+    "Douze lignes d’animation non raccordées : quatre projections, six scènes avec partenaire et deux entités non admises. Les40 raccords ne terminent pas deux kits complets.",
+    "Seize étapes de campagne et quatorze contraintes de variantes restent distinctes des52 actions.",
+    "Homeworld : branche B locale adaptée avec contenants natifs génériques ; branche A et pose de saisie peinte non livrées.",
+    "Les six ouvrages physiques V6 de guerre de clans restent ouverts ; la préparation utilise la simulation libre existante.",
+    "Preserve Hunt reste au périmètre antérieur :4/80 secteurs et8/100 combattants."
+  ]
+}

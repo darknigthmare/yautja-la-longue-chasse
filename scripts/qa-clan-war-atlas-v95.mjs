@@ -66,7 +66,8 @@ try {
   check("actual surviving actors are available for assault", attackers.length > 0);
   await command.getByRole("combobox", { name: /^Ordre/ }).selectOption("attack");
   for (const actor of attackers) await command.getByRole("checkbox", { name: new RegExp(`^${actor.id} ·`) }).check();
-  await command.getByRole("button", { name: "Réserver l’ordre", exact: true }).click();
+  await command.getByRole("button", { name: "Étudier l’assaut", exact: true }).click();
+  await command.getByRole("button", { name: "Confirmer l’assaut", exact: true }).click();
   await waitState("orders", 1);
   await resolveTurn(3);
   const conquered = await state();

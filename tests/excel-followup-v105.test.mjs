@@ -5,7 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {ROOT,REGISTRY,OUTPUTS,verifyRegistryV105,verifyFinalProofsV105,verifyFrozenInputsV105,verifySourceScopeV105,verifyHomeworldSourceV105,verifyConvoySourceV105,collectFollowupV105,buildSheetsV105,writeWorkbookV105,verifyWorkbookV105,generateFollowupV105} from '../scripts/build-excel-followup-v105.mjs';
+import {loadHistoricalExcelV106,verifyHistoricalExcelContextV106} from '../scripts/historical-excel-context-v106.mjs';
+const {ROOT,REGISTRY,OUTPUTS,verifyRegistryV105,verifyFinalProofsV105,verifyFrozenInputsV105,verifySourceScopeV105,verifyHomeworldSourceV105,verifyConvoySourceV105,collectFollowupV105,buildSheetsV105,writeWorkbookV105,verifyWorkbookV105,generateFollowupV105}=await loadHistoricalExcelV106('V105');
 
 let directory,pending;
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -13,7 +14,7 @@ const json=async relative=>JSON.parse(await fs.readFile(path.join(ROOT,relative)
 const generated=()=>pending??=generateFollowupV105({outputDir:directory});
 const python=(source,args=[])=>execFileSync('python3',['-c',source,...args],{stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8*1024*1024});
 before(async()=>{directory=await fs.mkdtemp(path.join(os.tmpdir(),'excel-followup-v105-test-'));});
-after(async()=>{if(directory)await fs.rm(directory,{recursive:true,force:true});});
+after(async()=>{try{if(directory)await fs.rm(directory,{recursive:true,force:true});}finally{await verifyHistoricalExcelContextV106();}});
 
 test('bounded workstreams reject global closure, missing browser proof and foreign baseline',async()=>{
  const baseline=await json(REGISTRY);verifyRegistryV105(baseline);

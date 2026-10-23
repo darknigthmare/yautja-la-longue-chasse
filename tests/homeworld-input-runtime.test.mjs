@@ -10,7 +10,7 @@ import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -18,7 +18,7 @@ function liveLiftOrPollingCallback(environment, name = 'poll') {
   const visit = node => {
     if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
-    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105'].includes(name)
+    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105','archiveContextV106','sampleArchiveV106','interruptArchiveV106'].includes(name)
       && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
@@ -67,6 +67,9 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
+    archiveWritePausedRefV106: {current:false},
+    archiveDraftRefV106: {current:city.defaultHomeworldArchiveV106(owner)},
+    submitArchiveV106(){throw new Error('No active V106 archive receipt in these declared world input cases');},
     cartographyWritePausedRefV104: { current: false },
     cartographyWritePausedRefV105: { current: false },
     cartographyDraftRefV105: { current: city.defaultHomeworldCartographyV105(owner) },
@@ -108,7 +111,7 @@ function fixture() {
     navigator: { getGamepads: () => [pad] },
     requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame,
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
-    persistVisit() {}, setActor() {}, setPhase() {},
+    persistVisit() {}, setActor() {}, setPhase() {}, setArchiveViewV106() {},
     setDreadAngles(value) { env.dreadAngles = value; },
     setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; },
     setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; events.push(["paused", paused]); },
@@ -117,7 +120,7 @@ function fixture() {
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
   env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
-  for (const name of ['cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
+  for (const name of ['archiveContextV106','sampleArchiveV106','interruptArchiveV106','cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
   liveLiftOrPollingCallback(env, 'liftHydration')();
   const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };
@@ -445,4 +448,12 @@ test('V94 gamepad recovery requires neutral after a denied poll instead of repla
   f.pad.buttons[0].pressed = true; f.tick(3); assert.deepEqual(f.events, []);
   f.release(); f.pad.buttons[0].pressed = true; f.tick();
   assert.deepEqual(f.events, [['interact']]);
+});
+
+test('the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock',()=>{
+ const f=fixture(),ledger=f.env.archiveDraftRefV106.current;f.release();f.pad.axes[0]=1;f.tick(3);
+ assert.equal(f.env.archiveDraftRefV106.current,ledger,'the actual dormant archive sampler preserves identity');assert.equal(ledger.receipt,null);
+ const before={...f.env.actorRef.current},clock=f.env.cityClockV68.current;f.env.archiveWritePausedRefV106.current=true;f.tick(12);
+ assert.deepEqual(f.env.actorRef.current,before,'held gamepad direction cannot move after a refused archive write');assert.equal(f.env.cityClockV68.current,clock);
+ f.env.archiveWritePausedRefV106.current=false;f.tick(3);assert(f.env.actorRef.current.x>before.x,'successful retry can release the same live input loop');assert(f.env.cityClockV68.current>clock);
 });

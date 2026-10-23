@@ -1,0 +1,239 @@
+Node v22.23.3 — Homeworld source verified after final map boundary correction
+Commands: node tests/homeworld-archive-v106.test.mjs ; node tests/homeworld-input-runtime.test.mjs
+TAP version 13
+# Subtest: V106 archive source extraction is byte-exact to the pinned V6 corpus and uses only represented B lines
+ok 1 - V106 archive source extraction is byte-exact to the pinned V6 corpus and uses only represented B lines
+  ---
+  duration_ms: 131.915418
+  type: 'test'
+  ...
+# Subtest: V106 native lectern hulls are shared by motor and route planner and leave every interaction point walkable
+ok 2 - V106 native lectern hulls are shared by motor and route planner and leave every interaction point walkable
+  ---
+  duration_ms: 136.910425
+  type: 'test'
+  ...
+# Subtest: V106 requires two actual one-at-a-time native carries and a walked return before recording uncertainty
+ok 3 - V106 requires two actual one-at-a-time native carries and a walked return before recording uncertainty
+  ---
+  duration_ms: 256.24285
+  type: 'test'
+  ...
+# Subtest: V106 refuses remote pickup, wrong support, two carried cases, a verbal completion, stale owner and revisions
+ok 4 - V106 refuses remote pickup, wrong support, two carried cases, a verbal completion, stale owner and revisions
+  ---
+  duration_ms: 16.392373
+  type: 'test'
+  ...
+# Subtest: V106 carry interruption, explicit ground parking and reload conserve both distinct dossiers
+ok 5 - V106 carry interruption, explicit ground parking and reload conserve both distinct dossiers
+  ---
+  duration_ms: 0.93491
+  type: 'test'
+  ...
+# Subtest: V106 refused durable actions remain atomic and expose recoverable refusal without fabricating placements
+ok 6 - V106 refused durable actions remain atomic and expose recoverable refusal without fabricating placements
+  ---
+  duration_ms: 0.371628
+  type: 'test'
+  ...
+# Subtest: V106 optional save field stays absent on legacy saves and strictly rejects incompatible or foreign carried data
+ok 7 - V106 optional save field stays absent on legacy saves and strictly rejects incompatible or foreign carried data
+  ---
+  duration_ms: 8.588099
+  type: 'test'
+  ...
+# Subtest: V106 archivist is discoverable only after visiting the port and the existing guide uses a real obstacle-aware walk
+ok 8 - V106 archivist is discoverable only after visiting the port and the existing guide uses a real obstacle-aware walk
+  ---
+  duration_ms: 94.199027
+  type: 'test'
+  ...
+# Subtest: V106 local map keeps exact dossier positions readable and marks an out-of-frame parked dossier without revealing terrain
+ok 9 - V106 local map keeps exact dossier positions readable and marks an out-of-frame parked dossier without revealing terrain
+  ---
+  duration_ms: 6.848643
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 666.374673
+
+TAP version 13
+# Subtest: the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+ok 1 - the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+  ---
+  duration_ms: 270.470385
+  type: 'test'
+  ...
+# Subtest: the live V105 cartography hook stays dormant and its refused write freezes the physical city
+ok 2 - the live V105 cartography hook stays dormant and its refused write freezes the physical city
+  ---
+  duration_ms: 136.858355
+  type: 'test'
+  ...
+# Subtest: held stick and A on first focus cannot move or open a dialogue until a neutral frame
+ok 3 - held stick and A on first focus cannot move or open a dialogue until a neutral frame
+  ---
+  duration_ms: 182.777276
+  type: 'test'
+  ...
+# Subtest: V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+ok 4 - V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+  ---
+  duration_ms: 207.261497
+  type: 'test'
+  ...
+# Subtest: V75 destination finder consumes no city controller action and requires release after closing
+ok 5 - V75 destination finder consumes no city controller action and requires release after closing
+  ---
+  duration_ms: 134.266975
+  type: 'test'
+  ...
+# Subtest: Homeworld focus return requires release, without losing position
+ok 6 - Homeworld focus return requires release, without losing position
+  ---
+  duration_ms: 98.187959
+  type: 'test'
+  ...
+# Subtest: Homeworld window return requires release, without losing position
+ok 7 - Homeworld window return requires release, without losing position
+  ---
+  duration_ms: 134.367517
+  type: 'test'
+  ...
+# Subtest: Homeworld hidden return requires release, without losing position
+ok 8 - Homeworld hidden return requires release, without losing position
+  ---
+  duration_ms: 109.384948
+  type: 'test'
+  ...
+# Subtest: Homeworld service return requires release, without losing position
+ok 9 - Homeworld service return requires release, without losing position
+  ---
+  duration_ms: 67.657446
+  type: 'test'
+  ...
+# Subtest: Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+ok 10 - Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+  ---
+  duration_ms: 73.476731
+  type: 'test'
+  ...
+# Subtest: dialog up starts at the last enabled choice, wraps and never repeats on render
+ok 11 - dialog up starts at the last enabled choice, wraps and never repeats on render
+  ---
+  duration_ms: 82.624377
+  type: 'test'
+  ...
+# Subtest: navigation dialog remains controller-accessible above an already paused city
+ok 12 - navigation dialog remains controller-accessible above an already paused city
+  ---
+  duration_ms: 77.240888
+  type: 'test'
+  ...
+# Subtest: the live city clock freezes strand position and velocity in pause, then settles after release
+ok 13 - the live city clock freezes strand position and velocity in pause, then settles after release
+  ---
+  duration_ms: 195.169946
+  type: 'test'
+  ...
+# Subtest: closing a dialogue by B cannot start walking on its still-held stick
+ok 14 - closing a dialogue by B cannot start walking on its still-held stick
+  ---
+  duration_ms: 121.674168
+  type: 'test'
+  ...
+# Subtest: controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+ok 15 - controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+  ---
+  duration_ms: 93.902204
+  type: 'test'
+  ...
+# Subtest: Start resumes after window inactivity in one intentional press, without toggling into another pause
+ok 16 - Start resumes after window inactivity in one intentional press, without toggling into another pause
+  ---
+  duration_ms: 66.346046
+  type: 'test'
+  ...
+# Subtest: real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+ok 17 - real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+  ---
+  duration_ms: 114.263694
+  type: 'test'
+  ...
+# Subtest: stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+ok 18 - stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+  ---
+  duration_ms: 116.478584
+  type: 'test'
+  ...
+# Subtest: the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+ok 19 - the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+  ---
+  duration_ms: 127.708431
+  type: 'test'
+  ...
+# Subtest: keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+ok 20 - keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+  ---
+  duration_ms: 210.205061
+  type: 'test'
+  ...
+# Subtest: held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+ok 21 - held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+  ---
+  duration_ms: 260.119131
+  type: 'test'
+  ...
+# Subtest: the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+ok 22 - the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+  ---
+  duration_ms: 92.760626
+  type: 'test'
+  ...
+# Subtest: the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+ok 23 - the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+  ---
+  duration_ms: 51.037455
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+ok 24 - V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 75.256167
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+ok 25 - V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 84.079189
+  type: 'test'
+  ...
+# Subtest: V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+ok 26 - V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+  ---
+  duration_ms: 59.362377
+  type: 'test'
+  ...
+# Subtest: the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+ok 27 - the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+  ---
+  duration_ms: 66.689369
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3345.870641
