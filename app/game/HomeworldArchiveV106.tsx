@@ -8,14 +8,15 @@ import styles from './HomeworldArchiveV106.module.css';
 const objective=(ledger:HomeworldArchiveLedgerV106)=>{const r=ledger.receipt;if(!r)return 'Choisir le dépôt séparé avec l’archiviste.';if(r.phase==='completed')return 'Deux dossiers séparés ; lien historique non établi.';if(r.phase==='return')return 'Revenir à pied à l’archiviste et consigner l’incertitude.';if(r.phase==='interrupted')return r.carrier?`Dossier ${r.carrier} porté : reprendre ici ou le poser au sol avant de repartir.`:'Rejoindre le dernier point confirmé pour reprendre.';if(r.carrier)return `Porter le dossier ${r.carrier} au support ${r.carrier}.`;return 'Prendre un dossier au sol, puis rejoindre son support correspondant.';};
 export function ArchiveMapV106({ledger,actor}:{ledger:HomeworldArchiveLedgerV106;actor?:{x:number;y:number}}){
   const cases=ledger.receipt?.cases??b.cases.map(c=>({id:c.id,...c.origin,place:'ground'}));
-  return <svg className={styles.map} viewBox="7040 5040 700 400" role="img" aria-label={`Quai oriental déjà visité. ${objective(ledger)} Deux supports et les emplacements actuels des dossiers.`}>
+  const frame=(p:{x:number;y:number})=>{const outside=p.x<7040||p.x>7740||p.y<5040||p.y>5440;return {x:outside?Math.max(7070,Math.min(7710,p.x)):p.x,y:outside?Math.max(5100,Math.min(5390,p.y)):p.y,outside};};
+  return <><svg className={styles.map} viewBox="7040 5040 700 400" role="img" aria-label={`Quai oriental déjà visité. ${objective(ledger)} Deux supports et les emplacements actuels des dossiers.`}>
     <title>Archivage physique · quai oriental connu uniquement</title>
     <text x="7070" y="5080">Quai oriental · étage 0</text>
     <circle cx={b.host.x} cy={b.host.y} r="12"/><text x={b.host.x-66} y={b.host.y-24}>Archiviste</text>
     {b.supports.map((s,i)=><g key={s.id}><rect x={s.x-24} y={s.y-16} width="48" height="32"/><text x={s.x-55} y={s.y-40}>Support {i?'B':'A'}</text></g>)}
-    {cases.map(c=><g key={c.id}><circle cx={c.x} cy={c.y} r="14" data-placement={c.place}/><text x={c.x-40} y={c.y+40}>{c.id} · {c.place==='support'?'déposé':c.place==='carried'?'porté':'au sol'}</text></g>)}
-    {actor&&<g><path d={`M${actor.x} ${actor.y-12}l-9 20h18Z`} fill="#98d9e8"/><text x={actor.x-22} y={actor.y+65}>Toi</text></g>}
-  </svg>;
+    {cases.map(c=>{const p=frame(c);return <g key={c.id} data-archive-map-case={c.id} data-archive-map-outside={p.outside}><circle cx={p.x} cy={p.y} r="14" data-placement={c.place} strokeDasharray={p.outside?'5 4':undefined}/><text x={p.outside?p.x:c.x-40} y={p.y+40} textAnchor={p.outside?(p.x>7390?'end':'start'):undefined}>{c.id} · {p.outside?'hors cadrage du quai':c.place==='support'?'déposé':c.place==='carried'?'porté':'au sol'}</text></g>;})}
+    {actor&&(()=>{const p=frame(actor);return <g><path d={`M${p.x} ${p.y-12}l-9 20h18Z`} fill="#98d9e8"/><text x={p.outside?p.x:actor.x-22} y={p.outside?Math.min(5410,p.y+65):p.y+65} textAnchor={p.outside?(p.x>7390?'end':'start'):undefined}>Toi{p.outside?' · hors cadrage du quai':''}</text></g>;})()}
+  </svg><ul aria-label="Emplacements actuels des dossiers" data-archive-placement-list-v106>{cases.map(c=><li key={c.id}>Dossier {c.id} · {c.place==='support'?`sur le support ${c.id}`:c.place==='carried'?'porté':'au sol'} · position {Math.round(c.x)}, {Math.round(c.y)}{frame(c).outside?' · hors cadrage du quai':''}</li>)}</ul></>;
 }
 export default function HomeworldArchiveV106({ledger,disabled,message,onAction,onClose,reducedMotion=false}:{ledger:HomeworldArchiveLedgerV106;disabled:boolean;message:string;onAction(action:ArchiveActionV106,revision:number):boolean;onClose():void;reducedMotion?:boolean}){
   const root=useRef<HTMLElement>(null),[source,setSource]=useState(false),r=ledger.receipt;
