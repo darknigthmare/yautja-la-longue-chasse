@@ -104,7 +104,7 @@ export function getPitPresentationBounds(state: PitCombatState): PitPresentation
  * never pump a reduced-motion camera. Gameplay boxes are observed, not edited.
  */
 function fixedAppearanceBounds(fighter: PitFighterState): PitPresentationBounds {
-  const key = JSON.stringify([fighter.definitionId, fighter.variantId ?? null]);
+  const key = JSON.stringify([fighter.definitionId, fighter.variantId ?? null, fighter.normalMovesRecipe ?? null]);
   const cached = fixedFighterBounds.get(key);
   if (cached) return cached;
   let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
