@@ -1,0 +1,117 @@
+{
+  "verifiedAtUtc": "2026-10-23T17:26:57.398337Z",
+  "version": "V6.15",
+  "passed": true,
+  "nodeVersion": "v24.19.0",
+  "typeCheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0
+  },
+  "testResults": [
+    {
+      "scope": "V6.15 native files, receipts, runtime/codex, defaults, master and prior workbooks",
+      "command": "node --experimental-strip-types tests/npc-production-v615.test.mjs",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "scope": "V6.11 to V6.14 historical production contracts",
+      "command": "node --experimental-strip-types --test --test-isolation=none tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs tests/enforcer-production-v613.test.mjs tests/enforcer-production-v614.test.mjs",
+      "passed": 22,
+      "failed": 0
+    },
+    {
+      "scope": "V89 full references remain connected without becoming gameplay bodies",
+      "command": "node --experimental-strip-types --test --test-isolation=none --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "scope": "Historical V106 freeze, exact current delta, negative boundary cases and portable production evidence",
+      "command": "node --experimental-strip-types tests/production-proofs-v106.test.mjs",
+      "executionContext": "temporary overlay of the current checkout and genuine hash-verified frozen inputs",
+      "passed": 4,
+      "failed": 0
+    }
+  ],
+  "totalTestsPassed": 33,
+  "totalTestsFailed": 0,
+  "currentRuntime": {
+    "uniqueReferencedHashes": 2021,
+    "priorUniqueReferencedHashes": 2003,
+    "newNativeFiles": 18,
+    "cumulativeProducedPngs": 144,
+    "defaultSelectionsCompared": 973,
+    "defaultSelectionChanges": 0,
+    "packId": "npc-v615",
+    "priority": 46,
+    "role": "sucklings",
+    "lifeStage": "infant",
+    "sourceNoteIsString": true,
+    "newMapPlacements": 0,
+    "newAnimations": 0,
+    "humanExcludedFromYautjaOnlySelector": true
+  },
+  "master": {
+    "stableIds": 5120,
+    "changedRows": 18,
+    "changedCells": 144,
+    "priorV614RowsUnchanged": 18,
+    "statusCounts": {
+      "Présente dans main": 2197,
+      "Produite — à vérifier": 205,
+      "Conservée hors main": 36,
+      "Pas faite": 2682
+    }
+  },
+  "historicalRuntimeBoundary": {
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+    "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+    "historicalFiles": 963,
+    "historicalBytes": 268531140,
+    "currentFiles": 965,
+    "unchangedFiles": 961,
+    "archivedSources": 2,
+    "modifiedPaths": [
+      "app/game/RecentSpriteLibraryV85.tsx",
+      "app/game/systems/recentSpriteLibraryV85.ts"
+    ],
+    "addedPaths": [
+      "app/game/data/enforcerProductionV614.json",
+      "app/game/data/npcProductionV615.json"
+    ],
+    "currentRuntimeCoveredByHistoricalQA": false,
+    "fixture": {
+      "path": "tests/fixtures/runtime-history-v106-v615.json",
+      "bytes": 31378,
+      "sha256": "df29bc7520ee3437cb53f26cd4c638567204588c91464cf9907dc032f04d0f22"
+    },
+    "helper": {
+      "path": "scripts/historical-runtime-context-v615.mjs",
+      "bytes": 12769,
+      "sha256": "b167d358178059d2afa7a7c62f5689fd7f9fad3af3a3624f5fbaf33ecfa08a34"
+    },
+    "preservedPreviousFixture": {
+      "path": "tests/fixtures/runtime-history-v106-v614.json",
+      "bytes": 29563,
+      "sha256": "674c2ce278f937a6aa52d041c4071a1a5f93bfac418266a3e7b404d3e9615b5c"
+    },
+    "preservedPreviousHelper": {
+      "path": "scripts/historical-runtime-context-v614.mjs",
+      "bytes": 11804,
+      "sha256": "44efbe68d00e8c613ed25b75ec42535718712a7d4f933a1650c80bc4cb30460d"
+    }
+  },
+  "sparseCheckoutProofRecovery": {
+    "realInputsVerified": 164,
+    "publicInputs": 135,
+    "portableProofFiles": 29,
+    "bytes": 261701579,
+    "sha256Verified": true,
+    "repositoryHistoricalFilesModified": false
+  },
+  "scopeLimitsFR": [
+    "La validation SSR porte sur les enregistrements et le rendu statique de la bibliothèque et du codex ; elle ne constitue pas une nouvelle session de jeu navigateur.",
+    "Les parcours navigateur V106 restent liés au runtime V106. Leurs preuves et leurs sources sont conservées et vérifiées ; aucune couverture navigateur V6.15 ne leur est attribuée."
+  ]
+}

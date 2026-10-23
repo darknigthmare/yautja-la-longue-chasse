@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "yautja-v614-local-quality-1",
+  "observedAtUtc": "2026-10-23T12:58:24.105912+00:00",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "typeScript": {
+    "command": "npx tsc --noEmit",
+    "passed": true,
+    "exitCode": 0,
+    "checkoutPrerequisitesFR": "Les manifestes historiques et les fichiers de configuration nécessaires ont été matérialisés depuis main, sans modifier leur contenu."
+  },
+  "eslint": {
+    "passed": true,
+    "exitCode": 0,
+    "scope": [
+      "app/game/RecentSpriteLibraryV85.tsx",
+      "app/game/systems/recentSpriteLibraryV85.ts",
+      "scripts/build-enforcer-production-v614.mjs",
+      "scripts/prepare-enforcer-plan-v614.mjs",
+      "scripts/reconcile-enforcer-main-v614.mjs",
+      "scripts/build-enforcer-gallery-v614.mjs",
+      "scripts/build-enforcer-workbook-v614.mjs",
+      "scripts/verify-enforcer-gallery-v614.mjs",
+      "tests/enforcer-production-v614.test.mjs"
+    ]
+  },
+  "githubActions": {
+    "workflow": ".github/workflows/audit-v94.yml",
+    "yamlParsed": true,
+    "v614RegressionStepAdded": true,
+    "sparseCheckoutIncludesRequiredV614Files": true,
+    "executionResult": "Report separately from GitHub after publication."
+  },
+  "limitsFR": [
+    "La compilation complète du jeu et sa QA générale ne sont pas déduites de ces contrôles ciblés."
+  ],
+  "finalSupplementalChecks": {
+    "observedAtUtc": "2026-10-23T13:26:45.199861+00:00",
+    "eslintAdditionalScope": [
+      "scripts/historical-runtime-context-v614.mjs",
+      "tests/production-proofs-v106.test.mjs"
+    ],
+    "eslintExitCode": 0,
+    "pythonSyntaxFiles": [
+      "scripts/audit-enforcer-public-records-v614.py",
+      "scripts/package-enforcer-production-v614.py",
+      "scripts/verify-enforcer-workbook-v614.py"
+    ],
+    "pythonSyntaxPassed": true,
+    "gitDiffCheckExitCode": 0,
+    "workbookBuilderLintAfterTemporaryExportCorrection": 0
+  }
+}

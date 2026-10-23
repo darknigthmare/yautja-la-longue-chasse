@@ -1,0 +1,109 @@
+{
+  "id": "human-accepted--sucklings-02",
+  "repoPngPath": "public/game/production/sucklings-v615/human-accepted/sucklings-02.png",
+  "promptExact": "Ajuster ce sprite de fillette humaine de deux ans entièrement habillée. Conserver ses proportions naturelles de tout-petit, son visage humain, ses cheveux châtain clair attachés, ses deux bras et deux mains humains tenant la bande de tissu bleu, ses jambes, ses chaussures fermées et les vêtements opaques à manches longues. Sa peau doit être naturellement BRUN MOYEN conformément à la fiche, sans teinte fantaisie. Corriger le cadrage en DÉZOOMANT fortement : toute la fillette et toute la bande textile doivent tenir dans le rectangle central x=210 à814 et y=300 à1236 du canevas portrait1024×1536, avec au moins15% de grande marge alpha vide sur les quatre côtés, notamment à droite. Aucun membre ni accessoire coupé. Préserver l’anatomie entièrement humaine et l’âge de deux ans, sans maquillage ni coiffure adulte. Aucun décor, sol, halo ou ombre portée ; PNG RGBA natif réellement transparent. Aucun autre personnage ni texte.",
+  "acceptedOutputPromptExact": "Ajuster ce sprite de fillette humaine de deux ans entièrement habillée. Conserver ses proportions naturelles de tout-petit, son visage humain, ses cheveux châtain clair attachés, ses deux bras et deux mains humains tenant la bande de tissu bleu, ses jambes, ses chaussures fermées et les vêtements opaques à manches longues. Sa peau doit être naturellement BRUN MOYEN conformément à la fiche, sans teinte fantaisie. Corriger le cadrage en DÉZOOMANT fortement : toute la fillette et toute la bande textile doivent tenir dans le rectangle central x=210 à814 et y=300 à1236 du canevas portrait1024×1536, avec au moins15% de grande marge alpha vide sur les quatre côtés, notamment à droite. Aucun membre ni accessoire coupé. Préserver l’anatomie entièrement humaine et l’âge de deux ans, sans maquillage ni coiffure adulte. Aucun décor, sol, halo ou ombre portée ; PNG RGBA natif réellement transparent. Aucun autre personnage ni texte.",
+  "receiptCreatedAtUtc": "2026-10-23T17:20:56.801862+00:00",
+  "status": "accepted",
+  "references": [
+    {
+      "id": "human-accepted--sucklings-01",
+      "groupId": "human-accepted",
+      "role": "infant-stage-and-rendering",
+      "repoPath": "public/game/imports/v85/library/08a66b751fa6239b7b494ac045d205460f6c3607ed73e138e6c33daf43726125.png",
+      "sha256": "08a66b751fa6239b7b494ac045d205460f6c3607ed73e138e6c33daf43726125",
+      "useFR": "Référence historique étiquetée sucklings-01 du même groupe. Inspecter son stade apparent ; conserver le rendu et les traits compatibles avec la fiche02, sans copier le personnage ni importer une arme ou une anatomie mature.",
+      "bytes": 2604135,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "99ee7847f46bc3b655b404466b3869585610ad03",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    },
+    {
+      "id": "human-accepted--blooded-01",
+      "groupId": "human-accepted",
+      "role": "lineage-morphology",
+      "repoPath": "public/game/imports/v85/library/a3685fc316a7c4990eb9398c2f1c95ad6ddd0249176957fae2be71bfcb37341f.png",
+      "sha256": "a3685fc316a7c4990eb9398c2f1c95ad6ddd0249176957fae2be71bfcb37341f",
+      "useFR": "Référence adulte du même groupe pour la topologie et les caractères crâniens uniquement. Ne pas reprendre ses proportions adultes, son âge, sa musculature, ses équipements ou ses prothèses.",
+      "bytes": 2090230,
+      "width": 1024,
+      "height": 1536,
+      "gitBlobSha1": "b9283d691252f3208b32bdd554511704348125a5",
+      "sourceCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+      "bytesVerifiedLocally": true,
+      "visualReviewRequiredBeforeGeneration": true,
+      "verifiedAtUtc": "2026-10-23T16:58:18.824Z"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptExact": "Créer un unique sprite indépendant du groupe Humains acceptés par les Yautja, rôle Sucklings, variante 02 — Veilleur du tissu. individu féminin; humain de 2 ans, vieillissement naturel humain. La maturité indiquée prime sur les proportions de la référence adulte : conserver uniquement la topologie, le crâne et les traits du groupe à ce stade de croissance. Anatomie à préserver : Être humain de morphologie naturelle : tête humaine, yeux, nez, lèvres, oreilles, cheveux, deux bras, deux jambes, cinq doigts par main, pieds humains. Les proportions et le vieillissement suivent exactement l’âge indiqué. L’affiliation Yautja est culturelle et ne transforme aucun organe. Individualisation : visage large et cheveux attachés; pigmentation brun moyen. Visage biologique entièrement découvert ; garder la morphologie spécifique. Tenue : Rôle humain original : Sucklings. Tout-petit assis, vêtement ample à manches longues, grande bande textile tenue entre les mains. Adapter tous les vêtements et accessoires à un humain ordinaire. Torse, abdomen et bassin entièrement couverts par du textile opaque ; bottes humaines fermées. Les enfants sont des personnes protégées de la communauté, pas des chasseurs initiés. Les offices royaux sont des fonctions culturelles originales du jeu. Métaux dominants : aucune armure adulte; accents : bleu terne.  Pose : assis de manière stable, membres entiers et vêtement opaque. Tous les membres, pieds, appendices et accessoires sont raccordés et entièrement à l’intérieur du cadre avec une marge vide. Aucun personnage supplémentaire, décor, sol, texte, logo, vignette ou planche. PNG natif transparent RGBA, rendu réaliste détaillé, matériaux organiques et équipements distincts. Ne pas recolorier ou dupliquer un PNG existant : produire un individu original. Usage : sprite 2D réaliste détaillé indépendant pour la galerie et le codex du jeu. Input image 1 : ancien sucklings-01 du même groupe, référence de stade et de rendu à inspecter, pas le nouvel individu. Input image 2 : adulte du même groupe, référence de topologie et de crâne uniquement. Ces références ne remplacent jamais les proportions immatures de la fiche. Créer un nouveau tout-petit calme assis, entièrement habillé d’une tunique ample opaque à manches longues et d’un pantalon opaque, tenant une grande bande de tissu bleu terne dans les mains. Les vêtements couvrent entièrement torse, abdomen et bassin ; les mains et pieds restent lisibles. Visage biologique découvert, anatomie précoce spécifique du groupe, aucune musculature adulte ni forme adulte réduite. Aucun implant, prothèse, armement, armure, trophée, casque ou masque. Les versions de jeune âge sont des créations fictives du projet ; ne pas les présenter comme un modèle canonique du film. Le personnage et son tissu occupent au plus 80 % du cadre, entièrement visibles avec au moins 8 % de marge transparente sur chaque côté. Cadrage portrait natif 1024 × 1536 en RGBA réellement transparent. Un seul individu ; aucun autre personnage, décor, sol, ombre portée, socle, texte, logo ni planche. Ne pas changer les pixels après génération. PRIORITÉ HUMAINE : petite fille humaine de 2 ans, peau brun moyen et cheveux naturels châtain clair adaptés à cet âge. Visage, nez, lèvres, oreilles, mains et proportions entièrement humains. Tunique et pantalon civils opaques, chaussures humaines fermées. L’affiliation Yautja est culturelle : aucun organe alien, aucune mandibule, aucune dreadlock adulte artificielle, aucune armure ni arme.\nLes deux références ont été inspectées : l’ancien enfant sert seulement au rendu et aux proportions, l’adulte à l’absence d’anatomie alien, pas à la coiffure ni à l’équipement. La fiche historique précise une FILLE HUMAINE ORDINAIRE DE DEUX ANS, peau brun moyen, visage large et cheveux châtain clair attachés. Créer une nouvelle fillette photoréaliste au corps naturel de tout-petit, petite tête humaine ronde avec joues d’enfant, nez, lèvres et oreilles humains normaux, cheveux fins châtain clair attachés en deux courtes petites queues, sans dreadlocks. Ses deux mains humaines avec cinq doigts chacune tiennent les deux extrémités d’une grande bande de tissu bleu terne souple repliée sur ses genoux. Pose civile assise stable, jambes courtes écartées calmement, vêtements amples de nurserie : tunique opaque à manches longues et pantalon opaque, deux chaussures humaines fermées confortables. La fillette est entièrement habillée ; aucun élément du costume adulte, aucune arme, armure, mandibule, griffe, appendice crânien, peau reptilienne ou modification biologique. Cadrage très dézoomé : toute la petite fille et le tissu sont contenus au centre entre x=210 à814 et y=280 à1256 d’un canevas1024×1536 avec une grande marge alpha transparente d’au moins15% autour. Aucun décor, sol, halo, ombre portée ou texte.",
+      "inputReferenceNames": [
+        "human-accepted--sucklings-01",
+        "human-accepted--blooded-01"
+      ],
+      "accepted": false,
+      "acceptedForCurrentOutput": false,
+      "nativeOutputName": "exec-f409415f-9337-4dc8-9da0-d8d9129fa765.png",
+      "sha256": "ed04678087ac73a2263ca373e4fb1c5431ba62bd09357b009b7627257a0869da",
+      "bytes": 2462231,
+      "generatedAtUtc": "2026-10-23T17:19:11.326Z",
+      "rejectionReasonFR": "La marge transparente droite de 7,13 % restait sous l’objectif de 8 %. Une correction native du cadrage et un rappel de pigmentation brun moyen ont été demandés."
+    },
+    {
+      "attempt": 2,
+      "promptExact": "Ajuster ce sprite de fillette humaine de deux ans entièrement habillée. Conserver ses proportions naturelles de tout-petit, son visage humain, ses cheveux châtain clair attachés, ses deux bras et deux mains humains tenant la bande de tissu bleu, ses jambes, ses chaussures fermées et les vêtements opaques à manches longues. Sa peau doit être naturellement BRUN MOYEN conformément à la fiche, sans teinte fantaisie. Corriger le cadrage en DÉZOOMANT fortement : toute la fillette et toute la bande textile doivent tenir dans le rectangle central x=210 à814 et y=300 à1236 du canevas portrait1024×1536, avec au moins15% de grande marge alpha vide sur les quatre côtés, notamment à droite. Aucun membre ni accessoire coupé. Préserver l’anatomie entièrement humaine et l’âge de deux ans, sans maquillage ni coiffure adulte. Aucun décor, sol, halo ou ombre portée ; PNG RGBA natif réellement transparent. Aucun autre personnage ni texte.",
+      "inputReferenceNames": [
+        "human-accepted--sucklings-02:attempt-1"
+      ],
+      "accepted": true,
+      "acceptedForCurrentOutput": true,
+      "nativeOutputName": "exec-fa6226b8-85c0-48b5-803b-fab5bc43f961.png",
+      "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+      "bytes": 2234289,
+      "generatedAtUtc": "2026-10-23T17:20:32.222Z"
+    }
+  ],
+  "visualInspection": {
+    "accepted": true,
+    "notesFR": "Fillette humaine aux proportions de deux ans, visage rond et large, cheveux châtain clair attachés en petites queues, peau brune sous éclairage chaud. Aucun appendice crânien, mandibule, griffe ou organe Yautja. Deux mains humaines fermées sur les extrémités de la bande textile bleu terne, pose assise stable, tunique et pantalon opaques amples, chaussures humaines fermées ; tous les membres et le tissu restent dans le cadre. Le comptage anatomique de cinq doigts est demandé au prompt ; la prise du tissu en masque naturellement une partie, aucune main supplémentaire ni fusion visible. La référence adulte ne dicte ni le corps ni la coiffure de l’enfant.",
+    "referenceReviewFR": "Les deux références ont été inspectées. L’enfant01 confirme un corps humain naturel et un vêtement civil opaque, mais sa coiffure n’est pas imposée ; la nouvelle fiche02 exige cheveux châtain clair attachés et âge humain de deux ans. La référence adulte a uniquement confirmé une anatomie humaine normale ; son armure, son arme, ses proportions et sa coiffure ne sont pas repris.",
+    "limitationsFR": [
+      "Pose fixe ; aucune animation ni nouveau placement en scène.",
+      "Jeune âge inventé pour le projet à partir du groupe ; aucune certification canonique 1:1 ni preuve de sexe par le rendu seul."
+    ]
+  },
+  "generatedAtUtc": "2026-10-23T17:20:32.222Z",
+  "timestampEvidenceFR": "Horodatage observé au retour de l’outil de génération ; il ne certifie pas l’heure interne exacte de création de l’image.",
+  "verifiedAtUtc": "2026-10-23T17:20:56.801862+00:00",
+  "nativeOutputName": "exec-fa6226b8-85c0-48b5-803b-fab5bc43f961.png",
+  "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+  "bytes": 2234289,
+  "copiedByteIdentical": true,
+  "generationMethod": "builtin-imagegen",
+  "width": 1024,
+  "height": 1536,
+  "mode": "RGBA",
+  "transparentBackground": true,
+  "alphaZeroPixels": 965178,
+  "alphaSolidPixels": 556869,
+  "edgeAlphaMax": 1,
+  "contentBoundsAlpha20": [
+    132,
+    204,
+    913,
+    1359
+  ],
+  "marginsFraction": [
+    0.12890625,
+    0.1328125,
+    0.1083984375,
+    0.115234375
+  ],
+  "targetEightPercentMarginMet": true
+}

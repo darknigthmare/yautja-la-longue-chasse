@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "file": "Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+  "bytes": 1715728,
+  "sourceSha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+  "sha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+  "sheets": [
+    "Synthèse",
+    "Variantes",
+    "Production PR",
+    "Sources jeu",
+    "Classeurs",
+    "Contrôles"
+  ],
+  "uniqueVariantIds": 5120,
+  "statusCounts": {
+    "Présente dans main": 2197,
+    "Produite — à vérifier": 205,
+    "Conservée hors main": 18,
+    "Pas faite": 2700
+  },
+  "productionRows": 162,
+  "auditedVariantCellsChanged": 468,
+  "auditedVariantRowsChanged": 54,
+  "historicalProductionRowsPreserved": 144,
+  "historicalStatusTransitionsToMain": 36,
+  "historicalPreservationRule": "Only the existing F115:F150 status formula caches change to Présente dans main after PR 10 merged; all other old production values and all formulas are preserved.",
+  "newProductionRows": 18,
+  "sourceSheetDataRowsPreserved": [
+    "Sources jeu",
+    "Classeurs (19 historical rows)"
+  ],
+  "additionalSourceWorkbooks": [
+    "docs/YAUTJA_V104_SUIVI.xlsx",
+    "docs/YAUTJA_V105_SUIVI.xlsx",
+    "docs/YAUTJA_V106_SUIVI.xlsx"
+  ],
+  "distinctOriginalWorkbooksVerifiedInMain": 12,
+  "historicalWorkbookStatesPreservedWithExplicitProvenanceNote": true,
+  "sourceSheetSubtitleChangesAllowed": {
+    "Sources jeu": [
+      "A3"
+    ],
+    "Classeurs": [
+      "A3"
+    ]
+  },
+  "nativeTables": 6,
+  "nativeAutoFiltersVerified": 6,
+  "activeSolidConditionalFormats": 21,
+  "formulaErrors": [],
+  "exactExportedFormulas": 649,
+  "conditionalRuleIdentitiesVerified": 21,
+  "newProductionEvidenceRowsVerified": 18,
+  "newTypedProductionDatesVerified": 18,
+  "unrecoveredProductionDatesLeftBlank": 0,
+  "newTypedVerificationDatesVerified": 18,
+  "formulaNormalization": "Only one optional leading = is removed; no whitespace, case or reference rewriting.",
+  "dateNormalization": "Historical timestamps remain exact. New N/Y timestamps may differ only by -1 ms when the Excel-epoch double roundtrip reproduces the exported value exactly; date types and display formats are checked separately.",
+  "dateQuantizationExceptions": [
+    {
+      "cell": "N162",
+      "id": "pilot-kok--enforcers-comics-10",
+      "manifestTimestamp": "2026-10-23T12:44:12.742Z",
+      "expectedUtcMs": "2026-10-23T12:44:12.742+00:00",
+      "exportedUtcMs": "2026-10-23T12:44:12.741+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    }
+  ],
+  "mergedRangesPreservedBySheet": {
+    "Synthèse": 27,
+    "Variantes": 2,
+    "Production PR": 2,
+    "Sources jeu": 2,
+    "Classeurs": 2,
+    "Contrôles": 17
+  },
+  "originalFontAndFillCellsVerifiedBySheet": {
+    "Synthèse": 1000,
+    "Variantes": 184536,
+    "Production PR": 3750,
+    "Sources jeu": 63536,
+    "Classeurs": 300,
+    "Contrôles": 570
+  },
+  "allOriginalFontsFillsAndColorsPreserved": true,
+  "originalBordersAlignmentsNumberFormatsAndProtectionPreserved": true,
+  "originalRowAndColumnDimensionsPreservedExceptIntentionalAutofit": true,
+  "intentionalAutofitRows": {
+    "Contrôles": [
+      11,
+      14,
+      43
+    ]
+  },
+  "tableStylesAndFilterCriteriaPreserved": true,
+  "freezePanesPreserved": true,
+  "statusValidationPreserved": true,
+  "scope": "OpenXML data, formulas, caches, tables, panes, validation and conditional styles; not a live Excel application session."
+}
