@@ -1824,13 +1824,21 @@ export default function PitCanvas({
     descentRunState?: PitDescentRun,
     descentNode?: PitDescentNode,
   ) => {
+    const playerVariant = playerId === leftId ? leftVariantId : null;
+    const opponentVariant = opponentId === rightId ? rightVariantId : null;
+    const normalMoves = narrativeEncounter?.normalMoves ?? (
+      (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) &&
+      (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
+      (ownsPitWorkbookNormalsV104(playerId, playerVariant) || ownsPitWorkbookNormalsV104(opponentId, opponentVariant))
+        ? workbookCombatEnabledV107 ? PIT_WORKBOOK_COMBAT_RECIPE_V107 : workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104
+        : undefined);
     if (!narrativeEncounter && (nextMode === 'cpu' || nextMode === 'local') && workbookConclusionsEnabledV107 &&
       ownsPitWorkbookObjectiveV107(playerId, opponentId, playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null) && !workbookConclusionArtReadyV107) {
       setAriaAnnouncement('Les images de la conclusion sont encore en chargement.');
       return;
     }
-    if (workbookCombatEnabledV107 && !narrativeEncounter) {
-      const selections = [{id:playerId, variant:playerId === leftId ? leftVariantId : null}, {id:opponentId, variant:opponentId === rightId ? rightVariantId : null}];
+    if (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107) {
+      const selections = [{id:playerId, variant:playerVariant}, {id:opponentId, variant:opponentVariant}];
       const refused = selections.some(selection => (selection.id === 'scar' || selection.id === 'feral-hunter') &&
         (!getPitWorkbookVariantCapabilitiesV107(selection.id, selection.variant).sourceRecipeOwnershipAllowed ||
         (['right','left'] as const).some(facing => !guardPitWorkbookVariantCapabilityV107({fighterId:selection.id, variantId:selection.variant,
@@ -1846,11 +1854,7 @@ export default function PitCanvas({
     }
     let next = createPitCombatState(playerId, opponentId, {
       mode: nextMode === "training" ? "training" : "match",
-      ...((workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
-        (ownsPitWorkbookNormalsV104(playerId, playerId === leftId ? leftVariantId : null) ||
-          ownsPitWorkbookNormalsV104(opponentId, opponentId === rightId ? rightVariantId : null))
-        ? {normalMoves: workbookCombatEnabledV107 ? PIT_WORKBOOK_COMBAT_RECIPE_V107 : workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}),
-      ...(narrativeEncounter?.normalMoves ? {normalMoves: narrativeEncounter.normalMoves} : {}),
+      ...(normalMoves ? {normalMoves} : {}),
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
       ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
@@ -3567,7 +3571,7 @@ export default function PitCanvas({
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
           onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
           onExit={onExit} launchLabel={selectionLaunchLabel}
-          launchDisabled={(workbookCombatEnabledV107 && !workbookDeviceArtV107?.ready) || Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
+          launchDisabled={(renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 && !workbookDeviceArtV107?.ready) || Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
           reducedMotion={reducedCameraMotion} highContrast={highContrast}
         />
 
