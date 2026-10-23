@@ -1,7 +1,7 @@
 {
   "status": "PASS_CIBLE",
   "scope": {
-    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
     "description": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
     "limitations": [
       "Parcours complet de géométrie et relevés : fixture explicite des seize combattants déjà neutralisés ; aucune victoire de combat jouée revendiquée.",
@@ -9,12 +9,12 @@
       "Images historiques partagées ; aucune nouvelle illustration de secteur, fidélité canonique1:1 ou publication publique certifiée."
     ]
   },
-  "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+  "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
   "nodeVersion": "v22.23.3",
   "production": {
     "mode": "compiled-app",
-    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
-    "buildId": "lKBwtp6LAjSerAzSZQEOM",
+    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
+    "buildId": "6OeHlCftPttp5-q3dbQCV",
     "browserErrors": 0,
     "checksPassed": 31,
     "checksFailed": 0,
@@ -22,58 +22,58 @@
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "7361305b2026641b9feb949ef2a540350ee71655e36837890242598fb7aedba9"
+        "htmlSha256": "bde3d2de8a940aa4a88ed53ef697e9c1322c5b1974d205ed5e27ecc8abe70398"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "5b1bcf7c6ea77d74c167675bd12398f19e11746447c7ee2c2bc108095059bd03"
+        "htmlSha256": "c1444dd78b54e1b64998fa58539647e7e67a77e170e7bd8e4e9640ab1ebb14c0"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "ecc5d21cc95ec841d12ea8b8657f75c87db63206955674fb278b4759f405e4d5"
+        "htmlSha256": "a2c2bbed0ee0ca0592ab7093cf1651b7b78395d46ca180dec8343c52593c3c24"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "60e88866e71f1211d46b90258ceaa650b04740d375fc8d212449b2b4925e897e"
+        "htmlSha256": "c1444dd78b54e1b64998fa58539647e7e67a77e170e7bd8e4e9640ab1ebb14c0"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "6393551905646435613b6c03e1d14dc3f2eea8f85a4e03d611b5b9719af7f10a"
+        "htmlSha256": "a2c2bbed0ee0ca0592ab7093cf1651b7b78395d46ca180dec8343c52593c3c24"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "60e88866e71f1211d46b90258ceaa650b04740d375fc8d212449b2b4925e897e"
+        "htmlSha256": "c1444dd78b54e1b64998fa58539647e7e67a77e170e7bd8e4e9640ab1ebb14c0"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "ecc5d21cc95ec841d12ea8b8657f75c87db63206955674fb278b4759f405e4d5"
+        "htmlSha256": "a2c2bbed0ee0ca0592ab7093cf1651b7b78395d46ca180dec8343c52593c3c24"
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true,
-        "htmlSha256": "60e88866e71f1211d46b90258ceaa650b04740d375fc8d212449b2b4925e897e"
+        "htmlSha256": "71455c4bd3c6d6d25cdde033fddabb97fbd301a923d72a961c55ac2a4c1e5f5d"
       }
     ]
   },
@@ -503,12 +503,12 @@
     },
     {
       "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
-      "sha256": "48a241d1538bd2aab0086f11a80f85d85f08d7112012799b49effec5e53472ab",
+      "sha256": "6008a7beccf234be85ae20c1b6e49e8a26b45a8c65d2feba62191397395e0b69",
       "viewport": {
         "width": 844,
         "height": 390
       },
-      "bytes": 395468
+      "bytes": 395118
     },
     {
       "file": "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
@@ -539,12 +539,12 @@
     },
     {
       "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
-      "sha256": "64391d0eeff2a37de7bd8d45ea6f13e84cbe711bba9b4d58f59b3db1eb6ecb73",
+      "sha256": "e18f6c720dba0d8398c333f2a65f82b70e161e0cf27de45961fd74e8de413f86",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "bytes": 1570781
+      "bytes": 1570792
     },
     {
       "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
@@ -621,7 +621,7 @@
   ],
   "outcomes": {
     "surveyed": {
-      "tick": 3991,
+      "tick": 3998,
       "player": {
         "x": 12423.199999999466,
         "y": 290,
@@ -646,22 +646,22 @@
       "routeV107": {
         "siteRecords": [
           {
-            "recordedAt": 1686,
+            "recordedAt": 1688,
             "hunterX": 5841.600000000164,
             "hunterY": 280
           },
           {
-            "recordedAt": 2236,
+            "recordedAt": 2240,
             "hunterX": 7411.000000000239,
             "hunterY": 438
           },
           {
-            "recordedAt": 2840,
+            "recordedAt": 2843,
             "hunterX": 8991.800000000123,
             "hunterY": 226
           },
           {
-            "recordedAt": 3976,
+            "recordedAt": 3983,
             "hunterX": 12423.199999999466,
             "hunterY": 290
           }
@@ -669,7 +669,7 @@
       }
     },
     "returned": {
-      "tick": 7302,
+      "tick": 7310,
       "status": "returned",
       "player": {
         "x": 118.79999999999886,
@@ -695,22 +695,22 @@
       "routeV107": {
         "siteRecords": [
           {
-            "recordedAt": 1686,
+            "recordedAt": 1688,
             "hunterX": 5841.600000000164,
             "hunterY": 280
           },
           {
-            "recordedAt": 2236,
+            "recordedAt": 2240,
             "hunterX": 7411.000000000239,
             "hunterY": 438
           },
           {
-            "recordedAt": 2840,
+            "recordedAt": 2843,
             "hunterX": 8991.800000000123,
             "hunterY": 226
           },
           {
-            "recordedAt": 3976,
+            "recordedAt": 3983,
             "hunterX": 12423.199999999466,
             "hunterY": 290
           }
@@ -718,11 +718,11 @@
       }
     }
   },
-  "routeSamples": 1065,
+  "routeSamples": 1069,
   "evidence": [
     {
       "file": "docs/qa/v107-preserve-expedition/browser.log",
-      "sha256": "4d499d603bbeb62055d56db4676605c9dab9a5afd1fab8f0d200b6cc1570fea2",
+      "sha256": "05fc73bb312d5709c413e518c06a490d3fc4f06bad94115afc68fdadee6c654b",
       "bytes": 3239
     },
     {
@@ -762,8 +762,8 @@
     },
     {
       "file": "docs/qa/v107-preserve-expedition/result.json",
-      "sha256": "d5dc9f07d391cbc871b73fa0ba913a483bf4fb76479efee8591787ee945911d3",
-      "bytes": 150996
+      "sha256": "efffd2e6fff1dc46e8cabf654bf82cf09cf091d981dbbf825079d092a057c400",
+      "bytes": 151455
     },
     {
       "file": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
@@ -772,8 +772,8 @@
     },
     {
       "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
-      "sha256": "64391d0eeff2a37de7bd8d45ea6f13e84cbe711bba9b4d58f59b3db1eb6ecb73",
-      "bytes": 1570781
+      "sha256": "e18f6c720dba0d8398c333f2a65f82b70e161e0cf27de45961fd74e8de413f86",
+      "bytes": 1570792
     },
     {
       "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
@@ -807,8 +807,8 @@
     },
     {
       "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
-      "sha256": "48a241d1538bd2aab0086f11a80f85d85f08d7112012799b49effec5e53472ab",
-      "bytes": 395468
+      "sha256": "6008a7beccf234be85ae20c1b6e49e8a26b45a8c65d2feba62191397395e0b69",
+      "bytes": 395118
     }
   ],
   "visualInspection": {

@@ -3,9 +3,9 @@
   "release": "V107",
   "domain": "Clans",
   "status": "PASS",
-  "at": "2026-10-23T22:12:29.062Z",
+  "at": "2026-10-23T23:29:14.694Z",
   "scope": {
-    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
     "context": "free-specialized-works-v107",
     "description": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
     "sourceWorkbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
@@ -42,39 +42,43 @@
   },
   "production": {
     "mode": "compiled-app",
-    "buildId": "lKBwtp6LAjSerAzSZQEOM",
-    "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
-    "checksPassed": 43,
+    "buildId": "6OeHlCftPttp5-q3dbQCV",
+    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
+    "checksPassed": 45,
     "checksFailed": 0,
     "browserErrors": 0,
     "servedBuilds": [
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "lKBwtp6LAjSerAzSZQEOM",
+        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
         "foundInHtml": true
       }
     ],
+    "sourceFreeze": {
+      "path": "docs/v107-runtime-freeze.json",
+      "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
+      "bytes": 221954
+    },
     "baseUrl": "http://127.0.0.1:3101",
-    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-d148ebc-r2 node scripts/qa-clan-specialized-v107.mjs"
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs"
   },
   "tests": {
     "business": {
-      "passed": 16,
+      "passed": 22,
       "failed": 0,
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs > outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log",
-      "exitCode": 0,
-      "logCopiedFrom": "outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log"
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/business-tests.log",
+      "exitCode": 0
     },
     "lint": {
       "status": "PASS",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx > outputs/qa-v107/clan-specialized-production-d148ebc/lint.log",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx tests/clan-war-specialized-import-v107.test.mjs scripts/qa-clan-specialized-v107.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/lint.log",
       "exitCode": 0
     }
   },
@@ -86,8 +90,8 @@
     },
     {
       "file": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "c4ec543371e64401a35313692ededdbd19f8594b8a5e8241a1f03b788963a77f",
-      "bytes": 28477
+      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
+      "bytes": 28873
     },
     {
       "file": "app/game/ClanWarSpecializedV107.module.css",
@@ -116,8 +120,8 @@
     },
     {
       "file": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "03cbe47948425ee1a2505f9c441c2dbf2333f42fd2d5595846d8986fba9aa9d5",
-      "bytes": 20466
+      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
+      "bytes": 21662
     },
     {
       "file": "public/game/homeworld/v77/lava-transit-skiff.png",
@@ -153,8 +157,8 @@
     },
     {
       "file": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "c4ec543371e64401a35313692ededdbd19f8594b8a5e8241a1f03b788963a77f",
-      "bytes": 28477
+      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
+      "bytes": 28873
     },
     {
       "file": "app/game/ClanWarSpecializedV107.module.css",
@@ -183,8 +187,8 @@
     },
     {
       "file": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "03cbe47948425ee1a2505f9c441c2dbf2333f42fd2d5595846d8986fba9aa9d5",
-      "bytes": 20466
+      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
+      "bytes": 21662
     },
     {
       "file": "public/game/homeworld/v77/lava-transit-skiff.png",
@@ -295,6 +299,14 @@
     },
     {
       "name": "S14: objective cannot be handed over twice",
+      "status": "PASS"
+    },
+    {
+      "name": "Cross-workshop import replaces a selected moving rival with the restored real U19 and stops the old walk",
+      "status": "PASS"
+    },
+    {
+      "name": "After cross-workshop import the real movement callback moves only the restored U19 team",
       "status": "PASS"
     },
     {
@@ -411,13 +423,13 @@
     },
     {
       "file": "05-listening-recordings.png",
-      "sha256": "c396a8e5cae601fd17e4bde01f1ca4743cb09fcfd53c44f862b9e5fb6806efa3",
-      "bytes": 262588
+      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
+      "bytes": 262434
     },
     {
       "file": "06-orbital-arrival.png",
-      "sha256": "d0221f9b6bf85ae1b9525444763702f67f368175edfe20562fbc049d33092042",
-      "bytes": 258682
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911
     },
     {
       "file": "07-mobile-dock.png",
@@ -466,15 +478,15 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "c396a8e5cae601fd17e4bde01f1ca4743cb09fcfd53c44f862b9e5fb6806efa3",
-      "bytes": 262588,
+      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
+      "bytes": 262434,
       "capture": "05-listening-recordings.png",
       "inspected": true
     },
     {
       "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
-      "sha256": "d0221f9b6bf85ae1b9525444763702f67f368175edfe20562fbc049d33092042",
-      "bytes": 258682,
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911,
       "capture": "06-orbital-arrival.png",
       "inspected": true
     },
@@ -516,13 +528,13 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "c396a8e5cae601fd17e4bde01f1ca4743cb09fcfd53c44f862b9e5fb6806efa3",
-      "bytes": 262588
+      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
+      "bytes": 262434
     },
     {
       "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
-      "sha256": "d0221f9b6bf85ae1b9525444763702f67f368175edfe20562fbc049d33092042",
-      "bytes": 258682
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911
     },
     {
       "file": "docs/qa/v107-clan-specialized/07-mobile-dock.png",
@@ -531,23 +543,28 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/raw-validation.json",
-      "sha256": "88ee71a35007d8c5c1bd2dd03e04634d9248f7fb7423029e3289907f99d77c9b",
-      "bytes": 12112
+      "sha256": "5fe45e068ed2516d4ba5947ebc28feca4557406921230c4d8d5e7839f9ba5351",
+      "bytes": 12411
     },
     {
       "file": "docs/qa/v107-clan-specialized/source-before-after.json",
-      "sha256": "51d3dff00676ce76e0ba7efafc93cc2cb98add7f0520b94d749bc34dc14a6a0f",
+      "sha256": "80b2af5fa61dbfde02e3805774cea891d6ed387333e4ebd8c633301290a34623",
       "bytes": 4591
     },
     {
       "file": "docs/qa/v107-clan-specialized/business-tests.log",
-      "sha256": "189130d62f6fbb8a64b07ded7cb367b242db5834a15334e8966aa0c85b60db3b",
-      "bytes": 4219
+      "sha256": "f83100eae55fea2f20a5cc13b29281c1779732162e6e0d479fbcc75124d7a5f5",
+      "bytes": 5559
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
     },
     {
       "file": "docs/qa/v107-clan-specialized/verification-commands.json",
-      "sha256": "cd54211dde6abf19e512d1d7a3ef45a3243c54390c6e77af51e8b28971d6d418",
-      "bytes": 807
+      "sha256": "2fbeedc08b070ca0b1dc4ba5fcfeebf1742cc150a5d1d9b74c64b5df9ad11ca7",
+      "bytes": 845
     }
   ]
 }

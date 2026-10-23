@@ -74,23 +74,23 @@
       "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14 ; Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15 ; Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18 ; Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19 ; Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20 ; Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
       "status": "VALIDE_CIBLE",
       "validationScope": "WAR_STRUCTURES_BOUNDED",
-      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne.",
+      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
       "remaining": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites.",
       "implementation": [
         "app/game/systems/clanWarSpecializedV107.ts"
       ],
-      "tests": "PASS : seize tests métier, import strict, transactions idempotentes et lint ; 43 contrôles sur l’app de production.",
-      "browser": "PASS_CIBLE_PRODUCTION : 43 contrôles, 7 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS : vingt-deux tests métier et callbacks, import strict, transactions idempotentes et lint ; 45 contrôles sur l’app de production.",
+      "browser": "PASS_CIBLE_PRODUCTION : 45 contrôles, 7 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
-          "bytes": 18901
+          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
+          "bytes": 19585
         }
       ]
     },
@@ -109,7 +109,7 @@
         "docs/suivi-production/v107-enforcer-poses/data/production-manifest.json"
       ],
       "tests": "PASS_HISTORIQUE_PR15 :22assertions originales (V6136,V6146,V6156,delta4) et5adaptateurs/isolation ;17classeurs et tous les PNG/SHA préservés.",
-      "browser": "PASS_NATIVE_ASSETS : 18 images servies et décodées sur le build commun, quatre planches de contact inspectées. Fixture d’inspection, sans revendication d’un parcours réel de galerie.",
+      "browser": "PASS_NATIVE_ASSETS antérieur : 18 images servies et décodées sur le build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba ; quatre planches de contact inspectées. Les PNG restent inchangés. Fixture statique d’inspection, aucun nouveau parcours de galerie revendiqué.",
       "proof": [
         {
           "path": "docs/v107-static-production-reconciliation.json",
@@ -142,16 +142,16 @@
         "app/game/systems/gameReserveV66.ts"
       ],
       "tests": "PASS : 64 tests métier et V1/V2 byte-exacts ; 31 contrôles navigateur, démarrage ordinaire vivant et fixture de parcours déclarée.",
-      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
           "bytes": 32161
         }
       ]
@@ -189,18 +189,18 @@
         "app/game/data/pitWorkbookDeviceAnchorsV107.json",
         "app/game/systems/pitWorkbookDeviceSourceV107.ts"
       ],
-      "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 114 contrôles navigateur couvrent les quatre domaines Pit.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 125 contrôles navigateur couvrent les quatre domaines Pit.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -211,24 +211,24 @@
       "source": "08_CAMPAGNES!D10 ; 08_CAMPAGNES!E10 ; 08_CAMPAGNES!F10 ; 08_CAMPAGNES!G10 ; 08_CAMPAGNES!H10 ; 08_CAMPAGNES!I10 ; 08_CAMPAGNES!J10 ; 08_CAMPAGNES!K10 ; 08_CAMPAGNES!D7 ; 08_CAMPAGNES!E7 ; 08_CAMPAGNES!F7 ; 08_CAMPAGNES!G7 ; 08_CAMPAGNES!H7 ; 08_CAMPAGNES!I7 ; 08_CAMPAGNES!J7 ; 08_CAMPAGNES!K7",
       "status": "VALIDE_CIBLE",
       "validationScope": "PIT_CAMPAIGNS_BOUNDED",
-      "runtime": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée.",
+      "runtime": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée.",
       "remaining": "Les seize scènes source restent ouvertes : acteurs, équipement, blessures, choix et fins conditionnelles à livrer. Les exercices et substituts ne les remplacent pas.",
       "implementation": [
         "app/game/systems/pitWorkbookCampaignV107.ts",
         "app/game/data/pitWorkbookScopeV105.json"
       ],
-      "tests": "PASS source : huit cas de parcours et audit des seize cellules, toutes sourceComplete=false ; couverture navigateur ciblée, pas seize scènes jouées.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS source : douze cas de parcours, conservation des preuves sous borne et audit des seize cellules, toutes sourceComplete=false ; clavier natif vérifié dans les deux terrains.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -239,23 +239,23 @@
       "source": "14_VARIANTES!C10 ; 14_VARIANTES!D10 ; 14_VARIANTES!E10 ; 14_VARIANTES!F10 ; 14_VARIANTES!G10 ; 14_VARIANTES!H10 ; 14_VARIANTES!I10 ; 14_VARIANTES!C7 ; 14_VARIANTES!D7 ; 14_VARIANTES!E7 ; 14_VARIANTES!F7 ; 14_VARIANTES!G7 ; 14_VARIANTES!H7 ; 14_VARIANTES!I7",
       "status": "VALIDE_CIBLE",
       "validationScope": "PIT_VARIANTS_BOUNDED",
-      "runtime": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes.",
+      "runtime": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes.",
       "remaining": "Quatorze contraintes encore ouvertes : incarnation, masque/visage, équipement perdu, armure endommagée, deux sens et camouflage selon chapitre.",
       "implementation": [
         "app/game/pitWorkbookVariantCapabilitiesV107.ts"
       ],
       "tests": "PASS : six cas du contrat pur, SHA/dimensions des 52 études, sept séquences Scar et douze portraits ; contrôles UI inclus dans la recette Pit finale.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -278,16 +278,16 @@
         "app/game/HomeworldArchiveComparisonV107.module.css"
       ],
       "tests": "PASS : onze tests de comparaison et trente entrées ; 67 contrôles navigateur sur la compilation commune.",
-      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
           "bytes": 11883
         }
       ]
@@ -347,17 +347,17 @@
       "id": "V107-PRODUCTION-PIT",
       "status": "PASS_CIBLE",
       "scope": "Targeted public exercise terrain/persistence and one genuine CPU duel; not all16 browser stages. Native Scar conclusions in both orientations after genuine public local victories, measured capability UI and device journeys. One declared initial first-tracks profile and a held virtual pad only for the visible focus regression. No combat snapshot, outcome, counter or reward injection.",
-      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-d148-r7 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
+      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-dc44 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ],
       "limit": "Neuf actions restent ouvertes : quatre projections et cinq conclusions, dont CLEMENCE partielle. Kits complets et contraintes de variantes restent ouverts."
@@ -366,16 +366,16 @@
       "id": "V107-PRODUCTION-HOMEWORLD",
       "status": "PASS_CIBLE",
       "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-final.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-pr16.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
           "bytes": 11883
         }
       ],
@@ -385,17 +385,17 @@
       "id": "V107-PRODUCTION-CLANS",
       "status": "PASS_CIBLE",
       "scope": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-d148ebc-r2 node scripts/qa-clan-specialized-v107.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
-          "bytes": 18901
+          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
+          "bytes": 19585
         }
       ],
       "limit": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites."
@@ -404,16 +404,16 @@
       "id": "V107-PRODUCTION-PRESERVE",
       "status": "PASS_CIBLE",
       "scope": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
           "bytes": 32161
         }
       ],
@@ -422,7 +422,7 @@
     {
       "id": "V107-ART-ALTERNATIVE-POSES",
       "status": "PASS_NATIVE_ASSETS",
-      "scope": "Eighteen native static alternative poses decoded and HTTP-hashed from the common compiled origin. Inspection contact sheet only; no claim of a played production gallery, animation, new identity or campaign placement.",
+      "scope": "Inspection statique antérieure : runtime d148ebc21004b87e3c6ce435d74e1c120856afba, build lKBwtp6LAjSerAzSZQEOM. Eighteen native static alternative poses decoded and HTTP-hashed from the common compiled origin. Inspection contact sheet only; no claim of a played production gallery, animation, new identity or campaign placement.",
       "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_ENFORCER_QA_OUTPUT=outputs/qa-v107/enforcer-alternatives-d148 node scripts/qa-enforcer-alternatives-v107.mjs > /tmp/v107-root-enforcer-native-qa.log 2>&1",
       "evidence": [
         {
@@ -456,7 +456,7 @@
           "path": "docs/qa/v107-enforcer-alternatives/report.json"
         }
       ],
-      "limit": "18 poses alternatives statiques, zéro nouvelle identité ; fixture d’inspection, aucune animation ni scène de galerie jouée revendiquée."
+      "limit": "Preuve native antérieure conservée avec son ancienne commande : 18 poses statiques aux mêmes SHA, zéro nouvelle identité ; aucune nouvelle inspection sur le runtime corrigé ni scène de galerie jouée revendiquée."
     },
     {
       "id": "V107-HISTORICAL-PR15",
@@ -494,7 +494,7 @@
   ],
   "runtimeFreeze": {
     "path": "docs/v107-runtime-freeze.json",
-    "sha256": "e5c1e0607338e6293a2f306d6de3e8f236082fbe78ee9c6ff3f85ca496bb3693",
+    "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
     "bytes": 221954
   }
 }

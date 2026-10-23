@@ -1,14 +1,13 @@
 {
-  "runtimeCommit": "d148ebc21004b87e3c6ce435d74e1c120856afba",
+  "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
   "business": {
-    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs > outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log",
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/business-tests.log",
     "exitCode": 0,
-    "passed": 16,
-    "failed": 0,
-    "logCopiedFrom": "outputs/qa-v107/clan-specialized-production-d148ebc/business-tests.log"
+    "passed": 22,
+    "failed": 0
   },
   "lint": {
-    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx > outputs/qa-v107/clan-specialized-production-d148ebc/lint.log",
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx tests/clan-war-specialized-import-v107.test.mjs scripts/qa-clan-specialized-v107.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/lint.log",
     "exitCode": 0
   }
 }

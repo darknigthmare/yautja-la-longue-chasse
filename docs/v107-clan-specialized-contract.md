@@ -1,6 +1,6 @@
 # V107 · les six ateliers physiques V6
 
-État : exercice jouable, tests métier 16/16 PASS. La validation compilée finale du runtime `d148ebc21004b87e3c6ce435d74e1c120856afba` passe 43 contrôles, sans erreur navigateur ; les sept captures desktop/mobile ont été ouvertes. Voir [la preuve finale](v107-clan-specialized-validation.json). Ce contrat ne clôt aucune ligne de campagne et ne remplace pas ce rapport de production.
+État : exercice jouable, tests métier et callbacks 22/22 PASS. La validation compilée finale du runtime `dc44ba9f36f5ae3606ea40a2dd68459be8c7510a` passe 45 contrôles, sans erreur navigateur ; les sept captures desktop/mobile ont été ouvertes. Voir [la preuve finale](v107-clan-specialized-validation.json). Ce contrat ne clôt aucune ligne de campagne et ne remplace pas ce rapport de production.
 
 ## Contrat exact
 
@@ -40,7 +40,7 @@ Module public : `app/game/systems/clanWarSpecializedV107.ts` ; exports `SPECIALI
 
 Contexte distinct `free-specialized-works-v107`, version 1, protocole `specialized-v107-r1`. Le checkpoint porte le SHA source, la clé des règles et hypothèses, les équipes/personnes, stocks, kit, appuis, chantier, positions, véhicules/manifeste, eau, cellule, sonde, duel/coffre, prises, reçus et journal d’actions accepté. Une commande est estampillée une seule fois au point d’intention. Réessayer la même transaction laisse le même état ; réutiliser l’identifiant pour une autre intention est refusé.
 
-Import : taille maximale 4 Mo, contexte/version/source stricts, maximum 5 000 actions validées, rejeu déterministe depuis les seules dotations initiales puis comparaison exacte du checkpoint. Une future version, un lot gonflé, un champ ajouté ou une action incohérente refuse l’import sans modifier le carnet courant. Les états du moteur sont gelés récursivement ; un état arbitraire ne peut entrer par l’API d’action. Ce n’est pas un sceau cryptographique ni un certificat d’acquisition.
+Import : taille maximale 4 Mo, contexte/version/source stricts, maximum 5 000 actions validées, rejeu déterministe depuis les seules dotations initiales puis comparaison exacte du checkpoint. La reprise rétablit une sélection d’équipe valide et interrompt immédiatement la destination de marche précédente ; rendu, transferts RAV et déplacements utilisent la même équipe effective. Une future version, un lot gonflé, un champ ajouté ou une action incohérente refuse l’import sans modifier le carnet courant. Les états du moteur sont gelés récursivement ; un état arbitraire ne peut entrer par l’API d’action. Ce n’est pas un sceau cryptographique ni un certificat d’acquisition.
 
 Le carnet n’écrit jamais `SaveGame`, `localStorage` ni les anciens payloads V87–V106. Le joueur exporte explicitement avant fermeture ou changement de mandat. Les trente mondes historiques et le moteur Risk V106 restent inchangés ; les seules intégrations sont l’onglet Bible V6 et son activité (pause de marche/audio lorsque masqué).
 
@@ -56,9 +56,9 @@ Les ambiances faune/météo publiques ne sont représentées que par des `missin
 
 ## Validation reproductible
 
-Tests métier : `env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node --test tests/clan-war-specialized-v107.test.mjs` (16 contrôles). Lint : les quatre fichiers TS/TSX nouveaux/intégrés.
+Tests métier : `env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs` (22 contrôles : 16 règles métier et 6 régressions des vrais callbacks JSX/import). Lint : les quatre fichiers TS/TSX nouveaux/intégrés, le test d’import et le driver navigateur.
 
-Recette préparée : `scripts/qa-clan-specialized-v107.mjs`. Elle ouvre la vraie application, n’injecte aucun état, construit les six ouvrages et réalise chacune des opérations avec les boutons, la marche et les vrais fichiers audio ; contrôle les manifestes, l’idempotence, la conservation de 120 RAV, l’import mi-vol, le refus futur, l’absence d’écriture de campagne, le mobile et l’absence d’erreurs navigateur. Sept captures, SHA des sources/actifs avant/après, identité HTML du build et rapport structuré.
+Recette préparée : `scripts/qa-clan-specialized-v107.mjs`. Elle ouvre la vraie application, n’injecte aucun état, construit les six ouvrages et réalise chacune des opérations avec les boutons, la marche et les vrais fichiers audio ; contrôle les manifestes, l’idempotence, la conservation de 120 RAV, l’import mi-vol, l’import d’un autre atelier avec le rival sélectionné en marche (arrêt de l’ancienne cible, sélection valide d’U19 et déplacement réel de cette seule équipe), le refus futur, l’absence d’écriture de campagne, le mobile et l’absence d’erreurs navigateur. Sept captures, SHA des sources/actifs avant/après, identité HTML du build et rapport structuré.
 
 Après le gel global seulement :
 

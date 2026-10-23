@@ -9,7 +9,7 @@
   "baselineFreeze": "FROZEN",
   "runtimeFreeze": {
     "path": "docs/v107-runtime-freeze.json",
-    "sha256": "e5c1e0607338e6293a2f306d6de3e8f236082fbe78ee9c6ff3f85ca496bb3693",
+    "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
     "bytes": 221954
   },
   "runtimeFrozenInputsVerified": 432,
@@ -156,7 +156,7 @@
       ],
       "count": 6,
       "remainingCount": 6,
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "enforcer-pngs",
@@ -295,7 +295,7 @@
       ],
       "count": 16,
       "remainingCount": 16,
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "pit-variants",
@@ -327,7 +327,7 @@
       ],
       "count": 14,
       "remainingCount": 14,
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     }
   ],
   "workstreams": [
@@ -355,23 +355,23 @@
       "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14 ; Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15 ; Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18 ; Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19 ; Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20 ; Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
       "status": "VALIDE_CIBLE",
       "validationScope": "WAR_STRUCTURES_BOUNDED",
-      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne.",
+      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
       "remaining": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites.",
       "implementation": [
         "app/game/systems/clanWarSpecializedV107.ts"
       ],
-      "tests": "PASS : seize tests métier, import strict, transactions idempotentes et lint ; 43 contrôles sur l’app de production.",
-      "browser": "PASS_CIBLE_PRODUCTION : 43 contrôles, 7 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS : vingt-deux tests métier et callbacks, import strict, transactions idempotentes et lint ; 45 contrôles sur l’app de production.",
+      "browser": "PASS_CIBLE_PRODUCTION : 45 contrôles, 7 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
-          "bytes": 18901
+          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
+          "bytes": 19585
         }
       ]
     },
@@ -390,7 +390,7 @@
         "docs/suivi-production/v107-enforcer-poses/data/production-manifest.json"
       ],
       "tests": "PASS_HISTORIQUE_PR15 :22assertions originales (V6136,V6146,V6156,delta4) et5adaptateurs/isolation ;17classeurs et tous les PNG/SHA préservés.",
-      "browser": "PASS_NATIVE_ASSETS : 18 images servies et décodées sur le build commun, quatre planches de contact inspectées. Fixture d’inspection, sans revendication d’un parcours réel de galerie.",
+      "browser": "PASS_NATIVE_ASSETS antérieur : 18 images servies et décodées sur le build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba ; quatre planches de contact inspectées. Les PNG restent inchangés. Fixture statique d’inspection, aucun nouveau parcours de galerie revendiqué.",
       "proof": [
         {
           "path": "docs/v107-static-production-reconciliation.json",
@@ -423,16 +423,16 @@
         "app/game/systems/gameReserveV66.ts"
       ],
       "tests": "PASS : 64 tests métier et V1/V2 byte-exacts ; 31 contrôles navigateur, démarrage ordinaire vivant et fixture de parcours déclarée.",
-      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
           "bytes": 32161
         }
       ]
@@ -470,18 +470,18 @@
         "app/game/data/pitWorkbookDeviceAnchorsV107.json",
         "app/game/systems/pitWorkbookDeviceSourceV107.ts"
       ],
-      "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 114 contrôles navigateur couvrent les quatre domaines Pit.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 125 contrôles navigateur couvrent les quatre domaines Pit.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -492,24 +492,24 @@
       "source": "08_CAMPAGNES!D10 ; 08_CAMPAGNES!E10 ; 08_CAMPAGNES!F10 ; 08_CAMPAGNES!G10 ; 08_CAMPAGNES!H10 ; 08_CAMPAGNES!I10 ; 08_CAMPAGNES!J10 ; 08_CAMPAGNES!K10 ; 08_CAMPAGNES!D7 ; 08_CAMPAGNES!E7 ; 08_CAMPAGNES!F7 ; 08_CAMPAGNES!G7 ; 08_CAMPAGNES!H7 ; 08_CAMPAGNES!I7 ; 08_CAMPAGNES!J7 ; 08_CAMPAGNES!K7",
       "status": "VALIDE_CIBLE",
       "validationScope": "PIT_CAMPAIGNS_BOUNDED",
-      "runtime": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée.",
+      "runtime": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée.",
       "remaining": "Les seize scènes source restent ouvertes : acteurs, équipement, blessures, choix et fins conditionnelles à livrer. Les exercices et substituts ne les remplacent pas.",
       "implementation": [
         "app/game/systems/pitWorkbookCampaignV107.ts",
         "app/game/data/pitWorkbookScopeV105.json"
       ],
-      "tests": "PASS source : huit cas de parcours et audit des seize cellules, toutes sourceComplete=false ; couverture navigateur ciblée, pas seize scènes jouées.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "tests": "PASS source : douze cas de parcours, conservation des preuves sous borne et audit des seize cellules, toutes sourceComplete=false ; clavier natif vérifié dans les deux terrains.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -520,23 +520,23 @@
       "source": "14_VARIANTES!C10 ; 14_VARIANTES!D10 ; 14_VARIANTES!E10 ; 14_VARIANTES!F10 ; 14_VARIANTES!G10 ; 14_VARIANTES!H10 ; 14_VARIANTES!I10 ; 14_VARIANTES!C7 ; 14_VARIANTES!D7 ; 14_VARIANTES!E7 ; 14_VARIANTES!F7 ; 14_VARIANTES!G7 ; 14_VARIANTES!H7 ; 14_VARIANTES!I7",
       "status": "VALIDE_CIBLE",
       "validationScope": "PIT_VARIANTS_BOUNDED",
-      "runtime": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes.",
+      "runtime": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes.",
       "remaining": "Quatorze contraintes encore ouvertes : incarnation, masque/visage, équipement perdu, armure endommagée, deux sens et camouflage selon chapitre.",
       "implementation": [
         "app/game/pitWorkbookVariantCapabilitiesV107.ts"
       ],
       "tests": "PASS : six cas du contrat pur, SHA/dimensions des 52 études, sept séquences Scar et douze portraits ; contrôles UI inclus dans la recette Pit finale.",
-      "browser": "PASS_CIBLE_PRODUCTION : 114 contrôles, 17 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ]
     },
@@ -559,16 +559,16 @@
         "app/game/HomeworldArchiveComparisonV107.module.css"
       ],
       "tests": "PASS : onze tests de comparaison et trente entrées ; 67 contrôles navigateur sur la compilation commune.",
-      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build lKBwtp6LAjSerAzSZQEOM, runtime d148ebc21004b87e3c6ce435d74e1c120856afba. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
           "bytes": 11883
         }
       ]
@@ -5859,7 +5859,7 @@
       "supplies": 16,
       "sourceH001H100Bindings": 0,
       "newNativeBodyDrawings": 0,
-      "remaining": "72 secteurs et84 combattants visés après validation du parcours ; créations projet, aucune fiche H001–H100 admise."
+      "remaining": "72 secteurs et 84 combattants restent visés ; créations projet, aucune fiche H001–H100 admise."
     }
   ],
   "originalOpenItems": [
@@ -7331,7 +7331,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S10",
@@ -7349,7 +7349,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S13",
@@ -7367,7 +7367,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S14",
@@ -7385,7 +7385,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un duel accepté par ses participants et son résultat réel ; pas de victoire automatique.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S15",
@@ -7403,7 +7403,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S18",
@@ -7421,7 +7421,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. Coûts V6, stocks finis, interruptions et reçus idempotents ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "PRESERVE-SECTEURS",
@@ -7689,7 +7689,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "1 — Cinématique · L'indice\nStage : arena-114-prey-2022-bear-river\nAdversaire : Aucun\nUne série de traces révèle une proie qui observe les habitudes du chasseur.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F006_STORY_01\n\nBesoins visuels restant à livrer :\nTraces de la proie et observation du chasseur, dans le lieu référencé ; objets séparés du BODY.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.02",
@@ -7707,7 +7707,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "2 — Combat 1 · L'approche\nStage : arena-114-prey-2022-bear-river\nAdversaire : npc-bear\nRencontre de transition proposée pour Feral. Une première opposition teste la distance de carreaux guidés. Adversaire de cette version : Ours de la rencontre de Prey.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F006_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.03",
@@ -7725,7 +7725,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "3 — Combat 2 · Le contretemps\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : npc-trapper\nLe chemin vers « Traquer une proie qui apprend à retourner la visée contre le chasseur » se resserre. Un adversaire change la distance d'engagement et force l'usage de lance scindée. Adversaire de cette version : Trappeur armé — rôle de rencontre.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F006_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.04",
@@ -7743,7 +7743,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "4 — Cinématique · La trace du rival\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Naru. Feral vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F006_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Naru. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.05",
@@ -7761,7 +7761,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "5 — Cinématique rival · Face-à-face\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nLe bouclier se déploie dans un cliquetis d'os et de métal. Le masque fixe un point puis la lance se sépare. Contrechamp sur Naru : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F006_STORY_05\n\nBesoins visuels restant à livrer :\nBouclier déployé, acquisition du point par le masque et séparation de la lance.\nContrechamp de garde spécifique de Naru, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.06",
@@ -7779,7 +7779,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-bear\nVariante narrative de Bourbier : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F006_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.07",
@@ -7797,7 +7797,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "7 — Combat rival · Le choix à portée\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nAffronter Naru. Le duel utilise les ressources réellement conservées ; Feral doit accomplir : traquer une proie qui apprend à retourner la visée contre le chasseur.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F006_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-feral-hunter.08",
@@ -7815,7 +7815,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "8 — Cinématique outro · La preuve du retour\nStage : arena-115-prey-2022-mud-pit\nAdversaire : Aucun\nLe chasseur vainqueur récupère le masque hors de la boue ; un dernier plan montre la ligne de tir qui a failli le condamner. Issue alternative annoncée.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F006_STORY_08\n\nBesoins visuels restant à livrer :\nRécupération du masque hors de la boue, puis plan distinct sur la ligne de tir.\nIssue alternative annoncée ; récompense cosmétique distincte d’une nouvelle technique canonique.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "VAR-feral-hunter.pilot-outfit",
@@ -7833,7 +7833,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.masked",
@@ -7851,7 +7851,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.unmasked",
@@ -7869,7 +7869,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.lost-or-stowed-equipment",
@@ -7887,7 +7887,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.damage-and-armor",
@@ -7905,7 +7905,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.native-directions",
@@ -7923,7 +7923,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-feral-hunter.cloak",
@@ -7941,7 +7941,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "CAM-scar.01",
@@ -7959,7 +7959,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "1 — Cinématique · L'indice\nStage : arena-123-avp-2004-whaling-station\nAdversaire : Aucun\nL'initiation est interrompue ; récupérer l'équipement devient aussi urgent que survivre au temple.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F003_STORY_01\n\nBesoins visuels restant à livrer :\nIndice ou passage du temple et équipement à récupérer ; l'initiation est interrompue, sans marque anticipée.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.02",
@@ -7977,7 +7977,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "2 — Combat 1 · L'approche\nStage : arena-123-avp-2004-whaling-station\nAdversaire : npc-xeno-drone\nRencontre de transition proposée pour Scar. Une première opposition teste la distance de allonge télescopique. Adversaire de cette version : Drone xénomorphe — incarnation à fixer.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F003_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.03",
@@ -7995,7 +7995,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "3 — Combat 2 · Le contretemps\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : npc-grid\nLe chemin vers « Passer l'épreuve de la pyramide puis contenir la reine avec Lex » se resserre. Un adversaire change la distance d'engagement et force l'usage de tir de plasma. Adversaire de cette version : Grid.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F003_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.04",
@@ -8013,7 +8013,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "4 — Cinématique · La trace du rival\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Grid. Scar vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F003_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Grid. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.05",
@@ -8031,7 +8031,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "5 — Cinématique rival · Face-à-face\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nIl inspecte une gravure de la pyramide puis pose le pied hors de l'ombre. La marque n'est visible que dans la version déjà initiée. Contrechamp sur Grid : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F003_STORY_05\n\nBesoins visuels restant à livrer :\nInspection de la gravure puis sortie de l’ombre ; marque seulement pour la version déjà initiée.\nContrechamp de garde spécifique de Grid, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.06",
@@ -8049,7 +8049,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-xeno-drone\nVariante narrative de Avp 2004 queen chamber : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F003_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.07",
@@ -8067,7 +8067,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "7 — Combat rival · Le choix à portée\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nAffronter Grid. Le duel utilise les ressources réellement conservées ; Scar doit accomplir : passer l'épreuve de la pyramide puis contenir la reine avec lex.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F003_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "CAM-scar.08",
@@ -8085,7 +8085,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "8 — Cinématique outro · La preuve du retour\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : Aucun\nBranche alternative : Scar et Lex rouvrent une sortie ensemble. Un épilogue distinct rappelle l'issue connue de l'œuvre sans la modifier.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F003_STORY_08\n\nBesoins visuels restant à livrer :\nScar et Lex rouvrant une sortie ensemble : acteurs indépendants et équipement cohérent.\nÉpilogue distinct rappelant l’issue connue ; la fin jouée est annoncée comme branche alternative.",
-      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. La recette navigateur vérifie le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
+      "progressV107": "Deux parcours d’exercice persistants de huit étapes, terrain réel, sauvegarde et substituts déclarés. Clavier natif, reprise et conservation des preuves d’un carnet chargé vérifiés. Le navigateur couvre le premier terrain des deux héros, un duel CPU réel et un contre public ; aucune des seize scènes source n’est clôturée."
     },
     {
       "id": "VAR-scar.pilot-outfit",
@@ -8103,7 +8103,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.masked",
@@ -8121,7 +8121,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.unmasked",
@@ -8139,7 +8139,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.lost-or-stowed-equipment",
@@ -8157,7 +8157,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.damage-and-armor",
@@ -8175,7 +8175,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.native-directions",
@@ -8193,7 +8193,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     },
     {
       "id": "VAR-scar.cloak",
@@ -8211,7 +8211,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
-      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
+      "progressV107": "Capacités natives mesurées et affichées pour les sélections réelles ; 52 études par défaut, sept séquences partielles Scar masqué et refus des états non admis. Préchargement des atlas V107 et repli historique lors d’une panne PNG déclarée vérifiés. Les quatorze contraintes de costumes, masque, armure et équipement restent ouvertes."
     }
   ],
   "assets": [
@@ -11390,8 +11390,8 @@
     },
     {
       "path": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "c4ec543371e64401a35313692ededdbd19f8594b8a5e8241a1f03b788963a77f",
-      "bytes": 28477
+      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
+      "bytes": 28873
     },
     {
       "path": "app/game/GameClient.tsx",
@@ -11475,8 +11475,8 @@
     },
     {
       "path": "app/game/PitCanvas.tsx",
-      "sha256": "761398d88908acedbc0427ffabb3ccd30be4fb2df00e1664dbbf1a6289f0cc57",
-      "bytes": 282573
+      "sha256": "17b7a1473e7065acead9e3cca1d6047c988487989112a560a6f3f2c9c2668121",
+      "bytes": 282627
     },
     {
       "path": "app/game/PitExperienceV79.tsx",
@@ -11495,8 +11495,8 @@
     },
     {
       "path": "app/game/PitWorkbookCampaignV107.tsx",
-      "sha256": "ee99476b2e8261b2c948b401bd28afa50f0638b002e3edbe7cf67f63a6f1401f",
-      "bytes": 19611
+      "sha256": "ba1c2cf41076c84232766a9a0a29fdd00079eced547e1741376e349a0b6d9ec7",
+      "bytes": 19826
     },
     {
       "path": "app/game/PitWorkbookConclusionHudV107.tsx",
@@ -12025,8 +12025,8 @@
     },
     {
       "path": "app/game/systems/pitWorkbookCampaignV107.ts",
-      "sha256": "76fe33bb056a52e94a050e80b290520bbb06a079a978d8ac11f3a401472f8e63",
-      "bytes": 17954
+      "sha256": "d5fcfddee5752c4c5a15805e870ec3c1585aa13f05c7604e7816f1cc0fa141f8",
+      "bytes": 20483
     },
     {
       "path": "app/game/systems/pitWorkbookCombatV105.ts",
@@ -12120,13 +12120,13 @@
     },
     {
       "path": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "c396a8e5cae601fd17e4bde01f1ca4743cb09fcfd53c44f862b9e5fb6806efa3",
-      "bytes": 262588
+      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
+      "bytes": 262434
     },
     {
       "path": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
-      "sha256": "d0221f9b6bf85ae1b9525444763702f67f368175edfe20562fbc049d33092042",
-      "bytes": 258682
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911
     },
     {
       "path": "docs/qa/v107-clan-specialized/07-mobile-dock.png",
@@ -12135,23 +12135,28 @@
     },
     {
       "path": "docs/qa/v107-clan-specialized/business-tests.log",
-      "sha256": "189130d62f6fbb8a64b07ded7cb367b242db5834a15334e8966aa0c85b60db3b",
-      "bytes": 4219
+      "sha256": "f83100eae55fea2f20a5cc13b29281c1779732162e6e0d479fbcc75124d7a5f5",
+      "bytes": 5559
+    },
+    {
+      "path": "docs/qa/v107-clan-specialized/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
     },
     {
       "path": "docs/qa/v107-clan-specialized/raw-validation.json",
-      "sha256": "88ee71a35007d8c5c1bd2dd03e04634d9248f7fb7423029e3289907f99d77c9b",
-      "bytes": 12112
+      "sha256": "5fe45e068ed2516d4ba5947ebc28feca4557406921230c4d8d5e7839f9ba5351",
+      "bytes": 12411
     },
     {
       "path": "docs/qa/v107-clan-specialized/source-before-after.json",
-      "sha256": "51d3dff00676ce76e0ba7efafc93cc2cb98add7f0520b94d749bc34dc14a6a0f",
+      "sha256": "80b2af5fa61dbfde02e3805774cea891d6ed387333e4ebd8c633301290a34623",
       "bytes": 4591
     },
     {
       "path": "docs/qa/v107-clan-specialized/verification-commands.json",
-      "sha256": "cd54211dde6abf19e512d1d7a3ef45a3243c54390c6e77af51e8b28971d6d418",
-      "bytes": 807
+      "sha256": "2fbeedc08b070ca0b1dc4ba5fcfeebf1742cc150a5d1d9b74c64b5df9ad11ca7",
+      "bytes": 845
     },
     {
       "path": "docs/qa/v107-enforcer-alternatives/contact-1.png",
@@ -12190,8 +12195,8 @@
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/03-c-native-carry.png",
-      "sha256": "b0000e5d0245b38118a81e0577c904c4652dd7ba4f51b08bd60e0470f894f5d8",
-      "bytes": 731386
+      "sha256": "1e1ecc4d6d4b82454ddf53566fd0e6e9af5c6591475a0d603a1f3f5fffbfdefd",
+      "bytes": 731244
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/04-parked-c-original-provenance.png",
@@ -12235,13 +12240,18 @@
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/result.json",
-      "sha256": "35fd90e9983a6c399ad6964ca329b23996e4eef65fbf637c1a3b215f9383eed5",
+      "sha256": "7ce2e512f64f6b8adeadebd9940602e19208718b9cf70f6772c6bfef3a2646cf",
       "bytes": 20897
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/test.log",
       "sha256": "2a71e94cc208848a31a4fa6f92738a81120de8e5a82356820a17b7cc42202496",
       "bytes": 21524
+    },
+    {
+      "path": "docs/qa/v107-pit-workbook/00-device-art-failure-legacy-duel.png",
+      "sha256": "ca7622733e13271d6fdc4b69909aad6976e7beba1dbc94a0fa6018514ad71a7f",
+      "bytes": 1308634
     },
     {
       "path": "docs/qa/v107-pit-workbook/01-masked-capabilities.png",
@@ -12260,8 +12270,8 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/browser-result.json.gz",
-      "sha256": "b0187cf00d2bde423c9a18d217d8521f199c937f6ec3fe1feccef5cec90828c4",
-      "bytes": 3369289
+      "sha256": "f8fb69ec2d376308042102284e3799146d546768c7d3c9f3ef19892618f03bed",
+      "bytes": 3372333
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-left-contact.png",
@@ -12270,13 +12280,13 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-right-contact.png",
-      "sha256": "65a085bb505859f883e4578923cd7235616b62266d86ee6a8eac6e2c5eb9d54d",
-      "bytes": 1122794
+      "sha256": "1294db605544f9d6bbdace5dbfac96eb1bbf33b3cd0523759a43d4b28caf0eda",
+      "bytes": 1123222
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-right-result.png",
-      "sha256": "36d82bacd71fa0fb35567748d202b0a81730202111fa9b4ff99c769bf4947dda",
-      "bytes": 80029
+      "sha256": "3a9f4d31c698f73e60c92de522a0f5a2092e0abfad7b6655d5e8120e5959b5a9",
+      "bytes": 80064
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-left-contact.png",
@@ -12290,8 +12300,8 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-device-flight.png",
-      "sha256": "76673258186d2f5a71256f52c33f347480d378255d9f453626514146802bface",
-      "bytes": 1122966
+      "sha256": "f7e15d87f43554a2426a9ca444d66247d31f01a6dc59598413aa5b28bfd67f77",
+      "bytes": 1123018
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-result.png",
@@ -12300,47 +12310,47 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-mine-armed.png",
-      "sha256": "b3f8b05a7dbf36efb2c16c52cbcc8461cf28e918355de805db5209769be10bc9",
-      "bytes": 1226297
+      "sha256": "18d481346ac2b75dfbcf4df59b28356ec019bbd55399af1160cd8f108aa638d6",
+      "bytes": 1221706
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-mine-placement.png",
-      "sha256": "d4d4311d90f99585b87843f9058559aed4e1b50b07065f50d068bf808059d808",
-      "bytes": 1221597
+      "sha256": "ba6a16232e943cbb498a2912000364ef1b60c3ba860dd20d2b528b71e9012e90",
+      "bytes": 1217214
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-star-release.png",
-      "sha256": "165bd9fad001203ea8b503d3d69cf30becce539041be4c93f68ae716592aa0d7",
-      "bytes": 1219730
+      "sha256": "2571e499a74bbe68fc4f036032401dc3e5397f5fab7998d94d2ebc5dbe97a2bf",
+      "bytes": 1217307
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-mine-armed.png",
-      "sha256": "d383051ac951f7674e4f71de7446e4baf0c3f0c68758d911c3f1b883cf7ce816",
-      "bytes": 1208772
+      "sha256": "613167c46d1e0e5456fe29345ee25952eda091d4f0577f6f13b1a338183919bd",
+      "bytes": 1209452
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-mine-placement.png",
-      "sha256": "9857385c2ff111479d7680674d7c84868203dbc699aadb03f5e706cfc83a809e",
-      "bytes": 1205392
+      "sha256": "790bbc8d42a93d7e9d5b670313e96b2a4cb68cc4cefdacf054690ae2be8cd3e9",
+      "bytes": 1206098
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-star-release.png",
-      "sha256": "806442f8142646cbfd32049d36742c35eef5bc2759a183c389a3d573c74b1281",
-      "bytes": 1198422
+      "sha256": "46fdd974ee2ebe86b6ba4d0344cde549b2c9dfb59893bcf4685e6fd39260d00e",
+      "bytes": 1194819
     },
     {
       "path": "docs/qa/v107-pit-workbook/mine-real-destruction.png",
-      "sha256": "103b5d4b6058b17457c6112feb7eb822857d3106a72eae7d11d70d3647390e82",
-      "bytes": 1342704
+      "sha256": "7dca1c2233bff0e0b403a5045edc466ac3c7e892886a5fed1b99e78ce7bb6ed5",
+      "bytes": 1340305
     },
     {
       "path": "docs/qa/v107-pit-workbook/served-production.html",
-      "sha256": "4fbc4cca8b9167cb41095780e49c513accd2e0477c1d46bd2750c15215908e64",
+      "sha256": "956fd73bb1b1552acd2da7423a2861766844abaa5d482717b0c4267e3dcf55e2",
       "bytes": 13834
     },
     {
       "path": "docs/qa/v107-preserve-expedition/browser.log",
-      "sha256": "4d499d603bbeb62055d56db4676605c9dab9a5afd1fab8f0d200b6cc1570fea2",
+      "sha256": "05fc73bb312d5709c413e518c06a490d3fc4f06bad94115afc68fdadee6c654b",
       "bytes": 3239
     },
     {
@@ -12380,8 +12390,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/result.json",
-      "sha256": "d5dc9f07d391cbc871b73fa0ba913a483bf4fb76479efee8591787ee945911d3",
-      "bytes": 150996
+      "sha256": "efffd2e6fff1dc46e8cabf654bf82cf09cf091d981dbbf825079d092a057c400",
+      "bytes": 151455
     },
     {
       "path": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
@@ -12390,8 +12400,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
-      "sha256": "64391d0eeff2a37de7bd8d45ea6f13e84cbe711bba9b4d58f59b3db1eb6ecb73",
-      "bytes": 1570781
+      "sha256": "e18f6c720dba0d8398c333f2a65f82b70e161e0cf27de45961fd74e8de413f86",
+      "bytes": 1570792
     },
     {
       "path": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
@@ -12425,8 +12435,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
-      "sha256": "48a241d1538bd2aab0086f11a80f85d85f08d7112012799b49effec5e53472ab",
-      "bytes": 395468
+      "sha256": "6008a7beccf234be85ae20c1b6e49e8a26b45a8c65d2feba62191397395e0b69",
+      "bytes": 395118
     },
     {
       "path": "docs/qa/v107-static-reconciliation/historical-production-tests.log",
@@ -12765,13 +12775,13 @@
     },
     {
       "path": "docs/v107-clan-specialized-contract.md",
-      "sha256": "c0930ebb20212ff621bdbfdaa000791b293ba2450af61fd242973cd72f5bd868",
-      "bytes": 10900
+      "sha256": "7d7dddbb472c0b46400f8150196d4156334a58466a40a03d7e2c451da51b7cbb",
+      "bytes": 11450
     },
     {
       "path": "docs/v107-clan-specialized-validation.json",
-      "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
-      "bytes": 18901
+      "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
+      "bytes": 19585
     },
     {
       "path": "docs/v107-enforcer-alternatives-validation.json",
@@ -12780,7 +12790,7 @@
     },
     {
       "path": "docs/v107-homeworld-comparison-validation.json",
-      "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+      "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
       "bytes": 11883
     },
     {
@@ -12795,17 +12805,17 @@
     },
     {
       "path": "docs/v107-pit-workbook-validation.json",
-      "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-      "bytes": 63060
+      "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+      "bytes": 64033
     },
     {
       "path": "docs/v107-preserve-expedition-validation.json",
-      "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+      "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
       "bytes": 32161
     },
     {
       "path": "docs/v107-runtime-freeze.json",
-      "sha256": "e5c1e0607338e6293a2f306d6de3e8f236082fbe78ee9c6ff3f85ca496bb3693",
+      "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
       "bytes": 221954
     },
     {
@@ -12820,13 +12830,13 @@
     },
     {
       "path": "docs/v107-validation-summary.json",
-      "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-      "bytes": 18374
+      "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+      "bytes": 18778
     },
     {
       "path": "docs/v107-workstreams-source.json",
-      "sha256": "e6b4f3eaab45414b98fedea4eaf6ae99f7d339b16029687d17fa7cdefdcfb132",
-      "bytes": 30928
+      "sha256": "d63ebd625ef20106c936c659bb31c6facde27878d0da7657a96381660ac2da2e",
+      "bytes": 31502
     },
     {
       "path": "docs/v56-excel-priorities.json",
@@ -14595,8 +14605,8 @@
     },
     {
       "path": "scripts/build-excel-followup-v107.mjs",
-      "sha256": "806c7561066ea72b87547653d78f147ea8f66733c5acece6e0bef94dde606806",
-      "bytes": 45008
+      "sha256": "f64c63b7b324b692edcc75204e3e9b2ff352a5544155a5e74b77255e23eb85f3",
+      "bytes": 45050
     },
     {
       "path": "scripts/build-excel-followup-v107.py",
@@ -14640,8 +14650,8 @@
     },
     {
       "path": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "03cbe47948425ee1a2505f9c441c2dbf2333f42fd2d5595846d8986fba9aa9d5",
-      "bytes": 20466
+      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
+      "bytes": 21662
     },
     {
       "path": "scripts/qa-homeworld-archive-comparison-v107.mjs",
@@ -14654,9 +14664,14 @@
       "bytes": 8259
     },
     {
+      "path": "scripts/qa-pit-selection-assets-v107.mjs",
+      "sha256": "d82daf878a2988bf9942f814a7c13884da913d1185ad712257a8da85ad8ea17b",
+      "bytes": 2871
+    },
+    {
       "path": "scripts/qa-pit-workbook-v107.mjs",
-      "sha256": "7cd6bf48d7d28da8da4f70b083723f3b32a55b47dad32aaa4e5428664f103a9c",
-      "bytes": 33578
+      "sha256": "9b7045778b82ce7cd1bb81e188c9419427e0722c8c8e681d67dcd9c6a69c5a11",
+      "bytes": 35686
     },
     {
       "path": "scripts/qa-preserve-expedition-v107.mjs",
@@ -14689,17 +14704,17 @@
       "id": "V107-PRODUCTION-PIT",
       "status": "PASS_CIBLE",
       "scope": "Targeted public exercise terrain/persistence and one genuine CPU duel; not all16 browser stages. Native Scar conclusions in both orientations after genuine public local victories, measured capability UI and device journeys. One declared initial first-tracks profile and a held virtual pad only for the visible focus regression. No combat snapshot, outcome, counter or reward injection.",
-      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-d148-r7 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
+      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-dc44 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "cd927ffab8fc390bab6def5f802c30e1bf5b58f4ea894b23126d3d4ff9e49aa9",
-          "bytes": 63060
+          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
+          "bytes": 64033
         }
       ],
       "limit": "Neuf actions restent ouvertes : quatre projections et cinq conclusions, dont CLEMENCE partielle. Kits complets et contraintes de variantes restent ouverts."
@@ -14708,16 +14723,16 @@
       "id": "V107-PRODUCTION-HOMEWORLD",
       "status": "PASS_CIBLE",
       "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-final.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-pr16.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "8c41ca1650d5a55e4b981544c35f57b167709f26431d2d1d0e5371589a97a9bb",
+          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
           "bytes": 11883
         }
       ],
@@ -14727,17 +14742,17 @@
       "id": "V107-PRODUCTION-CLANS",
       "status": "PASS_CIBLE",
       "scope": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-d148ebc-r2 node scripts/qa-clan-specialized-v107.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "4a4326d1ea2e580f5a3b6725357dde2b6e515f0bbd7c76e15005a9b2a733feae",
-          "bytes": 18901
+          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
+          "bytes": 19585
         }
       ],
       "limit": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites."
@@ -14746,16 +14761,16 @@
       "id": "V107-PRODUCTION-PRESERVE",
       "status": "PASS_CIBLE",
       "scope": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "855d134c438c65276501e1a4d498470f1f55f41f01c7ed0845ef6f3897c5416c",
-          "bytes": 18374
+          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
+          "bytes": 18778
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "0c86a51aa657733ec921ca791b0e3399c0c67ff2233f74b3c14ca27e52d2286b",
+          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
           "bytes": 32161
         }
       ],
@@ -14764,7 +14779,7 @@
     {
       "id": "V107-ART-ALTERNATIVE-POSES",
       "status": "PASS_NATIVE_ASSETS",
-      "scope": "Eighteen native static alternative poses decoded and HTTP-hashed from the common compiled origin. Inspection contact sheet only; no claim of a played production gallery, animation, new identity or campaign placement.",
+      "scope": "Inspection statique antérieure : runtime d148ebc21004b87e3c6ce435d74e1c120856afba, build lKBwtp6LAjSerAzSZQEOM. Eighteen native static alternative poses decoded and HTTP-hashed from the common compiled origin. Inspection contact sheet only; no claim of a played production gallery, animation, new identity or campaign placement.",
       "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_ENFORCER_QA_OUTPUT=outputs/qa-v107/enforcer-alternatives-d148 node scripts/qa-enforcer-alternatives-v107.mjs > /tmp/v107-root-enforcer-native-qa.log 2>&1",
       "evidence": [
         {
@@ -14798,7 +14813,7 @@
           "path": "docs/qa/v107-enforcer-alternatives/report.json"
         }
       ],
-      "limit": "18 poses alternatives statiques, zéro nouvelle identité ; fixture d’inspection, aucune animation ni scène de galerie jouée revendiquée."
+      "limit": "Preuve native antérieure conservée avec son ancienne commande : 18 poses statiques aux mêmes SHA, zéro nouvelle identité ; aucune nouvelle inspection sur le runtime corrigé ni scène de galerie jouée revendiquée."
     },
     {
       "id": "V107-HISTORICAL-PR15",

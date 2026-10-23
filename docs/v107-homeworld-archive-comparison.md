@@ -36,12 +36,12 @@ Les tests causaux sont `tests/homeworld-archive-comparison-v107.test.mjs` et les
 
 Le driver de recette est `scripts/qa-homeworld-archive-comparison-v107.mjs`. Son seul point de départ accepté est une campagne existante avec B terminé par le helper natif et aucun reçu A. Chaque étape A utilise ensuite l’application compilée, ses boutons et les vraies touches clavier. Il couvre les refus répétés, pause, pose, reprise, Continuer, guide/worker, comparaison explicite et mobile. Le carnet est replié par son vrai contrôle avant les manipulations et les captures de la scène ; le viewport natif mesure au moins 445 pixels de haut dans ces quatre captures.
 
-La recette finale a passé **67 contrôles**, sans exception navigateur, sur le runtime `d148ebc21004b87e3c6ce435d74e1c120856afba`, BUILD_ID `lKBwtp6LAjSerAzSZQEOM`, application compilée servie en HTTP 200 à `http://127.0.0.1:3101`. Les sources avant/après sont identiques. Les **10 nouvelles captures ont été ouvertes et inspectées**, dont portage C, pose au sol, dépôt au troisième pupitre, deux supports conservés et interface mobile. Les 13 pièces portables totalisent 4 118 851 octets ; le [rapport de validation](v107-homeworld-comparison-validation.json) les épingle par SHA-256 et taille.
+La recette finale a passé **67 contrôles**, sans exception navigateur, sur le runtime `dc44ba9f36f5ae3606ea40a2dd68459be8c7510a`, BUILD_ID `6OeHlCftPttp5-q3dbQCV`, application compilée servie en HTTP 200 à `http://127.0.0.1:3101`. Les sources avant/après sont identiques. Les **10 nouvelles captures ont été ouvertes et inspectées**, dont portage C, pose au sol, dépôt au troisième pupitre, deux supports conservés et interface mobile. Les 13 pièces portables totalisent 4 118 709 octets ; le [rapport de validation](v107-homeworld-comparison-validation.json) les épingle par SHA-256 et taille.
 
 Commande réellement exécutée :
 
 ```sh
-env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=lKBwtp6LAjSerAzSZQEOM YAUTJA_QA_RUNTIME_COMMIT=d148ebc21004b87e3c6ce435d74e1c120856afba YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-final.log 2>&1
+env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-pr16.log 2>&1
 ```
 
 Le premier passage sur `fa5e394123c2e3c1d064387abfafa1a0a9d42d78` reste un préflight non promu. La qualification finale porte sur cette étude locale et ne ferme pas les lignes et animations restées ouvertes ci-dessus.
