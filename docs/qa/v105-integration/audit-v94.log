@@ -1,0 +1,572 @@
+
+> yautja-la-longue-chasse@1.0.0 test:audit:v94
+> node --experimental-strip-types --test --test-concurrency=1 tests/held-direction-v94.test.mjs tests/native-image-preload-v94.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/phase-clock-v94.test.mjs tests/page-activity-v94.test.mjs tests/production-pipeline-v94.test.mjs tests/audit-wiring-v94.test.mjs
+
+TAP version 13
+# Subtest: mausoleum uses physical-key tracking without target-driven animation restarts
+ok 1 - mausoleum uses physical-key tracking without target-driven animation restarts
+  ---
+  duration_ms: 0.772372
+  type: 'test'
+  ...
+# Subtest: focus loss pauses rituals and the gamepad instead of completing an unseen visit
+ok 2 - focus loss pauses rituals and the gamepad instead of completing an unseen visit
+  ---
+  duration_ms: 0.205654
+  type: 'test'
+  ...
+# Subtest: movement keys cannot steal native button activation
+ok 3 - movement keys cannot steal native button activation
+  ---
+  duration_ms: 1.088288
+  type: 'test'
+  ...
+# Subtest: the existing Homeworld loader delegates to the bounded native verifier
+ok 4 - the existing Homeworld loader delegates to the bounded native verifier
+  ---
+  duration_ms: 0.23014
+  type: 'test'
+  ...
+# Subtest: consultation still does not unlock or launch an uninstalled DLC
+ok 5 - consultation still does not unlock or launch an uninstalled DLC
+  ---
+  duration_ms: 0.267055
+  type: 'test'
+  ...
+# Subtest: native image hook keys its effect by serialized metadata, not array identity
+ok 6 - native image hook keys its effect by serialized metadata, not array identity
+  ---
+  duration_ms: 0.24977
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint new-game
+ok 7 - terminal region arrival respects checkpoint new-game
+  ---
+  duration_ms: 1.184441
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint new-game
+ok 8 - terminal passage arrival respects checkpoint new-game
+  ---
+  duration_ms: 0.106357
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint new-game
+ok 9 - terminal both arrival respects checkpoint new-game
+  ---
+  duration_ms: 0.224702
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint prologue
+ok 10 - terminal region arrival respects checkpoint prologue
+  ---
+  duration_ms: 0.084685
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint prologue
+ok 11 - terminal passage arrival respects checkpoint prologue
+  ---
+  duration_ms: 0.192795
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint prologue
+ok 12 - terminal both arrival respects checkpoint prologue
+  ---
+  duration_ms: 0.079838
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint youth-training
+ok 13 - terminal region arrival respects checkpoint youth-training
+  ---
+  duration_ms: 0.110303
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint youth-training
+ok 14 - terminal passage arrival respects checkpoint youth-training
+  ---
+  duration_ms: 0.059007
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint youth-training
+ok 15 - terminal both arrival respects checkpoint youth-training
+  ---
+  duration_ms: 0.214667
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint deck
+ok 16 - terminal region arrival respects checkpoint deck
+  ---
+  duration_ms: 1.347002
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint deck
+ok 17 - terminal passage arrival respects checkpoint deck
+  ---
+  duration_ms: 0.386882
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint deck
+ok 18 - terminal both arrival respects checkpoint deck
+  ---
+  duration_ms: 0.057826
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint homeworld
+ok 19 - terminal region arrival respects checkpoint homeworld
+  ---
+  duration_ms: 0.036494
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint homeworld
+ok 20 - terminal passage arrival respects checkpoint homeworld
+  ---
+  duration_ms: 0.031637
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint homeworld
+ok 21 - terminal both arrival respects checkpoint homeworld
+  ---
+  duration_ms: 0.031026
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint mission
+ok 22 - terminal region arrival respects checkpoint mission
+  ---
+  duration_ms: 0.029564
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint mission
+ok 23 - terminal passage arrival respects checkpoint mission
+  ---
+  duration_ms: 0.029514
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint mission
+ok 24 - terminal both arrival respects checkpoint mission
+  ---
+  duration_ms: 0.028793
+  type: 'test'
+  ...
+# Subtest: terminal region arrival respects checkpoint game-reserve
+ok 25 - terminal region arrival respects checkpoint game-reserve
+  ---
+  duration_ms: 0.103072
+  type: 'test'
+  ...
+# Subtest: terminal passage arrival respects checkpoint game-reserve
+ok 26 - terminal passage arrival respects checkpoint game-reserve
+  ---
+  duration_ms: 0.034911
+  type: 'test'
+  ...
+# Subtest: terminal both arrival respects checkpoint game-reserve
+ok 27 - terminal both arrival respects checkpoint game-reserve
+  ---
+  duration_ms: 0.029784
+  type: 'test'
+  ...
+# Subtest: a reserve checkpoint remains eligible despite terminal city history
+ok 28 - a reserve checkpoint remains eligible despite terminal city history
+  ---
+  duration_ms: 0.078506
+  type: 'test'
+  ...
+# Subtest: reserve data alone cannot pull a ship checkpoint into the reserve
+ok 29 - reserve data alone cannot pull a ship checkpoint into the reserve
+  ---
+  duration_ms: 0.053579
+  type: 'test'
+  ...
+# Subtest: unfinished regional travel retains precedence over its departure checkpoint
+ok 30 - unfinished regional travel retains precedence over its departure checkpoint
+  ---
+  duration_ms: 0.148529
+  type: 'test'
+  ...
+# Subtest: unfinished passage remains resumable
+ok 31 - unfinished passage remains resumable
+  ---
+  duration_ms: 0.081481
+  type: 'test'
+  ...
+# Subtest: arrival at the ash biome restores the proper expedition
+ok 32 - arrival at the ash biome restores the proper expedition
+  ---
+  duration_ms: 0.054491
+  type: 'test'
+  ...
+# Subtest: arrival at the glass biome restores the other expedition
+ok 33 - arrival at the glass biome restores the other expedition
+  ---
+  duration_ms: 0.048252
+  type: 'test'
+  ...
+# Subtest: an active region is not cancelled by a completed older passage
+ok 34 - an active region is not cancelled by a completed older passage
+  ---
+  duration_ms: 0.054971
+  type: 'test'
+  ...
+# Subtest: an empty history yields to the existing caller routing
+ok 35 - an empty history yields to the existing caller routing
+  ---
+  duration_ms: 0.070755
+  type: 'test'
+  ...
+# Subtest: the production wrapper delegates only after all youth chapter guards
+ok 36 - the production wrapper delegates only after all youth chapter guards
+  ---
+  duration_ms: 0.571264
+  type: 'test'
+  ...
+# Subtest: no held key means no movement
+ok 37 - no held key means no movement
+  ---
+  duration_ms: 0.995151
+  type: 'test'
+  ...
+# Subtest: unrelated keyup never stops a direction
+ok 38 - unrelated keyup never stops a direction
+  ---
+  duration_ms: 0.263239
+  type: 'test'
+  ...
+# Subtest: the most recent physical direction wins; releasing it resumes the first
+ok 39 - the most recent physical direction wins; releasing it resumes the first
+  ---
+  duration_ms: 0.120578
+  type: 'test'
+  ...
+# Subtest: opposite auto-repeat does not steal movement priority
+ok 40 - opposite auto-repeat does not steal movement priority
+  ---
+  duration_ms: 0.307565
+  type: 'test'
+  ...
+# Subtest: two aliases for the same action are tracked independently
+ok 41 - two aliases for the same action are tracked independently
+  ---
+  duration_ms: 0.116623
+  type: 'test'
+  ...
+# Subtest: releasing an older opposite key leaves the current movement intact
+ok 42 - releasing an older opposite key leaves the current movement intact
+  ---
+  duration_ms: 0.085496
+  type: 'test'
+  ...
+# Subtest: blur, dialog, suspend and page reset discard all old held keys
+ok 43 - blur, dialog, suspend and page reset discard all old held keys
+  ---
+  duration_ms: 0.272002
+  type: 'test'
+  ...
+# Subtest: unknown physical keys cannot create a stuck hold
+ok 44 - unknown physical keys cannot create a stuck hold
+  ---
+  duration_ms: 0.089983
+  type: 'test'
+  ...
+# Subtest: separate mounted surfaces never share held state
+ok 45 - separate mounted surfaces never share held state
+  ---
+  duration_ms: 0.445598
+  type: 'test'
+  ...
+# Subtest: all permutations of three presses/releases return to neutral
+ok 46 - all permutations of three presses/releases return to neutral
+  ---
+  duration_ms: 0.526438
+  type: 'test'
+  ...
+# Subtest: an auto-repeat after focus loss cannot revive a discarded hold
+ok 47 - an auto-repeat after focus loss cannot revive a discarded hold
+  ---
+  duration_ms: 0.141369
+  type: 'test'
+  ...
+# Subtest: empty batches are ready immediately and done settles
+ok 48 - empty batches are ready immediately and done settles
+  ---
+  duration_ms: 2.070671
+  type: 'test'
+  ...
+# Subtest: exact dimensions and original URL produce a ready batch
+ok 49 - exact dimensions and original URL produce a ready batch
+  ---
+  duration_ms: 0.959769
+  type: 'test'
+  ...
+# Subtest: incorrect dimensions never admit an image
+ok 50 - incorrect dimensions never admit an image
+  ---
+  duration_ms: 0.523434
+  type: 'test'
+  ...
+# Subtest: decode rejection is reported without unhandled rejection
+ok 51 - decode rejection is reported without unhandled rejection
+  ---
+  duration_ms: 0.637823
+  type: 'test'
+  ...
+# Subtest: concurrent decoder count is bounded, queued images eventually load
+ok 52 - concurrent decoder count is bounded, queued images eventually load
+  ---
+  duration_ms: 22.72219
+  type: 'test'
+  ...
+# Subtest: a stalled decode times out, detaches and settles done
+ok 53 - a stalled decode times out, detaches and settles done
+  ---
+  duration_ms: 13.07246
+  type: 'test'
+  ...
+# Subtest: cancel settles even when decode never settles and publishes no late progress
+ok 54 - cancel settles even when decode never settles and publishes no late progress
+  ---
+  duration_ms: 0.779383
+  type: 'test'
+  ...
+# Subtest: retry refreshes exactly the renderer URL rather than a query variant
+ok 55 - retry refreshes exactly the renderer URL rather than a query variant
+  ---
+  duration_ms: 0.370168
+  type: 'test'
+  ...
+# Subtest: non-retry loading does not duplicate image fetches through fetch()
+ok 56 - non-retry loading does not duplicate image fetches through fetch()
+  ---
+  duration_ms: 0.520559
+  type: 'test'
+  ...
+# Subtest: HTTP errors on retry cannot be admitted by a stale image cache
+ok 57 - HTTP errors on retry cannot be admitted by a stale image cache
+  ---
+  duration_ms: 0.456866
+  type: 'test'
+  ...
+# Subtest: a stalled retry fetch is aborted by the same end-to-end deadline
+ok 58 - a stalled retry fetch is aborted by the same end-to-end deadline
+  ---
+  duration_ms: 12.545206
+  type: 'test'
+  ...
+# Subtest: a stalled response body is also bounded
+ok 59 - a stalled response body is also bounded
+  ---
+  duration_ms: 12.335566
+  type: 'test'
+  ...
+# Subtest: late decoder resolution cannot revive a cancelled attempt
+ok 60 - late decoder resolution cannot revive a cancelled attempt
+  ---
+  duration_ms: 6.347284
+  type: 'test'
+  ...
+# Subtest: late retry response cannot construct an image after cancellation
+ok 61 - late retry response cannot construct an image after cancellation
+  ---
+  duration_ms: 6.037054
+  type: 'test'
+  ...
+# Subtest: an error is retained when later assets load successfully
+ok 62 - an error is retained when later assets load successfully
+  ---
+  duration_ms: 0.652124
+  type: 'test'
+  ...
+# Subtest: separate attempts never reuse a prior error
+ok 63 - separate attempts never reuse a prior error
+  ---
+  duration_ms: 0.315316
+  type: 'test'
+  ...
+# Subtest: invalid concurrency cannot leave the batch permanently pending
+ok 64 - invalid concurrency cannot leave the batch permanently pending
+  ---
+  duration_ms: 0.302717
+  type: 'test'
+  ...
+# Subtest: server rendering does not need DOM globals
+ok 65 - server rendering does not need DOM globals
+  ---
+  duration_ms: 0.702599
+  type: 'test'
+  ...
+# Subtest: focus and visibility must both be active; subscriptions clean up
+ok 66 - focus and visibility must both be active; subscriptions clean up
+  ---
+  duration_ms: 0.413161
+  type: 'test'
+  ...
+# Subtest: new phase starts with its whole duration and one sound
+ok 67 - new phase starts with its whole duration and one sound
+  ---
+  duration_ms: 1.348784
+  type: 'test'
+  ...
+# Subtest: time spent inactive does not consume ritual time
+ok 68 - time spent inactive does not consume ritual time
+  ---
+  duration_ms: 0.16184
+  type: 'test'
+  ...
+# Subtest: multiple pauses preserve the exact remaining duration
+ok 69 - multiple pauses preserve the exact remaining duration
+  ---
+  duration_ms: 0.136311
+  type: 'test'
+  ...
+# Subtest: effect restarts do not replay audio or reset the duration
+ok 70 - effect restarts do not replay audio or reset the duration
+  ---
+  duration_ms: 0.145164
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot finish a paused phase
+ok 71 - late callbacks cannot finish a paused phase
+  ---
+  duration_ms: 0.272182
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot complete a different phase
+ok 72 - late callbacks cannot complete a different phase
+  ---
+  duration_ms: 0.150402
+  type: 'test'
+  ...
+# Subtest: the same timer callback can only finish once
+ok 73 - the same timer callback can only finish once
+  ---
+  duration_ms: 0.211382
+  type: 'test'
+  ...
+# Subtest: a new consultation gets a new clock and sound
+ok 74 - a new consultation gets a new clock and sound
+  ---
+  duration_ms: 0.142751
+  type: 'test'
+  ...
+# Subtest: reset invalidates a callback left from the previous consultation
+ok 75 - reset invalidates a callback left from the previous consultation
+  ---
+  duration_ms: 0.397197
+  type: 'test'
+  ...
+# Subtest: late timers cannot produce negative delay
+ok 76 - late timers cannot produce negative delay
+  ---
+  duration_ms: 0.398399
+  type: 'test'
+  ...
+# Subtest: old timer cannot finish the SAME phase after resume
+ok 77 - old timer cannot finish the SAME phase after resume
+  ---
+  duration_ms: 0.224922
+  type: 'test'
+  ...
+# Subtest: old consultation cannot finish the same named phase in a new consultation
+ok 78 - old consultation cannot finish the same named phase in a new consultation
+  ---
+  duration_ms: 0.155069
+  type: 'test'
+  ...
+# Subtest: effect restart without pause still invalidates its prior callback
+ok 79 - effect restart without pause still invalidates its prior callback
+  ---
+  duration_ms: 0.170082
+  type: 'test'
+  ...
+# Subtest: a token from another mounted ritual cannot finish this one
+ok 80 - a token from another mounted ritual cannot finish this one
+  ---
+  duration_ms: 0.10167
+  type: 'test'
+  ...
+# Subtest: invalid durations and timestamps cannot poison the timer
+ok 81 - invalid durations and timestamps cannot poison the timer
+  ---
+  duration_ms: 0.122872
+  type: 'test'
+  ...
+# Subtest: production retains all existing verification and guarded packaging stages
+ok 82 - production retains all existing verification and guarded packaging stages
+  ---
+  duration_ms: 1.881702
+  type: 'test'
+  ...
+# Subtest: success runs all five stages without a shell
+ok 83 - success runs all five stages without a shell
+  ---
+  duration_ms: 0.547329
+  type: 'test'
+  ...
+# Subtest: production is fail-fast at stage 1
+ok 84 - production is fail-fast at stage 1
+  ---
+  duration_ms: 0.218914
+  type: 'test'
+  ...
+# Subtest: production is fail-fast at stage 2
+ok 85 - production is fail-fast at stage 2
+  ---
+  duration_ms: 0.151724
+  type: 'test'
+  ...
+# Subtest: production is fail-fast at stage 3
+ok 86 - production is fail-fast at stage 3
+  ---
+  duration_ms: 0.323608
+  type: 'test'
+  ...
+# Subtest: production is fail-fast at stage 4
+ok 87 - production is fail-fast at stage 4
+  ---
+  duration_ms: 0.153798
+  type: 'test'
+  ...
+# Subtest: production is fail-fast at stage 5
+ok 88 - production is fail-fast at stage 5
+  ---
+  duration_ms: 0.203341
+  type: 'test'
+  ...
+# Subtest: process spawn errors fail rather than reporting a successful build
+ok 89 - process spawn errors fail rather than reporting a successful build
+  ---
+  duration_ms: 0.210341
+  type: 'test'
+  ...
+# Subtest: a killed build is an error even without an exit status
+ok 90 - a killed build is an error even without an exit status
+  ---
+  duration_ms: 0.780434
+  type: 'test'
+  ...
+# Subtest: npm production and Vercel invoke the very same checked pipeline
+ok 91 - npm production and Vercel invoke the very same checked pipeline
+  ---
+  duration_ms: 0.960089
+  type: 'test'
+  ...
+# Subtest: Vercel packaging includes the shared orchestrator and every local build stage
+ok 92 - Vercel packaging includes the shared orchestrator and every local build stage
+  ---
+  duration_ms: 21.507515
+  type: 'test'
+  ...
+# Subtest: allowing the build orchestrator does not expose test tooling, private art or environment files
+ok 93 - allowing the build orchestrator does not expose test tooling, private art or environment files
+  ---
+  duration_ms: 19.768959
+  type: 'test'
+  ...
+1..93
+# tests 93
+# suites 0
+# pass 93
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 845.576224

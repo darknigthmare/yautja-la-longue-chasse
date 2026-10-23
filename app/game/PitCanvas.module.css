@@ -482,10 +482,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 8px;
   pointer-events: none;
 }
 .combatActions > button { min-height: 44px; min-width: 44px; background: #020907ce; pointer-events: auto; }
+.workbookControlsV105 { display: flex; flex-wrap: wrap; justify-content: flex-end; min-width: 0; max-width: 100%; gap: 8px; }
+.workbookControlsV105 button { min-height: 44px; min-width: 44px; max-width: 100%; background: #020907ce; pointer-events: auto; overflow-wrap: anywhere; }
 .stageLabel { margin-right: auto; padding: 6px 9px; max-width: 70%; color: #eee1c4; background: #020605bc; font-size: .65rem; text-shadow: 0 1px 3px #000; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .matchRoot .announcement { top: max(112px, calc(env(safe-area-inset-top) + 100px)); max-width: calc(100% - 24px); text-align: center; }
 .matchRoot .throwTechStatus { position: absolute; z-index: 9; top: max(150px, calc(env(safe-area-inset-top) + 132px)); left: 50%; width: min(520px, calc(100% - 24px)); transform: translateX(-50%); padding: 8px 12px; text-align: center; }

@@ -13,6 +13,7 @@ import {
 import styles from "./ClanWarAtlasV95.module.css";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101 } from "./systems/planetMaterialV101";
+import { warConvoyRouteIssueV105 } from "./systems/clanWarConvoyRouteV105";
 
 interface ClanWarAtlasV95Props {
   simulation: WarSimulationV85;
@@ -150,6 +151,8 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const factionMetrics = warAtlasFactionMetricsV95(simulation, regions);
   const regionMetrics = warAtlasRegionMetricsV95(simulation, regions);
   const playerOrders = simulation.orders.filter(order => order.factionId === PLAYER);
+  const convoy = simulation.convoyRouteV105;
+  const convoyIssue = convoy ? warConvoyRouteIssueV105(simulation) : null;
   const filteredTerritories = territories.filter(item => !regionFilter || item.regionId === regionFilter);
   const view = { longitude, latitude, radius: 244 * zoom, centerX: 480, centerY: 306 };
   const selectedGeo = territories.find(item => item.id === inspected.id);
@@ -339,6 +342,12 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
                 data-hydrology-id={feature.id} data-hydrology-kind={feature.kind}><title>{`${feature.name} · ${planet.surface.name} · surface non jouable`}</title></path>)}</g>
               {showRoutes && <g className={styles.routes} aria-hidden="true" data-testid="war-planet-neighbor-routes">{connections.map(route => <path key={`${route.fromId}-${route.targetId}`} d={connectionPath(route.fromId, route.targetId)} data-from={route.fromId} data-target={route.targetId} data-kind={routeDescription(route.fromId, route.targetId)?.kind} strokeDasharray={routeDescription(route.fromId, route.targetId)?.kind === "crossing" ? "3 4" : undefined} data-active={route.fromId === source.id || route.targetId === source.id}/>)}</g>}
               <g className={styles.orderRoutes} aria-hidden="true">{playerOrders.filter(order => order.fromId !== order.targetId).map(order => <path key={order.id} d={connectionPath(order.fromId, order.targetId)} markerEnd={`url(#${unique}-arrow)`}/>)}</g>
+              {convoy && <g className={styles.convoyRoutes} aria-hidden="true" pointerEvents="none" data-testid="war-convoy-atlas-v105">{convoy.territoryIds.slice(1).map((id, index) => {
+                const fromId = convoy.territoryIds[index];
+                const stage = index < convoy.completedOrderIds.length ? "delivered" : simulation.territories[fromId].controller !== PLAYER || simulation.territories[id].controller !== PLAYER || index === convoy.completedOrderIds.length && convoyIssue ? "blocked" : index === convoy.completedOrderIds.length ? "next" : "planned";
+                const d = connectionPath(fromId, id);
+                return <g key={`${fromId}-${id}`} data-convoy-stage={stage} data-from={fromId} data-target={id}><path className={styles.convoyUnderlay} d={d}/><path className={styles.convoyLine} d={d}/></g>;
+              })}</g>}
               <g className={styles.regionNames} aria-hidden="true">{regions.map(region => {
                 const northernCoast = Math.max(...territories.filter(item => item.regionId === region.id).flatMap(item => item.points.map(point => point[1])));
                 const position = projected([region.longitude, Math.min(87, northernCoast + 4)]);
@@ -362,6 +371,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
           <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
         </fieldset>
         <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
+        {convoy && <p className={styles.convoyLegend} data-testid="war-convoy-atlas-legend-v105"><span data-stage="delivered">━ Étapes livrées</span><span data-stage="next">┅ Prochaine étape</span><span data-stage="planned">┄ Trajet prévu</span><span data-stage="blocked">┅ Liaison bloquée</span>Les étapes détaillées et leur inspection sont disponibles dans « Acheminer un convoi ».</p>}
       </div>
 
       <aside className={styles.intelPanel} aria-label="Renseignement territorial">

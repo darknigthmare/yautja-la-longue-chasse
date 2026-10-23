@@ -7,6 +7,9 @@ import sharp from "sharp";
 
 // Fixture tests inject their own reviewed art; production registry is verified separately.
 const registryFixture = { name: "empty-production-registry", setup(bundle) {
+  bundle.onResolve({ filter: /pitWorkbookNormalRegistryV104$/ }, () => ({ path: "normal-registry", namespace: "recipe-fixture" }));
+  bundle.onResolve({ filter: /pitWorkbookRegistryV105$/ }, () => ({ path: "workbook-registry", namespace: "recipe-fixture" }));
+  bundle.onLoad({ filter: /.*/, namespace: "recipe-fixture" }, () => ({ contents: "export const PIT_WORKBOOK_NORMAL_AND_LEGACY_REGISTRY_V104 = []; export const PIT_WORKBOOK_AND_LEGACY_REGISTRY_V105 = [];", loader: "js" }));
   bundle.onResolve({ filter: /pitSpriteSheetRegistry$/ }, () => ({ path: "registry", namespace: "fixture" }));
   bundle.onLoad({ filter: /.*/, namespace: "fixture" }, () => ({ contents: "export const PIT_SPRITE_SHEET_REGISTRY = [];", loader: "js" }));
 } };

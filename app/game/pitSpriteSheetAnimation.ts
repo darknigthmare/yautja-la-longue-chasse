@@ -220,7 +220,7 @@ export async function loadPitSpriteSheetAnimations(
       // has all three phases and at least three actually distinct pixel drawings.
       const attackGroups = new Map<string, typeof atlas.clips[number][]>();
       for (const clip of atlas.clips) {
-        const match = /^(pit\.(?:stand|crouch|air)\.(?:light|medium|heavy|technique\..+|workbook-v104\.[52j][LMH]))\.(startup|active|recovery)$/.exec(clip.id);
+        const match = /^(pit\.(?:stand|crouch|air)\.(?:light|medium|heavy|technique\..+|workbook-v104\.[52j][LMH]|workbook-v105\.(?:6M|S1|S3|S4)))\.(startup|active|recovery)$/.exec(clip.id);
         if (!match || clip.loop || clip.status !== "validated") continue;
         const key = clipKey(match[1], clip.facing);
         attackGroups.set(key, [...(attackGroups.get(key) ?? []), clip]);
@@ -320,6 +320,18 @@ export function resolvePitSpriteSheetPresentation(
       (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const facing = fighter.facing === 1 ? "right" : "left";
   const choices: { id: string; mode: "play" | "first" | "last"; status: PitSpriteSheetPresentationFrame["status"] }[] = [];
+  const workbookV105 = fighter.normalMovesRecipe === 'workbook-v105' && !fighter.variantId;
+  if (workbookV105) {
+    const family = 'pit.presentation.workbook-v105.';
+    if (cue.kind === 'intro' || cue.kind === 'victory' || cue.kind === 'defeat') {
+      choices.push({id: family + cue.kind, mode: 'play', status: 'dedicated-animation'});
+    } else if (cue.kind === 'taunt') {
+      const variant = options.presentation?.fighterTauntVariants?.[fighter.slot] ?? 1;
+      if (variant === 1 || variant === 2) choices.push({id: family + 'taunt.' + variant, mode: 'play', status: 'dedicated-animation'});
+    } else if (cue.kind === 'waiting' || cue.kind === 'ready') {
+      choices.push({id: family + 'intro', mode: cue.kind === 'waiting' ? 'first' : 'last', status: 'staged-held-pose'});
+    }
+  }
   if (cue.kind === "intro" || cue.kind === "victory" || cue.kind === "defeat" || cue.kind === "dizzy" || cue.kind === "taunt") {
     choices.push({ id: "pit.presentation." + cue.kind, mode: "play", status: "dedicated-animation" });
   } else if (cue.kind === "waiting" || cue.kind === "ready") {
@@ -363,11 +375,37 @@ export function resolvePitSpriteSheetPresentation(
 /** Capability query from the real decoded bank: fallback poses do not authorize
  * a voluntary gesture. This temporary view never enters the engine or replay. */
 export function pitNativeTauntDurationV93(bank: PitSpriteSheetAnimationBank | null | undefined, fighter: PitFighterState): number | null {
+  if (fighter.normalMovesRecipe === 'workbook-v105') return pitNativePresentationDurationV105(bank, fighter, 'taunt');
   const native = resolvePitSpriteSheetPresentation(bank, fighter, { presentation: { phase: "fight", elapsedMs: 0,
     durationMs: 1000, round: 1, blocksSimulation: false, resultVisible: false, fighterTaunts: [true, true] } });
   if (!native || native.status !== "dedicated-animation" || native.frame.clip.id !== "pit.presentation.taunt" || native.frame.clip.loop) return null;
   const durationMs = native.frame.totalTicks * 1000 / native.frame.clip.ticksPerSecond;
   return Number.isFinite(durationMs) && durationMs > 0 && durationMs <= 10_000 ? durationMs : null;
+}
+
+/** Native theatre capability comes from fully decoded clips in the selected
+ * BODY bank. The full authored duration prevents silently cutting an entrance
+ * or result to the historical 1.2/2.2 second generic theatre slots. */
+export function pitNativePresentationDurationV105(
+  bank: PitSpriteSheetAnimationBank | null | undefined,
+  fighter: PitFighterState,
+  kind: 'intro' | 'victory' | 'defeat' | 'taunt',
+  tauntVariant: 1 | 2 = 1,
+): number | null {
+  const proof = bank && evidence.get(bank);
+  if (fighter.normalMovesRecipe !== 'workbook-v105' || fighter.variantId || !proof || bank.cancelled || proof.signal?.aborted ||
+      (fighter.facing !== 1 && fighter.facing !== -1) || (tauntVariant !== 1 && tauntVariant !== 2) ||
+      !proof.selections.has(selectionKey(fighter.definitionId, fighter.variantId))) return null;
+  const id = 'pit.presentation.workbook-v105.' + (kind === 'taunt' ? 'taunt.' + tauntVariant : kind);
+  const facing = fighter.facing === 1 ? 'right' : 'left';
+  for (const animation of proof.animations) {
+    if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey(id, facing))) continue;
+    const native = resolveHunterSpriteAtlasFrame(animation.definition.atlas, id, facing, 0);
+    if (!native || native.clip.loop) continue;
+    const durationMs = native.totalTicks * 1000 / native.clip.ticksPerSecond;
+    if (Number.isFinite(durationMs) && durationMs > 0 && durationMs <= 10_000) return durationMs;
+  }
+  return null;
 }
 
 export function drawPitSpriteSheetPresentation(

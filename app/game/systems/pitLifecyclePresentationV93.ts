@@ -23,7 +23,7 @@ export const createPitLifecyclePresentationV93 = (): PitLifecyclePresentationV93
 
 function isNeutral(input: PitInput): boolean {
   return !input.left && !input.right && !input.down && !input.jump && !input.guardHigh && !input.guardLow &&
-    !input.attack && !input.throw && !input.resource;
+    !input.attack && !input.throw && !input.resource && !input.workbookAction;
 }
 function canGesture(combat: PitCombatState, slot: 0 | 1): boolean {
   const fighter = combat.fighters[slot];

@@ -11,13 +11,16 @@ import {
   useState,
 } from "react";
 
+import { applyPitWorkbookPresentationClockV105 } from './systems/pitWorkbookPresentationClockV105';
+import { PIT_WORKBOOK_COMBAT_RECIPE_V105 } from './systems/pitWorkbookCombatV105';
+import { PIT_WORKBOOK_MOVES_V105 } from './systems/pitWorkbookMovesV105';
 import { PIT_WORKBOOK_NORMALS_V104, PIT_WORKBOOK_NORMALS_RECIPE_V104, ownsPitWorkbookNormalsV104 } from './systems/pitWorkbookNormalsV104';
 import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
 import { advancePitFinisherV80, createPitFinisherViewV80, observePitFinisherV80, skipPitFinisherV80, triggerPitFinisherV80, pitFinisherIsSceneV80, createPitFinisherPadStateV80, readPitFinisherPadV80, PIT_FINISHER_COUNTS_V80, type PitFinisherChoiceV80, type PitFinisherModeV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
 import { drawPitFinisherActorsV80 } from './pitFinisherRenderingV80';
 import { PitFinisherHudV80 } from './PitFinisherHudV80';
 import { advancePitLifecyclePresentationV93, beginPitCombatTauntV93, beginPitLifecycleTauntV93, createPitLifecyclePresentationV93, observePitCombatTauntsV93, pitLifecyclePresentationViewV93, pitLifecycleWindowWinnerV93 } from './systems/pitLifecyclePresentationV93';
-import { pitNativeTauntDurationV93 } from './pitSpriteSheetAnimation';
+import { pitNativeTauntDurationV93, pitNativePresentationDurationV105 } from './pitSpriteSheetAnimation';
 import { getPitFighterPresentationCue } from './pitFighterPresentation';
 import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRoundPresentation, observePitRoundPresentation, type PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { compactControlKeyLabel } from "./controlBindingLabels";
@@ -365,6 +368,7 @@ function mergeInputs(primary: PitInput, secondary: PitInput): PitInput {
     guardHigh: primary.guardHigh || secondary.guardHigh,
     guardLow: primary.guardLow || secondary.guardLow,
     attack: primary.attack ?? secondary.attack,
+    workbookAction: primary.workbookAction ?? secondary.workbookAction,
     throw: primary.throw || secondary.throw,
     resource: primary.resource || secondary.resource,
   };
@@ -398,7 +402,7 @@ function readGamepad(gamepad: Gamepad | null): PitInput {
 
 function isNeutralInput(input: PitInput): boolean {
   return !input.left && !input.right && !input.down && !input.jump &&
-    !input.guardHigh && !input.guardLow && !input.attack && !input.throw && !input.resource;
+    !input.guardHigh && !input.guardLow && !input.attack && !input.throw && !input.resource && !input.workbookAction;
 }
 
 /** Deterministic state-only rival: no random calls and no player-input access. */
@@ -712,7 +716,7 @@ function drawArena(
   canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";
   canvas.dataset.pitStageTransferFrame = String(state.stageJourney?.transferFrame ?? "");
   canvas.dataset.pitFighterPositions = JSON.stringify(state.fighters.map(fighter => ({ x: Number(fighter.x.toFixed(2)), y: Number(fighter.y.toFixed(2)) })));
-  canvas.dataset.pitFighterActions = JSON.stringify(state.fighters.map(fighter => ({phase: fighter.phase, normalMove: fighter.action?.normalMove ?? null, actionFrame: fighter.action?.frame ?? null})));
+  canvas.dataset.pitFighterActions = JSON.stringify(state.fighters.map(fighter => ({phase: fighter.phase, normalMove: fighter.action?.normalMove ?? null, workbookMove: fighter.action?.workbookMove ?? null, actionFrame: fighter.action?.frame ?? null})));
   canvas.dataset.pitArenaLoadedImages = String(arenaArt?.images.size ?? 0);
   canvas.dataset.pitArenaSubplans = String(arenaArt?.productionKit?.planes.reduce((sum, plane) => sum + plane.assets.length, 0) ?? 0);
   context.save();
@@ -1082,6 +1086,19 @@ function combatFighterArtStatuses(bank: PitCombatBitmapArtBank | null, combat: P
   }));
 }
 
+function nativeWorkbookPresentationClockV105(view: PitRoundPresentationView, combat: PitCombatState | null, art: PitCombatBitmapArtBank | null): PitRoundPresentationView {
+  if (!combat || combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105) return view;
+  let duration: number | null = null;
+  if (view.phase === 'intro-left' || view.phase === 'intro-right') {
+    duration = pitNativePresentationDurationV105(art?.spriteSheets, combat.fighters[view.fighterSlot ?? 0], 'intro');
+  } else if (view.phase === 'round-result' || view.phase === 'match-result') {
+    const durations = combat.fighters.map((fighter, slot) => pitNativePresentationDurationV105(art?.spriteSheets, fighter,
+      view.winnerSlot === slot ? 'victory' : 'defeat')).filter((value): value is number => value !== null);
+    if (durations.length) duration = Math.max(view.durationMs, ...durations);
+  }
+  return applyPitWorkbookPresentationClockV105(view, combat, duration);
+}
+
 function roundPresentationAnnouncement(presentation: PitRoundPresentationView, combat: PitCombatState | null): string {
   if (!combat || combat.rules.mode === "training") return "";
   if (presentation.phase === "intro-left" || presentation.phase === "intro-right") return `Entrée de ${PIT_FIGHTERS[combat.fighters[presentation.fighterSlot ?? 0].definitionId].name}. Commandes bloquées.`;
@@ -1152,6 +1169,10 @@ export default function PitCanvas({
   const [fighterArtRetry, setFighterArtRetry] = useState(0);
   const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
   const [workbookNormalsEnabled, setWorkbookNormalsEnabled] = useState(false);
+  const [workbookCombatEnabledV105, setWorkbookCombatEnabledV105] = useState(false);
+  const workbookCommandsRefV105 = useRef<[PitInput['workbookAction'], PitInput['workbookAction']]>([undefined, undefined]);
+  const [tauntVariantsV105, setTauntVariantsV105] = useState<[1 | 2, 1 | 2]>([1, 1]);
+  const nextTauntVariantsRefV105 = useRef<[1 | 2, 1 | 2]>([1, 1]);
   const workbookNormalsAvailable = ownsPitWorkbookNormalsV104(leftId, leftVariantId) || ownsPitWorkbookNormalsV104(rightId, rightVariantId);
   const [houndVariantId, setHoundVariantId] = useState<PitHoundVariantId>('tracker-hound');
   const [companionArt, setCompanionArt] = useState<PitCompanionArtBank | null>(null);
@@ -1184,8 +1205,8 @@ export default function PitCanvas({
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
   const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
   const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
-  const renderedNormalMoves = combat ? combat.rules.normalMoves : workbookNormalsEnabled && workbookNormalsAvailable &&
-    (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined;
+  const renderedNormalMoves = combat ? combat.rules.normalMoves : (workbookNormalsEnabled || workbookCombatEnabledV105) && workbookNormalsAvailable &&
+    (mode === 'cpu' || mode === 'local' || mode === 'training') ? workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined;
   useEffect(() => {
     const controller = new AbortController();
     void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant], normalMoves: renderedNormalMoves })
@@ -1316,8 +1337,11 @@ export default function PitCanvas({
   }, [controlBindings, mode]);
 
   const lifecyclePresentationV93 = useMemo(
-    () => pitLifecyclePresentationViewV93(roundPresentation, combat, finisherV80, lifecycleV93),
-    [roundPresentation, combat, finisherV80, lifecycleV93],
+    () => {
+      const view = pitLifecyclePresentationViewV93(roundPresentation, combat, finisherV80, lifecycleV93);
+      return combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 ? {...view, fighterTauntVariants: tauntVariantsV105} : view;
+    },
+    [roundPresentation, combat, finisherV80, lifecycleV93, tauntVariantsV105],
   );
   const nativeTauntDurationsV93 = useMemo(() => combat?.fighters.map(fighter =>
     pitNativeTauntDurationV93(fighterArt?.spriteSheets, fighter)) ?? [null, null], [combat, fighterArt]);
@@ -1357,6 +1381,9 @@ export default function PitCanvas({
     const finisher = createPitFinisherViewV80();
     finisherRefV80.current = finisher;
     setFinisherV80(finisher);
+    workbookCommandsRefV105.current = [undefined, undefined];
+    setTauntVariantsV105([1, 1]);
+    nextTauntVariantsRefV105.current = [1, 1];
     const lifecycle = createPitLifecyclePresentationV93();
     lifecycleRefV93.current = lifecycle;
     setLifecycleV93(lifecycle);
@@ -1383,11 +1410,13 @@ export default function PitCanvas({
 
   const resetLiveInputs = useCallback(() => {
     pressedKeysRef.current.clear();
+    workbookCommandsRefV105.current = [undefined, undefined];
     combatGamepadReadyRef.current = [false, false];
     touchInputsRef.current.forEach((entries) => entries.clear());
   }, []);
 
-  const publishRoundPresentation = useCallback((next: PitRoundPresentationView) => {
+  const publishRoundPresentation = useCallback((next: PitRoundPresentationView, latestCombat: PitCombatState | null = combatRef.current) => {
+    next = nativeWorkbookPresentationClockV105(next, latestCombat, fighterArt);
     const previous = roundPresentationRef.current;
     if (next === previous) return;
     if (next.phase !== previous.phase || next.round !== previous.round) resetLiveInputs();
@@ -1397,7 +1426,7 @@ export default function PitCanvas({
     }
     roundPresentationRef.current = next;
     setRoundPresentation(next);
-  }, [resetLiveInputs]);
+  }, [resetLiveInputs, fighterArt]);
 
   const focusCombatRoot = useCallback(() => {
     window.requestAnimationFrame(() => rootRef.current?.focus({ preventScroll: true }));
@@ -1694,10 +1723,10 @@ export default function PitCanvas({
     }
     let next = createPitCombatState(playerId, opponentId, {
       mode: nextMode === "training" ? "training" : "match",
-      ...(workbookNormalsEnabled && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
+      ...((workbookNormalsEnabled || workbookCombatEnabledV105) && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
         (ownsPitWorkbookNormalsV104(playerId, playerId === leftId ? leftVariantId : null) ||
           ownsPitWorkbookNormalsV104(opponentId, opponentId === rightId ? rightVariantId : null))
-        ? {normalMoves: PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}),
+        ? {normalMoves: workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104} : {}),
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
       ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
@@ -1764,7 +1793,7 @@ export default function PitCanvas({
               : "Manche 1. Combat.",
     );
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled]);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -2357,7 +2386,9 @@ export default function PitCanvas({
     const currentCombat = combatRef.current;
     if (!lifecycleInteractionReadyRefV93.current || pausedRef.current || document.hidden || playbackReplay ||
         !currentCombat || (slot === 1 && mode !== 'local') || trainingLessonRef.current || trainingActivityRef.current !== 'idle') return;
-    const durationMs = pitNativeTauntDurationV93(fighterArt?.spriteSheets, currentCombat.fighters[slot]);
+    const variant = nextTauntVariantsRefV105.current[slot];
+    const durationMs = pitNativePresentationDurationV105(fighterArt?.spriteSheets, currentCombat.fighters[slot], 'taunt', variant) ??
+      pitNativeTauntDurationV93(fighterArt?.spriteSheets, currentCombat.fighters[slot]);
     if (durationMs === null) return; // No procedural/reused substitute authorizes a taunt.
     const current = lifecycleRefV93.current;
     let next = current;
@@ -2371,6 +2402,8 @@ export default function PitCanvas({
       next = beginPitCombatTauntV93(current, currentCombat, roundPresentationRef.current, slot, durationMs, true, input);
     }
     if (next === current) return;
+    setTauntVariantsV105(current => slot === 0 ? [variant, current[1]] : [current[0], variant]);
+    nextTauntVariantsRefV105.current[slot] = variant === 1 ? 2 : 1;
     lifecycleRefV93.current = next; setLifecycleV93(next);
     setAriaAnnouncement(`${PIT_FIGHTERS[currentCombat.fighters[slot].definitionId].name} · provocation${finisherRefV80.current.phase === 'window' ? ' avant la conclusion.' : '. Le combat continue.'}`);
     rootRef.current?.focus({ preventScroll: true });
@@ -2658,14 +2691,15 @@ export default function PitCanvas({
       previousTime = now;
       const frozen = pausedRef.current || document.hidden ||
         (combatRef.current?.rules.mode === "training" && trainingClockRef.current.paused);
-      const next = advancePitRoundPresentation(roundPresentationRef.current, combatRef.current, elapsed, frozen);
+      const timed = nativeWorkbookPresentationClockV105(roundPresentationRef.current, combatRef.current, fighterArt);
+      const next = advancePitRoundPresentation(timed, combatRef.current, elapsed, frozen);
       publishRoundPresentation(next);
       if (!next.resultVisible && !(next.phase === "fight" && next.elapsedMs >= next.durationMs)) requestId = requestAnimationFrame(animatePresentation);
     };
     requestId = requestAnimationFrame(animatePresentation);
     return () => cancelAnimationFrame(requestId);
     // Phase changes rearm the clock; engine ticks must not restart elapsed time.
-  }, [combatPresent, menuOpen, matchAssetsPending, replayEnded, roundPresentation.phase, roundPresentation.resultVisible, publishRoundPresentation, pausedRef]);
+  }, [combatPresent, menuOpen, matchAssetsPending, replayEnded, roundPresentation.phase, roundPresentation.resultVisible, publishRoundPresentation, pausedRef, fighterArt]);
 
   useEffect(() => {
     const next = observePitFinisherV80(finisherRefV80.current, combat, finisherKeyV80, {
@@ -2787,6 +2821,21 @@ export default function PitCanvas({
             mergeInputs(keyboardOne, touchOne),
             combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
           );
+          const sourceFighters = current.fighters;
+          const sourceCommand = (slot: 0 | 1, input: PitInput): PitInput => {
+            if (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105) return input;
+            const player = slot === 0 ? 1 : 2;
+            const raw = new Set([...pressedKeysRef.current, ...touchInputsRef.current[slot]]);
+            const held = (suffix: 'AttackHeavy'|'AttackMedium'|'AttackTechnique') => controlBindings[`pit.p${player}${suffix}`].some(code => raw.has(code));
+            const pad = combatGamepadReadyRef.current[slot] ? gamepads[slot] : null;
+            const technique = held('AttackTechnique') || Boolean(pad?.buttons[5]?.pressed);
+            const equipment = technique && (held('AttackHeavy') || Boolean(pad?.buttons[1]?.pressed));
+            const contact = technique && (held('AttackMedium') || Boolean(pad?.buttons[3]?.pressed));
+            const action = workbookCommandsRefV105.current[slot] ?? (equipment ? 'equipment' : contact ? 'contact' : undefined);
+            workbookCommandsRefV105.current[slot] = undefined;
+            return action ? {...input, attack: undefined, workbookAction: action} : input;
+          };
+          firstInput = sourceCommand(0, firstInput);
           let secondInput: PitInput;
           if (mode === "cpu" || mode === "arcade" || mode === "circuit" || mode === "descent") {
             secondInput = cpuInput(current);
@@ -2841,6 +2890,7 @@ export default function PitCanvas({
               combatGamepadReadyRef.current[1] ? secondPadInput : EMPTY_INPUT,
             );
           }
+          if (mode === 'local') secondInput = sourceCommand(1, secondInput);
           inputs = [firstInput, secondInput];
         }
         if (!playbackReplay && recorderRef.current) {
@@ -2883,7 +2933,7 @@ export default function PitCanvas({
             ? stepPitReplayCombat(current, inputs, playbackReplay.engineVersion)
             : stepPitCombat(current, inputs);
         }
-        publishRoundPresentation(observePitRoundPresentation(roundPresentationRef.current, current));
+        publishRoundPresentation(observePitRoundPresentation(roundPresentationRef.current, current), current);
         const lifecycle = observePitCombatTauntsV93(lifecycleRefV93.current, current, inputs);
         if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
         if (mode === "training" && trainingLessonRef.current) {
@@ -3348,10 +3398,13 @@ export default function PitCanvas({
               <p>Quatre choix par combattant, {PIT_FINISHER_COUNTS_V80.playableSequences} séquences de présentation. {PIT_FINISHER_COUNTS_V80.attestedEquipment} arsenaux attestés, {PIT_FINISHER_COUNTS_V80.identityDerived} identités documentées, {PIT_FINISHER_COUNTS_V80.originalContact} compositions corporelles originales. Pas 201 planches de finition inédites. Gore réduit et chroniques : neutralisation obligatoire ; relectures et entraînement : désactivé.</p>
             </aside>
             {(mode === 'cpu' || mode === 'local' || mode === 'training') && workbookNormalsAvailable && <aside className={styles.journeyChoice} aria-label="Gestes Feral et Scar du classeur">
-              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => setWorkbookNormalsEnabled(event.target.checked)} /> Gestes du classeur · Feral et Scar</label>
+              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => {setWorkbookNormalsEnabled(event.target.checked); if(event.target.checked) setWorkbookCombatEnabledV105(false);}} /> Gestes du classeur · Feral et Scar</label>
               <p>Neuf attaques par combattant dans leur apparence BODY d’origine : L / M / H debout, accroupi ou en saut. Préparation, contact, récupération, dégâts de base et hauteur de garde suivent le classeur. Les portées, les réactions et les limites de combo conservent les règles du duel. Cette recette est enregistrée dans les relectures.</p>
+              <label><input type="checkbox" data-pit-workbook-combat-v105 checked={workbookCombatEnabledV105} onChange={event => {setWorkbookCombatEnabledV105(event.target.checked); if(event.target.checked) setWorkbookNormalsEnabled(false);}} /> Gestes étendus du classeur · Feral et Scar</label>
+              {workbookCombatEnabledV105 && <p>S désigne la technique, M la frappe moyenne et H la frappe lourde. Normales, pas de rupture (avant + M), préparation d’arme (S + H), spécial de contact (raccourci S + M), entrées, issues et deux provocations. Les techniques historiques restent sur S. Préparation : 20/0/20, sans dégâts. Coût du contact : Scar 0 %, Feral 10 % de Traque. Scar : parade frontale dédiée (22+S), 10 %, contre les frappes de contact seulement. Les boutons dédiés exécutent directement la commande source.</p>}
+              {workbookCombatEnabledV105 && [{id:leftId,variant:leftVariantId},{id:rightId,variant:rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id,selection.variant)).map(selection => <p key={selection.id}>{PIT_FIGHTERS[selection.id].name} : {PIT_WORKBOOK_MOVES_V105.filter(move => move.fighterId === selection.id && (move.key === '6M' || move.key === 'EQUIP' || move.key === (selection.id === 'scar' ? 'S1' : 'S3') || (selection.id === 'scar' && move.key === 'S4'))).map(move => `${move.key} · ${move.command} · ${move.startup}/${move.active}/${move.recovery} · base ${move.damage} · ${move.costPercent} %`).join(' ; ')}</p>)}
               {workbookNormalsEnabled && [{id: leftId, variant: leftVariantId}, {id: rightId, variant: rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id, selection.variant)).map((selection, slot) => <div key={selection.id + slot}><strong>{PIT_FIGHTERS[selection.id].name} · apparence BODY</strong><ul>{PIT_WORKBOOK_NORMALS_V104.filter(move => move.fighterId === selection.id).map(move => <li key={move.key}>{move.key} · {move.startup}/{move.active}/{move.recovery} images · base {move.damage} · {move.hitLevel === 'high' ? 'haut' : move.hitLevel === 'low' ? 'bas' : 'milieu'}{move.antiAir ? ' / anti-air' : ''}</li>)}</ul></div>)}
-              <small>Spéciaux, projections et autres apparences gardent leur fonctionnement actuel. Les règles complètes du kit restent suivies séparément.</small>
+              <small>Projections, techniques sur S et autres apparences conservent leurs règles de duel. La préparation change la prise pendant son geste ; le suivi des armes perdues reste à intégrer.</small>
             </aside>}
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
             {(leftId === 'tracker' || rightId === 'tracker') && <aside className={styles.journeyChoice} aria-label="Chien de chasse de Tracker">
@@ -3745,10 +3798,14 @@ export default function PitCanvas({
       data-pit-immersive="true"
       data-pit-normal-recipe={combat.rules.normalMoves ?? "historical"}
       data-pit-normal-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.normalMove ?? null))}
+      data-pit-workbook-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.workbookMove ?? null))}
       data-pit-paused={menuOpen}
       data-pit-combat-phase={combat.phase}
       data-pit-timer-frames={combat.roundFramesRemaining}
       data-pit-presentation-phase={roundPresentation.phase}
+      data-pit-taunt-variants={JSON.stringify(lifecyclePresentationV93.fighterTauntVariants ?? [1,1])}
+      data-pit-fighter-presentation-elapsed-ms={JSON.stringify(lifecyclePresentationV93.fighterElapsedMs ?? [lifecyclePresentationV93.elapsedMs,lifecyclePresentationV93.elapsedMs])}
+      data-pit-fighter-presentation-duration-ms={JSON.stringify(lifecyclePresentationV93.fighterDurationMs ?? [lifecyclePresentationV93.durationMs,lifecyclePresentationV93.durationMs])}
       data-pit-lifecycle-phase={lifecyclePresentationV93.phase}
       data-pit-taunt-key-p1={tauntKeyCodesV93[0] ?? ''}
       data-pit-taunt-key-p2={mode === 'local' ? tauntKeyCodesV93[1] ?? '' : ''}
@@ -3792,6 +3849,12 @@ export default function PitCanvas({
             disabled={!tauntAvailableV93[slot]} onClick={() => requestPitTauntV93(slot as 0 | 1)}
             aria-label={`Provocation du joueur ${slot + 1}${tauntKeyCodesV93[slot] ? `, touche ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}`}>
             J{slot + 1} · PROVOCATION{tauntKeyCodesV93[slot] ? ` · ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}</button> : null)}
+        {!playbackReplay && combat.phase === 'round' && combat.fighters.map((fighter, slot) => fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 && (slot === 0 || mode === 'local')
+          ? <span key={`workbook-${slot}`} className={styles.workbookControlsV105} data-pit-workbook-controls={slot}>
+            <button type="button" className={styles.utilityButton} data-pit-workbook-action="equipment" disabled={!simulationRunning || trainingPaused} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'equipment'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · PRÉPARER · S+H</button>
+            <button type="button" className={styles.utilityButton} data-pit-workbook-action="contact" disabled={!simulationRunning || trainingPaused || (fighter.definitionId === 'feral-hunter' && fighter.traque < 100)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'contact'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'scar' ? 'ALLONGE · 236+S' : 'LANCE SCINDÉE · 623+S'}</button>
+            {fighter.definitionId === 'scar' && <button type="button" className={styles.utilityButton} data-pit-workbook-action="counter" disabled={!simulationRunning || trainingPaused || fighter.traque < 100} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'counter'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · GARDE DE CHASSEUR · 22+S</button>}
+          </span> : null)}
         <button type="button" className={styles.utilityButton} data-pit-menu-button aria-label="Pause et menu du combat" onClick={() => openMenu()}>Ⅱ <span>MENU</span></button>
       </div>
       <div className={styles.hud} data-pit-hud inert={terminal || menuOpen}>

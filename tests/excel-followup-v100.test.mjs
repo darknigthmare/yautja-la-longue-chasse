@@ -5,14 +5,15 @@ import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { ROOT, REGISTRY, OUTPUTS, verifyPlanV100, collectFollowupV100, generateFollowupV100 } from '../scripts/build-excel-followup-v100.mjs';
+import { loadHistoricalExcelV105, verifyHistoricalExcelContextV105 } from '../scripts/historical-excel-context-v105.mjs';
+const { ROOT, REGISTRY, OUTPUTS, verifyPlanV100, collectFollowupV100, generateFollowupV100 } = await loadHistoricalExcelV105('V100');
 
 let directory, generated;
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const readJson = async relative => JSON.parse(await fs.readFile(path.join(ROOT, relative), 'utf8'));
 const python = (source, args = []) => JSON.parse(execFileSync('python3', ['-c', source, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 30000, maxBuffer: 4 * 1024 * 1024 }));
 before(async () => { directory = await fs.mkdtemp(path.join(os.tmpdir(), 'excel-followup-v100-test-')); generated = await generateFollowupV100({ outputDir: directory }); });
-after(async () => { if (directory) await fs.rm(directory, { recursive: true, force: true }); });
+after(async () => { try { if (directory) await fs.rm(directory, { recursive: true, force: true }); } finally { await verifyHistoricalExcelContextV105(); } });
 
 test('V100 has exactly 52 source identities and 104 orientations without closing the source work', () => {
   const { snapshot } = generated;

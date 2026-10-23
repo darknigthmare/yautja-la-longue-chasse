@@ -1,3 +1,4 @@
+import {getPitWorkbookCombatMoveV105} from './pitWorkbookCombatV105';
 import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './pitCombat';
 import {
   createPitCombatState,
@@ -10,6 +11,8 @@ import {
 
 export const PIT_TRAINING_SETTINGS_VERSION = 1;
 export const PIT_TRAINING_SEQUENCE_VERSION = 1;
+export const PIT_TRAINING_SEQUENCE_VERSION_V105 = 2;
+export const PIT_TRAINING_SEQUENCE_ENCODING_V105 = "dummy-input-rle-v2";
 export const PIT_TRAINING_SEQUENCE_ENCODING = "dummy-input-rle-v1";
 export const PIT_TRAINING_SEQUENCE_MAX_TICKS = PIT_TICK_RATE * 12;
 export const PIT_TRAINING_SEQUENCE_MAX_SEGMENTS = PIT_TRAINING_SEQUENCE_MAX_TICKS;
@@ -136,7 +139,7 @@ const BOOLEAN_INPUT_KEYS = [
   "throw",
   "resource",
 ] as const;
-const TRAINING_INPUT_KEYS = [...BOOLEAN_INPUT_KEYS, "attack"] as const;
+const TRAINING_INPUT_KEYS = [...BOOLEAN_INPUT_KEYS, "attack", "workbookAction"] as const;
 const SETTINGS_KEYS = [
   "version",
   "dummyBehavior",
@@ -186,9 +189,9 @@ export interface PitTrainingSequenceMetadata {
 }
 
 export interface PitTrainingSequence {
-  version: typeof PIT_TRAINING_SEQUENCE_VERSION;
+  version: typeof PIT_TRAINING_SEQUENCE_VERSION | typeof PIT_TRAINING_SEQUENCE_VERSION_V105;
   tickRate: typeof PIT_TICK_RATE;
-  encoding: typeof PIT_TRAINING_SEQUENCE_ENCODING;
+  encoding: typeof PIT_TRAINING_SEQUENCE_ENCODING | typeof PIT_TRAINING_SEQUENCE_ENCODING_V105;
   segments: readonly PitTrainingSequenceSegment[];
   metadata: PitTrainingSequenceMetadata;
 }
@@ -225,7 +228,7 @@ export interface PitTrainingFrameReadout {
   fighterSlot: 0 | 1;
   phase: PitCombatPhase;
   phaseLabel: string;
-  actionKind: "attack" | "throw" | null;
+  actionKind: "attack" | "throw" | "equipment" | null;
   attack: PitAttackKind | null;
   actionLabel: string | null;
   actionFrame: number | null;
@@ -414,6 +417,15 @@ export function getPitTrainingFrameReadout(
           : null;
     phaseFrame = phaseTotalFrames === null ? null : Math.max(1, action.frame - phaseStart + 1);
     framesRemaining = Math.max(0, actionTotalFrames - action.frame);
+  } else if (action?.kind === 'equipment') {
+    const move = getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
+    if (move) {
+      actionLabel = move.label;
+      actionTotalFrames = move.startup + move.recovery;
+      phaseTotalFrames = fighter.phase === 'startup' ? move.startup : move.recovery;
+      phaseFrame = action.frame - (fighter.phase === 'recovery' ? move.startup : 0) + 1;
+      framesRemaining = actionTotalFrames - action.frame;
+    }
   } else if (action?.kind === "throw") {
     actionLabel = "Projection";
     phaseFrame = action.frame + 1;
@@ -441,36 +453,40 @@ export function getPitTrainingFrameReadout(
   };
 }
 
-function assertTrainingInput(input: unknown): asserts input is PitTrainingInput {
+function assertTrainingInput(input: unknown, version: number): asserts input is PitTrainingInput {
   if (!isRecord(input) || !hasOnlyKeys(input, TRAINING_INPUT_KEYS)) throw sequenceError();
   for (const key of BOOLEAN_INPUT_KEYS) {
     if (input[key] !== undefined && typeof input[key] !== "boolean") throw sequenceError();
   }
+  if (input.workbookAction !== undefined && (version !== PIT_TRAINING_SEQUENCE_VERSION_V105 ||
+    (input.workbookAction !== 'equipment' && input.workbookAction !== 'contact' && input.workbookAction !== 'counter') || input.attack !== undefined)) throw sequenceError();
   if (input.attack !== undefined &&
     (typeof input.attack !== "string" || !(input.attack in ATTACK_CODE))) {
     throw sequenceError();
   }
 }
 
-export function encodePitTrainingInput(input: PitTrainingInput = {}): number {
-  assertTrainingInput(input);
+export function encodePitTrainingInput(input: PitTrainingInput = {}, version: number = PIT_TRAINING_SEQUENCE_VERSION): number {
+  assertTrainingInput(input, version);
   let packed = 0;
   for (const key of BOOLEAN_INPUT_KEYS) {
     if (input[key]) packed |= INPUT_FLAGS[key];
   }
   if (input.attack !== undefined) packed |= ATTACK_CODE[input.attack] << ATTACK_SHIFT;
+  if (input.workbookAction) packed |= (input.workbookAction === 'equipment' ? 5 : input.workbookAction === 'contact' ? 6 : 7) << ATTACK_SHIFT;
   return packed;
 }
 
-export function decodePitTrainingInput(packed: number): PitTrainingInput {
+export function decodePitTrainingInput(packed: number, version: number = PIT_TRAINING_SEQUENCE_VERSION): PitTrainingInput {
   if (!isIntegerBetween(packed, 0, MAX_PACKED_INPUT)) throw sequenceError();
   const attackCode = (packed >> ATTACK_SHIFT) & 0b111;
-  if (attackCode > 4) throw sequenceError();
+  if (attackCode > (version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? 7 : 4)) throw sequenceError();
   const input: PitTrainingInput = {};
   for (const key of BOOLEAN_INPUT_KEYS) {
     if ((packed & INPUT_FLAGS[key]) !== 0) input[key] = true;
   }
-  if (attackCode !== 0) input.attack = ATTACK_BY_CODE[attackCode];
+  if (attackCode >= 5) input.workbookAction = attackCode === 5 ? 'equipment' : attackCode === 6 ? 'contact' : 'counter';
+  else if (attackCode !== 0) input.attack = ATTACK_BY_CODE[attackCode];
   return input;
 }
 
@@ -498,9 +514,9 @@ function metadataFor(segments: readonly PitTrainingSequenceSegment[]): PitTraini
 
 export function normalizePitTrainingSequence(value: unknown): PitTrainingSequence | null {
   if (!isRecord(value) || !hasOnlyKeys(value, SEQUENCE_KEYS) ||
-    value.version !== PIT_TRAINING_SEQUENCE_VERSION ||
+    (value.version !== PIT_TRAINING_SEQUENCE_VERSION && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V105) ||
     value.tickRate !== PIT_TICK_RATE ||
-    value.encoding !== PIT_TRAINING_SEQUENCE_ENCODING ||
+    (value.encoding !== (value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING)) ||
     !Array.isArray(value.segments) || value.segments.length > PIT_TRAINING_SEQUENCE_MAX_SEGMENTS ||
     !isRecord(value.metadata) || !hasOnlyKeys(value.metadata, SEQUENCE_METADATA_KEYS)) {
     return null;
@@ -517,7 +533,7 @@ export function normalizePitTrainingSequence(value: unknown): PitTrainingSequenc
       return null;
     }
     try {
-      decodePitTrainingInput(candidate[1]);
+      decodePitTrainingInput(candidate[1], value.version);
     } catch {
       return null;
     }
@@ -533,9 +549,9 @@ export function normalizePitTrainingSequence(value: unknown): PitTrainingSequenc
     return null;
   }
   return {
-    version: PIT_TRAINING_SEQUENCE_VERSION,
+    version: value.version,
     tickRate: PIT_TICK_RATE,
-    encoding: PIT_TRAINING_SEQUENCE_ENCODING,
+    encoding: value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
     segments,
     metadata,
   };
@@ -544,6 +560,7 @@ export function normalizePitTrainingSequence(value: unknown): PitTrainingSequenc
 export function createPitTrainingSequenceRecorder(): PitTrainingSequenceRecorder {
   const segments: Array<[number, number]> = [];
   let tickCount = 0;
+  let version: PitTrainingSequence["version"] = PIT_TRAINING_SEQUENCE_VERSION;
   let result: PitTrainingSequence | null = null;
 
   return {
@@ -555,7 +572,8 @@ export function createPitTrainingSequenceRecorder(): PitTrainingSequenceRecorder
     },
     append(input: PitTrainingInput = {}) {
       if (result || tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) throw sequenceError();
-      const packed = encodePitTrainingInput(input);
+      if (input.workbookAction !== undefined) version = PIT_TRAINING_SEQUENCE_VERSION_V105;
+      const packed = encodePitTrainingInput(input, version);
       const previous = segments[segments.length - 1];
       if (previous?.[1] === packed) previous[0] += 1;
       else segments.push([1, packed]);
@@ -565,9 +583,9 @@ export function createPitTrainingSequenceRecorder(): PitTrainingSequenceRecorder
       if (result) return result;
       const readonlySegments = segments.map(([ticks, packed]) => [ticks, packed] as const);
       result = {
-        version: PIT_TRAINING_SEQUENCE_VERSION,
+        version,
         tickRate: PIT_TICK_RATE,
-        encoding: PIT_TRAINING_SEQUENCE_ENCODING,
+        encoding: version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
         segments: readonlySegments,
         metadata: metadataFor(readonlySegments),
       };
@@ -625,7 +643,7 @@ export function createPitTrainingSequenceReader(
       const valueAtTick: PitTrainingSequenceTick = {
         tick: absoluteTick,
         cycle,
-        input: decodePitTrainingInput(segment[1]),
+        input: decodePitTrainingInput(segment[1], sequence.version),
       };
       absoluteTick += 1;
       sequenceTick += 1;

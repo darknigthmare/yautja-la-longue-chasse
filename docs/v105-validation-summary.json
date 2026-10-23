@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "release": "V105",
+  "status": "PASS_CIBLE",
+  "recordedAt": "2026-10-23T02:33:56.260550+00:00",
+  "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+  "productionBuildId": "Pq220rJsmklF7dV4DeXEz",
+  "scope": "Lot Feral/Scar, approche A physique du cartographe et convois terrestres, vérifié sur une compilation Next locale de production. Les validations ciblées ne certifient pas tout le jeu ni un déploiement public.",
+  "sourceFreeze": {
+    "path": "docs/v105-runtime-freeze.json",
+    "sha256": "99f3e3abcce400af08368169239188f9a84cbffa291624bafe8d97989494a382",
+    "bytes": 162050
+  },
+  "freezeCoverage": {
+    "files": 918,
+    "bytes": 258881882,
+    "scope": "Toutes les sources app, configuration et scripts de production, et entrées publiques du suivi V100 gelé. Autres dessins historiques et fichiers de compilation hors périmètre."
+  },
+  "production": [
+    {
+      "domain": "Pit",
+      "buildId": "Pq220rJsmklF7dV4DeXEz",
+      "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 288,
+      "capturesInspected": 37,
+      "report": {
+        "path": "docs/v105-pit-workbook-validation.json",
+        "sha256": "0ae627ba8a573c7249881e91fb271ee192ee1bdb9a465d2eaafabe60fe90dc74",
+        "bytes": 115278
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v105-pit-workbook/body-1-M_F006_S3.png",
+          "sha256": "ee448fb7b7efdae8d01b18ec0a39d8dbcfa3e77dbc26606579d6b614e58ebdd1",
+          "bytes": 1199067
+        },
+        {
+          "file": "docs/qa/v105-pit-workbook/body-1-M_F003_S4.png",
+          "sha256": "478c488a9417a38600c05def059ed237317728b17c720fe2bf20e448b082f214",
+          "bytes": 1195532
+        },
+        {
+          "file": "docs/qa/v105-pit-workbook/body-2-scar-taunt-1.png",
+          "sha256": "e0ab5b22c9222ad7717ae6540d1942649477762b16c67df43d8ef129aa6eb58a",
+          "bytes": 1214905
+        },
+        {
+          "file": "docs/qa/v105-pit-workbook/mixed-costume-0.png",
+          "sha256": "6eb53b172b943cef842c97b832ffed3a9b004aaf86583c13c7a82c6927bc5c50",
+          "bytes": 1305729
+        },
+        {
+          "file": "docs/qa/v105-pit-workbook/body-1-served.html",
+          "sha256": "0a0ccea7f8481e5d430fb8e8c006b1e6b5a53f389c5459a9061addccbe83defd",
+          "bytes": 13840
+        }
+      ]
+    },
+    {
+      "domain": "Homeworld",
+      "buildId": "Pq220rJsmklF7dV4DeXEz",
+      "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 52,
+      "capturesInspected": 9,
+      "report": {
+        "path": "docs/v105-homeworld-cartography-validation.json",
+        "sha256": "1db80b288d633ecd0477cc43437e6d0e2cba28b9fe546c68282414862eae46b1",
+        "bytes": 16820
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v105-homeworld-cartography/browser-console.log",
+          "sha256": "62802a908692ba7fa7bf184a6132b172f51a6484b5dd2424f52ae0788e0e800d",
+          "bytes": 3830
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/council-stair-lower.png",
+          "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75",
+          "bytes": 1633260
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/lint.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/releve-completed-desktop.png",
+          "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96",
+          "bytes": 213506
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/releve-completed-mobile.png",
+          "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450",
+          "bytes": 172653
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/report.json",
+          "sha256": "08dfdeddda6753e0b1f177b899e993c4d939f947519d0a128cf2e558d1ddcc79",
+          "bytes": 14516
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/source-a-briefing.png",
+          "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196",
+          "bytes": 128422
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/two-landmarks-compared.png",
+          "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed",
+          "bytes": 147195
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/unit-tests.log",
+          "sha256": "27b99bfda2c71a2448fa165a78333d9687f216d8f19c1392aa122ce800070a79",
+          "bytes": 14205
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/viaduct-high-point.png",
+          "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb",
+          "bytes": 1584489
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/write-paused-choice.png",
+          "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631",
+          "bytes": 1510697
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/write-paused-date.png",
+          "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b",
+          "bytes": 1467497
+        },
+        {
+          "file": "docs/qa/v105-homeworld-cartography/write-paused-report.png",
+          "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c",
+          "bytes": 1281427
+        }
+      ]
+    },
+    {
+      "domain": "Clans",
+      "buildId": "Pq220rJsmklF7dV4DeXEz",
+      "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+      "status": "PASS_CIBLE",
+      "browserChecksPassed": 33,
+      "capturesInspected": 5,
+      "report": {
+        "path": "docs/v105-clan-convoy-validation.json",
+        "sha256": "888b611bc458cc225235cd92dd899055693b9ebaec4723b2c2324bed24d5403b",
+        "bytes": 10992
+      },
+      "portableFiles": [
+        {
+          "file": "docs/qa/v105-clan-convoy/convoy-planned-desktop.png",
+          "sha256": "5a858d3b54f22a0da03d3c13f782f18a59cb8a044a85ab1762129421e2820f1b",
+          "bytes": 828872
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/convoy-delivered-mobile.png",
+          "sha256": "755e7065fb4f7a69c1a7c57b5f51a35d7191d986d0a5b881ecc7e88020d36a59",
+          "bytes": 137591
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/convoy-control-loss-desktop.png",
+          "sha256": "9a73877ba45f8cb82ebd71eec95dd037fd53064f2d36e7427ac2568be9dcd055",
+          "bytes": 210388
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/convoy-generated-18.png",
+          "sha256": "2f64c52c50c9b1133e08870ce4e2019e91904e0afc1690540838bcf0ebf94426",
+          "bytes": 198641
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/convoy-generated-96.png",
+          "sha256": "aef1b8a8dfd793b311b43c9ad5bab9d81818929f9a0e0143b93c330b272ce8eb",
+          "bytes": 199382
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/report.json",
+          "sha256": "728327a1a5b477909c87ca2633b42fdf3f3a4fcbdf18340bb28af6fa9cc2ed6c",
+          "bytes": 71973
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/played-front-with-reserved-second-leg.json",
+          "sha256": "abb052be354e819327e7dfd736d02002a4c271c199f68df78b77731c6f92c51d",
+          "bytes": 27718
+        },
+        {
+          "file": "docs/qa/v105-clan-convoy/unit-tests.log",
+          "sha256": "94709e7737ccf2ebe53da893a4a7426c203b593a041bfd0b8f22f3e6bf210ac1",
+          "bytes": 4510
+        }
+      ]
+    }
+  ],
+  "productionReview": {
+    "sameCompiledBuild": true,
+    "servedHtmlBuildIdVerifiedInAllThreeJourneys": true,
+    "browserExceptions": 0,
+    "capturesInspected": 51,
+    "portableSelection": "Les cinq captures Clans et neuf Homeworld sont portables. Pour le Pit, quatre captures représentatives et un HTML servi sont portables ; le rapport contient les 37 empreintes et la revue des 37 captures locales.",
+    "browserClock": "Horloge contrôlée des recettes ; actions via interfaces et intégrateurs réels, sans remplacement de sprites."
+  },
+  "tests": {
+    "status": "PASS",
+    "counting": "Les groupes se recouvrent et ne constituent pas un total de cas uniques. Les journaux worlds/V104/bitmap précèdent le correctif de focus ; les groupes entrées et sauvegardes précèdent la dernière correction de texte uniquement. Leurs sources métier restent identiques. Les 50 contrôles Homeworld, le build et les trois recettes de production sont rejoués sur le runtime final. La suite V105 est réexécutée après promotion du suivi puis en CI.",
+    "groups": [
+      {
+        "scope": "Régressions ciblées V94",
+        "passed": 93,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/audit-v94.log",
+          "sha256": "fb08cfc71568a267451951a6c5852690ca5244ecd2490c48ccee7ff9e481fb66",
+          "bytes": 17531
+        }
+      },
+      {
+        "scope": "Mondes historiques et suivi Excel V100",
+        "passed": 195,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/worlds-regression.log",
+          "sha256": "c911b5a325597e5a374c6341883dab892ec209b44f4d73e40f8d6cf3c3f188c0",
+          "bytes": 22227
+        }
+      },
+      {
+        "scope": "Normales, cartographie B, réserve et suivi V104",
+        "passed": 46,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/v104-regression.log",
+          "sha256": "de28e7e5c00405e65f4e503000c0c39b99c5f7fb487c3a8ed4460842bff42ca8",
+          "bytes": 5371
+        }
+      },
+      {
+        "scope": "Cartographies A/B et intégration réelle des entrées Homeworld",
+        "passed": 50,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/homeworld-final.log",
+          "sha256": "27b99bfda2c71a2448fa165a78333d9687f216d8f19c1392aa122ce800070a79",
+          "bytes": 14205
+        }
+      },
+      {
+        "scope": "Neuf suites entrées et cycle de vie",
+        "passed": 129,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/input-regression-final.log",
+          "sha256": "615b196fd3928eba1103c15ed2c261571268deb90bc42c1c438d546fd89ddf3c",
+          "bytes": 12528
+        }
+      },
+      {
+        "scope": "Sauvegardes, imports et refus concurrents",
+        "passed": 172,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/persistence-final.log",
+          "sha256": "f62616f91196e97690adebdd4d62541ff790ed3e7c964d5b714f21bb1f294473",
+          "bytes": 18465
+        }
+      },
+      {
+        "scope": "Rendu bitmap et horloges des présentations avec banques de fixture explicites",
+        "passed": 30,
+        "failed": 0,
+        "log": {
+          "path": "docs/qa/v105-integration/bitmap-fixture-regression.log",
+          "sha256": "35fb0a5b5ffe8e692c9ecaa690b9567a416d9334a6711567da4ac93eca7ff49e",
+          "bytes": 3476
+        }
+      }
+    ]
+  },
+  "build": {
+    "status": "PASS",
+    "runtimeLintWarnings": 0,
+    "httpSmokeChecks": 5,
+    "logs": [
+      {
+        "path": "docs/qa/v105-integration/production-build.log",
+        "sha256": "e78803496b16b1a1d3d77a5dbd4f9a4c61de1f446c7f558a2c7bade34650b84b",
+        "bytes": 4542
+      },
+      {
+        "path": "docs/qa/v105-integration/production-http-smoke.log",
+        "sha256": "71d2be909f596ef2b6f26e94099ad430cfad1fd50e4295ab4aa182b5fb20da88",
+        "bytes": 278
+      },
+      {
+        "path": "docs/qa/v105-integration/runtime-lint.log",
+        "sha256": "ca1fdd154dd8f46a9faebd9dbd63af7ea6994ab773d60aa5a68314ffd1f6799c",
+        "bytes": 1159
+      },
+      {
+        "path": "docs/qa/v105-integration/cartographer-copy-lint.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    ],
+    "lintScope": "Le lint des 30 modules du runtime a passé avant la dernière correction de texte ; le composant corrigé et le Homeworld sont relintés ensuite sans avertissement."
+  },
+  "historicalExcel": {
+    "status": "PASS_HISTORICAL_REGENERATION",
+    "sourceCommit": "8eaae97b8511ed6b93183729f201af7eb844f830",
+    "privateSourcesVerified": 239,
+    "sharedFilesVerified": 235,
+    "V100": {
+      "bytes": 1862541,
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf"
+    },
+    "V104": {
+      "bytes": 2411658,
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa"
+    },
+    "log": {
+      "path": "docs/qa/v105-integration/historical-excel-reproduction.log",
+      "sha256": "fdf20d75b7dfb7f9e45483d917750c8d4b516ca209715cb09115914c922a7ce6",
+      "bytes": 442
+    },
+    "currentRuntimeTestsIsolated": false
+  },
+  "independentReview": {
+    "runtimeAndSourceReviewed": true,
+    "sparseCheckoutAudit": {
+      "method": "git sparse-checkout check-rules, lecture seule des règles réellement configurées",
+      "requiredPathsVerified": 1102,
+      "excluded": 0,
+      "absent": 0,
+      "scope": "Audit manuel final des chemins disponibles avant création de ce master ; aucune affirmation de test automatique supplémentaire."
+    },
+    "roundDurationCorrection": "Les résultats natifs de cinq secondes sont joués jusqu’au bout avant transition, sans changer les 120 ticks historiques du moteur.",
+    "focusCorrection": "Le focus est rendu de façon synchrone avant disparition des boutons du relevé, du rapport et du carnet ; les recettes vérifient la première frame sans forcer le focus après ces actions.",
+    "reviewCorrections": [
+      "La note de liaison décrit désormais le relevé du point haut comme une opération distincte, cohérente avec les deux choix disponibles.",
+      "Le préflight42 antérieur aux dernières assertions QA est retiré des preuves portables. La recette compilée52 du nouveau build est la seule preuve navigateur du Homeworld."
+    ],
+    "previousHeadCi": {
+      "head": "4c875e7cc181096d0c1802be85cf55fd6ffafa94",
+      "applicationRun": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/39886573554",
+      "status": "PASS",
+      "applicationDurationSeconds": 1384,
+      "scope": "CI complète de la première version ; la dernière correction ne change qu’une phrase Homeworld et la provenance documentaire. La CI est relancée sur la head finale avant fusion."
+    }
+  },
+  "delivered": {
+    "pit": {
+      "sourceActionsAndScenes": 52,
+      "linked": 35,
+      "inheritedNormals": 18,
+      "newActions": 7,
+      "newPresentations": 10,
+      "newNativeDrawings": 0,
+      "snapshotReplayVersion": 13
+    },
+    "homeworld": "Approche A de D6-W-PNJ-ROLE-12 sur le viaduc connu, +1, deux repères, date, retour et reprises ; approche B conservée.",
+    "clans": "Porteurs et stocks réels, une liaison par réservation/tour, étapes et pauses sur atlas, transfert du front V2 opt-in."
+  },
+  "remaining": {
+    "pitUnlinkedActions": 17,
+    "pitCampaignCells": 16,
+    "pitVariantConstraints": 14,
+    "clanUnimplementedHistoricalStructures": 6,
+    "notes": [
+      "Projections, entités, supers et conclusions avec partenaire peint restent ouverts ; les raccords présents ne terminent pas les kits.",
+      "Pas de reconnaissance complète des motions 236/623/22, inventaire persistant ni réflexion des projectiles par Scar S4.",
+      "Les 16 étapes de campagne et 14 contraintes de variantes sont suivies séparément des 52 actions.",
+      "Le viaduc adapte le point haut de la source ; aucune nouvelle crête, zone inconnue ni récompense n’est créée.",
+      "Preserve Hunt reste au périmètre V104 ; aucun nouveau secteur de réserve n’est livré dans ce lot."
+    ]
+  },
+  "followup": "docs/YAUTJA_V105_SUIVI.xlsx est régénéré après ce rapport. Son empreinte n’est pas incluse ici afin de conserver une chaîne de preuves sans cycle."
+}

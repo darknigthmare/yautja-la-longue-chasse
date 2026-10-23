@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "V105",
+  "status": "PASS",
+  "validatedAt": "2026-10-23T02:31:46.685006+00:00",
+  "scope": {
+    "id": "HOMEWORLD-CARTOGRAPHER-A-V105",
+    "delivered": "Option A physique de D6-W-PNJ-ROLE-12 : marche réelle du pupitre au viaduc, escalier public de huit secondes, deux repères comparés sur place, date conservée, descente et rapport au même cartographe. Les reçus A et B restent distincts et les deux ordres séquentiels sont possibles.",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+    "runtimeSourceUnchanged": true
+  },
+  "production": {
+    "status": "PASS",
+    "buildId": "Pq220rJsmklF7dV4DeXEz",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+    "baseUrl": "http://127.0.0.1:3101",
+    "mode": "compiled-app",
+    "completedAt": "2026-10-23T02:31:25.860Z",
+    "checksPassed": 52,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "Pq220rJsmklF7dV4DeXEz",
+        "foundInHtml": true
+      }
+    ],
+    "sourceBefore": [
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+      },
+      {
+        "file": "app/game/HomeworldWorldSceneV77.tsx",
+        "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+      },
+      {
+        "file": "app/game/HomeworldCartographerV104.tsx",
+        "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.tsx",
+        "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV105.tsx",
+        "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.module.css",
+        "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+        "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+        "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+        "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+        "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyV104.ts",
+        "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyV105.ts",
+        "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+      },
+      {
+        "file": "app/game/data/bibleCartographySceneV104.json",
+        "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+      },
+      {
+        "file": "app/game/systems/homeworld.ts",
+        "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+      },
+      {
+        "file": "app/game/buildInfo.ts",
+        "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+      }
+    ],
+    "sourceAfter": [
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+      },
+      {
+        "file": "app/game/HomeworldWorldSceneV77.tsx",
+        "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+      },
+      {
+        "file": "app/game/HomeworldCartographerV104.tsx",
+        "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.tsx",
+        "sha256": "961e9a3514eb1855163fc64201889afe924e5c12f28b246584f3f6aaab5cf353"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV105.tsx",
+        "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+      },
+      {
+        "file": "app/game/HomeworldCartographyV104.module.css",
+        "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+        "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+        "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+        "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+        "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyV104.ts",
+        "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+      },
+      {
+        "file": "app/game/systems/homeworldCartographyV105.ts",
+        "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+      },
+      {
+        "file": "app/game/data/bibleCartographySceneV104.json",
+        "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+      },
+      {
+        "file": "app/game/systems/homeworld.ts",
+        "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+      },
+      {
+        "file": "app/game/buildInfo.ts",
+        "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+      }
+    ],
+    "sourceUnchanged": true,
+    "report": "docs/qa/v105-homeworld-cartography/report.json"
+  },
+  "sourceContract": {
+    "sceneId": "D6-W-PNJ-ROLE-12",
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "corpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+    "sceneCells": "Scènes de dialogue V6!A392:Q392",
+    "optionCells": "Choix et actions V6!A806:I806",
+    "choiceLineCells": "Répliques V6!A3259:K3259",
+    "replyLineCells": "Répliques V6!A3260:K3260",
+    "module": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+    "routeId": "port-high-viaduct-v105",
+    "highPoint": {
+      "x": 6580,
+      "y": 3440,
+      "levelId": "+1"
+    },
+    "originalRidgeOpeningPlayed": false
+  },
+  "tests": {
+    "status": "PASS",
+    "passed": 50,
+    "failed": 0,
+    "skipped": 0,
+    "groups": [
+      {
+        "file": "tests/homeworld-cartography-v105.test.mjs",
+        "passed": 10
+      },
+      {
+        "file": "tests/homeworld-cartography-v104.test.mjs",
+        "passed": 14
+      },
+      {
+        "file": "tests/homeworld-input-runtime.test.mjs",
+        "passed": 26
+      }
+    ],
+    "log": "docs/qa/v105-homeworld-cartography/unit-tests.log",
+    "runtimeCommit": "d0d66d39a8a90c6d039b4b27672dd29d27b78517",
+    "execution": "Three fresh direct Node22 executions after the text correction: 14 V104 + 10 V105 + 26 live input cases; each detailed TAP log is preserved."
+  },
+  "lint": {
+    "status": "PASS",
+    "warnings": 0,
+    "scope": "HomeworldHub, HomeworldCartographyV105, fixture React dédiée et recette navigateur après les gardes de focus synchrones.",
+    "log": "docs/qa/v105-homeworld-cartography/lint.log"
+  },
+  "focusRegression": {
+    "status": "PASS",
+    "synchronousTransfers": [
+      "comparison-first",
+      "comparison-second",
+      "date-and-close",
+      "report",
+      "journal-resume",
+      "journal-retry",
+      "observation-opening"
+    ],
+    "firstFrameAssertions": [
+      "resume preserves active phase and interruptedCount",
+      "choice/date/report retry preserves phase and interruptedCount"
+    ],
+    "qaFocusAfterTheseActions": false
+  },
+  "fixture": {
+    "description": "Model first-tracks campaign plus explicit accepted initial city checkpoint at the existing port lectern. All subsequent positions and survey receipts are earned through UI and keyboard.",
+    "browserClock": "controlled",
+    "initialAcceptedCheckpointOnly": true,
+    "privateActorSetterAfterEntry": false,
+    "movementAfterEntry": "Real keyboard input and the native city/transit integrators."
+  },
+  "captures": [
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-choice.png",
+      "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631",
+      "bytes": 1510697,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Au pupitre natif, le refus reste visible après fermeture et son réessai dédié demeure accessible ; aucun choix A n’est annoncé comme acquis."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/source-a-briefing.png",
+      "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196",
+      "bytes": 128422,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Réponse A exacte et consigne de marche lisibles, boutons de départ et de retour distincts."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/council-stair-lower.png",
+      "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75",
+      "bytes": 1633260,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Joueur au vrai palier inférieur, escalier natif et interaction physique visibles ; aucun étage changé par la carte."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/viaduct-high-point.png",
+      "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb",
+      "bytes": 1584489,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Joueur sur le viaduc existant à +1, marqueur fonctionnel au sol et carnet d’observation visibles."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/two-landmarks-compared.png",
+      "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed",
+      "bytes": 147195,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Deux seuls repères connus, schéma numéroté lisible et bouton de datation disponible ; la comparaison n’a plus interrompu le modal."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-date.png",
+      "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b",
+      "bytes": 1467497,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Deux comparaisons conservées à +1 ; après refus de datation, le carnet présente le réessai et n’annonce aucune date fictive."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-report.png",
+      "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c",
+      "bytes": 1281427,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Joueur réellement revenu auprès du cartographe ; refus du rapport visible et réessai accessible, sans succès anticipé."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/releve-completed-desktop.png",
+      "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96",
+      "bytes": 213506,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "Date, succès A et relevé B historique sont lisibles dans le dialogue défilable ; les parties non vues restent exclues."
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/releve-completed-mobile.png",
+      "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450",
+      "bytes": 172653,
+      "inspection": "PASS_CIBLE",
+      "openedWith": "view_image",
+      "notes": "À390px, nom, date et succès A restent lisibles sans débordement horizontal ; le dialogue conserve son défilement vertical."
+    }
+  ],
+  "captureCount": 9,
+  "inspectedCount": 9,
+  "recipe": {
+    "file": "scripts/qa-homeworld-cartography-v105.mjs",
+    "sha256": "df56c7d2a83cfa01dc907ecb4dd6e45f187dd228c6afeb146544db10cdd06723",
+    "bytes": 24623
+  },
+  "evidence": [
+    {
+      "file": "docs/qa/v105-homeworld-cartography/browser-console.log",
+      "sha256": "62802a908692ba7fa7bf184a6132b172f51a6484b5dd2424f52ae0788e0e800d",
+      "bytes": 3830
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/council-stair-lower.png",
+      "sha256": "4add2b17aafb6da90a650cdcd0d79bfd3b79a1b40613dd6bcfe233d8c089eb75",
+      "bytes": 1633260
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/releve-completed-desktop.png",
+      "sha256": "34dfeff53d73cfdb8900e6c92184da595cddbd02a439d27582fadae50150de96",
+      "bytes": 213506
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/releve-completed-mobile.png",
+      "sha256": "4dd4cd9c3a6b4dfb315fb9ed6cd3480b1ce207f3bf74f255fa11f4e32f247450",
+      "bytes": 172653
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/report.json",
+      "sha256": "08dfdeddda6753e0b1f177b899e993c4d939f947519d0a128cf2e558d1ddcc79",
+      "bytes": 14516
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/source-a-briefing.png",
+      "sha256": "15a9e891a79af8ce5a259765eb8aaf526ab6cfb081f0eaffb8311153a9426196",
+      "bytes": 128422
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/two-landmarks-compared.png",
+      "sha256": "7d4e3489e94b5d368cd730b424190b19d3d8c6f8c2ff8813c3780f5876bd16ed",
+      "bytes": 147195
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/unit-tests.log",
+      "sha256": "27b99bfda2c71a2448fa165a78333d9687f216d8f19c1392aa122ce800070a79",
+      "bytes": 14205
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/viaduct-high-point.png",
+      "sha256": "1ce858e134b04f8ce5dff9ce443ce995baf35e32f17fe5d736f7bf951104f2fb",
+      "bytes": 1584489
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-choice.png",
+      "sha256": "8e159a3ea622646ed9713f279343a5f27a757879db9b98d02c1583384c98a631",
+      "bytes": 1510697
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-date.png",
+      "sha256": "677c2881a2873bcf29deb3a4fc8c02538990b5b6cd8844357334f827a3e2a74b",
+      "bytes": 1467497
+    },
+    {
+      "file": "docs/qa/v105-homeworld-cartography/write-paused-report.png",
+      "sha256": "17a133704df5ae71a50282a08c8943ab74b7bcf7e2fe02f72df432582ce36e3c",
+      "bytes": 1281427
+    }
+  ],
+  "limits": [
+    "L’ouverture V6 évoquant une crête demeure non jouée : le parcours adapte le point haut sur le viaduc existant.",
+    "Le schéma ne consigne que les deux objets déjà connus ; aucun quartier non observé ni récompense n’est octroyé par la parole.",
+    "Cette preuve locale ne certifie pas une campagne entière depuis la nurserie, une manette physique, un nouveau doublage ou toutes les scènes V6."
+  ],
+  "proofPolicy": {
+    "authority": "compiled-app production recipe",
+    "retiredPreflight": {
+      "reason": "Le préflight isolé de 42 contrôles précédait les dernières assertions de la recette ; il est retiré des preuves et n’est pas régénéré. Seuls les contrôles sur l’application compilée étayent la recette navigateur."
+    },
+    "neutralNote": "The first compiled-app control asserts visibility of the corrected neutral high-point note in the initial B offer."
+  }
+}

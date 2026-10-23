@@ -5,6 +5,7 @@ import { loadPitSpriteSheetAnimations, resolvePitSpriteSheetInspectionV100, type
 import { drawPitWorkbookFrameV100, getPitWorkbookCameraV100, getPitWorkbookFighterV100, getPitWorkbookNativeV100, getPitWorkbookTimelineV100,
   type PitWorkbookFighterV100 } from './pitWorkbookAnimationV100';
 import styles from './PitWorkbookAnimationViewerV100.module.css';
+import { getPitWorkbookRuntimeBindingV105 } from './pitWorkbookRegistryV105';
 
 /** Public viewer of admitted body artwork. The clock belongs to this viewer,
  * never to a match, training recording, inventory or replay. */
@@ -26,6 +27,16 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
     atlasId: native.definition.atlas.id, clipId: selected.clipId, facing, elapsedTicks: selected.nativeTick }) : null;
   const status = !native ? 'unavailable' : !timeline.length ? 'missing-facing' : !bank ? 'loading' : inspected ? 'ready' : 'failed';
   const activeInCombat = !!native && (native.admission.combatClipIds?.length || native.admission.atlasId === 'feral-actions-v59');
+  const sourceBinding = getPitWorkbookRuntimeBindingV105(fighterId, action.id);
+  const partnerStudy = ['TH_F', 'TH_B', 'FATALITE_1', 'FATALITE_2', 'CLEMENCE'].includes(action.key);
+  const availability = sourceBinding === 'presentation'
+    ? 'Cette présentation accompagne les entrées, résultats ou provocations du duel avec les règles du classeur.'
+    : sourceBinding === 'normal' || sourceBinding === 'move'
+      ? 'Ce mouvement accompagne une action disponible en duel avec les règles du classeur.'
+      : partnerStudy
+        ? 'Étude avec partenaire dessiné, consultable ici. Elle ne remplace pas l’adversaire du duel.'
+        : activeInCombat ? 'Ce mouvement accompagne une action disponible dans le duel classique.'
+          : 'Étude de mouvement consultable ici. Son action complète n’est pas encore disponible en duel.';
 
   useEffect(() => {
     if (!native) return;
@@ -62,7 +73,8 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
   }, [status, native, bank, facing, current]);
   const reset = () => { setPlaying(false); setIndex(0); };
   return <section className={styles.root} aria-label={`Animations de ${PIT_FIGHTERS[fighterId].name}`} data-pit-animation-viewer-v100
-    data-fighter={fighterId} data-action={action.id} data-facing={facing} data-status={status} data-drawing-index={current}>
+    data-fighter={fighterId} data-action={action.id} data-facing={facing} data-status={status} data-drawing-index={current}
+    data-runtime-binding-v105={sourceBinding ?? 'study'}>
     <h4>Animations de {PIT_FIGHTERS[fighterId].name}</h4>
     <p>Observez ses mouvements et ses présentations dans son apparence d’origine.</p>
     {native?.admission.contextLabel ? <p className={styles.note}>{native.admission.contextLabel}</p> : null}
@@ -80,6 +92,6 @@ export default function PitWorkbookAnimationViewerV100({ fighterId }: { fighterI
       <button type="button" disabled={status !== 'ready'} aria-pressed={playing} onClick={() => { if (!playing && current >= timeline.length - 1) setIndex(0); setPlaying(value => !value); }}>{playing ? 'Pause' : 'Lire le mouvement'}</button>
       <button type="button" disabled={status !== 'ready' || current >= timeline.length - 1} onClick={() => { setPlaying(false); setIndex(current + 1); }}>Image suivante</button>
       {status === 'failed' ? <button type="button" onClick={() => { reset(); setAttempt(value => value + 1); }}>Réessayer</button> : null}</div>
-    <p className={styles.note} role="status">{status === 'ready' ? activeInCombat ? 'Ce mouvement accompagne une action disponible en duel.' : 'Étude de mouvement consultable ici. Son action n’est pas encore disponible en duel.' : 'Chaque direction apparaît après validation de ses images.'}</p>
+    <p className={styles.note} role="status">{status === 'ready' ? availability : 'Chaque direction apparaît après validation de ses images.'}</p>
   </section>;
 }

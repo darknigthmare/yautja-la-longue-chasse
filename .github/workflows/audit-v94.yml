@@ -21,6 +21,9 @@ on:
       - 'docs/v100-*'
       - 'docs/YAUTJA_V104_SUIVI.xlsx'
       - 'docs/*v104*'
+      - 'docs/YAUTJA_V105_SUIVI.xlsx'
+      - 'docs/*v105*'
+      - 'docs/qa/v105*/**'
       - 'docs/v56-excel-priorities.json'
       - 'art-source/v100/**'
       - 'public/game/sprites/v100/**'
@@ -121,6 +124,9 @@ jobs:
             /docs/v100-*
             /docs/YAUTJA_V104_SUIVI.xlsx
             /docs/*v104*
+            /docs/YAUTJA_V105_SUIVI.xlsx
+            /docs/*v105*
+            /docs/qa/v105*/
             /docs/planet-generator-v103/review-fixes-20261022.json
             /docs/suivi-production/v611/data/production-manifest.json
             /docs/suivi-production/v612/data/production-manifest.json
@@ -131,6 +137,7 @@ jobs:
             /public/game/production/enforcers-v612/
             /public/game/production/enforcers-v613/
             /docs/v56-excel-priorities.json
+            /docs/war-clans-v3-workbook-source.json
             /art-source/v100/
             /public/game/sprites/v100/pit/
             /public/game/sprites/v59/pit/feral/
@@ -224,6 +231,15 @@ jobs:
           app/game/systems/pitReplay.ts app/game/systems/pitReplayStorage.ts app/game/systems/pitTraining.ts
           app/game/systems/pitWorkbookNormalsV104.ts app/game/pitWorkbookNormalRegistryV104.ts
           app/game/hunterSpriteMotion.ts app/game/pitCombatBitmapArt.ts
+          app/game/pitWorkbookRegistryV105.ts app/game/systems/pitWorkbookMovesV105.ts
+          app/game/systems/pitWorkbookCombatV105.ts app/game/systems/pitRoundPresentation.ts
+          app/game/systems/pitWorkbookPresentationClockV105.ts
+          app/game/systems/pitLifecyclePresentationV93.ts
+          app/game/HomeworldCartographyV105.tsx
+          app/game/systems/homeworldCartographyDefinitionV105.ts
+          app/game/systems/homeworldCartographyLedgerV105.ts app/game/systems/homeworldCartographyV105.ts
+          app/game/ClanWarConvoyRouteV105.tsx app/game/systems/clanWarConvoyRouteV105.ts
+          app/game/systems/clanWarConvoyStateV105.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -319,13 +335,19 @@ jobs:
         run: npm run test:worlds:v100
       - name: Verify reproducible V100 follow-up while preserving the historical V99 workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v100.mjs --check
+        run: node scripts/check-excel-history-v105.mjs --release V100 --check
       - name: Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs
       - name: Verify reproducible V104 follow-up and preserved historical workbook parts
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v104.mjs --check
+        run: node scripts/check-excel-history-v105.mjs --release V104 --check
+      - name: Exercise V105 commands, presentations, high-point survey, convoys and workbook boundaries
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs
+      - name: Verify reproducible V105 follow-up and the 39 frozen historical sheets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v105.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
