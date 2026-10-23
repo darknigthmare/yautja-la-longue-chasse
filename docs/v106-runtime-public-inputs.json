@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V106",
-  "scope": "Existing native public inputs connected to five Feral/Scar actions and the local Homeworld archive activity. No newly authored pixels are claimed. The runtime freeze also preserves the full V105 public input set.",
+  "scope": "Existing native public inputs connected to five Feral/Scar actions and the local Homeworld archive activity, plus two historical V11 exclusion references. No newly authored pixels or additional playable variants are claimed. The runtime freeze also preserves the full V105 public input set.",
   "collector": "scripts/collect-v106-runtime-inputs.mjs",
   "assets": [
     {
@@ -227,6 +227,38 @@
       "width": 1536,
       "height": 1024,
       "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd",
+      "bytes": 2412775,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/scar/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855",
+      "bytes": 2413012,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/feral/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
     },
     {
       "path": "public/game/sprites/v59/pit/feral/launcher-left.png",

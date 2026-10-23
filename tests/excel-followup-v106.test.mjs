@@ -54,6 +54,7 @@ test('current runtime probes stay separate from complete kits, campaigns, varian
  assert.equal(f.sourceBindingsDeclared,35+f.newRuntimeMoves);assert.equal(f.sourceRuntimeBindings,snapshot.workstreams[0].status==='VALIDE_CIBLE'?f.sourceBindingsDeclared:35);
  assert.equal(f.sourceActionsRemaining,52-f.sourceRuntimeBindings);assert.equal(f.newNativeDrawings,0);assert.equal(f.campaignStages,16);assert.equal(f.variantConstraints,14);assert.equal(f.openWarStructures,6);
  assert.deepEqual(snapshot.pitVersions,{legacy:11,v104:12,v105:13,v106:14});assert.equal(f.motionPatterns,5);assert.equal(snapshot.motions.length,8);
+ assert.equal(f.publicInputsForNewConnections,31);assert.equal(f.publicInputsForValidation,33);assert.equal(f.historicalAppearanceExclusionInputs,2);
  const partners=snapshot.actions.filter(item=>['TH_F','TH_B','FATALITE_1','FATALITE_2','CLEMENCE'].includes(item.key));assert.equal(partners.length,10);
  assert(partners.every(item=>item.runtimeAtlasId===''&&['OUVERT','SANS_MECANIQUE_COMBAT'].includes(item.mechanics)&&item.presentation!=='REGISTRE_PRESENTATION_V105'));
  assert(Object.entries(snapshot.delivery).filter(([key])=>key!=='canonicalFidelity').every(([,value])=>value==='OUVERT'));
@@ -62,9 +63,13 @@ test('current runtime probes stay separate from complete kits, campaigns, varian
  assert.equal(qa.result,'PASS_STRUCTURE');assert.equal(qa.originalSheetsPreserved,49);assert.equal(qa.sheetNames.length,60);assert.equal(qa.nativeExcelApplicationVerified,false);assert.equal(qa.nativeExcelCalculationEngineExecuted,false);
 });
 
-test('the pre-promotion inventory covers actual native pages, archive furniture and modular image requests',async()=>{
+test('the pre-promotion inventory covers native/activity requests and qualified V11 exclusions',async()=>{
  const inventory=await collectRuntimeInputsV106();assert.equal(inventory.status,'INPUTS_ONLY');
  const paths=inventory.assets.map(item=>item.path);assert.equal(new Set(paths).size,paths.length);
+ assert.equal(paths.length,33);
+ const exclusions=inventory.assets.filter(item=>item.provenance?.admission==='LEGACY_V11_EXCLUSION_ONLY');assert.equal(exclusions.length,2);
+ assert.deepEqual(exclusions.map(item=>item.provenance.fighterId).sort(),['feral-hunter','scar']);
+ assert(exclusions.every(item=>item.scope.includes('V11 exclusion only')&&item.path==='public/game/sprites/v44/user-hunters/'+item.sha256+'.png'&&item.provenance.metadataPath==='app/game/data/pitUserHuntersV44.json'));
  const npc=inventory.assets.filter(item=>item.scope.includes('modular NPC'));assert.equal(npc.length,18);assert.equal(npc.filter(item=>item.path.endsWith('.png')).length,1);assert.equal(npc.filter(item=>item.path.endsWith('.webp')).length,17);
  assert(paths.includes('public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp'));assert(paths.includes('public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp'));assert(!paths.includes('public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp'));
  assert(inventory.inputs.every(item=>!item.path.startsWith('docs/')),'Pre-freeze input inventory must avoid proof/master cycles');

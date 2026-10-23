@@ -16,6 +16,7 @@ export {PIT_WORKBOOK_SUPER_SOURCES_V106} from './app/game/systems/pitWorkbookSup
 export {validateHunterSpriteAtlas} from './app/game/hunterSpriteAtlas';
 export {HOMEWORLD_ARCHIVE_V106} from './app/game/systems/homeworldArchiveDefinitionV106';
 export {default as homeworldDecorV80} from './app/game/data/homeworldNativeDecorV80.json';
+export {default as legacyAppearancesV44} from './app/game/data/pitUserHuntersV44.json';
 export {HUNTER_ASSET_ROOT_V3,HUNTER_BODY_PART_IDS,hunterBodyPartPath,hunterBodyFullPath,hunterDreadPath} from './app/game/hunterVisuals';`;
 const local = file => typeof file === 'string' && !path.isAbsolute(file) && !file.includes('\\') && file.split('/').every(part=>part&&part!=='.'&&part!=='..');
 async function fingerprints(files) {
@@ -80,11 +81,28 @@ export async function collectRuntimeInputsV106() {
   assets.set(file,{path:file,sha256:sha(bytes),bytes:bytes.length,width:metadata.width,height:metadata.height,scope:'Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation.'});
  }
  assert.equal(assets.size,31,'Eleven combat pages, two archive props and eighteen modular NPC images expected');
+ // The production recipe also observes these two historical silhouettes when
+ // excluding V11 from the workbook recipe. They grant no new BODY or variant.
+ const exclusions=[
+  {fighterId:'scar',variantId:'scar-avec-casque-6a0a69930d',sha256:'6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd'},
+  {fighterId:'feral-hunter',variantId:'feral-avec-casque-b99fbf82fe',sha256:'b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855'},
+ ];
+ for(const expected of exclusions){
+  const appearance=api.legacyAppearancesV44.fighters.find(fighter=>fighter.id===expected.fighterId)?.variants.find(variant=>variant.id===expected.variantId);
+  assert.ok(appearance&&appearance.frameCount===1&&appearance.animated===false,'Single-frame historical appearance required');
+  assert.equal(appearance.src,'/game/sprites/v44/user-hunters/'+expected.sha256+'.png');assert.equal(appearance.sha256,expected.sha256);
+  const file='public'+appearance.src,bytes=await fs.readFile(path.join(ROOT,file));
+  assert.equal(sha(bytes),expected.sha256,'Historical V11 exclusion PNG changed: '+file);
+  assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+  assert.equal(bytes.readUInt32BE(16),appearance.width);assert.equal(bytes.readUInt32BE(20),appearance.height);
+  assets.set(file,{path:file,sha256:expected.sha256,bytes:bytes.length,width:appearance.width,height:appearance.height,scope:'Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.',provenance:{metadataPath:'app/game/data/pitUserHuntersV44.json',fighterId:expected.fighterId,variantId:expected.variantId,sourceArchive:appearance.sourceArchive,sourceEntry:appearance.sourceEntry,admission:'LEGACY_V11_EXCLUSION_ONLY'}});
+ }
+ assert.equal(assets.size,33,'Thirty-one source/activity images and two historical V11 exclusion images expected');
  assert.deepEqual(await fingerprints(imports),before,'V106 inputs changed during collection');
  const assetRows=[...assets.values()].sort((a,b)=>a.path.localeCompare(b.path));
  const inputs=await fingerprints([...imports,...assetRows.map(item=>item.path),'scripts/collect-v106-runtime-inputs.mjs','app/game/HomeworldModularHunter.tsx','app/game/HomeworldArchiveWorldV106.tsx','app/game/data/homeworldCharacterGroundV64.json']);
  for(const asset of assetRows)assert.equal(inputs.find(input=>input.path===asset.path).sha256,asset.sha256,'Public input changed during collection: '+asset.path);
- return {schemaVersion:1,status:'INPUTS_ONLY',scope:'Five combat targets, eleven admitted native BODY pages, two native archive props and eighteen inherited classic/reference NPC images. No new pixel, gameplay/browser validation or complete-character claim.',assets:assetRows,inputs};
+ return {schemaVersion:1,status:'INPUTS_ONLY',scope:'Five combat targets, eleven admitted native BODY pages, two native archive props, eighteen inherited classic/reference NPC images and two historical V11 exclusion images. No new pixel, BODY, variant admission, gameplay/browser validation or complete-character claim.',assets:assetRows,inputs};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  assert.equal(process.argv.length,2,'Usage: node scripts/collect-v106-runtime-inputs.mjs');

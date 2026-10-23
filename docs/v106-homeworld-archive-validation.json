@@ -1,39 +1,57 @@
 {
   "status": "PASS",
   "scope": {
-    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
-    "description": "One accepted initial checkpoint, then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification."
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+    "description": "One accepted initial checkpoint for the source journey plus one explicitly declared carried regression fixture at a foreground boundary; then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification."
   },
   "production": {
-    "buildId": "KlZy6p2FCQDouFqIgys2f",
+    "buildId": "PSbg8NXFktzLqpiyuoPMt",
     "mode": "compiled-app",
-    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
-    "checksPassed": 48,
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+    "checksPassed": 55,
     "checksFailed": 0,
     "browserErrors": 0,
     "servedBuilds": [
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       }
     ]
@@ -46,64 +64,69 @@
     },
     {
       "file": "docs/qa/v106-homeworld-archive/02-native-carry-a.png",
-      "sha256": "19220739cfb4ad1296e98b2183e5ca0f0f53d81260a19066e5aa6facefaee1bf",
-      "bytes": 1120225
+      "sha256": "4da9df013dc63c9f92a05a935ab294a7673cea9b93844bbbc74d5b3e9d887022",
+      "bytes": 1098356
     },
     {
       "file": "docs/qa/v106-homeworld-archive/03-interrupted-load.png",
-      "sha256": "3955fe566da9dbaafc7eb5c21de63be00814d0878a2333185f40599b3b275f90",
-      "bytes": 1059981
+      "sha256": "e10a65da4340ac2a91e43f6cd8545a314d6ebe363ad40c8aa498a9317de4ecfe",
+      "bytes": 1031242
     },
     {
       "file": "docs/qa/v106-homeworld-archive/04-parked-dossier.png",
-      "sha256": "e6f60d3b1ee1d38efb0e6494cbc68109af4dbe426049ad1dcbe2881903b469e1",
-      "bytes": 1107685
+      "sha256": "99c7c1079506b6e753aef25e29ca636e346d5214c92c89c055eeeedade7762cb",
+      "bytes": 1129014
     },
     {
       "file": "docs/qa/v106-homeworld-archive/05-first-support.png",
-      "sha256": "cb5403057f2802f55e0ada0db10b6d6e90c75275e77dc243a07af7ff6b42e7aa",
-      "bytes": 1151233
+      "sha256": "5f6a73b5e937bae81088c731348ee5b23738ebfeacbb88b6bbf5eca2556d6102",
+      "bytes": 1125343
     },
     {
       "file": "docs/qa/v106-homeworld-archive/06-two-separate-supports.png",
-      "sha256": "ac4caeffd5a4e2a162f4ca0fd0e0b78921098a4e4ea942ff46fcbae843ccc597",
-      "bytes": 1258384
+      "sha256": "c9306a462d7f188323fb987481319ebbc5ef79ac1794cc33d7b29248736ecab9",
+      "bytes": 1241054
     },
     {
       "file": "docs/qa/v106-homeworld-archive/07-completed-desktop.png",
-      "sha256": "fe0419b007cf4a8f316b55d8846368e3496ed1e179582248920689576fb24d88",
-      "bytes": 188855
+      "sha256": "f158f1aec7bf6c1909cfa1881b51fbcd5d20b12136b8637746b4afdb9d75e459",
+      "bytes": 188852
     },
     {
       "file": "docs/qa/v106-homeworld-archive/08-completed-mobile.png",
-      "sha256": "e367ba78326c740b46b6bade89afc60744ee988c12e40a1526c4a0a9677c98d5",
-      "bytes": 137887
+      "sha256": "008494075da8f163e5d9736911684406b0bbf066097f2e0d47efc5a20538a98d",
+      "bytes": 137718
     },
     {
       "file": "docs/qa/v106-homeworld-archive/09-local-map-mobile.png",
-      "sha256": "680dcc2f6befd4f8cd56ea4b86e1550b0061a76703b869e1a9fdf8b44f7851d4",
-      "bytes": 35949
+      "sha256": "5f6a8094e42f9eb818c158dbec4ba25459d20cd3832f9251a7c4a66c033ee6d8",
+      "bytes": 35936
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/10-foreground-carry-resume.png",
+      "sha256": "1ad8e179baae6af3289851179982eead2c05d81434dfc2a34495dd304012b9b5",
+      "bytes": 1036685
     },
     {
       "file": "docs/qa/v106-homeworld-archive/result.json",
-      "sha256": "3d2094b870d64a67b5d4c4f266c1a1a5e9ce1cd44533c5066e54f03eadd8edf1",
-      "bytes": 13827
+      "sha256": "379f94b45c4f3ea13fd613bf23b7d2fd03303418fbccf6f7f5a8cc5f710b31da",
+      "bytes": 16934
     },
     {
       "file": "docs/qa/v106-homeworld-archive/test.log",
-      "sha256": "f4a84073e94316cc691d55adc2717008c18d74891d2c0b4ac1214ad911c083e8",
-      "bytes": 9823
+      "sha256": "4add87db84f0f012ded96f55575f0ccabc3c7bb7ad35bf3a04fdbac78514dae6",
+      "bytes": 10491
     },
     {
       "file": "docs/qa/v106-homeworld-archive/lint.log",
-      "sha256": "6ca9eaa6c8402ffa59fbb6184c6c819acab62e9127cef8612e903bc61099a785",
-      "bytes": 510
+      "sha256": "4b9a80b4ea25a9c93312b0ad909e87a9a1aea91ba47453a88f499214e772f96a",
+      "bytes": 611
     }
   ],
   "sourceBefore": [
     {
       "file": "app/game/HomeworldHub.tsx",
-      "sha256": "cce4cbf684ba767d2af91d1696066182b51d435d56f949323c00733aaae4785d"
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
     },
     {
       "file": "app/game/HomeworldWorldSceneV77.tsx",
@@ -135,7 +158,7 @@
     },
     {
       "file": "app/game/systems/homeworldArchiveV106.ts",
-      "sha256": "9ecd9d53819cc0dd4cffdc66925ab96655e99586aa6a876e32bfe8179b6851d4"
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
     },
     {
       "file": "app/game/systems/homeworldCivicWorldV80.ts",
@@ -163,13 +186,13 @@
     },
     {
       "file": "scripts/qa-homeworld-archive-v106.mjs",
-      "sha256": "70decfc3aaeca518f31b8ca63fe6b9cade239a40f02c3aa43949acdc38b0d107"
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
     }
   ],
   "sourceAfter": [
     {
       "file": "app/game/HomeworldHub.tsx",
-      "sha256": "cce4cbf684ba767d2af91d1696066182b51d435d56f949323c00733aaae4785d"
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
     },
     {
       "file": "app/game/HomeworldWorldSceneV77.tsx",
@@ -201,7 +224,7 @@
     },
     {
       "file": "app/game/systems/homeworldArchiveV106.ts",
-      "sha256": "9ecd9d53819cc0dd4cffdc66925ab96655e99586aa6a876e32bfe8179b6851d4"
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
     },
     {
       "file": "app/game/systems/homeworldCivicWorldV80.ts",
@@ -229,7 +252,7 @@
     },
     {
       "file": "scripts/qa-homeworld-archive-v106.mjs",
-      "sha256": "70decfc3aaeca518f31b8ca63fe6b9cade239a40f02c3aa43949acdc38b0d107"
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
     }
   ],
   "capturesOpened": [
@@ -241,7 +264,8 @@
     "06-two-separate-supports.png",
     "07-completed-desktop.png",
     "08-completed-mobile.png",
-    "09-local-map-mobile.png"
+    "09-local-map-mobile.png",
+    "10-foreground-carry-resume.png"
   ],
-  "completedAt": "2026-10-23T04:30:54.718Z"
+  "completedAt": "2026-10-23T05:09:59.413Z"
 }

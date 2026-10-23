@@ -11,7 +11,7 @@ assert.equal(result.status,'PASS');assert.equal(result.mode,'compiled-app');asse
 assert(result.buildId&&result.servedBuilds.length&&result.servedBuilds.every(b=>b.status===200&&b.expectedBuildId===result.buildId&&b.foundInHtml===true));
 assert.equal(result.errors.length,0);assert(result.sourceUnchanged);assert.deepEqual(result.sourceBefore,result.sourceAfter);
 assert(result.checks.length>=35&&result.checks.every(c=>c.status==='PASS'));
-assert.equal(result.captures.length,9);
+assert.equal(result.captures.length,10);
 const inspected=process.env.YAUTJA_ARCHIVE_OPENED_CAPTURES?.split(',')??[];
 assert.deepEqual([...inspected].sort(),result.captures.map(c=>c.file).sort(),'Supply the exact names of all screenshots after opening them');
 const out='docs/qa/v106-homeworld-archive';await fs.mkdir(out,{recursive:true});

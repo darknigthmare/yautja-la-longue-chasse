@@ -12,4 +12,6 @@ L’archiviste conserve l’intégralité du sous-ensemble source ROLE03, dont l
 
 `node scripts/collect-v106-runtime-inputs.mjs` inventorie les vrais fichiers publics nécessaires aux nouveaux raccords avant toute promotion : pages BODY, meubles et composition modulaire classic/reference. Il ne lit aucun rapport ni classeur dérivé V106, ce qui permet au gel global de le précéder sans cycle. La tête de référence remplace la partie tête héritée : la composition du PNJ charge 18 images uniques, dont un PNG et 17 WebP. Tous ces pixels existent déjà.
 
+L’inventaire de validation couvre aussi deux apparences statiques V44 utilisées pour vérifier l’exclusion historique V11, soit 33 images au total. Chaque PNG conserve sa provenance et l’étiquette `LEGACY_V11_EXCLUSION_ONLY`. Ces deux entrées ne deviennent ni un nouveau BODY, ni une admission de variante, ni une liaison source supplémentaire : les raccords de jeu utilisent toujours 31 images héritées, et le compteur reste à 40/52.
+
 La reproductibilité V105 est vérifiée séparément par `node scripts/check-excel-history-v106.mjs --check` dans la capsule bornée de ses sources exactes. Les deux tests historiques conservent leurs assertions originales. Les tests courants et le générateur V106 importent les modules actuels ; les capsules V100/V104 restent inchangées.

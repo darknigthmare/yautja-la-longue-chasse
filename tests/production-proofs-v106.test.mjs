@@ -26,6 +26,8 @@ test('the production freeze still matches every application source and its bound
 
 test('all three production journeys share the same build and preserve their portable evidence bytes', async () => {
   const report = await json('docs/v106-validation-summary.json');
+  const frozenPublic = new Set(JSON.parse(await verifyFile(report.sourceFreeze)).entries
+    .filter(entry => entry.path.startsWith('public/')).map(entry => entry.path));
   assert.deepEqual(report.production.map(item => item.domain).sort(), ['Clans', 'Homeworld', 'Pit']);
   for (const item of report.production) {
     const proof = JSON.parse(await verifyFile(item.report));
@@ -48,6 +50,7 @@ test('all three production journeys share the same build and preserve their port
     for (const source of after) {
       const file = source.file ?? source.path;
       assert.ok(typeof file === 'string' && !file.startsWith('/') && !file.split(/[\\/]/).includes('..'));
+      if (file.startsWith('public/')) assert.ok(frozenPublic.has(file), file + ': observed public input missing from the runtime freeze');
       assert.equal(sha(await fs.readFile(file)), source.sha256, file + ': source changed after QA');
     }
     assert.equal(item.buildId, report.productionBuildId);

@@ -181,29 +181,29 @@ async function command(move, slot, motion = false) {
   await page.locator('[data-pit-immersive]').focus();
   if (!motion) {
     await page.locator(`[data-pit-workbook-controls="${slot}"] [data-pit-workbook-action="${move.key === 'SUPER' ? 'super' : move.key === 'S2' ? 'shield' : 'projectile'}"]`).click();
-    await page.clock.runFor(16); return;
+    await page.clock.runFor(32); return;
   }
   const down = slot ? 'Numpad2' : 'ArrowDown', forward = walkKeys[slot].toward, back = walkKeys[slot].away, technique = slot ? 'Numpad7' : 'KeyU';
   if (move.key === 'SUPER') {
     for (let quarter = 0; quarter < 2; quarter++) {
       await page.keyboard.down(down); await page.clock.runFor(32); await page.keyboard.down(forward); await page.clock.runFor(32);
-      await page.keyboard.up(down); await page.clock.runFor(16);
+      await page.keyboard.up(down); await page.clock.runFor(32);
       if (!quarter) await page.keyboard.up(forward);
     }
-    await page.keyboard.down(technique); await page.clock.runFor(16); await page.keyboard.up(technique); await page.keyboard.up(forward);
+    await page.keyboard.down(technique); await page.clock.runFor(32); await page.keyboard.up(technique); await page.keyboard.up(forward);
   } else if (move.key === 'S2') {
     await page.keyboard.down(down); await page.clock.runFor(32);
     await page.keyboard.down(back); await page.clock.runFor(32);
-    await page.keyboard.up(down); await page.keyboard.down(technique); await page.clock.runFor(16);
+    await page.keyboard.up(down); await page.keyboard.down(technique); await page.clock.runFor(32);
     await page.keyboard.up(technique); await page.keyboard.up(back);
   } else if (move.fighterId === 'scar') {
     await page.keyboard.down(forward); await page.clock.runFor(32); await page.keyboard.up(forward);
     await page.keyboard.down(down); await page.clock.runFor(32); await page.keyboard.down(forward);
-    await page.keyboard.down(technique); await page.clock.runFor(16);
+    await page.keyboard.down(technique); await page.clock.runFor(32);
     await page.keyboard.up(technique); await page.keyboard.up(forward); await page.keyboard.up(down);
   } else {
     await page.keyboard.down(down); await page.clock.runFor(32); await page.keyboard.down(forward); await page.clock.runFor(32);
-    await page.keyboard.up(down); await page.keyboard.down(technique); await page.clock.runFor(16);
+    await page.keyboard.up(down); await page.keyboard.down(technique); await page.clock.runFor(32);
     await page.keyboard.up(technique); await page.keyboard.up(forward);
   }
 }

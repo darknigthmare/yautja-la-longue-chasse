@@ -9,10 +9,10 @@
   "baselineFreeze": "FROZEN",
   "runtimeFreeze": {
     "path": "docs/v106-runtime-freeze.json",
-    "sha256": "cc687705084641486c37cae28ffdd80b89da587316d3599254aa378ed972bb77",
-    "bytes": 170254
+    "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+    "bytes": 170740
   },
-  "runtimeFrozenInputsVerified": 241,
+  "runtimeFrozenInputsVerified": 243,
   "method": "Source cells verified against pinned extractions; five real source commands and eight relative-motion bindings probed in both facings. Inherited V105 evidence remains frozen. This generator runs no production browser recipe.",
   "facts": {
     "sourceActions": 52,
@@ -49,7 +49,9 @@
     "archiveContainers": 2,
     "archiveSupports": 2,
     "publicInputsForNewConnections": 31,
-    "publicAssetsVerified": 131
+    "publicInputsForValidation": 33,
+    "historicalAppearanceExclusionInputs": 2,
+    "publicAssetsVerified": 133
   },
   "pitVersions": {
     "legacy": 11,
@@ -97,17 +99,17 @@
       "validationScope": "FIVE_SOURCE_ACTIONS_SUPERS_AND_RELATIVE_MOTIONS",
       "runtime": "Recette workbook-v106 V14 explicite : Feral S1/S2/SUPER et Scar S3/SUPER, 34 clips de phases, cinq motions et huit liaisons directionnelles aux deux sens. SUPER24/8/48 à coût100%, continuation et caméra après contact réel non gardé ; 40/52 raccords source, aucun nouveau pixel.",
       "tests": "PASS : 139 cas combat/replay/training/source/rendu avant les derniers correctifs de présentation, puis 21 cas caméra/rendu ; groupes se recouvrant, non additionnés comme cas uniques. Types et lint globaux PASS ; journaux épinglés dans le résumé.",
-      "browser": "PASS_CIBLE_PRODUCTION : 198 contrôles, 27 captures ouvertes ; build KlZy6p2FCQDouFqIgys2f, runtime b5f75050beee65af708b4a2512d582f585e977e5.",
+      "browser": "PASS_CIBLE_PRODUCTION : 198 contrôles, 27 captures ouvertes ; build PSbg8NXFktzLqpiyuoPMt, runtime db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2.",
       "proof": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-pit-workbook-validation.json",
-          "sha256": "56dbe92defb7d61e7da4b990a766cc7a9c3e91d64acbd3896f2361a2a8b1a9db",
-          "bytes": 77331
+          "sha256": "e57536a4554e459f48cf2aa2c20a19a81d77ca9c2ff2002965368d6de7c8d1d4",
+          "bytes": 78689
         }
       ],
       "remaining": "12 actions sans liaison source : 4 projections, 2 spéciaux à entités (mine et shuriken) et 6 conclusions avec partenaire. Inventaire persistant, campagnes16 et contraintes de variantes14 restent ouverts. Les 40 liaisons ne terminent pas deux kits ; les effets en vol restent vectoriels adaptés, sans nouveau sprite indépendant certifié."
@@ -133,19 +135,19 @@
       ],
       "status": "VALIDE_CIBLE",
       "validationScope": "ROLE03_OPTION_B_PHYSICAL_SEPARATION",
-      "runtime": "Opération physique au port : deux contenants d’étude transportés un par un, deux pupitres séparés ; proximité, disponibilité de l’archiviste, confidentialité, dépôt réel et reçu persistant contrôlés.",
-      "tests": "PASS : 9 cas archivage et 27 cas intégration des entrées ; régressions de60 cas civiques/navigation/save/cartographie et22 cas guide/archive/navigation consignées dans le résumé, avec groupes se recouvrant. Journaux9/27 portables dans la preuve domaine.",
-      "browser": "PASS_CIBLE_PRODUCTION : 48 contrôles, 9 captures ouvertes ; build KlZy6p2FCQDouFqIgys2f, runtime b5f75050beee65af708b4a2512d582f585e977e5.",
+      "runtime": "Opération physique au port : deux contenants d’étude transportés un par un, deux pupitres séparés ; proximité, disponibilité de l’archiviste, confidentialité, dépôt réel et reçu persistant contrôlés. Les vrais pas autorisés derrière une façade conservent la même position pour l’acteur et le dossier porté, y compris après sauvegarde et reprise.",
+      "tests": "PASS : 10 cas archivage et 28 cas intégration des entrées, avec régression de portage derrière une façade ; 55 contrôles production dont 7 consacrés à cette régression. Régressions de 60 cas civiques/navigation/save/cartographie et 22 cas guide/archive/navigation consignées dans le résumé, groupes se recouvrant. Journaux 10/28 portables dans la preuve domaine.",
+      "browser": "PASS_CIBLE_PRODUCTION : 55 contrôles, 10 captures ouvertes ; build PSbg8NXFktzLqpiyuoPMt, runtime db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2.",
       "proof": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-homeworld-archive-validation.json",
-          "sha256": "eedaac5ef341a099ba290c874352d80d792a6ba428eac29ca9519b4af3b985d5",
-          "bytes": 8806
+          "sha256": "18f8ab52f6d6824a2f745da8241cdb98ec99a31eb3e7edd9276808e08d63931a",
+          "bytes": 9631
         }
       ],
       "remaining": "Adaptation locale B : aucune lignée ou récompense créée. Branche A et ouverture plaque/empreinte non jouées ; aucune pose de saisie ou nouvelle animation complète du PNJ modulaire. Les dossiers génériques ne certifient pas l’origine d’une pièce historique."
@@ -169,17 +171,17 @@
       "validationScope": "DATED_INTEL_AND_REAL_ASSAULT_RESERVATION",
       "runtime": "Calque atlas : effectifs propres, rapports datés, inconnus, réseau d’approvisionnement ; aperçu éphémère puis confirmation réservant le vrai ordre V85. Révision, front, brouillon et faits propres sont revérifiés.",
       "tests": "PASS : 24 cas métier/route logistique V105 et8 cas SSR atlas ; 60 empreintes historiques byte-exactes conservées. Types, lint et recette finale du front libre attestés séparément dans les preuves.",
-      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 6 captures ouvertes ; build KlZy6p2FCQDouFqIgys2f, runtime b5f75050beee65af708b4a2512d582f585e977e5.",
+      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 6 captures ouvertes ; build PSbg8NXFktzLqpiyuoPMt, runtime db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2.",
       "proof": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-clan-assault-validation.json",
-          "sha256": "a0c8d93964c6e4620f586e9a0de4ca52034f4b6d034b8dd652a62d58954606f5",
-          "bytes": 13829
+          "sha256": "f2c6178a7971573eaa7d1374a2b6ff9308d7d5b40025895147f599bfa4e01800",
+          "bytes": 13845
         }
       ],
       "remaining": "Les six ouvrages restent ouverts. Scénarios conditionnels au renseignement ancien, distincts de l’exposition courante0..effectif propre ; aucun roster, stock, seed ni déplacement adverse non observé n’est révélé."
@@ -5230,6 +5232,38 @@
       "height": 1024
     },
     {
+      "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd",
+      "bytes": 2412775,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/scar/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855",
+      "bytes": 2413012,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/feral/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
+    },
+    {
       "path": "public/game/sprites/v59/pit/feral/launcher-left.png",
       "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
       "bytes": 2212312,
@@ -5311,8 +5345,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "sha256": "cce4cbf684ba767d2af91d1696066182b51d435d56f949323c00733aaae4785d",
-      "bytes": 123198
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531",
+      "bytes": 123538
     },
     {
       "path": "app/game/HomeworldModularHunter.tsx",
@@ -5646,8 +5680,8 @@
     },
     {
       "path": "app/game/systems/homeworldArchiveV106.ts",
-      "sha256": "9ecd9d53819cc0dd4cffdc66925ab96655e99586aa6a876e32bfe8179b6851d4",
-      "bytes": 9136
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf",
+      "bytes": 9428
     },
     {
       "path": "app/game/systems/pitArenaCompositionsV42.generated.json",
@@ -5826,33 +5860,33 @@
     },
     {
       "path": "docs/v106-clan-assault-validation.json",
-      "sha256": "a0c8d93964c6e4620f586e9a0de4ca52034f4b6d034b8dd652a62d58954606f5",
-      "bytes": 13829
+      "sha256": "f2c6178a7971573eaa7d1374a2b6ff9308d7d5b40025895147f599bfa4e01800",
+      "bytes": 13845
     },
     {
       "path": "docs/v106-homeworld-archive-validation.json",
-      "sha256": "eedaac5ef341a099ba290c874352d80d792a6ba428eac29ca9519b4af3b985d5",
-      "bytes": 8806
+      "sha256": "18f8ab52f6d6824a2f745da8241cdb98ec99a31eb3e7edd9276808e08d63931a",
+      "bytes": 9631
     },
     {
       "path": "docs/v106-pit-workbook-validation.json",
-      "sha256": "56dbe92defb7d61e7da4b990a766cc7a9c3e91d64acbd3896f2361a2a8b1a9db",
-      "bytes": 77331
+      "sha256": "e57536a4554e459f48cf2aa2c20a19a81d77ca9c2ff2002965368d6de7c8d1d4",
+      "bytes": 78689
     },
     {
       "path": "docs/v106-runtime-freeze.json",
-      "sha256": "cc687705084641486c37cae28ffdd80b89da587316d3599254aa378ed972bb77",
-      "bytes": 170254
+      "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+      "bytes": 170740
     },
     {
       "path": "docs/v106-validation-summary.json",
-      "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-      "bytes": 12298
+      "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+      "bytes": 12554
     },
     {
       "path": "docs/v106-workstreams-source.json",
-      "sha256": "a77552bce66746b9a9df946f3ccbdfb0018d01d7d3f40d411ceabec8c7c2acf8",
-      "bytes": 15260
+      "sha256": "90f467bcf4186b1db87020042802e6ddd59b76c1e8b0b99276075f8fa5bfdac0",
+      "bytes": 15947
     },
     {
       "path": "docs/v56-excel-priorities.json",
@@ -6500,6 +6534,16 @@
       "bytes": 2463701
     },
     {
+      "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd",
+      "bytes": 2412775
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855",
+      "bytes": 2413012
+    },
+    {
       "path": "public/game/sprites/v59/pit/feral/launcher-left.png",
       "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
       "bytes": 2212312
@@ -6541,8 +6585,8 @@
     },
     {
       "path": "scripts/build-excel-followup-v106.mjs",
-      "sha256": "f2a36999adfcc73cbc8d2f299ceb7c775eb62112a5c3c01b1a617586204f063e",
-      "bytes": 32892
+      "sha256": "fd3f05c7d69b6f181624c05e9aa97f9fcc35f0a709e51cf0c8658efbce802730",
+      "bytes": 33155
     },
     {
       "path": "scripts/build-excel-followup-v106.py",
@@ -6556,8 +6600,8 @@
     },
     {
       "path": "scripts/collect-v106-runtime-inputs.mjs",
-      "sha256": "ad408ab19a57803b69b761af775a3161a99e9c55a430f7e7f9196a3b49fd2a41",
-      "bytes": 8037
+      "sha256": "f31bd04f8b3478d659e19e3203d7e33336517bff2c43373425db9d262aced543",
+      "bytes": 10071
     },
     {
       "path": "scripts/lib/excel_followup_append.py",
@@ -6570,17 +6614,17 @@
       "id": "PIT-V106-ENTITIES-MOTIONS-PRODUCTION",
       "status": "PASS_CIBLE",
       "scope": "Recette workbook-v106 V14 explicite : Feral S1/S2/SUPER et Scar S3/SUPER, 34 clips de phases, cinq motions et huit liaisons directionnelles aux deux sens. SUPER24/8/48 à coût100%, continuation et caméra après contact réel non gardé ; 40/52 raccords source, aucun nouveau pixel.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v106-pit-production-3 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=native,supers,legacy,outcome YAUTJA_QA_REQUIRE_FROZEN=1 node scripts/qa-pit-workbook-v106.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v106-pit-production-db22-robust2 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=native,supers,legacy,outcome YAUTJA_QA_REQUIRE_FROZEN=1 node scripts/qa-pit-workbook-v106.mjs",
       "evidence": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-pit-workbook-validation.json",
-          "sha256": "56dbe92defb7d61e7da4b990a766cc7a9c3e91d64acbd3896f2361a2a8b1a9db",
-          "bytes": 77331
+          "sha256": "e57536a4554e459f48cf2aa2c20a19a81d77ca9c2ff2002965368d6de7c8d1d4",
+          "bytes": 78689
         }
       ],
       "limit": "12 actions sans liaison source : 4 projections, 2 spéciaux à entités (mine et shuriken) et 6 conclusions avec partenaire. Inventaire persistant, campagnes16 et contraintes de variantes14 restent ouverts. Les 40 liaisons ne terminent pas deux kits ; les effets en vol restent vectoriels adaptés, sans nouveau sprite indépendant certifié."
@@ -6588,18 +6632,18 @@
     {
       "id": "HOMEWORLD-V106-ARCHIVE-PRODUCTION",
       "status": "PASS_CIBLE",
-      "scope": "Opération physique au port : deux contenants d’étude transportés un par un, deux pupitres séparés ; proximité, disponibilité de l’archiviste, confidentialité, dépôt réel et reçu persistant contrôlés.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ARCHIVE_QA_OUTPUT=outputs/qa-v106/homeworld-archive node scripts/qa-homeworld-archive-v106.mjs > /tmp/v106-homeworld-production.log 2>&1",
+      "scope": "Opération physique au port : deux contenants d’étude transportés un par un, deux pupitres séparés ; proximité, disponibilité de l’archiviste, confidentialité, dépôt réel et reçu persistant contrôlés. Les vrais pas autorisés derrière une façade conservent la même position pour l’acteur et le dossier porté, y compris après sauvegarde et reprise.",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_ARCHIVE_QA_OUTPUT=outputs/qa-v106/homeworld-archive node scripts/qa-homeworld-archive-v106.mjs > /tmp/v106-homeworld-production-occlusion-fixed.log 2>&1",
       "evidence": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-homeworld-archive-validation.json",
-          "sha256": "eedaac5ef341a099ba290c874352d80d792a6ba428eac29ca9519b4af3b985d5",
-          "bytes": 8806
+          "sha256": "18f8ab52f6d6824a2f745da8241cdb98ec99a31eb3e7edd9276808e08d63931a",
+          "bytes": 9631
         }
       ],
       "limit": "Adaptation locale B : aucune lignée ou récompense créée. Branche A et ouverture plaque/empreinte non jouées ; aucune pose de saisie ou nouvelle animation complète du PNJ modulaire. Les dossiers génériques ne certifient pas l’origine d’une pièce historique."
@@ -6608,17 +6652,17 @@
       "id": "CLANS-V106-ASSAULT-PRODUCTION",
       "status": "PASS_CIBLE",
       "scope": "Calque atlas : effectifs propres, rapports datés, inconnus, réseau d’approvisionnement ; aperçu éphémère puis confirmation réservant le vrai ordre V85. Révision, front, brouillon et faits propres sont revérifiés.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production node scripts/qa-clan-assault-v106.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production-db22b36 node scripts/qa-clan-assault-v106.mjs",
       "evidence": [
         {
           "path": "docs/v106-validation-summary.json",
-          "sha256": "3e01d64c817db8b1906d92c28bc21293198d6b3bfa563759ab8dc53642593032",
-          "bytes": 12298
+          "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+          "bytes": 12554
         },
         {
           "path": "docs/v106-clan-assault-validation.json",
-          "sha256": "a0c8d93964c6e4620f586e9a0de4ca52034f4b6d034b8dd652a62d58954606f5",
-          "bytes": 13829
+          "sha256": "f2c6178a7971573eaa7d1374a2b6ff9308d7d5b40025895147f599bfa4e01800",
+          "bytes": 13845
         }
       ],
       "limit": "Les six ouvrages restent ouverts. Scénarios conditionnels au renseignement ancien, distincts de l’exposition courante0..effectif propre ; aucun roster, stock, seed ni déplacement adverse non observé n’est révélé."
@@ -6636,6 +6680,7 @@
     "Les 30 planètes historiques et 27 formats V103 sont hérités ; Preserve reste à 4/80 secteurs et 8/100 combattants, sans nouvelle clôture par ce lot.",
     "Les originaux privés V3/V6/V54 restent absents ; les extractions épinglées ne recréent pas leurs classeurs.",
     "Les vérifications ZIP/XML et caches n’exécutent ni Excel natif ni son moteur de calcul.",
-    "La notation SUPER source 236236+S est raccordée et prioritaire sur236 ; les huit liaisons de cinq motions relatives sont sondées dans le vrai moteur aux deux sens. La commande accessible est également conservée."
+    "La notation SUPER source 236236+S est raccordée et prioritaire sur236 ; les huit liaisons de cinq motions relatives sont sondées dans le vrai moteur aux deux sens. La commande accessible est également conservée.",
+    "Les deux apparences statiques V44 ajoutées au gel servent uniquement à vérifier l’exclusion historique V11. Aucun BODY, aucune animation de variante et aucune liaison source nouvelle ne sont admis par ces deux PNG."
   ]
 }

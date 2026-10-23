@@ -11,11 +11,11 @@ const context=(p=b.post,patch={})=>({ownerCreatedAt:owner,currentOwnerCreatedAt:
 const act=(ledger,action,p=b.post,patch={})=>{const result=api.applyArchiveActionV106(ledger,action,ledger?.revision??0,context(p,patch));assert(result.ok,result.message+' '+action);return result.ledger;};
 const started=()=>['choose-b','reply','start'].reduce((l,a)=>act(l,a),undefined);
 const actorAt=p=>({...world.createHomeworldWorldActorV77(),...p,vx:0,vy:0});
-function walk(ledger,actor,target){const route=nav.homeworldWalkRouteV77('0',actor,target);assert.equal(route.status,'reachable');for(const point of route.points.slice(1)){
+function walk(ledger,actor,target,onStep=()=>{}){const route=nav.homeworldWalkRouteV77('0',actor,target);assert.equal(route.status,'reachable');for(const point of route.points.slice(1)){
  for(let i=0;i<1600&&Math.hypot(point.x-actor.x,point.y-actor.y)>5;i++){
   const before=actor,span=Math.max(Math.abs(point.x-actor.x)/330,Math.abs(point.y-actor.y)/260,1/60);
   actor=api.stepHomeworldArchiveActorV106(actor,{moveX:(point.x-actor.x)/(330*span),climb:(point.y-actor.y)/(260*span),jumpPressed:false},1/60,'0');
-  const sample=api.sampleArchiveWalkV106(ledger,before,actor,1/60,context(actor));assert.equal(sample.invalid,false,'real native path '+JSON.stringify({point,actor}));ledger=sample.ledger;
+  const sample=api.sampleArchiveWalkV106(ledger,before,actor,1/60,context(actor));assert.equal(sample.invalid,false,'real native path '+JSON.stringify({point,actor}));ledger=sample.ledger;onStep(ledger,actor);
  }
  assert(Math.hypot(point.x-actor.x,point.y-actor.y)<=5,'real motor reaches route node');
 }assert(schema.normalizeHomeworldArchiveV106(ledger));return {ledger,actor};}
@@ -96,4 +96,15 @@ test('V106 local map keeps exact dossier positions readable and marks an out-of-
  assert(html.includes('viewBox="7040 5040 700 400"'),'the local framing is preserved');assert(html.includes('data-archive-map-case="A" data-archive-map-outside="true"'));
  assert(html.includes('hors cadrage du quai'));assert(html.includes('Dossier A · au sol · position 8000'));assert(html.includes('5500'));
  assert(html.includes('Dossier B · au sol · position 7610'));assert(!html.includes('<image'),'no unknown district image is drawn');
+});
+
+
+test('V106 carries through genuinely walkable foreground occlusion to7000,3000 and can save, pause, resume and save again',()=>{
+ const visibility=qa.load('app/game/systems/homeworldResidentVisibilityV100.ts');let {ledger,actor}=carried(),hiddenState=null;
+ ({ledger,actor}=walk(ledger,actor,{x:7000,y:3000},(l,a)=>{if(!hiddenState&&visibility.homeworldResidentOccludedV100('0',a))hiddenState={ledger:structuredClone(l),actor:{...a}};}));
+ assert(Math.hypot(actor.x-7000,actor.y-3000)<6);assert(ledger.receipt.walked>3700);assert.equal(ledger.receipt.carrier,'A');assert(hiddenState,'the real route crosses the painted foreground');
+ ({ledger,actor}=hiddenState);assert(civic.homeworldCivicWalkableV80('0',actor));assert(visibility.homeworldResidentOccludedV100('0',actor));assert(api.archiveWalkableV106(context(actor)));assert(!api.archiveGroundV106(context(actor)));
+ const assertSaved=()=>{const save=saves.normalizeSave({});save.createdAt=owner;save.homeworld.visitedDistrictIds=['port'];save.homeworld.archiveV106=ledger;save.homeworld.locationV77=location.createHomeworldCheckpointV77(owner,'0',actor,null,actor);assert(saves.parseSaveImport(JSON.stringify(save)).save,'carried case and actor remain a valid importable pair');};
+ assertSaved();ledger=act(ledger,'interrupt',actor,{active:false});assertSaved();assert.equal(api.archiveNearbyActionV106(ledger,context(actor)),null);assert.equal(api.applyArchiveActionV106(ledger,'park',ledger.revision,context(actor)).changed,false,'no hidden ground manipulation');
+ ledger=act(ledger,'resume',actor);assertSaved();assert.equal(ledger.receipt.phase,'working');({ledger,actor}=walk(ledger,actor,{x:7000,y:3000}));assertSaved();
 });

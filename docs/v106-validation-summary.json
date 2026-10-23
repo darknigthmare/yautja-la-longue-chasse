@@ -2,84 +2,84 @@
   "schemaVersion": 1,
   "release": "V106",
   "status": "PASS_CIBLE",
-  "recordedAt": "2026-10-23T04:45:17.182125+00:00",
-  "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
-  "productionBuildId": "KlZy6p2FCQDouFqIgys2f",
+  "recordedAt": "2026-10-23T05:29:14.116372+00:00",
+  "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+  "productionBuildId": "PSbg8NXFktzLqpiyuoPMt",
   "scope": "Cinq actions Feral/Scar, archivage physique B du Homeworld et préparation d’assaut vérifiés sur une même compilation Next locale de production. Validation ciblée ; aucun déploiement public ni certification de tout le jeu.",
   "sourceFreeze": {
     "path": "docs/v106-runtime-freeze.json",
-    "sha256": "cc687705084641486c37cae28ffdd80b89da587316d3599254aa378ed972bb77",
-    "bytes": 170254
+    "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+    "bytes": 170740
   },
   "freezeCoverage": {
-    "files": 961,
-    "bytes": 263703035,
+    "files": 963,
+    "bytes": 268531140,
     "scope": "All app sources, production configuration/build scripts, the frozen V105 public input set and the collected V106 public assets. Other historical art and generated build files are outside this snapshot."
   },
   "production": [
     {
       "domain": "Pit",
-      "buildId": "KlZy6p2FCQDouFqIgys2f",
-      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "buildId": "PSbg8NXFktzLqpiyuoPMt",
+      "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
       "status": "PASS_CIBLE",
       "browserChecksPassed": 198,
       "capturesInspected": 27,
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v106-pit-production-3 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=native,supers,legacy,outcome YAUTJA_QA_REQUIRE_FROZEN=1 node scripts/qa-pit-workbook-v106.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_PIT_WORKBOOK_QA_MODE=production YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v106-pit-production-db22-robust2 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=native,supers,legacy,outcome YAUTJA_QA_REQUIRE_FROZEN=1 node scripts/qa-pit-workbook-v106.mjs",
       "report": {
         "path": "docs/v106-pit-workbook-validation.json",
-        "sha256": "56dbe92defb7d61e7da4b990a766cc7a9c3e91d64acbd3896f2361a2a8b1a9db",
-        "bytes": 77331
+        "sha256": "e57536a4554e459f48cf2aa2c20a19a81d77ca9c2ff2002965368d6de7c8d1d4",
+        "bytes": 78689
       },
       "portableFiles": [
         {
           "file": "docs/qa/v106-pit-workbook/feral-guided-bolts-right.png",
-          "sha256": "040f8a7cce6d79fa24069027521ae90bc562e4ae11f195f382c5fe284c552449",
-          "bytes": 1205234
+          "sha256": "124ec6b0f007a2cd0d9166e6aa9e772f79d956f3b9e1e5cad92c3ccf0f05ab6f",
+          "bytes": 1202637
         },
         {
           "file": "docs/qa/v106-pit-workbook/scar-plasma-left.png",
-          "sha256": "9916f322844608415b7a0575594544f15f651d810d626f8fbc69c8719014a034",
-          "bytes": 1203549
+          "sha256": "9e874196a514c6926fdffccae41842a71108ee21fb60df3f31691abba316913c",
+          "bytes": 1199458
         },
         {
           "file": "docs/qa/v106-pit-workbook/feral-shield-edge-left.png",
-          "sha256": "ea8756134bc6361eefd1706114dd6d2f05d55b3b07abe05f014abca25a44809c",
-          "bytes": 1219718
+          "sha256": "c018ffb45f5d831d213837028e7fd1225bd49cdd4d0470687c67dd5079adb228",
+          "bytes": 1220871
         },
         {
           "file": "docs/qa/v106-pit-workbook/feral-signature-left.png",
-          "sha256": "f13ee0755aadcfd679ff56e197c2a76b5a55b37a87bbd46a31214deaec2f6de3",
-          "bytes": 1338201
+          "sha256": "bed2da1452883caaf416ccb35a7312cbdd71ce24948f9696002f0b59374757d3",
+          "bytes": 1338333
         },
         {
           "file": "docs/qa/v106-pit-workbook/scar-signature-left.png",
-          "sha256": "9c8e0be48b499666d64afdfbc88d91e0119ce70223365b2fa46fb5b33bae74b6",
-          "bytes": 1300139
+          "sha256": "250262fa6a0c6c46c954fc3e9a8521ef04632e331f76b613a10dedeb93f1e1e4",
+          "bytes": 1303156
         },
         {
           "file": "docs/qa/v106-pit-workbook/browser-report.json",
-          "sha256": "18cc0b26c764bca523579120ae05692bd1b12fc3fa701be95ec7410fe1ae03c5",
-          "bytes": 8712859
+          "sha256": "83338834dec4c3b35cb968e24b8961f5a4d5612ab7f9ec536a3b6f199449489c",
+          "bytes": 8715845
         },
         {
           "file": "docs/qa/v106-pit-workbook/served-production.html",
-          "sha256": "d7631aca2469ca1df0995ca7da64d60d5be94aabec9ebcbe82076d3547e3ffd6",
+          "sha256": "b216b215e8ad0fedcaf1e738d46d0e8b7b32b55e69e7ba3496eda1ee05112288",
           "bytes": 13840
         }
       ]
     },
     {
       "domain": "Homeworld",
-      "buildId": "KlZy6p2FCQDouFqIgys2f",
-      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "buildId": "PSbg8NXFktzLqpiyuoPMt",
+      "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
       "status": "PASS_CIBLE",
-      "browserChecksPassed": 48,
-      "capturesInspected": 9,
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ARCHIVE_QA_OUTPUT=outputs/qa-v106/homeworld-archive node scripts/qa-homeworld-archive-v106.mjs > /tmp/v106-homeworld-production.log 2>&1",
+      "browserChecksPassed": 55,
+      "capturesInspected": 10,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_ARCHIVE_QA_OUTPUT=outputs/qa-v106/homeworld-archive node scripts/qa-homeworld-archive-v106.mjs > /tmp/v106-homeworld-production-occlusion-fixed.log 2>&1",
       "report": {
         "path": "docs/v106-homeworld-archive-validation.json",
-        "sha256": "eedaac5ef341a099ba290c874352d80d792a6ba428eac29ca9519b4af3b985d5",
-        "bytes": 8806
+        "sha256": "18f8ab52f6d6824a2f745da8241cdb98ec99a31eb3e7edd9276808e08d63931a",
+        "bytes": 9631
       },
       "portableFiles": [
         {
@@ -89,73 +89,78 @@
         },
         {
           "file": "docs/qa/v106-homeworld-archive/02-native-carry-a.png",
-          "sha256": "19220739cfb4ad1296e98b2183e5ca0f0f53d81260a19066e5aa6facefaee1bf",
-          "bytes": 1120225
+          "sha256": "4da9df013dc63c9f92a05a935ab294a7673cea9b93844bbbc74d5b3e9d887022",
+          "bytes": 1098356
         },
         {
           "file": "docs/qa/v106-homeworld-archive/03-interrupted-load.png",
-          "sha256": "3955fe566da9dbaafc7eb5c21de63be00814d0878a2333185f40599b3b275f90",
-          "bytes": 1059981
+          "sha256": "e10a65da4340ac2a91e43f6cd8545a314d6ebe363ad40c8aa498a9317de4ecfe",
+          "bytes": 1031242
         },
         {
           "file": "docs/qa/v106-homeworld-archive/04-parked-dossier.png",
-          "sha256": "e6f60d3b1ee1d38efb0e6494cbc68109af4dbe426049ad1dcbe2881903b469e1",
-          "bytes": 1107685
+          "sha256": "99c7c1079506b6e753aef25e29ca636e346d5214c92c89c055eeeedade7762cb",
+          "bytes": 1129014
         },
         {
           "file": "docs/qa/v106-homeworld-archive/05-first-support.png",
-          "sha256": "cb5403057f2802f55e0ada0db10b6d6e90c75275e77dc243a07af7ff6b42e7aa",
-          "bytes": 1151233
+          "sha256": "5f6a73b5e937bae81088c731348ee5b23738ebfeacbb88b6bbf5eca2556d6102",
+          "bytes": 1125343
         },
         {
           "file": "docs/qa/v106-homeworld-archive/06-two-separate-supports.png",
-          "sha256": "ac4caeffd5a4e2a162f4ca0fd0e0b78921098a4e4ea942ff46fcbae843ccc597",
-          "bytes": 1258384
+          "sha256": "c9306a462d7f188323fb987481319ebbc5ef79ac1794cc33d7b29248736ecab9",
+          "bytes": 1241054
         },
         {
           "file": "docs/qa/v106-homeworld-archive/07-completed-desktop.png",
-          "sha256": "fe0419b007cf4a8f316b55d8846368e3496ed1e179582248920689576fb24d88",
-          "bytes": 188855
+          "sha256": "f158f1aec7bf6c1909cfa1881b51fbcd5d20b12136b8637746b4afdb9d75e459",
+          "bytes": 188852
         },
         {
           "file": "docs/qa/v106-homeworld-archive/08-completed-mobile.png",
-          "sha256": "e367ba78326c740b46b6bade89afc60744ee988c12e40a1526c4a0a9677c98d5",
-          "bytes": 137887
+          "sha256": "008494075da8f163e5d9736911684406b0bbf066097f2e0d47efc5a20538a98d",
+          "bytes": 137718
         },
         {
           "file": "docs/qa/v106-homeworld-archive/09-local-map-mobile.png",
-          "sha256": "680dcc2f6befd4f8cd56ea4b86e1550b0061a76703b869e1a9fdf8b44f7851d4",
-          "bytes": 35949
+          "sha256": "5f6a8094e42f9eb818c158dbec4ba25459d20cd3832f9251a7c4a66c033ee6d8",
+          "bytes": 35936
+        },
+        {
+          "file": "docs/qa/v106-homeworld-archive/10-foreground-carry-resume.png",
+          "sha256": "1ad8e179baae6af3289851179982eead2c05d81434dfc2a34495dd304012b9b5",
+          "bytes": 1036685
         },
         {
           "file": "docs/qa/v106-homeworld-archive/result.json",
-          "sha256": "3d2094b870d64a67b5d4c4f266c1a1a5e9ce1cd44533c5066e54f03eadd8edf1",
-          "bytes": 13827
+          "sha256": "379f94b45c4f3ea13fd613bf23b7d2fd03303418fbccf6f7f5a8cc5f710b31da",
+          "bytes": 16934
         },
         {
           "file": "docs/qa/v106-homeworld-archive/test.log",
-          "sha256": "f4a84073e94316cc691d55adc2717008c18d74891d2c0b4ac1214ad911c083e8",
-          "bytes": 9823
+          "sha256": "4add87db84f0f012ded96f55575f0ccabc3c7bb7ad35bf3a04fdbac78514dae6",
+          "bytes": 10491
         },
         {
           "file": "docs/qa/v106-homeworld-archive/lint.log",
-          "sha256": "6ca9eaa6c8402ffa59fbb6184c6c819acab62e9127cef8612e903bc61099a785",
-          "bytes": 510
+          "sha256": "4b9a80b4ea25a9c93312b0ad909e87a9a1aea91ba47453a88f499214e772f96a",
+          "bytes": 611
         }
       ]
     },
     {
       "domain": "Clans",
-      "buildId": "KlZy6p2FCQDouFqIgys2f",
-      "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+      "buildId": "PSbg8NXFktzLqpiyuoPMt",
+      "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
       "status": "PASS_CIBLE",
       "browserChecksPassed": 31,
       "capturesInspected": 6,
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production node scripts/qa-clan-assault-v106.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production-db22b36 node scripts/qa-clan-assault-v106.mjs",
       "report": {
         "path": "docs/v106-clan-assault-validation.json",
-        "sha256": "a0c8d93964c6e4620f586e9a0de4ca52034f4b6d034b8dd652a62d58954606f5",
-        "bytes": 13829
+        "sha256": "f2c6178a7971573eaa7d1374a2b6ff9308d7d5b40025895147f599bfa4e01800",
+        "bytes": 13845
       },
       "portableFiles": [
         {
@@ -170,8 +175,8 @@
         },
         {
           "file": "docs/qa/v106-clan-assault/desktop-stale-review.png",
-          "sha256": "4fd77e1beb4611d998d77fcc92f096201fd0b8a16a60c80f5efe97a16d17db29",
-          "bytes": 217992
+          "sha256": "551610eb69c0af268abef9d7c24fa224032056fd28d5c4ec3f21c61e97ff7b1a",
+          "bytes": 217993
         },
         {
           "file": "docs/qa/v106-clan-assault/desktop-conquest-supply-route.png",
@@ -190,7 +195,7 @@
         },
         {
           "file": "docs/qa/v106-clan-assault/browser-report.json",
-          "sha256": "3466c8c2f18bc05dfe0efd08468c0a6134342448cda56251d6ca469e5cf8ed74",
+          "sha256": "d573d43640090d92ed5c100025831fd8a648d2fd655734293290de01e706ef1f",
           "bytes": 38293
         },
         {
@@ -259,17 +264,17 @@
       },
       {
         "path": "docs/qa/v106-integration/production-build.log",
-        "sha256": "1f0d1b8f017f04d7a54111df9288f428faec3676c7b25b6247fc54db41851536",
-        "bytes": 4541
+        "sha256": "ad3139f90acb7019345f0d5c71361af375ceeda2349e1983e3ff7899f285a1fd",
+        "bytes": 4542
       },
       {
         "path": "docs/qa/v106-integration/production-smoke.log",
-        "sha256": "7b3c0377f02988ab80f23e55888312605ae0f48168f185d6e46c53ebea47fd78",
+        "sha256": "b3cd3e1b73a5450a72f767652db702232ef4fafb967e66b506c9fd78acc814e8",
         "bytes": 278
       },
       {
         "path": "docs/qa/v106-integration/runtime-lint.json",
-        "sha256": "f517ac650fa7e4a9017a8babf16c34ef9975a606d78d5a1249ea96dbd2064a37",
+        "sha256": "a6bba36a1ca28c624c04e1384ae7a52895e06df788cb159c9b59fc6562695b89",
         "bytes": 5539
       },
       {

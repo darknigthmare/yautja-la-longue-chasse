@@ -6,11 +6,12 @@ import ts from "typescript";
 import { build } from "esbuild";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "../app/game/systems/homeworldInput.ts";
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "../app/game/systems/controlBindings.ts";
+import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts'; export * from './app/game/systems/homeworldArchiveDefinitionV106.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -456,4 +457,22 @@ test('the live V106 archive hook remains dormant during ordinary movement and a 
  const before={...f.env.actorRef.current},clock=f.env.cityClockV68.current;f.env.archiveWritePausedRefV106.current=true;f.tick(12);
  assert.deepEqual(f.env.actorRef.current,before,'held gamepad direction cannot move after a refused archive write');assert.equal(f.env.cityClockV68.current,clock);
  f.env.archiveWritePausedRefV106.current=false;f.tick(3);assert(f.env.actorRef.current.x>before.x,'successful retry can release the same live input loop');assert(f.env.cityClockV68.current>clock);
+});
+
+
+test('the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair',()=>{
+ const f=fixture(),b=city.HOMEWORLD_ARCHIVE_V106,owner=f.env.save.createdAt;
+ const context=actor=>({ownerCreatedAt:owner,currentOwnerCreatedAt:owner,actor:{x:actor.x,y:actor.y},levelId:'0',visitedDistrictIds:['port'],active:true});
+ let ledger;for(const action of['choose-b','reply','start']){const out=city.applyArchiveActionV106(ledger,action,ledger?.revision??0,context(b.post));assert(out.ok);ledger=out.ledger;}
+ let actor={...city.createHomeworldWorldActorV77(),...b.post};const target=b.cases[0].stand;
+ for(let i=0;i<300&&Math.hypot(actor.x-target.x,actor.y-target.y)>5;i++){
+  const before=actor,span=Math.max(Math.abs(target.x-actor.x)/330,Math.abs(target.y-actor.y)/260,1/60);actor=city.stepHomeworldArchiveActorV106(actor,{moveX:(target.x-actor.x)/(330*span),climb:(target.y-actor.y)/(260*span),jumpPressed:false},1/60,'0');const out=city.sampleArchiveWalkV106(ledger,before,actor,1/60,context(actor));assert(!out.invalid);ledger=out.ledger;
+ }
+ const take=city.applyArchiveActionV106(ledger,'take-a',ledger.revision,context(actor));assert(take.ok);ledger=take.ledger;
+ f.env.progressRef.current.visitedDistrictIds=['port'];f.env.archiveDraftRefV106.current=ledger;
+ const before={...actor},proposal={...actor,x:actor.x+300};f.env.actorRef.current=proposal;let interrupted=false;
+ f.env.submitArchiveV106=(action,revision)=>{assert.equal(action,'interrupt');assert.equal(f.env.actorRef.current.x,before.x,'the actor rolls back before any durable transaction');const out=city.applyArchiveActionV106(f.env.archiveDraftRefV106.current,action,revision,context(f.env.actorRef.current));assert(out.ok);f.env.archiveDraftRefV106.current=out.ledger;interrupted=true;return true;};
+ assert.equal(f.env.sampleArchiveV106(before,proposal,1/60),false);assert(interrupted);assert.equal(f.env.actorRef.current.x,before.x);assert.equal(f.env.actorRef.current.vx,0);assert.equal(f.env.actorRef.current.vy,0);
+ const qa=homeworldSceneSsrV78(),saves=qa.load('app/game/save.ts'),location=qa.load('app/game/systems/homeworldLocationV77.ts'),save=saves.normalizeSave({});save.createdAt=owner;save.homeworld.visitedDistrictIds=['port'];save.homeworld.archiveV106=f.env.archiveDraftRefV106.current;save.homeworld.locationV77=location.createHomeworldCheckpointV77(owner,'0',f.env.actorRef.current,null,f.env.actorRef.current);
+ assert(saves.parseSaveImport(JSON.stringify(save)).save,'interruption and Retry can persist the restored actor/dossier pair');
 });

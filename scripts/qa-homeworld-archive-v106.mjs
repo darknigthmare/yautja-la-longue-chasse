@@ -1,5 +1,6 @@
-/** A single accepted initial city fixture, then only ordinary UI and real
- * keyboard movement. No actor mutation, quest completion or transit setter. */
+/** Source journey: one accepted initial city fixture, then real UI/keyboard.
+ * A separately declared carried fixture isolates the foreground-occlusion
+ * regression; subsequent movement/save/pause/Continue again use the real UI. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -19,7 +20,7 @@ const sources=['app/game/HomeworldHub.tsx', 'app/game/HomeworldWorldSceneV77.tsx
 const sha=b=>createHash('sha256').update(b).digest('hex'),snapshot=()=>Promise.all(sources.map(async file=>({file,sha256:sha(await fs.readFile(file))})));
 const sourceBefore=await snapshot(),qa=homeworldSceneSsrV78();
 // Mount the same V84/V92 solid registries as HomeworldHub before planning.
-qa.load('app/game/systems/homeworldArchiveV106.ts');
+const archiveApi=qa.load('app/game/systems/homeworldArchiveV106.ts'),visibility=qa.load('app/game/systems/homeworldResidentVisibilityV100.ts');
 const nav=qa.load('app/game/systems/homeworldNavigationV77.ts'),defs=qa.load('app/game/systems/homeworldArchiveDefinitionV106.ts'),b=defs.HOMEWORLD_ARCHIVE_V106;
 const bundle=await build({stdin:{contents:`import * as saves from './app/game/save';import * as slots from './app/game/systems/campaignSlots';import * as city from './app/game/systems/homeworldCity';import * as location from './app/game/systems/homeworldLocationV77';window.__archiveQa={...saves,...slots,...city,...location};`,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,format:'iife',platform:'browser',target:'es2022',logLevel:'silent'});
 const chromeExecutable=process.env.AUDIT_CHROME_EXECUTABLE??process.env.CHROMIUM_EXECUTABLE_PATH;
@@ -27,7 +28,7 @@ const browser=await chromium.launch({...chromeExecutable?{executablePath:chromeE
 const context=await browser.newContext({viewport:{width:1440,height:1050},reducedMotion:'reduce'}),page=await context.newPage();
 page.setDefaultTimeout(30000);await page.clock.install();
 const checks=[],captures=[],errors=[];page.on('pageerror',e=>errors.push(e.message));
-let failure=null,fixture=null,clockPaused=false;
+let failure=null,fixture=null,regressionFixture=null,clockPaused=false;
 const check=(name,ok,detail)=>{checks.push({name,status:ok?'PASS':'FAIL',...(detail?{detail}:{})});console.log(ok?'PASS':'FAIL',name);assert(ok,name);};
 const actor=()=>page.locator('[data-homeworld-actor]').evaluate(e=>({x:Number(e.dataset.x),y:Number(e.dataset.y),level:e.dataset.homeworldLevelV77}));
 const disk=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('yautja-long-hunt.save')??'null'));
@@ -54,6 +55,18 @@ async function routeTo(level,target){
  const points=route.points.filter((p,i,all)=>{if(i===0||i===all.length-1)return true;const a=all[i-1],c=all[i+1];return !(a.x===p.x&&p.x===c.x&&Math.sign(p.y-a.y)===Math.sign(c.y-p.y)||a.y===p.y&&p.y===c.y&&Math.sign(p.x-a.x)===Math.sign(c.x-p.x));});
  console.log('WALK',level,Math.round(route.distance),'units',points.length,'real route bends');
  for(const p of points.slice(1))await go(p);
+}
+function carriedRegressionSnapshot(owner){
+ const context=actor=>({ownerCreatedAt:owner,currentOwnerCreatedAt:owner,actor:{x:actor.x,y:actor.y},levelId:'0',visitedDistrictIds:['port'],active:true});
+ let ledger,actor;for(const action of['choose-b','reply','start']){const out=archiveApi.applyArchiveActionV106(ledger,action,ledger?.revision??0,context(b.post));assert(out.ok);ledger=out.ledger;}
+ const city=qa.load('app/game/systems/homeworldCity.ts');actor={...city.createHomeworldActor(),...b.post};
+ const walk=(target,stopAtPaint=false)=>{const route=nav.homeworldWalkRouteV77('0',actor,target);assert.equal(route.status,'reachable');for(const point of route.points.slice(1))for(let i=0;i<1600&&Math.hypot(point.x-actor.x,point.y-actor.y)>5;i++){
+  const before=actor,span=Math.max(Math.abs(point.x-actor.x)/330,Math.abs(point.y-actor.y)/260,1/60),next=archiveApi.stepHomeworldArchiveActorV106(actor,{moveX:(point.x-actor.x)/(330*span),climb:(point.y-actor.y)/(260*span),jumpPressed:false},1/60,'0');
+  if(stopAtPaint&&!visibility.homeworldResidentOccludedV100('0',before)&&visibility.homeworldResidentOccludedV100('0',next))return true;
+  const out=archiveApi.sampleArchiveWalkV106(ledger,before,next,1/60,context(next));assert(!out.invalid);ledger=out.ledger;actor=next;
+ }return false;};
+ walk(b.cases[0].stand);const take=archiveApi.applyArchiveActionV106(ledger,'take-a',ledger.revision,context(actor));assert(take.ok);ledger=take.ledger;assert(walk({x:7000,y:3000},true),'the native source route reaches the foreground boundary');
+ return{actor,ledger};
 }
 async function sourceAction(name){await page.locator('[data-archive-scene-v106]').getByRole('button',{name,exact:true}).click();await page.clock.runFor(80);}
 async function interact(){await page.locator('[data-homeworld-viewport]').focus();await page.keyboard.press('KeyE');await page.clock.runFor(80);}
@@ -85,10 +98,27 @@ try{
  await routeTo('0',b.post);await interact();await refusal('uncertainty report',()=>sourceAction('Consigner le lien comme une question ouverte'),true);await interact();await sourceAction('Consigner le lien comme une question ouverte');check('Only the explicit report records uncertainty and source success',(await receipt()).phase==='completed'&&(await receipt()).uncertaintyRecorded===true&&await scene.locator('[data-archive-source-line="D6-W-PNJ-ROLE-03-SUCCES---01"]').count()===1);check('Completion keeps focus in the surviving dialog',await page.getByRole('dialog').evaluate(e=>e.contains(document.activeElement)));await capture('07-completed-desktop.png',page.getByRole('dialog'));
  const done=await disk();check('Archive grants no profile, permanent inventory or trophy reward',JSON.stringify(done.profile)===JSON.stringify(fixture.profile)&&JSON.stringify(done.inventory)===JSON.stringify(fixture.inventory)&&JSON.stringify(done.trophies)===JSON.stringify(fixture.trophies));check('Optional prior cartographer A/B bytes remain unchanged',JSON.stringify(done.homeworld.cartographyV105??null)===JSON.stringify(fixture.legacyA)&&JSON.stringify(done.homeworld.cartographyV104??null)===JSON.stringify(fixture.legacyB));
  await page.setViewportSize({width:390,height:844});await paint();check('Mobile source dialog fits without horizontal overflow and retains 44px close control',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)&&await scene.getByRole('button',{name:'Revenir au quai',exact:true}).evaluate(e=>e.getBoundingClientRect().height>=44));await capture('08-completed-mobile.png');await sourceAction('Revenir au quai');await enter();check('Ordinary mobile Continue retains both real supported containers and final uncertainty',(await receipt()).phase==='completed'&&(await receipt()).uncertaintyRecorded===true&&await page.locator('[data-archive-case-place="support"]').count()===2);await page.locator('[data-archive-journal-v106] summary').click();await capture('09-local-map-mobile.png',page.locator('[data-archive-journal-v106]'));
+ // Second accepted initial fixture: derived by the same real source actions,
+ // native route and motor up to the last unobscured frame. This does not
+ // replace the first source journey or its completion evidence above.
+ const regression=carriedRegressionSnapshot(fixture.owner);if(clockPaused){await page.clock.resume();clockPaused=false;}await menu();await page.addScriptTag({content:bundle.outputFiles[0].text});
+ regressionFixture=await page.evaluate(async({origin,regression})=>{
+  const api=window.__archiveQa,save=api.normalizeSave(origin);save.createdAt=regression.ledger.ownerCreatedAt;save.profile.hunterName='QA V106 · reprise sous façade';save.settings.masterVolume=0;save.homeworld.visitedDistrictIds=['port'];save.homeworld.archiveV106=regression.ledger;save.homeworld.locationV77=api.createHomeworldCheckpointV77(save.createdAt,'0',regression.actor,null,regression.actor);
+  if(!api.parseSaveImport(JSON.stringify(save)).save)throw Error('Invalid accepted carried regression fixture');localStorage.setItem(api.SAVE_STORAGE_KEY,JSON.stringify(save));const checkpoint=await api.saveCampaignCheckpoint(1,{kind:'manual',index:1,location:'homeworld',expectedRevision:api.loadCampaignSlots().slots[0].revision});if(!checkpoint.ok)throw Error(checkpoint.message);
+  return{description:'Separately accepted carried fixture before foreground occlusion, derived by real source actions and native movement in the pure runtime. After this checkpoint only actual browser keyboard, save, pause, resume and Continue are used.',actor:regression.actor,ledger:regression.ledger};
+ },{origin:firstTracksCompleted(),regression});
+ await page.setViewportSize({width:1440,height:1050});await enter();if((await receipt()).phase==='interrupted'){await page.getByRole('button',{name:'Reprendre l’archivage ici',exact:true}).click();await page.clock.runFor(80);}
+ await go({x:6845,y:3008},2);check('Real keyboard crosses the painted foreground with the dossier still working',visibility.homeworldResidentOccludedV100('0',await actor())&&(await receipt()).carrier==='A'&&(await receipt()).phase==='working');
+ const saveApi=qa.load('app/game/save.ts');await page.getByRole('button',{name:'Enregistrer la position',exact:true}).click();await page.clock.runFor(80);check('A carried checkpoint beneath foreground paint remains importable',!!saveApi.parseSaveImport(JSON.stringify(await disk())).save);
+ await page.getByRole('button',{name:'Pause',exact:true}).click();await page.clock.runFor(80);check('Pause beneath the facade preserves an importable interrupted carried pair',(await receipt()).phase==='interrupted'&&!!saveApi.parseSaveImport(JSON.stringify(await disk())).save);await page.getByRole('button',{name:'Reprendre',exact:true}).click();await page.clock.runFor(80);
+ const hiddenBytes=JSON.stringify((await disk()).homeworld.archiveV106);await page.getByRole('button',{name:'Poser le dossier au sol ici',exact:true}).click();await page.clock.runFor(80);check('Occlusion does not permit a hidden ground manipulation',JSON.stringify((await disk()).homeworld.archiveV106)===hiddenBytes&&(await receipt()).carrier==='A');
+ await page.getByRole('button',{name:'Reprendre l’archivage ici',exact:true}).click();await page.clock.runFor(80);check('A hidden carrier can resume its physical walk without a hidden object interaction',(await receipt()).phase==='working');
+ await enter();check('Ordinary Continue beneath the facade restores a valid carried checkpoint',visibility.homeworldResidentOccludedV100('0',await actor())&&(await receipt()).carrier==='A'&&!!saveApi.parseSaveImport(JSON.stringify(await disk())).save);if((await receipt()).phase==='interrupted'){await page.getByRole('button',{name:'Reprendre l’archivage ici',exact:true}).click();await page.clock.runFor(80);}
+ const hiddenStart=await actor();await go({x:6870,y:3008},2);await page.getByRole('button',{name:'Enregistrer la position',exact:true}).click();await page.clock.runFor(80);check('Resumed keyboard travel and another save retain an importable actor/dossier pair',(await actor()).x>hiddenStart.x+10&&(await receipt()).phase==='working'&&!!saveApi.parseSaveImport(JSON.stringify(await disk())).save);await page.locator('[data-archive-journal-v106] summary').click();await capture('10-foreground-carry-resume.png');
  check('No browser exception is raised',errors.length===0,errors);
 }catch(error){failure=error;checks.push({name:error.message,status:'FAIL'});await page.screenshot({path:path.join(output,'failure.png'),timeout:5000}).catch(()=>{});}
 finally{
  const sourceAfter=await snapshot(),sourceUnchanged=JSON.stringify(sourceBefore)===JSON.stringify(sourceAfter);if(!sourceUnchanged){failure??=Error('Runtime source changed during recipe');checks.push({name:'Runtime sources unchanged during recipe',status:'FAIL'});}
- await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',scope:'One accepted initial checkpoint, then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification.',baseUrl,mode:componentFixture?'isolated-current-HomeworldHub':'compiled-app',runtimeCommit:process.env.YAUTJA_QA_RUNTIME_COMMIT??null,contentVersion,buildId:expectedBuildId,servedBuilds,checks,captures,fixture,errors,sourceBefore,sourceAfter,sourceUnchanged,completedAt:new Date().toISOString()},null,2)+'\n');await browser.close();
+ await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',scope:'One accepted initial checkpoint for the source journey plus one explicitly declared carried regression fixture at a foreground boundary; then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification.',baseUrl,mode:componentFixture?'isolated-current-HomeworldHub':'compiled-app',runtimeCommit:process.env.YAUTJA_QA_RUNTIME_COMMIT??null,contentVersion,buildId:expectedBuildId,servedBuilds,checks,captures,fixture,regressionFixture,errors,sourceBefore,sourceAfter,sourceUnchanged,completedAt:new Date().toISOString()},null,2)+'\n');await browser.close();
 }
 if(failure){console.error(failure);process.exitCode=1;}else console.log(JSON.stringify({status:'PASS',checks:checks.length,captures:captures.length,output}));

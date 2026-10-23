@@ -3,9 +3,9 @@
   "release": "V106",
   "domain": "Clans",
   "status": "PASS",
-  "at": "2026-10-23T04:30:24.355Z",
+  "at": "2026-10-23T05:09:06.703Z",
   "scope": {
-    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
     "description": "Real free-front reconnaissance, conditional review, stale/cancel guards, native assault reservation/resolution, dated coloured atlas and actual supply route. Declared existing-garrison fixture; no full RTS/physical structures/campaign admission.",
     "sourceWorkbook": "Yautja_V3_Guerres_de_Clans_Trois_Modes.xlsx",
     "sourceWorkbookSha256": "3ef3712c9ffa865f918133bee7667155c1bb320f060b4a19cc58ff650ffd0dfa",
@@ -26,11 +26,11 @@
     ]
   },
   "production": {
-    "buildId": "KlZy6p2FCQDouFqIgys2f",
+    "buildId": "PSbg8NXFktzLqpiyuoPMt",
     "mode": "compiled-app",
-    "runtimeCommit": "b5f75050beee65af708b4a2512d582f585e977e5",
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
     "baseUrl": "http://127.0.0.1:3101",
-    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=KlZy6p2FCQDouFqIgys2f YAUTJA_QA_RUNTIME_COMMIT=b5f75050beee65af708b4a2512d582f585e977e5 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production node scripts/qa-clan-assault-v106.mjs",
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=PSbg8NXFktzLqpiyuoPMt YAUTJA_QA_RUNTIME_COMMIT=db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2 YAUTJA_ASSAULT_V106_QA_MODE=compiled-app YAUTJA_ASSAULT_V106_QA_OUTPUT=outputs/qa-v106/clan-assault-production-db22b36 node scripts/qa-clan-assault-v106.mjs",
     "checksPassed": 31,
     "checksFailed": 0,
     "browserErrors": 0,
@@ -38,31 +38,31 @@
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "KlZy6p2FCQDouFqIgys2f",
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
         "foundInHtml": true
       }
     ]
@@ -310,12 +310,12 @@
   ],
   "visualReview": {
     "status": "PASS_CIBLE",
-    "method": "The six actual production PNG files were each opened with view_image at original detail and inspected before promotion.",
+    "method": "The six actual db22b36 production PNG files were each opened with view_image at original detail and inspected before promotion.",
     "imagesOpened": [
+      "docs/qa/v106-clan-assault/desktop-conquest-supply-route.png",
       "docs/qa/v106-clan-assault/desktop-dated-assault-review.png",
       "docs/qa/v106-clan-assault/desktop-intelligence-atlas.png",
       "docs/qa/v106-clan-assault/desktop-stale-review.png",
-      "docs/qa/v106-clan-assault/desktop-conquest-supply-route.png",
       "docs/qa/v106-clan-assault/mobile-assault-review.png",
       "docs/qa/v106-clan-assault/mobile-intelligence-atlas.png"
     ],
@@ -334,8 +334,8 @@
     },
     {
       "file": "docs/qa/v106-clan-assault/desktop-stale-review.png",
-      "sha256": "4fd77e1beb4611d998d77fcc92f096201fd0b8a16a60c80f5efe97a16d17db29",
-      "bytes": 217992
+      "sha256": "551610eb69c0af268abef9d7c24fa224032056fd28d5c4ec3f21c61e97ff7b1a",
+      "bytes": 217993
     },
     {
       "file": "docs/qa/v106-clan-assault/desktop-conquest-supply-route.png",
@@ -354,7 +354,7 @@
     },
     {
       "file": "docs/qa/v106-clan-assault/browser-report.json",
-      "sha256": "3466c8c2f18bc05dfe0efd08468c0a6134342448cda56251d6ca469e5cf8ed74",
+      "sha256": "d573d43640090d92ed5c100025831fd8a648d2fd655734293290de01e706ef1f",
       "bytes": 38293
     },
     {
