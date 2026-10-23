@@ -46,8 +46,8 @@ export interface PitWorkbookDeviceStateV107 {
  * explicit adaptations constrained by the first native detached drawing. */
 export const PIT_WORKBOOK_DEVICES_V107 = {
   mine: {fighterId:'feral-hunter', key:'S4', release:20, armAge:74, lifetime:134, width:22, height:14, proximity:62, damage:105, cost:350},
-  shuriken: {fighterId:'scar', key:'S2', release:27, lifetime:50, speed:14, width:36, height:36, damage:90, cost:250},
+  shuriken: {fighterId:'scar', key:'S2', release:27, lifetime:50, speed:14, width:26, height:26, damage:90, cost:250},
 } as const;
 export function getPitWorkbookDevicePhaseV107(kind: PitWorkbookDeviceKindV107, age: number): PitWorkbookDeviceStateV107['phase'] {
-  return kind === 'shuriken' ? 'flight' : age >= 74 ? 'armed' : age >= 14 && age < 44 ? 'amber' : 'off';
+  return kind === 'shuriken' ? 'flight' : age >= 74 ? 'armed' : age < 44 ? 'amber' : 'off';
 }

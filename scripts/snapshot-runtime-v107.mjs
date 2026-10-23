@@ -33,7 +33,7 @@ export async function snapshotRuntimeV107() {
     '.vercelignore', '.openai/hosting.json', 'scripts/build-production-v94.mjs',
     'scripts/build-audio-manifest.mjs', 'scripts/verify-pit-built-css-v61.mjs',
     'scripts/vercel-native-origin-v89.mjs', 'scripts/compact-vercel-static-v87.mjs',
-    'scripts/snapshot-runtime-v107.mjs', 'scripts/collect-v107-runtime-inputs.mjs', 'scripts/collect-pit-variant-inputs-v107.mjs',
+    'scripts/snapshot-runtime-v107.mjs', 'scripts/collect-v107-runtime-inputs.mjs', 'scripts/collect-pit-variant-inputs-v107.mjs', 'scripts/collect-v107-native-art-inputs.mjs',
   ])].sort();
   const entries = await Promise.all(paths.map(async relative => {
     const bytes = await fs.readFile(path.join(root, relative));

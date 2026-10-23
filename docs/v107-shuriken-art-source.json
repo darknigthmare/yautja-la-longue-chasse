@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "generationTimestamp": null,
+  "generationTimestampNote": "The tool returned no generation timestamp. None is inferred from filesystem dates.",
+  "prompt": "Create an original standalone game sprite of the SAME single five-bladed throwing shuriken visible in the supplied Scar S2 source sheet. The supplied sheet is a weapon shape/color reference only. Output exactly ONE isolated complete object, centered and large in a square image on a transparent background, front face seen nearly straight-on, no character, no fingers, no hands, no arm, no belt, no lettering, no duplicate and no motion trail. It must have exactly FIVE separate pointed silver curved hook blades radiating from a small dark metallic red hub in a pentagonal pinwheel arrangement, like the open mechanical weapon in the top-right and bottom-left release poses. Each of the five blades must be individually countable, complete, with coherent silver bevels and dark engraved inner mechanics; preserve the recognizable swept hook shape and red hub of the provided weapon. The overall silhouette must be an open five-pointed throwing star with transparent gaps between the blades; NO circular disk, NO filled disk plate, NO smart-disc substitute, NO additional sixth blade, no body parts. Reveal the central mechanical hub where the hand obscured it in the reference by making an explicitly original conservative adaptation with five small mechanical hinges. Polished hand-authored 2D game sprite appearance with crisp silhouette and thin dark edge, metallic shading compatible with the source. Give the single object generous transparent padding on all sides and keep all five blade tips well inside the canvas.",
+  "transparent_background": true,
+  "reference": {
+    "file": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+    "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752"
+  },
+  "nativeOutputId": "exec-f5c4f8c6-bf65-4b5c-a9b9-ce4d81fab48b",
+  "originalOutputPath": "/workspace/generated_images/exec-f5c4f8c6-bf65-4b5c-a9b9-ce4d81fab48b.png",
+  "deliveredFile": "public/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png",
+  "delivery": "Original PNG bytes copied unchanged; no resize, crop or pixel editing.",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "95108bf402fe76462b5963939c496531860eda613454a11b6ae52ad042c4052b",
+  "scope": "Original independent five-bladed adaptation from the native S2 reference. Occluded hub reconstructed; not a 1:1 native extraction or canon certification.",
+  "review": {
+    "bladeCount": 5,
+    "pivot": [
+      646,
+      631
+    ],
+    "alphaPixels": 392203,
+    "visibleBorderPixels": 0,
+    "independentReviewer": "v107_preserve"
+  }
+}

@@ -47,6 +47,39 @@ on:
       - 'docs/YAUTJA_V106_SUIVI.xlsx'
       - 'docs/*v106*'
       - 'docs/qa/v106*/**'
+      - 'docs/YAUTJA_V107_SUIVI.xlsx'
+      - 'docs/*v107*'
+      - 'docs/qa/v107*/**'
+      - 'docs/suivi-production/v107-enforcer-poses/**'
+      - 'art-source/v107/**'
+      - 'public/game/production/enforcer-alternatives-v107/**'
+      - 'public/game/sprites/v107/**'
+      - 'public/audio/ambience/ship/v54.wav'
+      - 'public/audio/sfx/scan/v54.wav'
+      - 'public/game/homeworld/v64/clan-shuttle.png'
+      - 'public/game/homeworld/v77/fauna/yautja-horse-corrected.png'
+      - 'public/game/homeworld/v77/lava-transit-skiff.png'
+      - 'public/game/sprites/v44/user-hunters/14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea.png'
+      - 'public/game/sprites/v44/user-hunters/2eb5851afca29f1752e9e6e52569e604dde12fa10a7a94f8214e56d84ecacc3c.png'
+      - 'public/game/sprites/v44/user-hunters/576b29993ae77b41649bb0ef603640ed1ecd3da8408a737f03e5136b3e0ecdda.png'
+      - 'public/game/sprites/v44/user-hunters/5c1f22922acb62a481ace765d088c17acafd5f6290d2bf1b4bcbdafd8b462e70.png'
+      - 'public/game/sprites/v44/user-hunters/75100c4c5ea328bed53bbf85eae53308d4f5885b304ca5ed505a857f7206c75c.png'
+      - 'public/game/sprites/v44/user-hunters/7f369e7b4699a938e6bb9b4852d037a572bfaaceceffbaa762a825fe541b9e1d.png'
+      - 'public/game/sprites/v44/user-hunters/8b307ed73e51c864afaf24d13ea4520d6f9c5a28d946d65de7424534dd164711.png'
+      - 'public/game/sprites/v44/user-hunters/93998c80935325b6d74b6886ed3a3915f0b39e64b5b5ff81641d6447fe20b85b.png'
+      - 'public/game/sprites/v44/user-hunters/e97f40300227edea43e44158610f81cf8e259c313701b0651515afaa829fe7cd.png'
+      - 'public/game/sprites/v44/user-hunters/fd76dc521da920bdd9843242ae00ca1d062c4b85119c7eba967980a0d1ba6907.png'
+      - 'public/game/sprites/v52/pit/scar/scar-masked-defeat-v52.png'
+      - 'public/game/sprites/v52/pit/scar/scar-masked-intro-v52.png'
+      - 'public/game/sprites/v52/pit/scar/scar-masked-victory-v52.png'
+      - 'public/game/sprites/v53/pit/scar/scar-masked-forward-shuffle-v53.png'
+      - 'public/game/sprites/v79/fighters/avp-classic-2000/roster-icon.webp'
+      - 'public/game/sprites/v79/fighters/avp-classic-2000/stance-right.png'
+      - 'public/game/sprites/v79/fighters/last-hunt-super/roster-icon.webp'
+      - 'public/game/sprites/v79/fighters/last-hunt-super/stance-right.png'
+      - 'public/game/sprites/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png'
+      - 'public/game/sprites/v93/pit/scar/004-scar-masked-taunt-r2-v93.png'
+      - 'public/game/sprites/v93/pit/scar/006-scar-masked-idle-r2-v93.png'
       - 'docs/v56-excel-priorities.json'
       - 'docs/suivi-production/v614/data/**'
       - 'docs/suivi-production/v614/references/production-plan-v614.json'
@@ -114,7 +147,8 @@ jobs:
   application:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    # V106 used about 25 minutes; keep room for the additional V107 checks.
+    timeout-minutes: 45
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -185,6 +219,11 @@ jobs:
             /docs/YAUTJA_V106_SUIVI.xlsx
             /docs/*v106*
             /docs/qa/v106*/
+            /docs/YAUTJA_V107_SUIVI.xlsx
+            /docs/*v107*
+            /docs/qa/v107*/
+            /docs/suivi-production/v107-enforcer-poses/
+            /art-source/v107/
             /docs/planet-generator-v103/review-fixes-20261022.json
             /docs/suivi-production/v611/data/production-manifest.json
             /docs/suivi-production/v612/data/production-manifest.json
@@ -208,6 +247,100 @@ jobs:
             /public/game/production/enforcers-v612/
             /public/game/production/enforcers-v613/
             /public/game/production/enforcers-v614/
+            # Byte-exact shared inputs required by the PR15 historical context.
+            /docs/suivi-production/v612/data/current-master.json.gz
+            /docs/suivi-production/v613/data/default-selections-before.json
+            /docs/suivi-production/v613/data/main-reconciliation.json
+            /docs/suivi-production/v613/recovery/native-checkpoint.json
+            /docs/suivi-production/v613/recovery/verified-native-files.json
+            /docs/suivi-production/v613/references/production-plan-v613.json
+            /docs/suivi-production/v614/README.md
+            /docs/suivi-production/v614/gallery-preview/bionic.png
+            /docs/suivi-production/v614/gallery-preview/browser-verification.json
+            /docs/suivi-production/v614/gallery-preview/four-armed.png
+            /docs/suivi-production/v614/gallery-preview/gallery-desktop.png
+            /docs/suivi-production/v614/gallery-preview/gallery-mobile-card.png
+            /docs/suivi-production/v614/gallery-preview/gallery-mobile-controls.png
+            /docs/suivi-production/v614/gallery-preview/gallery-mobile.png
+            /docs/suivi-production/v614/gallery-preview/human-accepted.png
+            /docs/suivi-production/v614/gallery-preview/pilot-kok.png
+            /docs/suivi-production/v614/gallery-preview/visual-review.json
+            /docs/suivi-production/v614/index.html
+            /docs/suivi-production/v614/receipts/alpha--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/augmentes-assassin--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/bionic--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/city-hunter--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/four-armed--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/hornhead--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/human-accepted--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/kaal-or--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/pilot-kok--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/saar-keth--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/sha-rhess--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/spiked-tail--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json
+            /docs/suivi-production/v614/receipts/vaal-tir--enforcers-comics-10.json
+            /docs/suivi-production/v614/recovery/native-checkpoint.json
+            /docs/suivi-production/v614/validation/historical-runtime-check.json
+            /docs/suivi-production/v614/validation/historical-runtime-review.json
+            /docs/suivi-production/v614/validation/integration-checks.json
+            /docs/suivi-production/v614/validation/local-quality.json
+            /docs/suivi-production/v614/validation/master-changes.json
+            /docs/suivi-production/v614/validation/public-record-final-check.json
+            /docs/suivi-production/v614/workbook-preview/additional-workbooks.json
+            /docs/suivi-production/v614/workbook-preview/after-checks.png
+            /docs/suivi-production/v614/workbook-preview/after-production.png
+            /docs/suivi-production/v614/workbook-preview/after-summary.png
+            /docs/suivi-production/v614/workbook-preview/after-workbooks.png
+            /docs/suivi-production/v614/workbook-preview/applied-master-changes.json
+            /docs/suivi-production/v614/workbook-preview/before-production.png
+            /docs/suivi-production/v614/workbook-preview/before-summary.png
+            /docs/suivi-production/v614/workbook-preview/before-workbooks.png
+            /docs/suivi-production/v614/workbook-preview/export-inspection.ndjson
+            /docs/suivi-production/v614/workbook-preview/formula-scan.ndjson
+            /docs/suivi-production/v614/workbook-preview/openxml-verification.json
+            /docs/suivi-production/v614/workbook-preview/recalculation-check.json
+            /docs/suivi-production/v614/workbook-preview/visual-review.json
+            /docs/suivi-production/v615/README.md
+            /docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx
+            /docs/suivi-production/v615/gallery-preview/bionic.png
+            /docs/suivi-production/v615/gallery-preview/browser-verification.json
+            /docs/suivi-production/v615/gallery-preview/current-lot-light-1.png
+            /docs/suivi-production/v615/gallery-preview/current-lot-light-2.png
+            /docs/suivi-production/v615/gallery-preview/current-lot-light-3.png
+            /docs/suivi-production/v615/gallery-preview/four-armed.png
+            /docs/suivi-production/v615/gallery-preview/gallery-desktop.png
+            /docs/suivi-production/v615/gallery-preview/gallery-mobile-card.png
+            /docs/suivi-production/v615/gallery-preview/gallery-mobile-controls.png
+            /docs/suivi-production/v615/gallery-preview/gallery-mobile.png
+            /docs/suivi-production/v615/gallery-preview/human-accepted.png
+            /docs/suivi-production/v615/gallery-preview/pilot-kok.png
+            /docs/suivi-production/v615/gallery-preview/visual-review.json
+            /docs/suivi-production/v615/index.html
+            /docs/suivi-production/v615/recovery/native-checkpoint.json
+            /docs/suivi-production/v615/validation/independent-review.json
+            /docs/suivi-production/v615/validation/local-quality.json
+            /docs/suivi-production/v615/validation/master-changes.json
+            /docs/suivi-production/v615/validation/native-provenance.json
+            /docs/suivi-production/v615/validation/public-record-final-check.json
+            /docs/suivi-production/v615/validation/runtime-integration.json
+            /docs/suivi-production/v615/workbook-preview/after-checks.png
+            /docs/suivi-production/v615/workbook-preview/after-production.png
+            /docs/suivi-production/v615/workbook-preview/after-summary.png
+            /docs/suivi-production/v615/workbook-preview/after-workbooks.png
+            /docs/suivi-production/v615/workbook-preview/applied-master-changes.json
+            /docs/suivi-production/v615/workbook-preview/before-production.png
+            /docs/suivi-production/v615/workbook-preview/before-summary.png
+            /docs/suivi-production/v615/workbook-preview/before-workbooks.png
+            /docs/suivi-production/v615/workbook-preview/export-inspection.ndjson
+            /docs/suivi-production/v615/workbook-preview/formula-scan.ndjson
+            /docs/suivi-production/v615/workbook-preview/openxml-verification.json
+            /docs/suivi-production/v615/workbook-preview/recalculation-check.json
+            /docs/suivi-production/v615/workbook-preview/visual-review.json
             /docs/v56-excel-priorities.json
             /docs/war-clans-v3-workbook-source.json
             /art-source/v100/
@@ -226,6 +359,52 @@ jobs:
             /public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png
+            # Bounded V107 union: runtime inputs, six native catalogues and shuriken.
+            /public/audio/ambience/ship/v54.wav
+            /public/audio/sfx/scan/v54.wav
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/production/enforcer-alternatives-v107/alpha/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/augmentes-assassin/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/bionic/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/city-hunter/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/feral/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/four-armed/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/grendel-kok/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/hornhead/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/human-accepted/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/kaal-or/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/oni-kok/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/pilot-kok/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/saar-keth/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/sha-rhess/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/spiked-tail/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/super-predators/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/ul-khar/enforcers-comics-10.png
+            /public/game/production/enforcer-alternatives-v107/vaal-tir/enforcers-comics-10.png
+            /public/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png
+            /public/game/sprites/v44/user-hunters/14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea.png
+            /public/game/sprites/v44/user-hunters/2eb5851afca29f1752e9e6e52569e604dde12fa10a7a94f8214e56d84ecacc3c.png
+            /public/game/sprites/v44/user-hunters/576b29993ae77b41649bb0ef603640ed1ecd3da8408a737f03e5136b3e0ecdda.png
+            /public/game/sprites/v44/user-hunters/5c1f22922acb62a481ace765d088c17acafd5f6290d2bf1b4bcbdafd8b462e70.png
+            /public/game/sprites/v44/user-hunters/75100c4c5ea328bed53bbf85eae53308d4f5885b304ca5ed505a857f7206c75c.png
+            /public/game/sprites/v44/user-hunters/7f369e7b4699a938e6bb9b4852d037a572bfaaceceffbaa762a825fe541b9e1d.png
+            /public/game/sprites/v44/user-hunters/8b307ed73e51c864afaf24d13ea4520d6f9c5a28d946d65de7424534dd164711.png
+            /public/game/sprites/v44/user-hunters/93998c80935325b6d74b6886ed3a3915f0b39e64b5b5ff81641d6447fe20b85b.png
+            /public/game/sprites/v44/user-hunters/e97f40300227edea43e44158610f81cf8e259c313701b0651515afaa829fe7cd.png
+            /public/game/sprites/v44/user-hunters/fd76dc521da920bdd9843242ae00ca1d062c4b85119c7eba967980a0d1ba6907.png
+            /public/game/sprites/v52/pit/scar/scar-masked-defeat-v52.png
+            /public/game/sprites/v52/pit/scar/scar-masked-intro-v52.png
+            /public/game/sprites/v52/pit/scar/scar-masked-victory-v52.png
+            /public/game/sprites/v53/pit/scar/scar-masked-forward-shuffle-v53.png
+            /public/game/sprites/v79/fighters/avp-classic-2000/roster-icon.webp
+            /public/game/sprites/v79/fighters/avp-classic-2000/stance-right.png
+            /public/game/sprites/v79/fighters/last-hunt-super/roster-icon.webp
+            /public/game/sprites/v79/fighters/last-hunt-super/stance-right.png
+            /public/game/sprites/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png
+            /public/game/sprites/v93/pit/scar/004-scar-masked-taunt-r2-v93.png
+            /public/game/sprites/v93/pit/scar/006-scar-masked-idle-r2-v93.png
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -324,6 +503,7 @@ jobs:
           app/game/ClanWarConvoyRouteV105.tsx app/game/systems/clanWarConvoyRouteV105.ts
           app/game/systems/clanWarConvoyStateV105.ts
           app/game/*V106.ts app/game/*V106.tsx app/game/systems/*V106.ts
+          app/game/*V107.ts app/game/*V107.tsx app/game/systems/*V107.ts
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -437,7 +617,13 @@ jobs:
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v106.test.mjs
       - name: Verify reproducible V106 follow-up and the 49 preserved historical sheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v106.mjs --check
+        run: node scripts/check-excel-history-v107.mjs --release V106 --check
+      - name: Exercise V107 conclusions, variants, worlds, native poses and historical integrity
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v107.test.mjs
+      - name: Verify reproducible V107 follow-up and preserved historical sheets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v107.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
