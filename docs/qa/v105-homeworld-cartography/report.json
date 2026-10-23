@@ -1,0 +1,462 @@
+{
+  "status": "PASS",
+  "scope": "Real local UI, real keyboard and native physics after one accepted initial city fixture; B then A with a physical upper stair trip, known-object comparison, clock date and walked return. Controlled browser clock. No full-campaign or physical-controller certification.",
+  "baseUrl": "http://127.0.0.1:3101",
+  "mode": "compiled-app",
+  "contentVersion": "V105",
+  "buildId": "p-YXoE3t9Mm35taH6ftqf",
+  "servedBuilds": [
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "Accepted initial checkpoint restores actual port actor",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing option B is still completed by real native courtyard walking",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused choice remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful choice retry hands focus back before its control disappears",
+      "status": "PASS"
+    },
+    {
+      "name": "The first frame after choice retry retains phase and interruption count",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after choice restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "A choice uses the exact V6 source line at the same physical speaker",
+      "status": "PASS"
+    },
+    {
+      "name": "A response is exact and the known B receipt remains intact",
+      "status": "PASS"
+    },
+    {
+      "name": "Starting A returns focus to the real viewport without interrupting the walk",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual early walk can interrupt without earning altitude or an observation",
+      "status": "PASS"
+    },
+    {
+      "name": "Resume hands focus to the viewport before the next city frame",
+      "status": "PASS"
+    },
+    {
+      "name": "The first resumed city frame keeps the active phase without a new interruption",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair has no premature floor completion from 0",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair physically reaches the other landing from 0",
+      "status": "PASS"
+    },
+    {
+      "name": "Real ascent is recorded before upper-world walking",
+      "status": "PASS"
+    },
+    {
+      "name": "Physical viaduct approach earns the observation phase with zero compared objects",
+      "status": "PASS"
+    },
+    {
+      "name": "Upper viewpoint uses existing ground and a functional marker",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation shows exactly two known native object references",
+      "status": "PASS"
+    },
+    {
+      "name": "First comparison retains modal focus while replacing its button",
+      "status": "PASS"
+    },
+    {
+      "name": "Resume hands focus to the viewport before the next city frame",
+      "status": "PASS"
+    },
+    {
+      "name": "The first resumed city frame keeps the active phase without a new interruption",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary Continue restores +1 position and first comparison without recording a date",
+      "status": "PASS"
+    },
+    {
+      "name": "Second comparison retains modal focus and exposes dating",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused date remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful date retry hands focus back before its control disappears",
+      "status": "PASS"
+    },
+    {
+      "name": "The first frame after date retry retains phase and interruption count",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after date restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "Date refusal keeps two comparisons but no fictitious timestamp",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the explicit on-site date action preserves a valid observation time",
+      "status": "PASS"
+    },
+    {
+      "name": "Dating closes the observation with viewport focus and keeps the return active",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair has no premature floor completion from +1",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair physically reaches the other landing from +1",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused report remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful report retry hands focus back before its control disappears",
+      "status": "PASS"
+    },
+    {
+      "name": "The first frame after report retry retains phase and interruption count",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after report restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "Reporting retains focus inside the surviving source dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the physical descent and return let the source speaker validate A",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation timestamp and every V104 B byte survive the new complete route",
+      "status": "PASS"
+    },
+    {
+      "name": "No profile, inventory or trophy reward is granted by cartographer words",
+      "status": "PASS"
+    },
+    {
+      "name": "Source dialog fits a mobile viewport with usable controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Completed A remains stored after ordinary mobile Continue",
+      "status": "PASS"
+    },
+    {
+      "name": "The local journey raises no browser exception",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "write-paused-choice.png",
+      "sha256": "a262bb50af32207b5c820fa365c404431878f29096ef3864fb4fedb324bd12fc"
+    },
+    {
+      "file": "source-a-briefing.png",
+      "sha256": "4cd0dd22ee0c7e293d4cec544807bc022b3328b33829d14212052d903b3aeba7"
+    },
+    {
+      "file": "council-stair-lower.png",
+      "sha256": "b8e0b1022f05c1277370582cda9cdfd74b066d4253658d0479a3bc1d1d9fc9fc"
+    },
+    {
+      "file": "viaduct-high-point.png",
+      "sha256": "0ae530e87c8a2d4a26dc2f3edcbff6d6b5d956d59e9f5e69b6d1867730981d58"
+    },
+    {
+      "file": "two-landmarks-compared.png",
+      "sha256": "d1e522679ccb5153fd1ac02e8d22e22461eb5a67695ebe882b5d90d8025937df"
+    },
+    {
+      "file": "write-paused-date.png",
+      "sha256": "a1f2a5c1a2106553c0e07a1b627dda44e92501f287577b71c4fc0b2c16021c40"
+    },
+    {
+      "file": "write-paused-report.png",
+      "sha256": "8f3fe0b7afd78048af1b69b10c4057280eb45097f665d829de31feb6b262035d"
+    },
+    {
+      "file": "releve-completed-desktop.png",
+      "sha256": "371c5db937b111fff260a7f9bd3c9b5b0dc83dbce53e6489b9a34bf2197b5bb7"
+    },
+    {
+      "file": "releve-completed-mobile.png",
+      "sha256": "c6f8fd31c43d7e5272de7fcd7316902a1b47fcf3752f74ff170162724fe3c9dc"
+    }
+  ],
+  "fixture": {
+    "description": "Model first-tracks campaign plus explicit accepted initial city checkpoint at the existing port lectern. All subsequent positions and survey receipts are earned through UI and keyboard.",
+    "owner": "2026-09-20T10:00:00.000Z",
+    "profile": {
+      "hunterName": "QA V105 · cartographe",
+      "rankId": "young-blood",
+      "honor": 0,
+      "clanMarks": 0,
+      "playTimeSeconds": 138
+    },
+    "inventory": {
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "trophies": []
+  },
+  "errors": [],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+    },
+    {
+      "file": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV105.tsx",
+      "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.module.css",
+      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+      "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+      "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV105.ts",
+      "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+    },
+    {
+      "file": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+    },
+    {
+      "file": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV105.tsx",
+      "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.module.css",
+      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+      "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+      "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV105.ts",
+      "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+    },
+    {
+      "file": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+    }
+  ],
+  "sourceUnchanged": true,
+  "completedAt": "2026-10-23T01:44:47.099Z"
+}

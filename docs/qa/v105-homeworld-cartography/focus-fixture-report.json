@@ -1,0 +1,397 @@
+{
+  "status": "PASS",
+  "scope": "Real local UI, real keyboard and native physics after one accepted initial city fixture; B then A with a physical upper stair trip, known-object comparison, clock date and walked return. Controlled browser clock. No full-campaign or physical-controller certification.",
+  "baseUrl": "http://127.0.0.1:3101",
+  "mode": "isolated-current-HomeworldHub",
+  "contentVersion": "V105",
+  "buildId": null,
+  "servedBuilds": [],
+  "checks": [
+    {
+      "name": "Accepted initial checkpoint restores actual port actor",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing option B is still completed by real native courtyard walking",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused choice stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused choice remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after choice restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "A choice uses the exact V6 source line at the same physical speaker",
+      "status": "PASS"
+    },
+    {
+      "name": "A response is exact and the known B receipt remains intact",
+      "status": "PASS"
+    },
+    {
+      "name": "Starting A returns focus to the real viewport without interrupting the walk",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual early walk can interrupt without earning altitude or an observation",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair has no premature floor completion from 0",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair physically reaches the other landing from 0",
+      "status": "PASS"
+    },
+    {
+      "name": "Real ascent is recorded before upper-world walking",
+      "status": "PASS"
+    },
+    {
+      "name": "Physical viaduct approach earns the observation phase with zero compared objects",
+      "status": "PASS"
+    },
+    {
+      "name": "Upper viewpoint uses existing ground and a functional marker",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation shows exactly two known native object references",
+      "status": "PASS"
+    },
+    {
+      "name": "First comparison retains modal focus while replacing its button",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary Continue restores +1 position and first comparison without recording a date",
+      "status": "PASS"
+    },
+    {
+      "name": "Second comparison retains modal focus and exposes dating",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused date stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused date remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after date restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "Date refusal keeps two comparisons but no fictitious timestamp",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the explicit on-site date action preserves a valid observation time",
+      "status": "PASS"
+    },
+    {
+      "name": "Dating closes the observation with viewport focus and keeps the return active",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair has no premature floor completion from +1",
+      "status": "PASS"
+    },
+    {
+      "name": "Council stair physically reaches the other landing from +1",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report keeps durable observation and revision unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report exposes its own retry after closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused report stops physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated refused report remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after report restores writes without replaying its action",
+      "status": "PASS"
+    },
+    {
+      "name": "Reporting retains focus inside the surviving source dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the physical descent and return let the source speaker validate A",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation timestamp and every V104 B byte survive the new complete route",
+      "status": "PASS"
+    },
+    {
+      "name": "No profile, inventory or trophy reward is granted by cartographer words",
+      "status": "PASS"
+    },
+    {
+      "name": "Source dialog fits a mobile viewport with usable controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Completed A remains stored after ordinary mobile Continue",
+      "status": "PASS"
+    },
+    {
+      "name": "The local journey raises no browser exception",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "write-paused-choice.png",
+      "sha256": "8b64acab474b4cb15a03957d3b9d379179398cf23b5f48028740f75ffbf5c4ce"
+    },
+    {
+      "file": "source-a-briefing.png",
+      "sha256": "7c5b39ba462aadd980fc551167824eb04cb74eb3ae91e60d1ec739166a8c99db"
+    },
+    {
+      "file": "council-stair-lower.png",
+      "sha256": "985e083691e560724d59f8ed86ee4fd035af236a960e431ab36219a6bf568427"
+    },
+    {
+      "file": "viaduct-high-point.png",
+      "sha256": "3e53872a3cc2d473082c895340471c94b3cf346954c20c74a3f8fb1614857047"
+    },
+    {
+      "file": "two-landmarks-compared.png",
+      "sha256": "815ed195bf1021cd70f4e97a793c10a81b1676b87544a949a510709bfce38ce3"
+    },
+    {
+      "file": "write-paused-date.png",
+      "sha256": "b5a1f331020f60a07e73a456684bd986acdc33b6657f8e365003afe40b486688"
+    },
+    {
+      "file": "write-paused-report.png",
+      "sha256": "9b029fe60f783366b9a4607ae77494a4fa768f294decda57c39169d715c32112"
+    },
+    {
+      "file": "releve-completed-desktop.png",
+      "sha256": "656f27d72122646bc9ca19f05df7ff7e0612009c382aa468a5db297d68e8f02c"
+    },
+    {
+      "file": "releve-completed-mobile.png",
+      "sha256": "f2dc4f6f946b93a6d9a7f3cc3033d47ca8386589704b6f9160c7d7261a3a12a4"
+    }
+  ],
+  "fixture": {
+    "description": "Model first-tracks campaign plus explicit accepted initial city checkpoint at the existing port lectern. All subsequent positions and survey receipts are earned through UI and keyboard.",
+    "owner": "2026-09-20T10:00:00.000Z",
+    "profile": {
+      "hunterName": "QA V105 · cartographe",
+      "rankId": "young-blood",
+      "honor": 0,
+      "clanMarks": 0,
+      "playTimeSeconds": 138
+    },
+    "inventory": {
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "trophies": []
+  },
+  "errors": [],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+    },
+    {
+      "file": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV105.tsx",
+      "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.module.css",
+      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+      "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+      "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV105.ts",
+      "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+    },
+    {
+      "file": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "3005e353b878ab6e15ba169b0364619b7e15eed41682c3fb1a318c74aa3e2899"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "781ab97a7d9bef7df7297c2039cb9b08481f9a97b34f0906686328969221908a"
+    },
+    {
+      "file": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "9e05ed4f98d7eb7a29bbab0137ed72085b212f1ed3a26047bc9092500be3914b"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV105.tsx",
+      "sha256": "0ce89ca0e681d3c5783b334f7d4608817d01d226ef4bdae8b17f4e8943c8af73"
+    },
+    {
+      "file": "app/game/HomeworldCartographyV104.module.css",
+      "sha256": "6adf4b7bc99600eb60bd7964b73c51b2368f9eacd986a59668ae5f40deb9c5f7"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyDefinitionV105.ts",
+      "sha256": "d0fcc4cd2a61edb68cf9e09926b85fcf8d75f05cc5b206092d3c281ed30f0e04"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyLedgerV105.ts",
+      "sha256": "4951875f851a27e9763ebe8ba570c64078c7a447f02f942725ff354aadf921cd"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "file": "app/game/systems/homeworldCartographyV105.ts",
+      "sha256": "7442e7391b311e17793005e529494bacedc8609740b440ae08fa3c82c8bd973c"
+    },
+    {
+      "file": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "267f8cfca6261f4b3b1ef4ab5d48261826417b7f4dac69099f4a841034ab55aa"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "2ed8955869f642dc703e67dad7e491b9f439de52bc9fea83e88cdc34fb70b167"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "c318c18aad54759d65a4ccafca1502bfd8f23401ea9469f7f456f154629b57f3"
+    }
+  ],
+  "sourceUnchanged": true,
+  "completedAt": "2026-10-23T01:34:48.080Z"
+}

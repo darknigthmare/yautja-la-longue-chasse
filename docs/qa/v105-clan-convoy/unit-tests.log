@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: legacy fronts retain exact V104 initial and resolved bytes on all thirty historical worlds
+ok 1 - legacy fronts retain exact V104 initial and resolved bytes on all thirty historical worlds
+  ---
+  duration_ms: 91.392959
+  type: 'test'
+  ...
+# Subtest: planning records a source-backed itinerary without moving, reserving or creating any resources
+ok 2 - planning records a source-backed itinerary without moving, reserving or creating any resources
+  ---
+  duration_ms: 9.514391
+  type: 'test'
+  ...
+# Subtest: three consecutive deliveries use the same identified porters, one real edge and one existing slot per turn
+ok 3 - three consecutive deliveries use the same identified porters, one real edge and one existing slot per turn
+  ---
+  duration_ms: 10.595816
+  type: 'test'
+  ...
+# Subtest: illegal geography, empty cargo, unavailable people, duplicate identities and columns above eight are refused atomically
+ok 4 - illegal geography, empty cargo, unavailable people, duplicate identities and columns above eight are refused atomically
+  ---
+  duration_ms: 17.73395
+  type: 'test'
+  ...
+# Subtest: a captured downstream depot, missing porter, local shortage or occupied logistics slot pauses without a hidden reroute
+ok 5 - a captured downstream depot, missing porter, local shortage or occupied logistics slot pauses without a hidden reroute
+  ---
+  duration_ms: 3.854596
+  type: 'test'
+  ...
+# Subtest: cancelling a sealed leg releases its stock/people and preserves the uncompleted itinerary
+ok 6 - cancelling a sealed leg releases its stock/people and preserves the uncompleted itinerary
+  ---
+  duration_ms: 1.554291
+  type: 'test'
+  ...
+# Subtest: a manifest invalidated during resolution cannot spend or complete its planned leg
+ok 7 - a manifest invalidated during resolution cannot spend or complete its planned leg
+  ---
+  duration_ms: 2.819133
+  type: 'test'
+  ...
+# Subtest: all historical worlds and all 27 V103 count pairs support owned depot routes on their own graph
+ok 8 - all historical worlds and all 27 V103 count pairs support owned depot routes on their own graph
+  ---
+  duration_ms: 6664.117738
+  type: 'test'
+  ...
+# Subtest: lost departure stock or captured arrival after reservation cancels the leg without debit or checkpoint
+ok 9 - lost departure stock or captured arrival after reservation cancels the leg without debit or checkpoint
+  ---
+  duration_ms: 28.44635
+  type: 'test'
+  ...
+# Subtest: front transfer preserves pending reservations and checkpoints and rejects future, foreign or altered manifests
+ok 10 - front transfer preserves pending reservations and checkpoints and rejects future, foreign or altered manifests
+  ---
+  duration_ms: 11.14962
+  type: 'test'
+  ...
+# Subtest: session reload retains a plan and its pending order; future bytes remain protected against every write attempt
+ok 11 - session reload retains a plan and its pending order; future bytes remain protected against every write attempt
+  ---
+  duration_ms: 6.155583
+  type: 'test'
+  ...
+# Subtest: archive limits keep enough revision/turn margin to resolve a reserved convoy leg
+ok 12 - archive limits keep enough revision/turn margin to resolve a reserved convoy leg
+  ---
+  duration_ms: 12.983648
+  type: 'test'
+  ...
+# Subtest: review: repeated local reliefs preserve every physical person and archive contract on thirty worlds
+ok 13 - review: repeated local reliefs preserve every physical person and archive contract on thirty worlds
+  ---
+  duration_ms: 1097.639116
+  type: 'test'
+  ...
+# Subtest: review: a sealed order keeps its same person reserved through archive restore and only cancellation permits relief
+ok 14 - review: a sealed order keeps its same person reserved through archive restore and only cancellation permits relief
+  ---
+  duration_ms: 2.32077
+  type: 'test'
+  ...
+# Subtest: review: wounded guards do not bypass the final fit guard confirmation and control changes revoke it
+ok 15 - review: wounded guards do not bypass the final fit guard confirmation and control changes revoke it
+  ---
+  duration_ms: 1.124322
+  type: 'test'
+  ...
+# Subtest: review: the last archive revision is writable, refusal is exact, and imported punctuation never changes identity
+ok 16 - review: the last archive revision is writable, refusal is exact, and imported punctuation never changes identity
+  ---
+  duration_ms: 1.415528
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11326.07532

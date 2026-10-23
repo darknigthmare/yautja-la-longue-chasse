@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "V105",
+  "status": "PASS",
+  "validatedAt": "2026-10-23T01:39:10.021Z",
+  "scope": {
+    "id": "CONVOY-ROUTE-V105",
+    "mode": "free-clan-war",
+    "delivered": "Planification et exécution manuelle d’un convoi multi-étapes sur les vraies routes, avec porteurs identifiés, stocks locaux, pauses, atlas et transfert du front.",
+    "runtimeCommit": "ec66e7dc05b774473c63b9d44de450fa6276da6b",
+    "runtimeSourceUnchanged": true
+  },
+  "production": {
+    "buildId": "p-YXoE3t9Mm35taH6ftqf",
+    "baseUrl": "http://127.0.0.1:3101",
+    "checksPassed": 33,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+        "foundInHtml": true
+      }
+    ],
+    "sourceBefore": [
+      {
+        "file": "app/game/ClanWarPanelV85.tsx",
+        "sha256": "da367e1935dd056c281d623dc151fb008b2e81fb4f884dd1f2f237f48d9dd16a"
+      },
+      {
+        "file": "app/game/ClanWarAtlasV95.tsx",
+        "sha256": "647a05fabb9e35b8a837243a49371c7af430ef284c6ee12e943470baaa25050b"
+      },
+      {
+        "file": "app/game/ClanWarAtlasV95.module.css",
+        "sha256": "55e85b2fb428a1d6629a0d2a5a05ce2e3f730c71e37caddfa50c8011c776a53b"
+      },
+      {
+        "file": "app/game/ClanWarConvoyRouteV105.tsx",
+        "sha256": "159aeba3e04f5f0e22d98ffc51a6ddd0dd6068688cef7497af5855957e7f770d"
+      },
+      {
+        "file": "app/game/ClanWarConvoyRouteV105.module.css",
+        "sha256": "0367dc5967bff95d14be4c5f969e07a858ca244af6cb1d7626b8f00e28e42254"
+      },
+      {
+        "file": "app/game/systems/clanWarV85.ts",
+        "sha256": "6d4bc53158c43373926035eb46c184d1ef1fc7bba13b8f8fa7e5782462e135d0"
+      },
+      {
+        "file": "app/game/systems/clanWarConvoyStateV105.ts",
+        "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+      },
+      {
+        "file": "app/game/systems/clanWarConvoyRouteV105.ts",
+        "sha256": "68ff12a17b74e5859aaa51a9a75872041bb4abf5c9f4d4b70d2c63fa57fd7b03"
+      }
+    ],
+    "sourceAfter": [
+      {
+        "file": "app/game/ClanWarPanelV85.tsx",
+        "sha256": "da367e1935dd056c281d623dc151fb008b2e81fb4f884dd1f2f237f48d9dd16a"
+      },
+      {
+        "file": "app/game/ClanWarAtlasV95.tsx",
+        "sha256": "647a05fabb9e35b8a837243a49371c7af430ef284c6ee12e943470baaa25050b"
+      },
+      {
+        "file": "app/game/ClanWarAtlasV95.module.css",
+        "sha256": "55e85b2fb428a1d6629a0d2a5a05ce2e3f730c71e37caddfa50c8011c776a53b"
+      },
+      {
+        "file": "app/game/ClanWarConvoyRouteV105.tsx",
+        "sha256": "159aeba3e04f5f0e22d98ffc51a6ddd0dd6068688cef7497af5855957e7f770d"
+      },
+      {
+        "file": "app/game/ClanWarConvoyRouteV105.module.css",
+        "sha256": "0367dc5967bff95d14be4c5f969e07a858ca244af6cb1d7626b8f00e28e42254"
+      },
+      {
+        "file": "app/game/systems/clanWarV85.ts",
+        "sha256": "6d4bc53158c43373926035eb46c184d1ef1fc7bba13b8f8fa7e5782462e135d0"
+      },
+      {
+        "file": "app/game/systems/clanWarConvoyStateV105.ts",
+        "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+      },
+      {
+        "file": "app/game/systems/clanWarConvoyRouteV105.ts",
+        "sha256": "68ff12a17b74e5859aaa51a9a75872041bb4abf5c9f4d4b70d2c63fa57fd7b03"
+      }
+    ]
+  },
+  "sourceContract": {
+    "module": "app/game/systems/clanWarConvoyRouteV105.ts",
+    "export": "WAR_CONVOY_ROUTE_CONTRACT_V105",
+    "workbook": "Yautja_V3_Guerres_de_Clans_Trois_Modes.xlsx",
+    "sha256": "3ef3712c9ffa865f918133bee7667155c1bb320f060b4a19cc58ff650ffd0dfa",
+    "sources": [
+      {
+        "id": "CON-R04",
+        "sheet": "Règles de conquête",
+        "cells": "C9:H9"
+      },
+      {
+        "id": "CON-R10",
+        "sheet": "Règles de conquête",
+        "cells": "C15:H15"
+      },
+      {
+        "id": "CON-R11",
+        "sheet": "Règles de conquête",
+        "cells": "C16:H16"
+      }
+    ]
+  },
+  "unitTests": {
+    "command": "PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node --experimental-test-isolation=none --test tests/clan-war-convoy-route-v105.test.mjs tests/clan-war-garrison-review-v99.test.mjs",
+    "passed": 16,
+    "failed": 0,
+    "log": "docs/qa/v105-clan-convoy/unit-tests.log",
+    "coverage": {
+      "newConvoyCases": 12,
+      "garrisonReviewCases": 4,
+      "historicalWorlds": 30,
+      "generatedCountPairs": 27,
+      "legacyExactJsonSnapshots": 60,
+      "legacyBaselineCommit": "8eaae97b8511ed6b93183729f201af7eb844f830",
+      "legacyFixture": "tests/fixtures/clan-war-front-legacy-v105.json",
+      "legacyFixtureSha256": "5ffd9d2be6f20ca8e4086db59a2ddcf2caca17372654a6bdad612fe3e55226e1"
+    },
+    "lastExecutedAgainstRuntimeCommit": "79199a5fb2a0119fb8a2eaf9b1808a6709bfa402",
+    "runtimeSourceHashesMatchFinalBuild": true,
+    "reuseBasis": "Les seize tests ciblés portent sur les mêmes sources Clans, dont les SHA256 sont identiques dans les deux builds de production. La recette navigateur complète et les cinq captures ont été rejouées sur le build final."
+  },
+  "browserCoverage": [
+    "native-three-edge-planning-and-three-manual-resolutions",
+    "same-existing-P07-P08-manifest",
+    "stock-and-roster-equality-with-existing-one-leg-resolver",
+    "pending-order-reload",
+    "downloaded-front-roundtrip",
+    "import-preview-cancel-and-explicit-replacement",
+    "no-additive-stock-import",
+    "control-loss-at-T05-and-atlas-link",
+    "paused-plan-reload",
+    "future-payload-version3-write-protection",
+    "generated18-and96-native-preparation",
+    "390px-no-overflow-and44px-actions"
+  ],
+  "fixtureDisclosure": [
+    {
+      "type": "played-journey-start",
+      "description": "Existing V104 Korthas people/stocks only; existing opponents retain garrison positions to isolate deliveries."
+    },
+    {
+      "type": "control-loss",
+      "description": "Existing downstream T05 controller changed to F02 after the first real delivery; no extra stock or actor."
+    },
+    {
+      "type": "future-payload",
+      "description": "Known V105 front with an unsupported payload version3; original formatted bytes must remain protected.",
+      "sha256": "6455af6d9987445df316a1fbb8bf23ef10bbdd2eeb5d87d8e17a3dc761fd3702"
+    },
+    {
+      "type": "generated-18",
+      "description": "Real generated deployment and stocks, existing opponents held in garrison for an isolated first delivery.",
+      "planetId": "proc-v103-2x-001013100011300111100-nf0ef"
+    },
+    {
+      "type": "generated-96",
+      "description": "Real generated deployment and stocks, existing opponents held in garrison for an isolated first delivery.",
+      "planetId": "proc-v103-2x-541013100011300111100-tu3rk"
+    }
+  ],
+  "visualReview": {
+    "allFiveCapturesOpened": true,
+    "reviewedAt": "2026-10-23T01:39:10.024Z",
+    "selectedPreview": "docs/qa/v105-clan-convoy/convoy-planned-desktop.png",
+    "captures": [
+      {
+        "file": "docs/qa/v105-clan-convoy/convoy-planned-desktop.png",
+        "opened": true,
+        "observation": "Planisphère normal de Korthas : trajet T02–T05 visible avec prochaine liaison ambre, étapes prévues cyan, légende textuelle. Surfaces et contrôles de factions conservés."
+      },
+      {
+        "file": "docs/qa/v105-clan-convoy/convoy-delivered-mobile.png",
+        "opened": true,
+        "observation": "Viewport390px : trois étapes livrées, identitésP07/P08, lotsM1, étapes et actions lisibles sans débordement horizontal ; capture centrée sur le trajet, titre et suite du panneau hors cadre."
+      },
+      {
+        "file": "docs/qa/v105-clan-convoy/convoy-control-loss-desktop.png",
+        "opened": true,
+        "observation": "État pause1/3 : T05 perdu nommé précisément, prochaine réservation désactivée, retrait disponible, dernier point T03 explicite."
+      },
+      {
+        "file": "docs/qa/v105-clan-convoy/convoy-generated-18.png",
+        "opened": true,
+        "observation": "Front18 : manifeste réel P04, route T03→T01, réservation1lien, créneau bloqué tant que le tour n’est pas résolu."
+      },
+      {
+        "file": "docs/qa/v105-clan-convoy/convoy-generated-96.png",
+        "opened": true,
+        "observation": "Front96 : manifeste réel P07, route T01→T02, réservation1lien et actions lisibles."
+      }
+    ]
+  },
+  "limits": [
+    "Les six ouvrages historiques sans entités physiques intégrées restent ouverts.",
+    "Les dépôts du convoi doivent être contrôlés ; le transit seul ne transfère pas leur propriété.",
+    "Les lots sont déposés dans le stock local ordinaire et peuvent être consommés par l’entretien.",
+    "Aucun véhicule, recrutement, revenu, capacité ou conversion RAV/S-M-I n’est créé.",
+    "L’export de front libre est distinct de la recette de planète et de l’archive de campagne.",
+    "Les captures18/96 prouvent la préparation et la réservation native ; les résolutions couvrent les27formats dans les tests de logique."
+  ],
+  "evidence": [
+    {
+      "file": "docs/qa/v105-clan-convoy/convoy-planned-desktop.png",
+      "sha256": "5a858d3b54f22a0da03d3c13f782f18a59cb8a044a85ab1762129421e2820f1b",
+      "bytes": 828872
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/convoy-delivered-mobile.png",
+      "sha256": "755e7065fb4f7a69c1a7c57b5f51a35d7191d986d0a5b881ecc7e88020d36a59",
+      "bytes": 137591
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/convoy-control-loss-desktop.png",
+      "sha256": "9a73877ba45f8cb82ebd71eec95dd037fd53064f2d36e7427ac2568be9dcd055",
+      "bytes": 210388
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/convoy-generated-18.png",
+      "sha256": "2f64c52c50c9b1133e08870ce4e2019e91904e0afc1690540838bcf0ebf94426",
+      "bytes": 198641
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/convoy-generated-96.png",
+      "sha256": "5270d8609eda2d36c4d55c21610ba5b77d6d6f47fb64179992f20133b4337b80",
+      "bytes": 199381
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/report.json",
+      "sha256": "998fec586d2578cce24000cca4d9c42f9ace142e04156e184ff989350ce23eff",
+      "bytes": 71973
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/played-front-with-reserved-second-leg.json",
+      "sha256": "abb052be354e819327e7dfd736d02002a4c271c199f68df78b77731c6f92c51d",
+      "bytes": 27718
+    },
+    {
+      "file": "docs/qa/v105-clan-convoy/unit-tests.log",
+      "sha256": "94709e7737ccf2ebe53da893a4a7426c203b593a041bfd0b8f22f3e6bf210ac1",
+      "bytes": 4510
+    }
+  ]
+}

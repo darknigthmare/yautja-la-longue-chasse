@@ -10,7 +10,7 @@ import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -18,7 +18,7 @@ function liveLiftOrPollingCallback(environment, name = 'poll') {
   const visit = node => {
     if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
-    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104'].includes(name)
+    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105'].includes(name)
       && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
@@ -49,7 +49,7 @@ function liveSprintHandler(kind, environment) {
 }
 
 function fixture() {
-  const frames = animationFrameFixture(), events = [], cartographySamples = [];
+  const frames = animationFrameFixture(), events = [], cartographySamples = [], cartographySamplesV105 = [];
   const owner = "2026-10-07T12:00:00.000Z";
   const pad = { connected: true, id: "virtual-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const world = {}, outside = {}, dialog = {};
@@ -68,12 +68,21 @@ function fixture() {
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
     cartographyWritePausedRefV104: { current: false },
+    cartographyWritePausedRefV105: { current: false },
+    cartographyDraftRefV105: { current: city.defaultHomeworldCartographyV105(owner) },
     cartographyDraftRefV104: { current: city.defaultHomeworldCartographyV104(owner) },
     progressRef: { current: { visitedDistrictIds: [] } },
     sampleCartographyWalkV104(ledger, before, after, seconds, context) {
       cartographySamples.push({ before: { ...before }, after: { ...after }, seconds });
       return city.sampleCartographyWalkV104(ledger, before, after, seconds, context);
     },
+    sampleCartographyWalkV105(ledger, before, after, seconds, context) {
+      cartographySamplesV105.push({ before: { ...before }, after: { ...after }, seconds });
+      return city.sampleCartographyWalkV105(ledger, before, after, seconds, context);
+    },
+    submitCartographyV105() { throw new Error('No active V105 receipt in these declared world input cases'); },
+    setCartographyMessageV105() { throw new Error('A dormant V105 receipt cannot award a checkpoint'); },
+    cartographyWriteRefusedV105() { throw new Error('A dormant V105 receipt cannot attempt a durable write'); },
     submitCartographyV104() { throw new Error('No active cartography receipt in these declared world input cases'); },
     onProgress() { throw new Error('A dormant cartography receipt cannot write campaign progress'); },
     setCartographyMessageV104() { throw new Error('A dormant cartography receipt cannot award a checkpoint'); },
@@ -108,14 +117,14 @@ function fixture() {
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
   env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
-  for (const name of ['cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104']) env[name] = liveLiftOrPollingCallback(env, name);
+  for (const name of ['cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
   liveLiftOrPollingCallback(env, 'liftHydration')();
   const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = (count = 1) => { assert.ok(frames.size, 'an active browser frame exists'); frames.tick(count); };
   const release = () => { pad.axes = [0, 0]; for (const button of pad.buttons) button.pressed = false; tick(); };
   render();
-  return { env, pad, tick, release, render, events, world, outside, dialog, choices, cartographySamples };
+  return { env, pad, tick, release, render, events, world, outside, dialog, choices, cartographySamples, cartographySamplesV105 };
 }
 
 test('the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock', () => {
@@ -131,6 +140,21 @@ test('the live V104 cartography hook samples resolved movement while dormant, an
   assert.equal(f.cartographySamples.length, samples, 'the blocked motor cannot sample movement');
   f.env.cartographyWritePausedRefV104.current = false; f.tick(3);
   assert(f.env.actorRef.current.x > before.x, 'successful write recovery restores the existing motor');
+});
+
+test('the live V105 cartography hook stays dormant and its refused write freezes the physical city', () => {
+  const f = fixture(), ledger = f.env.cartographyDraftRefV105.current;
+  f.release(); f.pad.axes[0] = 1; f.tick(3);
+  assert(f.cartographySamplesV105.some(({ before, after }) => after.x > before.x));
+  assert.equal(f.env.cartographyDraftRefV105.current, ledger);
+  assert.equal(ledger.receipt, null);
+  const before = { ...f.env.actorRef.current }, clock = f.env.cityClockV68.current, samples = f.cartographySamplesV105.length;
+  f.env.cartographyWritePausedRefV105.current = true; f.tick(12);
+  assert.deepEqual(f.env.actorRef.current, before);
+  assert.equal(f.env.cityClockV68.current, clock);
+  assert.equal(f.cartographySamplesV105.length, samples);
+  f.env.cartographyWritePausedRefV105.current = false; f.tick(3);
+  assert(f.env.actorRef.current.x > before.x);
 });
 
 test("held stick and A on first focus cannot move or open a dialogue until a neutral frame", () => {

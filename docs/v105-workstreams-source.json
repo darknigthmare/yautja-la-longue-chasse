@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "release": "V105",
+  "asOf": "2026-10-23",
+  "baseline": {
+    "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+    "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa"
+  },
+  "baselineFreeze": "FROZEN",
+  "runtimeModules": [
+    {
+      "id": "pitBindings",
+      "path": "app/game/pitWorkbookRegistryV105.ts"
+    },
+    {
+      "id": "pitCombatV105",
+      "path": "app/game/systems/pitWorkbookCombatV105.ts"
+    },
+    {
+      "id": "pitEngine",
+      "path": "app/game/systems/pitCombat.ts"
+    },
+    {
+      "id": "homeworldLookout",
+      "path": "app/game/systems/homeworldCartographyDefinitionV105.ts"
+    },
+    {
+      "id": "clanConvoy",
+      "path": "app/game/systems/clanWarConvoyRouteV105.ts"
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "PIT-V105-SOURCE-LINKS",
+      "domain": "The Pit",
+      "title": "Feral et Scar : matrice source et raccords jouables ciblés",
+      "source": "V54 / extraction V56 ; 26 actions par personnage, campagnes et contraintes de variantes distinctes",
+      "implementation": [
+        "app/game/data/pitWorkbookScopeV105.json",
+        "app/game/systems/pitWorkbookMovesV105.ts",
+        "app/game/systems/pitWorkbookCombatV105.ts",
+        "app/game/pitWorkbookRegistryV105.ts",
+        "app/game/systems/pitCombat.ts",
+        "app/game/systems/pitReplay.ts",
+        "app/game/systems/pitTraining.ts",
+        "app/game/systems/pitLifecyclePresentationV93.ts",
+        "app/game/systems/pitRoundPresentation.ts",
+        "app/game/systems/pitWorkbookPresentationClockV105.ts",
+        "app/game/pitCombatBitmapArt.ts",
+        "app/game/pitSpriteSheetAnimation.ts",
+        "app/game/hunterSpriteMotion.ts",
+        "app/game/PitCanvas.tsx",
+        "app/game/PitCanvas.module.css",
+        "app/game/PitWorkbookAnimationViewerV100.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "BODY_COMMAND_MECHANICS_PRESENTATION_TARGETS",
+      "runtime": "Recette workbook-v105 V13 explicite : 7 nouveaux gestes BODY, 38 clips de phases, 10 présentations et 20 clips ; 18 normales V104 héritées distinctes. Entrées adaptées accessibles, source des notations conservée. Aucun nouveau pixel.",
+      "tests": "PASS : régressions moteur, replays, entrées et horloges consignées dans le résumé global ; groupes de tests se recouvrant, sans addition comme cas uniques. Recettes V11/V12 conservées, portée source des kits ouverte.",
+      "browser": "PASS_CIBLE_PRODUCTION : 288 contrôles, 37 captures ouvertes ; build p-YXoE3t9Mm35taH6ftqf, runtime ec66e7dc05b774473c63b9d44de450fa6276da6b.",
+      "proof": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-pit-workbook-validation.json",
+          "sha256": "5565cef439fb2d94a4de626fca6ebdbb00da761f7cf573fbc491db1743140af4"
+        }
+      ],
+      "remaining": "17 actions sans liaison source : 4 projections, 5 spéciaux à entités, 2 supers, 6 conclusions avec partenaire. Inventaire persistant, motions 236/623/22 complètes, campagnes et variantes ouverts. EQUIP reste un geste sans inventaire ; Scar S4 reste un contre de contact frontal sans reflet de projectile."
+    },
+    {
+      "id": "HOMEWORLD-V105-HIGH-POINT",
+      "domain": "Homeworld",
+      "title": "Cartographe : observation depuis un point haut, option A",
+      "source": "D6-W-PNJ-ROLE-12 ; Choix et actions V6!A806:I806 ; option B historique conservée",
+      "implementation": [
+        "app/game/systems/homeworldCartographyDefinitionV105.ts",
+        "app/game/systems/homeworldCartographyLedgerV105.ts",
+        "app/game/systems/homeworldCartographyV105.ts",
+        "app/game/HomeworldCartographyV105.tsx",
+        "app/game/HomeworldCartographyV104.tsx",
+        "app/game/HomeworldHub.tsx",
+        "app/game/HomeworldWorldSceneV77.tsx",
+        "app/game/systems/homeworld.ts",
+        "app/game/save.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "OPTION_A_PHYSICAL_LOOKOUT",
+      "runtime": "Option A physique : marche du pupitre au viaduc existant, escalier public vers +1, deux objets connus comparés sur place, observation datée conservée, descente et retour ; reçus A/B indépendants, reprise et refus d’écriture contrôlés.",
+      "tests": "PASS : 50 cas sur le runtime final, dont 10 cartographie V105, 14 cartographie V104 et 26 intégration des entrées ; refus d’écriture et régression du focus couverts.",
+      "browser": "PASS_CIBLE_PRODUCTION : 52 contrôles, 9 captures ouvertes ; build p-YXoE3t9Mm35taH6ftqf, runtime ec66e7dc05b774473c63b9d44de450fa6276da6b.",
+      "proof": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-homeworld-cartography-validation.json",
+          "sha256": "471ac3c7d51aa48662f0dad6eca00c9f6d7d5c52f20a3723f2156a11530e2150"
+        }
+      ],
+      "remaining": "Ouverture V6 évoquant une crête non jouée ; viaduc existant déclaré comme adaptation. Deux objets déjà connus seulement : aucun quartier inconnu, récompense, doublage nouveau ou campagne complète déduits."
+    },
+    {
+      "id": "CLANS-V105-CONVOY-ROUTE",
+      "domain": "Guerre de clans",
+      "title": "Route logistique à plusieurs étapes",
+      "source": "Règles de conquête : CON-R04 C9:H9, CON-R10 C15:H15, CON-R11 C16:H16",
+      "implementation": [
+        "app/game/systems/clanWarConvoyRouteV105.ts",
+        "app/game/systems/clanWarConvoyStateV105.ts",
+        "app/game/systems/clanWarV85.ts",
+        "app/game/ClanWarConvoyRouteV105.tsx",
+        "app/game/ClanWarConvoyRouteV105.module.css",
+        "app/game/ClanWarAtlasV95.tsx",
+        "app/game/ClanWarAtlasV95.module.css",
+        "app/game/ClanWarPanelV85.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "validationScope": "MULTI_STEP_PHYSICAL_CONVOY_ROUTE",
+      "runtime": "Route BFS réelle sur dépôts contrôlés, 1 à 8 porteurs identifiés, mêmes lots, un lien et un créneau logistique par tour ; contrôle/stock/porteurs revalidés, pauses, checkpoint atomique, marge de fin et retrait. Front V2 opt-in, export/import avec aperçu, confirmation, révision et reload ; atlas coloré avec motifs et légende.",
+      "tests": "PASS : 16 cas métier/garnison ; mêmes SHA Clans que leur exécution avant le correctif Homeworld, réutilisation explicitement justifiée par le rapport. 30 mondes, 27 formats et 60 empreintes legacy contrôlés ; recette navigateur finale rejouée sur le build commun.",
+      "browser": "PASS_CIBLE_PRODUCTION : 33 contrôles, 5 captures ouvertes ; build p-YXoE3t9Mm35taH6ftqf, runtime ec66e7dc05b774473c63b9d44de450fa6276da6b.",
+      "proof": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-clan-convoy-validation.json",
+          "sha256": "5987f582dacbde9c81856d3ca32a08843d28b371d7b172efea7238f6d44baffe"
+        }
+      ],
+      "remaining": "Les six ouvrages, leurs navires, montures, sons, énergie et duels ne sont pas convertis en Risk par ce lot."
+    }
+  ],
+  "validations": [
+    {
+      "id": "PIT-V105-SOURCE-LINKS-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Recette workbook-v105 V13 explicite : 7 nouveaux gestes BODY, 38 clips de phases, 10 présentations et 20 clips ; 18 normales V104 héritées distinctes. Entrées adaptées accessibles, source des notations conservée. Aucun nouveau pixel.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=p-YXoE3t9Mm35taH6ftqf YAUTJA_PIT_WORKBOOK_QA_MODE=production node scripts/qa-pit-workbook-v105.mjs",
+      "evidence": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-pit-workbook-validation.json",
+          "sha256": "5565cef439fb2d94a4de626fca6ebdbb00da761f7cf573fbc491db1743140af4"
+        }
+      ],
+      "limit": "17 actions sans liaison source : 4 projections, 5 spéciaux à entités, 2 supers, 6 conclusions avec partenaire. Inventaire persistant, motions 236/623/22 complètes, campagnes et variantes ouverts. EQUIP reste un geste sans inventaire ; Scar S4 reste un contre de contact frontal sans reflet de projectile."
+    },
+    {
+      "id": "HOMEWORLD-V105-HIGH-POINT-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Option A physique : marche du pupitre au viaduc existant, escalier public vers +1, deux objets connus comparés sur place, observation datée conservée, descente et retour ; reçus A/B indépendants, reprise et refus d’écriture contrôlés.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=p-YXoE3t9Mm35taH6ftqf node scripts/qa-homeworld-cartography-v105.mjs",
+      "evidence": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-homeworld-cartography-validation.json",
+          "sha256": "471ac3c7d51aa48662f0dad6eca00c9f6d7d5c52f20a3723f2156a11530e2150"
+        }
+      ],
+      "limit": "Ouverture V6 évoquant une crête non jouée ; viaduc existant déclaré comme adaptation. Deux objets déjà connus seulement : aucun quartier inconnu, récompense, doublage nouveau ou campagne complète déduits."
+    },
+    {
+      "id": "CLANS-V105-CONVOY-ROUTE-PREUVE-FINALE",
+      "status": "PASS_CIBLE",
+      "scope": "Route BFS réelle sur dépôts contrôlés, 1 à 8 porteurs identifiés, mêmes lots, un lien et un créneau logistique par tour ; contrôle/stock/porteurs revalidés, pauses, checkpoint atomique, marge de fin et retrait. Front V2 opt-in, export/import avec aperçu, confirmation, révision et reload ; atlas coloré avec motifs et légende.",
+      "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=p-YXoE3t9Mm35taH6ftqf YAUTJA_CONVOY_V105_QA_MODE=production node scripts/qa-clan-convoy-v105.mjs",
+      "evidence": [
+        {
+          "path": "docs/v105-validation-summary.json",
+          "sha256": "23936b4aab0e88659f38ce833fe333d58239690c711b2dc4df89b46fb28bf05e"
+        },
+        {
+          "path": "docs/v105-clan-convoy-validation.json",
+          "sha256": "5987f582dacbde9c81856d3ca32a08843d28b371d7b172efea7238f6d44baffe"
+        }
+      ],
+      "limit": "Les six ouvrages, leurs navires, montures, sons, énergie et duels ne sont pas convertis en Risk par ce lot."
+    }
+  ],
+  "limits": [
+    "Les 39 feuilles V104 et leurs parties historiques sont conservées octet par octet ; seules quatre métadonnées d’assemblage sont étendues.",
+    "La présence d’un fichier, d’un nom de test ou d’une capture ne crée aucun PASS. Chaque validation finale exige une portée limitée et des preuves explicitement exécutées et épinglées.",
+    "52 actions BODY et 104 directions natives ne signifient pas 52 mécaniques de duel terminées, ni deux personnages complets.",
+    "Les corps des projections et finishers avec partenaire peint ne sont pas admis au duel direct comme une victime synchronisée.",
+    "Campagnes, variantes, entités et contraintes d’équipement restent distinctes des admissions BODY.",
+    "Les 30 planètes historiques et 27 formats V103 sont hérités ; les six ouvrages et le reste de la Preserve 4/80 secteurs, 8/100 combattants restent ouverts.",
+    "Les originaux privés V3/V6/V54 restent absents ; les extractions épinglées ne recréent pas leurs classeurs.",
+    "Les contrôles ZIP/XML et les caches de formules n’exécutent ni Excel natif ni son moteur de calcul."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/v105-runtime-freeze.json",
+    "sha256": "6aa777392037d3534181aaceef466f810d686d30dbd8f07319f2556e6a431917"
+  }
+}

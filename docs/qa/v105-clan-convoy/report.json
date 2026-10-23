@@ -1,0 +1,2622 @@
+{
+  "version": 105,
+  "contentVersion": "V105",
+  "buildId": "p-YXoE3t9Mm35taH6ftqf",
+  "servedBuilds": [
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "p-YXoE3t9Mm35taH6ftqf",
+      "foundInHtml": true
+    }
+  ],
+  "status": "PASS",
+  "failure": null,
+  "mode": "production",
+  "baseUrl": "http://127.0.0.1:3101",
+  "at": "2026-10-23T01:38:11.148Z",
+  "sourceBefore": [
+    {
+      "file": "app/game/ClanWarPanelV85.tsx",
+      "sha256": "da367e1935dd056c281d623dc151fb008b2e81fb4f884dd1f2f237f48d9dd16a"
+    },
+    {
+      "file": "app/game/ClanWarAtlasV95.tsx",
+      "sha256": "647a05fabb9e35b8a837243a49371c7af430ef284c6ee12e943470baaa25050b"
+    },
+    {
+      "file": "app/game/ClanWarAtlasV95.module.css",
+      "sha256": "55e85b2fb428a1d6629a0d2a5a05ce2e3f730c71e37caddfa50c8011c776a53b"
+    },
+    {
+      "file": "app/game/ClanWarConvoyRouteV105.tsx",
+      "sha256": "159aeba3e04f5f0e22d98ffc51a6ddd0dd6068688cef7497af5855957e7f770d"
+    },
+    {
+      "file": "app/game/ClanWarConvoyRouteV105.module.css",
+      "sha256": "0367dc5967bff95d14be4c5f969e07a858ca244af6cb1d7626b8f00e28e42254"
+    },
+    {
+      "file": "app/game/systems/clanWarV85.ts",
+      "sha256": "6d4bc53158c43373926035eb46c184d1ef1fc7bba13b8f8fa7e5782462e135d0"
+    },
+    {
+      "file": "app/game/systems/clanWarConvoyStateV105.ts",
+      "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+    },
+    {
+      "file": "app/game/systems/clanWarConvoyRouteV105.ts",
+      "sha256": "68ff12a17b74e5859aaa51a9a75872041bb4abf5c9f4d4b70d2c63fa57fd7b03"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/ClanWarPanelV85.tsx",
+      "sha256": "da367e1935dd056c281d623dc151fb008b2e81fb4f884dd1f2f237f48d9dd16a"
+    },
+    {
+      "file": "app/game/ClanWarAtlasV95.tsx",
+      "sha256": "647a05fabb9e35b8a837243a49371c7af430ef284c6ee12e943470baaa25050b"
+    },
+    {
+      "file": "app/game/ClanWarAtlasV95.module.css",
+      "sha256": "55e85b2fb428a1d6629a0d2a5a05ce2e3f730c71e37caddfa50c8011c776a53b"
+    },
+    {
+      "file": "app/game/ClanWarConvoyRouteV105.tsx",
+      "sha256": "159aeba3e04f5f0e22d98ffc51a6ddd0dd6068688cef7497af5855957e7f770d"
+    },
+    {
+      "file": "app/game/ClanWarConvoyRouteV105.module.css",
+      "sha256": "0367dc5967bff95d14be4c5f969e07a858ca244af6cb1d7626b8f00e28e42254"
+    },
+    {
+      "file": "app/game/systems/clanWarV85.ts",
+      "sha256": "6d4bc53158c43373926035eb46c184d1ef1fc7bba13b8f8fa7e5782462e135d0"
+    },
+    {
+      "file": "app/game/systems/clanWarConvoyStateV105.ts",
+      "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+    },
+    {
+      "file": "app/game/systems/clanWarConvoyRouteV105.ts",
+      "sha256": "68ff12a17b74e5859aaa51a9a75872041bb4abf5c9f4d4b70d2c63fa57fd7b03"
+    }
+  ],
+  "sourceUnchanged": true,
+  "checks": [
+    {
+      "name": "Served HTML carries the expected production build ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Native preparation displays the real three-edge path and minimum duration",
+      "status": "PASS"
+    },
+    {
+      "name": "Planning preserves local stores and existing roster with no queued order",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal atlas draws three itinerary links with a distinct next step",
+      "status": "PASS"
+    },
+    {
+      "name": "Itinerary has a text legend, step inspection buttons and no surface replacement",
+      "status": "PASS"
+    },
+    {
+      "name": "First leg reserves the existing logistics slot with exactly P07/P08 and M1",
+      "status": "PASS"
+    },
+    {
+      "name": "A reserved itinerary cannot reserve a second edge in the same turn",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload preserves the pending manifest, orders, budgets and complete itinerary",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 1: physical delivery matches ordinary one-leg stock accounting",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 1: every real person matches the ordinary one-leg resolver",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the first edge is delivered, with no automatic next order",
+      "status": "PASS"
+    },
+    {
+      "name": "Downloaded front contains the exact pending second leg and delivered checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 2: physical delivery matches ordinary one-leg stock accounting",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 2: every real person matches the ordinary one-leg resolver",
+      "status": "PASS"
+    },
+    {
+      "name": "Import preview explains the current/replacement turns and cannot mutate the live front",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling an import preserves the current stock and position bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Confirmed import restores the complete snapshot without adding its cargo to existing stores",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 2: physical delivery matches ordinary one-leg stock accounting",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 2: every real person matches the ordinary one-leg resolver",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 3: physical delivery matches ordinary one-leg stock accounting",
+      "status": "PASS"
+    },
+    {
+      "name": "Turn 3: every real person matches the ordinary one-leg resolver",
+      "status": "PASS"
+    },
+    {
+      "name": "The full native journey delivers three actual steps and the same manifest at T05",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile convoy/transfer controls fit the viewport with 44px action targets",
+      "status": "PASS"
+    },
+    {
+      "name": "Served HTML carries the expected production build ID",
+      "status": "PASS"
+    },
+    {
+      "name": "A declared lost-control fixture pauses at the named downstream depot",
+      "status": "PASS"
+    },
+    {
+      "name": "Atlas marks the actual lost-control link and keeps the completed link",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload retains a paused itinerary without repairing its controller or inventing a reroute",
+      "status": "PASS"
+    },
+    {
+      "name": "Served HTML carries the expected production build ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Future archive visibly blocks route and front-import mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Attempting an ordinary turn cannot overwrite the unsupported archive bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Generated 18-territory native front displays and reserves its own graph route",
+      "status": "PASS"
+    },
+    {
+      "name": "Generated 96-territory native front displays and reserves its own graph route",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser runtime errors were observed",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    "convoy-planned-desktop.png",
+    "convoy-delivered-mobile.png",
+    "convoy-control-loss-desktop.png",
+    "convoy-generated-18.png",
+    "convoy-generated-96.png"
+  ],
+  "evidence": [
+    {
+      "file": "convoy-planned-desktop.png",
+      "sha256": "5a858d3b54f22a0da03d3c13f782f18a59cb8a044a85ab1762129421e2820f1b",
+      "bytes": 828872
+    },
+    {
+      "file": "convoy-delivered-mobile.png",
+      "sha256": "755e7065fb4f7a69c1a7c57b5f51a35d7191d986d0a5b881ecc7e88020d36a59",
+      "bytes": 137591
+    },
+    {
+      "file": "convoy-control-loss-desktop.png",
+      "sha256": "9a73877ba45f8cb82ebd71eec95dd037fd53064f2d36e7427ac2568be9dcd055",
+      "bytes": 210388
+    },
+    {
+      "file": "convoy-generated-18.png",
+      "sha256": "2f64c52c50c9b1133e08870ce4e2019e91904e0afc1690540838bcf0ebf94426",
+      "bytes": 198641
+    },
+    {
+      "file": "convoy-generated-96.png",
+      "sha256": "5270d8609eda2d36c4d55c21610ba5b77d6d6f47fb64179992f20133b4337b80",
+      "bytes": 199381
+    },
+    {
+      "file": "played-front-with-reserved-second-leg.json",
+      "sha256": "abb052be354e819327e7dfd736d02002a4c271c199f68df78b77731c6f92c51d",
+      "bytes": 27718
+    }
+  ],
+  "fixtures": [
+    {
+      "type": "played-journey-start",
+      "description": "Existing V104 Korthas people/stocks only; existing opponents retain garrison positions to isolate deliveries.",
+      "initial": {
+        "version": 1,
+        "context": "free",
+        "turn": 1,
+        "seed": 10537,
+        "revision": 0,
+        "combatants": [
+          {
+            "id": "P01",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T01",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P02",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P03",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P04",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T04",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P05",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T05",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P06",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T06",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P08",
+            "unitTypeId": "RTS-U02",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 90,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P09",
+            "unitTypeId": "RTS-U13",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P10",
+            "unitTypeId": "RTS-U15",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P11",
+            "unitTypeId": "RTS-U18",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P13",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P14",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P15",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P16",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P17",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P18",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T01",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F01",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F02",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F03",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F04",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F05",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T10",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F06",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T10",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F08",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F09",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F10",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F11",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F13",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F14",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F15",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F16",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F17",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F18",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T17",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T17",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T18",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T18",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F25",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T25",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F26",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T26",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F27",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T27",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F28",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T27",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F29",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T28",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F30",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T29",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F31",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T30",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F32",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T30",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T07",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T09",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T09",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T11",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T11",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T12",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T19",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T20",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T21",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T22",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T23",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T24",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T31",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T31",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T32",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T32",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T33",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T33",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T34",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T34",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T35",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T35",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T36",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T36",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          }
+        ],
+        "territories": {
+          "CON-T01": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T02": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T03": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T04": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T05": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T06": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T07": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T08": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T09": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T10": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T11": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T12": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T13": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T14": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T15": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T16": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T17": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T18": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T19": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T20": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T21": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T22": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T23": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T24": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T25": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T26": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T27": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T28": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T29": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T30": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T31": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T32": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T33": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T34": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T35": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T36": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          }
+        },
+        "stocks": {
+          "CON-T01": {
+            "s": 10,
+            "m": 4,
+            "i": 2
+          },
+          "CON-T02": {
+            "s": 8,
+            "m": 4,
+            "i": 3
+          },
+          "CON-T03": {
+            "s": 8,
+            "m": 6,
+            "i": 3
+          },
+          "CON-T04": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T05": {
+            "s": 0,
+            "m": 0,
+            "i": 1
+          },
+          "CON-T06": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T07": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T08": {
+            "s": 16,
+            "m": 4,
+            "i": 2
+          },
+          "CON-T09": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T10": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T11": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T12": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T13": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T14": {
+            "s": 12,
+            "m": 3,
+            "i": 1
+          },
+          "CON-T15": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T16": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T17": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T18": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T19": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T20": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T21": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T22": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T23": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T24": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T25": {
+            "s": 12,
+            "m": 3,
+            "i": 1
+          },
+          "CON-T26": {
+            "s": 0,
+            "m": 0,
+            "i": 1
+          },
+          "CON-T27": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T28": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T29": {
+            "s": 2,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T30": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T31": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T32": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T33": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T34": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T35": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T36": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          }
+        },
+        "orders": [],
+        "observations": [],
+        "appliedResultIds": [],
+        "reports": [
+          {
+            "id": "turn-1-report-1",
+            "turn": 1,
+            "text": "Exercice autonome de Korthas. Les 24 Pxx suivent les positions de la feuille Récit des douze tours ; ils ne sont pas des recrues de votre campagne.",
+            "sourceIds": [
+              "CON-TURN01",
+              "WAR-R02"
+            ]
+          },
+          {
+            "id": "turn-1-report-2",
+            "turn": 1,
+            "text": "CON-F01 · recettes localisées : S+2, M+2, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          },
+          {
+            "id": "turn-1-report-3",
+            "turn": 1,
+            "text": "CON-F02 · recettes localisées : S+2, M+0, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          }
+        ],
+        "totalStability": 0,
+        "regionStability": 0,
+        "corridorStability": 0,
+        "completedObjectives": [],
+        "stableRegionId": null,
+        "heldStocks": []
+      }
+    },
+    {
+      "type": "control-loss",
+      "description": "Existing downstream T05 controller changed to F02 after the first real delivery; no extra stock or actor.",
+      "initial": {
+        "version": 2,
+        "context": "free",
+        "turn": 2,
+        "seed": 10537,
+        "revision": 3,
+        "combatants": [
+          {
+            "id": "P01",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T01",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P02",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P03",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P04",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T04",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P05",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T05",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P06",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T06",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P08",
+            "unitTypeId": "RTS-U02",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 90,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P09",
+            "unitTypeId": "RTS-U13",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P10",
+            "unitTypeId": "RTS-U15",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P11",
+            "unitTypeId": "RTS-U18",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P13",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P14",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P15",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P16",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P17",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T02",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P18",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T03",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "P24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F01",
+            "territoryId": "CON-T01",
+            "status": "fit",
+            "xp": 0,
+            "garrison": false,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F01",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F02",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F03",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F04",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T08",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F05",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T10",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F06",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T10",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F08",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F09",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F10",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T13",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F11",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F13",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F14",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T14",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F15",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F16",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F17",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T15",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F18",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T16",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T17",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T17",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T18",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T18",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F25",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T25",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F26",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T26",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F27",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T27",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F28",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T27",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F29",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T28",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F30",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T29",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F31",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T30",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "F32",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F02",
+            "territoryId": "CON-T30",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T07",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T07",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T09",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T09",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T11",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T11",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T12",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T12",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T19",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T19",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T20",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T20",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T21",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T21",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T22",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T22",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T23",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T23",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T24",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T24",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T31",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T31",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T32",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T32",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T33",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T33",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T34",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T34",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T35",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T35",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          },
+          {
+            "id": "N-CON-T36",
+            "unitTypeId": "RTS-U01",
+            "factionId": "CON-F03",
+            "territoryId": "CON-T36",
+            "status": "fit",
+            "xp": 0,
+            "garrison": true,
+            "trainingUntilTurn": null
+          }
+        ],
+        "territories": {
+          "CON-T01": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T02": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T03": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T04": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T05": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T06": {
+            "controller": "CON-F01",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T07": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T08": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T09": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T10": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T11": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T12": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T13": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T14": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T15": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T16": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T17": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T18": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T19": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T20": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T21": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T22": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T23": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T24": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T25": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T26": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T27": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T28": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T29": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T30": {
+            "controller": "CON-F02",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T31": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T32": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T33": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T34": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T35": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          },
+          "CON-T36": {
+            "controller": "CON-F03",
+            "installationIntact": true,
+            "transitUntilTurn": null
+          }
+        },
+        "stocks": {
+          "CON-T01": {
+            "s": 9,
+            "m": 4,
+            "i": 2
+          },
+          "CON-T02": {
+            "s": 8,
+            "m": 3,
+            "i": 3
+          },
+          "CON-T03": {
+            "s": 8,
+            "m": 9,
+            "i": 3
+          },
+          "CON-T04": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T05": {
+            "s": 0,
+            "m": 0,
+            "i": 2
+          },
+          "CON-T06": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T07": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T08": {
+            "s": 10,
+            "m": 4,
+            "i": 2
+          },
+          "CON-T09": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T10": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T11": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T12": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T13": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T14": {
+            "s": 12,
+            "m": 3,
+            "i": 1
+          },
+          "CON-T15": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T16": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T17": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T18": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T19": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T20": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T21": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T22": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T23": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T24": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T25": {
+            "s": 12,
+            "m": 3,
+            "i": 1
+          },
+          "CON-T26": {
+            "s": 0,
+            "m": 0,
+            "i": 2
+          },
+          "CON-T27": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T28": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T29": {
+            "s": 4,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T30": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T31": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T32": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T33": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T34": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T35": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          },
+          "CON-T36": {
+            "s": 0,
+            "m": 0,
+            "i": 0
+          }
+        },
+        "orders": [],
+        "observations": [],
+        "appliedResultIds": [
+          "free-10537-t1-r2"
+        ],
+        "reports": [
+          {
+            "id": "turn-1-report-1",
+            "turn": 1,
+            "text": "Exercice autonome de Korthas. Les 24 Pxx suivent les positions de la feuille Récit des douze tours ; ils ne sont pas des recrues de votre campagne.",
+            "sourceIds": [
+              "CON-TURN01",
+              "WAR-R02"
+            ]
+          },
+          {
+            "id": "turn-1-report-2",
+            "turn": 1,
+            "text": "CON-F01 · recettes localisées : S+2, M+2, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          },
+          {
+            "id": "turn-1-report-3",
+            "turn": 1,
+            "text": "CON-F02 · recettes localisées : S+2, M+0, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          },
+          {
+            "id": "free-10537-t1-r2",
+            "turn": 1,
+            "text": "CON-T02 → CON-T03 : 2 personne(s) déplacée(s), livraison S0/M1/I0.",
+            "sourceIds": [
+              "CON-R04",
+              "CON-R10"
+            ]
+          },
+          {
+            "id": "turn-1-report-5",
+            "turn": 1,
+            "text": "CON-F01 : entretien S3 acquitté.",
+            "sourceIds": [
+              "CON-R13"
+            ]
+          },
+          {
+            "id": "turn-1-report-6",
+            "turn": 1,
+            "text": "CON-F02 : entretien S6 acquitté.",
+            "sourceIds": [
+              "CON-R13"
+            ]
+          },
+          {
+            "id": "turn-2-report-7",
+            "turn": 2,
+            "text": "CON-F01 · recettes localisées : S+2, M+2, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          },
+          {
+            "id": "turn-2-report-8",
+            "turn": 2,
+            "text": "CON-F02 · recettes localisées : S+2, M+0, I+1.",
+            "sourceIds": [
+              "CON-R12"
+            ]
+          }
+        ],
+        "totalStability": 0,
+        "regionStability": 1,
+        "corridorStability": 0,
+        "completedObjectives": [],
+        "stableRegionId": "CON-REG01 Couronne d’Arrivée",
+        "heldStocks": [],
+        "convoyRouteV105": {
+          "id": "convoy-v105-10537-r1",
+          "territoryIds": [
+            "CON-T02",
+            "CON-T03",
+            "CON-T04",
+            "CON-T05"
+          ],
+          "combatantIds": [
+            "P07",
+            "P08"
+          ],
+          "cargo": {
+            "s": 0,
+            "m": 1,
+            "i": 0
+          },
+          "completedOrderIds": [
+            "free-10537-t1-r2"
+          ],
+          "pendingOrderId": null
+        }
+      }
+    },
+    {
+      "type": "future-payload",
+      "description": "Known V105 front with an unsupported payload version3; original formatted bytes must remain protected.",
+      "sha256": "6455af6d9987445df316a1fbb8bf23ef10bbdd2eeb5d87d8e17a3dc761fd3702"
+    },
+    {
+      "type": "generated-18",
+      "description": "Real generated deployment and stocks, existing opponents held in garrison for an isolated first delivery.",
+      "planetId": "proc-v103-2x-001013100011300111100-nf0ef"
+    },
+    {
+      "type": "generated-96",
+      "description": "Real generated deployment and stocks, existing opponents held in garrison for an isolated first delivery.",
+      "planetId": "proc-v103-2x-541013100011300111100-tu3rk"
+    }
+  ],
+  "errors": []
+}
