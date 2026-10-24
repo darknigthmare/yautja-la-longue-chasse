@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- preserve the native supplied character plates. */
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ComponentProps } from 'react';
 import PitCanvas from './PitCanvas';
-import PitWorkbookCampaignV107 from './PitWorkbookCampaignV107';
+import PitWorkbookCampaignV107 from './PitWorkbookCampaignV108';
 import PitExtensionPortrait from './PitExtensionPortrait';
 import PitStagePreview, { type PitStagePreviewStatus } from './PitStagePreview';
 import { getPitCombatBitmapArtDefinition } from './pitCombatBitmapArt';
