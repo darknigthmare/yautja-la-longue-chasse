@@ -87,7 +87,8 @@ test('an empty selection abandons the pending read without restoring the old dra
 });
 
 test('native file cancellation invalidates a pending read, including a later rejection',async()=>{
- const ui=component();ui.render();const before=ui.checkpoint(),read=deferred(),pending=ui.selectFile(pendingFile(read));assert.equal(typeof ui.fileInput().props.onCancel,'function');ui.fileInput().props.onCancel();ui.render();read.reject(new Error('abandoned file'));await assert.doesNotReject(pending);ui.render();assert.equal(ui.importInput().props.value,'');assert.equal(ui.importInput().props.disabled,false);ui.click(importLabel);assert.deepEqual(ui.checkpoint(),before);
+ const ui=component();ui.render();const before=ui.checkpoint(),read=deferred(),pending=ui.selectFile(pendingFile(read)),input=new EventTarget();assert.equal(typeof ui.fileInput().props.ref,'function');const cleanup=ui.fileInput().props.ref(input);assert.equal(typeof cleanup,'function');input.dispatchEvent(new Event('cancel'));ui.render();read.reject(new Error('abandoned file'));await assert.doesNotReject(pending);ui.render();assert.equal(ui.importInput().props.value,'');assert.equal(ui.importInput().props.disabled,false);ui.click(importLabel);assert.deepEqual(ui.checkpoint(),before);
+ cleanup();const manual=archive('W3-S10').json;ui.editImport(manual);input.dispatchEvent(new Event('cancel'));ui.render();assert.equal(ui.importInput().props.value,manual,'ref cleanup removes the native listener');
 });
 
 test('a queued manual edit cancels an outstanding read and preserves the latest typed draft',async()=>{
