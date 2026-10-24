@@ -13,7 +13,8 @@ interface ObservationV108 {encounterId:string;frame:number;phase:string;winnerId
 export interface PitWorkbookCampaignRunV108 extends previous.PitWorkbookCampaignRunV107 {
   continuityV108: {version:1;carry:PitWorkbookCarryV108;observation:ObservationV108|null;
     inspected:{stageIndex:number;actionId:string;facing:'right'|'left';nativeTicks:40}|null;
-    victories:Array<{stageIndex:number;resultId:string;carry:PitWorkbookCarryV108}>};
+    victories:Array<{stageIndex:number;resultId:string;carry:PitWorkbookCarryV108}>;
+    replays?:Array<{stageIndex:number;discardedResultId:string;nextAttempt:number;sourceCell:string;restoredCarry:PitWorkbookCarryV108}>};
 }
 export interface PitWorkbookCampaignFieldV108 extends previous.PitWorkbookCampaignFieldV107 {
   inspectionV108:{nativeTicks:number;facing:1|-1;startedFrame:number|null};
@@ -23,7 +24,7 @@ const identity = (run:Pick<PitWorkbookCampaignRunV108,'runId'|'fighterId'>) => (
 
 export function createPitWorkbookCampaignRunV108(fighterId:PitWorkbookCampaignFighterV108,owner:string,runId:string):PitWorkbookCampaignRunV108 {
   const run=previous.createPitWorkbookCampaignRunV107(fighterId,owner,runId);
-  return {...run,continuityV108:{version:1,carry:{health:PIT_FIGHTERS[fighterId].maxHealth,traque:0,device:{...identity(run),status:'ready'}},observation:null,inspected:null,victories:[]}};
+  return {...run,continuityV108:{version:1,carry:{health:PIT_FIGHTERS[fighterId].maxHealth,traque:0,device:{...identity(run),status:'ready'}},observation:null,inspected:null,victories:[],replays:[]}};
 }
 export function getPitWorkbookCampaignEncounterV108(run:PitWorkbookCampaignRunV108) {
   const encounter=previous.getPitWorkbookCampaignEncounterV107(run);
@@ -42,10 +43,15 @@ export function preparePitWorkbookCampaignCombatV108(combat:PitCombatState,carry
 }
 export function beginPitWorkbookCampaignStageV108(run:PitWorkbookCampaignRunV108):PitWorkbookCampaignRunV108 {
   const next=previous.beginPitWorkbookCampaignStageV107(run);
-  return next===run?run:{...next,continuityV108:{...run.continuityV108,observation:null}};
+  return next===run?run:{...next,counters:next.stageIndex===6?retainedPassageCounters(run):next.counters,continuityV108:{...run.continuityV108,observation:null}};
+}
+function retainedPassageCounters(run:PitWorkbookCampaignRunV108):number {
+  const victory=run.continuityV108.victories.find(entry=>entry.stageIndex===5),receipt=victory&&run.receipts.find(entry=>entry.id===victory.resultId&&entry.kind==='victory');
+  return receipt?Math.min(3,run.receipts.filter(entry=>entry.stageIndex===5&&entry.attempt===receipt.attempt&&entry.counterEvidence).length):0;
 }
 export function advancePitWorkbookCampaignV108(run:PitWorkbookCampaignRunV108):PitWorkbookCampaignRunV108 {
-  return previous.advancePitWorkbookCampaignV107(run) as PitWorkbookCampaignRunV108;
+  const next=previous.advancePitWorkbookCampaignV107(run) as PitWorkbookCampaignRunV108;
+  return next.stageIndex===6?{...next,counters:retainedPassageCounters(next)}:next;
 }
 export function observePitWorkbookCampaignCombatV108(run:PitWorkbookCampaignRunV108,combat:Readonly<PitCombatState>):PitWorkbookCampaignRunV108 {
   const encounter=getPitWorkbookCampaignEncounterV108(run),hero=combat.fighters[0];
@@ -107,7 +113,25 @@ export function applyPitWorkbookCampaignFieldV108(run:PitWorkbookCampaignRunV108
     lastMessage:field.goal==='inspect-kit'?'Arme sortie, contrôlée puis rangée pendant le cycle natif. Les ressources et le dispositif restent inchangés.':next.lastMessage};
 }
 export function checkpointPitWorkbookCampaignV108(run:PitWorkbookCampaignRunV108):PitWorkbookCampaignRunV108 {
-  return {...previous.checkpointPitWorkbookCampaignV107(run),continuityV108:{...run.continuityV108,observation:null}};
+  const next=previous.checkpointPitWorkbookCampaignV107(run);
+  return {...next,counters:next.stageIndex===6?retainedPassageCounters(run):next.counters,continuityV108:{...run.continuityV108,observation:null}};
+}
+export function canReplayPitWorkbookCampaignVictoryV108(run:PitWorkbookCampaignRunV108):boolean {
+  return ['briefing','retry','stage-result'].includes(run.phase)&&run.objects.beacon.state!=='secured'&&Boolean(run.continuityV108.victories.at(-1));
+}
+/** Voluntary replay rescinds the earned victory and every later field receipt.
+ * Its original entry kit is restored under the same object IDs. It grants no
+ * recovery while keeping a victory, reward or consumed device in parallel. */
+export function replayPitWorkbookCampaignVictoryV108(run:PitWorkbookCampaignRunV108):PitWorkbookCampaignRunV108 {
+  if(!canReplayPitWorkbookCampaignVictoryV108(run))return run;
+  const last=run.continuityV108.victories.at(-1)!,victories=run.continuityV108.victories.slice(0,-1);
+  const carry=copy(victories.at(-1)?.carry??createPitWorkbookCampaignRunV108(run.fighterId,run.owner,run.runId).continuityV108.carry);
+  const stage=getPitWorkbookCampaignRouteV108(run.fighterId)!.stages[last.stageIndex];
+  return {...run,stageIndex:last.stageIndex,phase:'briefing',counters:last.stageIndex===6?retainedPassageCounters(run):0,lastObservedFrame:0,shieldBlock:null,
+    completedStages:run.completedStages.filter(index=>index<last.stageIndex),receipts:run.receipts.filter(receipt=>receipt.stageIndex<last.stageIndex),
+    continuityV108:{...run.continuityV108,carry,victories,observation:null,inspected:last.stageIndex<=3?null:run.continuityV108.inspected,
+      replays:[...(run.continuityV108.replays??[]),{stageIndex:last.stageIndex,discardedResultId:last.resultId,nextAttempt:run.attempt+1,sourceCell:stage.sheet+'!'+stage.cell,restoredCarry:copy(carry)}].slice(-16)},
+    lastMessage:'Rejeu volontaire : cette victoire et les étapes suivantes sont retirées. Le même kit d’entrée est restauré ; aucun résultat ni récompense n’est conservé en parallèle.'};
 }
 export const pitWorkbookCampaignStorageKeyV108=(owner:string,fighter:PitWorkbookCampaignFighterV108)=>'yautja-pit-workbook-exercise-v108:'+encodeURIComponent(owner)+':'+fighter;
 function validCarry(value:unknown,fighterId:string):value is PitWorkbookCarryV108 {
@@ -128,5 +152,6 @@ export function deserializePitWorkbookCampaignV108(text:string,owner:string):Pit
   if(JSON.stringify(last)!==JSON.stringify(c.carry))return null;
   if(c.inspected&&(c.inspected.stageIndex!==3||c.inspected.nativeTicks!==40||c.inspected.actionId!==(base.fighterId==='scar'?'M_F003_EQUIP':'M_F006_EQUIP')||!['left','right'].includes(c.inspected.facing)||!base.completedStages.includes(3)))return null;
   if(base.completedStages.includes(3)&&!c.inspected)return null;
-  return {...base,continuityV108:{...c,observation:null}};
+  if(c.replays!==undefined&&(!Array.isArray(c.replays)||c.replays.length>16||c.replays.some(entry=>!entry||![1,2,5,6].includes(entry.stageIndex)||typeof entry.discardedResultId!=='string'||!entry.discardedResultId||!Number.isSafeInteger(entry.nextAttempt)||entry.nextAttempt<1||entry.nextAttempt>base.attempt+1||entry.sourceCell!=='08_CAMPAGNES!'+getPitWorkbookCampaignRouteV108(base.fighterId)!.stages[entry.stageIndex].cell||!validCarry(entry.restoredCarry,base.fighterId)||entry.restoredCarry.device.id!==expected.id)))return null;
+  return {...base,counters:base.stageIndex===6?retainedPassageCounters(base):base.counters,continuityV108:{...c,observation:null}};
 }

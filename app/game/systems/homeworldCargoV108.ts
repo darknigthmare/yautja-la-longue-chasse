@@ -32,7 +32,13 @@ const segment=(l:HomeworldCargoV108|undefined,a:CargoPointV108,c:CargoPointV108,
 };
 export function stepHomeworldCargoActorV108(actor:HomeworldActor,input:HomeworldInput,seconds:number,level:HomeworldLevelV77,ledger?:HomeworldCargoV108){
  if(level!=='0')return stepHomeworldCivicActorV80(actor,input,seconds,level);
- return stepHomeworldActorOnFloor(actor,input,seconds,p=>walkable(ledger,p),()=>({...actor,vx:0,vy:0}));
+ const next=stepHomeworldActorOnFloor(actor,input,seconds,p=>walkable(ledger,p),()=>({...actor,vx:0,vy:0}));
+ if(segment(ledger,actor,next))return next;
+ // The native endpoint test can straddle a convex load corner in a diagonal.
+ // Keep the actual motor proposal on a continuously supported axis instead
+ // of accepting a step that the durable walk sampler would have to reject.
+ for(const p of[{x:next.x,y:actor.y},{x:actor.x,y:next.y}])if(segment(ledger,actor,p))return{...next,...p,vx:seconds>0?(p.x-actor.x)/seconds:0,vy:seconds>0?(p.y-actor.y)/seconds:0};
+ return{...actor,vx:0,vy:0};
 }
 export const cargoWalkableV108=(l:HomeworldCargoV108|undefined,c:CargoContextV108)=>c.ownerCreatedAt===c.currentOwnerCreatedAt&&c.active&&c.levelId==='0'&&!c.interiorId&&!c.inTransit&&c.visitedDistrictIds.includes('port')&&[c.actor.x,c.actor.y].every(Number.isFinite)&&walkable(l,c.actor);
 const ground=(l:HomeworldCargoV108|undefined,c:CargoContextV108)=>cargoWalkableV108(l,c)&&!homeworldResidentOccludedV100('0',c.actor);

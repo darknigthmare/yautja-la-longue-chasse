@@ -96,7 +96,7 @@ export function applyLogisticsV108(current:LogisticsStateV108,action:LogisticsCo
   const p={x:round(a.x+action.dx),y:round(a.y+action.dy)},mount=s.mounts.find(m=>m.leader===a.id);
   if(a.layer==='orbit'?!near(p,{x:930,y:60},45):!clear(a,p,mount?24:9))return no(mount?'Le gabarit de la monture exige le détour large.':'Eau, obstacle ou limite : détour physique requis.');
   a.x=p.x;a.y=p.y;if(mount){mount.x=p.x;mount.y=p.y;mount.fatigue=Math.min(100,mount.fatigue+1);}
-  for(const w of s.works)if(actorId(w.id)===a.id&&w.staffed&&!near(a,CLAN_LOGISTICS_SITES_V108[w.id]))w.staffed=false;
+  for(const w of s.works)if(actorId(w.id)===a.id&&w.staffed&&!near(a,CLAN_LOGISTICS_SITES_V108[w.id])){w.staffed=false;if(w.id==='W3-S13')s.screen=false;}
   if(s.duel.phase==='active'&&((['operator:W3-S14','rival'].includes(a.id)&&!near(a,CLAN_LOGISTICS_SITES_V108['W3-S14'],65))||(a.id==='carrier'&&near(a,CLAN_LOGISTICS_SITES_V108['W3-S14'],65)))){s.duel.phase='interrupted';s.duel.signatures=[];}
   message='Même équipe déplacée avec sa charge.';
  }else if(action.kind==='hire'||action.kind==='contract'||action.kind==='release'){

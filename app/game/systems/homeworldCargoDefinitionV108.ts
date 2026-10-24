@@ -8,7 +8,7 @@ export const HOMEWORLD_CARGO_V108={
  cart:{id:'cargo-cart-v108',artId:'port-cargo-sorting-cart',x:6780,y:5420,height:115},
  racks:[
   {id:'wide',label:'Rack large',x:6960,y:5370,stand:{x:6960,y:5460},artId:'cargo-rack-right',scale:.6,capacity:92},
-  {id:'narrow',label:'Rack étroit',x:6600,y:5370,stand:{x:6600,y:5460},artId:'cargo-rack-right',scale:.6,capacity:54},
+  {id:'narrow',label:'Rack étroit',x:6600,y:5370,stand:{x:6600,y:5460},artId:'cargo-rack-right',scale:.42,capacity:54},
  ],
  lots:[
   {id:'wide',label:'Lot large',ownerId:'local-quay-return-team',origin:{x:6790,y:5480},stand:{x:6790,y:5540},height:54,width:80,halfDepth:27},

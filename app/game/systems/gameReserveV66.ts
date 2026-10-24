@@ -162,7 +162,11 @@ export function gameReserveV108Behavior(state: GameReserveV66State, index: numbe
   const worker = allies.some(ally => gameReserveV66People(state).find(definition => definition.id === ally.id)?.role === "technician" || ally.carrying);
   if (ship.parts < 1 || !worker) return null;
   if ("behavior" in person && person.behavior === "ramp-defender") return { kind: "ramp-defender", destination: shipX - 115 };
-  if ("behavior" in person && person.behavior === "cover-observer" && "observationX" in person) return { kind: "cover-observer", destination: person.observationX };
+  if ("behavior" in person && person.behavior === "cover-observer") {
+    // Reassigned survivors guard the remaining aircraft, never their departed hull.
+    const post = GAME_RESERVE_EXPEDITION_V108_PEOPLE[human.team * 4 + 2];
+    if ("observationX" in post) return { kind: "cover-observer", destination: post.observationX };
+  }
   return null;
 }
 /** Reject unsupported and contradictory saves; no implicit reset and no free inventory or canonical rewards. */

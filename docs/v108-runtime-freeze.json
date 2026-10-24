@@ -1,7 +1,7 @@
 {
   "scope": "All current app sources and production configuration, with immutable V107 public inputs and the explicit V108 public asset inventory. Historical proof files are excluded.",
-  "files": 1234,
-  "bytes": 733605234,
+  "files": 1236,
+  "bytes": 733628229,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -90,8 +90,8 @@
     },
     {
       "path": "app/game/ClanLogisticsV108.tsx",
-      "sha256": "d2ac123f741e755bb46e6726b2f477d5f630ba1c58c5dc77bd9c96e598e7f5de",
-      "bytes": 28815
+      "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049",
+      "bytes": 29904
     },
     {
       "path": "app/game/ClanWarAssaultV106.module.css",
@@ -430,13 +430,13 @@
     },
     {
       "path": "app/game/HomeworldCargoV108.module.css",
-      "sha256": "f3ee6e5be247570731571b0d05306189bfb71a299116a1f43449110f0a4f7737",
-      "bytes": 1756
+      "sha256": "87f585c4c8eeb4b79527a85212bba55e4d2d5325ade7784e94da1e5f7a5633e8",
+      "bytes": 1815
     },
     {
       "path": "app/game/HomeworldCargoV108.tsx",
-      "sha256": "15cb6f3fd17d83ed0e4f307c8851014ca01e963d6fc773e9258ca92178186f05",
-      "bytes": 10330
+      "sha256": "69d34cbda6bd5e01e64c11f0fb72f64a4fee5666132fbd3d62f8233ec9e44a72",
+      "bytes": 10718
     },
     {
       "path": "app/game/HomeworldCargoWorldV108.tsx",
@@ -555,8 +555,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "sha256": "3eb1234012abd24cf4058fc6e14e07f44716252ce6c50903e609dd5d738a0106",
-      "bytes": 141043
+      "sha256": "ebd88b99af4b51f2013f03ecfeeb917ab8ba188559c7446ad4af9f0d934af8b1",
+      "bytes": 144451
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -950,8 +950,8 @@
     },
     {
       "path": "app/game/PitWorkbookCampaignV108.tsx",
-      "sha256": "037893e3d03a1a6a66743b65aa80b39f5f543780612e24fe0ce34131b5d4ba44",
-      "bytes": 21161
+      "sha256": "b3d9b3286a3ebf332d00d75a369104de4a206d4d6f769926e7a7f649491acc63",
+      "bytes": 25123
     },
     {
       "path": "app/game/PitWorkbookConclusionHudV107.tsx",
@@ -2440,8 +2440,8 @@
     },
     {
       "path": "app/game/systems/clanLogisticsV108.ts",
-      "sha256": "3b963af7bd94adc82eeae4f8af3c6a5c92a23eb7f6412596514901451c52f563",
-      "bytes": 31885
+      "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd",
+      "bytes": 31921
     },
     {
       "path": "app/game/systems/clanWarAssaultV106.ts",
@@ -2715,8 +2715,8 @@
     },
     {
       "path": "app/game/systems/gameReserveV66.ts",
-      "sha256": "fd46608ac211c0318bc56b049fb26ea9fcc1543c844edb29d93112d7bb0d0ed2",
-      "bytes": 51968
+      "sha256": "a1f7a4b5cc2f157ee204215bb8d479dfdeb84419882685a0d5e1977f83ed8588",
+      "bytes": 52135
     },
     {
       "path": "app/game/systems/glassDesert.ts",
@@ -2844,9 +2844,14 @@
       "bytes": 2260
     },
     {
+      "path": "app/game/systems/homeworldCargoArrivalV108.ts",
+      "sha256": "7719dd88541ed4a15d5ea20cbdea909ab0378c69c6321bcf1f463d3a14105ef8",
+      "bytes": 6751
+    },
+    {
       "path": "app/game/systems/homeworldCargoDefinitionV108.ts",
-      "sha256": "da7cb432a6adffa0f494608a027c20060c56fa2a579b0f49ef0a9ae9a1d64d71",
-      "bytes": 2146
+      "sha256": "ff8b6ef6a2dfd416ed039f16d1601b051f46a508487481e47a46e80e387c3d32",
+      "bytes": 2147
     },
     {
       "path": "app/game/systems/homeworldCargoLedgerV108.ts",
@@ -2860,8 +2865,8 @@
     },
     {
       "path": "app/game/systems/homeworldCargoV108.ts",
-      "sha256": "b4081ff0f60a47abb810582c9444f5478079b75380f4f9c7d1da92d2c9dda155",
-      "bytes": 15361
+      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b",
+      "bytes": 15850
     },
     {
       "path": "app/game/systems/homeworldCartographyDefinitionV104.ts",
@@ -3850,8 +3855,8 @@
     },
     {
       "path": "app/game/systems/pitWorkbookCampaignV108.ts",
-      "sha256": "cd33760e09fe6c33cbf8c411521b8ae1fba58638e5ea71144cf5cba4ebd1a9ba",
-      "bytes": 13230
+      "sha256": "db728311ea135c367349a2267bc61d9ed78ef8f7aba44820d1497a153caea754",
+      "bytes": 16489
     },
     {
       "path": "app/game/systems/pitWorkbookCombatV105.ts",
@@ -3907,6 +3912,11 @@
       "path": "app/game/systems/pitWorkbookProjectileSourceV106.ts",
       "sha256": "7966090dc4e86739c943ca63c3a7f84be09cf38389163f5270c776c0e8aa20c3",
       "bytes": 5760
+    },
+    {
+      "path": "app/game/systems/pitWorkbookSaveSessionV108.ts",
+      "sha256": "e7c85a9b1b0be5684b5a8c08991f0de18721edd7fe4f1af7b2134e5658821c2c",
+      "bytes": 3386
     },
     {
       "path": "app/game/systems/pitWorkbookSuperSourceV106.ts",
