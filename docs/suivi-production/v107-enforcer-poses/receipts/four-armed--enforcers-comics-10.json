@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "yautja-imagegen-receipt-v107-1",
+  "id": "four-armed--enforcers-comics-10",
+  "method": "builtin-imagegen",
+  "tool": "image_gen.imagegen",
+  "nativeOutputId": "exec-d151076f-87f0-4816-bb2e-3d62acd45367",
+  "nativeSourceName": "exec-d151076f-87f0-4816-bb2e-3d62acd45367.png",
+  "repoPngPath": "public/game/production/enforcer-alternatives-v107/four-armed/enforcers-comics-10.png",
+  "stableIdentityReused": true,
+  "newStableIdentity": false,
+  "role": "alternative-pose",
+  "sha256": "05f25e61fead9d935f054a3d1b9615124d910dd8ecadffbd0489a14f5713d571",
+  "bytes": 2157742,
+  "width": 1024,
+  "height": 1536,
+  "transparentBackgroundRequested": true,
+  "promptExact": "Anatomy correction of this one adult original project Enforcer sprite. It must have EXACTLY FOUR organic arms and EXACTLY FOUR hands, symmetrically TWO arms on the character's left and TWO on the character's right, four total shoulder origins. The current figure has an EXTRA fifth arm/fist on the viewer-left near waist height: REMOVE that entire extra outermost viewer-left mid-height arm and fist, leaving only two left arms. Redraw the upper torso cleanly so each remaining arm has one uninterrupted anatomical chain shoulder/elbow/wrist/hand and none is duplicated. Upper left and upper right hands hold the small tracker together at chest height (two hands only). Lower left and lower right arms hang at their respective sides and have one open relaxed hand each (two hands only). Total clearly countable hands: four. No detached finger cluster, no extra closed fist by the left hip, no hidden extra arm behind another arm. Preserve one head, one neck, broad muscular torso, one pelvis, two plantigrade legs, full-body silver partial Enforcer armor and blue accents, organic mottled skin and the original confident three-quarter pose. Keep full head-to-soles figure and generous blank margins. Transparent RGBA1024x1536 portrait, no text, no backdrop, no ground.",
+  "submittedReferences": [
+    {
+      "path": "art-source/v107/enforcer-poses/four-armed--enforcers-comics-10-first-attempt.png",
+      "sha256": "100bfc88b000881994b66e5073e3a38f8dbb36a786a2b477688eac8b03dbb973",
+      "bytes": 2042264
+    }
+  ],
+  "generatedAtUtc": null,
+  "receiptCreatedAtUtc": "2026-10-23T21:00:39.924Z",
+  "generationTimeMeaning": "The tool supplies no exact generation timestamp; receiptCreatedAtUtc records retrieval, not model generation.",
+  "originalBytesCopied": true,
+  "attempts": [
+    {
+      "nativeOutputId": "exec-e1c66efe-ead1-4256-94ae-6c875c4436a0",
+      "nativeSourceName": "exec-e1c66efe-ead1-4256-94ae-6c875c4436a0.png",
+      "promptExact": "Create one NEW independent mature adult full-body painted game character asset, Enforcers variant10 Chef de poursuite. Portrait PNG1024x1536, genuine transparent RGBA background. One individual only, head to soles fully visible, no scene, floor, glow outside the body, text, labels or border. Leave at least160px empty above the highest point and below the feet, and100px at the sides; the whole figure occupies at most78 percent of image height. Detailed polished illustrated game sprite, crisp readable silhouette, textured skin, worn silver partial comic-Enforcer armor, deep-blue rank accents and visible net textile. No complete military chestplate. Confident stance with slight torso rotation, distinct commanding posture and small tracking equipment held below chest level, both hands and feet readable. This is an original project variant, not a certified film reconstruction. Follow the group anatomy below over generic Predator anatomy. Never substitute a different lineage. A costume guide does not define the anatomy. Covered feet use continuous closed toe-box footwear; do not invent a biological toe count under boots.\n\nStable project identity: four-armed--enforcers-comics-10. Group: Lignée des Quatre-Bras. Role/name: Chef de poursuite. Life stage: adult.\n\nExact morphology direction: Quatre bras organiques : deux paires, avec des implantations distinctes sur un thorax élargi ; un seul cou et une seule tête. Visage large à front bosselé et rainure centrale, quatre mandibules puissantes autour d’une bouche dentée ; dreadlocks sombres. Masse musculaire importante, peau claire brun rosé mouchetée ; plaques simples portées aux épaules et avant-bras. Deux jambes dans le projet. Les pieds ne sont pas entièrement visibles dans les panels retenus : l’appui plantigrade choisi est une hypothèse de design, pas une certitude tirée de ces images. Exactement quatre bras organiques, quatre implantations et quatre mains visibles ou clairement raccordées, un seul bassin et deux jambes. Ne pas cacher la seconde paire derrière une cape.\n\nSkin: ardoise brune. Armor: argent patiné. Accent: bleu profond. Face: Masqué. Pose: présence assurée, légère rotation du thorax.",
+      "sha256": "100bfc88b000881994b66e5073e3a38f8dbb36a786a2b477688eac8b03dbb973",
+      "bytes": 2042264,
+      "accepted": false,
+      "reason": "Premier résultat refusé : cinq bras visibles au lieu de quatre."
+    }
+  ],
+  "visualInspection": {
+    "accepted": true,
+    "notes": "Reprise inspectée : quatre bras et quatre mains distincts, deux mains centrales tenant le dispositif et deux bras externes abaissés, une tête, un bassin et deux jambes. Silhouette entière.",
+    "limitations": [
+      "Variation originale du projet, une pose fixe ; masque et protections ne permettent pas de certifier tous les détails anatomiques 1:1."
+    ]
+  }
+}

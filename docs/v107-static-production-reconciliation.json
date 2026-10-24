@@ -1,0 +1,1494 @@
+{
+  "schemaVersion": 1,
+  "release": "V107",
+  "status": "PASS_STATIC_PRODUCTS_RECONCILED_IN_BRANCH",
+  "sourceCommit": "d99604e18d4b185b57cc59cfbde0420b95acd0fd",
+  "integrationScope": "PR15 integrated into the current local branch; source workbooks retain their original historical main/branch statuses. This is no V107 gameplay/browser promotion.",
+  "historicalTests": {
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/production-history-pr15-v107.test.mjs tests/enforcer-production-v613.test.mjs tests/enforcer-production-v614.test.mjs tests/npc-production-v615.test.mjs",
+    "originalAssertionsExecuted": 22,
+    "adaptersAndIsolationChecksPassed": 5,
+    "log": {
+      "path": "docs/qa/v107-static-reconciliation/historical-production-tests.log",
+      "sha256": "762220340a7901c490228444377115ff387cdceeee0279842c02ad888590e0c2",
+      "bytes": 8027
+    },
+    "currentRuntimeCovered": false
+  },
+  "facts": {
+    "priorPR15EnforcerPngs": 18,
+    "priorPR15SucklingPngs": 18,
+    "trackedV106PngRowsReconciled": 18,
+    "newNativeBodyDrawings": 0,
+    "newAlternativeStaticPoses": 18,
+    "newIndependentDeviceSprites": 1,
+    "newStableIdentities": 0,
+    "newStableIdentitiesScope": "Alternative art poses only; no claim about the original adults added to Preserve.",
+    "missingV613Receipts": 21,
+    "recoveredV610Pngs": 0,
+    "originalWorkbooksPreserved": 17
+  },
+  "productions": [
+    {
+      "id": "super-predators--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/super-predators/enforcers-comics-10.png",
+      "sha256": "e4864991813c696073af6ff99827a09674f44fd7e33b45d43c983fdac351bbde",
+      "bytes": 2426915,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json",
+      "receiptSha256": "b764a6f88f1850c32d6449b5bccd6a6d32030ce90b6702390a8e0d3ee18fae78",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "feral--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/feral/enforcers-comics-10.png",
+      "sha256": "963d12d600d361cc91c58b26341e5a3475bd7d6eacd127214136dfc6ac7a9a51",
+      "bytes": 2300062,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json",
+      "receiptSha256": "9818d8e1323a20db84e41bf2cb4004f97ed1d082a6fa16c4315902e3a2355341",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "augmentes-assassin--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/augmentes-assassin/enforcers-comics-10.png",
+      "sha256": "d2d5d931f620ce8ebc6caae4b60b4b470bbc6d7caaa17819707c949b755ee0b0",
+      "bytes": 2642412,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "receiptSha256": "60127ecca8d7794c1fb2eaa67afad3cae98784d143b69bd1fe8c0b236e56f808",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "spiked-tail--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/spiked-tail/enforcers-comics-10.png",
+      "sha256": "5c1a1b85b126758c287dcf7621db4f19ca252fdc8d5f5beef8825d752552ceef",
+      "bytes": 2711634,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/spiked-tail--enforcers-comics-10.json",
+      "receiptSha256": "d4d1d6beb2e7acec9499b1eea1a8a1464cb747699145faaeca09c9bc50f1d425",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "hornhead--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/hornhead/enforcers-comics-10.png",
+      "sha256": "2d823ba6a7441fb1a18a0db6a5133f74a4c4844e0b6244e077c2f5e041219d6b",
+      "bytes": 2583178,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/hornhead--enforcers-comics-10.json",
+      "receiptSha256": "a6e95940cf7d505abe8aadc7e52a6414ddd9ab50919b074d468a9c417be805bd",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "saar-keth--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/saar-keth/enforcers-comics-10.png",
+      "sha256": "f87731360352cc221e08b8a5a4cfd30892d849c71e1f93db46b6fa2dd50a7bb8",
+      "bytes": 2402781,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/saar-keth--enforcers-comics-10.json",
+      "receiptSha256": "da9bd58b449f6defbe7a337739679a66958c47c1ac9e941f8b52dfbe7744ffa9",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "ul-khar--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/ul-khar/enforcers-comics-10.png",
+      "sha256": "59489e2908804e1f766209bc3973dd0baac56016b9ad23b6e02ebcd5bf857893",
+      "bytes": 2758416,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json",
+      "receiptSha256": "d81d9255b6f8efc3b31d5d1c9a8da4ca9e93bbf3034a25bb2ebfe7f7ec5a2ba8",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "sha-rhess--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/sha-rhess/enforcers-comics-10.png",
+      "sha256": "33482a17f2c03cdf794e33cc8a3accdcc41f85098fce0fdd20d27d6d199290d9",
+      "bytes": 2512711,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/sha-rhess--enforcers-comics-10.json",
+      "receiptSha256": "3c346301b5b092bf17db5b5b871d32d950f4b603b2878b792be049f761874823",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "kaal-or--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/kaal-or/enforcers-comics-10.png",
+      "sha256": "8a0fcb05e18737ce93e044503bb3ce6b174338c1ffbb3657e9ccb9edb5ff382e",
+      "bytes": 2674201,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/kaal-or--enforcers-comics-10.json",
+      "receiptSha256": "323cced5ba7370bd78183b319c201de6195b77b8a1c0059ef42a0c1a1a67e2e8",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "vaal-tir--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/vaal-tir/enforcers-comics-10.png",
+      "sha256": "9f712c1abd4ffeb4bbbd784edb0e9d2ff31095319625365a018ec47f2206ec01",
+      "bytes": 2200233,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/vaal-tir--enforcers-comics-10.json",
+      "receiptSha256": "dc2d15b7b1575d750e094f921043925505265f134d82bd5d22d0a6394c914a6a",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "city-hunter--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/city-hunter/enforcers-comics-10.png",
+      "sha256": "7a20ef4dd3eba9a18d593e38838f0e463342463c28e0ea9f6ac3267692d8f7de",
+      "bytes": 2295942,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/city-hunter--enforcers-comics-10.json",
+      "receiptSha256": "b8ff78154b58369e297c998b5704616c31ab297f6d3f0e287ea8d7bf8ef98efe",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "pilot-kok--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/pilot-kok/enforcers-comics-10.png",
+      "sha256": "95bbabb980d30b4f67aaee2da17e077a15013c3ad2383e69420a58e248b64a3b",
+      "bytes": 2462529,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/pilot-kok--enforcers-comics-10.json",
+      "receiptSha256": "9305e1cd174da16e5a3962918dc04c18e9f871f9c576e336e62845ffd5000f4f",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "oni-kok--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/oni-kok/enforcers-comics-10.png",
+      "sha256": "7b79fd3d2823f6d9adfb0e9e9c6b3802dfcf719e815d5186c50181565679a9a7",
+      "bytes": 2322966,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json",
+      "receiptSha256": "e9ea69eaf7a129986b24f505a2e6cf5d64ddafde67b5005f8ae77ae24e521aad",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "grendel-kok--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/grendel-kok/enforcers-comics-10.png",
+      "sha256": "a435e8a0a5f35f8056c13d7c9d3d1fce3b7478c5ebb9d800d60484f564eda4d1",
+      "bytes": 2715180,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json",
+      "receiptSha256": "1092253655cae8700f6ac1d0f359a010e8095e2a4e24d00aa18c7e67894b7296",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "alpha--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/alpha/enforcers-comics-10.png",
+      "sha256": "0d5b13729fd51384d82996482e1d9d6864fda7054790d55857fc18afdb021338",
+      "bytes": 2641158,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/alpha--enforcers-comics-10.json",
+      "receiptSha256": "e1b07b298411202d3ef63ac75b0f2390224111705be15fa6b6be22644e559da0",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "bionic--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/bionic/enforcers-comics-10.png",
+      "sha256": "42aa084be55359bb9004e185c5bf265cebf3d30e002b5614040478374f4c23a1",
+      "bytes": 2381604,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/bionic--enforcers-comics-10.json",
+      "receiptSha256": "a3c1feaa6ba96afb16af05400fa3704cb65dcbc212cbbc90181cf71960a8c963",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "four-armed--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/four-armed/enforcers-comics-10.png",
+      "sha256": "926013b4e17ef7192bc90fe33ae5300ee5057061372b63c11ab106beec0f8e93",
+      "bytes": 2643448,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/four-armed--enforcers-comics-10.json",
+      "receiptSha256": "876209573865b745342b6fc198407b735a4bc002425b47590ca48e58cfc75706",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "human-accepted--enforcers-comics-10",
+      "lot": "V614",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": true,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/enforcers-v614/human-accepted/enforcers-comics-10.png",
+      "sha256": "eec79ea7d34bdf6ce15e993739d28d2ecbc204489746bc54c5ef068a229c8026",
+      "bytes": 2207675,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v614/receipts/human-accepted--enforcers-comics-10.json",
+      "receiptSha256": "497fa61c4efcc5bf292b5918cd1001f4ec202631c2b84a0b4d228486a6e7320b",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "super-predators--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/super-predators/sucklings-02.png",
+      "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+      "bytes": 2800726,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+      "receiptSha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "feral--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/feral/sucklings-02.png",
+      "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+      "bytes": 2635249,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+      "receiptSha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "augmentes-assassin--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/augmentes-assassin/sucklings-02.png",
+      "sha256": "722ef2fc2f6221db3209fd2c2efe78329d9328f383bbf7c4d7f2924a22e20f20",
+      "bytes": 2841140,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/augmentes-assassin--sucklings-02.json",
+      "receiptSha256": "2ed3421ee4ec417d66d1d32981026daabb345304d4aa1d1f0cabb78a8fcb4dd4",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "spiked-tail--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/spiked-tail/sucklings-02.png",
+      "sha256": "d1be198957c5a93bfd5233bbadd148a5e943b6768be7a8dfcbab114897f41c60",
+      "bytes": 2768799,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/spiked-tail--sucklings-02.json",
+      "receiptSha256": "50bd7cae790e9bb72ead11c5dbed066398cf9077b2ddfca1014b2db04d65c471",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "hornhead--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/hornhead/sucklings-02.png",
+      "sha256": "cc31013695a22c31bbfd1bfa7032d04cf029bba66e64ff8428269e5b18ad1198",
+      "bytes": 2427570,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/hornhead--sucklings-02.json",
+      "receiptSha256": "e06637484c04bed7bdef4450783b2d5bcc6434a2fa3bae317bac43c5e24a74aa",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "saar-keth--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/saar-keth/sucklings-02.png",
+      "sha256": "88787cdf5daeb77c019c991ba063be23c3abb2f587e5c768e187c8e68d74196a",
+      "bytes": 2676828,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/saar-keth--sucklings-02.json",
+      "receiptSha256": "6c3217aec07e399c8e3f44e595ca60aeebecbfcf63b7fab0bf1dfdbdbf8011c6",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "ul-khar--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/ul-khar/sucklings-02.png",
+      "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+      "bytes": 2719776,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/ul-khar--sucklings-02.json",
+      "receiptSha256": "4803a1b6ea54519a3102d73f27c3e2dd26a0601f76c460837d906db9b7638a44",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "sha-rhess--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/sha-rhess/sucklings-02.png",
+      "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+      "bytes": 2054398,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/sha-rhess--sucklings-02.json",
+      "receiptSha256": "5cefcb7160139cc2bc7bf786582cb9ccfbc8629b00f72cadc3183c32b18ad95d",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "kaal-or--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/kaal-or/sucklings-02.png",
+      "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+      "bytes": 2412433,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/kaal-or--sucklings-02.json",
+      "receiptSha256": "1004425d305d8753e39f513ebb94a6360559f328121794427f133b90f8ec33eb",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "vaal-tir--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/vaal-tir/sucklings-02.png",
+      "sha256": "d51b18017512fd9df4e7568f5ffba96a67bac68929492f4e9d0f4d28fc4d495e",
+      "bytes": 2569110,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/vaal-tir--sucklings-02.json",
+      "receiptSha256": "cd83736b0c1aa38f0eac4accd02c725543ee753f81976d32a076a75bc283c6c5",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "city-hunter--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/city-hunter/sucklings-02.png",
+      "sha256": "817ba64cadb8e9416458214bd71a5fb0d7c747f2d6060f0d9b7da111b14f74ca",
+      "bytes": 2231875,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/city-hunter--sucklings-02.json",
+      "receiptSha256": "d22002555bf9b8db5923963889de2dabd6b0e40218469aff1e6dc8a6848f1060",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "pilot-kok--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/pilot-kok/sucklings-02.png",
+      "sha256": "260019f33943e2c799a9dd393cde124d97cb6bbb78c91dc6945159eb480e5c3f",
+      "bytes": 2556983,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/pilot-kok--sucklings-02.json",
+      "receiptSha256": "e08588e296274ba7351aba3378992660a35c783374d6f7e7cb1dfe48d6fb36a0",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "oni-kok--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/oni-kok/sucklings-02.png",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "bytes": 2063719,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/oni-kok--sucklings-02.json",
+      "receiptSha256": "38f97fe80879e61c301e5994ae2272c0d18142bf25402481980f7b87f1f1f985",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "grendel-kok--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/grendel-kok/sucklings-02.png",
+      "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+      "bytes": 2154315,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/grendel-kok--sucklings-02.json",
+      "receiptSha256": "7c84d075db1dd7272a137b200e099aa4f1a4560814082e05b7e400a8d71d0ede",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "alpha--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/alpha/sucklings-02.png",
+      "sha256": "ed0c033b711b7082f09f6706ccd7489bba5e9d3d194250dd6f97e9884dd110c8",
+      "bytes": 1571127,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/alpha--sucklings-02.json",
+      "receiptSha256": "e818dc9cb1df74e93dc7ad6a48f39ae4331a13633dffb232866e55cbc473d6ef",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "bionic--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/bionic/sucklings-02.png",
+      "sha256": "e434a2befbad3ea3dd45b960bba197b5024c9e66cf079fce7a913b30b73485a9",
+      "bytes": 2259428,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/bionic--sucklings-02.json",
+      "receiptSha256": "31bbf252442d61cc48033e0c04dabc7de41f210f9da5c1b23e30fe81ba9a4f9c",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "four-armed--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/four-armed/sucklings-02.png",
+      "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+      "bytes": 1622499,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/four-armed--sucklings-02.json",
+      "receiptSha256": "93d87b194b69bc644d9cc9da85c1963d11fd12059543a9dc1e70daeeec05615d",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "id": "human-accepted--sucklings-02",
+      "lot": "V615",
+      "scope": "STATIC_PROJECT_REFERENCE_ONLY",
+      "trackedV106OpenItem": false,
+      "priorSourceStatus": "Pas faite",
+      "status": "PRODUIT_STATIQUE_RECONCILIE",
+      "repoPngPath": "public/game/production/sucklings-v615/human-accepted/sucklings-02.png",
+      "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+      "bytes": 2234289,
+      "width": 1024,
+      "height": 1536,
+      "receiptPath": "docs/suivi-production/v615/receipts/human-accepted--sucklings-02.json",
+      "receiptSha256": "35c17c088803ae9b0333f39d82f686d8ef6ac96207cf9be4a293440861828f86",
+      "animated": false,
+      "newMapPlacement": false,
+      "canonicalFidelityCertified": false
+    }
+  ],
+  "alternativePoses": [
+    {
+      "stableIdentityId": "super-predators--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/super-predators/enforcers-comics-10.png",
+      "sha256": "77637cec9151af56cf42edb5b2dd192090aaa307cdf292dc1e41e7a31fbb5538",
+      "bytes": 2282191,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/super-predators--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "feral--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/feral/enforcers-comics-10.png",
+      "sha256": "8846391e537793cd0a224dd33f87f450b042a89b98127b8beb205c208ebe9884",
+      "bytes": 1724514,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/feral--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "augmentes-assassin--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/augmentes-assassin/enforcers-comics-10.png",
+      "sha256": "632217d99f93735f7b883795b7c37627e5168dde0b4bb14c8c64709f41f793c2",
+      "bytes": 2092039,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "spiked-tail--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/spiked-tail/enforcers-comics-10.png",
+      "sha256": "5cfe9e4fa7a91fcbd903791c469d7c54a3eaeca28113fd1ca16f325dc05ca710",
+      "bytes": 1957213,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/spiked-tail--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "hornhead--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/hornhead/enforcers-comics-10.png",
+      "sha256": "311576cb7e5057f871ab1015634314375a94e4215b20f233131b32cae9b586d5",
+      "bytes": 1672753,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/hornhead--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "saar-keth--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/saar-keth/enforcers-comics-10.png",
+      "sha256": "b56b68281385c48fcc2bd9c46dd75a8f1ece64eb5076427d7c611a8e4ea799db",
+      "bytes": 1813187,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/saar-keth--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "ul-khar--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/ul-khar/enforcers-comics-10.png",
+      "sha256": "e96800e06bd3d8cce97f7a8525d5d84027638bea30a966f4759cdf671c29ae79",
+      "bytes": 1906732,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/ul-khar--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "sha-rhess--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/sha-rhess/enforcers-comics-10.png",
+      "sha256": "ac9ea0cf254f3a8513fdec9e19a35ac3db23a60f6df06ca393ec7bc9534420b0",
+      "bytes": 1856824,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/sha-rhess--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "kaal-or--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/kaal-or/enforcers-comics-10.png",
+      "sha256": "53a50415e2901c58e414c983ab4a9c827674db90f9bb69ebfb0265b9ac54f3dd",
+      "bytes": 2198885,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/kaal-or--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "vaal-tir--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/vaal-tir/enforcers-comics-10.png",
+      "sha256": "400f8b538e1d8edb23cc9c5c39d7c0018fd90d5594e3aabe752619ad0bf40432",
+      "bytes": 1743324,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/vaal-tir--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "city-hunter--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/city-hunter/enforcers-comics-10.png",
+      "sha256": "18aa70e16d311fcba472a3e48cde38584af6e9386c6642140e727600fa5321bb",
+      "bytes": 1774839,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/city-hunter--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "pilot-kok--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/pilot-kok/enforcers-comics-10.png",
+      "sha256": "4bdeebeffdcb11dd1c596cfbf72c859beac92ef009594b88ae744797a725baaf",
+      "bytes": 1870735,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/pilot-kok--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "oni-kok--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/oni-kok/enforcers-comics-10.png",
+      "sha256": "a535ded173d885ec2c9bd7a569de2e2d0b36d41a83224c946ed1c1c9f9937cee",
+      "bytes": 1747626,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/oni-kok--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "grendel-kok--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/grendel-kok/enforcers-comics-10.png",
+      "sha256": "4cf34dd46740bce1a8c509facfaef57a500ba51f9c83a054e3424850afa3e6eb",
+      "bytes": 2438660,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/grendel-kok--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "alpha--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/alpha/enforcers-comics-10.png",
+      "sha256": "bb2b7a7c0a342122d573234b5f3c17a2892d65283b1a65e495ff660bf6ddbf61",
+      "bytes": 1898958,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/alpha--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "bionic--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/bionic/enforcers-comics-10.png",
+      "sha256": "f1eb20b2bd5f94862eff015c10727d9ae0ce82a464f7365621a1a81b2fa57645",
+      "bytes": 1993321,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/bionic--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "four-armed--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/four-armed/enforcers-comics-10.png",
+      "sha256": "05f25e61fead9d935f054a3d1b9615124d910dd8ecadffbd0489a14f5713d571",
+      "bytes": 2157742,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/four-armed--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    },
+    {
+      "stableIdentityId": "human-accepted--enforcers-comics-10",
+      "repoPngPath": "public/game/production/enforcer-alternatives-v107/human-accepted/enforcers-comics-10.png",
+      "sha256": "8e2c5ae5075a1f56fa8e75ef1352a21ff62d5942ef6ee92519529602b391851e",
+      "bytes": 1629737,
+      "receiptPath": "docs/suivi-production/v107-enforcer-poses/receipts/human-accepted--enforcers-comics-10.json",
+      "newIdentity": false,
+      "animated": false,
+      "canonicalFidelityCertified": false
+    }
+  ],
+  "deviceSprite": {
+    "path": "public/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png",
+    "sha256": "95108bf402fe76462b5963939c496531860eda613454a11b6ae52ad042c4052b",
+    "bytes": 981810,
+    "width": 1254,
+    "height": 1254,
+    "scope": "New independent five-bladed sprite created with image_gen using the corrected S2 BODY page as shape reference. The formerly occluded hub is an original adaptation; no native extraction1:1, circular smart-disc substitute, body part, new costume or canon certification is claimed. Rotation in its own plane does not create a second authored facing.",
+    "artSourcePath": "docs/v107-shuriken-art-source.json",
+    "nativeOutputId": "exec-f5c4f8c6-bf65-4b5c-a9b9-ce4d81fab48b",
+    "generationTimestampKnown": false,
+    "mechanicsCertified": false
+  },
+  "inputs": [
+    {
+      "path": "app/game/data/pitWorkbookDeviceAnchorsV107.json",
+      "sha256": "3f49077ad185ba14614b8928742fa9ab0074faa04800d082b7e201863c99cf54",
+      "bytes": 4002
+    },
+    {
+      "path": "docs/qa/v107-static-reconciliation/historical-production-tests.log",
+      "sha256": "762220340a7901c490228444377115ff387cdceeee0279842c02ad888590e0c2",
+      "bytes": 8027
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/data/production-manifest.json",
+      "sha256": "dfe0b881688c0d869f0cb662d0caa5f9b986dbe3980757c2987f18a5985eba4a",
+      "bytes": 164501
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/alpha--enforcers-comics-10.json",
+      "sha256": "0a76c8cadd801b96a537d3049936d22a8862c2527387eb71b072a83308a5f40a",
+      "bytes": 3394
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "sha256": "196b331d794ca27f8f900a4a290e207157b0dfbe3dd8cfc422d05a59e3d219fe",
+      "bytes": 6092
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/bionic--enforcers-comics-10.json",
+      "sha256": "f2f24b1eb0a7221c0bcde2749d9fa76419a7487b59eb7330867364042ab6a346",
+      "bytes": 3261
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/city-hunter--enforcers-comics-10.json",
+      "sha256": "7d63382342213bdd557d813f57e5397ca0f23e59198683fd0e2182ca4b8e9c88",
+      "bytes": 3428
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/feral--enforcers-comics-10.json",
+      "sha256": "2c86938d38d34c5e5094589c99abefb91ba22115e4b0469fc8de6a45cba8ebc2",
+      "bytes": 3771
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/four-armed--enforcers-comics-10.json",
+      "sha256": "5b1ca9c49ddb3594f4cac5bd06cdcae69517fab177d5f02248eb06c84fea5d42",
+      "bytes": 5520
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/grendel-kok--enforcers-comics-10.json",
+      "sha256": "e82d0c54fb4e16529f2da336c1dd7250468d35cff05a4699582638aa0a1320e4",
+      "bytes": 3874
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/hornhead--enforcers-comics-10.json",
+      "sha256": "00ca3b2026f49cbac3eb951e035467af13770bced7153178eae6dcf95dd76a14",
+      "bytes": 3851
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/human-accepted--enforcers-comics-10.json",
+      "sha256": "d0ce00f8409a5aec472e00344acf5b56682b38b6bb9ebdd341afd4856b35bed6",
+      "bytes": 3429
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/kaal-or--enforcers-comics-10.json",
+      "sha256": "3e027203101e79d53904382283cff17c6ac1e461bcfdaa7ff12a1aef7d7fdaac",
+      "bytes": 3812
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/oni-kok--enforcers-comics-10.json",
+      "sha256": "d8eb1bb0055c775dbce8255e555cc3e3722910f912d8f66ae0517b05acfee877",
+      "bytes": 3905
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/pilot-kok--enforcers-comics-10.json",
+      "sha256": "b34c1ed7e9922278f1f6d20a355c316a98dc51919a22d7ce0dca43a20a815ea2",
+      "bytes": 3727
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/saar-keth--enforcers-comics-10.json",
+      "sha256": "b9837ac82c5458ccbc46300c01ac52c3320a249967d434010862e30283901e32",
+      "bytes": 3904
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/sha-rhess--enforcers-comics-10.json",
+      "sha256": "7a6676883dc11ba1e42e5a1209e4d88cb05f56aaee5deb0a8fe8bf1e9db4af8d",
+      "bytes": 3857
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/spiked-tail--enforcers-comics-10.json",
+      "sha256": "cad0f927b638f8fa775c777ef400238880f2fac79b4435fe0cb9bd2d2cc23bbe",
+      "bytes": 4192
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/super-predators--enforcers-comics-10.json",
+      "sha256": "625f116104fbf41f4814600444d8bcf12fcb0267c17c5b2d9d890a463f1b9e93",
+      "bytes": 3344
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/ul-khar--enforcers-comics-10.json",
+      "sha256": "45f72ac7fce5a507bfa5ac7ccdaae937db17cd5a72c78bd4fbd46888accba693",
+      "bytes": 3916
+    },
+    {
+      "path": "docs/suivi-production/v107-enforcer-poses/receipts/vaal-tir--enforcers-comics-10.json",
+      "sha256": "d919e91b058b789968d6bc14ceb379a0b5e5ede1281adb7e8392b1f3e03230ed",
+      "bytes": 3845
+    },
+    {
+      "path": "docs/suivi-production/v613/data/current-master.json.gz",
+      "sha256": "26723ff875d97548d62440b8062aae5e395a9048c3e9d4b1618fbcf87ae85513",
+      "bytes": 396359
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "sha256": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde",
+      "bytes": 622188
+    },
+    {
+      "path": "docs/suivi-production/v614/data/production-manifest.json",
+      "sha256": "c5bb571b38f02d76526de2c98634abcda46fee15541f6ef21b10dc03e223fbcd",
+      "bytes": 424809
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/alpha--enforcers-comics-10.json",
+      "sha256": "e1b07b298411202d3ef63ac75b0f2390224111705be15fa6b6be22644e559da0",
+      "bytes": 13881
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/augmentes-assassin--enforcers-comics-10.json",
+      "sha256": "60127ecca8d7794c1fb2eaa67afad3cae98784d143b69bd1fe8c0b236e56f808",
+      "bytes": 16751
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/bionic--enforcers-comics-10.json",
+      "sha256": "a3c1feaa6ba96afb16af05400fa3704cb65dcbc212cbbc90181cf71960a8c963",
+      "bytes": 16959
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/city-hunter--enforcers-comics-10.json",
+      "sha256": "b8ff78154b58369e297c998b5704616c31ab297f6d3f0e287ea8d7bf8ef98efe",
+      "bytes": 16284
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/feral--enforcers-comics-10.json",
+      "sha256": "9818d8e1323a20db84e41bf2cb4004f97ed1d082a6fa16c4315902e3a2355341",
+      "bytes": 15020
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/four-armed--enforcers-comics-10.json",
+      "sha256": "876209573865b745342b6fc198407b735a4bc002425b47590ca48e58cfc75706",
+      "bytes": 15697
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/grendel-kok--enforcers-comics-10.json",
+      "sha256": "1092253655cae8700f6ac1d0f359a010e8095e2a4e24d00aa18c7e67894b7296",
+      "bytes": 15303
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/hornhead--enforcers-comics-10.json",
+      "sha256": "a6e95940cf7d505abe8aadc7e52a6414ddd9ab50919b074d468a9c417be805bd",
+      "bytes": 15597
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/human-accepted--enforcers-comics-10.json",
+      "sha256": "497fa61c4efcc5bf292b5918cd1001f4ec202631c2b84a0b4d228486a6e7320b",
+      "bytes": 14126
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/kaal-or--enforcers-comics-10.json",
+      "sha256": "323cced5ba7370bd78183b319c201de6195b77b8a1c0059ef42a0c1a1a67e2e8",
+      "bytes": 15304
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/oni-kok--enforcers-comics-10.json",
+      "sha256": "e9ea69eaf7a129986b24f505a2e6cf5d64ddafde67b5005f8ae77ae24e521aad",
+      "bytes": 15302
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/pilot-kok--enforcers-comics-10.json",
+      "sha256": "9305e1cd174da16e5a3962918dc04c18e9f871f9c576e336e62845ffd5000f4f",
+      "bytes": 16257
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/saar-keth--enforcers-comics-10.json",
+      "sha256": "da9bd58b449f6defbe7a337739679a66958c47c1ac9e941f8b52dfbe7744ffa9",
+      "bytes": 14909
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/sha-rhess--enforcers-comics-10.json",
+      "sha256": "3c346301b5b092bf17db5b5b871d32d950f4b603b2878b792be049f761874823",
+      "bytes": 15436
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/spiked-tail--enforcers-comics-10.json",
+      "sha256": "d4d1d6beb2e7acec9499b1eea1a8a1464cb747699145faaeca09c9bc50f1d425",
+      "bytes": 16533
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/super-predators--enforcers-comics-10.json",
+      "sha256": "b764a6f88f1850c32d6449b5bccd6a6d32030ce90b6702390a8e0d3ee18fae78",
+      "bytes": 15266
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/ul-khar--enforcers-comics-10.json",
+      "sha256": "d81d9255b6f8efc3b31d5d1c9a8da4ca9e93bbf3034a25bb2ebfe7f7ec5a2ba8",
+      "bytes": 15538
+    },
+    {
+      "path": "docs/suivi-production/v614/receipts/vaal-tir--enforcers-comics-10.json",
+      "sha256": "dc2d15b7b1575d750e094f921043925505265f134d82bd5d22d0a6394c914a6a",
+      "bytes": 15464
+    },
+    {
+      "path": "docs/suivi-production/v615/data/production-manifest.json",
+      "sha256": "7dea91603f6842f38a892d0a3aac1655facd89e59dcdf39159379941191ff356",
+      "bytes": 438830
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/alpha--sucklings-02.json",
+      "sha256": "e818dc9cb1df74e93dc7ad6a48f39ae4331a13633dffb232866e55cbc473d6ef",
+      "bytes": 12499
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/augmentes-assassin--sucklings-02.json",
+      "sha256": "2ed3421ee4ec417d66d1d32981026daabb345304d4aa1d1f0cabb78a8fcb4dd4",
+      "bytes": 15771
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/bionic--sucklings-02.json",
+      "sha256": "31bbf252442d61cc48033e0c04dabc7de41f210f9da5c1b23e30fe81ba9a4f9c",
+      "bytes": 19172
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/city-hunter--sucklings-02.json",
+      "sha256": "d22002555bf9b8db5923963889de2dabd6b0e40218469aff1e6dc8a6848f1060",
+      "bytes": 18936
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+      "sha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb",
+      "bytes": 15451
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/four-armed--sucklings-02.json",
+      "sha256": "93d87b194b69bc644d9cc9da85c1963d11fd12059543a9dc1e70daeeec05615d",
+      "bytes": 13196
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/grendel-kok--sucklings-02.json",
+      "sha256": "7c84d075db1dd7272a137b200e099aa4f1a4560814082e05b7e400a8d71d0ede",
+      "bytes": 17475
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/hornhead--sucklings-02.json",
+      "sha256": "e06637484c04bed7bdef4450783b2d5bcc6434a2fa3bae317bac43c5e24a74aa",
+      "bytes": 16092
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/human-accepted--sucklings-02.json",
+      "sha256": "35c17c088803ae9b0333f39d82f686d8ef6ac96207cf9be4a293440861828f86",
+      "bytes": 13390
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/kaal-or--sucklings-02.json",
+      "sha256": "1004425d305d8753e39f513ebb94a6360559f328121794427f133b90f8ec33eb",
+      "bytes": 18488
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/oni-kok--sucklings-02.json",
+      "sha256": "38f97fe80879e61c301e5994ae2272c0d18142bf25402481980f7b87f1f1f985",
+      "bytes": 12009
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/pilot-kok--sucklings-02.json",
+      "sha256": "e08588e296274ba7351aba3378992660a35c783374d6f7e7cb1dfe48d6fb36a0",
+      "bytes": 20506
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/saar-keth--sucklings-02.json",
+      "sha256": "6c3217aec07e399c8e3f44e595ca60aeebecbfcf63b7fab0bf1dfdbdbf8011c6",
+      "bytes": 16429
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/sha-rhess--sucklings-02.json",
+      "sha256": "5cefcb7160139cc2bc7bf786582cb9ccfbc8629b00f72cadc3183c32b18ad95d",
+      "bytes": 18659
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/spiked-tail--sucklings-02.json",
+      "sha256": "50bd7cae790e9bb72ead11c5dbed066398cf9077b2ddfca1014b2db04d65c471",
+      "bytes": 17089
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+      "sha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1",
+      "bytes": 15483
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/ul-khar--sucklings-02.json",
+      "sha256": "4803a1b6ea54519a3102d73f27c3e2dd26a0601f76c460837d906db9b7638a44",
+      "bytes": 18745
+    },
+    {
+      "path": "docs/suivi-production/v615/receipts/vaal-tir--sucklings-02.json",
+      "sha256": "cd83736b0c1aa38f0eac4accd02c725543ee753f81976d32a076a75bc283c6c5",
+      "bytes": 18833
+    },
+    {
+      "path": "docs/v106-workstreams.json",
+      "sha256": "5b53f62f7e5b643c1cbd679f0c7177f35ca8e91f5d27e828963329d53463bfe2",
+      "bytes": 345489
+    },
+    {
+      "path": "docs/v107-shuriken-art-source.json",
+      "sha256": "8104b1b12eaae833686e66d5ac37d2dbc48210ba6e279fe6e071e971bed3ba92",
+      "bytes": 2764
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/alpha/enforcers-comics-10.png",
+      "sha256": "bb2b7a7c0a342122d573234b5f3c17a2892d65283b1a65e495ff660bf6ddbf61",
+      "bytes": 1898958
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/augmentes-assassin/enforcers-comics-10.png",
+      "sha256": "632217d99f93735f7b883795b7c37627e5168dde0b4bb14c8c64709f41f793c2",
+      "bytes": 2092039
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/bionic/enforcers-comics-10.png",
+      "sha256": "f1eb20b2bd5f94862eff015c10727d9ae0ce82a464f7365621a1a81b2fa57645",
+      "bytes": 1993321
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/city-hunter/enforcers-comics-10.png",
+      "sha256": "18aa70e16d311fcba472a3e48cde38584af6e9386c6642140e727600fa5321bb",
+      "bytes": 1774839
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/feral/enforcers-comics-10.png",
+      "sha256": "8846391e537793cd0a224dd33f87f450b042a89b98127b8beb205c208ebe9884",
+      "bytes": 1724514
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/four-armed/enforcers-comics-10.png",
+      "sha256": "05f25e61fead9d935f054a3d1b9615124d910dd8ecadffbd0489a14f5713d571",
+      "bytes": 2157742
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/grendel-kok/enforcers-comics-10.png",
+      "sha256": "4cf34dd46740bce1a8c509facfaef57a500ba51f9c83a054e3424850afa3e6eb",
+      "bytes": 2438660
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/hornhead/enforcers-comics-10.png",
+      "sha256": "311576cb7e5057f871ab1015634314375a94e4215b20f233131b32cae9b586d5",
+      "bytes": 1672753
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/human-accepted/enforcers-comics-10.png",
+      "sha256": "8e2c5ae5075a1f56fa8e75ef1352a21ff62d5942ef6ee92519529602b391851e",
+      "bytes": 1629737
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/kaal-or/enforcers-comics-10.png",
+      "sha256": "53a50415e2901c58e414c983ab4a9c827674db90f9bb69ebfb0265b9ac54f3dd",
+      "bytes": 2198885
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/oni-kok/enforcers-comics-10.png",
+      "sha256": "a535ded173d885ec2c9bd7a569de2e2d0b36d41a83224c946ed1c1c9f9937cee",
+      "bytes": 1747626
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/pilot-kok/enforcers-comics-10.png",
+      "sha256": "4bdeebeffdcb11dd1c596cfbf72c859beac92ef009594b88ae744797a725baaf",
+      "bytes": 1870735
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/saar-keth/enforcers-comics-10.png",
+      "sha256": "b56b68281385c48fcc2bd9c46dd75a8f1ece64eb5076427d7c611a8e4ea799db",
+      "bytes": 1813187
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/sha-rhess/enforcers-comics-10.png",
+      "sha256": "ac9ea0cf254f3a8513fdec9e19a35ac3db23a60f6df06ca393ec7bc9534420b0",
+      "bytes": 1856824
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/spiked-tail/enforcers-comics-10.png",
+      "sha256": "5cfe9e4fa7a91fcbd903791c469d7c54a3eaeca28113fd1ca16f325dc05ca710",
+      "bytes": 1957213
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/super-predators/enforcers-comics-10.png",
+      "sha256": "77637cec9151af56cf42edb5b2dd192090aaa307cdf292dc1e41e7a31fbb5538",
+      "bytes": 2282191
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/ul-khar/enforcers-comics-10.png",
+      "sha256": "e96800e06bd3d8cce97f7a8525d5d84027638bea30a966f4759cdf671c29ae79",
+      "bytes": 1906732
+    },
+    {
+      "path": "public/game/production/enforcer-alternatives-v107/vaal-tir/enforcers-comics-10.png",
+      "sha256": "400f8b538e1d8edb23cc9c5c39d7c0018fd90d5594e3aabe752619ad0bf40432",
+      "bytes": 1743324
+    },
+    {
+      "path": "public/game/production/enforcers-v614/alpha/enforcers-comics-10.png",
+      "sha256": "0d5b13729fd51384d82996482e1d9d6864fda7054790d55857fc18afdb021338",
+      "bytes": 2641158
+    },
+    {
+      "path": "public/game/production/enforcers-v614/augmentes-assassin/enforcers-comics-10.png",
+      "sha256": "d2d5d931f620ce8ebc6caae4b60b4b470bbc6d7caaa17819707c949b755ee0b0",
+      "bytes": 2642412
+    },
+    {
+      "path": "public/game/production/enforcers-v614/bionic/enforcers-comics-10.png",
+      "sha256": "42aa084be55359bb9004e185c5bf265cebf3d30e002b5614040478374f4c23a1",
+      "bytes": 2381604
+    },
+    {
+      "path": "public/game/production/enforcers-v614/city-hunter/enforcers-comics-10.png",
+      "sha256": "7a20ef4dd3eba9a18d593e38838f0e463342463c28e0ea9f6ac3267692d8f7de",
+      "bytes": 2295942
+    },
+    {
+      "path": "public/game/production/enforcers-v614/feral/enforcers-comics-10.png",
+      "sha256": "963d12d600d361cc91c58b26341e5a3475bd7d6eacd127214136dfc6ac7a9a51",
+      "bytes": 2300062
+    },
+    {
+      "path": "public/game/production/enforcers-v614/four-armed/enforcers-comics-10.png",
+      "sha256": "926013b4e17ef7192bc90fe33ae5300ee5057061372b63c11ab106beec0f8e93",
+      "bytes": 2643448
+    },
+    {
+      "path": "public/game/production/enforcers-v614/grendel-kok/enforcers-comics-10.png",
+      "sha256": "a435e8a0a5f35f8056c13d7c9d3d1fce3b7478c5ebb9d800d60484f564eda4d1",
+      "bytes": 2715180
+    },
+    {
+      "path": "public/game/production/enforcers-v614/hornhead/enforcers-comics-10.png",
+      "sha256": "2d823ba6a7441fb1a18a0db6a5133f74a4c4844e0b6244e077c2f5e041219d6b",
+      "bytes": 2583178
+    },
+    {
+      "path": "public/game/production/enforcers-v614/human-accepted/enforcers-comics-10.png",
+      "sha256": "eec79ea7d34bdf6ce15e993739d28d2ecbc204489746bc54c5ef068a229c8026",
+      "bytes": 2207675
+    },
+    {
+      "path": "public/game/production/enforcers-v614/kaal-or/enforcers-comics-10.png",
+      "sha256": "8a0fcb05e18737ce93e044503bb3ce6b174338c1ffbb3657e9ccb9edb5ff382e",
+      "bytes": 2674201
+    },
+    {
+      "path": "public/game/production/enforcers-v614/oni-kok/enforcers-comics-10.png",
+      "sha256": "7b79fd3d2823f6d9adfb0e9e9c6b3802dfcf719e815d5186c50181565679a9a7",
+      "bytes": 2322966
+    },
+    {
+      "path": "public/game/production/enforcers-v614/pilot-kok/enforcers-comics-10.png",
+      "sha256": "95bbabb980d30b4f67aaee2da17e077a15013c3ad2383e69420a58e248b64a3b",
+      "bytes": 2462529
+    },
+    {
+      "path": "public/game/production/enforcers-v614/saar-keth/enforcers-comics-10.png",
+      "sha256": "f87731360352cc221e08b8a5a4cfd30892d849c71e1f93db46b6fa2dd50a7bb8",
+      "bytes": 2402781
+    },
+    {
+      "path": "public/game/production/enforcers-v614/sha-rhess/enforcers-comics-10.png",
+      "sha256": "33482a17f2c03cdf794e33cc8a3accdcc41f85098fce0fdd20d27d6d199290d9",
+      "bytes": 2512711
+    },
+    {
+      "path": "public/game/production/enforcers-v614/spiked-tail/enforcers-comics-10.png",
+      "sha256": "5c1a1b85b126758c287dcf7621db4f19ca252fdc8d5f5beef8825d752552ceef",
+      "bytes": 2711634
+    },
+    {
+      "path": "public/game/production/enforcers-v614/super-predators/enforcers-comics-10.png",
+      "sha256": "e4864991813c696073af6ff99827a09674f44fd7e33b45d43c983fdac351bbde",
+      "bytes": 2426915
+    },
+    {
+      "path": "public/game/production/enforcers-v614/ul-khar/enforcers-comics-10.png",
+      "sha256": "59489e2908804e1f766209bc3973dd0baac56016b9ad23b6e02ebcd5bf857893",
+      "bytes": 2758416
+    },
+    {
+      "path": "public/game/production/enforcers-v614/vaal-tir/enforcers-comics-10.png",
+      "sha256": "9f712c1abd4ffeb4bbbd784edb0e9d2ff31095319625365a018ec47f2206ec01",
+      "bytes": 2200233
+    },
+    {
+      "path": "public/game/production/sucklings-v615/alpha/sucklings-02.png",
+      "sha256": "ed0c033b711b7082f09f6706ccd7489bba5e9d3d194250dd6f97e9884dd110c8",
+      "bytes": 1571127
+    },
+    {
+      "path": "public/game/production/sucklings-v615/augmentes-assassin/sucklings-02.png",
+      "sha256": "722ef2fc2f6221db3209fd2c2efe78329d9328f383bbf7c4d7f2924a22e20f20",
+      "bytes": 2841140
+    },
+    {
+      "path": "public/game/production/sucklings-v615/bionic/sucklings-02.png",
+      "sha256": "e434a2befbad3ea3dd45b960bba197b5024c9e66cf079fce7a913b30b73485a9",
+      "bytes": 2259428
+    },
+    {
+      "path": "public/game/production/sucklings-v615/city-hunter/sucklings-02.png",
+      "sha256": "817ba64cadb8e9416458214bd71a5fb0d7c747f2d6060f0d9b7da111b14f74ca",
+      "bytes": 2231875
+    },
+    {
+      "path": "public/game/production/sucklings-v615/feral/sucklings-02.png",
+      "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+      "bytes": 2635249
+    },
+    {
+      "path": "public/game/production/sucklings-v615/four-armed/sucklings-02.png",
+      "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+      "bytes": 1622499
+    },
+    {
+      "path": "public/game/production/sucklings-v615/grendel-kok/sucklings-02.png",
+      "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+      "bytes": 2154315
+    },
+    {
+      "path": "public/game/production/sucklings-v615/hornhead/sucklings-02.png",
+      "sha256": "cc31013695a22c31bbfd1bfa7032d04cf029bba66e64ff8428269e5b18ad1198",
+      "bytes": 2427570
+    },
+    {
+      "path": "public/game/production/sucklings-v615/human-accepted/sucklings-02.png",
+      "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+      "bytes": 2234289
+    },
+    {
+      "path": "public/game/production/sucklings-v615/kaal-or/sucklings-02.png",
+      "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+      "bytes": 2412433
+    },
+    {
+      "path": "public/game/production/sucklings-v615/oni-kok/sucklings-02.png",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "bytes": 2063719
+    },
+    {
+      "path": "public/game/production/sucklings-v615/pilot-kok/sucklings-02.png",
+      "sha256": "260019f33943e2c799a9dd393cde124d97cb6bbb78c91dc6945159eb480e5c3f",
+      "bytes": 2556983
+    },
+    {
+      "path": "public/game/production/sucklings-v615/saar-keth/sucklings-02.png",
+      "sha256": "88787cdf5daeb77c019c991ba063be23c3abb2f587e5c768e187c8e68d74196a",
+      "bytes": 2676828
+    },
+    {
+      "path": "public/game/production/sucklings-v615/sha-rhess/sucklings-02.png",
+      "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+      "bytes": 2054398
+    },
+    {
+      "path": "public/game/production/sucklings-v615/spiked-tail/sucklings-02.png",
+      "sha256": "d1be198957c5a93bfd5233bbadd148a5e943b6768be7a8dfcbab114897f41c60",
+      "bytes": 2768799
+    },
+    {
+      "path": "public/game/production/sucklings-v615/super-predators/sucklings-02.png",
+      "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+      "bytes": 2800726
+    },
+    {
+      "path": "public/game/production/sucklings-v615/ul-khar/sucklings-02.png",
+      "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+      "bytes": 2719776
+    },
+    {
+      "path": "public/game/production/sucklings-v615/vaal-tir/sucklings-02.png",
+      "sha256": "d51b18017512fd9df4e7568f5ffba96a67bac68929492f4e9d0f4d28fc4d495e",
+      "bytes": 2569110
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+      "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+      "bytes": 1904733
+    },
+    {
+      "path": "public/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png",
+      "sha256": "95108bf402fe76462b5963939c496531860eda613454a11b6ae52ad042c4052b",
+      "bytes": 981810
+    },
+    {
+      "path": "scripts/reconcile-static-productions-v107.mjs",
+      "sha256": "6d7834250d300b2477dda7a37e9bf0a817d6cf0dfc7947ff679ff61d86d53915",
+      "bytes": 8930
+    },
+    {
+      "path": "tests/fixtures/production-history-pr15-v107.json",
+      "sha256": "e8b408beceeb801baf0dc1b63e9d3597561f1fff218cc19a861c38c1862e6d7b",
+      "bytes": 72106
+    },
+    {
+      "path": "tests/fixtures/production-history-pr15-v107.json.gz",
+      "sha256": "4524f083f69335aadeab9c647980f4113afc565da29476ef7f2301009ce7e614",
+      "bytes": 206901
+    }
+  ],
+  "limits": [
+    "The18V614 Enforcer images and18V615 Sucklings existed in reviewed PR15 before V107.",
+    "The18new alternative poses reuse the same stable identities and do not complete an animation or canonical kit.",
+    "The independent star PNG is a project adaptation; creating its image does not validate its combat mechanics.",
+    "No21missing historical receipt or36missingV610PNG has been recovered by this reconciliation.",
+    "All historical workbooks and production records remain byte-exact."
+  ]
+}

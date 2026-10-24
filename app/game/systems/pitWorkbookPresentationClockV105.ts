@@ -11,7 +11,7 @@ export function applyPitWorkbookPresentationClockV105(
   combat: PitCombatState | null,
   nativeDurationMs: number | null,
 ): PitRoundPresentationView {
-  if (combat?.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && combat?.rules.normalMoves !== 'workbook-v106') return view;
+  if (combat?.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && combat?.rules.normalMoves !== 'workbook-v106' && combat?.rules.normalMoves !== 'workbook-v107') return view;
   const durationMs = nativeDurationMs !== null && Number.isFinite(nativeDurationMs) && nativeDurationMs > 0 && nativeDurationMs <= 10_000
     ? nativeDurationMs : view.durationMs;
   const blocksSimulation = view.phase === 'round-result' && combat.phase === 'round-over' && view.round === combat.round

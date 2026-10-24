@@ -35,7 +35,7 @@ import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTrans
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
 import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomeworldPassageV67, canAdvanceHomeworldPassageV67, beginReturnHomeworldPassageV67, type HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
-import { createGameReserveV66, createGameReserveV104, canAdvanceGameReserveV66, type GameReserveV66State } from "./systems/gameReserveV66";
+import { createGameReserveV66, createGameReserveV104, createGameReserveV107, canAdvanceGameReserveV66, type GameReserveV66State } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
@@ -2173,13 +2173,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const persistJusticeProgress = useCallback((justice: JusticeProgress) =>
     persistSocialProgress({ justice }), [persistSocialProgress]);
 
-  const openGameReserveV66 = useCallback((fresh = false, version: 1 | 2 = 1): boolean => {
+  const openGameReserveV66 = useCallback((fresh = false, version: 1 | 2 | 3 = 1): boolean => {
     // The autonomous expedition cannot lend a ship or adult arsenal to a youth save.
     if (!sessionAliveRef.current || saveRef.current.createdAt !== entry.ownerCreatedAt || !mainMenuModeAccessV81(saveRef.current,mainMenuBrowserShipContextV81(saveRef.current))['game-reserve']) return false;
     const existing = saveRef.current.gameReserveV66;
     const random = new Uint32Array(1); globalThis.crypto.getRandomValues(random);
     const next = fresh || !existing
-      ? version === 2 ? createGameReserveV104(random[0]) : createGameReserveV66(random[0])
+      ? version === 3 ? createGameReserveV107(random[0]) : version === 2 ? createGameReserveV104(random[0]) : createGameReserveV66(random[0])
       : existing;
     if (!persistSocialProgress({ gameReserveV66: next })) return false;
     setScreen("game-reserve"); return true;

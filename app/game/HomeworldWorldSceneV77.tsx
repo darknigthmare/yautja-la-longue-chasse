@@ -1,3 +1,5 @@
+import HomeworldArchiveComparisonWorldV107 from './HomeworldArchiveComparisonWorldV107';
+import type {HomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import HomeworldArchiveWorldV106 from './HomeworldArchiveWorldV106';
 import type {HomeworldArchiveLedgerV106} from './systems/homeworldArchiveLedgerV106';
 /* eslint-disable @next/next/no-img-element -- existing native game bitmap sources */
@@ -52,8 +54,8 @@ const visible=(box:{left:number;top:number;width:number;height:number},camera:Ca
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,archiveV106,archiveActiveV106=false,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,cartographyHighPointV105=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
- archiveV106?:HomeworldArchiveLedgerV106;archiveActiveV106?:boolean;actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;cartographyHighPointV105?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,comparisonV107,archiveV106,archiveActiveV106=false,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,cartographyHighPointV105=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ comparisonV107?:HomeworldArchiveComparisonV107;archiveV106?:HomeworldArchiveLedgerV106;archiveActiveV106?:boolean;actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;cartographyHighPointV105?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
  const paintedLevels=homeworldPaintedLevelsV78(levelId,transit),painted=(level:HomeworldLevelV77)=>paintedLevels.includes(level);
@@ -67,6 +69,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   return <HomeworldNativePropV64 key={key} id={key} artId={artId} art={art} x={p.x} y={p.y} depth={depth(level,point.y,extraElevation)} heightWorld={heightWorld} style={{opacity}}/>;
  };
  return <>
+  {comparisonV107&&<HomeworldArchiveComparisonWorldV107 levelId={levelId} ledger={comparisonV107}/>}
   {archiveV106&&<HomeworldArchiveWorldV106 levelId={levelId} seconds={seconds} ledger={archiveV106} active={archiveActiveV106}/>}
   <HomeworldCartographerV104 levelId={levelId} seconds={seconds} active={activeCartographyV104}/>
   {cartographyHighPointV105&&levelId==='+1'&&(()=>{const p=homeworldProjectGroundV64(HOMEWORLD_CARTOGRAPHY_V105.highPoint,homeworldLevelV77('+1').elevation);return <span data-homeworld-high-point-v105 style={{position:'absolute',left:p.x-64,top:p.y-30,width:128,height:60,border:'2px dashed #dcc68d',borderRadius:'50%',background:'#dcc68d18',pointerEvents:'none',zIndex:depth('+1',HOMEWORLD_CARTOGRAPHY_V105.highPoint.y)}}><span style={{position:'absolute',left:-48,top:-48,width:220,textAlign:'center',color:'#f4e1b3',background:'#12211fe8',padding:8,borderRadius:5,fontSize:13}}>Point d’observation du viaduc</span></span>;})()}

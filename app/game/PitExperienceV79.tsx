@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- preserve the native supplied character plates. */
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ComponentProps } from 'react';
 import PitCanvas from './PitCanvas';
+import PitWorkbookCampaignV107 from './PitWorkbookCampaignV107';
 import PitExtensionPortrait from './PitExtensionPortrait';
 import PitStagePreview, { type PitStagePreviewStatus } from './PitStagePreview';
 import { getPitCombatBitmapArtDefinition } from './pitCombatBitmapArt';
@@ -33,21 +34,23 @@ const desktopRosterSnapshot = () => false;
  * listener or gamepad loop remains behind these menus or a second duel. */
 export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, ...pitProps }: Props) {
   const [selected, setSelected] = useState<PitVersusFighterId | null>(null);
+  const [workbookExerciseV107, setWorkbookExerciseV107] = useState(false);
   const [lastFighter, setLastFighter] = useState<PitVersusFighterId | undefined>();
-  const choose = (id: PitVersusFighterId) => { setLastFighter(id); setSelected(id); };
+  const choose = (id: PitVersusFighterId) => { setWorkbookExerciseV107(false); setLastFighter(id); setSelected(id); };
+  if (workbookExerciseV107 && (selected === 'feral-hunter' || selected === 'scar')) return <PitWorkbookCampaignV107 key={ownerSaveCreatedAt+selected} fighterId={selected} owner={ownerSaveCreatedAt} pitProps={pitProps} storage={chronicleStorage} onBack={() => setWorkbookExerciseV107(false)} />;
   return selected === null ? <PitCanvas {...pitProps} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose} />
     : <PitCharacterChronicleControllerV79 key={ownerSaveCreatedAt} ownerSaveCreatedAt={ownerSaveCreatedAt}
-      selectedId={selected} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} chronicleStorage={chronicleStorage} />;
+      selectedId={selected} onOpenWorkbookExerciseV107={() => setWorkbookExerciseV107(true)} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} chronicleStorage={chronicleStorage} />;
 }
 
 function storageKey(owner: string, fighter: PitCharacterChronicleCuratedIdV79, version: 1 | 2) {
   return `${pitCharacterChronicleStorageKeyV79(owner, version)}.${fighter}`;
 }
 
-function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, onChoose, onBack, pitProps, chronicleStorage }: {
+function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, onChoose, onBack, pitProps, chronicleStorage, onOpenWorkbookExerciseV107 }: {
   ownerSaveCreatedAt: string; selectedId: PitVersusFighterId; onChoose: (id: PitVersusFighterId) => void;
   onBack: () => void; pitProps: ComponentProps<typeof PitCanvas>;
-  chronicleStorage?: PitChronicleStorageV81;
+  chronicleStorage?: PitChronicleStorageV81; onOpenWorkbookExerciseV107?: () => void;
 }) {
   const [run, setRun] = useState<PitCharacterChronicleRunV79 | null>(null);
   const [contentVersion, setContentVersion] = useState<1 | 2>(2);
@@ -175,6 +178,7 @@ function PitCharacterChronicleControllerV79({ ownerSaveCreatedAt, selectedId, on
     <div className={styles.content} inert={confirmRestart}>
     <header className={styles.header}><div><span>THE PIT · MÉMOIRES DU CERCLE</span><h2 id="pit-character-chronicle-title">Chroniques des chasseurs</h2></div>
       <button type="button" onClick={onBack}>Retour au roster</button></header>
+    {(selectedId === 'feral-hunter' || selectedId === 'scar') && <aside><p>Huit étapes du classeur, avec carnet persistant et partenaires d’exercice explicitement substitués.</p><button data-pit-workbook-campaign-open onClick={onOpenWorkbookExerciseV107}>Ouvrir le parcours d’exercice V107</button></aside>}
     {currentRun ? <button type="button" aria-expanded={catalogueOpen} aria-controls="pit-chronicle-catalogue" onClick={() => setCatalogueOpen(value => !value)}>{catalogueOpen ? 'Revenir au récit' : 'Choisir un autre chasseur'}</button> : null}
     {!currentRun || catalogueOpen ? <div id="pit-chronicle-catalogue" data-chronicle-catalogue>
     <div className={styles.catalogueTools}>

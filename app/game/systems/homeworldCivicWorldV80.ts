@@ -1,3 +1,4 @@
+import {homeworldArchiveComparisonCollisionV107} from './homeworldArchiveComparisonSolidsV107';
 import {HOMEWORLD_ACTOR,stepHomeworldActorOnFloor,type HomeworldActor,type HomeworldInput,type HomeworldFootprint,type HomeworldVec2} from './homeworldCity';
 import {HOMEWORLD_SPACEPORT_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {homeworldUrbanTerrainV78,homeworldUrbanCollisionV78} from './homeworldStreetModulesV78';
@@ -11,7 +12,8 @@ export function homeworldCivicCollisionV80(level:HomeworldLevelV77,point:Homewor
  const item=HOMEWORLD_CIVIC_PROPS_V80.find(p=>p.levelId===level&&homeworldCivicTouchesV80(p,point,body));
  if(item)return {kind:'prop' as const,id:item.id};
  const archive=homeworldArchiveCollisionV106(level,point,body);
- return archive?{kind:'prop' as const,id:archive}:null;
+ if(archive)return {kind:'prop' as const,id:archive};
+ const comparison=homeworldArchiveComparisonCollisionV107(level,point,body);return comparison?{kind:'prop' as const,id:comparison}:null;
 }
 export const homeworldCivicWalkableV80=(level:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR)=>
  homeworldUrbanTerrainV78(level,point,body)&&!homeworldCivicCollisionV80(level,point,body);

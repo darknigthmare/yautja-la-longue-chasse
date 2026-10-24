@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "clockHz": 60,
+  "measurement": "Manual enclosure of native weapon pixels and hand points in unchanged source cells, tolerance4source pixels; original geometry adaptation, not Excel-authored hitboxes.",
+  "entries": [
+    {
+      "fighterId": "scar",
+      "actionId": "CIN_F003_FATALITE_2",
+      "key": "FATALITE_2",
+      "sourceCell": "07_PRESENTATIONS!I7",
+      "durationTicks": 300,
+      "scope": "Existing autonomous native Scar BODY; measured contacts are original Pit adaptations. No victim, weapon ownership, mission provenance or rewards certified by this table.",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png": "a3038ed6fd17a8b71e21ae59f469290063eb74e575bf9571a2a11636a344a96b",
+        "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png": "c6102fe83dc7d0137c71b3a7c0cf5ee203d0673256ad09159e5e9af1d9555fab"
+      },
+      "frames": [
+        {
+          "facing": "right",
+          "index": 0,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            0,
+            0,
+            795,
+            352
+          ],
+          "pivot": [
+            370,
+            294
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 3,
+          "durationTicks": 30
+        },
+        {
+          "facing": "right",
+          "index": 1,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            794,
+            0,
+            742,
+            352
+          ],
+          "pivot": [
+            336,
+            294
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 3,
+          "durationTicks": 30
+        },
+        {
+          "facing": "right",
+          "index": 2,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            0,
+            351,
+            809,
+            329
+          ],
+          "pivot": [
+            351,
+            271
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 2,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 3,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            808,
+            351,
+            728,
+            329
+          ],
+          "pivot": [
+            230,
+            269
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 5,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 4,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            0,
+            679,
+            754,
+            345
+          ],
+          "pivot": [
+            380,
+            283
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 1,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 5,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+          "rect": [
+            753,
+            679,
+            783,
+            345
+          ],
+          "pivot": [
+            361,
+            285
+          ],
+          "bodyHeightPx": 222,
+          "contactOffsetPx": 2,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 0,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            0,
+            0,
+            746,
+            377
+          ],
+          "pivot": [
+            448,
+            335
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 1,
+          "durationTicks": 30
+        },
+        {
+          "facing": "left",
+          "index": 1,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            745,
+            0,
+            791,
+            377
+          ],
+          "pivot": [
+            423,
+            336
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 1,
+          "durationTicks": 30
+        },
+        {
+          "facing": "left",
+          "index": 2,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            0,
+            376,
+            734,
+            303
+          ],
+          "pivot": [
+            448,
+            261
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 3,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            733,
+            376,
+            803,
+            303
+          ],
+          "pivot": [
+            442,
+            263
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 2,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 4,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            0,
+            678,
+            788,
+            346
+          ],
+          "pivot": [
+            460,
+            279
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 5,
+          "path": "/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+          "rect": [
+            787,
+            678,
+            749,
+            346
+          ],
+          "pivot": [
+            373,
+            283
+          ],
+          "bodyHeightPx": 253,
+          "contactOffsetPx": 1,
+          "durationTicks": 60
+        }
+      ],
+      "geometry": {
+        "right": {
+          "guard": {
+            "index": 1,
+            "bounds": [
+              185,
+              82,
+              241,
+              71
+            ]
+          },
+          "thrust": {
+            "index": 2,
+            "bounds": [
+              430,
+              100,
+              258,
+              44
+            ]
+          },
+          "thrustExtended": {
+            "index": 3,
+            "bounds": [
+              365,
+              100,
+              221,
+              45
+            ]
+          }
+        },
+        "left": {
+          "guard": {
+            "index": 1,
+            "bounds": [
+              180,
+              65,
+              338,
+              54
+            ]
+          },
+          "thrust": {
+            "index": 2,
+            "bounds": [
+              235,
+              61,
+              335,
+              47
+            ]
+          },
+          "thrustExtended": {
+            "index": 3,
+            "bounds": [
+              203,
+              62,
+              249,
+              49
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fighterId": "scar",
+      "actionId": "CIN_F003_CLEMENCE",
+      "key": "CLEMENCE",
+      "sourceCell": "07_PRESENTATIONS!J7",
+      "durationTicks": 300,
+      "scope": "Existing autonomous native Scar BODY; measured contacts are original Pit adaptations. No victim, weapon ownership, mission provenance or rewards certified by this table.",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-special-clemence-right.png": "189f55ad7005c38747786a1f910ed12844c003ee62015e2bbcbef6a2d84b65ca",
+        "/game/sprites/v100/pit/scar/scar-special-clemence-left.png": "559366b2e7d9c5d90f471f4cab4e0034b274540243148dd3adfd93c5717c5788"
+      },
+      "frames": [
+        {
+          "facing": "right",
+          "index": 0,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            0,
+            0,
+            730,
+            368
+          ],
+          "pivot": [
+            387,
+            356
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 2,
+          "durationTicks": 30
+        },
+        {
+          "facing": "right",
+          "index": 1,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            729,
+            0,
+            807,
+            368
+          ],
+          "pivot": [
+            324,
+            356
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 3,
+          "durationTicks": 30
+        },
+        {
+          "facing": "right",
+          "index": 2,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            0,
+            367,
+            774,
+            328
+          ],
+          "pivot": [
+            386,
+            321
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 1,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 3,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            773,
+            367,
+            763,
+            328
+          ],
+          "pivot": [
+            395,
+            324
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 4,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            0,
+            694,
+            775,
+            330
+          ],
+          "pivot": [
+            389,
+            290
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        },
+        {
+          "facing": "right",
+          "index": 5,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "rect": [
+            774,
+            694,
+            762,
+            330
+          ],
+          "pivot": [
+            316,
+            316
+          ],
+          "bodyHeightPx": 302,
+          "contactOffsetPx": 2,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 0,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            0,
+            0,
+            731,
+            371
+          ],
+          "pivot": [
+            443,
+            315
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 4,
+          "durationTicks": 30
+        },
+        {
+          "facing": "left",
+          "index": 1,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            730,
+            0,
+            806,
+            371
+          ],
+          "pivot": [
+            438,
+            314
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 3,
+          "durationTicks": 30
+        },
+        {
+          "facing": "left",
+          "index": 2,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            0,
+            370,
+            755,
+            322
+          ],
+          "pivot": [
+            445,
+            271
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 1,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 3,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            754,
+            370,
+            782,
+            322
+          ],
+          "pivot": [
+            411,
+            277
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 4,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            0,
+            691,
+            797,
+            333
+          ],
+          "pivot": [
+            481,
+            263
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 4,
+          "durationTicks": 60
+        },
+        {
+          "facing": "left",
+          "index": 5,
+          "path": "/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+          "rect": [
+            796,
+            691,
+            740,
+            333
+          ],
+          "pivot": [
+            364,
+            267
+          ],
+          "bodyHeightPx": 203,
+          "contactOffsetPx": 3,
+          "durationTicks": 60
+        }
+      ],
+      "geometry": {
+        "right": {
+          "disarm": {
+            "index": 1,
+            "bounds": [
+              398,
+              123,
+              377,
+              40
+            ]
+          },
+          "pickup": {
+            "index": 4,
+            "point": [
+              521,
+              289
+            ]
+          },
+          "heldObject": {
+            "index": 5,
+            "point": [
+              452,
+              78
+            ]
+          }
+        },
+        "left": {
+          "disarm": {
+            "index": 1,
+            "bounds": [
+              185,
+              148,
+              272,
+              40
+            ]
+          },
+          "pickup": {
+            "index": 4,
+            "point": [
+              267,
+              264
+            ]
+          },
+          "heldObject": {
+            "index": 5,
+            "point": [
+              338,
+              80
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

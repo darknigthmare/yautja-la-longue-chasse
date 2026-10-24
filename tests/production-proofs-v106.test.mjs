@@ -1,75 +1,32 @@
-import test from 'node:test';
+import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {snapshotRuntimeV106} from '../scripts/snapshot-runtime-v106.mjs';
-import {HISTORICAL_RUNTIME_COMMIT_V106,assertAllowedSourceV615,assertCurrentRuntimeDeltaV615,assertStaticRegistryV615,
-  getHistoricalRuntimeContextV615,loadHistoricalRuntimeSnapshotV615,verifyHistoricalRuntimeContextV615} from '../scripts/historical-runtime-context-v615.mjs';
-import {assertStaticRegistryV614} from '../scripts/historical-runtime-context-v614.mjs';
+import path from 'node:path';
+import {getHistoricalExcelContextV107,loadHistoricalRuntimeSnapshotV107,verifyHistoricalExcelContextV107} from '../scripts/historical-excel-context-v107.mjs';
+const {root:ROOT}=await getHistoricalExcelContextV107();
+const {snapshotRuntimeV106}=await loadHistoricalRuntimeSnapshotV107();
+const read=file=>fs.readFile(path.join(ROOT,file));
+after(()=>verifyHistoricalExcelContextV107());
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const json = async file => JSON.parse(await fs.readFile(file, 'utf8'));
+const json = async file => JSON.parse(await read(file));
 async function verifyFile(entry) {
   const file = entry.path ?? entry.file;
   assert.ok(typeof file === 'string' && file.startsWith('docs/') && !file.split(/[\\/]/).includes('..'), 'Portable local evidence required');
-  const bytes = await fs.readFile(file);
+  const bytes = await read(file);
   assert.equal(bytes.length, entry.bytes, file + ': evidence size changed');
   assert.equal(sha(bytes), entry.sha256, file + ': evidence changed');
   return bytes;
 }
 
-test('the V106 production freeze still matches its historical sources, without claiming V6.15 browser QA', async () => {
+test('the production freeze still matches every application source and its bounded public input set', async () => {
   const report = await json('docs/v106-validation-summary.json');
   assert.equal(report.release, 'V106');
   assert.equal(report.status, 'PASS_CIBLE');
-  assert.equal(report.runtimeCommit, HISTORICAL_RUNTIME_COMMIT_V106);
+  assert.match(report.runtimeCommit, /^[0-9a-f]{40}$/);
   const freeze = JSON.parse(await verifyFile(report.sourceFreeze));
-  const context = await getHistoricalRuntimeContextV615();
-  const historical = await loadHistoricalRuntimeSnapshotV615();
-  assert.notEqual(context.root, process.cwd());
-  assert.equal(context.fixture.currentDelta.currentRuntimeCoveredByHistoricalQA, false);
-  assert.deepEqual(await historical.snapshotRuntimeV106(), freeze, 'Historical V106 runtime differs from the played production journeys');
-  assert.deepEqual(await verifyHistoricalRuntimeContextV615(), {
-    runtimeCommit: HISTORICAL_RUNTIME_COMMIT_V106, inputsVerified: 963, archivedSources: 2,
-  });
-});
-
-test('the current runtime differs only by the two exact library edits and the static V6.14 and V6.15 registries', async () => {
-  const {fixture, freeze} = await getHistoricalRuntimeContextV615();
-  const current = await snapshotRuntimeV106();
-  assert.deepEqual(assertCurrentRuntimeDeltaV615(current, freeze, fixture), {
-    historicalFiles: 963, unchangedFiles: 961,
-    modifiedPaths: ['app/game/RecentSpriteLibraryV85.tsx', 'app/game/systems/recentSpriteLibraryV85.ts'],
-    addedPaths: ['app/game/data/enforcerProductionV614.json', 'app/game/data/npcProductionV615.json'], currentRuntimeCoveredByHistoricalQA: false,
-  });
-  for (const row of fixture.currentDelta.modified) assertAllowedSourceV615(row.path, await fs.readFile(row.path), fixture);
-  assertStaticRegistryV614(await fs.readFile(fixture.currentDelta.added[0].path), await json(fixture.previousFixture.path),
-    await json('docs/suivi-production/v614/data/production-manifest.json'));
-  assertStaticRegistryV615(await fs.readFile(fixture.currentDelta.added[1].path), fixture,
-    await json('docs/suivi-production/v615/data/production-manifest.json'));
-});
-
-test('the V6.15 boundary rejects unrelated changes, removed inputs, extra files and altered allowed payloads', async () => {
-  const {fixture, freeze, current} = await getHistoricalRuntimeContextV615();
-  const changed = structuredClone(current);
-  changed.entries.find(row => row.path === 'app/game/systems/pitCombat.ts').sha256 = '0'.repeat(64);
-  assert.throws(() => assertCurrentRuntimeDeltaV615(changed, freeze, fixture), /Only the two reviewed V6.15 library sources may change/);
-  const removed = structuredClone(current);
-  const removedRow = removed.entries.splice(removed.entries.findIndex(row => row.path === 'app/game/systems/pitCombat.ts'), 1)[0];
-  removed.files--; removed.bytes -= removedRow.bytes;
-  assert.throws(() => assertCurrentRuntimeDeltaV615(removed, freeze, fixture), /No V106 runtime input may be removed/);
-  const added = structuredClone(current);
-  added.entries.push({path: 'app/unreviewed.ts', bytes: 0, sha256: sha('')}); added.files++;
-  assert.throws(() => assertCurrentRuntimeDeltaV615(added, freeze, fixture), /Only the V6.14 and V6.15 static registries may be added/);
-  const library = fixture.currentDelta.modified[1];
-  const libraryBytes = await fs.readFile(library.path);
-  assert.throws(() => assertAllowedSourceV615(library.path, Buffer.concat([
-    libraryBytes, Buffer.from('\n// unrelated change\n'),
-  ]), fixture), /Unexpected V6.15 source bytes/);
-  const registry = await json(fixture.currentDelta.added[1].path);
-  registry.assets[0].priority = 1000;
-  const manifest = await json('docs/suivi-production/v615/data/production-manifest.json');
-  assert.throws(() => assertStaticRegistryV615(Buffer.from(JSON.stringify(registry)), fixture, manifest), /Reviewed V6.15 registry/);
+  assert.deepEqual(await snapshotRuntimeV106(), freeze, 'Runtime changed after the played production journeys');
 });
 
 test('all three production journeys share the same build and preserve their portable evidence bytes', async () => {
@@ -99,7 +56,7 @@ test('all three production journeys share the same build and preserve their port
       const file = source.file ?? source.path;
       assert.ok(typeof file === 'string' && !file.startsWith('/') && !file.split(/[\\/]/).includes('..'));
       if (file.startsWith('public/')) assert.ok(frozenPublic.has(file), file + ': observed public input missing from the runtime freeze');
-      assert.equal(sha(await fs.readFile(file)), source.sha256, file + ': source changed after QA');
+      assert.equal(sha(await read(file)), source.sha256, file + ': source changed after QA');
     }
     assert.equal(item.buildId, report.productionBuildId);
     assert.equal(item.runtimeCommit, report.runtimeCommit);

@@ -46,7 +46,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 }
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: 1 | 2) => boolean }) {
+export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: 1 | 2 | 3) => boolean }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);

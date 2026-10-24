@@ -1,3 +1,4 @@
+import {PIT_WORKBOOK_COMBAT_RECIPE_V107, getPitWorkbookCombatMoveV107, usesPitWorkbookMechanicsV106, isPitWorkbookActionInputV107} from './pitWorkbookCombatV107';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V106, getPitWorkbookCombatMoveV106, isPitWorkbookActionInputV106} from './pitWorkbookCombatV106';
 import {getPitWorkbookCombatMoveV105} from './pitWorkbookCombatV105';
 import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './pitCombat';
@@ -13,6 +14,8 @@ import {
 export const PIT_TRAINING_SETTINGS_VERSION = 1;
 export const PIT_TRAINING_SEQUENCE_VERSION = 1;
 export const PIT_TRAINING_SEQUENCE_VERSION_V105 = 2;
+export const PIT_TRAINING_SEQUENCE_VERSION_V107 = 4;
+export const PIT_TRAINING_SEQUENCE_ENCODING_V107 = "dummy-input-rle-v4";
 export const PIT_TRAINING_SEQUENCE_VERSION_V106 = 3;
 export const PIT_TRAINING_SEQUENCE_ENCODING_V106 = "dummy-input-rle-v3";
 export const PIT_TRAINING_SEQUENCE_ENCODING_V105 = "dummy-input-rle-v2";
@@ -192,9 +195,9 @@ export interface PitTrainingSequenceMetadata {
 }
 
 export interface PitTrainingSequence {
-  version: typeof PIT_TRAINING_SEQUENCE_VERSION | typeof PIT_TRAINING_SEQUENCE_VERSION_V105 | typeof PIT_TRAINING_SEQUENCE_VERSION_V106;
+  version: typeof PIT_TRAINING_SEQUENCE_VERSION | typeof PIT_TRAINING_SEQUENCE_VERSION_V105 | typeof PIT_TRAINING_SEQUENCE_VERSION_V106 | typeof PIT_TRAINING_SEQUENCE_VERSION_V107;
   tickRate: typeof PIT_TICK_RATE;
-  encoding: typeof PIT_TRAINING_SEQUENCE_ENCODING | typeof PIT_TRAINING_SEQUENCE_ENCODING_V105 | typeof PIT_TRAINING_SEQUENCE_ENCODING_V106;
+  encoding: typeof PIT_TRAINING_SEQUENCE_ENCODING | typeof PIT_TRAINING_SEQUENCE_ENCODING_V105 | typeof PIT_TRAINING_SEQUENCE_ENCODING_V106 | typeof PIT_TRAINING_SEQUENCE_ENCODING_V107;
   segments: readonly PitTrainingSequenceSegment[];
   metadata: PitTrainingSequenceMetadata;
 }
@@ -342,7 +345,7 @@ function resolveCpuInput(state: PitCombatState, dummySlot: 0 | 1): PitTrainingIn
   if (cycle < 40) return { down: true, guardLow: true };
   if (distance < 48 && cycle >= 150) return awayInput(signedDistance);
   if (cycle === 60) return { attack: "light" };
-  if (cycle === 100) return dummy.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? {workbookAction:'contact'} : { attack: 'technique' };
+  if (cycle === 100) return usesPitWorkbookMechanicsV106(dummy.normalMovesRecipe) ? {workbookAction:'contact'} : { attack: 'technique' };
   if (cycle === 140) return { attack: "medium" };
   return emptyInput();
 }
@@ -421,7 +424,7 @@ export function getPitTrainingFrameReadout(
     phaseFrame = phaseTotalFrames === null ? null : Math.max(1, action.frame - phaseStart + 1);
     framesRemaining = Math.max(0, actionTotalFrames - action.frame);
   } else if (action?.kind === 'equipment') {
-    const move = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
+    const move = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 ? getPitWorkbookCombatMoveV107(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
     if (move) {
       actionLabel = move.label;
       actionTotalFrames = move.startup + move.recovery;
@@ -461,7 +464,7 @@ function assertTrainingInput(input: unknown, version: number): asserts input is 
   for (const key of BOOLEAN_INPUT_KEYS) {
     if (input[key] !== undefined && typeof input[key] !== "boolean") throw sequenceError();
   }
-  if (input.workbookAction !== undefined && ((version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? !isPitWorkbookActionInputV106(input.workbookAction) : version !== PIT_TRAINING_SEQUENCE_VERSION_V105 ||
+  if (input.workbookAction !== undefined && ((version === PIT_TRAINING_SEQUENCE_VERSION_V107 ? !isPitWorkbookActionInputV107(input.workbookAction) : version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? !isPitWorkbookActionInputV106(input.workbookAction) : version !== PIT_TRAINING_SEQUENCE_VERSION_V105 ||
     (input.workbookAction !== 'equipment' && input.workbookAction !== 'contact' && input.workbookAction !== 'counter')) || input.attack !== undefined)) throw sequenceError();
   if (input.attack !== undefined &&
     (typeof input.attack !== "string" || !(input.attack in ATTACK_CODE))) {
@@ -470,25 +473,27 @@ function assertTrainingInput(input: unknown, version: number): asserts input is 
 }
 
 export function encodePitTrainingInput(input: PitTrainingInput = {}, version: number = PIT_TRAINING_SEQUENCE_VERSION): number {
+  if (!Number.isInteger(version) || version < PIT_TRAINING_SEQUENCE_VERSION || version > PIT_TRAINING_SEQUENCE_VERSION_V107) throw sequenceError();
   assertTrainingInput(input, version);
   let packed = 0;
   for (const key of BOOLEAN_INPUT_KEYS) {
-    if (input[key]) packed |= key === 'resource' && version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 1 << 11 : INPUT_FLAGS[key];
+    if (input[key]) packed |= key === 'resource' && version >= PIT_TRAINING_SEQUENCE_VERSION_V106 ? 1 << 11 : INPUT_FLAGS[key];
   }
   if (input.attack !== undefined) packed |= ATTACK_CODE[input.attack] << ATTACK_SHIFT;
-  if (input.workbookAction) packed |= ({equipment:5,contact:6,counter:7,projectile:8,shield:9,super:10}[input.workbookAction]) << ATTACK_SHIFT;
+  if (input.workbookAction) packed |= ({equipment:5,contact:6,counter:7,projectile:8,shield:9,super:10,mine:11,shuriken:12}[input.workbookAction]) << ATTACK_SHIFT;
   return packed;
 }
 
 export function decodePitTrainingInput(packed: number, version: number = PIT_TRAINING_SEQUENCE_VERSION): PitTrainingInput {
-  if (!isIntegerBetween(packed, 0, version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 4095 : MAX_PACKED_INPUT)) throw sequenceError();
-  const attackCode = (packed >> ATTACK_SHIFT) & (version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 15 : 7);
-  if (attackCode > (version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 10 : version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? 7 : 4)) throw sequenceError();
+  if (!Number.isInteger(version) || version < PIT_TRAINING_SEQUENCE_VERSION || version > PIT_TRAINING_SEQUENCE_VERSION_V107) throw sequenceError();
+  if (!isIntegerBetween(packed, 0, version >= PIT_TRAINING_SEQUENCE_VERSION_V106 ? 4095 : MAX_PACKED_INPUT)) throw sequenceError();
+  const attackCode = (packed >> ATTACK_SHIFT) & (version >= PIT_TRAINING_SEQUENCE_VERSION_V106 ? 15 : 7);
+  if (attackCode > (version === PIT_TRAINING_SEQUENCE_VERSION_V107 ? 12 : version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 10 : version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? 7 : 4)) throw sequenceError();
   const input: PitTrainingInput = {};
   for (const key of BOOLEAN_INPUT_KEYS) {
-    if ((packed & (key === 'resource' && version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 1 << 11 : INPUT_FLAGS[key])) !== 0) input[key] = true;
+    if ((packed & (key === 'resource' && version >= PIT_TRAINING_SEQUENCE_VERSION_V106 ? 1 << 11 : INPUT_FLAGS[key])) !== 0) input[key] = true;
   }
-  if (attackCode >= 5) input.workbookAction = ({5:'equipment',6:'contact',7:'counter',8:'projectile',9:'shield',10:'super'} as const)[attackCode as 5|6|7|8|9|10];
+  if (attackCode >= 5) input.workbookAction = ({5:'equipment',6:'contact',7:'counter',8:'projectile',9:'shield',10:'super',11:'mine',12:'shuriken'} as const)[attackCode as 5|6|7|8|9|10|11|12];
   else if (attackCode !== 0) input.attack = ATTACK_BY_CODE[attackCode];
   return input;
 }
@@ -517,9 +522,9 @@ function metadataFor(segments: readonly PitTrainingSequenceSegment[]): PitTraini
 
 export function normalizePitTrainingSequence(value: unknown): PitTrainingSequence | null {
   if (!isRecord(value) || !hasOnlyKeys(value, SEQUENCE_KEYS) ||
-    (value.version !== PIT_TRAINING_SEQUENCE_VERSION && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V105 && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V106) ||
+    (value.version !== PIT_TRAINING_SEQUENCE_VERSION && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V105 && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V106 && value.version !== PIT_TRAINING_SEQUENCE_VERSION_V107) ||
     value.tickRate !== PIT_TICK_RATE ||
-    (value.encoding !== (value.version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING)) ||
+    (value.encoding !== (value.version === PIT_TRAINING_SEQUENCE_VERSION_V107 ? PIT_TRAINING_SEQUENCE_ENCODING_V107 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING)) ||
     !Array.isArray(value.segments) || value.segments.length > PIT_TRAINING_SEQUENCE_MAX_SEGMENTS ||
     !isRecord(value.metadata) || !hasOnlyKeys(value.metadata, SEQUENCE_METADATA_KEYS)) {
     return null;
@@ -531,7 +536,7 @@ export function normalizePitTrainingSequence(value: unknown): PitTrainingSequenc
   for (const candidate of value.segments) {
     if (!Array.isArray(candidate) || candidate.length !== 2 ||
       !isIntegerBetween(candidate[0], 1, PIT_TRAINING_SEQUENCE_MAX_TICKS) ||
-      !isIntegerBetween(candidate[1], 0, value.version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? 4095 : MAX_PACKED_INPUT) ||
+      !isIntegerBetween(candidate[1], 0, value.version >= PIT_TRAINING_SEQUENCE_VERSION_V106 ? 4095 : MAX_PACKED_INPUT) ||
       candidate[1] === previousPacked || ticks + candidate[0] > PIT_TRAINING_SEQUENCE_MAX_TICKS) {
       return null;
     }
@@ -554,7 +559,7 @@ export function normalizePitTrainingSequence(value: unknown): PitTrainingSequenc
   return {
     version: value.version,
     tickRate: PIT_TICK_RATE,
-    encoding: value.version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
+    encoding: value.version === PIT_TRAINING_SEQUENCE_VERSION_V107 ? PIT_TRAINING_SEQUENCE_ENCODING_V107 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : value.version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
     segments,
     metadata,
   };
@@ -575,7 +580,10 @@ export function createPitTrainingSequenceRecorder(): PitTrainingSequenceRecorder
     },
     append(input: PitTrainingInput = {}) {
       if (result || tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) throw sequenceError();
-      if ((input.workbookAction === 'projectile' || input.workbookAction === 'shield' || input.workbookAction === 'super') && version !== PIT_TRAINING_SEQUENCE_VERSION_V106) {
+      if ((input.workbookAction === 'mine' || input.workbookAction === 'shuriken') && version !== PIT_TRAINING_SEQUENCE_VERSION_V107) {
+        for (const segment of segments) segment[1] = encodePitTrainingInput(decodePitTrainingInput(segment[1], version), PIT_TRAINING_SEQUENCE_VERSION_V107);
+        version = PIT_TRAINING_SEQUENCE_VERSION_V107;
+      } else if ((input.workbookAction === 'projectile' || input.workbookAction === 'shield' || input.workbookAction === 'super') && version < PIT_TRAINING_SEQUENCE_VERSION_V106) {
         for (const segment of segments) segment[1] = encodePitTrainingInput(decodePitTrainingInput(segment[1], version), PIT_TRAINING_SEQUENCE_VERSION_V106);
         version = PIT_TRAINING_SEQUENCE_VERSION_V106;
       } else if (input.workbookAction !== undefined && version === PIT_TRAINING_SEQUENCE_VERSION) version = PIT_TRAINING_SEQUENCE_VERSION_V105;
@@ -591,7 +599,7 @@ export function createPitTrainingSequenceRecorder(): PitTrainingSequenceRecorder
       result = {
         version,
         tickRate: PIT_TICK_RATE,
-        encoding: version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
+        encoding: version === PIT_TRAINING_SEQUENCE_VERSION_V107 ? PIT_TRAINING_SEQUENCE_ENCODING_V107 : version === PIT_TRAINING_SEQUENCE_VERSION_V106 ? PIT_TRAINING_SEQUENCE_ENCODING_V106 : version === PIT_TRAINING_SEQUENCE_VERSION_V105 ? PIT_TRAINING_SEQUENCE_ENCODING_V105 : PIT_TRAINING_SEQUENCE_ENCODING,
         segments: readonlySegments,
         metadata: metadataFor(readonlySegments),
       };
