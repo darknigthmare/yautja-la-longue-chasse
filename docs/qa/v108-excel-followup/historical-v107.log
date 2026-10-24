@@ -1,0 +1,806 @@
+TAP version 13
+# Subtest: import W3-S09 after selecting the duel rival restores a real movable carrier
+ok 1 - import W3-S09 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 37.671203
+  type: 'test'
+  ...
+# Subtest: import W3-S10 after selecting the duel rival restores a real movable carrier
+ok 2 - import W3-S10 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 26.511351
+  type: 'test'
+  ...
+# Subtest: import W3-S13 after selecting the duel rival restores a real movable carrier
+ok 3 - import W3-S13 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 24.363726
+  type: 'test'
+  ...
+# Subtest: import W3-S15 after selecting the duel rival restores a real movable carrier
+ok 4 - import W3-S15 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 19.454637
+  type: 'test'
+  ...
+# Subtest: import W3-S18 after selecting the duel rival restores a real movable carrier
+ok 5 - import W3-S18 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 22.859982
+  type: 'test'
+  ...
+# Subtest: a refused import preserves the duel checkpoint and its valid rival selection
+ok 6 - a refused import preserves the duel checkpoint and its valid rival selection
+  ---
+  duration_ms: 3.514056
+  type: 'test'
+  ...
+# Subtest: choosing a pending file clears the old draft and blocks even the previous import callback
+ok 7 - choosing a pending file clears the old draft and blocks even the previous import callback
+  ---
+  duration_ms: 25.595377
+  type: 'test'
+  ...
+# Subtest: file B remains selected when older file A completes last
+ok 8 - file B remains selected when older file A completes last
+  ---
+  duration_ms: 21.939281
+  type: 'test'
+  ...
+# Subtest: an older completion cannot unlock import while the newer file is still pending
+ok 9 - an older completion cannot unlock import while the newer file is still pending
+  ---
+  duration_ms: 15.007852
+  type: 'test'
+  ...
+# Subtest: a late read error from A neither rejects nor changes the accepted file B
+ok 10 - a late read error from A neither rejects nor changes the accepted file B
+  ---
+  duration_ms: 11.132011
+  type: 'test'
+  ...
+# Subtest: the current read rejection is caught and cannot reimport the old valid draft
+ok 11 - the current read rejection is caught and cannot reimport the old valid draft
+  ---
+  duration_ms: 7.857028
+  type: 'test'
+  ...
+# Subtest: empty selection never reads or reimports the old draft and invalidates a pending file
+ok 12 - empty selection never reads or reimports the old draft and invalidates a pending file
+  ---
+  duration_ms: 10.592333
+  type: 'test'
+  ...
+# Subtest: oversized selection never reads or reimports the old draft and invalidates a pending file
+ok 13 - oversized selection never reads or reimports the old draft and invalidates a pending file
+  ---
+  duration_ms: 11.44265
+  type: 'test'
+  ...
+# Subtest: an empty selection abandons the pending read without restoring the old draft
+ok 14 - an empty selection abandons the pending read without restoring the old draft
+  ---
+  duration_ms: 11.336333
+  type: 'test'
+  ...
+# Subtest: native file cancellation invalidates a pending read, including a later rejection
+ok 15 - native file cancellation invalidates a pending read, including a later rejection
+  ---
+  duration_ms: 7.163803
+  type: 'test'
+  ...
+# Subtest: a queued manual edit cancels an outstanding read and preserves the latest typed draft
+ok 16 - a queued manual edit cancels an outstanding read and preserves the latest typed draft
+  ---
+  duration_ms: 11.392045
+  type: 'test'
+  ...
+# Subtest: a whitespace-only file releases loading but remains empty and cannot replace the current checkpoint
+ok 17 - a whitespace-only file releases loading but remains empty and cannot replace the current checkpoint
+  ---
+  duration_ms: 7.929104
+  type: 'test'
+  ...
+# Subtest: six contracts extract exact source costs, operator, cells and finite real members
+ok 18 - six contracts extract exact source costs, operator, cells and finite real members
+  ---
+  duration_ms: 24.88715
+  type: 'test'
+  ...
+# Subtest: reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+ok 19 - reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+  ---
+  duration_ms: 34.811364
+  type: 'test'
+  ...
+# Subtest: all six can actually be built, supplied and staffed without campaign or historical changes
+ok 20 - all six can actually be built, supplied and staffed without campaign or historical changes
+  ---
+  duration_ms: 149.219556
+  type: 'test'
+  ...
+# Subtest: local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+ok 21 - local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+  ---
+  duration_ms: 52.56776
+  type: 'test'
+  ...
+# Subtest: dock traverses real positions with unique pilot, current window and identical passenger IDs
+ok 22 - dock traverses real positions with unique pilot, current window and identical passenger IDs
+  ---
+  duration_ms: 34.860076
+  type: 'test'
+  ...
+# Subtest: mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+ok 23 - mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+  ---
+  duration_ms: 70.332519
+  type: 'test'
+  ...
+# Subtest: releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+ok 24 - releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+  ---
+  duration_ms: 36.504808
+  type: 'test'
+  ...
+# Subtest: confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+ok 25 - confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+  ---
+  duration_ms: 71.117128
+  type: 'test'
+  ...
+# Subtest: accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+ok 26 - accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+  ---
+  duration_ms: 59.598606
+  type: 'test'
+  ...
+# Subtest: a non-signatory remains movable and actually interrupts a duel when entering its space
+ok 27 - a non-signatory remains movable and actually interrupts a duel when entering its space
+  ---
+  duration_ms: 52.350429
+  type: 'test'
+  ...
+# Subtest: listening uses two real located WAVs, enforces range and wall, compares only on return to station
+ok 28 - listening uses two real located WAVs, enforces range and wall, compares only on return to station
+  ---
+  duration_ms: 65.746948
+  type: 'test'
+  ...
+# Subtest: orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+ok 29 - orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+  ---
+  duration_ms: 93.15825
+  type: 'test'
+  ...
+# Subtest: surface U26 and U19 cannot walk to the projected orbital layer before boarding
+ok 30 - surface U26 and U19 cannot walk to the projected orbital layer before boarding
+  ---
+  duration_ms: 59.374395
+  type: 'test'
+  ...
+# Subtest: future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+ok 31 - future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+  ---
+  duration_ms: 182.657308
+  type: 'test'
+  ...
+# Subtest: the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+ok 32 - the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+  ---
+  duration_ms: 2.52905
+  type: 'test'
+  ...
+# Subtest: retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+ok 33 - retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+  ---
+  duration_ms: 42.252462
+  type: 'test'
+  ...
+# Subtest: eighteen alternative poses reuse existing identities without replacing any automatic selection
+ok 34 - eighteen alternative poses reuse existing identities without replacing any automatic selection
+  ---
+  duration_ms: 3086.141487
+  type: 'test'
+  ...
+# Subtest: native accepted files have matching actual receipts, real alpha and complete visible silhouettes
+ok 35 - native accepted files have matching actual receipts, real alpha and complete visible silhouettes
+  ---
+  duration_ms: 904.211597
+  type: 'test'
+  ...
+# Subtest: all eight original families and the supplemental Homeworld flow have bounded current workstreams
+ok 36 - all eight original families and the supplemental Homeworld flow have bounded current workstreams
+  ---
+  duration_ms: 23.100698
+  type: 'test'
+  ...
+# Subtest: a naked PASS, missing freeze, source disarm fiction and unknown family cannot promote delivery
+ok 37 - a naked PASS, missing freeze, source disarm fiction and unknown family cannot promote delivery
+  ---
+  duration_ms: 26.371925
+  type: 'test'
+  ...
+# Subtest: 73 worksheets retain every historical value, formula, table, style prefix and60 sheet parts
+ok 38 - 73 worksheets retain every historical value, formula, table, style prefix and60 sheet parts
+  ---
+  duration_ms: 426.432079
+  type: 'test'
+  ...
+# Subtest: all77 original open rows remain exact and their V107 partial reference annotations cannot close a kit
+ok 39 - all77 original open rows remain exact and their V107 partial reference annotations cannot close a kit
+  ---
+  duration_ms: 9.789877
+  type: 'test'
+  ...
+# Subtest: source campaigns and variant cells survive independently of exercises, skins and mechanics
+ok 40 - source campaigns and variant cells survive independently of exercises, skins and mechanics
+  ---
+  duration_ms: 7.184742
+  type: 'test'
+  ...
+# Subtest: source drawings, separate workshops and declared Preserve counts grant no unproved complete-state claims
+ok 41 - source drawings, separate workshops and declared Preserve counts grant no unproved complete-state claims
+  ---
+  duration_ms: 0.585194
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-excel-history-v107-0qeCd4/scripts/build-excel-followup-v107.py", line 24, in <module>
+#     json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/tmp/yautja-excel-history-v107-0qeCd4/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+#     assert set(changed) <= ASSEMBLY_PARTS, changed
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/sheet1.xml']
+# Subtest: a modified historical cell is rejected by the independent ZIP/XML verifier
+ok 42 - a modified historical cell is rejected by the independent ZIP/XML verifier
+  ---
+  duration_ms: 434.009852
+  type: 'test'
+  ...
+# Subtest: generation and --check reproduce the exact current products without pretending native Excel ran
+ok 43 - generation and --check reproduce the exact current products without pretending native Excel ran
+  ---
+  duration_ms: 20946.564586
+  type: 'test'
+  ...
+# Subtest: V106 history contains its complete all-app freeze without redirecting current imports
+ok 44 - V106 history contains its complete all-app freeze without redirecting current imports
+  ---
+  duration_ms: 1544.110638
+  type: 'test'
+  ...
+# Subtest: published V106 products and evidence are shared only with exact before and after hashes
+ok 45 - published V106 products and evidence are shared only with exact before and after hashes
+  ---
+  duration_ms: 829.709885
+  type: 'test'
+  ...
+# Subtest: a changed private V106 source is rejected while the immutable source in the current repository stays intact
+ok 46 - a changed private V106 source is rejected while the immutable source in the current repository stays intact
+  ---
+  duration_ms: 972.820168
+  type: 'test'
+  ...
+# Subtest: V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+ok 47 - V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+  ---
+  duration_ms: 84.80428
+  type: 'test'
+  ...
+# Subtest: a declared surveyed V3 fixture physically returns and preserves only its actual site records
+ok 48 - a declared surveyed V3 fixture physically returns and preserves only its actual site records
+  ---
+  duration_ms: 19.726515
+  type: 'test'
+  ...
+# Subtest: V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+ok 49 - V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+  ---
+  duration_ms: 37.588664
+  type: 'test'
+  ...
+# Subtest: V1 and V2 remain supported; mixed identities are invalid and only version four remains future
+ok 50 - V1 and V2 remain supported; mixed identities are invalid and only version four remains future
+  ---
+  duration_ms: 4.289288
+  type: 'test'
+  ...
+# Subtest: V107 is explicitly selected with eight contiguous sectors, sixteen adults and four physical escape groups
+ok 51 - V107 is explicitly selected with eight contiguous sectors, sixteen adults and four physical escape groups
+  ---
+  duration_ms: 3.322555
+  type: 'test'
+  ...
+# Subtest: V1 and V2 factories and deterministic played traces remain byte-identical to the frozen V106 source
+ok 52 - V1 and V2 factories and deterministic played traces remain byte-identical to the frozen V106 source
+  ---
+  duration_ms: 1432.37813
+  type: 'test'
+  ...
+# Subtest: all four posts and eight sectors are reached with native walking and jumps, then physically returned
+ok 53 - all four posts and eight sectors are reached with native walking and jumps, then physically returned
+  ---
+  duration_ms: 390.700767
+  type: 'test'
+  ...
+# Subtest: root platforms provide a distinct physical upper route and do not replace the walkable ground
+ok 54 - root platforms provide a distinct physical upper route and do not replace the walkable ground
+  ---
+  duration_ms: 134.933682
+  type: 'test'
+  ...
+# Subtest: V3 channels require their real post, exact duration, exposure and an independent record for each site
+ok 55 - V3 channels require their real post, exact duration, exposure and an independent record for each site
+  ---
+  duration_ms: 108.60232
+  type: 'test'
+  ...
+# Subtest: V3 normalization rejects malformed routes, mixed versions, forged positions and array bounds
+ok 56 - V3 normalization rejects malformed routes, mixed versions, forged positions and array bounds
+  ---
+  duration_ms: 1.868567
+  type: 'test'
+  ...
+# Subtest: recorded posts, wounds, visits and material cannot regress or be backdated in a V3 checkpoint
+ok 57 - recorded posts, wounds, visits and material cannot regress or be backdated in a V3 checkpoint
+  ---
+  duration_ms: 139.532826
+  type: 'test'
+  ...
+# Subtest: the four groups actually transport conserved components, repair and board their own physical aircraft
+ok 58 - the four groups actually transport conserved components, repair and board their own physical aircraft
+  ---
+  duration_ms: 1474.978423
+  type: 'test'
+  ...
+# Subtest: new sight and witness profiles affect actual simulation while the field notebook conceals unseen people
+ok 59 - new sight and witness profiles affect actual simulation while the field notebook conceals unseen people
+  ---
+  duration_ms: 301.285156
+  type: 'test'
+  ...
+# Subtest: V107 exact A lines retain pinned source, announced action and no automatic reward
+ok 60 - V107 exact A lines retain pinned source, announced action and no automatic reward
+  ---
+  duration_ms: 331.542702
+  type: 'test'
+  ...
+# Subtest: V107 prerequisite is the preserved completed B operation and choice cannot mutate B
+ok 61 - V107 prerequisite is the preserved completed B operation and choice cannot mutate B
+  ---
+  duration_ms: 18.2725
+  type: 'test'
+  ...
+# Subtest: V107 motor carries a discovered object with provenance, observes both supports and requires explicit confrontation and walked report
+ok 62 - V107 motor carries a discovered object with provenance, observes both supports and requires explicit confrontation and walked report
+  ---
+  duration_ms: 658.400951
+  type: 'test'
+  ...
+# Subtest: V107 discovery and provenance are separate durable gates, and table does not infer a result
+ok 63 - V107 discovery and provenance are separate durable gates, and table does not infer a result
+  ---
+  duration_ms: 183.270932
+  type: 'test'
+  ...
+# Subtest: V107 interruption, parking, imports and pickup retain original discovery and copied provenance
+ok 64 - V107 interruption, parking, imports and pickup retain original discovery and copied provenance
+  ---
+  duration_ms: 4.172775
+  type: 'test'
+  ...
+# Subtest: V107 refused durable discovery, carry, comparison and report are atomic and stale owners/revisions cannot write
+ok 65 - V107 refused durable discovery, carry, comparison and report are atomic and stale owners/revisions cannot write
+  ---
+  duration_ms: 213.086459
+  type: 'test'
+  ...
+# Subtest: V107 strict optional Save import enforces completed B, ownership, exact carried checkpoints and immutable source
+ok 66 - V107 strict optional Save import enforces completed B, ownership, exact carried checkpoints and immutable source
+  ---
+  duration_ms: 537.685335
+  type: 'test'
+  ...
+# Subtest: V107 new native lectern collision is shared by motor, routes and conditional atlas guides
+ok 67 - V107 new native lectern collision is shared by motor, routes and conditional atlas guides
+  ---
+  duration_ms: 460.220271
+  type: 'test'
+  ...
+# Subtest: V107 strict discriminants reject arrays and lookalike objects before Save import can lock a carried operation
+ok 68 - V107 strict discriminants reject arrays and lookalike objects before Save import can lock a carried operation
+  ---
+  duration_ms: 3.3317
+  type: 'test'
+  ...
+# Subtest: V107 physically valid foreground walking preserves save/pause/resume but never allows hidden interaction
+ok 69 - V107 physically valid foreground walking preserves save/pause/resume but never allows hidden interaction
+  ---
+  duration_ms: 5935.69243
+  type: 'test'
+  ...
+# Subtest: V107 local map preserves source C, displayed placements and uncertainty without claiming a plaque or contents
+ok 70 - V107 local map preserves source C, displayed placements and uncertainty without claiming a plaque or contents
+  ---
+  duration_ms: 15.346313
+  type: 'test'
+  ...
+# Subtest: all77 original open rows and eight families are covered without granting a runtime validation
+ok 71 - all77 original open rows and eight families are covered without granting a runtime validation
+  ---
+  duration_ms: 221.955229
+  type: 'test'
+  ...
+# Subtest: missing rows, forged source cells, duplicate IDs and an audit closure are rejected
+ok 72 - missing rows, forged source cells, duplicate IDs and an audit closure are rejected
+  ---
+  duration_ms: 18.575458
+  type: 'test'
+  ...
+# Subtest: the original V6 hash and supplemental Homeworld counts cannot silently become delivery claims
+ok 73 - the original V6 hash and supplemental Homeworld counts cannot silently become delivery claims
+  ---
+  duration_ms: 337.107499
+  type: 'test'
+  ...
+# Subtest: the two V79 references remain partial right-facing drawings rather than missing identities or complete animated kits
+ok 74 - the two V79 references remain partial right-facing drawings rather than missing identities or complete animated kits
+  ---
+  duration_ms: 150.62613
+  type: 'test'
+  ...
+# Subtest: native Enter/Space activate Pause, Resume, Briefing and Retry without becoming field input
+ok 75 - native Enter/Space activate Pause, Resume, Briefing and Retry without becoming field input
+  ---
+  duration_ms: 1737.602978
+  type: 'test'
+  ...
+# Subtest: all16 source cells are retained verbatim, exact stages are usable and absent source NPCs stay explicitly unadmitted
+ok 76 - all16 source cells are retained verbatim, exact stages are usable and absent source NPCs stay explicitly unadmitted
+  ---
+  duration_ms: 5.542774
+  type: 'test'
+  ...
+# Subtest: field objectives require real walking and sustained nearby input, keep the same beacon, and cannot complete from a distant hold
+ok 77 - field objectives require real walking and sustained nearby input, keep the same beacon, and cannot complete from a distant hold
+  ---
+  duration_ms: 13.685444
+  type: 'test'
+  ...
+# Subtest: a complete eight-stage exercise for each hero uses four physically completed field goals and four actual earned match victories
+ok 78 - a complete eight-stage exercise for each hero uses four physically completed field goals and four actual earned match victories
+  ---
+  duration_ms: 186.711253
+  type: 'test'
+  ...
+# Subtest: a defeat retries only the current encounter, preserving previous field receipts and the carried object
+ok 79 - a defeat retries only the current encounter, preserving previous field receipts and the carried object
+  ---
+  duration_ms: 1.593142
+  type: 'test'
+  ...
+# Subtest: hundreds of defeats remain reloadable without losing a completed field or the newest retry result
+ok 80 - hundreds of defeats remain reloadable without losing a completed field or the newest retry result
+  ---
+  duration_ms: 629.777957
+  type: 'test'
+  ...
+# Subtest: UTF8 checkpoint limits reject a multibyte protected payload and never serialize an unreadable save
+ok 81 - UTF8 checkpoint limits reject a multibyte protected payload and never serialize an unreadable save
+  ---
+  duration_ms: 2.313111
+  type: 'test'
+  ...
+# Subtest: bounded later retries preserve every earned stage receipt and all three real winning counter proofs
+ok 82 - bounded later retries preserve every earned stage receipt and all three real winning counter proofs
+  ---
+  duration_ms: 242.597087
+  type: 'test'
+  ...
+# Subtest: wrong actors, stage, mode or winner cannot advance an exercise and a result is idempotent
+ok 83 - wrong actors, stage, mode or winner cannot advance an exercise and a result is idempotent
+  ---
+  duration_ms: 0.911508
+  type: 'test'
+  ...
+# Subtest: checkpoint/reload returns an interrupted field or duel to its current briefing and rejects a foreign owner or stale source
+ok 84 - checkpoint/reload returns an interrupted field or duel to its current briefing and rejects a foreign owner or stale source
+  ---
+  duration_ms: 0.541601
+  type: 'test'
+  ...
+# Subtest: a plain victory at the passage never substitutes for the three actual counters
+ok 85 - a plain victory at the passage never substitutes for the three actual counters
+  ---
+  duration_ms: 14.115053
+  type: 'test'
+  ...
+# Subtest: a checkpoint cannot claim completed stages without physical or match evidence, alter an earned winner, or duplicate a receipt
+ok 86 - a checkpoint cannot claim completed stages without physical or match evidence, alter an earned winner, or duplicate a receipt
+  ---
+  duration_ms: 6.256142
+  type: 'test'
+  ...
+# Subtest: the two conclusions keep six existing drawings per independent face, exact300ticks and unchanged source PNGs
+ok 87 - the two conclusions keep six existing drawings per independent face, exact300ticks and unchanged source PNGs
+  ---
+  duration_ms: 16.190653
+  type: 'test'
+  ...
+# Subtest: the recoverable beacon and physical target are introduced before the duel, not spawned at its conclusion
+ok 88 - the recoverable beacon and physical target are introduced before the duel, not spawned at its conclusion
+  ---
+  duration_ms: 5.40334
+  type: 'test'
+  ...
+# Subtest: a real earned final Scar victory triggers physical native staff contact against the actual independent opponent in both facings
+ok 89 - a real earned final Scar victory triggers physical native staff contact against the actual independent opponent in both facings
+  ---
+  duration_ms: 196.063192
+  type: 'test'
+  ...
+# Subtest: the real fatal thrust drops the unique inert alternative-duel prop, which falls to the floor without disarm, recovery or gain in both facings
+ok 90 - the real fatal thrust drops the unique inert alternative-duel prop, which falls to the floor without disarm, recovery or gain in both facings
+  ---
+  duration_ms: 141.373045
+  type: 'test'
+  ...
+# Subtest: fatal-prop snapshots require the true thrust cause and its exact resumed trajectory, without a fabricated disarm event
+ok 91 - fatal-prop snapshots require the true thrust cause and its exact resumed trajectory, without a fabricated disarm event
+  ---
+  duration_ms: 11.13084
+  type: 'test'
+  ...
+# Subtest: final victory, exact source BODY and hostile adult equipment context are required; safer contexts never start the lethal branch
+ok 92 - final victory, exact source BODY and hostile adult equipment context are required; safer contexts never start the lethal branch
+  ---
+  duration_ms: 1.037484
+  type: 'test'
+  ...
+# Subtest: mercy requires the pre-existing physical objective and its target owner; missing props do not become a new mission reward
+ok 93 - mercy requires the pre-existing physical objective and its target owner; missing props do not become a new mission reward
+  ---
+  duration_ms: 0.457096
+  type: 'test'
+  ...
+# Subtest: a detached inert device and a recovered real beacon deliver a partial source result, not an armed disarm
+ok 94 - a detached inert device and a recovered real beacon deliver a partial source result, not an armed disarm
+  ---
+  duration_ms: 133.41066
+  type: 'test'
+  ...
+# Subtest: no retrieval occurs when the physically attached target is outside the native disarm volume
+ok 95 - no retrieval occurs when the physically attached target is outside the native disarm volume
+  ---
+  duration_ms: 20.395531
+  type: 'test'
+  ...
+# Subtest: caller-supplied mechanism and pose flags cannot fabricate the still-missing offensive weapon and disarmed BODY admissions
+ok 96 - caller-supplied mechanism and pose flags cannot fabricate the still-missing offensive weapon and disarmed BODY admissions
+  ---
+  duration_ms: 40.446123
+  type: 'test'
+  ...
+# Subtest: pause, bounded clock, live safer preference and skip cannot restart the scene or heal the defeated opponent
+ok 97 - pause, bounded clock, live safer preference and skip cannot restart the scene or heal the defeated opponent
+  ---
+  duration_ms: 0.579426
+  type: 'test'
+  ...
+# Subtest: a mid-contact save resumes the same physical prop flight, recovery receipt and source qualification
+ok 98 - a mid-contact save resumes the same physical prop flight, recovery receipt and source qualification
+  ---
+  duration_ms: 29.631269
+  type: 'test'
+  ...
+# Subtest: new sidecar snapshots reject forged wounds, contact rectangles, duplicate receipts, ownership and fake disarm admissions
+ok 99 - new sidecar snapshots reject forged wounds, contact rectangles, duplicate receipts, ownership and fake disarm admissions
+  ---
+  duration_ms: 15.206698
+  type: 'test'
+  ...
+# Subtest: a missing physical pickup never paints the final token, while a completed objective retains its native final hand at the result
+ok 100 - a missing physical pickup never paints the final token, while a completed objective retains its native final hand at the result
+  ---
+  duration_ms: 18.911477
+  type: 'test'
+  ...
+# Subtest: mine and shuriken own exact source clocks/costs and first physically detached native drawing in both directions
+ok 101 - mine and shuriken own exact source clocks/costs and first physically detached native drawing in both directions
+  ---
+  duration_ms: 41.166909
+  type: 'test'
+  ...
+# Subtest: mine arming colors cause no free hit; only a real ground proximity at94 detonates once for105 base
+ok 102 - mine arming colors cause no free hit; only a real ground proximity at94 detonates once for105 base
+  ---
+  duration_ms: 9.100608
+  type: 'test'
+  ...
+# Subtest: mine arming alone never attacks a distant actor, and a genuine jump evades its low proximity
+ok 103 - mine arming alone never attacks a distant actor, and a genuine jump evades its low proximity
+  ---
+  duration_ms: 6.081043
+  type: 'test'
+  ...
+# Subtest: the mine requires a frontal low guard, and a new round issues exactly one fresh object
+ok 104 - the mine requires a frontal low guard, and a new round issues exactly one fresh object
+  ---
+  duration_ms: 23.584928
+  type: 'test'
+  ...
+# Subtest: a low physical strike destroys the independent mine without damage or free Traque
+ok 105 - a low physical strike destroys the independent mine without damage or free Traque
+  ---
+  duration_ms: 8.007722
+  type: 'test'
+  ...
+# Subtest: shuriken is one autonomous physical flight, blocked without chip and bounded on a whiff
+ok 106 - shuriken is one autonomous physical flight, blocked without chip and bounded on a whiff
+  ---
+  duration_ms: 23.918271
+  type: 'test'
+  ...
+# Subtest: single possession survives only unreleased interruption; deployed mine/star persists through a real enemy hit
+ok 107 - single possession survives only unreleased interruption; deployed mine/star persists through a real enemy hit
+  ---
+  duration_ms: 2.837917
+  type: 'test'
+  ...
+# Subtest: insufficient gauge, wrong character command and EQUIP never create or replenish an item
+ok 108 - insufficient gauge, wrong character command and EQUIP never create or replenish an item
+  ---
+  duration_ms: 6.790181
+  type: 'test'
+  ...
+# Subtest: new source motions22Feral/214Scar are recognized only under V15, at both facings
+ok 109 - new source motions22Feral/214Scar are recognized only under V15, at both facings
+  ---
+  duration_ms: 1.454781
+  type: 'test'
+  ...
+# Subtest: snapshots preserve both device lifecycles at native boundaries and reject possession/codec forgery
+ok 110 - snapshots preserve both device lifecycles at native boundaries and reject possession/codec forgery
+  ---
+  duration_ms: 118.051086
+  type: 'test'
+  ...
+# Subtest: V15 replay/training inputs admit only the two new codes and preserve old resource bits during recorder promotion
+ok 111 - V15 replay/training inputs admit only the two new codes and preserve old resource bits during recorder promotion
+  ---
+  duration_ms: 1.732092
+  type: 'test'
+  ...
+# Subtest: a real recorded V15 duel earns its gauge, deploys both physical objects and replays byte-exactly
+ok 112 - a real recorded V15 duel earns its gauge, deploys both physical objects and replays byte-exactly
+  ---
+  duration_ms: 25.623512
+  type: 'test'
+  ...
+# Subtest: both V14 traces remain byte-exact to the captured pre-device engine through960ticks each
+ok 113 - both V14 traces remain byte-exact to the captured pre-device engine through960ticks each
+  ---
+  duration_ms: 46.882962
+  type: 'test'
+  ...
+# Subtest: actual decoder admits the two independent source conclusions and preserves all source ticks, faces, crops and ownership
+ok 114 - actual decoder admits the two independent source conclusions and preserves all source ticks, faces, crops and ownership
+  ---
+  duration_ms: 18.44725
+  type: 'test'
+  ...
+# Subtest: the isolated native device crop contains one detached object, clear alpha gutters and no body pixels
+ok 115 - the isolated native device crop contains one detached object, clear alpha gutters and no body pixels
+  ---
+  duration_ms: 8.579117
+  type: 'test'
+  ...
+# Subtest: real source scenes draw exactly two independent native actors, retain physical props and never mutate the earned result
+ok 116 - real source scenes draw exactly two independent native actors, retain physical props and never mutate the earned result
+  ---
+  duration_ms: 647.760402
+  type: 'test'
+  ...
+# Subtest: the ground beacon is rendered at frame zero and its native final hand is never selected before an actual pickup
+ok 117 - the ground beacon is rendered at frame zero and its native final hand is never selected before an actual pickup
+  ---
+  duration_ms: 18.130672
+  type: 'test'
+  ...
+# Subtest: the two independent devices use their real source phases and physical ownership in both orientations
+ok 118 - the two independent devices use their real source phases and physical ownership in both orientations
+  ---
+  duration_ms: 131.602976
+  type: 'test'
+  ...
+# Subtest: new five-bladed art is the unchanged generated original and never an inherited smart-disc asset
+ok 119 - new five-bladed art is the unchanged generated original and never an inherited smart-disc asset
+  ---
+  duration_ms: 29.922339
+  type: 'test'
+  ...
+# Subtest: the preparation gate accepts the real mixed V34/V40 actor bank and refuses a genuinely missing Scar walk
+ok 120 - the preparation gate accepts the real mixed V34/V40 actor bank and refuses a genuinely missing Scar walk
+  ---
+  duration_ms: 2026.540793
+  type: 'test'
+  ...
+# Subtest: the pure capability contract imports no combat/render runtime and preserves all14 open source constraints
+ok 121 - the pure capability contract imports no combat/render runtime and preserves all14 open source constraints
+  ---
+  duration_ms: 3.699911
+  type: 'test'
+  ...
+# Subtest: all52 default action drawing admissions have real, SHA-matching native PNG pages in both orientations
+ok 122 - all52 default action drawing admissions have real, SHA-matching native PNG pages in both orientations
+  ---
+  duration_ms: 337.520167
+  type: 'test'
+  ...
+# Subtest: Scar masked keeps seven genuinely native partial sequences without borrowing default workbook actions
+ok 123 - Scar masked keeps seven genuinely native partial sequences without borrowing default workbook actions
+  ---
+  duration_ms: 21.70249
+  type: 'test'
+  ...
+# Subtest: one-frame skins, unknown/foreign appearances and a missing direction never create an animation admission
+ok 124 - one-frame skins, unknown/foreign appearances and a missing direction never create an animation admission
+  ---
+  duration_ms: 2.00816
+  type: 'test'
+  ...
+# Subtest: lost/stowed/broken weapons, damaged armor and mask changes fail closed; cloak respects incarnation and live equipment
+ok 125 - lost/stowed/broken weapons, damaged armor and mask changes fail closed; cloak respects incarnation and live equipment
+  ---
+  duration_ms: 3.760741
+  type: 'test'
+  ...
+# Subtest: the12 existing Feral/Scar reference portraits retain their actual SHA/dimensions and a single right-facing static pose
+ok 126 - the12 existing Feral/Scar reference portraits retain their actual SHA/dimensions and a single right-facing static pose
+  ---
+  duration_ms: 31.753441
+  type: 'test'
+  ...
+# Subtest: the exact PR15 production proofs and strict V614/V615 runtime delta assertions pass in their original private context
+ok 127 - the exact PR15 production proofs and strict V614/V615 runtime delta assertions pass in their original private context
+  ---
+  duration_ms: 5318.48976
+  type: 'test'
+  ...
+# TAP version 13\\n\# Subtest: the V106 production freeze still matches its historical sources, without claiming V6.15 browser QA\\nok 1 - the V106 production freeze still matches its historical sources, without claiming V6.15 browser QA\\n  ---\\n  duration_ms: 1879.880781\\n  type: 'test'\\n  ...\\n\# Subtest: the current runtime differs only by the two exact library edits and the static V6.14 and V6.15 registries\\nok 2 - the current runtime differs only by the two exact library edits and the static V6.14 and V6.15 registries\\n  ---\\n  duration_ms: 292.961567\\n  type: 'test'\\n  ...\\n\# Subtest: the V6.15 boundary rejects unrelated changes, removed inputs, extra files and altered allowed payloads\\nok 3 - the V6.15 boundary rejects unrelated changes, removed inputs, extra files and altered allowed payloads\\n  ---\\n  duration_ms: 38.402483\\n  type: 'test'\\n  ...\\n\# Subtest: all three production journeys share the same build and preserve their portable evidence bytes\\nok 4 - all three production journeys share the same build and preserve their portable evidence bytes\\n  ---\\n  duration_ms: 117.495872\\n  type: 'test'\\n  ...\\n1..4\\n\# tests 4\\n\# suites 0\\n\# pass 4\\n\# fail 0\\n\# cancelled 0\\n\# skipped 0\\n\# todo 0\\n\# duration_ms 2425.887782\\n
+# Subtest: the historical overlay preserves17 original workbooks and does not expand V106 coverage to V107
+ok 128 - the historical overlay preserves17 original workbooks and does not expand V106 coverage to V107
+  ---
+  duration_ms: 1246.978751
+  type: 'test'
+  ...
+# Subtest: the pre-freeze inventory covers all four domains and keeps proof/master documents outside its inputs
+ok 129 - the pre-freeze inventory covers all four domains and keeps proof/master documents outside its inputs
+  ---
+  duration_ms: 3.67926
+  type: 'test'
+  ...
+# Subtest: root-pinned art deduplicates safely without overwriting a historical identity or modifying its file
+ok 130 - root-pinned art deduplicates safely without overwriting a historical identity or modifying its file
+  ---
+  duration_ms: 2221.956995
+  type: 'test'
+  ...
+# Subtest: unbounded public paths, unpinned additions and contradictory hashes are rejected
+ok 131 - unbounded public paths, unpinned additions and contradictory hashes are rejected
+  ---
+  duration_ms: 2537.481632
+  type: 'test'
+  ...
+1..131
+# tests 131
+# suites 0
+# pass 131
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 89087.63891
+{"result":"PASS_HISTORICAL_REGENERATION","sourceCommit":"887664d308279fbe168cee72a59155a818512107","sourcesVerified":1449,"sharedVerified":693,"currentRuntimeCovered":false,"originalTestsExecuted":true,"release":"V107","sha256":"a9a2419702387868f6f54efd068008422609bc880b58e9a85c35a51e5fdfb66d","bytes":4359489,"inputFingerprintsVerified":666}

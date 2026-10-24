@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 1,
+  "release": "V108",
+  "asOf": "2026-10-24",
+  "baseline": {
+    "path": "docs/YAUTJA_V107_SUIVI.xlsx",
+    "sha256": "a9a2419702387868f6f54efd068008422609bc880b58e9a85c35a51e5fdfb66d"
+  },
+  "baselineFreeze": "PENDING_RUNTIME_FREEZE",
+  "runtimeModules": [
+    {
+      "id": "reserve",
+      "path": "app/game/systems/gameReserveV66.ts"
+    },
+    {
+      "id": "expedition",
+      "path": "app/game/systems/gameReserveExpeditionV108.ts"
+    },
+    {
+      "id": "cargo",
+      "path": "app/game/systems/homeworldCargoDefinitionV108.ts"
+    },
+    {
+      "id": "logistics",
+      "path": "app/game/systems/clanLogisticsV108.ts"
+    },
+    {
+      "id": "pit",
+      "path": "app/game/systems/pitWorkbookCampaignV108.ts"
+    }
+  ],
+  "factProbes": [
+    {
+      "id": "preserveCurrentVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "createGameReserveV108",
+          "args": [
+            108
+          ],
+          "path": [
+            "version"
+          ]
+        }
+      ],
+      "expected": 4
+    },
+    {
+      "id": "preserveUniqueSectors",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  108
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  108
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveUniqueAdults",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  108
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  108
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 32
+    },
+    {
+      "id": "preserveNewSectors",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "expedition",
+          "export": "GAME_RESERVE_EXPEDITION_V108_SECTORS"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "preserveNewAdults",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "expedition",
+          "export": "GAME_RESERVE_EXPEDITION_V108_PEOPLE"
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveNewShips",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "expedition",
+          "export": "GAME_RESERVE_EXPEDITION_V108_SHIPS"
+        }
+      ],
+      "expected": 4
+    },
+    {
+      "id": "preserveNewSurveys",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "expedition",
+          "export": "GAME_RESERVE_EXPEDITION_V108_SITES"
+        }
+      ],
+      "expected": 4
+    },
+    {
+      "id": "homeworldCargoLots",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "cargo",
+          "export": "HOMEWORLD_CARGO_V108",
+          "path": [
+            "lots"
+          ]
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "homeworldCompatibleRacks",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "cargo",
+          "export": "HOMEWORLD_CARGO_V108",
+          "path": [
+            "racks"
+          ]
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "homeworldSourceOptions",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "cargo",
+          "export": "HOMEWORLD_CARGO_OPTIONS_V108"
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "homeworldSourceLines",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "cargo",
+          "export": "HOMEWORLD_CARGO_LINES_V108"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "clanPhysicalWorks",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "logistics",
+          "export": "createLogisticsV108",
+          "args": [],
+          "path": [
+            "works"
+          ]
+        }
+      ],
+      "expected": 6
+    },
+    {
+      "id": "clanStartingDepotRav",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "logistics",
+          "export": "createLogisticsV108",
+          "args": [],
+          "path": [
+            "depot"
+          ]
+        }
+      ],
+      "expected": 120
+    },
+    {
+      "id": "pitCarryVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pit",
+          "export": "createPitWorkbookCampaignRunV108",
+          "args": [
+            "feral-hunter",
+            "excel-probe-v108",
+            "excel-probe-v108"
+          ],
+          "path": [
+            "continuityV108",
+            "version"
+          ]
+        }
+      ],
+      "expected": 1
+    },
+    {
+      "id": "clanStartingHullRav",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "logistics",
+          "export": "createLogisticsV108",
+          "args": [],
+          "path": [
+            "boat",
+            "cargo"
+          ]
+        }
+      ],
+      "expected": 480
+    },
+    {
+      "id": "clanStartingConservation",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "logistics",
+          "export": "logisticsConservationV108",
+          "args": [
+            {
+              "call": {
+                "module": "logistics",
+                "export": "createLogisticsV108",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "expected": true
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "pit-roster-kits",
+      "domain": "The Pit",
+      "title": "The Pit : quatre identités/visuels à établir, deux références partielles et les kits",
+      "source": "4 dossiers avec visuel/incarnation encore à établir ; 2 références V79 déjà présentes mais une seule pose native droite ; 1 agrégat kits recouvrant actions/campagnes/variantes.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Les deux références statiques V79 et les dossiers distincts restent suivis ; aucune nouvelle incarnation ni kit complet admis.",
+      "tests": "Héritage ou contrôle de cohérence indépendant du gameplay.",
+      "browser": "Aucune nouvelle preuve de parcours revendiquée.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts."
+    },
+    {
+      "id": "war-structures",
+      "domain": "Guerre de clans",
+      "title": "Guerre de clans : six ouvrages physiques",
+      "source": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
+      "status": "A_VALIDER",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Chaîne logistique physique commune aux six ouvrages : même U19, stocks finis, kits et objets transportés, contrats limités, skiff/navette uniques et carnet transactionnel.",
+      "tests": "À VALIDER",
+      "browser": "À VALIDER",
+      "implementation": [
+        "app/game/systems/clanLogisticsV108.ts",
+        "app/game/systems/clanLogisticsSessionV108.ts",
+        "app/game/ClanLogisticsV108.tsx",
+        "app/game/ClanLogisticsV108.module.css"
+      ],
+      "proof": [],
+      "remaining": "Six ouvrages en exercice distinct ; aucune acquisition de campagne ni correspondance K01 vers CON-T."
+    },
+    {
+      "id": "enforcer-pngs",
+      "domain": "Enforcers",
+      "title": "Enforcers : dixième variante de18 groupes",
+      "source": "18 PNG de variante10 réellement absents de la ligne suivie ; une fiche n’est pas une soumission image.",
+      "status": "HERITE_STATIQUE",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Les 18 PNG source réconciliés V107 restent conservés ; les 18 poses alternatives gardent leurs identités stables.",
+      "tests": "Héritage ou contrôle de cohérence indépendant du gameplay.",
+      "browser": "Aucune nouvelle preuve de parcours revendiquée.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Aucune animation complète ou fidélité canonique certifiée par une pose."
+    },
+    {
+      "id": "preserve-expansion",
+      "domain": "Preserve Hunt",
+      "title": "Preserve : secteurs et combattants",
+      "source": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
+      "status": "A_VALIDER",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Deuxième réserve originale Avar’Kesh V4 : huit nouveaux secteurs contigus et seize adultes ; catalogue unique mesuré dans le code : 16 secteurs et 32 adultes sans addition des versions historiques recouvrantes.",
+      "tests": "À VALIDER",
+      "browser": "À VALIDER",
+      "implementation": [
+        "app/game/systems/gameReserveExpeditionV108.ts",
+        "app/game/systems/gameReserveV66.ts"
+      ],
+      "proof": [],
+      "remaining": "La cible80 secteurs / 100 adultes reste ouverte ; trois atlas partagés ne livrent pas les fiches H001–H100. Avar’Kesh est une réserve originale supplémentaire ; les neuf géographies historiques nommées restent à livrer."
+    },
+    {
+      "id": "enforcer-provenance",
+      "domain": "Provenance Enforcers",
+      "title": "Provenance Enforcers : reçus et traces",
+      "source": "21 reçus finaux V6.13 non retrouvés ;36 traces V6.10 sans PNG récupéré.",
+      "status": "LIVRE_PARTIEL",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Outil en lecture seule d’admission des preuves PNG/reçus fournis : SHA, tentative sélectionnée, prompt effectivement soumis et limites alpha. Vérification de deux lots distincts de 18 fichiers chacun.",
+      "tests": "PASS_COHERENCE_LOCALE : huit cas de test, incluant la régénération des 36 résultats publiés depuis leurs vrais PNG et reçus épinglés. Aucune origine externe authentifiée.",
+      "browser": "Aucune nouvelle preuve de parcours revendiquée.",
+      "implementation": [
+        "scripts/inspect-production-evidence-v108.mjs",
+        "tests/production-evidence-admission-v108.test.mjs",
+        "docs/production-evidence-v108.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-input.json",
+          "sha256": "4cd7b3523d87cffd0e788321215a5a22b9c152e9276b16c3fca4d769b4ec8b5c",
+          "bytes": 8563
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-report.json",
+          "sha256": "5a6c421a3481bebcf77273d023c9c665af4b8bcaa3713f2db7f0f45514de2ec3",
+          "bytes": 15464
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-input.json",
+          "sha256": "95bca6bb1bde8b1c378a9250db3db93f46ca95b8d38b956b9697de926b23a784",
+          "bytes": 8077
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-report.json",
+          "sha256": "6a4c16bcdc6e39370ab3e75a1583a1b870a31260806de10deeebc6f90317544d",
+          "bytes": 15364
+        }
+      ],
+      "remaining": "Les 21 reçus V6.13 et 36 traces/PNG V6.10 historiques restent non récupérés ; contrôle de cohérence sans certification de provenance externe."
+    },
+    {
+      "id": "pit-actions",
+      "domain": "The Pit · action",
+      "title": "Feral/Scar : douze actions sans liaison",
+      "source": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
+      "status": "A_VALIDER",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Inspection EQUIP native de 40 ticks dans chaque sens ; santé, Traque et même objet mine/étoile conservés entre vraies rencontres de l’exercice V108. Rejeu volontaire du dernier duel gagné : victoire et progrès ultérieurs retirés avant restauration du même kit d’entrée ; fermé pendant un duel actif et après la fin de route, journal borné à seize rejeux. Verrou de sauvegarde et comparaison du dernier état durable pour refuser les écritures périmées.",
+      "tests": "À VALIDER",
+      "browser": "À VALIDER",
+      "implementation": [
+        "app/game/systems/pitWorkbookCampaignV108.ts",
+        "app/game/PitWorkbookCampaignV108.tsx",
+        "app/game/pitWorkbookEquipmentInspectionV108.ts",
+        "app/game/systems/pitWorkbookSaveSessionV108.ts",
+        "docs/pit-campaign-continuity-v108.md"
+      ],
+      "proof": [],
+      "remaining": "43 liaisons source héritées ; neuf actions restent ouvertes. Aucun nouveauBODY ni réaction xéno/prise composite promue."
+    },
+    {
+      "id": "pit-campaigns",
+      "domain": "The Pit · campagne",
+      "title": "Feral/Scar : seize étapes de campagne",
+      "source": "Deux routes de8 étapes, avec alliés/opposants, blessures, choix et fin alternative distincts.",
+      "status": "A_VALIDER",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Continuité d’équipement après victoire physique, libération dépensée persistante et reprise depuis l’entrée de rencontre dans les deux routes d’exercice. Rejeu volontaire du dernier duel gagné : victoire et progrès ultérieurs retirés avant restauration du même kit d’entrée ; fermé pendant un duel actif et après la fin de route, journal borné à seize rejeux. Verrou de sauvegarde et comparaison du dernier état durable pour refuser les écritures périmées.",
+      "tests": "À VALIDER",
+      "browser": "À VALIDER",
+      "implementation": [
+        "app/game/systems/pitWorkbookCampaignV108.ts",
+        "app/game/PitWorkbookCampaignV108.tsx",
+        "app/game/systems/pitWorkbookSaveSessionV108.ts",
+        "docs/pit-campaign-continuity-v108.md"
+      ],
+      "proof": [],
+      "remaining": "Les 16 scènes source et leurs cinq acteurs absents restent ouvertes ; les substitutions d’exercice ne les remplacent pas."
+    },
+    {
+      "id": "pit-variants",
+      "domain": "The Pit · variante",
+      "title": "Feral/Scar : quatorze contraintes de variantes",
+      "source": "7 contraintes par personnage : incarnation, masque/visage, équipement, dommages, directions et camouflage.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Contraintes source et deux sens natifs conservés dans le suivi ; aucune tenue statique ou miroir promu en animation de variante.",
+      "tests": "Héritage ou contrôle de cohérence indépendant du gameplay.",
+      "browser": "Aucune nouvelle preuve de parcours revendiquée.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque."
+    },
+    {
+      "id": "homeworld-cargo",
+      "domain": "Homeworld",
+      "title": "Intendante : tri physique et coursive libre",
+      "source": "V6 Scènes de dialogue398 ; Choix et actions818/819 ; Répliques3303–3310",
+      "status": "A_VALIDER",
+      "validationScope": "Opération locale ROLE19, sans plaque ni lignée ROLE03 inventée.",
+      "runtime": "Deux lots identifiés et propriétaires distincts, accord de l’intendante/gardien, racks compatibles et traversée réelle de la coursive ; portage unique, dépôt autorisé, interruption/reprise et reprise atomique. Ancien checkpoint occupé : récupération locale annoncée avec charge et carnets couplés, sans crédit de marche. Copie de récupération relue exactement avant réécriture cohérente ; refus de stockage bloquant jusqu’à la nouvelle tentative.",
+      "tests": "PASS_UNIT_COMPATIBILITE : trois tests de fixtures V104–V107, sans accomplissement narratif revendiqué. Le parcours production reste à valider.",
+      "browser": "À VALIDER",
+      "implementation": [
+        "app/game/systems/homeworldCargoDefinitionV108.ts",
+        "app/game/systems/homeworldCargoLedgerV108.ts",
+        "app/game/systems/homeworldCargoV108.ts",
+        "app/game/data/bibleCargoSceneV108.json",
+        "app/game/HomeworldCargoV108.tsx",
+        "app/game/HomeworldCargoWorldV108.tsx",
+        "app/game/HomeworldCargoV108.module.css",
+        "app/game/systems/homeworldCargoSolidsV108.ts",
+        "app/game/systems/homeworldCargoArrivalV108.ts",
+        "docs/homeworld-cargo-compatibility-v108.md"
+      ],
+      "proof": [],
+      "remaining": "Les lignes ROLE03 plaque 3183 / échec 3185 / reprise 3186 restent ouvertes ; aucun nouveau geste natif ou récompense de lignée certifié."
+    }
+  ],
+  "closedOpenItemIds": [],
+  "validations": [
+    {
+      "id": "V108-HISTORICAL-V107",
+      "status": "PASS_HISTORICAL_ORIGINAL",
+      "scope": "131 assertions des 17 fichiers V107 originaux ; régénération des produits V107 à SHA identique dans leur capsule réelle.",
+      "command": "node scripts/check-excel-history-v108.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-excel-followup/historical-v107.log",
+          "sha256": "90cc3456a96437c43dcb89e686a45819589d55701e04dd3ba0c94704060a4f4a",
+          "bytes": 37590
+        }
+      ],
+      "limit": "Contexte historique ; aucune couverture du runtime courant V108 impliquée."
+    },
+    {
+      "id": "V108-EXCEL-STRUCTURE",
+      "status": "PASS_STRUCTURE_TARGETED",
+      "scope": "8 contrôles du suivi V108 : 56 lignes conservées, 73 feuilles historiques, caches de formules, contexte privé et inventaires de captures complets sans duplication.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/excel-followup-v108.test.mjs tests/excel-history-v108.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-excel-followup/excel-tests.log",
+          "sha256": "57b6e020d58fb6f5c783994aa4d4368054bfe6fb1ebd1a29c70bd991e6b99b2f",
+          "bytes": 2790
+        }
+      ],
+      "limit": "Le générateur ne lance ni navigateur ni Excel natif ; les preuves de production sont ajoutées séparément."
+    },
+    {
+      "id": "V108-COMPATIBILITY-AND-EVIDENCE",
+      "status": "PASS_CIBLE_UNITARY",
+      "scope": "11 tests : trois tests de compatibilité des anciens checkpoints du quai et huit cas d’admission de preuves, dont les 36 résultats publiés régénérés depuis les vrais fichiers.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-cargo-arrival-v108.test.mjs tests/production-evidence-admission-v108.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-excel-followup/compatibility-evidence-tests.log",
+          "sha256": "34e4a6f9c2767af8caca873a00309e63c924c8a77c411d670bd0d574fe7d5044",
+          "bytes": 1187,
+          "scope": "Journal effectivement exécuté sur les sources courantes."
+        },
+        {
+          "path": "docs/homeworld-cargo-compatibility-v108.md",
+          "sha256": "b4b19ed25f03800374f0aed50536d87adb3f40443a303ae03b7cae804afa9f3c",
+          "bytes": 1524,
+          "scope": "Documentation de portée ; aucun parcours narratif revendiqué."
+        },
+        {
+          "path": "docs/production-evidence-v108.md",
+          "sha256": "b261474b218832a355955e7f598ccdf3dbcabd6213af795200418c08f1dda063",
+          "bytes": 1640,
+          "scope": "Documentation du contrôleur ; aucune authentification externe revendiquée."
+        }
+      ],
+      "limit": "Fixtures contrôlées de compatibilité et cohérence locale des dossiers fournis. Aucun parcours navigateur, récupération historique, art nouveau ou récompense certifié."
+    }
+  ],
+  "limits": [
+    "73 feuilles V107 historiques conservées sans modification de leur contenu, valeurs, formules ou tables.",
+    "56 lignes source encore ouvertes ; les améliorations partielles ne deviennent pas des clôtures.",
+    "Mesures du code courant séparées des parcours de production effectivement exécutés.",
+    "Aucun nouveauBODY natif, kit complet, campagne source complète ou variante complète annoncé.",
+    "Aucune acquisition de campagne attribuée par les exercices de logistique.",
+    "Catalogue Preserve dédoublonné par identifiants entre V107 et V108 ; V1/V2/V3 ne sont pas additionnées.",
+    "Les 21 reçus historiques et 36 traces/PNG absents ne sont pas récupérés par le contrôle des fichiers fournis.",
+    "Le générateur ne lance ni navigateur ni Excel natif.",
+    "Le rejeu volontaire du dernier duel retire la victoire et les étapes ultérieures avant de restaurer le kit d’entrée ; aucune victoire conservée ne fournit de repos gratuit.",
+    "La reprise géométrique d’un ancien checkpoint du quai est annoncée ; la copie d’origine est relue avant réécriture, sans crédit de marche, de progression ou de récompense."
+  ]
+}
