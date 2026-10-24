@@ -1,6 +1,6 @@
 # V107 · les six ateliers physiques V6
 
-État : exercice jouable, tests métier et callbacks 22/22 PASS. La validation compilée finale du runtime `dc44ba9f36f5ae3606ea40a2dd68459be8c7510a` passe 45 contrôles, sans erreur navigateur ; les sept captures desktop/mobile ont été ouvertes. Voir [la preuve finale](v107-clan-specialized-validation.json). Ce contrat ne clôt aucune ligne de campagne et ne remplace pas ce rapport de production.
+État : exercice jouable, tests métier et callbacks 33/33 PASS. La validation compilée finale du runtime `e93d43046dde641e1637faf9f72b4e5fa8d48404` passe 47 contrôles, sans erreur navigateur ; les sept captures desktop/mobile ont été ouvertes. Voir [la preuve finale](v107-clan-specialized-validation.json). Ce contrat ne clôt aucune ligne de campagne et ne remplace pas ce rapport de production.
 
 ## Contrat exact
 
@@ -42,6 +42,8 @@ Contexte distinct `free-specialized-works-v107`, version 1, protocole `specializ
 
 Import : taille maximale 4 Mo, contexte/version/source stricts, maximum 5 000 actions validées, rejeu déterministe depuis les seules dotations initiales puis comparaison exacte du checkpoint. La reprise rétablit une sélection d’équipe valide et interrompt immédiatement la destination de marche précédente ; rendu, transferts RAV et déplacements utilisent la même équipe effective. Une future version, un lot gonflé, un champ ajouté ou une action incohérente refuse l’import sans modifier le carnet courant. Les états du moteur sont gelés récursivement ; un état arbitraire ne peut entrer par l’API d’action. Ce n’est pas un sceau cryptographique ni un certificat d’acquisition.
 
+La sélection d’un fichier efface immédiatement le texte précédent. Pendant sa lecture, le brouillon et le bouton d’import sont désactivés ; une garde synchrone refuse aussi un ancien callback avant le prochain rendu. Chaque sélection, édition ou annulation invalide les lectures précédentes : une réponse ou une erreur tardive ne peut modifier le nouveau brouillon ni son indicateur de lecture. Les fichiers vides et supérieurs à 4 Mio sont refusés avant lecture ; les erreurs de lecture et les textes blancs sont refusés sans changer le carnet courant. L’événement natif `cancel` du sélecteur est attaché par ref React 19 et retiré par son nettoyage.
+
 Le carnet n’écrit jamais `SaveGame`, `localStorage` ni les anciens payloads V87–V106. Le joueur exporte explicitement avant fermeture ou changement de mandat. Les trente mondes historiques et le moteur Risk V106 restent inchangés ; les seules intégrations sont l’onglet Bible V6 et son activité (pause de marche/audio lorsque masqué).
 
 ## Assets réutilisés
@@ -56,9 +58,9 @@ Les ambiances faune/météo publiques ne sont représentées que par des `missin
 
 ## Validation reproductible
 
-Tests métier : `env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs` (22 contrôles : 16 règles métier et 6 régressions des vrais callbacks JSX/import). Lint : les quatre fichiers TS/TSX nouveaux/intégrés, le test d’import et le driver navigateur.
+Tests métier : `env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs` (33 contrôles : 16 règles métier et 17 régressions des vrais callbacks JSX/import). Lint : les quatre fichiers TS/TSX nouveaux/intégrés, le test d’import et le driver navigateur.
 
-Recette préparée : `scripts/qa-clan-specialized-v107.mjs`. Elle ouvre la vraie application, n’injecte aucun état, construit les six ouvrages et réalise chacune des opérations avec les boutons, la marche et les vrais fichiers audio ; contrôle les manifestes, l’idempotence, la conservation de 120 RAV, l’import mi-vol, l’import d’un autre atelier avec le rival sélectionné en marche (arrêt de l’ancienne cible, sélection valide d’U19 et déplacement réel de cette seule équipe), le refus futur, l’absence d’écriture de campagne, le mobile et l’absence d’erreurs navigateur. Sept captures, SHA des sources/actifs avant/après, identité HTML du build et rapport structuré.
+Recette préparée : `scripts/qa-clan-specialized-v107.mjs`. Elle ouvre la vraie application, n’injecte aucun état, construit les six ouvrages et réalise chacune des opérations avec les boutons, la marche et les vrais fichiers audio ; contrôle les manifestes, l’idempotence, la conservation de 120 RAV, l’import mi-vol, l’import d’un autre atelier avec le rival sélectionné en marche (arrêt de l’ancienne cible, sélection valide d’U19 et déplacement réel de cette seule équipe), le refus futur, l’absence d’écriture de campagne, le mobile et l’absence d’erreurs navigateur. Sept captures, SHA des sources/actifs avant/après, identité HTML du build et rapport structuré. La régression de lecture asynchrone utilise une fixture d’entrée/sortie explicitement déclarée dans `scope.fixtureIO` : seul `File.prototype.text` est retenu temporairement puis restauré. Le fichier B est le carnet de duel réellement exporté lors du parcours, et le vieux brouillon A provient du quai réellement joué. Aucun état du moteur ni carnet victorieux n’est injecté. Le navigateur vérifie le checkpoint strictement inchangé pendant la lecture puis l’import de B après résolution ; les promesses différées des tests de callbacks couvrent aussi les ordres de résolution concurrents, rejets, annulations et éditions.
 
 Après le gel global seulement :
 

@@ -3,43 +3,43 @@
   "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
   "baseUrl": "http://127.0.0.1:3101",
   "mode": "compiled-app",
-  "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
+  "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
   "contentVersion": "V107",
-  "buildId": "6OeHlCftPttp5-q3dbQCV",
+  "buildId": "7SF-x09qAzuBDG33EbB1i",
   "invocation": {
     "command": "node scripts/qa-homeworld-archive-comparison-v107.mjs",
     "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
     "nodeVersion": "v22.23.3",
     "environment": {
       "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
-      "YAUTJA_QA_BUILD_ID": "6OeHlCftPttp5-q3dbQCV",
-      "YAUTJA_QA_RUNTIME_COMMIT": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
-      "YAUTJA_COMPARISON_QA_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v107/homeworld-comparison"
+      "YAUTJA_QA_BUILD_ID": "7SF-x09qAzuBDG33EbB1i",
+      "YAUTJA_QA_RUNTIME_COMMIT": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+      "YAUTJA_COMPARISON_QA_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v107/homeworld-comparison-e93"
     }
   },
   "servedBuilds": [
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
       "foundInHtml": true
     },
     {
       "url": "http://127.0.0.1:3101/",
       "status": 200,
-      "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
       "foundInHtml": true
     }
   ],
@@ -321,11 +321,11 @@
     },
     {
       "file": "02-discovery-provenance.png",
-      "sha256": "01e1dc8b4625e6016945aedb78347e737e3f61d3acb4c01e2bf7c1777cade899"
+      "sha256": "eaf98be94ef0ce9b1361d84176bd76eac22fa619688073ed1eebf31645509073"
     },
     {
       "file": "03-c-native-carry.png",
-      "sha256": "1e1ecc4d6d4b82454ddf53566fd0e6e9af5c6591475a0d603a1f3f5fffbfdefd",
+      "sha256": "aea1b117596204b182d303e9e9519bbceeb5302ff161046f25bf52694bc7baa6",
       "worldViewport": {
         "x": 0,
         "y": 56.5,
@@ -335,7 +335,7 @@
     },
     {
       "file": "04-parked-c-original-provenance.png",
-      "sha256": "a571e4aabad426bd1bbb8a1b44e52e6113ec5e99ada3ac0da8c8adef83a8cc97",
+      "sha256": "4ceb2abd08554dd284f882197e6d85d20aff75281fe1d4dffcfd2548dfbe5bcb",
       "worldViewport": {
         "x": 0,
         "y": 56.5,
@@ -345,7 +345,7 @@
     },
     {
       "file": "05-c-on-third-lectern.png",
-      "sha256": "09cd05c467432d74d299e3dfcce61ba33ac6603031058f93c09ab8bfe452974b",
+      "sha256": "edd9123505c56386c1ff6903167d67da3fea4d544d3d9ebe489b76fb17d0470a",
       "worldViewport": {
         "x": 0,
         "y": 56.5,
@@ -355,7 +355,7 @@
     },
     {
       "file": "06-two-support-observations.png",
-      "sha256": "931f692fceda4ec8db98b3a13f0d20f901c0cd88a96eadcf6c5157a454defe26",
+      "sha256": "48473463313377d513c6856981339abbf6cf6220c04dc4e02fd5b40c91ac36bb",
       "worldViewport": {
         "x": 0,
         "y": 56.5,
@@ -373,11 +373,11 @@
     },
     {
       "file": "09-completed-mobile.png",
-      "sha256": "a54bb06851dbdc2b45abf1d4c4a75b2d4b54ee817993639cb9310ddb30c040f1"
+      "sha256": "8e7cffc0ba53098646713281859a3a7e6ab7b1fcb958f3b235d490e99b3d908c"
     },
     {
       "file": "10-local-map-mobile.png",
-      "sha256": "e80476471d93cc3a83ee0675bcb2204f6b46c507dd5d1f6443b6867aef283e8f"
+      "sha256": "2491676c9ebddba3474d2412e2baa61d6426c8078f3b6a46fbf3de8dd054fc77"
     }
   ],
   "fixture": {
@@ -660,5 +660,5 @@
     }
   ],
   "sourceUnchanged": true,
-  "completedAt": "2026-10-23T23:27:53.785Z"
+  "completedAt": "2026-10-24T00:20:33.965Z"
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V107",
-  "asOf": "2026-10-23",
+  "asOf": "2026-10-24",
   "baseline": {
     "path": "docs/YAUTJA_V106_SUIVI.xlsx",
     "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e"
@@ -74,23 +74,23 @@
       "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14 ; Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15 ; Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18 ; Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19 ; Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20 ; Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
       "status": "VALIDE_CIBLE",
       "validationScope": "WAR_STRUCTURES_BOUNDED",
-      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
+      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
       "remaining": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites.",
       "implementation": [
         "app/game/systems/clanWarSpecializedV107.ts"
       ],
-      "tests": "PASS : vingt-deux tests métier et callbacks, import strict, transactions idempotentes et lint ; 45 contrôles sur l’app de production.",
-      "browser": "PASS_CIBLE_PRODUCTION : 45 contrôles, 7 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "tests": "PASS : trente-trois tests métier, callbacks et lectures de fichiers asynchrones ; import strict, transactions idempotentes et lint ; 47 contrôles sur l’app de production.",
+      "browser": "PASS_CIBLE_PRODUCTION : 47 contrôles, 7 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
-          "bytes": 19585
+          "sha256": "dd53a0f0d73765fe3c490dcfa3acc7a174460e3e9295d3df99513c1dc3c76d5b",
+          "bytes": 20200
         }
       ]
     },
@@ -142,16 +142,16 @@
         "app/game/systems/gameReserveV66.ts"
       ],
       "tests": "PASS : 64 tests métier et V1/V2 byte-exacts ; 31 contrôles navigateur, démarrage ordinaire vivant et fixture de parcours déclarée.",
-      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
+          "sha256": "67f2f054a4138b509d98b436b5162b1a69ca08a1c3a9fac826067840cb35e85d",
           "bytes": 32161
         }
       ]
@@ -190,17 +190,17 @@
         "app/game/systems/pitWorkbookDeviceSourceV107.ts"
       ],
       "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 125 contrôles navigateur couvrent les quatre domaines Pit.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -218,17 +218,17 @@
         "app/game/data/pitWorkbookScopeV105.json"
       ],
       "tests": "PASS source : douze cas de parcours, conservation des preuves sous borne et audit des seize cellules, toutes sourceComplete=false ; clavier natif vérifié dans les deux terrains.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -245,17 +245,17 @@
         "app/game/pitWorkbookVariantCapabilitiesV107.ts"
       ],
       "tests": "PASS : six cas du contrat pur, SHA/dimensions des 52 études, sept séquences Scar et douze portraits ; contrôles UI inclus dans la recette Pit finale.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -278,16 +278,16 @@
         "app/game/HomeworldArchiveComparisonV107.module.css"
       ],
       "tests": "PASS : onze tests de comparaison et trente entrées ; 67 contrôles navigateur sur la compilation commune.",
-      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
+          "sha256": "7b346e180144e4f97919eb162b6d3237a80d76191a437e62a5a17ba914106cfd",
           "bytes": 11883
         }
       ]
@@ -347,17 +347,17 @@
       "id": "V107-PRODUCTION-PIT",
       "status": "PASS_CIBLE",
       "scope": "Targeted public exercise terrain/persistence and one genuine CPU duel; not all16 browser stages. Native Scar conclusions in both orientations after genuine public local victories, measured capability UI and device journeys. One declared initial first-tracks profile and a held virtual pad only for the visible focus regression. No combat snapshot, outcome, counter or reward injection.",
-      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-dc44 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
+      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-e93 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ],
       "limit": "Neuf actions restent ouvertes : quatre projections et cinq conclusions, dont CLEMENCE partielle. Kits complets et contraintes de variantes restent ouverts."
@@ -366,16 +366,16 @@
       "id": "V107-PRODUCTION-HOMEWORLD",
       "status": "PASS_CIBLE",
       "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-pr16.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison-e93 node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-e93.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
+          "sha256": "7b346e180144e4f97919eb162b6d3237a80d76191a437e62a5a17ba914106cfd",
           "bytes": 11883
         }
       ],
@@ -385,17 +385,17 @@
       "id": "V107-PRODUCTION-CLANS",
       "status": "PASS_CIBLE",
       "scope": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-e93d430 node scripts/qa-clan-specialized-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
-          "bytes": 19585
+          "sha256": "dd53a0f0d73765fe3c490dcfa3acc7a174460e3e9295d3df99513c1dc3c76d5b",
+          "bytes": 20200
         }
       ],
       "limit": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites."
@@ -404,16 +404,16 @@
       "id": "V107-PRODUCTION-PRESERVE",
       "status": "PASS_CIBLE",
       "scope": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
+          "sha256": "67f2f054a4138b509d98b436b5162b1a69ca08a1c3a9fac826067840cb35e85d",
           "bytes": 32161
         }
       ],
@@ -494,7 +494,7 @@
   ],
   "runtimeFreeze": {
     "path": "docs/v107-runtime-freeze.json",
-    "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
+    "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
     "bytes": 221954
   }
 }

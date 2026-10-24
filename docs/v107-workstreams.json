@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V107",
-  "asOf": "2026-10-23",
+  "asOf": "2026-10-24",
   "baseline": {
     "path": "docs/YAUTJA_V106_SUIVI.xlsx",
     "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e"
@@ -9,7 +9,7 @@
   "baselineFreeze": "FROZEN",
   "runtimeFreeze": {
     "path": "docs/v107-runtime-freeze.json",
-    "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
+    "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
     "bytes": 221954
   },
   "runtimeFrozenInputsVerified": 432,
@@ -156,7 +156,7 @@
       ],
       "count": 6,
       "remainingCount": 6,
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "enforcer-pngs",
@@ -355,23 +355,23 @@
       "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14 ; Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15 ; Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18 ; Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19 ; Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20 ; Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
       "status": "VALIDE_CIBLE",
       "validationScope": "WAR_STRUCTURES_BOUNDED",
-      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
+      "runtime": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne.",
       "remaining": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites.",
       "implementation": [
         "app/game/systems/clanWarSpecializedV107.ts"
       ],
-      "tests": "PASS : vingt-deux tests métier et callbacks, import strict, transactions idempotentes et lint ; 45 contrôles sur l’app de production.",
-      "browser": "PASS_CIBLE_PRODUCTION : 45 contrôles, 7 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "tests": "PASS : trente-trois tests métier, callbacks et lectures de fichiers asynchrones ; import strict, transactions idempotentes et lint ; 47 contrôles sur l’app de production.",
+      "browser": "PASS_CIBLE_PRODUCTION : 47 contrôles, 7 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
-          "bytes": 19585
+          "sha256": "dd53a0f0d73765fe3c490dcfa3acc7a174460e3e9295d3df99513c1dc3c76d5b",
+          "bytes": 20200
         }
       ]
     },
@@ -423,16 +423,16 @@
         "app/game/systems/gameReserveV66.ts"
       ],
       "tests": "PASS : 64 tests métier et V1/V2 byte-exacts ; 31 contrôles navigateur, démarrage ordinaire vivant et fixture de parcours déclarée.",
-      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 31 contrôles, 14 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
+          "sha256": "67f2f054a4138b509d98b436b5162b1a69ca08a1c3a9fac826067840cb35e85d",
           "bytes": 32161
         }
       ]
@@ -471,17 +471,17 @@
         "app/game/systems/pitWorkbookDeviceSourceV107.ts"
       ],
       "tests": "PASS source : 13 cas dispositifs et 14 conclusions, rendu final et régressions V11–V14 ; 125 contrôles navigateur couvrent les quatre domaines Pit.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -499,17 +499,17 @@
         "app/game/data/pitWorkbookScopeV105.json"
       ],
       "tests": "PASS source : douze cas de parcours, conservation des preuves sous borne et audit des seize cellules, toutes sourceComplete=false ; clavier natif vérifié dans les deux terrains.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -526,17 +526,17 @@
         "app/game/pitWorkbookVariantCapabilitiesV107.ts"
       ],
       "tests": "PASS : six cas du contrat pur, SHA/dimensions des 52 études, sept séquences Scar et douze portraits ; contrôles UI inclus dans la recette Pit finale.",
-      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 125 contrôles, 18 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ]
     },
@@ -559,16 +559,16 @@
         "app/game/HomeworldArchiveComparisonV107.module.css"
       ],
       "tests": "PASS : onze tests de comparaison et trente entrées ; 67 contrôles navigateur sur la compilation commune.",
-      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 6OeHlCftPttp5-q3dbQCV, runtime dc44ba9f36f5ae3606ea40a2dd68459be8c7510a. Périmètre ciblé seulement.",
+      "browser": "PASS_CIBLE_PRODUCTION : 67 contrôles, 10 captures inspectées ; build 7SF-x09qAzuBDG33EbB1i, runtime e93d43046dde641e1637faf9f72b4e5fa8d48404. Périmètre ciblé seulement.",
       "proof": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
+          "sha256": "7b346e180144e4f97919eb162b6d3237a80d76191a437e62a5a17ba914106cfd",
           "bytes": 11883
         }
       ]
@@ -7331,7 +7331,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S10",
@@ -7349,7 +7349,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S13",
@@ -7367,7 +7367,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S14",
@@ -7385,7 +7385,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un duel accepté par ses participants et son résultat réel ; pas de victoire automatique.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S15",
@@ -7403,7 +7403,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "W3-S18",
@@ -7421,7 +7421,7 @@
       ],
       "sourceStatus": "OUVERT",
       "sourceRemaining": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage.",
-      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. Coûts V6 et stocks finis ; aucune acquisition en campagne."
+      "progressV107": "Six exercices physiques indépendants vérifiés : transport avec occupants, montures existantes, confinement alimenté, duel consenti, sons situés et trajet orbital avec manifeste. L’import d’un autre atelier rétablit une sélection valide et arrête l’ancien déplacement. L’import fichier attend la fin de lecture et ignore les lectures devenues obsolètes. Coûts V6 et stocks finis ; aucune acquisition en campagne."
     },
     {
       "id": "PRESERVE-SECTEURS",
@@ -11390,8 +11390,8 @@
     },
     {
       "path": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
-      "bytes": 28873
+      "sha256": "46957b201f393c951a16575e936b6da8cf4dac9e93bca583242baccd35f70997",
+      "bytes": 30600
     },
     {
       "path": "app/game/GameClient.tsx",
@@ -12120,8 +12120,8 @@
     },
     {
       "path": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
-      "bytes": 262434
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324
     },
     {
       "path": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
@@ -12135,8 +12135,8 @@
     },
     {
       "path": "docs/qa/v107-clan-specialized/business-tests.log",
-      "sha256": "f83100eae55fea2f20a5cc13b29281c1779732162e6e0d479fbcc75124d7a5f5",
-      "bytes": 5559
+      "sha256": "8f50b38ed2806a199d9ce9288f4826de9af89385c9b1f7f0b2d4ed150a872326",
+      "bytes": 8142
     },
     {
       "path": "docs/qa/v107-clan-specialized/lint.log",
@@ -12145,17 +12145,17 @@
     },
     {
       "path": "docs/qa/v107-clan-specialized/raw-validation.json",
-      "sha256": "5fe45e068ed2516d4ba5947ebc28feca4557406921230c4d8d5e7839f9ba5351",
-      "bytes": 12411
+      "sha256": "03de087b632af8b7a089552d9fb1f7b5c84c87b5559ca83121992b252c3639fb",
+      "bytes": 13026
     },
     {
       "path": "docs/qa/v107-clan-specialized/source-before-after.json",
-      "sha256": "80b2af5fa61dbfde02e3805774cea891d6ed387333e4ebd8c633301290a34623",
+      "sha256": "6d5ad946092b224be74563bc0e8c8e443d34e855d3f6fafc8739ef114eb52135",
       "bytes": 4591
     },
     {
       "path": "docs/qa/v107-clan-specialized/verification-commands.json",
-      "sha256": "2fbeedc08b070ca0b1dc4ba5fcfeebf1742cc150a5d1d9b74c64b5df9ad11ca7",
+      "sha256": "b64e7f37553aebad0642c590adcab610f5cb2d8fb829e240975cee2219038516",
       "bytes": 845
     },
     {
@@ -12190,28 +12190,28 @@
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/02-discovery-provenance.png",
-      "sha256": "01e1dc8b4625e6016945aedb78347e737e3f61d3acb4c01e2bf7c1777cade899",
-      "bytes": 159950
+      "sha256": "eaf98be94ef0ce9b1361d84176bd76eac22fa619688073ed1eebf31645509073",
+      "bytes": 159952
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/03-c-native-carry.png",
-      "sha256": "1e1ecc4d6d4b82454ddf53566fd0e6e9af5c6591475a0d603a1f3f5fffbfdefd",
-      "bytes": 731244
+      "sha256": "aea1b117596204b182d303e9e9519bbceeb5302ff161046f25bf52694bc7baa6",
+      "bytes": 738453
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/04-parked-c-original-provenance.png",
-      "sha256": "a571e4aabad426bd1bbb8a1b44e52e6113ec5e99ada3ac0da8c8adef83a8cc97",
-      "bytes": 836856
+      "sha256": "4ceb2abd08554dd284f882197e6d85d20aff75281fe1d4dffcfd2548dfbe5bcb",
+      "bytes": 832414
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/05-c-on-third-lectern.png",
-      "sha256": "09cd05c467432d74d299e3dfcce61ba33ac6603031058f93c09ab8bfe452974b",
-      "bytes": 806338
+      "sha256": "edd9123505c56386c1ff6903167d67da3fea4d544d3d9ebe489b76fb17d0470a",
+      "bytes": 772978
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/06-two-support-observations.png",
-      "sha256": "931f692fceda4ec8db98b3a13f0d20f901c0cd88a96eadcf6c5157a454defe26",
-      "bytes": 823471
+      "sha256": "48473463313377d513c6856981339abbf6cf6220c04dc4e02fd5b40c91ac36bb",
+      "bytes": 809358
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/07-comparison-interface.png",
@@ -12225,13 +12225,13 @@
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/09-completed-mobile.png",
-      "sha256": "a54bb06851dbdc2b45abf1d4c4a75b2d4b54ee817993639cb9310ddb30c040f1",
-      "bytes": 110253
+      "sha256": "8e7cffc0ba53098646713281859a3a7e6ab7b1fcb958f3b235d490e99b3d908c",
+      "bytes": 110083
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/10-local-map-mobile.png",
-      "sha256": "e80476471d93cc3a83ee0675bcb2204f6b46c507dd5d1f6443b6867aef283e8f",
-      "bytes": 72716
+      "sha256": "2491676c9ebddba3474d2412e2baa61d6426c8078f3b6a46fbf3de8dd054fc77",
+      "bytes": 72703
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/lint.log",
@@ -12240,8 +12240,8 @@
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/result.json",
-      "sha256": "7ce2e512f64f6b8adeadebd9940602e19208718b9cf70f6772c6bfef3a2646cf",
-      "bytes": 20897
+      "sha256": "4c25ddff882c93afd45b67f3570618f8eb90cbc2665d546d554e9cc074e86f81",
+      "bytes": 20901
     },
     {
       "path": "docs/qa/v107-homeworld-comparison/test.log",
@@ -12270,8 +12270,8 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/browser-result.json.gz",
-      "sha256": "f8fb69ec2d376308042102284e3799146d546768c7d3c9f3ef19892618f03bed",
-      "bytes": 3372333
+      "sha256": "5a742d07c044d9df18ba7dcf33d164857fbf1d283809a54c8012ccf387dd7d4d",
+      "bytes": 3382125
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-CLEMENCE-left-contact.png",
@@ -12300,8 +12300,8 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-device-flight.png",
-      "sha256": "f7e15d87f43554a2426a9ca444d66247d31f01a6dc59598413aa5b28bfd67f77",
-      "bytes": 1123018
+      "sha256": "76673258186d2f5a71256f52c33f347480d378255d9f453626514146802bface",
+      "bytes": 1122966
     },
     {
       "path": "docs/qa/v107-pit-workbook/conclusion-FATALITE_2-right-result.png",
@@ -12310,47 +12310,47 @@
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-mine-armed.png",
-      "sha256": "18d481346ac2b75dfbcf4df59b28356ec019bbd55399af1160cd8f108aa638d6",
-      "bytes": 1221706
+      "sha256": "f47b0c37868c3db20865608e020eab10258dc69abf3e3a8c9380d4304e0a6e62",
+      "bytes": 1226162
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-mine-placement.png",
-      "sha256": "ba6a16232e943cbb498a2912000364ef1b60c3ba860dd20d2b528b71e9012e90",
-      "bytes": 1217214
+      "sha256": "b073b2831a9b26ad613f76a202161a7b828ad45c0d7feb57373af790bce8bcad",
+      "bytes": 1221461
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-left-star-release.png",
-      "sha256": "2571e499a74bbe68fc4f036032401dc3e5397f5fab7998d94d2ebc5dbe97a2bf",
-      "bytes": 1217307
+      "sha256": "a061a16d0bffd0bd2691c8cce2e6c76d05619fb85537e535838b7f3456c9aca2",
+      "bytes": 1220201
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-mine-armed.png",
-      "sha256": "613167c46d1e0e5456fe29345ee25952eda091d4f0577f6f13b1a338183919bd",
-      "bytes": 1209452
+      "sha256": "fe837eb6eb7d067d1ff3a3d755a3d5cbe5b456b790ccae0839023f15eef45686",
+      "bytes": 1209007
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-mine-placement.png",
-      "sha256": "790bbc8d42a93d7e9d5b670313e96b2a4cb68cc4cefdacf054690ae2be8cd3e9",
-      "bytes": 1206098
+      "sha256": "f7f5a65a7c1efab182fa5b6da407e4ec1473f56a2fd8727864acc6e6c59bd881",
+      "bytes": 1207167
     },
     {
       "path": "docs/qa/v107-pit-workbook/devices-right-star-release.png",
-      "sha256": "46fdd974ee2ebe86b6ba4d0344cde549b2c9dfb59893bcf4685e6fd39260d00e",
-      "bytes": 1194819
+      "sha256": "0f611147878139cff3bf8c636e08e2394807246569ac6a7a87ef9608fde8edbf",
+      "bytes": 1193665
     },
     {
       "path": "docs/qa/v107-pit-workbook/mine-real-destruction.png",
-      "sha256": "7dca1c2233bff0e0b403a5045edc466ac3c7e892886a5fed1b99e78ce7bb6ed5",
-      "bytes": 1340305
+      "sha256": "72e8591e8a0eedc73b331a89b5c384eef5c42cd6623917fe3cb4c4e7b7d06485",
+      "bytes": 1341479
     },
     {
       "path": "docs/qa/v107-pit-workbook/served-production.html",
-      "sha256": "956fd73bb1b1552acd2da7423a2861766844abaa5d482717b0c4267e3dcf55e2",
+      "sha256": "940ad886ff65211d811fcbf45053197a19119b51b583f2397ca23fd3f4ccb988",
       "bytes": 13834
     },
     {
       "path": "docs/qa/v107-preserve-expedition/browser.log",
-      "sha256": "05fc73bb312d5709c413e518c06a490d3fc4f06bad94115afc68fdadee6c654b",
+      "sha256": "14146fa106c27571de5ad28780ba2e9a5fefdeb267fbbf56f97abc36bac635ff",
       "bytes": 3239
     },
     {
@@ -12390,8 +12390,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/result.json",
-      "sha256": "efffd2e6fff1dc46e8cabf654bf82cf09cf091d981dbbf825079d092a057c400",
-      "bytes": 151455
+      "sha256": "4e15368133cbd76d415f123ee05f5aad49979cc621e6dcad5d0c829f4057a953",
+      "bytes": 151722
     },
     {
       "path": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
@@ -12410,8 +12410,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
-      "sha256": "fdcc2723ab67808999b817091c9317f446a10ca64e17037d365e4df981315b18",
-      "bytes": 1492333
+      "sha256": "60f4232ee74c4bc8ba8f10a8cacb4a622f961ffbba368182c73f38de17300e23",
+      "bytes": 1492309
     },
     {
       "path": "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
@@ -12435,8 +12435,8 @@
     },
     {
       "path": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
-      "sha256": "6008a7beccf234be85ae20c1b6e49e8a26b45a8c65d2feba62191397395e0b69",
-      "bytes": 395118
+      "sha256": "c706974bdebe6a12bba3b99604ce6e34ae973e7ac760d432fd47bab9e091a86e",
+      "bytes": 395275
     },
     {
       "path": "docs/qa/v107-static-reconciliation/historical-production-tests.log",
@@ -12775,13 +12775,13 @@
     },
     {
       "path": "docs/v107-clan-specialized-contract.md",
-      "sha256": "7d7dddbb472c0b46400f8150196d4156334a58466a40a03d7e2c451da51b7cbb",
-      "bytes": 11450
+      "sha256": "376242bddd4fcf66fa54c37adffbc7c2bd09800c0ade7d1fde978bc3373de6f0",
+      "bytes": 12777
     },
     {
       "path": "docs/v107-clan-specialized-validation.json",
-      "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
-      "bytes": 19585
+      "sha256": "dd53a0f0d73765fe3c490dcfa3acc7a174460e3e9295d3df99513c1dc3c76d5b",
+      "bytes": 20200
     },
     {
       "path": "docs/v107-enforcer-alternatives-validation.json",
@@ -12790,7 +12790,7 @@
     },
     {
       "path": "docs/v107-homeworld-comparison-validation.json",
-      "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
+      "sha256": "7b346e180144e4f97919eb162b6d3237a80d76191a437e62a5a17ba914106cfd",
       "bytes": 11883
     },
     {
@@ -12805,17 +12805,17 @@
     },
     {
       "path": "docs/v107-pit-workbook-validation.json",
-      "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-      "bytes": 64033
+      "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+      "bytes": 64032
     },
     {
       "path": "docs/v107-preserve-expedition-validation.json",
-      "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
+      "sha256": "67f2f054a4138b509d98b436b5162b1a69ca08a1c3a9fac826067840cb35e85d",
       "bytes": 32161
     },
     {
       "path": "docs/v107-runtime-freeze.json",
-      "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
+      "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
       "bytes": 221954
     },
     {
@@ -12830,13 +12830,13 @@
     },
     {
       "path": "docs/v107-validation-summary.json",
-      "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-      "bytes": 18778
+      "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+      "bytes": 18780
     },
     {
       "path": "docs/v107-workstreams-source.json",
-      "sha256": "d63ebd625ef20106c936c659bb31c6facde27878d0da7657a96381660ac2da2e",
-      "bytes": 31502
+      "sha256": "239dd15c3575757d17f27c46cc3a9d8b0fcb1fd736ef0ce266ea9f54adece735",
+      "bytes": 31629
     },
     {
       "path": "docs/v56-excel-priorities.json",
@@ -14650,8 +14650,8 @@
     },
     {
       "path": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
-      "bytes": 21662
+      "sha256": "e82d45b4fd4cfb0a94546a9ca6da9e6f2421abb17968dfa674f7238b7c139a47",
+      "bytes": 24230
     },
     {
       "path": "scripts/qa-homeworld-archive-comparison-v107.mjs",
@@ -14704,17 +14704,17 @@
       "id": "V107-PRODUCTION-PIT",
       "status": "PASS_CIBLE",
       "scope": "Targeted public exercise terrain/persistence and one genuine CPU duel; not all16 browser stages. Native Scar conclusions in both orientations after genuine public local victories, measured capability UI and device journeys. One declared initial first-tracks profile and a held virtual pad only for the visible focus regression. No combat snapshot, outcome, counter or reward injection.",
-      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-dc44 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
+      "command": "DISPLAY=:97 AUDIT_CHROME_HEADED=1 YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_PIT_WORKBOOK_QA_DOMAINS=campaign,capabilities,conclusions,devices YAUTJA_PIT_WORKBOOK_QA_OUTPUT=/tmp/v107-pit-production-e93 PATH=/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH node scripts/qa-pit-workbook-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-pit-workbook-validation.json",
-          "sha256": "c1d70ab8ca86fe75d7af3c637999ee20c8fa68a15217c5cef3feed4d662b8373",
-          "bytes": 64033
+          "sha256": "f30f66d9464c8624a47a927154266033f240eecf8f9c5cd3b8f368edc06b46de",
+          "bytes": 64032
         }
       ],
       "limit": "Neuf actions restent ouvertes : quatre projections et cinq conclusions, dont CLEMENCE partielle. Kits complets et contraintes de variantes restent ouverts."
@@ -14723,16 +14723,16 @@
       "id": "V107-PRODUCTION-HOMEWORLD",
       "status": "PASS_CIBLE",
       "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-pr16.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_COMPARISON_QA_OUTPUT=outputs/qa-v107/homeworld-comparison-e93 node scripts/qa-homeworld-archive-comparison-v107.mjs > /tmp/v107-homeworld-production-e93.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-homeworld-comparison-validation.json",
-          "sha256": "b655389bff360f96056e7dc3dcad9775f1991bf214a18037edc0edff696eddf4",
+          "sha256": "7b346e180144e4f97919eb162b6d3237a80d76191a437e62a5a17ba914106cfd",
           "bytes": 11883
         }
       ],
@@ -14742,17 +14742,17 @@
       "id": "V107-PRODUCTION-CLANS",
       "status": "PASS_CIBLE",
       "scope": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-e93d430 node scripts/qa-clan-specialized-v107.mjs",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-clan-specialized-validation.json",
-          "sha256": "cc45cb8e53ec3b1a5062931cf180d627d57d38d83196679a07038f81f64dacc4",
-          "bytes": 19585
+          "sha256": "dd53a0f0d73765fe3c490dcfa3acc7a174460e3e9295d3df99513c1dc3c76d5b",
+          "bytes": 20200
         }
       ],
       "limit": "Six acquisitions de campagne encore ouvertes. Paramètres locaux d’exercice, montures en référence statique, sons de faune/météo non livrés et navette non acquise en campagne restent explicites."
@@ -14761,16 +14761,16 @@
       "id": "V107-PRODUCTION-PRESERVE",
       "status": "PASS_CIBLE",
       "scope": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
       "evidence": [
         {
           "path": "docs/v107-validation-summary.json",
-          "sha256": "e7e838f198a6f0b1f99c7c9ddff9c851db44ae300e1c23bff3e8709e6cca435b",
-          "bytes": 18778
+          "sha256": "c4e45e1836a32ce182259828178008d5a98a4885341dd29faffcce5360e8d28d",
+          "bytes": 18780
         },
         {
           "path": "docs/v107-preserve-expedition-validation.json",
-          "sha256": "6a3c08b73a683bbd57ea994755b05be8043cb162bf2eb5739c1e290e57cea190",
+          "sha256": "67f2f054a4138b509d98b436b5162b1a69ca08a1c3a9fac826067840cb35e85d",
           "bytes": 32161
         }
       ],

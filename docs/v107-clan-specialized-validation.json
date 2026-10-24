@@ -3,9 +3,9 @@
   "release": "V107",
   "domain": "Clans",
   "status": "PASS",
-  "at": "2026-10-23T23:29:14.694Z",
+  "at": "2026-10-24T00:21:36.144Z",
   "scope": {
-    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
     "context": "free-specialized-works-v107",
     "description": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
     "sourceWorkbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
@@ -38,47 +38,56 @@
       }
     ],
     "stateInjection": false,
+    "fixtureIO": [
+      {
+        "target": "File.prototype.text",
+        "mode": "deferred-read",
+        "fileName": "v107-real-duel-carnet.json",
+        "payloadSource": "W3-S14 checkpoint exported from the preceding real UI duel",
+        "stateInjection": false
+      }
+    ],
     "campaignCompletion": false
   },
   "production": {
     "mode": "compiled-app",
-    "buildId": "6OeHlCftPttp5-q3dbQCV",
-    "runtimeCommit": "dc44ba9f36f5ae3606ea40a2dd68459be8c7510a",
-    "checksPassed": 45,
+    "buildId": "7SF-x09qAzuBDG33EbB1i",
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+    "checksPassed": 47,
     "checksFailed": 0,
     "browserErrors": 0,
     "servedBuilds": [
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
         "foundInHtml": true
       },
       {
         "url": "http://127.0.0.1:3101/",
         "status": 200,
-        "expectedBuildId": "6OeHlCftPttp5-q3dbQCV",
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
         "foundInHtml": true
       }
     ],
     "sourceFreeze": {
       "path": "docs/v107-runtime-freeze.json",
-      "sha256": "fe79d56fc92641c4c71485881fd903e3d38c743e03c8bdebc44e30bc7873ba18",
+      "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
       "bytes": 221954
     },
     "baseUrl": "http://127.0.0.1:3101",
-    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=6OeHlCftPttp5-q3dbQCV YAUTJA_QA_RUNTIME_COMMIT=dc44ba9f36f5ae3606ea40a2dd68459be8c7510a YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-dc44ba9 node scripts/qa-clan-specialized-v107.mjs"
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-e93d430 node scripts/qa-clan-specialized-v107.mjs"
   },
   "tests": {
     "business": {
-      "passed": 22,
+      "passed": 33,
       "failed": 0,
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/business-tests.log",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs > outputs/qa-v107/clan-specialized-production-e93d430/business-tests.log",
       "exitCode": 0
     },
     "lint": {
       "status": "PASS",
-      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx tests/clan-war-specialized-import-v107.test.mjs scripts/qa-clan-specialized-v107.mjs > outputs/qa-v107/clan-specialized-production-dc44ba9/lint.log",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx tests/clan-war-specialized-import-v107.test.mjs scripts/qa-clan-specialized-v107.mjs > outputs/qa-v107/clan-specialized-production-e93d430/lint.log",
       "exitCode": 0
     }
   },
@@ -90,8 +99,8 @@
     },
     {
       "file": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
-      "bytes": 28873
+      "sha256": "46957b201f393c951a16575e936b6da8cf4dac9e93bca583242baccd35f70997",
+      "bytes": 30600
     },
     {
       "file": "app/game/ClanWarSpecializedV107.module.css",
@@ -120,8 +129,8 @@
     },
     {
       "file": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
-      "bytes": 21662
+      "sha256": "e82d45b4fd4cfb0a94546a9ca6da9e6f2421abb17968dfa674f7238b7c139a47",
+      "bytes": 24230
     },
     {
       "file": "public/game/homeworld/v77/lava-transit-skiff.png",
@@ -157,8 +166,8 @@
     },
     {
       "file": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "ba2afbd229790b987162824cf5801074911ae366799a3bef5335433209a4e86b",
-      "bytes": 28873
+      "sha256": "46957b201f393c951a16575e936b6da8cf4dac9e93bca583242baccd35f70997",
+      "bytes": 30600
     },
     {
       "file": "app/game/ClanWarSpecializedV107.module.css",
@@ -187,8 +196,8 @@
     },
     {
       "file": "scripts/qa-clan-specialized-v107.mjs",
-      "sha256": "2e7e44b0689d5c4d353a75311172c3bade807f1d8490f8b6a0f5aa815b70d87c",
-      "bytes": 21662
+      "sha256": "e82d45b4fd4cfb0a94546a9ca6da9e6f2421abb17968dfa674f7238b7c139a47",
+      "bytes": 24230
     },
     {
       "file": "public/game/homeworld/v77/lava-transit-skiff.png",
@@ -310,6 +319,14 @@
       "status": "PASS"
     },
     {
+      "name": "Pending public file read clears the old valid draft, disables import and preserves the complete current checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Resolving the delayed public file read imports its actual exported duel carnet instead of the old dock draft",
+      "status": "PASS"
+    },
+    {
       "name": "W3-S15: pending real U19 cannot load a kit",
       "status": "PASS"
     },
@@ -423,8 +440,8 @@
     },
     {
       "file": "05-listening-recordings.png",
-      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
-      "bytes": 262434
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324
     },
     {
       "file": "06-orbital-arrival.png",
@@ -478,8 +495,8 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
-      "bytes": 262434,
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324,
       "capture": "05-listening-recordings.png",
       "inspected": true
     },
@@ -528,8 +545,8 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
-      "sha256": "fcd158360f8ae7251aeb8ed49746b62e16c20f5cb3fde715b5bf51e0bb86da7a",
-      "bytes": 262434
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324
     },
     {
       "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
@@ -543,18 +560,18 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/raw-validation.json",
-      "sha256": "5fe45e068ed2516d4ba5947ebc28feca4557406921230c4d8d5e7839f9ba5351",
-      "bytes": 12411
+      "sha256": "03de087b632af8b7a089552d9fb1f7b5c84c87b5559ca83121992b252c3639fb",
+      "bytes": 13026
     },
     {
       "file": "docs/qa/v107-clan-specialized/source-before-after.json",
-      "sha256": "80b2af5fa61dbfde02e3805774cea891d6ed387333e4ebd8c633301290a34623",
+      "sha256": "6d5ad946092b224be74563bc0e8c8e443d34e855d3f6fafc8739ef114eb52135",
       "bytes": 4591
     },
     {
       "file": "docs/qa/v107-clan-specialized/business-tests.log",
-      "sha256": "f83100eae55fea2f20a5cc13b29281c1779732162e6e0d479fbcc75124d7a5f5",
-      "bytes": 5559
+      "sha256": "8f50b38ed2806a199d9ce9288f4826de9af89385c9b1f7f0b2d4ed150a872326",
+      "bytes": 8142
     },
     {
       "file": "docs/qa/v107-clan-specialized/lint.log",
@@ -563,7 +580,7 @@
     },
     {
       "file": "docs/qa/v107-clan-specialized/verification-commands.json",
-      "sha256": "2fbeedc08b070ca0b1dc4ba5fcfeebf1742cc150a5d1d9b74c64b5df9ad11ca7",
+      "sha256": "b64e7f37553aebad0642c590adcab610f5cb2d8fb829e240975cee2219038516",
       "bytes": 845
     }
   ]
