@@ -1,0 +1,144 @@
+
+> yautja-la-longue-chasse@1.0.0 build:production
+> node scripts/build-production-v94.mjs
+
+[production] audio
+[audio] 37 slots, 22 supplied, 0 ignored
+[production] next
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 22ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 14.1s
+  Running TypeScript ...
+  Finished TypeScript in 54s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/9) ...
+  Generating static pages using 4 workers (2/9) 
+  Generating static pages using 4 workers (4/9) 
+  Generating static pages using 4 workers (6/9) 
+✓ Generating static pages using 4 workers (9/9) in 1955ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /clan-war-qa-v92
+├ ƒ /dialogues
+├ ƒ /pit-lab
+├ ƒ /planet-generator-v102
+├ ƒ /planet-generator-v103
+├ ƒ /planet-materials-v101
+├ ƒ /rig-lab
+├ ƒ /solo-qa-v92
+└ ƒ /visual-qa-v90
+
+
+ƒ Proxy (Middleware)
+
+ƒ  (Dynamic)  server-rendered on demand
+
+[production] pit-css
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-24T02:35:37.663Z",
+  "nextDir": "/workspace/yautja-la-longue-chasse/.next",
+  "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+  "files": [
+    {
+      "path": "static/css/1359f09d0e29c346.css",
+      "bytes": 124342,
+      "sha256": "c1c62390f8bd8ac54ad47db6c2aa7745a307f98d0bcd0093e8ee8fdca2ff0b74"
+    },
+    {
+      "path": "static/css/1b9d0b2aa3198012.css",
+      "bytes": 18439,
+      "sha256": "9d6a63df9b0a49663a031b3f948eda5d8c866639ef56a79e3fb3a69c52d8bcb1"
+    }
+  ],
+  "checks": [
+    {
+      "id": "toast-does-not-intercept-hud",
+      "selector": "toast",
+      "property": "pointer-events",
+      "expected": "none",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/1359f09d0e29c346.css",
+          "selector": ".toast",
+          "value": "none",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "immersive-toast-above-desktop-menu",
+      "selector": "desktop",
+      "property": "bottom",
+      "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/1359f09d0e29c346.css",
+          "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+          "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-below-health-hud",
+      "selector": "touch",
+      "property": "top",
+      "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/1359f09d0e29c346.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-releases-bottom",
+      "selector": "touch",
+      "property": "bottom",
+      "expected": "auto",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/1359f09d0e29c346.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "auto",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+    "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+    "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+  ]
+}
+[production] native-origin
+{"status":"skipped","reason":"not-exact-linux-vercel-build-root"}
+[production] static-output
+{"status":"skipped","reason":"not-exact-linux-vercel-build-root"}

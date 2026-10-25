@@ -16,6 +16,7 @@ import { PIT_WORKBOOK_COMBAT_RECIPE_V105 } from './systems/pitWorkbookCombatV105
 import {PIT_WORKBOOK_COMBAT_RECIPE_V107} from './systems/pitWorkbookCombatV107';
 import {drawPitWorkbookDeviceBodyV107, drawPitWorkbookDeviceV107, loadPitWorkbookDeviceArtV107, type PitWorkbookDeviceArtV107} from './pitWorkbookDeviceRenderingV107';
 import {getPitWorkbookVariantCapabilitiesV107, guardPitWorkbookVariantCapabilityV107} from './pitWorkbookVariantCapabilitiesV107';
+import {preparePitWorkbookCampaignCombatV108,type PitWorkbookCarryV108} from './systems/pitWorkbookCampaignV108';
 import { PIT_WORKBOOK_COMBAT_RECIPE_V106 } from './systems/pitWorkbookCombatV106';
 import { PIT_WORKBOOK_MOVES_V105 } from './systems/pitWorkbookMovesV105';
 import { PIT_WORKBOOK_NORMALS_V104, PIT_WORKBOOK_NORMALS_RECIPE_V104, ownsPitWorkbookNormalsV104 } from './systems/pitWorkbookNormalsV104';
@@ -290,7 +291,7 @@ interface PitCanvasProps {
   /** Restore the visited hero only; this is not a durable versus checkpoint. */
   initialLeftId?: PitVersusFighterId;
   /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
-  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId; readonly normalMoves?: 'workbook-v106' };
+  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId; readonly normalMoves?: 'workbook-v106'|'workbook-v107'; readonly workbookCarryV108?: PitWorkbookCarryV108 };
   onWorkbookExerciseFrameV107?: (frame: Readonly<PitCombatState>) => void;
   /** Reserved for an actual scenario controller; current workbook extracts emit no V61 story cue. */
   narrativeStageCues?: PitStageNarrativeCuesV61;
@@ -1860,6 +1861,7 @@ export default function PitCanvas({
       ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
       ...(stageJourneyEnabled && getPitStageJourneyForArena(nextArenaId) && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: getPitStageJourneyForArena(nextArenaId)!.id } : {}),
     });
+    if (narrativeEncounter?.workbookCarryV108) next = preparePitWorkbookCampaignCombatV108(next,narrativeEncounter.workbookCarryV108);
     if (nextMode === "descent") {
       if (!descentRunState || !descentNode) {
         throw new Error("A Descent duel requires its persisted route and node.");

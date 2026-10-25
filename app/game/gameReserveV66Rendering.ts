@@ -1,3 +1,4 @@
+import { GAME_RESERVE_EXPEDITION_V108_SECTORS, GAME_RESERVE_EXPEDITION_V108_SITES } from "./systems/gameReserveExpeditionV108";
 import { drawActorContactShadow } from "./spriteContact";
 import { GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
@@ -52,8 +53,8 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   ctx.drawImage(bg, 0, 0, bg.naturalWidth, 770, -(width - viewportWidth) * travel, -(height - 438) * .15, width, height);
   for (let x = -camera % 700 - 700; x < viewportWidth; x += 700) ctx.drawImage(bg, 0, 770, bg.naturalWidth, bg.naturalHeight - 770, x, 438, 700, 102);
   ctx.translate(-camera, 0);
-  if (s.version === 3) {
-    for (const sector of GAME_RESERVE_EXPEDITION_V107_SECTORS) {
+  if (s.version === 3 || s.version === 4) {
+    for (const sector of s.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SECTORS : GAME_RESERVE_EXPEDITION_V107_SECTORS) {
       const atmosphere = ctx.createLinearGradient(0, 120, 0, 540); atmosphere.addColorStop(0, sector.atmosphere + "16"); atmosphere.addColorStop(1, sector.atmosphere + "66");
       ctx.fillStyle = atmosphere; ctx.fillRect(sector.left, 0, sector.right - sector.left, 540);
     }
@@ -70,14 +71,14 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     label(ctx, s.lookout.recordedAt === null ? "POSTE HAUT · RELEVÉ (2 s)" : "REPÈRES CONSIGNÉS · RETOUR À L’OUEST", site.x, 118, "#c4e3dc");
     ctx.strokeStyle = "#c4e3dc"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
   }
-  if (s.version === 3) for (const [index, site] of GAME_RESERVE_EXPEDITION_V107_SITES.entries()) {
-    const recorded = s.routeV107.siteRecords[index].recordedAt !== null;
+  if (s.version === 3 || s.version === 4) for (const [index, site] of (s.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SITES : GAME_RESERVE_EXPEDITION_V107_SITES).entries()) {
+    const recorded = (s.version === 4 ? s.routeV108 : s.routeV107).siteRecords[index].recordedAt !== null;
     if (index === 0) ctx.drawImage(bank.machinery, site.x - 120, 146, 240, 132);
     ctx.strokeStyle = recorded ? "#8dcbb8" : "#e9ce94"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
     label(ctx, recorded ? site.name + " · CONSIGNÉ" : site.name + " · RELEVÉ (2 s)", site.x, site.y - 70, recorded ? "#a1dac3" : "#e9ce94");
   }
   for (const platform of platforms) {
-    const image = platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
+    const image = s.version === 4 ? [2, 3, 5, 7].includes(Math.floor(platform.x / 1600)) ? bank.industrialPlatform : bank.branch : platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
     ctx.drawImage(image, platform.x, platform.y - 3, platform.w, Math.min(115, platform.w * image.naturalHeight / image.naturalWidth));
     ctx.strokeStyle = "#a9c68988"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(platform.x + 8, platform.y); ctx.lineTo(platform.x + platform.w - 8, platform.y); ctx.stroke();
   }
