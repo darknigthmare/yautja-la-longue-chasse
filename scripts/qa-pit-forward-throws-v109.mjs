@@ -85,7 +85,7 @@ async function until(predicate, label, ticks = 3000, ms = 16) {
   throw Error('Public V109 journey timed out: ' + label + ' ' + JSON.stringify(await read()));
 }
 const draws = () => page.evaluate(() => window.__pitForwardThrowQaV109.draws);
-async function capture(file) {await canvas().screenshot({path: path.join(output, file)}); const bytes = await fs.readFile(path.join(output, file)); captures.push({file, sha256: sha(bytes), bytes: bytes.length, state: await read()});}
+async function capture(file) {await canvas().screenshot({path: path.join(output, file)}); const bytes = await fs.readFile(path.join(output, file)); const state = await read(); captures.push({file, sha256: sha(bytes), bytes: bytes.length, state}); return state;}
 async function press(code, ms = 17) {await page.locator('[data-pit-immersive]').focus(); await page.keyboard.down(code); await page.clock.runFor(ms); await page.keyboard.up(code);}
 async function openMatch(ids, label) {
   context = await browser.newContext({viewport: {width: 1440, height: 1050}, reducedMotion: 'no-preference'}); contexts.push(context);
@@ -111,7 +111,9 @@ async function openMatch(ids, label) {
       return result;
     };
   }, {profile, nativePaths});
-  page = await context.newPage(); page.setDefaultTimeout(40000); page.on('pageerror', error => errors.push({label, message: error.message}));
+  page = await context.newPage(); page.setDefaultTimeout(40000);
+  page.on('pageerror', error => errors.push({label, kind: 'pageerror', message: error.message, location: null}));
+  page.on('console', message => {if (message.type() === 'error') errors.push({label, kind: 'console.error', message: message.text(), location: message.location()});});
   const response = await page.goto(baseUrl, {waitUntil: 'domcontentloaded', timeout: 120000}); assert(response); const html = await response.text();
   servedBuilds.push({label, status: response.status(), buildId, foundInHtml: buildId ? html.includes(buildId) : null, sha256: sha(Buffer.from(html))});
   check(label + ': local app serves the declared build', response.status() === 200 && (!buildId || html.includes(buildId)));
@@ -144,25 +146,73 @@ async function launch(slot, input = 'button') {
     for (const key of keys) await page.keyboard.down(key); await page.clock.runFor(17); for (const key of keys) await page.keyboard.up(key);
   }
 }
-async function connected(slot, label, input) {
+async function connected(slot, label, input, ids) {
   await approach(slot); const before = await read(); await launch(slot, input);
   const caught = await until(s => Boolean(s.throw), label + ' real capture');
   check(label + ': the independent target is caught with its actual source ID', caught.throw.attackerSlot === slot && caught.actions[slot].workbookMove === 'TH_F' && caught.life[1 - slot] === before.life[1 - slot]);
-  await capture(label + '-capture.png'); const samples = [caught];
+  const captureState = await capture(label + '-capture.png');
+  check(label + ': capture PNG remains inside the real capture phase', captureState.throw?.attackerSlot === slot && captureState.throw.age < 8);
+  const samples = [caught];
   let airborne, landed;
   const observe = s => {if (s.throw) {samples.push(s); if (s.positions[1 - slot].y > 40) airborne ??= s; if (s.throw.age >= 19) landed ??= s;}};
-  await until(s => {observe(s); return s.throw?.age === 12;}, label + ' native flight drawing at12', 120);
+  await until(s => {observe(s); return s.throw && s.throw.age >= 12 && s.throw.age < 19;}, label + ' native flight drawing near tick12', 1200, 1);
   check(label + ': the expired tech notice becomes a projection notice during flight', await page.locator('[data-pit-announcement]').innerText() === 'PROJECTION EN COURS');
-  await capture(label + '-flight.png');
-  await until(s => {observe(s); return s.throw?.age === 19;}, label + ' native impact drawing at19', 120);
-  await capture(label + '-landing.png');
+  const flightState = await capture(label + '-flight.png');
+  check(label + ': flight PNG remains in the actual airborne native phase', flightState.throw?.attackerSlot === slot && flightState.throw.age >= 10 && flightState.throw.age < 19 && flightState.positions[1-slot].y > 0);
+  await until(s => {observe(s); return s.throw && s.throw.age >= 19 && s.throw.age < 43;}, label + ' native impact drawing after tick19', 1200, 1);
+  const impactState = await capture(label + '-landing.png');
+  check(label + ': impact PNG shows the real landing pose on the ground', impactState.throw?.attackerSlot === slot && impactState.throw.age >= 19 && impactState.throw.age < 43 && impactState.positions[1-slot].y === 0);
   await until(s => {observe(s); return !s.throw && !s.actions[slot].workbookMove;}, label + ' actual landing and recovery', 240);
   const after = await read();
+  const actualDraws = (await draws()).filter(draw => draw.capture?.capturedFrame === caught.throw.capturedFrame && draw.capture.attackerSlot === slot);
+  const byPaintedFrame = new Map(), inconsistentDrawFrames = [];
+  for (const draw of actualDraws) {
+    const sample = {frame: draw.frame, throw: draw.capture, positions: draw.positions};
+    const prior = byPaintedFrame.get(draw.frame);
+    if (prior && JSON.stringify(prior) !== JSON.stringify(sample)) inconsistentDrawFrames.push({prior, current: sample});
+    else byPaintedFrame.set(draw.frame, sample);
+  }
+  const paintedSamples = [...byPaintedFrame.values()].sort((a, b) => a.frame - b.frame);
+  const pollingAges = new Set(samples.map(sample => sample.throw.age));
+  const missingPollingAges = Array.from({length: 61}, (_, age) => age).filter(age => !pollingAges.has(age));
+  // The raw polling snapshots are retained. Strict continuity uses the actual
+  // native drawImage observations; no frame or intermediate position is invented.
+  observations.push({kind: 'played-connected-throw', label, slot, input, before, caught, airborne, landed, after,
+    samples, sampleScope: 'Polling may miss frames. Every actual painted frame0–60 is required below.',
+    actualDraws, paintedSamples, inconsistentDrawFrames, missingPollingAges});
   check(label + ': real flight lands once for110 base damage, without replacing identity or stock', Boolean(airborne && landed) && after.life[1 - slot] === before.life[1 - slot] - 110 && JSON.stringify(after.inventory) === JSON.stringify(before.inventory));
-  const unique = [...new Map(samples.map(s => [s.frame, s])).values()];
-  const ages = new Set(unique.map(s => s.throw.age));
-  check(label + ': target movement is observed on every capture/flight/landing tick with no jump', Array.from({length: 20}, (_, age) => age).every(age => ages.has(age)) && unique.every((s, index) => !index || s.frame === unique[index - 1].frame + 1 && Math.hypot(s.positions[1 - slot].x - unique[index - 1].positions[1 - slot].x, s.positions[1 - slot].y - unique[index - 1].positions[1 - slot].y) < 23));
-  await capture(label + '-recovered.png'); observations.push({kind: 'played-connected-throw', label, slot, input, before, caught, airborne, landed, after, samples});
+  check(label + ': every painted capture/flight/landing tick0–60 is observed without a gap or conflicting duplicate',
+    inconsistentDrawFrames.length === 0 && paintedSamples.length === 61 && paintedSamples.every((sample, age) =>
+      sample.throw.age === age && sample.frame === caught.throw.capturedFrame + age),
+    {paintedCount: paintedSamples.length, inconsistentDrawFrames, missingPollingAges});
+  const victimFacing = caught.throw.defenderFacing === 1 ? 'right' : 'left';
+  const victimAdmission = admissions.find(row => row.fighterId === ids[1 - slot] && row.role === 'victim' && row.facing === victimFacing);
+  check(label + ': every age paints the exact independent victim PNG and native pose without reflection or deformation', paintedSamples.every(sample => {
+    const expected = victimAdmission.definition.atlas.clips[0].frames[api.getPitWorkbookThrowVictimFrameV109(sample.throw.age)];
+    const src = victimAdmission.definition.atlas.pages.find(page => page.id === expected.pageId).src;
+    return actualDraws.some(draw => draw.frame === sample.frame && draw.capture.age === sample.throw.age &&
+      draw.src === src && JSON.stringify(draw.rect) === JSON.stringify(expected.rect) &&
+      JSON.stringify(draw.positions) === JSON.stringify(sample.positions) &&
+      draw.destination?.[2] > 0 && draw.destination?.[3] > 0 &&
+      Math.abs(draw.destination[2] / expected.rect[2] - draw.destination[3] / expected.rect[3]) < 1e-9 &&
+      draw.matrix[0] > 0 && draw.matrix[3] > 0 && draw.matrix[1] === 0 && draw.matrix[2] === 0 &&
+      Math.abs(draw.matrix[0] - draw.matrix[3]) < 1e-9);
+  }));
+  const roundingTolerance = .005000001, target = 1 - slot, spec = api.PIT_WORKBOOK_FORWARD_THROW_V109;
+  check(label + ': every painted target coordinate follows the bounded real trajectory with rounding tolerance only', paintedSamples.every(sample => {
+    const expected = api.getPitWorkbookThrowPositionV109(sample.throw), point = sample.positions[target], attacker = sample.positions[slot];
+    return Math.abs(point.x - expected.x) <= roundingTolerance && Math.abs(point.y - expected.y) <= roundingTolerance &&
+      Math.abs(attacker.x - sample.throw.attackerX) <= roundingTolerance && Math.abs(attacker.y) <= roundingTolerance &&
+      Math.abs(sample.throw.destinationX - sample.throw.defenderX) <= spec.distance &&
+      (sample.throw.destinationX - sample.throw.defenderX) * sample.throw.direction >= 0 &&
+      point.y >= -roundingTolerance && point.y <= spec.height + roundingTolerance &&
+      point.x >= Math.min(sample.throw.defenderX, sample.throw.destinationX) - roundingTolerance &&
+      point.x <= Math.max(sample.throw.defenderX, sample.throw.destinationX) + roundingTolerance;
+  }));
+  check(label + ': adjacent actually painted target positions are continuous without a jump', paintedSamples.every((sample, index) => !index ||
+    Math.hypot(sample.positions[target].x - paintedSamples[index - 1].positions[target].x,
+      sample.positions[target].y - paintedSamples[index - 1].positions[target].y) < 23));
+  await capture(label + '-recovered.png');
 }
 async function tech(slot, label, ids) {
   await approach(slot); const before = await read(); await launch(slot); const caught = await until(s => Boolean(s.throw), label + ' caught');
@@ -201,7 +251,7 @@ try {
     const label = ids.join('-vs-'); await openMatch(ids, label);
     const before = await read(); await launch(0, 'keyboard'); await page.clock.runFor(750); const whiff = await read();
     check(label + ': real out-of-range L+M whiffs without damage or an invented target', !whiff.throw && JSON.stringify(whiff.life) === JSON.stringify(before.life) && !whiff.actions[0].workbookMove);
-    await connected(0, label + '-J1', index === 0 ? 'pad' : 'keyboard'); await connected(1, label + '-J2', 'button'); await tech(index, label + '-tech', ids);
+    await connected(0, label + '-J1', index === 0 ? 'pad' : 'keyboard', ids); await connected(1, label + '-J2', 'button', ids); await tech(index, label + '-tech', ids);
     if (index === 0) await finishAndReplay(label);
     const rendered = await draws();
     for (const admission of admissions) {
@@ -224,7 +274,7 @@ try {
     }
     observations.push({kind: 'actual-drawImage-calls', label, draws: rendered}); await context.close();
   }
-  check('No uncaught browser exception', errors.length === 0);
+  check('No JavaScript exception or console.error', errors.length === 0);
 } catch (error) {failure = error; console.error(error); await page?.screenshot({path: path.join(output, 'failure.png'), timeout: 5000}).catch(() => {});}
 finally {
   const sourceAfter = await snapshot(); const unchanged = JSON.stringify(sourceBefore) === JSON.stringify(sourceAfter);
