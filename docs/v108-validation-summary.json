@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "release": "V108",
+  "status": "PASS_CIBLE",
+  "recordedAt": "2026-10-25T06:39:52.807Z",
+  "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+  "productionBuildId": "xymWQOgijMpjLfRYw7ynF",
+  "scope": "Targeted journeys on one compiled production build: Feral/Scar resource continuity and native equipment inspection; ROLE19 physical cargo sorting; linked six-workshop clan logistics; a second eight-sector Preserve reserve. Reused art is declared. Complete kits, original source campaigns, campaign acquisitions and the 80/100 target remain open.",
+  "sourceFreeze": {
+    "path": "docs/v108-runtime-freeze.json",
+    "sha256": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727",
+    "bytes": 227172
+  },
+  "production": [
+    {
+      "domain": "Pit",
+      "status": "PASS_CIBLE",
+      "buildId": "xymWQOgijMpjLfRYw7ynF",
+      "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+      "driver": "scripts/qa-pit-campaign-v108.mjs",
+      "command": "node scripts/qa-pit-campaign-v108.mjs",
+      "report": {
+        "path": "docs/v108-pit-validation.json",
+        "sha256": "bc576bc0f8e48a923b4fa3d7715151e8e8c64eb675a2cf9150705303463717ad",
+        "bytes": 51247
+      },
+      "browserChecksPassed": 38,
+      "capturesInspected": 12,
+      "portableFiles": [
+        {
+          "path": "docs/qa/v108-pit/browser-result.json.gz",
+          "sha256": "382640a72071608e8433a1f8972c168845cb999a64be45ce66ecc5c2a918fd12",
+          "bytes": 17204,
+          "decodedSha256": "3864c3946b4001eb834d284873066fb900c529bca95008230f6d28884dd36338",
+          "decodedBytes": 276650
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-physical-mine-visible-0.png",
+          "sha256": "8fbb3f759ed2edcef5366787896cae8acc51acef3323959946fc92d110b83f6a",
+          "bytes": 1920339
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-first-victory-carry.png",
+          "sha256": "790bc886005b35b330538b6df1a6ae5f2129ef15c9581be679add34daaf5cbfb",
+          "bytes": 121035
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-voluntary-replay.png",
+          "sha256": "139360b1dbda8200876e23371ea6ad80995298dd2460045f3a66459cf436a3c2",
+          "bytes": 1336916
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-model-prepared-native-equipment-right.png",
+          "sha256": "de23bb487bed708738ed2a3729916a7663db4c2f9ac5b94eda271476fcd90649",
+          "bytes": 985098
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-model-prepared-native-equipment-left.png",
+          "sha256": "bda09d795953cbafacbd2d458afe6a7c6338f2d64695cb0c94a27ab0bd66d887",
+          "bytes": 983561
+        },
+        {
+          "path": "docs/qa/v108-pit/feral-hunter-model-prepared-inspection-receipt.png",
+          "sha256": "27ae395c0f982c4df302881e69eaa31e4d5aaf6ff1205d810b1a2c6bef3c271e",
+          "bytes": 125840
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-physical-shuriken-blocked-immediate-contact-6.png",
+          "sha256": "43f96cdc922a3cc4097aca585d222a84d23f44c2714c25ac3d24281ef800b61e",
+          "bytes": 1594290
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-first-victory-carry.png",
+          "sha256": "fac324d24fac19a65fdb1b3c78c27a8279ae10c029d912831867926b9ea45885",
+          "bytes": 123272
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-voluntary-replay.png",
+          "sha256": "2cbc4e6f55ef975d476579640026cd83ccc06089eb1a7a2e6f3007989fdea5f5",
+          "bytes": 1137474
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-model-prepared-native-equipment-right.png",
+          "sha256": "12012f31e425184521a72a39567387db40694f24c189b30d60042d213dc68f00",
+          "bytes": 913876
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-model-prepared-native-equipment-left.png",
+          "sha256": "5144597300fafdca8bd4439e15b50e1ed9151c8410af91f19f2dcdf0fb885561",
+          "bytes": 912282
+        },
+        {
+          "path": "docs/qa/v108-pit/scar-model-prepared-inspection-receipt.png",
+          "sha256": "b7ddd659ea4e1ed01965d4021a38fc64cd96de98b3b300467bcf252597156d8b",
+          "bytes": 127683
+        }
+      ]
+    },
+    {
+      "domain": "Homeworld",
+      "status": "PASS_CIBLE",
+      "buildId": "xymWQOgijMpjLfRYw7ynF",
+      "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+      "driver": "scripts/qa-homeworld-cargo-v108.mjs",
+      "command": "node scripts/qa-homeworld-cargo-v108.mjs",
+      "report": {
+        "path": "docs/v108-homeworld-validation.json",
+        "sha256": "6a0a8b79c401e3a3e4929019bc62d7ee8c35b629d838e6ac9c896215166aa765",
+        "bytes": 25284
+      },
+      "browserChecksPassed": 56,
+      "capturesInspected": 13,
+      "portableFiles": [
+        {
+          "path": "docs/qa/v108-homeworld/browser-result.json.gz",
+          "sha256": "99b6b75e92259465fe6f100d49a1b5d9864301a5d967c7205468fbf8a43d3383",
+          "bytes": 5199,
+          "decodedSha256": "b09c76e1cb322b4962cf7599830ccf96f4a21b5814a9ece1770db0c12518080a",
+          "decodedBytes": 26412
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-00-migration-retry-mobile.png",
+          "sha256": "8abc1380b9ff2a8f7a3eb06eaef0a66f5480c593b2f25e5462333f55a6dc2bcc",
+          "bytes": 15833
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-00-migration-retry.png",
+          "sha256": "1dd44d4fcc84cc5515544f59cc394e787e8e503e5c59dfad3b0d24aef685c5b4",
+          "bytes": 16699
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-01-source.png",
+          "sha256": "514403dc7b52e2cc1dd9fde69878dbebc9a8865ba6874b5d1615e29fd515582c",
+          "bytes": 191941
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-02-carry.png",
+          "sha256": "a78ab3775052413aef1ea92c398b03fd24852c2557583fb8921f47f8eecaf29e",
+          "bytes": 867828
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-03-reprise.png",
+          "sha256": "685e869830a5f34da61cee18ce804c185911ebff62ee28f788b87ad11e50b572",
+          "bytes": 185833
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-04-placed.png",
+          "sha256": "6bad9db7e4351e961d6730ac32bc30981476f8d67b1525f8b24facebfbf4783e",
+          "bytes": 1126478
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-05-completed.png",
+          "sha256": "12000fa4b31706fcfa02dffacaade9ffae7d35df84ae1b334bb77ededb2fe765",
+          "bytes": 187609
+        },
+        {
+          "path": "docs/qa/v108-homeworld/a-06-mobile.png",
+          "sha256": "6a57071a972efe823fb1a23908d2c0565616c38d1a38fbff0f7b482846372b8c",
+          "bytes": 131669
+        },
+        {
+          "path": "docs/qa/v108-homeworld/b-01-source.png",
+          "sha256": "ec1f3db1982ea81b4a49a43facf7ed7d716542af3c2c5078e8c4b5b6cffd34c5",
+          "bytes": 189875
+        },
+        {
+          "path": "docs/qa/v108-homeworld/b-02-carry.png",
+          "sha256": "132e8f82a03288d7cb7f177aa7d0bbcba2a52e921b1d7f49c97a99088bfbb04c",
+          "bytes": 1120821
+        },
+        {
+          "path": "docs/qa/v108-homeworld/b-04-placed.png",
+          "sha256": "66bff77269e25f6c3d89a0d1adf6f918744d66188dacf14c30690072f57d5651",
+          "bytes": 1116098
+        },
+        {
+          "path": "docs/qa/v108-homeworld/b-05-completed.png",
+          "sha256": "91c5f37a5ee450118fc0193d7775b175cf7712c4791e1e9da685200d02ed6f16",
+          "bytes": 187691
+        },
+        {
+          "path": "docs/qa/v108-homeworld/b-06-mobile.png",
+          "sha256": "5c68863f9b246802363b0619a7c7c46b65101828c1b02102093191fb2d6c7692",
+          "bytes": 131918
+        }
+      ]
+    },
+    {
+      "domain": "Clans",
+      "status": "PASS_CIBLE",
+      "buildId": "xymWQOgijMpjLfRYw7ynF",
+      "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+      "driver": "scripts/qa-clan-logistics-v108.mjs",
+      "command": "node scripts/qa-clan-logistics-v108.mjs",
+      "report": {
+        "path": "docs/v108-clans-validation.json",
+        "sha256": "f0d42e405b3eb45d5006d64f01591bc91dcf85a874c6137b345f24e511ece848",
+        "bytes": 14017
+      },
+      "browserChecksPassed": 42,
+      "capturesInspected": 7,
+      "portableFiles": [
+        {
+          "path": "docs/qa/v108-clans/browser-result.json.gz",
+          "sha256": "76fd1cfdfdb6570bf395e6a71d903c91f1bb5328a1f99c099a88628d19fec2bc",
+          "bytes": 3587,
+          "decodedSha256": "3673975298ba4b4263be7bb441aaeb4bf3b9831c6e22cc280485cacf421b5b3e",
+          "decodedBytes": 13383
+        },
+        {
+          "path": "docs/qa/v108-clans/01-same-skiff-east-bank.png",
+          "sha256": "7883a3ddaae39f7f949adbf4fdc000e3fcc2db7a6491c41a6ac0f981fd9b7327",
+          "bytes": 258077
+        },
+        {
+          "path": "docs/qa/v108-clans/02-two-mounts-one-water-container.png",
+          "sha256": "6ea79d14fb6073d230afa4a5d0e004a341c19ef4b206abf64ff4711ff44e0ab7",
+          "bytes": 254005
+        },
+        {
+          "path": "docs/qa/v108-clans/03-finite-cell-adjacent-open-rail.png",
+          "sha256": "2c3001c98ccf2ac32bcae3c8ed8ee8ae591fde20080d1eb41baac99800dddb3d",
+          "bytes": 254204
+        },
+        {
+          "path": "docs/qa/v108-clans/04-consented-duel-unique-chest.png",
+          "sha256": "27c32f98bcf7d86f8dd075eb9430616526863530a5742e152b97bb86557e609a",
+          "bytes": 255628
+        },
+        {
+          "path": "docs/qa/v108-clans/05-two-situated-real-audio-files.png",
+          "sha256": "2050cfec7f63b9efaebd83055700873e2cfc86438a0f3630da165eb5c71ce361",
+          "bytes": 253031
+        },
+        {
+          "path": "docs/qa/v108-clans/06-orbital-arrival-persistent-six-sites.png",
+          "sha256": "cc25d5a3c06327bafca738b51d0dfcfb85e6d149ba458c89c1a02fae3f32b553",
+          "bytes": 254237
+        },
+        {
+          "path": "docs/qa/v108-clans/07-mobile-shared-terrain.png",
+          "sha256": "c16b52eb7986373244265b23d7c140f4b85b71df5022aed56cee8438b6d30e82",
+          "bytes": 54200
+        }
+      ]
+    },
+    {
+      "domain": "Preserve",
+      "status": "PASS_CIBLE",
+      "buildId": "xymWQOgijMpjLfRYw7ynF",
+      "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+      "driver": "scripts/qa-preserve-expedition-v108.mjs",
+      "command": "node scripts/qa-preserve-expedition-v108.mjs",
+      "report": {
+        "path": "docs/v108-preserve-validation.json",
+        "sha256": "c2c674a86349a6f3358fe02c978fac933f189c3cef35b7f78e5c8480ea95d21d",
+        "bytes": 21442
+      },
+      "browserChecksPassed": 39,
+      "capturesInspected": 15,
+      "portableFiles": [
+        {
+          "path": "docs/qa/v108-preserve/browser-result.json.gz",
+          "sha256": "2a45d22e6752d0c2b3da64f6a9588b6c9721d5060bb02e39684af09dc4e44615",
+          "bytes": 22337,
+          "decodedSha256": "212b7a90acadd2346145d38ea0ff9bd85480d436d77f18678f0bd4f89af08903",
+          "decodedBytes": 394202
+        },
+        {
+          "path": "docs/qa/v108-preserve/choice-v4-desktop.png",
+          "sha256": "17cc7cf6aca11dd871f28710aeee0781ab1a499d935837ee14ee3a0531bd5991",
+          "bytes": 349642
+        },
+        {
+          "path": "docs/qa/v108-preserve/living-v4-landscape-touch.png",
+          "sha256": "5ed03c5f209e9f03d122225f9c9c1ed72deeef71b82e2f957ac03382ccaf73c1",
+          "bytes": 380776
+        },
+        {
+          "path": "docs/qa/v108-preserve/legacy-v3-preserved.png",
+          "sha256": "6bcc8854fe96250a050138d4c8e0ff63ed1a2f138ded237b2c25ea91b2096add",
+          "bytes": 624100
+        },
+        {
+          "path": "docs/qa/v108-preserve/campaign-v4-entry.png",
+          "sha256": "827992062181d61146d8a3987f8d1364307d60af73657a2245cfa67afa0a0572",
+          "bytes": 363672
+        },
+        {
+          "path": "docs/qa/v108-preserve/living-v4-physical-logistics.png",
+          "sha256": "01d79b1839d6c86ecd6ce311a7e1effee9c977d13be3b886434c4c9f6974d6e8",
+          "bytes": 361531
+        },
+        {
+          "path": "docs/qa/v108-preserve/played-v4-one-adult-secured.png",
+          "sha256": "ecf847301fb725a1d08f1dbe2a2782e88aaf7c85b83b7604298f3d08976b8e12",
+          "bytes": 341325
+        },
+        {
+          "path": "docs/qa/v108-preserve/canopy-channel-in-progress.png",
+          "sha256": "43ac02de7454d8eb806a05557a03f0fe478e35f8cfd52ed69f18b8e20be176ad",
+          "bytes": 1562966
+        },
+        {
+          "path": "docs/qa/v108-preserve/canopy-recorded.png",
+          "sha256": "7c4a4d2f77ddd404c07ad544d092c65b658b3963559cb109727bc4dfc2215d64",
+          "bytes": 1579646
+        },
+        {
+          "path": "docs/qa/v108-preserve/foundry-recorded.png",
+          "sha256": "00282484423d8c5103ce382e413cba02f161c82cb77c9f853603a929bf142e59",
+          "bytes": 1533202
+        },
+        {
+          "path": "docs/qa/v108-preserve/array-recorded.png",
+          "sha256": "10a4dd52c4ff1c98cab00cb4af6d419310913b8a95700ab3d9dead678e8b0885",
+          "bytes": 1578614
+        },
+        {
+          "path": "docs/qa/v108-preserve/root-vault-physical-route.png",
+          "sha256": "0f64dbd8bb9969613aacf86a74bd2cf95d6951c5199856057b2ddb51d64d3503",
+          "bytes": 1482256
+        },
+        {
+          "path": "docs/qa/v108-preserve/ash-landing-recorded.png",
+          "sha256": "9a36c2d9de833b80bb8cde3e56d8baa5efde12d25cc8942e0ebe58d2dc275756",
+          "bytes": 1535552
+        },
+        {
+          "path": "docs/qa/v108-preserve/route-notebook-desktop.png",
+          "sha256": "809063457ad27cce6f5b4cfe1a73ca40e6849a582ff9227e7e5427c0e98166f9",
+          "bytes": 321580
+        },
+        {
+          "path": "docs/qa/v108-preserve/route-notebook-mobile.png",
+          "sha256": "01e3daba31cc2476a74a7fa5191a2334643999e889f5eeb67eed022c1353115c",
+          "bytes": 130781
+        },
+        {
+          "path": "docs/qa/v108-preserve/survey-returned-outcome.png",
+          "sha256": "76191dc4f3ad2c10ac406e5425b3a4151c887ada850afa155c21cb98fc081463",
+          "bytes": 193361
+        }
+      ]
+    }
+  ]
+}

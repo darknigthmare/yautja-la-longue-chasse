@@ -3,10 +3,10 @@
   "release": "V108",
   "result": "PASS_STRUCTURE",
   "workbook": "docs/YAUTJA_V108_SUIVI.xlsx",
-  "sha256": "3a65c060803db73e06adb50115310e881701d32813ec80b8297402a0467826bd",
-  "bytes": 4621048,
-  "inputFingerprintsVerified": 100,
-  "freezeEntriesVerified": 0,
+  "sha256": "2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba",
+  "bytes": 4757180,
+  "inputFingerprintsVerified": 343,
+  "freezeEntriesVerified": 1242,
   "facts": {
     "trackedOriginalOpenItems": 77,
     "inheritedClosedItems": 21,
@@ -39,7 +39,12 @@
     "clanStartingHullRav": 480,
     "clanStartingConservation": true
   },
-  "production": null,
+  "production": {
+    "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+    "buildId": "xymWQOgijMpjLfRYw7ynF",
+    "browserChecks": 175,
+    "inspectedCaptures": 47
+  },
   "sheetNames": [
     "LotV62",
     "CombattantsV54",
@@ -150,7 +155,7 @@
     {
       "cell": "B17",
       "formula": "COUNTIF('ChantiersV108'!E5:E13,\"A_VALIDER\")",
-      "cached": 5
+      "cached": 0
     },
     {
       "cell": "B18",
@@ -160,7 +165,7 @@
     {
       "cell": "B19",
       "formula": "COUNTIF('ChantiersV108'!E5:E13,\"VALIDE_CIBLE\")",
-      "cached": 0
+      "cached": 5
     },
     {
       "cell": "B20",

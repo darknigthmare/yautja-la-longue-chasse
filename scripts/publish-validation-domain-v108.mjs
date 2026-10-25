@@ -19,11 +19,13 @@ export async function publishValidationDomainV108({domain,input,driver,opened,ru
  const freeze=JSON.parse(await fs.readFile(path.join(ROOT,'docs/v108-runtime-freeze.json'),'utf8'));
  assert.deepEqual(await snapshotRuntimeV108(),freeze,'Runtime changed since the production freeze');
  const bytes=await fs.readFile(input);assert.ok(bytes.length>0&&bytes.length<=256*1024*1024);
- const raw=JSON.parse(bytes);assert.equal(raw.status,'PASS');assert.equal(raw.runtimeCommit,runtimeCommit);assert.equal(raw.buildId,buildId);
- assert.ok(['compiled-app','production'].includes(raw.mode));
+ const raw=JSON.parse(bytes),rawProduction=raw.production??raw;assert.equal(raw.status,'PASS');assert.equal(rawProduction.runtimeCommit,runtimeCommit);assert.equal(rawProduction.buildId,buildId);
+ assert.ok(['compiled-app','production'].includes(rawProduction.mode));
  assert.ok(raw.checks.length>0&&raw.checks.every(row=>row.status==='PASS'));
- assert.deepEqual(raw.errors??raw.browserErrors,[]);assert.ok(raw.servedBuilds.length);
- for(const response of raw.servedBuilds){assert.equal(response.status,200);assert.equal(response.expectedBuildId,buildId);assert.equal(response.foundInHtml,true);}
+ for(const [field,expected] of [['checksPassed',raw.checks.length],['checksFailed',0],['browserErrors',0]])if(Object.hasOwn(rawProduction,field))assert.equal(rawProduction[field],expected);
+ if(domain==='Clans'){assert.equal(raw.scope.context,'linked-physical-logistics-v108');assert.equal(raw.scope.stateInjection,false);assert.equal(raw.scope.resumedFrom,null,'Exploratory resumed runs cannot certify the final full convoy');}
+ assert.deepEqual(raw.errors??raw.browserErrors,[]);assert.ok(rawProduction.servedBuilds.length);
+ for(const response of rawProduction.servedBuilds){assert.equal(response.status,200);assert.equal(response.expectedBuildId,buildId);assert.equal(response.foundInHtml,true);}
  assert.ok(raw.sourceBefore.length>0);assert.deepEqual(raw.sourceBefore,raw.sourceAfter);
  assert.ok(raw.sourceAfter.some(row=>(row.path??row.file)===driver),'Executed driver absent from its own evidence');
  const frozen=new Map(freeze.entries.map(row=>[row.path,row]));
@@ -47,7 +49,7 @@ export async function publishValidationDomainV108({domain,input,driver,opened,ru
  }
  const command=raw.invocation?.command??'node '+driver;assert.ok(command.includes('node '+driver));
  const report={schemaVersion:1,release:'V108',status:'PASS_CIBLE',scope:raw.scope,
-  production:{mode:'production',runtimeCommit,buildId,browserErrors:0,checksFailed:0,checksPassed:raw.checks.length,servedBuilds:raw.servedBuilds},
+  production:{mode:'production',runtimeCommit,buildId,browserErrors:0,checksFailed:0,checksPassed:raw.checks.length,servedBuilds:rawProduction.servedBuilds},
   invocation:raw.invocation??{command},sourceBefore:raw.sourceBefore,sourceAfter:raw.sourceAfter,
   checks:raw.checks,captures,capturesOpened:captures.map(row=>row.file),rawEvidence:portableFiles[0]};
  const reportFile='docs/v108-'+slug+'-validation.json';await fs.writeFile(path.join(ROOT,reportFile),JSON.stringify(report,null,2)+'\n');

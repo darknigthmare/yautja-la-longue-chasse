@@ -1,0 +1,59 @@
+{
+  "domain": "Clans",
+  "status": "PASS_CIBLE",
+  "buildId": "xymWQOgijMpjLfRYw7ynF",
+  "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+  "driver": "scripts/qa-clan-logistics-v108.mjs",
+  "command": "node scripts/qa-clan-logistics-v108.mjs",
+  "report": {
+    "path": "docs/v108-clans-validation.json",
+    "sha256": "f0d42e405b3eb45d5006d64f01591bc91dcf85a874c6137b345f24e511ece848",
+    "bytes": 14017
+  },
+  "browserChecksPassed": 42,
+  "capturesInspected": 7,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v108-clans/browser-result.json.gz",
+      "sha256": "76fd1cfdfdb6570bf395e6a71d903c91f1bb5328a1f99c099a88628d19fec2bc",
+      "bytes": 3587,
+      "decodedSha256": "3673975298ba4b4263be7bb441aaeb4bf3b9831c6e22cc280485cacf421b5b3e",
+      "decodedBytes": 13383
+    },
+    {
+      "path": "docs/qa/v108-clans/01-same-skiff-east-bank.png",
+      "sha256": "7883a3ddaae39f7f949adbf4fdc000e3fcc2db7a6491c41a6ac0f981fd9b7327",
+      "bytes": 258077
+    },
+    {
+      "path": "docs/qa/v108-clans/02-two-mounts-one-water-container.png",
+      "sha256": "6ea79d14fb6073d230afa4a5d0e004a341c19ef4b206abf64ff4711ff44e0ab7",
+      "bytes": 254005
+    },
+    {
+      "path": "docs/qa/v108-clans/03-finite-cell-adjacent-open-rail.png",
+      "sha256": "2c3001c98ccf2ac32bcae3c8ed8ee8ae591fde20080d1eb41baac99800dddb3d",
+      "bytes": 254204
+    },
+    {
+      "path": "docs/qa/v108-clans/04-consented-duel-unique-chest.png",
+      "sha256": "27c32f98bcf7d86f8dd075eb9430616526863530a5742e152b97bb86557e609a",
+      "bytes": 255628
+    },
+    {
+      "path": "docs/qa/v108-clans/05-two-situated-real-audio-files.png",
+      "sha256": "2050cfec7f63b9efaebd83055700873e2cfc86438a0f3630da165eb5c71ce361",
+      "bytes": 253031
+    },
+    {
+      "path": "docs/qa/v108-clans/06-orbital-arrival-persistent-six-sites.png",
+      "sha256": "cc25d5a3c06327bafca738b51d0dfcfb85e6d149ba458c89c1a02fae3f32b553",
+      "bytes": 254237
+    },
+    {
+      "path": "docs/qa/v108-clans/07-mobile-shared-terrain.png",
+      "sha256": "c16b52eb7986373244265b23d7c140f4b85b71df5022aed56cee8438b6d30e82",
+      "bytes": 54200
+    }
+  ]
+}

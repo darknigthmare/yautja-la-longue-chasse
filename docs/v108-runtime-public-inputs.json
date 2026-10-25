@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "INPUTS_ONLY",
-  "scope": "Immutable V107 public assets and exact native props reused by the V108 cargo operation. Explicit root-pinned paths only; no gameplay admission is inferred.",
+  "scope": "Immutable existing public inputs reused by V108 cargo, logistics, Preserve and Pit. Six existing Wolf legacy atlases omitted from the preparatory inventory were added after execution, with exact runtime-commit bytes verified. This is an inventory completion, not a new build or art admission.",
   "assets": [
     {
       "path": "public/audio/ambience/ship/v54.wav",
@@ -2872,6 +2872,48 @@
       "mediaType": "image/png"
     },
     {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-hurt-v34.png",
+      "sha256": "0ea36a0bb1526899631eb52f9062aeb920172c895700aa08f0a87b4d0f492f2a",
+      "bytes": 2303054,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-repair-crouch-cannons-v34.png",
+      "sha256": "d17a6db3c672db2806583cebf0fe36638e85770dbf086b6f70b465e69a1d2cf2",
+      "bytes": 2207423,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-repair-guard-blades-v34.png",
+      "sha256": "dfa820e2f3cfa4438f5c7ab2b8f9dad6f37a2c169938aeb599afccb3acee409e",
+      "bytes": 2187113,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-repair-heavy-hand-v34.png",
+      "sha256": "bf0d3242f2968b50d9c3c8454648a7213c5a916fee86b1bc68cfbeafb3735ea3",
+      "bytes": 2244957,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-repair-idle-cannons-v34.png",
+      "sha256": "c8e870b7e8a38f4f7b3979767213e858355536ab95ec0c2a634dc72210f672ba",
+      "bytes": 2268960,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
+      "path": "public/game/sprites/v34/pit/wolf/wolf-repair-light-spacing-v34.png",
+      "sha256": "dcdeb3758969669423af2c451c08588fe918df637b31baf876783dd37f8329d6",
+      "bytes": 1698307,
+      "mediaType": "image/png",
+      "scope": "Existing Wolf legacy atlas loaded by the V107 runtime registry; inventory omission completed after the V108 journeys. Exact bytes already present at runtime commit 24ea9071b673c080325a39a50afeeab6695e4926. No new art is admitted."
+    },
+    {
       "path": "public/game/sprites/v44/user-hunters/14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea.png",
       "sha256": "14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea",
       "width": 1024,
@@ -3166,5 +3208,6 @@
       "bytes": 2216983,
       "mediaType": "image/png"
     }
-  ]
+  ],
+  "inventoryCompletion": "docs/qa/v108-validation/runtime-inventory-completion.json"
 }

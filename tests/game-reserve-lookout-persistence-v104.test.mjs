@@ -77,7 +77,7 @@ test("future versions and mixed terrain identities remain protected, without sil
     assert.equal(result.failure, "invalid-save");
     assert.equal(JSON.parse(raw).gameReserveV66.version, state.version);
   }
-  const future = api.parseSaveImport(JSON.stringify({ ...source, gameReserveV66: { ...v2, version: 4 } }));
+  const future = api.parseSaveImport(JSON.stringify({ ...source, gameReserveV66: { ...v2, version: 5 } }));
   assert.equal(future.save, null);
   assert.equal(future.failure, "future-version");
 });

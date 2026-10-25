@@ -25,7 +25,7 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTA
 let page,context,clock=false,failure=null;
 const exercise=()=>page.locator('[data-pit-workbook-campaign-v108]'),field=()=>page.locator('canvas[aria-label="Terrain interactif d’exercice et partenaires"]');
 const carnet=()=>page.evaluate(()=>{const key=Object.keys(localStorage).find(k=>k.includes('yautja-pit-workbook-exercise-v108:')&&!k.includes(':incompatible:'));return key?JSON.parse(localStorage.getItem(key)):null;});
-const read=()=>page.evaluate(()=>{const root=document.querySelector('[data-pit-immersive]'),canvas=root?.querySelector('canvas[data-pit-technique-entities]'),parse=s=>{try{return JSON.parse(s??'[]');}catch{return [];}};return {phase:root?.dataset.pitPresentationPhase,blocked:root?.dataset.pitSimulationBlocked,combatPhase:root?.dataset.pitCombatPhase,terminal:root?.dataset.pitPresentationTerminalReady,recipe:root?.dataset.pitNormalRecipe,positions:parse(canvas?.dataset.pitFighterPositions),actions:parse(canvas?.dataset.pitFighterActions),inventory:parse(canvas?.dataset.pitWorkbookInventoryV107),devices:parse(canvas?.dataset.pitWorkbookDevicesV107),life:[...root?.querySelectorAll('[role="progressbar"][aria-label^="Vie de"]')??[]].map(e=>Number(e.getAttribute('aria-valuenow'))),meter:[...root?.querySelectorAll('[role="progressbar"][aria-label^="Traque de"]')??[]].map(e=>Number(e.getAttribute('aria-valuenow')))};});
+const read=()=>page.evaluate(()=>{const root=document.querySelector('[data-pit-immersive]'),canvas=root?.querySelector('canvas[data-pit-technique-entities]'),parse=s=>{try{return JSON.parse(s??'[]');}catch{return [];}};return {simulationFrame:Number(root?.querySelector('[data-pit-frame]')?.getAttribute('data-pit-frame')??NaN),phase:root?.dataset.pitPresentationPhase,blocked:root?.dataset.pitSimulationBlocked,combatPhase:root?.dataset.pitCombatPhase,terminal:root?.dataset.pitPresentationTerminalReady,recipe:root?.dataset.pitNormalRecipe,positions:parse(canvas?.dataset.pitFighterPositions),actions:parse(canvas?.dataset.pitFighterActions),inventory:parse(canvas?.dataset.pitWorkbookInventoryV107),devices:parse(canvas?.dataset.pitWorkbookDevicesV107),techniques:parse(canvas?.dataset.pitTechniqueEntities),devicesDrawn:Number(canvas?.dataset.pitWorkbookDevicesDrawnV107),life:[...root?.querySelectorAll('[role="progressbar"][aria-label^="Vie de"]')??[]].map(e=>Number(e.getAttribute('aria-valuenow'))),meter:[...root?.querySelectorAll('[role="progressbar"][aria-label^="Traque de"]')??[]].map(e=>Number(e.getAttribute('aria-valuenow')))};});
 async function until(predicate,label,limit=3000,ms=32){for(let n=0;n<limit;n++){const result=await predicate();if(result)return result;if(clock)await page.clock.runFor(ms);else await new Promise(r=>setTimeout(r,ms));if(n%40===0)await new Promise(r=>setTimeout(r,8));}throw Error('Public V108 journey timed out: '+label+' '+JSON.stringify(await read()));}
 async function pauseClock(){if(clock)return;await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+500));clock=true;}
 async function screenshot(file,locator=exercise()){await locator.screenshot({path:path.join(output,file)});const bytes=await fs.readFile(path.join(output,file));captures.push({file,sha256:sha(bytes),bytes:bytes.length});}
@@ -48,12 +48,29 @@ async function fight({release,id}){let released=false;
   await page.keyboard.up('KeyI');
   if(release&&!released&&enemy.phase==='recovery'&&state.meter[0]>=(id==='scar'?250:350)&&state.inventory[0]?.status==='ready'){
    const action=id==='scar'?'shuriken':'mine';await page.locator(`[data-pit-workbook-controls="0"] [data-pit-workbook-action="${action}"]`).click();
-   const samples=[];for(let tick=0;tick<190;tick++){const observed=await read();samples.push(observed);if(observed.devices.some(device=>device.ownerSlot===0)){released=true;await screenshot(id+'-physical-'+action+'-'+captures.length+'.png',page.locator('canvas[data-pit-technique-entities]'));break;}await page.clock.runFor(8);}
-   observations.push({kind:'physical-device-samples',fighterId:id,samples});
+   const samples=[];let releaseMode=null,releaseEvidence=null;
+   for(let tick=0;tick<190;tick++){
+    const previous=samples.at(-1),observed=await read();samples.push(observed);
+    const visible=observed.devices.some(device=>device.ownerSlot===0)&&observed.devicesDrawn===observed.devices.length;
+    // Canvas state is painted atomically; React's frame/meter can publish one
+    // sample earlier. Keep the exact consecutive canvas26→27 transition and
+    // the original nearby HUD sample proving the native12-point guard credit.
+    const creditBefore=previous&&samples.slice(-4,-1).find(sample=>sample.phase==='fight'&&sample.blocked==='false'&&sample.combatPhase==='round'&&sample.inventory[0]?.status==='held'&&sample.actions[0]?.workbookMove==='S2'&&[25,26].includes(sample.actions[0].actionFrame)&&sample.actions[1]?.phase==='idle'&&sample.positions[1].x===previous.positions[1].x&&sample.meter[1]+12===observed.meter[1]);
+    const blockedContact=id==='scar'&&previous?.phase==='fight'&&observed.phase==='fight'&&previous.blocked==='false'&&observed.blocked==='false'&&previous.combatPhase==='round'&&observed.combatPhase==='round'&&previous.inventory[0]?.item==='shuriken'&&previous.inventory[0]?.status==='held'&&previous.inventory[0]?.effectId===null&&observed.inventory[0]?.item==='shuriken'&&observed.inventory[0]?.status==='spent'&&observed.inventory[0]?.effectId===null&&previous.actions[0]?.phase==='active'&&previous.actions[0]?.workbookMove==='S2'&&previous.actions[0].actionFrame===26&&observed.actions[0]?.phase==='recovery'&&observed.actions[0]?.workbookMove==='S2'&&observed.actions[0].actionFrame===27&&previous.actions[1]?.phase==='idle'&&observed.actions[1]?.phase==='blockstun'&&previous.devices.length===0&&observed.devices.length===0&&previous.techniques.length===0&&observed.techniques.length===0&&observed.positions[0].x===previous.positions[0].x&&observed.positions[0].y===previous.positions[0].y&&observed.positions[1].y===previous.positions[1].y&&Math.abs((observed.positions[1].x-previous.positions[1].x)*Math.sign(previous.positions[1].x-previous.positions[0].x)-14.88)<0.02&&observed.life[0]===previous.life[0]&&observed.life[1]===previous.life[1]&&!!creditBefore;
+    if(visible||blockedContact){released=true;releaseMode=visible?'visible-live-device':'source-26-to-27-blocked-immediate-contact';if(blockedContact)releaseEvidence={creditBefore,previous,observed,damage:0,nativePushback:14.88,nativeGuardCredit:12};await screenshot(id+'-physical-'+action+'-'+(visible?'visible':'blocked-immediate-contact')+'-'+captures.length+'.png',page.locator('canvas[data-pit-technique-entities]'));break;}
+    await page.clock.runFor(8);
+   }
+   observations.push({kind:'physical-device-samples',fighterId:id,releaseMode,releaseEvidence,samples});
    if(released){await page.keyboard.down('KeyI');await page.clock.runFor(id==='scar'?900:2400);continue;}
   }
   if(distance>72){const key=state.positions[1].x>state.positions[0].x?'ArrowRight':'ArrowLeft';await page.keyboard.down(key);await page.clock.runFor(32);await page.keyboard.up(key);}else await strike();
  }throw Error('Actual CPU duel did not end');
+}
+async function realRetryEncounter(){
+ await page.locator('[data-pit-immersive]').focus();for(const key of ['KeyI','ArrowDown','KeyJ','KeyK','KeyL'])await page.keyboard.up(key);
+ for(let n=0;n<260;n++){const state=await read();if(state.combatPhase==='match-over'&&state.terminal==='true')return {state,released:false,strategy:'neutral player; actual CPU damage or timeout earns the retry, without injected health or winner'};
+  if(state.phase==='fight'&&state.blocked==='false'&&Math.abs(state.positions[1].x-state.positions[0].x)>110){const key=state.positions[1].x>state.positions[0].x?'ArrowRight':'ArrowLeft';await page.keyboard.down(key);await page.clock.runFor(100);await page.keyboard.up(key);}else await page.clock.runFor(500);
+ }throw Error('Actual retry encounter did not finish');
 }
 async function returnToCarnet(){await page.getByRole('button',{name:'Revenir au carnet',exact:true}).click();await exercise().waitFor();await until(async()=>{const saved=await carnet();return saved&&saved.phase===await exercise().getAttribute('data-phase');},'confirmed outcome checkpoint');}
 async function deferredSaveExit(){
@@ -79,7 +96,7 @@ try{
   const itemId=first.run.continuityV108.carry.device.id;await screenshot(id+'-first-victory-carry.png');observations.push({kind:'first-actual-victory',fighterId:id,...first});
   await menu();await openExercise(id);check(id+': checkpoint reload keeps exact earned carry',JSON.stringify((await carnet()).continuityV108.carry)===JSON.stringify(first.run.continuityV108.carry));
   await page.locator('[data-pit-workbook-campaign-next]').click();await startDuel();check(id+': second actual duel cannot replenish the object',(await read()).inventory[0]?.status==='spent');
-  const secondResult=await fight({release:false,id});await returnToCarnet();const secondRun=await carnet();
+  const secondResult=await realRetryEncounter();await returnToCarnet();const secondRun=await carnet();
   check(id+': second actual encounter preserves identity and spent ownership',secondRun.continuityV108.carry.device.id===itemId&&secondRun.continuityV108.carry.device.status==='spent'&&['retry','stage-result'].includes(secondRun.phase));
   if(secondRun.phase==='retry')check(id+': actual defeat restores the exact second-entry resources',JSON.stringify(secondRun.continuityV108.carry)===JSON.stringify(first.run.continuityV108.carry));
   observations.push({kind:'second-browser-encounter',fighterId:id,run:secondRun,...secondResult,browserFullRoute:false});
